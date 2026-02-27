@@ -23,18 +23,18 @@ class GameColorException(ChessException):
     Super class of exception raised by GameColor objects. Do not use directly. Subclasses give
     precise, fined-grained, debugging info.
     """
-    ERR_CODE = "GAME_COLOR_ERROR"
+    ERR_CODE = "GAME_COLOR_EXCEPTION"
     MSG = "GameColor raised an exception."
 
 
 #======================# GAME_COLOR VALIDATION EXCEPTION #======================#
 class NullGameColorException(GameColorException, NullException):
     """Raised if an entity, method, or operation requires GameColor but gets null instead."""
-    ERR_CODE = "NULL_GAME_COLOR_ERROR"
+    ERR_CODE = "NULL_GAME_COLOR_EXCEPTION"
     MSG = "GameColor cannot be null."
 
 
 class InvalidGameColorException(GameColorException, ValidationException):
     """Super Exception for GameColorValidator when a candidate fails a sanity check.""""""
-    ERR_CODE = "GAME_COLOR_VALIDATION_ERROR"
+    ERR_CODE = "GAME_COLOR_VALIDATION_EXCEPTION"
     MSG = "GameColor validation failed."

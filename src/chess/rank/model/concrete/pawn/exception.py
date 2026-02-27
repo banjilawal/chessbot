@@ -10,11 +10,11 @@ version: 1.0.0
 from chess.rank import RankException
 
 __all__ = [
-    # ======================# PAWN_ERROR EXCEPTION #======================#
+    # ======================# PAWN_EXCEPTION EXCEPTION #======================#
     "PawnException",
 ]
 
-# ======================# PAWN_ERROR EXCEPTION #======================#
+# ======================# PAWN_EXCEPTION EXCEPTION #======================#
 class PawnException(RankException):
     """
     # ROLE: Super Exception
@@ -31,5 +31,5 @@ class PawnException(RankException):
     # ATTRIBUTES:
     None
     """
-    ERR_CODE = "PAWN_ERROR"
+    ERR_CODE = "PAWN_EXCEPTION"
     MSG = "Pawn raised an exception."

@@ -38,5 +38,5 @@ class CoordStackException(CoordException, StackServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "COORD_STACK_ERROR"
+    ERR_CODE = "COORD_STACK_EXCEPTION"
     MSG = "CoordStack raised an exception."

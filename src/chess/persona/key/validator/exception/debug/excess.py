@@ -37,7 +37,7 @@ class ArenaPersonaKeysException(PersonaKeyException, ContextFlagCountException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "ARENA_PERSONA_KEY_ERROR"
+    ERR_CODE = "ARENA_PERSONA_KEY_EXCEPTION"
     MSG = (
         "PersonaKey validation failed: More than one attribute is not-null. Only one attribute should be enabled."
     )

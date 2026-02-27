@@ -52,7 +52,7 @@ class TeamDebugException(DebugException):
     # INHERITED METHODS:
         *   See ChessException class for inherited methods.
     """
-    ERR_CODE = "TEAM_ERROR"
+    ERR_CODE = "TEAM_EXCEPTION"
     MSG: str = "A variable in Team raised an exception."
     VAR: None
     VAL = None

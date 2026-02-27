@@ -31,21 +31,21 @@ class DomainOriginException(ChessException):
     Super class of exception raised by DomainOrigin objects. Do not use directly. Subclasses give
     precise, fined-grained, debugging info.
     """
-    ERR_CODE = "DOMAIN_ORIGIN_ERROR"
+    ERR_CODE = "DOMAIN_ORIGIN_EXCEPTION"
     MSG = "An rollback_exception was raised by a DomainOrigin."
 
 
 #====================== NULL DOMAIN_ORIGIN EXCEPTION #======================#
 class NullDomainOriginException(DomainOriginException, NullException):
     """Raised if an entity, method, or operation requires DomainOrigin but gets null instead."""
-    ERR_CODE = "NULL_DOMAIN_ORIGIN_ERROR"
+    ERR_CODE = "NULL_DOMAIN_ORIGIN_EXCEPTION"
     MSG = "A DomainOrigin cannot be null."
 
 
 #====================== DOMAIN_ORIGIN VALIDATION EXCEPTION #======================#
 class InvalidDomainOriginException(DomainOriginException, ValidationException):
     """Super Exception for DomainOriginValidator when a candidate fails a sanity check.""""""
-    ERR_CODE = "DOMAIN_ORIGIN_VALIDATION_ERROR"
+    ERR_CODE = "DOMAIN_ORIGIN_VALIDATION_EXCEPTION"
     MSG = "DomainOrigin validation failed."
 
 

@@ -35,5 +35,5 @@ class DiscoveryStatusNullException(NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "DISCOVERY_STATUS_NULL_ERROR"
+    ERR_CODE = "DISCOVERY_STATUS_NULL_EXCEPTION"
     MSG = "Node validation failed: Expected a DiscoveryStatus, received null instead."

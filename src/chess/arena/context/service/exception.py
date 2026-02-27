@@ -39,5 +39,5 @@ class ArenaContextServiceException(ArenaContextException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "ARENA_CONTEXT_SERVICE_ERROR"
+    ERR_CODE = "ARENA_CONTEXT_SERVICE_EXCEPTION"
     MSG = "ArenaContextService raised an exception."

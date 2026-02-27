@@ -37,5 +37,5 @@ class SnapshotFinderException(FinderException, OperationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "SNAPSHOT_FINDER_ERROR"
+    ERR_CODE = "SNAPSHOT_FINDER_EXCEPTION"
     MSG = "SnapshotFinder raised an exception."

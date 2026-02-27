@@ -37,5 +37,5 @@ class OverMoveUndoLimitException(TokenException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "OVER_MOVE_UNDO_LIMIT_ERROR"
+    ERR_CODE = "OVER_MOVE_UNDO_LIMIT_EXCEPTION"
     MSG = "Token.positions.undo_coord_push failed: Cannot undo two moves."

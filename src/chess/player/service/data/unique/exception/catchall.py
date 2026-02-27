@@ -37,5 +37,5 @@ class UniqueAgentDataServiceException(AgentException, DatabaseException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "UNIQUE_AGENT_STACK_ERROR"
+    ERR_CODE = "UNIQUE_AGENT_STACK_EXCEPTION"
     MSG = "UniqueAgentDataService raised an exception."

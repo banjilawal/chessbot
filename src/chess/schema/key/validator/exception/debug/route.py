@@ -37,5 +37,5 @@ class SchemaKeyValidationRouteException(SchemaKeyException, NoExecutionRouteExce
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "NO_SCHEMA_KEY_VALIDATION_ROUTE_ERROR"
+    ERR_CODE = "NO_SCHEMA_KEY_VALIDATION_ROUTE_EXCEPTION"
     MSG = "SchemaKey validation failed: No validation route was provided for the Schema attribute."

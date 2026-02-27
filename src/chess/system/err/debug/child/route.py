@@ -52,7 +52,7 @@ class NoExecutionRouteException(DebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    ERR_CODE = "NO_EXECUTION_ROUTE_FOR_OPTION_ERROR"
+    ERR_CODE = "NO_EXECUTION_ROUTE_FOR_OPTION_EXCEPTION"
     MSG = "No execution route exists for the operation option."
     VAR = None
     VAL = None

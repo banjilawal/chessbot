@@ -36,6 +36,6 @@ class MachinePlayerException(PlayerException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "MACHINE_PLAYER_ERROR"
+    ERR_CODE = "MACHINE_PLAYER_EXCEPTION"
     MSG = "MachinePlayer raised an exception."
     

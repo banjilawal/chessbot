@@ -37,5 +37,5 @@ class FormationKeyBuildRouteException(FormationKeyException, NoExecutionRouteExc
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "NO_FORMATION_KEY_BUILD_ROUTE_ERROR"
+    ERR_CODE = "NO_FORMATION_KEY_BUILD_ROUTE_EXCEPTION"
     MSG = "FormationKey build failed: No build path existed for the Formation key."

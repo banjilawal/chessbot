@@ -37,7 +37,7 @@ class SinglePlayerInArena(ArenaDebugException, BoundsException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "SINGLE_PLAYER_IN_ARENA_ERROR"
+    ERR_CODE = "SINGLE_PLAYER_IN_ARENA_EXCEPTION"
     MSG = (
         "Arena's UniquePlayerDataService contains only one player. A game cannot be played without only "
         "one player in the arena."

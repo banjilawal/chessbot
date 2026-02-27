@@ -35,5 +35,5 @@ class VisitingOccupiedSquareException(SquareDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "VISITING_OCCUPIED_SQUARE_ERROR"
+    ERR_CODE = "VISITING_OCCUPIED_SQUARE_EXCEPTION"
     MSG = "Square visit start failed: The square was already occupied."

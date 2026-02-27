@@ -38,5 +38,5 @@ class NodeSearchRouteException(NodeException, NoExecutionRouteException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "NO_NODE_SEARCH_ROUTE_ROUTE_ERROR"
+    ERR_CODE = "NO_NODE_SEARCH_ROUTE_ROUTE_EXCEPTION"
     MSG = "Node search failed: No search method was provided for the Node attribute."

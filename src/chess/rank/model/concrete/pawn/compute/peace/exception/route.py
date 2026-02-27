@@ -35,5 +35,5 @@ class PawnPeacefulSpanComputationRouteException(NoExecutionRouteException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "NO_PAWN_PEACEFUL_SPAN_COMPUTATION_ROUTE_ERROR"
+    ERR_CODE = "NO_PAWN_PEACEFUL_SPAN_COMPUTATION_ROUTE_EXCEPTION"
     MSG = "PawnPeacefulSpan computation failed: No spanning set computation route for Pawn's MoveState."

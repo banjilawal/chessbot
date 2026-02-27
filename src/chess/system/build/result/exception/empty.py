@@ -37,5 +37,5 @@ class EmptyBuildResultException(BuildException, ResultException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "EMPTY_BUILD_RESULT_ERROR"
+    ERR_CODE = "EMPTY_BUILD_RESULT_EXCEPTION"
     MSG = "BuildResult must contain either a payload or an exception. It cannot be empty."

@@ -51,7 +51,7 @@ class ResolutionFailedException(ResolutionException):
         *   RosterException
         *   TravelException
     """
-    ERR_CODE = "RESOLUTION_FAILED_ERROR"
+    ERR_CODE = "RESOLUTION_FAILED_EXCEPTION"
     MSG = "The resolution process failed to break the attribute conflict."
 
 

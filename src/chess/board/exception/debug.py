@@ -52,7 +52,7 @@ class BoardDebugException(DebugException):
     # INHERITED METHODS:
         *   See ChessException class for inherited methods.
     """
-    ERR_CODE = "BOARD_ERROR"
+    ERR_CODE = "BOARD_EXCEPTION"
     MSG: str = "A variable in Board raised an exception."
     VAR: None
     VAL = None

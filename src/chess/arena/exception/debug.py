@@ -52,7 +52,7 @@ class ArenaDebugException(DebugException):
     # INHERITED METHODS:
         *   See ChessException class for inherited methods.
     """
-    ERR_CODE = "ARENA_ERROR"
+    ERR_CODE = "ARENA_EXCEPTION"
     MSG: str = "A variable in Arena raised an exception."
     VAR: None
     VAL = None

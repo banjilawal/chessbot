@@ -34,7 +34,7 @@ class ArenaFormationKeysException(FormationKeyException, ContextFlagCountExcepti
     # ATTRIBUTES:
     None
     """
-    ERR_CODE = "EXCESS_FORMATION_KEYS_VALIDATION_ERROR"
+    ERR_CODE = "EXCESS_FORMATION_KEYS_VALIDATION_EXCEPTION"
     MSG = (
         "FormationKey validation failed: More than one attribute is not-null.Only ond attribute should be enabled."
     )

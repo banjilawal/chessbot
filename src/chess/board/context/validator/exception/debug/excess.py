@@ -38,7 +38,7 @@ class ArenaBoardContextFlagsException(BoardContextException, ContextFlagCountExc
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "ARENA_BOARD_CONTEXT_FLAG_ERROR"
+    ERR_CODE = "ARENA_BOARD_CONTEXT_FLAG_EXCEPTION"
     MSG = (
         "Arena BoardContext flags were set. an Board search can only use one-and-only "
         "map flag at a time."

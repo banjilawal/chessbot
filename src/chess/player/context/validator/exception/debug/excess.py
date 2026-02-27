@@ -38,7 +38,7 @@ class ArenaAgentContextFlagsException(InvalidAgentContextException, ContextFlagC
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "ARENA_AGENT_CONTEXT_FLAG_ERROR"
+    ERR_CODE = "ARENA_AGENT_CONTEXT_FLAG_EXCEPTION"
     MSG = (
         "Arena AgentContext flags were set. an Agent search can only use one-and-only "
         "map flag at a time."

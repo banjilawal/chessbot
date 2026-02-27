@@ -38,7 +38,7 @@ class ArenaCoordContextFlagsException(CoordContextException, ContextFlagCountExc
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "ARENA_COORD_CONTEXT_FLAG_ERROR"
+    ERR_CODE = "ARENA_COORD_CONTEXT_FLAG_EXCEPTION"
     MSG = (
         "Arena CoordContext flags were set. an Coord search can only use one-and-only "
         "map flag at a time."

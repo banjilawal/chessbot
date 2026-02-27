@@ -38,5 +38,5 @@ class AddingDuplicateBoardException(UniqueBoardDataServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "ADDING_DUPLICATE_BOARD_ERROR"
+    ERR_CODE = "ADDING_DUPLICATE_BOARD_EXCEPTION"
     MSG = "Unique board insertion failed: The board is already in the collection."

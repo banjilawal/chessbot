@@ -35,5 +35,5 @@ class AddingDuplicateTeamException(TeamStackException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "ADDING_DUPLICATE_TEAM_ERROR"
+    ERR_CODE = "ADDING_DUPLICATE_TEAM_EXCEPTION"
     MSG = "Pushing team onto stack failed: The team is already present."

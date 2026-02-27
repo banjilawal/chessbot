@@ -35,5 +35,5 @@ class NoExecutionRouteException(NoExecutionRouteException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "NO_BUILD_ROUTE_FOR_SELECTED_OPTION_ERROR"
+    ERR_CODE = "NO_BUILD_ROUTE_FOR_SELECTED_OPTION_EXCEPTION"
     MSG = "Build failed: No build route was defined for the specified option."

@@ -35,5 +35,5 @@ class TokenCannotCaptureItselfException(HostageException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "TOKEN_CANNOT_CAPTURE_ITSELF_ERROR"
+    ERR_CODE = "TOKEN_CANNOT_CAPTURE_ITSELF_EXCEPTION"
     MSG = "Hostage validation failed: TheVictor and Captor cannot be the same."

@@ -38,5 +38,5 @@ class TeamSearchRouteException(TeamException, NoExecutionRouteException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "NO_TEAM_SEARCH_ROUTE_ROUTE_ERROR"
+    ERR_CODE = "NO_TEAM_SEARCH_ROUTE_ROUTE_EXCEPTION"
     MSG = "Team search failed: No search method was provided for the Team attribute."

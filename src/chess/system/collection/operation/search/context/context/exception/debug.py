@@ -37,5 +37,5 @@ class ContextFlagCountException(ContextException, BoundsException):
       # INHERITED ATTRIBUTES:
       None
       """
-    ERR_CODE = "CONTEXT_FLAG_COUNT_ERROR"
+    ERR_CODE = "CONTEXT_FLAG_COUNT_EXCEPTION"
     MSG = "The number of Context attribute-value flags enabled is out of bounds."

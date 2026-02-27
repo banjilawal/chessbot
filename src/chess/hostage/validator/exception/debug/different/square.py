@@ -36,5 +36,5 @@ class PrisonerCapturedOnDifferentSquareException(HostageException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "VICTOR_AND_PRISONER_ON_DIFFERENT_SQUARE_ERROR"
+    ERR_CODE = "VICTOR_AND_PRISONER_ON_DIFFERENT_SQUARE_EXCEPTION"
     MSG = "Hostage validation failed: The victor can only capture enemies on its own item."

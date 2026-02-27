@@ -36,5 +36,5 @@ class TransactionException(ChessException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "TRANSACTION_ERROR"
+    ERR_CODE = "TRANSACTION_EXCEPTION"
     MSG = "Transaction raised an exception."

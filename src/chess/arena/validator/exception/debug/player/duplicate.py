@@ -35,7 +35,7 @@ class DuplicatePlayerInArenaException(ArenaDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "DUPLICATE_PLAYER_IN_ARENA_ERROR"
+    ERR_CODE = "DUPLICATE_PLAYER_IN_ARENA_EXCEPTION"
     MSG = (
         "Both unique teams in an Arena are owned by the same owner. A owner is not allowed to play themselves."
     )

@@ -35,5 +35,5 @@ class UnsupportedEmptyInsertionResultException(MethodImplementationException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERR_CODE = "UNSUPPORTED_EMPTY_INSERTION_RESULT_STATE_ERROR"
+    ERR_CODE = "UNSUPPORTED_EMPTY_INSERTION_RESULT_STATE_EXCEPTION"
     MSG = "An InsertionResult's outcome is either success or failure. It cannot be empty."

@@ -35,5 +35,5 @@ class WrongCollectionTypeException(CollectionException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "WRONG_COLLECTION_TYPE_ERROR"
+    ERR_CODE = "WRONG_COLLECTION_TYPE_EXCEPTION"
     MSG = "The collection is not of the correct type."

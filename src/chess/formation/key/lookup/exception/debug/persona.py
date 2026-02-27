@@ -38,5 +38,5 @@ class FormationPersonaBoundsException(FormationException, BoundsException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "FORMATION_PERSONA_BOUNDS_ERROR"
+    ERR_CODE = "FORMATION_PERSONA_BOUNDS_EXCEPTION"
     MSG = "FormationLookup failed: Target was outside the set of possible Formation personas."

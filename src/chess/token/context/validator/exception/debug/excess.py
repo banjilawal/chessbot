@@ -38,7 +38,7 @@ class ArenaTokenContextFlagsException(TokenContextException, ContextFlagCountExc
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "ARENA_TOKEN_CONTEXT_FLAG_ERROR"
+    ERR_CODE = "ARENA_TOKEN_CONTEXT_FLAG_EXCEPTION"
     MSG = (
         "TokenContext validation failed: More than one attribute was set. Only one attribute-value should be enabled."
     )

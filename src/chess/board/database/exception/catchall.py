@@ -36,5 +36,5 @@ class BoardDatabaseException(DatabaseException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "BOARD_DATABASE_ERROR"
+    ERR_CODE = "BOARD_DATABASE_EXCEPTION"
     MSG = "BoardDatabase raised an exception."

@@ -23,7 +23,7 @@ class KingLocationPostingService(Service[KingOccupationEvent]):
         """"""
         method = "KingLocationPostingService.process_request"
         validation_result = KingOccupationEventValidator.item_validator(candidate=request)
-        if validation_result.is_error():
+        if validation_result.is_exception():
             return TransactionResult.errored(event_update=request, exception=validation_result.exception)
         
         location_search_result = KingLocationSearch.searcher(data_owner=self._location_table, search_context=request.actor)

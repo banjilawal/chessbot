@@ -35,5 +35,5 @@ class TeamSlotAlreadyOccupiedException(TeamDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "TEAM_SLOT_ALREADY_OCCUPIED_ERROR"
+    ERR_CODE = "TEAM_SLOT_ALREADY_OCCUPIED_EXCEPTION"
     MSG = "Team validation failed: The candidate team slot on the board was already occupied."

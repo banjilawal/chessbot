@@ -36,5 +36,5 @@ class VisitorFromWrongBoardException(SquareDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "VISITOR_FROM_WRONG_BOARD_ERROR"
+    ERR_CODE = "VISITOR_FROM_WRONG_BOARD_EXCEPTION"
     MSG = "Square visit start failed: The visitor belongs to a different board."

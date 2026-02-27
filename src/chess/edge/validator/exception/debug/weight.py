@@ -36,5 +36,5 @@ class EdgeWeightException(EdgeDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "EDGE_WEIGHT_ERROR"
+    ERR_CODE = "EDGE_WEIGHT_EXCEPTION"
     MSG = "Edge validation failed: the weight was not a number in the valid range."

@@ -33,5 +33,5 @@ class TeamContextException(TeamException, ContextException):
     # ATTRIBUTES:
     None
     """
-    ERR_CODE = "TEAM_CONTEXT_ERROR"
+    ERR_CODE = "TEAM_CONTEXT_EXCEPTION"
     MSG = "TeamContext raised an exception."

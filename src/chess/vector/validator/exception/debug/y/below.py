@@ -25,7 +25,7 @@ class VectorYBelowBoundsException(InvalidVectorException, BoundsException):
     """
     from __future__ import annotations
     from typing import Optional
-    ERR_CODE = "VECTOR_Y_BELOW_BOUNDS_ERROR"
+    ERR_CODE = "VECTOR_Y_BELOW_BOUNDS_EXCEPTION"
     MSG = (
         "Vector validation failed: y_axis below bounds."
     )

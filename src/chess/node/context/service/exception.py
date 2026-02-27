@@ -38,5 +38,5 @@ class NodeContextServiceException(NodeContextException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "NODE_CONTEXT_SERVICE_ERROR"
+    ERR_CODE = "NODE_CONTEXT_SERVICE_EXCEPTION"
     MSG = "NodeContextService raised an exception."

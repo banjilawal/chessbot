@@ -38,5 +38,5 @@ class InvalidStringException(StringException, ValidationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "STRING_VALIDATION_FAILED_ERROR"
+    ERR_CODE = "STRING_VALIDATION_FAILED_EXCEPTION"
     MSG = "String validation failed."

@@ -18,20 +18,20 @@ __all__ = [
 ]
 
 class PromotionTransactionException(TravelTransactionException):
-    ERR_CODE = "PROMOTION_TRANSACTION_ERROR"
+    ERR_CODE = "PROMOTION_TRANSACTION_EXCEPTION"
     MSG = "PromotionTransaction raised an exception."
     
 class RolledBackPromotionTransactionException(PromotionTransactionException, RollbackException):
-    ERR_CODE = "PROMOTION_TRANSACTION_ERROR_ROLLED_BACK"
+    ERR_CODE = "PROMOTION_TRANSACTION_EXCEPTION_ROLLED_BACK"
     MSG = "Promotion transaction failed. Before raising this exception, the transaction was rolled back."
  
 class FailedPreviousRankUpdateRolledBackException(RolledBackPromotionTransactionException):
- ERR_CODE = "FAILED_UPDATING_PREVIOUS_RANK_ERROR_ROLLED_BACK"
+ ERR_CODE = "FAILED_UPDATING_PREVIOUS_RANK_EXCEPTION_ROLLED_BACK"
  MSG = (
      "Updating the original bounds failed during a promotion transaction. The operation was rolled back "
      "before raising the exception."
  )
  
 class FailedSetRankToQueenRolledBackException(RolledBackPromotionTransactionException):
-    ERR_CODE = "ROLLED_BACK_PROMOTION_TRANSACTION_ERROR"
+    ERR_CODE = "ROLLED_BACK_PROMOTION_TRANSACTION_EXCEPTION"
     MSG = "Promotion transaction failed. The transaction was rolled back before raising the exception."

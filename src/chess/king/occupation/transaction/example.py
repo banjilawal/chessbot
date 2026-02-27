@@ -518,7 +518,7 @@ See the list of exception in the `__all__` list following (e.g., `VectorExceptio
 #   Wraps any ScanEventException or other errors raised during
 #   the blocking's lifecycle.
 #   """
-#   ERR_CODE = "SCAN_TRANSACTION_ERROR"
+#   ERR_CODE = "SCAN_TRANSACTION_EXCEPTION"
 #   MSG = "OccupationTransaction raised an exception."
 #
 #
@@ -532,7 +532,7 @@ See the list of exception in the `__all__` list following (e.g., `VectorExceptio
 #     Used when an error occurs in the course of an attack or capture
 #     (e.g., invalid target, rollback during capture, inconsistent board_validator state).
 #   """
-#   DEFAULT_CODE = "ATTACK_ERROR"
+#   DEFAULT_CODE = "ATTACK_EXCEPTION"
 #   MSG = "An error occurred during an attack or capture notification."
 #
 #
@@ -540,12 +540,12 @@ See the list of exception in the `__all__` list following (e.g., `VectorExceptio
 # #=== ATTACK_EVENT VALIDATION EXCEPTION #======================#
 # class NullAttackEventException(AttackEventException, NullException):
 #   """Raised by methods, entities, and models that require team_name KingCheckEvent but receive team_name validation."""
-#   ERR_CODE = "NULL_EVENT_ERROR"
+#   ERR_CODE = "NULL_EVENT_EXCEPTION"
 #   MSG = "KingCheckEvent cannot be validation"
 #
 # class InvalidAttackEventException(AttackEventException, ValidationException):
 #   """Raised by ExchangeValidators if client fails coord_stack_validator."""
-#   ERR_CODE = "ATTACK_EVENT_VALIDATION_ERROR"
+#   ERR_CODE = "ATTACK_EVENT_VALIDATION_EXCEPTION"
 #   MSG = "KingCheckEvent failed validate"
 #
 #
@@ -570,12 +570,12 @@ See the list of exception in the `__all__` list following (e.g., `VectorExceptio
 #
 # # --- Rollback Attack Errors (Dual Inheritance) ---
 # class SetCaptorRolledBackException(AttackEventException, RollbackException):
-#   DEFAULT_CODE = "SET_CAPTOR_ERROR_ROLLED_BACK"
+#   DEFAULT_CODE = "SET_CAPTOR_EXCEPTION_ROLLED_BACK"
 #   MSG = "Setting victor failed. Transaction rolled back performed."
 #
 #
 # class EmptyDestinationSquareRolledBackException(AttackEventException, RollbackException):
-#   DEFAULT_CODE = "SET_CAPTOR_ERROR_ROLLED_BACK"
+#   DEFAULT_CODE = "SET_CAPTOR_EXCEPTION_ROLLED_BACK"
 #   MSG = "Setting victor failed. Transaction rolled back performed."
 #
 #

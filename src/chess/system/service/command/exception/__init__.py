@@ -12,5 +12,5 @@ Created: 2026-02-24
 None
 
 # Modules
-from .super import CommandException
+from .anchor import CommandException
 from .debug import CommandDebugException

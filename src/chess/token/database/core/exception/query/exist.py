@@ -39,5 +39,5 @@ class TokenNotFoundException(TokenDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "TOKEN_NOT_FOUND_ERROR"
+    ERR_CODE = "TOKEN_NOT_FOUND_EXCEPTION"
     MSG = "Token deletion failed: The item was not found in the dataset. Nothing to remove."

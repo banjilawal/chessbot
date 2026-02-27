@@ -50,7 +50,7 @@ class NullException(DebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    ERR_CODE = "NULL_ERROR"
+    ERR_CODE = "NULL_EXCEPTION"
     MSG = "variable cannot be null."
     VAR = None
     VAL = None

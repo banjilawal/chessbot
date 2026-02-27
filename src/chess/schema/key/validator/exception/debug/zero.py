@@ -36,7 +36,7 @@ class ZeroSchemaKeysException(SchemaKeyException, ContextFlagCountException):
     # ATTRIBUTES:
     None
     """
-    ERR_CODE = "ZERO_SCHEMA_KEYS_VALIDATION_ERROR"
+    ERR_CODE = "ZERO_SCHEMA_KEYS_VALIDATION_EXCEPTION"
     MSG = (
         "SchemaKey validation failed: All attributes are null. A SchemaKey must have a "
         "single attribute enabled by a value."

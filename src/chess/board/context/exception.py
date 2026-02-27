@@ -34,6 +34,6 @@ class BoardContextException(BoardException, ContextException):
     # ATTRIBUTES:
     None
     """
-    ERR_CODE = "BOARD_CONTEXT_ERROR"
+    ERR_CODE = "BOARD_CONTEXT_EXCEPTION"
     MSG = "BoardContext raised an exception."
 

@@ -37,5 +37,5 @@ class TeamStackException(TeamException, StackServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "TEAM_STACK_SERVICE_ERROR"
+    ERR_CODE = "TEAM_STACK_SERVICE_EXCEPTION"
     MSG = "TeamStack raised an exception."

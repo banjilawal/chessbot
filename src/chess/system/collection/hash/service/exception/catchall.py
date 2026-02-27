@@ -36,5 +36,5 @@ class HashServiceException(ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "HASH_SERVICE_ERROR"
+    ERR_CODE = "HASH_SERVICE_EXCEPTION"
     MSG = "HashService raised an exception."

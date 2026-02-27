@@ -38,5 +38,5 @@ class CapturedSquareCannotBeEmptyException(HostageException, DebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "CAPTURED_SQUARE_CANNOT_BE_EMPTY_ERROR"
+    ERR_CODE = "CAPTURED_SQUARE_CANNOT_BE_EMPTY_EXCEPTION"
     MSG = "Hostage build failed: The captured item cannot be empty during the build."

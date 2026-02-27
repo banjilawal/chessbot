@@ -38,7 +38,7 @@ class ZeroTokenContextFlagsException(TokenContextException, ContextFlagCountExce
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "ZERO_TOKEN_CONTEXT_FLAGS_ERROR"
+    ERR_CODE = "ZERO_TOKEN_CONTEXT_FLAGS_EXCEPTION"
     MSG = (
         "TokenContext validation failed: No attributes were set. One attribute-value should be enabled."
     )

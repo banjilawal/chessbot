@@ -33,5 +33,5 @@ class ResourceUnavailableException(ChessException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "RESOURCE_UNAVAILABLE_ERROR"
+    ERR_CODE = "RESOURCE_UNAVAILABLE_EXCEPTION"
     MSG = "Resource is unavailable."

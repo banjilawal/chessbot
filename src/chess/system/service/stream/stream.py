@@ -13,9 +13,7 @@ from typing import Generic, List, TypeVar
 
 from chess.system import  CommandRouter
 
-
 S = TypeVar("S")
-
 
 class ServiceStream(ABC, Generic[S]):
     """

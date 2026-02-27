@@ -35,5 +35,5 @@ class SquareDatabaseException(DatabaseException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "SQUARE_DATABASE_ERROR"
+    ERR_CODE = "SQUARE_DATABASE_EXCEPTION"
     MSG = "SquareDatabase raised an exception."

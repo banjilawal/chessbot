@@ -35,5 +35,5 @@ class TeamSchemaCollisionException(TeamHashException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "TEAM_HASH_SCHEMA_COLLISION_ERROR"
+    ERR_CODE = "TEAM_HASH_SCHEMA_COLLISION_EXCEPTION"
     MSG = "Both teams in the hash cannot have the same schema."

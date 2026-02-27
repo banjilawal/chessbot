@@ -38,5 +38,5 @@ class NodeSearchPayloadTypeException(NodeException, ResultException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "NODE_DATASET_NULL_ERROR"
+    ERR_CODE = "NODE_DATASET_NULL_EXCEPTION"
     MSG = "NodeSearch payload is the wrong type. The payload should be List[Node]."

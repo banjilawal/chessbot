@@ -31,5 +31,5 @@ class MaxConsecutiveCoordPopException(CoordStackException):
         # INHERITED ATTRIBUTES:
         None
         """
-        ERR_CODE = "MAX_CONSECUTIVE_COORD_POP_ERROR"
+        ERR_CODE = "MAX_CONSECUTIVE_COORD_POP_EXCEPTION"
         MSG = "Popping Coord Stack Failed: Two pops cannot be made in a row. A pop must follow a push."

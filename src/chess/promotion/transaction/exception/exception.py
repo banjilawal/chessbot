@@ -14,5 +14,5 @@ __all__ = [
 ]
 
 class PromotionTransactionException(TransactionException):
-    ERR_CODE = "PROMOTION_TRANSACTION_ERROR"
+    ERR_CODE = "PROMOTION_TRANSACTION_EXCEPTION"
     MSG = "PromotionTransaction raised an exception."

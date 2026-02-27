@@ -37,5 +37,5 @@ class TeamHashNullException(TeamHashException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "TEAM_HASH_NULL_EXCEPTION_ERROR"
+    ERR_CODE = "TEAM_HASH_NULL_EXCEPTION_EXCEPTION"
     MSG = "TeamHash validation failed: The candidate was null."

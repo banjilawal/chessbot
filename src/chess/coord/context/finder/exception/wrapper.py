@@ -39,5 +39,5 @@ class CoordSearchException(CoordException, SearchException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "COORD_FINDER_ERROR"
+    ERR_CODE = "COORD_FINDER_EXCEPTION"
     MSG = "CoordFinder raised an exception."

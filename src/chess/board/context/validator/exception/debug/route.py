@@ -37,5 +37,5 @@ class BoardContextValidationRouteException(BoardContextException, NoExecutionRou
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "NO_BOARD_CONTEXT_VALIDATION_ROUTE_ERROR"
+    ERR_CODE = "NO_BOARD_CONTEXT_VALIDATION_ROUTE_EXCEPTION"
     MSG = "BoardContext validation failed: No validation route was provided for the Board attribute."

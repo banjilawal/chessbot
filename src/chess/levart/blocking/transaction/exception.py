@@ -24,7 +24,7 @@ __all__ = [
 
 class BlockedPathTransactionException(TravelTransactionException):
   """"""
-  ERR_CODE = "BLOCKED_PATH_TRANSACTION_ERROR"
+  ERR_CODE = "BLOCKED_PATH_TRANSACTION_EXCEPTION"
   MSG = (
     "BlockedPathTransaction failed. The transaction was rolled back before raising this rollback_exception."
   )
@@ -32,14 +32,14 @@ class BlockedPathTransactionException(TravelTransactionException):
 
 class RolledBackBlockedPathTransactionException(BlockedPathTransactionException, RollbackException):
   """"""
-  ERR_CODE = "BLOCKED_PATH_TRANSACTION_ERROR"
+  ERR_CODE = "BLOCKED_PATH_TRANSACTION_EXCEPTION"
   MSG = (
     "BlockedPathTransaction failed. The transaction was rolled back before raising this rollback_exception."
   )
 
 class FailedDiscoveryAdditionRolledBackException(RolledBackBlockedPathTransactionException):
   """"""
-  ERR_CODE = "FAILED_DISCOVERY_ADDITION_ROLLED_BACK_ERROR"
+  ERR_CODE = "FAILED_DISCOVERY_ADDITION_ROLLED_BACK_EXCEPTION"
   MSG = (
     "Adding a new Discovery failed during a BlockedPathTransaction. The transaction was rolled back before "
     "raising this rollback_exception."

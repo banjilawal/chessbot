@@ -37,5 +37,5 @@ class TokenVisitHandlerException(AnchorException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "TOKEN_VISIT_HANDLER_ERROR"
+    ERR_CODE = "TOKEN_VISIT_HANDLER_EXCEPTION"
     MSG = "TokenVisitHandler raised an exception."

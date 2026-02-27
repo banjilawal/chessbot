@@ -1,30 +1,32 @@
-# src/chess/system/command/exception/debug.py
+# src/chess/system/service/command/exception/debug.py
 
 """
-Module: chess.system.command.exception.debug
+Module: chess.system.service.command.exception.debug
 Author: Banji Lawal
-Created: 2026-02-24
+Created: 2025-11-18
 """
+
+from __future__ import annotations
+from typing import Optional
 
 __all__ = [
-    # ======================# COMMAND_DEBUG EXCEPTION #======================#
+    # ======================# COMMAND_DEBUG_EXCEPTION #======================#
     "CommandDebugException",
 ]
 
-from chess.system import CommandException, DebugException
+from chess.system import DebugException
 
 
-# ======================# COMMAND_DEBUG EXCEPTION #======================#
-class CommandDebugException(CommandException, DebugException):
+# ======================# COMMAND_DEBUG_EXCEPTION #======================#
+class CommandDebugException(DebugException):
     """
-    # ROLE: Error Tracing, Debugging
+    # ROLE: Information, Reporting, Debug
 
     # RESPONSIBILITIES:
-    1.  Describes Command state that caused a failing result.
+    1.  Parent of DebugExceptions pertinent to Command instances.
 
     # PARENT:
-        *   DebugException
-        *   CommandException
+        *  DebugException
 
     # PROVIDES:
     None
@@ -33,7 +35,36 @@ class CommandDebugException(CommandException, DebugException):
     None
 
     # INHERITED ATTRIBUTES:
-     None
+        *   See DebugException class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        *   msg (str)
+        *   err_code (str)
+        *   ex (Optional[Exception])
+        *   var (Optional[str])
+        *   val Optional[None])
+
+    # LOCAL METHODS:
+   None
+
+    # INHERITED METHODS:
+        *   See DebugException class for inherited methods.
     """
-    ERR_CODE = "COMMAND_DEBUG_ERROR"
-    MSG = "A Command experienced a state that raised a CommandDebugException."
+    ERR_CODE = "COMMAND_DEBUG_EXCEPTION"
+    MSG = "Command attribute raised an exception."
+    VAR = None
+    VAL = None
+    
+    def __init__(
+            self,
+            err_code: Optional[str] = None,
+            msg: Optional[str] = None,
+            ex: Optional[Exception] = None,
+            var: Optional[str] = None,
+            val: Optional[None] = None,
+    ):
+        err_code = err_code or self.ERR_CODE
+        msg = msg or self.MSG
+        var = var or self.VAR
+        val = val or self.VAL
+        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)

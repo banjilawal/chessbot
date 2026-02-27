@@ -38,5 +38,5 @@ class TokenSearchRouteException(TokenException, NoExecutionRouteException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "NO_TOKEN_SEARCH_ROUTE_ROUTE_ERROR"
+    ERR_CODE = "NO_TOKEN_SEARCH_ROUTE_ROUTE_EXCEPTION"
     MSG = "Token search failed: No search method was provided for the Token attribute."

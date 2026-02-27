@@ -30,7 +30,7 @@ class LoggingLevelRouter:
   """
 
   @staticmethod
-  def log_and_raise_error(
+  def log_and_raise_exception(
       context: Any,
       result: Optional[Any]=None,
       exception: Optional[Exception]=None,
@@ -61,7 +61,7 @@ class LoggingLevelRouter:
     else:
       ex = ValueError("Unknown error source.")
 
-    LogWriter.log_error(context, ex)
+    LogWriter.log_exception(context, ex)
     raise ex
 
   @staticmethod
@@ -88,7 +88,7 @@ class LoggingLevelRouter:
           LogWriter.log_info(actual_context, f"{method_name} succeeded")
 
         except Exception as e:
-          LogWriter.log_error(actual_context, e)
+          LogWriter.log_exception(actual_context, e)
           raise
         return wrapper
     return decorator

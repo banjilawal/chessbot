@@ -38,7 +38,7 @@ class ZeroTeamContextFlagsException(TeamContextException, ContextFlagCountExcept
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "ZERO_TEAM_CONTEXT_FLAGS_ERROR"
+    ERR_CODE = "ZERO_TEAM_CONTEXT_FLAGS_EXCEPTION"
     MSG = (
         "TeamContext validation failed: All attributes were null. One attribute should have a value."
     )

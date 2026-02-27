@@ -22,5 +22,5 @@ class EventException(ChessException):
   details useful for debugging. This class exists primarily to allow catching all `Event`
   exception.
   """
-  ERR_CODE = "EVENT_ERROR"
+  ERR_CODE = "EVENT_EXCEPTION"
   MSG = "Event raised an exception."

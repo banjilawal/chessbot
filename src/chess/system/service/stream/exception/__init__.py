@@ -12,4 +12,5 @@ Created: 2025-11-18
 None
 
 # Modules
-from .super import StreamException
+from .anchor import ServiceStreamException
+from .debug import ServiceStreamDebugException

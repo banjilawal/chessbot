@@ -36,5 +36,5 @@ class SquareDataSourceSquareException(SquareDebugException, SquareException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "NO_SQUARE_DATASOURCE_PROVIDED_ERROR"
+    ERR_CODE = "NO_SQUARE_DATASOURCE_PROVIDED_EXCEPTION"
     MSG = "No square dataset was provided. Received square instead."

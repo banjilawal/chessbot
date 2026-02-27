@@ -38,5 +38,5 @@ class PieceContextServiceException(PieceContextException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "PIECE_CONTEXT_SERVICE_ERROR"
+    ERR_CODE = "PIECE_CONTEXT_SERVICE_EXCEPTION"
     MSG = "TokenContextService raised an exception."

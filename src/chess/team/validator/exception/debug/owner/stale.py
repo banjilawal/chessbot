@@ -38,5 +38,5 @@ class PlayerHasStaleTeamLinkException(TeamDebugException, StaleRelationException
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "PLAYER_HAS_STALE_LINK_TO_TEAM_ERROR"
+    ERR_CODE = "PLAYER_HAS_STALE_LINK_TO_TEAM_EXCEPTION"
     MSG = "Team validation failed: The player has a stale link to a former team."

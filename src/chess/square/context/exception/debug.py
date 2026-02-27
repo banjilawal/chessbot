@@ -37,5 +37,5 @@ class SquareContextDebugException(SquareContextException, DebugException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERR_CODE = "SQUARE_CONTEXT_DEBUG_ERROR"
+    ERR_CODE = "SQUARE_CONTEXT_DEBUG_EXCEPTION"
     MSG = "A SquareContextDebugException was raised."

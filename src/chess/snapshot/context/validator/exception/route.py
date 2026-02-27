@@ -37,5 +37,5 @@ class SnapshotContextValidationRouteException(SnapshotContextException, NoExecut
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "NO_SNAPSHOT_CONTEXT_VALIDATION_ROUTE_ERROR"
+    ERR_CODE = "NO_SNAPSHOT_CONTEXT_VALIDATION_ROUTE_EXCEPTION"
     MSG = "SnapshotContext validation failed: No validation route was provided for the Snapshot attribute."

@@ -38,5 +38,5 @@ class AttackDebugException(AttackException, DebugException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERR_CODE = "ATTACK_DEBUG_ERROR"
+    ERR_CODE = "ATTACK_DEBUG_EXCEPTION"
     MSG = "A AttackDebugException was raised."

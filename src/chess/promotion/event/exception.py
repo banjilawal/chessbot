@@ -15,5 +15,5 @@ __all__ = [
 ]
 
 class PromotionEventException(EventException):
-    ERR_CODE = "PROMOTION_EVENT_ERROR"
+    ERR_CODE = "PROMOTION_EVENT_EXCEPTION"
     MSG = "PromotionEvent raised an exception."

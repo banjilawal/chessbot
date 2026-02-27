@@ -37,5 +37,5 @@ class PawnPromotionRouteException(PawnTokenException, NoExecutionRouteException)
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "NO_PROMOTION_ROUTE_TO_NEW_RANK_ERROR"
+    ERR_CODE = "NO_PROMOTION_ROUTE_TO_NEW_RANK_EXCEPTION"
     MSG = "Pawn promotion failed: The promotion route was provided for the new rank."

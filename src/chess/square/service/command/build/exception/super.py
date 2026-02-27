@@ -34,7 +34,7 @@ class SquareBuildCommand(AnchorException):
     # ATTRIBUTES:
     None
     """
-    ERR_CODE = "SQUARE_BUILD_COMMAND_ERROR"
+    ERR_CODE = "SQUARE_BUILD_COMMAND_EXCEPTION"
     MSG = "SquareBuildCommand raised an exception."
     CLS_NAME = "SquareBuildCommand"
     

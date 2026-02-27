@@ -38,5 +38,5 @@ class NullTeamContextException(TeamContextException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "NULL_TEAM_CONTEXT_ERROR"
+    ERR_CODE = "NULL_TEAM_CONTEXT_EXCEPTION"
     MSG = "TeamContext validation failed: The candidate was null."

@@ -35,5 +35,5 @@ class AddingDuplicateSquareException(SquareDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "ADDING_DUPLICATE_SQUARE_ERROR"
+    ERR_CODE = "ADDING_DUPLICATE_SQUARE_EXCEPTION"
     MSG = "SquareStack push failed: Cannot add a duplicate square to the stack."

@@ -37,5 +37,5 @@ class EdgeSearchNullDatasetException(EdgeException, NullDatasetException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "EDGE_SEARCH_NULL_DATASET_ERROR"
+    ERR_CODE = "EDGE_SEARCH_NULL_DATASET_EXCEPTION"
     MSG = "Edge search failed: There was no dataset to search"

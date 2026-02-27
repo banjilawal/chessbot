@@ -35,5 +35,5 @@ class TokenAlreadyOnTeamRosterException(TeamRosterException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "TOKEN_ALREADY_ON_ROSTER_ERROR"
+    ERR_CODE = "TOKEN_ALREADY_ON_ROSTER_EXCEPTION"
     MSG = "Adding roster member failed: The occupant was already on the roster."

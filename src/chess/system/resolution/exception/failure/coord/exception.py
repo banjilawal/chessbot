@@ -20,7 +20,7 @@ __all__ = [
 
 
 class ResolvingCoordConflictFailedException(ResolutionFailedException):
-    ERR_CODE = "RESOLUTION_FAILED_ERROR"
+    ERR_CODE = "RESOLUTION_FAILED_EXCEPTION"
     MSG = "The resolution process failed to break the attribute conflict."
 
 
@@ -28,10 +28,10 @@ class ResolvingSquareCoordConflictFailedException(ResolvingCoordConflictFailedEx
     """Each square_name has a fixed unique square_name. Searching squares by their unique square_name attribute
      should return a single hit. Raise this exception if SquareResolver leaves orphan squares that
       cannot be linked ot a game or a board. returned multiple hits."""
-    DEFAULT_CODE = "SQUARE_COORD_CONFLICT_RESOLUTION_ERROR"
+    DEFAULT_CODE = "SQUARE_COORD_CONFLICT_RESOLUTION_EXCEPTION"
     MSG = "The resolution process failed to break the Square.square_name conflict."
 
 
 class ResolvingPieceCoordConflictFailedException(ResolvingCoordConflictFailedException):
-    DEFAULT_CODE = "PIECE_COORD_CONFLICT_RESOLUTION_ERROR"
+    DEFAULT_CODE = "PIECE_COORD_CONFLICT_RESOLUTION_EXCEPTION"
     MSG = "The resolution process failed to break the Token.square_name conflict."

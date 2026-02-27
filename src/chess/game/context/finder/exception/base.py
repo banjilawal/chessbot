@@ -36,5 +36,5 @@ class GameFinderException(FinderException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "GAME_FINDER_ERROR"
+    ERR_CODE = "GAME_FINDER_EXCEPTION"
     MSG = "GameFinder raised an exception."

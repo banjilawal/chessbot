@@ -35,5 +35,5 @@ class ArenaAlreadyContainsBoardException(BoardException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "ARENA_ALREADY_CONTAINS_BOARD_ERROR"
+    ERR_CODE = "ARENA_ALREADY_CONTAINS_BOARD_EXCEPTION"
     MSG = "Board build failed: The arena already contains a board."

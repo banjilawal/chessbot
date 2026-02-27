@@ -37,5 +37,5 @@ class OccupationServiceException(ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "OCCUPATION_SERVICE_ERROR"
+    ERR_CODE = "OCCUPATION_SERVICE_EXCEPTION"
     MSG = "OccupationService raised an exception."

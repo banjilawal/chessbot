@@ -37,5 +37,5 @@ class ArenaEdgeContextFlagsException(EdgeContextException, ContextFlagCountExcep
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "ARENA_EDGE_CONTEXT_FLAG_ERROR"
+    ERR_CODE = "ARENA_EDGE_CONTEXT_FLAG_EXCEPTION"
     MSG = "EdgeContext validation failed: More than one flag was enable."

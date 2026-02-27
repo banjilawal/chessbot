@@ -36,5 +36,5 @@ class BelowBoundsException(BoundsException):
     # INHERITED ATTRIBUTES:
     None
     """
-    DEFAULT_CODE = "BELOW_BOUNDS_ERROR"
+    DEFAULT_CODE = "BELOW_BOUNDS_EXCEPTION"
     MSG = "Below bounds:"

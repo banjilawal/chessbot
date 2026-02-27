@@ -36,5 +36,5 @@ class DeletingActiveTokenExceptionTeam(TeamRosterException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "DELETING_ACTIVE_TOKEN_FROM_ROSTER_ERROR"
+    ERR_CODE = "DELETING_ACTIVE_TOKEN_FROM_ROSTER_EXCEPTION"
     MSG = "Roster member deletion failed: An active occupant cannot be removed from roster."

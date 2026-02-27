@@ -28,7 +28,7 @@ class ResidentSearchContextException(SearchContextException):
     Super class for exception raised by ResidentFilter objects. DO NOT
     USE DIRECTLY. Subclasses give more useful debugging msgs.
     """
-    ERR_CODE = "RESIDENT_SEARCH_CONTEXT_ERROR"
+    ERR_CODE = "RESIDENT_SEARCH_CONTEXT_EXCEPTION"
     MSG = "ResidentFilter raised an exception"
 
 
@@ -38,7 +38,7 @@ class NullResidentSearchContextException(ResidentSearchContextException, NullExc
     Raised if an entity, method, or operation requires team_name residentSearchContext but
     gets validation instead.
     """
-    ERR_CODE = "NULL_SEARCH_RESIDENT_CONTEXT_ERROR"
+    ERR_CODE = "NULL_SEARCH_RESIDENT_CONTEXT_EXCEPTION"
     MSG = "ResidentFilter cannot be validation"
 
 
@@ -47,7 +47,7 @@ class InvalidResidentSearchContextException(ResidentSearchContextException, Vali
     Raised by residentSearchContextBValidator if residentSearchContext fails sanity checks. Exists primarily to
     catch all exception raised validating an existing residentSearchContext
     """
-    ERR_CODE = "RESIDENT_SEARCH_CONTEXT_VALIDATION_ERROR"
+    ERR_CODE = "RESIDENT_SEARCH_CONTEXT_VALIDATION_EXCEPTION"
     MSG = "ResidentFilter validation failed."
 
 
@@ -55,7 +55,7 @@ class NoResidentSearchParamException(ResidentSearchContextException):
     """
     Raised if all ResidentFilter params are set validation.
     """
-    ERR_CODE = "ZERO_RESIDENT_SEARCH_PARAMS_ERROR"
+    ERR_CODE = "ZERO_RESIDENT_SEARCH_PARAMS_EXCEPTION"
     MSG = (
         "A ResidentFilter cannot have no params selected. Pick one param to run a searcher."
     )
@@ -64,7 +64,7 @@ class ArenaResidentSearchParamsException(ResidentSearchContextException):
     """
     Raised if more than one ResidentFilter param is set validation.
     """
-    ERR_CODE = "TOO_MANY_RESIDENT_SEARCH_PARAMS_ERROR"
+    ERR_CODE = "TOO_MANY_RESIDENT_SEARCH_PARAMS_EXCEPTION"
     MSG = (
         "More than one ResidentFilter param was set. If more than one param is set a searcher cannot be run."
     )

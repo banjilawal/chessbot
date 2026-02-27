@@ -37,5 +37,5 @@ class PoppingEmptyArenaException(ArenaException, DebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "POPPING_EMPTY_ARENA_ERROR"
+    ERR_CODE = "POPPING_EMPTY_ARENA_EXCEPTION"
     MSG = "The arena is empty. There are no teams to remove."

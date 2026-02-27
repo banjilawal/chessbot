@@ -36,5 +36,5 @@ class NoVisitForTerminationException(SquareDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "NO_VISIT_FOR_TERMINATION_ERROR"
+    ERR_CODE = "NO_VISIT_FOR_TERMINATION_EXCEPTION"
     MSG = "Square visit termination failed: There was not visitor in the to eject."

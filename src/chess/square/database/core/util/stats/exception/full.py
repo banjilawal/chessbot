@@ -38,5 +38,5 @@ class SquareStackFullException(SquareStackServiceException, DebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "SQUARE_STACK_FULL_ERROR"
+    ERR_CODE = "SQUARE_STACK_FULL_EXCEPTION"
     MSG = "Pushing square failed: The is no space left for adding another square."

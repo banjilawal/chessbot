@@ -52,7 +52,7 @@ class HostageDebugException(DebugException):
     # INHERITED METHODS:
         *   See ChessException class for inherited methods.
     """
-    ERR_CODE = "HOSTAGE_ERROR"
+    ERR_CODE = "HOSTAGE_EXCEPTION"
     MSG: str = "A variable in Hostage raised an exception."
     VAR: None
     VAL = None

@@ -38,7 +38,7 @@ class ArenaTeamContextFlagsException(TeamContextException, ContextFlagCountExcep
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "ARENA_TEAM_CONTEXT_FLAGS_ERROR"
+    ERR_CODE = "ARENA_TEAM_CONTEXT_FLAGS_EXCEPTION"
     MSG = (
         "TeamContext validation failed: More than one attribute was set. Only one attribute-value should be enabled."
     )

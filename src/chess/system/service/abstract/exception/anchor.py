@@ -1,7 +1,7 @@
-# src/chess/system/service/integrity/exception.super.py
+# src/chess/system/service/abstract/exception.anchor.py
 
 """
-Module: chess.system.service.integrity.exception.super
+Module: chess.system.service.abstract.exception.anchor
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -12,30 +12,30 @@ from typing import Optional
 
 __all__ = [
     # ======================# SERVICE_EXCEPTION #======================#
-    "IntegrityServiceException",
+    "ServiceException",
 ]
 
-from chess.system import ServiceException
+from chess.system import AnchorException
 
 # ======================# SERVICE_EXCEPTION #======================#
-class IntegrityServiceException(ServiceException):
+class ServiceException(AnchorException):
     """
     # ROLE: DebugException Parent, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Indicate that an error occurred in an IntegrityService instance..
+    1.  Indicate that an error occurred in a Service.
 
     # PARENT:
-    *   ServiceException
+    *   AnchorException
 
     # PROVIDES:
     None
 
     # LOCAL ATTRIBUTES:
-    None
+        *   _id (int)
 
     # INHERITED ATTRIBUTES:
-        *   See IntegrityServiceException class for inherited attributes.
+        *   See AnchorException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
         *   msg (str)
@@ -48,14 +48,14 @@ class IntegrityServiceException(ServiceException):
     None
 
     # INHERITED METHODS:
-        *   See ServiceException class for inherited methods.
+        *   See AnchorException class for inherited methods.
     """
-    ERR_CODE = "INTEGRITY_SERVICE_ERROR"
-    MSG = "IntegrityService raised an exception."
-    CLS_NAME = "IntegrityService"
+    ERR_CODE = "SERVICE_EXCEPTION"
+    MSG = " Service raised an exception."
+    CLS_NAME = "Service"
     
-    _cls_name: Optional[str]
-    _id: Optional[int]
+    _cls_name:str = None
+    _id: int = None
     
     def __init__(
             self,
@@ -63,9 +63,25 @@ class IntegrityServiceException(ServiceException):
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
             cls_name: Optional[str] = None,
+            cls_mthd: Optional[str] = None,
             id: Optional[int] = None,
     ):
-        err_code = err_code or self.ERR_CODE
+        self._id = id
         msg = msg or self.MSG
+        err_code = err_code or self.ERR_CODE
         cls_name = cls_name or self.CLS_NAME
-        super().__init__(msg=msg, err_code=err_code, ex=ex, cls_name=cls_name, id=id)
+        super().__init__(
+            ex=ex,
+            msg=msg,
+            err_code=err_code,
+            cls_name=cls_name,
+            cls_mthd=cls_mthd
+        )
+        self._id = id
+        
+    @property
+    def id(self) -> Optional[int]:
+        return self._id
+    
+    def __str__(self) -> str:
+        return f"{super().__str__()}, id:{self._id}"

@@ -50,7 +50,7 @@ class NullBoardException(NullException):
     # INHERITED METHODS:
         *   See NullException class for inherited methods.
     """
-    ERR_CODE = "NULL_BOARD_ERROR"
+    ERR_CODE = "NULL_BOARD_EXCEPTION"
     MSG = "Board validation failed: The candidate cannot be null."
     VAR: None
     VAL = None

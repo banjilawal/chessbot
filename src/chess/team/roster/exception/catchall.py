@@ -32,5 +32,5 @@ class TeamRosterException(TeamException):
     # ATTRIBUTES:
     None
     """
-    ERR_CODE = "TEAM_ROSTER_ERROR"
+    ERR_CODE = "TEAM_ROSTER_EXCEPTION"
     MSG = "RosterService raised an exception."

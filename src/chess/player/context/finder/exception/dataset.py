@@ -39,7 +39,7 @@ class AgentSearchDatasetNullException(AgentException, NullDatasetException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "AGENT_SEARCH_DATASET_NULL_ERROR"
+    ERR_CODE = "AGENT_SEARCH_DATASET_NULL_EXCEPTION"
     MSG = (
         "AgentFinder needs a list of agents to run serach operations on. Cannot pass pass null "
         "as the List[Agent] collection."

@@ -38,7 +38,7 @@ class ZeroCoordContextFlagsException(CoordContextException, ContextFlagCountExce
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "ZERO_COORD_CONTEXT_FLAGS_ERROR"
+    ERR_CODE = "ZERO_COORD_CONTEXT_FLAGS_EXCEPTION"
     MSG = (
         "Zero CoordContext flags were set. Cannot search for Coords if one-and_oly-one "
         "map flag is enabled."

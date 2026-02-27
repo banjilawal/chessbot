@@ -36,5 +36,5 @@ class RosterDoubleDeploymentException(SquareDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "CANNOT_DEPLOY_UNDER_STRENGTH_TEAM_ERROR"
+    ERR_CODE = "CANNOT_DEPLOY_UNDER_STRENGTH_TEAM_EXCEPTION"
     MSG = "Roster deployment failed: The roster had already been deployed on the board."

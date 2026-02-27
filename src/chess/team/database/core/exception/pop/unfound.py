@@ -38,5 +38,5 @@ class TeamDoesNotExistForRemovalException(TeamStackException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "TEAM_DOES_NOT_EXIST_FOR_REMOVAL_ERROR"
+    ERR_CODE = "TEAM_DOES_NOT_EXIST_FOR_REMOVAL_EXCEPTION"
     MSG = "Team pop failed: The team was not found in the dataset. Nothing to remove."

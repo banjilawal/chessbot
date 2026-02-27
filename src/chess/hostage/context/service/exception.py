@@ -38,5 +38,5 @@ class CaptivityContextServiceException(CaptivityContextException, ServiceExcepti
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "CAPTIVITY_CONTEXT_SERVICE_ERROR"
+    ERR_CODE = "CAPTIVITY_CONTEXT_SERVICE_EXCEPTION"
     MSG = "CaptivityContextService raised an exception."

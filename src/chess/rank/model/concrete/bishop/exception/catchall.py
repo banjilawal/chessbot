@@ -10,12 +10,12 @@ version: 1.0.0
 from chess.rank import RankException
 
 __all__ = [
-    # ======================# BISHOP_ERROR EXCEPTION #======================#
+    # ======================# BISHOP_EXCEPTION EXCEPTION #======================#
     "BishopException",
 ]
 
 
-# ======================# BISHOP_ERROR EXCEPTION #======================#
+# ======================# BISHOP_EXCEPTION EXCEPTION #======================#
 class BishopException(RankException):
     """
     # ROLE: Super Exception
@@ -32,5 +32,5 @@ class BishopException(RankException):
     # ATTRIBUTES:
     None
     """
-    ERR_CODE = "BISHOP_ERROR"
+    ERR_CODE = "BISHOP_EXCEPTION"
     MSG = "Bishop raised an exception."

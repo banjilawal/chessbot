@@ -36,5 +36,5 @@ class TransactionTimeoutException(TransactionException, ResourceUnavailableExcep
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "TRANSACTION_TIMEOUT_ERROR"
+    ERR_CODE = "TRANSACTION_TIMEOUT_EXCEPTION"
     MSG = "The transaction was cancelled. It timed out waiting for a resource."

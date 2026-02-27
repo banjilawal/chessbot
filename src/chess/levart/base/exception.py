@@ -53,16 +53,16 @@ __all__ = [
 
 
 class TravelEventException(EventException):
-  ERR_CODE = "TRAVEL_EXECUTION_ERROR"
+  ERR_CODE = "TRAVEL_EXECUTION_EXCEPTION"
   MSG = "TravelEvent raised an exception."
   
 class TravelTransactionException(TransactionException):
-  ERR_CODE = "TRAVEL_TRANSACTION_ERROR"
+  ERR_CODE = "TRAVEL_TRANSACTION_EXCEPTION"
   MSG = "An rollback_exception was raised during a TravelEvent."
 
 #====================== TravelEvent VALIDATION EXCEPTION #======================#
 class NullTravelEventException(TravelEventException, NullException):
-  ERR_CODE = "NULL_TRAVEL_EXECUTION_ERROR"
+  ERR_CODE = "NULL_TRAVEL_EXECUTION_EXCEPTION"
   MSG = "TravelEvent cannot be null."
 
 

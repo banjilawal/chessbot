@@ -36,5 +36,5 @@ class NullStringException(VoidStringException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "NULL_STRING_ERROR"
+    ERR_CODE = "NULL_STRING_EXCEPTION"
     MSG = "String cannot be null. A String must be contain some characters."

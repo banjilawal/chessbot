@@ -38,7 +38,7 @@ class SquareContextValidationRouteException(SquareContextDebugException,  NoExec
     # INHERITED ATTRIBUTES:
     Non
     """
-    ERR_CODE = "NO_SQUARE_CONTEXT_VALIDATION_ROUTE_ERROR"
+    ERR_CODE = "NO_SQUARE_CONTEXT_VALIDATION_ROUTE_EXCEPTION"
     MSG = (
         "SquareContext validation failed: No validation route existed for the candidate's attribute."
     )

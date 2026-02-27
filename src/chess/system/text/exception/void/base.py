@@ -39,7 +39,7 @@ class VoidStringException(InvalidStringException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "NULL_VOID_STRING_ERROR"
+    ERR_CODE = "NULL_VOID_STRING_EXCEPTION"
     MSG = (
         "Got a String that was either whitespace, null, or an empty string. A String must be contain some characters."
     )

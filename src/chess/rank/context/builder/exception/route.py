@@ -37,5 +37,5 @@ class RankContextBuildRouteException(RankContextException, NoExecutionRouteExcep
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "NO_RANK_CONTEXT_BUILD_ROUTE_ERROR"
+    ERR_CODE = "NO_RANK_CONTEXT_BUILD_ROUTE_EXCEPTION"
     MSG = "RankContext build failed: No build path existed for the Rank key."

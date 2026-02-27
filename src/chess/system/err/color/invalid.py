@@ -36,5 +36,5 @@ class InvalidGameColorException(GameColorException, ValidationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "GAME_COLOR_VALIDATION_ERROR"
+    ERR_CODE = "GAME_COLOR_VALIDATION_EXCEPTION"
     MSG = "GameColor validation failed."

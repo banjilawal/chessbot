@@ -50,7 +50,7 @@ class NullArenaException(NullException):
     # INHERITED METHODS:
         *   See NullException class for inherited methods.
     """
-    ERR_CODE = "NULL_ARENA_ERROR"
+    ERR_CODE = "NULL_ARENA_EXCEPTION"
     MSG = "Arena validation failed: The candidate cannot be null."
     VAR: None
     VAL = None

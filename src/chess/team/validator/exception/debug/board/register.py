@@ -38,5 +38,5 @@ class TeamNotRegisteredBoardException(TeamDebugException, NotRegisteredException
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "TEAM_NOT_REGISTERED_WITH_BOARD_ERROR"
+    ERR_CODE = "TEAM_NOT_REGISTERED_WITH_BOARD_EXCEPTION"
     MSG = "Team validation failed: The candidate team had not registered with its board."

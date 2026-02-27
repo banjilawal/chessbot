@@ -37,20 +37,20 @@ __all__ = [
 
 
 class TurnSceneException(ChessException):
-  ERR_CODE = "TURN_SCENE_ERROR"
+  ERR_CODE = "TURN_SCENE_EXCEPTION"
   MSG = "An rollback_exception was raised by a TurnScene."
 
 
 #====================== TURN_SCENE GENERAL VALIDATION EXCEPTION #======================#
 class NullTurnSceneException(TurnSceneException, NullException):
   """"""
-  ERR_CODE = "NULL_TURN_SCENE_ERROR"
+  ERR_CODE = "NULL_TURN_SCENE_EXCEPTION"
   MSG = "A TurnScene cannot be null."
 
 
 class InvalidTurnSceneException(TurnSceneException, ValidationException):
   """"""
-  ERR_CODE = "TURN_SCENE_VALIDATION_ERROR"
+  ERR_CODE = "TURN_SCENE_VALIDATION_EXCEPTION"
   MSG = "TurnScene validation failed."
 
 
@@ -71,7 +71,7 @@ class TurnSceneBuildException(TurnSceneException, BuildException):
 #====================== TURN_SCENE SQUARE CONSISTENCY EXCEPTION #======================#
 class TurnSceneSquareNotFoundException(TurnSceneException, InconsistencyException):
   """"""
-  ERR_CODE = "TURN_SCENE_SQUARE_NOT_FOUND_ERROR"
+  ERR_CODE = "TURN_SCENE_SQUARE_NOT_FOUND_EXCEPTION"
   MSG = (
     "BoardSearch did not find a square_name associated with the actor_candidate's point. There may be a entity_service "
     "inconsistency."
@@ -82,7 +82,7 @@ class TurnSceneSquareNotFoundException(TurnSceneException, InconsistencyExceptio
 
 class ActorAndScenePropCoordMismatchException(TurnSceneException, InconsistencyException):
   """"""
-  ERR_CODE = "ACTOR_AND_SCENE_PROP_COORD_MISMATCH_ERROR"
+  ERR_CODE = "ACTOR_AND_SCENE_PROP_COORD_MISMATCH_EXCEPTION"
   MSG = (
     "The Actor and their Prop have different coords. The scene requires the square_name and "
     "piece have the same Coord."

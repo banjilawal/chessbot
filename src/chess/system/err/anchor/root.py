@@ -33,7 +33,7 @@ class AnchorException(ChessException):
 
     # ERROR CODE CONVENTION:
     1.  Class name followed by the ERROR suffix.
-    2.  The Syntax is: [Class]_ERROR
+    2.  The Syntax is: [Class]_EXCEPTION
 
     # DEFAULT MSG CONVENTION:
     1.  Class name followed by "raised an exception."
@@ -57,6 +57,7 @@ class AnchorException(ChessException):
         *   err_code (str)
         *   ex (Optional[Exception])
         *   cls_name (Optional[str])
+        *   cls_mthd (Optional[str])
 
     # LOCAL METHODS:
     None

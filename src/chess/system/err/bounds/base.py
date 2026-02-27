@@ -36,5 +36,5 @@ class BoundsException(DebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    DEFAULT_CODE = "OUT_OF_BOUNDS_ERROR"
+    DEFAULT_CODE = "OUT_OF_BOUNDS_EXCEPTION"
     MSG = "Out of bounds:"

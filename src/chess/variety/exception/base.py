@@ -34,5 +34,5 @@ class AgentVarietyException(ChessException):
     # ATTRIBUTES:
     None
     """
-    ERR_CODE = "AGENT_VARIETY_ERROR"
+    ERR_CODE = "AGENT_VARIETY_EXCEPTION"
     MSG = "AgentVariety raised an exception."

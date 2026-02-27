@@ -35,5 +35,5 @@ class SquareIdCollisionException(SquareDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "SQUARE_ID_COLLISION_ERROR"
+    ERR_CODE = "SQUARE_ID_COLLISION_EXCEPTION"
     MSG = "Square collision detected: At least two squares have the same id."

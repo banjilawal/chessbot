@@ -35,7 +35,7 @@ class UnsupportedEmptyCollisionResultException(UnsupportedDataResultStateExcepti
     # INHERITED ATTRIBUTES:
      None
     """
-    ERR_CODE = "UNSUPPORTED_EMPTY_COLLISION_RESULT_STATE_ERROR"
+    ERR_CODE = "UNSUPPORTED_EMPTY_COLLISION_RESULT_STATE_EXCEPTION"
     MSG = (
         "An CollisionReport's outcome is either changed, change_failed, collision original == collision, failure."
         " It cannot be empty."

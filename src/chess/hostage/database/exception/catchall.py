@@ -39,5 +39,5 @@ class HostageDatabaseException(HostageException, DatabaseException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "HOSTAGE_DIRECTORY_SERVICE_ERROR"
+    ERR_CODE = "HOSTAGE_DIRECTORY_SERVICE_EXCEPTION"
     MSG = "HostageDatabase raised an exception."

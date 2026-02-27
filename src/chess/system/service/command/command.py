@@ -7,8 +7,6 @@ Created: 2026-02-24
 """
 
 from __future__ import annotations
-
-from abc import abstractmethod
 from typing import Any, Dict
 
 class Command:

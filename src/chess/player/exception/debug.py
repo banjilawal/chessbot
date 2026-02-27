@@ -52,7 +52,7 @@ class PlayerDebugException(DebugException):
     # INHERITED METHODS:
         *   See ChessException class for inherited methods.
     """
-    ERR_CODE = "PLAYER_ERROR"
+    ERR_CODE = "PLAYER_EXCEPTION"
     MSG: str = "A variable in Player raised an exception."
     VAR: None
     VAL = None

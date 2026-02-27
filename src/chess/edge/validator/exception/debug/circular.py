@@ -36,5 +36,5 @@ class CircularEdgeException(EdgeDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "CIRCULAR_EDGE_ERROR"
+    ERR_CODE = "CIRCULAR_EDGE_EXCEPTION"
     MSG = "Edge validation failed: An edge cannot have the same node as its head and tail."

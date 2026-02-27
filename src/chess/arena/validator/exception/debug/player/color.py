@@ -37,7 +37,7 @@ class PlayerColorCollisionException(ArenaDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "PLAYER_COLOR_COLLISION_ERROR"
+    ERR_CODE = "PLAYER_COLOR_COLLISION_EXCEPTION"
     MSG = (
         "Both unique players in an Arena have the same color. Game can only be played wif both players "
         "have different colors."

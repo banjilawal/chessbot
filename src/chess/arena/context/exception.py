@@ -38,6 +38,6 @@ class ArenaContextException(ArenaException, ContextException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "ARENA_CONTEXT_ERROR"
+    ERR_CODE = "ARENA_CONTEXT_EXCEPTION"
     DEFAULT_ERR_CODE = "ArenaContext raised an exception."
 

@@ -39,5 +39,5 @@ class PersonaQuotaBoundsException(PersonaException, BoundsException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "PERSONA_QUOTA_BOUNDS_ERROR"
+    ERR_CODE = "PERSONA_QUOTA_BOUNDS_EXCEPTION"
     MSG = "PersonaLookup failed: Target was outside the set of possible Persona quotas."

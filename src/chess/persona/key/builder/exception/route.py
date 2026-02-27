@@ -37,5 +37,5 @@ class PersonaKeyBuildRouteException(PersonaKeyException, NoExecutionRouteExcepti
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "NO_PERSONA_KEY_BUILD_ROUTE_ERROR"
+    ERR_CODE = "NO_PERSONA_KEY_BUILD_ROUTE_EXCEPTION"
     MSG = "PersonaKey build failed: No build path existed for the Persona key."

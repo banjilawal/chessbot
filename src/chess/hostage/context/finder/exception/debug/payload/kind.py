@@ -39,5 +39,5 @@ class HostageSearchPayloadTypeException(HostageException, ResultException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "SEARCH_PAYLOAD_IS_NOT_LIST_OF_HOSTAGES_ERROR"
+    ERR_CODE = "SEARCH_PAYLOAD_IS_NOT_LIST_OF_HOSTAGES_EXCEPTION"
     MSG = "HostageSearch payload is the wrong type. The payload should be List[Hostage]."

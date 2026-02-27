@@ -27,13 +27,13 @@ __all__ = [
 
 class CombatantOccupationTransactionException(OccupationTransactionException):
     """"""
-    ERR_CODE = "COMBATANT_OCCUPATION_TRANSACTION_ERROR"
+    ERR_CODE = "COMBATANT_OCCUPATION_TRANSACTION_EXCEPTION"
     MSG = "An rollback_exception was raised during an CombatantOccupationTransaction."
 
 
 class RolledBackCombatantOccupationTransactionException(CombatantOccupationTransactionException, RollbackException):
     """"""
-    ERR_CODE = "COMBATANT_OCCUPATION_TRANSACTION_ERROR_ROLLED_BACK"
+    ERR_CODE = "COMBATANT_OCCUPATION_TRANSACTION_EXCEPTION_ROLLED_BACK"
     MSG = (
         "The notification failed when an error occurred. The notification was rolled back before raising this rollback_exception."
     )

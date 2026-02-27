@@ -35,5 +35,5 @@ class TokenDesignationCollisionException(TokenStackException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "TOKEN_DESIGNATION_COLLISION_ERROR"
+    ERR_CODE = "TOKEN_DESIGNATION_COLLISION_EXCEPTION"
     MSG = "Pushing token failed: The designation was already in use."

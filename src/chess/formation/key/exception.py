@@ -36,5 +36,5 @@ class FormationKeyException(ContextException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "FORMATION_KEY_ERROR"
+    ERR_CODE = "FORMATION_KEY_EXCEPTION"
     DEFAULT_ERR_CODE = "OrderContext raised an exception."

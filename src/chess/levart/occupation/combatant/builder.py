@@ -38,7 +38,7 @@ class CombatantOccupationEventBuilder(Builder[CombatantOccupationEvent]):
     try:
       id_validation = IdValidator.validate(event_id)
       if not id_validation.is_success():
-        ThrowHelper.log_and_raise_error(AttackEventBuilder, id_validation)
+        ThrowHelper.log_and_raise_exception(AttackEventBuilder, id_validation)
 
 
       actor_validation = PieceValidator.validate(actor)
@@ -50,14 +50,14 @@ class CombatantOccupationEventBuilder(Builder[CombatantOccupationEvent]):
         raise InvalidAttackException(f"{method}: AttackEvent enemy failed validate")
 
       if actor == enemy:
-        ThrowHelper.log_and_raise_error(
+        ThrowHelper.log_and_raise_exception(
           AttackEventBuilder,
           PieceCapturingItSelfException(PieceCapturingItSelfException.MSG)
         )
 
       search_result = BoardSearch.square_by_coord(coord=enemy.current_position, board=context.board)
       if not search_result.payload == destination_square:
-        ThrowHelper.log_and_raise_error(
+        ThrowHelper.log_and_raise_exception(
           AttackEventBuilder,
           TargetSquareMismatchException(
             f"{method}: {TargetSquareMismatchException.MSG}"
@@ -66,20 +66,20 @@ class CombatantOccupationEventBuilder(Builder[CombatantOccupationEvent]):
 
       search = BoardSearch.square_by_coord(coord=actor.current_position, board=context.board)
       if not search.is_success():
-        ThrowHelper.log_and_raise_error(
+        ThrowHelper.log_and_raise_exception(
           AttackEventBuilder,
           SearchException(f"{method}: {SearchException.MSG}")
         )
       actor_square = cast(Square, search.payload)
 
       if not actor.is_enemy(enemy):
-        ThrowHelper.log_and_raise_error(
+        ThrowHelper.log_and_raise_exception(
           AttackEventBuilder,
           CaptureFriendException(CaptureFriendException.MSG)
         )
 
       if not isinstance(enemy, CombatantPiece):
-        ThrowHelper.log_and_raise_error(
+        ThrowHelper.log_and_raise_exception(
           AttackEventBuilder,
           KingCaptureException(KingCaptureException.MSG)
         )

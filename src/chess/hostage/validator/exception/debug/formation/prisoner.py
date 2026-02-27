@@ -37,5 +37,5 @@ class UnformedTokenCannotBePrisonerException(HostageException, FormationExceptio
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "UNFORMED_TOKEN_CANNOT_BE_PRISONER_ERROR"
+    ERR_CODE = "UNFORMED_TOKEN_CANNOT_BE_PRISONER_EXCEPTION"
     MSG = "Hostage validation failed: The prisoner did not have its formation set."

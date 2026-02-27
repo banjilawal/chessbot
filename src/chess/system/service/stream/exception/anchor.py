@@ -1,7 +1,7 @@
-# src/chess/system/service/stream/exception/super.py
+# src/chess/system/service/stream/exception/anchor.py
 
 """
-Module: chess.system.service.stream.exception.super
+Module: chess.system.service.stream.exception.anchor
 Author: Banji Lawal
 Created: 2025-11-18
 """
@@ -11,20 +11,19 @@ from typing import Optional
 
 
 __all__ = [
-    # ======================# STREAM_EXCEPTION #======================#
-    "StreamException",
+    # ======================# SERVICE_STREAM_EXCEPTION #======================#
+    "ServiceStreamException",
 ]
 
 from chess.system import AnchorException
 
-
-# ======================# STREAM_EXCEPTION #======================#
-class StreamException(AnchorException):
+# ======================# SERVICE_STREAM_EXCEPTION #======================#
+class ServiceStreamException(AnchorException):
     """
     # ROLE: Information, Reporting, Debug
 
     # RESPONSIBILITIES:
-    1.  Locus of attention for StreamDebugExceptions.
+    1.  Locus of attention for StreamDebugExceptions .
 
     # PARENT:
         *   AnchorException
@@ -50,18 +49,25 @@ class StreamException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    ERR_CODE = "STREAM_EXCEPTION"
-    MSG = "Stream raised an exception."
-    CLS_NAME = "Stream"
+    ERR_CODE = "SERVICE_STREAM_EXCEPTION"
+    MSG = "ServiceStream raised an exception."
+    CLS_NAME = "ServiceStream"
         
-    def super(
+    def __init__(
             self,
             err_code: Optional[str] = None,
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
             cls_name: Optional[str] = None,
+            cls_mthd: Optional[str] = None,
     ):
-        err_code = err_code or self.ERR_CODE
         msg = msg or self.MSG
         cls_name = cls_name or self.CLS_NAME
-        super().super(msg=msg, err_code=err_code, ex=ex, cls_name=cls_name)
+        err_code = err_code or self.ERR_CODE
+        super().__init__(
+            ex=ex,
+            msg=msg,
+            err_code=err_code,
+            cls_name=cls_name,
+            cls_mthd=cls_mthd,
+        )

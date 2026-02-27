@@ -41,5 +41,5 @@ class AgentDataServiceException(AgentException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "AGENT_STACK_ERROR"
+    ERR_CODE = "AGENT_STACK_EXCEPTION"
     MSG = "AgentStackService raised an exception."

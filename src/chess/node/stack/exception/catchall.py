@@ -37,5 +37,5 @@ class NodeStackException(NodeException, StackServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "NODE_STACK_ERROR"
+    ERR_CODE = "NODE_STACK_EXCEPTION"
     MSG = "NodeStack raised an exception."

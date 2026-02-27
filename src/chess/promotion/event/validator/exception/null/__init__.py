@@ -14,5 +14,5 @@ class NullPromotionEventException(
     InvalidPromotionEventException,
     NullException
 ):
-    ERROR_MSG = "NULL_PROMOTION_EVENT_ERROR"
+    ERROR_MSG = "NULL_PROMOTION_EVENT_EXCEPTION"
     MSG = "PromotionEvent cannot be null."

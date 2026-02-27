@@ -35,5 +35,5 @@ class PoppingEmptySquareStackException(SquareStackServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "POPPING_EMPTY_SQUARE_STACK_ERROR"
+    ERR_CODE = "POPPING_EMPTY_SQUARE_STACK_EXCEPTION"
     MSG = "SquareStack pop failed: Cannot pop from an empty stack."

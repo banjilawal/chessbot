@@ -37,5 +37,5 @@ class TeamDatabaseException(TeamException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "TEAM_DATABASE_ERROR"
+    ERR_CODE = "TEAM_DATABASE_EXCEPTION"
     MSG = "TeamDatabase raised an exception."

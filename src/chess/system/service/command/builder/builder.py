@@ -10,8 +10,7 @@ from __future__ import annotations
 
 from chess.system import (
     ArgumentCountException, ArgumentNameException, ArgumentTypeException, Builder, Command, CommandNameException,
-    LoggingLevelRouter,
-    ServiceRequestValidator, BuildResult, ServiceRequest
+    LoggingLevelRouter, ServiceRequestValidator, BuildResult, ServiceRequest
 )
 from chess.system.service.command.builder import CommandBuilderException
 

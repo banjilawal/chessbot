@@ -35,5 +35,5 @@ class VictorAndPrisoneOnDifferentBoardsException(HostageException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "VICTOR_AND_PRISONER_ON_DIFFERENT_BOARDS_ERROR"
+    ERR_CODE = "VICTOR_AND_PRISONER_ON_DIFFERENT_BOARDS_EXCEPTION"
     MSG = "Hostage validation failed: The victor can only capture enemies on its own board."

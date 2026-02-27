@@ -29,5 +29,5 @@ class UniqueSnapshotDataServiceException(SnapshotException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "UNIQUE_SNAPSHOT_SERVICE_ERROR"
+    ERR_CODE = "UNIQUE_SNAPSHOT_SERVICE_EXCEPTION"
     MSG = "UniqueSnapshotDataService raised an exception."

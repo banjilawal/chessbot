@@ -37,5 +37,5 @@ class NullCoordContextException(CoordContextException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "NULL_COORD_CONTEXT_ERROR"
+    ERR_CODE = "NULL_COORD_CONTEXT_EXCEPTION"
     MSG = "CoordContext validation failed: The candidate was null."

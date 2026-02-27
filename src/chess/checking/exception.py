@@ -15,5 +15,5 @@ __all__ = [
 ]
 
 class CheckingException(ChessException):
-    ERR_CODE = "CHECKING_ERROR"
+    ERR_CODE = "CHECKING_EXCEPTION"
     MSG = "Checking raised an exception."

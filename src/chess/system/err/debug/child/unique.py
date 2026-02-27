@@ -50,7 +50,7 @@ class UniqueAttributeException(DebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    ERR_CODE = "UNIQUE_ATTRIBUTE_COLLISION_ERROR"
+    ERR_CODE = "UNIQUE_ATTRIBUTE_COLLISION_EXCEPTION"
     MSG = "Two objects have the same value for an attribute  that should be unique."
     VAR = None
     VAL = None

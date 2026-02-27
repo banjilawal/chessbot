@@ -38,7 +38,7 @@ class TeamBelongsToDifferentBoardException(TeamDebugException, NoRelationExcepti
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "NO_RELATION_BETWEEN_BOARD_AND_TEAM_ERROR"
+    ERR_CODE = "NO_RELATION_BETWEEN_BOARD_AND_TEAM_EXCEPTION"
     MSG = (
         "Team validation failed: There was no relationship between the board and the candidate team."
     )

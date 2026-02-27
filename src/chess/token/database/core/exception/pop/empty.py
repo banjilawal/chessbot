@@ -35,5 +35,5 @@ class PoppingEmptyTokenStackException(TokenStackException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "POPPING_EMPTY_TOKEN_STACK_ERROR"
+    ERR_CODE = "POPPING_EMPTY_TOKEN_STACK_EXCEPTION"
     MSG = "Token deletion failed: TokenStack does not own any tokens."

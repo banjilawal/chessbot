@@ -33,7 +33,7 @@ class ArenaSchemaKeysException(SchemaKeyException, ContextFlagCountException):
     # ATTRIBUTES:
     None
     """
-    ERR_CODE = "EXCESS_SCHEMA_KEYS_VALIDATION_ERROR"
+    ERR_CODE = "EXCESS_SCHEMA_KEYS_VALIDATION_EXCEPTION"
     MSG = (
         "SchemaKey validation failed: More than one attribute is not-null.Only ond attribute should be enabled."
     )

@@ -97,7 +97,7 @@ class CheckEventBuilder(Enum):
     try:
       id_validation = IdValidator.validate(event_id)
       if not id_validation.is_success():
-        ThrowHelper.log_and_raise_error(AttackEventBuilder, id_validation)
+        ThrowHelper.log_and_raise_exception(AttackEventBuilder, id_validation)
 
       actor_validation = PieceValidator.validate(actor)
       if not actor_validation.is_success():
@@ -108,7 +108,7 @@ class CheckEventBuilder(Enum):
         raise InvalidAttackException(f"{method}: KingCheckEvent enemy failed validate")
 
       if actor == enemy:
-        ThrowHelper.log_and_raise_error(
+        ThrowHelper.log_and_raise_exception(
           AttackEventBuilder,
           PieceCapturingItSelfException(PieceCapturingItSelfException.MSG)
         )
@@ -118,7 +118,7 @@ class CheckEventBuilder(Enum):
         coord=enemy.current_position
       )
       if not enemy_square_search.payload == destination_square:
-        ThrowHelper.log_and_raise_error(
+        ThrowHelper.log_and_raise_exception(
           AttackEventBuilder,
           TargetSquareMismatchException(
             f"{method}: {TargetSquareMismatchException.MSG}"
@@ -130,7 +130,7 @@ class CheckEventBuilder(Enum):
         coord=actor.current_position
       )
       if not actor_square_search.is_success():
-        ThrowHelper.log_and_raise_error(
+        ThrowHelper.log_and_raise_exception(
           AttackEventBuilder,
           TravelEventResourceNotFoundException(
             f"{method}: {TravelEventResourceNotFoundException.MSG}")
@@ -138,13 +138,13 @@ class CheckEventBuilder(Enum):
       actor_square = actor_square_search.payload
 
       if not actor.is_enemy(enemy):
-        ThrowHelper.log_and_raise_error(
+        ThrowHelper.log_and_raise_exception(
           AttackEventBuilder,
           CaptureFriendException(CaptureFriendException.MSG)
         )
 
       if not isinstance(enemy, CombatantPiece):
-        ThrowHelper.log_and_raise_error(
+        ThrowHelper.log_and_raise_exception(
           AttackEventBuilder,
           KingCaptureException(KingCaptureException.MSG)
         )

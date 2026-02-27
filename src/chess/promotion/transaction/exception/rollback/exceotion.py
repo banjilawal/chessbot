@@ -15,7 +15,7 @@ class PromotionTransactionRolledBackException(
     PromotionTransactionException,
     RollbackException
 ):
-    ERR_CODE = "PROMOTION_TRANSACTION_ROLLED_BACK_ERROR"
+    ERR_CODE = "PROMOTION_TRANSACTION_ROLLED_BACK_EXCEPTION"
     MSG = (
         "PromotionTransaction failed. The transaction was rolled back before "
         "this exception was raised."

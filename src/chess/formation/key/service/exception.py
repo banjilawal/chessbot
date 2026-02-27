@@ -29,5 +29,5 @@ class FormationKeyServiceException(FormationKeyException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "FORMATION_KEY_SERVICE_ERROR"
+    ERR_CODE = "FORMATION_KEY_SERVICE_EXCEPTION"
     MSG = "FormationKeyService raised an exception."

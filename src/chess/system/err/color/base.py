@@ -35,5 +35,5 @@ class GameColorException(ChessException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "GAME_COLOR_ERROR"
+    ERR_CODE = "GAME_COLOR_EXCEPTION"
     MSG = "GameColor raised an exception."

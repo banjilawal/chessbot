@@ -37,5 +37,5 @@ class HostageSearchNullDatasetException(HostageException, NullDatasetException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "HOSTAGE__SEARCH_NULL_DATASET_ERROR"
+    ERR_CODE = "HOSTAGE__SEARCH_NULL_DATASET_EXCEPTION"
     MSG = "Hostage search failed: There was no dataset to search"

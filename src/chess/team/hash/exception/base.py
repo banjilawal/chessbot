@@ -34,5 +34,5 @@ class TeamHashException(TeamException):
     # ATTRIBUTES:
     None
     """
-    ERR_CODE = "TEAM_HASH_ERROR"
+    ERR_CODE = "TEAM_HASH_EXCEPTION"
     MSG = "TeamHash raised an exception."

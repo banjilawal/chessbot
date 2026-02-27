@@ -37,5 +37,5 @@ class ArenaCaptivityContextFlagsException(CaptivityContextException, ContextFlag
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "ARENA_CAPTIVITY_CONTEXT_FLAG_ERROR"
+    ERR_CODE = "ARENA_CAPTIVITY_CONTEXT_FLAG_EXCEPTION"
     MSG = "CaptivityContext validation failed: More than one flag was enable."

@@ -35,5 +35,5 @@ class TeamRosterIsFullException(TeamRosterException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "ROSTER_IS_FULL_ERROR"
+    ERR_CODE = "ROSTER_IS_FULL_EXCEPTION"
     MSG = "Adding roster member failed: The roster has all sixteen chess pieces."

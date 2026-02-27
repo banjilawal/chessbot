@@ -36,5 +36,5 @@ class NumberException(ChessException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "NUMBER_ERROR"
+    ERR_CODE = "NUMBER_EXCEPTION"
     MSG = "Number raised an exception."

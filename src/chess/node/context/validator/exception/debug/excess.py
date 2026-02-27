@@ -37,5 +37,5 @@ class ArenaNodeContextFlagsException(NodeContextException, ContextFlagCountExcep
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "ARENA_NODE_CONTEXT_FLAG_ERROR"
+    ERR_CODE = "ARENA_NODE_CONTEXT_FLAG_EXCEPTION"
     MSG = "NodeContext validation failed: More than one flag was enable."

@@ -36,7 +36,7 @@ class RankException(AnchorException):
     # ATTRIBUTES:
     None
     """
-    ERR_CODE = "RANK_ERROR"
+    ERR_CODE = "RANK_EXCEPTION"
     MSG = "Rank raised an exception."
     CLS_NAME = "Rank"
     

@@ -39,5 +39,5 @@ class NodeNotFoundException(NodeDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "NODE_NOT_FOUND_ERROR"
+    ERR_CODE = "NODE_NOT_FOUND_EXCEPTION"
     MSG = "Node deletion failed: The item was not found in the dataset. Nothing to remove."

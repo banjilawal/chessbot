@@ -39,5 +39,5 @@ class CollectionException(ChessException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "COLLECTION_ERROR"
+    ERR_CODE = "COLLECTION_EXCEPTION"
     MSG = "Dataset raised an exception."

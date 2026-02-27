@@ -39,6 +39,6 @@ class SchemaLookupRouteException(SchemaException, NoExecutionRouteException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "NO_SCHEMA_LOOKUP_ROUTE_ERROR"
+    ERR_CODE = "NO_SCHEMA_LOOKUP_ROUTE_EXCEPTION"
     MSG = "SchemaLookup failed: No search route was provided for a Schema attribute."
  

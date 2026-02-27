@@ -38,5 +38,5 @@ class PersonaKeyServiceException(PersonaKeyException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "PERSONA_KEY_SERVICE_ERROR"
+    ERR_CODE = "PERSONA_KEY_SERVICE_EXCEPTION"
     MSG = "PersonaKeyService raised an exception."

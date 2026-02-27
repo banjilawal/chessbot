@@ -50,7 +50,7 @@ class LookupException(CollectionOperationException):
     # INHERITED METHODS:
         *   See WrapperException class for inherited methods.
     """
-    DEFAULT_CODE = "LOOKUP_FAILED_ERROR"
+    DEFAULT_CODE = "LOOKUP_FAILED_EXCEPTION"
     MSG = "Lookup failed."
     MTHD = "lookup"
     OP_NAME = "lookup"

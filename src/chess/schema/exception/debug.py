@@ -52,7 +52,7 @@ class SchemaDebugException(DebugException):
     # INHERITED METHODS:
         *   See ChessException class for inherited methods.
     """
-    ERR_CODE = "SCHEMA_ERROR"
+    ERR_CODE = "SCHEMA_EXCEPTION"
     MSG: str = "A variable in Schema raised an exception."
     VAR: None
     VAL = None

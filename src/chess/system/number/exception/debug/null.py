@@ -36,5 +36,5 @@ class NullNumberException(NumberException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "NULL_NUMBER_ERROR"
+    ERR_CODE = "NULL_NUMBER_EXCEPTION"
     MSG = "Number validation failed: The candidate was null."

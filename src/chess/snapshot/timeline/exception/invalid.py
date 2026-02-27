@@ -37,5 +37,5 @@ class InvalidGameTimelineException(GameTimelineException, ValidationException):
     # ATTRIBUTES:
     None
     """
-    ERR_CODE = "GAME_TIMELINE_VALIDATION_ERROR"
+    ERR_CODE = "GAME_TIMELINE_VALIDATION_EXCEPTION"
     MSG = "GameTimeline validation failed."

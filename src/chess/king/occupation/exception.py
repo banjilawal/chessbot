@@ -26,26 +26,26 @@ class KingOccupationEventException(TravelEventException):
   A base class for all exception related to the KingOccupationEvent. Do not use directly. Subclasses provide
   fine-grained msgs and error codes better for debugging and logging.
   """
-  DEFAULT_CODE = "KING_OCCUPATION_EVENT_ERROR"
+  DEFAULT_CODE = "KING_OCCUPATION_EVENT_EXCEPTION"
   MSG = "An KingOccupationEvent raised an exception."
 
 
 #====================== KING_OCCUPATION_EVENT VALIDATION EXCEPTION #======================#
 class NullKingOccupationEventException(KingOccupationEventException, NullException):
   """Raised by methods, entities, and models that require KingOccupationEvent but receive validation instead."""
-  ERR_CODE = "NULL_KING_OCCUPATION_EVENT_ERROR"
+  ERR_CODE = "NULL_KING_OCCUPATION_EVENT_EXCEPTION"
   MSG = "An KingOccupationEvent cannot be null."
 
 
 class InvalidKingOccupationEventException(KingOccupationEventException, ValidationException):
   """Raised by KingOccupationEventValidators if a candidate fails coord_stack_validator."""
-  ERR_CODE = "KING_OCCUPATION_EVENT_VALIDATION_ERROR"
+  ERR_CODE = "KING_OCCUPATION_EVENT_VALIDATION_EXCEPTION"
   MSG = "KingOccupationEvent validation failed."
 
 
 class OccupationDestinationNotEmptyException(KingOccupationEventException):
   """Raised by KingOccupationEventValidators if a candidate fails coord_stack_validator."""
-  ERR_CODE = "KING_OCCUPATION_EVENT_DESTINATION_NOT_EMPTY_ERROR"
+  ERR_CODE = "KING_OCCUPATION_EVENT_DESTINATION_NOT_EMPTY_EXCEPTION"
   MSG = "KingOccupationEvent destination square_name is not empty."
   
 #=== ATTACK_EVENT BUILD EXCEPTION #======================#
@@ -69,12 +69,12 @@ class UnexpectedNullEnemyException(AttackEventException):
 #
 # --- Rollback Attack Errors (Dual Inheritance) ---
 class SetCaptorRolledBackException(AttackEventException, RollbackException):
-  DEFAULT_CODE = "SET_CAPTOR_ERROR_ROLLED_BACK"
+  DEFAULT_CODE = "SET_CAPTOR_EXCEPTION_ROLLED_BACK"
   MSG = "Setting victor failed. Transaction rolled back performed."
 
 
 class EmptyDestinationSquareRolledBackException(AttackEventException, RollbackException):
-  DEFAULT_CODE = "SET_CAPTOR_ERROR_ROLLED_BACK"
+  DEFAULT_CODE = "SET_CAPTOR_EXCEPTION_ROLLED_BACK"
   MSG = "Setting victor failed. Transaction rolled back performed."
 
 

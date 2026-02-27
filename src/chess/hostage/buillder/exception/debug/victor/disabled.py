@@ -39,5 +39,5 @@ class VictorCannotBeDisableHostageException(HostageException, DebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "VICTOR_CANNOT_BE_DISABLED_HOSTAGE_ERROR"
+    ERR_CODE = "VICTOR_CANNOT_BE_DISABLED_HOSTAGE_EXCEPTION"
     MSG = "Hostage build failed: Victor cannot be disabled. It must be active during the build."

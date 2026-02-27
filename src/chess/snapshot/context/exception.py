@@ -39,5 +39,5 @@ class SnapshotContextException(SnapshotException, ContextException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "SNAPSHOT_CONTEXT_ERROR"
+    ERR_CODE = "SNAPSHOT_CONTEXT_EXCEPTION"
     DEFAULT_ERR_CODE = "SnapshotContext raised an exception."

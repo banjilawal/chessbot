@@ -38,5 +38,5 @@ class SchemaKeyException(SchemaException, ContextException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "SCHEMA_KEY_ERROR"
+    ERR_CODE = "SCHEMA_KEY_EXCEPTION"
     DEFAULT_ERR_CODE = "SchemaKey raised an exception."

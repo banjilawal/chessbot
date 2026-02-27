@@ -1,32 +1,32 @@
-# src/chess/system/service/menu/route/exception/debug.py
+# src/chess/system/service/route/exception/debug.py
 
 """
-Module: chess.system.service.menu.route.exception.debug
+Module: chess.system.service.route.exception.debug
 Author: Banji Lawal
-Created: 2026-02-24
+Created: 2025-11-18
 """
 
 from __future__ import annotations
+from typing import Optional
 
 __all__ = [
-    # ======================# SERVICE_ROUTE_DEBUG EXCEPTION #======================#
-    "ServiceRouteDebugException",
+    # ======================# COMMAND_ROUTER_DEBUG_EXCEPTION #======================#
+    "CommandRouterDebugException",
 ]
 
-from chess.system import DebugException, ServiceRouteException
+from chess.system import DebugException
 
 
-# ======================# SERVICE_ROUTE_DEBUG EXCEPTION #======================#
-class ServiceRouteDebugException(ServiceRouteException, DebugException):
+# ======================# COMMAND_ROUTER_DEBUG_EXCEPTION #======================#
+class CommandRouterDebugException(DebugException):
     """
-    # ROLE: Error Tracing, Debugging
+    # ROLE: Information, Reporting, Debug
 
     # RESPONSIBILITIES:
-    1.  Describes the condition that caused a CommandRouter route failure.
+    1.  Parent of DebugExceptions pertinent to CommandRouter instances.
 
     # PARENT:
-        *   DebugException
-        *   ServiceRouteException
+        *  DebugException
 
     # PROVIDES:
     None
@@ -35,7 +35,36 @@ class ServiceRouteDebugException(ServiceRouteException, DebugException):
     None
 
     # INHERITED ATTRIBUTES:
-     None
+        *   See DebugException class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        *   msg (str)
+        *   err_code (str)
+        *   ex (Optional[Exception])
+        *   var (Optional[str])
+        *   val Optional[None])
+
+    # LOCAL METHODS:
+   None
+
+    # INHERITED METHODS:
+        *   See DebugException class for inherited methods.
     """
-    ERR_CODE = "SERVICE_ROUTE_DEBUG_ERROR"
-    MSG = "A ServiceRouteDebugException was raised."
+    ERR_CODE = "COMMAND_ROUTER_DEBUG_EXCEPTION"
+    MSG = "CommandRouter attribute raised an exception."
+    VAR = None
+    VAL = None
+    
+    def __init__(
+            self,
+            err_code: Optional[str] = None,
+            msg: Optional[str] = None,
+            ex: Optional[Exception] = None,
+            var: Optional[str] = None,
+            val: Optional[None] = None,
+    ):
+        err_code = err_code or self.ERR_CODE
+        msg = msg or self.MSG
+        var = var or self.VAR
+        val = val or self.VAL
+        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)

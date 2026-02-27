@@ -42,7 +42,7 @@ class SchemaValidationRouteException(ResultException, NoExecutionRouteException)
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "NO_SCHEMA_VALIDATION_ROUTE_ERROR"
+    ERR_CODE = "NO_SCHEMA_VALIDATION_ROUTE_EXCEPTION"
     MSG = (
         "The SchemaValidator did not handle one of the paths necessary to assure a candidate is a safe to use"
         "Schema. Ensure all possible verification branches are covered to ensure the execution flow does not "

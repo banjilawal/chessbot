@@ -36,5 +36,5 @@ class PawnAttackSpanComputationRouteException(NoExecutionRouteException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "NO_PAWN_ATTACK_SPAN_COMPUTATION_ROUTE_ERROR"
+    ERR_CODE = "NO_PAWN_ATTACK_SPAN_COMPUTATION_ROUTE_EXCEPTION"
     MSG = "PawnAttackSpan computation failed: No spanning set computation route for Pawn's MoveState."

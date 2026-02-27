@@ -39,5 +39,5 @@ class EdgeNotFoundException(EdgeDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "EDGE_NOT_FOUND_ERROR"
+    ERR_CODE = "EDGE_NOT_FOUND_EXCEPTION"
     MSG = "Edge deletion failed: The item was not found in the dataset. Nothing to remove."

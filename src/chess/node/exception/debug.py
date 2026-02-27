@@ -52,7 +52,7 @@ class NodeDebugException(DebugException):
     # INHERITED METHODS:
         *   See ChessException class for inherited methods.
     """
-    ERR_CODE = "NODE_ERROR"
+    ERR_CODE = "NODE_EXCEPTION"
     MSG: str = "A variable in Node raised an exception."
     VAR: None
     VAL = None

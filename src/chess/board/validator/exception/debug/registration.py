@@ -37,5 +37,5 @@ class BoardNotRegisteredArenaException(BoardDebugException, NotRegisteredExcepti
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "BOARD_NOT_REGISTERED_WITH_ARENA_ERROR"
+    ERR_CODE = "BOARD_NOT_REGISTERED_WITH_ARENA_EXCEPTION"
     MSG = "Board validation failed: The candidate board had not registered with its arena."

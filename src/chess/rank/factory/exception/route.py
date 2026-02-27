@@ -38,7 +38,7 @@ class RankBuildRouteException(ResultException, NoExecutionRouteException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "NO_RANK_BUILD_ROUTE_ERROR"
+    ERR_CODE = "NO_RANK_BUILD_ROUTE_EXCEPTION"
     MSG = (
         "The RankFactory does not have a production line for all concrete Rank classes. Ensure all build branches a"
         "re covered to prevent the execution flow from hit the default failure result outside the if-blocks."

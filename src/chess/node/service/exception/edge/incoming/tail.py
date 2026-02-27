@@ -38,5 +38,5 @@ class IncomingEdgeWrongTailException(NodeException, InsertionException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "INCOMING_EDGE_WRONG_TAIL_ERROR"
+    ERR_CODE = "INCOMING_EDGE_WRONG_TAIL_EXCEPTION"
     MSG = "Adding an incoming edge failed: The edge was pointing to a different node."

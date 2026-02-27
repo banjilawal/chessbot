@@ -29,5 +29,5 @@ class BoardDataServiceException(BoardException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "BOARD_STACK_ERROR"
+    ERR_CODE = "BOARD_STACK_EXCEPTION"
     MSG = "BoardStackService raised an exception."

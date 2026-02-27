@@ -34,5 +34,5 @@ class VisitingWrongOpeningSquareException(SquareDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "VISITING_WRONG_OPENING_SQUARE_ERROR"
+    ERR_CODE = "VISITING_WRONG_OPENING_SQUARE_EXCEPTION"
     MSG = "Visit validation failed: Token attempted forming on the wrong opening square."

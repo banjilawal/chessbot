@@ -62,12 +62,12 @@ class EngineException(ChessException):
   details useful for debugging. `EngineException` exists primarily to allow catching all `Engine`
   exception.
   """
-  ERR_CODE = "ENGINE_ERROR"
+  ERR_CODE = "ENGINE_EXCEPTION"
   MSG = "Engine raised an exception."
 
 class NullEngineException(EngineException, NullException):
   """Raised if an entity, method, or operation requires an `Engine` but gets null instead."""
-  ERR_CODE = "NULL_ENGINE_ERROR"
+  ERR_CODE = "NULL_ENGINE_EXCEPTION"
   MSG = "Engine cannot be validation"
 
 class EngineBuild(EngineException, BuildException):

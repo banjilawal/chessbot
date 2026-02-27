@@ -34,27 +34,27 @@ class RankSearchContextException(ContextException):
     Super class of exception raised by RankSearchContext objects.
     Do not use directly. Subclasses give precise, fined-grained, debugging info.
     """
-    ERR_CODE = "SEARCH_CONTEXT_ERROR"
+    ERR_CODE = "SEARCH_CONTEXT_EXCEPTION"
     MSG = "RankSearchContext raised an exception."
 
 
 #========================= NULL RANK_SEARCH_CONTEXT EXCEPTION =========================#
 class NullRankSearchContextException(RankSearchContextException, NullException):
     """Raised if an entity, method, or operation requires Rank but gets null instead."""
-    ERR_CODE = "NULL_RANK_SEARCH_CONTEXT_ERROR"
+    ERR_CODE = "NULL_RANK_SEARCH_CONTEXT_EXCEPTION"
     MSG = "RankSearchContext cannot be validation"
 
 
 #========================= RANK_SEARCH_CONTEXT VALIDATION EXCEPTION =========================#
 class InvalidRankSearchContextException(RankSearchContextException, ValidationException):
     """Super Exception for RankSearchContextValidator when a candidate fails a sanity check."""
-    ERR_CODE = "RANK_SEARCH_CONTEXT_VALIDATION_ERROR"
+    ERR_CODE = "RANK_SEARCH_CONTEXT_VALIDATION_EXCEPTION"
     MSG = "RankSearchContext validation failed."
 
 
 class NoRankSearchOptionSelectedException(RankSearchContextException, NoBuildOptionSelectedException):
     """"""
-    ERR_CODE = "NO_RANK_SEARCH_OPTION_SELECTED_ERROR"
+    ERR_CODE = "NO_RANK_SEARCH_OPTION_SELECTED_EXCEPTION"
     MSG = "None of the RankSearchContext options wre selected. An option must be picked."
 
 
@@ -63,7 +63,7 @@ class MoreThanOneRankSearchOptionPickedException(
     BuildOptionSelectionTooLargeException
 ):
     """"""
-    ERR_CODE = "TOO_MANY_RANK_SEARCH_OPTIONS_ERROR"
+    ERR_CODE = "TOO_MANY_RANK_SEARCH_OPTIONS_EXCEPTION"
     MSG = "Only one RankSearchContext option can be selected."
 
 

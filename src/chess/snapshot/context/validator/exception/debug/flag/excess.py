@@ -35,5 +35,5 @@ class ArenaSnapshotContextFlagsException(InvalidSnapshotContextException, Contex
     # ATTRIBUTES:
     None
     """
-    ERR_CODE = "TOO_MANY_GAME_CONTEXT_FLAGS_ERROR"
+    ERR_CODE = "TOO_MANY_GAME_CONTEXT_FLAGS_EXCEPTION"
     MSG = "More than one SnapshotContext flag was selected. Only one map flag is allowed."

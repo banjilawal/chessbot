@@ -38,6 +38,6 @@ class SchemaColorBoundsException(SchemaException, BoundsException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "COLOR_OUT_OF_SCHEMA_BOUNDS_ERROR"
+    ERR_CODE = "COLOR_OUT_OF_SCHEMA_BOUNDS_EXCEPTION"
     MSG = "SchemaLookup failed: target was outside the set of permissible schema colors."
     

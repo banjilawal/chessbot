@@ -10,12 +10,12 @@ version: 1.0.0
 from chess.rank import RankException
 
 __all__ = [
-    # ======================# KNIGHT_ERROR EXCEPTION #======================#
+    # ======================# KNIGHT_EXCEPTION EXCEPTION #======================#
     "KnightException",
 ]
 
 
-# ======================# KNIGHT_ERROR EXCEPTION #======================#
+# ======================# KNIGHT_EXCEPTION EXCEPTION #======================#
 class KnightException(RankException):
     """
     # ROLE: Super Exception
@@ -32,5 +32,5 @@ class KnightException(RankException):
     # ATTRIBUTES:
     None
     """
-    ERR_CODE = "KNIGHT_ERROR"
+    ERR_CODE = "KNIGHT_EXCEPTION"
     MSG = "Knight raised an exception."

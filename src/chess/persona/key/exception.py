@@ -37,5 +37,5 @@ class PersonaKeyException(ContextException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "PERSONA_KEY_ERROR"
+    ERR_CODE = "PERSONA_KEY_EXCEPTION"
     DEFAULT_ERR_CODE = "PersonaContext raised an exception."

@@ -35,5 +35,5 @@ class AppendingBoardDirectlyIntoItemsFailedException(BoardDataServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "APPENDING_BOARD_DIRECTLY_INTO_ITEMS_ERROR"
+    ERR_CODE = "APPENDING_BOARD_DIRECTLY_INTO_ITEMS_EXCEPTION"
     MSG = "Board insertion failed: The board was not found in self.bag after running self.bag.append."

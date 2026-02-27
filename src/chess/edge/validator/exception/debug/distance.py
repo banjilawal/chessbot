@@ -35,5 +35,5 @@ class EdgeDistanceException(EdgeDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "EDGE_DISTANCE_ERROR"
+    ERR_CODE = "EDGE_DISTANCE_EXCEPTION"
     MSG = "Edge validation failed: the distance cannot be a negative number."

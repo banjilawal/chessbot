@@ -35,5 +35,5 @@ class UnsupportedEmptyComputationResultException(MethodImplementationException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERR_CODE = "UNSUPPORTED_EMPTY_COMPUTATION_RESULT_STATE_ERROR"
+    ERR_CODE = "UNSUPPORTED_EMPTY_COMPUTATION_RESULT_STATE_EXCEPTION"
     MSG = "An ComputationResult's outcome is either success or failure. It cannot be empty."

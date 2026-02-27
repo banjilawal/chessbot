@@ -36,5 +36,5 @@ class SquareStackServiceException(StackServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "SQUARE_STACK_ERROR"
+    ERR_CODE = "SQUARE_STACK_EXCEPTION"
     MSG = "SquareStackService raised an exception."

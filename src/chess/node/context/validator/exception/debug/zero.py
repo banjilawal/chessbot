@@ -38,5 +38,5 @@ class ZeroNodeContextFlagsException(NodeContextException, ContextFlagCountExcept
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "ZERO_NODE_CONTEXT_FLAGS_ERROR"
+    ERR_CODE = "ZERO_NODE_CONTEXT_FLAGS_EXCEPTION"
     MSG = "NodeContext validation failed: None of the flags were set. A single flag must be enabled."

@@ -38,5 +38,5 @@ class ZeroEdgeContextFlagsException(EdgeContextException, ContextFlagCountExcept
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "ZERO_EDGE_CONTEXT_FLAGS_ERROR"
+    ERR_CODE = "ZERO_EDGE_CONTEXT_FLAGS_EXCEPTION"
     MSG = "EdgeContext validation failed: None of the flags were set. A single flag must be enabled."

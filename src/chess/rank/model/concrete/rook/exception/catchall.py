@@ -10,11 +10,11 @@ version: 1.0.0
 from chess.rank import RankException
 
 __all__ = [
-    # ======================# ROOK_ERROR EXCEPTION #======================#
+    # ======================# ROOK_EXCEPTION EXCEPTION #======================#
     "RookException",
 ]
 
-# ======================# ROOK_ERROR EXCEPTION #======================#
+# ======================# ROOK_EXCEPTION EXCEPTION #======================#
 class RookException(RankException):
     """
     # ROLE: Super Exception
@@ -31,5 +31,5 @@ class RookException(RankException):
     # ATTRIBUTES:
     None
     """
-    ERR_CODE = "ROOK_ERROR"
+    ERR_CODE = "ROOK_EXCEPTION"
     MSG = "Rook raised an exception."

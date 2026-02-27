@@ -35,7 +35,7 @@ class UnsupportedEmptyUpdateResultException(MethodImplementationException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERR_CODE = "UNSUPPORTED_EMPTY_UPDATE_RESULT_STATE_ERROR"
+    ERR_CODE = "UNSUPPORTED_EMPTY_UPDATE_RESULT_STATE_EXCEPTION"
     MSG = (
         "An UpdateResult's outcome is either changed, change_failed, updated original == updated, failure."
         " It cannot be empty."

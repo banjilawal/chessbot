@@ -62,7 +62,7 @@ class ProjectionSearchContextException(ContextException):
     Super class for exception raised by TeamSearchContext objects. DO NOT
     USE DIRECTLY. Subclasses give more useful debugging msgs.
     """
-    ERR_CODE = "SEARCH_CONTEXT_ERROR"
+    ERR_CODE = "SEARCH_CONTEXT_EXCEPTION"
     MSG = "TeamSearchContext raised an exception."
 
 
@@ -72,7 +72,7 @@ class NullProjectionSearchContextException(ProjectionSearchContextException, Nul
     Raised if an entity, method, or operation requires team_name projectionSearchContext but
     gets validation instead.
     """
-    ERR_CODE = "NULL_SEARCH_CONTEXT_ERROR"
+    ERR_CODE = "NULL_SEARCH_CONTEXT_EXCEPTION"
     MSG = "TeamSearchContext cannot be validation"
 
 
@@ -81,7 +81,7 @@ class InvalidProjectionSearchContextException(ProjectionSearchContextException, 
     Raised by projectionSearchContextBValidator if projectionSearchContext fails sanity checks. Exists primarily to
     catch all exception raised validating an existing projectionSearchContext
     """
-    ERR_CODE = "SEARCH_CONTEXT_VALIDATION_ERROR"
+    ERR_CODE = "SEARCH_CONTEXT_VALIDATION_EXCEPTION"
     MSG = "TeamSearchContext validation failed."
 
 
@@ -89,7 +89,7 @@ class ProjectionSearchContextZeroParamCountException(ProjectionSearchContextExce
     """
     Raised if all TeamSearchContext params are set validation.
     """
-    ERR_CODE = "SEARCH_CONTEXT_ZERO_PARAM_ERROR"
+    ERR_CODE = "SEARCH_CONTEXT_ZERO_PARAM_EXCEPTION"
     MSG = "A TeamSearchContext cannot have all params set validation."
 
 
@@ -97,7 +97,7 @@ class ProjectionSearchContextMaxParamCountException(ProjectionSearchContextExcep
     """
     Raised if more than one TeamSearchContext param is set validation.
     """
-    ERR_CODE = "SEARCH_CONTEXT_MAX_PARAM_ERROR"
+    ERR_CODE = "SEARCH_CONTEXT_MAX_PARAM_EXCEPTION"
     MSG = "A TeamSearchContext cannot have more than one param set validation."
 
 
@@ -116,7 +116,7 @@ class RansomOutOfBoundsException(ProjectionSearchContextException):
   Instead of running team_name old_search that won'candidate produce team_name notification, raise this
   error.
   """
-  ERR_CODE = "RANSOM_IN_SEARCH_CONTEXT_OUT_BOUNDS_ERROR"
+  ERR_CODE = "RANSOM_IN_SEARCH_CONTEXT_OUT_BOUNDS_EXCEPTION"
   MSG = (
       f"The `TeamSearchContext.ransom` is out of bounds. Ransoms are "
       f"between {Persona.KING.ransom} and {Persona.QUEEN.ransom} inclusive."

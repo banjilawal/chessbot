@@ -35,5 +35,5 @@ class NewRankSameAsCurrentRankException(PawnTokenException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "NEW_RANK_IS_STILL_PAWN_RANK_ERROR"
+    ERR_CODE = "NEW_RANK_IS_STILL_PAWN_RANK_EXCEPTION"
     MSG = "Pawn promotion failed: The new rank is still a Pawn's rank."

@@ -38,5 +38,5 @@ class GameContextServiceException(ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "GAME_CONTEXT_SERVICE_ERROR"
+    ERR_CODE = "GAME_CONTEXT_SERVICE_EXCEPTION"
     MSG = "GameContextService raised an exception."

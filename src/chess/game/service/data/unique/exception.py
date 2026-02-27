@@ -38,5 +38,5 @@ class UniqueGameDataServiceException(GameException, DatabaseException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "UNIQUE_GAME_STACK_ERROR"
+    ERR_CODE = "UNIQUE_GAME_STACK_EXCEPTION"
     MSG = "UniqueGameDataService raised an exception."

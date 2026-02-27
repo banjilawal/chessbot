@@ -25,5 +25,5 @@ class VectorServiceException(VectorException, ServiceException):
   Super class of exception raised by VectorService objects. Do not use directly. Subclasses give
   precise, fined-grained, debugging info.
   """
-  ERR_CODE = "VECTOR_SERVICE_ERROR"
+  ERR_CODE = "VECTOR_SERVICE_EXCEPTION"
   MSG = "VectorService operation failed."

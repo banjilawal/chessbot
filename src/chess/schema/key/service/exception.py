@@ -38,5 +38,5 @@ class SchemaKeyServiceException(SchemaKeyException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "SCHEMA_KEY_SERVICE_ERROR"
+    ERR_CODE = "SCHEMA_KEY_SERVICE_EXCEPTION"
     MSG = "SchemaKeyService raised an exception."

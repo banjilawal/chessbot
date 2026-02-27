@@ -41,7 +41,7 @@ class PlayerContextException(AnchorException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "PLAYER_CONTEXT_ERROR"
+    ERR_CODE = "PLAYER_CONTEXT_EXCEPTION"
     DEFAULT_ERR_CODE = "PlayerContext raised an exception."
     CLS_NAME = "PlayerContext"
     

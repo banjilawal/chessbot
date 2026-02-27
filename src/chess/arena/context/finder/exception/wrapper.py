@@ -38,5 +38,5 @@ class ArenaSearchException(ArenaException, SearchException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "ARENA_FINDER_ERROR"
+    ERR_CODE = "ARENA_FINDER_EXCEPTION"
     MSG = "ArenaFinder raised an exception."

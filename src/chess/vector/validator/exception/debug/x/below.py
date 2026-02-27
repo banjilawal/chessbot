@@ -22,7 +22,7 @@ class VectorXBelowBoundsException(InvalidVectorException, BoundsException):
     A Vector with a component whose magnitude > 7 will cause an ArrayIndexOutOfBounds error when the Vector is
     added or subtracted from a Coord.
     """
-    ERR_CODE = "VECTOR_X_BELOW_BOUNDS_ERROR"
+    ERR_CODE = "VECTOR_X_BELOW_BOUNDS_EXCEPTION"
     MSG = (
         "Vector validation failed: x_axis below bounds."
     )

@@ -12,5 +12,5 @@ from chess.checking import CheckingException
 
 
 class InCheckException(CheckingException):
-    ERR_CODE = "IN_CHECK_ERROR"
+    ERR_CODE = "IN_CHECK_EXCEPTION"
     DEFAULT_ERR_CODE = "InCheck raised an exception."

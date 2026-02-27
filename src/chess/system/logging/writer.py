@@ -129,7 +129,7 @@ class LogWriter:
 
 
   @classmethod
-  def log_error(cls, context: Any, exception: Exception,  function: Optional[Callable]=None) -> None:
+  def log_exception(cls, context: Any, exception: Exception,  function: Optional[Callable]=None) -> None:
     """
     ACTION:
     Write error to the logger for the class, instance or module.

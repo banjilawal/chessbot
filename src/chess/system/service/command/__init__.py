@@ -9,6 +9,7 @@ Created: 2026-02-24
 # =========== SYSTEM.SERVICE.COMMAND PACKAGE CONTENTS ===========#
 
 # Packages
+from .builder import *
 from .exception import *
 
 # Modules

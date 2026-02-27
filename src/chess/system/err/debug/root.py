@@ -28,7 +28,7 @@ class DebugException(ChessException):
     3.  Lowest part of the 3-layer exception chain. Should not contain other exceptions.
     
     # ERROR CODE CONVENTION:
-    1.  All caps, snake case description of the error with _ERROR as the suffix.
+    1.  All caps, snake case description of the error with _EXCEPTION as the suffix.
     
     # DEFAULT MSG CONVENTION:
     1.  Wrapper msg followed by a colon. Description of the error after the colon.
@@ -60,7 +60,7 @@ class DebugException(ChessException):
     # INHERITED METHODS:
         *   See ChessException class for inherited methods.
     """
-    ERR_CODE = "VARIABLE_ERROR"
+    ERR_CODE = "VARIABLE_EXCEPTION"
     MSG: str = "A variable had an error."
     VAR: None
     VAL = None

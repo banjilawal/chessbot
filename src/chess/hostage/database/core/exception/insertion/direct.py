@@ -35,7 +35,7 @@ class AppendingHostageDirectlyIntoItemsFailedException(HostageDataListException)
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "APPENDING_HOSTAGE_DIRECTLY_INTO_ITEMS_ERROR"
+    ERR_CODE = "APPENDING_HOSTAGE_DIRECTLY_INTO_ITEMS_EXCEPTION"
     MSG = (
         "Hostage insertion failed: The manifest was not found in self.bag after "
         "running self.bag.append."

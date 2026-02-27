@@ -52,7 +52,7 @@ class SquareServiceDebugException(DebugException):
     # INHERITED METHODS:
         *   See ChessException class for inherited methods.
     """
-    ERR_CODE = "SQUARE_SERVICE_ERROR"
+    ERR_CODE = "SQUARE_SERVICE_EXCEPTION"
     MSG: str = "A variable in SquareService raised an exception."
     VAR: None
     VAL = None

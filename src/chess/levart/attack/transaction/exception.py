@@ -32,7 +32,7 @@ class AttackTransactionException(TravelTransactionException):
   RollBackCapture exception should be raised in ACID transactions where team_name capture can
   raise an err. Do not use directly. Subclasses give details useful for debugging.
   """
-  ERR_CODE = "ATTACK_TRANSACTION_ERROR_ROLLED_BACK"
+  ERR_CODE = "ATTACK_TRANSACTION_EXCEPTION_ROLLED_BACK"
   MSG = "AttackTransaction raised an rollback_exception. Transaction rolled back."
 
 
@@ -41,12 +41,12 @@ class RolledBackAttackTransactionException(AttackTransactionException, RollbackE
   RollBackCapture exception should be raised in ACID transactions where team_name capture can
   raise an err. Do not use directly. Subclasses give details useful for debugging.
   """
-  ERR_CODE = "ATTACK_TRANSACTION_ERROR_ROLLED_BACK"
+  ERR_CODE = "ATTACK_TRANSACTION_EXCEPTION_ROLLED_BACK"
   MSG = "AttackTransaction raised an rollback_exception. Transaction rolled back."
 
 class FailedSettingActorAsEnemyCaptorRolledBackException(RolledBackAttackTransactionException):
   """"""
-  ERR_CODE = "FAILED_CAPTOR_PROPERTY_UPDATE_ROLLED_BACK_ERROR"
+  ERR_CODE = "FAILED_CAPTOR_PROPERTY_UPDATE_ROLLED_BACK_EXCEPTION"
   MSG = (
     "Updating a combatant's victor consistency during an attack transaction failed. The transaction was rolled back "
     "before raising this exception."
@@ -54,7 +54,7 @@ class FailedSettingActorAsEnemyCaptorRolledBackException(RolledBackAttackTransac
 
 class FailedEnemyRemovalFromSquareRolledBackException(RolledBackAttackTransactionException):
   """"""
-  ERR_CODE = "FAILED_PRISONER_REMOVAL_FROM_SQUARE_ROLLED_BACK_ERROR"
+  ERR_CODE = "FAILED_PRISONER_REMOVAL_FROM_SQUARE_ROLLED_BACK_EXCEPTION"
   MSG = (
     "Removing a captured enemy from its square_name failed during an attack transaction. The transaction was "
     "rolled back before raising this exception."
@@ -62,7 +62,7 @@ class FailedEnemyRemovalFromSquareRolledBackException(RolledBackAttackTransactio
 
 class FailedHostageAdditionRolledBackException(RolledBackAttackTransactionException):
   """"""
-  ERR_CODE = "FAILED_HOSTAGE_ADDITION_ROLLED_BACK_ERROR"
+  ERR_CODE = "FAILED_HOSTAGE_ADDITION_ROLLED_BACK_EXCEPTION"
   MSG = (
     "Adding a prisoner failed during an attack transaction. The transaction was rolled back before raising this "
     "exception."
@@ -70,7 +70,7 @@ class FailedHostageAdditionRolledBackException(RolledBackAttackTransactionExcept
 
 class FailedRemovalFromRosterRolledBackException(RolledBackAttackTransactionException):
   """"""
-  ERR_CODE = "FAILED_CAPTIVE_REMOVAL_ROLLED_BACK_ERROR"
+  ERR_CODE = "FAILED_CAPTIVE_REMOVAL_ROLLED_BACK_EXCEPTION"
   MSG = (
     "Removing a captured owner from the team_name roster failed during an attack transaction. The transaction was rolled "
     "back before raising this exception."
@@ -78,7 +78,7 @@ class FailedRemovalFromRosterRolledBackException(RolledBackAttackTransactionExce
 
 class FailedCapturedPiecFromBoardRolledBackException(RolledBackAttackTransactionException):
   """"""
-  ERR_CODE = "FAILED_CAPTURED_PIEC_FROM_BOARD_ROLLED_BACK_ERROR"
+  ERR_CODE = "FAILED_CAPTURED_PIEC_FROM_BOARD_ROLLED_BACK_EXCEPTION"
   MSG = (
     "Removing a captured owner from the board failed during an attack notification. The notification was rolled back "
     "before this rollback_exception was raised."
@@ -87,7 +87,7 @@ class FailedCapturedPiecFromBoardRolledBackException(RolledBackAttackTransaction
 
 class FailedRemovalFromBoardRolledBackException(RolledBackAttackTransactionException):
   """"""
-  ERR_CODE = "FAILED_PIECE_REMOVAL_FROM_BOARD_ROLLED_BACK_ERROR"
+  ERR_CODE = "FAILED_PIECE_REMOVAL_FROM_BOARD_ROLLED_BACK_EXCEPTION"
   MSG = (
     "Removing a captured owner from the board failed during an attack transaction. The transaction was rolled "
     "back before raising this exception."

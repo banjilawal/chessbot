@@ -9,15 +9,13 @@ Created: 2025-11-18
 from __future__ import annotations
 
 from abc import ABC
-from distutils.command.build import build
 from typing import Generic, TypeVar
-from xml.etree.ElementPath import prepare_parent
+
 
 from chess.system import (
-    BuildResult, Builder, Command, LoggingLevelRouter, PipelineException, ServiceRequestValidator, ValidationResult,
+    BuildResult, Command, CommandBuilder, LoggingLevelRouter, PipelineException, ServiceRequestValidator,
     ServiceRequest
 )
-from chess.system.service.command.builder import CommandBuilder
 
 C = TypeVar("C", bound=Command)
 
@@ -37,6 +35,7 @@ class CommandPipeline(ABC, Generic[C]):
     None
 
     # LOCAL ATTRIBUTES:
+        *   key: (C)
         *   builder: (Builder[Command])
         *   request_validator: (ServiceRequestValidator)
 
@@ -44,11 +43,12 @@ class CommandPipeline(ABC, Generic[C]):
     None.
 
     # CONSTRUCTOR PARAMETERS:)
+        *   key: (C)
         *   builder: (Builder[Command])
         *   request_validator: (ServiceRequestValidator)
 
     # LOCAL METHODS:
-    None
+        *   process_service_request(request: ServiceRequest) -> BuildResult[C]
 
     # INHERITED METHODS:
     None

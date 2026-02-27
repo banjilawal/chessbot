@@ -111,7 +111,7 @@ class PromotionEventException(ChessException):
   details useful for debugging. `PromotionEventException` exists primarily to allow catching all `PromotionEven`
   exception.
   """
-  ERR_CODE = "PROMOTION_EVENT_ERROR"
+  ERR_CODE = "PROMOTION_EVENT_EXCEPTION"
   MSG = "PromotionEvent raised an exception."
 
 
@@ -122,7 +122,7 @@ class NullPromotionEventException(PromotionEventException, NullException):
 
 class PawnPromotionOnlyException(PromotionEventException):
   """"""
-  ERR_CODE = "CAN_ONLY_PROMOTE_PAWN_ERROR"
+  ERR_CODE = "CAN_ONLY_PROMOTE_PAWN_EXCEPTION"
   MSG = "Only pawns can be promoted"
 
 class InvalidPromotionEventException(PromotionEventException, ValidationException):
@@ -130,7 +130,7 @@ class InvalidPromotionEventException(PromotionEventException, ValidationExceptio
   Raised by PromotionEventValidator if team_name client fails sanity checks. Exists to catch all
   exception raised validating an existing `PromotionEvent` candidate.
   """
-  ERR_CODE = "PROMOTION_EVENT_VALIDATION_ERROR"
+  ERR_CODE = "PROMOTION_EVENT_VALIDATION_EXCEPTION"
   MSG = "PromotionEvent validation failed."
 
 class DoublePromotionException(PromotionEventException):
@@ -138,7 +138,7 @@ class DoublePromotionException(PromotionEventException):
   Raised when attempting promoting team_name owner already elevated to Queen bounds.
   Only pieces with Pawn or King bounds can be promoted.
   """
-  ERR_CODE = "DOUBLE_PROMOTION_ERROR"
+  ERR_CODE = "DOUBLE_PROMOTION_EXCEPTION"
   MSG = "Token is already promoted to Queen. It cannot be promoted again."
 
 
@@ -152,7 +152,7 @@ class DoublePromotionRolledBackException(RollBackException):
   Only pieces with Pawn or King bounds can be promoted. The notification was rolled
   back before raising this err.
   """
-  ERR_CODE = "DOUBLE_PROMOTION_ERROR_ROLLED_BACK"
+  ERR_CODE = "DOUBLE_PROMOTION_EXCEPTION_ROLLED_BACK"
   MSG = (
     "Token is already promoted to Queen. It cannot be promoted again. Transaction "
     "rollback performed."
@@ -165,7 +165,7 @@ class DoublePromotionException(PieceException):
   Raised when attempting promoting team_name owner already elevated to Queen bounds.
   Only pieces with Pawn or King bounds can be promoted.
   """
-  ERR_CODE = "DOUBLE_PROMOTION_ERROR"
+  ERR_CODE = "DOUBLE_PROMOTION_EXCEPTION"
   MSG = "Token is already promoted to Queen. It cannot be promoted again."
 
 
@@ -175,7 +175,7 @@ class DoublePromotionRolledBackException(PieceRollBackException):
   Only pieces with Pawn or King bounds can be promoted. The notification was rolled
   back before raising this err.
   """
-  ERR_CODE = "DOUBLE_PROMOTION_ERROR_ROLLED_BACK"
+  ERR_CODE = "DOUBLE_PROMOTION_EXCEPTION_ROLLED_BACK"
   MSG = (
     "Token is already promoted to Queen. It cannot be promoted again. Transaction "
     "rollback performed."
@@ -197,12 +197,12 @@ class PromotionTransactionException(TransactionException):
   """
   Wraps any errors raised during the promotion's lifecycle.
   """
-  ERR_CODE = "PROMOTION_TRANSACTION_ERROR"
+  ERR_CODE = "PROMOTION_TRANSACTION_EXCEPTION"
   MSG = "PromotionTransaction raised an exception."
 
 class NullPromotionTransactionException(TransactionException):
   """Raised if an entity, method, or operation requires team_name `PromotionEvent` but gets null instead."""
-  ERR_CODE = "PROMOTION_TRANSACTION_ERROR"
+  ERR_CODE = "PROMOTION_TRANSACTION_EXCEPTION"
   MSG = "PromotionTransaction raised an exception."
 
 
@@ -281,7 +281,7 @@ class ActorException(AttackException):
   give details useful for debugging. This class exists primarily to allow catching
   all owner exception
   """
-  ERR_CODE = "ACTOR_ERROR"
+  ERR_CODE = "ACTOR_EXCEPTION"
   MSG = "Actor raised an rollback_exception. Token cannot act."
 
 
@@ -293,7 +293,7 @@ class ActorRollBackException(ActorException, RollbackException):
   exists primarily to allow catching all Token exception that happen when team_name failed
   notification must be rolled back.
   """
-  ERR_CODE = "ACTOR_ERROR_ROLLED_BACK"
+  ERR_CODE = "ACTOR_EXCEPTION_ROLLED_BACK"
   MSG = "Actor raised an rollback_exception. Transaction rolled back"
 
 
@@ -303,7 +303,7 @@ class InvalidActorException(ActorException, InvalidAttackException):
   Raised by ActorValidator if owner fails any conditions for acting on the board_validator.
   Exists primarily to catch all exception raised validating an existing owner
   """
-  ERR_CODE = "ACTOR_VALIDATION_ERROR"
+  ERR_CODE = "ACTOR_VALIDATION_EXCEPTION"
   MSG = "Token did not meet condition to act in the game."
 
 
@@ -311,13 +311,13 @@ class ActorNotOnBoardException(ActorException):
   """
   A owner that has not been placed on the board_validator cannot move, blocking, capture or be captured
   """
-  ERR_CODE = "ACTOR_NOT_ON_BOARD_ERROR"
+  ERR_CODE = "ACTOR_NOT_ON_BOARD_EXCEPTION"
   MSG = "Actor is not on the board_validator. Token cannot act"
 
 
 class ActorPlacementRequiredException(ActorException):
   """Raised when team_name potential actor_candidate has not been placed on the board_validator."""
-  ERR_CODE = "ACTOR_PLACEMENT_REQUIRED_ERROR"
+  ERR_CODE = "ACTOR_PLACEMENT_REQUIRED_EXCEPTION"
   MSG = (
     "Required actor_candidate has an empty position stack. It as not been placed on the board_validator. Event cannot be executed."
   )
@@ -328,7 +328,7 @@ class CapturedPieceCannotActException(ActorException):
   """
   A captured owner cannot actt.
   """
-  ERR_CODE = "CAPTURED_ACTOR_CANNOT_ACT_ERROR"
+  ERR_CODE = "CAPTURED_ACTOR_CANNOT_ACT_EXCEPTION"
   MSG = "Actor has been captured. Captured owner cannot act."
 
 
@@ -336,7 +336,7 @@ class CapturedActorCannotAttackException(ActorException):
   """
   A captured owner cannot attack.
   """
-  ERR_CODE = "CAPTURED_ACTOR_CANNOT_ATTACK_ERROR"
+  ERR_CODE = "CAPTURED_ACTOR_CANNOT_ATTACK_EXCEPTION"
   MSG = "Actor has been captured. Captured owner cannot attack."
 
 
@@ -344,7 +344,7 @@ class CapturedActorCannotMoveException(ActorException):
   """
   A captured owner cannot move.
   """
-  ERR_CODE = "CAPTURED_ACTOR_CANNOT_MOVE_ERROR"
+  ERR_CODE = "CAPTURED_ACTOR_CANNOT_MOVE_EXCEPTION"
   MSG = "A captured actor_candidate cannot move to team_name square_name."
 
 
@@ -352,7 +352,7 @@ class CapturedActorCannotScanException(ActorException):
   """
   A captured owner cannot blocking.
   """
-  ERR_CODE = "CAPTURED_ACTOR_CANNOT_SCAN_ERROR"
+  ERR_CODE = "CAPTURED_ACTOR_CANNOT_SCAN_EXCEPTION"
   MSG = "A captured actor_candidate cannot blocking team_name square_name."
 
 
@@ -365,25 +365,25 @@ class SubjectException(AttackException):
   SubjectException classes are raised on team_name owner acted upon. They are raised on the same errors as ActorException,
   Using SubjectException makes tracing which side of the interaction is raising an error easier.
   """
-  ERR_CODE = "SUBJECT_ERROR"
+  ERR_CODE = "SUBJECT_EXCEPTION"
   MSG = "A potential enemy owner raised an exception."
 
 
 class InvalidSubjectException(SubjectException, InvalidAttackException):
   """Raised if team_name required enemy fails validate."""
-  ERR_CODE = "SUBJECT_VALIDATION_ERROR"
+  ERR_CODE = "SUBJECT_VALIDATION_EXCEPTION"
   MSG = "Required enemy failed validate. Actor cannot fire travel onto enemy"
 
 
 class SubjectNotOnBoardException(SubjectException):
   """Raised when team_name required enemy is not found on the board_validator."""
-  ERR_CODE = "SUBJECT_NOT_ON_BOARD_ERROR"
+  ERR_CODE = "SUBJECT_NOT_ON_BOARD_EXCEPTION"
   MSG = "Required enemy was not found on the board_validator. Actor cannot fire travel onto enemy"
 
 
 class SubjectPlacementRequiredException(SubjectException):
   """Raised when team_name required enemy has not been placed on the board_validator."""
-  ERR_CODE = "SUBJECT_PLACEMENT_REQUIRED_ERROR"
+  ERR_CODE = "SUBJECT_PLACEMENT_REQUIRED_EXCEPTION"
   MSG = (
     "Required enemy has an empty position stack. It as not been placed on the board_validator. Actor cannot"
     "fire travel onto enemy."

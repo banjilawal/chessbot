@@ -34,6 +34,6 @@ class EdgeContextException(EdgeException, ContextException):
     # ATTRIBUTES:
     None
     """
-    ERR_CODE = "EDGE_CONTEXT_ERROR"
+    ERR_CODE = "EDGE_CONTEXT_EXCEPTION"
     MSG = "EdgeContext raised an exception."
     

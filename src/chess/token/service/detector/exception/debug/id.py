@@ -35,5 +35,5 @@ class TokenIdCollisionException(TokenStackException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "TOKEN_ID_COLLISION_ERROR"
+    ERR_CODE = "TOKEN_ID_COLLISION_EXCEPTION"
     MSG = "Pushing token failed: The id was already in use."

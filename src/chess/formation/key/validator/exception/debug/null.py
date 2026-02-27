@@ -34,5 +34,5 @@ class NullFormationKeyException(FormationKeyException, NullException):
     # ATTRIBUTES:
     None
     """
-    ERR_CODE = "NULL_FORMATION_KEY_ERROR"
+    ERR_CODE = "NULL_FORMATION_KEY_EXCEPTION"
     MSG = "FormationKey validation failed: The candidate was null."

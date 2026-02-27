@@ -58,5 +58,5 @@ class ZeroSquareContextFlagsException(SquareContextException, ContextFlagCountEx
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "ZERO_SQUARE_CONTEXT_FLAGS_ERROR"
+    ERR_CODE = "ZERO_SQUARE_CONTEXT_FLAGS_EXCEPTION"
     MSG = "SquareContext validation failed: None of the flags were set. A single flag must be enabled."

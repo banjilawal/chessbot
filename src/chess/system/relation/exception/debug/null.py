@@ -35,5 +35,5 @@ class NoRelationException(RelationDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    DEFAULT_CODE = "NO_RELATIONSHIP_ERROR"
+    DEFAULT_CODE = "NO_RELATIONSHIP_EXCEPTION"
     MSG = "The candidates do not have any relationship."

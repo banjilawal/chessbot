@@ -38,5 +38,5 @@ class SnapshotDebugException(SnapshotException, DebugException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERR_CODE = "SNAPSHOT_DEBUG_ERROR"
+    ERR_CODE = "SNAPSHOT_DEBUG_EXCEPTION"
     MSG = "A SnapshotDebugException was raised."

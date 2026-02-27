@@ -37,5 +37,5 @@ class HostageDataListException(HostageException, DataServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "HOSTAGE_LIST_ERROR"
+    ERR_CODE = "HOSTAGE_LIST_EXCEPTION"
     MSG = "HostageList raised an exception."

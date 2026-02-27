@@ -52,7 +52,7 @@ class CoordDebugException(DebugException):
     # INHERITED METHODS:
         *   See ChessException class for inherited methods.
     """
-    ERR_CODE = "COORD_ERROR"
+    ERR_CODE = "COORD_EXCEPTION"
     MSG: str = "A variable in Coord raised an exception."
     VAR: None
     VAL = None

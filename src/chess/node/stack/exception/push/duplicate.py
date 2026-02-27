@@ -35,5 +35,5 @@ class AddingDuplicateNodeException(NodeDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "ADDING_DUPLICATE_NODE_ERROR"
+    ERR_CODE = "ADDING_DUPLICATE_NODE_EXCEPTION"
     MSG = "Pushing node onto stack failed: The node is already present."

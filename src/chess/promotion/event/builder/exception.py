@@ -14,5 +14,5 @@ from chess.promotion import PromotionEventException
 
 
 class PromotionEventBuildException(PromotionEventException, BuildException):
-    ERR_CODE = "PROMOTION_EVENT_ERROR"
+    ERR_CODE = "PROMOTION_EVENT_EXCEPTION"
     MSG = "PromotionEvent raised an exception."

@@ -38,5 +38,5 @@ class FormationLookupRouteException(FormationException, NoExecutionRouteExceptio
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "NO_FORMATION_LOOKUP_ROUTE_ERROR"
+    ERR_CODE = "NO_FORMATION_LOOKUP_ROUTE_EXCEPTION"
     MSG = "FormationLookup failed: No search route was provided for a Formation attribute."

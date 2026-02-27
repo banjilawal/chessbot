@@ -48,7 +48,7 @@ class ChessException(Exception):
     # INHERITED METHODS:
         *   See Exception class for inherited methods.
     """
-    ERR_CODE = "CHESS_ERROR"
+    ERR_CODE = "CHESS_EXCEPTION"
     MSG = "Chess error occurred."
     
     _err_code: str

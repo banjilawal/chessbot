@@ -39,5 +39,5 @@ class GameDataServiceException(GameException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "GAME_STACK_ERROR"
+    ERR_CODE = "GAME_STACK_EXCEPTION"
     MSG = "GameStackService raised an exception."

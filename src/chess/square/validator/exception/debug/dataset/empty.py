@@ -35,5 +35,5 @@ class SquareDataSourceEmptyException(SquareDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "SQUARE_DATA_SOURCE_EMPTY_ERROR"
+    ERR_CODE = "SQUARE_DATA_SOURCE_EMPTY_EXCEPTION"
     MSG = "The dataset of squares cannot be empty"

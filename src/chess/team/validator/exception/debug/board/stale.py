@@ -38,5 +38,5 @@ class BoardHasStaleTeamLinkException(TeamDebugException, StaleRelationException)
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "BOARD_HAS_STALE_LINK_TO_TEAM_ERROR"
+    ERR_CODE = "BOARD_HAS_STALE_LINK_TO_TEAM_EXCEPTION"
     MSG = "Team validation failed: The board has a stale link to a former team."

@@ -29,5 +29,5 @@ class SnapshotContextServiceException(SnapshotContextException, ServiceException
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "SNAPSHOT_CONTEXT_SERVICE_ERROR"
+    ERR_CODE = "SNAPSHOT_CONTEXT_SERVICE_EXCEPTION"
     MSG = "SnapshotContextService raised an exception."

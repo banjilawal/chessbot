@@ -37,5 +37,5 @@ class NullAgentContextException(InvalidAgentContextException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "NULL_AGENT_CONTEXT_ERROR"
+    ERR_CODE = "NULL_AGENT_CONTEXT_EXCEPTION"
     MSG = "AgentContext validation failed: The candidate was null."

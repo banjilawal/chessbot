@@ -36,5 +36,5 @@ class TokenSearchNullDatasetException(Token, NullDatasetException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "TOKEN_SEARCH_DATASET_NULL_ERROR"
+    ERR_CODE = "TOKEN_SEARCH_DATASET_NULL_EXCEPTION"
     MSG = "TokenSearch failed: Cannot run a search on a null dataset."

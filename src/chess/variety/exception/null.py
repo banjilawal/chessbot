@@ -34,7 +34,7 @@ class AgentVarietyNullException(InvalidAgentVarietyException, NullException):
     # ATTRIBUTES:
     None
     """
-    ERR_CODE = "NULL_AGENT_VARIETY_ERROR"
+    ERR_CODE = "NULL_AGENT_VARIETY_EXCEPTION"
     MSG = "AgentVariety cannot be null."
 
 

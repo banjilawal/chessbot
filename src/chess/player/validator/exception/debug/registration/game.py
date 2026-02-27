@@ -37,5 +37,5 @@ class PlayerNotRegisteredGameException(PlayerDebugException, NotRegisteredExcept
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "PLAYER_NOT_REGISTERED_WITH_GAME_ERROR"
+    ERR_CODE = "PLAYER_NOT_REGISTERED_WITH_GAME_EXCEPTION"
     MSG = "Player validation failed: The candidate player had not registered with its game."

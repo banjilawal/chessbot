@@ -38,7 +38,7 @@ class CaptivityContextValidationRouteException(CaptivityContextException, NoExec
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "NO_CAPTIVITY_CONTEXT_VALIDATION_ROUTE_ERROR"
+    ERR_CODE = "NO_CAPTIVITY_CONTEXT_VALIDATION_ROUTE_EXCEPTION"
     MSG = (
         "CaptivityContext validation failed: No validation route was provided for a CaptivityContext attribute."
     )

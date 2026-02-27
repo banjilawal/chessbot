@@ -37,5 +37,5 @@ class RankQuotaFullException(TokenStackException, DebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "NO_OPENINGS_FOR_RANK_ERROR"
+    ERR_CODE = "NO_OPENINGS_FOR_RANK_EXCEPTION"
     MSG = "Pushing token failed: There were no openings for the token's rank."

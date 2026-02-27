@@ -35,5 +35,5 @@ class SquareNameCollisionException(SquareDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "SQUARE_NAME_COLLISION_ERROR"
+    ERR_CODE = "SQUARE_NAME_COLLISION_EXCEPTION"
     MSG = "Square collision detected: At least two squares have the same name."

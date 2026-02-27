@@ -26,26 +26,26 @@ class OccupationEventException(TravelEventException):
   A base class for all exception related to the OccupationEvent. Do not use directly. Subclasses provide
   fine-grained msgs and error codes better for debugging and logging.
   """
-  DEFAULT_CODE = "OCCUPATION_EVENT_ERROR"
+  DEFAULT_CODE = "OCCUPATION_EVENT_EXCEPTION"
   MSG = "An OccupationEvent raised an exception."
 
 
 #====================== OCCUPATION_EVENT VALIDATION EXCEPTION #======================#
 class NullOccupationEventException(OccupationEventException, NullException):
   """Raised by methods, entities, and models that require OccupationEvent but receive validation instead."""
-  ERR_CODE = "NULL_OCCUPATION_EVENT_ERROR"
+  ERR_CODE = "NULL_OCCUPATION_EVENT_EXCEPTION"
   MSG = "An OccupationEvent cannot be null."
 
 
 class InvalidOccupationEventException(OccupationEventException, ValidationException):
   """Raised by OccupationEventValidators if a candidate fails coord_stack_validator."""
-  ERR_CODE = "OCCUPATION_EVENT_VALIDATION_ERROR"
+  ERR_CODE = "OCCUPATION_EVENT_VALIDATION_EXCEPTION"
   MSG = "OccupationEvent validation failed."
 
 
 class OccupationDestinationNotEmptyException(OccupationEventException):
   """Raised by OccupationEventValidators if a candidate fails coord_stack_validator."""
-  ERR_CODE = "OCCUPATION_EVENT_DESTINATION_NOT_EMPTY_ERROR"
+  ERR_CODE = "OCCUPATION_EVENT_DESTINATION_NOT_EMPTY_EXCEPTION"
   MSG = "OccupationEvent destination square_name is not empty."
   
 #=== ATTACK_EVENT BUILD EXCEPTION #======================#
@@ -69,12 +69,12 @@ class UnexpectedNullEnemyException(AttackEventException):
 #
 # --- Rollback Attack Errors (Dual Inheritance) ---
 class SetCaptorRolledBackException(AttackEventException, RollbackException):
-  DEFAULT_CODE = "SET_CAPTOR_ERROR_ROLLED_BACK"
+  DEFAULT_CODE = "SET_CAPTOR_EXCEPTION_ROLLED_BACK"
   MSG = "Setting victor failed. Transaction rolled back performed."
 
 
 class EmptyDestinationSquareRolledBackException(AttackEventException, RollbackException):
-  DEFAULT_CODE = "SET_CAPTOR_ERROR_ROLLED_BACK"
+  DEFAULT_CODE = "SET_CAPTOR_EXCEPTION_ROLLED_BACK"
   MSG = "Setting victor failed. Transaction rolled back performed."
 
 
@@ -115,7 +115,7 @@ class HostageActivityException(PieceException):
   exception an attacking owner can raised. Do not use directly. Subclasses give details
   useful for debugging.
   """
-  ERR_CODE = "HOSTAGE_ACTIVITY_ERROR"
+  ERR_CODE = "HOSTAGE_ACTIVITY_EXCEPTION"
   MSG = "Hostage owner cannot move, blocking, or attack."
 
 
@@ -123,7 +123,7 @@ class HostageCannotAttackException(HostageActivityException):
   """
   Raised if team_name captured owner tries to attack.
   """
-  ERR_CODE = "HOSTAGE_CANNOT_ATTACK_ERROR"
+  ERR_CODE = "HOSTAGE_CANNOT_ATTACK_EXCEPTION"
   MSG = "Captured owner cannot attack."
 
 
@@ -131,7 +131,7 @@ class HostageCannotMoveException(HostageActivityException):
   """
   Raised if team_name captured owner tries to move.
   """
-  ERR_CODE = "HOSTAGE_CANNOT_MOVE_ERROR"
+  ERR_CODE = "HOSTAGE_CANNOT_MOVE_EXCEPTION"
   MSG = "Captured owner cannot move."
 
 
@@ -139,7 +139,7 @@ class HostageCannotScanException(HostageActivityException):
   """
   Raised if team_name captured owner tries to blocking team_name square_name.
   """
-  ERR_CODE = "HOSTAGE_CANNOT_SCAN_ERROR"
+  ERR_CODE = "HOSTAGE_CANNOT_SCAN_EXCEPTION"
   MSG = "Captured owner cannot blocking team_name sqaure."
 
 

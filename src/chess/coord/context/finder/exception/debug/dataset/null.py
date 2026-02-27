@@ -36,5 +36,5 @@ class CoordDatasetNullException(CoordException, NullDatasetException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "COORD_DATASET_NULL_ERROR"
+    ERR_CODE = "COORD_DATASET_NULL_EXCEPTION"
     MSG = "Coord dataset cannot be null."

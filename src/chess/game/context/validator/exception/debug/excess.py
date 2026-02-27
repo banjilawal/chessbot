@@ -38,7 +38,7 @@ class ArenaGameContextFlagsException(InvalidGameContextException, ContextFlagCou
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "ARENA_GAME_CONTEXT_FLAG_ERROR"
+    ERR_CODE = "ARENA_GAME_CONTEXT_FLAG_EXCEPTION"
     MSG = (
         "Arena GameContext flags were set. an Game search can only use one-and-only "
         "map flag at a time."

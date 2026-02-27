@@ -11,5 +11,5 @@ from chess.system import ChessException
 
 
 class SceneException(ChessException):
-  ERR_CODE = "SCENE_ERROR"
+  ERR_CODE = "SCENE_EXCEPTION"
   MSG = "A Scene object raised an exception"

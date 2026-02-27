@@ -50,7 +50,7 @@ class NullSnapshotException(NullException):
     # INHERITED METHODS:
         *   See NullException class for inherited methods.
     """
-    ERR_CODE = "NULL_SNAPSHOT_ERROR"
+    ERR_CODE = "NULL_SNAPSHOT_EXCEPTION"
     MSG = "Snapshot validation failed: The candidate cannot be null."
     VAR: None
     VAL = None

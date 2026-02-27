@@ -36,5 +36,5 @@ class StaleRelationException(RelationDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "STALE_RELATION_LINK_ERROR"
+    ERR_CODE = "STALE_RELATION_LINK_EXCEPTION"
     MSG = "The primary had a stale link to a former satellite."

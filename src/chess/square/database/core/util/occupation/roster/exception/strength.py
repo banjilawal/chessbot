@@ -36,5 +36,5 @@ class CannotDeployUnderStrengthTeamException(SquareDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "CANNOT_DEPLOY_UNDER_STRENGTH_TEAM_ERROR"
+    ERR_CODE = "CANNOT_DEPLOY_UNDER_STRENGTH_TEAM_EXCEPTION"
     MSG = "Roster deployment failed: The roster did not have all 16 members available."

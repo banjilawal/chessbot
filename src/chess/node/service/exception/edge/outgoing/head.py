@@ -38,5 +38,5 @@ class OutgoingEdgeWrongHeadException(NodeException, InsertionException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "OUTGOING_EDGE_WRONG_HEAD_ERROR"
+    ERR_CODE = "OUTGOING_EDGE_WRONG_HEAD_EXCEPTION"
     MSG = "Inserting an outgoing edge failed: The edge was originated from a different node."

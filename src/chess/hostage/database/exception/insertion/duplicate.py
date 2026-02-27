@@ -36,5 +36,5 @@ class AddingDuplicateHostageException(HostageDatabase):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "ADDING_DUPLICATE_HOSTAGE_ERROR"
+    ERR_CODE = "ADDING_DUPLICATE_HOSTAGE_EXCEPTION"
     MSG = "Unique Hostage insertion failed: The manifest was already present."

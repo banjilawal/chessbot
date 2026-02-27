@@ -34,5 +34,5 @@ class NullPersonaKeyException(PersonaKeyException, NullException):
     # ATTRIBUTES:
     None
     """
-    ERR_CODE = "NULL_PERSON_KEY_ERROR"
+    ERR_CODE = "NULL_PERSON_KEY_EXCEPTION"
     MSG = "PersonKey validation failed: The candidate was null."

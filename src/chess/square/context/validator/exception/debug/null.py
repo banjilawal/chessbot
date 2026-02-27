@@ -50,7 +50,7 @@ class SquareTokenYException(TokenException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    ERR_CODE = "SQUARE_TOKEN_Y_AXIS_ERROR"
+    ERR_CODE = "SQUARE_TOKEN_Y_AXIS_EXCEPTION"
     MSG = "Square validation failed: The y_axis was token."
     VAR: None
     VAL = None

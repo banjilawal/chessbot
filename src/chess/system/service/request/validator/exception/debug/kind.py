@@ -51,7 +51,7 @@ class ArgumentTypeException(ServiceRequestDebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    ERR_CODE = "WRONG_ARGUMENT_TYPE_ERROR"
+    ERR_CODE = "WRONG_ARGUMENT_TYPE_EXCEPTION"
     MSG = "service_request.arguments[identifier]: has wrong type"
     VAR = None
     VAL = None

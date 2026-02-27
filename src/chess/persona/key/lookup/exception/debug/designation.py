@@ -40,5 +40,5 @@ class PersonaDesignationBoundsException(PersonaException, BoundsException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "PERSONA_DESIGNATION_BOUNDS_ERROR"
+    ERR_CODE = "PERSONA_DESIGNATION_BOUNDS_EXCEPTION"
     MSG = "PersonaLookup failed: Target was outside the set of possible Persona designations."

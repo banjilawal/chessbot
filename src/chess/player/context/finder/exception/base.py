@@ -38,5 +38,5 @@ class AgentFinderException(AgentException, FinderException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "AGENT_FINDER_ERROR"
+    ERR_CODE = "AGENT_FINDER_EXCEPTION"
     MSG = "AgentFinder raised an exception."

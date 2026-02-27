@@ -37,7 +37,7 @@ class TokenSearchIdCollisionException(Token, CollisionException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "TOKEN_SEARCH_ID_COLLISION_ERROR"
+    ERR_CODE = "TOKEN_SEARCH_ID_COLLISION_EXCEPTION"
     MSG = (
         "TokenSearch failed: There was id collision. The results contain different tokens that share an id."
     )

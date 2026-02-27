@@ -38,7 +38,7 @@ class CaptivityContextException(HostageException, ContextException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "HOSTAGE_CONTEXT_ERROR"
+    ERR_CODE = "HOSTAGE_CONTEXT_EXCEPTION"
     DEFAULT_ERR_CODE = "HostageContext raised an exception."
     CLS_NAME = "HostageContext"
     

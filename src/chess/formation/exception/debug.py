@@ -52,7 +52,7 @@ class FormationDebugException(DebugException):
     # INHERITED METHODS:
         *   See ChessException class for inherited methods.
     """
-    ERR_CODE = "FORMATION_ERROR"
+    ERR_CODE = "FORMATION_EXCEPTION"
     MSG: str = "A variable in Formation raised an exception."
     VAR: None
     VAL = None
