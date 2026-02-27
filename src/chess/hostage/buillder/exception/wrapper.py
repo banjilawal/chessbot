@@ -51,7 +51,7 @@ class HostageBuildException(BuildException):
    None
 
     # INHERITED METHODS:
-        *   See WrapperException class for inherited methods.
+        *   See WorkerException class for inherited methods.
     """
     ERR_CODE = "HOSTAGE_BUILD_FAILED"
     MSG = "Hostage build failed."

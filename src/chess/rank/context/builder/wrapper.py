@@ -51,7 +51,7 @@ class TokenContextBuildException(BuildException):
    None
 
     # INHERITED METHODS:
-        *   See WrapperException class for inherited methods.
+        *   See WorkerException class for inherited methods.
     """
     ERR_CODE = "TOKEN_CONTEXT_BUILD_FAILED"
     MSG = "TokenContext build failed."

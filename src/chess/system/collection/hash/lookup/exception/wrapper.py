@@ -48,7 +48,7 @@ class LookupException(CollectionOperationException):
    None
 
     # INHERITED METHODS:
-        *   See WrapperException class for inherited methods.
+        *   See WorkerException class for inherited methods.
     """
     DEFAULT_CODE = "LOOKUP_FAILED_EXCEPTION"
     MSG = "Lookup failed."

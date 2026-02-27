@@ -48,7 +48,7 @@ class AnalysisException(OperationException):
    None
 
     # INHERITED METHODS:
-        *   See WrapperException class for inherited methods.
+        *   See WorkerException class for inherited methods.
     """
     ERR_CODE = "RELATION_ANALYSIS_FAILURE"
     MSG = "Relation analysis failed."

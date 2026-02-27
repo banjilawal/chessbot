@@ -51,7 +51,7 @@ class BuildException(OperationException):
    None
 
     # INHERITED METHODS:
-        *   See WrapperException class for inherited methods.
+        *   See WorkerException class for inherited methods.
     """
     ERR_CODE = "BUILD_FAILURE"
     MSG = "build failed."

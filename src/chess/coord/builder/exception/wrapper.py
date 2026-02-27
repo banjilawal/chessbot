@@ -51,7 +51,7 @@ class CoordBuildException(BuildException):
    None
 
     # INHERITED METHODS:
-        *   See WrapperException class for inherited methods.
+        *   See WorkerException class for inherited methods.
     """
     ERR_CODE = "COORD_BUILD_FAILED"
     MSG = "Coord build failed."

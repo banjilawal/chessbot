@@ -51,7 +51,7 @@ class GameContextBuildException(BuildException):
    None
 
     # INHERITED METHODS:
-        *   See WrapperException class for inherited methods.
+        *   See WorkerException class for inherited methods.
     """
     ERR_CODE = "GAME_CONTEXT_BUILD_FAILED"
     MSG = "GameContext build failed."

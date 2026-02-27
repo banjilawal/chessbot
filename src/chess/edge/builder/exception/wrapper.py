@@ -51,7 +51,7 @@ class EdgeBuildException(BuildException):
    None
 
     # INHERITED METHODS:
-        *   See WrapperException class for inherited methods.
+        *   See WorkerException class for inherited methods.
     """
     ERR_CODE = "EDGE_BUILD_FAILED"
     MSG = "Edge build failed."

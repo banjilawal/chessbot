@@ -51,7 +51,7 @@ class PlayerBuildException(BuildException):
    None
 
     # INHERITED METHODS:
-        *   See WrapperException class for inherited methods.
+        *   See WorkerException class for inherited methods.
     """
     ERR_CODE = "PLAYER_BUILD_FAILED"
     MSG = "Player build failed."

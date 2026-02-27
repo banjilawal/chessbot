@@ -51,7 +51,7 @@ class BoardContextBuildException(BuildException):
    None
 
     # INHERITED METHODS:
-        *   See WrapperException class for inherited methods.
+        *   See WorkerException class for inherited methods.
     """
     ERR_CODE = "BOARD_CONTEXT_BUILD_FAILED"
     MSG = "BoardContext build failed."

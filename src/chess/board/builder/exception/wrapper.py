@@ -51,7 +51,7 @@ class BoardBuildException(BuildException):
    None
 
     # INHERITED METHODS:
-        *   See WrapperException class for inherited methods.
+        *   See WorkerException class for inherited methods.
     """
     ERR_CODE = "BOARD_BUILD_FAILED"
     MSG = "Board build failed."

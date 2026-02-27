@@ -50,7 +50,7 @@ class VectorBuildException(BuildException):
    None
 
     # INHERITED METHODS:
-        *   See WrapperException class for inherited methods.
+        *   See WorkerException class for inherited methods.
     """
     ERR_CODE = "VECTOR_BUILD_FAILED"
     MSG = "Vector build failed."

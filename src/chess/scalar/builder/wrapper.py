@@ -51,7 +51,7 @@ class ScalarBuildException(BuildException):
    None
 
     # INHERITED METHODS:
-        *   See WrapperException class for inherited methods.
+        *   See WorkerException class for inherited methods.
     """
     ERR_CODE = "SCALAR_BUILD_FAILED"
     MSG = "Scalar build failed."

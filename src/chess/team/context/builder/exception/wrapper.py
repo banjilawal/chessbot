@@ -51,7 +51,7 @@ class TeamContextBuildException(BuildException):
    None
 
     # INHERITED METHODS:
-        *   See WrapperException class for inherited methods.
+        *   See WorkerException class for inherited methods.
     """
     ERR_CODE = "TEAM_CONTEXT_BUILD_FAILED"
     MSG = "TeamContext build failed."

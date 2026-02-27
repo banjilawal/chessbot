@@ -1,7 +1,7 @@
-# src/chess/system/err/wrapper.py
+# src/chess/system/err/worker.py
 
 """
-Module: chess.system.err.wrapper
+Module: chess.system.err.worker
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -11,20 +11,22 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# WRAPPER EXCEPTION #======================#
-    "WrapperException",
+    # ======================# WORKER_EXCEPTION #======================#
+    "WorkerException",
 ]
 
 from chess.system import ChessException
 
-# ======================# WRAPPER EXCEPTION #======================#
-class WrapperException(ChessException):
+# ======================# WORKER_EXCEPTION #======================#
+class WorkerException(ChessException):
     """
     # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate the worker method, where an operation using the client's data failed.
-    3.  Middle part of the 3-layer exception chain. Should only contain a DebugException.
+    1.  Abstract exception for Worker subclasses which indicate
+            *   The worker
+            *   It's method
+        that produced an exception instead of a payload in it's result.
     
     # NAMING CONVENTION:
     1.  Prefix is the Class name with the Result name. The operation name should match the Result subclass.
@@ -67,7 +69,7 @@ class WrapperException(ChessException):
         *   See ChessException class for inherited methods.
     """
     ERR_CODE = "METHOD_FAILURE"
-    MSG = "A method failed."
+    MSG = "method failed."
     MTHD: None
     
     _mthd: Optional[str]

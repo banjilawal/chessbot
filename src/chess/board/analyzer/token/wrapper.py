@@ -25,7 +25,7 @@ class BoardTokenAnalysisException(AnalysisException):
         status has been evaluated.
 
     # PARENT:
-        *   WrapperException
+        *   WorkerException
 
     # PROVIDES:
     None

@@ -51,7 +51,7 @@ class SnapshotBuildException(BuildException):
    None
 
     # INHERITED METHODS:
-        *   See WrapperException class for inherited methods.
+        *   See WorkerException class for inherited methods.
     """
     ERR_CODE = "SNAPSHOT_BUILD_FAILED"
     MSG = "Snapshot build failed."

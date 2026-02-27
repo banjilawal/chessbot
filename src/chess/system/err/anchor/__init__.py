@@ -14,3 +14,4 @@ None
 
 # Modules
 from .root import AnchorException
+from .template import TanchorException

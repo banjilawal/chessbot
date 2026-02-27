@@ -50,7 +50,7 @@ class CollisionDetectionException(CollectionOperationException):
    None
 
     # INHERITED METHODS:
-        *   See WrapperException class for inherited methods.
+        *   See WorkerException class for inherited methods.
     """
     ERR_CODE = "COLLISION_DETECTION_FAILURE"
     MSG = "Collision detection failed."

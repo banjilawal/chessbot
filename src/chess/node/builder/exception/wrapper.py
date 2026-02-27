@@ -51,7 +51,7 @@ class NodeBuildException(BuildException):
    None
 
     # INHERITED METHODS:
-        *   See WrapperException class for inherited methods.
+        *   See WorkerException class for inherited methods.
     """
     ERR_CODE = "NODE_BUILD_FAILED"
     MSG = "Node build failed."

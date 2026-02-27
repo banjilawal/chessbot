@@ -51,7 +51,7 @@ class TeamBuildException(BuildException):
    None
 
     # INHERITED METHODS:
-        *   See WrapperException class for inherited methods.
+        *   See WorkerException class for inherited methods.
     """
     ERR_CODE = "TEAM_BUILD_FAILED"
     MSG = "Team build failed."

@@ -51,7 +51,7 @@ class SquareBuildException(BuildException):
    None
 
     # INHERITED METHODS:
-        *   See WrapperException class for inherited methods.
+        *   See WorkerException class for inherited methods.
     """
     ERR_CODE = "SQUARE_BUILD_FAILED"
     MSG = "Square build failed."

@@ -51,7 +51,7 @@ class PlayerContextBuildException(BuildException):
    None
 
     # INHERITED METHODS:
-        *   See WrapperException class for inherited methods.
+        *   See WorkerException class for inherited methods.
     """
     ERR_CODE = "PLAYER_CONTEXT_BUILD_FAILED"
     MSG = "PlayerContext build failed."

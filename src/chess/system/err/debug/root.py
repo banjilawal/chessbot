@@ -11,21 +11,23 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# DEBUG EXCEPTION #======================#
+    # ======================# DEBUG_EXCEPTION #======================#
     "DebugException",
 ]
 
 from chess.system import ChessException
 
-# ======================# DEBUG EXCEPTION #======================#
+# ======================# DEBUG_EXCEPTION #======================#
 class DebugException(ChessException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    # ROLE: Capture Error Variable State, Exception Chain Layer 2, Exception Messaging
     
     # RESPONSIBILITIES:
-    1.  Identifies the code block in a method where the error occurred.
-    2.  Describe what condition or state prevented an operation from completing successfully.
-    3.  Lowest part of the 3-layer exception chain. Should not contain other exceptions.
+    1.  Produce the:
+            *   variable,
+            *   it's Value,
+            *   event which fired the variable into its error state.
+        which occurred in the Anchor method identified in layer-0 of the exception chain.
     
     # ERROR CODE CONVENTION:
     1.  All caps, snake case description of the error with _EXCEPTION as the suffix.

@@ -51,7 +51,7 @@ class ArenaBuildException(BuildException):
    None
 
     # INHERITED METHODS:
-        *   See WrapperException class for inherited methods.
+        *   See WorkerException class for inherited methods.
     """
     ERR_CODE = "ARENA_BUILD_FAILED"
     MSG = "Arena build failed."

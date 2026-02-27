@@ -51,7 +51,7 @@ class RankContextBuildException(BuildException):
    None
 
     # INHERITED METHODS:
-        *   See WrapperException class for inherited methods.
+        *   See WorkerException class for inherited methods.
     """
     ERR_CODE = "RANK_CONTEXT_BUILD_FAILED"
     MSG = "RankContext build failed."

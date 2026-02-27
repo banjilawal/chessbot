@@ -51,7 +51,7 @@ class SquareContextBuildException(BuildException):
    None
 
     # INHERITED METHODS:
-        *   See WrapperException class for inherited methods.
+        *   See WorkerException class for inherited methods.
     """
     ERR_CODE = "SQUARE_CONTEXT_BUILD_FAILED"
     MSG = "SquareContext build failed."

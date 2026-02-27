@@ -15,11 +15,11 @@ __all__ = [
     "OperationException",
 ]
 
-from chess.system import WrapperException
+from chess.system import WorkerException
 
 
 # ======================# OPERATION_FAILURE #======================#
-class OperationException(WrapperException):
+class OperationException(WorkerException):
     """
     # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
@@ -45,7 +45,7 @@ class OperationException(WrapperException):
     2.  The Syntax is: [Class] operation failed.
 
     # PARENT:
-        *   WrapperException
+        *   WorkerException
 
     # PROVIDES:
     None
@@ -55,7 +55,7 @@ class OperationException(WrapperException):
         *   rslt_type (Optional[str])
 
     # INHERITED ATTRIBUTES:
-        *   See WrapperException class for inherited attributes.
+        *   See WorkerException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:)
         *   err_code (str)
@@ -69,7 +69,7 @@ class OperationException(WrapperException):
    None
 
     # INHERITED METHODS:
-        *   See WrapperException class for inherited methods.
+        *   See WorkerException class for inherited methods.
     """
     ERR_CODE = "METHOD_FAILURE"
     MSG = "Method failed."

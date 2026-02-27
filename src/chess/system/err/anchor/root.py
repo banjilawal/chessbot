@@ -21,11 +21,14 @@ from chess.system import ChessException
 # ======================# ANCHOR_EXCEPTION #======================#
 class AnchorException(ChessException):
     """
-    # ROLE: Debug Coverage Target, Exception Chain Layer 0
+    # ROLE: Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Reporting and coverage target for Anchor DebugExceptions.
-    2.  Indicate which Anchor method received a worker's failure result.
+    1.  Provide Anchor as:
+            *   Reporting
+            *   Coverage
+        target for layer-2 debugging exceptions.
+    2.  Indicate which Anchor method received a worker's (layer-1) failure result.
 
     # NAMING CONVENTION:
     1.  Class name followed by the Exception suffix

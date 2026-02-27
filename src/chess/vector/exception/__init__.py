@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .super import  VectorException
+from .anchor import VectorException
 from .debug import VectorDebugException

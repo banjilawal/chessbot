@@ -25,7 +25,7 @@ class ArenaTeamAnalysisException(AnalysisException):
         status has been evaluated.
 
     # PARENT:
-        *   WrapperException
+        *   WorkerException
 
     # PROVIDES:
     None

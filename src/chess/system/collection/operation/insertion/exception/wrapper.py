@@ -49,7 +49,7 @@ class InsertionException(CollectionOperationException):
    None
 
     # INHERITED METHODS:
-        *   See WrapperException class for inherited methods.
+        *   See WorkerException class for inherited methods.
     """
     ERR_CODE = "INSERTION_FAILURE"
     MSG = "Insertion failed."

@@ -19,7 +19,7 @@ __all__ = [
 # ======================# FORMATION_LOOKUP_WRAPPER EXCEPTION #======================#
 class FormationLookupFailedException(FormationException, LookupException):
     """
-    # ROLE: WrapperException, Encapsulation
+    # ROLE: WorkerException, Encapsulation
 
     # RESPONSIBILITIES:
     1.  If a Formation lookup runs into an error a debug exception is created and encapsulated in a
