@@ -18,10 +18,12 @@ S = TypeVar("S")
 
 class CommandPipeline(ABC, Generic[S]):
     """
-    # ROLE: Pipeline
+    # ROLE: Pipeline, Integrity Lifecycle Manager. Worker
 
     # RESPONSIBILITIES:
-    1.  Pipeline commands a command to the service's appropriate method.
+    1.  Integrity Lifecycle of a Command.
+            *   Validating a ServiceRequest object.
+            *   Building a Command instance from the ServiceRequest.
 
     # PARENT:
     None
@@ -30,7 +32,6 @@ class CommandPipeline(ABC, Generic[S]):
     None
 
     # LOCAL ATTRIBUTES:
-        *   router: (CommandRouter[S])
         *   builder: (Builder[Command])
         *   request_validator: (TypeRequestValidator)
 
@@ -38,7 +39,6 @@ class CommandPipeline(ABC, Generic[S]):
     None.
 
     # CONSTRUCTOR PARAMETERS:)
-        *   router: (CommandRouter[S])
         *   builder: (Builder[Command])
         *   request_validator: (TypeRequestValidator)
 
@@ -48,24 +48,17 @@ class CommandPipeline(ABC, Generic[S]):
     # INHERITED METHODS:
     None
     """
-    _router: CommandRouter[S]
     _builder: Builder[Command]
     _request_validator: TypeRequestValidator
     
     def __init__(
             self,
-            router: CommandRouter[S],
             builder: Builder[Command],
             request_validator: TypeRequestValidator = TypeRequestValidator(),
     ):
-        self._router = router
         self._builder = builder
         self._request_validator = request_validator
 
-    @property
-    def router(self) -> CommandRouter[S]:
-        return self._router
-    
     @property
     def builder(self) -> Builder[Command]:
         return self._builder
