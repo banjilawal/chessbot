@@ -1,9 +1,9 @@
-# src/chess/graph/exception.py
+# src/chess/graph/exception/anchor.py
 
 """
-Module: chess.graph.exception
+Module: chess.graph.exception.anchor
 Author: Banji Lawal
-Created: 2025-09-08
+Created: 2025-09-16
 version: 1.0.0
 """
 
@@ -17,23 +17,27 @@ __all__ = [
 
 from chess.system import AnchorException
 
-
 # ======================# GRAPH_EXCEPTION #======================#
-class  GraphException(AnchorException):
+class GraphException(AnchorException):
     """
-    # ROLE: Debug Coverage Target, Exception Chain Layer 0
+    # ROLE: Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Indicate that an error occurred in a graph.
+    1.  Provide Graph as:
+            *   Reporting
+            *   Coverage
+        target for layer-2 debugging exceptions.
+    2.  Indicate which Graph method received a worker's (layer-1) failure result.
 
     # PARENT:
-    *   AnchorException
+        *   AnchorException
 
     # PROVIDES:
     None
 
     # LOCAL ATTRIBUTES:
-    None
+        *   cls_name (Optional[str])
+        *   cls_mthd (Optional[str])
         
     # INHERITED ATTRIBUTES:
         *   See AnchorException class for inherited attributes.
@@ -43,6 +47,7 @@ class  GraphException(AnchorException):
         *   err_code (str)
         *   ex (Optional[Exception])
         *   cls_name (Optional[str])
+        *   cls_mthd (Optional[str])
 
     # LOCAL METHODS:
     None
@@ -50,22 +55,28 @@ class  GraphException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    ERR_CODE = " GRAPH_EXCEPTION"
-    MSG = " Graph raised an exception."
-    CLS_NAME = " Graph"
-    
-    _cls_name: Optional[str]
-    
+    ERR_CODE = "GRAPH_EXCEPTION"
+    MSG = "Exception raised in Graph"
+    CLS_NAME = "Graph"
+    CLS_MTHD = None
+ 
     def __init__(
             self,
             err_code: Optional[str] = None,
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
             cls_name: Optional[str] = None,
+            cls_mthd: Optional[str] = None,
     ):
-        err_code = err_code or self.ERR_CODE
         msg = msg or self.MSG
+        err_code = err_code or self.ERR_CODE
         cls_name = cls_name or self.CLS_NAME
-        super().__init__(msg=msg, err_code=err_code, ex=ex, cls_name=cls_name)
-
- 
+        cls_mthd = cls_mthd or self.CLS_MTHD
+        
+        super().__init__(
+            ex=ex,
+            msg=msg,
+            err_code=err_code,
+            cls_name=cls_name,
+            cls_mthd=cls_mthd
+        )

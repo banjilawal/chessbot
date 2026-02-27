@@ -1,9 +1,9 @@
-# src/chess/team/exception.py
+# src/chess/team/exception/anchor.py
 
 """
-Module: chess.team.exception
+Module: chess.team.exception.anchor
 Author: Banji Lawal
-Created: 2025-09-08
+Created: 2025-09-16
 version: 1.0.0
 """
 
@@ -19,21 +19,26 @@ from chess.system import AnchorException
 
 
 # ======================# TEAM_EXCEPTION #======================#
-class  TeamException(AnchorException):
+class TeamException(AnchorException):
     """
-    # ROLE: Debug Coverage Target, Exception Chain Layer 0
+    # ROLE: Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Indicate that an error occurred in a team.
+    1.  Provide Team as:
+            *   Reporting
+            *   Coverage
+        target for layer-2 debugging exceptions.
+    2.  Indicate which Team method received a worker's (layer-1) failure result.
 
     # PARENT:
-    *   AnchorException
+        *   AnchorException
 
     # PROVIDES:
     None
 
     # LOCAL ATTRIBUTES:
-    None
+        *   cls_name (Optional[str])
+        *   cls_mthd (Optional[str])
         
     # INHERITED ATTRIBUTES:
         *   See AnchorException class for inherited attributes.
@@ -43,6 +48,7 @@ class  TeamException(AnchorException):
         *   err_code (str)
         *   ex (Optional[Exception])
         *   cls_name (Optional[str])
+        *   cls_mthd (Optional[str])
 
     # LOCAL METHODS:
     None
@@ -50,22 +56,28 @@ class  TeamException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    ERR_CODE = " TEAM_EXCEPTION"
-    MSG = " Team raised an exception."
-    CLS_NAME = " Team"
-    
-    _cls_name: Optional[str]
-    
+    ERR_CODE = "TEAM_EXCEPTION"
+    MSG = "Exception raised in Team"
+    CLS_NAME = "Team"
+    CLS_MTHD = None
+ 
     def __init__(
             self,
             err_code: Optional[str] = None,
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
             cls_name: Optional[str] = None,
+            cls_mthd: Optional[str] = None,
     ):
-        err_code = err_code or self.ERR_CODE
         msg = msg or self.MSG
+        err_code = err_code or self.ERR_CODE
         cls_name = cls_name or self.CLS_NAME
-        super().__init__(msg=msg, err_code=err_code, ex=ex, cls_name=cls_name)
-
- 
+        cls_mthd = cls_mthd or self.CLS_MTHD
+        
+        super().__init__(
+            ex=ex,
+            msg=msg,
+            err_code=err_code,
+            cls_name=cls_name,
+            cls_mthd=cls_mthd
+        )

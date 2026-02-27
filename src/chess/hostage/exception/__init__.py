@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .super import  HostageException
+from .anchor import  HostageException
 from .debug import HostageDebugException

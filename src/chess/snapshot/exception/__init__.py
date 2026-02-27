@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .super import  SnapshotException
+from .anchor import  SnapshotException
 from .debug import SnapshotDebugException

@@ -13,6 +13,6 @@ version: 1.0.0
 from .edge import *
 
 # Modules
-from .super import  GraphException
+from .anchor import  GraphException
 from .debug import GraphDebugException
 from .computation import GraphComputationException

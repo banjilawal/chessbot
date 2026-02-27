@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .super import  GameException
+from .anchor import  GameException
 from .debug import GameDebugException

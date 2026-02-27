@@ -13,5 +13,5 @@ version: 1.0.0
 from .exploration import *
 
 # Modules
-from .super import BoardException
+from .anchor import BoardException
 from .debug import BoardDebugException

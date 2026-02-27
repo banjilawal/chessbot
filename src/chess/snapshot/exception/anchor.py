@@ -1,7 +1,7 @@
-# src/chess/vector/exception/anchor.py
+# src/chess/snapshot/exception/anchor.py
 
 """
-Module: chess.vector.exception.anchor
+Module: chess.snapshot.exception.anchor
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,24 +11,24 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# VECTOR_EXCEPTION #======================#
-    "VectorException",
+    # ======================# SNAPSHOT_EXCEPTION #======================#
+    "SnapshotException",
 ]
 
 from chess.system import AnchorException
 
 
-# ======================# VECTOR_EXCEPTION #======================#
-class VectorException(AnchorException):
+# ======================# SNAPSHOT_EXCEPTION #======================#
+class SnapshotException(AnchorException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Provide Vector as:
+    1.  Provide Snapshot as:
             *   Reporting
             *   Coverage
         target for layer-2 debugging exceptions.
-    2.  Indicate which Vector method received a worker's (layer-1) failure result.
+    2.  Indicate which Snapshot method received a worker's (layer-1) failure result.
 
     # PARENT:
         *   AnchorException
@@ -56,9 +56,9 @@ class VectorException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    ERR_CODE = "VECTOR_EXCEPTION"
-    MSG = "Exception raised in Vector"
-    CLS_NAME = "Vector"
+    ERR_CODE = "SNAPSHOT_EXCEPTION"
+    MSG = "Exception raised in Snapshot"
+    CLS_NAME = "Snapshot"
     CLS_MTHD = None
  
     def __init__(

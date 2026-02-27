@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .super import TokenException
+from .anchor import TokenException
 from .debug import TokenDebugException

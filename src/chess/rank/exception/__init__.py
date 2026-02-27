@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .super import  RankException
+from .anchor import  RankException
 from .debug import RankDebugException

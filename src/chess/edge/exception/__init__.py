@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .super import  EdgeException
+from .anchor import  EdgeException
 from .debug import EdgeDebugException

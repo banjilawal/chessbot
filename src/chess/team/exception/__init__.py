@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .super import TeamException
+from .anchor import TeamException
 from .debug import TeamDebugException

@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .super import  ArenaException
+from .anchor import  ArenaException
 from .debug import ArenaDebugException
