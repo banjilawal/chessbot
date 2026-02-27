@@ -66,8 +66,8 @@ class AnchorException(ChessException):
         *   See ChessException class for inherited methods.
     """
     ERR_CODE = "ANCHOR_EXCEPTION"
-    MSG = "Class exception was raised."
-    CLS_NAME = "Class"
+    MSG = "Exception raised in Anchor"
+    CLS_NAME = "Anchor"
     CLS_MTHD = None
 
     _cls_name: Optional[str]
