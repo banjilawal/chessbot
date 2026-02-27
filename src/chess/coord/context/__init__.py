@@ -15,7 +15,7 @@ from .builder import *
 from .finder import *
 from .service import *
 from .validator import *
+from .exception import *
 
 # Modules
 from .context import CoordContext
-from .exception import CoordContextException

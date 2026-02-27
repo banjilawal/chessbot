@@ -14,7 +14,7 @@ from .builder import *
 from .finder import *
 from .service import *
 from .validator import *
+from .exception import *
 
 # Modules
-from .exception import *
 from .context import NodeContext

@@ -3,7 +3,7 @@
 """
 Module: chess.square.context.exception.__init__
 Author: Banji Lawal
-Created: 2026-02-23
+Created: 2025-10-01
 version: 1.0.0
 """
 
@@ -13,5 +13,4 @@ version: 1.0.0
 None
 
 # Modules
-from .super import SquareContextException
-from .debug import SquareContextDebugException
+from .anchor import SquareContextException
