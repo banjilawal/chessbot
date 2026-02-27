@@ -11,7 +11,8 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
 
-from chess.system import Command, LoggingLevelRouter
+from chess.system import LoggingLevelRouter
+from chess.system.service.pipeline import CommandPipeline
 
 S = TypeVar("S")
 
@@ -46,7 +47,7 @@ class CommandRouter(ABC, Generic[S]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def route(self, command: Command) -> Any:
+    def route(self, pipeline: CommandPipeline) -> Any:
         pass
         
     

@@ -1,12 +1,12 @@
-# src/chess/system/service/menu/router/__init__.py
+# src/chess/system/service/route/__init__.py
 
 """
-Module: chess.system.service.menu.router.__init__
+Module: chess.system.service.route.__init__
 Author: Banji Lawal
-Created: 2026-02-24
+Created: 2025-11-18
 """
 
-# =========== SYSTEM.SERVICE.MENU.ROUTER PACKAGE CONTENTS ===========#
+# =========== SYSTEM.SERVICE.ROUTE PACKAGE CONTENTS ===========#
 
 # Packages
 from .exception import *

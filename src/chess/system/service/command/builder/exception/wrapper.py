@@ -1,7 +1,7 @@
-# src/chess/square/service/build/request/validator/wrapper.py
+# src/chess/system/service/command/builder/exception/wrapper.py
 
 """
-Module: chess.square.service.build.request.validator.wrapper
+Module: chess.system.service.command.builder.exception.wrapper
 Author: Banji Lawal
 Created: 2026-02-24
 """
@@ -10,21 +10,20 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# SQUARE_BUILD_REQUEST_FAILURE #======================#
-    "SquareBuildCommandFabException",
+    # ======================# COMMAND_BUILD_FAILURE #======================#
+    "CommandBuilderException",
 ]
 
 from chess.system import BuildException
 
 
-# ======================# SQUARE_BUILD_REQUEST_FAILURE #======================#
-class SquareBuildCommandFabException(BuildException):
+# ======================# COMMAND_BUILD_FAILURE #======================#
+class CommandBuilderException(BuildException):
     """
     # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  An error occurred in SquareBuildCommandValidator.validate that, prevented a success
-        result from being returned.
+    1.  Indicate that an error prevented CommandBuilder from returning a product.
 
         # PARENT:
             *   BuildException
@@ -36,7 +35,7 @@ class SquareBuildCommandFabException(BuildException):
         None
 
         # INHERITED ATTRIBUTES:
-            *   See OperationException class for inherited attributes.
+            *   See BuildException class for inherited attributes.
 
         # CONSTRUCTOR PARAMETERS:)
             *   err_code (str)
@@ -52,8 +51,8 @@ class SquareBuildCommandFabException(BuildException):
         # INHERITED METHODS:
             *   See WrapperException class for inherited methods.
         """
-    ERR_CODE = "SQUARE_BUILD_REQUEST_FAILED"
-    MSG = "SquareBuildRequest validation failed."
+    ERR_CODE = "COMMAND_BUILD_FAILURE"
+    MSG = "CommandBuilder returned an error."
     MTHD = "build"
     OP = "Build"
     RSLT_TYPE = "BuildResult"

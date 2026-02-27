@@ -12,4 +12,4 @@ Created: 2025-11-18
 from .exception import *
 
 # Modules
-from .stream import CommandStream
+from .stream import ServiceStream
