@@ -3,7 +3,7 @@
 """
 Module: chess.square.context.exception.anchor
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-10-01
 version: 1.0.0
 """
 
@@ -11,19 +11,20 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# SQUARE_CONTEXT_CONTEXT_EXCEPTION #======================#
+    # ======================# SQUARE_CONTEXT_EXCEPTION #======================#
     "SquareContextException",
 ]
 
 from chess.system import AnchorException
 
-# ======================# SQUARE_CONTEXT_CONTEXT_EXCEPTION #======================#
+
+# ======================# SQUARE_CONTEXT_EXCEPTION #======================#
 class SquareContextException(AnchorException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Provide SquareContext as:
+    1.  Provide SquareContext as a:
             *   Reporting
             *   Coverage
         target for layer-2 debugging exceptions.
@@ -55,7 +56,7 @@ class SquareContextException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    ERR_CODE = "SQUARE_CONTEXT_CONTEXT_EXCEPTION"
+    ERR_CODE = "SQUARE_CONTEXT_EXCEPTION"
     MSG = "Exception raised in SquareContext"
     CLS_NAME = "SquareContext"
     CLS_MTHD = None

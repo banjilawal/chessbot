@@ -3,7 +3,7 @@
 """
 Module: chess.player.context.exception.anchor
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-10-01
 version: 1.0.0
 """
 
@@ -11,19 +11,20 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# PLAYER_CONTEXT_CONTEXT_EXCEPTION #======================#
+    # ======================# PLAYER_CONTEXT_EXCEPTION #======================#
     "PlayerContextException",
 ]
 
 from chess.system import AnchorException
 
-# ======================# PLAYER_CONTEXT_CONTEXT_EXCEPTION #======================#
+
+# ======================# PLAYER_CONTEXT_EXCEPTION #======================#
 class PlayerContextException(AnchorException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Provide PlayerContext as:
+    1.  Provide PlayerContext as a:
             *   Reporting
             *   Coverage
         target for layer-2 debugging exceptions.
@@ -55,7 +56,7 @@ class PlayerContextException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    ERR_CODE = "PLAYER_CONTEXT_CONTEXT_EXCEPTION"
+    ERR_CODE = "PLAYER_CONTEXT_EXCEPTION"
     MSG = "Exception raised in PlayerContext"
     CLS_NAME = "PlayerContext"
     CLS_MTHD = None

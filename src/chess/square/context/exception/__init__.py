@@ -14,3 +14,4 @@ None
 
 # Modules
 from .anchor import SquareContextException
+from .debug import SquareContextDebugException

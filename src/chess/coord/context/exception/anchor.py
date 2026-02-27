@@ -3,7 +3,7 @@
 """
 Module: chess.coord.context.exception.anchor
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-10-01
 version: 1.0.0
 """
 
@@ -11,19 +11,20 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# COORD_CONTEXT_CONTEXT_EXCEPTION #======================#
+    # ======================# COORD_CONTEXT_EXCEPTION #======================#
     "CoordContextException",
 ]
 
 from chess.system import AnchorException
 
-# ======================# COORD_CONTEXT_CONTEXT_EXCEPTION #======================#
+
+# ======================# COORD_CONTEXT_EXCEPTION #======================#
 class CoordContextException(AnchorException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Provide CoordContext as:
+    1.  Provide CoordContext as a:
             *   Reporting
             *   Coverage
         target for layer-2 debugging exceptions.
@@ -55,7 +56,7 @@ class CoordContextException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    ERR_CODE = "COORD_CONTEXT_CONTEXT_EXCEPTION"
+    ERR_CODE = "COORD_CONTEXT_EXCEPTION"
     MSG = "Exception raised in CoordContext"
     CLS_NAME = "CoordContext"
     CLS_MTHD = None

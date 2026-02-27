@@ -3,7 +3,7 @@
 """
 Module: chess.board.context.exception.anchor
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-10-01
 version: 1.0.0
 """
 
@@ -11,19 +11,20 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# BOARD_CONTEXT_CONTEXT_EXCEPTION #======================#
+    # ======================# BOARD_CONTEXT_EXCEPTION #======================#
     "BoardContextException",
 ]
 
 from chess.system import AnchorException
 
-# ======================# BOARD_CONTEXT_CONTEXT_EXCEPTION #======================#
+
+# ======================# BOARD_CONTEXT_EXCEPTION #======================#
 class BoardContextException(AnchorException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Provide BoardContext as:
+    1.  Provide BoardContext as a:
             *   Reporting
             *   Coverage
         target for layer-2 debugging exceptions.
@@ -55,7 +56,7 @@ class BoardContextException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    ERR_CODE = "BOARD_CONTEXT_CONTEXT_EXCEPTION"
+    ERR_CODE = "BOARD_CONTEXT_EXCEPTION"
     MSG = "Exception raised in BoardContext"
     CLS_NAME = "BoardContext"
     CLS_MTHD = None

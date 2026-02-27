@@ -14,3 +14,4 @@ None
 
 # Modules
 from .anchor import HostageContextException
+from .debug import HostageContextDebugException

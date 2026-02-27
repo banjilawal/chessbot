@@ -14,3 +14,4 @@ None
 
 # Modules
 from .anchor import SnapshotContextException
+from .debug import SnapshotContextDebugException

@@ -3,7 +3,7 @@
 """
 Module: chess.game.context.exception.anchor
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-10-01
 version: 1.0.0
 """
 
@@ -11,19 +11,20 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# GAME_CONTEXT_CONTEXT_EXCEPTION #======================#
+    # ======================# GAME_CONTEXT_EXCEPTION #======================#
     "GameContextException",
 ]
 
 from chess.system import AnchorException
 
-# ======================# GAME_CONTEXT_CONTEXT_EXCEPTION #======================#
+
+# ======================# GAME_CONTEXT_EXCEPTION #======================#
 class GameContextException(AnchorException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Provide GameContext as:
+    1.  Provide GameContext as a:
             *   Reporting
             *   Coverage
         target for layer-2 debugging exceptions.
@@ -55,7 +56,7 @@ class GameContextException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    ERR_CODE = "GAME_CONTEXT_CONTEXT_EXCEPTION"
+    ERR_CODE = "GAME_CONTEXT_EXCEPTION"
     MSG = "Exception raised in GameContext"
     CLS_NAME = "GameContext"
     CLS_MTHD = None

@@ -14,3 +14,4 @@ None
 
 # Modules
 from .anchor import BoardContextException
+from .debug import BoardContextDebugException

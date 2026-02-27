@@ -3,7 +3,7 @@
 """
 Module: chess.edge.context.exception.anchor
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-10-01
 version: 1.0.0
 """
 
@@ -11,19 +11,20 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# EDGE_CONTEXT_CONTEXT_EXCEPTION #======================#
+    # ======================# EDGE_CONTEXT_EXCEPTION #======================#
     "EdgeContextException",
 ]
 
 from chess.system import AnchorException
 
-# ======================# EDGE_CONTEXT_CONTEXT_EXCEPTION #======================#
+
+# ======================# EDGE_CONTEXT_EXCEPTION #======================#
 class EdgeContextException(AnchorException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Provide EdgeContext as:
+    1.  Provide EdgeContext as a:
             *   Reporting
             *   Coverage
         target for layer-2 debugging exceptions.
@@ -55,7 +56,7 @@ class EdgeContextException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    ERR_CODE = "EDGE_CONTEXT_CONTEXT_EXCEPTION"
+    ERR_CODE = "EDGE_CONTEXT_EXCEPTION"
     MSG = "Exception raised in EdgeContext"
     CLS_NAME = "EdgeContext"
     CLS_MTHD = None

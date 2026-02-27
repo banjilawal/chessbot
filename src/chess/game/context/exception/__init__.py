@@ -14,3 +14,4 @@ None
 
 # Modules
 from .anchor import GameContextException
+from .debug import GameContextDebugException

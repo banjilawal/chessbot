@@ -3,7 +3,7 @@
 """
 Module: chess.hostage.context.exception.anchor
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-10-01
 version: 1.0.0
 """
 
@@ -11,19 +11,20 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# HOSTAGE_CONTEXT_CONTEXT_EXCEPTION #======================#
+    # ======================# HOSTAGE_CONTEXT_EXCEPTION #======================#
     "HostageContextException",
 ]
 
 from chess.system import AnchorException
 
-# ======================# HOSTAGE_CONTEXT_CONTEXT_EXCEPTION #======================#
+
+# ======================# HOSTAGE_CONTEXT_EXCEPTION #======================#
 class HostageContextException(AnchorException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Provide HostageContext as:
+    1.  Provide HostageContext as a:
             *   Reporting
             *   Coverage
         target for layer-2 debugging exceptions.
@@ -55,7 +56,7 @@ class HostageContextException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    ERR_CODE = "HOSTAGE_CONTEXT_CONTEXT_EXCEPTION"
+    ERR_CODE = "HOSTAGE_CONTEXT_EXCEPTION"
     MSG = "Exception raised in HostageContext"
     CLS_NAME = "HostageContext"
     CLS_MTHD = None

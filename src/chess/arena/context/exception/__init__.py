@@ -14,3 +14,4 @@ None
 
 # Modules
 from .anchor import ArenaContextException
+from .debug import ArenaContextDebugException

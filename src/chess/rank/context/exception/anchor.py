@@ -3,7 +3,7 @@
 """
 Module: chess.rank.context.exception.anchor
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-10-01
 version: 1.0.0
 """
 
@@ -11,19 +11,20 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# RANK_CONTEXT_CONTEXT_EXCEPTION #======================#
+    # ======================# RANK_CONTEXT_EXCEPTION #======================#
     "RankContextException",
 ]
 
 from chess.system import AnchorException
 
-# ======================# RANK_CONTEXT_CONTEXT_EXCEPTION #======================#
+
+# ======================# RANK_CONTEXT_EXCEPTION #======================#
 class RankContextException(AnchorException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Provide RankContext as:
+    1.  Provide RankContext as a:
             *   Reporting
             *   Coverage
         target for layer-2 debugging exceptions.
@@ -55,7 +56,7 @@ class RankContextException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    ERR_CODE = "RANK_CONTEXT_CONTEXT_EXCEPTION"
+    ERR_CODE = "RANK_CONTEXT_EXCEPTION"
     MSG = "Exception raised in RankContext"
     CLS_NAME = "RankContext"
     CLS_MTHD = None

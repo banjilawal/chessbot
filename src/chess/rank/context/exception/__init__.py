@@ -14,3 +14,4 @@ None
 
 # Modules
 from .anchor import RankContextException
+from .debug import RankContextDebugException

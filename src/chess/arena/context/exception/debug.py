@@ -1,7 +1,7 @@
-# src/chess/square/context/exception/debug.py
+# src/chess/arena/context/exception/debug.py
 
 """
-Module: chess.square.context.exception.debug
+Module: chess.arena.context.exception.debug
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0
@@ -11,14 +11,14 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# SQUARE_CONTEXT_DEBUG_EXCEPTION #======================#
-    "SquareContextDebugException",
+    # ======================# ARENA_CONTEXT_DEBUG_EXCEPTION #======================#
+    "ArenaContextDebugException",
 ]
 
 from chess.system import DebugException
 
-# ======================# SQUARE_CONTEXT_DEBUG_EXCEPTION #======================#
-class SquareContextDebugException(DebugException):
+# ======================# ARENA_CONTEXT_DEBUG_EXCEPTION #======================#
+class ArenaContextDebugException(DebugException):
     """
     # ROLE: Capture Error Variable State, Exception Chain Layer 2, Exception Messaging
     
@@ -55,9 +55,9 @@ class SquareContextDebugException(DebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    ERR_CODE = "SQUARE_CONTEXT_EXCEPTION"
-    MSG = str = "SquareContext had an error."
-    VAR = "SquareContext"
+    ERR_CODE = "ARENA_CONTEXT_EXCEPTION"
+    MSG = str = "ArenaContext had an error."
+    VAR = "ArenaContext"
     VAL = None
     
     _var = Optional[str]
