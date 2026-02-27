@@ -84,6 +84,7 @@ class CommandPipeline(ABC, Generic[C]):
                     err_code=PipelineException.ERR_CODE,
                     msg=PipelineException.MSG,
                     cls_name=type(self).__name__,
+                    cls_mthd=method_name,
                     ex=validation_result.exception,
                 )
             )
@@ -96,8 +97,9 @@ class CommandPipeline(ABC, Generic[C]):
                     err_code=PipelineException.ERR_CODE,
                     msg=PipelineException.MSG,
                     cls_name=type(self).__name__,
+                    cls_mthd=method_name,
                     ex=build_result.exception,
                 )
             )
-        
+        # --- Forward the success result. ---#
         return build_result
