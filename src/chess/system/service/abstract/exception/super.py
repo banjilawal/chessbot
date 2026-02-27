@@ -1,56 +1,80 @@
-# src/chess/system/service/abstract/exception.py
+# src/chess/system/service/abstract/exception.super.py
 
 """
-Module: chess.system.service.abstract.exception
+Module: chess.system.service.abstract.exception.super
 Author: Banji Lawal
-Created: 2025-11-18
+Created: 2025-09-16
+version: 1.0.0
 """
 
 from __future__ import annotations
 from typing import Optional
 
-from chess.system import SuperClassException
-
 __all__ = [
-    # ======================# SERVICE EXCEPTION #======================#
+    # ======================# SERVICE_EXCEPTION #======================#
     "ServiceException",
 ]
 
+from chess.system import SuperClassException
 
-# ======================# SERVICE EXCEPTION #======================#
+# ======================# SERVICE_EXCEPTION #======================#
 class ServiceException(SuperClassException):
     """
-    # ROLE: Super, Exception Messaging
-    
+    # ROLE: DebugException Parent, Exception Chain Layer 0
+
     # RESPONSIBILITIES:
-    1. Outermost layer of the 3-part exception chain that is created when a AbstractService operation's crashes.
+    1.  Indicate that an error occurred in a Service.
 
     # PARENT:
-        *   SuperClassException
+    *   SuperClassException
 
     # PROVIDES:
     None
 
     # LOCAL ATTRIBUTES:
-    None
+        *   _id (int)
 
     # INHERITED ATTRIBUTES:
+        *   See SuperClassException class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        *   msg (str)
+        *   err_code (str)
+        *   ex (Optional[Exception])
+        *   cls_name (Optional[str])
+        *   id (Optional[int])
+
+    # LOCAL METHODS:
     None
+
+    # INHERITED METHODS:
+        *   See SuperClassException class for inherited methods.
     """
-    ERR_CODE = "SERVICE_ERROR"
-    MSG = "AbstractService raised an exception."
-    CLS_NAME = "AbstractService"
+    ERR_CODE = "SERVICE_EXCEPTION"
+    MSG = " Service raised an exception."
+    CLS_NAME = "Service"
     
     _cls_name: Optional[str]
+    _id: Optional[int]
     
     def __init__(
             self,
-            cls_name: Optional[str] = None,
             err_code: Optional[str] = None,
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
+            cls_name: Optional[str] = None,
+            id: Optional[int] = None,
     ):
         err_code = err_code or self.ERR_CODE
         msg = msg or self.MSG
         cls_name = cls_name or self.CLS_NAME
-        super().__init__(ex=ex, err_code=err_code, msg=msg, cls_name=cls_name)
+        self._id = id
+        super().__init__(msg=msg, err_code=err_code, ex=ex, cls_name=cls_name)
+        self._id = id
+        
+    @property
+    def id(self) -> Optional[int]:
+        return self._id
+    
+    def __str__(self) -> str:
+        return f"{super().__str__()}, id:{self._id}"

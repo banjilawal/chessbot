@@ -14,7 +14,7 @@ from .integrity import *
 from .route import *
 from .request import *
 from .command import *
-from .exception import *
+from chess.system.service.abstract.exception import *
 
 # Modules
 None

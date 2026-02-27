@@ -1,7 +1,7 @@
-# src/chess/system/service/exception.super.py
+# src/chess/system/service/integrity/exception.super.py
 
 """
-Module: chess.system.service.exception.super
+Module: chess.system.service.integrity.exception.super
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -12,21 +12,21 @@ from typing import Optional
 
 __all__ = [
     # ======================# SERVICE_EXCEPTION #======================#
-    "ServiceException",
+    "IntegrityServiceException",
 ]
 
-from chess.system import SuperClassException
+from chess.system import ServiceException
 
 # ======================# SERVICE_EXCEPTION #======================#
-class ServiceException(SuperClassException):
+class IntegrityServiceException(ServiceException):
     """
     # ROLE: DebugException Parent, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Indicate that an error occurred in a Service.
+    1.  Indicate that an error occurred in an IntegrityService instance..
 
     # PARENT:
-    *   SuperClassException
+    *   ServiceException
 
     # PROVIDES:
     None
@@ -35,25 +35,27 @@ class ServiceException(SuperClassException):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See SuperClassException class for inherited attributes.
+        *   See IntegrityServiceException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
         *   cls_name (Optional[str])
+        *   id (Optional[int])
 
     # LOCAL METHODS:
     None
 
     # INHERITED METHODS:
-        *   See SuperClassException class for inherited methods.
+        *   See ServiceException class for inherited methods.
     """
-    ERR_CODE = "SERVICE_EXCEPTION"
-    MSG = " Service raised an exception."
-    CLS_NAME = "Service"
+    ERR_CODE = "ENTITY_SERVICE_ERROR"
+    MSG = "IntegrityService raised an exception."
+    CLS_NAME = "IntegrityService"
     
     _cls_name: Optional[str]
+    _id: Optional[int]
     
     def __init__(
             self,
@@ -61,6 +63,7 @@ class ServiceException(SuperClassException):
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
             cls_name: Optional[str] = None,
+            
     ):
         err_code = err_code or self.ERR_CODE
         msg = msg or self.MSG

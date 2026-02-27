@@ -38,5 +38,4 @@ class EntityServiceException(ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "ENTITY_SERVICE_ERROR"
-    MSG = "IntegrityService raised an exception."
+
