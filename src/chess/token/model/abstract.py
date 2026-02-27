@@ -18,7 +18,7 @@ from chess.coord import Coord, CoordStack
 
 class Token(ABC):
     """
-    # ROLE: Data-Holder, Abstract Data Type
+    # ROLE: Data Holder, Abstract Data Type
   
     # RESPONSIBILITIES:
     1.  Travels to attack or avoid enemies on the Board.

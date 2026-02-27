@@ -18,7 +18,7 @@ from chess.square.state import SquareState
 
 class Square:
     """
-    # ROLE: Data-Holder, Addressing
+    # ROLE: Data Holder, Addressing
   
     # RESPONSIBILITIES:
     1.  Maps a Coord to its unique name.

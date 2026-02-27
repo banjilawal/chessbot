@@ -10,7 +10,7 @@ version: 1.0.0
 
 class Vector:
     """
-    # ROLE: Transformer, Computation, Iteration.
+    # ROLE: Transformer, Computation, Iteration, Data Holder
   
     # RESPONSIBILITY:
     Consider,
