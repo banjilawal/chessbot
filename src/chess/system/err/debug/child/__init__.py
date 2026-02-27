@@ -13,8 +13,8 @@ version: 1.0.0
 None
 
 # Modules
-from .method import  MethodImplementationException
 from .null import NullException
 from .route import NoExecutionRouteException
 from .unique import UniqueAttributeException
 from .invariant import InvariantBreachException
+from .method import MethodImplementationException

@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .anchor import  PlayerException
+from .anchor import PlayerException
 from .debug import PlayerDebugException

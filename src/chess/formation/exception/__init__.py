@@ -3,7 +3,7 @@
 """
 Module: chess.formation.exception.__init__
 Author: Banji Lawal
-Created: 2026-02-23
+Created: 2025-09-16
 version: 1.0.0
 """
 
@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .anchor import  FormationException
+from .anchor import FormationException
 from .debug import FormationDebugException

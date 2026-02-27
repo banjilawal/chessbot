@@ -14,3 +14,4 @@ from .child import *
 
 # Modules
 from .root import  DebugException
+from .templlate import TDebugException

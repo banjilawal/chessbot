@@ -1,7 +1,7 @@
-# src/chess/vector/exception/anchor.py
+# src/chess/vector/exception/debug.py
 
 """
-Module: chess.vector.exception.anchor
+Module: chess.vector.exception.debug
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -16,7 +16,6 @@ __all__ = [
 ]
 
 from chess.system import AnchorException
-
 
 # ======================# VECTOR_EXCEPTION #======================#
 class VectorException(AnchorException):

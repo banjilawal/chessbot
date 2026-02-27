@@ -1,7 +1,7 @@
-# src/chess/node/exception/anchor.py
+# src/chess/node/exception/debug.py
 
 """
-Module: chess.node.exception.anchor
+Module: chess.node.exception.debug
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -16,7 +16,6 @@ __all__ = [
 ]
 
 from chess.system import AnchorException
-
 
 # ======================# NODE_EXCEPTION #======================#
 class NodeException(AnchorException):

@@ -1,7 +1,7 @@
-# src/chess/rank/exception/anchor.py
+# src/chess/rank/exception/debug.py
 
 """
-Module: chess.rank.exception.anchor
+Module: chess.rank.exception.debug
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -16,7 +16,6 @@ __all__ = [
 ]
 
 from chess.system import AnchorException
-
 
 # ======================# RANK_EXCEPTION #======================#
 class RankException(AnchorException):

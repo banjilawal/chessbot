@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .anchor import  NodeException
+from .anchor import NodeException
 from .debug import NodeDebugException

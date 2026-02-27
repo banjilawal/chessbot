@@ -1,7 +1,7 @@
-# src/chess/square/exception/anchor.py
+# src/chess/square/exception/debug.py
 
 """
-Module: chess.square.exception.anchor
+Module: chess.square.exception.debug
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -16,7 +16,6 @@ __all__ = [
 ]
 
 from chess.system import AnchorException
-
 
 # ======================# SQUARE_EXCEPTION #======================#
 class SquareException(AnchorException):

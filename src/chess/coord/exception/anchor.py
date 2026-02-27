@@ -1,7 +1,7 @@
-# src/chess/coord/exception/anchor.py
+# src/chess/coord/exception/debug.py
 
 """
-Module: chess.coord.exception.anchor
+Module: chess.coord.exception.debug
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -16,7 +16,6 @@ __all__ = [
 ]
 
 from chess.system import AnchorException
-
 
 # ======================# COORD_EXCEPTION #======================#
 class CoordException(AnchorException):

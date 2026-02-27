@@ -53,7 +53,7 @@ class InvariantBreachException(DebugException):
     """
     DEFAULT_CODE = "INVARIANT_BREACH_EXCEPTION"
     MSG = (
-        "A system invariant was violated, indicating a critical state inconsistency. or entity_service loss."
+        "A system invariant was violated, indicating a critical state inconsistency. Or entity_service loss."
     )
     VAR = None
     VAL = None

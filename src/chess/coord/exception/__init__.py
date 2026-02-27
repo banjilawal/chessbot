@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .super import  CoordException
+from .anchor import CoordException
 from .debug import CoordDebugException

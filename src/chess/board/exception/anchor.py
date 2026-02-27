@@ -1,7 +1,7 @@
-# src/chess/board/exception/anchor.py
+# src/chess/board/exception/debug.py
 
 """
-Module: chess.board.exception.anchor
+Module: chess.board.exception.debug
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -16,7 +16,6 @@ __all__ = [
 ]
 
 from chess.system import AnchorException
-
 
 # ======================# BOARD_EXCEPTION #======================#
 class BoardException(AnchorException):

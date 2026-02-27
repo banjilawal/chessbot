@@ -1,7 +1,7 @@
-# src/chess/persona/exception/anchor.py
+# src/chess/persona/exception/debug.py
 
 """
-Module: chess.persona.exception.anchor
+Module: chess.persona.exception.debug
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -16,7 +16,6 @@ __all__ = [
 ]
 
 from chess.system import AnchorException
-
 
 # ======================# PERSONA_EXCEPTION #======================#
 class PersonaException(AnchorException):

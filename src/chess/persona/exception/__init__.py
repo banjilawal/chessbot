@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .anchor import  PersonaException
+from .anchor import PersonaException
 from .debug import PersonaDebugException

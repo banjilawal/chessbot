@@ -1,7 +1,7 @@
-# src/chess/formation/exception/anchor.py
+# src/chess/formation/exception/debug.py
 
 """
-Module: chess.formation.exception.anchor
+Module: chess.formation.exception.debug
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -16,7 +16,6 @@ __all__ = [
 ]
 
 from chess.system import AnchorException
-
 
 # ======================# FORMATION_EXCEPTION #======================#
 class FormationException(AnchorException):

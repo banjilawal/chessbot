@@ -1,7 +1,7 @@
-# src/chess/hostage/exception/anchor.py
+# src/chess/hostage/exception/debug.py
 
 """
-Module: chess.hostage.exception.anchor
+Module: chess.hostage.exception.debug
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

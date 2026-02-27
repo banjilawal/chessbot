@@ -1,7 +1,7 @@
-# src/chess/schema/exception/anchor.py
+# src/chess/schema/exception/debug.py
 
 """
-Module: chess.schema.exception.anchor
+Module: chess.schema.exception.debug
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -16,7 +16,6 @@ __all__ = [
 ]
 
 from chess.system import AnchorException
-
 
 # ======================# SCHEMA_EXCEPTION #======================#
 class SchemaException(AnchorException):

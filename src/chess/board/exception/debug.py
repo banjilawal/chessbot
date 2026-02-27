@@ -3,7 +3,7 @@
 """
 Module: chess.board.exception.debug
 Author: Banji Lawal
-Created: 2026-01-26
+Created: 2025-09-16
 version: 1.0.0
 """
 
@@ -11,20 +11,23 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# BOARD_DEBUG EXCEPTION #======================#
+    # ======================# BOARD_DEBUG_EXCEPTION #======================#
     "BoardDebugException",
 ]
 
 from chess.system import DebugException
 
-
-# ======================# BOARD_DEBUG EXCEPTION #======================#
+# ======================# BOARD_DEBUG_EXCEPTION #======================#
 class BoardDebugException(DebugException):
     """
-    # ROLE: Error Tracing, Debugging
-
+    # ROLE: Capture Error Variable State, Exception Chain Layer 2, Exception Messaging
+    
     # RESPONSIBILITIES:
-    1.  Describes the condition that caused a Board operation failure.
+    1.  Produce the:
+            *   variable,
+            *   it's value,
+            *   event which fired the variable into its error state.
+        which occurred in the Anchor method identified in layer-0 of the exception chain.
 
     # PARENT:
         *   DebugException
@@ -34,42 +37,43 @@ class BoardDebugException(DebugException):
 
     # LOCAL ATTRIBUTES:
         *   var (Optional[str])
-        *   val Optional[None])
+        *   val (Optional[None])
 
     # INHERITED ATTRIBUTES:
-        *   DebugException class for inherited attributes.
+        *   See DebugException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
         *   var (Optional[str])
-        *   val Optional[None])
+        *   val (Optional[None])
 
     # LOCAL METHODS:
    None
 
     # INHERITED METHODS:
-        *   See ChessException class for inherited methods.
+        *   See DebugException class for inherited methods.
     """
     ERR_CODE = "BOARD_EXCEPTION"
-    MSG: str = "A variable in Board raised an exception."
-    VAR: None
+    MSG = str = "Board had an error."
+    VAR = None
     VAL = None
     
-    _var: Optional[str]
-    _val: Optional[None]
+    _var = Optional[str]
+    _val = Optional[None]
     
-    def debug(
+    def __init__(
             self,
-            var: Optional[str] = None,
-            val: Optional[None] = None,
             err_code: Optional[str] = None,
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
+            var: Optional[str] = None,
+            val: Optional[None] = None,
     ):
         var = var or self.VAR
         val = val or self.VAL
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)
+        super().__init__(ex=ex, msg=msg, var=var, val=val, err_code=err_code,)
+

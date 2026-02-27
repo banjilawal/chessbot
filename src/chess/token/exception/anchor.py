@@ -1,7 +1,7 @@
-# src/chess/token/exception/anchor.py
+# src/chess/token/exception/debug.py
 
 """
-Module: chess.token.exception.anchor
+Module: chess.token.exception.debug
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -16,7 +16,6 @@ __all__ = [
 ]
 
 from chess.system import AnchorException
-
 
 # ======================# TOKEN_EXCEPTION #======================#
 class TokenException(AnchorException):

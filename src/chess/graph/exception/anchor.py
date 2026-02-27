@@ -1,7 +1,7 @@
-# src/chess/graph/exception/anchor.py
+# src/chess/graph/exception/debug.py
 
 """
-Module: chess.graph.exception.anchor
+Module: chess.graph.exception.debug
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

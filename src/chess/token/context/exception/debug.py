@@ -1,9 +1,9 @@
-# src/chess/coord/exception/debug.py
+# src/chess/token/context/exception/debug.py
 
 """
-Module: chess.coord.exception.debug
+Module: chess.token.context.exception.debug
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-10-01
 version: 1.0.0
 """
 
@@ -11,14 +11,14 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# COORD_DEBUG_EXCEPTION #======================#
-    "CoordDebugException",
+    # ======================# TOKEN_CONTEXT_DEBUG_EXCEPTION #======================#
+    "TokenContextDebugException",
 ]
 
 from chess.system import DebugException
 
-# ======================# COORD_DEBUG_EXCEPTION #======================#
-class CoordDebugException(DebugException):
+# ======================# TOKEN_CONTEXT_DEBUG_EXCEPTION #======================#
+class TokenContextDebugException(DebugException):
     """
     # ROLE: Capture Error Variable State, Exception Chain Layer 2, Exception Messaging
     
@@ -55,9 +55,9 @@ class CoordDebugException(DebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    ERR_CODE = "COORD_EXCEPTION"
-    MSG = str = "Coord had an error."
-    VAR = None
+    ERR_CODE = "TOKEN_CONTEXT_EXCEPTION"
+    MSG = str = "TokenContext had an error."
+    VAR = "TokenContext"
     VAL = None
     
     _var = Optional[str]
@@ -75,5 +75,12 @@ class CoordDebugException(DebugException):
         val = val or self.VAL
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        super().__init__(ex=ex, msg=msg, var=var, val=val, err_code=err_code,)
+        
+        super().__init__(
+            ex=ex,
+            msg=msg,
+            var=var,
+            val=val,
+            err_code=err_code,
+        )
 

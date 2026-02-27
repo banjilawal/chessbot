@@ -1,7 +1,7 @@
-# src/chess/edge/exception/anchor.py
+# src/chess/edge/exception/debug.py
 
 """
-Module: chess.edge.exception.anchor
+Module: chess.edge.exception.debug
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -16,7 +16,6 @@ __all__ = [
 ]
 
 from chess.system import AnchorException
-
 
 # ======================# EDGE_EXCEPTION #======================#
 class EdgeException(AnchorException):
