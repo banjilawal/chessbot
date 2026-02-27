@@ -1,12 +1,12 @@
-# src/chess/system/service/entity/__init__.py
+# src/chess/system/service/integrity/__init__.py
 
 """
-Module: chess.system.service.entity.__init__
+Module: chess.system.service.integrity.__init__
 Author: Banji Lawal
 Created: 2025-11-18
 """
 
-# =========== SYSTEM.SERVICE.ENTITY PACKAGE CONTENTS ===========#
+# =========== SYSTEM.SERVICE.INTEGRITY PACKAGE CONTENTS ===========#
 
 # Packages
 from .exception import *

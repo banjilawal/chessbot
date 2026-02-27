@@ -1,7 +1,7 @@
-# src/chess/system/service/entity/service.py
+# src/chess/system/service/integrity/service.py
 
 """
-Module: chess.system.service.entity.service
+Module: chess.system.service.integrity.service
 Author: Banji Lawal
 Created: 2025-11-18
 """

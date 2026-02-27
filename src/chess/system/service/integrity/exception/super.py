@@ -50,7 +50,7 @@ class IntegrityServiceException(ServiceException):
     # INHERITED METHODS:
         *   See ServiceException class for inherited methods.
     """
-    ERR_CODE = "ENTITY_SERVICE_ERROR"
+    ERR_CODE = "INTEGRITY_SERVICE_ERROR"
     MSG = "IntegrityService raised an exception."
     CLS_NAME = "IntegrityService"
     
