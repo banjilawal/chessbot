@@ -1,7 +1,7 @@
-# src/chess/square/service/build/request/validator/validator.py
+# src/chess/square/service/command/build/validator/validator.py
 
 """
-Module: chess.square.service.build.request.validator.validator
+Module: chess.square.service.command.build.validator.validator
 Author: Banji Lawal
 Created: 2026-02-24
 """
@@ -10,11 +10,10 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from chess.square import SquareBuildCommand, SquareBuildRequestException
+from chess.square import SquareBuildCommand, SquareBuildCommandNullException, SquareBuildCommandValidationException
 from chess.system import (
     ArgumentNameException, CommandNameException, LoggingLevelRouter, ArgumentCountException,
-    ServiceRequestValidator, ValidationResult,
-    Validator, ServiceRequest
+    ServiceRequestValidator, ValidationResult, Validator, ServiceRequest
 )
 
 
@@ -26,16 +25,29 @@ class SquareBuildCommandValidator(Validator[SquareBuildCommand]):
             cls,
             candidate: Any,
             key: SquareBuildCommand = SquareBuildCommand.key(),
+            command_validator: CommandValidator = CommandValidator(),
+            request_validator: ServiceRequestValidator =ServiceRequestValidator()
     ) -> ValidationResult[SquareBuildCommand]:
         method = "SquareBuildCommandValidator.validate"
         
-        # Handle the case that, the candidate is not certified as a safe ServiceRequest.
-        request_validation_result = service_request_validator.validate(candidate=candidate)
+        # Handle the nonexistence case.
+        if candidate is None:
+            return ValidationResult.failure(
+                SquareBuildCommandValidationException(
+                    msg=f"{method}: {SquareBuildCommandValidationException.MSG}",
+                    ex=SquareBuildCommandNullException(
+                        err_code=SquareBuildCommandValidationException.ERR_CODE,
+                        msg=SquareBuildCommandValidationException.MSG,
+                    )
+                )
+            )
+        
+        
         if request_validation_result.is_failure:
             # Return the exception on failure.
             return ValidationResult.failure(
-                SquareBuildRequestException(
-                    msg=f"{method}: {SquareBuildRequestException.MSG}",
+                SquareBuildCommandValidationException(
+                    msg=f"{method}: {SquareBuildCommandValidationException.MSG}",
                     ex=request_validation_result.exception
                 )
             )
@@ -46,9 +58,9 @@ class SquareBuildCommandValidator(Validator[SquareBuildCommand]):
         if request.command.upper() != command.name.upper():
             # Return the exception on failure.
             return ValidationResult.failure(
-                SquareBuildRequestException(
+                SquareBuildCommandValidationException(
                     
-                    msg=f"{method}: {SquareBuildRequestException.MSG}",
+                    msg=f"{method}: {SquareBuildCommandValidationException.MSG}",
                     ex=
                     # ex=CommandNameException(
                     #     var="request.command_name",
@@ -63,8 +75,8 @@ class SquareBuildCommandValidator(Validator[SquareBuildCommand]):
         if len(request.arguments) != len(command.parameters):
             # Return the exception on failure.
             return ValidationResult.failure(
-                SquareBuildRequestException(
-                    msg=f"{method}: {SquareBuildRequestException.MSG}",
+                SquareBuildCommandValidationException(
+                    msg=f"{method}: {SquareBuildCommandValidationException.MSG}",
                     ex=ArgumentCountException(
                         f"{method}: Expected command: {ArgumentCountException.MSG}."
                     )
@@ -74,8 +86,8 @@ class SquareBuildCommandValidator(Validator[SquareBuildCommand]):
         for identifier in request.arguments.keys():
             if identifier not in command.parameters.keys():
                 return ValidationResult.failure(
-                    SquareBuildRequestException(
-                        msg=f"{method}: {SquareBuildRequestException.MSG}",
+                    SquareBuildCommandValidationException(
+                        msg=f"{method}: {SquareBuildCommandValidationException.MSG}",
                         ex=ArgumentNameException(
                             f"{method}: Expected command: {identifier} not found."
                         )
@@ -85,8 +97,8 @@ class SquareBuildCommandValidator(Validator[SquareBuildCommand]):
         for identifier in request.arguments.keys():
             if not isinstance(request.arguments[identifier, command.key()[identifier]]):
                 return ValidationResult.failure(
-                    SquareBuildRequestException(
-                        msg=f"{method}: {SquareBuildRequestException.MSG}",
+                    SquareBuildCommandValidationException(
+                        msg=f"{method}: {SquareBuildCommandValidationException.MSG}",
                         ex=ArgumentNameException(
                             f"{identifier: Expected command: {identifier} not found."
                         )

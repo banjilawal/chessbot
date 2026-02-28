@@ -1,16 +1,15 @@
-# src/chess/square/service/build/request/validator/__init__.py
+# src/chess/square/service/command/build/validator/__init__.py
 
 """
-Module: chess.square.service.build.request.validator.__init__
+Module: chess.square.service.command.build.validator.__init__.
 Author: Banji Lawal
 Created: 2026-02-24
 """
 
-# =========== SQUARE.SERVICE.BUILD.REQUEST.VALIDATOR PACKAGE CONTENTS ===========#
+# =========== SQUARE.SERVICE.COMMAND.BUILD.VALIDATOR PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .exception import *
 
 # Modules
 from .validator import SquareBuildCommandValidator
-from .wrapper import SquareBuildRequestException

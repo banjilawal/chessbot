@@ -1,7 +1,7 @@
-# src/chess/square/service/command/exception/super.py
+# src/chess/square/service/command/build/exception/anchor.py
 
 """
-Module: chess.square.service.command.exception.super
+Module: chess.square.service.command.build.exception.anchor
 Author: Banji Lawal
 Created: 2026-02-24
 """
@@ -11,14 +11,14 @@ from typing import Optional
 
 __all__ = [
     # ======================# SQUARE_BUILD_COMMAND EXCEPTION #======================#
-    "SquareBuildCommand",
+    "SquareBuildCommandPipeline",
 ]
 
 from chess.system import AnchorException
 
 
 # ======================# SQUARE_BUILD_COMMAND EXCEPTION #======================#
-class SquareBuildCommand(AnchorException):
+class SquareBuildCommandPipeline(AnchorException):
     """
     # ROLE: Debug Coverage Target, Exception Chain Layer 0
     
@@ -35,8 +35,8 @@ class SquareBuildCommand(AnchorException):
     None
     """
     ERR_CODE = "SQUARE_BUILD_COMMAND_EXCEPTION"
-    MSG = "SquareBuildCommand raised an exception."
-    CLS_NAME = "SquareBuildCommand"
+    MSG = "SquareBuildCommandPipeline raised an exception."
+    CLS_NAME = "SquareBuildCommandPipeline"
     
     _cls_name: Optional[str]
     

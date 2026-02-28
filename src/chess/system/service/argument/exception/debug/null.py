@@ -7,23 +7,23 @@ Created: 2026-02-24
 """
 
 from __future__ import annotations
-from typing import Optional
+from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# SERVICE_REQUEST_NULL_EXCEPTION #======================#
-    "ServiceRequestNullException",
+    # ======================# NULL_ARGUMENTS_EXCEPTION #======================#
+    "NullArgumentsException",
 ]
 
 from chess.system import NullException
 
-# ======================# SERVICE_REQUEST_NULL_EXCEPTION #======================#
-class ServiceRequestNullException(NullException):
+# ======================# NULL_ARGUMENTS_EXCEPTION #======================#
+class NullArgumentsException(NullException):
     """
     # ROLE: Information, Reporting, Debug
 
     # RESPONSIBILITIES:
-    1.  Indicate that a service_request command_name has an error.
+    1.  Indicate that a request.arguments dictionary does not exist.
 
     # PARENT:
         *  NullException
@@ -42,7 +42,7 @@ class ServiceRequestNullException(NullException):
         *   err_code (str)
         *   ex (Optional[Exception])
         *   var (Optional[str])
-        *   val Optional[None])
+        *   val Optional[Any])
 
     # LOCAL METHODS:
    None
@@ -50,10 +50,10 @@ class ServiceRequestNullException(NullException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    ERR_CODE = "SERVICE_REQUEST_NULL_EXCEPTION"
-    MSG = "ServiceRequest is null"
-    VAR = None
-    VAL = None
+    ERR_CODE = "NULL_ARGUMENTS_EXCEPTION"
+    MSG = "Null arguments"
+    VAR = Optional[Any]
+    VAL = Optional[Any]
     
     def __init__(
             self,
@@ -61,7 +61,7 @@ class ServiceRequestNullException(NullException):
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
             var: Optional[str] = None,
-            val: Optional[None] = None,
+            val: Optional[Any] = None,
     ):
         err_code = err_code or self.ERR_CODE
         msg = msg or self.MSG

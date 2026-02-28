@@ -34,7 +34,7 @@ class SquareServiceDebugException(DebugException):
 
     # LOCAL ATTRIBUTES:
         *   var (Optional[str])
-        *   val Optional[None])
+        *   val Optional[Any])
 
     # INHERITED ATTRIBUTES:
         *   DebugException class for inherited attributes.
@@ -44,7 +44,7 @@ class SquareServiceDebugException(DebugException):
         *   err_code (str)
         *   ex (Optional[Exception])
         *   var (Optional[str])
-        *   val Optional[None])
+        *   val Optional[Any])
 
     # LOCAL METHODS:
    None
@@ -55,15 +55,15 @@ class SquareServiceDebugException(DebugException):
     ERR_CODE = "SQUARE_SERVICE_EXCEPTION"
     MSG: str = "A variable in SquareService raised an exception."
     VAR: None
-    VAL = None
+    VAL = Optional[Any]
     
     _var: Optional[str]
-    _val: Optional[None]
+    _val: Optional[Any]
     
     def __init__(
             self,
             var: Optional[str] = None,
-            val: Optional[None] = None,
+            val: Optional[Any] = None,
             err_code: Optional[str] = None,
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,

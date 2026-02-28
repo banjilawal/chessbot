@@ -10,7 +10,7 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# WRONG_ARGUMENT_TYPE EXCEPTION #======================#
+    # ======================# WRONG_ARGUMENT_TYPE_EXCEPTION #======================#
     "ArgumentTypeException",
 ]
 
@@ -18,7 +18,7 @@ from typing import Optional
 
 from chess.system import ServiceRequestDebugException
 
-# ======================# WRONG_ARGUMENT_TYPE EXCEPTION #======================#
+# ======================# WRONG_ARGUMENT_TYPE_EXCEPTION #======================#
 class ArgumentTypeException(ServiceRequestDebugException):
     """
     # ROLE: Information, Reporting, Debug
@@ -43,7 +43,7 @@ class ArgumentTypeException(ServiceRequestDebugException):
         *   err_code (str)
         *   ex (Optional[Exception])
         *   var (Optional[str])
-        *   val Optional[None])
+        *   val Optional[Any])
 
     # LOCAL METHODS:
    None
@@ -52,9 +52,9 @@ class ArgumentTypeException(ServiceRequestDebugException):
         *   See DebugException class for inherited methods.
     """
     ERR_CODE = "WRONG_ARGUMENT_TYPE_EXCEPTION"
-    MSG = "service_request.arguments[identifier]: has wrong type"
-    VAR = None
-    VAL = None
+    MSG = "Incorrect argument type"
+    VAR = Optional[Any]
+    VAL = Optional[Any]
     
     def __init__(
             self,
@@ -62,7 +62,7 @@ class ArgumentTypeException(ServiceRequestDebugException):
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
             var: Optional[str] = None,
-            val: Optional[None] = None,
+            val: Optional[Any] = None,
     ):
         err_code = err_code or self.ERR_CODE
         msg = msg or self.MSG

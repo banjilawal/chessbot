@@ -42,7 +42,7 @@ class NullException(DebugException):
         *   err_code (str)
         *   ex (Optional[Exception])
         *   var (Optional[str])
-        *   val Optional[None])
+        *   val Optional[Any])
 
     # LOCAL METHODS:
    None
@@ -52,8 +52,8 @@ class NullException(DebugException):
     """
     ERR_CODE = "NULL_EXCEPTION"
     MSG = "variable cannot be null."
-    VAR = None
-    VAL = None
+    VAR = Optional[Any]
+    VAL = Optional[Any]
     
     def __init__(
             self,
@@ -61,7 +61,7 @@ class NullException(DebugException):
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
             var: Optional[str] = None,
-            val: Optional[None] = None,
+            val: Optional[Any] = None,
     ):
         err_code = err_code or self.ERR_CODE
         msg = msg or self.MSG

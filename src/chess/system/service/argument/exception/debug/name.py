@@ -1,30 +1,29 @@
-# src/chess/system/service/request/validator/exception/debug/command.py
+# src/chess/system/service/request/validator/exception/debug/identifier.py
 
 """
-Module: chess.system.service.request.validator.exception.debug.command
+Module: chess.system.service.request.validator.exception.debug.identifier
 Author: Banji Lawal
 Created: 2026-02-24
 """
 
 from __future__ import annotations
-from typing import Optional
+from typing import Any, Optional
 
 __all__ = [
-    # ======================# COMMAND_NAME_NOT_FOUND #======================#
-    "CommandNameException",
+    # ======================# WRONG_ARGUMENT_NAME_EXCEPTION #======================#
+    "ArgumentNameException",
 ]
 
 from chess.system import ServiceRequestDebugException
 
-
-# ======================# COMMAND_NAME_NOT_FOUND #======================#
-class CommandNameException(ServiceRequestDebugException):
+# ======================# WRONG_ARGUMENT_NAME_EXCEPTION #======================#
+class ArgumentNameException(ServiceRequestDebugException):
     """
     # ROLE: Information, Reporting, Debug
 
     # RESPONSIBILITIES:
-    1.  Indicate that a service_request command_name has an error.
-
+    1.  Indicate that a service_request has a wrong argument for the command.
+    
     # PARENT:
         *  ServiceRequestDebugException
 
@@ -42,7 +41,7 @@ class CommandNameException(ServiceRequestDebugException):
         *   err_code (str)
         *   ex (Optional[Exception])
         *   var (Optional[str])
-        *   val Optional[None])
+        *   val Optional[Any])
 
     # LOCAL METHODS:
    None
@@ -50,10 +49,10 @@ class CommandNameException(ServiceRequestDebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    ERR_CODE = "COMMAND_NAME_NOT_FOUND"
-    MSG = "unknown command argument"
-    VAR = None
-    VAL = None
+    ERR_CODE = "WRONG_ARGUMENT_NAME_EXCEPTION"
+    MSG = "Argument name incorrect."
+    VAR = Optional[Any]
+    VAL = Optional[Any]
     
     def __init__(
             self,
@@ -61,7 +60,7 @@ class CommandNameException(ServiceRequestDebugException):
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
             var: Optional[str] = None,
-            val: Optional[None] = None,
+            val: Optional[Any] = None,
     ):
         err_code = err_code or self.ERR_CODE
         msg = msg or self.MSG

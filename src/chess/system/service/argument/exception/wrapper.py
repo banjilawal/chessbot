@@ -1,11 +1,11 @@
-# src/chess/vector/validator/exception/wrapper.py
+# src/chess/system/service/request/validator/wrapper.py
 
 """
-Module: chess.vector.validator.exception.wrapper
+Module: chess.system.service.request.validator.wrapper
 Author: Banji Lawal
-Created: 2025-09-08
-Version: 1.0.0
+Created: 2026-02-24
 """
+
 
 from __future__ import annotations
 from typing import Optional
@@ -13,17 +13,18 @@ from typing import Optional
 from chess.system import ValidationException
 
 __all__ = [
-    # ======================# VECTOR_VALIDATION_FAILURE #======================#
-    "VectorValidationException",
+    # ======================# ARGUMENTS_VALIDATION_FAILURE #======================#
+    "ArgumentsValidationException",
 ]
 
-# ======================# VECTOR_VALIDATION_FAILURE #======================#
-class VectorValidationException(ValidationException):
+# ======================# ARGUMENTS_VALIDATION_FAILURE #======================#
+class ArgumentsValidationException(ValidationException):
     """
     # ROLE: Debug Wrapper, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a candidate failed a safety check in a VectorValidator method.
+    1.  Indicate that a candidate failed a safety check in a ArgumentsValidator
+        method.
 
     # PARENT:
         *   ValidationException
@@ -51,8 +52,8 @@ class VectorValidationException(ValidationException):
     # INHERITED METHODS:
         *   See ValidationException class for inherited methods.
     """
-    ERR_CODE = "VECTOR_VECTOR_VALIDATION_FAILURE"
-    MSG = "Safety check failed.."
+    ERR_CODE = "ARGUMENTS_VALIDATION_FAILURE"
+    MSG = "Arguments validation test failed."
     MTHD = "validate"
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
@@ -72,4 +73,5 @@ class VectorValidationException(ValidationException):
         op = op or self.OP
         rslt_type = rslt_type or self.RSLT_TYPE
         super().__init__(err_code=err_code, msg=msg, ex=ex, mthd=mthd, op=op, rslt_type=rslt_type)
-
+    
+    

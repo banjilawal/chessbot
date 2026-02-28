@@ -7,9 +7,13 @@ Created: 2026-02-24
 """
 
 from __future__ import annotations
-from typing import Any, Dict
 
-class Command:
+from abc import ABC, abstractmethod
+from typing import Any, Dict, Generic, TypeVar
+
+T = TypeVar('T')
+
+class Command(ABC, Generic[T]):
     """
     A class representing a service command.
     """
@@ -27,3 +31,8 @@ class Command:
     @property
     def parameters(self) -> Dict[str, Any]:
         return self._parameters
+    
+    @classmethod
+    @abstractmethod
+    def key(cls,) -> T:
+        pass

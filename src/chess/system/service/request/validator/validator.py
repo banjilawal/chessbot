@@ -10,7 +10,8 @@ from __future__ import annotations
 from typing import Any, cast
 
 from chess.system import (
-    IdentityService, LoggingLevelRouter, ServiceRequestNullException, ServiceRequestValidationException,
+    IdentityService, LoggingLevelRouter, NullArgumentsException, ServiceRequestNullException,
+    ServiceRequestValidationException,
     ValidationResult, Validator, ServiceRequest
 )
 
@@ -20,10 +21,9 @@ class ServiceRequestValidator(Validator[ServiceRequest]):
 
     # RESPONSIBILITIES:
     1.  Ensure a ServiceRequest has.
-            *   str
-            *   Dict[str, Any]
-            *   nd consistent before use.
-        Before the OperationValidator checks that the fields match Command.key
+            *   The correct number of arguments.
+            *   The arguments have the correct names.
+            *   The correct types.
 
     # PARENT:
         *   Validator
@@ -42,8 +42,8 @@ class ServiceRequestValidator(Validator[ServiceRequest]):
 
     # LOCAL METHODS:
         *   validate(
-                candidate: Any,
-                identity_service: IdentityService = IdentityService()
+                candidate: ServiceRequest,
+                key: Command,
             ) -> ValidationResult[ServiceRequest]
 
     # INHERITED METHODS:
@@ -54,9 +54,36 @@ class ServiceRequestValidator(Validator[ServiceRequest]):
     @LoggingLevelRouter.monitor
     def validate(
             cls,
-            candidate: Any,
+            candidate: ServiceRequest,
             identity_service: IdentityService = IdentityService(),
     ) -> ValidationResult[ServiceRequest]:
+        """
+        # ACTION:
+            1.  If the candidate fails either:
+                    *   existence
+                    *   type
+                tests send an exception chain in the ValidationResult. Else, cast to ServiceRequest
+                instance, request.
+            2.  Use identity_service does not verify request.command_name is a valid str. Send an
+                exception chain in th ValidationResult.
+            3.  If the request.arguments is either
+                    *   Null
+                    *   Not a Dict[str, Any]
+                Send an exception chain in the ValidationResult.
+            4.  All the tests for ServiceRequestType are passed, return the success result.
+        # PARAMETERS:
+            *   candidate (Any)
+            *   identity_service (IdentityService)
+        # RETURNS:
+            *   ValidationResult[ServiceRequest] containing either:
+                    - On failure: Exception.
+                    - On success: ServiceRequest in the payload.
+        # RAISES:
+            *   TypeError
+            *   NullArgumentsException
+            *   NullServiceRequestException
+            *   ServiceRequestValidationException
+        """
         method = "ServiceRequestValidator.validate"
         
         # Handle the nonexistence case.
@@ -68,8 +95,6 @@ class ServiceRequestValidator(Validator[ServiceRequest]):
                     msg=ServiceRequestValidationException.MSG,
                     mthd=ServiceRequestValidationException.MTHD,
                    ex=ServiceRequestNullException(
-                        var="candidate",
-                        val=None,
                         err_code=ServiceRequestNullException.ERR_CODE,
                         msg=ServiceRequestNullException.MSG
                     )
@@ -84,7 +109,7 @@ class ServiceRequestValidator(Validator[ServiceRequest]):
                     msg=ServiceRequestValidationException.MSG,
                     mthd=ServiceRequestValidationException.MTHD,
                     ex=TypeError(
-                        f"{method}: Expected ServiceRequest, but, got {type(candidate).__name__} instead."
+                        f"{method}: Expected ServiceRequest, got {type(candidate).__name__} instead."
                     )
                 )
             )
@@ -102,6 +127,20 @@ class ServiceRequestValidator(Validator[ServiceRequest]):
                     msg=ServiceRequestValidationException.MSG,
                     mthd=ServiceRequestValidationException.MTHD,
                     ex=identity_validation.exception
+                )
+            )
+        # Handle the case that, request.arguments is null.
+        if request.arguments is not None:
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                ServiceRequestValidationException(
+                    err_code=ServiceRequestValidationException.ERR_CODE,
+                    msg=ServiceRequestValidationException.MSG,
+                    mthd=ServiceRequestValidationException.MTHD,
+                    ex=NullArgumentsException(
+                        err_code=NullArgumentsException.ERR_CODE,
+                        msg=NullArgumentsException.MSG
+                    )
                 )
             )
         # Handle the case that, request.arguments is not a Dict.

@@ -44,7 +44,7 @@ class ServiceRequest:
     _command_name: str
     _arguments: Dict[str: Any]
     
-    def __init__(self, command_name: str, arguments: Dict[str, Any]):
+    def __init__(self, command_name: str, arguments: Dict[str, Any] = Dict[str, Any]):
         self._command_name = command_name
         self._arguments = arguments
     

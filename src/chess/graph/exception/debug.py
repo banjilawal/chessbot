@@ -37,7 +37,7 @@ class GraphDebugException(DebugException):
 
     # LOCAL ATTRIBUTES:
         *   var (Optional[str])
-        *   val (Optional[None])
+        *   val (Optional[Any])
 
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
@@ -47,7 +47,7 @@ class GraphDebugException(DebugException):
         *   err_code (str)
         *   ex (Optional[Exception])
         *   var (Optional[str])
-        *   val (Optional[None])
+        *   val (Optional[Any])
 
     # LOCAL METHODS:
    None
@@ -57,11 +57,11 @@ class GraphDebugException(DebugException):
     """
     ERR_CODE = "GRAPH_EXCEPTION"
     MSG = str = "Graph had an error."
-    VAR = None
-    VAL = None
+    VAR = Optional[Any]
+    VAL = Optional[Any]
     
     _var = Optional[str]
-    _val = Optional[None]
+    _val = Optional[Any]
     
     def __init__(
             self,
@@ -69,7 +69,7 @@ class GraphDebugException(DebugException):
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
             var: Optional[str] = None,
-            val: Optional[None] = None,
+            val: Optional[Any] = None,
     ):
         var = var or self.VAR
         val = val or self.VAL

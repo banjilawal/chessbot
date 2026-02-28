@@ -37,7 +37,7 @@ class SnapshotDebugException(DebugException):
 
     # LOCAL ATTRIBUTES:
         *   var (Optional[str])
-        *   val (Optional[None])
+        *   val (Optional[Any])
 
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
@@ -47,7 +47,7 @@ class SnapshotDebugException(DebugException):
         *   err_code (str)
         *   ex (Optional[Exception])
         *   var (Optional[str])
-        *   val (Optional[None])
+        *   val (Optional[Any])
 
     # LOCAL METHODS:
    None
@@ -57,11 +57,11 @@ class SnapshotDebugException(DebugException):
     """
     ERR_CODE = "SNAPSHOT_EXCEPTION"
     MSG = str = "Snapshot had an error."
-    VAR = None
-    VAL = None
+    VAR = Optional[Any]
+    VAL = Optional[Any]
     
     _var = Optional[str]
-    _val = Optional[None]
+    _val = Optional[Any]
     
     def __init__(
             self,
@@ -69,7 +69,7 @@ class SnapshotDebugException(DebugException):
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
             var: Optional[str] = None,
-            val: Optional[None] = None,
+            val: Optional[Any] = None,
     ):
         var = var or self.VAR
         val = val or self.VAL

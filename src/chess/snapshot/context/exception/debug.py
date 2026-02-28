@@ -37,7 +37,7 @@ class SnapshotContextDebugException(DebugException):
 
     # LOCAL ATTRIBUTES:
         *   var (Optional[str])
-        *   val (Optional[None])
+        *   val (Optional[Any])
 
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
@@ -47,7 +47,7 @@ class SnapshotContextDebugException(DebugException):
         *   err_code (str)
         *   ex (Optional[Exception])
         *   var (Optional[str])
-        *   val (Optional[None])
+        *   val (Optional[Any])
 
     # LOCAL METHODS:
    None
@@ -58,10 +58,10 @@ class SnapshotContextDebugException(DebugException):
     ERR_CODE = "SNAPSHOT_CONTEXT_EXCEPTION"
     MSG = str = "SnapshotContext had an error."
     VAR = "SnapshotContext"
-    VAL = None
+    VAL = Optional[Any]
     
     _var = Optional[str]
-    _val = Optional[None]
+    _val = Optional[Any]
     
     def __init__(
             self,
@@ -69,7 +69,7 @@ class SnapshotContextDebugException(DebugException):
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
             var: Optional[str] = None,
-            val: Optional[None] = None,
+            val: Optional[Any] = None,
     ):
         var = var or self.VAR
         val = val or self.VAL

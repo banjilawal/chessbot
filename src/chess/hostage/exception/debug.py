@@ -37,7 +37,7 @@ class HostageDebugException(DebugException):
 
     # LOCAL ATTRIBUTES:
         *   var (Optional[str])
-        *   val (Optional[None])
+        *   val (Optional[Any])
 
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
@@ -47,7 +47,7 @@ class HostageDebugException(DebugException):
         *   err_code (str)
         *   ex (Optional[Exception])
         *   var (Optional[str])
-        *   val (Optional[None])
+        *   val (Optional[Any])
 
     # LOCAL METHODS:
    None
@@ -57,11 +57,11 @@ class HostageDebugException(DebugException):
     """
     ERR_CODE = "HOSTAGE_EXCEPTION"
     MSG = str = "Hostage had an error."
-    VAR = None
-    VAL = None
+    VAR = Optional[Any]
+    VAL = Optional[Any]
     
     _var = Optional[str]
-    _val = Optional[None]
+    _val = Optional[Any]
     
     def __init__(
             self,
@@ -69,7 +69,7 @@ class HostageDebugException(DebugException):
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
             var: Optional[str] = None,
-            val: Optional[None] = None,
+            val: Optional[Any] = None,
     ):
         var = var or self.VAR
         val = val or self.VAL

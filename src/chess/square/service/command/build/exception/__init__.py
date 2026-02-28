@@ -1,15 +1,16 @@
-# src/chess/square/service/command/exception/__init__.py
+# src/chess/square/service/command/build/exception/__init__.py
 
 """
-Module: chess.square.service.command.exception.__init__
+Module: chess.square.service.command.build.exception.__init__
 Author: Banji Lawal
 Created: 2026-02-24
 """
 
-# =========== SQUARE.SERVICE.COMMAND.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== SQUARE.SERVICE.COMMAND.BUILD.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
 None
 
 # Modules
-from .super import SquareBuildCommand
+from .anchor import SquareBuildCommand
+from .debug import SquareBuildCommandDebugException

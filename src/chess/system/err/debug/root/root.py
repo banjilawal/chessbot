@@ -44,7 +44,7 @@ class DebugException(ChessException):
 
     # LOCAL ATTRIBUTES:
         *   var (Optional[str])
-        *   val Optional[None])
+        *   val Optional[Any])
 
     # INHERITED ATTRIBUTES:
         *   See ChessException class for inherited attributes.
@@ -54,7 +54,7 @@ class DebugException(ChessException):
         *   err_code (str)
         *   ex (Optional[Exception])
         *   var (Optional[str])
-        *   val Optional[None])
+        *   val Optional[Any])
 
     # LOCAL METHODS:
    None
@@ -65,15 +65,15 @@ class DebugException(ChessException):
     ERR_CODE = "VARIABLE_EXCEPTION"
     MSG: str = "A variable had an error."
     VAR: None
-    VAL = None
+    VAL = Optional[Any]
     
     _var: Optional[str]
-    _val: Optional[None]
+    _val: Optional[Any]
     
     def __init__(
             self,
             var: Optional[str] = None,
-            val: Optional[None] = None,
+            val: Optional[Any] = None,
             err_code: Optional[str] = None,
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
@@ -92,7 +92,7 @@ class DebugException(ChessException):
         return self._var
     
     @property
-    def val(self) -> Optional[None]:
+    def val(self) -> Optional[Any]:
         return self._val
     
     def __str__(self):

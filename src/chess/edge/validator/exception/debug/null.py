@@ -42,7 +42,7 @@ class NullEdgeException(NullException):
         *   err_code (str)
         *   ex (Optional[Exception])
         *   var (Optional[str])
-        *   val Optional[None])
+        *   val Optional[Any])
 
     # LOCAL METHODS:
    None
@@ -53,7 +53,7 @@ class NullEdgeException(NullException):
     ERR_CODE = "NULL_EDGE_EXCEPTION"
     MSG = "Edge cannot be null."
     VAR: None
-    VAL = None
+    VAL = Optional[Any]
     
     def __init__(
             self,
@@ -61,7 +61,7 @@ class NullEdgeException(NullException):
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
             var: Optional[str] = None,
-            val: Optional[None] = None,
+            val: Optional[Any] = None,
     ):
         err_code = err_code or self.ERR_CODE
         msg = msg or self.MSG

@@ -43,7 +43,7 @@ class GameContextExecutionRouteException(ExecutionRouteException):
         *   err_code (str)
         *   ex (Optional[Exception])
         *   var (Optional[str])
-        *   val Optional[None])
+        *   val Optional[Any])
 
     # LOCAL METHODS:
    None
@@ -53,8 +53,8 @@ class GameContextExecutionRouteException(ExecutionRouteException):
     """
     ERR_CODE = "GAME_CONTEXT_EXECUTION_ROUTE_EXCEPTION"
     MSG = "No build route for GameContext attribute"
-    VAR = None
-    VAL = None
+    VAR = Optional[Any]
+    VAL = Optional[Any]
     
     def __init__(
             self,
@@ -62,7 +62,7 @@ class GameContextExecutionRouteException(ExecutionRouteException):
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
             var: Optional[str] = None,
-            val: Optional[None] = None,
+            val: Optional[Any] = None,
     ):
         err_code = err_code or self.ERR_CODE
         msg = msg or self.MSG

@@ -1,29 +1,30 @@
-# src/chess/system/service/request/validator/exception/debug/identifier.py
+# src/chess/system/service/request/validator/exception/debug/count.py
 
 """
-Module: chess.system.service.request.validator.exception.debug.identifier
+Module: chess.system.service.request.validator.exception.debug.count
 Author: Banji Lawal
 Created: 2026-02-24
 """
 
 from __future__ import annotations
-from typing import Optional
+from typing import Any, Optional
 
 __all__ = [
-    # ======================# UNKNOWN_ARGUMENT_EXCEPTION #======================#
-    "ArgumentNameException",
+    # ======================# ARGUMENT_COUNT_EXCEPTION #======================#
+    "ArgumentCountException",
 ]
 
 from chess.system import ServiceRequestDebugException
 
-# ======================# UNKNOWN_ARGUMENT_EXCEPTION #======================#
-class ArgumentNameException(ServiceRequestDebugException):
+
+# ======================# ARGUMENT_COUNT_EXCEPTION #======================#
+class ArgumentCountException(ServiceRequestDebugException):
     """
     # ROLE: Information, Reporting, Debug
 
     # RESPONSIBILITIES:
-    1.  Indicate that a service_request has a wrong argument for the command.
-    
+    1.  Indicate that a service_request has the wrong number of arguments for the command
+
     # PARENT:
         *  ServiceRequestDebugException
 
@@ -41,7 +42,7 @@ class ArgumentNameException(ServiceRequestDebugException):
         *   err_code (str)
         *   ex (Optional[Exception])
         *   var (Optional[str])
-        *   val Optional[None])
+        *   val (Optional[Any])
 
     # LOCAL METHODS:
    None
@@ -49,10 +50,10 @@ class ArgumentNameException(ServiceRequestDebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    ERR_CODE = "UNKNOWN_ARGUMENT_EXCEPTION"
-    MSG = "unknown command argument"
-    VAR = None
-    VAL = None
+    ERR_CODE = "ARGUMENT_COUNT_EXCEPTION"
+    MSG = "Incorrect number of arguments."
+    VAR = Optional[Any]
+    VAL = Optional[Any]
     
     def __init__(
             self,
@@ -60,7 +61,7 @@ class ArgumentNameException(ServiceRequestDebugException):
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
             var: Optional[str] = None,
-            val: Optional[None] = None,
+            val: Optional[Any] = None,
     ):
         err_code = err_code or self.ERR_CODE
         msg = msg or self.MSG

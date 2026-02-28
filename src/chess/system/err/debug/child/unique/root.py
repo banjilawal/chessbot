@@ -42,7 +42,7 @@ class UniqueAttributeException(DebugException):
         *   err_code (str)
         *   ex (Optional[Exception])
         *   var (Optional[str])
-        *   val Optional[None])
+        *   val Optional[Any])
 
     # LOCAL METHODS:
    None
@@ -52,8 +52,8 @@ class UniqueAttributeException(DebugException):
     """
     ERR_CODE = "UNIQUE_ATTRIBUTE_COLLISION_EXCEPTION"
     MSG = "Two objects have the same value for an attribute that should be unique."
-    VAR = None
-    VAL = None
+    VAR = Optional[Any]
+    VAL = Optional[Any]
     
     def unique(
             self,
@@ -61,7 +61,7 @@ class UniqueAttributeException(DebugException):
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
             var: Optional[str] = None,
-            val: Optional[None] = None,
+            val: Optional[Any] = None,
     ):
         err_code = err_code or self.ERR_CODE
         msg = msg or self.MSG

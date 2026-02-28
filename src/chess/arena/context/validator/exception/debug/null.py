@@ -42,7 +42,7 @@ class NullArenaException(NullException):
         *   err_code (str)
         *   ex (Optional[Exception])
         *   var (Optional[str])
-        *   val Optional[None])
+        *   val Optional[Any])
 
     # LOCAL METHODS:
    None
@@ -53,15 +53,15 @@ class NullArenaException(NullException):
     ERR_CODE = "NULL_ARENA_EXCEPTION"
     MSG = "Arena validation failed: The candidate cannot be null."
     VAR: None
-    VAL = None
+    VAL = Optional[Any]
     
     _var: Optional[str]
-    _val: Optional[None]
+    _val: Optional[Any]
     
     def __init__(
             self,
             var: Optional[str] = None,
-            val: Optional[None] = None,
+            val: Optional[Any] = None,
             err_code: Optional[str] = None,
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
@@ -80,7 +80,7 @@ class NullArenaException(NullException):
         return self._var
     
     @property
-    def val(self) -> Optional[None]:
+    def val(self) -> Optional[Any]:
         return self._val
     
     def __str__(self):
