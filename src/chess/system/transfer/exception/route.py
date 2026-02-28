@@ -9,14 +9,14 @@ version: 1.0.0
 
 __all__ = [
     # ======================# NO_TRANSFER_ROUTE_FOR_SELECTED_OPTION EXCEPTION #======================#
-    "NoTransferRouteException",
+    "TransferRouteException",
 ]
 
-from chess.system import NoExecutionRouteException
+from chess.system import ExecutionRouteException
 
 
 # ======================# NO_TRANSFER_ROUTE_FOR_SELECTED_OPTION EXCEPTION #======================#
-class NoTransferRouteException(NoExecutionRouteException):
+class TransferRouteException(ExecutionRouteException):
     """
     # ROLE: Error Tracing, Debugging, Super Exception
 
@@ -25,7 +25,7 @@ class NoTransferRouteException(NoExecutionRouteException):
         transfer behaviors.
 
     # PARENT:
-        *   NoExecutionRouteException
+        *   ExecutionRouteException
 
     # PROVIDES:
     None

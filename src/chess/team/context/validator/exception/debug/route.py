@@ -13,11 +13,11 @@ __all__ = [
 ]
 
 from chess.team import TeamContextException
-from chess.system import NoExecutionRouteException
+from chess.system import ExecutionRouteException
 
 
 # ======================# NO_TEAM_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
-class TeamContextValidationRouteException(TeamContextException, NoExecutionRouteException):
+class TeamContextValidationRouteException(TeamContextException, ExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,7 +26,7 @@ class TeamContextValidationRouteException(TeamContextException, NoExecutionRoute
 
     # PARENT:
         *   TeamContextException
-        *   NoExecutionRouteException
+        *   ExecutionRouteException
 
     # PROVIDES
     None

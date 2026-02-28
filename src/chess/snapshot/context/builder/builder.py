@@ -12,7 +12,7 @@ from typing import Optional
 from chess.arena import Arena
 from chess.team import Team, TeamService
 from chess.agent import PlayerAgent, AgentService
-from chess.system import BuildResult, Builder, NoExecutionRouteException, LoggingLevelRouter, NumberValidator
+from chess.system import BuildResult, Builder, ExecutionRouteException, LoggingLevelRouter, NumberValidator
 from chess.game import (
     Game, SnapshotContext, SnapshotContextBuildException, ZeroSnapshotContextFlagsException,
     ArenaSnapshotContextFlagsException
@@ -133,7 +133,7 @@ class SnapshotContextBuilder(Builder[SnapshotContext]):
             
             # As a failsafe, if the none of the none of the cases are handled by the if blocks return failsafeBranchExPointException in the buildResult failure if a map path was missed.
             BuildResult.failure(
-                NoExecutionRouteException(f"{method}: {NoExecutionRouteException.MSG}")
+                ExecutionRouteException(f"{method}: {ExecutionRouteException.MSG}")
             )
         # Finally, catch any missed exception and wrap A SnapshotContextBuildException around it then
         # return the exception-chain inside the ValidationResult.

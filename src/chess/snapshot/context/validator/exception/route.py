@@ -13,11 +13,11 @@ __all__ = [
 ]
 
 from chess.snapshot import SnapshotContextException
-from chess.system import NoExecutionRouteException
+from chess.system import ExecutionRouteException
 
 
 # ======================# NO_SNAPSHOT_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
-class SnapshotContextValidationRouteException(SnapshotContextException, NoExecutionRouteException):
+class SnapshotContextValidationRouteException(SnapshotContextException, ExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,7 +26,7 @@ class SnapshotContextValidationRouteException(SnapshotContextException, NoExecut
 
     # PARENT:
         *   SnapshotContextException
-        *   NoExecutionRouteException
+        *   ExecutionRouteException
 
     # PROVIDES
     None

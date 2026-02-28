@@ -15,18 +15,18 @@ __all__ = [
     "TempValidationException",
 ]
 
-from chess.system import OperationException
+from chess.system import ValidationException
 
 # ======================# TEMP_VALIDATION_FAILURE #======================#
-class TempValidationException(OperationException):
+class TempValidationException(ValidationException):
     """
     # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Identify the __TEMP__ method where the process failed.
+    1.  Identify the __Temp_Validator__ method where the process failed.
 
     # PARENT:
-        *   OperationException
+        *   ValidationException
 
     # PROVIDES:
     None
@@ -36,7 +36,7 @@ class TempValidationException(OperationException):
         *   rslt_type (Optional[str])
 
     # INHERITED ATTRIBUTES:
-        *   See OperationException class for inherited attributes.
+        *   See ValidationException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:)
         *   err_code (str)
@@ -50,10 +50,10 @@ class TempValidationException(OperationException):
    None
 
     # INHERITED METHODS:
-        *   See OperationException class for inherited methods.
+        *   See ValidationException class for inherited methods.
     """
     ERR_CODE = "TEMP_VALIDATION_FAILURE"
-    MSG = "Failure in __TEMP__ method."
+    MSG = "Failure in __Temp_Validator__ method."
     MTHD = None
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"

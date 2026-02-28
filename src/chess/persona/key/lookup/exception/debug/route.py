@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.persona import PersonaException
-from chess.system import NoExecutionRouteException
+from chess.system import ExecutionRouteException
 
 __all__ = [
     # ======================# NO_PERSONA_LOOKUP_ROUTE EXCEPTION #======================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# NO_PERSONA_LOOKUP_ROUTE EXCEPTION #======================#
-class PersonaLookupRouteException(PersonaException, NoExecutionRouteException):
+class PersonaLookupRouteException(PersonaException, ExecutionRouteException):
     """
     # ROLE: Fallback Result
 
@@ -26,7 +26,7 @@ class PersonaLookupRouteException(PersonaException, NoExecutionRouteException):
 
     # PARENT:
         *   PersonaException
-        *   NoExecutionRouteException
+        *   ExecutionRouteException
 
 
     # PROVIDES

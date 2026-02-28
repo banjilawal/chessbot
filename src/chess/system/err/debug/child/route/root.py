@@ -1,7 +1,7 @@
-# src/chess/system/err/debug/child/route.py
+# src/chess/system/err/debug/child/route/root.py
 
 """
-Module: chess.system.err.debug.child.route
+Module: chess.system.err.debug.child.route.root
 Author: Banji Lawal
 Created: 2026-02-25
 version: 1.0.0
@@ -12,20 +12,19 @@ from typing import Optional
 
 
 __all__ = [
-    # ======================# NO_EXECUTION_ROUTE_FOR_OPTION EXCEPTION #======================#
-    "NoExecutionRouteException",
+    # ======================# EXECUTION_ROUTE_EXCEPTION #======================#
+    "ExecutionRouteException",
 ]
 
 from chess.system import DebugException
 
-# ======================# NO_EXECUTION_ROUTE_FOR_OPTION EXCEPTION #======================#
-class NoExecutionRouteException(DebugException):
+# ======================# EXECUTION_ROUTE_EXCEPTION #======================#
+class ExecutionRouteException(DebugException):
     """
     # ROLE: Error Tracing, Debugging, Super Exception
 
     # RESPONSIBILITIES:
-    1.  Indicate that an operation failed because there was no coverage for at least one of its optional
-        success paths.
+    1.  Indicate that an execution route was missing from the logic.
 
     # PARENT:
         *   DebugException
@@ -52,8 +51,8 @@ class NoExecutionRouteException(DebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    ERR_CODE = "NO_EXECUTION_ROUTE_FOR_OPTION_EXCEPTION"
-    MSG = "No execution route exists for the operation option."
+    ERR_CODE = "EXECUTION_ROUTE_EXCEPTION"
+    MSG = "Missing execution route."
     VAR = None
     VAL = None
     

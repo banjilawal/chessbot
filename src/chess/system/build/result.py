@@ -7,11 +7,11 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
+from __future__ import annotations
 from typing import Optional, TypeVar, Generic
-from chess.system import Result, MethodImplementationException, BuildResult
+from chess.system import Result, MethodImplementationException
 
 T = TypeVar("T")
-
 
 class BuildResult(Result[T], Generic[T]):
     """"""
@@ -30,51 +30,6 @@ class BuildResult(Result[T], Generic[T]):
     @classmethod
     def empty(cls) -> Result:
         method = "BuildResult.empty"
-        return cls(exception=MethodImplementationException(msg=f"{method}: {MethodImplementationException.MSG}"))
-
-        #
-        #   method = "Result.__init_"
-        #
-        #   if payload is None and rollback_exception is None:
-        #     raise EmptyResultConstructorException(f"{method}: {EmptyResultConstructorException.MSG}")
-        #
-        #   if not (payload is None or rollback_exception is None):
-        #     raise ErrorContradictsPayloadException(f"{method}: {ErrorContradictsPayloadException.MSG}")
-        #
-        #   self._payload = payload
-        #   self._exception = rollback_exception
-        #
-        #
-        # @property
-        # def payload(self) -> Optional[V]:
-        #   return self._payload
-        #
-        #
-        # @property
-        # def rollback_exception(self) -> Optional[Exception]:
-        #   return self._exception
-        #
-        #
-        # def is_success(self) -> bool:
-        #   return self._exception is None and self._payload is not None
-        #
-        
-    """
-    ACTION:
-    PARAMETERS:
-        * `param` (`DataType`):
-    RETURNS:
-        `DataType` or `Void`
-    RAISES:
-    MethodNameException wraps
-        *
-    """
-    """
-    Initializes team_name BuildResult object.
-    Args:
-      payload (Optional[V]): The payload of the notification, if successful.
-      rollback_exception (Optional[Exception]): The error of the notification, if failed.
-    RAISES:
-      EmptyResultConstructorException: If neither payload nor error is provided.
-      ResultPayloadConflictException: If both payload and error are provided.
-    """
+        return cls(exception=MethodImplementationException(
+            msg=f"{method}: {MethodImplementationException.MSG}")
+        )

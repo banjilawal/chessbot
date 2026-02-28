@@ -13,11 +13,11 @@ __all__ = [
 ]
 
 from chess.persona import PersonaKeyException
-from chess.system import NoExecutionRouteException
+from chess.system import ExecutionRouteException
 
 
 # ======================# NO_PERSONA_KEY_BUILD_ROUTE EXCEPTION #======================#
-class PersonaKeyBuildRouteException(PersonaKeyException, NoExecutionRouteException):
+class PersonaKeyBuildRouteException(PersonaKeyException, ExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,7 +26,7 @@ class PersonaKeyBuildRouteException(PersonaKeyException, NoExecutionRouteExcepti
 
     # PARENT:
         *   PersonaKeyException
-        *   NoExecutionRouteException
+        *   ExecutionRouteException
 
     # PROVIDES
     None

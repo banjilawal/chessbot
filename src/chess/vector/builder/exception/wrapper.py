@@ -1,42 +1,43 @@
-# src/chess/vector/builder/exception/wrapper.py
+# src/chess/vector/validator/exception/wrapper.py
 
 """
-Module: chess.vector.builder.exception.wrapper
+Module: chess.vector.validator.exception.wrapper
 Author: Banji Lawal
-Created: 2025-10-03
-version: 1.0.0
+Created: 2025-09-08
+Version: 1.0.0
 """
 
 from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# VECTOR_BUILD_FAILURE #======================#
-    "VectorBuildException",
+    # ======================# VECTOR_VALIDATION_FAILURE #======================#
+    "VectorValidationException",
 ]
 
-from chess.system import BuildException
+from chess.system import ValidationException
 
-# ======================# VECTOR_BUILD_FAILURE #======================#
-class VectorBuildException(BuildException):
+
+# ======================# VECTOR_VALIDATION_FAILURE #======================#
+class VectorValidationException(ValidationException):
     """
     # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  An error occurred in VectorBuilder.build that, prevented BuildResult.success() from 
-        being returned.
+    1.  Identify the VectorValidator method where the process failed.
 
     # PARENT:
-        *   BuildException
+        *   ValidationException
 
     # PROVIDES:
     None
 
     # LOCAL ATTRIBUTES:
-    None
+        *   op (Optional[str])
+        *   rslt_type (Optional[str])
 
     # INHERITED ATTRIBUTES:
-        *   See OperationException class for inherited attributes.
+        *   See ValidationException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:)
         *   err_code (str)
@@ -50,13 +51,16 @@ class VectorBuildException(BuildException):
    None
 
     # INHERITED METHODS:
-        *   See WorkerException class for inherited methods.
+        *   See ValidationException class for inherited methods.
     """
-    ERR_CODE = "VECTOR_BUILD_FAILED"
-    MSG = "Vector build failed."
-    MTHD = "build"
-    OP = "Build"
-    RSLT_TYPE = "BuildResult"
+    ERR_CODE = "VECTOR_VALIDATION_FAILURE"
+    MSG = "Failure in VectorValidator method."
+    MTHD = None
+    OP = "Validation"
+    RSLT_TYPE = "ValidationResult"
+    
+    _op: Optional[str]
+    _rslt_type: Optional[str]
     
     def __init__(
             self,
@@ -67,11 +71,17 @@ class VectorBuildException(BuildException):
             op: Optional[str] = None,
             rslt_type: Optional[str] = None,
     ):
-        err_code = err_code or self.ERR_CODE
+        op = op or self.OP
         msg = msg or self.MSG
         mthd = mthd or self.MTHD
-        op = op or self.OP
+        err_code = err_code or self.ERR_CODE
         rslt_type = rslt_type or self.RSLT_TYPE
         
-        super().__init__(err_code=err_code, msg=msg, ex=ex, mthd=mthd, op=op, rslt_type=rslt_type)
- 
+        super().__init__(
+            ex=ex,
+            op=op,
+            msg=msg,
+            mthd=mthd,
+            err_code=err_code,
+            rslt_type=rslt_type,
+        )

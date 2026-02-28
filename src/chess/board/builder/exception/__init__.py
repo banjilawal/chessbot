@@ -1,16 +1,16 @@
-# src/chess/board/builder/exception/__init__.py
+# src/chess/board/builder/__init__.py
 
 """
-Module: chess.board.builder.exception.__init__
+Module: chess.board.builder.__init__
 Author: Banji Lawal
-Created: 2025-10-03
+Created: 2025-09-16
 version: 1.0.0
 """
 
 # =========== BOARD.BUILDER.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-from .debug import *
+None
 
-# Module
+# Modules
 from .wrapper import BoardBuildException

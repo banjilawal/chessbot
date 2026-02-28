@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.schema import SchemaException
-from chess.system import NoExecutionRouteException
+from chess.system import ExecutionRouteException
 
 
 __all__ = [
@@ -18,7 +18,7 @@ __all__ = [
 
 
 # ======================# NO_SCHEMA_LOOKUP_ROUTE EXCEPTION #======================#
-class SchemaLookupRouteException(SchemaException, NoExecutionRouteException):
+class SchemaLookupRouteException(SchemaException, ExecutionRouteException):
     """
     # ROLE: Fallback Result
     
@@ -27,7 +27,7 @@ class SchemaLookupRouteException(SchemaException, NoExecutionRouteException):
     
     # PARENT:
         *   SchemaException
-        *   NoExecutionRouteException
+        *   ExecutionRouteException
 
         
     # PROVIDES

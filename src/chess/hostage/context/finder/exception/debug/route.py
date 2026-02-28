@@ -12,12 +12,12 @@ __all__ = [
     "HostageSearchRouteException",
 ]
 
-from chess.system import NoExecutionRouteException
+from chess.system import ExecutionRouteException
 from chess.hostage import HostageException
 
 
 # ======================# NO_HOSTAGE_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
-class HostageSearchRouteException(HostageException, NoExecutionRouteException):
+class HostageSearchRouteException(HostageException, ExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 

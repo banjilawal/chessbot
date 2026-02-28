@@ -13,11 +13,11 @@ __all__ = [
 ]
 
 from chess.hostage import CaptivityContextException
-from chess.system import NoExecutionRouteException
+from chess.system import ExecutionRouteException
 
 
 # ======================# NO_CAPTIVITY_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
-class CaptivityContextValidationRouteException(CaptivityContextException, NoExecutionRouteException):
+class CaptivityContextValidationRouteException(CaptivityContextException, ExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -27,7 +27,7 @@ class CaptivityContextValidationRouteException(CaptivityContextException, NoExec
 
     # PARENT:
         *   CaptivityContextException
-        *   NoExecutionRouteException
+        *   ExecutionRouteException
 
     # PROVIDES
     None

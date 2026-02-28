@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .route import NoTransferRouteException
+from .route import TransferRouteException
 from .wrapper import TransferException

@@ -13,11 +13,11 @@ __all__ = [
 ]
 
 from chess.schema import SchemaKeyException
-from chess.system import NoExecutionRouteException
+from chess.system import ExecutionRouteException
 
 
 # ======================# NO_SCHEMA_KEY_VALIDATION_ROUTE EXCEPTION #======================#
-class SchemaKeyValidationRouteException(SchemaKeyException, NoExecutionRouteException):
+class SchemaKeyValidationRouteException(SchemaKeyException, ExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,7 +26,7 @@ class SchemaKeyValidationRouteException(SchemaKeyException, NoExecutionRouteExce
 
     # PARENT:
         *   SchemaKeyException
-        *   NoExecutionRouteException
+        *   ExecutionRouteException
 
     # PROVIDES
     None

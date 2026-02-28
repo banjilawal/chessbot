@@ -1,31 +1,29 @@
-# src/chess/rank/context/builder/exception/wrapper.py
+# src/chess/rank/builder/wrapper.py
 
 """
-Module: chess.rank.context.builder.exception.wrapper
+Module: chess.rank.builder.wrapper
 Author: Banji Lawal
-Created: 2025-10-03
+Created: 2025-09-16
 version: 1.0.0
 """
 
 from __future__ import annotations
 from typing import Optional
 
-
 __all__ = [
-    # ======================# RANK_CONTEXT_BUILD_FAILURE #======================#
-    "RankContextBuildException",
+    # ======================# RANK_BUILD_FAILURE #======================#
+    "RankBuildException",
 ]
 
 from chess.system import BuildException
 
-# ======================# RANK_CONTEXT_BUILD_FAILURE #======================#
-class RankContextBuildException(BuildException):
+# ======================# RANK_BUILD_FAILURE #======================#
+class RankBuildException(BuildException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a rank_context build operation failed. The exception chain
-        traces the ultimate source of failure.
+    1.  Identify the RankBuilder method where the process failed.
 
     # PARENT:
         *   BuildException
@@ -34,7 +32,8 @@ class RankContextBuildException(BuildException):
     None
 
     # LOCAL ATTRIBUTES:
-    None
+        *   op (Optional[str])
+        *   rslt_type (Optional[str])
 
     # INHERITED ATTRIBUTES:
         *   See BuildException class for inherited attributes.
@@ -51,13 +50,16 @@ class RankContextBuildException(BuildException):
    None
 
     # INHERITED METHODS:
-        *   See WorkerException class for inherited methods.
+        *   See BuildException class for inherited methods.
     """
-    ERR_CODE = "RANK_CONTEXT_BUILD_FAILED"
-    MSG = "RankContext build failed."
-    MTHD = "build"
+    ERR_CODE = "RANK_BUILD_FAILURE"
+    MSG = "Failure in RankBuilder method."
+    MTHD = None
     OP = "Build"
     RSLT_TYPE = "BuildResult"
+    
+    _op: Optional[str]
+    _rslt_type: Optional[str]
     
     def __init__(
             self,
@@ -68,11 +70,17 @@ class RankContextBuildException(BuildException):
             op: Optional[str] = None,
             rslt_type: Optional[str] = None,
     ):
-        err_code = err_code or self.ERR_CODE
+        op = op or self.OP
         msg = msg or self.MSG
         mthd = mthd or self.MTHD
-        op = op or self.OP
+        err_code = err_code or self.ERR_CODE
         rslt_type = rslt_type or self.RSLT_TYPE
         
-        super().__init__(err_code=err_code, msg=msg, ex=ex, mthd=mthd, op=op, rslt_type=rslt_type)
-
+        super().__init__(
+            ex=ex,
+            op=op,
+            msg=msg,
+            mthd=mthd,
+            err_code=err_code,
+            rslt_type=rslt_type,
+        )

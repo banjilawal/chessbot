@@ -9,14 +9,14 @@ version: 1.0.0
 
 __all__ = [
     # ======================# NO_BUILD_ROUTE_FOR_SELECTED_OPTION EXCEPTION #======================#
-    "NoExecutionRouteException",
+    "ExecutionRouteException",
 ]
 
-from chess.system import NoExecutionRouteException
+from chess.system import ExecutionRouteException
 
 
 # ======================# NO_BUILD_ROUTE_FOR_SELECTED_OPTION EXCEPTION #======================#
-class NoExecutionRouteException(NoExecutionRouteException):
+class NoExecutionRouteException(ExecutionRouteException):
     """
     # ROLE: Error Tracing, Debugging, Super Exception
 
@@ -24,7 +24,7 @@ class NoExecutionRouteException(NoExecutionRouteException):
     1.  Indicate that a build failed because there was no execution route for the specified option.
 
     # PARENT:
-        *   NoExecutionRouteException
+        *   ExecutionRouteException
 
     # PROVIDES:
     None

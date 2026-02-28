@@ -13,11 +13,11 @@ __all__ = [
 ]
 
 from chess.formation import FormationKeyException
-from chess.system import NoExecutionRouteException
+from chess.system import ExecutionRouteException
 
 
 # ======================# NO_FORMATION_KEY_VALIDATION_ROUTE EXCEPTION #======================#
-class FormationKeyValidationRouteException(FormationKeyException, NoExecutionRouteException):
+class FormationKeyValidationRouteException(FormationKeyException, ExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,7 +26,7 @@ class FormationKeyValidationRouteException(FormationKeyException, NoExecutionRou
 
     # PARENT:
         *   FormationKeyException
-        *   NoExecutionRouteException
+        *   ExecutionRouteException
 
     # PROVIDES
     None

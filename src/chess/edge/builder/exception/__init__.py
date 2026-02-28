@@ -1,9 +1,9 @@
-# src/chess/edge/builder/exception/__init__.py
+# src/chess/edge/builder/__init__.py
 
 """
-Module: chess.edge.builder.exception.__init__
+Module: chess.edge.builder.__init__
 Author: Banji Lawal
-Created: 2026-02-17
+Created: 2025-09-16
 version: 1.0.0
 """
 

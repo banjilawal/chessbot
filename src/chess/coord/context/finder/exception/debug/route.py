@@ -13,12 +13,12 @@ __all__ = [
     "CoordSearchRouteException",
 ]
 
-from chess.system import NoExecutionRouteException
+from chess.system import ExecutionRouteException
 from chess.coord import CoordException
 
 
 # ======================# NO_COORD_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
-class CoordSearchRouteException(CoordException, NoExecutionRouteException):
+class CoordSearchRouteException(CoordException, ExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -28,7 +28,7 @@ class CoordSearchRouteException(CoordException, NoExecutionRouteException):
 
     # PARENT:
         *   CoordException
-        *   NoExecutionRouteException
+        *   ExecutionRouteException
 
     # PROVIDES
     None

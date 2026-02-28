@@ -12,12 +12,12 @@ __all__ = [
     "EdgeSearchRouteException",
 ]
 
-from chess.system import NoExecutionRouteException
+from chess.system import ExecutionRouteException
 from chess.edge import EdgeException
 
 
 # ======================# NO_EDGE_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
-class EdgeSearchRouteException(EdgeException, NoExecutionRouteException):
+class EdgeSearchRouteException(EdgeException, ExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 

@@ -13,11 +13,11 @@ __all__ = [
 ]
 
 from chess.arena import ArenaContextException
-from chess.system import NoExecutionRouteException
+from chess.system import ExecutionRouteException
 
 
 # ======================# NO_ARENA_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
-class ArenaContextBuildRouteException(ArenaContextException, NoExecutionRouteException):
+class ArenaContextBuildRouteException(ArenaContextException, ExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,7 +26,7 @@ class ArenaContextBuildRouteException(ArenaContextException, NoExecutionRouteExc
 
     # PARENT:
         *   ArenaContextException
-        *   NoExecutionRouteException
+        *   ExecutionRouteException
 
     # PROVIDES
     None

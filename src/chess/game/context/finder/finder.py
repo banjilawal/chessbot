@@ -14,7 +14,7 @@ from typing import List
 from chess.agent import PlayerAgent
 from chess.game import Game, GameContext, GameContextValidator
 from chess.system import (
-    DataFinder, NoExecutionRouteException, LoggingLevelRouter, SearchException, SearchResult
+    DataFinder, ExecutionRouteException, LoggingLevelRouter, SearchException, SearchResult
 )
 
 
@@ -91,7 +91,7 @@ class GameFinder(DataFinder[Game]):
                 return cls._find_by_agent(dataset, context.agent)
             # As a failsafe, if the none of the none of the cases are handled by the if blocks return failsafeBranchExPointException in the buildResult failure if a map path was missed.
             SearchResult.failure(
-                NoExecutionRouteException(f"{method}: {NoExecutionRouteException.MSG}")
+                ExecutionRouteException(f"{method}: {ExecutionRouteException.MSG}")
             )
             # Finally, if some exception is not handled by the checks wrap it inside an SearchException
             # then, return the exception chain inside a SearchResult.

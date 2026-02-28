@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.formation import FormationException
-from chess.system import NoExecutionRouteException
+from chess.system import ExecutionRouteException
 
 __all__ = [
     # ======================# NO_FORMATION_LOOKUP_ROUTE EXCEPTION #======================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# NO_FORMATION_LOOKUP_ROUTE EXCEPTION #======================#
-class FormationLookupRouteException(FormationException, NoExecutionRouteException):
+class FormationLookupRouteException(FormationException, ExecutionRouteException):
     """
     # ROLE: Fallback Result
 
@@ -26,7 +26,7 @@ class FormationLookupRouteException(FormationException, NoExecutionRouteExceptio
 
     # PARENT:
         *   FormationException
-        *   NoExecutionRouteException
+        *   ExecutionRouteException
 
 
     # PROVIDES

@@ -1,25 +1,25 @@
-from chess.system import ResultException, NoExecutionRouteException
+from chess.system import ResultException, ExecutionRouteException
 
 __all__ = [
     # ======================# NO_FORMATION_VALIDATION_ROUTE EXCEPTION #======================#
-    "SchemValidationNoExecutionRouteException",
+    "SchemValidationExecutionRouteException",
 ]
 
 
 # ======================# NO_FORMATION_VALIDATION_ROUTE EXCEPTION #======================#
-class SchemValidationNoExecutionRouteException(ResultException, NoExecutionRouteException):
+class SchemValidationExecutionRouteException(ResultException, ExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
     # RESPONSIBILITIES:
     1.  Indicate that FormationValidator did not handle one of the paths necessary to assure a candidate is a 
         Formation safe to use. A Formation has different configurations that are correct. Each configuration has a testing 
-        route. If a configuration does not have a validation route a SchemValidationNoExecutionRouteException 
+        route. If a configuration does not have a validation route a SchemValidationExecutionRouteException
         will be returned in a ValidationResult.
 
     # PARENT:
         *   ResultException
-        *   NoExecutionRouteException
+        *   ExecutionRouteException
 
     # PROVIDES
     None

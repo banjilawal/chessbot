@@ -13,11 +13,11 @@ __all__ = [
 ]
 
 from chess.board import BoardContextException
-from chess.system import NoExecutionRouteException
+from chess.system import ExecutionRouteException
 
 
 # ======================# NO_BOARD_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
-class BoardContextValidationRouteException(BoardContextException, NoExecutionRouteException):
+class BoardContextValidationRouteException(BoardContextException, ExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,7 +26,7 @@ class BoardContextValidationRouteException(BoardContextException, NoExecutionRou
 
     # PARENT:
         *   BoardContextException
-        *   NoExecutionRouteException
+        *   ExecutionRouteException
 
     # PROVIDES
     None

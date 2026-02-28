@@ -1,7 +1,7 @@
-# src/chess/snapshot/validator/exception/wrapper.py
+# src/chess/schema/validator/exception/wrapper.py
 
 """
-Module: chess.snapshot.validator.exception.wrapper
+Module: chess.schema.validator.exception.wrapper
 Author: Banji Lawal
 Created: 2025-09-08
 Version: 1.0.0
@@ -10,20 +10,21 @@ Version: 1.0.0
 from __future__ import annotations
 from typing import Optional
 
-from chess.system import ValidationException
-
 __all__ = [
-    # ======================# SNAPSHOT_VALIDATION_FAILURE #======================#
-    "SnapshotValidationException",
+    # ======================# SCHEMA_VALIDATION_FAILURE #======================#
+    "SchemaValidationException",
 ]
 
-# ======================# SNAPSHOT_VALIDATION_FAILURE #======================#
-class SnapshotValidationException(ValidationException):
+from chess.system import ValidationException
+
+
+# ======================# SCHEMA_VALIDATION_FAILURE #======================#
+class SchemaValidationException(ValidationException):
     """
-    # ROLE: Debug Wrapper, Exception Chain Layer 2, Exception Messaging
+    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a candidate failed a safety check in a SnapshotValidator method.
+    1.  Identify the SchemaValidator method where the process failed.
 
     # PARENT:
         *   ValidationException
@@ -32,7 +33,8 @@ class SnapshotValidationException(ValidationException):
     None
 
     # LOCAL ATTRIBUTES:
-    None
+        *   op (Optional[str])
+        *   rslt_type (Optional[str])
 
     # INHERITED ATTRIBUTES:
         *   See ValidationException class for inherited attributes.
@@ -51,11 +53,14 @@ class SnapshotValidationException(ValidationException):
     # INHERITED METHODS:
         *   See ValidationException class for inherited methods.
     """
-    ERR_CODE = "sNAPSHOT_VALIDATION_FAILURE"
-    MSG = "Safety check failed.."
-    MTHD = "validate"
+    ERR_CODE = "SCHEMA_VALIDATION_FAILURE"
+    MSG = "Failure in SchemaValidator method."
+    MTHD = None
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
+    
+    _op: Optional[str]
+    _rslt_type: Optional[str]
     
     def __init__(
             self,
@@ -66,10 +71,17 @@ class SnapshotValidationException(ValidationException):
             op: Optional[str] = None,
             rslt_type: Optional[str] = None,
     ):
-        err_code = err_code or self.ERR_CODE
+        op = op or self.OP
         msg = msg or self.MSG
         mthd = mthd or self.MTHD
-        op = op or self.OP
+        err_code = err_code or self.ERR_CODE
         rslt_type = rslt_type or self.RSLT_TYPE
-        super().__init__(err_code=err_code, msg=msg, ex=ex, mthd=mthd, op=op, rslt_type=rslt_type)
-
+        
+        super().__init__(
+            ex=ex,
+            op=op,
+            msg=msg,
+            mthd=mthd,
+            err_code=err_code,
+            rslt_type=rslt_type,
+        )

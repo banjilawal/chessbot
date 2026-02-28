@@ -13,11 +13,11 @@ __all__ = [
 ]
 
 from chess.rank import RankContextException
-from chess.system import NoExecutionRouteException
+from chess.system import ExecutionRouteException
 
 
 # ======================# NO_RANK_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
-class RankContextBuildRouteException(RankContextException, NoExecutionRouteException):
+class RankContextBuildRouteException(RankContextException, ExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,7 +26,7 @@ class RankContextBuildRouteException(RankContextException, NoExecutionRouteExcep
 
     # PARENT:
         *   RankContextException
-        *   NoExecutionRouteException
+        *   ExecutionRouteException
 
     # PROVIDES
     None

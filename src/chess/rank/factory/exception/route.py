@@ -7,7 +7,7 @@ Created: 2025-11-20
 version: 1.0.0
 """
 
-from chess.system import NoExecutionRouteException, ResultException
+from chess.system import ExecutionRouteException, ResultException
 
 __all__ = [
     # ======================# NO_RANK_BUILD_ROUTE EXCEPTION #======================#
@@ -16,7 +16,7 @@ __all__ = [
 
 
 # ======================# NO_RANK_BUILD_ROUTE EXCEPTION #======================#
-class RankBuildRouteException(ResultException, NoExecutionRouteException):
+class RankBuildRouteException(ResultException, ExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -27,7 +27,7 @@ class RankBuildRouteException(ResultException, NoExecutionRouteException):
 
     # PARENT:
         *   ResultException
-        *   NoExecutionRouteException
+        *   ExecutionRouteException
 
     # PROVIDES
     None

@@ -12,12 +12,12 @@ __all__ = [
     "TeamSearchRouteException",
 ]
 
-from chess.system import NoExecutionRouteException
+from chess.system import ExecutionRouteException
 from chess.team import TeamException
 
 
 # ======================# NO_TEAM_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
-class TeamSearchRouteException(TeamException, NoExecutionRouteException):
+class TeamSearchRouteException(TeamException, ExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -27,7 +27,7 @@ class TeamSearchRouteException(TeamException, NoExecutionRouteException):
 
     # PARENT:
         *   TeamContext
-        *   NoExecutionRouteException
+        *   ExecutionRouteException
 
     # PROVIDES
     None

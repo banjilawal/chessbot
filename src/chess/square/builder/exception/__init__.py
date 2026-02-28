@@ -3,7 +3,7 @@
 """
 Module: chess.square.builder.exception.__init__
 Author: Banji Lawal
-Created: 2026-02-23
+Created: 2025-10-03
 version: 1.0.0
 """
 

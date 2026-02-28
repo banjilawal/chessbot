@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 
-from chess.system import ResultException, NoExecutionRouteException
+from chess.system import ResultException, ExecutionRouteException
 
 
 __all__ = [
@@ -18,7 +18,7 @@ __all__ = [
 
 
 # ======================# NO_SCHEMA_VALIDATION_ROUTE EXCEPTION #======================#
-class SchemaValidationRouteException(ResultException, NoExecutionRouteException):
+class SchemaValidationRouteException(ResultException, ExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
     
@@ -31,7 +31,7 @@ class SchemaValidationRouteException(ResultException, NoExecutionRouteException)
     
     # PARENT:
         *   ResultException
-        *   NoExecutionRouteException
+        *   ExecutionRouteException
         
     # PROVIDES
     None

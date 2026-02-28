@@ -1,16 +1,16 @@
-# src/chess/hostage/builder/exeption/__init__.py
+# src/chess/arena/builder/__init__.py
 
 """
-Module: chess.hostage.builder.exception.__init__
+Module: chess.arena.builder.__init__
 Author: Banji Lawal
-Created: 2025-10-01
+Created: 2025-09-16
 version: 1.0.0
 """
 
-# =========== HOSTAGE.BUILDER.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== ARENA.BUILDER.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-from .debug import *
+None
 
 # Modules
-from .wrapper import HostageBuildException
+from .wrapper import ArenaBuildException

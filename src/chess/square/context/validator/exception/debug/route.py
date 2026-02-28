@@ -13,11 +13,11 @@ __all__ = [
 ]
 
 from chess.square.context import SquareContextDebugException
-from chess.system import  NoExecutionRouteException
+from chess.system import  ExecutionRouteException
 
 
 # ======================# NO_SQUARE_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
-class SquareContextValidationRouteException(SquareContextDebugException,  NoExecutionRouteException):
+class SquareContextValidationRouteException(SquareContextDebugException, ExecutionRouteException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
@@ -27,7 +27,7 @@ class SquareContextValidationRouteException(SquareContextDebugException,  NoExec
 
     # PARENT:
         *   SquareContextDebugException
-        *   NoExecutionRouteException
+        *   ExecutionRouteException
 
     # PROVIDES:
     None

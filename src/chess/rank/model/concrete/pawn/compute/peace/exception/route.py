@@ -12,11 +12,11 @@ __all__ = [
     "PawnPeacefulSpanComputationRouteException",
 ]
 
-from chess.system import NoExecutionRouteException
+from chess.system import ExecutionRouteException
 
 
 # ======================# NO_PAWN_PEACEFUL_SPAN_COMPUTATION_ROUTE EXCEPTION #======================#
-class PawnPeacefulSpanComputationRouteException(NoExecutionRouteException):
+class PawnPeacefulSpanComputationRouteException(ExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -24,7 +24,7 @@ class PawnPeacefulSpanComputationRouteException(NoExecutionRouteException):
     1.  Indicate that the PawnPeacefulSpan build failed because there was no computation route for the Pawn's MoveState.
 
     # PARENT:
-        *   NoExecutionRouteException
+        *   ExecutionRouteException
 
     # PROVIDES
     None

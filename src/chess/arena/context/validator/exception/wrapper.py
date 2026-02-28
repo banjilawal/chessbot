@@ -3,40 +3,84 @@
 """
 Module: chess.arena.validator.exception.wrapper
 Author: Banji Lawal
-Created: 2025-10-01
-version: 1.0.0
+Created: 2025-09-08
+Version: 1.0.0
 """
 
-from chess.arena import ArenaContextException
-from chess.system import ValidationException
+from __future__ import annotations
+from typing import Optional
 
 __all__ = [
-    # ======================# ARENA_CONTEXT_VALIDATION_FAILURE #======================#
-    "ArenaContextValidationException",
+    # ======================# ARENA_VALIDATION_FAILURE #======================#
+    "ArenaValidationException",
 ]
 
+from chess.system import ValidationException
 
-# ======================# ARENA_CONTEXT_VALIDATION_FAILURE #======================#
-class ArenaContextValidationException(ArenaContextException, ValidationException):
+# ======================# ARENA_VALIDATION_FAILURE #======================#
+class ArenaValidationException(ValidationException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a candidate failed its validation as an ArenaContext. The
-        encapsulated exceptions create a chain for tracing the source of the failure.
+    1.  Identify the ArenaValidator method where the process failed.
 
     # PARENT:
-        *   ArenaContextException
         *   ValidationException
 
     # PROVIDES:
     None
 
     # LOCAL ATTRIBUTES:
-    None
+        *   op (Optional[str])
+        *   rslt_type (Optional[str])
 
-    INHERITED ATTRIBUTES:
-    None
+    # INHERITED ATTRIBUTES:
+        *   See ValidationException class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:)
+        *   err_code (str)
+        *   msg (str)
+        *   ex (Optional[Exception])
+        *   mthd (Optional[str])
+        *   op (Optional[str])
+        *   rslt_type (Optional[str])
+
+    # LOCAL METHODS:
+   None
+
+    # INHERITED METHODS:
+        *   See ValidationException class for inherited methods.
     """
-    ERR_CODE = "ARENA_CONTEXT_VALIDATION_FAILURE"
-    MSG = "ArenaContext validation failed."
+    ERR_CODE = "ARENA_VALIDATION_FAILURE"
+    MSG = "Failure in ArenaValidator method."
+    MTHD = None
+    OP = "Validation"
+    RSLT_TYPE = "ValidationResult"
+    
+    _op: Optional[str]
+    _rslt_type: Optional[str]
+    
+    def __init__(
+            self,
+            err_code: Optional[str] = None,
+            msg: Optional[str] = None,
+            ex: Optional[Exception] = None,
+            mthd: Optional[str] = None,
+            op: Optional[str] = None,
+            rslt_type: Optional[str] = None,
+    ):
+        op = op or self.OP
+        msg = msg or self.MSG
+        mthd = mthd or self.MTHD
+        err_code = err_code or self.ERR_CODE
+        rslt_type = rslt_type or self.RSLT_TYPE
+        
+        super().__init__(
+            ex=ex,
+            op=op,
+            msg=msg,
+            mthd=mthd,
+            err_code=err_code,
+            rslt_type=rslt_type,
+        )

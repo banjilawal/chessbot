@@ -13,11 +13,11 @@ __all__ = [
 ]
 
 from chess.edge import EdgeContextException
-from chess.system import NoExecutionRouteException
+from chess.system import ExecutionRouteException
 
 
 # ======================# NO_EDGE_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
-class EdgeContextBuildRouteException(EdgeContextException, NoExecutionRouteException):
+class EdgeContextBuildRouteException(EdgeContextException, ExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,7 +26,7 @@ class EdgeContextBuildRouteException(EdgeContextException, NoExecutionRouteExcep
 
     # PARENT:
         *   EdgeContextException
-        *   NoExecutionRouteException
+        *   ExecutionRouteException
 
     # PROVIDES
     None

@@ -1,7 +1,7 @@
-# src/chess/snapshot/builder/exception/wrapper.py
+# src/chess/system/validate/exception/template.py
 
 """
-Module: chess.snapshot.builder.exception.wrapper
+Module: chess.system.validate.exception.template
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -11,30 +11,29 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# SNAPSHOT_BUILD_FAILURE #======================#
-    "SnapshotBuildException",
+    # ======================# TEMP_VALIDATION_FAILURE #======================#
+    "TempValidationException",
 ]
 
-from chess.system import BuildException
+from chess.system import OperationException
 
-
-# ======================# SNAPSHOT_BUILD_FAILURE #======================#
-class SnapshotBuildException(BuildException):
+# ======================# TEMP_VALIDATION_FAILURE #======================#
+class TempValidationException(OperationException):
     """
     # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  An error occurred in SnapshotBuilder.build that, prevented BuildResult.success() from 
-        being returned.
+    1.  Identify the __TEMP__ method where the process failed.
 
     # PARENT:
-        *   BuildException
+        *   OperationException
 
     # PROVIDES:
     None
 
     # LOCAL ATTRIBUTES:
-    None
+        *   op (Optional[str])
+        *   rslt_type (Optional[str])
 
     # INHERITED ATTRIBUTES:
         *   See OperationException class for inherited attributes.
@@ -51,13 +50,16 @@ class SnapshotBuildException(BuildException):
    None
 
     # INHERITED METHODS:
-        *   See WorkerException class for inherited methods.
+        *   See OperationException class for inherited methods.
     """
-    ERR_CODE = "SNAPSHOT_BUILD_FAILED"
-    MSG = "Snapshot build failed."
-    MTHD = "build"
-    OP = "Build"
-    RSLT_TYPE = "BuildResult"
+    ERR_CODE = "TEMP_VALIDATION_FAILURE"
+    MSG = "Failure in __TEMP__ method."
+    MTHD = None
+    OP = "Validation"
+    RSLT_TYPE = "ValidationResult"
+    
+    _op: Optional[str]
+    _rslt_type: Optional[str]
     
     def __init__(
             self,
@@ -68,10 +70,22 @@ class SnapshotBuildException(BuildException):
             op: Optional[str] = None,
             rslt_type: Optional[str] = None,
     ):
-        err_code = err_code or self.ERR_CODE
+        op = op or self.OP
         msg = msg or self.MSG
         mthd = mthd or self.MTHD
-        op = op or self.OP
+        err_code = err_code or self.ERR_CODE
         rslt_type = rslt_type or self.RSLT_TYPE
         
-        super().__init__(err_code=err_code, msg=msg, ex=ex, mthd=mthd, op=op, rslt_type=rslt_type)
+        super().__init__(
+            ex=ex,
+            op=op,
+            msg=msg,
+            mthd=mthd,
+            err_code=err_code,
+            rslt_type=rslt_type,
+        )
+
+
+
+    
+

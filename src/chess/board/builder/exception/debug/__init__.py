@@ -13,4 +13,4 @@ version: 1.0.0
 None
 
 # Module
-from .arena import ArenaAlreadyContainsBoardException
+from .board import BoardAlreadyContainsBoardException

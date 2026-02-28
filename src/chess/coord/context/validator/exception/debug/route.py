@@ -13,11 +13,11 @@ __all__ = [
 ]
 
 from chess.coord import CoordContextException
-from chess.system import NoExecutionRouteException
+from chess.system import ExecutionRouteException
 
 
 # ======================# NO_COORD_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
-class CoordContextValidationRouteException(CoordContextException, NoExecutionRouteException):
+class CoordContextValidationRouteException(CoordContextException, ExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,7 +26,7 @@ class CoordContextValidationRouteException(CoordContextException, NoExecutionRou
 
     # PARENT:
         *   CoordContextException
-        *   NoExecutionRouteException
+        *   ExecutionRouteException
 
     # PROVIDES
     None

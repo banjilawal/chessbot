@@ -1,4 +1,4 @@
-from chess.system import ResultException, NoExecutionRouteException
+from chess.system import ResultException, ExecutionRouteException
 
 __all__ = [
     # ======================# NO_TOKEN_BUILD_ROUTE EXCEPTION #======================#
@@ -7,7 +7,7 @@ __all__ = [
 
 
 # ======================# NO_TOKEN_BUILD_ROUTE EXCEPTION #======================#
-class TokenBuildRouteException(ResultException, NoExecutionRouteException):
+class TokenBuildRouteException(ResultException, ExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -18,7 +18,7 @@ class TokenBuildRouteException(ResultException, NoExecutionRouteException):
 
     # PARENT:
         *   ResultException
-        *   NoExecutionRouteException
+        *   ExecutionRouteException
 
     # PROVIDES
     None

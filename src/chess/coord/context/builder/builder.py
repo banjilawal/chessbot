@@ -11,7 +11,7 @@ from typing import Optional
 
 from chess.coord.context.builder.exception import CoordContextBuildException, CoordContextBuildRouteException
 from chess.system import (
-    BOARD_DIMENSION, BuildResult, Builder, NumberValidator, NoExecutionRouteException, LoggingLevelRouter,
+    BOARD_DIMENSION, BuildResult, Builder, NumberValidator, ExecutionRouteException, LoggingLevelRouter,
 )
 from chess.coord import CoordContext, ZeroCoordContextFlagsException
 

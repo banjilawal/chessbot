@@ -12,12 +12,12 @@ __all__ = [
     "NodeSearchRouteException",
 ]
 
-from chess.system import NoExecutionRouteException
+from chess.system import ExecutionRouteException
 from chess.node import NodeException
 
 
 # ======================# NO_NODE_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
-class NodeSearchRouteException(NodeException, NoExecutionRouteException):
+class NodeSearchRouteException(NodeException, ExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 

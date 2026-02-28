@@ -1,27 +1,27 @@
-# src/chess/board/builder/exception/debug/arena.py
+# src/chess/board/builder/exception/debug/board.py
 
 """
-Module: chess.board.builder.exception.debug.arena
+Module: chess.board.builder.exception.debug.board
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
 
 __all__ = [
-    # ======================# ARENA_ALREADY_CONTAINS_BOARD EXCEPTION #======================#
-    "ArenaAlreadyContainsBoardException",
+    # ======================# BOARD_ALREADY_CONTAINS_BOARD EXCEPTION #======================#
+    "BoardAlreadyContainsBoardException",
 ]
 
 from chess.board import BoardException
 
 
-# ======================# ARENA_ALREADY_CONTAINS_BOARD EXCEPTION #======================#
-class ArenaAlreadyContainsBoardException(BoardException):
+# ======================# BOARD_ALREADY_CONTAINS_BOARD EXCEPTION #======================#
+class BoardAlreadyContainsBoardException(BoardException):
     """
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that a board build failed because the arena for the board was already occupied.
+    1.  Indicate that a board build failed because the board for the board was already occupied.
 
     # PARENT:
         *   BoardException
@@ -35,5 +35,5 @@ class ArenaAlreadyContainsBoardException(BoardException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "ARENA_ALREADY_CONTAINS_BOARD_EXCEPTION"
-    MSG = "Board build failed: The arena already contains a board."
+    ERR_CODE = "BOARD_ALREADY_CONTAINS_BOARD_EXCEPTION"
+    MSG = "Board build failed: The board already contains a board."

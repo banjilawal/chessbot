@@ -13,12 +13,12 @@ __all__ = [
 ]
 
 from chess.token import TokenContextException
-from chess.system import NoExecutionRouteException
+from chess.system import ExecutionRouteException
 
 
 
 # ======================# NO_TOKEN_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
-class TokenContextValidationRouteException(TokenContextException, NoExecutionRouteException):
+class TokenContextValidationRouteException(TokenContextException, ExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -27,7 +27,7 @@ class TokenContextValidationRouteException(TokenContextException, NoExecutionRou
 
     # PARENT:
         *   TokenContextException
-        *   NoExecutionRouteException
+        *   ExecutionRouteException
 
     # PROVIDES
     None

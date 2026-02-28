@@ -13,11 +13,11 @@ __all__ = [
 ]
 
 from chess.token import PawnTokenException
-from chess.system import NoExecutionRouteException
+from chess.system import ExecutionRouteException
 
 
 # ======================# NO_PROMOTION_ROUTE_TO_NEW_RANK EXCEPTION #======================#
-class PawnPromotionRouteException(PawnTokenException, NoExecutionRouteException):
+class PawnPromotionRouteException(PawnTokenException, ExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 

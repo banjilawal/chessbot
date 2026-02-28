@@ -12,12 +12,12 @@ __all__ = [
     "TokenSearchRouteException",
 ]
 
-from chess.system import NoExecutionRouteException
+from chess.system import ExecutionRouteException
 from chess.token import TokenException
 
 
 # ======================# NO_TOKEN_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
-class TokenSearchRouteException(TokenException, NoExecutionRouteException):
+class TokenSearchRouteException(TokenException, ExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -27,7 +27,7 @@ class TokenSearchRouteException(TokenException, NoExecutionRouteException):
 
     # PARENT:
         *   TokenContext
-        *   NoExecutionRouteException
+        *   ExecutionRouteException
 
     # PROVIDES
     None

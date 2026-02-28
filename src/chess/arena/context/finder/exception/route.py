@@ -12,12 +12,12 @@ __all__ = [
     "ArenaSearchRouteException",
 ]
 
-from chess.system import NoExecutionRouteException
+from chess.system import ExecutionRouteException
 from chess.arena import ArenaException
 
 
 # ======================# NO_ARENA_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
-class ArenaSearchRouteException(ArenaException, NoExecutionRouteException):
+class ArenaSearchRouteException(ArenaException, ExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -27,7 +27,7 @@ class ArenaSearchRouteException(ArenaException, NoExecutionRouteException):
 
     # PARENT:
         *   ArenaContext
-        *   NoExecutionRouteException
+        *   ExecutionRouteException
 
     # PROVIDES
     None

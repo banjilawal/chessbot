@@ -1,9 +1,9 @@
-# src/chess/hostage/builder/exception/wrapper.py
+# src/chess/hostage/builder/wrapper.py
 
 """
-Module: chess.hostage.builder.exception.wrapper
+Module: chess.hostage.builder.wrapper
 Author: Banji Lawal
-Created: 2025-10-03
+Created: 2025-09-16
 version: 1.0.0
 """
 
@@ -17,15 +17,13 @@ __all__ = [
 
 from chess.system import BuildException
 
-
 # ======================# HOSTAGE_BUILD_FAILURE #======================#
 class HostageBuildException(BuildException):
     """
     # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  An error occurred in HostageBuilder.build that, prevented BuildResult.success() from 
-        being returned.
+    1.  Identify the HostageBuilder method where the process failed.
 
     # PARENT:
         *   BuildException
@@ -34,10 +32,11 @@ class HostageBuildException(BuildException):
     None
 
     # LOCAL ATTRIBUTES:
-    None
+        *   op (Optional[str])
+        *   rslt_type (Optional[str])
 
     # INHERITED ATTRIBUTES:
-        *   See OperationException class for inherited attributes.
+        *   See BuildException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:)
         *   err_code (str)
@@ -51,13 +50,16 @@ class HostageBuildException(BuildException):
    None
 
     # INHERITED METHODS:
-        *   See WorkerException class for inherited methods.
+        *   See BuildException class for inherited methods.
     """
-    ERR_CODE = "HOSTAGE_BUILD_FAILED"
-    MSG = "Hostage build failed."
-    MTHD = "build"
+    ERR_CODE = "HOSTAGE_BUILD_FAILURE"
+    MSG = "Failure in HostageBuilder method."
+    MTHD = None
     OP = "Build"
     RSLT_TYPE = "BuildResult"
+    
+    _op: Optional[str]
+    _rslt_type: Optional[str]
     
     def __init__(
             self,
@@ -68,10 +70,17 @@ class HostageBuildException(BuildException):
             op: Optional[str] = None,
             rslt_type: Optional[str] = None,
     ):
-        err_code = err_code or self.ERR_CODE
+        op = op or self.OP
         msg = msg or self.MSG
         mthd = mthd or self.MTHD
-        op = op or self.OP
+        err_code = err_code or self.ERR_CODE
         rslt_type = rslt_type or self.RSLT_TYPE
         
-        super().__init__(err_code=err_code, msg=msg, ex=ex, mthd=mthd, op=op, rslt_type=rslt_type)
+        super().__init__(
+            ex=ex,
+            op=op,
+            msg=msg,
+            mthd=mthd,
+            err_code=err_code,
+            rslt_type=rslt_type,
+        )

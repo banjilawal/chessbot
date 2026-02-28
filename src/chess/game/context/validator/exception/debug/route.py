@@ -13,11 +13,11 @@ __all__ = [
 ]
 
 from chess.game import GameContextException
-from chess.system import NoExecutionRouteException
+from chess.system import ExecutionRouteException
 
 
 # ======================# NO_GAME_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
-class GameContextValidationRouteException(GameContextException, NoExecutionRouteException):
+class GameContextValidationRouteException(GameContextException, ExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,7 +26,7 @@ class GameContextValidationRouteException(GameContextException, NoExecutionRoute
 
     # PARENT:
         *   GameContextException
-        *   NoExecutionRouteException
+        *   ExecutionRouteException
 
     # PROVIDES
     None
