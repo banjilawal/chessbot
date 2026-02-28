@@ -1,7 +1,7 @@
-# src/chess/system/build/exception/wrapper.py
+# src/chess/system/validate/exception/template.py
 
 """
-Module: chess.system.build.exception.wrapper
+Module: chess.system.validate.exception.template
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -11,23 +11,22 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# BUILD_FAILURE #======================#
-    "BuildException",
+    # ======================# VALIDATION_FAILURE #======================#
+    "ValidationException",
 ]
 
 from chess.system import OperationException
 
-
-# ======================# BUILD_FAILURE #======================#
-class BuildException(OperationException):
+# ======================# VALIDATION_FAILURE #======================#
+class ValidationException(OperationException):
     """
     # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Identify the __BUILD_CLASS__ method where the process failed.
+    1.  Identify the __VALIDATION_CLASS__ method where the process failed.
 
     # PARENT:
-        *   BuildException
+        *   OperationException
 
     # PROVIDES:
     None
@@ -37,7 +36,7 @@ class BuildException(OperationException):
         *   rslt_type (Optional[str])
 
     # INHERITED ATTRIBUTES:
-        *   See BuildException class for inherited attributes.
+        *   See OperationException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:)
         *   err_code (str)
@@ -51,13 +50,13 @@ class BuildException(OperationException):
    None
 
     # INHERITED METHODS:
-        *   See BuildException class for inherited methods.
+        *   See OperationException class for inherited methods.
     """
-    ERR_CODE = "BUILD_FAILURE"
-    MSG = "Failure in __BUILD_CLASS__ method."
+    ERR_CODE = "VALIDATION_FAILURE"
+    MSG = "Failure in __VALIDATION_CLASS__ method."
     MTHD = None
-    OP = "Build"
-    RSLT_TYPE = "BuildResult"
+    OP = "Validation"
+    RSLT_TYPE = "ValidationResult"
     
     _op: Optional[str]
     _rslt_type: Optional[str]

@@ -1,9 +1,9 @@
-# src/chess/system/build/exception/wrapper.py
+# src/chess/system/err/wrapper/tOperation/template.py
 
 """
-Module: chess.system.build.exception.wrapper
+Module: chess.system.err.wrapper.tOperation.template
 Author: Banji Lawal
-Created: 2025-10-03
+Created: 2026-02-25
 version: 1.0.0
 """
 
@@ -11,23 +11,25 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# BUILD_FAILURE #======================#
-    "BuildException",
+    # ======================# TOPERATION_FAILURE #======================#
+    "TOperationException",
 ]
 
 from chess.system import OperationException
 
 
-# ======================# BUILD_FAILURE #======================#
-class BuildException(OperationException):
+# ======================# TOPERATION_FAILURE #======================#
+class TOperationException(OperationException):
     """
     # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Identify the __BUILD_CLASS__ method where the process failed.
+    1.  Identifies which _TWORKER_CLASS__ method the error was caught.
+    2.  Encapsulates the DebugException created after, a code block triggers a variable into its
+        error state.
 
     # PARENT:
-        *   BuildException
+        *   OperationException
 
     # PROVIDES:
     None
@@ -37,7 +39,7 @@ class BuildException(OperationException):
         *   rslt_type (Optional[str])
 
     # INHERITED ATTRIBUTES:
-        *   See BuildException class for inherited attributes.
+        *   See OperationException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:)
         *   err_code (str)
@@ -51,13 +53,13 @@ class BuildException(OperationException):
    None
 
     # INHERITED METHODS:
-        *   See BuildException class for inherited methods.
+        *   See OperationException class for inherited methods.
     """
-    ERR_CODE = "BUILD_FAILURE"
-    MSG = "Failure in __BUILD_CLASS__ method."
-    MTHD = None
-    OP = "Build"
-    RSLT_TYPE = "BuildResult"
+    ERR_CODE = "TOPERATION_FAILURE"
+    MSG = "Failure in _TWORKER_CLASS__ method."
+    MTHD: None
+    OP: None
+    RSLT_TYPE: None
     
     _op: Optional[str]
     _rslt_type: Optional[str]

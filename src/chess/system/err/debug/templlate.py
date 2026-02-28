@@ -1,7 +1,7 @@
-# src/chess/system/err/tempVarDebug/tempVarDebug.py
+# src/chess/system/err/debug/template.py
 
 """
-Module: chess.system.err.tempVarDebug.tempVarDebug
+Module: chess.system.err.debug.template
 Author: Banji Lawal
 Created: 2026-02-25
 version: 1.0.0

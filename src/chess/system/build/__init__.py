@@ -10,10 +10,9 @@ version: 1.0.0
 #=========== SYSTEM.BUILD PACKAGE CONTENTS ===========#
 
 # Packages
-from .result import *
 from .exception import *
-
 
 # Modules
 from .builder import Builder
+from .result import BuildResult
 

@@ -1,9 +1,9 @@
-# src/chess/system/err/operation.py
+# src/chess/system/err/wrapper/operation/root.py
 
 """
-Module: chess.system.err.operation
+Module: chess.system.err.wrapper.operation.root
 Author: Banji Lawal
-Created: 2025-10-03
+Created: 2026-02-25
 version: 1.0.0
 """
 
@@ -24,9 +24,9 @@ class OperationException(WorkerException):
     # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Identifies the method in a class where the error occurred.
-    2.  Encapsulates the DebugException which identifies the method's code block that raised the error.
-    3.  Middle part of the 3-layer exception chain. Should only contain a DebugException.
+    1.  Identifies which WorkerClass method the error was caught.
+    2.  Encapsulates the DebugException created after, a code block triggers a variable into its
+        error state.
 
     # NAMING CONVENTION:
     1.  Prefix is the Class name with the Result name. The operation name should match the Result subclass.
@@ -71,8 +71,8 @@ class OperationException(WorkerException):
     # INHERITED METHODS:
         *   See WorkerException class for inherited methods.
     """
-    ERR_CODE = "METHOD_FAILURE"
-    MSG = "Method failed."
+    ERR_CODE = "OPERATION_FAILURE"
+    MSG = "Failure in method."
     MTHD: None
     OP: None
     RSLT_TYPE: None
