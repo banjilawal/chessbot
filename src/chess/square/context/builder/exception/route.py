@@ -1,4 +1,4 @@
-# src/chess/square/context/builder/exception/route.py
+# src/chess/square/_context/builder/exception/route.py
 
 """
 Module: chess.square.context.builder.exception.route
@@ -7,27 +7,27 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
+from __future__ import annotations
+from typing import Optional
+
 __all__ = [
-    # ======================# NO_SQUARE_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
-    "SquareContextBuildRouteException",
+    # ======================# SQUARE_CONTEXT_EXECUTION_ROUTE_EXCEPTION #======================#
+    "SquareContextExecutionRouteException",
 ]
 
-from chess.square import SquareContextException
-from chess.system import  ExecutionRouteException
+from chess.system import ExecutionRouteException
 
 
-# ======================# NO_SQUARE_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
-class SquareContextBuildRouteException(SquareContextException, ExecutionRouteException):
+# ======================# SQUARE_CONTEXT_EXECUTION_ROUTE_EXCEPTION #======================#
+class SquareContextExecutionRouteException(ExecutionRouteException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    # ROLE: Error Tracing, Debugging, Super Exception
 
     # RESPONSIBILITIES:
-   1.  A failing BuildResult was returned because there was no build route was provided for the
-        SquareContext attribute.
+    1.  Indicate that there is no build route for a SquareContext attribute.
 
     # PARENT:
-        *   SquareContextDebugException
-        *   ExecutionRouteException
+        *   ExecutionRoute
 
     # PROVIDES:
     None
@@ -36,7 +36,36 @@ class SquareContextBuildRouteException(SquareContextException, ExecutionRouteExc
     None
 
     # INHERITED ATTRIBUTES:
-    Non
+        *   See ExecutionRoute class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        *   msg (str)
+        *   err_code (str)
+        *   ex (Optional[Exception])
+        *   var (Optional[str])
+        *   val Optional[None])
+
+    # LOCAL METHODS:
+   None
+
+    # INHERITED METHODS:
+        *   See ExecutionRoute class for inherited methods.
     """
-    ERR_CODE = "NO_SQUARE_CONTEXT_BUILD_ROUTE_EXCEPTION"
-    MSG = "SquareContext build failed: No build route existed for the attribute."
+    ERR_CODE = "SQUARE_CONTEXT_EXECUTION_ROUTE_EXCEPTION"
+    MSG = "No build route for SquareContext attribute"
+    VAR = None
+    VAL = None
+    
+    def __init__(
+            self,
+            err_code: Optional[str] = None,
+            msg: Optional[str] = None,
+            ex: Optional[Exception] = None,
+            var: Optional[str] = None,
+            val: Optional[None] = None,
+    ):
+        err_code = err_code or self.ERR_CODE
+        msg = msg or self.MSG
+        var = var or self.VAR
+        val = val or self.VAL
+        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)

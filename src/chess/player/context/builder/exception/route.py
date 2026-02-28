@@ -1,4 +1,4 @@
-# src/chess/player/context/builder/exception/route.py
+# src/chess/player/_context/builder/exception/route.py
 
 """
 Module: chess.player.context.builder.exception.route
@@ -7,35 +7,65 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
+from __future__ import annotations
+from typing import Optional
+
 __all__ = [
-    # ======================# NO_PLAYER_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
-    "PlayerContextBuildRouteException",
+    # ======================# PLAYER_CONTEXT_EXECUTION_ROUTE_EXCEPTION #======================#
+    "PlayerContextExecutionRouteException",
 ]
 
-from chess.player import PlayerContextException
 from chess.system import ExecutionRouteException
 
 
-# ======================# NO_PLAYER_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
-class PlayerContextBuildRouteException(PlayerContextException, ExecutionRouteException):
+# ======================# PLAYER_CONTEXT_EXECUTION_ROUTE_EXCEPTION #======================#
+class PlayerContextExecutionRouteException(ExecutionRouteException):
     """
-    # ROLE: Fallback Result, Debugging
+    # ROLE: Error Tracing, Debugging, Super Exception
 
     # RESPONSIBILITIES:
-    1.  Indicate that the PlayerContext build failed because there was no build route for the Player key.
+    1.  Indicate that there is no build route for a PlayerContext attribute.
 
     # PARENT:
-        *   PlayerContextException
-        *   ExecutionRouteException
+        *   ExecutionRoute
 
-    # PROVIDES
+    # PROVIDES:
     None
 
     # LOCAL ATTRIBUTES:
     None
 
     # INHERITED ATTRIBUTES:
-    None
+        *   See ExecutionRoute class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        *   msg (str)
+        *   err_code (str)
+        *   ex (Optional[Exception])
+        *   var (Optional[str])
+        *   val Optional[None])
+
+    # LOCAL METHODS:
+   None
+
+    # INHERITED METHODS:
+        *   See ExecutionRoute class for inherited methods.
     """
-    ERR_CODE = "NO_PLAYER_CONTEXT_BUILD_ROUTE_EXCEPTION"
-    MSG = "PlayerContext build failed: No build path existed for the Player key."
+    ERR_CODE = "PLAYER_CONTEXT_EXECUTION_ROUTE_EXCEPTION"
+    MSG = "No build route for PlayerContext attribute"
+    VAR = None
+    VAL = None
+    
+    def __init__(
+            self,
+            err_code: Optional[str] = None,
+            msg: Optional[str] = None,
+            ex: Optional[Exception] = None,
+            var: Optional[str] = None,
+            val: Optional[None] = None,
+    ):
+        err_code = err_code or self.ERR_CODE
+        msg = msg or self.MSG
+        var = var or self.VAR
+        val = val or self.VAL
+        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)

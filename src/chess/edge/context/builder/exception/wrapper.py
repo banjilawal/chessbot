@@ -1,15 +1,14 @@
-# src/chess/edge/context/builder/exception/wrapper.py
+# src/chess/edgeContext/context/builder/exception/wrapper.py
 
 """
-Module: chess.edge.context.builder.exception.wrapper
+Module: chess.edgeContext.context.builder.exception.wrapper
 Author: Banji Lawal
-Created: 2025-10-03
+Created: 2025-09-16
 version: 1.0.0
 """
 
 from __future__ import annotations
 from typing import Optional
-
 
 __all__ = [
     # ======================# EDGE_CONTEXT_BUILD_FAILURE #======================#
@@ -21,11 +20,10 @@ from chess.system import BuildException
 # ======================# EDGE_CONTEXT_BUILD_FAILURE #======================#
 class EdgeContextBuildException(BuildException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a edge_context build operation failed. The exception chain
-        traces the ultimate source of failure.
+    1.  Identify the EdgeContextBuilder method where the process failed.
 
     # PARENT:
         *   BuildException
@@ -34,7 +32,8 @@ class EdgeContextBuildException(BuildException):
     None
 
     # LOCAL ATTRIBUTES:
-    None
+        *   op (Optional[str])
+        *   rslt_type (Optional[str])
 
     # INHERITED ATTRIBUTES:
         *   See BuildException class for inherited attributes.
@@ -51,13 +50,16 @@ class EdgeContextBuildException(BuildException):
    None
 
     # INHERITED METHODS:
-        *   See WorkerException class for inherited methods.
+        *   See BuildException class for inherited methods.
     """
-    ERR_CODE = "EDGE_CONTEXT_BUILD_FAILED"
-    MSG = "EdgeContext build failed."
-    MTHD = "build"
+    ERR_CODE = "EDGE_CONTEXT_BUILD_FAILURE"
+    MSG = "Failure in EdgeContextBuilder method."
+    MTHD = None
     OP = "Build"
     RSLT_TYPE = "BuildResult"
+    
+    _op: Optional[str]
+    _rslt_type: Optional[str]
     
     def __init__(
             self,
@@ -68,11 +70,17 @@ class EdgeContextBuildException(BuildException):
             op: Optional[str] = None,
             rslt_type: Optional[str] = None,
     ):
-        err_code = err_code or self.ERR_CODE
+        op = op or self.OP
         msg = msg or self.MSG
         mthd = mthd or self.MTHD
-        op = op or self.OP
+        err_code = err_code or self.ERR_CODE
         rslt_type = rslt_type or self.RSLT_TYPE
         
-        super().__init__(err_code=err_code, msg=msg, ex=ex, mthd=mthd, op=op, rslt_type=rslt_type)
-
+        super().__init__(
+            ex=ex,
+            op=op,
+            msg=msg,
+            mthd=mthd,
+            err_code=err_code,
+            rslt_type=rslt_type,
+        )

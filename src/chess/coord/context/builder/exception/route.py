@@ -1,4 +1,4 @@
-# src/chess/coord/context/builder/exception/route.py
+# src/chess/coord/_context/builder/exception/route.py
 
 """
 Module: chess.coord.context.builder.exception.route
@@ -7,35 +7,65 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
+from __future__ import annotations
+from typing import Optional
+
 __all__ = [
-    # ======================# NO_COORD_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
-    "CoordContextBuildRouteException",
+    # ======================# COORD_CONTEXT_EXECUTION_ROUTE_EXCEPTION #======================#
+    "CoordContextExecutionRouteException",
 ]
 
-from chess.coord import CoordContextException
 from chess.system import ExecutionRouteException
 
 
-# ======================# NO_COORD_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
-class CoordContextBuildRouteException(CoordContextException, ExecutionRouteException):
+# ======================# COORD_CONTEXT_EXECUTION_ROUTE_EXCEPTION #======================#
+class CoordContextExecutionRouteException(ExecutionRouteException):
     """
-    # ROLE: Fallback Result, Debugging
+    # ROLE: Error Tracing, Debugging, Super Exception
 
     # RESPONSIBILITIES:
-    1.  Indicate that the CoordContext build failed because there was no build route for the Coord key.
+    1.  Indicate that there is no build route for a CoordContext attribute.
 
     # PARENT:
-        *   CoordContextException
-        *   ExecutionRouteException
+        *   ExecutionRoute
 
-    # PROVIDES
+    # PROVIDES:
     None
 
     # LOCAL ATTRIBUTES:
     None
 
     # INHERITED ATTRIBUTES:
-    None
+        *   See ExecutionRoute class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        *   msg (str)
+        *   err_code (str)
+        *   ex (Optional[Exception])
+        *   var (Optional[str])
+        *   val Optional[None])
+
+    # LOCAL METHODS:
+   None
+
+    # INHERITED METHODS:
+        *   See ExecutionRoute class for inherited methods.
     """
-    ERR_CODE = "NO_COORD_CONTEXT_BUILD_ROUTE_EXCEPTION"
-    MSG = "CoordContext build failed: No build path existed for the Coord key."
+    ERR_CODE = "COORD_CONTEXT_EXECUTION_ROUTE_EXCEPTION"
+    MSG = "No build route for CoordContext attribute"
+    VAR = None
+    VAL = None
+    
+    def __init__(
+            self,
+            err_code: Optional[str] = None,
+            msg: Optional[str] = None,
+            ex: Optional[Exception] = None,
+            var: Optional[str] = None,
+            val: Optional[None] = None,
+    ):
+        err_code = err_code or self.ERR_CODE
+        msg = msg or self.MSG
+        var = var or self.VAR
+        val = val or self.VAL
+        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)

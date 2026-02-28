@@ -1,7 +1,7 @@
-# src/chess/rank/builder/wrapper.py
+# src/chess/rankContext/context/builder/exception/wrapper.py
 
 """
-Module: chess.rank.builder.wrapper
+Module: chess.rankContext.context.builder.exception.wrapper
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,19 +11,19 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# RANK_BUILD_FAILURE #======================#
-    "RankBuildException",
+    # ======================# RANK_CONTEXT_BUILD_FAILURE #======================#
+    "RankContextBuildException",
 ]
 
 from chess.system import BuildException
 
-# ======================# RANK_BUILD_FAILURE #======================#
-class RankBuildException(BuildException):
+# ======================# RANK_CONTEXT_BUILD_FAILURE #======================#
+class RankContextBuildException(BuildException):
     """
     # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Identify the RankBuilder method where the process failed.
+    1.  Identify the RankContextBuilder method where the process failed.
 
     # PARENT:
         *   BuildException
@@ -52,8 +52,8 @@ class RankBuildException(BuildException):
     # INHERITED METHODS:
         *   See BuildException class for inherited methods.
     """
-    ERR_CODE = "RANK_BUILD_FAILURE"
-    MSG = "Failure in RankBuilder method."
+    ERR_CODE = "RANK_CONTEXT_BUILD_FAILURE"
+    MSG = "Failure in RankContextBuilder method."
     MTHD = None
     OP = "Build"
     RSLT_TYPE = "BuildResult"

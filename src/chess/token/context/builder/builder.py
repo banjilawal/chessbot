@@ -17,7 +17,7 @@ from chess.system import (
     NumberValidator, Builder, BuildResult, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
 )
 from chess.token import (
-    ArenaTokenContextFlagsException, TokenContext, TokenContextBuildException,
+    ArenaTokenContextFlagsException, TokenBuildRouteException, TokenContext, TokenContextBuildException,
     TokenContextBuildRouteException, ZeroTokenContextFlagsException
 )
 
@@ -108,8 +108,13 @@ class TokenContextBuilder(Builder[TokenContext]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 TokenContextBuildException(
-                    msg=f"{method}: {TokenContextBuildException.ERR_CODE}",
-                    ex=ZeroTokenContextFlagsException(f"{method}: {ZeroTokenContextFlagsException.MSG}")
+                    mthd=method,
+                    msg=TokenContextBuildException.MSG,
+                    err_code=TokenContextBuildException.ERR_CODE,
+                    ex=ZeroTokenContextFlagsException(
+                        msg=ZeroTokenContextFlagsException.MSG,
+                        err_code=ZeroTokenContextFlagsException.ERR_CODE,
+                    )
                 )
             )
         # Handle the case that, more than one optional param is not-null.
@@ -117,11 +122,15 @@ class TokenContextBuilder(Builder[TokenContext]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 TokenContextBuildException(
-                    msg=f"{method}: {TokenContextBuildException.ERR_CODE}",
-                    ex=ArenaTokenContextFlagsException(f"{method}: {ArenaTokenContextFlagsException}")
+                    mthd=method,
+                    msg=TokenContextBuildException.MSG,
+                    err_code=TokenContextBuildException.ERR_CODE,
+                    ex=ArenaTokenContextFlagsException(
+                        msg=ArenaTokenContextFlagsException.MSG,
+                        err_code=ArenaTokenContextFlagsException.ERR_CODE,
+                    )
                 )
             )
-        
         #--- Route to the appropriate validation/build branch. ---#
         
         # Build the id TokenContext if its flag is enabled.
@@ -131,8 +140,10 @@ class TokenContextBuilder(Builder[TokenContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     TokenContextBuildException(
-                        msg=f"{method}: {TokenContextBuildException.ERR_CODE}",
-                        ex=validation.exception
+                        mthd=method,
+                        msg=TokenContextBuildException.MSG,
+                        err_code=TokenContextBuildException.ERR_CODE,
+                        ex=validation.exception,
                     )
                 )
             # On validation success return an id_TokenContext in the BuildResult.
@@ -145,8 +156,10 @@ class TokenContextBuilder(Builder[TokenContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     TokenContextBuildException(
-                        msg=f"{method}: {TokenContextBuildException.ERR_CODE}",
-                        ex=validation.exception
+                        mthd=method,
+                        msg=TokenContextBuildException.MSG,
+                        err_code=TokenContextBuildException.ERR_CODE,
+                        ex=validation.exception,
                     )
                 )
             # On validation success return a designation_TokenContext in the BuildResult.
@@ -159,8 +172,10 @@ class TokenContextBuilder(Builder[TokenContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     TokenContextBuildException(
-                        msg=f"{method}: {TokenContextBuildException.ERR_CODE}",
-                        ex=validation.exception
+                        mthd=method,
+                        msg=TokenContextBuildException.MSG,
+                        err_code=TokenContextBuildException.ERR_CODE,
+                        ex=validation.exception,
                     )
                 )
             # On validation success return a designation_TokenContext in the BuildResult.
@@ -173,8 +188,10 @@ class TokenContextBuilder(Builder[TokenContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     TokenContextBuildException(
-                        msg=f"{method}: {TokenContextBuildException.ERR_CODE}",
-                        ex=validation.exception
+                        mthd=method,
+                        msg=TokenContextBuildException.MSG,
+                        err_code=TokenContextBuildException.ERR_CODE,
+                        ex=validation.exception,
                     )
                 )
             # On validation success return a coord_TokenContext in the BuildResult.
@@ -187,8 +204,10 @@ class TokenContextBuilder(Builder[TokenContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     TokenContextBuildException(
-                        msg=f"{method}: {TokenContextBuildException.ERR_CODE}",
-                        ex=validation.exception
+                        mthd=method,
+                        msg=TokenContextBuildException.MSG,
+                        err_code=TokenContextBuildException.ERR_CODE,
+                        ex=validation.exception,
                     )
                 )
             # On validation success return a rank_TokenContext in the BuildResult.
@@ -201,8 +220,10 @@ class TokenContextBuilder(Builder[TokenContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     TokenContextBuildException(
-                        msg=f"{method}: {TokenContextBuildException.ERR_CODE}",
-                        ex=validation.exception
+                        mthd=method,
+                        msg=TokenContextBuildException.MSG,
+                        err_code=TokenContextBuildException.ERR_CODE,
+                        ex=validation.exception,
                     )
                 )
             # On validation success return a team_TokenContext in the BuildResult.
@@ -215,8 +236,10 @@ class TokenContextBuilder(Builder[TokenContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     TokenContextBuildException(
-                        msg=f"{method}: {TokenContextBuildException.ERR_CODE}",
-                        ex=validation.exception
+                        mthd=method,
+                        msg=TokenContextBuildException.MSG,
+                        err_code=TokenContextBuildException.ERR_CODE,
+                        ex=validation.exception,
                     )
                 )
             # On validation success return a team_TokenContext in the BuildResult.
@@ -229,12 +252,14 @@ class TokenContextBuilder(Builder[TokenContext]):
                 floor=rank_service.persona_service.min_ransom,
                 ceiling=rank_service.persona_service.max_ransom
             )
-            # Return the exception chain on failure.
             if validation.is_failure:
+                # Return the exception chain on failure.
                 return BuildResult.failure(
                     TokenContextBuildException(
-                        msg=f"{method}: {TokenContextBuildException.ERR_CODE}",
-                        ex=validation.exception
+                        mthd=method,
+                        msg=TokenContextBuildException.MSG,
+                        err_code=TokenContextBuildException.ERR_CODE,
+                        ex=validation.exception,
                     )
                 )
             # On validation success return a ransom_TokenContext in the BuildResult.
@@ -243,7 +268,11 @@ class TokenContextBuilder(Builder[TokenContext]):
         # Return the exception chain if there is no build route for the context.
         return BuildResult.failure(
             TokenContextBuildException(
-                msg=f"{method}: {TokenContextBuildException.ERR_CODE}",
-                ex=TokenContextBuildRouteException(f"{method}: {TokenContextBuildRouteException.MSG}")
+                mthd=method,
+                msg=TokenContextBuildException.MSG,
+                err_code=TokenContextBuildException.ERR_CODE,
+                ex=TokenContextBuildRouteException(
+                    msg=TokenContextBuildRouteException.MSG,
+                )
             )
         )

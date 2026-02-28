@@ -1,7 +1,7 @@
-# src/chess/board/_context/builder/exception/route.py
+# src/chess/arena/_context/builder/exception/route.py
 
 """
-Module: chess.board.context.builder.exception.route
+Module: chess.arena.context.builder.exception.route
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -11,20 +11,20 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# BOARD_CONTEXT_EXECUTION_ROUTE_EXCEPTION #======================#
-    "BoardContextExecutionRouteException",
+    # ======================# ARENA_CONTEXT_EXECUTION_ROUTE_EXCEPTION #======================#
+    "ArenaContextExecutionRouteException",
 ]
 
 from chess.system import ExecutionRouteException
 
 
-# ======================# BOARD_CONTEXT_EXECUTION_ROUTE_EXCEPTION #======================#
-class BoardContextExecutionRouteException(ExecutionRouteException):
+# ======================# ARENA_CONTEXT_EXECUTION_ROUTE_EXCEPTION #======================#
+class ArenaContextExecutionRouteException(ExecutionRouteException):
     """
     # ROLE: Error Tracing, Debugging, Super Exception
 
     # RESPONSIBILITIES:
-    1.  Indicate that there is no build route for a BoardContext attribute.
+    1.  Indicate that there is no build route for a ArenaContext attribute.
 
     # PARENT:
         *   ExecutionRoute
@@ -51,8 +51,8 @@ class BoardContextExecutionRouteException(ExecutionRouteException):
     # INHERITED METHODS:
         *   See ExecutionRoute class for inherited methods.
     """
-    ERR_CODE = "BOARD_CONTEXT_EXECUTION_ROUTE_EXCEPTION"
-    MSG = "No build route for BoardContext attribute"
+    ERR_CODE = "ARENA_CONTEXT_EXECUTION_ROUTE_EXCEPTION"
+    MSG = "No build route for ArenaContext attribute"
     VAR = None
     VAL = None
     

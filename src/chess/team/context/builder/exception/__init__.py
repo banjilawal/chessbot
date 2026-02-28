@@ -1,17 +1,17 @@
-# src/chess/team/context/builder/exception/__init__.py
+# src/chess/team/_context/builder/exception/__init__.py
 
 """
 Module: chess.team.context.builder.exception.__init__
 Author: Banji Lawal
-Created: 2025-11-24
+Created: 2025-10-03
 version: 1.0.0
 """
 
-# =========== TEAM.CONTEXT.BUILDER.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== TEAM.CONTEXT.BUILDER PACKAGE CONTENTS ===========#
 
 # Packages
 None
 
 # Modules
-from .route import TeamContextBuildRouteException
 from .wrapper import TeamContextBuildException
+from .route import TeamContextExecutionRouteException

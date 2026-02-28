@@ -1,7 +1,7 @@
-# src/chess/board/_context/builder/exception/route.py
+# src/chess/rank/_context/builder/exception/route.py
 
 """
-Module: chess.board.context.builder.exception.route
+Module: chess.rank.context.builder.exception.route
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -11,20 +11,20 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# BOARD_CONTEXT_EXECUTION_ROUTE_EXCEPTION #======================#
-    "BoardContextExecutionRouteException",
+    # ======================# RANK_CONTEXT_EXECUTION_ROUTE_EXCEPTION #======================#
+    "RankContextExecutionRouteException",
 ]
 
 from chess.system import ExecutionRouteException
 
 
-# ======================# BOARD_CONTEXT_EXECUTION_ROUTE_EXCEPTION #======================#
-class BoardContextExecutionRouteException(ExecutionRouteException):
+# ======================# RANK_CONTEXT_EXECUTION_ROUTE_EXCEPTION #======================#
+class RankContextExecutionRouteException(ExecutionRouteException):
     """
     # ROLE: Error Tracing, Debugging, Super Exception
 
     # RESPONSIBILITIES:
-    1.  Indicate that there is no build route for a BoardContext attribute.
+    1.  Indicate that there is no build route for a RankContext attribute.
 
     # PARENT:
         *   ExecutionRoute
@@ -51,8 +51,8 @@ class BoardContextExecutionRouteException(ExecutionRouteException):
     # INHERITED METHODS:
         *   See ExecutionRoute class for inherited methods.
     """
-    ERR_CODE = "BOARD_CONTEXT_EXECUTION_ROUTE_EXCEPTION"
-    MSG = "No build route for BoardContext attribute"
+    ERR_CODE = "RANK_CONTEXT_EXECUTION_ROUTE_EXCEPTION"
+    MSG = "No build route for RankContext attribute"
     VAR = None
     VAL = None
     
