@@ -19,7 +19,7 @@ from chess.system import DeletionResult, IdFactory, InsertionResult, LoggingLeve
 
 class NodeStack(StackService[Node]):
     """
-    # ROLE: Data Stack, AbstractSearcher IntegrityService, CRUD Operations, Encapsulation, API layer.
+    # ROLE: Data Stack, SearchWorker IntegrityService, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing API.

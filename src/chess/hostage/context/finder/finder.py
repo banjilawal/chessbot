@@ -21,7 +21,7 @@ from chess.token import CombatantToken, Token
 
 class HostageFinder(DataFinder[Hostage]):
     """
-    # ROLE: AbstractSearcher
+    # ROLE: SearchWorker
 
     # RESPONSIBILITIES:
     1.  Send bag in a HostageList whose attribute value match the context.key value to the caller.
@@ -31,7 +31,7 @@ class HostageFinder(DataFinder[Hostage]):
     1.  HostageFinder sends the raw list of matches. Resolving id collisions is the caller's responsibility.
 
     # PARENT
-        *   AbstractSearcher
+        *   SearchWorker
 
     # PROVIDES:
     None

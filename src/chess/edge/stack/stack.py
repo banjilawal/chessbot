@@ -14,7 +14,7 @@ from typing import List, Optional, cast
 
 class EdgeStack(StackService[Edge]):
     """
-    # ROLE: Data Stack, AbstractSearcher IntegrityService, CRUD Operations, Encapsulation, API layer.
+    # ROLE: Data Stack, SearchWorker IntegrityService, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing API.

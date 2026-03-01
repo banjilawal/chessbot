@@ -30,13 +30,12 @@ from chess.token.service.detector import TokenCollisionDetector
 
 class TokenService(IntegrityService[Token]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Service, Lifecycle Management, Encapsulation, API layer, Computation, Transformer,.
 
-    # RESPONSIBILITIES:
-    1.  Public facing Token microservice API.
-    2.  Encapsulate integrity assurance logic in one extendable module.
-    3.  Authoritative, single source of truth for Token state by providing single entry and exit points to Token
-        lifecycle.
+    # LOCAL RESPONSIBILITIES:
+    
+    # INHERITED RESPONSIBILITIES:
+        *   See IntegrityService class for inherited responsibilities.
 
     # PARENT:
         *   IntegrityService
@@ -45,10 +44,41 @@ class TokenService(IntegrityService[Token]):
     None
 
     # LOCAL ATTRIBUTES:
-        *   formation_service (FormationService)
+        *   SERVICE_NAME (str)
+        *   collision_detector (TokenCollisionDetector)
+        *   readiness_analyzer (TokenReadinessAnalyzer)
 
     # INHERITED ATTRIBUTES:
-        *   See IntegrityService for inherited attributes.
+        *   See IntegrityService class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        *   id (int)
+        *   name (str)
+        *   builder (TokenBuilder) = TokenBuilder()
+        *   validator (TokenValidator) = TokenValidator()
+        *   collision_detector: TokenCollisionDetector = TokenCollisionDetector(),
+        *   readiness_analyzer: TokenReadinessAnalyzer = TokenReadinessAnalyzer(),
+
+    # LOCAL METHODS:
+        *   push_coord_to_token(
+                    self,
+                    token: Token,
+                    position: Coord,
+                    coord_service: CoordService = CoordService()
+            ) -> InsertionResult:
+            
+        *   promote_pawn(
+                    self,
+                    pawn: PawnToken,
+                    new_rank: Rank,
+                    rank_service: RankService = RankService()
+            ) -> UpdateResult[PawnToken]:
+            
+        *   deploy_on_board(self,token: Token) -> InsertionResult[bool]:
+        *   pop_coord_from_token(self, token) -> DeletionResult[Coord]:
+
+    # INHERITED METHODS:
+        *   See IntegrityService class for inherited methods.
     """
     SERVICE_NAME = "TokenService"
     _collision_detector: TokenCollisionDetector
@@ -63,22 +93,6 @@ class TokenService(IntegrityService[Token]):
             collision_detector: TokenCollisionDetector = TokenCollisionDetector(),
             readiness_analyzer: TokenReadinessAnalyzer = TokenReadinessAnalyzer(),
     ):
-        """
-        # ACTION:
-        Constructor
-
-        # PARAMETERS:
-            *   id (nt)
-            *   name (str)
-            *   builder (TokenFactory)
-            *   validator (TokenValidator)
-
-        # RETURNS:
-        None
-
-        # RAISES:
-        None
-        """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         self._collision_detector = collision_detector
         self._readiness_analyzer = readiness_analyzer
@@ -365,9 +379,6 @@ class TokenService(IntegrityService[Token]):
         
         # Send the success result to the caller.
         return InsertionResult.success()
-            
-        
-        
     
     @LoggingLevelRouter.monitor
     def deploy_on_board(self,token: Token,) -> InsertionResult[bool]:

@@ -15,4 +15,4 @@ from .context import *
 from .exception import *
 
 # Modules
-from .abstract import AbstractSearcher
+from .abstract import SearchWorker

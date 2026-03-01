@@ -29,7 +29,7 @@ class ContextService(IntegrityService[Context[T]]):
     None
 
     # LOCAL ATTRIBUTES:
-        *   finder (AbstractSearcher[T])
+        *   finder (SearchWorker[T])
         
     # INHERITED ATTRIBUTES:
         *   See IntegrityService for inherited attributes.
@@ -50,7 +50,7 @@ class ContextService(IntegrityService[Context[T]]):
         # PARAMETERS:
             *   name (str)
             *   id (int)
-            *   finder (AbstractSearcher[T])
+            *   finder (SearchWorker[T])
             *   builder (Builder[Context[T]])
             *   validator (Validator[Context[T]])
 

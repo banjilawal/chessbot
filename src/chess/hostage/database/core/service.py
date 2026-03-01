@@ -18,7 +18,7 @@ from chess.system import StackService, InsertionResult, LoggingLevelRouter, id_e
 
 class HostageList(StackService[Hostage]):
     """
-    # ROLE: Data Stack, AbstractSearcher IntegrityService, CRUD Operations, Encapsulation, API layer.
+    # ROLE: Data Stack, SearchWorker IntegrityService, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing API.

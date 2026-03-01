@@ -20,7 +20,7 @@ from chess.node import (
 
 class NodeFinder(StackSearcher[Node]):
     """
-    # ROLE: AbstractSearcher
+    # ROLE: SearchWorker
 
     # RESPONSIBILITIES:
     1.  Send bag in a NodeList whose attribute value match the context.key value to the caller.
@@ -30,7 +30,7 @@ class NodeFinder(StackSearcher[Node]):
     1.  NodeFinder sends the raw list of matches. Resolving id collisions is the caller's responsibility.
 
     # PARENT
-        *   AbstractSearcher
+        *   SearchWorker
 
     # PROVIDES:
     None

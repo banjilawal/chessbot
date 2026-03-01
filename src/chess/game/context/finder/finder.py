@@ -21,14 +21,14 @@ from chess.system import (
 
 class GameFinder(DataFinder[Game]):
     """
-    # ROLE: AbstractSearcher
+    # ROLE: SearchWorker
 
     # RESPONSIBILITIES:
     1.  Search Game collections for bag which match the attribute target specified in the GameContext parameter.
     2.  Safely forward any errors encountered during a search to the caller.
 
     # PARENT:
-        *   AbstractSearcher
+        *   SearchWorker
 
     # PROVIDES:
     None

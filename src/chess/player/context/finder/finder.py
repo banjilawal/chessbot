@@ -21,14 +21,14 @@ from chess.team import Team, TeamContext
 
 class AgentFinder(DataFinder[PlayerAgent]):
     """
-    # ROLE: AbstractSearcher
+    # ROLE: SearchWorker
 
     # RESPONSIBILITIES:
     1.  Search Player collections for bag which match the attribute target specified in the AgentContext parameter.
     2.  Safely forward any errors encountered during a search to the caller.
 
     # PARENT:
-        *   AbstractSearcher
+        *   SearchWorker
 
     # PROVIDES:
     None
@@ -37,7 +37,7 @@ class AgentFinder(DataFinder[PlayerAgent]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See AbstractSearcher class for inherited attributes.
+        *   See SearchWorker class for inherited attributes.
     """
     @classmethod
     @LoggingLevelRouter.monitor

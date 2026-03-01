@@ -34,7 +34,7 @@ class SquareFinder(StackSearcher[Square]):
     1.  A search result might contain duplicates.
 
     # PARENT
-        *   AbstractSearcher
+        *   SearchWorker
 
     # PROVIDES:
     None
@@ -43,12 +43,12 @@ class SquareFinder(StackSearcher[Square]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See AbstractSearcher for inherited attributes.
+        *   See SearchWorker for inherited attributes.
         
     # CONSTRUCTOR PARAMETERS:
     None
         Inherited:
-            *   See AbstractSearcher for inherited constructor parameters.
+            *   See SearchWorker for inherited constructor parameters.
         
     # LOCAL METHODS:
         *   find(

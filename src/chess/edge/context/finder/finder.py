@@ -22,7 +22,7 @@ from chess.token import Token
 
 class EdgeFinder(StackSearcher[Edge]):
     """
-    # ROLE: AbstractSearcher
+    # ROLE: SearchWorker
 
     # RESPONSIBILITIES:
     1.  Send bag in a EdgeList whose attribute value match the context.key value to the caller.
@@ -32,7 +32,7 @@ class EdgeFinder(StackSearcher[Edge]):
     1.  EdgeFinder sends the raw list of matches. Resolving id collisions is the caller's responsibility.
 
     # PARENT
-        *   AbstractSearcher
+        *   SearchWorker
 
     # PROVIDES:
     None

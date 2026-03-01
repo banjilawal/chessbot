@@ -17,15 +17,18 @@ from chess.vector import Vector, VectorBuilder, VectorServiceException, VectorVa
 
 class VectorService(IntegrityService[Vector]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer, Computation, Transformer,.
-
-    # RESPONSIBILITIES:
-    1.  Public facing Square microservice API.
-    2.  Encapsulate integrity logic for Square instances in one extendable module.
-    3.  Authoritative, single source of truth for Square state by providing single entry and exit points to Square
-        lifecycle.
-    4.  Creating new Vector objects by scalar multiplication.
-    5.  Converting a Vector into a Coord.
+    # LOCAL ROLE:
+        Computation, Transformer
+    
+    # INHERITED ROLE:
+        *   See IntegrityService class for inherited role.
+    
+    # LOCAL RESPONSIBILITIES:
+    1.  Creating new Vector objects by scalar multiplication.
+    2.  Converting a Vector into a Coord.
+    
+    # INHERITED RESPONSIBILITIES:
+        *   See IntegrityService class for inherited responsibilities.
 
     # PARENT:
         *   IntegrityService
@@ -95,18 +98,15 @@ class VectorService(IntegrityService[Vector]):
         2.  Certify the vector argument with the service's validator.
         3.  Get the new x and y components using the expression
                     x, new_colum = vector.x * scalar.value, vector.y * scalar.value
-        5.  Using the service's VectordBuilder instance create and return the new Vector.
-
+        4.  Using the service's VectorBuilder instance create and return the new Vector.
         # PARAMETERS:
             *   vector(Vector)
             *   scalar (Scalar)
             *   scalar_service (ScalarService)
-
         # RETURNS:
         BuildResult[Vector] containing either:
             - On success: Vector in the payload.
             - On failure: Exception.
-
         RAISES:
             *   VectorServiceException
         """

@@ -17,7 +17,6 @@ __all__ = [
 
 from chess.system import BuildException
 
-
 # ======================# TOKEN_BUILDER_FAILURE #======================#
 class TokenBuildException(BuildException):
     """

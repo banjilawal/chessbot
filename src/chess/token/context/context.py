@@ -19,7 +19,7 @@ from chess.system import Context, GameColor, LoggingLevelRouter
 
 class TokenContext(Context[Token]):
     """
-    # ROLE: AbstractSearcher option filter
+    # ROLE: SearchWorker option filter
 
     # RESPONSIBILITIES:
     Provides options for what type of key-value pair TokenFinder should use to find matches.

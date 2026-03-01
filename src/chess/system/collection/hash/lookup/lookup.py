@@ -11,10 +11,10 @@ from enum import Enum
 from typing import List
 from abc import abstractmethod
 
-from chess.system import AbstractSearcher, Context, LoggingLevelRouter, SearchResult, Validator
+from chess.system import SearchWorker, Context, LoggingLevelRouter, SearchResult, Validator
 
 
-class HashLookup(AbstractSearcher[Enum]):
+class HashLookup(SearchWorker[Enum]):
     """
     # ROLE: Forward Lookups,
 
@@ -25,7 +25,7 @@ class HashLookup(AbstractSearcher[Enum]):
     3.  Indicate the HashMap does have an entry for the Key with an exception in the SearchResult.
 
     # PARENT:
-        *   AbstractSearcher
+        *   SearchWorker
 
     # PROVIDES:
     None
