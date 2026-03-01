@@ -49,9 +49,9 @@ class ServiceRequest:
         self._arguments = arguments
     
     @property
-    def command_name(self):
+    def command_name(self) -> str:
         return self._command_name
     
     @property
-    def arguments(self):
+    def arguments(self) -> Dict[str, Any]:
         return self._arguments

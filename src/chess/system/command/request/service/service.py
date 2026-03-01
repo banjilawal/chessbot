@@ -11,7 +11,7 @@ from __future__ import annotations
 from chess.system import IntegrityService, Builder, Command, Validator
 
 
-class CommandService(IntegrityService[Command]):
+class ChessServiceRequest(IntegrityService[Command]):
     """
     # ROLE: Microservice API, Integrity Lifecycle Manager, APLifecycle Management.
 
@@ -47,10 +47,9 @@ class CommandService(IntegrityService[Command]):
     # INHERITED METHODS:
     *   See IntegrityService class for inherited methods.
     """
-    SERVICE_NAME = "CommandService"
-    _command_builder: Builder[Command]
-    _command_validator: Validator[Command]
-    _request
+    SERVICE_NAME = "ChessServiceRequest"
+    _builder: Builder[ServiceRequestBuilder]
+    _validator: Validator[ServiceReqeustValidator]
     
     def __init__(
             self,
@@ -71,7 +70,7 @@ class CommandService(IntegrityService[Command]):
     
     def __eq__(self, other):
         if super().__eq__(other):
-            if isinstance(other, CommandService):
+            if isinstance(other, ChessServiceRequest):
                 return True
         return False
     

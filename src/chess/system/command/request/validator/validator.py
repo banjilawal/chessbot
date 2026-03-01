@@ -11,8 +11,7 @@ from typing import Any, cast
 
 from chess.system import (
     IdentityService, LoggingLevelRouter, NullArgumentsException, ServiceRequestNullException,
-    ServiceRequestValidationException,
-    ValidationResult, Validator, ServiceRequest
+    ServiceRequestValidationException, ValidationResult, Validator, ServiceRequest
 )
 
 class ServiceRequestValidator(Validator[ServiceRequest]):
@@ -54,7 +53,7 @@ class ServiceRequestValidator(Validator[ServiceRequest]):
     @LoggingLevelRouter.monitor
     def validate(
             cls,
-            candidate: ServiceRequest,
+            candidate: Any,
             identity_service: IdentityService = IdentityService(),
     ) -> ValidationResult[ServiceRequest]:
         """
@@ -116,7 +115,7 @@ class ServiceRequestValidator(Validator[ServiceRequest]):
         # --- Cast candidate to a ServiceRequest for additional tests. ---#
         request = cast(ServiceRequest, candidate)
         
-        # Handle the case that, the request.operation is not a string.
+        # Handle the case that, the request.command_name is not a string.
         identity_validation = identity_service.validate_name(request.command_name)
         # Return the exception chain on failure.
         if identity_validation.is_failure:
