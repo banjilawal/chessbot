@@ -11,14 +11,14 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# VECTOR_DEBUG_EXCEPTION #======================#
-    "VectorDebugException",
+    # ======================# VECTOR_SERVICE_EXCEPTION #======================#
+    "VectorServiceException",
 ]
 
 from chess.system import DebugException
 
-# ======================# VECTOR_DEBUG_EXCEPTION #======================#
-class VectorDebugException(DebugException):
+# ======================# VECTOR_SERVICE_EXCEPTION #======================#
+class VectorServiceException(DebugException):
     """
     # ROLE: Capture Error Variable State, Exception Chain Layer 2, Exception Messaging
     
@@ -27,7 +27,7 @@ class VectorDebugException(DebugException):
             *   variable,
             *   it's value,
             *   event which fired the variable into its error state.
-        which occurred in the Anchor method identified in layer-0 of the exception chain.
+        which occurred in the Vector method identified in layer-0 of the exception chain.
 
     # PARENT:
         *   DebugException
@@ -55,8 +55,8 @@ class VectorDebugException(DebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    ERR_CODE = "VECTOR_EXCEPTION"
-    MSG = str = "Vector had an error."
+    ERR_CODE = "VECTOR_SERVICE_EXCEPTION"
+    MSG = str = "VectorService had an error."
     VAR = Optional[Any]
     VAL = Optional[Any]
     

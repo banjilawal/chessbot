@@ -11,7 +11,7 @@ from typing import cast
 
 from chess.coord import Coord, CoordService
 from chess.scalar import Scalar, ScalarService
-from chess.system import BuildResult, ComputationResult, LoggingLevelRouter, IntegrityService, id_emitter
+from chess.system import BuildResult, ComputationResult, IdFactory, LoggingLevelRouter, IntegrityService
 from chess.vector import Vector, VectorBuilder, VectorServiceException, VectorValidator
 
 
@@ -65,26 +65,10 @@ class VectorService(IntegrityService[Vector]):
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            id: int = id_emitter.service_id,
             builder: VectorBuilder = VectorBuilder(),
             validator: VectorValidator = VectorValidator(),
+            id: int = IdFactory.next_id(class_name="VectorService"),
     ):
-        """
-        # ACTION:
-        Constructor
-
-        # PARAMETERS:
-            *   id (nt)
-            *   name (str)
-            *   builder (VectorBuilder)
-            *   validator (VectorValidator)
-
-        # RETURNS:
-        None
-
-        # RAISES:
-        None
-        """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
     
     @property
