@@ -1,7 +1,7 @@
-# src/chess/pipeline/database/core/exception/push/wrapper.py
+# src/command/pipeline/database/core/exception/push/wrapper.py
 
 """
-Module: chess.pipeline.database.core.exception.push.wrapper
+Module: command.pipeline.database.core.exception.push.wrapper
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

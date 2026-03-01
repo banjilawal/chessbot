@@ -1,7 +1,7 @@
-# src/chess/pipeline/database/core/exception/pop/wrapper.py
+# src/command/pipeline/database/core/exception/pop/wrapper.py
 
 """
-Module: chess.pipeline.database.core.exception.pop.wrapper
+Module: command.pipeline.database.core.exception.pop.wrapper
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/square/command/command/build/validator/validator.py
+# src/command/command/command/build/validator/validator.py
 
 """
-Module: chess.square.command.command.build.validator.validator
+Module: command.command.command.build.validator.validator
 Author: Banji Lawal
 Created: 2026-02-24
 """

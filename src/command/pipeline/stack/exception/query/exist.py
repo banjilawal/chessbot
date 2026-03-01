@@ -1,7 +1,7 @@
-# src/chess/pipeline/database/core/exception/query/exist.py
+# src/command/pipeline/database/core/exception/query/exist.py
 
 """
-Module: chess.pipeline.database.core.exception.query.exist
+Module: command.pipeline.database.core.exception.query.exist
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

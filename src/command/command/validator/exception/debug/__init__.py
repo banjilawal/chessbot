@@ -1,7 +1,7 @@
-# src/chess/square/command/command/validation/exception/debug.py
+# src/command/command/command/validation/exception/debug.py
 
 """
-Module: chess.square.command.command.validation.exception.debug
+Module: command.command.command.validation.exception.debug
 Author: Banji Lawal
 Created: 2026-02-24
 """

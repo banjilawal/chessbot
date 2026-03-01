@@ -1,7 +1,7 @@
-# src/chess/pipeline/database/core/exception/super.py
+# src/command/pipeline/database/core/exception/super.py
 
 """
-Module: chess.pipeline.database.core.exception.super
+Module: command.pipeline.database.core.exception.super
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0

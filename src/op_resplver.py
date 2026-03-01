@@ -1,9 +1,17 @@
-from enum import Enum
-from typing import Union
+# src/op_resolver.py
 
-from chess.system import Result
-from chess.builder import BuildResult
-from chess.player.finder import SearchResult
+"""
+Module: op_resolver
+Author: Banji Lawal
+Created: 2026-02-25
+"""
+
+from __future__ import annotations
+from enum import Enum
+from typing import Any, Union
+
+
+from logic.system import BuildResult, Result, SearchResult, logging
 
 
 class OperationResolver(Enum):

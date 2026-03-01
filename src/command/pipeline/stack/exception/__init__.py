@@ -1,7 +1,7 @@
-# src/chess/pipeline/database/core/exception/__init__.py
+# src/command/pipeline/database/core/exception/__init__.py
 
 """
-Module: chess.pipeline.database.core.exception.__init__
+Module: command.pipeline.database.core.exception.__init__
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0

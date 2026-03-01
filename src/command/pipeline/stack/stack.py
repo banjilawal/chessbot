@@ -1,7 +1,7 @@
-# src/chess/pipeline/database/core/stack.py
+# src/command/pipeline/database/core/stack.py
 
 """
-Module: chess.pipeline.database.core.service
+Module: command.pipeline.database.core.service
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0

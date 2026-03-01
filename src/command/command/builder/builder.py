@@ -1,7 +1,7 @@
-# src/chess/square/command/build/request/builder/builder.py
+# src/command/command/build/request/builder/builder.py
 
 """
-Module: chess.square.command.build.request.builder.builder
+Module: command.command.build.request.builder.builder
 Author: Banji Lawal
 Created: 2026-02-24
 """
@@ -10,10 +10,8 @@ from __future__ import annotations
 
 from typing import Any, Dict
 
-from chess.system import (
-    IdentityService, NullArgumentsException, Service, Builder, Command, CommandBuilderException,
-    CommandNameException, IdFactory, LoggingLevelRouter, RequestValidator, BuildResult, Request
-)
+from logic import Builder
+
 
 class CommandBuilder(Builder[Command]):
     

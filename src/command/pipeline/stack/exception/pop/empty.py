@@ -1,7 +1,7 @@
-# src/chess/pipeline/database/core/exception/pop/empty
+# src/command/pipeline/database/core/exception/pop/empty
 
 """
-Module: chess.pipeline.database.core.exception.pop.empty
+Module: command.pipeline.database.core.exception.pop.empty
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
