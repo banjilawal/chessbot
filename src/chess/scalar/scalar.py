@@ -17,7 +17,7 @@ class Scalar:
     
     # RESPONSIBILITIES:
     1.  A 1-D quantity.
-    2.  Creates new 2-D object which can be either a
+    2.  Creating new 2-D object which can be either a
             *   Vector
             *   Coords
         by multiplying an originating 2-D by the scalar.

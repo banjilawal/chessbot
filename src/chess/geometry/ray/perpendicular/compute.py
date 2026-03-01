@@ -14,7 +14,7 @@ from chess.geometry import CoordRay
 from chess.rank import PerpendicularRayComputationException
 from chess.system import BuildResult, ComputationResult, LoggingLevelRouter
 
-class PerpendicularRay:
+class PerpendicularCoordRayComputer:
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -54,7 +54,7 @@ class PerpendicularRay:
         RAISES:
             *   PerpendicularRayComputationException
         """
-        method = "PerpendicularRay.compute"
+        method = "PerpendicularCoordRayComputer.compute"
         
         i = start_x
         j = start_y

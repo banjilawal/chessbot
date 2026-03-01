@@ -11,31 +11,54 @@ from typing import cast
 
 from chess.coord import Coord, CoordService
 from chess.scalar import Scalar, ScalarService
-from chess.system import BuildResult, LoggingLevelRouter, IntegrityService, id_emitter
+from chess.system import BuildResult, ComputationResult, LoggingLevelRouter, IntegrityService, id_emitter
 from chess.vector import Vector, VectorBuilder, VectorServiceException, VectorValidator
 
 
 class VectorService(IntegrityService[Vector]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Service, Lifecycle Management, Encapsulation, API layer, Computation, Transformer,.
 
     # RESPONSIBILITIES:
-    1.  Public facing Vector microservice API.
-    2.  Encapsulate integrity assurance logic in one extendable module.
-    3.  Authoritative, single source of truth for Vector state by providing single entry and exit points to Vector
+    1.  Public facing Square microservice API.
+    2.  Encapsulate integrity logic for Square instances in one extendable module.
+    3.  Authoritative, single source of truth for Square state by providing single entry and exit points to Square
         lifecycle.
+    4.  Creating new Vector objects by scalar multiplication.
+    5.  Converting a Vector into a Coord.
 
     # PARENT:
         *   IntegrityService
 
     # PROVIDES:
-        *   VectorService
+    None
 
     # LOCAL ATTRIBUTES:
-    None
+        *   SERVICE_NAME (str)
 
     # INHERITED ATTRIBUTES:
         *   See IntegrityService for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        *   id (int)
+        *   name (str)
+        *   builder (VectorBuilder) = VectorBuilder()
+        *   validator (VectorValidator) = VectorValidator()
+
+    # LOCAL METHODS:
+        *   multiply_vector_by_scalar(
+                    vector: Vector,
+                    scalar: Scalar,
+                    scalar_service: ScalarService = ScalarService()
+            ) -> ComputationResult[Vector]
+            
+        *   convert_coord_to_vector(
+                coord: Coord,
+                coord_service: CoordService = CoordService(),
+            ) -> BuildResult[Vector]:
+
+    # INHERITED METHODS:
+        *   See IntegrityService class for inherited methods.
     """
     SERVICE_NAME = "VectorService"
     
@@ -81,7 +104,7 @@ class VectorService(IntegrityService[Vector]):
             vector: Vector,
             scalar: Scalar,
             scalar_service: ScalarService = ScalarService()
-    ) -> BuildResult[Vector]:
+    ) -> ComputationResult[Vector]:
         """
         # ACTION:
         1.  Certify the scalar argument with scalar_service.

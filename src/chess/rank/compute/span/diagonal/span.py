@@ -69,7 +69,7 @@ class DiagonalSpan:
             *   origin (Coord)
             *   points (List[Coord])
             *   coord_service (CoordService)
-            *   diagonal_ray (DiagonalRay)
+            *   diagonal_ray (DiagonalCoordRayComputer)
         # RETURNS:
             *   ComputationResult[List[Coord]]:
                     - On failure: An exception.

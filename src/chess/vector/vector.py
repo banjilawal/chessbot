@@ -10,9 +10,9 @@ version: 1.0.0
 
 class Vector:
     """
-    # ROLE: Transformer, Computation, Iteration, Data-Holder
-  
-    # RESPONSIBILITY:
+    # ROLE: Computation, Transformer, Iterator, Data-Holder
+    
+    # BACKGROUND:
     Consider,
         1.  A Token travels on the X,Y plane. delta_x and delta_y might be different. Iterating through Coords
             to the next Coord.
@@ -26,35 +26,39 @@ class Vector:
         5.  delta_x = N and delta_y = M.
         6.  We see iterating through a series of Coords requires the vector; V(delta_x, delta_y).
     Therefore, a Vector provides the interval for stepping  through a series of Coords.
-  
+
+    # RESPONSIBILITIES:
+    1.  Represents a 2-D object which is independent of the board.
+    2.  Vector addition.
+
+
+    # PARENT:
+    None
+
     # PROVIDES:
-    Vector
-  
-    # ATTRIBUTES:
-        *   x (int):  component in the x-plane (column)
-        *   y (int):  component in the y-plane (row)
+    None
+
+    # LOCAL ATTRIBUTES:
+        *   x (int)
+        *   y (int)
+
+    # INHERITED ATTRIBUTES:
+    None
+
+    # CONSTRUCTOR PARAMETERS:
+        *   x (int)
+        *   y (int)
+
+    # LOCAL METHODS:
+    None
+
+    # INHERITED METHODS:
+    None
     """
-    
     _x: int
     _y: int
     
     def __init__(self, x: int, y: int):
-        """
-        # ACTION:
-        Construct a Vector object.
-    
-        # PARAMETERS:
-            *   x (int)
-            *   y (int)
-    
-        # RETURNS:
-        None
-    
-        # RAISES:
-        None
-        """
-        method = "Vector.__init__"
-      
         self._x = x
         self._y = y
     

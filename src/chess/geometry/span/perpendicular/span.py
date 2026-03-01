@@ -57,7 +57,7 @@ class PerpendicularSpan:
             *   origin (Coord)
             *   points (List[Coord])
             *   coord_service (CoordService)
-            *   perpendicular_ray (PerpendicularRay)
+            *   perpendicular_ray (PerpendicularCoordRayComputer)
         # RETURNS:
             *   ComputationResult[List[Coord]]:
                     - On failure: An exception.

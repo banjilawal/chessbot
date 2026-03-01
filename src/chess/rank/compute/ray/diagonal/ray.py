@@ -58,7 +58,7 @@ class DiagonalRay:
         RAISES:
             *   DiagonalRayComputationException
         """
-        method = "DiagonalRay.compute"
+        method = "DiagonalCoordRayComputer.compute"
         
         origin = token.coord
         i = origin.column
@@ -101,7 +101,7 @@ class DiagonalRay:
     ) -> BuildResult[Vertex]:
         """
         """
-        method = "DiagonalRay.vertex_builder"
+        method = "DiagonalCoordRayComputer.vertex_builder"
         
         square_search_result = board.squares.search(context=SquareContext(coord=coord))
         if square_search_result.is_failure:

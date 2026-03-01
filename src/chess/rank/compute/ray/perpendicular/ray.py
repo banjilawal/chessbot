@@ -52,7 +52,7 @@ class PerpendicularRay:
         RAISES:
             *   PerpendicularRayComputationException
         """
-        method = "PerpendicularRay.compute"
+        method = "PerpendicularCoordRayComputer.compute"
         
         i = start_x
         j = start_y

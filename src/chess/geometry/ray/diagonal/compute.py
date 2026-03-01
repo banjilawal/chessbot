@@ -13,7 +13,7 @@ from chess.coord import Coord, CoordService
 from chess.geometry import CoordRay, DiagonalRayComputationException
 from chess.system import ComputationResult, LoggingLevelRouter
 
-class DiagonalRay:
+class DiagonalCoordRayComputer:
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -49,7 +49,7 @@ class DiagonalRay:
         RAISES:
             *   DiagonalRayComputationFailedException
         """
-        method = "DiagonalRay.compute"
+        method = "DiagonalCoordRayComputer.compute"
         points: List[Coord] = []
         
         i = start_x
