@@ -8,7 +8,10 @@ Created: 2025-11-18
 
 from __future__ import annotations
 
-from chess.system import IntegrityService, Builder, Command, Validator
+from chess.system import (
+    IntegrityService, Builder, Command, ServiceRequest, ServiceRequestBuilder,
+    ServiceRequestValidator, Validator
+)
 
 
 class ChessServiceRequest(IntegrityService[Command]):
@@ -47,35 +50,35 @@ class ChessServiceRequest(IntegrityService[Command]):
     # INHERITED METHODS:
     *   See IntegrityService class for inherited methods.
     """
-    SERVICE_NAME = "ChessServiceRequest"
-    _builder: Builder[ServiceRequestBuilder]
-    _validator: Validator[ServiceReqeustValidator]
+    SERVICE_NAME = "ServiceRequest"
+    # _builder: Builder[ServiceRequestBuilder]
+    # _validator: Validator[ServiceRequestValidator]
     
     def __init__(
             self,
             id: int,
-            name: str,
-            builder: Builder[Command],
-            validator: Validator[Command]
+            name: str = SERVICE_NAME,
+            builder: ServiceRequestBuilder = ServiceRequestBuilder(),
+            validator:ServiceRequestValidator = ServiceRequestValidator(),
     ):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
 
-    @property
-    def builder(self) -> Builder[Command]:
-        return self._builder
-    
-    @property
-    def validator(self) -> Validator[Command]:
-        return self.certifier
-    
-    def __eq__(self, other):
-        if super().__eq__(other):
-            if isinstance(other, ChessServiceRequest):
-                return True
-        return False
-    
-    def __hash__(self):
-        return hash(self._id)
-    
-    def __str__(self):
-        return f"id:{self._id}, name:{self._name}"
+    # @property
+    # def builder(self) -> Builder[Command]:
+    #     return self.builder
+    #
+    # @property
+    # def validator(self) -> Validator[Command]:
+    #     return self.certifier
+    #
+    # def __eq__(self, other):
+    #     if super().__eq__(other):
+    #         if isinstance(other, ChessServiceRequest):
+    #             return True
+    #     return False
+    #
+    # def __hash__(self):
+    #     return hash(self._id)
+    #
+    # def __str__(self):
+    #     return f"id:{self._id}, name:{self._name}"
