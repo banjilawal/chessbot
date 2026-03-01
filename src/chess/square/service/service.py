@@ -19,7 +19,7 @@ from chess.token import Token
 
 class SquareService(IntegrityService[Square]):
     """
-    # ROLE: AbstractService, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing Square microservice API.

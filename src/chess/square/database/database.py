@@ -21,7 +21,7 @@ from chess.token import Token
 
 class SquareDatabase(Database[Square]):
     """
-    # ROLE: Data Repository, CRUD Search AbstractService, CRUD Operations, Encapsulation, API layer.
+    # ROLE: Data Repository, CRUD Search Service, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Higher level API for SquareStackService.

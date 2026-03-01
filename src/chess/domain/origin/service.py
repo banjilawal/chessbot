@@ -4,7 +4,7 @@ from chess.domain import DomainOrigin, DomainOriginBuilder, DomainOriginValidato
 
 class DomainOriginService(IntegrityService[DomainOrigin]):
     """
-    # ROLE: AbstractService, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing DomainOrigin microservice API.

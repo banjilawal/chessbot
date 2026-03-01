@@ -12,4 +12,4 @@ Created: 2025-11-18
 from .exception import *
 
 # Modules
-from .service import AbstractService
+from .service import Service

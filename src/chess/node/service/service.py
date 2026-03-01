@@ -21,7 +21,7 @@ from chess.system import DeletionResult, IntegrityService, IdFactory, InsertionR
 
 class NodeService(IntegrityService[Node]):
     """
-    # ROLE: AbstractService, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing Node microservice API.

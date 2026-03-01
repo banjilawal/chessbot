@@ -15,7 +15,7 @@ from chess.formation import FormationLookup, FormationKey, FormationKeyBuilder, 
 
 class FormationKeyService(ContextService[FormationKey]):
     """
-    # ROLE: AbstractService, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing FormationKey microservice API.

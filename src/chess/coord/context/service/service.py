@@ -16,7 +16,7 @@ from chess.coord import CoordContext, CoordContextBuilder, CoordContextValidator
 
 class CoordContextService(ContextService[CoordContext]):
     """
-    # ROLE: Search AbstractService, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing Coord search microservice API.

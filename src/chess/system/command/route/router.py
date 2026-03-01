@@ -45,6 +45,7 @@ class CommandRouter(ABC, Generic[S]):
     None
     """
     
+    
     @abstractmethod
     @LoggingLevelRouter.monitor
     def route(self, command: Command) -> Any:

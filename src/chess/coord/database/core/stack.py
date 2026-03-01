@@ -21,7 +21,7 @@ from chess.coord import (
 
 class CoordStack(StackService[Coord]):
     """
-    # ROLE: Data Stack, Search AbstractService, CRUD Operations, Encapsulation, API layer.
+    # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Microservice API for managing and searching Coord collections.

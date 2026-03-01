@@ -30,7 +30,7 @@ from chess.token.service.detector import TokenCollisionDetector
 
 class TokenService(IntegrityService[Token]):
     """
-    # ROLE: AbstractService, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing Token microservice API.

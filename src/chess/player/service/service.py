@@ -19,7 +19,7 @@ from chess.team import (
 
 class PlayerService(IntegrityService[Player]):
     """
-    # ROLE: AbstractService, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing Player microservice API.

@@ -17,7 +17,7 @@ from chess.vector import Vector, VectorBuilder, VectorServiceException, VectorVa
 
 class VectorService(IntegrityService[Vector]):
     """
-    # ROLE: AbstractService, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing Vector microservice API.

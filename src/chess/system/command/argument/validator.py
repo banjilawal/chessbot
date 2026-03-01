@@ -12,7 +12,7 @@ from typing import Any, Dict, cast
 
 from chess.system import (
     ArgumentCountException, ArgumentNameException, ArgumentTypeException, ArgumentsValidationException,
-    Command, IdentityService, LoggingLevelRouter, NullArgumentsException, ValidationResult, Validator
+    IdentityService, LoggingLevelRouter, NullArgumentsException, ValidationResult, Validator
 )
 
 

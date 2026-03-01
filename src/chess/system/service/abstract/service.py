@@ -14,9 +14,9 @@ from chess.system import Validator
 T = TypeVar("T")
 
 
-class AbstractService(ABC, Generic[T]):
+class Service(ABC, Generic[T]):
     """
-    # ROLE: AbstractService
+    # ROLE: Service
 
     # RESPONSIBILITIES:
     1.  Platform primitive to build Microservice APIs.
@@ -67,7 +67,7 @@ class AbstractService(ABC, Generic[T]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, AbstractService):
+        if isinstance(other, Service):
             return self._id == other.id
         return False
     

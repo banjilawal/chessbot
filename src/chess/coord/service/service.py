@@ -16,7 +16,7 @@ from chess.system import BuildResult, ComputationResult, IntegrityService, id_em
 
 class CoordService(IntegrityService[Coord]):
     """
-    # ROLE: AbstractService, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing Coord microservice API.

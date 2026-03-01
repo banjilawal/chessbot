@@ -9,10 +9,10 @@ Version: 1.0.0
 
 from enum import Enum
 
-from chess.system import ContextService, AbstractService, Validator
+from chess.system import ContextService, Service, Validator
 
 
-class HashService(AbstractService[Enum]):
+class HashService(Service[Enum]):
     _hash_key_service: ContextService[Enum]
   
     def __init__(

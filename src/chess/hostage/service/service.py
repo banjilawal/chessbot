@@ -15,7 +15,7 @@ from chess.hostage import Hostage, HostageBuilder, HostageValidator
 
 class HostageService(IntegrityService[Hostage]):
     """
-    # ROLE: AbstractService, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing Square microservice API.

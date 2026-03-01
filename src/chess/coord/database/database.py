@@ -17,7 +17,7 @@ from chess.coord import Coord, CoordContext, CoordContextService, CoordDatabaseE
 
 class CoordDatabase(Database[Coord]):
     """
-    # ROLE: Unique Data Stack, Search AbstractService, CRUD Operations, Encapsulation, API layer.
+    # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Ensure all bag managed by CoordStack are unique.

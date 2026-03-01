@@ -20,7 +20,7 @@ from chess.system import InsertionResult, LoggingLevelRouter, SearchResult, Data
 
 class HostageDatabase(Database[Hostage]):
     """
-    # ROLE: Unique Data Stack, Search AbstractService, CRUD Operations, Encapsulation, API layer.
+    # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Ensure all bag in managed by HostageList are unique.
@@ -39,7 +39,7 @@ class HostageDatabase(Database[Hostage]):
         *   See Database class for inherited attributes.
     """
     SERVICE_NAME = "HostageDatabase"
-    _database_core: HostageList
+    _data_core: HostageList
     
     def __init__(
             self,
@@ -144,7 +144,7 @@ class HostageDatabase(Database[Hostage]):
                     )
                 )
             )
-        # --- Use _database_core.insert because order does not matter for the manifest access. ---#
+        # --- Use _data_core.insert because order does not matter for the manifest access. ---#
         insertion_result = self._database_core.insert(manifest=manifest)
         
         # Handle the case that, the insertion is not completed.

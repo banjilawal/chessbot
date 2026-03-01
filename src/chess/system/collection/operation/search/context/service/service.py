@@ -15,7 +15,7 @@ T = TypeVar("T")
 
 class ContextService(IntegrityService[Context[T]]):
     """
-    # ROLE: Search AbstractService, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing API for querying datasets of T objects.

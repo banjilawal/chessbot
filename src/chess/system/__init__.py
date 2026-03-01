@@ -15,6 +15,8 @@ from .build import *
 from .color import *
 from .config import *
 from .command import *
+from .pipeline import *
+from .request import *
 from .collection import *
 from .database import *
 from .err import *

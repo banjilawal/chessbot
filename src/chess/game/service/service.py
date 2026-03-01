@@ -15,7 +15,7 @@ from chess.game import Game, GameBuilder, GameValidator
 
 class GameService(IntegrityService[Game]):
     """
-    # ROLE: AbstractService, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing Game microservice API.

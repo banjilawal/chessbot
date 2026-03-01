@@ -19,7 +19,7 @@ from chess.system import (
 
 class TeamDatabase(Database[Team]):
     """
-    # ROLE: Unique Data Stack, Search AbstractService, CRUD Operations, Encapsulation, API layer.
+    # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Ensure all bag in managed by TeamStack are unique.

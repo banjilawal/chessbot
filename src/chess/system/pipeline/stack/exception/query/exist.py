@@ -1,0 +1,43 @@
+# src/chess/pipeline/database/core/exception/query/exist.py
+
+"""
+Module: chess.pipeline.database.core.exception.query.exist
+Author: Banji Lawal
+Created: 2025-11-22
+version: 1.0.0
+"""
+
+
+
+__all__ = [
+    # ======================# PIPELINE_NOT_FOUND EXCEPTION #======================#
+    "PipelineNotFoundException",
+]
+
+from chess.pipeline import PipelineDebugException
+
+
+# ======================# PIPELINE_NOT_FOUND EXCEPTION #======================#
+class PipelineNotFoundException(PipelineDebugException):
+    """
+    # ROLE: Debug, Error Tracing
+
+    # RESPONSIBILITIES:
+    1.  Indicate that an attempt to remove instances of a item by a unique attribute failed because no bag
+        matching the property were found in the dataset.
+
+    # PARENT:
+        *   NullException
+        *   PipelineStackException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "PIPELINE_NOT_FOUND_EXCEPTION"
+    MSG = "Pipeline deletion failed: The item was not found in the dataset. Nothing to remove."

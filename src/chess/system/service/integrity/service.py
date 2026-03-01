@@ -9,12 +9,12 @@ Created: 2025-11-18
 from abc import ABC
 from typing import Generic, TypeVar
 
-from chess.system import AbstractService, Builder, Validator
+from chess.system import Service, Builder, Validator
 
 T = TypeVar("T")
 
 
-class IntegrityService(ABC, AbstractService[Generic[T]]):
+class IntegrityService(ABC, Service[Generic[T]]):
     """
     # ROLE: Microservice API, Integrity Lifecycle Manager, APLifecycle Management.
 
@@ -26,7 +26,7 @@ class IntegrityService(ABC, AbstractService[Generic[T]]):
             *   At object invocation.
 
     # PARENT:
-        *   AbstractService
+        *   Service
 
     # PROVIDES:
     None
@@ -36,7 +36,7 @@ class IntegrityService(ABC, AbstractService[Generic[T]]):
         *   validator (Validator[T])
         
     # INHERITED ATTRIBUTES:
-        *   See AbstractService class for inherited attributes.
+        *   See Service class for inherited attributes.
         
     # CONSTRUCTOR PARAMETERS:
         *   id (int)
@@ -48,7 +48,7 @@ class IntegrityService(ABC, AbstractService[Generic[T]]):
     None
     
     # INHERITED METHODS:
-    *   See AbstractService class for inherited methods.
+    *   See Service class for inherited methods.
     """
     _builder: Builder[T]
     _validator: Validator[T]

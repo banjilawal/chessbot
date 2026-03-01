@@ -16,7 +16,7 @@ from chess.team import RosterUtil, Team, TeamBuilder, TeamValidator
 
 class TeamService(IntegrityService[Team]):
     """
-    # ROLE: AbstractService, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing Team microservice API.

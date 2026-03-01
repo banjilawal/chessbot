@@ -15,7 +15,7 @@ from chess.token import TokenContext, TokenContextBuilder, TokenContextValidator
 
 class TokenContextService(ContextService[TokenContext]):
     """
-    # ROLE: Search AbstractService, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facingToken search microservice API.
