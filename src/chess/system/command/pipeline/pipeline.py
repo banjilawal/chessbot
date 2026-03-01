@@ -9,12 +9,14 @@ Created: 2026-02-25
 from __future__ import annotations
 
 from abc import ABC
-from typing import Generic, TypeVar
+from time import process_time
+from typing import Any, Dict, Generic, TypeVar
 
 
 from chess.system import (
-    BuildResult, Command, CommandBuilder, LoggingLevelRouter, PipelineException, ServiceRequestValidator,
-    ServiceRequest
+    BuildResult, Command, CommandService, IdentityService, LoggingLevelRouter, PipelineException,
+    RequestService,
+    Request, ValidationResult
 )
 
 C = TypeVar("C", bound=Command)
@@ -25,8 +27,8 @@ class CommandPipeline(ABC, Generic[C]):
 
     # RESPONSIBILITIES:
     1.  Integrity Lifecycle of a Command.
-            *   Validating a ServiceRequest object.
-            *   Building a Command instance from the ServiceRequest.
+            *   Validating a Request object.
+            *   Building a Command instance from the Request.
 
     # PARENT:
     None
@@ -48,59 +50,96 @@ class CommandPipeline(ABC, Generic[C]):
         *   request_validator: (ServiceRequestValidator)
 
     # LOCAL METHODS:
-        *   process_service_request(request: ServiceRequest) -> BuildResult[C]
+        *   process_service_request(request: Request) -> BuildResult[C]
 
     # INHERITED METHODS:
     None
     """
+    PIPELINE_NAME = "CommandPipeline"
+    _id: int
+    _name: str
     _cipher: C
-    _builder: CommandBuilder
-    _request_validator: ServiceRequestValidator
-    
+    _command_service: CommandService
+    _request_service: RequestService
     
     def __init__(
             self,
+            id: int,
             cipher: C,
-            builder: CommandBuilder = CommandBuilder(),
-            request_validator: ServiceRequestValidator = ServiceRequestValidator(),
+            name: str,
+            command_service: CommandService = CommandService(),
+            request_service: RequestService = RequestService(),
     ):
+        self._id = id
+        self._name = name
         self._cipher = cipher
-        self._builder = builder
-        self._request_validator = request_validator
+        self._command_service= command_service
+        self._request_validator = request_service
+        
+    @property
+    def id(self) -> int:
+        return self._id
+    
+    @property
+    def name(self) -> str:
+        return self._name
         
     @property
     def cipher(self) -> C:
         return self._cipher
+    
+    @property
+    def command_service(self) -> CommandService:
+        return self._command_service
+    
+    @property
+    def request_service(self) -> RequestService:
+        return self._request_service
+    
+    def build_request(self, command_name: str, arguments: Dict[str, Any]) -> BuildResult[Request]:
+        method = "CommandPipeline.build_request"
         
-    @LoggingLevelRouter.monitor
-    def process_service_request(self, request: ServiceRequest) -> BuildResult[C]:
-        method_name = "CommandPipeline.process_service_request"
-        
-        # Handle the case that, the request is not certified as safe.
-        validation_result = self._request_validator.validate(candidate=request)
-        # Return the exception chain on failure.
-        if validation_result.is_failure:
+        # Handle the case that the
+        build_result = self._request_service.builder.build(
+            command_name=command_name,
+            arguments=arguments
+        )
+        if build_result.is_failure:
+            # Return the exception chain on failure
             return BuildResult.failure(
                 PipelineException(
                     err_code=PipelineException.ERR_CODE,
                     msg=PipelineException.MSG,
                     cls_name=type(self).__name__,
-                    cls_mthd=method_name,
-                    ex=validation_result.exception,
-                )
-            )
-        # Handle the case that, the command was not built.
-        build_result = self._builder.build(cipher=self._cipher, request=request)
-        # Return the exception chain on failure.
-        if validation_result.is_failure:
-            return BuildResult.failure(
-                PipelineException(
-                    err_code=PipelineException.ERR_CODE,
-                    msg=PipelineException.MSG,
-                    cls_name=type(self).__name__,
-                    cls_mthd=method_name,
+                    cls_mthd=method,
                     ex=build_result.exception,
                 )
             )
-        # --- Forward the success result. ---#
-        return build_result
+        # --- Send the success result to command_service ---#
+        return BuildResult.success(build_result.payload)
+    
+    def _build_command(self, request: Request) -> BuildResult[C]:
+        method = "CommandPipeline._build_command"
+        
+        build_result = self._command_service.builder.build(request=request)
+        
+        # Handle the case that, the command is not created.
+        command_build_result = self._command_service.builder.build(
+            request=request,
+            cipher=self._cipher,
+            request_validator=self._request_service.validator,
+        )
+    
+        if build_result.is_failure:
+            # Return the exception chain on failure
+            return BuildResult.failure(
+                PipelineException(
+                    err_code=PipelineException.ERR_CODE,
+                    msg=PipelineException.MSG,
+                    cls_name=type(self).__name__,
+                    cls_mthd=method,
+                    ex=build_result.exception,
+                )
+            )
+        # --- Send the success result to command_service ---#
+        return BuildResult.success(build_result.payload)

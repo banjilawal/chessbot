@@ -1,16 +1,16 @@
-# /system/command/command/serviceexception/__init__.py
+# src/chess/system/command/request/service/exception.py
 
 """
-Module: chess.system.command.command.service.exception.__init__
+Module: chess.system.command.request.service.exception
 Author: Banji Lawal
-Created: 2025-11-18
+Created: 2026-02-24
 """
 
-# =========== COMMAND.COMMAND.SERVICE.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== COMMAND.REQUEST.SERVICE.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
 None
 
 # Modules
-from .anchor import CommandServiceException
-from .debug import CommandServiceDebugException
+from .anchor import RequestServiceException
+from .debug import RequestServiceDebugException

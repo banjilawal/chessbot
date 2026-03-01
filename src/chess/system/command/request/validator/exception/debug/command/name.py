@@ -14,11 +14,11 @@ __all__ = [
     "CommandNameException",
 ]
 
-from chess.system import ServiceRequestDebugException
+from chess.system import RequestDebugException
 
 
 # ======================# COMMAND_NAME_NOT_FOUND #======================#
-class CommandNameException(ServiceRequestDebugException):
+class CommandNameException(RequestDebugException):
     """
     # ROLE: Information, Reporting, Debug
 
@@ -26,7 +26,7 @@ class CommandNameException(ServiceRequestDebugException):
     1.  Indicate that a service_request command_name has an error.
 
     # PARENT:
-        *  ServiceRequestDebugException
+        *  RequestDebugException
 
     # PROVIDES:
     None
@@ -35,7 +35,7 @@ class CommandNameException(ServiceRequestDebugException):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See ServiceRequestDebugException class for inherited attributes.
+        *   See RequestDebugException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
         *   msg (str)

@@ -11,19 +11,19 @@ from typing import Optional
 
 __all__ = [
     # ======================# SERVICE_REQUEST_DEBUG_EXCEPTION #======================#
-    "ServiceRequestDebugException",
+    "RequestDebugException",
 ]
 
 from chess.system import DebugException
 
 
 # ======================# SERVICE_REQUEST_DEBUG_EXCEPTION #======================#
-class ServiceRequestDebugException(DebugException):
+class RequestDebugException(DebugException):
     """
     # ROLE: Information, Reporting, Debug
 
     # RESPONSIBILITIES:
-    1.  Parent of DebugExceptions pertinent to ServiceRequest instances.
+    1.  Parent of DebugExceptions pertinent to Request instances.
 
     # PARENT:
         *  DebugException
@@ -51,7 +51,7 @@ class ServiceRequestDebugException(DebugException):
         *   See DebugException class for inherited methods.
     """
     ERR_CODE = "SERVICE_REQUEST_DEBUG_EXCEPTION"
-    MSG = "ServiceRequest attribute raised an exception."
+    MSG = "Request attribute raised an exception."
     VAR = Optional[Any]
     VAL = Optional[Any]
     

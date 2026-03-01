@@ -12,4 +12,4 @@ Created: 2026-02-24
 from .debug import *
 
 # Modules
-from .wrapper import ServiceRequestValidationException
+from .wrapper import RequestValidationException

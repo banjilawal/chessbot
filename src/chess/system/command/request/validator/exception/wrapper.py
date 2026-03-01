@@ -14,16 +14,16 @@ from chess.system import ValidationException
 
 __all__ = [
     # ======================# SERVICE_REQUEST_VALIDATION_FAILURE #======================#
-    "ServiceRequestValidationException",
+    "RequestValidationException",
 ]
 
 # ======================# SERVICE_REQUEST_VALIDATION_FAILURE #======================#
-class ServiceRequestValidationException(ValidationException):
+class RequestValidationException(ValidationException):
     """
     # ROLE: Debug Wrapper, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a candidate failed a safety check in a ServiceRequestValidator
+    1.  Indicate that a candidate failed a safety check in a RequestValidator
         method.
 
     # PARENT:

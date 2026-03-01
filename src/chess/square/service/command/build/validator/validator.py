@@ -13,7 +13,7 @@ from typing import Any, cast
 from chess.square import SquareBuildCommand, SquareBuildCommandNullException, SquareBuildCommandValidationException
 from chess.system import (
     ArgumentNameException, CommandNameException, LoggingLevelRouter, ArgumentCountException,
-    ServiceRequestValidator, ValidationResult, Validator, ServiceRequest
+    ServiceRequestValidator, ValidationResult, Validator, Request
 )
 
 
@@ -51,8 +51,8 @@ class SquareBuildCommandValidator(Validator[SquareBuildCommand]):
                     ex=request_validation_result.exception
                 )
             )
-        # --- Cast candidate to a ServiceRequest for additional tests. ---#
-        request = cast(ServiceRequest, candidate)
+        # --- Cast candidate to a Request for additional tests. ---#
+        request = cast(Request, candidate)
         
         # Handle the case that, request.command != command.name
         if request.command.upper() != command.name.upper():

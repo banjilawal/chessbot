@@ -12,4 +12,4 @@ Created: 2026-02-24
 None
 
 # Modules
-from .request import ServiceRequestNullException
+from .request import NullRequestException

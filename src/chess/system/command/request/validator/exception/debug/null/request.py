@@ -12,13 +12,13 @@ from typing import Any, Optional
 
 __all__ = [
     # ======================# SERVICE_REQUEST_NULL_EXCEPTION #======================#
-    "ServiceRequestNullException",
+    "NullRequestException",
 ]
 
 from chess.system import NullException
 
 # ======================# SERVICE_REQUEST_NULL_EXCEPTION #======================#
-class ServiceRequestNullException(NullException):
+class NullRequestException(NullException):
     """
     # ROLE: Information, Reporting, Debug
 
@@ -51,7 +51,7 @@ class ServiceRequestNullException(NullException):
         *   See DebugException class for inherited methods.
     """
     ERR_CODE = "SERVICE_REQUEST_NULL_EXCEPTION"
-    MSG = "ServiceRequest is null"
+    MSG = "Request is null"
     VAR = Optional[Any]
     VAL = Optional[Any]
     

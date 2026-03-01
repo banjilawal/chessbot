@@ -9,10 +9,9 @@ Created: 2026-02-24
 from __future__ import annotations
 
 from chess.system import (
-    ArgumentCountException, ArgumentNameException, ArgumentTypeException, Builder, Command, CommandNameException,
-    LoggingLevelRouter, ServiceRequestValidator, BuildResult, ServiceRequest
+    ArgumentCountException, ArgumentNameException, ArgumentTypeException, Builder, Command, CommandBuilderException,
+    CommandNameException, LoggingLevelRouter, RequestValidator, BuildResult, Request
 )
-from chess.system.command.dnammoc.command.builder import CommandBuilderException
 
 
 class CommandBuilder(Builder[Command]):
@@ -21,14 +20,14 @@ class CommandBuilder(Builder[Command]):
     @LoggingLevelRouter.monitor
     def build(
             cls,
-            key: Command,
-            request: ServiceRequest,
-            service_request_validator: ServiceRequestValidator = ServiceRequestValidator(),
+            cipher: Command,
+            request: Request,
+            request_validator: RequestValidator = RequestValidator(),
     ) -> BuildResult[Command]:
         method = "CommandBuilder.build"
         
         # Handle the case that, the request is not certified as safe.
-        validation_result = service_request_validator.validate(candidate=request)
+        validation_result = request_validator.validate(candidate=request)
         if validation_result.is_failure:
             # Return the exception on failure.
             return BuildResult.failure(
@@ -41,7 +40,7 @@ class CommandBuilder(Builder[Command]):
                 )
             )
         # Handle the case that, request.command_name does not match key.name
-        if request.command_name.upper() != key.name.upper():
+        if request.command_name.upper() != cipher.name.upper():
             # Return the exception on failure.
             return BuildResult.failure(
                 CommandBuilderException(
@@ -58,7 +57,7 @@ class CommandBuilder(Builder[Command]):
                 )
             )
         # Handle the case that, request has the wrong number of arguments.
-        if len(request.arguments) != len(key.parameters):
+        if len(request.arguments) != len(cipher.parameters):
             # Return the exception on failure.
             return BuildResult.failure(
                 CommandBuilderException(
@@ -74,7 +73,7 @@ class CommandBuilder(Builder[Command]):
             )
         # Handle the case that, the request has an identifier wrong
         for identifier in request.arguments.keys():
-            if identifier not in key.parameters.keys():
+            if identifier not in cipher.parameters.keys():
                 # Return the exception on failure.
                 return BuildResult.failure(
                     CommandBuilderException(
@@ -91,7 +90,10 @@ class CommandBuilder(Builder[Command]):
                 )
         # Handle the case that, a request argument' type is wrong.
         for identifier in request.arguments.keys():
-            if not isinstance(request.arguments[identifier, key.parameters[identifier]]):
+            if not isinstance(
+                    type(request.arguments[identifier]),
+                    type(cipher.parameters[identifier])
+            ):
                 # Return the exception on failure.
                 return BuildResult.failure(
                     CommandBuilderException(
@@ -108,11 +110,6 @@ class CommandBuilder(Builder[Command]):
                     )
                 )
         # --- The Build the Command then, send the success result. ---#
-        return BuildResult.success(
-            payload=Command(
-                name=request.command_name,
-                parameters=request.arguments
-            )
-        )
+        return BuildResult.success(Command(name=request.command_name, parameters=request.arguments))
     
     

@@ -1,7 +1,7 @@
-# src/chess/system/serviceRequest/request/builder/exception/wrapper.py
+# src/chess/system/command/request/builder/wrapper.py
 
 """
-Module: chess.system.serviceRequest.service.builder.exception.wrapper
+Module: chess.system.command.request.builder.wrapper
 Author: Banji Lawal
 Created: 2026-02-24
 """
@@ -11,19 +11,19 @@ from typing import Optional
 
 __all__ = [
     # ======================# SERVICE_REQUEST_BUILD_FAILURE #======================#
-    "ServiceRequestBuildException",
+    "RequestBuildException",
 ]
 
 from chess.system import BuildException
 
 
 # ======================# SERVICE_REQUEST_BUILD_FAILURE #======================#
-class ServiceRequestBuildException(BuildException):
+class RequestBuildException(BuildException):
     """
     # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that an error prevented ServiceRequestBuilder from returning a product.
+    1.  Indicate that an error prevented RequestBuilder from returning a product.
 
         # PARENT:
             *   BuildException
@@ -52,7 +52,7 @@ class ServiceRequestBuildException(BuildException):
             *   See WorkerException class for inherited methods.
         """
     ERR_CODE = "SERVICE_REQUEST_BUILD_FAILURE"
-    MSG = "ServiceRequestBuilder returned an error."
+    MSG = "RequestBuilder returned an error."
     MTHD = "build"
     OP = "Build"
     RSLT_TYPE = "BuildResult"

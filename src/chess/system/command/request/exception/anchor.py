@@ -10,7 +10,7 @@ from __future__ import annotations
 
 __all__ = [
     # ======================# SERVICE_REQUEST_EXCEPTION #======================#
-    "ServiceRequestException",
+    "RequestException",
 ]
 
 from typing import Optional
@@ -18,12 +18,12 @@ from chess.system import AnchorException
 
 
 # ======================# SERVICE_REQUEST_EXCEPTION #======================#
-class ServiceRequestException(AnchorException):
+class RequestException(AnchorException):
     """
     # ROLE: Debug Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Layer-0 of Exception chain which is the Parent of ServiceRequestDebugException
+    1.  Layer-0 of Exception chain which is the Parent of RequestDebugException
 
     # PARENT:
       *   AnchorException
@@ -35,8 +35,8 @@ class ServiceRequestException(AnchorException):
     None
     """
     ERR_CODE = "SERVICE_REQUEST_EXCEPTION"
-    MSG = "ServiceRequest raised an exception."
-    CLS_NAME = "ServiceRequest"
+    MSG = "Request raised an exception."
+    CLS_NAME = "Request"
     
     def __init__(
             self,

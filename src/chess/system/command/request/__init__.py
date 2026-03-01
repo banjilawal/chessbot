@@ -17,4 +17,4 @@ from .service import *
 from .builder import *
 
 # Modules
-from .request import ServiceRequest
+from .request import Request

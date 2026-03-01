@@ -12,4 +12,4 @@ Created: 2026-02-24
 from .exception import *
 
 # Modules
-from .validator import ServiceRequestValidator
+from .validator import RequestValidator

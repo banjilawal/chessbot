@@ -1,29 +1,29 @@
-# system/command/command/serviceexception/debug.py
+# src/chess/system/command/request/service/exception/debug.py
 
 """
-Module: src.chess.system.command.command.service.exception.debug
+Module: chess.system.command.request.service.exception.debug
 Author: Banji Lawal
-Created: 2026-02-25
+Created: 2026-02-24
 """
 
 from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# COMMAND_SERVICE_DEBUG_EXCEPTION #======================#
-    "CommandServiceDebugException",
+    # ======================# REQUEST_SERVICE_DEBUG_EXCEPTION #======================#
+    "RequestServiceDebugException",
 ]
 
 from chess.system import DebugException
 
 
-# ======================# COMMAND_SERVICE_DEBUG_EXCEPTION #======================#
-class CommandServiceDebugException(DebugException):
+# ======================# REQUEST_SERVICE_DEBUG_EXCEPTION #======================#
+class RequestServiceDebugException(DebugException):
     """
     # ROLE: Information, Reporting, Debug
 
     # RESPONSIBILITIES:
-    1.  Parent of DebugExceptions pertinent to CommandService instances.
+    1.  Parent of DebugExceptions pertinent to RequestService instances.
 
     # PARENT:
         *  DebugException
@@ -50,8 +50,8 @@ class CommandServiceDebugException(DebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    ERR_CODE = "COMMAND_SERVICE_DEBUG_EXCEPTION"
-    MSG = "CommandService attribute raised an exception."
+    ERR_CODE = "REQUEST_SERVICE_DEBUG_EXCEPTION"
+    MSG = "RequestService attribute raised an exception."
     VAR = Optional[Any]
     VAL = Optional[Any]
     

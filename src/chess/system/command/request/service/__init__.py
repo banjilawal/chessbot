@@ -1,15 +1,15 @@
-# src/chess/system/command/command/service/__init__.py
+# src/chess/system/command/request/service/__init__.py
 
 """
-Module: chess.system.command.command.service.__init__
+Module: chess.system.command.request.service.__init__
 Author: Banji Lawal
-Created: 2025-11-18
+Created: 2026-02-24
 """
 
-# =========== COMMAND PACKAGE CONTENTS ===========#
+# =========== COMMAND.REQUEST.SERVICE PACKAGE CONTENTS ===========#
 
 # Packages
 from .exception import *
 
 # Modules
-from .service import ChessServiceRequest
+from .service import RequestService

@@ -11,12 +11,11 @@ from __future__ import annotations
 from typing import Any, Dict
 
 from chess.system import (
-    BuildResult, Builder, IdentityService, LoggingLevelRouter, NullArgumentsException, ServiceRequest,
-    ServiceRequestBuildException
+    BuildResult, Builder, IdentityService, LoggingLevelRouter, NullArgumentsException, Request, RequestBuildException
 )
 
 
-class ServiceRequestBuilder(Builder[ServiceRequest]):
+class RequestBuilder(Builder[Request]):
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -25,8 +24,8 @@ class ServiceRequestBuilder(Builder[ServiceRequest]):
             name: str,
             arguments: Dict[str: Any],
             identity_service: IdentityService = IdentityService(),
-    ) -> BuildResult[ServiceRequest]:
-        method = "ServiceRequestBuild.build"
+    ) -> BuildResult[Request]:
+        method = "RequestBuild.build"
         
         # Handle the case that, the name is not certified as safe.
         name_validation_result = identity_service.validate_name(candidate=name)
@@ -34,12 +33,12 @@ class ServiceRequestBuilder(Builder[ServiceRequest]):
         if name_validation_result.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                ServiceRequestBuildException(
+                RequestBuildException(
                     mthd=method,
-                    op=ServiceRequestBuildException.OP,
-                    msg=ServiceRequestBuildException.MSG,
-                    err_code=ServiceRequestBuildException.ERR_CODE,
-                    rslt_type=ServiceRequestBuildException.RSLT_TYPE,
+                    op=RequestBuildException.OP,
+                    msg=RequestBuildException.MSG,
+                    err_code=RequestBuildException.ERR_CODE,
+                    rslt_type=RequestBuildException.RSLT_TYPE,
                     ex=name_validation_result.exception
                 )
             )
@@ -47,12 +46,12 @@ class ServiceRequestBuilder(Builder[ServiceRequest]):
         if arguments is None:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                ServiceRequestBuildException(
+                RequestBuildException(
                     mthd=method,
-                    op=ServiceRequestBuildException.OP,
-                    msg=ServiceRequestBuildException.MSG,
-                    err_code=ServiceRequestBuildException.ERR_CODE,
-                    rslt_type=ServiceRequestBuildException.RSLT_TYPE,
+                    op=RequestBuildException.OP,
+                    msg=RequestBuildException.MSG,
+                    err_code=RequestBuildException.ERR_CODE,
+                    rslt_type=RequestBuildException.RSLT_TYPE,
                     ex=NullArgumentsException(
                         err_code=NullArgumentsException.ERR_CODE,
                         msg=NullArgumentsException.MSG
@@ -63,18 +62,18 @@ class ServiceRequestBuilder(Builder[ServiceRequest]):
         if not isinstance(arguments, Dict):
             # Return the exception chain on failure.
             return BuildResult.failure(
-                ServiceRequestBuildException(
+                RequestBuildException(
                     mthd=method,
-                    op=ServiceRequestBuildException.OP,
-                    msg=ServiceRequestBuildException.MSG,
-                    err_code=ServiceRequestBuildException.ERR_CODE,
-                    rslt_type=ServiceRequestBuildException.RSLT_TYPE,
+                    op=RequestBuildException.OP,
+                    msg=RequestBuildException.MSG,
+                    err_code=RequestBuildException.ERR_CODE,
+                    rslt_type=RequestBuildException.RSLT_TYPE,
                     ex=TypeError(
                         f"Expected Dict[str, Any], got {type(arguments).__name__}. instead."
                     )
                 )
             )
         # --- On certification successes send the request in the ValidationResult. ---#
-        return BuildResult.success(ServiceRequest(command_name=name, arguments=arguments))
+        return BuildResult.success(Request(command_name=name, arguments=arguments))
     
     

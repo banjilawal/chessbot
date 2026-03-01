@@ -1,20 +1,22 @@
-# system/command/command/serviceservice.py
+# src/chess/system/command/request/service/service.py
 
 """
-Module: src.chess.system.command.command.service.service
+Module: chess.system.command.request.service.service
 Author: Banji Lawal
-Created: 2025-11-18
+Created: 2026-02-24
 """
 
 from __future__ import annotations
 
+from typing import cast
+
 from chess.system import (
-    IntegrityService, Builder, Command, ServiceRequest, ServiceRequestBuilder,
-    ServiceRequestValidator, Validator
+    IntegrityService, Builder, Command, Request, RequestBuilder,
+    RequestValidator, Validator
 )
 
 
-class ChessServiceRequest(IntegrityService[Command]):
+class RequestService(IntegrityService[Command]):
     """
     # ROLE: Microservice API, Integrity Lifecycle Manager, APLifecycle Management.
 
@@ -50,30 +52,30 @@ class ChessServiceRequest(IntegrityService[Command]):
     # INHERITED METHODS:
     *   See IntegrityService class for inherited methods.
     """
-    SERVICE_NAME = "ServiceRequest"
-    # _builder: Builder[ServiceRequestBuilder]
-    # _validator: Validator[ServiceRequestValidator]
+    SERVICE_NAME = "RequestService"
+    # _builder: Builder[RequestBuilder]
+    # _validator: Validator[RequestValidator]
     
     def __init__(
             self,
             id: int,
             name: str = SERVICE_NAME,
-            builder: ServiceRequestBuilder = ServiceRequestBuilder(),
-            validator:ServiceRequestValidator = ServiceRequestValidator(),
+            builder: RequestBuilder = RequestBuilder(),
+            validator:RequestValidator = RequestValidator(),
     ):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
 
-    # @property
-    # def builder(self) -> Builder[Command]:
-    #     return self.builder
-    #
-    # @property
-    # def validator(self) -> Validator[Command]:
-    #     return self.certifier
+    @property
+    def builder(self) -> RequestBuilder:
+        return cast(RequestBuilder, self.builder)
+
+    @property
+    def validator(self) -> RequestValidator:
+        return cast(RequestValidator, self.validator)
     #
     # def __eq__(self, other):
     #     if super().__eq__(other):
-    #         if isinstance(other, ChessServiceRequest):
+    #         if isinstance(other, RequestService):
     #             return True
     #     return False
     #

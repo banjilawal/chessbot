@@ -1,7 +1,7 @@
-# src/chess/system/command/request/builder/exception/__init__.py
+# src/chess/system/command/request/builder/__init__.py
 
 """
-Module: chess.system.command.request.builder.exception.__init__
+Module: chess.system.command.request.builder.__init__
 Author: Banji Lawal
 Created: 2026-02-24
 """
@@ -12,4 +12,4 @@ Created: 2026-02-24
 None
 
 # Modules
-from .wrapper import ServiceRequestBuildException
+from .wrapper import RequestBuildException

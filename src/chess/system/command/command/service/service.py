@@ -8,7 +8,9 @@ Created: 2025-11-18
 
 from __future__ import annotations
 
-from chess.system import IntegrityService, Builder, Command, Validator
+from typing import cast
+
+from chess.system import CommandBuilder, CommandValidator, IntegrityService, Builder, Command, Validator
 
 
 class CommandService(IntegrityService[Command]):
@@ -48,35 +50,31 @@ class CommandService(IntegrityService[Command]):
     *   See IntegrityService class for inherited methods.
     """
     SERVICE_NAME = "CommandService"
-    _command_builder: Builder[Command]
-    _command_validator: Validator[Command]
-    _request
-    
     def __init__(
             self,
             id: int,
-            name: str,
-            builder: Builder[Command],
-            validator: Validator[Command]
+            name: str = SERVICE_NAME,
+            builder: CommandBuilder = CommandBuilder(),
+            validator: CommandValidator = CommandValidator(),
     ):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
 
     @property
-    def builder(self) -> Builder[Command]:
-        return self._builder
-    
+    def builder(self) -> CommandBuilder:
+        return cast(CommandBuilder, self.builder)
+
     @property
     def validator(self) -> Validator[Command]:
-        return self.certifier
-    
-    def __eq__(self, other):
-        if super().__eq__(other):
-            if isinstance(other, CommandService):
-                return True
-        return False
-    
-    def __hash__(self):
-        return hash(self._id)
-    
-    def __str__(self):
-        return f"id:{self._id}, name:{self._name}"
+        return cast(CommandValidator, self.validator)
+    #
+    # def __eq__(self, other):
+    #     if super().__eq__(other):
+    #         if isinstance(other, CommandService):
+    #             return True
+    #     return False
+    #
+    # def __hash__(self):
+    #     return hash(self._id)
+    #
+    # def __str__(self):
+    #     return f"id:{self._id}, name:{self._name}"

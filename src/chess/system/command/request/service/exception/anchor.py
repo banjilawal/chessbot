@@ -1,29 +1,28 @@
-# command.service/exception.anchor.py
+# src/chess/system/command/request/service/exception/anchor.py
 
 """
-Module: src.chess.system.command.command.service.exception.anchor
+Module: chess.system.command.request.service.exception.anchor
 Author: Banji Lawal
-Created: 2025-09-16
-version: 1.0.0
+Created: 2026-02-24
 """
 
 from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# COMMAND_SERVICE_EXCEPTION #======================#
-    "CommandServiceException",
+    # ======================# REQUEST_SERVICE_EXCEPTION #======================#
+    "RequestServiceException",
 ]
 
 from chess.system import IntegrityServiceException
 
-# ======================# COMMAND_SERVICE_EXCEPTION #======================#
-class CommandServiceException(IntegrityServiceException):
+# ======================# REQUEST_SERVICE_EXCEPTION #======================#
+class RequestServiceException(IntegrityServiceException):
     """
     # ROLE: Debug Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Indicate that an error occurred in CommandService instance.
+    1.  Indicate that an error occurred in RequestService instance.
 
     # PARENT:
     *   ServiceException
@@ -35,7 +34,7 @@ class CommandServiceException(IntegrityServiceException):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See CommandServiceException class for inherited attributes.
+        *   See RequestServiceException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
         *   msg (str)
@@ -50,9 +49,9 @@ class CommandServiceException(IntegrityServiceException):
     # INHERITED METHODS:
         *   See ServiceException class for inherited methods.
     """
-    ERR_CODE = "INTEGRITY_COMMAND_SERVICE_EXCEPTION"
-    MSG = "CommandService raised an exception."
-    CLS_NAME = "CommandService"
+    ERR_CODE = "INTEGRITY_REQUEST_SERVICE_EXCEPTION"
+    MSG = "RequestService raised an exception."
+    CLS_NAME = "RequestService"
     
     def __init__(
             self,
@@ -66,7 +65,7 @@ class CommandServiceException(IntegrityServiceException):
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
         cls_name = cls_name or self.CLS_NAME
-        anchor().__init__(
+        super().__init__(
             id=id,
             ex=ex,
             msg=msg,
