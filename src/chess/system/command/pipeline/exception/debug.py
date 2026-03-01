@@ -1,7 +1,7 @@
-# src/chess/system/service/pipeline/exception/debug.py
+# src/chess/system/command/pipeline/exception/debug.py
 
 """
-Module: chess.system.service.pipeline.exception.debug
+Module: chess.system.command.pipeline.exception.debug
 Author: Banji Lawal
 Created: 2026-02-25
 """

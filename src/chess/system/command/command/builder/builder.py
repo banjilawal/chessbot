@@ -1,7 +1,7 @@
-# src/chess/square/service/build/request/builder/builder.py
+# src/chess/square/command/build/request/builder/builder.py
 
 """
-Module: chess.square.service.build.request.builder.builder
+Module: chess.square.command.build.request.builder.builder
 Author: Banji Lawal
 Created: 2026-02-24
 """
@@ -12,7 +12,7 @@ from chess.system import (
     ArgumentCountException, ArgumentNameException, ArgumentTypeException, Builder, Command, CommandNameException,
     LoggingLevelRouter, ServiceRequestValidator, BuildResult, ServiceRequest
 )
-from chess.system.service.dnammoc.command.builder import CommandBuilderException
+from chess.system.command.dnammoc.command.builder import CommandBuilderException
 
 
 class CommandBuilder(Builder[Command]):

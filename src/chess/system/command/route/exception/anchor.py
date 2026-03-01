@@ -1,7 +1,7 @@
-# src/chess/system/service/route/exception/anchor.py
+# src/chess/system/command/route/exception/anchor.py
 
 """
-Module: chess.system.service.route.exception.anchor
+Module: chess.system.command.route.exception.anchor
 Author: Banji Lawal
 Created: 2026-02-25
 """

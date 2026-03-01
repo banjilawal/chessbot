@@ -1,7 +1,7 @@
-# src/chess/system/service/request/request.py
+# src/chess/system/command/request/request.py
 
 """
-Module: chess.system.service.request.request
+Module: chess.system.command.request.request
 Author: Banji Lawal
 Created: 2026-02-24
 """

@@ -1,7 +1,7 @@
-# src/chess/square/service/command/build/validator/validator.py
+# src/chess/square/command/command/build/validator/validator.py
 
 """
-Module: chess.square.service.command.build.validator.validator
+Module: chess.square.command.command.build.validator.validator
 Author: Banji Lawal
 Created: 2026-02-24
 """
@@ -28,7 +28,7 @@ class CommandValidator(Validator[Command]):
     def validate(
             cls,
             candidate: Any,
-            cipher: Command = Command.key(),
+            cipher: Command = Command.cipher(),
             identity_service: IdentityService = IdentityService(),
             command_validator: CommandValidator = CommandValidator(),
             arguments_validator: ArgumentsValidator = ArgumentsValidator(),

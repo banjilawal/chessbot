@@ -24,5 +24,5 @@ class SquareServiceCommand(Command):
 
     @classmethod
     @abstractmethod
-    def key(cls) -> SquareServiceCommand:
+    def cipher(cls) -> SquareServiceCommand:
         pass

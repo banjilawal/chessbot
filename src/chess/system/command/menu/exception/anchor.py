@@ -1,7 +1,7 @@
-# src/chess/system/service/stream/exception/anchor.py
+# src/chess/system/command/menu/exception/anchor.py
 
 """
-Module: chess.system.service.stream.exception.anchor
+Module: chess.system.command.menu.exception.anchor
 Author: Banji Lawal
 Created: 2026-02-25
 """
@@ -11,19 +11,19 @@ from typing import Optional
 
 
 __all__ = [
-    # ======================# SERVICE_STREAM_EXCEPTION #======================#
-    "ServiceStreamException",
+    # ======================# SERVICE_MENU_EXCEPTION #======================#
+    "ServiceMenuException",
 ]
 
 from chess.system import AnchorException
 
-# ======================# SERVICE_STREAM_EXCEPTION #======================#
-class ServiceStreamException(AnchorException):
+# ======================# SERVICE_MENU_EXCEPTION #======================#
+class ServiceMenuException(AnchorException):
     """
     # ROLE: Information, Reporting, Debug
 
     # RESPONSIBILITIES:
-    1.  Locus of attention for StreamDebugExceptions .
+    1.  Locus of attention for MenuDebugExceptions .
 
     # PARENT:
         *   AnchorException
@@ -49,9 +49,9 @@ class ServiceStreamException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    ERR_CODE = "SERVICE_STREAM_EXCEPTION"
-    MSG = "ServiceStream raised an exception."
-    CLS_NAME = "ServiceStream"
+    ERR_CODE = "SERVICE_MENU_EXCEPTION"
+    MSG = "ServiceMenu raised an exception."
+    CLS_NAME = "ServiceMenu"
         
     def __init__(
             self,

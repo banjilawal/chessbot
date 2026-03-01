@@ -1,7 +1,7 @@
-# src/chess/system/service/request/validator/exception/debug/count.py
+# src/chess/system/command/request/validator/exception/debug/count.py
 
 """
-Module: chess.system.service.request.validator.exception.debug.count
+Module: chess.system.command.request.validator.exception.debug.count
 Author: Banji Lawal
 Created: 2026-02-24
 """

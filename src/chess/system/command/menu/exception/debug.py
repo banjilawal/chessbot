@@ -1,7 +1,7 @@
-# src/chess/system/service/stream/exception/debug.py
+# src/chess/system/command/menu/exception/debug.py
 
 """
-Module: chess.system.service.stream.exception.debug
+Module: chess.system.command.menu.exception.debug
 Author: Banji Lawal
 Created: 2026-02-25
 """
@@ -10,20 +10,20 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# SERVICE_STREAM_DEBUG_EXCEPTION #======================#
-    "ServiceStreamDebugException",
+    # ======================# SERVICE_MENU_DEBUG_EXCEPTION #======================#
+    "ServiceMenuDebugException",
 ]
 
 from chess.system import DebugException
 
 
-# ======================# SERVICE_STREAM_DEBUG_EXCEPTION #======================#
-class ServiceStreamDebugException(DebugException):
+# ======================# SERVICE_MENU_DEBUG_EXCEPTION #======================#
+class ServiceMenuDebugException(DebugException):
     """
     # ROLE: Information, Reporting, Debug
 
     # RESPONSIBILITIES:
-    1.  Parent of DebugExceptions pertinent to ServiceStream instances.
+    1.  Parent of DebugExceptions pertinent to ServiceMenu instances.
 
     # PARENT:
         *  DebugException
@@ -50,8 +50,8 @@ class ServiceStreamDebugException(DebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    ERR_CODE = "SERVICE_STREAM_DEBUG_EXCEPTION"
-    MSG = "ServiceStream attribute raised an exception."
+    ERR_CODE = "SERVICE_MENU_DEBUG_EXCEPTION"
+    MSG = "ServiceMenu attribute raised an exception."
     VAR = Optional[Any]
     VAL = Optional[Any]
     

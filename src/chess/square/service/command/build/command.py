@@ -36,5 +36,5 @@ class SquareBuildCommand(Command[SquareService]):
         super().__init__(name=name, parameters=parameters)
 
     @classmethod
-    def key(cls) -> SquareBuildCommand:
+    def cipher(cls) -> SquareBuildCommand:
         return cls.__init__(name=cls.NAME, parameters=cls.PARAMETERS)

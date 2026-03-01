@@ -1,7 +1,7 @@
-# src/chess/system/service/requestd/exception/super.py
+# src/chess/system/command/requestd/exception/super.py
 
 """
-Module: chess.system.service.request.exception.super
+Module: chess.system.command.request.exception.super
 Author: Banji Lawal
 Created: 2026-02-24
 """

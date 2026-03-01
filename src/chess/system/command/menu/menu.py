@@ -1,7 +1,7 @@
-# src/chess/system/service/stream/stream.py
+# src/chess/system/command/menu/menu.py
 
 """
-Module: chess.system.service.stream.stream
+Module: chess.system.command.menu.menu
 Author: Banji Lawal
 Created: 2026-02-25
 """
@@ -15,12 +15,12 @@ from chess.system import  CommandRouter
 
 S = TypeVar("S")
 
-class ServiceStream(ABC, Generic[S]):
+class ServiceMenu(ABC, Generic[S]):
     """
-    # ROLE: Stream
+    # ROLE: Menu
 
     # RESPONSIBILITIES:
-    1.  Collection of streams for the different operations the service supports.
+    1.  Collection of menus for the different operations the service supports.
 
     # PARENT:
     None
@@ -30,14 +30,14 @@ class ServiceStream(ABC, Generic[S]):
 
     # LOCAL ATTRIBUTES:
         *   router (CommandRouter[S])
-        *   streams (List[ServiceStream])
+        *   menus (List[ServiceMenu])
 
     # INHERITED ATTRIBUTES:
     None.
 
     # CONSTRUCTOR PARAMETERS:)
         *   router (CommandRouter[S])
-        *   streams (List[ServiceStream])
+        *   menus (List[ServiceMenu])
 
     # LOCAL METHODS:
     None
@@ -45,22 +45,24 @@ class ServiceStream(ABC, Generic[S]):
     # INHERITED METHODS:
     None
     """
+    _service: S
     _router: CommandRouter[S]
-    _streams: List[ServiceStream[S]]
+    _pipelines: List[Pipeline]
+    
   
 
     def __init__(
             self,
             router: CommandRouter[S],
-            streams: List[ServiceStream[S]],
+            menus: List[ServiceMenu[S]],
     ):
         self._router = router
-        self._streams = streams
+        self._menus = menus
 
     @property
     def router(self) -> CommandRouter[S]:
         return self._router
     
     @property
-    def streams(self) -> List[ServiceStream]:
-        return self._streams
+    def menus(self) -> List[ServiceMenu]:
+        return self._menus

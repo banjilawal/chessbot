@@ -1,7 +1,7 @@
-# src/chess/system/service/route/exception/debug.py
+# src/chess/system/command/route/exception/debug.py
 
 """
-Module: chess.system.service.route.exception.debug
+Module: chess.system.command.route.exception.debug
 Author: Banji Lawal
 Created: 2026-02-25
 """

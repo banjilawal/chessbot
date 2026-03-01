@@ -1,12 +1,12 @@
-# src/chess/system/service/route/__init__.py
+# src/chess/system/command/route/__init__.py
 
 """
-Module: chess.system.service.route.__init__
+Module: chess.system.command.route.__init__
 Author: Banji Lawal
 Created: 2026-02-25
 """
 
-# =========== SYSTEM.SERVICE.ROUTE PACKAGE CONTENTS ===========#
+# =========== COMMAND.ROUTE PACKAGE CONTENTS ===========#
 
 # Packages
 from .exception import *

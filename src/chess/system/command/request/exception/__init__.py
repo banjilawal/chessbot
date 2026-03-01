@@ -1,12 +1,12 @@
-# src/chess/system/service/request/exception/__init__.py
+# src/chess/system/command/request/exception/__init__.py
 
 """
-Module: chess.system.service.request.exception.__init__
+Module: chess.system.command.request.exception.__init__
 Author: Banji Lawal
 Created: 2026-02-24
 """
 
-# =========== SYSTEM.SERVICE.REQUEST.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== COMMAND.REQUEST.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
 None

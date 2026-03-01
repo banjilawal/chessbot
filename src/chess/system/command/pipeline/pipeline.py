@@ -1,7 +1,7 @@
-# src/chess/system/service/pipeline/pipeline.py
+# src/chess/system/command/pipeline/pipeline.py
 
 """
-Module: chess.system.service.pipeline.pipeline
+Module: chess.system.command.pipeline.pipeline
 Author: Banji Lawal
 Created: 2026-02-25
 """
@@ -35,7 +35,7 @@ class CommandPipeline(ABC, Generic[C]):
     None
 
     # LOCAL ATTRIBUTES:
-        *   key: (C)
+        *   cipher: (C)
         *   builder: (Builder[Command])
         *   request_validator: (ServiceRequestValidator)
 
@@ -43,7 +43,7 @@ class CommandPipeline(ABC, Generic[C]):
     None.
 
     # CONSTRUCTOR PARAMETERS:)
-        *   key: (C)
+        *   cipher: (C)
         *   builder: (Builder[Command])
         *   request_validator: (ServiceRequestValidator)
 
@@ -53,23 +53,24 @@ class CommandPipeline(ABC, Generic[C]):
     # INHERITED METHODS:
     None
     """
-    _key: C
+    _cipher: C
     _builder: CommandBuilder
     _request_validator: ServiceRequestValidator
     
+    
     def __init__(
             self,
-            key: C,
+            cipher: C,
             builder: CommandBuilder = CommandBuilder(),
             request_validator: ServiceRequestValidator = ServiceRequestValidator(),
     ):
-        self._key = key
+        self._cipher = cipher
         self._builder = builder
         self._request_validator = request_validator
         
     @property
-    def key(self) -> C:
-        return self._key
+    def cipher(self) -> C:
+        return self._cipher
         
     @LoggingLevelRouter.monitor
     def process_service_request(self, request: ServiceRequest) -> BuildResult[C]:
@@ -89,7 +90,7 @@ class CommandPipeline(ABC, Generic[C]):
                 )
             )
         # Handle the case that, the command was not built.
-        build_result = self._builder.build(key=self._key, request=request)
+        build_result = self._builder.build(cipher=self._cipher, request=request)
         # Return the exception chain on failure.
         if validation_result.is_failure:
             return BuildResult.failure(

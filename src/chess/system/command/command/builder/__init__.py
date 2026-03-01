@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2026-02-24
 """
 
-# =========== SYSTEM.SERVICE.COMMAND.BUILDER PACKAGE CONTENTS ===========#
+# =========== COMMAND.COMMAND.BUILDER PACKAGE CONTENTS ===========#
 
 # Packages
 from .exception import *

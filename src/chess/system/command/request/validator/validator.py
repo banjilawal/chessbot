@@ -1,7 +1,7 @@
-# src/chess/system/service/request/validator/validator.py
+# src/chess/system/command/request/validator/validator.py
 
 """
-Module: chess.system.service.request.validator.validator
+Module: chess.system.command.request.validator.validator
 Author: Banji Lawal
 Created: 2026-02-24
 """

@@ -1,12 +1,12 @@
-# src/chess/system/service/argument/exception/debug/__init__.py
+# src/chess/system/command/argument/exception/debug/__init__.py
 
 """
-Module: chess.system.service.argument.exception.debug.__init__
+Module: chess.system.command.argument.exception.debug.__init__
 Author: Banji Lawal
 Created: 2026-02-24
 """
 
-# =========== SYSTEM.SERVICE.ARGUMENT.EXCEPTION.DEBUG PACKAGE CONTENTS ===========#
+# =========== COMMAND.ARGUMENT.EXCEPTION.DEBUG PACKAGE CONTENTS ===========#
 
 # Packages
 None

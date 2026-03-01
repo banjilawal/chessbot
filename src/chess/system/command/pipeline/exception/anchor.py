@@ -1,7 +1,7 @@
-# src/chess/system/service/pipeline/exception/anchor.py
+# src/chess/system/command/pipeline/exception/anchor.py
 
 """
-Module: chess.system.service.pipeline.exception.anchor
+Module: chess.system.command.pipeline.exception.anchor
 Author: Banji Lawal
 Created: 2026-02-25
 """

@@ -1,12 +1,12 @@
-# src/chess/system/service/request/validator/exception/__init__.py
+# src/chess/system/command/request/validator/exception/__init__.py
 
 """
-Module: chess.system.service.request.validator.exception.__init__
+Module: chess.system.command.request.validator.exception.__init__
 Author: Banji Lawal
 Created: 2026-02-24
 """
 
-# =========== SYSTEM.SERVICE.REQUEST.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== COMMAND.REQUEST.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
 from .debug import *

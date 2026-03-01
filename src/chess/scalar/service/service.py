@@ -6,67 +6,86 @@ Author: Banji Lawal
 Created: 2025-11-12
 version: 1.0.0
 """
-from typing import cast
+from chess.scalar import Scalar
 
-from chess.system import BuildResult, IntegrityService
-from chess.scalar import Scalar, ScalarBuilder, ScalarValidator
+# src/chess/system/service/integrity/service.py
+
+"""
+Module: chess.system.service.integrity.service
+Author: Banji Lawal
+Created: 2025-11-18
+"""
+
+from __future__ import annotations
+
+from chess.system import IntegrityService, Builder, Validator
 
 
 class ScalarService(IntegrityService[Scalar]):
     """
-    # ROLE: AbstractService, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Microservice API, Integrity Lifecycle Manager, APLifecycle Management.
 
     # RESPONSIBILITIES:
-    1.  Public facing Scalar microservice API.
-    2.  Encapsulate integrity assurance logic in one extendable module.
-    3.  Authoritative, single source of truth for Scalar state by providing single entry and exit points to Scalar
-        lifecycle.
+    1.  Integrity Lifecycle Management Microservice API.
+    2.  Bundles primitives for assuring integrity and consistency in the two phases of
+        the integrity lifecycle.
+            *   At object creation.
+            *   At object invocation.
 
     # PARENT:
         *   IntegrityService
 
     # PROVIDES:
-        *   ScalarService
-
-    # LOCAL ATTRIBUTES:
     None
 
+    # LOCAL ATTRIBUTES:
+        *   builder (Builder[Scalar])
+        *   validator (Validator[Scalar])
+
     # INHERITED ATTRIBUTES:
-        *   See IntegrityService for inherited attributes.
+        *   See IntegrityService class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        *   id (int)
+        *   name (name)
+        *   builder (Builder[Scalar])
+        *   validator (Validator[Scalar])
+
+    # LOCAL METHODS:
+    None
+
+    # INHERITED METHODS:
+    *   See IntegrityService class for inherited methods.
     """
-    DEFAULT_NAME = "ScalarService"
+    SERVICE_NAME = "ScalarService"
+    _builder: Builder[Scalar]
+    _validator: Validator[Scalar]
     
     def __init__(
             self,
-            name: str = DEFAULT_NAME,
-            id: int = id_emitter.service_id,
-            builder: ScalarBuilder = ScalarBuilder(),
-            validator: ScalarValidator = ScalarValidator(),
+            id: int,
+            name: str,
+            builder: Builder[Scalar],
+            validator: Validator[Scalar]
     ):
-        """
-        # ACTION:
-        Constructor
-
-        # PARAMETERS:
-            *   id (nt)
-            *   name (str)
-            *   builder (ScalarFactory)
-            *   validator (ScalarValidator)
-
-        # RETURNS:
-        None
-
-        # RAISES:
-        None
-        """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
     
     @property
-    def builder(self) -> ScalarBuilder:
-        """get ScalarBuilder"""
-        return cast(ScalarBuilder, self.entity_builder)
+    def builder(self) -> Builder[Scalar]:
+        return self._builder
     
     @property
-    def validator(self) -> ScalarValidator:
-        """get ScalarValidator"""
-        return cast(ScalarValidator, self.entity_validator)
+    def validator(self) -> Validator[Scalar]:
+        return self.certifier
+    
+    def __eq__(self, other):
+        if super().__eq__(other):
+            if isinstance(other, ScalarService):
+                return True
+        return False
+    
+    def __hash__(self):
+        return hash(self._id)
+    
+    def __str__(self):
+        return f"id:{self._id}, name:{self._name}"

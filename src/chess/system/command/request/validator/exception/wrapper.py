@@ -1,7 +1,7 @@
-# src/chess/system/service/request/validator/wrapper.py
+# src/chess/system/command/request/validator/wrapper.py
 
 """
-Module: chess.system.service.request.validator.wrapper
+Module: chess.system.command.request.validator.wrapper
 Author: Banji Lawal
 Created: 2026-02-24
 """

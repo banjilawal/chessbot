@@ -1,12 +1,12 @@
-# src/chess/system/command/validator/__init__.py
+# src/chess/system/command/command/validator/__init__.py
 
 """
-Module: chess.system.command.validator.__init__
+Module: chess.system.command.command.validator.__init__
 Author: Banji Lawal
 Created: 2026-02-24
 """
 
-# =========== SYSTEM.SERVICE.COMMAND.VALIDATOR PACKAGE CONTENTS ===========#
+# =========== COMMAND.COMMAND.VALIDATOR PACKAGE CONTENTS ===========#
 
 # Packages
 from .exception import *

@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2026-02-24
 """
 
-# =========== SYSTEM.SERVICE.COMMAND.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== COMMAND.COMMAND.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
 from debug import *

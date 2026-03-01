@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2026-02-24
 """
 
-# =========== SYSTEM.SERVICE.COMMAND.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== COMMAND.COMMAND.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
 None

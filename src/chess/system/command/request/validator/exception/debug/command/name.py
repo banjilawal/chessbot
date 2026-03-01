@@ -1,7 +1,7 @@
-# src/chess/system/service/request/validator/exception/debug/command.py
+# src/chess/system/command/request/validator/exception/debug/command.py
 
 """
-Module: chess.system.service.request.validator.exception.debug.command
+Module: chess.system.command.request.validator.exception.debug.command
 Author: Banji Lawal
 Created: 2026-02-24
 """

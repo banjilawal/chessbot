@@ -1,12 +1,12 @@
-# src/chess/system/service/pipeline/__init__.py
+# src/chess/system/command/pipeline/__init__.py
 
 """
-Module: chess.system.service.pipeline.__init__
+Module: chess.system.command.pipeline.__init__
 Author: Banji Lawal
 Created: 2026-02-25
 """
 
-# =========== SYSTEM.SERVICE.PIPELINE PACKAGE CONTENTS ===========#
+# =========== COMMAND.PIPELINE PACKAGE CONTENTS ===========#
 
 # Packages
 from .exception import *

@@ -15,3 +15,4 @@ None
 # Modules
 from .anchor import Anchor
 from .worker import Worker
+from .template import Template

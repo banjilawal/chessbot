@@ -24,7 +24,7 @@ class SquareBuildCommandValidator(Validator[SquareBuildCommand]):
     def validate(
             cls,
             candidate: Any,
-            key: SquareBuildCommand = SquareBuildCommand.key(),
+            key: SquareBuildCommand = SquareBuildCommand.cipher(),
             command_validator: CommandValidator = CommandValidator(),
             request_validator: ServiceRequestValidator =ServiceRequestValidator()
     ) -> ValidationResult[SquareBuildCommand]:
@@ -95,7 +95,7 @@ class SquareBuildCommandValidator(Validator[SquareBuildCommand]):
                 )
         # Handle the case that, the request has an incorrect type.
         for identifier in request.arguments.keys():
-            if not isinstance(request.arguments[identifier, command.key()[identifier]]):
+            if not isinstance(request.arguments[identifier, command.cipher()[identifier]]):
                 return ValidationResult.failure(
                     SquareBuildCommandValidationException(
                         msg=f"{method}: {SquareBuildCommandValidationException.MSG}",

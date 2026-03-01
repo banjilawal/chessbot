@@ -1,7 +1,7 @@
-# src/chess/system/service/menu/route/route.py
+# src/chess/system/command/menu/route/route.py
 
 """
-Module: chess.system.service.menu.route.route
+Module: chess.system.command.menu.route.route
 Author: Banji Lawal
 Created: 2026-02-24
 """
@@ -11,8 +11,8 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
 
-from chess.system import LoggingLevelRouter
-from chess.system.service.dnammoc.pipeline import CommandPipeline
+from chess.system import Command, LoggingLevelRouter
+from chess.system.command.dnammoc.pipeline import CommandPipeline
 
 S = TypeVar("S")
 
@@ -47,7 +47,7 @@ class CommandRouter(ABC, Generic[S]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def route(self, pipeline: CommandPipeline) -> Any:
+    def route(self, command: Command) -> Any:
         pass
         
     
