@@ -1,7 +1,7 @@
-# src/chess/vector/validator/exception/wrapper.py
+# src/chess/vector/builder/exception/wrapper.py
 
 """
-Module: chess.vector.validator.exception.wrapper
+Module: chess.vector.builder.exception.wrapper
 Author: Banji Lawal
 Created: 2025-09-08
 Version: 1.0.0
@@ -11,33 +11,32 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# VECTOR_VALIDATION_FAILURE #======================#
-    "VectorValidationException",
+    # ======================# VECTOR_BUILDER_FAILURE #======================#
+    "VectorBuildException",
 ]
 
-from chess.system import ValidationException
+from chess.system import BuildException
 
 
-# ======================# VECTOR_VALIDATION_FAILURE #======================#
-class VectorValidationException(ValidationException):
+# ======================# VECTOR_BUILDER_FAILURE #======================#
+class VectorBuildException(BuildException):
     """
     # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Identify the VectorValidator method where the process failed.
+    1.  Identify the VectorBuilder method where the process failed.
 
     # PARENT:
-        *   ValidationException
+        *   BuildException
 
     # PROVIDES:
     None
 
     # LOCAL ATTRIBUTES:
-        *   op (Optional[str])
-        *   rslt_type (Optional[str])
+    None
 
     # INHERITED ATTRIBUTES:
-        *   See ValidationException class for inherited attributes.
+        *   See BuildException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:)
         *   err_code (str)
@@ -51,13 +50,13 @@ class VectorValidationException(ValidationException):
    None
 
     # INHERITED METHODS:
-        *   See ValidationException class for inherited methods.
+        *   See BuildException class for inherited methods.
     """
-    ERR_CODE = "VECTOR_VALIDATION_FAILURE"
-    MSG = "Failure in VectorValidator method."
+    ERR_CODE = "VECTOR_BUILDER_FAILURE"
+    MSG = "Failure in VectorBuilder method."
     MTHD = None
-    OP = "Validation"
-    RSLT_TYPE = "ValidationResult"
+    OP = "Builder"
+    RSLT_TYPE = "BuilderResult"
     
     _op = Optional[str]
     _rslt_type = Optional[str]

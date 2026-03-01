@@ -1,9 +1,9 @@
-# src/chess/vector/exception/debug.py
+# src/chess/vector/service/exception.debug.py
 
 """
-Module: chess.vector.exception.debug
+Module: chess.vector.service.exception.debug
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2026-02-26
 version: 1.0.0
 """
 
@@ -11,14 +11,14 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# VECTOR_SERVICE_EXCEPTION #======================#
-    "VectorServiceException",
+    # ======================# VECTOR_SERVICE_DEBUG_EXCEPTION #======================#
+    "VectorServiceDebugException",
 ]
 
 from chess.system import DebugException
 
-# ======================# VECTOR_SERVICE_EXCEPTION #======================#
-class VectorServiceException(DebugException):
+# ======================# VECTOR_SERVICE_DEBUG_EXCEPTION #======================#
+class VectorServiceDebugException(DebugException):
     """
     # ROLE: Capture Error Variable State, Exception Chain Layer 2, Exception Messaging
     
@@ -55,7 +55,7 @@ class VectorServiceException(DebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    ERR_CODE = "VECTOR_SERVICE_EXCEPTION"
+    ERR_CODE = "VECTOR_SERVICE_DEBUG_EXCEPTION"
     MSG = str = "VectorService had an error."
     VAR = Optional[Any]
     VAL = Optional[Any]

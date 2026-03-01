@@ -13,3 +13,5 @@ version: 1.0.0
 None
 
 # Modules
+from .anchor import VectorServiceException
+from .debug import VectorServiceDebugException

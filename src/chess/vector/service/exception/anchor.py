@@ -1,7 +1,7 @@
-# src/chess/vector/service/exception.super.py
+# src/chess/vector/service/exception.anchor.py
 
 """
-Module: chess.vector.service.exception.super
+Module: chess.vector.service.exception.anchor
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
