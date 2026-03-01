@@ -1,0 +1,103 @@
+# src/logic/rank/model/concrete/rook/rook.py
+
+"""
+Module: logic.rank.model.concrete.rook.rook
+Author: Banji Lawal
+Created: 2026-01-22
+version: 1.0.0
+"""
+
+from typing import List
+
+from logic.token import Token
+from logic.persona import Persona
+from logic.geometry import Quadrant
+from logic.coord import Coord, CoordService
+from logic.system import ComputationResult, LoggingLevelRouter
+from logic.rank import RookException, RookSpanComputationException, PerpendicularSpan, Rank, Rook
+
+class Rook(Rank):
+    """
+    # ROLE: Computation, Metadata
+
+    # RESPONSIBILITIES:
+    1.  Produces a list of Coords reachable from a Rook's updated position.
+    2.  Metadata about the Rook rank useful for optimizing the GameGraph.
+
+    # PARENT:
+        Rank
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+        * perpendicular_span (PerpendicularSpan)
+
+    INHERITED ATTRIBUTES:
+        *   See Rank class for inherited attributes
+    """
+    _perpendicular_span: PerpendicularSpan
+    
+    def __init__(
+            self,
+            id: int,
+            name: str = Persona.ROOK.name,
+            ransom: int = Persona.ROOK.ransom,
+            team_quota: int = Persona.ROOK.quota,
+            designation: str = Persona.ROOK.designation,
+            quadrants: List[Quadrant] = List[Persona.ROOK.quadrants],
+            perpendicular_span: PerpendicularSpan = PerpendicularSpan(),
+            coord_service: CoordService = CoordService(),
+    ):
+        super().__init__(
+            id=id,
+            name=name,
+            ransom=ransom,
+            team_quota=team_quota,
+            designation=designation,
+            quadrants=quadrants,
+            vectors=None,
+            coord_service=coord_service
+        )
+        self._perpendicular_span = perpendicular_span
+    
+    @LoggingLevelRouter.monitor
+    def compute_span(self, token: Token) -> ComputationResult[[Coord]]:
+        """
+        # Action
+            1.  Pass the occupant's updated position to Rook._perpendicular_span to get the set of possible destinations.
+            2.  If perpendicular_span fails send the exception chain in the ComputationResult. Else, return
+                the span in the ComputationResult's payload.
+        # PARAMETERS:
+            *   occupant (Token)
+        # RETURNS:
+            *   ComputationResult[List[Coord]]:
+                    - On failure: An exception.
+                    - On success: List[Coord] in the payload.
+        # RAISES:
+            *   RookException
+            *   RookSpanComputationException
+        """
+        method = "Rook.compute_span"
+        
+        # --- Compute the Rook's possible destinations. ---#
+        computation_result = self._perpendicular_span.compute(
+            points=[],
+            origin=token.current_position,
+            coord_service=self.coord_service,
+        )
+        
+        # Handle the case that, spanning set computation does not produce a solution.
+        if computation_result.is_failure:
+            # Return the exception chain on failure.
+            return ComputationResult.failure(
+                RookException(
+                    msg=f"{method}: {RookSpanComputationException.MSG}",
+                    ex=RookSpanComputationException(
+                        msg=f"{method}: {RookSpanComputationException.MSG}",
+                        ex=computation_result.exception
+                    )
+                )
+            )
+        # Put the completed Knight's span into a ComputationResult and send to the caller.
+        return computation_result

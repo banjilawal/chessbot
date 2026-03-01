@@ -1,0 +1,39 @@
+# src/logic/square/context/finder/exception/debug/payload/kind.py
+
+"""
+Module: logic.square.context.finder.exception.debug.payload.kind
+Author: Banji Lawal
+Created: 2025-09-16
+version: 1.0.0
+"""
+
+from logic.square import SquareDebugException
+
+_all__ = [
+    # ======================# SEARCH_PAYLOAD_IS_NOT_LIST_OF_SQUARES EXCEPTION #======================#
+    "SquareSearchPayloadException",
+]
+
+
+# ======================# SEARCH_PAYLOAD_IS_NOT_LIST_OF_SQUARES EXCEPTION #======================#
+class SquareSearchPayloadException(SquareDebugException):
+    """
+    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+
+    # RESPONSIBILITIES:
+    1.  A failing SearchResult was returned because a square was sent in the payload instead of List[Square].
+
+    # PARENT:
+        *   SquareContextDebug
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "SEARCH_PAYLOAD_IS_NOT_LIST_OF_SQUARES_EXCEPTION"
+    MSG = "Square search failed: The payload contained a single square instead of List[Square]."

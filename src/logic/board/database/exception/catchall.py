@@ -1,0 +1,40 @@
+# src/logic/board/database/exception/super.py
+
+"""
+Module: logic.board.database.exception.super
+Author: Banji Lawal
+Created: 2025-11-19
+version: 1.0.0
+"""
+
+___all__ = [
+    # ======================# BOARD_DATABASE EXCEPTION #======================#
+    "BoardDatabaseException",
+]
+
+from logic.system import DatabaseException
+
+
+# ======================# BOARD_DATABASE EXCEPTION #======================#
+class BoardDatabaseException(DatabaseException):
+    """
+    # ROLE: Exception Wrapper
+
+    # RESPONSIBILITIES:
+    1.  Indicate that an BoardDatabase encountered an error which prevented the service from completing a task.
+    2.  Wrap an exception that hits the try-finally block of a BoardDatabase method.
+
+    # PARENT:
+        *   DatabaseException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "BOARD_DATABASE_EXCEPTION"
+    MSG = "BoardDatabase raised an exception."

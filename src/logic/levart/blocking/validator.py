@@ -1,0 +1,101 @@
+# src/logic/owner/travel/blocking/factory.py
+
+"""
+Module: `chess.owner.travel.blocking.coord_stack_validator`
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
+"""
+
+from typing import cast
+
+from logic.system import Validator, ValidationResult, IdValidator, LoggingLevelRouter
+from logic.piece import (
+    BlockingEvent, NullBlockingEventException, PieceValidator, BoardActorValidator, TravelResourceValidator,
+    DiscoverySearchContextBuilder, DiscoverySearchContext, DiscoverySearch, ActorSameAsBlockerException,
+    ActorBlockingOwnSquareException, EnemyCannotBeBlockerException, DiscoveryAlreadyExistsException
+)
+
+
+
+class BlockingEventValidator(Validator[BlockingEvent]):
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def validate(cls, candidate: BlockingEvent) -> ValidationResult[BlockingEvent]:
+        """"""
+        method = "BlockingEventValidator.validate"
+        
+        try:
+            if candidate is None:
+                return ValidationResult.failure(
+                    NullBlockingEventException(f"{method}: {NullBlockingEventException.MSG}")
+                )
+            
+            if not isinstance(candidate, BlockingEvent):
+                return ValidationResult.failure(
+                    exception=TypeError(f"{method} Expected an BlockingEvent, got {type(candidate).__name__} instead.")
+                )
+            
+            event = cast(BlockingEvent, candidate)
+            
+            id_validation = IdValidator.validate(event.visitor_id)
+            if id_validation.is_failure():
+                return ValidationResult.failure(id_validation.exception)
+            
+            actor_validation = BoardActorValidator.validate(
+                actor=event.actor,
+                environment=event.execution_environment
+            )
+            if actor_validation.is_failure():
+                return ValidationResult.failure(actor_validation.exception)
+            
+            resource_validation = TravelResourceValidator.validate(
+                resource=event.blocked_square,
+                environment=event.execution_environment
+            )
+            if resource_validation.is_failure():
+                return ValidationResult.failure(resource_validation.exception)
+            
+            if event.actor.current_position == event.blocked_square.point:
+                return ValidationResult.failure(
+                    ActorBlockingOwnSquareException(f"{method}: {ActorBlockingOwnSquareException.MSG}")
+                )
+            
+            blocker_validation = PieceValidator.validate(event.friend)
+            if blocker_validation.is_failure():
+                return ValidationResult(exception=blocker_validation.exception)
+            
+            if event.actor == event.friend:
+                return ValidationResult(exception=ActorSameAsBlockerException(
+                    f"{method}: {ActorSameAsBlockerException.MSG}")
+                )
+            
+            if event.actor.is_enemy(event.friend):
+                return ValidationResult(exception=EnemyCannotBeBlockerException(
+                    f"{method}: {EnemyCannotBeBlockerException.MSG}")
+                )
+            
+            context_build_result = DiscoverySearchContextBuilder.build(piece_id=event.friend.visitor_id)
+            if context_build_result.is_failure():
+                return ValidationResult.failure(context_build_result.exception)
+            search_context = cast(DiscoverySearchContext, context_build_result.payload)
+            
+            discovery_search = DiscoverySearch.searcher(owner=event.actor, search_context=search_context)
+            if discovery_search.is_failure():
+                return ValidationResult.failure(discovery_search.exception)
+            
+            if discovery_search.is_success():
+                return ValidationResult.success(
+                    DiscoveryAlreadyExistsException(f"{method}: {DiscoveryAlreadyExistsException.MSG}")
+                )
+            
+            if event.actor == event.friend:
+                return ValidationResult.failure(
+                    ActorSameAsBlockerException(f"{method}: {ActorSameAsBlockerException}")
+                )
+            
+            return ValidationResult.success(event)
+        
+        except Exception as e:
+            return ValidationResult(exception=e)

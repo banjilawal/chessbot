@@ -1,0 +1,42 @@
+# src/logic/coord/database/core/exception/insertion/wrapper.py
+
+"""
+Module: logic.coord.database.core.exception.insertion.wrapper
+Author: Banji Lawal
+Created: 2025-11-19
+version: 1.0.0
+"""
+
+__all__ = [
+    # ======================# UNIQUE_COORD_INSERTION_FAILURE #======================#
+    "UniqueCoordInsertionException",
+]
+
+from logic.coord import CoordException
+from logic.system import InsertionException
+
+
+# ======================# UNIQUE_COORD_INSERTION_FAILURE #======================#
+class UniqueCoordInsertionException(CoordException, InsertionException):
+    """
+    # ROLE: Exception Wrapper
+
+    # RESPONSIBILITIES:
+    1.  Wrap debug exceptions indicating why inserting a unique coord failed. The encapsulated exceptions create 
+        chain for tracing the source of the failure.
+
+    # PARENT:
+        *   CoordException
+        *   InsertionException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "UNIQUE_COORD_INSERTION_FAILURE"
+    MSG = "Unique coord insertion failed."

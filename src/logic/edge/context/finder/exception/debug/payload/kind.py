@@ -1,0 +1,42 @@
+# src/logic/edge/context/finder/exception/debug/payload/kind.py
+
+"""
+Module: logic.edge.context.finder.exception.debug.payload.kind
+Author: Banji Lawal
+Created: 2025-09-16
+version: 1.0.0
+"""
+
+from logic.edge import EdgeException
+from logic.system import ResultException
+
+_all__ = [
+    # ======================# EDGE_DATASET_NULL EXCEPTION #======================#
+    "EdgeSearchNullDatasetException",
+]
+
+
+# ======================# SEARCH_PAYLOAD_IS_NOT_LIST_OF_EDGES EXCEPTION #======================#
+class EdgeSearchPayloadTypeException(EdgeException, ResultException):
+    """
+    # ROLE: Error Tracing, Debugging
+
+    # RESPONSIBILITIES:
+    1.  Indicate that after the EdgeSearch ran successfully the payload was not a List[Edge]. This exception makes
+        sure search payloads follow the convention of returning an array of matches not a single item.
+
+    # PARENT:
+        *   EdgeException
+        *   ResultException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "EDGE_DATASET_NULL_EXCEPTION"
+    MSG = "EdgeSearch payload is the wrong type. The payload should be List[Edge]."

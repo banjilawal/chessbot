@@ -1,0 +1,42 @@
+# src/logic/edge/service/exception/update/weight.py
+
+"""
+Module: logic.edge.service.exception.update.weight
+Author: Banji Lawal
+Created: 2025-02-20
+version: 1.0.0
+"""
+
+from logic.edge import EdgeServiceException
+from logic.system import UpdateException
+
+__all__ = [
+    # ======================# EDGE_WEIGHT_UPDATE_FAILURE #======================#
+    "UpdatingEdgeWeightException",
+]
+
+
+# ======================# EDGE_WEIGHT_UPDATE_FAILURE #======================#
+class UpdatingEdgeWeightException(EdgeServiceException, UpdateException):
+    """
+    # ROLE: Exception Wrapper
+
+    # RESPONSIBILITIES:
+    1.  Wrap debug exceptions indicating why an edge's weight could not be updated. The exception chain
+        traces the ultimate source of failure.
+
+    # PARENT:
+        *   EdgeServiceException
+        *   UpdateException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "EDGE_WEIGHT_UPDATE_FAILURE"
+    MSG = "Edge weight update failed."

@@ -1,0 +1,39 @@
+# src/logic/attack/exception/debug/board/wrong.py
+
+"""
+Module: logic.attack.exception.debug.board.wrong
+Author: Banji Lawal
+Created: 2026-01-24
+version: 1.0.0
+"""
+
+__all__ = [
+    # ======================# ATTACKING_TOKEN_ON_WRONG_BOARD EXCEPTION #======================#
+    "AttackingTokenOnWrongBoardException",
+]
+
+from logic.attack import AttackDebugException
+
+
+# ======================# ATTACKING_TOKEN_ON_WRONG_BOARD EXCEPTION #======================#
+class AttackingTokenOnWrongBoardException(AttackDebugException):
+    """
+    # ROLE: Debug, Error Tracing
+
+    # RESPONSIBILITIES:
+    1.  Indicate that an attack failed because the attacker was targeting the wrong board,
+
+    # PARENT:
+        *   AttackDebugException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "ATTACKING_EMPTY_SQUARE_EXCEPTION"
+    MSG = "Attack failed: The attacked is targeting the wrong board."

@@ -1,0 +1,43 @@
+# src/logic/team/context/validator/exception/wrapper.py
+
+"""
+Module: logic.team.context.validator.exception.wrapper
+Author: Banji Lawal
+Created: 2025-09-16
+version: 1.0.0
+"""
+
+
+from logic.team import TeamContextException
+from logic.system import ValidationException
+
+
+__all__ = [
+    # ======================# TEAM_CONTEXT_VALIDATION_FAILURE #======================#
+    "TeamContextValidationException",
+]
+
+
+# ======================# TEAM_CONTEXT_VALIDATION_FAILURE #======================#
+class TeamContextValidationException(TeamContextException, ValidationException):
+    """
+    # ROLE: Exception Wrapper
+
+    # RESPONSIBILITIES:
+    1.  Wrap debug exceptions indicating why a candidate failed its validation as a TeamContext. The exception chain traces the ultimate source of failure.
+
+    # PARENT:
+        *   TeamContextException
+        *   ValidationException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "TEAM_CONTEXT_VALIDATION_FAILURE"
+    MSG = "TeamContext validation failed."

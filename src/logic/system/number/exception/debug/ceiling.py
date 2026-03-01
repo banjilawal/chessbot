@@ -1,0 +1,40 @@
+# src/logic/system/number/exception/debug/above.py
+
+"""
+Module: logic.system.number.exception.debug.above
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
+"""
+
+__all__ = [
+    # ======================# NUMBER_ABOVE_CEILING EXCEPTION #======================#
+    "NumberAboveCeilingException",
+]
+
+from logic.system import BoundsException, NumberException
+
+
+# ======================# NUMBER_ABOVE_CEILING EXCEPTION #======================#
+class NumberAboveCeilingException(NumberException, BoundsException):
+    """
+    # ROLE: Error Tracing, Debugging
+
+    # RESPONSIBILITIES:
+    1.  Indicate that number validation failed because the candidate was larger than the Board.DIMENSION.
+
+    # PARENT:
+        *   NumberException
+        *   BoundsException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "NUMBER_ABOVE_CEILING_EXCEPTION"
+    MSG = "Number validation failed: The candidate was above the ceiling."

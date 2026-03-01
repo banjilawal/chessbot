@@ -1,0 +1,42 @@
+# src/logic/edge/context/service/exception.py
+
+"""
+Module: logic.edge.context.service.exception
+Author: Banji Lawal
+Created: 2026-02-18
+version: 1.0.0
+"""
+
+from logic.system import ServiceException
+from logic.edge import EdgeContextException
+
+__all__ = [
+    # ======================# EDGE_CONTEXT_SERVICE EXCEPTION #======================#
+    "EdgeContextServiceException",
+]
+
+
+# ======================# EDGE_CONTEXT_SERVICE EXCEPTION #======================#
+class EdgeContextServiceException(EdgeContextException, ServiceException):
+    """
+    # ROLE: Exception Wrapper
+
+    # RESPONSIBILITIES:
+    1.  Indicate that an EdgeContextService encountered an error which prevented the service from completing a task.
+    2.  Wrap an exception that hits the try-finally block of an EdgeContextService method.
+
+    # PARENT:
+        *   ServiceException
+        *   EdgeContextException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "EDGE_CONTEXT_SERVICE_EXCEPTION"
+    MSG = "EdgeContextService raised an exception."

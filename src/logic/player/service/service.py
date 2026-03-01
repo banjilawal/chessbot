@@ -1,0 +1,234 @@
+# src/logic/player/service/service.py
+
+"""
+Module: logic.player.service.service
+Author: Banji Lawal
+Created: 2025-09-16
+version: 1.0.0
+"""
+
+
+from typing import cast
+
+from logic.system import DeletionResult, IntegrityService, InsertionResult, LoggingLevelRouter, id_emitter
+from logic.player import Player, PlayerFactory, PlayerServiceException, PlayerTeamRelationAnalyzer, PlayerValidator
+from logic.team import (
+    AddingDuplicateTeamException, PoppingEmptyTeamStackException, Team, PoppingTeamStackFailedException, TeamService,
+    TeamInsertionException,
+)
+
+class PlayerService(IntegrityService[Player]):
+    """
+    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+
+    # RESPONSIBILITIES:
+    1.  Public facing Player microservice API.
+    2.  Encapsulate integrity assurance logic in one extendable module.
+    3.  Authoritative, single source of truth for Player state by providing single entry and exit points to Player
+        lifecycle.
+
+    # PARENT:
+        *   IntegrityService
+    
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+    
+    # INHERITED ATTRIBUTES:
+        *   See IntegrityService class for inherited attributes.
+    """
+    DEFAULT_NAME = "PlayerService"
+    _player_team_relation_analyzer: PlayerTeamRelationAnalyzer
+    
+    def __init__(
+            self,
+            name: str = DEFAULT_NAME,
+            id: int = id_emitter.service_id,
+            builder: PlayerFactory = PlayerFactory(),
+            validator: PlayerValidator = PlayerValidator(),
+            player_team_relation_analyzer: PlayerTeamRelationAnalyzer = PlayerTeamRelationAnalyzer(),
+    ):
+        """
+        # ACTION:
+            Constructor
+        # PARAMETERS:
+            *   id (nt)
+            *   name (str)
+            *   builder (PlayerFactory)
+            *   validator (PlayerValidator)
+        # RETURNS:
+            None
+        # RAISES:
+            None
+        """
+        super().__init__(id=id, name=name, builder=builder, validator=validator)
+        self._player_team_relation_analyzer = player_team_relation_analyzer
+        
+    @property
+    def builder(self) -> PlayerFactory:
+        """get PlayerBuilder"""
+        return cast(PlayerFactory, self.entity_builder)
+    
+    @property
+    def validator(self) -> PlayerValidator:
+        """get PlayerValidator"""
+        return cast(PlayerValidator, self.entity_validator)
+    
+    @property
+    def player_team_relation_analyzer(self) -> PlayerTeamRelationAnalyzer:
+        return self._player_team_relation_analyzer
+    
+    @LoggingLevelRouter.monitor
+    def pop_team_from_player(self, player: Player) -> DeletionResult[Team]:
+        """
+        # ACTION:
+            1.  If the owner is not validated send an exception chain in the DeletionResult.
+            2.  If the owner has no teams in their history send an exception chain in the DeletionResult. Else
+                run owner.teams.undo_team_addition()
+            3.  If the undo fails send an exception chain in the DeletionResult. Else, directly forward the outcome
+                to the caller.
+        # PARAMETERS:
+            *   owner (Player)
+        # RETURNS:
+            *   DeletionResult[Team] containing either:
+                    - On failure: Exception.
+                    - On success: Team in the payload.
+        # RAISES:
+            *   PlayerServiceException
+            *   PoppingTeamStackFailedException
+            *   PoppingEmptyTeamStackException
+        """
+        method = "PlayerService.pop_team_from_player"
+        
+        # Handle the case that, the owner is not certified safe.
+        validation = self.validator.validate(player)
+        if validation.is_failure:
+            # Return the exception chain on failure.
+            return DeletionResult.failure(
+                PlayerServiceException(
+                    msg=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERR_CODE}",
+                    ex=PoppingTeamStackFailedException(
+                        msg=f"{method}: {PoppingTeamStackFailedException.MSG}",
+                        ex=validation.exception
+                    )
+                )
+            )
+        # Handle the case that, the owner does not have any teams.
+        if player.teams.is_empty:
+            # Return the exception chain on failure.
+            return DeletionResult.failure(
+                PlayerServiceException(
+                    msg=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERR_CODE}",
+                    ex=PoppingTeamStackFailedException(
+                        msg=f"{method}: {PoppingTeamStackFailedException.MSG}",
+                        ex=PoppingEmptyTeamStackException(f"{method}: {PoppingEmptyTeamStackException.MSG}")
+                    )
+                )
+            )
+        # Handle the case that, the owner does not have any teams.
+        deletion_result = player.teams.undo_team_addition()
+        if deletion_result.is_failure:
+            return DeletionResult.failure(
+                PlayerServiceException(
+                    msg=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERR_CODE}",
+                    ex=PoppingTeamStackFailedException(
+                        msg=f"{method}: {PoppingTeamStackFailedException.MSG}",
+                        ex=deletion_result.exception
+                    )
+                )
+            )
+        return deletion_result
+    
+        
+    @LoggingLevelRouter.monitor
+    def push_team_to_player(
+            self,
+            player: Player,
+            team: Team,
+            team_service: TeamService = TeamService()
+    ) -> InsertionResult[Team]:
+        """
+        # ACTION:
+            1.  If the player_team_relation_result does not return partial registration send an exception chain in
+                the InsertionResult.
+            2.  Forward the result of owner.teams.add_team to the caller.
+        # PARAMETERS:
+            *   owner (Player)
+            *   team (Team)
+            *   team_service (TeamService)
+        # RETURNS:
+            *   InsertionResult[Team] containing either:
+                    - On failure: Exception.
+                    - On success: Team in the payload.
+        # RAISES:
+            *   TypeError
+            *   PlayerServiceException
+            *   PushingTeamFailedException
+            *   AddingDuplicateTeamException
+            *   TeamBelongsToDifferentOwnerException
+        """
+        method = "PlayerService.push_team_to_player"
+        
+        relation = self.player_team_relation_analyzer.analyze(
+            candidate_primary=player,
+            candidate_secondary=team,
+            owner_validator=self.validator,
+            team_service=team_service,
+        )
+        # Handle the case that, the relation analysis is not completed.
+        if relation.is_failure:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                PlayerServiceException(
+                    msg=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERR_CODE}",
+                    ex=TeamInsertionException(
+                        msg=f"{method}: {TeamInsertionException.MSG}",
+                        ex=relation.exception)
+                )
+            )
+        # Handle the case that, the team belongs to a different owner.
+        if relation.does_not_exist:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                PlayerServiceException(
+                    msg=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERR_CODE}",
+                    ex=TeamInsertionException(
+                        msg=f"{method}: {TeamInsertionException.MSG}",
+                        ex=TeamBelongsToDifferentOwnerException(
+                            f"{method}: {TeamBelongsToDifferentOwnerException.MSG}"
+                        )
+                    )
+                )
+            )
+        # Handle the case that, the owner already has the team.
+        if relation.is_success:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                PlayerServiceException(
+                    msg=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERR_CODE}",
+                    ex=TeamInsertionException(
+                        msg=f"{method}: {TeamInsertionException.MSG}",
+                        ex=AddingDuplicateTeamException(f"{method}: {AddingDuplicateTeamException.MSG}")
+                    )
+                )
+            )
+        # Handle the case that, pushing the new team on to owner's TeamStack fails.
+        insertion_result = player.teams.add_team(team=team)
+        if insertion_result.is_failure:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                PlayerServiceException(
+                    msg=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERR_CODE}",
+                    ex=TeamInsertionException(
+                        msg=f"{method}: {TeamInsertionException.MSG}",
+                        ex=insertion_result.exception
+                    )
+                )
+            )
+        # If the team was successfully pushed onto the owner's team stack forward the insertion result.
+        return insertion_result
+
+    
+    

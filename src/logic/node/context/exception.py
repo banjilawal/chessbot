@@ -1,0 +1,39 @@
+# src/logic/node/context/exception.py
+
+"""
+Module: logic.node.context.exception
+Author: Banji Lawal
+Created: 2026-02-19
+version: 1.0.0
+"""
+
+from logic.node import NodeException
+from logic.system import ContextException
+
+__all__ = [
+    # ======================# NODE_CONTEXT EXCEPTION #======================#
+    "NodeContextException",
+]
+
+
+# ======================# NODE_CONTEXT EXCEPTION #======================#
+class NodeContextException(NodeException, ContextException):
+    """
+    # ROLE: Super Exception
+
+    # RESPONSIBILITIES:
+    1.  Super for NodeContext errors not covered by NodeException subclasses.
+
+    # PARENT:
+        *   NodeException
+        *   ContextException
+
+    # PROVIDES:
+    None
+
+    # ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "NODE_CONTEXT_EXCEPTION"
+    MSG = "NodeContext raised an exception."
+    

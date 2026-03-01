@@ -1,0 +1,39 @@
+# src/logic/system/collection/operation/computation/exception/unsupported.py
+
+"""
+Module: logic.system.collection.operation.computation.exception.unsupported
+Author: Banji Lawal
+Created: 2025-11-18
+Version: 1.0.0
+"""
+
+__all__ = [
+    # ======================# UNSUPPORTED_EMPTY_COMPUTATION_RESULT_STATE EXCEPTION #======================#
+    "UnsupportedEmptyComputationResultException",
+]
+
+from logic.system import MethodImplementationException
+
+
+# ======================# UNSUPPORTED_EMPTY_COMPUTATION_RESULT_STATE EXCEPTION #======================#
+class UnsupportedEmptyComputationResultException(MethodImplementationException):
+    """
+    # ROLE: Information, Reporting, Debug
+
+    # RESPONSIBILITIES:
+    1.  Indicate that an ComputationResult can either succeed or fail. There are no other outcomes. 
+
+    # PARENT:
+        *   UnsupportedDataResultStateException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+     None
+    """
+    ERR_CODE = "UNSUPPORTED_EMPTY_COMPUTATION_RESULT_STATE_EXCEPTION"
+    MSG = "An ComputationResult's outcome is either success or failure. It cannot be empty."

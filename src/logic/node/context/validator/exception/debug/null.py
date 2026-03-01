@@ -1,0 +1,41 @@
+# src/logic/node/context/validator/exception/debug/null.py
+
+"""
+Module: logic.node.context.validator.exception.debug.null
+Author: Banji Lawal
+Created: 2026-02-18
+version: 1.0.0
+"""
+
+from logic.system import NullException
+from logic.node import NodeContextException
+
+__all__ = [
+    # ======================# NULL_NODE_CONTEXT EXCEPTION #======================#
+    "NullNodeContextException",
+]
+
+
+# ======================# NULL_NODE_CONTEXT EXCEPTION #======================#
+class NullNodeContextException(NodeContextException, NullException):
+    """
+    # ROLE: Error Tracing, Debugging
+
+    # RESPONSIBILITIES:
+    1.  Indicate that a candidate failed its validation as a NodeContext because it was null.
+
+    # PARENT:
+        *   NodeContextException
+        *   NullException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "NULL_NODE_CONTEXT_EXCEPTION"
+    MSG = "NodeContext validation failed: The candidate was null."

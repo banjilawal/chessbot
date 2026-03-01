@@ -1,0 +1,16 @@
+# src/logic/system/err/wrapper/__init__.py
+
+"""
+Module: logic.system.err.wrapper.__init__
+Author: Banji Lawal
+Created: 2026-02-25
+version: 1.0.0
+"""
+
+# =========== SYSTEM.ERR.WRAPPER PACKAGE CONTENTS ===========#
+
+# Packages
+from .operation import *
+
+# Modules
+from .root import WorkerException

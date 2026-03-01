@@ -1,0 +1,62 @@
+# src/logic/square/context/validator/exception/debug/zero.py
+
+"""
+Module: logic.square.context.validator.exception.debug.zero
+Author: Banji Lawal
+Created: 2025-11-22
+version: 1.0.0
+"""
+
+from logic.system import ContextFlagCountException
+from logic.square import SquareContextException
+
+__all__ = [
+    # ========================= ZERO_SQUARE_CONTEXT_FLAGS EXCEPTION =========================#
+    "ZeroSquareContextFlagsException"
+]
+
+
+# ========================= ZERO_SQUARE_CONTEXT_FLAGS EXCEPTION =========================#
+class ZeroSquareContextFlagsException(SquareContextException, ContextFlagCountException):
+    """
+    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+
+    # RESPONSIBILITIES:
+    1.  A failing ValidationResult was returned because the candidate square_context had all Square
+        attributes switched off.
+
+
+    # PARENT:
+        *   SquareContextDebugException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    """
+    # ROLE: Error Tracing, Debugging
+
+    # RESPONSIBILITIES:
+    1.  Indicate that a candidate failed its validation as a SquareContext because none of its attributes was enabled.
+        A single SquareContext attribute.
+
+    # PARENT:
+        *   ContextFlagCountException
+        *   SquareContextValidationException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "ZERO_SQUARE_CONTEXT_FLAGS_EXCEPTION"
+    MSG = "SquareContext validation failed: None of the flags were set. A single flag must be enabled."

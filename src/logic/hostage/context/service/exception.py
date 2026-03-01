@@ -1,0 +1,42 @@
+# src/logic/hostage/context/service/exception.py
+
+"""
+Module: logic.hostage.context.service.exception
+Author: Banji Lawal
+Created: 2025-11-22
+version: 1.0.0
+"""
+
+from logic.system import ServiceException
+from logic.hostage import CaptivityContextException
+
+__all__ = [
+    # ======================# CAPTIVITY_CONTEXT_SERVICE EXCEPTION #======================#
+    "CaptivityContextServiceException",
+]
+
+
+# ======================# CAPTIVITY_CONTEXT_SERVICE EXCEPTION #======================#
+class CaptivityContextServiceException(CaptivityContextException, ServiceException):
+    """
+    # ROLE: Exception Wrapper
+
+    # RESPONSIBILITIES:
+    1.  Indicate that an CaptivityContextService encountered an error which prevented the service from completing a task.
+    2.  Wrap an exception that hits the try-finally block of an CaptivityContextService method.
+
+    # PARENT:
+        *   ServiceException
+        *   CaptivityContextException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "CAPTIVITY_CONTEXT_SERVICE_EXCEPTION"
+    MSG = "CaptivityContextService raised an exception."

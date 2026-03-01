@@ -1,0 +1,42 @@
+# src/logic/hostage/context/validator/exception/wrapper.py
+
+"""
+Module: logic.hostage.context.validator.exception.wrapper
+Author: Banji Lawal
+Created: 2025-11-22
+version: 1.0.0
+"""
+
+from logic.hostage import CaptivityContextException
+from logic.system import ValidationException
+
+
+__all__ = [
+    # ======================# CAPTIVITY_CONTEXT_VALIDATION_FAILURE #======================#
+    "CaptivityContextValidationException",
+]
+
+
+# ======================# CAPTIVITY_CONTEXT_VALIDATION_FAILURE #======================#
+class CaptivityContextValidationException(CaptivityContextException, ValidationException):
+    """
+    # ROLE: Exception Wrapper
+
+    # RESPONSIBILITIES:
+    1.  Wrap debug exceptions indicating why a candidate failed its validation as a CaptivityContext. The exception chain traces the ultimate source of failure.
+
+    # PARENT:
+        *   CaptivityContextException
+        *   ValidationException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "CAPTIVITY_CONTEXT_VALIDATION_FAILURE"
+    MSG = "CaptivityContext validation failed."

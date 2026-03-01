@@ -1,0 +1,15 @@
+# src/logic/system/scene/collision.py
+
+"""
+Module: logic.system.scene.exception
+Author: Banji Lawal
+Created: 2025-10-18
+Version: 1.0.1
+"""
+
+from logic.system import ChessException
+
+
+class SceneException(ChessException):
+  ERR_CODE = "SCENE_EXCEPTION"
+  MSG = "A Scene object raised an exception"

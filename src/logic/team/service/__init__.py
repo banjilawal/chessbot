@@ -1,0 +1,18 @@
+# src/logic/team/service/__init__.py
+
+"""
+Module: logic.team.service.__init__
+Author: Banji Lawal
+Created: 2025-11-24
+version: 1.0.0
+"""
+
+#=========== TEAM.SERVICE PACKAGE CONTENTS ===========#
+
+# Packages
+from .util import *
+from .exception import *
+
+
+# Modules
+from .service import TeamService

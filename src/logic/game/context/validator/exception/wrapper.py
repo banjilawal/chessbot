@@ -1,0 +1,44 @@
+# src/logic/game/validator/exception/base.py
+
+"""
+Module: logic.game.validator.exception.base
+Author: Banji Lawal
+Created: 2025-09-16
+version: 1.0.0
+"""
+
+from logic.system import ValidationException
+from logic.game import GameContextException
+
+__all__ = [
+    # ======================# GAME_CONTEXT_VALIDATION_FAILURE #======================#
+    "InvalidGameContextException",
+]
+
+
+# ======================# GAME_CONTEXT_VALIDATION_FAILURE #======================#
+class InvalidGameContextException(GameContextException, ValidationException):
+    """
+    # ROLE: Exception Wrapper
+
+    # RESPONSIBILITIES:
+    1.  A debug exception is created when a GameContext candidate fails a validation test. Validation debug exceptions are
+        encapsulated inside an InvalidGameContextException creating an exception chain. which is sent to the caller in a
+        ValidationResult.
+    2.  The InvalidGameContextException chain is useful for tracing a  failure to its source.
+
+    # PARENT:
+        *   GameContextException
+        *   ValidationException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "GAME_CONTEXT_VALIDATION_FAILURE"
+    MSG = "GameContext validation failed."

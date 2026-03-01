@@ -1,0 +1,174 @@
+# src/logic/formation/key/builder/builder.py
+
+"""
+Module: logic.formation.key.builder.builder
+Author: Banji Lawal
+Created: 2025-10-09
+version: 1.0.0
+"""
+
+from typing import Optional
+
+from logic.formation import (
+    ArenaFormationKeysException, FormationKey, FormationKeyBuildException,
+    FormationKeyBuildRouteException, ZeroFormationKeysException
+)
+from logic.persona import Persona, PersonaService
+from logic.square import Square, SquareService
+from logic.system import BuildResult, Builder, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
+
+
+class FormationKeyBuilder(Builder[FormationKey]):
+    """
+    # ROLE: Builder, Data Integrity And Reliability Guarantor
+
+    # RESPONSIBILITIES:
+    1.  Produce FormationKey instances whose integrity is guaranteed at creation.
+    2.  Manage construction of FormationKey instances that can be used safely by the client.
+    3.  Ensure params for FormationKey creation have met the application's safety contract.
+    4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
+
+    # PARENT:
+        *   Builder
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def build(
+            cls,
+            square: Optional[Square] = None,
+            persona: Optional[Persona] = None,
+            color: Optional[GameColor] = None,
+            designation: Optional[str] = None,
+            square_service: SquareService = SquareService(),
+            persona_service: PersonaService = PersonaService(),
+            identity_service: IdentityService = IdentityService(),
+            color_validator: GameColorValidator = GameColorValidator(),
+    ) -> BuildResult[FormationKey]:
+        """
+        # ACTION:
+            1.  If more than one optional param is not-null return an exception in the BuildResult.
+            2.  If the enabled param is not certified by the appropriate validating service return an exception in
+                the BuildResult.
+            3.  After the active param is validated create the FormationKey object and return in the BuildResult.
+        # PARAMETERS:
+            *   Only one these must be provided:
+                    *   persona (Optional[Persona])
+                    *   item (Optional[Square])
+                    *   color (Optional[GameColor])
+            *   These Parameters must be provided:
+                    *   square_service (SquareService)
+                    *   identity_service (IdentityService)
+                    *   color_validator (GameColorValidator)
+        # RETURNS:
+            *   BuildResult[FormationKey] containing either:
+                    - On failure: Exception.
+                    - On success: FormationKey in the payload.
+        # RAISES:
+            *   ZeroFormationKeysException
+            *   FormationKeyBuildException
+            *   ArenaFormationKeysException
+            *   FormationKeyBuildException
+        """
+        method = "FormationKeyBuilder.build"
+        
+        # Count how many optional parameters are not-null.
+        params = [designation, square, color, persona]
+        param_count = sum(bool(p) for p in params)
+        
+        # Handle the case that, all the optional params are null.
+        if param_count == 0:
+            # Return the exception chain on failure.
+            return BuildResult.failure(
+                FormationKeyBuildException(
+                    msg=f"{method}: {FormationKeyBuildException.ERR_CODE}",
+                    ex=ZeroFormationKeysException(
+                        f"{method}: {ZeroFormationKeysException.MSG}"
+                    )
+                )
+            )
+        # Handle the case that, more than one optional param is not-null.
+        if param_count > 1:
+            # Return the exception chain on failure.
+            return BuildResult.failure(
+                FormationKeyBuildException(
+                    msg=f"{method}: {FormationKeyBuildException.ERR_CODE}",
+                    ex=ArenaFormationKeysException(f"{method}: {ArenaFormationKeysException}")
+                )
+            )
+        
+        # --- Route to the appropriate validation/build branch. ---#
+        
+        # Build the square_name FormationKey if its value is set.
+        if square is not None:
+            validation = square_service.validator.validate(square)
+            if validation.is_failure:
+                # Return the exception chain on failure.
+                return BuildResult.failure(
+                    FormationKeyBuildException(
+                        msg=f"{method}: {FormationKeyBuildException.ERR_CODE}",
+                        ex=validation.exception,
+                    )
+                )
+            # On validation success return a square_name_FormationKey in the BuildResult.
+            return BuildResult.success(FormationKey(square_name=square.name))
+        
+        # Build the designation FormationKey if its value is set.
+        if designation is not None:
+            validation = identity_service.validate_name(candidate=designation)
+            if validation.is_failure:
+                # Return the exception chain on failure.
+                return BuildResult.failure(
+                    FormationKeyBuildException(
+                        msg=f"{method}: {FormationKeyBuildException.ERR_CODE}",
+                        ex=validation.exception,
+                    )
+                )
+            # On validation success return a designation_FormationKey in the BuildResult.
+            return BuildResult.success(FormationKey(designation=designation))
+        
+        # Build the color FormationKey if its value is set.
+        if color is not None:
+            validation = color_validator.validate(candidate=color)
+            if validation.is_failure:
+                # Return the exception chain on failure.
+                return BuildResult.failure(
+                    FormationKeyBuildException(
+                        msg=f"{method}: {FormationKeyBuildException.ERR_CODE}",
+                        ex=validation.exception,
+                    )
+                )
+            # On validation success return a color_FormationKey in the BuildResult.
+            return BuildResult.success(FormationKey(color=color))
+        
+        # Build the persona FormationKey if its value is set.
+        if persona is not None:
+            validation = persona_service.validator.validate(candidate=persona)
+            if validation.is_failure:
+                # Return the exception chain on failure.
+                return BuildResult.failure(
+                    FormationKeyBuildException(
+                        msg=f"{method}: {FormationKeyBuildException.ERR_CODE}",
+                        ex=validation.exception,
+                    )
+                )
+            # On validation success return a color_FormationKey in the BuildResult.
+            return BuildResult.success(FormationKey(persona=persona))
+        
+        # The default path returns failure.
+        BuildResult.failure(
+            FormationKeyBuildException(
+                msg=f"{method}: {FormationKeyBuildException.ERR_CODE}",
+                ex=FormationKeyBuildRouteException(
+                    f"{method}: {FormationKeyBuildRouteException.MSG}"
+                )
+            )
+        )

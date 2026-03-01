@@ -1,0 +1,40 @@
+# src/logic/arena/relation/wrapper.py
+
+"""
+Module: logic.arena.relation.wrapper
+Author: Banji Lawal
+Created: 2026-01-22
+version: 1.0.0
+"""
+
+__all__ = [
+    # ======================# ARENA_TEAM_RELATION_ANALYSIS_FAILURE #======================#
+    "ArenaTeamAnalysisException",
+]
+
+from logic.system import AnalysisException
+
+
+# ======================# ARENA_TEAM_RELATION_ANALYSIS_FAILURE #======================#
+class ArenaTeamAnalysisException(AnalysisException):
+    """
+    # ROLE: Exception Wrapper, Encapsulation, Error Chaining
+
+    # RESPONSIBILITIES:
+    1.  Wrap any exception that kills the relation test process before the arena-team relationship
+        status has been evaluated.
+
+    # PARENT:
+        *   WorkerException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "ARENA_TEAM_RELATION_ANALYSIS_FAILURE"
+    MSG = "ArenaTeamRelationTest failed."

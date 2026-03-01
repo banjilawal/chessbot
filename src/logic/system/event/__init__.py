@@ -1,0 +1,17 @@
+# src/logic/system/event/__init__.py
+
+"""
+Module: logic.system.event.__init__
+Author: Banji Lawal
+Created: 2025-10-09
+"""
+
+from .example import *
+from .exception import *
+
+from .event import Event
+
+
+
+
+

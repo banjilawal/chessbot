@@ -1,0 +1,19 @@
+from typing import List
+
+from logic.board.board import Board
+from logic.competitor.commander import CyberneticCommander
+from logic.engine.scout.scout import Scout
+from logic.engine.scout.report import ScoutReport
+
+
+class ScoutMaster:
+
+  @staticmethod
+  def send_scouts(cybernetic_owner: CyberneticCommander, chess_board: Board) -> List[ScoutReport]:
+    scout_reports: List[ScoutReport] = []
+
+    for chess_piece in cybernetic_owner.team_name.free_pieces():
+      report = Scout(chess_piece).survey(chess_board)
+      if report not in scout_reports and report is not None:
+        scout_reports.append(report)
+    return scout_reports

@@ -1,0 +1,21 @@
+# src/logic/hostage/__init__.py
+
+"""
+Module: logic.hostage.__init__
+Author: Banji Lawal
+Created: 2025-10-09
+version: 1.0.0
+"""
+
+# =========== HOSTAGE PACKAGE CONTENTS ===========#
+
+# Packages
+from .buillder import *
+from .context import *
+from .database import *
+from .service import *
+from .validator import *
+from .exception import *
+
+# Modules
+from .hostage import Hostage

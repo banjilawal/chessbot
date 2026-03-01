@@ -1,0 +1,43 @@
+# src/logic/board/context/finder/exception/wrapper.py
+
+"""
+Module: logic.board.context.finder.exception.wrapper
+Author: Banji Lawal
+Created: 2025-11-16
+version: 1.0.0
+"""
+
+from logic.board import BoardException
+from logic.system import SearchException
+
+__all__ = [
+    # ======================# BOARD_SEARCH_FAILURE #======================#
+    "BoardSearchException",
+]
+
+
+# ======================# BOARD_SEARCH_FAILURE #======================#
+class BoardSearchException(BoardException, SearchException):
+    """
+    # ROLE: Exception Wrapper
+
+    # RESPONSIBILITIES:
+    1.  Any condition that prevents a search from completing creates a debug exception that explains why the query
+        failed. That debug exception is wrapped in the BoardSearchException which is the middle layer of the
+        3-part exception chain.
+
+    # PARENT:
+        *   BoardException
+        *   SearchException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "BOARD_SEARCH_FAILURE"
+    MSG = "Board search failed."

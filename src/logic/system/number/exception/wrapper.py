@@ -1,0 +1,40 @@
+# src/logic/system/number/exception/invalid.py
+
+"""
+Module: logic.system.number.exception.invalid
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
+"""
+
+__all__ = [
+    # ======================# NUMBER_VALIDATION_FAILURE #======================#
+    "NumberValidationException",
+]
+
+from logic.system import NumberException, ValidationException
+
+
+# ======================# NUMBER_VALIDATION_FAILURE #======================#
+class NumberValidationException(NumberException, ValidationException):
+    """
+    # ROLE: Exception Wrapper
+
+    # RESPONSIBILITIES:
+    1.  Wrap debug exceptions indicating why a candidate failed its validation as an Int. The exception chain traces the ultimate source of failure.
+
+    # PARENT:
+        *   NumberException
+        *   ValidationException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "NUMBER_VALIDATION_FAILURE"
+    MSG = "Number validation failed."

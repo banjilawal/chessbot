@@ -1,0 +1,39 @@
+# src/logic/team/hash/exception/collision.py
+
+"""
+Module: logic.team.hash.exception.collision
+Author: Banji Lawal
+Created: 2025-02-08
+version: 1.0.0
+"""
+
+__all__ = [
+    # ======================# TEAM_HASH_SCHEMA_COLLISION EXCEPTION #======================#
+    "TeamSchemaCollisionException",
+]
+
+from logic.team import TeamHashException
+
+
+# ======================# TEAM_HASH_SCHEMA_COLLISION EXCEPTION #======================#
+class TeamSchemaCollisionException(TeamHashException):
+    """
+    # ROLE: Error Tracing, Debugging
+
+    # RESPONSIBILITIES:
+    1.  Raised if both teams in the hash have the same schema.
+
+    # PARENT:
+        *   TeamHashException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "TEAM_HASH_SCHEMA_COLLISION_EXCEPTION"
+    MSG = "Both teams in the hash cannot have the same schema."

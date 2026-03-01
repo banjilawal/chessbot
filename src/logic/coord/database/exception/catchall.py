@@ -1,0 +1,43 @@
+# src/logic/coord/database/exception/super.py
+
+"""
+Module: logic.coord.database.exception.super
+Author: Banji Lawal
+Created: 2025-11-19
+version: 1.0.0
+"""
+
+from logic.coord import CoordException
+from logic.system import DatabaseException
+
+__all__ = [
+    # ======================# COORD_DATABASE EXCEPTION #======================#
+    "CoordDatabaseException",
+]
+
+
+# ======================# COORD_DATABASE EXCEPTION #======================#
+class CoordDatabaseException(CoordException, DatabaseException):
+    """
+    # ROLE: Exception Wrapper
+
+    # RESPONSIBILITIES:
+    1.  Parent of exceptions raised by CoordDatabase objects.
+    2.  Raised when an exception hits the try-finally block of a CoordDatabase method.
+    3.  Super for CoordDatabase failures that are not covered by a lower level CoordDatabase exceptions.
+
+    # PARENT:
+        *   CoordException
+        *   DatabaseException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "COORD_DATABASE_EXCEPTION"
+    DEFAULT_ERR_CODE = "CoordDatabase raised an exception."

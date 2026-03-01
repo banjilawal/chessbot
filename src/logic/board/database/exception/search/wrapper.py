@@ -1,0 +1,42 @@
+# src/logic/board/database/core/exception/search/wrapper.py
+
+"""
+Module: logic.board.database.core.exception.search.wrapper
+Author: Banji Lawal
+Created: 2025-11-19
+version: 1.0.0
+"""
+
+__all__ = [
+    # ======================# UNIQUE_BOARD_SEARCH_FAILURE #======================#
+    "UniqueBoardSearchException",
+]
+
+from logic.board import BoardException
+from logic.system import SearchException
+
+
+# ======================# UNIQUE_BOARD_SEARCH_FAILURE #======================#
+class UniqueBoardSearchException(BoardException, SearchException):
+    """
+    # ROLE: Exception Wrapper
+
+    # RESPONSIBILITIES:
+    1.  Wrap debug exceptions indicating why inserting a unique board failed. The encapsulated exceptions create 
+        chain for tracing the source of the failure.
+
+    # PARENT:
+        *   BoardException
+        *   SearchException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "UNIQUE_BOARD_SEARCH_FAILURE"
+    MSG = "Unique board search failed."

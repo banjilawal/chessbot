@@ -1,0 +1,261 @@
+# src/logic/token/validator/validator.py
+
+"""
+Module: logic.token.validator
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
+"""
+
+from typing import Any, cast
+
+from logic.square import SquareService
+from logic.team import TeamService
+from logic.rank import RankService
+from logic.coord import CoordService
+from logic.persona import PersonaService
+from logic.system import (
+    GameColorValidator, IdentityService, LoggingLevelRouter, NumberValidator, Validator,
+    ValidationResult
+)
+from logic.token import (
+    ArenaTokenContextFlagsException, NullTokenContextException, TokenContext, TokenContextValidationException,
+    TokenContextValidationRouteException, ZeroTokenContextFlagsException
+)
+
+class TokenContextValidator(Validator[TokenContext]):
+    """
+     # ROLE: Validation, Data Integrity Guarantor, Security.
+
+    # RESPONSIBILITIES:
+    1.  Ensure a TokenContext instance is certified safe, reliable and consistent before use.
+    2.  If verification fails indicate the reason in an exception returned to the caller.
+
+    # PARENT:
+        *   Validator
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def validate(
+            cls,
+            candidate: Any,
+            rank_service: RankService = RankService(),
+            team_service: TeamService = TeamService(),
+            coord_service: CoordService = CoordService(),
+            square_service: SquareService = SquareService(),
+            persona_service: PersonaService = PersonaService(),
+            number_validator: NumberValidator = NumberValidator(),
+            identity_service: IdentityService = IdentityService(),
+            color_validator: GameColorValidator = GameColorValidator(),
+    ) -> ValidationResult[TokenContext]:
+        """
+        # ACTION:
+            1.  If the candidate fails existence or type tests send the exception in the ValidationResult.
+                Else, cast to TeamContext instance context.
+            2.  If one-and-only-one context attribute is not null return an exception in the ValidationResult.
+            3.  If there is no certification route for the attribute return an exception in the ValidationResult.
+            4.  If the certification route exists use the appropriate service or validator to send either an exception
+                chain the ValidationResult or the context.
+        # PARAMETERS:
+            *   candidate (Any)
+            *   rank_service (RankService)
+            *   team_service (TeamService)
+            *   coord_service (CoordService)
+            *   color_validator (ColorValidator)
+            *   identity_service (IdentityService)
+            *   number_validator (NotNegativeNumberValidator)
+        # RETURNS:
+            *   ValidationResult[TeamContext] containing either:
+                    - On failure: Exception.
+                    - On success: TeamContext in the payload.
+        # RAISES:
+            *   TypeError
+            *   NullTeamContextException
+            *   ZeroTeamContextFlagsException
+            *   ArenaTeamContextFlagsException
+            *   TeamContextValidationException
+            *   TeamContextValidationRouteException
+        """
+        method = "TokenContextValidator.validate"
+        
+        # Handle the nonexistence case.
+        if candidate is None:
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                TokenContextValidationException(
+                    msg=f"{method}: {TokenContextValidationException.ERR_CODE}",
+                    ex=NullTokenContextException(f"{method}: {NullTokenContextException.MSG}")
+                )
+            )
+        # Handle the wrong class case.
+        if not isinstance(candidate, TokenContext):
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                TokenContextValidationException(
+                    msg=f"{method}: {TokenContextValidationException.ERR_CODE}",
+                    ex=TypeError(f"{method}: Expected TokenContext, got {type(candidate).__designation__} instead.")
+                )
+            )
+        # --- Cast the candidate to TokenContext for additional tests. ---#
+        context = cast(TokenContext, candidate)
+        
+        # Handle the case of searching with no attribute-value provided.
+        flag_count = len(context.to_dict())
+        if flag_count == 0:
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                TokenContextValidationException(
+                    msg=f"{method}: {TokenContextValidationException.ERR_CODE}",
+                    ex=ZeroTokenContextFlagsException(f"{method}: {ZeroTokenContextFlagsException.MSG}")
+                )
+            )
+        # Handle the case of too many attributes being used in a search.
+        if flag_count > 1:
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                TokenContextValidationException(
+                    msg=f"{method}: {TokenContextValidationException.ERR_CODE}",
+                    ex=ArenaTokenContextFlagsException(
+                        f"{method}: {ArenaTokenContextFlagsException.MSG}"
+                    )
+                )
+            )
+        
+        # --- Route to the appropriate validation branch. ---#
+        
+        # Certification for the search-by-id target.
+        if context.id is not None:
+            validation = identity_service.validate_id(candidate=context.id)
+            if validation.is_failure:
+                # Return the exception chain on failure.
+                return ValidationResult.failure(
+                    TokenContextValidationException(
+                        msg=f"{method}: {TokenContextValidationException.ERR_CODE}",
+                        ex=validation.exception
+                    )
+                )
+            # On certification success return the id_TokenContext in the ValidationResult.
+            return ValidationResult.success(context)
+        
+        # Certification for the search-by-designation target.
+        if context.designation is not None:
+            validation = identity_service.validate_name(candidate=context.designation)
+            if validation.is_failure:
+                # Return the exception chain on failure.
+                return ValidationResult.failure(
+                    TokenContextValidationException(
+                        msg=f"{method}: {TokenContextValidationException.ERR_CODE}",
+                        ex=validation.exception
+                    )
+                )
+            # On certification success return the designation_TokenContext in the ValidationResult.
+            return ValidationResult.success(context)
+        
+        # Certification for the search-by-opening_square_name target.
+        if context.opening_square is not None:
+            validation = square_service.validator.validate(candidate=context.opening_square)
+            if validation.is_failure:
+                # Return the exception chain on failure.
+                return ValidationResult.failure(
+                    TokenContextValidationException(
+                        msg=f"{method}: {TokenContextValidationException.ERR_CODE}",
+                        ex=validation.exception
+                    )
+                )
+            # On certification success return the opening_square_TokenContext in the ValidationResult.
+            return ValidationResult.success(context)
+        
+        # Certification for the search-by-coord target.
+        if context.coord is not None:
+            validation = coord_service.validator.validate(candidate=context.coord)
+            if validation.is_failure:
+                # Return the exception chain on failure.
+                return ValidationResult.failure(
+                    TokenContextValidationException(
+                        msg=f"{method}: {TokenContextValidationException.ERR_CODE}",
+                        ex=validation.exception
+                    )
+                )
+            # On certification success return the coord_TokenContext in the ValidationResult.
+            return ValidationResult.success(context)
+        
+        # Certification for the search-by-team target.
+        if context.team is not None:
+            validation = team_service.validator.validate(candidate=context.team)
+            if validation.is_failure:
+                # Return the exception chain on failure.
+                return ValidationResult.failure(
+                    TokenContextValidationException(
+                        msg=f"{method}: {TokenContextValidationException.ERR_CODE}",
+                        ex=validation.exception
+                    )
+                )
+            # On certification success return the team_TokenContext in the ValidationResult.
+            return ValidationResult.success(context)
+        
+        # Certification for the search-by-rank target.
+        if context.rank is not None:
+            validation = rank_service.validator.validate(candidate=context.rank)
+            if validation.is_failure:
+                # Return the exception chain on failure.
+                return ValidationResult.failure(
+                    TokenContextValidationException(
+                        msg=f"{method}: {TokenContextValidationException.ERR_CODE}",
+                        ex=validation.exception
+                    )
+                )
+            # On certification success return the rank_TokenContext in the ValidationResult.
+            return ValidationResult.success(context)
+        
+        # Certification for the search-by-color target.
+        if context.color is not None:
+            validation = color_validator.validate(candidate=context.color)
+            if validation.is_failure:
+                # Return the exception chain on failure.
+                return ValidationResult.failure(
+                    TokenContextValidationException(
+                        msg=f"{method}: {TokenContextValidationException.ERR_CODE}",
+                        ex=validation.exception
+                    )
+                )
+            # On certification success return the color_TokenContext in the ValidationResult.
+            return ValidationResult.success(context)
+        
+        # Certification for the search-by-ransom target.
+        if context.ransom is not None:
+            validation = number_validator.validate(
+                candidate=context.ransom,
+                floor=persona_service.min_ransom,
+                ceiling=persona_service.max_ransom,
+            )
+            # Return the exception chain on failure.
+            if validation.is_failure:
+                return ValidationResult.failure(
+                    TokenContextValidationException(
+                        msg=f"{method}: {TokenContextValidationException.ERR_CODE}",
+                        ex=validation.exception
+                    )
+                )
+            # On certification success return the ransom_TokenContext in the ValidationResult.
+            return ValidationResult.success(context)
+        
+        # Return the exception chain if there is no validation route for the context.
+        return ValidationResult.failure(
+            TokenContextValidationException(
+                msg=f"{method}: {TokenContextValidationException.ERR_CODE}",
+                ex=TokenContextValidationRouteException(
+                    f"{method}: {TokenContextValidationRouteException.MSG}"
+                )
+            )
+        )
+        
+    

@@ -1,0 +1,43 @@
+# src/logic/travel/promotion/factory.py
+
+"""
+Module: logic.travel.promotion.event
+Author: Banji Lawal
+Created: 2025-10-16
+version: 1.0.0
+"""
+
+from typing import Optional
+
+from logic.board import Board
+from logic.rank import Queen, Rank
+from logic.system import Event
+from logic.square import Square
+from logic.piece import OccupationEvent, Piece, TravelEvent
+
+
+class OldPromotionEvent(TravelEvent[Piece, Square, Board]):
+    """"""
+    _new_rank: Rank
+    
+    def __init__(
+            self,
+            id: int,
+            actor: Piece,
+            actor_square: Square,
+            execution_environment: Board,
+            parent: Optional[Event] = None,
+            new_rank: Rank = Queen
+    ):
+        super().__init__(
+            id=id,
+            actor=actor,
+            parent=parent,
+            actor_square=actor_square,
+            execution_environment=execution_environment
+        )
+        self._new_rank = new_rank
+        
+    @property
+    def new_rank(self) -> Rank:
+        return self._new_rank

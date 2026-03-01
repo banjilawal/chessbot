@@ -1,0 +1,145 @@
+# src/logic/owner/travel/occupation/combatant/collision.py
+
+"""
+Module: logic.owner.travel.occupation.combatant.exception
+Author: Banji Lawal
+Created: 2025-10-24
+version: 1.0.0
+"""
+
+from logic.piece import OccupationEventException, TravelEventException
+from logic.system import NullException, ValidationException
+
+__all__ = [
+#====================== OCCUPATION_EVENT EXCEPTION #======================#
+  'CombatantOccupationEventException',
+  
+#====================== OCCUPATION_EVENT VALIDATION EXCEPTION #======================#
+  'NullCombatantOccupationEventException',
+  'InvalidCombatantOccupationEventException',
+  'OccupationDestinationNotEmptyException',
+]
+
+#====================== OCCUPATION_EVENT EXCEPTION #======================#
+class CombatantOccupationEventException(OccupationEventException):
+  """
+  A base class for all exception related to the CombatantOccupationEvent. Do not use directly. Subclasses provide
+  fine-grained msgs and error codes better for debugging and logging.
+  """
+  DEFAULT_CODE = "OCCUPATION_EVENT_EXCEPTION"
+  MSG = "An CombatantOccupationEvent raised an exception."
+
+
+#====================== OCCUPATION_EVENT VALIDATION EXCEPTION #======================#
+class NullCombatantOccupationEventException(CombatantOccupationEventException, NullException):
+  """Raised by methods, entities, and models that require CombatantOccupationEvent but receive validation instead."""
+  ERR_CODE = "NULL_OCCUPATION_EVENT_EXCEPTION"
+  MSG = "An CombatantOccupationEvent cannot be null."
+
+
+class InvalidCombatantOccupationEventException(CombatantOccupationEventException, ValidationException):
+  """Raised by CombatantOccupationEventValidators if a candidate fails coord_stack_validator."""
+  ERR_CODE = "OCCUPATION_EVENT_VALIDATION_EXCEPTION"
+  MSG = "CombatantOccupationEvent validation failed."
+
+
+class OccupationDestinationNotEmptyException(CombatantOccupationEventException):
+  """Raised by CombatantOccupationEventValidators if a candidate fails coord_stack_validator."""
+  ERR_CODE = "OCCUPATION_EVENT_DESTINATION_NOT_EMPTY_EXCEPTION"
+  MSG = "CombatantOccupationEvent destination square_name is not empty."
+  
+#=== ATTACK_EVENT BUILD EXCEPTION #======================#
+class AttackEventBuilderException(AttackEventException, BuilderException):
+  """
+  Indicate That  Coord could not be built. Wraps and re-raises errors that occurred
+  during builder.
+  """
+  ERR_CODE = "ATTACK_EVENT_BUILD_FAILED"
+  MSG = "AttackEventBuilder failed to create combatantOccupationEvent"
+
+
+#=== ATTACK_EVENT BUILD EXCEPTION #======================#
+class UnexpectedNullEnemyException(AttackEventException):
+  DEFAULT_CODE = "UNEXPECTED_NULL_ENEMY"
+  MSG = "Target actor_candidate is unexpectedly validation during capture; this should not happen."
+
+
+
+
+#
+# --- Rollback Attack Errors (Dual Inheritance) ---
+class SetCaptorRolledBackException(AttackEventException, RollbackException):
+  DEFAULT_CODE = "SET_CAPTOR_EXCEPTION_ROLLED_BACK"
+  MSG = "Setting victor failed. Transaction rolled back performed."
+
+
+class EmptyDestinationSquareRolledBackException(AttackEventException, RollbackException):
+  DEFAULT_CODE = "SET_CAPTOR_EXCEPTION_ROLLED_BACK"
+  MSG = "Setting victor failed. Transaction rolled back performed."
+
+
+class RosterRemovalRollbackException(AttackEventException, RollbackException):
+  DEFAULT_CODE = "ROSTER_REMOVAL_ROLLBACK"
+  MSG = "Failed to remove actor_candidate from enemy roster after assigning victor; rollback performed."
+
+
+class HostageAdditionRollbackException(AttackEventException, RollbackException):
+  DEFAULT_CODE = "HOSTAGE_ADDITION_ROLLBACK"
+  MSG = "Failed to add captured actor_candidate to victor's prisoner list; rollback performed."
+
+
+class BoardPieceRemovalRollbackException(AttackEventException, RollbackException):
+  DEFAULT_CODE = "BOARD_REMOVAL_ROLLBACK"
+  MSG = "Failed to remove captured actor_candidate from board_validator; rollback performed."
+
+
+class SquareOccupationRollbackException(AttackEventException, RollbackException):
+  DEFAULT_CODE = "SQUARE_OCCUPATION_ROLLBACK"
+  MSG = "Failed to occupation target square_name after capture; rollback executed."
+
+
+class SourceSquareRollbackException(AttackEventException, RollbackException):
+  DEFAULT_CODE = "SOURCE_SQUARE_ROLLBACK"
+  MSG = "Failed to clear attacker's source square_name; rollback executed."
+
+
+class PositionUpdateRollbackException(AttackEventException, RollbackException):
+  DEFAULT_CODE = "POSITION_UPDATE_ROLLBACK"
+  MSG = "Failed to update actor_candidate's position history after move; rollback executed."
+
+
+#======================# ATTACKING PIECE EXCEPTION #======================#
+class HostageActivityException(PieceException):
+  """
+  Several exception can be raised during capture rollback. This class is the parent of
+  exception an attacking owner can raised. Do not use directly. Subclasses give details
+  useful for debugging.
+  """
+  ERR_CODE = "HOSTAGE_ACTIVITY_EXCEPTION"
+  MSG = "Hostage owner cannot move, blocking, or attack."
+
+
+class HostageCannotAttackException(HostageActivityException):
+  """
+  Raised if team_name captured owner tries to attack.
+  """
+  ERR_CODE = "HOSTAGE_CANNOT_ATTACK_EXCEPTION"
+  MSG = "Captured owner cannot attack."
+
+
+class HostageCannotMoveException(HostageActivityException):
+  """
+  Raised if team_name captured owner tries to move.
+  """
+  ERR_CODE = "HOSTAGE_CANNOT_MOVE_EXCEPTION"
+  MSG = "Captured owner cannot move."
+
+
+class HostageCannotScanException(HostageActivityException):
+  """
+  Raised if team_name captured owner tries to blocking team_name square_name.
+  """
+  ERR_CODE = "HOSTAGE_CANNOT_SCAN_EXCEPTION"
+  MSG = "Captured owner cannot blocking team_name sqaure."
+
+

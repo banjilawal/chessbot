@@ -1,0 +1,41 @@
+# src/logic/edge/context/validator/exception/wrapper.py
+
+"""
+Module: logic.edge.context.validator.exception.wrapper
+Author: Banji Lawal
+Created: 2026-02-18
+version: 1.0.0
+"""
+
+from logic.system import ValidationException
+from logic.edge import EdgeContextException
+
+__all__ = [
+    # ======================# EDGE_CONTEXT_VALIDATION_FAILURE #======================#
+    "EdgeContextValidationException",
+]
+
+
+# ======================# EDGE_CONTEXT_VALIDATION_FAILURE #======================#
+class EdgeContextValidationException(EdgeContextException, ValidationException):
+    """
+    # ROLE: Exception Wrapper
+
+    # RESPONSIBILITIES:
+    1.  Wrap debug exceptions indicating why a candidate failed its validation as a EdgeContext. The exception chain traces the ultimate source of failure.
+
+    # PARENT:
+        *   EdgeContextException
+        *   ValidationException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "EDGE_CONTEXT_VALIDATION_FAILURE"
+    MSG = "EdgeContext validation failed."

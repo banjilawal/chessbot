@@ -1,0 +1,40 @@
+# src/logic/token/database/core/util/quota/exception/wrapper.py
+
+"""
+Module: logic.token.database.core.util.quota.exception.wrapper
+Author: Banji Lawal
+Created: 2026-02-21
+version: 1.0.0
+"""
+
+__all__ = [
+    # ======================# RANK_QUOTA_ANALYSIS_FAILURE #======================#
+    "RankQuotaAnalysisException",
+]
+
+from logic.system import ComputationException
+
+
+# ======================# RANK_QUOTA_ANALYSIS_FAILURE #======================#
+class RankQuotaAnalysisException(ComputationException):
+    """
+    # ROLE: Exception Wrapper
+
+    # RESPONSIBILITIES:
+    1.  Wrap debug exceptions indicating why rank quota analysis on a token_stack failed. The exception chain
+        traces the ultimate source of failure.
+
+    # PARENT:
+        *   ComputationException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "RANK_QUOTA_ANALYSIS_FAILURE"
+    MSG = "Rank quota analysis failed."

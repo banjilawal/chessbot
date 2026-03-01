@@ -1,0 +1,43 @@
+# src/logic/token/context/finder/exception/debug/id.py
+
+"""
+Module: logic.token.context.finder.exception.debug.id
+Author: Banji Lawal
+Created: 2025-11-17
+version: 1.0.0
+"""
+
+__all__ = [
+    "TokenSearchIdCollisionException",
+]
+
+from logic.token import Token
+from logic.system import CollisionException
+
+
+# ======================# TOKEN_SEARCH_ID_COLLISION EXCEPTION #======================#
+class TokenSearchIdCollisionException(Token, CollisionException):
+    """
+    # ROLE: Error Tracing, Debugging
+
+    # RESPONSIBILITIES:
+    1.  Indicate That search by Token.id which should produce either a single match or none returned
+        different tokens with the same id.
+
+    # PARENT:
+        *   TokenException
+        *   CollisionException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "TOKEN_SEARCH_ID_COLLISION_EXCEPTION"
+    MSG = (
+        "TokenSearch failed: There was id collision. The results contain different tokens that share an id."
+    )

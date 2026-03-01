@@ -1,0 +1,41 @@
+# src/logic/token/database/core/exception/push/full/stack.py
+
+"""
+Module: logic.token.database.core.exception.push.full.stack
+Author: Banji Lawal
+Created: 2025-11-19
+version: 1.0.0
+"""
+
+__all__ = [
+    # ======================# FULL_TOKEN_STACK EXCEPTION #======================#
+    "TokenStackFullException",
+]
+
+from logic.system import DebugException
+from logic.token import TokenStackException
+
+
+# ======================# FULL_TOKEN_STACK EXCEPTION #======================#
+class TokenStackFullException(TokenStackException, DebugException):
+    """
+    # ROLE: Debug, Error Tracing
+
+    # RESPONSIBILITIES:
+    1.  Indicate that pushing a token to the stack failed because the stack was full.
+
+    # PARENT:
+        *   DebugException
+        *   TokenServiceException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "FULL_TOKEN_STACK_EXCEPTION"
+    MSG = "Pushing token failed: The stack was full."

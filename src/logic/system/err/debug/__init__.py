@@ -1,0 +1,17 @@
+# src/logic/system/err/debug/__init__.py
+
+"""
+Module: logic.system.err.debug.__init__
+Author: Banji Lawal
+Created: 2026-02-25
+version: 1.0.0
+"""
+
+# =========== SYSTEM.ERR.DEBUG PACKAGE CONTENTS ===========#
+
+# Packages
+from .child import *
+from .root import *
+
+# Modules
+None

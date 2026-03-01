@@ -1,0 +1,41 @@
+# src/logic/board/context/validator/exception/wrapper.py
+
+"""
+Module: logic.board.context.validator.exception.wrapper
+Author: Banji Lawal
+Created: 2025-11-22
+version: 1.0.0
+"""
+
+from logic.system import ValidationException
+from logic.board import BoardContextException
+
+__all__ = [
+    # ======================# BOARD_CONTEXT_VALIDATION_FAILURE #======================#
+    "BoardContextValidationException",
+]
+
+
+# ======================# BOARD_CONTEXT_VALIDATION_FAILURE #======================#
+class BoardContextValidationException(BoardContextException, ValidationException):
+    """
+    # ROLE: Exception Wrapper
+
+    # RESPONSIBILITIES:
+    1.  Wrap debug exceptions indicating why a candidate failed its validation as a BoardContext. The exception chain traces the ultimate source of failure.
+
+    # PARENT:
+        *   BoardContextException
+        *   ValidationException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "BOARD_CONTEXT_VALIDATION_FAILURE"
+    MSG = "BoardContext validation failed."

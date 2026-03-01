@@ -1,0 +1,41 @@
+# src/logic/coord/context/validator/exception/debug/null
+
+"""
+Module: logic.coord.context.validator.exception.debug.null
+Author: Banji Lawal
+Created: 2025-11-16
+version: 1.0.0
+"""
+
+from logic.system import NullException
+from logic.coord import CoordContextException
+
+__all__ = [
+    # ======================# NULL_COORD_CONTEXT EXCEPTION #======================#
+    "NullCoordContextException",
+]
+
+
+# ======================# NULL_COORD_CONTEXT EXCEPTION #======================#
+class NullCoordContextException(CoordContextException, NullException):
+    """
+    # ROLE: Error Tracing, Debugging
+
+    # RESPONSIBILITIES:
+    1.  Indicate that CoordContext validation failed because the candidate was null.
+
+    # PARENT:
+        *   NullCoordContextException
+        *   CoordContextValidationException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "NULL_COORD_CONTEXT_EXCEPTION"
+    MSG = "CoordContext validation failed: The candidate was null."

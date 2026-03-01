@@ -1,0 +1,40 @@
+# src/logic/board/occupant/analyzer/wrapper.py
+
+"""
+Module: logic.board.occupant.analyzer.wrapper
+Author: Banji Lawal
+Created: 2025-09-16
+version: 1.0.0
+"""
+
+__all__ = [
+    # ======================# BOARD_TOKEN_RELATION_ANALYSIS_FAILURE #======================#
+    "BoardTokenAnalysisException",
+]
+
+from logic.system import AnalysisException
+
+
+# ======================# BOARD_TOKEN_RELATION_ANALYSIS_FAILURE #======================#
+class BoardTokenAnalysisException(AnalysisException):
+    """
+    # ROLE: Exception Wrapper, Encapsulation, Error Chaining
+
+    # RESPONSIBILITIES:
+    1.  Wrap any exception that kills the relation test process before the board-occupant relationship
+        status has been evaluated.
+
+    # PARENT:
+        *   WorkerException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "BOARD_TOKEN_RELATION_ANALYSIS_FAILURE"
+    MSG = "Board-Token relation analysis failed."

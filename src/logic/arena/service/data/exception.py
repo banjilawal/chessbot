@@ -1,0 +1,33 @@
+___all__ = [
+    # ======================# ARENA_STACK_SERVICE EXCEPTION #======================#
+    "ArenaDataServiceException",
+]
+
+from logic.arena import ArenaException
+from logic.system import ServiceException
+
+
+# ======================# ARENA_STACK_SERVICE EXCEPTION #======================#
+class ArenaDataServiceException(ArenaException, ServiceException):
+    """
+    # ROLE: Exception Wrapper
+
+    # RESPONSIBILITIES:
+    1.  Indicate that an ArenaDataService encountered an error which prevented the service from completing a task.
+    2.  Wrap an exception that hits the try-finally block of a ArenaDataService method.
+
+    # PARENT:
+        *   ServiceException
+        *   ArenaDataException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "ARENA_STACK_EXCEPTION"
+    MSG = "ArenaDataService raised an exception."

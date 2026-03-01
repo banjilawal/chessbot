@@ -1,0 +1,42 @@
+# src/logic/board/database/core/exception/deletion/wrapper.py
+
+"""
+Module: logic.board.database.core.exception.deletion.wrapper
+Author: Banji Lawal
+Created: 2025-11-19
+version: 1.0.0
+"""
+
+__all__ = [
+    # ======================# BOARD_DELETION_FAILURE #======================#
+    "BoardDeletionException",
+]
+
+from logic.board import BoardException
+from logic.system import DeletionException
+
+
+# ======================# BOARD_DELETION_FAILURE #======================#
+class BoardDeletionException(BoardException, DeletionException):
+    """
+    # ROLE: Exception Wrapper
+
+    # RESPONSIBILITIES:
+    1.  Wrap debug exceptions indicating why a BoardStack deletion fails. The encapsulated exceptions create
+        chain for tracing the source of the failure.
+
+    # PARENT:
+        *   BoardException
+        *   DeletionException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "BOARD_DELETION_FAILURE"
+    MSG = "Board deletion failed."

@@ -1,0 +1,41 @@
+# src/logic/token/service/exception/unopened.py
+
+"""
+Module: logic.token.service.exception.unopened
+Author: Banji Lawal
+Created: 2025-09-16
+version: 1.0.0
+"""
+
+from logic.system import NullException
+from logic.token import TokenException
+
+__all__ = [
+    # ======================# OVER_MOVE_UNDO_LIMIT EXCEPTION #======================#
+    "OverMoveUndoLimitException",
+]
+
+
+# ======================# OVER_MOVE_UNDO_LIMIT EXCEPTION #======================#
+class OverMoveUndoLimitException(TokenException, NullException):
+    """
+    # ROLE: Debug, Error Tracing
+
+    # RESPONSIBILITIES:
+    1.  Indicate that a occupant.positions.undo_coord_push failed because no Coord had been added since the last undo.
+        Allowing more than one undo means more than one turn can be undone.
+
+    # PARENT:
+        *   TeamDaaServiceException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "OVER_MOVE_UNDO_LIMIT_EXCEPTION"
+    MSG = "Token.positions.undo_coord_push failed: Cannot undo two moves."

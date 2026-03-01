@@ -1,0 +1,17 @@
+# src/logic/game/service/__init__.py
+
+"""
+Module: logic.game.service.__init__
+Author: Banji Lawal
+Created: 2025-09-16
+version: 1.0.0
+"""
+
+#=========== GAME.SERVICE PACKAGE CONTENTS ===========#
+
+# Packages
+from .data import *
+
+# Modules
+from .service import GameService
+from .super import GameServiceException

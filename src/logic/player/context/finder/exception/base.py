@@ -1,0 +1,42 @@
+# src/logic/player/finder/exception/base.py
+
+"""
+Module: logic.player.cntext.finder.exception.base
+Author: Banji Lawal
+Created: 2025-11-17
+version: 1.0.0
+"""
+
+from logic.agent import AgentException
+from logic.system import FinderException
+
+__all__ = [
+    #======================# PLAYER_FINDER EXCEPTION #======================#
+    "AgentFinderException",
+]
+
+
+#======================# PLAYER_FINDER EXCEPTION #======================#
+class AgentFinderException(AgentException, FinderException):
+    """
+    # ROLE: Exception Wrapper
+  
+    # RESPONSIBILITIES:
+    1.  Parent of exception raised when AgentFinder objects.
+    2.  Wraps an exception that hits the try-finally block of an AgentFinder method.
+  
+    # PARENT:
+        *   AgentException
+        *   FinderException
+  
+    # PROVIDES:
+    None
+  
+    # LOCAL ATTRIBUTES:
+    None
+    
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "AGENT_FINDER_EXCEPTION"
+    MSG = "AgentFinder raised an exception."

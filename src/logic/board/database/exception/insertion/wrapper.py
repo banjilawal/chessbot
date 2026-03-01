@@ -1,0 +1,42 @@
+# src/logic/board/database/core/exception/insertion/wrapper.py
+
+"""
+Module: logic.board.database.core.exception.insertion.wrapper
+Author: Banji Lawal
+Created: 2025-11-19
+version: 1.0.0
+"""
+
+__all__ = [
+    # ======================# UNIQUE_BOARD_INSERTION_FAILURE #======================#
+    "UniqueBoardInsertionException",
+]
+
+from logic.board import BoardException
+from logic.system import InsertionException
+
+
+# ======================# UNIQUE_BOARD_INSERTION_FAILURE #======================#
+class UniqueBoardInsertionException(BoardException, InsertionException):
+    """
+    # ROLE: Exception Wrapper
+
+    # RESPONSIBILITIES:
+    1.  Wrap debug exceptions indicating why inserting a unique board failed. The encapsulated exceptions create 
+        chain for tracing the source of the failure.
+
+    # PARENT:
+        *   BoardException
+        *   InsertionException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "UNIQUE_BOARD_INSERTION_FAILURE"
+    MSG = "Unique board insertion failed."

@@ -1,0 +1,43 @@
+# src/logic/node/context/finder/exception/wrapper.py
+
+"""
+Module: logic.node.context.finder.exception.wrapper
+Author: Banji Lawal
+Created: 2025-11-16
+version: 1.0.0
+"""
+
+from logic.node import NodeException
+from logic.system import SearchException
+
+__all__ = [
+    # ======================# NODE_SEARCH_FAILURE #======================#
+    "NodeSearchException",
+]
+
+
+# ======================# NODE_SEARCH_FAILURE #======================#
+class NodeSearchException(NodeException, SearchException):
+    """
+    # ROLE: Exception Wrapper
+
+    # RESPONSIBILITIES:
+    1.  Any condition that prevents a search from completing creates a debug exception that explains why the query
+        failed. That debug exception is wrapped in the NodeSearchException which is the middle layer of the
+        3-part exception chain.
+
+    # PARENT:
+        *   NodeException
+        *   SearchException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "NODE_SEARCH_FAILURE"
+    MSG = "Node search failed."

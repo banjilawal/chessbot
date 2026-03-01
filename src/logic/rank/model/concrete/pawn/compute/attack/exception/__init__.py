@@ -1,0 +1,17 @@
+# src/logic/rank/model/concrete/pawn/compute/attack/exception/__init__.py
+
+"""
+Module: logic.rank.model.concrete.pawn.compute.attack.exception.__init__
+Author: Banji Lawal
+Created: 2026-01-22
+version: 1.0.0
+"""
+
+# =========== RANK.MODEL.CONCRETE.PAWN.COMPUTE.ATTACK.EXCEPTION PACKAGE CONTENTS ===========#
+
+# Packages
+None
+
+# Modules
+from .wrapper import PawnAttackSpanComputationException
+from .router import PawnAttackSpanComputationRouteException

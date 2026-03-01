@@ -1,0 +1,40 @@
+# src/logic/owner/model/variety/exception/null.py
+
+"""
+Module: logic.owner.model.variety.exception.null
+Author: Banji Lawal
+Created: 2025-09-16
+version: 1.0.0
+"""
+
+from logic.system import NullException
+from logic.agent import InvalidAgentVarietyException
+
+
+__all__ = [
+    #======================# PLAYER_VARIETY NULL EXCEPTION #======================#
+    "AgentVarietyNullException",
+]
+
+#======================# NULL AGENT_VARIETY EXCEPTION  #======================#
+class AgentVarietyNullException(InvalidAgentVarietyException, NullException):
+    """
+    # ROLE: Error Tracing, Debugging
+
+    # RESPONSIBILITIES:
+    1.  Indicate if an entity, method or operation required an AgentVariety  but got null instead.
+
+    # PARENT:
+        *   InvalidAgentVarietyException
+        *   NullException
+
+    # PROVIDES:
+    None
+
+    # ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "NULL_AGENT_VARIETY_EXCEPTION"
+    MSG = "AgentVariety cannot be null."
+
+

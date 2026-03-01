@@ -1,0 +1,17 @@
+# src/logic/system/transfer/exception/__init__.py
+
+"""
+Module: logic.system.transfer.exception.__init__
+Author: Banji Lawal
+Created: 2026-02-01
+version: 1.0.0
+"""
+
+# =========== SYSTEM.TRANSFER.EXCEPTION PACKAGE CONTENTS ===========#
+
+# Packages
+None
+
+# Modules
+from .route import TransferRouteException
+from .wrapper import TransferException

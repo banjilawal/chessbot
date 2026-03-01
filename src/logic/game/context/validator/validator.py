@@ -1,0 +1,141 @@
+# src/logic/game/validator/validator.py
+
+"""
+Module: logic.game.validator
+Author: Banji Lawal
+Created: 2025-09-16
+version: 1.0.0
+"""
+
+from typing import Any, cast
+
+
+from logic.agent import AgentService
+from logic.system import LoggingLevelRouter, Validator, ValidationResult, IdentityService
+from logic.game import (
+    GameContext, InvalidGameContextException, ZeroGameContextFlagsException, NullGameContextException,
+    ArenaGameContextFlagsException
+)
+
+
+class GameContextValidator(Validator[GameContext]):
+    """
+     # ROLE: Validation, Data Integrity Guarantor, Security.
+
+    # RESPONSIBILITIES:
+    1.  Ensure a GameContext instance is certified safe, reliable and consistent before use.
+    2.  If verification fails indicate the reason in an exception, returned to the caller.
+
+    # PARENT:
+        *   Validator
+
+    # PROVIDES:
+        * GameContextValidator
+
+    # LOCAL ATTRIBUTES:
+    None
+    
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def validate(
+            cls,
+            candidate: Any,
+            agent_service: AgentService = AgentService(),
+            identity_service: IdentityService = IdentityService(),
+    ) -> ValidationResult[GameContext]:
+        """
+        # ACTION:
+            1.  Confirm that only one in the (id, owner) tuple is not null.
+            2.  Certify the not-null attribute is safe using the appropriate entity_service and validator.
+            3.  If any check fais return a BuildResult containing the exception raised by the failure.
+            4.  On success send the verified GameContext in a ValidationResult.
+
+        # PARAMETERS:
+        Only one these must be provided:
+            *   id (Optional[int])
+            *   owner (Optional[Player])
+
+        These Parameters must be provided:
+            *   player_service (AgentService)
+            *   identity_service (IdentityService)
+
+        # RETURNS:
+        BuildResult[GameContext] containing either:
+            - On success: GameContext in the payload.
+            - On failure: Exception.
+
+        # RAISES:
+            *   TypeError
+            *   NullGameContextException
+            *   ZeroGameContextFlagsException
+            *   ArenaGameContextFlagsException
+            *   InvalidGameContextException
+        """
+        method = "GameContextValidator.validate"
+        try:
+            # Handle the case that, the candidate does not exist.
+            if candidate is None:
+                return ValidationResult.failure(
+                    NullGameContextException(f"{method}: {NullGameContextException.MSG}")
+                )
+            # Handle the case that, the candidate is not a GameContext.
+            if not isinstance(candidate, GameContext):
+                return ValidationResult.failure(
+                    TypeError(f"{method}: Expected GameContext, got {type(candidate).__name__} instead.")
+                )
+            # After existence and type checks cast the candidate for further processing.
+            context = cast(GameContext, candidate)
+            
+            # Handle the case that, no attribute-value tuple is enabled.
+            if len(context.to_dict()) == 0:
+                return ValidationResult.failure(
+                    ZeroGameContextFlagsException(f"{method}: {ZeroGameContextFlagsException.MSG}")
+                )
+            # Handle the case that, more than one attribute-value tuple is enabled.
+            if len(context.to_dict()) == 0:
+                return ValidationResult.failure(
+                    ArenaGameContextFlagsException(f"{method}: {ArenaGameContextFlagsException.MSG}")
+                )
+            # Make sure a search target exists in the map. Cannot perform a search without an
+            
+            # property-value pair.
+            if len(context.to_dict()) == 0:
+                return ValidationResult.failure(
+                    ZeroGameContextFlagsException(f"{method}: {ZeroGameContextFlagsException.MSG}")
+                )
+            # Return an error if more than one property value pair exists in the map.
+            if len(context.to_dict()) > 1:
+                return ValidationResult.failure(
+                    ArenaGameContextFlagsException(
+                        f"{method}: {ArenaGameContextFlagsException.MSG}"
+                    )
+                )
+            
+            # Build the id GameContext if its flag is enabled.
+            if context.id is not None:
+                validation = identity_service.validate_id(candidate=context.id)
+                if validation.is_failure:
+                    return ValidationResult.failure(validation.exception)
+                # On validation success return the id_game_context in a ValidationResult.
+                return ValidationResult.success(context)
+            
+            # Verify the id flag if its enabled.
+            if context.agent is not None:
+                validation = agent_service.validator.validate(candidate=context.agent)
+                if validation.is_failure:
+                    return ValidationResult.failure(validation.exception)
+                # On validation success return the agent_game_context in a ValidationResult.
+                return ValidationResult.success(context)
+            
+        # Finally, for unhandled exception, wrap it inside an InvalidGameContextException. Then send the
+        # exception-chain in a ValidationResult.
+        except Exception as ex:
+            return ValidationResult.failure(
+                InvalidGameContextException(
+                    ex=ex, msg=f"{method}: {InvalidGameContextException.MSG}"
+                )
+            )

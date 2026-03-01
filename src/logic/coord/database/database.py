@@ -1,0 +1,135 @@
+# src/logic/coord/database/service.py
+
+"""
+Module: logic.coord.database.service
+Author: Banji Lawal
+Created: 2025-11-19
+version: 1.0.0
+"""
+
+from __future__ import annotations
+from typing import List
+
+from logic.system import (
+    DeletionResult, InsertionResult, LoggingLevelRouter, SearchResult, Database, id_emitter
+)
+from logic.coord import Coord, CoordContext, CoordContextService, CoordDatabaseException, CoordStack, CoordService
+
+class CoordDatabase(Database[Coord]):
+    """
+    # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
+
+    # RESPONSIBILITIES:
+    1.  Ensure all bag managed by CoordStack are unique.
+    2.  Guarantee consistency of records in CoordStack.
+
+    # PARENT:
+        *   Database
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+        *   See Database class for inherited attributes.
+    """
+    SERVICE_NAME = "CoordDatabase"
+    
+    _coord_stack: CoordStack
+    def __init__(
+            self,
+            name: str = SERVICE_NAME,
+            id: int = id_emitter.service_id,
+            coord_stack: CoordStack = CoordStack(),
+    ):
+        """
+        # ACTION:
+        Constructor
+
+        # PARAMETERS:
+            *   id (int): = id_emitter.service_id
+            *   name (str): = SERVICE_NAME
+            *   member_service (CoordStack): = CoordStack()
+
+        # RETURNS:
+        None
+
+        # RAISES:
+        None
+        """
+        super().__init__(id=id, name=name, data_service=coord_stack)
+        self._coord_stack = coord_stack
+    
+    @property
+    def size(self) -> int:
+        return self._coord_stack.size
+    
+    @property
+    def is_empty(self) -> bool:
+        return self._coord_stack.is_empty
+    
+    @property
+    def integrity_service(self) -> CoordService:
+        return self._coord_stack.integrity_service
+    
+    @property
+    def context_service(self) -> CoordContextService:
+        return self._coord_stack.context_service
+    
+    @LoggingLevelRouter.monitor
+    def push(self, coord: Coord) -> InsertionResult[bool]:
+        push_result = self._coord_stack.push(coord)
+        if push_result.is_failure:
+            return InsertionResult.failure(
+                CoordDatabaseException(
+                    msg=f"ServiceId:{self.id}, {CoordDatabaseException.ERR_CODE}",
+                    ex=push_result.exception
+                )
+            )
+        return push_result
+    
+    @LoggingLevelRouter.monitor
+    def undo_push(self) -> DeletionResult[Coord]:
+        pop_result = self._coord_stack.pop()
+        if pop_result.is_failure:
+            return InsertionResult.failure(
+                CoordDatabaseException(
+                    msg=f"ServiceId:{self.id}, {CoordDatabaseException.ERR_CODE}",
+                    ex=pop_result.exception
+                )
+            )
+        return pop_result
+    
+    @LoggingLevelRouter.monitor
+    def search(self, context: CoordContext) -> SearchResult[List[Coord]]:
+        """
+        # ACTION:
+            1.  If coord_context fails validation send the exception chain in the SearchResult. Else use the
+                coord_context_service to run the search.
+            2.  If the search fails send the exception chain in the SearchResult. Else, send the search_result.
+        # PARAMETERS:
+            *   coord_context (CoordContext)
+        # RETURN:
+            *   SearchResult[Coord] containing either:
+                - On failure: Exception
+                - On success: Coord in the payload.
+                - On empty: Payload is null, Exception is null.
+        # RAISES:
+            *   CoordStackException
+        """
+        method = "CoordStack.coord_search"
+        
+        search_result = self._coord_stack.context_service.finder.find(context=context)
+        # Handle the case that, a successful search result does not have List[Coord] as its payload.
+        if search_result.is_failure:
+            # Return the exception chain on failure.
+            return SearchResult.failure(
+                CoordDatabaseException(
+                    msg=f"ServiceId:{self.id}, {CoordDatabaseException.ERR_CODE}",
+                    ex=search_result.exception
+                )
+            )
+        # Empty or successful searches are directly returned to the caller.
+        return search_result

@@ -1,0 +1,44 @@
+# src/logic/system/text/exception/void/whitespace.py
+
+"""
+Module: logic.system.text.exception.void.whitespace
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
+"""
+
+from logic.system import VoidStringException
+
+__all__ = [
+    # ======================# WHITE_SPACE_STRING EXCEPTION #======================#
+    "WhiteSpaceStringException",
+]
+
+
+
+
+#======================# WHITE_SPACE_STRING EXCEPTION #======================#
+class WhiteSpaceStringException(VoidStringException):
+    """
+    # ROLE: Error Tracing, Debugging
+
+    # RESPONSIBILITIES:
+    1.  Indicate an entity, method, or operation required a String with some characters but got one that
+        only had whitespace.
+
+    # PARENT:
+        *   VoidStringException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "WHITE_SPACE_STRING_EXCEPTION"
+    MSG = (
+        "Got a String that only had whitespace. A String must have some characters."
+    )

@@ -1,0 +1,50 @@
+# src/logic/owner/travel/blocking/transaction/rollback_exception.py
+
+"""
+Module: logic.owner.travel.blocking.transaction.rollback_exception
+Author: Banji Lawal
+Created: 2025-10-21
+version: 1.0.0
+"""
+
+from logic.system import RollbackException
+from logic.piece import TravelTransactionException
+
+"""
+=============================================================================================================#
+==============LOG_ENCOUNTER_TRANSACTION EXCEPTION ARE ALWAYS ROLL_BACK_EXCEPTION SUBCLASSES=================#
+=============================================================================================================#
+"""
+
+__all__ = [
+  'BlockedPathTransactionException',
+  'FailedDiscoveryAdditionRolledBackException',
+  'RolledBackBlockedPathTransactionException'
+]
+
+class BlockedPathTransactionException(TravelTransactionException):
+  """"""
+  ERR_CODE = "BLOCKED_PATH_TRANSACTION_EXCEPTION"
+  MSG = (
+    "BlockedPathTransaction failed. The transaction was rolled back before raising this rollback_exception."
+  )
+
+
+class RolledBackBlockedPathTransactionException(BlockedPathTransactionException, RollbackException):
+  """"""
+  ERR_CODE = "BLOCKED_PATH_TRANSACTION_EXCEPTION"
+  MSG = (
+    "BlockedPathTransaction failed. The transaction was rolled back before raising this rollback_exception."
+  )
+
+class FailedDiscoveryAdditionRolledBackException(RolledBackBlockedPathTransactionException):
+  """"""
+  ERR_CODE = "FAILED_DISCOVERY_ADDITION_ROLLED_BACK_EXCEPTION"
+  MSG = (
+    "Adding a new Discovery failed during a BlockedPathTransaction. The transaction was rolled back before "
+    "raising this rollback_exception."
+  )
+
+
+
+

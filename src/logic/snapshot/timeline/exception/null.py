@@ -1,0 +1,37 @@
+# src/logic/snapshot/timeline/exception/null/__init__.py
+
+"""
+Module: logic.snapshot.timeline.exception.null.__init__
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
+"""
+
+from logic.system import NullException
+from logic.game import InvalidGameTimelineException
+
+__all__ = [
+    "NullGameTimelineException",
+]
+
+
+# ======================# NULL GAME_TIMELINE EXCEPTION #======================#
+class NullGameTimelineException(InvalidGameTimelineException, NullException):
+    """
+    # ROLE: Error Tracing, Debugging
+
+    # RESPONSIBILITIES:
+    1.  Indicate if an entity, method or operation required an GameTimeline but got null instead.
+
+    # PARENT:
+        *   InvalidGameTimelineException
+        *   NullException
+
+    # PROVIDES:
+    NullGameTimelineException
+
+    # ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "NULL_GAME_TIMELINE_EXCEPTION"
+    MSG = "GameTimeline cannot be null."

@@ -1,0 +1,18 @@
+# src/logic/game/finder/exception/__init__.py
+
+"""
+Module: logic.game.finder.exception.__init__
+Author: Banji Lawal
+Created: 2025-11-17
+version: 1.0.0
+"""
+
+# =========== GAME.FINDER.EXCEPTION PACKAGE CONTENTS ===========#
+
+# Packages
+None
+
+# Modules
+from .base import GameFinderException
+from .dataset import GameSearchDatasetNullException
+from .operation import GameFinderOperationFailedException

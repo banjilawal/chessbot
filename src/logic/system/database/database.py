@@ -1,0 +1,94 @@
+# src/logic/system/database/service.py
+
+"""
+Module: logic.system.database.service
+Author: Banji Lawal
+Created: 2025-11-18
+Version: 1.0.0
+"""
+
+from __future__ import annotations
+from typing import Generic, Optional, TypeVar
+
+from logic.system import Service,  StackService, InsertionResult, LoggingLevelRouter
+
+
+T = TypeVar("T")
+
+class Database(Service, Generic[T]):
+    """
+    # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
+
+    # RESPONSIBILITIES:
+    1.  Assures StackService only stores unique data with no duplicates.
+    2.  Interface for inserting data into the StackService.
+    3.  Protects data from direct access.
+    4.  Wrapper for StackService
+    5.  Public facing API.
+    
+    # PARENT:
+    None
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+        *   id (int):
+        *   name (str):
+        *   member_service (StackService[D]):
+        
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    _id: int
+    _name: str
+    _data_core: StackService[T]
+    
+    def __init__(self, id: int, name: str, data_core: StackService[T]):
+        super().__init__(id=id, name=name)
+        self._data_core = data_core
+    
+    @property
+    def size(self) -> int:
+        return self._data_core.size
+    
+    @property
+    def current_item(self) -> Optional[T]:
+        return self._data_core.current_item
+    
+    @property
+    def is_empty(self) -> bool:
+        return self._data_core.is_empty
+    
+    @property
+    def data_core(self) -> StackService[T]:
+        return self._data_core
+    #
+    # @LoggingLevelRouter.monitor
+    # def push_unique_item(self, item: T) -> InsertionResult[T]:
+    #     method = "UniqueAgentDataService.push_unique"
+    #     try:
+    #         validation = self.data_core.entity_service.entity_validator.validate(item)
+    #         if validation.is_failure:
+    #             return InsertionResult.failure(validation.exception)
+    #
+    #         context_build = self._data_core.context_service.entity_builder.build(id=item.id)
+    #         if context_build.is_failure:
+    #             return InsertionResult.failure(context_build.exception)
+    #
+    #         query_result = self._data_core.search(context=context_build.payload)
+    #         if query_result.is_failure:
+    #             return InsertionResult.failure(query_result.exception)
+    #
+    #         if query_result.is_success:
+    #             return InsertionResult.failure(
+    #                 AddingDuplicateDataException(f"{method}: {AddingDuplicateDataException.MSG}")
+    #             )
+    #         return self._data_core.push_item(item)
+    #
+    #     except Exception as ex:
+    #         return InsertionResult.failure(
+    #             DatabaseException(ex=ex, msg=f"{method}: {DatabaseException.MSG}")
+    #         )
+        

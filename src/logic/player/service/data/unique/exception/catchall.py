@@ -1,0 +1,41 @@
+# src/logic/player/database/exception.py
+
+"""
+Module: logic.player.database.exception
+Author: Banji Lawal
+Created: 2025-09-16
+version: 1.0.0
+"""
+
+from logic.agent import AgentException
+from logic.system import DatabaseException
+
+__all__ = [
+    #======================# UNIQUE_AGENT_STACK_SERVICE EXCEPTION #======================#
+    "UniqueAgentDataServiceException",
+]
+
+
+#======================# UNIQUE_AGENT_STACK_SERVICE EXCEPTION #======================#
+class UniqueAgentDataServiceException(AgentException, DatabaseException):
+    """
+    # ROLE: Exception Wrapper
+
+    # RESPONSIBILITIES:
+    1.  Parent of exception raised by UniqueAgentDataService objects.
+    2.  Wraps an exception that hits the try-finally block of an UniqueDataAgent's method.
+
+    # PARENT:
+        *   DatabaseException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "UNIQUE_AGENT_STACK_EXCEPTION"
+    MSG = "UniqueAgentDataService raised an exception."

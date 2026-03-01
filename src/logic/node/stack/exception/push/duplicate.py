@@ -1,0 +1,39 @@
+# src/logic/node/stack/exception/push/duplicate.py
+
+"""
+Module: logic.node.stack.exception.push.duplicate
+Author: Banji Lawal
+Created: 2026-02-18
+version: 1.0.0
+"""
+
+from logic.node import NodeDebugException
+
+__all__ = [
+    # ======================# ADDING_DUPLICATE_NODE EXCEPTION #======================#
+    "AddingDuplicateNodeException",
+]
+
+
+# ======================# ADDING_DUPLICATE_NODE EXCEPTION #======================#
+class AddingDuplicateNodeException(NodeDebugException):
+    """
+    # ROLE: Debug, Error Tracing
+
+    # RESPONSIBILITIES:
+    1.  Indicate that an attempt to add a node to teh stack failed because it was already present.
+
+    # PARENT:
+        *   NodeStackException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "ADDING_DUPLICATE_NODE_EXCEPTION"
+    MSG = "Pushing node onto stack failed: The node is already present."

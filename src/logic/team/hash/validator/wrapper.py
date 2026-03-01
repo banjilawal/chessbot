@@ -1,0 +1,43 @@
+# src/logic/team/hash/validator/wrapper.py
+
+"""
+Module: logic.team.hash.validator.wrapper
+Author: Banji Lawal
+Created: 2025-02-08
+version: 1.0.0
+"""
+
+__all__ = [
+    # ======================# TEAM_HASH_VALIDATION_FAILURE #======================#
+    "TeamHashValidationException",
+]
+
+from logic.team import TeamHashException
+from logic.system import ValidationException
+
+
+
+# ======================# TEAM_HASH_VALIDATION_FAILURE #======================#
+class TeamHashValidationException(TeamHashException, ValidationException):
+    """
+    # ROLE: Exception Wrapper
+
+    # RESPONSIBILITIES:
+    1.  Wrap debug exceptions indicating why a candidate failed its validation as a Team. The exception chain 
+        traces the ultimate source of failure.
+
+    # PARENT:
+        *   TeamHashException
+        *   ValidationException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "TEAM_HASH_VALIDATION_FAILURE"
+    MSG = "TeamHash validation failed."
