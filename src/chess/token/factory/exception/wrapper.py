@@ -1,23 +1,24 @@
-# src/chess/token/builder/wrapper.py
+# src/chess/token/builder/exception/wrapper.py
 
 """
-Module: chess.token.builder.wrapper
+Module: chess.token.builder.exception.wrapper
 Author: Banji Lawal
-Created: 2025-09-16
-version: 1.0.0
+Created: 2025-09-08
+Version: 1.0.0
 """
 
 from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# TOKEN_BUILD_FAILURE #======================#
+    # ======================# TOKEN_BUILDER_FAILURE #======================#
     "TokenBuildException",
 ]
 
 from chess.system import BuildException
 
-# ======================# TOKEN_BUILD_FAILURE #======================#
+
+# ======================# TOKEN_BUILDER_FAILURE #======================#
 class TokenBuildException(BuildException):
     """
     # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
@@ -32,8 +33,7 @@ class TokenBuildException(BuildException):
     None
 
     # LOCAL ATTRIBUTES:
-        *   op (Optional[str])
-        *   rslt_type (Optional[str])
+    None
 
     # INHERITED ATTRIBUTES:
         *   See BuildException class for inherited attributes.
@@ -52,7 +52,7 @@ class TokenBuildException(BuildException):
     # INHERITED METHODS:
         *   See BuildException class for inherited methods.
     """
-    ERR_CODE = "TOKEN_BUILD_FAILURE"
+    ERR_CODE = "TOKEN_BUILDER_FAILURE"
     MSG = "Failure in TokenBuilder method."
     MTHD = None
     OP = "Build"

@@ -55,8 +55,8 @@ class VectorBuildException(BuildException):
     ERR_CODE = "VECTOR_BUILDER_FAILURE"
     MSG = "Failure in VectorBuilder method."
     MTHD = None
-    OP = "Builder"
-    RSLT_TYPE = "BuilderResult"
+    OP = "Build"
+    RSLT_TYPE = "BuildResult"
     
     _op = Optional[str]
     _rslt_type = Optional[str]

@@ -36,8 +36,7 @@ class TokenException(AnchorException):
     None
 
     # LOCAL ATTRIBUTES:
-        *   cls_name (Optional[str])
-        *   cls_mthd (Optional[str])
+    None
         
     # INHERITED ATTRIBUTES:
         *   See AnchorException class for inherited attributes.

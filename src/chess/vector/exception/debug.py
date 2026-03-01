@@ -27,7 +27,7 @@ class VectorDebugException(DebugException):
             *   variable,
             *   it's value,
             *   event which fired the variable into its error state.
-        which occurred in the Anchor method identified in layer-0 of the exception chain.
+        which occurred in the Vector method identified in layer-0 of the exception chain.
 
     # PARENT:
         *   DebugException
@@ -36,8 +36,7 @@ class VectorDebugException(DebugException):
     None
 
     # LOCAL ATTRIBUTES:
-        *   var (Optional[str])
-        *   val (Optional[Any])
+    None
 
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
@@ -59,9 +58,6 @@ class VectorDebugException(DebugException):
     MSG = str = "Vector had an error."
     VAR = Optional[Any]
     VAL = Optional[Any]
-    
-    _var = Optional[str]
-    _val = Optional[Any]
     
     def __init__(
             self,

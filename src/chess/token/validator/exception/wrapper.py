@@ -17,7 +17,6 @@ __all__ = [
 
 from chess.system import ValidationException
 
-
 # ======================# TOKEN_VALIDATION_FAILURE #======================#
 class TokenValidationException(ValidationException):
     """
@@ -33,9 +32,8 @@ class TokenValidationException(ValidationException):
     None
 
     # LOCAL ATTRIBUTES:
-        *   op (Optional[str])
-        *   rslt_type (Optional[str])
-
+   None
+   
     # INHERITED ATTRIBUTES:
         *   See ValidationException class for inherited attributes.
 
@@ -58,9 +56,6 @@ class TokenValidationException(ValidationException):
     MTHD = None
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
-    
-    _op = Optional[str]
-    _rslt_type = Optional[str]
     
     def __init__(
             self,
