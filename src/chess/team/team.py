@@ -18,7 +18,7 @@ from chess.token import TokenDatabase
 
 class Team:
     """
-    # ROLE: Data Holder
+    # ROLE: Data-Holder
 
     # RESPONSIBILITY:
     1.  Disposition of Tokens the Player can move on a Board instance.

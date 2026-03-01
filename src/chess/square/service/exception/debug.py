@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import Optional
+from typing import Any, Optional
 
 __all__ = [
     # ======================# SQUARE_SERVICE_DEBUG EXCEPTION #======================#
@@ -16,7 +16,6 @@ __all__ = [
 ]
 
 from chess.system import DebugException
-
 
 # ======================# SQUARE_SERVICE_DEBUG EXCEPTION #======================#
 class SquareServiceDebugException(DebugException):

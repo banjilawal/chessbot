@@ -17,18 +17,52 @@ from chess.token import Token, TokenBoardState, ReadinessState
 
 class CombatantToken(Token):
     """
-    # ROLE: Data Holder, C
-  
+    # ROLE: Data-Holder
+
     # RESPONSIBILITIES:
-    1.  Concrete subclass of Token
-    2.  Indicate the Combatant should be removed from the board by setting its victor attribute.
-  
+    1.  Represents piece which can be captured by an enemy.
+    2.  CombatantTokens can have Ranks: Paw, Knight, Bishop, Rook, or Queen.
+
+    # PARENT:
+        *   Token
+
     # PROVIDES:
-    CombatantToken
-  
-    # ATTRIBUTES:
-        *   victor (Optional[Token]): Enemy who captured the combatant.
+    None
+
+    # LOCAL ATTRIBUTES:
+        *   captor (Optional[Toke])
+        *   id (int)
+        *   team (Team)
+        *   rank (Rank)
+        *   designation (str)
+        *   roster_number (int)
+        *   positions (CoordStack)
+        *   opening_square_name (str)
+        *   current_position (Optional[Coord])
+        *   previous_address (Optional[Coord])
+        *   token_board_state (TokenBoardState)
+        *   readiness_state (ReadinessState)
+
+    # INHERITED ATTRIBUTES:
+        *   See Token class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        *   id (int)
+        *   team (Team)
+        *   rank (Rank)
+        *   designation (str)
+        *   roster_number (int)
+        *   opening_square_name (str)
+
+    # LOCAL METHODS:
+        *   has_entered_hostage_process(self) -> bool
+        *   being_processed_as_hostage(self) -> bool
+        *   recorded_as_hostage(self) -> bool
+
+    # INHERITED METHODS:
+        *   See Token class for inherited methods.
     """
+
     _captor: Optional[Token]
     
     def __init__(
@@ -54,6 +88,7 @@ class CombatantToken(Token):
     def is_active(self) -> bool:
         return (
                 self._captor is None and
+                self.readiness_state == ReadinessState.FREE and
                 self.board_state == TokenBoardState.DEPLOYED_ON_BOARD
         )
     
@@ -62,7 +97,7 @@ class CombatantToken(Token):
         return not self.is_active
 
     @property
-    def capture_is_activated(self) -> bool:
+    def has_entered_hostage_process(self) -> bool:
         return (
                 self._captor is not None and
                 self.board_state == TokenBoardState.DEPLOYED_ON_BOARD and
@@ -70,7 +105,7 @@ class CombatantToken(Token):
         )
     
     @property
-    def has_hostage(self) -> bool:
+    def being_processed_as_hostage(self) -> bool:
         return (
                 self._captor is not None and
                 self.board_state == TokenBoardState.REMOVED_FROM_BOARD and
@@ -78,7 +113,7 @@ class CombatantToken(Token):
         )
     
     @property
-    def capture_is_in_database(self) -> bool:
+    def recorded_as_hostage(self) -> bool:
         return (
                 self._captor is not None and
                 self.board_state == TokenBoardState.REMOVED_FROM_BOARD and

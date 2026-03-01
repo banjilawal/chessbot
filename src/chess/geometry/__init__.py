@@ -1,12 +1,22 @@
 # src/chess/geometry/__init__.py
 
 """
-Module: chess.geometry
+Module: chess.geometry.__init__
 Author: Banji Lawal
-Created: 2025-09-09
+Created: 2025-10-28
 version: 1.0.0
 """
 
+# =========== GEOMETRY PACKAGE CONTENTS ===========#
+
+# Packages
+from .ray import *
+
+# Modules
 from .line import Line
 from .path import Path
 from .quadrant import Quadrant
+
+
+
+

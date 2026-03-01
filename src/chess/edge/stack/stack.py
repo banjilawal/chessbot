@@ -10,13 +10,6 @@ version: 1.0.0
 from __future__ import annotations
 from typing import List, Optional, cast
 
-from chess.edge import (
-    AddingDuplicateEdgeException, Edge, EdgeContext, EdgeContextService, PoppingEdgeException, PushingEdgeException,
-    EdgeService, EdgeStackException, PoppingEmptyEdgeStackException
-)
-from chess.system import (
-    DeletionResult, IdFactory, IdentityService, InsertionResult, LoggingLevelRouter, SearchResult, StackService
-)
 
 
 class EdgeStack(StackService[Edge]):

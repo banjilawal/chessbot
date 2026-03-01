@@ -12,10 +12,47 @@ from typing import Optional
 
 from chess.team import Team
 from chess.rank import Pawn, Rank
-from chess.token import CombatantToken, MoveCategory, PromotionState
+from chess.token import CombatantToken, PromotionState
 
 
 class PawnToken(CombatantToken):
+    """
+    # ROLE: Data-Holder
+
+    # RESPONSIBILITIES:
+    1.  Represents a Pawn. Pawns can be promoted.
+    2.  A Pawn can be promoted to either a Knight, Bishop, Rook, or Queen.
+
+    # PARENT:
+        *   CombatantToken
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+        *   promotion_state (PromotionState)
+
+    # INHERITED ATTRIBUTES:
+        *   See CombatantToken class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        *   id (int)
+        *   team (Team)
+        *   rank (Rank)
+        *   designation (str)
+        *   roster_number (int)
+        *   opening_square_name (str)
+        *   promotion_state (PromotionState)
+
+    # LOCAL METHODS:
+        *   previous_rank(self) -> Optional[Rank]
+        *   can_promote(self) -> bool
+        *   is_promoted(self) -> bool
+        *   set_new_rank(self, new_rank: Rank):
+
+    # INHERITED METHODS:
+        *   See CombatantToken class for inherited methods.
+    """
     _promotion_state: PromotionState
     
     def __init__(

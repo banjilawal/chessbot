@@ -61,8 +61,8 @@ class TOperationException(OperationException):
     OP: None
     RSLT_TYPE: None
     
-    _op: Optional[str]
-    _rslt_type: Optional[str]
+    _op = Optional[str]
+    _rslt_type = Optional[str]
     
     def __init__(
             self,

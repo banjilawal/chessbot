@@ -15,7 +15,42 @@ from chess.token import Token, TokenBoardState, ReadinessState
 
 
 class KingToken(Token):
-    
+    """
+    # ROLE: Data-Holder, Abstract Data Type
+
+    # RESPONSIBILITIES:
+    1.  Represents a Token with a King's Rank and properties.
+    2.  Cannot be captured on placed in check or checkmated.
+
+    # PARENT:
+        *   Token
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+        *   See Token class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        *   id (int)
+        *   team (Team)
+        *   rank (Rank)
+        *   designation (str)
+        *   roster_number (int)
+        *   opening_square_name (str)
+
+    # LOCAL METHODS:
+        *   is_in_check(self) -> bool
+        *   is_checkmated(self) -> bool
+        *   is_active(self) -> bool
+        *   is_disabled(self) -> bool
+
+    # INHERITED METHODS:
+        *   See Token class for inherited methods.
+    """
     def __init__(
             self,
             id: int,

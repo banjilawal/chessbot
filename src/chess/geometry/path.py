@@ -126,14 +126,12 @@ class Path:
 
     return Line.CURVILINEAR
 
-
-  def is_vertical(self):
-    return self._u.row != self._v.row and self._u.column == self._v.column
-
+  @classmethod
+  def is_vertical(cls, u: Coord, v: Coord) -> bool:
+    return u.row != v.row and u.column == v.column
 
   def is_horizontal(self):
     return self._u.row == self._v.row and self._u.column != self._v.column
-
 
   def is_diagonal(self):
     return (

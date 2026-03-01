@@ -49,7 +49,7 @@ class RequestServiceException(IntegrityServiceException):
     # INHERITED METHODS:
         *   See ServiceException class for inherited methods.
     """
-    ERR_CODE = "INTEGRITY_REQUEST_SERVICE_EXCEPTION"
+    ERR_CODE = "REQUEST_SERVICE_EXCEPTION"
     MSG = "RequestService raised an exception."
     CLS_NAME = "RequestService"
     

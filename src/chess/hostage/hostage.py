@@ -8,6 +8,7 @@ version: 1.0.0
 """
 
 from __future__ import annotations
+
 from chess.square import Square
 from chess.token import CombatantToken, Token
 

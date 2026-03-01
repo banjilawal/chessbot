@@ -8,37 +8,44 @@ Created: 2025-09-11
 version: 1.0.0
 """
 
+from __future__ import annotations
+
 
 class Scalar:
     """
-    # ROLE: Computation, Transformation
-  
+    # ROLE: Computation, Transformation, Data-Holder
+    
     # RESPONSIBILITIES:
-    Multiplication of Vector and Coord objects by Scalar.
-  
+    1.  A 1-D quantity.
+    2.  Creates new 2-D object which can be either a
+            *   Vector
+            *   Coords
+        by multiplying an originating 2-D by the scalar.
+
+    # PARENT:
+    None
+
     # PROVIDES:
-    Scalar
-  
-    # ATTRIBUTES:
-        *   value (int):    range [-BOARD_DIMENSION, BOARD_DIMENSION]
+    None
+
+    # LOCAL ATTRIBUTES:
+        *   value (int)
+
+    # INHERITED ATTRIBUTES:
+    None
+
+    # CONSTRUCTOR PARAMETERS:
+        *   value (int)
+
+    # LOCAL METHODS:
+    None
+
+    # INHERITED METHODS:
+    None
     """
+    _value: int
     
     def __init__(self, value: int):
-        """
-        # ACTION:
-        Construct a Scalar
-    
-        # PARAMETERS:
-            * value (int):
-    
-        # RETURNS:
-        None
-    
-        # RAISES:
-        None
-        """
-        method = "Scalar.__init__"
-        
         self._value = value
     
     @property

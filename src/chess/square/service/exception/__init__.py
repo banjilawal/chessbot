@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .super import SquareServiceException
+from .anchor import SquareServiceException
 from .debug import SquareServiceDebugException

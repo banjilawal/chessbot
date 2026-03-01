@@ -1,7 +1,7 @@
-# src/chess/edge/service/exception.super.py
+# src/chess/square/service/exception.anchor.py
 
 """
-Module: chess.edge.service.exception.super
+Module: chess.square.service.exception.anchor
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,19 +11,19 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# EDGE_SERVICE_EXCEPTION #======================#
-    "EdgeServiceException",
+    # ======================# SQUARE_SERVICE_EXCEPTION #======================#
+    "SquareServiceException",
 ]
 
 from chess.system import AnchorException
 
-# ======================# EDGE_SERVICE_EXCEPTION #======================#
-class EdgeServiceException(AnchorException):
+# ======================# SQUARE_SERVICE_EXCEPTION #======================#
+class SquareServiceException(AnchorException):
     """
     # ROLE: Debug Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Indicate that an error occurred in a edgeService.
+    1.  Indicate that an error occurred in a SquareService.
 
     # PARENT:
     *   AnchorException
@@ -49,9 +49,9 @@ class EdgeServiceException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    ERR_CODE = " EDGE_SERVICE_EXCEPTION"
-    MSG = " EdgeService raised an exception."
-    CLS_NAME = " EdgeService"
+    ERR_CODE = " SQUARE_SERVICE_EXCEPTION"
+    MSG = " SquareService raised an exception."
+    CLS_NAME = " SquareService"
     
     _cls_name: Optional[str]
     

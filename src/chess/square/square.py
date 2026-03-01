@@ -15,28 +15,44 @@ from chess.token import Token
 from chess.square.state import SquareState
 
 
-
 class Square:
     """
-    # ROLE: Data Holder, Addressing
-  
+    # ROLE: Data-Holder, Addressing, Referencing
+
     # RESPONSIBILITIES:
-    1.  Maps a Coord to its unique name.
-    2.  Space a Token occupies on the Board.
-    
+    1.  Maps a Coord to a nameable, occupyable board location.
+    2.  Space on Board a Token can occupy.
+    3.  Metadata about a reference on the Board.
+
     # PARENT:
     None
-    
+
     # PROVIDES:
     None
-  
+
     # LOCAL ATTRIBUTES:
-        *   _name (str)
-        *   _board (Board)
-        *   _coord (Coord)
-        *   _occupant (Optional[Token])
-        
+        *   id (int)
+        *   name (str)
+        *   board (Board)
+        *   coord (Coord)
+       *    state (SquareState)
+       *    occupant (Optional[Token])
+
     # INHERITED ATTRIBUTES:
+    None
+
+    # CONSTRUCTOR PARAMETERS:
+        *   id (int)
+        *   name (str)
+        *   board (Board)
+        *   coord (Coord)
+        *   state (SquareState)
+
+    # LOCAL METHODS:
+        *   is_empty(self) -> bool
+        *   is_occupied(self) -> bool
+
+    # INHERITED METHODS:
     None
     """
     _id: int
@@ -47,19 +63,6 @@ class Square:
     _occupant: Optional[Token]
     
     def __init__(self, id: int, name: str, coord: Coord, board: Board):
-        """
-        # ACTION:
-            Constructor.
-        # PARAMETERS:
-            *   id (int)
-            *   name (str)
-            *   coord (Coord)
-            *   board (Board)
-        # RETURNS:
-            Non
-        # RAISES:
-            None
-        """
         self._id = id
         self._name = name
         self._coord = coord
@@ -116,7 +119,3 @@ class Square:
     
     def __hash__(self) -> int:
         return hash(self._id)
-    
-    # def __str__(self) -> str:
-    #     occupant_str = f" occupant:{self._occupant.name}" if self._occupant else ""
-    #     return f"Square:[{self._id} {self._name} {self._coord}{occupant_str}]"

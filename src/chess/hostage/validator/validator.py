@@ -159,7 +159,7 @@ class HostageValidator(Validator[Hostage]):
                 )
             )
         # Handle the case that, prisoner already has a manifest.
-        if not manifest.prisoner.has_hostage:
+        if not manifest.prisoner.being_processed_as_hostage:
             # Send the exception chain on failure
             return ValidationResult.failure(
                 HostageValidationException(

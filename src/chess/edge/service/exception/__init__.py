@@ -13,4 +13,5 @@ version: 1.0.0
 from .update import *
 
 # Modules
-from .super import EdgeServiceException
+from  .anchor import  EdgeServiceException
+from .debug import EdgeServiceDebugException

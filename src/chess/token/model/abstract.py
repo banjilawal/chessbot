@@ -18,25 +18,51 @@ from chess.coord import Coord, CoordStack
 
 class Token(ABC):
     """
-    # ROLE: Data Holder, Abstract Data Type
-  
+    # ROLE: Data-Holder, Abstract Data Type
+
     # RESPONSIBILITIES:
-    1.  Travels to attack or avoid enemies on the Board.
-    2.  Capture any Token except KingPiece.
-    2.  Keep immutable record of Coords occupied.
-    3.  Superclass of CombatantPiece, KingPiece, and PawnPiece.
-  
+    1.  Keep an immutable record of Coords the Token has occupied.
+    2.  Superclass of CombatantPiece, KingPiece, and PawnPiece.
+    3.  Cannot be instantiated directly.
+
+    # PARENT:
+    None
+
     # PROVIDES:
-    Token
-  
-    # ATTRIBUTES:
+    None
+
+    # LOCAL ATTRIBUTES:
         *   id (int)
-        *   name (str)
         *   team (Team)
         *   rank (Rank)
+        *   designation (str)
         *   roster_number (int)
-        *   current_position (Coord)
-        *   positions (CoordStack):
+        *   positions (CoordStack)
+        *   opening_square_name (str)
+        *   current_position (Optional[Coord])
+        *   previous_address (Optional[Coord])
+        *   token_board_state (TokenBoardState)
+        *   readiness_state (ReadinessState)
+
+    # INHERITED ATTRIBUTES:
+    None
+
+    # CONSTRUCTOR PARAMETERS:
+        *   id (int)
+        *   team (Team)
+        *   rank (Rank)
+        *   designation (str)
+        *   roster_number (int)
+        *   opening_square_name (str)
+
+    # LOCAL METHODS:
+        *   is_not_deployed(self) -> bool
+        *   is_active(self) -> bool
+        *   is_disabled(self) -> bool
+        *   is_enemy(self, token: Token) -> bool
+
+    # INHERITED METHODS:
+    None
     """
     _id: int
     _team: Team

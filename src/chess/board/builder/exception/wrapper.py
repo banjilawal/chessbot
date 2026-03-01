@@ -59,8 +59,8 @@ class BoardBuildException(OperationException):
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     
-    _op: Optional[str]
-    _rslt_type: Optional[str]
+    _op = Optional[str]
+    _rslt_type = Optional[str]
     
     def __init__(
             self,

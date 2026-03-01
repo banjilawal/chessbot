@@ -58,8 +58,8 @@ class SchemaValidationException(ValidationException):
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     
-    _op: Optional[str]
-    _rslt_type: Optional[str]
+    _op = Optional[str]
+    _rslt_type = Optional[str]
     
     def __init__(
             self,

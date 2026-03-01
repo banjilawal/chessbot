@@ -139,7 +139,7 @@ class HostageBuilder(Builder[Hostage]):
                 )
             )
         # Handle the case that, prisoner already has a manifest.
-        if prisoner.has_hostage:
+        if prisoner.being_processed_as_hostage:
             # Send the exception chain on failure
             return BuildResult.failure(
                 HostageBuildException(

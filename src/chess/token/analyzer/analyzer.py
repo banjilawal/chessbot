@@ -66,12 +66,12 @@ class TokenReadinessAnalyzer(RelationAnalyzer[ReadinessState, Token]):
     @classmethod
     @LoggingLevelRouter.monitor
     def _analyze_combatant_readiness(cls, combatant: CombatantToken) -> RelationReport[ReadinessState, Token]:
-        if combatant.capture_is_activated:
+        if combatant.has_entered_hostage_process:
             return RelationReport.bidirectional(
                 primary=ReadinessState.HOSTAGE_CREATED,
                 satellite=combatant,
             )
-        if combatant.capture_is_in_database:
+        if combatant.recorded_as_hostage:
             return RelationReport.bidirectional(
                 primary=ReadinessState.HOSTAGE_IN_DATABASE,
                 satellite=combatant,

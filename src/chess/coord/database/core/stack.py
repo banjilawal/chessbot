@@ -208,3 +208,6 @@ class CoordStack(StackService[Coord]):
         coord = self._stack.pop(-1)
         return DeletionResult.success(payload=coord)
     
+    
+    def
+    
