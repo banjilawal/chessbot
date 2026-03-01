@@ -1,7 +1,7 @@
-# src/command/command/request/__init__.py
+# src/command/request/__init__.py
 
 """
-Module: command.command.request.__init__
+Module: command.request.__init__
 Author: Banji Lawal
 Created: 2026-02-24
 """

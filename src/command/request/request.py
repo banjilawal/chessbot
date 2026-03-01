@@ -1,7 +1,7 @@
-# src/command/command/request/request.py
+# src/command/request/request.py
 
 """
-Module: command.command.request.request
+Module: command.request.request
 Author: Banji Lawal
 Created: 2026-02-24
 """

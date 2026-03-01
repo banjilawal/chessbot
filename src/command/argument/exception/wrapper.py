@@ -1,7 +1,7 @@
-# src/command/command/request/validator/wrapper.py
+# src/command/request/validator/wrapper.py
 
 """
-Module: command.command.request.validator.wrapper
+Module: command.request.validator.wrapper
 Author: Banji Lawal
 Created: 2026-02-24
 """

@@ -1,7 +1,7 @@
-# src/command/command/request/builder/wrapper.py
+# src/command/request/builder/wrapper.py
 
 """
-Module: command.command.request.builder.wrapper
+Module: command.request.builder.wrapper
 Author: Banji Lawal
 Created: 2026-02-24
 """

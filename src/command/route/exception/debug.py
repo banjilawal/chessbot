@@ -1,7 +1,7 @@
-# src/command/command/route/exception/debug.py
+# src/command/route/exception/debug.py
 
 """
-Module: command.command.route.exception.debug
+Module: command.route.exception.debug
 Author: Banji Lawal
 Created: 2026-02-25
 """

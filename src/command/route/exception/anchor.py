@@ -1,7 +1,7 @@
-# src/command/command/route/exception/anchor.py
+# src/command/route/exception/anchor.py
 
 """
-Module: command.command.route.exception.anchor
+Module: command.route.exception.anchor
 Author: Banji Lawal
 Created: 2026-02-25
 """

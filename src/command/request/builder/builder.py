@@ -1,7 +1,7 @@
-# src/command/command/request/builder/builder.py
+# src/command/request/builder/builder.py
 
 """
-Module: command.command.request.builder.builder
+Module: command.request.builder.builder
 Author: Banji Lawal
 Created: 2026-02-24
 """

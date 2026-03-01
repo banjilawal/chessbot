@@ -1,7 +1,7 @@
-# src/command/command/request/exception/debug.py
+# src/command/request/exception/debug.py
 
 """
-Module: command.command.request.exception.debug
+Module: command.request.exception.debug
 Author: Banji Lawal
 Created: 2026-02-25
 """

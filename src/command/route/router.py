@@ -1,7 +1,7 @@
-# src/command/command/menu/route/route.py
+# src/command/route/route.py
 
 """
-Module: command.command.menu.route.route
+Module: command.route.route
 Author: Banji Lawal
 Created: 2026-02-24
 """
@@ -11,7 +11,6 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
 
-from chess.system import Command, LoggingLevelRouter
 
 S = TypeVar("S")
 

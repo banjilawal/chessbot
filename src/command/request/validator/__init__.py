@@ -1,7 +1,7 @@
-# src/command/command/request/validator/__init__.py
+# src/command/request/validator/__init__.py
 
 """
-Module: command.command.request.validator.__init__
+Module: command.request.validator.__init__
 Author: Banji Lawal
 Created: 2026-02-24
 """

@@ -1,7 +1,7 @@
-# src/command/command/request/exception/__init__.py
+# src/command/request/exception/__init__.py
 
 """
-Module: command.command.request.exception.__init__
+Module: command.request.exception.__init__
 Author: Banji Lawal
 Created: 2026-02-24
 """

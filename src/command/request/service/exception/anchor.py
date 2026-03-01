@@ -1,7 +1,7 @@
-# src/command/command/request/service/exception/anchor.py
+# src/command/request/service/exception/anchor.py
 
 """
-Module: command.command.request.service.exception.anchor
+Module: command.request.service.exception.anchor
 Author: Banji Lawal
 Created: 2026-02-24
 """

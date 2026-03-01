@@ -1,7 +1,7 @@
-# src/command/command/request/service/service.py
+# src/command/request/service/service.py
 
 """
-Module: command.command.request.service.service
+Module: command.request.service.service
 Author: Banji Lawal
 Created: 2026-02-24
 """

@@ -1,29 +1,31 @@
-# src/command/command/request/validator/exception/debug/identifier.py
+# src/command/request/validator/exception/debug/null.py
 
 """
-Module: command.command.request.validator.exception.debug.identifier
+Module: command.request.validator.exception.debug.null
 Author: Banji Lawal
 Created: 2026-02-24
 """
 
 from __future__ import annotations
-from typing import Any, Optional
+from typing import Optional
 
 __all__ = [
-    # ======================# WRONG_ARGUMENT_NAME_EXCEPTION #======================#
-    "ArgumentNameException",
+    # ======================# WRONG_ARGUMENT_TYPE_EXCEPTION #======================#
+    "ArgumentTypeException",
 ]
+
+from typing import Optional
 
 from chess.system import ServiceRequestDebugException
 
-# ======================# WRONG_ARGUMENT_NAME_EXCEPTION #======================#
-class ArgumentNameException(ServiceRequestDebugException):
+# ======================# WRONG_ARGUMENT_TYPE_EXCEPTION #======================#
+class ArgumentTypeException(ServiceRequestDebugException):
     """
     # ROLE: Information, Reporting, Debug
 
     # RESPONSIBILITIES:
-    1.  Indicate that a service_request has a wrong argument for the command.
-    
+    1.  Indicate that a service_request argument has the wrong type.
+
     # PARENT:
         *  ServiceRequestDebugException
 
@@ -49,8 +51,8 @@ class ArgumentNameException(ServiceRequestDebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    ERR_CODE = "WRONG_ARGUMENT_NAME_EXCEPTION"
-    MSG = "Argument name incorrect."
+    ERR_CODE = "WRONG_ARGUMENT_TYPE_EXCEPTION"
+    MSG = "Incorrect argument type"
     VAR = Optional[Any]
     VAL = Optional[Any]
     
@@ -67,3 +69,4 @@ class ArgumentNameException(ServiceRequestDebugException):
         var = var or self.VAR
         val = val or self.VAL
         super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)
+

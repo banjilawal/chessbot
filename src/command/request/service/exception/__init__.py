@@ -1,7 +1,7 @@
-# src/command/command/request/service/exception.py
+# src/command/request/service/exception.py
 
 """
-Module: command.command.request.service.exception
+Module: command.request.service.exception
 Author: Banji Lawal
 Created: 2026-02-24
 """

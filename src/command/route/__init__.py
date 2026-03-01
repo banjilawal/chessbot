@@ -1,7 +1,7 @@
-# src/command/command/route/__init__.py
+# src/command/route/__init__.py
 
 """
-Module: command.command.route.__init__
+Module: command.route.__init__
 Author: Banji Lawal
 Created: 2026-02-25
 """

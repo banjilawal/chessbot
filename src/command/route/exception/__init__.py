@@ -1,7 +1,7 @@
 # src/command/command/menu/route/exception/__init__.py
 
 """
-Module: command.command.menu.route.exception.__init__
+Module: command.route.exception.__init__
 Author: Banji Lawal
 Created: 2026-02-24
 """
