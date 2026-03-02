@@ -12,8 +12,8 @@ __all__ = [
     "PoppingPipelineStackFailedException",
 ]
 
-from chess.pipeline import PipelineStackException
-from chess.system import DeletionException
+from logic.pipeline import PipelineStackException
+from logic.system import DeletionException
 
 
 # ======================# POPPING_PIPELINE_STACK_FAILURE #======================#

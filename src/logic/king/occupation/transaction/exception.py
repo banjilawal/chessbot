@@ -1,7 +1,7 @@
 # src/logic/king/occupation/transaction/collision.py
 
 """
-Module: `chess.king.occupation.transaction.exception`
+Module: `logic.king.occupation.transaction.exception`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

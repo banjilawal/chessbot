@@ -7,7 +7,7 @@ Created: 2025-11-24
 version: 1.0.0
 """
 
-from typing import Dict, List, cast
+from typing import Dict, List
 
 from logic.square import (
     Square, SquareContext, SquareContextService, SquareDatabaseException, SquareService, SquareStackService
@@ -67,7 +67,13 @@ class SquareDatabase(Database[Square]):
             id: int = IdFactory.next_id(class_name="SquareDatabase"),
             stack_service: SquareStackService = SquareStackService(capacity=NUMBER_OF_ROWS * NUMBER_OF_COLUMNS),
     ):
-        super().__init__(id=id, name=name, data_service=stack_service)
+        """
+        Args:
+            id: int
+            name: str
+            stack_service: SquareStackService
+        """
+        super().__init__(id=id, name=name)
         self._token_map = {}
         self._stack_service = stack_service
 

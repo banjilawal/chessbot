@@ -84,7 +84,7 @@
 # src/logic/owner/travel/base/coord_stack_validator/traveler/collision.py
 
 """
-Module: `chess.owner.travel.base.coord_stack_validator.traveler.exception`
+Module: `logic.owner.travel.base.coord_stack_validator.traveler.exception`
 Author: Banji Lawal
 Created: 2025-10-06
 Version: 1.0.1
@@ -113,7 +113,7 @@ to improve code clarity and facilitate robust error handling within the chess en
 DEPENDENCIES:
 ------------
 Requires base rollback_exception classes and constants from the core system:
-From `chess.system`:
+From `logic.system`:
   * Constants: `NUMBER_OF_ROWS`, `NUMBER_OF_COLUMNS`
   * Exception: `ChessException`, `ValidationException`, `NullException`,
         `BuildException`.

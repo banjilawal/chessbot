@@ -8,7 +8,7 @@ Created: 2026-02-24
 
 from __future__ import annotations
 
-from chess.system import (
+from logic.system import (
     ArgumentCountException, ArgumentNameException, ArgumentTypeException, Builder, Command, CommandBuilderException,
     CommandNameException, LoggingLevelRouter, RequestValidator, BuildResult, Request
 )

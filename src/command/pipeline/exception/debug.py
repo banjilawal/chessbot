@@ -14,7 +14,7 @@ __all__ = [
     "PipelineDebugException",
 ]
 
-from chess.system import DebugException
+from logic.system import DebugException
 
 
 # ======================# PIPELINE_DEBUG_EXCEPTION #======================#

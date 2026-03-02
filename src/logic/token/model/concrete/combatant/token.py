@@ -74,6 +74,15 @@ class CombatantToken(Token):
             roster_number: int,
             opening_square_name: str,
     ):
+        """
+        Args:
+            id: int
+            team: Team
+            rank: Rank
+            designation: str
+            roster_number: int
+            opening_square_name: str
+        """
         super().__init__(
             id=id,
             team=team,

@@ -10,33 +10,18 @@ version: 1.0.0
 import logging
 
 log = logging.getLogger("chessbot")
-#
-# from .owner import AgentService, TeamSearchService
-# from .arena import *
-# from .assets import *
-# from .board import *
-# from .checkmate import *
-# from .square_name import CoordService
-# from .points import DomainService
-# from .driver import *
-# from .engine import *
-# from .enviroment import *
-# from .game import *
-# from .geometry import *
-# from .graph import *
-# from .house import *
-# from .io import *
-# from .king import *
-# from .neighbor import *
-# from .pawn import *
-# from .piece import CoordStack, PieceService
-# from .rank import RankCertifier
-# from .runtime import *
-# from .randomize import *
-# from .rank import *
-# from .scalar import ScalarService
-# from .square_name import SquareService
-# from .system import *
-# from .team import TeamCertifier, PieceSearchService
-# from .travel import *
-# from .vector import VectorService
+
+
+
+# =========== PACKAGE CONTENTS ===========#
+
+# Packages
+from .argument import *
+from .command import *
+from .menu import *
+from .pipeline import *
+from .request import *
+from .route import *
+
+# Modules
+None

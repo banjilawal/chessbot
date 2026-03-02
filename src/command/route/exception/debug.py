@@ -14,7 +14,7 @@ __all__ = [
     "CommandRouterDebugException",
 ]
 
-from chess.system import DebugException
+from logic.system import DebugException
 
 
 # ======================# COMMAND_ROUTER_DEBUG_EXCEPTION #======================#

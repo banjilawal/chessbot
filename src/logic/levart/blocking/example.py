@@ -1,7 +1,7 @@
 # src/logic/travel/travel/blocking/__init__.py
 
 """
-Module: `chess.travel.travel.blocking`
+Module: `logic.travel.travel.blocking`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

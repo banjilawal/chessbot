@@ -42,7 +42,7 @@ class KingToken(Token):
         *   roster_number (int)
         *   opening_square_name (str)
 
-    # LOCAL METHODS:
+    Methods:
         *   is_in_check(self) -> bool
         *   is_checkmated(self) -> bool
         *   is_active(self) -> bool

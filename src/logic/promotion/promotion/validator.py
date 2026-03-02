@@ -1,7 +1,7 @@
 # src/logic/chess/owner/travel/occupation/factory.py
 
 """
-Module: `chess.owner.travel.occupation.coord_stack_validator`
+Module: `logic.owner.travel.occupation.coord_stack_validator`
 Author: Banji Lawal
 Created: 2025-10-21
 version: 1.0.0

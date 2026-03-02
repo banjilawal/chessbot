@@ -35,8 +35,8 @@ class Square:
         *   name (str)
         *   board (Board)
         *   coord (Coord)
-       *    state (SquareState)
-       *    occupant (Optional[Token])
+        *    state (SquareState)
+        *    occupant (Optional[Token])
 
     # INHERITED ATTRIBUTES:
     None
@@ -63,6 +63,14 @@ class Square:
     _occupant: Optional[Token]
     
     def __init__(self, id: int, name: str, coord: Coord, board: Board):
+        """
+        Args:
+            id: int
+            name: str
+            board: Board
+            coord: Coord
+            state: SquareState
+        """
         self._id = id
         self._name = name
         self._coord = coord

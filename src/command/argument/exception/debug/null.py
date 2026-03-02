@@ -15,7 +15,7 @@ __all__ = [
     "NullArgumentsException",
 ]
 
-from chess.system import NullException
+from logic.system import NullException
 
 # ======================# NULL_ARGUMENTS_EXCEPTION #======================#
 class NullArgumentsException(NullException):

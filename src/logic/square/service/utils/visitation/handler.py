@@ -20,9 +20,9 @@ from logic.system import DeletionResult, LoggingLevelRouter, UpdateResult, Valid
 from logic.token import Token, TokenBoardState, TokenService
 
 
-class TokenVisitHandler:
+class TokenVisitHandler():
     """
-    # ROLE: Consistency, Integrity Maintenance, Lifecycle Management
+    # ROLE: Consistency, Integrity Maintenance, Lifecycle Management, Util
 
     # RESPONSIBILITIES:
     1.  Ensure integrity and consistency  are maintained in all stages of the square occupation lifecycle.
@@ -39,7 +39,7 @@ class TokenVisitHandler:
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR ARGS:
         Local:
             *   token_service (TokenService)
         Inherited:
@@ -55,6 +55,10 @@ class TokenVisitHandler:
     _token_service: TokenService
     
     def __init__(self, token_service: TokenService):
+        """
+        Args:
+            token_service: TokenService
+        """
         self._token_service = token_service
         
     @property
@@ -83,18 +87,20 @@ class TokenVisitHandler:
             4.  Configure the square side of the square-token binding.
             5.  Configure the token side of the square-token binding.
             6.  Send deep_copy and the current square in the success result.
-        # PARAMETERS:
-            *   token (Token)
-            *   square (Square)
-            *   square_validator (SquareValidator)
-        # RETURN:
-            *   UpdateResult[Square]
-        # RAISES:
-            *   TokenVisitHandlerException
-            *   StartingSquareVisitException
-            *   VisitingOccupiedSquareException
-            *   VisitorFromWrongBoardException
-            *   SquareVisitorDisabledException
+        Args:
+            token: Token
+            square:
+            square_validator: SquareValidator
+            
+       Returns:
+            UpdateResult[Square]
+            
+        Raises:
+            TokenVisitHandlerException
+            StartingSquareVisitException
+            VisitingOccupiedSquareException
+            VisitorFromWrongBoardException
+            SquareVisitorDisabledException
         """
         method = "SquareService.add_occupant"
         
@@ -217,14 +223,15 @@ class TokenVisitHandler:
             2.  If the square is empty send an exception chain in the DeletionResult.
             3.  Store the square's occupant in a temp variable.
             4.  Set square.occupant to null and  square.state to empty.
-        # PARAMETERS:
-            *   square (Square)
-        # RETURN:
-            *   DeletionResult[Token]
-        # RAISES:
-            *   TokenVisitHandlerException
-            *   SquareVisitTerminationException
-            *   NoVisitForTerminationException
+
+        Args:
+            square: Square
+        Returns:
+            DeletionResult[Token]
+        Raises:
+            TokenVisitHandlerException
+            SquareVisitTerminationException
+            NoVisitForTerminationException
         """
         method = "TokenVistHandler.terminate_visit"
         
@@ -273,13 +280,13 @@ class TokenVisitHandler:
         # ACTION:
             1.  If the token's opening name differs from the target's return a ValidationResult with the exception.
                 Else return a Validation success result.
-        # PARAMETERS:
-            *   visitor (Token)
-            *   target (Square)
-        # RETURN:
-            *   ValidationResult[Square]
-        # RAISES:
-            *   VisitingWrongOpeningSquareException
+        Args:
+            visitor: Token
+            target: Square
+        Returns:
+            ValidationResult[Square]
+        Raises:
+            VisitingWrongOpeningSquareException
         """
         method = "TokenVisitHandler._verify_token_forms_on_square"
         

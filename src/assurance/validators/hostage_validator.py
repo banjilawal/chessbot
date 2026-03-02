@@ -3,13 +3,13 @@ from typing import cast, Generic
 
 
 
-from chess.system import Validator
-from chess.piece import PieceValidator
-from chess.system.identity.id import id_emitter
-from chess.exception import HostageCaptorNullException, RosterRemovalException, HostageAdditionException
+from logic.system import Validator
+from logic.piece import PieceValidator
+from logic.system.identity.id import id_emitter
+from logic.exception import HostageCaptorNullException, RosterRemovalException, HostageAdditionException
 
-from chess.randomize.competitor import RandomName
-from chess.piece import CombatantPiece
+from logic.randomize.competitor import RandomName
+from logic.piece import CombatantPiece
 
 
 class HostageValidator(Validator):

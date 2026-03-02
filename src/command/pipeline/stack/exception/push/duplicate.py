@@ -7,7 +7,7 @@ Created: 2025-11-22
 version: 1.0.0
 """
 
-from chess.pipeline import PipelineStackException
+from logic.pipeline import PipelineStackException
 
 __all__ = [
     # ======================# ADDING_DUPLICATE_PIPELINE EXCEPTION #======================#

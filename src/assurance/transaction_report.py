@@ -1,4 +1,4 @@
-from chess.result import Result
+from logic.result import Result
 
 
 class TransactionReport:

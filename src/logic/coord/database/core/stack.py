@@ -59,18 +59,12 @@ class CoordStack(StackService[Coord]):
             context_service: CoordContextService = CoordContextService(),
     ):
         """
-        # ACTION:
-            Constructor
-        # PARAMETERS:
-            *   id (int): = id_emitter.service_id
-            *   name (str): = SERVICE_NAME
-            *   bag (List[Coord]): = List[Coord]
-            *   service (CoordService): = CoordService()
-            *   context_service (CoordContextService): = CoordContextService()
-        # RETURNS:
-            None
-        # RAISES:
-            None
+        Args:
+            name: str
+            id: int
+            items: List[Coord]
+            service: CoordService
+            context_service: CoordContextService
         """
         super().__init__(
             id=id,
@@ -96,13 +90,13 @@ class CoordStack(StackService[Coord]):
         return self._stack[-2] if self._stack else None
     
     @property
-    def current_coord(self) -> Optional[Coord]:
+    def current_item(self) -> Optional[Coord]:
         return self._stack[-1] if self._stack else None
     
     @property
     def integrity_service(self) -> CoordService:
         """Get CoordService instance."""
-        return cast(CoordService, self.entity_service)
+        return cast(CoordService, self.integrity_service)
     
     @property
     def context_service(self) -> CoordContextService:
@@ -117,14 +111,15 @@ class CoordStack(StackService[Coord]):
             3.  If super().push_item fails send the exception chain in the InsertionResult. Else,
                 *   Set self.previous_coord = previous_top.
                 *   Forward the InsertionResult from super().push_item to the caller.
-        # PARAMETERS:
-            *   coord (Coord)
-        # RETURN:
-            *   InsertionResult[Coord] containing either:
-                    - On failure: Exception
-                    - On success: Coord in the payload.
-        # RAISES:
-            *   CoordStackException
+                       
+        Args:
+            item: Coord
+            
+        Returns:
+            InsertionResult[Coord]
+            
+        Raises:
+            CoordStackException
         """
         method = "CoordStack.push"
         
@@ -142,7 +137,7 @@ class CoordStack(StackService[Coord]):
                 )
             )
         # Handle the case that, the Coord is already at the top.
-        if item == self.current_coord:
+        if item == self._current_coord:
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 CoordStackException(
@@ -166,15 +161,14 @@ class CoordStack(StackService[Coord]):
             1.  If the list is empty send the exception in the DeletionResult. Else, call the super class undo_push
             2.  If the super class undo_push failed encapsulate the super class exception and send in the
                 DeletionResult, Else, forward the super().push_item() result to the caller.
-        # PARAMETERS:
-            None
-        # RETURN:
-            *   DeletionResult[Coord] containing either:
-                - On failure: Exception
-                - On success: Coord in the payload.
-        # RAISES:
-            *   CoordStackException
-            *   PoppingEmtpyCoordStackException
+        Args:
+        
+        Returns:
+            DeletionResult[Coord]
+            
+        Raises:
+            CoordStackException
+            PoppingEmtpyCoordStackException
         """
         method = "CoordStack.pop_coord"
         
@@ -207,7 +201,4 @@ class CoordStack(StackService[Coord]):
         # --- Remove the coord at the top of the stack and send in the DeletionResult. ---#
         coord = self._stack.pop(-1)
         return DeletionResult.success(payload=coord)
-    
-    
-    def
     

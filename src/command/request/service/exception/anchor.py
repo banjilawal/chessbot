@@ -14,7 +14,7 @@ __all__ = [
     "RequestServiceException",
 ]
 
-from chess.system import IntegrityServiceException
+from logic.system import IntegrityServiceException
 
 # ======================# REQUEST_SERVICE_EXCEPTION #======================#
 class RequestServiceException(IntegrityServiceException):

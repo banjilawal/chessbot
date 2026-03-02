@@ -15,8 +15,8 @@ version: 1.0.0
     from `DiscoverySearchContextBuilder` --should-- satisfy `DiscoverySearchContextValidator` requirements.
 
 **Related Features**:
-    Authenticating existing discoverySearchContexts -> See DiscoverySearchContextValidator, module[chess.discoverySearchContext.coord_stack_validator],
-    Handling process and rolling back failures --> See `Transaction`, module[chess.system]
+    Authenticating existing discoverySearchContexts -> See DiscoverySearchContextValidator, module[logic.discoverySearchContext.coord_stack_validator],
+    Handling process and rolling back failures --> See `Transaction`, module[logic.system]
 
 # THEME:
 -------
@@ -34,17 +34,17 @@ version: 1.0.0
 
 # DEPENDENCIES:
 ---------------
-From `chess.system`:
+From `logic.system`:
     `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
     `IdValidator`, `NameValidator`
 
-From `chess.discoverySearchContext`:
+From `logic.discoverySearchContext`:
     `DiscoverySearchContext`, `NullDiscoverySearchContext`, `DiscoverySearchContextBuildException`, `DiscoverySearchContextSchema`
 
-From `chess.owner`:
+From `logic.owner`:
   `Player`, `PlayerAgentValidator`,
 
-From `chess.owner`:
+From `logic.owner`:
   `Token`
 
 # CONTAINS:
@@ -69,8 +69,8 @@ version: 1.0.0
     from `TeamBuilder` --should-- satisfy `TeamValidator` requirements.
 
 **Related Features**:
-    Authenticating existing team_service -> See TeamValidator, module[chess.team_name.coord_stack_validator],
-    Handling process and rolling back failures --> See `Transaction`, module[chess.system]
+    Authenticating existing team_service -> See TeamValidator, module[logic.team_name.coord_stack_validator],
+    Handling process and rolling back failures --> See `Transaction`, module[logic.system]
 
 # THEME:
 -------
@@ -88,17 +88,17 @@ version: 1.0.0
 
 # DEPENDENCIES:
 ---------------
-From `chess.system`:
+From `logic.system`:
     `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
     `IdValidator`, `NameValidator`
 
-From `chess.team_name`:
+From `logic.team_name`:
     `Team`, `NullTeam`, `TeamBuildException`, `Schema`
 
-From `chess.owner`:
+From `logic.owner`:
   `Player`, `PlayerAgentValidator`,
 
-From `chess.owner`:
+From `logic.owner`:
   `Token`
 
 # CONTAINS:
@@ -178,8 +178,8 @@ version: 1.0.0
     from `DiscoverySearchContextBuilder` --should-- satisfy `DiscoverySearchContextValidator` requirements.
 
 **Related Features**:
-    Authenticating existing discoverySearchContexts -> See DiscoverySearchContextValidator, module[chess.discoverySearchContext.coord_stack_validator],
-    Handling process and rolling back failures --> See `Transaction`, module[chess.system]
+    Authenticating existing discoverySearchContexts -> See DiscoverySearchContextValidator, module[logic.discoverySearchContext.coord_stack_validator],
+    Handling process and rolling back failures --> See `Transaction`, module[logic.system]
 
 # THEME:
 -------
@@ -197,17 +197,17 @@ version: 1.0.0
 
 # DEPENDENCIES:
 ---------------
-From `chess.system`:
+From `logic.system`:
     `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
     `IdValidator`, `NameValidator`
 
-From `chess.discoverySearchContext`:
+From `logic.discoverySearchContext`:
     `DiscoverySearchContext`, `NullDiscoverySearchContext`, `DiscoverySearchContextBuildException`, `DiscoverySearchContextSchema`
 
-From `chess.owner`:
+From `logic.owner`:
   `Player`, `PlayerAgentValidator`,
 
-From `chess.owner`:
+From `logic.owner`:
   `Token`
 
 # CONTAINS:
@@ -232,8 +232,8 @@ version: 1.0.0
     from `DiscoverySearchContextBuilder` --should-- satisfy `DiscoverySearchContextValidator` requirements.
 
 **Related Features**:
-    Authenticating existing discoverySearchContexts -> See DiscoverySearchContextValidator, module[chess.discoverySearchContext.coord_stack_validator],
-    Handling process and rolling back failures --> See `Transaction`, module[chess.system]
+    Authenticating existing discoverySearchContexts -> See DiscoverySearchContextValidator, module[logic.discoverySearchContext.coord_stack_validator],
+    Handling process and rolling back failures --> See `Transaction`, module[logic.system]
 
 # THEME:
 -------
@@ -251,17 +251,17 @@ version: 1.0.0
 
 # DEPENDENCIES:
 ---------------
-From `chess.system`:
+From `logic.system`:
     `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
     `IdValidator`, `NameValidator`
 
-From `chess.discoverySearchContext`:
+From `logic.discoverySearchContext`:
     `DiscoverySearchContext`, `NullDiscoverySearchContext`, `DiscoverySearchContextBuildException`, `DiscoverySearchContextSchema`
 
-From `chess.owner`:
+From `logic.owner`:
   `Player`, `PlayerAgentValidator`,
 
-From `chess.owner`:
+From `logic.owner`:
   `Token`
 
 # CONTAINS:
@@ -306,7 +306,7 @@ to improve code clarity and facilitate robust error handling within the chess en
 DEPENDENCIES:
 ------------
 Requires base rollback_exception classes and constants from the core system:
-From `chess.system`:
+From `logic.system`:
   * Constants: `NUMBER_OF_ROWS`, `NUMBER_OF_COLUMNS`
   * Exception: `ChessException`, `ValidationException`, `NullException`,
         `BuildException`.

@@ -1,7 +1,7 @@
 # src/logic/owner/travel/blocking/rollback_exception.py
 
 """
-Module: `chess.owner.travel.blocking.rollback_exception`
+Module: `logic.owner.travel.blocking.rollback_exception`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -40,7 +40,7 @@ The major theme influencing the modules design are
 1. Exception specific to verifying ids.
 
 # SECTION 7 - Dependencies:
-* From `chess.system`:
+* From `logic.system`:
     `ChessException`, `ContextException`, `ResultException`
 
 # SECTION 8 - Contains:
@@ -155,7 +155,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 # DEPENDENCIES:
 # ------------
 # Requires base rollback_exception classes and constants from the core system:
-# From `chess.system`:
+# From `logic.system`:
 #   * Constants: `NUMBER_OF_ROWS`, `NUMBER_OF_COLUMNS`
 #   * Exception: `ChessException`, `ValidationException`, `NullException`,
 #         `BuildException`.

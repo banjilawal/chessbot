@@ -14,7 +14,7 @@ __all__ = [
     "PipelineNotFoundException",
 ]
 
-from chess.pipeline import PipelineDebugException
+from logic.pipeline import PipelineDebugException
 
 
 # ======================# PIPELINE_NOT_FOUND EXCEPTION #======================#

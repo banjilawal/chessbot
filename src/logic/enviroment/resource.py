@@ -1,7 +1,7 @@
 # src/logic/environment/resource.py
 
 """
-Module: `chess.environment.resource`
+Module: `logic.environment.resource`
 Author: Banji Lawal
 Created: 2025-10-18
 Version: 1.0.1

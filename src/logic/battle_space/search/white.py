@@ -15,8 +15,8 @@ version: 1.0.0
     from `BoardBuilder` --should-- satisfy `BoardValidator` requirements.
 
 **Related Features**:
-    Authenticating existing boards -> See BoardValidator, module[chess.board_validator.coord_stack_validator],
-    Handling process and rolling back failures --> See `Transaction`, module[chess.system]
+    Authenticating existing boards -> See BoardValidator, module[logic.board_validator.coord_stack_validator],
+    Handling process and rolling back failures --> See `Transaction`, module[logic.system]
 
 # THEME:
 -------
@@ -34,17 +34,17 @@ version: 1.0.0
 
 # DEPENDENCIES:
 ---------------
-From `chess.system`:
+From `logic.system`:
     `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
     `IdValidator`, `NameValidator`
 
-From `chess.board_validator`:
+From `logic.board_validator`:
     `Board`, `NullBoard`, `BoardBuildException`, `BoardSchema`
 
-From `chess.owner`:
+From `logic.owner`:
   `Player`, `PlayerAgentValidator`,
 
-From `chess.owner`:
+From `logic.owner`:
   `Token`
 
 # CONTAINS:

@@ -7,14 +7,14 @@ Created: 2026-02-24
 """
 
 from __future__ import annotations
-from typing import Optional
+from typing import Any, Optional
 
 __all__ = [
     # ======================# COMMAND_NAME_NOT_FOUND #======================#
     "CommandNameException",
 ]
 
-from chess.system import RequestDebugException
+from command import RequestDebugException
 
 
 # ======================# COMMAND_NAME_NOT_FOUND #======================#

@@ -14,7 +14,7 @@ __all__ = [
     "CommandBuilderException",
 ]
 
-from chess.system import BuildException
+from logic.system import BuildException
 
 
 # ======================# COMMAND_BUILD_FAILURE #======================#

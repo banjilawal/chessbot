@@ -15,7 +15,7 @@ __all__ = [
     "CommandRouterException",
 ]
 
-from chess.system import AnchorException
+from logic.system import AnchorException
 
 
 # ======================# COMMAND_ROUTER_EXCEPTION #======================#

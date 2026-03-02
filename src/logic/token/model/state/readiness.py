@@ -21,7 +21,7 @@ class ReadinessState(Enum):
             *   It cannot move on the board nor capture enemies.
 
     # PARENT:
-    None
+        *   Enum
 
     # PROVIDES:
     None

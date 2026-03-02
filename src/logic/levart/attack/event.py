@@ -1,7 +1,7 @@
 # src/logic/owner/travel/attack/factory.py
 
 """
-Module: `chess.owner.travel.attack.event`
+Module: `logic.owner.travel.attack.event`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

@@ -8,9 +8,12 @@ Version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import Generic, Optional, TypeVar
 
-from logic.system import Service,  StackService, InsertionResult, LoggingLevelRouter
+from abc import abstractmethod
+from typing import Generic, List, Optional, TypeVar
+
+from logic import Context, ContextService, IntegrityService, SearchResult
+from logic.system import Service, InsertionResult, LoggingLevelRouter
 
 
 T = TypeVar("T")
@@ -34,61 +37,49 @@ class Database(Service, Generic[T]):
 
     # LOCAL ATTRIBUTES:
     None
-        *   id (int):
-        *   name (str):
-        *   member_service (StackService[D]):
         
     # INHERITED ATTRIBUTES:
     None
     """
-    _id: int
-    _name: str
-    _data_core: StackService[T]
-    
-    def __init__(self, id: int, name: str, data_core: StackService[T]):
+    def __init__(self, id: int, name: str):
         super().__init__(id=id, name=name)
-        self._data_core = data_core
+    
     
     @property
+    @abstractmethod
     def size(self) -> int:
-        return self._data_core.size
+        pass
+        
     
     @property
+    @abstractmethod
     def current_item(self) -> Optional[T]:
-        return self._data_core.current_item
+        pass
     
     @property
+    @abstractmethod
     def is_empty(self) -> bool:
-        return self._data_core.is_empty
+        pass
     
-    @property
-    def data_core(self) -> StackService[T]:
-        return self._data_core
-    #
-    # @LoggingLevelRouter.monitor
-    # def push_unique_item(self, item: T) -> InsertionResult[T]:
-    #     method = "UniqueAgentDataService.push_unique"
-    #     try:
-    #         validation = self.data_core.entity_service.entity_validator.validate(item)
-    #         if validation.is_failure:
-    #             return InsertionResult.failure(validation.exception)
-    #
-    #         context_build = self._data_core.context_service.entity_builder.build(id=item.id)
-    #         if context_build.is_failure:
-    #             return InsertionResult.failure(context_build.exception)
-    #
-    #         query_result = self._data_core.search(context=context_build.payload)
-    #         if query_result.is_failure:
-    #             return InsertionResult.failure(query_result.exception)
-    #
-    #         if query_result.is_success:
-    #             return InsertionResult.failure(
-    #                 AddingDuplicateDataException(f"{method}: {AddingDuplicateDataException.MSG}")
-    #             )
-    #         return self._data_core.push_item(item)
-    #
-    #     except Exception as ex:
-    #         return InsertionResult.failure(
-    #             DatabaseException(ex=ex, msg=f"{method}: {DatabaseException.MSG}")
-    #         )
+    @abstractmethod
+    def integrity_service(self) -> IntegrityService[T]:
+        pass
+        
+    @abstractmethod
+    def context_service(self) -> ContextService[T]:
+    
+    @abstractmethod
+    @LoggingLevelRouter.monitor
+    def insert(self, item: T) -> InsertionResult:
+        pass
+    
+    @abstractmethod
+    @LoggingLevelRouter.monitor
+    def delete_by_id(self, id: int) -> InsertionResult[T]:
+        pass
+    
+    @abstractmethod
+    @LoggingLevelRouter.monitor
+    def search(self, context: Context[T]) -> SearchResult[List[T]]:
+        pass
         

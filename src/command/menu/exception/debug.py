@@ -14,7 +14,7 @@ __all__ = [
     "ServiceMenuDebugException",
 ]
 
-from chess.system import DebugException
+from logic.system import DebugException
 
 
 # ======================# SERVICE_MENU_DEBUG_EXCEPTION #======================#

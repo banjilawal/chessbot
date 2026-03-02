@@ -14,7 +14,7 @@ __all__ = [
     "ArgumentCountException",
 ]
 
-from chess.system import ServiceRequestDebugException
+from logic.system import ServiceRequestDebugException
 
 
 # ======================# ARGUMENT_COUNT_EXCEPTION #======================#

@@ -20,7 +20,8 @@ from logic.system import ValidationException
 # ======================# ARENA_VALIDATION_FAILURE #======================#
 class ArenaValidationException(ValidationException):
     """
-    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Exception Chain Layer 1
+    # TASK: Worker method identifier, Exception messaging
 
     # RESPONSIBILITIES:
     1.  Identify the ArenaValidator method where the process failed.

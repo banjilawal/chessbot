@@ -13,7 +13,7 @@ from time import process_time
 from typing import Any, Dict, Generic, TypeVar
 
 
-from chess.system import (
+from logic.system import (
     BuildResult, Command, CommandService, IdentityService, LoggingLevelRouter, PipelineException,
     RequestService,
     Request, ValidationResult

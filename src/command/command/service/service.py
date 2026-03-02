@@ -10,7 +10,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from chess.system import CommandBuilder, CommandValidator, IntegrityService, Builder, Command, Validator
+from logic.system import CommandBuilder, CommandValidator, IntegrityService, Builder, Command, Validator
 
 
 class CommandService(IntegrityService[Command]):

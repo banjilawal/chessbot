@@ -15,7 +15,7 @@ __all__ = [
     "ServiceMenuException",
 ]
 
-from chess.system import AnchorException
+from logic.system import AnchorException
 
 # ======================# SERVICE_MENU_EXCEPTION #======================#
 class ServiceMenuException(AnchorException):

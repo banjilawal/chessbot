@@ -25,7 +25,7 @@ class IdentityService:
         *   Not validation.
         *   Not white space only (" ", tab, newline).
         *   Not empty. (".", ".\n", ".\t", ".\r").
-        *   Meet minimum length requirement specified in chess.syst.
+        *   Meet minimum length requirement specified in logic.syst.
         *   Meet maximum length requirement specified in class.
 
     # PROVIDES:

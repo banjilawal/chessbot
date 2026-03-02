@@ -1,7 +1,7 @@
 # src/logic/occupant/travel/__init__.py
 
 """
-Module: `chess.occupant.travel.__init__`
+Module: `logic.occupant.travel.__init__`
 Author: Banji Lawal
 Created: 2025-10-06
 Version: 1.0.1

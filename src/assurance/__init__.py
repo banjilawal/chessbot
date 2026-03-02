@@ -18,7 +18,7 @@ import logging
 
 from .validators import *
 
-from chess.system.logging.writer import LogWriter
+from logic.system.logging.writer import LogWriter
 from .deployment_mode import Deployment
 from .transaction_report import TransactionReport
 

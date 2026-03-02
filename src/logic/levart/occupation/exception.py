@@ -1,7 +1,7 @@
 # src/logic/owner/travel/occupation/rollback_exception.py
 
 """
-Module: `chess.owner.travel.occupation.rollback_exception`
+Module: `logic.owner.travel.occupation.rollback_exception`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

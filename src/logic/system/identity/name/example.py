@@ -42,7 +42,7 @@ The major theme influencing the modules design are
 1. Exception specific to verifying names.
 
 # SECTION 7 - Dependencies:
-* From `chess.system`:
+* From `logic.system`:
     `ValidationException`, `BlankStringException`, `NullException`
 
 # SECTION 8 - Contains:
@@ -85,7 +85,7 @@ Major themes influencing the design include:
 2. Minimizing the boilerplate error handling and logging code with the `LoggingLevelRouter` decorator.
 
 # SECTION 7 - Dependencies:
-* From `chess.system`:
+* From `logic.system`:
     `MIN_NAME_LENGTH`, `MAX_NAME_LENGTH`, `LongNameException`, `ShortNameException`, `WhiteSpaceNameException`
     `NullNameException`, `Validator`,
 

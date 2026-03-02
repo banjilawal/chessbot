@@ -43,10 +43,10 @@ class TokenService(IntegrityService[Token]):
     # PROVIDES:
     None
 
-    # LOCAL ATTRIBUTES:
-        *   SERVICE_NAME (str)
-        *   collision_detector (TokenCollisionDetector)
-        *   readiness_analyzer (TokenReadinessAnalyzer)
+    Attributes:
+        SERVICE_NAME: str
+        collision_detector: TokenCollisionDetector
+        readiness_analyzer: TokenReadinessAnalyzer
 
     # INHERITED ATTRIBUTES:
         *   See IntegrityService class for inherited attributes.
@@ -59,13 +59,8 @@ class TokenService(IntegrityService[Token]):
         *   collision_detector: TokenCollisionDetector = TokenCollisionDetector(),
         *   readiness_analyzer: TokenReadinessAnalyzer = TokenReadinessAnalyzer(),
 
-    # LOCAL METHODS:
-        *   push_coord_to_token(
-                    self,
-                    token: Token,
-                    position: Coord,
-                    coord_service: CoordService = CoordService()
-            ) -> InsertionResult:
+    Methods:
+        push_coord_to_token(token: Token, position: Coord, coord_service: CoordService) -> InsertionResult:
             
         *   promote_pawn(
                     self,
@@ -124,17 +119,18 @@ class TokenService(IntegrityService[Token]):
             3.  If the token has an empty coord stack return the exception in the DeletionResult.
             4.  If a new coord has not been pushed since the last undo send and exception in the DeletionResult.
                 Else, forward the results of token.positions.pop_coord() to the caller.
-        # PARAMETERS:
-            *   token (Token)
-        # RETURN:
-            *   DeletionResult[Coord] containing either:
-                    - On failure: Exception
-                    - On success: Coord in the payload.
-        # RAISES:
-            *   TokenServiceException
-            *   OverMoveUndoLimitException
-            *   TokenOpeningSquareNotFoundException
-            *   PoppingEmtpyCoordStackException
+                
+        Args:
+            token: Token
+            
+        Returns:
+            DeletionResult[Coord]
+            
+        Raises:
+            TokenServiceException
+            OverMoveUndoLimitException
+            TokenOpeningSquareNotFoundException
+            PoppingEmtpyCoordStackException
         """
         method = "TokenService.pop_coord_from_token"
         
@@ -275,17 +271,18 @@ class TokenService(IntegrityService[Token]):
                 InsertionResult.
             2.  If the rank fails validation send an exception chain to the InsertionResult.
             3.  Update the pawn's rank and promotion state then send the success InsertionResult.
-        # PARAMETERS:
-            *   pawn (PawnToken)
-            *   new_rank (Rank)
-            *   rank_service (RankService)
-        # RETURN:
-            *   InsertionResult[bool] containing either:
-                    - On failure: Exception
-                    - On success: True.
-        # RAISES:
-            *   TokenServiceException
-            *   CoordAlreadyToppingStackException
+            
+        Args:
+            pawn: PawnToken
+            new_rank: Rank
+            rank_service: RankService
+            
+        Returns:
+            InsertionResult
+            
+        Raises:
+            TokenServiceException
+            CoordAlreadyToppingStackException
         """
         method = "TokenService.promote_pawn"
         
@@ -388,15 +385,16 @@ class TokenService(IntegrityService[Token]):
             2.  If the position is already the updated position return the exception in the InsertionResult.
             3.  If the pushing the position to the token's coord stack fails encapsulate the exception then
                 send the exception chain in the InsertionResult's payload.
-        # PARAMETERS:
-            *   token (Token)
-        # RETURN:
-            *   InsertionResult[bool] containing either:
-                    - On failure: Exception
-                    - On success: True.
-        # RAISES:
-            *   TokenServiceException
-            *   CoordAlreadyToppingStackException
+                
+        # Args:
+            token: Token
+            
+        Returns:
+            InsertionResult
+            
+        Raises:
+            TokenServiceException
+            CoordAlreadyToppingStackException
         """
         method = "TokenService.deploy_on_board"
         

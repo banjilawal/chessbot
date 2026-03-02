@@ -15,7 +15,7 @@ __all__ = [
     "NullRequestException",
 ]
 
-from chess.system import NullException
+from logic.system import NullException
 
 # ======================# SERVICE_REQUEST_NULL_EXCEPTION #======================#
 class NullRequestException(NullException):

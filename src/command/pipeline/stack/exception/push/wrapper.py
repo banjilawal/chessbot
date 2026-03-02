@@ -12,8 +12,8 @@ __all__ = [
     "PushingPipelineFailedException",
 ]
 
-from chess.pipeline import PipelineStackException
-from chess.system import InsertionException
+from logic.pipeline import PipelineStackException
+from logic.system import InsertionException
 
 
 # ======================# PIPELINE_PUSH_FAILURE #======================#

@@ -10,7 +10,7 @@ from __future__ import annotations
 
 from typing import Any, Dict
 
-from chess.system import (
+from logic.system import (
     BuildResult, Builder, IdentityService, LoggingLevelRouter, NullArgumentsException, Request, RequestBuildException
 )
 

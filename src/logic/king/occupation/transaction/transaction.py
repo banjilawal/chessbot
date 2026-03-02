@@ -1,7 +1,7 @@
 # src/logic/king/occupation/transaction/transaction.py
 
 """
-Module: `chess.king.occupation.transaction.transaction`
+Module: `logic.king.occupation.transaction.transaction`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

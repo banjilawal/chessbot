@@ -1,9 +1,9 @@
 from typing import Generic, cast
 
-from chess.token.validator import ChessPieceValidator
-from chess.system.validate.validator import Validator
+from logic.token.validator import ChessPieceValidator
+from logic.system.validate.validator import Validator
 from assurance.exception.validation.base_validationpy import ChessPieceValidationException
-from chess.board.coordinate_bind import CoordinateBinding
+from logic.board.coordinate_bind import CoordinateBinding
 
 
 class CoordinateSBindingValidator(Validator):

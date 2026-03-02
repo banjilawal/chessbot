@@ -31,35 +31,27 @@ class Token(ABC):
     # PROVIDES:
     None
 
-    # LOCAL ATTRIBUTES:
-        *   id (int)
-        *   team (Team)
-        *   rank (Rank)
-        *   designation (str)
-        *   roster_number (int)
-        *   positions (CoordStack)
-        *   opening_square_name (str)
-        *   current_position (Optional[Coord])
-        *   previous_address (Optional[Coord])
-        *   token_board_state (TokenBoardState)
-        *   readiness_state (ReadinessState)
+    Attributes:
+        id: int
+        team: Team
+        rank: Rank
+        designatio: str
+        roster_number: int
+        positions: CoordStack
+        opening_square_name: str
+        current_position: Optional[Coord]
+        previous_address: Optional[Coord]
+        token_board_state: TokenBoardState
+        readiness_state: ReadinessState
 
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR PARAMETERS:
-        *   id (int)
-        *   team (Team)
-        *   rank (Rank)
-        *   designation (str)
-        *   roster_number (int)
-        *   opening_square_name (str)
-
-    # LOCAL METHODS:
-        *   is_not_deployed(self) -> bool
-        *   is_active(self) -> bool
-        *   is_disabled(self) -> bool
-        *   is_enemy(self, token: Token) -> bool
+    Methods:
+        is_not_deployed(self) -> bool
+        is_active(self) -> bool
+        is_disabled(self) -> bool
+        is_enemy(self, token: Token) -> bool
 
     # INHERITED METHODS:
     None
@@ -86,7 +78,15 @@ class Token(ABC):
             opening_square_name: str,
             positions: CoordStack = CoordStack(),
     ):
-        method = "Token.__init__"
+        """
+        Args:
+            id: int
+            team: Team
+            rank: Rank
+            designation: str
+            roster_number: int
+            opening_square_name: str
+        """
         self._id = id
         self._team = team
         self._rank = rank
@@ -172,7 +172,7 @@ class Token(ABC):
     def board_state(self, token_board_state: TokenBoardState):
         self._token_board_state = token_board_state
     
-    def _set_rank(self, rank: Rank) -> None:
+    def set_rank(self, rank: Rank) -> None:
         self._rank = rank
     
     def is_enemy(self, token: Token) -> bool:

@@ -35,7 +35,7 @@ The major theme influencing the modules design are
   3. The root of a scalable, modular hierarchy for coord_stack_validator related exception.
 
 # SECTION 7 - Dependencies:
-* From `chess.system`:
+* From `logic.system`:
     `ChessException`
 
 # SECTION 8 - Contains:

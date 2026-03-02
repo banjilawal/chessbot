@@ -14,7 +14,7 @@ __all__ = [
 ]
 
 from typing import Optional
-from chess.system import AnchorException
+from logic.system import AnchorException
 
 
 # ======================# COMMAND_EXCEPTION #======================#

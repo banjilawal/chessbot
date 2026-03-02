@@ -12,8 +12,8 @@ ___all__ = [
     "PipelineStackException",
 ]
 
-from chess.pipeline import PipelineException
-from chess.system import StackServiceException
+from logic.pipeline import PipelineException
+from logic.system import StackServiceException
 
 
 # ======================# PIPELINE_STACK_SERVICE EXCEPTION #======================#

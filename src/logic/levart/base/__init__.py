@@ -1,7 +1,7 @@
 # src/logic/owner/travel/base/__init__.py
 
 """
-Module: `chess.owner.travel.base`
+Module: `logic.owner.travel.base`
 Author: Banji Lawal
 Created: 2025-10-06
 Version: 1.0.1

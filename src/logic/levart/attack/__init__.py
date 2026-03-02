@@ -1,7 +1,7 @@
 # src/logic/travel/attack/__init__.py
 
 """
-Module: `chess.travel.travel.attack`
+Module: `logic.travel.travel.attack`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

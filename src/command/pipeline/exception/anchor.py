@@ -15,7 +15,7 @@ __all__ = [
     "PipelineException",
 ]
 
-from chess.system import AnchorException
+from logic.system import AnchorException
 
 
 # ======================# PIPELINE_EXCEPTION #======================#

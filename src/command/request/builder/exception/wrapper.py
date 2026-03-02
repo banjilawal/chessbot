@@ -14,7 +14,7 @@ __all__ = [
     "RequestBuildException",
 ]
 
-from chess.system import BuildException
+from logic.system import BuildException
 
 
 # ======================# SERVICE_REQUEST_BUILD_FAILURE #======================#

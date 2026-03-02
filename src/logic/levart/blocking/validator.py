@@ -1,7 +1,7 @@
 # src/logic/owner/travel/blocking/factory.py
 
 """
-Module: `chess.owner.travel.blocking.coord_stack_validator`
+Module: `logic.owner.travel.blocking.coord_stack_validator`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

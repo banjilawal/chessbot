@@ -1,7 +1,7 @@
 # src/logic/engine/engine.py
 
 """
-Module: `chess.engine.engine`
+Module: `logic.engine.engine`
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0

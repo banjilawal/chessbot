@@ -9,12 +9,12 @@ version: 1.0.0
 
 from typing import List, cast
 
-from chess.system import (
+from logic.system import (
     DeletionResult, IdFactory, IdentityService, InsertionResult, LoggingLevelRouter, NUMBER_OF_COLUMNS, NUMBER_OF_ROWS,
     SearchResult, StackService,
     id_emitter
 )
-from chess.pipeline import (
+from logic.pipeline import (
     AddingDuplicatePipelineException, PoppingEmptyPipelineStackException, PoppingPipelineStackFailedException,
     PushingPipelineFailedException, Pipeline, PipelineContext, PipelineContextService, PipelineService, PipelineStackException
 )

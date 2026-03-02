@@ -9,7 +9,7 @@ Created: 2026-02-24
 from __future__ import annotations
 from typing import Any, cast
 
-from chess.system import (
+from logic.system import (
     IdentityService, LoggingLevelRouter, NullArgumentsException, NullRequestException, Validator, Request,
     RequestValidationException, ValidationResult,
 )

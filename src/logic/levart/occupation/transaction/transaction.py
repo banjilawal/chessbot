@@ -1,7 +1,7 @@
 # src/logic/owner/travel/occupation/notification/notification.py
 
 """
-Module: `chess.owner.travel.occupation.notification.notification`
+Module: `logic.owner.travel.occupation.notification.notification`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

@@ -1,7 +1,7 @@
 # src/logic/owner/travel/blocking/transaction/__init__.py
 
 """
-Module: `chess.owner.travel.blocking.transaction`
+Module: `logic.owner.travel.blocking.transaction`
 Author: Banji Lawal
 Created: 2025-10-23
 version: 1.0.0

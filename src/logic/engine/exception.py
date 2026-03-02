@@ -36,7 +36,7 @@ PURPOSE:
 DEPENDENCIES:
 ------------
 Requires base rollback_exception classes and constants from the core system:
-From `chess.system`:
+From `logic.system`:
   * Exception: `ChessException`, `ValidationException`, `NullException`,
         `BuildException`.
 

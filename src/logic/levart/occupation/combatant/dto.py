@@ -1,7 +1,7 @@
 # src/logic/owner/travel/occupation/dto.py
 
 """
-Module: `chess.owner.travel.occupation.dto`
+Module: `logic.owner.travel.occupation.dto`
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

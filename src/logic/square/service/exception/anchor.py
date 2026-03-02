@@ -49,9 +49,10 @@ class SquareServiceException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    ERR_CODE = " SQUARE_SERVICE_EXCEPTION"
+    ERR_CODE = "SQUARE_SERVICE_EXCEPTION"
     MSG = " SquareService raised an exception."
-    CLS_NAME = " SquareService"
+    CLS_NAME = "SquareService"
+    CLS_MTHD = None
     
     _cls_name: Optional[str]
     
@@ -61,8 +62,10 @@ class SquareServiceException(AnchorException):
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
             cls_name: Optional[str] = None,
+            cls_mthd: Optional[str] = None,
     ):
-        err_code = err_code or self.ERR_CODE
         msg = msg or self.MSG
+        err_code = err_code or self.ERR_CODE
         cls_name = cls_name or self.CLS_NAME
-        super().__init__(msg=msg, err_code=err_code, ex=ex, cls_name=cls_name)
+        cls_mthd = cls_mthd or self.CLS_MTHD
+        super().__init__(msg=msg, err_code=err_code, ex=ex, cls_name=cls_name, cls_mthd=cls_mthd)

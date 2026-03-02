@@ -1,7 +1,7 @@
 # src/logic/owner/travel/base/event.py
 
 """
-Module: `chess.owner.travel.base.event`
+Module: `logic.owner.travel.base.event`
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0

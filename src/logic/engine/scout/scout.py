@@ -1,7 +1,7 @@
 # src/logic/engine/scout/scout.py
 
 """
-Module: `chess.engine.scout`
+Module: `logic.engine.scout`
 Author: Banji Lawal
 Created: 2025-10-05
 version: 1.0.0

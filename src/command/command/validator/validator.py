@@ -10,7 +10,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, cast
 
-from chess.system import (
+from logic.system import (
     Command, IdentityService, Validator
 )
 

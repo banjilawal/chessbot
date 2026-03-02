@@ -20,7 +20,7 @@ class TokenBoardState(Enum):
             *   It has been removed from the board.
 
     # PARENT:
-    None
+        *   Enum
 
     # PROVIDES:
     None

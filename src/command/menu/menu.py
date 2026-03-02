@@ -11,7 +11,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, List, TypeVar
 
-from chess.system import  CommandRouter
+from logic.system import  CommandRouter
 
 S = TypeVar("S")
 

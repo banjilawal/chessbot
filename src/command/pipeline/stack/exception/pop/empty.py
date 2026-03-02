@@ -14,8 +14,8 @@ __all__ = [
     "PoppingEmptyPipelineStackException",
 ]
 
-from chess.system import NullException
-from chess.pipeline import PipelineStackException
+from logic.system import NullException
+from logic.pipeline import PipelineStackException
 
 
 # ======================# POPPING_EMPTY_PIPELINE_STACK EXCEPTION #======================#

@@ -32,14 +32,14 @@ class SquareStackService(StackService[Square]):
 
     # PROVIDES:
     None
-    
-    # LOCAL ATTRIBUTES:
-        *   SERVICE_NAME (str)
-        *   capacity (int)
-        *   stack (List[Square])
-        *   util (SquareStackUtil)
-        *   service (SquareService)
-        *   context_service (SquareContextService)
+
+    Attributes:
+            SERVICE_NAME: str
+            capacity: int
+            stack: List[Square]
+            util: SquareStackUtil
+            service: SquareService:
+            context_service: SquareContextService
     
     # INHERITED ATTRIBUTES:
         *   See StackService for inherited attributes.
@@ -62,9 +62,8 @@ class SquareStackService(StackService[Square]):
     # INHERITED ATTRIBUTES:
         *   See StackService class for inherited attributes.
         
-    # LOCAL METHODS:
-
-        *   pop() -> DeletionResult[Square]
+    Methods:
+    - pop(): Return DeletionResult[Square]
         *   push(item: Square) -> InsertionResult[bool]
         *   query(context: SquareContext) -> SearchResult[List[Square]]
         *   delete_by_id(id: int, identity_service: IdentityService) -> DeletionResult[Square]

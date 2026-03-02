@@ -14,7 +14,7 @@ __all__ = [
     "CommandValidationException",
 ]
 
-from chess.system import ValidationException
+from logic.system import ValidationException
 
 # ======================# COMMAND_VALIDATION_FAILURE #======================#
 class CommandValidationException(ValidationException):

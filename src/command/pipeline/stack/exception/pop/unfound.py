@@ -13,8 +13,8 @@ __all__ = [
     "PipelineDoesNotExistForRemovalException",
 ]
 
-from chess.system import NullException
-from chess.pipeline import PipelineStackException
+from logic.system import NullException
+from logic.pipeline import PipelineStackException
 
 
 # ======================# PIPELINE_DOES_NOT_EXIST_FOR_REMOVAL EXCEPTION #======================#

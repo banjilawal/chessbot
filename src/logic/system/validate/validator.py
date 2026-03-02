@@ -17,7 +17,8 @@ T = TypeVar("T")
 
 class Validator(ABC, Generic[T]):
     """
-     # ROLE: Validation, Data Integrity Guarantor, Security.
+     # ROLE: Worker:
+     # Task: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
     1.  Ensure an object is certified safe, reliable and consistent before use.

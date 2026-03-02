@@ -1,7 +1,7 @@
 # src/logic/environment/actor_board.py
 
 """
-Module: `chess.environment.actor`
+Module: `logic.environment.actor`
 Author: Banji Lawal
 Created: 2025-10-18
 Version: 1.0.1

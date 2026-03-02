@@ -10,9 +10,9 @@ version: 1.0.0
 #=========== SQUARE.SERVICE PACKAGE CONTENTS ===========#
 
 # Packages
-from .collision import *
+from logic.square.service.utils.collision import *
 from .exception import *
-from .visitation import *
+from logic.square.service.utils.visitation import *
 
 
 # Modules

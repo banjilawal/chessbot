@@ -32,7 +32,7 @@ The major theme influencing the modules design are
 1. Exception specific to verifying ids.
 
 # SECTION 7 - Dependencies:
-* From `chess.system`:
+* From `logic.system`:
     `ChessException`, `ContextException`, `ResultException`
 
 # SECTION 8 - Contains:
@@ -42,7 +42,7 @@ See the list of exception in the `__all__` list following (e.g., `EventException
 # src/logic/system/travel/old_transaction.py
 
 """
-Module: `chess.system.travel.notification`
+Module: `logic.system.travel.notification`
 Author: Banji Lawal
 Created: 2025-09-28
 version: 1.0.0
@@ -75,7 +75,7 @@ The major theme influencing the modules design are
       survivability.
 
 # SECTION 7 - Dependencies:
-* From `chess.system`:
+* From `logic.system`:
     `Result`
 
 * From Python `typing` Library:
@@ -130,14 +130,14 @@ The module only covers the basic properties and behavior objects in the `Event` 
         * Having `Builders` which create subclasses for each state the entity has in its lifecycle.
         * Having `Validators` that ensure a transition will be successful.
   1. This module does not have any logic for executing a `Transaction` that changes an entity's state. Module
-      `chess.system.travel.notification` is responsible for the `Event` lifecycle.
+      `logic.system.travel.notification` is responsible for the `Event` lifecycle.
   2. The module does not verify the correctness of entity_service control or routing information it contains. Directly using the
       module can breach entity_service integrity, propagate inconsistencies or negatively impact performance. Use a
         * `Builder` for the
       DO NOT USE THE MODULE DIRECTLY. is not responsible for verifying the uniqueness of an ID. the `AutoId` class in
-      `chess.system.visitor_id.auto_id` module.
+      `logic.system.visitor_id.auto_id` module.
   1. The module is not responsible for supplying or publishing IDs that meet system requirements.
-      For details about publishing IDs see the `AutoId` class in module `chess.system.visitor_id.auto_id`.
+      For details about publishing IDs see the `AutoId` class in module `logic.system.visitor_id.auto_id`.
 
 # SECTION 4 - Design Considerations and Themes:
 Major themes influencing the design include:
@@ -154,7 +154,7 @@ Major themes influencing the design include:
 3. `IdValidator` can be used as component in more complex verifications.
 
 # SECTION 7 - Dependencies:
-* From `chess.system`:
+* From `logic.system`:
     `ExecutionContext`,
 
 * From Python `typing` Library:
@@ -185,14 +185,14 @@ The module only covers the basic properties and behavior objects in the `Event` 
         * Having `Builders` which create subclasses for each state the entity has in its lifecycle.
         * Having `Validators` that ensure a transition will be successful.
   1. This module does not have any logic for executing a `Transaction` that changes an entity's state. Module
-      `chess.system.travel.notification` is responsible for the `Event` lifecycle.
+      `logic.system.travel.notification` is responsible for the `Event` lifecycle.
   2. The module does not verify the correctness of entity_service control or routing information it contains. Directly using the
       module can breach entity_service integrity, propagate inconsistencies or negatively impact performance. Use a
         * `Builder` for the
       DO NOT USE THE MODULE DIRECTLY. is not responsible for verifying the uniqueness of an ID. the `AutoId` class in
-      `chess.system.visitor_id.auto_id` module.
+      `logic.system.visitor_id.auto_id` module.
   1. The module is not responsible for supplying or publishing IDs that meet system requirements.
-      For details about publishing IDs see the `AutoId` class in module `chess.system.visitor_id.auto_id`.
+      For details about publishing IDs see the `AutoId` class in module `logic.system.visitor_id.auto_id`.
 
 # SECTION 4 - Design Considerations and Themes:
 Major themes influencing the design include:
@@ -209,7 +209,7 @@ Major themes influencing the design include:
 3. `IdValidator` can be used as component in more complex verifications.
 
 # SECTION 7 - Dependencies:
-* From `chess.system`:
+* From `logic.system`:
     `ExecutionContext`,
 
 * From Python `typing` Library:

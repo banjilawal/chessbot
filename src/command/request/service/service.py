@@ -10,7 +10,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from chess.system import (
+from logic.system import (
     IntegrityService, Builder, Command, Request, RequestBuilder,
     RequestValidator, Validator
 )

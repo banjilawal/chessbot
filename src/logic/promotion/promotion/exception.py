@@ -32,7 +32,7 @@ The major theme influencing the modules design are
 1. Exception specific to verifying ids.
 
 # SECTION 7 - Dependencies:
-* From `chess.system`:
+* From `logic.system`:
     `ChessException`, `ContextException`, `ResultException`
 
 # SECTION 8 - Contains:
@@ -77,7 +77,7 @@ PURPOSE:
 DEPENDENCIES:
 ------------
 Requires base rollback_exception classes and constants from the core system:
-From `chess.system`:
+From `logic.system`:
   * Exception: `ChessException`, `ValidationException`, `NullException`,
         `BuildException`.
 
@@ -238,7 +238,7 @@ to improve code clarity and facilitate robust error handling within the chess en
 DEPENDENCIES:
 ------------
 Requires base rollback_exception classes and constants from the core system:
-From `chess.system`:
+From `logic.system`:
   * Constants: `NUMBER_OF_ROWS`, `NUMBER_OF_COLUMNS`
   * Exception: `ChessException`, `ValidationException`, `NullException`,
         `BuildException`.

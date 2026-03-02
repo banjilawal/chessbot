@@ -15,7 +15,7 @@ __all__ = [
     "CommandServiceException",
 ]
 
-from chess.system import IntegrityServiceException
+from logic.system import IntegrityServiceException
 
 # ======================# COMMAND_SERVICE_EXCEPTION #======================#
 class CommandServiceException(IntegrityServiceException):

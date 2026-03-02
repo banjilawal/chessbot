@@ -16,7 +16,7 @@ __all__ = [
 
 from typing import Optional
 
-from chess.system import ServiceRequestDebugException
+from logic.system import ServiceRequestDebugException
 
 # ======================# WRONG_ARGUMENT_TYPE_EXCEPTION #======================#
 class ArgumentTypeException(ServiceRequestDebugException):
