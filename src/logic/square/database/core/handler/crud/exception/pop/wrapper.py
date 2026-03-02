@@ -1,34 +1,34 @@
-# src/logic/vector/builder/exception/wrapper.py
+# src/logic/square/database/core/exception/deletion/wrapper.py
 
 """
-Module: logic.vector.builder.exception.wrapper
+Module: logic.square.database.core.exception.deletion.wrapper
 Author: Banji Lawal
-Created: 2025-09-08
-Version: 1.0.0
+Created: 2025-11-19
+version: 1.0.0
 """
 
 from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# VECTOR_BUILD_FAILURE #======================#
-    "VectorBuildException",
+    # ======================# SQUARE_STACK_POP_FAILURE #======================#
+    "SquareStackPopException",
 ]
 
-from logic.system import BuildException
+from logic.system import DeletionException
 
 
-# ======================# VECTOR_BUILD_FAILURE #======================#
-class VectorBuildException(BuildException):
+# ======================# SQUARE_STACK_POP_FAILURE #======================#
+class SquareStackPopException(DeletionException):
     """
     # ROLE: Exception Chain Layer 1, Exception Messaging
     # TASK: Worker Method Identifier
 
     # RESPONSIBILITIES:
-    1.  Identify the VectorBuilder method where the process failed.
+    1.  Identify the SquareStackService method where the pop failed.
 
     # PARENT:
-        *   BuildException
+        *   DeletionException
 
     # PROVIDES:
     None
@@ -37,7 +37,7 @@ class VectorBuildException(BuildException):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See BuildException class for inherited attributes.
+        *   See DeletionException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:)
         *   err_code (str)
@@ -51,13 +51,13 @@ class VectorBuildException(BuildException):
    None
 
     # INHERITED METHODS:
-        *   See BuildException class for inherited methods.
+        *   See DeletionException class for inherited methods.
     """
     MTHD = None
-    OP = "Build"
-    RSLT_TYPE = "BuildResult"
-    ERR_CODE = "VECTOR_BUILD_FAILURE"
-    MSG = "Failure in VectorBuilder method."
+    OP = "Delete"
+    RSLT_TYPE = "DeletionResult"
+    MSG = "SquareStack pop failed."
+    ERR_CODE = "SQUARE_STACK_POP_FAILURE"
     
     def __init__(
             self,

@@ -1,34 +1,33 @@
-# src/logic/vector/builder/exception/wrapper.py
+# src/logic/square/service/collision/exception/debug/wrapper.py
 
 """
-Module: logic.vector.builder.exception.wrapper
+Module: logic.square.service.collision.exception.debug.wrapper
 Author: Banji Lawal
-Created: 2025-09-08
-Version: 1.0.0
+Created: 2025-11-22
+version: 1.0.0
 """
 
 from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# VECTOR_BUILD_FAILURE #======================#
-    "VectorBuildException",
+    # ======================# SQUARE_STACK_PUSH_FAILURE #======================#
+    "SquareStackPushException",
 ]
 
-from logic.system import BuildException
+from logic.system import InsertionException
 
-
-# ======================# VECTOR_BUILD_FAILURE #======================#
-class VectorBuildException(BuildException):
+# ======================# SQUARE_STACK_PUSH_FAILURE #======================#
+class SquareStackPushException(InsertionException):
     """
     # ROLE: Exception Chain Layer 1, Exception Messaging
     # TASK: Worker Method Identifier
 
     # RESPONSIBILITIES:
-    1.  Identify the VectorBuilder method where the process failed.
-
+    1.  Identify the SquareStackService method where the push failed.
+        
     # PARENT:
-        *   BuildException
+        *   InsertionException
 
     # PROVIDES:
     None
@@ -37,7 +36,7 @@ class VectorBuildException(BuildException):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See BuildException class for inherited attributes.
+        *   See InsertionException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:)
         *   err_code (str)
@@ -51,13 +50,13 @@ class VectorBuildException(BuildException):
    None
 
     # INHERITED METHODS:
-        *   See BuildException class for inherited methods.
+        *   See InsertionException class for inherited methods.
     """
     MTHD = None
-    OP = "Build"
-    RSLT_TYPE = "BuildResult"
-    ERR_CODE = "VECTOR_BUILD_FAILURE"
-    MSG = "Failure in VectorBuilder method."
+    OP = "Insert"
+    RSLT_TYPE = "InsertionResult"
+    MSG = "SquareStack push failed."
+    ERR_CODE = "SQUARE_STACK_PUSH_FAILURE"
     
     def __init__(
             self,

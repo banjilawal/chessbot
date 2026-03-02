@@ -1,9 +1,9 @@
-# src/logic/hostage/exception/debug.py
+# src/logic/square/database/core/util/stats/exception/full.py
 
 """
-Module: logic.hostage.exception.debug
+Module: logic.square.database.core.util.stats.exception.full
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2026-02-21
 version: 1.0.0
 """
 
@@ -11,24 +11,27 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# HOSTAGE_DEBUG_EXCEPTION #======================#
-    "HostageDebugException",
+    # ======================# SQUARE_STACK_FULL_EXCEPTION #======================#
+    "SquareStackFullException",
 ]
 
 from logic.system import DebugException
 
-# ======================# HOSTAGE_DEBUG_EXCEPTION #======================#
-class HostageDebugException(DebugException):
+# ======================# SQUARE_STACK_FULL_EXCEPTION #======================#
+class SquareStackFullException(DebugException):
     """
     # ROLE: Exception Chain Layer 2, Exception Messaging
     # TASK: Capture Error Variable State
-    
+
     # RESPONSIBILITIES:
     1.  Produce the:
             *   variable,
             *   it's value,
             *   event which fired the variable into its error state.
         which occurred in the Hostage method identified in layer-0 of the exception chain.
+        
+    2.  Indicate that pushing square on to the stack failed because there was no space
+        left.
 
     # PARENT:
         *   DebugException
@@ -50,15 +53,15 @@ class HostageDebugException(DebugException):
         *   val (Optional[Any])
 
     # LOCAL METHODS:
-    None
+   None
 
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
     VAR = Optional[Any]
     VAL = Optional[Any]
-    ERR_CODE = "HOSTAGE_EXCEPTION"
-    MSG = str = "Hostage had an error."
+    ERR_CODE = "SQUARE_STACK_FULL_EXCEPTION"
+    MSG = "Pushing square failed: The is no space left for adding another square."
     
     def __init__(
             self,
@@ -81,4 +84,3 @@ class HostageDebugException(DebugException):
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
         super().__init__(ex=ex, msg=msg, err_code=err_code, var=var, val=val,)
-

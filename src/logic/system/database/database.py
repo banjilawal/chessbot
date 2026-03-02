@@ -1,7 +1,7 @@
-# src/logic/system/database/service.py
+# src/logic/system/database/database.py
 
 """
-Module: logic.system.database.service
+Module: logic.system.database.database
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
@@ -12,9 +12,10 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Generic, List, Optional, TypeVar
 
-from logic import Context, ContextService, IntegrityService, SearchResult
-from logic.system import Service, InsertionResult, LoggingLevelRouter
-
+from logic.system import (
+    Context, ContextService, DeletionResult, InsertionResult, IntegrityService, LoggingLevelRouter,
+    SearchResult, Service
+)
 
 T = TypeVar("T")
 
@@ -49,7 +50,6 @@ class Database(Service, Generic[T]):
     @abstractmethod
     def size(self) -> int:
         pass
-        
     
     @property
     @abstractmethod
@@ -67,6 +67,7 @@ class Database(Service, Generic[T]):
         
     @abstractmethod
     def context_service(self) -> ContextService[T]:
+        pass
     
     @abstractmethod
     @LoggingLevelRouter.monitor
@@ -75,7 +76,7 @@ class Database(Service, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def delete_by_id(self, id: int) -> InsertionResult[T]:
+    def delete_by_id(self, id: int) -> DeletionResult[T]:
         pass
     
     @abstractmethod

@@ -278,7 +278,8 @@ class TokenVisitHandler():
     def _verify_token_opens_from_square(self, target: Square, visitor: Token) -> ValidationResult[Square]:
         """
         # ACTION:
-            1.  If the token's opening name differs from the target's return a ValidationResult with the exception.
+            1.  If the token's opening name differs from the target's return a
+            ValidationResult with the exception.
                 Else return a Validation success result.
         Args:
             visitor: Token

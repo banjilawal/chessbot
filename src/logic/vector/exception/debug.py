@@ -44,32 +44,41 @@ class VectorDebugException(DebugException):
     # CONSTRUCTOR PARAMETERS:
         *   msg (str)
         *   err_code (str)
-        *   ex (Optional[Exception])
         *   var (Optional[str])
         *   val (Optional[Any])
+        *   ex (Optional[Exception])
 
     # LOCAL METHODS:
-   None
+    None
 
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    ERR_CODE = "VECTOR_EXCEPTION"
-    MSG = str = "Vector had an error."
     VAR = Optional[Any]
     VAL = Optional[Any]
-    
+    ERR_CODE = "VECTOR_EXCEPTION"
+    MSG = str = "Vector had an error."
+
     def __init__(
             self,
-            err_code: Optional[str] = None,
             msg: Optional[str] = None,
-            ex: Optional[Exception] = None,
             var: Optional[str] = None,
             val: Optional[Any] = None,
+            err_code: Optional[str] = None,
+            ex: Optional[Exception] = None,
+           
     ):
+        """
+        Args:
+            msg (Optional[str]):
+            var (Optional[str]):
+            val (Optional[Any]):
+            ex (Optional[Exception]):
+            err_code (Optional[str]):
+        """
         var = var or self.VAR
         val = val or self.VAL
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        super().__init__(ex=ex, msg=msg, var=var, val=val, err_code=err_code,)
+        super().__init__(ex=ex, msg=msg, err_code=err_code, var=var, val=val,)
 

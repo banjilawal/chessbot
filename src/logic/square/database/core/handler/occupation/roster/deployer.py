@@ -14,18 +14,13 @@ from copy import deepcopy
 from logic.token import TokenContext
 from logic.team import Team, TeamService
 from logic.system import LoggingLevelRouter, UpdateResult
-from logic.square import (
-    CannotDeployUnderStrengthTeamException, RosterDeploymentException, SquareStackService, SquareStackServiceException,
-    RosterDoubleDeploymentException, RosterDeploymentInterruptedException
-)
 
 class RosterDeployer:
     """
-    # ROLE: Utilities, Update Management,
+    # ROLE: Handler. Utility, Transport, Utilities, Update Management,
 
     # RESPONSIBILITIES:
     1.  Transfers Team.roster members to their opening squares.
-
 
     # PARENT:
     None

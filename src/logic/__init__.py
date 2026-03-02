@@ -11,28 +11,28 @@ import logging
 
 log = logging.getLogger("chessbot")
 
-from .attack import *
-from .arena import *
-from .board import *
-from .coord import *
-from .edge import *
-from .engine import *
-from .formation import *
-from .game import *
-from .graph import *
-from .hostage import *
-from .node import *
-from .persona import *
-from .player import *
-from .rank import *
-from .scalar import *
-from .schema import *
-from .snapshot import *
-from .square import *
-from .system import *
-from .team import *
-from .token import *
-from .vector import *
+# from .attack import *
+# from .arena import *
+# from .board import *
+# from .coord import *
+# from .edge import *
+# from .engine import *
+# from .formation import *
+# from .game import *
+# from .graph import *
+# from .hostage import *
+# from .node import *
+# from .persona import *
+# from .player import *
+# from .rank import *
+# from .scalar import *
+# from .schema import *
+# from .snapshot import *
+# from .square import *
+# from .system import *
+# from .team import *
+# from .token import *
+# from .vector import *
 #
 # from .owner import AgentService, TeamSearchService
 # from .arena import *
