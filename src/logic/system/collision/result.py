@@ -8,7 +8,6 @@ Version: 1.0.0
 """
 
 from __future__ import annotations
-
 from typing import Any, Generic, Optional, TypeVar
 
 from logic.system import CollisionStatus
@@ -67,11 +66,11 @@ class CollisionDetectionResult(Generic[T]):
     def state(self) -> CollisionStatus:
         return self._state
     
-    @@property
+    @property
     def var(self) -> Optional[str]:
         return self._var
     
-    @@property
+    @property
     def value(self) -> Optional[Any]:
         return self._value
         
@@ -135,7 +134,7 @@ class CollisionDetectionResult(Generic[T]):
         )
     
     @classmethod
-    def collision_detected(
+    def collision(
             cls,
             var: str,
             val: Any,
@@ -153,7 +152,7 @@ class CollisionDetectionResult(Generic[T]):
         )
     
     @classmethod
-    def no_collision_detected(cls) -> CollisionDetectionResult[T]:
+    def no_collision(cls) -> CollisionDetectionResult[T]:
         return cls(
             var=None,
             value=None,
@@ -164,7 +163,7 @@ class CollisionDetectionResult(Generic[T]):
         )
     
     @classmethod
-    def detection_failure(cls, exception: Exception):
+    def detector_failure(cls, exception: Exception):
         return cls(
             var=None,
             value=None,
@@ -175,7 +174,7 @@ class CollisionDetectionResult(Generic[T]):
         )
     
     @classmethod
-    def collision_timed_out(cls, exception: Exception):
+    def detector_timed_out(cls, exception: Exception):
         return cls(
             var=None,
             value=None,

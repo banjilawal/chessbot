@@ -1,37 +1,29 @@
-# src/logic/square/square/service/collision/wrapper.py
-
-"""
-Module: logic.square.service.collision.wrapper
-Author: Banji Lawal
-Created: 2026-02-21
-version: 1.0.0
-"""
-
 from __future__ import annotations
 from typing import Optional
 
 ___all__ = [
-    # ======================# SQUARE_CRUD_HANDLER_EXCEPTION #======================#
-    "SquareCrudHandlerException",
+    # ======================# SQUARE_COLLISION_DETECTION_EXCEPTION #======================#
+    "SquareCollisionDetectionException",
 ]
 
-from logic.system import AnchorException
+from logic.system import CollisionDetectionException
 
 
-# ======================# SQUARE_CRUD_HANDLER_EXCEPTION #======================#
-class SquareCrudHandlerException(AnchorException):
+# ======================# SQUARE_COLLISION_DETECTION_EXCEPTION #======================#
+class SquareCollisionDetectionException(CollisionDetectionException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Provide SquareStackCrudHandler as:
+    1.  Provide SquareCollisionDetector as:
             *   Reporting
             *   Coverage
         target for layer-2 debugging exceptions.
-    2.  Indicate which SquareStackCrudHandler method received a worker's (layer-1) failure result.
+    2.  Indicate which SquareCollisionDetector method received a worker's
+        (layer-1) failure result.
 
     # PARENT:
-        *   AnchorException
+        *   CollisionDetectionException
 
     # PROVIDES:
     None
@@ -40,7 +32,7 @@ class SquareCrudHandlerException(AnchorException):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See AnchorException class for inherited attributes.
+        *   See CollisionDetectionException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
         *   msg (str)
@@ -53,70 +45,42 @@ class SquareCrudHandlerException(AnchorException):
     None
 
     # INHERITED METHODS:
-        *   See AnchorException class for inherited methods.
+        *   See CollisionDetectionException class for inherited methods.
     """
-    CLS_MTHD = None
-    CLS_NAME = "SquareStackCrudHandler"
-    ERR_CODE = "SQUARE_CRUD_HANDLER_EXCEPTION"
-    MSG = "SquareStackCrudHandler raised an exception."
+    MTHD = None
+    OP = "CollisionDetection"
+    RSLT_TYPE = "CollisionDetectionResult"
+    ERR_CODE = "SQUARE_COLLISION_DETECTION_EXCEPTION"
+    MSG = "SquareCollisionDetection raised an exception."
     
     def __init__(
             self,
-            err_code: Optional[str] = None,
+            op: Optional[str] = None,
             msg: Optional[str] = None,
+            mthd: Optional[str] = None,
             ex: Optional[Exception] = None,
-            cls_name: Optional[str] = None,
-            cls_mthd: Optional[str] = None
+            err_code: Optional[str] = None,
+            rslt_type: Optional[str] = None,
     ):
         """
         Args:
+            op: Optional[str]
             msg: Optional[str]
+            mthd: Optional[str]
+            ex Optional[Exception]
             err_code: Optional[str]
-            ex: Optional[Exception]
-            cls_name: Optional[str]
-            cls_mthd: Optional[str]
+            rslt_type: Optional[str]
         """
+        op = op or self.OP
         msg = msg or self.MSG
+        mthd = mthd or self.MTHD
         err_code = err_code or self.ERR_CODE
-        cls_name = cls_name or self.CLS_NAME
-        cls_mthd = cls_mthd or self.CLS_MTHD
+        rslt_type = rslt_type or self.RSLT_TYPE
         super().__init__(
             ex=ex,
+            op=op,
             msg=msg,
+            mthd=mthd,
             err_code=err_code,
-            cls_name=cls_name,
-            cls_mthd=cls_mthd
+            rslt_type=rslt_type,
         )
-
-
-__all__ = [
-    # ======================# COLLISION_DETECTION_OPERATION_FAILURE #======================#
-    "SquareCollisionDetectionException",
-]
-
-from logic.system import CollisionDetectionException
-
-
-# ======================# COLLISION_DETECTION_OPERATION_FAILURE #======================#
-class SquareCollisionDetectionException(CollisionDetectionException):
-    """
-    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
-
-    # RESPONSIBILITIES:
-    1.  An error occurred in SquareCollisionDetector.detect that prevented a successful, no collisions
-        detected result.
-
-    # PARENT:
-        *   CollisionDetectionException
-
-    # PROVIDES:
-    None
-
-    # LOCAL ATTRIBUTES:
-    None
-
-    INHERITED ATTRIBUTES:
-    None
-    """
-    ERR_CODE = "COLLISION_DETECTION_OPERATION_FAILURE"
-    MSG = "SquareCollisionDetection operation failed."

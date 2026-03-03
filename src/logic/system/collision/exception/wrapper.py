@@ -15,11 +15,11 @@ __all__ = [
     "CollisionDetectionException",
 ]
 
-from logic.system import CollectionOperationException
+from logic.system import OperationException
 
 
 # ======================# COLLISION_DETECTION_FAILURE #======================#
-class CollisionDetectionException(CollectionOperationException):
+class CollisionDetectionException(OperationException):
     """
     # ROLE: Exception Chain Layer 1, Exception Messaging
     # TASK: Worker Method Identifier
@@ -28,7 +28,7 @@ class CollisionDetectionException(CollectionOperationException):
     1.  Encapsulate the Layer-1 DebugException which describes why the collision detection operation was aborted.
 
     # PARENT:
-        *   CollectionOperationException
+        *   OperationException
 
     # PROVIDES:
     None
@@ -37,7 +37,7 @@ class CollisionDetectionException(CollectionOperationException):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See CollectionException class for inherited attributes.
+        *   See OperationException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:)
         *   err_code (str)

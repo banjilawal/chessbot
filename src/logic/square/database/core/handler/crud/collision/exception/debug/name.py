@@ -1,9 +1,9 @@
-# src/logic/square/service/collision/exception/debug/name.py
+# src/logic/square/database/core/handler/crud/collision/exception/debug/name.py
 
 """
-Module: logic.square.service.collision.exception.debug.name
+Module: logic.square.database.core.handler.crud.collision.exception.debug.name
 Author: Banji Lawal
-Created: 2025-11-22
+Created: 2026-02-22
 version: 1.0.0
 """
 

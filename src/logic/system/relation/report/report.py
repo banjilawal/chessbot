@@ -52,18 +52,6 @@ class RelationReport(Generic[P, S]):
         return self._exception
     
     @property
-    def is_failure(self) -> bool:
-        return (
-                self._exception is not None and
-                self._primary is None and
-                self._satellite is None and
-                self._status == (
-                        RelationStatus.ANALYZER_FAILED or
-                        RelationStatus.ANALYZER_TIMED_OUT
-                )
-        )
-    
-    @property
     def does_not_exist(self) -> bool:
         return (
                 self._exception is None and
@@ -99,8 +87,32 @@ class RelationReport(Generic[P, S]):
                 self._status == RelationStatus.BIDIRECTIONAL
         )
     
+    @property
+    def is_analyzer_failure(self) -> bool:
+        return (
+                self._exception is not None and
+                self._primary is None and
+                self._satellite is None and
+                self._status == (
+                        RelationStatus.ANALYZER_FAILED or
+                        RelationStatus.ANALYZER_TIMED_OUT
+                )
+        )
+    
+    @property
+    def is_analyzer_timed_out(self) -> bool:
+        return (
+                self._exception is not None and
+                self._primary is None and
+                self._satellite is None and
+                self._status == (
+                        RelationStatus.ANALYZER_FAILED or
+                        RelationStatus.ANALYZER_TIMED_OUT
+                )
+        )
+    
     @classmethod
-    def failure(cls, exception: Exception) -> RelationReport[P, S]:
+    def analyzer_failure(cls, exception: Exception) -> RelationReport[P, S]:
         return RelationReport(
             primary=None,
             satellite=None,
@@ -109,7 +121,7 @@ class RelationReport(Generic[P, S]):
         )
     
     @classmethod
-    def timed_out(cls, exception: Exception) -> RelationReport[P, S]:
+    def analyzer_timed_out(cls, exception: Exception) -> RelationReport[P, S]:
         return RelationReport(
             primary=None,
             satellite=None,
@@ -132,7 +144,7 @@ class RelationReport(Generic[P, S]):
             primary=None,
             exception=None,
             satellite=satellite,
-            status=RelationStatus.REGISTRATION_NOT_SUBMITTED
+            status=RelationStatus.REGISTRATION_NOT_SUBMITTED,
         )
     
     @classmethod
@@ -141,7 +153,7 @@ class RelationReport(Generic[P, S]):
             satellite=None,
             exception=None,
             primary=primary,
-            status=RelationStatus.STALE_LINK_NOT_PURGED
+            status=RelationStatus.STALE_LINK_NOT_PURGED,
         )
     
     @classmethod

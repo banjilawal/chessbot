@@ -166,3 +166,50 @@ class SquareStackService(StackService[Square]):
             occupant=token,
             square_list=self._stack
         )
+    
+    @LoggingLevelRouter.monitor
+    def query(
+            self,
+            context: SquareContext,
+            square_stack: SquareStackService
+    ) -> SearchResult[List[Square]]:
+        """
+        # ACTION:
+            1.  Pass the context param to context_service manages all error handling and operations in
+                search lifecycle.
+            2.  Any failures context_service will be encapsulated inside a SquareCrudHandlerException
+                which is sent inside a SearchResult.
+            3.  If the search completes successfully the result can be sent directly because it will contain the
+                payload.
+        # PARAMETERS:
+            *   context (SquareContext)
+        # RETURN:
+            *   SearchResult[List[Square] containing either:
+                    - On failure: An exception.
+                    - On success: List[Square] in payload.
+                    - On Empty: No payload nor exception.
+        Raises:
+            *   SquareCrudHandlerException
+        """
+        method = "SquareStackService.query"
+        
+        # --- Handoff the search responsibility to _stack_service. ---#
+        query_result = square_stack.context_service.finder.find(
+            context=context,
+            dataset=square_stack.items,
+        )
+        
+        # Handle the case that, the search is not completed.
+        if query_result.is_failure:
+            # Return the exception chain on failure.
+            return SearchResult.failure(
+                SquareStackServiceException(
+                    cls_mthd=method,
+                    cls_name=self.__name__,
+                    err_code=SquareStackServiceException.ERR_CODE,
+                    msg=SquareStackServiceException.MSG,
+                    ex=query_result.exception,
+                )
+            )
+        # --- For either a successful or empty search result directly forward to the caller. ---#
+        return query_result

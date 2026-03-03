@@ -8,14 +8,11 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import List
 
-from logic.board import Board
-from logic.coord import Coord
-from logic.system import CollisionDetector, CollisionDetectionResult, LoggingLevelRouter, ValidationResult
+from logic.system import CollisionDetector, CollisionDetectionResult, LoggingLevelRouter
 from logic.square import (
-    Square, SquareCollisionDetectionException, SquareContext, SquareCoordCollisionException, SquareIdCollisionException,
-    SquareNameCollisionException, SquareStackService, SquareValidator
+    Square, SquareCollisionDetectionException, SquareCoordCollisionException, SquareIdCollisionException,
+    SquareNameCollisionException, SquareStackService
 )
 
 class SquareCollisionDetector(CollisionDetector[Square]):
@@ -91,107 +88,85 @@ class SquareCollisionDetector(CollisionDetector[Square]):
             candidate=target
         )
         if validation_result.is_failure:
-            # Return the exception chain on failure.
-            return CollisionDetectionResult.detection_failure(
-                target=target,
+            return CollisionDetectionResult.collision(
                 exception=SquareCollisionDetectionException(
-                    msg=f"{method}: {SquareCollisionDetectionException.ERR_CODE}",
-                    ex=validation_result.exception,
+                    mthd=method,
+                    op=SquareCollisionDetectionException.OP,
+                    msg=SquareCollisionDetectionException.MSG,
+                    err_code=SquareCollisionDetectionException.ERR_CODE,
+                    rslt_type=SquareCollisionDetectionException.RSLT_TYPE,
+                    ex=validation_result.exception
                 )
             )
         # --- Loop through the dataset to find matches. ---#
         
-        for member in dataset:
+        for square in square_stack.items:
             # Handle the case that, the target shares its id with a dataset member.
-            if member.id == target.id:
+            if square.id == target.id:
                 # Return target, the collider, and the exception explaining the collision.
-                return CollisionDetectionResult.collision_detected(
+                return CollisionDetectionResult.collision(
+                    var="id",
                     target=target,
-                    collider=member,
+                    collider=square,
+                    val=f"{square.id}",
                     exception=SquareCollisionDetectionException(
-                        msg=f"{method}: {SquareCollisionDetectionException.ERR_CODE}",
+                        mthd=method,
+                        op=SquareCollisionDetectionException.OP,
+                        msg=SquareCollisionDetectionException.MSG,
+                        err_code=SquareCollisionDetectionException.ERR_CODE,
+                        rslt_type=SquareCollisionDetectionException.RSLT_TYPE,
                         ex=SquareIdCollisionException(
-                            f"{method}: {SquareIdCollisionException.MSG}",
+                            var="id",
+                            val=f"{square.id}",
+                            msg=SquareIdCollisionException.MSG,
+                            err_code=SquareIdCollisionException.ERR_CODE,
                         )
                     )
                 )
             # Handle the case that, the target shares its name with a dataset member.
-            if member.name.upper() == target.name.upper():
+            if square.name.upper() == target.name.upper():
                 # Return target, the collider, and the exception explaining the collision.
-                return CollisionDetectionResult.collision_detected(
+                return CollisionDetectionResult.collision(
+                    var="name",
                     target=target,
-                    collider=member,
+                    collider=square,
+                    val=f"{square.name}",
                     exception=SquareCollisionDetectionException(
-                        msg=f"{method}: {SquareCollisionDetectionException.ERR_CODE}",
-                        ex=SquareNameCollisionException(
-                            f"{method}: {SquareNameCollisionException.MSG}",
+                        mthd=method,
+                        op=SquareCollisionDetectionException.OP,
+                        msg=SquareCollisionDetectionException.MSG,
+                        err_code=SquareCollisionDetectionException.ERR_CODE,
+                        rslt_type=SquareCollisionDetectionException.RSLT_TYPE,
+                        ex=SquareIdCollisionException(
+                            var="name",
+                            val=f"{square.name}",
+                            msg=SquareNameCollisionException.MSG,
+                            err_code=SquareNameCollisionException.ERR_CODE,
                         )
                     )
                 )
             # Handle the case that, the target shares its coord with a dataset member.
-            if member.coord == target.coord:
+            if square.coord == target.coord:
                 # Return target, the collider, and the exception explaining the collision.
-                return CollisionDetectionResult.collision_detected(
+                return CollisionDetectionResult.collision(
+                    var="coord",
                     target=target,
-                    collider=member,
+                    collider=square,
+                    val=f"{square.coord}",
                     exception=SquareCollisionDetectionException(
-                        msg=f"{method}: {SquareCollisionDetectionException.ERR_CODE}",
+                        mthd=method,
+                        op=SquareCollisionDetectionException.OP,
+                        msg=SquareCollisionDetectionException.MSG,
+                        err_code=SquareCollisionDetectionException.ERR_CODE,
+                        rslt_type=SquareCollisionDetectionException.RSLT_TYPE,
                         ex=SquareCoordCollisionException(
-                            f"{method}: {SquareCoordCollisionException.MSG}",
+                            var="name",
+                            val=f"{square.name}",
+                            msg=SquareCoordCollisionException.MSG,
+                            err_code=SquareCoordCollisionException.ERR_CODE,
                         )
                     )
                 )
         # --- After the uniqueness tests are passed send the no_collisions report to the caller. ---#
-        return CollisionDetectionResult.no_collision_detected(target=target)
-    
-    @classmethod
-    def detect_attribute_collisions(
-            cls,
-            id: int,
-            name: str,
-            coord: Coord,
-            board: Board,
-            target: Square,
-            square_stack: SquareStackService,
-    ) -> ValidationResult[int]:
-        method = "SquareCollisionDetector.detect_attribute_collisions"
-        
-        # --- Run the id search. ---#
-        id_search_result = board.squares.search(context=SquareContext(id=id))
-        
-        # Handle the case that, the id search was aborted.
-        if id_search_result.is_failure:
-            return ValidationResult.failure(id_search_result.exception)
-        # Handle the case that, the id has already been assigned to a different square.
-        if id_search_result.is_success:
-            # Return the exception chain on failure.
-            return ValidationResult.failure(
-                SquareIdCollisionException(msg=f"{method}:{SquareIdCollisionException.MSG}",)
-            )
-        # --- Run the name search. ---#
-        name_search_result = board.squares.search(context=SquareContext(name=name))
-        
-        # Handle the case that, the name search was aborted.
-        if name_search_result.is_failure:
-            return ValidationResult.failure(name_search_result.exception)
-        # Handle the case that, the name has already been assigned to a different square.
-        if name_search_result.is_success:
-            return ValidationResult.failure(
-                SquareNameCollisionException(msg=f"{method}:{SquareNameCollisionException.MSG}",)
-            )
-        # --- Run the coord search. ---#
-        coord_search_result = board.squares.search(context=SquareContext(coord=coord))
-        
-        # Handle the case that, the coord search was aborted.
-        if coord_search_result.is_failure:
-            return ValidationResult.failure(coord_search_result.exception)
-        # Handle the case that, the id has already been assigned to a different square.
-        if coord_search_result.is_success:
-            # Handle the case that, the coord has already been assigned to a different square.
-            if coord_search_result.is_success:
-                return ValidationResult.failure(
-                    SquareCoordCollisionException(msg=f"{method}:{SquareCoordCollisionException.MSG}",)
-                )
-        # --- Send the success result indicating no attribute conditions. ---#
-        return ValidationResult.success(3)
+        return CollisionDetectionResult.no_collision()
     

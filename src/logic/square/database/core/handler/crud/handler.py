@@ -66,10 +66,11 @@ class SquareStackCrudHandler:
     ) -> InsertionResult:
         """
         # ACTION:
-            1.  If the item is not validated send the exception in the InsertionResult. Else, call the super class
-                push method.
-            2.  If super().push_item fails send the exception in the InsertionResult. Else extract the payload to cast
-                and return to the caller in the BuildResult.
+            1.  Return a failure result containing an exception chain if
+                    *   The square is not safe.
+                    *   One of its properties already in use.
+                    *   The SquareStackService cannot support another square.
+            2.  If none of the failure conditions are met insert the square and send the success result.
         Args:
            square: Square
            square_stack: SquareStackService
@@ -109,7 +110,7 @@ class SquareStackCrudHandler:
             target=square,
             suqare_stack=square_stack,
         )
-        if collision_detection_result.is_success:
+        if not collision_detection_result.is_no_collision:
             # Return the exception chain on failure
             return InsertionResult.failure(
                 SquareCrudHandlerException(
@@ -127,11 +128,11 @@ class SquareStackCrudHandler:
                 )
             )
         # --- Append the square and send the successful InsertionResult. ---#
-        stack.items.append(item)
+        square_stack.items.append(square)
         return InsertionResult.success()
     
     @LoggingLevelRouter.monitor
-    def pop(self, stack: SquareStackService) -> DeletionResult[Square]:
+    def pop(self, square_stack: SquareStackService) -> DeletionResult[Square]:
         """
         # ACTION:
             1.  If the stack is empty send an exception in the DeletionResult. Else remove the
@@ -149,7 +150,7 @@ class SquareStackCrudHandler:
         method = "SquareStackService.pop"
         
         # Handle the case that, there are no tokens in the stack.
-        if stack.is_empty:
+        if square_stack.is_empty:
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 SquareCrudHandlerException(
@@ -170,7 +171,7 @@ class SquareStackCrudHandler:
                 )
             )
         # --- Pop the non-empty token stack. ---#
-        square = stack.items.pop(-1)
+        square = square_stack.items.pop(-1)
         # --- Send the success result to the caller. ---#
         DeletionResult.success(square)
     
@@ -178,7 +179,7 @@ class SquareStackCrudHandler:
     def delete_by_id(
             self,
             id: int,
-            stack: SquareStackService,
+            square_stack: SquareStackService,
             identity_service: IdentityService = IdentityService()
     ) -> DeletionResult[Square]:
         """
@@ -200,10 +201,10 @@ class SquareStackCrudHandler:
             *   SquareStackPopException
             *   PoppingEmptySquareStackException
         """
-        method = "SquareStackService.delete_by_id"
+        method = "SquareStackCrudHandler.delete_by_id"
         
         # Handle the case that, there are no items in the list.
-        if stack.is_empty:
+        if square_stack.is_empty:
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 SquareCrudHandlerException(
@@ -244,11 +245,11 @@ class SquareStackCrudHandler:
             )
         # --- Loop through the collection to ensure all matches are removed. ---#
         target = None
-        for square in stack.items:
+        for square in square_stack.items:
             if square.id == id:
                 # Record a hit before pulling it from the stack.
                 target = square
-                stack.items.remove(square)
+                square_stack.items.remove(square)
         # --- After the purging loop finishes handle the possible return cases. ---#
         
         # At least one square was removed.
@@ -258,7 +259,7 @@ class SquareStackCrudHandler:
         return DeletionResult.nothing_to_delete()
     
     @LoggingLevelRouter.monitor
-    def query(self, context: SquareContext, stack: SquareStackService) -> SearchResult[List[Square]]:
+    def query(self, context: SquareContext, square_stack: SquareStackService) -> SearchResult[List[Square]]:
         """
         # ACTION:
             1.  Pass the context param to context_service manages all error handling and operations in
@@ -280,7 +281,7 @@ class SquareStackCrudHandler:
         method = "SquareStackService.query"
         
         # --- Handoff the search responsibility to _stack_service. ---#
-        query_result = stack.context_service.finder.find(dataset=stack.items, context=context)
+        query_result = square_stack.context_service.finder.find(dataset=square_stack.items, context=context)
         
         # Handle the case that, the search is not completed.
         if query_result.is_failure:
