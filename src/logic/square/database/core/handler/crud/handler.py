@@ -9,8 +9,8 @@ version: 1.0.0
 from typing import List
 
 from logic.square import (
-    PoppingEmptySquareStackException, Square, SquareContext, SquareCrudHandlerException,
-    SquareStackPushException, SquareStackService
+    PoppingEmptySquareStackException, Square, SquareCollisionDetector, SquareContext, SquareCrudHandlerException,
+    SquareStackCountsAnalyzer, SquareStackPushException, SquareStackService
 )
 from logic.system import DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, SearchResult
 
@@ -55,8 +55,15 @@ class SquareStackCrudHandler:
     None
     """
     
+    @classmethod
     @LoggingLevelRouter.monitor
-    def push(self, stack: SquareStackService, item: Square) -> InsertionResult[bool]:
+    def push(
+            cls,
+            square: Square,
+            square_stack: SquareStackService,
+            square_collision_detector: SquareCollisionDetector = SquareCollisionDetector(),
+            square_stack_counts_analyzer: SquareStackCountsAnalyzer = SquareStackCountsAnalyzer(),
+    ) -> InsertionResult:
         """
         # ACTION:
             1.  If the item is not validated send the exception in the InsertionResult. Else, call the super class
@@ -64,16 +71,22 @@ class SquareStackCrudHandler:
             2.  If super().push_item fails send the exception in the InsertionResult. Else extract the payload to cast
                 and return to the caller in the BuildResult.
         Args:
-            item: Square
+           square: Square
+           square_stack: SquareStackService
+           square_collision_detector: SquareCollisionDetector
+           square_stack_counts_analyzer: SquareStackCountsAnalyzer
+
         Returns:
-            InsertionResult[Square]
+            InsertionResult
         Raises:
             SquareCrudHandlerException
         """
-        method = "SquareStackService.add_square"
+        method = "SquareStackCrudHandler.push"
         
         # Handle the case that, there is no capacity for adding another square.
-        available_capacity_computation_result = stack.handler.stats_analyzer.available_capacity(stack=stack)
+        available_capacity_computation_result = square_stack_counts_analyzer.available_capacity(
+            square_stack=square_stack
+        )
         if available_capacity_computation_result.is_failure:
             # Return the exception chain on failure
             return InsertionResult.failure(
@@ -92,11 +105,11 @@ class SquareStackCrudHandler:
                 )
             )
         # Handle the case that, the square is not safe, or its id, name, or coord are in use.
-        collision_report = stack.integrity_service.collision_detector.detect(
-            target=item,
-            dataset=stack.items,
+        collision_detection_result= square_collision_detector.detect(
+            target=square,
+            suqare_stack=square_stack,
         )
-        if collision_report.is_failure:
+        if collision_detection_result.is_success:
             # Return the exception chain on failure
             return InsertionResult.failure(
                 SquareCrudHandlerException(
@@ -109,7 +122,7 @@ class SquareStackCrudHandler:
                         msg=SquareStackPushException.MSG,
                         mthd=SquareStackPushException.MTHD,
                         rslt_type=SquareStackPushException.RSLT_TYPE,
-                        ex=collision_report.exception
+                        ex=collision_detection_result.exception
                     )
                 )
             )

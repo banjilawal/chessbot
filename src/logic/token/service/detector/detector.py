@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import List
 
-from logic.system import CollisionDetector, CollisionReport, LoggingLevelRouter
+from logic.system import CollisionDetector, CollisionDetectionResult, LoggingLevelRouter
 from logic.token import (
     Token, TokenCollisionDetectionException, TokenDesignationCollisionException, TokenIdCollisionException,
     TokenOpeningSquareCollisionException, TokenValidator
@@ -45,19 +45,19 @@ class TokenCollisionDetector(CollisionDetector[Token]):
             target: Token,
             dataset: List[Token],
             token_validator: TokenValidator = TokenValidator(),
-    ) -> CollisionReport[Token]:
+    ) -> CollisionDetectionResult[Token]:
         """
         # ACTION:
-            1.  If the target is not certified as safe, send both exception nd target in the CollisionReport.
+            1.  If the target is not certified as safe, send both exception nd target in the CollisionDetectionResult.
             2.  Loop through the dataset to find id, designation or opening square matches. If any are found,
-                send the: target, collider, and exception in the CollisionReport.
+                send the: target, collider, and exception in the CollisionDetectionResult.
             3.  If no collisions were detected in the loop send the target back in in a no-collision report.
         # PARAMETERS:
             *   target (Token)
             *   dataset (List[Token])
             *   token_validator (TokenValidator)
         # RETURNS:
-            *   CollisionReport[Token] containing either:
+            *   CollisionDetectionResult[Token] containing either:
                     - On failure: Exception or non-empty list.
                     - On Collision: Token, Token
                     - On no collisions: Token
@@ -73,7 +73,7 @@ class TokenCollisionDetector(CollisionDetector[Token]):
         validation_result = token_validator.validate(candidate=target)
         if validation_result.is_failure:
             # Return the exception chain on failure.
-            return CollisionReport.detection_failure(
+            return CollisionDetectionResult.detection_failure(
                 target=target,
                 exception=TokenCollisionDetectionException(
                     msg=f"{method}: {TokenCollisionDetectionException.ERR_CODE}",
@@ -87,7 +87,7 @@ class TokenCollisionDetector(CollisionDetector[Token]):
             # Handle the case that, the target shares its id with a dataset member.
             if member.id == target.id:
                 # Return target, the collider, and the exception explaining the collision.
-                return CollisionReport.collision_detected(
+                return CollisionDetectionResult.collision_detected(
                     target=target,
                     collider=member,
                     exception=TokenCollisionDetectionException(
@@ -100,7 +100,7 @@ class TokenCollisionDetector(CollisionDetector[Token]):
             # Handle the case that, the target shares its designation with a dataset member.
             if member.designation.upper() == target.designation.upper():
                 # Return target, the collider, and the exception explaining the collision.
-                return CollisionReport.collision_detected(
+                return CollisionDetectionResult.collision_detected(
                     target=target,
                     collider=member,
                     exception=TokenCollisionDetectionException(
@@ -113,7 +113,7 @@ class TokenCollisionDetector(CollisionDetector[Token]):
             # Handle the case that, the target shares its opening square with a dataset member.
             if member.opening_square_name.upper() == target.opening_square_name.upper():
                 # Return target, the collider, and the exception explaining the collision.
-                return CollisionReport.collision_detected(
+                return CollisionDetectionResult.collision_detected(
                     target=target,
                     collider=member,
                     exception=TokenCollisionDetectionException(
@@ -124,4 +124,4 @@ class TokenCollisionDetector(CollisionDetector[Token]):
                     )
                 )
         # --- After the uniqueness tests are passed send the no_collisions report to the caller. ---#
-        return CollisionReport.no_collision_detected(target=target)
+        return CollisionDetectionResult.no_collision_detected(target=target)

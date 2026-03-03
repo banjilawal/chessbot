@@ -12,10 +12,10 @@ from typing import List
 
 from logic.board import Board
 from logic.coord import Coord
-from logic.system import CollisionDetector, CollisionReport, LoggingLevelRouter, ValidationResult
+from logic.system import CollisionDetector, CollisionDetectionResult, LoggingLevelRouter, ValidationResult
 from logic.square import (
     Square, SquareCollisionDetectionException, SquareContext, SquareCoordCollisionException, SquareIdCollisionException,
-    SquareNameCollisionException, SquareValidator
+    SquareNameCollisionException, SquareStackService, SquareValidator
 )
 
 class SquareCollisionDetector(CollisionDetector[Square]):
@@ -51,7 +51,7 @@ class SquareCollisionDetector(CollisionDetector[Square]):
                 target: Square,
                 dataset: List[Square],
                 square_validator: SquareValidator = SquareValidator()
-            ) -> CollisionReport[Square]
+            ) -> CollisionDetectionResult[Square]
             
         *   detect_attribute_collisions(id: int, name: str, coord: Coord, board: Board) -> ValidationResult[int]
 
@@ -63,37 +63,36 @@ class SquareCollisionDetector(CollisionDetector[Square]):
     def detect(
             cls,
             target: Square,
-            dataset: List[Square],
-            square_validator: SquareValidator = SquareValidator(),
-    ) -> CollisionReport[Square]:
+            square_stack: SquareStackService,
+    ) -> CollisionDetectionResult[Square]:
         """
         # ACTION:
-            1.  If the target is not certified as safe, send both exception nd target in the CollisionReport.
+            1.  If the target is not certified as safe, send both exception nd target in the CollisionDetectionResult.
             2.  Loop through the dataset to find id, designation or opening square matches. If any are found,
-                send the: target, collider, and exception in the CollisionReport.
+                send the: target, collider, and exception in the CollisionDetectionResult.
             3.  If no collisions were detected in the loop send the target back in a no-collision report.
-        # PARAMETERS:
-            *   target (Square)
-            *   dataset (List[Square])
-            *   square_validator (SquareValidator)
-        # RETURNS:
-            *   CollisionReport[Square] containing either:
-                    - On failure: Exception or non-empty list.
-                    - On Collision: Square, Square
-                    - On no collisions: Square
+        Args:
+            target: Square
+            square_stack: SquareStackService
+            
+        Returns:
+               CollisionDetectionResult[Square]
+               
         Raises:
-            *   SquareIdCollisionException
-            *   SquareCollisionDetectionException
-            *   SquareNameCollisionException
-            *   SquareCoordCollisionException
+            SquareIdCollisionException
+            SquareCollisionDetectionException
+            SquareNameCollisionException
+            SquareCoordCollisionException
         """
         method = "SquareCollisionDetector.detect"
         
         # Handle the case that, the target is not certified as safe.
-        validation_result = square_validator.validate(candidate=target)
+        validation_result = square_stack.integrity_service.validator.validate(
+            candidate=target
+        )
         if validation_result.is_failure:
             # Return the exception chain on failure.
-            return CollisionReport.detection_failure(
+            return CollisionDetectionResult.detection_failure(
                 target=target,
                 exception=SquareCollisionDetectionException(
                     msg=f"{method}: {SquareCollisionDetectionException.ERR_CODE}",
@@ -106,7 +105,7 @@ class SquareCollisionDetector(CollisionDetector[Square]):
             # Handle the case that, the target shares its id with a dataset member.
             if member.id == target.id:
                 # Return target, the collider, and the exception explaining the collision.
-                return CollisionReport.collision_detected(
+                return CollisionDetectionResult.collision_detected(
                     target=target,
                     collider=member,
                     exception=SquareCollisionDetectionException(
@@ -119,7 +118,7 @@ class SquareCollisionDetector(CollisionDetector[Square]):
             # Handle the case that, the target shares its name with a dataset member.
             if member.name.upper() == target.name.upper():
                 # Return target, the collider, and the exception explaining the collision.
-                return CollisionReport.collision_detected(
+                return CollisionDetectionResult.collision_detected(
                     target=target,
                     collider=member,
                     exception=SquareCollisionDetectionException(
@@ -132,7 +131,7 @@ class SquareCollisionDetector(CollisionDetector[Square]):
             # Handle the case that, the target shares its coord with a dataset member.
             if member.coord == target.coord:
                 # Return target, the collider, and the exception explaining the collision.
-                return CollisionReport.collision_detected(
+                return CollisionDetectionResult.collision_detected(
                     target=target,
                     collider=member,
                     exception=SquareCollisionDetectionException(
@@ -143,10 +142,18 @@ class SquareCollisionDetector(CollisionDetector[Square]):
                     )
                 )
         # --- After the uniqueness tests are passed send the no_collisions report to the caller. ---#
-        return CollisionReport.no_collision_detected(target=target)
+        return CollisionDetectionResult.no_collision_detected(target=target)
     
     @classmethod
-    def detect_attribute_collisions(cls, id: int, name: str, coord: Coord, board: Board) -> ValidationResult[int]:
+    def detect_attribute_collisions(
+            cls,
+            id: int,
+            name: str,
+            coord: Coord,
+            board: Board,
+            target: Square,
+            square_stack: SquareStackService,
+    ) -> ValidationResult[int]:
         method = "SquareCollisionDetector.detect_attribute_collisions"
         
         # --- Run the id search. ---#

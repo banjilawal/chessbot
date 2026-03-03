@@ -1,7 +1,7 @@
-# src/logic/system/collection/operation/collision/exception/wrapper.py
+# src/logic/system/collision/exception/wrapper.py
 
 """
-Module: logic.system.collection.operation.collision.exception.wrapper
+Module: logic.system.collision.exception.wrapper
 Author: Banji Lawal
 Created: 2026-02-21
 Version: 1.0.0
@@ -57,7 +57,7 @@ class CollisionDetectionException(CollectionOperationException):
     MSG = "Collision detection failed."
     MTHD = "detect"
     OP_NAME = "CollisionDetection"
-    RSLT = "CollisionReport"
+    RSLT = "CollisionDetectionResult"
     
     def __init__(
             self,

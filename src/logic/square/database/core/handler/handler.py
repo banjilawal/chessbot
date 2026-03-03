@@ -9,7 +9,9 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.square import SquareStackRosterHandler, SquareStackTokenHandler, SquareStackCrudHandler, SquareStackCountsAnalyzer
+from logic.square import (
+    SquareStackRosterHandler, SquareStackTokenHandler, SquareStackCrudHandler, SquareStackCountsAnalyzer
+)
 
 class SquareStackHandler:
     """

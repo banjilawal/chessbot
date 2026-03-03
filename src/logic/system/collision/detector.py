@@ -1,7 +1,7 @@
-# src/logic/system/collection/operation/collision/detector_.py
+# src/logic/system/collision/detector_.py
 
 """
-Module: logic.system.collection.operation.collision.detector_
+Module: logic.system.collision.detector_
 Author: Banji Lawal
 Created: 2026-02-21
 Version: 1.0.0
@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Generic, List, TypeVar
 
-from logic.system import CollisionReport, LoggingLevelRouter
+from logic.system import CollisionDetectionResult, LoggingLevelRouter
 
 T = TypeVar("T")
 
@@ -40,5 +40,5 @@ class CollisionDetector(Generic[T]):
     @classmethod
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def detect(cls, dataset: List[T], target: T, *args, **kwargs) -> CollisionReport[T]:
+    def detect(cls, dataset: List[T], target: T, *args, **kwargs) -> CollisionDetectionResult[T]:
         pass

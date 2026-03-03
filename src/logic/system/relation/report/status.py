@@ -12,5 +12,8 @@ from enum import Enum, auto
 class RelationStatus(Enum):
     NO_RELATION = auto(),
     BIDIRECTIONAL = auto(),
-    REGISTRATION_NOT_SUBMITTED = auto(),
     STALE_LINK_NOT_PURGED = auto(),
+    REGISTRATION_NOT_SUBMITTED = auto(),
+    ANALYZER_FAILED = auto(),
+    ANALYZER_TIMED_OUT = auto(),
+

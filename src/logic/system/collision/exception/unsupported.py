@@ -1,7 +1,7 @@
-# src/logic/system/collection/operation/collision/exception/unsupported.py
+# src/logic/system/collision/exception/unsupported.py
 
 """
-Module: logic.system.collection.operation.collision.exception.unsupported
+Module: logic.system.collision.exception.unsupported
 Author: Banji Lawal
 Created: 2026-02-21
 Version: 1.0.0
@@ -21,7 +21,7 @@ class UnsupportedEmptyCollisionResultException(UnsupportedDataResultStateExcepti
     # ROLE: Information, Reporting, Debug
 
     # RESPONSIBILITIES:
-    1.  Indicate that an CollisionReport can either succeed or fail. There are no other outcomes.
+    1.  Indicate that an CollisionDetectionResult can either succeed or fail. There are no other outcomes.
 
     # PARENT:
         *   UnsupportedDataResultStateException
@@ -37,6 +37,6 @@ class UnsupportedEmptyCollisionResultException(UnsupportedDataResultStateExcepti
     """
     ERR_CODE = "UNSUPPORTED_EMPTY_COLLISION_RESULT_STATE_EXCEPTION"
     MSG = (
-        "An CollisionReport's outcome is either changed, change_failed, collision original == collision, failure."
+        "An CollisionDetectionResult's outcome is either changed, change_failed, collision original == collision, failure."
         " It cannot be empty."
     )
