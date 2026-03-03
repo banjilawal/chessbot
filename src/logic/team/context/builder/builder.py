@@ -75,7 +75,7 @@ class TeamContextBuilder(Builder[TeamContext]):
             *   BuildResult[TeamContext] containing either:
                     - On failure: Exception.
                     - On success: TeamContext in the payload.
-        # RAISES:
+        Raises:
             *   ZeroTeamContextFlagsException
             *   TeamContextBuildException
             *   ArenaTeamContextFlagsException

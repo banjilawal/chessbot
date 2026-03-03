@@ -66,7 +66,7 @@ class RankContextBuilder(Builder[RankContext]):
                 - On success: RankContext in the payload.
                 - On failure: Exception.
 
-        # RAISES:
+        Raises:
             * RankContextBuildException
             * NoRankSearchOptionSelectedException
             * MoreThanOneRankSearchOptionPickedException
@@ -133,7 +133,7 @@ class RankContextBuilder(Builder[RankContext]):
                 - On success: RankContext in the payload.
                 - On failure: Exception.
 
-        # RAISES:
+        Raises:
             * InvalidRankContextException
         """
         method = "RankContextBuilder.build_id_search_context"
@@ -167,7 +167,7 @@ class RankContextBuilder(Builder[RankContext]):
                 - On success: RankContext in the payload.
                 - On failure: Exception.
 
-        # RAISES:
+        Raises:
             * InvalidRankContextException
         """
         method = "RankContextBuilder.build_column_search_context"
@@ -206,7 +206,7 @@ class RankContextBuilder(Builder[RankContext]):
                 - On success: RankContext in the payload.
                 - On failure: Exception.
 
-        # RAISES:
+        Raises:
             * InvalidRankContextException
         """
         method = "RankContextBuilder.build_rank_search_context"

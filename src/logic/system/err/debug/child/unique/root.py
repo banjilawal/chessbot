@@ -52,7 +52,7 @@ class UniqueAttributeException(DebugException):
     """
     ERR_CODE = "UNIQUE_ATTRIBUTE_COLLISION_EXCEPTION"
     MSG = "Two objects have the same value for an attribute that should be unique."
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def unique(

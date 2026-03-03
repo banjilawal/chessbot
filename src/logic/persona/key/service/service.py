@@ -54,7 +54,7 @@ class PersonaKeyService(ContextService[PersonaKey]):
             *   validator (PersonaKeyValidator)
         # RETURNS:
             None
-        # RAISES:
+        Raises:
             None
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator, finder=lookup)

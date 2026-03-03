@@ -57,7 +57,7 @@ class TeamDebugException(DebugException):
     """
     ERR_CODE = "TEAM_EXCEPTION"
     MSG = str = "Team had an error."
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     _var = Optional[str]

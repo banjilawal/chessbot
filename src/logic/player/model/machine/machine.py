@@ -51,7 +51,7 @@ class MachinePlayer(Player):
             *   engine_service (EngineService)
         # RETURNS:
             None
-        # RAISES:
+        Raises:
             None
         """
         super().__init__(id=id, name=name, teams=teams)

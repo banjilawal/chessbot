@@ -65,7 +65,7 @@ class GameFinder(DataFinder[Game]):
             - On error: Exception , payload null
             - On no matches found: Exception null, payload null
 
-        # RAISES:
+        Raises:
             *   TypeError
             *   GameNullDatasetException
             *   GameFinderOperationFailedException
@@ -120,7 +120,7 @@ class GameFinder(DataFinder[Game]):
             - On error: Exception , payload null
             - On no matches found: Exception null, payload null
 
-        # RAISES:
+        Raises:
             *   GameFinderOperationFailedException
         """
         method = "GameFinder._find_by_id"
@@ -159,7 +159,7 @@ class GameFinder(DataFinder[Game]):
             - On error: Exception , payload null
             - On no matches found: Exception null, payload null
 
-        # RAISES:
+        Raises:
             *   GameFinderOperationFailedException
         """
         method = "GameFinder._find_by_agent"

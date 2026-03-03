@@ -67,8 +67,7 @@ class BoardService(IntegrityService[Board]):
         # RETURNS:
         None
 
-        # RAISES:
-        None
+        Raises:
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         self._square_relation_analyzer = square_relation_analyzer

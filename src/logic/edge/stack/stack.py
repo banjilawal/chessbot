@@ -58,7 +58,7 @@ class EdgeStack(StackService[Edge]):
             *   context_service (EdgeContextService)
         # RETURNS:
             None
-        # RAISES:
+        Raises:
             None
         """
         super().__init__(id=id, name=name,)
@@ -98,7 +98,7 @@ class EdgeStack(StackService[Edge]):
             *   InsertionResult[bool] containing either:
                     - On failure: Exception and bool(False).
                     - On success: bool(True) only
-        # RAISES:
+        Raises:
             *   EdgeStackException
             *   PushingEdgeException
             *   AddingDuplicateEdgeException
@@ -146,7 +146,7 @@ class EdgeStack(StackService[Edge]):
             *   DeletionResult[Edge] containing either:
                     - On failure: Exception.
                     - On success: Edge.
-        # RAISES:
+        Raises:
             *   EdgeStackException
             *   PoppingEdgeException
             *   PoppingEmptyEdgeStackException
@@ -191,7 +191,7 @@ class EdgeStack(StackService[Edge]):
                     *   identity_service (IdentityService)
         # RETURNS:
             *   DeletionResult[Edge]
-        # RAISES:
+        Raises:
             *   EdgeStackException
             *   PoppingEdgeException
             *   PoppingEmptyEdgeStackException
@@ -255,7 +255,7 @@ class EdgeStack(StackService[Edge]):
                     - On failure: An exception.
                     - On success: List[Edge].
                     - On Empty: payload null, exception null.
-        # RAISES:
+        Raises:
             *   EdgeStackException
         """
         method = "EdgeStack.query"

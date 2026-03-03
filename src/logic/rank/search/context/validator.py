@@ -57,7 +57,7 @@ class RankContextValidator(Validator[RankContext]):
                 - On success: RankContext in the payload.
                 - On failure: Exception.
 
-        # RAISES:
+        Raises:
             * TypeError
             * InvalidRankContextException
             * NullRankContextException
@@ -121,7 +121,7 @@ class RankContextValidator(Validator[RankContext]):
     #             - On success: RankContext in the payload.
     #             - On failure: Exception.
     #
-    #     # RAISES:
+    #     Raises:
     #         * InvalidRankContextException
     #     """
     #     method = "RankContextValidator.validate_id_search_option"
@@ -162,7 +162,7 @@ class RankContextValidator(Validator[RankContext]):
     #             - On success: RankContext in the payload.
     #             - On failure: Exception.
     #
-    #     # RAISES:
+    #     Raises:
     #         * InvalidRankContextException
     #     """
     #     method = "RankContextValidator.validate_column_search_option"
@@ -203,7 +203,7 @@ class RankContextValidator(Validator[RankContext]):
     #             - On success: RankContext in the payload.
     #             - On failure: Exception.
     #
-    #     # RAISES:
+    #     Raises:
     #         * InvalidRankContextException
     #     """
     #     method = "RankContextValidator.validate_rank_search_option"

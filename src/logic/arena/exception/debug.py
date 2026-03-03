@@ -57,7 +57,7 @@ class ArenaDebugException(DebugException):
     """
     ERR_CODE = "ARENA_EXCEPTION"
     MSG = str = "Arena had an error."
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     _var = Optional[str]

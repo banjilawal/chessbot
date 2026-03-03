@@ -54,7 +54,7 @@ class SquareStackDebugException(DebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     ERR_CODE = "SQUARE_STACK_EXCEPTION"
     MSG = str = "SquareStack had an error."
@@ -80,4 +80,4 @@ class SquareStackDebugException(DebugException):
         val = val or self.VAL
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        super().__init__(ex=ex, msg=msg, err_code=err_code, var=var, val=val, )
+        super().__init__(ex=ex, msg=msg, err_code=err_code, var=var, val=val,)

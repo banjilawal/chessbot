@@ -64,7 +64,7 @@ class CoordFinder(DataFinder[Coord]):
                     - On error: Exception , payload null
                     - On finding a match: List[Tokem] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             *   TypeError
             *   TokenNullDatasetException
             *   TokenSearchException
@@ -133,7 +133,7 @@ class CoordFinder(DataFinder[Coord]):
                     - On error: Exception , payload null
                     - On finding a match: List[Coord] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             None
         """
         method = "CoordFinder._find_by_row"
@@ -156,7 +156,7 @@ class CoordFinder(DataFinder[Coord]):
                     - On error: Exception , payload null
                     - On finding a match: List[Coord] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             None
         """
         method = "CoordFinder._find_by_column"
@@ -179,7 +179,7 @@ class CoordFinder(DataFinder[Coord]):
                     - On error: Exception , payload null
                     - On finding a match: List[Coord] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             None
         """
         method = "CoordFinder._find_by_row_and_column"

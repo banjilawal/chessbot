@@ -61,7 +61,7 @@ class TokenCollisionDetector(CollisionDetector[Token]):
                     - On failure: Exception or non-empty list.
                     - On Collision: Token, Token
                     - On no collisions: Token
-        # RAISES:
+        Raises:
             *   TokenIdCollisionException
             *   TokenCollisionDetectionException
             *   TokenDesignationCollisionException

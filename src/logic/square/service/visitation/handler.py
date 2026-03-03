@@ -12,8 +12,8 @@ from __future__ import annotations
 from copy import deepcopy
 
 from logic.square import (
-    NoVisitForTerminationException, Square, SquareState, SquareValidator, SquareVisitTerminationException,
-    SquareVisitorDisabledException, StartingSquareVisitException, TokenVisitHandlerException,
+    NoVisitForTerminationException, Square, SquareState, SquareValidator, TerminateSquareVistException,
+    SquareVisitorDisabledException, StartSquareVisitException, TokenVisitHandlerException,
     VisitingOccupiedSquareException, VisitingWrongOpeningSquareException, VisitorFromWrongBoardException
 )
 from logic.system import DeletionResult, LoggingLevelRouter, UpdateResult, ValidationResult
@@ -53,25 +53,22 @@ class TokenVisitHandler():
     None
     """
     _token_service: TokenService
+    _square_validator: SquareValidator
     
-    def __init__(self, token_service: TokenService):
+    def __init__(
+            self,
+            token_service: TokenService = TokenService(),
+            square_validator: SquareValidator = SquareValidator(),
+    ):
         """
         Args:
             token_service: TokenService
         """
         self._token_service = token_service
-        
-    @property
-    def token_service(self) -> TokenService:
-        return self._token_service
+        self._square_validator = square_validator
     
     @LoggingLevelRouter.monitor
-    def start_visit(
-            self,
-            token: Token,
-            square: Square,
-            square_validator: SquareValidator = SquareValidator(),
-    ) -> UpdateResult[Square]:
+    def start_visit( self, token: Token, square: Square) -> UpdateResult[Square]:
         """
         # ACTION:
             1.  If the square is either unsafe put the square and exception chain  in the UpdateResult  then
@@ -89,15 +86,14 @@ class TokenVisitHandler():
             6.  Send deep_copy and the current square in the success result.
         Args:
             token: Token
-            square:
-            square_validator: SquareValidator
+            square: Square
             
        Returns:
             UpdateResult[Square]
             
         Raises:
             TokenVisitHandlerException
-            StartingSquareVisitException
+            StartSquareVisitException
             VisitingOccupiedSquareException
             VisitorFromWrongBoardException
             SquareVisitorDisabledException
@@ -105,15 +101,15 @@ class TokenVisitHandler():
         method = "SquareService.add_occupant"
         
         # Handle the case that, the item is not certified safe.
-        square_validation = square_validator.validate(candidate=square)
+        square_validation = self._square_validator.validate(candidate=square)
         if square_validation.is_failure:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
                 original=square,
                 exception=TokenVisitHandlerException(
                     msg=f"{method}: {TokenVisitHandlerException.ERR_CODE}",
-                    ex=StartingSquareVisitException(
-                        msg=f"{method}: {StartingSquareVisitException.ERR_CODE}",
+                    ex=StartSquareVisitException(
+                        msg=f"{method}: {StartSquareVisitException.ERR_CODE}",
                         ex=square_validation.exception
                     )
                 )
@@ -128,8 +124,8 @@ class TokenVisitHandler():
                 original=pre_update_square,
                 exception=TokenVisitHandlerException(
                     msg=f"{method}: {TokenVisitHandlerException.ERR_CODE}",
-                    ex=StartingSquareVisitException(
-                        msg=f"{method}: {StartingSquareVisitException.ERR_CODE}",
+                    ex=StartSquareVisitException(
+                        msg=f"{method}: {StartSquareVisitException.ERR_CODE}",
                         ex=VisitingOccupiedSquareException(
                             f"{method}: {VisitingOccupiedSquareException.MSG}"
                         )
@@ -144,8 +140,8 @@ class TokenVisitHandler():
                 original=pre_update_square,
                 exception=TokenVisitHandlerException(
                     msg=f"{method}: {TokenVisitHandlerException.ERR_CODE}",
-                    ex=StartingSquareVisitException(
-                        msg=f"{method}: {StartingSquareVisitException.ERR_CODE}",
+                    ex=StartSquareVisitException(
+                        msg=f"{method}: {StartSquareVisitException.ERR_CODE}",
                         ex=token_validation.exception
                     )
                 )
@@ -157,8 +153,8 @@ class TokenVisitHandler():
                 original=pre_update_square,
                 exception=TokenVisitHandlerException(
                     msg=f"{method}: {TokenVisitHandlerException.ERR_CODE}",
-                    ex=StartingSquareVisitException(
-                        msg=f"{method}: {StartingSquareVisitException.ERR_CODE}",
+                    ex=StartSquareVisitException(
+                        msg=f"{method}: {StartSquareVisitException.ERR_CODE}",
                         ex=VisitorFromWrongBoardException(
                             f"{method}: {VisitorFromWrongBoardException.MSG}"
                         )
@@ -172,8 +168,8 @@ class TokenVisitHandler():
                 original=pre_update_square,
                 exception=TokenVisitHandlerException(
                     msg=f"ServiceId: {self.id}, {method}: {TokenVisitHandlerException.ERR_CODE}",
-                    ex=StartingSquareVisitException(
-                        msg=f"{method}: {StartingSquareVisitException.ERR_CODE}",
+                    ex=StartSquareVisitException(
+                        msg=f"{method}: {StartSquareVisitException.ERR_CODE}",
                         ex=SquareVisitorDisabledException(
                             f"{method}: {SquareVisitorDisabledException.MSG}"
                         )
@@ -191,8 +187,8 @@ class TokenVisitHandler():
                 original=pre_update_square,
                 exception=TokenVisitHandlerException(
                     msg=f"{method}: {TokenVisitHandlerException.ERR_CODE}",
-                    ex=StartingSquareVisitException(
-                        msg=f"{method}: {StartingSquareVisitException.ERR_CODE}",
+                    ex=StartSquareVisitException(
+                        msg=f"{method}: {StartSquareVisitException.ERR_CODE}",
                         ex=validate_token_opening_square_result.exception
                     )
                 )
@@ -212,11 +208,7 @@ class TokenVisitHandler():
         return UpdateResult.update_success(original=pre_update_square, updated=square)
     
     @LoggingLevelRouter.monitor
-    def terminate_visit(
-            self,
-            square: Square,
-            square_validator: SquareValidator = SquareValidator(),
-    ) -> DeletionResult[Token]:
+    def terminate_visit(self, square: Square,) -> DeletionResult[Token]:
         """
         # ACTION:
             1.  If the square fails its safety checks send and exception chain in the DeletionResult.
@@ -230,20 +222,20 @@ class TokenVisitHandler():
             DeletionResult[Token]
         Raises:
             TokenVisitHandlerException
-            SquareVisitTerminationException
+            TerminateSquareVistException
             NoVisitForTerminationException
         """
         method = "TokenVistHandler.terminate_visit"
         
         # Handle the case that, the square is not certified as safe.
-        validation = square_validator.validate(candidate=square)
+        validation = self._square_validator.validate(candidate=square)
         if validation.is_failure:
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 TokenVisitHandlerException(
                     msg=f"{method}: {TokenVisitHandlerException.ERR_CODE}",
-                    ex=SquareVisitTerminationException(
-                        msg=f"{method}: {SquareVisitTerminationException.ERR_CODE}",
+                    ex=TerminateSquareVistException(
+                        msg=f"{method}: {TerminateSquareVistException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -254,8 +246,8 @@ class TokenVisitHandler():
             return DeletionResult.failure(
                 TokenVisitHandlerException(
                     msg=f"{method}: {TokenVisitHandlerException.ERR_CODE}",
-                    ex=SquareVisitTerminationException(
-                        msg=f"{method}: {SquareVisitTerminationException.ERR_CODE}",
+                    ex=TerminateSquareVistException(
+                        msg=f"{method}: {TerminateSquareVistException.ERR_CODE}",
                         ex=NoVisitForTerminationException(
                             f"{method}: {NoVisitForTerminationException.MSG}"
                         )

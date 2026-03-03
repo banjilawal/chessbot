@@ -53,7 +53,7 @@ class CoordContextExecutionRouteException(ExecutionRouteException):
     """
     ERR_CODE = "COORD_CONTEXT_EXECUTION_ROUTE_EXCEPTION"
     MSG = "No build route for CoordContext attribute"
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

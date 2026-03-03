@@ -58,7 +58,7 @@ class CoordContextValidator(Validator[CoordContext]):
           *    ValidationResult[CoordContext] containing either:
                     - On failure: Exception.
                     - On success: CoordContext in the payload.
-        # RAISES:
+        Raises:
             * TypeError
             * NullCoordContextException
             * ZeroCoordContextFlagsException

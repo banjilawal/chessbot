@@ -112,7 +112,7 @@ class CollisionReport(DataResult[T], Generic[T]):
         )
     
     @classmethod
-    def no_collision_detected(cls, target: T, ) -> CollisionReport[T]:
+    def no_collision_detected(cls, target: T,) -> CollisionReport[T]:
         return cls(
             target=target,
             collider=None,

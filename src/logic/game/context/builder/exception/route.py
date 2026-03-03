@@ -53,7 +53,7 @@ class GameContextExecutionRouteException(ExecutionRouteException):
     """
     ERR_CODE = "GAME_CONTEXT_EXECUTION_ROUTE_EXCEPTION"
     MSG = "No build route for GameContext attribute"
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

@@ -74,8 +74,7 @@ class TeamContext(Context[Team]):
         None
         # RETURNS:
             dict
-        # RAISES:
-        None
+        Raises:
         """
         return {
             "id": self.id,

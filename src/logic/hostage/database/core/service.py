@@ -59,7 +59,7 @@ class HostageList(StackService[Hostage]):
             *   context_service (TeamContextService)
         # RETURNS:
             None
-        # RAISES:
+        Raises:
             None
         """
         method = "HostageService.__init__"
@@ -94,7 +94,7 @@ class HostageList(StackService[Hostage]):
             *   InsertionResult[Hostage] containing either:
                     - On failure: Exception.
                     - On success: Hostage in the payload.
-        # RAISES:
+        Raises:
             *   HostageDataListException
         """
         method = "HostageList.add_hostage"

@@ -57,7 +57,7 @@ class NodeDebugException(DebugException):
     """
     ERR_CODE = "NODE_EXCEPTION"
     MSG = str = "Node had an error."
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     _var = Optional[str]

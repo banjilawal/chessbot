@@ -106,7 +106,7 @@ class SquareContextBuilder(Builder[SquareContext]):
                 *   BuildResult[SquareContext] containing either:
                         - On failure: Exception.
                         - On success: SquareContext in the payload.
-            # RAISES:
+            Raises:
                 *   ZeroSquareContextFlagsException
                 *   SquareContextBuildException
                 *   ExcessSquareContextFlagsException

@@ -70,7 +70,7 @@ class HostageBuilder(Builder[Hostage]):
             - On success: Hostage in the payload.
             - On failure: Exception.
 
-        # RAISES:
+        Raises:
             *   TypeError
             *   PrisonerCapturedByDifferentEnemyException
             *   PrisonerCannotBeActiveCombatantException

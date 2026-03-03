@@ -67,7 +67,7 @@ class NameValidator(Validator[str]):
             - On success: str in the payload.
             - On failure: Exception.
     
-        # RAISES:
+        Raises:
             *   ShortNameException
             *   LongNameException
             *   InvalidNameException

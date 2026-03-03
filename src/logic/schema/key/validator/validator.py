@@ -62,7 +62,7 @@ class SchemaKeyValidator(Validator[SchemaKey]):
             *   ValidationResult[SchemaKey] containing either:
                     - On failure: Exception.
                     - On success: SchemaKey in the payload.
-        # RAISES:
+        Raises:
             *   TypeError
             *   NNullSchemaKeyException
             *   ZeroSchemaKeysException

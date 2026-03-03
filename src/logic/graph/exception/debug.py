@@ -57,7 +57,7 @@ class GraphDebugException(DebugException):
     """
     ERR_CODE = "GRAPH_EXCEPTION"
     MSG = str = "Graph had an error."
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     _var = Optional[str]

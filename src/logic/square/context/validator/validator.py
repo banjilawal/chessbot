@@ -79,7 +79,7 @@ class SquareContextValidator(Validator[SquareContext]):
             *   ValidationResult[SquareContext] containing either:
                     - On failure: Exception.
                     - On success: Square in the payload
-        # RAISES:
+        Raises:
             *   TypeError
             *   NullSquareContextException
             *   ZeroSquareContextFlagsException

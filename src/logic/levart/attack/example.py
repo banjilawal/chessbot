@@ -36,7 +36,7 @@ From `logic.system`:
 CONTAINS:
 --------
 See the list of exception in the `__all__` list following (e.g., `VectorException`,
-`NullVectorException`, `InvalidVectorException`, ).
+`NullVectorException`, `InvalidVectorException`,).
 
 Module: logic.system.travel.rollback_exception
 Author: Banji Lawal
@@ -122,5 +122,5 @@ From `logic.system`:
 CONTAINS:
 --------
 See the list of exception in the `__all__` list following (e.g., `VectorException`,
-`NullVectorException`, `InvalidVectorException`, ).
+`NullVectorException`, `InvalidVectorException`,).
 """

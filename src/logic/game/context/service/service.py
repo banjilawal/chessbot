@@ -60,8 +60,7 @@ class GameContextService(ContextService[GameContext]):
         # RETURNS:
         None
 
-        # RAISES:
-        None
+        Raises:
         """
         method = "GameContextService.__init__"
         super().__init__(id=id, name=name, builder=builder, validator=validator, finder=finder)

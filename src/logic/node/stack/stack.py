@@ -64,7 +64,7 @@ class NodeStack(StackService[Node]):
             *   context_service (NodeContextService)
         # RETURNS:
             None
-        # RAISES:
+        Raises:
             None
         """
         super().__init__(id=id,name=name,)
@@ -104,7 +104,7 @@ class NodeStack(StackService[Node]):
             *   InsertionResult[Node] containing either:
                     - On failure: Exception.
                     - On success: Node in the payload.
-        # RAISES:
+        Raises:
             *   NodeStackException
             *   NodePushException
             *   AddingDuplicateNodeException
@@ -152,7 +152,7 @@ class NodeStack(StackService[Node]):
             *   DeletionResult[Node] containing either:
                     - On failure: Exception.
                     - On success: Node in the payload.
-        # RAISES:
+        Raises:
             *   NodeStackException
             *   NodePopException 
             *   PoppingEmptyNodeStackException
@@ -194,7 +194,7 @@ class NodeStack(StackService[Node]):
                     - On failure: An exception.
                     - On success: List[Node] in payload.
                     - On Empty: No payload nor exception.
-        # RAISES:
+        Raises:
             *   NodeStackException
         """
         method = "NodeStack.query"

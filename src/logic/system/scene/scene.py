@@ -50,7 +50,7 @@ class Scene(ABC, Generic[A, S, P]):
         # RETURNS:
             `None`
 
-        # RAISES:
+        Raises:
             `None`
         """
         self._id = id

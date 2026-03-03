@@ -62,7 +62,7 @@ class BoardStackService(StackService[Board]):
             *   context_service (TeamContextService)
         # RETURNS:
             None
-        # RAISES:
+        Raises:
             None
         """
         method = "BoardService.__init__"
@@ -97,7 +97,7 @@ class BoardStackService(StackService[Board]):
             *   InsertionResult[Board] containing either:
                     - On failure: Exception.
                     - On success: Board in the payload.
-        # RAISES:
+        Raises:
             *   BoardDataServiceException
         """
         method = "BoardStackService.add_board"
@@ -184,7 +184,7 @@ class BoardStackService(StackService[Board]):
             *   InsertionResult[Board] containing either:
                     - On failure: Exception.
                     - On success: Board in the payload.
-        # RAISES:
+        Raises:
             *   BoardDataServiceException
         """
         method = "BoardStackService.delete_board_by_id"

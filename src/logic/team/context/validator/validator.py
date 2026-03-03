@@ -66,7 +66,7 @@ class TeamContextValidator(Validator[TeamContext]):
             *   ValidationResult[TeamContext] containing either:
                     - On failure: Exception.
                     - On success: TeamContext in the payload.
-        # RAISES:
+        Raises:
             *   TypeError
             *   NullTeamContextException
             *   ZeroTeamContextFlagsException

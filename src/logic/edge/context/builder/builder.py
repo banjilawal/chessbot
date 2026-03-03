@@ -79,7 +79,7 @@ class EdgeContextBuilder(Builder[EdgeContext]):
                 *   BuildResult[EdgeContext] containing either:
                         - On failure: Exception.
                         - On success: EdgeContext in the payload.
-            # RAISES:
+            Raises:
                 *   ZeroEdgeContextFlagsException
                 *   EdgeContextBuildException
                 *   ArenaEdgeContextFlagsException

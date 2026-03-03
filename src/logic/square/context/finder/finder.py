@@ -90,7 +90,7 @@ class SquareFinder(StackSearcher[Square]):
                     - On error: Exception , payload null
                     - On finding a match: List[Square] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             *   SquareSearchException
         """
         method = "SquareFinder.find"

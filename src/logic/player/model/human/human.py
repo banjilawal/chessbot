@@ -51,8 +51,7 @@ class HumanPlayer(Player):
         # RETURNS:
         None
 
-        # RAISES:
-        None
+        Raises:
         """
         super().__init__(id=id, name=name, games=games, teams=teams)
     

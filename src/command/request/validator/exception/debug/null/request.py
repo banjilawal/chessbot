@@ -52,7 +52,7 @@ class NullRequestException(NullException):
     """
     ERR_CODE = "SERVICE_REQUEST_NULL_EXCEPTION"
     MSG = "Request is null"
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

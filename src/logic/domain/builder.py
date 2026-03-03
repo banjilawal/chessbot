@@ -58,7 +58,7 @@ class DomainBuilder(Builder[Domain]):
                 - On success: Square in the payload.
                 - On failure: Exception.
 
-        # RAISES:
+        Raises:
             * TypeError
             * NullDomainException
             * DomainNullSquaresListException

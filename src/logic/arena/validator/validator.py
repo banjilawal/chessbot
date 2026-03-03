@@ -65,7 +65,7 @@ class ArenaValidator(Validator[Arena]):
             - On success: Arena in the payload.
             - On failure: Exception.
 
-        # RAISES:
+        Raises:
             *   ArenaValidationException
         """
         method = "ArenaValidator.validate"

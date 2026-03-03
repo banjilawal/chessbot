@@ -96,7 +96,7 @@ class FormationKey(Context[Formation]):
             *   color (Optional[Color])
         # RETURNS:
             None
-        # RAISES:
+        Raises:
             None
         """
         super().__init__(id=None, name=None)
@@ -129,7 +129,7 @@ class FormationKey(Context[Formation]):
             *   None
         # RETURNS:
             *   dict
-        # RAISES:
+        Raises:
             *   None
         """
         return {

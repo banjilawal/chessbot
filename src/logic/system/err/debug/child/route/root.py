@@ -53,7 +53,7 @@ class ExecutionRouteException(DebugException):
     """
     ERR_CODE = "EXECUTION_ROUTE_EXCEPTION"
     MSG = "Missing execution route."
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

@@ -72,7 +72,7 @@ class FormationKeyBuilder(Builder[FormationKey]):
             *   BuildResult[FormationKey] containing either:
                     - On failure: Exception.
                     - On success: FormationKey in the payload.
-        # RAISES:
+        Raises:
             *   ZeroFormationKeysException
             *   FormationKeyBuildException
             *   ArenaFormationKeysException

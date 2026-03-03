@@ -56,7 +56,7 @@ class TokenDebugException(DebugException):
     """
     ERR_CODE = "TOKEN_EXCEPTION"
     MSG = str = "Token had an error."
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

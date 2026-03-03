@@ -53,7 +53,7 @@ class HostageContextExecutionRouteException(ExecutionRouteException):
     """
     ERR_CODE = "HOSTAGE_CONTEXT_EXECUTION_ROUTE_EXCEPTION"
     MSG = "No build route for HostageContext attribute"
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

@@ -12,13 +12,14 @@ from abc import ABC, abstractmethod
 from typing import Generic, List, Optional, TypeVar
 
 from logic.system import (
-    Context, ContextService, InsertionResult, LoggingLevelRouter, IntegrityService, DeletionResult, SearchResult
+    Context, ContextService, IdentityService, InsertionResult, LoggingLevelRouter, IntegrityService, DeletionResult,
+    SearchResult
 )
 
-D = TypeVar("D")
+T = TypeVar("T")
 C = TypeVar("C", bound=Context)
 
-class StackService(ABC, Generic[D]):
+class StackService(ABC, Generic[T]):
     """
     # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
@@ -44,12 +45,9 @@ class StackService(ABC, Generic[D]):
     _id: int
     _name: str
 
-    def stack(self, id: int, name: str,):
+    def __init__(self, id: int, name: str,):
         self._id = id
         self._name = name
-        #
-        # self._size = len(self._items)
-        # self._current_items = self._items[-1] if self._items else None
     
     @property
     def id(self) -> int:
@@ -58,6 +56,11 @@ class StackService(ABC, Generic[D]):
     @property
     def name(self) -> str:
         return self._name
+    
+    @property
+    @abstractmethod
+    def items(self) -> List[T]:
+        pass
     
     @property
     @abstractmethod
@@ -71,12 +74,12 @@ class StackService(ABC, Generic[D]):
     
     @property
     @abstractmethod
-    def current_item(self) -> Optional[D]:
+    def current_item(self) -> Optional[T]:
         pass
 
     @property
     @abstractmethod
-    def integrity_service(self) -> IntegrityService[D]:
+    def integrity_service(self) -> IntegrityService[T]:
         pass
     
     @property
@@ -86,15 +89,24 @@ class StackService(ABC, Generic[D]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def push(self, item: D) -> InsertionResult:
+    def push(self, item: T) -> InsertionResult:
         pass
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def pop(self) -> DeletionResult[D]:
+    def pop(self) -> DeletionResult[T]:
         pass
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def query(self, dataset: List[D], context: C) -> SearchResult[List[D]]:
+    def delete_by_id(
+            self,
+            id: int,
+            identity_service: IdentityService = IdentityService()
+    ) -> DeletionResult[T]:
+        pass
+    
+    @abstractmethod
+    @LoggingLevelRouter.monitor
+    def query(self, dataset: List[T], context: C) -> SearchResult[List[T]]:
         pass

@@ -64,7 +64,7 @@ class SchemaKeyBuilder(Builder[SchemaKey]):
             *   BuildResult[SchemaKey] containing either:
                     - On failure: Exception.
                     - On success: SchemaKey in the payload.
-        # RAISES:
+        Raises:
             *   ZeroSchemaKeysException
             *   SchemaKeyBuildException
             *   ArenaSchemaKeysException

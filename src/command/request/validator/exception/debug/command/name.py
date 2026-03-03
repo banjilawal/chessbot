@@ -52,7 +52,7 @@ class CommandNameException(RequestDebugException):
     """
     ERR_CODE = "COMMAND_NAME_NOT_FOUND"
     MSG = "unknown command argument"
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

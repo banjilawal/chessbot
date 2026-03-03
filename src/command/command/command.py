@@ -60,5 +60,5 @@ class Command(ABC, Generic[T]):
         return hash(self._id)
     @classmethod
     @abstractmethod
-    def cipher(cls, ) -> T:
+    def cipher(cls,) -> T:
         pass

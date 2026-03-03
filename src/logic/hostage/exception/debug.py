@@ -55,7 +55,7 @@ class HostageDebugException(DebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     ERR_CODE = "HOSTAGE_EXCEPTION"
     MSG = str = "Hostage had an error."

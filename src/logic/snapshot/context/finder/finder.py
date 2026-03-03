@@ -64,7 +64,7 @@ class SnapshotFinder(Finder[Snapshot]):
                 - On success:   List[snapshot] in the payload.
                 - On failure:   Exception.
 
-        # RAISES:
+        Raises:
             *   TypeError
             *   NullGameTimelineException
             *   SnapshotFinderException
@@ -125,7 +125,7 @@ class SnapshotFinder(Finder[Snapshot]):
                 - On success:   List[snapshot] in the payload.
                 - On failure:   Exception.
 
-        # RAISES:
+        Raises:
             *   SnapshotFinderException
         """
         method = "SnapshotFinder._find_by_timestamp"
@@ -165,7 +165,7 @@ class SnapshotFinder(Finder[Snapshot]):
                 - On success:   List[snapshot] in the payload.
                 - On failure:   Exception.
 
-        # RAISES:
+        Raises:
             *   SnapshotFinderException
         """
         method = "SnapshotFinder._find_by_team"
@@ -205,7 +205,7 @@ class SnapshotFinder(Finder[Snapshot]):
                 - On success:   List[snapshot] in the payload.
                 - On failure:   Exception.
 
-        # RAISES:
+        Raises:
             *   SnapshotFinderException
         """
         method = "SnapshotFinder._find_by_team"
@@ -245,7 +245,7 @@ class SnapshotFinder(Finder[Snapshot]):
                 - On success:   List[snapshot] in the payload.
                 - On failure:   Exception.
 
-        # RAISES:
+        Raises:
             *   SnapshotFinderException
         """
         method = "SnapshotFinder._find_by_agent"

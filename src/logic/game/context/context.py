@@ -62,8 +62,7 @@ class GameContext(Context[Game]):
         # RETURNS:
         None
 
-        # RAISES:
-        None
+        Raises:
         """
         super().__init__(id=id, name=None)
         self._team = team
@@ -92,8 +91,7 @@ class GameContext(Context[Game]):
         # RETURNS:
         dict
 
-        # RAISES:
-        None
+        Raises:
         """
         return {
             "id": self.id,

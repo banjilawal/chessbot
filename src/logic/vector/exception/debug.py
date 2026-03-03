@@ -54,7 +54,7 @@ class VectorDebugException(DebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     ERR_CODE = "VECTOR_EXCEPTION"
     MSG = str = "Vector had an error."

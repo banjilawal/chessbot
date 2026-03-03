@@ -148,8 +148,7 @@ class TeamBuilder(Builder[Team]):
             *   ValidationResult[int] containing either:
                     - On failure: Exception.
                     - On success: Square in the payload.
-        # RAISES:
-        None
+        Raises:
         """
         method = "TeamBuilder._validate_build_params"
         
@@ -280,7 +279,7 @@ class SquareBuilder(Builder[Square]):
             *   ValidationResult[Square] containing either:
                     - On failure: Exception.
                     - On success: Square in the payload.
-        # RAISES:
+        Raises:
             *   SquareBuildException
         """
         method = "SquareBuilder.builder"
@@ -364,8 +363,7 @@ class SquareBuilder(Builder[Square]):
             *   InsertionResult[bool] containing either:
                     - On failure: Exception.
                     - On success: bool.
-        # RAISES:
-        None
+        Raises:
         """
         method = "SquareBuilder._build_square_board_relationship"
         
@@ -383,7 +381,7 @@ class SquareBuilder(Builder[Square]):
         if relation_analysis.not_related:
             # Return the exception chain on failure.
             return InsertionResult.failure(
-                InvariantBreachException(msg=f"{method}:{InvariantBreachException.MSG}", )
+                InvariantBreachException(msg=f"{method}:{InvariantBreachException.MSG}",)
             )
         
         # Handle the case that, the board and item are have a fully bidirectional relationship.

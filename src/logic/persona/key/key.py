@@ -59,7 +59,7 @@ class PersonaKey(Context[Persona]):
             *   designation (Optional[str])
         # RETURN:
             None
-        # RAISES:
+        Raises:
             None
         """
         super().__init__(id=None, name=name)
@@ -87,7 +87,7 @@ class PersonaKey(Context[Persona]):
             *   None
         # RETURNS:
             *   dict
-        # RAISES:
+        Raises:
             *   None
         """
         return {

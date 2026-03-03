@@ -52,7 +52,7 @@ class TemplateServiceDebugException(DebugException):
     """
     ERR_CODE = "TEMPLATE_SERVICE_DEBUG_EXCEPTION"
     MSG = "TemplateService attribute raised an exception."
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

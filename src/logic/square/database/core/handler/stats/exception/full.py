@@ -28,7 +28,7 @@ class SquareStackFullException(DebugException):
             *   variable,
             *   it's value,
             *   event which fired the variable into its error state.
-        which occurred in the Hostage method identified in layer-0 of the exception chain.
+        which occurred in the SquareStackCrudHandler method identified in layer-0 of the exception chain.
         
     2.  Indicate that pushing square on to the stack failed because there was no space
         left.
@@ -58,7 +58,7 @@ class SquareStackFullException(DebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     ERR_CODE = "SQUARE_STACK_FULL_EXCEPTION"
     MSG = "Pushing square failed: The is no space left for adding another square."

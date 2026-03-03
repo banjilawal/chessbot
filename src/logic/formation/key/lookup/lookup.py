@@ -59,7 +59,7 @@ class FormationLookup(HashLookup[Formation]):
                     - On error: Exception , payload null
                     - On finding a match: List[Formation] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             *   FormationLookupFailedException
         """
         method = "FormationLookup.find"
@@ -112,7 +112,7 @@ class FormationLookup(HashLookup[Formation]):
                     - On error: Exception
                     - On finding a match: List[Formation] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             *   FormationDesignationBoundsException
             *   FormationLookupFailedException
         """
@@ -143,7 +143,7 @@ class FormationLookup(HashLookup[Formation]):
                     - On error: Exception
                     - On finding a match: List[Formation] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             *   FormationSquareNameBoundsException
             *   FormationLookupFailedException
         """
@@ -173,7 +173,7 @@ class FormationLookup(HashLookup[Formation]):
                     - On error: Exception
                     - On finding a match: List[Formation] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             *   FormationColorBoundsException
             *   FormationLookupFailedException
         """
@@ -204,7 +204,7 @@ class FormationLookup(HashLookup[Formation]):
                     - On error: Exception
                     - On finding a match: List[Formation] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             *   FormationColorBoundsException
             *   FormationLookupFailedException
         """

@@ -44,7 +44,7 @@ class TeamHashValidator(Validator[TeamHash]):
             *   ValidationResult[TeamHash] containing either:
                     - On success:   TeamHash in the payload.
                     - On failure:   Exception.
-        # RAISES:
+        Raises:
             *   TypeError
             *   TeamHashNullException
             *   WhiteTeamHasWrongSchemaException

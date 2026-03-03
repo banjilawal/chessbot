@@ -75,7 +75,7 @@ class NodeContextBuilder(Builder[NodeContext]):
                 *   BuildResult[NodeContext] containing either:
                         - On failure: Exception.
                         - On success: NodeContext in the payload.
-            # RAISES:
+            Raises:
                 *   ZeroNodeContextFlagsException
                 *   NodeContextBuildException
                 *   ArenaNodeContextFlagsException

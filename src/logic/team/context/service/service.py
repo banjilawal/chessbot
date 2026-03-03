@@ -60,8 +60,7 @@ class TeamContextService(ContextService[TeamContext]):
         # RETURNS:
         None
 
-        # RAISES:
-        None
+        Raises:
         """
         method = "TeamContextService.__init__"
         super().__init__(id=id, name=name, builder=builder, validator=validator, finder=finder)

@@ -58,8 +58,7 @@ class GameService(IntegrityService[Game]):
         # RETURNS:
         None
 
-        # RAISES:
-        None
+        Raises:
         """
         method = "GameService.__init__"
         super().__init__(id=id, name=name, builder=builder, validator=validator)

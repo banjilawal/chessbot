@@ -65,7 +65,7 @@ class TeamFinder(DataFinder[Team]):
                     - On error: Exception , payload null
                     - On finding a match: List[Tokem] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             *   TypeError
             *   TeamNullDatasetException
             *   TeamSearchException
@@ -130,7 +130,7 @@ class TeamFinder(DataFinder[Team]):
                     - On error: Exception , payload null
                     - On searching a match: List[Team] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             *   TeamSearchException
         """
         method = "TeamFinder._find_by_id"
@@ -156,7 +156,7 @@ class TeamFinder(DataFinder[Team]):
                     - On error: Exception , payload null
                     - On searching a match: List[Team] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             *   TeamSearchException
         """
         method = "TeamFinder._find_by_arena"
@@ -181,7 +181,7 @@ class TeamFinder(DataFinder[Team]):
                     - On error: Exception , payload null
                     - On searching a match: List[Team] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             *   TeamSearchException
         """
         method = "TeamFinder._find_by_player"
@@ -206,7 +206,7 @@ class TeamFinder(DataFinder[Team]):
                     - On error: Exception , payload null
                     - On searching a match: List[Team] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             *   TeamSearchException
         """
         method = "TeamFinder._find_by_color"

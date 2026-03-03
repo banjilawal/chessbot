@@ -63,7 +63,7 @@ class BoardContextBuilder(Builder[BoardContext]):
             *   BuildResult[BoardContext] containing either:
                     - On failure: Exception.
                     - On success: BoardContext in the payload.
-        # RAISES:
+        Raises:
             *   ZeroBoardContextFlagsException
             *   BoardContextBuildException
             *   ArenaBoardContextFlagsException

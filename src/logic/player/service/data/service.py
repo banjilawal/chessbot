@@ -63,8 +63,7 @@ class AgentStackService(StackService[PlayerAgent]):
         # RETURNS:
         None
 
-        # RAISES:
-        None
+        Raises:
         """
         super().service(
             id=id,

@@ -46,7 +46,7 @@ class SchemaValidator(Validator[Schema]):
             *   ValidationResult[Schema] containing either:
                     - On failure: Exception.
                     - On success: Schema in the payload.
-        # RAISES:
+        Raises:
             *   TypeError
             *   NullSchemaException
             *   SchemaValidationException

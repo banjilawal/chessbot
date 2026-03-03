@@ -68,7 +68,7 @@ class GameContextValidator(Validator[GameContext]):
             - On success: GameContext in the payload.
             - On failure: Exception.
 
-        # RAISES:
+        Raises:
             *   TypeError
             *   NullGameContextException
             *   ZeroGameContextFlagsException

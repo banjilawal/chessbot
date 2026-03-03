@@ -57,7 +57,7 @@ class GameDebugException(DebugException):
     """
     ERR_CODE = "GAME_EXCEPTION"
     MSG = str = "Game had an error."
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     _var = Optional[str]

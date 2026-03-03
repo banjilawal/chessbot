@@ -55,7 +55,7 @@ class ScalarValidator(Validator[Scalar]):
                 - On success: Scalar in the payload.
                 - On failure: Exception.
     
-        # RAISES:
+        Raises:
             * TypeError
             * NullScalarException
         """
@@ -126,7 +126,7 @@ class ScalarValidator(Validator[Scalar]):
                 - On success: Scalar in the payload.
                 - On failure: Exception.
 
-        # RAISES:
+        Raises:
             * TypeError
             * NullNumberException
             * ScalarValidationException

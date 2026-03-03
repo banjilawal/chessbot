@@ -86,7 +86,7 @@ class IdentityService:
             - On success: tuple(int, str) in the payload.
             - On failure: Exception.
 
-        # RAISES:
+        Raises:
             *   InvalidIdentityException
         """
         method = "IdentityService.validate_identity"

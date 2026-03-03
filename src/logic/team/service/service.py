@@ -58,7 +58,7 @@ class TeamService(IntegrityService[Team]):
             *   roster_util (RosterUtil)
         # RETURNS:
                 None
-        # RAISES:
+        Raises:
             None
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)

@@ -63,7 +63,7 @@ class PersonaKeyValidator(Validator[PersonaKey]):
             *   ValidationResult[PersonaKey] containing either:
                     - On failure: Exception.
                     - On success: PersonaKey in the payload.
-        # RAISES:
+        Raises:
             *   TypeError
             *   NNullPersonaKeyException
             *   ZeroPersonaKeysException

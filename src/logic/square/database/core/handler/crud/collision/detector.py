@@ -81,7 +81,7 @@ class SquareCollisionDetector(CollisionDetector[Square]):
                     - On failure: Exception or non-empty list.
                     - On Collision: Square, Square
                     - On no collisions: Square
-        # RAISES:
+        Raises:
             *   SquareIdCollisionException
             *   SquareCollisionDetectionException
             *   SquareNameCollisionException
@@ -170,7 +170,7 @@ class SquareCollisionDetector(CollisionDetector[Square]):
         # Handle the case that, the name has already been assigned to a different square.
         if name_search_result.is_success:
             return ValidationResult.failure(
-                SquareNameCollisionException(msg=f"{method}:{SquareNameCollisionException.MSG}", )
+                SquareNameCollisionException(msg=f"{method}:{SquareNameCollisionException.MSG}",)
             )
         # --- Run the coord search. ---#
         coord_search_result = board.squares.search(context=SquareContext(coord=coord))
@@ -183,7 +183,7 @@ class SquareCollisionDetector(CollisionDetector[Square]):
             # Handle the case that, the coord has already been assigned to a different square.
             if coord_search_result.is_success:
                 return ValidationResult.failure(
-                    SquareCoordCollisionException(msg=f"{method}:{SquareCoordCollisionException.MSG}", )
+                    SquareCoordCollisionException(msg=f"{method}:{SquareCoordCollisionException.MSG}",)
                 )
         # --- Send the success result indicating no attribute conditions. ---#
         return ValidationResult.success(3)

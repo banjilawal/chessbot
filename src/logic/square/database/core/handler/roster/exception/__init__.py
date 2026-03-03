@@ -13,7 +13,9 @@ version: 1.0.0
 None
 
 # Modules
-from .wrapper import RosterDeploymentException
-from .duplicate import RosterDoubleDeploymentException
-from .interrupted import RosterDeploymentInterruptedException
-from .strength import CannotDeployUnderStrengthTeamException
+from .double import RosterAlreadyDeployedException
+from .anchor import SquareStackRosterHandlerException
+from .debug import SquareStackRosterHandlerDebugException
+from .strength import UnderstrengthRosterDeploymentException
+from .interrupted import InterruptedRosterDeploymentException
+

@@ -57,7 +57,7 @@ class SchemaLookup(HashLookup[Schema]):
                     - On error: Exception , payload null
                     - On finding a match: List[Schema] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             *   SchemaLookupFailedException
         """
         method = "SchemaLookup.query"
@@ -101,7 +101,7 @@ class SchemaLookup(HashLookup[Schema]):
                     - On error: Exception
                     - On finding a match: List[Schema] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             *   SchemaNameBoundsException
             *   SchemaLookupFailedException
         """
@@ -136,7 +136,7 @@ class SchemaLookup(HashLookup[Schema]):
             - On finding a match: List[Schema] in the payload.
             - On no matches found: Exception null, payload null
 
-        # RAISES:
+        Raises:
             *   SchemaColorBoundsException
             *   SchemaLookupFailedException
         """

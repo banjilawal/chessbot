@@ -52,7 +52,7 @@ class CommandDebugException(DebugException):
     """
     ERR_CODE = "COMMAND_DEBUG_EXCEPTION"
     MSG = "Command attribute raised an exception."
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

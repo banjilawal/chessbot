@@ -67,7 +67,7 @@ class TokenFactory(Builder[Token]):
             *   BuildResult[Token] containing either:
                     - On failure: Exception.
                     - On success: Token in the payload.
-        # RAISES:
+        Raises:
             *   TokenBuildException
         """
         method = "TokenFactory.builder"
@@ -154,7 +154,7 @@ class TokenFactory(Builder[Token]):
         # RETURNS:
             *   BuildResult[PawnToken]
 
-        # RAISES:
+        Raises:
             *   None
         """
         method = "TokenFactory._build_pawn"
@@ -192,7 +192,7 @@ class TokenFactory(Builder[Token]):
             *   formation_service: (FormationService)
         # RETURNS:
             *   BuildResult[PawnToken]
-        # RAISES:
+        Raises:
             *   None
         """
         method = "TokenFactory._build_king"
@@ -227,7 +227,7 @@ class TokenFactory(Builder[Token]):
             *   formation_service: (FormationService)
         # RETURNS:
             *   BuildResult[CombatantToken]
-        # RAISES:
+        Raises:
             *   None
         """
         method = "TokenFactory._build_combatant"

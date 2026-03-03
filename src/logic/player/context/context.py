@@ -60,7 +60,7 @@ class PlayerContext(Context[Player]):
             *   variety (Optional[PlayerVariety])
         # RETURNS:
             None
-        # RAISES:
+        Raises:
             None
         """
         super().__init__(id=id, name=name)
@@ -87,7 +87,7 @@ class PlayerContext(Context[Player]):
             None
         # RETURNS:
             dict
-        # RAISES:
+        Raises:
             None
         """
         return {

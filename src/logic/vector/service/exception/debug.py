@@ -57,7 +57,7 @@ class VectorServiceDebugException(DebugException):
     """
     ERR_CODE = "VECTOR_SERVICE_DEBUG_EXCEPTION"
     MSG = str = "VectorService had an error."
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     _var = Optional[str]

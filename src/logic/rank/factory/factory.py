@@ -54,7 +54,7 @@ class RankFactory(Builder[Rank]):
                 - On success: a concrete Rank in the payload.
                 - On failure: Exception.
 
-        # RAISES:
+        Raises:
             * RankBuildException
         """
         method = "RankFactory.builder"
@@ -127,8 +127,7 @@ class RankFactory(Builder[Rank]):
                 - On success: a Pawn in the payload.
                 - On failure: Exception.
 
-        # RAISES:
-        None
+        Raises:
         """
         method = "RankFactory.build_pawn_rank"
         return BuildResult.success(

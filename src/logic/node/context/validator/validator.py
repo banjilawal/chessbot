@@ -67,7 +67,7 @@ class NodeContextValidator(Validator[NodeContext]):
             *   ValidationResult[NodeContext] containing either:
                     - On failure: Exception.
                     - On success: NodeContext in the payload.
-        # RAISES:
+        Raises:
             *   TypeError
             *   NullNodeContextException
             *   ZeroNodeContextFlagsException

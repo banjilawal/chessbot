@@ -65,7 +65,7 @@ class FormationKeyValidator(Validator[FormationKey]):
             *   ValidationResult[FormationKey] containing either:
                     - On failure: Exception.
                     - On success: FormationKey in the payload.
-        # RAISES:
+        Raises:
             *   TypeError
             *   NNullFormationKeyException
             *   ZeroFormationKeysException

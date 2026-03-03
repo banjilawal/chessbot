@@ -90,7 +90,7 @@ class TeamValidator(Validator[Team]):
             *   ValidationResult[Team] containing either:
                     - On failure: Exception.
                     - On success: Team in the payload.
-        # RAISES:
+        Raises:
             *   TypeError
             *   NullTeamException
             *   TeamValidationException
@@ -183,7 +183,7 @@ class TeamValidator(Validator[Team]):
             *   ValidationResult[Player] containing either:
                     - On failure: Exception.
                     - On success: Player in the payload.
-        # RAISES:
+        Raises:
             *   TeamHasDifferentOwnerException
             *   TeamNotRegisteredOwnerException
             *   PlayerHasStaleTeamLinkException
@@ -247,7 +247,7 @@ class TeamValidator(Validator[Team]):
             *   ValidationResult[Board] containing either:
                     - On failure: Exception.
                     - On success: Board in the payload.
-        # RAISES:
+        Raises:
             *   TeamBelongsToDifferentBoardException
             *   TeamNotRegisteredBoardException
             *   BoardHasStaleTeamLinkException

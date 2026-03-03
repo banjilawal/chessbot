@@ -59,7 +59,7 @@ class PersonaLookup(HashLookup[Persona]):
                     - On error: Exception , payload null
                     - On finding a match: List[Persona] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             *  PersonaLookupFailedException
         """
         method = "PersonaLookup.query"
@@ -111,7 +111,7 @@ class PersonaLookup(HashLookup[Persona]):
                     - On error: Exception
                     - On finding a match: List[Persona] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             *  PersonaNameBoundsException
             *  PersonaLookupFailedException
         """
@@ -143,7 +143,7 @@ class PersonaLookup(HashLookup[Persona]):
                     - On error: Exception
                     - On finding a match: List[Persona] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             *  PersonaNameBoundsException
             *  PersonaLookupFailedException
         """
@@ -174,7 +174,7 @@ class PersonaLookup(HashLookup[Persona]):
                     - On error: Exception
                     - On finding a match: List[Persona] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             *  PersonaNameBoundsException
             *  PersonaLookupFailedException
         """
@@ -205,7 +205,7 @@ class PersonaLookup(HashLookup[Persona]):
                     - On error: Exception
                     - On finding a match: List[Persona] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             *  PersonaNameBoundsException
             *  PersonaLookupFailedException
         """

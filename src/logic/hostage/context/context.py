@@ -58,7 +58,7 @@ class CaptivityContext(Context[Hostage]):
             *   victor (Optional[int])
         # RETURNS:
             None
-        # RAISES:
+        Raises:
             None
         """
         super().__init__(id=id, name=None)

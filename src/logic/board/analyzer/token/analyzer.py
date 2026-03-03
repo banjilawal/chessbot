@@ -61,7 +61,7 @@ class BoardTokenRelationAnalyzer(RelationAnalyzer[Board, Token]):
             *   No relation:
             *   On error: an Exception
 
-        # RAISES:
+        Raises:
             *   BoardValidationException
         """
         method = "BoardService.analyze"

@@ -55,7 +55,7 @@ class GameColorValidator(Validator[GameColor]):
             - On success: GameColor in the payload.
             - On failure: Exception.
 
-        # RAISES:
+        Raises:
             * TypeError
             * NullGameColorException
             * InvalidGameColorException

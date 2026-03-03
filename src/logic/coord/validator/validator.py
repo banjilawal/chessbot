@@ -53,7 +53,7 @@ class CoordValidator(Validator[Coord]):
             *   ValidationResult[Coord] containing either:
                     - On failure: Exception.
                     - On success: Coord in the payload.
-        # RAISES:
+        Raises:
             * TypeError
             * NullCoordException
             * CoordValidationException

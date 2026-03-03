@@ -65,11 +65,11 @@ class TeamStack(StackService[Team]):
             *   context_service (TeamContextService)
         # RETURNS:
             None
-        # RAISES:
+        Raises:
             None
         """
         method = "TokenStack.__init__"
-        super().__init__(id=id, name=name, )
+        super().__init__(id=id, name=name,)
         self._stack = []
         self._service = service
         self._context_service = context_service
@@ -109,7 +109,7 @@ class TeamStack(StackService[Team]):
             *   InsertionResult[Team] containing either:
                     - On failure: Exception.
                     - On success: Team in the payload.
-        # RAISES:
+        Raises:
             *   TeamStackException
         """
         method = "TeamStack.push"
@@ -159,7 +159,7 @@ class TeamStack(StackService[Team]):
             *   InsertionResult[Team] containing either:
                     - On failure: Exception.
                     - On success: Team in the payload.
-        # RAISES:
+        Raises:
             *   TeamStackException
         """
         method = "TeamStack.pop"
@@ -199,7 +199,7 @@ class TeamStack(StackService[Team]):
             *   InsertionResult[Team] containing either:
                     - On failure: Exception.
                     - On success: Team in the payload.
-        # RAISES:
+        Raises:
             *   TeamStackException
         """
         method = "TeamStack.delete_by_id"
@@ -274,7 +274,7 @@ class TeamStack(StackService[Team]):
                     - On failure: An exception.
                     - On success: List[Team] in payload.
                     - On Empty: No payload nor exception.
-        # RAISES:
+        Raises:
             *   TeamStackException
         """
         method = "TeamStack.query"
@@ -311,7 +311,7 @@ class TeamStack(StackService[Team]):
                     - On failure: An exception.
                     - On success: List[Team] in payload.
                     - On Empty: No payload nor exception.
-        # RAISES:
+        Raises:
             *   TeamStackException
         """
         method = "TeamStack.query"

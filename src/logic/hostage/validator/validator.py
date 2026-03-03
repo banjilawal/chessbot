@@ -67,7 +67,7 @@ class HostageValidator(Validator[Hostage]):
             *   ValidationResult[Hostage] containing either:
                     - On failure: Exception.
                     - On success: Hostage in the payload.
-        # RAISES:
+        Raises:
             *   TypeError
             *   NullHostageException
             *   KingCannotBeCapturedException

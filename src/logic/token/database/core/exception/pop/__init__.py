@@ -15,4 +15,4 @@ None
 # Modules
 from .wrapper import PoppingTokenException
 from .empty import PoppingEmptyTokenStackException
-from .unfound import TokenDoesNotExistForRemovalException
+from .exists import TokenNotFoundException

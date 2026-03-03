@@ -61,7 +61,7 @@ class NodeValidator(Validator[Node]):
             *   ValidationResult[] containing either:
                     - On failure: Exception.
                     - On success: Node in the payload.
-        # RAISES:
+        Raises:
             *   TypeError
             *   NullNodeException
             *   NodeValidationException
@@ -182,7 +182,7 @@ class NodeValidator(Validator[Node]):
             *   ValidationResult[DiscoveryStatus] containing either:
                     - On failure: Exception.
                     - On success: DiscoveryStatus in the payload.
-        # RAISES:
+        Raises:
             *   TypeError
             *   DiscoveryStatusNullException
         """

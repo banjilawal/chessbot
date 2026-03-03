@@ -52,7 +52,7 @@ class ArgumentCountException(ServiceRequestDebugException):
     """
     ERR_CODE = "ARGUMENT_COUNT_EXCEPTION"
     MSG = "Incorrect number of arguments."
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

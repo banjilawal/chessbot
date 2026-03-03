@@ -59,7 +59,7 @@ class Validator(ABC, Generic[T]):
             - On success: V in the payload.
             - On failure: Exception.
     
-        # RAISES:
+        Raises:
             *   TypeError
             *   NullException
             *   ValidationException

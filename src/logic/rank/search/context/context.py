@@ -61,8 +61,7 @@ class RankContext(Context[Rank]):
         # RETURNS:
         None
 
-        # RAISES:
-        None
+        Raises:
         """
         super().__init__(id=id, name=name)
         self._ransom = ransom
@@ -91,8 +90,7 @@ class RankContext(Context[Rank]):
         # RETURNS:
         dict
 
-        # RAISES:
-        None
+        Raises:
         """
         def to_dict(self) -> dict:
             return {

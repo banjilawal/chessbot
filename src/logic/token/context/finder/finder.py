@@ -66,7 +66,7 @@ class TokenFinder(DataFinder[Token]):
                     - On error: Exception , payload null
                     - On finding a match: List[Tokem] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             *   TypeError
             *   TokenNullDatasetException
             *   TokenSearchException
@@ -150,7 +150,7 @@ class TokenFinder(DataFinder[Token]):
                     - On error: Exception , payload null
                     - On finding a match: List[Tokem] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             None
         """
         method = "TokenFinder._find_by_id"
@@ -176,7 +176,7 @@ class TokenFinder(DataFinder[Token]):
                     - On error: Exception , payload null
                     - On finding a match: List[Tokem] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             None
         """
         method = "TokenFinder._find_by_designation"
@@ -201,7 +201,7 @@ class TokenFinder(DataFinder[Token]):
                     - On error: Exception , payload null
                     - On finding a match: List[Tokem] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             None
         """
         method = "TokenFinder._find_by_opening_square"
@@ -226,7 +226,7 @@ class TokenFinder(DataFinder[Token]):
                     - On error: Exception , payload null
                     - On finding a match: List[Tokem] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             None
         """
         method = "TokenFinder._find_by_team"
@@ -251,7 +251,7 @@ class TokenFinder(DataFinder[Token]):
                     - On error: Exception , payload null
                     - On finding a match: List[Tokem] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             None
         """
         method = "TokenFinder._find_by_rank"
@@ -276,7 +276,7 @@ class TokenFinder(DataFinder[Token]):
                     - On error: Exception , payload null
                     - On finding a match: List[Tokem] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             None
         """
         method = "TokenFinder._find_by_ransom"
@@ -301,7 +301,7 @@ class TokenFinder(DataFinder[Token]):
                     - On error: Exception , payload null
                     - On finding a match: List[Tokem] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             None
         """
         method = "TokenFinder._find_by_color"

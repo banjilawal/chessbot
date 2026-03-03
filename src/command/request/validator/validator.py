@@ -77,7 +77,7 @@ class RequestValidator(Validator[Request]):
             *   ValidationResult[Request] containing either:
                     - On failure: Exception.
                     - On success: Request in the payload.
-        # RAISES:
+        Raises:
             *   TypeError
             *   NullArgumentsException
             *   NullRequestException

@@ -45,7 +45,7 @@ class Transaction(ABC, Generic[V]):
         TransactionResult
     
     
-        # RAISES:
+        Raises:
             * TransactionException
         """
         pass

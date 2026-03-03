@@ -61,8 +61,7 @@ class AgentContextService(ContextService[AgentContext]):
         # RETURNS:
         None
 
-        # RAISES:
-        None
+        Raises:
         """
         method = "AgentContextService.service"
         super().service(id=id, name=name, builder=builder, validator=validator, finder=finder)

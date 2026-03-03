@@ -65,7 +65,7 @@ class ArenaTeamRelationAnalyzer(RelationAnalyzer[Arena, Team]):
             *   No relation:
             *   On error: an Exception
 
-        # RAISES:
+        Raises:
             *   ArenaValidationException
         """
         method = "ArenaService.certify_team_arena_relationship"

@@ -208,7 +208,7 @@ class TokenService(IntegrityService[Token]):
             *   InsertionResult[Coord] containing either:
                     - On failure: Exception
                     - On success: Coord in the payload.
-        # RAISES:
+        Raises:
             *   TokenServiceException
             *   CoordAlreadyToppingStackException
         """

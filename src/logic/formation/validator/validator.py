@@ -47,7 +47,7 @@ class FormationValidator(Validator[Formation]):
             *   ValidationResult[Formation] containing either:
                     - On failure: Exception.
                     - On success: Formation in the payload.
-        # RAISES:
+        Raises:
             *   TypeError
             *   NullFormationException
             *   FormationValidationException

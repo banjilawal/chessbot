@@ -58,7 +58,7 @@ class EdgeContextService(ContextService[EdgeContext]):
             *   validator (EdgeContextValidator)
         # RETURNS:
             None
-        # RAISES:
+        Raises:
             None
         """
         method = "EdgeContextService.__init__"

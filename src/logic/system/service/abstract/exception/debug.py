@@ -52,7 +52,7 @@ class ServiceDebugException(DebugException):
     """
     ERR_CODE = "SERVICE_DEBUG_EXCEPTION"
     MSG = "Service attribute raised an exception."
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

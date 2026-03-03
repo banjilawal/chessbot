@@ -52,7 +52,7 @@ class CaptivityContextValidator(Validator[CaptivityContext]):
             * ValidationResult[CaptivityContext] containing either:
                     - On failure: Exception.
                     - On success: CaptivityContext in the payload.
-        # RAISES:
+        Raises:
             * TypeError
             * NullCaptivityContextException
             * ZeroCaptivityContextFlagsException

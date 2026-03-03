@@ -57,7 +57,7 @@ class BoardContextService(ContextService[BoardContext]):
             *   validator (BoardContextValidator)
         # RETURNS:
             None
-        # RAISES:
+        Raises:
             None
         """
         method = "BoardContextService.__init__"

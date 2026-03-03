@@ -57,7 +57,7 @@ class CoordDebugException(DebugException):
     """
     ERR_CODE = "COORD_EXCEPTION"
     MSG = str = "Coord had an error."
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     _var = Optional[str]

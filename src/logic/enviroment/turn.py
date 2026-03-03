@@ -46,7 +46,7 @@ class TurnScene(Scene[Piece, Board, Square]):
         # RETURNS:
             `None`
 
-        # RAISES:
+        Raises:
             `None`
         """
         super().__init__(actor=actor, stage=board, prop=actor_square)

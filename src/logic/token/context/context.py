@@ -32,7 +32,7 @@ class TokenContext(Context[Token]):
         *   rank (Rank)
         *   ransom (str)
         *   coord (Coord)
-        *   opening_square_name (Square)
+        *   opening_square_name_name (Square)
     """
     _rank: Optional[Rank]
     _team: Optional[Team]
@@ -40,7 +40,7 @@ class TokenContext(Context[Token]):
     _coord: Optional[Coord]
     _color: Optional[GameColor]
     _designation: Optional[str]
-    _opening_square: Optional[Square]
+    _opening_square_name: Optional[Square]
     
     @LoggingLevelRouter.monitor
     def __init__(
@@ -52,7 +52,7 @@ class TokenContext(Context[Token]):
             coord: Optional[Coord] = None,
             designation: Optional[str] = None,
             color: Optional[GameColor] = None,
-            opening_square: Optional[Square] = None
+            opening_square_name: Optional[str] = None
     ):
         super().__init__(id=id, name=None)
         self._coord = coord
@@ -61,7 +61,7 @@ class TokenContext(Context[Token]):
         self._ransom = ransom
         self._color = color
         self._designation = designation
-        self._opening_square = opening_square
+        self._opening_square_name = opening_square_name
 
     @property
     def team(self) -> Optional[Team]:
@@ -88,8 +88,8 @@ class TokenContext(Context[Token]):
         return self._designation
     
     @property
-    def opening_square(self) -> Optional[Square]:
-        return self._opening_square
+    def opening_square_name(self) -> Optional[str]:
+        return self._opening_square_name
     
     def to_dict(self) -> {}:
         return {
@@ -100,5 +100,5 @@ class TokenContext(Context[Token]):
             "coord": self._coord,
             "ransom": self._ransom,
             "designation": self.designation,
-            "opening_square_name": self._opening_square
+            "opening_square_name_name": self._opening_square_name
         }

@@ -58,8 +58,7 @@ class UniqueAgentDataService(Database[PlayerAgent]):
         # RETURNS:
         None
 
-        # RAISES:
-        None
+        Raises:
         """
         super().service(id=id, name=name, data_service=data_service)
         

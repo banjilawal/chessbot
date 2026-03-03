@@ -62,7 +62,7 @@ class CoordContextBuilder(Builder[CoordContext]):
             *   BuildResult[CoordContext] containing either:
                     - On failure: Exception.
                     - On success: CoordContext in the payload.
-        # RAISES:
+        Raises:
             *   ZeroCoordContextFlagsException
             *   CoordContextBuildException
             *   ArenaCoordContextFlagsException

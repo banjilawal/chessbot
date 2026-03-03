@@ -55,7 +55,7 @@ class InvariantBreachException(DebugException):
     MSG = (
         "A system invariant was violated, indicating a critical state inconsistency. Or entity_service loss."
     )
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

@@ -55,8 +55,7 @@ class UniqueGameDataService(Database[Game]):
         # RETURNS:
         None
 
-        # RAISES:
-        None
+        Raises:
         """
         super().__init__(id=id, name=name, data_service=data_service)
     

@@ -57,7 +57,7 @@ class ScalarDebugException(DebugException):
     """
     ERR_CODE = "SCALAR_EXCEPTION"
     MSG = str = "Scalar had an error."
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     _var = Optional[str]

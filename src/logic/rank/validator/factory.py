@@ -77,7 +77,7 @@ class RankValidatorFactory(Validator[Rank]):
             - On success: Rank in the payload.
             - On failure: Exception.
 
-        # RAISES:
+        Raises:
             *   TypeError
             *   NullRankException
             *   RankValidationException
@@ -174,7 +174,7 @@ class RankValiatorFactory(Validator[Rank]):
                 - On success: a concrete Rank in the payload.
                 - On failure: Exception.
 
-        # RAISES:
+        Raises:
             * RankValidationException
         """
         method = "RankFactory.builder"

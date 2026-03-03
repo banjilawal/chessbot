@@ -8,23 +8,24 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import Optional
+from typing import Any, Optional
 
 __all__ = [
-    # ======================# TOKEN_CONTEXT_EXECUTION_ROUTE_EXCEPTION #======================#
-    "TokenContextExecutionRouteException",
+    # ======================# TOKEN_CONTEXT_BUILD_ROUTE_EXCEPTION #======================#
+    "TokenContextBuildRouteException",
 ]
 
 from logic.system import ExecutionRouteException
 
-
-# ======================# TOKEN_CONTEXT_EXECUTION_ROUTE_EXCEPTION #======================#
-class TokenContextExecutionRouteException(ExecutionRouteException):
+# ======================# TOKEN_CONTEXT_BUILD_ROUTE_EXCEPTION #======================#
+class TokenContextBuildRouteException(ExecutionRouteException):
     """
-    # ROLE: Error Tracing, Debugging, Super Exception
+    # ROLE: Exception Chain Layer 2, Exception Messaging
+    # TASK: Capture Error Variable State
 
     # RESPONSIBILITIES:
-    1.  Indicate that there is no build route for a TokenContext attribute.
+    1.  A failure BuildResult was sent because there was no build route for the TokenContext
+        attribute.
 
     # PARENT:
         *   ExecutionRoute
@@ -51,10 +52,10 @@ class TokenContextExecutionRouteException(ExecutionRouteException):
     # INHERITED METHODS:
         *   See ExecutionRoute class for inherited methods.
     """
-    ERR_CODE = "TOKEN_CONTEXT_EXECUTION_ROUTE_EXCEPTION"
-    MSG = "No build route for TokenContext attribute"
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
+    MSG = "No build route for TokenContext attribute"
+    ERR_CODE = "TOKEN_CONTEXT_BUILD_ROUTE_EXCEPTION"
     
     def __init__(
             self,

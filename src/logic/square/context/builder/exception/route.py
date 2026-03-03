@@ -53,7 +53,7 @@ class SquareContextExecutionRouteException(ExecutionRouteException):
     """
     ERR_CODE = "SQUARE_CONTEXT_EXECUTION_ROUTE_EXCEPTION"
     MSG = "No build route for SquareContext attribute"
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

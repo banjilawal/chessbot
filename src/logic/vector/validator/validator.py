@@ -59,7 +59,7 @@ class VectorValidator(Validator[Vector]):
             *   ValidationResult[Vector] containing either:
                     - On failure: Exception.
                     - On success: Vector in the payload.
-        # RAISES:
+        Raises:
             *   TypeError
             *   NullVectorException
             *   InvalidVectorException

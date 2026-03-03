@@ -70,7 +70,7 @@ class GameContextBuilder(Builder[GameContext]):
             - On success: GameContext in the payload.
             - On failure: Exception.
 
-        # RAISES:
+        Raises:
             *   ZeroGameContextFlagsException
             *   GameContextBuildException
             *   ArenaGameContextFlagsException

@@ -57,7 +57,7 @@ class TokenDatabase(Database[Token]):
             *   token_stack (TokenStack)
         # RETURNS:
             None
-        # RAISES:
+        Raises:
             None
         """
         super().__init__(id=id, name=name, data_service=token_stack)
@@ -118,7 +118,7 @@ class TokenDatabase(Database[Token]):
             *   ComputationResult[int] containing either:
                     - On failure: Exception.
                     - On success: int in the payload.
-        # RAISES:
+        Raises:
             *   TokenDatabaseException
         """
         method = "TokenDatabase.number_open_rank_slots"
@@ -157,7 +157,7 @@ class TokenDatabase(Database[Token]):
             *   ComputationResult[int] containing either:
                     - On failure: Exception.
                     - On success: int in the payload.
-        # RAISES:
+        Raises:
             *   TokenDatabaseException
         """
         method = "TokenDatabase.current-rank_size"
@@ -196,7 +196,7 @@ class TokenDatabase(Database[Token]):
             *   ComputationResult[bool] containing either:
                     - On failure: Exception.
                     - On success: int in the payload.
-        # RAISES:
+        Raises:
             *   TokenDatabaseException
         """
         method = "TokenDatabase.does_rank_opening_exist"
@@ -232,7 +232,7 @@ class TokenDatabase(Database[Token]):
                     - On failure: An exception.
                     - On success: Token in payload.
                     - On Empty: No payload nor exception.
-        # RAISES:
+        Raises:
             *   TokenDatabaseException
             *   TokenDatabase
         """
@@ -268,7 +268,7 @@ class TokenDatabase(Database[Token]):
             *   InsertionResult[Bool] containing either:
                     - On failure: An exception.
                     - On success: Token in payload.
-        # RAISES:
+        Raises:
             *   TokenDatabaseException
             *   TokenDatabaseInsertionException
             *   TokenDatabaseException
@@ -305,7 +305,7 @@ class TokenDatabase(Database[Token]):
                     - On failure: An exception.
                     - On success: Token in payload.
                     - On Empty: No payload nor exception.
-        # RAISES:
+        Raises:
             *   TokenDatabaseException
             *   TokenDatabase
         """

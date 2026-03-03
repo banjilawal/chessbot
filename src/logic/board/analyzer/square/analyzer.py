@@ -63,7 +63,7 @@ class BoardSquareRelationAnalyzer(RelationAnalyzer[Board, Square]):
             *   RelationReport[Board, Square] containing either
                 *   No relation:
                 *   On error: an Exception
-        # RAISES:
+        Raises:
             *   BoardValidationException
         """
         method = "BoardService.analyze"

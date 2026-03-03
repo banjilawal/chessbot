@@ -53,7 +53,7 @@ class ArgumentTypeException(ServiceRequestDebugException):
     """
     ERR_CODE = "WRONG_ARGUMENT_TYPE_EXCEPTION"
     MSG = "Incorrect argument type"
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

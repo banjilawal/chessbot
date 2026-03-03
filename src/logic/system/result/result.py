@@ -75,8 +75,7 @@ class Result(Generic[T]):
             *   payload (T): The data to be sent to the client.
         # RETURN:
             *   Result[T]
-        # RAISES:
-        None
+        Raises:
         """
         return cls(payload=payload)
     
@@ -88,8 +87,7 @@ class Result(Generic[T]):
             *   exception (Exception): cause of the failure.
         # RETURN:
             *   Result[Exception]
-        # RAISES:
-        None
+        Raises:
         """
         return cls(exception=exception)
     
@@ -101,7 +99,7 @@ class Result(Generic[T]):
     #     None
     #     # RETURN:
     #     Result[None]
-    #     # RAISES:
+    #     Raises:
     #     None
     #     """
     #     return cls()

@@ -64,7 +64,7 @@ class DomainOriginValidator(Validator[DomainOrigin]):
                 - On success: DomainOrigin in the payload.
                 - On failure: Exception.
 
-        # RAISES:
+        Raises:
             * TypeError
             * InvalidDomainOriginException
         """

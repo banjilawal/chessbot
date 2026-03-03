@@ -74,7 +74,7 @@ class SnapshotContext(Context[Snapshot]):
         # RETURNS:
         None
 
-        # RAISES:
+        Raises:
         Non
         """
         super().__init__(id=None, name=None)
@@ -119,8 +119,7 @@ class SnapshotContext(Context[Snapshot]):
         # RETURNS:
         dict
 
-        # RAISES:
-        None
+        Raises:
         """
         return {
             "game": self._game,

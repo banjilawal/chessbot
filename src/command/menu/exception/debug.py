@@ -52,7 +52,7 @@ class ServiceMenuDebugException(DebugException):
     """
     ERR_CODE = "SERVICE_MENU_DEBUG_EXCEPTION"
     MSG = "ServiceMenu attribute raised an exception."
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

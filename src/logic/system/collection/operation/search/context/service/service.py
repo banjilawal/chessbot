@@ -57,8 +57,7 @@ class ContextService(IntegrityService[Context[T]]):
         # RETURNS:
         None
 
-        # RAISES:
-        None
+        Raises:
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         method="ContextService.__init__"

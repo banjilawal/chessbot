@@ -56,7 +56,7 @@ class HostageDatabase(Database[Hostage]):
             *   member_service (HostageList)
         # RETURNS:
             None
-        # RAISES:
+        Raises:
             None
         """
         super().__init__(id=id, name=name, data_service=data_service)
@@ -93,7 +93,7 @@ class HostageDatabase(Database[Hostage]):
             *   InsertionResult[Hostage] containing either:
                     - On failure: An exception.
                     - On success: Hostage in payload.
-        # RAISES:
+        Raises:
             *   HostageDatabase
             *   UniqueHostageInsertionException
             *   HostageDatabase
@@ -180,7 +180,7 @@ class HostageDatabase(Database[Hostage]):
                     - On failure: An exception.
                     - On success: Hostage in payload.
                     - On Empty: No payload nor exception.
-        # RAISES:
+        Raises:
             *   HostageDatabase
             *   ExhaustiveHostageDeletionException
         """

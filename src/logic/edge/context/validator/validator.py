@@ -69,7 +69,7 @@ class EdgeContextValidator(Validator[EdgeContext]):
             *   ValidationResult[EdgeContext] containing either:
                     - On failure:   Exception.
                     - On success:   EdgeContext in the payload.
-        # RAISES:
+        Raises:
             *   TypeError
             *   NullEdgeContextException
             *   ZeroEdgeContextFlagsException

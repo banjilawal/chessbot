@@ -17,7 +17,7 @@ from logic.system import (
     NumberValidator, Builder, BuildResult, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
 )
 from logic.token import (
-    ArenaTokenContextFlagsException, TokenBuildRouteException, TokenContext, TokenContextBuildException,
+    ArenaTokenContextFlagsException, TokenContext, TokenContextBuildException,
     TokenContextBuildRouteException, ZeroTokenContextFlagsException
 )
 
@@ -55,7 +55,7 @@ class TokenContextBuilder(Builder[TokenContext]):
             coord: Optional[Coord] = None,
             color: Optional[GameColor] = None,
             designation: Optional[str] = None,
-            opening_square: Optional[Square] = None,
+            opening_square_name: Optional[str] = None,
             team_service: TeamService = TeamService(),
             rank_service: RankService = RankService(),
             coord_service: CoordService = CoordService(),
@@ -90,7 +90,7 @@ class TokenContextBuilder(Builder[TokenContext]):
           *     BuildResult[TokenContext] containing either:
                     - On failure: Exception.
                     - On success: TokenContext in the payload.
-        # RAISES:
+        Raises:
             *   ZeroTokenContextFlagsException
             *   TokenContextBuildException
             *   ArenaTokenContextFlagsException
@@ -100,7 +100,7 @@ class TokenContextBuilder(Builder[TokenContext]):
         method = "TokenContextBuilder.builder"
         
         # --- Count how many optional parameters are not-null. only one should be not null. ---#
-        params = [id, designation, team, rank, ransom, coord, color]
+        params = [id, designation, team, rank, ransom, coord, color, opening_square_name]
         param_count = sum(bool(p) for p in params)
         
         # Handle the case that, all the optional params are null.

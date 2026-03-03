@@ -66,7 +66,7 @@ class BoardFinder(DataFinder[Board]):
                     - On error: Exception , payload null
                     - On finding a match: List[Board] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             *   BoardSearchPayloadTypeException
             *   BoardNullDatasetException
             *   BoardSearchException
@@ -132,7 +132,7 @@ class BoardFinder(DataFinder[Board]):
                     - On error: Exception , payload null
                     - On finding a match: List[Board] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             None
         """
         matches = [board for board in dataset if board.id == id]
@@ -156,7 +156,7 @@ class BoardFinder(DataFinder[Board]):
                     - On error: Exception , payload null
                     - On finding a match: List[Board] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             None
         """
         matches = [board for board in dataset if board.arena == arena]

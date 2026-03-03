@@ -15,7 +15,7 @@ from logic.system import (
     NUMBER_OF_ROWS, SearchResult, UpdateResult
 )
 from logic.square import (
-    SquareContext, SquareCrudHandler, SquareStackUtil, SquareService,
+    SquareContext, SquareStackCrudHandler, SquareStackUtil, SquareService,
     SquareContextService, Square,
 )
 from logic.token import Token
@@ -78,7 +78,6 @@ class SquareStackService(StackService[Square]):
     _stack: List[Square]
     _util: SquareStackUtil
     _service: SquareService
-    _crud_handler: SquareCrudHandler
     _context_service: SquareContextService
     
     def __init__(
@@ -95,7 +94,6 @@ class SquareStackService(StackService[Square]):
         self._util = util
         self._service = service
         self._context_service = context_service
-        self._crud_handler = SquareCrudHandler()
         
         self._stack = []
         self._capacity = capacity
@@ -138,11 +136,11 @@ class SquareStackService(StackService[Square]):
     
     @LoggingLevelRouter.monitor
     def push(self, item: Square) -> InsertionResult[bool]:
-        return self._crud_handler.push(self, item)
+        return self.util.crud.push(self, item)
     
     @LoggingLevelRouter.monitor
     def pop(self) -> DeletionResult[Square]:
-        return self._crud_handler.pop(self)
+        return self.util.crud.pop(self)
     
     @LoggingLevelRouter.monitor
     def delete_by_id(
@@ -150,21 +148,21 @@ class SquareStackService(StackService[Square]):
             id: int,
             identity_service: IdentityService = IdentityService()
     ) -> DeletionResult[Square]:
-        return self._crud_handler.delete_by_id(self, id, identity_service)
+        return self.util.crud.delete_by_id(stack=self, id=id, identity_service=identity_service)
       
     @LoggingLevelRouter.monitor
     def query(self, context: SquareContext) -> SearchResult[List[Square]]:
-        return self._crud_handler.query(self, context)
+        return self._util.crud.query(context=context, stack=self)
     
     def vist_square(self, square: Square, token: Token) -> UpdateResult[Square]:
-        return self.util.occupation_service.add_occupant(
+        return self.util.occupation_service.occupy_stack_square(
             square=square,
             token=token,
             square_list=self._stack
         )
     
     def leave_square(self, token: Token) ->DeletionResult[Token]:
-        return self._util.occupation_service.remove_occupant_by_search(
+        return self._util.occupation_service.remove_occupant_from_stack(
             occupant=token,
             square_list=self._stack
         )

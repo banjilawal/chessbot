@@ -84,7 +84,7 @@ From `logic.system`:
 CONTAINS:
 --------
 See the list of exception in the `__all__` list following (e.g., `VectorException`,
-`NullVectorException`, `InvalidVectorException`, ).
+`NullVectorException`, `InvalidVectorException`,).
 """
 
 from logic.event import EventException, TransactionException

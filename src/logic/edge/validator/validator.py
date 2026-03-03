@@ -68,7 +68,7 @@ class EdgeValidator(Validator[Edge]):
             *   ValidationResult[Edge] containing either:
                     - On failure: Exception.
                     - On success: Edge in the payload.
-        # RAISES:
+        Raises:
             *   TypeError
             *   NullEdgeException
             *   ValidatingEdgeException

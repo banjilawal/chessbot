@@ -65,7 +65,7 @@ class AgentFinder(DataFinder[PlayerAgent]):
             - On error: Exception , payload null
             - On no matches found: Exception null, payload null
 
-        # RAISES:
+        Raises:
             *   TypeError
             *   AgentNullDatasetException
             *   AgentFinderException
@@ -129,7 +129,7 @@ class AgentFinder(DataFinder[PlayerAgent]):
             - On error: Exception , payload null
             - On no matches found: Exception null, payload null
 
-        # RAISES:
+        Raises:
             *   AgentFinderException
         """
         method = "AgentFinder._find_by_id"
@@ -173,7 +173,7 @@ class AgentFinder(DataFinder[PlayerAgent]):
             - On error: Exception , payload null
             - On no matches found: Exception null, payload null
 
-        # RAISES:
+        Raises:
             *   AgentFinderException
         """
         method = "AgentFinder._find_by_name"
@@ -215,7 +215,7 @@ class AgentFinder(DataFinder[PlayerAgent]):
             - On success: List[owner] in the payload.
             - On failure: Exception.
 
-        # RAISES:
+        Raises:
             *   AgentFinderException
         """
         method = "AgentFinder._find_by_team"
@@ -258,7 +258,7 @@ class AgentFinder(DataFinder[PlayerAgent]):
             - On success: List[owner] in the payload.
             - On failure: Exception.
 
-        # RAISES:
+        Raises:
             *   AgentFinderException
         """
         method = "AgentFinder._find_by_name"

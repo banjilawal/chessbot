@@ -55,7 +55,7 @@ class CoordBuilder(Builder[Coord]):
             *   BuildResult[Coord] containing either:
                     - On success: Coord in the payload.
                     - On failure: Exception.
-        # RAISES:
+        Raises:
             *   CoordBuildException
         """
         method = "CoordBuilder.builder"

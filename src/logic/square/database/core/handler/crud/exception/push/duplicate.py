@@ -28,7 +28,7 @@ class AddingDuplicateSquareException(DebugException):
             *   variable,
             *   it's value,
             *   event which fired the variable into its error state.
-        which occurred in the Hostage method identified in layer-0 of the exception chain.  
+        which occurred in the SquareStackCrudHandler method identified in layer-0 of the exception chain.  
     2.  A failing InsertionResult was returned because an attempt to add a duplicate square to the stack.
 
     # PARENT:
@@ -56,7 +56,7 @@ class AddingDuplicateSquareException(DebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     ERR_CODE = "ADDING_DUPLICATE_SQUARE_EXCEPTION"
     MSG = "SquareStack push failed: Cannot add a duplicate square to the stack."

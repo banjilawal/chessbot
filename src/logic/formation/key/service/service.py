@@ -55,7 +55,7 @@ class FormationKeyService(ContextService[FormationKey]):
             *   validator (FormationKeyValidator)
         # RETURNS:
             None
-        # RAISES:
+        Raises:
             None
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator, finder=lookup)

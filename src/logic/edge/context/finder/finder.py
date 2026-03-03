@@ -68,7 +68,7 @@ class EdgeFinder(StackSearcher[Edge]):
                     - On error: Exception , payload null
                     - On finding a match: List[Edge] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             *   EdgeSearchPayloadTypeException
             *   EdgeNullDatasetException
             *   EdgeSearchException
@@ -153,7 +153,7 @@ class EdgeFinder(StackSearcher[Edge]):
                     - On error: Exception , payload null
                     - On finding a match: List[Edge] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             None
         """
         method = "EdgeFinder._find_by_id"
@@ -178,7 +178,7 @@ class EdgeFinder(StackSearcher[Edge]):
                     - On error: Exception , payload null
                     - On finding a match: List[Edge] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             None
         """
         matches = [edge for edge in dataset if edge.name.upper() == name.upper()]
@@ -202,7 +202,7 @@ class EdgeFinder(StackSearcher[Edge]):
                     - On error: Exception , payload null
                     - On finding a match: List[Edge] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             None
         """
         matches = [edge for edge in dataset if edge.coord == coord]
@@ -226,7 +226,7 @@ class EdgeFinder(StackSearcher[Edge]):
                     - On error: Exception , payload null
                     - On finding a match: List[Edge] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             None
         """
         matches = [edge for edge in dataset if edge.board == board]
@@ -250,7 +250,7 @@ class EdgeFinder(StackSearcher[Edge]):
                     - On error: Exception , payload null
                     - On finding a match: List[Edge] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             None
         """
         matches = [
@@ -276,7 +276,7 @@ class EdgeFinder(StackSearcher[Edge]):
                     - On error: Exception , payload null
                     - On finding a match: List[Edge] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             None
         """
         matches = [edge for edge in dataset if edge.is_empty]
@@ -300,7 +300,7 @@ class EdgeFinder(StackSearcher[Edge]):
                     - On error: Exception , payload null
                     - On finding a match: List[Edge] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             None
         """
         matches = [edge for edge in dataset if edge.is_occupied]

@@ -57,7 +57,7 @@ class RankQuotaAnalyzer:
             *   ComputationResult[int] containing either:
                     - On failure: Exception.
                     - On success: int in the payload.
-        # RAISES:
+        Raises:
             *   RankQuotaAnalysisException
             *   RankQuotaAnalysisException
         """
@@ -115,7 +115,7 @@ class RankQuotaAnalyzer:
             *   CalculationReport[bool] containing either:
                     - On failure: Exception
                     - On success: bool
-        # RAISES:
+        Raises:
             *   RankQuotaAnalysisException
             *   RankQuotaAnalysisException
         """
@@ -163,7 +163,7 @@ class RankQuotaAnalyzer:
             *   CalculationReport[int] containing either:
                     - On failure: Exception
                     - On success: int
-        # RAISES:
+        Raises:
             *   RankQuotaAnalysisException
             *   RankQuotaAnalysisException
         """

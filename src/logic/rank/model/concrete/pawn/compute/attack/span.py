@@ -59,7 +59,7 @@ class PawnAttackSpan:
             *   ComputationResult[List[Coord]]:
                     - On failure: An exception.
                     - On success: List[Coord] in the payload.
-        # RAISES:
+        Raises:
             *   PawnAttackSpanComputationException
         """
         method = "PawnAttack.compute"

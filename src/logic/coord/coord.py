@@ -43,8 +43,7 @@ class Coord:
         # RETURNS:
         None
         
-        # RAISES:
-        None
+        Raises:
         """
         method = "Coord.__init__"
         self._row = row

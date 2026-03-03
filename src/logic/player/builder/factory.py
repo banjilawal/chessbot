@@ -68,7 +68,7 @@ class PlayerFactory(Builder[Player]):
             - On success: Player in the payload.
             - On failure: Exception.
 
-        # RAISES:
+        Raises:
             *   PlayerBuildException
         """
         method = "PlayerBuilder.build"
@@ -80,7 +80,7 @@ class PlayerFactory(Builder[Player]):
             # Use player_variety to decide which factory method to call.
             
             if isinstance(player_variety, HumanPlayer):
-                return cls.build_human_player(id=id, name=name, )
+                return cls.build_human_player(id=id, name=name,)
             
             # Machine owner requires an engine_service.
             if isinstance(player_variety, MachinePlayer):
@@ -120,7 +120,7 @@ class PlayerFactory(Builder[Player]):
             - On success: HumanPlayer in the payload.
             - On failure: Exception.
 
-        # RAISES:
+        Raises:
             *   HumanPlayerBuildException
         """
         method = "PlayerBuilder.build_human_player"
@@ -174,7 +174,7 @@ class PlayerFactory(Builder[Player]):
             - On success: MachinePlayer in the payload.
             - On failure: Exception.
 
-        # RAISES:
+        Raises:
             *   MachinePlayerBuildException
         """
         method = "PlayerBuilder.build_machine_player"

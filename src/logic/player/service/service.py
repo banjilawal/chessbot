@@ -60,7 +60,7 @@ class PlayerService(IntegrityService[Player]):
             *   validator (PlayerValidator)
         # RETURNS:
             None
-        # RAISES:
+        Raises:
             None
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
@@ -95,7 +95,7 @@ class PlayerService(IntegrityService[Player]):
             *   DeletionResult[Team] containing either:
                     - On failure: Exception.
                     - On success: Team in the payload.
-        # RAISES:
+        Raises:
             *   PlayerServiceException
             *   PoppingTeamStackFailedException
             *   PoppingEmptyTeamStackException
@@ -162,7 +162,7 @@ class PlayerService(IntegrityService[Player]):
             *   InsertionResult[Team] containing either:
                     - On failure: Exception.
                     - On success: Team in the payload.
-        # RAISES:
+        Raises:
             *   TypeError
             *   PlayerServiceException
             *   PushingTeamFailedException

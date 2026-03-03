@@ -13,7 +13,7 @@ version: 1.0.0
 None
 
 # Modules
-from .wrapper import StartingSquareVisitException
+from .wrapper import StartSquareVisitException
 from .board import VisitorFromWrongBoardException
 from .disabled import SquareVisitorDisabledException
 from .occupied import VisitingOccupiedSquareException

@@ -60,8 +60,7 @@ class RankService(IntegrityService[Rank]):
         # RETURNS:
         None
 
-        # RAISES:
-        None
+        Raises:
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         self._persona_service = persona_service

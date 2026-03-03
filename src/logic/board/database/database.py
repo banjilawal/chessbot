@@ -58,7 +58,7 @@ class BoardDatabase(Database[Board]):
             *   member_service (BoardStackService)
         # RETURNS:
             None
-        # RAISES:
+        Raises:
             None
         """
         super().__init__(id=id, name=name, data_service=data_service)
@@ -95,7 +95,7 @@ class BoardDatabase(Database[Board]):
             *   InsertionResult[Board] containing either:
                     - On failure: An exception.
                     - On success: Board in payload.
-        # RAISES:
+        Raises:
             *   BoardDatabaseException
             *   UniqueBoardInsertionException
             *   BoardDatabaseException
@@ -177,7 +177,7 @@ class BoardDatabase(Database[Board]):
                     - On failure: An exception.
                     - On success: Board in payload.
                     - On Empty: No payload nor exception.
-        # RAISES:
+        Raises:
             *   BoardDatabaseException
             *   ExhaustiveBoardDeletionException
         """

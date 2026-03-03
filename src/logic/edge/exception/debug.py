@@ -57,7 +57,7 @@ class EdgeDebugException(DebugException):
     """
     ERR_CODE = "EDGE_EXCEPTION"
     MSG = str = "Edge had an error."
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     _var = Optional[str]

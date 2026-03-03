@@ -84,7 +84,7 @@ class SnapshotContextBuilder(Builder[SnapshotContext]):
             - On success: SnapshotContext in the payload.
             - On failure: Exception.
 
-        # RAISES:
+        Raises:
             *   ZeroSnapshotContextFlagsException
             *   SnapshotContextBuildException
             *   ArenaSnapshotContextFlagsException

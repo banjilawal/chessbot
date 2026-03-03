@@ -52,7 +52,7 @@ class NullCommandException(NullException):
     """
     ERR_CODE = "NULL_COMMAND_EXCEPTION"
     MSG = "Command is null"
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

@@ -78,7 +78,7 @@ class SnapshotContextValidator(Validator[SnapshotContext]):
             - On success: SnapshotContext in the payload.
             - On failure: Exception.
 
-        # RAISES:
+        Raises:
             *   TypeError
             *   NullSnapshotContextException
             *   ZeroSnapshotContextFlagsException

@@ -33,7 +33,7 @@ class FormationService(HashService[Formation]):
             *   super_key_service (FormationKeyService)
         # RETURNS:
             None
-        # RAISES:
+        Raises:
             None
         """
         super().__init__(id=id, name=name, validator=validator, super_key_service=super_key_service)
@@ -103,7 +103,7 @@ class FormationService(HashService[Formation]):
                     - On error: Exception , payload null
                     - On finding a match: List[Square] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             *   TypeError
             *   NullTeamContextException
             *   ZeroTeamContextFlagsException
@@ -187,7 +187,7 @@ class FormationService(HashService[Formation]):
             *   super_key (FormationKey)
         # RETURNS:
             *   SearchResult[List[Formation]] containing a list if a match is found else an exception chain.
-        # RAISES:
+        Raises:
             None
         """
         method = "FormationService.lookup_formation"

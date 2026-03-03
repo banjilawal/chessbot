@@ -64,7 +64,7 @@ class BoardBuilder(Builder[Board]):
             *   ValidationResult[Board] containing either:
                     - On failure: Exception.
                     - On success: Board in the payload.
-        # RAISES:
+        Raises:
             *   BoardBuildException
             *   ArenaAlreadyContainsBoardException
         """

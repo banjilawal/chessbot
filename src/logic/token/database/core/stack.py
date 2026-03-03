@@ -70,7 +70,7 @@ class TokenStack(StackService[Token]):
             *   context_service (TokenContextService)
         # RETURNS:
             None
-        # RAISES:
+        Raises:
             None
         """
         method = "TokenService.__init__"
@@ -162,7 +162,7 @@ class TokenStack(StackService[Token]):
             *   InsertionResult[Token] containing either:
                     - On failure: Exception.
                     - On success: Token in the payload.
-        # RAISES:
+        Raises:
             *   TokenStackException
         """
         method = "TokenStack.push"
@@ -235,7 +235,7 @@ class TokenStack(StackService[Token]):
             *   DeletionResult[Token] containing either:
                     - On failure: Exception.
                     - On success: Token in the payload.
-        # RAISES:
+        Raises:
             *   TokenStackException
             *   PoppingEmptyTokenStackException
         """
@@ -284,7 +284,7 @@ class TokenStack(StackService[Token]):
                     *   identity_service (IdentityService)
         # RETURNS:
             *   DeletionResult[Token]
-        # RAISES:
+        Raises:
             *   TokenStackException
             *   PoppingTokenException
             *   PoppingEmptyTokenStackException
@@ -352,7 +352,7 @@ class TokenStack(StackService[Token]):
                     - On failure: An exception.
                     - On success: List[Token].
                     - On Empty: payload null, exception null.
-        # RAISES:
+        Raises:
             *   TokenStackException
         """
         method = "TokenStack.query"

@@ -57,7 +57,7 @@ class BoardDebugException(DebugException):
     """
     ERR_CODE = "BOARD_EXCEPTION"
     MSG = str = "Board had an error."
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     _var = Optional[str]

@@ -62,7 +62,6 @@ class Context(ABC, Generic[T]):
         # RETURNS:
             dict
 
-        # RAISES:
-        None
+        Raises:
         """
         pass

@@ -85,8 +85,7 @@ class EdgeContext(Context[Edge]):
         None
         # RETURNS:
             dict
-        # RAISES:
-        None
+        Raises:
         """
         return {
             "id": self.id,

@@ -63,7 +63,7 @@ class RosterRelationAnalyzer(RelationAnalyzer[Team, Token]):
                 - On partial: Token only
                 - On bidirectional: Team and Token
                 - On not related: Neither team, occupant nor exception.
-        # RAISES:
+        Raises:
             *   TeamRosterRelationAnalysisException
         """
         method = "RosterRelationAnalyzer.test"

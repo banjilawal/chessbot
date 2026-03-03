@@ -15,7 +15,7 @@ from logic.square import (
 from logic.system import DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, SearchResult
 
 
-class SquareCrudHandler:
+class SquareStackCrudHandler:
     """
     # ROLE: Handler
     # TASK: CRUD
@@ -33,7 +33,7 @@ class SquareCrudHandler:
     # LOCAL ATTRIBUTES:
         *   id (int)
         *   SERVICE_NAME (str)
-        *   roster_deployer (RosterDeployer)
+        *   roster_deployer (SquareStackRosterHandler)
 
     # INHERITED ATTRIBUTES:
     None
@@ -42,7 +42,7 @@ class SquareCrudHandler:
         Local:
             *   id (int)
             *   name (str)
-            *   roster_deployer (RosterDeployer)
+            *   roster_deployer (SquareStackRosterHandler)
 
         Inherited:
         None
@@ -79,7 +79,7 @@ class SquareCrudHandler:
             return InsertionResult.failure(
                 SquareCrudHandlerException(
                     cls_mthd=method,
-                    cls_name=SquareCrudHandler.__name__,
+                    cls_name=SquareStackCrudHandler.__name__,
                     err_code=SquareCrudHandlerException.ERR_CODE,
                     msg=SquareCrudHandlerException.MSG,
                     ex=SquareStackPushException(
@@ -101,7 +101,7 @@ class SquareCrudHandler:
             return InsertionResult.failure(
                 SquareCrudHandlerException(
                     cls_mthd=method,
-                    cls_name=SquareCrudHandler.__name__,
+                    cls_name=SquareStackCrudHandler.__name__,
                     err_code=SquareCrudHandlerException.ERR_CODE,
                     msg=SquareCrudHandlerException.MSG,
                     ex=SquareStackPushException(
@@ -129,7 +129,7 @@ class SquareCrudHandler:
             *   DeletionResult[Square] containing either:
                     - On failure: Exception.
                     - On success: Token in the payload.
-        # RAISES:
+        Raises:
             *   SquareCrudHandlerException
             *   PoppingEmptySquareStackException
         """
@@ -141,7 +141,7 @@ class SquareCrudHandler:
             return DeletionResult.failure(
                 SquareCrudHandlerException(
                     cls_mthd=method,
-                    cls_name=SquareCrudHandler.__name__,
+                    cls_name=SquareStackCrudHandler.__name__,
                     err_code=SquareCrudHandlerException.ERR_CODE,
                     msg=SquareCrudHandlerException.MSG,
                     ex=SquareStackPushException(
@@ -182,7 +182,7 @@ class SquareCrudHandler:
                     *   identity_service (IdentityService)
         # RETURNS:
             *   DeletionResult[Square]
-        # RAISES:
+        Raises:
             *   SquareCrudHandlerException
             *   SquareStackPopException
             *   PoppingEmptySquareStackException
@@ -195,7 +195,7 @@ class SquareCrudHandler:
             return DeletionResult.failure(
                 SquareCrudHandlerException(
                     cls_mthd=method,
-                    cls_name=SquareCrudHandler.__name__,
+                    cls_name=SquareStackCrudHandler.__name__,
                     err_code=SquareCrudHandlerException.ERR_CODE,
                     msg=SquareCrudHandlerException.MSG,
                     ex=SquareStackPushException(
@@ -217,7 +217,7 @@ class SquareCrudHandler:
             return DeletionResult.failure(
                 SquareCrudHandlerException(
                     cls_mthd=method,
-                    cls_name=SquareCrudHandler.__name__,
+                    cls_name=SquareStackCrudHandler.__name__,
                     err_code=SquareCrudHandlerException.ERR_CODE,
                     msg=SquareCrudHandlerException.MSG,
                     ex=SquareStackPushException(
@@ -261,7 +261,7 @@ class SquareCrudHandler:
                     - On failure: An exception.
                     - On success: List[Square] in payload.
                     - On Empty: No payload nor exception.
-        # RAISES:
+        Raises:
             *   SquareCrudHandlerException
         """
         method = "SquareStackService.query"
@@ -275,7 +275,7 @@ class SquareCrudHandler:
             return SearchResult.failure(
                 SquareCrudHandlerException(
                     cls_mthd=method,
-                    cls_name=SquareCrudHandler.__name__,
+                    cls_name=SquareStackCrudHandler.__name__,
                     err_code=SquareCrudHandlerException.ERR_CODE,
                     msg=SquareCrudHandlerException.MSG,
                     ex=SquareStackPushException(
@@ -289,3 +289,6 @@ class SquareCrudHandler:
             )
         # --- For either a successful or empty search result directly forward to the caller. ---#
         return query_result
+    
+    
+    def

@@ -80,7 +80,7 @@ class ArgumentsValidator(Validator[Dict]):
              *   ValidationResult[Dict[Str, Any]] containing either:
                      - On failure: Exception.
                      - On success: Dict[Str, Any] in the payload.
-         # RAISES:
+         Raises:
              *   ArgumentCountException
              *   ArgumentNameException
              *   ArgumentTypeException

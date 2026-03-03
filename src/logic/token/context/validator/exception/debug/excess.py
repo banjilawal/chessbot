@@ -7,27 +7,33 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-from logic.system import ContextFlagCountException
-from logic.token import TokenContextException
+from __future__ import annotations
+from typing import Any, Optional
 
 __all__ = [
-    # ========================= ARENA_TOKEN_CONTEXT_FLAG EXCEPTION =========================#
-    "ArenaTokenContextFlagsException"
+    # ======================# EXCESS_TOKEN_CONTEXT_FLAGS_EXCEPTION #======================#
+    "ExcessTokenContextFlagsException",
 ]
 
+from logic.system import DebugException
 
-# ========================= ARENA_TOKEN_CONTEXT_FLAG EXCEPTION =========================#
-class ArenaTokenContextFlagsException(TokenContextException, ContextFlagCountException):
+# ======================# EXCESS_TOKEN_CONTEXT_FLAGS_EXCEPTION #======================#
+class ExcessTokenContextFlagsException(DebugException):
     """
-    # ROLE: Error Tracing, Debugging
+    # ROLE: Exception Chain Layer 2, Exception Messaging
+    # TASK: Capture Error Variable State
 
     # RESPONSIBILITIES:
-    1.  Indicate that the candidate was not granted TokenContext certification because more than one TokenContext
-        flag was enabled.
+    1.  Produce the:
+            *   variable,
+            *   it's value,
+            *   event which fired the variable into its error state.
+        which occurred in the TokenContextBuilder method identified in layer-0 of the exception chain.
 
+    2.  A failing ValidationResult was returned because TokenContext candidate had more than one flag enabled.
+    
     # PARENT:
-        *   ContextFlagCountException
-        *   InvalidTokenContextException
+        *   DebugException
 
     # PROVIDES:
     None
@@ -36,9 +42,44 @@ class ArenaTokenContextFlagsException(TokenContextException, ContextFlagCountExc
     None
 
     # INHERITED ATTRIBUTES:
-    None
+        *   See DebugException class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        *   msg (str)
+        *   err_code (str)
+        *   ex (Optional[Exception])
+        *   var (Optional[str])
+        *   val (Optional[Any])
+
+    # LOCAL METHODS:
+   None
+
+    # INHERITED METHODS:
+        *   See DebugException class for inherited methods.
     """
-    ERR_CODE = "ARENA_TOKEN_CONTEXT_FLAG_EXCEPTION"
-    MSG = (
-        "TokenContext validation failed: More than one attribute was set. Only one attribute-value should be enabled."
-    )
+    VAR = Optional[str]
+    VAL = Optional[Any]
+    MSG = "More than one TokenContext flag enabled."
+    ERR_CODE = "EXCESS_TOKEN_CONTEXT_FLAGS_EXCEPTION"
+    
+    def __init__(
+            self,
+            msg: Optional[str] = None,
+            var: Optional[str] = None,
+            val: Optional[Any] = None,
+            ex: Optional[Exception] = None,
+            err_code: Optional[str] = None,
+    ):
+        """
+        Args:
+            msg: str
+            var: Optional[str]
+            val: Optional[Any]
+            ex: Optional[Exception]
+            err_code: Optional[str]
+        """
+        var = var or self.VAR
+        val = val or self.VAL
+        msg = msg or self.MSG
+        err_code = err_code or self.ERR_CODE
+        super().__init__(ex=ex, msg=msg, err_code=err_code, var=var, val=val,)

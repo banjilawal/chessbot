@@ -58,7 +58,7 @@ class NodeContextService(ContextService[NodeContext]):
             *   validator (NodeContextValidator)
         # RETURNS:
             None
-        # RAISES:
+        Raises:
             None
         """
         method = "NodeContextService.__init__"

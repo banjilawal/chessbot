@@ -58,8 +58,7 @@ class CoordService(IntegrityService[Coord]):
         # RETURNS:
         None
 
-        # RAISES:
-        None
+        Raises:
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
 

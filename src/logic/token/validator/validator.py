@@ -73,7 +73,7 @@ class TokenValidator(Validator[Token]):
             *   ValidationResult[Team] containing either:
                     - On failure: Exception.
                     - On success: Team in the payload.
-        # RAISES:
+        Raises:
             *   TypeError
             *   NullTeamException
             *   TeamValidationException

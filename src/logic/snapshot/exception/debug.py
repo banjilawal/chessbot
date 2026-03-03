@@ -57,7 +57,7 @@ class SnapshotDebugException(DebugException):
     """
     ERR_CODE = "SNAPSHOT_EXCEPTION"
     MSG = str = "Snapshot had an error."
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     _var = Optional[str]

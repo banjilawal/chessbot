@@ -53,7 +53,7 @@ class DomainOriginBuilder(Builder[DomainOrigin]):
                 - On success: DomainOrigin in the payload.
                 - On failure: Exception.
 
-        # RAISES:
+        Raises:
             None
         """
         method = "DomainOriginBuilder.builder"

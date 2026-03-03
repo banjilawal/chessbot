@@ -56,8 +56,7 @@ class CoordDatabase(Database[Coord]):
         # RETURNS:
         None
 
-        # RAISES:
-        None
+        Raises:
         """
         super().__init__(id=id, name=name, data_service=coord_stack)
         self._coord_stack = coord_stack
@@ -116,7 +115,7 @@ class CoordDatabase(Database[Coord]):
                 - On failure: Exception
                 - On success: Coord in the payload.
                 - On empty: Payload is null, Exception is null.
-        # RAISES:
+        Raises:
             *   CoordStackException
         """
         method = "CoordStack.coord_search"

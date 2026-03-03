@@ -63,7 +63,7 @@ class ArenaBuilder(Builder[Arena]):
             - On success: Arena in the payload.
             - On failure: Exception.
 
-        # RAISES:
+        Raises:
             *   ArenaBuildException
         """
         method = "ArenaBuilder.build"

@@ -51,7 +51,7 @@ class ArgumentNameException(ServiceRequestDebugException):
     """
     ERR_CODE = "WRONG_ARGUMENT_NAME_EXCEPTION"
     MSG = "Argument name incorrect."
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

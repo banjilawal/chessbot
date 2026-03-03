@@ -33,7 +33,7 @@ class PersonaValidator(Validator[Persona]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate: Any, ) -> ValidationResult[Persona]:
+    def validate(cls, candidate: Any,) -> ValidationResult[Persona]:
         """
         # ACTION:.
             1.  If the candidate passes existence and type checks cast into a Persona instance and return
@@ -44,7 +44,7 @@ class PersonaValidator(Validator[Persona]):
             *   ValidationResult[Persona] containing either:
                     - On failure: Exception.
                     - On success: Persona in the payload.
-        # RAISES:
+        Raises:
             *   TypeError
             *   NullPersonaException
             *   PersonaValidationException

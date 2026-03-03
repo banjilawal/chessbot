@@ -55,7 +55,7 @@ class TeamDatabase(Database[Team]):
             *   member_service (TeamStack)
         # RETURNS:
             None
-        # RAISES:
+        Raises:
             None
         """
         super().__init__(id=id, name=name, data_service=stack_service)
@@ -96,7 +96,7 @@ class TeamDatabase(Database[Team]):
                     - On failure: An exception.
                     - On success: Token in payload.
                     - On Empty: No payload nor exception.
-        # RAISES:
+        Raises:
             *   TeamDatabaseException
         """
         method = "TeamDatabase.remove_token"
@@ -131,7 +131,7 @@ class TeamDatabase(Database[Team]):
             *   InsertionResult containing either:
                     - On failure: An exception.
                     - On success: bool in payload.
-        # RAISES:
+        Raises:
             *   TeamDatabaseException
         """
         method = "TeamDatabase.insert"
@@ -166,7 +166,7 @@ class TeamDatabase(Database[Team]):
                     - On failure: An exception.
                     - On success: Token in payload.
                     - On Empty: No payload nor exception.
-        # RAISES:
+        Raises:
             *   TeamDatabaseException
         """
         method = "TokenDatabase.search"

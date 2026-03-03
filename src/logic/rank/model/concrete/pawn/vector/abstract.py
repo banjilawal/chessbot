@@ -49,8 +49,7 @@ class PawnVectorSet(ABC):
             *   peaceful_destination_vectors (List[Vector])
         # RETURNS:
         None
-        # RAISES:
-        None
+        Raises:
         """
         self._attack_targeting_vectors = attack_targeting_vectors
         self._peaceful_destination_vectors = peaceful_destination_vectors

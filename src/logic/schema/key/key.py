@@ -71,8 +71,7 @@ class SchemaKey(Context[Schema]):
         # RETURNS:
         None
 
-        # RAISES:
-        None
+        Raises:
         """
         super().__init__(id=None, name=name)
         self._color = color
@@ -89,7 +88,7 @@ class SchemaKey(Context[Schema]):
             *   None
         # RETURNS:
             *   dict
-        # RAISES:
+        Raises:
             *   None
         """
         return {

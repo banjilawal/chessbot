@@ -57,7 +57,7 @@ class CaptivityContextService(ContextService[CaptivityContext]):
             *   validator (CaptivityContextValidator)
         # RETURNS:
             None
-        # RAISES:
+        Raises:
             None
         """
         method = "CaptivityContextService.__init__"

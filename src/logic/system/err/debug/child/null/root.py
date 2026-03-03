@@ -52,7 +52,7 @@ class NullException(DebugException):
     """
     ERR_CODE = "NULL_EXCEPTION"
     MSG = "variable cannot be null."
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

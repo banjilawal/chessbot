@@ -52,7 +52,7 @@ class NullArgumentsException(NullException):
     """
     ERR_CODE = "NULL_ARGUMENTS_EXCEPTION"
     MSG = "Null arguments"
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

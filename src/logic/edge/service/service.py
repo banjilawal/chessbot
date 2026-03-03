@@ -61,7 +61,7 @@ class EdgeService(IntegrityService[Edge]):
             *   validator (EdgeValidator)
         # RETURNS:
             None
-        # RAISES:
+        Raises:
             None
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
@@ -94,7 +94,7 @@ class EdgeService(IntegrityService[Edge]):
             *   number_validator (NUmberValidator)
         # RETURN:
             *   UpdateResult[Edge]
-        # RAISES:
+        Raises:
             *   EdgeServiceException
             *   UpdatingEdgeHeuristicException
         """
@@ -159,7 +159,7 @@ class EdgeService(IntegrityService[Edge]):
             *   number_validator (NUmberValidator)
         # RETURN:
             *   UpdateResult[Edge]
-        # RAISES:
+        Raises:
             *   EdgeServiceException
             *   UpdatingEdgeWeightException
         """

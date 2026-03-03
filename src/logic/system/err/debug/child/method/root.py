@@ -52,7 +52,7 @@ class MethodImplementationException(DebugException):
     """
     ERR_CODE = "METHOD_NOT_IMPLEMENTED_WARNING"
     MSG = "This method is not implemented."
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

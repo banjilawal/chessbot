@@ -66,7 +66,7 @@ class PlayerValidator(Validator[Player]):
             - On success: Player in the payload.
             - On failure: Exception.
 
-        # RAISES:
+        Raises:
             *   TypeError
             *   NullPlayerException
             *   InvalidPlayerException
@@ -140,7 +140,7 @@ class PlayerValidator(Validator[Player]):
             - On success: PlayerVariety in the payload.
             - On failure: Exception.
 
-        # RAISES:
+        Raises:
             *   TypeError
             *   NullPlayerVarietyException
             *   InvalidPlayerVarietyException
@@ -191,7 +191,7 @@ class PlayerValidator(Validator[Player]):
             - On success: Player in the payload.
             - On failure: Exception.
 
-        # RAISES:
+        Raises:
             *   InvalidMachinePlayerException
         """
         method = "PlayerValidator.certify_machine_player_engine"

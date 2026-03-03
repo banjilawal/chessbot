@@ -88,7 +88,7 @@ class SquareValidator(Validator[Square]):
             *   ValidationResult[Square] containing either:
                     - On failure: Exception.
                     - On success: Square in the payload.
-        # RAISES:
+        Raises:
             *   TypeError
             *   NullSquareException
             *   SquareValidationException
@@ -169,7 +169,7 @@ class SquareValidator(Validator[Square]):
             *   ValidationResult[List[Square]] containing either:
                     - On failure: Exception.
                     - On success: List[Square] in the payload.
-        # RAISES:
+        Raises:
             *   TypeError
             *   SquareDataSourceNullException
             *   SquareDataSourceEmptyException
@@ -216,7 +216,7 @@ class SquareValidator(Validator[Square]):
         ValidationResult[Board] containing either:
             - On failure: Exception.
             - On success: Board in the payload.
-        # RAISES:
+        Raises:
             *   SquareValidationException
         """
         method = "SquareValidator._validate_board"
@@ -272,7 +272,7 @@ class SquareValidator(Validator[Square]):
             *   ValidationResult[SquareState] containing either:
                     - On failure: Exception.
                     - On success: Square in the payload.
-        # RAISES:
+        Raises:
             *   TypeError
             *   NullSquareStateException
             *   SquareValidationException

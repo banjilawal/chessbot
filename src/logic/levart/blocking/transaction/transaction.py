@@ -35,7 +35,7 @@ class BlockedPathTransaction(TravelTransaction[BlockingEvent]):
             `'payload'` (`it`) - A `str` meeting the `ChessBot` standard for IDs.
             `rollback_exception` (`Exception`) - An exception detailing which naming rule was broken.
     
-        # RAISES:
+        Raises:
         `IdValidationException`: Wraps any specification violations including:
             * `TypeError`: if candidate is not an `int`
             * `IdNullException`: if candidate is validation

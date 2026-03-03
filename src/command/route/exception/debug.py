@@ -52,7 +52,7 @@ class CommandRouterDebugException(DebugException):
     """
     ERR_CODE = "COMMAND_ROUTER_DEBUG_EXCEPTION"
     MSG = "CommandRouter attribute raised an exception."
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

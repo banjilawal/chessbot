@@ -164,7 +164,7 @@ Example:
 #       `'payload'` (`it`) - A `str` meeting the `ChessBot` standard for IDs.
 #       `rollback_exception` (`Exception`) - An exception detailing which naming rule was broken.
 #
-#   # RAISES:
+#   Raises:
 #   `IdValidationException`: Wraps any specification violations including:
 #       * `TypeError`: if candidate is not an `int`
 #       * `IdNullException`: if candidate is validation
@@ -465,7 +465,7 @@ From `logic.system`:
 CONTAINS:
 --------
 See the list of exception in the `__all__` list following (e.g., `VectorException`,
-`NullVectorException`, `InvalidVectorException`, ).
+`NullVectorException`, `InvalidVectorException`,).
 """
 
 # from logic.rollback_exception import RollbackException

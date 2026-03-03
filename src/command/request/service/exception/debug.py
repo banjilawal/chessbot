@@ -52,7 +52,7 @@ class RequestServiceDebugException(DebugException):
     """
     ERR_CODE = "REQUEST_SERVICE_DEBUG_EXCEPTION"
     MSG = "RequestService attribute raised an exception."
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

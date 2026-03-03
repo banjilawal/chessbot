@@ -62,7 +62,7 @@ class BoardContextValidator(Validator[BoardContext]):
             *   ValidationResult[BoardContext] containing either:
                     - On failure:   Exception.
                     - On success:   BoardContext in the payload.
-        # RAISES:
+        Raises:
             *   TypeError
             *   NullBoardContextException
             *   ZeroBoardContextFlagsException

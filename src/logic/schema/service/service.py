@@ -37,7 +37,7 @@ class SchemaService(HashService[Schema]):
             *   super_key_service (SchemaKeyService)
         # RETURNS:
             None
-        # RAISES:
+        Raises:
             None
         """
         super().__init__(id=id, name=name, validator=validator, super_key_service=super_key_service)
@@ -107,8 +107,7 @@ class SchemaService(HashService[Schema]):
             *   ComputationResult[int]
                     On failure --> Exception in the ComputationResult.
                     On success --> int in the ComputationResult payload.
-        # RAISES:
-        None
+        Raises:
         """
         method = "SchemaService.pawn_row"
         validation = self.validator.validate(schema)
@@ -132,7 +131,7 @@ class SchemaService(HashService[Schema]):
             *   schema (Schema)
         # RETURNS:
             *   Schema
-        # RAISES:
+        Raises:
             None
         """
         method = "SchemaService.enemy_schema"
@@ -159,7 +158,7 @@ class SchemaService(HashService[Schema]):
             *   super_key (SchemaKey)
         # RETURNS:
             *   SearchResult[List[Schema]] containing a list if a match is found else an exception chain.
-        # RAISES:
+        Raises:
             None
         """
         method = "SchemaService.lookup_schema"

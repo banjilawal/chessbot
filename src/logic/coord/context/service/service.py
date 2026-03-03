@@ -60,8 +60,7 @@ class CoordContextService(ContextService[CoordContext]):
         # RETURNS:
         None
 
-        # RAISES:
-        None
+        Raises:
         """
         method = "CoordContextService.service"
         super().service(id=id, name=name, builder=builder, validator=validator, finder=finder)

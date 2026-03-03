@@ -78,7 +78,7 @@ class ArenaContextBuilder(Builder[ArenaContext]):
                 - On success: ArenaContext in the payload.
                 - On failure: Exception.
 
-        # RAISES:
+        Raises:
             *   ZeroArenaContextFlagsException
             *   ArenaContextBuildException
             *   ExcessArenaContextFlagsException

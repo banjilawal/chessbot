@@ -57,8 +57,7 @@ class Player(ABC):
             *   teams (TeamDatabase)
         # RETURNS:
             None
-        # RAISES:
-        None
+        Raises:
         """
         method = "PlayerContextService.owner"
         self._id = id

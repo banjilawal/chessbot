@@ -57,7 +57,7 @@ class FormationDebugException(DebugException):
     """
     ERR_CODE = "FORMATION_EXCEPTION"
     MSG = str = "Formation had an error."
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     _var = Optional[str]

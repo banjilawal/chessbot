@@ -52,7 +52,7 @@ class PipelineDebugException(DebugException):
     """
     ERR_CODE = "PIPELINE_DEBUG_EXCEPTION"
     MSG = "Pipeline attribute raised an exception."
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

@@ -28,7 +28,7 @@ class PoppingEmptySquareStackException(DebugException):
             *   variable,
             *   it's value,
             *   event which fired the variable into its error state.
-        which occurred in the Hostage method identified in layer-0 of the exception chain.
+        which occurred in the SquareStack method identified in layer-0 of the exception chain.
 
     2.  A failing DeletionResult was returned because an attempt was made to pop an empty
         square stack.
@@ -58,7 +58,7 @@ class PoppingEmptySquareStackException(DebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     ERR_CODE = "POPPING_EMPTY_SQUARE_STACK_EXCEPTION"
     MSG = "SquareStack pop failed: Cannot pop from an empty stack."
@@ -83,4 +83,4 @@ class PoppingEmptySquareStackException(DebugException):
         val = val or self.VAL
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        super().__init__(ex=ex, msg=msg, err_code=err_code, var=var, val=val, )
+        super().__init__(ex=ex, msg=msg, err_code=err_code, var=var, val=val,)

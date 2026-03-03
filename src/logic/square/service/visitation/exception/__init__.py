@@ -14,4 +14,5 @@ from .start import *
 from .terminate import *
 
 # Modules
-from .super import TokenVisitHandlerException
+from .anchor import TokenVisitHandlerException
+from .debug import TokenVisitHandlerDebugException

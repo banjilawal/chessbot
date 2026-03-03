@@ -66,7 +66,7 @@ class NodeFinder(StackSearcher[Node]):
                     - On error: Exception , payload null
                     - On finding a match: List[Node] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             *   NodeSearchPayloadTypeException
             *   NodeNullDatasetException
             *   NodeSearchException
@@ -142,7 +142,7 @@ class NodeFinder(StackSearcher[Node]):
                     - On error: Exception , payload null
                     - On finding a match: List[Node] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             None
         """
         method = "NodeFinder._find_by_priority"
@@ -167,7 +167,7 @@ class NodeFinder(StackSearcher[Node]):
                     - On error: Exception , payload null
                     - On finding a match: List[Node] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             None
         """
         matches = [node for node in dataset if node.square == square]
@@ -191,7 +191,7 @@ class NodeFinder(StackSearcher[Node]):
                     - On error: Exception , payload null
                     - On finding a match: List[Node] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             None
         """
         matches = [node for node in dataset if node.predecessor == predecessor]
@@ -219,7 +219,7 @@ class NodeFinder(StackSearcher[Node]):
                     - On error: Exception , payload null
                     - On finding a match: List[Node] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             None
         """
         matches = [node for node in dataset if node.discovery_status == discovery_status]

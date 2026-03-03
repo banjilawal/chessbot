@@ -52,7 +52,7 @@ class CommandServiceDebugException(DebugException):
     """
     ERR_CODE = "COMMAND_SERVICE_DEBUG_EXCEPTION"
     MSG = "CommandService attribute raised an exception."
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

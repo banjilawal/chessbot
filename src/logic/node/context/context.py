@@ -78,8 +78,7 @@ class NodeContext(Context[Node]):
         None
         # RETURNS:
             dict
-        # RAISES:
-        None
+        Raises:
         """
         return {
             "priority": self._priority,

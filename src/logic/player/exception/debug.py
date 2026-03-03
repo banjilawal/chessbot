@@ -57,7 +57,7 @@ class PlayerDebugException(DebugException):
     """
     ERR_CODE = "PLAYER_EXCEPTION"
     MSG = str = "Player had an error."
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     _var = Optional[str]

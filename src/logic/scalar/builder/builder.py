@@ -56,7 +56,7 @@ class ScalarBuilder(Builder[Scalar]):
                 - On success: Scalar in the payload.
                 - On failure: Exception.
     
-        # RAISES:
+        Raises:
             * ScalarBuildException
         """
         method = "ScalarBuilder.builder"

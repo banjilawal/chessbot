@@ -65,7 +65,7 @@ class EdgeBuilder(Builder[Edge]):
              *   BuildResult[Edge] containing either:
                      - On failure: Exception.
                      - On success: Edge in the payload.
-         # RAISES:
+         Raises:
              *   EdgeBuildException
          """
          method = "EdgeBuilder.build"

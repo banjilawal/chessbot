@@ -47,7 +47,7 @@ class CoordContext(Context[Coord]):
             *   column (Optional[int])
         # RETURNS:
             None
-        # RAISES:
+        Raises:
             None
         """
         super().__init__(id=None, name=None)

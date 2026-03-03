@@ -66,7 +66,7 @@ class IdValidator(Validator[int]):
             *   ValidationResult[int] containing either:
                 - On failure: Exception.
                 - On success: int in the payload.
-        # RAISES:
+        Raises:
             *   IdValidationException
         """
         method = "IdValidator.validate"

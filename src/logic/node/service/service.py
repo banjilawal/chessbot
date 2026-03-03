@@ -60,7 +60,7 @@ class NodeService(IntegrityService[Node]):
             *   validator (NodeValidator)
         # RETURNS:
             None
-        # RAISES:
+        Raises:
             None
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
@@ -89,7 +89,7 @@ class NodeService(IntegrityService[Node]):
             *   InsertionResult containing either:
                     - On failure: Exception and bool.
                     - On success: bool.
-        # RAISES:
+        Raises:
             *   NodeStackException
             *   NodePushException
             *   AddingDuplicateNodeException
@@ -170,7 +170,7 @@ class NodeService(IntegrityService[Node]):
             *   InsertionResult containing either:
                     - On failure: Exception and bool.
                     - On success: bool.
-        # RAISES:
+        Raises:
             *   NodeStackException
             *   NodePushException
             *   AddingDuplicateNodeException
@@ -251,7 +251,7 @@ class NodeService(IntegrityService[Node]):
             *   DeletionResult containing either:
                     - On failure: Exception.
                     - On success: Edge.
-        # RAISES:
+        Raises:
             *   NodeStackException
             *   NodePopException
             *   AddingDuplicateNodeException
@@ -316,7 +316,7 @@ class NodeService(IntegrityService[Node]):
             *   InsertionResult containing either:
                     - On failure: Exception and bool.
                     - On success: bool.
-        # RAISES:
+        Raises:
             *   NodeStackException
             *   NodePushException
             *   AddingDuplicateNodeException
@@ -398,7 +398,7 @@ def remove_outgoing_edge(self, node: Node, edge: Edge) -> DeletionResult[Edge]:
         *   DeletionResult containing either:
                 - On failure: Exception.
                 - On success: Edge.
-    # RAISES:
+    Raises:
         *   NodeStackException
         *   NodePopException
         *   AddingDuplicateNodeException

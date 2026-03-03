@@ -56,7 +56,7 @@ class Board:
             *   column_size (int)
         # RETURNS:
             None
-        # RAISES:
+        Raises:
             None
         """
         method = "Board.__init__"

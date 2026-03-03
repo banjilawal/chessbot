@@ -66,7 +66,7 @@ class PersonaService(HashService[Persona]):
             *   super_key_service (PersonaKeyService)
         # RETURNS:
             None
-        # RAISES:
+        Raises:
             None
         """
         super().__init__(id=id, name=name, validator=validator, super_key_service=super_key_service)
@@ -134,7 +134,7 @@ class PersonaService(HashService[Persona]):
             *   ComputationResult[int] containing either:
                     - On error: Exception
                     - On success: int in the payload.
-        # RAISES:
+        Raises:
             *   PersonaServiceException
             *   RankQuotaPerTeamLookupFailedException
         """
@@ -176,7 +176,7 @@ class PersonaService(HashService[Persona]):
     #         *   BuildResult[Rank] containing either:
     #                 - On error: Exception
     #                 - On success: Rankin the payload.
-    #     # RAISES:
+    #     Raises:
     #         *   PersonaServiceException
     #         *   BuildRankFailedException
     #     """
@@ -224,7 +224,7 @@ class PersonaService(HashService[Persona]):
                     - On error: Exception , payload null
                     - On finding a match: List[Formation] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             None
         """
         method = "PersonaService.lookup_persona"

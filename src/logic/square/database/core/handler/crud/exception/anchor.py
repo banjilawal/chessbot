@@ -23,11 +23,11 @@ class SquareCrudHandlerException(AnchorException):
     # ROLE: Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Provide SquareCrudHandler as:
+    1.  Provide SquareStackCrudHandler as:
             *   Reporting
             *   Coverage
         target for layer-2 debugging exceptions.
-    2.  Indicate which SquareCrudHandler method received a worker's
+    2.  Indicate which SquareStackCrudHandler method received a worker's
         (layer-1) failure result.
 
     # PARENT:
@@ -56,9 +56,9 @@ class SquareCrudHandlerException(AnchorException):
         *   See AnchorException class for inherited methods.
     """
     CLS_MTHD = None
-    CLS_NAME = "SquareCrudHandler"
+    CLS_NAME = "SquareStackCrudHandler"
     ERR_CODE = "SQUARE_CRUD_HANDLER_EXCEPTION"
-    MSG = "SquareCrudHandler raised an exception."
+    MSG = "SquareStackCrudHandler raised an exception."
 
     def __init__(
             self,

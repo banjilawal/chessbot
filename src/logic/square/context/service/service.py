@@ -58,7 +58,7 @@ class SquareContextService(ContextService[SquareContext]):
             *   validator (SquareContextValidator)
         # RETURNS:
             None
-        # RAISES:
+        Raises:
             None
         """
         method = "SquareContextService.__init__"

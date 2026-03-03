@@ -60,7 +60,7 @@ class King(Rank):
         )
     
     @LoggingLevelRouter.monitor
-    def compute_span(self, token: Token, ) -> ComputationResult[[Coord]]:
+    def compute_span(self, token: Token,) -> ComputationResult[[Coord]]:
         """
         # Action
             1.  Iterate through the King.vectors. Add each to occupant.current_position.
@@ -74,7 +74,7 @@ class King(Rank):
             *   ComputationResult[List[Coord]]:
                     - On failure: An exception.
                     - On success: List[Coord] in the payload.
-        # RAISES:
+        Raises:
             *   KingException
             *   KingSpanComputationException
         """

@@ -80,7 +80,7 @@ class AgentContextBuilder(Builder[AgentContext]):
                 - On success: AgentContext in the payload.
                 - On failure: Exception.
 
-        # RAISES:
+        Raises:
             *   ZeroAgentContextFlagsException
             *   AgentContextBuildException
             *   ArenaAgentContextFlagsException

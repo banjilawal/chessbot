@@ -52,7 +52,7 @@ class StringValidator(Validator[str]):
             - On success: str in the payload.
             - On failure: Exception.
 
-        # RAISES:
+        Raises:
             *   NullTextError
             *   TypeError
             *   BlankTextError

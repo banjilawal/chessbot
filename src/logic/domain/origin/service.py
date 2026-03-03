@@ -46,8 +46,7 @@ class DomainOriginService(IntegrityService[DomainOrigin]):
         # RETURNS:
         None
 
-        # RAISES:
-        None
+        Raises:
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
     

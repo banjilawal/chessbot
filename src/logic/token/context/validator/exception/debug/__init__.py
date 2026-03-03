@@ -16,4 +16,4 @@ None
 from .null import NullTokenContextException
 from .zero import ZeroTokenContextFlagsException
 from .route import TokenContextValidationRouteException
-from .excess import ArenaTokenContextFlagsException
+from .excess import ExcessTokenContextFlagsException

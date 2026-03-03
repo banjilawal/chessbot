@@ -72,7 +72,7 @@ class RosterUtil:
             *   InsertionResult[occupant] containing either:
                     - On failure: Exception
                     - On success: Token
-        # RAISES:
+        Raises:
             *   TeamServiceException
         """
         method = "TeamService.fill_team_roster"

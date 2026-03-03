@@ -54,8 +54,7 @@ class Domain:
         # RETURNS:
         None
         
-        # RAISES:
-        None
+        Raises:
         """
         method = "Domain.__init__"
         

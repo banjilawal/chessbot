@@ -70,7 +70,7 @@ class PersonaKeyBuilder(Builder[PersonaKey]):
             *   BuildResult[PersonaKey] containing either:
                     - On failure: Exception.
                     - On success: PersonaKey in the payload.
-        # RAISES:
+        Raises:
             *   ZeroPersonaKeysException
             *   PersonaKeyBuildException
             *   ArenaPersonaKeysException

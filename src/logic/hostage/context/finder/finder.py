@@ -67,7 +67,7 @@ class HostageFinder(DataFinder[Hostage]):
                     - On error: Exception , payload null
                     - On finding a match: List[Hostage] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             *   HostageSearchPayloadTypeException
             *   HostageNullDatasetException
             *   HostageSearchException
@@ -143,7 +143,7 @@ class HostageFinder(DataFinder[Hostage]):
                     - On error: Exception , payload null
                     - On finding a match: List[Hostage] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             None
         """
         matches = [hostage for hostage in dataset if hostage.id == id]
@@ -171,7 +171,7 @@ class HostageFinder(DataFinder[Hostage]):
                     - On error: Exception , payload null
                     - On finding a match: List[Hostage] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             None
         """
         matches = [manifest for manifest in dataset if manifest.prisoner == prisoner]
@@ -199,7 +199,7 @@ class HostageFinder(DataFinder[Hostage]):
                     - On error: Exception , payload null
                     - On finding a match: List[Hostage] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             None
         """
         matches = [manifest for manifest in dataset if manifest.victor == victor]
@@ -227,7 +227,7 @@ class HostageFinder(DataFinder[Hostage]):
                     - On error: Exception , payload null
                     - On finding a match: List[Hostage] in the payload.
                     - On no matches found: Exception null, payload null
-        # RAISES:
+        Raises:
             None
         """
         matches = [manifest for manifest in dataset if manifest.captured_square == captured_square]

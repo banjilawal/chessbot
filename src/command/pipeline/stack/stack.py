@@ -63,11 +63,11 @@ class PipelineStack(StackService[Pipeline]):
             *   context_service (PipelineContextService)
         # RETURNS:
             None
-        # RAISES:
+        Raises:
             None
         """
         method = "TokenStack.__init__"
-        super().__init__(id=id, name=name, )
+        super().__init__(id=id, name=name,)
         self._stack = []
         self._service = service
         self._context_service = context_service
@@ -107,7 +107,7 @@ class PipelineStack(StackService[Pipeline]):
             *   InsertionResult[Pipeline] containing either:
                     - On failure: Exception.
                     - On success: Pipeline in the payload.
-        # RAISES:
+        Raises:
             *   PipelineStackException
         """
         method = "PipelineStack.push"
@@ -157,7 +157,7 @@ class PipelineStack(StackService[Pipeline]):
             *   InsertionResult[Pipeline] containing either:
                     - On failure: Exception.
                     - On success: Pipeline in the payload.
-        # RAISES:
+        Raises:
             *   PipelineStackException
         """
         method = "PipelineStack.pop"
@@ -197,7 +197,7 @@ class PipelineStack(StackService[Pipeline]):
             *   InsertionResult[Pipeline] containing either:
                     - On failure: Exception.
                     - On success: Pipeline in the payload.
-        # RAISES:
+        Raises:
             *   PipelineStackException
         """
         method = "PipelineStack.delete_by_id"
@@ -272,7 +272,7 @@ class PipelineStack(StackService[Pipeline]):
                     - On failure: An exception.
                     - On success: List[Pipeline] in payload.
                     - On Empty: No payload nor exception.
-        # RAISES:
+        Raises:
             *   PipelineStackException
         """
         method = "PipelineStack.query"
@@ -309,7 +309,7 @@ class PipelineStack(StackService[Pipeline]):
                     - On failure: An exception.
                     - On success: List[Pipeline] in payload.
                     - On Empty: No payload nor exception.
-        # RAISES:
+        Raises:
             *   PipelineStackException
         """
         method = "PipelineStack.query"

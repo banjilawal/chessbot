@@ -68,7 +68,7 @@ class PlayerContextValidator(Validator[PlayerContext]):
             - On success: PlayerContext in the payload.
             - On failure: Exception.
 
-        # RAISES:
+        Raises:
             *   TypeError
             *   NullPlayerContextException
             *   NoPlayerContextFlagException

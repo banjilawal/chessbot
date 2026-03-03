@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.square import OccupationService, SquareStackAnalyzer
+from logic.square import SquareStackTokenHandler, SquareStackCrudHandler, SquareStackAnalyzer
 
 class SquareStackUtil:
     """
@@ -40,7 +40,7 @@ class SquareStackUtil:
     # CONSTRUCTOR PARAMETERS:
         Local:
             *   stats_analyzer (SquareStacKAnalyzer)
-            *   occupation_service (OccupationService)
+            *   occupation_service (SquareStackTokenHandler)
         Inherited:
         None
 
@@ -50,14 +50,17 @@ class SquareStackUtil:
     # INHERITED METHODS:
     None
     """
+    _crud: SquareStackCrudHandler
     _stats_analyzer: SquareStackAnalyzer
-    _occupation_service: OccupationService
+    _occupation_service: SquareStackTokenHandler
     
     def __init__(
             self,
+            crud_handler: SquareStackCrudHandler = SquareStackCrudHandler(),
             stats_analyzer: SquareStackAnalyzer = SquareStackAnalyzer(),
-            occupation_service: OccupationService = OccupationService(),
+            occupation_service: SquareStackTokenHandler = SquareStackTokenHandler(),
     ):
+        self._crud = crud_handler
         self._stats_analyzer = stats_analyzer
         self._occupation_service = occupation_service
         
@@ -66,5 +69,9 @@ class SquareStackUtil:
         return self._stats_analyzer
     
     @property
-    def occupation_service(self) -> OccupationService:
+    def occupation_service(self) -> SquareStackTokenHandler:
         return self._occupation_service
+    
+    @property
+    def crud(self) -> SquareStackCrudHandler:
+        return self._crud

@@ -56,8 +56,7 @@ class BoardContext(Context[Board]):
         None
         # RETURNS:
             dict
-        # RAISES:
-        None
+        Raises:
         """
         return {
             "id": self.id,

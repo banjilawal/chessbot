@@ -65,7 +65,7 @@ class PlayerTeamRelationAnalyzer(RelationAnalyzer[Player, Team]):
             - On success: Arena in the payload.
             - On failure: Exception.
 
-        # RAISES:
+        Raises:
             *   ArenaValidationException
         """
         method = "PlayerService.analyze"

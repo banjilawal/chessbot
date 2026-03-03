@@ -61,7 +61,7 @@ class BoardValidator(Validator[Board]):
             *   ValidationResult[Board] containing either:
                     - On failure: Exception.
                     - On success: Board in the payload.
-        # RAISES:
+        Raises:
             *   TypeError
             *   NullBoardException
             *   BoardValidationException
@@ -127,7 +127,7 @@ class BoardValidator(Validator[Board]):
         ValidationResult[Arena] containing either:
             - On failure: Exception.
             - On success: Area in the payload.
-        # RAISES:
+        Raises:
         *   BoardValidationException
         """
         

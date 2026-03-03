@@ -53,7 +53,7 @@ class SnapshotContextExecutionRouteException(ExecutionRouteException):
     """
     ERR_CODE = "SNAPSHOT_CONTEXT_EXECUTION_ROUTE_EXCEPTION"
     MSG = "No build route for SnapshotContext attribute"
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

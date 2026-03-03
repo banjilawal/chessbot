@@ -62,7 +62,7 @@ class ArenaService(IntegrityService[Arena]):
             *   validator (ArenaValidator)
         # RETURNS:
             None
-        # RAISES:
+        Raises:
             None
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)

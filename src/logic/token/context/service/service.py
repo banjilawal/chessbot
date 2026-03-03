@@ -56,7 +56,7 @@ class TokenContextService(ContextService[TokenContext]):
             *   validator (TokenContextValidator)
         # RETURNS:
             None
-        # RAISES:
+        Raises:
             None
         """
         method = "TokenContextService.__init__"

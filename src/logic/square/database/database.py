@@ -113,13 +113,13 @@ class SquareDatabase(Database[Square]):
             *   square (Square)
         # RETURN:
             *   UpdateResult[Square]
-        # RAISES:
+        Raises:
             *   SquareDatabaseException
         """
         method = "SquareDatabase.add_occupant_to_square"
         
         # --- Handoff the responsibility for the occupation to stack_service. ---#
-        occupation_update_result = self._stack_service.util.occupation_service.add_occupant(
+        occupation_update_result = self._stack_service.util.occupation_service.occupy_stack_square(
             square=square,
             token=token
         )
@@ -152,13 +152,13 @@ class SquareDatabase(Database[Square]):
             *   token (Token)
         # RETURN:
             *   DeletionResult[Token]
-        # RAISES:
+        Raises:
             *   SquareDatabaseException
         """
         method = "SquareDatabase.remove_occupant_by_search"
         
         # --- Handoff eviction responsibility to stack_service. ---#
-        occupant_removal_result = self._stack_service.util.occupation_service.remove_occupant_by_search(
+        occupant_removal_result = self._stack_service.util.occupation_service.remove_occupant_from_stack(
             token=occupant
         )
         # Handle the case that, the eviction was aborted.
@@ -188,7 +188,7 @@ class SquareDatabase(Database[Square]):
             *   square (Square)
         # RETURN:
             *   InsertionResult
-        # RAISES:
+        Raises:
             *   SquareDatabaseException
         """
         method = "SquareDatabase.insert_square"
@@ -219,7 +219,7 @@ class SquareDatabase(Database[Square]):
             *   context (SquareContext)
         # RETURN:
             *   SearchResult
-        # RAISES:
+        Raises:
             *   SquareDatabaseException
         """
         method = "SquareDatabase.search"

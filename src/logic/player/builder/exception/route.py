@@ -53,7 +53,7 @@ class PlayerBuildRouteException(ExecutionRouteException):
     """
     ERR_CODE = "PLAYER_BUILD_ROUTE_EXCEPTION"
     MSG = "No Build route for Player subclass."
-    VAR = Optional[Any]
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(
