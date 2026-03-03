@@ -21,7 +21,8 @@ from logic.system import ValidationException
 # ======================# TEAM_VALIDATION_FAILURE #======================#
 class TeamValidationException(ValidationException):
     """
-    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Exception Chain Layer 1, Exception Messaging
+    # TASK: Worker Method Identifier
 
     # RESPONSIBILITIES:
     1.  Identify the TeamValidator method where the process failed.

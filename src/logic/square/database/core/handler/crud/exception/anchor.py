@@ -1,9 +1,9 @@
-# src/logic/square/database/core/anchor.py
+# src/logic/square/database/core/handler/crud/exception/anchor.py
 
 """
-Module: logic.square.database.core.anchor
+Module: logic.square.database.core.handler.crud.exception.anchor
 Author: Banji Lawal
-Created: 2025-11-22
+Created: 2026-02-22
 version: 1.0.0
 """
 

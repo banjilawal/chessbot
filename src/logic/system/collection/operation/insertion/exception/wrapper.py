@@ -20,7 +20,8 @@ from logic.system import CollectionOperationException
 # ======================# INSERTION_FAILURE #======================#
 class InsertionException(CollectionOperationException):
     """
-    # ROLE: Debug Wrapper, Exception Chain Layer 2, Exception Messaging
+    # ROLE: Exception Chain Layer 1, Exception Messaging
+    # TASK: Worker Method Identifier
 
     # RESPONSIBILITIES:
     1.  Encapsulate the Layer-1 DebugException which describes the cause the insertion failed.
@@ -49,7 +50,7 @@ class InsertionException(CollectionOperationException):
    None
 
     # INHERITED METHODS:
-        *   See WorkerException class for inherited methods.
+        *   See WrapperException class for inherited methods.
     """
     ERR_CODE = "INSERTION_FAILURE"
     MSG = "Insertion failed."

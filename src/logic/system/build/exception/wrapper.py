@@ -21,7 +21,8 @@ from logic.system import OperationException
 # ======================# BUILD_FAILURE #======================#
 class BuildException(OperationException):
     """
-    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Exception Chain Layer 1, Exception Messaging
+    # TASK: Worker Method Identifier
 
     # RESPONSIBILITIES:
     1.  Identify the __BUILD_CLASS__ method where the process failed.

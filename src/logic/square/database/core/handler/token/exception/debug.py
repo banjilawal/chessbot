@@ -56,7 +56,7 @@ class SquareStackTokenHandlerDebugException(DebugException):
     """
     VAR = Optional[str]
     VAL = Optional[Any]
-    ERR_CODE = "SQUARE_STACK_TOKEN_HANDLER_EXCEPTION"
+    ERR_CODE = "SQUARE_STACK_TOKEN_HANDLER_DEBUG_EXCEPTION"
     MSG = str = "SquareStackTokenHandler had an error."
     
     def __init__(

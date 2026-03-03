@@ -19,7 +19,8 @@ from logic.system import PushException
 # ======================# PUSHING_TOKEN_FAILURE #======================#
 class PushingTokenException(TokenStackException, PushException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Exception Chain Layer 1, Exception Messaging
+    # TASK: Worker Method Identifier
 
     # RESPONSIBILITIES:
     1.  Wrap debug exceptions indicating why pushing a token failed. The exception chain

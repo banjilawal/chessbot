@@ -1,9 +1,9 @@
-# src/logic/square/database/core/exception/deployment/incomplete.py
+# src/logic/square/database/core/handler/roster/exception/work/interrupted.py
 
 """
-Module: logic.square.database.core.exception.deployment.incomplete
+Module: logic.square.database.core.handler.roster.exception.work.interrupted
 Author: Banji Lawal
-Created: 2026-02-21
+Created: 2026-02-22
 version: 1.0.0
 """
 

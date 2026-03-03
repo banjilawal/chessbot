@@ -21,7 +21,8 @@ from logic.system import CollectionOperationException
 # ======================# COMPUTATION_FAILURE #======================#
 class ComputationException(CollectionOperationException):
     """
-    # ROLE: Debug Wrapper, Exception Chain Layer 2, Exception Messaging
+    # ROLE: Exception Chain Layer 1, Exception Messaging
+    # TASK: Worker Method Identifier
 
     # RESPONSIBILITIES:
     1.  Encapsulate the Layer-1 DebugException which describes the cause the computation failed.
@@ -50,7 +51,7 @@ class ComputationException(CollectionOperationException):
    None
 
     # INHERITED METHODS:
-        *   See WorkerException class for inherited methods.
+        *   See WrapperException class for inherited methods.
     """
     ERR_CODE = "COMPUTATION_FAILURE"
     MSG = "Computation failed."

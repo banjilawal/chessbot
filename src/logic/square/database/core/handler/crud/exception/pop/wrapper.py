@@ -1,9 +1,9 @@
-# src/logic/square/database/core/exception/deletion/wrapper.py
+# src/logic/square/database/core/handler/crud/exception/pop/wrapper.py
 
 """
-Module: logic.square.database.core.exception.deletion.wrapper
+Module: logic.square.database.core.handler.crud.exception.pop.wrapper
 Author: Banji Lawal
-Created: 2025-11-19
+Created: 2026-02-22
 version: 1.0.0
 """
 

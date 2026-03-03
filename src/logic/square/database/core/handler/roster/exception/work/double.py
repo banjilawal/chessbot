@@ -1,9 +1,9 @@
-# src/logic/square/database/core/exception/deployment/duplicate.py
+# src/logic/square/database/core/handler/roster/exception/work/double.py
 
 """
-Module: logic.square.database.core.exception.deployment.duplicate
+Module: logic.square.database.core.handler.roster.exception.work.double
 Author: Banji Lawal
-Created: 2026-02-21
+Created: 2026-02-22
 version: 1.0.0
 """
 

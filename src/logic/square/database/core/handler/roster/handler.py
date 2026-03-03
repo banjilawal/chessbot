@@ -1,9 +1,9 @@
-# src/logic/square/database/core/handler/roster/deployer.py
+# src/logic/square/database/core/handler/roster/handler.py
 
 """
-Module: logic.square.database.core.handler.roster.deployer
+Module: logic.square.database.core.handler.roster.handler
 Author: Banji Lawal
-Created: 2026-02-21
+Created: 2026-02-22
 version: 1.0.0
 """
 
@@ -12,12 +12,11 @@ from __future__ import annotations
 from copy import deepcopy
 
 from logic.square import (
-    InterruptedRosterDeploymentException, RosterAlreadyDeployedException, Square, SquareContext,
-    SquareStackRosterHandlerException, SquareStackService,
-    UnderstrengthRosterDeploymentException, VisitDestinationNotFoundException
+    InterruptedRosterDeploymentException, RosterAlreadyDeployedException, Square, SquareStackRosterHandlerException,
+    SquareStackService, UnderstrengthRosterDeploymentException,
 )
-from logic.token import Token, TokenContext, TokenNotFoundException
 from logic.team import Team, TeamService
+from logic.token import Token, TokenContext, TokenNotFoundException
 from logic.system import LoggingLevelRouter, SearchResult, UpdateResult
 
 class SquareStackRosterHandler:

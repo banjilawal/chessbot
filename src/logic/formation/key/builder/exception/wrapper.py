@@ -52,7 +52,7 @@ class FormationKeyBuildException(BuildException):
    None
 
     # INHERITED METHODS:
-        *   See WorkerException class for inherited methods.
+        *   See WrapperException class for inherited methods.
     """
     ERR_CODE = "FORMATION_KEY_BUILD_FAILED"
     MSG = "FormationKey build failed:"

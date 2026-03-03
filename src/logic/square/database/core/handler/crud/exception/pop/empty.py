@@ -1,9 +1,9 @@
-# src/logic/square/database/core/exception/deletion/empty.py
+# src/logic/square/database/core/handler/crud/exception/pop/empty.py
 
 """
-Module: logic.square.database.core.exception.deletion.empty
+Module: logic.square.database.core.handler.crud.exception.pop.empty
 Author: Banji Lawal
-Created: 2025-11-22
+Created: 2026-02-22
 version: 1.0.0
 """
 

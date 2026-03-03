@@ -1,9 +1,9 @@
-# src/logic/square/database/core/handler/roster/exception/super.py
+# src/logic/square/database/core/handler/roster/exception/anchor.py
 
 """
-Module: logic.square.database.core.handler.roster.exception.super
+Module: logic.square.database.core.handler.roster.exception.anchor
 Author: Banji Lawal
-Created: 2026-02-21
+Created: 2026-02-22
 version: 1.0.0
 """
 

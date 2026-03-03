@@ -21,10 +21,12 @@ __all__ = [
 # ======================# TEAM_CONTEXT_VALIDATION_FAILURE #======================#
 class TeamContextValidationException(TeamContextException, ValidationException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Exception Chain Layer 1, Exception Messaging
+    # TASK: Worker Method Identifier
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a candidate failed its validation as a TeamContext. The exception chain traces the ultimate source of failure.
+    1.  Wrap debug exceptions indicating why a candidate failed its validation as a TeamContext. The exception
+     chain traces the ultimate source of failure.
 
     # PARENT:
         *   TeamContextException

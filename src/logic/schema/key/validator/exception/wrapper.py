@@ -19,7 +19,8 @@ __all__ = [
 # ======================# SCHEMA_KEY_VALIDATION_FAILURE #======================#
 class SchemaKeyValidationException(SchemaKeyException, ValidationException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Exception Chain Layer 1, Exception Messaging
+    # TASK: Worker Method Identifier
 
     # RESPONSIBILITIES:
     1.  A debug exception is created when a SchemaKey candidate fails a validation test. Validation debug exceptions are

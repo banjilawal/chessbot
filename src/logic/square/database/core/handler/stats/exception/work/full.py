@@ -1,7 +1,7 @@
 # src/logic/square/database/core/util/stats/exception/work/full.py
 
 """
-Module: logic.square.database.core.handler.stats.exception.work..full
+Module: logic.square.database.core.handler.stats.exception.work.full
 Author: Banji Lawal
 Created: 2026-02-21
 version: 1.0.0

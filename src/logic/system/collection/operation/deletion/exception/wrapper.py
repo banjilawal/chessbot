@@ -22,7 +22,8 @@ from logic.system import CollectionOperationException
 # ======================# DELETION_FAILURE #======================#
 class DeletionException(CollectionOperationException):
     """
-    # ROLE: Debug Wrapper, Exception Chain Layer 2, Exception Messaging
+    # ROLE: Exception Chain Layer 1, Exception Messaging
+    # TASK: Worker Method Identifier
 
     # RESPONSIBILITIES:
     1.  Encapsulate the Layer-1 DebugException which describes the cause the deletion failed.
@@ -51,7 +52,7 @@ class DeletionException(CollectionOperationException):
    None
 
     # INHERITED METHODS:
-        *   See WorkerException class for inherited methods.
+        *   See WrapperException class for inherited methods.
     """
     ERR_CODE = "DELETION_FAILURE"
     MSG = "Deletion failed."

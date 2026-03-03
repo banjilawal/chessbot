@@ -49,7 +49,7 @@ class CommandBuilderException(BuildException):
        None
 
         # INHERITED METHODS:
-            *   See WorkerException class for inherited methods.
+            *   See WrapperException class for inherited methods.
         """
     ERR_CODE = "COMMAND_BUILD_FAILURE"
     MSG = "CommandBuilder returned an error."

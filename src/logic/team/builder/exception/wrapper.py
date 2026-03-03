@@ -20,7 +20,8 @@ from logic.system import BuildException
 # ======================# TEAM_BUILD_FAILURE #======================#
 class TeamBuildException(BuildException):
     """
-    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Exception Chain Layer 1, Exception Messaging
+    # TASK: Worker Method Identifier
 
     # RESPONSIBILITIES:
     1.  Identify the TeamBuilder method where the process failed.

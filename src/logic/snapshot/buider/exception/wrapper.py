@@ -20,7 +20,8 @@ from logic.system import BuildException
 # ======================# SNAPSHOT_BUILD_FAILURE #======================#
 class SnapshotBuildException(BuildException):
     """
-    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Exception Chain Layer 1, Exception Messaging
+    # TASK: Worker Method Identifier
 
     # RESPONSIBILITIES:
     1.  Identify the SnapshotBuilder method where the process failed.

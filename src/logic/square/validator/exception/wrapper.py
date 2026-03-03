@@ -21,7 +21,8 @@ from logic.system import ValidationException
 # ======================# SQUARE_VALIDATION_FAILURE #======================#
 class SquareValidationException(ValidationException):
     """
-    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Exception Chain Layer 1, Exception Messaging
+    # TASK: Worker Method Identifier
 
     # RESPONSIBILITIES:
     1.  Identify the SquareValidator method where the process failed.

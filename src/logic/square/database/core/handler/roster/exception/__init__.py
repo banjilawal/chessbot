@@ -3,19 +3,17 @@
 """
 Module: logic.square.database.core.handler.roster.exception.__init__
 Author: Banji Lawal
-Created: 2026-02-21
+Created: 2026-02-22
 version: 1.0.0
 """
 
-# =========== SQUARE.DATABASE.CORE.handler.ROSTER PACKAGE CONTENTS ===========#
+# =========== SQUARE.DATABASE.CORE.HANDLER.ROSTER.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .work import *
 
 # Modules
-from .double import RosterAlreadyDeployedException
 from .anchor import SquareStackRosterHandlerException
 from .debug import SquareStackRosterHandlerDebugException
-from .strength import UnderstrengthRosterDeploymentException
-from .interrupted import InterruptedRosterDeploymentException
+
 

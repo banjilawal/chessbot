@@ -21,7 +21,8 @@ from logic.system import CollectionOperationException
 # ======================# COLLISION_DETECTION_FAILURE #======================#
 class CollisionDetectionException(CollectionOperationException):
     """
-    # ROLE: Debug Wrapper, Exception Chain Layer 2, Exception Messaging
+    # ROLE: Exception Chain Layer 1, Exception Messaging
+    # TASK: Worker Method Identifier
 
     # RESPONSIBILITIES:
     1.  Encapsulate the Layer-1 DebugException which describes why the collision detection operation was aborted.
@@ -50,7 +51,7 @@ class CollisionDetectionException(CollectionOperationException):
    None
 
     # INHERITED METHODS:
-        *   See WorkerException class for inherited methods.
+        *   See WrapperException class for inherited methods.
     """
     ERR_CODE = "COLLISION_DETECTION_FAILURE"
     MSG = "Collision detection failed."

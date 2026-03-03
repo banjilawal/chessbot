@@ -20,7 +20,8 @@ from logic.system import ValidationException
 # ======================# VECTOR_VALIDATION_FAILURE #======================#
 class VectorValidationException(ValidationException):
     """
-    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Exception Chain Layer 1, Exception Messaging
+    # TASK: Worker Method Identifier
 
     # RESPONSIBILITIES:
     1.  Identify the VectorValidator method where the process failed.

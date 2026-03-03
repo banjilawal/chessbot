@@ -20,7 +20,8 @@ from logic.system import CollectionOperationException
 # ======================# SEARCH_FAILURE #======================#
 class SearchException(CollectionOperationException):
     """
-    # ROLE: Debug Wrapper, Exception Chain Layer 2, Exception Messaging
+    # ROLE: Exception Chain Layer 1, Exception Messaging
+    # TASK: Worker Method Identifier
 
     # RESPONSIBILITIES:
     1.  Encapsulate the Layer-1 DebugException which describes the cause the search failed.
@@ -49,7 +50,7 @@ class SearchException(CollectionOperationException):
    None
 
     # INHERITED METHODS:
-        *   See WorkerException class for inherited methods.
+        *   See WrapperException class for inherited methods.
     """
     ERR_CODE = "SEARCH_FAILURE"
     MSG = "Search failed."

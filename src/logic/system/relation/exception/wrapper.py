@@ -18,7 +18,8 @@ __all__ = [
 # ======================# RELATION_ANALYSIS_FAILURE #======================#
 class AnalysisException(OperationException):
     """
-    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Exception Chain Layer 1, Exception Messaging
+    # TASK: Worker Method Identifier
 
     # RESPONSIBILITIES:
     1.  An error occurred in Analyzer.analysis that, prevented the relation analysis from completing.
@@ -48,7 +49,7 @@ class AnalysisException(OperationException):
    None
 
     # INHERITED METHODS:
-        *   See WorkerException class for inherited methods.
+        *   See WrapperException class for inherited methods.
     """
     ERR_CODE = "RELATION_ANALYSIS_FAILURE"
     MSG = "Relation analysis failed."

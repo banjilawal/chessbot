@@ -51,7 +51,7 @@ class RankBuildException(BuildException):
    None
 
     # INHERITED METHODS:
-        *   See WorkerException class for inherited methods.
+        *   See WrapperException class for inherited methods.
     """
     ERR_CODE = "RANK_BUILD_FAILED"
     MSG = "Rank build failed."

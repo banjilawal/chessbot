@@ -25,7 +25,7 @@ class TeamRosterRelationAnalysisException(TeamRosterException):
         status has been evaluated.
 
     # PARENT:
-        *   WorkerException
+        *   WrapperException
 
     # PROVIDES:
     None

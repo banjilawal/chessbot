@@ -12,15 +12,16 @@ from typing import Optional
 
 __all__ = [
     # ======================# WORKER_EXCEPTION #======================#
-    "WorkerException",
+    "WrapperException",
 ]
 
 from logic.system import ChessException
 
 # ======================# WORKER_EXCEPTION #======================#
-class WorkerException(ChessException):
+class WrapperException(ChessException):
     """
-    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Exception Chain Layer 1, Exception Messaging
+    # TASK: Worker Method Identifier
 
     # RESPONSIBILITIES:
     1.  Abstract exception for Worker subclasses which indicate

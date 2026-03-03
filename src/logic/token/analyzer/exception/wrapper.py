@@ -16,7 +16,7 @@ class TokenReadniessAnalysisException(TokenStateException, AnalysisException):
     1.  Wrap any exception that kills the relation test process before the occupant's state has been evaluated.
 
     # PARENT:
-        *   WorkerException
+        *   WrapperException
 
     # PROVIDES:
     None

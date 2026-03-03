@@ -1,9 +1,9 @@
-# src/logic/square.stack/exception/debug.py
+# src/logic/square/database/core/handler/roster/exception/debug.py
 
 """
-Module: logic.square.stack.exception.debug
+Module: logic.square.database.core.handler.roster.exception.debug
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2026-02-22
 version: 1.0.0
 """
 

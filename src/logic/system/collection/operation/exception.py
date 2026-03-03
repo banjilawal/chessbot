@@ -51,7 +51,7 @@ class CollectionOperationException(OperationException):
    None
 
     # INHERITED METHODS:
-        *   See WorkerException class for inherited methods.
+        *   See WrapperException class for inherited methods.
     """
     ERR_CODE = "COLLECT_OPERATION_FAILURE"
     MSG = "Collection operation failed."

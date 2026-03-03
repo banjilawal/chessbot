@@ -20,7 +20,8 @@ from logic.system import BuildException
 #======================# SCHEMA_KEY_BUILD_FAILURE #======================#
 class SchemaKeyBuildException(BuildException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Exception Chain Layer 1, Exception Messaging
+    # TASK: Worker Method Identifier
 
     # RESPONSIBILITIES:
     1.  Any failed check during the SchemaKey build creates an exception. Failed check exceptions are encapsulated
@@ -52,7 +53,7 @@ class SchemaKeyBuildException(BuildException):
    None
 
     # INHERITED METHODS:
-        *   See WorkerException class for inherited methods.
+        *   See WrapperException class for inherited methods.
     """
     ERR_CODE = "SCHEMA_KEY_BUILD_FAILED"
     MSG = "SchemaKey build failed:"

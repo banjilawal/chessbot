@@ -20,7 +20,8 @@ from logic.system import ValidationException
 # ======================# SCALAR_VALIDATION_FAILURE #======================#
 class ScalarValidationException(ValidationException):
     """
-    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Exception Chain Layer 1, Exception Messaging
+    # TASK: Worker Method Identifier
 
     # RESPONSIBILITIES:
     1.  Identify the ScalarValidator method where the process failed.
@@ -57,9 +58,6 @@ class ScalarValidationException(ValidationException):
     MTHD = None
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
-    
-    _op = Optional[str]
-    _rslt_type = Optional[str]
     
     def __init__(
             self,

@@ -15,13 +15,14 @@ __all__ = [
     "OperationException",
 ]
 
-from logic.system import WorkerException
+from logic.system import WrapperException
 
 
 # ======================# OPERATION_FAILURE #======================#
-class OperationException(WorkerException):
+class OperationException(WrapperException):
     """
-    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Exception Chain Layer 1, Exception Messaging
+    # TASK: Worker Method Identifier
 
     # RESPONSIBILITIES:
     1.  Identifies which WorkerClass method the error was caught.
@@ -45,7 +46,7 @@ class OperationException(WorkerException):
     2.  The Syntax is: [Class] operation failed.
 
     # PARENT:
-        *   WorkerException
+        *   WrapperException
 
     # PROVIDES:
     None
@@ -55,7 +56,7 @@ class OperationException(WorkerException):
         *   rslt_type (Optional[str])
 
     # INHERITED ATTRIBUTES:
-        *   See WorkerException class for inherited attributes.
+        *   See WrapperException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:)
         *   err_code (str)
@@ -69,7 +70,7 @@ class OperationException(WorkerException):
    None
 
     # INHERITED METHODS:
-        *   See WorkerException class for inherited methods.
+        *   See WrapperException class for inherited methods.
     """
     ERR_CODE = "OPERATION_FAILURE"
     MSG = "Failure in method."

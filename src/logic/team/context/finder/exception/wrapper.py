@@ -20,7 +20,8 @@ from logic.team import TeamException
 #======================# TEAM_SEARCH_FAILURE #======================#
 class TeamSearchException(TeamException, SearchException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Exception Chain Layer 1, Exception Messaging
+    # TASK: Worker Method Identifier
   
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised by TeamFinder objects.

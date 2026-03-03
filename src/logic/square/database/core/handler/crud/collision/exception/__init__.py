@@ -13,4 +13,4 @@ version: 1.0.0
 from .debug import *
 
 # Modules
-from .wrapper import SquareCollisionDetectionException
+from logic.square.database.core.handler.crud.collision.exception.work.wrapper import SquareCollisionDetectionException

@@ -19,7 +19,8 @@ from logic.token import TokenException
 # ======================# POPPING_TOKEN_FAILURE #======================#
 class PoppingTokenException(TokenException, DeletionException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Exception Chain Layer 1, Exception Messaging
+    # TASK: Worker Method Identifier
 
     # RESPONSIBILITIES:
     1.  Wrap debug exceptions indicating why popping a token failed. The exception chain
