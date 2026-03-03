@@ -1,7 +1,7 @@
-# src/logic/square/database/core/util/stats/exception/full.py
+# src/logic/square/database/core/util/stats/exception/work/full.py
 
 """
-Module: logic.square.database.core.util.stats.exception.full
+Module: logic.square.database.core.handler.stats.exception.work..full
 Author: Banji Lawal
 Created: 2026-02-21
 version: 1.0.0
@@ -28,10 +28,9 @@ class SquareStackFullException(DebugException):
             *   variable,
             *   it's value,
             *   event which fired the variable into its error state.
-        which occurred in the SquareStackCrudHandler method identified in layer-0 of the exception chain.
+        which occurred in the SquareStackCountsAnalyzer method identified in layer-0 of the exception chain.
         
-    2.  Indicate that pushing square on to the stack failed because there was no space
-        left.
+    2.  Indicate a failure InsertionResult was returned because the full SquareStackService had was full.
 
     # PARENT:
         *   DebugException
@@ -61,7 +60,7 @@ class SquareStackFullException(DebugException):
     VAR = Optional[str]
     VAL = Optional[Any]
     ERR_CODE = "SQUARE_STACK_FULL_EXCEPTION"
-    MSG = "Pushing square failed: The is no space left for adding another square."
+    MSG = "No space to insert a square."
     
     def __init__(
             self,

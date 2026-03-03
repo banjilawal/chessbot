@@ -1,7 +1,7 @@
-# src/logic/square/database/core/util/occupation/roster/exception/super.py
+# src/logic/square/database/core/handler/roster/exception/super.py
 
 """
-Module: logic.square.database.core.util.occupation.roster.exception.super
+Module: logic.square.database.core.handler.roster.exception.super
 Author: Banji Lawal
 Created: 2026-02-21
 version: 1.0.0

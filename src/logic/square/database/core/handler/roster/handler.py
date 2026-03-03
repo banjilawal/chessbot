@@ -1,7 +1,7 @@
-# src/logic/square/database/core/util/occupation/roster/deployer.py
+# src/logic/square/database/core/handler/roster/deployer.py
 
 """
-Module: logic.square.database.core.util.occupation.roster.deployer
+Module: logic.square.database.core.handler.roster.deployer
 Author: Banji Lawal
 Created: 2026-02-21
 version: 1.0.0

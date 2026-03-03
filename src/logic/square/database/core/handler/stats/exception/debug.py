@@ -1,9 +1,9 @@
-# src/logic/square/database/core/handler/token/exception/debug.py
+# src/logic/square/database/core/handler/stats/exception/debug.py
 
 """
-Module: logic.square.database.core.handler.token.exception.debug
+Module: logic.square.database.core.handler.stats.exception.debug
 Author: Banji Lawal
-Created: 2026-02-21
+Created: 2026-02-22
 version: 1.0.0
 """
 
@@ -11,14 +11,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# SQUARE_STACK_TOKEN_HANDLER_DEBUG_EXCEPTION #======================#
-    "SquareStackTokenHandlerDebugException",
+    # ======================# SQUARE_STACK_COUNTS_ANALYZER_DEBUG_EXCEPTION #======================#
+    "SquareStackCountsAnalyzerDebugException",
 ]
 
 from logic.system import DebugException
 
-# ======================# SQUARE_STACK_TOKEN_HANDLER_DEBUG_EXCEPTION #======================#
-class SquareStackTokenHandlerDebugException(DebugException):
+
+# ======================# SQUARE_STACK_COUNTS_ANALYZER_DEBUG_EXCEPTION #======================#
+class SquareStackCountsAnalyzerDebugException(DebugException):
     """
     # ROLE: Capture Error Variable State, Exception Chain Layer 2, Exception Messaging
 
@@ -27,7 +28,7 @@ class SquareStackTokenHandlerDebugException(DebugException):
             *   variable,
             *   it's value,
             *   event which fired the variable into its error state.
-        which occurred in the SquareStackTokenHandler method identified in layer-0 of the exception chain.
+        which occurred in the SquareStackCountsAnalyzer method identified in layer-0 of the exception chain.
 
     # PARENT:
         *   DebugException
@@ -56,8 +57,8 @@ class SquareStackTokenHandlerDebugException(DebugException):
     """
     VAR = Optional[str]
     VAL = Optional[Any]
-    ERR_CODE = "SQUARE_STACK_TOKEN_HANDLER_EXCEPTION"
-    MSG = str = "SquareStackTokenHandler had an error."
+    ERR_CODE = "SQUARE_STACK_COUNTS_ANALYZER_DEBUG_EXCEPTION"
+    MSG = str = "SquareStackCountsAnalyzer had an error."
     
     def __init__(
             self,
@@ -80,4 +81,4 @@ class SquareStackTokenHandlerDebugException(DebugException):
         val = val or self.VAL
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        super().__init__(ex=ex, msg=msg, err_code=err_code, var=var, val=val,)
+        super().__init__(ex=ex, msg=msg, err_code=err_code, var=var, val=val, )

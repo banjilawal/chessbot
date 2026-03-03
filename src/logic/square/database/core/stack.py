@@ -39,7 +39,7 @@ class SquareStackService(StackService[Square]):
             SERVICE_NAME: str
             capacity: int
             stack: List[Square]
-            util: SquareStackUtil
+            util: SquareStackHandler
             service: SquareService:
             context_service: SquareContextService
     
@@ -51,7 +51,7 @@ class SquareStackService(StackService[Square]):
             *   id (int)
             *   name (str)
             *   capacity (int)
-            *   util (SquareStackUtil)
+            *   util (SquareStackHandler)
             *   service (SquareService)
             *   context_service (SquareContextService)
 

@@ -1,34 +1,26 @@
-# src/logic/square/square/service/collision/wrapper.py
-
-"""
-Module: logic.square.service.collision.wrapper
-Author: Banji Lawal
-Created: 2026-02-21
-version: 1.0.0
-"""
-
 from __future__ import annotations
 from typing import Optional
 
 ___all__ = [
-    # ======================# SQUARE_CRUD_HANDLER_EXCEPTION #======================#
-    "SquareCrudHandlerException",
+    # ======================# SQUARE_COLLISION_DETECTOR_EXCEPTION #======================#
+    "SquareCollisionDetectorException",
 ]
 
 from logic.system import AnchorException
 
 
-# ======================# SQUARE_CRUD_HANDLER_EXCEPTION #======================#
-class SquareCrudHandlerException(AnchorException):
+# ======================# SQUARE_COLLISION_DETECTOR_EXCEPTION #======================#
+class SquareCollisionDetectorException(AnchorException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Provide SquareStackCrudHandler as:
+    1.  Provide SquareCollisionDetector as:
             *   Reporting
             *   Coverage
         target for layer-2 debugging exceptions.
-    2.  Indicate which SquareStackCrudHandler method received a worker's (layer-1) failure result.
+    2.  Indicate which SquareCollisionDetector method received a worker's
+        (layer-1) failure result.
 
     # PARENT:
         *   AnchorException
@@ -56,9 +48,9 @@ class SquareCrudHandlerException(AnchorException):
         *   See AnchorException class for inherited methods.
     """
     CLS_MTHD = None
-    CLS_NAME = "SquareStackCrudHandler"
-    ERR_CODE = "SQUARE_CRUD_HANDLER_EXCEPTION"
-    MSG = "SquareStackCrudHandler raised an exception."
+    CLS_NAME = "SquareCollisionDetector"
+    ERR_CODE = "SQUARE_COLLISION_DETECTOR_EXCEPTION"
+    MSG = "SquareCollisionDetector raised an exception."
     
     def __init__(
             self,
@@ -87,36 +79,3 @@ class SquareCrudHandlerException(AnchorException):
             cls_name=cls_name,
             cls_mthd=cls_mthd
         )
-
-
-__all__ = [
-    # ======================# COLLISION_DETECTION_OPERATION_FAILURE #======================#
-    "SquareCollisionDetectionException",
-]
-
-from logic.system import CollisionDetectionException
-
-
-# ======================# COLLISION_DETECTION_OPERATION_FAILURE #======================#
-class SquareCollisionDetectionException(CollisionDetectionException):
-    """
-    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
-
-    # RESPONSIBILITIES:
-    1.  An error occurred in SquareCollisionDetector.detect that prevented a successful, no collisions
-        detected result.
-
-    # PARENT:
-        *   CollisionDetectionException
-
-    # PROVIDES:
-    None
-
-    # LOCAL ATTRIBUTES:
-    None
-
-    INHERITED ATTRIBUTES:
-    None
-    """
-    ERR_CODE = "COLLISION_DETECTION_OPERATION_FAILURE"
-    MSG = "SquareCollisionDetection operation failed."

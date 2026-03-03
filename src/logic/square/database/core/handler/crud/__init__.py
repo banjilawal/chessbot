@@ -14,4 +14,4 @@ from .collision import *
 from .exception import *
 
 # Modules
-from .crud import SquareStackCrudHandler
+from .handler import SquareStackCrudHandler

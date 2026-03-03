@@ -1,7 +1,7 @@
 # src/logic/square/database/core/util/util.py
 
 """
-Module: logic.square.database.core.util.util
+Module: logic.square.database.core.handler.util
 Author: Banji Lawal
 Created: 2026-02-21
 version: 1.0.0
@@ -9,9 +9,9 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.square import SquareStackTokenHandler, SquareStackCrudHandler, SquareStackAnalyzer
+from logic.square import SquareStackRosterHandler, SquareStackTokenHandler, SquareStackCrudHandler, SquareStackCountsAnalyzer
 
-class SquareStackUtil:
+class SquareStackHandler:
     """
     # ROLE: Utilities, Update Management Statistics.
 
@@ -50,27 +50,35 @@ class SquareStackUtil:
     # INHERITED METHODS:
     None
     """
+    _stats: SquareStackCountsAnalyzer
     _crud: SquareStackCrudHandler
-    _stats_analyzer: SquareStackAnalyzer
+    _token: SquareStackTokenHandler
+    _roster: SquareStackRosterHandler
     _occupation_service: SquareStackTokenHandler
     
     def __init__(
             self,
-            crud_handler: SquareStackCrudHandler = SquareStackCrudHandler(),
-            stats_analyzer: SquareStackAnalyzer = SquareStackAnalyzer(),
-            occupation_service: SquareStackTokenHandler = SquareStackTokenHandler(),
+            stats: SquareStackCountsAnalyzer = SquareStackCountsAnalyzer(),
+            crud: SquareStackCrudHandler = SquareStackCrudHandler(),
+            token: SquareStackTokenHandler = SquareStackTokenHandler(),
+            roster: SquareStackRosterHandler = SquareStackRosterHandler(),
     ):
-        self._crud = crud_handler
-        self._stats_analyzer = stats_analyzer
-        self._occupation_service = occupation_service
+        self._stats = stats
+        self._crud = crud
+        self._token = token
+        self._roster = roster
         
     @property
-    def stats_analyzer(self) -> SquareStackAnalyzer:
-        return self._stats_analyzer
+    def stats(self) -> SquareStackCountsAnalyzer:
+        return self._statss
     
     @property
-    def occupation_service(self) -> SquareStackTokenHandler:
-        return self._occupation_service
+    def token(self) -> SquareStackTokenHandler:
+        return self._token
+    
+    @property
+    def roster(self) -> SquareStackRosterHandler:
+        return self._roster
     
     @property
     def crud(self) -> SquareStackCrudHandler:

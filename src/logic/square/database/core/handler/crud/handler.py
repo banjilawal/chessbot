@@ -73,7 +73,7 @@ class SquareStackCrudHandler:
         method = "SquareStackService.add_square"
         
         # Handle the case that, there is no capacity for adding another square.
-        available_capacity_computation_result = stack.util.stats_analyzer.available_capacity(stack=stack)
+        available_capacity_computation_result = stack.handler.stats_analyzer.available_capacity(stack=stack)
         if available_capacity_computation_result.is_failure:
             # Return the exception chain on failure
             return InsertionResult.failure(
@@ -289,6 +289,3 @@ class SquareStackCrudHandler:
             )
         # --- For either a successful or empty search result directly forward to the caller. ---#
         return query_result
-    
-    
-    def

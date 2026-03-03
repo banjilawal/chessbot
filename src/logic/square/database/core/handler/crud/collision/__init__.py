@@ -1,7 +1,7 @@
-# src/logic/square/square/service/collision/__init__.py
+# src/logic/square/database/core/handler/crud/collision/__init__.py
 
 """
-Module: logic.square.service.collision.__init__
+Module: logic.square.database.core.handler.crud.collision.__init__
 Author: Banji Lawal
 Created: 2026-02-21
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/logic/square/database/core/util/occupation/token/exception/exist.py
+# src/logic/square/database/core/handler/token/exception/work/exist.py
 
 """
-Module: logic.square.database.core.util.occupation.token.exception.exist
+Module: logic.square.database.core.handler.token.work.exception.exist
 Author: Banji Lawal
 Created: 2026-02-21
 version: 1.0.0
