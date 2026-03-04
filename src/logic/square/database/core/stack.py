@@ -15,10 +15,10 @@ from logic.system import (
     NUMBER_OF_ROWS, SearchResult, UpdateResult
 )
 from logic.square import (
-    SquareContext, SquareStackCrudHandler, SquareStackUtil, SquareService,
+    SquareContext, SquareStackException, SquareStackHandler, SquareService,
     SquareContextService, Square,
 )
-from logic.token import Token
+from logic.token import Token, TokenService
 
 
 class SquareStackService(StackService[Square]):
@@ -39,7 +39,7 @@ class SquareStackService(StackService[Square]):
             SERVICE_NAME: str
             capacity: int
             stack: List[Square]
-            util: SquareStackHandler
+            handler: SquareStackHandler
             service: SquareService:
             context_service: SquareContextService
     
@@ -51,7 +51,7 @@ class SquareStackService(StackService[Square]):
             *   id (int)
             *   name (str)
             *   capacity (int)
-            *   util (SquareStackHandler)
+            *   handler (SquareStackHandler)
             *   service (SquareService)
             *   context_service (SquareContextService)
 
@@ -76,27 +76,26 @@ class SquareStackService(StackService[Square]):
     SERVICE_NAME = "SquareStackService"
     _capacity: int
     _stack: List[Square]
-    _util: SquareStackUtil
     _service: SquareService
+    _handler: SquareStackHandler
     _context_service: SquareContextService
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             service: SquareService = SquareService(),
-            util: SquareStackUtil = SquareStackUtil(),
+            handler: SquareStackHandler = SquareStackHandler(),
             capacity: int = NUMBER_OF_ROWS * NUMBER_OF_COLUMNS,
             id: int = IdFactory.next_id(class_name="SquareStackService"),
             context_service: SquareContextService = SquareContextService(),
     ):
         method = "SquareService.__init__"
         super().__init__(id=id,name=name,)
-        self._util = util
+        self._handler = handler
         self._service = service
         self._context_service = context_service
-        
-        self._stack = []
         self._capacity = capacity
+        self._stack = []
         
     @property
     def items(self) -> List[Square]:
@@ -119,10 +118,6 @@ class SquareStackService(StackService[Square]):
         return self.size == self._capacity
     
     @property
-    def util(self) -> SquareStackUtil:
-        return self._util
-    
-    @property
     def current_item(self) -> Optional[Square]:
         return self._stack[-1] if self._stack else None
     
@@ -136,42 +131,136 @@ class SquareStackService(StackService[Square]):
     
     @LoggingLevelRouter.monitor
     def push(self, item: Square) -> InsertionResult[bool]:
-        return self.util.crud.push(self, item)
+        """
+        Args:
+            item: Square
+        """
+        method = "SquareStackService.push"
+        
+        # --- Handoff the push responsibility to _handler ---#
+        insertion_result = self._handler.crud.push(stack=self, item=item)
+    
+        # Handle the case that, the search is not completed.
+        if insertion_result.is_failure:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                SquareStackException(
+                    cls_mthd=method,
+                    cls_name=self.__name__,
+                    err_code=SquareStackException.ERR_CODE,
+                    msg=SquareStackException.MSG,
+                    ex=insertion_result.exception,
+                )
+            )
+        # --- Send the success result to the caller. ---#
+        return insertion_result
     
     @LoggingLevelRouter.monitor
     def pop(self) -> DeletionResult[Square]:
-        return self.util.crud.pop(self)
+        method = "SquareStackService.pop"
+        
+        # --- Handoff the push responsibility to _handler ---#
+        deletion_result = self._handler.crud.pop()
+        
+        # Handle the case that, the search is not completed.
+        if deletion_result.is_failure:
+            # Return the exception chain on failure.
+            return DeletionResult.failure(
+                SquareStackException(
+                    cls_mthd=method,
+                    cls_name=self.__name__,
+                    err_code=SquareStackException.ERR_CODE,
+                    msg=SquareStackException.MSG,
+                    ex=deletion_result.exception,
+                )
+            )
+        # --- Send the success result to the caller. ---#
+        return deletion_result
     
     @LoggingLevelRouter.monitor
     def delete_by_id(
             self,
             id: int,
-            identity_service: IdentityService = IdentityService()
+            identity_service: IdentityService = IdentityService(),
     ) -> DeletionResult[Square]:
-        return self.util.crud.delete_by_id(stack=self, id=id, identity_service=identity_service)
-      
-    @LoggingLevelRouter.monitor
-    def query(self, context: SquareContext) -> SearchResult[List[Square]]:
-        return self._util.crud.query(context=context, stack=self)
+        method = "SquareStackService.delete_by_id"
+        
+        # --- Handoff the delete_by_id responsibility to _handler ---#
+        deletion_result =self._handler.crud.delete_by_id(
+            id=id,
+            square_stack=self,
+            identity_service=identity_service
+        )
+        # Handle the case that, the deletion is not completed.
+        if deletion_result.is_failure:
+            # Return the exception chain on failure.
+            return DeletionResult.failure(
+                SquareStackException(
+                    cls_mthd=method,
+                    cls_name=self.__name__,
+                    err_code=SquareStackException.ERR_CODE,
+                    msg=SquareStackException.MSG,
+                    ex=deletion_result.exception,
+                )
+            )
+        # --- Send the success result to the caller. ---#
+        return deletion_result
     
-    def vist_square(self, square: Square, token: Token) -> UpdateResult[Square]:
-        return self.util.occupation_service.occupy_stack_square(
-            square=square,
+    def start_square_visit(self, square: Square, token: Token) -> UpdateResult[Square]:
+        method = "SquareStackService.start_square_visit"
+        
+        # --- Handoff the visit management responsibility to _handler ---#
+        visitation_result = self._handler.token.occupy_stack_square(
             token=token,
-            square_list=self._stack
+            square=square,
+            square_stack=self
         )
+        # Handle the case that the visit is not accomplished
+        if visitation_result.is_failure:
+            return UpdateResult.update_failure(
+                original=square,
+                exception=SquareStackException(
+                    cls_mthd=method,
+                    cls_name=self.__name__,
+                    err_code=SquareStackException.ERR_CODE,
+                    msg=SquareStackException.MSG,
+                    ex=visitation_result.exception,
+                )
+            )
+        # --- Send the success result directly forward to the caller. ---#
+        return visitation_result
     
-    def leave_square(self, token: Token) ->DeletionResult[Token]:
-        return self._util.occupation_service.remove_occupant_from_stack(
+    def end_square_visit(
+            self,
+            token: Token,
+            token_service: TokenService,
+    ) -> DeletionResult[Token]:
+        method = "SquareStackService.end_square_visit"
+        
+        # --- Handoff the visit management responsibility to _handler ---#
+        visitation_result = self._handler.token.remove_occupant_from_stack(
             occupant=token,
-            square_list=self._stack
+            square_stack=self,
+            token_service=token_service
         )
-    
+        # Handle the case that the visit is not accomplished
+        if visitation_result.is_failure:
+            return DeletionResult.failure(
+                SquareStackException(
+                    cls_mthd=method,
+                    cls_name=self.__name__,
+                    err_code=SquareStackException.ERR_CODE,
+                    msg=SquareStackException.MSG,
+                    ex=visitation_result.exception,
+                )
+            )
+        # --- Send the success result directly forward to the caller. ---#
+        return visitation_result
+
     @LoggingLevelRouter.monitor
     def query(
             self,
             context: SquareContext,
-            square_stack: SquareStackService
     ) -> SearchResult[List[Square]]:
         """
         # ACTION:
@@ -194,20 +283,19 @@ class SquareStackService(StackService[Square]):
         method = "SquareStackService.query"
         
         # --- Handoff the search responsibility to _stack_service. ---#
-        query_result = square_stack.context_service.finder.find(
+        query_result = self._context_service.finder.find(
             context=context,
-            dataset=square_stack.items,
+            dataset=self._stack,
         )
-        
         # Handle the case that, the search is not completed.
         if query_result.is_failure:
             # Return the exception chain on failure.
             return SearchResult.failure(
-                SquareStackServiceException(
+                SquareStackException(
                     cls_mthd=method,
                     cls_name=self.__name__,
-                    err_code=SquareStackServiceException.ERR_CODE,
-                    msg=SquareStackServiceException.MSG,
+                    err_code=SquareStackException.ERR_CODE,
+                    msg=SquareStackException.MSG,
                     ex=query_result.exception,
                 )
             )

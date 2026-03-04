@@ -15,7 +15,7 @@ from typing import List
 from logic.square import (
     SquareStackTokenHandlerException,  Square, VisitDestinationNotFoundException, SquareService, SquareStackService
 )
-from logic.system import DeletionResult, IdFactory, LoggingLevelRouter, UpdateResult, ValidationResult
+from logic.system import DeletionResult, LoggingLevelRouter, UpdateResult, ValidationResult
 from logic.token import Token, TokenService
 
 
@@ -59,12 +59,13 @@ class SquareStackTokenHandler:
     None
     """
     
+    @classmethod
     @LoggingLevelRouter.monitor
     def occupy_stack_square(
-            self,
+            cls,
             token: Token,
             square: Square,
-            stack: SquareStackService,
+            square_stack: SquareStackService,
     ) -> UpdateResult[Square]:
         """
         # ACTION:
@@ -94,14 +95,14 @@ class SquareStackTokenHandler:
         method = "SquareStackTokenHandler.occupy_stack_square"
         
         # Handle the case that either the square does not or is not safe.
-        square_verification_result = self.square_exists_and_is_safe(square, stack)
+        square_verification_result = cls._square_exists_and_is_safe(square=square, square_stack=square_stack)
         if square_verification_result.is_failure:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
                 original=square,
                 exception=SquareStackTokenHandlerException(
                     cls_mthd=method,
-                    cls_name=self.__name__,
+                    cls_name=cls.__name__,
                     msg=SquareStackTokenHandlerException.MSG,
                     err_code=SquareStackTokenHandlerException.ERR_CODE,
                     ex=square_verification_result.exception
@@ -109,7 +110,7 @@ class SquareStackTokenHandler:
             )
         # --- After the square is validated, get a snapshot of its pre-update state. then call visit handler.---#
         pre_update_square = deepcopy(square)
-        update_result = stack.integrity_service.token_visit_handler.start_visit(
+        update_result = square_stack.integrity_service.token_visit_handler.start_visit(
             token=token,
             square=square
         )
@@ -120,7 +121,7 @@ class SquareStackTokenHandler:
                 original=pre_update_square,
                 exception=SquareStackTokenHandlerException(
                     cls_mthd=method,
-                    cls_name=self.__name__,
+                    cls_name=cls.__name__,
                     msg=SquareStackTokenHandlerException.MSG,
                     err_code=SquareStackTokenHandlerException.ERR_CODE,
                     ex=update_result.exception
@@ -128,12 +129,13 @@ class SquareStackTokenHandler:
             )
         # --- Send the success result to the client. ---#
         return UpdateResult.update_success(original=pre_update_square, updated=square)
-    
+   
+    @classmethod
     @LoggingLevelRouter.monitor
     def remove_occupant_from_stack(
             self,
             occupant: Token,
-            stack: SquareStackService,
+            square_stack: SquareStackService,
             token_service: TokenService = TokenService(),
     ) -> DeletionResult[Token]:
         """
@@ -172,24 +174,27 @@ class SquareStackTokenHandler:
                 )
             )
         # --- Find the square holding the token. There should be either zero or onne. ---#
-        occupations = [square for square in stack.items if square.occupant == occupant]
+        occupations = [square for square in square_stack.items if square.occupant == occupant]
         
         # Process the simplest case: No squares are holding the token.
         if len(occupations) == 0:
             return DeletionResult.nothing_to_delete()
         
         # Process the case: Some squares are holding the token
-        return self._eviction_handler(occupations, stack.integrity_service.square_service)
+        return self._eviction_handler(occupations, square_stack.integrity_service.square_service)
     
+    @classmethod
+    @LoggingLevelRouter.monitor
     def _eviction_handler(
-            self,
+            cls,
             occupied_squares: List[Square],
             square_service: SquareService = SquareService()
     ) -> DeletionResult[Token]:
         """
         """
         method = "SquareService._eviction_handler"
-        occupant: Token = None
+        
+        occupant = None
         # --- Expecting only one square in the list.  ---#
         for square in occupied_squares:
             # --- Handoff the deletion responsibility to square_service. ---#
@@ -201,7 +206,7 @@ class SquareStackTokenHandler:
                 return DeletionResult.failure(
                     exception=SquareStackTokenHandlerException(
                         cls_mthd=method,
-                        cls_name=self.__name__,
+                        cls_name=cls.__name__,
                         msg=SquareStackTokenHandlerException.MSG,
                         err_code=SquareStackTokenHandlerException.ERR_CODE,
                         ex=deletion_result.exception
@@ -213,19 +218,22 @@ class SquareStackTokenHandler:
             return DeletionResult.nothing_to_delete()
         return DeletionResult.success(payload=occupant)
     
-    def square_exists_and_is_safe(
-            self,
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _square_exists_and_is_safe(
+            cls,
             square: Square,
             square_stack: SquareStackService
     ) -> ValidationResult[int]:
         method = "SquareStackTokenHandler._safe_square_exists"
+        
         # Handle the case that, the square is not certified safe.
         square_validation = square_stack.integrity_service.validator.validate(square)
         if square_validation.is_failure:
             return ValidationResult.failure(
                 exception=SquareStackTokenHandlerException(
                     cls_mthd=method,
-                    cls_name=self.__name__,
+                    cls_name=cls.__name__,
                     msg=SquareStackTokenHandlerException.MSG,
                     err_code=SquareStackTokenHandlerException.ERR_CODE,
                     ex=square_validation.exception
@@ -235,7 +243,7 @@ class SquareStackTokenHandler:
             return ValidationResult.failure(
                 exception=SquareStackTokenHandlerException(
                     cls_mthd=method,
-                    cls_name=self.__name__,
+                    cls_name=cls.__name__,
                     msg=SquareStackTokenHandlerException.MSG,
                     err_code=SquareStackTokenHandlerException.ERR_CODE,
                     ex=VisitDestinationNotFoundException(

@@ -56,14 +56,13 @@ class SquareStackHandler:
     _crud: SquareStackCrudHandler
     _token: SquareStackTokenHandler
     _roster: SquareStackRosterHandler
-    _occupation_service: SquareStackTokenHandler
     
     def __init__(
             self,
-            stats: SquareStackCountsAnalyzer = SquareStackCountsAnalyzer(),
             crud: SquareStackCrudHandler = SquareStackCrudHandler(),
             token: SquareStackTokenHandler = SquareStackTokenHandler(),
             roster: SquareStackRosterHandler = SquareStackRosterHandler(),
+            stats: SquareStackCountsAnalyzer = SquareStackCountsAnalyzer(),
     ):
         self._stats = stats
         self._crud = crud
@@ -72,7 +71,7 @@ class SquareStackHandler:
         
     @property
     def stats(self) -> SquareStackCountsAnalyzer:
-        return self._statss
+        return self._stats
     
     @property
     def token(self) -> SquareStackTokenHandler:
