@@ -52,11 +52,12 @@ class TokenValidationException(ValidationException):
     # INHERITED METHODS:
         *   See ValidationException class for inherited methods.
     """
-    ERR_CODE = "TOKEN_VALIDATION_FAILURE"
-    MSG = "Failure in TokenValidator method."
     MTHD = None
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
+    ERR_CODE = "TOKEN_VALIDATION_FAILURE"
+    MSG = "Failure in TokenValidator method."
+
     
     def __init__(
             self,
@@ -67,6 +68,15 @@ class TokenValidationException(ValidationException):
             op: Optional[str] = None,
             rslt_type: Optional[str] = None,
     ):
+        """
+        Args:
+            op: Optional[str]
+            msg: Optional[str]
+            mthd: Optional[str]
+            ex: Optional[Exception]
+            err_code: Optional[str]
+            rslt_type: Optional[str]
+        """
         op = op or self.OP
         msg = msg or self.MSG
         mthd = mthd or self.MTHD

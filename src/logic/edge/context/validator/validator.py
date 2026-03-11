@@ -18,7 +18,7 @@ from logic.edge import (
     EdgeContextValidationException, ZeroEdgeContextFlagsException, EdgeContext,
     NullEdgeContextException, ArenaEdgeContextFlagsException, EdgeContextValidationRouteException
 )
-from logic.token import TokenService
+from logic.edge import EdgeService
 
 
 class EdgeContextValidator(Validator[EdgeContext]):
@@ -48,7 +48,7 @@ class EdgeContextValidator(Validator[EdgeContext]):
             candidate: Any,
             board_service: BoardService = BoardService(),
             coord_service: CoordService = CoordService(),
-            token_service: TokenService = TokenService(),
+            edge_service: EdgeService = EdgeService(),
             identity_service: IdentityService = IdentityService()
     ) -> ValidationResult[EdgeContext]:
         """
@@ -63,7 +63,7 @@ class EdgeContextValidator(Validator[EdgeContext]):
             *   candidate (Any)
             *   board_service (BoardService)
             *   coord_service (CoordService)
-            *   token_service (TokenService)
+            *   edge_service (EdgeService)
             *   identity_service (IdentityService):
         # RETURNS:
             *   ValidationResult[EdgeContext] containing either:
@@ -183,7 +183,7 @@ class EdgeContextValidator(Validator[EdgeContext]):
         
         # Certification for the search-by-occupant target.
         if context.occupant is not None:
-            validation = token_service.validator.validate(context.occupant)
+            validation = edge_service.validator.validate(context.occupant)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(

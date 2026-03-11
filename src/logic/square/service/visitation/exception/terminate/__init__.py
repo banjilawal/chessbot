@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .wrapper import TerminateSquareVistException
+from .wrapper import TerminateSquareVisitException
 from .empty import NoVisitForTerminationException

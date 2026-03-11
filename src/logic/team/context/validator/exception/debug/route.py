@@ -6,36 +6,67 @@ Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
+from __future__ import annotations
+from typing import Any, Optional
+
 
 __all__ = [
-    # ======================# NO_PERSONA_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
+    # ======================# TEAM_CONTEXT_VALIDATION_ROUTE_EXCEPTION #======================#
     "TeamContextValidationRouteException",
 ]
 
-from logic.team import TeamContextException
 from logic.system import ExecutionRouteException
 
-
-# ======================# NO_TEAM_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
-class TeamContextValidationRouteException(TeamContextException, ExecutionRouteException):
+# ======================# TEAM_CONTEXT_VALIDATION_ROUTE_EXCEPTION #======================#
+class TeamContextValidationRouteException(ExecutionRouteException):
     """
-    # ROLE: Fallback Result, Debugging
+    # ROLE: Exception Chain Layer 2, Exception Messaging
+    # TASK: Capture Error Variable State
 
     # RESPONSIBILITIES:
-    1.  Indicate that the TeamContext validation failed because there was no build route for the TeamContext key.
+    1.  A failure ValidationResult was sent because there was no validation route for the TeamContext
+        attribute.
 
     # PARENT:
-        *   TeamContextException
-        *   ExecutionRouteException
+        *   ExecutionRoute
 
-    # PROVIDES
+    # PROVIDES:
     None
 
     # LOCAL ATTRIBUTES:
     None
 
     # INHERITED ATTRIBUTES:
-    None
+        *   See ExecutionRoute class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        *   msg (str)
+        *   err_code (str)
+        *   ex (Optional[Exception])
+        *   var (Optional[str])
+        *   val Optional[Any])
+
+    # LOCAL METHODS:
+   None
+
+    # INHERITED METHODS:
+        *   See ExecutionRoute class for inherited methods.
     """
-    ERR_CODE = "NO_TEAM_CONTEXT_VALIDATION_ROUTE_EXCEPTION"
-    MSG = "TeamContext validation failed: No validation route was provided for the Team attribute."
+    VAR = Optional[str]
+    VAL = Optional[Any]
+    MSG = "No validation route for TeamContext attribute"
+    ERR_CODE = "TEAM_CONTEXT_VALIDATION_ROUTE_EXCEPTION"
+    
+    def __init__(
+            self,
+            err_code: Optional[str] = None,
+            msg: Optional[str] = None,
+            ex: Optional[Exception] = None,
+            var: Optional[str] = None,
+            val: Optional[Any] = None,
+    ):
+        err_code = err_code or self.ERR_CODE
+        msg = msg or self.MSG
+        var = var or self.VAR
+        val = val or self.VAL
+        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)

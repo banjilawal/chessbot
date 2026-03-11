@@ -6,36 +6,67 @@ Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
+from __future__ import annotations
+from typing import Any, Optional
+
 
 __all__ = [
-    # ======================# NO_PERSONA_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
+    # ======================# PLAYER_CONTEXT_VALIDATION_ROUTE_EXCEPTION #======================#
     "PlayerContextValidationRouteException",
 ]
 
-from logic.player import PlayerContextException
 from logic.system import ExecutionRouteException
 
-
-# ======================# NO_PLAYER_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
-class PlayerContextValidationRouteException(PlayerContextException, ExecutionRouteException):
+# ======================# PLAYER_CONTEXT_VALIDATION_ROUTE_EXCEPTION #======================#
+class PlayerContextValidationRouteException(ExecutionRouteException):
     """
-    # ROLE: Fallback Result, Debugging
+    # ROLE: Exception Chain Layer 2, Exception Messaging
+    # TASK: Capture Error Variable State
 
     # RESPONSIBILITIES:
-    1.  Indicate that the PlayerContext validation failed because there was no build route for the PlayerContext key.
+    1.  A failure ValidationResult was sent because there was no validation route for the PlayerContext
+        attribute.
 
     # PARENT:
-        *   PlayerContextException
-        *   ExecutionRouteException
+        *   ExecutionRoute
 
-    # PROVIDES
+    # PROVIDES:
     None
 
     # LOCAL ATTRIBUTES:
     None
 
     # INHERITED ATTRIBUTES:
-    None
+        *   See ExecutionRoute class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        *   msg (str)
+        *   err_code (str)
+        *   ex (Optional[Exception])
+        *   var (Optional[str])
+        *   val Optional[Any])
+
+    # LOCAL METHODS:
+   None
+
+    # INHERITED METHODS:
+        *   See ExecutionRoute class for inherited methods.
     """
-    ERR_CODE = "NO_PLAYER_CONTEXT_VALIDATION_ROUTE_EXCEPTION"
-    MSG = "PlayerContext validation failed: No validation route was provided for the Player attribute."
+    VAR = Optional[str]
+    VAL = Optional[Any]
+    MSG = "No validation route for PlayerContext attribute"
+    ERR_CODE = "PLAYER_CONTEXT_VALIDATION_ROUTE_EXCEPTION"
+    
+    def __init__(
+            self,
+            err_code: Optional[str] = None,
+            msg: Optional[str] = None,
+            ex: Optional[Exception] = None,
+            var: Optional[str] = None,
+            val: Optional[Any] = None,
+    ):
+        err_code = err_code or self.ERR_CODE
+        msg = msg or self.MSG
+        var = var or self.VAR
+        val = val or self.VAL
+        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)

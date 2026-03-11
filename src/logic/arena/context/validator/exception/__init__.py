@@ -1,11 +1,12 @@
-# src/logic/arena/validator/exception/__init__.py
+# src/logic/arena/context/validator/exception/__init__.py
 
 """
-Module: logic.arena.validator.exception.__init__
+Module: logic.arena.context.validator.exception.__init__
 Author: Banji Lawal
-Created: 2025-10-01
+Created: 2025-10-03
 version: 1.0.0
 """
+
 
 # =========== ARENA.CONTEXT.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
 
@@ -13,3 +14,5 @@ version: 1.0.0
 from .debug import *
 
 # Modules
+from .wrapper import ArenaContextValidationException
+

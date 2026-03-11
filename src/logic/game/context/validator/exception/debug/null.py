@@ -1,32 +1,39 @@
-# src/logic/game/validator/exception/null.py
+# src/logic/game/context/validator/exception/debug/null.py
 
 """
-Module: logic.game.validator.exception.null
+Module: logic.game.context.validator.exception.debug.null
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
+from __future__ import annotations
+from typing import Any, Optional
+
 __all__ = [
-    # ======================# NULL_GAME_CONTEXT EXCEPTION #======================#
+    # ======================# NULL_GAME_CONTEXT_EXCEPTION #======================#
     "NullGameContextException",
 ]
 
 from logic.system import NullException
-from logic.game import InvalidGameContextException
 
-
-# ======================# NULL_GAME_CONTEXT EXCEPTION #======================#
-class NullGameContextException(InvalidGameContextException, NullException):
+# ======================# NULL_GAME_CONTEXT_EXCEPTION #======================#
+class NullGameContextException(NullException):
     """
-    # ROLE: Error Tracing, Debugging
+    # ROLE: Exception Chain Layer 2, Exception Messaging
+    # TASK: Capture Error Variable State
 
     # RESPONSIBILITIES:
-    1.  Indicate that GameContext validation failed because the candidate was null.
+    1.  Produce the:
+            *   variable,
+            *   it's value,
+            *   event which fired the variable into its error state.
+        which occurred in the GameContextValidator method identified in layer-0 of the exception chain.
+
+    2.  A failing ValidationResult was returned because the candidate was null.
 
     # PARENT:
-        *   NullGameContextException
-        *   InvalidGameContextException
+        *   NullException
 
     # PROVIDES:
     None
@@ -35,7 +42,44 @@ class NullGameContextException(InvalidGameContextException, NullException):
     None
 
     # INHERITED ATTRIBUTES:
-    None
+        *   See NullException class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        *   msg (str)
+        *   err_code (str)
+        *   ex (Optional[Exception])
+        *   var (Optional[str])
+        *   val (Optional[Any])
+
+    # LOCAL METHODS:
+   None
+
+    # INHERITED METHODS:
+        *   See NullException class for inherited methods.
     """
+    VAR = Optional[str]
+    VAL = Optional[Any]
+    MSG = "GameContext cannot be null."
     ERR_CODE = "NULL_GAME_CONTEXT_EXCEPTION"
-    MSG = "GameContext validation failed: The candidate was null."
+    
+    def __init__(
+            self,
+            msg: Optional[str] = None,
+            var: Optional[str] = None,
+            val: Optional[Any] = None,
+            ex: Optional[Exception] = None,
+            err_code: Optional[str] = None,
+    ):
+        """
+        Args:
+            msg: str
+            var: Optional[str]
+            val: Optional[Any]
+            ex: Optional[Exception]
+            err_code: Optional[str]
+        """
+        var = var or self.VAR
+        val = val or self.VAL
+        msg = msg or self.MSG
+        err_code = err_code or self.ERR_CODE
+        super().__init__(ex=ex, msg=msg, err_code=err_code, var=var, val=val, )

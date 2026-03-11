@@ -3,29 +3,36 @@
 """
 Module: logic.hostage.context.validator.exception.debug.null
 Author: Banji Lawal
-Created: 2025-11-22
+Created: 2025-09-16
 version: 1.0.0
 """
 
-from logic.hostage import CaptivityContextException
-from logic.system import NullException
+from __future__ import annotations
+from typing import Any, Optional
 
 __all__ = [
-    # ======================# NULL_CAPTIVITY_CONTEXT EXCEPTION #======================#
-    "NullCaptivityContextException",
+    # ======================# NULL_HOSTAGE_CONTEXT_EXCEPTION #======================#
+    "NullHostageContextException",
 ]
 
+from logic.system import NullException
 
-# ======================# NULL_CAPTIVITY_CONTEXT EXCEPTION #======================#
-class NullCaptivityContextException(CaptivityContextException, NullException):
+# ======================# NULL_HOSTAGE_CONTEXT_EXCEPTION #======================#
+class NullHostageContextException(NullException):
     """
-    # ROLE: Error Tracing, Debugging
+    # ROLE: Exception Chain Layer 2, Exception Messaging
+    # TASK: Capture Error Variable State
 
     # RESPONSIBILITIES:
-    1.  Indicate that a candidate failed its validation as a CaptivityContext because it was null.
+    1.  Produce the:
+            *   variable,
+            *   it's value,
+            *   event which fired the variable into its error state.
+        which occurred in the HostageContextValidator method identified in layer-0 of the exception chain.
+
+    2.  A failing ValidationResult was returned because the candidate was null.
 
     # PARENT:
-        *   CaptivityContextException
         *   NullException
 
     # PROVIDES:
@@ -35,7 +42,44 @@ class NullCaptivityContextException(CaptivityContextException, NullException):
     None
 
     # INHERITED ATTRIBUTES:
-    None
+        *   See NullException class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        *   msg (str)
+        *   err_code (str)
+        *   ex (Optional[Exception])
+        *   var (Optional[str])
+        *   val (Optional[Any])
+
+    # LOCAL METHODS:
+   None
+
+    # INHERITED METHODS:
+        *   See NullException class for inherited methods.
     """
-    ERR_CODE = "NULL_CAPTIVITY_CONTEXT_EXCEPTION"
-    MSG = "CaptivityContext validation failed: The candidate was null."
+    VAR = Optional[str]
+    VAL = Optional[Any]
+    MSG = "HostageContext cannot be null."
+    ERR_CODE = "NULL_HOSTAGE_CONTEXT_EXCEPTION"
+    
+    def __init__(
+            self,
+            msg: Optional[str] = None,
+            var: Optional[str] = None,
+            val: Optional[Any] = None,
+            ex: Optional[Exception] = None,
+            err_code: Optional[str] = None,
+    ):
+        """
+        Args:
+            msg: str
+            var: Optional[str]
+            val: Optional[Any]
+            ex: Optional[Exception]
+            err_code: Optional[str]
+        """
+        var = var or self.VAR
+        val = val or self.VAL
+        msg = msg or self.MSG
+        err_code = err_code or self.ERR_CODE
+        super().__init__(ex=ex, msg=msg, err_code=err_code, var=var, val=val, )

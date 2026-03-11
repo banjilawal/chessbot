@@ -6,7 +6,7 @@ from logic.hostage import (
     ArenaCaptivityContextFlagsException, NullCaptivityContextException, ZeroCaptivityContextFlagsException,
 )
 from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
-from logic.token import CombatantToken, TokenService
+from logic.hostage import CombatantHostage, HostageService
 
 
 class CaptivityContextValidator(Validator[CaptivityContext]):
@@ -36,7 +36,7 @@ class CaptivityContextValidator(Validator[CaptivityContext]):
     def validate(
             cls,
             candidate: Any,
-            token_service: TokenService = TokenService(),
+            hostage_service: HostageService = HostageService(),
             square_service: SquareService = SquareService(),
             identity_service: IdentityService = IdentityService(),
     ) -> ValidationResult[CaptivityContext]:
@@ -123,7 +123,7 @@ class CaptivityContextValidator(Validator[CaptivityContext]):
         
         # Certification for the search-by-victor target.
         if context.victor is not None:
-            validation = token_service.validator.validate(context.victor)
+            validation = hostage_service.validator.validate(context.victor)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
@@ -137,7 +137,7 @@ class CaptivityContextValidator(Validator[CaptivityContext]):
         
         # Certification for the search-by-prisoner target.
         if context.prisoner is not None:
-            validation = token_service.validator.verify_token_is_combatant(candidate=context.prisoner)
+            validation = hostage_service.validator.verify_hostage_is_combatant(candidate=context.prisoner)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(

@@ -1,27 +1,27 @@
-# src/logic/arena/validator/exception/wrapper.py
+# src/logic/arena/validator/exception/exception.py
 
 """
-Module: logic.arena.validator.exception.wrapper
+Module: logic.arena.validator.exception.exception
 Author: Banji Lawal
-Created: 2025-09-08
-Version: 1.0.0
+Created: 2025-10-03
+version: 1.0.0
 """
 
 from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# ARENA_VALIDATION_FAILURE #======================#
-    "ArenaValidationException",
+    # ======================# ARENA_CONTEXT_VALIDATION_FAILURE #======================#
+    "ArenaContextValidationException",
 ]
 
 from logic.system import ValidationException
 
-# ======================# ARENA_VALIDATION_FAILURE #======================#
-class ArenaValidationException(ValidationException):
+# ======================# ARENA_CONTEXT_VALIDATION_FAILURE #======================#
+class ArenaContextValidationException(ValidationException):
     """
-    # ROLE: Exception Chain Layer 1
-    # TASK: Worker method identifier, Exception messaging
+    # ROLE: Exception Chain Layer 1, Exception Messaging
+    # TASK: Worker Method Identifier
 
     # RESPONSIBILITIES:
     1.  Identify the ArenaValidator method where the process failed.
@@ -33,8 +33,7 @@ class ArenaValidationException(ValidationException):
     None
 
     # LOCAL ATTRIBUTES:
-        *   op (Optional[str])
-        *   rslt_type (Optional[str])
+    None
 
     # INHERITED ATTRIBUTES:
         *   See ValidationException class for inherited attributes.
@@ -48,19 +47,16 @@ class ArenaValidationException(ValidationException):
         *   rslt_type (Optional[str])
 
     # LOCAL METHODS:
-   None
+    None
 
     # INHERITED METHODS:
         *   See ValidationException class for inherited methods.
     """
-    ERR_CODE = "ARENA_VALIDATION_FAILURE"
-    MSG = "Failure in ArenaValidator method."
     MTHD = None
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
-    
-    _op = Optional[str]
-    _rslt_type = Optional[str]
+    ERR_CODE = "ARENA_CONTEXT_VALIDATION_FAILURE"
+    MSG = "Failure in ArenaValidator method."
     
     def __init__(
             self,
@@ -71,6 +67,15 @@ class ArenaValidationException(ValidationException):
             op: Optional[str] = None,
             rslt_type: Optional[str] = None,
     ):
+        """
+        Args:
+            op: Optional[str]
+            msg: Optional[str]
+            mthd: Optional[str]
+            ex: Optional[Exception]
+            err_code: Optional[str]
+            rslt_type: Optional[str]
+        """
         op = op or self.OP
         msg = msg or self.MSG
         mthd = mthd or self.MTHD

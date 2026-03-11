@@ -7,10 +7,12 @@ Created: 2025-11-24
 version: 1.0.0
 """
 
-from typing import Dict, List
+from typing import Dict, List, Optional
 
-from logic.square import Square
-from logic.system import Database
+from logic.square import Square, SquareContextService, SquareService, SquareStackService
+from logic.system import Database, IdFactory, LoggingLevelRouter, UpdateResult
+from logic.system.database.database import T
+from logic.token import Token, TokenService
 
 
 class SquareDatabase(Database[Square]):
@@ -54,12 +56,11 @@ class SquareDatabase(Database[Square]):
     _token_map: Dict[Token, Square]
     _stack_service: SquareStackService
 
-    
     def __init__(
             self,
-            name: str = SERVICE_NAME,
+            stack_service: SquareStackService,
             id: int = IdFactory.next_id(class_name="SquareDatabase"),
-            stack_service: SquareStackService = SquareStackService(capacity=NUMBER_OF_ROWS * NUMBER_OF_COLUMNS),
+            name: str = SERVICE_NAME,
     ):
         """
         Args:
@@ -99,8 +100,17 @@ class SquareDatabase(Database[Square]):
     def token_map(self) -> dict[Token, Square]:
         return self._token_map
     
+    @property
+    def current_item(self) -> Optional[Square]:
+        return self._stack_service.current_item
+    
     @LoggingLevelRouter.monitor
-    def add_occupant_to_square(self,token: Token, square: Square,) -> UpdateResult[Square]:
+    def add_occupant_to_square(
+            self,
+            token: Token,
+            square: Square,
+            token_service:TokenService = TokenService(),
+        ) -> UpdateResult[Square]:
         """
         # ACTION:
             1.  Handoff validation and occupation responsibility to stack_service.util.occupation_service.
@@ -119,9 +129,10 @@ class SquareDatabase(Database[Square]):
         method = "SquareDatabase.add_occupant_to_square"
         
         # --- Handoff the responsibility for the occupation to stack_service. ---#
-        occupation_update_result = self._stack_service.util.occupation_service.occupy_stack_square(
+        occupation_update_result = self._stack_service.handler.token.occupy_stack_square(
+            token=token,
             square=square,
-            token=token
+            token_service=token_service,
         )
         # Handle the case that, the occupation was aborted.
         if occupation_update_result.is_failure:

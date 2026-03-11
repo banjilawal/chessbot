@@ -60,8 +60,8 @@ class SquareStackRosterHandler:
     def deploy_roster_on_stack(
             cls,
             team: Team,
+            team_service: TeamService,
             square_stack: SquareStackService,
-            team_service: TeamService = TeamService()
     ) -> UpdateResult[Team]:
         """
         # ACTION:
@@ -212,7 +212,7 @@ class SquareStackRosterHandler:
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _get_forming_token( cls, team: Team, square: Square,) -> UpdateResult[Token]:
+    def _get_forming_token(cls, team: Team, square: Square,) -> UpdateResult[Token]:
         method = "SquareStackRosterHandler._search_for_opening_square"
         
         pre_deployment_team = deepcopy(team)
@@ -257,9 +257,9 @@ class SquareStackRosterHandler:
     @LoggingLevelRouter.monitor
     def _transfer_token_to_opening_square(
             cls,
+            team: Team,
             token: Token,
             opening_square: Square,
-            team: Team,
             square_stack: SquareStackService,
     ) -> UpdateResult[Square]:
         method = "SquareStackRosterHandler._transfer_token_to_opening_square"

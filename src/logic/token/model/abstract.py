@@ -159,6 +159,20 @@ class Token(ABC):
         )
     
     @property
+    def is_deployed(self) -> bool:
+        return (
+            self.positions.size == 1 and
+            self._token_board_state != TokenBoardState.DEPLOYED_ON_BOARD
+        )
+    
+    @property
+    def is_developed(self) -> bool:
+        return (
+                self.positions.size > 1 and
+                self._token_board_state != TokenBoardState.DEPLOYED_ON_BOARD
+        )
+    
+    @property
     @abstractmethod
     def is_active(self) -> bool:
         pass

@@ -8,13 +8,11 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import Dict, cast
+from typing import cast
 
-from logic.square import (
-    Square, SquareBuilder, SquareCollisionDetector, SquareServiceException, SquareValidator, TokenVisitHandler
-)
-from logic.system import DeletionResult, IntegrityService, IdFactory, LoggingLevelRouter, UpdateResult
 from logic.token import Token
+from logic.square import Square, SquareBuilder, SquareServiceException, SquareValidator, TokenVisitHandler
+from logic.system import DeletionResult, IntegrityService, IdFactory, LoggingLevelRouter, UpdateResult
 
 
 class SquareService(IntegrityService[Square]):
@@ -59,7 +57,6 @@ class SquareService(IntegrityService[Square]):
      """
     SERVICE_NAME = "SquareService"
     _token_visit_handler: TokenVisitHandler
-    _collision_detector: SquareCollisionDetector
     
     def __init__(
             self,
@@ -68,7 +65,6 @@ class SquareService(IntegrityService[Square]):
             validator: SquareValidator = SquareValidator(),
             id: int = IdFactory.next_id(class_name="SquareService"),
             token_visit_handler: TokenVisitHandler = TokenVisitHandler(),
-            collision_detector: SquareCollisionDetector = SquareCollisionDetector(),
     ):
         """
         Args:
@@ -77,12 +73,9 @@ class SquareService(IntegrityService[Square]):
             builder: Builder
             validator: Validator
             token_visit_handler: TokenVisitHandler
-            collision_detector: SquareCollisionDetector
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
-        self._collision_detector = collision_detector
         self._token_visit_handler = token_visit_handler
-        self._commands = {"begin_visit": (Square, Token), "end_visit": (Square,)}
     
     @property
     def builder(self) -> SquareBuilder:
@@ -91,10 +84,6 @@ class SquareService(IntegrityService[Square]):
     @property
     def validator(self) -> SquareValidator:
         return cast(SquareValidator, self.entity_validator)
-    
-    @property
-    def collision_detector(self) -> SquareCollisionDetector:
-        return self._collision_detector
     
     @property
     def token_visit_handler(self) -> TokenVisitHandler:

@@ -3,7 +3,7 @@
 """
 Module: logic.edge.context.validator.exception.debug.__init__
 Author: Banji Lawal
-Created: 2026-02-18
+Created: 2025-09-16
 version: 1.0.0
 """
 
@@ -15,5 +15,5 @@ None
 # Modules
 from .null import NullEdgeContextException
 from .zero import ZeroEdgeContextFlagsException
-from .excess import ArenaEdgeContextFlagsException
 from .route import EdgeContextValidationRouteException
+from .excess import ExcessEdgeContextFlagsException

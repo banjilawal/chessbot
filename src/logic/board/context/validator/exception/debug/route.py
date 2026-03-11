@@ -6,36 +6,67 @@ Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
+from __future__ import annotations
+from typing import Any, Optional
+
 
 __all__ = [
-    # ======================# NO_PERSONA_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
+    # ======================# BOARD_CONTEXT_VALIDATION_ROUTE_EXCEPTION #======================#
     "BoardContextValidationRouteException",
 ]
 
-from logic.board import BoardContextException
 from logic.system import ExecutionRouteException
 
-
-# ======================# NO_BOARD_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
-class BoardContextValidationRouteException(BoardContextException, ExecutionRouteException):
+# ======================# BOARD_CONTEXT_VALIDATION_ROUTE_EXCEPTION #======================#
+class BoardContextValidationRouteException(ExecutionRouteException):
     """
-    # ROLE: Fallback Result, Debugging
+    # ROLE: Exception Chain Layer 2, Exception Messaging
+    # TASK: Capture Error Variable State
 
     # RESPONSIBILITIES:
-    1.  Indicate that the BoardContext validation failed because there was no build route for the BoardContext key.
+    1.  A failure ValidationResult was sent because there was no validation route for the BoardContext
+        attribute.
 
     # PARENT:
-        *   BoardContextException
-        *   ExecutionRouteException
+        *   ExecutionRoute
 
-    # PROVIDES
+    # PROVIDES:
     None
 
     # LOCAL ATTRIBUTES:
     None
 
     # INHERITED ATTRIBUTES:
-    None
+        *   See ExecutionRoute class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        *   msg (str)
+        *   err_code (str)
+        *   ex (Optional[Exception])
+        *   var (Optional[str])
+        *   val Optional[Any])
+
+    # LOCAL METHODS:
+   None
+
+    # INHERITED METHODS:
+        *   See ExecutionRoute class for inherited methods.
     """
-    ERR_CODE = "NO_BOARD_CONTEXT_VALIDATION_ROUTE_EXCEPTION"
-    MSG = "BoardContext validation failed: No validation route was provided for the Board attribute."
+    VAR = Optional[str]
+    VAL = Optional[Any]
+    MSG = "No validation route for BoardContext attribute"
+    ERR_CODE = "BOARD_CONTEXT_VALIDATION_ROUTE_EXCEPTION"
+    
+    def __init__(
+            self,
+            err_code: Optional[str] = None,
+            msg: Optional[str] = None,
+            ex: Optional[Exception] = None,
+            var: Optional[str] = None,
+            val: Optional[Any] = None,
+    ):
+        err_code = err_code or self.ERR_CODE
+        msg = msg or self.MSG
+        var = var or self.VAR
+        val = val or self.VAL
+        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)

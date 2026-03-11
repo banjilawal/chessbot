@@ -1,17 +1,18 @@
-# src/logic/game/validator/exception/__init__.py
+# src/logic/game/context/validator/exception/__init__.py
 
 """
-Module: logic.game.validator.exception.__init__
+Module: logic.game.context.validator.exception.__init__
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-10-03
 version: 1.0.0
 """
 
-#=========== GAME.CONTEXT.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
+
+# =========== GAME.CONTEXT.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-from .flag import *
+from .debug import *
 
 # Modules
-from .base import InvalidGameContextException
-from .null import NullGameContextException
+from .wrapper import GameContextValidationException
+

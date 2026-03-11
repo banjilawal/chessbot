@@ -3,7 +3,7 @@
 """
 Module: logic.coord.context.validator.exception.debug.__init__
 Author: Banji Lawal
-Created: 2025-11-16
+Created: 2025-09-16
 version: 1.0.0
 """
 
@@ -15,5 +15,5 @@ None
 # Modules
 from .null import NullCoordContextException
 from .zero import ZeroCoordContextFlagsException
-from .excess import ArenaCoordContextFlagsException
 from .route import CoordContextValidationRouteException
+from .excess import ExcessCoordContextFlagsException

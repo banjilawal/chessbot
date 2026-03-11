@@ -31,7 +31,7 @@ class Rook(Rank):
     None
 
     # LOCAL ATTRIBUTES:
-        * perpendicular_span (PerpendicularSpan)
+        * perpendicular_span (PerpendicularSpanComputer)
 
     INHERITED ATTRIBUTES:
         *   See Rank class for inherited attributes

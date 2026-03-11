@@ -69,7 +69,7 @@ class DiagonalSpan:
             *   origin (Coord)
             *   points (List[Coord])
             *   coord_service (CoordService)
-            *   diagonal_ray (DiagonalCoordRayComputer)
+            *   diagonal_ray (DiagonalRayComputer)
         # RETURNS:
             *   ComputationResult[List[Coord]]:
                     - On failure: An exception.
@@ -77,7 +77,7 @@ class DiagonalSpan:
         Raises:
             *   DiagonalSpanComputationException
         """
-        method = "DiagonalSpan.compute"
+        method = "DiagonalSpanComputer.compute"
         
         # Handle the case that, the coord is not certified safe.
         coord_validation = coord_service.validator.validate(candidate=origin)

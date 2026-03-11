@@ -84,10 +84,10 @@ class AnchorException(ChessException):
             cls_name: Optional[str] = None,
             cls_mthd: Optional[str] = None
     ):
-        err_code = err_code or self.ERR_CODE
         msg = msg or self.MSG
         cls_name = cls_name or self.CLS_NAME
         cls_mthd = cls_mthd or self.CLS_MTHD
+        err_code = err_code or self.ERR_CODE
 
         super().__init__(msg=msg, err_code=err_code, ex=ex)
         _cls_name = cls_name

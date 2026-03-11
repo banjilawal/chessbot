@@ -34,8 +34,7 @@ class SquareValidationException(ValidationException):
     None
 
     # LOCAL ATTRIBUTES:
-        *   op (Optional[str])
-        *   rslt_type (Optional[str])
+    None
 
     # INHERITED ATTRIBUTES:
         *   See ValidationException class for inherited attributes.
@@ -54,14 +53,11 @@ class SquareValidationException(ValidationException):
     # INHERITED METHODS:
         *   See ValidationException class for inherited methods.
     """
-    ERR_CODE = "SQUARE_VALIDATION_FAILURE"
-    MSG = "Failure in SquareValidator method."
     MTHD = None
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
-    
-    _op = Optional[str]
-    _rslt_type = Optional[str]
+    ERR_CODE = "SQUARE_VALIDATION_FAILURE"
+    MSG = "Failure in SquareValidator method."
     
     def __init__(
             self,
@@ -72,6 +68,15 @@ class SquareValidationException(ValidationException):
             op: Optional[str] = None,
             rslt_type: Optional[str] = None,
     ):
+        """
+        Args:
+            op: Optional[str]
+            msg: Optional[str]
+            mthd: Optional[str]
+            ex: Optional[Exception]
+            err_code: Optional[str]
+            rslt_type: Optional[str]
+        """
         op = op or self.OP
         msg = msg or self.MSG
         mthd = mthd or self.MTHD

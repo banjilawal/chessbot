@@ -16,4 +16,4 @@ None
 from .null import NullTeamContextException
 from .zero import ZeroTeamContextFlagsException
 from .route import TeamContextValidationRouteException
-from .excess import ArenaTeamContextFlagsException
+from .excess import ExcessTeamContextFlagsException

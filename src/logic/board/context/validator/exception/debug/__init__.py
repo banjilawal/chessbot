@@ -3,7 +3,7 @@
 """
 Module: logic.board.context.validator.exception.debug.__init__
 Author: Banji Lawal
-Created: 2025-11-22
+Created: 2025-09-16
 version: 1.0.0
 """
 
@@ -15,5 +15,5 @@ None
 # Modules
 from .null import NullBoardContextException
 from .zero import ZeroBoardContextFlagsException
-from .excess import ArenaBoardContextFlagsException
 from .route import BoardContextValidationRouteException
+from .excess import ExcessBoardContextFlagsException

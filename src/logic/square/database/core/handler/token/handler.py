@@ -66,6 +66,7 @@ class SquareStackTokenHandler:
             token: Token,
             square: Square,
             square_stack: SquareStackService,
+            token_service: TokenService = TokenService(),
     ) -> UpdateResult[Square]:
         """
         # ACTION:
@@ -112,7 +113,8 @@ class SquareStackTokenHandler:
         pre_update_square = deepcopy(square)
         update_result = square_stack.integrity_service.token_visit_handler.start_visit(
             token=token,
-            square=square
+            square=square,
+            token_service=token_service,
         )
         # Handle the case that the square is not updated.
         if update_result.is_failure:
@@ -133,10 +135,10 @@ class SquareStackTokenHandler:
     @classmethod
     @LoggingLevelRouter.monitor
     def remove_occupant_from_stack(
-            self,
+            cls,
             occupant: Token,
+            token_service: TokenService,
             square_stack: SquareStackService,
-            token_service: TokenService = TokenService(),
     ) -> DeletionResult[Token]:
         """
         # ACTION:
@@ -167,7 +169,7 @@ class SquareStackTokenHandler:
             return DeletionResult.failure(
                 exception=SquareStackTokenHandlerException(
                     cls_mthd=method,
-                    cls_name=self.__name__,
+                    cls_name=cls.__name__,
                     msg=SquareStackTokenHandlerException.MSG,
                     err_code=SquareStackTokenHandlerException.ERR_CODE,
                     ex=token_validation.exception
@@ -181,14 +183,14 @@ class SquareStackTokenHandler:
             return DeletionResult.nothing_to_delete()
         
         # Process the case: Some squares are holding the token
-        return self._eviction_handler(occupations, square_stack.integrity_service.square_service)
+        return cls._eviction_handler(occupations, square_stack.integrity_service.square_service)
     
     @classmethod
     @LoggingLevelRouter.monitor
     def _eviction_handler(
             cls,
             occupied_squares: List[Square],
-            square_service: SquareService = SquareService()
+            square_service: SquareService = SquareService
     ) -> DeletionResult[Token]:
         """
         """

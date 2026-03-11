@@ -89,12 +89,20 @@ class SquareStackService(StackService[Square]):
             id: int = IdFactory.next_id(class_name="SquareStackService"),
             context_service: SquareContextService = SquareContextService(),
     ):
+        """
+        Args:
+            id: int
+            name: str
+            capacity: int
+            service: SquareService
+            context_service: SquareContextService
+        """
         method = "SquareService.__init__"
         super().__init__(id=id,name=name,)
         self._handler = handler
         self._service = service
-        self._context_service = context_service
         self._capacity = capacity
+        self._context_service = context_service
         self._stack = []
         
     @property
@@ -128,6 +136,10 @@ class SquareStackService(StackService[Square]):
     @property
     def context_service(self) -> SquareContextService:
         return self._context_service
+    
+    @property
+    def handler(self) -> SquareStackHandler:
+        return self._handler
     
     @LoggingLevelRouter.monitor
     def push(self, item: Square) -> InsertionResult[bool]:
@@ -206,14 +218,20 @@ class SquareStackService(StackService[Square]):
         # --- Send the success result to the caller. ---#
         return deletion_result
     
-    def start_square_visit(self, square: Square, token: Token) -> UpdateResult[Square]:
+    def start_square_visit(
+            self,
+            token: Token,
+            square: Square,
+            token_service: TokenService = TokenService(),
+) -> UpdateResult[Square]:
         method = "SquareStackService.start_square_visit"
         
         # --- Handoff the visit management responsibility to _handler ---#
         visitation_result = self._handler.token.occupy_stack_square(
             token=token,
             square=square,
-            square_stack=self
+            square_stack=self,
+            token_service=token_service,
         )
         # Handle the case that the visit is not accomplished
         if visitation_result.is_failure:
@@ -233,7 +251,7 @@ class SquareStackService(StackService[Square]):
     def end_square_visit(
             self,
             token: Token,
-            token_service: TokenService,
+            token_service: TokenService = TokenService(),
     ) -> DeletionResult[Token]:
         method = "SquareStackService.end_square_visit"
         
@@ -241,7 +259,7 @@ class SquareStackService(StackService[Square]):
         visitation_result = self._handler.token.remove_occupant_from_stack(
             occupant=token,
             square_stack=self,
-            token_service=token_service
+            token_service=token_service,
         )
         # Handle the case that the visit is not accomplished
         if visitation_result.is_failure:

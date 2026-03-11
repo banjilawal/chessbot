@@ -3,14 +3,16 @@
 """
 Module: logic.node.context.validator.exception.__init__
 Author: Banji Lawal
-Created: 2026-02-18
+Created: 2025-10-03
 version: 1.0.0
 """
 
-#=========== NODE.CONTEXT.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
+
+# =========== NODE.CONTEXT.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
 from .debug import *
 
 # Modules
 from .wrapper import NodeContextValidationException
+

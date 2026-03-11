@@ -65,7 +65,7 @@ class PerpendicularSpan:
         Raises:
             *   PerpendicularSpanComputationException
         """
-        method = "PerpendicularSpan.compute"
+        method = "PerpendicularSpanComputer.compute"
         
         # Handle the case that, the coord is not certified safe.
         coord_validation = coord_service.validator.validate(candidate=origin)

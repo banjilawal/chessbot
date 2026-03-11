@@ -68,14 +68,7 @@ class SquareStackAnalyzerException(AnchorException):
             cls_name: Optional[str] = None,
             cls_mthd: Optional[str] = None
     ):
-        """
-        Args:
-            msg: Optional[str]
-            err_code: Optional[str]
-            ex: Optional[Exception]
-            cls_name: Optional[str]
-            cls_mthd: Optional[str]
-        """
+        err_code = err_code or self.ERR_CODE
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
         cls_name = cls_name or self.CLS_NAME

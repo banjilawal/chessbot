@@ -12,13 +12,13 @@ from typing import Optional
 
 __all__ = [
     # ======================# SQUARE_VISIT_TERMINATION_FAILURE #======================#
-    "TerminateSquareVistException",
+    "TerminateSquareVisitException",
 ]
 
 from logic.system import DeletionException
 
 # ======================# SQUARE_VISIT_TERMINATION_FAILURE #======================#
-class TerminateSquareVistException(DeletionException):
+class TerminateSquareVisitException(DeletionException):
     """
     # ROLE: Exception Chain Layer 1, Exception Messaging
     # TASK: Worker Method Identifier

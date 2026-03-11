@@ -7,28 +7,26 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-
-from logic.system import ValidationException
+from __future__ import annotations
+from typing import Optional
 
 __all__ = [
     # ======================# TOKEN_CONTEXT_VALIDATION_FAILURE #======================#
     "TokenContextValidationException",
 ]
 
-from logic.token import TokenContextException
-
+from logic.system import ValidationException
 
 # ======================# TOKEN_CONTEXT_VALIDATION_FAILURE #======================#
-class TokenContextValidationException(TokenContextException, ValidationException):
+class TokenContextValidationException(ValidationException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Exception Chain Layer 1, Exception Messaging
+    # TASK: Worker Method Identifier
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a token_context validation operation failed. The exception chain
-        traces the ultimate source of failure.
+    1.  Identify the TokenValidator method where the process failed.
 
     # PARENT:
-        *   TokenContextException
         *   ValidationException
 
     # PROVIDES:
@@ -37,8 +35,58 @@ class TokenContextValidationException(TokenContextException, ValidationException
     # LOCAL ATTRIBUTES:
     None
 
-    INHERITED ATTRIBUTES:
+    # INHERITED ATTRIBUTES:
+        *   See ValidationException class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:)
+        *   err_code (str)
+        *   msg (str)
+        *   ex (Optional[Exception])
+        *   mthd (Optional[str])
+        *   op (Optional[str])
+        *   rslt_type (Optional[str])
+
+    # LOCAL METHODS:
     None
+
+    # INHERITED METHODS:
+        *   See ValidationException class for inherited methods.
     """
+    MTHD = None
+    OP = "Validation"
+    RSLT_TYPE = "ValidationResult"
     ERR_CODE = "TOKEN_CONTEXT_VALIDATION_FAILURE"
-    MSG = "TokenContext validation failed."
+    MSG = "Failure in TokenValidator method."
+    
+    def __init__(
+            self,
+            err_code: Optional[str] = None,
+            msg: Optional[str] = None,
+            ex: Optional[Exception] = None,
+            mthd: Optional[str] = None,
+            op: Optional[str] = None,
+            rslt_type: Optional[str] = None,
+    ):
+        """
+        Args:
+            op: Optional[str]
+            msg: Optional[str]
+            mthd: Optional[str]
+            ex: Optional[Exception]
+            err_code: Optional[str]
+            rslt_type: Optional[str]
+        """
+        op = op or self.OP
+        msg = msg or self.MSG
+        mthd = mthd or self.MTHD
+        err_code = err_code or self.ERR_CODE
+        rslt_type = rslt_type or self.RSLT_TYPE
+        
+        super().__init__(
+            ex=ex,
+            op=op,
+            msg=msg,
+            mthd=mthd,
+            err_code=err_code,
+            rslt_type=rslt_type,
+        )

@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Any, cast
 
-from logic.token import TokenService
+from logic.square import SquareService
 from logic.board import BoardService
 from logic.coord.service import CoordService
 from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
@@ -48,7 +48,7 @@ class SquareContextValidator(Validator[SquareContext]):
             candidate: Any,
             board_service: BoardService = BoardService(),
             coord_service: CoordService = CoordService(),
-            token_service: TokenService = TokenService(),
+            square_service: SquareService = SquareService(),
             identity_service: IdentityService = IdentityService(),
             square_validator: SquareValidator = SquareValidator(),
     ) -> ValidationResult[SquareContext]:
@@ -193,7 +193,7 @@ class SquareContextValidator(Validator[SquareContext]):
         
         # Certification for the search-by-occupant target.
         if context.occupant is not None:
-            validation = token_service.validator.validate(context.occupant)
+            validation = square_service.validator.validate(context.occupant)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(

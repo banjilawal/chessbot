@@ -16,6 +16,7 @@ from .color import *
 from .config import *
 from .collision import *
 from .collection import *
+from .computation import *
 from .database import *
 from .err import *
 from .event import *

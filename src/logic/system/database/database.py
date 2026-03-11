@@ -13,8 +13,8 @@ from abc import abstractmethod
 from typing import Generic, List, Optional, TypeVar
 
 from logic.system import (
-    Context, ContextService, DeletionResult, InsertionResult, IntegrityService, LoggingLevelRouter,
-    SearchResult, Service
+    Context, ContextService, DeletionResult, InsertionResult, IntegrityService, LoggingLevelRouter, SearchResult,
+    Service
 )
 
 T = TypeVar("T")
@@ -44,7 +44,6 @@ class Database(Service, Generic[T]):
     """
     def __init__(self, id: int, name: str):
         super().__init__(id=id, name=name)
-    
     
     @property
     @abstractmethod

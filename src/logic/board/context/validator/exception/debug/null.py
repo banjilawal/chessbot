@@ -1,32 +1,39 @@
-# src/logic/board/validator/exception/null.py
+# src/logic/board/context/validator/exception/debug/null.py
 
 """
-Module: logic.board.validator.exception.null
+Module: logic.board.context.validator.exception.debug.null
 Author: Banji Lawal
-Created: 2025-08-12
+Created: 2025-09-16
 version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import Optional
+from typing import Any, Optional
 
 __all__ = [
-    # ======================# NULL_BOARD EXCEPTION #======================#
-    "NullBoardException",
+    # ======================# NULL_BOARD_CONTEXT_EXCEPTION #======================#
+    "NullBoardContextException",
 ]
 
 from logic.system import NullException
 
-# ======================# NULL_BOARD EXCEPTION #======================#
-class NullBoardException(NullException):
+# ======================# NULL_BOARD_CONTEXT_EXCEPTION #======================#
+class NullBoardContextException(NullException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    # ROLE: Exception Chain Layer 2, Exception Messaging
+    # TASK: Capture Error Variable State
 
     # RESPONSIBILITIES:
-    A failing ValidationResult was returned because the candidate was null.
+    1.  Produce the:
+            *   variable,
+            *   it's value,
+            *   event which fired the variable into its error state.
+        which occurred in the BoardContextValidator method identified in layer-0 of the exception chain.
+
+    2.  A failing ValidationResult was returned because the candidate was null.
 
     # PARENT:
-        *   Debug
+        *   NullException
 
     # PROVIDES:
     None
@@ -35,14 +42,14 @@ class NullBoardException(NullException):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See Null class for inherited attributes.
+        *   See NullException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
         *   var (Optional[str])
-        *   val Optional[Any])
+        *   val (Optional[Any])
 
     # LOCAL METHODS:
    None
@@ -50,38 +57,29 @@ class NullBoardException(NullException):
     # INHERITED METHODS:
         *   See NullException class for inherited methods.
     """
-    ERR_CODE = "NULL_BOARD_EXCEPTION"
-    MSG = "Board validation failed: The candidate cannot be null."
-    VAR: None
+    VAR = Optional[str]
     VAL = Optional[Any]
-    
-    _var: Optional[str]
-    _val: Optional[Any]
+    MSG = "BoardContext cannot be null."
+    ERR_CODE = "NULL_BOARD_CONTEXT_EXCEPTION"
     
     def __init__(
             self,
+            msg: Optional[str] = None,
             var: Optional[str] = None,
             val: Optional[Any] = None,
-            err_code: Optional[str] = None,
-            msg: Optional[str] = None,
             ex: Optional[Exception] = None,
+            err_code: Optional[str] = None,
     ):
+        """
+        Args:
+            msg: str
+            var: Optional[str]
+            val: Optional[Any]
+            ex: Optional[Exception]
+            err_code: Optional[str]
+        """
         var = var or self.VAR
         val = val or self.VAL
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        
-        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)
-        self._var = var
-        self._val = val
-    
-    @property
-    def var(self) -> Optional[str]:
-        return self._var
-    
-    @property
-    def val(self) -> Optional[Any]:
-        return self._val
-    
-    def __str__(self):
-        return f"{super().__str__()}, var:{self._var}, val:{self._val}"
+        super().__init__(ex=ex, msg=msg, err_code=err_code, var=var, val=val, )

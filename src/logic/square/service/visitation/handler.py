@@ -8,19 +8,18 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-
 from copy import deepcopy
 
 from logic.square import (
-    NoVisitForTerminationException, Square, SquareState, SquareValidator, TerminateSquareVistException,
-    SquareVisitorDisabledException, StartSquareVisitException, TokenVisitHandlerException,
+    NoVisitForTerminationException, Square, SquareService, SquareState, SquareVisitorDisabledException,
+    StartSquareVisitException, TerminateSquareVisitException, TokenVisitHandlerException,
     VisitingOccupiedSquareException, VisitingWrongOpeningSquareException, VisitorFromWrongBoardException
 )
 from logic.system import DeletionResult, LoggingLevelRouter, UpdateResult, ValidationResult
 from logic.token import Token, TokenBoardState, TokenService
 
 
-class TokenVisitHandler():
+class TokenVisitHandler:
     """
     # ROLE: Consistency, Integrity Maintenance, Lifecycle Management, Util
 
@@ -52,23 +51,16 @@ class TokenVisitHandler():
     # INHERITED METHODS:
     None
     """
-    _token_service: TokenService
-    _square_validator: SquareValidator
     
-    def __init__(
-            self,
-            token_service: TokenService = TokenService(),
-            square_validator: SquareValidator = SquareValidator(),
-    ):
-        """
-        Args:
-            token_service: TokenService
-        """
-        self._token_service = token_service
-        self._square_validator = square_validator
-    
+    @classmethod
     @LoggingLevelRouter.monitor
-    def start_visit( self, token: Token, square: Square) -> UpdateResult[Square]:
+    def start_visit(
+            cls,
+            token: Token,
+            square: Square,
+            token_service: TokenService = TokenService(),
+            square_service: SquareService = SquareService(),
+    ) -> UpdateResult[Square]:
         """
         # ACTION:
             1.  If the square is either unsafe put the square and exception chain  in the UpdateResult  then
@@ -87,6 +79,8 @@ class TokenVisitHandler():
         Args:
             token: Token
             square: Square
+            token_service: TokenService
+            square_service: SquareService
             
        Returns:
             UpdateResult[Square]
@@ -101,16 +95,23 @@ class TokenVisitHandler():
         method = "SquareService.add_occupant"
         
         # Handle the case that, the item is not certified safe.
-        square_validation = self._square_validator.validate(candidate=square)
+        square_validation = square_service.validator.validate(candidate=square)
         if square_validation.is_failure:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
                 original=square,
                 exception=TokenVisitHandlerException(
-                    msg=f"{method}: {TokenVisitHandlerException.ERR_CODE}",
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=TokenVisitHandlerException.MSG,
+                    err_code=TokenVisitHandlerException.ERR_CODE,
                     ex=StartSquareVisitException(
-                        msg=f"{method}: {StartSquareVisitException.ERR_CODE}",
-                        ex=square_validation.exception
+                        mthd=method,
+                        op=StartSquareVisitException.OP,
+                        msg=StartSquareVisitException.MSG,
+                        err_code=StartSquareVisitException.ERR_CODE,
+                        rslt_type=StartSquareVisitException.RSLT_TYPE,
+                        ex=square_validation.exception,
                     )
                 )
             )
@@ -121,42 +122,72 @@ class TokenVisitHandler():
         if square.is_occupied:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
-                original=pre_update_square,
+                original=square,
                 exception=TokenVisitHandlerException(
-                    msg=f"{method}: {TokenVisitHandlerException.ERR_CODE}",
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=TokenVisitHandlerException.MSG,
+                    err_code=TokenVisitHandlerException.ERR_CODE,
                     ex=StartSquareVisitException(
-                        msg=f"{method}: {StartSquareVisitException.ERR_CODE}",
+                        mthd=method,
+                        op=StartSquareVisitException.OP,
+                        msg=StartSquareVisitException.MSG,
+                        err_code=StartSquareVisitException.ERR_CODE,
+                        rslt_type=StartSquareVisitException.RSLT_TYPE,
                         ex=VisitingOccupiedSquareException(
-                            f"{method}: {VisitingOccupiedSquareException.MSG}"
-                        )
+                            val=square,
+                            var=f"{square.name}",
+                            err_code=VisitingOccupiedSquareException.ERR_CODE,
+                            msg=f"{square.name} is already occupied by {square.occupant.designation}."
+                        ),
                     )
                 )
             )
         # Handle the case that, the token is not certified safe.
-        token_validation = self._token_service.validator.validate(candidate=token)
+        token_validation = token_service.validator.validate(candidate=token)
         if token_validation.is_failure:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
-                original=pre_update_square,
+                original=square,
                 exception=TokenVisitHandlerException(
-                    msg=f"{method}: {TokenVisitHandlerException.ERR_CODE}",
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=TokenVisitHandlerException.MSG,
+                    err_code=TokenVisitHandlerException.ERR_CODE,
                     ex=StartSquareVisitException(
-                        msg=f"{method}: {StartSquareVisitException.ERR_CODE}",
-                        ex=token_validation.exception
+                        mthd=method,
+                        op=StartSquareVisitException.OP,
+                        msg=StartSquareVisitException.MSG,
+                        err_code=StartSquareVisitException.ERR_CODE,
+                        rslt_type=StartSquareVisitException.RSLT_TYPE,
+                        ex=token_validation.exception,
                     )
                 )
             )
         # Handle the case that, the token belongs to a different board
         if token.team.board != square.board:
+            square_board_id = square.board.id
+            token_board_id = token.team.board.id
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
-                original=pre_update_square,
+                original=square,
                 exception=TokenVisitHandlerException(
-                    msg=f"{method}: {TokenVisitHandlerException.ERR_CODE}",
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=TokenVisitHandlerException.MSG,
+                    err_code=TokenVisitHandlerException.ERR_CODE,
                     ex=StartSquareVisitException(
-                        msg=f"{method}: {StartSquareVisitException.ERR_CODE}",
+                        mthd=method,
+                        op=StartSquareVisitException.OP,
+                        msg=StartSquareVisitException.MSG,
+                        err_code=StartSquareVisitException.ERR_CODE,
+                        rslt_type=StartSquareVisitException.RSLT_TYPE,
                         ex=VisitorFromWrongBoardException(
-                            f"{method}: {VisitorFromWrongBoardException.MSG}"
+                            val=token,
+                            var=f"{token.designation}",
+                            err_code=VisitorFromWrongBoardException.ERR_CODE,
+                            msg=f"{token.designation} belongs to board {token_board_id}. "
+                                f"Square {square.name} belongs to board {square_board_id}."
                         )
                     )
                 )
@@ -167,18 +198,28 @@ class TokenVisitHandler():
             return UpdateResult.update_failure(
                 original=pre_update_square,
                 exception=TokenVisitHandlerException(
-                    msg=f"ServiceId: {self.id}, {method}: {TokenVisitHandlerException.ERR_CODE}",
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=TokenVisitHandlerException.MSG,
+                    err_code=TokenVisitHandlerException.ERR_CODE,
                     ex=StartSquareVisitException(
-                        msg=f"{method}: {StartSquareVisitException.ERR_CODE}",
+                        mthd=method,
+                        op=StartSquareVisitException.OP,
+                        msg=StartSquareVisitException.MSG,
+                        err_code=StartSquareVisitException.ERR_CODE,
+                        rslt_type=StartSquareVisitException.RSLT_TYPE,
                         ex=SquareVisitorDisabledException(
-                            f"{method}: {SquareVisitorDisabledException.MSG}"
+                            val=token,
+                            var=f"{token.designation}",
+                            msg=SquareVisitorDisabledException.MSG,
+                            err_code=SquareVisitorDisabledException.ERR_CODE,
                         )
                     )
                 )
             )
         # Handle the case that, an unformed token is trying to start from the wrong square.
         if token.is_not_deployed:
-            validate_token_opening_square_result = self._verify_token_opens_from_square(
+            validate_token_opening_square_result = cls._verify_token_opens_from_square(
                 square=square,
                 token=token
             )
@@ -186,9 +227,16 @@ class TokenVisitHandler():
             return UpdateResult.update_failure(
                 original=pre_update_square,
                 exception=TokenVisitHandlerException(
-                    msg=f"{method}: {TokenVisitHandlerException.ERR_CODE}",
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=TokenVisitHandlerException.MSG,
+                    err_code=TokenVisitHandlerException.ERR_CODE,
                     ex=StartSquareVisitException(
-                        msg=f"{method}: {StartSquareVisitException.ERR_CODE}",
+                        mthd=method,
+                        op=StartSquareVisitException.OP,
+                        msg=StartSquareVisitException.MSG,
+                        err_code=StartSquareVisitException.ERR_CODE,
+                        rslt_type=StartSquareVisitException.RSLT_TYPE,
                         ex=validate_token_opening_square_result.exception
                     )
                 )
@@ -207,8 +255,13 @@ class TokenVisitHandler():
         # --- Send the update success result to the client. ---#
         return UpdateResult.update_success(original=pre_update_square, updated=square)
     
+    @classmethod
     @LoggingLevelRouter.monitor
-    def terminate_visit(self, square: Square,) -> DeletionResult[Token]:
+    def terminate_visit(
+            cls,
+            square: Square,
+            square_service: SquareService = SquareService(),
+    ) -> DeletionResult[Token]:
         """
         # ACTION:
             1.  If the square fails its safety checks send and exception chain in the DeletionResult.
@@ -218,25 +271,31 @@ class TokenVisitHandler():
 
         Args:
             square: Square
+            square_service: SquareService
         Returns:
             DeletionResult[Token]
         Raises:
             TokenVisitHandlerException
-            TerminateSquareVistException
+            TerminateSquareVisitException
             NoVisitForTerminationException
         """
         method = "TokenVistHandler.terminate_visit"
         
         # Handle the case that, the square is not certified as safe.
-        validation = self._square_validator.validate(candidate=square)
+        validation = square_service.validator.validate(candidate=square)
         if validation.is_failure:
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 TokenVisitHandlerException(
-                    msg=f"{method}: {TokenVisitHandlerException.ERR_CODE}",
-                    ex=TerminateSquareVistException(
-                        msg=f"{method}: {TerminateSquareVistException.ERR_CODE}",
-                        ex=validation.exception
+                    msg=TokenVisitHandlerException.MSG,
+                    err_code=TokenVisitHandlerException.ERR_CODE,
+                    ex=TerminateSquareVisitException(
+                        mthd=method,
+                        op=TerminateSquareVisitException.OP,
+                        msg=TerminateSquareVisitException.MSG,
+                        err_code=TerminateSquareVisitException.ERR_CODE,
+                        rslt_type=TerminateSquareVisitException.RSLT_TYPE,
+                        ex=validation.exception,
                     )
                 )
             )
@@ -245,11 +304,19 @@ class TokenVisitHandler():
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 TokenVisitHandlerException(
-                    msg=f"{method}: {TokenVisitHandlerException.ERR_CODE}",
-                    ex=TerminateSquareVistException(
-                        msg=f"{method}: {TerminateSquareVistException.ERR_CODE}",
+                    msg=TokenVisitHandlerException.MSG,
+                    err_code=TokenVisitHandlerException.ERR_CODE,
+                    ex=TerminateSquareVisitException(
+                        mthd=method,
+                        op=TerminateSquareVisitException.OP,
+                        msg=TerminateSquareVisitException.MSG,
+                        err_code=TerminateSquareVisitException.ERR_CODE,
+                        rslt_type=TerminateSquareVisitException.RSLT_TYPE,
                         ex=NoVisitForTerminationException(
-                            f"{method}: {NoVisitForTerminationException.MSG}"
+                            val=square,
+                            var=f"{square.name}",
+                            msg=NoVisitForTerminationException.MSG,
+                            err_code=NoVisitForTerminationException.ERR_CODE,
                         )
                     )
                 )
@@ -265,9 +332,14 @@ class TokenVisitHandler():
         
         # --- Send the success result to the client. ---#
         DeletionResult.success(payload=token)
-    
+        
+    @classmethod
     @LoggingLevelRouter.monitor
-    def _verify_token_opens_from_square(self, target: Square, visitor: Token) -> ValidationResult[Square]:
+    def _verify_token_opens_from_square(
+            cls,
+            target: Square,
+            visitor: Token
+    ) -> ValidationResult[Square]:
         """
         # ACTION:
             1.  If the token's opening name differs from the target's return a
@@ -287,8 +359,23 @@ class TokenVisitHandler():
         if target.name.upper() != visitor.opening_square_name.upper():
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                VisitingWrongOpeningSquareException(
-                    f"{method}: {VisitingWrongOpeningSquareException.MSG}"
+                TokenVisitHandlerException(
+                    msg=TokenVisitHandlerException.MSG,
+                    err_code=TokenVisitHandlerException.ERR_CODE,
+                    ex=StartSquareVisitException(
+                        mthd=method,
+                        op=StartSquareVisitException.OP,
+                        msg=StartSquareVisitException.MSG,
+                        err_code=StartSquareVisitException.ERR_CODE,
+                        rslt_type=StartSquareVisitException.RSLT_TYPE,
+                        ex=VisitingWrongOpeningSquareException(
+                            val=visitor,
+                            var=f"{visitor.designation}",
+                            err_code=VisitingWrongOpeningSquareException.ERR_CODE,
+                            msg=f"{target.name} does not match "
+                                f"{visitor.designation}.opening_square={visitor.opening_square_name}:"
+                        )
+                    )
                 )
             )
         # --- Send the success result to the caller. ---#

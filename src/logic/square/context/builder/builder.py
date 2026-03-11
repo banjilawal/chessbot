@@ -90,28 +90,28 @@ class SquareContextBuilder(Builder[SquareContext]):
                     *   The enabled attribute is not certified as safe by its service.
                 are is not certified as safe by their services.
             3.  Build the appropriate context, sed the build success result.
-        # PARAMETERS:
-            Only one these must be provided:
-                *   id Optional[(int)]
-                *   name Optional[(str)]
-                *   cord Optional[(Coord)]
-                *   board Optional[(Board)]
-                *   state Optional[SquareState]
-            These Parameters must be provided:
-                *   board_service (BoardService)
-                *   coord_service (CoordService)
-                *   token_service (TokenService)
-                *   identity_service (IdentityService)
-            # RETURNS:
-                *   BuildResult[SquareContext] containing either:
-                        - On failure: Exception.
-                        - On success: SquareContext in the payload.
-            Raises:
-                *   ZeroSquareContextFlagsException
-                *   SquareContextBuildException
-                *   ExcessSquareContextFlagsException
-                *   SquareContextBuildRouteException
-            """
+            
+        Args:
+            id: Optional[int]
+            name: Optional[str]
+            coord: Optional[Coord]
+            board: Optional[Board]
+            token: Optional[Token]
+            state: Optional[SquareState]
+            board_service: BoardService
+            coord_service: CoordService
+            token_service: TokenService
+            identity_service: IdentityService
+            
+        Returns:
+            BuildResult[SquareContext]
+            
+        Raises:
+            SquareContextBuildException
+            ZeroSquareContextFlagsException
+            ExcessSquareContextFlagsException
+            SquareContextBuildRouteException
+        """
         method = "SquareContextBuilder.build"
 
         # --- Count how many optional parameters are not-null. only one should be not null. ---#

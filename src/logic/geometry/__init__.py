@@ -10,7 +10,7 @@ version: 1.0.0
 # =========== GEOMETRY PACKAGE CONTENTS ===========#
 
 # Packages
-from .ray import *
+from .domain import *
 
 # Modules
 from .line import Line

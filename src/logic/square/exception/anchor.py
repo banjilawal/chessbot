@@ -36,8 +36,7 @@ class SquareException(AnchorException):
     None
 
     # LOCAL ATTRIBUTES:
-        *   cls_name (Optional[str])
-        *   cls_mthd (Optional[str])
+    None
         
     # INHERITED ATTRIBUTES:
         *   See AnchorException class for inherited attributes.
@@ -55,27 +54,34 @@ class SquareException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
+    CLS_MTHD = None
+    CLS_NAME = "Square"
     ERR_CODE = "SQUARE_EXCEPTION"
     MSG = "Exception raised in Square"
-    CLS_NAME = "Square"
-    CLS_MTHD = None
  
     def __init__(
             self,
-            err_code: Optional[str] = None,
             msg: Optional[str] = None,
+            err_code: Optional[str] = None,
             ex: Optional[Exception] = None,
             cls_name: Optional[str] = None,
             cls_mthd: Optional[str] = None,
     ):
+        """
+        Args:
+            msg: Optional[str]
+            cls_mthd: Optional[str]
+            cls_name: Optional[str
+            err_code: Optional[str]
+            ex: Optional[Exception]
+        """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
         cls_name = cls_name or self.CLS_NAME
         cls_mthd = cls_mthd or self.CLS_MTHD
         
         super().__init__(
-            ex=ex,
-            msg=msg,
+            ex=ex, msg=msg,
             err_code=err_code,
             cls_name=cls_name,
             cls_mthd=cls_mthd

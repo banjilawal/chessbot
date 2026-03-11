@@ -1,32 +1,39 @@
-# src/logic/square/validator/exception/debug/y/token.py
+# src/logic/square/context/validator/exception/debug/null.py
 
 """
-Module: logic.square.validator.exception.debug.y.token
+Module: logic.square.context.validator.exception.debug.null
 Author: Banji Lawal
-Created: 2025-10-03
+Created: 2025-09-16
 version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import Optional
+from typing import Any, Optional
 
 __all__ = [
-    # ======================# SQUARE_TOKEN_Y_AXIS EXCEPTION #======================#
-    "SquareTokenYException",
+    # ======================# NULL_SQUARE_CONTEXT_EXCEPTION #======================#
+    "NullSquareContextException",
 ]
 
-from logic.system import TokenException
+from logic.system import NullException
 
-# ======================# SQUARE_TOKEN_Y_AXIS EXCEPTION #======================#
-class SquareTokenYException(TokenException):
+# ======================# NULL_SQUARE_CONTEXT_EXCEPTION #======================#
+class NullSquareContextException(NullException):
     """
-    # ROLE: Error Tracing, Debugging
+    # ROLE: Exception Chain Layer 2, Exception Messaging
+    # TASK: Capture Error Variable State
 
     # RESPONSIBILITIES:
-    1.  Indicate that Square validation failed because the y_axis was token.
+    1.  Produce the:
+            *   variable,
+            *   it's value,
+            *   event which fired the variable into its error state.
+        which occurred in the SquareContextValidator method identified in layer-0 of the exception chain.
+
+    2.  A failing ValidationResult was returned because the candidate was null.
 
     # PARENT:
-        *   DebugException
+        *   NullException
 
     # PROVIDES:
     None
@@ -35,37 +42,44 @@ class SquareTokenYException(TokenException):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See DebugException class for inherited attributes.
+        *   See NullException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
         *   var (Optional[str])
-        *   val Optional[Any])
+        *   val (Optional[Any])
 
     # LOCAL METHODS:
    None
 
     # INHERITED METHODS:
-        *   See DebugException class for inherited methods.
+        *   See NullException class for inherited methods.
     """
-    ERR_CODE = "SQUARE_TOKEN_Y_AXIS_EXCEPTION"
-    MSG = "Square validation failed: The y_axis was token."
-    VAR: None
+    VAR = Optional[str]
     VAL = Optional[Any]
+    MSG = "SquareContext cannot be null."
+    ERR_CODE = "NULL_SQUARE_CONTEXT_EXCEPTION"
     
     def __init__(
             self,
-            err_code: Optional[str] = None,
             msg: Optional[str] = None,
-            ex: Optional[Exception] = None,
             var: Optional[str] = None,
             val: Optional[Any] = None,
+            ex: Optional[Exception] = None,
+            err_code: Optional[str] = None,
     ):
-        err_code = err_code or self.ERR_CODE
-        msg = msg or self.MSG
+        """
+        Args:
+            msg: str
+            var: Optional[str]
+            val: Optional[Any]
+            ex: Optional[Exception]
+            err_code: Optional[str]
+        """
         var = var or self.VAR
         val = val or self.VAL
-        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)
-
+        msg = msg or self.MSG
+        err_code = err_code or self.ERR_CODE
+        super().__init__(ex=ex, msg=msg, err_code=err_code, var=var, val=val, )

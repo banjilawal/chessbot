@@ -14,7 +14,6 @@ from .search import *
 from .update import *
 from .deletion import *
 from .insertion import *
-from .computation import *
 
 # Modules
 from .result import DataResult

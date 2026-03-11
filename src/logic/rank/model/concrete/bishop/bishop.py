@@ -35,7 +35,7 @@ class Bishop(Rank):
     None
 
     # LOCAL ATTRIBUTES:
-        * diagonal_span (DiagonalSpan)
+        * diagonal_span (DiagonalSpanComputer)
 
     INHERITED ATTRIBUTES:
         *   See Rank class for inherited attributes

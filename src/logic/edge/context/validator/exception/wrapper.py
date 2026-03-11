@@ -1,31 +1,32 @@
-# src/logic/edge/context/validator/exception/wrapper.py
+# src/logic/edge/validator/exception/exception.py
 
 """
-Module: logic.edge.context.validator.exception.wrapper
+Module: logic.edge.validator.exception.exception
 Author: Banji Lawal
-Created: 2026-02-18
+Created: 2025-10-03
 version: 1.0.0
 """
 
-from logic.system import ValidationException
-from logic.edge import EdgeContextException
+from __future__ import annotations
+from typing import Optional
 
 __all__ = [
     # ======================# EDGE_CONTEXT_VALIDATION_FAILURE #======================#
     "EdgeContextValidationException",
 ]
 
+from logic.system import ValidationException
 
 # ======================# EDGE_CONTEXT_VALIDATION_FAILURE #======================#
-class EdgeContextValidationException(EdgeContextException, ValidationException):
+class EdgeContextValidationException(ValidationException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Exception Chain Layer 1, Exception Messaging
+    # TASK: Worker Method Identifier
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a candidate failed its validation as a EdgeContext. The exception chain traces the ultimate source of failure.
+    1.  Identify the EdgeValidator method where the process failed.
 
     # PARENT:
-        *   EdgeContextException
         *   ValidationException
 
     # PROVIDES:
@@ -34,8 +35,58 @@ class EdgeContextValidationException(EdgeContextException, ValidationException):
     # LOCAL ATTRIBUTES:
     None
 
-    INHERITED ATTRIBUTES:
+    # INHERITED ATTRIBUTES:
+        *   See ValidationException class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:)
+        *   err_code (str)
+        *   msg (str)
+        *   ex (Optional[Exception])
+        *   mthd (Optional[str])
+        *   op (Optional[str])
+        *   rslt_type (Optional[str])
+
+    # LOCAL METHODS:
     None
+
+    # INHERITED METHODS:
+        *   See ValidationException class for inherited methods.
     """
+    MTHD = None
+    OP = "Validation"
+    RSLT_TYPE = "ValidationResult"
     ERR_CODE = "EDGE_CONTEXT_VALIDATION_FAILURE"
-    MSG = "EdgeContext validation failed."
+    MSG = "Failure in EdgeValidator method."
+    
+    def __init__(
+            self,
+            err_code: Optional[str] = None,
+            msg: Optional[str] = None,
+            ex: Optional[Exception] = None,
+            mthd: Optional[str] = None,
+            op: Optional[str] = None,
+            rslt_type: Optional[str] = None,
+    ):
+        """
+        Args:
+            op: Optional[str]
+            msg: Optional[str]
+            mthd: Optional[str]
+            ex: Optional[Exception]
+            err_code: Optional[str]
+            rslt_type: Optional[str]
+        """
+        op = op or self.OP
+        msg = msg or self.MSG
+        mthd = mthd or self.MTHD
+        err_code = err_code or self.ERR_CODE
+        rslt_type = rslt_type or self.RSLT_TYPE
+        
+        super().__init__(
+            ex=ex,
+            op=op,
+            msg=msg,
+            mthd=mthd,
+            err_code=err_code,
+            rslt_type=rslt_type,
+        )

@@ -10,9 +10,7 @@ version: 1.0.0
 # =========== SQUARE.DATABASE.CORE.HANDLER.CRUD.EXCEPTION.POP PACKAGE CONTENTS ===========#
 
 # Packages
-from .collision import *
-from .exception import *
 
 # Modules
-from .wrapper import SquareStackPopException
+from .wrapper import SquareStackPushException
 from .duplicate import AddingDuplicateSquareException
