@@ -8,7 +8,16 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import List, Optional, cast
+from typing import List, Optional
+
+from logic.edge import (
+    AddingDuplicateEdgeException, Edge, EdgeContext, EdgeContextService, EdgeService, PoppingEdgeException,
+    PoppingEmptyEdgeStackException, PushingEdgeException
+)
+from logic.edge.stack.exception.catchall import EdgeStackException
+from logic.system import (
+    DeletionResult, IdFactory, IdentityService, InsertionResult, LoggingLevelRouter, SearchResult, StackService
+)
 
 
 
@@ -35,6 +44,14 @@ class EdgeStack(StackService[Edge]):
     # INHERITED ATTRIBUTES:
         *   See StackService class for inherited attributes.
     """
+    
+    @property
+    def items(self) -> List[Edge]:
+        pass
+    
+    def delete_by_id(self, id: int, identity_service: IdentityService = IdentityService()) -> DeletionResult[T]:
+        pass
+    
     SERVICE_NAME = "EdgeStack"
     
     _stack: List[Edge]

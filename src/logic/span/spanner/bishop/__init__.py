@@ -10,7 +10,7 @@ version: 1.0.0
 # =========== SPAN.SPANNER.BISHOP PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .service import *
 
 # Modules
 from .spanner import BishopSpanner

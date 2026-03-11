@@ -72,7 +72,6 @@ class Team:
     _state: TeamState
     _roster: TokenDatabase
 
-
     def __init__(
             self,
             id: int,
@@ -81,7 +80,14 @@ class Team:
             owner: Player,
             roster: TokenDatabase = TokenDatabase(),
     ):
-        method = "Team.__init__"
+        """
+        Args:
+            id: int
+            board: Board
+            schema: Schema
+            owner: Player
+            roster: TokenDatabase
+        """
         self._id = id
         self._board = board
         self._schema = schema

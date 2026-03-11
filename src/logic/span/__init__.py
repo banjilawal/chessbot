@@ -11,6 +11,7 @@ version: 1.0.0
 
 # Packages
 from .ray import *
+from .service import *
 from .spanner import *
 
 # Modules

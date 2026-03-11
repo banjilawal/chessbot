@@ -1,7 +1,7 @@
-# src/logic/edge/exception/debug.py
+# src/logic/span/service/exception.anchor.py
 
 """
-Module: logic.edge.exception.debug
+Module: logic.span.service.exception.anchor
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,33 +11,29 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# EDGE_EXCEPTION #======================#
-    "EdgeException",
+    # ======================# SPAN_SERVICE_EXCEPTION #======================#
+    "SpanServiceException",
 ]
 
 from logic.system import AnchorException
 
-# ======================# EDGE_EXCEPTION #======================#
-class EdgeException(AnchorException):
+# ======================# SPAN_SERVICE_EXCEPTION #======================#
+class SpanServiceException(AnchorException):
     """
-    # ROLE: Coverage Target, Exception Chain Layer 0
+    # ROLE: Debug Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Provide Edge as:
-            *   Reporting
-            *   Coverage
-        target for layer-2 debugging exceptions.
-    2.  Indicate which Edge method received a worker's (layer-1) failure result.
+    1.  Indicate that an error occurred in a SpanService.
 
     # PARENT:
-        *   AnchorException
+    *   AnchorException
 
     # PROVIDES:
     None
 
     # LOCAL ATTRIBUTES:
     None
-        
+
     # INHERITED ATTRIBUTES:
         *   See AnchorException class for inherited attributes.
 
@@ -46,7 +42,6 @@ class EdgeException(AnchorException):
         *   err_code (str)
         *   ex (Optional[Exception])
         *   cls_name (Optional[str])
-        *   cls_mthd (Optional[str])
 
     # LOCAL METHODS:
     None
@@ -55,14 +50,14 @@ class EdgeException(AnchorException):
         *   See AnchorException class for inherited methods.
     """
     CLS_MTHD = None
-    CLS_NAME = "Edge"
-    ERR_CODE = "EDGE_EXCEPTION"
-    MSG = "Exception raised in Edge"
- 
+    CLS_NAME = "SpanService"
+    ERR_CODE = "SPAN_SERVICE_EXCEPTION"
+    MSG = " SpanService raised an exception."
+  
     def __init__(
             self,
-            msg: Optional[str] = None,
             err_code: Optional[str] = None,
+            msg: Optional[str] = None,
             ex: Optional[Exception] = None,
             cls_name: Optional[str] = None,
             cls_mthd: Optional[str] = None,
@@ -70,20 +65,13 @@ class EdgeException(AnchorException):
         """
         Args:
             msg: Optional[str]
-            err_code: Optional[str]
             ex: Optional[Exception]
             cls_name: Optional[str]
             cls_mthd: Optional[str]
+            err_code: Optional[str]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
         cls_name = cls_name or self.CLS_NAME
         cls_mthd = cls_mthd or self.CLS_MTHD
-        
-        super().__init__(
-            ex=ex,
-            msg=msg,
-            err_code=err_code,
-            cls_name=cls_name,
-            cls_mthd=cls_mthd
-        )
+        super().__init__(msg=msg, err_code=err_code, ex=ex, cls_name=cls_name, cls_mthd=cls_mthd)

@@ -27,7 +27,7 @@ class EdgeDebugException(DebugException):
             *   variable,
             *   it's value,
             *   event which fired the variable into its error state.
-        which occurred in the Anchor method identified in layer-0 of the exception chain.
+        which occurred in the Edge method identified in layer-0 of the exception chain.
 
     # PARENT:
         *   DebugException
@@ -36,8 +36,7 @@ class EdgeDebugException(DebugException):
     None
 
     # LOCAL ATTRIBUTES:
-        *   var (Optional[str])
-        *   val (Optional[Any])
+    None
 
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
@@ -55,14 +54,11 @@ class EdgeDebugException(DebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    ERR_CODE = "EDGE_EXCEPTION"
-    MSG = str = "Edge had an error."
     VAR = Optional[str]
     VAL = Optional[Any]
-    
-    _var = Optional[str]
-    _val = Optional[Any]
-    
+    ERR_CODE = "EDGE_EXCEPTION"
+    MSG = str = "Edge had an error."
+
     def __init__(
             self,
             err_code: Optional[str] = None,

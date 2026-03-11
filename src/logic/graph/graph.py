@@ -8,32 +8,31 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import List
 
-from logic.graph import Edge, Node
+from logic.edge import EdgeStack
+from logic.node import NodeStack
 
 
 class Graph:
     """"""
     _id: int
-    _edges: List[Edge]
-    _vertices: List[Node]
-
+    _edges: EdgeStack
+    _vertices: NodeStack
     
-    def __init__(self, id: int,):
+    def __init__(self, id: int):
         self._id = id
-        self._edges = []
-        self._vertices = []
-
+        self._edges = EdgeStack()
+        self._vertices = NodeStack()
     
     @property
     def id(self) -> int:
         return self._id
     
     @property
-    def vertices(self) -> List[Node]:
-        return self._vertices
+    def edges(self) -> EdgeStack:
+        return self._edges
     
     @property
-    def edges(self) -> List[Edge]:
-        return self._edges
+    def vertices(self) -> NodeStack:
+        return self._vertices
+    
