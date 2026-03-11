@@ -3,7 +3,7 @@
 """
 Module: logic.rank.model.concrete.queen.exception.__init__
 Author: Banji Lawal
-Created: 2026-01-22
+Created: 2025-09-08
 version: 1.0.0
 """
 
@@ -13,7 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .super import QueenException
-from .span import QueenSpanComputationException
-
-
+from .anchor import QueenException
+from .debug import QueenDebugException

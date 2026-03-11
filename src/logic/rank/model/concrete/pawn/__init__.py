@@ -10,9 +10,7 @@ version: 1.0.0
 # =========== RANK.MODEL.CONCRETE.PAWN PACKAGE CONTENTS ===========#
 
 # Packages
-from .compute import *
-from .vector import *
+from .exception import *
 
 # Modules
-from .pawn import Pawn
-from .exception import PawnException
+from .rank import Pawn

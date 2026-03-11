@@ -18,4 +18,4 @@ from .validator import *
 from .compute import *
 
 # Modules
-from logic.rank.model.exception import *
+from logic.rank.model.abstract.exception import *

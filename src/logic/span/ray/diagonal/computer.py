@@ -13,6 +13,7 @@ from typing import List
 from logic.coord import Coord, CoordService
 from logic.system import ComputationResult, LoggingLevelRouter
 from logic.span import DiagonalRayComputationException, DiagonalRayFactors, Ray
+from logic.vector import VectorService
 
 
 class DiagonalRayComputer:
@@ -61,6 +62,7 @@ class DiagonalRayComputer:
             cls,
             factors: DiagonalRayFactors,
             coord_service: CoordService = CoordService(),
+            vector_service: VectorService = VectorService(),
     ) -> ComputationResult[Ray]:
         """
         # Action
@@ -86,6 +88,7 @@ class DiagonalRayComputer:
         
         i = factors.start_x
         j = (2 * factors.slope * i) + factors.slope
+    
         while i < factors.end_x and j < factors.end_y:
             # Handle the case that the coord is not built.
             build_result = coord_service.builder.build(row=j, column=i)

@@ -8,6 +8,7 @@ version: 1.0.0
 """
 
 from enum import Enum
+from platform import processor
 from typing import List, Optional
 
 from logic.geometry import Quadrant
@@ -104,6 +105,10 @@ class Persona(Enum):
     @property
     def quadrants(self) -> List[Quadrant]:
         return self._quadrants
+    
+    @property
+    def vectors(self) -> List[Vector]:
+        return self._vectors
     
     @classmethod
     def allowed_quadrants(cls) -> List[List[Quadrant]]:

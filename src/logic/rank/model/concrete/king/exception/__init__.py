@@ -3,7 +3,7 @@
 """
 Module: logic.rank.model.concrete.king.exception.__init__
 Author: Banji Lawal
-Created: 2026-01-22
+Created: 2025-09-08
 version: 1.0.0
 """
 
@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .super import KingException
-from .span import KingSpanComputationException
+from .anchor import KingException
+from .debug import KingDebugException

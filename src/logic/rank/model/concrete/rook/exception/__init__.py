@@ -3,7 +3,7 @@
 """
 Module: logic.rank.model.concrete.rook.exception.__init__
 Author: Banji Lawal
-Created: 2026-01-22
+Created: 2025-09-08
 version: 1.0.0
 """
 
@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .super import RookException
-from .span import RookSpanComputationException
+from .anchor import RookException
+from .debug import RookDebugException

@@ -37,13 +37,13 @@ class PawnSpanner(Spanner):
     INHERITED ATTRIBUTES:
         *   See Spanner class for inherited attributes
     """
+    PAWN_VECTOR_SETS: PawnVectorSets = PawnVectorSets()
     
     @classmethod
     def compute(
             cls,
             pawn_token: PawnToken,
             coord_service: CoordService = CoordService(),
-            vector_sets: PawnVectorSets = PawnVectorSets(),
             vector_service: VectorService = VectorService(),
     ) -> ComputationResult[Dict[str, Span]]:
         """
@@ -85,14 +85,14 @@ class PawnSpanner(Spanner):
         if pawn_token.is_deployed:
             return cls._process_vector_dictionary(
                 origin=pawn_token.current_position,
-                vector_hash=vector_sets.developed_vector_sets,
+                vector_hash=cls.PAWN_VECTOR_SETS.developed_vector_sets,
                 coord_service=coord_service,
                 vector_service=vector_service,
             )
         # --- Otherwise produce the spanning sets for a pawn that's made its first move ---#
         return cls._process_vector_dictionary(
             origin=pawn_token.current_position,
-            vector_hash=vector_sets.opening_vector_sets,
+            vector_hash=cls.PAWN_VECTOR_SETS.opening_vector_sets,
             coord_service=coord_service,
             vector_service=vector_service,
         )

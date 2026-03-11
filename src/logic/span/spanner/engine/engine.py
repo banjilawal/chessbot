@@ -10,6 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Optional
 
+from logic.vector import VectorService
 from logic.coord import Coord, CoordService
 from logic.span import (
     DiagonalRayProvider, NoRayProviderException, PerpendicularRayProvider, Span, SpanComputationException,
@@ -51,7 +52,6 @@ class SpannerEngine:
             SpannerEngineException
             SpanComputationException
             NoRayProviderException
-            
         """
         method = f"{cls.__name__}.compute"
         
