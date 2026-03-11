@@ -6,6 +6,7 @@ Author: Banji Lawal
 Created: 2026-03-10
 version: 1.0.0
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 

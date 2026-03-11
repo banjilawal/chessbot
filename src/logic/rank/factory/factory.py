@@ -9,7 +9,10 @@ version: 1.0.0
 
 from logic.persona import Persona, PersonaService
 from logic.system import Builder, BuildResult, LoggingLevelRouter, id_emitter
-from logic.rank import Bishop, King, Knight, Pawn, Queen, Rank, RankBuildException, RankBuildRouteException, Rook
+from logic.rank import (
+    Bishop, King, Knight, Pawn, Queen, Rank, RankBuildException, RankBuildRouteException,
+    RankFactoryException, Rook
+)
 
 class RankFactory(Builder[Rank]):
     """
@@ -43,156 +46,82 @@ class RankFactory(Builder[Rank]):
             persona_service: PersonaService = PersonaService(),
     ) -> BuildResult[Rank]:
         """
-        # ACTION:
-        Given a Persona, return an appropriate Rank object.
+        Build a concrete Rank base on the Person instance.
 
-        # PARAMETERS:
-            * persona (Persona)
-
-        # RETURNS:
-          BuildResult[Rank] containing either:
-                - On success: a concrete Rank in the payload.
-                - On failure: Exception.
+        Args:
+            id: int
+            persona: Persona
+            persona_service: PersonaService
 
         Raises:
-            * RankBuildException
+          BuildResult[Rank]
+
+        Raises:
+            RankBuildException
+            RankFactoryException
         """
-        method = "RankFactory.builder"
-        # Handle the case that, the persona is not certifed as safe.
-        validation = persona_service.validator.validate(candidate=persona)
-        if validation.is_failure:
+        method = f"{cls.__name__}.build"
+        
+        # Handle the case that, the persona is not certified as safe.
+        validation_result = persona_service.validator.validate(candidate=persona)
+        if validation_result.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                RankBuildException(
-                    msg=f"{method}: {RankBuildException.MSG}",
-                    ex=validation.exception
+                RankFactoryException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=RankFactoryException.MSG,
+                    err_code=RankFactoryException.ERR_CODE,
+                    ex=RankBuildException(
+                        mthd=method,
+                        op=RankBuildException.OP,
+                        msg=RankBuildException.MSG,
+                        err_code=RankBuildException.ERR_CODE,
+                        rslt_type=RankBuildException.RSLT_TYPE,
+                        ex=validation_result.exception
+                    )
                 )
             )
         # --- Route to the appropriate concrete builder. ---#
         
         # Entry point into building a King instance.
         if persona == Persona.KING:
-            return cls._build_king_rank(id=id)
+            return BuildResult.success(King(id=id, persona=persona))
         # Entry point into building a Pawn instance.
         if persona == Persona.PAWN:
-            return cls._build_pawn_rank(id=id)
+            return BuildResult.success(Pawn(id=id, persona=persona))
         # Entry point into building a Knight instance.
         if persona == Persona.KNIGHT:
-            return cls._build_knight_rank(id=id)
+            return BuildResult.success(Knight(id=id, persona=persona))
         # Entry point into building a Bishop instance.
         if persona == Persona.BISHOP:
-            return cls._build_bishop_rank(id=id)
+            return BuildResult.success(Bishop(id=id, persona=persona))
         # Entry point into building a Rook instance.
         if persona == Persona.ROOK:
-            return cls._build_rook_rank(id=id)
+            return BuildResult.success(Rook(id=id, persona=persona))
         # Entry point into building a Queen instance.
         if persona == Persona.QUEEN:
-            return cls._build_queen_rank(id=id)
+            return BuildResult.success(Queen(id=id, persona=persona))
             
-        # Return the exception chain if there is no build route for the context.
+        # If there is no build path exists for a persona, Return an exception chain.
         return BuildResult.failure(
-            RankBuildException(
-                msg=f"{method}: {RankBuildException.MSG}",
-                ex=RankBuildRouteException(f"{method}: {RankBuildRouteException.MSG}")
-            )
-        )
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def _build_king_rank(cls, id: int) -> BuildResult[King]:
-        method = "RankFactory.build_king_rank"
-        return BuildResult.success(
-            King(
-                id=id,
-                name=Persona.KING.name,
-                ransom=Persona.KING.ransom,
-                team_quota=Persona.KING.quota,
-                quadrants=Persona.KING.quadrants,
-                designation=Persona.KING.designation,
-            )
-        )
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def _build_pawn_rank(cls, id: int) -> BuildResult[Pawn]:
-        """
-        # ACTION:
-        Returns a BuildResult containing a Pawn instance.
-
-        # PARAMETERS:
-        None
-
-        # RETURNS:
-          BuildResult[Pawn] containing either:
-                - On success: a Pawn in the payload.
-                - On failure: Exception.
-
-        Raises:
-        """
-        method = "RankFactory.build_pawn_rank"
-        return BuildResult.success(
-            Pawn(
-                id=id_emitter.pawn_id,
-                name=Persona.PAWN.name,
-                ransom=Persona.PAWN.ransom,
-                team_quota=Persona.PAWN.quota,
-                quadrants=Persona.PAWN.quadrants,
-                designation=Persona.PAWN.designation,
-            )
-        )
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def _build_knight_rank(cls, id: int) -> BuildResult[Knight]:
-        return BuildResult.success(
-            Knight(
-                id=id_emitter.knight_id,
-                name=Persona.KNIGHT.name,
-                ransom=Persona.KNIGHT.ransom,
-                team_quota=Persona.KNIGHT.quota,
-                quadrants=Persona.KNIGHT.quadrants,
-                designation=Persona.KNIGHT.designation,
-            )
-        )
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def _build_bishop_rank(cls, id: int) -> BuildResult[Bishop]:
-        return BuildResult.success(
-            Bishop(
-                id=id_emitter.bishop_id,
-                name=Persona.BISHOP.name,
-                ransom=Persona.BISHOP.ransom,
-                team_quota=Persona.BISHOP.quota,
-                quadrants=Persona.BISHOP.quadrants,
-                designation=Persona.BISHOP.designation,
-            )
-        )
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def _build_rook_rank(cls, id: int) -> BuildResult[Rook]:
-        return BuildResult.success(
-            Rook(
-                id=id_emitter.rook_id,
-                name=Persona.ROOK.name,
-                ransom=Persona.ROOK.ransom,
-                team_quota=Persona.ROOK.quota,
-                quadrants=Persona.ROOK.quadrants,
-                designation=Persona.ROOK.designation,
-            )
-        )
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def _build_queen_rank(cls, id: int) -> BuildResult[Queen]:
-        return BuildResult.success(
-            Queen(
-                id=id_emitter.queen_id,
-                name=Persona.QUEEN.name,
-                ransom=Persona.QUEEN.ransom,
-                team_quota=Persona.QUEEN.quota,
-                quadrants=Persona.QUEEN.quadrants,
-                designation=Persona.QUEEN.designation,
+            RankFactoryException(
+                cls_mthd=method,
+                cls_name=cls.__name__,
+                msg=RankFactoryException.MSG,
+                err_code=RankFactoryException.ERR_CODE,
+                ex=RankBuildException(
+                    mthd=method,
+                    op=RankBuildException.OP,
+                    msg=RankBuildException.MSG,
+                    err_code=RankBuildException.ERR_CODE,
+                    rslt_type=RankBuildException.RSLT_TYPE,
+                    ex=RankBuildRouteException(
+                        var="persona",
+                        val=f"{persona}",
+                        msg=RankBuildRouteException.MSG,
+                        err_code=RankBuildRouteException.ERR_CODE,
+                    )
+                )
             )
         )

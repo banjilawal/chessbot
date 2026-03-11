@@ -1,9 +1,9 @@
-# src/logic/span/spanner/knight/anchor.py
+# src/logic/rank/factory/exception/anchor.py
 
 """
-Module: logic.span.spanner.knight.anchor
+Module: logic.rank.factory.exception.anchor
 Author: Banji Lawal
-Created: 2026-03-10
+Created: 2025-11-20
 version: 1.0.0
 """
 
@@ -11,26 +11,26 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# KNIGHT_SPANNER_EXCEPTION #======================#
-    "KnightSpannerException",
+    # ======================# RANK_FACTORY_EXCEPTION #======================#
+    "RankFactoryException",
 ]
 
-from logic.span import SpannerException
+from logic.system import AnchorException
 
-# ======================# KNIGHT_SPANNER_EXCEPTION #======================#
-class KnightSpannerException(SpannerException):
+# ======================# RANK_FACTORY_EXCEPTION #======================#
+class RankFactoryException(AnchorException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Provide KnightSpanner as:
+    1.  Provide RankFactory as:
             *   Reporting
             *   Coverage
         target for layer-2 debugging exceptions.
-    2.  Indicate which KnightSpanner method received a worker's (layer-1) failure result.
+    2.  Indicate which RankFactory method received a worker's (layer-1) failure result.
 
     # PARENT:
-        *   SpannerException
+        *   AnchorException
 
     # PROVIDES:
     None
@@ -39,7 +39,7 @@ class KnightSpannerException(SpannerException):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See SpannerException class for inherited attributes.
+        *   See AnchorException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
         *   msg (str)
@@ -52,12 +52,12 @@ class KnightSpannerException(SpannerException):
     None
 
     # INHERITED METHODS:
-        *   See SpannerException class for inherited methods.
+        *   See AnchorException class for inherited methods.
     """
     CLS_MTHD = None
-    CLS_NAME = "KnightSpanner"
-    ERR_CODE = "KNIGHT_SPANNER_EXCEPTION"
-    MSG = "Exception raised in KnightSpanner"
+    CLS_NAME = "RankFactory"
+    ERR_CODE = "RANK_FACTORY_EXCEPTION"
+    MSG = "Exception raised in RankFactory"
     
     def __init__(
             self,

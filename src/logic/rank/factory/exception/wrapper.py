@@ -1,9 +1,9 @@
-# src/logic/rank/builder/exception/wrapper.py
+# src/logic/rank/factory/exception/wrapper.py
 
 """
-Module: logic.rank.builder.exception.wrapper
+Module: logic.rank.factory.exception.wrapper
 Author: Banji Lawal
-Created: 2025-10-03
+Created: 2025-11-20
 version: 1.0.0
 """
 
@@ -53,25 +53,34 @@ class RankBuildException(BuildException):
     # INHERITED METHODS:
         *   See WrapperException class for inherited methods.
     """
-    ERR_CODE = "RANK_BUILD_FAILED"
-    MSG = "Rank build failed."
-    MTHD = "build"
     OP = "Build"
+    MTHD = "build"
+    MSG = "Rank build failed."
     RSLT_TYPE = "BuildResult"
+    ERR_CODE = "RANK_BUILD_FAILED"
     
     def __init__(
             self,
-            err_code: Optional[str] = None,
-            msg: Optional[str] = None,
-            ex: Optional[Exception] = None,
-            mthd: Optional[str] = None,
             op: Optional[str] = None,
+            msg: Optional[str] = None,
+            mthd: Optional[str] = None,
+            err_code: Optional[str] = None,
+            ex: Optional[Exception] = None,
             rslt_type: Optional[str] = None,
     ):
-        err_code = err_code or self.ERR_CODE
+        """
+        Args:
+            op: Optional[str]
+            msg: Optional[str]
+            mthd: Optional[str]
+            err_code: Optional[str]
+            ex: Optional[Exception]
+            rslt_type: Optional[str]
+        """
+        op = op or self.OP
         msg = msg or self.MSG
         mthd = mthd or self.MTHD
-        op = op or self.OP
+        err_code = err_code or self.ERR_CODE
         rslt_type = rslt_type or self.RSLT_TYPE
         
         super().__init__(err_code=err_code, msg=msg, ex=ex, mthd=mthd, op=op, rslt_type=rslt_type)

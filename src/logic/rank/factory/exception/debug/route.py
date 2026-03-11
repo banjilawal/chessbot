@@ -1,9 +1,9 @@
-# src/logic/square/_context/builder/exception/route.py
+# src/logic/rank/factory/exception/debug/route.py
 
 """
-Module: logic.square.context.builder.exception.route
+Module: logic.rank.factory.exception.debug.route
 Author: Banji Lawal
-Created: 2025-10-03
+Created: 2025-11-20
 version: 1.0.0
 """
 
@@ -11,20 +11,19 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# SQUARE_CONTEXT_EXECUTION_ROUTE_EXCEPTION #======================#
-    "SquareContextExecutionRouteException",
+    # ======================# RANK_BUILD_ROUTE_EXCEPTION #======================#
+    "RankBuildRouteException",
 ]
 
 from logic.system import ExecutionRouteException
 
-
-# ======================# SQUARE_CONTEXT_EXECUTION_ROUTE_EXCEPTION #======================#
-class SquareContextExecutionRouteException(ExecutionRouteException):
+# ======================# RANK_BUILD_ROUTE_EXCEPTION #======================#
+class RankBuildRouteException(ExecutionRouteException):
     """
     # ROLE: Error Tracing, Debugging, Super Exception
 
     # RESPONSIBILITIES:
-    1.  Indicate that there is no build route for a SquareContext attribute.
+    1.  Indicate that there is no build route for a Persona entry.
 
     # PARENT:
         *   ExecutionRoute
@@ -39,11 +38,12 @@ class SquareContextExecutionRouteException(ExecutionRouteException):
         *   See ExecutionRoute class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
-        *   msg (str)
-        *   err_code (str)
-        *   ex (Optional[Exception])
-        *   var (Optional[str])
-        *   val Optional[Any])
+        msg: Optional[str]
+        msg: Optional[str]
+        var: Optional[str]
+        val: Optional[Any]
+        ex: Optional[Exception]
+        err_code: Optional[str]
 
     # LOCAL METHODS:
    None
@@ -53,17 +53,26 @@ class SquareContextExecutionRouteException(ExecutionRouteException):
     """
     VAR = Optional[str]
     VAL = Optional[Any]
-    MSG = "No build route for SquareContext attribute"
-    ERR_CODE = "SQUARE_CONTEXT_EXECUTION_ROUTE_EXCEPTION"
+    MSG = "No Rank build path for the persona"
+    ERR_CODE = "RANK_BUILD_ROUTE_EXCEPTION"
     
     def __init__(
             self,
-            err_code: Optional[str] = None,
             msg: Optional[str] = None,
-            ex: Optional[Exception] = None,
             var: Optional[str] = None,
             val: Optional[Any] = None,
+            ex: Optional[Exception] = None,
+            err_code: Optional[str] = None,
     ):
+        """
+        Args:
+            msg: Optional[str]
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
+            ex: Optional[Exception]
+            err_code: Optional[str]
+        """
         err_code = err_code or self.ERR_CODE
         msg = msg or self.MSG
         var = var or self.VAR
