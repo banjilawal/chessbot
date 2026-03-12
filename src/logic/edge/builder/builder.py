@@ -10,7 +10,8 @@ version: 1.0.0
 from __future__ import annotations
 
 from logic.coord import CoordService
-from logic.graph import Edge, EdgeBuildException, HeadCannotBeTailException, Edge, EdgeValidator
+from logic.graph import Edge, EdgeBuildException, HeadCannotBeTailException, Edge, NodeService
+from logic.node import Node
 from logic.system import BuildResult, Builder, IdFactory, IdentityService, LoggingLevelRouter
 
 
@@ -40,11 +41,11 @@ class EdgeBuilder(Builder[Edge]):
     @LoggingLevelRouter.monitor
     def build(
             cls,
-            head: Edge,
-            tail: Edge,
+            head: Node,
+            tail: Node,
             id: int = IdFactory.next_id(class_name="Edge"),
             coord_service: CoordService = CoordService(),
-            edge_validator: EdgeValidator = EdgeValidator(),
+            node_service: NodeService = NodeService(),
             identity_service: IdentityService = IdentityService(),
      ) -> BuildResult[Edge]:
          """
@@ -81,7 +82,7 @@ class EdgeBuilder(Builder[Edge]):
                  )
              )
          # Handle the case that, the head is not certified as a safe edge.
-         head_validation = edge_validator.validate(candidate=head)
+         head_validation = node_service.validator.validate(candidate=head)
          if head_validation.is_failure:
              # Return the exception chain on failure
              return BuildResult.failure(
@@ -91,7 +92,7 @@ class EdgeBuilder(Builder[Edge]):
                  )
              )
          # Handle the case that, the tail is not certified as a safe edge.
-         tail_validation = edge_validator.validate(candidate=tail)
+         tail_validation = node_service.validate.validate(candidate=tail)
          if tail_validation.is_failure:
              # Return the exception chain on failure
              return BuildResult.failure(

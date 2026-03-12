@@ -61,7 +61,7 @@ class RayComputationException(ComputationException):
     OP = "Computation"
     RSLT_TYPE = "ComputationResult"
     ERR_CODE = "RAY_COMPUTATION_FAILURE"
-    MSG = "Ray computation failed."
+    MSG = "CoordRay computation failed."
     
     def __init__(
             self,

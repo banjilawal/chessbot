@@ -33,8 +33,7 @@ class SquareBuildException(BuildException):
     None
 
     # LOCAL ATTRIBUTES:
-        *   op (Optional[str])
-        *   rslt_type (Optional[str])
+    None
 
     # INHERITED ATTRIBUTES:
         *   See BuildException class for inherited attributes.
@@ -53,24 +52,30 @@ class SquareBuildException(BuildException):
     # INHERITED METHODS:
         *   See BuildException class for inherited methods.
     """
-    ERR_CODE = "SQUARE_BUILD_FAILURE"
-    MSG = "Failure in SquareBuilder method."
     MTHD = None
     OP = "Build"
     RSLT_TYPE = "BuildResult"
-    
-    _op = Optional[str]
-    _rslt_type = Optional[str]
-    
+    ERR_CODE = "SQUARE_BUILD_FAILURE"
+    MSG = "Failure in SquareBuilder method."
+
     def __init__(
             self,
-            err_code: Optional[str] = None,
-            msg: Optional[str] = None,
-            ex: Optional[Exception] = None,
-            mthd: Optional[str] = None,
             op: Optional[str] = None,
+            msg: Optional[str] = None,
+            mthd: Optional[str] = None,
+            err_code: Optional[str] = None,
+            ex: Optional[Exception] = None,
             rslt_type: Optional[str] = None,
     ):
+        """
+        Args:
+            op: Optional[str]
+            msg: Optional[str]
+            mthd: Optional[str]
+            err_code: Optional[str]
+            ex: Optional[Exception]
+            rslt_type: Optional[str]
+        """
         op = op or self.OP
         msg = msg or self.MSG
         mthd = mthd or self.MTHD

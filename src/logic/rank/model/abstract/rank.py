@@ -12,7 +12,7 @@ from abc import ABC, abstractmethod
 from typing import Dict
 
 from logic.persona import Persona
-from logic.span import Span
+from logic.span import CoordSpan
 from logic.vector import VectorService
 from logic.coord import CoordService
 from logic.system import ComputationResult, LoggingLevelRouter
@@ -79,7 +79,7 @@ class Rank(ABC):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def span_dict(self) -> ComputationResult[Dict[str, Span]]:
+    def span_dict(self) -> ComputationResult[Dict[str, CoordSpan]]:
         pass
     
     def __eq__(self, other):

@@ -13,7 +13,7 @@ from typing import Optional
 from logic.vector import VectorService
 from logic.coord import Coord, CoordService
 from logic.span import (
-    DiagonalRayProvider, NoRayProviderException, PerpendicularRayProvider, Span, SpanComputationException,
+    DiagonalRayProvider, NoRayProviderException, PerpendicularRayProvider, CoordSpan, SpanComputationException,
     SpanComputationRouteException, SpannerEngineException
 )
 from logic.system import ComputationResult, LoggingLevelRouter
@@ -46,7 +46,7 @@ class SpannerEngine:
             perpendicular_ray_provider: Optional[PerpendicularRayProvider]
             
         Returns:
-            ComputationResult[Span]
+            ComputationResult[CoordSpan]
             
         Raises:
             SpannerEngineException
@@ -151,7 +151,7 @@ class SpannerEngine:
             coord_service: CoordService,
             diagonal_provider: DiagonalRayProvider,
             perpendicular_provider: PerpendicularRayProvider
-    ) -> ComputationResult[Span]:
+    ) -> ComputationResult[CoordSpan]:
         """
         Action:
             1.  Get the diagonal component of the queen's span by calling _compute_bishop_span.
@@ -168,7 +168,7 @@ class SpannerEngine:
             perpendicular_provider: PerpendicularRayProvider
             
         Returns:
-            ComputationResult[Span]
+            ComputationResult[CoordSpan]
         
         Raises:
             SpannerEngineException
@@ -227,7 +227,7 @@ class SpannerEngine:
                 )
             )
         # --- Add the perpendicular and diagonal components to ge the queen's entire span. ---#
-        queen_span = Span(origin=origin, rays=[])
+        queen_span = CoordSpan(origin=origin, rays=[])
         for ray in diagonal_span_result.payload.rays:
             queen_span.rays.append(ray)
         # Perpendicular rays next.
@@ -244,7 +244,7 @@ class SpannerEngine:
             origin,
             coord_service: CoordService,
             provider: DiagonalRayProvider,
-    ) -> ComputationResult[Span]:
+    ) -> ComputationResult[CoordSpan]:
         """
         Action:
             1.  Iterate through the provider's factors to compute each ray. If the ray is not computed, send
@@ -257,7 +257,7 @@ class SpannerEngine:
             provider: DiagonalRayProvider
 
         Returns:
-            ComputationResult[Span]
+            ComputationResult[CoordSpan]
 
         Raises:
             SpannerEngineException
@@ -266,7 +266,7 @@ class SpannerEngine:
         method = f"{cls.__name__}._bishop_span"
         
         # --- Add the computed ray to the span. ---#
-        span = Span(origin=origin, rays=[])
+        span = CoordSpan(origin=origin, rays=[])
         for factor in provider.factors.to_list:
             ray_result = provider.ray.compute(
                 origin=origin,
@@ -306,7 +306,7 @@ class SpannerEngine:
             origin,
             coord_service: CoordService,
             provider: PerpendicularRayProvider
-    ) -> ComputationResult[Span]:
+    ) -> ComputationResult[CoordSpan]:
         """
         Action:
             1.  Iterate through the provider's factors to compute each ray. If the ray is not computed, send
@@ -319,7 +319,7 @@ class SpannerEngine:
             provider: PerpendicularRayProvider
 
         Returns:
-            ComputationResult[Span]
+            ComputationResult[CoordSpan]
 
         Raises:
             SpannerEngineException
@@ -328,7 +328,7 @@ class SpannerEngine:
         method = f"{cls.__name__}._rook_span"
         
         # --- Add the computed ray to the span. ---#
-        span = Span(origin=origin, rays=[])
+        span = CoordSpan(origin=origin, rays=[])
         for factor in provider.factors.to_list:
             ray_result = provider.ray.compute(
                 origin=origin,

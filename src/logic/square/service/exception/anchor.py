@@ -42,6 +42,7 @@ class SquareServiceException(AnchorException):
         *   err_code (str)
         *   ex (Optional[Exception])
         *   cls_name (Optional[str])
+        *   cls_mthd: Optional[str]
 
     # LOCAL METHODS:
     None

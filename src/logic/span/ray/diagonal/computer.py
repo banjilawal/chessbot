@@ -12,7 +12,7 @@ from typing import List
 
 from logic.coord import Coord, CoordService
 from logic.system import ComputationResult, LoggingLevelRouter
-from logic.span import DiagonalRayComputationException, DiagonalRayFactors, Ray
+from logic.span import DiagonalRayComputationException, DiagonalRayFactors, CoordRay
 from logic.vector import VectorService
 
 
@@ -63,7 +63,7 @@ class DiagonalRayComputer:
             factors: DiagonalRayFactors,
             coord_service: CoordService = CoordService(),
             vector_service: VectorService = VectorService(),
-    ) -> ComputationResult[Ray]:
+    ) -> ComputationResult[CoordRay]:
         """
         # Action
             1.  Iterate over the range of start_x to end_x with step x_step.
@@ -77,7 +77,7 @@ class DiagonalRayComputer:
             coord_service: CoordService
             
         Returns:
-            ComputationResult[Ray]
+            ComputationResult[CoordRay]
             
         Raises:
             DiagonalRayComputationFailedException
@@ -114,4 +114,4 @@ class DiagonalRayComputer:
         origin = points.pop(0)
         
         # --- Create the ray then send in the success result. ---#
-        return ComputationResult.success(Ray(origin=origin, points=points))
+        return ComputationResult.success(CoordRay(origin=origin, points=points))

@@ -19,7 +19,7 @@ class PerpendicularRayProvider:
 
     # RESPONSIBILITIES:
     1.  Aggregate modules for computing components of perpendicular span from an origin.
-    2.  Simplify Span derivations.
+    2.  Simplify CoordSpan derivations.
 
     # PARENT:
     None

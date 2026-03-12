@@ -12,7 +12,7 @@ from typing import List
 
 from logic.coord import Coord, CoordService
 from logic.system import ComputationResult, LoggingLevelRouter
-from logic.span import PerpendicularRayComputationException, PerpendicularRayFactors, Ray
+from logic.span import PerpendicularRayComputationException, PerpendicularRayFactors, CoordRay
 
 
 class PerpendicularRayComputer:
@@ -54,7 +54,7 @@ class PerpendicularRayComputer:
             cls,
             factors: PerpendicularRayFactors,
             coord_service: CoordService = CoordService(),
-    ) -> ComputationResult[Ray]:
+    ) -> ComputationResult[CoordRay]:
         """
         # Action
             1.  Iterate over the range of start_x to end_x with step x_step.
@@ -68,7 +68,7 @@ class PerpendicularRayComputer:
             coord_service: CoordService
             
         Returns:
-            ComputationResult[Ray]
+            ComputationResult[CoordRay]
             
         Raises:
             PerpendicularRayComputationException
@@ -103,5 +103,5 @@ class PerpendicularRayComputer:
             
         # Pop the first point and make it the origin.
         origin = points.pop(0) if points else None
-        return ComputationResult.success(Ray(origin=origin, points=points))
+        return ComputationResult.success(CoordRay(origin=origin, points=points))
  

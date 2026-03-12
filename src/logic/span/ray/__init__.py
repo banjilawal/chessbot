@@ -14,5 +14,5 @@ from .diagonal import *
 from .perpendicular import *
 
 # Modules
-from .ray import Ray
+from .ray import CoordRay
 from .wrapper import RayComputationException

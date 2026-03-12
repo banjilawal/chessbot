@@ -13,7 +13,7 @@ from typing import Dict, List
 from logic.system import ComputationResult
 from logic.coord import Coord, CoordService
 from logic.vector import Vector, VectorService
-from logic.span import KnightSpannerException, Ray, Span, Spanner
+from logic.span import KnightSpannerException, CoordRay, CoordSpan, Spanner
 
 class KnightSpanner(Spanner):
     """
@@ -43,7 +43,7 @@ class KnightSpanner(Spanner):
             vectors: List[Vector],
             coord_service: CoordService = CoordService(),
             vector_service: VectorService = VectorService(),
-    ) -> ComputationResult[Dict[str, Span]]:
+    ) -> ComputationResult[Dict[str, CoordSpan]]:
         """
         Action:
             1.  If the origin is not certified as safe send and exception chain in the computation
@@ -62,7 +62,7 @@ class KnightSpanner(Spanner):
             KnightSpannerException
             
         Returns:
-            ComputationResult[Span]
+            ComputationResult[CoordSpan]
         """
         method = f"{cls.__name__}.compute"
         
@@ -79,7 +79,7 @@ class KnightSpanner(Spanner):
                 )
             )
         # --- Iterate through vectors to get the knight's spanning set. ---#
-        span = Span(origin=origin, rays=[])
+        span = CoordSpan(origin=origin, rays=[])
         for vector in vectors:
             ray_result = cls._knight_ray(
                 origin=origin,
@@ -114,7 +114,7 @@ class KnightSpanner(Spanner):
             vector: Vector,
             coord_service: CoordService,
             vector_service: VectorService,
-    ) -> ComputationResult[Ray]:
+    ) -> ComputationResult[CoordRay]:
         """
         Action:
             1.  If adding the vector to the array fails send an exception chain in the ComputationResult.
@@ -147,8 +147,8 @@ class KnightSpanner(Spanner):
         # --- Put the new point in an array. ---#
         points.append(addition_result.payload)
         
-        # --- Create a new Ray and send in the success result. ---#
-        return ComputationResult.success(Ray(origin=origin, points=points))
+        # --- Create a new CoordRay and send in the success result. ---#
+        return ComputationResult.success(CoordRay(origin=origin, points=points))
             
         
         

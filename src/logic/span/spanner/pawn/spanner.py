@@ -15,7 +15,7 @@ from logic.token import PawnToken
 from logic.system import ComputationResult
 from logic.coord import Coord, CoordService
 from logic.vector import Vector, VectorService
-from logic.span import PawnSpannerException, PawnVectorSets, Ray, Span, Spanner
+from logic.span import PawnSpannerException, PawnVectorSets, CoordRay, CoordSpan, Spanner
 
 class PawnSpanner(Spanner):
     """
@@ -45,7 +45,7 @@ class PawnSpanner(Spanner):
             pawn_token: PawnToken,
             coord_service: CoordService = CoordService(),
             vector_service: VectorService = VectorService(),
-    ) -> ComputationResult[Dict[str, Span]]:
+    ) -> ComputationResult[Dict[str, CoordSpan]]:
         """
         Action:
             1.  If the pawn's origin is not certified as safe send and exception chain in the
@@ -65,7 +65,7 @@ class PawnSpanner(Spanner):
             PawnSpannerException
             
         Returns:
-            ComputationResult[Span]
+            ComputationResult[CoordSpan]
         """
         method = f"{cls.__name__}.compute"
         
@@ -104,7 +104,7 @@ class PawnSpanner(Spanner):
         coord_service: CoordService,
         vector_service: VectorService,
         vector_hash: Dict[str, List[Vector]],
-    ) -> ComputationResult[Dict[str, Span]]:
+    ) -> ComputationResult[Dict[str, CoordSpan]]:
         """
         Action:
             1.  For each key generate the spanning set. On success add to the dictionary. Otherwise,
@@ -121,11 +121,11 @@ class PawnSpanner(Spanner):
             PawnSpannerException
 
         Returns:
-            ComputationResult[Span]
+            ComputationResult[CoordSpan]
         """
         method = f"{cls.__name__}._process_vector_dictionary"
     
-        span_hash = Dict[str, Span] = {}
+        span_hash = Dict[str, CoordSpan] = {}
         for key in vector_hash.keys():
             span_result = cls._span_helper(
                 origin=origin,
@@ -159,7 +159,7 @@ class PawnSpanner(Spanner):
             vectors: List[Vector],
             coord_service: CoordService,
             vector_service: VectorService,
-    ) -> ComputationResult[Span]:
+    ) -> ComputationResult[CoordSpan]:
         """
         Action:
             1.  Iterate through the vectors to get rays from the origin. If any ray derivation fails
@@ -176,11 +176,11 @@ class PawnSpanner(Spanner):
             PawnSpannerException
 
         Returns:
-            ComputationResult[Span]
+            ComputationResult[CoordSpan]
         """
         method = f"{cls.__name__}._span_helper"
         
-        span = Span(origin=origin, rays=[])
+        span = CoordSpan(origin=origin, rays=[])
         for vector in vectors:
             ray_result = cls._pawn_ray(
                 origin=origin,
@@ -214,7 +214,7 @@ class PawnSpanner(Spanner):
             vector: Vector,
             coord_service: CoordService,
             vector_service: VectorService,
-    ) -> ComputationResult[Ray]:
+    ) -> ComputationResult[CoordRay]:
         """
         Action:
             1.  If adding the vector to the array fails send an exception chain in the ComputationResult.
@@ -247,8 +247,8 @@ class PawnSpanner(Spanner):
         # --- Put the new point in an array. ---#
         points.append(addition_result.payload)
         
-        # --- Create a new Ray and send in the success result. ---#
-        return ComputationResult.success(Ray(origin=origin, points=points))
+        # --- Create a new CoordRay and send in the success result. ---#
+        return ComputationResult.success(CoordRay(origin=origin, points=points))
             
         
         

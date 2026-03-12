@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Dict, List
 
 from logic.persona import Persona
-from logic.span import BishopSpanner, Span
+from logic.span import BishopSpanner, CoordSpan
 from logic.coord import Coord, CoordService
 from logic.rank import BishopException, Rank
 from logic.system import ComputationResult, LoggingLevelRouter
@@ -65,7 +65,7 @@ class Bishop(Rank):
         self._spanner = spanner
         
     @LoggingLevelRouter.monitor
-    def span_dict(self, origin: Coord) -> ComputationResult[Dict[str, Span]]:
+    def span_dict(self, origin: Coord) -> ComputationResult[Dict[str, CoordSpan]]:
         """
         Produce a dictionary of the coords a Bishop can reach from its current position.
         
@@ -76,7 +76,7 @@ class Bishop(Rank):
             BishopException
             
         Returns:
-            ComputationResult[Dict[str, Span]]
+            ComputationResult[Dict[str, CoordSpan]]
         """
         method = f"{self.__class__.__name__}.span_dict"
         

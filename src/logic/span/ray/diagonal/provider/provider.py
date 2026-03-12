@@ -19,7 +19,7 @@ class DiagonalRayProvider:
 
     # RESPONSIBILITIES:
     1.  Aggregate modules for computing components of diagonal span from an origin.
-    2.  Simplify Span derivations.
+    2.  Simplify CoordSpan derivations.
 
     # PARENT:
     None

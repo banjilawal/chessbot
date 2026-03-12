@@ -11,8 +11,9 @@ version: 1.0.0
 
 # Packages
 from .ray import *
+from .square import *
 from .service import *
 from .spanner import *
 
 # Modules
-from .span import Span
+from .span import CoordSpan

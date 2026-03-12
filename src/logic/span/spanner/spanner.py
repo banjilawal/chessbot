@@ -11,15 +11,15 @@ from __future__ import annotations
 
 from typing import Dict
 
-from logic.span import Span
+from logic.span import CoordSpan
 from logic.system import ComputationResult, Computer
 
 
-class Spanner(Computer[Span]):
+class Spanner(Computer[CoordSpan]):
     """
     """
     
     @classmethod
-    def compute(cls, *args, **kwargs) -> ComputationResult[Dict[str, Span]]:
+    def compute(cls, *args, **kwargs) -> ComputationResult[Dict[str, CoordSpan]]:
         pass
     

@@ -13,7 +13,7 @@ from typing import Dict
 
 from logic.system import ComputationResult
 from logic.coord import Coord, CoordService
-from logic.span import RookSpannerException, PerpendicularRayProvider, Span, Spanner, SpannerEngine
+from logic.span import RookSpannerException, PerpendicularRayProvider, CoordSpan, Spanner, SpannerEngine
 
 
 class RookSpanner(Spanner):
@@ -44,7 +44,7 @@ class RookSpanner(Spanner):
             engine: SpannerEngine = SpannerEngine(),
             coord_service: CoordService = CoordService(),
             perpendicular_ray_provider: PerpendicularRayProvider = PerpendicularRayProvider(),
-    ) -> ComputationResult[Dict[str, Span]]:
+    ) -> ComputationResult[Dict[str, CoordSpan]]:
         """
         Action:
             1.  Handoff validation and calculation to the engine.
@@ -60,7 +60,7 @@ class RookSpanner(Spanner):
             RookSpannerException
             
         Returns:
-            ComputationResult[Span]
+            ComputationResult[CoordSpan]
         """
         method = f"{cls.__name__}.compute"
         

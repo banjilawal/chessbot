@@ -12,7 +12,7 @@ from typing import Dict
 
 from logic.system import ComputationResult
 from logic.coord import Coord, CoordService
-from logic.span import BishopSpannerException, DiagonalRayProvider, Span, Spanner, SpannerEngine
+from logic.span import BishopSpannerException, DiagonalRayProvider, CoordSpan, Spanner, SpannerEngine
 
 class BishopSpanner(Spanner):
     """
@@ -42,7 +42,7 @@ class BishopSpanner(Spanner):
             engine: SpannerEngine = SpannerEngine(),
             coord_service: CoordService = CoordService(),
             diagonal_ray_provider: DiagonalRayProvider = DiagonalRayProvider(),
-    ) -> ComputationResult[Dict[str, Span]]:
+    ) -> ComputationResult[Dict[str, CoordSpan]]:
         """
         Action:
             1.  Handoff validation and calculation to the engine.
@@ -58,7 +58,7 @@ class BishopSpanner(Spanner):
             BishopSpannerException
             
         Returns:
-            ComputationResult[Span]
+            ComputationResult[CoordSpan]
         """
         method = f"{cls.__name__}.compute"
         

@@ -12,7 +12,7 @@ from typing import Dict
 
 from logic.persona import Persona
 from logic.vector import VectorService
-from logic.span import KingSpanner, Span
+from logic.span import KingSpanner, CoordSpan
 from logic.rank import KingException, Rank
 from logic.coord import Coord, CoordService
 from logic.system import ComputationResult, LoggingLevelRouter
@@ -64,7 +64,7 @@ class King(Rank):
         self._spanner = spanner
     
     @LoggingLevelRouter.monitor
-    def span_dict(self, origin: Coord) -> ComputationResult[Dict[str, Span]]:
+    def span_dict(self, origin: Coord) -> ComputationResult[Dict[str, CoordSpan]]:
         """
         Produce a dictionary of the coords a King can reach from its current position.
 
@@ -75,7 +75,7 @@ class King(Rank):
             KingException
 
         Returns:
-            ComputationResult[Dict[str, Span]]
+            ComputationResult[Dict[str, CoordSpan]]
         """
         method = f"{self.__class__.__name__}.span_dict"
         

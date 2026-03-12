@@ -14,7 +14,7 @@ from logic.persona import Persona
 from logic.token import PawnToken
 from logic.coord import CoordService
 from logic.vector import VectorService
-from logic.span import PawnSpanner, Span
+from logic.span import PawnSpanner, CoordSpan
 from logic.rank import PawnException, Rank
 from logic.system import ComputationResult, LoggingLevelRouter
 
@@ -65,7 +65,7 @@ class Pawn(Rank):
         self._spanner = spanner
     
     @LoggingLevelRouter.monitor
-    def span_dict(self, pawn_token: PawnToken) -> ComputationResult[Dict[str, Span]]:
+    def span_dict(self, pawn_token: PawnToken) -> ComputationResult[Dict[str, CoordSpan]]:
         """
         Produce a dictionary of the coords a Pawn can reach from its current position.
 
@@ -76,7 +76,7 @@ class Pawn(Rank):
             PawnException
 
         Returns:
-            ComputationResult[Dict[str, Span]]
+            ComputationResult[Dict[str, CoordSpan]]
         """
         method = f"{self.__class__.__name__}.span_dict"
         

@@ -12,7 +12,7 @@ from typing import List
 
 from logic.coord import Coord
 
-class Ray:
+class CoordRay:
     """
     # ROLE: Data-Holder
     

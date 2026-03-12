@@ -12,7 +12,7 @@ from typing import Dict
 
 from logic.persona import Persona
 from logic.vector import VectorService
-from logic.span import RookSpanner, Span
+from logic.span import RookSpanner, CoordSpan
 from logic.rank import RookException, Rank
 from logic.coord import Coord, CoordService
 from logic.system import ComputationResult, LoggingLevelRouter
@@ -64,7 +64,7 @@ class Rook(Rank):
         self._spanner = spanner
     
     @LoggingLevelRouter.monitor
-    def span_dict(self, origin: Coord) -> ComputationResult[Dict[str, Span]]:
+    def span_dict(self, origin: Coord) -> ComputationResult[Dict[str, CoordSpan]]:
         """
         Produce a dictionary of the coords a Rook can reach from its current position.
 
@@ -75,7 +75,7 @@ class Rook(Rank):
             RookException
 
         Returns:
-            ComputationResult[Dict[str, Span]]
+            ComputationResult[Dict[str, CoordSpan]]
         """
         method = f"{self.__class__.__name__}.span_dict"
         

@@ -14,7 +14,7 @@ from typing import Dict
 from logic.system import ComputationResult
 from logic.coord import Coord, CoordService
 from logic.span import (
-    PerpendicularRayProvider, QueenSpannerException, DiagonalRayProvider, Span, Spanner, SpannerEngine
+    PerpendicularRayProvider, QueenSpannerException, DiagonalRayProvider, CoordSpan, Spanner, SpannerEngine
 )
 
 
@@ -47,7 +47,7 @@ class QueenSpanner(Spanner):
             coord_service: CoordService = CoordService(),
             diagonal_ray_provider: DiagonalRayProvider = DiagonalRayProvider(),
             perpendicular_ray_provider: PerpendicularRayProvider = PerpendicularRayProvider()
-    ) -> ComputationResult[Dict[str, Span]]:
+    ) -> ComputationResult[Dict[str, CoordSpan]]:
         """
         Action:
             1.  Handoff validation and calculation to the engine.
@@ -64,7 +64,7 @@ class QueenSpanner(Spanner):
             QueenSpannerException
             
         Returns:
-            ComputationResult[Span]
+            ComputationResult[CoordSpan]
         """
         method = f"{cls.__name__}.compute"
         

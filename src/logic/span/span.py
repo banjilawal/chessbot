@@ -11,9 +11,9 @@ from __future__ import annotations
 from typing import List
 
 from logic.coord import Coord
-from logic.span import Ray
+from logic.span import CoordRay
 
-class Span:
+class CoordSpan:
     """
     # ROLE: Data-Holder
 
@@ -44,9 +44,9 @@ class Span:
     None
     """
     _origin: Coord
-    _rays: List[Ray]
+    _rays: List[CoordRay]
     
-    def __init__(self, origin: Coord, rays: List[Ray]):
+    def __init__(self, origin: Coord, rays: List[CoordRay]):
         self._origin = origin
         self._rays = rays
         
@@ -59,7 +59,7 @@ class Span:
         return self._origin
     
     @property
-    def rays(self) -> List[Ray]:
+    def rays(self) -> List[CoordRay]:
         return self._rays
         
     
