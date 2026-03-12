@@ -48,10 +48,12 @@ class Span(ABC, Generic[T]):
     """
     _origin: T
     _rays: List[Ray[T]]
+    _sub_span_roots: List[T]
     
     def __init__(self, origin: T, rays: List[Ray[T]]):
         self._origin = origin
         self._rays = rays
+        self._sub_span_roots = []
         
     @property
     def length(self) -> int:
@@ -66,11 +68,23 @@ class Span(ABC, Generic[T]):
         return self._rays
     
     @property
+    def sub_span_roots(self) -> List[T]:
+        return self._sub_span_roots
+    
+    @property
     def degrees(self) -> int:
         return len(self._rays)
     
     @property
     def is_empty(self) -> bool:
-        return len(self._rays) == 0
+        return self.degrees == 0 and not self.has_sub_spans
+    
+    @property
+    def number_of_sub_spans(self) -> int:
+        return len(self._sub_span_roots)
+    
+    @property
+    def has_sub_spans(self) -> bool:
+        return len(self._sub_span_roots) > 0
         
     
