@@ -5,61 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change afterPath="$PROJECT_DIR$/src/logic/span/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/span/coord/ray/ray.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/span/graph/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/span/graph/exception/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/span/graph/exception/wrapper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/span/graph/node/exception/wrapper/wrapper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/span/graph/node/producer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/span/graph/producer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/span/root/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/span/root/ray.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/span/root/span.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/graph/graph.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/graph/graph.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/node/stack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/node/stack/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/node/stack/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/node/stack/exception/catchall.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/node/stack/exception/pop/empty.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/node/stack/exception/pop/empty.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/node/stack/exception/pop/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/node/stack/exception/pop/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/node/stack/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/node/stack/stack.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/ray/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/coord/ray/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/ray/diagonal/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/coord/ray/diagonal/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/ray/diagonal/computer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/coord/ray/diagonal/computer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/ray/diagonal/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/coord/ray/diagonal/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/ray/diagonal/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/coord/ray/diagonal/exception/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/ray/diagonal/provider/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/coord/ray/diagonal/provider/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/ray/diagonal/provider/factor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/coord/ray/diagonal/provider/factor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/ray/diagonal/provider/plane.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/coord/ray/diagonal/provider/plane.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/ray/diagonal/provider/provider.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/coord/ray/diagonal/provider/provider.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/ray/perpendicular/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/coord/ray/perpendicular/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/ray/perpendicular/computer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/coord/ray/perpendicular/computer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/ray/perpendicular/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/coord/ray/perpendicular/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/ray/perpendicular/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/coord/ray/perpendicular/exception/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/ray/perpendicular/provider/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/coord/ray/perpendicular/provider/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/ray/perpendicular/provider/factor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/coord/ray/perpendicular/provider/factor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/ray/perpendicular/provider/plane.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/coord/ray/perpendicular/provider/plane.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/ray/perpendicular/provider/provider.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/coord/ray/perpendicular/provider/provider.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/ray/ray.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/ray/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/coord/ray/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/service/handler/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/service/handler/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/service/handler/graph.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/service/handler/graph.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/service/handler/node/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/graph/node/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/service/handler/node/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/graph/node/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/service/handler/node/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/graph/node/exception/anchor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/service/handler/node/exception/wrapper/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/graph/node/exception/wrapper/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/service/handler/node/exception/wrapper/build.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/graph/node/exception/wrapper/build.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/service/handler/node/exception/wrapper/push.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/graph/node/exception/wrapper/push.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/service/handler/node/handler.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/coord/span.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/spanner/bishop/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/spanner/bishop/service/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/square/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/square/builder/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/square/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/square/builder/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/square/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/square/builder/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/square/ray.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/square/ray.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/square/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/square/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/span/graph/node/producer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/graph/node/producer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -905,7 +852,7 @@
       <workItem from="1772847189165" duration="78504000" />
       <workItem from="1773215668490" duration="8009000" />
       <workItem from="1773223700953" duration="11379000" />
-      <workItem from="1773252041918" duration="48087000" />
+      <workItem from="1773252041918" duration="52108000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
