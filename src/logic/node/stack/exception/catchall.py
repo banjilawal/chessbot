@@ -22,7 +22,7 @@ class NodeStackException(NodeException, StackServiceException):
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap any exceptions raised by NodeStack methods that return Result objects.
+    1.  Wrap any exceptions raised by NodeStackService methods that return Result objects.
 
     # PARENT:
         *   NodeException
@@ -38,4 +38,4 @@ class NodeStackException(NodeException, StackServiceException):
     None
     """
     ERR_CODE = "NODE_STACK_EXCEPTION"
-    MSG = "NodeStack raised an exception."
+    MSG = "NodeStackService raised an exception."

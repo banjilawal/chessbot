@@ -3,15 +3,15 @@
 """
 Module: logic.span.square.span
 Author: Banji Lawal
-Created: 2026-02-26
+Created: 2026-03-11
 version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import List
+from typing import List, cast
 
 from logic.square import Square
-from logic.span import CoordRay, SquareRay
+from logic.span import SquareRay
 
 
 class SquareSpan:
@@ -44,21 +44,14 @@ class SquareSpan:
     # INHERITED METHODS:
     None
     """
-    _origin: Square
-    _rays: List[SquareRay]
     
     def __init__(self, origin: Square, rays: List[SquareRay]):
-        self._origin = origin
-        self._rays = rays
-    
-    @property
-    def length(self) -> int:
-        return len(self._rays)
-    
+        super().__init__(origin=origin, rays=rays)
+
     @property
     def origin(self) -> Square:
-        return self._origin
+        return cast(Square, self.origin)
     
     @property
     def rays(self) -> List[SquareRay]:
-        return self._rays
+        return cast(List[SquareRay], self.rays)

@@ -10,19 +10,19 @@ version: 1.0.0
 from __future__ import annotations
 
 from logic.edge import EdgeStack
-from logic.node import NodeStack
+from logic.node import NodeStackService
 
 
 class Graph:
     """"""
     _id: int
     _edges: EdgeStack
-    _vertices: NodeStack
+    _vertices: NodeStackService
     
     def __init__(self, id: int):
         self._id = id
         self._edges = EdgeStack()
-        self._vertices = NodeStack()
+        self._vertices = NodeStackService()
     
     @property
     def id(self) -> int:
@@ -33,6 +33,6 @@ class Graph:
         return self._edges
     
     @property
-    def vertices(self) -> NodeStack:
+    def vertices(self) -> NodeStackService:
         return self._vertices
     

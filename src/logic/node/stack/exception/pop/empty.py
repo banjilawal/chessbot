@@ -38,4 +38,4 @@ class PoppingEmptyNodeStackException(NodeDebugException):
     None
     """
     ERR_CODE = "POPPING_EMPTY_NODE_STACK_EXCEPTION"
-    MSG = "Node deletion failed: NodeStack does not own any nodes."
+    MSG = "Node deletion failed: NodeStackService does not own any nodes."

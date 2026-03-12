@@ -17,7 +17,7 @@ from logic.node import (
 from logic.system import DeletionResult, IdFactory, InsertionResult, LoggingLevelRouter, SearchResult, StackService
 
 
-class NodeStack(StackService[Node]):
+class NodeStackService(StackService[Node]):
     """
     # ROLE: Data Stack, SearchWorker IntegrityService, CRUD Operations, Encapsulation, API layer.
 
@@ -51,7 +51,7 @@ class NodeStack(StackService[Node]):
             self,
             name: str = SERVICE_NAME,
             service: NodeService = NodeService(),
-            id: int = IdFactory.next_id(class_name="NodeStack"),
+            id: int = IdFactory.next_id(class_name="NodeStackService"),
             context_service: NodeContextService = NodeContextService(),
     ):
         """
@@ -109,7 +109,7 @@ class NodeStack(StackService[Node]):
             *   NodePushException
             *   AddingDuplicateNodeException
         """
-        method = "NodeStack.push"
+        method = "NodeStackService.push"
         
         # Handle the case that, the item is unsafe.
         validation = self.integrity_service.validator.validate(candidate=item)
@@ -157,7 +157,7 @@ class NodeStack(StackService[Node]):
             *   NodePopException 
             *   PoppingEmptyNodeStackException
         """
-        method = "NodeStack.pop"
+        method = "NodeStackService.pop"
         
         # Handle the case that, there are no nodes in the stack.
         if self.is_empty:
@@ -197,7 +197,7 @@ class NodeStack(StackService[Node]):
         Raises:
             *   NodeStackException
         """
-        method = "NodeStack.query"
+        method = "NodeStackService.query"
         
         # --- Handoff the search responsibility to _stack_service. ---#
         query_result = self._context_service.finder.find(dataset=self._stack, context=context)

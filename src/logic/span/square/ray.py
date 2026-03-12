@@ -3,22 +3,23 @@
 """
 Module: logic.span.square.ray
 Author: Banji Lawal
-Created: 2026-02-26
+Created: 2026-03-11
 version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import List
+from typing import List, cast
 
+from logic.span import Ray
 from logic.square import Square
 
 
-class SquareRay:
+class SquareRay(Ray[Square]):
     """
     # ROLE: Data-Holder
 
     # RESPONSIBILITIES:
-    1.  Stores points that define a ray from an origin to a terminus
+    1.  Stores members that define a ray from an origin to a terminus
 
     # PARENT:
     None
@@ -28,14 +29,14 @@ class SquareRay:
 
     # LOCAL ATTRIBUTES:
         *   origin: Square
-        *   points: List[Square]
+        *   members: List[Square]
 
     # INHERITED ATTRIBUTES:
     None
 
     # CONSTRUCTOR PARAMETERS:)
         *   origin: Square
-        *   points: List[Square]
+        *   members: List[Square]
 
     # LOCAL METHODS:
    None
@@ -43,26 +44,18 @@ class SquareRay:
     # INHERITED METHODS:
     None
     """
-    _origin: Square
-    _points: List[Square]
-    
-    def __init__(self, origin: Square, points: List[Square]):
+    def __init__(self, origin: Square, members: List[Square]):
         """
         Args:
             origin: Square
-            points: List[Square]
+            members: List[Square]
         """
-        self._origin = origin
-        self._points = points
+        super().__init__(origin=origin, members=members)
     
     @property
     def origin(self) -> Square:
-        return self._origin
+        return cast(Square, self.origin)
     
     @property
-    def points(self) -> List[Square]:
-        return self._points
-    
-    @property
-    def origin_inclusive_length(self) -> int:
-        return len(self._points) + 1
+    def members(self) -> List[Square]:
+        return cast(List[Square], self.members)

@@ -10,10 +10,10 @@ version: 1.0.0
 # =========== SPAN PACKAGE CONTENTS ===========#
 
 # Packages
-from .ray import *
+from .root import *
+from logic.span.coord.ray import *
 from .square import *
 from .service import *
 from .spanner import *
 
 # Modules
-from .span import CoordSpan

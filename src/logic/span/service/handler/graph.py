@@ -12,7 +12,7 @@ class SpanGraphHandler:
     ):
         """
         Args:
-            node: SquareGraphHandler
+            node: SpanningGrapNodeHandler
             edge: NodeEdgeHandlerException
         """
         self._node = node

@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== SPAN.SERVICE.HANDLER PACKAGE CONTENTS ===========#
 
 # Packages
-from .node import *
 from .edge import *
 
 # Modules

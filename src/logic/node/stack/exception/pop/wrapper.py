@@ -22,7 +22,7 @@ class NodePopException(NodeStackException, DeletionException):
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a NodeStack deletion fails. The encapsulated exceptions create
+    1.  Wrap debug exceptions indicating why a NodeStackService deletion fails. The encapsulated exceptions create
         chain for tracing the source of the failure.
 
     # PARENT:
