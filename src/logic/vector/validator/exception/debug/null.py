@@ -52,7 +52,7 @@ class NullVectorException(NullException):
     """
     ERR_CODE = "NULL_VECTOR_EXCEPTION"
     MSG = "Vector cannot be null."
-    VAR: None
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

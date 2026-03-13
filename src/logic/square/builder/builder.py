@@ -41,25 +41,16 @@ class SquareBuilder(Builder[Square]):
     None
 
     # INHERITED ATTRIBUTES:
-    None
+        *   See Builder class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
     None
 
     # LOCAL METHODS:
-        *   build(
-                cls,
-                name: str,
-                board: Board,
-                coord: Coord,
-                id: int = IdFactory.next_id(Square.__name__),
-                board_service: BoardService = BoardService(),
-                coord_service: CoordService = CoordService(),
-                identity_service: IdentityService = IdentityService(),
-            ) -> BuildResult[Square]
+    None
 
     # INHERITED METHODS:
-    None
+        *   See Builder class for inherited methods.
     """
     
     @classmethod
@@ -76,7 +67,7 @@ class SquareBuilder(Builder[Square]):
             square_collision_detector: SquareCollisionDetector = SquareCollisionDetector(),
     ) -> BuildResult[Square]:
         """
-        # ACTION:
+        Action:
             1.  Send an exception chain in the BuildResult if
                     * Any build param fails is not certified as safe.
                     * The square's attributes have already been used on the board.
@@ -84,22 +75,23 @@ class SquareBuilder(Builder[Square]):
             3.  Send an exception chain in the BuildResult if
                     * The square requires insertion into the board but the insertion fails.
             4.  Return the Square instance in the BuildResult.
-        # PARAMETERS:
-            *   id (int)
-            *   name (str)
-            *   cord (Coord)
-            *   board (Board)
-            *   board_service (BoardService)
-            *   coord_service (CoordService)
-            *   identity_service (IdentityService)
-        # RETURNS:
-            *   ValidationResult[Square] containing either:
-                    - On failure: Exception.
-                    - On success: Square in the payload.
+            
+        Args:
+            id: int
+            name: str
+            coord: Coord
+            board: Board
+            coord_service: CoordService
+            board_service: BoardService
+            identity_service: IdentityService
+
+        Returns:
+            ValidationResult[Square]
+            
         Raises:
-            *   SquareBuildException
+            SquareBuildException
         """
-        method = "SquareBuilder.builder"
+        method = f"{cls.__class__.__name__}.build"
         
         # Handle the case that, a build param fails is not certified as safe.
         build_params_validation_result = cls._validate_build_params(

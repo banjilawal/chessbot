@@ -52,7 +52,7 @@ class NullPlayerException(NullException):
     """
     ERR_CODE = "NULL_PLAYER_EXCEPTION"
     MSG = "Player cannot be null."
-    VAR: None
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

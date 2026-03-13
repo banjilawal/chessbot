@@ -52,7 +52,7 @@ class NullCoordException(NullException):
     """
     ERR_CODE = "NULL_COORD_EXCEPTION"
     MSG = "Coord cannot be null."
-    VAR: None
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

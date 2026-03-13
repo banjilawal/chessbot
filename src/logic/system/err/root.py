@@ -58,7 +58,7 @@ class ChessException(Exception):
     def __init__(
             self,
             err_code: str = ERR_CODE,
-            msg: str = MSG,
+            msg = MSG,
             ex: Optional[Exception] = None
     ):
         err_code = err_code or self.ERR_CODE

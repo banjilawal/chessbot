@@ -10,8 +10,8 @@ version: 1.0.0
 # =========== SPAN.SQUARE PACKAGE CONTENTS ===========#
 
 # Packages
-from .builder import *
+from .ray import *
+from .span import *
 
 # Modules
-from .ray import SquareRay
-from .span import SquareSpan
+None

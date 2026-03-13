@@ -52,7 +52,7 @@ class NullSchemaException(NullException):
     """
     ERR_CODE = "NULL_SCHEMA_EXCEPTION"
     MSG = "Schema cannot be null."
-    VAR: None
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

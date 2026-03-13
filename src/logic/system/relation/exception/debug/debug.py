@@ -52,7 +52,7 @@ class RelationDebugException(DebugException):
     """
     ERR_CODE = "RELATION_ANALYSIS_DEBUG_EXCEPTION"
     MSG = "RelationAnalysis debug error."
-    VAR: None
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def method(

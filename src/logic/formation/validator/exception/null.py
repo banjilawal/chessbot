@@ -52,7 +52,7 @@ class NullFormationException(NullException):
     """
     ERR_CODE = "NULL_FORMATION_EXCEPTION"
     MSG = "Formation cannot be null."
-    VAR: None
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

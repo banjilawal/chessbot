@@ -28,15 +28,13 @@ class SquareRay(Ray[Square]):
     None
 
     # LOCAL ATTRIBUTES:
-        *   origin: Square
-        *   members: List[Square]
+    None
 
     # INHERITED ATTRIBUTES:
     None
 
     # CONSTRUCTOR PARAMETERS:)
         *   origin: Square
-        *   members: List[Square]
 
     # LOCAL METHODS:
    None
@@ -44,13 +42,12 @@ class SquareRay(Ray[Square]):
     # INHERITED METHODS:
     None
     """
-    def __init__(self, origin: Square, members: List[Square]):
+    def __init__(self, origin: Square):
         """
         Args:
             origin: Square
-            members: List[Square]
         """
-        super().__init__(origin=origin, members=members)
+        super().__init__(origin=origin)
     
     @property
     def origin(self) -> Square:

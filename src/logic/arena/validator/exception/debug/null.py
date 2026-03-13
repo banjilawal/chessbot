@@ -52,7 +52,7 @@ class NullArenaException(NullException):
     """
     ERR_CODE = "NULL_ARENA_EXCEPTION"
     MSG = "Arena cannot be null."
-    VAR: None
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

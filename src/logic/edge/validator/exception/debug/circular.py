@@ -7,25 +7,28 @@ Created: 2026-02-17
 version: 1.0.0
 """
 
-from logic.edge import EdgeDebugException
+from __future__ import annotations
+from typing import Any, Optional
 
 __all__ = [
-    # ======================# CIRCULAR_EDGE EXCEPTION #======================#
-    "CircularEdgeException",
+    # ======================# HEAD_CANNOT_BE_TAIL_EXCEPTION #======================#
+    "HeadCannotBeTailException",
 ]
 
+from logic.system import DebugException
 
-# ======================# CIRCULAR_EDGE EXCEPTION #======================#
-class CircularEdgeException(EdgeDebugException):
+
+# ======================# HEAD_CANNOT_BE_TAIL_EXCEPTION #======================#
+class HeadCannotBeTailException(DebugException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a candidate was not validated as an edge because its head and tail were the same node.
-        Edges are not allowed to be circular.
+    1.  Indicate an edge validation failed because the head and tail were the same.
+        Edges cannot be circular.
 
     # PARENT:
-        *   EdgeDebugException
+        *   DebugException
 
     # PROVIDES:
     None
@@ -34,7 +37,44 @@ class CircularEdgeException(EdgeDebugException):
     None
 
     # INHERITED ATTRIBUTES:
+        *   DebugException class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        *   msg (str)
+        *   err_code (str)
+        *   ex (Optional[Exception])
+        *   var (Optional[str])
+        *   val Optional[Any])
+
+    # LOCAL METHODS:
     None
+
+    # INHERITED METHODS:
+        *   See DebugException class for inherited methods.
     """
-    ERR_CODE = "CIRCULAR_EDGE_EXCEPTION"
-    MSG = "Edge validation failed: An edge cannot have the same node as its head and tail."
+    VAR = Optional[str]
+    VAL = Optional[Any]
+    ERR_CODE = "HEAD_CANNOT_BE_TAIL_EXCEPTION"
+    MSG = "Edge cannot have the same node as it's head and tail."
+    
+    def __init__(
+            self,
+            var: Optional[str] = None,
+            val: Optional[Any] = None,
+            err_code: Optional[str] = None,
+            msg: Optional[str] = None,
+            ex: Optional[Exception] = None,
+    ):
+        """
+        Args:
+            var: Optional[str]
+            val: Optional[Any]
+            msg: Optional[str]
+            ex: Optional[Exception]
+            err_code: Optional[str]
+        """
+        var = var or self.VAR
+        val = val or self.VAL
+        msg = msg or self.MSG
+        err_code = err_code or self.ERR_CODE
+        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)

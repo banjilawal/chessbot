@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 from logic.coord import CoordService
-from logic.graph import Edge, EdgeBuildException, HeadCannotBeTailException, Edge, NodeService
+from logic.edge import EdgeBuildException, HeadCannotBeTailException
 from logic.node import Node
 from logic.system import BuildResult, Builder, IdFactory, IdentityService, LoggingLevelRouter
 

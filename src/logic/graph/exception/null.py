@@ -52,7 +52,7 @@ class NullGraphException(NullException):
     """
     ERR_CODE = "NULL_GRAPH_EXCEPTION"
     MSG = "Graph cannot be null."
-    VAR: None
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

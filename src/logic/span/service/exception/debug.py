@@ -32,8 +32,7 @@ class SpanServiceDebugException(DebugException):
     None
 
     # LOCAL ATTRIBUTES:
-        *   var (Optional[str])
-        *   val Optional[Any])
+    None
 
     # INHERITED ATTRIBUTES:
         *   DebugException class for inherited attributes.
@@ -44,17 +43,17 @@ class SpanServiceDebugException(DebugException):
         *   ex (Optional[Exception])
         *   var (Optional[str])
         *   val Optional[Any])
-
+        
     # LOCAL METHODS:
-   None
+    None
 
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    VAR: None
+    VAR = Optional[str]
     VAL = Optional[Any]
     ERR_CODE = "SPAN_SERVICE_EXCEPTION"
-    MSG: str = "A variable in SpanService raised an exception."
+    MSG = "A variable in SpanService raised an exception."
     
     def __init__(
             self,

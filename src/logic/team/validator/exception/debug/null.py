@@ -52,7 +52,7 @@ class NullTeamException(NullException):
     """
     ERR_CODE = "NULL_TEAM_EXCEPTION"
     MSG = "Team cannot be null."
-    VAR: None
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

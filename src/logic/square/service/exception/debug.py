@@ -51,10 +51,10 @@ class SquareServiceDebugException(DebugException):
     # INHERITED METHODS:
         *   See ChessException class for inherited methods.
     """
-    VAR: None
+    VAR = Optional[str]
     VAL = Optional[Any]
     ERR_CODE = "SQUARE_SERVICE_EXCEPTION"
-    MSG: str = "A variable in SquareService raised an exception."
+    MSG = "A variable in SquareService raised an exception."
     
     def __init__(
             self,

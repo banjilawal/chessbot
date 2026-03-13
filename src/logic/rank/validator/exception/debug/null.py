@@ -52,7 +52,7 @@ class NullRankException(NullException):
     """
     ERR_CODE = "NULL_RANK_EXCEPTION"
     MSG = "Rank cannot be null."
-    VAR: None
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

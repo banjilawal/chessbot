@@ -52,7 +52,7 @@ class NullSnapshotException(NullException):
     """
     ERR_CODE = "NULL_SNAPSHOT_EXCEPTION"
     MSG = "Snapshot cannot be null."
-    VAR: None
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

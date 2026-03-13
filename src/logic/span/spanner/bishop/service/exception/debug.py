@@ -52,10 +52,10 @@ class BishopSpanServiceDebugException(SpanServiceDebugException):
     # INHERITED METHODS:
         *   See SpanServiceDebugException class for inherited methods.
     """
-    VAR: None
+    VAR = Optional[str]
     VAL = Optional[Any]
     ERR_CODE = "BISHOP_SPAN_SERVICE_EXCEPTION"
-    MSG: str = "A variable in BishopSpanService raised an exception."
+    MSG = "A variable in BishopSpanService raised an exception."
     
     def __init__(
             self,

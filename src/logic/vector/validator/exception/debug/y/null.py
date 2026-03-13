@@ -52,7 +52,7 @@ class VectorNullYException(NullException):
     """
     ERR_CODE = "VECTOR_NULL_Y_AXIS_EXCEPTION"
     MSG = "vector.y  is null."
-    VAR: None
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

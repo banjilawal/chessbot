@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import Optional
+from typing import Any, Optional
 
 __all__ = [
 #======================# NULL_EDGE_EXCEPTION #======================#
@@ -50,23 +50,28 @@ class NullEdgeException(NullException):
     # INHERITED METHODS:
         *   See NullException class for inherited methods.
     """
-    ERR_CODE = "NULL_EDGE_EXCEPTION"
-    MSG = "Edge cannot be null."
-    VAR: None
+    VAR = Optional[str]
     VAL = Optional[Any]
+    MSG = "Edge cannot be null."
+    ERR_CODE = "NULL_EDGE_EXCEPTION"
     
     def __init__(
             self,
-            err_code: Optional[str] = None,
-            msg: Optional[str] = None,
-            ex: Optional[Exception] = None,
             var: Optional[str] = None,
             val: Optional[Any] = None,
+            msg: Optional[str] = None,
+            err_code: Optional[str] = None,
+            ex: Optional[Exception] = None,
+  
     ):
-        err_code = err_code or self.ERR_CODE
+        """
+        Args:
+        
+        """
         msg = msg or self.MSG
         var = var or self.VAR
         val = val or self.VAL
+        err_code = err_code or self.ERR_CODE
         super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)
 
 

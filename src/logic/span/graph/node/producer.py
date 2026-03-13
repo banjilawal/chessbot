@@ -22,26 +22,11 @@ from logic.node import Node, NodeService,
 from logic.span.service.handler import NodePairBuildException
 from logic.system import BuildResult, InsertionResult, LoggingLevelRouter
 
-@dataclass
-class NodePair:
-    head: Node
-    tail: Node
 
-@dataclass    
-class NodePairList:
-    """
-    NodePairList's physical structure can be either
-    a list or tree.
-    """
-    items: List[NodePair]
 
-@dataclass    
-class NodeTree:
-    """
-    The tree might have one root or subtrees.
-    """
-    root: Node
-    branches: List[NodePairList]
+
+
+
 
 class NodeTreeProducer:
     
@@ -153,119 +138,9 @@ class NodeTreeProducer:
             node_tree.branches.append(node_pair_list_build_result.payload)
         return BuildResult.success(node_tree)
 
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def _produce_node_pair_list(
-            cls,
-            origin_node: Node,
-            square_ray: SquareRay,
-            node_service: NodeService,
-    ) -> BuildResult[NodePairList]:
-        """
-        Action:
-            1.  Send an exception chain if, either
-                    *   origin_node.square != square_ray.origin
-                    *   a node_pair build fails.
-            2.  Otherwise, start the cursor at the origin_node then, iterate through
-                the ray's members.
-            3.  On each iteration
-                    *   Build a node pair.
-                    *   Append to the node_pair_list.
-                    *   Advance the cursor.
-            4.  Return the success result.
-            
-        Args:
-            origin_node: Node
-            square_ray: SquareRay
-            node_service: NodeService
-            
-        Returns:
-            BuildResult[NodePairList]
-            
-        Raises:
-            NodeStackServiceProductionException
-        """
-        method = f"{cls.__class__.__name__}._produce_node_pair_list"
-        
-        # --- Create the cursor and return target. ---#
-        cursor = origin_node
-        node_pair_list: NodePairList = NodePairList()
 
-        # --- Do the node_pair building work on each ray member. ---#
-        for member in square_ray.members:
-            production_result = cls._produce_node_pair(
-                head=cursor,
-                tail_square=member,
-                node_service=node_service,
-            )
-            # Handle the case that, there is no work product.
-            if production_result.is_failure:
-                # Return the exception chain on failure.
-                BuildResult.failure(
-                    NodeStackServiceProductionException(
-                        mthd=method,
-                        op=NodeStackServiceProductionException.OP,
-                        msg=NodeStackServiceProductionException.MSG,
-                        err_code=NodeStackServiceProductionException.ERR_CODE,
-                        rslt_type=NodeStackServiceProductionException.RSLT_TYPE,
-                        ex=production_result.exception,
-                    )
-                )
-                # --- Add the pair to the list, then advance the cursor. ---#.
-                node_pair_list.items.append(production_result.payload)
-                cursor = production_result.payload.tail
-            
-        # --- Send the completed list of node_pairs ---#
-        return BuildResult.success(node_pair_list)
     
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def _produce_node_pair(
-            cls,
-            head: Node,
-            tail_square: Square,
-            node_service: NodeService,
-    ) -> BuildResult[NodePair]:
-        """
-        Action:
-            1.  If building a node from the tail_square fails send an exception chain in
-                the BuildResult.
-            2.  If the build was successful
-                    *   Build a node_pair with the head and its new tail.
-                    *   Return the work product.
-        Args:
-            head: Node
-            tail_square: Square
-            node_service: NodeService
-            
-        Returns:
-            BuildResult[NodePair]
-            
-        Raises:
-            SquareNotFoundException
-            NodeStackServiceProductionException
-        """
-        method = f"{cls.__class__.__name__}._produce_node_pain"
-        
-        # --- Attempt building the tail node. ---#
-        tail_node_build_result = node_service.builder.build(square=tail_square,)
-        
-        # Handle the case that, there is no work product.
-        if tail_node_build_result.is_failure:
-            # Return the exception chain on failure.
-            BuildResult.failure(
-                NodeStackServiceProductionException(
-                    mthd=method,
-                    op=NodeStackServiceProductionException.OP,
-                    msg=NodeStackServiceProductionException.MSG,
-                    err_code=NodeStackServiceProductionException.ERR_CODE,
-                    rslt_type=NodeStackServiceProductionException.RSLT_TYPE,
-                    ex=tail_node_build_result.exception,
-                )
-            )
-        
-        # --- Send the work product. ---#
-        BuildResult.success(NodePair(head=head, tail=tail_node_build_result.payload))
+
         # node_link_pair: Dict[str, Node] = {
         #     "head": head,
         #     "tail": node_build_result.payload,

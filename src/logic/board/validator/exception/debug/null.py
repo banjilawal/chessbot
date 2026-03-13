@@ -52,7 +52,7 @@ class NullBoardException(NullException):
     """
     ERR_CODE = "NULL_BOARD_EXCEPTION"
     MSG = "Board cannot be null."
-    VAR: None
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

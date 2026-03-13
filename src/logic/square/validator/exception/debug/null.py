@@ -52,7 +52,7 @@ class NullSquareException(NullException):
     """
     ERR_CODE = "NULL_SQUARE_EXCEPTION"
     MSG = "Square cannot be null."
-    VAR: None
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

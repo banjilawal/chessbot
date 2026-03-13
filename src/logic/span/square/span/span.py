@@ -28,25 +28,23 @@ class SquareSpan(Span[Square]):
     None
 
     # LOCAL ATTRIBUTES:
-        *   origin: Square
-        *   rays: List[RAy]
+    None
 
     # INHERITED ATTRIBUTES:
-    None
+        *   See Span class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:)
+    # CONSTRUCTOR PARAMETERS:
         *   origin: Square
-        *   rays: List[RAy]
 
     # LOCAL METHODS:
-   None
+    None
 
     # INHERITED METHODS:
-    None
+        *   See Span class for inherited methods.
     """
     
-    def __init__(self, origin: Square, rays: List[SquareRay]):
-        super().__init__(origin=origin, rays=rays)
+    def __init__(self, origin: Square):
+        super().__init__(origin=origin)
 
     @property
     def origin(self) -> Square:
@@ -55,3 +53,7 @@ class SquareSpan(Span[Square]):
     @property
     def rays(self) -> List[SquareRay]:
         return cast(List[SquareRay], self.rays)
+    
+    @property
+    def sub_span_roots(self) -> List[SquareRay]:
+        return cast(List[SquareRay], self.sub_span_roots)

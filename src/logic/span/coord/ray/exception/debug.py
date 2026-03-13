@@ -51,10 +51,10 @@ class ComputedNullRayDebugException(NullException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    VAR: None
+    VAR = Optional[str]
     VAL = Optional[Any]
     ERR_CODE = "COMPUTED_NULL_RAY_DEBUG_EXCEPTION"
-    MSG: str = "The computed ray's start and end points are the same. Product is null."
+    MSG = "The computed ray's start and end points are the same. Product is null."
     
     def __init__(
             self,

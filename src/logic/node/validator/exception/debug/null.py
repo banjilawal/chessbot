@@ -52,7 +52,7 @@ class NullNodeException(NullException):
     """
     ERR_CODE = "NULL_NODE_EXCEPTION"
     MSG = "Node cannot be null."
-    VAR: None
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     def __init__(

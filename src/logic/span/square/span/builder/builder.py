@@ -1,7 +1,7 @@
-# src/logic/span/square/builder/builder.py
+# src/logic/span/square/span/builder/builder.py
 
 """
-Module: logic.span.square.builder.builder
+Module: logic.span.square.span.builder.builder
 Author: Banji Lawal
 Created: 2026-03-11
 version: 1.0.0
@@ -217,23 +217,6 @@ class SquareSpanBuilder(Builder[SquareSpan]):
                     ex=search_result.exception,
                 )
             )
-        # Handle the case that, a square is not found.
-        if search_result.is_empty:
-            # Return the exception chain on failure.
-            SearchResult.failure(
-                SquareSpanBuildException(
-                    mthd=method,
-                    op=SquareSpanBuildException.OP,
-                    msg=SquareSpanBuildException.MSG,
-                    err_code=SquareSpanBuildException.ERR_CODE,
-                    rslt_type=SquareSpanBuildException.RSLT_TYPE,
-                    ex=SquareNotFoundException(
-                        var="coord",
-                        val=f"{coord}",
-                        msg=SquareSpanBuildException.MSG,
-                        err_code=SquareSpanBuildException.ERR_CODE,
-                    ),
-                )
-            )
+
         # --- Return the search success result. ---#
         return search_result

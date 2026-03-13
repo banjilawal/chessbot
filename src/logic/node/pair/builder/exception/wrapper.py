@@ -1,9 +1,9 @@
-# src/logic/span/service/handler/node/exception/wrapper/build.py
+# src/logic/node/pair/builder/exception/wrapper.py
 
 """
-Module: logic.span.service.handler.node.exception.wrapper.build
+Module: logic.node.pair.builder.exception.wrapper
 Author: Banji Lawal
-Created: 2026-03-11
+Created: 2026-03-12
 version: 1.0.0
 """
 

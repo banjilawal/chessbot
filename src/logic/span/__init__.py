@@ -11,7 +11,7 @@ version: 1.0.0
 
 # Packages
 from .root import *
-from logic.span.coord.ray import *
+from .coord import *
 from .square import *
 from .service import *
 from .spanner import *

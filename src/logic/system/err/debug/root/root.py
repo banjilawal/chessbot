@@ -63,8 +63,8 @@ class DebugException(ChessException):
         *   See ChessException class for inherited methods.
     """
     ERR_CODE = "VARIABLE_EXCEPTION"
-    MSG: str = "A variable had an error."
-    VAR: None
+    MSG = "A variable had an error."
+    VAR = Optional[str]
     VAL = Optional[Any]
     
     _var: Optional[str]

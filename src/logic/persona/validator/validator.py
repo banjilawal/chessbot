@@ -18,7 +18,7 @@ class PersonaValidator(Validator[Persona]):
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
-    1.  Ensure a candidate is not null and the correct type before its used as a Persona.
+    1.  Ensure a candidate is not null and the correct type before its used as a Span.Square.Ray.
     2.  If verification fails indicate the reason in an exception returned to the caller.
 
     # PROVIDES:
@@ -33,30 +33,41 @@ class PersonaValidator(Validator[Persona]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate: Any,) -> ValidationResult[Persona]:
+    def validate(cls, candidate: Any, ) -> ValidationResult[Persona]:
         """
-        # ACTION:.
-            1.  If the candidate passes existence and type checks cast into a Persona instance and return
-                in the ValidationResult. Else return an exception in the ValidationResult.
-        # PARAMETERS:
-            *   candidate (Any)
-        # RETURNS:
-            *   ValidationResult[Persona] containing either:
-                    - On failure: Exception.
-                    - On success: Persona in the payload.
+        Action:
+            1.  Send an exception chain in the ValidationResult if, the candidate is either
+                    *   nulI
+                    *   is not a Persona instance.
+            2.  Otherwise, cast the candidate to a Persona then, send in the success result.
+
+        Args:
+            candidate: Any
+
+        Returns:
+            ValidationResult[Persona]
+
         Raises:
-            *   TypeError
-            *   NullPersonaException
-            *   PersonaValidationException
+            TypeError
+            NullPersonaException
+            PersonaValidationException
         """
-        method = "PersonaValidator.validate"
+        method = f"{cls.__class__.__name__}.validate"
+        
         # Handle the nonexistence case.
         if candidate is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 PersonaValidationException(
-                    msg=f"{method}: {PersonaValidationException.ERR_CODE}",
-                    ex=NullPersonaException(f"{method} {NullPersonaException.MSG}")
+                    mthd=method,
+                    op=PersonaValidationException.OP,
+                    msg=PersonaValidationException.MSG,
+                    err_code=PersonaValidationException.ERR_CODE,
+                    rslt_type=PersonaValidationException.RSLT_TYPE,
+                    ex=NullPersonaException(
+                        msg=NullPersonaException.MSG,
+                        err_code=NullPersonaException.ERR_CODE,
+                    )
                 )
             )
         # Handle the wrong class case.
@@ -64,9 +75,13 @@ class PersonaValidator(Validator[Persona]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 PersonaValidationException(
-                    msg=f"{method}: {PersonaValidationException.ERR_CODE}",
+                    mthd=method,
+                    op=PersonaValidationException.OP,
+                    msg=PersonaValidationException.MSG,
+                    err_code=PersonaValidationException.ERR_CODE,
+                    rslt_type=PersonaValidationException.RSLT_TYPE,
                     ex=TypeError(f"{method} Expected Persona, got {type(candidate).__name__} instead.")
                 )
             )
-        # On certification success return the schema instance in a ValidationResult.
+        # --- Passed safet checks. Send the success result. ---#
         return ValidationResult.success(cast(Persona, candidate))
