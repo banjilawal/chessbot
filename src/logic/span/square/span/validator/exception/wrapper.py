@@ -1,7 +1,7 @@
-# src/logic/span/square/ray/validator/exception/wrapper.py
+# src/logic/span/square/span/validator/exception/wrapper.py
 
 """
-Module: logic.span.square.ray.validator.exception.wrapper
+Module: logic.span.square.span.validator.exception.wrapper
 Author: Banji Lawal
 Created: 2026-03-12
 Version: 1.0.0
@@ -11,19 +11,19 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# SQUARE_RAY_VALIDATION_FAILURE #======================#
-    "SquareRayValidationException",
+    # ======================# SQUARE_SPAN_VALIDATION_FAILURE #======================#
+    "SquareSpanValidationException",
 ]
 
 from logic.system import ValidationException
 
-# ======================# SQUARE_RAY_VALIDATION_FAILURE #======================#
-class SquareRayValidationException(ValidationException):
+# ======================# SQUARE_SPAN_VALIDATION_FAILURE #======================#
+class SquareSpanValidationException(ValidationException):
     """
     # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Identify the SquareRayValidator method where the process failed.
+    1.  Identify the SquareSpanValidator method where the process failed.
 
     # PARENT:
         *   ValidationException
@@ -54,8 +54,8 @@ class SquareRayValidationException(ValidationException):
     MTHD = Optional[str]
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
-    ERR_CODE = "SQUARE_RAY_VALIDATION_FAILURE"
-    MSG = "Failure in SquareRayValidator method."
+    ERR_CODE = "SQUARE_SPAN_VALIDATION_FAILURE"
+    MSG = "Failure in SquareSpanValidator method."
 
     
     def __init__(
