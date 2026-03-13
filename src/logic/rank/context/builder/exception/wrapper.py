@@ -54,7 +54,7 @@ class RankContextBuildException(BuildException):
     """
     ERR_CODE = "RANK_CONTEXT_BUILD_FAILURE"
     MSG = "Failure in RankContextBuilder method."
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     

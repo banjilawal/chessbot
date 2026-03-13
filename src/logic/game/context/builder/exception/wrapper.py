@@ -54,7 +54,7 @@ class GameContextBuildException(BuildException):
     """
     ERR_CODE = "GAME_CONTEXT_BUILD_FAILURE"
     MSG = "Failure in GameContextBuilder method."
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     

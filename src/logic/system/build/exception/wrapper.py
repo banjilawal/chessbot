@@ -56,7 +56,7 @@ class BuildException(OperationException):
     """
     ERR_CODE = "BUILD_FAILURE"
     MSG = "Failure in __BUILD_CLASS__ method."
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     

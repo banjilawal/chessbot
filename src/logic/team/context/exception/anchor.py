@@ -59,7 +59,7 @@ class TeamContextException(AnchorException):
     ERR_CODE = "TEAM_CONTEXT_EXCEPTION"
     MSG = "Exception raised in TeamContext"
     CLS_NAME = "TeamContext"
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
  
     def __init__(
             self,

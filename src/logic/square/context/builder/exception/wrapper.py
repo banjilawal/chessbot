@@ -54,7 +54,7 @@ class SquareContextBuildException(BuildException):
     """
     ERR_CODE = "SQUARE_CONTEXT_BUILD_FAILURE"
     MSG = "Failure in SquareContextBuilder method."
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     

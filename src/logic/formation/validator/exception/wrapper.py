@@ -54,7 +54,7 @@ class FormationValidationException(ValidationException):
     """
     ERR_CODE = "FORMATION_VALIDATION_FAILURE"
     MSG = "Failure in FormationValidator method."
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     

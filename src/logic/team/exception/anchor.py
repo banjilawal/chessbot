@@ -58,7 +58,7 @@ class TeamException(AnchorException):
     ERR_CODE = "TEAM_EXCEPTION"
     MSG = "Exception raised in Team"
     CLS_NAME = "Team"
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
  
     def __init__(
             self,

@@ -52,7 +52,7 @@ class TokenVisitHandlerException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
     CLS_NAME = "TokenVisitHandler"
     ERR_CODE = "TOKEN_VISIT_HANDLER_EXCEPTION"
     MSG = " TokenVisitHandler raised an exception."

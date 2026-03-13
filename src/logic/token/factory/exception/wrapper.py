@@ -53,7 +53,7 @@ class TokenBuildException(BuildException):
     """
     ERR_CODE = "TOKEN_BUILDER_FAILURE"
     MSG = "Failure in TokenBuilder method."
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     

@@ -59,7 +59,7 @@ class NodeContextException(AnchorException):
     ERR_CODE = "NODE_CONTEXT_EXCEPTION"
     MSG = "Exception raised in NodeContext"
     CLS_NAME = "NodeContext"
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
  
     def __init__(
             self,

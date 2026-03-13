@@ -54,7 +54,7 @@ class QueenSpannerException(SpannerException):
     # INHERITED METHODS:
         *   See SpannerException class for inherited methods.
     """
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
     CLS_NAME = "QueenSpanner"
     ERR_CODE = "QUEEN_SPANNER_EXCEPTION"
     MSG = "Exception raised in QueenSpanner"

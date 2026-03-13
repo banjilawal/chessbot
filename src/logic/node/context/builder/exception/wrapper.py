@@ -54,7 +54,7 @@ class NodeContextBuildException(BuildException):
     """
     ERR_CODE = "NODE_CONTEXT_BUILD_FAILURE"
     MSG = "Failure in NodeContextBuilder method."
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     

@@ -54,7 +54,7 @@ class BoardValidationException(ValidationException):
     """
     ERR_CODE = "BOARD_VALIDATION_FAILURE"
     MSG = "Failure in BoardValidator method."
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     

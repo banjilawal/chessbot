@@ -50,7 +50,7 @@ class SquareServiceException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
     CLS_NAME = "SquareService"
     ERR_CODE = "SQUARE_SERVICE_EXCEPTION"
     MSG = " SquareService raised an exception."

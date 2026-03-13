@@ -54,7 +54,7 @@ class HostageBuildException(BuildException):
     """
     ERR_CODE = "HOSTAGE_BUILD_FAILURE"
     MSG = "Failure in HostageBuilder method."
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     

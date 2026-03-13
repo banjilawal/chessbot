@@ -55,7 +55,7 @@ class SquareCrudHandlerException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
     CLS_NAME = "SquareStackCrudHandler"
     ERR_CODE = "SQUARE_CRUD_HANDLER_EXCEPTION"
     MSG = "SquareStackCrudHandler raised an exception."

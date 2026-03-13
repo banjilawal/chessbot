@@ -51,7 +51,7 @@ class SchemaValidationException(ValidationException):
     # INHERITED METHODS:
         *   See ValidationException class for inherited methods.
     """
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     ERR_CODE = "SCHEMA_VALIDATION_FAILURE"

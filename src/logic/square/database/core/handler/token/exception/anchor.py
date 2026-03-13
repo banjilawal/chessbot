@@ -55,7 +55,7 @@ class SquareStackTokenHandlerException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
     CLS_NAME = "SquareStackTokenHandler"
     ERR_CODE = "SQUARE_STACK_TOKEN_HANDLER_EXCEPTION"
     MSG = "SquareStackTokenHandler raised an exception."

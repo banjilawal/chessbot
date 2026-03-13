@@ -53,7 +53,7 @@ class SpanComputationException(ComputationException):
     # INHERITED METHODS:
         *   See ComputationException class for inherited methods.
     """
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Computation"
     RSLT_TYPE = "ComputationResult"
     ERR_CODE = "SPAN_COMPUTATION_FAILURE"

@@ -54,7 +54,7 @@ class EdgeBuildException(BuildException):
     """
     ERR_CODE = "EDGE_BUILD_FAILURE"
     MSG = "Failure in EdgeBuilder method."
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     

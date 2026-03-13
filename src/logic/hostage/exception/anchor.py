@@ -58,7 +58,7 @@ class HostageException(AnchorException):
     ERR_CODE = "HOSTAGE_EXCEPTION"
     MSG = "Exception raised in Hostage"
     CLS_NAME = "Hostage"
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
  
     def __init__(
             self,

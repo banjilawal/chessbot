@@ -58,7 +58,7 @@ class NodeException(AnchorException):
     ERR_CODE = "NODE_EXCEPTION"
     MSG = "Exception raised in Node"
     CLS_NAME = "Node"
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
  
     def __init__(
             self,

@@ -55,7 +55,7 @@ class BoardBuildException(OperationException):
     """
     ERR_CODE = "Board_BUILD_FAILURE"
     MSG = "Failure in BoardBuilder method."
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     

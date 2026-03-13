@@ -59,7 +59,7 @@ class SnapshotContextException(AnchorException):
     ERR_CODE = "SNAPSHOT_CONTEXT_EXCEPTION"
     MSG = "Exception raised in SnapshotContext"
     CLS_NAME = "SnapshotContext"
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
  
     def __init__(
             self,

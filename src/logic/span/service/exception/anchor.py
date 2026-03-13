@@ -49,7 +49,7 @@ class SpanServiceException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
     CLS_NAME = "SpanService"
     ERR_CODE = "SPAN_SERVICE_EXCEPTION"
     MSG = " SpanService raised an exception."

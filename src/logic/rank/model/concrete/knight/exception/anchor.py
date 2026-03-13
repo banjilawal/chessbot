@@ -55,7 +55,7 @@ class KnightException(RankException):
     # INHERITED METHODS:
         *   See RankException class for inherited methods.
     """
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
     CLS_NAME = "Knight"
     ERR_CODE = "KNIGHT_EXCEPTION"
     MSG = "Exception raised in Knight"

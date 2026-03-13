@@ -55,7 +55,7 @@ class ScalarBuildException(BuildException):
     """
     ERR_CODE = "SCALAR_BUILD_FAILURE"
     MSG = "Failure in ScalarBuilder method."
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     

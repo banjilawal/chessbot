@@ -52,7 +52,7 @@ class NodePairBuildException(BuildException):
     # INHERITED METHODS:
         *   See BuildException class for inherited methods.
     """
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     ERR_CODE = "NODE_PAIR_BUILD_FAILURE"

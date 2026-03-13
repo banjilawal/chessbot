@@ -55,7 +55,7 @@ class VectorException(AnchorException):
         *   See AnchorException class for inherited methods.
     """
     CLS_NAME = "Vector"
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
     ERR_CODE = "VECTOR_EXCEPTION"
     MSG = "Exception raised in Vector"
  

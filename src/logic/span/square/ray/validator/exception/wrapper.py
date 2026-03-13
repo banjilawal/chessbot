@@ -54,7 +54,7 @@ class SquareRayValidationException(ValidationException):
     """
     ERR_CODE = "SQUARERAY_VALIDATION_FAILURE"
     MSG = "Failure in SquareRayValidator method."
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     

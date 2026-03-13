@@ -59,7 +59,7 @@ class ArenaContextException(AnchorException):
     ERR_CODE = "ARENA_CONTEXT_EXCEPTION"
     MSG = "Exception raised in ArenaContext"
     CLS_NAME = "ArenaContext"
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
  
     def __init__(
             self,

@@ -54,7 +54,7 @@ class SpannerException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
     CLS_NAME = "Spanner"
     ERR_CODE = "SPANNER_EXCEPTION"
     MSG = "Exception raised in Spanner"

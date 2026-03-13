@@ -55,7 +55,7 @@ class ValidationException(OperationException):
     """
     ERR_CODE = "VALIDATION_FAILURE"
     MSG = "Failure in __VALIDATION_CLASS__ method."
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     

@@ -55,7 +55,7 @@ class NodeTreeProducerException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
     CLS_NAME = "NodeTreeProducer"
     ERR_CODE = "NODE_TREE_PRODUCER_EXCEPTION"
     MSG = "Exception raised in NodeTreeProducer"

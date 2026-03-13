@@ -52,7 +52,7 @@ class SymmetricEdgeBuildException(BuildException):
     # INHERITED METHODS:
         *   See BuildException class for inherited methods.
     """
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     ERR_CODE = "SYMMETRIC_EDGE_BUILD_FAILURE"

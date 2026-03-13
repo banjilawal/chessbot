@@ -52,7 +52,7 @@ class TerminateSquareVisitException(DeletionException):
     # INHERITED METHODS:
         *   See DeletionException class for inherited methods.
     """
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Delete"
     RSLT_TYPE = "DeletionResult"
     MSG = "Square visit termination failed."

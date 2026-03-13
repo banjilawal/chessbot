@@ -58,7 +58,7 @@ class CoordException(AnchorException):
     ERR_CODE = "COORD_EXCEPTION"
     MSG = "Exception raised in Coord"
     CLS_NAME = "Coord"
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
  
     def __init__(
             self,

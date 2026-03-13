@@ -58,7 +58,7 @@ class SchemaException(AnchorException):
     ERR_CODE = "SCHEMA_EXCEPTION"
     MSG = "Exception raised in Schema"
     CLS_NAME = "Schema"
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
  
     def __init__(
             self,

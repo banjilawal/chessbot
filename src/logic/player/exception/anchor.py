@@ -58,7 +58,7 @@ class PlayerException(AnchorException):
     ERR_CODE = "PLAYER_EXCEPTION"
     MSG = "Exception raised in Player"
     CLS_NAME = "Player"
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
  
     def __init__(
             self,

@@ -54,7 +54,7 @@ class HostageContextBuildException(BuildException):
     """
     ERR_CODE = "HOSTAGE_CONTEXT_BUILD_FAILURE"
     MSG = "Failure in HostageContextBuilder method."
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     

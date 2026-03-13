@@ -59,7 +59,7 @@ class RankContextException(AnchorException):
     ERR_CODE = "RANK_CONTEXT_EXCEPTION"
     MSG = "Exception raised in RankContext"
     CLS_NAME = "RankContext"
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
  
     def __init__(
             self,

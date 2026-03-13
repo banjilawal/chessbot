@@ -50,7 +50,7 @@ class NodeEdgeHandlerException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
     CLS_NAME = "NodeEdgeHandler"
     ERR_CODE = "SQUARE_DICT_EDGE_HANDLER_EXCEPTION"
     MSG = " NodeEdgeHandler raised an exception."

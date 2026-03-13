@@ -71,7 +71,7 @@ class AnchorException(ChessException):
     ERR_CODE = "ANCHOR_EXCEPTION"
     MSG = "Exception raised in Anchor"
     CLS_NAME = "Anchor"
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
 
     _cls_name: Optional[str]
     _cls_mthd: Optional[str]

@@ -54,7 +54,7 @@ class PlayerBuildException(BuildException):
     """
     ERR_CODE = "PLAYER_BUILD_FAILURE"
     MSG = "Failure in PlayerBuilder method."
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     

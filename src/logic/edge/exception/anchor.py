@@ -54,7 +54,7 @@ class EdgeException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
     CLS_NAME = "Edge"
     ERR_CODE = "EDGE_EXCEPTION"
     MSG = "Exception raised in Edge"

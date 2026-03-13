@@ -54,7 +54,7 @@ class RankFactoryException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
     CLS_NAME = "RankFactory"
     ERR_CODE = "RANK_FACTORY_EXCEPTION"
     MSG = "Exception raised in RankFactory"

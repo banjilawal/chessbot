@@ -54,7 +54,7 @@ class PlayerValidationException(ValidationException):
     """
     ERR_CODE = "PLAYER_VALIDATION_FAILURE"
     MSG = "Failure in PlayerValidator method."
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     

@@ -55,7 +55,7 @@ class SquareStackRosterHandlerException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
     CLS_NAME = "SquareStackRosterHandler"
     ERR_CODE = "SQUARE_STACK_ROSTER_HANDLER_EXCEPTION"
     MSG = "SquareStackRosterHandler raised an exception."

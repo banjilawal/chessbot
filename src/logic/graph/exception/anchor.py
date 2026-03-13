@@ -58,7 +58,7 @@ class GraphException(AnchorException):
     ERR_CODE = "GRAPH_EXCEPTION"
     MSG = "Exception raised in Graph"
     CLS_NAME = "Graph"
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
  
     def __init__(
             self,

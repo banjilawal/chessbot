@@ -54,7 +54,7 @@ class RankValidationException(ValidationException):
     """
     ERR_CODE = "RANK_VALIDATION_FAILURE"
     MSG = "Failure in RankValidator method."
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     

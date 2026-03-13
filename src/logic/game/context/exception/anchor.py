@@ -59,7 +59,7 @@ class GameContextException(AnchorException):
     ERR_CODE = "GAME_CONTEXT_EXCEPTION"
     MSG = "Exception raised in GameContext"
     CLS_NAME = "GameContext"
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
  
     def __init__(
             self,

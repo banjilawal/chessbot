@@ -54,7 +54,7 @@ class NodeValidationException(ValidationException):
     """
     ERR_CODE = "NODE_VALIDATION_FAILURE"
     MSG = "Failure in NodeValidator method."
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     

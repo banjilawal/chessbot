@@ -59,7 +59,7 @@ class SquareContextException(AnchorException):
     ERR_CODE = "SQUARE_CONTEXT_EXCEPTION"
     MSG = "Exception raised in SquareContext"
     CLS_NAME = "SquareContext"
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
  
     def __init__(
             self,

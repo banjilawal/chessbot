@@ -54,7 +54,7 @@ class EdgeContextBuildException(BuildException):
     """
     ERR_CODE = "EDGE_CONTEXT_BUILD_FAILURE"
     MSG = "Failure in EdgeContextBuilder method."
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     

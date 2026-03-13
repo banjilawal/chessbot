@@ -53,7 +53,7 @@ class PawnException(RankException):
     # INHERITED METHODS:
         *   See RankException class for inherited methods.
     """
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
     CLS_NAME = "Pawn"
     ERR_CODE = "PAWN_EXCEPTION"
     MSG = "Exception raised in Pawn"

@@ -53,7 +53,7 @@ class RookException(RankException):
     # INHERITED METHODS:
         *   See RankException class for inherited methods.
     """
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
     CLS_NAME = "Rook"
     ERR_CODE = "ROOK_EXCEPTION"
     MSG = "Exception raised in Rook"

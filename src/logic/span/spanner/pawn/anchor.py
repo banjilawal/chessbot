@@ -54,7 +54,7 @@ class PawnSpannerException(SpannerException):
     # INHERITED METHODS:
         *   See SpannerException class for inherited methods.
     """
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
     CLS_NAME = "PawnSpanner"
     ERR_CODE = "PAWN_SPANNER_EXCEPTION"
     MSG = "Exception raised in PawnSpanner"

@@ -59,7 +59,7 @@ class EdgeServiceException(AnchorException):
     ERR_CODE = "EDGE_SERVICE_EXCEPTION"
     MSG = "Exception raised in EdgeService"
     CLS_NAME = "EdgeService"
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
     
     def __init__(
             self,

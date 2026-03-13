@@ -54,7 +54,7 @@ class PlayerContextBuildException(BuildException):
     """
     ERR_CODE = "PLAYER_CONTEXT_BUILD_FAILURE"
     MSG = "Failure in PlayerContextBuilder method."
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     

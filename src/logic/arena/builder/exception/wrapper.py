@@ -54,7 +54,7 @@ class ArenaBuildException(BuildException):
     """
     ERR_CODE = "ARENA_BUILD_FAILURE"
     MSG = "Failure in ArenaBuilder method."
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     

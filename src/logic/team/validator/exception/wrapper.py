@@ -56,7 +56,7 @@ class TeamValidationException(ValidationException):
     """
     ERR_CODE = "TEAM_VALIDATION_FAILURE"
     MSG = "Failure in TeamValidator method."
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     

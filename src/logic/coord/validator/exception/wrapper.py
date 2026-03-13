@@ -54,7 +54,7 @@ class CoordValidationException(ValidationException):
     """
     ERR_CODE = "COORD_VALIDATION_FAILURE"
     MSG = "Failure in CoordValidator method."
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     

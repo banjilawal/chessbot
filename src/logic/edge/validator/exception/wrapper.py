@@ -54,7 +54,7 @@ class EdgeValidationException(ValidationException):
     """
     ERR_CODE = "EDGE_VALIDATION_FAILURE"
     MSG = "Failure in EdgeValidator method."
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     

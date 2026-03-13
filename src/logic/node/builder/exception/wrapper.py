@@ -54,7 +54,7 @@ class NodeBuildException(BuildException):
     """
     ERR_CODE = "NODE_BUILD_FAILURE"
     MSG = "Failure in NodeBuilder method."
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     

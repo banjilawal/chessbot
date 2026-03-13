@@ -53,7 +53,7 @@ class CommandValidationException(ValidationException):
     """
     ERR_CODE = "COMMAND_VALIDATION_FAILURE"
     MSG = "Failure in CommandValidator method."
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Validate"
     RSLT_TYPE = "ValidationResult"
     

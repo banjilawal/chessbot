@@ -54,7 +54,7 @@ class GameBuildException(BuildException):
     """
     ERR_CODE = "GAME_BUILD_FAILURE"
     MSG = "Failure in GameBuilder method."
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     

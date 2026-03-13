@@ -49,7 +49,7 @@ class DatabaseException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
     CLS_NAME = " Database"
     ERR_CODE = " DATABASE_EXCEPTION"
     MSG = " Database raised an exception."

@@ -58,7 +58,7 @@ class ArenaException(AnchorException):
     ERR_CODE = "ARENA_EXCEPTION"
     MSG = "Exception raised in Arena"
     CLS_NAME = "Arena"
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
  
     def __init__(
             self,

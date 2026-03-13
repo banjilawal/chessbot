@@ -47,7 +47,7 @@ class SquareCollisionDetectionException(CollisionDetectionException):
     # INHERITED METHODS:
         *   See CollisionDetectionException class for inherited methods.
     """
-    MTHD = None
+    MTHD = Optional[str]
     OP = "CollisionDetection"
     RSLT_TYPE = "CollisionDetectionResult"
     ERR_CODE = "SQUARE_COLLISION_DETECTION_EXCEPTION"

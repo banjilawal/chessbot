@@ -52,7 +52,7 @@ class SquareRayBuildException(BuildException):
     # INHERITED METHODS:
         *   See BuildException class for inherited methods.
     """
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     ERR_CODE = "SQUARE_RAY_BUILD_FAILURE"

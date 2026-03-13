@@ -54,7 +54,7 @@ class BishopSpannerException(SpannerException):
     # INHERITED METHODS:
         *   See SpannerException class for inherited methods.
     """
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
     CLS_NAME = "BishopSpanner"
     ERR_CODE = "BISHOP_SPANNER_EXCEPTION"
     MSG = "Exception raised in BishopSpanner"

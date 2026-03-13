@@ -55,7 +55,7 @@ class TeamContextBuildException(BuildException):
     """
     ERR_CODE = "TEAM_CONTEXT_BUILD_FAILURE"
     MSG = "Failure in TeamContextBuilder method."
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     

@@ -59,7 +59,7 @@ class PlayerContextException(AnchorException):
     ERR_CODE = "PLAYER_CONTEXT_EXCEPTION"
     MSG = "Exception raised in PlayerContext"
     CLS_NAME = "PlayerContext"
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
  
     def __init__(
             self,

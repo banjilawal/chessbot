@@ -54,7 +54,7 @@ class TokenContextBuildException(BuildException):
     """
     ERR_CODE = "TOKEN_CONTEXT_BUILD_FAILURE"
     MSG = "Failure in TokenContextBuilder method."
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     

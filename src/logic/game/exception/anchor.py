@@ -58,7 +58,7 @@ class GameException(AnchorException):
     ERR_CODE = "GAME_EXCEPTION"
     MSG = "Exception raised in Game"
     CLS_NAME = "Game"
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
  
     def __init__(
             self,

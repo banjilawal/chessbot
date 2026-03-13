@@ -59,7 +59,7 @@ class HostageContextException(AnchorException):
     ERR_CODE = "HOSTAGE_CONTEXT_EXCEPTION"
     MSG = "Exception raised in HostageContext"
     CLS_NAME = "HostageContext"
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
  
     def __init__(
             self,

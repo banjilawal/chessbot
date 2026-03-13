@@ -59,7 +59,7 @@ class EdgeContextException(AnchorException):
     ERR_CODE = "EDGE_CONTEXT_EXCEPTION"
     MSG = "Exception raised in EdgeContext"
     CLS_NAME = "EdgeContext"
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
  
     def __init__(
             self,

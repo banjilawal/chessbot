@@ -58,7 +58,7 @@ class PersonaException(AnchorException):
     ERR_CODE = "PERSONA_EXCEPTION"
     MSG = "Exception raised in Persona"
     CLS_NAME = "Persona"
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
  
     def __init__(
             self,

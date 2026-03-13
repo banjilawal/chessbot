@@ -56,7 +56,7 @@ class SchemaValidationException(ValidationException):
     """
     ERR_CODE = "SCHEMA_VALIDATION_FAILURE"
     MSG = "Failure in SchemaValidator method."
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     

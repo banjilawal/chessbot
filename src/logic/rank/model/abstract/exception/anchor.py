@@ -54,7 +54,7 @@ class RankException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
     CLS_NAME = "Rank"
     ERR_CODE = "RANK_EXCEPTION"
     MSG = "Exception raised in Rank"

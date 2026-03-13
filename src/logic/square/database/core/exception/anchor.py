@@ -57,7 +57,7 @@ class SquareStackException(AnchorException):
     ERR_CODE = "SQUARE_STACK_EXCEPTION"
     MSG = "Exception raised in SquareStack"
     CLS_NAME = "SquareStack"
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
  
     def __init__(
             self,

@@ -54,7 +54,7 @@ class SquareException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
     CLS_NAME = "Square"
     ERR_CODE = "SQUARE_EXCEPTION"
     MSG = "Exception raised in Square"

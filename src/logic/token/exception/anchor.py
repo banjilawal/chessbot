@@ -57,7 +57,7 @@ class TokenException(AnchorException):
     ERR_CODE = "TOKEN_EXCEPTION"
     MSG = "Exception raised in Token"
     CLS_NAME = "Token"
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
  
     def __init__(
             self,

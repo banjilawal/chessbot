@@ -54,7 +54,7 @@ class SpannerEngineException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
     CLS_NAME = "SpannerEngine"
     ERR_CODE = "SPANNER_ENGINE_EXCEPTION"
     MSG = "Exception raised in SpannerEngine"

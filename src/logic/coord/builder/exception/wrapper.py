@@ -54,7 +54,7 @@ class CoordBuildException(BuildException):
     """
     ERR_CODE = "COORD_BUILD_FAILURE"
     MSG = "Failure in CoordBuilder method."
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     

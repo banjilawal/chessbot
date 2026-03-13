@@ -54,7 +54,7 @@ class BoardContextBuildException(BuildException):
     """
     ERR_CODE = "BOARD_CONTEXT_BUILD_FAILURE"
     MSG = "Failure in BoardContextBuilder method."
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     

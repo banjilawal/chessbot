@@ -49,7 +49,7 @@ class SquareDatabaseException(DatabaseException):
     # INHERITED METHODS:
         *   See DatabaseException class for inherited methods.
     """
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
     CLS_NAME = "SquareDatabase"
     ERR_CODE = "SQUARE_SERVICE_EXCEPTION"
     MSG = " SquareDatabase raised an exception."

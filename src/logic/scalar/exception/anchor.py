@@ -58,7 +58,7 @@ class ScalarException(AnchorException):
     ERR_CODE = "SCALAR_EXCEPTION"
     MSG = "Exception raised in Scalar"
     CLS_NAME = "Scalar"
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
  
     def __init__(
             self,

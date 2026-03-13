@@ -58,7 +58,7 @@ class SnapshotException(AnchorException):
     ERR_CODE = "SNAPSHOT_EXCEPTION"
     MSG = "Exception raised in Snapshot"
     CLS_NAME = "Snapshot"
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
  
     def __init__(
             self,

@@ -49,7 +49,7 @@ class BishopSpanServiceException(SpanServiceException):
     # INHERITED METHODS:
         *   See SpanServiceException class for inherited methods.
     """
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
     CLS_NAME = "BishopSpanService"
     ERR_CODE = "BISHOP_SPAN_SERVICE_EXCEPTION"
     MSG = " BishopSpanService raised an exception."

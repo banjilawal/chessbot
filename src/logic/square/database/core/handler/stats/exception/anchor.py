@@ -55,7 +55,7 @@ class SquareStackAnalyzerException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
     CLS_NAME = "SquareStackCountsAnalyzer"
     ERR_CODE = "SQUARE_STACK_COUNTS_ANALYZEREXCEPTION"
     MSG = "SquareStackCountsAnalyzer raised an exception."

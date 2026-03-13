@@ -55,7 +55,7 @@ class VectorServiceException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
     CLS_NAME = "VectorService"
     ERR_CODE = "VECTOR_EXCEPTION"
     MSG = "Exception raised in VectorService"

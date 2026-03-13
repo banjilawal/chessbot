@@ -55,7 +55,7 @@ class RookSpannerException(SpannerException):
     # INHERITED METHODS:
         *   See SpannerException class for inherited methods.
     """
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
     CLS_NAME = "RookSpanner"
     ERR_CODE = "ROOK_SPANNER_EXCEPTION"
     MSG = "Exception raised in RookSpanner"

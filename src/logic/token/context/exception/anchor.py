@@ -59,7 +59,7 @@ class TokenContextException(AnchorException):
     ERR_CODE = "TOKEN_CONTEXT_EXCEPTION"
     MSG = "Exception raised in TokenContext"
     CLS_NAME = "TokenContext"
-    CLS_MTHD = None
+    CLS_MTHD = Optional[str]
  
     def __init__(
             self,

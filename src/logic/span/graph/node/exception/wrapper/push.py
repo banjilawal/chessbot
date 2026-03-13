@@ -52,7 +52,7 @@ class NodePairInsertionException(InsertionException):
     # INHERITED METHODS:
         *   See InsertionException class for inherited methods.
     """
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Insert"
     RSLT_TYPE = "InsertionResult"
     MSG = "NodePair push failed."

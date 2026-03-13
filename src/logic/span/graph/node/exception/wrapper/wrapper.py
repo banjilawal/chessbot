@@ -53,7 +53,7 @@ class NodeStackServiceProductionException(BuildException):
     # INHERITED METHODS:
         *   See BuildException class for inherited methods.
     """
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     ERR_CODE = "NODE_STACK_SERVICE_PRODUCTION_FAILURE"

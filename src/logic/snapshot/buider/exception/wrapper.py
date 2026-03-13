@@ -55,7 +55,7 @@ class SnapshotBuildException(BuildException):
     """
     ERR_CODE = "SNAPSHOT_BUILD_FAILURE"
     MSG = "Failure in SnapshotBuilder method."
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     

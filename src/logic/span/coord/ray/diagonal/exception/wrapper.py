@@ -57,7 +57,7 @@ class DiagonalRayComputationException(RayComputationException):
     # INHERITED METHODS:
         *   See RayComputationException class for inherited methods.
     """
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Computation"
     RSLT_TYPE = "ComputationResult"
     ERR_CODE = "DIAGONAL_RAY_COMPUTATION_FAILURE"

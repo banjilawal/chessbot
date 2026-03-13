@@ -55,7 +55,7 @@ class TeamBuildException(BuildException):
     """
     ERR_CODE = "TEAM_BUILD_FAILURE"
     MSG = "Failure in TeamBuilder method."
-    MTHD = None
+    MTHD = Optional[str]
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     
