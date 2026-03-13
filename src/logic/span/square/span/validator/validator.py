@@ -12,7 +12,7 @@ from typing import Any, List, cast
 
 from logic.square import SquareValidator
 from logic.system import LoggingLevelRouter, ValidationResult, Validator
-from logic.span import NullSquareSpanException, SquareSpan, SquareSpanMembersNullException, SquareSpanValidationException
+from logic.span import SquareSpanNullException, SquareSpan, SquareSpanRaysNullException, SquareSpanValidationException
 
 
 class SquareSpanValidator(Validator[SquareSpan]):
@@ -56,7 +56,7 @@ class SquareSpanValidator(Validator[SquareSpan]):
             
         Raises:
             TypeError
-            NullSquareSpanException
+            SquareSpanNullException
             SquareSpanValidationException
         """
         method = f"{cls.__class__.__name__}.validate"
@@ -71,11 +71,11 @@ class SquareSpanValidator(Validator[SquareSpan]):
                     msg=SquareSpanValidationException.MSG,
                     err_code=SquareSpanValidationException.ERR_CODE,
                     rslt_type=SquareSpanValidationException.RSLT_TYPE,
-                    ex=NullSquareSpanException(
+                    ex=SquareSpanNullException(
                         var="candidate",
                         val="None",
-                        msg=NullSquareSpanException.MSG,
-                        err_code=NullSquareSpanException.ERR_CODE,
+                        msg=SquareSpanNullException.MSG,
+                        err_code=SquareSpanNullException.ERR_CODE,
                     )
                 )
             )
@@ -109,8 +109,8 @@ class SquareSpanValidator(Validator[SquareSpan]):
                     ex=origin_validation_result.exception
                 )
             )
-        # Handle the case that, the members are null
-        if square_span.members is None:
+        # Handle the case that, the rays are null
+        if square_span.rays is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SquareSpanValidationException(
@@ -119,8 +119,8 @@ class SquareSpanValidator(Validator[SquareSpan]):
                     msg=SquareSpanValidationException.MSG,
                     err_code=SquareSpanValidationException.ERR_CODE,
                     rslt_type=SquareSpanValidationException.RSLT_TYPE,
-                    ex=SquareSpanMembersNullException(
-                        var="square_span.members",
+                    ex=SquareSpanRaysNullException(
+                        var="square_span.rays",
                         val="None",
                         msg=SquareSpanValidationException.MSG,
                         err_code=SquareSpanValidationException.ERR_CODE,
@@ -128,10 +128,10 @@ class SquareSpanValidator(Validator[SquareSpan]):
                     )
                 )
             )
-        # Handle the case that, square_span.members is null.
-        if not isinstance(square_span.members, List):
+        # Handle the case that, square_span.rays is null.
+        if not isinstance(square_span.rays, List):
             # Return the exception chain on failure.
-            wrong_type = type(square_span.members).__name__
+            wrong_type = type(square_span.rays).__name__
             return ValidationResult.failure(
                 SquareSpanValidationException(
                     mthd=method,
@@ -139,8 +139,8 @@ class SquareSpanValidator(Validator[SquareSpan]):
                     msg=SquareSpanValidationException.MSG,
                     err_code=SquareSpanValidationException.ERR_CODE,
                     rslt_type=SquareSpanValidationException.RSLT_TYPE,
-                    ex=SquareSpanMembersNullException(
-                        var="type(square_span.members)",
+                    ex=SquareSpanRaysNullException(
+                        var="type(square_span.rays)",
                         val=wrong_type,
                         msg=SquareSpanValidationException.MSG,
                         err_code=SquareSpanValidationException.ERR_CODE,

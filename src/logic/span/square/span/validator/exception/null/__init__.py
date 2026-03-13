@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .span import NullSquareSpanException
-from .members import SquareSpanMembersNullException
+from .span import SquareSpanNullException
+from .ray import SquareSpanRaysNullException
