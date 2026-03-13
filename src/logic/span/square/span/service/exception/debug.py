@@ -1,7 +1,7 @@
-# src/logic/span/square/ray/service/exception.debug.py
+# src/logic/span/square/span/service/exception.debug.py
 
 """
-Module: logic.span.square.ray.service.exception.debug
+Module: logic.span.square.span.service.exception.debug
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,19 +11,19 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# SQUARE_RAY_SERVICE_DEBUG_EXCEPTION #======================#
-    "SquareRayServiceDebugException",
+    # ======================# SQUARE_SPAN_SERVICE_DEBUG_EXCEPTION #======================#
+    "SquareSpanServiceDebugException",
 ]
 
 from logic.system import DebugException
 
-# ======================# SQUARE_RAY_SERVICE_DEBUG_EXCEPTION #======================#
-class SquareRayServiceDebugException(DebugException):
+# ======================# SQUARE_SPAN_SERVICE_DEBUG_EXCEPTION #======================#
+class SquareSpanServiceDebugException(DebugException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Describes the condition that caused a SquareRayService operation failure.
+    1.  Describes the condition that caused a SquareSpanService operation failure.
 
     # PARENT:
         *   DebugException
@@ -52,8 +52,8 @@ class SquareRayServiceDebugException(DebugException):
     """
     VAR = Optional[str]
     VAL = Optional[Any]
-    ERR_CODE = "SQUARE_RAY_SERVICE_EXCEPTION"
-    MSG = "A variable in SquareRayService raised an exception."
+    ERR_CODE = "SQUARE_SPAN_SERVICE_EXCEPTION"
+    MSG = "A variable in SquareSpanService raised an exception."
     
     def __init__(
             self,

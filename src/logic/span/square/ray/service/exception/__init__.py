@@ -1,4 +1,4 @@
-# src/logic/span/square/rayservice/exception/__init__.py
+# src/logic/span/square/ray/service/exception/__init__.py
 
 """
 Module: logic.span.square.ray.service.exception.__init__

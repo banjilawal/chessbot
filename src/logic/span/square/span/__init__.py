@@ -11,7 +11,9 @@ version: 1.0.0
 
 # Packages
 from .builder import *
+from .service import *
 from .validator import *
+
 
 # Modules
 from .span import SquareSpan

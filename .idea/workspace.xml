@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change afterPath="$PROJECT_DIR$/src/logic/span/square/span/validator/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/span/square/span/validator/exception/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/span/square/span/validator/exception/null/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/span/square/span/validator/exception/null/members.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/span/square/span/validator/exception/null/ray.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/span/square/span/validator/exception/wrapper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/span/square/span/validator/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/square/ray/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/square/ray/validator/exception/wrapper.py" afterDir="false" />
-    </list>
+    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -279,7 +269,7 @@
     "ToolWindow.Python Packages.ShowToolbar": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/logic/span/square/span/validator/exception",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/logic/span/square/span",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -306,8 +296,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/logic/span/square/span/validator/exception" />
       <recent name="$PROJECT_DIR$/src/logic/span/square/span" />
+      <recent name="$PROJECT_DIR$/src/logic/span/square/span/validator/exception" />
       <recent name="$PROJECT_DIR$/src/logic/node/tree/builder" />
       <recent name="$PROJECT_DIR$/src/logic/node/pair/array" />
       <recent name="$PROJECT_DIR$/src/logic/node/pair/array/builder" />
@@ -859,7 +849,7 @@
       <workItem from="1772847189165" duration="78504000" />
       <workItem from="1773215668490" duration="8009000" />
       <workItem from="1773223700953" duration="11379000" />
-      <workItem from="1773252041918" duration="119942000" />
+      <workItem from="1773252041918" duration="122016000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

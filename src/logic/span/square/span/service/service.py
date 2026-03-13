@@ -1,7 +1,7 @@
-# src/logic/span/square/ray/service/service.py
+# src/logic/span/square/span/service/service.py
 
 """
-Module: logic.span.square.ray.service.service
+Module: logic.span.square.span.service.service
 Author: Banji Lawal
 Created: 2025-11-12
 version: 1.0.0
@@ -10,11 +10,11 @@ version: 1.0.0
 from __future__ import annotations
 from typing import cast
 
-from logic.span import SquareRay, SquareRayBuilder, SquareRayValidator
+from logic.span import SquareSpan, SquareSpanBuilder, SquareSpanValidator
 from logic.system import IdFactory, IntegrityService
 
 
-class SquareRayService(IntegrityService[SquareRay]):
+class SquareSpanService(IntegrityService[SquareSpan]):
     """
     ROLE: Service, Computation
     TASK: Graphing
@@ -49,28 +49,28 @@ class SquareRayService(IntegrityService[SquareRay]):
     INHERITED METHODS:
         *   See IntegrityService for inherited methods.
     """
-    SERVICE_NAME = "SquareRayService"
+    SERVICE_NAME = "SquareSpanService"
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            builder: SquareRayBuilder = SquareRayBuilder(),
-            validator: SquareRayValidator = SquareRayValidator(),
-            id: int = IdFactory.next_id(class_name="SquareRayService"),
+            builder: SquareSpanBuilder = SquareSpanBuilder(),
+            validator: SquareSpanValidator = SquareSpanValidator(),
+            id: int = IdFactory.next_id(class_name="SquareSpanService"),
     ):
         """
         Args:
             id: int
             name: str
-            builder: SquareRayBuilder
-            validator: SquareRayValidator
+            builder: SquareSpanBuilder
+            validator: SquareSpanValidator
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         
     @property
-    def builder(self) -> SquareRayBuilder:
-        return cast(SquareRayBuilder, self.builder)
+    def builder(self) -> SquareSpanBuilder:
+        return cast(SquareSpanBuilder, self.builder)
     
     @property
-    def validator(self) -> SquareRayValidator:
-        return cast(SquareRayValidator, self.validator)
+    def validator(self) -> SquareSpanValidator:
+        return cast(SquareSpanValidator, self.validator)

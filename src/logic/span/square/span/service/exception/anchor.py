@@ -1,7 +1,7 @@
-# src/logic/span/square/ray/service/exception.anchor.py
+# src/logic/span/square/span/service/exception.anchor.py
 
 """
-Module: logic.span.square.ray.service.exception.anchor
+Module: logic.span.square.span.service.exception.anchor
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,19 +11,19 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# SQUARE_RAY_SERVICE_EXCEPTION #======================#
-    "SquareRayServiceException",
+    # ======================# SQUARE_SPAN_SERVICE_EXCEPTION #======================#
+    "SquareSpanServiceException",
 ]
 
 from logic.system import AnchorException
 
-# ======================# SQUARE_RAY_SERVICE_EXCEPTION #======================#
-class SquareRayServiceException(AnchorException):
+# ======================# SQUARE_SPAN_SERVICE_EXCEPTION #======================#
+class SquareSpanServiceException(AnchorException):
     """
     # ROLE: Debug Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Indicate that an error occurred in a SquareRayService.
+    1.  Indicate that an error occurred in a SquareSpanService.
 
     # PARENT:
     *   AnchorException
@@ -50,9 +50,9 @@ class SquareRayServiceException(AnchorException):
         *   See AnchorException class for inherited methods.
     """
     CLS_MTHD = Optional[str]
-    CLS_NAME = "SquareRayService"
-    ERR_CODE = "SQUARE_RAY_SERVICE_EXCEPTION"
-    MSG = " SquareRayService raised an exception."
+    CLS_NAME = "SquareSpanService"
+    ERR_CODE = "SQUARE_SPAN_SERVICE_EXCEPTION"
+    MSG = " SquareSpanService raised an exception."
   
     def __init__(
             self,
