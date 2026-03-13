@@ -10,6 +10,8 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Dict
 
+from logic.vector import Vector
+
 
 class PerpendicularRayFactors:
     """
@@ -53,6 +55,9 @@ class PerpendicularRayFactors:
     # INHERITED METHODS:
     None
     """
+    _start_vector: Vector
+    _end_vector: Vector
+    _delta: Vector
     _start_x: int
     _end_x: int
     _x_step: int
@@ -62,6 +67,9 @@ class PerpendicularRayFactors:
     
     def __init__(
             self,
+            start_vector: Vector,
+            end_vector: Vector,
+            delta: Vector,
             start_x: int,
             end_x: int,
             x_step: int,
@@ -71,6 +79,9 @@ class PerpendicularRayFactors:
     ):
         """
         Args:
+            start_vector: Vector
+            end_vector: Vector
+            delta: Vector
             start_x: int
             end_x: int
             x_step: int
@@ -78,12 +89,27 @@ class PerpendicularRayFactors:
             end_y: int
             y_step: int
         """
+        self._start_vector = start_vector
+        self._end_vector = end_vector
+        self._delta = delta
         self._start_x = start_x
         self._end_x = end_x
         self._x_step = x_step
         self._start_y = start_y
         self._end_y = end_y
         self._y_step = y_step
+        
+    @property
+    def start_vector(self) -> Vector:
+        return self._start_vector
+    
+    @property
+    def end_vector(self) -> Vector:
+        return self._end_vector
+    
+    @property
+    def delta(self) -> Vector:
+        return self._delta
         
     @property
     def start_x(self) -> int:
@@ -115,6 +141,9 @@ class PerpendicularRayFactors:
         Puts factors in a dictionary.
         """
         return {
+            "start_vector": self._start_vector,
+            "end_vector": self._end_vector,
+            "delta": self._delta,
             "start_x": self._start_x,
             "end_x": self._end_x,
             "x_step": self._x_step,

@@ -10,10 +10,12 @@ version: 1.0.0
 from __future__ import annotations
 from typing import List
 
+from logic.vector import VectorService
 from logic.coord import Coord, CoordService
 from logic.system import ComputationResult, LoggingLevelRouter
-from logic.span import PerpendicularRayComputationException, PerpendicularRayFactors, CoordRay
-
+from logic.span import (
+    ComputedNullRayDebugException, PerpendicularRayComputationException, PerpendicularRayFactors, CoordRay
+)
 
 class PerpendicularRayComputer:
     """
@@ -54,6 +56,7 @@ class PerpendicularRayComputer:
             cls,
             factors: PerpendicularRayFactors,
             coord_service: CoordService = CoordService(),
+            vector_service: VectorService = VectorService(),
     ) -> ComputationResult[CoordRay]:
         """
         # Action
@@ -64,8 +67,9 @@ class PerpendicularRayComputer:
             5.  End the loop when x >= end_x and y >= end_y.
             
         Args:
-            factors: PerpendicularRayFactors
             coord_service: CoordService
+            vector_service: VectorService
+            factors: PerpendicularRayFactors
             
         Returns:
             ComputationResult[CoordRay]
@@ -77,12 +81,15 @@ class PerpendicularRayComputer:
         
         i = factors.start_x
         j = factors.start_y
-        points: List[Coord] = []
+        i = factors.start_vector.x
+        j = factors.start_vector.y
+        members: List[Coord] = []
+        cursor = factors.start_vector
         
-        while i < factors.end_x and j < factors.end_y:
+        while cursor != factors.end_vector:
             # Handle the case that the coord is not built.
-            build_result = coord_service.builder.build(row=j, column=i)
-            if build_result.is_failure:
+            conversion_result = coord_service.convert_vector_to_coord(cursor)
+            if conversion_result.is_failure:
                 # Return the exception chain on failure.
                 return ComputationResult.failure(
                     PerpendicularRayComputationException(
@@ -91,17 +98,44 @@ class PerpendicularRayComputer:
                         msg=PerpendicularRayComputationException.MSG,
                         err_code=PerpendicularRayComputationException.ERR_CODE,
                         rslt_type=PerpendicularRayComputationException.RSLT_TYPE,
-                        ex=build_result.exception,
+                        ex=conversion_result.exception,
                     )
                 )
-            # Append the coord to points array if it's not already present.
-            if build_result.payload not in points:
-                points.append(build_result.payload)
-            # Increment the for the next step.
-            i += factors.x_step
-            j += factors.y_step
+            # --- Add the coord if its not in the list, then advance the cursor. ---#
+            if conversion_result.payload not in members:
+                members.append(conversion_result.payload)
+            cursor_update_result = vector_service.add_vectors([cursor, factors.delta])
             
-        # Pop the first point and make it the origin.
-        origin = points.pop(0) if points else None
-        return ComputationResult.success(CoordRay(origin=origin, points=points))
+            # Handle the case that, the cursor is not updated.
+            if cursor_update_result.is_failure:
+                # Return the exception chain on failure.
+                return ComputationResult.failure(
+                    PerpendicularRayComputationException(
+                        mthd=method,
+                        op=PerpendicularRayComputationException.OP,
+                        msg=PerpendicularRayComputationException.MSG,
+                        err_code=PerpendicularRayComputationException.ERR_CODE,
+                        rslt_type=PerpendicularRayComputationException.RSLT_TYPE,
+                        ex=cursor_update_result.exception,
+                    )
+                )
+        # Handle the case that there were no members in the ray.
+        if len(members) == 0:
+            # Return the exception chain on failure.
+            return ComputationResult.failure(
+                PerpendicularRayComputationException(
+                    mthd=method,
+                    op=PerpendicularRayComputationException.OP,
+                    msg=PerpendicularRayComputationException.MSG,
+                    err_code=PerpendicularRayComputationException.ERR_CODE,
+                    rslt_type=PerpendicularRayComputationException.RSLT_TYPE,
+                    ex=ComputedNullRayDebugException(
+                        msg=PerpendicularRayComputationException.MSG,
+                        err_code=PerpendicularRayComputationException.ERR_CODE,
+                    )
+                )
+            )
+        # --- Pop the first member to make it the ray's origin then, send the work product. ---#
+        origin = members.pop(0)
+        return ComputationResult.success(CoordRay(origin=origin, members=members))
  

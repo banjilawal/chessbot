@@ -10,8 +10,9 @@ version: 1.0.0
 # =========== SPAN.COORD.RAY PACKAGE CONTENTS ===========#
 
 # Packages
+from .exception import *
 from .diagonal import *
 from .perpendicular import *
 
 # Modules
-from .wrapper import RayComputationException
+from .ray import CoordRay

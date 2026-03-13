@@ -7,13 +7,15 @@ Created: 2025-11-12
 version: 1.0.0
 """
 
-from typing import cast
+from __future__ import annotations
+from typing import List, cast
 
 from logic.coord import Coord, CoordService
 from logic.scalar import Scalar, ScalarService
-from logic.system import BuildResult, ComputationResult, IdFactory, LoggingLevelRouter, IntegrityService
 from logic.vector import Vector, VectorBuilder, VectorServiceException, VectorValidator
-
+from logic.system import (
+    BuildResult, ComputationResult, IdFactory, LoggingLevelRouter, IntegrityService,  NumberValidator
+)
 
 class VectorService(IntegrityService[Vector]):
     """
@@ -84,91 +86,210 @@ class VectorService(IntegrityService[Vector]):
         """get VectorValidator"""
         return cast(VectorValidator, self.entity_validator)
     
+    @LoggingLevelRouter.monitor
+    def add_vectors(
+            self,
+            vectors: List[Vector],
+            number_validator: NumberValidator = NumberValidator(),
+    ) -> ComputationResult[Vector]:
+        """
+        Action:
+            1.  Return an exception chain in the ComputationResult if
+                    * Any item in the list fails its validation checks.
+            2.  Iterate through the vectors, adding them to an accumulator. Send an exception
+                chain in the ComputationResult if
+                    * any of the accumulations is out of bounds
+            3.  When the loop finishes return the work product.
+
+        Args:
+            vectors: List[Vector]
+            number_validator: NumberValidator
+
+        Returns:
+            ComputationResult[Vector]
+
+        Raises:
+            VectorServiceException
+        """
+        method = f"{self.__class__.__name__}.add_vectors"
+        
+        # Handle the case that, one of the vectors in not certified as safe
+        for vector in vectors:
+            validation_result = self.validator.validate(candidate=vector)
+            if validation_result.is_failure:
+                # Send an exception chain on failure.
+                return ComputationResult.failure(
+                    VectorServiceException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=VectorServiceException.MSG,
+                        err_code=VectorServiceException.ERR_CODE,
+                        ex=validation_result.exception,
+                    )
+                )
+        # --- Create the return target ---#
+        sum = Vector(x=0, y=0)
+        
+        for vector in vectors:
+            summation_result = self.builder.build(
+                x=sum.x + vector.x,
+                y=sum.y + vector.y,
+                number_validator=number_validator,
+            )
+            # Handle the case that, the summation does not produce a work product.
+            if summation_result.is_failure:
+                return ComputationResult.failure(
+                    VectorServiceException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=VectorServiceException.MSG,
+                        err_code=VectorServiceException.ERR_CODE,
+                        ex=summation_result.exception,
+                    )
+                )
+            # --- Update the accumulation. ---#
+            sum = summation_result.payload
+        
+        # --- Send the work product in the ComputationResult. ---#
+        return ComputationResult.success(sum)
     
     @LoggingLevelRouter.monitor
     def multiply_vector_by_scalar(
             self,
             vector: Vector,
             scalar: Scalar,
-            scalar_service: ScalarService = ScalarService()
+            scalar_service: ScalarService = ScalarService(),
+            number_validator: NumberValidator = NumberValidator(),
     ) -> ComputationResult[Vector]:
         """
-        # ACTION:
-        1.  Certify the scalar argument with scalar_service.
-        2.  Certify the vector argument with the service's validator.
-        3.  Get the new x and y components using the expression
-                    x, new_colum = vector.x * scalar.value, vector.y * scalar.value
-        4.  Using the service's VectorBuilder instance create and return the new Vector.
-        # PARAMETERS:
-            *   vector(Vector)
-            *   scalar (Scalar)
-            *   scalar_service (ScalarService)
-        # RETURNS:
-        BuildResult[Vector] containing either:
-            - On success: Vector in the payload.
-            - On failure: Exception.
-        RAISES:
-            *   VectorServiceException
-        """
-        method = "VectorService.multiply_vector_by_scalar"
-        try:
-            # Certify the vector param
-            vector_validation = self._validator.validate(vector)
-            if vector_validation.is_failure:
-                return BuildResult.failure(vector_validation.exception)
-            # Certify the scalar param
-            scalar_validation = scalar_service.validator.validate(candidate=scalar)
-            if scalar_validation.is_failure:
-                return BuildResult.failure(scalar_validation.exception)
+        Action:
             
-            # when params are certified return the BuildResult.
-            return self.builder.build(
-                x=(vector.x * scalar.value), y=(vector.y * scalar.value), validator=self.validator
+            1.  Return an exception chain in the ComputationResult if, either
+                    *   The vector is not certified as safe.
+                    *   The scalar is not certified as safe.
+            2.  Using scalar c, and vector v, create vector p.
+                    p = (v.x * c), (v.y * c)
+            3.  If p does not satisfy the system's vector contract send an
+                exception chain in the ComputationResult.
+            4.  Otherwise, return the work product.
+            
+        Args:
+            vector: Vector
+            scalar: Scalar
+            scalar_service: ScalarService
+            number_validator: NumberValidator
+            
+        Returns:
+            ComputationResult[Vector]
+            
+        Raises:
+            VectorServiceException
+        """
+        method = f"{self.__class__.__name__}.multiply_vector_by_scalar"
+        
+        # Handle the case that, the vector is not certified as safe.
+        vector_validation_result = self.validator.validate(candidate=vector)
+        if vector_validation_result.is_failure:
+            # Send an exception chain on failure.
+            return ComputationResult.failure(
+                VectorServiceException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=VectorServiceException.MSG,
+                    err_code=VectorServiceException.ERR_CODE,
+                    ex=vector_validation_result.exception,
+                )
             )
-            # Finally, catch any missed exception and wrap A VectorServiceException around it then return the
-            # exception-chain inside the BuildResult.
-        except Exception as ex:
-            return BuildResult.failure(
-                VectorServiceException(ex=ex, msg=f"{method}: {VectorServiceException.MSG}")
+        # Handle the case that, the scalar is not certified as safe.
+        scalar_validation_result = scalar_service.validator.validate(candidate=scalar)
+        if scalar_validation_result.is_failure:
+            # Send an exception chain on failure.
+            return ComputationResult.failure(
+                VectorServiceException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=VectorServiceException.MSG,
+                    err_code=VectorServiceException.ERR_CODE,
+                    ex=scalar_validation_result.exception,
+                )
             )
+        # Handle the case that, the new build is unsuccessful.
+        build_result = self.builder.build(
+            x=vector.x * scalar,
+            y=vector.y * scalar,
+            number_validator=number_validator,
+        )
+        if build_result.is_failure:
+            # Send an exception chain on failure.
+            return ComputationResult.failure(
+                VectorServiceException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=VectorServiceException.MSG,
+                    err_code=VectorServiceException.ERR_CODE,
+                    ex=build_result.exception,
+                )
+            )
+        # --- Send the work product. ---#
+        return ComputationResult.success(build_result.payload)
     
     @LoggingLevelRouter.monitor
     def convert_coord_to_vector(
             self,
             coord: Coord,
             coord_service: CoordService = CoordService(),
+            number_validator: NumberValidator = NumberValidator(),
     ) -> BuildResult[Vector]:
         """
-        # ACTION:
-        1.  coord_service runs integrity checks on param.
-        2.  If any checks raise an exception return it in the BuildResult.
-        3.  Run build_coord(row=y, column=y) to ensure the computed values produce a
-            safe Coord instance.
+        Action:
+            1.  Send an exception chain in the BuildResult if, either
+                    *   The coord is not certified as safe.
+                    *   The coord's attributes don't meet Vector specs.
+            2.  Otherwise, return the work product.
 
-        # PARAMETERS:
-            *   coord (Coord)
-            *   coord_service (CoordService)
+        Args:
+            coord: Coord
+            coord_service: CoordService
+            number_validator: NumberValidator
 
-        # RETURNS:
-        BuildResult[Coord] containing either:
-            - On success: Coord in the payload.
-            - On failure: Exception.
+        Args:
+            BuildResult[Vector]
 
-        RAISES:
-            *   VectorServiceException
+        Raises:
+            VectorServiceException
         """
-        method = "vectorService.convert_coord_to_vector"
-        try:
-            # Certify the coord param
-            coord_validation = coord_service.validator.validate(candidate=coord)
-            if coord_validation.is_failure():
-                return BuildResult.failure(coord_validation.exception)
-            # After the coord is certified return the BuildResult.
-            return self.builder.build(x=coord.column, y=coord.row)
-            
-            # Finally, catch any missed exception and wrap A VectorServiceException around it then return the
-            # exception-chain inside the BuildResult.
-        except Exception as ex:
-            return BuildResult.failure(
-                VectorServiceException(ex=ex, msg=f"{method}: {VectorServiceException.MSG}")
+        method = f"{self.__class__.__name__}.convert_coord_to_vector"
+        
+        # Handle the case that, the coord is not certified as safe.
+        coord_validation_result = coord_service.validator.validate(candidate=coord)
+        if coord_validation_result.is_failure:
+            # Send an exception chain on failure.
+            return ComputationResult.failure(
+                VectorServiceException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=VectorServiceException.MSG,
+                    err_code=VectorServiceException.ERR_CODE,
+                    ex=coord_validation_result.exception,
+                )
             )
+        vector_build_result = self.builder.build(
+            x=coord.column,
+            y=coord.row,
+            number_validator=number_validator,
+        )
+        # Handle the case that, the build does not produce a work product.
+        if vector_build_result.is_failure:
+            # Send an exception chain on failure.
+            return ComputationResult.failure(
+                VectorServiceException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=VectorServiceException.MSG,
+                    err_code=VectorServiceException.ERR_CODE,
+                    ex=vector_build_result.exception,
+                )
+            )
+        # --- Forward the work product. ---#
+        return vector_build_result
+    

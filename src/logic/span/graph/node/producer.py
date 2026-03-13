@@ -237,7 +237,7 @@ class NodeTreeProducer:
                         ex=production_result.exception,
                     )
                 )
-                # --- Add the pair to the list, then advance the cursor_node. ---#.
+                # --- Add the pair to the list, then advance the cursor. ---#.
                 node_pair_list.items.append(production_result.payload)
                 cursor = production_result.payload.tail
             

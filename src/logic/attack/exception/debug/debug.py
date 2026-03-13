@@ -9,7 +9,7 @@ version: 1.0.0
 
 
 __all__ = [
-    # ======================# ATTACK_DEBUG EXCEPTION #======================#
+    # ======================# ATTACK_DEBUG_EXCEPTION #======================#
     "AttackDebugException",
 ]
 
@@ -17,7 +17,7 @@ from logic.attack import AttackException
 from logic.system import DebugException
 
 
-# ======================# ATTACK_DEBUG EXCEPTION #======================#
+# ======================# ATTACK_DEBUG_EXCEPTION #======================#
 class AttackDebugException(AttackException, DebugException):
     """
     # ROLE: Error Tracing, Debugging

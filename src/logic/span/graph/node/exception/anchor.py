@@ -17,16 +17,21 @@ __all__ = [
 
 from logic.system import AnchorException
 
+
 # ======================# NODE_TREE_PRODUCER_EXCEPTION #======================#
 class NodeTreeProducerException(AnchorException):
     """
-    # ROLE: Debug Coverage Target, Exception Chain Layer 0
+    # ROLE: Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Indicate that an error occurred in a NodeTreeProducer.
+    1.  Provide NodeTreeProducer as:
+            *   Reporting
+            *   Coverage
+        target for layer-2 debugging exceptions.
+    2.  Indicate which NodeTreeProducer method received a worker's (layer-1) failure result.
 
     # PARENT:
-    *   AnchorException
+        *   AnchorException
 
     # PROVIDES:
     None
@@ -42,7 +47,7 @@ class NodeTreeProducerException(AnchorException):
         *   err_code (str)
         *   ex (Optional[Exception])
         *   cls_name (Optional[str])
-        *   cls_mthd: Optional[str]
+        *   cls_mthd (Optional[str])
 
     # LOCAL METHODS:
     None
@@ -53,12 +58,12 @@ class NodeTreeProducerException(AnchorException):
     CLS_MTHD = None
     CLS_NAME = "NodeTreeProducer"
     ERR_CODE = "NODE_TREE_PRODUCER_EXCEPTION"
-    MSG = " NodeTreeProducer raised an exception."
-  
+    MSG = "Exception raised in NodeTreeProducer"
+    
     def __init__(
             self,
-            err_code: Optional[str] = None,
             msg: Optional[str] = None,
+            err_code: Optional[str] = None,
             ex: Optional[Exception] = None,
             cls_name: Optional[str] = None,
             cls_mthd: Optional[str] = None,
@@ -66,13 +71,19 @@ class NodeTreeProducerException(AnchorException):
         """
         Args:
             msg: Optional[str]
-            ex: Optional[Exception]
-            cls_name: Optional[str]
             cls_mthd: Optional[str]
+            cls_name: Optional[str
             err_code: Optional[str]
+            ex: Optional[Exception]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
         cls_name = cls_name or self.CLS_NAME
         cls_mthd = cls_mthd or self.CLS_MTHD
-        super().__init__(msg=msg, err_code=err_code, ex=ex, cls_name=cls_name, cls_mthd=cls_mthd)
+        
+        super().__init__(
+            ex=ex, msg=msg,
+            err_code=err_code,
+            cls_name=cls_name,
+            cls_mthd=cls_mthd
+        )

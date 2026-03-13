@@ -11,22 +11,27 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# VECTOR_SERVICE_EXCEPTION #======================#
+    # ======================# VECTOR_EXCEPTION #======================#
     "VectorServiceException",
 ]
 
 from logic.system import AnchorException
 
-# ======================# VECTOR_SERVICE_EXCEPTION #======================#
+
+# ======================# VECTOR_EXCEPTION #======================#
 class VectorServiceException(AnchorException):
     """
-    # ROLE: Debug Coverage Target, Exception Chain Layer 0
+    # ROLE: Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Indicate that an error occurred in a vectorService.
+    1.  Provide VectorService as:
+            *   Reporting
+            *   Coverage
+        target for layer-2 debugging exceptions.
+    2.  Indicate which VectorService method received a worker's (layer-1) failure result.
 
     # PARENT:
-    *   AnchorException
+        *   AnchorException
 
     # PROVIDES:
     None
@@ -42,6 +47,7 @@ class VectorServiceException(AnchorException):
         *   err_code (str)
         *   ex (Optional[Exception])
         *   cls_name (Optional[str])
+        *   cls_mthd (Optional[str])
 
     # LOCAL METHODS:
     None
@@ -49,20 +55,35 @@ class VectorServiceException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    ERR_CODE = " VECTOR_SERVICE_EXCEPTION"
-    MSG = " VectorService raised an exception."
-    CLS_NAME = " VectorService"
-    
-    _cls_name: Optional[str]
+    CLS_MTHD = None
+    CLS_NAME = "VectorService"
+    ERR_CODE = "VECTOR_EXCEPTION"
+    MSG = "Exception raised in VectorService"
     
     def __init__(
             self,
-            err_code: Optional[str] = None,
             msg: Optional[str] = None,
+            err_code: Optional[str] = None,
             ex: Optional[Exception] = None,
             cls_name: Optional[str] = None,
+            cls_mthd: Optional[str] = None,
     ):
-        err_code = err_code or self.ERR_CODE
+        """
+        Args:
+            msg: Optional[str]
+            cls_mthd: Optional[str]
+            cls_name: Optional[str
+            err_code: Optional[str]
+            ex: Optional[Exception]
+        """
         msg = msg or self.MSG
+        err_code = err_code or self.ERR_CODE
         cls_name = cls_name or self.CLS_NAME
-        super().__init__(msg=msg, err_code=err_code, ex=ex, cls_name=cls_name)
+        cls_mthd = cls_mthd or self.CLS_MTHD
+        
+        super().__init__(
+            ex=ex, msg=msg,
+            err_code=err_code,
+            cls_name=cls_name,
+            cls_mthd=cls_mthd
+        )

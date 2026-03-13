@@ -11,13 +11,13 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# SQUARE_SERVICE_DEBUG EXCEPTION #======================#
+    # ======================# SQUARE_SERVICE_DEBUG_EXCEPTION #======================#
     "SquareServiceDebugException",
 ]
 
 from logic.system import DebugException
 
-# ======================# SQUARE_SERVICE_DEBUG EXCEPTION #======================#
+# ======================# SQUARE_SERVICE_DEBUG_EXCEPTION #======================#
 class SquareServiceDebugException(DebugException):
     """
     # ROLE: Error Tracing, Debugging

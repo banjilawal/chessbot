@@ -11,12 +11,11 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# PANNER_EXCEPTION #======================#
+    # ======================# SPANNER_EXCEPTION #======================#
     "SpannerException",
 ]
 
 from logic.system import AnchorException
-
 
 # ======================# SPANNER_EXCEPTION #======================#
 class SpannerException(AnchorException):

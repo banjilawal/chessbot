@@ -11,13 +11,13 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# SPAN_SERVICE_DEBUG EXCEPTION #======================#
+    # ======================# SPAN_SERVICE_DEBUG_EXCEPTION #======================#
     "SpanServiceDebugException",
 ]
 
 from logic.system import DebugException
 
-# ======================# SPAN_SERVICE_DEBUG EXCEPTION #======================#
+# ======================# SPAN_SERVICE_DEBUG_EXCEPTION #======================#
 class SpanServiceDebugException(DebugException):
     """
     # ROLE: Error Tracing, Debugging

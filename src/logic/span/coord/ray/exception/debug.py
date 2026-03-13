@@ -1,9 +1,9 @@
-# src/logic/span/spanner/bishop/service/exception/debug.py
+# src/logic/span/service/exception.debug.py
 
 """
-Module: logic.span.spanner.bishop.service.exception.debug
+Module: logic.span.service.exception.debug
 Author: Banji Lawal
-Created: 2026-03-10
+Created: 2025-09-16
 version: 1.0.0
 """
 
@@ -11,30 +11,30 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# BISHOP_SPAN_SERVICE_DEBUG_EXCEPTION #======================#
-    "BishopSpanServiceDebugException",
+    # ======================# COMPUTED_NULL_RAY_DEBUG_EXCEPTION #======================#
+    "ComputedNullRayDebugException",
 ]
 
-from logic.span import SpanServiceDebugException
+from logic.system import NullException
 
 
-# ======================# BISHOP_SPAN_SERVICE_DEBUG_EXCEPTION #======================#
-class BishopSpanServiceDebugException(SpanServiceDebugException):
+# ======================# COMPUTED_NULL_RAY_DEBUG_EXCEPTION #======================#
+class ComputedNullRayDebugException(NullException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Describes the condition that caused a BishopSpanService operation failure.
+    1.  Indicate that a rsy computation's result had no origin, and no members.
+        This happens when the start and endpoints are the same.
 
     # PARENT:
-        *   SpanServiceDebugException
+        *   DebugException
 
     # PROVIDES:
     None
 
     # LOCAL ATTRIBUTES:
-        *   var (Optional[str])
-        *   val Optional[Any])
+    None
 
     # INHERITED ATTRIBUTES:
         *   DebugException class for inherited attributes.
@@ -42,20 +42,20 @@ class BishopSpanServiceDebugException(SpanServiceDebugException):
     # CONSTRUCTOR PARAMETERS:
         *   msg (str)
         *   err_code (str)
-        *   ex (Optional[Exception])
         *   var (Optional[str])
         *   val Optional[Any])
+        *   ex (Optional[Exception])
 
     # LOCAL METHODS:
    None
 
     # INHERITED METHODS:
-        *   See SpanServiceDebugException class for inherited methods.
+        *   See DebugException class for inherited methods.
     """
     VAR: None
     VAL = Optional[Any]
-    ERR_CODE = "BISHOP_SPAN_SERVICE_EXCEPTION"
-    MSG: str = "A variable in BishopSpanService raised an exception."
+    ERR_CODE = "COMPUTED_NULL_RAY_DEBUG_EXCEPTION"
+    MSG: str = "The computed ray's start and end points are the same. Product is null."
     
     def __init__(
             self,
