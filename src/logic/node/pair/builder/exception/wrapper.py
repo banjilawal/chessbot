@@ -39,12 +39,12 @@ class NodePairBuildException(BuildException):
         *   See BuildException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:)
-        *   err_code (str)
-        *   msg (str)
-        *   ex (Optional[Exception])
-        *   mthd (Optional[str])
-        *   op (Optional[str])
-        *   rslt_type (Optional[str])
+        op: Optional[str]
+        msg: Optional[str]
+        mthd: Optional[str]
+        err_code: Optional[str]
+        ex: Optional[Exception]
+        rslt_type: Optional[str]
 
     # LOCAL METHODS:
    None
@@ -52,8 +52,8 @@ class NodePairBuildException(BuildException):
     # INHERITED METHODS:
         *   See BuildException class for inherited methods.
     """
-    MTHD = Optional[str]
     OP = "Build"
+    MTHD = Optional[str]
     RSLT_TYPE = "BuildResult"
     ERR_CODE = "NODE_PAIR_BUILD_FAILURE"
     MSG = "Failure in NodePairBuilder method."
