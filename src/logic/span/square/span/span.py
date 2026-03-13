@@ -43,8 +43,13 @@ class SquareSpan(Span[Square]):
         *   See Span class for inherited methods.
     """
     
-    def __init__(self, origin: Square):
-        super().__init__(origin=origin)
+    def __init__(
+            self,
+            origin: Square,
+            rays: List[SquareRay],
+            sub_span_roots: List[Square],
+    ):
+        super().__init__(origin=origin, rays=rays, sub_span_roots=sub_span_roots)
 
     @property
     def origin(self) -> Square:
@@ -55,5 +60,5 @@ class SquareSpan(Span[Square]):
         return cast(List[SquareRay], self.rays)
     
     @property
-    def sub_span_roots(self) -> List[SquareRay]:
-        return cast(List[SquareRay], self.sub_span_roots)
+    def sub_span_roots(self) -> List[Square]:
+        return cast(List[Square], self.sub_span_roots)

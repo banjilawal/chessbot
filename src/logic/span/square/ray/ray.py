@@ -42,12 +42,13 @@ class SquareRay(Ray[Square]):
     # INHERITED METHODS:
     None
     """
-    def __init__(self, origin: Square):
+    def __init__(self, origin: Square, members: List[Square]):
         """
         Args:
             origin: Square
+            members: List[Square]
         """
-        super().__init__(origin=origin)
+        super().__init__(origin=origin, members=members)
     
     @property
     def origin(self) -> Square:

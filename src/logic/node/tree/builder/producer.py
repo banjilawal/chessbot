@@ -51,16 +51,7 @@ class NodeTreeProducer:
         """
         method = f"{cls.__class__.__name__}.build_node_stack_service"
         
-        # --- If the span contains any child spans, put them in a ray, then append to the parent, rays. ---#
-        if square_span.has_sub_spans:
-            square_span.rays.append(
-                SquareRay(
-                    origin=square_span.origin,
-                    members=square_span.sub_span_roots
-                )
-            )
-            # Clear the roots so they don't get added again.
-            square_span.sub_span_roots.clear()
+
             
         # --- build the tree's root node. ---#
         root_node_build_result = node_service.builder.build(square=square_span.origin)

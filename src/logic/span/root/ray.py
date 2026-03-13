@@ -47,13 +47,13 @@ class Ray(ABC, Generic[T]):
     _origin: T
     _members: List[T]
     
-    def __init__(self, origin: T):
+    def __init__(self, origin: T, members: List[T]):
         """
         Args:
             origin: Coord
         """
         self._origin = origin
-        self._members = [T]
+        self._members = members
         
     @property
     def origin(self) -> T:

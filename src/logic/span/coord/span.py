@@ -45,7 +45,7 @@ class CoordSpan(Span[Coord]):
         * See Span class for inherited methods.
     """
     
-    def __init__(self, origin: Coord, rays: List[CoordRay]):
+    def __init__(self, origin: Coord, rays: List[CoordRay], sub_span_roots: List[Coord]):
         """
         Args:
             origin: Coord
@@ -60,5 +60,9 @@ class CoordSpan(Span[Coord]):
     @property
     def rays(self) -> List[CoordRay]:
         return cast(List[CoordRay], self.rays)
+    
+    @property
+    def sub_span_roots(self) -> List[Coord]:
+        return cast(List[Coord], self.sub_span_roots)
         
     

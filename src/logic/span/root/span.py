@@ -50,10 +50,10 @@ class Span(ABC, Generic[T]):
     _rays: List[Ray[T]]
     _sub_span_roots: List[T]
     
-    def __init__(self, origin: T):
+    def __init__(self, origin: T, rays: List[Ray[T]], sub_span_roots: List[T]):
         self._origin = origin
         self._rays = [Ray[T]]
-        self._sub_span_roots = [T]
+        self._sub_span_roots = sub_span_roots
         
     @property
     def length(self) -> int:
