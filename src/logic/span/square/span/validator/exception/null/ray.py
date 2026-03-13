@@ -1,7 +1,7 @@
-# src/logic/span/square/span/validator/exception/debug/span.py
+# src/logic/span/square/span/validator/exception/debug/null.py
 
 """
-Module: logic.span.square.span.validator.exception.debug.span
+Module: logic.span.square.span.validator.exception.debug.null
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -11,20 +11,22 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-#======================# NULL_SQUARE_SPAN_EXCEPTION #======================#
-    "NullSquareSpanException",
+    # ======================# SQUARE_SPAN_RAYS_NULL_EXCEPTION #======================#
+    "SquareSpanRaysNullException",
 ]
 
 from logic.system import NullException
 
-#======================# NULL_SQUARE_SPAN_EXCEPTION #======================#
-class NullSquareSpanException(NullException):
+
+# ======================# SQUARE_SPAN_RAYS_NULL_EXCEPTION #======================#
+class SquareSpanRaysNullException(NullException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a squareSpan is null where it should not be.
-    
+    1.  Indicate that a SquareSpan candidate was not validated because it's rays
+        were null instead of a List[SquareRay]
+
     # PARENT:
         *   NullException
 
@@ -45,15 +47,15 @@ class NullSquareSpanException(NullException):
         ex: Optional[Exception
 
     # LOCAL METHODS:
-   None
+    None
 
     # INHERITED METHODS:
         *   See NullException class for inherited methods.
     """
     VAR = Optional[str]
     VAL = Optional[Any]
-    MSG = "SquareSpan cannot be null."
-    ERR_CODE = "NULL_SQUARE_SPAN_EXCEPTION"
+    ERR_CODE = "SQUARE_SPAN_RAYS_NULL_EXCEPTION"
+    MSG = "SquareSpan rays cannot be null instead of a List[SquareRay]."
     
     def __init__(
             self,
@@ -62,7 +64,7 @@ class NullSquareSpanException(NullException):
             msg: Optional[str] = None,
             err_code: Optional[str] = None,
             ex: Optional[Exception] = None,
-
+    
     ):
         """
         Args:

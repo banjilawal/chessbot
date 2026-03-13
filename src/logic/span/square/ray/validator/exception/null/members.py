@@ -9,7 +9,6 @@ version: 1.0.0
 
 from __future__ import annotations
 from typing import Any, Optional
-
 __all__ = [
     # ======================# SQUARE_RAY_MEMBERS_NULL_EXCEPTION #======================#
     "SquareRayMembersNullException",
@@ -17,15 +16,14 @@ __all__ = [
 
 from logic.system import NullException
 
-
 # ======================# SQUARE_RAY_MEMBERS_NULL_EXCEPTION #======================#
 class SquareRayMembersNullException(NullException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a SquareRay candidate was not validated because it's members
-        were null instead of a List[SquareRay]
+    1.  Indicate that a SquareRay candidate was not validated because it's rays
+        were null instead of a List[Square]
 
     # PARENT:
         *   NullException
@@ -47,15 +45,15 @@ class SquareRayMembersNullException(NullException):
         ex: Optional[Exception
 
     # LOCAL METHODS:
-   None
+    None
 
     # INHERITED METHODS:
         *   See NullException class for inherited methods.
     """
     VAR = Optional[str]
     VAL = Optional[Any]
-    MSG = "SquareRay members cannot be null instead of a List[SquareRay]."
     ERR_CODE = "SQUARE_RAY_MEMBERS_NULL_EXCEPTION"
+    MSG = "SquareRay members cannot be null instead of a List[Square]."
     
     def __init__(
             self,
@@ -79,11 +77,3 @@ class SquareRayMembersNullException(NullException):
         val = val or self.VAL
         err_code = err_code or self.ERR_CODE
         super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)
-
-
-    
-
-
-
-
-

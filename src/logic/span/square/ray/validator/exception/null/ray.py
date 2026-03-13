@@ -1,7 +1,7 @@
-# src/logic/span/square/ray/validator/exception/debug/ray.py
+# src/logic/ray/square/ray/validator/exception/debug/ray.py
 
 """
-Module: logic.span.square.ray.validator.exception.debug.ray
+Module: logic.ray.square.ray.validator.exception.debug.ray
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -11,20 +11,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-#======================# NULL_SQUARE_RAY_EXCEPTION #======================#
-    "NullSquareRayException",
+    # ======================# SQUARE_RAY_NULL_EXCEPTION #======================#
+    "SquareRayNullException",
 ]
 
 from logic.system import NullException
 
-#======================# NULL_SQUARE_RAY_EXCEPTION #======================#
-class NullSquareRayException(NullException):
+
+# ======================# SQUARE_RAY_NULL_EXCEPTION #======================#
+class SquareRayNullException(NullException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a squareRay is null where it should not be.
-    
+    1.  Indicate that a SquareRay is null where it should not be.
+
     # PARENT:
         *   NullException
 
@@ -53,7 +54,7 @@ class NullSquareRayException(NullException):
     VAR = Optional[str]
     VAL = Optional[Any]
     MSG = "SquareRay cannot be null."
-    ERR_CODE = "NULL_SQUARE_RAY_EXCEPTION"
+    ERR_CODE = "SQUARE_RAY_NULL_EXCEPTION"
     
     def __init__(
             self,
@@ -62,7 +63,7 @@ class NullSquareRayException(NullException):
             msg: Optional[str] = None,
             err_code: Optional[str] = None,
             ex: Optional[Exception] = None,
-
+    
     ):
         """
         Args:
@@ -77,11 +78,3 @@ class NullSquareRayException(NullException):
         val = val or self.VAL
         err_code = err_code or self.ERR_CODE
         super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)
-
-
-    
-
-
-
-
-

@@ -1,7 +1,7 @@
-# src/logic/span/square/span/validator/exception/debug/null.py
+# src/logic/span/square/span/validator/exception/null/span.py
 
 """
-Module: logic.span.square.span.validator.exception.debug.null
+Module: logic.span.square.span.validator.exception.null.span
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -11,22 +11,20 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# SQUARE_SPAN_MEMBERS_NULL_EXCEPTION #======================#
-    "SquareSpanMembersNullException",
+#======================# SQUARE_SPAN_NULL_EXCEPTION #======================#
+    "SquareSpanNullException",
 ]
 
 from logic.system import NullException
 
-
-# ======================# SQUARE_SPAN_MEMBERS_NULL_EXCEPTION #======================#
-class SquareSpanMembersNullException(NullException):
+#======================# SQUARE_SPAN_NULL_EXCEPTION #======================#
+class SquareSpanNullException(NullException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a SquareSpan candidate was not validated because it's members
-        were null instead of a List[SquareSpan]
-
+    1.  Indicate that a SquareSpan is null where it should not be.
+    
     # PARENT:
         *   NullException
 
@@ -54,8 +52,8 @@ class SquareSpanMembersNullException(NullException):
     """
     VAR = Optional[str]
     VAL = Optional[Any]
-    MSG = "SquareSpan members cannot be null instead of a List[SquareSpan]."
-    ERR_CODE = "SQUARE_SPAN_MEMBERS_NULL_EXCEPTION"
+    MSG = "SquareSpan cannot be null."
+    ERR_CODE = "SQUARE_SPAN_NULL_EXCEPTION"
     
     def __init__(
             self,
@@ -64,7 +62,7 @@ class SquareSpanMembersNullException(NullException):
             msg: Optional[str] = None,
             err_code: Optional[str] = None,
             ex: Optional[Exception] = None,
-    
+
     ):
         """
         Args:
