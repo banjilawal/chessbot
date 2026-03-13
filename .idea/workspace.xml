@@ -5,16 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change afterPath="$PROJECT_DIR$/src/logic/span/coord/ray/debug.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/span/coord/ray/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/coord/ray/exception/debug.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logic/span/coord/ray/perpendicular/computer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/coord/ray/perpendicular/computer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/coord/ray/perpendicular/provider/factor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/coord/ray/perpendicular/provider/factor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logic/span/coord/ray/perpendicular/provider/plane.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/coord/ray/perpendicular/provider/plane.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/graph/node/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/graph/node/exception/anchor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/graph/node/producer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/graph/node/producer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/span/spanner/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/spanner/exception/anchor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/vector/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/vector/service/exception/anchor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/vector/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/vector/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/span/spanner/engine/engine.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/spanner/engine/engine.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -314,11 +309,11 @@
       <recent name="$PROJECT_DIR$/src/logic/span/square/graph/exception" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/logic/span/coord/ray/exception" />
       <recent name="$PROJECT_DIR$/src/logic/span/coord/ray" />
       <recent name="$PROJECT_DIR$/src/logic/span/coord" />
       <recent name="$PROJECT_DIR$/src/logic/span/root" />
       <recent name="$PROJECT_DIR$/src/logic/span" />
-      <recent name="$PROJECT_DIR$/src/logic/span/model" />
     </key>
   </component>
   <component name="RunManager" selected="Python.service">
@@ -860,7 +855,7 @@
       <workItem from="1772847189165" duration="78504000" />
       <workItem from="1773215668490" duration="8009000" />
       <workItem from="1773223700953" duration="11379000" />
-      <workItem from="1773252041918" duration="74451000" />
+      <workItem from="1773252041918" duration="79489000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -966,11 +961,6 @@
           <url>file://$PROJECT_DIR$/src/logic/edge/service/exception/debug.py</url>
           <line>9</line>
           <option name="timeStamp" value="51" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/logic/span/coord/ray/__init__.py</url>
-          <line>12</line>
-          <option name="timeStamp" value="52" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

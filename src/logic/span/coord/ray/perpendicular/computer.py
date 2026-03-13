@@ -79,10 +79,7 @@ class PerpendicularRayComputer:
         """
         method = f"{cls.__name__}.compute"
         
-        i = factors.start_x
-        j = factors.start_y
-        i = factors.start_vector.x
-        j = factors.start_vector.y
+
         members: List[Coord] = []
         cursor = factors.start_vector
         

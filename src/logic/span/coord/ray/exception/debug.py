@@ -17,7 +17,6 @@ __all__ = [
 
 from logic.system import NullException
 
-
 # ======================# COMPUTED_NULL_RAY_DEBUG_EXCEPTION #======================#
 class ComputedNullRayDebugException(NullException):
     """

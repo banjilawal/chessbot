@@ -27,6 +27,7 @@ class SpannerEngine:
             cls,
             origin: Coord,
             coord_service: CoordService = CoordService(),
+            vector_service: VectorService = VectorService(),
             diagonal_ray_provider: Optional[DiagonalRayProvider] = None,
             perpendicular_ray_provider: Optional[PerpendicularRayProvider] = None,
     ):
@@ -42,6 +43,7 @@ class SpannerEngine:
         Args:
             origin: Coord
             coord_service: CoordService
+            vector_service: VectorService
             diagonal_ray_provider: Optional[DiagonalRayProvider]
             perpendicular_ray_provider: Optional[PerpendicularRayProvider]
             
@@ -120,6 +122,7 @@ class SpannerEngine:
             return cls._compute_rook_span(
                 origin=origin,
                 coord_service=coord_service,
+                vector_service=vector_service,
                 provider=perpendicular_ray_provider
             )
         # Handle the default case that no solution logic exists for a provider combination.
@@ -305,7 +308,8 @@ class SpannerEngine:
             cls,
             origin,
             coord_service: CoordService,
-            provider: PerpendicularRayProvider
+            vector_service: VectorService,
+            provider: PerpendicularRayProvider,
     ) -> ComputationResult[CoordSpan]:
         """
         Action:
@@ -316,6 +320,7 @@ class SpannerEngine:
         Args:
             origin: Coord
             coord_service: CoordService
+            vector_service: VectorService
             provider: PerpendicularRayProvider
 
         Returns:
@@ -333,7 +338,8 @@ class SpannerEngine:
             ray_result = provider.ray.compute(
                 origin=origin,
                 factor=factor,
-                coord_service=coord_service
+                coord_service=coord_service,
+                vector_service=vector_service,
             )
             # Handle the case that, the rook span is not computed.
             if ray_result.is_failure:

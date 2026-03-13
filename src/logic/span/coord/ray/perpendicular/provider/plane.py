@@ -73,15 +73,8 @@ class PerpendicularPlaneFactors:
         """
         return PerpendicularRayFactors(
             start_vector=Vector(x=self._origin.column, y=self._origin.row),
-            start_x=self._origin.column,
-            start_y = self._origin.row,
-            x_step=0,
-            y_step=-1,
-            delta=Vector(x=0, y=-1),
             end_vector=Vector(x=self._origin.column, y=0),
-            end_x=self._origin.column,
-            end_y=0,
-
+            delta=Vector(x=0, y=-1),
         )
     
     @property
@@ -99,14 +92,8 @@ class PerpendicularPlaneFactors:
         """
         return PerpendicularRayFactors(
             start_vector=Vector(x=0, y=self._origin.row),
-            start_x=0,
-            start_y=self._origin.row,
-            x_step=-1,
-            y_step=0,
-            delta=Vector(x=-1, y=0),
-            end_x=self._origin.column,
-            end_y=self._origin.row,
             end_vector=Vector(x=self._origin.column, y=self._origin.row),
+            delta=Vector(x=-1, y=0),
         )
     
     @property
@@ -124,15 +111,8 @@ class PerpendicularPlaneFactors:
         """
         return PerpendicularRayFactors(
             start_vector=Vector(x=self._origin.column, y=self._origin.row),
-
-            start_x=self._origin.column,
-            start_y=self._origin.row,
-            x_step=0,
-            y_step=1,
-            delta=Vector(x=0, y=1),
-            end_x=self._origin.column,
-            end_y=NUMBER_OF_ROWS - 1,
             end_vector=Vector(x=self._origin.column, y=NUMBER_OF_ROWS - 1),
+            delta=Vector(x=0, y=1),
         )
     
     @property
@@ -150,14 +130,8 @@ class PerpendicularPlaneFactors:
         """
         return PerpendicularRayFactors(
             start_vector=Vector(x=self._origin.column, y=self._origin.row),
-            start_x=self._origin.column,
-            start_y=self._origin.row,
-            x_step=1,
-            y_step=0,
-            delta=Vector(x=1, y=0),
-            end_x=NUMBER_OF_COLUMNS - 1,
-            end_y=self._origin.row,
             end_vector=Vector(x=NUMBER_OF_COLUMNS - 1, y=self._origin.row),
+            delta=Vector(x=1, y=0),
         )
     
     @property
