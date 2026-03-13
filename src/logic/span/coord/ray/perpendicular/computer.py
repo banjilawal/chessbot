@@ -84,8 +84,10 @@ class PerpendicularRayComputer:
         cursor = factors.start_vector
         
         while cursor != factors.end_vector:
-            # Handle the case that the coord is not built.
+            # --- Convert the cursor vector into a coord. ---#
             conversion_result = coord_service.convert_vector_to_coord(cursor)
+            
+            # Handle the case that the conversion is unsuccessful.
             if conversion_result.is_failure:
                 # Return the exception chain on failure.
                 return ComputationResult.failure(
@@ -98,7 +100,7 @@ class PerpendicularRayComputer:
                         ex=conversion_result.exception,
                     )
                 )
-            # --- Add the coord if its not in the list, then advance the cursor. ---#
+            # --- Add the coord if it's not in the list, then advance the cursor. ---#
             if conversion_result.payload not in members:
                 members.append(conversion_result.payload)
             cursor_update_result = vector_service.add_vectors([cursor, factors.delta])
@@ -116,6 +118,10 @@ class PerpendicularRayComputer:
                         ex=cursor_update_result.exception,
                     )
                 )
+            # Otherwise the cursor advances.
+            cursor = cursor_update_result.payload
+        # --- Do the clean steps when the loop finishes. ---#
+            
         # Handle the case that there were no members in the ray.
         if len(members) == 0:
             # Return the exception chain on failure.
@@ -127,8 +133,8 @@ class PerpendicularRayComputer:
                     err_code=PerpendicularRayComputationException.ERR_CODE,
                     rslt_type=PerpendicularRayComputationException.RSLT_TYPE,
                     ex=ComputedNullRayDebugException(
-                        msg=PerpendicularRayComputationException.MSG,
-                        err_code=PerpendicularRayComputationException.ERR_CODE,
+                        msg=ComputedNullRayDebugException.MSG,
+                        err_code=ComputedNullRayDebugException.ERR_CODE,
                     )
                 )
             )

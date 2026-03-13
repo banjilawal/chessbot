@@ -12,8 +12,8 @@ from typing import List
 
 from logic.coord import Coord, CoordService
 from logic.system import ComputationResult, LoggingLevelRouter
-from logic.span import DiagonalRayComputationException, DiagonalRayFactors, CoordRay
-from logic.vector import VectorService
+from logic.span import ComputedNullRayDebugException, DiagonalRayComputationException, DiagonalRayFactors, CoordRay
+from logic.vector import Vector, VectorService
 
 
 class DiagonalRayComputer:
@@ -75,6 +75,7 @@ class DiagonalRayComputer:
         Args:
             factors: DiagonalRayFactors
             coord_service: CoordService
+            vector_service: VectorService
             
         Returns:
             ComputationResult[CoordRay]
@@ -84,15 +85,34 @@ class DiagonalRayComputer:
         """
         method = f"{cls.__name__}.compute"
         
-        points: List[Coord] = []
+        members: List[Coord] = []
+        # --- Use starting_x and the slope to build the cursor. ---#
+        cursor_initialization_result = vector_service.builder.build(
+            x=factors.start_x,
+            y=cls._f_of_x(x=factors.start_x, slope=factors.slope),
+        )
+        # Handle the case that, the cursor is not built.
+        if cursor_initialization_result.is_failure:
+            # Return the exception chain on failure.
+            return ComputationResult.failure(
+                DiagonalRayComputationException(
+                    mthd=method,
+                    op=DiagonalRayComputationException.OP,
+                    msg=DiagonalRayComputationException.MSG,
+                    err_code=DiagonalRayComputationException.ERR_CODE,
+                    rslt_type=DiagonalRayComputationException.RSLT_TYPE,
+                    ex=cursor_initialization_result.exception,
+                )
+            )
+        # --- The cursor has been initialized. ---#
+        cursor = cursor_initialization_result.payload
         
-        i = factors.start_x
-        j = (2 * factors.slope * i) + factors.slope
-    
-        while i < factors.end_x and j < factors.end_y:
-            # Handle the case that the coord is not built.
-            build_result = coord_service.builder.build(row=j, column=i)
-            if build_result.is_failure:
+        while cursor != factors.end_vector:
+            # --- Convert the cursor vector into a coord. ---#
+            conversion_result = coord_service.convert_vector_to_coord(cursor)
+            
+            # Handle the case that the conversion is unsuccessful.
+            if conversion_result.is_failure:
                 # Return the exception chain on failure.
                 return ComputationResult.failure(
                     DiagonalRayComputationException(
@@ -101,17 +121,69 @@ class DiagonalRayComputer:
                         msg=DiagonalRayComputationException.MSG,
                         err_code=DiagonalRayComputationException.ERR_CODE,
                         rslt_type=DiagonalRayComputationException.RSLT_TYPE,
-                        ex=build_result.exception,
+                        ex=conversion_result.exception,
                     )
                 )
-            # Append the coord to points array if it's not already present.
-            if build_result.payload not in points:
-               points.append(build_result.payload)
-            # Increment for the next step
-            i += factors.x_step
-            j = (2 * factors.slope * i) + factors.slope
-        # --- Pop the first coord in the array as the ray's origins. ---#
-        origin = points.pop(0)
+            # Add the coord if it's not in the list
+            if conversion_result.payload not in members:
+                members.append(conversion_result.payload)
+            
+            # --- Update the cursor. ---#
+            cursor_update_result = vector_service.builder.build(
+                x=cursor.x,
+                y=cls._f_of_x(x=cursor.x, slope=factors.slope),
+            )
+            # Handle the case that, the cursor is not updated.
+            if cursor_update_result.is_failure:
+                # Return the exception chain on failure.
+                return ComputationResult.failure(
+                    DiagonalRayComputationException(
+                        mthd=method,
+                        op=DiagonalRayComputationException.OP,
+                        msg=DiagonalRayComputationException.MSG,
+                        err_code=DiagonalRayComputationException.ERR_CODE,
+                        rslt_type=DiagonalRayComputationException.RSLT_TYPE,
+                        ex=cursor_update_result.exception,
+                    )
+                )
+            # Otherwise the cursor advances.
+            cursor = cursor_update_result.payload
+        # --- Do the clean steps when the loop finishes. ---#
         
-        # --- Create the ray then send in the success result. ---#
-        return ComputationResult.success(CoordRay(origin=origin, points=points))
+        # Handle the case that there were no members in the ray.
+        if len(members) == 0:
+            # Return the exception chain on failure.
+            return ComputationResult.failure(
+                DiagonalRayComputationException(
+                    mthd=method,
+                    op=DiagonalRayComputationException.OP,
+                    msg=DiagonalRayComputationException.MSG,
+                    err_code=DiagonalRayComputationException.ERR_CODE,
+                    rslt_type=DiagonalRayComputationException.RSLT_TYPE,
+                    ex=ComputedNullRayDebugException(
+                        msg=ComputedNullRayDebugException.MSG,
+                        err_code=ComputedNullRayDebugException.ERR_CODE,
+                    )
+                )
+            )
+        # --- Pop the first member to make it the ray's origin then, send the work product. ---#
+        origin = members.pop(0)
+        return ComputationResult.success(CoordRay(origin=origin, members=members))
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _f_of_x(cls, x: int, slope: int) -> int:
+        """
+        Action:
+            Calculate the y component of a vector using the line's
+                *   slope
+                *   its x component
+        Args:
+            x: int
+            slope: int
+        Returns:
+            int
+        Raises:
+            None
+        """
+        return (2 * slope * x) + slope

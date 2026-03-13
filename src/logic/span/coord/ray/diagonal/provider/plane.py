@@ -13,6 +13,8 @@ from typing import Dict
 from logic.coord import Coord
 from logic.span import DiagonalRayFactors
 from logic.system import NUMBER_OF_COLUMNS, NUMBER_OF_ROWS
+from logic.vector import Vector
+
 
 class DiagonalPlaneFactors:
     """
@@ -75,10 +77,9 @@ class DiagonalPlaneFactors:
         """
         return DiagonalRayFactors(
             start_x=self._origin.column,
-            end_x=NUMBER_OF_COLUMNS-1,
             x_step=1,
-            end_y=0,
             slope=-1,
+            end_vector=Vector(x=NUMBER_OF_COLUMNS - 1, y=0),
         )
     
     @property
@@ -96,10 +97,9 @@ class DiagonalPlaneFactors:
         """
         return DiagonalRayFactors(
             start_x=self._origin.column,
-            end_x=0,
             x_step=-1,
-            end_y=0,
             slope=-1,
+            end_vector=Vector(x=0, y=0),
         )
     
     @property
@@ -117,10 +117,9 @@ class DiagonalPlaneFactors:
         """
         return DiagonalRayFactors(
             start_x=self._origin.column,
-            end_x=0,
             x_step=-1,
-            end_y=NUMBER_OF_ROWS-1,
             slope=1,
+            end_vector=Vector(x=0, y=NUMBER_OF_ROWS - 1),
         )
     
     @property
@@ -138,10 +137,9 @@ class DiagonalPlaneFactors:
         """
         return DiagonalRayFactors(
             start_x=self._origin.column,
-            end_x=NUMBER_OF_COLUMNS-1,
             x_step=1,
-            end_y=NUMBER_OF_ROWS - 1,
             slope=1,
+            end_vector=Vector(x=NUMBER_OF_COLUMNS - 1, y=NUMBER_OF_ROWS - 1),
         )
     
     @property
