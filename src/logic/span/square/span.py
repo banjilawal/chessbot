@@ -11,10 +11,10 @@ from __future__ import annotations
 from typing import List, cast
 
 from logic.square import Square
-from logic.span import SquareRay
+from logic.span import Span, SquareRay
 
 
-class SquareSpan:
+class SquareSpan(Span[Square]):
     """
     # ROLE: Data-Holder
 

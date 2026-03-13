@@ -58,46 +58,22 @@ class PerpendicularRayFactors:
     _start_vector: Vector
     _end_vector: Vector
     _delta: Vector
-    _start_x: int
-    _end_x: int
-    _x_step: int
-    _start_y: int
-    _end_y: int
-    _y_step: int
     
     def __init__(
             self,
             start_vector: Vector,
             end_vector: Vector,
             delta: Vector,
-            start_x: int,
-            end_x: int,
-            x_step: int,
-            start_y: int,
-            end_y: int,
-            y_step: int
     ):
         """
         Args:
             start_vector: Vector
             end_vector: Vector
             delta: Vector
-            start_x: int
-            end_x: int
-            x_step: int
-            start_y: int
-            end_y: int
-            y_step: int
         """
         self._start_vector = start_vector
         self._end_vector = end_vector
         self._delta = delta
-        self._start_x = start_x
-        self._end_x = end_x
-        self._x_step = x_step
-        self._start_y = start_y
-        self._end_y = end_y
-        self._y_step = y_step
         
     @property
     def start_vector(self) -> Vector:
@@ -110,33 +86,9 @@ class PerpendicularRayFactors:
     @property
     def delta(self) -> Vector:
         return self._delta
-        
-    @property
-    def start_x(self) -> int:
-        return self._start_x
     
     @property
-    def end_x(self) -> int:
-        return self._end_x
-    
-    @property
-    def x_step(self) -> int:
-        return self._x_step
-    
-    @property
-    def start_y(self) -> int:
-        return self._start_y
-    
-    @property
-    def end_y(self) -> int:
-        return self._end_y
-    
-    @property
-    def y_step(self) -> int:
-        return self._y_step
-    
-    @property
-    def hash(self) -> Dict[str, int]:
+    def hash(self) -> Dict[str, Vector]:
         """
         Puts factors in a dictionary.
         """
@@ -144,10 +96,5 @@ class PerpendicularRayFactors:
             "start_vector": self._start_vector,
             "end_vector": self._end_vector,
             "delta": self._delta,
-            "start_x": self._start_x,
-            "end_x": self._end_x,
-            "x_step": self._x_step,
-            "start_y": self._start_y,
-            "end_y": self._end_y,
-            "y_step": self._y_step,
+
         }

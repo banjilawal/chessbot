@@ -10,11 +10,10 @@ version: 1.0.0
 from __future__ import annotations
 from typing import List
 
+from logic.vector import VectorService
 from logic.coord import Coord, CoordService
 from logic.system import ComputationResult, LoggingLevelRouter
 from logic.span import ComputedNullRayDebugException, DiagonalRayComputationException, DiagonalRayFactors, CoordRay
-from logic.vector import Vector, VectorService
-
 
 class DiagonalRayComputer:
     """

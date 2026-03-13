@@ -87,7 +87,7 @@ class DiagonalRayFactors:
         return self._end_vector
     
     @property
-    def hash(self) -> Dict[str, int]:
+    def hash(self) -> Dict[str, Any]:
         """
         Puts factors in a dictionary.
         """

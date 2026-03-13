@@ -10,7 +10,6 @@ version: 1.0.0
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import datetime
 from typing import Dict, List
 
 from logic.graph import Graph
@@ -19,7 +18,7 @@ from logic.span import (
     SquareRay, SquareSpan
 )
 from logic.square import Square, SquareService, SquareStackService
-from logic.node import Node, NodeBuilder, NodeService, NodeStackService
+from logic.node import Node, NodeService,
 from logic.span.service.handler import NodePairBuildException
 from logic.system import BuildResult, InsertionResult, LoggingLevelRouter
 
@@ -52,7 +51,7 @@ class NodeTreeProducer:
             cls,
             square_span: SquareSpan,
             node_service: NodeService = NodeService(),
-    ) -> BuildResult[NodeStackService]:
+    ) -> BuildResult[NodeTree]:
         """
         Action:
             Build a dictionary of adjacent nodes from a square hashtable., from a square hashtable.
@@ -69,33 +68,43 @@ class NodeTreeProducer:
         """
         method = f"{cls.__class__.__name__}.build_node_stack_service"
         
-        
-        
-        
-        
-        node_dict: Dict[str, Node] = {}
-        for key in square_dict:
-            build_result = node_builder.build(square=square_dict[key])
-            # Handle the case that, the node is not built
-            if build_result.is_failure:
-                # Return the exception chain on failure.
-                return BuildResult.failure(
-                    SquareGraphHandlerException(
-                        cls_mthd=method,
-                        cls_name=cls.__class__.__name__,
-                        msg=SquareGraphHandlerException.MSG,
-                        err_code=SquareGraphHandlerException.ERR_CODE,
-                        ex=NodePairBuildException(
-                            mthd=method,
-                            op=NodePairBuildException.OP,
-                            msg=NodePairBuildException.MSG,
-                            err_code=NodePairBuildException.ERR_CODE,
-                            ex=build_result.exception
-                        )
+        # --- If the span contains any child spans, put them in a ray, then append to the parent, rays. ---#
+        if square_span.has_sub_spans:
+            square_span.rays.append(
+                SquareRay(
+                    origin=square_span.origin,
+                    members=square_span.sub_span_roots
+                )
+            )
+            # Clear the roots so they don't get added again.
+            square_span.sub_span_roots.clear()
+            
+        # --- build the tree's root node. ---#
+        root_node_build_result = node_service.builder.build(square=square_span.origin)
+        # Handle the case that, the root_node is not built successfully.
+        if root_node_build_result.is_failure:
+            # Return the exception chain on failure.
+            return BuildResult.failure(
+                SquareGraphHandlerException(
+                    cls_mthd=method,
+                    cls_name=cls.__class__.__name__,
+                    msg=SquareGraphHandlerException.MSG,
+                    err_code=SquareGraphHandlerException.ERR_CODE,
+                    ex=NodePairBuildException(
+                        mthd=method,
+                        op=NodePairBuildException.OP,
+                        msg=NodePairBuildException.MSG,
+                        err_code=NodePairBuildException.ERR_CODE,
+                        ex=root_node_build_result.exception
                     )
                 )
-            node_dict[key] = build_result.payload
-        return BuildResult.success(node_dict)
+            )
+        return cls._production_helper(
+            square_span=square_span,
+            node_service=node_service,
+            tree_origin=root_node_build_result.payload
+        )
+
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -109,7 +118,7 @@ class NodeTreeProducer:
         Action:
             1.  If there are sub-spans create an innermost span of their roots which is appended
         Args:
-            span_origin_node: Node
+            tree_origin: Node
             square_span: SquareSpan
             node_service: NodeService
         Returns:
@@ -119,14 +128,11 @@ class NodeTreeProducer:
         """
         method = f"{cls.__class__.__name__}._production_helper"
         
-        # --- If the span contains any child spans, put them in a ray, then append to the parent, rays. ---#
-        sub_span_roots= cls._get_sub_span_roots(square_span=square_span)
-        if not sub_span_roots.is_empty:
-            square_span.rays.append(sub_span_roots)
-            
+        # --- Create the return target. ---#
         node_tree = NodeTree(root=tree_origin, branches=[])
+        
         for ray in square_span.rays:
-            node_pair_list_build_result = cls._produce_node_ray(
+            node_pair_list_build_result = cls._produce_node_pair_list(
                 square_ray=ray,
                 origin_node=tree_origin,
                 node_service=node_service,
@@ -146,38 +152,6 @@ class NodeTreeProducer:
                 )
             node_tree.branches.append(node_pair_list_build_result.payload)
         return BuildResult.success(node_tree)
-            
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def _get_sub_span_roots(cls, square_span: SquareSpan,) -> SquareRay:
-        """
-        Action:
-            1.  Go through the rays looking for any ray.origin != span.origin
-                which indicates there's a child span.
-            2.  If there is a child span put its root into child_span_roots
-                which, is the span's innermost ray.
-            3.  Return the ray of child_span_roots to the caller.
-            
-        Args:
-            square_span: SquareSpan
-            
-        Returns:
-            SquareRay
-            
-        Raises:
-            None
-        """
-        method = f"{cls.__class__.__name__}._get_sub_span_roots"
-        
-        # --- Create the return target. ---#
-        sub_span_roots_ray = SquareRay(origin=square_span.origin, members=[])
-        
-        # Iterate through the rays looking for child_span roots.
-        for ray in square_span.rays:
-            if ray.origin != square_span.origin:
-                sub_span_roots_ray.members.append(ray.origin)
-        # --- Return the innermost ray containing, the child-span roots. ---#
-        return sub_span_roots_ray
 
     @classmethod
     @LoggingLevelRouter.monitor
