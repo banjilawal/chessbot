@@ -1,7 +1,7 @@
-# src/logic/node/exception/__init__.py
+# src/edge/exception/edge/stack/exception/anchor.py
 
 """
-Module: logic.node.exception.__init__
+Module: logic.edge.stack.exception.anchor
 Author: Banji Lawal
 Created: 2025-02-18
 version: 1.0.0
@@ -11,23 +11,24 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# NODE_STACK_SERVICE_EXCEPTION #======================#
-    "NodeStackServiceException",
+    # ======================# EDGE_STACK_SERVICE_EXCEPTION #======================#
+    "EdgeStackServiceException",
 ]
 
 from logic.system import StackServiceException
 
-# ======================# NODE_STACK_SERVICE_EXCEPTION #======================#
-class NodeStackServiceException(StackServiceException):
+
+# ======================# EDGE_STACK_SERVICE_EXCEPTION #======================#
+class EdgeStackServiceException(StackServiceException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Anchoring target for NodeStackService debug (layer-2) error state firing incident
+    1.  Anchoring target for EdgeStackService debug (layer-2) error state firing incident
         reports on
             *   the triggering variable
             *   The trigger's value.
-    2.  Indicate which NodeStack method received a worker's (layer-1) failure result.
+    2.  Indicate which EdgeStackService method received a worker's (layer-1) failure result.
 
     # PARENT:
         *   StackServiceException
@@ -54,9 +55,9 @@ class NodeStackServiceException(StackServiceException):
     # INHERITED METHODS:
         *   See StackServiceException class for inherited methods.
     """
-    CLS_NAME = " NodeStackService"
-    ERR_CODE = " NODE_STACK_SERVICE_EXCEPTION"
-    MSG = " NodeStackService raised an exception."
+    CLS_NAME = " EdgeStackService"
+    ERR_CODE = " EDGE_STACK_SERVICE_EXCEPTION"
+    MSG = " EdgeStackService raised an exception."
     
     def __init__(
             self,

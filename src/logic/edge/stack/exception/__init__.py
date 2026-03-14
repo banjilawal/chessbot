@@ -1,13 +1,13 @@
-# src/edge/exception/edge/__init__.py
+# src/edge/exception/edge/stack/exception/__init__.py
 
 """
-Module: logic.edge.exception.__init__
+Module: logic.edge.stack.exception.__init__
 Author: Banji Lawal
 Created: 2025-02-18
 version: 1.0.0
 """
 
-# =========== EDGE.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== EDGE.STACK.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
 from .pop import *
@@ -15,4 +15,4 @@ from .push import *
 from .query import *
 
 # Modules
-from .super import EdgeStackException
+from .anchor import
