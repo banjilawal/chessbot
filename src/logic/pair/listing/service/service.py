@@ -1,7 +1,7 @@
 # src/logic/pair/listing/service/service.py
 
 """
-Module: logic.pairList.listing.service.service
+Module: logic.pair.listing.service.service
 Author: Banji Lawal
 Created: 2026-03-12
 version: 1.0.0
