@@ -10,6 +10,7 @@ version: 1.0.0
 # =========== PAIR.TREE.SERVICE PACKAGE CONTENTS ===========#
 
 # Packages
+from .handler import *
 from .exception import *
 
 # Modules

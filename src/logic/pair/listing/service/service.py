@@ -8,10 +8,11 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import cast
+from typing import List, cast
 
+from logic.node import Node
 from logic.pair import PairList, PairListBuilder, PairListValidator
-from logic.system import IdFactory, IntegrityService
+from logic.system import IdFactory, IntegrityService, LoggingLevelRouter, SearchResult
 
 
 class PairListService(IntegrityService[PairList]):
@@ -61,3 +62,14 @@ class PairListService(IntegrityService[PairList]):
     @property
     def validator(self) -> PairListValidator:
         return cast(PairListValidator, self.entity_validator)
+    t
+    @LoggingLevelRouter.monitor
+    def unique_nodes(self, pair_list: PairList) -> SearchResult[List[Node]]:
+        method = f"{self.__class__.__name__}.unique_nodes"
+        
+        nodes: List[Node] = [pair_list.couples[0].head]
+        for couple in pair_list.couples:
+            if couple.tail not in nodes:
+                nodes.append(couple.tail)
+                
+        return SearchResult(nodes)
