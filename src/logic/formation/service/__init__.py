@@ -10,8 +10,7 @@ version: 1.0.0
 # =========== FORMATION.SERVICE PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .exception import *
 
 # Modules
 from .service import FormationService
-from .super import FormationServiceException

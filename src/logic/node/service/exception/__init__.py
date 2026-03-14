@@ -13,4 +13,4 @@ version: 1.0.0
 from .edge import *
 
 # Modules
-from .super import NodeServiceException
+from .anchor import NodeServiceException

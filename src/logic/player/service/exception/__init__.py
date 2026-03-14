@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .super import PlayerServiceException
+from .anchor import PlayerServiceException
 from .owner import TeamBelongsToDifferentOwnerException
