@@ -1,7 +1,7 @@
-# src/logic/vector/exception/debug.py
+# src/logic/vector/exception/anchor.py
 
 """
-Module: logic.vector.exception.debug
+Module: logic.vector.exception.anchor
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -17,16 +17,17 @@ __all__ = [
 
 from logic.system import AnchorException
 
+
 # ======================# VECTOR_EXCEPTION #======================#
 class VectorException(AnchorException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Provide Vector as:
-            *   Reporting
-            *   Coverage
-        target for layer-2 debugging exceptions.
+    1.  Anchoring target for Vector debug (layer-2) error state firing incident
+        reports on
+            *   the triggering variable
+            *   The trigger's value.
     2.  Indicate which Vector method received a worker's (layer-1) failure result.
 
     # PARENT:
@@ -37,16 +38,16 @@ class VectorException(AnchorException):
 
     # LOCAL ATTRIBUTES:
     None
-        
+
     # INHERITED ATTRIBUTES:
         *   See AnchorException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
-        *   msg (str)
-        *   err_code (str)
-        *   ex (Optional[Exception])
-        *   cls_name (Optional[str])
-        *   cls_mthd (Optional[str])
+        msg: Optional[str]
+        ex: Optional[Exception]
+        cls_name: Optional[str]
+        cls_mthd: Optional[str]
+        err_code: Optional[str]
 
     # LOCAL METHODS:
     None
@@ -54,36 +55,27 @@ class VectorException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_NAME = "Vector"
-    CLS_MTHD = Optional[str]
-    ERR_CODE = "VECTOR_EXCEPTION"
-    MSG = "Exception raised in Vector"
- 
+    CLS_NAME = " Vector"
+    ERR_CODE = " VECTOR_EXCEPTION"
+    MSG = " Vector raised an exception."
+    
     def __init__(
             self,
-            err_code: Optional[str] = None,
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
             cls_name: Optional[str] = None,
             cls_mthd: Optional[str] = None,
+            err_code: Optional[str] = None,
     ):
         """
         Args:
-            msg (Optional[str]):
-            ex (Optional[Exception]):
-            cls_name (Optional[str]):
-            cls_mthd (Optional[str]):
-            err_code (Optional[str]):
+            msg: Optional[str]
+            ex: Optional[Exception]
+            cls_name: Optional[str]
+            cls_mthd: Optional[str]
+            err_code: Optional[str]
         """
         msg = msg or self.MSG
-        err_code = err_code or self.ERR_CODE
         cls_name = cls_name or self.CLS_NAME
-        cls_mthd = cls_mthd or self.CLS_MTHD
-        
-        super().__init__(
-            ex=ex,
-            msg=msg,
-            err_code=err_code,
-            cls_name=cls_name,
-            cls_mthd=cls_mthd
-        )
+        err_code = err_code or self.ERR_CODE
+        super().__init__(msg=msg, err_code=err_code, ex=ex, cls_name=cls_name, cls_mthd=cls_mthd)

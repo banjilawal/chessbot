@@ -11,22 +11,27 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# PAIR_LIST_SERVICE_EXCEPTION #======================#
+    # ======================# NODE_TREE_SERVICE_EXCEPTION #======================#
     "NodeTreeServiceException",
 ]
 
 from logic.system import AnchorException
 
-# ======================# PAIR_LIST_SERVICE_EXCEPTION #======================#
+
+# ======================# NODE_TREE_SERVICE_EXCEPTION #======================#
 class NodeTreeServiceException(AnchorException):
     """
-    # ROLE: Debug Coverage Target, Exception Chain Layer 0
+    # ROLE: Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Indicate that an error occurred in a NodeTreeService.
+    1.  Anchoring target for NodeTreeService debug (layer-2) error state firing incident
+        reports on
+            *   the triggering variable
+            *   The trigger's value.
+    2.  Indicate which NodeTree method received a worker's (layer-1) failure result.
 
     # PARENT:
-    *   AnchorException
+        *   AnchorException
 
     # PROVIDES:
     None
@@ -51,7 +56,7 @@ class NodeTreeServiceException(AnchorException):
         *   See AnchorException class for inherited methods.
     """
     CLS_NAME = " NodeTreeService"
-    ERR_CODE = " PAIR_LIST_SERVICE_EXCEPTION"
+    ERR_CODE = " NODE_TREE_SERVICE_EXCEPTION"
     MSG = " NodeTreeService raised an exception."
     
     def __init__(

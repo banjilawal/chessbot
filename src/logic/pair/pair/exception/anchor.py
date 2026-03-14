@@ -17,16 +17,17 @@ __all__ = [
 
 from logic.system import AnchorException
 
+
 # ======================# PAIR_EXCEPTION #======================#
 class PairException(AnchorException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Provide Pair as:
-            *   Reporting
-            *   Coverage
-        target for layer-2 debugging exceptions.
+    1.  Anchoring target for Pair debug (layer-2) error state firing incident
+        reports on
+            *   the triggering variable
+            *   The trigger's value.
     2.  Indicate which Pair method received a worker's (layer-1) failure result.
 
     # PARENT:
@@ -37,13 +38,13 @@ class PairException(AnchorException):
 
     # LOCAL ATTRIBUTES:
     None
-        
+
     # INHERITED ATTRIBUTES:
         *   See AnchorException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
-        ex: Optional[str]
         msg: Optional[str]
+        ex: Optional[Exception]
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
@@ -55,10 +56,9 @@ class PairException(AnchorException):
         *   See AnchorException class for inherited methods.
     """
     CLS_NAME = "Pair"
-    CLS_MTHD = Optional[str]
     ERR_CODE = "PAIR_EXCEPTION"
-    MSG = "Exception raised in Pair"
- 
+    MSG = " Pair raised an exception."
+    
     def __init__(
             self,
             msg: Optional[str] = None,
@@ -69,21 +69,13 @@ class PairException(AnchorException):
     ):
         """
         Args:
-            ex: Optional[str]
             msg: Optional[str]
+            ex: Optional[Exception]
             cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
         """
         msg = msg or self.MSG
-        err_code = err_code or self.ERR_CODE
         cls_name = cls_name or self.CLS_NAME
-        cls_mthd = cls_mthd or self.CLS_MTHD
-        
-        super().__init__(
-            ex=ex,
-            msg=msg,
-            err_code=err_code,
-            cls_name=cls_name,
-            cls_mthd=cls_mthd
-        )
+        err_code = err_code or self.ERR_CODE
+        super().__init__(msg=msg, err_code=err_code, ex=ex, cls_name=cls_name, cls_mthd=cls_mthd)

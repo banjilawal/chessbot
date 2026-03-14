@@ -48,18 +48,18 @@ class AnchorException(ChessException):
     None
 
     # LOCAL ATTRIBUTES:
-        *   cls_name (Optional[str])
-        *   cls_mthd (Optional[str])
+        cls_name: Optional[str]
+        cls_mthd: Optional[str]
         
     # INHERITED ATTRIBUTES:
         *   See ChessException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
-        *   msg (str)
-        *   err_code (str)
-        *   ex (Optional[Exception])
-        *   cls_name (Optional[str])
-        *   cls_mthd (Optional[str])
+        msg: Optional[str]
+        err_code: Optional[str]
+        ex: Optional[Exception]
+        cls_name: Optional[str]
+        cls_mthd: Optional[str]
 
     # LOCAL METHODS:
     None
@@ -67,25 +67,31 @@ class AnchorException(ChessException):
     # INHERITED METHODS:
         *   See ChessException class for inherited methods.
     """
+    CLS_NAME = "Anchor"
     ERR_CODE = "ANCHOR_EXCEPTION"
     MSG = "Exception raised in Anchor"
-    CLS_NAME = "Anchor"
-    CLS_MTHD = Optional[str]
 
     _cls_name: Optional[str]
     _cls_mthd: Optional[str]
  
     def __init__(
             self,
-            err_code: Optional[str] = None,
             msg: Optional[str] = None,
+            err_code: Optional[str] = None,
             ex: Optional[Exception] = None,
             cls_name: Optional[str] = None,
             cls_mthd: Optional[str] = None
     ):
+        """
+        Args:
+            msg: Optional[str]
+            err_code: Optional[str]
+            ex: Optional[Exception]
+            cls_name: Optional[str]
+            cls_mthd: Optional[str]
+        """
         msg = msg or self.MSG
         cls_name = cls_name or self.CLS_NAME
-        cls_mthd = cls_mthd or self.CLS_MTHD
         err_code = err_code or self.ERR_CODE
 
         super().__init__(msg=msg, err_code=err_code, ex=ex)
