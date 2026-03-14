@@ -26,3 +26,7 @@ class PairList:
     @property
     def couples(self) -> List[Pair]:
         return self._couples
+    
+    @property
+    def is_empty(self) -> bool:
+        return len(self._couples) == 0

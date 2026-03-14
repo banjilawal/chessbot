@@ -27,3 +27,11 @@ class NodeTree:
     root: Node
     branches: List[PairList]
     pair_service: PairService = PairService()
+    
+    @property
+    def degree(self) -> int:
+        return len(self.branches)
+    
+    @property
+    def is_empty(self) -> bool:
+        return self.degree == 0

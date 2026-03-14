@@ -62,14 +62,49 @@ class PairListService(IntegrityService[PairList]):
     @property
     def validator(self) -> PairListValidator:
         return cast(PairListValidator, self.entity_validator)
-    t
+
     @LoggingLevelRouter.monitor
     def unique_nodes(self, pair_list: PairList) -> SearchResult[List[Node]]:
+        """
+        Action:
+            1.  Put topmost head into the list
+            2.  Put tail of each couple into the list if it's not present.
+            3.  Return the list of unique nodes.
+            
+        Args:
+            pair_list: PairList
+            
+        Returns:
+            SearchResult[List[Node]]
+            
+        Raises:
+            None
+        """
         method = f"{self.__class__.__name__}.unique_nodes"
+        # Put the head of first couple in the lis
+        nodes: List[Node] = []
         
-        nodes: List[Node] = [pair_list.couples[0].head]
+        # Handle the case that pair_list is empty.
+        if pair_list.is_empty:
+            return SearchResult.empty()
+        # prime unique_nodes list
+        nodes.append(pair_list.couples[0].head)
+        
+        # Process the rest of the couples.
         for couple in pair_list.couples:
             if couple.tail not in nodes:
                 nodes.append(couple.tail)
-                
-        return SearchResult(nodes)
+        if len(nodes) == 0:
+            return SearchResult.empty()
+        return SearchResult.success(nodes)
+    
+    @LoggingLevelRouter.monitor
+    def find_couples_by_node(self, node: Node, pair_list: PairList) -> SearchResult[List[Node]]:
+        method = f"{self.__class__.__name__}.find_couples_by_node"
+        
+        matches = [
+            couple for  couple in pair_list.couples if couple.head == node or couple.tail == node
+        ]
+        if len(matches) == 0:
+            return SearchResult.empty()
+        return SearchResult.success(matches)

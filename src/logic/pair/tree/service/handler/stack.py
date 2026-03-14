@@ -32,6 +32,10 @@ class NodeTreeStackConverter:
         """
         method = f"{cls.__class__.__name__}.convert"
         
+        node_stack_service = NodeStackService(node_tree)
+        
+        if node_tree.is_empty:
+            return
         nodes: List[Node] = [node_tree.root]
         
         for

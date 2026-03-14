@@ -50,6 +50,7 @@ class NodeStackService(StackService[Node]):
     def __init__(
             self,
             name: str = SERVICE_NAME,
+            nodes: List[Node] = [],
             service: NodeService = NodeService(),
             id: int = IdFactory.next_id(class_name="NodeStackService"),
             context_service: NodeContextService = NodeContextService(),
@@ -68,7 +69,7 @@ class NodeStackService(StackService[Node]):
             None
         """
         super().__init__(id=id,name=name,)
-        self._stack = []
+        self._stack = nodes
         self._service = service
         self._context_service = context_service
     
