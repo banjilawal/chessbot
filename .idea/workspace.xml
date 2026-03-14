@@ -4,7 +4,28 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path." />
+    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
+      <change afterPath="$PROJECT_DIR$/src/logic/graph/builder/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/arena/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/arena/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/board/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/board/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/board/builder/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/graph/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/edge/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/edge/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/game/builder/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/game/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/game/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/hostage/buillder/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/hostage/buillder/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/hostage/buillder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/hostage/buillder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/node/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/node/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/player/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/player/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/rank/factory/exception/anchor.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/rank/factory/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/rank/factory/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/scalar/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/scalar/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/snapshot/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/snapshot/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/system/build/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/build/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/team/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/team/builder/exception/wrapper.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -269,7 +290,7 @@
     "ToolWindow.Python Packages.ShowToolbar": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/logic/edge/stack/exception",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/logic/token/factory/exception",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -296,11 +317,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/logic/edge/stack/exception" />
-      <recent name="$PROJECT_DIR$/src/logic/board/database/core/exception" />
-      <recent name="$PROJECT_DIR$/src/logic/coord/database/core/exception" />
-      <recent name="$PROJECT_DIR$/src/logic/hostage/database/core/exception" />
-      <recent name="$PROJECT_DIR$/src/logic/square/database/core/exception" />
+      <recent name="$PROJECT_DIR$/src/logic/token/factory/exception" />
+      <recent name="$PROJECT_DIR$/src/logic/team/builder/exception" />
+      <recent name="$PROJECT_DIR$/src/logic/square/builder/exception" />
+      <recent name="$PROJECT_DIR$/src/logic/snapshot/builder/exception" />
+      <recent name="$PROJECT_DIR$/src/logic/scalar/builder/exception" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/logic/span/service/exception" />
@@ -849,7 +870,7 @@
       <workItem from="1772847189165" duration="78504000" />
       <workItem from="1773215668490" duration="8009000" />
       <workItem from="1773223700953" duration="11379000" />
-      <workItem from="1773252041918" duration="181731000" />
+      <workItem from="1773252041918" duration="184731000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -970,6 +991,12 @@
           <url>file://$PROJECT_DIR$/src/logic/hostage/database/exception/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="65" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="NONE" type="python-line">
+          <url>file://$PROJECT_DIR$/src/logic/arena/builder/exception/wrapper.py</url>
+          <line>54</line>
+          <log-expression expression="OP = &quot;Build&quot;&#10;    RSLT_TYPE = &quot;BuildResult&quot;&#10;    ERR_CODE = &quot;ARENA_BUILD_FAILURE&quot;&#10;    MSG = &quot;Failure in ArenaBuilder method.&quot;&#10;&#10;    def __init__(&#10;            self,&#10;            op: Optional[str] = None,&#10;            msg: Optional[str] = None,&#10;            mthd: Optional[str] = None,&#10;            ex: Optional[Exception] = None,&#10;            err_code: Optional[str] = None,&#10;            rslt_type: Optional[str] = None,&#10;    ):&#10;        &quot;&quot;&quot;&#10;        Args:&#10;            op: Optional[str]&#10;            ex: Optional[str]&#10;            msg: Optional[str]&#10;            mthd: Optional[str]&#10;            err_code: Optional[str]&#10;            rslt_type: Optional[str]  &#10;        &quot;&quot;&quot;&#10;        op = op or self.OP&#10;        msg = msg or self.MSG&#10;        mthd = mthd or self.MTHD&#10;        err_code = err_code or self.ERR_CODE&#10;        rslt_type = rslt_type or self.RSLT_TYPE&#10;        &#10;        super().__init__(&#10;            ex=ex,&#10;            op=op,&#10;            msg=msg,&#10;            mthd=mthd,&#10;            err_code=err_code,&#10;            rslt_type=rslt_type,&#10;        )" language="Python" />
+          <option name="timeStamp" value="66" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

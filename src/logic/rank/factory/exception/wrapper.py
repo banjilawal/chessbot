@@ -3,7 +3,7 @@
 """
 Module: logic.rank.factory.exception.wrapper
 Author: Banji Lawal
-Created: 2025-11-20
+Created: 2025-09-16
 version: 1.0.0
 """
 
@@ -17,15 +17,14 @@ __all__ = [
 
 from logic.system import BuildException
 
-
 # ======================# RANK_BUILD_FAILURE #======================#
 class RankBuildException(BuildException):
     """
-    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  An error occurred in RankBuilder.build that, prevented BuildResult.success() from 
-        being returned.
+    1.  Indicate the RankBuilder did not produce a valid work product.
+    2.  Identify the RankBuilder method where the failure occurred.
 
     # PARENT:
         *   BuildException
@@ -37,44 +36,43 @@ class RankBuildException(BuildException):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See OperationException class for inherited attributes.
+        *   See BuildException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:)
-        *   err_code (str)
-        *   msg (str)
-        *   ex (Optional[Exception])
-        *   mthd (Optional[str])
-        *   op (Optional[str])
-        *   rslt_type (Optional[str])
+        op: Optional[str]
+        ex: Optional[str]
+        msg: Optional[str]
+        mthd: Optional[str]
+        err_code: Optional[str]
+        rslt_type: Optional[str]
 
     # LOCAL METHODS:
-   None
+    None
 
     # INHERITED METHODS:
-        *   See WrapperException class for inherited methods.
+        *   See BuildException class for inherited methods.
     """
     OP = "Build"
-    MTHD = "build"
-    MSG = "Rank build failed."
     RSLT_TYPE = "BuildResult"
-    ERR_CODE = "RANK_BUILD_FAILED"
-    
+    ERR_CODE = "RANK_BUILD_FAILURE"
+    MSG = "Failure in RankBuilder method."
+
     def __init__(
             self,
             op: Optional[str] = None,
             msg: Optional[str] = None,
             mthd: Optional[str] = None,
-            err_code: Optional[str] = None,
             ex: Optional[Exception] = None,
+            err_code: Optional[str] = None,
             rslt_type: Optional[str] = None,
     ):
         """
         Args:
             op: Optional[str]
+            ex: Optional[str]
             msg: Optional[str]
             mthd: Optional[str]
             err_code: Optional[str]
-            ex: Optional[Exception]
             rslt_type: Optional[str]
         """
         op = op or self.OP
@@ -83,4 +81,11 @@ class RankBuildException(BuildException):
         err_code = err_code or self.ERR_CODE
         rslt_type = rslt_type or self.RSLT_TYPE
         
-        super().__init__(err_code=err_code, msg=msg, ex=ex, mthd=mthd, op=op, rslt_type=rslt_type)
+        super().__init__(
+            ex=ex,
+            op=op,
+            msg=msg,
+            mthd=mthd,
+            err_code=err_code,
+            rslt_type=rslt_type,
+        )

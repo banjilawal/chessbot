@@ -1,7 +1,7 @@
-# src/logic/arena/builder/wrapper.py
+# src/logic/arena/builder/exception/wrapper.py
 
 """
-Module: logic.arena.builder.wrapper
+Module: logic.arena.builder.exception.wrapper
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -20,7 +20,7 @@ from logic.system import BuildException
 # ======================# ARENA_BUILD_FAILURE #======================#
 class ArenaBuildException(BuildException):
     """
-    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
     1.  Indicate the ArenaBuilder did not produce a valid work product.

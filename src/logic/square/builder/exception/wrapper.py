@@ -1,7 +1,7 @@
-# src/logic/square/builder/wrapper.py
+# src/logic/square/builder/exception/wrapper.py
 
 """
-Module: logic.square.builder.wrapper
+Module: logic.square.builder.exception.wrapper
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -20,11 +20,11 @@ from logic.system import BuildException
 # ======================# SQUARE_BUILD_FAILURE #======================#
 class SquareBuildException(BuildException):
     """
-    # ROLE: Exception Chain Layer 1, Exception Messaging
-    # TASK: Worker Method Identifier
+    # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Identify the SquareBuilder method where the process failed.
+    1.  Indicate the SquareBuilder did not produce a valid work product.
+    2.  Identify the SquareBuilder method where the failure occurred.
 
     # PARENT:
         *   BuildException
@@ -39,20 +39,19 @@ class SquareBuildException(BuildException):
         *   See BuildException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:)
-        *   err_code (str)
-        *   msg (str)
-        *   ex (Optional[Exception])
-        *   mthd (Optional[str])
-        *   op (Optional[str])
-        *   rslt_type (Optional[str])
+        op: Optional[str]
+        ex: Optional[str]
+        msg: Optional[str]
+        mthd: Optional[str]
+        err_code: Optional[str]
+        rslt_type: Optional[str]
 
     # LOCAL METHODS:
-   None
+    None
 
     # INHERITED METHODS:
         *   See BuildException class for inherited methods.
     """
-    MTHD = Optional[str]
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     ERR_CODE = "SQUARE_BUILD_FAILURE"
@@ -63,17 +62,17 @@ class SquareBuildException(BuildException):
             op: Optional[str] = None,
             msg: Optional[str] = None,
             mthd: Optional[str] = None,
-            err_code: Optional[str] = None,
             ex: Optional[Exception] = None,
+            err_code: Optional[str] = None,
             rslt_type: Optional[str] = None,
     ):
         """
         Args:
             op: Optional[str]
+            ex: Optional[str]
             msg: Optional[str]
             mthd: Optional[str]
             err_code: Optional[str]
-            ex: Optional[Exception]
             rslt_type: Optional[str]
         """
         op = op or self.OP

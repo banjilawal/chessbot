@@ -1,7 +1,7 @@
-# src/logic/hostage/builder/wrapper.py
+# src/logic/hostage/builder/exception/wrapper.py
 
 """
-Module: logic.hostage.builder.wrapper
+Module: logic.hostage.builder.exception.wrapper
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -20,10 +20,11 @@ from logic.system import BuildException
 # ======================# HOSTAGE_BUILD_FAILURE #======================#
 class HostageBuildException(BuildException):
     """
-    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Identify the HostageBuilder method where the process failed.
+    1.  Indicate the HostageBuilder did not produce a valid work product.
+    2.  Identify the HostageBuilder method where the failure occurred.
 
     # PARENT:
         *   BuildException
@@ -32,44 +33,48 @@ class HostageBuildException(BuildException):
     None
 
     # LOCAL ATTRIBUTES:
-        *   op (Optional[str])
-        *   rslt_type (Optional[str])
+    None
 
     # INHERITED ATTRIBUTES:
         *   See BuildException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:)
-        *   err_code (str)
-        *   msg (str)
-        *   ex (Optional[Exception])
-        *   mthd (Optional[str])
-        *   op (Optional[str])
-        *   rslt_type (Optional[str])
+        op: Optional[str]
+        ex: Optional[str]
+        msg: Optional[str]
+        mthd: Optional[str]
+        err_code: Optional[str]
+        rslt_type: Optional[str]
 
     # LOCAL METHODS:
-   None
+    None
 
     # INHERITED METHODS:
         *   See BuildException class for inherited methods.
     """
-    ERR_CODE = "HOSTAGE_BUILD_FAILURE"
-    MSG = "Failure in HostageBuilder method."
-    MTHD = Optional[str]
     OP = "Build"
     RSLT_TYPE = "BuildResult"
-    
-    _op = Optional[str]
-    _rslt_type = Optional[str]
-    
+    ERR_CODE = "HOSTAGE_BUILD_FAILURE"
+    MSG = "Failure in HostageBuilder method."
+
     def __init__(
             self,
-            err_code: Optional[str] = None,
-            msg: Optional[str] = None,
-            ex: Optional[Exception] = None,
-            mthd: Optional[str] = None,
             op: Optional[str] = None,
+            msg: Optional[str] = None,
+            mthd: Optional[str] = None,
+            ex: Optional[Exception] = None,
+            err_code: Optional[str] = None,
             rslt_type: Optional[str] = None,
     ):
+        """
+        Args:
+            op: Optional[str]
+            ex: Optional[str]
+            msg: Optional[str]
+            mthd: Optional[str]
+            err_code: Optional[str]
+            rslt_type: Optional[str]
+        """
         op = op or self.OP
         msg = msg or self.MSG
         mthd = mthd or self.MTHD

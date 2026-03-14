@@ -1,9 +1,9 @@
-# src/logic/system/build/exception/wrapper.py
+# src/logic/graph/builder/exception/wrapper.py
 
 """
-Module: logic.system.build.exception.wrapper
+Module: logic.graph.builder.exception.wrapper
 Author: Banji Lawal
-Created: 2025-10-03
+Created: 2025-09-16
 version: 1.0.0
 """
 
@@ -11,24 +11,23 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# BUILD_FAILURE #======================#
-    "BuildException",
+    # ======================# GRAPH_BUILD_FAILURE #======================#
+    "GraphBuildException",
 ]
 
-from logic.system import OperationException
+from logic.system import BuildException
 
-
-# ======================# BUILD_FAILURE #======================#
-class BuildException(OperationException):
+# ======================# GRAPH_BUILD_FAILURE #======================#
+class GraphBuildException(BuildException):
     """
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate the Builder did not produce a valid work product.
-    2.  Identify the Builder method where the failure occurred.
+    1.  Indicate the GraphBuilder did not produce a valid work product.
+    2.  Identify the GraphBuilder method where the failure occurred.
 
     # PARENT:
-        *   OperationException
+        *   BuildException
 
     # PROVIDES:
     None
@@ -37,7 +36,7 @@ class BuildException(OperationException):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See OperationException class for inherited attributes.
+        *   See BuildException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:)
         op: Optional[str]
@@ -51,13 +50,13 @@ class BuildException(OperationException):
     None
 
     # INHERITED METHODS:
-        *   See OperationException class for inherited methods.
+        *   See BuildException class for inherited methods.
     """
     OP = "Build"
     RSLT_TYPE = "BuildResult"
-    ERR_CODE = "BUILD_FAILURE"
-    MSG = "Failure Builder method."
-    
+    ERR_CODE = "GRAPH_BUILD_FAILURE"
+    MSG = "Failure in GraphBuilder method."
+
     def __init__(
             self,
             op: Optional[str] = None,
@@ -90,8 +89,3 @@ class BuildException(OperationException):
             err_code=err_code,
             rslt_type=rslt_type,
         )
-
-
-
-    
-
