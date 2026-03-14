@@ -303,11 +303,11 @@
       <recent name="$PROJECT_DIR$/src/logic/node/pair/array" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/logic" />
+      <recent name="$PROJECT_DIR$/src/logic/node/tree" />
       <recent name="$PROJECT_DIR$/src/logic/node/pair/array/validator/exception" />
       <recent name="$PROJECT_DIR$/src/logic/span/square/ray/validator/exception/null" />
       <recent name="$PROJECT_DIR$/src/logic/span/square/span" />
-      <recent name="$PROJECT_DIR$/src/logic/span/square/ray" />
-      <recent name="$PROJECT_DIR$/src/logic/node/pair/array" />
     </key>
   </component>
   <component name="RunManager" selected="Python.service">
@@ -849,7 +849,7 @@
       <workItem from="1772847189165" duration="78504000" />
       <workItem from="1773215668490" duration="8009000" />
       <workItem from="1773223700953" duration="11379000" />
-      <workItem from="1773252041918" duration="133318000" />
+      <workItem from="1773252041918" duration="133649000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
