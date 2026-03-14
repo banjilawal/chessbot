@@ -9,10 +9,12 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.span import SquareRay
-from logic.span.square.ray.service import SquareRayService
+from logic.node import Node, NodeService
+from logic.pair import NodePairBuilder, NodePairListBuildException, TreeDoesNotOwnRayException
+from logic.pair.array import NodePairList
+from logic.span import SquareRay, SquareRayService
 from logic.system import BuildResult, Builder, LoggingLevelRouter
-from logic.node import Node, NodeService, NodePairBuilder, NodePairList, NodePairListBuildException
+
 
 class NodePairListBuilder(Builder[NodePairList]):
     """
@@ -121,38 +123,25 @@ class NodePairListBuilder(Builder[NodePairList]):
                     msg=NodePairListBuildException.MSG,
                     err_code=NodePairListBuildException.ERR_CODE,
                     rslt_type=NodePairListBuildException.RSLT_TYPE,
-                    ex=square_ray_validation_result.exception,
+                    ex=TreeDoesNotOwnRayException(
+                        msg=NodePairListBuildException.MSG,
+                        err_code=NodePairListBuildException.ERR_CODE,
+                    )
                 )
             )
-        # --- Create the cursor. ---#
-        cursor_build_result = node_service.build(square=ray.origin)
-        
-        # Handle the case that, the cursor is not built.
-        if cursor_build_result.is_failure:
-            # Return the exception chain on failure.
-            BuildResult.failure(
-                NodePairListBuildException(
-                    mthd=method,
-                    op=NodePairListBuildException.OP,
-                    msg=NodePairListBuildException.MSG,
-                    err_code=NodePairListBuildException.ERR_CODE,
-                    rslt_type=NodePairListBuildException.RSLT_TYPE,
-                    ex=cursor_build_result.exception,
-                )
-            )
-        cursor = cursor_build_result.payload
-        # --- Create return target. ---#
+        # --- Initialize the cursor and create the return target.---#
+        cursor = parent_node
         node_pair_list: NodePairList = NodePairList()
-        
+
         # --- Do the node_pair building work on each ray member. ---#
-        for member in ray.members:
-            production_result = node_pair_builder.build(
+        for member in square_ray.members:
+            build_result = node_pair_builder.build(
                 head=cursor,
                 tail_square=member,
-                square_ray_service=square_ray_service,
+                node_service=node_service,
             )
             # Handle the case that, there is no work product.
-            if production_result.is_failure:
+            if build_result.is_failure:
                 # Return the exception chain on failure.
                 BuildResult.failure(
                     NodePairListBuildException(
@@ -161,12 +150,12 @@ class NodePairListBuilder(Builder[NodePairList]):
                         msg=NodePairListBuildException.MSG,
                         err_code=NodePairListBuildException.ERR_CODE,
                         rslt_type=NodePairListBuildException.RSLT_TYPE,
-                        ex=production_result.exception,
+                        ex=build_result.exception,
                     )
                 )
                 # --- Add the pair to the list, then advance the cursor. ---#.
-                node_pair_list.items.append(production_result.payload)
-                cursor = production_result.payload.tail
+                node_pair_list.items.append(build_result.payload)
+                cursor = build_result.payload.tail
         
         # --- Send the completed list of node_pairs ---#
         return BuildResult.success(node_pair_list)

@@ -8,16 +8,21 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from dataclasses import dataclass
 from typing import List
 
 from logic.pair import NodePair
 
 
-@dataclass
 class NodePairList:
     """
     NodePairList's physical structure can be either
     a list or tree.
     """
-    items: List[NodePair]
+    _items: List[NodePair]
+    
+    def __init__(self,):
+        self._items = []
+        
+    @property
+    def items(self) -> List[NodePair]:
+        return self._items

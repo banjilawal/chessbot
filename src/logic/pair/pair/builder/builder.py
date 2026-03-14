@@ -9,10 +9,10 @@ version: 1.0.0
 
 from __future__ import annotations
 
+from logic.node import Node, NodeService
 from logic.square import Square, SquareValidator
 from logic.system import BuildResult, Builder, LoggingLevelRouter
-from logic.node import HeadTailSquareException, Node, NodePair, NodePairBuildException, NodeService
-
+from logic.pair import HeadTailSquareException, NodePair, NodePairBuildException
 
 class NodePairBuilder(Builder[NodePair]):
     """

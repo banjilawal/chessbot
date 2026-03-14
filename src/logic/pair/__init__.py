@@ -11,7 +11,7 @@ version: 1.0.0
 
 # Packages
 from .pair import *
-from .stack import *
+from .array import *
 from .tree import *
 
 # Modules

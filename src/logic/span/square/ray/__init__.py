@@ -12,6 +12,7 @@ version: 1.0.0
 # Packages
 from .builder import *
 from .validator import *
+from .service import *
 
 # Modules
 from .ray import SquareRay
