@@ -7,10 +7,10 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-# =========== SCHEMA.SERVICE.PACKAGE CONTENTS ===========#
+# =========== SCHEMA.SERVICE PACKAGE CONTENTS ===========#
 
 # Packages
+from .exception import *
 
 # Modules
 from .service import SchemaService
-from .exception import SchemaServiceException

@@ -7,7 +7,7 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-# =========== SCHEMA.VALIDATOR.PACKAGE CONTENTS ===========#
+# =========== SCHEMA.VALIDATOR PACKAGE CONTENTS ===========#
 
 # Packages
 from .exception import *
