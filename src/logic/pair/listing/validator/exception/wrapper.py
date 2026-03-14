@@ -1,7 +1,7 @@
-# src/logic/pair/array/validator/exception/wrapper.py
+# src/logic/pair/listing/validator/exception/wrapper.py
 
 """
-Module: logic.pair.array.validator.exception.wrapper
+Module: logic.pair.listing.validator.exception.wrapper
 Author: Banji Lawal
 Created: 2026-03-12
 Version: 1.0.0

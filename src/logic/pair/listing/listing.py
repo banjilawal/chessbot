@@ -1,7 +1,7 @@
-# src/logic/pair/array.py
+# src/logic/pair/listing/listing.py
 
 """
-Module: logic.pair.array
+Module: logic.pair.listing.listing
 Author: Banji Lawal
 Created: 2026-03-12
 version: 1.0.0

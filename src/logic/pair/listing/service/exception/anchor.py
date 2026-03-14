@@ -1,9 +1,9 @@
-# src/logic/pair/pair/service/exception.super.py
+# src/logic/pair/listing/service/exception/anchor.py
 
 """
-Module: logic.pair.pair.service.exception.super
+Module: logic.pair.listing.service.exception.anchor
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2026-03-12
 version: 1.0.0
 """
 
@@ -11,19 +11,19 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# PAIR_SERVICE_EXCEPTION #======================#
-    "PairServiceException",
+    # ======================# PAIR_LIST_SERVICE_EXCEPTION #======================#
+    "PairListServiceException",
 ]
 
 from logic.system import AnchorException
 
-# ======================# PAIR_SERVICE_EXCEPTION #======================#
-class PairServiceException(AnchorException):
+# ======================# PAIR_LIST_SERVICE_EXCEPTION #======================#
+class PairListServiceException(AnchorException):
     """
     # ROLE: Debug Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Indicate that an error occurred in a PairService.
+    1.  Indicate that an error occurred in a PairListService.
 
     # PARENT:
     *   AnchorException
@@ -50,9 +50,9 @@ class PairServiceException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_NAME = " PairService"
-    ERR_CODE = " PAIR_SERVICE_EXCEPTION"
-    MSG = " PairService raised an exception."
+    CLS_NAME = " PairListService"
+    ERR_CODE = " PAIR_LIST_SERVICE_EXCEPTION"
+    MSG = " PairListService raised an exception."
     
     def __init__(
             self,

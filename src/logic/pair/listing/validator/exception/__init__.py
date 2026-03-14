@@ -1,13 +1,13 @@
-# src/logic/pair/array/validator/exception/__init__.py
+# src/logic/pair/listing/validator/exception/__init__.py
 
 """
-Module: logic.pair.array.validator.exception.__init__
+Module: logic.pair.listing.validator.exception.__init__
 Author: Banji Lawal
 Created: 2026-03-12
 version: 1.0.0
 """
 
-# =========== PAIR.ARRAY.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== PAIR.LISTING.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
 from .null import *

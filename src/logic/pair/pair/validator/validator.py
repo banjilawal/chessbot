@@ -12,7 +12,7 @@ from typing import Any, cast
 
 from logic.node import NodeValidator
 from logic.edge import HeadCannotBeTailException
-from logic.pair import Pair, PairNullException, PairValidationException
+from logic.pair import Pair, NullPairException, PairValidationException
 from logic.system import LoggingLevelRouter, ValidationResult, Validator
 
 
@@ -60,7 +60,7 @@ class PairValidator(Validator[Pair]):
             
         Raises:
             TypeError
-            PairNullException
+            NullPairException
             PairValidationException
         """
         method = f"{cls.__class__.__name__}.validate"
@@ -75,11 +75,11 @@ class PairValidator(Validator[Pair]):
                     msg=PairValidationException.MSG,
                     err_code=PairValidationException.ERR_CODE,
                     rslt_type=PairValidationException.RSLT_TYPE,
-                    ex=PairNullException(
+                    ex=NullPairException(
                         var="Candidate",
                         val={type(candidate).__name__},
-                        msg=PairNullException.MSG,
-                        err_code=PairNullException.ERR_CODE,
+                        msg=NullPairException.MSG,
+                        err_code=NullPairException.ERR_CODE,
                     )
                 )
             )

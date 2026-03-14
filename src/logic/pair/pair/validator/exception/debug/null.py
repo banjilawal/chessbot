@@ -11,14 +11,14 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-#======================# PAIR_NULL_EXCEPTION #======================#
-    "PairNullException",
+#======================# NULL_PAIR_EXCEPTION #======================#
+    "NullPairException",
 ]
 
 from logic.system import NullException
 
-#======================# PAIR_NULL_EXCEPTION #======================#
-class PairNullException(NullException):
+#======================# NULL_PAIR_EXCEPTION #======================#
+class NullPairException(NullException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -53,7 +53,7 @@ class PairNullException(NullException):
     VAR = Optional[str]
     VAL = Optional[Any]
     MSG = "Pair cannot be null."
-    ERR_CODE = "PAIR_NULL_EXCEPTION"
+    ERR_CODE = "NULL_PAIR_EXCEPTION"
     
     def __init__(
             self,

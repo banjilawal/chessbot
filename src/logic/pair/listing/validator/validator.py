@@ -1,17 +1,16 @@
-# src/logic/pair/array/validator/validator.py
+# src/logic/pair/listing/validator/validator.py
 
 """
-Module: logic.pair.array.validator
+Module: logic.pair.listing.validator
 Author: Banji Lawal
 Created: 2026-03-12
 version: 1.0.0
 """
 
 from __future__ import annotations
-
 from typing import Any, cast
 
-from logic.node import PairList, PairListNullException, PairListValidationException
+from logic.pair import PairList, PairListNullException, PairListValidationException
 from logic.system import LoggingLevelRouter, ValidationResult, Validator
 
 
@@ -20,7 +19,7 @@ class PairListValidator(Validator[PairList]):
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
-    1.  Ensure a candidate is not null and the correct type before its used as a Pair.Array.
+    1.  Ensure a candidate is not null and the correct type before its used as a Pair.Listing.
     2.  If verification fails indicate the reason in an exception returned to the caller.
 
     # PROVIDES:
