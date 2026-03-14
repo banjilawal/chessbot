@@ -1,9 +1,9 @@
-# src/logic/gameContext/context/builder/exception/wrapper.py
+# src/logic/game/context/builder/exception/wrapper.py
 
 """
-Module: logic.gameContext.context.builder.exception.wrapper
+Module: logic.game.context.builder.exception.wrapper
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-10-03
 version: 1.0.0
 """
 
@@ -11,19 +11,20 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# GAME_CONTEXT_BUILD_FAILURE #======================#
+    # ======================# GAME_CONTEXT_CONTEXT_BUILD_FAILURE #======================#
     "GameContextBuildException",
 ]
 
 from logic.system import BuildException
 
-# ======================# GAME_CONTEXT_BUILD_FAILURE #======================#
+# ======================# GAME_CONTEXT_CONTEXT_BUILD_FAILURE #======================#
 class GameContextBuildException(BuildException):
     """
-    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Identify the GameContextBuilder method where the process failed.
+    1.  Indicate the GameContextBuilder did not produce a valid work product.
+    2.  Identify the GameContextBuilder method where the failure occurred.
 
     # PARENT:
         *   BuildException
@@ -32,44 +33,48 @@ class GameContextBuildException(BuildException):
     None
 
     # LOCAL ATTRIBUTES:
-        *   op (Optional[str])
-        *   rslt_type (Optional[str])
+    None
 
     # INHERITED ATTRIBUTES:
         *   See BuildException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:)
-        *   err_code (str)
-        *   msg (str)
-        *   ex (Optional[Exception])
-        *   mthd (Optional[str])
-        *   op (Optional[str])
-        *   rslt_type (Optional[str])
+        op: Optional[str]
+        ex: Optional[str]
+        msg: Optional[str]
+        mthd: Optional[str]
+        err_code: Optional[str]
+        rslt_type: Optional[str]
 
     # LOCAL METHODS:
-   None
+    None
 
     # INHERITED METHODS:
         *   See BuildException class for inherited methods.
     """
-    ERR_CODE = "GAME_CONTEXT_BUILD_FAILURE"
-    MSG = "Failure in GameContextBuilder method."
-    MTHD = Optional[str]
     OP = "Build"
     RSLT_TYPE = "BuildResult"
-    
-    _op = Optional[str]
-    _rslt_type = Optional[str]
-    
+    ERR_CODE = "GAME_CONTEXT_CONTEXT_BUILD_FAILURE"
+    MSG = "Failure in GameContextBuilder method."
+
     def __init__(
             self,
-            err_code: Optional[str] = None,
-            msg: Optional[str] = None,
-            ex: Optional[Exception] = None,
-            mthd: Optional[str] = None,
             op: Optional[str] = None,
+            msg: Optional[str] = None,
+            mthd: Optional[str] = None,
+            ex: Optional[Exception] = None,
+            err_code: Optional[str] = None,
             rslt_type: Optional[str] = None,
     ):
+        """
+        Args:
+            op: Optional[str]
+            ex: Optional[str]
+            msg: Optional[str]
+            mthd: Optional[str]
+            err_code: Optional[str]
+            rslt_type: Optional[str]
+        """
         op = op or self.OP
         msg = msg or self.MSG
         mthd = mthd or self.MTHD

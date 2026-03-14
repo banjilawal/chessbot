@@ -1,9 +1,9 @@
-# src/logic/team/factory/exception/wrapper.py
+# src/logic/team/context/builder/exception/wrapper.py
 
 """
-Module: logic.team.factory.exception.wrapper
+Module: logic.team.context.builder.exception.wrapper
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-10-03
 version: 1.0.0
 """
 
@@ -11,20 +11,20 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# TEAM_BUILD_FAILURE #======================#
-    "TeamBuildException",
+    # ======================# TEAM_CONTEXT_CONTEXT_BUILD_FAILURE #======================#
+    "TeamContextBuildException",
 ]
 
 from logic.system import BuildException
 
-# ======================# TEAM_BUILD_FAILURE #======================#
-class TeamBuildException(BuildException):
+# ======================# TEAM_CONTEXT_CONTEXT_BUILD_FAILURE #======================#
+class TeamContextBuildException(BuildException):
     """
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate the TeamBuilder did not produce a valid work product.
-    2.  Identify the TeamBuilder method where the failure occurred.
+    1.  Indicate the TeamContextBuilder did not produce a valid work product.
+    2.  Identify the TeamContextBuilder method where the failure occurred.
 
     # PARENT:
         *   BuildException
@@ -54,8 +54,8 @@ class TeamBuildException(BuildException):
     """
     OP = "Build"
     RSLT_TYPE = "BuildResult"
-    ERR_CODE = "TEAM_BUILD_FAILURE"
-    MSG = "Failure in TeamBuilder method."
+    ERR_CODE = "TEAM_CONTEXT_CONTEXT_BUILD_FAILURE"
+    MSG = "Failure in TeamContextBuilder method."
 
     def __init__(
             self,

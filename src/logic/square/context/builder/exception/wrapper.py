@@ -1,9 +1,9 @@
-# src/logic/square/builder/exception/wrapper.py
+# src/logic/square/context/builder/exception/wrapper.py
 
 """
-Module: logic.square.builder.exception.wrapper
+Module: logic.square.context.builder.exception.wrapper
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-10-03
 version: 1.0.0
 """
 
@@ -11,20 +11,20 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# SQUARE_BUILD_FAILURE #======================#
-    "SquareBuildException",
+    # ======================# SQUARE_CONTEXT_CONTEXT_BUILD_FAILURE #======================#
+    "SquareContextBuildException",
 ]
 
 from logic.system import BuildException
 
-# ======================# SQUARE_BUILD_FAILURE #======================#
-class SquareBuildException(BuildException):
+# ======================# SQUARE_CONTEXT_CONTEXT_BUILD_FAILURE #======================#
+class SquareContextBuildException(BuildException):
     """
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate the SquareBuilder did not produce a valid work product.
-    2.  Identify the SquareBuilder method where the failure occurred.
+    1.  Indicate the SquareContextBuilder did not produce a valid work product.
+    2.  Identify the SquareContextBuilder method where the failure occurred.
 
     # PARENT:
         *   BuildException
@@ -54,8 +54,8 @@ class SquareBuildException(BuildException):
     """
     OP = "Build"
     RSLT_TYPE = "BuildResult"
-    ERR_CODE = "SQUARE_BUILD_FAILURE"
-    MSG = "Failure in SquareBuilder method."
+    ERR_CODE = "SQUARE_CONTEXT_CONTEXT_BUILD_FAILURE"
+    MSG = "Failure in SquareContextBuilder method."
 
     def __init__(
             self,
