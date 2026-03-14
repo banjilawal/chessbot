@@ -11,7 +11,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import List
 
-from logic.node import Node, NodePairList
+from logic.node import Node
+from logic.pair import NodePairList
 from logic.pair.pair.service.service import NodePairService
 
 

@@ -9,7 +9,9 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.node import NodePairListBuilder, NodeService, NodeTree, NodeTreeBuildException
+from logic.node import NodeService
+from logic.pair import NodePairListBuilder, NodeTreeBuildException
+from logic.pair.tree.tree import NodeTree
 from logic.span import SquareRay, SquareSpan, SquareSpanService
 from logic.system import BuildResult, Builder, InsertionResult, LoggingLevelRouter
 
@@ -110,40 +112,28 @@ class NodeTreeBuilder(Builder[NodeTree]):
         node_tree = NodeTree(root=root_node_build_result.payload, branches=[])
         
         for ray in square_span.rays:
-            node_pair_list_build_result = node_pair_list_builder.build(
-                ray=ray,
+            branch_build_result = node_pair_list_builder.build(
+                square_ray=ray,
                 parent_node=node_tree.root,
             )
-        # --- Create a cursor. ---#
-        cursor = root_node_build_result.payload
+            # Handle the case that, the node_pair_list  is not built.
+            if branch_build_result.is_failure:
+                # Return the exception chain on failure.
+                return BuildResult.failure(
+                    NodeTreeBuildException(
+                        mthd=method,
+                        op=NodeTreeBuildException.OP,
+                        msg=NodeTreeBuildException.MSG,
+                        err_code=NodeTreeBuildException.ERR_CODE,
+                        rslt_type=NodeTreeBuildException.RSLT_TYPE,
+                        ex=branch_build_result.exception,
+                    )
+                )
+            # --- Add the node_pairs to the tree. ---#
+            node_tree.branches.append(branch_build_result.payload)
         
+        # --- Send the success result. ---#
+        return BuildResult.success(node_tree)
         
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def _convert_sub_span_roots_to_ray(cls, span: SquareSpan) -> InsertionResult:
-        """
-        Action:
-            1.  If span.sub_span_roots is not empty;
-                    *   Transfer the roots to a new SquareRay sub_roots_ray.
-                    *   Append the newly created SquareRay to a span.rays.
-                    *   Ensure sub.sub_span_roots is empty.
-            2.  Return the success result.
-            
-        Args:
-            span: SquareSpan
-            
-        Returns:
-            InsertionResult
-            
-        Raises:
-            None
-        """
-        method = f"{cls.__class__.__name__}._convert_sub_span_roots_to_ray"
-
-        if span.has_sub_spans:
-            roots_ray = SquareRay(origin=span.origin, members=span.sub_span_roots)
-            span.rays.append(roots_ray)
-            span.sub_span_roots.clear()
-        return InsertionResult.success()
         
         
