@@ -12,7 +12,7 @@ from __future__ import annotations
 from logic.span import SquareRay
 from logic.span.square.ray.service import SquareRayService
 from logic.system import BuildResult, Builder, LoggingLevelRouter
-from logic.node import NodeBuilder, NodePairBuilder, NodePairList, NodePairListBuildException
+from logic.node import Node, NodeService, NodePairBuilder, NodePairList, NodePairListBuildException
 
 class NodePairListBuilder(Builder[NodePairList]):
     """
@@ -49,10 +49,11 @@ class NodePairListBuilder(Builder[NodePairList]):
     @LoggingLevelRouter.monitor
     def build(
             cls,
-            square_ray: SquareRay,
-            square_ray_service: SquareRayService(),
-            node_builder: NodeBuilder = NodeBuilder(),
+            ray: SquareRay,
+            parent_node: Node,
+            node_service: NodeService = NodeService(),
             node_pair_builder: NodePairBuilder = NodePairBuilder(),
+            square_ray_service: SquareRayService = SquareRayService(),
     ) -> BuildResult[NodePairList]:
         """
         Action:
@@ -68,8 +69,9 @@ class NodePairListBuilder(Builder[NodePairList]):
             4.  Return the success result.
 
         Args:
-            square_ray: SquareRay
-            node_builder: NodeBuilder
+            ray: SquareRay
+            parent_node: Node
+            node_service: NodeService
             node_pair_builder: NodePairBuilder
             square_ray_service: SquareRayService
 
@@ -81,8 +83,8 @@ class NodePairListBuilder(Builder[NodePairList]):
         """
         method = f"{cls.__class__.__name__}.build"
         
-        # Handle the case that, the square_ray is not certified as safe.
-        square_ray_validation_result = square_ray_service.validator.validate(square_ray)
+        # Handle the case that, the ray is not certified as safe.
+        square_ray_validation_result = square_ray_service.validator.validate(ray)
         if square_ray_validation_result.is_failure:
             # Return the exception chain on failure.
             BuildResult.failure(
@@ -97,7 +99,7 @@ class NodePairListBuilder(Builder[NodePairList]):
             )
         
         # --- Create the cursor. ---#
-        cursor_build_result = node_builder.build(square=square_ray.origin)
+        cursor_build_result = node_service.build(square=ray.origin)
         
         # Handle the case that, the cursor is not built.
         if cursor_build_result.is_failure:
@@ -117,7 +119,7 @@ class NodePairListBuilder(Builder[NodePairList]):
         node_pair_list: NodePairList = NodePairList()
         
         # --- Do the node_pair building work on each ray member. ---#
-        for member in square_ray.members:
+        for member in ray.members:
             production_result = node_pair_builder.build(
                 head=cursor,
                 tail_square=member,

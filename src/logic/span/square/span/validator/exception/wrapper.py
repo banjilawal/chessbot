@@ -51,13 +51,12 @@ class SquareSpanValidationException(ValidationException):
     # INHERITED METHODS:
         *   See ValidationException class for inherited methods.
     """
-    MTHD = Optional[str]
     OP = "Validation"
+    MTHD = Optional[str]
     RSLT_TYPE = "ValidationResult"
     ERR_CODE = "SQUARE_SPAN_VALIDATION_FAILURE"
     MSG = "Failure in SquareSpanValidator method."
 
-    
     def __init__(
             self,
             op: Optional[str] = None,

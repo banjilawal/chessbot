@@ -53,26 +53,7 @@ class NodeTreeProducer:
         
 
             
-        # --- build the tree's root node. ---#
-        root_node_build_result = node_service.builder.build(square=square_span.origin)
-        # Handle the case that, the root_node is not built successfully.
-        if root_node_build_result.is_failure:
-            # Return the exception chain on failure.
-            return BuildResult.failure(
-                SquareGraphHandlerException(
-                    cls_mthd=method,
-                    cls_name=cls.__class__.__name__,
-                    msg=SquareGraphHandlerException.MSG,
-                    err_code=SquareGraphHandlerException.ERR_CODE,
-                    ex=NodePairBuildException(
-                        mthd=method,
-                        op=NodePairBuildException.OP,
-                        msg=NodePairBuildException.MSG,
-                        err_code=NodePairBuildException.ERR_CODE,
-                        ex=root_node_build_result.exception
-                    )
-                )
-            )
+
         return cls._production_helper(
             square_span=square_span,
             node_service=node_service,

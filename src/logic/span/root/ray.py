@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, List, TypeVar
 
-T = TypeVar('T')
+T = TypeVar("T")
 
 class Ray(ABC, Generic[T]):
     """

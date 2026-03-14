@@ -105,7 +105,7 @@ class SquareSpanBuilder(Builder[SquareSpan]):
                         ex=derivation_result.exception,
                     )
                 )
-            # --- Append the square_ray derivation to its span. ---#
+            # --- Append the ray derivation to its span. ---#
             square_span.rays.append(derivation_result.payload)
         
         # --- Send the square_span to the caller. ---#
@@ -173,11 +173,11 @@ class SquareSpanBuilder(Builder[SquareSpan]):
                         ex=square_search_result.exception,
                     )
                 )
-             # --- Append the found square into square_ray's members ---#
+             # --- Append the found square into ray's members ---#
             if square_search_result.payload[0] not in square_ray.members:
                 square_ray.members.append(square_search_result.payload[0])
     
-        # --- Send the built square_ray to the caller. ---#
+        # --- Send the built ray to the caller. ---#
         return ComputationResult.success(square_ray)
         
     @classmethod

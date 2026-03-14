@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .ray import NullSquareRayException
+from .ray import SquareRayNullException
 from .members import SquareRayMembersNullException

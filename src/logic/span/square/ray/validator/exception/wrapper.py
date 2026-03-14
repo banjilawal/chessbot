@@ -51,8 +51,8 @@ class SquareRayValidationException(ValidationException):
     # INHERITED METHODS:
         *   See ValidationException class for inherited methods.
     """
-    MTHD = Optional[str]
     OP = "Validation"
+    MTHD = Optional[str]
     RSLT_TYPE = "ValidationResult"
     ERR_CODE = "SQUARE_RAY_VALIDATION_FAILURE"
     MSG = "Failure in SquareRayValidator method."

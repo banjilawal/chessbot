@@ -12,7 +12,7 @@ from typing import Any, List, cast
 
 from logic.square import SquareValidator
 from logic.system import LoggingLevelRouter, ValidationResult, Validator
-from logic.span import NullSquareRayException, SquareRay, SquareRayMembersNullException, SquareRayValidationException
+from logic.span import SquareRay, SquareRayMembersNullException, SquareRayNullException, SquareRayValidationException
 
 
 class SquareRayValidator(Validator[SquareRay]):
@@ -56,7 +56,7 @@ class SquareRayValidator(Validator[SquareRay]):
             
         Raises:
             TypeError
-            NullSquareRayException
+            SquareRayNullException
             SquareRayValidationException
         """
         method = f"{cls.__class__.__name__}.validate"
@@ -71,11 +71,11 @@ class SquareRayValidator(Validator[SquareRay]):
                     msg=SquareRayValidationException.MSG,
                     err_code=SquareRayValidationException.ERR_CODE,
                     rslt_type=SquareRayValidationException.RSLT_TYPE,
-                    ex=NullSquareRayException(
+                    ex=SquareRayNullException(
                         var="candidate",
                         val="None",
-                        msg=NullSquareRayException.MSG,
-                        err_code=NullSquareRayException.ERR_CODE,
+                        msg=SquareRayNullException.MSG,
+                        err_code=SquareRayNullException.ERR_CODE,
                     )
                 )
             )
@@ -120,7 +120,7 @@ class SquareRayValidator(Validator[SquareRay]):
                     err_code=SquareRayValidationException.ERR_CODE,
                     rslt_type=SquareRayValidationException.RSLT_TYPE,
                     ex=SquareRayMembersNullException(
-                        var="square_ray.members",
+                        var="ray.members",
                         val="None",
                         msg=SquareRayValidationException.MSG,
                         err_code=SquareRayValidationException.ERR_CODE,
@@ -128,7 +128,7 @@ class SquareRayValidator(Validator[SquareRay]):
                     )
                 )
             )
-        # Handle the case that, square_ray.members is null.
+        # Handle the case that, ray.members is null.
         if not isinstance(square_ray.members, List):
             # Return the exception chain on failure.
             wrong_type = type(square_ray.members).__name__
@@ -140,12 +140,12 @@ class SquareRayValidator(Validator[SquareRay]):
                     err_code=SquareRayValidationException.ERR_CODE,
                     rslt_type=SquareRayValidationException.RSLT_TYPE,
                     ex=SquareRayMembersNullException(
-                        var="type(square_ray.members)",
+                        var="type(ray.members)",
                         val=wrong_type,
                         msg=SquareRayValidationException.MSG,
                         err_code=SquareRayValidationException.ERR_CODE,
                         ex=TypeError(
-                            f"{method} Expected List[Square] for square_ray, got {wrong_type} instead."
+                            f"{method} Expected List[Square] for ray, got {wrong_type} instead."
                         )
                     )
                 )

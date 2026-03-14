@@ -42,11 +42,11 @@ class SpannerException(AnchorException):
         *   See AnchorException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
-        *   msg (str)
-        *   err_code (str)
-        *   ex (Optional[Exception])
-        *   cls_name (Optional[str])
-        *   cls_mthd (Optional[str])
+        msg: Optional[str]
+        cls_mthd: Optional[str]
+        cls_name: Optional[str
+        err_code: Optional[str]
+        ex: Optional[Exception]
 
     # LOCAL METHODS:
     None
@@ -54,8 +54,8 @@ class SpannerException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_MTHD = Optional[str]
     CLS_NAME = "Spanner"
+    CLS_MTHD = Optional[str]
     ERR_CODE = "SPANNER_EXCEPTION"
     MSG = "Exception raised in Spanner"
     

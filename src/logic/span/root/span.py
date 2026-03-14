@@ -14,7 +14,7 @@ from typing import Generic, List, TypeVar
 
 from logic.span import Ray
 
-T = TypeVar('T')
+T = TypeVar("T")
 
 class Span(ABC, Generic[T]):
     """

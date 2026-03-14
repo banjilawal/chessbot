@@ -77,11 +77,11 @@ class SquareRayBuilder(Builder[SquareRay]):
                         ex=member_square_search_result.exception,
                     )
                 )
-             # --- Append the found square into square_ray's members ---#
+             # --- Append the found square into ray's members ---#
             if member_square_search_result.payload[0] not in square_ray.members:
                 square_ray.members.append(member_square_search_result.payload[0])
     
-        # --- Send the built square_ray to the caller. ---#
+        # --- Send the built ray to the caller. ---#
         return BuildResult.success(square_ray)
         
     @classmethod
