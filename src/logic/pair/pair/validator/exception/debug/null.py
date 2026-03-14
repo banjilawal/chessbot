@@ -11,19 +11,19 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-#======================# NULL_NODE_EXCEPTION #======================#
-    "NullNodeException",
+#======================# NODE_PAIR_NULL_EXCEPTION #======================#
+    "NodePairNullException",
 ]
 
 from logic.system import NullException
 
-#======================# NULL_NODE_EXCEPTION #======================#
-class NullNodeException(NullException):
+#======================# NODE_PAIR_NULL_EXCEPTION #======================#
+class NodePairNullException(NullException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a node is null where it should not be.
+    1.  Indicate that a node_pair is null where it should not be.
     
     # PARENT:
         *   NullException
@@ -38,11 +38,11 @@ class NullNodeException(NullException):
         *   See NUllException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
-        *   msg (str)
-        *   err_code (str)
-        *   ex (Optional[Exception])
-        *   var (Optional[str])
-        *   val Optional[Any])
+        msg: Optional[str]
+        var: Optional[str]
+        val: Optional[Any]
+        err_code: Optional[str]
+        ex: Optional[Exception]
 
     # LOCAL METHODS:
    None
@@ -52,8 +52,8 @@ class NullNodeException(NullException):
     """
     VAR = Optional[str]
     VAL = Optional[Any]
-    MSG = "Node cannot be null."
-    ERR_CODE = "NULL_NODE_EXCEPTION"
+    MSG = "NodePair cannot be null."
+    ERR_CODE = "NODE_PAIR_NULL_EXCEPTION"
     
     def __init__(
             self,

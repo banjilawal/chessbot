@@ -1,7 +1,7 @@
-# src/logic/node/validator/exception/wrapper.py
+# src/logic/pair/pair/validator/exception/wrapper.py
 
 """
-Module: logic.node.validator.exception.wrapper
+Module: logic.pair.pair.validator.exception.wrapper
 Author: Banji Lawal
 Created: 2025-09-08
 Version: 1.0.0
@@ -11,20 +11,19 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# NODE_VALIDATION_FAILURE #======================#
-    "NodeValidationException",
+    # ======================# NODE_PAIR_VALIDATION_FAILURE #======================#
+    "NodePairValidationException",
 ]
 
 from logic.system import ValidationException
 
-
-# ======================# NODE_VALIDATION_FAILURE #======================#
-class NodeValidationException(ValidationException):
+# ======================# NODE_PAIR_VALIDATION_FAILURE #======================#
+class NodePairValidationException(ValidationException):
     """
     # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Identify the NodeValidator method where the process failed.
+    1.  Identify the NodePairValidator method where the process failed.
 
     # PARENT:
         *   ValidationException
@@ -39,12 +38,12 @@ class NodeValidationException(ValidationException):
         *   See ValidationException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:)
-        ex: Optional[str]
-        op: Optional[str]
-        msg: Optional[str]
-        mthd: Optional[str]
-        err_code: Optional[str]
-        rslt_type: Optional[str]
+        *   err_code (str)
+        *   msg (str)
+        *   ex (Optional[Exception])
+        *   mthd (Optional[str])
+        *   op (Optional[str])
+        *   rslt_type (Optional[str])
 
     # LOCAL METHODS:
    None
@@ -55,8 +54,8 @@ class NodeValidationException(ValidationException):
     OP = "Validation"
     MTHD = Optional[str]
     RSLT_TYPE = "ValidationResult"
-    ERR_CODE = "NODE_VALIDATION_FAILURE"
-    MSG = "Failure in NodeValidator method."
+    ERR_CODE = "NODE_PAIR_VALIDATION_FAILURE"
+    MSG = "Failure in NodePairValidator method."
     
     def __init__(
             self,
