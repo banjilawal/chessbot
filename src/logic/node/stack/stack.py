@@ -14,7 +14,12 @@ from logic.node import (
     NodeService,
     NodeStackException, PoppingEmptyNodeStackException
 )
-from logic.system import DeletionResult, IdFactory, InsertionResult, LoggingLevelRouter, SearchResult, StackService
+from logic.system import (
+    DeletionResult, IdFactory, IdentityService, InsertionResult, LoggingLevelRouter, MethodImplementationException,
+    SearchResult,
+    StackService
+)
+from logic.system.collection.stack.stack import T
 
 
 class NodeStackService(StackService[Node]):
@@ -50,7 +55,6 @@ class NodeStackService(StackService[Node]):
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            nodes: List[Node] = [],
             service: NodeService = NodeService(),
             id: int = IdFactory.next_id(class_name="NodeStackService"),
             context_service: NodeContextService = NodeContextService(),
@@ -69,7 +73,7 @@ class NodeStackService(StackService[Node]):
             None
         """
         super().__init__(id=id,name=name,)
-        self._stack = nodes
+        self._stack = []
         self._service = service
         self._context_service = context_service
     
@@ -92,6 +96,32 @@ class NodeStackService(StackService[Node]):
     @property
     def current_item(self) -> Optional[Node]:
         return self._stack[-1] if self._stack else None
+    
+    @property
+    def items(self) -> List[Node]:
+        return self._stack
+    
+    @LoggingLevelRouter.monitor
+    def delete_by_id(
+            self,
+            id: int,
+            identity_service: IdentityService = IdentityService()
+    ) -> DeletionResult[T]:
+        method = f"{self.__class__.__name__}.delete_by_id"
+        return DeletionResult.failure(
+            NodeStackException(
+                cls_mthd=method,
+                cls_name=self.__class__.__name__,
+                msg=NodeStackException.MSG,
+                err_code=NodeStackException.ERR_CODE,
+                ex=MethodImplementationException(
+                    var=method,
+                    err_code=MethodImplementationException.ERR_CODE,
+                    msg=f"{method} is not implemented. If the node's edges are not deleted "
+                        f"at the same time, the graph will be inconsistent.",
+                )
+            )
+        )
     
     @LoggingLevelRouter.monitor
     def push(self, item: Node) -> InsertionResult:
