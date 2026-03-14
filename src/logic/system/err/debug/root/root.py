@@ -20,7 +20,8 @@ from logic.system import ChessException
 # ======================# DEBUG_EXCEPTION #======================#
 class DebugException(ChessException):
     """
-    # ROLE: Capture Error Variable State, Exception Chain Layer 2, Exception Messaging
+    # ROLE:  Exception Messaging, Exception Chain Layer 2
+    # TASK: Capture Error Variable State
     
     # RESPONSIBILITIES:
     1.  Produce the:

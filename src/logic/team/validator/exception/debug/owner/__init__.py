@@ -13,6 +13,6 @@ version: 1.0.0
 None
 
 # Modules
-from .team import TeamHasDifferentOwnerException
+from .different import TeamHasDifferentOwnerException
 from .stale import PlayerHasStaleTeamLinkException
 from .register import TeamNotRegisteredOwnerException

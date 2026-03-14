@@ -49,8 +49,8 @@ class NodePairListBuilder(Builder[NodePairList]):
     @LoggingLevelRouter.monitor
     def build(
             cls,
-            ray: SquareRay,
             parent_node: Node,
+            square_ray: SquareRay,
             node_service: NodeService = NodeService(),
             node_pair_builder: NodePairBuilder = NodePairBuilder(),
             square_ray_service: SquareRayService = SquareRayService(),
@@ -69,8 +69,8 @@ class NodePairListBuilder(Builder[NodePairList]):
             4.  Return the success result.
 
         Args:
-            ray: SquareRay
             parent_node: Node
+            square_ray: SquareRay
             node_service: NodeService
             node_pair_builder: NodePairBuilder
             square_ray_service: SquareRayService
@@ -83,8 +83,22 @@ class NodePairListBuilder(Builder[NodePairList]):
         """
         method = f"{cls.__class__.__name__}.build"
         
+        # Handle the case that, the parent_node is not certified as safe.
+        parent_validation_result = node_service.validator.validate(parent_node)
+        if not parent_validation_result.is_failure:
+            # Return the exception chain on failure.
+            BuildResult.failure(
+                NodePairListBuildException(
+                    mthd=method,
+                    op=NodePairListBuildException.OP,
+                    msg=NodePairListBuildException.MSG,
+                    err_code=NodePairListBuildException.ERR_CODE,
+                    rslt_type=NodePairListBuildException.RSLT_TYPE,
+                    ex=parent_validation_result.exception,
+                )
+            )
         # Handle the case that, the ray is not certified as safe.
-        square_ray_validation_result = square_ray_service.validator.validate(ray)
+        square_ray_validation_result = square_ray_service.validator.validate(square_ray)
         if square_ray_validation_result.is_failure:
             # Return the exception chain on failure.
             BuildResult.failure(
@@ -94,10 +108,22 @@ class NodePairListBuilder(Builder[NodePairList]):
                     msg=NodePairListBuildException.MSG,
                     err_code=NodePairListBuildException.ERR_CODE,
                     rslt_type=NodePairListBuildException.RSLT_TYPE,
-                    ex=square_ray_validation_result,
+                    ex=square_ray_validation_result.exception,
                 )
             )
-        
+        # Handle the case that the ray belongs to a different parent.
+        if square_ray.origin != parent_node.square:
+            # Return the exception chain on failure.
+            BuildResult.failure(
+                NodePairListBuildException(
+                    mthd=method,
+                    op=NodePairListBuildException.OP,
+                    msg=NodePairListBuildException.MSG,
+                    err_code=NodePairListBuildException.ERR_CODE,
+                    rslt_type=NodePairListBuildException.RSLT_TYPE,
+                    ex=square_ray_validation_result.exception,
+                )
+            )
         # --- Create the cursor. ---#
         cursor_build_result = node_service.build(square=ray.origin)
         

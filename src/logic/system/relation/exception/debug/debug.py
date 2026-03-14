@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import Optional
+from typing import Any, Optional
 
 __all__ = [
     # ======================# RELATION_ANALYSIS_DEBUG_EXCEPTION #======================#
@@ -20,7 +20,15 @@ from logic.system import DebugException
 # ======================# RELATION_ANALYSIS_DEBUG_EXCEPTION #======================#
 class RelationDebugException(DebugException):
     """
-    # ROLE: Error Tracing, Debugging
+    # ROLE:  Exception Messaging, Exception Chain Layer 2
+    # TASK: Capture Error Variable State
+    
+    # RESPONSIBILITIES:
+    1.  Produce the:
+            *   variable,
+            *   it's Value,
+            *   event which fired the variable into its error state.
+        which occurred in the Anchor method identified in layer-0 of the exception chain.
     
     # RESPONSIBILITIES:
     1.  Indicate that an error condition prevented the RelationAnalysis from completing.
@@ -38,11 +46,11 @@ class RelationDebugException(DebugException):
         *   See DebugException class for inherited attributes.
     
     # CONSTRUCTOR PARAMETERS:
-        *   msg (str)
-        *   err_code (str)
-        *   ex (Optional[Exception])
-        *   var (Optional[str])
-        *   val Optional[Any])
+        var: Optional[str]
+        val: Optional[str]
+        msg: Optional[str]
+        ex: Optional[Exception]
+        err_code: Optional[str]
     
     # LOCAL METHODS:
     None
@@ -50,21 +58,29 @@ class RelationDebugException(DebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    ERR_CODE = "RELATION_ANALYSIS_DEBUG_EXCEPTION"
-    MSG = "RelationAnalysis debug error."
     VAR = Optional[str]
     VAL = Optional[Any]
+    MSG = "RelationAnalysis debug error."
+    ERR_CODE = "RELATION_ANALYSIS_DEBUG_EXCEPTION"
     
     def method(
             self,
-            err_code: Optional[str] = None,
             msg: Optional[str] = None,
-            ex: Optional[Exception] = None,
             var: Optional[str] = None,
             val: Optional[Any] = None,
+            err_code: Optional[str] = None,
+            ex: Optional[Exception] = None,
     ):
-        err_code = err_code or self.ERR_CODE
+        """
+        Args:
+            var: Optional[str]
+            val: Optional[str]
+            msg: Optional[str]
+            ex: Optional[Exception]
+            err_code: Optional[str]
+        """
         msg = msg or self.MSG
         var = var or self.VAR
         val = val or self.VAL
-        super().method(msg=msg, err_code=err_code, ex=ex, var=var, val=val)
+        err_code = err_code or self.ERR_CODE
+        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)

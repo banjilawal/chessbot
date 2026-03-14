@@ -16,7 +16,7 @@ __all__ = [
 
 
 # ======================# NO_RELATION_BETWEEN_PLAYER_AND_TEAM EXCEPTION #======================#
-class TeamHasDifferentOwnerException(TeamDebugException, NoRelationException):
+class TeamHasDifferentOwnerException(NoRelationException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
@@ -25,7 +25,6 @@ class TeamHasDifferentOwnerException(TeamDebugException, NoRelationException):
         did not have any relationship between them.
 
     # PARENT:
-        *   TeamDebugException
         *   NoRelationException
 
     # PROVIDES:
