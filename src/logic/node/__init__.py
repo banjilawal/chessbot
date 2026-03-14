@@ -10,7 +10,7 @@ version: 1.0.0
 # =========== NODE PACKAGE CONTENTS ===========#
 
 # Packages
-from .pair import *
+from logic.node.tree.pair import *
 from .tree import *
 from .stack import *
 from .service import *
