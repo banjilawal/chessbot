@@ -11,13 +11,13 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# TOKEN_CONTEXT_CONTEXT_BUILD_FAILURE #======================#
+    # ======================# TOKEN_CONTEXT_BUILD_FAILURE #======================#
     "TokenContextBuildException",
 ]
 
 from logic.system import BuildException
 
-# ======================# TOKEN_CONTEXT_CONTEXT_BUILD_FAILURE #======================#
+# ======================# TOKEN_CONTEXT_BUILD_FAILURE #======================#
 class TokenContextBuildException(BuildException):
     """
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
@@ -54,7 +54,7 @@ class TokenContextBuildException(BuildException):
     """
     OP = "Build"
     RSLT_TYPE = "BuildResult"
-    ERR_CODE = "TOKEN_CONTEXT_CONTEXT_BUILD_FAILURE"
+    ERR_CODE = "TOKEN_CONTEXT_BUILD_FAILURE"
     MSG = "Failure in TokenContextBuilder method."
 
     def __init__(

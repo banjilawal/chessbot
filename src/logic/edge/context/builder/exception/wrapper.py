@@ -11,13 +11,13 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# EDGE_CONTEXT_CONTEXT_BUILD_FAILURE #======================#
+    # ======================# EDGE_CONTEXT_BUILD_FAILURE #======================#
     "EdgeContextBuildException",
 ]
 
 from logic.system import BuildException
 
-# ======================# EDGE_CONTEXT_CONTEXT_BUILD_FAILURE #======================#
+# ======================# EDGE_CONTEXT_BUILD_FAILURE #======================#
 class EdgeContextBuildException(BuildException):
     """
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
@@ -54,7 +54,7 @@ class EdgeContextBuildException(BuildException):
     """
     OP = "Build"
     RSLT_TYPE = "BuildResult"
-    ERR_CODE = "EDGE_CONTEXT_CONTEXT_BUILD_FAILURE"
+    ERR_CODE = "EDGE_CONTEXT_BUILD_FAILURE"
     MSG = "Failure in EdgeContextBuilder method."
 
     def __init__(

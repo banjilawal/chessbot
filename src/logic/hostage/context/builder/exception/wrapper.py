@@ -11,13 +11,13 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# HOSTAGE_CONTEXT_CONTEXT_BUILD_FAILURE #======================#
+    # ======================# HOSTAGE_CONTEXT_BUILD_FAILURE #======================#
     "HostageContextBuildException",
 ]
 
 from logic.system import BuildException
 
-# ======================# HOSTAGE_CONTEXT_CONTEXT_BUILD_FAILURE #======================#
+# ======================# HOSTAGE_CONTEXT_BUILD_FAILURE #======================#
 class HostageContextBuildException(BuildException):
     """
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
@@ -54,7 +54,7 @@ class HostageContextBuildException(BuildException):
     """
     OP = "Build"
     RSLT_TYPE = "BuildResult"
-    ERR_CODE = "HOSTAGE_CONTEXT_CONTEXT_BUILD_FAILURE"
+    ERR_CODE = "HOSTAGE_CONTEXT_BUILD_FAILURE"
     MSG = "Failure in HostageContextBuilder method."
 
     def __init__(

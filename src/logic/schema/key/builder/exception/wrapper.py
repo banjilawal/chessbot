@@ -17,17 +17,15 @@ __all__ = [
 
 from logic.system import BuildException
 
-#======================# SCHEMA_KEY_BUILD_FAILURE #======================#
+
+# ======================# SCHEMA_KEY_BUILD_FAILURE #======================#
 class SchemaKeyBuildException(BuildException):
     """
-    # ROLE: Exception Chain Layer 1, Exception Messaging
-    # TASK: Worker Method Identifier
+    # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Any failed check during the SchemaKey build creates an exception. Failed check exceptions are encapsulated
-        in a SchemaKeyBuildException which is sent to the caller in a BuildResult.
-    2.  The SchemaKeyBuildException provides a trace for debugging and application recovery.
-        # RESPONSIBILITIES:
+    1.  Indicate the SchemaKeyBuilder did not produce a valid work product.
+    2.  Identify the SchemaKeyBuilder method where the failure occurred.
 
     # PARENT:
         *   BuildException
@@ -42,38 +40,53 @@ class SchemaKeyBuildException(BuildException):
         *   See BuildException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:)
-        *   err_code (str)
-        *   msg (str)
-        *   ex (Optional[Exception])
-        *   mthd (Optional[str])
-        *   op (Optional[str])
-        *   rslt_type (Optional[str])
+        op: Optional[str]
+        ex: Optional[str]
+        msg: Optional[str]
+        mthd: Optional[str]
+        err_code: Optional[str]
+        rslt_type: Optional[str]
 
     # LOCAL METHODS:
-   None
+    None
 
     # INHERITED METHODS:
-        *   See WrapperException class for inherited methods.
+        *   See BuildException class for inherited methods.
     """
-    ERR_CODE = "SCHEMA_KEY_BUILD_FAILED"
-    MSG = "SchemaKey build failed:"
-    MTHD = "build"
     OP = "Build"
     RSLT_TYPE = "BuildResult"
+    ERR_CODE = "SCHEMA_KEY_BUILD_FAILURE"
+    MSG = "Failure in SchemaKeyBuilder method."
     
     def __init__(
             self,
-            err_code: Optional[str] = None,
-            msg: Optional[str] = None,
-            ex: Optional[Exception] = None,
-            mthd: Optional[str] = None,
             op: Optional[str] = None,
+            msg: Optional[str] = None,
+            mthd: Optional[str] = None,
+            ex: Optional[Exception] = None,
+            err_code: Optional[str] = None,
             rslt_type: Optional[str] = None,
     ):
-        err_code = err_code or self.ERR_CODE
+        """
+        Args:
+            op: Optional[str]
+            ex: Optional[str]
+            msg: Optional[str]
+            mthd: Optional[str]
+            err_code: Optional[str]
+            rslt_type: Optional[str]
+        """
+        op = op or self.OP
         msg = msg or self.MSG
         mthd = mthd or self.MTHD
-        op = op or self.OP
+        err_code = err_code or self.ERR_CODE
         rslt_type = rslt_type or self.RSLT_TYPE
         
-        super().__init__(err_code=err_code, msg=msg, ex=ex, mthd=mthd, op=op, rslt_type=rslt_type)
+        super().__init__(
+            ex=ex,
+            op=op,
+            msg=msg,
+            mthd=mthd,
+            err_code=err_code,
+            rslt_type=rslt_type,
+        )

@@ -11,13 +11,13 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# TEAM_CONTEXT_CONTEXT_BUILD_FAILURE #======================#
+    # ======================# TEAM_CONTEXT_BUILD_FAILURE #======================#
     "TeamContextBuildException",
 ]
 
 from logic.system import BuildException
 
-# ======================# TEAM_CONTEXT_CONTEXT_BUILD_FAILURE #======================#
+# ======================# TEAM_CONTEXT_BUILD_FAILURE #======================#
 class TeamContextBuildException(BuildException):
     """
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
@@ -54,7 +54,7 @@ class TeamContextBuildException(BuildException):
     """
     OP = "Build"
     RSLT_TYPE = "BuildResult"
-    ERR_CODE = "TEAM_CONTEXT_CONTEXT_BUILD_FAILURE"
+    ERR_CODE = "TEAM_CONTEXT_BUILD_FAILURE"
     MSG = "Failure in TeamContextBuilder method."
 
     def __init__(

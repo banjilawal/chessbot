@@ -11,13 +11,13 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# SQUARE_CONTEXT_CONTEXT_BUILD_FAILURE #======================#
+    # ======================# SQUARE_CONTEXT_BUILD_FAILURE #======================#
     "SquareContextBuildException",
 ]
 
 from logic.system import BuildException
 
-# ======================# SQUARE_CONTEXT_CONTEXT_BUILD_FAILURE #======================#
+# ======================# SQUARE_CONTEXT_BUILD_FAILURE #======================#
 class SquareContextBuildException(BuildException):
     """
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
@@ -54,7 +54,7 @@ class SquareContextBuildException(BuildException):
     """
     OP = "Build"
     RSLT_TYPE = "BuildResult"
-    ERR_CODE = "SQUARE_CONTEXT_CONTEXT_BUILD_FAILURE"
+    ERR_CODE = "SQUARE_CONTEXT_BUILD_FAILURE"
     MSG = "Failure in SquareContextBuilder method."
 
     def __init__(

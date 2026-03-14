@@ -11,13 +11,13 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# ARENA_CONTEXT_CONTEXT_BUILD_FAILURE #======================#
+    # ======================# ARENA_CONTEXT_BUILD_FAILURE #======================#
     "ArenaContextBuildException",
 ]
 
 from logic.system import BuildException
 
-# ======================# ARENA_CONTEXT_CONTEXT_BUILD_FAILURE #======================#
+# ======================# ARENA_CONTEXT_BUILD_FAILURE #======================#
 class ArenaContextBuildException(BuildException):
     """
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
@@ -54,7 +54,7 @@ class ArenaContextBuildException(BuildException):
     """
     OP = "Build"
     RSLT_TYPE = "BuildResult"
-    ERR_CODE = "ARENA_CONTEXT_CONTEXT_BUILD_FAILURE"
+    ERR_CODE = "ARENA_CONTEXT_BUILD_FAILURE"
     MSG = "Failure in ArenaContextBuilder method."
 
     def __init__(

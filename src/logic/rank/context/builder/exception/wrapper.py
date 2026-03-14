@@ -11,13 +11,13 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# RANK_CONTEXT_CONTEXT_BUILD_FAILURE #======================#
+    # ======================# RANK_CONTEXT_BUILD_FAILURE #======================#
     "RankContextBuildException",
 ]
 
 from logic.system import BuildException
 
-# ======================# RANK_CONTEXT_CONTEXT_BUILD_FAILURE #======================#
+# ======================# RANK_CONTEXT_BUILD_FAILURE #======================#
 class RankContextBuildException(BuildException):
     """
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
@@ -54,7 +54,7 @@ class RankContextBuildException(BuildException):
     """
     OP = "Build"
     RSLT_TYPE = "BuildResult"
-    ERR_CODE = "RANK_CONTEXT_CONTEXT_BUILD_FAILURE"
+    ERR_CODE = "RANK_CONTEXT_BUILD_FAILURE"
     MSG = "Failure in RankContextBuilder method."
 
     def __init__(

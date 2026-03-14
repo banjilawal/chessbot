@@ -11,13 +11,13 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# NODE_CONTEXT_CONTEXT_BUILD_FAILURE #======================#
+    # ======================# NODE_CONTEXT_BUILD_FAILURE #======================#
     "NodeContextBuildException",
 ]
 
 from logic.system import BuildException
 
-# ======================# NODE_CONTEXT_CONTEXT_BUILD_FAILURE #======================#
+# ======================# NODE_CONTEXT_BUILD_FAILURE #======================#
 class NodeContextBuildException(BuildException):
     """
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
@@ -54,7 +54,7 @@ class NodeContextBuildException(BuildException):
     """
     OP = "Build"
     RSLT_TYPE = "BuildResult"
-    ERR_CODE = "NODE_CONTEXT_CONTEXT_BUILD_FAILURE"
+    ERR_CODE = "NODE_CONTEXT_BUILD_FAILURE"
     MSG = "Failure in NodeContextBuilder method."
 
     def __init__(

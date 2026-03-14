@@ -11,13 +11,13 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# PLAYER_CONTEXT_CONTEXT_BUILD_FAILURE #======================#
+    # ======================# PLAYER_CONTEXT_BUILD_FAILURE #======================#
     "PlayerContextBuildException",
 ]
 
 from logic.system import BuildException
 
-# ======================# PLAYER_CONTEXT_CONTEXT_BUILD_FAILURE #======================#
+# ======================# PLAYER_CONTEXT_BUILD_FAILURE #======================#
 class PlayerContextBuildException(BuildException):
     """
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
@@ -54,7 +54,7 @@ class PlayerContextBuildException(BuildException):
     """
     OP = "Build"
     RSLT_TYPE = "BuildResult"
-    ERR_CODE = "PLAYER_CONTEXT_CONTEXT_BUILD_FAILURE"
+    ERR_CODE = "PLAYER_CONTEXT_BUILD_FAILURE"
     MSG = "Failure in PlayerContextBuilder method."
 
     def __init__(
