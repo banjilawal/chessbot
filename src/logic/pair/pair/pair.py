@@ -9,6 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 from dataclasses import dataclass
+from typing import List
 
 from logic.node import Node
 
@@ -24,9 +25,15 @@ class NodePair:
     head: Node
     tail: Node
     
+    @property
+    def members(self) -> List[Node]:
+        """Puts the head and tail nodes into a list."""
+        return [self.head, self.tail]
+    
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
         if isinstance(other, NodePair):
             return self.head == other.head and self.tail == other.tail
         return False
+    

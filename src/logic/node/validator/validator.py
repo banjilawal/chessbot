@@ -78,7 +78,7 @@ class NodeValidator(Validator[Node]):
                 )
             )
         # Handle the wrong class case.
-        if not isinstance(Node, candidate):
+        if not isinstance(candidate, Node):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 NodeValidationException(
@@ -87,7 +87,7 @@ class NodeValidator(Validator[Node]):
                 )
             )
         # --- Cast the candidate to an Node for additional tests ---#
-        node = cast(candidate, Node)
+        node = cast(Node, candidate)
         
         # Handle the case that, the square is not valid.
         square_validation_result = square_validator.validate(node.square)

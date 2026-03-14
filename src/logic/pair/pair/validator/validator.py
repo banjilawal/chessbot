@@ -8,14 +8,12 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import Any, List, cast
+from typing import Any, cast
 
-from logic.pair import NodePair
-from logic.square import SquareValidator
-from logic.system import LoggingLevelRouter, NumberValidator, ValidationResult, Validator
-from logic.node import (
-    DiscoveryStatus, DiscoveryStatusNullException, NullNodeException, Node, NodeValidationException
-)
+from logic.node import NodeValidator
+from logic.edge import HeadCannotBeTailException
+from logic.pair import NodePair, NodePairNullException, NodePairValidationException
+from logic.system import LoggingLevelRouter, ValidationResult, Validator
 
 
 class NodePairValidator(Validator[NodePair]):
@@ -23,7 +21,7 @@ class NodePairValidator(Validator[NodePair]):
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
-    1.  Ensure a Node instance is certified safe, reliable and consistent before use.
+    1.  Ensure a NodePair instance is certified safe, reliable and consistent before use.
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     # PARENT:
@@ -44,163 +42,93 @@ class NodePairValidator(Validator[NodePair]):
     def validate(
             cls,
             candidate: Any,
-            number_validator: NumberValidator = NumberValidator(),
-            square_validator: SquareValidator = SquareValidator(),
-    ) -> ValidationResult[Node]:
+            node_validator: NodeValidator = NodeValidator(),
+    ) -> ValidationResult[NodePair]:
         """
-        # ACTION:
+        Actin:
             1.  If the candidate fails existence or type tests send the exception in the ValidationResult.
                 Else, cast to Node instance, node.
             2.  If either the head, tail, distance, heuristic or weight fail verification send an exception chain
                 in the ValidationResult. Else, send the node in the ValidationResult.
-        # PARAMETERS:
-            *   candidate (Any)
-            *   node_validator (NodePairValidator)
-            *   identity_service (IdentityService)
-            *   number_validator (NumberValidator)
-        # RETURNS:
-            *   ValidationResult[] containing either:
-                    - On failure: Exception.
-                    - On success: Node in the payload.
+                
+        Args:
+            candidate: Any
+            node_validator: NodeValidator
+            
+        Returns:
+            ValidationResult[NodePair]
+            
         Raises:
-            *   TypeError
-            *   NullNodeException
-            *   NodeValidationException
+            TypeError
+            NodePairNullException
+            NodePairValidationException
         """
-        method = "NodePairValidator.validate"
+        method = f"{cls.__class__.__name__}.validate"
         
         # Handle the nonexistence case.
         if candidate is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                NodeValidationException(
-                    msg=f"{method}: {NodeValidationException.MSG}",
-                    ex=NullNodeException(f"{method}: {NullNodeException.MSG}")
+                NodePairValidationException(
+                    mthd=method,
+                    op=NodePairValidationException.OP,
+                    msg=NodePairValidationException.MSG,
+                    err_code=NodePairValidationException.ERR_CODE,
+                    rslt_type=NodePairValidationException.RSLT_TYPE,
+                    ex=NodePairNullException(
+                        var="Candidate",
+                        val={type(candidate).__name__},
+                        msg=NodePairNullException.MSG,
+                        err_code=NodePairNullException.ERR_CODE,
+                    )
                 )
             )
         # Handle the wrong class case.
-        if not isinstance(Node, candidate):
+        if not isinstance(candidate, NodePair):
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                NodeValidationException(
-                    msg=f"{method}: {NodeValidationException.MSG}",
-                    ex=TypeError(f"{method}: Expected an Node, got {type(candidate).__name__}. instead")
+                NodePairValidationException(
+                    mthd=method,
+                    op=NodePairValidationException.OP,
+                    msg=NodePairValidationException.MSG,
+                    err_code=NodePairValidationException.ERR_CODE,
+                    rslt_type=NodePairValidationException.RSLT_TYPE,
+                    ex=TypeError(f"Expected NodePair, got {type(candidate).__name__}. instead")
                 )
             )
         # --- Cast the candidate to an Node for additional tests ---#
-        node = cast(candidate, Node)
+        node_pair = cast(NodePair, candidate)
         
-        # Handle the case that, the square is not valid.
-        square_validation_result = square_validator.validate(node.square)
-        if square_validation_result.is_failure:
-            # Return the exception chain on failure.
-            ValidationResult.failure(
-                NodeValidationException(
-                    msg=f"{method}: {NodeValidationException.MSG}",
-                    ex=square_validation_result.exception
+        # Handle the case that either the head or tail is not certified as safe.
+        for member in node_pair.members:
+            validation_result = node_validator.validate(candidate=member)
+            if validation_result.is_failure:
+                # Return the exception chain on failure.
+                return ValidationResult.failure(
+                    NodePairValidationException(
+                        mthd=method,
+                        op=NodePairValidationException.OP,
+                        msg=NodePairValidationException.MSG,
+                        err_code=NodePairValidationException.ERR_CODE,
+                        rslt_type=NodePairValidationException.RSLT_TYPE,
+                        ex=validation_result.exception
+                    )
                 )
-            )
-        # Handle the case that, the incoming_nodes is not a list of nodes.
-        if not isinstance(node.incoming_nodes, List):
+        # Handle the case that, the head and tail are the same.
+        if node_pair.head == node_pair.tail:
             # Return the exception chain on failure.
-            ValidationResult.failure(
-                NodeValidationException(
-                    msg=f"{method}: {NodeValidationException.MSG}",
-                    ex=TypeError(
-                        f"{method}: Node expected a List of Nodes, for its incoming got "
-                        f"{type(node.incoming_nodes).__name__}. instead."
+            return ValidationResult.failure(
+                NodePairValidationException(
+                    mthd=method,
+                    op=NodePairValidationException.OP,
+                    msg=NodePairValidationException.MSG,
+                    err_code=NodePairValidationException.ERR_CODE,
+                    rslt_type=NodePairValidationException.RSLT_TYPE,
+                    ex=HeadCannotBeTailException(
+                        msg=NodePairValidationException.MSG,
+                        err_code=NodePairValidationException.ERR_CODE,
                     )
                 )
             )
-        # Handle the case that, the outgoing_nodes is not a list of nodes.
-        if not isinstance(node.outgoing_nodes, List):
-            # Return the exception chain on failure.
-            ValidationResult.failure(
-                NodeValidationException(
-                    msg=f"{method}: {NodeValidationException.MSG}",
-                    ex=TypeError(
-                        f"{method}: Node expected a List of Nodes, for its outgoing got "
-                        f"{type(node.outgoing_nodes).__name__}. instead."
-                    )
-                )
-            )
-        # If the predecessor is not null handle the case that its not a Node.
-        if node.predecessor is not None and not isinstance(node.predecessor, Node):
-            # Return the exception chain on failure.
-            ValidationResult.failure(
-                NodeValidationException(
-                    msg=f"{method}: {NodeValidationException.MSG}",
-                    ex=TypeError(
-                        f"{method}: Node expected a Node for its predecessor, got "
-                        f"{type(node.predecessor).__name__}. instead."
-                    )
-                )
-            )
-        # Handle the case that, the priority is not a number
-        priority_validation_result = number_validator.validate(node.priority)
-        if priority_validation_result.is_failure:
-            # Return the exception chain on failure.
-            return ValidationResult.failure(
-                NodeValidationException(
-                    msg=f"{method}: {NodeValidationException.MSG}",
-                    ex=priority_validation_result.exception
-                )
-            )
-        # Handle the case that, the DiscoveryStatus does not exist
-        if node.discovery_status is None:
-            # Return the exception chain on failure.
-            return ValidationResult.failure(
-                NodeValidationException(
-                    msg=f"{method}: {NodeValidationException.MSG}",
-                    ex=DiscoveryStatusNullException(
-                        f"{method}: {DiscoveryStatusNullException.MSG}"
-                    )
-                )
-            )
-        # Handle the case that, the DiscoveryStatus is the wrong type
-        if not isinstance(node.discovery_status, DiscoveryStatus):
-            # Return the exception chain on failure.
-            return ValidationResult.failure(
-                NodeValidationException(
-                    msg=f"{method}: {NodeValidationException.MSG}",
-                    ex=TypeError(
-                        f"{method}: Expected DiscoveryStatus, got {type(node.discovery_status).__name__} instead."
-                    )
-                )
-            )
-        # Tests have been passed return the node in the ValidationResult.
-        return ValidationResult.success(payload=node)
-    
-    @classmethod
-    def validate_discovery_status(cls, candidate: Any) -> ValidationResult[DiscoveryStatus]:
-        """
-        # ACTION:
-            1.  If Candidate fails existence or type checks return the exception chain in the ValidationResult.
-                Else, cast to DiscoveryState and send in the ValidationResult.
-        # PARAMETERS:
-            *   candidate (Any)
-        # RETURNS:
-            *   ValidationResult[DiscoveryStatus] containing either:
-                    - On failure: Exception.
-                    - On success: DiscoveryStatus in the payload.
-        Raises:
-            *   TypeError
-            *   DiscoveryStatusNullException
-        """
-        method = "NodeContextValidator.validate_discovery_status"
-        
-        # Handle the nonexistence case.
-        if candidate is None:
-            # Return the exception chain on failure.
-            return ValidationResult.failure(
-                DiscoveryStatusNullException(f"{method}: {DiscoveryStatusNullException.MSG}")
-            )
-        # Handle the wrong class case.
-        if not isinstance(candidate, DiscoveryStatus):
-            # Return the exception chain on failure.
-            return ValidationResult.failure(
-                TypeError(
-                    f"{method}: Was expecting a DiscoveryStatus, got {type(candidate).__predecessor__} instead."
-                )
-            )
-        return ValidationResult.success(cast(DiscoveryStatus, candidate))
+        # --- The validation checks were passed, send the success result. ---#
+        return ValidationResult.success(node_pair)
