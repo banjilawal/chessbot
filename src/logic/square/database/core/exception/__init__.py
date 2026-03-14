@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .anchor import SquareStackException
+from .anchor import SquareStackServiceException
 from .debug import SquareStackDebugException

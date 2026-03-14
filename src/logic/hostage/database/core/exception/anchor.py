@@ -1,7 +1,7 @@
-# src/logic/square/database/core/exception/anchor.py
+# src/logic/hostage/database/core/exception/anchor.py
 
 """
-Module: logic.square.database.core.exception.anchor
+Module: logic.hostage.database.core.exception.anchor
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -11,24 +11,24 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# SQUARE_STACK_SERVICE_EXCEPTION #======================#
-    "SquareStackServiceException",
+    # ======================# HOSTAGE_STACK_SERVICE_EXCEPTION #======================#
+    "HostageStackServiceException",
 ]
 
 from logic.system import StackServiceException
 
 
-# ======================# SQUARE_STACK_SERVICE_EXCEPTION #======================#
-class SquareStackServiceException(StackServiceException):
+# ======================# HOSTAGE_STACK_SERVICE_EXCEPTION #======================#
+class HostageStackServiceException(StackServiceException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Anchoring target for SquareStackService debug (layer-2) error state firing incident
+    1.  Anchoring target for HostageStackService debug (layer-2) error state firing incident
         reports on
             *   the triggering variable
             *   The trigger's value.
-    2.  Indicate which SquareStackService method received a worker's (layer-1) failure result.
+    2.  Indicate which HostageStackService method received a worker's (layer-1) failure result.
 
     # PARENT:
         *   StackServiceException
@@ -55,9 +55,9 @@ class SquareStackServiceException(StackServiceException):
     # INHERITED METHODS:
         *   See StackServiceException class for inherited methods.
     """
-    CLS_NAME = " SquareStackService"
-    ERR_CODE = " SQUARE_STACK_SERVICE_EXCEPTION"
-    MSG = " SquareStackService raised an exception."
+    CLS_NAME = " HostageStackService"
+    ERR_CODE = " HOSTAGE_STACK_SERVICE_EXCEPTION"
+    MSG = " HostageStackService raised an exception."
     
     def __init__(
             self,
