@@ -12,7 +12,6 @@ from dataclasses import dataclass
 from typing import List
 
 from logic.pair import NodePair
-from logic.pair.pair.service.service import NodePairService
 
 
 @dataclass
@@ -22,4 +21,3 @@ class NodePairList:
     a list or tree.
     """
     items: List[NodePair]
-    service: NodePairService = NodePairService()
