@@ -64,7 +64,7 @@ class HostageDatabase(Database[Hostage]):
     
     @property
     def integrity_service(self) -> HostageService:
-        return self._database_core.integrity_service
+        return self._database_core.pair_service
     
     @property
     def context_service(self) -> CaptivityContextService:

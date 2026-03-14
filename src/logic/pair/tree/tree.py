@@ -26,4 +26,4 @@ class NodeTree:
     """
     root: Node
     branches: List[PairList]
-    integrity_service: PairService = PairService()
+    pair_service: PairService = PairService()

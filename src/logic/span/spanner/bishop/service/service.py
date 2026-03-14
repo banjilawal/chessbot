@@ -244,25 +244,25 @@ class BishopSpanService(SpanService):
                     pair_build_result = self._build_pair(
                         head_square=square_u,
                         tail_square=square_v,
-                        node_builder=graph.vertices.integrity_service.builder
+                        node_builder=graph.vertices.pair_service.builder
                     )
-                    v_build_result = graph.vertices.integrity_service.builder.build(
+                    v_build_result = graph.vertices.pair_service.builder.build(
                         square=square_v,
                         square_validator=square_database.integrity_service.validator,
                     )
-                    u_build_result = graph.vertices.integrity_service.builder.build(
+                    u_build_result = graph.vertices.pair_service.builder.build(
                         square=square_u,
                         square_validator=square_database.integrity_service.validator,
                     )
                     graph.vertices.push(u_build_result.payload)
                     graph.vertices.push(v_build_result.payload)
                     
-                    e = graph.edges.integrity_service.builder.build(
+                    e = graph.edges.pair_service.builder.build(
                         head=u_build_result.payload,
                         tail=v_build_result.payload,
                         coord_service=self.coord_service,
                     )
-                    f = graph.edges.integrity_service.builder.build(
+                    f = graph.edges.pair_service.builder.build(
                         head=v_build_result.payload,
                         tail=u_build_result.payload,
                         coord_service=self.coord_service,
@@ -270,15 +270,15 @@ class BishopSpanService(SpanService):
                     graph.edges.push(e)
                     graph.edges.push(f)
                     
-                    u = graph.vertices.integrity_service.add_vertex(previous_square)
+                    u = graph.vertices.pair_service.add_vertex(previous_square)
                     
-                    e = graph.edges.integrity_service.add_edge(
+                    e = graph.edges.pair_service.add_edge(
                         source=u,
                         target=v,
-                        weight=graph.edges.integrity_service
+                        weight=graph.edges.pair_service
                     )
                     f = graph.edges.push(
-                        graph.edges.integrity_service.builder.build(
+                        graph.edges.pair_service.builder.build(
                         
                         )
                     )
