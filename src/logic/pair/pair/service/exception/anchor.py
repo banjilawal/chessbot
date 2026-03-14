@@ -1,7 +1,7 @@
-# src/logic/node/pair/service/exception.super.py
+# src/logic/pair/pair/service/exception.super.py
 
 """
-Module: logic.node.pair.service.exception.super
+Module: logic.pair.pair.service.exception.super
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/logic/node/pair/pair.py
+# src/logic/pair/pair/pair.py
 
 """
-Module: logic.node.pair.
+Module: logic.pair.pair.
 Author: Banji Lawal
 Created: 2026-03-12
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/logic/node/pair/builder/exception/square.py
+# src/logic/pair/pair/builder/exception/square.py
 
 """
-Module: logic.node.pair.builder.exception.square
+Module: logic.pair.pair.builder.exception.square
 Author: Banji Lawal
 Created: 2026-03-12
 version: 1.0.0

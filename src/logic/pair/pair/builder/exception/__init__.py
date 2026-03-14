@@ -1,13 +1,13 @@
-# src/logic/node/pair/builder/exception/__init__.py
+# src/logic/pair/pair/builder/exception/__init__.py
 
 """
-Module: logic.node.pair.builder.exception.__init__
+Module: logic.pair.pair.builder.exception.__init__
 Author: Banji Lawal
 Created: 2026-03-12
 version: 1.0.0
 """
 
-# =========== NODE.PAIR.BUILDER.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== PAIR.PAIR.BUILDER.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
 None

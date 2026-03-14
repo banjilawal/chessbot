@@ -1,7 +1,7 @@
-# src/logic/node/pair/builder/builder.py
+# src/logic/pair/pair/builder/builder.py
 
 """
-Module: logic.node.pair.builder.builder
+Module: logic.pair.pair.builder.builder
 Author: Banji Lawal
 Created: 2026-03-12
 version: 1.0.0
@@ -50,7 +50,7 @@ class NodePairBuilder(Builder[NodePair]):
             cls,
             head: Node,
             tail_square: Square,
-            node_service: NodeService,
+            node_service: NodeService = NodeService(),
             square_validator: SquareValidator = SquareValidator(),
     ) -> BuildResult[NodePair]:
         """

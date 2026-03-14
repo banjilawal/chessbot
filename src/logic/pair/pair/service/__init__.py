@@ -1,13 +1,13 @@
-# src/logic/node/pair/service/__init__.py
+# src/logic/pair/pair/service/__init__.py
 
 """
-Module: logic.node.pair.service.__init__
+Module: logic.pair.pair.service.__init__
 Author: Banji Lawal
-Created: 2025-02-17
+Created: 2026-03-13
 version: 1.0.0
 """
 
-# =========== NODE.PAIR.SERVICE PACKAGE CONTENTS ===========#
+# =========== PAIR.PAIR.SERVICE PACKAGE CONTENTS ===========#
 
 # Packages
 from .exception import *

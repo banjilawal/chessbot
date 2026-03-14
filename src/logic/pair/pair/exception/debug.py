@@ -1,7 +1,7 @@
-# src/logic/node/pair/exception/debug.py
+# src/logic/pair/pair/exception/debug.py
 
 """
-Module: logic.node.pair.exception.debug
+Module: logic.pair.pair.exception.debug
 Author: Banji Lawal
 Created: 2026-03-12
 version: 1.0.0
