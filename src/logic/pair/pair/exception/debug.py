@@ -1,9 +1,9 @@
-# src/logic/persona/exception/debug.py
+# src/logic/node/pair/exception/debug.py
 
 """
-Module: logic.persona.exception.debug
+Module: logic.node.pair.exception.debug
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2026-03-12
 version: 1.0.0
 """
 
@@ -11,14 +11,14 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# PERSONA_DEBUG_EXCEPTION #======================#
-    "PersonaDebugException",
+    # ======================# NODE_PAIR_DEBUG_EXCEPTION #======================#
+    "NodePairDebugException",
 ]
 
 from logic.system import DebugException
 
-# ======================# PERSONA_DEBUG_EXCEPTION #======================#
-class PersonaDebugException(DebugException):
+# ======================# NODE_PAIR_DEBUG_EXCEPTION #======================#
+class NodePairDebugException(DebugException):
     """
     # ROLE: Capture Error Variable State, Exception Chain Layer 2, Exception Messaging
     
@@ -56,8 +56,8 @@ class PersonaDebugException(DebugException):
     """
     VAR = Optional[str]
     VAL = Optional[Any]
-    ERR_CODE = "PERSONA_EXCEPTION"
-    MSG = str = "Persona had an error."
+    ERR_CODE = "NODE_PAIR_EXCEPTION"
+    MSG = str = "NodePair had an error."
 
     def __init__(
             self,

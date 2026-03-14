@@ -10,9 +10,10 @@ version: 1.0.0
 # =========== NODE.PAIR PACKAGE CONTENTS ===========#
 
 # Packages
-from .array import *
 from .builder import *
+from .service import *
+from .validator import *
+from .exception import *
 
 # Modules
 from .pair import NodePair
-from .array import NodePairList

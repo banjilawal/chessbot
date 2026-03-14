@@ -1,9 +1,9 @@
-# src/logic/persona/exception/debug.py
+# src/logic/node/pair/exception/anchor.py
 
 """
-Module: logic.persona.exception.debug
+Module: logic.node.pair.exception.anchor
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2026-03-12
 version: 1.0.0
 """
 
@@ -11,23 +11,23 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# PERSONA_EXCEPTION #======================#
-    "PersonaException",
+    # ======================# NODE_PAIR_EXCEPTION #======================#
+    "NodePairException",
 ]
 
 from logic.system import AnchorException
 
-# ======================# PERSONA_EXCEPTION #======================#
-class PersonaException(AnchorException):
+# ======================# NODE_PAIR_EXCEPTION #======================#
+class NodePairException(AnchorException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Provide Persona as:
+    1.  Provide NodePair as:
             *   Reporting
             *   Coverage
         target for layer-2 debugging exceptions.
-    2.  Indicate which Persona method received a worker's (layer-1) failure result.
+    2.  Indicate which NodePair method received a worker's (layer-1) failure result.
 
     # PARENT:
         *   AnchorException
@@ -54,10 +54,10 @@ class PersonaException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_NAME = "Persona"
+    CLS_NAME = "NodePair"
     CLS_MTHD = Optional[str]
-    ERR_CODE = "PERSONA_EXCEPTION"
-    MSG = "Exception raised in Persona"
+    ERR_CODE = "NODE_PAIR_EXCEPTION"
+    MSG = "Exception raised in NodePair"
  
     def __init__(
             self,
