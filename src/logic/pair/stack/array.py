@@ -8,11 +8,11 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-
 from dataclasses import dataclass
 from typing import List
 
-from logic.node import NodePair
+from logic.pair import NodePair
+from logic.pair.pair.service.service import NodePairService
 
 
 @dataclass
@@ -22,3 +22,4 @@ class NodePairList:
     a list or tree.
     """
     items: List[NodePair]
+    service: NodePairService = NodePairService()
