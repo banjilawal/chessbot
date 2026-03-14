@@ -1,7 +1,7 @@
-# src/logic/node/tree/tree.py
+# src/logic/pair/tree.py
 
 """
-Module: logic.node.tree.tree
+Module: logic.pair.tree
 Author: Banji Lawal
 Created: 2026-03-12
 version: 1.0.0

@@ -1,13 +1,13 @@
-# src/logic/node/tree/builder/__init__.py
+# src/logic/pair/builder/__init__.py
 
 """
-Module: logic.node.tree.builder.__init__
+Module: logic.pair.builder.__init__
 Author: Banji Lawal
 Created: 2026-03-12
 version: 1.0.0
 """
 
-# =========== NODE.TREE.BUILDER PACKAGE CONTENTS ===========#
+# =========== PAIR.BUILDER PACKAGE CONTENTS ===========#
 
 # Packages
 from .exception import *

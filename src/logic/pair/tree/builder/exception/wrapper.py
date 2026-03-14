@@ -1,7 +1,7 @@
-# src/logic/node/tree/builder/exception/wrapper.py
+# src/logic/pair/builder/exception/wrapper.py
 
 """
-Module: logic.node.tree.builder.exception.wrapper
+Module: logic.pair.builder.exception.wrapper
 Author: Banji Lawal
 Created: 2026-03-12
 version: 1.0.0

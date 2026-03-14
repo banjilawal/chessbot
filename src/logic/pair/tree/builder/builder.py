@@ -1,7 +1,7 @@
-# src/logic/node/tree/builder/builder.py
+# src/logic/pair/builder/builder.py
 
 """
-Module: logic.node.tree.builder.builder
+Module: logic.pair.builder.builder
 Author: Banji Lawal
 Created: 2026-03-12
 version: 1.0.0
