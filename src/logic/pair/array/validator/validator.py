@@ -1,7 +1,7 @@
-# src/logic/node/pair/array/validator/validator.py
+# src/logic/pair/array/validator/validator.py
 
 """
-Module: logic.node.pair.array.validator
+Module: logic.pair.array.validator
 Author: Banji Lawal
 Created: 2026-03-12
 version: 1.0.0
@@ -20,7 +20,7 @@ class NodePairListValidator(Validator[NodePairList]):
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
-    1.  Ensure a candidate is not null and the correct type before its used as a Node.Pair.Array.
+    1.  Ensure a candidate is not null and the correct type before its used as a Pair.Array.
     2.  If verification fails indicate the reason in an exception returned to the caller.
 
     # PROVIDES:

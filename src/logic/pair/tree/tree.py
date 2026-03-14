@@ -12,6 +12,7 @@ from dataclasses import dataclass
 from typing import List
 
 from logic.node import Node, NodePairList
+from logic.pair.pair.service.service import NodePairService
 
 
 @dataclass
@@ -24,3 +25,4 @@ class NodeTree:
     """
     root: Node
     branches: List[NodePairList]
+    integrity_service: NodePairService = NodePairService()

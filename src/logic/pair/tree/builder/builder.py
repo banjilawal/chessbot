@@ -113,7 +113,6 @@ class NodeTreeBuilder(Builder[NodeTree]):
             node_pair_list_build_result = node_pair_list_builder.build(
                 ray=ray,
                 parent_node=node_tree.root,
-
             )
         # --- Create a cursor. ---#
         cursor = root_node_build_result.payload

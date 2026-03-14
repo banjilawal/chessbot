@@ -1,7 +1,7 @@
-# src/logic/node/pair/array/builder/wrapper.py
+# src/logic/pair/array/builder/wrapper.py
 
 """
-Module: logic.node.pair.array.builder.wrapper
+Module: logic.pair.array.builder.wrapper
 Author: Banji Lawal
 Created: 2026-03-12
 version: 1.0.0

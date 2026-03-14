@@ -1,7 +1,7 @@
-# src/logic/node/pair/array/validator/exception/debug/null.py
+# src/logic/pair/array/validator/exception/debug/null.py
 
 """
-Module: logic.node.pair.array.validator.exception.debug.null
+Module: logic.pair.array.validator.exception.debug.null
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

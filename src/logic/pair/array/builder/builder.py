@@ -1,7 +1,7 @@
-# src/logic/node/pair/array/builder/builder.py
+# src/logic/pair/array/builder/builder.py
 
 """
-Module: logic.node.pair.array.builder.builder
+Module: logic.pair.array.builder.builder
 Author: Banji Lawal
 Created: 2026-03-12
 version: 1.0.0
