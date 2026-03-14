@@ -55,26 +55,20 @@ class NodeStackService(StackService[Node]):
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            service: NodeService = NodeService(),
+            integrity_service: NodeService = NodeService(),
             id: int = IdFactory.next_id(class_name="NodeStackService"),
             context_service: NodeContextService = NodeContextService(),
     ):
         """
-        # ACTION:
-            Constructor
-        # PARAMETERS:
-            *   id (int)
-            *   name (str)
-            *   service (NodeService)
-            *   context_service (NodeContextService)
-        # RETURNS:
-            None
-        Raises:
-            None
+        Args:
+            id: int
+            name: str
+            integrity_service: NodeService
+            context_service: NodeContextService
         """
         super().__init__(id=id,name=name,)
         self._stack = []
-        self._service = service
+        self._service = integrity_service
         self._context_service = context_service
     
     @property

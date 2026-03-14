@@ -23,11 +23,10 @@ class AnchorException(ChessException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
-    # RESPONSIBILITIES:
-    1.  Provide Anchor as:
-            *   Reporting
-            *   Coverage
-        target for layer-2 debugging exceptions.
+    # RESPONSIBILITIES:.
+    1.  Anchoring target for debug (layer-2) error state firing incident reports on
+            *   the triggering variable
+            *   The trigger's value.
     2.  Indicate which Anchor method received a worker's (layer-1) failure result.
 
     # NAMING CONVENTION:

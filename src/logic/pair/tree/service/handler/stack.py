@@ -32,7 +32,7 @@ class NodeTreeStackConverter:
         """
         method = f"{cls.__class__.__name__}.convert"
         
-        node_stack_service = NodeStackService(node_tree)
+        node_stack_service = NodeStackService()
         
         if node_tree.is_empty:
             return
