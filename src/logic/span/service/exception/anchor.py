@@ -1,7 +1,7 @@
-# src/logic/span/service/exception/anchor.py
+# src/logic/vector/service/exception/anchor.py
 
 """
-Module: logic.span.service.exception.anchor
+Module: logic.vector.service.exception.anchor
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,24 +11,24 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# SPAN_SERVICE_EXCEPTION #======================#
-    "SpanServiceException",
+    # ======================# VECTOR_SERVICE_EXCEPTION #======================#
+    "VectorServiceException",
 ]
 
 from logic.system import AnchorException
 
 
-# ======================# SPAN_SERVICE_EXCEPTION #======================#
-class SpanServiceException(AnchorException):
+# ======================# VECTOR_SERVICE_EXCEPTION #======================#
+class VectorServiceException(AnchorException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Anchoring target for SpanService debug (layer-2) error state firing incident
+    1.  Anchoring target for VectorService debug (layer-2) error state firing incident
         reports on
             *   the triggering variable
             *   The trigger's value.
-    2.  Indicate which SpanService method received a worker's (layer-1) failure result.
+    2.  Indicate which VectorService method received a worker's (layer-1) failure result.
 
     # PARENT:
         *   AnchorException
@@ -55,9 +55,9 @@ class SpanServiceException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_NAME = " SpanService"
-    ERR_CODE = " SPAN_SERVICE_EXCEPTION"
-    MSG = " SpanService raised an exception."
+    CLS_NAME = " VectorService"
+    ERR_CODE = " VECTOR_SERVICE_EXCEPTION"
+    MSG = " VectorService raised an exception."
     
     def __init__(
             self,
