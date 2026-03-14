@@ -11,19 +11,19 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# NODE_PAIR_LIST_VALIDATION_FAILURE #======================#
-    "NodePairListValidationException",
+    # ======================# PAIR_LIST_VALIDATION_FAILURE #======================#
+    "PairListValidationException",
 ]
 
 from logic.system import ValidationException
 
-# ======================# NODE_PAIR_LIST_VALIDATION_FAILURE #======================#
-class NodePairListValidationException(ValidationException):
+# ======================# PAIR_LIST_VALIDATION_FAILURE #======================#
+class PairListValidationException(ValidationException):
     """
     # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Identify the NodePairListValidator method where the process failed.
+    1.  Identify the PairListValidator method where the process failed.
 
     # PARENT:
         *   ValidationException
@@ -54,8 +54,8 @@ class NodePairListValidationException(ValidationException):
     MTHD = Optional[str]
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
-    ERR_CODE = "NODE_PAIR_LIST_VALIDATION_FAILURE"
-    MSG = "Failure in NodePairListValidator method."
+    ERR_CODE = "PAIR_LIST_VALIDATION_FAILURE"
+    MSG = "Failure in PairListValidator method."
     
     def __init__(
             self,

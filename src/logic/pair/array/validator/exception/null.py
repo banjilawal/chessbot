@@ -11,19 +11,19 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-#======================# NODE_PAIR_LIST_NULL_EXCEPTION #======================#
-    "NodePairListNullException",
+#======================# PAIR_LIST_NULL_EXCEPTION #======================#
+    "PairListNullException",
 ]
 
 from logic.system import NullException
 
-#======================# NODE_PAIR_LIST_NULL_EXCEPTION #======================#
-class NodePairListNullException(NullException):
+#======================# PAIR_LIST_NULL_EXCEPTION #======================#
+class PairListNullException(NullException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a nodePairList is null where it should not be.
+    1.  Indicate that a pairList is null where it should not be.
     
     # PARENT:
         *   NullException
@@ -52,8 +52,8 @@ class NodePairListNullException(NullException):
     """
     VAR = Optional[str]
     VAL = Optional[Any]
-    MSG = "NodePairList cannot be null."
-    ERR_CODE = "NODE_PAIR_LIST_NULL_EXCEPTION"
+    MSG = "PairList cannot be null."
+    ERR_CODE = "PAIR_LIST_NULL_EXCEPTION"
     
     def __init__(
             self,

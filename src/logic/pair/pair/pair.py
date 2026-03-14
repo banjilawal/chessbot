@@ -15,7 +15,7 @@ from logic.node import Node
 
 
 @dataclass
-class NodePair:
+class Pair:
     """
     # RESPONSIBILITY:
     1.  Provide the order of nodes which are derived from a SquareSpan. Spans do
@@ -33,7 +33,7 @@ class NodePair:
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, NodePair):
+        if isinstance(other, Pair):
             return self.head == other.head and self.tail == other.tail
         return False
     

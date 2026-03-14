@@ -10,19 +10,19 @@ version: 1.0.0
 from __future__ import annotations
 from typing import cast
 
-from logic.pair import NodePair, NodePairBuilder, NodePairValidator
+from logic.pair import Pair, PairBuilder, PairValidator
 from logic.system import IdFactory, IntegrityService
 
 
-class NodePairService(IntegrityService[NodePair]):
+class PairService(IntegrityService[Pair]):
     """
     # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Public facing NodePair microservice API.
+    1.  Public facing Pair microservice API.
     2.  Encapsulate integrity assurance logic in one extendable module.
-    3.  Authoritative, single source of truth for NodePair state by providing
-        single entry and exit points to NodePair lifecycle.
+    3.  Authoritative, single source of truth for Pair state by providing
+        single entry and exit points to Pair lifecycle.
 
     # PARENT:
         *   IntegrityService
@@ -36,29 +36,29 @@ class NodePairService(IntegrityService[NodePair]):
     # INHERITED ATTRIBUTES:
         *   See IntegrityService for inherited attributes.
     """
-    SERVICE_NAME = "NodePairService"
+    SERVICE_NAME = "PairService"
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            builder: NodePairBuilder = NodePairBuilder(),
-            validator: NodePairValidator = NodePairValidator(),
-            id: int = IdFactory.next_id(class_name="NodePairService"),
+            builder: PairBuilder = PairBuilder(),
+            validator: PairValidator = PairValidator(),
+            id: int = IdFactory.next_id(class_name="PairService"),
     ):
         """
         Args:
             id: int
             name: str
-            builder: NodePairBuilder
-            validator: NodePairValidator
+            builder: PairBuilder
+            validator: PairValidator
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         
     @property
-    def builder(self) -> NodePairBuilder:
-        return cast(NodePairBuilder, self.entity_builder)
+    def builder(self) -> PairBuilder:
+        return cast(PairBuilder, self.entity_builder)
     
     @property
-    def validator(self) -> NodePairValidator:
-        return cast(NodePairValidator, self.entity_validator)
+    def validator(self) -> PairValidator:
+        return cast(PairValidator, self.entity_validator)
         

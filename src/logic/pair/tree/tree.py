@@ -11,18 +11,19 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import List
 
-from logic.node import Node, NodePairList
-from logic.pair.pair.service.service import NodePairService
+from logic.node import Node
+from logic.pair import PairList
+from logic.pair.pair.service.service import PairService
 
 
 @dataclass
 class NodeTree:
     """
     # RESPONSIBILITY:
-    1.  Represents the NodePairs emanating from a source. The tree might have one
+    1.  Represents the Pairs emanating from a source. The tree might have one
         root or subtrees.
     2.  It does not contain any link information
     """
     root: Node
-    branches: List[NodePairList]
-    integrity_service: NodePairService = NodePairService()
+    branches: List[PairList]
+    integrity_service: PairService = PairService()

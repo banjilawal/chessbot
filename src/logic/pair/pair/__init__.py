@@ -16,4 +16,4 @@ from .validator import *
 from .exception import *
 
 # Modules
-from .pair import NodePair
+from .pair import Pair

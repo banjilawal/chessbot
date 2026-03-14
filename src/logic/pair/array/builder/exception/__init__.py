@@ -14,4 +14,4 @@ None
 
 # Modules
 from .different import TreeDoesNotOwnRayException
-from .wrapper import NodePairListBuildException
+from .wrapper import PairListBuildException

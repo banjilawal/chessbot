@@ -23,7 +23,7 @@ class HeadTailSquareException(DebugException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that an NodePair build failed because the head_node.square == tail_square.
+    1.  Indicate that an Pair build failed because the head_node.square == tail_square.
         The head and tail nodes cannot have the same square.
 
     # PARENT:
@@ -54,7 +54,7 @@ class HeadTailSquareException(DebugException):
     VAR = Optional[str]
     VAL = Optional[Any]
     ERR_CODE = "HEAD_TAIL_SAME_SQUARE_EXCEPTION"
-    MSG = "Cannot build NodePair if head.square == tail_square."
+    MSG = "Cannot build Pair if head.square == tail_square."
     
     def __init__(
             self,

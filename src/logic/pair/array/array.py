@@ -10,19 +10,19 @@ version: 1.0.0
 from __future__ import annotations
 from typing import List
 
-from logic.pair import NodePair
+from logic.pair import Pair
 
 
-class NodePairList:
+class PairList:
     """
-    NodePairList's physical structure can be either
+    PairList's physical structure can be either
     a list or tree.
     """
-    _items: List[NodePair]
+    _couples: List[Pair]
     
     def __init__(self,):
-        self._items = []
+        self._couples = []
         
     @property
-    def items(self) -> List[NodePair]:
-        return self._items
+    def couples(self) -> List[Pair]:
+        return self._couples

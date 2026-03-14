@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .anchor import NodePairException
-from .debug import NodePairDebugException
+from .anchor import PairException
+from .debug import PairDebugException

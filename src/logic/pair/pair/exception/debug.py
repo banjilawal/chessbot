@@ -11,14 +11,14 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# NODE_PAIR_DEBUG_EXCEPTION #======================#
-    "NodePairDebugException",
+    # ======================# PAIR_DEBUG_EXCEPTION #======================#
+    "PairDebugException",
 ]
 
 from logic.system import DebugException
 
-# ======================# NODE_PAIR_DEBUG_EXCEPTION #======================#
-class NodePairDebugException(DebugException):
+# ======================# PAIR_DEBUG_EXCEPTION #======================#
+class PairDebugException(DebugException):
     """
     # ROLE: Capture Error Variable State, Exception Chain Layer 2, Exception Messaging
     
@@ -56,8 +56,8 @@ class NodePairDebugException(DebugException):
     """
     VAR = Optional[str]
     VAL = Optional[Any]
-    ERR_CODE = "NODE_PAIR_EXCEPTION"
-    MSG = str = "NodePair had an error."
+    ERR_CODE = "PAIR_EXCEPTION"
+    MSG = str = "Pair had an error."
 
     def __init__(
             self,

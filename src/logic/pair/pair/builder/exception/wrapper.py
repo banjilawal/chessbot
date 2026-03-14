@@ -11,20 +11,20 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# NODE_PAIR_BUILD_FAILURE #======================#
-    "NodePairBuildException",
+    # ======================# PAIR_BUILD_FAILURE #======================#
+    "PairBuildException",
 ]
 
 from logic.system import BuildException
 
-# ======================# NODE_PAIR_BUILD_FAILURE #======================#
-class NodePairBuildException(BuildException):
+# ======================# PAIR_BUILD_FAILURE #======================#
+class PairBuildException(BuildException):
     """
     # ROLE: Exception Chain Layer 1, Exception Messaging
     # TASK: Worker Method Identifier
 
     # RESPONSIBILITIES:
-    1.  Identify the NodePairBuilder method where the process failed.
+    1.  Identify the PairBuilder method where the process failed.
 
     # PARENT:
         *   BuildException
@@ -55,8 +55,8 @@ class NodePairBuildException(BuildException):
     OP = "Build"
     MTHD = Optional[str]
     RSLT_TYPE = "BuildResult"
-    ERR_CODE = "NODE_PAIR_BUILD_FAILURE"
-    MSG = "Failure in NodePairBuilder method."
+    ERR_CODE = "PAIR_BUILD_FAILURE"
+    MSG = "Failure in PairBuilder method."
     
     def __init__(
             self,

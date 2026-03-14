@@ -13,7 +13,7 @@ version: 1.0.0
 from .null import *
 
 # Modules
-from .null import NodePairListNullException
-from .wrapper import NodePairListValidationException
+from .null import PairListNullException
+from .wrapper import PairListValidationException
 
 

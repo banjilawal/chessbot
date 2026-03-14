@@ -12,15 +12,15 @@ from __future__ import annotations
 from logic.node import Node, NodeService
 from logic.square import Square, SquareValidator
 from logic.system import BuildResult, Builder, LoggingLevelRouter
-from logic.pair import HeadTailSquareException, NodePair, NodePairBuildException
+from logic.pair import HeadTailSquareException, Pair, PairBuildException
 
-class NodePairBuilder(Builder[NodePair]):
+class PairBuilder(Builder[Pair]):
     """
      # ROLE: Builder, Data Integrity And Reliability Guarantor
 
      # RESPONSIBILITIES:
-     1.  Produce NodePair instances whose integrity and reliability are guaranteed.
-     2.  Ensure params for NodePair creation have met the application's safety contract.
+     1.  Produce Pair instances whose integrity and reliability are guaranteed.
+     2.  Ensure params for Pair creation have met the application's safety contract.
      3.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
      # PARENT:
@@ -52,25 +52,25 @@ class NodePairBuilder(Builder[NodePair]):
             tail_square: Square,
             node_service: NodeService = NodeService(),
             square_validator: SquareValidator = SquareValidator(),
-    ) -> BuildResult[NodePair]:
+    ) -> BuildResult[Pair]:
         """
         Action:
             1.  If building a node from the tail_square fails send an exception chain in
                 the BuildResult.
             2.  If the build was successful
-                    *   Build a node_pair with the head and its new tail.
+                    *   Build a pair with the head and its new tail.
                     *   Return the work product.
         Args:
             head: Node
-            tail_square: NodePair
+            tail_square: Pair
             node_service: NodeService
             square_validator: SquareValidator
 
         Returns:
-            BuildResult[NodePair]
+            BuildResult[Pair]
 
         Raises:
-            NodePairBuildException
+            PairBuildException
         """
         method = f"{cls.__class__.__name__}._build"
         
@@ -79,24 +79,24 @@ class NodePairBuilder(Builder[NodePair]):
         if node_validation_result.is_failure:
             # Return the exception chain on failure
             return BuildResult.failure(
-                NodePairBuildException(
+                PairBuildException(
                     mthd=method,
-                    op=NodePairBuildException.OP,
-                    msg=NodePairBuildException.MSG,
-                    err_code=NodePairBuildException.ERR_CODE,
+                    op=PairBuildException.OP,
+                    msg=PairBuildException.MSG,
+                    err_code=PairBuildException.ERR_CODE,
                     ex=node_validation_result.exception
                 )
             )
-        # Handle the case that, the nodePair is not certified as safe.
+        # Handle the case that, the pair is not certified as safe.
         tail_square_validation_result = square_validator.validate(candidate=tail_square)
         if tail_square_validation_result.is_failure:
             # Return the exception chain on failure
             return BuildResult.failure(
-                NodePairBuildException(
+                PairBuildException(
                     mthd=method,
-                    op=NodePairBuildException.OP,
-                    msg=NodePairBuildException.MSG,
-                    err_code=NodePairBuildException.ERR_CODE,
+                    op=PairBuildException.OP,
+                    msg=PairBuildException.MSG,
+                    err_code=PairBuildException.ERR_CODE,
                     ex=tail_square_validation_result.exception
                 )
             )
@@ -104,11 +104,11 @@ class NodePairBuilder(Builder[NodePair]):
         if tail_square == head.square:
             # Return the exception chain on failure
             return BuildResult.failure(
-                NodePairBuildException(
+                PairBuildException(
                     mthd=method,
-                    op=NodePairBuildException.OP,
-                    msg=NodePairBuildException.MSG,
-                    err_code=NodePairBuildException.ERR_CODE,
+                    op=PairBuildException.OP,
+                    msg=PairBuildException.MSG,
+                    err_code=PairBuildException.ERR_CODE,
                     ex=HeadTailSquareException(
                         var="tail_square",
                         val=tail_square.name,
@@ -126,13 +126,13 @@ class NodePairBuilder(Builder[NodePair]):
         if tail_node_build_result.is_failure:
             # Return the exception chain on failure
             return BuildResult.failure(
-                NodePairBuildException(
+                PairBuildException(
                     mthd=method,
-                    op=NodePairBuildException.OP,
-                    msg=NodePairBuildException.MSG,
-                    err_code=NodePairBuildException.ERR_CODE,
+                    op=PairBuildException.OP,
+                    msg=PairBuildException.MSG,
+                    err_code=PairBuildException.ERR_CODE,
                     ex=tail_node_build_result.exception
                 )
             )
         # --- Send the work product. ---#
-        BuildResult.success(NodePair(head=head, tail=tail_node_build_result.payload))
+        BuildResult.success(Pair(head=head, tail=tail_node_build_result.payload))

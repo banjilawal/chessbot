@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from logic.node import NodePairList, NodePairListNullException, NodePairListValidationException
+from logic.node import PairList, PairListNullException, PairListValidationException
 from logic.system import LoggingLevelRouter, ValidationResult, Validator
 
 
-class NodePairListValidator(Validator[NodePairList]):
+class PairListValidator(Validator[PairList]):
     """
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
@@ -35,24 +35,24 @@ class NodePairListValidator(Validator[NodePairList]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate: Any) -> ValidationResult[NodePairList]:
+    def validate(cls, candidate: Any) -> ValidationResult[PairList]:
         """
         Action:
             1.  Send an exception chain in the ValidationResult if, the candidate is either
                     *   nulI
-                    *   is not a NodePairList instance.
-            2.  Otherwise, cast the candidate to a NodePairList then, send in the success result.
+                    *   is not a PairList instance.
+            2.  Otherwise, cast the candidate to a PairList then, send in the success result.
             
         Args:
             candidate: Any
             
         Returns:
-            ValidationResult[NodePairList]
+            ValidationResult[PairList]
             
         Raises:
             TypeError
-            NodePairListNullException
-            NodePairListValidationException
+            PairListNullException
+            PairListValidationException
         """
         method = f"{cls.__class__.__name__}.validate"
         
@@ -60,34 +60,34 @@ class NodePairListValidator(Validator[NodePairList]):
         if candidate is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                NodePairListValidationException(
+                PairListValidationException(
                     mthd=method,
-                    op=NodePairListValidationException.OP,
-                    msg=NodePairListValidationException.MSG,
-                    err_code=NodePairListValidationException.ERR_CODE,
-                    rslt_type=NodePairListValidationException.RSLT_TYPE,
-                    ex=NodePairListNullException(
+                    op=PairListValidationException.OP,
+                    msg=PairListValidationException.MSG,
+                    err_code=PairListValidationException.ERR_CODE,
+                    rslt_type=PairListValidationException.RSLT_TYPE,
+                    ex=PairListNullException(
                         var="candidate",
                         val="None",
-                        msg=NodePairListNullException.MSG,
-                        err_code=NodePairListNullException.ERR_CODE,
+                        msg=PairListNullException.MSG,
+                        err_code=PairListNullException.ERR_CODE,
                     )
                 )
             )
         # Handle the wrong class case.
-        if not isinstance(candidate, NodePairList):
+        if not isinstance(candidate, PairList):
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                NodePairListValidationException(
+                PairListValidationException(
                     mthd=method,
-                    op=NodePairListValidationException.OP,
-                    msg=NodePairListValidationException.MSG,
-                    err_code=NodePairListValidationException.ERR_CODE,
-                    rslt_type=NodePairListValidationException.RSLT_TYPE,
+                    op=PairListValidationException.OP,
+                    msg=PairListValidationException.MSG,
+                    err_code=PairListValidationException.ERR_CODE,
+                    rslt_type=PairListValidationException.RSLT_TYPE,
                     ex=TypeError(
-                        f"{method} Expected NodePairList, got {type(candidate).__name__} instead."
+                        f"{method} Expected PairList, got {type(candidate).__name__} instead."
                     )
                 )
             )
         # --- Safety checks are passed. Send the success result. ---#
-        return ValidationResult.success(cast(NodePairList, candidate))
+        return ValidationResult.success(cast(PairList, candidate))

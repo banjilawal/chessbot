@@ -14,4 +14,4 @@ None
 
 # Modules
 from .square import HeadTailSquareException
-from .wrapper import NodePairBuildException
+from .wrapper import PairBuildException

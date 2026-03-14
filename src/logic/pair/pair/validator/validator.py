@@ -12,16 +12,16 @@ from typing import Any, cast
 
 from logic.node import NodeValidator
 from logic.edge import HeadCannotBeTailException
-from logic.pair import NodePair, NodePairNullException, NodePairValidationException
+from logic.pair import Pair, PairNullException, PairValidationException
 from logic.system import LoggingLevelRouter, ValidationResult, Validator
 
 
-class NodePairValidator(Validator[NodePair]):
+class PairValidator(Validator[Pair]):
     """
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
-    1.  Ensure a NodePair instance is certified safe, reliable and consistent before use.
+    1.  Ensure a Pair instance is certified safe, reliable and consistent before use.
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     # PARENT:
@@ -43,7 +43,7 @@ class NodePairValidator(Validator[NodePair]):
             cls,
             candidate: Any,
             node_validator: NodeValidator = NodeValidator(),
-    ) -> ValidationResult[NodePair]:
+    ) -> ValidationResult[Pair]:
         """
         Actin:
             1.  If the candidate fails existence or type tests send the exception in the ValidationResult.
@@ -56,12 +56,12 @@ class NodePairValidator(Validator[NodePair]):
             node_validator: NodeValidator
             
         Returns:
-            ValidationResult[NodePair]
+            ValidationResult[Pair]
             
         Raises:
             TypeError
-            NodePairNullException
-            NodePairValidationException
+            PairNullException
+            PairValidationException
         """
         method = f"{cls.__class__.__name__}.validate"
         
@@ -69,66 +69,66 @@ class NodePairValidator(Validator[NodePair]):
         if candidate is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                NodePairValidationException(
+                PairValidationException(
                     mthd=method,
-                    op=NodePairValidationException.OP,
-                    msg=NodePairValidationException.MSG,
-                    err_code=NodePairValidationException.ERR_CODE,
-                    rslt_type=NodePairValidationException.RSLT_TYPE,
-                    ex=NodePairNullException(
+                    op=PairValidationException.OP,
+                    msg=PairValidationException.MSG,
+                    err_code=PairValidationException.ERR_CODE,
+                    rslt_type=PairValidationException.RSLT_TYPE,
+                    ex=PairNullException(
                         var="Candidate",
                         val={type(candidate).__name__},
-                        msg=NodePairNullException.MSG,
-                        err_code=NodePairNullException.ERR_CODE,
+                        msg=PairNullException.MSG,
+                        err_code=PairNullException.ERR_CODE,
                     )
                 )
             )
         # Handle the wrong class case.
-        if not isinstance(candidate, NodePair):
+        if not isinstance(candidate, Pair):
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                NodePairValidationException(
+                PairValidationException(
                     mthd=method,
-                    op=NodePairValidationException.OP,
-                    msg=NodePairValidationException.MSG,
-                    err_code=NodePairValidationException.ERR_CODE,
-                    rslt_type=NodePairValidationException.RSLT_TYPE,
-                    ex=TypeError(f"Expected NodePair, got {type(candidate).__name__}. instead")
+                    op=PairValidationException.OP,
+                    msg=PairValidationException.MSG,
+                    err_code=PairValidationException.ERR_CODE,
+                    rslt_type=PairValidationException.RSLT_TYPE,
+                    ex=TypeError(f"Expected Pair, got {type(candidate).__name__}. instead")
                 )
             )
         # --- Cast the candidate to an Node for additional tests ---#
-        node_pair = cast(NodePair, candidate)
+        pair = cast(Pair, candidate)
         
         # Handle the case that either the head or tail is not certified as safe.
-        for member in node_pair.members:
+        for member in pair.members:
             validation_result = node_validator.validate(candidate=member)
             if validation_result.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    NodePairValidationException(
+                    PairValidationException(
                         mthd=method,
-                        op=NodePairValidationException.OP,
-                        msg=NodePairValidationException.MSG,
-                        err_code=NodePairValidationException.ERR_CODE,
-                        rslt_type=NodePairValidationException.RSLT_TYPE,
+                        op=PairValidationException.OP,
+                        msg=PairValidationException.MSG,
+                        err_code=PairValidationException.ERR_CODE,
+                        rslt_type=PairValidationException.RSLT_TYPE,
                         ex=validation_result.exception
                     )
                 )
         # Handle the case that, the head and tail are the same.
-        if node_pair.head == node_pair.tail:
+        if pair.head == pair.tail:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                NodePairValidationException(
+                PairValidationException(
                     mthd=method,
-                    op=NodePairValidationException.OP,
-                    msg=NodePairValidationException.MSG,
-                    err_code=NodePairValidationException.ERR_CODE,
-                    rslt_type=NodePairValidationException.RSLT_TYPE,
+                    op=PairValidationException.OP,
+                    msg=PairValidationException.MSG,
+                    err_code=PairValidationException.ERR_CODE,
+                    rslt_type=PairValidationException.RSLT_TYPE,
                     ex=HeadCannotBeTailException(
-                        msg=NodePairValidationException.MSG,
-                        err_code=NodePairValidationException.ERR_CODE,
+                        msg=PairValidationException.MSG,
+                        err_code=PairValidationException.ERR_CODE,
                     )
                 )
             )
         # --- The validation checks were passed, send the success result. ---#
-        return ValidationResult.success(node_pair)
+        return ValidationResult.success(pair)

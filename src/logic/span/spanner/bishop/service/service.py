@@ -146,7 +146,7 @@ class BishopSpanService(SpanService):
                     square_u_search_result = square_database.search(context=SquareContext(coord=previous_point))
                     square_u = square_u_search_result.payload[0]
                     
-                    node_pair_build_result = self._build_node_pair(
+                    pair_build_result = self._build_pair(
                         head_square=square_u,
                         tail_square=square_v,
                         node_builder=graph.vertices.integrity_service.builder
@@ -241,7 +241,7 @@ class BishopSpanService(SpanService):
                     square_u_search_result = square_database.search(context=SquareContext(coord=previous_point))
                     square_u = square_u_search_result.payload[0]
                     
-                    node_pair_build_result = self._build_node_pair(
+                    pair_build_result = self._build_pair(
                         head_square=square_u,
                         tail_square=square_v,
                         node_builder=graph.vertices.integrity_service.builder
@@ -286,7 +286,7 @@ class BishopSpanService(SpanService):
                     current_coord = point
         
         @LoggingLevelRouter.monitor
-        def _build_node_pair(
+        def _build_pair(
                 self,
                 head_square: Square,
                 tail_square: Square,
@@ -304,7 +304,7 @@ class BishopSpanService(SpanService):
             Raises:
                 BishopSpanServiceException
             """
-            method = f"{self.__class__.__name__}._build_node_pair"
+            method = f"{self.__class__.__name__}._build_pair"
             
             head_build_result = node_builder.build(square=head_square)
             # Handle the case that, the head node is not built successfully.

@@ -14,12 +14,12 @@ from typing import Dict, List
 
 from logic.graph import Graph
 from logic.span import (
-    NodePairInsertionException, NodeStackServiceProductionException, SquareGraphHandlerException,
+    PairInsertionException, NodeStackServiceProductionException, SquareGraphHandlerException,
     SquareRay, SquareSpan
 )
 from logic.square import Square, SquareService, SquareStackService
 from logic.node import Node, NodeService,
-from logic.span.service.handler import NodePairBuildException
+from logic.span.service.handler import PairBuildException
 from logic.system import BuildResult, InsertionResult, LoggingLevelRouter
 
 
@@ -49,7 +49,7 @@ class NodeTreeProducer:
             BuildResult[SquareStackService]
             
         Raises:
-            NodePairBuildException
+            PairBuildException
         """
         method = f"{cls.__class__.__name__}.build_node_stack_service"
         
@@ -75,11 +75,11 @@ class NodeTreeProducer:
                     cls_name=cls.__class__.__name__,
                     msg=SquareGraphHandlerException.MSG,
                     err_code=SquareGraphHandlerException.ERR_CODE,
-                    ex=NodePairBuildException(
+                    ex=PairBuildException(
                         mthd=method,
-                        op=NodePairBuildException.OP,
-                        msg=NodePairBuildException.MSG,
-                        err_code=NodePairBuildException.ERR_CODE,
+                        op=PairBuildException.OP,
+                        msg=PairBuildException.MSG,
+                        err_code=PairBuildException.ERR_CODE,
                         ex=root_node_build_result.exception
                     )
                 )
@@ -117,13 +117,13 @@ class NodeTreeProducer:
         node_tree = NodeTree(root=tree_origin, branches=[])
         
         for ray in square_span.rays:
-            node_pair_list_build_result = cls._produce_node_pair_list(
+            pair_list_build_result = cls._produce_pair_list(
                 square_ray=ray,
                 origin_node=tree_origin,
                 node_service=node_service,
             )
             # Handle the case that the node_link_pair is not built.
-            if node_pair_list_build_result.is_failure:
+            if pair_list_build_result.is_failure:
                 # Return the exception chain on failure.
                 BuildResult.failure(
                     NodeStackServiceProductionException(
@@ -132,10 +132,10 @@ class NodeTreeProducer:
                         msg=NodeStackServiceProductionException.MSG,
                         err_code=NodeStackServiceProductionException.ERR_CODE,
                         rslt_type=NodeStackServiceProductionException.RSLT_TYPE,
-                        ex=node_pair_list_build_result.exception,
+                        ex=pair_list_build_result.exception,
                     )
                 )
-            node_tree.branches.append(node_pair_list_build_result.payload)
+            node_tree.branches.append(pair_list_build_result.payload)
         return BuildResult.success(node_tree)
 
 
@@ -146,7 +146,7 @@ class NodeTreeProducer:
         #     "tail": node_build_result.payload,
         # }
         # --- Send the success result to the caller. ---#
-        # return BuildResult.success(node_pair)
+        # return BuildResult.success(pair)
         
         # Handle the case that, a square is not found.
         if search_result.is_empty:
@@ -181,7 +181,7 @@ class NodeTreeProducer:
             graph: Graph
             node_dict: Dict[str, Node]
         """
-        method = f"{cls.__class__.__name__}.add_node_pair_to_graph"
+        method = f"{cls.__class__.__name__}.add_pair_to_graph"
         
         for key in node_dict:
             push_result = graph.vertices.push(item=node_dict[key])
@@ -194,12 +194,12 @@ class NodeTreeProducer:
                         cls_name=cls.__class__.__name__,
                         msg=SquareGraphHandlerException.MSG,
                         err_code=SquareGraphHandlerException.ERR_CODE,
-                        ex=NodePairInsertionException(
+                        ex=PairInsertionException(
                             mthd=method,
-                            op=NodePairInsertionException.OP,
-                            msg=NodePairInsertionException.MSG,
-                            err_code=NodePairInsertionException.ERR_CODE,
-                            rslt_type=NodePairInsertionException.RSLT_TYPE,
+                            op=PairInsertionException.OP,
+                            msg=PairInsertionException.MSG,
+                            err_code=PairInsertionException.ERR_CODE,
+                            rslt_type=PairInsertionException.RSLT_TYPE,
                             ex=push_result.exception
                         )
                     )

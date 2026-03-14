@@ -14,4 +14,4 @@ from .builder import *
 from .validator import *
 
 # Modules
-from .array import NodePairList
+from .array import PairList

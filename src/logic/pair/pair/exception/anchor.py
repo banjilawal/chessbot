@@ -11,23 +11,23 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# NODE_PAIR_EXCEPTION #======================#
-    "NodePairException",
+    # ======================# PAIR_EXCEPTION #======================#
+    "PairException",
 ]
 
 from logic.system import AnchorException
 
-# ======================# NODE_PAIR_EXCEPTION #======================#
-class NodePairException(AnchorException):
+# ======================# PAIR_EXCEPTION #======================#
+class PairException(AnchorException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Provide NodePair as:
+    1.  Provide Pair as:
             *   Reporting
             *   Coverage
         target for layer-2 debugging exceptions.
-    2.  Indicate which NodePair method received a worker's (layer-1) failure result.
+    2.  Indicate which Pair method received a worker's (layer-1) failure result.
 
     # PARENT:
         *   AnchorException
@@ -54,10 +54,10 @@ class NodePairException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_NAME = "NodePair"
+    CLS_NAME = "Pair"
     CLS_MTHD = Optional[str]
-    ERR_CODE = "NODE_PAIR_EXCEPTION"
-    MSG = "Exception raised in NodePair"
+    ERR_CODE = "PAIR_EXCEPTION"
+    MSG = "Exception raised in Pair"
  
     def __init__(
             self,

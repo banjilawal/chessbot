@@ -11,20 +11,20 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# NODE_PAIR_INSERTION_FAILURE #======================#
-    "NodePairInsertionException",
+    # ======================# PAIR_INSERTION_FAILURE #======================#
+    "PairInsertionException",
 ]
 
 from logic.system import InsertionException
 
-# ======================# NODE_PAIR_INSERTION_FAILURE #======================#
-class NodePairInsertionException(InsertionException):
+# ======================# PAIR_INSERTION_FAILURE #======================#
+class PairInsertionException(InsertionException):
     """
     # ROLE: Exception Chain Layer 1, Exception Messaging
     # TASK: Worker Method Identifier
 
     # RESPONSIBILITIES:
-    1.  Identify the NodePair method where the push failed.
+    1.  Identify the Pair method where the push failed.
         
     # PARENT:
         *   InsertionException
@@ -55,8 +55,8 @@ class NodePairInsertionException(InsertionException):
     MTHD = Optional[str]
     OP = "Insert"
     RSLT_TYPE = "InsertionResult"
-    MSG = "NodePair push failed."
-    ERR_CODE = "NODE_PAIR_INSERTION_FAILURE"
+    MSG = "Pair push failed."
+    ERR_CODE = "PAIR_INSERTION_FAILURE"
     
     def __init__(
             self,
