@@ -23,7 +23,8 @@ class ArenaBuildException(BuildException):
     # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Identify the ArenaBuilder method where the process failed.
+    1.  Indicate the ArenaBuilder did not produce a valid work product.
+    2.  Identify the ArenaBuilder method where the failure occurred.
 
     # PARENT:
         *   BuildException
@@ -32,44 +33,48 @@ class ArenaBuildException(BuildException):
     None
 
     # LOCAL ATTRIBUTES:
-        *   op (Optional[str])
-        *   rslt_type (Optional[str])
+    None
 
     # INHERITED ATTRIBUTES:
         *   See BuildException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:)
-        *   err_code (str)
-        *   msg (str)
-        *   ex (Optional[Exception])
-        *   mthd (Optional[str])
-        *   op (Optional[str])
-        *   rslt_type (Optional[str])
+        op: Optional[str]
+        ex: Optional[str]
+        msg: Optional[str]
+        mthd: Optional[str]
+        err_code: Optional[str]
+        rslt_type: Optional[str]
 
     # LOCAL METHODS:
-   None
+    None
 
     # INHERITED METHODS:
         *   See BuildException class for inherited methods.
     """
-    ERR_CODE = "ARENA_BUILD_FAILURE"
-    MSG = "Failure in ArenaBuilder method."
-    MTHD = Optional[str]
     OP = "Build"
     RSLT_TYPE = "BuildResult"
-    
-    _op = Optional[str]
-    _rslt_type = Optional[str]
-    
+    ERR_CODE = "ARENA_BUILD_FAILURE"
+    MSG = "Failure in ArenaBuilder method."
+
     def __init__(
             self,
-            err_code: Optional[str] = None,
-            msg: Optional[str] = None,
-            ex: Optional[Exception] = None,
-            mthd: Optional[str] = None,
             op: Optional[str] = None,
+            msg: Optional[str] = None,
+            mthd: Optional[str] = None,
+            ex: Optional[Exception] = None,
+            err_code: Optional[str] = None,
             rslt_type: Optional[str] = None,
     ):
+        """
+        Args:
+            op: Optional[str]
+            ex: Optional[str]
+            msg: Optional[str]
+            mthd: Optional[str]
+            err_code: Optional[str]
+            rslt_type: Optional[str]
+        """
         op = op or self.OP
         msg = msg or self.MSG
         mthd = mthd or self.MTHD
