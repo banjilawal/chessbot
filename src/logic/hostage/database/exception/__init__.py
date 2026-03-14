@@ -14,4 +14,4 @@ from .search import *
 from .insertion import *
 
 # Modules
-from .super import HostageDatabase
+from .anchor import HostageDatabaseException

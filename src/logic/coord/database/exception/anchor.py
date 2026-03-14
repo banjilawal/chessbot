@@ -1,7 +1,7 @@
-# src/logic/square/database/exception/anchor.py
+# src/logic/coord/database/exception/anchor.py
 
 """
-Module: logic.square.database.exception.anchor
+Module: logic.coord.database.exception.anchor
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -11,24 +11,24 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# SQUARE_DATABASE_EXCEPTION #======================#
-    "SquareDatabaseException",
+    # ======================# COORD_DATABASE_EXCEPTION #======================#
+    "CoordDatabaseException",
 ]
 
 from logic.system import DatabaseException
 
 
-# ======================# SQUARE_DATABASE_EXCEPTION #======================#
-class SquareDatabaseException(DatabaseException):
+# ======================# COORD_DATABASE_EXCEPTION #======================#
+class CoordDatabaseException(DatabaseException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Anchoring target for SquareDatabase debug (layer-2) error state firing incident
+    1.  Anchoring target for CoordDatabase debug (layer-2) error state firing incident
         reports on
             *   the triggering variable
             *   The trigger's value.
-    2.  Indicate which SquareDatabase method received a worker's (layer-1) failure result.
+    2.  Indicate which CoordDatabase method received a worker's (layer-1) failure result.
 
     # PARENT:
         *   DatabaseException
@@ -55,9 +55,9 @@ class SquareDatabaseException(DatabaseException):
     # INHERITED METHODS:
         *   See DatabaseException class for inherited methods.
     """
-    CLS_NAME = " SquareDatabase"
-    ERR_CODE = " SQUARE_DATABASE_EXCEPTION"
-    MSG = " SquareDatabase raised an exception."
+    CLS_NAME = " CoordDatabase"
+    ERR_CODE = " COORD_DATABASE_EXCEPTION"
+    MSG = " CoordDatabase raised an exception."
     
     def __init__(
             self,

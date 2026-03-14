@@ -1,7 +1,7 @@
-# src/logic/square/database/exception/anchor.py
+# src/logic/team/database/exception/anchor.py
 
 """
-Module: logic.square.database.exception.anchor
+Module: logic.team.database.exception.anchor
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -11,24 +11,24 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# SQUARE_DATABASE_EXCEPTION #======================#
-    "SquareDatabaseException",
+    # ======================# TEAM_DATABASE_EXCEPTION #======================#
+    "TeamDatabaseException",
 ]
 
 from logic.system import DatabaseException
 
 
-# ======================# SQUARE_DATABASE_EXCEPTION #======================#
-class SquareDatabaseException(DatabaseException):
+# ======================# TEAM_DATABASE_EXCEPTION #======================#
+class TeamDatabaseException(DatabaseException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Anchoring target for SquareDatabase debug (layer-2) error state firing incident
+    1.  Anchoring target for TeamDatabase debug (layer-2) error state firing incident
         reports on
             *   the triggering variable
             *   The trigger's value.
-    2.  Indicate which SquareDatabase method received a worker's (layer-1) failure result.
+    2.  Indicate which TeamDatabase method received a worker's (layer-1) failure result.
 
     # PARENT:
         *   DatabaseException
@@ -55,9 +55,9 @@ class SquareDatabaseException(DatabaseException):
     # INHERITED METHODS:
         *   See DatabaseException class for inherited methods.
     """
-    CLS_NAME = " SquareDatabase"
-    ERR_CODE = " SQUARE_DATABASE_EXCEPTION"
-    MSG = " SquareDatabase raised an exception."
+    CLS_NAME = " TeamDatabase"
+    ERR_CODE = " TEAM_DATABASE_EXCEPTION"
+    MSG = " TeamDatabase raised an exception."
     
     def __init__(
             self,

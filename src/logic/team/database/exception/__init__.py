@@ -13,4 +13,4 @@ version: 1.0.0
 from .insertion import *
 
 # Modules
-from .super import TeamDatabaseException
+from .anchor import TeamDatabaseException

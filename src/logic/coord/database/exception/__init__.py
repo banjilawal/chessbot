@@ -14,4 +14,4 @@ from .deletion import *
 from .insertion import *
 
 # Modules
-from .super import CoordDatabaseException
+from .anchor import CoordDatabaseException
