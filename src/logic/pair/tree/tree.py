@@ -13,6 +13,7 @@ from typing import List
 
 from logic.node import Node
 from logic.pair import PairList
+from logic.pair.listing.service import PairListService
 from logic.pair.pair.service.service import PairService
 
 
@@ -26,7 +27,7 @@ class NodeTree:
     """
     root: Node
     branches: List[PairList]
-    pair_service: PairService = PairService()
+    branch_service: PairListService
     
     @property
     def degree(self) -> int:

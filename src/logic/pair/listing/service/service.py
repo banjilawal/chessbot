@@ -11,7 +11,8 @@ from __future__ import annotations
 from typing import List, cast
 
 from logic.node import Node
-from logic.pair import PairList, PairListBuilder, PairListValidator
+from logic.pair import PairList, PairListBuilder, PairListValidator, PairService
+from logic.pair.listing.service import PairListServiceException
 from logic.system import IdFactory, IntegrityService, LoggingLevelRouter, SearchResult
 
 
@@ -32,16 +33,18 @@ class PairListService(IntegrityService[PairList]):
     None
 
     # LOCAL ATTRIBUTES:
-    None
+        *   pair_service:   PairService
 
     # INHERITED ATTRIBUTES:
         *   See IntegrityService for inherited attributes.
     """
     SERVICE_NAME = "PairListService"
+    _pair_service: PairService
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
+            pair_service: PairService = PairService(),
             builder: PairListBuilder = PairListBuilder(),
             validator: PairListValidator = PairListValidator(),
             id: int = IdFactory.next_id(class_name="PairListService"),
@@ -51,9 +54,11 @@ class PairListService(IntegrityService[PairList]):
             id: int
             name: str
             builder: PairListBuilder
+            pair_service: PairService
             validator: PairListValidator
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
+        self._pair_service = pair_service
     
     @property
     def builder(self) -> PairListBuilder:
@@ -62,6 +67,10 @@ class PairListService(IntegrityService[PairList]):
     @property
     def validator(self) -> PairListValidator:
         return cast(PairListValidator, self.entity_validator)
+    
+    @property
+    def pair_service(self) -> PairService:
+        return self._pair_service
 
     @LoggingLevelRouter.monitor
     def unique_nodes(self, pair_list: PairList) -> SearchResult[List[Node]]:
@@ -81,22 +90,33 @@ class PairListService(IntegrityService[PairList]):
             None
         """
         method = f"{self.__class__.__name__}.unique_nodes"
-        # Put the head of first couple in the lis
-        nodes: List[Node] = []
         
-        # Handle the case that pair_list is empty.
+        # Handle the case that, the pair_list is not certified as safe.
+        validation_result = self.validator.validate(pair_list)
+        if validation_result.is_failure:
+            return SearchResult.failure(
+                PairListServiceException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=PairListServiceException.MSG,
+                    err_code=PairListServiceException.ERR_CODE,
+                    ex=validation_result.exception,
+                )
+            )
+        # Handle the case that, the pair_list is empty.
         if pair_list.is_empty:
             return SearchResult.empty()
-        # prime unique_nodes list
-        nodes.append(pair_list.couples[0].head)
         
-        # Process the rest of the couples.
+        # --- Create the return target then, prime it with the first node's head.---#
+        unique_nodes: List[Node] = [pair_list.couples[0].head]
+        
+        # --- Process each couple's unique tail. ---#
         for couple in pair_list.couples:
-            if couple.tail not in nodes:
-                nodes.append(couple.tail)
-        if len(nodes) == 0:
-            return SearchResult.empty()
-        return SearchResult.success(nodes)
+            if couple.tail not in unique_nodes:
+                unique_nodes.append(couple.tail)
+                
+        # --- Send work product. ---#
+        return SearchResult.success(unique_nodes)
     
     @LoggingLevelRouter.monitor
     def find_couples_by_node(self, node: Node, pair_list: PairList) -> SearchResult[List[Node]]:

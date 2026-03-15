@@ -48,20 +48,13 @@ class NodeContextService(ContextService[NodeContext]):
             validator: NodeContextValidator = NodeContextValidator(),
     ):
         """
-        # ACTION:
-            Constructor
-        # PARAMETERS:
-            *   name (str)
-            *   id (int)
-            *   finder (NodeFinder)
-            *   builder (NodeContextBuilder)
-            *   validator (NodeContextValidator)
-        # RETURNS:
-            None
-        Raises:
-            None
+        Args:
+            id: int
+            name: str
+            finder: NodeFinder
+            builder: NodeContextBuilder
+            validator: NodeContextValidator
         """
-        method = "NodeContextService.__init__"
         super().__init__(id=id, name=name, builder=builder, validator=validator, finder=finder)
     
     @property
