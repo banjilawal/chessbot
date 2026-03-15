@@ -38,7 +38,7 @@ class EdgeBuildException(BuildException):
     # INHERITED ATTRIBUTES:
         *   See BuildException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:)
+    # CONSTRUCTOR PARAMETERS:
         op: Optional[str]
         ex: Optional[str]
         msg: Optional[str]

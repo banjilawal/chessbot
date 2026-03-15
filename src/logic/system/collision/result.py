@@ -15,13 +15,13 @@ from logic.system import CollisionStatus
 T = TypeVar("T")
 
 
-class CollisionDetectionResult(Generic[T]):
+class CollisionReport(Generic[T]):
     """
     # ROLE: Messanger, Data Transport Object, Error Transport Object.
 
     # RESPONSIBILITIES:
     1.  Send the outcome of a collision to the caller.
-    2.  Enforcing mutual exclusion. A CollisionDetectionResult can either carry payload or exception. Not both.
+    2.  Enforcing mutual exclusion. A CollisionReport can either carry payload or exception. Not both.
 
     # PARENT:
         *   DataResult
@@ -54,7 +54,7 @@ class CollisionDetectionResult(Generic[T]):
     ):
         super().__init__(state=state, target=target, exception=exception)
         """INTERNAL: Use factory methods instead of direct constructor."""
-        method = "CollisionDetectionResult.result"
+        method = "CollisionReport.result"
         self._var = var
         self._value = value
         self._state = state
@@ -141,7 +141,7 @@ class CollisionDetectionResult(Generic[T]):
             target: T,
             collider: T,
             exception: Exception
-    ) -> CollisionDetectionResult[T]:
+    ) -> CollisionReport[T]:
         return cls(
             var=var,
             value=val,
@@ -152,7 +152,7 @@ class CollisionDetectionResult(Generic[T]):
         )
     
     @classmethod
-    def no_collision(cls) -> CollisionDetectionResult[T]:
+    def no_collision(cls) -> CollisionReport[T]:
         return cls(
             var=None,
             value=None,

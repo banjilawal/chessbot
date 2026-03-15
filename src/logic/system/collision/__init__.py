@@ -15,4 +15,4 @@ from .exception import *
 # Modules
 from .status import CollisionStatus
 from .detector import CollisionDetector
-from .result import CollisionDetectionResult
+from .result import CollisionReport

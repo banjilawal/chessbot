@@ -38,7 +38,7 @@ class SquareRayBuildException(BuildException):
     # INHERITED ATTRIBUTES:
         *   See BuildException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:)
+    # CONSTRUCTOR PARAMETERS:
         op: Optional[str]
         msg: Optional[str]
         mthd: Optional[str]

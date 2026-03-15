@@ -33,7 +33,7 @@ class SquareRay(Ray[Square]):
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR PARAMETERS:)
+    # CONSTRUCTOR PARAMETERS:
         *   origin: Square
 
     # LOCAL METHODS:

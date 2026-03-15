@@ -55,7 +55,7 @@ class TokenStackCrudHandler:
             token: Token,
             token_stack: TokenStackService,
             rank_quota_analyzer: RankQuotaAnalyzer = RankQuotaAnalyzer(),
-            token_collision_detector: TokenCollisionDetector = TokenCollisionDetector(),
+            collision_detector: TokenCollisionDetector = TokenCollisionDetector(),
     ) -> InsertionResult:
         """
         Action:
@@ -69,7 +69,7 @@ class TokenStackCrudHandler:
            token: Token
            token_stack: TokenStackService
            rank_quota_analyzer: RankQuotaAnalyzer
-           token_collision_detector: TokenCollisionDetector
+           collision_detector: TokenCollisionDetector
 
         Returns:
             InsertionResult
@@ -101,7 +101,7 @@ class TokenStackCrudHandler:
                 )
             )
         # --- Handoff validation, id, designation or opening_square collision detection. ---#
-        collision_detection_result = token_collision_detector.detect(
+        collision_detection_result = collision_detector.detect(
             target=token,
             dataset=token_stack.items,
         )

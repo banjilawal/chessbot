@@ -37,7 +37,7 @@ class Service(ABC, Generic[T]):
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR PARAMETERS:)
+    # CONSTRUCTOR PARAMETERS:
         *   id (int)
         *   name (name)
 

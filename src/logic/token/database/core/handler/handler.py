@@ -9,12 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.formation import FormationService
-from logic.rank import RankService
-from logic.token import (
-    TokenStackRosterHandler, TokenStackTokenHandler, TokenStackCrudHandler, TokenStackCountsAnalyzer
-)
-from logic.token.database.core.handler.quota import RankQuotaAnalyzer
+from logic.token import RankQuotaAnalyzer, TokenCollisionDetector, TokenStackCrudHandler
 
 
 class TokenStackHandler:
@@ -56,22 +51,19 @@ class TokenStackHandler:
     # INHERITED METHODS:
     None
     """
-
     _crud: TokenStackCrudHandler
-    _rank_service: RankService
-    _formation_service: FormationService
     _rank_quota_analyzer: RankQuotaAnalyzer
+    _collision_detector: TokenCollisionDetector
+
     
     def __init__(
             self,
-            rank_service: RankService = RankService(),
             crud: TokenStackCrudHandler = TokenStackCrudHandler(),
-            formation_service: FormationService = FormationService(),
             rank_quota_analyzer: RankQuotaAnalyzer = RankQuotaAnalyzer(),
+            collision_detector: TokenCollisionDetector = TokenCollisionDetector(),
     ):
         self._crud = crud
-        self._rank_service = rank_service
-        self._formation_service = formation_service
+        self._collision_detector = collision_detector
         self._rank_quota_analyzer = rank_quota_analyzer
 
     @property
@@ -79,13 +71,9 @@ class TokenStackHandler:
         return self._crud
     
     @property
-    def rank_service(self) -> RankService:
-        return self._rank_service
-    
-    @property
-    def formation_service(self) -> FormationService:
-        return self._formation_service
-    
-    @property
     def rank_quota_analyzer(self) -> RankQuotaAnalyzer:
         return self._rank_quota_analyzer
+    
+    @property
+    def collision_detector(self) -> TokenCollisionDetector:
+        return self._collision_detector

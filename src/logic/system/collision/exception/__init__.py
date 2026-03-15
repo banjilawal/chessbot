@@ -13,5 +13,5 @@ Version: 1.0.0
 None
 
 # Modules
-from .wrapper import CollisionDetectionException
+from .wrapper import ColliderException
 from .unsupported import UnsupportedEmptyCollisionResultException

@@ -14,7 +14,8 @@ from logic.system import (
      SearchResult, StackService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, IdFactory
 )
 from logic.token import (
-    PoppingEmptyTokenStackException, Token, TokenContext, TokenService, TokenStackException, TokenContextService,
+    PoppingEmptyTokenStackException, Token, TokenContext, TokenService, TokenServiceException, TokenStackException,
+    TokenContextService,
     PoppingTokenException, PushingTokenException, TokenStackFullException, TokenStackState, TokenStackHandler,
 )
 
@@ -154,22 +155,38 @@ class TokenStackService(StackService[Token]):
     @LoggingLevelRouter.monitor
     def push(self, item: Token) -> InsertionResult[bool]:
         """
-        # ACTION:
-            1.  If the occupant is not validated send the exception in the InsertionResult. Else, call the super class
-                push method.
-            2.  If super().push_item fails send the exception in the InsertionResult. Else extract the payload to cast
-                and return to the caller in the BuildResult.
-        # PARAMETERS:
-            *   occupant (Token)
-        # RETURNS:
-            *   InsertionResult[Token] containing either:
-                    - On failure: Exception.
-                    - On success: Token in the payload.
+        Action:
+            1.  Insert a token into the TokenStackService.
+            
+        Args:
+            item: Token
+            
+        Returns:
+            InsertionResult[bool]
+            
         Raises:
             *   TokenStackException
         """
-        method = "TokenStackService.push"
-     
+        method = f"{self.__class__.__name__}.push"
+        
+        insertion_result = self._handler.crud.push(
+            token=item,
+            token_stack=self,
+            rank_quota_analyzer=self._handler.rank_quota_analyzer,
+            token_collision_detector=self._handler.collision_detector
+        )
+        # Handle the case that, the insertion is not successful
+        if insertion_result.is_failure:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                TokenStackException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenStackException.MSG,
+                    err_code=TokenStackException.ERR_CODE,
+                    ex=insertion_result.exception,
+                )
+            )
         # --- Send the success result to the caller. ---#
         return InsertionResult.success()
     

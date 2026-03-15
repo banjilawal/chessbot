@@ -32,7 +32,7 @@ class CoordRay(Ray[Coord]):
     # INHERITED ATTRIBUTES:
         *   See Ray class for inherited attributes
 
-    # CONSTRUCTOR PARAMETERS:)
+    # CONSTRUCTOR PARAMETERS:
         *   origin: Coord
         *   members: List[Coord]
 

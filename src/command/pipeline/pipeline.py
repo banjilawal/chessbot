@@ -44,7 +44,7 @@ class CommandPipeline(ABC, Generic[C]):
     # INHERITED ATTRIBUTES:
     None.
 
-    # CONSTRUCTOR PARAMETERS:)
+    # CONSTRUCTOR PARAMETERS:
         *   cipher: (C)
         *   builder: (Builder[Command])
         *   request_validator: (ServiceRequestValidator)

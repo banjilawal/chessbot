@@ -38,7 +38,7 @@ class SymmetricEdgeBuildException(BuildException):
     # INHERITED ATTRIBUTES:
         *   See BuildException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:)
+    # CONSTRUCTOR PARAMETERS:
         *   err_code (str)
         *   msg (str)
         *   ex (Optional[Exception])

@@ -39,7 +39,7 @@ class ComputationException(OperationException):
     # INHERITED ATTRIBUTES:
         *   See CollectionException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:)
+    # CONSTRUCTOR PARAMETERS:
         op: Optional[str]
         ex: Optional[str]
         msg: Optional[str]

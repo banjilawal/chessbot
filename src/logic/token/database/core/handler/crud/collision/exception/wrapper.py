@@ -1,29 +1,34 @@
+# src/logic/token/database/core/handler/crud/collision/exception/wrapper.py
+
+"""
+Module: logic.token.database.core.handler.crud.collision.exception.wrapper
+Author: Banji Lawal
+Created: 2026-02-22
+version: 1.0.0
+"""
+
 from __future__ import annotations
 from typing import Optional
 
 ___all__ = [
-    # ======================# TOKEN_COLLISION_DETECTION_EXCEPTION #======================#
-    "TokenCollisionDetectionException",
+    # ======================# TOKEN_COLLIDER_DETECTED #======================#
+    "TokenColliderException",
 ]
 
-from logic.system import CollisionDetectionException
+from logic.system import ColliderException
 
 
-# ======================# TOKEN_COLLISION_DETECTION_EXCEPTION #======================#
-class TokenCollisionDetectionException(CollisionDetectionException):
+# ======================# TOKEN_COLLIDER_DETECTED #======================#
+class TokenColliderException(ColliderException):
     """
-    # ROLE: Coverage Target, Exception Chain Layer 0
+    # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Provide TokenCollisionDetector as:
-            *   Reporting
-            *   Coverage
-        target for layer-2 debugging exceptions.
-    2.  Indicate which TokenCollisionDetector method received a worker's
-        (layer-1) failure result.
+    1.  Indicate a token collided with the test subject
+    2.  Identify the method where the collision test was performed.
 
     # PARENT:
-        *   CollisionDetectionException
+        *   ColliderException
 
     # PROVIDES:
     None
@@ -32,26 +37,26 @@ class TokenCollisionDetectionException(CollisionDetectionException):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See CollisionDetectionException class for inherited attributes.
+        *   See ColliderException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
-        *   msg (str)
-        *   err_code (str)
-        *   ex (Optional[Exception])
-        *   cls_name (Optional[str])
-        *   cls_mthd (Optional[str])
+        op: Optional[str]
+        ex: Optional[str]
+        msg: Optional[str]
+        mthd: Optional[str]
+        err_code: Optional[str]
+        rslt_type: Optional[str]
 
     # LOCAL METHODS:
-    None
+   None
 
     # INHERITED METHODS:
-        *   See CollisionDetectionException class for inherited methods.
+        *   See ColliderException class for inherited methods.
     """
-    MTHD = Optional[str]
-    OP = "CollisionDetection"
-    RSLT_TYPE = "CollisionDetectionResult"
-    ERR_CODE = "TOKEN_COLLISION_DETECTION_EXCEPTION"
-    MSG = "TokenCollisionDetection raised an exception."
+    OP_NAME = "CollisionDetection"
+    RSLT_TYPE = "CollisionReport"
+    ERR_CODE = "TOKEN_COLLIDER_DETECTED"
+    MSG = "Another Token collided with the test subject."
     
     def __init__(
             self,
@@ -65,9 +70,9 @@ class TokenCollisionDetectionException(CollisionDetectionException):
         """
         Args:
             op: Optional[str]
+            ex: Optional[str]
             msg: Optional[str]
             mthd: Optional[str]
-            ex Optional[Exception]
             err_code: Optional[str]
             rslt_type: Optional[str]
         """
@@ -76,6 +81,7 @@ class TokenCollisionDetectionException(CollisionDetectionException):
         mthd = mthd or self.MTHD
         err_code = err_code or self.ERR_CODE
         rslt_type = rslt_type or self.RSLT_TYPE
+        
         super().__init__(
             ex=ex,
             op=op,
@@ -84,3 +90,5 @@ class TokenCollisionDetectionException(CollisionDetectionException):
             err_code=err_code,
             rslt_type=rslt_type,
         )
+ 
+

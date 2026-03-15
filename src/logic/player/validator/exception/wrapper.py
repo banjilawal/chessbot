@@ -38,7 +38,7 @@ class PlayerValidationException(ValidationException):
     # INHERITED ATTRIBUTES:
         *   See ValidationException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:)
+    # CONSTRUCTOR PARAMETERS:
         *   err_code (str)
         *   msg (str)
         *   ex (Optional[Exception])

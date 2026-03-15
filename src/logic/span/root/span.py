@@ -36,7 +36,7 @@ class Span(ABC, Generic[T]):
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR PARAMETERS:)
+    # CONSTRUCTOR PARAMETERS:
         *   origin: T
         *   rays: List[Ray[T]]
 

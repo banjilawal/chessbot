@@ -34,7 +34,7 @@ class Ray(ABC, Generic[T]):
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR PARAMETERS:)
+    # CONSTRUCTOR PARAMETERS:
         *   origin: Coord
         *   members: List[Coord]
 

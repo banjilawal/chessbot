@@ -37,6 +37,9 @@ class RankQuotaAnalyzer:
     None
     """
     
+    _rank_service: RankService
+    
+    
     @classmethod
     @LoggingLevelRouter.monitor
     def compute_rank_size_in_stack(

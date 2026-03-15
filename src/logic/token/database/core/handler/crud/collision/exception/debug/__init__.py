@@ -10,9 +10,9 @@ version: 1.0.0
 # =========== TOKEN.DATABASE.CORE.HANDLER.CRUD.COLLISION.EXCEPTION.DEBUG PACKAGE CONTENTS ===========#
 
 # Packages
-from .debug import *
+None
 
 # Modules
 from .id import TokenIdCollisionException
-from .name import TokenNameCollisionException
 from .square import TokenOpeningSquareCollisionException
+from .designation import TokenDesignationCollisionException

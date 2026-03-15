@@ -35,7 +35,7 @@ class ServiceMenu(ABC, Generic[S]):
     # INHERITED ATTRIBUTES:
     None.
 
-    # CONSTRUCTOR PARAMETERS:)
+    # CONSTRUCTOR PARAMETERS:
         *   router (CommandRouter[S])
         *   menus (List[ServiceMenu])
 

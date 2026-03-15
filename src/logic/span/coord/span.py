@@ -34,7 +34,7 @@ class CoordSpan(Span[Coord]):
     # INHERITED ATTRIBUTES:
         * See Span class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:)
+    # CONSTRUCTOR PARAMETERS:
         *   origin: Coord
         *   rays: List[Ray[Coord]]
 

@@ -9,10 +9,10 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.system import CollisionDetector, CollisionDetectionResult, LoggingLevelRouter
+from logic.system import CollisionDetector, CollisionReport, LoggingLevelRouter
 from logic.token import (
-    Token, TokenCollisionDetectionException, TokenCoordCollisionException, TokenIdCollisionException,
-    TokenNameCollisionException, TokenStackService
+    Token, TokenColliderException, TokenIdCollisionException, TokenDesignationCollisionException,
+    TokenOpeningSquareCollisionException, TokenStackService
 )
 
 class TokenCollisionDetector(CollisionDetector[Token]):
@@ -35,25 +35,16 @@ class TokenCollisionDetector(CollisionDetector[Token]):
     None
 
     # INHERITED ATTRIBUTES:
-   None
+        *   See CollisionDetector class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
-        Local:
-        None
-        Inherited:
-        None
+    None
 
     # LOCAL METHODS:
-        *   detect(
-                target: Token,
-                dataset: List[Token],
-                token_validator: TokenValidator = TokenValidator()
-            ) -> CollisionDetectionResult[Token]
-            
-        *   detect_attribute_collisions(id: int, name: str, coord: Coord, board: Board) -> ValidationResult[int]
-
-    # INHERITED METHODS:
     None
+    
+    # INHERITED METHODS:
+        *   See CollisionDetector class for inherited methods.
     """
     @classmethod
     @LoggingLevelRouter.monitor
@@ -61,25 +52,29 @@ class TokenCollisionDetector(CollisionDetector[Token]):
             cls,
             target: Token,
             token_stack: TokenStackService,
-    ) -> CollisionDetectionResult[Token]:
+    ) -> CollisionReport[Token]:
         """
-        # ACTION:
-            1.  If the target is not certified as safe, send both exception nd target in the CollisionDetectionResult.
-            2.  Loop through the dataset to find id, designation or opening token matches. If any are found,
-                send the: target, collider, and exception in the CollisionDetectionResult.
-            3.  If no collisions were detected in the loop send the target back in a no-collision report.
+        Args:
+            1.  If the target is not certified as safe send a detector_failure result.
+            2.  If the target collides with any stack member over
+                    *   An id
+                    *   A designation
+                    *   An opening square
+                Send a collision_detected result.
+            3.  Otherwise, send a no_collisions result.
+            
         Args:
             target: Token
             token_stack: TokenStackService
             
         Returns:
-               CollisionDetectionResult[Token]
+               CollisionReport[Token]
                
         Raises:
             TokenIdCollisionException
-            TokenCollisionDetectionException
-            TokenNameCollisionException
-            TokenCoordCollisionException
+            TokenColliderException
+            TokenDesignationCollisionException
+            TokenOpeningSquareCollisionException
         """
         method = "TokenCollisionDetector.detect"
         
@@ -88,13 +83,13 @@ class TokenCollisionDetector(CollisionDetector[Token]):
             candidate=target
         )
         if validation_result.is_failure:
-            return CollisionDetectionResult.collision(
-                exception=TokenCollisionDetectionException(
+            return CollisionReport.detector_failure(
+                exception=TokenColliderException(
                     mthd=method,
-                    op=TokenCollisionDetectionException.OP,
-                    msg=TokenCollisionDetectionException.MSG,
-                    err_code=TokenCollisionDetectionException.ERR_CODE,
-                    rslt_type=TokenCollisionDetectionException.RSLT_TYPE,
+                    op=TokenColliderException.OP,
+                    msg=TokenColliderException.MSG,
+                    err_code=TokenColliderException.ERR_CODE,
+                    rslt_type=TokenColliderException.RSLT_TYPE,
                     ex=validation_result.exception
                 )
             )
@@ -104,17 +99,17 @@ class TokenCollisionDetector(CollisionDetector[Token]):
             # Handle the case that, the target shares its id with a dataset member.
             if token.id == target.id:
                 # Return target, the collider, and the exception explaining the collision.
-                return CollisionDetectionResult.collision(
+                return CollisionReport.collision(
                     var="id",
                     target=target,
                     collider=token,
                     val=f"{token.id}",
-                    exception=TokenCollisionDetectionException(
+                    exception=TokenColliderException(
                         mthd=method,
-                        op=TokenCollisionDetectionException.OP,
-                        msg=TokenCollisionDetectionException.MSG,
-                        err_code=TokenCollisionDetectionException.ERR_CODE,
-                        rslt_type=TokenCollisionDetectionException.RSLT_TYPE,
+                        op=TokenColliderException.OP,
+                        msg=TokenColliderException.MSG,
+                        err_code=TokenColliderException.ERR_CODE,
+                        rslt_type=TokenColliderException.RSLT_TYPE,
                         ex=TokenIdCollisionException(
                             var="id",
                             val=f"{token.id}",
@@ -123,50 +118,50 @@ class TokenCollisionDetector(CollisionDetector[Token]):
                         )
                     )
                 )
-            # Handle the case that, the target shares its name with a dataset member.
-            if token.name.upper() == target.name.upper():
+            # Handle the case that, the target shares its designation with a dataset member.
+            if token.designation.upper() == target.designation.upper():
                 # Return target, the collider, and the exception explaining the collision.
-                return CollisionDetectionResult.collision(
-                    var="name",
+                return CollisionReport.collision(
+                    var="designation",
                     target=target,
                     collider=token,
-                    val=f"{token.name}",
-                    exception=TokenCollisionDetectionException(
+                    val=f"{token.designation}",
+                    exception=TokenColliderException(
                         mthd=method,
-                        op=TokenCollisionDetectionException.OP,
-                        msg=TokenCollisionDetectionException.MSG,
-                        err_code=TokenCollisionDetectionException.ERR_CODE,
-                        rslt_type=TokenCollisionDetectionException.RSLT_TYPE,
-                        ex=TokenIdCollisionException(
-                            var="name",
-                            val=f"{token.name}",
-                            msg=TokenNameCollisionException.MSG,
-                            err_code=TokenNameCollisionException.ERR_CODE,
+                        op=TokenColliderException.OP,
+                        msg=TokenColliderException.MSG,
+                        err_code=TokenColliderException.ERR_CODE,
+                        rslt_type=TokenColliderException.RSLT_TYPE,
+                        ex=TokenDesignationCollisionException(
+                            var="designation",
+                            val=f"{token.designation}",
+                            msg=TokenDesignationCollisionException.MSG,
+                            err_code=TokenDesignationCollisionException.ERR_CODE,
                         )
                     )
                 )
-            # Handle the case that, the target shares its coord with a dataset member.
-            if token.coord == target.coord:
+            # Handle the case that, the target shares its opening_square_name with a dataset member.
+            if token.opening_square_name.upper()== target.opening_square_name.upper():
                 # Return target, the collider, and the exception explaining the collision.
-                return CollisionDetectionResult.collision(
-                    var="coord",
+                return CollisionReport.collision(
+                    var="opening_square_name",
                     target=target,
                     collider=token,
-                    val=f"{token.coord}",
-                    exception=TokenCollisionDetectionException(
+                    val=f"{token.opening_square_name}",
+                    exception=TokenColliderException(
                         mthd=method,
-                        op=TokenCollisionDetectionException.OP,
-                        msg=TokenCollisionDetectionException.MSG,
-                        err_code=TokenCollisionDetectionException.ERR_CODE,
-                        rslt_type=TokenCollisionDetectionException.RSLT_TYPE,
-                        ex=TokenCoordCollisionException(
-                            var="name",
-                            val=f"{token.name}",
-                            msg=TokenCoordCollisionException.MSG,
-                            err_code=TokenCoordCollisionException.ERR_CODE,
+                        op=TokenColliderException.OP,
+                        msg=TokenColliderException.MSG,
+                        err_code=TokenColliderException.ERR_CODE,
+                        rslt_type=TokenColliderException.RSLT_TYPE,
+                        ex=TokenOpeningSquareCollisionException(
+                            var="opening_square_name",
+                            val=f"{token.opening_square_name}",
+                            msg=TokenOpeningSquareCollisionException.MSG,
+                            err_code=TokenOpeningSquareCollisionException.ERR_CODE,
                         )
                     )
                 )
         # --- After the uniqueness tests are passed send the no_collisions report to the caller. ---#
-        return CollisionDetectionResult.no_collision()
+        return CollisionReport.no_collision()
     

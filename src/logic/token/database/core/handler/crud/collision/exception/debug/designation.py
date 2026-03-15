@@ -1,7 +1,7 @@
-# src/logic/token/database/core/handler/crud/collision/exception/debug/name.py
+# src/logic/token/database/core/handler/crud/collision/exception/debug/designation.py
 
 """
-Module: logic.token.database.core.handler.crud.collision.exception.debug.name
+Module: logic.token.database.core.handler.crud.collision.exception.debug.designation
 Author: Banji Lawal
 Created: 2026-02-22
 version: 1.0.0
@@ -11,15 +11,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# TOKEN_NAME_COLLISION EXCEPTION #======================#
-    "TokenNameCollisionException",
+    # ======================# TOKEN_DESIGNATION_COLLISION EXCEPTION #======================#
+    "TokenDesignationCollisionException",
 ]
 
 from logic.token import TokenDebugException
 
 
-# ======================# TOKEN_NAME_COLLISION EXCEPTION #======================#
-class TokenNameCollisionException(TokenDebugException):
+# ======================# TOKEN_DESIGNATION_COLLISION EXCEPTION #======================#
+class TokenDesignationCollisionException(TokenDebugException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
@@ -53,7 +53,7 @@ class TokenNameCollisionException(TokenDebugException):
     """
     VAR = Optional[str]
     VAL = Optional[Any]
-    ERR_CODE = "TOKEN_NAME_COLLISION EXCEPTION"
+    ERR_CODE = "TOKEN_DESIGNATION_COLLISION EXCEPTION"
     MSG = "Designation has already been assigned."
     
     def __init__(

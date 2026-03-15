@@ -3,14 +3,14 @@ from typing import Optional
 
 ___all__ = [
     # ======================# SQUARE_COLLISION_DETECTION_EXCEPTION #======================#
-    "SquareCollisionDetectionException",
+    "SquareColliderException",
 ]
 
-from logic.system import CollisionDetectionException
+from logic.system import ColliderException
 
 
 # ======================# SQUARE_COLLISION_DETECTION_EXCEPTION #======================#
-class SquareCollisionDetectionException(CollisionDetectionException):
+class SquareColliderException(ColliderException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
@@ -23,7 +23,7 @@ class SquareCollisionDetectionException(CollisionDetectionException):
         (layer-1) failure result.
 
     # PARENT:
-        *   CollisionDetectionException
+        *   ColliderException
 
     # PROVIDES:
     None
@@ -32,7 +32,7 @@ class SquareCollisionDetectionException(CollisionDetectionException):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See CollisionDetectionException class for inherited attributes.
+        *   See ColliderException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
         *   msg (str)
@@ -45,11 +45,11 @@ class SquareCollisionDetectionException(CollisionDetectionException):
     None
 
     # INHERITED METHODS:
-        *   See CollisionDetectionException class for inherited methods.
+        *   See ColliderException class for inherited methods.
     """
     MTHD = Optional[str]
     OP = "CollisionDetection"
-    RSLT_TYPE = "CollisionDetectionResult"
+    RSLT_TYPE = "CollisionReport"
     ERR_CODE = "SQUARE_COLLISION_DETECTION_EXCEPTION"
     MSG = "SquareCollisionDetection raised an exception."
     

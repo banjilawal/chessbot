@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Generic, List, TypeVar
 
-from logic.system import CollisionDetectionResult, LoggingLevelRouter
+from logic.system import CollisionReport, LoggingLevelRouter
 
 T = TypeVar("T")
 
@@ -40,5 +40,5 @@ class CollisionDetector(Generic[T]):
     @classmethod
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def detect(cls, dataset: List[T], target: T, *args, **kwargs) -> CollisionDetectionResult[T]:
+    def detect(cls, dataset: List[T], target: T, *args, **kwargs) -> CollisionReport[T]:
         pass
