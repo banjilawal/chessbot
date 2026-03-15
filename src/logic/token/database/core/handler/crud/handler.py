@@ -170,16 +170,18 @@ class TokenStackCrudHandler:
             DeletionResult[Token
             
         Raises:
-            TokenCrudHandlerException
-            PoppingEmptyTokenStackException
+            None
         """
         method = f"{cls.__class__.__name__}.pop"
         
-        deleting_empty_stack_result = cls._deleting_from_empty_stack_handler(token_stack)
+        # If the stack is empty forward the exception.
+        deleting_empty_stack_result = cls._deleting_from_empty_stack_handler(
+            token_stack=token_stack,
+            client_method=method,
+        )
         if deleting_empty_stack_result.is_failure:
             return deleting_empty_stack_result
-        
-        # --- Pop the non-empty token stack. ---#
+        # Else do the pop.
         token = token_stack.items.pop(-1)
         
         return cls._deletion_cleanup_handler(
@@ -220,27 +222,14 @@ class TokenStackCrudHandler:
         """
         method = f"{cls.__name__}.delete_by_id"
         
-        # Handle the case that, there are no items in the list.
-        if token_stack.is_empty:
-            # Return the exception chain on failure.
-            return DeletionResult.failure(
-                TokenCrudHandlerException(
-                    cls_mthd=method,
-                    cls_name=cls.__class__.__name__,
-                    err_code=TokenCrudHandlerException.ERR_CODE,
-                    msg=TokenCrudHandlerException.MSG,
-                    ex=TokenStackPushException(
-                        op=TokenStackPushException.OP,
-                        msg=TokenStackPushException.MSG,
-                        mthd=TokenStackPushException.MTHD,
-                        rslt_type=TokenStackPushException.RSLT_TYPE,
-                        ex=PoppingEmptyTokenStackException(
-                            msg=PoppingEmptyTokenStackException.MSG,
-                            err_code=PoppingEmptyTokenStackException.ERR_CODE,
-                        )
-                    )
-                )
-            )
+        # If the stack is empty forward the exception.
+        deleting_empty_stack_result = cls._deleting_from_empty_stack_handler(
+            token_stack=token_stack,
+            client_method=method,
+        )
+        if deleting_empty_stack_result.is_failure:
+            return deleting_empty_stack_result
+ 
         # Handle the case that, the id is not certified safe.
         validation = identity_service.validate_id(candidate=id)
         if validation.is_failure:
@@ -278,7 +267,6 @@ class TokenStackCrudHandler:
             deleted_token=target,
             token_stack=token_stack,
         )
-
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -360,28 +348,25 @@ class TokenStackCrudHandler:
     @classmethod
     def _deleting_from_empty_stack_handler(
             cls,
-            token_stack: TokenStackService
+            token_stack: TokenStackService,
+            client_method: str
     ) -> DeletionResult[Token]:
         """
         Avoids duplicating the deleting from an empty stack.
-        
         Args:
             token_stack: TokenStackService
-            
         Returns:
             DeletionResult[List[Token]
-            
         Raises:
             TokenCrudHandlerException
         """
-        method = f"{cls.__name__}._deleting_from_empty_stack_handler"
         
         # Handle the case that, there are no tokens in the stack.
         if token_stack.is_empty:
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 TokenCrudHandlerException(
-                    cls_mthd=method,
+                    cls_mthd=client_method,
                     cls_name=cls.__class__.__name__,
                     err_code=TokenCrudHandlerException.ERR_CODE,
                     msg=TokenCrudHandlerException.MSG,
@@ -397,4 +382,5 @@ class TokenStackCrudHandler:
                     )
                 )
             )
+        # --- Do nothing if the stack is not empty ---#
         return DeletionResult.nothing_to_delete()

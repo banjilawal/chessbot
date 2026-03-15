@@ -195,12 +195,9 @@ class TokenStackService(StackService[Token]):
         """
         Action:
             Remove the item at the top of the stack if it's not empty.
-            
         Args:
-        
         Returns:
             DeletionResult[Token]
-            
         Raises:
             TokenStackException
         """
@@ -231,70 +228,37 @@ class TokenStackService(StackService[Token]):
             identity_service: IdentityService = IdentityService()
     ) -> DeletionResult[Token]:
         """
-        # ACTION:
-            1.  If the id is not certified safe send an exception in the DeletionResult.
-            2.  Create a temp variable for storing a token before it's deleted.
-            3.  Iterate through the tokens.
-                    *   If a token's id matches the target record the token in a temp variable before deleting
-                        it from the list.
-            4.  After the loop is finishes, if the temp variable is not None send it in the deletion success result.
-                Else, send the nothing to delete result instead.
-        # PARAMETERS:
-                    *   id (int)
-                    *   identity_service (IdentityService)
-        # RETURNS:
-            *   DeletionResult[Token]
+        Action:
+            Remove tokens from the stack if their id matches the targt.
+        Args:
+            id: int
+            identity_service: IdentityService
+        Returns:
+            DeletionResult[Token]
         Raises:
-            *   TokenStackException
-            *   PoppingTokenException
-            *   PoppingEmptyTokenStackException
+            TokenStackException
         """
-        method = "TokenStackService.delete_by_id"
+        method = f"{self.__class__.__name__}.delete_by_id"
         
-        # Handle the case that, there are no items in the list.
-        if self.is_empty:
+        # --- Handoff deletion responsibility to the crud_handler ---#
+        delete_by_id_result = self._handler.crud.delete_by_id(
+            id=id,
+            identity_service=identity_service
+        )
+        # Handle the case that, that there is no valid work product.
+        if delete_by_id_result.is_failure:
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 TokenStackException(
-                    msg=f"StackId:{self.id}, {method}: {TokenStackException.ERR_CODE}",
-                    ex=PoppingTokenException(
-                        msg=f"{method}: {PoppingTokenException.ERR_CODE}",
-                        ex=PoppingEmptyTokenStackException(
-                            f"{method}: {PoppingEmptyTokenStackException.MSG}"
-                        )
-                    )
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenStackException.MSG,
+                    err_code=TokenStackException.ERR_CODE,
+                    ex=delete_by_id_result,
                 )
             )
-        # Handle the case that, the id is not certified safe.
-        validation = identity_service.validate_id(candidate=id)
-        if validation.is_failure:
-            # Return the exception chain on failure.
-            return DeletionResult.failure(
-                TokenStackException(
-                    msg=f"StackId:{self.id}, {method}: {TokenStackException.ERR_CODE}",
-                    ex=PoppingTokenException(
-                        msg=f"{method}: {PoppingTokenException.ERR_CODE}",
-                        ex=validation.exception
-                    )
-                )
-            )
-        # --- Loop through the collection to ensure all matches are removed. ---#
-        target = None
-        for token in self._stack:
-            if token.id == id:
-                # Record a hit before pulling it from the stack.
-                target = token
-                self._stack.remove(token)
-        # --- Perform cleanup and integrity maintenance tasks after the purging loop finishes. ---#
-        if self.is_empty:
-            self._state = TokenStackState.EMPTY
-        # --- Handle the possible return cases. ---#
-        
-        # At least one token was removed.
-        if target is not None:
-            return DeletionResult.success(payload=target)
-        # Default case: no tokens were removed.
-        return DeletionResult.nothing_to_delete()
+        # --- Otherwise forward the result to the client. ---#
+        return delete_by_id_result
     
     @LoggingLevelRouter.monitor
     def query(self, context: TokenContext) -> SearchResult[List[Token]]:
