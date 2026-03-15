@@ -17,14 +17,15 @@ __all__ = [
 
 from logic.system import CollectionOperationException
 
+
 # ======================# SEARCH_FAILURE #======================#
 class SearchException(CollectionOperationException):
     """
-    # ROLE: Exception Chain Layer 1, Exception Messaging
-    # TASK: Worker Method Identifier
+    # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Encapsulate the Layer-1 DebugException which describes the cause the search failed.
+    1.  Indicate a search failed.
+    2.  Identify the method where the failure occurred.
 
     # PARENT:
         *   CollectionOperationException
@@ -39,12 +40,12 @@ class SearchException(CollectionOperationException):
         *   See CollectionException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:)
-        *   err_code (str)
-        *   msg (str)
-        *   ex (Optional[Exception])
-        *   mthd (Optional[str])
-        *   op (Optional[str])
-        *   rslt_type (Optional[str])
+        op: Optional[str]
+        ex: Optional[str]
+        msg: Optional[str]
+        mthd: Optional[str]
+        err_code: Optional[str]
+        rslt_type: Optional[str]
 
     # LOCAL METHODS:
    None
@@ -52,24 +53,40 @@ class SearchException(CollectionOperationException):
     # INHERITED METHODS:
         *   See WrapperException class for inherited methods.
     """
+    OP = "Search"
+    RSLT_TYPE = "SearchResult"
     ERR_CODE = "SEARCH_FAILURE"
-    MSG = "Search failed."
-    MTHD = "search"
-    OP_NAME = "search"
-    RSLT = "SearchResult"
+    MSG = "Search method failed."
     
     def __init__(
             self,
-            err_code: Optional[str] = None,
-            msg: Optional[str] = None,
-            ex: Optional[Exception] = None,
-            mthd: Optional[str] = None,
             op: Optional[str] = None,
+            msg: Optional[str] = None,
+            mthd: Optional[str] = None,
+            ex: Optional[Exception] = None,
+            err_code: Optional[str] = None,
             rslt_type: Optional[str] = None,
     ):
-        err_code = err_code or self.ERR_CODE
+        """
+        Args:
+            op: Optional[str]
+            ex: Optional[str]
+            msg: Optional[str]
+            mthd: Optional[str]
+            err_code: Optional[str]
+            rslt_type: Optional[str]
+        """
+        op = op or self.OP
         msg = msg or self.MSG
         mthd = mthd or self.MTHD
-        op = op or self.OP
+        err_code = err_code or self.ERR_CODE
         rslt_type = rslt_type or self.RSLT_TYPE
-        super().__init__(err_code=err_code, msg=msg, ex=ex, mthd=mthd, op=op, rslt_type=rslt_type)
+        
+        super().__init__(
+            ex=ex,
+            op=op,
+            msg=msg,
+            mthd=mthd,
+            err_code=err_code,
+            rslt_type=rslt_type,
+        )

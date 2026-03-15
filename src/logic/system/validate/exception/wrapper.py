@@ -17,14 +17,15 @@ __all__ = [
 
 from logic.system import OperationException
 
+
 # ======================# VALIDATION_FAILURE #======================#
 class ValidationException(OperationException):
     """
-    # ROLE: Exception Chain Layer 1, Exception Messaging
-    # TASK: Worker Method Identifier
+    # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Identify the __VALIDATION_CLASS__ method where the process failed.
+    1.  Indicate the Validator did not produce a valid work product.
+    2.  Identify the Validator method where the failure occurred.
 
     # PARENT:
         *   OperationException
@@ -33,44 +34,48 @@ class ValidationException(OperationException):
     None
 
     # LOCAL ATTRIBUTES:
-        *   op (Optional[str])
-        *   rslt_type (Optional[str])
+    None
 
     # INHERITED ATTRIBUTES:
         *   See OperationException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:)
-        *   err_code (str)
-        *   msg (str)
-        *   ex (Optional[Exception])
-        *   mthd (Optional[str])
-        *   op (Optional[str])
-        *   rslt_type (Optional[str])
+        op: Optional[str]
+        ex: Optional[str]
+        msg: Optional[str]
+        mthd: Optional[str]
+        err_code: Optional[str]
+        rslt_type: Optional[str]
 
     # LOCAL METHODS:
-   None
+    None
 
     # INHERITED METHODS:
         *   See OperationException class for inherited methods.
     """
-    ERR_CODE = "VALIDATION_FAILURE"
-    MSG = "Failure in __VALIDATION_CLASS__ method."
-    MTHD = Optional[str]
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
-    
-    _op = Optional[str]
-    _rslt_type = Optional[str]
+    ERR_CODE = "VALIDATION_FAILURE"
+    MSG = "Failure in Validator method."
     
     def __init__(
             self,
-            err_code: Optional[str] = None,
-            msg: Optional[str] = None,
-            ex: Optional[Exception] = None,
-            mthd: Optional[str] = None,
             op: Optional[str] = None,
+            msg: Optional[str] = None,
+            mthd: Optional[str] = None,
+            ex: Optional[Exception] = None,
+            err_code: Optional[str] = None,
             rslt_type: Optional[str] = None,
     ):
+        """
+        Args:
+            op: Optional[str]
+            ex: Optional[str]
+            msg: Optional[str]
+            mthd: Optional[str]
+            err_code: Optional[str]
+            rslt_type: Optional[str]
+        """
         op = op or self.OP
         msg = msg or self.MSG
         mthd = mthd or self.MTHD

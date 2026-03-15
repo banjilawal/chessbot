@@ -17,7 +17,6 @@ __all__ = [
 
 from logic.system import OperationException
 
-
 # ======================# BUILD_FAILURE #======================#
 class BuildException(OperationException):
     """

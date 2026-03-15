@@ -21,11 +21,11 @@ from logic.system import OperationException
 # ======================# COMPUTATION_FAILURE #======================#
 class ComputationException(OperationException):
     """
-    # ROLE: Exception Chain Layer 1, Exception Messaging
-    # TASK: Worker Method Identifier
+    # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Encapsulate the Layer-1 DebugException which describes the cause the computation failed.
+    1.  Indicate a computation failed.
+    2.  Identify the method where the failure occurred.
 
     # PARENT:
         *   OperationException
@@ -37,49 +37,56 @@ class ComputationException(OperationException):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See OperationException class for inherited attributes.
+        *   See CollectionException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:)
-        *   err_code (str)
-        *   msg (str)
-        *   ex (Optional[Exception])
-        *   mthd (Optional[str])
-        *   op (Optional[str])
-        *   rslt_type (Optional[str])
+        op: Optional[str]
+        ex: Optional[str]
+        msg: Optional[str]
+        mthd: Optional[str]
+        err_code: Optional[str]
+        rslt_type: Optional[str]
 
     # LOCAL METHODS:
    None
 
     # INHERITED METHODS:
-        *   See OperationException class for inherited methods.
+        *   See WrapperException class for inherited methods.
     """
-    MTHD = "compute"
-    OP_NAME = "Computation"
-    MSG = "Computation failed."
-    RSLT = "ComputationResult"
+    OP = "Computation"
+    RSLT_TYPE = "ComputationResult"
     ERR_CODE = "COMPUTATION_FAILURE"
+    MSG = "Computation method failed."
     
     def __init__(
             self,
-            err_code: Optional[str] = None,
-            msg: Optional[str] = None,
-            ex: Optional[Exception] = None,
-            mthd: Optional[str] = None,
             op: Optional[str] = None,
+            msg: Optional[str] = None,
+            mthd: Optional[str] = None,
+            ex: Optional[Exception] = None,
+            err_code: Optional[str] = None,
             rslt_type: Optional[str] = None,
     ):
         """
         Args:
             op: Optional[str]
+            ex: Optional[str]
             msg: Optional[str]
             mthd: Optional[str]
-            ex: Optional[Exception]
             err_code: Optional[str]
             rslt_type: Optional[str]
         """
-        err_code = err_code or self.ERR_CODE
+        op = op or self.OP
         msg = msg or self.MSG
         mthd = mthd or self.MTHD
-        op = op or self.OP
+        err_code = err_code or self.ERR_CODE
         rslt_type = rslt_type or self.RSLT_TYPE
-        super().__init__(err_code=err_code, msg=msg, ex=ex, mthd=mthd, op=op, rslt_type=rslt_type)
+        
+        super().__init__(
+            ex=ex,
+            op=op,
+            msg=msg,
+            mthd=mthd,
+            err_code=err_code,
+            rslt_type=rslt_type,
+        )
