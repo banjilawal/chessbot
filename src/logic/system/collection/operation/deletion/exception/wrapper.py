@@ -24,7 +24,7 @@ class DeletionException(CollectionOperationException):
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate a deletion failed.
+    1.  Indicate a deletion was unsuccessful.
     2.  Identify the method where the failure occurred.
 
     # PARENT:

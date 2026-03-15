@@ -9,9 +9,13 @@ version: 1.0.0
 
 from __future__ import annotations
 
+from logic.formation import FormationService
+from logic.rank import RankService
 from logic.token import (
     TokenStackRosterHandler, TokenStackTokenHandler, TokenStackCrudHandler, TokenStackCountsAnalyzer
 )
+from logic.token.database.core.handler.quota import RankQuotaAnalyzer
+
 
 class TokenStackHandler:
     """
@@ -52,35 +56,36 @@ class TokenStackHandler:
     # INHERITED METHODS:
     None
     """
-    _stats: TokenStackCountsAnalyzer
+
     _crud: TokenStackCrudHandler
-    _token: TokenStackTokenHandler
-    _roster: TokenStackRosterHandler
+    _rank_service: RankService
+    _formation_service: FormationService
+    _rank_quota_analyzer: RankQuotaAnalyzer
     
     def __init__(
             self,
+            rank_service: RankService = RankService(),
             crud: TokenStackCrudHandler = TokenStackCrudHandler(),
-            token: TokenStackTokenHandler = TokenStackTokenHandler(),
-            roster: TokenStackRosterHandler = TokenStackRosterHandler(),
-            stats: TokenStackCountsAnalyzer = TokenStackCountsAnalyzer(),
+            formation_service: FormationService = FormationService(),
+            rank_quota_analyzer: RankQuotaAnalyzer = RankQuotaAnalyzer(),
     ):
-        self._stats = stats
         self._crud = crud
-        self._token = token
-        self._roster = roster
-        
-    @property
-    def stats(self) -> TokenStackCountsAnalyzer:
-        return self._stats
-    
-    @property
-    def token(self) -> TokenStackTokenHandler:
-        return self._token
-    
-    @property
-    def roster(self) -> TokenStackRosterHandler:
-        return self._roster
-    
+        self._rank_service = rank_service
+        self._formation_service = formation_service
+        self._rank_quota_analyzer = rank_quota_analyzer
+
     @property
     def crud(self) -> TokenStackCrudHandler:
         return self._crud
+    
+    @property
+    def rank_service(self) -> RankService:
+        return self._rank_service
+    
+    @property
+    def formation_service(self) -> FormationService:
+        return self._formation_service
+    
+    @property
+    def rank_quota_analyzer(self) -> RankQuotaAnalyzer:
+        return self._rank_quota_analyzer

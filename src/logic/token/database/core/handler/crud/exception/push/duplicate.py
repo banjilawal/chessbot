@@ -10,6 +10,9 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Any, Optional
 
+from __future__ import annotations
+from typing import Any, Optional
+
 __all__ = [
     # ======================# ADDING_DUPLICATE_TOKEN_EXCEPTION #======================#
     "AddingDuplicateTokenException",
@@ -20,19 +23,13 @@ from logic.system import DebugException
 # ======================# ADDING_DUPLICATE_TOKEN_EXCEPTION #======================#
 class AddingDuplicateTokenException(DebugException):
     """
-    # ROLE: Exception Chain Layer 2, Exception Messaging
-    # TASK: Capture Error Variable State
+    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Produce the:
-            *   variable,
-            *   it's value,
-            *   event which fired the variable into its error state.
-        which occurred in the TokenStackCrudHandler method identified in layer-0 of the exception chain.  
-    2.  A failing InsertionResult was returned because an attempt to add a duplicate token to the stack.
+    1.  Indicate an insertion failed because the token was already in the stack.
 
     # PARENT:
-        *   DebugException
+        *   TokenDebugException
 
     # PROVIDES:
     None
@@ -41,39 +38,39 @@ class AddingDuplicateTokenException(DebugException):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See DebugException class for inherited attributes.
+        *   TokenDebugException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
-        *   msg (str)
-        *   err_code (str)
-        *   ex (Optional[Exception])
-        *   var (Optional[str])
-        *   val (Optional[Any])
+        var: Optional[str]
+        val: Optional[Any]
+        msg: Optional[str]
+        ex: Optional[Exception]
+        err_code: Optional[str]
 
     # LOCAL METHODS:
     None
 
     # INHERITED METHODS:
-        *   See DebugException class for inherited methods.
+        *   See TokenDebugException class for inherited methods.
     """
     VAR = Optional[str]
     VAL = Optional[Any]
     ERR_CODE = "ADDING_DUPLICATE_TOKEN_EXCEPTION"
-    MSG = "TokenStack push failed: Cannot add a duplicate token to the stack."
+    MSG = "Token is already in the stack."
     
     def __init__(
             self,
-            msg: Optional[str] = None,
             var: Optional[str] = None,
             val: Optional[Any] = None,
-            ex: Optional[Exception] = None,
+            msg: Optional[str] = None,
             err_code: Optional[str] = None,
+            ex: Optional[Exception] = None,
     ):
         """
         Args:
-            msg: str
             var: Optional[str]
             val: Optional[Any]
+            msg: Optional[str]
             ex: Optional[Exception]
             err_code: Optional[str]
         """
@@ -81,4 +78,4 @@ class AddingDuplicateTokenException(DebugException):
         val = val or self.VAL
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        super().__init__(ex=ex, msg=msg, err_code=err_code, var=var, val=val,)
+        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)

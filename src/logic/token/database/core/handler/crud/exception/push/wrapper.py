@@ -20,12 +20,12 @@ from logic.system import InsertionException
 # ======================# TOKEN_STACK_PUSH_FAILURE #======================#
 class TokenStackPushException(InsertionException):
     """
-    # ROLE: Exception Chain Layer 1, Exception Messaging
-    # TASK: Worker Method Identifier
+    # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Identify the TokenStackService method where the push failed.
-        
+    1.  Indicate that pushing a token on to the stack failed.
+    2.  Identify the TokenStackService method where the failure occurred.
+
     # PARENT:
         *   InsertionException
 
@@ -39,12 +39,12 @@ class TokenStackPushException(InsertionException):
         *   See InsertionException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:)
-        *   err_code (str)
-        *   msg (str)
-        *   ex (Optional[Exception])
-        *   mthd (Optional[str])
-        *   op (Optional[str])
-        *   rslt_type (Optional[str])
+        op: Optional[str]
+        ex: Optional[str]
+        msg: Optional[str]
+        mthd: Optional[str]
+        err_code: Optional[str]
+        rslt_type: Optional[str]
 
     # LOCAL METHODS:
    None
@@ -52,27 +52,26 @@ class TokenStackPushException(InsertionException):
     # INHERITED METHODS:
         *   See InsertionException class for inherited methods.
     """
-    MTHD = Optional[str]
-    OP = "Insert"
+    OP = "Insertion"
     RSLT_TYPE = "InsertionResult"
-    MSG = "TokenStack push failed."
-    ERR_CODE = "TOKEN_STACK_PUSH_FAILURE"
+    ERR_CODE = "INSERTION_FAILURE"
+    MSG = "Insertion method failed."
     
     def __init__(
             self,
-            err_code: Optional[str] = None,
-            msg: Optional[str] = None,
-            ex: Optional[Exception] = None,
-            mthd: Optional[str] = None,
             op: Optional[str] = None,
+            msg: Optional[str] = None,
+            mthd: Optional[str] = None,
+            ex: Optional[Exception] = None,
+            err_code: Optional[str] = None,
             rslt_type: Optional[str] = None,
     ):
         """
         Args:
             op: Optional[str]
+            ex: Optional[str]
             msg: Optional[str]
             mthd: Optional[str]
-            ex: Optional[Exception]
             err_code: Optional[str]
             rslt_type: Optional[str]
         """

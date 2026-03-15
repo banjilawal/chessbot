@@ -23,7 +23,7 @@ class InsertionException(CollectionOperationException):
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate an insertion failed.
+    1.  Indicate an insertion was unsuccessful.
     2.  Identify the method where the failure occurred.
 
     # PARENT:
@@ -50,7 +50,7 @@ class InsertionException(CollectionOperationException):
    None
 
     # INHERITED METHODS:
-        *   See WrapperException class for inherited methods.
+        *   See OperationException class for inherited methods.
     """
     OP = "Insertion"
     RSLT_TYPE = "InsertionResult"

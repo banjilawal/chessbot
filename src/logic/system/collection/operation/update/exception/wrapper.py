@@ -24,7 +24,7 @@ class UpdateException(CollectionOperationException):
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate an update failed.
+    1.  Indicate an updated was unsuccessful at producing a  valid work product.
     2.  Identify the method where the failure occurred.
 
     # PARENT:
@@ -51,7 +51,7 @@ class UpdateException(CollectionOperationException):
    None
 
     # INHERITED METHODS:
-        *   See WrapperException class for inherited methods.
+        *   See CollectionOperationException class for inherited methods.
     """
     OP = "Update"
     RSLT_TYPE = "UpdateResult"

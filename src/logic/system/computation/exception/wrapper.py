@@ -24,7 +24,7 @@ class ComputationException(OperationException):
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate a computation failed.
+    1.  Indicate a computation was unsuccessful, it did not produce a result.
     2.  Identify the method where the failure occurred.
 
     # PARENT:
@@ -51,7 +51,7 @@ class ComputationException(OperationException):
    None
 
     # INHERITED METHODS:
-        *   See WrapperException class for inherited methods.
+        *   See OperationException class for inherited methods.
     """
     OP = "Computation"
     RSLT_TYPE = "ComputationResult"

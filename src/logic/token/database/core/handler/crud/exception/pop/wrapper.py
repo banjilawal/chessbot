@@ -17,18 +17,17 @@ __all__ = [
 
 from logic.system import DeletionException
 
-
 # ======================# TOKEN_STACK_POP_FAILURE #======================#
 class TokenStackPopException(DeletionException):
     """
-    # ROLE: Exception Chain Layer 1, Exception Messaging
-    # TASK: Worker Method Identifier
+    # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Identify the TokenStackService method where the pop failed.
+    1.  Indicate a TokenStackStack pop was unsuccessful.
+    2.  Identify the TokenStack method where the pop operation failed.
 
     # PARENT:
-        *   DeletionException
+        *   DeletionOperation
 
     # PROVIDES:
     None
@@ -37,43 +36,42 @@ class TokenStackPopException(DeletionException):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See DeletionException class for inherited attributes.
+        *   See DeletionOperation class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:)
-        *   err_code (str)
-        *   msg (str)
-        *   ex (Optional[Exception])
-        *   mthd (Optional[str])
-        *   op (Optional[str])
-        *   rslt_type (Optional[str])
+        op: Optional[str]
+        ex: Optional[str]
+        msg: Optional[str]
+        mthd: Optional[str]
+        err_code: Optional[str]
+        rslt_type: Optional[str]
 
     # LOCAL METHODS:
    None
 
     # INHERITED METHODS:
-        *   See DeletionException class for inherited methods.
+        *   See DeletionOperation class for inherited methods.
     """
-    MTHD = Optional[str]
-    OP = "Delete"
+    OP = "Deletion"
     RSLT_TYPE = "DeletionResult"
-    MSG = "TokenStack pop failed."
     ERR_CODE = "TOKEN_STACK_POP_FAILURE"
+    MSG = "TokenStack pop failed."
     
     def __init__(
             self,
-            err_code: Optional[str] = None,
-            msg: Optional[str] = None,
-            ex: Optional[Exception] = None,
-            mthd: Optional[str] = None,
             op: Optional[str] = None,
+            msg: Optional[str] = None,
+            mthd: Optional[str] = None,
+            ex: Optional[Exception] = None,
+            err_code: Optional[str] = None,
             rslt_type: Optional[str] = None,
     ):
         """
         Args:
             op: Optional[str]
+            ex: Optional[str]
             msg: Optional[str]
             mthd: Optional[str]
-            ex: Optional[Exception]
             err_code: Optional[str]
             rslt_type: Optional[str]
         """
