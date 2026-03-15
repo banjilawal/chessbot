@@ -10,6 +10,7 @@ version: 1.0.0
 # =========== TOKEN.SERVICE.HANDLER.COORD.EXCEPTION.DEBUG PACKAGE CONTENTS ===========#
 
 # Packages
-from .debug import *
+None
 
 # Modules
+from .inactive import InactiveTokenPoppingCoordException

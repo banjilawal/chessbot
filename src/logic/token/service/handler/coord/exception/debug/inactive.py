@@ -1,7 +1,7 @@
-# src/logic/token/service/handler/promotion/exception/debug/pawn.py
+# src/logic/token/service/handler/promotion/exception/debug/token.py
 
 """
-Module: logic.token.service.handler.promotion.exception.debug.pawn
+Module: logic.token.service.handler.promotion.exception.debug.token
 Author: Banji Lawal
 Created: 2026-03-14
 version: 1.0.0
@@ -11,21 +11,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# CANNOT_PROMOTE_INACTIVE_PAWN_EXCEPTION  #======================#
-    "PromoteInactivePawnException",
+    # ======================# INACTIVE_TOKEN_UNDO_COORD_PUSH_EXCEPTION  #======================#
+    "InactiveTokenPoppingCoordException",
 ]
 
 from logic.token import TokenDebugException
 
 
-# ======================# CANNOT_PROMOTE_INACTIVE_PAWN_EXCEPTION  #======================#
-class PromoteInactivePawnException(TokenDebugException):
+# ======================# INACTIVE_TOKEN_UNDO_COORD_PUSH_EXCEPTION  #======================#
+class InactiveTokenPoppingCoordException(TokenDebugException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that an inactive PawnToken cannot be promoted.
-
+    1.  Indicate that an inactive Token cannot undo its last move by popping its CoordStack.
+    
     # PARENT:
         *   TokenDebugException
 
@@ -53,8 +53,8 @@ class PromoteInactivePawnException(TokenDebugException):
     """
     VAR = Optional[str]
     VAL = Optional[Any]
-    MSG = "An inactive pawn cannot be promoted."
-    ERR_CODE = "CANNOT_PROMOTE_INACTIVE_PAWN_EXCEPTION"
+    ERR_CODE = "INACTIVE_TOKEN_UNDO_COORD_PUSH_EXCEPTION"
+    MSG = "An inactive token cannot pop its CoordStack."
     
     def __init__(
             self,

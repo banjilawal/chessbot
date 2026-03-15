@@ -60,8 +60,8 @@ class TokenDesignationCollisionException(TokenDebugException):
             self,
             var: Optional[str] = None,
             val: Optional[Any] = None,
-            err_code: Optional[str] = None,
             msg: Optional[str] = None,
+            err_code: Optional[str] = None,
             ex: Optional[Exception] = None,
     ):
         """

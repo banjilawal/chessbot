@@ -57,7 +57,7 @@ class TokenHandler:
         self._readiness_analyzer = readiness_analyzer
         
     @property
-    def promoter(self) -> PawnPromoter:
+    def pawn_promoter(self) -> PawnPromoter:
         return self._promoter
     
     @property

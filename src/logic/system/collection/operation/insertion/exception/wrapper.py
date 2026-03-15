@@ -36,7 +36,7 @@ class InsertionException(CollectionOperationException):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See CollectionException class for inherited attributes.
+        *   See CollectionOperationException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
         op: Optional[str]
@@ -50,7 +50,7 @@ class InsertionException(CollectionOperationException):
    None
 
     # INHERITED METHODS:
-        *   See CollectionException class for inherited methods.
+        *   See CollectionOperationException class for inherited methods.
     """
     OP = "Insertion"
     RSLT_TYPE = "InsertionResult"

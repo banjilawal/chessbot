@@ -14,7 +14,7 @@ from logic.rank import King, Knight, Queen, Rank, RankService, Rook
 from logic.rank.model.concrete.bishop import Bishop
 from logic.schema import SchemaService
 from logic.square import SquareContext
-from logic.system import DeletionResult, IntegrityService, InsertionResult, LoggingLevelRouter, id_emitter
+from logic.system import DeletionResult, IntegrityService, InsertionResult, LoggingLevelRouter, UpdateResult, id_emitter
 from logic.coord import Coord, CoordService, DuplicateCoordPushException, PoppingEmtpyCoordStackException
 from logic.token import (
     PromotionToKingException, NewRankSameAsCurrentRankException, OverMoveUndoLimitException,
@@ -22,7 +22,7 @@ from logic.token import (
     PromotionException, PawnToken,
     PromotionState, Token, TokenBoardState,
     TokenValidator,
-    TokenDeploymentException, TokenFactory, TokenReadinessAnalyzer, TokenOpeningSquareNotFoundException,
+    TokenDeploymentException, TokenFactory, TokenHandler, TokenOpeningSquareNotFoundException,
     TokenServiceException,
 )
 
@@ -45,7 +45,7 @@ class TokenService(IntegrityService[Token]):
     Attributes:
         SERVICE_NAME: str
         collision_detector: TokenCollisionDetector
-        readiness_analyzer: TokenReadinessAnalyzer
+        handler: TokenHandler
 
     # INHERITED ATTRIBUTES:
         *   See IntegrityService class for inherited attributes.
@@ -56,7 +56,7 @@ class TokenService(IntegrityService[Token]):
         *   builder (TokenBuilder) = TokenBuilder()
         *   validator (TokenValidator) = TokenValidator()
         *   collision_detector: TokenCollisionDetector = TokenCollisionDetector(),
-        *   readiness_analyzer: TokenReadinessAnalyzer = TokenReadinessAnalyzer(),
+        *   handler: TokenHandler = TokenHandler(),
 
     Methods:
         push_coord_to_token(token: Token, position: Coord, coord_service: CoordService) -> InsertionResult:
@@ -75,18 +75,18 @@ class TokenService(IntegrityService[Token]):
         *   See IntegrityService class for inherited methods.
     """
     SERVICE_NAME = "TokenService"
-    _readiness_analyzer: TokenReadinessAnalyzer
+    _handler: TokenHandler
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
+            handler: TokenHandler = TokenHandler(),
             builder: TokenFactory = TokenFactory(),
             validator: TokenValidator = TokenValidator(),
-            readiness_analyzer: TokenReadinessAnalyzer = TokenReadinessAnalyzer(),
     ):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
-        self._readiness_analyzer = readiness_analyzer
+        self._handler = handler
     
     @property
     def builder(self) -> TokenFactory:
@@ -99,8 +99,8 @@ class TokenService(IntegrityService[Token]):
         return cast(TokenValidator, self.entity_validator)
     
     @property
-    def readiness_analyzer(self) -> TokenReadinessAnalyzer:
-        return self._readiness_analyzer
+    def handler(self) -> TokenHandler:
+        return self._handler
     
         
     @LoggingLevelRouter.monitor
@@ -254,11 +254,11 @@ class TokenService(IntegrityService[Token]):
     @LoggingLevelRouter.monitor
     def promote_pawn(
             self,
+            rank: Rank,
             pawn: PawnToken,
-            new_rank: Rank,
             rank_service: RankService = RankService(),
             schema_service: SchemaService = SchemaService(),
-    ) -> InsertionResult:
+    ) -> UpdateResult[PawnToken]:
         """
         # ACTION:
             1.  If the token is not a free pawn or it has been promoted send an exception chain to the
@@ -267,109 +267,42 @@ class TokenService(IntegrityService[Token]):
             3.  Update the pawn's rank and promotion state then send the success InsertionResult.
             
         Args:
+            rank:
             pawn: PawnToken
-            new_rank: Rank
             rank_service: RankService
+            schema_service: SchemaService
             
         Returns:
-            InsertionResult
+            UpdateResult[PawnToken]
             
         Raises:
             TokenServiceException
-            CoordAlreadyToppingStackException
         """
-        method = "TokenService.promote_pawn"
+        method = f"{self.__class__.__name__}.promote_pawn"
         
-        # Handle the case that, the token is not certified safe.
-        pawn_validation = self.validator.verify_actionable_token(pawn)
-        if pawn_validation.is_failure:
+        promotion_result = self._handler.pawn_promoter.promote(
+            rank=rank,
+            pawn=pawn,
+            rank_service=rank_service,
+            schema_service=schema_service,
+            token_validator=self.validator,
+        )
+        # Handle the case that, the promotion is not successful.
+        if promotion_result.is_failure:
             # Return the exception chain on failure.
-            return InsertionResult.failure(
-                TokenServiceException(
-                    msg=f"{method}: {TokenService.ERR_CODE}",
-                    ex=pawn_validation.exception
-                )
-            )
-        # Handle the case that, the token is not a pawn
-        if not isinstance(pawn, PawnToken):
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                TokenServiceException(
-                    msg=f"ServiceId:{self.id}, {method}: {TokenService.ERR_CODE}",
-                    ex=PromotionException(
-                        msg=f"{method}: {PromotionException.ERR_CODE}",
-                        ex=TypeError(
-                            f"{method}: Expected type PawnToken for promotion. Got {type(pawn).__name__} instead."
-                        )
+            return UpdateResult.update_failure(
+                original=pawn,
+                exception=(
+                    TokenServiceException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=TokenServiceException.MSG,
+                        err_code=TokenServiceException.ERR_CODE,
+                        ex=promotion_result.exception
                     )
                 )
             )
-        # Handle the case that, the pawn has already been promoted.
-        if pawn.is_promoted:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                TokenServiceException(
-                    msg=f"ServiceId:{self.id}, {method}: {TokenService.ERR_CODE}",
-                    ex=PromotionException(
-                        msg=f"{method}: {PromotionException.ERR_CODE}",
-                        ex=PawnAlreadyPromotedException(f"{method}: {PawnAlreadyPromotedException.MSG}")
-                    )
-                )
-            )
-        # Handle the case that, the rank is not certified as safe.
-        rank_validation = rank_service.validate(new_rank)
-        if rank_validation.is_failure:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                TokenServiceException(
-                    msg=f"ServiceId:{self.id}, {method}: {TokenService.ERR_CODE}",
-                    ex=PromotionException(
-                        msg=f"{method}: {PromotionException.ERR_CODE}",
-                        ex=rank_validation.exception
-                    )
-                )
-            )
-        # Handle the case that, the new rank is King.
-        if isinstance(new_rank, King):
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                TokenServiceException(
-                    msg=f"ServiceId:{self.id}, {method}: {TokenService.ERR_CODE}",
-                    ex=PromotionException(
-                        msg=f"{method}: {PromotionException.ERR_CODE}",
-                        ex=PromotionToKingException(
-                            f"{method}: {PromotionToKingException.MSG}"
-                        )
-                    )
-                )
-            )
-        # Handle the case that, new_rank is still a Pawn rank.
-        if pawn.rank == new_rank:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                TokenServiceException(
-                    msg=f"ServiceId:{self.id}, {method}: {TokenService.ERR_CODE}",
-                    ex=PromotionException(
-                        msg=f"{method}: {PromotionException.ERR_CODE}",
-                        ex=NewRankSameAsCurrentRankException(NewRankSameAsCurrentRankException.MSG)
-                    )
-                )
-            )
-        # --- Conduct promotion steps. ---#
-        pawn.set_new_rank(new_rank)
-        
-        # Match the promotion state to the rank
-        if isinstance(new_rank, Bishop):
-            pawn.promotion_state = PromotionState.PROMOTED_TO_BISHOP
-        if isinstance(new_rank, Knight):
-            pawn.promotion_state = PromotionState.PROMOTED_TO_KNIGHT
-        if isinstance(new_rank, Rook):
-            pawn.promotion_state = PromotionState.PROMOTED_TO_ROOK
-        if isinstance(new_rank, Queen):
-            pawn.promotion_state = PromotionState.PROMOTED_TO_QUEEN
-        
-        # Send the success result to the caller.
-        return InsertionResult.success()
+        return promotion_result
     
     @LoggingLevelRouter.monitor
     def deploy_on_board(self,token: Token,) -> InsertionResult[bool]:
