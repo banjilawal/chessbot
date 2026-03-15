@@ -173,33 +173,19 @@ class TokenStackCrudHandler:
             TokenCrudHandlerException
             PoppingEmptyTokenStackException
         """
-        method = f"{cls.__name__}.pop"
+        method = f"{cls.__class__.__name__}.pop"
         
-        # Handle the case that, there are no tokens in the stack.
-        if token_stack.is_empty:
-            # Return the exception chain on failure.
-            return DeletionResult.failure(
-                TokenCrudHandlerException(
-                    cls_mthd=method,
-                    cls_name=cls.__class__.__name__,
-                    err_code=TokenCrudHandlerException.ERR_CODE,
-                    msg=TokenCrudHandlerException.MSG,
-                    ex=TokenStackPushException(
-                        op=TokenStackPushException.OP,
-                        msg=TokenStackPushException.MSG,
-                        mthd=TokenStackPushException.MTHD,
-                        rslt_type=TokenStackPushException.RSLT_TYPE,
-                        ex=PoppingEmptyTokenStackException(
-                            msg=PoppingEmptyTokenStackException.MSG,
-                            err_code=PoppingEmptyTokenStackException.ERR_CODE,
-                        )
-                    )
-                )
-            )
+        deleting_empty_stack_result = cls._deleting_from_empty_stack_handler(token_stack)
+        if deleting_empty_stack_result.is_failure:
+            return deleting_empty_stack_result
+        
         # --- Pop the non-empty token stack. ---#
         token = token_stack.items.pop(-1)
-        # --- Send the success result to the caller. ---#
-        DeletionResult.success(token)
+        
+        return cls._deletion_cleanup_handler(
+            deleted_token=token,
+            token_stack=token_stack,
+        )
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -283,11 +269,16 @@ class TokenStackCrudHandler:
                 token_stack.items.remove(token)
         # --- After the purging loop finishes handle the possible return cases. ---#
         
-        # At least one token was removed.
-        if target is not None:
-            return DeletionResult.success(payload=target)
-        # Default case: no token were removed.
-        return DeletionResult.nothing_to_delete()
+        # Nothing was deleted
+        if target is None:
+            return DeletionResult.nothing_to_delete()
+        
+        # If an item was deleted handoff state maintenance and returning the deletion to the client.
+        return cls._deletion_cleanup_handler(
+            deleted_token=target,
+            token_stack=token_stack,
+        )
+
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -336,3 +327,74 @@ class TokenStackCrudHandler:
             )
         # --- For either a successful or empty search result directly forward to the caller. ---#
         return query_result
+    
+    @classmethod
+    def _deletion_cleanup_handler(
+            cls,
+            deleted_token: Token,
+            token_stack: TokenStackService
+    ) -> DeletionResult[Token]:
+        """
+        Action:
+            Single entry point for updating TokenState i f the stack is empty after deletion
+            before return the deletion result.
+            
+        Args:
+            deleted_token: Token
+            token_stack: TokenStackService
+            
+        Returns:
+            DeletionResult[Token]
+            
+        Raises:
+            None
+        """
+        method = f"{cls.__name__}._deletion_cleanup_handle"
+        
+        if token_stack.is_empty:
+            token_stack.state = TokenStackState.DEPLOYED_ON_BOARD
+        
+        return DeletionResult.success(payload=deleted_token)
+    
+    
+    @classmethod
+    def _deleting_from_empty_stack_handler(
+            cls,
+            token_stack: TokenStackService
+    ) -> DeletionResult[Token]:
+        """
+        Avoids duplicating the deleting from an empty stack.
+        
+        Args:
+            token_stack: TokenStackService
+            
+        Returns:
+            DeletionResult[List[Token]
+            
+        Raises:
+            TokenCrudHandlerException
+        """
+        method = f"{cls.__name__}._deleting_from_empty_stack_handler"
+        
+        # Handle the case that, there are no tokens in the stack.
+        if token_stack.is_empty:
+            # Return the exception chain on failure.
+            return DeletionResult.failure(
+                TokenCrudHandlerException(
+                    cls_mthd=method,
+                    cls_name=cls.__class__.__name__,
+                    err_code=TokenCrudHandlerException.ERR_CODE,
+                    msg=TokenCrudHandlerException.MSG,
+                    ex=TokenStackPushException(
+                        op=TokenStackPushException.OP,
+                        msg=TokenStackPushException.MSG,
+                        mthd=TokenStackPushException.MTHD,
+                        rslt_type=TokenStackPushException.RSLT_TYPE,
+                        ex=PoppingEmptyTokenStackException(
+                            msg=PoppingEmptyTokenStackException.MSG,
+                            err_code=PoppingEmptyTokenStackException.ERR_CODE,
+                        )
+                    )
+                )
+            )
+        return DeletionResult.nothing_to_delete()

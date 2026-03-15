@@ -16,7 +16,7 @@ from logic.system.collection.operation.deletion.state.state import DeletionResul
 T = TypeVar("T")
 
 
-class DeletionResult(DataResult[Generic[T]]):
+class DeletionResult(DataResult, Generic[T]):
     """
     # ROLE: Messanger, Data Transport Object, Error Transport Object.
 
