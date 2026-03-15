@@ -8,29 +8,24 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-
 from copy import deepcopy
-from typing import cast
 
-
-from logic.rank import King, Pawn, Rank, RankService
 from logic.schema import SchemaService
+from logic.rank import King, Pawn, Rank, RankService
 from logic.system import LoggingLevelRouter, UpdateResult, ValidationResult
 from logic.token import (
     PawnPromotionRowException, PromoteInactivePawnException, PromoteToPawnException, PromotionState,
-    PromotionToKingException,
-    PawnAlreadyPromotedException, PawnPromoterException, PromotionException, PawnToken, TokenValidator,
+    PromotionToKingException, PawnAlreadyPromotedException, PawnPromoterException, PromotionException,
+    PawnToken, TokenValidator,
 )
 
 
 class PawnPromoter:
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer, Computation, Transformer,.
+    # ROLE: Update Handler, Consistency, Integrity Maintenance, Lifecycle Management
 
-    # LOCAL RESPONSIBILITIES:
-
-    # INHERITED RESPONSIBILITIES:
-    None
+    # RESPONSIBILITIES:
+    1.  Ensure integrity and consistency are maintained during the pawn's promotion lifecycle.
 
     # PARENT:
     None
@@ -46,19 +41,8 @@ class PawnPromoter:
 
     # CONSTRUCTOR PARAMETERS:
     None
-
-    Methods:
-        push_coord_to_token(token: Token, position: Coord, coord_service: CoordService) -> InsertionResult:
-
-        *   promote_pawn(
-                    self,
-                    pawn: PawnToken,
-                    rank: Rank,
-                    schema_service: SchemaService = SchemaService()
-            ) -> UpdateResult[PawnToken]:
-
-        *   deploy_on_board(self,token: Token) -> InsertionResult[bool]:
-        *   pop_coord_from_token(self, token) -> DeletionResult[Coord]:
+    
+    # LOCAL METHODS:
 
     # INHERITED METHODS:
     None
@@ -237,18 +221,19 @@ class PawnPromoter:
     ) -> ValidationResult[int]:
         """
         Action:
-            Verify the rank is safe and its not Pawn or King
-    
+            Verify the rank is safe, and not a Pawn or King
         Args:
             rank: Rank
             rank_service: RankService
-    
         Returns:
             ValidationResult[int]
-    
         Raises:
+            PromotionException
+            PawnPromoterException
+            PromoteToPawnException
+            PromoteToKingException
         """
-        method = f"{cls.__classs__.__name__}. _verify_rank_is_promotable"
+        method = f"{cls.__class__.__name__}. _verify_rank_is_promotable"
         
         # Handle the case that, the rank is not certified as safe.
         validation_result = rank_service.validator.validate(rank)
@@ -326,16 +311,16 @@ class PawnPromoter:
         """
         Action:
             Verify the token is on its enemy's rank row.
-            
         Args:
             pawn: Pawn
-            
         Returns:
             ValidationResult[int]
-            
         Raises:
+            PromotionException
+            PawnPromoterException
+            PawnPromotionRowException
         """
-        method = f"{cls.__classs__.__name__}._verify_pawn_on_enemy_rank_row"
+        method = f"{cls.__class__.__name__}._verify_pawn_on_enemy_rank_row"
         
         # Search for the enemy's home row.
         enemy_schema_search_result = schema_service.enemy_schema(pawn.team.schema)

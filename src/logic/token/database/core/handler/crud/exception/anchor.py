@@ -12,13 +12,13 @@ from typing import Optional
 
 ___all__ = [
     # ======================# TOKEN_CRUD_HANDLER_EXCEPTION #======================#
-    "TokenCrudHandlerException",
+    "TokenStackCrudHandlerException",
 ]
 
 from logic.system import AnchorException
 
 # ======================# TOKEN_CRUD_HANDLER_EXCEPTION #======================#
-class TokenCrudHandlerException(AnchorException):
+class TokenStackCrudHandlerException(AnchorException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 

@@ -3,7 +3,7 @@
 """
 Module: logic.token.service.handler.promotion.__init__
 Author: Banji Lawal
-Created: 2026-02-08
+Created: 2026-03-14
 version: 1.0.0
 """
 
@@ -13,4 +13,4 @@ version: 1.0.0
 from .exception import *
 
 # Modules
-from .handler import PawnPromotionHandler
+from .promoter import PawnPromoter

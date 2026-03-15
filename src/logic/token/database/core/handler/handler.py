@@ -14,7 +14,7 @@ from logic.token import RankQuotaAnalyzer, TokenCollisionDetector, TokenStackCru
 
 class TokenStackHandler:
     """
-    # ROLE: Utilities, Update Management Statistics.
+    # ROLE: Handler Manager
 
     # RESPONSIBILITIES:
     1.  Unifies TokenStackService utilities in one place.

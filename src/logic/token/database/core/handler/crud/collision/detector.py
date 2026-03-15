@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from logic.system import CollisionDetector, CollisionReport, LoggingLevelRouter
 from logic.token import (
-    Token, TokenColliderException, TokenIdCollisionException, TokenDesignationCollisionException,
-    TokenOpeningSquareCollisionException, TokenStackService
+    Token, TokenColliderException, TokenIdCollisionException, TokenDesignationCollisionException, TokenStackService,
+    TokenOpeningSquareCollisionException,
 )
 
 class TokenCollisionDetector(CollisionDetector[Token]):

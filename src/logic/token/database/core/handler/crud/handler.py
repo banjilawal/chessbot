@@ -6,24 +6,25 @@ Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
 """
-from typing import List
+
+from __future__ import annotations
 
 from logic.token import (
-    PoppingEmptyTokenStackException, RankQuotaAnalyzer, Token, TokenCollisionDetector, TokenContext,
-    TokenCrudHandlerException,
-    TokenStackCountsAnalyzer, TokenStackFullException, TokenStackPushException, TokenStackService, TokenStackState
+    PoppingEmptyTokenStackException, RankQuotaAnalyzer, Token, TokenCollisionDetector, TokenStackCrudHandlerException,
+    TokenStackFullException, TokenStackPushException, TokenStackService, TokenStackState
 )
 from logic.system import DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, SearchResult
 
 
 class TokenStackCrudHandler:
     """
-    # ROLE: Handler
-    # TASK: CRUD
+    # ROLE: CRUD Handler, Consistency, Integrity Maintenance, Lifecycle Management
 
     # RESPONSIBILITIES:
-    1.  Separates the CRUD operations into a separate module to make the
-        TokenStackService modular and easier to maintain.
+    1.  Ensure integrity and consistency are maintained during TokenStack
+            *   Insertion
+            *   Deletion
+        operations.
 
     # PARENT:
     None
@@ -75,7 +76,7 @@ class TokenStackCrudHandler:
             InsertionResult
             
         Raises:
-            TokenCrudHandlerException
+            TokenStackCrudHandlerException
         """
         method =  f"{cls.__name__}.push"
         
@@ -83,11 +84,11 @@ class TokenStackCrudHandler:
         if token_stack.is_full:
             # Return the exception chain on failure
             return InsertionResult.failure(
-                TokenCrudHandlerException(
+                TokenStackCrudHandlerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    err_code=TokenCrudHandlerException.ERR_CODE,
-                    msg=TokenCrudHandlerException.MSG,
+                    err_code=TokenStackCrudHandlerException.ERR_CODE,
+                    msg=TokenStackCrudHandlerException.MSG,
                     ex=TokenStackPushException(
                         op=TokenStackPushException.OP,
                         msg=TokenStackPushException.MSG,
@@ -109,11 +110,11 @@ class TokenStackCrudHandler:
         if not collision_detection_result.is_no_collision:
             # Return the exception chain on failure
             return InsertionResult.failure(
-                TokenCrudHandlerException(
+                TokenStackCrudHandlerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    err_code=TokenCrudHandlerException.ERR_CODE,
-                    msg=TokenCrudHandlerException.MSG,
+                    err_code=TokenStackCrudHandlerException.ERR_CODE,
+                    msg=TokenStackCrudHandlerException.MSG,
                     ex=TokenStackPushException(
                         op=TokenStackPushException.OP,
                         msg=TokenStackPushException.MSG,
@@ -132,11 +133,11 @@ class TokenStackCrudHandler:
         if openings_count_result.is_failure:
             # Return the exception chain on failure
             return InsertionResult.failure(
-                TokenCrudHandlerException(
+                TokenStackCrudHandlerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    err_code=TokenCrudHandlerException.ERR_CODE,
-                    msg=TokenCrudHandlerException.MSG,
+                    err_code=TokenStackCrudHandlerException.ERR_CODE,
+                    msg=TokenStackCrudHandlerException.MSG,
                     ex=TokenStackPushException(
                         op=TokenStackPushException.OP,
                         msg=TokenStackPushException.MSG,
@@ -216,7 +217,7 @@ class TokenStackCrudHandler:
             DeletionResult[Token]
             
         Raises:
-            TokenCrudHandlerException
+            TokenStackCrudHandlerException
             TokenStackPopException
             PoppingEmptyTokenStackException
         """
@@ -235,11 +236,11 @@ class TokenStackCrudHandler:
         if validation.is_failure:
             # Return the exception chain on failure.
             return DeletionResult.failure(
-                TokenCrudHandlerException(
+                TokenStackCrudHandlerException(
                     cls_mthd=method,
                     cls_name=cls.__class__.__name__,
-                    err_code=TokenCrudHandlerException.ERR_CODE,
-                    msg=TokenCrudHandlerException.MSG,
+                    err_code=TokenStackCrudHandlerException.ERR_CODE,
+                    msg=TokenStackCrudHandlerException.MSG,
                     ex=TokenStackPushException(
                         op=TokenStackPushException.OP,
                         msg=TokenStackPushException.MSG,
@@ -269,6 +270,7 @@ class TokenStackCrudHandler:
         )
     
     @classmethod
+    @LoggingLevelRouter.monitor
     def _deletion_cleanup_handler(
             cls,
             deleted_token: Token,
@@ -310,18 +312,18 @@ class TokenStackCrudHandler:
         Returns:
             DeletionResult[List[Token]
         Raises:
-            TokenCrudHandlerException
+            TokenStackCrudHandlerException
         """
         
         # Handle the case that, there are no tokens in the stack.
         if token_stack.is_empty:
             # Return the exception chain on failure.
             return DeletionResult.failure(
-                TokenCrudHandlerException(
+                TokenStackCrudHandlerException(
                     cls_mthd=client_method,
                     cls_name=cls.__class__.__name__,
-                    err_code=TokenCrudHandlerException.ERR_CODE,
-                    msg=TokenCrudHandlerException.MSG,
+                    err_code=TokenStackCrudHandlerException.ERR_CODE,
+                    msg=TokenStackCrudHandlerException.MSG,
                     ex=TokenStackPushException(
                         op=TokenStackPushException.OP,
                         msg=TokenStackPushException.MSG,

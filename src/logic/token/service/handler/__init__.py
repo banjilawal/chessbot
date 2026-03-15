@@ -10,7 +10,7 @@ version: 1.0.0
 # =========== TOKEN.SERVICE.HANDLER PACKAGE CONTENTS ===========#
 
 # Packages
+from .coord import *
 from .promotion import *
 
 # Modules
-None

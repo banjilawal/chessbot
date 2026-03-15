@@ -16,6 +16,7 @@ __all__ = [
 ]
 
 from logic.token import TokenDebugException
+
 # ======================# PAWN_ALREADY_PROMOTED_EXCEPTION #======================#
 class PawnAlreadyPromotedException(TokenDebugException):
     """

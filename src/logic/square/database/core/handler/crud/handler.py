@@ -17,12 +17,13 @@ from logic.system import DeletionResult, IdentityService, InsertionResult, Loggi
 
 class SquareStackCrudHandler:
     """
-    # ROLE: Handler
-    # TASK: CRUD
+    # ROLE: CRUD Handler, Consistency, Integrity Maintenance, Lifecycle Management
 
     # RESPONSIBILITIES:
-    1.  Separates the CRUD operations into a separate module to make the
-        SquareStackService modular and easier to maintain.
+    1.  Ensure integrity and consistency are maintained during SquareStack
+            *   Insertion
+            *   Deletion
+        operations.
 
     # PARENT:
     None

@@ -1,7 +1,7 @@
-# src/logic/token/database/core/util/quota/analyzer.py
+# src/logic/token/database/core/handler/quota/analyzer.py
 
 """
-Module: logic.token.database.core.util.quota.analyzer
+Module: logic.token.database.core.handler.quota.analyzer
 Author: Banji Lawal
 Created: 2026-02-21
 version: 1.0.0
@@ -17,7 +17,7 @@ from logic.token import RankQuotaAnalysisException, RankQuotaFullException, Toke
 
 class RankQuotaAnalyzer:
     """
-    # ROLE: Quota management, Utility class.
+    # ROLE: Quota Management Handler
 
     # RESPONSIBILITIES:
     1.  Public facing API.

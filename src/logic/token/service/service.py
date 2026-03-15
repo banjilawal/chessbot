@@ -12,6 +12,7 @@ from typing import cast
 
 from logic.rank import King, Knight, Queen, Rank, RankService, Rook
 from logic.rank.model.concrete.bishop import Bishop
+from logic.schema import SchemaService
 from logic.square import SquareContext
 from logic.system import DeletionResult, IntegrityService, InsertionResult, LoggingLevelRouter, id_emitter
 from logic.coord import Coord, CoordService, DuplicateCoordPushException, PoppingEmtpyCoordStackException
@@ -24,7 +25,6 @@ from logic.token import (
     TokenDeploymentException, TokenFactory, TokenReadinessAnalyzer, TokenOpeningSquareNotFoundException,
     TokenServiceException,
 )
-from logic.token.service.detector import TokenCollisionDetector
 
 
 class TokenService(IntegrityService[Token]):
@@ -262,7 +262,8 @@ class TokenService(IntegrityService[Token]):
             self,
             pawn: PawnToken,
             new_rank: Rank,
-            rank_service: RankService = RankService()
+            rank_service: RankService = RankService(),
+            schema_service: SchemaService = SchemaService(),
     ) -> InsertionResult:
         """
         # ACTION:
