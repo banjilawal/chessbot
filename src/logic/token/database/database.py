@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import List
+from typing import List, Optional
 
 from logic.rank import Rank
 from logic.token import (
@@ -44,23 +44,17 @@ class TokenDatabase(Database[Token]):
     
     def __init__(
             self,
-            name: str = SERVICE_NAME,
-            token_stack: TokenStackService = TokenStackService(),
+            token_stack: TokenStackService,
             id: int = IdFactory.next_id(class_name="TokenDatabase"),
+            name: str = SERVICE_NAME,
     ):
         """
-        # ACTION:
-            Constructor
-        # PARAMETERS:
-            *   id (int)
-            *   name (str)
-            *   token_stack (TokenStackService)
-        # RETURNS:
-            None
-        Raises:
-            None
+        Args:
+            id: int
+            name: str
+            token_stack: TokenStackService
         """
-        super().__init__(id=id, name=name, data_service=token_stack)
+        super().__init__(id=id, name=name)
         self._token_stack = token_stack
     
     @property
@@ -82,6 +76,10 @@ class TokenDatabase(Database[Token]):
     @property
     def is_empty(self) -> bool:
         return self._token_stack.is_empty
+    
+    @property
+    def current_item(self) -> Optional[Token]:
+        return self._token_stack.current_item
     
     @property
     def is_ready_for_deployment(self) -> bool:

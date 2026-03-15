@@ -11,12 +11,12 @@ from logic.token import PawnTokenException
 
 __all__ = [
     # ======================# NEW_RANK_IS_STILL_PAWN_RANK EXCEPTION #======================#
-    "NewRankSameAsCurrentRankException",
+    "NewRankCannotBePawnException",
 ]
 
 
 # ======================# NEW_RANK_IS_STILL_PAWN_RANK EXCEPTION #======================#
-class NewRankSameAsCurrentRankException(PawnTokenException):
+class NewRankCannotBePawnException(PawnTokenException):
     """
     # ROLE: Debug, Error Tracing
 

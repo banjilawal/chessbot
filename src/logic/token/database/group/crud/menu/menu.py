@@ -1,2 +1,0 @@
-class CRUDMenu:
-    pass

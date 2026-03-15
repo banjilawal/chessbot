@@ -1,34 +1,32 @@
-# src/logic/token/database/core/exception/query/exist.py
+# src/logic/token/database/core/exception/query/exists.py
 
 """
-Module: logic.token.database.core.exception.query.exist
+Module: logic.token.database.core.exception.query.exists
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
 """
 
-
+from __future__ import annotations
+from typing import Any, Optional
 
 __all__ = [
-    # ======================# TOKEN_NOT_FOUND EXCEPTION #======================#
+    # ======================# TOKEN_NOT_FOUND_EXCEPTION #======================#
     "TokenNotFoundException",
 ]
 
-from logic.token import TokenDebugException
+from logic.system import DebugException
 
-
-# ======================# TOKEN_NOT_FOUND EXCEPTION #======================#
-class TokenNotFoundException(TokenDebugException):
+# ======================# TOKEN_NOT_FOUND_EXCEPTION #======================#
+class TokenNotFoundException(DebugException):
     """
-    # ROLE: Debug, Error Tracing
+    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that an attempt to remove instances of a item by a unique attribute failed because no bag
-        matching the property were found in the dataset.
+    1.  Indicate that no token was found with attribute's value.
 
     # PARENT:
-        *   NullException
-        *   TokenStackException
+        *   TokenDebugException
 
     # PROVIDES:
     None
@@ -37,7 +35,44 @@ class TokenNotFoundException(TokenDebugException):
     None
 
     # INHERITED ATTRIBUTES:
+        *   TokenDebugException class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        var: Optional[str]
+        val: Optional[Any]
+        msg: Optional[str]
+        ex: Optional[Exception]
+        err_code: Optional[str]
+
+    # LOCAL METHODS:
     None
+
+    # INHERITED METHODS:
+        *   See TokenDebugException class for inherited methods.
     """
+    VAR = Optional[str]
+    VAL = Optional[Any]
     ERR_CODE = "TOKEN_NOT_FOUND_EXCEPTION"
-    MSG = "Token deletion failed: The item was not found in the dataset. Nothing to remove."
+    MSG = "Did not find a token with the attribute."
+    
+    def __init__(
+            self,
+            var: Optional[str] = None,
+            val: Optional[Any] = None,
+            msg: Optional[str] = None,
+            err_code: Optional[str] = None,
+            ex: Optional[Exception] = None,
+    ):
+        """
+        Args:
+            var: Optional[str]
+            val: Optional[Any]
+            msg: Optional[str]
+            ex: Optional[Exception]
+            err_code: Optional[str]
+        """
+        var = var or self.VAR
+        val = val or self.VAL
+        msg = msg or self.MSG
+        err_code = err_code or self.ERR_CODE
+        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)

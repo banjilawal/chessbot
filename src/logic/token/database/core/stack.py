@@ -14,9 +14,8 @@ from logic.system import (
      SearchResult, StackService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, IdFactory
 )
 from logic.token import (
-    PoppingEmptyTokenStackException, Token, TokenContext, TokenService, TokenServiceException, TokenStackException,
-    TokenContextService,
-    PoppingTokenException, PushingTokenException, TokenStackFullException, TokenStackState, TokenStackHandler,
+    Token, TokenContext, TokenContextService, TokenService, TokenStackHandler, TokenStackServiceException,
+    TokenStackState
 )
 
 
@@ -62,17 +61,13 @@ class TokenStackService(StackService[Token]):
             context_service: TokenContextService = TokenContextService(),
     ):
         """
-        # ACTION:
-            Constructor
-        # PARAMETERS:
-            *   id (int)
-            *   name (str)
-            *   service (TokenService)
-            *   context_service (TokenContextService)
-        # RETURNS:
-            None
-        Raises:
-            None
+        Args:
+            id: int
+            name: str
+            capacity: int
+            service: TokenService
+            handler: TokenStackHandler
+            context_service: TokenContextService
         """
         method = "TokenService.__init__"
         super().__init__(id=id, name=name,)
@@ -81,7 +76,6 @@ class TokenStackService(StackService[Token]):
         self._handler = handler
         self._service = service
         self._context_service = context_service
-        
         self._state = TokenStackState.NOT_READY_FORD_DEPLOYMENT
 
     @property
@@ -165,7 +159,7 @@ class TokenStackService(StackService[Token]):
             InsertionResult[bool]
             
         Raises:
-            *   TokenStackException
+            *   TokenStackServiceException
         """
         method = f"{self.__class__.__name__}.push"
         
@@ -179,11 +173,11 @@ class TokenStackService(StackService[Token]):
         if insertion_result.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
-                TokenStackException(
+                TokenStackServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenStackException.MSG,
-                    err_code=TokenStackException.ERR_CODE,
+                    msg=TokenStackServiceException.MSG,
+                    err_code=TokenStackServiceException.ERR_CODE,
                     ex=insertion_result.exception,
                 )
             )
@@ -199,7 +193,7 @@ class TokenStackService(StackService[Token]):
         Returns:
             DeletionResult[Token]
         Raises:
-            TokenStackException
+            TokenStackServiceException
         """
         method = f"{self.__class__.__name__}.pop"
     
@@ -210,11 +204,11 @@ class TokenStackService(StackService[Token]):
         if pop_result.is_failure:
             # Return the exception chain on failure.
             return DeletionResult.failure(
-                TokenStackException(
+                TokenStackServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenStackException.MSG,
-                    err_code=TokenStackException.ERR_CODE,
+                    msg=TokenStackServiceException.MSG,
+                    err_code=TokenStackServiceException.ERR_CODE,
                     ex=pop_result.exception,
                 )
             )
@@ -236,7 +230,7 @@ class TokenStackService(StackService[Token]):
         Returns:
             DeletionResult[Token]
         Raises:
-            TokenStackException
+            TokenStackServiceException
         """
         method = f"{self.__class__.__name__}.delete_by_id"
         
@@ -249,12 +243,12 @@ class TokenStackService(StackService[Token]):
         if delete_by_id_result.is_failure:
             # Return the exception chain on failure.
             return DeletionResult.failure(
-                TokenStackException(
+                TokenStackServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenStackException.MSG,
-                    err_code=TokenStackException.ERR_CODE,
-                    ex=delete_by_id_result,
+                    msg=TokenStackServiceException.MSG,
+                    err_code=TokenStackServiceException.ERR_CODE,
+                    ex=delete_by_id_result.exception,
                 )
             )
         # --- Otherwise forward the result to the client. ---#
@@ -263,23 +257,23 @@ class TokenStackService(StackService[Token]):
     @LoggingLevelRouter.monitor
     def query(self, context: TokenContext) -> SearchResult[List[Token]]:
         """
-        # ACTION:
+        Action:
             1.  Pass the context param to context_service manages all error handling and operations in
                 search lifecycle.
-            2.  Any failures context_service will be encapsulated inside a TokenStackException which is
+            2.  Any failures context_service will be encapsulated inside a TokenStackServiceException which is
                 sent inside a SearchResult.
             3.  If the search completes successfully return the result directly because its a SearchResult instance.
-        # PARAMETERS:
-            *   context (TokenContext)
-        # RETURN:
-            *   SearchResult[List[Token]] containing either:
-                    - On failure: An exception.
-                    - On success: List[Token].
-                    - On Empty: payload null, exception null.
+            
+        Args:
+            context: SearchContext
+            
+        Returns:
+            SearchResult[List[Token]]
+            
         Raises:
-            *   TokenStackException
+            TokenStackServiceException
         """
-        method = "TokenStackService.query"
+        method = f"{self.__class__.__name__}.query"
         
         # --- Handoff the search responsibility to _context_service. ---#
         query_result = self._context_service.finder.find(dataset=self._stack, context=context)
@@ -288,9 +282,12 @@ class TokenStackService(StackService[Token]):
         if query_result.is_failure:
             # Return the exception chain on failure.
             return SearchResult.failure(
-                TokenStackException(
-                    msg=f"ServiceID:{self.id} {method}: {TokenStackException.ERR_CODE}",
-                    ex=query_result.exception
+                TokenStackServiceException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenStackServiceException.MSG,
+                    err_code=TokenStackServiceException.ERR_CODE,
+                    ex=query_result.exception,
                 )
             )
         # --- For either a successful or empty search result directly forward to the caller. ---#
