@@ -75,7 +75,6 @@ class TokenService(IntegrityService[Token]):
         *   See IntegrityService class for inherited methods.
     """
     SERVICE_NAME = "TokenService"
-    _collision_detector: TokenCollisionDetector
     _readiness_analyzer: TokenReadinessAnalyzer
     
     def __init__(
@@ -84,11 +83,9 @@ class TokenService(IntegrityService[Token]):
             id: int = id_emitter.service_id,
             builder: TokenFactory = TokenFactory(),
             validator: TokenValidator = TokenValidator(),
-            collision_detector: TokenCollisionDetector = TokenCollisionDetector(),
             readiness_analyzer: TokenReadinessAnalyzer = TokenReadinessAnalyzer(),
     ):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
-        self._collision_detector = collision_detector
         self._readiness_analyzer = readiness_analyzer
     
     @property
@@ -105,9 +102,6 @@ class TokenService(IntegrityService[Token]):
     def readiness_analyzer(self) -> TokenReadinessAnalyzer:
         return self._readiness_analyzer
     
-    @property
-    def collision_detector(self) -> TokenCollisionDetector:
-        return self._collision_detector
         
     @LoggingLevelRouter.monitor
     def pop_coord_from_token(self, token) -> DeletionResult[Coord]:
