@@ -6,7 +6,9 @@ Author: Banji Lawal
 Created: 2026-03-14
 version: 1.0.0
 """
+from logic.coord.database.core.exception.pop.wrapper import PoppingCoordException
 from logic.token.service.handler.coord.exception.anchor import TokenCoordHandlerException
+from logic.token.service.handler.coord.exception.pop import MoveUndoLimitException, UnopenedTokenPoppingCoordException
 
 # src/logic/token/service/service.py
 
@@ -27,7 +29,8 @@ from logic.square import SquareContext
 from logic.system import DeletionResult, IntegrityService, InsertionResult, LoggingLevelRouter, UpdateResult, id_emitter
 from logic.coord import Coord, CoordService, DuplicateCoordPushException, PoppingEmtpyCoordStackException
 from logic.token import (
-    PromotionToKingException, NewRankSameAsCurrentRankException, OverMoveUndoLimitException,
+    InactiveTokenPoppingCoordException, PromotionToKingException, NewRankSameAsCurrentRankException,
+    OverMoveUndoLimitException,
     PawnAlreadyPromotedException,
     PromotionException, PawnToken,
     PromotionState, Token, TokenBoardState,
@@ -104,7 +107,14 @@ class TokenCoordHandler:
                     cls_name=cls.__class__.__name__,
                     msg=TokenCoordHandlerException.MSG,
                     err_code=TokenCoordHandlerException.ERR_CODE,
-                    ex=validation_result.exception,
+                    ex=PoppingCoordException(
+                        mthd=method,
+                        op=PoppingCoordException.OP,
+                        msg=PoppingCoordException.MSG,
+                        err_code=PoppingCoordException.ERR_CODE,
+                        rslt_type=PoppingCoordException.RSLT_TYPE,
+                        ex=validation_result.exception
+                    )
                 )
             )
         # Handle the case that, token is not active
@@ -117,52 +127,92 @@ class TokenCoordHandler:
                         cls_name=cls.__class__.__name__,
                         msg=TokenCoordHandlerException.MSG,
                         err_code=TokenCoordHandlerException.ERR_CODE,
-                        ex=CoordS
+                        ex=PoppingCoordException(
+                            mthd=method,
+                            op=PoppingCoordException.OP,
+                            msg=PoppingCoordException.MSG,
+                            err_code=PoppingCoordException.ERR_CODE,
+                            rslt_type=PoppingCoordException.RSLT_TYPE,
+                            ex=InactiveTokenPoppingCoordException(
+                                var="token",
+                                val=token.designation,
+                                msg=InactiveTokenPoppingCoordException.MSG,
+                                err_code=InactiveTokenPoppingCoordException.ERR_CODE,
+                            )
+                        )
                     )
                 )
-        
-        if token.opening_square_name is None:
-            # Return the exception chain on failure.
-            return DeletionResult.failure(
-                TokenServiceException(
-                    msg=f"ServiceId:{self.id}, {method}: {TokenServiceException.ERR_CODE}",
-                    ex=TokenOpeningSquareNotFoundException(
-                        f"{method}: {TokenOpeningSquareNotFoundException.MSG}"
+        # Handle the case that, the active token has not opened.
+        if token.positions.size == 1:
+            if validation_result.is_failure:
+                # Return the exception chain on failure.
+                return DeletionResult.failure(
+                    TokenCoordHandlerException(
+                        cls_mthd=method,
+                        cls_name=cls.__class__.__name__,
+                        msg=TokenCoordHandlerException.MSG,
+                        err_code=TokenCoordHandlerException.ERR_CODE,
+                        ex=PoppingCoordException(
+                            mthd=method,
+                            op=PoppingCoordException.OP,
+                            msg=PoppingCoordException.MSG,
+                            err_code=PoppingCoordException.ERR_CODE,
+                            rslt_type=PoppingCoordException.RSLT_TYPE,
+                            ex=UnopenedTokenPoppingCoordException(
+                                var="token",
+                                val=token.designation,
+                                msg=UnopenedTokenPoppingCoordException.MSG,
+                                err_code=UnopenedTokenPoppingCoordException.ERR_CODE,
+                            )
+                        )
                     )
                 )
-            )
-        # Handle the case that, the token has no positions that can be removed.
-        if token.positions.is_empty:
-            # Return the exception chain on failure.
-            return DeletionResult.failure(
-                TokenServiceException(
-                    msg=f"ServiceId:{self.id}, {method}: {TokenServiceException.ERR_CODE}",
-                    ex=PoppingEmtpyCoordStackException(
-                        f"{method}: {PoppingEmtpyCoordStackException.MSG}"
-                    )
-                )
-            )
         # Handle the case that, an attempt is made to undo more than one turn.
-        if token.previous_coord == token.current_address:
+        if token.previous_coord == token.current_position:
             # Return the exception chain on failure.
             return DeletionResult.failure(
-                TokenServiceException(
-                    msg=f"ServiceId:{self.id}, {method}: {TokenServiceException.ERR_CODE}",
-                    ex=OverMoveUndoLimitException(f"{method}: {OverMoveUndoLimitException.MSG}")
+                TokenCoordHandlerException(
+                    cls_mthd=method,
+                    cls_name=cls.__class__.__name__,
+                    msg=TokenCoordHandlerException.MSG,
+                    err_code=TokenCoordHandlerException.ERR_CODE,
+                    ex=PoppingCoordException(
+                        mthd=method,
+                        op=PoppingCoordException.OP,
+                        msg=PoppingCoordException.MSG,
+                        err_code=PoppingCoordException.ERR_CODE,
+                        rslt_type=PoppingCoordException.RSLT_TYPE,
+                        ex=MoveUndoLimitException(
+                            var=token.designation,
+                            msg=MoveUndoLimitException.MSG,
+                            err_code=MoveUndoLimitException.ERR_CODE,
+                        )
+                    )
                 )
             )
-        # Handle the case that, the coord stack pop operation fails.
-        pop_result = token.positions.pop()
-        if token.previous_coord == token.current_address:
+        popping_cord_stack_result = token.positions.pop()
+        
+        # Handle the case that, the pop was not completed.
+        if popping_cord_stack_result.is_failure:
             # Return the exception chain on failure.
             return DeletionResult.failure(
-                TokenServiceException(
-                    msg=f"ServiceId:{self.id}, {method}: {TokenServiceException.ERR_CODE}",
-                    ex=pop_result.exception
+                TokenCoordHandlerException(
+                    cls_mthd=method,
+                    cls_name=cls.__class__.__name__,
+                    msg=TokenCoordHandlerException.MSG,
+                    err_code=TokenCoordHandlerException.ERR_CODE,
+                    ex=PoppingCoordException(
+                        mthd=method,
+                        op=PoppingCoordException.OP,
+                        msg=PoppingCoordException.MSG,
+                        err_code=PoppingCoordException.ERR_CODE,
+                        rslt_type=PoppingCoordException.RSLT_TYPE,
+                        ex=popping_cord_stack_result.exception
+                    )
                 )
             )
-        # Otherwise return the successful pop operation's data to the caller in the DeletionResult.
-        return pop_result
+        return popping_cord_stack_result
+        
     
     @classmethod
     @LoggingLevelRouter.monitor
