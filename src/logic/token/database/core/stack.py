@@ -193,43 +193,36 @@ class TokenStackService(StackService[Token]):
     @LoggingLevelRouter.monitor
     def pop(self) -> DeletionResult[Token]:
         """
-        # ACTION:
-            1.  If the stack is empty send an exception in the DeletionResult. Else remove the
-                token at the top of the stack and send in the DeletionResult
-        # PARAMETERS:
-                    *   None
-        # RETURNS:
-            *   DeletionResult[Token] containing either:
-                    - On failure: Exception.
-                    - On success: Token in the payload.
-        Raises:
-            *   TokenStackException
-            *   PoppingEmptyTokenStackException
-        """
-        method = "TokenStackService.pop"
+        Action:
+            Remove the item at the top of the stack if it's not empty.
+            
+        Args:
         
-        # Handle the case that, there are no tokens in the stack.
-        if self.is_empty:
+        Returns:
+            DeletionResult[Token]
+            
+        Raises:
+            TokenStackException
+        """
+        method = f"{self.__class__.__name__}.pop"
+    
+        # --- Handoff pop responsibility. ---#
+        pop_result = self._handler.crud.pop()
+        
+        # Handle the case that, that the pop is not completed.
+        if pop_result.is_failure:
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 TokenStackException(
-                    msg=f"ServiceId:{self.id}, {method}: {TokenStackException.ERR_CODE}",
-                    ex=PoppingTokenException(
-                        msg=f"{method}: {PoppingTokenException.ERR_CODE}",
-                        ex=PoppingEmptyTokenStackException(
-                            f"{method}: {PoppingEmptyTokenStackException.MSG}"
-                        )
-                    )
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenStackException.MSG,
+                    err_code=TokenStackException.ERR_CODE,
+                    ex=pop_result.exception,
                 )
             )
-        # --- Pop the non-empty token stack. ---#
-        token = self._stack.pop(-1)
-        # --- Perform cleanup and integrity maintenance tasks. ---#
-        if self.is_empty:
-            self._state = TokenStackState.EMPTY
-            
-        # --- Send the success result to the caller. ---#
-        return DeletionResult.success(token)
+        # --- On success forward to the client. ---#
+        return pop_result
     
     @LoggingLevelRouter.monitor
     def delete_by_id(
