@@ -14,7 +14,7 @@ from .builder import *
 from .lookup import *
 from .service import *
 from .validator import *
+from .exception import *
 
 # Modules
 from .key import PersonaKey
-from .exception import PersonaKeyException
