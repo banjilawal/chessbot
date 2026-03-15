@@ -15,11 +15,11 @@ from logic.system import (
 )
 from logic.token import (
     PoppingEmptyTokenStackException, Token, TokenContext, TokenService, TokenStackException, TokenContextService,
-    PoppingTokenException, PushingTokenException, TokenStackFullException, TokenStackState, TokenStackUtil,
+    PoppingTokenException, PushingTokenException, TokenStackFullException, TokenStackState, TokenStackHandler,
 )
 
 
-class TokenStack(StackService[Token]):
+class TokenStackService(StackService[Token]):
     """
     # ROLE: Data Stack, SearchWorker IntegrityService, CRUD Operations, Encapsulation, API layer.
 
@@ -42,13 +42,13 @@ class TokenStack(StackService[Token]):
         *   See StackService class for inherited attributes.
     """
     DEFAULT_CAPACITY: int = 16
-    SERVICE_NAME: str = "TokenStack"
+    SERVICE_NAME: str = "TokenStackService"
     
     _capacity: int
     _stack: List[Token]
-    _utils: TokenStackUtil
     _service: TokenService
     _state: TokenStackState
+    _handler: TokenStackHandler
     _context_service: TokenContextService
     
     def __init__(
@@ -56,8 +56,8 @@ class TokenStack(StackService[Token]):
             name: str = SERVICE_NAME,
             capacity: int = DEFAULT_CAPACITY,
             service: TokenService = TokenService(),
-            utils: TokenStackUtil = TokenStackUtil(),
-            id: int = IdFactory.next_id(class_name="Token"),
+            handler: TokenStackHandler = TokenStackHandler(),
+            id: int = IdFactory.next_id(class_name="TokenStackService"),
             context_service: TokenContextService = TokenContextService(),
     ):
         """
@@ -75,14 +75,13 @@ class TokenStack(StackService[Token]):
         """
         method = "TokenService.__init__"
         super().__init__(id=id, name=name,)
-        self.stack = []
+        self._stack = []
         self._capacity = capacity
-        
-        self._utils = utils
+        self._handler = handler
         self._service = service
         self._context_service = context_service
         
-        self._state = TokenStackState.EMPTY
+        self._state = TokenStackState.NOT_READY_FORD_DEPLOYMENT
 
     @property
     def size(self) -> int:
@@ -113,6 +112,10 @@ class TokenStack(StackService[Token]):
         return self._stack[-1] if self._stack else None
     
     @property
+    def items(self) -> List[Token]:
+        return self._stack
+    
+    @property
     def is_getting_ready_for_deployment(self) -> bool:
         return not self.is_full and self._state == TokenStackState.NOT_READY_FORD_DEPLOYMENT
     
@@ -122,15 +125,15 @@ class TokenStack(StackService[Token]):
     
     @property
     def is_being_deployed(self) -> bool:
-        return self.is_partially_full and self._state == TokenStackState.BEING_DEPLOYEDY
+        return self.is_partially_full and self._state == TokenStackState.BEING_DEPLOYED
     
     @property
     def is_deployed_on_board(self) -> bool:
         return self.is_empty and self._state == TokenStackState.DEPLOYED_ON_BOARD
     
     @property
-    def utils(self) -> TokenStackUtil:
-        return self._utils
+    def handler(self) -> TokenStackHandler:
+        return self._handler
         
     @property
     def integrity_service(self) -> TokenService:
@@ -165,61 +168,8 @@ class TokenStack(StackService[Token]):
         Raises:
             *   TokenStackException
         """
-        method = "TokenStack.push"
-        
-        # Handle the case that, the list is full.
-        if self.is_full:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                TokenStackException(
-                    msg=f"ServiceId:{self.id}, {method}: {TokenStackException.ERR_CODE}",
-                    ex=PushingTokenException(
-                        msg=f"{method}: {PushingTokenException.ERR_CODE}",
-                        ex=TokenStackFullException(f"{method}: {TokenStackFullException.ERR_CODE}")
-                    )
-                )
-            )
-        # --- Handoff validation, id, designation or opening_square collision detection. ---#
-        collision_report = self.integrity_service.collision_detector.detect(
-            target=item,
-            dataset=self._stack,
-        )
-        # Handle the case that, the collision analysis is not completed.
-        if collision_report.is_failure:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                TokenStackException(
-                    msg=f"ServiceId:{self.id}, {method}: {TokenStackException.ERR_CODE}",
-                    ex=PushingTokenException(
-                        msg=f"{method}: {PushingTokenException.ERR_CODE}",
-                        ex=collision_report.exception
-                    )
-                )
-            )
-        # --- Find out how many openings the rank has. ---#
-        openings_count_result = self.utils.rank_quota_analyzer.count_openings_for_rank(
-            rank=item.rank,
-            token_stack=self
-        )
-        # Handle the case that, the analyzer doesn't give a count of open slots.
-        if openings_count_result.is_failure:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                TokenStackException(
-                    msg=f"ServiceId:{self.id}, {method}: {TokenStackException.ERR_CODE}",
-                    ex=PushingTokenException(
-                        msg=f"{method}: {PushingTokenException.ERR_CODE}",
-                        ex=openings_count_result.exception
-                    )
-                )
-            )
-        # --- Capacity, collision and opening check are completed. Push the token onto the stack ---#
-        self._stack.append(item)
-        
-        # --- Perform cleanup and integrity maintenance tasks. ---#
-        if self.size == self.capacity:
-            self._state = TokenStackState.FILLED_READY_TO_DEPLOY
-            
+        method = "TokenStackService.push"
+     
         # --- Send the success result to the caller. ---#
         return InsertionResult.success()
     
@@ -239,7 +189,7 @@ class TokenStack(StackService[Token]):
             *   TokenStackException
             *   PoppingEmptyTokenStackException
         """
-        method = "TokenStack.pop"
+        method = "TokenStackService.pop"
         
         # Handle the case that, there are no tokens in the stack.
         if self.is_empty:
@@ -289,7 +239,7 @@ class TokenStack(StackService[Token]):
             *   PoppingTokenException
             *   PoppingEmptyTokenStackException
         """
-        method = "TokenStack.delete_by_id"
+        method = "TokenStackService.delete_by_id"
         
         # Handle the case that, there are no items in the list.
         if self.is_empty:
@@ -355,7 +305,7 @@ class TokenStack(StackService[Token]):
         Raises:
             *   TokenStackException
         """
-        method = "TokenStack.query"
+        method = "TokenStackService.query"
         
         # --- Handoff the search responsibility to _context_service. ---#
         query_result = self._context_service.finder.find(dataset=self._stack, context=context)

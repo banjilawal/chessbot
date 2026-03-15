@@ -1,7 +1,7 @@
-# src/logic/token/database/core/handler/crud/exception/pop/empty.py
+# src/logic/token/database/core/handler/crud/exception/push/duplicate.py
 
 """
-Module: logic.token.database.core.handler.crud.exception.pop.empty
+Module: logic.token.database.core.handler.crud.exception.push.duplicate
 Author: Banji Lawal
 Created: 2026-02-22
 version: 1.0.0
@@ -10,21 +10,23 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Any, Optional
 
+from __future__ import annotations
+from typing import Any, Optional
+
 __all__ = [
-    # ======================# POPPING_EMPTY_TOKEN_STACK_EXCEPTION #======================#
-    "PoppingEmptyTokenStackException",
+    # ======================# TOKEN_STACK_FULL_EXCEPTION #======================#
+    "TokenStackFullException",
 ]
 
 from logic.system import DebugException
 
-
-# ======================# POPPING_EMPTY_TOKEN_STACK_EXCEPTION #======================#
-class PoppingEmptyTokenStackException(DebugException):
+# ======================# TOKEN_STACK_FULL_EXCEPTION #======================#
+class TokenStackFullException(DebugException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a pop failed because the stack was empty.
+    1.  Indicate that pushing a token to the stack failed because the stack was full.
 
     # PARENT:
         *   TokenDebugException
@@ -53,8 +55,8 @@ class PoppingEmptyTokenStackException(DebugException):
     """
     VAR = Optional[str]
     VAL = Optional[Any]
-    ERR_CODE = "POPPING_EMPTY_TOKEN_STACK_EXCEPTION"
-    MSG = "TokenStackService pop failed: Cannot pop from an empty stack."
+    ERR_CODE = "TOKEN_STACK_FULL_EXCEPTION"
+    MSG = "Cannot push a token onto a full stack."
     
     def __init__(
             self,
@@ -77,4 +79,3 @@ class PoppingEmptyTokenStackException(DebugException):
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
         super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)
-

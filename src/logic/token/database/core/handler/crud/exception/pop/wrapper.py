@@ -24,7 +24,7 @@ class TokenStackPopException(DeletionException):
 
     # RESPONSIBILITIES:
     1.  Indicate a TokenStackStack pop was unsuccessful.
-    2.  Identify the TokenStack method where the pop operation failed.
+    2.  Identify the TokenStackService method where the pop operation failed.
 
     # PARENT:
         *   DeletionOperation
@@ -55,7 +55,7 @@ class TokenStackPopException(DeletionException):
     OP = "Deletion"
     RSLT_TYPE = "DeletionResult"
     ERR_CODE = "TOKEN_STACK_POP_FAILURE"
-    MSG = "TokenStack pop failed."
+    MSG = "TokenStackService pop failed."
     
     def __init__(
             self,

@@ -15,5 +15,5 @@ from handler import *
 from .exception import *
 
 # Modules
-from .stack import TokenStack
+from .stack import TokenStackService
 from .state import TokenStackState

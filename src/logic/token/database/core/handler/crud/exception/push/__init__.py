@@ -14,3 +14,4 @@ version: 1.0.0
 # Modules
 from .wrapper import TokenStackPushException
 from .duplicate import AddingDuplicateTokenException
+from .full import TokenStackFullException

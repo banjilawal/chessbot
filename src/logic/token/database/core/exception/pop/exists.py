@@ -29,7 +29,7 @@ class TokenNotFoundException(DebugException):
             *   variable,
             *   it's value,
             *   event which fired the variable into its error state.
-        which occurred in the TokenStack method identified in layer-0 of the exception chain.
+        which occurred in the TokenStackService method identified in layer-0 of the exception chain.
 
     2.  A failing Result was returned because a token the client needs was not found.
 

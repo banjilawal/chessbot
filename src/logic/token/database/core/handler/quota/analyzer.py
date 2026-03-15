@@ -12,7 +12,7 @@ from typing import List, cast
 
 from logic.rank import Rank, RankService
 from logic.system import ComputationResult, LoggingLevelRouter
-from logic.token import RankQuotaAnalysisException, RankQuotaFullException, Token, TokenContext, TokenStack
+from logic.token import RankQuotaAnalysisException, RankQuotaFullException, Token, TokenContext, TokenStackService
 
 
 class RankQuotaAnalyzer:
@@ -21,7 +21,7 @@ class RankQuotaAnalyzer:
 
     # RESPONSIBILITIES:
     1.  Public facing API.
-    2.  Computes and reports information about how many openings a TokenStack has a given rank.
+    2.  Computes and reports information about how many openings a TokenStackService has a given rank.
     3.  Authoritative, single source of truth for rank quota error information.
 
     # PARENT:
@@ -42,7 +42,7 @@ class RankQuotaAnalyzer:
     def compute_rank_size_in_stack(
             cls,
             rank: Rank,
-            token_stack: TokenStack,
+            token_stack: TokenStackService,
             rank_service: RankService = RankService(),
     ) -> ComputationResult[int]:
         """
@@ -102,7 +102,7 @@ class RankQuotaAnalyzer:
     def rank_openings_exist(
             cls,
             rank: Rank,
-            token_stack: TokenStack,
+            token_stack: TokenStackService,
             rank_service: RankService = RankService(),
     ) -> ComputationResult[bool]:
         """
@@ -148,7 +148,7 @@ class RankQuotaAnalyzer:
     def count_openings_for_rank(
             cls,
             rank: Rank,
-            token_stack: TokenStack,
+            token_stack: TokenStackService,
             rank_service: RankService = RankService(),
     ) -> ComputationResult[int]:
         """

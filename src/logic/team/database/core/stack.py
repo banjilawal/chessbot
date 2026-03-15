@@ -68,7 +68,7 @@ class TeamStack(StackService[Team]):
         Raises:
             None
         """
-        method = "TokenStack.__init__"
+        method = "TokenStackService.__init__"
         super().__init__(id=id, name=name,)
         self._stack = []
         self._service = service

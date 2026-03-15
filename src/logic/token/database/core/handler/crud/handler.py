@@ -9,8 +9,9 @@ version: 1.0.0
 from typing import List
 
 from logic.token import (
-    PoppingEmptyTokenStackException, Token, TokenCollisionDetector, TokenContext, TokenCrudHandlerException,
-    TokenStackPushException, TokenStackService
+    PoppingEmptyTokenStackException, RankQuotaAnalyzer, Token, TokenCollisionDetector, TokenContext,
+    TokenCrudHandlerException,
+    TokenStackCountsAnalyzer, TokenStackFullException, TokenStackPushException, TokenStackService, TokenStackState
 )
 from logic.system import DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, SearchResult
 
@@ -53,6 +54,7 @@ class TokenStackCrudHandler:
             cls,
             token: Token,
             token_stack: TokenStackService,
+            rank_quota_analyzer: RankQuotaAnalyzer = RankQuotaAnalyzer(),
             token_collision_detector: TokenCollisionDetector = TokenCollisionDetector(),
     ) -> InsertionResult:
         """
@@ -66,6 +68,7 @@ class TokenStackCrudHandler:
         Args:
            token: Token
            token_stack: TokenStackService
+           rank_quota_analyzer: RankQuotaAnalyzer
            token_collision_detector: TokenCollisionDetector
 
         Returns:
@@ -76,11 +79,33 @@ class TokenStackCrudHandler:
         """
         method =  f"{cls.__name__}.push"
         
-        # Handle the case that, the token is not safe, or its id, designation, or opening_square are in use.
-        collision_detection_result= token_collision_detector.detect(
+        # Handle the case that, the list is full.
+        if token_stack.is_full:
+            # Return the exception chain on failure
+            return InsertionResult.failure(
+                TokenCrudHandlerException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    err_code=TokenCrudHandlerException.ERR_CODE,
+                    msg=TokenCrudHandlerException.MSG,
+                    ex=TokenStackPushException(
+                        op=TokenStackPushException.OP,
+                        msg=TokenStackPushException.MSG,
+                        mthd=TokenStackPushException.MTHD,
+                        rslt_type=TokenStackPushException.RSLT_TYPE,
+                        ex=TokenStackFullException(
+                            msg=TokenStackFullException.MSG,
+                            err_code=TokenStackFullException.ERR_CODE,
+                        )
+                    )
+                )
+            )
+        # --- Handoff validation, id, designation or opening_square collision detection. ---#
+        collision_detection_result = token_collision_detector.detect(
             target=token,
-            suqare_stack=token_stack,
+            dataset=token_stack.items,
         )
+        # Handle the case that, the either a collision was detected or detector crashed.
         if not collision_detection_result.is_no_collision:
             # Return the exception chain on failure
             return InsertionResult.failure(
@@ -98,8 +123,37 @@ class TokenStackCrudHandler:
                     )
                 )
             )
-        # --- Append the token and send the successful InsertionResult. ---#
+        # --- Find out how many openings the rank has. ---#
+        openings_count_result = rank_quota_analyzer.count_openings_for_rank(
+            rank=token.rank,
+            token_stack=token_stack
+        )
+        # Handle the case that, the analyzer doesn't give a count of open slots.
+        if openings_count_result.is_failure:
+            # Return the exception chain on failure
+            return InsertionResult.failure(
+                TokenCrudHandlerException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    err_code=TokenCrudHandlerException.ERR_CODE,
+                    msg=TokenCrudHandlerException.MSG,
+                    ex=TokenStackPushException(
+                        op=TokenStackPushException.OP,
+                        msg=TokenStackPushException.MSG,
+                        mthd=TokenStackPushException.MTHD,
+                        rslt_type=TokenStackPushException.RSLT_TYPE,
+                        ex=openings_count_result.exception
+                    )
+                )
+            )
+        # --- Capacity, collision and opening check are completed. Push the token onto the stack ---#
         token_stack.items.append(token)
+        
+        # --- Perform cleanup and integrity maintenance tasks. ---#
+        if token_stack.is_full:
+            token_stack.state = TokenStackState.READY_FOR_DEPLOYMENT
+
+        # --- The work is completed, send the success result. ---#
         return InsertionResult.success()
     
     @classmethod

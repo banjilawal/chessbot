@@ -12,7 +12,7 @@ from typing import List
 
 from logic.rank import Rank
 from logic.token import (
-    Token, TokenContext, TokenContextService, TokenStack, TokenService, TokenDatabaseException, TokenStackState
+    Token, TokenContext, TokenContextService, TokenStackService, TokenService, TokenDatabaseException, TokenStackState
 )
 from logic.system import (
     ComputationResult, Database, DeletionResult, IdFactory, InsertionResult, LoggingLevelRouter, SearchResult,
@@ -24,8 +24,8 @@ class TokenDatabase(Database[Token]):
     # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Ensure all bag in managed by TokenStack are unique.
-    2.  Guarantee consistency of records in TokenStack.
+    1.  Ensure all bag in managed by TokenStackService are unique.
+    2.  Guarantee consistency of records in TokenStackService.
 
     # PARENT:
         *   Database
@@ -40,12 +40,12 @@ class TokenDatabase(Database[Token]):
         *   See Database class for inherited attributes.
     """
     SERVICE_NAME = "TokenDatabase"
-    _token_stack: TokenStack
+    _token_stack: TokenStackService
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            token_stack: TokenStack = TokenStack(),
+            token_stack: TokenStackService = TokenStackService(),
             id: int = IdFactory.next_id(class_name="TokenDatabase"),
     ):
         """
@@ -54,7 +54,7 @@ class TokenDatabase(Database[Token]):
         # PARAMETERS:
             *   id (int)
             *   name (str)
-            *   token_stack (TokenStack)
+            *   token_stack (TokenStackService)
         # RETURNS:
             None
         Raises:
@@ -104,7 +104,7 @@ class TokenDatabase(Database[Token]):
         """
         # ACTION:
             1.  Handoff rank validation and open-slot calculation to the RankQuotaAnalyzer provided by the
-                TokenStack service.
+                TokenStackService service.
             2.  If either:
                     *   The rank fails validation.
                     *   There are no openings for the rank.
@@ -144,7 +144,7 @@ class TokenDatabase(Database[Token]):
         """
         # ACTION:
             1.  Handoff rank validation and rank size counting to the RankQuotaAnalyzer provided by the
-                TokenStack service.
+                TokenStackService service.
             2.  If either:
                     *   The rank fails validation.
                     *   The analyzer does not complete the calculation.
@@ -183,7 +183,7 @@ class TokenDatabase(Database[Token]):
         """
         # ACTION:
             1.  Handoff rank validation and rank size counting to the RankQuotaAnalyzer provided by the
-                TokenStack service.
+                TokenStackService service.
             2.  If either:
                     *   The rank fails validation.
                     *   The analyzer does not complete the calculation.
