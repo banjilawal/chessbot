@@ -1,30 +1,33 @@
-# src/logic/token/service/exception/promote/same.py
+# src/logic/token/service/handler/promotion/exception/debug/pawn.py
 
 """
-Module: logic.token.service.exception.promote.same
+Module: logic.token.service.handler.promotion.exception.debug.pawn
 Author: Banji Lawal
-Created: 2026-02-08
+Created: 2026-03-14
 version: 1.0.0
 """
 
-from logic.token import PawnTokenException
+from __future__ import annotations
+from typing import Any, Optional
 
 __all__ = [
-    # ======================# NEW_RANK_IS_STILL_PAWN_RANK EXCEPTION #======================#
-    "NewRankCannotBePawnException",
+    # ======================# CIRCULAR_PAWN_RANK_PROMOTION_EXCEPTION  #======================#
+    "PromotePawnToPawnException",
 ]
 
+from logic.token import TokenDebugException
 
-# ======================# NEW_RANK_IS_STILL_PAWN_RANK EXCEPTION #======================#
-class NewRankCannotBePawnException(PawnTokenException):
+
+# ======================# CIRCULAR_PAWN_RANK_PROMOTION_EXCEPTION  #======================#
+class PromotePawnToPawnException(TokenDebugException):
     """
-    # ROLE: Debug, Error Tracing
+    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
     1.  Indicate that promoting a PawnToken failed because the new rank was still a Pawn's rank.
-    
+
     # PARENT:
-        *   PawnTokenException
+        *   TokenDebugException
 
     # PROVIDES:
     None
@@ -33,7 +36,44 @@ class NewRankCannotBePawnException(PawnTokenException):
     None
 
     # INHERITED ATTRIBUTES:
+        *   TokenDebugException class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        var: Optional[str]
+        val: Optional[Any]
+        msg: Optional[str]
+        ex: Optional[Exception]
+        err_code: Optional[str]
+
+    # LOCAL METHODS:
     None
+
+    # INHERITED METHODS:
+        *   See TokenDebugException class for inherited methods.
     """
-    ERR_CODE = "NEW_RANK_IS_STILL_PAWN_RANK_EXCEPTION"
-    MSG = "Pawn promotion failed: The new rank is still a Pawn's rank."
+    VAR = Optional[str]
+    VAL = Optional[Any]
+    ERR_CODE = "CIRCULAR_PAWN_RANK_PROMOTION_EXCEPTION"
+    MSG = "Cannot promote a pawn to be a pawn again."
+    
+    def __init__(
+            self,
+            var: Optional[str] = None,
+            val: Optional[Any] = None,
+            msg: Optional[str] = None,
+            err_code: Optional[str] = None,
+            ex: Optional[Exception] = None,
+    ):
+        """
+        Args:
+            var: Optional[str]
+            val: Optional[Any]
+            msg: Optional[str]
+            ex: Optional[Exception]
+            err_code: Optional[str]
+        """
+        var = var or self.VAR
+        val = val or self.VAL
+        msg = msg or self.MSG
+        err_code = err_code or self.ERR_CODE
+        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)

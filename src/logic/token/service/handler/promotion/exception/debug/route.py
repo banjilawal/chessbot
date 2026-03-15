@@ -1,41 +1,80 @@
-# src/logic/token/service/exception/promote/route.py
+# src/logic/token/service/handler/promotion/exception/debug/route.py
 
 """
-Module: logic.token.service.exception.promote.route
+Module: logic.token.service.handler.promotion.exception.debug.route
 Author: Banji Lawal
-Created: 2026-02-08
+Created: 2026-03-14
 version: 1.0.0
 """
 
+from __future__ import annotations
+from typing import Any, Optional
+
 __all__ = [
-    # ======================# NO_PROMOTION_ROUTE_TO_NEW_RANK  EXCEPTION #======================#
+    # ======================# NO_PROMOTION_ROUTE_TO_NEW_RANK_EXCEPTION #======================#
     "PawnPromotionRouteException",
 ]
 
-from logic.token import PawnTokenException
-from logic.system import ExecutionRouteException
+from logic.token import TokenDebugException
 
 
-# ======================# NO_PROMOTION_ROUTE_TO_NEW_RANK EXCEPTION #======================#
-class PawnPromotionRouteException(PawnTokenException, ExecutionRouteException):
+# ======================# NO_PROMOTION_ROUTE_TO_NEW_RANK_EXCEPTION #======================#
+class PawnPromotionRouteException(TokenDebugException):
     """
-    # ROLE: Fallback Result, Debugging
+    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that promoting a PawnToken failed because there was no promotion route to the new rank.
+    1.  Indicate that promoting a PawnToken failed because there was no promotion route to 
+        the new rank.
 
     # PARENT:
-        *   PawnTokenException
-        *   NoRouteException
+        *   TokenDebugException
 
-    # PROVIDES
+    # PROVIDES:
     None
 
     # LOCAL ATTRIBUTES:
     None
 
     # INHERITED ATTRIBUTES:
+        *   TokenDebugException class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        var: Optional[str]
+        val: Optional[Any]
+        msg: Optional[str]
+        ex: Optional[Exception]
+        err_code: Optional[str]
+
+    # LOCAL METHODS:
     None
+
+    # INHERITED METHODS:
+        *   See TokenDebugException class for inherited methods.
     """
+    VAR = Optional[str]
+    VAL = Optional[Any]
+    MSG = "No promotion route to the new rank."
     ERR_CODE = "NO_PROMOTION_ROUTE_TO_NEW_RANK_EXCEPTION"
-    MSG = "Pawn promotion failed: The promotion route was provided for the new rank."
+    
+    def __init__(
+            self,
+            var: Optional[str] = None,
+            val: Optional[Any] = None,
+            msg: Optional[str] = None,
+            err_code: Optional[str] = None,
+            ex: Optional[Exception] = None,
+    ):
+        """
+        Args:
+            var: Optional[str]
+            val: Optional[Any]
+            msg: Optional[str]
+            ex: Optional[Exception]
+            err_code: Optional[str]
+        """
+        var = var or self.VAR
+        val = val or self.VAL
+        msg = msg or self.MSG
+        err_code = err_code or self.ERR_CODE
+        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)

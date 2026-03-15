@@ -13,7 +13,7 @@ version: 1.0.0
 None
 
 # Modules
+from .pawn import PromotePawnToPawnException
 from .route import PawnPromotionRouteException
-from .pawn import NewRankCannotBePawnException
 from .double import PawnAlreadyPromotedException
 from .king import CannotPromotePawnToKingException

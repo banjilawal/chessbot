@@ -1,32 +1,33 @@
-# src/logic/token/database/core/exception/push/full/rank.py
+# src/logic/token/database/core/handler/quota/exception/full.py
 
 """
-Module: logic.token.database.core.exception.push.full.rank
+Module: logic.token.database.core.handler.quota.exception.full
 Author: Banji Lawal
-Created: 2025-11-19
+Created: 2026-02-21
 version: 1.0.0
 """
 
+from __future__ import annotations
+from typing import Any, Optional
+
 __all__ = [
-    # ======================# NO_OPENINGS_FOR_RANK EXCEPTION #======================#
+    # ======================# NO_OPENINGS_FOR_RANK_EXCEPTION #======================#
     "RankQuotaFullException",
 ]
 
 from logic.system import DebugException
-from logic.token import TokenStackException
 
-
-# ======================# NO_OPENINGS_FOR_RANK EXCEPTION #======================#
-class RankQuotaFullException(TokenStackException, DebugException):
+# ======================# NO_OPENINGS_FOR_RANK_EXCEPTION #======================#
+class RankQuotaFullException(DebugException):
     """
-    # ROLE: Debug, Error Tracing
+    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that pushing a token to the stack failed because there was no openings for the token's rank.
+    1.  Indicate that pushing a token to the stack failed because there were no
+        openings for the token's rank.
 
     # PARENT:
-        *   DebugException
-        *   TokenServiceException
+        *   TokenDebugException
 
     # PROVIDES:
     None
@@ -35,7 +36,44 @@ class RankQuotaFullException(TokenStackException, DebugException):
     None
 
     # INHERITED ATTRIBUTES:
+        *   TokenDebugException class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        var: Optional[str]
+        val: Optional[Any]
+        msg: Optional[str]
+        ex: Optional[Exception]
+        err_code: Optional[str]
+
+    # LOCAL METHODS:
     None
+
+    # INHERITED METHODS:
+        *   See TokenDebugException class for inherited methods.
     """
+    VAR = Optional[str]
+    VAL = Optional[Any]
     ERR_CODE = "NO_OPENINGS_FOR_RANK_EXCEPTION"
     MSG = "Pushing token failed: There were no openings for the token's rank."
+    
+    def __init__(
+            self,
+            var: Optional[str] = None,
+            val: Optional[Any] = None,
+            msg: Optional[str] = None,
+            err_code: Optional[str] = None,
+            ex: Optional[Exception] = None,
+    ):
+        """
+        Args:
+            var: Optional[str]
+            val: Optional[Any]
+            msg: Optional[str]
+            ex: Optional[Exception]
+            err_code: Optional[str]
+        """
+        var = var or self.VAR
+        val = val or self.VAL
+        msg = msg or self.MSG
+        err_code = err_code or self.ERR_CODE
+        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)

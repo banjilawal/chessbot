@@ -1,30 +1,31 @@
-# src/logic/token/service/exception/promote/king.py
+# src/logic/token/service/handler/promotion/exception/debug/king.py
 
 """
-Module: logic.token.service.exception.promote.king
+Module: logic.token.service.handler.promotion.exception.debug.king
 Author: Banji Lawal
-Created: 2026-02-08
+Created: 2026-03-14
 version: 1.0.0
 """
 
-from logic.token import PawnTokenException
+from __future__ import annotations
+from typing import Any, Optional
 
 __all__ = [
-    # ======================# PROMOTING_TO_KING_NOT_ALLOWED EXCEPTION #======================#
+    # ======================# PROMOTING_TO_KING_NOT_ALLOWED_EXCEPTION #======================#
     "CannotPromotePawnToKingException",
 ]
 
-
-# ======================# PROMOTING_TO_KING_NOT_ALLOWED EXCEPTION #======================#
-class CannotPromotePawnToKingException(PawnTokenException):
+from logic.token import TokenDebugException
+# ======================# PROMOTING_TO_KING_NOT_ALLOWED_EXCEPTION #======================#
+class CannotPromotePawnToKingException(TokenDebugException):
     """
-    # ROLE: Debug, Error Tracing
+    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that promoting a PawnToken failed because promoting to a King's rank is not allowed.
-    
+    1.  Indicate that promoting a PawnToken failed because the Pawn had already been promoted.
+
     # PARENT:
-        *   PawnTokenException
+        *   TokenDebugException
 
     # PROVIDES:
     None
@@ -33,7 +34,44 @@ class CannotPromotePawnToKingException(PawnTokenException):
     None
 
     # INHERITED ATTRIBUTES:
+        *   TokenDebugException class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        var: Optional[str]
+        val: Optional[Any]
+        msg: Optional[str]
+        ex: Optional[Exception]
+        err_code: Optional[str]
+
+    # LOCAL METHODS:
     None
+
+    # INHERITED METHODS:
+        *   See TokenDebugException class for inherited methods.
     """
+    VAR = Optional[str]
+    VAL = Optional[Any]
     ERR_CODE = "PROMOTING_TO_KING_NOT_ALLOWED_EXCEPTION"
-    MSG = "Pawn promotion failed: Promoting to a King is not allowed."
+    MSG = "Cannot promote a pawn to a king."
+    
+    def __init__(
+            self,
+            var: Optional[str] = None,
+            val: Optional[Any] = None,
+            msg: Optional[str] = None,
+            err_code: Optional[str] = None,
+            ex: Optional[Exception] = None,
+    ):
+        """
+        Args:
+            var: Optional[str]
+            val: Optional[Any]
+            msg: Optional[str]
+            ex: Optional[Exception]
+            err_code: Optional[str]
+        """
+        var = var or self.VAR
+        val = val or self.VAL
+        msg = msg or self.MSG
+        err_code = err_code or self.ERR_CODE
+        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)

@@ -10,7 +10,7 @@ version: 1.0.0
 # =========== TOKEN.SERVICE.HANDLER.PROMOTION PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .exception import *
 
 # Modules
-None
+from .handler import PawnPromotionHandler
