@@ -10,8 +10,7 @@ version: 1.0.0
 #=========== PLAYER.CONTEXT.SERVICE PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .exception import *
 
 # Modules
-from .service import AgentContextService
-from .exception import AgentContextServiceException
+from .service import PlayerContextService

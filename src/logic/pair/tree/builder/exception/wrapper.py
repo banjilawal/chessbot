@@ -7,6 +7,10 @@ Created: 2026-03-12
 version: 1.0.0
 """
 
+
+from __future__ import annotations
+from typing import Optional
+
 from __future__ import annotations
 from typing import Optional
 
@@ -21,11 +25,11 @@ from logic.system import BuildException
 # ======================# NODE_TREE_BUILD_FAILURE #======================#
 class NodeTreeBuildException(BuildException):
     """
-    # ROLE: Exception Chain Layer 1, Exception Messaging
-    # TASK: Worker Method Identifier
+    # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Identify the NodeTreeBuilder method where the process failed.
+    1.  Indicate the NodeTreeBuilder did not produce a valid work product.
+    2.  Identify the NodeTreeBuilder method where the failure occurred.
 
     # PARENT:
         *   BuildException
@@ -41,20 +45,19 @@ class NodeTreeBuildException(BuildException):
 
     # CONSTRUCTOR PARAMETERS:)
         op: Optional[str]
+        ex: Optional[str]
         msg: Optional[str]
         mthd: Optional[str]
         err_code: Optional[str]
-        ex: Optional[Exception]
         rslt_type: Optional[str]
 
     # LOCAL METHODS:
-   None
+    None
 
     # INHERITED METHODS:
         *   See BuildException class for inherited methods.
     """
     OP = "Build"
-    MTHD = Optional[str]
     RSLT_TYPE = "BuildResult"
     ERR_CODE = "NODE_TREE_BUILD_FAILURE"
     MSG = "Failure in NodeTreeBuilder method."
@@ -64,17 +67,17 @@ class NodeTreeBuildException(BuildException):
             op: Optional[str] = None,
             msg: Optional[str] = None,
             mthd: Optional[str] = None,
-            err_code: Optional[str] = None,
             ex: Optional[Exception] = None,
+            err_code: Optional[str] = None,
             rslt_type: Optional[str] = None,
     ):
         """
         Args:
             op: Optional[str]
+            ex: Optional[str]
             msg: Optional[str]
             mthd: Optional[str]
             err_code: Optional[str]
-            ex: Optional[Exception]
             rslt_type: Optional[str]
         """
         op = op or self.OP

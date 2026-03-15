@@ -10,8 +10,7 @@ version: 1.0.0
 # =========== HOSTAGE.CONTEXT.SERVICE PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .exception import *
 
 # Modules
-from .service import CaptivityContextService
-from .exception import CaptivityContextServiceException
+from .service import HostageContextService

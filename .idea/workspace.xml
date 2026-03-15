@@ -5,7 +5,101 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change beforePath="$PROJECT_DIR$/src/logic/schema/key/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/schema/key/builder/exception/wrapper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/arena/context/service/exception/anchor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/attack/service/exception/anchor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/board/context/service/exception/anchor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/board/service/exception/anchor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/coord/context/service/exception/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/coord/context/service/exception/anchor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/edge/context/service/exception/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/edge/context/service/exception/anchor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/game/context/service/exception/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/game/context/service/exception/anchor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/graph/context/service/exception/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/graph/context/service/exception/anchor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/hostage/context/service/exception/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/hostage/context/service/exception/anchor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/node/context/service/exception/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/node/context/service/exception/anchor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/persona/key/service/exception/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/persona/key/service/exception/anchor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/player/context/service/exception/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/player/context/service/exception/anchor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/rank/context/service/exception/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/rank/context/service/exception/anchor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/schema/key/service/exception/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/schema/key/service/exception/anchor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/snapshot/context/service/exception/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/snapshot/context/service/exception/anchor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/square/context/service/exception/anchor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/team/context/service/exception/anchor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/token/context/service/exception/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/token/context/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/arena/context/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/arena/context/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/arena/context/service/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/arena/context/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/arena/context/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/arena/service/data/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/arena/service/data/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/arena/service/data/service.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/arena/service/data/unique/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/arena/service/data/unique/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/board/context/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/arena/service/data/unique/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/graph/context/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/arena/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/arena/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/context/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/context/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/context/service/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/edge/context/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/edge/context/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/edge/context/service/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/edge/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/edge/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/formation/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/formation/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/game/context/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/game/context/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/game/context/service/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/game/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/game/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/graph/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/graph/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/hostage/context/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/hostage/context/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/hostage/context/service/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/hostage/context/service/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/hostage/context/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/hostage/context/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/hostage/database/core/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/hostage/database/core/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/hostage/database/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/hostage/database/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/hostage/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/hostage/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/node/context/service/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/node/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/node/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/pair/listing/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/pair/listing/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/pair/listing/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/pair/listing/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/pair/pair/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/pair/pair/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/pair/pair/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/pair/pair/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/pair/tree/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/pair/tree/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/pair/tree/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/pair/tree/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/persona/key/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/persona/key/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/persona/key/service/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/player/context/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/player/context/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/player/context/service/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/player/context/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/player/context/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/player/service/data/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/player/service/data/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/player/service/data/unique/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/player/service/data/unique/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/player/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/player/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/rank/context/service/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/graph/context/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/rank/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/rank/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/scalar/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/scalar/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/schema/key/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/schema/key/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/schema/key/service/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/schema/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/schema/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/snapshot/context/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/snapshot/context/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/snapshot/context/service/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/snapshot/service/data/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/arena/context/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/snapshot/service/data/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/snapshot/service/data/unique/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/attack/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/snapshot/service/data/unique/excpetion.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/snapshot/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/snapshot/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/context/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/context/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/context/service/exception/catchall.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/team/context/service/exception/catchall.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/team/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/team/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/context/service/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/vector/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/vector/service/exception/anchor.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,6 +287,7 @@
     "Python tests.Python tests in stack_test.py.executor": "Run",
     "Python tests.Python tests in vector_test.py.executor": "Run",
     "Python.__init__.executor": "Run",
+    "Python.anchor.executor": "Profiler",
     "Python.arena_builder.executor": "Run",
     "Python.base.executor": "Debug",
     "Python.board_controller_builder.executor": "Run",
@@ -271,7 +366,7 @@
     "ToolWindow.Python Packages.ShowToolbar": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/logic/persona/key/builder/exception",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/logic/formation/service",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -298,11 +393,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/logic/persona/key/builder/exception" />
-      <recent name="$PROJECT_DIR$/src/logic/arena/context/builder/exception" />
-      <recent name="$PROJECT_DIR$/src/logic/board/context/builder/exception" />
-      <recent name="$PROJECT_DIR$/src/logic/coord/context/builder/exception" />
-      <recent name="$PROJECT_DIR$/src/logic/edge/context/builder/exception" />
+      <recent name="$PROJECT_DIR$/src/logic/formation/service" />
+      <recent name="$PROJECT_DIR$/src/logic/persona/key/service" />
+      <recent name="$PROJECT_DIR$/src/logic/token/context/service" />
+      <recent name="$PROJECT_DIR$/src/logic/team/context/service/exception" />
+      <recent name="$PROJECT_DIR$/src/logic/square/context/service" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/logic/span/service/exception" />
@@ -312,7 +407,7 @@
       <recent name="$PROJECT_DIR$/src/logic/pair/stack" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.service">
+  <component name="RunManager" selected="Python.anchor">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -397,6 +492,29 @@
       <module name="" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="anchor" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="chessbot" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/logic/node/service/exception" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/logic/node/service/exception/anchor.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -474,29 +592,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="null" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="chessbot" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/chess/board/validator/exception/debug" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/chess/board/validator/exception/debug/null.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="service" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="chessbot" />
       <option name="ENV_FILES" value="" />
@@ -522,11 +617,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.anchor" />
         <item itemvalue="Python.service" />
         <item itemvalue="Python.edge" />
         <item itemvalue="Python.exception" />
         <item itemvalue="Python.board" />
-        <item itemvalue="Python.null" />
       </list>
     </recent_temporary>
   </component>
@@ -851,7 +946,7 @@
       <workItem from="1772847189165" duration="78504000" />
       <workItem from="1773215668490" duration="8009000" />
       <workItem from="1773223700953" duration="11379000" />
-      <workItem from="1773252041918" duration="186982000" />
+      <workItem from="1773252041918" duration="192237000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

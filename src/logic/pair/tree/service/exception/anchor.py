@@ -1,7 +1,7 @@
-# src/logic/pair/tree/service/exception/anchor.py
+# src/logic/node/tree/service/exception/anchor.py
 
 """
-Module: logic.pair.tree.service.exception.anchor
+Module: logic.node.tree.service.exception.anchor
 Author: Banji Lawal
 Created: 2026-03-12
 version: 1.0.0
@@ -15,11 +15,10 @@ __all__ = [
     "NodeTreeServiceException",
 ]
 
-from logic.system import AnchorException
-
+from logic.system import ServiceException
 
 # ======================# NODE_TREE_SERVICE_EXCEPTION #======================#
-class NodeTreeServiceException(AnchorException):
+class NodeTreeServiceException(ServiceException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
@@ -28,10 +27,10 @@ class NodeTreeServiceException(AnchorException):
         reports on
             *   the triggering variable
             *   The trigger's value.
-    2.  Indicate which NodeTree method received a worker's (layer-1) failure result.
+    2.  Indicate which NodeTreeService method received a worker's (layer-1) failure result.
 
     # PARENT:
-        *   AnchorException
+        *   ServiceException
 
     # PROVIDES:
     None
@@ -40,7 +39,7 @@ class NodeTreeServiceException(AnchorException):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See AnchorException class for inherited attributes.
+        *   See ServiceException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
         msg: Optional[str]
@@ -53,7 +52,7 @@ class NodeTreeServiceException(AnchorException):
     None
 
     # INHERITED METHODS:
-        *   See AnchorException class for inherited methods.
+        *   See ServiceException class for inherited methods.
     """
     CLS_NAME = " NodeTreeService"
     ERR_CODE = " NODE_TREE_SERVICE_EXCEPTION"

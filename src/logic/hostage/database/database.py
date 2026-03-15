@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import List
 
 from logic.hostage import (
-    AddingDuplicateHostageException, CaptivityContext, CaptivityContextService, Hostage,
+    AddingDuplicateHostageException, CaptivityContext, HostageContextService, Hostage,
     HostageList, HostageService, UniqueHostageInsertionException,
     UniqueHostageSearchException
 )
@@ -67,7 +67,7 @@ class HostageDatabase(Database[Hostage]):
         return self._database_core.pair_service
     
     @property
-    def context_service(self) -> CaptivityContextService:
+    def context_service(self) -> HostageContextService:
         return self._database_core.context_service
     
     @property

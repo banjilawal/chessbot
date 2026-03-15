@@ -15,11 +15,11 @@ __all__ = [
     "SchemaServiceException",
 ]
 
-from logic.system import AnchorException
+from logic.system import ServiceException
 
 
 # ======================# SCHEMA_SERVICE_EXCEPTION #======================#
-class SchemaServiceException(AnchorException):
+class SchemaServiceException(ServiceException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
@@ -31,7 +31,7 @@ class SchemaServiceException(AnchorException):
     2.  Indicate which SchemaService method received a worker's (layer-1) failure result.
 
     # PARENT:
-        *   AnchorException
+        *   ServiceException
 
     # PROVIDES:
     None
@@ -40,7 +40,7 @@ class SchemaServiceException(AnchorException):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See AnchorException class for inherited attributes.
+        *   See ServiceException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
         msg: Optional[str]
@@ -53,7 +53,7 @@ class SchemaServiceException(AnchorException):
     None
 
     # INHERITED METHODS:
-        *   See AnchorException class for inherited methods.
+        *   See ServiceException class for inherited methods.
     """
     CLS_NAME = " SchemaService"
     ERR_CODE = " SCHEMA_SERVICE_EXCEPTION"

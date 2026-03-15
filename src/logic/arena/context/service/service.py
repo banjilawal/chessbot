@@ -38,7 +38,7 @@ class AgentContextService(ContextService[AgentContext]):
     # INHERITED ATTRIBUTES:
         *   See ContextService for inherited attributes.
     """
-    DEFAULT_NAME = "AgentContextService"
+    DEFAULT_NAME = "PlayerContextService"
     def __init__(
             self,
             name: str = DEFAULT_NAME,
@@ -63,7 +63,7 @@ class AgentContextService(ContextService[AgentContext]):
 
         Raises:
         """
-        method = "AgentContextService.__init__"
+        method = "PlayerContextService.__init__"
         super().__init__(id=id, name=name, builder=builder, validator=validator, finder=finder)
         
     @property

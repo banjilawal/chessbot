@@ -15,11 +15,11 @@ __all__ = [
     "NodeServiceException",
 ]
 
-from logic.system import AnchorException
+from logic.system import ServiceException
 
 
 # ======================# NODE_SERVICE_EXCEPTION #======================#
-class NodeServiceException(AnchorException):
+class NodeServiceException(ServiceException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
@@ -31,7 +31,7 @@ class NodeServiceException(AnchorException):
     2.  Indicate which NodeService method received a worker's (layer-1) failure result.
 
     # PARENT:
-        *   AnchorException
+        *   ServiceException
 
     # PROVIDES:
     None
@@ -40,7 +40,7 @@ class NodeServiceException(AnchorException):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See AnchorException class for inherited attributes.
+        *   See ServiceException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
         msg: Optional[str]
@@ -53,7 +53,7 @@ class NodeServiceException(AnchorException):
     None
 
     # INHERITED METHODS:
-        *   See AnchorException class for inherited methods.
+        *   See ServiceException class for inherited methods.
     """
     CLS_NAME = " NodeService"
     ERR_CODE = " NODE_SERVICE_EXCEPTION"

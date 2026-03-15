@@ -13,7 +13,7 @@ from logic.system import ContextService, id_emitter
 from logic.hostage import CaptivityContext, CaptivityContextBuilder, CaptivityContextValidator, HostageFinder
 
 
-class CaptivityContextService(ContextService[CaptivityContext]):
+class HostageContextService(ContextService[CaptivityContext]):
     """
     # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
 
@@ -28,7 +28,7 @@ class CaptivityContextService(ContextService[CaptivityContext]):
         *   ContextService
 
     # PROVIDES:
-        *   CaptivityContextService
+        *   HostageContextService
 
     # LOCAL ATTRIBUTES:
     None
@@ -36,7 +36,7 @@ class CaptivityContextService(ContextService[CaptivityContext]):
     # INHERITED ATTRIBUTES:
         *   See ContextService for inherited attributes.
     """
-    SERVICE_NAME = "CaptivityContextService"
+    SERVICE_NAME = "HostageContextService"
     
     def __init__(
             self,
@@ -60,7 +60,7 @@ class CaptivityContextService(ContextService[CaptivityContext]):
         Raises:
             None
         """
-        method = "CaptivityContextService.__init__"
+        method = "HostageContextService.__init__"
         super().__init__(id=id, name=name, builder=builder, validator=validator, finder=finder)
     
     @property

@@ -22,8 +22,8 @@ class CaptivityContextServiceException(CaptivityContextException, ServiceExcepti
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Indicate that an CaptivityContextService encountered an error which prevented the service from completing a task.
-    2.  Wrap an exception that hits the try-finally block of an CaptivityContextService method.
+    1.  Indicate that an HostageContextService encountered an error which prevented the service from completing a task.
+    2.  Wrap an exception that hits the try-finally block of an HostageContextService method.
 
     # PARENT:
         *   ServiceException
@@ -39,4 +39,4 @@ class CaptivityContextServiceException(CaptivityContextException, ServiceExcepti
     None
     """
     ERR_CODE = "CAPTIVITY_CONTEXT_SERVICE_EXCEPTION"
-    MSG = "CaptivityContextService raised an exception."
+    MSG = "HostageContextService raised an exception."

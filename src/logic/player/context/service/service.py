@@ -13,7 +13,7 @@ from logic.system import ContextService, id_emitter
 from logic.agent import AgentContext, AgentContextBuilder, AgentContextValidator, AgentFinder
 
 
-class AgentContextService(ContextService[AgentContext]):
+class PlayerContextService(ContextService[AgentContext]):
     """
     # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
 
@@ -38,7 +38,7 @@ class AgentContextService(ContextService[AgentContext]):
     # INHERITED ATTRIBUTES:
         *   See ContextService for inherited attributes.
     """
-    DEFAULT_NAME = "AgentContextService"
+    DEFAULT_NAME = "PlayerContextService"
     def service(
             self,
             name: str = DEFAULT_NAME,
@@ -63,7 +63,7 @@ class AgentContextService(ContextService[AgentContext]):
 
         Raises:
         """
-        method = "AgentContextService.service"
+        method = "PlayerContextService.service"
         super().service(id=id, name=name, builder=builder, validator=validator, finder=finder)
         
     @property

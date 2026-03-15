@@ -15,18 +15,22 @@ __all__ = [
     "PairListServiceException",
 ]
 
-from logic.system import AnchorException
+from logic.system import ServiceException
 
 # ======================# PAIR_LIST_SERVICE_EXCEPTION #======================#
-class PairListServiceException(AnchorException):
+class PairListServiceException(ServiceException):
     """
-    # ROLE: Debug Coverage Target, Exception Chain Layer 0
+    # ROLE: Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Indicate that an error occurred in a PairListService.
+    1.  Anchoring target for PairListService debug (layer-2) error state firing incident
+        reports on
+            *   the triggering variable
+            *   The trigger's value.
+    2.  Indicate which PairListService method received a worker's (layer-1) failure result.
 
     # PARENT:
-    *   AnchorException
+        *   ServiceException
 
     # PROVIDES:
     None
@@ -35,7 +39,7 @@ class PairListServiceException(AnchorException):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See AnchorException class for inherited attributes.
+        *   See ServiceException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
         msg: Optional[str]
@@ -48,7 +52,7 @@ class PairListServiceException(AnchorException):
     None
 
     # INHERITED METHODS:
-        *   See AnchorException class for inherited methods.
+        *   See ServiceException class for inherited methods.
     """
     CLS_NAME = " PairListService"
     ERR_CODE = " PAIR_LIST_SERVICE_EXCEPTION"

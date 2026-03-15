@@ -10,8 +10,7 @@ version: 1.0.0
 # =========== SCHEMA.KEY.SERVICE PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .exception import *
 
 # Modules
 from .service import SchemaKeyService
-from .exception import SchemaKeyServiceException

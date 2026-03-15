@@ -11,8 +11,7 @@ version: 1.0.0
 
 
 # Packages
-
+from .exception import *
 
 # Modules
 from .service import PersonaKeyService
-from .exception import PersonaKeyServiceException

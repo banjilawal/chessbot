@@ -17,14 +17,15 @@ __all__ = [
 
 from logic.system import BuildException
 
+
 # ======================# PAIR_LIST_BUILD_FAILURE #======================#
 class PairListBuildException(BuildException):
     """
-    # ROLE: Exception Chain Layer 1, Exception Messaging
-    # TASK: Worker Method Identifier
+    # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Identify the PairListBuilder method where the process failed.
+    1.  Indicate the PairListBuilder did not produce a valid work product.
+    2.  Identify the PairListBuilder method where the failure occurred.
 
     # PARENT:
         *   BuildException
@@ -40,10 +41,10 @@ class PairListBuildException(BuildException):
 
     # CONSTRUCTOR PARAMETERS:)
         op: Optional[str]
+        ex: Optional[str]
         msg: Optional[str]
         mthd: Optional[str]
         err_code: Optional[str]
-        ex: Optional[Exception]
         rslt_type: Optional[str]
 
     # LOCAL METHODS:
@@ -52,7 +53,6 @@ class PairListBuildException(BuildException):
     # INHERITED METHODS:
         *   See BuildException class for inherited methods.
     """
-    MTHD = Optional[str]
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     ERR_CODE = "PAIR_LIST_BUILD_FAILURE"
@@ -63,17 +63,17 @@ class PairListBuildException(BuildException):
             op: Optional[str] = None,
             msg: Optional[str] = None,
             mthd: Optional[str] = None,
-            err_code: Optional[str] = None,
             ex: Optional[Exception] = None,
+            err_code: Optional[str] = None,
             rslt_type: Optional[str] = None,
     ):
         """
         Args:
             op: Optional[str]
+            ex: Optional[str]
             msg: Optional[str]
             mthd: Optional[str]
             err_code: Optional[str]
-            ex: Optional[Exception]
             rslt_type: Optional[str]
         """
         op = op or self.OP

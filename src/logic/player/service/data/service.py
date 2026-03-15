@@ -58,7 +58,7 @@ class AgentStackService(StackService[PlayerAgent]):
             *   name (str): = SERVICE_NAME
             *   bag (List[Player]): = List[Player]
             *   service (AgentService): = AgentService()
-            *   context_service (AgentContextService): = AgentContextService()
+            *   context_service (PlayerContextService): = PlayerContextService()
 
         # RETURNS:
         None
@@ -95,8 +95,8 @@ class AgentStackService(StackService[PlayerAgent]):
     #     return cast(AgentValidator, self.service.item_validator)
     #
     # @property
-    # def context_service(self) -> AgentContextService:
-    #     return cast(AgentContextService, self.context_service)
+    # def context_service(self) -> PlayerContextService:
+    #     return cast(PlayerContextService, self.context_service)
     #
     # @LoggingLevelRouter.monitor
     # def push_item(self, item: Player) -> InsertionResult[Player]:
@@ -116,7 +116,7 @@ class AgentStackService(StackService[PlayerAgent]):
     # @LoggingLevelRouter.monitor
     # def search(self, map: AgentContext) -> SearchResult[List[Player]]:
     #     method = "AgentStackService.finder"
-    #     agent_context_service = cast(AgentContextService, self.context_service)
+    #     agent_context_service = cast(PlayerContextService, self.context_service)
     #
     #     return self.context_service.finder.find(
     #         dataset=self.bag,

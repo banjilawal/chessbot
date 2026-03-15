@@ -10,8 +10,7 @@ version: 1.0.0
 #=========== EDGE.CONTEXT.SERVICE PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .exception import *
 
 # Modules
-from .exception import *
 from .service import EdgeContextService
