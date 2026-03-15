@@ -13,7 +13,9 @@ version: 1.0.0
 None
 
 # Modules
-from .pawn import PromotePawnToPawnException
+from .pawn import PromoteToPawnException
+from .king import PromotionToKingException
+from .row import PawnPromotionRowException
 from .route import PawnPromotionRouteException
 from .double import PawnAlreadyPromotedException
-from .king import CannotPromotePawnToKingException
+from .inactive import PromoteInactivePawnException

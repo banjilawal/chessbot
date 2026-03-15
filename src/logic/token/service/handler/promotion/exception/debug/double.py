@@ -22,7 +22,7 @@ class PawnAlreadyPromotedException(TokenDebugException):
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that promoting a PawnToken failed because the Pawn had already been promoted.
+    1.  Indicate that a pawn could not be promoted because, it had already been promoted.
 
     # PARENT:
         *   TokenDebugException

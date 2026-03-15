@@ -11,27 +11,27 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# PAWN_PROMOTION_HANDLER_EXCEPTION #======================#
-    "PawnPromotionHandlerException",
+    # ======================# PAWN_PROMOTER_EXCEPTION #======================#
+    "PawnPromoterException",
 ]
 
-from logic.system import ServiceException
+from logic.system import AnchorException
 
 
-# ======================# PAWN_PROMOTION_HANDLER_EXCEPTION #======================#
-class PawnPromotionHandlerException(ServiceException):
+# ======================# PAWN_PROMOTER_EXCEPTION #======================#
+class PawnPromoterException(AnchorException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Anchoring target for PawnPromotionHandler debug (layer-2) error state firing incident
+    1.  Anchoring target for PawnPromoter debug (layer-2) error state firing incident
         reports on
             *   the triggering variable
             *   The trigger's value.
-    2.  Indicate which PawnPromotionHandler method received a worker's (layer-1) failure result.
+    2.  Indicate which PawnPromoter method received a worker's (layer-1) failure result.
 
     # PARENT:
-        *   ServiceException
+        *   AnchorException
 
     # PROVIDES:
     None
@@ -40,7 +40,7 @@ class PawnPromotionHandlerException(ServiceException):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See ServiceException class for inherited attributes.
+        *   See AnchorException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
         msg: Optional[str]
@@ -53,11 +53,11 @@ class PawnPromotionHandlerException(ServiceException):
     None
 
     # INHERITED METHODS:
-        *   See ServiceException class for inherited methods.
+        *   See AnchorException class for inherited methods.
     """
-    CLS_NAME = " PawnPromotionHandler"
-    ERR_CODE = " PAWN_PROMOTION_HANDLER_EXCEPTION"
-    MSG = " PawnPromotionHandler raised an exception."
+    CLS_NAME = " PawnPromoter"
+    ERR_CODE = " PAWN_PROMOTER_EXCEPTION"
+    MSG = " PawnPromoter method raised an exception."
     
     def __init__(
             self,

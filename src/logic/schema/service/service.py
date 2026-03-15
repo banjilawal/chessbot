@@ -56,18 +56,18 @@ class SchemaService(HashService[Schema]):
         """"""
         return cast(SchemaValidator, self.hash_validator)
     
-    @classmethod
-    def schema_colors(cls) -> List[GameColor]:
+    @property
+    def schema_colors(self) -> List[GameColor]:
         """The values of the color attribute."""
         return [entry.color for entry in Schema]
     
-    @classmethod
-    def schema_names(cls) -> List[str]:
+    @property
+    def schema_names(self) -> List[str]:
         """A Schema name is the key to a metadata dictionary."""
         return [entry.name for entry in Schema]
     
-    @classmethod
-    def rank_quotas_for_schema(cls, p) -> {Rank, int}:
+    @property
+    def rank_quotas_for_schema(self) -> {Rank, int}:
         return {
             King: Persona.KING.quota,
             Pawn: Persona.PAWN.quota,

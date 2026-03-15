@@ -13,4 +13,5 @@ version: 1.0.0
 from .debug import *
 
 # Modules
-from .wrapper import PawnPromotionException
+from .wrapper import PromotionException
+from .anchor import PawnPromoterException

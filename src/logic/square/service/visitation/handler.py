@@ -21,28 +21,25 @@ from logic.token import Token, TokenBoardState, TokenService
 
 class TokenVisitHandler:
     """
-    # ROLE: Consistency, Integrity Maintenance, Lifecycle Management, Util
+    # ROLE: Update Handler, Consistency, Integrity Maintenance, Lifecycle Management, Util
 
     # RESPONSIBILITIES:
     1.  Ensure integrity and consistency  are maintained in all stages of the square occupation lifecycle.
 
     # PARENT:
-        *   IntegrityService
+   None
 
     # PROVIDES:
     None
 
     # LOCAL ATTRIBUTES:
-        *   token-service (TokenService)
+    None
 
     # INHERITED ATTRIBUTES:
     None
 
     # CONSTRUCTOR ARGS:
-        Local:
-            *   token_service (TokenService)
-        Inherited:
-        None
+    None
 
     # LOCAL METHODS:
         *   start_visit(token: Token, square: Square, square_validator: SquareValidator) -> UpdateResult[Square]
@@ -62,7 +59,7 @@ class TokenVisitHandler:
             square_service: SquareService = SquareService(),
     ) -> UpdateResult[Square]:
         """
-        # ACTION:
+        Action:
             1.  If the square is either unsafe put the square and exception chain  in the UpdateResult  then
                 return the client. Else make a deep copy of the square.
             2.  If th  square is already occupied put the deep_copy and the exception chain  in the UpdateResult
@@ -76,6 +73,7 @@ class TokenVisitHandler:
             4.  Configure the square side of the square-token binding.
             5.  Configure the token side of the square-token binding.
             6.  Send deep_copy and the current square in the success result.
+            
         Args:
             token: Token
             square: Square
@@ -92,7 +90,7 @@ class TokenVisitHandler:
             VisitorFromWrongBoardException
             SquareVisitorDisabledException
         """
-        method = "SquareService.add_occupant"
+        method = f"{cls.__class__.__name__}.add_occupant"
         
         # Handle the case that, the item is not certified safe.
         square_validation = square_service.validator.validate(candidate=square)

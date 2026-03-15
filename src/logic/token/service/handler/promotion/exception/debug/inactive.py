@@ -1,7 +1,7 @@
-# src/logic/token/service/handler/promotion/exception/debug/king.py
+# src/logic/token/service/handler/promotion/exception/debug/pawn.py
 
 """
-Module: logic.token.service.handler.promotion.exception.debug.king
+Module: logic.token.service.handler.promotion.exception.debug.pawn
 Author: Banji Lawal
 Created: 2026-03-14
 version: 1.0.0
@@ -11,18 +11,20 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# PROMOTING_TO_KING_NOT_ALLOWED_EXCEPTION #======================#
-    "PromotionToKingException",
+    # ======================# CANNOT_PROMOTE_INACTIVE_PAWN_EXCEPTION  #======================#
+    "PromoteInactivePawnException",
 ]
 
 from logic.token import TokenDebugException
-# ======================# PROMOTING_TO_KING_NOT_ALLOWED_EXCEPTION #======================#
-class PromotionToKingException(TokenDebugException):
+
+
+# ======================# CANNOT_PROMOTE_INACTIVE_PAWN_EXCEPTION  #======================#
+class PromoteInactivePawnException(TokenDebugException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a pawn could not be promoted because, it had already been promoted.
+    1.  Indicate that an inactive PawnToken cannot be promoted.
 
     # PARENT:
         *   TokenDebugException
@@ -51,8 +53,8 @@ class PromotionToKingException(TokenDebugException):
     """
     VAR = Optional[str]
     VAL = Optional[Any]
-    ERR_CODE = "PROMOTING_TO_KING_NOT_ALLOWED_EXCEPTION"
-    MSG = "Cannot promote a pawn to a king."
+    ERR_CODE = "CANNOT_PROMOTE_INACTIVE_PAWN_EXCEPTION"
+    MSG = "An inactive pawn cannot be promoted."
     
     def __init__(
             self,

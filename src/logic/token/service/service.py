@@ -16,10 +16,10 @@ from logic.square import SquareContext
 from logic.system import DeletionResult, IntegrityService, InsertionResult, LoggingLevelRouter, id_emitter
 from logic.coord import Coord, CoordService, DuplicateCoordPushException, PoppingEmtpyCoordStackException
 from logic.token import (
-    CannotPromotePawnToKingException, NewRankSameAsCurrentRankException, OverMoveUndoLimitException,
+    PromotionToKingException, NewRankSameAsCurrentRankException, OverMoveUndoLimitException,
     PawnAlreadyPromotedException,
-    PawnPromotionException, PawnToken,
-    PromotionState, Token,TokenBoardState,
+    PromotionException, PawnToken,
+    PromotionState, Token, TokenBoardState,
     TokenValidator,
     TokenDeploymentException, TokenFactory, TokenReadinessAnalyzer, TokenOpeningSquareNotFoundException,
     TokenServiceException,
@@ -301,8 +301,8 @@ class TokenService(IntegrityService[Token]):
             return InsertionResult.failure(
                 TokenServiceException(
                     msg=f"ServiceId:{self.id}, {method}: {TokenService.ERR_CODE}",
-                    ex=PawnPromotionException(
-                        msg=f"{method}: {PawnPromotionException.ERR_CODE}",
+                    ex=PromotionException(
+                        msg=f"{method}: {PromotionException.ERR_CODE}",
                         ex=TypeError(
                             f"{method}: Expected type PawnToken for promotion. Got {type(pawn).__name__} instead."
                         )
@@ -315,8 +315,8 @@ class TokenService(IntegrityService[Token]):
             return InsertionResult.failure(
                 TokenServiceException(
                     msg=f"ServiceId:{self.id}, {method}: {TokenService.ERR_CODE}",
-                    ex=PawnPromotionException(
-                        msg=f"{method}: {PawnPromotionException.ERR_CODE}",
+                    ex=PromotionException(
+                        msg=f"{method}: {PromotionException.ERR_CODE}",
                         ex=PawnAlreadyPromotedException(f"{method}: {PawnAlreadyPromotedException.MSG}")
                     )
                 )
@@ -328,8 +328,8 @@ class TokenService(IntegrityService[Token]):
             return InsertionResult.failure(
                 TokenServiceException(
                     msg=f"ServiceId:{self.id}, {method}: {TokenService.ERR_CODE}",
-                    ex=PawnPromotionException(
-                        msg=f"{method}: {PawnPromotionException.ERR_CODE}",
+                    ex=PromotionException(
+                        msg=f"{method}: {PromotionException.ERR_CODE}",
                         ex=rank_validation.exception
                     )
                 )
@@ -340,10 +340,10 @@ class TokenService(IntegrityService[Token]):
             return InsertionResult.failure(
                 TokenServiceException(
                     msg=f"ServiceId:{self.id}, {method}: {TokenService.ERR_CODE}",
-                    ex=PawnPromotionException(
-                        msg=f"{method}: {PawnPromotionException.ERR_CODE}",
-                        ex=CannotPromotePawnToKingException(
-                            f"{method}: {CannotPromotePawnToKingException.MSG}"
+                    ex=PromotionException(
+                        msg=f"{method}: {PromotionException.ERR_CODE}",
+                        ex=PromotionToKingException(
+                            f"{method}: {PromotionToKingException.MSG}"
                         )
                     )
                 )
@@ -354,8 +354,8 @@ class TokenService(IntegrityService[Token]):
             return InsertionResult.failure(
                 TokenServiceException(
                     msg=f"ServiceId:{self.id}, {method}: {TokenService.ERR_CODE}",
-                    ex=PawnPromotionException(
-                        msg=f"{method}: {PawnPromotionException.ERR_CODE}",
+                    ex=PromotionException(
+                        msg=f"{method}: {PromotionException.ERR_CODE}",
                         ex=NewRankSameAsCurrentRankException(NewRankSameAsCurrentRankException.MSG)
                     )
                 )

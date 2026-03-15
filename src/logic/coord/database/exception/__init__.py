@@ -15,3 +15,4 @@ from .insertion import *
 
 # Modules
 from .anchor import CoordDatabaseException
+from .null import CoordDatabaseNullException

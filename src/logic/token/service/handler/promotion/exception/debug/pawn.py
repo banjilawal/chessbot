@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 __all__ = [
     # ======================# CIRCULAR_PAWN_RANK_PROMOTION_EXCEPTION  #======================#
-    "PromotePawnToPawnException",
+    "PromoteToPawnException",
 ]
 
 from logic.token import TokenDebugException
 
 
 # ======================# CIRCULAR_PAWN_RANK_PROMOTION_EXCEPTION  #======================#
-class PromotePawnToPawnException(TokenDebugException):
+class PromoteToPawnException(TokenDebugException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 

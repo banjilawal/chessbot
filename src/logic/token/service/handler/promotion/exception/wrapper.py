@@ -12,19 +12,19 @@ from typing import Optional
 
 __all__ = [
     # ======================# PAWN_PROMOTION_FAILURE #======================#
-    "PawnPromotionHandlerException",
+    "PromotionException",
 ]
 
 from logic.system import UpdateException
 
 # ======================# PAWN_PROMOTION_FAILURE #======================#
-class PawnPromotionHandlerException(UpdateException):
+class PromotionException(UpdateException):
     """
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
     1.  Indicate that promoting a pawn failed.
-    2.  Identify the PawnPromotion method where the failure occurred.
+    2.  Identify the PawnPromoter method where the failure occurred.
 
     # PARENT:
         *   UpdateException
@@ -55,7 +55,7 @@ class PawnPromotionHandlerException(UpdateException):
     OP = "PawnPromotion"
     RSLT_TYPE = "UpdateResult"
     ERR_CODE = "PAWN_PROMOTION_FAILURE"
-    MSG = "PawnPromotion method failed."
+    MSG = "PawnPromoter method failed."
     
     def __init__(
             self,

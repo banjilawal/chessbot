@@ -10,17 +10,13 @@ Version: 1.0.0
 from __future__ import annotations
 from typing import Any, cast
 
-from logic.board import DisabledTokenCannotExploreException
+from logic.coord import CoordDatabase, CoordDatabaseNullException, CoordService
 from logic.rank import RankService
-from logic.team import Team, TeamService
-from logic.coord import CoordStack, CoordService
-from logic.token import (
-    CombatantToken, KingToken, NullTokenException, Token, TokenException,
-    TokenValidationException
-)
-from logic.system import (
-    NumberValidator, IdentityService, LoggingLevelRouter, ServiceValidator, ValidationResult, Validator
-)
+from logic.system import IdentityService, LoggingLevelRouter, NumberValidator, ValidationResult, Validator
+from logic.team import TeamService
+from logic.token import CombatantToken, KingToken, Token, TokenException, TokenValidationException
+from logic.token.validator.exception.debug.null import NullTokenException
+
 
 class TokenValidator(Validator[Token]):
     """
@@ -52,7 +48,6 @@ class TokenValidator(Validator[Token]):
             rank_service: RankService = RankService(),
             coord_service: CoordService = CoordService(),
             identity_service: IdentityService = IdentityService(),
-            service_validator: ServiceValidator = ServiceValidator(),
             number_validation: NumberValidator = NumberValidator(),
     ) -> ValidationResult[Token]:
         """
@@ -78,15 +73,23 @@ class TokenValidator(Validator[Token]):
             *   NullTeamException
             *   TeamValidationException
         """
-        method = "Token.validate"
+        method = f"{cls.__class__.__name__}.validate"
         
         # Handle the nonexistence case.
         if candidate is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
-                    msg=f"{method}: {TokenValidationException.MSG}",
-                    ex=NullTokenException(f"{method}: {NullTokenException.MSG}")
+                    mthd=method,
+                    op=TokenValidationException.OP,
+                    msg=TokenValidationException.MSG,
+                    err_code=TokenValidationException.ERR_CODE,
+                    rslt_type=TokenValidationException.RSLT_TYPE,
+                    ex=NullTokenException(
+                        var="candidate",
+                        msg=NullTokenException.MSG,
+                        err_code=NullTokenException.ERR_CODE,
+                    )
                 )
             )
         # Handle the wrong class case.
@@ -94,83 +97,155 @@ class TokenValidator(Validator[Token]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
-                    msg=f"{method}: {TokenValidationException.MSG}",
-                    ex=TypeError(f"{method}:Expected Token, got {type(candidate).__name__} instead.")
+                    mthd=method,
+                    op=TokenValidationException.OP,
+                    msg=TokenValidationException.MSG,
+                    err_code=TokenValidationException.ERR_CODE,
+                    rslt_type=TokenValidationException.RSLT_TYPE,
+                    ex=TypeError(f"Expected Token, got {type(candidate).__name__} instead.")
                 )
             )
         # --- Cast the candidate to a Token for additional tests ---#
         token = cast(Token, candidate)
         
         # Handle the case that, id or designation are not certified safe.
-        identity_validation = identity_service.validate_identity(
+        identity_validation_result = identity_service.validate_identity(
             id_candidate=token.id,
             name_candidate=token.designation
         )
-        if identity_validation.is_failure:
+        if identity_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
-                    msg=f"{method}: {TokenValidationException.MSG}",
-                    ex=identity_validation.exception
+                    mthd=method,
+                    op=TokenValidationException.OP,
+                    msg=TokenValidationException.MSG,
+                    err_code=TokenValidationException.ERR_CODE,
+                    rslt_type=TokenValidationException.RSLT_TYPE,
+                    ex=identity_validation_result.exception
                 )
             )
         # Handle the case that, the occupant's team fails validation.
-        team_validation = team_service.item_validator.validate(token.team)
-        if team_validation.is_failure:
+        team_validation_result = team_service.validator.validate(token.team)
+        if team_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
-                    msg=f"{method}: {TokenValidationException.MSG}",
-                    ex=team_validation.exception
+                    mthd=method,
+                    op=TokenValidationException.OP,
+                    msg=TokenValidationException.MSG,
+                    err_code=TokenValidationException.ERR_CODE,
+                    rslt_type=TokenValidationException.RSLT_TYPE,
+                    ex=team_validation_result.exception
                 )
             )
-        # Handle the case that, the Token's roster or opening_square_name  fail validation and in the allowed range.
-        roster_and_square_validation = identity_service.validate_identity(
+        # Handle the case that, the roster or opening_square_name are not acceptable.
+        roster_and_square_validation_result = identity_service.validate_identity(
             id_candidate=token.roster_number,
-            name_candidate=token.opening_square
+            name_candidate=token.opening_square_name
         )
-        if team_validation.is_failure:
+        if roster_and_square_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
-                    msg=f"{method}: {TokenValidationException.MSG}",
-                    ex=roster_and_square_validation.exception
+                    mthd=method,
+                    op=TokenValidationException.OP,
+                    msg=TokenValidationException.MSG,
+                    err_code=TokenValidationException.ERR_CODE,
+                    rslt_type=TokenValidationException.RSLT_TYPE,
+                    ex=roster_and_square_validation_result.exception
                 )
             )
         # Handle the case that, the rank is not certified safe.
-        rank_validation = rank_service.validator.validate(candidate=token.rank)
-        if rank_validation.is_failure:
+        rank_validation_result = rank_service.validator.validate(candidate=token.rank)
+        if rank_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
-                    msg=f"{method}: {TokenValidationException.MSG}",
-                    ex=rank_validation.exception
+                    mthd=method,
+                    op=TokenValidationException.OP,
+                    msg=TokenValidationException.MSG,
+                    err_code=TokenValidationException.ERR_CODE,
+                    rslt_type=TokenValidationException.RSLT_TYPE,
+                    ex=rank_validation_result.exception
                 )
             )
-        # Handle the case that, occupant.positions fails its validation.
-        service_validation = service_validator.validate(candidate=token.positions, expected_type=CoordStack)
-        if service_validation.is_failure:
+        # Handle the case that the token's CoordDatabase fails it safety checks.
+        token_coord_database_verification_result = cls._verify_token_coord_stack(token)
+        if token_coord_database_verification_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
-                    msg=f"{method}: {TokenValidationException.MSG}",
-                    ex=service_validation.exception
+                    mthd=method,
+                    op=TokenValidationException.OP,
+                    msg=TokenValidationException.MSG,
+                    err_code=TokenValidationException.ERR_CODE,
+                    rslt_type=TokenValidationException.RSLT_TYPE,
+                    ex=token_coord_database_verification_result.exception
                 )
             )
         # Tests have been passed return the occupant in the ValidationResult.
-        return ValidationResult.success(payload=token)
+        return ValidationResult.success(token)
     
     @classmethod
-    def verify_token_is_combatant(cls, candidate: Any) -> ValidationResult[CombatantToken]:
-        method = "TokenValidator.validate_token_is_combatant"
-        # Handle the case that, the candidate is not certified as a safe occupant.
-        validation = cls.validate(candidate)
-        if validation.is_failure:
+    @LoggingLevelRouter.monitor
+    def _verify_token_coord_stack(cls, token: Token) -> ValidationResult[int]:
+        method = f"{cls.__class__.__name__}._verify_coord_stack"
+        # Handle the case that, token.positions fails is null.
+        if token.positions is not None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
-                    msg=f"{method}: {TokenValidationException.MSG}",
-                    ex=validation.exception
+                    mthd=method,
+                    op=TokenValidationException.OP,
+                    msg=TokenValidationException.MSG,
+                    err_code=TokenValidationException.ERR_CODE,
+                    rslt_type=TokenValidationException.RSLT_TYPE,
+                    ex=CoordDatabaseNullException(
+                        msg=CoordDatabaseNullException.MSG,
+                        err_code=TokenValidationException.ERR_CODE,
+                    )
+                )
+            )
+        # Handle the case that, token.positions is the wrong type.
+        if not isinstance(token.positions, CoordDatabase):
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                TokenValidationException(
+                    mthd=method,
+                    op=TokenValidationException.OP,
+                    msg=TokenValidationException.MSG,
+                    err_code=TokenValidationException.ERR_CODE,
+                    rslt_type=TokenValidationException.RSLT_TYPE,
+                    ex=TypeError(f"Expected CoordDatabase, got {type(candidate).__name__} instead.")
+                )
+            )
+        return ValidationResult.success(payload=1)
+    
+    @classmethod
+    def verify_token_is_combatant(cls, candidate: Any) -> ValidationResult[CombatantToken]:
+        """
+        Verify the token can be captured.
+        Args:
+            candidate: Any
+        Returns:
+            ValidationResult[CombatantToken]
+        Raises:
+        
+        """
+        method = f"{cls.__class__.__name__}.validate_token_is_combatant"
+        # Handle the case that, the candidate is not certified as a safe occupant.
+        validation_result = cls.validate(candidate)
+        if validation_result.is_failure:
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                TokenValidationException(
+                    mthd=method,
+                    op=TokenValidationException.OP,
+                    msg=TokenValidationException.MSG,
+                    err_code=TokenValidationException.ERR_CODE,
+                    rslt_type=TokenValidationException.RSLT_TYPE,
+                    ex=validation_result.exception
                 )
             )
         # Handle the case that, the candidate is not a CombatantToken.
@@ -178,8 +253,12 @@ class TokenValidator(Validator[Token]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
-                    msg=f"{method}: {TokenValidationException.MSG}",
-                    ex=TypeError(f"{method}:Expected CombatantToken, got {type(candidate).__name__} instead.")
+                    mthd=method,
+                    op=TokenValidationException.OP,
+                    msg=TokenValidationException.MSG,
+                    err_code=TokenValidationException.ERR_CODE,
+                    rslt_type=TokenValidationException.RSLT_TYPE,
+                    ex=TypeError(f"Expected CombatantToken, got {type(candidate).__name__} instead.")
                 )
             )
         # Tests have been passed return cast the candidate to CombatantToken and return to the caller.

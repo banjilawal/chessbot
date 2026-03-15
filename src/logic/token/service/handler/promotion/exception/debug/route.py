@@ -24,8 +24,8 @@ class PawnPromotionRouteException(TokenDebugException):
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that promoting a PawnToken failed because there was no promotion route to 
-        the new rank.
+    1.  Indicate that a pawn could not be promoted because, there was no routing logic to
+        the new route.
 
     # PARENT:
         *   TokenDebugException
