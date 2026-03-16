@@ -1,9 +1,9 @@
-# src/logic/coord/database/core/exception/stack/empty.py
+# src/logic/coord/database/core/handler/crud/exception/pop/empty.py
 
 """
-Module: logic.coord.database.core.exception.stack.empty
+Module: logic.coord.database.core.handler.crud.exception.pop.empty
 Author: Banji Lawal
-Created: 2025-11-19
+Created: 2026-03-14
 version: 1.0.0
 """
 

@@ -1,9 +1,9 @@
-# src/logic/coord/database/core/exception/stack/pop.py
+# src/logic/coord/database/core/handler/crud/exception/pop/wrapper.py
 
 """
-Module: logic.coord.database.core.exception.stack.pop
+Module: logic.coord.database.core.handler.crud.exception.pop.wrapper
 Author: Banji Lawal
-Created: 2025-11-19
+Created: 2026-03-14
 version: 1.0.0
 """
 
@@ -89,37 +89,3 @@ class PoppingCoordException(DeletionException):
             err_code=err_code,
             rslt_type=rslt_type,
         )
-
-__all__ = [
-    # ======================# POPPING_COORD_EXCEPTION #======================#
-    "PoppingCoordException",
-]
-
-from logic.coord import CoordException
-from logic.system import DeletionException
-
-
-# ======================# POPPING_COORD_EXCEPTION #======================#
-class PoppingCoordException(CoordException, DeletionException):
-    """
-    # ROLE: Exception Wrapper
-
-    # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why popping a Coord from the stack fails. The encapsulated 
-        exceptions create a chain for tracing the source of the failure.
-
-    # PARENT:
-        *   CoordException
-        *   DeletionException
-
-    # PROVIDES:
-    None
-
-    # LOCAL ATTRIBUTES:
-    None
-
-    INHERITED ATTRIBUTES:
-    None
-    """
-    ERR_CODE = "POPPING_COORD_EXCEPTION"
-    MSG = "Popping a coord from the stack failed."

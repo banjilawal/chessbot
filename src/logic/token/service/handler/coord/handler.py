@@ -6,37 +6,16 @@ Author: Banji Lawal
 Created: 2026-03-14
 version: 1.0.0
 """
-from logic.coord.database.core.exception.pop.wrapper import PoppingCoordException
-from logic.token.service.handler.coord.exception.anchor import TokenCoordHandlerException
-from logic.token.service.handler.coord.exception.pop import MoveUndoLimitException, UnopenedTokenPoppingCoordException
-
-# src/logic/token/service/service.py
-
-"""
-Module: logic.token.service.service
-Author: Banji Lawal
-Created: 2025-11-19
-version: 1.0.0
-"""
 
 from __future__ import annotations
-from typing import cast
 
-from logic.rank import King, Knight, Queen, Rank, RankService, Rook
-from logic.rank.model.concrete.bishop import Bishop
-from logic.schema import SchemaService
-from logic.square import SquareContext
-from logic.system import DeletionResult, IntegrityService, InsertionResult, LoggingLevelRouter, UpdateResult, id_emitter
-from logic.coord import Coord, CoordService, DuplicateCoordPushException, PoppingEmtpyCoordStackException
+from logic.system import DeletionResult, InsertionResult, LoggingLevelRouter
+from logic.coord import (
+    Coord, CoordService, DuplicateCoordPushException, PoppingCoordException, PushingCoordException
+)
 from logic.token import (
-    InactiveTokenPoppingCoordException, PromotionToKingException, NewRankSameAsCurrentRankException,
-    OverMoveUndoLimitException,
-    PawnAlreadyPromotedException,
-    PromotionException, PawnToken,
-    PromotionState, Token, TokenBoardState,
-    TokenService, TokenValidator,
-    TokenDeploymentException, TokenFactory, TokenHandler, TokenOpeningSquareNotFoundException,
-    TokenServiceException,
+    InactiveTokenPoppingCoordException, InactiveTokenPushingCoordException, MoveUndoLimitException, Token,
+    TokenCoordHandlerException, TokenValidator,  UnopenedTokenPoppingCoordException
 )
 
 class TokenCoordHandler:
@@ -90,10 +69,12 @@ class TokenCoordHandler:
             DeletionResult[Coord]
 
         Raises:
-            TokenServiceException
-            OverMoveUndoLimitException
-            TokenOpeningSquareNotFoundException
+            PoppingCoordException
+            MoveUndoLimitException
+            TokenCoordHandlerException
             PoppingEmtpyCoordStackException
+            InactiveTokenPoppingCoordException
+            UnopenedTokenPoppingCoordException
         """
         method = f"{cls.__class__.__name__}undo_last_coord_push"
         
@@ -119,29 +100,28 @@ class TokenCoordHandler:
             )
         # Handle the case that, token is not active
         if not token.is_active:
-            if validation_result.is_failure:
-                # Return the exception chain on failure.
-                return DeletionResult.failure(
-                    TokenCoordHandlerException(
-                        cls_mthd=method,
-                        cls_name=cls.__class__.__name__,
-                        msg=TokenCoordHandlerException.MSG,
-                        err_code=TokenCoordHandlerException.ERR_CODE,
-                        ex=PoppingCoordException(
-                            mthd=method,
-                            op=PoppingCoordException.OP,
-                            msg=PoppingCoordException.MSG,
-                            err_code=PoppingCoordException.ERR_CODE,
-                            rslt_type=PoppingCoordException.RSLT_TYPE,
-                            ex=InactiveTokenPoppingCoordException(
-                                var="token",
-                                val=token.designation,
-                                msg=InactiveTokenPoppingCoordException.MSG,
-                                err_code=InactiveTokenPoppingCoordException.ERR_CODE,
-                            )
+            # Return the exception chain on failure.
+            return DeletionResult.failure(
+                TokenCoordHandlerException(
+                    cls_mthd=method,
+                    cls_name=cls.__class__.__name__,
+                    msg=TokenCoordHandlerException.MSG,
+                    err_code=TokenCoordHandlerException.ERR_CODE,
+                    ex=PoppingCoordException(
+                        mthd=method,
+                        op=PoppingCoordException.OP,
+                        msg=PoppingCoordException.MSG,
+                        err_code=PoppingCoordException.ERR_CODE,
+                        rslt_type=PoppingCoordException.RSLT_TYPE,
+                        ex=InactiveTokenPoppingCoordException(
+                            var="token",
+                            val=token.designation,
+                            msg=InactiveTokenPoppingCoordException.MSG,
+                            err_code=InactiveTokenPoppingCoordException.ERR_CODE,
                         )
                     )
                 )
+            )
         # Handle the case that, the active token has not opened.
         if token.positions.size == 1:
             if validation_result.is_failure:
@@ -213,7 +193,6 @@ class TokenCoordHandler:
             )
         return popping_cord_stack_result
         
-    
     @classmethod
     @LoggingLevelRouter.monitor
     def push_coord(
@@ -222,7 +201,6 @@ class TokenCoordHandler:
             coord: Coord,
             coord_service: CoordService = CoordService(),
             token_validator: TokenValidator = TokenValidator(),
-
     ) -> InsertionResult:
         """
         Action:
@@ -248,146 +226,116 @@ class TokenCoordHandler:
         """
         method = "TokenService.push_coord_to_token"
         
-        # Handle the case that, the token is not certified safe.
-        token_validation = self.validator.validate(token)
-        if token_validation.is_failure:
+        # Handle the case that, the token is not certified as safe.
+        token_validation_result = token_validator.validate(token)
+        if token_validation_result.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
-                TokenServiceException(
-                    msg=f"{method}: {TokenService.ERR_CODE}",
-                    ex=token_validation.exception
-                )
-            )
-        # Handle the case that, the position is not certified safe.
-        position_validation = coord_service.validate(position)
-        if position_validation.is_failure:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                TokenServiceException(
-                    msg=f"{method}: {TokenService.ERR_CODE}",
-                    ex=token_validation.exception
-                )
-            )
-        # Handle the case that, the token is already the updated position
-        if position == token.current_position:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                TokenServiceException(
-                    msg=f"{method}: {TokenServiceException.ERR_CODE}",
-                    ex=DuplicateCoordPushException(
-                        f"{method}: {DuplicateCoordPushException.MSG}"
+                TokenCoordHandlerException(
+                    cls_mthd=method,
+                    cls_name=cls.__class__.__name__,
+                    msg=TokenCoordHandlerException.MSG,
+                    err_code=TokenCoordHandlerException.ERR_CODE,
+                    ex=PushingCoordException(
+                        mthd=method,
+                        op=PushingCoordException.OP,
+                        msg=PushingCoordException.MSG,
+                        err_code=PushingCoordException.ERR_CODE,
+                        rslt_type=PushingCoordException.RSLT_TYPE,
+                        ex=token_validation_result.exception
                     )
                 )
             )
-        # Handle the case that, adding the coord to the token's position history fails.
-        insertion_result = token.positions.push(item=position)
-        if insertion_result.is_failure:
+        # Handle the case that, token is not active
+        if not token.is_active:
             # Return the exception chain on failure.
             return InsertionResult.failure(
-                TokenServiceException(
-                    msg=f"{method}: {TokenServiceException.ERR_CODE}",
-                    ex=insertion_result.exception
-                )
-            )
-        # If the coord was successfully pushed onto the token's coord stack forward insertion result.
-        return insertion_result
-    
-    @LoggingLevelRouter.monitor
-    def deploy_on_board(self, token: Token, ) -> InsertionResult[bool]:
-        """
-        # ACTION:
-            1.  If the token or coord fail their validations return the exception in the InsertionResult.
-            2.  If the position is already the updated position return the exception in the InsertionResult.
-            3.  If the pushing the position to the token's coord stack fails encapsulate the exception then
-                send the exception chain in the InsertionResult's payload.
-
-        # Args:
-            token: Token
-
-        Returns:
-            InsertionResult
-
-        Raises:
-            TokenServiceException
-            CoordAlreadyToppingStackException
-        """
-        method = "TokenService.deploy_on_board"
-        
-        # Handle the case that, the token is not certified safe.
-        token_validation = self.validator.validate(token)
-        if token_validation.is_failure:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                TokenServiceException(
-                    msg=f"{method}: {TokenService.ERR_CODE}",
-                    ex=TokenDeploymentException(
-                        msg=f"{method}: {TokenDeploymentException.ERR_CODE}",
-                        ex=token_validation.exception
-                    )
-                )
-            )
-        # Handle the case that, the token has already been placed on the board.
-        if token.board_state != TokenBoardState.NEVER_BEEN_PLACED:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                TokenServiceException(
-                    msg=f"{method}: {TokenService.ERR_CODE}",
-                    ex=TokenDeploymentException(
-                        msg=f"{method}: {TokenDeploymentException.ERR_CODE}",
-                        ex=TokenAlreadyDeployedOnBoardException(f"{method}:")
-                    )
-                )
-            )
-        # Find the square where the token gets formed.
-        square_search_result = token.team.board.squares.search(
-            context=SquareContext(token.opening_square_name)
-        )
-        # Handle the case that, the search is not completed.
-        if square_search_result.is_failure:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                TokenServiceException(
-                    msg=f"{method}: {TokenService.ERR_CODE}",
-                    ex=TokenDeploymentException(
-                        msg=f"{method}: {TokenDeploymentException.ERR_CODE}",
-                        ex=square_search_result.exception
-                    )
-                )
-            )
-        # Handle the case the square is not found.
-        if square_search_result.is_empty:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                TokenServiceException(
-                    msg=f"{method}: {TokenService.ERR_CODE}",
-                    ex=TokenDeploymentException(
-                        msg=f"{method}: {TokenDeploymentException.ERR_CODE}",
-                        ex=TokenOpeningSquareNotFoundException(
-                            f"{method}: {TokenOpeningSquareNotFoundException.MSG}"
+                TokenCoordHandlerException(
+                    cls_mthd=method,
+                    cls_name=cls.__class__.__name__,
+                    msg=TokenCoordHandlerException.MSG,
+                    err_code=TokenCoordHandlerException.ERR_CODE,
+                    ex=PushingCoordException(
+                        mthd=method,
+                        op=PushingCoordException.OP,
+                        msg=PushingCoordException.MSG,
+                        err_code=PushingCoordException.ERR_CODE,
+                        rslt_type=PushingCoordException.RSLT_TYPE,
+                        ex=InactiveTokenPushingCoordException(
+                            var="token",
+                            val=token.designation,
+                            msg=InactiveTokenPushingCoordException.MSG,
+                            err_code=InactiveTokenPushingCoordException.ERR_CODE,
                         )
                     )
                 )
             )
-        # --- Run the occupation process on the opening square. ---#
-        occupation_result = token.team.board.squares.add_occupant_to_square(
-            token=token,
-            square=square_search_result.payload[0],
-        )
-        # Handle the case that, occupying the opening square fails.
-        if occupation_result.is_failure:
+        # Handle the case that, the coord is not certified as safe.
+        coord_validation_result = coord_service.validator.validate(coord)
+        if coord_validation_result.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
-                TokenServiceException(
-                    msg=f"{method}: {TokenService.ERR_CODE}",
-                    ex=TokenDeploymentException(
-                        msg=f"{method}: {TokenDeploymentException.ERR_CODE}",
-                        ex=occupation_result.exception
+                TokenCoordHandlerException(
+                    cls_mthd=method,
+                    cls_name=cls.__class__.__name__,
+                    msg=TokenCoordHandlerException.MSG,
+                    err_code=TokenCoordHandlerException.ERR_CODE,
+                    ex=PushingCoordException(
+                        mthd=method,
+                        op=PushingCoordException.OP,
+                        msg=PushingCoordException.MSG,
+                        err_code=PushingCoordException.ERR_CODE,
+                        rslt_type=PushingCoordException.RSLT_TYPE,
+                        ex=coord_validation_result.exception
                     )
                 )
             )
-        # --- Assure that token.board_state has been updated. ---#
-        if token.board_state == TokenBoardState.NEVER_BEEN_PLACED:
-            token.board_state = TokenBoardState.DEPLOYED_ON_BOARD
+        # Handle the case that, the token is already at the destination coord.
+        if token.current_position == coord:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                TokenCoordHandlerException(
+                    cls_mthd=method,
+                    cls_name=cls.__class__.__name__,
+                    msg=TokenCoordHandlerException.MSG,
+                    err_code=TokenCoordHandlerException.ERR_CODE,
+                    ex=PushingCoordException(
+                        mthd=method,
+                        op=PushingCoordException.OP,
+                        msg=PushingCoordException.MSG,
+                        err_code=PushingCoordException.ERR_CODE,
+                        rslt_type=PushingCoordException.RSLT_TYPE,
+                        ex=DuplicateCoordPushException(
+                            var=token.designation,
+                            val=token.current_position,
+                            msg=DuplicateCoordPushException.MSG,
+                            err_code=DuplicateCoordPushException.ERR_CODE,
+                        )
+                    )
+                )
+            )
+        pre_insertion_top_coord = token.current_position
+        coord_insertion_result = token.positions.push(coord)
         
-        # Send the success result to the caller.
-        return InsertionResult.success()
+        # Handle the case that, the cord push was not completed.
+        if coord_insertion_result.is_failure:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                TokenCoordHandlerException(
+                    cls_mthd=method,
+                    cls_name=cls.__class__.__name__,
+                    msg=TokenCoordHandlerException.MSG,
+                    err_code=TokenCoordHandlerException.ERR_CODE,
+                    ex=PushingCoordException(
+                        mthd=method,
+                        op=PushingCoordException.OP,
+                        msg=PushingCoordException.MSG,
+                        err_code=PushingCoordException.ERR_CODE,
+                        rslt_type=PushingCoordException.RSLT_TYPE,
+                        ex=coord_insertion_result.exception
+                    )
+                )
+            )
+        # Update the token's previous position marker.
+        token.previous_position = pre_insertion_top_coord
+        return coord_insertion_result

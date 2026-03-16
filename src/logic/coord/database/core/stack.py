@@ -13,7 +13,7 @@ from typing import List, Optional, cast
 
 from logic.system import StackService, DeletionResult, InsertionResult, SearchResult, id_emitter
 from logic.coord import (
-    Coord, CoordContext, CoordService, CoordContextService, CoordStackException, DuplicateCoordPushException,
+    Coord, CoordContext, CoordService, CoordContextService, CoordStackException, PushingDuplicateCoordException,
     MaxConsecutiveCoordPopException,
     PoppingCoordStackFailedException, PoppingEmtpyCoordStackException, PushingCoordFailedException
 )
@@ -144,7 +144,7 @@ class CoordStack(StackService[Coord]):
                     msg=f"ServiceId:{self.id}, {method}: {CoordStackException.ERR_CODE}",
                     ex=PushingCoordFailedException(
                         msg=f"{method}: {PushingCoordFailedException.ERR_CODE}",
-                        ex=DuplicateCoordPushException(f"{method}: {DuplicateCoordPushException.MSG}")
+                        ex=PushingDuplicateCoordException(f"{method}: {PushingDuplicateCoordException.MSG}")
                     )
                 )
             )

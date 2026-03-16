@@ -3,15 +3,14 @@
 """
 Module: logic.coord.database.core.exception.__init__
 Author: Banji Lawal
-Created: 2025-11-19
+Created: 2026-03-14
 version: 1.0.0
 """
 
 # =========== COORD.DATABASE.CORE.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-from .pop import *
-from .push import *
+None
 
 # Modules
 from .anchor import CoordStackServiceException

@@ -15,7 +15,7 @@ from logic.rank.model.concrete.bishop import Bishop
 from logic.schema import SchemaService
 from logic.square import SquareContext
 from logic.system import DeletionResult, IntegrityService, InsertionResult, LoggingLevelRouter, UpdateResult, id_emitter
-from logic.coord import Coord, CoordService, DuplicateCoordPushException, PoppingEmtpyCoordStackException
+from logic.coord import Coord, CoordService, PushingDuplicateCoordException, PoppingEmtpyCoordStackException
 from logic.token import (
     PromotionToKingException, NewRankSameAsCurrentRankException, OverMoveUndoLimitException,
     PawnAlreadyPromotedException,
@@ -233,8 +233,8 @@ class TokenService(IntegrityService[Token]):
             return InsertionResult.failure(
                 TokenServiceException(
                     msg=f"{method}: {TokenServiceException.ERR_CODE}",
-                    ex=DuplicateCoordPushException(
-                        f"{method}: {DuplicateCoordPushException.MSG}"
+                    ex=PushingDuplicateCoordException(
+                        f"{method}: {PushingDuplicateCoordException.MSG}"
                     )
                 )
             )
