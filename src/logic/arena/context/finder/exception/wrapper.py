@@ -1,42 +1,124 @@
-# src/logic/arena/context/finder/exception.py
+# src/logic/arena/finder/exception/wrapper.py
 
 """
-Module: logic.arena.cntext.finder.exception
+Module: logic.arena.finder.exception.wrapper
 Author: Banji Lawal
-Created: 2025-11-17
+Created: 2025-10-06
 version: 1.0.0
 """
 
-from logic.arena import ArenaException
-from logic.system import SearchException
+from __future__ import annotations
+from typing import Optional
 
 __all__ = [
-    #======================# ARENA_FINDER EXCEPTION #======================#
+    # ======================# ARENA_SEARCH_FAILURE #======================#
     "ArenaSearchException",
 ]
 
+from logic.system import SearchException
 
-#======================# ARENA_FINDER EXCEPTION #======================#
+
+# ======================# ARENA_SEARCH_FAILURE #======================#
+class ArenaSearchException(SearchException):
+    """
+    # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
+
+    # RESPONSIBILITIES:
+    1.  Indicate that a arena search was not completed, it returned an error instead of a
+        work product. 
+    2.  Identify the method where the failure occurred.
+
+    # PARENT:
+        *   SearchException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+        *   See SearchException class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        op: Optional[str]
+        ex: Optional[str]
+        msg: Optional[str]
+        mthd: Optional[str]
+        err_code: Optional[str]
+        rslt_type: Optional[str]
+
+    # LOCAL METHODS:
+   None
+
+    # INHERITED METHODS:
+        *   See SearchException class for inherited methods.
+    """
+    OP = "Search"
+    RSLT_TYPE = "SearchResult"
+    ERR_CODE = "ARENA_SEARCH_FAILURE"
+    MSG = " Arena search method failed."
+ 
+    def __init__(
+            self,
+            op: Optional[str] = None,
+            msg: Optional[str] = None,
+            mthd: Optional[str] = None,
+            ex: Optional[Exception] = None,
+            err_code: Optional[str] = None,
+            rslt_type: Optional[str] = None,
+    ):
+        """
+        Args:
+            op: Optional[str]
+            ex: Optional[str]
+            msg: Optional[str]
+            mthd: Optional[str]
+            err_code: Optional[str]
+            rslt_type: Optional[str]
+        """
+        op = op or self.OP
+        msg = msg or self.MSG
+        mthd = mthd or self.MTHD
+        err_code = err_code or self.ERR_CODE
+        rslt_type = rslt_type or self.RSLT_TYPE
+        
+        super().__init__(
+            ex=ex,
+            op=op,
+            msg=msg,
+            mthd=mthd,
+            err_code=err_code,
+            rslt_type=rslt_type,
+        )
+
+__all__ = [
+    # ======================# ARENA_SEARCH_FAILURE #======================#
+    "ArenaSearchException",
+]
+
+from logic.system import SearchException
+from logic.arena import ArenaException
+
+
+# ======================# ARENA_SEARCH_FAILURE #======================#
 class ArenaSearchException(ArenaException, SearchException):
     """
     # ROLE: Exception Wrapper
-  
+
     # RESPONSIBILITIES:
-    1.  Parent of exception raised when ArenaFinder objects.
-    2.  Wraps an exception that hits the try-finally block of an ArenaFinder method.
-  
+    1.  Wrap debug exceptions indicating why a arena search operation failed. The exception chain
+        traces the ultimate source of failure.
+
     # PARENT:
-        *   ArenaException
         *   FinderException
-  
+
     # PROVIDES:
     None
-  
+
     # LOCAL ATTRIBUTES:
     None
-    
+
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "ARENA_FINDER_EXCEPTION"
-    MSG = "ArenaFinder raised an exception."

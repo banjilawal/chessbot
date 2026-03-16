@@ -1,16 +1,15 @@
-# src/logic/snapshot/finder/exception/__init__.py
-
+# src/logic/snapshot/context/finder/exception/__init__.py
 """
-Module: logic.snapshot.finder.exception.__init__
+Module: logic.snapshot.context.finder.exception.__init__
 Author: Banji Lawal
-Created: 2025-10-03
+Created: 2025-10-06
 version: 1.0.0
 """
 
-# =========== SNAPSHOT.FINDER.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== SNAPSHOT.CONTEXT.FINDER.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .debug import *
 
 # Modules
-from .base import FinderException
+from .wrapper import SnapshotSearchException

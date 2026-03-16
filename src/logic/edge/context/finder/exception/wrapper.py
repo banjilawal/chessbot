@@ -1,19 +1,104 @@
-# src/logic/edge/context/finder/exception/wrapper.py
+# src/logic/edge/finder/exception/wrapper.py
 
 """
-Module: logic.edge.context.finder.exception.wrapper
+Module: logic.edge.finder.exception.wrapper
 Author: Banji Lawal
-Created: 2025-11-16
+Created: 2025-10-06
 version: 1.0.0
 """
 
-from logic.edge import EdgeException
-from logic.system import SearchException
+from __future__ import annotations
+from typing import Optional
 
 __all__ = [
     # ======================# EDGE_SEARCH_FAILURE #======================#
     "EdgeSearchException",
 ]
+
+from logic.system import SearchException
+
+
+# ======================# EDGE_SEARCH_FAILURE #======================#
+class EdgeSearchException(SearchException):
+    """
+    # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
+
+    # RESPONSIBILITIES:
+    1.  Indicate that a edge search was not completed, it returned an error instead of a
+        work product. 
+    2.  Identify the method where the failure occurred.
+
+    # PARENT:
+        *   SearchException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+        *   See SearchException class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        op: Optional[str]
+        ex: Optional[str]
+        msg: Optional[str]
+        mthd: Optional[str]
+        err_code: Optional[str]
+        rslt_type: Optional[str]
+
+    # LOCAL METHODS:
+   None
+
+    # INHERITED METHODS:
+        *   See SearchException class for inherited methods.
+    """
+    OP = "Search"
+    RSLT_TYPE = "SearchResult"
+    ERR_CODE = "EDGE_SEARCH_FAILURE"
+    MSG = " Edge search method failed."
+ 
+    def __init__(
+            self,
+            op: Optional[str] = None,
+            msg: Optional[str] = None,
+            mthd: Optional[str] = None,
+            ex: Optional[Exception] = None,
+            err_code: Optional[str] = None,
+            rslt_type: Optional[str] = None,
+    ):
+        """
+        Args:
+            op: Optional[str]
+            ex: Optional[str]
+            msg: Optional[str]
+            mthd: Optional[str]
+            err_code: Optional[str]
+            rslt_type: Optional[str]
+        """
+        op = op or self.OP
+        msg = msg or self.MSG
+        mthd = mthd or self.MTHD
+        err_code = err_code or self.ERR_CODE
+        rslt_type = rslt_type or self.RSLT_TYPE
+        
+        super().__init__(
+            ex=ex,
+            op=op,
+            msg=msg,
+            mthd=mthd,
+            err_code=err_code,
+            rslt_type=rslt_type,
+        )
+
+__all__ = [
+    # ======================# EDGE_SEARCH_FAILURE #======================#
+    "EdgeSearchException",
+]
+
+from logic.system import SearchException
+from logic.edge import EdgeException
 
 
 # ======================# EDGE_SEARCH_FAILURE #======================#
@@ -22,13 +107,11 @@ class EdgeSearchException(EdgeException, SearchException):
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Any condition that prevents a search from completing creates a debug exception that explains why the query
-        failed. That debug exception is wrapped in the EdgeSearchException which is the middle layer of the
-        3-part exception chain.
+    1.  Wrap debug exceptions indicating why a edge search operation failed. The exception chain
+        traces the ultimate source of failure.
 
     # PARENT:
-        *   EdgeException
-        *   SearchException
+        *   FinderException
 
     # PROVIDES:
     None
@@ -39,5 +122,3 @@ class EdgeSearchException(EdgeException, SearchException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "EDGE_SEARCH_FAILURE"
-    MSG = "Edge search failed."

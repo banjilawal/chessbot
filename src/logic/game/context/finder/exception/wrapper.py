@@ -1,7 +1,7 @@
-# src/logic/hostage/finder/exception/wrapper.py
+# src/logic/game/finder/exception/wrapper.py
 
 """
-Module: logic.hostage.finder.exception.wrapper
+Module: logic.game.finder.exception.wrapper
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -11,20 +11,20 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# HOSTAGE_SEARCH_FAILURE #======================#
-    "HostageSearchException",
+    # ======================# GAME_SEARCH_FAILURE #======================#
+    "GameSearchException",
 ]
 
 from logic.system import SearchException
 
 
-# ======================# HOSTAGE_SEARCH_FAILURE #======================#
-class HostageSearchException(SearchException):
+# ======================# GAME_SEARCH_FAILURE #======================#
+class GameSearchException(SearchException):
     """
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a hostage search was not completed, it returned an error instead of a
+    1.  Indicate that a game search was not completed, it returned an error instead of a
         work product. 
     2.  Identify the method where the failure occurred.
 
@@ -56,8 +56,8 @@ class HostageSearchException(SearchException):
     """
     OP = "Search"
     RSLT_TYPE = "SearchResult"
-    ERR_CODE = "HOSTAGE_SEARCH_FAILURE"
-    MSG = " Hostage search method failed."
+    ERR_CODE = "GAME_SEARCH_FAILURE"
+    MSG = " Game search method failed."
  
     def __init__(
             self,
@@ -93,21 +93,21 @@ class HostageSearchException(SearchException):
         )
 
 __all__ = [
-    # ======================# HOSTAGE_SEARCH_FAILURE #======================#
-    "HostageSearchException",
+    # ======================# GAME_SEARCH_FAILURE #======================#
+    "GameSearchException",
 ]
 
 from logic.system import SearchException
-from logic.hostage import HostageException
+from logic.game import GameException
 
 
-# ======================# HOSTAGE_SEARCH_FAILURE #======================#
-class HostageSearchException(HostageException, SearchException):
+# ======================# GAME_SEARCH_FAILURE #======================#
+class GameSearchException(GameException, SearchException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a hostage search operation failed. The exception chain
+    1.  Wrap debug exceptions indicating why a game search operation failed. The exception chain
         traces the ultimate source of failure.
 
     # PARENT:

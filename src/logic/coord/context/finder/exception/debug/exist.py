@@ -1,7 +1,7 @@
-# src/logic/node/context/finder/exception/debug/route.py
+# src/logic/coord/context/finder/exception/debug/exist.py
 
 """
-Module: logic.node.context.finder.exception.debug.route
+Module: logic.coord.context.finder.exception.debug.exist
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,23 +11,23 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# NO_NODE_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#
-    "NodeSearchRouteException",
+    # ======================# COORD_NOT_FOUND_EXCEPTION #======================#
+    "CoordNotFoundException",
 ]
 
-from logic.node import NodeDebugException
+from logic.coord import CoordDebugException
 
 
-# ======================# NO_NODE_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#
-class NodeSearchRouteException(NodeDebugException):
+# ======================# COORD_NOT_FOUND_EXCEPTION #======================#
+class CoordNotFoundException(CoordDebugException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that there was no search logic for a node attribute.
+    1.  Indicate that no coord was found.
 
     # PARENT:
-        *   NodeDebugException
+        *   CoordDebugException
 
     # PROVIDES:
     None
@@ -36,7 +36,7 @@ class NodeSearchRouteException(NodeDebugException):
     None
 
     # INHERITED ATTRIBUTES:
-        *   NodeDebugException class for inherited attributes.
+        *   CoordDebugException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
         var: Optional[str]
@@ -49,12 +49,12 @@ class NodeSearchRouteException(NodeDebugException):
     None
 
     # INHERITED METHODS:
-        *   See NodeDebugException class for inherited methods.
+        *   See CoordDebugException class for inherited methods.
     """
     VAR = Optional[str]
     VAL = Optional[Any]
-    ERR_CODE = "NO_NODE_SEARCH_ROUTE_ROUTE_EXCEPTION"
-    MSG = "There is no search logic for the node attribute."
+    ERR_CODE = "COORD_NOT_FOUND_EXCEPTION"
+    MSG = "No coord matching the attribute was found."
     
     def __init__(
             self,

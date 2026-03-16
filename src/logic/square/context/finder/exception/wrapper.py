@@ -1,27 +1,32 @@
-# src/logic/square/context/finder/exception/wrapper.py
+# src/logic/square/finder/exception/wrapper.py
 
 """
-Module: logic.square.context.finder.exception.wrapper
+Module: logic.square.finder.exception.wrapper
 Author: Banji Lawal
-Created: 2025-11-16
+Created: 2025-10-06
 version: 1.0.0
 """
 
-from logic.system import SearchException
+from __future__ import annotations
+from typing import Optional
 
 __all__ = [
     # ======================# SQUARE_SEARCH_FAILURE #======================#
     "SquareSearchException",
 ]
 
+from logic.system import SearchException
+
 
 # ======================# SQUARE_SEARCH_FAILURE #======================#
 class SquareSearchException(SearchException):
     """
-    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  An error occurred in SquareFinder.find that, prevented SearchResult.success() from being returned.
+    1.  Indicate that a square search was not completed, it returned an error instead of a
+        work product. 
+    2.  Identify the method where the failure occurred.
 
     # PARENT:
         *   SearchException
@@ -33,7 +38,87 @@ class SquareSearchException(SearchException):
     None
 
     # INHERITED ATTRIBUTES:
+        *   See SearchException class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        op: Optional[str]
+        ex: Optional[str]
+        msg: Optional[str]
+        mthd: Optional[str]
+        err_code: Optional[str]
+        rslt_type: Optional[str]
+
+    # LOCAL METHODS:
+   None
+
+    # INHERITED METHODS:
+        *   See SearchException class for inherited methods.
+    """
+    OP = "Search"
+    RSLT_TYPE = "SearchResult"
+    ERR_CODE = "SQUARE_SEARCH_FAILURE"
+    MSG = " Square search method failed."
+ 
+    def __init__(
+            self,
+            op: Optional[str] = None,
+            msg: Optional[str] = None,
+            mthd: Optional[str] = None,
+            ex: Optional[Exception] = None,
+            err_code: Optional[str] = None,
+            rslt_type: Optional[str] = None,
+    ):
+        """
+        Args:
+            op: Optional[str]
+            ex: Optional[str]
+            msg: Optional[str]
+            mthd: Optional[str]
+            err_code: Optional[str]
+            rslt_type: Optional[str]
+        """
+        op = op or self.OP
+        msg = msg or self.MSG
+        mthd = mthd or self.MTHD
+        err_code = err_code or self.ERR_CODE
+        rslt_type = rslt_type or self.RSLT_TYPE
+        
+        super().__init__(
+            ex=ex,
+            op=op,
+            msg=msg,
+            mthd=mthd,
+            err_code=err_code,
+            rslt_type=rslt_type,
+        )
+
+__all__ = [
+    # ======================# SQUARE_SEARCH_FAILURE #======================#
+    "SquareSearchException",
+]
+
+from logic.system import SearchException
+from logic.square import SquareException
+
+
+# ======================# SQUARE_SEARCH_FAILURE #======================#
+class SquareSearchException(SquareException, SearchException):
+    """
+    # ROLE: Exception Wrapper
+
+    # RESPONSIBILITIES:
+    1.  Wrap debug exceptions indicating why a square search operation failed. The exception chain
+        traces the ultimate source of failure.
+
+    # PARENT:
+        *   FinderException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "SQUARE_SEARCH_FAILURE"
-    MSG = "Square search failed."

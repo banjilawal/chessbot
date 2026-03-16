@@ -1,17 +1,17 @@
 # src/logic/edge/context/finder/exception/debug/__init__.py
-
 """
 Module: logic.edge.context.finder.exception.debug.__init__
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-10-06
 version: 1.0.0
 """
 
 # =========== EDGE.CONTEXT.FINDER.EXCEPTION.DEBUG PACKAGE CONTENTS ===========#
 
 # Packages
-from .dataset import *
-from .payload import *
+None
 
 # Modules
 from .route import EdgeSearchRouteException
+from .id import EdgeSearchIdCollisionException
+from .dataset import EdgeSearchNullDatasetException

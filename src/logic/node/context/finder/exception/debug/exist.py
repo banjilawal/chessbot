@@ -1,7 +1,7 @@
-# src/logic/node/context/finder/exception/debug/route.py
+# src/logic/node/context/finder/exception/debug/exist.py
 
 """
-Module: logic.node.context.finder.exception.debug.route
+Module: logic.node.context.finder.exception.debug.exist
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,20 +11,20 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# NO_NODE_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#
-    "NodeSearchRouteException",
+    # ======================# NODE_NOT_FOUND_EXCEPTION #======================#
+    "NodeNotFoundException",
 ]
 
 from logic.node import NodeDebugException
 
 
-# ======================# NO_NODE_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#
-class NodeSearchRouteException(NodeDebugException):
+# ======================# NODE_NOT_FOUND_EXCEPTION #======================#
+class NodeNotFoundException(NodeDebugException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that there was no search logic for a node attribute.
+    1.  Indicate that no node was found.
 
     # PARENT:
         *   NodeDebugException
@@ -53,8 +53,8 @@ class NodeSearchRouteException(NodeDebugException):
     """
     VAR = Optional[str]
     VAL = Optional[Any]
-    ERR_CODE = "NO_NODE_SEARCH_ROUTE_ROUTE_EXCEPTION"
-    MSG = "There is no search logic for the node attribute."
+    ERR_CODE = "NODE_NOT_FOUND_EXCEPTION"
+    MSG = "No node matching the attribute was found."
     
     def __init__(
             self,

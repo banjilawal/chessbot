@@ -1,7 +1,7 @@
-# src/logic/hostage/finder/exception/wrapper.py
+# src/logic/rank/finder/exception/wrapper.py
 
 """
-Module: logic.hostage.finder.exception.wrapper
+Module: logic.rank.finder.exception.wrapper
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -11,20 +11,20 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# HOSTAGE_SEARCH_FAILURE #======================#
-    "HostageSearchException",
+    # ======================# RANK_SEARCH_FAILURE #======================#
+    "RankSearchException",
 ]
 
 from logic.system import SearchException
 
 
-# ======================# HOSTAGE_SEARCH_FAILURE #======================#
-class HostageSearchException(SearchException):
+# ======================# RANK_SEARCH_FAILURE #======================#
+class RankSearchException(SearchException):
     """
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a hostage search was not completed, it returned an error instead of a
+    1.  Indicate that a rank search was not completed, it returned an error instead of a
         work product. 
     2.  Identify the method where the failure occurred.
 
@@ -56,8 +56,8 @@ class HostageSearchException(SearchException):
     """
     OP = "Search"
     RSLT_TYPE = "SearchResult"
-    ERR_CODE = "HOSTAGE_SEARCH_FAILURE"
-    MSG = " Hostage search method failed."
+    ERR_CODE = "RANK_SEARCH_FAILURE"
+    MSG = " Rank search method failed."
  
     def __init__(
             self,
@@ -93,21 +93,21 @@ class HostageSearchException(SearchException):
         )
 
 __all__ = [
-    # ======================# HOSTAGE_SEARCH_FAILURE #======================#
-    "HostageSearchException",
+    # ======================# RANK_SEARCH_FAILURE #======================#
+    "RankSearchException",
 ]
 
 from logic.system import SearchException
-from logic.hostage import HostageException
+from logic.rank import RankException
 
 
-# ======================# HOSTAGE_SEARCH_FAILURE #======================#
-class HostageSearchException(HostageException, SearchException):
+# ======================# RANK_SEARCH_FAILURE #======================#
+class RankSearchException(RankException, SearchException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a hostage search operation failed. The exception chain
+    1.  Wrap debug exceptions indicating why a rank search operation failed. The exception chain
         traces the ultimate source of failure.
 
     # PARENT:

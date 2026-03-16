@@ -1,7 +1,7 @@
-# src/logic/node/context/finder/exception/debug/route.py
+# src/logic/snapshot/context/finder/exception/debug/route.py
 
 """
-Module: logic.node.context.finder.exception.debug.route
+Module: logic.snapshot.context.finder.exception.debug.route
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,23 +11,23 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# NO_NODE_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#
-    "NodeSearchRouteException",
+    # ======================# NO_SNAPSHOT_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#
+    "SnapshotSearchRouteException",
 ]
 
-from logic.node import NodeDebugException
+from logic.snapshot import SnapshotDebugException
 
 
-# ======================# NO_NODE_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#
-class NodeSearchRouteException(NodeDebugException):
+# ======================# NO_SNAPSHOT_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#
+class SnapshotSearchRouteException(SnapshotDebugException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that there was no search logic for a node attribute.
+    1.  Indicate that there was no search logic for a snapshot attribute.
 
     # PARENT:
-        *   NodeDebugException
+        *   SnapshotDebugException
 
     # PROVIDES:
     None
@@ -36,7 +36,7 @@ class NodeSearchRouteException(NodeDebugException):
     None
 
     # INHERITED ATTRIBUTES:
-        *   NodeDebugException class for inherited attributes.
+        *   SnapshotDebugException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
         var: Optional[str]
@@ -49,12 +49,12 @@ class NodeSearchRouteException(NodeDebugException):
     None
 
     # INHERITED METHODS:
-        *   See NodeDebugException class for inherited methods.
+        *   See SnapshotDebugException class for inherited methods.
     """
     VAR = Optional[str]
     VAL = Optional[Any]
-    ERR_CODE = "NO_NODE_SEARCH_ROUTE_ROUTE_EXCEPTION"
-    MSG = "There is no search logic for the node attribute."
+    ERR_CODE = "NO_SNAPSHOT_SEARCH_ROUTE_ROUTE_EXCEPTION"
+    MSG = "There is no search logic for the snapshot attribute."
     
     def __init__(
             self,

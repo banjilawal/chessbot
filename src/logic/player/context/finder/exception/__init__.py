@@ -1,17 +1,15 @@
-# src/logic/player/finder/exception/__init__.py
-
+# src/logic/player/context/finder/exception/__init__.py
 """
-Module: logic.player.cntext.finder.exception.__init__
+Module: logic.player.context.finder.exception.__init__
 Author: Banji Lawal
-Created: 2025-11-17
+Created: 2025-10-06
 version: 1.0.0
 """
 
 # =========== PLAYER.CONTEXT.FINDER.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .debug import *
 
 # Modules
-from .base import AgentFinderException
-from .dataset import AgentSearchDatasetNullException
+from .wrapper import PlayerSearchException

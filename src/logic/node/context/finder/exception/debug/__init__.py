@@ -1,17 +1,17 @@
 # src/logic/node/context/finder/exception/debug/__init__.py
-
 """
 Module: logic.node.context.finder.exception.debug.__init__
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-10-06
 version: 1.0.0
 """
 
 # =========== NODE.CONTEXT.FINDER.EXCEPTION.DEBUG PACKAGE CONTENTS ===========#
 
 # Packages
-from .dataset import *
-from .payload import *
+None
 
 # Modules
 from .route import NodeSearchRouteException
+from .id import NodeSearchIdCollisionException
+from .dataset import NodeSearchNullDatasetException
