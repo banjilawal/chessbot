@@ -12,7 +12,7 @@ from __future__ import annotations
 from logic.token import PawnPromotion, TokenCoordHandler, TokenDeployment, TokenReadinessAnalyzer
 
 
-class TokenHandler:
+class TokenOpsDispatcher:
     """
     Role:
         - Utilities Provider

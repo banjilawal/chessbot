@@ -16,4 +16,4 @@ from .promotion import *
 from .deployment import *
 
 # Modules
-from .handler import TokenHandler
+from .dispatcher import TokenOpsDispatcher

@@ -16,7 +16,7 @@ from logic.coord import Coord, CoordService
 from logic.rank import Rank, RankService
 from logic.schema import SchemaService
 from logic.system import DeletionResult, IdFactory, InsertionResult, IntegrityService, LoggingLevelRouter, UpdateResult
-from logic.token import PawnToken, Token, TokenFactory, TokenHandler, TokenServiceException, TokenValidator
+from logic.token import PawnToken, Token, TokenFactory, TokenOpsDispatcher, TokenServiceException, TokenValidator
 
 
 class TokenService(IntegrityService[Token]):
@@ -35,7 +35,7 @@ class TokenService(IntegrityService[Token]):
     None
 
     Attributes:
-        handler: TokenHandler
+        handler: TokenOpsDispatcher
 
     # INHERITED ATTRIBUTES:
         *   See IntegrityService class for inherited attributes.
@@ -43,7 +43,7 @@ class TokenService(IntegrityService[Token]):
     # CONSTRUCTOR:
         id: int
         name: str
-        handler: TokenHandler
+        handler: TokenOpsDispatcher
         builder: TokenFactory
         validator: TokenValidator
 
@@ -62,12 +62,12 @@ class TokenService(IntegrityService[Token]):
         *   See IntegrityService class for inherited methods.
     """
     SERVICE_NAME = "TokenService"
-    _handler: TokenHandler
+    _handler: TokenOpsDispatcher
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            handler: TokenHandler = TokenHandler(),
+            handler: TokenOpsDispatcher = TokenOpsDispatcher(),
             builder: TokenFactory = TokenFactory(),
             validator: TokenValidator = TokenValidator(),
             id: int = IdFactory.next_id(class_name="TokenService"),
@@ -76,7 +76,7 @@ class TokenService(IntegrityService[Token]):
         Args:
             id: int
             name: str
-            handler: TokenHandler
+            handler: TokenOpsDispatcher
             builder: TokenFactory
             validator: TokenValidator
         """
@@ -94,7 +94,7 @@ class TokenService(IntegrityService[Token]):
         return cast(TokenValidator, self.entity_validator)
     
     @property
-    def handler(self) -> TokenHandler:
+    def handler(self) -> TokenOpsDispatcher:
         return self._handler
     
     @LoggingLevelRouter.monitor
