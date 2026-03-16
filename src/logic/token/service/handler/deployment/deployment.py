@@ -13,7 +13,8 @@ from copy import deepcopy
 from logic.edge import UpdatingEdgeWeightException
 from logic.schema import SchemaService
 from logic.rank import King, Pawn, Rank, RankService
-from logic.system import LoggingLevelRouter, UpdateResult, ValidationResult
+from logic.square.context.finder.exception.debug.exist import SquareNotFoundException
+from logic.system import LoggingLevelRouter, SearchResult, UpdateResult, ValidationResult
 from logic.token import (
     PawnDeploymentRowException, PromoteInactivePawnException, PromoteToPawnException, DeploymentState,
     DeploymentToKingException, PawnAlreadyPromotedException, PawnPromoterException, DeploymentException,
@@ -21,12 +22,12 @@ from logic.token import (
 )
 
 from __future__ import annotations
-from typing import cast
+from typing import List, cast
 
 from logic.rank import King, Knight, Queen, Rank, RankService, Rook
 from logic.rank.model.concrete.bishop import Bishop
 from logic.schema import SchemaService
-from logic.square import SquareContext
+from logic.square import Square, SquareContext, SquareService, VisitingOccupiedSquareException
 from logic.system import DeletionResult, IntegrityService, InsertionResult, LoggingLevelRouter, UpdateResult, id_emitter
 from logic.coord import Coord, CoordService, PushingDuplicateCoordException, PoppingEmtpyCoordStackException, coord
 from logic.token import (
@@ -143,11 +144,8 @@ class TokenDeployment:
                     ),
                 )
             )
-        board = token.team.board
-        opening_square_search_result = board.squares.search(
-            context=SquareContext(name=token.opening_square_name)
-        )
-        # Handle the case that, the search fails.
+        opening_square_search_result = cls._square_search_runner(token)
+        # Handle the case that, the square was not verified.
         if opening_square_search_result.is_failure:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
@@ -161,8 +159,14 @@ class TokenDeployment:
                     ex=opening_square_search_result.exception,
                 )
             )
-        # Handle the case that, the token's square is not found.
-        if opening_square_search_result.is_empty:
+        
+        pre_update_token = deepcopy(token)
+        visitation_result = token.team.board.squares.integrity_service.begin_square_visit(
+            visitor=token,
+            square=opening_square_search_result.payload[0]
+        )
+        # Handle the case that the visit is not successful.
+        if visitation_result.is_failure:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
                 original=token,
@@ -175,6 +179,25 @@ class TokenDeployment:
                     ex=opening_square_search_result.exception,
                 )
             )
+        updated_square = cast(Square, visitation_result.updated)
+        
+        # Handle the case that, the token is not the square's visitor.
+        if updated_square.occupant != token:
+            # Return the exception chain on failure.
+            return UpdateResult.update_failure(
+                original=token,
+                exception=TokenDeploymentException(
+                    mthd=method,
+                    op=TokenDeploymentException.OP,
+                    msg=TokenDeploymentException.MSG,
+                    err_code=TokenDeploymentException.ERR_CODE,
+                    rslt_type=TokenDeploymentException.RSLT_TYPE,
+                    ex=opening_square_search_result.exception,
+                )
+            )
+        if token.current_position != updated_square.coord:
+        
+        
         # Handle the case that, the token has already been placed on the board.
         if token.board_state != TokenBoardState.NEVER_BEEN_PLACED:
             # Return the exception chain on failure.
@@ -240,3 +263,67 @@ class TokenDeployment:
         
         # Send the success result to the caller.
         return InsertionResult.success()
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _square_search_runner(cls, token: Token) -> SearchResult[List[Square]]:
+        """
+        Args:
+            token: Token
+        """
+        method = f"{cls.__class__.__name__}._opening_square_search_resultrunner"
+        
+        board = token.team.board
+        opening_square_search_result = board.squares.search(
+            context=SquareContext(name=token.opening_square_name)
+        )
+        # Handle the case that, the search fails.
+        if opening_square_search_result.is_failure:
+            # Return the exception chain on failure.
+            return SearchResult.failure(
+                exception=TokenDeploymentException(
+                    mthd=method,
+                    op=TokenDeploymentException.OP,
+                    msg=TokenDeploymentException.MSG,
+                    err_code=TokenDeploymentException.ERR_CODE,
+                    rslt_type=TokenDeploymentException.RSLT_TYPE,
+                    ex=opening_square_search_result.exception,
+                )
+            )
+        # Handle the case that, the token's square is not found.
+        if opening_square_search_result.is_empty:
+            # Return the exception chain on failure.
+            return SearchResult.failure(
+                exception=TokenDeploymentException(
+                    mthd=method,
+                    op=TokenDeploymentException.OP,
+                    msg=TokenDeploymentException.MSG,
+                    err_code=TokenDeploymentException.ERR_CODE,
+                    rslt_type=TokenDeploymentException.RSLT_TYPE,
+                    ex=SquareNotFoundException(
+                        var="opening_square_name",
+                        val=token.opening_square_name,
+                        msg=TokenDeploymentException.MSG,
+                        err_code=TokenDeploymentException.ERR_CODE,
+                    )
+                )
+            )
+        # Handle the case that the token's opening square is occupied
+        if opening_square_search_result.payload[0].is_occupied:
+            # Return the exception chain on failure.
+            return SearchResult.failure(
+                exception=TokenDeploymentException(
+                    mthd=method,
+                    op=TokenDeploymentException.OP,
+                    msg=TokenDeploymentException.MSG,
+                    err_code=TokenDeploymentException.ERR_CODE,
+                    rslt_type=TokenDeploymentException.RSLT_TYPE,
+                    ex=VisitingOccupiedSquareException(
+                        var="square_occupant",
+                        msg=TokenDeploymentException.MSG,
+                        err_code=TokenDeploymentException.ERR_CODE,
+                        val=opening_square_search_result.payload[0].occupant.designation,
+                    )
+                )
+            )
+        return opening_square_search_result

@@ -9,8 +9,11 @@ version: 1.0.0
 
 from typing import Dict, List, Optional
 
-from logic.square import Square, SquareContextService, SquareService, SquareStackService
-from logic.system import Database, IdFactory, LoggingLevelRouter, UpdateResult
+from logic.square import (
+    Square, SquareContext, SquareContextService, SquareDatabaseException, SquareService,
+    SquareStackService
+)
+from logic.system import Database, IdFactory, LoggingLevelRouter, SearchResult, UpdateResult
 from logic.system.database.database import T
 from logic.token import Token, TokenService
 

@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import Optional
+from typing import Any, Optional
 
 __all__ = [
     # ======================# COLLISION EXCEPTION #======================#
@@ -38,11 +38,11 @@ class UniqueAttributeException(DebugException):
         *   See DebugException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
-        *   msg (str)
-        *   err_code (str)
-        *   ex (Optional[Exception])
-        *   var (Optional[str])
-        *   val Optional[Any])
+        var: Optional[str]
+        val: Optional[Any]
+        msg: Optional[str]
+        ex: Optional[Exception]
+        err_code: Optional[str]
 
     # LOCAL METHODS:
    None
@@ -52,20 +52,24 @@ class UniqueAttributeException(DebugException):
     """
     ERR_CODE = "UNIQUE_ATTRIBUTE_COLLISION_EXCEPTION"
     MSG = "Two objects have the same value for an attribute that should be unique."
-    VAR = Optional[str]
-    VAL = Optional[Any]
     
-    def unique(
+    def __init__(
             self,
-            err_code: Optional[str] = None,
-            msg: Optional[str] = None,
-            ex: Optional[Exception] = None,
             var: Optional[str] = None,
             val: Optional[Any] = None,
+            msg: Optional[str] = None,
+            err_code: Optional[str] = None,
+            ex: Optional[Exception] = None,
     ):
-        err_code = err_code or self.ERR_CODE
+        """
+        Args:
+            var: Optional[str]
+            val: Optional[Any]
+            msg: Optional[str]
+            ex: Optional[Exception]
+            err_code: Optional[str]
+        """
         msg = msg or self.MSG
-        var = var or self.VAR
-        val = val or self.VAL
-        super().unique(msg=msg, err_code=err_code, ex=ex, var=var, val=val)
+        err_code = err_code or self.ERR_CODE
+        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)
 

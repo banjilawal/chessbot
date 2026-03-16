@@ -5,72 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change afterPath="$PROJECT_DIR$/src/logic/edge/context/finder/exception/debug/exist.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/game/context/finder/exception/debug/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/game/context/finder/exception/debug/exist.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/game/context/finder/exception/debug/route.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/game/context/finder/exception/wrapper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/hostage/context/finder/exception/debug/exist.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/node/context/finder/exception/debug/exist.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/player/context/finder/exception/debug/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/player/context/finder/exception/debug/exist.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/player/context/finder/exception/debug/route.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/player/context/finder/exception/wrapper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/rank/context/finder/exception/debug/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/rank/context/finder/exception/debug/exist.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/rank/context/finder/exception/debug/route.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/rank/context/finder/exception/wrapper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/snapshot/context/finder/exception/debug/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/snapshot/context/finder/exception/debug/exist.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/snapshot/context/finder/exception/debug/route.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/snapshot/context/finder/exception/wrapper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/team/context/finder/exception/debug/exist.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/token/service/handler/deployment/exception/debug/inconsistent/occupant.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/edge/context/finder/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/edge/context/finder/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/edge/context/finder/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/edge/context/finder/exception/debug/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/edge/context/finder/exception/debug/dataset/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/edge/context/finder/exception/debug/dataset/null.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/edge/context/finder/exception/debug/payload/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/edge/context/finder/exception/debug/payload/kind.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/edge/context/finder/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/edge/context/finder/exception/debug/route.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/edge/context/finder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/edge/context/finder/exception/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/game/context/finder/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/game/context/finder/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/game/context/finder/exception/base.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/game/context/finder/exception/dataset.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/hostage/context/finder/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/hostage/context/finder/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/hostage/context/finder/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/hostage/context/finder/exception/debug/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/hostage/context/finder/exception/debug/dataset/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/hostage/context/finder/exception/debug/dataset/null.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/hostage/context/finder/exception/debug/payload/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/hostage/context/finder/exception/debug/payload/kind.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/hostage/context/finder/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/hostage/context/finder/exception/debug/route.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/hostage/context/finder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/hostage/context/finder/exception/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/node/context/finder/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/node/context/finder/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/node/context/finder/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/node/context/finder/exception/debug/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/node/context/finder/exception/debug/dataset/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/node/context/finder/exception/debug/dataset/null.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/node/context/finder/exception/debug/payload/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/node/context/finder/exception/debug/payload/kind.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/node/context/finder/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/node/context/finder/exception/debug/route.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/node/context/finder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/node/context/finder/exception/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/player/context/finder/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/player/context/finder/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/player/context/finder/exception/base.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/player/context/finder/exception/dataset.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/rank/context/finder/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/rank/context/finder/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/rank/context/finder/exception/base.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/rank/context/finder/exception/dataset.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/snapshot/context/finder/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/snapshot/context/finder/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/snapshot/context/finder/exception/base.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/snapshot/context/finder/exception/dataset.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/square/context/finder/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/context/finder/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/square/context/finder/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/context/finder/exception/debug/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/square/context/finder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/context/finder/exception/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/team/context/finder/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/team/context/finder/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/team/context/finder/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/team/context/finder/exception/debug/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/team/context/finder/exception/debug/dataset.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/team/context/finder/exception/debug/id.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/team/context/finder/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/team/context/finder/exception/debug/route.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/team/context/finder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/team/context/finder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/database/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/database/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/system/err/debug/root/root.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/err/debug/root/root.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/system/err/debug/root/templlate.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/service/handler/deployment/deployment.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/handler/deployment/deployment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/service/handler/deployment/exception/debug/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/err/debug/child/inconsistent/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/service/handler/deployment/exception/debug/square/exsists.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/service/handler/deployment/exception/debug/square/occupied.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/handler/deployment/exception/debug/inconsistent/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -337,7 +280,7 @@
     "ToolWindow.Python Packages.ShowToolbar": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/logic/edge/context/finder",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/logic/system/err/debug/child/inconsistent",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -364,11 +307,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/logic/edge/context/finder" />
-      <recent name="$PROJECT_DIR$/src/logic/game/context/finder" />
-      <recent name="$PROJECT_DIR$/src/logic/hostage/context/finder" />
-      <recent name="$PROJECT_DIR$/src/logic/node/context/finder" />
-      <recent name="$PROJECT_DIR$/src/logic/player/context/finder" />
+      <recent name="$PROJECT_DIR$/src/logic/system/err/debug/child/inconsistent" />
+      <recent name="$PROJECT_DIR$/src/logic/token/service/handler/deployment/exception/debug/inconsistent" />
+      <recent name="$PROJECT_DIR$/src/logic/formation/key/lookup/exception" />
+      <recent name="$PROJECT_DIR$/src/logic/arena/context/finder" />
+      <recent name="$PROJECT_DIR$/src/logic/board/context/finder" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/logic/token/service/handler/deployment/exception/debug/square" />
@@ -917,7 +860,7 @@
       <workItem from="1772847189165" duration="78504000" />
       <workItem from="1773215668490" duration="8009000" />
       <workItem from="1773223700953" duration="11379000" />
-      <workItem from="1773252041918" duration="275996000" />
+      <workItem from="1773252041918" duration="279678000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

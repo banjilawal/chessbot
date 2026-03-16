@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import Optional
+from typing import Any, Optional
 
 __all__ = [
     # ======================# METHOD_NOT_IMPLEMENTED EXCEPTION #======================#
@@ -20,7 +20,7 @@ from logic.system import DebugException
 # ======================# METHOD_NOT_IMPLEMENTED EXCEPTION #======================#
 class MethodImplementationException(DebugException):
     """
-    # ROLE: Information, Reporting, Debug
+    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
     1.  Indicate that a call was made to an abstract method that the subclass does not implement.
@@ -38,11 +38,11 @@ class MethodImplementationException(DebugException):
         *   See DebugException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
-        *   msg (str)
-        *   err_code (str)
-        *   ex (Optional[Exception])
-        *   var (Optional[str])
-        *   val Optional[Any])
+        var: Optional[str]
+        val: Optional[Any]
+        msg: Optional[str]
+        ex: Optional[Exception]
+        err_code: Optional[str]
 
     # LOCAL METHODS:
    None
@@ -50,21 +50,25 @@ class MethodImplementationException(DebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    ERR_CODE = "METHOD_NOT_IMPLEMENTED_WARNING"
     MSG = "This method is not implemented."
-    VAR = Optional[str]
-    VAL = Optional[Any]
+    ERR_CODE = "METHOD_NOT_IMPLEMENTED_WARNING"
     
     def __init__(
             self,
-            err_code: Optional[str] = None,
-            msg: Optional[str] = None,
-            ex: Optional[Exception] = None,
             var: Optional[str] = None,
             val: Optional[Any] = None,
+            msg: Optional[str] = None,
+            err_code: Optional[str] = None,
+            ex: Optional[Exception] = None,
     ):
-        err_code = err_code or self.ERR_CODE
+        """
+        Args:
+            var: Optional[str]
+            val: Optional[Any]
+            msg: Optional[str]
+            ex: Optional[Exception]
+            err_code: Optional[str]
+        """
         msg = msg or self.MSG
-        var = var or self.VAR
-        val = val or self.VAL
+        err_code = err_code or self.ERR_CODE
         super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)

@@ -1,9 +1,9 @@
-# src/logic/system/err/debug/child/null.py
+# src/logic/token/service/handler/promotion/exception/debug/double.py
 
 """
-Module: logic.system.err.debug.child.null
+Module: logic.token.service.handler.promotion.exception.debug.double
 Author: Banji Lawal
-Created: 2026-02-25
+Created: 2026-03-14
 version: 1.0.0
 """
 
@@ -11,22 +11,23 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-#======================# NULL EXCEPTION #======================#
-    "NullException",
+    # ======================# TOKEN_ALREADY_DEPLOYED_EXCEPTION #======================#
+    "TokenAlreadyDeployedException",
 ]
 
-from logic.system import DebugException
+from logic.system import InconsistencyException
+from logic.token import TokenDebugException
 
-#======================# NULL EXCEPTION #======================#
-class NullException(DebugException):
+# ======================# TOKEN_ALREADY_DEPLOYED_EXCEPTION #======================#
+class TokenAlreadyDeployedException(InconsistencyException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that an object is null where it should not be.
-    
+    1.  Indicate that a token has already been deployed on the board..
+
     # PARENT:
-        *   DebugException
+        *   TokenDebugException
 
     # PROVIDES:
     None
@@ -35,7 +36,7 @@ class NullException(DebugException):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See DebugException class for inherited attributes.
+        *   TokenDebugException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
         var: Optional[str]
@@ -45,13 +46,15 @@ class NullException(DebugException):
         err_code: Optional[str]
 
     # LOCAL METHODS:
-   None
+    None
 
     # INHERITED METHODS:
-        *   See DebugException class for inherited methods.
+        *   See TokenDebugException class for inherited methods.
     """
-    ERR_CODE = "NULL_EXCEPTION"
-    MSG = "variable cannot be null."
+    VAR = Optional[str]
+    VAL = Optional[Any]
+    ERR_CODE = "TOKEN_ALREADY_DEPLOYED_EXCEPTION"
+    MSG = "The token has already been deployed."
     
     def __init__(
             self,
@@ -69,14 +72,8 @@ class NullException(DebugException):
             ex: Optional[Exception]
             err_code: Optional[str]
         """
+        var = var or self.VAR
+        val = val or self.VAL
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
         super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)
-
-
-    
-
-
-
-
-

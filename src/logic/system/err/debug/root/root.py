@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import Optional
+from typing import Any, Optional
 
 __all__ = [
     # ======================# DEBUG_EXCEPTION #======================#
@@ -65,25 +65,28 @@ class DebugException(ChessException):
     """
     ERR_CODE = "VARIABLE_EXCEPTION"
     MSG = "A variable had an error."
-    VAR = Optional[str]
-    VAL = Optional[Any]
     
     _var: Optional[str]
     _val: Optional[Any]
     
     def __init__(
             self,
+            msg: Optional[str] = None,
             var: Optional[str] = None,
             val: Optional[Any] = None,
             err_code: Optional[str] = None,
-            msg: Optional[str] = None,
             ex: Optional[Exception] = None,
     ):
-        var = var or self.VAR
-        val = val or self.VAL
+        """
+        Args:
+            var: Optional[str]
+            val: Optional[Any]
+            msg: Optional[str]
+            ex: Optional[Exception]
+            err_code: Optional[str]
+        """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        
         super().__init__(msg=msg, err_code=err_code, ex=ex)
         self._var = var
         self._val = val
