@@ -8,39 +8,16 @@ version: 1.0.0
 """
 
 from __future__ import annotations
+
+from _ast import List
 from copy import deepcopy
+from typing import cast
 
-from logic.edge import UpdatingEdgeWeightException
-from logic.schema import SchemaService
-from logic.rank import King, Pawn, Rank, RankService
-from logic.square.context.finder.exception.debug.exist import SquareNotFoundException
-from logic.system import LoggingLevelRouter, SearchResult, UpdateResult, ValidationResult
+from logic.square import Square, SquareContext, SquareNotFoundException, VisitingOccupiedSquareException
+from logic.system import LoggingLevelRouter, SearchResult, UpdateResult
 from logic.token import (
-    InconsistentTokenBoardStateException, InconsistentTokenCoordException, InconsistentTokenSquareException,
-    PawnDeploymentRowException,
-    PromoteInactivePawnException, PromoteToPawnException,
-    DeploymentState,
-    DeploymentToKingException, PawnAlreadyPromotedException, PawnPromoterException, DeploymentException,
-    PawnToken, TokenAlreadyDeployedException, TokenValidator,
-)
-
-from __future__ import annotations
-from typing import List, cast
-
-from logic.rank import King, Knight, Queen, Rank, RankService, Rook
-from logic.rank.model.concrete.bishop import Bishop
-from logic.schema import SchemaService
-from logic.square import Square, SquareContext, SquareService, VisitingOccupiedSquareException
-from logic.system import DeletionResult, IntegrityService, InsertionResult, LoggingLevelRouter, UpdateResult, id_emitter
-from logic.coord import Coord, CoordService, PushingDuplicateCoordException, PoppingEmtpyCoordStackException, coord
-from logic.token import (
-    PromotionToKingException, NewRankSameAsCurrentRankException, OverMoveUndoLimitException,
-    PawnAlreadyPromotedException,
-    PromotionException, PawnToken,
-    PromotionState, Token, TokenBoardState,
-    TokenValidator,
-    TokenDeploymentException, TokenFactory, TokenHandler, TokenOpeningSquareNotFoundException,
-    TokenServiceException,
+    InconsistentTokenCoordException, InconsistentTokenSquareException, Token, TokenAlreadyDeployedException,
+    TokenBoardState, TokenDeploymentException, TokenValidator
 )
 
 
@@ -77,7 +54,7 @@ class TokenDeployment:
     def execute(
             cls,
             token: Token,
-            token_validator: TokenValidator,
+            token_validator: TokenValidator = TokenValidator(),
     ) -> UpdateResult[Token]:
         """
         # ACTION:
@@ -111,23 +88,6 @@ class TokenDeployment:
                     err_code=TokenDeploymentException.ERR_CODE,
                     rslt_type=TokenDeploymentException.RSLT_TYPE,
                     ex=token_validation.exception,
-                )
-            )
-        # Handle the case that, the token has already been deployed.
-        if token.is_deployed:
-            # Return the exception chain on failure.
-            return UpdateResult.update_failure(
-                original=token,
-                exception=TokenDeploymentException(
-                    mthd=method,
-                    op=TokenDeploymentException.OP,
-                    msg=TokenDeploymentException.MSG,
-                    err_code=TokenDeploymentException.ERR_CODE,
-                    rslt_type=TokenDeploymentException.RSLT_TYPE,
-                    ex=TokenAlreadyDeployedException(
-                        msg=TokenDeploymentException.MSG,
-                        err_code=TokenDeploymentException.ERR_CODE,
-                    ),
                 )
             )
         # Handle the case that, the token has already been deployed.

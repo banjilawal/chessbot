@@ -10,21 +10,11 @@ version: 1.0.0
 from __future__ import annotations
 from typing import cast
 
-from logic.rank import King, Knight, Queen, Rank, RankService, Rook
-from logic.rank.model.concrete.bishop import Bishop
+from logic.coord import Coord, CoordService
+from logic.rank import Rank, RankService
 from logic.schema import SchemaService
-from logic.square import SquareContext
-from logic.system import DeletionResult, IntegrityService, InsertionResult, LoggingLevelRouter, UpdateResult, id_emitter
-from logic.coord import Coord, CoordService, PushingDuplicateCoordException, PoppingEmtpyCoordStackException, coord
-from logic.token import (
-    PromotionToKingException, NewRankSameAsCurrentRankException, OverMoveUndoLimitException,
-    PawnAlreadyPromotedException,
-    PromotionException, PawnToken,
-    PromotionState, Token, TokenBoardState,
-    TokenValidator,
-    TokenDeploymentException, TokenFactory, TokenHandler, TokenOpeningSquareNotFoundException,
-    TokenServiceException,
-)
+from logic.system import DeletionResult, IdFactory, InsertionResult, IntegrityService, LoggingLevelRouter, UpdateResult
+from logic.token import PawnToken, Token, TokenFactory, TokenHandler, TokenServiceException, TokenValidator
 
 
 class TokenService(IntegrityService[Token]):
@@ -80,10 +70,10 @@ class TokenService(IntegrityService[Token]):
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            id: int = id_emitter.service_id,
             handler: TokenHandler = TokenHandler(),
             builder: TokenFactory = TokenFactory(),
             validator: TokenValidator = TokenValidator(),
+            id: int = IdFactory.next_id(class_name="TokenService"),
     ):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         self._handler = handler
@@ -221,7 +211,7 @@ class TokenService(IntegrityService[Token]):
         """
         method = f"{self.__class__.__name__}.promote_pawn"
         
-        promotion_result = self._handler.pawn_promoter.execute(
+        promotion_result = self._handler.pawn_promotion.execute(
             rank=rank,
             pawn=pawn,
             rank_service=rank_service,
@@ -246,7 +236,7 @@ class TokenService(IntegrityService[Token]):
         return promotion_result
     
     @LoggingLevelRouter.monitor
-    def deploy_on_board(self,token: Token,) -> InsertionResult[bool]:
+    def deploy_on_board(self,token: Token,) -> UpdateResult[Token]:
         """
         # ACTION:
             1.  If the token or coord fail their validations return the exception in the InsertionResult.
@@ -264,83 +254,28 @@ class TokenService(IntegrityService[Token]):
             TokenServiceException
             CoordAlreadyToppingStackException
         """
-        method = "TokenService.deploy_on_board"
+        method = f"{self.__class__.__name__}.deploy_on_board"
         
-        # Handle the case that, the token is not certified safe.
-        token_validation = self.validator.validate(token)
-        if token_validation.is_failure:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                TokenServiceException(
-                    msg=f"{method}: {TokenService.ERR_CODE}",
-                    ex=TokenDeploymentException(
-                        msg=f"{method}: {TokenDeploymentException.ERR_CODE}",
-                        ex=token_validation.exception
-                    )
-                )
-            )
-        # Handle the case that, the token has already been placed on the board.
-        if token.board_state != TokenBoardState.NEVER_BEEN_PLACED:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                TokenServiceException(
-                    msg=f"{method}: {TokenService.ERR_CODE}",
-                    ex=TokenDeploymentException(
-                        msg=f"{method}: {TokenDeploymentException.ERR_CODE}",
-                        ex=TokenAlreadyDeployedOnBoardException(f"{method}:")
-                    )
-                )
-            )
-        # Find the square where the token gets formed.
-        square_search_result = token.team.board.squares.search(
-            context=SquareContext(token.opening_square_name)
-        )
-        # Handle the case that, the search is not completed.
-        if square_search_result.is_failure:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                TokenServiceException(
-                    msg=f"{method}: {TokenService.ERR_CODE}",
-                    ex=TokenDeploymentException(
-                        msg=f"{method}: {TokenDeploymentException.ERR_CODE}",
-                        ex=square_search_result.exception
-                    )
-                )
-            )
-        # Handle the case the square is not found.
-        if square_search_result.is_empty:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                TokenServiceException(
-                    msg=f"{method}: {TokenService.ERR_CODE}",
-                    ex=TokenDeploymentException(
-                        msg=f"{method}: {TokenDeploymentException.ERR_CODE}",
-                        ex=TokenOpeningSquareNotFoundException(
-                            f"{method}: {TokenOpeningSquareNotFoundException.MSG}"
-                        )
-                    )
-                )
-            )
-        # --- Run the occupation process on the opening square. ---#
-        occupation_result = token.team.board.squares.add_occupant_to_square(
+        deployment_result = self._handler.deployment.execute(
             token=token,
-            square=square_search_result.payload[0],
+            token_validator=self.validator,
         )
-        # Handle the case that, occupying the opening square fails.
-        if occupation_result.is_failure:
+        # Handle the ase that the deployment is not successful.
+        if deployment_result.is_failure:
             # Return the exception chain on failure.
-            return InsertionResult.failure(
-                TokenServiceException(
-                    msg=f"{method}: {TokenService.ERR_CODE}",
-                    ex=TokenDeploymentException(
-                        msg=f"{method}: {TokenDeploymentException.ERR_CODE}",
-                        ex=occupation_result.exception
+            return UpdateResult.update_failure(
+                original=token,
+                exception=(
+                    TokenServiceException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=TokenServiceException.MSG,
+                        err_code=TokenServiceException.ERR_CODE,
+                        ex=deployment_result.exception
                     )
                 )
             )
-        # --- Assure that token.board_state has been updated. ---#
-        if token.board_state == TokenBoardState.NEVER_BEEN_PLACED:
-            token.board_state = TokenBoardState.DEPLOYED_ON_BOARD
-            
-        # Send the success result to the caller.
-        return InsertionResult.success()
+        return deployment_result
+        
+        
+   

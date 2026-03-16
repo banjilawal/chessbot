@@ -9,8 +9,8 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.token import PawnPromoter, TokenDeployer, TokenReadinessAnalyzer
-from logic.token.service.handler.coord.handler import TokenCoordHandler
+from assurance import Deployment
+from logic.token import PawnPromotion, TokenCoordHandler, TokenDeployment, TokenReadinessAnalyzer
 
 
 class TokenHandler:
@@ -40,31 +40,39 @@ class TokenHandler:
     # INHERITED METHODS:
     None
     """
-    _promoter: PawnPromoter
-    _deployer: TokenDeployer
+
+    _promotion: PawnPromotion
+    _deployment: TokenDeployment
     _coord_handler: TokenCoordHandler
     _readiness_analyzer: TokenReadinessAnalyzer
     
     
     def __init__(
             self,
-            promoter: PawnPromoter = PawnPromoter(),
+            promotion: PawnPromotion = PawnPromotion(),
+            deployment: TokenDeployment = TokenDeployment(),
             coord_handler: TokenCoordHandler = TokenCoordHandler(),
             readiness_analyzer: TokenReadinessAnalyzer = TokenReadinessAnalyzer(),
     ):
         """
         Args:
-            promoter: PawnPromotion
+            promotion: PawnPromotion
+            deployment: TokenDeployment
             coord_handler: TokenCoordHandler
             readiness_analyzer: TokenReadinessAnalyzer
         """
-        self._promoter = promoter
+        self._promotion = promotion
+        self._deployment = deployment
         self._coord_handler = coord_handler
         self._readiness_analyzer = readiness_analyzer
         
     @property
-    def pawn_promoter(self) -> PawnPromoter:
-        return self._promoter
+    def pawn_promotion(self) -> PawnPromotion:
+        return self._promotion
+    
+    @property
+    def deployment(self) -> TokenDeployment:
+        return self._deployment
     
     @property
     def coord(self) -> TokenCoordHandler:

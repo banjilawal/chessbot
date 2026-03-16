@@ -13,5 +13,4 @@ None
 
 # Modules
 from .route import SquareSearchRouteException
-from .id import SquareSearchIdCollisionException
-from .dataset import SquareSearchNullDatasetException
+from .exist import SquareNotFoundException
