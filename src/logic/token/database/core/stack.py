@@ -14,32 +14,46 @@ from logic.system import (
      SearchResult, StackService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, IdFactory
 )
 from logic.token import (
-    Token, TokenContext, TokenContextService, TokenService, TokenStackHandler, TokenStackServiceException,
+    Token, TokenContext, TokenContextService, TokenService, TokenStackOpsDispatcher, TokenStackServiceException,
     TokenStackState
 )
 
 
 class TokenStackService(StackService[Token]):
     """
-    # ROLE: Data Stack, SearchWorker IntegrityService, CRUD Operations, Encapsulation, API layer.
+    Role:
+        - Microservice
+        - Baremetal CRUD Integrity and Consistency service
+        - API layer
 
-    # RESPONSIBILITIES:
-    1.  Public facing API.
-    2.  Microservice for managing Token objects and their lifecycles.
-    3.  Ensure integrity of Token data stack
-    4.  Stack data structure for Token objects with no guarantee of uniqueness.
-    
-    # PARENT:
-        *   StackService[Token]
+    Responsibilities:
+        1.  API for Token data structure.
+        2.  Guarantee records are uniqure.
+        2.  Provides single entry and exit points for the Token lifecycle.
 
-    # PROVIDES:
-    None
+    Attributes:
+        CAPACITY = 16
+        SERVICE_NAME = TokenStackService
+ 
+        capacity: int
+        stack: List[Token]
+        service: TokenService
+        state: TokenStackState
+        dispatcher: TokenStackOpsDispatcher
+        context_service: TokenContextService
 
-    # LOCAL ATTRIBUTES:
-    None
-    
-    # INHERITED ATTRIBUTES:
-        *   See StackService class for inherited attributes.
+    Provides:
+        -   pop() -> DeletionResult[Token]
+        -   push(item: Token) -> InsertionResult[bool]
+        -   query(context: TokenContext) -> SearchResult[List[Token]]
+        
+        -   delete_by_id(
+                    id: int,
+                    identity_service: IdentityService
+            ) -> DeletionResult[Token]
+
+    Super:
+        StackService
     """
     DEFAULT_CAPACITY: int = 16
     SERVICE_NAME: str = "TokenStackService"
@@ -48,7 +62,7 @@ class TokenStackService(StackService[Token]):
     _stack: List[Token]
     _service: TokenService
     _state: TokenStackState
-    _handler: TokenStackHandler
+    _dispatcher: TokenStackOpsDispatcher
     _context_service: TokenContextService
     
     def __init__(
@@ -56,7 +70,7 @@ class TokenStackService(StackService[Token]):
             name: str = SERVICE_NAME,
             capacity: int = DEFAULT_CAPACITY,
             service: TokenService = TokenService(),
-            handler: TokenStackHandler = TokenStackHandler(),
+            dispatcher: TokenStackOpsDispatcher = TokenStackOpsDispatcher(),
             id: int = IdFactory.next_id(class_name="TokenStackService"),
             context_service: TokenContextService = TokenContextService(),
     ):
@@ -66,15 +80,14 @@ class TokenStackService(StackService[Token]):
             name: str
             capacity: int
             service: TokenService
-            handler: TokenStackHandler
+            dispatcher: TokenStackOpsDispatcher
             context_service: TokenContextService
         """
-        method = "TokenService.__init__"
         super().__init__(id=id, name=name,)
         self._stack = []
-        self._capacity = capacity
-        self._handler = handler
         self._service = service
+        self._capacity = capacity
+        self._dispatcher = dispatcher
         self._context_service = context_service
         self._state = TokenStackState.NOT_READY_FORD_DEPLOYMENT
 
@@ -111,6 +124,14 @@ class TokenStackService(StackService[Token]):
         return self._stack
     
     @property
+    def integrity_service(self) -> TokenService:
+        return self._service
+    
+    @property
+    def context_service(self) -> TokenContextService:
+        return self._context_service
+    
+    @property
     def is_getting_ready_for_deployment(self) -> bool:
         return not self.is_full and self._state == TokenStackState.NOT_READY_FORD_DEPLOYMENT
     
@@ -127,18 +148,6 @@ class TokenStackService(StackService[Token]):
         return self.is_empty and self._state == TokenStackState.DEPLOYED_ON_BOARD
     
     @property
-    def handler(self) -> TokenStackHandler:
-        return self._handler
-        
-    @property
-    def integrity_service(self) -> TokenService:
-        return self._service
-    
-    @property
-    def context_service(self) -> TokenContextService:
-        return self._context_service
-    
-    @property
     def stack_state(self) -> TokenStackState:
         return self._state
     
@@ -147,48 +156,12 @@ class TokenStackService(StackService[Token]):
         self._state = state
     
     @LoggingLevelRouter.monitor
-    def push(self, item: Token) -> InsertionResult[bool]:
-        """
-        Action:
-            1.  Insert a token into the TokenStackService.
-            
-        Args:
-            item: Token
-            
-        Returns:
-            InsertionResult[bool]
-            
-        Raises:
-            *   TokenStackServiceException
-        """
-        method = f"{self.__class__.__name__}.push"
-        
-        insertion_result = self._handler.crud.push(
-            token=item,
-            token_stack=self,
-            rank_quota_analyzer=self._handler.rank_quota_analyzer,
-            token_collision_detector=self._handler.collision_detector
-        )
-        # Handle the case that, the insertion is not successful
-        if insertion_result.is_failure:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                TokenStackServiceException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=TokenStackServiceException.MSG,
-                    err_code=TokenStackServiceException.ERR_CODE,
-                    ex=insertion_result.exception,
-                )
-            )
-        # --- Send the success result to the caller. ---#
-        return InsertionResult.success()
-    
-    @LoggingLevelRouter.monitor
     def pop(self) -> DeletionResult[Token]:
         """
+        Remove the last token put on the stack.
+
         Action:
-            Remove the item at the top of the stack if it's not empty.
+            If the pop fails, send an exception chain. Otherwise, send the success result.
         Args:
         Returns:
             DeletionResult[Token]
@@ -196,11 +169,11 @@ class TokenStackService(StackService[Token]):
             TokenStackServiceException
         """
         method = f"{self.__class__.__name__}.pop"
-    
-        # --- Handoff pop responsibility. ---#
-        pop_result = self._handler.crud.pop()
         
-        # Handle the case that, that the pop is not completed.
+        # --- Forward the request to the dispatcher. ---#
+        pop_result = self._dispatcher.crud.pop()
+        
+        # Handle the case that, the request was not completed.
         if pop_result.is_failure:
             # Return the exception chain on failure.
             return DeletionResult.failure(
@@ -212,8 +185,47 @@ class TokenStackService(StackService[Token]):
                     ex=pop_result.exception,
                 )
             )
-        # --- On success forward to the client. ---#
+        # --- Forward the work product to the caller. ---#
         return pop_result
+    
+    @LoggingLevelRouter.monitor
+    def push(self, item: Token) -> InsertionResult[bool]:
+        """
+        Put the token onto the stack.
+
+        Action:
+            If the insertion fails, send an exception chain. Otherwise, send
+            the success result.
+        Args:
+            item: Token
+        Returns:
+            InsertionResult[bool]
+        Raises:
+            TokenStackServiceException
+        """
+        method = f"{self.__class__.__name__}.push"
+        
+        # --- Forward the request to the dispatcher. ---#
+        insertion_result = self._dispatcher.crud.push(
+            token=item,
+            token_stack=self,
+            rank_quota_analyzer=self._dispatcher.rank_quota_analyzer,
+            token_collision_detector=self._dispatcher.collision_detector
+        )
+        # Handle the case that, the request was not completed.
+        if insertion_result.is_failure:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                TokenStackServiceException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenStackServiceException.MSG,
+                    err_code=TokenStackServiceException.ERR_CODE,
+                    ex=insertion_result.exception,
+                )
+            )
+        # --- Forward the work product to the caller. ---#
+        return InsertionResult.success()
     
     @LoggingLevelRouter.monitor
     def delete_by_id(
@@ -222,8 +234,11 @@ class TokenStackService(StackService[Token]):
             identity_service: IdentityService = IdentityService()
     ) -> DeletionResult[Token]:
         """
+        Delete any token which has that id.
+        
         Action:
-            Remove tokens from the stack if their id matches the targt.
+            If the operation gets interrupted send an exception chain. Otherwise,
+            send the success result.
         Args:
             id: int
             identity_service: IdentityService
@@ -234,12 +249,12 @@ class TokenStackService(StackService[Token]):
         """
         method = f"{self.__class__.__name__}.delete_by_id"
         
-        # --- Handoff deletion responsibility to the crud_handler ---#
-        delete_by_id_result = self._handler.crud.delete_by_id(
+        # --- Forward the request to the dispatcher. ---#
+        delete_by_id_result = self._dispatcher.crud.delete_by_id(
             id=id,
             identity_service=identity_service
         )
-        # Handle the case that, that there is no valid work product.
+        # Handle the case that, the request was not completed
         if delete_by_id_result.is_failure:
             # Return the exception chain on failure.
             return DeletionResult.failure(
@@ -251,34 +266,30 @@ class TokenStackService(StackService[Token]):
                     ex=delete_by_id_result.exception,
                 )
             )
-        # --- Otherwise forward the result to the client. ---#
+        # --- Forward the work product to the caller. ---#
         return delete_by_id_result
     
     @LoggingLevelRouter.monitor
     def query(self, context: TokenContext) -> SearchResult[List[Token]]:
         """
+        Find tokens whose attribute value fits the context.
+
         Action:
-            1.  Pass the context param to context_service manages all error handling and operations in
-                search lifecycle.
-            2.  Any failures context_service will be encapsulated inside a TokenStackServiceException which is
-                sent inside a SearchResult.
-            3.  If the search completes successfully return the result directly because its a SearchResult instance.
-            
+            Send an exception chain if the operation gets interrupted. Otherwise, send
+            the success result.
         Args:
-            context: SearchContext
-            
+            context: TokenContext
         Returns:
             SearchResult[List[Token]]
-            
         Raises:
             TokenStackServiceException
         """
         method = f"{self.__class__.__name__}.query"
         
-        # --- Handoff the search responsibility to _context_service. ---#
+        # --- Forward the request to the context_service. ---#
         query_result = self._context_service.finder.find(dataset=self._stack, context=context)
         
-        # Handle the case that, the search is not completed.
+        # Handle the case that, the request was not completed.
         if query_result.is_failure:
             # Return the exception chain on failure.
             return SearchResult.failure(
@@ -290,5 +301,5 @@ class TokenStackService(StackService[Token]):
                     ex=query_result.exception,
                 )
             )
-        # --- For either a successful or empty search result directly forward to the caller. ---#
+        # --- Forward the work product to the caller. ---#
         return query_result

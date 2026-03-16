@@ -23,7 +23,7 @@ class TokenService(IntegrityService[Token]):
     """
     Role:
         - Microservice
-        _ Integrity Lifecycle Management
+        - Integrity Lifecycle Management
         - API layer
 
     Responsibilities:
@@ -31,6 +31,8 @@ class TokenService(IntegrityService[Token]):
         2.  Provides single entry and exit points for the Token lifecycle.
 
     Attributes:
+        SERVICE_NAME: TokenService
+        
         id: int
         name: str
         builder: TokenBuilder
@@ -60,7 +62,7 @@ class TokenService(IntegrityService[Token]):
                     schema_service: SchemaService = SchemaService(),
             ) -> UpdateResult[PawnToken]
         
-    Parent:
+    Super:
         IntegrityService
     """
     SERVICE_NAME = "TokenService"

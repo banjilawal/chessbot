@@ -11,7 +11,7 @@ version: 1.0.0
 # =========== TOKEN.DATABASE.CORE PACKAGE CONTENTS ===========#
 
 # Packages
-from handler import *
+from .operation import *
 from .exception import *
 
 # Modules
