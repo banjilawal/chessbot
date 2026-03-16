@@ -20,7 +20,7 @@ from logic.token import (
 )
 
 
-class PawnPromoter:
+class PawnPromotion:
     """
     # ROLE: Update Handler, Consistency, Integrity Maintenance, Lifecycle Management
 
@@ -50,7 +50,7 @@ class PawnPromoter:
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def promote(
+    def execute(
             cls,
             rank: Rank,
             pawn: PawnToken,
@@ -87,12 +87,7 @@ class PawnPromoter:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pawn,
-                exception=PawnPromoterException(
-                    cls_mthd=method,
-                    cls_name=cls.__class__.__name__,
-                    msg=PromotionException.MSG,
-                    err_code=PromotionException.ERR_CODE,
-                    ex=PromotionException(
+                exception=PromotionException(
                         mthd=method,
                         op=PromotionException.OP,
                         msg=PromotionException.MSG,
@@ -100,19 +95,13 @@ class PawnPromoter:
                         rslt_type=PromotionException.RSLT_TYPE,
                         ex=token_validation_result.exception
                     )
-                )
             )
         # Handle the case that. the token is wrong type.
         if not isinstance(pawn, PawnToken):
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pawn,
-                exception=PawnPromoterException(
-                    cls_mthd=method,
-                    cls_name=cls.__class__.__name__,
-                    msg=PromotionException.MSG,
-                    err_code=PromotionException.ERR_CODE,
-                    ex=PromotionException(
+                exception=PromotionException(
                         mthd=method,
                         op=PromotionException.OP,
                         msg=PromotionException.MSG,
@@ -121,7 +110,6 @@ class PawnPromoter:
                         ex=TypeError(
                             f"Expected type PawnToken for promotion. Got {type(pawn).__name__} instead."
                         )
-                    )
                 )
             )
         # Handle the case that, the pawn is not actionable.
@@ -129,12 +117,7 @@ class PawnPromoter:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pawn,
-                exception=PawnPromoterException(
-                    cls_mthd=method,
-                    cls_name=cls.__class__.__name__,
-                    msg=PromotionException.MSG,
-                    err_code=PromotionException.ERR_CODE,
-                    ex=PromotionException(
+                exception=PromotionException(
                         mthd=method,
                         op=PromotionException.OP,
                         msg=PromotionException.MSG,
@@ -145,21 +128,14 @@ class PawnPromoter:
                             msg=PromoteInactivePawnException.MSG,
                             err_code=PromoteInactivePawnException.ERR_CODE,
                         )
-                    )
                 )
             )
-
         # Handle the case that, the pawn has already been promoted.
         if pawn.is_promoted:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pawn,
-                exception=PawnPromoterException(
-                    cls_mthd=method,
-                    cls_name=cls.__class__.__name__,
-                    msg=PromotionException.MSG,
-                    err_code=PromotionException.ERR_CODE,
-                    ex=PromotionException(
+                exception=PromotionException(
                         mthd=method,
                         op=PromotionException.OP,
                         msg=PromotionException.MSG,
@@ -170,7 +146,6 @@ class PawnPromoter:
                             msg=PawnAlreadyPromotedException.MSG,
                             err_code=PawnAlreadyPromotedException.ERR_CODE,
                         )
-                    )
                 )
             )
         # Handle the case that, the pawn is not on its enemy's rank row.
@@ -182,19 +157,13 @@ class PawnPromoter:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pawn,
-                exception=PawnPromoterException(
-                    cls_mthd=method,
-                    cls_name=cls.__class__.__name__,
-                    msg=PromotionException.MSG,
-                    err_code=PromotionException.ERR_CODE,
-                    ex=PromotionException(
+                exception=PromotionException(
                         mthd=method,
                         op=PromotionException.OP,
                         msg=PromotionException.MSG,
                         err_code=PromotionException.ERR_CODE,
                         rslt_type=PromotionException.RSLT_TYPE,
                         ex=on_enemy_rank_row_verification_result.exception
-                    )
                 )
             )
         # Handle the case that, the rank is not promotable.

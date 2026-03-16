@@ -10,8 +10,7 @@ version: 1.0.0
 #=========== TOKEN.SERVICE.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-from .deploy import *
+None
 
 # Modules
-from .undo import OverMoveUndoLimitException
 from .anchor import TokenServiceException

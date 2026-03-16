@@ -54,7 +54,7 @@ class TokenHandler:
     ):
         """
         Args:
-            promoter: PawnPromoter
+            promoter: PawnPromotion
             coord_handler: TokenCoordHandler
             readiness_analyzer: TokenReadinessAnalyzer
         """

@@ -24,7 +24,7 @@ class PromotionException(UpdateException):
 
     # RESPONSIBILITIES:
     1.  Indicate that promoting a pawn failed.
-    2.  Identify the PawnPromoter method where the failure occurred.
+    2.  Identify the PawnPromotion method where the failure occurred.
 
     # PARENT:
         *   UpdateException
@@ -55,7 +55,7 @@ class PromotionException(UpdateException):
     OP = "PawnPromotion"
     RSLT_TYPE = "UpdateResult"
     ERR_CODE = "PAWN_PROMOTION_FAILURE"
-    MSG = "PawnPromoter method failed."
+    MSG = "PawnPromotion method failed."
     
     def __init__(
             self,

@@ -11,24 +11,24 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# PAWN_PROMOTER_EXCEPTION #======================#
-    "PawnPromoterException",
+    # ======================# TOKEN_DEPLOYER_EXCEPTION #======================#
+    "TokenDeployerException",
 ]
 
 from logic.system import AnchorException
 
 
-# ======================# PAWN_PROMOTER_EXCEPTION #======================#
-class PawnPromoterException(AnchorException):
+# ======================# TOKEN_DEPLOYER_EXCEPTION #======================#
+class TokenDeployerException(AnchorException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Anchoring target for PawnPromoter debug (layer-2) error state firing incident
+    1.  Anchoring target for TokenDeployer debug (layer-2) error state firing incident
         reports on
             *   the triggering variable
             *   The trigger's value.
-    2.  Indicate which PawnPromoter method received a worker's (layer-1) failure result.
+    2.  Indicate which TokenDeployer method received a worker's (layer-1) failure result.
 
     # PARENT:
         *   AnchorException
@@ -55,9 +55,9 @@ class PawnPromoterException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_NAME = " PawnPromoter"
-    ERR_CODE = " PAWN_PROMOTER_EXCEPTION"
-    MSG = " PawnPromoter method raised an exception."
+    CLS_NAME = " TokenDeployer"
+    ERR_CODE = " TOKEN_DEPLOYER_EXCEPTION"
+    MSG = " TokenDeployer method raised an exception."
     
     def __init__(
             self,

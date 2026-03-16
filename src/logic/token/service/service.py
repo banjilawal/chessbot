@@ -221,7 +221,7 @@ class TokenService(IntegrityService[Token]):
         """
         method = f"{self.__class__.__name__}.promote_pawn"
         
-        promotion_result = self._handler.pawn_promoter.promote(
+        promotion_result = self._handler.pawn_promoter.execute(
             rank=rank,
             pawn=pawn,
             rank_service=rank_service,
