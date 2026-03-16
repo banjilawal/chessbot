@@ -1,7 +1,7 @@
-# src/logic/token/context/finder/exception/debug/route.py
+# src/logic/token/context/finder/exception/debug/exist.py
 
 """
-Module: logic.token.context.finder.exception.debug.route
+Module: logic.token.context.finder.exception.debug.exist
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,20 +11,20 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# NO_TOKEN_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#
-    "TokenSearchRouteException",
+    # ======================# TOKEN_NOT_FOUND_EXCEPTION #======================#
+    "TokenNotFoundException",
 ]
 
 from logic.token import TokenDebugException
 
 
-# ======================# NO_TOKEN_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#
-class TokenSearchRouteException(TokenDebugException):
+# ======================# TOKEN_NOT_FOUND_EXCEPTION #======================#
+class TokenNotFoundException(TokenDebugException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that there was no search logic for a token attribute.
+    1.  Indicate that no token was found.
 
     # PARENT:
         *   TokenDebugException
@@ -53,8 +53,8 @@ class TokenSearchRouteException(TokenDebugException):
     """
     VAR = Optional[str]
     VAL = Optional[Any]
-    ERR_CODE = "NO_TOKEN_SEARCH_ROUTE_ROUTE_EXCEPTION"
-    MSG = "There is no search logic for the token attribute."
+    ERR_CODE = "TOKEN_NOT_FOUND_EXCEPTION"
+    MSG = "No token matching the attribute was found."
     
     def __init__(
             self,

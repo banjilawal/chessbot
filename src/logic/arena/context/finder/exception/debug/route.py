@@ -1,7 +1,7 @@
-# src/logic/token/context/finder/exception/debug/route.py
+# src/logic/arena/context/finder/exception/debug/route.py
 
 """
-Module: logic.token.context.finder.exception.debug.route
+Module: logic.arena.context.finder.exception.debug.route
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,23 +11,23 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# NO_TOKEN_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#
-    "TokenSearchRouteException",
+    # ======================# NO_ARENA_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#
+    "ArenaSearchRouteException",
 ]
 
-from logic.token import TokenDebugException
+from logic.arena import ArenaDebugException
 
 
-# ======================# NO_TOKEN_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#
-class TokenSearchRouteException(TokenDebugException):
+# ======================# NO_ARENA_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#
+class ArenaSearchRouteException(ArenaDebugException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that there was no search logic for a token attribute.
+    1.  Indicate that there was no search logic for a arena attribute.
 
     # PARENT:
-        *   TokenDebugException
+        *   ArenaDebugException
 
     # PROVIDES:
     None
@@ -36,7 +36,7 @@ class TokenSearchRouteException(TokenDebugException):
     None
 
     # INHERITED ATTRIBUTES:
-        *   TokenDebugException class for inherited attributes.
+        *   ArenaDebugException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
         var: Optional[str]
@@ -49,12 +49,12 @@ class TokenSearchRouteException(TokenDebugException):
     None
 
     # INHERITED METHODS:
-        *   See TokenDebugException class for inherited methods.
+        *   See ArenaDebugException class for inherited methods.
     """
     VAR = Optional[str]
     VAL = Optional[Any]
-    ERR_CODE = "NO_TOKEN_SEARCH_ROUTE_ROUTE_EXCEPTION"
-    MSG = "There is no search logic for the token attribute."
+    ERR_CODE = "NO_ARENA_SEARCH_ROUTE_ROUTE_EXCEPTION"
+    MSG = "There is no search logic for the arena attribute."
     
     def __init__(
             self,
