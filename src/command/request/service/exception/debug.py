@@ -37,7 +37,7 @@ class RequestServiceDebugException(DebugException):
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -52,8 +52,6 @@ class RequestServiceDebugException(DebugException):
     """
     ERR_CODE = "REQUEST_SERVICE_DEBUG_EXCEPTION"
     MSG = "RequestService attribute raised an exception."
-    VAR = Optional[str]
-    VAL = Optional[Any]
     
     def __init__(
             self,

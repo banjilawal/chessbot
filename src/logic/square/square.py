@@ -41,7 +41,7 @@ class Square:
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   id (int)
         *   name (str)
         *   board (Board)

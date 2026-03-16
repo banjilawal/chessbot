@@ -33,7 +33,7 @@ class CommandRouter(ABC, Generic[S]):
     # INHERITED ATTRIBUTES:
     None.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
     None
 
     # LOCAL METHODS:

@@ -40,7 +40,7 @@ class PerpendicularPlaneFactors:
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
             origin:
 
     # LOCAL METHODS:

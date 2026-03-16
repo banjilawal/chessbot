@@ -38,7 +38,7 @@ class TokenStackCrudHandler:
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
     None
 
     # LOCAL METHODS:

@@ -39,7 +39,7 @@ class PushingCoordException(InsertionException):
     # INHERITED ATTRIBUTES:
         *   See InsertionException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         op: Optional[str]
         ex: Optional[str]
         msg: Optional[str]

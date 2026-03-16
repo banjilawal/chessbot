@@ -41,7 +41,7 @@ class KnightDebugException(RankDebugException):
     # INHERITED ATTRIBUTES:
         *   See RankDebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   var (Optional[str])
@@ -54,8 +54,6 @@ class KnightDebugException(RankDebugException):
     # INHERITED METHODS:
         *   See RankDebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "KNIGHT_DEBUG_EXCEPTION"
     MSG = str = "Knight had an error."
     

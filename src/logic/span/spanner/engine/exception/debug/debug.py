@@ -41,7 +41,7 @@ class SpannerEngineDebugException(DebugException):
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -54,8 +54,6 @@ class SpannerEngineDebugException(DebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "SPANNER_ENGINE_DEBUG_EXCEPTION"
     MSG = str = "Condition brought SpannerEngine into error state."
     

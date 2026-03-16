@@ -44,7 +44,7 @@ class VectorService(IntegrityService[Vector]):
     # INHERITED ATTRIBUTES:
         *   See IntegrityService for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   id (int)
         *   name (str)
         *   builder (VectorBuilder) = VectorBuilder()

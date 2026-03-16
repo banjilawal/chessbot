@@ -38,7 +38,7 @@ class IntegrityService(ABC, Service[Generic[T]]):
     # INHERITED ATTRIBUTES:
         *   See Service class for inherited attributes.
         
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   id (int)
         *   name (name)
         *   builder (Builder[T])

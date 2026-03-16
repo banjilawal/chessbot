@@ -38,7 +38,7 @@ class NodeSearchRouteException(NodeDebugException):
     # INHERITED ATTRIBUTES:
         *   NodeDebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]
@@ -51,8 +51,6 @@ class NodeSearchRouteException(NodeDebugException):
     # INHERITED METHODS:
         *   See NodeDebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "NO_NODE_SEARCH_ROUTE_ROUTE_EXCEPTION"
     MSG = "There is no search logic for the node attribute."
     

@@ -45,7 +45,7 @@ class ZeroGameContextFlagsException(DebugException):
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -58,8 +58,6 @@ class ZeroGameContextFlagsException(DebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     MSG = "No GameContext flags are enabled."
     ERR_CODE = "ZERO_GAME_CONTEXT_FLAGS_EXCEPTION"
     

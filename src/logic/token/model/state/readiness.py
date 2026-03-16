@@ -39,7 +39,7 @@ class ReadinessState(Enum):
     # INHERITED ATTRIBUTES:
         *   See Enum class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
    None
 
     # LOCAL METHODS:

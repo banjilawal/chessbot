@@ -41,7 +41,7 @@ class PerpendicularRayFactors:
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
             start_x: int
             end_x: int
             x_step: int

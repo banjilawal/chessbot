@@ -38,7 +38,7 @@ class SnapshotNotFoundException(SnapshotDebugException):
     # INHERITED ATTRIBUTES:
         *   SnapshotDebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]
@@ -51,8 +51,6 @@ class SnapshotNotFoundException(SnapshotDebugException):
     # INHERITED METHODS:
         *   See SnapshotDebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "SNAPSHOT_NOT_FOUND_EXCEPTION"
     MSG = "No snapshot matching the attribute was found."
     

@@ -38,7 +38,7 @@ class SquareRayNullException(NullException):
     # INHERITED ATTRIBUTES:
         *   See NUllException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         val: Optional[Any]
         var: Optional[str]
         msg: Optional[str]
@@ -51,8 +51,6 @@ class SquareRayNullException(NullException):
     # INHERITED METHODS:
         *   See NullException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     MSG = "SquareRay cannot be null."
     ERR_CODE = "SQUARE_RAY_NULL_EXCEPTION"
     

@@ -39,7 +39,7 @@ class SquareContextValidationRouteException(ExecutionRouteException):
     # INHERITED ATTRIBUTES:
         *   See ExecutionRoute class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -52,8 +52,6 @@ class SquareContextValidationRouteException(ExecutionRouteException):
     # INHERITED METHODS:
         *   See ExecutionRoute class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     MSG = "No validation route for SquareContext attribute"
     ERR_CODE = "SQUARE_CONTEXT_VALIDATION_ROUTE_EXCEPTION"
     

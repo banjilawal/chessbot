@@ -41,7 +41,7 @@ class TokenDebugException(DebugException):
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -56,8 +56,6 @@ class TokenDebugException(DebugException):
     """
     ERR_CODE = "TOKEN_EXCEPTION"
     MSG = str = "Token had an error."
-    VAR = Optional[str]
-    VAL = Optional[Any]
     
     def __init__(
             self,

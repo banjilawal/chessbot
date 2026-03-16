@@ -1,7 +1,7 @@
-# src/logic/token/service/handler/promotion/exception/debug/pawn.py
+# src/logic/token/service/handler/promotion/exception/debug/pawn_token.py
 
 """
-Module: logic.token.service.handler.promotion.exception.debug.pawn
+Module: logic.token.service.handler.promotion.exception.debug.pawn_token
 Author: Banji Lawal
 Created: 2026-03-14
 version: 1.0.0
@@ -38,7 +38,7 @@ class PromoteToPawnException(TokenDebugException):
     # INHERITED ATTRIBUTES:
         *   TokenDebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]
@@ -51,10 +51,8 @@ class PromoteToPawnException(TokenDebugException):
     # INHERITED METHODS:
         *   See TokenDebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "CIRCULAR_PAWN_RANK_PROMOTION_EXCEPTION"
-    MSG = "Cannot promote a pawn to be a pawn again."
+    MSG = "Cannot promote a pawn_token to be a pawn_token again."
     
     def __init__(
             self,

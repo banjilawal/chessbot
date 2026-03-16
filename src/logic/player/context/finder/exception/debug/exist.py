@@ -38,7 +38,7 @@ class PlayerNotFoundException(PlayerDebugException):
     # INHERITED ATTRIBUTES:
         *   PlayerDebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]
@@ -51,8 +51,6 @@ class PlayerNotFoundException(PlayerDebugException):
     # INHERITED METHODS:
         *   See PlayerDebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "PLAYER_NOT_FOUND_EXCEPTION"
     MSG = "No player matching the attribute was found."
     

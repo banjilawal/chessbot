@@ -34,7 +34,7 @@ class DiagonalRayProvider:
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
             plane: DiagonalPlaneFactors
             computer: DiagonalRayComputer
 

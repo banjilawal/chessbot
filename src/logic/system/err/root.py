@@ -37,7 +37,7 @@ class ChessException(Exception):
     # INHERITED ATTRIBUTES:
         *   See Exception class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   err_code (str)
         *   msg (str
         *   ex (Optional[Exception])

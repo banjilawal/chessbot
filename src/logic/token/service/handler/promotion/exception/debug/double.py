@@ -23,7 +23,7 @@ class PawnAlreadyPromotedException(TokenDebugException):
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a pawn could not be promoted because, it had already been promoted.
+    1.  Indicate that a pawn_token could not be promoted because, it had already been promoted.
 
     # PARENT:
         *   TokenDebugException
@@ -37,7 +37,7 @@ class PawnAlreadyPromotedException(TokenDebugException):
     # INHERITED ATTRIBUTES:
         *   TokenDebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]
@@ -50,10 +50,8 @@ class PawnAlreadyPromotedException(TokenDebugException):
     # INHERITED METHODS:
         *   See TokenDebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "PAWN_ALREADY_PROMOTED_EXCEPTION"
-    MSG = "The pawn has already been promoted."
+    MSG = "The pawn_token has already been promoted."
     
     def __init__(
             self,

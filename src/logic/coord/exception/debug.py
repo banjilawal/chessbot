@@ -42,7 +42,7 @@ class CoordDebugException(DebugException):
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -57,8 +57,6 @@ class CoordDebugException(DebugException):
     """
     ERR_CODE = "COORD_EXCEPTION"
     MSG = str = "Coord had an error."
-    VAR = Optional[str]
-    VAL = Optional[Any]
     
     _var = Optional[str]
     _val = Optional[Any]

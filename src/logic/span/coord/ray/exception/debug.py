@@ -38,7 +38,7 @@ class ComputedNullRayDebugException(NullException):
     # INHERITED ATTRIBUTES:
         *   DebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   var (Optional[str])
@@ -51,8 +51,6 @@ class ComputedNullRayDebugException(NullException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "COMPUTED_NULL_RAY_DEBUG_EXCEPTION"
     MSG = "The computed ray's start and end points are the same. Product is null."
     

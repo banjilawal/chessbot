@@ -42,7 +42,7 @@ class KnightException(RankException):
     # INHERITED ATTRIBUTES:
         *   See RankException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

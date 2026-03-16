@@ -42,7 +42,7 @@ class TeamValidator(Validator[Team]):
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
     None
 
     # LOCAL METHODS:

@@ -45,7 +45,7 @@ class NoRayProviderException(SpannerEngineDebugException):
     # INHERITED ATTRIBUTES:
         *   See SpannerEngineDebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -58,8 +58,6 @@ class NoRayProviderException(SpannerEngineDebugException):
     # INHERITED METHODS:
         *   See SpannerEngineDebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     MSG = "No ray provider was included."
     ERR_CODE = "NO_RAY_PROVIDER_EXCEPTION"
     

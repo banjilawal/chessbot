@@ -42,7 +42,7 @@ class SchemaDebugException(DebugException):
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -57,8 +57,6 @@ class SchemaDebugException(DebugException):
     """
     ERR_CODE = "SCHEMA_EXCEPTION"
     MSG = str = "Schema had an error."
-    VAR = Optional[str]
-    VAL = Optional[Any]
     
     _var = Optional[str]
     _val = Optional[Any]

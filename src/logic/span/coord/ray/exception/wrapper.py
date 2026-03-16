@@ -43,7 +43,7 @@ class RayComputationException(ComputationException):
     # INHERITED ATTRIBUTES:
         *   See ComputationException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   err_code (str)
         *   msg (str)
         *   ex (Optional[Exception])

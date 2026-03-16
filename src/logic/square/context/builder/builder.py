@@ -41,7 +41,7 @@ class SquareContextBuilder(Builder[SquareContext]):
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
     None
 
     # LOCAL METHODS:

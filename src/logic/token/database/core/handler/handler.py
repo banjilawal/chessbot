@@ -38,7 +38,7 @@ class TokenStackHandler:
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         Local:
             *   stats_analyzer (TokenStacKAnalyzer)
             *   occupation_service (TokenStackTokenHandler)

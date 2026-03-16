@@ -34,7 +34,7 @@ class SquareColliderException(ColliderException):
     # INHERITED ATTRIBUTES:
         *   See ColliderException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

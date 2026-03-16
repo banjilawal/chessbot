@@ -33,7 +33,7 @@ class SquareSpan(Span[Square]):
     # INHERITED ATTRIBUTES:
         *   See Span class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   origin: Square
 
     # LOCAL METHODS:

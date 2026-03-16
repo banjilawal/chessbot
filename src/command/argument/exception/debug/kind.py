@@ -38,7 +38,7 @@ class ArgumentTypeException(ServiceRequestDebugException):
     # INHERITED ATTRIBUTES:
         *   See ServiceRequestDebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -53,8 +53,6 @@ class ArgumentTypeException(ServiceRequestDebugException):
     """
     ERR_CODE = "WRONG_ARGUMENT_TYPE_EXCEPTION"
     MSG = "Incorrect argument type"
-    VAR = Optional[str]
-    VAL = Optional[Any]
     
     def __init__(
             self,

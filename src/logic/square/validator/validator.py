@@ -40,7 +40,7 @@ class SquareValidator(Validator[Square]):
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
     None
 
     # LOCAL METHODS:

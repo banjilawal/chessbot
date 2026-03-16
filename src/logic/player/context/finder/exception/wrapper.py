@@ -40,7 +40,7 @@ class PlayerSearchException(SearchException):
     # INHERITED ATTRIBUTES:
         *   See SearchException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         op: Optional[str]
         ex: Optional[str]
         msg: Optional[str]

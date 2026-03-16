@@ -38,7 +38,7 @@ class SquareStackPushException(InsertionException):
     # INHERITED ATTRIBUTES:
         *   See InsertionException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   err_code (str)
         *   msg (str)
         *   ex (Optional[Exception])

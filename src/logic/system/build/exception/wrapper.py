@@ -38,7 +38,7 @@ class BuildException(OperationException):
     # INHERITED ATTRIBUTES:
         *   See OperationException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         op: Optional[str]
         ex: Optional[str]
         msg: Optional[str]

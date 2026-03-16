@@ -38,7 +38,7 @@ class NodeValidationException(ValidationException):
     # INHERITED ATTRIBUTES:
         *   See ValidationException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         ex: Optional[str]
         op: Optional[str]
         msg: Optional[str]

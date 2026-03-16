@@ -38,7 +38,7 @@ class SquareServiceDebugException(DebugException):
     # INHERITED ATTRIBUTES:
         *   DebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -51,8 +51,6 @@ class SquareServiceDebugException(DebugException):
     # INHERITED METHODS:
         *   See ChessException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "SQUARE_SERVICE_EXCEPTION"
     MSG = "A variable in SquareService raised an exception."
     

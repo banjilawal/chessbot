@@ -41,7 +41,7 @@ class NodeTreeStackMigratorException(AnchorException):
     # INHERITED ATTRIBUTES:
         *   See AnchorException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         msg: Optional[str]
         ex: Optional[Exception]
         cls_name: Optional[str]

@@ -39,7 +39,7 @@ class HeadCannotBeTailException(DebugException):
     # INHERITED ATTRIBUTES:
         *   DebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -52,8 +52,6 @@ class HeadCannotBeTailException(DebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "HEAD_CANNOT_BE_TAIL_EXCEPTION"
     MSG = "Edge cannot have the same node as it's head and tail."
     

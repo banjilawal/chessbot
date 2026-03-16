@@ -41,7 +41,7 @@ class StartSquareVisitException(UpdateException):
     # INHERITED ATTRIBUTES:
         *   See UpdateException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   err_code (str)
         *   msg (str)
         *   ex (Optional[Exception])

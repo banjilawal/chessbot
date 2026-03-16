@@ -41,7 +41,7 @@ class KingDebugException(RankDebugException):
     # INHERITED ATTRIBUTES:
         *   See RankDebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   var (Optional[str])
@@ -54,8 +54,6 @@ class KingDebugException(RankDebugException):
     # INHERITED METHODS:
         *   See RankDebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "KING_DEBUG_EXCEPTION"
     MSG = str = "King had an error."
     

@@ -38,7 +38,7 @@ class GameContextExecutionRouteException(ExecutionRouteException):
     # INHERITED ATTRIBUTES:
         *   See ExecutionRoute class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -53,8 +53,6 @@ class GameContextExecutionRouteException(ExecutionRouteException):
     """
     ERR_CODE = "GAME_CONTEXT_EXECUTION_ROUTE_EXCEPTION"
     MSG = "No build route for GameContext attribute"
-    VAR = Optional[str]
-    VAL = Optional[Any]
     
     def __init__(
             self,

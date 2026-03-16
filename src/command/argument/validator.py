@@ -38,7 +38,7 @@ class ArgumentsValidator(Validator[Dict]):
     # INHERITED ATTRIBUTES:
     None
     
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
     None
     
     # LOCAL METHODS:

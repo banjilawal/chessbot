@@ -38,7 +38,7 @@ class PlayerBuildRouteException(ExecutionRouteException):
     # INHERITED ATTRIBUTES:
         *   See ExecutionRoute class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -53,8 +53,6 @@ class PlayerBuildRouteException(ExecutionRouteException):
     """
     ERR_CODE = "PLAYER_BUILD_ROUTE_EXCEPTION"
     MSG = "No Build route for Player subclass."
-    VAR = Optional[str]
-    VAL = Optional[Any]
     
     def __init__(
             self,

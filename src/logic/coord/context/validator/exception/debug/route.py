@@ -39,7 +39,7 @@ class CoordContextValidationRouteException(ExecutionRouteException):
     # INHERITED ATTRIBUTES:
         *   See ExecutionRoute class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -52,8 +52,6 @@ class CoordContextValidationRouteException(ExecutionRouteException):
     # INHERITED METHODS:
         *   See ExecutionRoute class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     MSG = "No validation route for CoordContext attribute"
     ERR_CODE = "COORD_CONTEXT_VALIDATION_ROUTE_EXCEPTION"
     

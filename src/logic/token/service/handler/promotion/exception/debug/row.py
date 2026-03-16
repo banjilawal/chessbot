@@ -22,7 +22,7 @@ class PawnPromotionRowException(TokenDebugException):
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a pawn could not be promoted because, it was not on its enemy's
+    1.  Indicate that a pawn_token could not be promoted because, it was not on its enemy's
         rank row.
 
     # PARENT:
@@ -37,7 +37,7 @@ class PawnPromotionRowException(TokenDebugException):
     # INHERITED ATTRIBUTES:
         *   TokenDebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]
@@ -50,10 +50,8 @@ class PawnPromotionRowException(TokenDebugException):
     # INHERITED METHODS:
         *   See TokenDebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "PAWN_PROMOTION_ROW_EXCEPTION"
-    MSG = "The pawn is not on its enemy's rank row."
+    MSG = "The pawn_token is not on its enemy's rank row."
     
     def __init__(
             self,

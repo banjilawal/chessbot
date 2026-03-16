@@ -44,7 +44,7 @@ class NullHostageContextException(NullException):
     # INHERITED ATTRIBUTES:
         *   See NullException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -57,8 +57,6 @@ class NullHostageContextException(NullException):
     # INHERITED METHODS:
         *   See NullException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     MSG = "HostageContext cannot be null."
     ERR_CODE = "NULL_HOSTAGE_CONTEXT_EXCEPTION"
     

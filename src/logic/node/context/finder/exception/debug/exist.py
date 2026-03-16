@@ -38,7 +38,7 @@ class NodeNotFoundException(NodeDebugException):
     # INHERITED ATTRIBUTES:
         *   NodeDebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]
@@ -51,8 +51,6 @@ class NodeNotFoundException(NodeDebugException):
     # INHERITED METHODS:
         *   See NodeDebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "NODE_NOT_FOUND_EXCEPTION"
     MSG = "No node matching the attribute was found."
     

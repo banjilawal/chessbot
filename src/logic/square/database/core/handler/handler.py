@@ -39,7 +39,7 @@ class SquareStackHandler:
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         Local:
             *   stats_analyzer (SquareStacKAnalyzer)
             *   occupation_service (SquareStackTokenHandler)

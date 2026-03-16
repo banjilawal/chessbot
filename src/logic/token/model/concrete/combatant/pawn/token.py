@@ -1,7 +1,7 @@
-# src/logic/token/model/concrete/combatant/pawn/occupant.py
+# src/logic/token/model/concrete/combatant/pawn_token/occupant.py
 
 """
-Module: logic.token.model.concrete.combatant.pawn.occupant
+Module: logic.token.model.concrete.combatant.pawn_token.occupant
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -35,7 +35,7 @@ class PawnToken(CombatantToken):
     # INHERITED ATTRIBUTES:
         *   See CombatantToken class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   id (int)
         *   team (Team)
         *   rank (Rank)

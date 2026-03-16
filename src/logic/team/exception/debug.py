@@ -42,7 +42,7 @@ class TeamDebugException(DebugException):
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -57,8 +57,6 @@ class TeamDebugException(DebugException):
     """
     ERR_CODE = "TEAM_EXCEPTION"
     MSG = str = "Team had an error."
-    VAR = Optional[str]
-    VAL = Optional[Any]
     
     _var = Optional[str]
     _val = Optional[Any]

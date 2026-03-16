@@ -34,7 +34,7 @@ class KingToken(Token):
     # INHERITED ATTRIBUTES:
         *   See Token class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   id (int)
         *   team (Team)
         *   rank (Rank)

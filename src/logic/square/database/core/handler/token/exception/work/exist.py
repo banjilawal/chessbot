@@ -45,7 +45,7 @@ class VisitDestinationNotFoundException(DebugException):
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -58,8 +58,6 @@ class VisitDestinationNotFoundException(DebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "VISIT_DESTINATION_NOT_FOUND_EXCEPTION"
     MSG = "SquareVisit start failed: token wanted to visit square which does not exist."
     

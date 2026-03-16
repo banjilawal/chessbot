@@ -43,7 +43,7 @@ class SquareBuilder(Builder[Square]):
     # INHERITED ATTRIBUTES:
         *   See Builder class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
     None
 
     # LOCAL METHODS:

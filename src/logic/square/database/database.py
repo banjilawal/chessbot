@@ -40,7 +40,7 @@ class SquareDatabase(Database[Square]):
     # INHERITED ATTRIBUTES:
         *   See Database for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         Local:
             *   stack_service (StackService)
         Inherited:

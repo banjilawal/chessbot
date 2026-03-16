@@ -42,7 +42,7 @@ class SquareStackCountsAnalyzerDebugException(DebugException):
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   var (Optional[str])
@@ -55,8 +55,6 @@ class SquareStackCountsAnalyzerDebugException(DebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "SQUARE_STACK_COUNTS_ANALYZER_DEBUG_EXCEPTION"
     MSG = str = "SquareStackCountsAnalyzer had an error."
     

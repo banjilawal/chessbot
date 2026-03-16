@@ -38,7 +38,7 @@ class RankQuotaFullException(DebugException):
     # INHERITED ATTRIBUTES:
         *   TokenDebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]
@@ -51,8 +51,6 @@ class RankQuotaFullException(DebugException):
     # INHERITED METHODS:
         *   See TokenDebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "NO_OPENINGS_FOR_RANK_EXCEPTION"
     MSG = "Pushing token failed: There were no openings for the token's rank."
     

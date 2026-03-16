@@ -38,7 +38,7 @@ class EdgeNotFoundException(EdgeDebugException):
     # INHERITED ATTRIBUTES:
         *   EdgeDebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]
@@ -51,8 +51,6 @@ class EdgeNotFoundException(EdgeDebugException):
     # INHERITED METHODS:
         *   See EdgeDebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "EDGE_NOT_FOUND_EXCEPTION"
     MSG = "No edge matching the attribute was found."
     

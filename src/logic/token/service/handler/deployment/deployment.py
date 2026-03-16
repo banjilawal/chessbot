@@ -23,30 +23,27 @@ from logic.token import (
 
 class TokenDeployment:
     """
-    # ROLE: Update Handler, Consistency, Integrity Maintenance, Lifecycle Management
-
-    # RESPONSIBILITIES:
-    1.  Ensure integrity and consistency are maintained during the pawn's deployment lifecycle.
-
-    # PARENT:
-    None
-
-    # PROVIDES:
-    None
-
+    Role:
+        Transaction Worker, Consistency, Integrity Maintenance, Process Runner
+    Responsibilities:
+        1.  Token deployment process owner.
+        2.  Preserve original and updated data for rollbacks.
+        3.  Ensure the token's integrity and consistency are maintained during the transaction.
     Attributes:
-    None
-
-    # INHERITED ATTRIBUTES:
-    None
-
-    # CONSTRUCTOR PARAMETERS:
-    None
-
-    # LOCAL METHODS:
-
-    # INHERITED METHODS:
-    None
+    Provides:
+        -   execute(
+                    token: Token,
+                    token_validator: TokenValidator,
+            ) -> UpdateResult[Token]
+            
+        - _run_opening_square_tests(token: Token) -> SearchResult[List[Square]]
+        
+        - _square_visitation_process_wrapper(
+                    token: Token,
+                    pre_update_token: Token,
+                    opening_square: Square,
+            ) -> UpdateResult[Token]
+    Parent:
     """
 
     @classmethod
@@ -57,24 +54,27 @@ class TokenDeployment:
             token_validator: TokenValidator = TokenValidator(),
     ) -> UpdateResult[Token]:
         """
-        # ACTION:
-            1.  If the token or coord fail their validations return the exception in the InsertionResult.
-            2.  If the position is already the updated position return the exception in the InsertionResult.
-            3.  If the pushing the position to the token's coord stack fails encapsulate the exception then
-                send the exception chain in the InsertionResult's payload.
-
+        Executes the deployment transaction.
+        
+        Action:
+            1.  Send the unmodified pawn_token along with an exception chain in the UpdateResult if:
+                        *   The token is not certified as safe and actionable.
+                        *   The token is already deployed.
+                        *   Its opening square fails a test
+                        *   The square visitation transaction fails.
+            2.  Otherwise:
+                    *   Deepcopy token to pre_update_token.
+                    *   Set the token's board_state to BoardState.DEPLOYED_ON_BOARD.
+            3.  Send the success result containing, the finished work product.
         # Args:
             token: Token
-
         Returns:
-            InsertionResult
-
+            UpdateResult[Token]
         Raises:
-            TokenServiceException
-            CoordAlreadyToppingStackException
+            TokenDeploymentException
+            TokenAlreadyDeployedException
         """
         method = f"{cls.__class__.__name__}.deploy_on_board"
-        
         # Handle the case that, the token is not certified safe.
         token_validation = token_validator.validate(token)
         if token_validation.is_failure:
@@ -107,8 +107,8 @@ class TokenDeployment:
                     ),
                 )
             )
-        opening_square_search_result = cls._square_search_runner(token)
-        # Handle the case that, the square was not verified.
+        # Handle the case that, an opening_square test fails.
+        opening_square_search_result = cls._run_opening_square_tests(token)
         if opening_square_search_result.is_failure:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
@@ -122,14 +122,18 @@ class TokenDeployment:
                     ex=opening_square_search_result.exception,
                 )
             )
-        
+        # --- Integrity and consistency checks are passed. Make a deep copy of the original token. ---#
         pre_update_token = deepcopy(token)
-        visitation_result = token.team.board.squares.integrity_service.begin_square_visit(
-            visitor=token,
-            square=opening_square_search_result.payload[0]
+        
+        #--- Run _square_visitation_process_wrapper which runs token side consistency checks ---#
+        update_result = cls._square_visitation_process_wrapper(
+            token=token,
+            pre_update_token=pre_update_token,
+            square_service=token.team.board.squares.integrity_service,
+            opening_square=cast(Square, opening_square_search_result.payload[0]),
         )
-        # Handle the case that the visit is not successful.
-        if visitation_result.is_failure:
+        # Handle the case that, the visitation transaction fails.
+        if update_result.is_failure:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
                 original=token,
@@ -139,65 +143,38 @@ class TokenDeployment:
                     msg=TokenDeploymentException.MSG,
                     err_code=TokenDeploymentException.ERR_CODE,
                     rslt_type=TokenDeploymentException.RSLT_TYPE,
-                    ex=opening_square_search_result.exception,
+                    ex=update_result.exception,
                 )
             )
-        updated_square = cast(Square, visitation_result.updated)
-        
-        # Handle the case that, the token is not the square's visitor.
-        if updated_square.occupant != token:
-            # Return the exception chain on failure.
-            return UpdateResult.update_failure(
-                original=pre_update_token,
-                exception=TokenDeploymentException(
-                    mthd=method,
-                    op=TokenDeploymentException.OP,
-                    msg=TokenDeploymentException.MSG,
-                    err_code=TokenDeploymentException.ERR_CODE,
-                    rslt_type=TokenDeploymentException.RSLT_TYPE,
-                    ex=InconsistentTokenSquareException(
-                        msg=InconsistentTokenSquareException.MSG,
-                        err_code=InconsistentTokenSquareException.ERR_CODE,
-                    )
-                )
-            )
-        # Handle the case that the, token's current position is not the square's
-        if token.current_position != updated_square.coord:
-            # Return the exception chain on failure.
-            return UpdateResult.update_failure(
-                original=pre_update_token,
-                exception=TokenDeploymentException(
-                    mthd=method,
-                    op=TokenDeploymentException.OP,
-                    msg=TokenDeploymentException.MSG,
-                    err_code=TokenDeploymentException.ERR_CODE,
-                    rslt_type=TokenDeploymentException.RSLT_TYPE,
-                    ex=InconsistentTokenCoordException(
-                        msg=InconsistentTokenCoordException.MSG,
-                        err_code=InconsistentTokenCoordException.ERR_CODE,
-                    )
-                )
-            )
-        # --- Assure that token.board_state has been updated. ---#
-        if updated_square.occupant.board_state == TokenBoardState.NEVER_BEEN_PLACED:
-            updated_square.occupant.board_state = TokenBoardState.DEPLOYED_ON_BOARD
-            
-        return UpdateResult.update_success(
-            original=pre_update_token,
-            updated=updated_square.occupant,
-        )
+        # --- Forward the work product to the client. ---#
+        return update_result
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _square_search_runner(cls, token: Token) -> SearchResult[List[Square]]:
+    def _run_opening_square_tests(cls, token: Token) -> SearchResult[List[Square]]:
         """
+        Get the token's opening square if, it can be occupied.
+        
+        Action:
+            1.  Send an exception chain in the SearchResult if:
+                *   The search does not run to completion.
+                *   The square is not found.
+                *   The square is occupied by a different token.
+                *   The token is already on the square.
+            2.  Otherwise, send the success result.,
         Args:
             token: Token
+        Returns:
+            SearchResult[Square]
+        Raises:
+            TokenDeploymentException
+            SquareNotFoundException
+            VisitingOccupiedSquareException
         """
-        method = f"{cls.__class__.__name__}._opening_square_search_resultrunner"
+        method = f"{cls.__class__.__name__}._run_opening_square_tests"
         
-        board = token.team.board
-        opening_square_search_result = board.squares.search(
+        # Get the board's squares to run the search.
+        opening_square_search_result = token.team.board.squares.search(
             context=SquareContext(name=token.opening_square_name)
         )
         # Handle the case that, the search fails.
@@ -249,4 +226,98 @@ class TokenDeployment:
                     )
                 )
             )
+        # --- Send the work product. ---#
         return opening_square_search_result
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _square_visitation_process_wrapper(
+            cls,
+            token: Token,
+            pre_update_token: Token,
+            opening_square: Square,
+    ) -> UpdateResult[Token]:
+        """
+        Run consistency checks on the token after SquareService.start_square_visit transaction
+        has finished.
+        
+        Action:
+            1.  Send the pre_deployment token along with an exception chain in UpdateResult if:
+                    *  The visitation transaction was not successful.
+                    *  The transaction was successful but either
+                            *   The token is not registered with the square.
+                            *   The square has a stale link to the token.
+            2.  Otherwise, send the success result.
+        Args:
+            token: Token
+            pre_update_token: Token
+            opening_square: Square
+        Returns:
+            UpdateResult[Square]
+        Raises:
+            TokenDeploymentException
+            InconsistentTokenSquareException
+            InconsistentTokenCoordException
+        """
+        method = f"{cls.__class__.__name__}._visitation_process_wrapper"
+        
+        # Make a visitation request to square_service.
+        visitation_result = token.team.board.squares.integrity_service.begin_square_visit(
+            visitor=token,
+            square=opening_square,
+        )
+        # Handle the case that the visit is not successful.
+        if visitation_result.is_failure:
+            # Return the exception chain on failure.
+            return UpdateResult.update_failure(
+                original=token,
+                exception=TokenDeploymentException(
+                    mthd=method,
+                    op=TokenDeploymentException.OP,
+                    msg=TokenDeploymentException.MSG,
+                    err_code=TokenDeploymentException.ERR_CODE,
+                    rslt_type=TokenDeploymentException.RSLT_TYPE,
+                    ex=visitation_result.exception,
+                )
+            )
+        # Handle the case that, the token is not the square's visitor.
+        if opening_square.occupant != token:
+            # Return the exception chain on failure.
+            return UpdateResult.update_failure(
+                original=pre_update_token,
+                exception=TokenDeploymentException(
+                    mthd=method,
+                    op=TokenDeploymentException.OP,
+                    msg=TokenDeploymentException.MSG,
+                    err_code=TokenDeploymentException.ERR_CODE,
+                    rslt_type=TokenDeploymentException.RSLT_TYPE,
+                    ex=InconsistentTokenSquareException(
+                        msg=InconsistentTokenSquareException.MSG,
+                        err_code=InconsistentTokenSquareException.ERR_CODE,
+                    )
+                )
+            )
+        # Handle the case that the, token's current position is not the square's
+        if opening_square.coord != token.current_position:
+            # Return the exception chain on failure.
+            return UpdateResult.update_failure(
+                original=pre_update_token,
+                exception=TokenDeploymentException(
+                    mthd=method,
+                    op=TokenDeploymentException.OP,
+                    msg=TokenDeploymentException.MSG,
+                    err_code=TokenDeploymentException.ERR_CODE,
+                    rslt_type=TokenDeploymentException.RSLT_TYPE,
+                    ex=InconsistentTokenCoordException(
+                        msg=InconsistentTokenCoordException.MSG,
+                        err_code=InconsistentTokenCoordException.ERR_CODE,
+                    )
+                )
+            )
+        # --- Ensure the token.board_state has been updated. ---#
+        if token.board_state == TokenBoardState.NEVER_BEEN_PLACED:
+            token.board_state = TokenBoardState.DEPLOYED_ON_BOARD
+            
+        # --- Send the work product ---#
+        return UpdateResult.update_success(original=pre_update_token, updated=token,)
+        

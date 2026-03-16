@@ -18,24 +18,17 @@ from logic.coord import Coord, CoordStack
 
 class Token(ABC):
     """
-    # ROLE: Data-Holder, Abstract Data Type
-
-    # RESPONSIBILITIES:
-    1.  Keep an immutable record of Coords the Token has occupied.
-    2.  Superclass of CombatantPiece, KingPiece, and PawnPiece.
-    3.  Cannot be instantiated directly.
-
-    # PARENT:
-    None
-
-    # PROVIDES:
-    None
-
+    Role:
+        Data-Holder, Abstract Data Type
+    Responsibilities:
+        1. Keep an immutable record of Coords the Token has occupied.
+        2. Superclass of CombatantPiece, KingPiece, and PawnPiece.
+        3. Cannot be instantiated directly.
     Attributes:
         id: int
         team: Team
         rank: Rank
-        designatio: str
+        designation: str
         roster_number: int
         positions: CoordStack
         opening_square_name: str
@@ -43,18 +36,12 @@ class Token(ABC):
         previous_address: Optional[Coord]
         token_board_state: TokenBoardState
         readiness_state: ReadinessState
-
-    # INHERITED ATTRIBUTES:
-    None
-
-    Methods:
-        is_not_deployed(self) -> bool
-        is_active(self) -> bool
-        is_disabled(self) -> bool
-        is_enemy(self, token: Token) -> bool
-
-    # INHERITED METHODS:
-    None
+    Provides:
+        - is_not_deployed(self) -> bool
+        - is_active(self) -> bool
+        - is_disabled(self) -> bool
+        - is_enemy(self, token: Token) -> bool
+    Parent:
     """
     _id: int
     _team: Team

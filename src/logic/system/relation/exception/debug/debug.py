@@ -45,7 +45,7 @@ class RelationDebugException(DebugException):
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
     
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         var: Optional[str]
         val: Optional[str]
         msg: Optional[str]
@@ -58,8 +58,6 @@ class RelationDebugException(DebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     MSG = "RelationAnalysis debug error."
     ERR_CODE = "RELATION_ANALYSIS_DEBUG_EXCEPTION"
     

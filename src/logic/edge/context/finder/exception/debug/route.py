@@ -38,7 +38,7 @@ class EdgeSearchRouteException(EdgeDebugException):
     # INHERITED ATTRIBUTES:
         *   EdgeDebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]
@@ -51,8 +51,6 @@ class EdgeSearchRouteException(EdgeDebugException):
     # INHERITED METHODS:
         *   See EdgeDebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "NO_EDGE_SEARCH_ROUTE_ROUTE_EXCEPTION"
     MSG = "There is no search logic for the edge attribute."
     

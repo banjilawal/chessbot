@@ -45,7 +45,7 @@ class NoRelationException(RelationDebugException):
     # INHERITED ATTRIBUTES:
         *   See RelationDebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         var: Optional[str]
         val: Optional[str]
         msg: Optional[str]
@@ -58,8 +58,6 @@ class NoRelationException(RelationDebugException):
     # INHERITED METHODS:
         *   See RelationDebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "NO_RELATION_EXCEPTION"
     MSG = "There is no relationship between entities"
     

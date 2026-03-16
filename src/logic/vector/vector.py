@@ -45,7 +45,7 @@ class Vector:
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   x (int)
         *   y (int)
 

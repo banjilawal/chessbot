@@ -37,7 +37,7 @@ class TemplateServiceDebugException(DebugException):
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -52,8 +52,6 @@ class TemplateServiceDebugException(DebugException):
     """
     ERR_CODE = "TEMPLATE_SERVICE_DEBUG_EXCEPTION"
     MSG = "TemplateService attribute raised an exception."
-    VAR = Optional[str]
-    VAL = Optional[Any]
     
     def __init__(
             self,

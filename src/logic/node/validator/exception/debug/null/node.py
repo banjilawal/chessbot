@@ -37,7 +37,7 @@ class NullNodeException(NullException):
     # INHERITED ATTRIBUTES:
         *   See NUllException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -50,8 +50,6 @@ class NullNodeException(NullException):
     # INHERITED METHODS:
         *   See NullException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     MSG = "Node cannot be null."
     ERR_CODE = "NULL_NODE_EXCEPTION"
     

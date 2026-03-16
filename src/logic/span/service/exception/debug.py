@@ -37,7 +37,7 @@ class SpanServiceDebugException(DebugException):
     # INHERITED ATTRIBUTES:
         *   DebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -50,8 +50,6 @@ class SpanServiceDebugException(DebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "SPAN_SERVICE_EXCEPTION"
     MSG = "A variable in SpanService raised an exception."
     

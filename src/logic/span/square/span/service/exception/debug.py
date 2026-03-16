@@ -37,7 +37,7 @@ class SquareSpanServiceDebugException(DebugException):
     # INHERITED ATTRIBUTES:
         *   DebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -50,8 +50,6 @@ class SquareSpanServiceDebugException(DebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "SQUARE_SPAN_SERVICE_EXCEPTION"
     MSG = "A variable in SquareSpanService raised an exception."
     

@@ -37,7 +37,7 @@ class TokenCollisionDetector(CollisionDetector[Token]):
     # INHERITED ATTRIBUTES:
         *   See CollisionDetector class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
     None
 
     # LOCAL METHODS:

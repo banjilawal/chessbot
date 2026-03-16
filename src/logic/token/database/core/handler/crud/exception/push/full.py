@@ -40,7 +40,7 @@ class TokenStackFullException(DebugException):
     # INHERITED ATTRIBUTES:
         *   TokenDebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]
@@ -53,8 +53,6 @@ class TokenStackFullException(DebugException):
     # INHERITED METHODS:
         *   See TokenDebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "TOKEN_STACK_FULL_EXCEPTION"
     MSG = "Cannot push a token onto a full stack."
     

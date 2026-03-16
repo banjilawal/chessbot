@@ -37,7 +37,7 @@ class NodeTreeNullException(NullException):
     # INHERITED ATTRIBUTES:
         *   See NUllException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         val: Optional[Any]
         var: Optional[str]
         msg: Optional[str]
@@ -50,8 +50,6 @@ class NodeTreeNullException(NullException):
     # INHERITED METHODS:
         *   See NullException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     MSG = "NodeTree cannot be null."
     ERR_CODE = "NODE_TREE_NULL_EXCEPTION"
     

@@ -51,7 +51,7 @@ log = logging.getLogger("chessbot")
 # from .io import *
 # from .king import *
 # from .neighbor import *
-# from .pawn import *
+# from .pawn_token import *
 # from .piece import CoordStack, PieceService
 # from .rank import RankCertifier
 # from .runtime import *

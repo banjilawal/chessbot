@@ -42,7 +42,7 @@ class SquareStackTokenHandler:
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         Local:
             *   id (int)
             *   name (str)

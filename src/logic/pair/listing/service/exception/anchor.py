@@ -41,7 +41,7 @@ class PairListServiceException(ServiceException):
     # INHERITED ATTRIBUTES:
         *   See ServiceException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         msg: Optional[str]
         ex: Optional[Exception]
         cls_name: Optional[str]

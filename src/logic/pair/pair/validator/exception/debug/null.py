@@ -37,7 +37,7 @@ class NullPairException(NullException):
     # INHERITED ATTRIBUTES:
         *   See NUllException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]
@@ -50,8 +50,6 @@ class NullPairException(NullException):
     # INHERITED METHODS:
         *   See NullException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     MSG = "Pair cannot be null."
     ERR_CODE = "NULL_PAIR_EXCEPTION"
     

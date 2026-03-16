@@ -37,7 +37,7 @@ class NullGraphException(NullException):
     # INHERITED ATTRIBUTES:
         *   See NUllException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -52,8 +52,6 @@ class NullGraphException(NullException):
     """
     ERR_CODE = "NULL_GRAPH_EXCEPTION"
     MSG = "Graph cannot be null."
-    VAR = Optional[str]
-    VAL = Optional[Any]
     
     def __init__(
             self,

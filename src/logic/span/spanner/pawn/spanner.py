@@ -1,7 +1,7 @@
-# src/logic/span/spanner/pawn/exception/pawn.py
+# src/logic/span/spanner/pawn_token/exception/pawn_token.py
 
 """
-Module: logic.span.spanner.pawn.exception.pawn
+Module: logic.span.spanner.pawn_token.exception.pawn_token
 Author: Banji Lawal
 Created: 2026-03-10
 version: 1.0.0
@@ -48,10 +48,10 @@ class PawnSpanner(Spanner):
     ) -> ComputationResult[Dict[str, CoordSpan]]:
         """
         Action:
-            1.  If the pawn's origin is not certified as safe send and exception chain in the
+            1.  If the pawn_token's origin is not certified as safe send and exception chain in the
                 computation result.
             2.  Handoff solution development to process_vector_dictionary with the PawnVectorSet that 
-                matches if the pawn
+                matches if the pawn_token
                     *   has been deployed only.
                     *   has made its opening move.
 
@@ -89,7 +89,7 @@ class PawnSpanner(Spanner):
                 coord_service=coord_service,
                 vector_service=vector_service,
             )
-        # --- Otherwise produce the spanning sets for a pawn that's made its first move ---#
+        # --- Otherwise produce the spanning sets for a pawn_token that's made its first move ---#
         return cls._process_vector_dictionary(
             origin=pawn_token.current_position,
             vector_hash=cls.PAWN_VECTOR_SETS.opening_vector_sets,

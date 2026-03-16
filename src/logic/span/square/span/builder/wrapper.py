@@ -39,7 +39,7 @@ class SquareSpanBuildException(BuildException):
     # INHERITED ATTRIBUTES:
         *   See BuildException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   err_code (str)
         *   msg (str)
         *   ex (Optional[Exception])

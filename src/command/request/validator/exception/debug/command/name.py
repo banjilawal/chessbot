@@ -37,7 +37,7 @@ class CommandNameException(RequestDebugException):
     # INHERITED ATTRIBUTES:
         *   See RequestDebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -52,8 +52,6 @@ class CommandNameException(RequestDebugException):
     """
     ERR_CODE = "COMMAND_NAME_NOT_FOUND"
     MSG = "unknown command argument"
-    VAR = Optional[str]
-    VAL = Optional[Any]
     
     def __init__(
             self,

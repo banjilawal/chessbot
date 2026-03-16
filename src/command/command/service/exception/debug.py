@@ -37,7 +37,7 @@ class CommandServiceDebugException(DebugException):
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -52,8 +52,6 @@ class CommandServiceDebugException(DebugException):
     """
     ERR_CODE = "COMMAND_SERVICE_DEBUG_EXCEPTION"
     MSG = "CommandService attribute raised an exception."
-    VAR = Optional[str]
-    VAL = Optional[Any]
     
     def __init__(
             self,

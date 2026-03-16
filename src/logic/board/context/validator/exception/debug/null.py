@@ -44,7 +44,7 @@ class NullBoardContextException(NullException):
     # INHERITED ATTRIBUTES:
         *   See NullException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -57,8 +57,6 @@ class NullBoardContextException(NullException):
     # INHERITED METHODS:
         *   See NullException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     MSG = "BoardContext cannot be null."
     ERR_CODE = "NULL_BOARD_CONTEXT_EXCEPTION"
     

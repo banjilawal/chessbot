@@ -38,7 +38,7 @@ class TeamNotFoundException(TeamDebugException):
     # INHERITED ATTRIBUTES:
         *   TeamDebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]
@@ -51,8 +51,6 @@ class TeamNotFoundException(TeamDebugException):
     # INHERITED METHODS:
         *   See TeamDebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "TEAM_NOT_FOUND_EXCEPTION"
     MSG = "No team matching the attribute was found."
     

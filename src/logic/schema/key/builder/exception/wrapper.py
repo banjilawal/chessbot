@@ -39,7 +39,7 @@ class SchemaKeyBuildException(BuildException):
     # INHERITED ATTRIBUTES:
         *   See BuildException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         op: Optional[str]
         ex: Optional[str]
         msg: Optional[str]

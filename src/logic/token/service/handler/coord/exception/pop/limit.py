@@ -38,7 +38,7 @@ class MoveUndoLimitException(TokenDebugException):
     # INHERITED ATTRIBUTES:
         *   TokenDebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]
@@ -51,8 +51,6 @@ class MoveUndoLimitException(TokenDebugException):
     # INHERITED METHODS:
         *   See TokenDebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "ABOVE_MOVE_UNDO_LIMIT_EXCEPTION"
     MSG = "A token can only undo its last move during its current turm."
     

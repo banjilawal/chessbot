@@ -41,7 +41,7 @@ class BishopDebugException(RankDebugException):
     # INHERITED ATTRIBUTES:
         *   See RankDebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   var (Optional[str])
@@ -54,8 +54,6 @@ class BishopDebugException(RankDebugException):
     # INHERITED METHODS:
         *   See RankDebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "BISHOP_DEBUG_EXCEPTION"
     MSG = str = "Bishop had an error."
     

@@ -38,7 +38,7 @@ class InactiveTokenPushingCoordException(TokenDebugException):
     # INHERITED ATTRIBUTES:
         *   TokenDebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]
@@ -51,8 +51,6 @@ class InactiveTokenPushingCoordException(TokenDebugException):
     # INHERITED METHODS:
         *   See TokenDebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "INACTIVE_TOKEN_UNDO_COORD_PUSH_EXCEPTION"
     MSG = "An inactive token cannot pop its CoordStack."
     

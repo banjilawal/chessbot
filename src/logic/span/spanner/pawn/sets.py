@@ -1,7 +1,7 @@
-# src/logic/span/spanner/pawn/vectors.py
+# src/logic/span/spanner/pawn_token/vectors.py
 
 """
-Module: logic.span.spanner.pawn.vectors
+Module: logic.span.spanner.pawn_token.vectors
 Author: Banji Lawal
 Created: 2026-03-10
 version: 1.0.0

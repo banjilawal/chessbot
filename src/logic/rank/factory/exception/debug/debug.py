@@ -37,7 +37,7 @@ class RankFactoryDebugException(DebugException):
     # INHERITED ATTRIBUTES:
         *   See ExecutionRoute class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         msg: Optional[str]
         msg: Optional[str]
         var: Optional[str]
@@ -51,8 +51,6 @@ class RankFactoryDebugException(DebugException):
     # INHERITED METHODS:
         *   See ExecutionRoute class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     MSG = "RankFactory experienced a debug exception."
     ERR_CODE = "RANK_FACTORY_DEBUG_EXCEPTION"
     

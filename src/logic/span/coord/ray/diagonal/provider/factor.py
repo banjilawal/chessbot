@@ -39,7 +39,7 @@ class DiagonalRayFactors:
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
             start_x: int
             x_step: int
             slope: int

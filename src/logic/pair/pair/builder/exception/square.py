@@ -38,7 +38,7 @@ class HeadTailSquareException(DebugException):
     # INHERITED ATTRIBUTES:
         *   DebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -51,8 +51,6 @@ class HeadTailSquareException(DebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "HEAD_TAIL_SAME_SQUARE_EXCEPTION"
     MSG = "Cannot build Pair if head.square == tail_square."
     

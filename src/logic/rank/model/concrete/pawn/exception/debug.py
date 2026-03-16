@@ -1,7 +1,7 @@
-# src/logic/rank/model/concrete/pawn/exception/debug.py
+# src/logic/rank/model/concrete/pawn_token/exception/debug.py
 
 """
-Module: logic.rank.model.concrete.pawn.exception.debug
+Module: logic.rank.model.concrete.pawn_token.exception.debug
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
@@ -41,7 +41,7 @@ class PawnDebugException(RankDebugException):
     # INHERITED ATTRIBUTES:
         *   See RankDebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   var (Optional[str])
@@ -54,8 +54,6 @@ class PawnDebugException(RankDebugException):
     # INHERITED METHODS:
         *   See RankDebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "PAWN_DEBUG_EXCEPTION"
     MSG = str = "Pawn had an error."
     

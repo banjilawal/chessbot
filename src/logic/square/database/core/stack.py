@@ -46,7 +46,7 @@ class SquareStackService(StackService[Square]):
     # INHERITED ATTRIBUTES:
         *   See StackService for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         Local:
             *   id (int)
             *   name (str)

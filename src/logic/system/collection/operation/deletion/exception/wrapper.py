@@ -39,7 +39,7 @@ class DeletionException(CollectionOperationException):
     # INHERITED ATTRIBUTES:
         *   See CollectionOperationException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         op: Optional[str]
         ex: Optional[str]
         msg: Optional[str]

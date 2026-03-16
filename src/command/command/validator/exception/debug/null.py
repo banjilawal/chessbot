@@ -37,7 +37,7 @@ class NullCommandException(NullException):
     # INHERITED ATTRIBUTES:
         *   See NullException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -52,8 +52,6 @@ class NullCommandException(NullException):
     """
     ERR_CODE = "NULL_COMMAND_EXCEPTION"
     MSG = "Command is null"
-    VAR = Optional[str]
-    VAL = Optional[Any]
     
     def __init__(
             self,

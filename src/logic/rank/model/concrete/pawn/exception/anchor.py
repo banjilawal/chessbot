@@ -1,7 +1,7 @@
-# src/logic/rank/model/concrete/pawn/exception/anchor.py
+# src/logic/rank/model/concrete/pawn_token/exception/anchor.py
 
 """
-Module: logic.rank.model.concrete.pawn.exception.anchor
+Module: logic.rank.model.concrete.pawn_token.exception.anchor
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
@@ -40,7 +40,7 @@ class PawnException(RankException):
     # INHERITED ATTRIBUTES:
         *   See RankException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

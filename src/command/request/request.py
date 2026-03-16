@@ -32,7 +32,7 @@ class Request:
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   command_name (str)
         *   arguments (Dict[str, Any])
     # LOCAL METHODS:

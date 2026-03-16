@@ -38,7 +38,7 @@ class HostageNotFoundException(HostageDebugException):
     # INHERITED ATTRIBUTES:
         *   HostageDebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]
@@ -51,8 +51,6 @@ class HostageNotFoundException(HostageDebugException):
     # INHERITED METHODS:
         *   See HostageDebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "HOSTAGE_NOT_FOUND_EXCEPTION"
     MSG = "No hostage matching the attribute was found."
     

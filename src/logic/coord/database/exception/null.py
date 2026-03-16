@@ -37,7 +37,7 @@ class CoordDatabaseNullException(NullException):
     # INHERITED ATTRIBUTES:
         *   See NUllException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -50,8 +50,6 @@ class CoordDatabaseNullException(NullException):
     # INHERITED METHODS:
         *   See NullException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     MSG = "CoordDatabase cannot be null."
     ERR_CODE = "COORD_DATABASE_NULL_EXCEPTION"
     

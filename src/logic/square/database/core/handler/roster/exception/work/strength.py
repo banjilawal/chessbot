@@ -45,7 +45,7 @@ class UnderstrengthRosterDeploymentException(DebugException):
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -58,8 +58,6 @@ class UnderstrengthRosterDeploymentException(DebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     MSG = "Roster understrength"
     ERR_CODE = "UNDER_STRENGTH_ROSTER_DEPLOYMENT_EXCEPTION"
 

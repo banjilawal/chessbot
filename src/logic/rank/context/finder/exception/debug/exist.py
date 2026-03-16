@@ -38,7 +38,7 @@ class RankNotFoundException(RankDebugException):
     # INHERITED ATTRIBUTES:
         *   RankDebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]
@@ -51,8 +51,6 @@ class RankNotFoundException(RankDebugException):
     # INHERITED METHODS:
         *   See RankDebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "RANK_NOT_FOUND_EXCEPTION"
     MSG = "No rank matching the attribute was found."
     

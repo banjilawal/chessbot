@@ -22,7 +22,7 @@ class PromotionToKingException(TokenDebugException):
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a pawn could not be promoted because, it had already been promoted.
+    1.  Indicate that a pawn_token could not be promoted because, it had already been promoted.
 
     # PARENT:
         *   TokenDebugException
@@ -36,7 +36,7 @@ class PromotionToKingException(TokenDebugException):
     # INHERITED ATTRIBUTES:
         *   TokenDebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]
@@ -49,10 +49,8 @@ class PromotionToKingException(TokenDebugException):
     # INHERITED METHODS:
         *   See TokenDebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "PROMOTING_TO_KING_NOT_ALLOWED_EXCEPTION"
-    MSG = "Cannot promote a pawn to a king."
+    MSG = "Cannot promote a pawn_token to a king."
     
     def __init__(
             self,

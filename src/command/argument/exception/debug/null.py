@@ -37,7 +37,7 @@ class NullArgumentsException(NullException):
     # INHERITED ATTRIBUTES:
         *   See NullException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -52,8 +52,6 @@ class NullArgumentsException(NullException):
     """
     ERR_CODE = "NULL_ARGUMENTS_EXCEPTION"
     MSG = "Null arguments"
-    VAR = Optional[str]
-    VAL = Optional[Any]
     
     def __init__(
             self,

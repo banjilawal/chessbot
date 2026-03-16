@@ -39,7 +39,7 @@ class InconsistentTokenBoardStateException(InconsistentStateException):
     # INHERITED ATTRIBUTES:
         *   InconsistentStateException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]

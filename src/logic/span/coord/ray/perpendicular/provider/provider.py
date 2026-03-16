@@ -34,7 +34,7 @@ class PerpendicularRayProvider:
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
             plane: PerpendicularPlaneFactors
             computer: PerpendicularRayComputer
 

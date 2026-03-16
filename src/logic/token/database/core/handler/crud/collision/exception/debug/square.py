@@ -37,7 +37,7 @@ class TokenOpeningSquareCollisionException(TokenDebugException):
     # INHERITED ATTRIBUTES:
         *   TokenDebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]
@@ -50,8 +50,6 @@ class TokenOpeningSquareCollisionException(TokenDebugException):
     # INHERITED METHODS:
         *   See TokenDebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "TOKEN_OPENING_SQUARE_COLLISION EXCEPTION"
     MSG = "Opening Square has already been assigned."
     

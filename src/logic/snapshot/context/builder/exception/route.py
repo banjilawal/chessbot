@@ -38,7 +38,7 @@ class SnapshotContextExecutionRouteException(ExecutionRouteException):
     # INHERITED ATTRIBUTES:
         *   See ExecutionRoute class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -53,8 +53,6 @@ class SnapshotContextExecutionRouteException(ExecutionRouteException):
     """
     ERR_CODE = "SNAPSHOT_CONTEXT_EXECUTION_ROUTE_EXCEPTION"
     MSG = "No build route for SnapshotContext attribute"
-    VAR = Optional[str]
-    VAL = Optional[Any]
     
     def __init__(
             self,

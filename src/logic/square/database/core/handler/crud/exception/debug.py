@@ -42,7 +42,7 @@ class SquareStackCrudHandlerDebugException(DebugException):
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   var (Optional[str])
@@ -55,8 +55,6 @@ class SquareStackCrudHandlerDebugException(DebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "SQUARE_STACK_CRUD_HANDLER_DEBUG_EXCEPTION"
     MSG = str = "SquareStackCrudHandler had an error."
     

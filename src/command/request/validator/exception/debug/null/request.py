@@ -37,7 +37,7 @@ class NullRequestException(NullException):
     # INHERITED ATTRIBUTES:
         *   See NullException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -52,8 +52,6 @@ class NullRequestException(NullException):
     """
     ERR_CODE = "SERVICE_REQUEST_NULL_EXCEPTION"
     MSG = "Request is null"
-    VAR = Optional[str]
-    VAL = Optional[Any]
     
     def __init__(
             self,

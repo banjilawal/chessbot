@@ -42,7 +42,7 @@ class SquareCollisionDetectorDebugException(DebugException):
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   var (Optional[str])
@@ -55,8 +55,6 @@ class SquareCollisionDetectorDebugException(DebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "SQUARE_COLLISION_DETECTOR_DEBUG_EXCEPTION"
     MSG = str = "SquareCollisionDetector had an error."
     

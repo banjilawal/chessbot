@@ -54,7 +54,7 @@ class AnchorException(ChessException):
     # INHERITED ATTRIBUTES:
         *   See ChessException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         msg: Optional[str]
         err_code: Optional[str]
         ex: Optional[Exception]

@@ -1,7 +1,7 @@
-# src/logic/token/service/handler/promotion/exception/debug/pawn.py
+# src/logic/token/service/handler/promotion/exception/debug/pawn_token.py
 
 """
-Module: logic.token.service.handler.promotion.exception.debug.pawn
+Module: logic.token.service.handler.promotion.exception.debug.pawn_token
 Author: Banji Lawal
 Created: 2026-03-14
 version: 1.0.0
@@ -38,7 +38,7 @@ class PromoteInactivePawnException(TokenDebugException):
     # INHERITED ATTRIBUTES:
         *   TokenDebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]
@@ -51,9 +51,7 @@ class PromoteInactivePawnException(TokenDebugException):
     # INHERITED METHODS:
         *   See TokenDebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
-    MSG = "An inactive pawn cannot be promoted."
+    MSG = "An inactive pawn_token cannot be promoted."
     ERR_CODE = "CANNOT_PROMOTE_INACTIVE_PAWN_EXCEPTION"
     
     def __init__(

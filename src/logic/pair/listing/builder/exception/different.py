@@ -37,7 +37,7 @@ class TreeDoesNotOwnRayException(NoRelationException):
     # INHERITED ATTRIBUTES:
         *   See NoRelationException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         var: Optional[str]
         val: Optional[str]
         msg: Optional[str]
@@ -50,8 +50,6 @@ class TreeDoesNotOwnRayException(NoRelationException):
     # INHERITED METHODS:
         *   See NoRelationException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "TREE_DOES_NOT_OWN_RAY_EXCEPTION"
     MSG = "The ray belongs to a different NodeTree"
     

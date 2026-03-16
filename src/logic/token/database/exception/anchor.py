@@ -42,7 +42,7 @@ class TokenDatabaseException(DatabaseException):
     # INHERITED ATTRIBUTES:
         *   See DatabaseException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         msg: Optional[str]
         ex: Optional[Exception]
         cls_name: Optional[str]

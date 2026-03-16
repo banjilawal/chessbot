@@ -37,7 +37,7 @@ class ArgumentCountException(ServiceRequestDebugException):
     # INHERITED ATTRIBUTES:
         *   See ServiceRequestDebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -52,8 +52,6 @@ class ArgumentCountException(ServiceRequestDebugException):
     """
     ERR_CODE = "ARGUMENT_COUNT_EXCEPTION"
     MSG = "Incorrect number of arguments."
-    VAR = Optional[str]
-    VAL = Optional[Any]
     
     def __init__(
             self,

@@ -36,7 +36,7 @@ class ArgumentNameException(ServiceRequestDebugException):
     # INHERITED ATTRIBUTES:
         *   See ServiceRequestDebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -51,8 +51,6 @@ class ArgumentNameException(ServiceRequestDebugException):
     """
     ERR_CODE = "WRONG_ARGUMENT_NAME_EXCEPTION"
     MSG = "Argument name incorrect."
-    VAR = Optional[str]
-    VAL = Optional[Any]
     
     def __init__(
             self,

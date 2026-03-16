@@ -24,7 +24,7 @@ class PawnPromotionRouteException(TokenDebugException):
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a pawn could not be promoted because, there was no routing logic to
+    1.  Indicate that a pawn_token could not be promoted because, there was no routing logic to
         the new route.
 
     # PARENT:
@@ -39,7 +39,7 @@ class PawnPromotionRouteException(TokenDebugException):
     # INHERITED ATTRIBUTES:
         *   TokenDebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]
@@ -52,8 +52,6 @@ class PawnPromotionRouteException(TokenDebugException):
     # INHERITED METHODS:
         *   See TokenDebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     MSG = "No promotion route to the new rank."
     ERR_CODE = "NO_PROMOTION_ROUTE_TO_NEW_RANK_EXCEPTION"
     

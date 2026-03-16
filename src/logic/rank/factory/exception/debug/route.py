@@ -37,7 +37,7 @@ class RankBuildRouteException(ExecutionRouteException):
     # INHERITED ATTRIBUTES:
         *   See ExecutionRoute class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         msg: Optional[str]
         msg: Optional[str]
         var: Optional[str]
@@ -51,8 +51,6 @@ class RankBuildRouteException(ExecutionRouteException):
     # INHERITED METHODS:
         *   See ExecutionRoute class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     MSG = "No Rank build path for the persona"
     ERR_CODE = "RANK_BUILD_ROUTE_EXCEPTION"
     

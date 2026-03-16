@@ -45,7 +45,7 @@ class ScalarService(IntegrityService[Scalar]):
     # INHERITED ATTRIBUTES:
         *   See IntegrityService class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   id (int)
         *   name (name)
         *   builder (Builder[Scalar])

@@ -41,7 +41,7 @@ class SquareContext(Context[Square]):
     # INHERITED ATTRIBUTES:
         *   See Context class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         Local:
             *   board (Optional[Board])
             *   coord (Optional[Coord])

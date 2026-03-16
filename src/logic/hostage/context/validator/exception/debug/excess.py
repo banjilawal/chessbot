@@ -44,7 +44,7 @@ class ExcessHostageContextFlagsException(DebugException):
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -57,8 +57,6 @@ class ExcessHostageContextFlagsException(DebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     MSG = "More than one HostageContext flag enabled."
     ERR_CODE = "EXCESS_HOSTAGE_CONTEXT_FLAGS_EXCEPTION"
     

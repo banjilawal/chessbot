@@ -45,7 +45,7 @@ class ZeroCoordContextFlagsException(DebugException):
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -58,8 +58,6 @@ class ZeroCoordContextFlagsException(DebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     MSG = "No CoordContext flags are enabled."
     ERR_CODE = "ZERO_COORD_CONTEXT_FLAGS_EXCEPTION"
     

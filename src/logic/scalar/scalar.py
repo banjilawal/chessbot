@@ -34,7 +34,7 @@ class Scalar:
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   value (int)
 
     # LOCAL METHODS:

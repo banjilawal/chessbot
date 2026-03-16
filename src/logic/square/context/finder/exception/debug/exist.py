@@ -38,7 +38,7 @@ class SquareNotFoundException(SquareDebugException):
     # INHERITED ATTRIBUTES:
         *   SquareDebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]
@@ -51,8 +51,6 @@ class SquareNotFoundException(SquareDebugException):
     # INHERITED METHODS:
         *   See SquareDebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "SQUARE_NOT_FOUND_EXCEPTION"
     MSG = "No square matching the attribute was found."
     

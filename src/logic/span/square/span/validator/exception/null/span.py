@@ -37,7 +37,7 @@ class SquareSpanNullException(NullException):
     # INHERITED ATTRIBUTES:
         *   See NUllException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         val: Optional[Any]
         var: Optional[str]
         msg: Optional[str]
@@ -50,8 +50,6 @@ class SquareSpanNullException(NullException):
     # INHERITED METHODS:
         *   See NullException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     MSG = "SquareSpan cannot be null."
     ERR_CODE = "SQUARE_SPAN_NULL_EXCEPTION"
     

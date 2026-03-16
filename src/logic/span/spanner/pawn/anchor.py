@@ -1,7 +1,7 @@
-# src/logic/span/spanner/pawn/anchor.py
+# src/logic/span/spanner/pawn_token/anchor.py
 
 """
-Module: logic.span.spanner.pawn.anchor
+Module: logic.span.spanner.pawn_token.anchor
 Author: Banji Lawal
 Created: 2026-03-10
 version: 1.0.0
@@ -41,7 +41,7 @@ class PawnSpannerException(SpannerException):
     # INHERITED ATTRIBUTES:
         *   See SpannerException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

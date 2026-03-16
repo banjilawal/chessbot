@@ -36,7 +36,7 @@ class PairListBuilder(Builder[PairList]):
     # INHERITED ATTRIBUTES:
         *   See Builder class for inherited attributes.
     
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
     None
     
     # LOCAL METHODS:

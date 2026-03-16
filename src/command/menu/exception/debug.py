@@ -37,7 +37,7 @@ class ServiceMenuDebugException(DebugException):
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -52,8 +52,6 @@ class ServiceMenuDebugException(DebugException):
     """
     ERR_CODE = "SERVICE_MENU_DEBUG_EXCEPTION"
     MSG = "ServiceMenu attribute raised an exception."
-    VAR = Optional[str]
-    VAL = Optional[Any]
     
     def __init__(
             self,

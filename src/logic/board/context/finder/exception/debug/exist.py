@@ -38,7 +38,7 @@ class BoardNotFoundException(BoardDebugException):
     # INHERITED ATTRIBUTES:
         *   BoardDebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]
@@ -51,8 +51,6 @@ class BoardNotFoundException(BoardDebugException):
     # INHERITED METHODS:
         *   See BoardDebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "BOARD_NOT_FOUND_EXCEPTION"
     MSG = "No board matching the attribute was found."
     

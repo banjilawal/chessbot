@@ -23,11 +23,11 @@ class PromotionException(UpdateException):
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that promoting a pawn failed.
+    1.  Indicate that promoting a pawn_token failed.
     2.  Identify the PawnPromotion method where the failure occurred.
 
     # PARENT:
-        *   UpdateException
+        UpdateException
 
     # PROVIDES:
     None
@@ -38,7 +38,7 @@ class PromotionException(UpdateException):
     # INHERITED ATTRIBUTES:
         *   See UpdateException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         op: Optional[str]
         ex: Optional[str]
         msg: Optional[str]

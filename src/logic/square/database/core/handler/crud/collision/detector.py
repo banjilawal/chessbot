@@ -37,7 +37,7 @@ class SquareCollisionDetector(CollisionDetector[Square]):
     # INHERITED ATTRIBUTES:
    None
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         Local:
         None
         Inherited:

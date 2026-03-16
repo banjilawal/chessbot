@@ -38,7 +38,7 @@ class CoordNotFoundException(CoordDebugException):
     # INHERITED ATTRIBUTES:
         *   CoordDebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]
@@ -51,8 +51,6 @@ class CoordNotFoundException(CoordDebugException):
     # INHERITED METHODS:
         *   See CoordDebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "COORD_NOT_FOUND_EXCEPTION"
     MSG = "No coord matching the attribute was found."
     

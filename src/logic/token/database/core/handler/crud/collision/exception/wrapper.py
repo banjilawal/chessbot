@@ -39,7 +39,7 @@ class TokenColliderException(ColliderException):
     # INHERITED ATTRIBUTES:
         *   See ColliderException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         op: Optional[str]
         ex: Optional[str]
         msg: Optional[str]

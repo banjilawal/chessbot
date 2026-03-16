@@ -38,7 +38,7 @@ class SquareStackRosterHandler:
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         Local:
         None
 

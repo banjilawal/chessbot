@@ -14,38 +14,33 @@ from logic.schema import SchemaService
 from logic.rank import King, Pawn, Rank, RankService
 from logic.system import LoggingLevelRouter, UpdateResult, ValidationResult
 from logic.token import (
-    PawnPromotionRowException, PromoteInactivePawnException, PromoteToPawnException, PromotionState,
-    PromotionToKingException, PawnAlreadyPromotedException, PawnPromoterException, PromotionException,
-    PawnToken, TokenValidator,
+    PawnAlreadyPromotedException, PawnPromotionRowException, PawnToken, PromoteInactivePawnException,
+    PromoteToPawnException, PromotionException, PromotionState, PromotionToKingException, TokenValidator
 )
 
 
 class PawnPromotion:
     """
-    # ROLE: Update Handler, Consistency, Integrity Maintenance, Lifecycle Management
-
-    # RESPONSIBILITIES:
-    1.  Ensure integrity and consistency are maintained during the pawn's promotion lifecycle.
-
-    # PARENT:
-    None
-
-    # PROVIDES:
-    None
-
+    Role:
+        Transaction Worker, Consistency, Integrity Maintenance, Process Runner
+    Responsibilities:
+        1.  Pawn promotion process owner.
+        2.  Preserve original and updated data for rollbacks.
+        3.  Ensure the pawn's integrity and consistency are maintained during the transaction.
     Attributes:
-    None
-
-    # INHERITED ATTRIBUTES:
-    None
-
-    # CONSTRUCTOR PARAMETERS:
-    None
-    
-    # LOCAL METHODS:
-
-    # INHERITED METHODS:
-    None
+    Provides:
+            - execute(
+                        rank: Rank,
+                        pawn_token: PawnToken,
+                        rank_service: RankService,
+                        schema_service: SchemaService,
+                        token_validator: TokenValidator
+                ) -> UpdateResult[PawnToken]
+        
+            - _run_promotable_rank_tests(rank: Rank, rank_service: RankService) -> ValidationResult[int]
+        
+            - _run_enemy_rank_row_tests(pawn_token: PawnToken, schema_service: SchemaService) -> ValidationResult[int]:
+    Parent:
     """
     
     @classmethod
@@ -53,40 +48,46 @@ class PawnPromotion:
     def execute(
             cls,
             rank: Rank,
-            pawn: PawnToken,
+            pawn_token: PawnToken,
             rank_service: RankService = RankService(),
             schema_service: SchemaService = SchemaService(),
             token_validator: TokenValidator = TokenValidator(),
     ) -> UpdateResult[PawnToken]:
         """
+        Executes the promotion transaction.
+        
         Action:
-            1.  If the token is not a free pawn or it has been promoted send an exception chain to the
-                InsertionResult.
-            2.  If the rank fails validation send an exception chain to the InsertionResult.
-            3.  Update the pawn's rank and promotion state then send the success InsertionResult.
-
+            1.  Send the unmodified pawn_token along with an exception chain in the UpdateResult if:
+                    *   The token is not certified as a safe, actionable PawnToken.
+                    *   The pawn_token is already promoted.
+                    *   Is not on its enemy's rank_row.
+                    *   The new rank is either King or Pawn.
+            2.  Otherwise:
+                    *   Make a deepcopy of the pawn_token to pre_update_pawn_token.
+                    *   Set the new rank
+                    *   Set the pawn_token's promotion_state to PromotionState.PROMOTED.
+            3.  Send the success result containing, the finished work product.
         Args:
             rank: Rank
-            pawn: PawnToken
+            pawn_token: PawnToken
             rank_service: RankService
             schema_service: SchemaService
             token_validator: TokenValidator
-
         Returns:
             UpdateResult[PawnToken]
-
         Raises:
-            TokenServiceException
-            CoordAlreadyToppingStackException
+            PromotionException
+            PromoteInactivePawnException
+            PawnAlreadyPromotedException
         """
         method = f"{cls.__class__.__name__}.promote"
         
         # Handle the case that, the token is not certified safe.
-        token_validation_result = token_validator.verify_actionable_token(pawn)
+        token_validation_result = token_validator.verify_actionable_token(pawn_token)
         if token_validation_result.is_failure:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
-                original=pawn,
+                original=pawn_token,
                 exception=PromotionException(
                         mthd=method,
                         op=PromotionException.OP,
@@ -97,10 +98,10 @@ class PawnPromotion:
                     )
             )
         # Handle the case that. the token is wrong type.
-        if not isinstance(pawn, PawnToken):
+        if not isinstance(pawn_token, PawnToken):
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
-                original=pawn,
+                original=pawn_token,
                 exception=PromotionException(
                         mthd=method,
                         op=PromotionException.OP,
@@ -108,15 +109,15 @@ class PawnPromotion:
                         err_code=PromotionException.ERR_CODE,
                         rslt_type=PromotionException.RSLT_TYPE,
                         ex=TypeError(
-                            f"Expected type PawnToken for promotion. Got {type(pawn).__name__} instead."
+                            f"Expected type PawnToken for promotion. Got {type(pawn_token).__name__} instead."
                         )
                 )
             )
-        # Handle the case that, the pawn is not actionable.
-        if not pawn.is_active:
+        # Handle the case that, the pawn_token is not actionable.
+        if not pawn_token.is_active:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
-                original=pawn,
+                original=pawn_token,
                 exception=PromotionException(
                         mthd=method,
                         op=PromotionException.OP,
@@ -124,17 +125,17 @@ class PawnPromotion:
                         err_code=PromotionException.ERR_CODE,
                         rslt_type=PromotionException.RSLT_TYPE,
                         ex=PromoteInactivePawnException(
-                            var=pawn.designation,
+                            var=pawn_token.designation,
                             msg=PromoteInactivePawnException.MSG,
                             err_code=PromoteInactivePawnException.ERR_CODE,
                         )
                 )
             )
-        # Handle the case that, the pawn has already been promoted.
-        if pawn.is_promoted:
+        # Handle the case that, the pawn_token has already been promoted.
+        if pawn_token.is_promoted:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
-                original=pawn,
+                original=pawn_token,
                 exception=PromotionException(
                         mthd=method,
                         op=PromotionException.OP,
@@ -142,73 +143,75 @@ class PawnPromotion:
                         err_code=PromotionException.ERR_CODE,
                         rslt_type=PromotionException.RSLT_TYPE,
                         ex=PawnAlreadyPromotedException(
-                            var=pawn.designation,
+                            var=pawn_token.designation,
                             msg=PawnAlreadyPromotedException.MSG,
                             err_code=PawnAlreadyPromotedException.ERR_CODE,
                         )
                 )
             )
-        # Handle the case that, the pawn is not on its enemy's rank row.
-        on_enemy_rank_row_verification_result = cls._verify_on_enemy_rank_row(
-            pawn=pawn,
+        # Handle the case that, an enemy_rank_row test fails.
+        enemy_rank_row_test_results = cls._run_enemy_rank_row_tests(
+            pawn_token=pawn_token,
             schema_service=schema_service,
         )
-        if on_enemy_rank_row_verification_result.is_failure:
+        if enemy_rank_row_test_results.is_failure:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
-                original=pawn,
+                original=pawn_token,
                 exception=PromotionException(
                         mthd=method,
                         op=PromotionException.OP,
                         msg=PromotionException.MSG,
                         err_code=PromotionException.ERR_CODE,
                         rslt_type=PromotionException.RSLT_TYPE,
-                        ex=on_enemy_rank_row_verification_result.exception
+                        ex=enemy_rank_row_test_results.exception
                 )
             )
-        # Handle the case that, the rank is not promotable.
-        promotable_rank_verification_result = cls._verify_rank_is_promotable(
+        # Handle the case that, a rank_promotable test fails.
+        promotable_rank_verification_result = cls._run_promotable_rank_tests(
             rank=rank,
-            pawn=pawn,
+            pawn=pawn_token,
             rank_service=rank_service,
         )
         if promotable_rank_verification_result.is_failure:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
-                original=pawn,
-                exception=PawnPromoterException(
-                    cls_mthd=method,
-                    cls_name=cls.__class__.__name__,
+                original=pawn_token,
+                exception=PromotionException(
+                    mthd=method,
+                    op=PromotionException.OP,
                     msg=PromotionException.MSG,
                     err_code=PromotionException.ERR_CODE,
-                    ex=promotable_rank_verification_result.exception
+                    rslt_type=PromotionException.RSLT_TYPE,
+                    ex=promotable_rank_verification_result.exception,
                 )
             )
-        # --- Integrity and consistency checks are passed. Start the promotion. ---#
+        #--- Integrity and consistency checks are passed. Do the promotion work. ---#
 
-        # Make a deepcopy of the original pawn.
-        pre_update_pawn = deepcopy(pawn)
-        
+        # Make a deepcopy of the original pawn_token.
+        pre_update_pawn_token = deepcopy(pawn_token)
         # Set the new rank and update state.
-        pawn.set_new_rank(rank)
-        pawn.promotion_state = PromotionState.PROMOTED
+        pawn_token.set_new_rank(rank)
+        pawn_token.promotion_state = PromotionState.PROMOTED
         
-        # --- Send the success product ---#
-        UpdateResult.update_success(
-            original=pre_update_pawn,
-            updated=pawn,
-        )
+        # --- Send the work product. ---#
+        UpdateResult.update_success( original=pre_update_pawn_token, updated=pawn_token)
 
     @classmethod
     @LoggingLevelRouter.monitor
-    def _verify_rank_is_promotable(
+    def _run_promotable_rank_tests(
             cls,
-            rank,
+            rank: Rank,
             rank_service: RankService,
     ) -> ValidationResult[int]:
         """
+        Runs the process that assures the rank instance can be used safely.
+        
         Action:
-            Verify the rank is safe, and not a Pawn or King
+            1.  Send an exception chain in the ValidationResult if:
+                    *   The rank is not certified as safe.
+                    *   It's not a Pawn or King.
+            2.  Otherwise, send the success result.
         Args:
             rank: Rank
             rank_service: RankService
@@ -216,42 +219,30 @@ class PawnPromotion:
             ValidationResult[int]
         Raises:
             PromotionException
-            PawnPromoterException
             PromoteToPawnException
             PromoteToKingException
         """
-        method = f"{cls.__class__.__name__}. _verify_rank_is_promotable"
-        
+        method = f"{cls.__class__.__name__}. _run_promotable_rank_tests"
         # Handle the case that, the rank is not certified as safe.
         validation_result = rank_service.validator.validate(rank)
         if validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                exception=PawnPromoterException(
-                    cls_mthd=method,
-                    cls_name=cls.__class__.__name__,
-                    msg=PromotionException.MSG,
-                    err_code=PromotionException.ERR_CODE,
-                    ex=PromotionException(
+                exception=PromotionException(
                         mthd=method,
                         op=PromotionException.OP,
                         msg=PromotionException.MSG,
                         err_code=PromotionException.ERR_CODE,
                         rslt_type=PromotionException.RSLT_TYPE,
                         ex=validation_result.exception
-                    )
                 )
             )
+        
         # Handle the case that, the higher rank is a King's.
         if isinstance(rank, King):
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                exception=PawnPromoterException(
-                    cls_mthd=method,
-                    cls_name=cls.__class__.__name__,
-                    msg=PromotionException.MSG,
-                    err_code=PromotionException.ERR_CODE,
-                    ex=PromotionException(
+                exception=PromotionException(
                         mthd=method,
                         op=PromotionException.OP,
                         msg=PromotionException.MSG,
@@ -261,19 +252,13 @@ class PawnPromotion:
                             msg=PromotionToKingException.MSG,
                             err_code=PromotionToKingException.ERR_CODE,
                         )
-                    )
                 )
             )
-        # Handle the case that, the new is still Pawn rank.
+        # Handle the case that, the new is still a Pawn's.
         if isinstance(rank, Pawn):
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                exception=PawnPromoterException(
-                    cls_mthd=method,
-                    cls_name=cls.__class__.__name__,
-                    msg=PromotionException.MSG,
-                    err_code=PromotionException.ERR_CODE,
-                    ex=PromotionException(
+                exception=PromotionException(
                         mthd=method,
                         op=PromotionException.OP,
                         msg=PromotionException.MSG,
@@ -283,75 +268,69 @@ class PawnPromotion:
                             msg=PromoteToPawnException.MSG,
                             err_code=PromoteToPawnException.ERR_CODE,
                         )
-                    )
                 )
             )
+        # --- Send the work product. ---#
         return ValidationResult.success(1)
 
     @classmethod
     @LoggingLevelRouter.monitor
-    def _verify_on_enemy_rank_row(
+    def _run_enemy_rank_row_tests(
             cls,
-            pawn: PawnToken,
-            schema_service: SchemaService,
+            pawn_token: PawnToken,
+            schema_service: SchemaService = SchemaService(),
     ) -> ValidationResult[int]:
         """
+        Runs the process that verifies the pawn_token is on its enemy's rank row.
+        
         Action:
-            Verify the token is on its enemy's rank row.
+            1.  Send an exception chain in the ValidationResult if:
+                    *   Searching the schema for the rank row is not completed.
+                    *   The pawn is not on the enemy's rank_row.
+            2.  Otherwise, send the success result.
         Args:
-            pawn: Pawn
+            pawn_token: Pawn
+            schema_service: SchemaService
         Returns:
             ValidationResult[int]
         Raises:
             PromotionException
-            PawnPromoterException
             PawnPromotionRowException
         """
-        method = f"{cls.__class__.__name__}._verify_pawn_on_enemy_rank_row"
+        method = f"{cls.__class__.__name__}._run_enemy_rank_row_tests"
         
         # Search for the enemy's home row.
-        enemy_schema_search_result = schema_service.enemy_schema(pawn.team.schema)
+        enemy_schema_search_result = schema_service.enemy_schema(pawn_token.team.schema)
         
         # Handle the case that, the no work is produced.
         if enemy_schema_search_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                exception=PawnPromoterException(
-                    cls_mthd=method,
-                    cls_name=cls.__class__.__name__,
-                    msg=PromotionException.MSG,
-                    err_code=PromotionException.ERR_CODE,
-                    ex=PromotionException(
+                exception=PromotionException(
                         mthd=method,
                         op=PromotionException.OP,
                         msg=PromotionException.MSG,
                         err_code=PromotionException.ERR_CODE,
                         rslt_type=PromotionException.RSLT_TYPE,
                         ex=enemy_schema_search_result.exception
-                    )
                 )
             )
-        # Handle the case that the pawn is not on the enemy's rank row.
-        if pawn.current_position.row != enemy_schema_search_result.payload[0].rank_row:
+        # Handle the case that the pawn_token is not on the enemy's rank row.
+        if pawn_token.current_position.row != enemy_schema_search_result.payload[0].rank_row:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                exception=PawnPromoterException(
-                    cls_mthd=method,
-                    cls_name=cls.__class__.__name__,
+                exception=PromotionException(
+                    mthd=method,
+                    op=PromotionException.OP,
                     msg=PromotionException.MSG,
                     err_code=PromotionException.ERR_CODE,
-                    ex=PromotionException(
-                        mthd=method,
-                        op=PromotionException.OP,
+                    rslt_type=PromotionException.RSLT_TYPE,
+                    ex=PawnPromotionRowException(
+                        var=pawn_token.designation,
                         msg=PromotionException.MSG,
                         err_code=PromotionException.ERR_CODE,
-                        rslt_type=PromotionException.RSLT_TYPE,
-                        ex=PawnPromotionRowException(
-                            var=pawn.designation,
-                            msg=PromotionException.MSG,
-                            err_code=PromotionException.ERR_CODE,
-                        )
                     )
                 )
             )
+        # --- Send the work product. ---#
         return ValidationResult.success(1)

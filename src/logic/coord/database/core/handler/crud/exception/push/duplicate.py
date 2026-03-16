@@ -37,7 +37,7 @@ class DuplicateCoordPushException(DebugException):
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -50,8 +50,6 @@ class DuplicateCoordPushException(DebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     MSG = "Coord is already the top coord on the stack."
     ERR_CODE = "PUSHING_DUPLICATE_COORD_ONTO_STACK_EXCEPTION"
     

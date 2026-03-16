@@ -1,7 +1,7 @@
-# src/logic/rank/model/concrete/pawn/pawn.py
+# src/logic/rank/model/concrete/pawn_token/pawn_token.py
 
 """
-Module: logic.rank.model.concrete.pawn.pawn
+Module: logic.rank.model.concrete.pawn_token.pawn_token
 Author: Banji Lawal
 Created: 2026-01-22
 version: 1.0.0

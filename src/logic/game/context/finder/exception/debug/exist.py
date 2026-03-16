@@ -38,7 +38,7 @@ class GameNotFoundException(GameDebugException):
     # INHERITED ATTRIBUTES:
         *   GameDebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]
@@ -51,8 +51,6 @@ class GameNotFoundException(GameDebugException):
     # INHERITED METHODS:
         *   See GameDebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "GAME_NOT_FOUND_EXCEPTION"
     MSG = "No game matching the attribute was found."
     

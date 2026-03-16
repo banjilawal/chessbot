@@ -40,7 +40,7 @@ class Team:
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         Local:
         *   id (int)
         *   board (Board)

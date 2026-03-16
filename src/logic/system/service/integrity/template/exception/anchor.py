@@ -37,7 +37,7 @@ class TemplateServiceException(IntegrityServiceException):
     # INHERITED ATTRIBUTES:
         *   See TemplateServiceException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

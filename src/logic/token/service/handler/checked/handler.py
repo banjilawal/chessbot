@@ -16,7 +16,7 @@ class CheckHandler:
     # ROLE: Update Handler, Consistency, Integrity Maintenance, Lifecycle Management
 
     # RESPONSIBILITIES:
-    1.  Ensure integrity and consistency are maintained during the pawn's checked lifecycle.
+    1.  Ensure integrity and consistency are maintained during the pawn_token's checked lifecycle.
 
     # PARENT:
     None
@@ -30,7 +30,7 @@ class CheckHandler:
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
     None
 
     # LOCAL METHODS:

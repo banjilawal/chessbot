@@ -37,7 +37,7 @@ class NullVectorException(NullException):
     # INHERITED ATTRIBUTES:
         *   See NUllException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -52,8 +52,6 @@ class NullVectorException(NullException):
     """
     ERR_CODE = "NULL_VECTOR_EXCEPTION"
     MSG = "Vector cannot be null."
-    VAR = Optional[str]
-    VAL = Optional[Any]
     
     def __init__(
             self,

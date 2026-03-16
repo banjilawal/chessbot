@@ -45,7 +45,7 @@ class PerpendicularRayComputationException(RayComputationException):
     # INHERITED ATTRIBUTES:
         *   See RayComputationException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         *   err_code (str)
         *   msg (str)
         *   ex (Optional[Exception])

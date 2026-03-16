@@ -41,7 +41,7 @@ class SpannerException(AnchorException):
     # INHERITED ATTRIBUTES:
         *   See AnchorException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         msg: Optional[str]
         cls_mthd: Optional[str]
         cls_name: Optional[str

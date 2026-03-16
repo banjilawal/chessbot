@@ -39,7 +39,7 @@ class SquareStackCrudHandler:
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         Local:
             *   id (int)
             *   name (str)

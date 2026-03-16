@@ -38,7 +38,7 @@ class GameSearchRouteException(GameDebugException):
     # INHERITED ATTRIBUTES:
         *   GameDebugException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]
@@ -51,8 +51,6 @@ class GameSearchRouteException(GameDebugException):
     # INHERITED METHODS:
         *   See GameDebugException class for inherited methods.
     """
-    VAR = Optional[str]
-    VAL = Optional[Any]
     ERR_CODE = "NO_GAME_SEARCH_ROUTE_ROUTE_EXCEPTION"
     MSG = "There is no search logic for the game attribute."
     

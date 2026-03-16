@@ -45,7 +45,7 @@ class SquareFinder(StackSearcher[Square]):
     # INHERITED ATTRIBUTES:
         *   See SearchWorker for inherited attributes.
         
-    # CONSTRUCTOR PARAMETERS:
+    # CONSTRUCTOR:
     None
         Inherited:
             *   See SearchWorker for inherited constructor parameters.

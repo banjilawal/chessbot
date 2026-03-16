@@ -20,54 +20,49 @@ from logic.token import (
 
 class TokenCoordHandler:
     """
-    # ROLE: Update Handler, Consistency, Integrity Maintenance, Lifecycle Management
-
-    # RESPONSIBILITIES:
-    1.  Ensure integrity and consistency are maintained during the pawn's promotion lifecycle.
-
-    # PARENT:
-    None
-
-    # PROVIDES:
-    None
-
+    Role:
+        CRUD Owner, Consistency, Integrity Maintenance
+    Responsibilities:
+        1.  Responds to the token's CoordDatabase requests.
     Attributes:
-    None
-
-    # INHERITED ATTRIBUTES:
-    None
-
-    # CONSTRUCTOR PARAMETERS:
-    None
-
-    # LOCAL METHODS:
-
-    # INHERITED METHODS:
-    None
+    
+    Provides:
+            -   undo_current_token_position(
+                        token: Token,
+                        token_validator: TokenValidator = TokenValidator(),
+                ) -> DeletionResult[Coord]
+                
+            -   push_coord(
+                        cls,
+                        token: Token,
+                        coord: Coord,
+                        coord_service: CoordService = CoordService(),
+                        token_validator: TokenValidator = TokenValidator(),
+                ) -> InsertionResult
+    Parent:
     """
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def undo_current_token_positon(
+    def undo_current_token_position(
             cls,
             token: Token,
             token_validator: TokenValidator = TokenValidator(),
     ) -> DeletionResult[Coord]:
         """
-        # ACTION:
-            1.  If the token fails validation returns the exception in the DeletionResult.
-            2.  If the token has not been activated with an opening item return the exception in the DeletionResult.
-            3.  If the token has an empty coord stack return the exception in the DeletionResult.
-            4.  If a new coord has not been pushed since the last undo send and exception in the DeletionResult.
-                Else, forward the results of token.positions.pop_coord() to the caller.
-
+        Forwards a request that the CoordDatabase instance removed its latest insert.
+        
+        Action:
+            1.  Send an exception chain in the DeletionResult if:
+                    *   The token is unsafe or not actionable.
+                    *   It has no position history.
+                    *   It has not moved from its opening square.
+            2.  Otherwise, pop the last move and send the success result.
         Args:
             token: Token
             token_validator: TokenValidator
-
         Returns:
             DeletionResult[Coord]
-
         Raises:
             PoppingCoordException
             MoveUndoLimitException
@@ -170,6 +165,7 @@ class TokenCoordHandler:
                     )
                 )
             )
+        # --- Integrity are passed. Request that, the CoordDatabase instance pop the last record. ---#
         popping_cord_stack_result = token.positions.pop()
         
         # Handle the case that, the pop was not completed.
@@ -191,6 +187,7 @@ class TokenCoordHandler:
                     )
                 )
             )
+        # --- Forward the work product to the client. ---#
         return popping_cord_stack_result
         
     @classmethod
@@ -203,26 +200,27 @@ class TokenCoordHandler:
             token_validator: TokenValidator = TokenValidator(),
     ) -> InsertionResult:
         """
-        Action:
-            1.  If the token or coord fail their validations return the exception in the InsertionResult.
-            2.  If the position is already the updated position return the exception in the InsertionResult.
-            3.  If the pushing the position to the token's coord stack fails encapsulate the exception then
-                send the exception chain in the InsertionResult.'
+        Forwards a request that the CoordDatabase insert  a new record.
 
+        Action:
+            1.  Send an exception chain in the InsertionResult if:
+                    *   Either the token or the coord are not certified as safe..
+                    *   The token is already at the coord.
+                    *   The CoordDatabase does not complete the insertion.
+            2.  Otherwise, send the success result.
         Args:
             coord: Coord
             token: Token
             coord_service: CoordService
             token_validator: TokenValidator
-
         Returns:
-            DeletionResult[Coord]
-
+            InsertionResult[bool]
         Raises:
-            TokenServiceException
-            OverMoveUndoLimitException
-            TokenOpeningSquareNotFoundException
-            PoppingEmtpyCoordStackException
+            TokenCoordHandlerException
+            PushingCoordException
+            TokenCoordHandlerException
+            InactiveTokenPushingCoordException
+            DuplicateCoordPushException
         """
         method = "TokenService.push_coord_to_token"
         
@@ -314,10 +312,14 @@ class TokenCoordHandler:
                     )
                 )
             )
+        # --- Integrity tests are passed. Start the insertion tasks. ---#
+        
+        # Copy the top of the stack.
         pre_insertion_top_coord = token.current_position
+        # Run the insertion request.
         coord_insertion_result = token.positions.push(coord)
         
-        # Handle the case that, the cord push was not completed.
+        # Handle the case that, the request was not completed.
         if coord_insertion_result.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -338,4 +340,5 @@ class TokenCoordHandler:
             )
         # Update the token's previous position marker.
         token.previous_position = pre_insertion_top_coord
+        # --- Send the work product. ---#
         return coord_insertion_result
