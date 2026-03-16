@@ -81,7 +81,7 @@ class UniqueGameDataService(Database[Game]):
     
     @LoggingLevelRouter.monitor
     def undo_add_game(self) -> DeletionResult[Game]:
-        return self.data_service.pop()
+        return self.data_service.undo_current_token_positon()
     
     @LoggingLevelRouter.monitor
     def search_games(self, context: GameContext) -> SearchResult[List[Game]]:

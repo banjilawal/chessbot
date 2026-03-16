@@ -66,7 +66,7 @@ class TokenHandler:
         return self._promoter
     
     @property
-    def coord_handler(self) -> TokenCoordHandler:
+    def coord(self) -> TokenCoordHandler:
         return self._coord_handler
     
     @property

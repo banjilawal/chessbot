@@ -240,7 +240,7 @@ class TeamDatabase(Database[Team]):
     @LoggingLevelRouter.monitor
     def undo_team_addition(self) -> DeletionResult[Team]:
         method = "TeamDatabase.undo_add_team"
-        result = self.data_service.pop()
+        result = self.data_service.undo_current_token_positon()
         if result.is_failure:
             # Handle the failure case by wrapping the debugging exception then sending in the DeletionResult.
             return SearchResult.failure(

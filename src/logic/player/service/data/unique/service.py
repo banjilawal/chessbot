@@ -82,7 +82,7 @@ class UniqueAgentDataService(Database[PlayerAgent]):
         return self.push_unique_item(agent)
     
     def undo_add_agent(self) -> DeletionResult[PlayerAgent]:
-        return self.data_service.pop()
+        return self.data_service.undo_current_token_positon()
     
     def search_agents(self, context: AgentContext) -> SearchResult[List[PlayerAgent]]:
         return self.data_service.search(context)

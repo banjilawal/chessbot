@@ -48,7 +48,7 @@ class TokenCoordHandler:
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def undo_last_coord_push(
+    def undo_current_token_positon(
             cls,
             token: Token,
             token_validator: TokenValidator = TokenValidator(),
