@@ -1,7 +1,7 @@
-# src/logic/token/service/handler/promotion/promoter.py
+# src/logic/token/service/operation/promotion/promoter.py
 
 """
-Module: logic.token.service.handler.promotion.promoter
+Module: logic.token.service.operation.promotion.promoter
 Author: Banji Lawal
 Created: 2026-03-14
 version: 1.0.0

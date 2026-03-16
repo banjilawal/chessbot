@@ -1,7 +1,7 @@
 # src/logic/token/service/handler.manager.py
 
 """
-Module: logic.token.service.handler.manager
+Module: logic.token.service.operation.manager
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

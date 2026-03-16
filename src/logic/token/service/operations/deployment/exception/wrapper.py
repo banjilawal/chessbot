@@ -1,7 +1,7 @@
-# src/logic/token/service/handler/tokenDeployment/exception/wrapper.py
+# src/logic/token/service/operation/tokenDeployment/exception/wrapper.py
 
 """
-Module: logic.token.service.handler.tokenDeployment.exception.wrapper
+Module: logic.token.service.operation.tokenDeployment.exception.wrapper
 Author: Banji Lawal
 Created: 2026-03-14
 version: 1.0.0

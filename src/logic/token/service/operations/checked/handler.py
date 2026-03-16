@@ -1,7 +1,7 @@
-# src/logic/token/service/handler/checked/handler.py
+# src/logic/token/service/operation/checked/handler.py
 
 """
-Module: logic.token.service.handler.checked.handler
+Module: logic.token.service.operation.checked.handler
 Author: Banji Lawal
 Created: 2026-03-14
 version: 1.0.0

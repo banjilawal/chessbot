@@ -1,7 +1,7 @@
-# src/logic/token/service/handler/promotion/exception/debug/double.py
+# src/logic/token/service/operation/promotion/exception/debug/double.py
 
 """
-Module: logic.token.service.handler.promotion.exception.debug.double
+Module: logic.token.service.operation.promotion.exception.debug.double
 Author: Banji Lawal
 Created: 2026-03-14
 version: 1.0.0

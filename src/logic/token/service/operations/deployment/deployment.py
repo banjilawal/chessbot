@@ -1,7 +1,7 @@
-# src/logic/token/service/handler/deployment/deployer.py
+# src/logic/token/service/operation/deployment/deployer.py
 
 """
-Module: logic.token.service.handler.deployment.deployer
+Module: logic.token.service.operation.deployment.deployer
 Author: Banji Lawal
 Created: 2026-03-14
 version: 1.0.0

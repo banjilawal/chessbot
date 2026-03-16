@@ -1,13 +1,13 @@
-# src/logic/token/service/handler/coord/exception/__init__.py
+# src/logic/token/service/operation/coord/exception/__init__.py
 
 """
-Module: logic.token.service.handler.coord.exception.__init__
+Module: logic.token.service.operation.coord.exception.__init__
 Author: Banji Lawal
 Created: 2026-03-14
 version: 1.0.0
 """
 
-# =========== TOKEN.SERVICE.HANDLER.COORD.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== TOKEN.SERVICE.OPERATION.COORD.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
 from .pop import *

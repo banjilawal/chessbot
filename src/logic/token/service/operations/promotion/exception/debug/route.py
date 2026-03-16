@@ -1,7 +1,7 @@
-# src/logic/token/service/handler/promotion/exception/debug/route.py
+# src/logic/token/service/operation/promotion/exception/debug/route.py
 
 """
-Module: logic.token.service.handler.promotion.exception.debug.route
+Module: logic.token.service.operation.promotion.exception.debug.route
 Author: Banji Lawal
 Created: 2026-03-14
 version: 1.0.0

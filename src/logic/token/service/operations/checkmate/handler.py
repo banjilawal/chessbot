@@ -1,7 +1,7 @@
-# src/logic/token/service/handler/checkmate/handler.py
+# src/logic/token/service/operation/checkmate/handler.py
 
 """
-Module: logic.token.service.handler.checkmate.handler
+Module: logic.token.service.operation.checkmate.handler
 Author: Banji Lawal
 Created: 2026-03-14
 version: 1.0.0

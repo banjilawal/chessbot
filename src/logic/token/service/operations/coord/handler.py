@@ -1,7 +1,7 @@
-# src/logic/token/service/handler/coord/handler.py
+# src/logic/token/service/operation/coord/handler.py
 
 """
-Module: logic.token.service.handler.coord.handler
+Module: logic.token.service.operation.coord.handler
 Author: Banji Lawal
 Created: 2026-03-14
 version: 1.0.0
