@@ -53,7 +53,7 @@ class PawnAlreadyPromotedException(TokenDebugException):
     VAR = Optional[str]
     VAL = Optional[Any]
     ERR_CODE = "PAWN_ALREADY_PROMOTED_EXCEPTION"
-    MSG = "The  pawn has already been promoted."
+    MSG = "The pawn has already been promoted."
     
     def __init__(
             self,

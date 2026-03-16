@@ -14,4 +14,4 @@ None
 
 # Modules
 from .route import SquareSearchRouteException
-from .payload import SquareSearchPayloadException
+from .exist import SquareNotFoundException

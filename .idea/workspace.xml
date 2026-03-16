@@ -5,17 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change afterPath="$PROJECT_DIR$/src/logic/token/service/handler/deployment/exception/anchor.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/token/service/handler/deployment/exception/debug/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/token/service/handler/deployment/exception/debug/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/token/service/handler/deployment/exception/debug/square/occupied.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/token/service/handler/deployment/exception/wrapper.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/exception/deploy/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/exception/deploy/state.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/handler/deployment/exception/debug/state.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/exception/deploy/unfound.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/handler/deployment/exception/debug/square/exsists.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/exception/deploy/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/handler/deployment/exception/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/handler/deployment/deployer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/handler/deployment/deployer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/service/handler/deployment/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/handler/deployment/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/service/handler/deployment/deployment.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/handler/deployment/deployment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/service/handler/deployment/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/handler/deployment/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/service/handler/deployment/exception/anchor.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -282,7 +277,7 @@
     "ToolWindow.Python Packages.ShowToolbar": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/logic/token/service/handler",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/logic/token/service/handler/deployment/exception/debug",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -309,11 +304,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/logic/token/service/handler" />
+      <recent name="$PROJECT_DIR$/src/logic/token/service/handler/deployment/exception/debug" />
       <recent name="$PROJECT_DIR$/src/logic/token/service/handler/deployment/exception" />
+      <recent name="$PROJECT_DIR$/src/logic/token/service/handler" />
       <recent name="$PROJECT_DIR$/src/logic/token/service/handler/coord/exception/push" />
       <recent name="$PROJECT_DIR$/src/logic/token/service/handler/coord/exception/pop" />
-      <recent name="$PROJECT_DIR$/src/logic/token/service/handler/coord/exception/debug" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/logic/token/service/handler/deployment/exception/debug/square" />
@@ -862,7 +857,7 @@
       <workItem from="1772847189165" duration="78504000" />
       <workItem from="1773215668490" duration="8009000" />
       <workItem from="1773223700953" duration="11379000" />
-      <workItem from="1773252041918" duration="268947000" />
+      <workItem from="1773252041918" duration="272001000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

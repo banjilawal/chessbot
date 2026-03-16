@@ -17,7 +17,7 @@ from logic.system import LoggingLevelRouter, UpdateResult, ValidationResult
 from logic.token import (
     PawnDeploymentRowException, PromoteInactivePawnException, PromoteToPawnException, DeploymentState,
     DeploymentToKingException, PawnAlreadyPromotedException, PawnPromoterException, DeploymentException,
-    PawnToken, TokenValidator,
+    PawnToken, TokenAlreadyDeployedException, TokenValidator,
 )
 
 from __future__ import annotations
@@ -40,7 +40,7 @@ from logic.token import (
 )
 
 
-class TokenDeployer:
+class TokenDeployment:
     """
     # ROLE: Update Handler, Consistency, Integrity Maintenance, Lifecycle Management
 
@@ -70,7 +70,7 @@ class TokenDeployer:
 
     @classmethod
     @LoggingLevelRouter.monitor
-    def deploy(
+    def execute(
             cls,
             token: Token,
             token_validator: TokenValidator,
@@ -98,13 +98,81 @@ class TokenDeployer:
         token_validation = token_validator.validate(token)
         if token_validation.is_failure:
             # Return the exception chain on failure.
-            return InsertionResult.failure(
-                TokenServiceException(
-                    msg=f"{method}: {TokenService.ERR_CODE}",
-                    ex=TokenDeploymentException(
-                        msg=f"{method}: {TokenDeploymentException.ERR_CODE}",
-                        ex=token_validation.exception
-                    )
+            return UpdateResult.update_failure(
+                original=token,
+                exception=TokenDeploymentException(
+                    mthd=method,
+                    op=TokenDeploymentException.OP,
+                    msg=TokenDeploymentException.MSG,
+                    err_code=TokenDeploymentException.ERR_CODE,
+                    rslt_type=TokenDeploymentException.RSLT_TYPE,
+                    ex=token_validation.exception,
+                )
+            )
+        # Handle the case that, the token has already been deployed.
+        if token.is_deployed:
+            # Return the exception chain on failure.
+            return UpdateResult.update_failure(
+                original=token,
+                exception=TokenDeploymentException(
+                    mthd=method,
+                    op=TokenDeploymentException.OP,
+                    msg=TokenDeploymentException.MSG,
+                    err_code=TokenDeploymentException.ERR_CODE,
+                    rslt_type=TokenDeploymentException.RSLT_TYPE,
+                    ex=TokenAlreadyDeployedException(
+                        msg=TokenDeploymentException.MSG,
+                        err_code=TokenDeploymentException.ERR_CODE,
+                    ),
+                )
+            )
+        # Handle the case that, the token has already been deployed.
+        if token.is_deployed:
+            # Return the exception chain on failure.
+            return UpdateResult.update_failure(
+                original=token,
+                exception=TokenDeploymentException(
+                    mthd=method,
+                    op=TokenDeploymentException.OP,
+                    msg=TokenDeploymentException.MSG,
+                    err_code=TokenDeploymentException.ERR_CODE,
+                    rslt_type=TokenDeploymentException.RSLT_TYPE,
+                    ex=TokenAlreadyDeployedException(
+                        msg=TokenDeploymentException.MSG,
+                        err_code=TokenDeploymentException.ERR_CODE,
+                    ),
+                )
+            )
+        board = token.team.board
+        opening_square_search_result = board.squares.search(
+            context=SquareContext(name=token.opening_square_name)
+        )
+        # Handle the case that, the search fails.
+        if opening_square_search_result.is_failure:
+            # Return the exception chain on failure.
+            return UpdateResult.update_failure(
+                original=token,
+                exception=TokenDeploymentException(
+                    mthd=method,
+                    op=TokenDeploymentException.OP,
+                    msg=TokenDeploymentException.MSG,
+                    err_code=TokenDeploymentException.ERR_CODE,
+                    rslt_type=TokenDeploymentException.RSLT_TYPE,
+                    ex=opening_square_search_result.exception,
+                )
+            )
+        # Handle the case that, the token's square is not found.
+        if opening_square_search_result.is_empty:
+            # Return the exception chain on failure.
+            return UpdateResult.update_failure(
+                original=token,
+                exception=TokenDeploymentException(
+                    mthd=method,
+                    op=TokenDeploymentException.OP,
+                    msg=TokenDeploymentException.MSG,
+                    err_code=TokenDeploymentException.ERR_CODE,
+                    rslt_type=TokenDeploymentException.RSLT_TYPE,
+                    ex=opening_square_search_result.exception,
                 )
             )
         # Handle the case that, the token has already been placed on the board.

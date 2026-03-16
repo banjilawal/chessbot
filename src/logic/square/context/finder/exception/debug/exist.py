@@ -1,7 +1,7 @@
-# src/logic/square/context/finder/exception/debug/route.py
+# src/logic/square/context/finder/exception/debug/exist.py
 
 """
-Module: logic.square.context.finder.exception.debug.route
+Module: logic.square.context.finder.exception.debug.exist
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,20 +11,20 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# NO_SQUARE_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#
-    "SquareSearchRouteException",
+    # ======================# SQUARE_NOT_FOUND_EXCEPTION #======================#
+    "SquareNotFoundException",
 ]
 
 from logic.square import SquareDebugException
 
 
-# ======================# NO_SQUARE_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#
-class SquareSearchRouteException(SquareDebugException):
+# ======================# SQUARE_NOT_FOUND_EXCEPTION #======================#
+class SquareNotFoundException(SquareDebugException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that there was no search logic for a square attribute.
+    1.  Indicate that no square was found.
 
     # PARENT:
         *   SquareDebugException
@@ -53,8 +53,8 @@ class SquareSearchRouteException(SquareDebugException):
     """
     VAR = Optional[str]
     VAL = Optional[Any]
-    ERR_CODE = "NO_SQUARE_SEARCH_ROUTE_ROUTE_EXCEPTION"
-    MSG = "There is no search logic for the square attribute."
+    ERR_CODE = "SQUARE_NOT_FOUND_EXCEPTION"
+    MSG = "No square matching the attribute was found."
     
     def __init__(
             self,

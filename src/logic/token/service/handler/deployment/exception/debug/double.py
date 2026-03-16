@@ -1,9 +1,9 @@
-# src/logic/square/context/finder/exception/debug/route.py
+# src/logic/token/service/handler/promotion/exception/debug/double.py
 
 """
-Module: logic.square.context.finder.exception.debug.route
+Module: logic.token.service.handler.promotion.exception.debug.double
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2026-03-14
 version: 1.0.0
 """
 
@@ -11,23 +11,22 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# NO_SQUARE_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#
-    "SquareSearchRouteException",
+    # ======================# TOKEN_ALREADY_DEPLOYED_EXCEPTION #======================#
+    "TokenAlreadyDeployedException",
 ]
 
-from logic.square import SquareDebugException
+from logic.token import TokenDebugException
 
-
-# ======================# NO_SQUARE_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#
-class SquareSearchRouteException(SquareDebugException):
+# ======================# TOKEN_ALREADY_DEPLOYED_EXCEPTION #======================#
+class TokenAlreadyDeployedException(TokenDebugException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that there was no search logic for a square attribute.
+    1.  Indicate that a token has already been deployed on the board..
 
     # PARENT:
-        *   SquareDebugException
+        *   TokenDebugException
 
     # PROVIDES:
     None
@@ -36,7 +35,7 @@ class SquareSearchRouteException(SquareDebugException):
     None
 
     # INHERITED ATTRIBUTES:
-        *   SquareDebugException class for inherited attributes.
+        *   TokenDebugException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
         var: Optional[str]
@@ -49,12 +48,12 @@ class SquareSearchRouteException(SquareDebugException):
     None
 
     # INHERITED METHODS:
-        *   See SquareDebugException class for inherited methods.
+        *   See TokenDebugException class for inherited methods.
     """
     VAR = Optional[str]
     VAL = Optional[Any]
-    ERR_CODE = "NO_SQUARE_SEARCH_ROUTE_ROUTE_EXCEPTION"
-    MSG = "There is no search logic for the square attribute."
+    ERR_CODE = "TOKEN_ALREADY_DEPLOYED_EXCEPTION"
+    MSG = "The token has already been deployed."
     
     def __init__(
             self,
