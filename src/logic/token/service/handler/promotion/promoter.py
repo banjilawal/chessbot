@@ -1,7 +1,7 @@
-# src/logic/token/service/handler/promotion/handler.py
+# src/logic/token/service/handler/promotion/promoter.py
 
 """
-Module: logic.token.service.handler.promotion.handler
+Module: logic.token.service.handler.promotion.promoter
 Author: Banji Lawal
 Created: 2026-03-14
 version: 1.0.0
@@ -173,7 +173,7 @@ class PawnPromoter:
                     )
                 )
             )
-        # Handle the case that, the pawn is not on its enemy's ran row.
+        # Handle the case that, the pawn is not on its enemy's rank row.
         on_enemy_rank_row_verification_result = cls._verify_on_enemy_rank_row(
             pawn=pawn,
             schema_service=schema_service,
@@ -195,6 +195,24 @@ class PawnPromoter:
                         rslt_type=PromotionException.RSLT_TYPE,
                         ex=on_enemy_rank_row_verification_result.exception
                     )
+                )
+            )
+        # Handle the case that, the rank is not promotable.
+        promotable_rank_verification_result = cls._verify_rank_is_promotable(
+            rank=rank,
+            pawn=pawn,
+            rank_service=rank_service,
+        )
+        if promotable_rank_verification_result.is_failure:
+            # Return the exception chain on failure.
+            return UpdateResult.update_failure(
+                original=pawn,
+                exception=PawnPromoterException(
+                    cls_mthd=method,
+                    cls_name=cls.__class__.__name__,
+                    msg=PromotionException.MSG,
+                    err_code=PromotionException.ERR_CODE,
+                    ex=promotable_rank_verification_result.exception
                 )
             )
         # --- Integrity and consistency checks are passed. Start the promotion. ---#

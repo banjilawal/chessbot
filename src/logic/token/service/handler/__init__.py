@@ -11,7 +11,9 @@ version: 1.0.0
 
 # Packages
 from .coord import *
+from .checkmate import *
 from .promotion import *
+from .deployment import *
 
 # Modules
 from .handler import TokenHandler

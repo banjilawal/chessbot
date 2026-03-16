@@ -44,7 +44,7 @@ class TokenService(IntegrityService[Token]):
 
     Attributes:
         SERVICE_NAME: str
-        collision_detector: TokenCollisionDetector
+
         handler: TokenHandler
 
     # INHERITED ATTRIBUTES:

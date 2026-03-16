@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.token import PawnPromoter, TokenReadinessAnalyzer
+from logic.token import PawnPromoter, TokenDeployer, TokenReadinessAnalyzer
 from logic.token.service.handler.coord.handler import TokenCoordHandler
 
 
@@ -41,6 +41,7 @@ class TokenHandler:
     None
     """
     _promoter: PawnPromoter
+    _deployer: TokenDeployer
     _coord_handler: TokenCoordHandler
     _readiness_analyzer: TokenReadinessAnalyzer
     
