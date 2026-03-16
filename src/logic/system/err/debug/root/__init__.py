@@ -14,4 +14,3 @@ None
 
 # Modules
 from .root import DebugException
-from .templlate import TempVarDebugException

@@ -16,7 +16,10 @@ from logic.rank import King, Pawn, Rank, RankService
 from logic.square.context.finder.exception.debug.exist import SquareNotFoundException
 from logic.system import LoggingLevelRouter, SearchResult, UpdateResult, ValidationResult
 from logic.token import (
-    PawnDeploymentRowException, PromoteInactivePawnException, PromoteToPawnException, DeploymentState,
+    InconsistentTokenBoardStateException, InconsistentTokenCoordException, InconsistentTokenSquareException,
+    PawnDeploymentRowException,
+    PromoteInactivePawnException, PromoteToPawnException,
+    DeploymentState,
     DeploymentToKingException, PawnAlreadyPromotedException, PawnPromoterException, DeploymentException,
     PawnToken, TokenAlreadyDeployedException, TokenValidator,
 )
@@ -185,84 +188,44 @@ class TokenDeployment:
         if updated_square.occupant != token:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
-                original=token,
+                original=pre_update_token,
                 exception=TokenDeploymentException(
                     mthd=method,
                     op=TokenDeploymentException.OP,
                     msg=TokenDeploymentException.MSG,
                     err_code=TokenDeploymentException.ERR_CODE,
                     rslt_type=TokenDeploymentException.RSLT_TYPE,
-                    ex=opening_square_search_result.exception,
+                    ex=InconsistentTokenSquareException(
+                        msg=InconsistentTokenSquareException.MSG,
+                        err_code=InconsistentTokenSquareException.ERR_CODE,
+                    )
                 )
             )
+        # Handle the case that the, token's current position is not the square's
         if token.current_position != updated_square.coord:
-        
-        
-        # Handle the case that, the token has already been placed on the board.
-        if token.board_state != TokenBoardState.NEVER_BEEN_PLACED:
             # Return the exception chain on failure.
-            return InsertionResult.failure(
-                TokenServiceException(
-                    msg=f"{method}: {TokenService.ERR_CODE}",
-                    ex=TokenDeploymentException(
-                        msg=f"{method}: {TokenDeploymentException.ERR_CODE}",
-                        ex=TokenAlreadyDeployedOnBoardException(f"{method}:")
-                    )
-                )
-            )
-        # Find the square where the token gets formed.
-        square_search_result = token.team.board.squares.search(
-            context=SquareContext(token.opening_square_name)
-        )
-        # Handle the case that, the search is not completed.
-        if square_search_result.is_failure:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                TokenServiceException(
-                    msg=f"{method}: {TokenService.ERR_CODE}",
-                    ex=TokenDeploymentException(
-                        msg=f"{method}: {TokenDeploymentException.ERR_CODE}",
-                        ex=square_search_result.exception
-                    )
-                )
-            )
-        # Handle the case the square is not found.
-        if square_search_result.is_empty:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                TokenServiceException(
-                    msg=f"{method}: {TokenService.ERR_CODE}",
-                    ex=TokenDeploymentException(
-                        msg=f"{method}: {TokenDeploymentException.ERR_CODE}",
-                        ex=TokenOpeningSquareNotFoundException(
-                            f"{method}: {TokenOpeningSquareNotFoundException.MSG}"
-                        )
-                    )
-                )
-            )
-        # --- Run the occupation process on the opening square. ---#
-        occupation_result = token.team.board.squares.add_occupant_to_square(
-            token=token,
-            square=square_search_result.payload[0],
-        )
-        # Handle the case that, occupying the opening square fails.
-        if occupation_result.is_failure:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                TokenServiceException(
-                    msg=f"{method}: {TokenService.ERR_CODE}",
-                    ex=TokenDeploymentException(
-                        msg=f"{method}: {TokenDeploymentException.ERR_CODE}",
-                        ex=occupation_result.exception
+            return UpdateResult.update_failure(
+                original=pre_update_token,
+                exception=TokenDeploymentException(
+                    mthd=method,
+                    op=TokenDeploymentException.OP,
+                    msg=TokenDeploymentException.MSG,
+                    err_code=TokenDeploymentException.ERR_CODE,
+                    rslt_type=TokenDeploymentException.RSLT_TYPE,
+                    ex=InconsistentTokenCoordException(
+                        msg=InconsistentTokenCoordException.MSG,
+                        err_code=InconsistentTokenCoordException.ERR_CODE,
                     )
                 )
             )
         # --- Assure that token.board_state has been updated. ---#
-        if token.board_state == TokenBoardState.NEVER_BEEN_PLACED:
-            token.board_state = TokenBoardState.DEPLOYED_ON_BOARD
-        
-        # Send the success result to the caller.
-        return InsertionResult.success()
+        if updated_square.occupant.board_state == TokenBoardState.NEVER_BEEN_PLACED:
+            updated_square.occupant.board_state = TokenBoardState.DEPLOYED_ON_BOARD
+            
+        return UpdateResult.update_success(
+            original=pre_update_token,
+            updated=updated_square.occupant,
+        )
     
     @classmethod
     @LoggingLevelRouter.monitor

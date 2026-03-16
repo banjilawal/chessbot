@@ -10,7 +10,7 @@ version: 1.0.0
 # =========== TOKEN.SERVICE.HANDLER.DEPLOYMENT.EXCEPTION.DEBUG PACKAGE CONTENTS ===========#
 
 # Packages
-from .square import *
+from .inconsistent import *
 
 # Modules
 from .double import TokenAlreadyDeployedException

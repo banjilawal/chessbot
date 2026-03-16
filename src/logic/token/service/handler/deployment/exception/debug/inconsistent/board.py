@@ -11,21 +11,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# INCONSISTENT_TOKEN_SQUARE_OCCUPANT_EXCEPTION #======================#
-    "InconsistentTokenSquareException",
+    # ======================# INCONSISTENT_TOKEN_BOARD_STATE_EXCEPTION #======================#
+    "InconsistentTokenBoardStateException",
 ]
 
 from logic.system import InconsistentStateException
 
 
-# ======================# INCONSISTENT_TOKEN_SQUARE_OCCUPANT_EXCEPTION #======================#
-class InconsistentTokenSquareException(InconsistentStateException):
+# ======================# INCONSISTENT_TOKEN_BOARD_STATE_EXCEPTION #======================#
+class InconsistentTokenBoardStateException(InconsistentStateException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that when a square has occupied the square, the token is still  not registered
-        with the square.
+    1.  Indicate that when a Token.board_state == TokenBoardState.NEVER_DEPLOYED after
+        its been placed on the board..
 
     # PARENT:
         *   InconsistentStateException
@@ -52,8 +52,8 @@ class InconsistentTokenSquareException(InconsistentStateException):
     # INHERITED METHODS:
         *   See InconsistentStateException class for inherited methods.
     """
-    ERR_CODE = "INCONSISTENT_TOKEN_SQUARE_OCCUPANT_EXCEPTION"
-    MSG = "Square did not register visiting token."
+    ERR_CODE = "INCONSISTENT_TOKEN_BOARD_STATE_EXCEPTION"
+    MSG = "token.board_state == NEVER_BEEN_DEPLOYED after occupying square."
     
     def __init__(
             self,

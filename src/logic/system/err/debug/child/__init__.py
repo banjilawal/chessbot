@@ -14,7 +14,8 @@ from .null import *
 from .route import *
 from .method import *
 from .unique import *
-from .invaariant import *
+from .invariant import *
+from .inconsistent import *
 
 # Modules
 None

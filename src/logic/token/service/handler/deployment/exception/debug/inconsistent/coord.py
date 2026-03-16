@@ -11,21 +11,20 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# INCONSISTENT_TOKEN_SQUARE_OCCUPANT_EXCEPTION #======================#
-    "InconsistentTokenSquareException",
+    # ======================# INCONSISTENT_TOKEN_COORD_EXCEPTION #======================#
+    "InconsistentTokenCoordException",
 ]
 
 from logic.system import InconsistentStateException
 
 
-# ======================# INCONSISTENT_TOKEN_SQUARE_OCCUPANT_EXCEPTION #======================#
-class InconsistentTokenSquareException(InconsistentStateException):
+# ======================# INCONSISTENT_TOKEN_COORD_EXCEPTION #======================#
+class InconsistentTokenCoordException(InconsistentStateException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that when a square has occupied the square, the token is still  not registered
-        with the square.
+    1.  Indicate that when a Token's current_position differs from its current square's coord.
 
     # PARENT:
         *   InconsistentStateException
@@ -52,8 +51,8 @@ class InconsistentTokenSquareException(InconsistentStateException):
     # INHERITED METHODS:
         *   See InconsistentStateException class for inherited methods.
     """
-    ERR_CODE = "INCONSISTENT_TOKEN_SQUARE_OCCUPANT_EXCEPTION"
-    MSG = "Square did not register visiting token."
+    ERR_CODE = "INCONSISTENT_TOKEN_COORD_EXCEPTION"
+    MSG = "Token's current position differs from current square's coord."
     
     def __init__(
             self,
