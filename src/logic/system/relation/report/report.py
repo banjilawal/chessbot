@@ -12,7 +12,6 @@ from typing import Any, Optional
 
 from logic.system import RelationStatus
 
-
 class RelationReport:
     _primary: Optional[Any]
     _satellite: Optional[Any]

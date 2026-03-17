@@ -16,4 +16,4 @@ None
 from .stale import BoardHasStaleTeamLinkException
 from .register import TeamNotRegisteredBoardException
 from .occupied import TeamSlotAlreadyOccupiedException
-from .team import TeamBelongsToDifferentBoardException
+from .exist import TeamBelongsToDifferentBoardException

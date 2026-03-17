@@ -10,8 +10,14 @@ version: 1.0.0
 from __future__ import annotations
 from typing import cast
 
-from logic.board import Board, BoardBuilder, BoardSquareRelationAnalyzer, BoardValidator
-from logic.system import IdFactory, IntegrityService
+from logic.board import (
+    Board, BoardAlreadyLaidOutException, BoardBuilder, BoardLayoutFailedException, BoardSquareRelationAnalyzer,
+    BoardState, BoardValidator
+)
+from logic.board.service.exception.anchor import BoardServiceException
+from logic.graph import Graph, GraphComputationException
+from logic.system import ComputationResult, IdFactory, InsertionResult, IntegrityService, LoggingLevelRouter
+from logic.team import Team, TeamBelongsToDifferentBoardException, TeamService, TeamSlotAlreadyOccupiedException
 
 
 class BoardService(IntegrityService[Board]):
@@ -119,7 +125,6 @@ class BoardService(IntegrityService[Board]):
             return InsertionResult.failure(
                 BoardServiceException(
                     msg=f"ServiceId:{self.id}, {method}: {BoardServiceException}",
-                    ex=
                 ),
             )
     

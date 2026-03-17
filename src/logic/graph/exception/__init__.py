@@ -15,3 +15,4 @@ None
 # Modules
 from .anchor import GraphException
 from .debug import GraphDebugException
+from .computation import GraphComputationException

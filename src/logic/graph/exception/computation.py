@@ -15,5 +15,5 @@ __all__ = [
     "GraphComputationException",
 ]
 
-class GraphComputationException(GraphException, ComputationException):
+class GraphComputationException(ComputationException):
     pass
