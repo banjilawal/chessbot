@@ -10,15 +10,8 @@ version: 1.0.0
 from __future__ import annotations
 from typing import cast
 
-from logic.board.analyzer.square.analyzer import BoardSquareRelationAnalyzer
-from logic.graph import Graph, GraphComputationException
-from logic.system import ComputationResult, InsertionResult, LoggingLevelRouter, id_emitter, IntegrityService
-from logic.board import (
-    Board, BoardAlreadyLaidOutException, BoardBuilder, BoardLayoutFailedException, BoardServiceException,
-    BoardState, BoardValidator,
-)
-from logic.team import Team, TeamBelongsToDifferentBoardException, TeamService, TeamSlotAlreadyOccupiedException
-from logic.token import TokenStackState
+from logic.board import Board, BoardBuilder, BoardSquareRelationAnalyzer, BoardValidator
+from logic.system import IdFactory, IntegrityService
 
 
 class BoardService(IntegrityService[Board]):
@@ -46,38 +39,33 @@ class BoardService(IntegrityService[Board]):
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            id: int = id_emitter.service_id,
             builder: BoardBuilder = BoardBuilder(),
             validator: BoardValidator = BoardValidator(),
+            id: int = IdFactory.next_id(class_name="BoardService"),
             square_relation_analyzer: BoardSquareRelationAnalyzer = BoardSquareRelationAnalyzer()
     ):
         """
-        # ACTION:
-        Constructor
-
-        # PARAMETERS:
-            *   id (nt)
-            *   name (str)
-            *   builder (BoardFactory)
-            *   validator (BoardValidator)
-
-        # RETURNS:
-        None
-
-        Raises:
+        Args:
+                id: int
+                name: str
+                builder: BoardBuilder
+                validator: BoardValidator
+                square_relation_analyzer: SquareRelationAnalyzer
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         self._square_relation_analyzer = square_relation_analyzer
     
     @property
     def builder(self) -> BoardBuilder:
-        """get BoardBuilder"""
-        return cast(BoardBuilder, self.entity_builder)
+        return cast(BoardBuilder, self.builder)
     
     @property
     def validator(self) -> BoardValidator:
-        """get BoardValidator"""
-        return cast(BoardValidator, self.entity_validator)
+        return cast(BoardValidator, self.validator)
+    
+    @property
+    def square_relation_analyzer(self) -> BoardSquareRelationAnalyzer:
+        return  self._square_relation_analyzer
     
     @LoggingLevelRouter.monitor
     def form_team_on_board(

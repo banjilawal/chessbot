@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar
+from typing import Any, Generic, TypeVar
 
 from logic.system import LoggingLevelRouter, RelationReport
 
@@ -22,5 +22,5 @@ class RelationAnalyzer(ABC, Generic[P, S]):
     @classmethod
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def analyze(cls, candidate_primary: P, candidate_satellite: S) -> RelationReport[P, S]:
+    def analyze(cls, candidate_primary: P, candidate_satellite: S) -> RelationReport:
         pass

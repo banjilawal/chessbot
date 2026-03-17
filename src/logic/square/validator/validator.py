@@ -7,16 +7,16 @@ Created: 2025-09-11
 """
 
 from __future__ import annotations
-from typing import Any, List, cast
+from typing import Any, cast
 
 from logic.board import BoardService, SquareOnDifferentBoardException
 from logic.coord import CoordService
 from logic.square import (
-    BoardOrphanSquareLinkException, NullSquareException, Square, SquareDataSourceEmptyException,
-    SquareDataSourceNullException,
-    SquareBoardRegisteredException, SquareState, SquareValidationException
+    BoardOrphanSquareLinkException, NullSquareException, Square, SquareBoardRegisteredException,
+    SquareState, SquareValidationException
 )
 from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
+from logic.system.relation import RelationReport
 
 
 class SquareValidator(Validator[Square]):
@@ -208,8 +208,9 @@ class SquareValidator(Validator[Square]):
             candidate_primary=square.board,
             candidate_satellite=square,
         )
+
         # Handle the case that, the analyzer did not complete the request..
-        if board_square_relation.is_failure:
+        if board_square_relation.is_analyzer_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidationException(
@@ -238,7 +239,7 @@ class SquareValidator(Validator[Square]):
                 )
             )
         # Handle the case that, the board has an expire link to the square.
-        if board_square_relation.partially_exists:
+        if board_square_relation.stale_link_exists:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidationException(
@@ -254,7 +255,7 @@ class SquareValidator(Validator[Square]):
                 )
             )
         # Handle the case that, the square has not been added to the board's squares.
-        if board_square_relation.partially_exists:
+        if board_square_relation.registration_does_not_exist:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidationException(

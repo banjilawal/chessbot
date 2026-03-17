@@ -8,23 +8,21 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import Generic, Optional, TypeVar
+from typing import Any, Optional
 
 from logic.system import RelationStatus
 
-P = TypeVar("P")
-S = TypeVar("S")
 
-class RelationReport(Generic[P, S]):
-    _primary: Optional[P]
-    _satellite: Optional[S]
+class RelationReport:
+    _primary: Optional[Any]
+    _satellite: Optional[Any]
     _exception: Optional[Exception]
     _status: Optional[RelationStatus]
     
     def __init__(
             self,
-            primary: Optional[P],
-            satellite: Optional[S],
+            primary: Optional[Any],
+            satellite: Optional[Any],
             status: RelationStatus,
             exception: Optional[Exception],
     ):
@@ -36,11 +34,11 @@ class RelationReport(Generic[P, S]):
         self._exception = exception
         
     @property
-    def primary(self) -> Optional[P]:
+    def primary(self) -> Optional[Any]:
         return self._primary
     
     @property
-    def satellite(self) -> Optional[S]:
+    def satellite(self) -> Optional[Any]:
         return self._satellite
     
     @property
@@ -112,7 +110,7 @@ class RelationReport(Generic[P, S]):
         )
     
     @classmethod
-    def analyzer_failure(cls, exception: Exception) -> RelationReport[P, S]:
+    def analyzer_failure(cls, exception: Exception) -> RelationReport:
         return RelationReport(
             primary=None,
             satellite=None,
@@ -121,7 +119,7 @@ class RelationReport(Generic[P, S]):
         )
     
     @classmethod
-    def analyzer_timed_out(cls, exception: Exception) -> RelationReport[P, S]:
+    def analyzer_timed_out(cls, exception: Exception) -> RelationReport:
         return RelationReport(
             primary=None,
             satellite=None,
@@ -130,7 +128,7 @@ class RelationReport(Generic[P, S]):
         )
     
     @classmethod
-    def no_relation(cls) -> RelationReport[P, S]:
+    def no_relation(cls) -> RelationReport[Any, Any]:
         return RelationReport(
             primary=None,
             satellite=None,
@@ -139,7 +137,7 @@ class RelationReport(Generic[P, S]):
         )
     
     @classmethod
-    def registration_missing(cls, satellite: S) -> RelationReport[P, S]:
+    def registration_missing(cls, satellite: Any) -> RelationReport:
         return RelationReport(
             primary=None,
             exception=None,
@@ -148,7 +146,7 @@ class RelationReport(Generic[P, S]):
         )
     
     @classmethod
-    def stale_link(cls, primary: P) -> RelationReport[P, S]:
+    def stale_link(cls, primary: Any) -> RelationReport:
         return RelationReport(
             satellite=None,
             exception=None,
@@ -157,7 +155,7 @@ class RelationReport(Generic[P, S]):
         )
     
     @classmethod
-    def bidirectional(cls, primary: P, satellite: S) -> RelationReport[P,S]:
+    def bidirectional(cls, primary: Any, satellite: Any) -> RelationReport:
         return RelationReport(
             exception=None,
             primary=primary,
