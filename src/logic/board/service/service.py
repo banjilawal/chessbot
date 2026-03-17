@@ -13,7 +13,6 @@ from typing import cast
 from logic.board import (
     Board, BoardAlreadyLaidOutException, BoardBuilder, BoardLayoutFailedException, BoardRelationAnalysisContext,
     BoardRelationAnalyzer,
-    BoardSquareRelationAnalyzer,
     BoardState, BoardValidator
 )
 from logic.board.service.exception.anchor import BoardServiceException

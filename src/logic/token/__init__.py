@@ -16,7 +16,7 @@ from .exception import *
 from .factory import *
 from .model import *
 from .service import *
-from .analyzer import *
+from logic.token.service.operation.analyzer import *
 from .validator import *
 
 # Modules

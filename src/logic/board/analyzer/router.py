@@ -23,11 +23,11 @@ class BoardRelationAnalyzer:
         1.  Provide a single entry point for transactions TokenStackService runs.
 
     Attributes:
-
         team_relation: BoardTeamRelationAnalyzer
         square_relation: BoardSquareRelationAnalyzer
 
     Provides:
+         -  analyze(self, context: BoardRelationAnalysisContext) -> RelationReport
     Parent:
     """
     _team_relation: BoardTeamRelationAnalyzer

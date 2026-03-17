@@ -1,7 +1,7 @@
-# src/logic/token/state/analyzer.py
+# src/logic/token/service/operation/analyzer.py
 
 """
-Module: logic.token.state.analyzer
+Module: logic.token.service.operation.analyzer
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
