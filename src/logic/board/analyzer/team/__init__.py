@@ -7,11 +7,10 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-# =========== BOARD.SQUARE.ANALYZER PACKAGE CONTENTS ===========#
+# =========== BOARD.TEAM.ANALYZER PACKAGE CONTENTS ===========#
 
 # Packages
-from .square import *
-from .team import *
+from .exception import *
 
 # Modules
-None
+from .analyzer import BoardTeamRelationAnalyzer

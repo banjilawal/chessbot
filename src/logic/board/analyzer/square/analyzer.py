@@ -94,10 +94,7 @@ class BoardSquareRelationAnalyzer(RelationAnalyzer[Board, Square]):
             )
         square = cast(Square, square_validation.payload)
         
-        # Handle the case that, the square belongs to a different board.
-        if board != square.board:
-            return RelationReport.no_relation()
-        
+
         # --- Search the board's squares for the satellite-candidate. ---#
         square_search = board.squares.search(context=SquareContext(id=square.id))
         
@@ -112,10 +109,14 @@ class BoardSquareRelationAnalyzer(RelationAnalyzer[Board, Square]):
                 )
             )
         # --- Route between the possible outcomes. ---#
+        # Handle the case that, the square belongs to a different board.
+        if board != square.board and square_search.is_empty:
+            return RelationReport.no_relation()
         
-        # Handle an empty search result.
-        if square_search.is_empty:
+        if len(square_search.payload) > 0 and square.board != board:
+            return RelationReport.stale_link(primary=board)
+        
+        if len(square_search.payload) > 0 and square == board:
             return RelationReport.registration_missing(satellite=square)
         
-        # Handle nonempty search result.
         return RelationReport.bidirectional(primary=board, satellite=square)

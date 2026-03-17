@@ -5,7 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change beforePath="$PROJECT_DIR$/src/logic/square/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/validator/validator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/board/analyzer/team/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/board/analyzer/team/analyzer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/board/analyzer/team/exception/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/board/analyzer/team/exception/failure.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/board/analyzer/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/board/analyzer/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/board/analyzer/square/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/board/analyzer/square/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/board/analyzer/token/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/board/analyzer/token/analyzer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/board/analyzer/token/wrapper.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -272,7 +281,7 @@
     "ToolWindow.Python Packages.ShowToolbar": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/logic/square/validator/exception/debug",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/logic/board/analyzer",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -299,11 +308,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/logic/board/analyzer" />
       <recent name="$PROJECT_DIR$/src/logic/square/validator/exception/debug" />
       <recent name="$PROJECT_DIR$/src/logic/square/context/finder" />
       <recent name="$PROJECT_DIR$/src/logic/token/database/kernel/operation/crud/push" />
       <recent name="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/collision/exception/debug" />
-      <recent name="$PROJECT_DIR$/src/logic/token/service/handler/deployment/exception/debug/inconsistent" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/logic/system/relation/debug" />
