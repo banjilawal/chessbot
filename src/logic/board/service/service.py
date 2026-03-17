@@ -11,12 +11,17 @@ from __future__ import annotations
 from typing import cast
 
 from logic.board import (
-    Board, BoardAlreadyLaidOutException, BoardBuilder, BoardLayoutFailedException, BoardSquareRelationAnalyzer,
+    Board, BoardAlreadyLaidOutException, BoardBuilder, BoardLayoutFailedException, BoardRelationAnalysisContext,
+    BoardRelationAnalyzer,
+    BoardSquareRelationAnalyzer,
     BoardState, BoardValidator
 )
 from logic.board.service.exception.anchor import BoardServiceException
 from logic.graph import Graph, GraphComputationException
-from logic.system import ComputationResult, IdFactory, InsertionResult, IntegrityService, LoggingLevelRouter
+from logic.system import (
+    ComputationResult, IdFactory, InsertionResult, IntegrityService, LoggingLevelRouter,
+    RelationReport
+)
 from logic.team import Team, TeamBelongsToDifferentBoardException, TeamService, TeamSlotAlreadyOccupiedException
 
 
@@ -40,7 +45,7 @@ class BoardService(IntegrityService[Board]):
         *   See IntegrityService for inherited attributes.
     """
     SERVICE_NAME = "BoardService"
-    _square_relation_analyzer: BoardSquareRelationAnalyzer
+    _relation_analyzer: BoardRelationAnalyzer
     
     def __init__(
             self,
@@ -48,7 +53,7 @@ class BoardService(IntegrityService[Board]):
             builder: BoardBuilder = BoardBuilder(),
             validator: BoardValidator = BoardValidator(),
             id: int = IdFactory.next_id(class_name="BoardService"),
-            square_relation_analyzer: BoardSquareRelationAnalyzer = BoardSquareRelationAnalyzer()
+            relation_analyzer: BoardRelationAnalyzer = BoardRelationAnalyzer()
     ):
         """
         Args:
@@ -59,7 +64,7 @@ class BoardService(IntegrityService[Board]):
                 square_relation_analyzer: SquareRelationAnalyzer
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
-        self._square_relation_analyzer = square_relation_analyzer
+        self._relation_analyzer = relation_analyzer
     
     @property
     def builder(self) -> BoardBuilder:
@@ -70,8 +75,12 @@ class BoardService(IntegrityService[Board]):
         return cast(BoardValidator, self.validator)
     
     @property
-    def square_relation_analyzer(self) -> BoardSquareRelationAnalyzer:
-        return  self._square_relation_analyzer
+    def relation_analyzer(self) -> BoardRelationAnalyzer:
+        return  self._relation_analyzer
+    
+    @LoggingLevelRouter.monitor
+    def analyze_relationship(self, context: BoardRelationAnalysisContext) -> RelationReport:
+        return self._analyzer.analyze_relationship(context=context)
     
     @LoggingLevelRouter.monitor
     def form_team_on_board(
