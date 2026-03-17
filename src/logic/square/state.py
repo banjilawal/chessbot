@@ -12,38 +12,16 @@ from enum import Enum, auto
 
 class SquareState(Enum):
     """
-    Role:State Descriptor
+    Role:
+        -   State Descriptor
 
     Responsibilities:
-    1.  Indicating if the Token is in a state where
-            *   It has not been deployed to its opening square.
-            *   II has been deployed on the board.
-            *   It has been removed from the board.
+        1.  Indicates if the square can be visited.
+        
+    Provides
 
     Super Class:
         Enum
-
-    Provides:
-
-    # LOCAL ATTRIBUTES:
-        *   NEVER_BEEN_PLACED
-        *   DEPLOYED_ON_BOARD
-        *   REMOVED_FROM_BOARD
-
-    # INHERITED ATTRIBUTES:
-        *   See Enum class for inherited attributes.
-
-    Attributes:
-   None
-
-    # LOCAL METHODS:
-   None
-
-    # INHERITED METHODS:
-        *   See Enum class for inherited methods.
     """
     EMPTY = auto(),
     OCCUPIED = auto(),
-    TOKEN_ENTERING = auto(),
-    DEPARTING_TOKEN = auto(),
-    DOUBLE_COMBATANT_OCCUPANCY = auto(),

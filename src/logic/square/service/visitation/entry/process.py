@@ -11,39 +11,37 @@ from __future__ import annotations
 from copy import deepcopy
 
 from logic.square import (
-    Square, SquareOccupiedException, SquareState, SquareValidator, SquareValidator,
-    SquareVisitorBoardException, SquareVisitorDisabledException, WrongOpeningSquareException
+    Square, SquareEntryException, SquareOccupiedException, SquareState, SquareValidator, SquareVisitorBoardException,
+    SquareVisitorDisabledException, WrongOpeningSquareException
 )
-from logic.square.service.visitation.entry import SquareEntryException
 from logic.system import LoggingLevelRouter, UpdateResult
 from logic.token import Token, TokenBoardState, TokenService
 
 
 class SquareEntryProcess:
     """
-    Role:Update Handler, Consistency, Integrity Maintenance, Lifecycle Management
+    Role:
+        - Transaction Worker
+        - Consistency, Integrity Maintenance
+        - Process Runner
 
     Responsibilities:
-    1.  Ensure integrity and consistency are maintained during the  square's occupation lifecycle.
+        1.  Square visitation process owner.
+        2.  Preserve original and updated square data for rollbacks.
+        3.  Ensure both the token and the squares are consistent throughout
+            square visitation lifecycle.
+
+    Attributes:
+    
+    Provides:
+        -   execute(
+                    token: Token,
+                    square: Square,
+                    token_service: TokenService = TokenService(),
+                    square_validator: SquareValidator = SquareValidator(),
+            ) -> UpdateResult[Square]:
 
     Super Class:
-   None
-
-    Provides:
-
-
-    # INHERITED ATTRIBUTES:
-    None
-
-    # CONSTRUCTOR ARGS:
-    None
-
-    # LOCAL METHODS:
-        *   entry_visit(token: Token, square: Square, square_validator: SquareValidator) -> UpdateResult[Square]
-        *   terminate_visit(square: Square, square_validator: SquareValidator) -> DeletionResult[Token]
-
-    # INHERITED METHODS:
-    None
     """
     
     @classmethod
@@ -57,39 +55,27 @@ class SquareEntryProcess:
     ) -> UpdateResult[Square]:
         """
         Action:
-            1.  If the square is either unsafe put the square and exception chain  in the UpdateResult  then
-                return the client. Else make a deep copy of the square.
-            2.  If th  square is already occupied put the deep_copy and the exception chain  in the UpdateResult
-                sent to the client.
-            3.  If the token is either
-                    *   Disabled.
-                    *   Not certified safe.
-                    *   Belongs to a different board.
-                    *   unformed but want to entry from the wrong square.
-                put deep_copy and the exception chain in the UpdateResult sent to the client.
-            4.  Configure the square side of the square-token binding.
-            5.  Configure the token side of the square-token binding.
-            6.  Send deep_copy and the current square in the success result.
-
+            1.  Send the original square along with an exception chain in the validation result if:
+                    -   The square or token are insecure.
+                    -   The token is disabled
+                    -   The token belongs to a different board.
+                    -   The new token is being deployed to the wrong square.
+                    -   The square is already occupied.
+                    -   The square accepts the token but the token cannot update its position.
+            2.  Otherwise, each updates its state.
+            3.  Send the success result.
         Args:
             token: Token
             square: Square
             token_service: TokenService
             square_validator: SquareValidator
-
        Returns:
             UpdateResult[Square]
-
         Raises:
-            EnterSquareProcessException
-            SquareEntryException
-            SquareOccupiedException
-            SquareVisitorBoardException
-            SquareVisitorDisabledException
         """
         method = f"{cls.__class__.__name__}.execute"
         
-        # Handle the case that, the square does not pass a securityy test.
+        # Handle the case that, the square does not pass a security test.
         square_security_test_result = cls._run_square_tests(square=square, square_validator=square_validator)
         if square_security_test_result.is_failure:
             return square_security_test_result
@@ -104,18 +90,23 @@ class SquareEntryProcess:
         if deployment_test_result.is_failure:
             return deployment_test_result
         
-        # --- Integrity and consistency checks are passed. Perform visit registration tasks ---#
+        # --- Security tests are passed. Return the registration result to the caller. ---#
         return cls._register_token_visit(square=square, token=token)
     
     @classmethod
     @LoggingLevelRouter.monitor
     def _register_token_visit(cls, square: Square, token: Token) -> UpdateResult[Square]:
         """
+        Puts the token into the square.
 
         Action:
             1.  Send the square and an exception chain in the UpdateResult if:
                     - Pushing the square's coord onto the token's stack fails.
-            2.  Otherwise, send the success result
+            2.  Otherwise, after:
+                    -   The square makes the token its occupant
+                    -   The token updates its position
+                    -   Each updates its state.
+            3.  Send the success result.
         Args:
             square: Square
             token: Token
@@ -135,7 +126,10 @@ class SquareEntryProcess:
         
         # Handle the case that, the push failed
         if coord_insertion_result.is_failure:
+            # Rollback the square.
             square.occupant = None
+            square.state = SquareState.EMPTY
+            
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
                 original=square,
@@ -148,10 +142,11 @@ class SquareEntryProcess:
                     ex=coord_insertion_result.exception,
                 )
             )
-        
+        # --- Update the token's deployment state. ---#
         if token.board_state == TokenBoardState.NEVER_BEEN_PLACED:
             token.board_state = TokenBoardState.DEPLOYED_ON_BOARD
-        # --- Send the update success result to the client. ---#
+            
+        # --- Forward the work product to the caller. ---#
         return UpdateResult.update_success(original=pre_update_square, updated=square)
     
     @classmethod
@@ -159,7 +154,7 @@ class SquareEntryProcess:
     def _run_token_tests(
             cls,
             token: Token,
-            square: Square,,
+            square: Square,
             token_service: TokenService,
     ) -> UpdateResult[Square]:
         """
@@ -231,6 +226,7 @@ class SquareEntryProcess:
                     )
                 )
             )
+        # --- Forward the work product to the caller. ---#
         return UpdateResult.update_success(original=square, updated=square)
     
     @classmethod
@@ -291,6 +287,7 @@ class SquareEntryProcess:
                     ),
                 )
             )
+        # --- Forward the work product to the caller. ---#
         return UpdateResult.update_success(original=square, updated=square)
     
     
@@ -302,27 +299,29 @@ class SquareEntryProcess:
             square: Square,
     ) -> UpdateResult[Square]:
         """
+        Tests if  new tokens are deployed to the correct square.
+        
         # ACTION:
-            1.  If the token's opening name differs from the target's return a
-            ValidationResult with the exception.
-                Else return a Validation success result.
+            1.  If the token has not been deployed and the it has not been assigned to the square,
+                send the square along wih exception chain in the UpdateResult.
+            2.  Otherwise, send the success result.
         Args:
-            visitor: Token
-            target: Square
+            token: Token
+            square: Square
         Returns:
             ValidationResult[Square]
         Raises:
+            SquareEntryException
             WrongOpeningSquareException
         """
         method = f"{cls.__name__}_run_deployment_tests"
         
-        # Handle the case that, the token has already been deployed.
+        # If the token has already been deployed return.
         if token.is_deployed:
             return UpdateResult.update_success(original=square, updated=square)
         
         # Handle the case that, the token should open on a different square.
         if square.name.upper() != token.opening_square_name.upper():
-            # Return the exception chain on failure.
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
                 original=square,
@@ -338,5 +337,5 @@ class SquareEntryProcess:
                     )
                 )
             )
-        # --- Send the success result to the caller. ---#
+        # --- Forward the work product to the caller. ---#
         return UpdateResult.update_success(original=square, updated=square)
