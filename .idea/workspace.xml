@@ -5,16 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change afterPath="$PROJECT_DIR$/src/logic/board/analyzer/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/board/analyzer/team/analyzer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/board/analyzer/team/exception/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/board/analyzer/team/exception/failure.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/board/analyzer/context.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/board/analyzer/router.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/board/provider.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/board/analyzer/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/board/analyzer/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/board/analyzer/square/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/board/analyzer/square/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/board/analyzer/token/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/board/analyzer/token/analyzer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/board/analyzer/token/wrapper.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
