@@ -23,24 +23,21 @@ from logic.system import AnchorException
 # ======================# TOKEN_VISIT_HANDLER_EXCEPTION #======================#
 class TokenVisitHandlerException(AnchorException):
     """
-    # ROLE: Debug Coverage Target, Exception Chain Layer 0
+    Role:Debug Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
     1.  Indicate that an error occurred in a TokenVisitHandler.
 
-    # PARENT:
+    Super Class:
     *   AnchorException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See AnchorException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -90,7 +87,7 @@ from logic.system import DebugException
 # ======================# TOKEN_VISIT_HANDLER_EXCEPTION #======================#
 class PoppingEmptySquareStackException(DebugException):
     """
-    # ROLE: Exception Chain Layer 2, Exception Messaging
+    Role:Exception Chain Layer 2, Exception Messaging
     # TASK: Capture Error Variable State
 
     Responsibilities:
@@ -103,19 +100,16 @@ class PoppingEmptySquareStackException(DebugException):
     1.  Indicate a failure occurred in TokenVisitHandler.
     2.  The method where the error occurred is identified in the exception nested directly underneath.
 
-    # PARENT:
+    Super Class:
         *   DebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
@@ -163,19 +157,16 @@ from logic.system import AnchorException
 # ======================# TOKEN_VISIT_HANDLER_EXCEPTION #======================#
 class TokenVisitHandlerException(AnchorException):
     """"
-    # ROLE: Class/Module Identifier, Exception Chain Layer 3, Exception Messaging
+    Role:Class/Module Identifier, Exception Chain Layer 3, Exception Messaging
 
     Responsibilities:
 
 
-    # PARENT:
+    Super Class:
         *   AnchorException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

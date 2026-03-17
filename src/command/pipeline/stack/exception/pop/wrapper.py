@@ -19,20 +19,17 @@ from logic.system import DeletionException
 # ======================# POPPING_PIPELINE_STACK_FAILURE #======================#
 class PoppingPipelineStackFailedException(PipelineStackException, DeletionException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why PipelineStack could not delete a pipeline. The exception chain traces the ultimate source of failure.
 
-    # PARENT:
+    Super Class:
         *   PipelineStackException
         *   DeletionException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     INHERITED ATTRIBUTES:
     None

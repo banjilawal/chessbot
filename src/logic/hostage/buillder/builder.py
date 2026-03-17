@@ -22,7 +22,7 @@ from logic.token import CombatantActivityState, CombatantReadinessEnum, Combatan
 
 class HostageBuilder(Builder[Hostage]):
     """
-    # ROLE: Validation, Data Integrity And Reliability Guarantor
+    Role:Validation, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce Hostage instances whose integrity is guaranteed at creation.
@@ -30,14 +30,11 @@ class HostageBuilder(Builder[Hostage]):
     3.  Ensure params for Hostage creation have met the application's safety contract.
     4.  Return an exception to the client if a Validation resource does not satisfy integrity requirements.
 
-    # PARENT:
+    Super Class:
         *   Validation
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

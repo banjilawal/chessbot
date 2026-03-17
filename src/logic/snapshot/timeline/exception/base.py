@@ -16,14 +16,14 @@ __all__ = [
 # ======================# GAME_TIMELINE EXCEPTION #======================#
 class GameTimelineException(ResultStackException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Parent of exception raised by GameTimeline objects.
     2.  Parent of exception raised by classes that highly cohere with GameTimeline objects.
     3.  Super for GameTimeline errors not covered by lower level  GameTimeline exception.
 
-    # PARENT:
+    Super Class:
         *   ResultStackException
 
     # PROVIDES:

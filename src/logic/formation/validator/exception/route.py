@@ -9,7 +9,7 @@ __all__ = [
 # ======================# NO_FORMATION_VALIDATION_ROUTE EXCEPTION #======================#
 class SchemValidationExecutionRouteException(ResultException, ExecutionRouteException):
     """
-    # ROLE: Fallback Result, Debugging
+    Role:Fallback Result, Debugging
 
     Responsibilities:
     1.  Indicate that FormationValidator did not handle one of the paths necessary to assure a candidate is a 
@@ -17,15 +17,13 @@ class SchemValidationExecutionRouteException(ResultException, ExecutionRouteExce
         route. If a configuration does not have a validation route a SchemValidationExecutionRouteException
         will be returned in a ValidationResult.
 
-    # PARENT:
+    Super Class:
         *   ResultException
         *   ExecutionRouteException
 
     # PROVIDES
     None
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

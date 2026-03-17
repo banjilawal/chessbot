@@ -20,26 +20,23 @@ from logic.system import ExecutionRouteException
 # ======================# TOKEN_CONTEXT_BUILD_ROUTE_EXCEPTION #======================#
 class TokenContextBuildRouteException(ExecutionRouteException):
     """
-    # ROLE: Exception Chain Layer 2, Exception Messaging
+    Role:Exception Chain Layer 2, Exception Messaging
     # TASK: Capture Error Variable State
 
     Responsibilities:
     1.  A failure BuildResult was sent because there was no build route for the TokenContext
         attribute.
 
-    # PARENT:
+    Super Class:
         *   ExecutionRoute
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See ExecutionRoute class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

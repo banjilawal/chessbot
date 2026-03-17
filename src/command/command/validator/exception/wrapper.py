@@ -19,16 +19,15 @@ from logic.system import ValidationException
 # ======================# COMMAND_VALIDATION_FAILURE #======================#
 class CommandValidationException(ValidationException):
     """
-    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
+    Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
     1.  Identify the CommandValidator method where the process failed.
 
-    # PARENT:
+    Super Class:
         *   ValidationException
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   op (Optional[str])
@@ -37,7 +36,7 @@ class CommandValidationException(ValidationException):
     # INHERITED ATTRIBUTES:
         *   See ValidationException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   err_code (str)
         *   msg (str)
         *   ex (Optional[Exception])

@@ -20,21 +20,18 @@ from logic.pair import PairDebugException
 # ======================# PAIR_NOT_FOUND EXCEPTION #======================#
 class PairNotFoundException(PairDebugException):
     """
-    # ROLE: Debug, Error Tracing
+    Role:Debug, Error Tracing
 
     Responsibilities:
     1.  Indicate that an attempt to remove instances of a item by a unique attribute failed because no bag
         matching the property were found in the dataset.
 
-    # PARENT:
+    Super Class:
         *   NullException
         *   PairStackException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

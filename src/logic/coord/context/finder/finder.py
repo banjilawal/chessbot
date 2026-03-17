@@ -18,7 +18,7 @@ from logic.coord import (
 
 class CoordFinder(DataFinder[Coord]):
     """
-    # ROLE: SearchWorker
+    Role:SearchWorker
 
     Responsibilities:
     1.  Send bag in a TokenList whose attribute value match the context.key value to the caller.
@@ -30,11 +30,8 @@ class CoordFinder(DataFinder[Coord]):
     # PARENT
         *   SearchWorker
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

@@ -21,7 +21,7 @@ from logic.system import AnchorException
 # ======================# PLAYER_CONTEXT_EXCEPTION #======================#
 class PlayerContextException(AnchorException):
     """
-    # ROLE: Coverage Target, Exception Chain Layer 0
+    Role:Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
     1.  Anchoring target for PlayerContext debug (layer-2) error state firing incident
@@ -30,19 +30,16 @@ class PlayerContextException(AnchorException):
             *   The trigger's value.
     2.  Indicate which PlayerContext method received a worker's (layer-1) failure result.
 
-    # PARENT:
+    Super Class:
         *   AnchorException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See AnchorException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         msg: Optional[str]
         ex: Optional[Exception]
         cls_name: Optional[str]

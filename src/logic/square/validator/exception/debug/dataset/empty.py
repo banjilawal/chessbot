@@ -18,19 +18,16 @@ _all__ = [
 # ======================# SQUARE_DATA_SOURCE_EMPTY EXCEPTION #======================#
 class SquareDataSourceEmptyException(SquareDebugException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
     1.  A failing SearchResult was returned because the dataset was empty.
 
-    # PARENT:
+    Super Class:
         *   SquareDebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

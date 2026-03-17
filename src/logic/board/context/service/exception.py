@@ -19,21 +19,18 @@ __all__ = [
 # ======================# BOARD_CONTEXT_SERVICE EXCEPTION #======================#
 class BoardContextServiceException(BoardContextException, ServiceException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Indicate that an BoardContextService encountered an error which prevented the service from completing a task.
     2.  Wrap an exception that hits the try-finally block of an BoardContextService method.
 
-    # PARENT:
+    Super Class:
         *   ServiceException
         *   BoardContextException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

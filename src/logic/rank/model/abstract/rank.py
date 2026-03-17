@@ -19,7 +19,7 @@ from logic.system import ComputationResult, LoggingLevelRouter
 
 class Rank(ABC):
     """
-    # ROLE: Computation
+    Role:Computation
 
     Responsibilities:
     1.  Single-source-of-truth of Coords reachable from a Token's updated position on the board.

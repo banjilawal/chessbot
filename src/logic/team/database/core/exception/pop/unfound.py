@@ -20,20 +20,17 @@ from logic.team import TeamStackException
 # ======================# TEAM_DOES_NOT_EXIST_FOR_REMOVAL EXCEPTION #======================#
 class TeamDoesNotExistForRemovalException(TeamStackException, NullException):
     """
-    # ROLE: Debug, Error Tracing
+    Role:Debug, Error Tracing
 
     Responsibilities:
     1.  Indicate that an attempt to remove instances of a team by a unique attribute failed because no bag
         matching the property were found in the dataset.
 
-    # PARENT:
+    Super Class:
         *   TeamDaaServiceException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

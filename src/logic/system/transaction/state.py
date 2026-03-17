@@ -59,7 +59,7 @@ from enum import auto, Enum
 
 class TransactionState(Enum):
   """
-  # ROLE: Builder, Data Integrity And Reliability Guarantor implementation
+  Role:Builder, Data Integrity And Reliability Guarantor implementation
 
   Responsibilities:
   1. Process and validate parameters for creating `Team` instances.

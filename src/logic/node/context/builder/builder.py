@@ -23,7 +23,7 @@ from logic.system import Builder, BuildResult, NumberValidator
 
 class NodeContextBuilder(Builder[NodeContext]):
     """
-    # ROLE: Builder, Data Integrity And Reliability Guarantor
+    Role:Builder, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce NodeContext instances whose integrity is guaranteed at creation.
@@ -31,14 +31,11 @@ class NodeContextBuilder(Builder[NodeContext]):
     3.  Ensure params for NodeContext creation have met the application's safety contract.
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-    # PARENT:
+    Super Class:
         *   Builder
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

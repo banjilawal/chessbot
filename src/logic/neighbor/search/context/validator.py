@@ -20,7 +20,7 @@ from logic.piece import (
 
 class DomainSearchContextValidator(Validator[DomainSearchContext]):
     """
-     # ROLE: Validation, Data Integrity Guarantor, Security., Data Integrity
+     Role:Validation, Data Integrity Guarantor, Security., Data Integrity
   
     Responsibilities:
     1. Process and validate parameters for creating `DomainSearchContext` instances.

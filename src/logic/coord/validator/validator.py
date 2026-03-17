@@ -14,20 +14,17 @@ from logic.system import NUMBER_OF_ROWS, Validator, ValidationResult, LoggingLev
 
 class CoordValidator(Validator[Coord]):
     """
-     # ROLE: Validation, Data Integrity Guarantor, Security.
+     Role:Validation, Data Integrity Guarantor, Security.
 
     Responsibilities:
     1.  Ensure a Coord instance is certified safe, reliable and consistent before use.
     2.  Return useful debugging information if a candidate does not satisfy Coord integrity constraints.
 
-    # PARENT:
+    Super Class:
         *   Validator
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

@@ -20,7 +20,7 @@ from logic.node import (
 
 class NodeFinder(StackSearcher[Node]):
     """
-    # ROLE: SearchWorker
+    Role:SearchWorker
 
     Responsibilities:
     1.  Send bag in a NodeList whose attribute value match the context.key value to the caller.
@@ -32,11 +32,8 @@ class NodeFinder(StackSearcher[Node]):
     # PARENT
         *   SearchWorker
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

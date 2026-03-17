@@ -21,25 +21,22 @@ from logic.system import OperationException
 # ======================# COLLECTION_OPERATION_FAILURE #======================#
 class CollectionOperationException(OperationException):
     """
-    # ROLE: Debug Wrapper, Exception Chain Layer 2, Exception Messaging
+    Role:Debug Wrapper, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
     1.  Indicate what Collection Operation failed.
     2.  Encapsulate the DebugException which describes the failure condition.
 
-    # PARENT:
+    Super Class:
         *   OperationException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See OperationException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   err_code (str)
         *   msg (str)
         *   ex (Optional[Exception])

@@ -16,7 +16,7 @@ from logic.game import GameContext, GameContextBuilder, GameContextValidator
 
 class GameContextService(ContextService[GameContext]):
     """
-    # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
+    Role:Search Service, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing Game search microservice API.
@@ -25,14 +25,12 @@ class GameContextService(ContextService[GameContext]):
     4.  Create a single source of truth for Game search results by having single entry and exit points for the
         Game search flow.
 
-    # PARENT:
+    Super Class:
         *   ContextService
 
     # PROVIDES:
         *   GameContextService
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See ContextService for inherited attributes.

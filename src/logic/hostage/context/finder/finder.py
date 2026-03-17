@@ -21,7 +21,7 @@ from logic.token import CombatantToken, Token
 
 class HostageFinder(DataFinder[Hostage]):
     """
-    # ROLE: SearchWorker
+    Role:SearchWorker
 
     Responsibilities:
     1.  Send bag in a HostageList whose attribute value match the context.key value to the caller.
@@ -33,11 +33,8 @@ class HostageFinder(DataFinder[Hostage]):
     # PARENT
         *   SearchWorker
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

@@ -18,19 +18,16 @@ __all__ = [
 # ====================== WRONG_COLLECTION_TYPE EXCEPTION #======================#
 class WrongCollectionTypeException(CollectionException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
     
     Responsibilities:
     1.  The Collection contains the wrong type of data.
     
-    # PARENT:
+    Super Class:
      *   CollectionException
     
-    # PROVIDES:
-    None
+    Provides:
     
-    # LOCAL ATTRIBUTES:
-    None
     
     # INHERITED ATTRIBUTES:
     None

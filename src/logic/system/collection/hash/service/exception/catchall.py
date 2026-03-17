@@ -19,19 +19,16 @@ __all__ = [
 # ======================# HASH_SERVICE EXCEPTION #======================#
 class HashServiceException(ServiceException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Basic, Service Primitive
 
-    # PARENT:
+    Super Class:
         *   ServiceException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

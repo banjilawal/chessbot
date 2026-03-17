@@ -7,17 +7,16 @@ from logic.team import Team
 
 class TeamHash:
     """
-    # ROLE: Data-Holder Structure, Indexer
+    Role:Data-Holder Structure, Indexer
 
     # RESPONSIBILITY:
     1.  Hash table for simplifying and centralizing operations on opposing teams in a game.
     2.  Single unified entry point for team operations on the board.
 
-    # PARENT:
+    Super Class:
     None
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   white_team (Team)

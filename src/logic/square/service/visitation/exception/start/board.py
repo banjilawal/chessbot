@@ -19,19 +19,16 @@ class VisitorFromWrongBoardException(SquareDebugException):
 
       
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
     A failing UpdateResult was returned because a token tried to visit a square on a different board.
 
-    # PARENT:
+    Super Class:
         *   SquareDebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

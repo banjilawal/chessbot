@@ -16,24 +16,21 @@ from logic.square import Square
 
 class SquareRay(Ray[Square]):
     """
-    # ROLE: Data-Holder
+    Role:Data-Holder
 
     Responsibilities:
     1.  Stores members that define a ray from an origin to a terminus
 
-    # PARENT:
+    Super Class:
     None
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR:
+    Attributes:
         *   origin: Square
 
     # LOCAL METHODS:

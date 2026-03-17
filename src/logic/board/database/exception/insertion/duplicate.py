@@ -20,20 +20,17 @@ from logic.board import UniqueBoardDataServiceException
 # ======================# ADDING_DUPLICATE_BOARD EXCEPTION #======================#
 class AddingDuplicateBoardException(UniqueBoardDataServiceException):
     """
-    # ROLE: Debug, Error Tracing
+    Role:Debug, Error Tracing
 
     Responsibilities:
     1.  Indicate that an attempt to add a board to the BoardDatabase's dataset failed because the board was
         already in the collection
 
-    # PARENT:
+    Super Class:
         *   BoardDatabaseException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

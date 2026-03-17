@@ -19,21 +19,18 @@ __all__ = [
 # ======================# FORMATION_PERSONA_BOUNDS EXCEPTION #======================#
 class FormationPersonaBoundsException(FormationException, BoundsException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that a Formation lookup failed because the persona value was not permitted for the Formation
         attribute.
 
-    # PARENT:
+    Super Class:
         *   FormationException
         *   BoundsException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     INHERITED ATTRIBUTES:
     None

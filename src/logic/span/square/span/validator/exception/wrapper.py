@@ -20,24 +20,21 @@ from logic.system import ValidationException
 # ======================# SQUARE_SPAN_VALIDATION_FAILURE #======================#
 class SquareSpanValidationException(ValidationException):
     """
-    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
+    Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
     1.  Identify the SquareSpanValidator method where the process failed.
 
-    # PARENT:
+    Super Class:
         *   ValidationException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See ValidationException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         op: Optional[str]
         msg: Optional[str]
         ex: Optional[str]

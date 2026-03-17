@@ -15,7 +15,7 @@ from logic.vector import Vector
 
 class DiagonalRayFactors:
     """
-    # ROLE: Data-HOlder
+    Role:Data-HOlder
     # TASK: Computation arguments.
 
     Responsibilities:
@@ -24,11 +24,10 @@ class DiagonalRayFactors:
             *   The invariant.
             *   The additive factor for advancing the series.
 
-    # PARENT:
+    Super Class:
     None
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
             start_x: int
@@ -39,7 +38,7 @@ class DiagonalRayFactors:
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR:
+    Attributes:
             start_x: int
             x_step: int
             slope: int

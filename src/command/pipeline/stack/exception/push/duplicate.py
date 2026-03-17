@@ -18,19 +18,16 @@ __all__ = [
 # ======================# ADDING_DUPLICATE_PIPELINE EXCEPTION #======================#
 class AddingDuplicatePipelineException(PipelineStackException):
     """
-    # ROLE: Debug, Error Tracing
+    Role:Debug, Error Tracing
 
     Responsibilities:
     1.  Indicate that an attempt to add a pipeline to teh stack failed because it was already present.
 
-    # PARENT:
+    Super Class:
         *   PipelineStackException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

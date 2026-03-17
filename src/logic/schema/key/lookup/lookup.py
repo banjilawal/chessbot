@@ -18,21 +18,18 @@ from logic.system import GameColor, HashLookup, LoggingLevelRouter, SearchResult
 
 class SchemaLookup(HashLookup[Schema]):
     """
-    # ROLE: Forward Lookups
+    Role:Forward Lookups
 
     Responsibilities:
     1.  Run forward lookups on the Schema hashtable to find a Team's play_directive_metadata for a game.
     2.  Indicate there is no play_directive for a given key-value pair by returning an exception to the caller.
     3.  Verifies correctness of key-value key before running lookup.
 
-    # PARENT:
+    Super Class:
         *   ForwardLookup
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

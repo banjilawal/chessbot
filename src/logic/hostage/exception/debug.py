@@ -20,7 +20,7 @@ from logic.system import DebugException
 # ======================# HOSTAGE_DEBUG_EXCEPTION #======================#
 class HostageDebugException(DebugException):
     """
-    # ROLE: Exception Chain Layer 2, Exception Messaging
+    Role:Exception Chain Layer 2, Exception Messaging
     # TASK: Capture Error Variable State
     
     Responsibilities:
@@ -30,19 +30,16 @@ class HostageDebugException(DebugException):
             *   event which fired the variable into its error state.
         which occurred in the Hostage method identified in layer-0 of the exception chain.
 
-    # PARENT:
+    Super Class:
         *   DebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

@@ -18,19 +18,16 @@ __all__ = [
 # ======================# ADDING_DUPLICATE_TEAM EXCEPTION #======================#
 class AddingDuplicateTeamException(TeamStackException):
     """
-    # ROLE: Debug, Error Tracing
+    Role:Debug, Error Tracing
 
     Responsibilities:
     1.  Indicate that an attempt to add a team to teh stack failed because it was already present.
 
-    # PARENT:
+    Super Class:
         *   TeamStackException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

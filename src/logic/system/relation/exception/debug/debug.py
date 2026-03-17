@@ -20,7 +20,7 @@ from logic.system import DebugException
 # ======================# RELATION_ANALYSIS_DEBUG_EXCEPTION #======================#
 class RelationDebugException(DebugException):
     """
-    # ROLE:  Exception Messaging, Exception Chain Layer 2
+    Role: Exception Messaging, Exception Chain Layer 2
     # TASK: Capture Error Variable State
     
     Responsibilities:
@@ -33,19 +33,16 @@ class RelationDebugException(DebugException):
     Responsibilities:
     1.  Indicate that an error condition prevented the RelationAnalysis from completing.
     
-    # PARENT:
+    Super Class:
         *   DebugException
     
-    # PROVIDES:
-    None
+    Provides:
     
-    # LOCAL ATTRIBUTES:
-    None
     
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
     
-    # CONSTRUCTOR:
+    Attributes:
         var: Optional[str]
         val: Optional[str]
         msg: Optional[str]

@@ -20,24 +20,21 @@ from logic.system import NullException
 #======================# NULL_BOARD_EXCEPTION #======================#
 class NullBoardException(NullException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that a board is null where it should not be.
     
-    # PARENT:
+    Super Class:
         *   NullException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See NUllException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

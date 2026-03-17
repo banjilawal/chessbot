@@ -17,7 +17,7 @@ from logic.system import GameColor, NUMBER_OF_ROWS
 
 class Schema(Enum):
     """
-    # ROLE: Build Configuration Table, Schema, Metadata Set
+    Role:Build Configuration Table, Schema, Metadata Set
     
     # ABOUT THE SCHEMA:
     The Schema implements a hashtable which a Team gets metadata about its initial deployment on the Board
@@ -38,11 +38,10 @@ class Schema(Enum):
     Responsibilities:
     1.  Provides table of metadata used for building Team objects.
 
-    # PARENT:
+    Super Class:
         *   Enum
   
-    # PROVIDES:
-    None
+    Provides:
   
     # LOCAL ATTRIBUTES:
         *   color (GameColor)

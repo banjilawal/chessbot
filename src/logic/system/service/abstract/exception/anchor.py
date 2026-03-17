@@ -20,18 +20,17 @@ from logic.system import AnchorException
 # ======================# SERVICE_EXCEPTION #======================#
 class ServiceException(AnchorException):
     """
-    # ROLE: Debug Coverage Target, Exception Chain Layer 0
+    Role:Debug Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
     1.  Reporting and coverage for Service DebugExceptions.
     2.  Uses cls_mthd attribute to show which Service method received a failure
         result from a worker.
 
-    # PARENT:
+    Super Class:
     *   AnchorException
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   _id (int)
@@ -39,7 +38,7 @@ class ServiceException(AnchorException):
     # INHERITED ATTRIBUTES:
         *   See AnchorException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

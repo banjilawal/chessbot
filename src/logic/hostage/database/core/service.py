@@ -18,7 +18,7 @@ from logic.system import StackService, InsertionResult, LoggingLevelRouter, id_e
 
 class HostageList(StackService[Hostage]):
     """
-    # ROLE: Data Stack, SearchWorker IntegrityService, CRUD Operations, Encapsulation, API layer.
+    Role:Data Stack, SearchWorker IntegrityService, CRUD Operations, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing API.
@@ -26,14 +26,11 @@ class HostageList(StackService[Hostage]):
     3.  Ensure integrity of Hostage data stack
     4.  Stack data structure for Hostage objects with no guarantee of uniqueness.
 
-    # PARENT:
+    Super Class:
         *   StackService[Hostage]
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See StackService class for inherited attributes.

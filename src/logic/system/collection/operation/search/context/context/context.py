@@ -15,7 +15,7 @@ T = TypeVar("T")
 
 class Context(ABC, Generic[T]):
     """
-    # ROLE: Filtering Options, Data Transfer
+    Role:Filtering Options, Data Transfer
   
     Responsibilities:
     1.  Provide a set of attribute-value pairs. Used in searches or forward lookups.
@@ -23,8 +23,7 @@ class Context(ABC, Generic[T]):
     3.  In a forward hashmap lookup The context represents a Key for a KeyHash{Key: {str: [attribute-value-set]}
   
   
-    # PROVIDES:
-    None
+    Provides:
   
     # ATTRIBUTES:
         *   id (Optional[int])

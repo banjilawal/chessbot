@@ -20,7 +20,7 @@ from logic.system import BuildResult, Builder, GameColor, GameColorValidator, Id
 
 class FormationKeyBuilder(Builder[FormationKey]):
     """
-    # ROLE: Builder, Data Integrity And Reliability Guarantor
+    Role:Builder, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce FormationKey instances whose integrity is guaranteed at creation.
@@ -28,14 +28,11 @@ class FormationKeyBuilder(Builder[FormationKey]):
     3.  Ensure params for FormationKey creation have met the application's safety contract.
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-    # PARENT:
+    Super Class:
         *   Builder
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

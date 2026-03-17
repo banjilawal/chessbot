@@ -19,21 +19,18 @@ __all__ = [
 # ======================# STRING_VALIDATION_FAILURE #======================#
 class InvalidStringException(StringException, ValidationException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Indicate That  a candidate failed String validation checks.
     2.  Wraps an exception that hits the try-finally block of a StringValidator method.
 
-    # PARENT:
+    Super Class:
         *   StringException
         *   ValidationException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

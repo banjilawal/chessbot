@@ -18,20 +18,17 @@ _all__ = [
 # ======================# NO_SQUARE_DATASOURCE_PROVIDED EXCEPTION #======================#
 class SquareDataSourceSquareException(SquareDebugException, SquareException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
     1.  A failing SearchResult was returned because no dataset was provided for the query.
 
-    # PARENT:
+    Super Class:
         *   SquareDebugException
         *   SquareException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

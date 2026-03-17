@@ -12,7 +12,7 @@ from logic.system import NoRelationException
 # ======================# TREE_DOES_NOT_OWN_RAY_EXCEPTION #======================#
 class TreeDoesNotOwnRayException(NoRelationException):
     """
-    # ROLE:  Exception Messaging, Exception Chain Layer 2
+    Role: Exception Messaging, Exception Chain Layer 2
     # TASK: Capture Error Variable State
 
     Responsibilities:
@@ -25,19 +25,16 @@ class TreeDoesNotOwnRayException(NoRelationException):
     2.  Indicate that, a failing result was returned because the NodeTree does not own the
         SquareRay.
 
-    # PARENT:
+    Super Class:
         *   NoRelationException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See NoRelationException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         var: Optional[str]
         val: Optional[str]
         msg: Optional[str]

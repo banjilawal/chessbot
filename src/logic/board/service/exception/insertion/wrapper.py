@@ -19,21 +19,18 @@ from logic.system import InsertionException
 # ======================# BOARD_SERVICE_INSERTION_OPERATION_FAILURE #======================#
 class BoardServiceInsertionOpFailedException(BoardServiceException, InsertionException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why inserting either a BoardSquare or BoardToken failed. The encapsulated
         exceptions create chain for tracing the source of the failure.
 
-    # PARENT:
+    Super Class:
         *   BoardServiceException
         *   InsertionException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     INHERITED ATTRIBUTES:
     None

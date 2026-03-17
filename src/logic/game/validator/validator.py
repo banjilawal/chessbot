@@ -21,20 +21,18 @@ from logic.game import (
 
 class GameValidator(Validator[Game]):
     """
-     # ROLE: Validation, Data Integrity Guarantor, Security.
+     Role:Validation, Data Integrity Guarantor, Security.
 
     Responsibilities:
     1.  Ensure a Game instance is certified safe, reliable and consistent before use.
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
-    # PARENT:
+    Super Class:
         *   Validator
 
     # PROVIDES:
         * GameValidator
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

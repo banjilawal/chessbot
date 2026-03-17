@@ -10,19 +10,16 @@ from logic.token import TokenStateException
 # ======================# ROSTER_RELATION_ANALYSIS_FAILURE #======================#
 class TokenReadniessAnalysisException(TokenStateException, AnalysisException):
     """
-    # ROLE: Exception Wrapper, Encapsulation, Error Chaining
+    Role:Exception Wrapper, Encapsulation, Error Chaining
 
     Responsibilities:
     1.  Wrap any exception that kills the relation test process before the occupant's state has been evaluated.
 
-    # PARENT:
+    Super Class:
         *   WrapperException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

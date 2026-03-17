@@ -18,7 +18,7 @@ from logic.vector import Vector
 
 class PerpendicularPlaneFactors:
     """
-    # ROLE: Data-Holder, Utility
+    Role:Data-Holder, Utility
     # TASK: Provide solution sets
 
     Responsibilities:
@@ -28,11 +28,10 @@ class PerpendicularPlaneFactors:
             * South (0, -j)
             * East (i, 0)
 
-    # PARENT:
+    Super Class:
     None
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
             origin: Coord
@@ -40,7 +39,7 @@ class PerpendicularPlaneFactors:
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR:
+    Attributes:
             origin:
 
     # LOCAL METHODS:

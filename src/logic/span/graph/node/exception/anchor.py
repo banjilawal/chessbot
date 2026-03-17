@@ -21,7 +21,7 @@ from logic.system import AnchorException
 # ======================# NODE_TREE_PRODUCER_EXCEPTION #======================#
 class NodeTreeProducerException(AnchorException):
     """
-    # ROLE: Coverage Target, Exception Chain Layer 0
+    Role:Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
     1.  Provide NodeTreeProducer as:
@@ -30,19 +30,16 @@ class NodeTreeProducerException(AnchorException):
         target for layer-2 debugging exceptions.
     2.  Indicate which NodeTreeProducer method received a worker's (layer-1) failure result.
 
-    # PARENT:
+    Super Class:
         *   AnchorException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See AnchorException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

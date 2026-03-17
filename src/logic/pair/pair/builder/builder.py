@@ -16,26 +16,23 @@ from logic.pair import HeadTailSquareException, Pair, PairBuildException
 
 class PairBuilder(Builder[Pair]):
     """
-     # ROLE: Builder, Data Integrity And Reliability Guarantor
+     Role:Builder, Data Integrity And Reliability Guarantor
 
      Responsibilities:
      1.  Produce Pair instances whose integrity and reliability are guaranteed.
      2.  Ensure params for Pair creation have met the application's safety contract.
      3.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-     # PARENT:
+     Super Class:
          * Builder
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See Builder class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
     None
 
     # LOCAL METHODS:

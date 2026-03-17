@@ -18,7 +18,7 @@ from logic.system import (
 
 class NameValidator(Validator[str]):
     """
-     # ROLE: Validation, Data Integrity Guarantor, Security.
+     Role:Validation, Data Integrity Guarantor, Security.
 
     Responsibilities:
     1.  Ensure a designation is certified safe, reliable and consistent before use.
@@ -30,14 +30,12 @@ class NameValidator(Validator[str]):
         *   Not empty. (".", ".\n", ".\t", ".\r").
         *   length between MIN_NAME_LENGTH and MAX_NAME_LENGTH inclusive.
 
-    # PARENT:
+    Super Class:
         *   Validator
 
     # PROVIDES:
         * NameValidator
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

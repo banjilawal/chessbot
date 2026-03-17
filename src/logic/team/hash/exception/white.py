@@ -18,16 +18,15 @@ from logic.team import TeamHashException
 # ======================# WHITE_TEAM_HAS_WRONG_SCHEMA EXCEPTION #======================#
 class WhiteTeamHasWrongSchemaException(TeamHashException):
     """
-    # ROLE: Super Exception
+    Role:Super Exception
 
     Responsibilities:
     1.  Indicates that the white team in the hash does not have a white schema.
 
-    # PARENT:
+    Super Class:
         *   TeamHashException
 
-    # PROVIDES:
-    None
+    Provides:
 
     # ATTRIBUTES:
     None

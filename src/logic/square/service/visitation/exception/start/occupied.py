@@ -18,19 +18,16 @@ from logic.square import SquareDebugException
 # ======================# VISITING_OCCUPIED_SQUARE EXCEPTION #======================#
 class VisitingOccupiedSquareException(SquareDebugException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
     A failing UpdateResult was returned because a token tried entering an occupied square.
 
-    # PARENT:
+    Super Class:
         *   SquareDebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

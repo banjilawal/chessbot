@@ -16,7 +16,7 @@ from logic.rank import (
 
 class RankFactory(Builder[Rank]):
     """
-    # ROLE: Factory, Data Integrity Guarantor
+    Role:Factory, Data Integrity Guarantor
   
     Responsibilities:
     1.  Produce Rank instances whose integrity is guaranteed at creation.
@@ -24,14 +24,12 @@ class RankFactory(Builder[Rank]):
     3.  Ensure params for Rank creation have met the application's safety contract.
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
         
-    # PARENT:
+    Super Class:
         *   Builder
 
     # PROVIDES:
         *   RankFactory
   
-    # LOCAL ATTRIBUTES:
-    None
     
     # INHERITED ATTRIBUTES:
     None

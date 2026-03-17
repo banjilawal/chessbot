@@ -37,7 +37,7 @@ Attributes:
 """
 class BoardActorValidator(Validator[Tuple[Piece, Board]]):
   """
-  # ROLE: Validator, Data Integrity
+  Role:Validator, Data Integrity
 
   Responsibilities:
   1. Ensure `TravelEvent` actor_candidate has a valid binding to the execution environment for `TravelEventFactory`.

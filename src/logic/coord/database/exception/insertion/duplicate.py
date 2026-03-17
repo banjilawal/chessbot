@@ -18,20 +18,17 @@ __all__ = [
 # ======================# ADDING_DUPLICATE_COORD EXCEPTION #======================#
 class AddingDuplicateCoordException(UniqueCoordStackException):
     """
-    # ROLE: Debug, Error Tracing
+    Role:Debug, Error Tracing
 
     Responsibilities:
     1.  Indicate that an attempt to add a coord to the CoordDatabase's dataset failed because the coord was
         already in the collection
 
-    # PARENT:
+    Super Class:
         *   CoordDatabaseException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

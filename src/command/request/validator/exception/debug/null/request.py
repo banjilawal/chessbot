@@ -20,24 +20,21 @@ from logic.system import NullException
 # ======================# SERVICE_REQUEST_NULL_EXCEPTION #======================#
 class NullRequestException(NullException):
     """
-    # ROLE: Information, Reporting, Debug
+    Role:Information, Reporting, Debug
 
     Responsibilities:
     1.  Indicate that a service_request command_name has an error.
 
-    # PARENT:
+    Super Class:
         *  NullException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See NullException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

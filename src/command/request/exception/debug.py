@@ -20,24 +20,21 @@ from logic.system import DebugException
 # ======================# SERVICE_REQUEST_DEBUG_EXCEPTION #======================#
 class RequestDebugException(DebugException):
     """
-    # ROLE: Information, Reporting, Debug
+    Role:Information, Reporting, Debug
 
     Responsibilities:
     1.  Parent of DebugExceptions pertinent to Request instances.
 
-    # PARENT:
+    Super Class:
         *  DebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

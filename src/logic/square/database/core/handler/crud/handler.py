@@ -17,7 +17,7 @@ from logic.system import DeletionResult, IdentityService, InsertionResult, Loggi
 
 class SquareStackCrudHandler:
     """
-    # ROLE: CRUD Handler, Consistency, Integrity Maintenance, Lifecycle Management
+    Role:CRUD Handler, Consistency, Integrity Maintenance, Lifecycle Management
 
     Responsibilities:
     1.  Ensure integrity and consistency are maintained during SquareStack
@@ -25,11 +25,10 @@ class SquareStackCrudHandler:
             *   Deletion
         operations.
 
-    # PARENT:
+    Super Class:
     None
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   id (int)
@@ -39,7 +38,7 @@ class SquareStackCrudHandler:
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR:
+    Attributes:
         Local:
             *   id (int)
             *   name (str)

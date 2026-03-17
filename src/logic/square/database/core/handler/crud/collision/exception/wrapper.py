@@ -12,7 +12,7 @@ from logic.system import ColliderException
 # ======================# SQUARE_COLLISION_DETECTION_EXCEPTION #======================#
 class SquareColliderException(ColliderException):
     """
-    # ROLE: Coverage Target, Exception Chain Layer 0
+    Role:Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
     1.  Provide SquareCollisionDetector as:
@@ -22,19 +22,16 @@ class SquareColliderException(ColliderException):
     2.  Indicate which SquareCollisionDetector method received a worker's
         (layer-1) failure result.
 
-    # PARENT:
+    Super Class:
         *   ColliderException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See ColliderException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

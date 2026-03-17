@@ -20,17 +20,16 @@ __all__ = [
 # ========================= ARENA_SNAPSHOT_CONTEXT_FLAGS EXCEPTION =========================#
 class ArenaSnapshotContextFlagsException(InvalidSnapshotContextException, ContextFlagCountException):
     """
-    # ROLE: ContextFlagException, SnapshotContextException
+    Role:ContextFlagException, SnapshotContextException
 
     Responsibilities:
     1.  Indicate if more than one Game attribute is going to be used in an SnapshotFinder.
 
-    # PARENT:
+    Super Class:
         *   SnapshotContextValidationException
         *   ContextFlagCountException
 
-    # PROVIDES:
-    None
+    Provides:
 
     # ATTRIBUTES:
     None

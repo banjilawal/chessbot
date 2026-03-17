@@ -16,19 +16,16 @@ __all__ = [
 # ======================# RESOURCE_UNAVAILABLE EXCEPTION #======================#
 class ResourceUnavailableException(ChessException):
     """
-    # ROLE: Error Tracing, Debugging, Super Exception
+    Role:Error Tracing, Debugging, Super Exception
 
     Responsibilities:
     1.  Indicate that a resource a client needs is unavailable.
 
-    # PARENT:
+    Super Class:
         *   ChessException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

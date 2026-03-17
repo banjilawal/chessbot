@@ -20,21 +20,18 @@ __all__ = [
 #======================# BLANK_EMPTY_STRING EXCEPTION #======================#
 class BlankEmptyStringException(VoidStringException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Parent of exceptions which indicate an entity, method, or operation got a String with no characters and no
         whitespace.
     2.  Super for errors not covered by BlankEmptyString subclasses.
 
-    # PARENT:
+    Super Class:
         *   VoidStringException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

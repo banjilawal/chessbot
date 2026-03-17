@@ -20,24 +20,21 @@ from logic.system import NullException
 # ======================# NULL_ARGUMENTS_EXCEPTION #======================#
 class NullArgumentsException(NullException):
     """
-    # ROLE: Information, Reporting, Debug
+    Role:Information, Reporting, Debug
 
     Responsibilities:
     1.  Indicate that a request.arguments dictionary does not exist.
 
-    # PARENT:
+    Super Class:
         *  NullException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See NullException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

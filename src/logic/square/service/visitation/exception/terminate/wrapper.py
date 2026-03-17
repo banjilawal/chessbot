@@ -20,25 +20,22 @@ from logic.system import DeletionException
 # ======================# SQUARE_VISIT_TERMINATION_FAILURE #======================#
 class TerminateSquareVisitException(DeletionException):
     """
-    # ROLE: Exception Chain Layer 1, Exception Messaging
+    Role:Exception Chain Layer 1, Exception Messaging
     # TASK: Worker Method Identifier
 
     Responsibilities:
     1.  An error occurred in TokenVistHandler.terminate_visit that prevented a successful DeletionResult.
 
-    # PARENT:
+    Super Class:
         *   DeletionException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See DeletionException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   err_code (str)
         *   msg (str)
         *   ex (Optional[Exception])

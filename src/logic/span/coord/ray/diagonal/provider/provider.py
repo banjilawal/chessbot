@@ -14,18 +14,17 @@ from logic.span import DiagonalRayComputer, DiagonalPlaneFactors
 
 class DiagonalRayProvider:
     """
-    # ROLE: Utility
+    Role:Utility
     # TASK: Provide solution sets
 
     Responsibilities:
     1.  Aggregate modules for computing components of diagonal span from an origin.
     2.  Simplify CoordSpan derivations.
 
-    # PARENT:
+    Super Class:
     None
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
             plane: DiagonalPlaneFactors
@@ -34,7 +33,7 @@ class DiagonalRayProvider:
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR:
+    Attributes:
             plane: DiagonalPlaneFactors
             computer: DiagonalRayComputer
 

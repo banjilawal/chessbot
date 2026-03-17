@@ -18,19 +18,16 @@ __all__ = [
 # ======================# ADDING_DUPLICATE_PAIR EXCEPTION #======================#
 class AddingDuplicatePairException(PairStackException):
     """
-    # ROLE: Debug, Error Tracing
+    Role:Debug, Error Tracing
 
     Responsibilities:
     1.  Indicate that pushing a pair onto the stack failed because it was already present in the stack.
 
-    # PARENT:
+    Super Class:
         *   PairStackException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

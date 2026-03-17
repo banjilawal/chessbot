@@ -20,16 +20,15 @@ from logic.system import BuildException
 # ======================# SNAPSHOT_CONTEXT_BUILD_FAILURE #======================#
 class SnapshotContextBuildException(BuildException):
     """
-    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
+    Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
     1.  Identify the SnapshotContextBuilder method where the process failed.
 
-    # PARENT:
+    Super Class:
         *   BuildException
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   op (Optional[str])
@@ -38,7 +37,7 @@ class SnapshotContextBuildException(BuildException):
     # INHERITED ATTRIBUTES:
         *   See BuildException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   err_code (str)
         *   msg (str)
         *   ex (Optional[Exception])

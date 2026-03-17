@@ -23,20 +23,17 @@ from logic.system import ForwardLookupFailedException
 # ======================# SCHEMA_LOOKUP_FAILURE #======================#
 class SchemaLookupFailedException(SchemaException, ForwardLookupFailedException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Wrap an exception that hits the try-finally block of a SchemaLookup method.
 
-    # PARENT:
+    Super Class:
         *   SchemaException
         *   ForwardLookupFailedException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

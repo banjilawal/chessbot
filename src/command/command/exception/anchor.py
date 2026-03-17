@@ -20,16 +20,15 @@ from logic.system import AnchorException
 # ======================# COMMAND_EXCEPTION #======================#
 class CommandException(AnchorException):
     """
-    # ROLE: Debug Coverage Target, Exception Chain Layer 0
+    Role:Debug Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
     1.  Layer-0 of Exception chain which is the Parent of CommandDebugException
 
-    # PARENT:
+    Super Class:
       *   AnchorException
 
-    # PROVIDES:
-    None
+    Provides:
 
     # ATTRIBUTES:
     None

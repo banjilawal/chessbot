@@ -19,21 +19,19 @@ from logic.coord import (
 
 class CoordContextValidator(Validator[CoordContext]):
     """
-     # ROLE: Validation, Data Integrity Guarantor, Security.
+     Role:Validation, Data Integrity Guarantor, Security.
 
     Responsibilities:
     1. Verify a candidate is a CoordContext that meets the application's safety contract before the client
         is allowed to use the CoordContext object.
     2. Provide pluggable factories for validating different options separately.
   
-    # PARENT:
+    Super Class:
         * Validator
         
     3 PROVIDES:
     None
     
-    # LOCAL ATTRIBUTES:
-    None
     
     3 INHERITED ATTRIBUTES:
         *   See Validator class for inherited attributes.

@@ -19,20 +19,17 @@ __all__ = [
 # ======================# ARENA_IS_FULL EXCEPTION #======================#
 class ArenaIsFullException(ArenaException, DebugException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that the arena is full so no teams can be added
     
-    # PARENT:
+    Super Class:
         *   ArenaException
         *   DebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

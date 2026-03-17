@@ -21,24 +21,21 @@ from logic.square import SquareDebugException
 # ======================# NO_SQUARE_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#
 class SquareSearchRouteException(SquareDebugException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
     1.  Indicate that there was no search logic for a square attribute.
 
-    # PARENT:
+    Super Class:
         *   SquareDebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   SquareDebugException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]

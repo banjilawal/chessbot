@@ -19,20 +19,17 @@ from logic.system import InsertionException
 # ======================# NODE_INSERTION_FAILURE #======================#
 class NodePushException(NodeStackException, InsertionException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Indicate that pushing a Node on the Stack failed.
 
-    # PARENT:
+    Super Class:
         *   NodeStackException
         *   InsertionException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

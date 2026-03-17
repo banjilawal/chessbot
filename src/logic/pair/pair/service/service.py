@@ -16,7 +16,7 @@ from logic.system import IdFactory, IntegrityService
 
 class PairService(IntegrityService[Pair]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    Role:Service, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing Pair microservice API.
@@ -24,14 +24,11 @@ class PairService(IntegrityService[Pair]):
     3.  Authoritative, single source of truth for Pair state by providing
         single entry and exit points to Pair lifecycle.
 
-    # PARENT:
+    Super Class:
         *   IntegrityService
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See IntegrityService for inherited attributes.

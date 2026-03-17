@@ -19,7 +19,7 @@ __all__ = [
 # ======================# FORMATION_LOOKUP_WRAPPER EXCEPTION #======================#
 class FormationLookupFailedException(FormationException, LookupException):
     """
-    # ROLE: WrapperException, Encapsulation
+    Role:WrapperException, Encapsulation
 
     Responsibilities:
     1.  If a Formation lookup runs into an error a debug exception is created and encapsulated in a
@@ -27,15 +27,12 @@ class FormationLookupFailedException(FormationException, LookupException):
         SearchResult.
     2.  The FormationLookupFailedException chain is useful for tracing a wrapper to its source.
 
-    # PARENT:
+    Super Class:
         *   FormationValidationException
         *   LookupServiceException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     INHERITED ATTRIBUTES:
     None

@@ -21,7 +21,7 @@ from logic.system import (
 
 class ArenaValidator(Validator[Arena]):
     """
-    # ROLE: Validation, Data Integrity And Reliability Guarantor
+    Role:Validation, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce Arena instances whose integrity is guaranteed at creation.
@@ -29,14 +29,11 @@ class ArenaValidator(Validator[Arena]):
     3.  Ensure params for Arena creation have met the application's safety contract.
     4.  Return an exception to the client if a Validation resource does not satisfy integrity requirements.
 
-    # PARENT:
+    Super Class:
         *   Validation
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

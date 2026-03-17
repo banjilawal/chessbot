@@ -12,19 +12,17 @@ from enum import Enum, auto
 
 class GameState(Enum):
     """
-    # ROLE:  Lifecycle State, Transition State,
+    Role: Lifecycle State, Transition State,
 
     Responsibilities:
     1.  States in a Game's lifecycle.
 
-    # PARENT:
+    Super Class:
         *   Enum
 
     # PROVIDES:
     Snapshot
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

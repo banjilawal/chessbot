@@ -20,12 +20,12 @@ __all__ = [
 # ======================# NO_SCHEMA_LOOKUP_ROUTE EXCEPTION #======================#
 class SchemaLookupRouteException(SchemaException, ExecutionRouteException):
     """
-    # ROLE: Fallback Result
+    Role:Fallback Result
     
     Responsibilities:
     1. Indicate that SchemaLookup did not handle a build option or parameter with its own execution route.
     
-    # PARENT:
+    Super Class:
         *   SchemaException
         *   ExecutionRouteException
 
@@ -33,8 +33,6 @@ class SchemaLookupRouteException(SchemaException, ExecutionRouteException):
     # PROVIDES
     None
     
-    # LOCAL ATTRIBUTES:
-    None
     
     # INHERITED ATTRIBUTES:
     None

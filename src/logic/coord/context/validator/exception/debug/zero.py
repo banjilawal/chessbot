@@ -21,7 +21,7 @@ from logic.system import DebugException
 # ======================# ZERO_COORD_CONTEXT_FLAGS_EXCEPTION #======================#
 class ZeroCoordContextFlagsException(DebugException):
     """
-    # ROLE: Exception Chain Layer 2, Exception Messaging
+    Role:Exception Chain Layer 2, Exception Messaging
     # TASK: Capture Error Variable State
 
     Responsibilities:
@@ -33,19 +33,16 @@ class ZeroCoordContextFlagsException(DebugException):
 
     2.  A failing ValidationResult was returned because CoordContext candidate had no context flags enabled.
 
-    # PARENT:
+    Super Class:
         *   DebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

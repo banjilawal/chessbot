@@ -20,24 +20,21 @@ from logic.system import NullException
 #======================# NODE_TREE_NULL_EXCEPTION #======================#
 class NodeTreeNullException(NullException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that a nodeTree is null where it should not be.
     
-    # PARENT:
+    Super Class:
         *   NullException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See NUllException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         val: Optional[Any]
         var: Optional[str]
         msg: Optional[str]

@@ -19,20 +19,17 @@ from logic.system import InsertionException
 # ======================# EDGE_INSERTION_FAILURE #======================#
 class PushingEdgeException(EdgeStackException, InsertionException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Indicate that pushing a Edge on the Stack failed.
 
-    # PARENT:
+    Super Class:
         *   EdgeStackException
         *   InsertionException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

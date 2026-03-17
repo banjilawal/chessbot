@@ -20,19 +20,16 @@ from logic.node import NodeDebugException
 # ======================# POPPING_EMPTY_NODE_STACK EXCEPTION #======================#
 class PoppingEmptyNodeStackException(NodeDebugException):
     """
-    # ROLE: Debug, Error Tracing
+    Role:Debug, Error Tracing
 
     Responsibilities:
     1.  Indicate that an attempt to remove a item failed because the stack was empty
 
-    # PARENT:
+    Super Class:
         *   NodeException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

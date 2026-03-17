@@ -19,19 +19,17 @@ ___all__ = [
 #======================# BELOW_BOUNDS EXCEPTION #======================#
 class BelowBoundsException(BoundsException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that a value is below bounds.
 
-    # PARENT:
+    Super Class:
         *   BoundsException
 
     # PROVIDES:
 
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

@@ -20,20 +20,17 @@ from logic.team import (
 
 class TeamContextValidator(Validator[TeamContext]):
     """
-     # ROLE: Validation, Data Integrity Guarantor, Security.
+     Role:Validation, Data Integrity Guarantor, Security.
 
     Responsibilities:
     1.  Ensure a TeamContext instance is certified safe, reliable and consistent before use.
     2.  If verification fails indicate the reason in an exception returned to the caller.
 
-    # PARENT:
+    Super Class:
         *   Validator
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

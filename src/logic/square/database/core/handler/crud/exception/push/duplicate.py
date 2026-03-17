@@ -20,7 +20,7 @@ from logic.system import DebugException
 # ======================# ADDING_DUPLICATE_SQUARE_EXCEPTION #======================#
 class AddingDuplicateSquareException(DebugException):
     """
-    # ROLE: Exception Chain Layer 2, Exception Messaging
+    Role:Exception Chain Layer 2, Exception Messaging
     # TASK: Capture Error Variable State
 
     Responsibilities:
@@ -31,19 +31,16 @@ class AddingDuplicateSquareException(DebugException):
         which occurred in the SquareStackCrudHandler method identified in layer-0 of the exception chain.  
     2.  A failing InsertionResult was returned because an attempt to add a duplicate square to the stack.
 
-    # PARENT:
+    Super Class:
         *   DebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

@@ -16,19 +16,16 @@ from logic.system import BuildResult, LoggingLevelRouter
 
 class NodeTreeStackMigrator:
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    Role:Service, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Migrate unique nodes from the tree into a NodeStack
 
-    # PARENT:
+    Super Class:
         *   IntegrityService
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

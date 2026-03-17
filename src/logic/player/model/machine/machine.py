@@ -14,16 +14,15 @@ from logic.team import UniqueTeamDataService
 
 class MachinePlayer(Player):
     """
-    # ROLE: Controller
+    Role:Controller
 
     Responsibilities:
     1.  Forward requests and commands from a Machine owner to the Game model.
 
-    # PARENT:
+    Super Class:
         *   Player
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   engine_service (EngineService)

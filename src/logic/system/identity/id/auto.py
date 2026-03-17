@@ -16,7 +16,7 @@ T = TypeVar("V")
 
 class AutoId:
     """
-    # ROLE: Decorator
+    Role:Decorator
 
     # RESPONSIBILITY:
     1. Generate and issue unique, read-only thread safe IDs per class.

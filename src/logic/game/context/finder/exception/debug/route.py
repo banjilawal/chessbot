@@ -21,24 +21,21 @@ from logic.game import GameDebugException
 # ======================# NO_GAME_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#
 class GameSearchRouteException(GameDebugException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
     1.  Indicate that there was no search logic for a game attribute.
 
-    # PARENT:
+    Super Class:
         *   GameDebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   GameDebugException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]

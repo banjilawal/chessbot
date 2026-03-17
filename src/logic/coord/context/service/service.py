@@ -16,7 +16,7 @@ from logic.coord import CoordContext, CoordContextBuilder, CoordContextValidator
 
 class CoordContextService(ContextService[CoordContext]):
     """
-    # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
+    Role:Search Service, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing Coord search microservice API.
@@ -25,14 +25,11 @@ class CoordContextService(ContextService[CoordContext]):
     4.  Create a single source of truth for Coord search results by having single entry and exit points for the
         Coord search flow.
 
-    # PARENT:
+    Super Class:
         *   ContextService
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See ContextService for inherited attributes.

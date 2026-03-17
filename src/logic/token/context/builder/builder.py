@@ -24,7 +24,7 @@ from logic.token import (
 
 class TokenContextBuilder(Builder[TokenContext]):
     """
-    # ROLE: Builder, Data Integrity And Reliability Guarantor
+    Role:Builder, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce TokenContext instances whose integrity is guaranteed at creation.
@@ -32,14 +32,11 @@ class TokenContextBuilder(Builder[TokenContext]):
     3.  Ensure params for TokenContext creation have met the application's safety contract.
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-    # PARENT:
+    Super Class:
         *   Builder
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

@@ -18,17 +18,16 @@ from logic.token import TokenDatabase
 
 class Team:
     """
-    # ROLE: Data-Holder
+    Role:Data-Holder
 
     # RESPONSIBILITY:
     1.  Disposition of Tokens the Player can move on a Board instance.
     2.  Holds the captured enemy Tokens.
     
-    # PARENT:
+    Super Class:
     None
     
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   id (int)
@@ -40,7 +39,7 @@ class Team:
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR:
+    Attributes:
         Local:
         *   id (int)
         *   board (Board)
@@ -51,8 +50,6 @@ class Team:
         Inherited:
         None
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
    None

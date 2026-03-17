@@ -16,7 +16,7 @@ T = TypeVar("T")
 
 class IntegrityService(ABC, Service[Generic[T]]):
     """
-    # ROLE: Microservice API, Integrity Lifecycle Manager, APLifecycle Management.
+    Role:Microservice API, Integrity Lifecycle Manager, APLifecycle Management.
 
     Responsibilities:
     1.  Integrity Lifecycle Management Microservice API.
@@ -25,11 +25,10 @@ class IntegrityService(ABC, Service[Generic[T]]):
             *   At object creation.
             *   At object invocation.
 
-    # PARENT:
+    Super Class:
         *   Service
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   builder (Builder[T])
@@ -38,7 +37,7 @@ class IntegrityService(ABC, Service[Generic[T]]):
     # INHERITED ATTRIBUTES:
         *   See Service class for inherited attributes.
         
-    # CONSTRUCTOR:
+    Attributes:
         *   id (int)
         *   name (name)
         *   builder (Builder[T])

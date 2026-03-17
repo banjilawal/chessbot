@@ -18,19 +18,16 @@ __all__ = [
 # ======================# ADDING_DUPLICATE_EDGE EXCEPTION #======================#
 class AddingDuplicateEdgeException(EdgeDebugException):
     """
-    # ROLE: Debug, Error Tracing
+    Role:Debug, Error Tracing
 
     Responsibilities:
     1.  Indicate that an attempt to add a edge to teh stack failed because it was already present.
 
-    # PARENT:
+    Super Class:
         *   EdgeStackException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

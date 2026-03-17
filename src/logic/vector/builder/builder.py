@@ -15,7 +15,7 @@ from logic.vector import Vector, VectorBuildException,VectorValidator
 
 class VectorBuilder(Builder[Vector]):
     """
-     # ROLE: Builder, Data Integrity And Reliability Guarantor
+     Role:Builder, Data Integrity And Reliability Guarantor
 
      Responsibilities:
      1.  Produce Vector instances whose integrity is guaranteed at creation.
@@ -23,7 +23,7 @@ class VectorBuilder(Builder[Vector]):
      3.  Ensure params for Vector creation have met the application's safety contract.
      4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-     # PARENT:
+     Super Class:
          * Builder
 
      # PROVIDES:

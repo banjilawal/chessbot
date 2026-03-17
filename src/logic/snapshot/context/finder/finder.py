@@ -19,21 +19,19 @@ from logic.snapshot import GameTimeline, NullGameTimelineException, Snapshot, Sn
 
 class SnapshotFinder(Finder[Snapshot]):
     """
-    # ROLE: SearchWorker
+    Role:SearchWorker
 
     Responsibilities:
     1.  Search AgentStackService or Database objects for Agents with an attribute that matches the
         target inside an SnapshotContext.
     2.  Safely forward any errors encountered during a search to the caller.
 
-    # PARENT:
+    Super Class:
         *   SearchWorker
 
     # PROVIDES:
     SnapshotFinder:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

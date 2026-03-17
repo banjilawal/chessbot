@@ -15,7 +15,7 @@ from logic.hostage import Hostage, HostageBuilder, HostageValidator
 
 class HostageService(IntegrityService[Hostage]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    Role:Service, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing Square microservice API.
@@ -23,14 +23,12 @@ class HostageService(IntegrityService[Hostage]):
     3.  Authoritative, single source of truth for Square state by providing single entry and exit points to Square
         lifecycle.
 
-    # PARENT:
+    Super Class:
         *   IntegrityService
 
     # PROVIDES:
         *   HostageService
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See IntegrityService for inherited attributes.

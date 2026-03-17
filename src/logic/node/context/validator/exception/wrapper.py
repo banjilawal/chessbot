@@ -20,25 +20,22 @@ from logic.system import ValidationException
 # ======================# NODE_CONTEXT_VALIDATION_FAILURE #======================#
 class NodeContextValidationException(ValidationException):
     """
-    # ROLE: Exception Chain Layer 1, Exception Messaging
+    Role:Exception Chain Layer 1, Exception Messaging
     # TASK: Worker Method Identifier
 
     Responsibilities:
     1.  Identify the NodeValidator method where the process failed.
 
-    # PARENT:
+    Super Class:
         *   ValidationException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See ValidationException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   err_code (str)
         *   msg (str)
         *   ex (Optional[Exception])

@@ -20,24 +20,21 @@ from command import RequestDebugException
 # ======================# COMMAND_NAME_NOT_FOUND #======================#
 class CommandNameException(RequestDebugException):
     """
-    # ROLE: Information, Reporting, Debug
+    Role:Information, Reporting, Debug
 
     Responsibilities:
     1.  Indicate that a service_request command_name has an error.
 
-    # PARENT:
+    Super Class:
         *  RequestDebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See RequestDebugException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

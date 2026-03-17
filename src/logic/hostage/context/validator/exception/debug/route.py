@@ -20,26 +20,23 @@ from logic.system import ExecutionRouteException
 # ======================# HOSTAGE_CONTEXT_VALIDATION_ROUTE_EXCEPTION #======================#
 class HostageContextValidationRouteException(ExecutionRouteException):
     """
-    # ROLE: Exception Chain Layer 2, Exception Messaging
+    Role:Exception Chain Layer 2, Exception Messaging
     # TASK: Capture Error Variable State
 
     Responsibilities:
     1.  A failure ValidationResult was sent because there was no validation route for the HostageContext
         attribute.
 
-    # PARENT:
+    Super Class:
         *   ExecutionRoute
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See ExecutionRoute class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

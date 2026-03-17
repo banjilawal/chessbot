@@ -20,16 +20,15 @@ from logic.system import DebugException
 # ======================# SQUARE_SERVICE_DEBUG_EXCEPTION #======================#
 class SquareServiceDebugException(DebugException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Describes the condition that caused a SquareService operation failure.
 
-    # PARENT:
+    Super Class:
         *   DebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   var (Optional[str])
@@ -38,7 +37,7 @@ class SquareServiceDebugException(DebugException):
     # INHERITED ATTRIBUTES:
         *   DebugException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

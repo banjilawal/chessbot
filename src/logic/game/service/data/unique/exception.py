@@ -19,21 +19,18 @@ __all__ = [
 # ======================# UNIQUE_GAME_STACK_SERVICE EXCEPTION #======================#
 class UniqueGameDataServiceException(GameException, DatabaseException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Parent of exception raised by UniqueGameDataService objects.
     2.  Wraps an exception that hits the try-finally block of an UniqueDataGame's method.
 
-    # PARENT:
+    Super Class:
         *   GameException
         *   DatabaseException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

@@ -19,21 +19,18 @@ __all__ = [
 # ======================# TEAM_NOT_REGISTERED_WITH_BOARD EXCEPTION #======================#
 class TeamNotRegisteredBoardException(TeamDebugException, NotRegisteredException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
     1.  A failing TeamValidationResult was returned because the candidate team had not
         registered with its board.
 
-    # PARENT:
+    Super Class:
         *   TeamDebugException
         *   NotRegisteredException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

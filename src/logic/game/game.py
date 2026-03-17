@@ -16,12 +16,12 @@ from logic.game import Snapshot, GameTimeline, GameTimelineException
 
 class Game:
     """
-    # ROLE: Controller
+    Role:Controller
 
     Responsibilities:
     Interface players use to change the Arena's state.
 
-    # PARENT:
+    Super Class:
     None
 
     # PROVIDES:

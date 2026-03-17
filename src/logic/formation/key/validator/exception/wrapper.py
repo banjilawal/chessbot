@@ -19,7 +19,7 @@ __all__ = [
 # ======================# FORMATION_KEY_VALIDATION_FAILURE #======================#
 class FormationKeyValidationException(FormationKeyException, ValidationException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  A debug exception is created when a FormationKey candidate fails a validation test. Validation debug exceptions are
@@ -27,15 +27,12 @@ class FormationKeyValidationException(FormationKeyException, ValidationException
         ValidationResult.
     2.  The FormationKeyValidationException chain is useful for tracing a  failure to its source.
 
-    # PARENT:
+    Super Class:
         *   FormationKeyException
         *   ValidationException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     INHERITED ATTRIBUTES:
     None

@@ -17,17 +17,14 @@ from logic.span import SquareRay, SquareRayMembersNullException, SquareRayNullEx
 
 class SquareRayValidator(Validator[SquareRay]):
     """
-     # ROLE: Validation, Data Integrity Guarantor, Security.
+     Role:Validation, Data Integrity Guarantor, Security.
 
     Responsibilities:
     1.  Ensure a candidate is not null and the correct type before its used as a Span.Square.Ray.
     2.  If verification fails indicate the reason in an exception returned to the caller.
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

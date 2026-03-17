@@ -18,19 +18,16 @@ from logic.board import BoardException
 # ======================# BOARD_ALREADY_CONTAINS_BOARD EXCEPTION #======================#
 class BoardAlreadyContainsBoardException(BoardException):
     """
-    # ROLE: Debug, Error Tracing
+    Role:Debug, Error Tracing
 
     Responsibilities:
     1.  Indicate that a board build failed because the board for the board was already occupied.
 
-    # PARENT:
+    Super Class:
         *   BoardException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

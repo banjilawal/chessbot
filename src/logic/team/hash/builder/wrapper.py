@@ -19,21 +19,18 @@ from logic.system import BuildException
 # ======================# TEAM_HASH_BUILD_FAILURE #======================#
 class TeamHashBuildException(TeamHashException, BuildException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why a TeamHash build failed. The exception chain
         traces the ultimate source of failure.
 
-    # PARENT:
+    Super Class:
         *   TeamException
         *   BuildException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

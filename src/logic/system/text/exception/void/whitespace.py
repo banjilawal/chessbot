@@ -20,20 +20,17 @@ __all__ = [
 #======================# WHITE_SPACE_STRING EXCEPTION #======================#
 class WhiteSpaceStringException(VoidStringException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate an entity, method, or operation required a String with some characters but got one that
         only had whitespace.
 
-    # PARENT:
+    Super Class:
         *   VoidStringException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

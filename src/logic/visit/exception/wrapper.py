@@ -18,19 +18,16 @@ from logic.system import OperationException
 # ======================# VISIT_FAILURE #======================#
 class VisitException(OperationException):
     """
-    # ROLE: Exception Wrapper, Encapsulation, Error Chaining
+    Role:Exception Wrapper, Encapsulation, Error Chaining
 
     Responsibilities:
     1.  Wrap any exceptions that were created when an visit is not completed successfully.
 
-    # PARENT:
+    Super Class:
         *   OperationException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

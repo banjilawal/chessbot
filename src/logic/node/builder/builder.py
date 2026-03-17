@@ -16,7 +16,7 @@ from logic.system import BuildResult, Builder, LoggingLevelRouter
 
 class NodeBuilder(Builder[Node]):
     """
-    # ROLE: Factory, Data Integrity Guarantor
+    Role:Factory, Data Integrity Guarantor
 
     Responsibilities:
     1.  Produce Node instances whose integrity is guaranteed at creation.
@@ -24,14 +24,11 @@ class NodeBuilder(Builder[Node]):
     3.  Ensure params for Node creation have met the application's safety contract.
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-    # PARENT:
+    Super Class:
         *   Builder
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

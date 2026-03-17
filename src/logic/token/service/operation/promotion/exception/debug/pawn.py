@@ -21,24 +21,21 @@ from logic.token import TokenDebugException
 # ======================# CIRCULAR_PAWN_RANK_PROMOTION_EXCEPTION  #======================#
 class PromoteToPawnException(TokenDebugException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
     1.  Indicate that promoting a PawnToken failed because the new rank was still a Pawn's rank.
 
-    # PARENT:
+    Super Class:
         *   TokenDebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   TokenDebugException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]

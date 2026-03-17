@@ -21,19 +21,16 @@ from logic.system import PoppingEmptyStackException
 # ======================# POPPING_EMPTY_EDGE_STACK EXCEPTION #======================#
 class PoppingEmptyEdgeStackException(EdgeDebugException):
     """
-    # ROLE: Debug, Error Tracing
+    Role:Debug, Error Tracing
 
     Responsibilities:
     1.  Indicate that an attempt to remove a item failed because the stack was empty
 
-    # PARENT:
+    Super Class:
         *   EdgeException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

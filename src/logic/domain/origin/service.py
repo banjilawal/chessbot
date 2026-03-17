@@ -4,7 +4,7 @@ from logic.domain import DomainOrigin, DomainOriginBuilder, DomainOriginValidato
 
 class DomainOriginService(IntegrityService[DomainOrigin]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    Role:Service, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing DomainOrigin microservice API.
@@ -12,14 +12,12 @@ class DomainOriginService(IntegrityService[DomainOrigin]):
     3.  Authoritative, single source of truth for DomainOrigin state by providing single entry and exit points to DomainOrigin
         lifecycle.
 
-    # PARENT:
+    Super Class:
         *   IntegrityService
 
     # PROVIDES:
         *   DomainOriginService
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See IntegrityService for inherited attributes.

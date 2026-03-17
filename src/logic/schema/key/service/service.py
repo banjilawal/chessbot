@@ -15,7 +15,7 @@ from logic.schema import SchemaLookup, SchemaKey, SchemaKeyBuilder, SchemaKeyVal
 
 class SchemaKeyService(ContextService[SchemaKey]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    Role:Service, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing SchemaKey microservice API.
@@ -23,14 +23,11 @@ class SchemaKeyService(ContextService[SchemaKey]):
     3.  Authoritative, single source of truth for SchemaKey state.
     4.  Single entry and entry points to SchemaKey lifecycle.
 
-    # PARENT:
+    Super Class:
         *   ContextService
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See ContextService for inherited attributes.

@@ -22,26 +22,23 @@ from logic.token import Token, TokenService
 
 class SquareContextBuilder(Builder[SquareContext]):
     """
-    # ROLE: Builder, Data Integrity And Reliability Guarantor
+    Role:Builder, Data Integrity And Reliability Guarantor
 
     Responsibilities:
      1.  Produce SquareContext instances whose integrity and reliability are guaranteed.
      2.  Ensure params for SquareContext creation have met the application's safety contract.
      3.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-     # PARENT:
+     Super Class:
          * Builder
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR:
+    Attributes:
     None
 
     # LOCAL METHODS:

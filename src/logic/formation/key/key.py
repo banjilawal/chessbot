@@ -15,7 +15,7 @@ from logic.persona import Persona
 from logic.system import Context, GameColor
 
 """
-# ROLE: Filter, Search, Selection, Reverse/Forward Lookups
+Role:Filter, Search, Selection, Reverse/Forward Lookups
 
 Lookups are performed on the Schema table.
 
@@ -40,7 +40,7 @@ The for A SchemaKey is used tForward Schema lookups use a SchemaSuperKet ro
 1.  Define a Key from an attribute-value pair. The attribute must exist in the schema.
 2.  A forward lookup for a Schema variant requires a SchemaKey.
 
-# PARENT:
+Super Class:
     *   Context
 
 # PROVIDES:
@@ -54,17 +54,16 @@ None
 """
 class FormationKey(Context[Formation]):
     """
-    # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
+    Role:Filter, Search, Selection, Reverse/Forward Lookups
 
     Responsibilities:
     Provide an attribute-value to find Formations with a matching value in
     their version of the attribute.
 
-    # PARENT:
+    Super Class:
         *   Context
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   square_name (Optional[str])

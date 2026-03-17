@@ -1,9 +1,9 @@
-# src/logic/token/database/kernel/operation/quota/exception/full.py
+# src/logic/token/database/kernel/operation/crud/push/exception/rank.py
 
 """
-Module: logic.token.database.kernel.operation.quota.exception.full
+Module: logic.token.database.kernel.operation.crud.push.exception.rank
 Author: Banji Lawal
-Created: 2026-02-21
+Created: 2026-02-22
 version: 1.0.0
 """
 
@@ -21,36 +21,26 @@ from logic.token import TokenDebugException
 # ======================# NO_OPENINGS_FOR_RANK_EXCEPTION #======================#
 class RankQuotaFullException(TokenDebugException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:
+        - Error Variable Identifier
+        - Exception Chain Layer 2
+        - Exception Messaging
 
     Responsibilities:
-    1.  Indicate that pushing a token to the stack failed because there were no
-        openings for the token's rank.
-
-    # PARENT:
-        *   TokenTokenDebugException
-
-    # PROVIDES:
-    None
-
-    # LOCAL ATTRIBUTES:
-    None
-
-    # INHERITED ATTRIBUTES:
-        *   TokenTokenDebugException class for inherited attributes.
-
-    # CONSTRUCTOR:
+        1.  Indicate that pushing a token to the stack failed because there were no
+            openings for the token's rank.
+        
+    Attributes:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]
         ex: Optional[Exception]
         err_code: Optional[str]
-
-    # LOCAL METHODS:
-    None
-
-    # INHERITED METHODS:
-        *   See TokenTokenDebugException class for inherited methods.
+        
+    Provides:
+    
+    Super Class:
+        *   TokenTokenDebugException
     """
     ERR_CODE = "NO_OPENINGS_FOR_RANK_EXCEPTION"
     MSG = "Pushing token failed: There were no openings for the token's rank."

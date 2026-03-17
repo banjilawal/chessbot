@@ -19,20 +19,18 @@ from logic.system import ExecutionRouteException
 # ======================# NO_SNAPSHOT_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
 class SnapshotContextValidationRouteException(SnapshotContextException, ExecutionRouteException):
     """
-    # ROLE: Fallback Result, Debugging
+    Role:Fallback Result, Debugging
 
     Responsibilities:
     1.  Indicate that the SnapshotContext validation failed because there was no build route for the SnapshotContext key.
 
-    # PARENT:
+    Super Class:
         *   SnapshotContextException
         *   ExecutionRouteException
 
     # PROVIDES
     None
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

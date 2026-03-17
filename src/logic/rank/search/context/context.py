@@ -15,13 +15,13 @@ from logic.system import Context
 
 class RankContext(Context[Rank]):
     """
-    # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
+    Role:Filter, Search, Selection, Reverse/Forward Lookups
 
     Responsibilities:
     Provide an RankFinder with an attribute value to find Ranks with a matching value in
     their version of the attribute.
 
-    # PARENT:
+    Super Class:
         *   Context
 
     # PROVIDES:

@@ -1,7 +1,7 @@
-# src/logic/token/database/kernel/operation/crud/exception/push/duplicate.py
+# src/logic/token/database/kernel/operation/crud/push/exception/full.py
 
 """
-Module: logic.token.database.kernel.operation.crud.exception.push.duplicate
+Module: logic.token.database.kernel.operation.crud.push.exception.full
 Author: Banji Lawal
 Created: 2026-02-22
 version: 1.0.0
@@ -23,35 +23,25 @@ from logic.system import DebugException
 # ======================# TOKEN_STACK_FULL_EXCEPTION #======================#
 class TokenStackFullException(DebugException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:
+        - Error Variable Identifier
+        - Exception Chain Layer 2
+        - Exception Messaging
 
     Responsibilities:
-    1.  Indicate that pushing a token to the stack failed because the stack was full.
-
-    # PARENT:
-        *   TokenDebugException
-
-    # PROVIDES:
-    None
-
-    # LOCAL ATTRIBUTES:
-    None
-
-    # INHERITED ATTRIBUTES:
-        *   TokenDebugException class for inherited attributes.
-
-    # CONSTRUCTOR:
+        1.  Indicate that pushing a token to the stack failed because the stack was full.
+        
+    Attributes:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]
         ex: Optional[Exception]
         err_code: Optional[str]
+        
+    Provides:
 
-    # LOCAL METHODS:
-    None
-
-    # INHERITED METHODS:
-        *   See TokenDebugException class for inherited methods.
+    Super Class:
+        TokenDebugException
     """
     ERR_CODE = "TOKEN_STACK_FULL_EXCEPTION"
     MSG = "Cannot push a token onto a full stack."

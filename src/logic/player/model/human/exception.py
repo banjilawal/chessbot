@@ -17,21 +17,18 @@ __all__ = [
 #======================# HUMAN_PLAYER EXCEPTION #======================#
 class HumanPlayerException(PlayerException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Indicate an attribute, method, or operation organic to a HumanPlayer encountered a condition which
         caused a failure.
     2.  Wraps an exception that hits the try-finally block of an Player method.
 
-    # PARENT:
+    Super Class:
         *   PlayerException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
     
     # INHERITED ATTRIBUTES:
     None

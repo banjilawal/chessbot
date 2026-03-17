@@ -22,17 +22,16 @@ from logic.token import Token
 
 class EdgeContext(Context[Edge]):
     """
-    # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
+    Role:Filter, Search, Selection, Reverse/Forward Lookups
 
     Responsibilities:
     Provide an EdgeFinder with an attribute value to find Edges with a matching value in teir version of
     the attribute.
 
-    # PARENT:
+    Super Class:
         *   Context
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   board (Optional[Board])

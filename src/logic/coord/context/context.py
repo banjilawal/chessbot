@@ -15,16 +15,15 @@ from logic.system import Context
 
 class CoordContext(Context[Coord]):
     """
-    # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
+    Role:Filter, Search, Selection, Reverse/Forward Lookups
 
     Responsibilities:
     Provide an CoordFinder with an attribute-value which finds Coords which match the targeted attribute-value.
 
-    # PARENT:
+    Super Class:
         *   Context
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   row (Optional[int])

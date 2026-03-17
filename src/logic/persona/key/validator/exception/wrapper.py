@@ -19,7 +19,7 @@ from logic.system import ValidationException
 # ======================# PERSONA_KEY_VALIDATION_FAILURE #======================#
 class PersonaKeyValidationException(PersonaKeyException, ValidationException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  A debug exception is created when a PersonaKey candidate fails a validation test. Validation debug
@@ -27,15 +27,12 @@ class PersonaKeyValidationException(PersonaKeyException, ValidationException):
         which is sent to the caller in a ValidationResult.
     2.  The PersonaKeyValidationException chain is useful for tracing a  failure to its source.
 
-    # PARENT:
+    Super Class:
         *   PersonaKeyException
         *   ValidationException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     INHERITED ATTRIBUTES:
     None

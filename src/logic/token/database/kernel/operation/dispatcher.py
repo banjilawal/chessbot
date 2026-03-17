@@ -14,7 +14,7 @@ from logic.token import RankQuotaAnalyzer, TokenCollisionDetector, TokenStackCru
 
 class TokenStackOpsDispatcher:
     """
-    # ROLE: Handler Manager
+    Role:Handler Manager
 
     Responsibilities:
     1.  Unifies TokenStackService utilities in one place.
@@ -24,11 +24,10 @@ class TokenStackOpsDispatcher:
         from  core data structure operations.
     3.  Manges Updates (state changes) responsibilities for the TokenStackService.
 
-    # PARENT:
+    Super Class:
     None
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   SERVICE_NAME (str)
@@ -38,7 +37,7 @@ class TokenStackOpsDispatcher:
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR:
+    Attributes:
         Local:
             *   stats_analyzer (TokenStacKAnalyzer)
             *   occupation_service (TokenStackTokenHandler)

@@ -19,7 +19,7 @@ from logic.rank import (
 
 class RankContextValidator(Validator[RankContext]):
     """
-     # ROLE: Validation, Data Integrity Guarantor, Security.
+     Role:Validation, Data Integrity Guarantor, Security.
 
     Responsibilities:
     1. Verify a candidate is a RankContext that meets the application's safety contract before the client

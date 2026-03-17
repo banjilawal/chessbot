@@ -15,24 +15,21 @@ from logic.coord import Coord
 
 class CoordRay(Ray[Coord]):
     """
-    # ROLE: Data-Holder
+    Role:Data-Holder
     
     Responsibilities:
     1.  Stores members that define a ray from an origin to a terminus
 
-    # PARENT:
+    Super Class:
         *   Ray
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See Ray class for inherited attributes
 
-    # CONSTRUCTOR:
+    Attributes:
         *   origin: Coord
         *   members: List[Coord]
 

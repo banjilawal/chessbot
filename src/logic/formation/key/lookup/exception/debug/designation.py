@@ -19,21 +19,18 @@ __all__ = [
 # ======================# FORMATION_DESIGNATION_BOUNDS EXCEPTION #======================#
 class FormationDesignationBoundsException(FormationException, BoundsException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that a Formation lookup failed because the designation value was not permitted for the Formation
         attribute.
 
-    # PARENT:
+    Super Class:
         *   FormationException
         *   BoundsException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     INHERITED ATTRIBUTES:
     None

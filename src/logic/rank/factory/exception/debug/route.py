@@ -20,24 +20,21 @@ from logic.system import ExecutionRouteException
 # ======================# RANK_BUILD_ROUTE_EXCEPTION #======================#
 class RankBuildRouteException(ExecutionRouteException):
     """
-    # ROLE: Error Tracing, Debugging, Super Exception
+    Role:Error Tracing, Debugging, Super Exception
 
     Responsibilities:
     1.  Indicate that there is no build route for a Persona entry.
 
-    # PARENT:
+    Super Class:
         *   ExecutionRoute
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See ExecutionRoute class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         msg: Optional[str]
         msg: Optional[str]
         var: Optional[str]

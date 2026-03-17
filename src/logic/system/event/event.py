@@ -17,7 +17,7 @@ X = TypeVar('X') # ExecutionEnvironment Type
 
 class Event(Generic[A, R, X]):
   """
-  # ROLE: State Management, Data Transport, Abstract Data Type
+  Role:State Management, Data Transport, Abstract Data Type
 
   Responsibilities:
   1. Transport entity_service representing an entity's updated state.

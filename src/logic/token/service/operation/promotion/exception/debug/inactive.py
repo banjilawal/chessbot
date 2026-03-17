@@ -21,24 +21,21 @@ from logic.token import TokenDebugException
 # ======================# CANNOT_PROMOTE_INACTIVE_PAWN_EXCEPTION  #======================#
 class PromoteInactivePawnException(TokenDebugException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
     1.  Indicate that an inactive PawnToken cannot be promoted.
 
-    # PARENT:
+    Super Class:
         *   TokenDebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   TokenDebugException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]

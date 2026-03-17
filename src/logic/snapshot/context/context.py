@@ -19,18 +19,17 @@ from logic.system import Context, GameColor
 
 class SnapshotContext(Context[Snapshot]):
     """
-    # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
+    Role:Filter, Search, Selection, Reverse/Forward Lookups
 
     Responsibilities:
     1.  Provide an SchemaLookup with an attribute-value-tuple to perform forward Schema entry lookups.
     # Provtimestampe a SnapshotFinder with a Snapshot or Arena attribute used to find snapshots which a matching
     # attribute.
 
-    # PARENT:
+    Super Class:
         *   Context
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   game (Optional[Game])

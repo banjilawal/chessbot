@@ -18,7 +18,7 @@ from logic.system import Builder, BuildResult, IdentityService, LoggingLevelRout
 
 class ArenaBuilder(Builder[Arena]):
     """
-    # ROLE: Builder, Data Integrity And Reliability Guarantor
+    Role:Builder, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce Arena instances whose integrity is guaranteed at creation.
@@ -26,14 +26,12 @@ class ArenaBuilder(Builder[Arena]):
     3.  Ensure params for Arena creation have met the application's safety contract.
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
     
-    # PARENT:
+    Super Class:
         *   Builder
 
     # PROVIDES:
         *   ArenaBuilder
 
-    # LOCAL ATTRIBUTES:
-    None
     
     # INHERITED ATTRIBUTES:
     None

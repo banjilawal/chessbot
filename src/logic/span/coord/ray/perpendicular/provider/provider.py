@@ -14,18 +14,17 @@ from logic.span import PerpendicularRayComputer, PerpendicularPlaneFactors
 
 class PerpendicularRayProvider:
     """
-    # ROLE: Utility
+    Role:Utility
     # TASK: Provide solution sets
 
     Responsibilities:
     1.  Aggregate modules for computing components of perpendicular span from an origin.
     2.  Simplify CoordSpan derivations.
 
-    # PARENT:
+    Super Class:
     None
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
             plane: PerpendicularPlaneFactors
@@ -34,7 +33,7 @@ class PerpendicularRayProvider:
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR:
+    Attributes:
             plane: PerpendicularPlaneFactors
             computer: PerpendicularRayComputer
 

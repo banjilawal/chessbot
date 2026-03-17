@@ -21,7 +21,7 @@ from logic.system import WrapperException
 # ======================# OPERATION_FAILURE #======================#
 class OperationException(WrapperException):
     """
-    # ROLE: Exception Chain Layer 1, Exception Messaging
+    Role:Exception Chain Layer 1, Exception Messaging
     # TASK: Worker Method Identifier
 
     Responsibilities:
@@ -45,11 +45,10 @@ class OperationException(WrapperException):
     1.  Sentence whose first word is the class name followed by the operation name. The sentence ends with failed.
     2.  The Syntax is: [Class] operation failed.
 
-    # PARENT:
+    Super Class:
         *   WrapperException
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   op (Optional[str])
@@ -58,7 +57,7 @@ class OperationException(WrapperException):
     # INHERITED ATTRIBUTES:
         *   See WrapperException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   err_code (str)
         *   msg (str)
         *   ex (Optional[Exception])

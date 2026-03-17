@@ -20,7 +20,7 @@ from logic.system import DebugException
 # ======================# POPPING_EMPTY_SQUARE_STACK_EXCEPTION #======================#
 class PoppingEmptySquareStackException(DebugException):
     """
-    # ROLE: Exception Chain Layer 2, Exception Messaging
+    Role:Exception Chain Layer 2, Exception Messaging
     # TASK: Capture Error Variable State
 
     Responsibilities:
@@ -33,19 +33,16 @@ class PoppingEmptySquareStackException(DebugException):
     2.  A failing DeletionResult was returned because an attempt was made to pop an empty
         square stack.
 
-    # PARENT:
+    Super Class:
         *   DebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

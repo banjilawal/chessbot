@@ -21,7 +21,7 @@ T = TypeVar("T")
 
 class Database(Service, Generic[T]):
     """
-    # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
+    Role:Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     Responsibilities:
     1.  Assures StackService only stores unique data with no duplicates.
@@ -30,14 +30,11 @@ class Database(Service, Generic[T]):
     4.  Wrapper for StackService
     5.  Public facing API.
     
-    # PARENT:
+    Super Class:
     None
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
         
     # INHERITED ATTRIBUTES:
     None

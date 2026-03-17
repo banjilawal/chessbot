@@ -16,7 +16,7 @@ from logic.system import SearchWorker, Context, LoggingLevelRouter, SearchResult
 
 class HashLookup(SearchWorker[Enum]):
     """
-    # ROLE: Forward Lookups,
+    Role:Forward Lookups,
 
     Responsibilities:
     1.  Use Key (metadata_attribute: value) to find entries in
@@ -24,14 +24,11 @@ class HashLookup(SearchWorker[Enum]):
     2.  Use Key to find entries in CategoryHashMap{Name: Tuple}
     3.  Indicate the HashMap does have an entry for the Key with an exception in the SearchResult.
 
-    # PARENT:
+    Super Class:
         *   SearchWorker
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

@@ -20,16 +20,15 @@ from logic.system import AnchorException
 # ======================# SERVICE_REQUEST_EXCEPTION #======================#
 class RequestException(AnchorException):
     """
-    # ROLE: Debug Coverage Target, Exception Chain Layer 0
+    Role:Debug Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
     1.  Layer-0 of Exception chain which is the Parent of RequestDebugException
 
-    # PARENT:
+    Super Class:
       *   AnchorException
 
-    # PROVIDES:
-    None
+    Provides:
 
     # ATTRIBUTES:
     None

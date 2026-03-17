@@ -21,7 +21,7 @@ from logic.system import AnchorException
 # ======================# HOSTAGE_CONTEXT_EXCEPTION #======================#
 class HostageContextException(AnchorException):
     """
-    # ROLE: Coverage Target, Exception Chain Layer 0
+    Role:Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
     1.  Anchoring target for HostageContext debug (layer-2) error state firing incident
@@ -30,19 +30,16 @@ class HostageContextException(AnchorException):
             *   The trigger's value.
     2.  Indicate which HostageContext method received a worker's (layer-1) failure result.
 
-    # PARENT:
+    Super Class:
         *   AnchorException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See AnchorException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         msg: Optional[str]
         ex: Optional[Exception]
         cls_name: Optional[str]

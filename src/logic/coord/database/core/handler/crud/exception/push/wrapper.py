@@ -21,25 +21,22 @@ from logic.system import InsertionException
 # ======================# PUSHING_COORD_EXCEPTION #======================#
 class PushingCoordException(InsertionException):
     """
-    # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
+    Role:Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
     1.  Indicate a Coord insertion was unsuccessful.
     2.  Identify the method where the failure occurred.
 
-    # PARENT:
+    Super Class:
         *   InsertionException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See InsertionException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         op: Optional[str]
         ex: Optional[str]
         msg: Optional[str]

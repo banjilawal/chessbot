@@ -22,7 +22,7 @@ from logic.system.collection.stack.stack import T
 
 class PairStack(StackService[Pair]):
     """
-    # ROLE: Data Stack, SearchWorker IntegrityService, CRUD Operations, Encapsulation, API layer.
+    Role:Data Stack, SearchWorker IntegrityService, CRUD Operations, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing API.
@@ -30,14 +30,11 @@ class PairStack(StackService[Pair]):
     3.  Ensure integrity of Pair data stack
     4.  Stack data structure for Pair objects with no guarantee of uniqueness.
     
-    # PARENT:
+    Super Class:
         *   StackService[Pair]
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
     
     # INHERITED ATTRIBUTES:
         *   See StackService class for inherited attributes.

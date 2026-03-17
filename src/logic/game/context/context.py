@@ -18,13 +18,13 @@ from logic.team import Team
 
 class GameContext(Context[Game]):
     """
-    # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
+    Role:Filter, Search, Selection, Reverse/Forward Lookups
 
     Responsibilities:
     Provide an GameFinder with an attribute value to find Games with a matching value in
     their version of the attribute.
 
-    # PARENT:
+    Super Class:
         *   Context
 
     # PROVIDES:

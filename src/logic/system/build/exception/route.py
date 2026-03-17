@@ -18,19 +18,16 @@ from logic.system import ExecutionRouteException
 # ======================# NO_BUILD_ROUTE_FOR_SELECTED_OPTION EXCEPTION #======================#
 class NoExecutionRouteException(ExecutionRouteException):
     """
-    # ROLE: Error Tracing, Debugging, Super Exception
+    Role:Error Tracing, Debugging, Super Exception
 
     Responsibilities:
     1.  Indicate that a build failed because there was no execution route for the specified option.
 
-    # PARENT:
+    Super Class:
         *   ExecutionRouteException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

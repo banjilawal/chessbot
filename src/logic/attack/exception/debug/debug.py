@@ -20,20 +20,17 @@ from logic.system import DebugException
 # ======================# ATTACK_DEBUG_EXCEPTION #======================#
 class AttackDebugException(AttackException, DebugException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Describes the condition that caused a Attack operation failure.
 
-    # PARENT:
+    Super Class:
         *   AttackException
         *   DebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
      None

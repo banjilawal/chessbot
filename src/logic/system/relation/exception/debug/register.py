@@ -18,7 +18,7 @@ from logic.system import RelationDebugException
 # ======================# NOT_REGISTERED EXCEPTION #======================#
 class NotRegisteredException(RelationDebugException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
     
     # INTRODUCTION:
         Indicate that the owning side of a one-to-many is broken. The many side knows its owner from its owner
@@ -29,14 +29,11 @@ class NotRegisteredException(RelationDebugException):
     1.  Indicate that, a failing result was returned because the satellite has not registered itself with its
         primary.
         
-    # PARENT:
+    Super Class:
         *   RelationDebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

@@ -19,20 +19,17 @@ __all__ = [
 # ======================# PERSONA_NAME_BOUNDS EXCEPTION #======================#
 class PersonaNameBoundsException(PersonaException, BoundsException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that a Persona lookup failed because the name was not a key to any Persona variant.
 
-    # PARENT:
+    Super Class:
         *   PersonaException
         *   BoundsException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     INHERITED ATTRIBUTES:
     None

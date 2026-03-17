@@ -18,26 +18,23 @@ __all__ = [
 # ======================# RELATION_ANALYSIS_FAILURE #======================#
 class AnalysisException(OperationException):
     """
-    # ROLE: Exception Chain Layer 1, Exception Messaging
+    Role:Exception Chain Layer 1, Exception Messaging
     # TASK: Worker Method Identifier
 
     Responsibilities:
     1.  An error occurred in Analyzer.analysis that, prevented the relation analysis from completing.
         An exception was sent instead of a report.
 
-    # PARENT:
+    Super Class:
         *   OperationException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See OperationException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   err_code (str)
         *   msg (str)
         *   ex (Optional[Exception])

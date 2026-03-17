@@ -20,7 +20,7 @@ from logic.system import DebugException
 # ======================# EXCESS_TEAM_CONTEXT_FLAGS_EXCEPTION #======================#
 class ExcessTeamContextFlagsException(DebugException):
     """
-    # ROLE: Exception Chain Layer 2, Exception Messaging
+    Role:Exception Chain Layer 2, Exception Messaging
     # TASK: Capture Error Variable State
 
     Responsibilities:
@@ -32,19 +32,16 @@ class ExcessTeamContextFlagsException(DebugException):
 
     2.  A failing ValidationResult was returned because TeamContext candidate had more than one flag enabled.
     
-    # PARENT:
+    Super Class:
         *   DebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

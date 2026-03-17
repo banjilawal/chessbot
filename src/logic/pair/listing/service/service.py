@@ -18,7 +18,7 @@ from logic.system import IdFactory, IntegrityService, LoggingLevelRouter, Search
 
 class PairListService(IntegrityService[PairList]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    Role:Service, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing PairList microservice API.
@@ -26,11 +26,10 @@ class PairListService(IntegrityService[PairList]):
     3.  Authoritative, single source of truth for PairList state by providing
         single entry and exit points to PairList lifecycle.
 
-    # PARENT:
+    Super Class:
         *   IntegrityService
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   pair_service:   PairService

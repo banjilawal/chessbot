@@ -15,18 +15,17 @@ T = TypeVar("T")
 
 class ContextService(IntegrityService[Context[T]]):
     """
-    # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
+    Role:Search Service, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing API for querying datasets of T objects.
     2.  Encapsulates Search and search filter validation in one extendable module.
     3.  Manage Context integrity lifecycle.
 
-    # PARENT:
+    Super Class:
         *   IntegrityService
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   finder (SearchWorker[T])

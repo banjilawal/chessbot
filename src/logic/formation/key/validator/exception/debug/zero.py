@@ -19,18 +19,17 @@ from logic.system import ContextFlagCountException
 # ========================= ZERO_FORMATION_KEYS_VALIDATION EXCEPTION =========================#
 class ZeroFormationKeysException(InvalidFormationKeyException, ContextFlagCountException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that a FormationKey failed its safety certification because no attribute was enabled with a value.
     # 1.  Indicate that forward Formation lookup failed because all the FormationKey attributes were null.
 
-    # PARENT:
+    Super Class:
         *   ContextFlagCountException
         *   InvalidFormationKeyException
 
-    # PROVIDES:
-    None
+    Provides:
 
     # ATTRIBUTES:
     None

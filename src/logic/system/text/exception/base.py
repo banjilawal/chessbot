@@ -19,20 +19,17 @@ __all__ = [
 #======================# STRING EXCEPTION #======================#
 class StringException(ChessException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Parent of exception raised by String objects
     2.  Super for String errors not covered by String subclasses.
 
-    # PARENT:
+    Super Class:
         *   ChessException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

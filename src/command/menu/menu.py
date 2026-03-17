@@ -17,16 +17,15 @@ S = TypeVar("S")
 
 class ServiceMenu(ABC, Generic[S]):
     """
-    # ROLE: Menu
+    Role:Menu
 
     Responsibilities:
     1.  Collection of menus for the different operations the service supports.
 
-    # PARENT:
+    Super Class:
     None
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   router (CommandRouter[S])
@@ -35,7 +34,7 @@ class ServiceMenu(ABC, Generic[S]):
     # INHERITED ATTRIBUTES:
     None.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   router (CommandRouter[S])
         *   menus (List[ServiceMenu])
 

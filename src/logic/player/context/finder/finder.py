@@ -21,20 +21,17 @@ from logic.team import Team, TeamContext
 
 class AgentFinder(DataFinder[PlayerAgent]):
     """
-    # ROLE: SearchWorker
+    Role:SearchWorker
 
     Responsibilities:
     1.  Search Player collections for bag which match the attribute target specified in the AgentContext parameter.
     2.  Safely forward any errors encountered during a search to the caller.
 
-    # PARENT:
+    Super Class:
         *   SearchWorker
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See SearchWorker class for inherited attributes.

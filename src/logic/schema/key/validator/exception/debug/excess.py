@@ -18,17 +18,16 @@ __all__ = [
 # ========================= EXCESS_SCHEMA_KEYS_VALIDATION EXCEPTION =========================#
 class ArenaSchemaKeysException(SchemaKeyException, ContextFlagCountException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that a candidate failed SchemaKey validation because more than one attribute was enabled.
 
-    # PARENT:
+    Super Class:
         *   ContextFlagCountException
         *   InvalidSchemaKeyException
 
-    # PROVIDES:
-    None
+    Provides:
 
     # ATTRIBUTES:
     None

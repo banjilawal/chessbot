@@ -20,24 +20,21 @@ from logic.system import NullException
 # ======================# NULL_SNAPSHOT EXCEPTION #======================#
 class NullSnapshotException(NullException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
     A failing ValidationResult was returned because the candidate was null.
 
-    # PARENT:
+    Super Class:
         *   Debug
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See Null class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

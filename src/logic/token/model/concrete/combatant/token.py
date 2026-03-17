@@ -17,17 +17,16 @@ from logic.token import Token, TokenBoardState, ReadinessState
 
 class CombatantToken(Token):
     """
-    # ROLE: Data-Holder
+    Role:Data-Holder
 
     Responsibilities:
     1.  Represents piece which can be captured by an enemy.
     2.  CombatantTokens can have Ranks: Paw, Knight, Bishop, Rook, or Queen.
 
-    # PARENT:
+    Super Class:
         *   Token
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   captor (Optional[Toke])
@@ -46,7 +45,7 @@ class CombatantToken(Token):
     # INHERITED ATTRIBUTES:
         *   See Token class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   id (int)
         *   team (Team)
         *   rank (Rank)

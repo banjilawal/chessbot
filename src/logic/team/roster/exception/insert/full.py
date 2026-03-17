@@ -18,19 +18,16 @@ from logic.team import TeamRosterException
 # ======================# ROSTER_IS_FULL EXCEPTION #======================#
 class TeamRosterIsFullException(TeamRosterException):
     """
-    # ROLE: Debug, Error Tracing
+    Role:Debug, Error Tracing
 
     Responsibilities:
     1.  Indicate that adding a item to the team failed because the roster has all sixteen tokens.
 
-    # PARENT:
+    Super Class:
         *   RosterException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

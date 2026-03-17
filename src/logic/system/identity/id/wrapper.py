@@ -18,7 +18,7 @@ __all__ = [
 # ======================# ID_VALIDATION EXCEPTION #======================#
 class IdValidationException(NumberException, ValidationException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  A debug exception is created when an ID candidate fails a validation test. Validation debug exceptions are
@@ -26,15 +26,12 @@ class IdValidationException(NumberException, ValidationException):
         ValidationResult.
     2.  The IdValidationException chain is useful for tracing a  failure to its source.
 
-    # PARENT:
+    Super Class:
         *   NumberException
         *   ValidationException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     INHERITED ATTRIBUTES:
     None

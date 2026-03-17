@@ -15,4 +15,4 @@ from .quota import *
 from .collision import *
 
 # Modules
-from .handler import TokenStackOpsDispatcher
+from .dispatcher import TokenStackOpsDispatcher

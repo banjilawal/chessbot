@@ -20,20 +20,17 @@ __all__ = [
 
 class CapturedSquareCannotBeEmptyException(HostageException, DebugException):
     """
-    # ROLE: Debug, Error Tracing
+    Role:Debug, Error Tracing
 
     Responsibilities:
     1.  Indicate that the Hostage build failed because the captured item was empty.
 
-    # PARENT:
+    Super Class:
         *   DebugException
         *   HostageException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

@@ -15,7 +15,7 @@ from logic.system import Context, GameColor
 
 class SchemaKey(Context[Schema]):
     """
-    # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
+    Role:Filter, Search, Selection, Reverse/Forward Lookups
 
     Lookups are performed on the Schema table.
         
@@ -40,11 +40,10 @@ class SchemaKey(Context[Schema]):
     1.  Define a Key from an attribute-value pair. The attribute must exist in the schema.
     2.  A forward lookup for a Schema variant requires a SchemaKey.
 
-    # PARENT:
+    Super Class:
         *   Context
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   color (Optional[GameColor])

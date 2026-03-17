@@ -17,7 +17,7 @@ from logic.board import Board, BoardContext, BoardSquareFinder, BoardValidator, 
 
 class BoardResourceValidator(Validator[Square, Board]):
   """
-  # ROLE: Validator, Data Integrity
+  Role:Validator, Data Integrity
 
   Responsibilities:
   1. Ensure `TravelEvent` resource_candidate has a valid binding to the execution environment for `TravelEventFresourcey`.

@@ -23,7 +23,7 @@ from logic.token import TokenStackState
 
 class BoardService(IntegrityService[Board]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    Role:Service, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing Board microservice API.
@@ -31,14 +31,11 @@ class BoardService(IntegrityService[Board]):
     3.  Authoritative, single source of truth for Board state by providing single entry and exit points to Board
         lifecycle.
 
-    # PARENT:
+    Super Class:
         *   IntegrityService
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See IntegrityService for inherited attributes.

@@ -19,21 +19,18 @@ from logic.system import DeletionException
 # ======================# BOARD_DELETION_FAILURE #======================#
 class BoardDeletionException(BoardException, DeletionException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why a BoardStack deletion fails. The encapsulated exceptions create
         chain for tracing the source of the failure.
 
-    # PARENT:
+    Super Class:
         *   BoardException
         *   DeletionException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     INHERITED ATTRIBUTES:
     None

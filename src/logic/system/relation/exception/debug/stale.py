@@ -18,20 +18,17 @@ from logic.system import RelationDebugException
 # ======================# STALE_RELATION_LINK EXCEPTION #======================#
 class StaleRelationException(RelationDebugException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
     1.  Indicate that, a failing result was returned because the primary had a stale
         link to a former satellite
 
-    # PARENT:
+    Super Class:
         *   RelationDebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

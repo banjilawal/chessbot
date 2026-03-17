@@ -15,24 +15,21 @@ T = TypeVar("T")
 
 class SearchWorker(ABC, Generic[T]):
     """
-    # ROLE: Debug Coverage Target, Exception Chain Layer 0
+    Role:Debug Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
     1.  Indicate that an error occurred in a vectorService.
 
-    # PARENT:
+    Super Class:
     *   AnchorException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See AnchorException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

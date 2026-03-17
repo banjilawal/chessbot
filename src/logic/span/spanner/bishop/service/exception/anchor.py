@@ -20,24 +20,21 @@ from logic.span import SpanServiceException
 # ======================# BISHOP_SPAN_SERVICE_EXCEPTION #======================#
 class BishopSpanServiceException(SpanServiceException):
     """
-    # ROLE: Debug Coverage Target, Exception Chain Layer 0
+    Role:Debug Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
     1.  Indicate that an error occurred in a BishopSpanService.
 
-    # PARENT:
+    Super Class:
     *   SpanServiceException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See SpanServiceException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

@@ -19,21 +19,18 @@ from logic.system import DeletionException
 # ======================# EXHAUSTIVE_COORD_DELETION_FAILURE #======================#
 class ExhaustiveCoordDeletionException(CoordException, DeletionException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why deleting all occurrences of a coord failed. deletion fails. The
         encapsulated exceptions create chain for tracing the source of the failure.
 
-    # PARENT:
+    Super Class:
         *   CoordException
         *   DeletionException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     INHERITED ATTRIBUTES:
     None

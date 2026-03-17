@@ -18,20 +18,17 @@ from logic.square import SquareDebugException
 # ======================# NO_VISIT_FOR_TERMINATION EXCEPTION #======================#
 class NoVisitForTerminationException(SquareDebugException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
     A failing DeletionResult was returned because there was no visitor in the square. There was no visit
     to terminate.
 
-    # PARENT:
+    Super Class:
         *   SquareDebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

@@ -22,7 +22,7 @@ from logic.team import (
 
 class TeamStack(StackService[Team]):
     """
-    # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
+    Role:Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing API.
@@ -30,14 +30,11 @@ class TeamStack(StackService[Team]):
     3.  Ensure integrity of team data stack
     4.  Stack data structure for Team objects with no guarantee of uniqueness.
     
-    # PARENT:
+    Super Class:
         *   StackService
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
     
     # INHERITED ATTRIBUTES:
         *   See StackService class for inherited attributes.

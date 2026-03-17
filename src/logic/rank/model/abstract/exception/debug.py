@@ -20,7 +20,7 @@ from logic.system import DebugException
 # ======================# RANK_DEBUG_EXCEPTION #======================#
 class RankDebugException(DebugException):
     """
-    # ROLE: Capture Error Variable State, Exception Chain Layer 2, Exception Messaging
+    Role:Capture Error Variable State, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
     1.  Produce the:
@@ -29,19 +29,16 @@ class RankDebugException(DebugException):
             *   event which fired the variable into its error state.
         which occurred in the Rank method identified in layer-0 of the exception chain.
 
-    # PARENT:
+    Super Class:
         *   DebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   var (Optional[str])

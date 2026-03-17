@@ -21,19 +21,16 @@ from logic.pipeline import PipelineStackException
 # ======================# POPPING_EMPTY_PIPELINE_STACK EXCEPTION #======================#
 class PoppingEmptyPipelineStackException(PipelineStackException, NullException):
     """
-    # ROLE: Debug, Error Tracing
+    Role:Debug, Error Tracing
 
     Responsibilities:
     1.  Indicate that an attempt to remove a pipeline failed because the PipelineStack was not managing any pipelines.
 
-    # PARENT:
+    Super Class:
         *   PipelineDaaServiceException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

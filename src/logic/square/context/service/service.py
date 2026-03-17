@@ -16,7 +16,7 @@ from logic.square import SquareContext, SquareContextBuilder, SquareContextValid
 
 class SquareContextService(ContextService[SquareContext]):
     """
-    # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
+    Role:Search Service, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing Square search microservice API.
@@ -25,14 +25,12 @@ class SquareContextService(ContextService[SquareContext]):
     4.  Create a single source of truth for Square search results by having single entry and exit points for the
         Square search flow.
 
-    # PARENT:
+    Super Class:
         *   ContextService
 
     # PROVIDES:
         *   SquareContextService
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See ContextService for inherited attributes.

@@ -18,20 +18,17 @@ from logic.hostage import HostageException
 # ======================# PRISONER_DOES_NOT_HAVE_CAPTOR_SET EXCEPTION #======================#
 class PrisonerAlreadyHasHostageException(HostageException, NullException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
    1.  Indicate that a candidate failed its Hostage validation because the prisoner did not have its captor set.
     
-    # PARENT:
+    Super Class:
         *   NullException
         *   HostageException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

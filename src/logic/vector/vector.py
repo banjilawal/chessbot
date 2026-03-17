@@ -10,7 +10,7 @@ version: 1.0.0
 
 class Vector:
     """
-    # ROLE: Computation, Transformer, Iterator, Data-Holder
+    Role:Computation, Transformer, Iterator, Data-Holder
     
     # BACKGROUND:
     Consider,
@@ -32,11 +32,10 @@ class Vector:
     2.  Vector addition.
 
 
-    # PARENT:
+    Super Class:
     None
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   x (int)
@@ -45,7 +44,7 @@ class Vector:
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR:
+    Attributes:
         *   x (int)
         *   y (int)
 

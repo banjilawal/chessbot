@@ -18,19 +18,16 @@ from logic.team import TeamRosterException, TeamException
 # ======================# TOKEN_ALREADY_ON_ROSTER EXCEPTION #======================#
 class TokenAlreadyOnTeamRosterException(TeamRosterException):
     """
-    # ROLE: Debug, Error Tracing
+    Role:Debug, Error Tracing
 
     Responsibilities:
     1.  Indicate that adding a roster member failed because the occupant was already present.
 
-    # PARENT:
+    Super Class:
         *   TeamRosterException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

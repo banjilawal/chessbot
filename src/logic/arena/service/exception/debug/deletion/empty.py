@@ -19,20 +19,17 @@ from logic.system import DebugException
 # ======================# POPPING_EMPTY_ARENA EXCEPTION #======================#
 class PoppingEmptyArenaException(ArenaException, DebugException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that the arena is empty so no teams can be removed
 
-    # PARENT:
+    Super Class:
         *   ArenaException
         *   DebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

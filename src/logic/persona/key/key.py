@@ -15,7 +15,7 @@ from logic.system import Context
 
 class PersonaKey(Context[Persona]):
     """
-    # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
+    Role:Filter, Search, Selection, Reverse/Forward Lookups
 
     Responsibilities:
     The for A PersonaKey is used to run Forward Persona lookups use a PersonaKey
@@ -23,11 +23,10 @@ class PersonaKey(Context[Persona]):
     2.  Define a Key from an attribute-value pair. The attribute must exist in the persona.
     3.  A forward lookup for a Persona variant requires a PersonaKey.
 
-    # PARENT:
+    Super Class:
         *   Context
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   quota (Optional[int])

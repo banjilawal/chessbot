@@ -18,18 +18,17 @@ from logic.team import TeamException
 # ======================# TEAM_HASH EXCEPTION #======================#
 class TeamHashException(TeamException):
     """
-    # ROLE: Super Exception
+    Role:Super Exception
   
     Responsibilities:
     1.  Parent of exceptions raised by TeamHash objects.
     2.  Super for TeamHash failure conditions that do not have a one-to-one mapping to a TeamHashException
         subclass.
   
-    # PARENT:
+    Super Class:
         *   TeamException
   
-    # PROVIDES:
-    None
+    Provides:
   
     # ATTRIBUTES:
     None

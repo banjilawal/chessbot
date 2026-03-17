@@ -21,20 +21,17 @@ from logic.system import (
 
 class GameFinder(DataFinder[Game]):
     """
-    # ROLE: SearchWorker
+    Role:SearchWorker
 
     Responsibilities:
     1.  Search Game collections for bag which match the attribute target specified in the GameContext parameter.
     2.  Safely forward any errors encountered during a search to the caller.
 
-    # PARENT:
+    Super Class:
         *   SearchWorker
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

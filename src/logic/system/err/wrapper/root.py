@@ -20,7 +20,7 @@ from logic.system import ChessException
 # ======================# WORKER_EXCEPTION #======================#
 class WrapperException(ChessException):
     """
-    # ROLE: Exception Chain Layer 1, Exception Messaging
+    Role:Exception Chain Layer 1, Exception Messaging
     # TASK: Worker Method Identifier
 
     Responsibilities:
@@ -45,11 +45,10 @@ class WrapperException(ChessException):
     1.  Sentence whose first word is the class name followed by the operation name. The sentence ends with failed.
     2.  The Syntax is: [Class] operation failed.
 
-    # PARENT:
+    Super Class:
         *   ChessException
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   mthd (Optional[str])
@@ -57,7 +56,7 @@ class WrapperException(ChessException):
     # INHERITED ATTRIBUTES:
         *   See ChessException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   err_code (str)
         *   msg (str
         *   ex (Optional[Exception])

@@ -18,7 +18,7 @@ from logic.neighbor import ArenaVisitationSearchParamsException, ZeroVisitationS
 
 class VisitorSearchContextValidator(Validator[VisitorSearchContext]):
     """
-     # ROLE: Validation, Data Integrity Guarantor, Security., Data Integrity
+     Role:Validation, Data Integrity Guarantor, Security., Data Integrity
   
     Responsibilities:
     1. Process and validate parameters for creating `GraphSearchContext` instances.

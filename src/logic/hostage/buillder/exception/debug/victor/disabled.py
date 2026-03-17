@@ -20,21 +20,18 @@ __all__ = [
 
 class VictorCannotBeDisableHostageException(HostageException, DebugException):
     """
-    # ROLE: Debug, Error Tracing
+    Role:Debug, Error Tracing
 
     Responsibilities:
     1.  Indicate that the Hostage build failed because the victor was not active for the build process.
         A occupant must be active when it creates a capture event.
 
-    # PARENT:
+    Super Class:
         *   DebugException
         *   HostageException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

@@ -18,20 +18,17 @@ __all__ = [
 # ======================# NOT_NEGATIVE_NUMBER_VALIDATION_FAILURE #======================#
 class NegativeNumberNotAllowedException(NumberException, BoundsException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that number validation failed because the candidate was negative.
 
-    # PARENT:
+    Super Class:
         *   NumberException
         *   BoundsException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

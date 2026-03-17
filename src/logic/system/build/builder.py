@@ -17,7 +17,7 @@ T = TypeVar("T")
 
 class Builder(ABC, Generic[T]):
     """
-    # ROLE: Worker:
+    Role:Worker:
     # TASK: Build Data Integrity And Reliability Guarantor,
 
     Responsibilities:
@@ -26,14 +26,11 @@ class Builder(ABC, Generic[T]):
     3.  Ensure resources for building a object have met the application's safety contracts.
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-    # PARENT:
+    Super Class:
     None
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

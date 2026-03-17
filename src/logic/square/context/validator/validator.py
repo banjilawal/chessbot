@@ -23,20 +23,17 @@ from logic.square import (
 
 class SquareContextValidator(Validator[SquareContext]):
     """
-     # ROLE: Validation, Data Integrity Guarantor, Security.
+     Role:Validation, Data Integrity Guarantor, Security.
 
     Responsibilities:
     1.  Ensure a SquareContext instance is certified safe, reliable and consistent before use.
     2.  If verification fails send an exception detailing the failure.
 
-    # PARENT:
+    Super Class:
         *   Validator
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

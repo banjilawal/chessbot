@@ -20,7 +20,7 @@ from logic.system import DebugException
 # ======================# SQUARE_STACK_FULL_EXCEPTION #======================#
 class SquareStackFullException(DebugException):
     """
-    # ROLE: Exception Chain Layer 2, Exception Messaging
+    Role:Exception Chain Layer 2, Exception Messaging
     # TASK: Capture Error Variable State
 
     Responsibilities:
@@ -32,19 +32,16 @@ class SquareStackFullException(DebugException):
         
     2.  Indicate a failure InsertionResult was returned because the full SquareStackService had was full.
 
-    # PARENT:
+    Super Class:
         *   DebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

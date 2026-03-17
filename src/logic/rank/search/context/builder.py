@@ -19,7 +19,7 @@ from logic.rank import (
 
 class RankContextBuilder(Builder[RankContext]):
     """
-    # ROLE: Builder, Data Integrity And Reliability Guarantor
+    Role:Builder, Data Integrity And Reliability Guarantor
 
     Responsibilities:
         1. Manage conintuction of RankFinder instances that can be used safely by the client.

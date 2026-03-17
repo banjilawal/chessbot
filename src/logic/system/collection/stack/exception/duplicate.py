@@ -18,19 +18,16 @@ __all__ = [
 #======================# CANNOT_ADD_DUPLICATE_ITEM EXCEPTION  #======================#
 class AddingDuplicateException(StackServiceException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     Indicate an attempt was made to add a duplicate item o a collection that only allows uniques.
 
-    # PARENT:
+    Super Class:
         *   CollectionException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
     
     INHERITED ATTRIBUTES:
     None

@@ -18,19 +18,16 @@ from logic.token import TokenDebugException
 # ======================# TOKEN_ALREADY_DEPLOYED_ON_TOKEN EXCEPTION #======================#
 class TokenAlreadyDeployedOnTokenException(TokenDebugException):
     """
-    # ROLE: Debug, Error Tracing
+    Role:Debug, Error Tracing
 
     Responsibilities:
     1.  Indicate that an attack failed because the attacker was targeting the wrong token,
 
-    # PARENT:
+    Super Class:
         *   AttackDebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

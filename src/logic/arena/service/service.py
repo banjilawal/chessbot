@@ -21,7 +21,7 @@ from logic.team import Team, TeamService
 
 class ArenaService(IntegrityService[Arena]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    Role:Service, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing Arena microservice API.
@@ -29,14 +29,11 @@ class ArenaService(IntegrityService[Arena]):
     3.  Authoritative, single source of truth for Arena state.
     4.  Single entry and entry points to Arena lifecycle.
 
-    # PARENT:
+    Super Class:
         *   IntegrityService
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See IntegrityService for inherited attributes.

@@ -22,21 +22,18 @@ from logic.system import ServiceException
 # ======================# PLAYER_STACK_SERVICE EXCEPTION #======================#
 class AgentDataServiceException(AgentException, ServiceException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Indicate that an AgentStackService encountered an error which prevented the service from completing a task.
     2.  Wrap an exception that hits the try-finally block of a AgentStackService method.
 
-    # PARENT:
+    Super Class:
         *   ServiceException
         *   AgentDataException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

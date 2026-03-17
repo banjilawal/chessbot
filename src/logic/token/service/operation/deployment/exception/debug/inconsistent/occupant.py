@@ -21,25 +21,22 @@ from logic.system import InconsistentStateException
 # ======================# INCONSISTENT_TOKEN_SQUARE_OCCUPANT_EXCEPTION #======================#
 class InconsistentTokenSquareException(InconsistentStateException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
     1.  Indicate that when a square has occupied the square, the token is still  not registered
         with the square.
 
-    # PARENT:
+    Super Class:
         *   InconsistentStateException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   InconsistentStateException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]

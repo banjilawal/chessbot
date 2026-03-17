@@ -20,7 +20,7 @@ from logic.domain import (
 
 class ResidentFilterValidator(Validator[ResidentFilter]):
     """
-     # ROLE: Validation, Data Integrity Guarantor, Security., Data Integrity
+     Role:Validation, Data Integrity Guarantor, Security., Data Integrity
   
     Responsibilities:
     1. Process and validate parameters for creating `GraphSearchContext` instances.

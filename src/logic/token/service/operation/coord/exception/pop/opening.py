@@ -21,24 +21,21 @@ from logic.token import TokenDebugException
 # ======================# UNOPENED__TOKEN_POPPING_COORD_EXCEPTION  #======================#
 class UnopenedTokenPoppingCoordException(TokenDebugException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
     1.  Indicate that a deployed token which has not opened cannot pop its CoordStack.
     
-    # PARENT:
+    Super Class:
         *   TokenDebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   TokenDebugException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]

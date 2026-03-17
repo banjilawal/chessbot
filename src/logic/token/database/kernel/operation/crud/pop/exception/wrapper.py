@@ -1,7 +1,7 @@
-# src/logic/token/database/kernel/operation/crud/exception/pop/wrapper.py
+# src/logic/token/database/kernel/operation/crud/pop/exception/empty.py
 
 """
-Module: logic.token.database.kernel.operation.crud.exception.pop.wrapper
+Module: logic.token.database.kernel.operation.crud.pop.exception.empty
 Author: Banji Lawal
 Created: 2026-02-22
 version: 1.0.0
@@ -20,25 +20,16 @@ from logic.system import DeletionException
 # ======================# TOKEN_STACK_POP_FAILURE #======================#
 class TokenStackPopException(DeletionException):
     """
-    # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
+    Role:
+        -   Worker Method Identification
+        -   Exception Chain Layer 1
+        -   Exception Messaging
 
     Responsibilities:
-    1.  Indicate a TokenStackStack pop was unsuccessful.
-    2.  Identify the TokenStackService method where the pop operation failed.
-
-    # PARENT:
-        *   DeletionOperation
-
-    # PROVIDES:
-    None
-
-    # LOCAL ATTRIBUTES:
-    None
-
-    # INHERITED ATTRIBUTES:
-        *   See DeletionOperation class for inherited attributes.
-
-    # CONSTRUCTOR:
+        1.  Indicate a TokenStackStack pop was unsuccessful.
+        2.  Identify the TokenStackService method where the pop operation failed.
+        
+    Attributes:
         op: Optional[str]
         ex: Optional[str]
         msg: Optional[str]
@@ -46,11 +37,10 @@ class TokenStackPopException(DeletionException):
         err_code: Optional[str]
         rslt_type: Optional[str]
 
-    # LOCAL METHODS:
-   None
-
-    # INHERITED METHODS:
-        *   See DeletionOperation class for inherited methods.
+    Provides:
+    
+    Super Class:
+        DeletionOperation
     """
     OP = "Deletion"
     RSLT_TYPE = "DeletionResult"

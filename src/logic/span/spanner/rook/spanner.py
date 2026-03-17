@@ -18,20 +18,17 @@ from logic.span import RookSpannerException, PerpendicularRayProvider, CoordSpan
 
 class RookSpanner(Spanner):
     """
-    # ROLE: Worker, Computation
+    Role:Worker, Computation
     # Provide a spanning set for a Rook
 
     Responsibilities:
     1. Provide a spanning set for a Rook
 
-    # PARENT:
+    Super Class:
         Spanner
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     INHERITED ATTRIBUTES:
         *   See Spanner class for inherited attributes

@@ -16,24 +16,21 @@ from logic.span import Span, SquareRay
 
 class SquareSpan(Span[Square]):
     """
-    # ROLE: Data-Holder
+    Role:Data-Holder
 
     Responsibilities:
     1.  Stores rays projected from a common origin.
 
-    # PARENT:
+    Super Class:
     None
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See Span class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   origin: Square
 
     # LOCAL METHODS:

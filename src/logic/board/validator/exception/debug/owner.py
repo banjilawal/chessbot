@@ -19,20 +19,17 @@ from logic.arena import ArenaException
 # ======================# BOARD_OWNED_BY_DIFFERENT_ARENA EXCEPTION #======================#
 class BoardOwnedByDifferentArenaException(BoardException, ArenaException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
     
     Responsibilities:
     1.  Indicate that a board was not validated because its owner because its arena relationship was mismatched."
 
-    # PARENT:
+    Super Class:
         *   ArenaException
         *   BoardException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

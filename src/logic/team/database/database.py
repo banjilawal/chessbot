@@ -19,20 +19,17 @@ from logic.system import (
 
 class TeamDatabase(Database[Team]):
     """
-    # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
+    Role:Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     Responsibilities:
     1.  Ensure all bag in managed by TeamStack are unique.
     2.  Guarantee consistency of records in TeamStack.
 
-    # PARENT:
+    Super Class:
         *   Database
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See Database class for inherited attributes.

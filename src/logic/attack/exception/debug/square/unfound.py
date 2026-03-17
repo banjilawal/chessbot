@@ -18,19 +18,16 @@ from logic.attack import AttackDebugException
 # ======================# ROSTER_MEMBER_TO_REMOVE_DOES_NOT_EXIST EXCEPTION #======================#
 class AttackerSquareNotFoundException(AttackDebugException):
     """
-    # ROLE: Debug, Error Tracing
+    Role:Debug, Error Tracing
 
     Responsibilities:
     1.  Indicate that the attack failed because no item was found at the attacker's coord.
 
-    # PARENT:
+    Super Class:
         *   AttackDebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

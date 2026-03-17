@@ -11,7 +11,7 @@ from enum import Enum, auto
 
 class TokenBoardState(Enum):
     """
-    # ROLE: State Descriptor
+    Role:State Descriptor
 
     Responsibilities:
     1.  Indicating if the Token is in a state where
@@ -19,11 +19,10 @@ class TokenBoardState(Enum):
             *   II has been deployed on the board.
             *   It has been removed from the board.
 
-    # PARENT:
+    Super Class:
         *   Enum
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   NEVER_BEEN_PLACED
@@ -33,7 +32,7 @@ class TokenBoardState(Enum):
     # INHERITED ATTRIBUTES:
         *   See Enum class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
    None
 
     # LOCAL METHODS:

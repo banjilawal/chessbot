@@ -20,25 +20,22 @@ from logic.system import NullException
 # ======================# COMPUTED_NULL_RAY_DEBUG_EXCEPTION #======================#
 class ComputedNullRayDebugException(NullException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that a rsy computation's result had no origin, and no members.
         This happens when the start and endpoints are the same.
 
-    # PARENT:
+    Super Class:
         *   DebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   DebugException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   var (Optional[str])

@@ -20,21 +20,18 @@ from logic.system import HashLookup, LoggingLevelRouter, SearchResult
 
 class PersonaLookup(HashLookup[Persona]):
     """
-    # ROLE: Forward Lookups
+    Role:Forward Lookups
 
     Responsibilities:
     1.  Run forward lookups on the Persona hashtable to find a Rank's metadata.
     2.  Indicate there is no metadata for a given key-value pair by returning an exception to the caller.
     3.  Verifies correctness of key-value key before running lookup.
 
-    # PARENT:
+    Super Class:
         *   ForwardLookup
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

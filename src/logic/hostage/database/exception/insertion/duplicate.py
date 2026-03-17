@@ -18,20 +18,17 @@ __all__ = [
 # ======================# ADDING_DUPLICATE_HOSTAGE EXCEPTION #======================#
 class AddingDuplicateHostageException(HostageDatabase):
     """
-    # ROLE: Debug, Error Tracing
+    Role:Debug, Error Tracing
 
     Responsibilities:
     1.  Indicate that an attempt to add a item to the HostageDatabase's dataset failed
         because it was already present.
 
-    # PARENT:
+    Super Class:
         *   HostageDatabase
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

@@ -21,7 +21,7 @@ from logic.coord import (
 
 class CoordStack(StackService[Coord]):
     """
-    # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
+    Role:Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     Responsibilities:
     1.  Microservice API for managing and searching Coord collections.
@@ -32,14 +32,11 @@ class CoordStack(StackService[Coord]):
     5.  Provide Coord stack data structure with no guarantee of uniqueness.
     6.  Search utility.
 
-    # PARENT:
+    Super Class:
         *   StackService
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See StackService class for inherited attributes.

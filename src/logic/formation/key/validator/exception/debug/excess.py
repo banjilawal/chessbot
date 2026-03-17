@@ -19,17 +19,16 @@ __all__ = [
 # ========================= EXCESS_FORMATION_KEYS_VALIDATION EXCEPTION =========================#
 class ArenaFormationKeysException(FormationKeyException, ContextFlagCountException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that a candidate failed FormationKey validation because more than one attribute was enabled.
 
-    # PARENT:
+    Super Class:
         *   ContextFlagCountException
         *   InvalidFormationKeyException
 
-    # PROVIDES:
-    None
+    Provides:
 
     # ATTRIBUTES:
     None

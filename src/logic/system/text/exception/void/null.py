@@ -19,19 +19,16 @@ from logic.system import NullException, VoidStringException
 #======================# NULL_STRING EXCEPTION #======================#
 class NullStringException(VoidStringException, NullException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate an entity, method, or operation required a String with some characters but got null instead.
 
-    # PARENT:
+    Super Class:
         *   VoidStringException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

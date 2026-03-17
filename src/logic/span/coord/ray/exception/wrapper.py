@@ -21,7 +21,7 @@ from logic.system import ComputationException
 # ======================# RAY_COMPUTATION_FAILURE #======================#
 class RayComputationException(ComputationException):
     """
-    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
+    Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
     1.  Identify the DiagonalRayComputation method where the process failed.
@@ -31,19 +31,16 @@ class RayComputationException(ComputationException):
                 *   i < j the domain is y_i = x_(i-1) + c x_i or
                 *   j >= N the domain is y_j = x_(j-1) + c x_j
 
-    # PARENT:
+    Super Class:
         *   ComputationException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See ComputationException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   err_code (str)
         *   msg (str)
         *   ex (Optional[Exception])

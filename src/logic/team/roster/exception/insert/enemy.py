@@ -18,19 +18,16 @@ __all__ = [
 # ======================# ENEMY_CANNOT_JOIN_ROSTER EXCEPTION #======================#
 class EnemyCannotJoinTeamRosterException(TeamRosterException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Indicate that inserting into a Team's roster failed because it the occupant had a different team.
 
-    # PARENT:
+    Super Class:
         *   TeamRosterException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

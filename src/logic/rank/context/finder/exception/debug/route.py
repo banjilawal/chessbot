@@ -21,24 +21,21 @@ from logic.rank import RankDebugException
 # ======================# NO_RANK_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#
 class RankSearchRouteException(RankDebugException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
     1.  Indicate that there was no search logic for a rank attribute.
 
-    # PARENT:
+    Super Class:
         *   RankDebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   RankDebugException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]

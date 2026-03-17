@@ -19,12 +19,12 @@ __all__ = [
 # ======================# NO_FORMATION_LOOKUP_ROUTE EXCEPTION #======================#
 class FormationLookupRouteException(FormationException, ExecutionRouteException):
     """
-    # ROLE: Fallback Result
+    Role:Fallback Result
 
     Responsibilities:
     1. Indicate that FormationLookup did not handle a build option or parameter with its own execution route.
 
-    # PARENT:
+    Super Class:
         *   FormationException
         *   ExecutionRouteException
 
@@ -32,8 +32,6 @@ class FormationLookupRouteException(FormationException, ExecutionRouteException)
     # PROVIDES
     None
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

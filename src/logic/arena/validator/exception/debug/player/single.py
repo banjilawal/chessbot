@@ -19,20 +19,17 @@ __all__ = [
 # ======================# SINGLE_PLAYER_IN_ARENA EXCEPTION #======================#
 class SinglePlayerInArena(ArenaDebugException, BoundsException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Raised if an Arena's Database instance contains only one player.
 
-    # PARENT:
+    Super Class:
         *   ArenaDebugException
         *   SinglePlayerInArena
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

@@ -20,7 +20,7 @@ __all__ = [
 # ======================# NO_SCHEMA_VALIDATION_ROUTE EXCEPTION #======================#
 class SchemaValidationRouteException(ResultException, ExecutionRouteException):
     """
-    # ROLE: Fallback Result, Debugging
+    Role:Fallback Result, Debugging
     
     Responsibilities:
     1.  Indicate that SchemaValidator did not handle one of the paths necessary to assure a candidate is a
@@ -29,15 +29,13 @@ class SchemaValidationRouteException(ResultException, ExecutionRouteException):
         does not have a validation route the last step in the logic will return a ValidationResult containing a
         SchemaValidationRouteException.
     
-    # PARENT:
+    Super Class:
         *   ResultException
         *   ExecutionRouteException
         
     # PROVIDES
     None
     
-    # LOCAL ATTRIBUTES:
-    None
     
     # INHERITED ATTRIBUTES:
     None

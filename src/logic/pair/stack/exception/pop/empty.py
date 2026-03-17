@@ -18,19 +18,16 @@ __all__ = [
 # ======================# POPPING_EMPTY_PAIR_STACK EXCEPTION #======================#
 class PoppingEmptyPairStackException(PairStackException):
     """
-    # ROLE: Debug, Error Tracing
+    Role:Debug, Error Tracing
 
     Responsibilities:
     1.  Indicate that an attempt to remove a occupant failed because the PairStack was not managing any pairs.
 
-    # PARENT:
+    Super Class:
         *   TeamDaaServiceException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

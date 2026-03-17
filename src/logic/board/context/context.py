@@ -16,17 +16,16 @@ from logic.system import Context
 
 class BoardContext(Context[Board]):
     """
-    # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
+    Role:Filter, Search, Selection, Reverse/Forward Lookups
 
     Responsibilities:
     Provide an SquareFinder with an attribute value to find Squares with a matching value in their version of
     the attribute.
     
-    # PARENT:
+    Super Class:
         *   Context
   
-    # PROVIDES:
-    None
+    Provides:
   
     # LOCAL ATTRIBUTES:
         *   arena (Arena)

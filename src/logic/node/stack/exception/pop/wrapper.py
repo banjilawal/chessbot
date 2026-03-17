@@ -19,21 +19,18 @@ from logic.system import DeletionException
 # ======================# NODE_DELETION_FAILURE #======================#
 class NodePopException(NodeStackException, DeletionException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why a NodeStackService deletion fails. The encapsulated exceptions create
         chain for tracing the source of the failure.
 
-    # PARENT:
+    Super Class:
         *   NodeStackException
         *   DeletionException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     INHERITED ATTRIBUTES:
     None

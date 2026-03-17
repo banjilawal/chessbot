@@ -18,20 +18,17 @@ T = TypeVar("T")
 
 class DeletionResult(DataResult, Generic[T]):
     """
-    # ROLE: Messanger, Data Transport Object, Error Transport Object.
+    Role:Messanger, Data Transport Object, Error Transport Object.
 
     Responsibilities:
     1.  Send the outcome of a deletion to the caller.
     2.  Enforcing mutual exclusion. A DeletionResult can either carry payload or exception. Not both.
 
-    # PARENT:
+    Super Class:
         *   DataResult
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See DataResult class for inherited attributes.

@@ -18,19 +18,16 @@ from logic.system import InsertionException
 # ======================# TEAM_INSERTION_FAILURE #======================#
 class TeamInsertionException(InsertionException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why TeamStack could not delete a team. The exception chain traces the ultimate source of failure.
 
-    # PARENT:
+    Super Class:
         *   InsertionException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     INHERITED ATTRIBUTES:
     None

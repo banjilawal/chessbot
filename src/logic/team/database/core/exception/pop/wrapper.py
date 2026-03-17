@@ -19,20 +19,17 @@ from logic.system import DeletionException
 # ======================# POPPING_TEAM_STACK_FAILURE #======================#
 class PoppingTeamStackFailedException(TeamStackException, DeletionException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why TeamStack could not delete a team. The exception chain traces the ultimate source of failure.
 
-    # PARENT:
+    Super Class:
         *   TeamStackException
         *   DeletionException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     INHERITED ATTRIBUTES:
     None

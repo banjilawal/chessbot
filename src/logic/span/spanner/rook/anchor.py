@@ -21,7 +21,7 @@ from logic.span import SpannerException
 # ======================# ROOK_SPANNER_EXCEPTION #======================#
 class RookSpannerException(SpannerException):
     """
-    # ROLE: Coverage Target, Exception Chain Layer 0
+    Role:Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
     1.  Provide RookSpanner as:
@@ -30,19 +30,16 @@ class RookSpannerException(SpannerException):
         target for layer-2 debugging exceptions.
     2.  Indicate which RookSpanner method received a worker's (layer-1) failure result.
 
-    # PARENT:
+    Super Class:
         *   SpannerException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See SpannerException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

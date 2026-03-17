@@ -21,7 +21,7 @@ from logic.system import DebugException
 # ======================# PAIR_DESTINATION_NOT_FOUND_EXCEPTION #======================#
 class PairNotFoundException(DebugException):
     """
-    # ROLE: Exception Chain Layer 2, Exception Messaging
+    Role:Exception Chain Layer 2, Exception Messaging
     # TASK: Capture Error Variable State
 
     Responsibilities:
@@ -33,19 +33,16 @@ class PairNotFoundException(DebugException):
 
     2.  A failing Result was returned because a pair the client needs was not found.
 
-    # PARENT:
+    Super Class:
         *   DebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

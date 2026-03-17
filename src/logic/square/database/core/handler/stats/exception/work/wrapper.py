@@ -20,25 +20,22 @@ from logic.system import ComputationException
 # ======================# SQUARE_STACK_COUNTS_ANALYSIS_FAILURE #======================#
 class SquareStackCountsAnalysisException(ComputationException):
     """
-    # ROLE: Exception Chain Layer 1, Exception Messaging
+    Role:Exception Chain Layer 1, Exception Messaging
     # TASK: Worker Method Identifier
 
     Responsibilities:
     1.  Encapsulate the Layer-1 DebugException which describes the cause the computation failed.
 
-    # PARENT:
+    Super Class:
         *   ComputationException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See ComputationException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   err_code (str)
         *   msg (str)
         *   ex (Optional[Exception])

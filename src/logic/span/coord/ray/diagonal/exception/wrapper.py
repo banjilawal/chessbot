@@ -20,7 +20,7 @@ from logic.span import RayComputationException
 # ======================# DIAGONAL_RAY_COMPUTATION_FAILURE #======================#
 class DiagonalRayComputationException(RayComputationException):
     """
-    # ROLE: Exception Chain Layer 1, Exception Messaging
+    Role:Exception Chain Layer 1, Exception Messaging
     # TASK: Worker Method Identifier
 
     Responsibilities:
@@ -31,19 +31,16 @@ class DiagonalRayComputationException(RayComputationException):
                 *   i < j the domain is y_i = x_(i-1) + c x_i or
                 *   j >= N the domain is y_j = x_(j-1) + c x_j
 
-    # PARENT:
+    Super Class:
         *   RayComputationException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See RayComputationException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   err_code (str)
         *   msg (str)
         *   ex (Optional[Exception])

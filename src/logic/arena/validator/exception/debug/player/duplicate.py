@@ -18,19 +18,16 @@ __all__ = [
 # ======================# DUPLICATE_PLAYER_IN_ARENA EXCEPTION #======================#
 class DuplicatePlayerInArenaException(ArenaDebugException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Raised if a both unique teams in an Arena are owned by the same owner.
 
-    # PARENT:
+    Super Class:
         *   ArenaDebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

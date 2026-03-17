@@ -19,20 +19,17 @@ __all__ = [
 # ========================= ARENA_PERSONA_KEY EXCEPTION =========================#
 class ArenaPersonaKeysException(PersonaKeyException, ContextFlagCountException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that a candidate failed PersonaKey validation because more than one attribute was enabled.
 
-    # PARENT:
+    Super Class:
         *   ContextFlagCountException
         *   PersonaKeyException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

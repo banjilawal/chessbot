@@ -21,24 +21,21 @@ from logic.system import ExecutionRouteException
 # ======================# PLAYER_BUILD_ROUTE_EXCEPTION #======================#
 class PlayerBuildRouteException(ExecutionRouteException):
     """
-    # ROLE: Error Tracing, Debugging, Super Exception
+    Role:Error Tracing, Debugging, Super Exception
 
     Responsibilities:
     1.  Indicate that the PlayerFactory does not have abuild rout for a Player subclass..
 
-    # PARENT:
+    Super Class:
         *   ExecutionRoute
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See ExecutionRoute class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

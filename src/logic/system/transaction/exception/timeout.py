@@ -19,19 +19,16 @@ from logic.system import ResourceUnavailableException, TransactionException
 # ====================== TRANSACTION_TIMEOUT EXCEPTION #======================#
 class TransactionTimeoutException(TransactionException, ResourceUnavailableException):
     """
-    # ROLE: Error Tracing, Debugging, Super Exception
+    Role:Error Tracing, Debugging, Super Exception
 
     Responsibilities:
     1.  Indicate that a transaction was not completed because it timed out waiting for a resource.
 
-    # PARENT:
+    Super Class:
         *   ChessException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

@@ -17,7 +17,7 @@ from logic.vector import Vector
 
 class Persona(Enum):
     """
-    # ROLE: Build Configuration Table, Persona, Metadata Set
+    Role:Build Configuration Table, Persona, Metadata Set
 
     # ABOUT THE PERSONA:
     The Persona implements a hashtable of attributes assigned to concrete Rank classes. The Rank's title is the hash
@@ -36,11 +36,10 @@ class Persona(Enum):
     1.  Metadata for each Rank.
     1.  Supply build parameters to RankFactory methods.
 
-    # PARENT:
+    Super Class:
         *   Enum
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   designation (str)

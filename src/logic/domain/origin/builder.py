@@ -15,7 +15,7 @@ from logic.system import Builder, BuildResult, LoggingLevelRouter
 
 class DomainOriginBuilder(Builder[DomainOrigin]):
     """
-     # ROLE: Builder, Data Integrity And Reliability Guarantor
+     Role:Builder, Data Integrity And Reliability Guarantor
 
      Responsibilities:
      1.  Produce DomainOrigin instances whose integrity is guaranteed at creation.
@@ -23,7 +23,7 @@ class DomainOriginBuilder(Builder[DomainOrigin]):
      3.  Ensure params for DomainOrigin creation have met the application's safety contract.
      4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-     # PARENT:
+     Super Class:
          * Builder
 
      # PROVIDES:

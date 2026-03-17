@@ -19,20 +19,17 @@ __all__ = [
 # ======================# PERSONA_LOOKUP_FAILURE #======================#
 class PersonaLookupFailedException(PersonaException, LookupException):
     """
-    # ROLE: WrapperException, Encapsulation
+    Role:WrapperException, Encapsulation
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why a candidate failed its validation as a Square. The exception chain traces the ultimate source of failure.
 
-    # PARENT:
+    Super Class:
         *   PersonaException
         *   LookupException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     INHERITED ATTRIBUTES:
     None

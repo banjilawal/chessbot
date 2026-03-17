@@ -18,20 +18,17 @@ T = TypeVar("T")
 
 class CollisionDetector(Generic[T]):
     """
-    # ROLE: Detector, Consistency and Uniqueness Guarantor,
+    Role:Detector, Consistency and Uniqueness Guarantor,
 
     Responsibilities:
     1.  Detect instances of an object that have matching values for an attribute that is required to be unique.
     2.  Return an exception chain for tracing the source of an error.
 
-    # PARENT:
+    Super Class:
     None
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

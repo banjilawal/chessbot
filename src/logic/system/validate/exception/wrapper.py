@@ -21,25 +21,22 @@ from logic.system import OperationException
 # ======================# VALIDATION_FAILURE #======================#
 class ValidationException(OperationException):
     """
-    # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
+    Role:Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
     1.  Indicate a validation check was not passed.
     2.  Identify the Validator method where the failure occurred.
 
-    # PARENT:
+    Super Class:
         *   OperationException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See OperationException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         op: Optional[str]
         ex: Optional[str]
         msg: Optional[str]

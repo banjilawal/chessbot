@@ -20,18 +20,17 @@ __all__ = [
 # ========================= ZERO_SCHEMA_KEYS_VALIDATION EXCEPTION =========================#
 class ZeroSchemaKeysException(SchemaKeyException, ContextFlagCountException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that a SchemaKey failed its safety certification because no attribute was enabled with a value.
     # 1.  Indicate that forward Schema lookup failed because all the SchemaKey attributes were null.
 
-    # PARENT:
+    Super Class:
         *   ContextFlagCountException
         *   InvalidSchemaKeyException
 
-    # PROVIDES:
-    None
+    Provides:
 
     # ATTRIBUTES:
     None

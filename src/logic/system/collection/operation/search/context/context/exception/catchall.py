@@ -18,20 +18,17 @@ __all__ = [
 # ======================# CONTEXT EXCEPTION #======================#
 class ContextException(ChessException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Parent of exception raised by CONTEXT objects
     3.  Super for CONTEXT errors not covered by lower level CONTEXT exception.
 
-    # PARENT:
+    Super Class:
         *   ChessException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

@@ -21,24 +21,21 @@ from logic.system import LoggingLevelRouter, SearchResult, UpdateResult
 
 class SquareStackRosterHandler:
     """
-    # ROLE: Handler. Utility, Transport, Utilities, Update Management,
+    Role:Handler. Utility, Transport, Utilities, Update Management,
 
     Responsibilities:
     1.  Transfers Team.roster members to their opening squares.
 
-    # PARENT:
+    Super Class:
     None
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR:
+    Attributes:
         Local:
         None
 

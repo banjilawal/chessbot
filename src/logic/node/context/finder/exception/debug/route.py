@@ -21,24 +21,21 @@ from logic.node import NodeDebugException
 # ======================# NO_NODE_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#
 class NodeSearchRouteException(NodeDebugException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
     1.  Indicate that there was no search logic for a node attribute.
 
-    # PARENT:
+    Super Class:
         *   NodeDebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   NodeDebugException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]

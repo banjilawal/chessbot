@@ -18,7 +18,7 @@ from logic.system import DeletionResult, IdentityService, InsertionResult, Loggi
 
 class TokenStackCrudHandler:
     """
-    # ROLE: CRUD Handler, Consistency, Integrity Maintenance, Lifecycle Management
+    Role:CRUD Handler, Consistency, Integrity Maintenance, Lifecycle Management
 
     Responsibilities:
     1.  Ensure integrity and consistency are maintained during TokenStack
@@ -26,19 +26,16 @@ class TokenStackCrudHandler:
             *   Deletion
         operations.
 
-    # PARENT:
+    Super Class:
     None
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR:
+    Attributes:
     None
 
     # LOCAL METHODS:
@@ -338,3 +335,7 @@ class TokenStackCrudHandler:
             )
         # --- Do nothing if the stack is not empty ---#
         return DeletionResult.nothing_to_delete()
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    

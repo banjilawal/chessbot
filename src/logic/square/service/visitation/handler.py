@@ -21,19 +21,16 @@ from logic.token import Token, TokenBoardState, TokenService
 
 class TokenVisitHandler:
     """
-    # ROLE: Update Handler, Consistency, Integrity Maintenance, Lifecycle Management
+    Role:Update Handler, Consistency, Integrity Maintenance, Lifecycle Management
 
     Responsibilities:
     1.  Ensure integrity and consistency are maintained during the  square's occupation lifecycle.
 
-    # PARENT:
+    Super Class:
    None
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

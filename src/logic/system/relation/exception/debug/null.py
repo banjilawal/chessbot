@@ -21,7 +21,7 @@ from logic.system import RelationDebugException
 # ======================# NO_RELATION_EXCEPTION #======================#
 class NoRelationException(RelationDebugException):
     """
-    # ROLE:  Exception Messaging, Exception Chain Layer 2
+    Role: Exception Messaging, Exception Chain Layer 2
     # TASK: Capture Error Variable State
 
     Responsibilities:
@@ -33,19 +33,16 @@ class NoRelationException(RelationDebugException):
     2.  Indicate that, a failing result was returned because the candidates did not
         have any relationship.
 
-    # PARENT:
+    Super Class:
         *   RelationDebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See RelationDebugException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         var: Optional[str]
         val: Optional[str]
         msg: Optional[str]

@@ -18,19 +18,16 @@ from logic.arena import ArenaException
 # ======================# ARENA_SLOT_ALREADY_OCCUPIED EXCEPTION #======================#
 class ArenaSlotAlreadyOccupiedException(ArenaException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that a slot color slot for a team is already occupied.
 
-    # PARENT:
+    Super Class:
         *   ArenaException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

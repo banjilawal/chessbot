@@ -18,20 +18,17 @@ from logic.system import ExecutionRouteException
 # ======================# NO_TRANSFER_ROUTE_FOR_SELECTED_OPTION EXCEPTION #======================#
 class TransferRouteException(ExecutionRouteException):
     """
-    # ROLE: Error Tracing, Debugging, Super Exception
+    Role:Error Tracing, Debugging, Super Exception
 
     Responsibilities:
     1.  Indicate that a transfer failed because there was no execution logic for one the different 
         transfer behaviors.
 
-    # PARENT:
+    Super Class:
         *   ExecutionRouteException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

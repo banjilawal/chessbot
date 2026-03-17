@@ -1,7 +1,7 @@
 # src/logic/token/database/kernel/operation/crud/exception/push/wrapper.py
 
 """
-Module: logic.token.database.kernel.operation.crud.exception.push.wrapper
+Module: logic.token.database.kernel.OPERATION.CRUD.exception.push.wrapper
 Author: Banji Lawal
 Created: 2026-02-22
 version: 1.0.0
@@ -20,37 +20,50 @@ from logic.system import InsertionException
 # ======================# TOKEN_STACK_PUSH_FAILURE #======================#
 class TokenStackPushException(InsertionException):
     """
-    # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
+    Role:
+        - Error Variable Identifier
+        - Exception Chain Layer 2
+        - Exception Messaging
 
     Responsibilities:
-    1.  Indicate that pushing a token on to the stack failed.
-    2.  Identify the TokenStackService method where the failure occurred.
+        1.  Indicate that pushing a token to the stack failed because the stack was full.
 
-    # PARENT:
-        *   InsertionException
+    Attributes:
+        var: Optional[str]
+        val: Optional[Any]
+        msg: Optional[str]
+        ex: Optional[Exception]
+        err_code: Optional[str]
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
+    Super Class:
+        TokenDebugException
+    """
+    """
+    Role:
+        -   Worker Method Identification
+        -   Exception Chain Layer 1
+        -   Exception Messaging
 
-    # INHERITED ATTRIBUTES:
-        *   See InsertionException class for inherited attributes.
+    Responsibilities:
+        1.  Indicate that pushing a token on to the stack failed.
+        2.  Identify the TokenStackService method where the failure occurred.
+        
 
-    # CONSTRUCTOR:
+    Attributes:
         op: Optional[str]
         ex: Optional[str]
         msg: Optional[str]
         mthd: Optional[str]
         err_code: Optional[str]
         rslt_type: Optional[str]
+        
 
-    # LOCAL METHODS:
-   None
+    Provides:
 
-    # INHERITED METHODS:
-        *   See InsertionException class for inherited methods.
+    Super Class:
+        InsertionException
     """
     OP = "Insertion"
     RSLT_TYPE = "InsertionResult"

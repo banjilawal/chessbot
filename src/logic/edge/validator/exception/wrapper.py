@@ -20,16 +20,15 @@ from logic.system import ValidationException
 # ======================# EDGE_VALIDATION_FAILURE #======================#
 class EdgeValidationException(ValidationException):
     """
-    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
+    Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
     1.  Identify the EdgeValidator method where the process failed.
 
-    # PARENT:
+    Super Class:
         *   ValidationException
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   op (Optional[str])
@@ -38,7 +37,7 @@ class EdgeValidationException(ValidationException):
     # INHERITED ATTRIBUTES:
         *   See ValidationException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   err_code (str)
         *   msg (str)
         *   ex (Optional[Exception])

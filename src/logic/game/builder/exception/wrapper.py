@@ -20,25 +20,22 @@ from logic.system import BuildException
 # ======================# GAME_BUILD_FAILURE #======================#
 class GameBuildException(BuildException):
     """
-    # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
+    Role:Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
     1.  Indicate the GameBuilder did not produce a valid work product.
     2.  Identify the GameBuilder method where the failure occurred.
 
-    # PARENT:
+    Super Class:
         *   BuildException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See BuildException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         op: Optional[str]
         ex: Optional[str]
         msg: Optional[str]

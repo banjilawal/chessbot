@@ -1,7 +1,7 @@
-# src/logic/token/database/kernel/operation/crud/exception/push/duplicate.py
+# src/logic/token/database/kernel/operation/crud/push/exception/duplicate.py
 
 """
-Module: logic.token.database.kernel.operation.crud.exception.push.duplicate
+Module: logic.token.database.kernel.operation.crud.push.exception.duplicate
 Author: Banji Lawal
 Created: 2026-02-22
 version: 1.0.0
@@ -23,35 +23,25 @@ from logic.system import DebugException
 # ======================# ADDING_DUPLICATE_TOKEN_EXCEPTION #======================#
 class AddingDuplicateTokenException(DebugException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:
+        - Error Variable Identifier
+        - Exception Chain Layer 2
+        - Exception Messaging
 
     Responsibilities:
-    1.  Indicate an insertion failed because the token was already in the stack.
+        1.  Indicate an insertion failed because the token was already in the stack.
 
-    # PARENT:
-        *   TokenDebugException
-
-    # PROVIDES:
-    None
-
-    # LOCAL ATTRIBUTES:
-    None
-
-    # INHERITED ATTRIBUTES:
-        *   TokenDebugException class for inherited attributes.
-
-    # CONSTRUCTOR:
+    Attributes:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]
         ex: Optional[Exception]
         err_code: Optional[str]
 
-    # LOCAL METHODS:
-    None
+    Provides:
 
-    # INHERITED METHODS:
-        *   See TokenDebugException class for inherited methods.
+    Super Class:
+        TokenDebugException
     """
     ERR_CODE = "ADDING_DUPLICATE_TOKEN_EXCEPTION"
     MSG = "Token is already in the stack."

@@ -19,21 +19,18 @@ __all__ = [
 #======================# PLAYER_HAS_STALE_LINK_TO_TEAM EXCEPTION #======================#
 class PlayerHasStaleTeamLinkException(TeamDebugException, StaleRelationException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
     1.  A failing TeamValidationResult was returned because the player had a stale
         link to a former team.
 
-    # PARENT:
+    Super Class:
         *   TeamDebugException
         *   StaleRelationException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

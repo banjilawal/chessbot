@@ -15,7 +15,7 @@ from logic.hostage import CaptivityContext, CaptivityContextBuilder, CaptivityCo
 
 class HostageContextService(ContextService[CaptivityContext]):
     """
-    # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
+    Role:Search Service, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing Captivity search microservice API.
@@ -24,14 +24,12 @@ class HostageContextService(ContextService[CaptivityContext]):
     4.  Create a single source of truth for Captivity search results by having single entry and exit points for the
         Captivity search flow.
 
-    # PARENT:
+    Super Class:
         *   ContextService
 
     # PROVIDES:
         *   HostageContextService
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See ContextService for inherited attributes.

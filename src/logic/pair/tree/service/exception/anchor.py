@@ -20,7 +20,7 @@ from logic.system import ServiceException
 # ======================# NODE_TREE_SERVICE_EXCEPTION #======================#
 class NodeTreeServiceException(ServiceException):
     """
-    # ROLE: Coverage Target, Exception Chain Layer 0
+    Role:Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
     1.  Anchoring target for NodeTreeService debug (layer-2) error state firing incident
@@ -29,19 +29,16 @@ class NodeTreeServiceException(ServiceException):
             *   The trigger's value.
     2.  Indicate which NodeTreeService method received a worker's (layer-1) failure result.
 
-    # PARENT:
+    Super Class:
         *   ServiceException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See ServiceException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         msg: Optional[str]
         ex: Optional[Exception]
         cls_name: Optional[str]

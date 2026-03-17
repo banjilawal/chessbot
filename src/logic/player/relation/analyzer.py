@@ -18,20 +18,17 @@ from logic.system import LoggingLevelRouter, RelationReport, RelationAnalyzer
 
 class PlayerTeamRelationAnalyzer(RelationAnalyzer[Player, Team]):
     """
-    # ROLE: Reporting, Test for Relationship
+    Role:Reporting, Test for Relationship
 
     Responsibilities:
     1.  Test if whether an owner-team tuple have either none, partial, or fully bidirectional relation between them.
     2.  If the testing was not completed send an exception chain to the caller.
 
-    # PARENT:
+    Super Class:
         *   RelationAnalyzer
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

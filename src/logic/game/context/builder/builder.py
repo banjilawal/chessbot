@@ -20,7 +20,7 @@ from logic.game import (
 
 class GameContextBuilder(Builder[GameContext]):
     """
-    # ROLE: Builder, Data Integrity And Reliability Guarantor
+    Role:Builder, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce GameContext instances whose integrity is guaranteed at creation.
@@ -28,14 +28,11 @@ class GameContextBuilder(Builder[GameContext]):
     3.  Ensure params for GameContext creation have met the application's safety contract.
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-    # PARENT:
+    Super Class:
         *   Builder
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

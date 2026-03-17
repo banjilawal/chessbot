@@ -17,17 +17,16 @@ from logic.system import Context, GameColor
 
 class TeamContext(Context[Team]):
     """
-    # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
+    Role:Filter, Search, Selection, Reverse/Forward Lookups
 
     Responsibilities:
     Provide an TeamFinder with an attribute value to find Teams with a matching value in
     their version of the attribute.
 
-    # PARENT:
+    Super Class:
         *   Context
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   owner (Optional[Player])

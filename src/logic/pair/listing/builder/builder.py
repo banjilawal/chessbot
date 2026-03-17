@@ -17,26 +17,23 @@ from logic.system import BuildResult, Builder, LoggingLevelRouter
 
 class PairListBuilder(Builder[PairList]):
     """
-     # ROLE: Builder, Data Integrity And Reliability Guarantor
+     Role:Builder, Data Integrity And Reliability Guarantor
     
      Responsibilities:
      1.  Produce PairList instances whose integrity and reliability are guaranteed.
      2.  Ensure params for PairList creation have met the application's safety contract.
      3.  Return an exception to the client if a build resource does not satisfy integrity requirements.
     
-     # PARENT:
+     Super Class:
          * Builder
     
-    # PROVIDES:
-    None
+    Provides:
     
-    # LOCAL ATTRIBUTES:
-    None
     
     # INHERITED ATTRIBUTES:
         *   See Builder class for inherited attributes.
     
-    # CONSTRUCTOR:
+    Attributes:
     None
     
     # LOCAL METHODS:

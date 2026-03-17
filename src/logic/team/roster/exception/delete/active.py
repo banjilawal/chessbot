@@ -19,19 +19,16 @@ from logic.team import TeamRosterException
 # ======================# DELETING_ACTIVE_TOKEN_FROM_ROSTER EXCEPTION #======================#
 class DeletingActiveTokenExceptionTeam(TeamRosterException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that a occupant cannot be removed from the roster because it has not been captured.
 
-    # PARENT:
+    Super Class:
         *   TeamRosterException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

@@ -18,19 +18,16 @@ from logic.hostage import HostageDataListException
 # ======================# APPENDING_HOSTAGE_DIRECTLY_INTO_ITEMS EXCEPTION #======================#
 class AppendingHostageDirectlyIntoItemsFailedException(HostageDataListException):
     """
-    # ROLE: Debug, Error Tracing
+    Role:Debug, Error Tracing
 
     Responsibilities:
     1.  Indicate that appending the hostage directly into self.bag was not in the list after running bag.append.
 
-    # PARENT:
+    Super Class:
         *   HostageDataListException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

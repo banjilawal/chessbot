@@ -16,20 +16,17 @@ from logic.span import BishopSpannerException, DiagonalRayProvider, CoordSpan, S
 
 class BishopSpanner(Spanner):
     """
-    # ROLE: Worker, Computation
+    Role:Worker, Computation
     # Provide a spanning set for a Bishop
 
     Responsibilities:
     1. Provide a spanning set for a Bishop
 
-    # PARENT:
+    Super Class:
         Spanner
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     INHERITED ATTRIBUTES:
         *   See Spanner class for inherited attributes

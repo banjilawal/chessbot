@@ -19,7 +19,7 @@ from logic.team import (
 
 class PlayerService(IntegrityService[Player]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    Role:Service, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing Player microservice API.
@@ -27,14 +27,11 @@ class PlayerService(IntegrityService[Player]):
     3.  Authoritative, single source of truth for Player state by providing single entry and exit points to Player
         lifecycle.
 
-    # PARENT:
+    Super Class:
         *   IntegrityService
     
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
     
     # INHERITED ATTRIBUTES:
         *   See IntegrityService class for inherited attributes.

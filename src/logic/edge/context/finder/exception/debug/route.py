@@ -21,24 +21,21 @@ from logic.edge import EdgeDebugException
 # ======================# NO_EDGE_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#
 class EdgeSearchRouteException(EdgeDebugException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
     1.  Indicate that there was no search logic for a edge attribute.
 
-    # PARENT:
+    Super Class:
         *   EdgeDebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   EdgeDebugException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]

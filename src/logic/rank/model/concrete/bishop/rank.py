@@ -20,17 +20,16 @@ from logic.vector import VectorService
 
 class Bishop(Rank):
     """
-    # ROLE: Computation, Metadata
+    Role:Computation, Metadata
 
     Responsibilities:
     1.  Produces a list of Coords reachable from a Bishop's updated position.
     2.  Metadata about the Bishop rank useful for optimizing the GameGraph.
 
-    # PARENT:
+    Super Class:
         Rank
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         * diagonal_span (DiagonalSpanComputer)

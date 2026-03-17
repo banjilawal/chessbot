@@ -18,19 +18,16 @@ from logic.hostage import HostageException
 # ======================# TOKEN_CANNOT_CAPTURE_ITSELF EXCEPTION #======================#
 class TokenCannotCaptureItselfException(HostageException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that an entity, method, or operation that required a Hostage but got null instead.
 
-    # PARENT:
+    Super Class:
         *   HostageException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

@@ -21,19 +21,16 @@ from logic.team import TeamStackException
 # ======================# POPPING_EMPTY_TEAM_STACK EXCEPTION #======================#
 class PoppingEmptyTeamStackException(TeamStackException, NullException):
     """
-    # ROLE: Debug, Error Tracing
+    Role:Debug, Error Tracing
 
     Responsibilities:
     1.  Indicate that an attempt to remove a team failed because the TeamStack was not managing any teams.
 
-    # PARENT:
+    Super Class:
         *   TeamDaaServiceException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

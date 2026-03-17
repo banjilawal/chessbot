@@ -20,7 +20,7 @@ from logic.system import NullException
 # ======================# NULL_GAME_CONTEXT_EXCEPTION #======================#
 class NullGameContextException(NullException):
     """
-    # ROLE: Exception Chain Layer 2, Exception Messaging
+    Role:Exception Chain Layer 2, Exception Messaging
     # TASK: Capture Error Variable State
 
     Responsibilities:
@@ -32,19 +32,16 @@ class NullGameContextException(NullException):
 
     2.  A failing ValidationResult was returned because the candidate was null.
 
-    # PARENT:
+    Super Class:
         *   NullException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See NullException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

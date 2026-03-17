@@ -18,20 +18,17 @@ __all__ = [
 # ======================# ADDING_DUPLICATE_TEAM EXCEPTION #======================#
 class AddingDuplicateTeamException(UniqueTeamStackServiceException):
     """
-    # ROLE: Debug, Error Tracing
+    Role:Debug, Error Tracing
 
     Responsibilities:
     1.  Indicate that an attempt to add a team to the TeamDatabase's dataset failed because the team was
         already in the collection
 
-    # PARENT:
+    Super Class:
         *   TeamDatabaseException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

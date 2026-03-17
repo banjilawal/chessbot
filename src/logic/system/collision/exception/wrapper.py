@@ -21,25 +21,22 @@ from logic.system import OperationException
 # ======================# COLLIDER_DETECTED #======================#
 class ColliderException(OperationException):
     """
-    # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
+    Role:Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
     1.  Indicate an object collided test subject
     2.  Identify the method where the collision test was performed.
 
-    # PARENT:
+    Super Class:
         *   OperationException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See OperationException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         op: Optional[str]
         ex: Optional[str]
         msg: Optional[str]

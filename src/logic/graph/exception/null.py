@@ -20,24 +20,21 @@ from logic.system import NullException
 #======================# NULL_GRAPH_EXCEPTION #======================#
 class NullGraphException(NullException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that a graph is null where it should not be.
     
-    # PARENT:
+    Super Class:
         *   NullException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See NUllException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

@@ -16,7 +16,7 @@ T = TypeVar("T")
 
 class Service(ABC, Generic[T]):
     """
-    # ROLE: Service
+    Role:Service
 
     Responsibilities:
     1.  Platform primitive to build Microservice APIs.
@@ -24,11 +24,10 @@ class Service(ABC, Generic[T]):
             *   A set of modules, methods that are related to a either a task or data object.
             *   Its modules produce different Result types
 
-    # PARENT:
+    Super Class:
     None
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   id (int)
@@ -37,7 +36,7 @@ class Service(ABC, Generic[T]):
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR:
+    Attributes:
         *   id (int)
         *   name (name)
 

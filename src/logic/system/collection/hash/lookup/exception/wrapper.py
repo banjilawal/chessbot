@@ -21,22 +21,19 @@ from logic.system import CollectionOperationException
 # ======================# LOOKUP_FAILURE #======================#
 class LookupException(CollectionOperationException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
   
     Responsibilities:
     1.  Parent of exceptions raised by Lookup operations.
     3.  Super for Metadata errors not covered by lower level LookupFailedExceptions.
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See CollectionException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   err_code (str)
         *   msg (str)
         *   ex (Optional[Exception])

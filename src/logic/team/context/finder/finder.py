@@ -20,7 +20,7 @@ from logic.team import (
 
 class TeamFinder(DataFinder[Team]):
     """
-    # ROLE: SearchWorker
+    Role:SearchWorker
 
     Responsibilities:
     1.  Send bag in a TeamList whose attribute value match the context.key value to the caller.
@@ -32,11 +32,8 @@ class TeamFinder(DataFinder[Team]):
     # PARENT
         *   SearchWorker
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

@@ -21,24 +21,21 @@ from logic.system import ExecutionRouteException
 # ======================# HOSTAGE_CONTEXT_EXECUTION_ROUTE_EXCEPTION #======================#
 class HostageContextExecutionRouteException(ExecutionRouteException):
     """
-    # ROLE: Error Tracing, Debugging, Super Exception
+    Role:Error Tracing, Debugging, Super Exception
 
     Responsibilities:
     1.  Indicate that there is no build route for a HostageContext attribute.
 
-    # PARENT:
+    Super Class:
         *   ExecutionRoute
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See ExecutionRoute class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

@@ -17,18 +17,17 @@ from logic.square.state import SquareState
 
 class Square:
     """
-    # ROLE: Data-Holder, Addressing, Referencing
+    Role:Data-Holder, Addressing, Referencing
 
     Responsibilities:
     1.  Maps a Coord to a nameable, occupyable board location.
     2.  Space on Board a Token can occupy.
     3.  Metadata about a reference on the Board.
 
-    # PARENT:
+    Super Class:
     None
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   id (int)
@@ -41,7 +40,7 @@ class Square:
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR:
+    Attributes:
         *   id (int)
         *   name (str)
         *   board (Board)

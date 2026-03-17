@@ -20,20 +20,17 @@ __all__ = [
 # ======================# SCHEMA_COLOR_BOUNDS EXCEPTION #======================#
 class SchemaColorBoundsException(SchemaException, BoundsException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that a Schema lookup failed because the color value was not permitted for the Schema attribute.
     
-    # PARENT:
+    Super Class:
         *   BoundsException
         *   SchemaException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     INHERITED ATTRIBUTES:
     None

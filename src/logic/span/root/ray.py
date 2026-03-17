@@ -16,16 +16,15 @@ T = TypeVar("T")
 
 class Ray(ABC, Generic[T]):
     """
-    # ROLE: Data-Holder
+    Role:Data-Holder
     
     Responsibilities:
     1.  Stores members that define a ray from an origin to a terminus
 
-    # PARENT:
+    Super Class:
     None
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   origin: Coord
@@ -34,7 +33,7 @@ class Ray(ABC, Generic[T]):
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR:
+    Attributes:
         *   origin: Coord
         *   members: List[Coord]
 

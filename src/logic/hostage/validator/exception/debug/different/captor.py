@@ -18,19 +18,16 @@ from logic.hostage import HostageException
 # ======================# VICTOR_AND_PRISONER_ON_DIFFERENT_BOARDS EXCEPTION #======================#
 class PrisonerCapturedByDifferentEnemyException(HostageException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Indicate that a candidate failed its Hostage validation because the prisoner had a different captor.
 
-    # PARENT:
+    Super Class:
         *   HostageException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

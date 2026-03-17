@@ -19,20 +19,17 @@ from logic.team import TeamException
 # ======================# TEAM_DIFFERENT_DIFFERENT_ARENA EXCEPTION #======================#
 class TeamPlayingDifferentArenaException(TeamException, ArenaException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Indicate that a team different a different arena.
 
-    # PARENT:
+    Super Class:
         *   ArenaException
         *   TeamException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

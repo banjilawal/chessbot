@@ -19,17 +19,16 @@ __all__ = [
 # ======================# NODE_CONTEXT EXCEPTION #======================#
 class NodeContextException(NodeException, ContextException):
     """
-    # ROLE: Super Exception
+    Role:Super Exception
 
     Responsibilities:
     1.  Super for NodeContext errors not covered by NodeException subclasses.
 
-    # PARENT:
+    Super Class:
         *   NodeException
         *   ContextException
 
-    # PROVIDES:
-    None
+    Provides:
 
     # ATTRIBUTES:
     None

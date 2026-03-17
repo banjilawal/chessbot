@@ -18,21 +18,18 @@ __all__ = [
 # ======================# CONTEXT_SERVICE EXCEPTION #======================#
 class ContextServiceException(ContextException, ServiceException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Parent of exceptions raised by ServiceContext objects.
     2.  Wrap an exception that hits the try-finally block of a ServiceContext method.
 
-    # PARENT:
+    Super Class:
         *   ContextException
         *   ServiceException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

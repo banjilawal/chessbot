@@ -17,24 +17,21 @@ from logic.span.coord import CoordRay
 
 class CoordSpan(Span[Coord]):
     """
-    # ROLE: Data-Holder
+    Role:Data-Holder
 
     Responsibilities:
     1.  Stores rays projected from a common Coord.
 
-    # PARENT:
+    Super Class:
         *   Span
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         * See Span class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   origin: Coord
         *   rays: List[Ray[Coord]]
 

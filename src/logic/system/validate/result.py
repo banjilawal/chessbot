@@ -15,20 +15,17 @@ T = TypeVar("T")
 
 class ValidationResult(Result[T], Generic[T]):
     """
-    # ROLE: Messanger Data Transport Object, Error Transport Object.
+    Role:Messanger Data Transport Object, Error Transport Object.
   
     Responsibilities:
     1. Send the outcome of a validation request to the client.
     2. Enforcing mutual exclusion. A ValidationResult can either carry payload or exception. Not both.
     
-    # PARENT:
+    Super Class:
         *   Result
   
-    # PROVIDES:
-    NOne
+    Provides:
   
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See Result class for inherited attributes.

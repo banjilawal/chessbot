@@ -15,7 +15,7 @@ from logic.board import BoardContext, BoardContextBuilder, BoardContextValidator
 
 class BoardContextService(ContextService[BoardContext]):
     """
-    # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
+    Role:Search Service, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing Board search microservice API.
@@ -24,14 +24,12 @@ class BoardContextService(ContextService[BoardContext]):
     4.  Create a single source of truth for Board search results by having single entry and exit points for the
         Board search flow.
 
-    # PARENT:
+    Super Class:
         *   ContextService
 
     # PROVIDES:
         *   BoardContextService
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See ContextService for inherited attributes.

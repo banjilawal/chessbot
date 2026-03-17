@@ -17,7 +17,7 @@ from logic.square import (
 
 class SquareCollisionDetector(CollisionDetector[Square]):
     """
-    # ROLE: Detector, Consistency and Uniqueness Guarantor, Validation,
+    Role:Detector, Consistency and Uniqueness Guarantor, Validation,
 
     Responsibilities:
     1.  Public facing collision detection microservice API.
@@ -25,19 +25,16 @@ class SquareCollisionDetector(CollisionDetector[Square]):
     2.  Ensures consistency of Square datasets by enforcing uniqueness constraints.
     3.  Sends report indicating target, collider and which attribute caused the collision.
 
-    # PARENT:
+    Super Class:
         *   CollisionDetector
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
    None
 
-    # CONSTRUCTOR:
+    Attributes:
         Local:
         None
         Inherited:

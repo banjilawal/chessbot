@@ -19,20 +19,17 @@ from logic.system import InsertionException
 # ======================# HOSTAGE_INSERTION_FAILURE #======================#
 class HostageInsertionException(HostageException, InsertionException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Indicate that add a hostage to the dataset failed.
 
-    # PARENT:
+    Super Class:
         *   HostageException
         *   InsertionException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

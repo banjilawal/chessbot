@@ -18,7 +18,7 @@ from logic.system import NumberValidator, BuildResult, Builder, IdentityService,
 
 class PersonaKeyBuilder(Builder[PersonaKey]):
     """
-    # ROLE: Builder, Data Integrity And Reliability Guarantor
+    Role:Builder, Data Integrity And Reliability Guarantor
 
     Responsibilities:
         1.  Produce PersonaKey instances whose integrity is guaranteed at creation.
@@ -26,14 +26,11 @@ class PersonaKeyBuilder(Builder[PersonaKey]):
         3.  Ensure params for PersonaKey creation have met the application's safety contract.
         4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-    # PARENT:
+    Super Class:
         *   Builder
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

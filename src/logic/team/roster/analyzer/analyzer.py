@@ -17,20 +17,17 @@ from logic.team import Team, TeamRosterRelationAnalysisException, TeamValidator
 
 class RosterRelationAnalyzer(RelationAnalyzer[Team, Token]):
     """
-    # ROLE: Reporting, Test for Relationship
+    Role:Reporting, Test for Relationship
 
     Responsibilities:
     1.  Establish what type of relationship a piece has with team's roster. Either none, a partial relation or
         completely bidirectional.
 
-    # PARENT:
+    Super Class:
         *   RelationAnalyzer
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

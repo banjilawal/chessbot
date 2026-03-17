@@ -21,25 +21,22 @@ from logic.system import InconsistentStateException
 # ======================# INCONSISTENT_TOKEN_BOARD_STATE_EXCEPTION #======================#
 class InconsistentTokenBoardStateException(InconsistentStateException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
     1.  Indicate that when a Token.board_state == TokenBoardState.NEVER_DEPLOYED after
         its been placed on the board..
 
-    # PARENT:
+    Super Class:
         *   InconsistentStateException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   InconsistentStateException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]

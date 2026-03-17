@@ -20,25 +20,22 @@ __all__ = [
 # ======================# ARGUMENTS_VALIDATION_FAILURE #======================#
 class ArgumentsValidationException(ValidationException):
     """
-    # ROLE: Debug Wrapper, Exception Chain Layer 2, Exception Messaging
+    Role:Debug Wrapper, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
     1.  Indicate that a candidate failed a safety check in a ArgumentsValidator
         method.
 
-    # PARENT:
+    Super Class:
         *   ValidationException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See ValidationException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   err_code (str)
         *   msg (str)
         *   ex (Optional[Exception])

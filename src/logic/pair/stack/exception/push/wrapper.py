@@ -19,22 +19,19 @@ from logic.system import PushException
 # ======================# PUSHING_PAIR_FAILURE #======================#
 class PushingPairException(PairStackException, PushException):
     """
-    # ROLE: Exception Chain Layer 1, Exception Messaging
+    Role:Exception Chain Layer 1, Exception Messaging
     # TASK: Worker Method Identifier
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why pushing a pair failed. The exception chain
         traces the ultimate source of failure.
 
-    # PARENT:
+    Super Class:
         *   PairException
         *   PushException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

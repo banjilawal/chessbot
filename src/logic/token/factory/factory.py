@@ -18,7 +18,7 @@ from logic.token import CombatantToken, KingToken, PawnToken, TokenBuildExceptio
 
 class TokenFactory(Builder[Token]):
     """
-    # ROLE: Factory, Data Integrity Guarantor
+    Role:Factory, Data Integrity Guarantor
 
     Responsibilities:
     1.  Produce Token instances whose integrity is guaranteed at creation.
@@ -26,14 +26,11 @@ class TokenFactory(Builder[Token]):
     3.  Ensure params for Token creation have met the application's safety contract.
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-    # PARENT:
+    Super Class:
         *   Builder
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

@@ -18,19 +18,16 @@ __all__ = [
 # ====================== POPPING_EMPTY_STACK EXCEPTION #======================#
 class PoppingEmptyStackException(StackServiceException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     Indicate there was an attempt to pop an empty stack.
 
-    # PARENT:
+    Super Class:
         *   StackServiceException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

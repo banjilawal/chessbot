@@ -19,17 +19,16 @@ __all__ = [
 #======================# NULL AGENT_VARIETY EXCEPTION  #======================#
 class AgentVarietyNullException(InvalidAgentVarietyException, NullException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate if an entity, method or operation required an AgentVariety  but got null instead.
 
-    # PARENT:
+    Super Class:
         *   InvalidAgentVarietyException
         *   NullException
 
-    # PROVIDES:
-    None
+    Provides:
 
     # ATTRIBUTES:
     None

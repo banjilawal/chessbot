@@ -19,20 +19,17 @@ from logic.system import DebugException
 # ======================# ARENA_ALREADY_CONTAINS_TEAM EXCEPTION #======================#
 class ArenaAlreadyContainsTeamException(ArenaException, DebugException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that the team is already in the arena. It cannot be added again.
 
-    # PARENT:
+    Super Class:
         *   ArenaException
         *   DebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

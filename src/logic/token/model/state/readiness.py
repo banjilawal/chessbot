@@ -11,7 +11,7 @@ from enum import Enum, auto
 
 class ReadinessState(Enum):
     """
-    # ROLE: State Descriptor
+    Role:State Descriptor
 
     Responsibilities:
     1.  Indicating if the Token is in a state where
@@ -20,11 +20,10 @@ class ReadinessState(Enum):
             *   It can capture enemies.  
             *   It cannot move on the board nor capture enemies.
 
-    # PARENT:
+    Super Class:
         *   Enum
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   FREE
@@ -39,7 +38,7 @@ class ReadinessState(Enum):
     # INHERITED ATTRIBUTES:
         *   See Enum class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
    None
 
     # LOCAL METHODS:

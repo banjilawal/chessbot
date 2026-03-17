@@ -15,7 +15,7 @@ from logic.vector import Vector
 
 class PerpendicularRayFactors:
     """
-    # ROLE: Data-HOlder
+    Role:Data-HOlder
     # TASK: Computation arguments.
 
     Responsibilities:
@@ -24,11 +24,10 @@ class PerpendicularRayFactors:
             *   The invariant.
             *   The additive factor for advancing the series.
 
-    # PARENT:
+    Super Class:
     None
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
             start_x: int
@@ -41,7 +40,7 @@ class PerpendicularRayFactors:
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR:
+    Attributes:
             start_x: int
             end_x: int
             x_step: int

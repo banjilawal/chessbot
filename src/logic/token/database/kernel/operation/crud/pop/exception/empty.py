@@ -1,7 +1,7 @@
-# src/logic/token/database/kernel/operation/crud/exception/pop/empty.py
+# src/logic/token/database/kernel/operation/crud/pop/exception/empty.py
 
 """
-Module: logic.token.database.kernel.operation.crud.exception.pop.empty
+Module: logic.token.database.kernel.operation.crud.pop.exception.empty
 Author: Banji Lawal
 Created: 2026-02-22
 version: 1.0.0
@@ -21,35 +21,26 @@ from logic.system import DebugException
 # ======================# POPPING_EMPTY_TOKEN_STACK_EXCEPTION #======================#
 class PoppingEmptyTokenStackException(DebugException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:
+        -    Error Variable Identifier
+        -   Exception Chain Layer 2,
+        -   Exception Messaging
 
     Responsibilities:
-    1.  Indicate that a pop failed because the stack was empty.
-
-    # PARENT:
-        *   TokenDebugException
-
-    # PROVIDES:
-    None
-
-    # LOCAL ATTRIBUTES:
-    None
-
-    # INHERITED ATTRIBUTES:
-        *   TokenDebugException class for inherited attributes.
-
-    # CONSTRUCTOR:
+        1.  Indicate that a pop failed because the stack was empty.
+        
+    Attributes:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]
         ex: Optional[Exception]
         err_code: Optional[str]
+        
+    Provides:
 
-    # LOCAL METHODS:
-    None
+    Super Class:
+        TokenDebugException
 
-    # INHERITED METHODS:
-        *   See TokenDebugException class for inherited methods.
     """
     ERR_CODE = "POPPING_EMPTY_TOKEN_STACK_EXCEPTION"
     MSG = "TokenStackService pop failed: Cannot pop from an empty stack."

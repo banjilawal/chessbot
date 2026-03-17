@@ -19,21 +19,18 @@ __all__ = [
 # ======================# NO_RELATION_BETWEEN_BOARD_AND_TEAM EXCEPTION #======================#
 class TeamBelongsToDifferentBoardException(TeamDebugException, NoRelationException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
     1.  A failing TeamValidationResult was returned because the board and the candidate team
         did not have any relationship between them.
 
-    # PARENT:
+    Super Class:
         *   TeamDebugException
         *   NoRelationException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

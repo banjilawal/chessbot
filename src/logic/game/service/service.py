@@ -15,7 +15,7 @@ from logic.game import Game, GameBuilder, GameValidator
 
 class GameService(IntegrityService[Game]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    Role:Service, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing Game microservice API.
@@ -23,15 +23,13 @@ class GameService(IntegrityService[Game]):
     3.  Authoritative, single source of truth for Game state by providing single entry and exit points to Game
         lifecycle.
 
-    # PARENT:
+    Super Class:
         *   IntegrityService
 
     # PROVIDES:
         *   builder: --> GameBuilder
         *   validator: --> GameValidator
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See IntegrityService for inherited attributes.

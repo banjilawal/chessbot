@@ -19,20 +19,17 @@ from logic.span import PawnSpannerException, PawnVectorSets, CoordRay, CoordSpan
 
 class PawnSpanner(Spanner):
     """
-    # ROLE: Worker, Computation
+    Role:Worker, Computation
     # Provide a spanning set for a Pawn
 
     Responsibilities:
     1. Provide a spanning set for a Pawn
 
-    # PARENT:
+    Super Class:
         Spanner
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     INHERITED ATTRIBUTES:
         *   See Spanner class for inherited attributes

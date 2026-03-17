@@ -13,20 +13,18 @@ from logic.agent import AgentVariety, HumanAgent, MachineAgent
 
 class AgentVariety(Enum):
     """
-    # ROLE: Selection
+    Role:Selection
 
     Responsibilities:
     1.  Used for picking an operation that on the basis of the Player subclass.
     2.  Safer than using strings.
 
-    # PARENT:
+    Super Class:
         *   Enum
 
     # PROVIDES:
         *   subclass_from_variety:  -> [HumanAgent|MachineAgent]
 
-    # LOCAL ATTRIBUTES:
-    None
     
     # INHERITED ATTRIBUTES:
     None

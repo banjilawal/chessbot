@@ -10,20 +10,17 @@ from logic.token import TokenStateException
 # ======================# NULL_TOKEN_STATE EXCEPTION #======================#
 class ReadinessStateNullException(TokenStateException, NullException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that TokenState validation failed because the candidate was null.
 
-    # PARENT:
+    Super Class:
         *   TokenStateException
         *   ReadinessStateNullException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

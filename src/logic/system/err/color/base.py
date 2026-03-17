@@ -18,19 +18,16 @@ __all__ = [
 #======================# GAME_COLOR EXCEPTION #======================#
 class GameColorException(ChessException):
     """
-    # ROLE: Super Exception
+    Role:Super Exception
 
     Responsibilities:
     1.  Super for conditions which are not covered by GameColorException subclasses.
 
-    # PARENT:
+    Super Class:
         *   ChessException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

@@ -18,19 +18,16 @@ from logic.square import SquareDebugException
 # ======================# SQUARE_ID_COLLISION EXCEPTION #======================#
 class SquareIdCollisionException(SquareDebugException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
     At least two squares two are sharing a id that should be unique to a square.
 
-    # PARENT:
+    Super Class:
         *   SquareDebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

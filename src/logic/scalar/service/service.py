@@ -23,7 +23,7 @@ from logic.system import IntegrityService, Builder, Validator
 
 class ScalarService(IntegrityService[Scalar]):
     """
-    # ROLE: Microservice API, Integrity Lifecycle Manager, APLifecycle Management.
+    Role:Microservice API, Integrity Lifecycle Manager, APLifecycle Management.
 
     Responsibilities:
     1.  Integrity Lifecycle Management Microservice API.
@@ -32,11 +32,10 @@ class ScalarService(IntegrityService[Scalar]):
             *   At object creation.
             *   At object invocation.
 
-    # PARENT:
+    Super Class:
         *   IntegrityService
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   builder (Builder[Scalar])
@@ -45,7 +44,7 @@ class ScalarService(IntegrityService[Scalar]):
     # INHERITED ATTRIBUTES:
         *   See IntegrityService class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   id (int)
         *   name (name)
         *   builder (Builder[Scalar])

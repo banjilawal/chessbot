@@ -21,7 +21,7 @@ C = TypeVar("C", bound=Context)
 
 class StackService(ABC, Generic[T]):
     """
-    # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
+    Role:Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     Responsibilities:
     1.  Scales Builder and Validator operations for collection of objects.
@@ -29,11 +29,10 @@ class StackService(ABC, Generic[T]):
     3.  Safe and reliable CRUD operations.
     4.  Public facing API.
     
-    # PARENT:
+    Super Class:
     None
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   id (int):

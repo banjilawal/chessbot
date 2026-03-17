@@ -21,7 +21,7 @@ from logic.board import (
 
 class BoardStackService(StackService[Board]):
     """
-    # ROLE: Data Stack, SearchWorker IntegrityService, CRUD Operations, Encapsulation, API layer.
+    Role:Data Stack, SearchWorker IntegrityService, CRUD Operations, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing API.
@@ -29,14 +29,11 @@ class BoardStackService(StackService[Board]):
     3.  Ensure integrity of Board data stack
     4.  Stack data structure for Board objects with no guarantee of uniqueness.
 
-    # PARENT:
+    Super Class:
         *   StackService[Board]
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See StackService class for inherited attributes.

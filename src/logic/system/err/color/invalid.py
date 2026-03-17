@@ -17,21 +17,18 @@ __all__ = [
 #======================# GAME_COLOR_VALIDATION EXCEPTION #======================#
 class InvalidGameColorException(GameColorException, ValidationException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Indicate a candidate failed a GameColor validation test.
     2.  Wrap an exception that hits the try-finally block of a SchemKeyValidator method.
 
-    # PARENT:
+    Super Class:
         *   GameColorException
         *   ValidationException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

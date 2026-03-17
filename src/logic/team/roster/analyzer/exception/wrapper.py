@@ -18,20 +18,17 @@ from logic.team import TeamRosterException
 # ======================# ROSTER_RELATION_ANALYSIS_FAILURE #======================#
 class TeamRosterRelationAnalysisException(TeamRosterException):
     """
-    # ROLE: Exception Wrapper, Encapsulation, Error Chaining
+    Role:Exception Wrapper, Encapsulation, Error Chaining
 
     Responsibilities:
     1.  Wrap any exception that kills the relation test process before the team-member relationship
         status has been evaluated.
 
-    # PARENT:
+    Super Class:
         *   WrapperException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

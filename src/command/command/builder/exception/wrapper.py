@@ -20,12 +20,12 @@ from logic.system import BuildException
 # ======================# COMMAND_BUILD_FAILURE #======================#
 class CommandBuilderException(BuildException):
     """
-    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
+    Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
     1.  Indicate that an error prevented CommandBuilder from returning a product.
 
-        # PARENT:
+        Super Class:
             *   BuildException
 
         # PROVIDES:
@@ -37,7 +37,7 @@ class CommandBuilderException(BuildException):
         # INHERITED ATTRIBUTES:
             *   See BuildException class for inherited attributes.
 
-        # CONSTRUCTOR:
+        Attributes:
             *   err_code (str)
             *   msg (str)
             *   ex (Optional[Exception])

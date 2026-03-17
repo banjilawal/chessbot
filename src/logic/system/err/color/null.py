@@ -16,20 +16,17 @@ __all__ = [
 # ======================# NULL_GAME_COLOR_VALIDATION EXCEPTION #======================#
 class NullGameColorException(GameColorException, NullException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that a candidate failed its GameColor safety certification because it was null.
 
-    # PARENT:
+    Super Class:
         *   NullSchemaException
         *   InvalidSchemaException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

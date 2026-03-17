@@ -19,20 +19,17 @@ from logic.system import StackServiceException
 # ======================# PIPELINE_STACK_SERVICE EXCEPTION #======================#
 class PipelineStackException(PipelineException, StackServiceException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Encapsulate PipelineStack method outputs when there is a failure.
 
-    # PARENT:
+    Super Class:
         *   PipelineException
         *   StackServiceException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

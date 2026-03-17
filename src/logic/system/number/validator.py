@@ -19,20 +19,17 @@ from logic.system.number.exception.debug.negative import NegativeNumberNotAllowe
 
 class NumberValidator(Validator[int]):
     """
-     # ROLE: Validation, Data Integrity Guarantor, Security.
+     Role:Validation, Data Integrity Guarantor, Security.
 
     Responsibilities:
     1.  Utility that centralizes logic for ensuring an number is not negative nor larger
         than the Board's dimensions before its used as Coord or Vector component.
 
-    # PARENT:
+    Super Class:
         *   Validator
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

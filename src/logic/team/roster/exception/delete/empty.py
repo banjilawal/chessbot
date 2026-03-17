@@ -9,19 +9,16 @@ from logic.team import TeamRosterException
 # ======================# POPPING_EMPTY_ROSTER EXCEPTION #======================#
 class PoppingEmptyTeamRosterException(TeamRosterException):
     """
-    # ROLE: Debug, Error Tracing
+    Role:Debug, Error Tracing
 
     Responsibilities:
     1.  Indicate that an attempt to remove a roster member failed because the roster was empty.
 
-    # PARENT:
+    Super Class:
         *   TeamDaaServiceException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

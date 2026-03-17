@@ -16,7 +16,7 @@ from logic.system import (
 
 class RequestValidator(Validator[Request]):
     """
-     # ROLE: Validation, Data Integrity Guarantor, Security.
+     Role:Validation, Data Integrity Guarantor, Security.
 
     Responsibilities:
     1.  Ensure a Request has.
@@ -24,19 +24,16 @@ class RequestValidator(Validator[Request]):
             *   The arguments have the correct names.
             *   The correct types.
 
-    # PARENT:
+    Super Class:
         *   Validator
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR:
+    Attributes:
     None
 
     # LOCAL METHODS:

@@ -20,7 +20,7 @@ from logic.span import RayComputationException
 # ======================# PERPENDICULAR_RAY_COMPUTATION_FAILURE #======================#
 class PerpendicularRayComputationException(RayComputationException):
     """
-    # ROLE: Exception Chain Layer 1, Exception Messaging
+    Role:Exception Chain Layer 1, Exception Messaging
     # TASK: Worker Method Identifier
 
     Responsibilities:
@@ -32,11 +32,10 @@ class PerpendicularRayComputationException(RayComputationException):
             Vertical subdomains:
                 *  the regions where [-n < i] or [i <= j < n] the domain is (x_i, y_i) -> R(:X_j,Y_-)
 
-    # PARENT:
+    Super Class:
         *   RayComputationException
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   op (Optional[str])
@@ -45,7 +44,7 @@ class PerpendicularRayComputationException(RayComputationException):
     # INHERITED ATTRIBUTES:
         *   See RayComputationException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   err_code (str)
         *   msg (str)
         *   ex (Optional[Exception])

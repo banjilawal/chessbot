@@ -21,16 +21,15 @@ from logic.span import SpanServiceDebugException
 # ======================# BISHOP_SPAN_SERVICE_DEBUG_EXCEPTION #======================#
 class BishopSpanServiceDebugException(SpanServiceDebugException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Describes the condition that caused a BishopSpanService operation failure.
 
-    # PARENT:
+    Super Class:
         *   SpanServiceDebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   var (Optional[str])
@@ -39,7 +38,7 @@ class BishopSpanServiceDebugException(SpanServiceDebugException):
     # INHERITED ATTRIBUTES:
         *   DebugException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

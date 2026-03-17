@@ -16,7 +16,7 @@ from logic.domain import Domain, DomainOrigin
 
 class Domain:
     """
-    # ROLE: Data-Holder
+    Role:Data-Holder
 
     Responsibilities:
     Immutable data structure that:

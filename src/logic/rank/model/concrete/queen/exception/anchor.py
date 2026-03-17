@@ -19,7 +19,7 @@ __all__ = [
 # ======================# QUEEN_EXCEPTION #======================#
 class QueenException(RankException):
     """
-    # ROLE: Coverage Target, Exception Chain Layer 0
+    Role:Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
     1.  Provide Rank as:
@@ -28,19 +28,16 @@ class QueenException(RankException):
         target for layer-2 debugging exceptions.
     2.  Indicate which Queen method received a worker's (layer-1) failure result.
 
-    # PARENT:
+    Super Class:
         *   RankException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See RankException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

@@ -21,24 +21,21 @@ from logic.token import TokenDebugException
 # ======================# INACTIVE_TOKEN_UNDO_COORD_PUSH_EXCEPTION  #======================#
 class InactiveTokenPushingCoordException(TokenDebugException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
     1.  Indicate that an inactive Token cannot undo its last move by pushing its CoordStack.
     
-    # PARENT:
+    Super Class:
         *   TokenDebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   TokenDebugException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]

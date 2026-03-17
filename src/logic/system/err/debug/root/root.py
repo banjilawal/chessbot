@@ -20,7 +20,7 @@ from logic.system import ChessException
 # ======================# DEBUG_EXCEPTION #======================#
 class DebugException(ChessException):
     """
-    # ROLE:  Exception Messaging, Exception Chain Layer 2
+    Role: Exception Messaging, Exception Chain Layer 2
     # TASK: Capture Error Variable State
     
     Responsibilities:
@@ -37,11 +37,10 @@ class DebugException(ChessException):
     1.  Wrapper msg followed by a colon. Description of the error after the colon.
     2.  The Syntax is: [Class] operation failed: [Description]
 
-    # PARENT:
+    Super Class:
         *   ChessException
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   var (Optional[str])
@@ -50,7 +49,7 @@ class DebugException(ChessException):
     # INHERITED ATTRIBUTES:
         *   See ChessException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

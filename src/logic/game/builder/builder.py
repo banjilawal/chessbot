@@ -16,7 +16,7 @@ from logic.system import Builder, BuildResult, IdentityService, LoggingLevelRout
 
 class GameBuilder(Builder[Game]):
     """
-    # ROLE: Builder, Data Integrity And Reliability Guarantor
+    Role:Builder, Data Integrity And Reliability Guarantor
   
     Responsibilities:
     Produce Game instances whose integrity is guaranteed at creation.
@@ -26,8 +26,6 @@ class GameBuilder(Builder[Game]):
         - On success: Game in the payload.
         - On failure: Exception.
   
-    # LOCAL ATTRIBUTES:
-    None
     
     # INHERITED ATTRIBUTES:
     None

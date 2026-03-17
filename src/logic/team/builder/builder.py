@@ -17,7 +17,7 @@ from logic.token import TokenDatabase
 
 class TeamBuilder(Builder[Team]):
     """
-     # ROLE: Builder, Data Integrity And Reliability Guarantor
+     Role:Builder, Data Integrity And Reliability Guarantor
 
      Responsibilities:
      1.  Produce Team instances whose integrity is guaranteed at creation.
@@ -25,7 +25,7 @@ class TeamBuilder(Builder[Team]):
      3.  Ensure params for Team creation have met the application's safety contract.
      4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-     # PARENT:
+     Super Class:
          * Builder
 
      # PROVIDES:
@@ -207,26 +207,23 @@ from logic.system import (
 
 class SquareBuilder(Builder[Square]):
     """
-     # ROLE: Builder, Data Integrity And Reliability Guarantor
+     Role:Builder, Data Integrity And Reliability Guarantor
 
      Responsibilities:
      1.  Produce Square instances whose integrity and reliability are guaranteed.
      2.  Ensure params for Square creation have met the application's safety contract.
      3.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-     # PARENT:
+     Super Class:
          * Builder
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR:
+    Attributes:
     None
 
     # LOCAL METHODS:

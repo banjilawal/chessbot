@@ -18,20 +18,17 @@ __all__ = [
 # ======================# NUMBER EXCEPTION #======================#
 class NumberException(ChessException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Parent of exceptions raised by Numbers.
     2.  Super for conditions which are not covered by lower level Number exceptions.
 
-    # PARENT:
+    Super Class:
         *   ChessException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

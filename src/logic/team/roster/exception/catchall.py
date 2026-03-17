@@ -18,16 +18,15 @@ __all__ = [
 # ======================# TEAM_ROSTER EXCEPTION #======================#
 class TeamRosterException(TeamException):
     """
-    # ROLE: Super Exception
+    Role:Super Exception
   
     Responsibilities:
     1.  Super for RosterService errors.
   
-    # PARENT:
+    Super Class:
         *   ChessException
   
-    # PROVIDES:
-    None
+    Provides:
   
     # ATTRIBUTES:
     None

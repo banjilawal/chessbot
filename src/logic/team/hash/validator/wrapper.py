@@ -20,21 +20,18 @@ from logic.system import ValidationException
 # ======================# TEAM_HASH_VALIDATION_FAILURE #======================#
 class TeamHashValidationException(TeamHashException, ValidationException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why a candidate failed its validation as a Team. The exception chain 
         traces the ultimate source of failure.
 
-    # PARENT:
+    Super Class:
         *   TeamHashException
         *   ValidationException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     INHERITED ATTRIBUTES:
     None

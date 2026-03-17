@@ -20,20 +20,17 @@ from logic.player import PlayerException
 # ======================# TEAM_BELONGS_TO_DIFFERENT_OWNER EXCEPTION #======================#
 class TeamBelongsToDifferentOwnerException(PlayerException, TeamException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Indicate that a team belongs to a different owner.
 
-    # PARENT:
+    Super Class:
         *   AgentException
         *   TeamException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

@@ -10,16 +10,15 @@ version: 1.0.0
 
 class Coord:
     """
-    # ROLE: Addressing, Data Object
+    Role:Addressing, Data Object
   
     # RESPONSIBILITY:
     1.  Provide global, low-level addressing for referencing bag on Board by row and column indexes.
     
-    # PARENT:
+    Super Class:
     None
   
-    # PROVIDES:
-    None
+    Provides:
   
     # LOCAL ATTRIBUTES:
         *   row (int)

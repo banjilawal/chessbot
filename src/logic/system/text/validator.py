@@ -14,20 +14,17 @@ from logic.system import LoggingLevelRouter, Validator, ValidationResult
 
 class StringValidator(Validator[str]):
     """
-     # ROLE: Validation, Data Integrity Guarantor, Security., Integrity
+     Role:Validation, Data Integrity Guarantor, Security., Integrity
 
     Responsibilities:
     1.  Ensure a String is neither null, empty, nor whitespace before use.
     2.  If a candidate fails a safety test, the validator sends an exception in a ValidationResult.
     
-    # PARENT:
+    Super Class:
         *   Validator
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

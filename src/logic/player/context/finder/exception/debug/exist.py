@@ -21,24 +21,21 @@ from logic.player import PlayerDebugException
 # ======================# PLAYER_NOT_FOUND_EXCEPTION #======================#
 class PlayerNotFoundException(PlayerDebugException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
     1.  Indicate that no player was found.
 
-    # PARENT:
+    Super Class:
         *   PlayerDebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   PlayerDebugException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]

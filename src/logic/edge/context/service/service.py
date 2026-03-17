@@ -16,7 +16,7 @@ from logic.edge import EdgeContext, EdgeContextBuilder, EdgeContextValidator, Ed
 
 class EdgeContextService(ContextService[EdgeContext]):
     """
-    # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
+    Role:Search Service, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing Edge search microservice API.
@@ -25,14 +25,12 @@ class EdgeContextService(ContextService[EdgeContext]):
     4.  Create a single source of truth for Edge search results by having single entry and exit points for the
         Edge search flow.
 
-    # PARENT:
+    Super Class:
         *   ContextService
 
     # PROVIDES:
         *   EdgeContextService
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See ContextService for inherited attributes.

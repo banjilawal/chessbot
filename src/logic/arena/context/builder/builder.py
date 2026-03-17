@@ -19,7 +19,7 @@ from logic.arena import (
 
 class ArenaContextBuilder(Builder[ArenaContext]):
     """
-    # ROLE: Builder, Data Integrity And Reliability Guarantor
+    Role:Builder, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce ArenaContext instances whose integrity is guaranteed at creation.
@@ -27,14 +27,11 @@ class ArenaContextBuilder(Builder[ArenaContext]):
     3.  Ensure params for ArenaContext creation have met the application's safety contract.
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-    # PARENT:
+    Super Class:
         *   Builder
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

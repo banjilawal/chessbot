@@ -22,7 +22,7 @@ from logic.token import Token
 
 class SquareFinder(StackSearcher[Square]):
     """
-    # ROLE: Search
+    Role:Search
 
     Responsibilities:
     1.  Single point of entry into different square search routes.
@@ -36,16 +36,13 @@ class SquareFinder(StackSearcher[Square]):
     # PARENT
         *   SearchWorker
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See SearchWorker for inherited attributes.
         
-    # CONSTRUCTOR:
+    Attributes:
     None
         Inherited:
             *   See SearchWorker for inherited constructor parameters.

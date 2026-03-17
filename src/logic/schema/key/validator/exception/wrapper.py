@@ -19,7 +19,7 @@ __all__ = [
 # ======================# SCHEMA_KEY_VALIDATION_FAILURE #======================#
 class SchemaKeyValidationException(SchemaKeyException, ValidationException):
     """
-    # ROLE: Exception Chain Layer 1, Exception Messaging
+    Role:Exception Chain Layer 1, Exception Messaging
     # TASK: Worker Method Identifier
 
     Responsibilities:
@@ -28,15 +28,12 @@ class SchemaKeyValidationException(SchemaKeyException, ValidationException):
         ValidationResult.
     2.  The SchemaKeyValidationException chain is useful for tracing a  failure to its source.
 
-    # PARENT:
+    Super Class:
         *   SchemaKeyException
         *   ValidationException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     INHERITED ATTRIBUTES:
     None

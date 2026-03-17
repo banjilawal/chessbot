@@ -18,19 +18,16 @@ __all__ = [
 
 class DisabledTokenCannotExploreException(ExplorationException):
     """
-    # ROLE: Debug, Error Tracing
+    Role:Debug, Error Tracing
 
     Responsibilities:
     1.  Indicate that a disabled occupant cannot explore the board
 
-    # PARENT:
+    Super Class:
         *   BoardExplorationException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

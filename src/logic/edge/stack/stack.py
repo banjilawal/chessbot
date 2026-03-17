@@ -23,7 +23,7 @@ from logic.system import (
 
 class EdgeStack(StackService[Edge]):
     """
-    # ROLE: Data Stack, SearchWorker IntegrityService, CRUD Operations, Encapsulation, API layer.
+    Role:Data Stack, SearchWorker IntegrityService, CRUD Operations, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing API.
@@ -32,14 +32,11 @@ class EdgeStack(StackService[Edge]):
     4.  Interface for CRUD operations on Edge collections.
     5.  Microservice for managing integrity of Edge objects throughout their lifecycles
 
-    # PARENT:
+    Super Class:
         *   StackService[Edge]
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See StackService class for inherited attributes.

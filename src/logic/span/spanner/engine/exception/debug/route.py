@@ -21,25 +21,22 @@ from logic.system import ExecutionRouteException
 # ======================# SPAN_COMPUTATION_ROUTE_EXCEPTION #======================#
 class SpanComputationRouteException(ExecutionRouteException):
     """
-    # ROLE: Exception Chain Layer 2, Exception Messaging
+    Role:Exception Chain Layer 2, Exception Messaging
     # TASK: Capture Error Variable State
 
     Responsibilities:
     1.  A failure ComputationResult was sent because there was no computation route for the RayProvider.
 
-    # PARENT:
+    Super Class:
         *   ExecutionRoute
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See ExecutionRoute class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

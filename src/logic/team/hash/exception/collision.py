@@ -18,19 +18,16 @@ from logic.team import TeamHashException
 # ======================# TEAM_HASH_SCHEMA_COLLISION EXCEPTION #======================#
 class TeamSchemaCollisionException(TeamHashException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Raised if both teams in the hash have the same schema.
 
-    # PARENT:
+    Super Class:
         *   TeamHashException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

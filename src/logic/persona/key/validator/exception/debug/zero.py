@@ -19,20 +19,17 @@ __all__ = [
 # ========================= ZERO_PERSONA_KEYS EXCEPTION =========================#
 class ZeroPersonaKeysException(PersonaKeyException, ContextFlagCountException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that a candidate failed PersonaKey validation because no attribute was enabled.
 
-    # PARENT:
+    Super Class:
         *   ContextFlagCountException
         *   PersonaKeyException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

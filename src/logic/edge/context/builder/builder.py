@@ -23,7 +23,7 @@ from logic.token import Token, TokenService
 
 class EdgeContextBuilder(Builder[EdgeContext]):
     """
-    # ROLE: Builder, Data Integrity And Reliability Guarantor
+    Role:Builder, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce EdgeContext instances whose integrity is guaranteed at creation.
@@ -31,14 +31,11 @@ class EdgeContextBuilder(Builder[EdgeContext]):
     3.  Ensure params for EdgeContext creation have met the application's safety contract.
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-    # PARENT:
+    Super Class:
         *   Builder
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

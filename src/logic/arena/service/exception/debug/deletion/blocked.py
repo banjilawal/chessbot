@@ -19,20 +19,17 @@ from logic.system import DebugException
 # ======================# BLOCKED_ARENA_TEAM_REMOVAL EXCEPTION #======================#
 class ArenaTeamDeletionBlockedException(ArenaException, DebugException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that a team cannot be deleted once it's in the arena
 .
-    # PARENT:
+    Super Class:
         *   ArenaException
         *   DebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

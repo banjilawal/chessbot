@@ -20,25 +20,22 @@ from logic.system import InsertionException
 # ======================# PAIR_INSERTION_FAILURE #======================#
 class PairInsertionException(InsertionException):
     """
-    # ROLE: Exception Chain Layer 1, Exception Messaging
+    Role:Exception Chain Layer 1, Exception Messaging
     # TASK: Worker Method Identifier
 
     Responsibilities:
     1.  Identify the Pair method where the push failed.
         
-    # PARENT:
+    Super Class:
         *   InsertionException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See InsertionException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   err_code (str)
         *   msg (str)
         *   ex (Optional[Exception])

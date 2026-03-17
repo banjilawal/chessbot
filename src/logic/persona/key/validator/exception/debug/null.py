@@ -19,17 +19,16 @@ __all__ = [
 # ======================# NULL_PERSON_KEY EXCEPTION #======================#
 class NullPersonaKeyException(PersonaKeyException, NullException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that PersonKey validation failed because the candidate was null.
 
-    # PARENT:
+    Super Class:
         *   NullException
         *   PersonaKeyException
 
-    # PROVIDES:
-    None
+    Provides:
 
     # ATTRIBUTES:
     None

@@ -21,7 +21,7 @@ from logic.system import DebugException
 # ======================# UNDER_STRENGTH_ROSTER_DEPLOYMENT_EXCEPTION #======================#
 class UnderstrengthRosterDeploymentException(DebugException):
     """
-    # ROLE: Exception Chain Layer 2, Exception Messaging
+    Role:Exception Chain Layer 2, Exception Messaging
     # TASK: Capture Error Variable State
 
     Responsibilities:
@@ -33,19 +33,16 @@ class UnderstrengthRosterDeploymentException(DebugException):
 
     2.  A failing UpdateResult was returned because roster was understrength
 
-    # PARENT:
+    Super Class:
         *   DebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

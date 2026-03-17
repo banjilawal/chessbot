@@ -17,17 +17,16 @@ from logic.token import CombatantToken, PromotionState
 
 class PawnToken(CombatantToken):
     """
-    # ROLE: Data-Holder
+    Role:Data-Holder
 
     Responsibilities:
     1.  Represents a Pawn. Pawns can be promoted.
     2.  A Pawn can be promoted to either a Knight, Bishop, Rook, or Queen.
 
-    # PARENT:
+    Super Class:
         *   CombatantToken
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   promotion_state (PromotionState)
@@ -35,7 +34,7 @@ class PawnToken(CombatantToken):
     # INHERITED ATTRIBUTES:
         *   See CombatantToken class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   id (int)
         *   team (Team)
         *   rank (Rank)

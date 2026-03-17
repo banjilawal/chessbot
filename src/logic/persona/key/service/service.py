@@ -14,7 +14,7 @@ from logic.persona import PersonaLookup, PersonaKey, PersonaKeyBuilder, PersonaK
 
 class PersonaKeyService(ContextService[PersonaKey]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    Role:Service, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing PersonaKey microservice API.
@@ -22,14 +22,11 @@ class PersonaKeyService(ContextService[PersonaKey]):
     3.  Authoritative, single source of truth for PersonaKey state.
     4.  Single entry and entry points to PersonaKey lifecycle.
 
-    # PARENT:
+    Super Class:
         *   ContextService
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See ContextService for inherited attributes.

@@ -20,21 +20,18 @@ __all__ = [
 # ======================# PERSONA_QUOTA_BOUNDS EXCEPTION #======================#
 class PersonaQuotaBoundsException(PersonaException, BoundsException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that a Persona lookup failed because the quota value was not permitted for the Persona
         attribute.
 
-    # PARENT:
+    Super Class:
         *   PersonaException
         *   BoundsException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     INHERITED ATTRIBUTES:
     None

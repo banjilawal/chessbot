@@ -17,7 +17,7 @@ from logic.system import IdFactory, IntegrityService
 
 class NodeTreeService(IntegrityService[NodeTree]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    Role:Service, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing NodeTree microservice API.
@@ -25,11 +25,10 @@ class NodeTreeService(IntegrityService[NodeTree]):
     3.  Authoritative, single source of truth for NodeTree state by providing
         single entry and exit points to NodeTree lifecycle.
 
-    # PARENT:
+    Super Class:
         *   IntegrityService
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   branch_service: PairListService

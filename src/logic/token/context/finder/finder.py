@@ -21,7 +21,7 @@ from logic.token import (
 
 class TokenFinder(DataFinder[Token]):
     """
-    # ROLE: SearchWorker
+    Role:SearchWorker
 
     Responsibilities:
     1.  Send bag in a TokenList whose attribute value match the context.key value to the caller.
@@ -33,11 +33,8 @@ class TokenFinder(DataFinder[Token]):
     # PARENT
         *   SearchWorker
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

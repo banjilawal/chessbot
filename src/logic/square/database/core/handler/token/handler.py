@@ -21,18 +21,17 @@ from logic.token import Token, TokenService
 
 class SquareStackTokenHandler:
     """
-    # ROLE: Utilities, Update Management,
+    Role:Utilities, Update Management,
 
     Responsibilities:
     1.  Owns Token operations in SquareStackService.
     2.  Transfers Team.roster members to their opening squares.
     2.  Conducts update transactions for individual squares in the stack
 
-    # PARENT:
+    Super Class:
     None
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   id (int)
@@ -42,7 +41,7 @@ class SquareStackTokenHandler:
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR:
+    Attributes:
         Local:
             *   id (int)
             *   name (str)

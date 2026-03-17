@@ -18,19 +18,16 @@ from logic.square import SquareDebugException
 # ======================# SQUARE_VISITOR_DISABLED EXCEPTION #======================#
 class SquareVisitorDisabledException(SquareDebugException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
     A failing UpdateResult was returned because a disabled token attempted to occupy the square.
 
-    # PARENT:
+    Super Class:
         *   SquareDebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

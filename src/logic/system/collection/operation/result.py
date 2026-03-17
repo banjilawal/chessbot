@@ -16,7 +16,7 @@ T = TypeVar("T")
 
 class DataResult(Result[T], Generic[T]):
     """
-    # ROLE: Messanger, Data Transport Object, Error Transport Object.
+    Role:Messanger, Data Transport Object, Error Transport Object.
 
     Responsibilities:
     Data transactions are solely insertions, deletions, updates, and calculations. Data transactions either
@@ -26,14 +26,12 @@ class DataResult(Result[T], Generic[T]):
     1.  Send the outcome of a data transaction to the invoker.
     2.  Enforcing mutual exclusion. A DataResult can either carry payload or exception. Not both.
 
-    # PARENT:
+    Super Class:
         *   Result
 
     # PROVIDES:
     DataResult
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See Result class for inherited attributes.

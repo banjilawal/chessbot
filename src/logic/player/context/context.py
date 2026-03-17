@@ -17,13 +17,13 @@ from logic.player import Player, PlayerVariety
 
 class PlayerContext(Context[Player]):
     """
-    # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
+    Role:Filter, Search, Selection, Reverse/Forward Lookups
 
     Responsibilities:
     Provide an PlayerFinder with an attribute value to find Players with a matching value in
     their version of the attribute.
 
-    # PARENT:
+    Super Class:
         *   Context
 
     # PROVIDES:

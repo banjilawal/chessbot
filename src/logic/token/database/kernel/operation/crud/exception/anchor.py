@@ -1,7 +1,7 @@
 # src/logic/token/database/kernel/operation/crud/exception/anchor.py
 
 """
-Module: logic.token.database.kernel.operation.crud.exception.anchor
+Module: logic.token.database.kernel.OPERATION.CRUD.exception.anchor
 Author: Banji Lawal
 Created: 2026-02-22
 version: 1.0.0
@@ -20,7 +20,7 @@ from logic.system import AnchorException
 # ======================# TOKEN_CRUD_HANDLER_EXCEPTION #======================#
 class TokenStackCrudHandlerException(AnchorException):
     """
-    # ROLE: Coverage Target, Exception Chain Layer 0
+    Role:Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
     1.  Provide TokenStackCrudHandler as:
@@ -30,19 +30,16 @@ class TokenStackCrudHandlerException(AnchorException):
     2.  Indicate which TokenStackCrudHandler method received a worker's
         (layer-1) failure result.
 
-    # PARENT:
+    Super Class:
         *   AnchorException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See AnchorException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

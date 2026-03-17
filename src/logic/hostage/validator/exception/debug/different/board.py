@@ -17,20 +17,17 @@ from logic.hostage import HostageException
 # ======================# VICTOR_AND_PRISONER_ON_DIFFERENT_BOARDS EXCEPTION #======================#
 class VictorAndPrisoneOnDifferentBoardsException(HostageException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Indicate that a candidate failed its Hostage validation because the victor and prisoner
         were on different boards.
 
-    # PARENT:
+    Super Class:
         *   HostageException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

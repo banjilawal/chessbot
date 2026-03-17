@@ -17,7 +17,7 @@ from logic.hostage import HostageDatabase
 
 class Board:
     """
-    # ROLE: Data-Holder/Data Owner
+    Role:Data-Holder/Data Owner
   
     Responsibilities:
     The Surface of Squares where Tokens are played.

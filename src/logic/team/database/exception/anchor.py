@@ -21,7 +21,7 @@ from logic.system import DatabaseException
 # ======================# TEAM_DATABASE_EXCEPTION #======================#
 class TeamDatabaseException(DatabaseException):
     """
-    # ROLE: Coverage Target, Exception Chain Layer 0
+    Role:Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
     1.  Anchoring target for TeamDatabase debug (layer-2) error state firing incident
@@ -30,19 +30,16 @@ class TeamDatabaseException(DatabaseException):
             *   The trigger's value.
     2.  Indicate which TeamDatabase method received a worker's (layer-1) failure result.
 
-    # PARENT:
+    Super Class:
         *   DatabaseException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See DatabaseException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         msg: Optional[str]
         ex: Optional[Exception]
         cls_name: Optional[str]

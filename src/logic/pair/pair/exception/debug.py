@@ -20,7 +20,7 @@ from logic.system import DebugException
 # ======================# PAIR_DEBUG_EXCEPTION #======================#
 class PairDebugException(DebugException):
     """
-    # ROLE: Capture Error Variable State, Exception Chain Layer 2, Exception Messaging
+    Role:Capture Error Variable State, Exception Chain Layer 2, Exception Messaging
     
     Responsibilities:
     1.  Produce the:
@@ -29,19 +29,16 @@ class PairDebugException(DebugException):
             *   event which fired the variable into its error state.
         which occurred in the Anchor method identified in layer-0 of the exception chain.
 
-    # PARENT:
+    Super Class:
         *   DebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]

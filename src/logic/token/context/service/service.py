@@ -15,7 +15,7 @@ from logic.token import TokenContext, TokenContextBuilder, TokenContextValidator
 
 class TokenContextService(ContextService[TokenContext]):
     """
-    # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
+    Role:Search Service, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facingToken search microservice API.
@@ -24,14 +24,12 @@ class TokenContextService(ContextService[TokenContext]):
     4.  Create a single source of truth forToken search results by having single entry and exit points for the
        Token search flow.
 
-    # PARENT:
+    Super Class:
         *   ContextService
 
     # PROVIDES:
         *  TokenContextService
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See ContextService for inherited attributes.

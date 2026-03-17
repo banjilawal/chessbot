@@ -20,21 +20,18 @@ from logic.pipeline import PipelineDebugException
 # ======================# PIPELINE_NOT_FOUND EXCEPTION #======================#
 class PipelineNotFoundException(PipelineDebugException):
     """
-    # ROLE: Debug, Error Tracing
+    Role:Debug, Error Tracing
 
     Responsibilities:
     1.  Indicate that an attempt to remove instances of a item by a unique attribute failed because no bag
         matching the property were found in the dataset.
 
-    # PARENT:
+    Super Class:
         *   NullException
         *   PipelineStackException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

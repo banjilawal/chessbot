@@ -18,19 +18,16 @@ __all__ = [
 # ======================# DISCOVERY_STATUS_NULL EXCEPTION #======================#
 class DiscoveryStatusNullException(NullException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
     A failing ValidationResult was returned because the candidate was null.
 
-    # PARENT:
+    Super Class:
         *   NullException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

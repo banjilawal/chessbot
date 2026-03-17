@@ -22,16 +22,15 @@ from logic.token import Token
 
 class SquareContext(Context[Square]):
     """
-    # ROLE: Factory, Switch, Attribute Selection
+    Role:Factory, Switch, Attribute Selection
 
     Responsibilities:
     Factory that produces Context instances for searching Square datasets by different Square attributes.
 
-    # PARENT:
+    Super Class:
         *   Context
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   board (Optional[Board])
@@ -41,7 +40,7 @@ class SquareContext(Context[Square]):
     # INHERITED ATTRIBUTES:
         *   See Context class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         Local:
             *   board (Optional[Board])
             *   coord (Optional[Coord])

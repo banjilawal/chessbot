@@ -21,24 +21,21 @@ from logic.system import ServiceRequestDebugException
 # ======================# WRONG_ARGUMENT_TYPE_EXCEPTION #======================#
 class ArgumentTypeException(ServiceRequestDebugException):
     """
-    # ROLE: Information, Reporting, Debug
+    Role:Information, Reporting, Debug
 
     Responsibilities:
     1.  Indicate that a service_request argument has the wrong type.
 
-    # PARENT:
+    Super Class:
         *  ServiceRequestDebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See ServiceRequestDebugException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

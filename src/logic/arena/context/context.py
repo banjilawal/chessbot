@@ -18,12 +18,12 @@ from logic.system import Context, GameColor
 
 class ArenaContext(Context[Arena]):
     """
-    # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
+    Role:Filter, Search, Selection, Reverse/Forward Lookups
 
     Responsibilities:
     Provide an ArenaFinder with an attribute-value which finds Arenas which match the targeted attribute-value.
 
-    # PARENT:
+    Super Class:
         *   Context
 
     # PROVIDES:

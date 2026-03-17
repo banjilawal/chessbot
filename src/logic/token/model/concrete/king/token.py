@@ -16,25 +16,22 @@ from logic.token import Token, TokenBoardState, ReadinessState
 
 class KingToken(Token):
     """
-    # ROLE: Data-Holder, Abstract Data Type
+    Role:Data-Holder, Abstract Data Type
 
     Responsibilities:
     1.  Represents a Token with a King's Rank and properties.
     2.  Cannot be captured on placed in check or checkmated.
 
-    # PARENT:
+    Super Class:
         *   Token
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See Token class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   id (int)
         *   team (Team)
         *   rank (Rank)

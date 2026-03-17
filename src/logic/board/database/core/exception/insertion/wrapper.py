@@ -19,20 +19,17 @@ from logic.system import InsertionException
 # ======================# BOARD_INSERTION_FAILURE #======================#
 class BoardInsertionException(BoardException, InsertionException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Indicate that add a occupant to the roster failed.
 
-    # PARENT:
+    Super Class:
         *   BoardException
         *   InsertionException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

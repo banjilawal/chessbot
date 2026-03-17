@@ -24,7 +24,7 @@ from logic.system.collection.stack.stack import T
 
 class NodeStackService(StackService[Node]):
     """
-    # ROLE: Data Stack, SearchWorker IntegrityService, CRUD Operations, Encapsulation, API layer.
+    Role:Data Stack, SearchWorker IntegrityService, CRUD Operations, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing API.
@@ -33,14 +33,11 @@ class NodeStackService(StackService[Node]):
     4.  Interface for CRUD operations on Node collections.
     5.  Microservice for managing integrity of Node objects throughout their lifecycles
 
-    # PARENT:
+    Super Class:
         *   StackService[Node]
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See StackService class for inherited attributes.

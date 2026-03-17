@@ -19,20 +19,17 @@ from logic.system import ComputationResult, LoggingLevelRouter
 
 class Rook(Rank):
     """
-    # ROLE: Computation, Metadata
+    Role:Computation, Metadata
 
     Responsibilities:
     1.  Produces a list of Coords reachable from a Rook's updated position.
     2.  Metadata about the Rook rank useful for optimizing the GameGraph.
     
-    # PARENT:
+    Super Class:
         Rank
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
     
     INHERITED ATTRIBUTES:
         *   See Rank class for inherited attributes

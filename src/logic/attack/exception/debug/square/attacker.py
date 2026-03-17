@@ -18,19 +18,16 @@ from logic.attack import AttackDebugException
 # ======================# ATTACKER_INCONSISTENT_WITH_THEIR_SQUARE EXCEPTION #======================#
 class AttackerSquareInconsistencyException(AttackDebugException):
     """
-    # ROLE: Debug, Error Tracing
+    Role:Debug, Error Tracing
 
     Responsibilities:
     1.  Indicate that an attack failed because the attacker's item does not have them as an occupant.
 
-    # PARENT:
+    Super Class:
         *   AttackDebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

@@ -23,17 +23,16 @@ from logic.token import Token, TokenService
 
 class SquareStackService(StackService[Square]):
     """
-    # ROLE: Data Structure, Services:(Integrity, Build, Validation, Search) Encapsulation, API layer.
+    Role:Data Structure, Services:(Integrity, Build, Validation, Search) Encapsulation, API layer.
 
     Responsibilities:
     1.  Microservice for managing Square objects and their lifecycles.
     2.  Guarantee all Square instances in stack are unique.
 
-    # PARENT:
+    Super Class:
         *   StackService
 
-    # PROVIDES:
-    None
+    Provides:
 
     Attributes:
             SERVICE_NAME: str
@@ -46,7 +45,7 @@ class SquareStackService(StackService[Square]):
     # INHERITED ATTRIBUTES:
         *   See StackService for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         Local:
             *   id (int)
             *   name (str)
@@ -58,8 +57,6 @@ class SquareStackService(StackService[Square]):
         Inherited:
         None
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See StackService class for inherited attributes.

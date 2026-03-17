@@ -15,7 +15,7 @@ from logic.agent import AgentContext, AgentContextBuilder, AgentContextValidator
 
 class AgentContextService(ContextService[AgentContext]):
     """
-    # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
+    Role:Search Service, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing Player search microservice API.
@@ -24,7 +24,7 @@ class AgentContextService(ContextService[AgentContext]):
     4.  Create a single source of truth for Player search results by having single entry and exit points for the
         Player search flow.
 
-    # PARENT:
+    Super Class:
         *   ContextService
 
     # PROVIDES:
@@ -32,8 +32,6 @@ class AgentContextService(ContextService[AgentContext]):
         *   validator:  -> AgentContextValidator
         *   finder:     -> AgentFinder
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See ContextService for inherited attributes.

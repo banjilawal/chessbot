@@ -22,7 +22,7 @@ from logic.pipeline import (
 
 class PipelineStack(StackService[Pipeline]):
     """
-    # ROLE: Data Stack, Search AbstractService, CRUD Operations, Encapsulation, API layer.
+    Role:Data Stack, Search AbstractService, CRUD Operations, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing API.
@@ -30,14 +30,11 @@ class PipelineStack(StackService[Pipeline]):
     3.  Ensure integrity of pipeline data stack
     4.  Stack data structure for Pipeline objects with no guarantee of uniqueness.
     
-    # PARENT:
+    Super Class:
         *   StackService
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
     
     # INHERITED ATTRIBUTES:
         *   See StackService class for inherited attributes.

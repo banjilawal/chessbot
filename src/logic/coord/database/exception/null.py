@@ -20,24 +20,21 @@ from logic.system import NullException
 #======================# COORD_DATABASE_NULL_EXCEPTION #======================#
 class CoordDatabaseNullException(NullException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
     
     Responsibilities:
     1.  Indicate that a coordDatabase is null where it should not be.
     
-    # PARENT:
+    Super Class:
         *   NullException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See NUllException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

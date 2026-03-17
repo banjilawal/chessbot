@@ -16,7 +16,7 @@ from logic.team import RosterUtil, Team, TeamBuilder, TeamValidator
 
 class TeamService(IntegrityService[Team]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    Role:Service, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing Team microservice API.
@@ -24,11 +24,10 @@ class TeamService(IntegrityService[Team]):
     3.  Authoritative, single source of truth for Team state by providing single entry and exit points to Team
         lifecycle.
 
-    # PARENT:
+    Super Class:
         *   IntegrityService
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   roster_util (RosterUtil)

@@ -20,21 +20,18 @@ from logic.system import DebugException
 
 class VictorNotOccupyingCapturedSquareException(HostageException, DebugException):
     """
-    # ROLE: Debug, Error Tracing
+    Role:Debug, Error Tracing
 
     Responsibilities:
     1.  Indicate that the Hostage build failed because the victor was not occupying the item where it
         captured the prisoner.
 
-    # PARENT:
+    Super Class:
         *   DebugException
         *   HostageException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

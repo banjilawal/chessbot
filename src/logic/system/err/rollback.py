@@ -18,12 +18,12 @@ __all__ = [
 #====================== ROLLBACK_OPERATION EXCEPTION #======================#
 class RollbackException(ChessException):
   """
-  # ROLE: Error Rollback, Integrity Debugging, State Restoration,
+  Role:Error Rollback, Integrity Debugging, State Restoration,
 
   Responsibilities:
   1.  Indicate that an operation that failed was is rolled back before the exception chain was sent.
 
-  # PARENT:
+  Super Class:
       *   ChessException
 
   # PROVIDES:

@@ -21,25 +21,22 @@ from logic.system import BuildException
 # ======================# SQUARE_SPAN_BUILD_FAILURE #======================#
 class SquareSpanBuildException(BuildException):
     """
-    # ROLE: Exception Chain Layer 1, Exception Messaging
+    Role:Exception Chain Layer 1, Exception Messaging
     # TASK: Worker Method Identifier
 
     Responsibilities:
     1.  Identify the SquareSpanBuilder method where the process failed.
 
-    # PARENT:
+    Super Class:
         *   BuildException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See BuildException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   err_code (str)
         *   msg (str)
         *   ex (Optional[Exception])

@@ -17,17 +17,16 @@ T = TypeVar("T")
 
 class UpdateResult(DataResult[T], Generic[T]):
     """
-    # ROLE: Messanger, Data Transport Object, Error Transport Object.
+    Role:Messanger, Data Transport Object, Error Transport Object.
 
     Responsibilities:
     1.  Send the outcome of a update to the caller.
     2.  Enforcing mutual exclusion. A UpdateResult can either carry payload or exception. Not both.
 
-    # PARENT:
+    Super Class:
         *   DataResult
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   state (DataResultEnum)

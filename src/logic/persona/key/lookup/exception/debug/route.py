@@ -19,12 +19,12 @@ __all__ = [
 # ======================# NO_PERSONA_LOOKUP_ROUTE EXCEPTION #======================#
 class PersonaLookupRouteException(PersonaException, ExecutionRouteException):
     """
-    # ROLE: Fallback Result
+    Role:Fallback Result
 
     Responsibilities:
     1. Indicate that PersonaLookup did not handle a build option or parameter with its own execution route.
 
-    # PARENT:
+    Super Class:
         *   PersonaException
         *   ExecutionRouteException
 
@@ -32,8 +32,6 @@ class PersonaLookupRouteException(PersonaException, ExecutionRouteException):
     # PROVIDES
     None
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

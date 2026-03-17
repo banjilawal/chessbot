@@ -19,17 +19,16 @@ __all__ = [
 # ========================= NO_GAME_CONTEXT_FLAG EXCEPTION =========================#
 class ZeroSnapshotContextFlagsException(InvalidSnapshotContextException, ContextFlagCountException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate no SnapshotContext flag is provided with a searcher value.
 
-    # PARENT:
+    Super Class:
         *   SnapshotContextValidationException
         *   ContextFlagCountException
 
-    # PROVIDES:
-    None
+    Provides:
 
     # ATTRIBUTES:
     None

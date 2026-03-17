@@ -21,25 +21,22 @@ from logic.system import DebugException
 # ======================# HEAD_CANNOT_BE_TAIL_EXCEPTION #======================#
 class HeadCannotBeTailException(DebugException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate an edge validation failed because the head and tail were the same.
         Edges cannot be circular.
 
-    # PARENT:
+    Super Class:
         *   DebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   DebugException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

@@ -20,7 +20,7 @@ from logic.system import DebugException
 # ======================# VISIT_DESTINATION_NOT_FOUND_EXCEPTION #======================#
 class VisitDestinationNotFoundException(DebugException):
     """
-    # ROLE: Exception Chain Layer 2, Exception Messaging
+    Role:Exception Chain Layer 2, Exception Messaging
     # TASK: Capture Error Variable State
 
     Responsibilities:
@@ -33,19 +33,16 @@ class VisitDestinationNotFoundException(DebugException):
     2.  A failing  UpdateResult was returned because a token wanted to occupy a square which does not exist in
         the SquareStack.
 
-    # PARENT:
+    Super Class:
         *   DebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

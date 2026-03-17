@@ -18,20 +18,17 @@ __all__ = [
 # ======================# TRANSFER_FAILURE #======================#
 class TransferException(OperationException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Indicate that an exception prevented a transfer operation from completing successfully.
     2.  Wrap an exception that hits the try-finally block of a Transfer method.
 
-    # PARENT:
+    Super Class:
         *   OperationException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

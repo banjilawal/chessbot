@@ -9,22 +9,20 @@ __all__ = [
 # ======================# NO_TOKEN_BUILD_ROUTE EXCEPTION #======================#
 class TokenBuildRouteException(ResultException, ExecutionRouteException):
     """
-    # ROLE: Fallback Result, Debugging
+    Role:Fallback Result, Debugging
 
     Responsibilities:
     1.  Indicate that TokenFactory did not handle one of the product build paths. The factory does not 
         have a production line for all the concrete Token products. last step in the logic will return a
         BuildResult containing a TokenBuildRouteException.
 
-    # PARENT:
+    Super Class:
         *   ResultException
         *   ExecutionRouteException
 
     # PROVIDES
     None
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

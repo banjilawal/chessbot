@@ -19,22 +19,19 @@ from logic.system import InvalidStringException, NullException
 #======================# NULL_VOID_STRING EXCEPTION #======================#
 class VoidStringException(InvalidStringException):
     """
-    # ROLE: Error Tracing, Debugging
-    # ROLE: Exception Wrapper
+    Role:Error Tracing, Debugging
+    Role:Exception Wrapper
     
     Responsibilities:
     1.  Parent of exceptions which indicate an entity, method, or operation requires a String but gets either
         whitespace, null, or an empty string instead.
     2.  Super for VoidString errors not covered by VoidString subclasses.
 
-    # PARENT:
+    Super Class:
         *   InvalidStringException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

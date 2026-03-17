@@ -19,7 +19,7 @@ from logic.system import CollectionException, NullException
 # ====================== NULL_COLLECTION EXCEPTION #======================#
 class NullCollectionException(CollectionException, NullException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  A debug exception is created when a Team candidate fails a validation test. Validation debug exceptions are
@@ -27,15 +27,12 @@ class NullCollectionException(CollectionException, NullException):
         ValidationResult.
     3.  Super for errors not covered by lower level NullCollectionException subclasses.
 
-    # PARENT:
+    Super Class:
      *   NullException
      *   CollectionException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

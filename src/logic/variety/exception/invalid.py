@@ -20,18 +20,17 @@ __all__ = [
 #======================# PLAYER_VARIETY VALIDATION EXCEPTION  #======================#
 class InvalidAgentVarietyException(AgentVarietyException, ValidationException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Parent of exception raised during AgentVariety verification process.
     2.  Wraps an exception that hits the try-finally block of an AgentVariety certifying method.
 
-    # PARENT:
+    Super Class:
         *   AgentVarietyException
         *   ValidationException
 
-    # PROVIDES:
-    None
+    Provides:
 
     # ATTRIBUTES:
     None

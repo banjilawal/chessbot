@@ -20,24 +20,21 @@ from logic.system import NullException
 #======================# NULL_PAIR_EXCEPTION #======================#
 class NullPairException(NullException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that a pair is null where it should not be.
     
-    # PARENT:
+    Super Class:
         *   NullException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See NUllException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

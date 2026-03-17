@@ -13,16 +13,15 @@ from __future__ import annotations
 
 class CheckmateHandler:
     """
-    # ROLE: Update Handler, Consistency, Integrity Maintenance, Lifecycle Management
+    Role:Update Handler, Consistency, Integrity Maintenance, Lifecycle Management
 
     Responsibilities:
     1.  Ensure integrity and consistency are maintained during the pawn_token's checkmate lifecycle.
 
-    # PARENT:
+    Super Class:
     None
 
-    # PROVIDES:
-    None
+    Provides:
 
     Attributes:
     None
@@ -30,7 +29,7 @@ class CheckmateHandler:
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR:
+    Attributes:
     None
 
     # LOCAL METHODS:

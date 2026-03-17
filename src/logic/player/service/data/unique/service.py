@@ -16,13 +16,13 @@ from logic.agent import PlayerAgent, AgentContext, AgentContextService, AgentDat
 
 class UniqueAgentDataService(Database[PlayerAgent]):
     """
-    # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
+    Role:Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     Responsibilities:
     1.  Ensure all bag in managed by AgentStackService are unique.
     2.  Guarantee consistency of records in AgentStackService.
     
-    # PARENT:
+    Super Class:
         *   Database
 
     # PROVIDES:
@@ -32,8 +32,6 @@ class UniqueAgentDataService(Database[PlayerAgent]):
         *   undo_add_agent: -> DeletionResult[Player]
         *   search_agents: -> SearchResult[List[Player]]
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See Database class for inherited attributes.

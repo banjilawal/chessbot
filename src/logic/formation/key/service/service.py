@@ -15,7 +15,7 @@ from logic.formation import FormationLookup, FormationKey, FormationKeyBuilder, 
 
 class FormationKeyService(ContextService[FormationKey]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    Role:Service, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing FormationKey microservice API.
@@ -23,14 +23,11 @@ class FormationKeyService(ContextService[FormationKey]):
     3.  Authoritative, single source of truth for FormationKey state.
     4.  Single entry and entry points to FormationKey lifecycle.
 
-    # PARENT:
+    Super Class:
         *   ContextService
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See ContextService for inherited attributes.

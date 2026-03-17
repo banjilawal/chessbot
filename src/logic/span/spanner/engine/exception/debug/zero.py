@@ -21,7 +21,7 @@ from logic.span import SpannerEngineDebugException
 # ======================# NO_RAY_PROVIDER_EXCEPTION #======================#
 class NoRayProviderException(SpannerEngineDebugException):
     """
-    # ROLE: Exception Chain Layer 2, Exception Messaging
+    Role:Exception Chain Layer 2, Exception Messaging
     # TASK: Capture Error Variable State
 
     Responsibilities:
@@ -33,19 +33,16 @@ class NoRayProviderException(SpannerEngineDebugException):
 
     2.  A failing ComputationResult was returned because no RayProvider was included.
 
-    # PARENT:
+    Super Class:
         *   SpannerEngineDebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See SpannerEngineDebugException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

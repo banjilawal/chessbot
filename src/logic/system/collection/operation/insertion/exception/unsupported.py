@@ -18,19 +18,16 @@ from logic.system import MethodImplementationException
 # ======================# UNSUPPORTED_EMPTY_INSERTION_RESULT_STATE EXCEPTION #======================#
 class UnsupportedEmptyInsertionResultException(MethodImplementationException):
     """
-    # ROLE: Information, Reporting, Debug
+    Role:Information, Reporting, Debug
 
     Responsibilities:
     1.  Indicate that an InsertionResult can either succeed or fail. There are no other outcomes. 
 
-    # PARENT:
+    Super Class:
         *   UnsupportedDataResultStateException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
      None

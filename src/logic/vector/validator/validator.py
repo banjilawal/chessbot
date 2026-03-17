@@ -18,20 +18,17 @@ from logic.vector import InvalidVectorException, NullVectorException, Vector
 
 class VectorValidator(Validator[Vector]):
     """
-     # ROLE: Validation, Data Integrity Guarantor, Security.
+     Role:Validation, Data Integrity Guarantor, Security.
 
     Responsibilities:
     1.  Run tests verifying a candidate can safely be used as a Square.
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
-    # PARENT:
+    Super Class:
         *   Validator
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

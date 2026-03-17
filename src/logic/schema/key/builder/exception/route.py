@@ -19,20 +19,18 @@ from logic.system import ExecutionRouteException
 # ======================# NO_SCHEMA_KEY_BUILD_ROUTE EXCEPTION #======================#
 class SchemaKeyBuildRouteException(SchemaKeyException, ExecutionRouteException):
     """
-    # ROLE: Fallback Result, Debugging
+    Role:Fallback Result, Debugging
 
     Responsibilities:
     1.  Indicate that the SchemaKey build failed because there was no build route for the Schema key.
 
-    # PARENT:
+    Super Class:
         *   SchemaKeyException
         *   ExecutionRouteException
 
     # PROVIDES
     None
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

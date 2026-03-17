@@ -17,17 +17,16 @@ from logic.token import CombatantToken, Token
 
 class CaptivityContext(Context[Hostage]):
     """
-    # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
+    Role:Filter, Search, Selection, Reverse/Forward Lookups
 
     Responsibilities:
     1.  Provide an HostageFinder with an attribute-value which finds Hostages which match the
         targeted attribute-value.
 
-    # PARENT:
+    Super Class:
         *   Context
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   victor (Optional[Token])

@@ -19,20 +19,17 @@ __all__ = [
 # ======================# BOARD_NOT_REGISTERED_WITH_ARENA EXCEPTION #======================#
 class BoardNotRegisteredArenaException(BoardDebugException, NotRegisteredException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
     1.  A failing ValidationResult was returned because the candidate board had not registered with its arena.
 
-    # PARENT:
+    Super Class:
         *   BoardDebugException
         *   NotRegisteredException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

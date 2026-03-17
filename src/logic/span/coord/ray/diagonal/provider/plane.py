@@ -18,7 +18,7 @@ from logic.vector import Vector
 
 class DiagonalPlaneFactors:
     """
-    # ROLE: Data-Holder, Utility
+    Role:Data-Holder, Utility
     # TASK: Provide solution sets
 
     Responsibilities:
@@ -28,11 +28,10 @@ class DiagonalPlaneFactors:
             * Southwest (Quadrant 2)
             * Southeast (Quadrant 3)
 
-    # PARENT:
+    Super Class:
     None
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
             origin: Coord
@@ -40,7 +39,7 @@ class DiagonalPlaneFactors:
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR:
+    Attributes:
             origin:
 
     # LOCAL METHODS:

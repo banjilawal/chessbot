@@ -19,20 +19,17 @@ from logic.system import InsertionException
 # ======================# TEAM_PUSH_FAILURE #======================#
 class PushingTeamFailedException(TeamStackException, InsertionException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Indicate that pushing a Team on the Stack failed.
 
-    # PARENT:
+    Super Class:
         *   TeamStackException
         *   InsertionException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

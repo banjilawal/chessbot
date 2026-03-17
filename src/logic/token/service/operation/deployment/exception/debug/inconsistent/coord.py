@@ -21,24 +21,21 @@ from logic.system import InconsistentStateException
 # ======================# INCONSISTENT_TOKEN_COORD_EXCEPTION #======================#
 class InconsistentTokenCoordException(InconsistentStateException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
     1.  Indicate that when a Token's current_position differs from its current square's coord.
 
-    # PARENT:
+    Super Class:
         *   InconsistentStateException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   InconsistentStateException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]

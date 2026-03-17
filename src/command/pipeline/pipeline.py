@@ -23,18 +23,17 @@ C = TypeVar("C", bound=Command)
 
 class CommandPipeline(ABC, Generic[C]):
     """
-    # ROLE: Pipeline, Integrity Lifecycle Manager. Worker
+    Role:Pipeline, Integrity Lifecycle Manager. Worker
 
     Responsibilities:
     1.  Integrity Lifecycle of a Command.
             *   Validating a Request object.
             *   Building a Command instance from the Request.
 
-    # PARENT:
+    Super Class:
     None
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   cipher: (C)
@@ -44,7 +43,7 @@ class CommandPipeline(ABC, Generic[C]):
     # INHERITED ATTRIBUTES:
     None.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   cipher: (C)
         *   builder: (Builder[Command])
         *   request_validator: (ServiceRequestValidator)

@@ -20,7 +20,7 @@ from logic.system import AnchorException
 # ======================# SQUARE_STACK_ROSTER_HANDLER_EXCEPTION #======================#
 class SquareStackRosterHandlerException(AnchorException):
     """
-    # ROLE: Coverage Target, Exception Chain Layer 0
+    Role:Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
     1.  Provide SquareStackRosterHandler as:
@@ -30,19 +30,16 @@ class SquareStackRosterHandlerException(AnchorException):
     2.  Indicate which SquareStackRosterHandler method received a worker's
         (layer-1) failure result.
 
-    # PARENT:
+    Super Class:
         *   AnchorException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See AnchorException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

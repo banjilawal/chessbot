@@ -22,7 +22,7 @@ from logic.token import Token
 
 class EdgeFinder(StackSearcher[Edge]):
     """
-    # ROLE: SearchWorker
+    Role:SearchWorker
 
     Responsibilities:
     1.  Send bag in a EdgeList whose attribute value match the context.key value to the caller.
@@ -34,11 +34,8 @@ class EdgeFinder(StackSearcher[Edge]):
     # PARENT
         *   SearchWorker
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

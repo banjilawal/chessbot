@@ -18,16 +18,15 @@ __all__ = [
 # ======================# ROOT APPLICATION EXCEPTION CLASS #======================#
 class ChessException(Exception):
     """
-    # ROLE: Exception
+    Role:Exception
 
     Responsibilities:
     1.  Parent of exception by the application
 
-    # PARENT:
+    Super Class:
         *   Exception
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   msg (str)
@@ -37,7 +36,7 @@ class ChessException(Exception):
     # INHERITED ATTRIBUTES:
         *   See Exception class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   err_code (str)
         *   msg (str
         *   ex (Optional[Exception])

@@ -20,7 +20,7 @@ from logic.system import UpdateException
 # ======================# START_SQUARE_VISIT_FAILURE #======================#
 class StartSquareVisitException(UpdateException):
     """
-    # ROLE: Exception Chain Layer 1, Exception Messaging
+    Role:Exception Chain Layer 1, Exception Messaging
     # TASK: Worker Method Identifier
 
     Responsibilities:
@@ -29,19 +29,16 @@ class StartSquareVisitException(UpdateException):
     2.  An error occurred in SquareStackTokenHandler.add_occupant that prevented a successful UpdateResult.
     3.  This error might have occurred in a different SquareStackTokenHandler method that also returns UpdateResults.
 
-    # PARENT:
+    Super Class:
         *   UpdateException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See UpdateException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   err_code (str)
         *   msg (str)
         *   ex (Optional[Exception])

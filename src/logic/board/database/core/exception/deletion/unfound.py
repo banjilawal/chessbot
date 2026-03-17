@@ -18,20 +18,17 @@ from logic.board import BoardException
 # ======================# BOARD_DOES_NOT_EXIST_FOR_REMOVAL EXCEPTION #======================#
 class BoardDoesNotExistForRemovalException(BoardException):
     """
-    # ROLE: Debug, Error Tracing
+    Role:Debug, Error Tracing
 
     Responsibilities:
     1.  Indicate that an attempt to remove instances of a board by a unique attribute failed because no bag
         matching the property were found in the dataset.
 
-    # PARENT:
+    Super Class:
         *   BoardException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

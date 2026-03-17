@@ -19,17 +19,16 @@ __all__ = [
 # ======================# NULL_FORMATION_KEY EXCEPTION #======================#
 class NullFormationKeyException(FormationKeyException, NullException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that FormationKey validation failed because the candidate was null.
 
-    # PARENT:
+    Super Class:
         *   NullException
         *   FormationKeyException
 
-    # PROVIDES:
-    None
+    Provides:
 
     # ATTRIBUTES:
     None

@@ -18,7 +18,7 @@ from logic.coord import CoordContext, ZeroCoordContextFlagsException
 
 class CoordContextBuilder(Builder[CoordContext]):
     """
-    # ROLE: Builder, Data Integrity And Reliability Guarantor
+    Role:Builder, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce CoordContext instances whose integrity is guaranteed at creation.
@@ -26,14 +26,11 @@ class CoordContextBuilder(Builder[CoordContext]):
     3.  Ensure params for CoordContext creation have met the application's safety contract.
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-    # PARENT:
+    Super Class:
         *   Builder
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

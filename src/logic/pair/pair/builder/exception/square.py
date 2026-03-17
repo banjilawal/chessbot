@@ -20,25 +20,22 @@ from logic.system import DebugException
 # ======================# HEAD_TAIL_SAME_SQUARE_EXCEPTION #======================#
 class HeadTailSquareException(DebugException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that an Pair build failed because the head_node.square == tail_square.
         The head and tail nodes cannot have the same square.
 
-    # PARENT:
+    Super Class:
         *   DebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   DebugException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

@@ -16,7 +16,7 @@ from logic.agent import PlayerAgent, AgentContextService, AgentService
 
 class AgentStackService(StackService[PlayerAgent]):
     """
-    # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
+    Role:Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     Responsibilities:
     1.  Microservice API for managing and searching Player collections.
@@ -27,14 +27,11 @@ class AgentStackService(StackService[PlayerAgent]):
     5.  Provide Player stack data structure with no guarantee of uniqueness.
     6.  Search utility.
     
-    # PARENT:
+    Super Class:
         *   StackService
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See StackService class for inherited attributes.

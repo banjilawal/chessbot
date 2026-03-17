@@ -19,20 +19,18 @@ from logic.system import ExecutionRouteException
 # ======================# NO_FORMATION_KEY_VALIDATION_ROUTE EXCEPTION #======================#
 class FormationKeyValidationRouteException(FormationKeyException, ExecutionRouteException):
     """
-    # ROLE: Fallback Result, Debugging
+    Role:Fallback Result, Debugging
 
     Responsibilities:
     1.  Indicate that the FormationKey validation failed because there was no build route for the FormationKey key.
 
-    # PARENT:
+    Super Class:
         *   FormationKeyException
         *   ExecutionRouteException
 
     # PROVIDES
     None
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

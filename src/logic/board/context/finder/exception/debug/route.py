@@ -21,24 +21,21 @@ from logic.board import BoardDebugException
 # ======================# NO_BOARD_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#
 class BoardSearchRouteException(BoardDebugException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
     1.  Indicate that there was no search logic for a board attribute.
 
-    # PARENT:
+    Super Class:
         *   BoardDebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   BoardDebugException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]

@@ -15,7 +15,7 @@ from logic.square import (
 
 class SquareStackHandler:
     """
-    # ROLE: Utilities, Update Management Statistics.
+    Role:Utilities, Update Management Statistics.
 
     Responsibilities:
     1.  Unifies SquareStackService utilities in one place.
@@ -25,11 +25,10 @@ class SquareStackHandler:
         from  core data structure operations.
     3.  Manges Updates (state changes) responsibilities for the SquareStackService.
 
-    # PARENT:
+    Super Class:
     None
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   SERVICE_NAME (str)
@@ -39,7 +38,7 @@ class SquareStackHandler:
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR:
+    Attributes:
         Local:
             *   stats_analyzer (SquareStacKAnalyzer)
             *   occupation_service (SquareStackTokenHandler)

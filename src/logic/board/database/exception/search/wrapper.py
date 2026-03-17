@@ -19,21 +19,18 @@ from logic.system import SearchException
 # ======================# UNIQUE_BOARD_SEARCH_FAILURE #======================#
 class UniqueBoardSearchException(BoardException, SearchException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why inserting a unique board failed. The encapsulated exceptions create 
         chain for tracing the source of the failure.
 
-    # PARENT:
+    Super Class:
         *   BoardException
         *   SearchException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     INHERITED ATTRIBUTES:
     None

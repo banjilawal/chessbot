@@ -20,24 +20,21 @@ from logic.system import DebugException
 # ======================# SERVICE_MENU_DEBUG_EXCEPTION #======================#
 class ServiceMenuDebugException(DebugException):
     """
-    # ROLE: Information, Reporting, Debug
+    Role:Information, Reporting, Debug
 
     Responsibilities:
     1.  Parent of DebugExceptions pertinent to ServiceMenu instances.
 
-    # PARENT:
+    Super Class:
         *  DebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

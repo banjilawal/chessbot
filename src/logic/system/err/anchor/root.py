@@ -21,7 +21,7 @@ from logic.system import ChessException
 # ======================# ANCHOR_EXCEPTION #======================#
 class AnchorException(ChessException):
     """
-    # ROLE: Coverage Target, Exception Chain Layer 0
+    Role:Coverage Target, Exception Chain Layer 0
 
     Responsibilities:.
     1.  Anchoring target for debug (layer-2) error state firing incident reports on
@@ -41,11 +41,10 @@ class AnchorException(ChessException):
     1.  Class name followed by "raised an exception."
     2.  The Syntax is: [Class] raised an exception
 
-    # PARENT:
+    Super Class:
         *   ChessException
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         cls_name: Optional[str]
@@ -54,7 +53,7 @@ class AnchorException(ChessException):
     # INHERITED ATTRIBUTES:
         *   See ChessException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         msg: Optional[str]
         err_code: Optional[str]
         ex: Optional[Exception]

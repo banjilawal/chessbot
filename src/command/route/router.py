@@ -16,24 +16,21 @@ S = TypeVar("S")
 
 class CommandRouter(ABC, Generic[S]):
     """
-    # ROLE: Interface, Routing, Worker
+    Role:Interface, Routing, Worker
 
     Responsibilities:
     1.  Route commands a command to the service's appropriate method.
 
-    # PARENT:
+    Super Class:
     None
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None.
 
-    # CONSTRUCTOR:
+    Attributes:
     None
 
     # LOCAL METHODS:

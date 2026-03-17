@@ -19,20 +19,17 @@ from logic.span import KingSpannerException, CoordRay, CoordSpan, Spanner
 
 class KingSpanner(Spanner):
     """
-    # ROLE: Worker, Computation
+    Role:Worker, Computation
     # Provide a spanning set for a King
 
     Responsibilities:
     1. Provide a spanning set for a King
 
-    # PARENT:
+    Super Class:
         Spanner
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     INHERITED ATTRIBUTES:
         *   See Spanner class for inherited attributes

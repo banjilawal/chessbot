@@ -9,19 +9,16 @@ from logic.team import TeamRosterException
 # ======================# ROSTER_MEMBER_TO_REMOVE_DOES_NOT_EXIST EXCEPTION #======================#
 class TeamRosterMemberDoesNotExistForRemovalException(TeamRosterException):
     """
-    # ROLE: Debug, Error Tracing
+    Role:Debug, Error Tracing
 
     Responsibilities:
     1.  Indicate that the roster member could not be removed because it does not exist.
 
-    # PARENT:
+    Super Class:
         *   TeamDaaServiceException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

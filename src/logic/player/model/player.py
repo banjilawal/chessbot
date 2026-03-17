@@ -16,13 +16,13 @@ from logic.team import Team, UniqueTeamDataService
 
 class Player(ABC):
     """
-    # ROLE: Controller
+    Role:Controller
 
     Responsibilities:
     1.  Directs movement of pieces in a Team's roster on a Board.
     2.  Forwards requests from the user to a Game.
     
-    # PARENT:
+    Super Class:
     None
 
     # PROVIDES:

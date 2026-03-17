@@ -19,20 +19,17 @@ from logic.system import BoundsException
 # ======================# SCHEMA_NAME_BOUNDS EXCEPTION #======================#
 class SchemaNameBoundsException(SchemaException, BoundsException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that a Schema lookup failed because the name was not a key to any Schema variant.
 
-    # PARENT:
+    Super Class:
         *   BoundsException
         *   SchemaException
   
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     INHERITED ATTRIBUTES:
     None

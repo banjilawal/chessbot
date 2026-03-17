@@ -20,20 +20,17 @@ from logic.schema import (
 
 class SchemaKeyBuilder(Builder[SchemaKey]):
     """
-    # ROLE: Builder, Data Integrity And Reliability Guarantor
+    Role:Builder, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce SchemaKey instances whose integrity is always guaranteed at creation.
     2.  If the build fails indicate the reason in an exception returned to the caller.
 
-    # PARENT:
+    Super Class:
         *   Builder
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

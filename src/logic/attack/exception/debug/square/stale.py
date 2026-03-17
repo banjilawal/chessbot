@@ -18,19 +18,16 @@ from logic.attack import AttackDebugException
 # ======================# ATTACKER_SOURCE_SQUARE_HAS_STALE_LINK EXCEPTION #======================#
 class StaleLinkDiscoveredInAttackingSquareSearchException(AttackDebugException):
     """
-    # ROLE: Debug, Error Tracing
+    Role:Debug, Error Tracing
 
     Responsibilities:
     1.  Indicate that an attack failed because one of the hits for the source
 
-    # PARENT:
+    Super Class:
         *   AttackDebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

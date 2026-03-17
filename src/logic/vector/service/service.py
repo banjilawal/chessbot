@@ -32,11 +32,10 @@ class VectorService(IntegrityService[Vector]):
     # INHERITED RESPONSIBILITIES:
         *   See IntegrityService class for inherited responsibilities.
 
-    # PARENT:
+    Super Class:
         *   IntegrityService
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   SERVICE_NAME (str)
@@ -44,7 +43,7 @@ class VectorService(IntegrityService[Vector]):
     # INHERITED ATTRIBUTES:
         *   See IntegrityService for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   id (int)
         *   name (str)
         *   builder (VectorBuilder) = VectorBuilder()

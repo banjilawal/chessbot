@@ -20,7 +20,7 @@ from logic.system import DebugException
 # ======================# VECTOR_SERVICE_DEBUG_EXCEPTION #======================#
 class VectorServiceDebugException(DebugException):
     """
-    # ROLE: Capture Error Variable State, Exception Chain Layer 2, Exception Messaging
+    Role:Capture Error Variable State, Exception Chain Layer 2, Exception Messaging
     
     Responsibilities:
     1.  Produce the:
@@ -29,11 +29,10 @@ class VectorServiceDebugException(DebugException):
             *   event which fired the variable into its error state.
         which occurred in the Vector method identified in layer-0 of the exception chain.
 
-    # PARENT:
+    Super Class:
         *   DebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   var (Optional[str])
@@ -42,7 +41,7 @@ class VectorServiceDebugException(DebugException):
     # INHERITED ATTRIBUTES:
         *   See DebugException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

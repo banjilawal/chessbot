@@ -18,20 +18,17 @@ from logic.system import BoundsException, NumberException
 # ======================# NUMBER_BELOW_FLOOR EXCEPTION #======================#
 class NumberBelowFloorException(NumberException, BoundsException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that number validation failed because the candidate was smaller than the floor.
 
-    # PARENT:
+    Super Class:
         *   NumberException
         *   BoundsException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

@@ -16,7 +16,7 @@ from logic.system import BuildResult, ComputationResult, IntegrityService, id_em
 
 class CoordService(IntegrityService[Coord]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    Role:Service, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing Coord microservice API.
@@ -24,14 +24,11 @@ class CoordService(IntegrityService[Coord]):
     3.  Authoritative, single source of truth for Coord state by providing single entry and exit points to Coord
         lifecycle.
 
-    # PARENT:
+    Super Class:
         *   IntegrityService
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See IntegrityService for inherited attributes.

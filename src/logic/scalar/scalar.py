@@ -13,7 +13,7 @@ from __future__ import annotations
 
 class Scalar:
     """
-    # ROLE: Computation, Transformation, Data-Holder
+    Role:Computation, Transformation, Data-Holder
     
     Responsibilities:
     1.  A 1-D quantity.
@@ -22,11 +22,10 @@ class Scalar:
             *   Coords
         by multiplying an originating 2-D by the scalar.
 
-    # PARENT:
+    Super Class:
     None
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   value (int)
@@ -34,7 +33,7 @@ class Scalar:
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR:
+    Attributes:
         *   value (int)
 
     # LOCAL METHODS:

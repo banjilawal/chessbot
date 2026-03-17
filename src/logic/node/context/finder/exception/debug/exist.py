@@ -21,24 +21,21 @@ from logic.node import NodeDebugException
 # ======================# NODE_NOT_FOUND_EXCEPTION #======================#
 class NodeNotFoundException(NodeDebugException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
     1.  Indicate that no node was found.
 
-    # PARENT:
+    Super Class:
         *   NodeDebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   NodeDebugException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]

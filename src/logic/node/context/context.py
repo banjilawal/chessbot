@@ -17,17 +17,16 @@ from logic.node import DiscoveryStatus, Node
 
 class NodeContext(Context[Node]):
     """
-    # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
+    Role:Filter, Search, Selection, Reverse/Forward Lookups
 
     Responsibilities:
     Provide an NodeFinder with an attribute value to find Nodes with a matching value in teir version of
     the attribute.
 
-    # PARENT:
+    Super Class:
         *   Context
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   priority (Optional[Priority])

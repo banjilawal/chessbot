@@ -18,19 +18,16 @@ from logic.attack import AttackDebugException
 # ======================# ATTACKING_TOKEN_ON_WRONG_BOARD EXCEPTION #======================#
 class AttackingTokenOnWrongBoardException(AttackDebugException):
     """
-    # ROLE: Debug, Error Tracing
+    Role:Debug, Error Tracing
 
     Responsibilities:
     1.  Indicate that an attack failed because the attacker was targeting the wrong board,
 
-    # PARENT:
+    Super Class:
         *   AttackDebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

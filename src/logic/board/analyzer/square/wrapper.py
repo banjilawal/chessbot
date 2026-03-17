@@ -18,20 +18,17 @@ from logic.system import AnalysisException
 # ======================# BOARD_SQUARE_RELATION_ANALYSIS_FAILURE #======================#
 class BoardSquareAnalysisException(AnalysisException):
     """
-    # ROLE: Exception Wrapper, Encapsulation, Error Chaining
+    Role:Exception Wrapper, Encapsulation, Error Chaining
 
     Responsibilities:
     1.  Wrap any exception that kills the relation test process before the board-item relationship
         status has been evaluated.
 
-    # PARENT:
+    Super Class:
         *   WrapperException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

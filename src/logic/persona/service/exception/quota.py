@@ -19,21 +19,18 @@ from logic.system import CalculationFailedException
 # ======================# RANK_QUOTA_PER_TEAM_LOOKUP_FAILURE #======================#
 class RankQuotaPerTeamLookupFailedException(TokenException, CalculationFailedException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Wrap debug exceptions that indicate looking up the max number of rank members per team. The encapsulated
         exceptions create chain for tracing the source of the failure.
 
-    # PARENT:
+    Super Class:
         *   TokenException
         *   ComputationException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     INHERITED ATTRIBUTES:
     None

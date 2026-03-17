@@ -17,20 +17,17 @@ from logic.span import KnightSpannerException, CoordRay, CoordSpan, Spanner
 
 class KnightSpanner(Spanner):
     """
-    # ROLE: Worker, Computation
+    Role:Worker, Computation
     # Provide a spanning set for a Knight
 
     Responsibilities:
     1. Provide a spanning set for a Knight
 
-    # PARENT:
+    Super Class:
         Spanner
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     INHERITED ATTRIBUTES:
         *   See Spanner class for inherited attributes

@@ -19,25 +19,22 @@ from logic.system import NullException
 # ======================# SQUARE_RAY_MEMBERS_NULL_EXCEPTION #======================#
 class SquareRayMembersNullException(NullException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that a SquareRay candidate was not validated because it's rays
         were null instead of a List[Square]
 
-    # PARENT:
+    Super Class:
         *   NullException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See NUllException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         val: Optional[Any]
         var: Optional[str]
         msg: Optional[str]

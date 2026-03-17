@@ -18,20 +18,17 @@ __all__ = [
 # ======================# NULL_NUMBER EXCEPTION #======================#
 class NullNumberException(NumberException, NullException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that number validation failed because the candidate was null.
 
-    # PARENT:
+    Super Class:
         *   NumberException
         *   NullNumberException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

@@ -17,19 +17,16 @@ from logic.square import SquareDebugException
 
 class VisitingWrongOpeningSquareException(SquareDebugException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
     
     Responsibilities:
     A Validation failure result was returned because a Token was trying to form on the wrong opening square.
 
-    # PARENT:
+    Super Class:
         *   SquareDebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

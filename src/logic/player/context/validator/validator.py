@@ -20,20 +20,17 @@ from logic.player import (
 
 class PlayerContextValidator(Validator[PlayerContext]):
     """
-     # ROLE: Validation, Data Integrity Guarantor, Security.
+     Role:Validation, Data Integrity Guarantor, Security.
 
     Responsibilities:
     1.  Ensure an PlayerContext instance is certified safe, reliable and consistent before use.
     2.  If a candidate fails a safety test, the validator sends an exception in a ValidationResult.
     
-    # PARENT:
+    Super Class:
         *   Validator
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

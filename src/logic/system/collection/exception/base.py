@@ -20,21 +20,18 @@ __all__ = [
 # ====================== COLLECTION EXCEPTION #======================#
 class CollectionException(ChessException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
     
     Responsibilities:
     1.  Wrapper for data collection integrity problems.
     2   Parent of exceptions raised by a collection of bag a StackService owns.
     3.  Super for errors not covered by lower level CollectionException subclasses.
     
-    # PARENT:
+    Super Class:
      *   ChessException
     
-    # PROVIDES:
-    None
+    Provides:
     
-    # LOCAL ATTRIBUTES:
-    None
     
     # INHERITED ATTRIBUTES:
     None

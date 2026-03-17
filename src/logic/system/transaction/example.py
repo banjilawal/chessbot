@@ -85,7 +85,7 @@ The major theme influencing the modules design are
 1. `SearchResult`
 """
 """
- # ROLE: Builder, Data Integrity And Reliability Guarantor implementation
+ Role:Builder, Data Integrity And Reliability Guarantor implementation
 
  Responsibilities:
  1. Process and validate parameters for creating `Team` instances.

@@ -21,24 +21,21 @@ from logic.coord import CoordDebugException
 # ======================# NO_COORD_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#
 class CoordSearchRouteException(CoordDebugException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
     1.  Indicate that there was no search logic for a coord attribute.
 
-    # PARENT:
+    Super Class:
         *   CoordDebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   CoordDebugException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]

@@ -19,20 +19,17 @@ from logic.system import InsertionException
 # ======================# PIPELINE_PUSH_FAILURE #======================#
 class PushingPipelineFailedException(PipelineStackException, InsertionException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Indicate that pushing a Pipeline on the Stack failed.
 
-    # PARENT:
+    Super Class:
         *   PipelineStackException
         *   InsertionException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

@@ -9,19 +9,16 @@ from logic.attack import AttackDebugException
 # ======================# ATTACKING_DISABLED_ENEMY EXCEPTION #======================#
 class AttackingDisabledEnemyException(AttackDebugException):
     """
-    # ROLE: Debug, Error Tracing
+    Role:Debug, Error Tracing
 
     Responsibilities:
     1.  Indicate that an attack failed because the was already disabled.
 
-    # PARENT:
+    Super Class:
         *   AttackDebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

@@ -19,21 +19,18 @@ from logic.system import InsertionException
 # ======================# UNIQUE_HOSTAGE_INSERTION_FAILURE #======================#
 class UniqueHostageInsertionException(HostageException, InsertionException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why inserting a unique manifest failed. The encapsulated
         exceptions create  chain for tracing the source of the failure.
 
-    # PARENT:
+    Super Class:
         *   HostageException
         *   InsertionException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     INHERITED ATTRIBUTES:
     None

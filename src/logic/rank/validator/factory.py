@@ -18,7 +18,7 @@ from logic.system import IdentityService, LoggingLevelRouter, Validator, Validat
 
 class RankValidatorFactory(Validator[Rank]):
     """
-    # ROLE: Validation, Data Integrity Guarantor, Security.
+    Role:Validation, Data Integrity Guarantor, Security.
 
     Responsibilities:
     1.  Verifies a candidate is a Rank instance that meets integrity requirements, before
@@ -31,7 +31,7 @@ class RankValidatorFactory(Validator[Rank]):
 
     # ATTRIBUTES:
 
-    # CONSTRUCTOR:
+    Attributes:
     Default Constructor
 
     # CLASS METHODS:
@@ -134,7 +134,7 @@ from logic.rank import Bishop, King, Knight, Pawn, Queen, Rank, RankValidationEx
 
 class RankValiatorFactory(Validator[Rank]):
     """
-    # ROLE: Factory, Data Integrity Guarantor
+    Role:Factory, Data Integrity Guarantor
 
     Responsibilities:
     1.  Produce Rank instances whose integrity is guaranteed at creation.
@@ -142,14 +142,12 @@ class RankValiatorFactory(Validator[Rank]):
     3.  Ensure params for Rank creation have met the application's safety contract.
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-    # PARENT:
+    Super Class:
         *   Builder
 
     # PROVIDES:
         *   RankFactory
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

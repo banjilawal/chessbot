@@ -19,24 +19,21 @@ from logic.system import IntegrityServiceException
 # ======================# REQUEST_SERVICE_EXCEPTION #======================#
 class RequestServiceException(IntegrityServiceException):
     """
-    # ROLE: Debug Coverage Target, Exception Chain Layer 0
+    Role:Debug Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
     1.  Indicate that an error occurred in RequestService instance.
 
-    # PARENT:
+    Super Class:
     *   ServiceException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See RequestServiceException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

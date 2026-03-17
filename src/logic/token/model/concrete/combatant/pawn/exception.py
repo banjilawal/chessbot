@@ -18,16 +18,15 @@ from logic.token import TokenException
 # ======================# PAWN_TOKEN EXCEPTION #======================#
 class PawnTokenException(TokenException):
     """
-    # ROLE: Super Exception
+    Role:Super Exception
 
     Responsibilities:
     1.  Parent and super for exception specific to PawnToken instances.
 
-    # PARENT:
+    Super Class:
         *   TokenException
 
-    # PROVIDES:
-    None
+    Provides:
 
     # ATTRIBUTES:
     None

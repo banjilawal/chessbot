@@ -19,20 +19,17 @@ from logic.system import DebugException
 # ======================# BLOCKED_ARENA_TEAM_CHANGE EXCEPTION #======================#
 class ChangingArenaTeamBlockedException(ArenaException, DebugException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that a team cannot be replaced once a game has started.
 .
-    # PARENT:
+    Super Class:
         *   ArenaException
         *   DebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

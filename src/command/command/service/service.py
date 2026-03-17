@@ -15,7 +15,7 @@ from logic.system import CommandBuilder, CommandValidator, IntegrityService, Bui
 
 class CommandService(IntegrityService[Command]):
     """
-    # ROLE: Microservice API, Integrity Lifecycle Manager, APLifecycle Management.
+    Role:Microservice API, Integrity Lifecycle Manager, APLifecycle Management.
 
     Responsibilities:
     1.  Integrity Lifecycle Management Microservice API.
@@ -24,11 +24,10 @@ class CommandService(IntegrityService[Command]):
             *   At object creation.
             *   At object invocation.
 
-    # PARENT:
+    Super Class:
         *   IntegrityService
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   builder (Builder[Command])
@@ -37,7 +36,7 @@ class CommandService(IntegrityService[Command]):
     # INHERITED ATTRIBUTES:
         *   See IntegrityService class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   id (int)
         *   name (name)
         *   builder (Builder[Command])

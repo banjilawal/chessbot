@@ -19,22 +19,19 @@ from logic.pair import PairException
 # ======================# POPPING_PAIR_FAILURE #======================#
 class PoppingPairException(PairException, DeletionException):
     """
-    # ROLE: Exception Chain Layer 1, Exception Messaging
+    Role:Exception Chain Layer 1, Exception Messaging
     # TASK: Worker Method Identifier
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why popping a pair failed. The exception chain
         traces the ultimate source of failure.
 
-    # PARENT:
+    Super Class:
         *   PairException
         *   DeletionException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     INHERITED ATTRIBUTES:
     None

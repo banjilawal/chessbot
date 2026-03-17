@@ -14,7 +14,7 @@ from logic.scalar import Scalar, ScalarBuildException, ScalarValidator
 
 class ScalarBuilder(Builder[Scalar]):
     """
-     # ROLE: Builder, Data Integrity And Reliability Guarantor
+     Role:Builder, Data Integrity And Reliability Guarantor
 
      Responsibilities:
      1.  Produce Scalar instances whose integrity is guaranteed at creation.
@@ -22,7 +22,7 @@ class ScalarBuilder(Builder[Scalar]):
      3.  Ensure params for Scalar creation have met the application's safety contract.
      4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-     # PARENT:
+     Super Class:
          * Builder
 
      # PROVIDES:

@@ -12,7 +12,7 @@ from logic.rank import RankContext, RankContextValidator, RankContextBuilder, Ra
 
 class RankContextService(ContextService[RankContext]):
     """
-    # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
+    Role:Search Service, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing Rank search microservice API.
@@ -21,14 +21,12 @@ class RankContextService(ContextService[RankContext]):
     4.  Create a single source of truth for Rank search results by having single entry and exit points for the
         Rank search flow.
 
-    # PARENT:
+    Super Class:
         *   ContextService
 
     # PROVIDES:
         *   RankContextService
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See ContextService for inherited attributes.

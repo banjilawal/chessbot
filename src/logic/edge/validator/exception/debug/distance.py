@@ -18,19 +18,16 @@ __all__ = [
 # ======================# EDGE_DISTANCE EXCEPTION #======================#
 class EdgeDistanceException(EdgeDebugException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that a candidate was not validated as an edge because its distance was a negative number.
 
-    # PARENT:
+    Super Class:
         *   EdgeDebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

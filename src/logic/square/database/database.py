@@ -20,17 +20,16 @@ from logic.token import Token, TokenService
 
 class SquareDatabase(Database[Square]):
     """
-    # ROLE: Data Repository, CRUD Search Service, CRUD Operations, Encapsulation, API layer.
+    Role:Data Repository, CRUD Search Service, CRUD Operations, Encapsulation, API layer.
 
     Responsibilities:
     1.  Higher level API for SquareStackService.
     2.  ACID service provider for SquareStackService.
 
-    # PARENT:
+    Super Class:
         *   Database
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   SERVICE_NAME (str)
@@ -40,7 +39,7 @@ class SquareDatabase(Database[Square]):
     # INHERITED ATTRIBUTES:
         *   See Database for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         Local:
             *   stack_service (StackService)
         Inherited:

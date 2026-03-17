@@ -19,20 +19,18 @@ from logic.system import ExecutionRouteException
 # ======================# NO_RANK_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
 class RankContextValidationRouteException(RankContextException, ExecutionRouteException):
     """
-    # ROLE: Fallback Result, Debugging
+    Role:Fallback Result, Debugging
 
     Responsibilities:
     1.  Indicate that the RankContext validation failed because there was no build route for the RankContext key.
 
-    # PARENT:
+    Super Class:
         *   RankContextException
         *   ExecutionRouteException
 
     # PROVIDES
     None
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

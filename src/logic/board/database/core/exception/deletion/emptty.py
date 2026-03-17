@@ -18,19 +18,16 @@ __all__ = [
 # ======================# POPPING_EMPTY_BOARD_STACK EXCEPTION #======================#
 class PoppingEmptyBoardStackException(BoardException):
     """
-    # ROLE: Debug, Error Tracing
+    Role:Debug, Error Tracing
 
     Responsibilities:
     1.  Indicate that an attempt to remove a board failed because the stack was empty
 
-    # PARENT:
+    Super Class:
         *   BoardException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

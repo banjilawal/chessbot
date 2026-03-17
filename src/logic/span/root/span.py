@@ -18,16 +18,15 @@ T = TypeVar("T")
 
 class Span(ABC, Generic[T]):
     """
-    # ROLE: Data-Holder
+    Role:Data-Holder
 
     Responsibilities:
     1.  Stores rays projected from a common origin.
 
-    # PARENT:
+    Super Class:
     None
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   origin: T
@@ -36,7 +35,7 @@ class Span(ABC, Generic[T]):
     # INHERITED ATTRIBUTES:
     None
 
-    # CONSTRUCTOR:
+    Attributes:
         *   origin: T
         *   rays: List[Ray[T]]
 

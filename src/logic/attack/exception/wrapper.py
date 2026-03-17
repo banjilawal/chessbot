@@ -20,20 +20,17 @@ from logic.system import OperationException
 # ======================# ATTACK_FAILURE #======================#
 class AttackException(OperationException):
     """
-    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
+    Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
     1.  An error occurred in Attack.execute that, prevented AttackResult.success() 
         from being returned.
 
-    # PARENT:
+    Super Class:
         *   OperationException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

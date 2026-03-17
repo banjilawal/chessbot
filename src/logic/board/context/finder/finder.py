@@ -20,7 +20,7 @@ from logic.board import (
 
 class BoardFinder(DataFinder[Board]):
     """
-    # ROLE: SearchWorker
+    Role:SearchWorker
 
     Responsibilities:
     1.  Send bag in a BoardList whose attribute value match the context.key value to the caller.
@@ -32,11 +32,8 @@ class BoardFinder(DataFinder[Board]):
     # PARENT
         *   SearchWorker
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

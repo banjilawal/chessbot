@@ -20,7 +20,7 @@ from logic.span import SpannerException
 # ======================# BISHOP_SPANNER_EXCEPTION #======================#
 class BishopSpannerException(SpannerException):
     """
-    # ROLE: Coverage Target, Exception Chain Layer 0
+    Role:Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
     1.  Provide BishopSpanner as:
@@ -29,19 +29,16 @@ class BishopSpannerException(SpannerException):
         target for layer-2 debugging exceptions.
     2.  Indicate which BishopSpanner method received a worker's (layer-1) failure result.
 
-    # PARENT:
+    Super Class:
         *   SpannerException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See SpannerException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

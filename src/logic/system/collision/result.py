@@ -17,17 +17,16 @@ T = TypeVar("T")
 
 class CollisionReport(Generic[T]):
     """
-    # ROLE: Messanger, Data Transport Object, Error Transport Object.
+    Role:Messanger, Data Transport Object, Error Transport Object.
 
     Responsibilities:
     1.  Send the outcome of a collision to the caller.
     2.  Enforcing mutual exclusion. A CollisionReport can either carry payload or exception. Not both.
 
-    # PARENT:
+    Super Class:
         *   DataResult
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   state (DataResultEnum)

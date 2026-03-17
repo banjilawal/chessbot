@@ -16,21 +16,18 @@ from logic.system import DebugException, SquareException
 # ======================# SQUARE_SQUARE_STATE EXCEPTION #======================#
 class SquareSquareStateException(DebugException, SquareException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
     1.  A failure ValidationResult was returned because the validation candidate was square instead of
         being a SquareState.
 
-    # PARENT:
+    Super Class:
         *   DebugException
         *   SquareException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

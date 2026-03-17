@@ -19,20 +19,17 @@ __all__ = [
 # ======================# NO_PLAYERS_IN_ARENA EXCEPTION #======================#
 class NoPlayersInArenaException(ArenaDebugException, NullException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Raised if an Arena's Database instance contains no players.
 
-    # PARENT:
+    Super Class:
         *   ArenaDebugException
         *   NoPlayersInArenaException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

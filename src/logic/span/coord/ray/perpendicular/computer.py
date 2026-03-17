@@ -19,7 +19,7 @@ from logic.span import (
 
 class PerpendicularRayComputer:
     """
-    # ROLE: Computation
+    Role:Computation
 
     # BACKGROUND:
     The perpendicular domain is defined by relations in the Cartesian plane.
@@ -37,14 +37,11 @@ class PerpendicularRayComputer:
     1.  Compute the spanning subset in the horizontal and vertical plane with no duplicates.
     2.  If the computation fails send an exception chain to the caller for error tracing.
 
-    # PARENT:
+    Super Class:
     None
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

@@ -14,16 +14,15 @@ from logic.system import GameColor
 
 class Formation(Enum):
     """
-    # ROLE: Build Configuration Table, Schema, Metadata Set
+    Role:Build Configuration Table, Schema, Metadata Set
 
     Responsibilities:
     1.  Supply parameters to Token builders and factories.
 
-    # PARENT:
+    Super Class:
         *   Enum
 
-    # PROVIDES:
-    None
+    Provides:
 
     # LOCAL ATTRIBUTES:
         *   square_name (str)

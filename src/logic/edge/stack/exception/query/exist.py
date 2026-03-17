@@ -20,21 +20,18 @@ from logic.edge import EdgeDebugException
 # ======================# EDGE_NOT_FOUND EXCEPTION #======================#
 class EdgeNotFoundException(EdgeDebugException):
     """
-    # ROLE: Debug, Error Tracing
+    Role:Debug, Error Tracing
 
     Responsibilities:
     1.  Indicate that an attempt to remove instances of a item by a unique attribute failed because no bag
         matching the property were found in the dataset.
 
-    # PARENT:
+    Super Class:
         *   NullException
         *   EdgeStackException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

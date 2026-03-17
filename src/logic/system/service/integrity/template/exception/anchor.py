@@ -20,24 +20,21 @@ from logic.system import IntegrityServiceException
 # ======================# TEMPLATE_SERVICE_EXCEPTION #======================#
 class TemplateServiceException(IntegrityServiceException):
     """
-    # ROLE: Debug Coverage Target, Exception Chain Layer 0
+    Role:Debug Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
     1.  Indicate that an error occurred in TemplateService instance.
 
-    # PARENT:
+    Super Class:
     *   ServiceException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See TemplateServiceException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])

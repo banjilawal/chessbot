@@ -18,19 +18,16 @@ __all__ = [
 # ======================# FILLING_TEAM_ROSTER_FAILURE #======================#
 class FillingTeamRosterException(TeamRosterException):
     """
-    # ROLE: Debug, Error Tracing
+    Role:Debug, Error Tracing
 
     Responsibilities:
     1.  Carry the DebugException that explains why initializing the team's roster failed.
 
-    # PARENT:
+    Super Class:
         *   TeamDatabaseException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

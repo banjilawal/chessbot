@@ -20,25 +20,22 @@ from logic.system import BuildException
 # ======================# TEAM_BUILD_FAILURE #======================#
 class TeamBuildException(BuildException):
     """
-    # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
+    Role:Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
     1.  Indicate the TeamBuilder did not produce a valid work product.
     2.  Identify the TeamBuilder method where the failure occurred.
 
-    # PARENT:
+    Super Class:
         *   BuildException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See BuildException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         op: Optional[str]
         ex: Optional[str]
         msg: Optional[str]

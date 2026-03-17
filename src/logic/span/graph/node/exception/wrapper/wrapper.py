@@ -21,25 +21,22 @@ from logic.system import BuildException
 # ======================# NODE_STACK_SERVICE_PRODUCTION_FAILURE #======================#
 class NodeStackServiceProductionException(BuildException):
     """
-    # ROLE: Exception Chain Layer 1, Exception Messaging
+    Role:Exception Chain Layer 1, Exception Messaging
     # TASK: Worker Method Identifier
 
     Responsibilities:
     1.  Identify the NodeStackServiceProducer method where the process failed.
 
-    # PARENT:
+    Super Class:
         *   BuildException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See BuildException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   op: Optional[str]
         *   msg: Optional[str]
         *   mthd: Optional[str]

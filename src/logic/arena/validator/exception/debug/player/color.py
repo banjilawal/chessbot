@@ -20,19 +20,16 @@ __all__ = [
 # ======================# BOTH_PLAYERS_HAVE_THE_SAME_COLOR EXCEPTION #======================#
 class PlayerColorCollisionException(ArenaDebugException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Raised if a both unique players have the same color.
 
-    # PARENT:
+    Super Class:
         *   ArenaDebugException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

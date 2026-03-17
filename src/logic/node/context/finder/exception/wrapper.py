@@ -21,26 +21,23 @@ from logic.system import SearchException
 # ======================# NODE_SEARCH_FAILURE #======================#
 class NodeSearchException(SearchException):
     """
-    # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
+    Role:Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
     1.  Indicate that a node search was not completed, it returned an error instead of a
         work product. 
     2.  Identify the method where the failure occurred.
 
-    # PARENT:
+    Super Class:
         *   SearchException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See SearchException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         op: Optional[str]
         ex: Optional[str]
         msg: Optional[str]
@@ -104,20 +101,17 @@ from logic.node import NodeException
 # ======================# NODE_SEARCH_FAILURE #======================#
 class NodeSearchException(NodeException, SearchException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why a node search operation failed. The exception chain
         traces the ultimate source of failure.
 
-    # PARENT:
+    Super Class:
         *   FinderException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

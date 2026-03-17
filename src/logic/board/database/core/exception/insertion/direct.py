@@ -18,19 +18,16 @@ from logic.board import BoardDataServiceException
 # ======================# APPENDING_BOARD_DIRECTLY_INTO_ITEMS EXCEPTION #======================#
 class AppendingBoardDirectlyIntoItemsFailedException(BoardDataServiceException):
     """
-    # ROLE: Debug, Error Tracing
+    Role:Debug, Error Tracing
 
     Responsibilities:
     1.  Indicate that appending the board directly into self.bag was not in the list after running bag.append.
 
-    # PARENT:
+    Super Class:
         *   BoardDataServiceException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

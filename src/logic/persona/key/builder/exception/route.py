@@ -19,20 +19,18 @@ from logic.system import ExecutionRouteException
 # ======================# NO_PERSONA_KEY_BUILD_ROUTE EXCEPTION #======================#
 class PersonaKeyBuildRouteException(PersonaKeyException, ExecutionRouteException):
     """
-    # ROLE: Fallback Result, Debugging
+    Role:Fallback Result, Debugging
 
     Responsibilities:
     1.  Indicate that the PersonaKey build failed because there was no build route for the Persona key.
 
-    # PARENT:
+    Super Class:
         *   PersonaKeyException
         *   ExecutionRouteException
 
     # PROVIDES
     None
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

@@ -19,17 +19,16 @@ __all__ = [
 # ======================# NULL_SCHEMA_KEY_VALIDATION EXCEPTION #======================#
 class NullSchemaKeyException(SchemaKeyException, NullException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that a candidate failed its SchemaKey safety certification because it was null.
 
-    # PARENT:
+    Super Class:
         *   NullException
         *   InvalidSchemaKeyException
 
-    # PROVIDES:
-    None
+    Provides:
 
     # ATTRIBUTES:
     None

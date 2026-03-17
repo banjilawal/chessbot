@@ -18,19 +18,16 @@ from logic.team import TeamRosterException
 # ======================# ADDING_PRISONER_TO_ROSTER EXCEPTION #======================#
 class AddingPrisonerToTeamRosterException (TeamRosterException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that a occupant cannot be added to the roster because it was not free.
 
-    # PARENT:
+    Super Class:
         *   TeamRosterException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

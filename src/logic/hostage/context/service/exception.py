@@ -19,21 +19,18 @@ __all__ = [
 # ======================# CAPTIVITY_CONTEXT_SERVICE EXCEPTION #======================#
 class CaptivityContextServiceException(CaptivityContextException, ServiceException):
     """
-    # ROLE: Exception Wrapper
+    Role:Exception Wrapper
 
     Responsibilities:
     1.  Indicate that an HostageContextService encountered an error which prevented the service from completing a task.
     2.  Wrap an exception that hits the try-finally block of an HostageContextService method.
 
-    # PARENT:
+    Super Class:
         *   ServiceException
         *   CaptivityContextException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

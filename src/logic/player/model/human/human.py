@@ -13,20 +13,17 @@ from logic.team import UniqueTeamDataService
 
 class HumanPlayer(Player):
     """
-    # ROLE: Controller
+    Role:Controller
 
     Responsibilities:
     1.  Forward requests and commands from a Human owner to the Game model.
     2.  Forward movement commands from the person playing to their pieces on the Board.
     
-    # PARENT:
+    Super Class:
         *   Player
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
     
     # INHERITED ATTRIBUTES:
         *   See Player class for inherited attributes.

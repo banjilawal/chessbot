@@ -19,20 +19,17 @@ __all__ = [
 # ======================# TOKEN_NOT_REGISTERED_WITH_SQUARE EXCEPTION #======================#
 class TokenNotRegisteredSquareException(TokenDebugException, NotRegisteredException):
     """
-    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
     1.  A failing ValidationResult was returned because the candidate token had not registered with its square.
 
-    # PARENT:
+    Super Class:
         *   TokenDebugException
         *   NotRegisteredException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

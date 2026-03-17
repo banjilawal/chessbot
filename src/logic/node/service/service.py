@@ -21,7 +21,7 @@ from logic.system import DeletionResult, IntegrityService, IdFactory, InsertionR
 
 class NodeService(IntegrityService[Node]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    Role:Service, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing Node microservice API.
@@ -29,14 +29,11 @@ class NodeService(IntegrityService[Node]):
     3.  Authoritative, single source of truth for Node state by providing single entry and exit points to Node
         lifecycle.
 
-    # PARENT:
+    Super Class:
         *   IntegrityService
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See IntegrityService for inherited attributes.

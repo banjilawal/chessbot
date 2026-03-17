@@ -16,7 +16,7 @@ from logic.rank import Rank, RankFactory, RankValidatorFactory
 
 class RankService(IntegrityService[Rank]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    Role:Service, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing Rank microservice API.
@@ -24,14 +24,12 @@ class RankService(IntegrityService[Rank]):
     3.  Authoritative, single source of truth for Rank state by providing single entry and exit points to Rank
         lifecycle.
 
-    # PARENT:
+    Super Class:
         *   IntegrityService
 
     # PROVIDES:
         *   RankService
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
         *   See IntegrityService for inherited attributes.

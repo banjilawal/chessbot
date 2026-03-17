@@ -4,19 +4,16 @@ from logic.hostage import HostageException
 
 class PrisonerCannotBeActiveCombatantException(HostageException):
     """
-    # ROLE: Error Tracing, Debugging
+    Role:Error Tracing, Debugging
 
     Responsibilities:
     1.  Indicate that a occupant cannot be added to t
 
-    # PARENT:
+    Super Class:
         *   HostageException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
 
     # INHERITED ATTRIBUTES:
     None

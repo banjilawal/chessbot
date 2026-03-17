@@ -20,7 +20,7 @@ from logic.system import AnchorException
 # ======================# SPANNER_ENGINE_EXCEPTION #======================#
 class SpannerEngineException(AnchorException):
     """
-    # ROLE: Coverage Target, Exception Chain Layer 0
+    Role:Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
     1.  Provide SpannerEngine as:
@@ -29,19 +29,16 @@ class SpannerEngineException(AnchorException):
         target for layer-2 debugging exceptions.
     2.  Indicate which SpannerEngine method received a worker's (layer-1) failure result.
 
-    # PARENT:
+    Super Class:
         *   AnchorException
 
-    # PROVIDES:
-    None
+    Provides:
 
-    # LOCAL ATTRIBUTES:
-    None
         
     # INHERITED ATTRIBUTES:
         *   See AnchorException class for inherited attributes.
 
-    # CONSTRUCTOR:
+    Attributes:
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
