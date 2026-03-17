@@ -23,11 +23,11 @@ class TokenStackCrudHandlerException(AnchorException):
     Role:Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
-    1.  Provide TokenStackCrudHandler as:
+    1.  Provide TokenStackCrudManager as:
             *   Reporting
             *   Coverage
         target for layer-2 debugging exceptions.
-    2.  Indicate which TokenStackCrudHandler method received a worker's
+    2.  Indicate which TokenStackCrudManager method received a worker's
         (layer-1) failure result.
 
     Super Class:
@@ -53,9 +53,9 @@ class TokenStackCrudHandlerException(AnchorException):
         *   See AnchorException class for inherited methods.
     """
     CLS_MTHD = Optional[str]
-    CLS_NAME = "TokenStackCrudHandler"
+    CLS_NAME = "TokenStackCrudManager"
     ERR_CODE = "TOKEN_CRUD_HANDLER_EXCEPTION"
-    MSG = "TokenStackCrudHandler raised an exception."
+    MSG = "TokenStackCrudManager raised an exception."
 
     def __init__(
             self,

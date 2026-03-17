@@ -15,4 +15,4 @@ from .push import *
 from .exception import *
 
 # Modules
-from .handler import TokenStackCrudHandler
+from .manager import TokenStackCrudManager

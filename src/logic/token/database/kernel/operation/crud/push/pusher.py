@@ -10,12 +10,11 @@ version: 1.0.0
 from __future__ import annotations
 
 from logic.rank import RankService
+from logic.system import InsertionResult, LoggingLevelRouter
 from logic.token import (
-    PoppingEmptyTokenStackException, RankQuotaAnalyzer, RankQuotaFullException, Token, TokenCollisionDetector,
-    TokenStackCrudHandlerException,
-    TokenStackFullException, TokenStackPopException, TokenStackPushException, TokenStackService, TokenStackState
+    RankQuotaAnalyzer, RankQuotaFullException, Token, TokenCollisionDetector, TokenStackFullException,
+    TokenStackPushException, TokenStackService, TokenStackState
 )
-from logic.system import DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, SearchResult
 
 
 class TokenStackPusher:
@@ -53,7 +52,7 @@ class TokenStackPusher:
             rank_service: RankService = RankService(),
             rank_quota_analyzer: RankQuotaAnalyzer = RankQuotaAnalyzer(),
             collision_detector: TokenCollisionDetector = TokenCollisionDetector(),
-    ) -> InsertionResult:
+    ) -> InsertionResult[bool]:
         """
         Action:
             1.  Return a failure result containing an exception chain if
@@ -138,28 +137,6 @@ class TokenStackPusher:
                     ex=RankQuotaFullException(
                         msg=RankQuotaFullException.MSG,
                         err_code=RankQuotaFullException.ERR_CODE,
-                    )
-                )
-            )
-        openings_count_result = rank_quota_analyzer.count_openings_for_rank(
-            rank=token.rank,
-            token_stack=token_stack
-        )
-        # Handle the case that, the analyzer doesn't give a count of open slots.
-        if openings_count_result.is_failure:
-            # Return the exception chain on failure
-            return InsertionResult.failure(
-                TokenStackCrudHandlerException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    err_code=TokenStackCrudHandlerException.ERR_CODE,
-                    msg=TokenStackCrudHandlerException.MSG,
-                    ex=TokenStackPushException(
-                        op=TokenStackPushException.OP,
-                        msg=TokenStackPushException.MSG,
-                        mthd=TokenStackPushException.MTHD,
-                        rslt_type=TokenStackPushException.RSLT_TYPE,
-                        ex=openings_count_result.exception
                     )
                 )
             )

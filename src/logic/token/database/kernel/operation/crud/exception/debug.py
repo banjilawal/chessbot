@@ -28,7 +28,7 @@ class TokenStackCrudHandlerDebugException(DebugException):
             *   variable,
             *   it's value,
             *   event which fired the variable into its error state.
-        which occurred in the TokenStackCrudHandler method identified in layer-0 of the exception chain.
+        which occurred in the TokenStackCrudManager method identified in layer-0 of the exception chain.
 
     Super Class:
         *   DebugException
@@ -53,7 +53,7 @@ class TokenStackCrudHandlerDebugException(DebugException):
         *   See DebugException class for inherited methods.
     """
     ERR_CODE = "TOKEN_STACK_CRUD_HANDLER_DEBUG_EXCEPTION"
-    MSG = str = "TokenStackCrudHandler had an error."
+    MSG = str = "TokenStackCrudManager had an error."
     
     def __init__(
             self,
