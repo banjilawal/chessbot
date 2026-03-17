@@ -21,19 +21,13 @@ from logic.token import TokenDebugException
 # ======================# INACTIVE_TOKEN_UNDO_COORD_PUSH_EXCEPTION  #======================#
 class InactiveTokenPushingCoordException(TokenDebugException):
     """
-    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:
+        -   Error Variable Identifier
+        -   Exception Chain Layer 2
+        -   Exception Messaging
 
     Responsibilities:
-    1.  Indicate that an inactive Token cannot undo its last move by pushing its CoordStack.
-    
-    Super Class:
-        *   TokenDebugException
-
-    Provides:
-
-
-    # INHERITED ATTRIBUTES:
-        *   TokenDebugException class for inherited attributes.
+        1.  Indicate that an inactive Token add a  new position.
 
     Attributes:
         var: Optional[str]
@@ -42,11 +36,10 @@ class InactiveTokenPushingCoordException(TokenDebugException):
         ex: Optional[Exception]
         err_code: Optional[str]
 
-    # LOCAL METHODS:
-    None
+    Provides:
 
-    # INHERITED METHODS:
-        *   See TokenDebugException class for inherited methods.
+    Super Class:
+        TokenDebugException
     """
     ERR_CODE = "INACTIVE_TOKEN_UNDO_COORD_PUSH_EXCEPTION"
     MSG = "An inactive token cannot pop its CoordStack."

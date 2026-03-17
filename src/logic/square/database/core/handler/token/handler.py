@@ -90,7 +90,7 @@ class SquareStackTokenHandler:
         Raises:
             *   SquareDatabaseException
             *   SquareToOccupyNotFoundException
-            *   StartSquareVisitException
+            *   SquareEntryException
         """
         method = "SquareStackTokenHandler.occupy_stack_square"
         

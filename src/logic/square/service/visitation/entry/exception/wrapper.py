@@ -1,7 +1,7 @@
-# src/logic/square/service/visitation/exception/start/add.py
+# src/logic/square/service/visitation/entry/exception/add.py
 
 """
-Module: logic.square.service.visitation.exception.start.add
+Module: logic.square.service.visitation.entry.exception.add
 Author: Banji Lawal
 Created: 2026-02-22
 version: 1.0.0
@@ -11,52 +11,42 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# START_SQUARE_VISIT_FAILURE #======================#
-    "StartSquareVisitException",
+    # ======================# SQUARE_ENTRY_FAILURE #======================#
+    "SquareEntryException",
 ]
 
 from logic.system import UpdateException
 
-# ======================# START_SQUARE_VISIT_FAILURE #======================#
-class StartSquareVisitException(UpdateException):
+# ======================# SQUARE_ENTRY_FAILURE #======================#
+class SquareEntryException(UpdateException):
     """
-    Role:Exception Chain Layer 1, Exception Messaging
-    # TASK: Worker Method Identifier
+    Role:
+        -   Worker Method Identifier
+        -   Exception Chain Layer 1,
+        -   Exception Messaging
 
     Responsibilities:
-    1.  Identify the SquareStackService method where the push failed.
-    
-    2.  An error occurred in SquareStackTokenHandler.add_occupant that prevented a successful UpdateResult.
-    3.  This error might have occurred in a different SquareStackTokenHandler method that also returns UpdateResults.
-
-    Super Class:
-        *   UpdateException
-
-    Provides:
-
-
-    # INHERITED ATTRIBUTES:
-        *   See UpdateException class for inherited attributes.
+        1.  Indicate that a SquareEntryProcess was not completed.
+        2.  Identify the method where the failure occurred.
 
     Attributes:
-        *   err_code (str)
-        *   msg (str)
-        *   ex (Optional[Exception])
-        *   mthd (Optional[str])
-        *   op (Optional[str])
-        *   rslt_type (Optional[str])
+        op: Optional[str]
+        msg: Optional[str]
+        mthd: Optional[str]
+        ex: Optional[Exception]
+        err_code: Optional[str]
+        rslt_type: Optional[str]
 
-    # LOCAL METHODS:
-   None
+    Super Class:
+        UpdateException
 
-    # INHERITED METHODS:
-        *   See UpdateException class for inherited methods.
+    Provides:
     """
     OP = "Update"
     MTHD = Optional[None]
     RSLT_TYPE = "UpdateResult"
     MSG = "SquareVisit start failed."
-    ERR_CODE = "START_SQUARE_VISIT_FAILURE"
+    ERR_CODE = "SQUARE_ENTRY_FAILURE"
     
     def __init__(
             self,

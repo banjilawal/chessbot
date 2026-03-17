@@ -21,19 +21,13 @@ from logic.token import TokenDebugException
 # ======================# ABOVE_MOVE_UNDO_LIMIT_EXCEPTION  #======================#
 class MoveUndoLimitException(TokenDebugException):
     """
-    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:
+        -   Error Variable Identifier
+        -   Exception Chain Layer 2
+        -   Exception Messaging
 
     Responsibilities:
-    1.  Indicate that a token tried to undo mre than one move.
-    
-    Super Class:
-        *   TokenDebugException
-
-    Provides:
-
-
-    # INHERITED ATTRIBUTES:
-        *   TokenDebugException class for inherited attributes.
+       1.  Indicate that a token tried to undo mre than one move.
 
     Attributes:
         var: Optional[str]
@@ -42,11 +36,10 @@ class MoveUndoLimitException(TokenDebugException):
         ex: Optional[Exception]
         err_code: Optional[str]
 
-    # LOCAL METHODS:
-    None
+    Provides:
 
-    # INHERITED METHODS:
-        *   See TokenDebugException class for inherited methods.
+    Super Class:
+        TokenDebugException
     """
     ERR_CODE = "ABOVE_MOVE_UNDO_LIMIT_EXCEPTION"
     MSG = "A token can only undo its last move during its current turm."

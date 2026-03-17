@@ -19,7 +19,7 @@ from logic.system import DeletionResult, LoggingLevelRouter, UpdateResult, Valid
 from logic.token import Token, TokenBoardState, TokenService
 
 
-class TokenVisitHandler:
+class VisitationManager:
     """
     Role:Update Handler, Consistency, Integrity Maintenance, Lifecycle Management
 
@@ -82,9 +82,9 @@ class TokenVisitHandler:
             
         Raises:
             TokenVisitHandlerException
-            StartSquareVisitException
-            VisitingOccupiedSquareException
-            VisitorFromWrongBoardException
+            SquareEntryException
+            SquareOccupiedException
+            SquareVisitorBoardException
             SquareVisitorDisabledException
         """
         method = f"{cls.__class__.__name__}.add_occupant"
@@ -346,9 +346,9 @@ class TokenVisitHandler:
         Returns:
             ValidationResult[Square]
         Raises:
-            VisitingWrongOpeningSquareException
+            WrongOpeningSquareException
         """
-        method = "TokenVisitHandler._verify_token_forms_on_square"
+        method = "VisitationManager._verify_token_forms_on_square"
         
         # Handle the case that, the occupant belongs to a different square.
         if target.name.upper() != visitor.opening_square_name.upper():

@@ -1,25 +1,25 @@
-# src/logic/token/service/operation/promotion/exception/debug/token.py
+# src/logic/square/service/visitation/entry/exception/debug/board.py
 
 """
-Module: logic.token.service.operation.promotion.exception.debug.token
+Module: logic.square.service.visitation.entry.exception.debug.board
 Author: Banji Lawal
-Created: 2026-03-14
+Created: 2026-02-22
 version: 1.0.0
 """
 
 from __future__ import annotations
 from typing import Any, Optional
 
-__all__ = [
-    # ======================# UNOPENED__TOKEN_POPPING_COORD_EXCEPTION  #======================#
-    "UnopenedTokenPoppingCoordException",
+___all__ = [
+    # ======================# VISITOR_FROM_WRONG_BOARD EXCEPTION #======================#
+    "SquareVisitorBoardException",
 ]
 
-from logic.token import TokenDebugException
+from logic.square import SquareDebugException
 
 
-# ======================# UNOPENED__TOKEN_POPPING_COORD_EXCEPTION  #======================#
-class UnopenedTokenPoppingCoordException(TokenDebugException):
+# ======================# VISITOR_FROM_WRONG_BOARD EXCEPTION #======================#
+class SquareVisitorBoardException(SquareDebugException):
     """
     Role:
         -   Error Variable Identifier
@@ -27,7 +27,7 @@ class UnopenedTokenPoppingCoordException(TokenDebugException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that a deployed token which has not opened cannot pop its CoordStack
+        1.  Indicate that a square entry failed because the visitor belonged to a different board.
 
     Attributes:
         var: Optional[str]
@@ -41,8 +41,8 @@ class UnopenedTokenPoppingCoordException(TokenDebugException):
     Super Class:
         TokenDebugException
     """
-    ERR_CODE = "UNOPENED__TOKEN_POPPING_COORD_EXCEPTION"
-    MSG = "An unopened token cannot pop its CoordStack."
+    ERR_CODE = "VISITOR_FROM_WRONG_BOARD_EXCEPTION"
+    MSG = "Entry denied. Visitor assigned to a different board."
     
     def __init__(
             self,

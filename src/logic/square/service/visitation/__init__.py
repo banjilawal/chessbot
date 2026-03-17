@@ -10,7 +10,9 @@ version: 1.0.0
 # =========== SQUARE.SERVICE.VISITATION PACKAGE CONTENTS ===========#
 
 # Packages
+from .entry import *
+from .departure import *
 from .exception import *
 
 # Modules
-from .handler import TokenVisitHandler
+from .manager import VisitationManager

@@ -11,13 +11,13 @@ from __future__ import annotations
 from typing import cast
 
 from logic.token import Token
-from logic.square import Square, SquareBuilder, SquareServiceException, SquareValidator, TokenVisitHandler
+from logic.square import Square, SquareBuilder, SquareServiceException, SquareValidator, VisitationManager
 from logic.system import DeletionResult, IntegrityService, IdFactory, LoggingLevelRouter, UpdateResult
 
 
 class SquareService(IntegrityService[Square]):
     """
-     ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    ROLE: Service, Lifecycle Management, Encapsulation, API layer.
      
      RESPONSIBILITIES:
      1. Update the square and token states in the Visit Lifecycle.
@@ -34,7 +34,7 @@ class SquareService(IntegrityService[Square]):
 
     LOCAL ATTRIBUTES:
         SERVICE_NAME: str
-        token_visit_handler: TokenVisitHandler
+        token_visit_handler: VisitationManager
         collision_detector: SquareCollisionDetector
 
     INHERITED ATTRIBUTES:
@@ -45,10 +45,10 @@ class SquareService(IntegrityService[Square]):
         name: str
         builder: Builder
         validator: Validator
-        token_visit_handler: TokenVisitHandler
+        token_visit_handler: VisitationManager
         collision_detector: SquareCollisionDetector
 
-      LOCAL METHODS:
+      Provides:
          *   begin_square_visit(square: Square, visitor: Token) -> UpdateResult[Square]
          *   end_square_visit(square: Square) -> DeletionResult[Token]
 
@@ -56,7 +56,7 @@ class SquareService(IntegrityService[Square]):
      None
      """
     SERVICE_NAME = "SquareService"
-    _token_visit_handler: TokenVisitHandler
+    _token_visit_handler: VisitationManager
     
     def __init__(
             self,
@@ -64,7 +64,7 @@ class SquareService(IntegrityService[Square]):
             builder: SquareBuilder = SquareBuilder(),
             validator: SquareValidator = SquareValidator(),
             id: int = IdFactory.next_id(class_name="SquareService"),
-            token_visit_handler: TokenVisitHandler = TokenVisitHandler(),
+            token_visit_handler: VisitationManager = VisitationManager(),
     ):
         """
         Args:
@@ -72,7 +72,7 @@ class SquareService(IntegrityService[Square]):
             name: str
             builder: Builder
             validator: Validator
-            token_visit_handler: TokenVisitHandler
+            token_visit_handler: VisitationManager
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         self._token_visit_handler = token_visit_handler
@@ -86,7 +86,7 @@ class SquareService(IntegrityService[Square]):
         return cast(SquareValidator, self.entity_validator)
     
     @property
-    def token_visit_handler(self) -> TokenVisitHandler:
+    def token_visit_handler(self) -> VisitationManager:
         return self._token_visit_handler
     
     @LoggingLevelRouter.monitor
@@ -107,25 +107,25 @@ class SquareService(IntegrityService[Square]):
         method = "SquareService.begin_square_visit"
         
         # --- Handoff validation and occupation processing responsibilities to token_visit_handler. ---#
-        visitation_update_result = self._token_visit_handler.start_visit(
+        visit_update_result = self._token_visit_handler.start_visit(
             square=square,
             visitor=visitor
         )
         # Handle the case that, the occupation was aborted.
-        if visitation_update_result.is_failure:
-            # Encapsulate visitation_update_result.{original, exception} in exception chain returned on failure.
+        if visit_update_result.is_failure:
+            # Encapsulate visit_update_result.{original, exception} in exception chain returned on failure.
             return UpdateResult.update_failure(
-                original=visitation_update_result.original,
+                original=visit_update_result.original,
                 exception=SquareServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=SquareServiceException.MSG,
                     err_code=SquareServiceException.ERR_CODE,
-                    ex=visitation_update_result.exception,
+                    ex=visit_update_result.exception,
                 )
             )
         # --- Forward the success result to the client. ---#
-        return visitation_update_result
+        return visit_update_result
 
     
     @LoggingLevelRouter.monitor

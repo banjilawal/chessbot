@@ -172,7 +172,7 @@ class TokenDeployment:
         Raises:
             TokenDeploymentException
             SquareNotFoundException
-            VisitingOccupiedSquareException
+            SquareOccupiedException
         """
         method = f"{cls.__class__.__name__}._run_opening_square_tests"
         

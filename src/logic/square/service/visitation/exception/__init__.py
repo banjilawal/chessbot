@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== SQUARE.SERVICE.VISITATION.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-from .start import *
 from .terminate import *
 
 # Modules

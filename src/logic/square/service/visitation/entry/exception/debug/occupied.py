@@ -1,9 +1,9 @@
-# src/logic/token/service/operation/promotion/exception/debug/token.py
+# src/logic/square/service/visitation/entry/exception/debug/full.py
 
 """
-Module: logic.token.service.operation.promotion.exception.debug.token
+Module: logic.square.service.visitation.entry.exception.debug.full
 Author: Banji Lawal
-Created: 2026-03-14
+Created: 2026-02-22
 version: 1.0.0
 """
 
@@ -11,15 +11,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# UNOPENED__TOKEN_POPPING_COORD_EXCEPTION  #======================#
-    "UnopenedTokenPoppingCoordException",
+    # ======================# VISITING_OCCUPIED_SQUARE EXCEPTION #======================#
+    "SquareOccupiedException",
 ]
 
-from logic.token import TokenDebugException
+from logic.square import SquareDebugException
 
 
-# ======================# UNOPENED__TOKEN_POPPING_COORD_EXCEPTION  #======================#
-class UnopenedTokenPoppingCoordException(TokenDebugException):
+# ======================# VISITING_OCCUPIED_SQUARE EXCEPTION #======================#
+class SquareOccupiedException(SquareDebugException):
     """
     Role:
         -   Error Variable Identifier
@@ -27,7 +27,7 @@ class UnopenedTokenPoppingCoordException(TokenDebugException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that a deployed token which has not opened cannot pop its CoordStack
+        1.  Indicate that a square entry failed the square was already occupied
 
     Attributes:
         var: Optional[str]
@@ -41,8 +41,8 @@ class UnopenedTokenPoppingCoordException(TokenDebugException):
     Super Class:
         TokenDebugException
     """
-    ERR_CODE = "UNOPENED__TOKEN_POPPING_COORD_EXCEPTION"
-    MSG = "An unopened token cannot pop its CoordStack."
+    ERR_CODE = "VISITING_OCCUPIED_SQUARE_EXCEPTION"
+    MSG = "The square is already occupied."
     
     def __init__(
             self,
