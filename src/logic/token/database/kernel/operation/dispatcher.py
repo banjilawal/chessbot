@@ -14,46 +14,23 @@ from logic.token import RankQuotaAnalyzer, TokenCollisionDetector, TokenStackCru
 
 class TokenStackOpsDispatcher:
     """
-    Role:Handler Manager
+    Role:
+        - Utilities Provider
 
     Responsibilities:
-    1.  Unifies TokenStackService utilities in one place.
-    2.  Separates maintenance and debugging of
-            *   Token operations.
-            *   Capacity monitoring operations
-        from  core data structure operations.
-    3.  Manges Updates (state changes) responsibilities for the TokenStackService.
-
-    Super Class:
-    None
-
-    Provides:
-
-    # LOCAL ATTRIBUTES:
-        *   SERVICE_NAME (str)
-        *   token_map Dict[Toke, Token]
-        *   stack_service (TokenStackService)
-
-    # INHERITED ATTRIBUTES:
-    None
+        1.  Provide a single entry point for transactions TokenStackService runs.
 
     Attributes:
-        Local:
-            *   stats_analyzer (TokenStacKAnalyzer)
-            *   occupation_service (TokenStackTokenHandler)
-        Inherited:
-        None
+        crud: TokenStackCrudManager
+        rank_quota_analyzer: RankQuotaAnalyzer
+        collision_detector: TokenCollisionDetector
 
-    # LOCAL METHODS:
-    None
-
-    # INHERITED METHODS:
-    None
+    Provides:
+    Parent:
     """
     _crud: TokenStackCrudManager
     _rank_quota_analyzer: RankQuotaAnalyzer
     _collision_detector: TokenCollisionDetector
-
     
     def __init__(
             self,

@@ -132,6 +132,10 @@ class TokenStackService(StackService[Token]):
         return self._context_service
     
     @property
+    def operation(self) -> TokenStackOpsDispatcher:
+        return self._dispatcher
+    
+    @property
     def is_getting_ready_for_deployment(self) -> bool:
         return not self.is_full and self._state == TokenStackState.NOT_READY_FORD_DEPLOYMENT
     
@@ -171,7 +175,7 @@ class TokenStackService(StackService[Token]):
         method = f"{self.__class__.__name__}.pop"
         
         # --- Forward the request to the dispatcher. ---#
-        pop_result = self._dispatcher.crud.pop()
+        pop_result = self._dispatcher.crud.popper.pop()
         
         # Handle the case that, the request was not completed.
         if pop_result.is_failure:
@@ -206,7 +210,7 @@ class TokenStackService(StackService[Token]):
         method = f"{self.__class__.__name__}.push"
         
         # --- Forward the request to the dispatcher. ---#
-        insertion_result = self._dispatcher.crud.push(
+        insertion_result = self._dispatcher.crud.pusher.push(
             token=item,
             token_stack=self,
             rank_quota_analyzer=self._dispatcher.rank_quota_analyzer,
@@ -250,7 +254,7 @@ class TokenStackService(StackService[Token]):
         method = f"{self.__class__.__name__}.delete_by_id"
         
         # --- Forward the request to the dispatcher. ---#
-        delete_by_id_result = self._dispatcher.crud.delete_by_id(
+        delete_by_id_result = self._dispatcher.crud.popper.delete_by_id(
             id=id,
             identity_service=identity_service
         )

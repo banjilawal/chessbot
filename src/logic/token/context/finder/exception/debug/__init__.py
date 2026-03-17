@@ -13,5 +13,4 @@ None
 
 # Modules
 from .route import TokenSearchRouteException
-from .id import TokenSearchIdCollisionException
-from .dataset import TokenSearchNullDatasetException
+from .exist import TokenNotFoundException

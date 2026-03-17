@@ -21,24 +21,17 @@ from logic.system import StackServiceException
 # ======================# TOKEN_STACK_SERVICE_EXCEPTION #======================#
 class TokenStackServiceException(StackServiceException):
     """
-    Role:Coverage Target, Exception Chain Layer 0
+    Role:
+        -   Coverage Target
+        -   Exception Chain Layer 0
 
     Responsibilities:
-    1.  Anchoring target for TokenStackService debug (layer-2) error state firing incident
-        reports on
-            *   the triggering variable
-            *   The trigger's value.
-    2.  Indicate which TokenStackService method received a worker's (layer-1) failure result.
-
-    Super Class:
-        *   StackServiceException
-
-    Provides:
-
-
-    # INHERITED ATTRIBUTES:
-        *   See StackServiceException class for inherited attributes.
-
+        1.  Anchoring target for TokenStackService debug (layer-2) error state firing incident
+            reports on
+                -   The triggering variable
+                -   The trigger's value.
+        2.  Indicate which TokenStackService method received a worker's (layer-1) failure result.
+        
     Attributes:
         msg: Optional[str]
         ex: Optional[Exception]
@@ -46,11 +39,10 @@ class TokenStackServiceException(StackServiceException):
         cls_mthd: Optional[str]
         err_code: Optional[str]
 
-    # LOCAL METHODS:
-    None
+    Provides:
 
-    # INHERITED METHODS:
-        *   See StackServiceException class for inherited methods.
+    Super Class:
+        StackServiceException
     """
     CLS_NAME = " TokenStackService"
     ERR_CODE = " TOKEN_STACK_SERVICE_EXCEPTION"

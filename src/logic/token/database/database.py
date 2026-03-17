@@ -10,12 +10,14 @@ version: 1.0.0
 from __future__ import annotations
 from typing import List, Optional
 
-from logic.rank import Rank
+from logic.rank import Rank, RankService
 from logic.token import (
-    Token, TokenContext, TokenContextService, TokenStackService, TokenService, TokenDatabaseException, TokenStackState
+    RankQuotaReport, Token, TokenContext, TokenContextService, TokenStackService, TokenService, TokenDatabaseException,
+    TokenStackState
 )
 from logic.system import (
-    ComputationResult, Database, DeletionResult, IdFactory, InsertionResult, LoggingLevelRouter, SearchResult,
+    ComputationResult, Database, DeletionResult, IdFactory, IdentityService, InsertionResult, LoggingLevelRouter,
+    SearchResult,
 )
 
 
@@ -107,228 +109,156 @@ class TokenDatabase(Database[Token]):
         self._kernel.deployment_state = state
     
     @LoggingLevelRouter.monitor
-    def number_of_openings_for_rank(self, rank: Rank) -> ComputationResult[int]:
+    def rank_quota_report(
+            self,
+            rank: Rank,
+            rank_service: RankService = RankService(),
+    ) -> ComputationResult[RankQuotaReport]:
         """
-        Report how many openings a rank has.
+        Produce a quota report for the rank.
         
         Actions:
-            1.  Handoff rank validation and open-slot calculation to the RankQuotaAnalyzer provided by the
-                TokenStackService service.
-            2.  If either:
-                    *   The rank fails validation.
-                    *   There are no openings for the rank.
-                    *   The analyzer does not complete the calculation.
-                The analyzer sends an exception chain back. which should be wrapped in TokenDatabaseException.
-                then sent in a ComputationResult.
-            3.  Else the forward the computation result to the caller.
+            1.  If the operation gets interrupted send an exception chain. Otherwise,
+                send the success result.
         Args:
             rank: Rank
-        Returns::
-            ComputationResult[int]
+            rank_service: RankService
+        Returns:
+            ComputationResult[RankQoutaReport]
         Raises:
            TokenDatabaseException
         """
         method = f"T{self.__class__.name}.number_of_openings_for_rank"
         
         # --- Forward the request to the kernel. ---#
-        open_slots_count_result = self._kernel.rank_quota_analyzer.count_openings_for_rank(
+        rank_quota_analysis_result = self._kernel.operation.rank_quota_analyzer.execute(
             rank=rank,
-            kernel=self._kernel,
+            token_stack=self._kernel,
+            rank_service=rank_service,
         )
-        # If the computation is not completed or there are no openings return the exception chain.
-        if open_slots_count_result.is_failure:
+        # Handle the case that, the request is not completed.
+        if rank_quota_analysis_result.is_failure:
+            # Return the exception chain on failure
             return ComputationResult.failure(
                 TokenDatabaseException(
-                    msg=f"{method}: {TokenDatabaseException.ERR_CODE}",
-                    ex=open_slots_count_result.exception,
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenDatabaseException.MSG,
+                    err_code=TokenDatabaseException.ERR_CODE,
+                    ex=rank_quota_analysis_result.exception
                 )
             )
-        # --- Otherwise, forward the computation result to the caller. ---#
-        return open_slots_count_result
+        # --- Forward the work product to the caller. ---#
+        return rank_quota_analysis_result
     
     @LoggingLevelRouter.monitor
-    def current_rank_size(self, rank: Rank) -> ComputationResult[int]:
+    def delete_by_id(
+            self,
+            id: int,
+            identity_service: IdentityService = IdentityService(),
+    ) -> DeletionResult[Token]:
         """
-        # ACTION:
-            1.  Handoff rank validation and rank size counting to the RankQuotaAnalyzer provided by the
-                TokenStackService service.
-            2.  If either:
-                    *   The rank fails validation.
-                    *   The analyzer does not complete the calculation.
-                The analyzer sends an exception chain back. which should be wrapped in TokenDatabaseException.
-                then sent in a ComputationResult.
-            3.  Else the forward the computation result to the caller.
-        # PARAMETERS:
-            *   rank (Rank)
-        # RETURNS:
-            *   ComputationResult[int] containing either:
-                    - On failure: Exception.
-                    - On success: int in the payload.
+        Delete any token which has that id.
+
+        Action:
+            If the operation gets interrupted send an exception chain. Otherwise,
+            send the success result.
+        Args:
+            id: int
+            identity_service: IdentityService
+        Returns:
+            DeletionResult[Token]
         Raises:
-            *   TokenDatabaseException
+            TokenStackServiceException
         """
-        method = "TokenDatabase.current-rank_size"
+        method = f"{self.__class__.__name__}.delete_by_id"
         
-        # --- Handoff the operation off to rank_quota_analyzer. ---#
-        rank_size_result = self._kernel.utils.rank_quota_analyzer.compute_rank_size_in_kernel(
-            rank=rank,
-            kernel=self._kernel
+        # --- Forward the request to the dispatcher. ---#
+        deletion_result = self._kernel.delete_by_id(
+            id=id,
+            identity_service=identity_service,
         )
-        # If the computation is not completed return the exception chain.
-        if rank_size_result.is_failure:
-            return ComputationResult.failure(
-                TokenDatabaseException(
-                    msg=f"{method}: {TokenDatabaseException.ERR_CODE}",
-                    ex=rank_size_result.exception,
-                )
-            )
-        # --- Otherwise, forward the computation result to the caller. ---#
-        return rank_size_result
-    
-    @LoggingLevelRouter.monitor
-    def does_rank_opening_exist(self, rank: Rank) -> ComputationResult[bool]:
-        """
-        # ACTION:
-            1.  Handoff rank validation and rank size counting to the RankQuotaAnalyzer provided by the
-                TokenStackService service.
-            2.  If either:
-                    *   The rank fails validation.
-                    *   The analyzer does not complete the calculation.
-                The analyzer sends an exception chain back. which should be wrapped in TokenDatabaseException.
-                then sent in a ComputationResult.
-            3.  Else the forward the computation result to the caller.
-        # PARAMETERS:
-            *   rank (Rank)
-        # RETURNS:
-            *   ComputationResult[bool] containing either:
-                    - On failure: Exception.
-                    - On success: int in the payload.
-        Raises:
-            *   TokenDatabaseException
-        """
-        method = "TokenDatabase.does_rank_opening_exist"
-        
-        # --- Handoff the operation off to rank_quota_analyzer. ---#
-        does_rank_have_opening_result = self._kernel.utils.rank_quota_analyzer.rank_openings_exist(
-            rank=rank,
-            kernel=self._kernel
-        )
-        # If the computation is not completed return the exception chain
-        if does_rank_have_opening_result.is_failure:
-            return ComputationResult.failure(
-                TokenDatabaseException(
-                    f"{method}: {TokenDatabaseException.ERR_CODE}",
-                    ex=does_rank_have_opening_result.exception,
-                )
-            )
-        # --- Otherwise, forward the computation result to the caller. ---#
-        return does_rank_have_opening_result
-    
-    @LoggingLevelRouter.monitor
-    def delete_by_id(self, id: int) -> DeletionResult[Token]:
-        """
-        # ACTION:
-            1.  Get the result of calling _token_database_kernel.delete_token_by_id for method. If the deletion failed
-                wrap the exception inside the appropriate Database exceptions and send the exception chain
-                in the DeletionResult.
-            2.  If the deletion operation completed directly forward the DeletionResult to the caller.
-        # PARAMETERS:
-            *   id (int)
-        # RETURN:
-            *   DeletionResult[Token] containing either:
-                    - On failure: An exception.
-                    - On success: Token in payload.
-                    - On Empty: No payload nor exception.
-        Raises:
-            *   TokenDatabaseException
-            *   TokenDatabase
-        """
-        method = "TokenDatabase.remove_token"
-        
-        # --- Handoff the deletion responsibility to _token_database_kernel. ---#
-        deletion_result = self._kernel.delete_by_id(id=id)
-        
+        # Handle the case that, the request was not completed
         # Handle the case that, the deletion was not completed.
         if deletion_result.is_failure:
-            # Return the exception chain on failure.
-            return DeletionResult.failure(
+            # Return the exception chain on failure
+            return ComputationResult.failure(
                 TokenDatabaseException(
-                    msg=f"ServiceId:{self.id}, {method}: {TokenDatabaseException.ERR_CODE}",
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenDatabaseException.MSG,
+                    err_code=TokenDatabaseException.ERR_CODE,
                     ex=deletion_result.exception
                 )
             )
-        # --- For either a successful or null deletion result directly forward to the caller. ---#
+        # --- Forward the work product to the caller. ---#
         return deletion_result
    
     @LoggingLevelRouter.monitor
     def insert(self, token: Token) -> InsertionResult[bool]:
         """
-        # ACTION:
-            1.  If the item fails validation send the wrapped exception in the InsertionResult.
-            2.  If a search for the item either fails or finds a match send the wrapped exception in the
-                InsertionResult.
-            3.  If the call to _token_database_kernel.insert_token fails send the wrapped exception in the InsertionResult.
-                Else send the outgoing result directly to the caller.
-        # PARAMETERS:
-            *   occupant (Token)
-        # RETURN:
-            *   InsertionResult[Bool] containing either:
-                    - On failure: An exception.
-                    - On success: Token in payload.
+        Insert a token into the database.
+
+        Action:
+            If the insertion fails, send an exception chain. Otherwise, send the success result.
+        Args:
+            token: Token
+        Returns:
+            InsertionResult[Token]
         Raises:
-            *   TokenDatabaseException
-            *   TokenDatabaseInsertionException
-            *   TokenDatabaseException
+            TokenStackServiceException
         """
-        method = "TokenDatabase.insert_token"
+        method = f"{self.__class__.__name__}.insert"
         
-        # --- Use _token_database_kernel.insert_token because order does not matter for the occupant access. ---#
+        # --- Forward the request to the kernel. ---#
         insertion_result = self._kernel.push(item=token)
         
-        # Handle the case that, the insertion is not completed.
+        # Handle the case that, the request was not completed.
         if insertion_result.is_failure:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
+            # Return the exception chain on failure
+            return ComputationResult.failure(
                 TokenDatabaseException(
-                    msg=f"ServiceId:{self.id}, {method}: {TokenDatabaseException.ERR_CODE}",
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenDatabaseException.MSG,
+                    err_code=TokenDatabaseException.ERR_CODE,
                     ex=insertion_result.exception
-                    )
+                )
             )
-        # --- On success directly forward the insertion result to the caller. ---#
+        # --- Forward the work product to the caller. ---#
         return insertion_result
     
     @LoggingLevelRouter.monitor
     def search(self, context: TokenContext) -> SearchResult[List[Token]]:
         """
-        # ACTION:
-            1.  Get the result of calling _token_database_kernel.delete_token_by_id for method. If the deletion failed
-                wrap the exception inside the appropriate Database exceptions and send the exception chain
-                in the DeletionResult.
-            2.  If the deletion operation completed directly forward the DeletionResult to the caller.
-        # PARAMETERS:
-            *   id (int)
-        # RETURN:
-            *   SearchResult[Token] containing either:
-                    - On failure: An exception.
-                    - On success: Token in payload.
-                    - On Empty: No payload nor exception.
+        Find tokens whose attribute value fits the context.
+
+        Action:
+            Send an exception chain if the operation gets interrupted. Otherwise, send
+            the success result.
+        Args:
+            context: TokenContext
+        Returns:
+            SearchResult[List[Token]]
         Raises:
-            *   TokenDatabaseException
-            *   TokenDatabase
+            TokenDatabaseException
         """
-        method = "TokenDatabase.search_tokens"
+        method = f"{self.__class__.__name__}.search_tokens"
         
-        # --- Handoff the search responsibility to _token_database_kernel. ---#
-        search_result = self._kernel.context_service.finder.find(context=context)
+        # --- Forward the request to the kernel. ---#
+        search_result = self._kernel.query(context=context)
         
-        # Handle the case that, the search is not completed.
+        # Handle the case that, the request was not completed.
         if search_result.is_failure:
-            # Return the exception chain on failure.
-            return SearchResult.failure(
+            # Return the exception chain on failure
+            return ComputationResult.failure(
                 TokenDatabaseException(
-                    msg=f"ServiceID:{self.id} {method}: {TokenDatabaseException.ERR_CODE}",
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenDatabaseException.MSG,
+                    err_code=TokenDatabaseException.ERR_CODE,
                     ex=search_result.exception
                 )
             )
-        # --- For either a successful or empty search result directly forward to the caller. ---#
+        # --- Forward the work product to the caller. ---#
         return search_result
