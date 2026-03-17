@@ -12,6 +12,6 @@ Created: 2025-11-19
 from .dataset import *
 
 # Modules
-from .square import SquareSquareException
+from .null import NullSquareException
 from .state import SquareSquareStateException
 from .registration import SquareNotRegisteredBoardException

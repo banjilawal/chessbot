@@ -93,7 +93,7 @@ class SquareFinder(StackSearcher[Square]):
         method = "SquareFinder.find"
         
         # Handle the case that, the dataset is either null, not List[Square] or empty.
-        dataset_validation_result = square_validator.verify_is_square_dataset(candidate=dataset)
+        dataset_validation_result = square_validator.verify_square_search_data_set(candidate=dataset)
         if dataset_validation_result.is_failure:
             # Return the exception chain on failure.
             return SearchResult.failure(

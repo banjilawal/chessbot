@@ -13,4 +13,4 @@ None
 
 # Modules
 from .empty import SquareDataSourceEmptyException
-from .square import SquareDataSourceSquareException
+from .null import SquareDataSourceNullException

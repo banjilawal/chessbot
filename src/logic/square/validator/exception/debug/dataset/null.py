@@ -11,12 +11,12 @@ from logic.system import SquareException
 
 _all__ = [
     # ======================# NO_SQUARE_DATASOURCE_PROVIDED EXCEPTION #======================#
-    "SquareDataSourceSquareException",
+    "SquareDataSourceNullException",
 ]
 
 
 # ======================# NO_SQUARE_DATASOURCE_PROVIDED EXCEPTION #======================#
-class SquareDataSourceSquareException(SquareDebugException, SquareException):
+class SquareDataSourceNullException(SquareDebugException, SquareException):
     """
     Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
