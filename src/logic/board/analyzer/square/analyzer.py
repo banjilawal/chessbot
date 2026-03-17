@@ -16,21 +16,24 @@ from logic.board import Board, BoardSquareAnalyzerFailureException, BoardValidat
 
 class BoardSquareRelationAnalyzer(RelationAnalyzer[Board, Square]):
     """
-    Role:Reporting, Test for Relationship
+    Role:
+        - Relation Analyzer
+        - Report Generator
 
     Responsibilities:
-    1.  Test if whether a board-item tuple have either none, partial, or fully bidirectional relation
-        between them.
-    2.  If the testing was not completed send an exception chain to the caller.
+        1.  Report the on the type of relationship is between the board and square.
 
-    Super Class:
-        *   RelationAnalyzer
+    Attributes:
 
     Provides:
+        -   analyze(
+                    candidate_primary: Board,
+                    candidate_satellite: Square,
+                    board_validator: BoardValidator = BoardValidator(),
+                    square_service: SquareService = SquareService(),
+            ) -> RelationReport[Board, Square]
 
-
-    # INHERITED ATTRIBUTES:
-    None
+    Super:
     """
     
     @classmethod
@@ -43,25 +46,24 @@ class BoardSquareRelationAnalyzer(RelationAnalyzer[Board, Square]):
             square_service: SquareService = SquareService(),
     ) -> RelationReport[Board, Square]:
         """
-        # ACTION:
-            1.  If either candidate fails its safety certification send the exception chain in the
-                RelationReport.
-            2.  Cast the candidate_primary to board instance; board and candidate_satellite to Square instance;
-                item.
-            3.  If the item.owner != owner they are not related. Else they are partially related.
-            4.  If searching owner's squares for the satellite produces an error send the exception chain.
-           5.  If the search produced aa match send a bidirectional report. Else send a partial relation report.
-        # PARAMETERS:
-            *   candidate_primary (Board)
-            *   candidate_satellite (Square)
-            *   board_validator (BoardValidator)
-            *   square_service (SquareService)
-        # RETURN:
-            *   RelationReport[Board, Square] containing either
-                *   No relation:
-                *   On error: an Exception
+        Generate a report on the relationship between a board and square.
+        
+        Action:
+            1.  Send an AnalyzerFailure exception if either candidate cannot be validated.
+            2.  Otherwise, send the success result which can be:
+                    -   No relation between them.
+                    -   Board has expired link to square.
+                    -   Square has not registered with board.
+                    -   They have a fully bidirectional relation.
+        Args::
+            candidate_primary: Board
+            candidate_satellite: Square
+            board_validator: BoardValidator
+            square_service: SquareService
+        Returns:
+            RelationReport[Board, Square]
         Raises:
-            *   BoardValidationException
+            BoardSquareAnalyzerFailureException
         """
         method = f"{cls.__name__}.analyze"
         

@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change beforePath="$PROJECT_DIR$/src/logic/system/relation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/relation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/system/relation/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/relation/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/system/relation/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/relation/debug/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/system/relation/exception/debug/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/relation/debug/debug.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/system/relation/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/relation/debug/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/system/relation/exception/debug/register.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/relation/debug/register.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/system/relation/exception/debug/stale.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/relation/debug/stale.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/system/relation/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/relation/exception/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/board/analyzer/square/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/board/analyzer/square/analyzer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -313,11 +306,11 @@
       <recent name="$PROJECT_DIR$/src/logic/token/service/handler/deployment/exception/debug/inconsistent" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/logic/system/relation/debug" />
+      <recent name="$PROJECT_DIR$/src/logic/board/analyzer/square/exception" />
       <recent name="$PROJECT_DIR$/src/logic/system/relation" />
       <recent name="$PROJECT_DIR$/src/logic/square/service/visit/entry/exception/debug" />
       <recent name="$PROJECT_DIR$/src/logic/square/service/visit/entry" />
-      <recent name="$PROJECT_DIR$/src/logic/token/database/kernel/operation/crud/push/exception" />
-      <recent name="$PROJECT_DIR$/src/logic/token/database/kernel/operation/crud" />
     </key>
   </component>
   <component name="RunManager" selected="Python.anchor">
