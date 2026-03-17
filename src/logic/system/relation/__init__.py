@@ -12,7 +12,8 @@ version: 1.0.0
 # Packages
 from .report import *
 from .analyzer import *
+from .debug import *
 from .exception import *
 
 # Modules
-None
+from .analyzer import RelationAnalyzer

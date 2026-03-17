@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== SYSTEM.RELATION.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-from .debug import *
 
 # Modules
 None

@@ -1,7 +1,7 @@
-# src/logic/system/relation/exception/debug/debug.py
+# src/logic/system/relation/debug/debug.py
 
 """
-Module: logic.system.relation.exception.debug.debug
+Module: logic.system.relation.debug.debug
 Author: Banji Lawal
 Created: 2025-12-28
 version: 1.0.0

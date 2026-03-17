@@ -1,7 +1,7 @@
-# src/logic/system/relation/exception/debug/stale.py
+# src/logic/system/relation/debug/stale.py
 
 """
-Module: logic.system.relation.exception.debug.stale
+Module: logic.system.relation.debug.stale
 Author: Banji Lawal
 Created: 2025-11-26
 version: 1.0.0

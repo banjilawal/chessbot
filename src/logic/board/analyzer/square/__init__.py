@@ -10,8 +10,7 @@ version: 1.0.0
 # =========== BOARD.SQUARE.ANALYZER PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .exception import *
 
 # Modules
 from .analyzer import BoardSquareRelationAnalyzer
-from .wrapper import BoardSquareAnalyzerFailureException
