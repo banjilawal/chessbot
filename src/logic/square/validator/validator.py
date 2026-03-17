@@ -12,8 +12,9 @@ from typing import Any, List, cast
 from logic.board import BoardService, SquareOnDifferentBoardException
 from logic.coord import CoordService
 from logic.square import (
-    NullSquareException, Square, SquareDataSourceEmptyException, SquareDataSourceNullException,
-    SquareNotRegisteredBoardException, SquareState, SquareValidationException
+    BoardOrphanSquareLinkException, NullSquareException, Square, SquareDataSourceEmptyException,
+    SquareDataSourceNullException,
+    SquareBoardRegisteredException, SquareState, SquareValidationException
 )
 from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 
@@ -160,98 +161,6 @@ class SquareValidator(Validator[Square]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def verify_square_search_data_set(cls, candidate: Any) -> ValidationResult[List[Square]]:
-        """
-        Tests if a squareFinder is getting a List[Square]
-        
-        Args:
-            1.  Send an exception chain in the ValidationResult if:
-                    -   The candidate is null
-                    -   Is not a List.
-                    -   Is an empty list.
-                    -   If the first item is not a Square.
-            2.  Otherwise, send the success result.
-        # Args:
-            candidate: Any
-        # RETURNS:
-            ValidationResult[List[Square]]
-        Raises:
-            -   TypeError
-            -   SquareDataSourceNullException
-            -   SquareDataSourceEmptyException
-        """
-        method = f"{cls.__name__}.validate_dataset"
-        
-        # Handle the nonexistence case.
-        if candidate is None:
-            # Return the exception chain on failure.
-            return ValidationResult.failure(
-                SquareValidationException(
-                    mthd=method,
-                    op=SquareValidationException.OP,
-                    msg=SquareValidationException.MSG,
-                    err_code=SquareValidationException.ERR_CODE,
-                    rslt_type=SquareValidationException.RSLT_TYPE,
-                    ex=SquareDataSourceNullException(
-                        msg=SquareDataSourceNullException.MSG,
-                        err_code=SquareDataSourceNullException.ERR_CODE,
-                    )
-                )
-            )
-        # Handle the wrong class case.
-        if not isinstance(candidate, List):
-            # Return the exception chain on failure.
-            return ValidationResult.failure(
-                SquareValidationException(
-                    mthd=method,
-                    op=SquareValidationException.OP,
-                    msg=SquareValidationException.MSG,
-                    err_code=SquareValidationException.ERR_CODE,
-                    rslt_type=SquareValidationException.RSLT_TYPE,
-                    ex=TypeError(
-                        f"Expected type{List.__name__}, got {type(candidate).__name__} instead."
-                    )
-                )
-            )
-        # --- Cast the candidate to a List for additional tests. ---#
-        square_list = cast(List, candidate)
-        
-        # Handle the case that, the list is empty
-        if len(square_list) == 0:
-            # Return the exception chain on failure.
-            return ValidationResult.failure(
-                SquareValidationException(
-                    mthd=method,
-                    op=SquareValidationException.OP,
-                    msg=SquareValidationException.MSG,
-                    err_code=SquareValidationException.ERR_CODE,
-                    rslt_type=SquareValidationException.RSLT_TYPE,
-                    ex=SquareDataSourceEmptyException(
-                        msg=SquareDataSourceEmptyException.MSG,
-                        err_code=SquareDataSourceEmptyException.ERR_CODE
-                    )
-                )
-            )
-        # Handle the case that, the list does not contain squares.
-        if not isinstance(square_list[0], Square):
-            # Return the exception chain on failure.
-            return ValidationResult.failure(
-                SquareValidationException(
-                    mthd=method,
-                    op=SquareValidationException.OP,
-                    msg=SquareValidationException.MSG,
-                    err_code=SquareValidationException.ERR_CODE,
-                    rslt_type=SquareValidationException.RSLT_TYPE,
-                    ex=TypeError(
-                        f"Searching for squares in a dataset of {type(square_list[0]).__name__}."
-                    )
-                )
-            )
-        # --- Forward the work product to the caller. ---#
-        return ValidationResult.success(square_list)
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
     def _run_board_tests(
             cls,
             square: Square,
@@ -273,7 +182,7 @@ class SquareValidator(Validator[Square]):
         Raises:
             SquareValidationException
             SquareOnDifferentBoardException
-            SquareNotRegisteredBoardException
+            SquareBoardRegisteredException
         """
         method = f"{cls.__name__}._run_board_tests"
         
@@ -328,6 +237,22 @@ class SquareValidator(Validator[Square]):
                     )
                 )
             )
+        # Handle the case that, the board has an expire link to the square.
+        if board_square_relation.partially_exists:
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                SquareValidationException(
+                    mthd=method,
+                    op=SquareValidationException.OP,
+                    msg=SquareValidationException.MSG,
+                    err_code=SquareValidationException.ERR_CODE,
+                    rslt_type=SquareValidationException.RSLT_TYPE,
+                    ex=BoardOrphanSquareLinkException(
+                        msg=BoardOrphanSquareLinkException.MSG,
+                        err_code=BoardOrphanSquareLinkException.ERR_CODE,
+                    )
+                )
+            )
         # Handle the case that, the square has not been added to the board's squares.
         if board_square_relation.partially_exists:
             # Return the exception chain on failure.
@@ -338,9 +263,9 @@ class SquareValidator(Validator[Square]):
                     msg=SquareValidationException.MSG,
                     err_code=SquareValidationException.ERR_CODE,
                     rslt_type=SquareValidationException.RSLT_TYPE,
-                    ex=SquareNotRegisteredBoardException(
-                        msg=SquareNotRegisteredBoardException.MSG,
-                        err_code=SquareNotRegisteredBoardException.ERR_CODE,
+                    ex=SquareBoardRegisteredException(
+                        msg=SquareBoardRegisteredException.MSG,
+                        err_code=SquareBoardRegisteredException.ERR_CODE,
                     )
                 )
             )

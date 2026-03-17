@@ -12,13 +12,13 @@ from logic.square import SquareDebugException
 from logic.system import NotRegisteredException
 
 __all__ = [
-    # ======================# SQUARE_NOT_REGISTERED_WITH_BOARD_EXCEPTION #======================#
-    "SquareBoardRegisteredException",
+    # ======================# BOARD_ORPHAN_LINKED_TO_SQUARE_EXCEPTION #======================#
+    "BoardOrphanSquareLinkException",
 ]
 
 
-# ======================# SQUARE_NOT_REGISTERED_WITH_BOARD_EXCEPTION #======================#
-class SquareBoardRegisteredException(NotRegisteredException):
+# ======================# BOARD_ORPHAN_LINKED_TO_SQUARE_EXCEPTION #======================#
+class BoardOrphanSquareLinkException(NotRegisteredException):
     """
     Role:
         - Error Variable Identifier
@@ -41,8 +41,8 @@ class SquareBoardRegisteredException(NotRegisteredException):
     Super Class:
         NotRegisteredException
     """
-    ERR_CODE = "SQUARE_NOT_REGISTERED_WITH_BOARD_EXCEPTION"
-    MSG = "Square validation failed: The square had not registered with its board."
+    ERR_CODE = "BOARD_ORPHAN_LINKED_TO_SQUARE_EXCEPTION"
+    MSG = "Square validation failed: The board has an expired link to the square."
     
     def __init__(
             self,

@@ -4,7 +4,27 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path." />
+    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
+      <change afterPath="$PROJECT_DIR$/src/logic/square/context/finder/validator/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/square/context/finder/validator/exception/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/square/context/finder/validator/exception/debug/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/square/context/finder/validator/exception/debug/null.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/square/context/finder/validator/exception/debug/registration.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/square/context/finder/validator/exception/debug/state.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/square/context/finder/validator/exception/wrapper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/square/context/finder/validator/validator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/square/validator/exception/debug/link.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/board/analyzer/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/board/analyzer/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/board/analyzer/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/board/analyzer/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/validator/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/validator/exception/debug/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/validator/exception/debug/dataset/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/context/finder/validator/exception/debug/dataset/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/validator/exception/debug/dataset/empty.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/context/finder/validator/exception/debug/dataset/empty.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/validator/exception/debug/dataset/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/context/finder/validator/exception/debug/dataset/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/validator/exception/debug/registration.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/validator/exception/debug/registration.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/validator/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/validator/validator.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -270,7 +290,7 @@
     "ToolWindow.Python Packages.ShowToolbar": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/logic/token/database/kernel/operation/crud/push",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/logic/square/validator/exception/debug",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -297,11 +317,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/logic/square/validator/exception/debug" />
+      <recent name="$PROJECT_DIR$/src/logic/square/context/finder" />
       <recent name="$PROJECT_DIR$/src/logic/token/database/kernel/operation/crud/push" />
       <recent name="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/collision/exception/debug" />
       <recent name="$PROJECT_DIR$/src/logic/token/service/handler/deployment/exception/debug/inconsistent" />
-      <recent name="$PROJECT_DIR$/src/logic/system/err/debug/child/inconsistent" />
-      <recent name="$PROJECT_DIR$/src/logic/formation/key/lookup/exception" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/logic/square/service/visit/entry/exception/debug" />

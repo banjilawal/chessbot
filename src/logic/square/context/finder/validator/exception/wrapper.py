@@ -11,15 +11,15 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# SQUARE_VALIDATION_FAILURE #======================#
-    "SquareValidationException",
+    # ======================# SQUARE_LIST_VALIDATION_FAILURE #======================#
+    "SquareListValidationException",
 ]
 
 from logic.system import ValidationException
 
 
-# ======================# SQUARE_VALIDATION_FAILURE #======================#
-class SquareValidationException(ValidationException):
+# ======================# SQUARE_LIST_VALIDATION_FAILURE #======================#
+class SquareListValidationException(ValidationException):
     """
     Role:
         - Worker Method Identification
@@ -28,8 +28,8 @@ class SquareValidationException(ValidationException):
 
     Responsibilities:
         1.  Indicate a SquareValidation was unsuccessful and did not produce a result.
-        2.  Identify the SquareValidator method where the failure occurred.
-        
+        2.  Identify the SquareListValidationException method where the failure occurred.
+
     Attributes:
         op: Optional[str]
         ex: Optional[str]
@@ -46,8 +46,8 @@ class SquareValidationException(ValidationException):
     MTHD = Optional[str]
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
-    ERR_CODE = "SQUARE_VALIDATION_FAILURE"
-    MSG = "Failure in SquareValidator method."
+    ERR_CODE = "SQUARE_LIST_VALIDATION_FAILURE"
+    MSG = "Failure in SquareListValidator method."
     
     def __init__(
             self,

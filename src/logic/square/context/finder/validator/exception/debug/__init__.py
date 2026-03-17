@@ -9,10 +9,9 @@ Created: 2025-11-19
 # =========== SQUARE.VALIDATOR.EXCEPTION.DEBUG PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .dataset import *
 
 # Modules
 from .null import NullSquareException
 from .state import SquareSquareStateException
-from .link import BoardOrphanSquareLinkException
-from .registration import SquareBoardRegisteredException
+from .registration import SquareNotRegisteredBoardException

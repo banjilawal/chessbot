@@ -1,7 +1,7 @@
-# src/logic/board/item/analyzer/analyzer.py
+# src/logic/board/analyzer/analyzer.py
 
 """
-Module: logic.board.item.analyzer.analyzer
+Module: logic.board.analyzer.analyzer
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,7 +11,7 @@ from typing import cast
 
 from logic.square import Square, SquareContext, SquareService
 from logic.system import LoggingLevelRouter, RelationAnalyzer, RelationReport
-from logic.board import Board, BoardSquareAnalysisException, BoardValidator
+from logic.board import Board, BoardSquareAnalyzerFailureException, BoardValidator
 
 
 class BoardSquareRelationAnalyzer(RelationAnalyzer[Board, Square]):
@@ -63,16 +63,16 @@ class BoardSquareRelationAnalyzer(RelationAnalyzer[Board, Square]):
         Raises:
             *   BoardValidationException
         """
-        method = "BoardService.analyze"
+        method = f"{cls.__name__}.analyze"
         
         # Process the possible board_validation outcomes.
         board_validation = board_validator.validate(candidate_primary)
         if board_validation.is_failure:
             # Return the exception chain on failure.
-            return RelationReport.failure(
-                BoardSquareAnalysisException(
-                    msg=f"{method}: {BoardSquareAnalysisException.ERR_CODE}",
-                    ex=board_validation.exception
+            return RelationReport.analyzer_failure(
+                BoardSquareAnalyzerFailureException(
+                    mthd=method,
+                    op=BoardSquareAnalyzerFailureException.Operator.BOARD
                 )
             )
         # Just incase things aren't Liskovian on the candidate_primary, cast the validation payload instead,
@@ -83,8 +83,8 @@ class BoardSquareRelationAnalyzer(RelationAnalyzer[Board, Square]):
         if square_validation.is_failure:
             # Return the exception chain on failure.
             return RelationReport.failure(
-                BoardSquareAnalysisException(
-                    msg=f"{method}: {BoardSquareAnalysisException.ERR_CODE}",
+                BoardSquareAnalyzerFailureException(
+                    msg=f"{method}: {BoardSquareAnalyzerFailureException.ERR_CODE}",
                     ex=square_validation.exception
                 )
             )
@@ -99,8 +99,8 @@ class BoardSquareRelationAnalyzer(RelationAnalyzer[Board, Square]):
         if square_search.is_failure:
             # Return the exception chain on failure.
             return RelationReport.failure(
-                BoardSquareAnalysisException(
-                    msg=f"{method}: {BoardSquareAnalysisException.ERR_CODE}",
+                BoardSquareAnalyzerFailureException(
+                    msg=f"{method}: {BoardSquareAnalyzerFailureException.ERR_CODE}",
                     ex=square_search.exception
                 )
             )
