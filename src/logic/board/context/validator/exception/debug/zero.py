@@ -77,8 +77,6 @@ class ZeroBoardContextFlagsException(DebugException):
             ex: Optional[Exception]
             err_code: Optional[str]
         """
-        var = var or self.VAR
-        val = val or self.VAL
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
         super().__init__(ex=ex, msg=msg, err_code=err_code, var=var, val=val,)

@@ -63,6 +63,4 @@ class ArgumentCountException(ServiceRequestDebugException):
     ):
         err_code = err_code or self.ERR_CODE
         msg = msg or self.MSG
-        var = var or self.VAR
-        val = val or self.VAL
         super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)

@@ -88,7 +88,7 @@ class SquareCollisionDetector(CollisionDetector[Square]):
             candidate=target
         )
         if validation_result.is_failure:
-            return CollisionReport.collision(
+            return CollisionReport.collision_occurred(
                 exception=SquareColliderException(
                     mthd=method,
                     op=SquareColliderException.OP,
@@ -104,7 +104,7 @@ class SquareCollisionDetector(CollisionDetector[Square]):
             # Handle the case that, the target shares its id with a dataset member.
             if square.id == target.id:
                 # Return target, the collider, and the exception explaining the collision.
-                return CollisionReport.collision(
+                return CollisionReport.collision_occurred(
                     var="id",
                     target=target,
                     collider=square,
@@ -126,7 +126,7 @@ class SquareCollisionDetector(CollisionDetector[Square]):
             # Handle the case that, the target shares its name with a dataset member.
             if square.name.upper() == target.name.upper():
                 # Return target, the collider, and the exception explaining the collision.
-                return CollisionReport.collision(
+                return CollisionReport.collision_occurred(
                     var="name",
                     target=target,
                     collider=square,
@@ -148,7 +148,7 @@ class SquareCollisionDetector(CollisionDetector[Square]):
             # Handle the case that, the target shares its coord with a dataset member.
             if square.coord == target.coord:
                 # Return target, the collider, and the exception explaining the collision.
-                return CollisionReport.collision(
+                return CollisionReport.collision_occurred(
                     var="coord",
                     target=target,
                     collider=square,

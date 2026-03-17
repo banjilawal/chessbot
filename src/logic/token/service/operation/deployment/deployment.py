@@ -24,7 +24,10 @@ from logic.token import (
 class TokenDeployment:
     """
     Role:
-        Transaction Worker, Consistency, Integrity Maintenance, Process Runner
+        - Transaction Worker
+        - Consistency, Integrity Maintenance
+        - Process Runner
+        
     Responsibilities:
         1.  Token deployment process owner.
         2.  Preserve original and updated data for rollbacks.
@@ -43,7 +46,7 @@ class TokenDeployment:
                     pre_update_token: Token,
                     opening_square: Square,
             ) -> UpdateResult[Token]
-    Parent:
+    Super:
     """
 
     @classmethod

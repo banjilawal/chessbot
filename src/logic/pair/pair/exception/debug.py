@@ -74,8 +74,6 @@ class PairDebugException(DebugException):
             err_code: Optional[str]
             ex: Optional[Exception]
         """
-        var = var or self.VAR
-        val = val or self.VAL
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
         super().__init__(ex=ex, msg=msg, var=var, val=val, err_code=err_code,)

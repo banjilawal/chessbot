@@ -134,7 +134,7 @@ class CollisionReport(Generic[T]):
         )
     
     @classmethod
-    def collision(
+    def collision_occurred(
             cls,
             var: str,
             val: Any,

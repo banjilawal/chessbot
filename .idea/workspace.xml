@@ -5,78 +5,243 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/handler/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/handler/crud/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/handler/crud/collision/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/collision/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/handler/crud/collision/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/collision/detector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/handler/crud/collision/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/collision/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/handler/crud/collision/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/collision/exception/debug/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/handler/crud/collision/exception/debug/designation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/collision/exception/debug/designation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/handler/crud/collision/exception/debug/id.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/collision/exception/debug/id.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/handler/crud/collision/exception/debug/square.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/collision/exception/debug/square.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/handler/crud/collision/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/collision/exception/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/handler/crud/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/handler/crud/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/exception/anchor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/handler/crud/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/exception/debug.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/handler/crud/exception/pop/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/exception/pop/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/handler/crud/exception/pop/empty.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/exception/pop/empty.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/handler/crud/exception/pop/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/exception/pop/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/handler/crud/exception/push/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/exception/push/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/handler/crud/exception/push/duplicate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/exception/push/duplicate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/handler/crud/exception/push/full.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/exception/push/full.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/handler/crud/exception/push/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/exception/push/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/handler/crud/handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/handler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/handler/handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/handler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/handler/quota/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/quota/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/handler/quota/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/quota/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/handler/quota/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/quota/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/handler/quota/exception/full.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/quota/exception/full.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/handler/quota/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/quota/exception/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/stack.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/checked/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/checked/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/checked/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/checked/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/checked/handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/checked/handler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/checkmate/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/checkmate/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/checkmate/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/checkmate/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/checkmate/handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/checkmate/handler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/coord/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/coord/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/coord/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/coord/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/coord/exception/anchor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/coord/exception/pop/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/coord/exception/pop/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/coord/exception/pop/inactive.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/coord/exception/pop/inactive.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/coord/exception/pop/limit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/coord/exception/pop/limit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/coord/exception/pop/opening.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/coord/exception/pop/opening.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/coord/exception/push/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/coord/exception/push/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/coord/exception/push/inactive.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/coord/exception/push/inactive.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/coord/handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/coord/handler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/deployment/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/deployment/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/deployment/deployment.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/deployment/deployment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/deployment/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/deployment/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/deployment/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/deployment/exception/debug/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/deployment/exception/debug/double.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/deployment/exception/debug/double.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/deployment/exception/debug/inconsistent/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/deployment/exception/debug/inconsistent/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/deployment/exception/debug/inconsistent/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/deployment/exception/debug/inconsistent/board.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/deployment/exception/debug/inconsistent/coord.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/deployment/exception/debug/inconsistent/coord.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/deployment/exception/debug/inconsistent/occupant.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/deployment/exception/debug/inconsistent/occupant.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/deployment/exception/debug/state.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/deployment/exception/debug/state.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/deployment/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/deployment/exception/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/promotion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/promotion/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/promotion/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/promotion/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/promotion/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/promotion/exception/debug/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/promotion/exception/debug/double.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/promotion/exception/debug/double.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/promotion/exception/debug/inactive.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/promotion/exception/debug/inactive.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/promotion/exception/debug/king.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/promotion/exception/debug/king.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/promotion/exception/debug/pawn.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/promotion/exception/debug/pawn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/promotion/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/promotion/exception/debug/route.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/promotion/exception/debug/row.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/promotion/exception/debug/row.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/promotion/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/promotion/exception/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operations/promotion/promotion.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/promotion/promotion.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/service.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/collision/exception/detector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/argument/exception/debug/count.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/argument/exception/debug/count.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/argument/exception/debug/kind.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/argument/exception/debug/kind.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/argument/exception/debug/name.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/argument/exception/debug/name.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/argument/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/argument/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/command/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/command/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/command/service/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/command/service/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/command/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/command/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/menu/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/menu/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/pipeline/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/pipeline/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/request/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/request/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/request/service/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/request/service/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/request/validator/exception/debug/command/name.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/request/validator/exception/debug/command/name.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/request/validator/exception/debug/null/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/request/validator/exception/debug/null/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/route/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/route/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/arena/context/builder/exception/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/arena/context/builder/exception/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/arena/context/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/arena/context/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/arena/context/finder/exception/debug/exist.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/arena/context/finder/exception/debug/exist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/arena/context/finder/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/arena/context/finder/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/arena/context/validator/exception/debug/excess.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/arena/context/validator/exception/debug/excess.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/arena/context/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/arena/context/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/arena/context/validator/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/arena/context/validator/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/arena/context/validator/exception/debug/zero.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/arena/context/validator/exception/debug/zero.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/arena/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/arena/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/arena/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/arena/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/board/context/builder/exception/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/board/context/builder/exception/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/board/context/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/board/context/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/board/context/finder/exception/debug/exist.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/board/context/finder/exception/debug/exist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/board/context/finder/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/board/context/finder/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/board/context/validator/exception/debug/excess.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/board/context/validator/exception/debug/excess.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/board/context/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/board/context/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/board/context/validator/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/board/context/validator/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/board/context/validator/exception/debug/zero.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/board/context/validator/exception/debug/zero.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/board/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/board/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/board/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/board/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/context/builder/exception/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/context/builder/exception/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/context/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/context/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/context/finder/exception/debug/exist.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/context/finder/exception/debug/exist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/context/finder/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/context/finder/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/context/validator/exception/debug/excess.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/context/validator/exception/debug/excess.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/context/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/context/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/context/validator/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/context/validator/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/context/validator/exception/debug/zero.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/context/validator/exception/debug/zero.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/database/core/handler/crud/exception/pop/empty.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/database/core/handler/crud/exception/pop/empty.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/database/core/handler/crud/exception/push/duplicate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/database/core/handler/crud/exception/push/duplicate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/database/exception/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/database/exception/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/edge/context/builder/exception/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/edge/context/builder/exception/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/edge/context/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/edge/context/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/edge/context/finder/exception/debug/exist.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/edge/context/finder/exception/debug/exist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/edge/context/finder/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/edge/context/finder/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/edge/context/validator/exception/debug/excess.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/edge/context/validator/exception/debug/excess.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/edge/context/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/edge/context/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/edge/context/validator/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/edge/context/validator/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/edge/context/validator/exception/debug/zero.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/edge/context/validator/exception/debug/zero.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/edge/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/edge/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/edge/service/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/edge/service/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/edge/validator/exception/debug/circular.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/edge/validator/exception/debug/circular.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/edge/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/edge/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/formation/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/formation/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/formation/key/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/formation/key/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/formation/validator/exception/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/formation/validator/exception/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/game/context/builder/exception/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/game/context/builder/exception/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/game/context/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/game/context/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/game/context/finder/exception/debug/exist.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/game/context/finder/exception/debug/exist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/game/context/finder/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/game/context/finder/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/game/context/validator/exception/debug/excess.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/game/context/validator/exception/debug/excess.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/game/context/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/game/context/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/game/context/validator/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/game/context/validator/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/game/context/validator/exception/debug/zero.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/game/context/validator/exception/debug/zero.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/game/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/game/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/game/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/game/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/graph/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/graph/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/graph/exception/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/graph/exception/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/hostage/context/builder/exception/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/hostage/context/builder/exception/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/hostage/context/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/hostage/context/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/hostage/context/finder/exception/debug/exist.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/hostage/context/finder/exception/debug/exist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/hostage/context/finder/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/hostage/context/finder/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/hostage/context/validator/exception/debug/excess.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/hostage/context/validator/exception/debug/excess.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/hostage/context/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/hostage/context/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/hostage/context/validator/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/hostage/context/validator/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/hostage/context/validator/exception/debug/zero.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/hostage/context/validator/exception/debug/zero.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/hostage/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/hostage/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/hostage/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/hostage/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/node/context/builder/exception/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/node/context/builder/exception/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/node/context/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/node/context/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/node/context/finder/exception/debug/exist.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/node/context/finder/exception/debug/exist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/node/context/finder/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/node/context/finder/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/node/context/validator/exception/debug/excess.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/node/context/validator/exception/debug/excess.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/node/context/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/node/context/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/node/context/validator/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/node/context/validator/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/node/context/validator/exception/debug/zero.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/node/context/validator/exception/debug/zero.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/node/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/node/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/node/validator/exception/debug/null/node.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/node/validator/exception/debug/null/node.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/pair/listing/builder/exception/different.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/pair/listing/builder/exception/different.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/pair/listing/validator/exception/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/pair/listing/validator/exception/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/pair/pair/builder/exception/square.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/pair/pair/builder/exception/square.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/pair/pair/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/pair/pair/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/pair/pair/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/pair/pair/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/pair/stack/exception/pop/exists.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/pair/stack/exception/pop/exists.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/pair/tree/validator/exception/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/pair/tree/validator/exception/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/persona/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/persona/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/persona/key/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/persona/key/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/persona/validator/exception/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/persona/validator/exception/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/player/builder/exception/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/player/builder/exception/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/player/context/builder/exception/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/player/context/builder/exception/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/player/context/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/player/context/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/player/context/finder/exception/debug/exist.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/player/context/finder/exception/debug/exist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/player/context/finder/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/player/context/finder/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/player/context/validator/exception/debug/excess.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/player/context/validator/exception/debug/excess.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/player/context/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/player/context/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/player/context/validator/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/player/context/validator/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/player/context/validator/exception/debug/zero.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/player/context/validator/exception/debug/zero.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/player/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/player/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/player/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/player/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/rank/context/builder/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/rank/context/builder/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/rank/context/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/rank/context/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/rank/context/finder/exception/debug/exist.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/rank/context/finder/exception/debug/exist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/rank/context/finder/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/rank/context/finder/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/rank/factory/exception/debug/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/rank/factory/exception/debug/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/rank/factory/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/rank/factory/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/rank/model/abstract/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/rank/model/abstract/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/rank/model/concrete/bishop/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/rank/model/concrete/bishop/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/rank/model/concrete/king/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/rank/model/concrete/king/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/rank/model/concrete/knight/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/rank/model/concrete/knight/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/rank/model/concrete/pawn/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/rank/model/concrete/pawn/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/rank/model/concrete/queen/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/rank/model/concrete/queen/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/rank/model/concrete/rook/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/rank/model/concrete/rook/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/rank/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/rank/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/scalar/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/scalar/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/scalar/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/scalar/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/schema/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/schema/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/schema/key/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/schema/key/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/schema/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/schema/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/snapshot/context/builder/exception/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/snapshot/context/builder/exception/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/snapshot/context/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/snapshot/context/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/snapshot/context/finder/exception/debug/exist.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/snapshot/context/finder/exception/debug/exist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/snapshot/context/finder/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/snapshot/context/finder/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/snapshot/context/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/snapshot/context/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/snapshot/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/snapshot/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/snapshot/validator/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/snapshot/validator/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/span/coord/ray/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/coord/ray/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/span/service/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/service/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/span/spanner/bishop/service/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/spanner/bishop/service/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/span/spanner/engine/exception/debug/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/spanner/engine/exception/debug/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/span/spanner/engine/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/spanner/engine/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/span/spanner/engine/exception/debug/zero.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/spanner/engine/exception/debug/zero.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/span/square/ray/service/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/square/ray/service/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/span/square/ray/validator/exception/null/members.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/square/ray/validator/exception/null/members.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/span/square/ray/validator/exception/null/ray.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/square/ray/validator/exception/null/ray.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/span/square/span/service/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/square/span/service/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/span/square/span/validator/exception/null/ray.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/square/span/validator/exception/null/ray.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/span/square/span/validator/exception/null/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/square/span/validator/exception/null/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/context/builder/exception/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/context/builder/exception/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/context/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/context/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/context/finder/exception/debug/exist.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/context/finder/exception/debug/exist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/context/finder/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/context/finder/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/context/validator/exception/debug/excess.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/context/validator/exception/debug/excess.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/context/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/context/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/context/validator/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/context/validator/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/context/validator/exception/debug/zero.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/context/validator/exception/debug/zero.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/database/core/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/database/core/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/database/core/handler/crud/collision/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/database/core/handler/crud/collision/detector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/database/core/handler/crud/collision/exception/debug/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/database/core/handler/crud/collision/exception/debug/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/database/core/handler/crud/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/database/core/handler/crud/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/database/core/handler/crud/exception/pop/empty.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/database/core/handler/crud/exception/pop/empty.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/database/core/handler/crud/exception/push/duplicate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/database/core/handler/crud/exception/push/duplicate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/database/core/handler/roster/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/database/core/handler/roster/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/database/core/handler/roster/exception/work/double.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/database/core/handler/roster/exception/work/double.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/database/core/handler/roster/exception/work/interrupted.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/database/core/handler/roster/exception/work/interrupted.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/database/core/handler/roster/exception/work/strength.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/database/core/handler/roster/exception/work/strength.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/database/core/handler/stats/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/database/core/handler/stats/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/database/core/handler/stats/exception/work/full.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/database/core/handler/stats/exception/work/full.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/database/core/handler/token/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/database/core/handler/token/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/database/core/handler/token/exception/work/exist.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/database/core/handler/token/exception/work/exist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/service/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/service/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/service/visitation/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/service/visitation/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/service/visitation/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/service/visitation/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/system/collision/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/collision/result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/system/relation/exception/debug/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/relation/exception/debug/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/system/relation/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/relation/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/system/service/abstract/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/service/abstract/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/system/service/integrity/template/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/service/integrity/template/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/team/context/builder/exception/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/team/context/builder/exception/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/team/context/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/team/context/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/team/context/finder/exception/debug/exist.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/team/context/finder/exception/debug/exist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/team/context/finder/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/team/context/finder/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/team/context/validator/exception/debug/excess.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/team/context/validator/exception/debug/excess.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/team/context/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/team/context/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/team/context/validator/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/team/context/validator/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/team/context/validator/exception/debug/zero.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/team/context/validator/exception/debug/zero.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/team/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/team/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/team/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/team/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/context/builder/exception/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/context/builder/exception/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/context/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/context/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/context/finder/exception/debug/exist.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/context/finder/exception/debug/exist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/context/finder/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/context/finder/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/context/validator/exception/debug/excess.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/context/validator/exception/debug/excess.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/context/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/context/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/context/validator/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/context/validator/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/context/validator/exception/debug/zero.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/context/validator/exception/debug/zero.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/exception/query/exist.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/exception/query/exist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/collision/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/collision/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/collision/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/collision/detector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/collision/exception/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/collision/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/collision/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/collision/exception/debug/designation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/collision/exception/designation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/collision/exception/debug/id.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/collision/exception/id.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/collision/exception/debug/square.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/collision/exception/square.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/collision/exception/wrapper.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/exception/pop/empty.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/exception/pop/empty.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/exception/push/duplicate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/exception/push/duplicate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/exception/push/full.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/exception/push/full.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/quota/exception/full.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/core/operation/quota/exception/full.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operation/coord/exception/pop/inactive.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/coord/exception/pop/inactive.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operation/coord/exception/pop/limit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/coord/exception/pop/limit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operation/coord/exception/pop/opening.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/coord/exception/pop/opening.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operation/coord/exception/push/inactive.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/coord/exception/push/inactive.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operation/deployment/exception/debug/double.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/deployment/exception/debug/double.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operation/promotion/exception/debug/double.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/promotion/exception/debug/double.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operation/promotion/exception/debug/inactive.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/promotion/exception/debug/inactive.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operation/promotion/exception/debug/king.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/promotion/exception/debug/king.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operation/promotion/exception/debug/pawn.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/promotion/exception/debug/pawn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operation/promotion/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/promotion/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operation/promotion/exception/debug/row.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/promotion/exception/debug/row.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/vector/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/vector/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/vector/service/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/vector/service/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/vector/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/vector/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/vector/validator/exception/debug/x/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/vector/validator/exception/debug/x/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/vector/validator/exception/debug/y/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/vector/validator/exception/debug/y/null.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,240 +286,240 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.result.event.RequestOutcome.test_construct_request_outcome_with_event_and_exception_raise_error.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcome.test_construct_request_outcome_with_event_and_exception_raise_error.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcomeTest.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcomeTest.test_construct_request_outcome_with_event_and_exception_raise_error.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcomeTest.test_construct_request_outcome_with_event_only_succeeds.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcomeTest.test_construct_request_outcome_with_null_event_null_exception_raises_error.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcomeTest.test_construct_request_outcome_with_null_request_raise_error.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcomeTest.test_construct_request_outcome_with_null_request_raises_error.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcomeTest.test_construct_result_with_exception_only_succeeds.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.result.result_tes.Result.test_payload_and_exception_conflict_raises.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.result.result_tes.ResultTest.test_construct_result_with_params_rasies_error.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.validator.coord_test.CoordinateValidatorTest.test_column_above_bound_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.validator.coord_test.CoordinateValidatorTest.test_column_below_bound_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.validator.coord_test.CoordinateValidatorTest.test_null_column_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.validator.coord_test.CoordinateValidatorTest.test_null_row_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.validator.coord_test.CoordinateValidatorTest.test_row_above_or_equals_bound_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.validator.coord_test.CoordinateValidatorTest.test_validation_payload_equals_input_param.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.validator.id_test.IdValidatorTest.test_cast_to_int_failure_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.validator.id_test.IdValidatorTest.test_negative_id_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.validator.id_test.IdValidatorTest.test_null_id_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.validator.id_test.IdValidatorTest.test_valid_id_returns_result.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.validator.name_test.NameValidatorTest.test_blank_name_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.validator.name_test.NameValidatorTest.test_cast_to_str_failure_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.validator.name_test.NameValidatorTest.test_name_too_long_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.validator.name_test.NameValidatorTest.test_name_too_short_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.validator.name_test.NameValidatorTest.test_null_name_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.validator.name_test.NameValidatorTest.test_valid_name_returns_result.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.validator.owner_test.OwnerValidatorTest.test_cast_to_owner_failure_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.validator.owner_test.OwnerValidatorTest.test_null_owner_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.validator.owner_test.OwnerValidatorTest.test_owner_validator_failed_id_validation_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.validator.owner_test.OwnerValidatorTest.test_owner_validator_failed_name_validation_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.validator.owner_test.OwnerValidatorTest.test_owner_validator_payload_equals_valid_owner.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.validator.side_test.SideValidatorTest.test_cast_to_side_failure_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.validator.side_test.SideValidatorTest.test_null_side_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.validator.side_test.SideValidatorTest.test_side_failed_competitor_validation_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.validator.side_test.SideValidatorTest.test_side_null_profile_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.validator.side_test.SideValidatorTest.test_side_validator_failed_competitor_validation_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.validator.side_test.SideValidatorTest.test_side_validator_failed_id_validation_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.validator.side_test.SideValidatorTest.test_side_validator_payload_equals_valid_side.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.validator.square_test.SquareValidatorTest.test_square_failed_id_validation_raises_error.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.validator.square_test.SquareValidatorTest.test_square_failed_nme_validation_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.validator.square_test.SquareValidatorTest.test_square_validator_failed_coordinate_validation_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.assurance_test.validator.square_test.SquareValidatorTest.test_square_validator_payload_equals_valid_square.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.board.square.SquareUnitTest.test_square_with_null_id_raises_error.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_set_occupant_gets_wrong_type_raises_error.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_set_occupant_passes_on_none.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_set_occupant_passes_on_piece_not_null.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_set_occupant_raises_error_on_not_piece.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_square_constructed_if_all_validations_pass.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_square_failed_coordinate_validation_raises_error.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_square_raises_on_failed_id.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_square_raises_on_failed_name.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_square_with_blank_name_raises_error.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_square_with_null_id_raises_error.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_square_with_null_name_raises_error.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.board.square_test.test_set_occupant_raises_error_on_not_piece.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.coord_test.CoordinateTest.test_column_above_upper_bound_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.coord_test.CoordinateTest.test_column_below_lower_bound_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.coord_test.CoordinateTest.test_column_in_bounds.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.coord_test.CoordinateTest.test_null_column_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.coord_test.CoordinateTest.test_null_row_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.coord_test.CoordinateTest.test_row_above_upper_bound_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.coord_test.CoordinateTest.test_row_below_lower_bound_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.coord_test.CoordinateTest.test_row_in_bounds.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.offset.multiplication_test.OffsetMultiplicationTest.test_delta_row_result_out_of_bounds_raises_error.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.offset.multiplication_test.OffsetMultiplicationTest.test_multiplication_factor_out_of_bounds_raises_error.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.offset.multiplication_test.OffsetMultiplicationTest.test_negative_multiplication_factor_raises_error.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.offset.multiplication_test.OffsetMultiplicationTest.test_negative_multiplication_raises_error.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.offset.multiplication_test.OffsetMultiplicationTest.test_null_multiplication_factor_raises_error.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.offset.multiplication_test.OffsetMultiplicationTest.test_zero_multiplication_raises_error.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_column_above_bounds_raises_error.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_column_below_bounds_raises_error.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_column_less_or_equal_to_knight_step_size.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_column_value_greater_than_knight_steps_raises_error.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_row_above_bounds_raises_error.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_row_below_bounds_raises_error.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_row_less_or_equal_to_knight_step_size.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_null_delta_column_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_null_delta_row_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.geometry.coordinate.coordinate_stack_test.CoordinateStackTest.test_pushing_coordinate_updates_current_coordinate.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.geometry.coordinate.offset_test.OffSetTest.test_multiplication_result_of_bounds_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.geometry.coordinate.offset_test.OffSetTest.test_multiplication_scalar_out_of_bounds_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.geometry.coordinate.offset_test.OffSetTest.test_null_multiplicaton_scalar_out_of_bounds_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.geometry.coordinate.offset_test.test_multiplication_result_of_bounds_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.geometry.vector.scalar_test.ScalarTest.test_null_value_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.geometry.vector.scalar_test.ScalarTest.test_valid_value_sets_correctly.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.geometry.vector.scalar_test.ScalarTest.test_value_greater_or_equal_board_dimension_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.geometry.vector.scalar_test.ScalarTest.test_value_less_than_lower_bound_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.owner.competitor_test.CompetitorTest.test_owner_constructed_if_params_are_valid.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.owner.competitor_test.CompetitorTest.test_owner_failed_id_validation_raises_error.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.owner.competitor_test.CompetitorTest.test_owner_failed_name_validation_raises_error.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.owner.competitor_test.test_owner_constructed_if_params_are_valid.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.owner.competitor_test.test_owner_failed_name_validation_raises_error.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.owner.owner_test.OwnerTest.test_owner_constructed_if_params_are_valid.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.owner.owner_test.OwnerTest.test_owner_failed_id_validation_raises_error.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.owner.owner_test.OwnerTest.test_owner_failed_name_validation_raises_error.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.rank.bishop_test.BishopTest.test_invalid_destination_raises_error.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.rank.bishop_test.BishopTest.test_valid_destination_passes.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_broken_relationship_raises_error.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_invalid_competitor_raises_error.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_invalid_id_raises_error.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_null_profile_raises_error.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_side_is_controller_current_side.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_valid_params_creates_side.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_duplicate_team_push_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_if_stack_Is_empty_then_current_team_is_null.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_internal_data_structure_not_null.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_is_empty_corresponds_to_zero_stack_size.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_is_empty_false_when_stack_has_items.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_new_team_stack_is_empty.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_null_team_push_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_pop_empty_stack_raises_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_popping_items_does_not_mutate_stack.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_pushing_team_increments_size.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_pushing_team_updates_current_team.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.token.piece_test.PieceTest.test_piece_constructed_if_params_are_valid.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests for unit.chess_test.token.piece_test.PieceTest.test_piece_failed_id_validation_raises_error.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in bishop_test.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in cartesian_distance_test.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in competitor_test.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in coord_stack_test.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in coord_test.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in coordinate_stack_test.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in coordinate_test.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in event_test.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in id_test.py (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in id_test.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in multiplication_test.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in name_test.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in offset_test.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in owner_test.py (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in owner_test.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in result_tes.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in scalar_test.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in side_test.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in square_test.py (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in square_test.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in stack_test.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Python tests in vector_test.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python.__init__.executor&quot;: &quot;Run&quot;,
-    &quot;Python.anchor.executor&quot;: &quot;Profiler&quot;,
-    &quot;Python.arena_builder.executor&quot;: &quot;Run&quot;,
-    &quot;Python.base.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.board_controller_builder.executor&quot;: &quot;Run&quot;,
-    &quot;Python.build_coordinate.executor&quot;: &quot;Run&quot;,
-    &quot;Python.builder.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.castle.executor&quot;: &quot;Run&quot;,
-    &quot;Python.checker.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.chess_board_builder (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.chess_board_builder.executor&quot;: &quot;Run&quot;,
-    &quot;Python.chess_piece_builder.executor&quot;: &quot;Run&quot;,
-    &quot;Python.competitor.executor&quot;: &quot;Run&quot;,
-    &quot;Python.coord.executor&quot;: &quot;Run&quot;,
-    &quot;Python.coord_stack.executor&quot;: &quot;Run&quot;,
-    &quot;Python.coordinate_builder.executor&quot;: &quot;Run&quot;,
-    &quot;Python.coordinate_specification.executor&quot;: &quot;Run&quot;,
-    &quot;Python.coordinate_stack.executor&quot;: &quot;Run&quot;,
-    &quot;Python.coordinate_stack_builder.executor&quot;: &quot;Run&quot;,
-    &quot;Python.coordinate_stack_specification.executor&quot;: &quot;Run&quot;,
-    &quot;Python.distance_magnitude_builder.executor&quot;: &quot;Run&quot;,
-    &quot;Python.driver.executor&quot;: &quot;Run&quot;,
-    &quot;Python.dto.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.duplicate.executor&quot;: &quot;Run&quot;,
-    &quot;Python.exception (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.exception (2).executor&quot;: &quot;Debug&quot;,
-    &quot;Python.exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python.factory.executor&quot;: &quot;Run&quot;,
-    &quot;Python.find_missiing_package_init.executor&quot;: &quot;Run&quot;,
-    &quot;Python.finder (1).executor&quot;: &quot;Debug&quot;,
-    &quot;Python.finder (2).executor&quot;: &quot;Debug&quot;,
-    &quot;Python.finder.executor&quot;: &quot;Run&quot;,
-    &quot;Python.full.executor&quot;: &quot;Run&quot;,
-    &quot;Python.game.executor&quot;: &quot;Run&quot;,
-    &quot;Python.id.executor&quot;: &quot;Run&quot;,
-    &quot;Python.model (1).executor&quot;: &quot;Debug&quot;,
-    &quot;Python.model.executor&quot;: &quot;Run&quot;,
-    &quot;Python.motion_controller_builder.executor&quot;: &quot;Run&quot;,
-    &quot;Python.motion_controller_factory (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.motion_controller_factory.executor&quot;: &quot;Run&quot;,
-    &quot;Python.name.executor&quot;: &quot;ConcurrencyExecutor&quot;,
-    &quot;Python.null.executor&quot;: &quot;Coverage&quot;,
-    &quot;Python.offset.executor&quot;: &quot;Run&quot;,
-    &quot;Python.owner_builder.executor&quot;: &quot;Run&quot;,
-    &quot;Python.owner_factory.executor&quot;: &quot;Run&quot;,
-    &quot;Python.path.executor&quot;: &quot;Run&quot;,
-    &quot;Python.pawn.executor&quot;: &quot;Coverage&quot;,
-    &quot;Python.piece (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.piece.executor&quot;: &quot;Run&quot;,
-    &quot;Python.placement.executor&quot;: &quot;Run&quot;,
-    &quot;Python.quadrant.executor&quot;: &quot;Run&quot;,
-    &quot;Python.rank.executor&quot;: &quot;Run&quot;,
-    &quot;Python.rank_builder.executor&quot;: &quot;Run&quot;,
-    &quot;Python.rank_factory.executor&quot;: &quot;Run&quot;,
-    &quot;Python.rank_spec.executor&quot;: &quot;Run&quot;,
-    &quot;Python.run_game.executor&quot;: &quot;Run&quot;,
-    &quot;Python.scalar.executor&quot;: &quot;Run&quot;,
-    &quot;Python.service.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.side.executor&quot;: &quot;Run&quot;,
-    &quot;Python.square (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.square.executor&quot;: &quot;Run&quot;,
-    &quot;Python.square_iterator.executor&quot;: &quot;Run&quot;,
-    &quot;Python.square_repo_builder.executor&quot;: &quot;Run&quot;,
-    &quot;Python.square_service_builder.executor&quot;: &quot;Run&quot;,
-    &quot;Python.team.executor&quot;: &quot;Run&quot;,
-    &quot;Python.team_builder.executor&quot;: &quot;Run&quot;,
-    &quot;Python.team_factory (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.team_factory.executor&quot;: &quot;Run&quot;,
-    &quot;Python.transaction.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.validation_exception.executor&quot;: &quot;Run&quot;,
-    &quot;Python.validator.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.vector.executor&quot;: &quot;Run&quot;,
-    &quot;Python.vertex.executor&quot;: &quot;Profiler&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;ToolWindow.Python Packages.ShowToolbar&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/griot/PycharmProjects/chessbot/src/logic/token/service/handler/deployment/exception/debug/inconsistent&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.build.tools.auto.reload&quot;: &quot;ALL&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;settings.editor.splitter.proportion&quot;: &quot;0.14655593&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python tests.Python tests for unit.assurance_test.result.event.RequestOutcome.test_construct_request_outcome_with_event_and_exception_raise_error.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcome.test_construct_request_outcome_with_event_and_exception_raise_error.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcomeTest.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcomeTest.test_construct_request_outcome_with_event_and_exception_raise_error.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcomeTest.test_construct_request_outcome_with_event_only_succeeds.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcomeTest.test_construct_request_outcome_with_null_event_null_exception_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcomeTest.test_construct_request_outcome_with_null_request_raise_error.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcomeTest.test_construct_request_outcome_with_null_request_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.result.event_test.RequestOutcomeTest.test_construct_result_with_exception_only_succeeds.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.result.result_tes.Result.test_payload_and_exception_conflict_raises.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.result.result_tes.ResultTest.test_construct_result_with_params_rasies_error.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.coord_test.CoordinateValidatorTest.test_column_above_bound_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.coord_test.CoordinateValidatorTest.test_column_below_bound_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.coord_test.CoordinateValidatorTest.test_null_column_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.coord_test.CoordinateValidatorTest.test_null_row_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.coord_test.CoordinateValidatorTest.test_row_above_or_equals_bound_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.coord_test.CoordinateValidatorTest.test_validation_payload_equals_input_param.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.id_test.IdValidatorTest.test_cast_to_int_failure_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.id_test.IdValidatorTest.test_negative_id_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.id_test.IdValidatorTest.test_null_id_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.id_test.IdValidatorTest.test_valid_id_returns_result.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.name_test.NameValidatorTest.test_blank_name_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.name_test.NameValidatorTest.test_cast_to_str_failure_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.name_test.NameValidatorTest.test_name_too_long_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.name_test.NameValidatorTest.test_name_too_short_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.name_test.NameValidatorTest.test_null_name_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.name_test.NameValidatorTest.test_valid_name_returns_result.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.owner_test.OwnerValidatorTest.test_cast_to_owner_failure_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.owner_test.OwnerValidatorTest.test_null_owner_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.owner_test.OwnerValidatorTest.test_owner_validator_failed_id_validation_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.owner_test.OwnerValidatorTest.test_owner_validator_failed_name_validation_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.owner_test.OwnerValidatorTest.test_owner_validator_payload_equals_valid_owner.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.side_test.SideValidatorTest.test_cast_to_side_failure_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.side_test.SideValidatorTest.test_null_side_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.side_test.SideValidatorTest.test_side_failed_competitor_validation_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.side_test.SideValidatorTest.test_side_null_profile_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.side_test.SideValidatorTest.test_side_validator_failed_competitor_validation_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.side_test.SideValidatorTest.test_side_validator_failed_id_validation_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.side_test.SideValidatorTest.test_side_validator_payload_equals_valid_side.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.square_test.SquareValidatorTest.test_square_failed_id_validation_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.square_test.SquareValidatorTest.test_square_failed_nme_validation_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.square_test.SquareValidatorTest.test_square_validator_failed_coordinate_validation_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.assurance_test.validator.square_test.SquareValidatorTest.test_square_validator_payload_equals_valid_square.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.board.square.SquareUnitTest.test_square_with_null_id_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_set_occupant_gets_wrong_type_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_set_occupant_passes_on_none.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_set_occupant_passes_on_piece_not_null.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_set_occupant_raises_error_on_not_piece.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_square_constructed_if_all_validations_pass.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_square_failed_coordinate_validation_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_square_raises_on_failed_id.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_square_raises_on_failed_name.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_square_with_blank_name_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_square_with_null_id_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.board.square_test.SquareUnitTest.test_square_with_null_name_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.board.square_test.test_set_occupant_raises_error_on_not_piece.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.geometry.coord.coord_test.CoordinateTest.test_column_above_upper_bound_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.geometry.coord.coord_test.CoordinateTest.test_column_below_lower_bound_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.geometry.coord.coord_test.CoordinateTest.test_column_in_bounds.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.geometry.coord.coord_test.CoordinateTest.test_null_column_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.geometry.coord.coord_test.CoordinateTest.test_null_row_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.geometry.coord.coord_test.CoordinateTest.test_row_above_upper_bound_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.geometry.coord.coord_test.CoordinateTest.test_row_below_lower_bound_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.geometry.coord.coord_test.CoordinateTest.test_row_in_bounds.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.geometry.coord.offset.multiplication_test.OffsetMultiplicationTest.test_delta_row_result_out_of_bounds_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.geometry.coord.offset.multiplication_test.OffsetMultiplicationTest.test_multiplication_factor_out_of_bounds_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.geometry.coord.offset.multiplication_test.OffsetMultiplicationTest.test_negative_multiplication_factor_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.geometry.coord.offset.multiplication_test.OffsetMultiplicationTest.test_negative_multiplication_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.geometry.coord.offset.multiplication_test.OffsetMultiplicationTest.test_null_multiplication_factor_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.geometry.coord.offset.multiplication_test.OffsetMultiplicationTest.test_zero_multiplication_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_column_above_bounds_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_column_below_bounds_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_column_less_or_equal_to_knight_step_size.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_column_value_greater_than_knight_steps_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_row_above_bounds_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_row_below_bounds_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_delta_row_less_or_equal_to_knight_step_size.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_null_delta_column_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.geometry.coord.offset.offset_test.OffSetTest.test_null_delta_row_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.geometry.coordinate.coordinate_stack_test.CoordinateStackTest.test_pushing_coordinate_updates_current_coordinate.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.geometry.coordinate.offset_test.OffSetTest.test_multiplication_result_of_bounds_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.geometry.coordinate.offset_test.OffSetTest.test_multiplication_scalar_out_of_bounds_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.geometry.coordinate.offset_test.OffSetTest.test_null_multiplicaton_scalar_out_of_bounds_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.geometry.coordinate.offset_test.test_multiplication_result_of_bounds_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.geometry.vector.scalar_test.ScalarTest.test_null_value_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.geometry.vector.scalar_test.ScalarTest.test_valid_value_sets_correctly.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.geometry.vector.scalar_test.ScalarTest.test_value_greater_or_equal_board_dimension_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.geometry.vector.scalar_test.ScalarTest.test_value_less_than_lower_bound_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.owner.competitor_test.CompetitorTest.test_owner_constructed_if_params_are_valid.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.owner.competitor_test.CompetitorTest.test_owner_failed_id_validation_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.owner.competitor_test.CompetitorTest.test_owner_failed_name_validation_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.owner.competitor_test.test_owner_constructed_if_params_are_valid.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.owner.competitor_test.test_owner_failed_name_validation_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.owner.owner_test.OwnerTest.test_owner_constructed_if_params_are_valid.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.owner.owner_test.OwnerTest.test_owner_failed_id_validation_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.owner.owner_test.OwnerTest.test_owner_failed_name_validation_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.rank.bishop_test.BishopTest.test_invalid_destination_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.rank.bishop_test.BishopTest.test_valid_destination_passes.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_broken_relationship_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_invalid_competitor_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_invalid_id_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_null_profile_raises_error.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_side_is_controller_current_side.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.team.side_test.SideTest.test_valid_params_creates_side.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_duplicate_team_push_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_if_stack_Is_empty_then_current_team_is_null.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_internal_data_structure_not_null.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_is_empty_corresponds_to_zero_stack_size.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_is_empty_false_when_stack_has_items.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_new_team_stack_is_empty.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_null_team_push_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_pop_empty_stack_raises_exception.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_popping_items_does_not_mutate_stack.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_pushing_team_increments_size.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.team.stack_test.TeamStackTest.test_pushing_team_updates_current_team.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.token.piece_test.PieceTest.test_piece_constructed_if_params_are_valid.executor": "Run",
+    "Python tests.Python tests for unit.chess_test.token.piece_test.PieceTest.test_piece_failed_id_validation_raises_error.executor": "Run",
+    "Python tests.Python tests in bishop_test.py.executor": "Run",
+    "Python tests.Python tests in cartesian_distance_test.py.executor": "Run",
+    "Python tests.Python tests in competitor_test.py.executor": "Run",
+    "Python tests.Python tests in coord_stack_test.py.executor": "Run",
+    "Python tests.Python tests in coord_test.py.executor": "Run",
+    "Python tests.Python tests in coordinate_stack_test.py.executor": "Run",
+    "Python tests.Python tests in coordinate_test.py.executor": "Run",
+    "Python tests.Python tests in event_test.py.executor": "Run",
+    "Python tests.Python tests in id_test.py (1).executor": "Run",
+    "Python tests.Python tests in id_test.py.executor": "Run",
+    "Python tests.Python tests in multiplication_test.py.executor": "Run",
+    "Python tests.Python tests in name_test.py.executor": "Run",
+    "Python tests.Python tests in offset_test.py.executor": "Run",
+    "Python tests.Python tests in owner_test.py (1).executor": "Run",
+    "Python tests.Python tests in owner_test.py.executor": "Run",
+    "Python tests.Python tests in result_tes.py.executor": "Run",
+    "Python tests.Python tests in scalar_test.py.executor": "Run",
+    "Python tests.Python tests in side_test.py.executor": "Run",
+    "Python tests.Python tests in square_test.py (1).executor": "Run",
+    "Python tests.Python tests in square_test.py.executor": "Run",
+    "Python tests.Python tests in stack_test.py.executor": "Run",
+    "Python tests.Python tests in vector_test.py.executor": "Run",
+    "Python.__init__.executor": "Run",
+    "Python.anchor.executor": "Profiler",
+    "Python.arena_builder.executor": "Run",
+    "Python.base.executor": "Debug",
+    "Python.board_controller_builder.executor": "Run",
+    "Python.build_coordinate.executor": "Run",
+    "Python.builder.executor": "Debug",
+    "Python.castle.executor": "Run",
+    "Python.checker.executor": "Debug",
+    "Python.chess_board_builder (1).executor": "Run",
+    "Python.chess_board_builder.executor": "Run",
+    "Python.chess_piece_builder.executor": "Run",
+    "Python.competitor.executor": "Run",
+    "Python.coord.executor": "Run",
+    "Python.coord_stack.executor": "Run",
+    "Python.coordinate_builder.executor": "Run",
+    "Python.coordinate_specification.executor": "Run",
+    "Python.coordinate_stack.executor": "Run",
+    "Python.coordinate_stack_builder.executor": "Run",
+    "Python.coordinate_stack_specification.executor": "Run",
+    "Python.distance_magnitude_builder.executor": "Run",
+    "Python.driver.executor": "Run",
+    "Python.dto.executor": "Debug",
+    "Python.duplicate.executor": "Run",
+    "Python.exception (1).executor": "Run",
+    "Python.exception (2).executor": "Debug",
+    "Python.exception.executor": "Run",
+    "Python.factory.executor": "Run",
+    "Python.find_missiing_package_init.executor": "Run",
+    "Python.finder (1).executor": "Debug",
+    "Python.finder (2).executor": "Debug",
+    "Python.finder.executor": "Run",
+    "Python.full.executor": "Run",
+    "Python.game.executor": "Run",
+    "Python.id.executor": "Run",
+    "Python.model (1).executor": "Debug",
+    "Python.model.executor": "Run",
+    "Python.motion_controller_builder.executor": "Run",
+    "Python.motion_controller_factory (1).executor": "Run",
+    "Python.motion_controller_factory.executor": "Run",
+    "Python.name.executor": "ConcurrencyExecutor",
+    "Python.null.executor": "Coverage",
+    "Python.offset.executor": "Run",
+    "Python.owner_builder.executor": "Run",
+    "Python.owner_factory.executor": "Run",
+    "Python.path.executor": "Run",
+    "Python.pawn.executor": "Coverage",
+    "Python.piece (1).executor": "Run",
+    "Python.piece.executor": "Run",
+    "Python.placement.executor": "Run",
+    "Python.quadrant.executor": "Run",
+    "Python.rank.executor": "Run",
+    "Python.rank_builder.executor": "Run",
+    "Python.rank_factory.executor": "Run",
+    "Python.rank_spec.executor": "Run",
+    "Python.run_game.executor": "Run",
+    "Python.scalar.executor": "Run",
+    "Python.service.executor": "Debug",
+    "Python.side.executor": "Run",
+    "Python.square (1).executor": "Run",
+    "Python.square.executor": "Run",
+    "Python.square_iterator.executor": "Run",
+    "Python.square_repo_builder.executor": "Run",
+    "Python.square_service_builder.executor": "Run",
+    "Python.team.executor": "Run",
+    "Python.team_builder.executor": "Run",
+    "Python.team_factory (1).executor": "Run",
+    "Python.team_factory.executor": "Run",
+    "Python.transaction.executor": "Debug",
+    "Python.validation_exception.executor": "Run",
+    "Python.validator.executor": "Debug",
+    "Python.vector.executor": "Run",
+    "Python.vertex.executor": "Profiler",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ToolWindow.Python Packages.ShowToolbar": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/logic/token/database/core/operation/crud/collision/exception/debug",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.build.tools.auto.reload": "ALL",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "settings.editor.splitter.proportion": "0.14655593",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
       <console-settings sdk-home="$USER_HOME$/AppData/Local/Programs/Python/Python313/python.exe">
@@ -370,18 +535,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/collision/exception/debug" />
       <recent name="$PROJECT_DIR$/src/logic/token/service/handler/deployment/exception/debug/inconsistent" />
       <recent name="$PROJECT_DIR$/src/logic/system/err/debug/child/inconsistent" />
       <recent name="$PROJECT_DIR$/src/logic/formation/key/lookup/exception" />
       <recent name="$PROJECT_DIR$/src/logic/arena/context/finder" />
-      <recent name="$PROJECT_DIR$/src/logic/board/context/finder" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/logic/token/database/core/operation" />
+      <recent name="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/collision/exception" />
       <recent name="$PROJECT_DIR$/src/logic/token/service/handler/deployment/exception/debug/square" />
       <recent name="$PROJECT_DIR$/src/logic/token/service/handler/deployment/exception/debug" />
       <recent name="$PROJECT_DIR$/src/logic/token/service/handler/deployment/exception" />
-      <recent name="$PROJECT_DIR$/src/logic/coord/database/core/exception" />
-      <recent name="$PROJECT_DIR$/src/logic/coord/database/core/handler" />
     </key>
   </component>
   <component name="RunManager" selected="Python.anchor">

@@ -67,8 +67,6 @@ class NullEdgeException(NullException):
         
         """
         msg = msg or self.MSG
-        var = var or self.VAR
-        val = val or self.VAL
         err_code = err_code or self.ERR_CODE
         super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)
 

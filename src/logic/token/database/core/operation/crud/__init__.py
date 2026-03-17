@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== TOKEN.DATABASE.CORE.OPERATION.CRUD PACKAGE CONTENTS ===========#
 
 # Packages
-from .collision import *
 from .exception import *
 
 # Modules

@@ -71,8 +71,6 @@ class TokenContextDebugException(DebugException):
             var: Optional[str] = None,
             val: Optional[Any] = None,
     ):
-        var = var or self.VAR
-        val = val or self.VAL
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
         

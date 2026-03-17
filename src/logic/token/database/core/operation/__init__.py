@@ -12,6 +12,7 @@ version: 1.0.0
 # Packages
 from .crud import *
 from .quota import *
+from .collision import *
 
 # Modules
 from .handler import TokenStackOpsDispatcher
