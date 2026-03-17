@@ -65,47 +65,55 @@ class BoardSquareRelationAnalyzer(RelationAnalyzer[Board, Square]):
         """
         method = f"{cls.__name__}.analyze"
         
-        # Process the possible board_validation outcomes.
+        # Handle the case that, the board is not secure.
         board_validation = board_validator.validate(candidate_primary)
         if board_validation.is_failure:
             # Return the exception chain on failure.
             return RelationReport.analyzer_failure(
                 BoardSquareAnalyzerFailureException(
-                    mthd=method,
-                    op=BoardSquareAnalyzerFailureException.Operator.BOARD
+                    msg=BoardSquareAnalyzerFailureException.MSG,
+                    err_code=BoardSquareAnalyzerFailureException.ERR_CODE,
+                    ex=board_validation.exception,
                 )
             )
         # Just incase things aren't Liskovian on the candidate_primary, cast the validation payload instead,
         board = cast(Board, board_validation.payload)
         
-        # Process the possible square_validation outcomes.
+        # Handle the case that, the square is unsecure.
         square_validation = square_service.validator.validate(candidate_satellite)
         if square_validation.is_failure:
             # Return the exception chain on failure.
-            return RelationReport.failure(
+            return RelationReport.analyzer_failure(
                 BoardSquareAnalyzerFailureException(
-                    msg=f"{method}: {BoardSquareAnalyzerFailureException.ERR_CODE}",
-                    ex=square_validation.exception
+                    msg=BoardSquareAnalyzerFailureException.MSG,
+                    err_code=BoardSquareAnalyzerFailureException.ERR_CODE,
+                    ex=square_validation.exception,
                 )
             )
         square = cast(Square, square_validation.payload)
         
-        # If the item is assigned to a different board it's not a satellite of the area. They are not related.
+        # Handle the case that, the square belongs to a different board.
         if board != square.board:
-            return RelationReport.not_related()
+            return RelationReport.no_relation()
         
-        # Search the board to find out if the item has a full or partial bidirectional relation with its board.
+        # --- Search the board's squares for the satellite-candidate. ---#
         square_search = board.squares.search(context=SquareContext(id=square.id))
+        
+        # Handle the case that, the search was aborted.
         if square_search.is_failure:
             # Return the exception chain on failure.
-            return RelationReport.failure(
+            return RelationReport.analyzer_failure(
                 BoardSquareAnalyzerFailureException(
-                    msg=f"{method}: {BoardSquareAnalyzerFailureException.ERR_CODE}",
-                    ex=square_search.exception
+                    msg=BoardSquareAnalyzerFailureException.MSG,
+                    err_code=BoardSquareAnalyzerFailureException.ERR_CODE,
+                    ex=square_search.exception,
                 )
             )
-        # On the empty search the item has not been added to the Board.
+        # --- Route between the possible outcomes. ---#
+        
+        # Handle an empty search result.
         if square_search.is_empty:
-            return RelationReport.partial(satellite=square)
-        # All other paths in the test chain have been exhausted. The roster-occupant tuple is fully bidirectional.
+            return RelationReport.registration_missing(satellite=square)
+        
+        # Handle nonempty search result.
         return RelationReport.bidirectional(primary=board, satellite=square)
