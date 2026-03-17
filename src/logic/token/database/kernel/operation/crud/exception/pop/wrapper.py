@@ -1,36 +1,44 @@
-# src/logic/system/computation/exception/wrapper.py
+# src/logic/token/database/kernel/operation/crud/exception/pop/wrapper.py
 
 """
-Module: logic.system.computation.exception.wrapper
+Module: logic.token.database.kernel.operation.crud.exception.pop.wrapper
 Author: Banji Lawal
-Created: 2025-11-18
-Version: 1.0.0
+Created: 2026-02-22
+version: 1.0.0
 """
 
 from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# COMPUTATION_FAILURE #======================#
-    "ComputationException",
+    # ======================# TOKEN_STACK_POP_FAILURE #======================#
+    "TokenStackPopException",
 ]
 
-from logic.system import OperationException
+from logic.system import DeletionException
 
-
-# ======================# COMPUTATION_FAILURE #======================#
-class ComputationException(OperationException):
+# ======================# TOKEN_STACK_POP_FAILURE #======================#
+class TokenStackPopException(DeletionException):
     """
-    Role:
-        - Worker Method Identification
-        - Exception Chain Layer 1
-        - Exception Messaging
+    # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
-    Responsibilities:
-        1.  Indicate a computation was unsuccessful and did not produce a result.
-        2.  Identify the method where the failure occurred.
-        
-    Attributes:
+    # RESPONSIBILITIES:
+    1.  Indicate a TokenStackStack pop was unsuccessful.
+    2.  Identify the TokenStackService method where the pop operation failed.
+
+    # PARENT:
+        *   DeletionOperation
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+        *   See DeletionOperation class for inherited attributes.
+
+    # CONSTRUCTOR:
         op: Optional[str]
         ex: Optional[str]
         msg: Optional[str]
@@ -38,15 +46,16 @@ class ComputationException(OperationException):
         err_code: Optional[str]
         rslt_type: Optional[str]
 
-    Provides:
+    # LOCAL METHODS:
+   None
 
-    Super:
-        OperationException
+    # INHERITED METHODS:
+        *   See DeletionOperation class for inherited methods.
     """
-    OP = "Computation"
-    RSLT_TYPE = "ComputationResult"
-    ERR_CODE = "COMPUTATION_FAILURE"
-    MSG = "Computation method failed."
+    OP = "Deletion"
+    RSLT_TYPE = "DeletionResult"
+    ERR_CODE = "TOKEN_STACK_POP_FAILURE"
+    MSG = "TokenStackService pop failed."
     
     def __init__(
             self,

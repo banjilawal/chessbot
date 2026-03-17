@@ -1,0 +1,234 @@
+# src/logic/token/database/kernel/operation/quota/analyzer.py
+
+"""
+Module: logic.token.database.kernel.operation.quota.analyzer
+Author: Banji Lawal
+Created: 2026-02-21
+version: 1.0.0
+"""
+
+from __future__ import annotations
+from typing import List, cast
+
+from logic.rank import Rank, RankService
+from logic.system import ComputationResult, LoggingLevelRouter
+from logic.token import RankQuotaAnalysisException, RankQuotaFullException, Token, TokenContext, TokenStackService
+
+
+class RankQuotaAnalyzer:
+    """
+    Role:
+        _ Quota Manager
+        - Performance Manager
+        - Statistics Reporter
+
+    Responsibilities:
+        1.  Ensures the number of rank members does not exceed their quota.
+
+
+    Attributes:
+        _rank_service: RankService
+
+    Provides:
+        -   pop_coord_from_token(token) -> DeletionResult[Coord]
+
+        -   push_coord_to_token(
+                    token: Token,
+                    coord: Coord,
+                    coord_service: CoordService = CoordService()
+            ) -> InsertionResult
+
+        -   promote_pawn(
+                    rank: Rank,
+                    pawn_token: PawnToken,
+                    rank_service: RankService = RankService(),
+                    schema_service: SchemaService = SchemaService(),
+            ) -> UpdateResult[PawnToken]
+
+        -   promote_pawn(
+                    rank: Rank,
+                    pawn_token: PawnToken,
+                    rank_service: RankService = RankService(),
+                    schema_service: SchemaService = SchemaService(),
+            ) -> UpdateResult[PawnToken]
+
+    Super:
+    """
+    _rank_service: RankService
+    
+    def __init__(self, rank_service: RankService = RankService()):
+        """
+        Args:
+            rank_service: RankService
+        """
+        self._rank_service = rank_service
+    
+    
+    @LoggingLevelRouter.monitor
+    def compute_rank_size_in_stack(
+            self,
+            rank: Rank,
+            token_stack: TokenStackService,
+    ) -> ComputationResult[int]:
+        """
+        # ACTION:
+            1.  Build the search-by-rank TokenContext. If the build fails send the exception in the InsertionResult.
+                Else run the search.
+            2.  If the search fails send the exception in the InsertionResult. Else the calculation was successful.
+                Return the number of hits in the ComputationResult's payload.
+        Args:
+            rank: Rank
+       Returns:
+           ComputationResult[int]
+        Raises:
+            RankQuotaAnalysisException
+            *   RankQuotaAnalysisException
+        """
+        method = f"{self.__class__.__name__}.compute_rank_size_in_stack"
+        
+        # Handle the case that, the rank is not certified safe.
+        rank_validation = self._rank_service.validator.validate(rank)
+        if rank_validation.is_failure:
+            # Return the exception chain on failure.
+            return ComputationResult.failure(
+                RankQuotaAnalysisException(
+                    method=method,
+                    op=RankQuotaAnalysisException.OP,
+                    msg=RankQuotaAnalysisException.MSG,
+                    err_code=RankQuotaAnalysisException.ERR_CODE,
+                    rslt_type=RankQuotaAnalysisException.RSLT_TYPE,
+                    ex=rank_validation.exception
+                )
+            )
+        # --- Search for the . ---#
+        search_result = token_stack.query(context=TokenContext(rank=rank))
+        
+        # Handle the case that, the search was not completed.
+        if search_result.is_failure:
+            # Return the exception chain on failure.
+            return ComputationResult.failure(
+                RankQuotaAnalysisException(
+                    msg=f"{method}: {RankQuotaAnalysisException.MSG}",
+                    ex=RankQuotaAnalysisException(
+                        msg=f"{method}: {RankQuotaAnalysisException.MSG}",
+                        ex=search_result.exception
+                    )
+                )
+            )
+        # Handle the case that, no tokens hold the rank
+        if search_result.is_empty:
+            return ComputationResult.success(payload=0)
+        # Handle the case that, some hits were found
+        return ComputationResult.success(payload=len(cast(List[Token], search_result.payload)))
+  
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def rank_openings_exist(
+            cls,
+            rank: Rank,
+            token_stack: TokenStackService,
+            rank_service: RankService = RankService(),
+    ) -> ComputationResult[bool]:
+        """
+        # ACTION:
+            1.  If self.count_rank_openings fails send the exception chain in the ComputationResult. Else,
+                send open_slot_count > 0 in the ComputationResult's payload.
+        # PARAMETERS:
+            *   rank (Rank)
+        # RETURN:
+            *   CalculationReport[bool] containing either:
+                    - On failure: Exception
+                    - On success: bool
+        Raises:
+            *   RankQuotaAnalysisException
+            *   RankQuotaAnalysisException
+        """
+        method = "RankQuotaAnalyzer.stack_has_opening_for_rank"
+        
+        # Handle the case that, the rank is not certified safe.
+        openings_count_result = cls.count_openings_for_rank(
+            rank=rank,
+            token_stack=token_stack,
+            rank_service=rank_service,
+        )
+        if openings_count_result.is_failure:
+            # Return the exception chain on failure.
+            return ComputationResult.failure(
+                RankQuotaAnalysisException(
+                    msg=f"{method}: {RankQuotaAnalysisException.MSG}",
+                    ex=RankQuotaAnalysisException(
+                        msg=f"{method}: {RankQuotaAnalysisException.MSG}",
+                        ex=openings_count_result.exception
+                    )
+                )
+            )
+        
+        # --- Find if there are open slots for the rank. ---#
+        has_opening = cast(int, openings_count_result.payload) > 0
+        return ComputationResult.success(payload=has_opening)
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def count_openings_for_rank(
+            cls,
+            rank: Rank,
+            token_stack: TokenStackService,
+            rank_service: RankService = RankService(),
+    ) -> ComputationResult[int]:
+        """
+        # ACTION:
+            1.  If the rank is not validated, send an exception chain in the ComputationResult.
+            2.  If calculating the number of rank members fails send an exception chain in the ComputationResult.
+                Else, send rank.team_quota - rank_members in the ComputationResult's payload.
+        # PARAMETERS:
+            *   rank (Rank)
+            *   rank_service (RankService
+        # RETURN:
+            *   CalculationReport[int] containing either:
+                    - On failure: Exception
+                    - On success: int
+        Raises:
+            *   RankQuotaAnalysisException
+            *   RankQuotaAnalysisException
+        """
+        method = "RankQuotaAnalyzer.count_openings_for_rank"
+        
+        # Handle the case that, the rank is not certified safe.
+        rank_validation = rank_service.validator.validate(rank)
+        if rank_validation.is_failure:
+            # Return the exception chain on failure.
+            return ComputationResult.failure(
+                RankQuotaAnalysisException(
+                    msg=f"{method}: {RankQuotaAnalysisException.MSG}",
+                    ex=rank_validation.exception
+                )
+            )
+        # --- Find if there are open slots for the rank. ---#
+        rank_size_computation = cls.rank_openings_exist(
+            rank=rank,
+            token_stack=token_stack,
+            rank_service=rank_service,
+        )
+        
+        # Handle the case that, the rank_count_result_computation was not completed.
+        if rank_size_computation.is_failure:
+            # Return the exception chain on failure.
+            return ComputationResult.failure(
+                RankQuotaAnalysisException(
+                    msg=f"{method}: {RankQuotaAnalysisException.MSG}",
+                    ex=rank_size_computation.exception
+                )
+            )
+        # Handle the case that, there are no openings for the rank.
+        number_of_openings = rank.team_quota - rank_size_computation.payload
+        if number_of_openings < 1:
+            # Return the exception chain on failure.
+            return ComputationResult.failure(
+                RankQuotaAnalysisException(
+                    msg=f"{method}: {RankQuotaAnalysisException.ERR_CODE}",
+                    ex=RankQuotaFullException(f"{method}: {RankQuotaFullException.MSG}.")
+                )
+            )
+        # --- On success send the difference between the quota and rank_member_count in the ComputationResult. ---#
+
+        return ComputationResult.success(number_of_openings)

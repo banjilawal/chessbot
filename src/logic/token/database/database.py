@@ -21,86 +21,97 @@ from logic.system import (
 
 class TokenDatabase(Database[Token]):
     """
-    # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
+    Role:
+        - Repo
+        - Interface
+        - API
 
-    # RESPONSIBILITIES:
-    1.  Ensure all bag in managed by TokenStackService are unique.
-    2.  Guarantee consistency of records in TokenStackService.
-
-    # PARENT:
-        *   Database
-
-    # PROVIDES:
-    None
-
-    # LOCAL ATTRIBUTES:
-    None
-
-    # INHERITED ATTRIBUTES:
-        *   See Database class for inherited attributes.
+    Responsibilities:
+        1.  Interface for TokenStackService
+        
+    Attributes:
+        SERVICE_NAME = TokenDatabase
+        
+        id: int
+        name: str
+        kernel: TokenStackService
+        
+    Provides:
+        -   number_of_openings_for_rank(rank: Rank) -> ComputationResult[int]
+        -   current_rank_size(rank: Rank) -> ComputationResult[int]
+        -   does_rank_opening_exist(rank: Rank) -> ComputationResult[bool]
+        -   does_rank_opening_exist(self, rank: Rank) -> ComputationResult[bool]
+        -   def delete_by_id(id: int) -> DeletionResult[Token]
+        -   def insert(self, token: Token) -> InsertionResult[bool]
+        -   def search(self, context: TokenContext) -> SearchResult[List[Token]]
+        
+    Super:
+        Database
     """
     SERVICE_NAME = "TokenDatabase"
-    _token_stack: TokenStackService
+    _kernel: TokenStackService
     
     def __init__(
             self,
-            token_stack: TokenStackService,
-            id: int = IdFactory.next_id(class_name="TokenDatabase"),
+            kernel: TokenStackService,
             name: str = SERVICE_NAME,
+            id: int = IdFactory.next_id(class_name="TokenDatabase"),
     ):
         """
         Args:
             id: int
             name: str
-            token_stack: TokenStackService
+            kernel: TokenStackService
         """
         super().__init__(id=id, name=name)
-        self._token_stack = token_stack
+        self._kernel = kernel
     
     @property
     def integrity_service(self) -> TokenService:
-        return self._token_stack.integrity_service
+        return self._kernel.integrity_service
     
     @property
     def context_service(self) -> TokenContextService:
-        return self._token_stack.context_service
+        return self._kernel.context_service
     
     @property
     def size(self) -> int:
-        return self._token_stack.size
+        return self._kernel.size
     
     @property
     def is_full(self) -> bool:
-        return self._token_stack.is_full
+        return self._kernel.is_full
     
     @property
     def is_empty(self) -> bool:
-        return self._token_stack.is_empty
+        return self._kernel.is_empty
     
     @property
     def current_item(self) -> Optional[Token]:
-        return self._token_stack.current_item
+        return self._kernel.current_item
     
     @property
     def is_ready_for_deployment(self) -> bool:
-        return self._token_stack.is_ready_for_deployment
+        return self._kernel.is_ready_for_deployment
     
     @property
     def is_deployed_on_board(self) -> bool:
-        return self._token_stack.is_deployed_on_board
+        return self._kernel.is_deployed_on_board
     
     @property
     def stack_state(self) -> TokenStackState:
-        return self._token_stack.stack_state
+        return self._kernel.stack_state
     
     @stack_state.setter
     def stack_state(self, state: TokenStackState):
-        self._token_stack.deployment_state = state
+        self._kernel.deployment_state = state
     
     @LoggingLevelRouter.monitor
-    def number_open_rank_slots(self, rank: Rank) -> ComputationResult[int]:
+    def number_of_openings_for_rank(self, rank: Rank) -> ComputationResult[int]:
         """
-        # ACTION:
+        Report how many openings a rank has.
+        
+        Actions:
             1.  Handoff rank validation and open-slot calculation to the RankQuotaAnalyzer provided by the
                 TokenStackService service.
             2.  If either:
@@ -110,21 +121,19 @@ class TokenDatabase(Database[Token]):
                 The analyzer sends an exception chain back. which should be wrapped in TokenDatabaseException.
                 then sent in a ComputationResult.
             3.  Else the forward the computation result to the caller.
-        # PARAMETERS:
-            *   rank (Rank)
-        # RETURNS:
-            *   ComputationResult[int] containing either:
-                    - On failure: Exception.
-                    - On success: int in the payload.
+        Args:
+            rank: Rank
+        Returns::
+            ComputationResult[int]
         Raises:
-            *   TokenDatabaseException
+           TokenDatabaseException
         """
-        method = "TokenDatabase.number_open_rank_slots"
+        method = f"T{self.__class__.name}.number_of_openings_for_rank"
         
-        # --- Handoff the operation off to rank_quota_analyzer. ---#
-        open_slots_count_result = self._token_stack.utils.rank_quota_analyzer.count_openings_for_rank(
+        # --- Forward the request to the kernel. ---#
+        open_slots_count_result = self._kernel.rank_quota_analyzer.count_openings_for_rank(
             rank=rank,
-            token_stack=self._token_stack,
+            kernel=self._kernel,
         )
         # If the computation is not completed or there are no openings return the exception chain.
         if open_slots_count_result.is_failure:
@@ -161,9 +170,9 @@ class TokenDatabase(Database[Token]):
         method = "TokenDatabase.current-rank_size"
         
         # --- Handoff the operation off to rank_quota_analyzer. ---#
-        rank_size_result = self._token_stack.utils.rank_quota_analyzer.compute_rank_size_in_stack(
+        rank_size_result = self._kernel.utils.rank_quota_analyzer.compute_rank_size_in_kernel(
             rank=rank,
-            token_stack=self._token_stack
+            kernel=self._kernel
         )
         # If the computation is not completed return the exception chain.
         if rank_size_result.is_failure:
@@ -200,9 +209,9 @@ class TokenDatabase(Database[Token]):
         method = "TokenDatabase.does_rank_opening_exist"
         
         # --- Handoff the operation off to rank_quota_analyzer. ---#
-        does_rank_have_opening_result = self._token_stack.utils.rank_quota_analyzer.rank_openings_exist(
+        does_rank_have_opening_result = self._kernel.utils.rank_quota_analyzer.rank_openings_exist(
             rank=rank,
-            token_stack=self._token_stack
+            kernel=self._kernel
         )
         # If the computation is not completed return the exception chain
         if does_rank_have_opening_result.is_failure:
@@ -219,7 +228,7 @@ class TokenDatabase(Database[Token]):
     def delete_by_id(self, id: int) -> DeletionResult[Token]:
         """
         # ACTION:
-            1.  Get the result of calling _token_database_core.delete_token_by_id for method. If the deletion failed
+            1.  Get the result of calling _token_database_kernel.delete_token_by_id for method. If the deletion failed
                 wrap the exception inside the appropriate Database exceptions and send the exception chain
                 in the DeletionResult.
             2.  If the deletion operation completed directly forward the DeletionResult to the caller.
@@ -236,8 +245,8 @@ class TokenDatabase(Database[Token]):
         """
         method = "TokenDatabase.remove_token"
         
-        # --- Handoff the deletion responsibility to _token_database_core. ---#
-        deletion_result = self._token_stack.delete_by_id(id=id)
+        # --- Handoff the deletion responsibility to _token_database_kernel. ---#
+        deletion_result = self._kernel.delete_by_id(id=id)
         
         # Handle the case that, the deletion was not completed.
         if deletion_result.is_failure:
@@ -258,7 +267,7 @@ class TokenDatabase(Database[Token]):
             1.  If the item fails validation send the wrapped exception in the InsertionResult.
             2.  If a search for the item either fails or finds a match send the wrapped exception in the
                 InsertionResult.
-            3.  If the call to _token_database_core.insert_token fails send the wrapped exception in the InsertionResult.
+            3.  If the call to _token_database_kernel.insert_token fails send the wrapped exception in the InsertionResult.
                 Else send the outgoing result directly to the caller.
         # PARAMETERS:
             *   occupant (Token)
@@ -273,8 +282,8 @@ class TokenDatabase(Database[Token]):
         """
         method = "TokenDatabase.insert_token"
         
-        # --- Use _token_database_core.insert_token because order does not matter for the occupant access. ---#
-        insertion_result = self._token_stack.push(item=token)
+        # --- Use _token_database_kernel.insert_token because order does not matter for the occupant access. ---#
+        insertion_result = self._kernel.push(item=token)
         
         # Handle the case that, the insertion is not completed.
         if insertion_result.is_failure:
@@ -292,7 +301,7 @@ class TokenDatabase(Database[Token]):
     def search(self, context: TokenContext) -> SearchResult[List[Token]]:
         """
         # ACTION:
-            1.  Get the result of calling _token_database_core.delete_token_by_id for method. If the deletion failed
+            1.  Get the result of calling _token_database_kernel.delete_token_by_id for method. If the deletion failed
                 wrap the exception inside the appropriate Database exceptions and send the exception chain
                 in the DeletionResult.
             2.  If the deletion operation completed directly forward the DeletionResult to the caller.
@@ -309,8 +318,8 @@ class TokenDatabase(Database[Token]):
         """
         method = "TokenDatabase.search_tokens"
         
-        # --- Handoff the search responsibility to _token_database_core. ---#
-        search_result = self._token_stack.context_service.finder.find(context=context)
+        # --- Handoff the search responsibility to _token_database_kernel. ---#
+        search_result = self._kernel.context_service.finder.find(context=context)
         
         # Handle the case that, the search is not completed.
         if search_result.is_failure:

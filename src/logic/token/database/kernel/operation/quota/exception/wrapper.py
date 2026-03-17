@@ -1,25 +1,25 @@
-# src/logic/system/computation/exception/wrapper.py
+# src/logic/token/database/kernel/util/quota/exception/wrapper.py
 
 """
-Module: logic.system.computation.exception.wrapper
+Module: logic.token.database.kernel.util.quota.exception.wrapper
 Author: Banji Lawal
-Created: 2025-11-18
-Version: 1.0.0
+Created: 2026-02-21
+version: 1.0.0
 """
 
 from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# COMPUTATION_FAILURE #======================#
-    "ComputationException",
+    # ======================# RANK_QUOTA_ANALYSIS_FAILURE #======================#
+    "RankQuotaAnalysisException",
 ]
 
-from logic.system import OperationException
+from logic.system import ComputationException
 
 
-# ======================# COMPUTATION_FAILURE #======================#
-class ComputationException(OperationException):
+# ======================# RANK_QUOTA_ANALYSIS_FAILURE #======================#
+class RankQuotaAnalysisException(ComputationException):
     """
     Role:
         - Worker Method Identification
@@ -27,9 +27,9 @@ class ComputationException(OperationException):
         - Exception Messaging
 
     Responsibilities:
-        1.  Indicate a computation was unsuccessful and did not produce a result.
+        1.  Indicate that  an error prevented a quota analysis from completing.
         2.  Identify the method where the failure occurred.
-        
+
     Attributes:
         op: Optional[str]
         ex: Optional[str]
@@ -41,12 +41,12 @@ class ComputationException(OperationException):
     Provides:
 
     Super:
-        OperationException
+        ComputationException
     """
     OP = "Computation"
     RSLT_TYPE = "ComputationResult"
-    ERR_CODE = "COMPUTATION_FAILURE"
-    MSG = "Computation method failed."
+    MSG = "Rank quota analysis failed."
+    ERR_CODE = "RANK_QUOTA_ANALYSIS_FAILURE"
     
     def __init__(
             self,
