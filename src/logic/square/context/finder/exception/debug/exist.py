@@ -23,7 +23,7 @@ class SquareNotFoundException(SquareDebugException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that no square was found.
 
     # PARENT:

@@ -21,7 +21,7 @@ class ExhaustiveBoardDeletionException(BoardException, DeletionException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Wrap debug exceptions indicating why deleting all occurrences of a board failed. deletion fails. The
         encapsulated exceptions create chain for tracing the source of the failure.
 

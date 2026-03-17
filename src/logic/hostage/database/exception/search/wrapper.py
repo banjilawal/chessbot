@@ -21,7 +21,7 @@ class UniqueHostageSearchException(HostageException, SearchException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Wrap debug exceptions indicating why inserting a unique Hostage failed. The encapsulated
         exceptions create chain for tracing the source of the failure.
 

@@ -22,7 +22,7 @@ class ServiceException(AnchorException):
     """
     # ROLE: Debug Coverage Target, Exception Chain Layer 0
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Reporting and coverage for Service DebugExceptions.
     2.  Uses cls_mthd attribute to show which Service method received a failure
         result from a worker.

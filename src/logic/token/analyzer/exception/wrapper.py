@@ -12,7 +12,7 @@ class TokenReadniessAnalysisException(TokenStateException, AnalysisException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Wrap any exception that kills the relation test process before the occupant's state has been evaluated.
 
     # PARENT:

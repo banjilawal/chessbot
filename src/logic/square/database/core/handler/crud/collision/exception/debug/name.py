@@ -20,7 +20,7 @@ class SquareNameCollisionException(SquareDebugException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     At least two squares two are sharing a name that should be unique to a square.
     
     # PARENT:

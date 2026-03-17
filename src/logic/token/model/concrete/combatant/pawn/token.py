@@ -19,7 +19,7 @@ class PawnToken(CombatantToken):
     """
     # ROLE: Data-Holder
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Represents a Pawn. Pawns can be promoted.
     2.  A Pawn can be promoted to either a Knight, Bishop, Rook, or Queen.
 

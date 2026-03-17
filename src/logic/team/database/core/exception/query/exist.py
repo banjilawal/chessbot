@@ -22,7 +22,7 @@ class TeamNotFoundException(TeamDebugException):
     """
     # ROLE: Debug, Error Tracing
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that an attempt to remove instances of a item by a unique attribute failed because no bag
         matching the property were found in the dataset.
 

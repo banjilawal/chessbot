@@ -22,7 +22,7 @@ class NullException(DebugException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that an object is null where it should not be.
     
     # PARENT:

@@ -23,7 +23,7 @@ class EdgePairInsertionException(InsertionException):
     # ROLE: Exception Chain Layer 1, Exception Messaging
     # TASK: Worker Method Identifier
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Identify the EdgePair method where the push failed.
         
     # PARENT:

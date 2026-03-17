@@ -20,7 +20,7 @@ class TeamRosterIsFullException(TeamRosterException):
     """
     # ROLE: Debug, Error Tracing
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that adding a item to the team failed because the roster has all sixteen tokens.
 
     # PARENT:

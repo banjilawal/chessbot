@@ -21,7 +21,7 @@ class FormationColorBoundsException(FormationException, BoundsException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a Formation lookup failed because the color value was not permitted for the Formation
         attribute.
 

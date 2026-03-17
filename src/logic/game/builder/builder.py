@@ -18,7 +18,7 @@ class GameBuilder(Builder[Game]):
     """
     # ROLE: Builder, Data Integrity And Reliability Guarantor
   
-    # RESPONSIBILITIES:
+    Responsibilities:
     Produce Game instances whose integrity is guaranteed at creation.
     
     # PROVIDES:

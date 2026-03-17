@@ -19,7 +19,7 @@ class UnformedTokenCannotBeVictorException(HostageException, FormationException)
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a candidate failed its Hostage validation because the victor did not have its
         formation set.
 

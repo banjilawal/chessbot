@@ -23,7 +23,7 @@ class PromoteInactivePawnException(TokenDebugException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that an inactive PawnToken cannot be promoted.
 
     # PARENT:

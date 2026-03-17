@@ -22,7 +22,7 @@ class NullGraphException(NullException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a graph is null where it should not be.
     
     # PARENT:

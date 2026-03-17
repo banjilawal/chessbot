@@ -17,7 +17,7 @@ class HostageContextService(ContextService[CaptivityContext]):
     """
     # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Public facing Captivity search microservice API.
     2.  Provides a map aware utility for searching Captivity objects.
     3.  Encapsulate integrity assurance logic in one extendable module.

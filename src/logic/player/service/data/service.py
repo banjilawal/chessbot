@@ -18,7 +18,7 @@ class AgentStackService(StackService[PlayerAgent]):
     """
     # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Microservice API for managing and searching Player collections.
     2.  Assures collection is always reliable.
     3.  Assure only valid Agents are put in the collection.

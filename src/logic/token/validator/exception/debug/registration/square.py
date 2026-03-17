@@ -21,7 +21,7 @@ class TokenNotRegisteredSquareException(TokenDebugException, NotRegisteredExcept
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  A failing ValidationResult was returned because the candidate token had not registered with its square.
 
     # PARENT:

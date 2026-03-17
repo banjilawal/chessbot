@@ -16,7 +16,7 @@ class MachinePlayer(Player):
     """
     # ROLE: Controller
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Forward requests and commands from a Machine owner to the Game model.
 
     # PARENT:

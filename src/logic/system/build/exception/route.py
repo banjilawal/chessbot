@@ -20,7 +20,7 @@ class NoExecutionRouteException(ExecutionRouteException):
     """
     # ROLE: Error Tracing, Debugging, Super Exception
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a build failed because there was no execution route for the specified option.
 
     # PARENT:

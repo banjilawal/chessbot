@@ -22,7 +22,7 @@ class PawnSpanner(Spanner):
     # ROLE: Worker, Computation
     # Provide a spanning set for a Pawn
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1. Provide a spanning set for a Pawn
 
     # PARENT:

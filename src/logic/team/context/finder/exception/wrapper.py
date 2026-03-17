@@ -23,7 +23,7 @@ class TeamSearchException(SearchException):
     """
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a team search was not completed, it returned an error instead of a
         work product. 
     2.  Identify the method where the failure occurred.
@@ -106,7 +106,7 @@ class TeamSearchException(TeamException, SearchException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Wrap debug exceptions indicating why a team search operation failed. The exception chain
         traces the ultimate source of failure.
 

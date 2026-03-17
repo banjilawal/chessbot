@@ -18,7 +18,7 @@ class Player(ABC):
     """
     # ROLE: Controller
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Directs movement of pieces in a Team's roster on a Board.
     2.  Forwards requests from the user to a Game.
     

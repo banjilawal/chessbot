@@ -22,7 +22,7 @@ class SquareStackRosterHandlerException(AnchorException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Provide SquareStackRosterHandler as:
             *   Reporting
             *   Coverage

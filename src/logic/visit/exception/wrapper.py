@@ -20,7 +20,7 @@ class VisitException(OperationException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Wrap any exceptions that were created when an visit is not completed successfully.
 
     # PARENT:

@@ -21,7 +21,7 @@ class Queen(Rank):
     """
     # ROLE: Computation, Metadata
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Produces a list of Coords reachable from a Queen's updated position.
     2.  Metadata about the Queen rank useful for optimizing the GameGraph.
     

@@ -22,7 +22,7 @@ class TeamFinder(DataFinder[Team]):
     """
     # ROLE: SearchWorker
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Send bag in a TeamList whose attribute value match the context.key value to the caller.
     2.  If a search does not complete forward the exception chain to the caller for debugging.
 

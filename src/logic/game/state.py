@@ -14,7 +14,7 @@ class GameState(Enum):
     """
     # ROLE:  Lifecycle State, Transition State,
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  States in a Game's lifecycle.
 
     # PARENT:

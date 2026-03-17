@@ -23,7 +23,7 @@ class PersonaKeyBuildException(BuildException):
     """
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate the PersonaKeyBuilder did not produce a valid work product.
     2.  Identify the PersonaKeyBuilder method where the failure occurred.
 

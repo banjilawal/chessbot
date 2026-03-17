@@ -23,7 +23,7 @@ class TeamNotFoundException(TeamDebugException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that no team was found.
 
     # PARENT:

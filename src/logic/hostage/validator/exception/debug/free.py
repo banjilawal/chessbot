@@ -6,7 +6,7 @@ class PrisonerCannotBeActiveCombatantException(HostageException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a occupant cannot be added to t
 
     # PARENT:

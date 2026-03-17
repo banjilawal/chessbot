@@ -24,7 +24,7 @@ class SquareStackPopException(DeletionException):
     # ROLE: Exception Chain Layer 1, Exception Messaging
     # TASK: Worker Method Identifier
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Identify the SquareStackService method where the pop failed.
 
     # PARENT:

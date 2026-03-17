@@ -22,7 +22,7 @@ class CommandException(AnchorException):
     """
     # ROLE: Debug Coverage Target, Exception Chain Layer 0
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Layer-0 of Exception chain which is the Parent of CommandDebugException
 
     # PARENT:

@@ -22,7 +22,7 @@ class KingSpanner(Spanner):
     # ROLE: Worker, Computation
     # Provide a spanning set for a King
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1. Provide a spanning set for a King
 
     # PARENT:

@@ -22,7 +22,7 @@ class CollectionException(ChessException):
     """
     # ROLE: Exception Wrapper
     
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Wrapper for data collection integrity problems.
     2   Parent of exceptions raised by a collection of bag a StackService owns.
     3.  Super for errors not covered by lower level CollectionException subclasses.

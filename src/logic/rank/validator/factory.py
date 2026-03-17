@@ -20,7 +20,7 @@ class RankValidatorFactory(Validator[Rank]):
     """
     # ROLE: Validation, Data Integrity Guarantor, Security.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Verifies a candidate is a Rank instance that meets integrity requirements, before
         the candidate is used.
 
@@ -136,7 +136,7 @@ class RankValiatorFactory(Validator[Rank]):
     """
     # ROLE: Factory, Data Integrity Guarantor
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Produce Rank instances whose integrity is guaranteed at creation.
     2.  Manage construction of Rank instances that can be used safely by the client.
     3.  Ensure params for Rank creation have met the application's safety contract.

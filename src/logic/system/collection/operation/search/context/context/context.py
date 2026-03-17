@@ -17,7 +17,7 @@ class Context(ABC, Generic[T]):
     """
     # ROLE: Filtering Options, Data Transfer
   
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Provide a set of attribute-value pairs. Used in searches or forward lookups.
     2.  For a search the attribute routes to search-by-attribute method and the value is the search target.
     3.  In a forward hashmap lookup The context represents a Key for a KeyHash{Key: {str: [attribute-value-set]}

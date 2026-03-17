@@ -20,7 +20,7 @@ class NumberValidationException(NumberException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Wrap debug exceptions indicating why a candidate failed its validation as an Int. The exception chain traces the ultimate source of failure.
 
     # PARENT:

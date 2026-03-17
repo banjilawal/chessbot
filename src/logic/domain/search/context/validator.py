@@ -22,7 +22,7 @@ class ResidentFilterValidator(Validator[ResidentFilter]):
     """
      # ROLE: Validation, Data Integrity Guarantor, Security., Data Integrity
   
-    # RESPONSIBILITIES:
+    Responsibilities:
     1. Process and validate parameters for creating `GraphSearchContext` instances.
     2. Create new `GraphSearchContext` objects if parameters meet specifications.
     2. Report errors and return `BuildResult` with error details.

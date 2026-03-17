@@ -23,7 +23,7 @@ class BoardContextValidationException(ValidationException):
     # ROLE: Exception Chain Layer 1, Exception Messaging
     # TASK: Worker Method Identifier
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Identify the BoardValidator method where the process failed.
 
     # PARENT:

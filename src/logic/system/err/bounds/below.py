@@ -21,7 +21,7 @@ class BelowBoundsException(BoundsException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a value is below bounds.
 
     # PARENT:

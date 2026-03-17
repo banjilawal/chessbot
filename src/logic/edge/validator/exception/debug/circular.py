@@ -23,7 +23,7 @@ class HeadCannotBeTailException(DebugException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate an edge validation failed because the head and tail were the same.
         Edges cannot be circular.
 

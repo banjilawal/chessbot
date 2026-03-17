@@ -16,7 +16,7 @@ class TokenStackOpsDispatcher:
     """
     # ROLE: Handler Manager
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Unifies TokenStackService utilities in one place.
     2.  Separates maintenance and debugging of
             *   Token operations.

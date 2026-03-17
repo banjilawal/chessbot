@@ -23,7 +23,7 @@ class BoardStackService(StackService[Board]):
     """
     # ROLE: Data Stack, SearchWorker IntegrityService, CRUD Operations, Encapsulation, API layer.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Public facing API.
     2.  Microservice for managing Board objects and their lifecycles.
     3.  Ensure integrity of Board data stack

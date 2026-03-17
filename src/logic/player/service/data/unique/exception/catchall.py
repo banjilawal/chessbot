@@ -21,7 +21,7 @@ class UniqueAgentDataServiceException(AgentException, DatabaseException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Parent of exception raised by UniqueAgentDataService objects.
     2.  Wraps an exception that hits the try-finally block of an UniqueDataAgent's method.
 

@@ -20,7 +20,7 @@ class TeamRosterException(TeamException):
     """
     # ROLE: Super Exception
   
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Super for RosterService errors.
   
     # PARENT:

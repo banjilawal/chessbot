@@ -17,7 +17,7 @@ class TokenContextService(ContextService[TokenContext]):
     """
     # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Public facingToken search microservice API.
     2.  Provides a map aware utility for searchingToken objects.
     3.  Encapsulate integrity assurance logic in one extendable module.

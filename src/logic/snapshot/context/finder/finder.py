@@ -21,7 +21,7 @@ class SnapshotFinder(Finder[Snapshot]):
     """
     # ROLE: SearchWorker
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Search AgentStackService or Database objects for Agents with an attribute that matches the
         target inside an SnapshotContext.
     2.  Safely forward any errors encountered during a search to the caller.

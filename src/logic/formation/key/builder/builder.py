@@ -22,7 +22,7 @@ class FormationKeyBuilder(Builder[FormationKey]):
     """
     # ROLE: Builder, Data Integrity And Reliability Guarantor
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Produce FormationKey instances whose integrity is guaranteed at creation.
     2.  Manage construction of FormationKey instances that can be used safely by the client.
     3.  Ensure params for FormationKey creation have met the application's safety contract.

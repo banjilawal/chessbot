@@ -23,7 +23,7 @@ class UnopenedTokenPoppingCoordException(TokenDebugException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a deployed token which has not opened cannot pop its CoordStack.
     
     # PARENT:

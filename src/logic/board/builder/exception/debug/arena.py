@@ -20,7 +20,7 @@ class BoardAlreadyContainsBoardException(BoardException):
     """
     # ROLE: Debug, Error Tracing
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a board build failed because the board for the board was already occupied.
 
     # PARENT:

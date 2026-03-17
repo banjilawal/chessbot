@@ -21,7 +21,7 @@ class BoardInsertionException(BoardException, InsertionException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that add a occupant to the roster failed.
 
     # PARENT:

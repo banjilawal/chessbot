@@ -22,7 +22,7 @@ class TokenOpeningSquareCollisionException(TokenDebugException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that two tokens share an opening square instead of having one of their own.
 
     # PARENT:

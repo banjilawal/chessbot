@@ -21,7 +21,7 @@ class PushingPipelineFailedException(PipelineStackException, InsertionException)
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that pushing a Pipeline on the Stack failed.
 
     # PARENT:

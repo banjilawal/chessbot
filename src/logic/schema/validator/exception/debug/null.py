@@ -22,7 +22,7 @@ class NullSchemaException(NullException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a schema is null where it should not be.
     
     # PARENT:

@@ -34,7 +34,7 @@ class SchemaKey(Context[Schema]):
     might be looking up formations of openings for a set of pieces. Assuring the Arena tuples of Player-Team
     are unique.
     
-    # RESPONSIBILITIES:
+    Responsibilities:
     The for A SchemaKey is used tForward Schema lookups use a SchemaSuperKet ro
     1.  Provides information to complete run forward-lookups on the Schema
     1.  Define a Key from an attribute-value pair. The attribute must exist in the schema.

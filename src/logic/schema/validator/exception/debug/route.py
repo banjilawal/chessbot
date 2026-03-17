@@ -22,7 +22,7 @@ class SchemaValidationRouteException(ResultException, ExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
     
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that SchemaValidator did not handle one of the paths necessary to assure a candidate is a
         safe to use Schema. There are different configurations of Schema that are correct. Each
         configuration must have a testing route for a thorough verification process. If a Schema configuration

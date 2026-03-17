@@ -22,7 +22,7 @@ class CommandBuilderException(BuildException):
     """
     # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that an error prevented CommandBuilder from returning a product.
 
         # PARENT:

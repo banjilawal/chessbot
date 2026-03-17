@@ -19,7 +19,7 @@ class HumanPlayerException(PlayerException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate an attribute, method, or operation organic to a HumanPlayer encountered a condition which
         caused a failure.
     2.  Wraps an exception that hits the try-finally block of an Player method.

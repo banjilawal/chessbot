@@ -20,7 +20,7 @@ class NegativeNumberNotAllowedException(NumberException, BoundsException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that number validation failed because the candidate was negative.
 
     # PARENT:

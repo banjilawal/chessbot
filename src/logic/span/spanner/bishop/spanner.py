@@ -19,7 +19,7 @@ class BishopSpanner(Spanner):
     # ROLE: Worker, Computation
     # Provide a spanning set for a Bishop
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1. Provide a spanning set for a Bishop
 
     # PARENT:

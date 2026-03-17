@@ -21,7 +21,7 @@ class ChangingArenaTeamBlockedException(ArenaException, DebugException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a team cannot be replaced once a game has started.
 .
     # PARENT:

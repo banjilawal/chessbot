@@ -22,7 +22,7 @@ class GameContextBuildException(BuildException):
     """
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate the GameContextBuilder did not produce a valid work product.
     2.  Identify the GameContextBuilder method where the failure occurred.
 

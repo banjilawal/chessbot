@@ -22,7 +22,7 @@ class SquareDatabase(Database[Square]):
     """
     # ROLE: Data Repository, CRUD Search Service, CRUD Operations, Encapsulation, API layer.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Higher level API for SquareStackService.
     2.  ACID service provider for SquareStackService.
 

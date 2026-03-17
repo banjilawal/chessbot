@@ -22,7 +22,7 @@ class NullRankException(NullException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a rank is null where it should not be.
     
     # PARENT:

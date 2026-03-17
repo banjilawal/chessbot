@@ -22,7 +22,7 @@ class BlankEmptyStringException(VoidStringException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Parent of exceptions which indicate an entity, method, or operation got a String with no characters and no
         whitespace.
     2.  Super for errors not covered by BlankEmptyString subclasses.

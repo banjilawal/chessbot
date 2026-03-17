@@ -21,7 +21,7 @@ class PushingTeamFailedException(TeamStackException, InsertionException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that pushing a Team on the Stack failed.
 
     # PARENT:

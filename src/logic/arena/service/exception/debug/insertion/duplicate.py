@@ -21,7 +21,7 @@ class ArenaAlreadyContainsTeamException(ArenaException, DebugException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that the team is already in the arena. It cannot be added again.
 
     # PARENT:

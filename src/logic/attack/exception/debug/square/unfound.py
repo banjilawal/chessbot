@@ -20,7 +20,7 @@ class AttackerSquareNotFoundException(AttackDebugException):
     """
     # ROLE: Debug, Error Tracing
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that the attack failed because no item was found at the attacker's coord.
 
     # PARENT:

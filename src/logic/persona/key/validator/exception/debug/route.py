@@ -21,7 +21,7 @@ class PersonaKeyValidationRouteException(PersonaKeyException, ExecutionRouteExce
     """
     # ROLE: Fallback Result, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that the PersonaKey validation failed because there was no build route for the PersonaKey key.
 
     # PARENT:

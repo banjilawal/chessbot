@@ -15,7 +15,7 @@ class AgentVariety(Enum):
     """
     # ROLE: Selection
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Used for picking an operation that on the basis of the Player subclass.
     2.  Safer than using strings.
 

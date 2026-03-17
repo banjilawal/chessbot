@@ -18,7 +18,7 @@ class ResourceUnavailableException(ChessException):
     """
     # ROLE: Error Tracing, Debugging, Super Exception
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a resource a client needs is unavailable.
 
     # PARENT:

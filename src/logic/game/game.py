@@ -18,7 +18,7 @@ class Game:
     """
     # ROLE: Controller
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     Interface players use to change the Arena's state.
 
     # PARENT:

@@ -18,7 +18,7 @@ class CommandRouter(ABC, Generic[S]):
     """
     # ROLE: Interface, Routing, Worker
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Route commands a command to the service's appropriate method.
 
     # PARENT:

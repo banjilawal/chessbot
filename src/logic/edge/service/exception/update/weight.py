@@ -21,7 +21,7 @@ class UpdatingEdgeWeightException(EdgeServiceException, UpdateException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Wrap debug exceptions indicating why an edge's weight could not be updated. The exception chain
         traces the ultimate source of failure.
 

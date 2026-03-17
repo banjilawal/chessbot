@@ -21,7 +21,7 @@ class FormationPersonaBoundsException(FormationException, BoundsException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a Formation lookup failed because the persona value was not permitted for the Formation
         attribute.
 

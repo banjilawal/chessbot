@@ -20,7 +20,7 @@ class NumberException(ChessException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Parent of exceptions raised by Numbers.
     2.  Super for conditions which are not covered by lower level Number exceptions.
 

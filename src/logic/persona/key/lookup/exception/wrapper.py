@@ -21,7 +21,7 @@ class PersonaLookupFailedException(PersonaException, LookupException):
     """
     # ROLE: WrapperException, Encapsulation
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Wrap debug exceptions indicating why a candidate failed its validation as a Square. The exception chain traces the ultimate source of failure.
 
     # PARENT:

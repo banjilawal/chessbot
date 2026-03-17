@@ -22,7 +22,7 @@ class CommandNameException(RequestDebugException):
     """
     # ROLE: Information, Reporting, Debug
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a service_request command_name has an error.
 
     # PARENT:

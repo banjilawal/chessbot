@@ -22,7 +22,7 @@ class NullSnapshotException(NullException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a snapshot is null where it should not be.
     
     # PARENT:

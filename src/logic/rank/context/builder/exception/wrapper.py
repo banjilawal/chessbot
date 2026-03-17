@@ -22,7 +22,7 @@ class RankContextBuildException(BuildException):
     """
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate the RankContextBuilder did not produce a valid work product.
     2.  Identify the RankContextBuilder method where the failure occurred.
 

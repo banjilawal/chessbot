@@ -23,7 +23,7 @@ class Database(Service, Generic[T]):
     """
     # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Assures StackService only stores unique data with no duplicates.
     2.  Interface for inserting data into the StackService.
     3.  Protects data from direct access.

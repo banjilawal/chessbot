@@ -21,7 +21,7 @@ class OutgoingEdgeWrongHeadException(NodeException, InsertionException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that adding outgoing edge failed because the edge was originated from a different
         node.
 

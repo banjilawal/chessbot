@@ -23,7 +23,7 @@ class PlayerBuildRouteException(ExecutionRouteException):
     """
     # ROLE: Error Tracing, Debugging, Super Exception
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that the PlayerFactory does not have abuild rout for a Player subclass..
 
     # PARENT:

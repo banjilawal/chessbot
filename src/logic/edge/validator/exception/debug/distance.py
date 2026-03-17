@@ -20,7 +20,7 @@ class EdgeDistanceException(EdgeDebugException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a candidate was not validated as an edge because its distance was a negative number.
 
     # PARENT:

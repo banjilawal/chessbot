@@ -22,7 +22,7 @@ class SchemaKeyBuilder(Builder[SchemaKey]):
     """
     # ROLE: Builder, Data Integrity And Reliability Guarantor
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Produce SchemaKey instances whose integrity is always guaranteed at creation.
     2.  If the build fails indicate the reason in an exception returned to the caller.
 

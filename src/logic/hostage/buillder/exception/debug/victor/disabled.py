@@ -22,7 +22,7 @@ class VictorCannotBeDisableHostageException(HostageException, DebugException):
     """
     # ROLE: Debug, Error Tracing
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that the Hostage build failed because the victor was not active for the build process.
         A occupant must be active when it creates a capture event.
 

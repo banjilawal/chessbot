@@ -22,7 +22,7 @@ class TokenAlreadyDeployedException(TokenDebugException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a token has already been deployed on the board..
 
     # PARENT:

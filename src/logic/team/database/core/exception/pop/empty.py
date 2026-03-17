@@ -23,7 +23,7 @@ class PoppingEmptyTeamStackException(TeamStackException, NullException):
     """
     # ROLE: Debug, Error Tracing
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that an attempt to remove a team failed because the TeamStack was not managing any teams.
 
     # PARENT:

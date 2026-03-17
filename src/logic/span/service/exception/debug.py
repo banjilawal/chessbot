@@ -22,7 +22,7 @@ class SpanServiceDebugException(DebugException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Describes the condition that caused a SpanService operation failure.
 
     # PARENT:

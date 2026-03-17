@@ -23,7 +23,7 @@ class ArenaNotFoundException(ArenaDebugException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that no arena was found.
 
     # PARENT:

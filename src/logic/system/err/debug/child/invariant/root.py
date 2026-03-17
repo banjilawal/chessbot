@@ -22,7 +22,7 @@ class InvariantBreachException(DebugException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a fundamental invariant of the system or environment is violated. The system’s
         assumptions about its internal state are no longer valid.
 

@@ -20,7 +20,7 @@ class GameContext(Context[Game]):
     """
     # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     Provide an GameFinder with an attribute value to find Games with a matching value in
     their version of the attribute.
 

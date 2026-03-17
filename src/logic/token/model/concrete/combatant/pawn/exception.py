@@ -20,7 +20,7 @@ class PawnTokenException(TokenException):
     """
     # ROLE: Super Exception
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Parent and super for exception specific to PawnToken instances.
 
     # PARENT:

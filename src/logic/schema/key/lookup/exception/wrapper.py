@@ -25,7 +25,7 @@ class SchemaLookupFailedException(SchemaException, ForwardLookupFailedException)
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Wrap an exception that hits the try-finally block of a SchemaLookup method.
 
     # PARENT:

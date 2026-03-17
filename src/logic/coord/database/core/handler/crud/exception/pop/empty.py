@@ -23,7 +23,7 @@ class PoppingEmtpyCoordStackException(DebugException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate popping a CoordStack failed because the stack was empty.
 
     # PARENT:

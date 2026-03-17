@@ -23,7 +23,7 @@ class KnightException(RankException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Provide Rank as:
             *   Reporting
             *   Coverage

@@ -24,7 +24,7 @@ class PipelineStack(StackService[Pipeline]):
     """
     # ROLE: Data Stack, Search AbstractService, CRUD Operations, Encapsulation, API layer.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Public facing API.
     2.  Microservice for managing pipeline objects and their lifecycles.
     3.  Ensure integrity of pipeline data stack

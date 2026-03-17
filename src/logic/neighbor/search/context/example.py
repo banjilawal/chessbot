@@ -108,7 +108,7 @@ From `logic.owner`:
 """
 # ROLE: Builder, Data Integrity And Reliability Guarantor implementation
 
-# RESPONSIBILITIES:
+Responsibilities:
 1. Process and validate parameters for creating `DiscoverySearchContext` instances.
 2. Create new `DiscoverySearchContext` objects if parameters meet specifications.
 2. Report errors and return `BuildResult` with error details.

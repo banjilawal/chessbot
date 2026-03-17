@@ -20,7 +20,7 @@ class AttackingTokenOnWrongBoardException(AttackDebugException):
     """
     # ROLE: Debug, Error Tracing
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that an attack failed because the attacker was targeting the wrong board,
 
     # PARENT:

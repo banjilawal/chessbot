@@ -24,7 +24,7 @@ class SquareFinder(StackSearcher[Square]):
     """
     # ROLE: Search
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Single point of entry into different square search routes.
     2.  Return a list of squares which match the context attribute's value.
     3.  Provide an exception chain the client can use to trace a search that does is not completed.

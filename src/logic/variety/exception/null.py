@@ -21,7 +21,7 @@ class AgentVarietyNullException(InvalidAgentVarietyException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate if an entity, method or operation required an AgentVariety  but got null instead.
 
     # PARENT:

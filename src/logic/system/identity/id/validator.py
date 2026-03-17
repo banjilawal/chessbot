@@ -16,7 +16,7 @@ class IdValidator(Validator[int]):
     """
      # ROLE: Validation, Data Integrity Guarantor, Security., Integrity
   
-    # RESPONSIBILITIES:
+    Responsibilities:
     Verifies a candidate is an int greater than zero before its used an ID.
   
     # PROVIDES:
@@ -30,7 +30,7 @@ class IdValidator(Validator[int]):
     """
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Ensure a designation is certified safe, reliable and consistent before use.
     2.  If verification fails indicate the reason in an exception, returned to the caller.
     3.  An Id is required to be greater than zero.

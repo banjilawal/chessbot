@@ -21,7 +21,7 @@ class BoardDeletionException(BoardException, DeletionException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Wrap debug exceptions indicating why a BoardStack deletion fails. The encapsulated exceptions create
         chain for tracing the source of the failure.
 

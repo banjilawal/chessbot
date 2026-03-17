@@ -19,7 +19,7 @@ class TeamContext(Context[Team]):
     """
     # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     Provide an TeamFinder with an attribute value to find Teams with a matching value in
     their version of the attribute.
 

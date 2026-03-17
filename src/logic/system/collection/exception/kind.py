@@ -20,7 +20,7 @@ class WrongCollectionTypeException(CollectionException):
     """
     # ROLE: Exception Wrapper
     
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  The Collection contains the wrong type of data.
     
     # PARENT:

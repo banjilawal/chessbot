@@ -20,7 +20,7 @@ class DiscoveryStatusNullException(NullException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     A failing ValidationResult was returned because the candidate was null.
 
     # PARENT:

@@ -18,7 +18,7 @@ class GameStackService(StackService[Game]):
     """
     # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Microservice API for managing and searching Game collections.
     2.  Assures collection is always reliable.
     3.  Assure only valid Games are put in the collection.

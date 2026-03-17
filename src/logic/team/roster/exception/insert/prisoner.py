@@ -20,7 +20,7 @@ class AddingPrisonerToTeamRosterException (TeamRosterException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a occupant cannot be added to the roster because it was not free.
 
     # PARENT:

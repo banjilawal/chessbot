@@ -11,7 +11,7 @@ class TeamRosterMemberDoesNotExistForRemovalException(TeamRosterException):
     """
     # ROLE: Debug, Error Tracing
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that the roster member could not be removed because it does not exist.
 
     # PARENT:

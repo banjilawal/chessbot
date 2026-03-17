@@ -61,7 +61,7 @@ class TransactionState(Enum):
   """
   # ROLE: Builder, Data Integrity And Reliability Guarantor implementation
 
-  # RESPONSIBILITIES:
+  Responsibilities:
   1. Process and validate parameters for creating `Team` instances.
   2. Create new `Team` objects if parameters meet specifications.
   2. Report errors and return `BuildResult` with error details.

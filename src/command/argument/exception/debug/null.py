@@ -22,7 +22,7 @@ class NullArgumentsException(NullException):
     """
     # ROLE: Information, Reporting, Debug
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a request.arguments dictionary does not exist.
 
     # PARENT:

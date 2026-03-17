@@ -19,7 +19,7 @@ class EdgeBuilder(Builder[Edge]):
     """
     # ROLE: Factory, Data Integrity Guarantor
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Produce Edge instances whose integrity is guaranteed at creation.
     2.  Manage construction of Edge instances that can be used safely by the client.
     3.  Ensure params for Edge creation have met the application's safety contract.

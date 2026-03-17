@@ -24,7 +24,7 @@ class EdgeContext(Context[Edge]):
     """
     # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     Provide an EdgeFinder with an attribute value to find Edges with a matching value in teir version of
     the attribute.
 

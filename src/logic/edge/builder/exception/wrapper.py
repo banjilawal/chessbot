@@ -22,7 +22,7 @@ class EdgeBuildException(BuildException):
     """
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate the EdgeBuilder did not produce a valid work product.
     2.  Identify the EdgeBuilder method where the failure occurred.
 

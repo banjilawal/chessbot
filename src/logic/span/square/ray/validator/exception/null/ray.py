@@ -23,7 +23,7 @@ class SquareRayNullException(NullException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a SquareRay is null where it should not be.
 
     # PARENT:

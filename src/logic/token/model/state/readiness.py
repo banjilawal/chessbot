@@ -13,7 +13,7 @@ class ReadinessState(Enum):
     """
     # ROLE: State Descriptor
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicating if the Token is in a state where
             *   It has not been formed on the board.
             *   It can move on board.

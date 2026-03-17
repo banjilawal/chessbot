@@ -18,7 +18,7 @@ class IdentityService:
     """
     # ROLE: Service, Validation, Data Integrity, ID Generation
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Issue IDs to new objects.
     2.  Manage integrity checks on IDs and names of existing objects.
     3.  Assure names are:

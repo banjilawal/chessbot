@@ -20,7 +20,7 @@ class ContextException(ChessException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Parent of exception raised by CONTEXT objects
     3.  Super for CONTEXT errors not covered by lower level CONTEXT exception.
 

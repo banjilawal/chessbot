@@ -11,7 +11,7 @@ class CannotDeleteTokenFromDifferentRosterException(TeamRosterException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that inserting into a Team's roster failed because it the occupant had a different team.
 
     # PARENT:

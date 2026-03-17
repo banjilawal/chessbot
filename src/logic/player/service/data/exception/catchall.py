@@ -24,7 +24,7 @@ class AgentDataServiceException(AgentException, ServiceException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that an AgentStackService encountered an error which prevented the service from completing a task.
     2.  Wrap an exception that hits the try-finally block of a AgentStackService method.
 

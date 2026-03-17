@@ -21,7 +21,7 @@ class TokenOnDifferentBoardException(BoardException, TokenException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that inserting a BoardToken failed because the occupant belonged to a  different board.
 
     # PARENT:

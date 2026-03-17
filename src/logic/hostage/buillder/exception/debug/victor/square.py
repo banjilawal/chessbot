@@ -22,7 +22,7 @@ class VictorNotOccupyingCapturedSquareException(HostageException, DebugException
     """
     # ROLE: Debug, Error Tracing
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that the Hostage build failed because the victor was not occupying the item where it
         captured the prisoner.
 

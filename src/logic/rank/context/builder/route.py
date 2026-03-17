@@ -23,7 +23,7 @@ class RankContextExecutionRouteException(ExecutionRouteException):
     """
     # ROLE: Error Tracing, Debugging, Super Exception
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that there is no build route for a RankContext attribute.
 
     # PARENT:

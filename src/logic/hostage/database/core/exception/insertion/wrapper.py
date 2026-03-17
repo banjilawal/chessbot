@@ -21,7 +21,7 @@ class HostageInsertionException(HostageException, InsertionException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that add a hostage to the dataset failed.
 
     # PARENT:

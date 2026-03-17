@@ -20,7 +20,7 @@ class AddingDuplicateEdgeException(EdgeDebugException):
     """
     # ROLE: Debug, Error Tracing
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that an attempt to add a edge to teh stack failed because it was already present.
 
     # PARENT:

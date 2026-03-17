@@ -20,7 +20,7 @@ class WhiteTeamHasWrongSchemaException(TeamHashException):
     """
     # ROLE: Super Exception
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicates that the white team in the hash does not have a white schema.
 
     # PARENT:

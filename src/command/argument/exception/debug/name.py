@@ -21,7 +21,7 @@ class ArgumentNameException(ServiceRequestDebugException):
     """
     # ROLE: Information, Reporting, Debug
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a service_request has a wrong argument for the command.
     
     # PARENT:

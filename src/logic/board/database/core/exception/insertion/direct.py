@@ -20,7 +20,7 @@ class AppendingBoardDirectlyIntoItemsFailedException(BoardDataServiceException):
     """
     # ROLE: Debug, Error Tracing
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that appending the board directly into self.bag was not in the list after running bag.append.
 
     # PARENT:

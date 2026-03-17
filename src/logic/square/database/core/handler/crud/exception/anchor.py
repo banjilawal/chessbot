@@ -22,7 +22,7 @@ class SquareCrudHandlerException(AnchorException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Provide SquareStackCrudHandler as:
             *   Reporting
             *   Coverage

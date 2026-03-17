@@ -23,7 +23,7 @@ class HostageServiceException(ServiceException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Anchoring target for HostageService debug (layer-2) error state firing incident
         reports on
             *   the triggering variable

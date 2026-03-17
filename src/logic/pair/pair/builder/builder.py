@@ -18,7 +18,7 @@ class PairBuilder(Builder[Pair]):
     """
      # ROLE: Builder, Data Integrity And Reliability Guarantor
 
-     # RESPONSIBILITIES:
+     Responsibilities:
      1.  Produce Pair instances whose integrity and reliability are guaranteed.
      2.  Ensure params for Pair creation have met the application's safety contract.
      3.  Return an exception to the client if a build resource does not satisfy integrity requirements.

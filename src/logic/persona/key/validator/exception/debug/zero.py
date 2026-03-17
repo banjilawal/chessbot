@@ -21,7 +21,7 @@ class ZeroPersonaKeysException(PersonaKeyException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a candidate failed PersonaKey validation because no attribute was enabled.
 
     # PARENT:

@@ -21,7 +21,7 @@ class DiagonalPlaneFactors:
     # ROLE: Data-Holder, Utility
     # TASK: Provide solution sets
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Derive the factors for computing the ray projections from an origin to its 
             * Northeast (Quadrant 0)
             * Northwest (Quadrant 1)

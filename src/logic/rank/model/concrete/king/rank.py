@@ -21,7 +21,7 @@ class King(Rank):
     """
     # ROLE: Computation, Metadata
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Produces a list of Coords reachable from a King's updated position.
     2.  Metadata about the King rank useful for optimizing the GameGraph.
     

@@ -22,7 +22,7 @@ class GraphBuildException(BuildException):
     """
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate the GraphBuilder did not produce a valid work product.
     2.  Identify the GraphBuilder method where the failure occurred.
 

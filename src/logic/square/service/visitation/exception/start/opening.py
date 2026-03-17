@@ -19,7 +19,7 @@ class VisitingWrongOpeningSquareException(SquareDebugException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
     
-    # RESPONSIBILITIES:
+    Responsibilities:
     A Validation failure result was returned because a Token was trying to form on the wrong opening square.
 
     # PARENT:

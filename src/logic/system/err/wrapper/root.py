@@ -23,7 +23,7 @@ class WrapperException(ChessException):
     # ROLE: Exception Chain Layer 1, Exception Messaging
     # TASK: Worker Method Identifier
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Abstract exception for Worker subclasses which indicate
             *   The worker
             *   It's method

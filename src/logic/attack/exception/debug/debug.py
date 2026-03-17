@@ -22,7 +22,7 @@ class AttackDebugException(AttackException, DebugException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Describes the condition that caused a Attack operation failure.
 
     # PARENT:

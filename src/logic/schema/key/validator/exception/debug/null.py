@@ -21,7 +21,7 @@ class NullSchemaKeyException(SchemaKeyException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a candidate failed its SchemaKey safety certification because it was null.
 
     # PARENT:

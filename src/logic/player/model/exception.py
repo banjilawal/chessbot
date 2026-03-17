@@ -20,7 +20,7 @@ class PlayerException(ChessException):
     """
     # ROLE: Super Exception
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Super for Player errors not covered by PlayerException subclasses.
 
     # PARENT:

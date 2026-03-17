@@ -23,7 +23,7 @@ class TokenValidationException(ValidationException):
     # ROLE: Exception Chain Layer 1, Exception Messaging
     # TASK: Worker Method Identifier
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Identify the TokenValidator method where the process failed.
 
     # PARENT:

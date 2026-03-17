@@ -21,7 +21,7 @@ class NodePushException(NodeStackException, InsertionException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that pushing a Node on the Stack failed.
 
     # PARENT:

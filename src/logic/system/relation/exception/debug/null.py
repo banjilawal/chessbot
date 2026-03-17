@@ -24,7 +24,7 @@ class NoRelationException(RelationDebugException):
     # ROLE:  Exception Messaging, Exception Chain Layer 2
     # TASK: Capture Error Variable State
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Produce the:
             *   variable,
             *   it's Value,

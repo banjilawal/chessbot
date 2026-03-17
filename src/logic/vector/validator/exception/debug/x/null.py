@@ -22,7 +22,7 @@ class VectorNullXException(NullException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a vector.x  was null.
     
     # PARENT:

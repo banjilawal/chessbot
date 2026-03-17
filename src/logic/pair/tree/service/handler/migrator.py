@@ -18,7 +18,7 @@ class NodeTreeStackMigrator:
     """
     # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Migrate unique nodes from the tree into a NodeStack
 
     # PARENT:

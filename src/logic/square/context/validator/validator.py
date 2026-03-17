@@ -25,7 +25,7 @@ class SquareContextValidator(Validator[SquareContext]):
     """
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Ensure a SquareContext instance is certified safe, reliable and consistent before use.
     2.  If verification fails send an exception detailing the failure.
 

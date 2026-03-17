@@ -23,7 +23,7 @@ class SquareStackRosterHandler:
     """
     # ROLE: Handler. Utility, Transport, Utilities, Update Management,
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Transfers Team.roster members to their opening squares.
 
     # PARENT:

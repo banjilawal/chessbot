@@ -18,7 +18,7 @@ class DataResult(Result[T], Generic[T]):
     """
     # ROLE: Messanger, Data Transport Object, Error Transport Object.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     Data transactions are solely insertions, deletions, updates, and calculations. Data transactions either
     put something into a collection, remove something from it, or generate a new value from the existing data.
     All these operations either succeed or fail. So they will contain either a payload or an exception (but not both).

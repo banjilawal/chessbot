@@ -20,7 +20,7 @@ class ContextServiceException(ContextException, ServiceException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Parent of exceptions raised by ServiceContext objects.
     2.  Wrap an exception that hits the try-finally block of a ServiceContext method.
 

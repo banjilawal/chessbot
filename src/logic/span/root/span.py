@@ -20,7 +20,7 @@ class Span(ABC, Generic[T]):
     """
     # ROLE: Data-Holder
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Stores rays projected from a common origin.
 
     # PARENT:

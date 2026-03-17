@@ -20,7 +20,7 @@ class DisabledTokenCannotExploreException(ExplorationException):
     """
     # ROLE: Debug, Error Tracing
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a disabled occupant cannot explore the board
 
     # PARENT:

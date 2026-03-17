@@ -17,7 +17,7 @@ class RankContext(Context[Rank]):
     """
     # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     Provide an RankFinder with an attribute value to find Ranks with a matching value in
     their version of the attribute.
 

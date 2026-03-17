@@ -20,7 +20,7 @@ class CoordContextBuilder(Builder[CoordContext]):
     """
     # ROLE: Builder, Data Integrity And Reliability Guarantor
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Produce CoordContext instances whose integrity is guaranteed at creation.
     2.  Manage construction of CoordContext instances that can be used safely by the client.
     3.  Ensure params for CoordContext creation have met the application's safety contract.

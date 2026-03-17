@@ -25,7 +25,7 @@ class NotRegisteredException(RelationDebugException):
         attribute. If the owner does not find the many_instance in its collection there item is not registered
         with the owner. Raised when Entity.owner == owner but the Owner does not find the item in its dataset.
     
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that, a failing result was returned because the satellite has not registered itself with its
         primary.
         

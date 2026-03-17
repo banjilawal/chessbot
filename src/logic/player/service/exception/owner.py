@@ -22,7 +22,7 @@ class TeamBelongsToDifferentOwnerException(PlayerException, TeamException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a team belongs to a different owner.
 
     # PARENT:

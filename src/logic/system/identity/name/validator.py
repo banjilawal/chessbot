@@ -20,7 +20,7 @@ class NameValidator(Validator[str]):
     """
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Ensure a designation is certified safe, reliable and consistent before use.
     2.  If verification fails indicate the reason in an exception, returned to the caller.
     3.  Names are required to be:

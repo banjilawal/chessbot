@@ -17,7 +17,7 @@ class PerpendicularRayProvider:
     # ROLE: Utility
     # TASK: Provide solution sets
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Aggregate modules for computing components of perpendicular span from an origin.
     2.  Simplify CoordSpan derivations.
 

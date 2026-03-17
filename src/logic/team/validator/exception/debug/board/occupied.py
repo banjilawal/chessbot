@@ -20,7 +20,7 @@ class TeamSlotAlreadyOccupiedException(TeamDebugException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  A failing TeamValidationResult was returned because the candidate team's board slot was already occupied.
 
     # PARENT:

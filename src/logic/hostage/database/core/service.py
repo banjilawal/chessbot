@@ -20,7 +20,7 @@ class HostageList(StackService[Hostage]):
     """
     # ROLE: Data Stack, SearchWorker IntegrityService, CRUD Operations, Encapsulation, API layer.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Public facing API.
     2.  Microservice for managing Hostage objects and their lifecycles.
     3.  Ensure integrity of Hostage data stack

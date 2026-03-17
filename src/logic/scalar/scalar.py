@@ -15,7 +15,7 @@ class Scalar:
     """
     # ROLE: Computation, Transformation, Data-Holder
     
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  A 1-D quantity.
     2.  Creating new 2-D object which can be either a
             *   Vector

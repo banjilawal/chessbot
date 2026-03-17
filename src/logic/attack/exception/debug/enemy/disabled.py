@@ -11,7 +11,7 @@ class AttackingDisabledEnemyException(AttackDebugException):
     """
     # ROLE: Debug, Error Tracing
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that an attack failed because the was already disabled.
 
     # PARENT:

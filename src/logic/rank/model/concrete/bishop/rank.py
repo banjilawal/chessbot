@@ -22,7 +22,7 @@ class Bishop(Rank):
     """
     # ROLE: Computation, Metadata
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Produces a list of Coords reachable from a Bishop's updated position.
     2.  Metadata about the Bishop rank useful for optimizing the GameGraph.
 

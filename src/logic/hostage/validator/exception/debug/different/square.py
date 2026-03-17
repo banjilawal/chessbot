@@ -20,7 +20,7 @@ class PrisonerCapturedOnDifferentSquareException(HostageException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a candidate failed its Hostage validation because the victor and prisoner were on
         different item.
 

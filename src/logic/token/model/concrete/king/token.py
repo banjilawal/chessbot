@@ -18,7 +18,7 @@ class KingToken(Token):
     """
     # ROLE: Data-Holder, Abstract Data Type
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Represents a Token with a King's Rank and properties.
     2.  Cannot be captured on placed in check or checkmated.
 

@@ -21,7 +21,7 @@ class TeamPlayingDifferentArenaException(TeamException, ArenaException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a team different a different arena.
 
     # PARENT:

@@ -18,7 +18,7 @@ class Domain:
     """
     # ROLE: Data-Holder
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     Immutable data structure that:
         1. Lists all squares reachable by Domain owner in a walk from its updated position.
         2. Indicate which Squares are blocked by a friendly Token.

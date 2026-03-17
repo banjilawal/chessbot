@@ -20,7 +20,7 @@ class TeamSchemaCollisionException(TeamHashException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Raised if both teams in the hash have the same schema.
 
     # PARENT:

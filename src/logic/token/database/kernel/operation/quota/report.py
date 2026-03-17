@@ -25,29 +25,30 @@ class RankQuotaReport:
             
      Attributes:
          rank: Rank
-         quota: int
-         opernings: int
+         number_of_openings: int
          
      Provides:
      Super:
      """
     _rank: Rank
-    _quota: int
-    _openings: int
+    _number_of_openings: int
     
-    def __init__(self, rank: Rank, quota: int, openings: int):
+    def __init__(self, rank: Rank,  number_of_openings: int):
         self._rank = rank
-        self._quota = quota
-        self._openings = openings
+        self._number_of_openings = number_of_openings
         
     @property
     def rank(self) -> Rank:
         return self._rank
     
     @property
-    def quota(self) -> int:
-        return self._quota
+    def number_of_openings(self) -> int:
+        return self._number_of_openings
     
     @property
-    def openings(self) -> int:
-        return self._openings
+    def openings_exist(self) -> bool:
+        return self._rank.persona.quota - self._number_of_openings > 0
+    
+    @property
+    def rank_is_full(self) -> bool:
+        return not self.openings_exist

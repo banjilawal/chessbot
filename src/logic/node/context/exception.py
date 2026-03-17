@@ -21,7 +21,7 @@ class NodeContextException(NodeException, ContextException):
     """
     # ROLE: Super Exception
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Super for NodeContext errors not covered by NodeException subclasses.
 
     # PARENT:

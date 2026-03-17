@@ -18,7 +18,7 @@ class HashLookup(SearchWorker[Enum]):
     """
     # ROLE: Forward Lookups,
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Use Key (metadata_attribute: value) to find entries in
             StrategyContractorHashMap{StrategyTitle: {ContractorBuildMetadata}
     2.  Use Key to find entries in CategoryHashMap{Name: Tuple}

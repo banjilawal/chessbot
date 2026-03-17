@@ -23,7 +23,7 @@ class EdgeContextExecutionRouteException(ExecutionRouteException):
     """
     # ROLE: Error Tracing, Debugging, Super Exception
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that there is no build route for a EdgeContext attribute.
 
     # PARENT:

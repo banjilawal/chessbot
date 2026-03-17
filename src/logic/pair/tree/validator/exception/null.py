@@ -22,7 +22,7 @@ class NodeTreeNullException(NullException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a nodeTree is null where it should not be.
     
     # PARENT:

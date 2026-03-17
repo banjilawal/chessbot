@@ -11,7 +11,7 @@ class KingCannotBeCapturedException(HostageException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that adding a occupant to the prisoners failed because it was a KingToken instead of a CombatantToken
 
     # PARENT:

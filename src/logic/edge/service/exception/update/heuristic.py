@@ -21,7 +21,7 @@ class UpdatingEdgeHeuristicException(EdgeServiceException, UpdateException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Wrap debug exceptions indicating why an edge's heuristic could not be updated. The exception chain
         traces the ultimate source of failure.
 

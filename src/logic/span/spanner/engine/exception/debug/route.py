@@ -24,7 +24,7 @@ class SpanComputationRouteException(ExecutionRouteException):
     # ROLE: Exception Chain Layer 2, Exception Messaging
     # TASK: Capture Error Variable State
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  A failure ComputationResult was sent because there was no computation route for the RayProvider.
 
     # PARENT:

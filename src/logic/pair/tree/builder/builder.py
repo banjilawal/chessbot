@@ -21,7 +21,7 @@ class NodeTreeBuilder(Builder[NodeTree]):
     """
      # ROLE: Builder, Data Integrity And Reliability Guarantor
 
-     # RESPONSIBILITIES:
+     Responsibilities:
      1.  Produce NodeTree instances whose integrity and reliability are guaranteed.
      2.  Ensure params for NodeTree creation have met the application's safety contract.
      3.  Return an exception to the client if a build resource does not satisfy integrity requirements.

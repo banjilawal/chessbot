@@ -20,7 +20,7 @@ class NullNumberException(NumberException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that number validation failed because the candidate was null.
 
     # PARENT:

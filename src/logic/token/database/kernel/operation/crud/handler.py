@@ -20,7 +20,7 @@ class TokenStackCrudHandler:
     """
     # ROLE: CRUD Handler, Consistency, Integrity Maintenance, Lifecycle Management
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Ensure integrity and consistency are maintained during TokenStack
             *   Insertion
             *   Deletion

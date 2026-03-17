@@ -32,7 +32,7 @@ class Persona(Enum):
     ## WHO USES THE PERSONA TABLE:
         *   RankBuilder uses a Persona.ELEMENT/ENTRY to create a Rank object.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Metadata for each Rank.
     1.  Supply build parameters to RankFactory methods.
 

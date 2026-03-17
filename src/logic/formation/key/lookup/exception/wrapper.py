@@ -21,7 +21,7 @@ class FormationLookupFailedException(FormationException, LookupException):
     """
     # ROLE: WrapperException, Encapsulation
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  If a Formation lookup runs into an error a debug exception is created and encapsulated in a
         FormationLookupFailedException creating an exception chain which is sent to the caller in a
         SearchResult.

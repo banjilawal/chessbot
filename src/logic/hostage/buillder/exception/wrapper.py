@@ -22,7 +22,7 @@ class HostageBuildException(BuildException):
     """
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate the HostageBuilder did not produce a valid work product.
     2.  Identify the HostageBuilder method where the failure occurred.
 

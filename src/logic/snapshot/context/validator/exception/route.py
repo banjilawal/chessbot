@@ -21,7 +21,7 @@ class SnapshotContextValidationRouteException(SnapshotContextException, Executio
     """
     # ROLE: Fallback Result, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that the SnapshotContext validation failed because there was no build route for the SnapshotContext key.
 
     # PARENT:

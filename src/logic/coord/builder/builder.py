@@ -17,7 +17,7 @@ class CoordBuilder(Builder[Coord]):
     """
      # ROLE: Builder, Data Integrity And Reliability Guarantor
      
-     # RESPONSIBILITIES:
+     Responsibilities:
      1.  Produce Coord instances whose integrity is guaranteed at creation.
      2.  Ensure params for Coord creation have met the application's safety contract.
      3.  Return an exception to the client if a build resource does not satisfy integrity requirements.

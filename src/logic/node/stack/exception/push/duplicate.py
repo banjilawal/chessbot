@@ -20,7 +20,7 @@ class AddingDuplicateNodeException(NodeDebugException):
     """
     # ROLE: Debug, Error Tracing
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that an attempt to add a node to teh stack failed because it was already present.
 
     # PARENT:

@@ -26,7 +26,7 @@ class SquareBuilder(Builder[Square]):
     """
      # ROLE: Builder, Data Integrity And Reliability Guarantor
 
-     # RESPONSIBILITIES:
+     Responsibilities:
      1.  Produce Square instances whose integrity and reliability are guaranteed.
      2.  Ensure params for Square creation have met the application's safety contract.
      3.  Return an exception to the client if a build resource does not satisfy integrity requirements.

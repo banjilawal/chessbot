@@ -19,7 +19,7 @@ class Board:
     """
     # ROLE: Data-Holder/Data Owner
   
-    # RESPONSIBILITIES:
+    Responsibilities:
     The Surface of Squares where Tokens are played.
   
     # PROVIDES:

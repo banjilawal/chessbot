@@ -23,7 +23,7 @@ class CommandRouterException(AnchorException):
     """
     # ROLE: Information, Reporting, Debug
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Locus of attention for CommandRouterDebugExceptions.
 
     # PARENT:

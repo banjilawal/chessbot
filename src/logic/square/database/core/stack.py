@@ -25,7 +25,7 @@ class SquareStackService(StackService[Square]):
     """
     # ROLE: Data Structure, Services:(Integrity, Build, Validation, Search) Encapsulation, API layer.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Microservice for managing Square objects and their lifecycles.
     2.  Guarantee all Square instances in stack are unique.
 

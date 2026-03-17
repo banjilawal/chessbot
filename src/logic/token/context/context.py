@@ -21,7 +21,7 @@ class TokenContext(Context[Token]):
     """
     # ROLE: SearchWorker option filter
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     Provides options for what type of key-value pair TokenFinder should use to find matches.
 
     # PROVIDES:

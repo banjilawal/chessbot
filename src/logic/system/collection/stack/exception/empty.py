@@ -20,7 +20,7 @@ class PoppingEmptyStackException(StackServiceException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     Indicate there was an attempt to pop an empty stack.
 
     # PARENT:

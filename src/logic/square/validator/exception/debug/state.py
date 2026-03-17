@@ -18,7 +18,7 @@ class SquareSquareStateException(DebugException, SquareException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  A failure ValidationResult was returned because the validation candidate was square instead of
         being a SquareState.
 

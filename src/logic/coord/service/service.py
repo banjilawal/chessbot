@@ -18,7 +18,7 @@ class CoordService(IntegrityService[Coord]):
     """
     # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Public facing Coord microservice API.
     2.  Encapsulate integrity assurance logic in one extendable module.
     3.  Authoritative, single source of truth for Coord state by providing single entry and exit points to Coord

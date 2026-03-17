@@ -22,7 +22,7 @@ class NullCommandException(NullException):
     """
     # ROLE: Information, Reporting, Debug
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a Command is null.
 
     # PARENT:

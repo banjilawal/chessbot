@@ -20,7 +20,7 @@ class AgentVarietyException(ChessException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Parent of exception raised when an AgentVariety's normal operations are halted by an error condition.
     2.  Raised when no specific exception exists for the condition which brought the AgentVariety object into
         an error state.

@@ -14,7 +14,7 @@ class SquareState(Enum):
     """
     # ROLE: State Descriptor
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicating if the Token is in a state where
             *   It has not been deployed to its opening square.
             *   II has been deployed on the board.

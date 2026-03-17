@@ -21,7 +21,7 @@ class FormationSquareBoundsException(FormationException, BoundsException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a Formation lookup failed because the item value was not permitted for the Formation
         attribute.
 

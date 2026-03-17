@@ -22,7 +22,7 @@ class CommandRouterDebugException(DebugException):
     """
     # ROLE: Information, Reporting, Debug
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Parent of DebugExceptions pertinent to CommandRouter instances.
 
     # PARENT:

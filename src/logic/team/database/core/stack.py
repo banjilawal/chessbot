@@ -24,7 +24,7 @@ class TeamStack(StackService[Team]):
     """
     # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Public facing API.
     2.  Microservice for managing team objects and their lifecycles.
     3.  Ensure integrity of team data stack

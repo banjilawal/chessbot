@@ -23,7 +23,7 @@ class MoveUndoLimitException(TokenDebugException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a token tried to undo mre than one move.
     
     # PARENT:

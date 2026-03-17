@@ -39,7 +39,7 @@ class DiagonalRayComputer:
     7. For thr quadrant (x<0, y>0) delta_x = 1.
     8. So for each quadrant we change the slope.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Compute the spanning subset in the horizontal and vertical plane with no duplicates.
     2.  If the computation fails send an exception chain to the caller for error tracing.
 

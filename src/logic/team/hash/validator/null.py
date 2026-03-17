@@ -21,7 +21,7 @@ class TeamHashNullException(TeamHashException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that the candidate was not validated as a TeamHash because it was null.
 
     # PARENT:

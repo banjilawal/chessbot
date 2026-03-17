@@ -20,7 +20,7 @@ class DuplicatePlayerInArenaException(ArenaDebugException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Raised if a both unique teams in an Arena are owned by the same owner.
 
     # PARENT:

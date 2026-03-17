@@ -21,7 +21,7 @@ class RankContextBuilder(Builder[RankContext]):
     """
     # ROLE: Builder, Data Integrity And Reliability Guarantor
 
-    # RESPONSIBILITIES:
+    Responsibilities:
         1. Manage conintuction of RankFinder instances that can be used safely by the client.
         2. Ensure params for RankFinder creation have met the application's safety contract.
         3. Provide pluggable factories for creating different RankContext products.

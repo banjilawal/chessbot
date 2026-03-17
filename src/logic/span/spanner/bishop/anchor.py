@@ -22,7 +22,7 @@ class BishopSpannerException(SpannerException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Provide BishopSpanner as:
             *   Reporting
             *   Coverage

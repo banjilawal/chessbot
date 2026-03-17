@@ -22,7 +22,7 @@ class SquareSpanServiceDebugException(DebugException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Describes the condition that caused a SquareSpanService operation failure.
 
     # PARENT:

@@ -22,7 +22,7 @@ class SchemaKeyValidationException(SchemaKeyException, ValidationException):
     # ROLE: Exception Chain Layer 1, Exception Messaging
     # TASK: Worker Method Identifier
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  A debug exception is created when a SchemaKey candidate fails a validation test. Validation debug exceptions are
         encapsulated inside an SchemaKeyValidationException creating an exception chain. which is sent to the caller in a
         ValidationResult.

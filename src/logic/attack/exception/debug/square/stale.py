@@ -20,7 +20,7 @@ class StaleLinkDiscoveredInAttackingSquareSearchException(AttackDebugException):
     """
     # ROLE: Debug, Error Tracing
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that an attack failed because one of the hits for the source
 
     # PARENT:

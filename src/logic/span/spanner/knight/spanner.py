@@ -20,7 +20,7 @@ class KnightSpanner(Spanner):
     # ROLE: Worker, Computation
     # Provide a spanning set for a Knight
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1. Provide a spanning set for a Knight
 
     # PARENT:

@@ -22,7 +22,7 @@ class GameContextDebugException(DebugException):
     """
     # ROLE: Capture Error Variable State, Exception Chain Layer 2, Exception Messaging
     
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Produce the:
             *   variable,
             *   it's value,

@@ -20,7 +20,7 @@ class DeletionResult(DataResult, Generic[T]):
     """
     # ROLE: Messanger, Data Transport Object, Error Transport Object.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Send the outcome of a deletion to the caller.
     2.  Enforcing mutual exclusion. A DeletionResult can either carry payload or exception. Not both.
 

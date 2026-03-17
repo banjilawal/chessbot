@@ -22,7 +22,7 @@ class NodeBuildException(BuildException):
     """
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate the NodeBuilder did not produce a valid work product.
     2.  Identify the NodeBuilder method where the failure occurred.
 

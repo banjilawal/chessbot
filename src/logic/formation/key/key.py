@@ -34,7 +34,7 @@ Teams do not need reverse lookups. Searches by a team schema property do not nee
 might be looking up formations of openings for a set of pieces. Assuring the Arena tuples of Player-Team
 are unique.
 
-# RESPONSIBILITIES:
+Responsibilities:
 The for A SchemaKey is used tForward Schema lookups use a SchemaSuperKet ro
 1.  Provides information to complete run forward-lookups on the Schema
 1.  Define a Key from an attribute-value pair. The attribute must exist in the schema.
@@ -56,7 +56,7 @@ class FormationKey(Context[Formation]):
     """
     # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     Provide an attribute-value to find Formations with a matching value in
     their version of the attribute.
 

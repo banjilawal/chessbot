@@ -18,7 +18,7 @@ class GameTimelineException(ResultStackException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Parent of exception raised by GameTimeline objects.
     2.  Parent of exception raised by classes that highly cohere with GameTimeline objects.
     3.  Super for GameTimeline errors not covered by lower level  GameTimeline exception.

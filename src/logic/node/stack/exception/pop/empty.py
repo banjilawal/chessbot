@@ -22,7 +22,7 @@ class PoppingEmptyNodeStackException(NodeDebugException):
     """
     # ROLE: Debug, Error Tracing
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that an attempt to remove a item failed because the stack was empty
 
     # PARENT:

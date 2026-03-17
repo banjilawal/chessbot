@@ -20,7 +20,7 @@ class PlayerTeamRelationAnalyzer(RelationAnalyzer[Player, Team]):
     """
     # ROLE: Reporting, Test for Relationship
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Test if whether an owner-team tuple have either none, partial, or fully bidirectional relation between them.
     2.  If the testing was not completed send an exception chain to the caller.
 

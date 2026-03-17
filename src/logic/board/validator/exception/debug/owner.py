@@ -21,7 +21,7 @@ class BoardOwnedByDifferentArenaException(BoardException, ArenaException):
     """
     # ROLE: Error Tracing, Debugging
     
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a board was not validated because its owner because its arena relationship was mismatched."
 
     # PARENT:

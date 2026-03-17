@@ -21,7 +21,7 @@ class TeamNotRegisteredBoardException(TeamDebugException, NotRegisteredException
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  A failing TeamValidationResult was returned because the candidate team had not
         registered with its board.
 

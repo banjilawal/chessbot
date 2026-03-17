@@ -21,7 +21,7 @@ class PipelineStackException(PipelineException, StackServiceException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Encapsulate PipelineStack method outputs when there is a failure.
 
     # PARENT:

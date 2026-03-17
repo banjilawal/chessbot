@@ -20,7 +20,7 @@ class ContextFlagCountException(ContextException, BoundsException):
     """
     # ROLE: Exception Wrapper,
   
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Parent of exceptions which indicate the attributee-value flags enabled in a Context is out of bounds.
     2.  Super for ContextFlagCount errors not covered by lower level ContextFlagEception exceptions.
   

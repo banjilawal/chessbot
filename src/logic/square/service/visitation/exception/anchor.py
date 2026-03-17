@@ -25,7 +25,7 @@ class TokenVisitHandlerException(AnchorException):
     """
     # ROLE: Debug Coverage Target, Exception Chain Layer 0
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that an error occurred in a TokenVisitHandler.
 
     # PARENT:
@@ -93,7 +93,7 @@ class PoppingEmptySquareStackException(DebugException):
     # ROLE: Exception Chain Layer 2, Exception Messaging
     # TASK: Capture Error Variable State
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Produce the:
             *   variable,
             *   it's value,
@@ -165,7 +165,7 @@ class TokenVisitHandlerException(AnchorException):
     """"
     # ROLE: Class/Module Identifier, Exception Chain Layer 3, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
 
 
     # PARENT:

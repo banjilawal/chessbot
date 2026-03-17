@@ -33,7 +33,7 @@ class PerpendicularRayComputer:
                 *   These are points north and south of  p_c
     4.  we can get the span by iterating over the quadrants with the in the range [0, BOARD_DIMENSION - 1]
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Compute the spanning subset in the horizontal and vertical plane with no duplicates.
     2.  If the computation fails send an exception chain to the caller for error tracing.
 

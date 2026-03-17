@@ -19,7 +19,7 @@ class SquareCollisionDetector(CollisionDetector[Square]):
     """
     # ROLE: Detector, Consistency and Uniqueness Guarantor, Validation,
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Public facing collision detection microservice API.
     2.  Validates Squares before they are inserted into the Square dataset.
     2.  Ensures consistency of Square datasets by enforcing uniqueness constraints.

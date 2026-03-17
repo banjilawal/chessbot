@@ -19,7 +19,7 @@ class Square:
     """
     # ROLE: Data-Holder, Addressing, Referencing
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Maps a Coord to a nameable, occupyable board location.
     2.  Space on Board a Token can occupy.
     3.  Metadata about a reference on the Board.

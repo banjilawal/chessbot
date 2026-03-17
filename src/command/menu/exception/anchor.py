@@ -22,7 +22,7 @@ class ServiceMenuException(AnchorException):
     """
     # ROLE: Information, Reporting, Debug
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Locus of attention for MenuDebugExceptions .
 
     # PARENT:

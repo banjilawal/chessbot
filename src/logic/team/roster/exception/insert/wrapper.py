@@ -20,7 +20,7 @@ class FillingTeamRosterException(TeamRosterException):
     """
     # ROLE: Debug, Error Tracing
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Carry the DebugException that explains why initializing the team's roster failed.
 
     # PARENT:

@@ -22,7 +22,7 @@ class BishopSpanServiceException(SpanServiceException):
     """
     # ROLE: Debug Coverage Target, Exception Chain Layer 0
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that an error occurred in a BishopSpanService.
 
     # PARENT:

@@ -22,7 +22,7 @@ class InvalidAgentVarietyException(AgentVarietyException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Parent of exception raised during AgentVariety verification process.
     2.  Wraps an exception that hits the try-finally block of an AgentVariety certifying method.
 

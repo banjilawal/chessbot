@@ -22,7 +22,7 @@ class SquareOnDifferentBoardException(BoardException, SquareException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that inserting a BoardSquare failed because the item belonged to a  different board.
 
     # PARENT:

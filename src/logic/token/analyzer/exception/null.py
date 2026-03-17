@@ -12,7 +12,7 @@ class ReadinessStateNullException(TokenStateException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that TokenState validation failed because the candidate was null.
 
     # PARENT:

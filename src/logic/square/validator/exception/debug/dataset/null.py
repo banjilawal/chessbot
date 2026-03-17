@@ -20,7 +20,7 @@ class SquareDataSourceSquareException(SquareDebugException, SquareException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  A failing SearchResult was returned because no dataset was provided for the query.
 
     # PARENT:

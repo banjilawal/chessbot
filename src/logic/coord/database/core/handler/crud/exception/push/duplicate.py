@@ -22,7 +22,7 @@ class DuplicateCoordPushException(DebugException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate pushing a Coord failed because it was already on the top coord on the stack.
 
     # PARENT:

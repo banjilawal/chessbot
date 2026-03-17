@@ -21,7 +21,7 @@ class BoardServiceInsertionOpFailedException(BoardServiceException, InsertionExc
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Wrap debug exceptions indicating why inserting either a BoardSquare or BoardToken failed. The encapsulated
         exceptions create chain for tracing the source of the failure.
 

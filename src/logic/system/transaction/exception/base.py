@@ -20,7 +20,7 @@ class TransactionException(ChessException):
     """
     # ROLE: Exception Wrapper
   
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Parent of exception raised by Transaction objects
     2.  Super for Transaction errors not covered by lower level  Transaction exception.
   

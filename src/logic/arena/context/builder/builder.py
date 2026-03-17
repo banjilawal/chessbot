@@ -21,7 +21,7 @@ class ArenaContextBuilder(Builder[ArenaContext]):
     """
     # ROLE: Builder, Data Integrity And Reliability Guarantor
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Produce ArenaContext instances whose integrity is guaranteed at creation.
     2.  Manage construction of ArenaContext instances that can be used safely by the client.
     3.  Ensure params for ArenaContext creation have met the application's safety contract.

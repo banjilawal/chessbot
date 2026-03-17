@@ -14,7 +14,7 @@ class Request:
     """
     # ROLE: Messaging. Service Request, Command Build Params.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Client send a request for one of a service's operations. supported by
         a Command.
     2.  Parameter for CommandBuilders.

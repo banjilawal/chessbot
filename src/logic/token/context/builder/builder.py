@@ -26,7 +26,7 @@ class TokenContextBuilder(Builder[TokenContext]):
     """
     # ROLE: Builder, Data Integrity And Reliability Guarantor
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Produce TokenContext instances whose integrity is guaranteed at creation.
     2.  Manage construction of TokenContext instances that can be used safely by the client.
     3.  Ensure params for TokenContext creation have met the application's safety contract.

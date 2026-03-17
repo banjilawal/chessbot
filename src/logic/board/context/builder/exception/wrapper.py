@@ -22,7 +22,7 @@ class BoardContextBuildException(BuildException):
     """
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate the BoardContextBuilder did not produce a valid work product.
     2.  Identify the BoardContextBuilder method where the failure occurred.
 

@@ -16,7 +16,7 @@ class CoordValidator(Validator[Coord]):
     """
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Ensure a Coord instance is certified safe, reliable and consistent before use.
     2.  Return useful debugging information if a candidate does not satisfy Coord integrity constraints.
 

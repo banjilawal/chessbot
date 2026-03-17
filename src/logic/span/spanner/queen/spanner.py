@@ -23,7 +23,7 @@ class QueenSpanner(Spanner):
     # ROLE: Worker, Computation
     # Provide a spanning set for a Queen
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1. Provide a spanning set for a Queen
 
     # PARENT:

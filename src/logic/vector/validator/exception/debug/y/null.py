@@ -22,7 +22,7 @@ class VectorNullYException(NullException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a vector.y  is null.
     
     # PARENT:

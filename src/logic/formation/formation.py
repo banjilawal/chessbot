@@ -16,7 +16,7 @@ class Formation(Enum):
     """
     # ROLE: Build Configuration Table, Schema, Metadata Set
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Supply parameters to Token builders and factories.
 
     # PARENT:

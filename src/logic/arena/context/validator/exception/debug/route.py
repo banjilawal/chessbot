@@ -23,7 +23,7 @@ class ArenaContextValidationRouteException(ExecutionRouteException):
     # ROLE: Exception Chain Layer 2, Exception Messaging
     # TASK: Capture Error Variable State
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  A failure ValidationResult was sent because there was no validation route for the ArenaContext
         attribute.
 

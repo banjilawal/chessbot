@@ -17,7 +17,7 @@ class DiagonalRayProvider:
     # ROLE: Utility
     # TASK: Provide solution sets
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Aggregate modules for computing components of diagonal span from an origin.
     2.  Simplify CoordSpan derivations.
 

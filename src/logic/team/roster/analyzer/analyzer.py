@@ -19,7 +19,7 @@ class RosterRelationAnalyzer(RelationAnalyzer[Team, Token]):
     """
     # ROLE: Reporting, Test for Relationship
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Establish what type of relationship a piece has with team's roster. Either none, a partial relation or
         completely bidirectional.
 

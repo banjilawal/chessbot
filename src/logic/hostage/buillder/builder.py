@@ -24,7 +24,7 @@ class HostageBuilder(Builder[Hostage]):
     """
     # ROLE: Validation, Data Integrity And Reliability Guarantor
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Produce Hostage instances whose integrity is guaranteed at creation.
     2.  Manage construction of Hostage instances that can be used safely by the client.
     3.  Ensure params for Hostage creation have met the application's safety contract.

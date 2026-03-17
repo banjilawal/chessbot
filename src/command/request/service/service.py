@@ -20,7 +20,7 @@ class RequestService(IntegrityService[Command]):
     """
     # ROLE: Microservice API, Integrity Lifecycle Manager, APLifecycle Management.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Integrity Lifecycle Management Microservice API.
     2.  Bundles primitives for assuring integrity and consistency in the two phases of
         the integrity lifecycle.

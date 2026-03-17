@@ -21,7 +21,7 @@ class PushingEdgeException(EdgeStackException, InsertionException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that pushing a Edge on the Stack failed.
 
     # PARENT:

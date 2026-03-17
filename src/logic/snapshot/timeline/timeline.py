@@ -17,7 +17,7 @@ class GameTimeline(ResultStack[Snapshot]):
     """
     # ROLE: Persistence, Unique Result Stack CRUD Operations.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Ensure all snapshots in managed by GameTimeline are unique.
     2.  Guarantee consistency of records in GameTimeline.
 

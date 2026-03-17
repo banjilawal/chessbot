@@ -20,7 +20,7 @@ class PoppingEmptyBoardStackException(BoardException):
     """
     # ROLE: Debug, Error Tracing
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that an attempt to remove a board failed because the stack was empty
 
     # PARENT:

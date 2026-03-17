@@ -21,7 +21,7 @@ class PoppingEmptyArenaException(ArenaException, DebugException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that the arena is empty so no teams can be removed
 
     # PARENT:

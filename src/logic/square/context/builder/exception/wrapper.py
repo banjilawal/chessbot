@@ -22,7 +22,7 @@ class SquareContextBuildException(BuildException):
     """
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate the SquareContextBuilder did not produce a valid work product.
     2.  Identify the SquareContextBuilder method where the failure occurred.
 

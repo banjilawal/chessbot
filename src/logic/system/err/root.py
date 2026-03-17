@@ -20,7 +20,7 @@ class ChessException(Exception):
     """
     # ROLE: Exception
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Parent of exception by the application
 
     # PARENT:

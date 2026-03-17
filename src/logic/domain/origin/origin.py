@@ -15,7 +15,7 @@ class DomainOrigin:
     """
     # ROLE:
         Data-Holder
-    # RESPONSIBILITIES:
+    Responsibilities:
         1. Encapsulates information about a Domain owner and their updated Square.
     # PROVIDES:
         Domain

@@ -21,7 +21,7 @@ class PoppingPipelineStackFailedException(PipelineStackException, DeletionExcept
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Wrap debug exceptions indicating why PipelineStack could not delete a pipeline. The exception chain traces the ultimate source of failure.
 
     # PARENT:

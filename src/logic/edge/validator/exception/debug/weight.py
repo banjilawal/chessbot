@@ -20,7 +20,7 @@ class EdgeWeightException(EdgeDebugException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a candidate was not validated as an edge because its weight was not a number
         within the allowed range.
 

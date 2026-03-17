@@ -22,7 +22,7 @@ class HostageDatabase(Database[Hostage]):
     """
     # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Ensure all bag in managed by HostageList are unique.
     2.  Guarantee consistency of records in HostageList.
 

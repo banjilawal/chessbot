@@ -11,7 +11,7 @@ class FriendCannotCaptureFriendException(HostageException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that adding a combatant to the prisoners failed because the occupant was a friend.
 
     # PARENT:

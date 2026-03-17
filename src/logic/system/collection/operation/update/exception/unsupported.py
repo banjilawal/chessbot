@@ -20,7 +20,7 @@ class UnsupportedEmptyUpdateResultException(MethodImplementationException):
     """
     # ROLE: Information, Reporting, Debug
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that an UpdateResult can either succeed or fail. There are no other outcomes. 
 
     # PARENT:

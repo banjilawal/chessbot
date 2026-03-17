@@ -19,7 +19,7 @@ class CoordDatabase(Database[Coord]):
     """
     # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Ensure all bag managed by CoordStack are unique.
     2.  Guarantee consistency of records in CoordStack.
 

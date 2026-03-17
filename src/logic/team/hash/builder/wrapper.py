@@ -21,7 +21,7 @@ class TeamHashBuildException(TeamHashException, BuildException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Wrap debug exceptions indicating why a TeamHash build failed. The exception chain
         traces the ultimate source of failure.
 

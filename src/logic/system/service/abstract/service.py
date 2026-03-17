@@ -18,7 +18,7 @@ class Service(ABC, Generic[T]):
     """
     # ROLE: Service
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Platform primitive to build Microservice APIs.
     2.  A Microservice is
             *   A set of modules, methods that are related to a either a task or data object.

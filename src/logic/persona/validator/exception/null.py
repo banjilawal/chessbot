@@ -22,7 +22,7 @@ class NullPersonaException(NullException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a persona is null where it should not be.
     
     # PARENT:

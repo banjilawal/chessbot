@@ -24,7 +24,7 @@ class EdgeService(IntegrityService[Edge]):
     """
     # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Public facing Edge microservice API.
     2.  Encapsulate integrity assurance logic in one extendable module.
     3.  Authoritative, single source of truth for Edge state by providing single entry and exit points to Edge

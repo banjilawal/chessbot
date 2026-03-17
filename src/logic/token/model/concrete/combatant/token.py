@@ -19,7 +19,7 @@ class CombatantToken(Token):
     """
     # ROLE: Data-Holder
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Represents piece which can be captured by an enemy.
     2.  CombatantTokens can have Ranks: Paw, Knight, Bishop, Rook, or Queen.
 

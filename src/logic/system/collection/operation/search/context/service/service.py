@@ -17,7 +17,7 @@ class ContextService(IntegrityService[Context[T]]):
     """
     # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Public facing API for querying datasets of T objects.
     2.  Encapsulates Search and search filter validation in one extendable module.
     3.  Manage Context integrity lifecycle.

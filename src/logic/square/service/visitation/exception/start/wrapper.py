@@ -23,7 +23,7 @@ class StartSquareVisitException(UpdateException):
     # ROLE: Exception Chain Layer 1, Exception Messaging
     # TASK: Worker Method Identifier
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Identify the SquareStackService method where the push failed.
     
     2.  An error occurred in SquareStackTokenHandler.add_occupant that prevented a successful UpdateResult.

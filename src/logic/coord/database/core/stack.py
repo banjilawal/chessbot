@@ -23,7 +23,7 @@ class CoordStack(StackService[Coord]):
     """
     # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Microservice API for managing and searching Coord collections.
     2.  Assures collection is always reliable.
     3.  Assure only valid Coords are put in the collection.

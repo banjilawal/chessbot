@@ -22,7 +22,7 @@ class SnapshotContextBuildException(BuildException):
     """
     # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Identify the SnapshotContextBuilder method where the process failed.
 
     # PARENT:

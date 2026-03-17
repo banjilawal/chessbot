@@ -24,7 +24,7 @@ class PairStack(StackService[Pair]):
     """
     # ROLE: Data Stack, SearchWorker IntegrityService, CRUD Operations, Encapsulation, API layer.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Public facing API.
     2.  Microservice for managing Pair objects and their lifecycles.
     3.  Ensure integrity of Pair data stack

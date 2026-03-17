@@ -20,7 +20,7 @@ class AddingDuplicateCoordException(UniqueCoordStackException):
     """
     # ROLE: Debug, Error Tracing
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that an attempt to add a coord to the CoordDatabase's dataset failed because the coord was
         already in the collection
 

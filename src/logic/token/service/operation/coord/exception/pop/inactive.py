@@ -23,7 +23,7 @@ class InactiveTokenPoppingCoordException(TokenDebugException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that an inactive Token cannot undo its last move by popping its CoordStack.
     
     # PARENT:

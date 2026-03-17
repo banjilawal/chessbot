@@ -23,7 +23,7 @@ class PlayerSearchRouteException(PlayerDebugException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that there was no search logic for a player attribute.
 
     # PARENT:

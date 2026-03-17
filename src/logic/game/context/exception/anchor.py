@@ -23,7 +23,7 @@ class GameContextException(AnchorException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Anchoring target for GameContext debug (layer-2) error state firing incident
         reports on
             *   the triggering variable

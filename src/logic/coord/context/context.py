@@ -17,7 +17,7 @@ class CoordContext(Context[Coord]):
     """
     # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     Provide an CoordFinder with an attribute-value which finds Coords which match the targeted attribute-value.
 
     # PARENT:

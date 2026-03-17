@@ -20,7 +20,7 @@ class TokenAlreadyOnTeamRosterException(TeamRosterException):
     """
     # ROLE: Debug, Error Tracing
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that adding a roster member failed because the occupant was already present.
 
     # PARENT:

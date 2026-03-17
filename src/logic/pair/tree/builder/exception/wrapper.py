@@ -27,7 +27,7 @@ class NodeTreeBuildException(BuildException):
     """
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate the NodeTreeBuilder did not produce a valid work product.
     2.  Identify the NodeTreeBuilder method where the failure occurred.
 

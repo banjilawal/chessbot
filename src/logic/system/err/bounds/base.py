@@ -20,7 +20,7 @@ class BoundsException(DebugException):
     """
     # ROLE: Error Tracing, Debugging, Super Exception
     
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a value is out of bounds.
     2.  Super for conditions which are not covered by BoundsException subclasses.
 

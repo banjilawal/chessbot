@@ -17,7 +17,7 @@ class DomainOriginBuilder(Builder[DomainOrigin]):
     """
      # ROLE: Builder, Data Integrity And Reliability Guarantor
 
-     # RESPONSIBILITIES:
+     Responsibilities:
      1.  Produce DomainOrigin instances whose integrity is guaranteed at creation.
      2.  Manage construction of DomainOrigin instances that can be used safely by the client.
      3.  Ensure params for DomainOrigin creation have met the application's safety contract.

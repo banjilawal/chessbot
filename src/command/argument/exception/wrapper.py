@@ -22,7 +22,7 @@ class ArgumentsValidationException(ValidationException):
     """
     # ROLE: Debug Wrapper, Exception Chain Layer 2, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a candidate failed a safety check in a ArgumentsValidator
         method.
 

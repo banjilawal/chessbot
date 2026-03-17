@@ -22,7 +22,7 @@ class VoidStringException(InvalidStringException):
     # ROLE: Error Tracing, Debugging
     # ROLE: Exception Wrapper
     
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Parent of exceptions which indicate an entity, method, or operation requires a String but gets either
         whitespace, null, or an empty string instead.
     2.  Super for VoidString errors not covered by VoidString subclasses.

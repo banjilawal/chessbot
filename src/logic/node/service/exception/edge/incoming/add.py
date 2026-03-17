@@ -20,7 +20,7 @@ class AddIncomingEdgeFailedException(NodeException, InsertionException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Wrap debug exceptions indicating why adding a new edge to a node failed.
 
     # PARENT:

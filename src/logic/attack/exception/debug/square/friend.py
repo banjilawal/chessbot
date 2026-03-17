@@ -20,7 +20,7 @@ class AttackingFriendlySquareException(AttackDebugException):
     """
     # ROLE: Debug, Error Tracing
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that an attack failed because the item was occupied by a friend.
     
     # PARENT:

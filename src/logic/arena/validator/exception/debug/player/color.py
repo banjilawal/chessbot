@@ -22,7 +22,7 @@ class PlayerColorCollisionException(ArenaDebugException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Raised if a both unique players have the same color.
 
     # PARENT:

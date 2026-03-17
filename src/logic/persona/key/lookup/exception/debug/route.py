@@ -21,7 +21,7 @@ class PersonaLookupRouteException(PersonaException, ExecutionRouteException):
     """
     # ROLE: Fallback Result
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1. Indicate that PersonaLookup did not handle a build option or parameter with its own execution route.
 
     # PARENT:

@@ -20,7 +20,7 @@ class AddingDuplicateException(StackServiceException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     Indicate an attempt was made to add a duplicate item o a collection that only allows uniques.
 
     # PARENT:

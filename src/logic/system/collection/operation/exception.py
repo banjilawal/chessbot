@@ -23,7 +23,7 @@ class CollectionOperationException(OperationException):
     """
     # ROLE: Debug Wrapper, Exception Chain Layer 2, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate what Collection Operation failed.
     2.  Encapsulate the DebugException which describes the failure condition.
 

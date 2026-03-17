@@ -20,7 +20,7 @@ class TokenCannotCaptureItselfException(HostageException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that an entity, method, or operation that required a Hostage but got null instead.
 
     # PARENT:

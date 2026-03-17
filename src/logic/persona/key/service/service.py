@@ -16,7 +16,7 @@ class PersonaKeyService(ContextService[PersonaKey]):
     """
     # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Public facing PersonaKey microservice API.
     2.  Encapsulate integrity assurance logic in one extendable module.
     3.  Authoritative, single source of truth for PersonaKey state.

@@ -23,7 +23,7 @@ class GameFinder(DataFinder[Game]):
     """
     # ROLE: SearchWorker
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Search Game collections for bag which match the attribute target specified in the GameContext parameter.
     2.  Safely forward any errors encountered during a search to the caller.
 

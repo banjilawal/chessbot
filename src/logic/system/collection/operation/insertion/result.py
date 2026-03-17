@@ -16,7 +16,7 @@ class InsertionResult(DataResult[bool]):
     """
     # ROLE: Messanger, Data Transport Object, Error Transport Object.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Send the outcome of a insertion to the caller.
     2.  Enforcing mutual exclusion. A InsertionResult can either carry payload or exception. Not both.
 

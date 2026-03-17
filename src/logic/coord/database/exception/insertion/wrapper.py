@@ -21,7 +21,7 @@ class UniqueCoordInsertionException(CoordException, InsertionException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Wrap debug exceptions indicating why inserting a unique coord failed. The encapsulated exceptions create 
         chain for tracing the source of the failure.
 

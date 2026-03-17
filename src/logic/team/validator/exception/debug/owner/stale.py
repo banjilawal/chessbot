@@ -21,7 +21,7 @@ class PlayerHasStaleTeamLinkException(TeamDebugException, StaleRelationException
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  A failing TeamValidationResult was returned because the player had a stale
         link to a former team.
 

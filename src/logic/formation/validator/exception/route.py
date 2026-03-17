@@ -11,7 +11,7 @@ class SchemValidationExecutionRouteException(ResultException, ExecutionRouteExce
     """
     # ROLE: Fallback Result, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that FormationValidator did not handle one of the paths necessary to assure a candidate is a 
         Formation safe to use. A Formation has different configurations that are correct. Each configuration has a testing 
         route. If a configuration does not have a validation route a SchemValidationExecutionRouteException

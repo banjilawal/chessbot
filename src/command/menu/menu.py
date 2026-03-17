@@ -19,7 +19,7 @@ class ServiceMenu(ABC, Generic[S]):
     """
     # ROLE: Menu
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Collection of menus for the different operations the service supports.
 
     # PARENT:

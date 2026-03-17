@@ -16,7 +16,7 @@ class StringValidator(Validator[str]):
     """
      # ROLE: Validation, Data Integrity Guarantor, Security., Integrity
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Ensure a String is neither null, empty, nor whitespace before use.
     2.  If a candidate fails a safety test, the validator sends an exception in a ValidationResult.
     

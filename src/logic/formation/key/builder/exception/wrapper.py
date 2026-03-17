@@ -23,7 +23,7 @@ class FormationKeyBuildException(BuildException):
     """
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate the FormationKeyBuilder did not produce a valid work product.
     2.  Identify the FormationKeyBuilder method where the failure occurred.
 

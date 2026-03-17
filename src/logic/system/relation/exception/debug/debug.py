@@ -23,14 +23,14 @@ class RelationDebugException(DebugException):
     # ROLE:  Exception Messaging, Exception Chain Layer 2
     # TASK: Capture Error Variable State
     
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Produce the:
             *   variable,
             *   it's Value,
             *   event which fired the variable into its error state.
         which occurred in the Anchor method identified in layer-0 of the exception chain.
     
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that an error condition prevented the RelationAnalysis from completing.
     
     # PARENT:

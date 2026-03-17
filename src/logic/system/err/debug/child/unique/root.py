@@ -22,7 +22,7 @@ class UniqueAttributeException(DebugException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a set of bag of the same class, has two bag share a value for their unique property
 
     # PARENT:

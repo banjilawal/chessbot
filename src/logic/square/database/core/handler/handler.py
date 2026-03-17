@@ -17,7 +17,7 @@ class SquareStackHandler:
     """
     # ROLE: Utilities, Update Management Statistics.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Unifies SquareStackService utilities in one place.
     2.  Separates maintenance and debugging of
             *   Token operations.

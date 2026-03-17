@@ -20,7 +20,7 @@ class ScalarValidationException(ValidationException):
     """
     # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  An error occurred in ScalarValidator.validate that, prevented A successful validation result 
         from being returned.
 

@@ -15,7 +15,7 @@ class CheckmateHandler:
     """
     # ROLE: Update Handler, Consistency, Integrity Maintenance, Lifecycle Management
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Ensure integrity and consistency are maintained during the pawn_token's checkmate lifecycle.
 
     # PARENT:

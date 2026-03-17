@@ -20,7 +20,7 @@ class PlayerTeamAnalysisException(AnalysisException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Wrap any exception that kills the relation test process before the agent-team relationship
         status has been evaluated.
 

@@ -21,7 +21,7 @@ class NullFormationKeyException(FormationKeyException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that FormationKey validation failed because the candidate was null.
 
     # PARENT:

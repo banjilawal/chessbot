@@ -19,7 +19,7 @@ class CaptivityContext(Context[Hostage]):
     """
     # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Provide an HostageFinder with an attribute-value which finds Hostages which match the
         targeted attribute-value.
 

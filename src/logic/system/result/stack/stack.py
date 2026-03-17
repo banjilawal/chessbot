@@ -23,7 +23,7 @@ class ResultStack(ABC, Generic[T]):
     """
     # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Scales Builder and Validator operations for collection of objects.
     2.  Provides map aware search.
     3.  Safe and reliable CRUD operations.

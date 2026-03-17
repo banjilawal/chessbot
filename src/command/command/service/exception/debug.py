@@ -22,7 +22,7 @@ class CommandServiceDebugException(DebugException):
     """
     # ROLE: Information, Reporting, Debug
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Parent of DebugExceptions pertinent to CommandService instances.
 
     # PARENT:

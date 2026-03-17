@@ -21,7 +21,7 @@ class RankQuotaPerTeamLookupFailedException(TokenException, CalculationFailedExc
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Wrap debug exceptions that indicate looking up the max number of rank members per team. The encapsulated
         exceptions create chain for tracing the source of the failure.
 

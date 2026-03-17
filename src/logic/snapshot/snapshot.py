@@ -19,7 +19,7 @@ class Snapshot(Result):
     """
     # ROLE:  Persistence, Messanger, Data Transport Object, Error Transport Object,
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Capture a snapshot of the Game by recording Game.arena state after an owner plays their turn.
     2.  Recording the Game winner if the game completed and there was no tie.
     3.  Enforcing mutual exclusion. A Snapshot can either carry payload or exception. Not both.

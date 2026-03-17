@@ -18,7 +18,7 @@ class NodeBuilder(Builder[Node]):
     """
     # ROLE: Factory, Data Integrity Guarantor
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Produce Node instances whose integrity is guaranteed at creation.
     2.  Manage construction of Node instances that can be used safely by the client.
     3.  Ensure params for Node creation have met the application's safety contract.

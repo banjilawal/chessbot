@@ -23,7 +23,7 @@ class ExcessCoordContextFlagsException(DebugException):
     # ROLE: Exception Chain Layer 2, Exception Messaging
     # TASK: Capture Error Variable State
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Produce the:
             *   variable,
             *   it's value,

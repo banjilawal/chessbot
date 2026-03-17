@@ -20,7 +20,7 @@ class VisitationSearchContextBuilder(Builder[VisitationSearchContext]):
     """iece
     # ROLE: Builder, Data Integrity And Reliability Guarantor implementation
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1. Process and validate parameters for creating `VisitationSearchContext` instances.
     2. Create new `VisitationSearchContext` objects if parameters meet specifications.
     2. Report errors and return `BuildResult` with error details.

@@ -21,7 +21,7 @@ class NumberValidator(Validator[int]):
     """
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Utility that centralizes logic for ensuring an number is not negative nor larger
         than the Board's dimensions before its used as Coord or Vector component.
 

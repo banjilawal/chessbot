@@ -23,7 +23,7 @@ class InvalidGameTimelineException(GameTimelineException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Parent of exception raised during GameTimeline verification process.
     2.  Wraps an exception that hits the try-finally block of an GameTimelineValidator method.
 

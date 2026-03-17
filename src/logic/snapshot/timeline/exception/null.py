@@ -20,7 +20,7 @@ class NullGameTimelineException(InvalidGameTimelineException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate if an entity, method or operation required an GameTimeline but got null instead.
 
     # PARENT:

@@ -21,7 +21,7 @@ class StackServiceException(CollectionException, ServiceException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Parent of exception raised by StackServices.
     2.  Wraps an exception that hits the try-finally block of a StackService method.
 

@@ -22,7 +22,7 @@ class TokenDeploymentException(UpdateException):
     """
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that deploying a token failed.
     2.  Identify the TokenDeployment method where the failure occurred.
 

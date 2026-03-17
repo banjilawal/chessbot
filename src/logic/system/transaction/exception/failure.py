@@ -21,7 +21,7 @@ class TransactionException(OperationException, RollbackException):
     """
     # ROLE: Exception Wrapper, Integrity Debugging, State Restoration,
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Wraps a transaction DebugException and indicates that the transaction was rolled back before the
         the exception chain was sent.
 

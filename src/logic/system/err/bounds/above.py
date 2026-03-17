@@ -20,7 +20,7 @@ class AboveBoundsException(BoundsException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a value is above bounds.
 
     # PARENT:

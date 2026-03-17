@@ -23,7 +23,7 @@ class SearchException(CollectionOperationException):
     """
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate a search failed.
     2.  Identify the method where the failure occurred.
 

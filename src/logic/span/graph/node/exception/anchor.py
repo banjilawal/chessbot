@@ -23,7 +23,7 @@ class NodeTreeProducerException(AnchorException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Provide NodeTreeProducer as:
             *   Reporting
             *   Coverage

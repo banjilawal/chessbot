@@ -21,7 +21,7 @@ class ArenaIsFullException(ArenaException, DebugException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that the arena is full so no teams can be added
     
     # PARENT:

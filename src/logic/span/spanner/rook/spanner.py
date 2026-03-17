@@ -21,7 +21,7 @@ class RookSpanner(Spanner):
     # ROLE: Worker, Computation
     # Provide a spanning set for a Rook
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1. Provide a spanning set for a Rook
 
     # PARENT:

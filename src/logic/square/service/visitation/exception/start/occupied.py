@@ -20,7 +20,7 @@ class VisitingOccupiedSquareException(SquareDebugException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     A failing UpdateResult was returned because a token tried entering an occupied square.
 
     # PARENT:

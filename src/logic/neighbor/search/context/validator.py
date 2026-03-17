@@ -22,7 +22,7 @@ class DomainSearchContextValidator(Validator[DomainSearchContext]):
     """
      # ROLE: Validation, Data Integrity Guarantor, Security., Data Integrity
   
-    # RESPONSIBILITIES:
+    Responsibilities:
     1. Process and validate parameters for creating `DomainSearchContext` instances.
     2. Create new `DomainSearchContext` objects if parameters meet specifications.
     2. Report errors and return `BuildResult` with error details.

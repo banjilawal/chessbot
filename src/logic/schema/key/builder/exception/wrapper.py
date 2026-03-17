@@ -23,7 +23,7 @@ class SchemaKeyBuildException(BuildException):
     """
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate the SchemaKeyBuilder did not produce a valid work product.
     2.  Identify the SchemaKeyBuilder method where the failure occurred.
 

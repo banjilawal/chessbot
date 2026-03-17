@@ -21,7 +21,7 @@ class RankContextValidationRouteException(RankContextException, ExecutionRouteEx
     """
     # ROLE: Fallback Result, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that the RankContext validation failed because there was no build route for the RankContext key.
 
     # PARENT:

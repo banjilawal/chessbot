@@ -19,7 +19,7 @@ class PlayerContext(Context[Player]):
     """
     # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     Provide an PlayerFinder with an attribute value to find Players with a matching value in
     their version of the attribute.
 

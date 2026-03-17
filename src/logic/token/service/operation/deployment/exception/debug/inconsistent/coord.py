@@ -23,7 +23,7 @@ class InconsistentTokenCoordException(InconsistentStateException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that when a Token's current_position differs from its current square's coord.
 
     # PARENT:

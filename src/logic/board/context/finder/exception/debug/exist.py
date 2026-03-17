@@ -23,7 +23,7 @@ class BoardNotFoundException(BoardDebugException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that no board was found.
 
     # PARENT:

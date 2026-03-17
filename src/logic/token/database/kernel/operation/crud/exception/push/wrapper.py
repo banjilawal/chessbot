@@ -22,7 +22,7 @@ class TokenStackPushException(InsertionException):
     """
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that pushing a token on to the stack failed.
     2.  Identify the TokenStackService method where the failure occurred.
 

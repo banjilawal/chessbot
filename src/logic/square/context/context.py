@@ -24,7 +24,7 @@ class SquareContext(Context[Square]):
     """
     # ROLE: Factory, Switch, Attribute Selection
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     Factory that produces Context instances for searching Square datasets by different Square attributes.
 
     # PARENT:

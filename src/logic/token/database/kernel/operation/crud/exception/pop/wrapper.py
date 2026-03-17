@@ -22,7 +22,7 @@ class TokenStackPopException(DeletionException):
     """
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate a TokenStackStack pop was unsuccessful.
     2.  Identify the TokenStackService method where the pop operation failed.
 

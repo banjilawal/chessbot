@@ -21,7 +21,7 @@ class ZeroSnapshotContextFlagsException(InvalidSnapshotContextException, Context
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate no SnapshotContext flag is provided with a searcher value.
 
     # PARENT:

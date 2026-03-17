@@ -22,7 +22,7 @@ class BuildException(OperationException):
     """
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate the Builder did not produce a valid work product.
     2.  Identify the Builder method where the failure occurred.
 

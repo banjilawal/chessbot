@@ -21,7 +21,7 @@ class PlayerNotRegisteredGameException(PlayerDebugException, NotRegisteredExcept
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  A failing ValidationResult was returned because the candidate player had not registered with its game.
 
     # PARENT:

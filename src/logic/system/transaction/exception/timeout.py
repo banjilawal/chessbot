@@ -21,7 +21,7 @@ class TransactionTimeoutException(TransactionException, ResourceUnavailableExcep
     """
     # ROLE: Error Tracing, Debugging, Super Exception
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a transaction was not completed because it timed out waiting for a resource.
 
     # PARENT:

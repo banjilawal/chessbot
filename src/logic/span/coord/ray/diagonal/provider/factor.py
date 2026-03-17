@@ -18,7 +18,7 @@ class DiagonalRayFactors:
     # ROLE: Data-HOlder
     # TASK: Computation arguments.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Provide arguments for
             *   priming the ray projection's codomain from the origin
             *   The invariant.

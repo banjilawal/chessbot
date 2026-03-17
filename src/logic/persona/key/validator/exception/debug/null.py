@@ -21,7 +21,7 @@ class NullPersonaKeyException(PersonaKeyException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that PersonKey validation failed because the candidate was null.
 
     # PARENT:

@@ -25,7 +25,7 @@ class TokenStackFullException(DebugException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that pushing a token to the stack failed because the stack was full.
 
     # PARENT:

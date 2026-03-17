@@ -21,7 +21,7 @@ class PersonaNameBoundsException(PersonaException, BoundsException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a Persona lookup failed because the name was not a key to any Persona variant.
 
     # PARENT:

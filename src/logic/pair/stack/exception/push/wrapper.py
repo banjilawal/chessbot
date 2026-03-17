@@ -22,7 +22,7 @@ class PushingPairException(PairStackException, PushException):
     # ROLE: Exception Chain Layer 1, Exception Messaging
     # TASK: Worker Method Identifier
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Wrap debug exceptions indicating why pushing a pair failed. The exception chain
         traces the ultimate source of failure.
 

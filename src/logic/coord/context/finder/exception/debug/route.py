@@ -23,7 +23,7 @@ class CoordSearchRouteException(CoordDebugException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that there was no search logic for a coord attribute.
 
     # PARENT:

@@ -15,19 +15,20 @@ __all__ = [
     "RankQuotaFullException",
 ]
 
-from logic.system import DebugException
+from logic.token import TokenDebugException
+
 
 # ======================# NO_OPENINGS_FOR_RANK_EXCEPTION #======================#
-class RankQuotaFullException(DebugException):
+class RankQuotaFullException(TokenDebugException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that pushing a token to the stack failed because there were no
         openings for the token's rank.
 
     # PARENT:
-        *   TokenDebugException
+        *   TokenTokenDebugException
 
     # PROVIDES:
     None
@@ -36,7 +37,7 @@ class RankQuotaFullException(DebugException):
     None
 
     # INHERITED ATTRIBUTES:
-        *   TokenDebugException class for inherited attributes.
+        *   TokenTokenDebugException class for inherited attributes.
 
     # CONSTRUCTOR:
         var: Optional[str]
@@ -49,7 +50,7 @@ class RankQuotaFullException(DebugException):
     None
 
     # INHERITED METHODS:
-        *   See TokenDebugException class for inherited methods.
+        *   See TokenTokenDebugException class for inherited methods.
     """
     ERR_CODE = "NO_OPENINGS_FOR_RANK_EXCEPTION"
     MSG = "Pushing token failed: There were no openings for the token's rank."

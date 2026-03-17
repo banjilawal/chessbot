@@ -25,7 +25,7 @@ class AddingDuplicateTokenException(DebugException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate an insertion failed because the token was already in the stack.
 
     # PARENT:

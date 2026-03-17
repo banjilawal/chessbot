@@ -21,7 +21,7 @@ class Rook(Rank):
     """
     # ROLE: Computation, Metadata
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Produces a list of Coords reachable from a Rook's updated position.
     2.  Metadata about the Rook rank useful for optimizing the GameGraph.
     

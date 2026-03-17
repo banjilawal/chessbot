@@ -20,7 +20,7 @@ class ArenaSlotAlreadyOccupiedException(ArenaException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a slot color slot for a team is already occupied.
 
     # PARENT:

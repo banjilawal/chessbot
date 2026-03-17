@@ -35,7 +35,7 @@ class Schema(Enum):
         *   TeamFinder can use the hashtable key to find Teams which match either the GameColor
         *   Other EntityFinder classes can use the Team.schema attribute to filter by their entity.team.schema attribute.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Provides table of metadata used for building Team objects.
 
     # PARENT:

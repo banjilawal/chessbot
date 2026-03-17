@@ -22,7 +22,7 @@ class CapturedSquareCannotBeEmptyException(HostageException, DebugException):
     """
     # ROLE: Debug, Error Tracing
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that the Hostage build failed because the captured item was empty.
 
     # PARENT:

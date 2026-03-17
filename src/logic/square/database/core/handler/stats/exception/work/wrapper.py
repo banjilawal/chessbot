@@ -23,7 +23,7 @@ class SquareStackCountsAnalysisException(ComputationException):
     # ROLE: Exception Chain Layer 1, Exception Messaging
     # TASK: Worker Method Identifier
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Encapsulate the Layer-1 DebugException which describes the cause the computation failed.
 
     # PARENT:

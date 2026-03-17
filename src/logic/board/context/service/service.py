@@ -17,7 +17,7 @@ class BoardContextService(ContextService[BoardContext]):
     """
     # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Public facing Board search microservice API.
     2.  Provides a map aware utility for searching Board objects.
     3.  Encapsulate integrity assurance logic in one extendable module.

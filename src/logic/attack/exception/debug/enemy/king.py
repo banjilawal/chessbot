@@ -11,7 +11,7 @@ class AttackingEnemyKingException(AttackDebugException):
     """
     # ROLE: Debug, Error Tracing
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that an attack failed because the enemy was a king.
 
     # PARENT:

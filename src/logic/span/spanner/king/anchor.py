@@ -23,7 +23,7 @@ class KingSpannerException(SpannerException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Provide KingSpanner as:
             *   Reporting
             *   Coverage

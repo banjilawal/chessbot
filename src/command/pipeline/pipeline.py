@@ -25,7 +25,7 @@ class CommandPipeline(ABC, Generic[C]):
     """
     # ROLE: Pipeline, Integrity Lifecycle Manager. Worker
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Integrity Lifecycle of a Command.
             *   Validating a Request object.
             *   Building a Command instance from the Request.

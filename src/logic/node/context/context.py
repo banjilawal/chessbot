@@ -19,7 +19,7 @@ class NodeContext(Context[Node]):
     """
     # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     Provide an NodeFinder with an attribute value to find Nodes with a matching value in teir version of
     the attribute.
 

@@ -5,44 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/quota/report.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/system/computation/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/computation/exception/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/exception/anchor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/exception/deploy/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/exception/deploy/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/exception/query/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/exception/query/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/exception/query/exist.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/exception/query/exist.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/collision/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/collision/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/collision/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/collision/detector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/collision/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/collision/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/collision/exception/designation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/collision/exception/designation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/collision/exception/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/collision/exception/detector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/collision/exception/id.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/collision/exception/id.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/collision/exception/square.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/collision/exception/square.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/crud/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/crud/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/crud/exception/anchor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/crud/exception/debug.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/exception/pop/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/crud/exception/pop/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/exception/pop/empty.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/crud/exception/pop/empty.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/exception/pop/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/crud/exception/pop/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/exception/push/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/crud/exception/push/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/exception/push/duplicate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/crud/exception/push/duplicate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/exception/push/full.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/crud/exception/push/full.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/exception/push/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/crud/exception/push/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/crud/handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/crud/handler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/handler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/quota/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/quota/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/quota/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/quota/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/quota/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/quota/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/quota/exception/full.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/quota/exception/full.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/operation/quota/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/quota/exception/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/stack.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/core/state.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/state.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/database/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/quota/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/quota/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/quota/exception/full.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/quota/exception/full.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/quota/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/quota/report.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -316,7 +283,7 @@
     "nodejs_package_manager_path": "npm",
     "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.build.tools.auto.reload": "ALL",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "settings.editor.selected.configurable": "preferences.editor.code.editing",
     "settings.editor.splitter.proportion": "0.14655593",
     "vue.rearranger.settings.migration": "true"
   }

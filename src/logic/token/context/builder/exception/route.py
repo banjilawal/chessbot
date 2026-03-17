@@ -23,7 +23,7 @@ class TokenContextBuildRouteException(ExecutionRouteException):
     # ROLE: Exception Chain Layer 2, Exception Messaging
     # TASK: Capture Error Variable State
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  A failure BuildResult was sent because there was no build route for the TokenContext
         attribute.
 

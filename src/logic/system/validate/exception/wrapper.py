@@ -23,7 +23,7 @@ class ValidationException(OperationException):
     """
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate a validation check was not passed.
     2.  Identify the Validator method where the failure occurred.
 

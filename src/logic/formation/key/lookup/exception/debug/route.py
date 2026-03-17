@@ -21,7 +21,7 @@ class FormationLookupRouteException(FormationException, ExecutionRouteException)
     """
     # ROLE: Fallback Result
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1. Indicate that FormationLookup did not handle a build option or parameter with its own execution route.
 
     # PARENT:

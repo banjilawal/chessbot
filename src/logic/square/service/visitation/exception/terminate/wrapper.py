@@ -23,7 +23,7 @@ class TerminateSquareVisitException(DeletionException):
     # ROLE: Exception Chain Layer 1, Exception Messaging
     # TASK: Worker Method Identifier
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  An error occurred in TokenVistHandler.terminate_visit that prevented a successful DeletionResult.
 
     # PARENT:

@@ -19,7 +19,7 @@ class Scene(ABC, Generic[A, S, P]):
     """
     # ROLE:
     
-    # RESPONSIBILITIES:
+    Responsibilities:
     
     # PROVIDES:
         `Scene`

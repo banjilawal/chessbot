@@ -23,7 +23,7 @@ class BishopSpanServiceDebugException(SpanServiceDebugException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Describes the condition that caused a BishopSpanService operation failure.
 
     # PARENT:

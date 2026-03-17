@@ -21,7 +21,7 @@ class RemoveOutgoingEdgeFailedException(NodeException, InsertionException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Wrap debug exceptions indicating why 
 
     # PARENT:

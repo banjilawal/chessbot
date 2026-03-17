@@ -23,7 +23,7 @@ class PoppingEmptyPipelineStackException(PipelineStackException, NullException):
     """
     # ROLE: Debug, Error Tracing
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that an attempt to remove a pipeline failed because the PipelineStack was not managing any pipelines.
 
     # PARENT:

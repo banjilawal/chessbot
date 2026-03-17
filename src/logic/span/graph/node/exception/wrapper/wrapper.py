@@ -24,7 +24,7 @@ class NodeStackServiceProductionException(BuildException):
     # ROLE: Exception Chain Layer 1, Exception Messaging
     # TASK: Worker Method Identifier
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Identify the NodeStackServiceProducer method where the process failed.
 
     # PARENT:

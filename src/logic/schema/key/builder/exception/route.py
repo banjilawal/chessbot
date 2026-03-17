@@ -21,7 +21,7 @@ class SchemaKeyBuildRouteException(SchemaKeyException, ExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that the SchemaKey build failed because there was no build route for the Schema key.
 
     # PARENT:

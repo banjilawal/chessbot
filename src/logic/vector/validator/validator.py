@@ -20,7 +20,7 @@ class VectorValidator(Validator[Vector]):
     """
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Run tests verifying a candidate can safely be used as a Square.
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 

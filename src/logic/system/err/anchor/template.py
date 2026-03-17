@@ -23,7 +23,7 @@ class TanchorException(AnchorException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Provide Tanchor as:
             *   Reporting
             *   Coverage

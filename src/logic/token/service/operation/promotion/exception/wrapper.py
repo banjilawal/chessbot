@@ -22,7 +22,7 @@ class PromotionException(UpdateException):
     """
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that promoting a pawn_token failed.
     2.  Identify the PawnPromotion method where the failure occurred.
 

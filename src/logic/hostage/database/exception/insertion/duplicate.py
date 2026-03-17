@@ -20,7 +20,7 @@ class AddingDuplicateHostageException(HostageDatabase):
     """
     # ROLE: Debug, Error Tracing
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that an attempt to add a item to the HostageDatabase's dataset failed
         because it was already present.
 

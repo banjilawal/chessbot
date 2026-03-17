@@ -21,7 +21,7 @@ class AnalysisException(OperationException):
     # ROLE: Exception Chain Layer 1, Exception Messaging
     # TASK: Worker Method Identifier
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  An error occurred in Analyzer.analysis that, prevented the relation analysis from completing.
         An exception was sent instead of a report.
 

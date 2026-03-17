@@ -20,7 +20,7 @@ class PrisonerCapturedByDifferentEnemyException(HostageException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a candidate failed its Hostage validation because the prisoner had a different captor.
 
     # PARENT:

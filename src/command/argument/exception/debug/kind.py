@@ -23,7 +23,7 @@ class ArgumentTypeException(ServiceRequestDebugException):
     """
     # ROLE: Information, Reporting, Debug
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a service_request argument has the wrong type.
 
     # PARENT:

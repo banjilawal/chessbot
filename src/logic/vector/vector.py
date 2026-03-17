@@ -27,7 +27,7 @@ class Vector:
         6.  We see iterating through a series of Coords requires the vector; V(delta_x, delta_y).
     Therefore, a Vector provides the interval for stepping  through a series of Coords.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Represents a 2-D object which is independent of the board.
     2.  Vector addition.
 

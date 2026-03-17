@@ -25,7 +25,7 @@ class EdgeStack(StackService[Edge]):
     """
     # ROLE: Data Stack, SearchWorker IntegrityService, CRUD Operations, Encapsulation, API layer.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Public facing API.
     2.  Ensure integrity of Edge stack.
     3.  Ensure uniqueness of edges in the stack.

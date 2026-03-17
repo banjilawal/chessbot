@@ -20,7 +20,7 @@ class GameColorException(ChessException):
     """
     # ROLE: Super Exception
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Super for conditions which are not covered by GameColorException subclasses.
 
     # PARENT:

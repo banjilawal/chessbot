@@ -20,7 +20,7 @@ class TransferException(OperationException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that an exception prevented a transfer operation from completing successfully.
     2.  Wrap an exception that hits the try-finally block of a Transfer method.
 

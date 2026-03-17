@@ -17,7 +17,7 @@ class PersonaKey(Context[Persona]):
     """
     # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     The for A PersonaKey is used to run Forward Persona lookups use a PersonaKey
     1.  Provides information to complete run forward-lookups on the Persona
     2.  Define a Key from an attribute-value pair. The attribute must exist in the persona.

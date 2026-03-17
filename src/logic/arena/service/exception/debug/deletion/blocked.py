@@ -21,7 +21,7 @@ class ArenaTeamDeletionBlockedException(ArenaException, DebugException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a team cannot be deleted once it's in the arena
 .
     # PARENT:

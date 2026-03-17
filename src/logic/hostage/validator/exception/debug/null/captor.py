@@ -20,7 +20,7 @@ class PrisonerAlreadyHasHostageException(HostageException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
    1.  Indicate that a candidate failed its Hostage validation because the prisoner did not have its captor set.
     
     # PARENT:

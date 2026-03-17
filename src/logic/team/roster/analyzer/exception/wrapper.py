@@ -20,7 +20,7 @@ class TeamRosterRelationAnalysisException(TeamRosterException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Wrap any exception that kills the relation test process before the team-member relationship
         status has been evaluated.
 

@@ -21,7 +21,7 @@ class IncomingEdgeWrongTailException(NodeException, InsertionException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that adding an incoming edge failed because the edge was pointing to a different
         node.
 

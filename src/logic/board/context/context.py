@@ -18,7 +18,7 @@ class BoardContext(Context[Board]):
     """
     # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     Provide an SquareFinder with an attribute value to find Squares with a matching value in their version of
     the attribute.
     

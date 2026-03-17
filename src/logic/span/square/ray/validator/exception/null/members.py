@@ -21,7 +21,7 @@ class SquareRayMembersNullException(NullException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a SquareRay candidate was not validated because it's rays
         were null instead of a List[Square]
 

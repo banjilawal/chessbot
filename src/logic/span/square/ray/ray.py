@@ -18,7 +18,7 @@ class SquareRay(Ray[Square]):
     """
     # ROLE: Data-Holder
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Stores members that define a ray from an origin to a terminus
 
     # PARENT:

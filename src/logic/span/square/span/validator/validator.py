@@ -19,7 +19,7 @@ class SquareSpanValidator(Validator[SquareSpan]):
     """
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Ensure a candidate is not null and the correct type before its used as a Span.Square.Span.
     2.  If verification fails indicate the reason in an exception returned to the caller.
 

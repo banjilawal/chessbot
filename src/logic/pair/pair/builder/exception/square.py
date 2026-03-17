@@ -22,7 +22,7 @@ class HeadTailSquareException(DebugException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that an Pair build failed because the head_node.square == tail_square.
         The head and tail nodes cannot have the same square.
 

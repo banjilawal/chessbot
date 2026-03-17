@@ -17,7 +17,7 @@ class Result(Generic[T]):
     """
     # ROLE: Messanger  Data Transport Object, Error Transport Object.
   
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Send the outcome of a request to the client.
     2.  If the request was satisfied send the success-data in the payload.
     3.  If request was not fulfilled return an exception.

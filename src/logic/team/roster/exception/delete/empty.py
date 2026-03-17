@@ -11,7 +11,7 @@ class PoppingEmptyTeamRosterException(TeamRosterException):
     """
     # ROLE: Debug, Error Tracing
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that an attempt to remove a roster member failed because the roster was empty.
 
     # PARENT:

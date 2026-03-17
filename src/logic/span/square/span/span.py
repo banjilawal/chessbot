@@ -18,7 +18,7 @@ class SquareSpan(Span[Square]):
     """
     # ROLE: Data-Holder
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Stores rays projected from a common origin.
 
     # PARENT:

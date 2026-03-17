@@ -10,7 +10,7 @@ version: 1.0.0
 # =========== TOKEN.DATABASE PACKAGE CONTENTS ===========#
 
 # Packages
-from .core import *
+from .kernel import *
 from .exception import *
 
 # Modules

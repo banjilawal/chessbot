@@ -19,7 +19,7 @@ class TeamBuilder(Builder[Team]):
     """
      # ROLE: Builder, Data Integrity And Reliability Guarantor
 
-     # RESPONSIBILITIES:
+     Responsibilities:
      1.  Produce Team instances whose integrity is guaranteed at creation.
      2.  Manage construction of Team instances that can be used safely by the client.
      3.  Ensure params for Team creation have met the application's safety contract.
@@ -209,7 +209,7 @@ class SquareBuilder(Builder[Square]):
     """
      # ROLE: Builder, Data Integrity And Reliability Guarantor
 
-     # RESPONSIBILITIES:
+     Responsibilities:
      1.  Produce Square instances whose integrity and reliability are guaranteed.
      2.  Ensure params for Square creation have met the application's safety contract.
      3.  Return an exception to the client if a build resource does not satisfy integrity requirements.

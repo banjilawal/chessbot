@@ -20,7 +20,7 @@ class PoppingEmptyPairStackException(PairStackException):
     """
     # ROLE: Debug, Error Tracing
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that an attempt to remove a occupant failed because the PairStack was not managing any pairs.
 
     # PARENT:

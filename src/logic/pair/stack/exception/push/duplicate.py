@@ -20,7 +20,7 @@ class AddingDuplicatePairException(PairStackException):
     """
     # ROLE: Debug, Error Tracing
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that pushing a pair onto the stack failed because it was already present in the stack.
 
     # PARENT:

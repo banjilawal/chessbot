@@ -20,7 +20,7 @@ class UnsupportedEmptyCollisionResultException(UnsupportedDataResultStateExcepti
     """
     # ROLE: Information, Reporting, Debug
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that an CollisionReport can either succeed or fail. There are no other outcomes.
 
     # PARENT:

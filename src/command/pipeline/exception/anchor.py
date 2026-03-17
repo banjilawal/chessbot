@@ -23,7 +23,7 @@ class PipelineException(AnchorException):
     """
     # ROLE: Information, Reporting, Debug
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Locus of attention for PipelineDebugExceptions.
 
     # PARENT:

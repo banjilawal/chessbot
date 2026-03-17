@@ -21,7 +21,7 @@ class ZeroFormationKeysException(InvalidFormationKeyException, ContextFlagCountE
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a FormationKey failed its safety certification because no attribute was enabled with a value.
     # 1.  Indicate that forward Formation lookup failed because all the FormationKey attributes were null.
 

@@ -20,7 +20,7 @@ class EdgeHeuristicException(EdgeDebugException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a candidate was not validated as an edge because its heuristic was not a number 
         within the allowed range.
 

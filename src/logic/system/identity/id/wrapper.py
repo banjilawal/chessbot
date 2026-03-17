@@ -20,7 +20,7 @@ class IdValidationException(NumberException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  A debug exception is created when an ID candidate fails a validation test. Validation debug exceptions are
         encapsulated inside an IdValidationException creating an exception chain. which is sent to the caller in a
         ValidationResult.

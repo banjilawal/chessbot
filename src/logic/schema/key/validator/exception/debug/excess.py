@@ -20,7 +20,7 @@ class ArenaSchemaKeysException(SchemaKeyException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a candidate failed SchemaKey validation because more than one attribute was enabled.
 
     # PARENT:

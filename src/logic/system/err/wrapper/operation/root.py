@@ -24,7 +24,7 @@ class OperationException(WrapperException):
     # ROLE: Exception Chain Layer 1, Exception Messaging
     # TASK: Worker Method Identifier
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Identifies which WorkerClass method the error was caught.
     2.  Encapsulates the DebugException created after, a code block triggers a variable into its
         error state.

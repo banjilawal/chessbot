@@ -22,7 +22,7 @@ class PersonaLookup(HashLookup[Persona]):
     """
     # ROLE: Forward Lookups
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Run forward lookups on the Persona hashtable to find a Rank's metadata.
     2.  Indicate there is no metadata for a given key-value pair by returning an exception to the caller.
     3.  Verifies correctness of key-value key before running lookup.

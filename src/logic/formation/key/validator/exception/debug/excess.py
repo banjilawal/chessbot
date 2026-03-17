@@ -21,7 +21,7 @@ class ArenaFormationKeysException(FormationKeyException, ContextFlagCountExcepti
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a candidate failed FormationKey validation because more than one attribute was enabled.
 
     # PARENT:

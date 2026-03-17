@@ -20,7 +20,7 @@ class TokenFactory(Builder[Token]):
     """
     # ROLE: Factory, Data Integrity Guarantor
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Produce Token instances whose integrity is guaranteed at creation.
     2.  Manage construction of Token instances that can be used safely by the client.
     3.  Ensure params for Token creation have met the application's safety contract.

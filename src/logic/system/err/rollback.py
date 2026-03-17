@@ -20,7 +20,7 @@ class RollbackException(ChessException):
   """
   # ROLE: Error Rollback, Integrity Debugging, State Restoration,
 
-  # RESPONSIBILITIES:
+  Responsibilities:
   1.  Indicate that an operation that failed was is rolled back before the exception chain was sent.
 
   # PARENT:

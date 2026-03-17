@@ -20,7 +20,7 @@ class BlackTeamHasWrongSchemaException(TeamHashException):
     """
     # ROLE: Super Exception
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicates that the black team in the hash does not have a black schema.
 
     # PARENT:

@@ -14,7 +14,7 @@ class SquareColliderException(ColliderException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Provide SquareCollisionDetector as:
             *   Reporting
             *   Coverage

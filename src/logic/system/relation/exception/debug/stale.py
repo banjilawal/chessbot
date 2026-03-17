@@ -20,7 +20,7 @@ class StaleRelationException(RelationDebugException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that, a failing result was returned because the primary had a stale
         link to a former satellite
 

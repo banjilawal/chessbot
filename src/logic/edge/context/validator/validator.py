@@ -25,7 +25,7 @@ class EdgeContextValidator(Validator[EdgeContext]):
     """
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Ensure a EdgeContext instance is certified safe, reliable and consistent before use.
     2.  If verification fails indicate the reason in an exception returned to the caller.
 

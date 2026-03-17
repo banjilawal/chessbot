@@ -23,7 +23,7 @@ class GraphServiceException(ServiceException):
     """
     # ROLE: Coverage Target, Exception Chain Layer 0
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Anchoring target for GraphService debug (layer-2) error state firing incident
         reports on
             *   the triggering variable

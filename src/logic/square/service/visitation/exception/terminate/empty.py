@@ -20,7 +20,7 @@ class NoVisitForTerminationException(SquareDebugException):
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     A failing DeletionResult was returned because there was no visitor in the square. There was no visit
     to terminate.
 

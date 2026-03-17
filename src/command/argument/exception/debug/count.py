@@ -22,7 +22,7 @@ class ArgumentCountException(ServiceRequestDebugException):
     """
     # ROLE: Information, Reporting, Debug
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a service_request has the wrong number of arguments for the command
 
     # PARENT:

@@ -23,7 +23,7 @@ class ColliderException(OperationException):
     """
     # ROLE: Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate an object collided test subject
     2.  Identify the method where the collision test was performed.
 

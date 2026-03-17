@@ -20,7 +20,7 @@ class ArgumentsValidator(Validator[Dict]):
     """
     # ROLE: Validation, Data Integrity Guarantor, Security.
     
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Ensure a Argument has.
     *   The correct number of arguments.
     *   The arguments have the correct names.

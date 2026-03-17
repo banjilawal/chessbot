@@ -21,7 +21,7 @@ class TeamBelongsToDifferentBoardException(TeamDebugException, NoRelationExcepti
     """
     # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  A failing TeamValidationResult was returned because the board and the candidate team
         did not have any relationship between them.
 

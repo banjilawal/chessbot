@@ -19,7 +19,7 @@ class CoordSpan(Span[Coord]):
     """
     # ROLE: Data-Holder
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Stores rays projected from a common Coord.
 
     # PARENT:

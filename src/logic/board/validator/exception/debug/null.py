@@ -22,7 +22,7 @@ class NullBoardException(NullException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate that a board is null where it should not be.
     
     # PARENT:

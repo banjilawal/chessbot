@@ -18,7 +18,7 @@ class NodeContextService(ContextService[NodeContext]):
     """
     # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Public facing Node search microservice API.
     2.  Provides a map aware utility for searching Node objects.
     3.  Encapsulate integrity assurance logic in one extendable module.

@@ -23,7 +23,7 @@ class LookupException(CollectionOperationException):
     """
     # ROLE: Exception Wrapper
   
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Parent of exceptions raised by Lookup operations.
     3.  Super for Metadata errors not covered by lower level LookupFailedExceptions.
 

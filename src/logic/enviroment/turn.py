@@ -20,7 +20,7 @@ class TurnScene(Scene[Piece, Board, Square]):
     """
     # ROLE:
 
-    # RESPONSIBILITIES:
+    Responsibilities:
 
     # PROVIDES:
         `TurnScene`

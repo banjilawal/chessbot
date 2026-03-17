@@ -22,7 +22,7 @@ class WhiteSpaceStringException(VoidStringException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Indicate an entity, method, or operation required a String with some characters but got one that
         only had whitespace.
 

@@ -12,7 +12,7 @@ class BoardLayoutFailedException(BoardException, InsertionException):
     """
     # ROLE: Exception Wrapper
 
-    # RESPONSIBILITIES:
+    Responsibilities:
     1.  Wrap debug exceptions indicating why laying out tokens on a board failed. The encapsulated
         exceptions create chain for tracing the source of the failure.
 

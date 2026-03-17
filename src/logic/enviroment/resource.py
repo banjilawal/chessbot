@@ -19,7 +19,7 @@ class BoardResourceValidator(Validator[Square, Board]):
   """
   # ROLE: Validator, Data Integrity
 
-  # RESPONSIBILITIES:
+  Responsibilities:
   1. Ensure `TravelEvent` resource_candidate has a valid binding to the execution environment for `TravelEventFresourcey`.
   2. If binding requirements are not satisfied return the appropriate error to `TravelEventFresourcey` in
       `ValidationResult`.
