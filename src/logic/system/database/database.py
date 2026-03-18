@@ -10,73 +10,82 @@ Version: 1.0.0
 from __future__ import annotations
 
 from abc import abstractmethod
-from typing import Generic, List, Optional, TypeVar
+from typing import Generic, List, TypeVar
 
 from logic.system import (
-    Context, ContextService, DeletionResult, InsertionResult, IntegrityService, LoggingLevelRouter, SearchResult,
-    Service
+    Context, DeletionResult, InsertionResult, IntegrityService, LoggingLevelRouter, SearchResult, Service
 )
 
 T = TypeVar("T")
 
 class Database(Service, Generic[T]):
     """
-    Role:Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
+    Role:
+        -   Repo interface.
+        -   Protection layer.
 
     Responsibilities:
-    1.  Assures StackService only stores unique data with no duplicates.
-    2.  Interface for inserting data into the StackService.
-    3.  Protects data from direct access.
-    4.  Wrapper for StackService
-    5.  Public facing API.
-    
-    Super Class:
-    None
+        1.  Prevents direct access to data managed by StackService.
+        2.  Middle layer between clients and StackService.
+
+    Attributes:
+        id: int
+        name: str
 
     Provides:
+        -   size() -> int
+        -   is_empty() -> bool
+        -   integrity_service() -> IntegrityService[T]
+        -   iterator(self) -> iter
+        -   insert(item: T) -> InsertionResult
+        -   delete_by_id(id: int) -> DeletionResult[T]
+        -   search(self, context: Context[T]) -> SearchResult[List[T]]
 
-        
-    # INHERITED ATTRIBUTES:
-    None
+    Super:
     """
+    
     def __init__(self, id: int, name: str):
         super().__init__(id=id, name=name)
     
     @property
     @abstractmethod
     def size(self) -> int:
-        pass
-    
-    @property
-    @abstractmethod
-    def current_item(self) -> Optional[T]:
+        """Implement to return the size of the database."""
         pass
     
     @property
     @abstractmethod
     def is_empty(self) -> bool:
+        """Implement to test if the database is empty."""
         pass
     
+    @property
     @abstractmethod
     def integrity_service(self) -> IntegrityService[T]:
+        """"Implement to access the model's integrity service."""
         pass
-        
+
+    @property
     @abstractmethod
-    def context_service(self) -> ContextService[T]:
+    def iterator(self) -> iter:
+        """Implement to access the database's iterator."""
         pass
     
     @abstractmethod
     @LoggingLevelRouter.monitor
     def insert(self, item: T) -> InsertionResult:
+        """Implement to insert a new item into the database."""
         pass
     
     @abstractmethod
     @LoggingLevelRouter.monitor
     def delete_by_id(self, id: int) -> DeletionResult[T]:
+        """Implement to delete an item from the database."""
         pass
     
     @abstractmethod
     @LoggingLevelRouter.monitor
     def search(self, context: Context[T]) -> SearchResult[List[T]]:
+        """Implement to read from the database.'"""
         pass
         
