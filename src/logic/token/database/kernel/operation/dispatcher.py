@@ -18,7 +18,7 @@ class TokenStackOpsDispatcher:
         - Utilities Provider
 
     Responsibilities:
-        1.  Provide a single entry point for transactions TokenStackService runs.
+        1.  Provide a single entry point for transactions TokenStackService operates.
 
     Attributes:
         crud: TokenStackCrudManager

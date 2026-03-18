@@ -158,6 +158,10 @@ class TokenStackService(StackService[Token]):
     @stack_state.setter
     def stack_state(self, state: TokenStackState):
         self._state = state
+        
+    @property
+    def iterator(self) -> iter:
+        return iter(self._stack)
     
     @LoggingLevelRouter.monitor
     def pop(self) -> DeletionResult[Token]:

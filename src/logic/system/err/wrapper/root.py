@@ -1,7 +1,7 @@
-# src/logic/system/err/worker.py
+# src/logic/system/err/wrapper.py
 
 """
-Module: logic.system.err.worker
+Module: logic.system.err.wrapper
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -11,79 +11,76 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# WORKER_EXCEPTION #======================#
+    # ======================# WRAPPER_EXCEPTION #======================#
     "WrapperException",
 ]
 
 from logic.system import ChessException
 
-# ======================# WORKER_EXCEPTION #======================#
+# ======================# WRAPPER_EXCEPTION #======================#
 class WrapperException(ChessException):
     """
-    Role:Exception Chain Layer 1, Exception Messaging
-    # TASK: Worker Method Identifier
+    Role:
+        -   Wrapper Method Identifier
+        -   Exception Chain Layer 1
+        -   Exception Messaging
 
     Responsibilities:
-    1.  Abstract exception for Worker subclasses which indicate
-            *   The worker
-            *   It's method
-        that produced an exception instead of a payload in it's result.
+        1.  Abstract exception for Wrapper subclasses which indicate
+                -   The wrapper
+                -   It's method
+            that produced an exception instead of a payload in it's result.
     
-    # NAMING CONVENTION:
-    1.  Prefix is the Class name with the Result name. The operation name should match the Result subclass.
-    2.  Operation outcome. This will always be Failed.
-    3.  Suffix is Exception.
-    4.  The Syntax is: [ClassName][ResultClassName]FailedException
+    Naming Convention:
+        1.  Prefix is the Class name with the Result name.
+        2.  The operation name should match the Result subclass.
+        3.  Operation outcome. This will always be Failed.
+        4.  Suffix is Exception.
+        5.  The Syntax is: [ClassName][ResultClassName]FailedException
     
-    # ERROR CODE CONVENTION:
-    1.  All caps, snake case. Prefix is the class name followed by the operation name. The operation name should
-        match the type of result.
-    3.  Suffix is Exception.
-    2.  The Syntax is: [Class]_[OPERATION]_FAILURE
+    Error Code Convention:
+        1.  All caps, snake case. Prefix is the class name followed by the operation name.
+        2.  The operation name should match the type of result.
+        3.  Suffix is Exception.
+        2.  The Syntax is: [WORK_TITLE]_[OPERATION]_FAILURE
     
-    # DEFAULT MSG CONVENTION:
-    1.  Sentence whose first word is the class name followed by the operation name. The sentence ends with failed.
-    2.  The Syntax is: [Class] operation failed.
-
-    Super Class:
-        *   ChessException
-
-    Provides:
-
-    # LOCAL ATTRIBUTES:
-        *   mthd (Optional[str])
-
-    # INHERITED ATTRIBUTES:
-        *   See ChessException class for inherited attributes.
+    Default MSG Convention:
+        1.  Sentence whose first word is the class name followed by the operation name.
+        2.  The sentence ends with failed.
+        3.  The Syntax is: [Class] operation failed.
 
     Attributes:
-        *   err_code (str)
-        *   msg (str
-        *   ex (Optional[Exception])
-        *   mthd (Optional[str])
+        msg: Optional[str]
+        mthd: Optional[str]
+        ex: Optional[Exception]
+        err_code: Optional[str]
 
-    # LOCAL METHODS:
-   None
-
-    # INHERITED METHODS:
-        *   See ChessException class for inherited methods.
+    Provides:
+    
+    Super Class:
+        ChessException
     """
-    ERR_CODE = "METHOD_FAILURE"
     MSG = "method failed."
-    MTHD: None
+    ERR_CODE = "METHOD_FAILURE"
     
     _mthd: Optional[str]
     
     def __init__(
             self,
-            err_code: Optional[str] = None,
             msg: Optional[str] = None,
-            ex: Optional[Exception] = None,
             mthd: Optional[str] = None,
+            ex: Optional[Exception] = None,
+            err_code: Optional[str] = None,
     ):
-        err_code = err_code or self.ERR_CODE
-        mthd = mthd or self.MTHD
+        """
+        Args:
+            msg: Optional[str]
+            mthd: Optional[str]
+            ex: Optional[Exception]
+            err_code: Optional[str]
+        """
         msg = msg or self.MSG
+        err_code = err_code or self.ERR_CODE
         super().__init__(err_code=err_code, msg=msg, ex=ex)
         self._mthd = mthd
     

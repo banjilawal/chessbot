@@ -19,7 +19,8 @@ from logic.coord import Coord, CoordStack
 class Token(ABC):
     """
     Role:
-        Data-Holder, Abstract Data Type
+        -   Model
+        -   Data-Holder
     Responsibilities:
         1. Keep an immutable record of Coords the Token has occupied.
         2. Superclass of CombatantPiece, KingPiece, and PawnPiece.
@@ -36,11 +37,13 @@ class Token(ABC):
         previous_address: Optional[Coord]
         token_board_state: TokenBoardState
         readiness_state: ReadinessState
+        
     Provides:
         - is_not_deployed(self) -> bool
         - is_active(self) -> bool
         - is_disabled(self) -> bool
         - is_enemy(self, token: Token) -> bool
+        
     Parent:
     """
     _id: int

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from logic.rank import Rank, RankService
 from logic.system import ComputationResult, LoggingLevelRouter
-from logic.token import RankQuotaAnalysisException, RankQuotaReport, TokenContext, TokenStackService
+from logic.token import RankQuotaAnalyzerFailureException, RankQuotaReport, TokenContext, TokenStackService
 
 
 class RankQuotaAnalyzer:
@@ -69,12 +69,12 @@ class RankQuotaAnalyzer:
         if rank_validation_result.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(
-                RankQuotaAnalysisException(
+                RankQuotaAnalyzerFailureException(
                     mthd=method,
-                    op=RankQuotaAnalysisException.OP,
-                    msg=RankQuotaAnalysisException.MSG,
-                    err_code=RankQuotaAnalysisException.ERR_CODE,
-                    rslt_type=RankQuotaAnalysisException.RSLT_TYPE,
+                    op=RankQuotaAnalyzerFailureException.OP,
+                    msg=RankQuotaAnalyzerFailureException.MSG,
+                    err_code=RankQuotaAnalyzerFailureException.ERR_CODE,
+                    rslt_type=RankQuotaAnalyzerFailureException.RSLT_TYPE,
                     ex=rank_validation_result.exception
                 )
             )
@@ -85,12 +85,12 @@ class RankQuotaAnalyzer:
         if rank_search_result.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(
-                RankQuotaAnalysisException(
+                RankQuotaAnalyzerFailureException(
                     mthd=method,
-                    op=RankQuotaAnalysisException.OP,
-                    msg=RankQuotaAnalysisException.MSG,
-                    err_code=RankQuotaAnalysisException.ERR_CODE,
-                    rslt_type=RankQuotaAnalysisException.RSLT_TYPE,
+                    op=RankQuotaAnalyzerFailureException.OP,
+                    msg=RankQuotaAnalyzerFailureException.MSG,
+                    err_code=RankQuotaAnalyzerFailureException.ERR_CODE,
+                    rslt_type=RankQuotaAnalyzerFailureException.RSLT_TYPE,
                     ex=rank_search_result.exception
                 )
             )

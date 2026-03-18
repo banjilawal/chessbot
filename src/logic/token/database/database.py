@@ -12,8 +12,8 @@ from typing import List, Optional
 
 from logic.rank import Rank, RankService
 from logic.token import (
-    RankQuotaReport, Token, TokenContext, TokenContextService, TokenStackService, TokenService, TokenDatabaseException,
-    TokenStackState
+    RankQuotaReport, Token, TokenContext, TokenContextService, TokenStackService, TokenService,
+    TokenDatabaseException, TokenStackState
 )
 from logic.system import (
     ComputationResult, Database, DeletionResult, IdFactory, IdentityService, InsertionResult, LoggingLevelRouter,
@@ -75,6 +75,10 @@ class TokenDatabase(Database[Token]):
     @property
     def context_service(self) -> TokenContextService:
         return self._kernel.context_service
+    
+    @property
+    def iterator(self) -> iter:
+        return self._kernel.iterator
     
     @property
     def size(self) -> int:
