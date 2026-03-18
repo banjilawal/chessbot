@@ -45,6 +45,11 @@ class Database(Service, Generic[T]):
     """
     
     def __init__(self, id: int, name: str):
+        """
+        Args:
+            id: int
+            name: str
+        """
         super().__init__(id=id, name=name)
     
     @property
