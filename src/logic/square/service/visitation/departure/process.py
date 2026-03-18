@@ -8,18 +8,14 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from copy import deepcopy
 
+from logic.token import Token
+from logic.system import DeletionResult, LoggingLevelRouter
 from logic.square import (
-    DepartingEmptySquareException, Square, SquareService, SquareState, SquareVisitorDisabledException,
-    StartSquareVisitException, SquareDepartureException, TokenVisitHandlerException,
-    VisitingOccupiedSquareException, VisitingWrongOpeningSquareException, VisitorFromWrongBoardException
+    DepartingEmptySquareException, Square, SquareDepartureException, SquareValidator, SquareState
 )
-from logic.system import DeletionResult, LoggingLevelRouter, DeletionResult, validation_resultResult
-from logic.token import Token, TokenBoardState, TokenService
 
-
-class DepartSquareProcess:
+class SquareDepartureProcessor:
     """
     Role:
         - Transaction Worker
@@ -36,7 +32,7 @@ class DepartSquareProcess:
     Provides:
         -   execute(
                     square: Square,
-                    square_service: SquareService,
+                    square_validator: SquareValidator,
             ) -> DeletionResult[Token]
 
     Super Class:
@@ -47,7 +43,7 @@ class DepartSquareProcess:
     def execute(
             cls,
             square: Square,
-            square_service: SquareService = SquareService(),
+            square_validator: SquareValidator = SquareValidator(),
     ) -> DeletionResult[Token]:
         """
         Takes the token out of the square.
@@ -62,18 +58,17 @@ class DepartSquareProcess:
             3.  Send the success result.
         Args:
             square: Square
-            square_service: SquareService
+            square_validator: SquareValidator
         Returns:
             DeletionResult[Token]
         Raises:
-            TokenVisitHandlerException
             SquareDepartureException
             DepartingEmptySquareException
         """
         method = f"{cls.__name__}.execute"
         
         # Handle the case that, the square is not certified as safe.
-        validation_result = square_service.validator.validate(candidate=square)
+        validation_result = square_validator.validator.validate(candidate=square)
         if validation_result.is_failure:
             # Return the exception chain on failure.
             return DeletionResult.failure(
@@ -102,17 +97,15 @@ class DepartSquareProcess:
                             msg=DepartingEmptySquareException.MSG,
                             err_code=DepartingEmptySquareException.ERR_CODE,
                         )
-                    )
                 )
             )
         # --- Process the removal logic that maintains integrity and consistency. ---#
         
         # Store the square's occupant.
         token = square.occupant
-        
-        # Break the relationship between the square and the token then update the square's state.
+        # Break the relationship between them and update the square's state.
         square.occupant = None
         square.state = SquareState.EMPTY
         
-        # --- Send the success result to the client. ---#
+        # --- Send the work product. ---#
         DeletionResult.success(payload=token)

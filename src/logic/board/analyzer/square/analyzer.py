@@ -30,7 +30,7 @@ class BoardSquareRelationAnalyzer(RelationAnalyzer[Board, Square]):
                     candidate_primary: Board,
                     candidate_satellite: Square,
                     board_validator: BoardValidator = BoardValidator(),
-                    square_service: SquareService = SquareService(),
+                    square_validator: SquareService = SquareService(),
             ) -> RelationReport[Board, Square]
 
     Super:
@@ -59,7 +59,7 @@ class BoardSquareRelationAnalyzer(RelationAnalyzer[Board, Square]):
             candidate_primary: Board
             candidate_satellite: Square
             board_validator: BoardValidator
-            square_service: SquareService
+            square_validator: SquareService
         Returns:
             RelationReport[Board, Square]
         Raises:

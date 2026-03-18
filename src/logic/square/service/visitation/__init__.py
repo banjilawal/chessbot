@@ -15,4 +15,4 @@ from .departure import *
 from .exception import *
 
 # Modules
-from .manager import VisitationManager
+from .processor import VisitationProcessor

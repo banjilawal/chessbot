@@ -22,13 +22,13 @@ from logic.token import PawnToken, Token, TokenFactory, TokenOpsDispatcher, Toke
 class TokenService(IntegrityService[Token]):
     """
     Role:
-        - Microservice
-        - Integrity Lifecycle Management
-        - API layer
+        -   API Layer
+        -   Microservice Worker
+        -   Integrity Lifecycle Manager
 
     Responsibilities:
-        1.  Public API for Token operations.
-        2.  Provides single entry and exit points for the Token lifecycle.
+        1.  Microservice for all Token operations.
+        2.  Owner of the Token Integrity Lifecycle.
 
     Attributes:
         SERVICE_NAME: TokenService
@@ -89,12 +89,10 @@ class TokenService(IntegrityService[Token]):
     
     @property
     def builder(self) -> TokenFactory:
-        """get TokenFactory"""
         return cast(TokenFactory, self.entity_builder)
     
     @property
     def validator(self) -> TokenValidator:
-        """get TokenValidator"""
         return cast(TokenValidator, self.entity_validator)
     
     @property

@@ -57,7 +57,7 @@ class NodeContextValidator(Validator[NodeContext]):
         # PARAMETERS:
             *   candidate (Any)
             *   discovery_status_service (Discovery_StatusService)
-            *   square_service (SquareService)
+            *   square_validator (SquareService)
             *   node_validator (NodeValidator)
             *   number_validator (NumberValidator):
         # RETURNS:

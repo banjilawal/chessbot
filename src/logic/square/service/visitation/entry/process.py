@@ -18,7 +18,7 @@ from logic.system import LoggingLevelRouter, UpdateResult
 from logic.token import Token, TokenBoardState, TokenService
 
 
-class SquareEntryProcess:
+class SquareEntryProcessor:
     """
     Role:
         - Transaction Worker

@@ -198,7 +198,7 @@ class SquareStackTokenHandler:
         occupant = None
         # --- Expecting only one square in the list.  ---#
         for square in occupied_squares:
-            # --- Handoff the deletion responsibility to square_service. ---#
+            # --- Handoff the deletion responsibility to square_validator. ---#
             deletion_result = square_service.remove_occupant(square)
             
             # Handle the case that, the removal is not completed.

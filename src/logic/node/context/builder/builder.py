@@ -66,7 +66,7 @@ class NodeContextBuilder(Builder[NodeContext]):
             These Parameters must be provided:
                 *   predecessor_service (PredecessorService)
                 *   priority_service (PriorityService)
-                *   square_service (SquareService)
+                *   square_validator (SquareService)
                 *   number_validator (IdentityService)
             # RETURNS:
                 *   BuildResult[NodeContext] containing either:

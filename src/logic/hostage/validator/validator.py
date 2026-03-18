@@ -58,7 +58,7 @@ class HostageValidator(Validator[Hostage]):
         # PARAMETERS:
             *   candidate (int)
             *   token_service (TokenService)
-            *   square_service (SquareService)
+            *   square_validator (SquareService)
             *   identity_service (IdentityService)
         # RETURN:
             *   ValidationResult[Hostage] containing either:

@@ -264,7 +264,7 @@ class TokenDeployment:
         """
         method = f"{cls.__class__.__name__}._visitation_process_wrapper"
         
-        # Make a visitation request to square_service.
+        # Make a visitation request to square_validator.
         visitation_result = token.team.board.squares.integrity_service.begin_square_visit(
             visitor=token,
             square=opening_square,

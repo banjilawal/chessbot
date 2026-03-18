@@ -26,7 +26,7 @@ class TokenVisitHandlerException(AnchorException):
     Role:Debug Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
-    1.  Indicate that an error occurred in a VisitationManager.
+    1.  Indicate that an error occurred in a VisitationProcessor.
 
     Super Class:
     *   AnchorException
@@ -50,9 +50,9 @@ class TokenVisitHandlerException(AnchorException):
         *   See AnchorException class for inherited methods.
     """
     CLS_MTHD = Optional[str]
-    CLS_NAME = "VisitationManager"
+    CLS_NAME = "VisitationProcessor"
     ERR_CODE = "TOKEN_VISIT_HANDLER_EXCEPTION"
-    MSG = " VisitationManager raised an exception."
+    MSG = " VisitationProcessor raised an exception."
     
     def __init__(
             self,
@@ -95,9 +95,9 @@ class PoppingEmptySquareStackException(DebugException):
             *   variable,
             *   it's value,
             *   event which fired the variable into its error state.
-        which occurred in the VisitationManager method identified in layer-0 of the exception chain.
+        which occurred in the VisitationProcessor method identified in layer-0 of the exception chain.
 
-    1.  Indicate a failure occurred in VisitationManager.
+    1.  Indicate a failure occurred in VisitationProcessor.
     2.  The method where the error occurred is identified in the exception nested directly underneath.
 
     Super Class:
@@ -123,7 +123,7 @@ class PoppingEmptySquareStackException(DebugException):
         *   See DebugException class for inherited methods.
     """
     ERR_CODE = "TOKEN_VISIT_HANDLER_EXCEPTION"
-    MSG = "VisitationManager raised an exception."
+    MSG = "VisitationProcessor raised an exception."
     
     def __init__(
             self,

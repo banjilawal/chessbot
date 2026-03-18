@@ -26,7 +26,7 @@ class SquareEntryException(UpdateException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that a SquareEntryProcess was not completed.
+        1.  Indicate that a SquareEntryProcessor was not completed.
         2.  Identify the method where the failure occurred.
 
     Attributes:
