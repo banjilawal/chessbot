@@ -49,7 +49,6 @@ class SquareSpanValidationException(ValidationException):
         *   See ValidationException class for inherited methods.
     """
     OP = "Validation"
-    MTHD = Optional[str]
     RSLT_TYPE = "ValidationResult"
     ERR_CODE = "SQUARE_SPAN_VALIDATION_FAILURE"
     MSG = "Failure in SquareSpanValidator method."

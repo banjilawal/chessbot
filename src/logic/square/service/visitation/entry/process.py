@@ -26,10 +26,10 @@ class SquareEntryProcess:
         - Process Runner
 
     Responsibilities:
-        1.  Square visitation process owner.
+        1.  Square entry process owner.
         2.  Preserve original and updated square data for rollbacks.
         3.  Ensure both the token and the squares are consistent throughout
-            square visitation lifecycle.
+            square entry lifecycle.
 
     Attributes:
     
@@ -37,8 +37,8 @@ class SquareEntryProcess:
         -   execute(
                     token: Token,
                     square: Square,
-                    token_service: TokenService = TokenService(),
-                    square_validator: SquareValidator = SquareValidator(),
+                    token_service: TokenService,
+                    square_validator: SquareValidator,
             ) -> UpdateResult[Square]:
 
     Super Class:
@@ -76,17 +76,27 @@ class SquareEntryProcess:
         method = f"{cls.__class__.__name__}.execute"
         
         # Handle the case that, the square does not pass a security test.
-        square_security_test_result = cls._run_square_tests(square=square, square_validator=square_validator)
+        square_security_test_result = cls._run_square_tests(
+            square=square,
+            square_validator=square_validator
+        )
         if square_security_test_result.is_failure:
             return square_security_test_result
         
         # Handle the case that, the token does not pass a security test.
-        token_security_test_result = cls._run_token_tests(token=token, square=square, token_service=token_service)
+        token_security_test_result = cls._run_token_tests(
+            token=token,
+            square=square,
+            token_service=token_service
+        )
         if token_security_test_result.is_failure:
             return token_security_test_result
     
         # Handle the case that, an unformed token is trying to entry from the wrong square.
-        deployment_test_result = cls._run_deployment_tests(square=square, token=token)
+        deployment_test_result = cls._run_deployment_tests(
+            square=square,
+            token=token
+        )
         if deployment_test_result.is_failure:
             return deployment_test_result
         

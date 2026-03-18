@@ -49,7 +49,6 @@ class CoordContextValidationException(ValidationException):
     # INHERITED METHODS:
         *   See ValidationException class for inherited methods.
     """
-    MTHD = Optional[str]
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     ERR_CODE = "COORD_CONTEXT_VALIDATION_FAILURE"

@@ -53,7 +53,6 @@ class HostageValidationException(ValidationException):
     """
     ERR_CODE = "HOSTAGE_VALIDATION_FAILURE"
     MSG = "Failure in HostageValidator method."
-    MTHD = Optional[str]
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     

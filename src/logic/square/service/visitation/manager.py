@@ -11,8 +11,8 @@ from __future__ import annotations
 from copy import deepcopy
 
 from logic.square import (
-    NoVisitForTerminationException, Square, SquareService, SquareState, SquareVisitorDisabledException,
-    StartSquareVisitException, TerminateSquareVisitException, TokenVisitHandlerException,
+    DepartingEmptySquareException, Square, SquareService, SquareState, SquareVisitorDisabledException,
+    StartSquareVisitException, SquareDepartureException, TokenVisitHandlerException,
     VisitingOccupiedSquareException, VisitingWrongOpeningSquareException, VisitorFromWrongBoardException
 )
 from logic.system import DeletionResult, LoggingLevelRouter, UpdateResult, ValidationResult
@@ -271,8 +271,8 @@ class VisitationManager:
             DeletionResult[Token]
         Raises:
             TokenVisitHandlerException
-            TerminateSquareVisitException
-            NoVisitForTerminationException
+            SquareDepartureException
+            DepartingEmptySquareException
         """
         method = "TokenVistHandler.terminate_visit"
         
@@ -284,12 +284,12 @@ class VisitationManager:
                 TokenVisitHandlerException(
                     msg=TokenVisitHandlerException.MSG,
                     err_code=TokenVisitHandlerException.ERR_CODE,
-                    ex=TerminateSquareVisitException(
+                    ex=SquareDepartureException(
                         mthd=method,
-                        op=TerminateSquareVisitException.OP,
-                        msg=TerminateSquareVisitException.MSG,
-                        err_code=TerminateSquareVisitException.ERR_CODE,
-                        rslt_type=TerminateSquareVisitException.RSLT_TYPE,
+                        op=SquareDepartureException.OP,
+                        msg=SquareDepartureException.MSG,
+                        err_code=SquareDepartureException.ERR_CODE,
+                        rslt_type=SquareDepartureException.RSLT_TYPE,
                         ex=validation.exception,
                     )
                 )
@@ -301,17 +301,17 @@ class VisitationManager:
                 TokenVisitHandlerException(
                     msg=TokenVisitHandlerException.MSG,
                     err_code=TokenVisitHandlerException.ERR_CODE,
-                    ex=TerminateSquareVisitException(
+                    ex=SquareDepartureException(
                         mthd=method,
-                        op=TerminateSquareVisitException.OP,
-                        msg=TerminateSquareVisitException.MSG,
-                        err_code=TerminateSquareVisitException.ERR_CODE,
-                        rslt_type=TerminateSquareVisitException.RSLT_TYPE,
-                        ex=NoVisitForTerminationException(
+                        op=SquareDepartureException.OP,
+                        msg=SquareDepartureException.MSG,
+                        err_code=SquareDepartureException.ERR_CODE,
+                        rslt_type=SquareDepartureException.RSLT_TYPE,
+                        ex=DepartingEmptySquareException(
                             val=square,
                             var=f"{square.name}",
-                            msg=NoVisitForTerminationException.MSG,
-                            err_code=NoVisitForTerminationException.ERR_CODE,
+                            msg=DepartingEmptySquareException.MSG,
+                            err_code=DepartingEmptySquareException.ERR_CODE,
                         )
                     )
                 )

@@ -49,7 +49,6 @@ class PairValidationException(ValidationException):
         *   See ValidationException class for inherited methods.
     """
     OP = "Validation"
-    MTHD = Optional[str]
     RSLT_TYPE = "ValidationResult"
     ERR_CODE = "PAIR_VALIDATION_FAILURE"
     MSG = "Failure in PairValidator method."

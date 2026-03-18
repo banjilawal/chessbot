@@ -10,7 +10,7 @@ version: 1.0.0
 # =========== SQUARE.SERVICE.VISITATION.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-from .terminate import *
+None
 
 # Modules
 from .anchor import TokenVisitHandlerException

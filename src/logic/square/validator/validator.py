@@ -16,7 +16,6 @@ from logic.square import (
     SquareState, SquareValidationException
 )
 from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
-from logic.system.relation import RelationReport
 
 
 class SquareValidator(Validator[Square]):

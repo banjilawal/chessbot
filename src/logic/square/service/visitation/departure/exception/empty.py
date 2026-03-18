@@ -1,7 +1,7 @@
-# src/logic/token/database/kernel/operation/crud/push/exception/full.py
+# src/logic/square/service/visitation/exception/terminate/empty.py
 
 """
-Module: logic.token.database.kernel.operation.crud.push.exception.full
+Module: logic.square.service.visitation.exception.terminate.empty
 Author: Banji Lawal
 Created: 2026-02-22
 version: 1.0.0
@@ -11,14 +11,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# TOKEN_STACK_FULL_EXCEPTION #======================#
-    "TokenStackFullException",
+    # ======================# DEPARTING_EMPTY_SQUARE_EXCEPTION #======================#
+    "DepartingEmptySquareException",
 ]
 
-from logic.system import DebugException
+from logic.square import SquareDebugException
 
-# ======================# TOKEN_STACK_FULL_EXCEPTION #======================#
-class TokenStackFullException(DebugException):
+
+# ======================# DEPARTING_EMPTY_SQUARE_EXCEPTION #======================#
+class DepartingEmptySquareException(SquareDebugException):
     """
     Role:
         - Error Variable Identifier
@@ -26,22 +27,22 @@ class TokenStackFullException(DebugException):
         - Exception Messaging
 
     Responsibilities:
-        1.  Indicate that pushing a token to the stack failed because the stack was full.
-        
+        1.  Indicate a SquareDeparture process failed because the square was already empty..
+
     Attributes:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]
         ex: Optional[Exception]
         err_code: Optional[str]
-        
+
     Provides:
 
     Super Class:
-        TokenDebugException
+        SquareDebugException
     """
-    ERR_CODE = "TOKEN_STACK_FULL_EXCEPTION"
-    MSG = "Cannot push a token onto a full stack."
+    ERR_CODE = "DEPARTING_EMPTY_SQUARE_EXCEPTION"
+    MSG = "SquareDeparture failed: Cannot remove visitor from empty square."
     
     def __init__(
             self,

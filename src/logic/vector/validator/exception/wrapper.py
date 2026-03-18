@@ -53,7 +53,6 @@ class VectorValidationException(ValidationException):
     """
     ERR_CODE = "VECTOR_VALIDATION_FAILURE"
     MSG = "Failure in VectorValidator method."
-    MTHD = Optional[str]
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     

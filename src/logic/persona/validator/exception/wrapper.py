@@ -53,7 +53,6 @@ class PersonaValidationException(ValidationException):
     """
     ERR_CODE = "PERSONA_VALIDATION_FAILURE"
     MSG = "Failure in PersonaValidator method."
-    MTHD = Optional[str]
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     

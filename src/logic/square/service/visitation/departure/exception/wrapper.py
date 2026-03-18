@@ -12,56 +12,48 @@ from typing import Optional
 
 __all__ = [
     # ======================# SQUARE_VISIT_TERMINATION_FAILURE #======================#
-    "TerminateSquareVisitException",
+    "SquareDepartureException",
 ]
 
 from logic.system import DeletionException
 
 # ======================# SQUARE_VISIT_TERMINATION_FAILURE #======================#
-class TerminateSquareVisitException(DeletionException):
+class SquareDepartureException(DeletionException):
     """
-    Role:Exception Chain Layer 1, Exception Messaging
-    # TASK: Worker Method Identifier
+    Role:
+        -   Worker Method Identifier
+        -   Exception Chain Layer 1,
+        -   Exception Messaging
 
     Responsibilities:
-    1.  An error occurred in TokenVistHandler.terminate_visit that prevented a successful DeletionResult.
-
-    Super Class:
-        *   DeletionException
-
-    Provides:
-
-
-    # INHERITED ATTRIBUTES:
-        *   See DeletionException class for inherited attributes.
+        1.  Indicate that a SquareDepartureProcess was not completed.
+        2.  Identify the method where the failure occurred.
 
     Attributes:
-        *   err_code (str)
-        *   msg (str)
-        *   ex (Optional[Exception])
-        *   mthd (Optional[str])
-        *   op (Optional[str])
-        *   rslt_type (Optional[str])
-
-    # LOCAL METHODS:
-   None
-
-    # INHERITED METHODS:
-        *   See DeletionException class for inherited methods.
+        op: Optional[str]
+        msg: Optional[str]
+        mthd: Optional[str]
+        ex: Optional[Exception]
+        err_code: Optional[str]
+        rslt_type: Optional[str]
+        
+    Provides:
+    
+    Super Class:
+         DeletionException
     """
-    MTHD = Optional[str]
     OP = "Delete"
     RSLT_TYPE = "DeletionResult"
     MSG = "Square visit termination failed."
     ERR_CODE = "SQUARE_VISIT_TERMINATION_FAILURE"
-
+    
     def __init__(
             self,
-            err_code: Optional[str] = None,
-            msg: Optional[str] = None,
-            ex: Optional[Exception] = None,
-            mthd: Optional[str] = None,
             op: Optional[str] = None,
+            msg: Optional[str] = None,
+            mthd: Optional[str] = None,
+            err_code: Optional[str] = None,
+            ex: Optional[Exception] = None,
             rslt_type: Optional[str] = None,
     ):
         """

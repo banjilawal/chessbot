@@ -49,7 +49,6 @@ class NodeContextValidationException(ValidationException):
     # INHERITED METHODS:
         *   See ValidationException class for inherited methods.
     """
-    MTHD = Optional[str]
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     ERR_CODE = "NODE_CONTEXT_VALIDATION_FAILURE"

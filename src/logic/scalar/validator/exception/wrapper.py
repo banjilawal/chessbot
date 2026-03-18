@@ -54,7 +54,6 @@ class ScalarValidationException(ValidationException):
     """
     ERR_CODE = "SCALAR_VALIDATION_FAILURE"
     MSG = "Failure in ScalarValidator method."
-    MTHD = Optional[str]
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     

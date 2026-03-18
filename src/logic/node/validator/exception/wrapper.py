@@ -50,7 +50,6 @@ class NodeValidationException(ValidationException):
         *   See ValidationException class for inherited methods.
     """
     OP = "Validation"
-    MTHD = Optional[str]
     RSLT_TYPE = "ValidationResult"
     ERR_CODE = "NODE_VALIDATION_FAILURE"
     MSG = "Failure in NodeValidator method."

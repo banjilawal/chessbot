@@ -50,7 +50,6 @@ class SpanningGraphProductionException(BuildException):
     # INHERITED METHODS:
         *   See BuildException class for inherited methods.
     """
-    MTHD = Optional[str]
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     ERR_CODE = "SPANNING_GRAPH_PRODUCTION_FAILURE"

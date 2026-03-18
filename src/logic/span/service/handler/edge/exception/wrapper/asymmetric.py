@@ -49,7 +49,6 @@ class AsymmetricEdgeBuildException(BuildException):
     # INHERITED METHODS:
         *   See BuildException class for inherited methods.
     """
-    MTHD = Optional[str]
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     ERR_CODE = "ASYMMETRIC_EDGE_BUILD_FAILURE"

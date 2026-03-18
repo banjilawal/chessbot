@@ -53,7 +53,6 @@ class SnapshotContextBuildException(BuildException):
     """
     ERR_CODE = "SNAPSHOT_CONTEXT_BUILD_FAILURE"
     MSG = "Failure in SnapshotContextBuilder method."
-    MTHD = Optional[str]
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     

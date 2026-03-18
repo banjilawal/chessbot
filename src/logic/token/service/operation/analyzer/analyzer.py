@@ -16,9 +16,6 @@ from logic.token import (
     KingToken, Token, TokenValidator
 )
 
-
-
-
 class TokenReadinessAnalyzer(RelationAnalyzer[ReadinessState, Token]):
     
     @classmethod

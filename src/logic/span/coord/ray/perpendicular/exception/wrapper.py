@@ -58,7 +58,6 @@ class PerpendicularRayComputationException(RayComputationException):
     # INHERITED METHODS:
         *   See RayComputationException class for inherited methods.
     """
-    MTHD = Optional[str]
     OP = "Computation"
     RSLT_TYPE = "ComputationResult"
     MSG = "PerpendicularRayComputation failed."

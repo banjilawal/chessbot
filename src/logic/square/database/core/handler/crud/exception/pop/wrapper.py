@@ -50,7 +50,6 @@ class SquareStackPopException(DeletionException):
     # INHERITED METHODS:
         *   See DeletionException class for inherited methods.
     """
-    MTHD = Optional[str]
     OP = "Delete"
     RSLT_TYPE = "DeletionResult"
     MSG = "SquareStack pop failed."

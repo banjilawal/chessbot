@@ -52,7 +52,6 @@ class CollectionOperationException(OperationException):
     """
     ERR_CODE = "COLLECT_OPERATION_FAILURE"
     MSG = "Collection operation failed."
-    MTHD = Optional[str]
     OP = None
     RSLT_TYPE = None
     

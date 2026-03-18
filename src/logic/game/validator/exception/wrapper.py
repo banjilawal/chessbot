@@ -53,7 +53,6 @@ class GameValidationException(ValidationException):
     """
     ERR_CODE = "GAME_VALIDATION_FAILURE"
     MSG = "Failure in GameValidator method."
-    MTHD = Optional[str]
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     

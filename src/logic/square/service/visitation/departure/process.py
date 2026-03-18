@@ -11,39 +11,35 @@ from __future__ import annotations
 from copy import deepcopy
 
 from logic.square import (
-    NoVisitForTerminationException, Square, SquareService, SquareState, SquareVisitorDisabledException,
-    StartSquareVisitException, TerminateSquareVisitException, TokenVisitHandlerException,
+    DepartingEmptySquareException, Square, SquareService, SquareState, SquareVisitorDisabledException,
+    StartSquareVisitException, SquareDepartureException, TokenVisitHandlerException,
     VisitingOccupiedSquareException, VisitingWrongOpeningSquareException, VisitorFromWrongBoardException
 )
-from logic.system import DeletionResult, LoggingLevelRouter, UpdateResult, ValidationResult
+from logic.system import DeletionResult, LoggingLevelRouter, DeletionResult, validation_resultResult
 from logic.token import Token, TokenBoardState, TokenService
 
 
 class DepartSquareProcess:
     """
-    Role:Update Handler, Consistency, Integrity Maintenance, Lifecycle Management
-
+    Role:
+        - Transaction Worker
+        - Consistency, Integrity Maintenance
+        - Process Runner
+        
     Responsibilities:
-    1.  Ensure integrity and consistency are maintained during the  square's occupation lifecycle.
+        1.  Square departure process owner.
+        2.  Ensure both the token and the squares are consistent throughout
+            square departure lifecycle.
 
-    Super Class:
-   None
+    Attributes:
 
     Provides:
+        -   execute(
+                    square: Square,
+                    square_service: SquareService,
+            ) -> DeletionResult[Token]
 
-
-    # INHERITED ATTRIBUTES:
-    None
-
-    # CONSTRUCTOR ARGS:
-    None
-
-    # LOCAL METHODS:
-        *   start_visit(token: Token, square: Square, square_validator: SquareValidator) -> UpdateResult[Square]
-        *   terminate_visit(square: Square, square_validator: SquareValidator) -> DeletionResult[Token]
-
-    # INHERITED METHODS:
-    None
+    Super Class:
     """
     
     @classmethod
@@ -54,12 +50,16 @@ class DepartSquareProcess:
             square_service: SquareService = SquareService(),
     ) -> DeletionResult[Token]:
         """
-        # ACTION:
-            1.  If the square fails its safety checks send and exception chain in the DeletionResult.
-            2.  If the square is empty send an exception chain in the DeletionResult.
-            3.  Store the square's occupant in a temp variable.
-            4.  Set square.occupant to null and  square.state to empty.
+        Takes the token out of the square.
 
+        Action:
+            1.  Send  an exception chain in the DeletionResult if:
+                    -   The square is not certified as safe.
+                    -   The square is empty.
+            2.  Otherwise:
+                    -   Store the occupant before setting square.occupant null.
+                    -   Update the state to empty
+            3.  Send the success result.
         Args:
             square: Square
             square_service: SquareService
@@ -67,47 +67,40 @@ class DepartSquareProcess:
             DeletionResult[Token]
         Raises:
             TokenVisitHandlerException
-            TerminateSquareVisitException
-            NoVisitForTerminationException
+            SquareDepartureException
+            DepartingEmptySquareException
         """
-        method = "TokenVistHandler.terminate_visit"
+        method = f"{cls.__name__}.execute"
         
         # Handle the case that, the square is not certified as safe.
-        validation = square_service.validator.validate(candidate=square)
-        if validation.is_failure:
+        validation_result = square_service.validator.validate(candidate=square)
+        if validation_result.is_failure:
             # Return the exception chain on failure.
             return DeletionResult.failure(
-                TokenVisitHandlerException(
-                    msg=TokenVisitHandlerException.MSG,
-                    err_code=TokenVisitHandlerException.ERR_CODE,
-                    ex=TerminateSquareVisitException(
+                SquareDepartureException(
                         mthd=method,
-                        op=TerminateSquareVisitException.OP,
-                        msg=TerminateSquareVisitException.MSG,
-                        err_code=TerminateSquareVisitException.ERR_CODE,
-                        rslt_type=TerminateSquareVisitException.RSLT_TYPE,
-                        ex=validation.exception,
-                    )
+                        op=SquareDepartureException.OP,
+                        msg=SquareDepartureException.MSG,
+                        err_code=SquareDepartureException.ERR_CODE,
+                        rslt_type=SquareDepartureException.RSLT_TYPE,
+                        ex=validation_result.exception,
                 )
             )
         # Handle the case that, the square is empty.
         if square.is_empty:
             # Return the exception chain on failure.
             return DeletionResult.failure(
-                TokenVisitHandlerException(
-                    msg=TokenVisitHandlerException.MSG,
-                    err_code=TokenVisitHandlerException.ERR_CODE,
-                    ex=TerminateSquareVisitException(
+                SquareDepartureException(
                         mthd=method,
-                        op=TerminateSquareVisitException.OP,
-                        msg=TerminateSquareVisitException.MSG,
-                        err_code=TerminateSquareVisitException.ERR_CODE,
-                        rslt_type=TerminateSquareVisitException.RSLT_TYPE,
-                        ex=NoVisitForTerminationException(
+                        op=SquareDepartureException.OP,
+                        msg=SquareDepartureException.MSG,
+                        err_code=SquareDepartureException.ERR_CODE,
+                        rslt_type=SquareDepartureException.RSLT_TYPE,
+                        ex=DepartingEmptySquareException(
                             val=square,
                             var=f"{square.name}",
-                            msg=NoVisitForTerminationException.MSG,
-                            err_code=NoVisitForTerminationException.ERR_CODE,
+                            msg=DepartingEmptySquareException.MSG,
+                            err_code=DepartingEmptySquareException.ERR_CODE,
                         )
                     )
                 )

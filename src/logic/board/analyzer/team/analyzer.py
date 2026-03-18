@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import cast
 
-from logic.team import Team, TeamContext, TeamService
+from logic.team import Team, TeamService
 from logic.system import LoggingLevelRouter, RelationAnalyzer, RelationReport
 from logic.board import Board, BoardTeamAnalyzerFailureException, BoardValidator
 

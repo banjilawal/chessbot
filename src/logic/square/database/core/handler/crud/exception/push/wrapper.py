@@ -49,7 +49,6 @@ class SquareStackPushException(InsertionException):
     # INHERITED METHODS:
         *   See InsertionException class for inherited methods.
     """
-    MTHD = Optional[str]
     OP = "Insert"
     RSLT_TYPE = "InsertionResult"
     MSG = "SquareStack push failed."

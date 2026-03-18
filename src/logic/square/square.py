@@ -17,7 +17,10 @@ from logic.square.state import SquareState
 
 class Square:
     """
-    Role:Data-Holder, Addressing, Referencing
+    Role:
+    Model,
+    
+    Data-Holder, Addressing, Referencing
 
     Responsibilities:
     1.  Maps a Coord to a nameable, occupyable board location.

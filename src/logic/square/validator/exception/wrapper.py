@@ -43,7 +43,6 @@ class SquareValidationException(ValidationException):
     Super Class:
         ValidationException
     """
-    MTHD = Optional[str]
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     ERR_CODE = "SQUARE_VALIDATION_FAILURE"

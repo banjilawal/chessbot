@@ -43,7 +43,6 @@ class SquareListValidationException(ValidationException):
     Super Class:
         ValidationException
     """
-    MTHD = Optional[str]
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     ERR_CODE = "SQUARE_LIST_VALIDATION_FAILURE"
