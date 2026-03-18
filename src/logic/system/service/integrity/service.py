@@ -9,6 +9,7 @@ Created: 2025-11-18
 from abc import ABC
 from typing import Generic, TypeVar
 
+from logic.square.database.kernel.operation.collision.exception import id
 from logic.system import Service, Builder, Validator
 
 T = TypeVar("T")
@@ -16,38 +17,26 @@ T = TypeVar("T")
 
 class IntegrityService(ABC, Service[Generic[T]]):
     """
-    Role:Microservice API, Integrity Lifecycle Manager, APLifecycle Management.
+    Role:
+        -   Microservice API
+        -   Integrity Lifecycle Manager
 
     Responsibilities:
-    1.  Integrity Lifecycle Management Microservice API.
-    2.  Bundles primitives for assuring integrity and consistency in the two phases of
-        the integrity lifecycle.
-            *   At object creation.
-            *   At object invocation.
+        1.  Mutates Model instances
+        2.  Ensure Model integrity and consistency when its state changes.
+        3.  Build Model instances that satisfy integrity contracts
+        4.  Maintain the ModelIntegrity Lifecycle.
 
-    Super Class:
-        *   Service
+    Atrributes:
+        id: int
+        name: name
+        builder: Builder[T]
+        validator: Validator[T]
 
     Provides:
 
-    # LOCAL ATTRIBUTES:
-        *   builder (Builder[T])
-        *   validator (Validator[T])
-        
-    # INHERITED ATTRIBUTES:
-        *   See Service class for inherited attributes.
-        
-    Attributes:
-        *   id (int)
-        *   name (name)
-        *   builder (Builder[T])
-        *   validator (Validator[T])
-        
-    # LOCAL METHODS:
-    None
-    
-    # INHERITED METHODS:
-    *   See Service class for inherited methods.
+    Super Class:
+        Service
     """
     _builder: Builder[T]
     _validator: Validator[T]
@@ -59,6 +48,13 @@ class IntegrityService(ABC, Service[Generic[T]]):
             builder: Builder[T],
             validator: Validator[T]
     ):
+        """
+        Args:
+            id: int
+            name: str
+            builder: Builder[T]
+            validator: Validator[T]
+        """
         super().__init__(id=id, name=name,)
         self._builder = builder
         self._validator = validator
