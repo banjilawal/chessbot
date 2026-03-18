@@ -9,7 +9,6 @@ Created: 2025-11-18
 from abc import ABC
 from typing import Generic, TypeVar
 
-from logic.square.database.kernel.operation.collision.exception import id
 from logic.system import Service, Builder, Validator
 
 T = TypeVar("T")
@@ -25,9 +24,9 @@ class IntegrityService(ABC, Service[Generic[T]]):
         1.  Mutates Model instances
         2.  Ensure Model integrity and consistency when its state changes.
         3.  Build Model instances that satisfy integrity contracts
-        4.  Maintain the ModelIntegrity Lifecycle.
+        4.  Maintain the Model integrity lifecycle.
 
-    Atrributes:
+    Attributes:
         id: int
         name: name
         builder: Builder[T]

@@ -22,19 +22,20 @@ from logic.token import PawnToken, Token, TokenFactory, TokenOpsDispatcher, Toke
 class TokenService(IntegrityService[Token]):
     """
     Role:
-        -   API Layer
-        -   Microservice Worker
+        -   Microservice API
         -   Integrity Lifecycle Manager
 
     Responsibilities:
-        1.  Microservice for all Token operations.
-        2.  Owner of the Token Integrity Lifecycle.
+        1.  Mutates Token instances
+        2.  Ensure Token integrity and consistency when its state changes.
+        3.  Build Token instances that satisfy integrity contracts
+        4.  Maintain the Token integrity lifecycle.
 
     Attributes:
         SERVICE_NAME: TokenService
         
         id: int
-        name: str
+        name: name
         builder: TokenBuilder
         validator: TokenValidator
         dispatcher: TokenOpsDispatcher
@@ -61,8 +62,8 @@ class TokenService(IntegrityService[Token]):
                     rank_service: RankService = RankService(),
                     schema_service: SchemaService = SchemaService(),
             ) -> UpdateResult[PawnToken]
-        
-    Super:
+            
+    Super Class:
         IntegrityService
     """
     SERVICE_NAME = "TokenService"
@@ -80,9 +81,9 @@ class TokenService(IntegrityService[Token]):
         Args:
             id: int
             name: str
-            dispatcher: TokenOpsDispatcher
             builder: TokenFactory
             validator: TokenValidator
+            dispatcher: TokenOpsDispatcher
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         self._dispatcher = dispatcher

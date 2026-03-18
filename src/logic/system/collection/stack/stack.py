@@ -9,7 +9,7 @@ Version: 1.0.0
 
 from __future__ import annotations
 from abc import ABC, abstractmethod
-from typing import Generic, List, Optional, TypeVar
+from typing import Generic, Iterator, List, Optional, TypeVar
 
 from logic.system import (
     Context, ContextService, IdentityService, InsertionResult, LoggingLevelRouter, IntegrityService, DeletionResult,
@@ -21,25 +21,39 @@ C = TypeVar("C", bound=Context)
 
 class StackService(ABC, Generic[T]):
     """
-    Role:Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
+    Role:
+     Search Service, CRUD Operations, Encapsulation, API layer.
+        -   Data layer
+        -   CRUD operations.
+        -   ACID compliance.
+        -   Microservice API
+        -   Interface
 
     Responsibilities:
-    1.  Scales Builder and Validator operations for collection of objects.
-    2.  Provides map aware search.
-    3.  Safe and reliable CRUD operations.
-    4.  Public facing API.
-    
-    Super Class:
-    None
+        1.  Preserve consistency during updates and deletes.
+        2.  Efficient, scalable IntegrityService provision for objects it manages.
+        3.  Read access to the data-modeling objects.
+
+    Attributes:
+        id: int
+        name: str
 
     Provides:
+        -   id: int
+        -   name: str
+        -   items() -> List[T]
+        -   size() -> int
+        -   iterator() -> Iterator[T]
+        -   is_empty() -> bool
+        -   current_item(self) -> T
+        -   integrity_service() -> IntegrityService[T]
+        -   context_service(self) -> ContextService[T]
+        -   push(item: T) -> InsertionResult
+        -   pop() -> DeletionResult[T]
+        -   delete_by_id(id: int) -> DeletionResult[T]
+        -   query(dataset: List[T], context: Context[T]) -> SearchResult[List[T]]
 
-    # LOCAL ATTRIBUTES:
-        *   id (int):
-        *   name (str):
-    
-    # INHERITED ATTRIBUTES:
-    None
+    Super:
     """
     _id: int
     _name: str
@@ -59,41 +73,55 @@ class StackService(ABC, Generic[T]):
     @property
     @abstractmethod
     def items(self) -> List[T]:
+        """Implement to access the stack's items"""
+        pass
+    
+    @property
+    @abstractmethod
+    def iterator(self) -> Iterator[T]:
+        """Implement to access the stack's iterator."""
         pass
     
     @property
     @abstractmethod
     def size(self) -> int:
+        """Implement to return the size of the stack."""
         pass
     
     @property
     @abstractmethod
     def is_empty(self) -> bool:
+        """Implement to test if the stack is empty."""
         pass
     
     @property
     @abstractmethod
     def current_item(self) -> Optional[T]:
+        """Implement to get the item ontop of the stack."""
         pass
 
     @property
     @abstractmethod
     def integrity_service(self) -> IntegrityService[T]:
+        """"Implement to access the model's integrity service."""
         pass
     
     @property
     @abstractmethod
-    def context_service(self) -> ContextService[C]:
+    def context_service(self) -> ContextService[T]:
+        """"Implement to access the ContextService."""
         pass
     
     @abstractmethod
     @LoggingLevelRouter.monitor
     def push(self, item: T) -> InsertionResult:
+        """Implement to push a new item into the stack."""
         pass
     
     @abstractmethod
     @LoggingLevelRouter.monitor
     def pop(self) -> DeletionResult[T]:
+        """Implement to pop an item from the stack."""
         pass
     
     @abstractmethod
@@ -103,9 +131,11 @@ class StackService(ABC, Generic[T]):
             id: int,
             identity_service: IdentityService = IdentityService()
     ) -> DeletionResult[T]:
+        """Implement to delete an item from the stack."""
         pass
     
     @abstractmethod
     @LoggingLevelRouter.monitor
     def query(self, dataset: List[T], context: C) -> SearchResult[List[T]]:
+        """Implement to read from the stack.'"""
         pass

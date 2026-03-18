@@ -22,7 +22,7 @@ class Database(Service, Generic[T]):
     """
     Role:
         -   Repo interface.
-        -   Protection layer.
+        -   Data Protection layer.
 
     Responsibilities:
         1.  Prevents direct access to data managed by StackService.
@@ -42,6 +42,7 @@ class Database(Service, Generic[T]):
         -   search(self, context: Context[T]) -> SearchResult[List[T]]
 
     Super:
+        Service
     """
     
     def __init__(self, id: int, name: str):
