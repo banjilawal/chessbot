@@ -23,7 +23,7 @@ class CoordValidationException(ValidationException):
     Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Identify the CoordValidator method where the process failed.
+    1.  Identify the CoordValidationProcess method where the process failed.
 
     Super Class:
         *   ValidationException
@@ -52,7 +52,7 @@ class CoordValidationException(ValidationException):
         *   See ValidationException class for inherited methods.
     """
     ERR_CODE = "COORD_VALIDATION_FAILURE"
-    MSG = "Failure in CoordValidator method."
+    MSG = "Failure in CoordValidationProcess method."
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     

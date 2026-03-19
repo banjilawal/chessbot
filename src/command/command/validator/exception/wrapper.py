@@ -22,7 +22,7 @@ class CommandValidationException(ValidationException):
     Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Identify the CommandValidator method where the process failed.
+    1.  Identify the CommandValidationProcess method where the process failed.
 
     Super Class:
         *   ValidationException
@@ -51,7 +51,7 @@ class CommandValidationException(ValidationException):
         *   See ValidationException class for inherited methods.
     """
     ERR_CODE = "COMMAND_VALIDATION_FAILURE"
-    MSG = "Failure in CommandValidator method."
+    MSG = "Failure in CommandValidationProcess method."
     OP = "Validate"
     RSLT_TYPE = "ValidationResult"
     

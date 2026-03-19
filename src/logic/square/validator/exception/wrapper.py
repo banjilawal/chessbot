@@ -28,7 +28,7 @@ class SquareValidationException(ValidationException):
 
     Responsibilities:
         1.  Indicate a SquareValidation was unsuccessful and did not produce a result.
-        2.  Identify the SquareValidator method where the failure occurred.
+        2.  Identify the SquareValidationProcess method where the failure occurred.
         
     Attributes:
         op: Optional[str]
@@ -46,7 +46,7 @@ class SquareValidationException(ValidationException):
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     ERR_CODE = "SQUARE_VALIDATION_FAILURE"
-    MSG = "Failure in SquareValidator method."
+    MSG = "Failure in SquareValidationProcess method."
     
     def __init__(
             self,

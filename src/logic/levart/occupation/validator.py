@@ -9,20 +9,20 @@ version: 1.0.0
 
 from typing import Any
 
-from logic.system import Validator, ValidationResult
+from logic.system import ValidationProcess, ValidationResult
 from logic.piece import (
     ActorAlreadyAtDestinationException, OccupationEvent,
     NullOccupationEventException, OccupationDestinationNotEmptyException, TravelResourceValidator
 )
 
 
-class OccupationEventValidator(Validator[OccupationEvent]):
+class OccupationEventValidationProcess(ValidationProcess[OccupationEvent]):
     """"""
     
     @classmethod
     def validate(cls, candidate: Any) -> ValidationResult[OccupationEvent]:
         """"""
-        method = "OccupationEventValidator.validate"
+        method = "OccupationEventValidationProcess.validate"
         
         try:
             if candidate is None:
@@ -38,7 +38,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
                 )
             event = cast(OccupationEvent, candidate)
             
-            id_validation = Validator.validate(candidate.visitor_id)
+            id_validation = ValidationProcess.validate(candidate.visitor_id)
             if not id_validation.is_success():
                 return ValidationResult(exception=id_validation.exception)
             
@@ -113,7 +113,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #
 #     travel = cast(AttackEvent, t)
 #
-#     id_validation = IdValidator.validate(travel.visitor_id)
+#     id_validation = IdValidationProcess.validate(travel.visitor_id)
 #     if not id_validation.is_success():
 #       raise IdValidationException(f"{method}: {IdValidationException.MSG}")
 #
@@ -121,7 +121,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #     if not actor_validation.is_success():
 #       raise InvalidAttackException(f"{method}: actor_candidate validation failed.")
 #
-#     destination_square_validation = SquareValidator.validate(travel.enemy_square)
+#     destination_square_validation = SquareValidationProcess.validate(travel.enemy_square)
 #     if not destination_square_validation.is_success():
 #       raise InvalidSqaureException(f"{method}: {InvalidSqaureException.MSG}")
 #
@@ -185,7 +185,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #     """
 #     method = "TravelEventFactory.execute"
 #
-#     event_validation = TravelEventValidator.validate(travel)
+#     event_validation = TravelEventValidationProcess.validate(travel)
 #     if not event_validation.is_success():
 #       return TransactionResult(
 #         checkpoint=travel,

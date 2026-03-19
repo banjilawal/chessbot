@@ -9,7 +9,7 @@ Version: 1.0.0
 
 from enum import Enum
 
-from logic.system import ContextService, Service, Validator
+from logic.system import ContextService, Service, ValidationProcess
 
 
 class HashService(Service[Enum]):
@@ -19,7 +19,7 @@ class HashService(Service[Enum]):
             self,
             id: int,
             name: str,
-            validator: Validator[Enum],
+            validator: ValidationProcess[Enum],
             super_key_service: ContextService[Enum],
     ):
         super().__init__(id=id, name=name, certifier=validator)
@@ -30,6 +30,6 @@ class HashService(Service[Enum]):
         return self._hash_key_service
     
     @property
-    def hash_validator(self) -> Validator[Enum]:
+    def hash_validator(self) -> ValidationProcess[Enum]:
         return self.certifier
     

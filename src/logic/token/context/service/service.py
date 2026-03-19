@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast
 
 from logic.system import ContextService, id_emitter
-from logic.token import TokenContext, TokenContextBuilder, TokenContextValidator, TokenFinder
+from logic.token import TokenContext, TokenContextBuilder, TokenContextValidationProcess, TokenFinder
 
 
 class TokenContextService(ContextService[TokenContext]):
@@ -41,7 +41,7 @@ class TokenContextService(ContextService[TokenContext]):
             id: int = id_emitter.service_id,
             finder: TokenFinder = TokenFinder(),
             builder: TokenContextBuilder =TokenContextBuilder(),
-            validator: TokenContextValidator =TokenContextValidator(),
+            validator: TokenContextValidationProcess =TokenContextValidationProcess(),
     ):
         """
         # ACTION:
@@ -51,7 +51,7 @@ class TokenContextService(ContextService[TokenContext]):
             *   name (str)
             *   finder (TokenFinder)
             *   builder (TokenContextBuilder)
-            *   validator (TokenContextValidator)
+            *   validator (TokenContextValidationProcess)
         # RETURNS:
             None
         Raises:
@@ -71,8 +71,8 @@ class TokenContextService(ContextService[TokenContext]):
         return cast(TokenContextBuilder, self.entity_builder)
     
     @property
-    def validator(self) ->TokenContextValidator:
+    def validator(self) ->TokenContextValidationProcess:
         """GetTokenContextValidator instance."""
-        return cast(TokenContextValidator, self.entity_validator)
+        return cast(TokenContextValidationProcess, self.entity_validator)
     
     

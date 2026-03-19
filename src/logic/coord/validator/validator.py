@@ -10,9 +10,9 @@ version: 1.0.0
 from typing import cast, Any
 
 from logic.coord import Coord, CoordValidationException, NullCoordException
-from logic.system import NUMBER_OF_ROWS, Validator, ValidationResult, LoggingLevelRouter, NumberValidator
+from logic.system import NUMBER_OF_ROWS, ValidationProcess, ValidationResult, LoggingLevelRouter, NumberValidationProcess
 
-class CoordValidator(Validator[Coord]):
+class CoordValidationProcess(ValidationProcess[Coord]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -21,7 +21,7 @@ class CoordValidator(Validator[Coord]):
     2.  Return useful debugging information if a candidate does not satisfy Coord integrity constraints.
 
     Super Class:
-        *   Validator
+        *   ValidationProcess
 
     Provides:
 
@@ -35,7 +35,7 @@ class CoordValidator(Validator[Coord]):
     def validate(
             cls,
             candidate: Any,
-            number_validator: NumberValidator = NumberValidator(),
+            number_validator: NumberValidationProcess = NumberValidationProcess(),
     ) -> ValidationResult[Coord]:
         """
         # ACTION:
@@ -55,7 +55,7 @@ class CoordValidator(Validator[Coord]):
             * NullCoordException
             * CoordValidationException
         """
-        method = "CoordValidator.validate"
+        method = "CoordValidationProcess.validate"
         
         # Handle the case that, the candidate does not exist.
         if candidate is None:

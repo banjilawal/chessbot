@@ -9,5 +9,5 @@ Version: 1.0.1
 
 from .exception import *
 from .event import TravelEvent
-from .validator import TravelEventValidator
+from .validator import TravelEventValidationProcess
 from .transaction import TravelTransaction

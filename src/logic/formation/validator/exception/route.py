@@ -12,7 +12,7 @@ class SchemValidationExecutionRouteException(ResultException, ExecutionRouteExce
     Role:Fallback Result, Debugging
 
     Responsibilities:
-    1.  Indicate that FormationValidator did not handle one of the paths necessary to assure a candidate is a 
+    1.  Indicate that FormationValidationProcess did not handle one of the paths necessary to assure a candidate is a
         Formation safe to use. A Formation has different configurations that are correct. Each configuration has a testing 
         route. If a configuration does not have a validation route a SchemValidationExecutionRouteException
         will be returned in a ValidationResult.
@@ -30,7 +30,7 @@ class SchemValidationExecutionRouteException(ResultException, ExecutionRouteExce
     """
     ERR_CODE = "NO_FORMATION_VALIDATION_ROUTE"
     MSG = (
-        "The FormationValidator did not handle one of the paths necessary to assure a candidate is a Formation safe to use. "
+        "The FormationValidationProcess did not handle one of the paths necessary to assure a candidate is a Formation safe to use. "
         "Ensure all possible verification branches are covered to ensure the execution flow does not hit the default "
         "failure result outside the if-verification-blocks."
     )

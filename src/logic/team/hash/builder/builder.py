@@ -13,7 +13,7 @@ from logic.schema import SchemaService
 from logic.system import BuildResult, Builder, LoggingLevelRouter
 from logic.team import (
     BlackTeamHasWrongSchemaException, Team, TeamHash, TeamHashBuildException,
-    TeamSchemaCollisionException, TeamValidator, WhiteTeamHasWrongSchemaException
+    TeamSchemaCollisionException, TeamValidationProcess, WhiteTeamHasWrongSchemaException
 )
 
 
@@ -25,7 +25,7 @@ class TeamHashBuilder(Builder[TeamHash]):
             cls,
             white_team: Team,
             black_team: Team,
-            team_validator: TeamValidator = TeamValidator(),
+            team_validator: TeamValidationProcess = TeamValidationProcess(),
             schema_service: SchemaService = SchemaService(),
     ) -> BuildResult[TeamHash]:
         method = "TeamHashBuilder.build"

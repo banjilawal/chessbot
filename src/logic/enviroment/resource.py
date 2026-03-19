@@ -10,14 +10,14 @@ Version: 1.0.1
 from typing import cast, Tuple
 
 
-from logic.square import Square, SquareValidator
-from logic.system import LoggingLevelRouter, ValidationResult, Validator
-from logic.board import Board, BoardContext, BoardSquareFinder, BoardValidator, SquareInvariantBreachException
+from logic.square import Square, SquareValidationProcess
+from logic.system import LoggingLevelRouter, ValidationResult, ValidationProcess
+from logic.board import Board, BoardContext, BoardSquareFinder, BoardValidationProcess, SquareInvariantBreachException
 
 
-class BoardResourceValidator(Validator[Square, Board]):
+class BoardResourceValidationProcess(ValidationProcess[Square, Board]):
   """
-  Role:Validator, Data Integrity
+  Role:ValidationProcess, Data Integrity
 
   Responsibilities:
   1. Ensure `TravelEvent` resource_candidate has a valid binding to the execution environment for `TravelEventFresourcey`.
@@ -36,7 +36,7 @@ class BoardResourceValidator(Validator[Square, Board]):
   @LoggingLevelRouter.monitor
   def validate(cls, candidate: Tuple[Square, Board]) -> ValidationResult[Tuple[Square, Board]]:
     """"""
-    method = "BoardResourceValidator.validate"
+    method = "BoardResourceValidationProcess.validate"
 
     try:
       if candidate is None:
@@ -46,13 +46,13 @@ class BoardResourceValidator(Validator[Square, Board]):
       
       resource_candidate, environment_candidate = candidate
 
-      resource_validation = SquareValidator.validate(resource_candidate)
+      resource_validation = SquareValidationProcess.validate(resource_candidate)
       if resource_validation.is_failure():
         return ValidationResult.failure(resource_validation.exception)
 
       resource = cast(Square, resource_validation.payload)
 
-      environment_validation = BoardValidator.validate(environment_candidate)
+      environment_validation = BoardValidationProcess.validate(environment_candidate)
       if environment_validation.is_failure():
         return ValidationResult.failure(environment_validation.exception)
 

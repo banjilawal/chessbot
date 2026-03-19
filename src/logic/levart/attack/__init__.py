@@ -12,4 +12,4 @@ from .exception import *
 from .transaction import *
 
 from .event import AttackEvent
-from .validator import AttackEventValidator
+from .validator import AttackEventValidationProcess

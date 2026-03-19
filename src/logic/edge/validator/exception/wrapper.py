@@ -23,7 +23,7 @@ class EdgeValidationException(ValidationException):
     Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Identify the EdgeValidator method where the process failed.
+    1.  Identify the EdgeValidationProcess method where the process failed.
 
     Super Class:
         *   ValidationException
@@ -52,7 +52,7 @@ class EdgeValidationException(ValidationException):
         *   See ValidationException class for inherited methods.
     """
     ERR_CODE = "EDGE_VALIDATION_FAILURE"
-    MSG = "Failure in EdgeValidator method."
+    MSG = "Failure in EdgeValidationProcess method."
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     

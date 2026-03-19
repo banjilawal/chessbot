@@ -8,11 +8,11 @@ version: 1.0.0
 """
 from typing import Any
 
-from logic.system import ValidationResult, Validator
+from logic.system import ValidationResult, ValidationProcess
 from logic.promotion import PromotionEvent
 
 
-class PromotionEventValidator(Validator[PromotionEvent]):
+class PromotionEventValidationProcess(ValidationProcess[PromotionEvent]):
     
     
     @classmethod

@@ -9,20 +9,20 @@ version: 1.0.0
 
 from typing import Any
 
-from logic.system import Validator, ValidationResult
+from logic.system import ValidationProcess, ValidationResult
 from logic.piece import (
     ActorAlreadyAtDestinationException, KingOccupationEvent,
     NullKingOccupationEventException, OccupationDestinationNotEmptyException, TravelResourceValidator
 )
 
 
-class KingOccupationEventValidator(Validator[KingOccupationEvent]):
+class KingOccupationEventValidationProcess(ValidationProcess[KingOccupationEvent]):
     """"""
     
     @classmethod
     def validate(cls, candidate: Any) -> ValidationResult[KingOccupationEvent]:
         """"""
-        method = "KingOccupationEventValidator.validate"
+        method = "KingOccupationEventValidationProcess.validate"
         
         try:
             if candidate is None:
@@ -38,7 +38,7 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
                 )
             event = cast(KingOccupationEvent, candidate)
             
-            id_validation = Validator.validate(candidate.visitor_id)
+            id_validation = ValidationProcess.validate(candidate.visitor_id)
             if not id_validation.is_success():
                 return ValidationResult(exception=id_validation.exception)
             
@@ -113,7 +113,7 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
 #
 #     travel = cast(AttackEvent, t)
 #
-#     id_validation = IdValidator.validate(travel.visitor_id)
+#     id_validation = IdValidationProcess.validate(travel.visitor_id)
 #     if not id_validation.is_success():
 #       raise IdValidationException(f"{method}: {IdValidationException.MSG}")
 #
@@ -121,7 +121,7 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
 #     if not actor_validation.is_success():
 #       raise InvalidAttackException(f"{method}: actor_candidate validation failed.")
 #
-#     destination_square_validation = SquareValidator.validate(travel.enemy_square)
+#     destination_square_validation = SquareValidationProcess.validate(travel.enemy_square)
 #     if not destination_square_validation.is_success():
 #       raise InvalidSqaureException(f"{method}: {InvalidSqaureException.MSG}")
 #
@@ -185,7 +185,7 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
 #     """
 #     method = "TravelEventFactory.execute"
 #
-#     event_validation = TravelEventValidator.validate(travel)
+#     event_validation = TravelEventValidationProcess.validate(travel)
 #     if not event_validation.is_success():
 #       return TransactionResult(
 #         checkpoint=travel,

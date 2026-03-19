@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, cast
 
 from logic.schema import SchemaService
-from logic.system import LoggingLevelRouter, Validator
+from logic.system import LoggingLevelRouter, ValidationProcess
 from logic.system.validate.result import ValidationResult
 from logic.team import (
     BlackTeamHasWrongSchemaException, TeamHash, TeamHashNullException, TeamHashValidationException,
-    TeamValidator, WhiteTeamHasWrongSchemaException
+    TeamValidationProcess, WhiteTeamHasWrongSchemaException
 )
 
 
-class TeamHashValidator(Validator[TeamHash]):
+class TeamHashValidationProcess(ValidationProcess[TeamHash]):
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -28,7 +28,7 @@ class TeamHashValidator(Validator[TeamHash]):
             cls,
             candidate: Any,
             schema_service: SchemaService = SchemaService(),
-            team_validator: TeamValidator = TeamValidator(),
+            team_validator: TeamValidationProcess = TeamValidationProcess(),
     ) -> ValidationResult[TeamHash]:
         """
         # ACTION:
@@ -51,7 +51,7 @@ class TeamHashValidator(Validator[TeamHash]):
             *   BlackTeamHasWrongSchemaException
             *   TeamHashValidationException
         """
-        method = "TeamHashValidator.validate"
+        method = "TeamHashValidationProcess.validate"
         
         # Handle the nonexistence case.
         if candidate is None:

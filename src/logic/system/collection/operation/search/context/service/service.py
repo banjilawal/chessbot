@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import TypeVar
 
-from logic.system import Builder, Context, IntegrityService, Validator
+from logic.system import Builder, Context, IntegrityService, ValidationProcess
 
 T = TypeVar("T")
 
@@ -39,7 +39,7 @@ class ContextService(IntegrityService[Context[T]]):
             id: int,
             name: str,
             builder: Builder[Context[T]],
-            validator: Validator[Context[T]],
+            validator: ValidationProcess[Context[T]],
             finder: Finder[T],
     ):
         """
@@ -51,7 +51,7 @@ class ContextService(IntegrityService[Context[T]]):
             *   id (int)
             *   finder (SearchWorker[T])
             *   builder (Builder[Context[T]])
-            *   validator (Validator[Context[T]])
+            *   validator (ValidationProcess[Context[T]])
 
         # RETURNS:
         None

@@ -14,7 +14,7 @@ from copy import deepcopy
 from logic.rank import RankService
 from logic.formation import FormationKey, FormationService
 from logic.system import IdFactory, IdentityService, UpdateResult
-from logic.team import FillingTeamRosterException, RosterRelationAnalysis, Team, TeamValidator
+from logic.team import FillingTeamRosterException, RosterRelationAnalysis, Team, TeamValidationProcess
 
 
 class RosterUtil:
@@ -55,7 +55,7 @@ class RosterUtil:
     def fill_team_roster(
             self,
             team: Team,
-            team_validator: TeamValidator = TeamValidator(),
+            team_validator: TeamValidationProcess = TeamValidationProcess(),
     ) -> UpdateResult[Team]:
         """
         # ACTION:

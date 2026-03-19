@@ -14,4 +14,4 @@ from .exception import *
 from .service import *
 
 # Modules
-from .validator import NumberValidator
+from .validator import NumberValidationProcess

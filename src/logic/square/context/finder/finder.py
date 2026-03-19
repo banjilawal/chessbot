@@ -14,8 +14,8 @@ from logic.board import Board
 from logic.coord import Coord
 from logic.system import LoggingLevelRouter, SearchResult, StackSearcher
 from logic.square import (
-    Square, SquareContext, SquareContextValidator, SquareSearchException, SquareSearchRouteException, SquareState,
-    SquareValidator
+    Square, SquareContext, SquareContextValidationProcess, SquareSearchException, SquareSearchRouteException, SquareState,
+    SquareValidationProcess
 )
 from logic.token import Token
 
@@ -51,8 +51,8 @@ class SquareFinder(StackSearcher[Square]):
         *   find(
                 dataset: List[Square],
                 context: SquareContext,
-                square_validator: SquareValidator
-                context_validator: SquareContextValidator
+                square_validator: SquareValidationProcess
+                context_validator: SquareContextValidationProcess
             ) -> SearchResult[List[Square]]
         
     # INHERITED METHODS:
@@ -65,8 +65,8 @@ class SquareFinder(StackSearcher[Square]):
             cls,
             dataset: List[Square],
             context: SquareContext,
-            square_validator: SquareValidator = SquareValidator(),
-            context_validator: SquareContextValidator = SquareContextValidator()
+            square_validator: SquareValidationProcess = SquareValidationProcess(),
+            context_validator: SquareContextValidationProcess = SquareContextValidationProcess()
     ) -> SearchResult[List[Square]]:
         """
         # ACTION:
@@ -80,8 +80,8 @@ class SquareFinder(StackSearcher[Square]):
         # PARAMETERS:
                 *   dataset [List[Square]]
                 *   context [SquareContext]
-                *   square_validator [SquareValidator]
-                *   context_validator [SquareContextValidator]
+                *   square_validator [SquareValidationProcess]
+                *   context_validator [SquareContextValidationProcess]
         # RETURNS:
             *   SearchResult[List[Square]] containing either:
                     - On error: Exception , payload null

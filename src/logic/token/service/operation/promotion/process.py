@@ -15,7 +15,7 @@ from logic.rank import King, Pawn, Rank, RankService
 from logic.system import LoggingLevelRouter, UpdateResult, ValidationResult
 from logic.token import (
     PawnAlreadyPromotedException, PawnPromotionRowException, PawnToken, PromoteInactivePawnException,
-    PromoteToPawnException, PromotionProcessException, PromotionState, PromotionToKingException, TokenValidator
+    PromoteToPawnException, PromotionProcessException, PromotionState, PromotionToKingException, TokenValidationProcess
 )
 
 
@@ -40,7 +40,7 @@ class PawnPromotionProcess:
                     pawn_token: PawnToken,
                     rank_service: RankService,
                     schema_service: SchemaService,
-                    token_validator: TokenValidator
+                    token_validator: TokenValidationProcess
             ) -> UpdateResult[PawnToken]
         
         -   _run_promotable_rank_tests(
@@ -65,7 +65,7 @@ class PawnPromotionProcess:
             pawn_token: PawnToken,
             rank_service: RankService = RankService(),
             schema_service: SchemaService = SchemaService(),
-            token_validator: TokenValidator = TokenValidator(),
+            token_validator: TokenValidationProcess = TokenValidationProcess(),
     ) -> UpdateResult[PawnToken]:
         """
         Executes the promotion transaction.
@@ -86,7 +86,7 @@ class PawnPromotionProcess:
             pawn_token: PawnToken
             rank_service: RankService
             schema_service: SchemaService
-            token_validator: TokenValidator
+            token_validator: TokenValidationProcess
         Returns:
             UpdateResult[PawnToken]
         Raises:

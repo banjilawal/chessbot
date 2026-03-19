@@ -12,7 +12,7 @@ from __future__ import annotations
 from logic.token import Token
 from logic.system import DeletionResult, LoggingLevelRouter
 from logic.square import (
-    DepartingEmptySquareException, Square, SquareDepartureException, SquareValidator, SquareState
+    DepartingEmptySquareException, Square, SquareDepartureException, SquareValidationProcess, SquareState
 )
 
 class SquareDepartureProcess:
@@ -32,7 +32,7 @@ class SquareDepartureProcess:
     Provides:
         -   execute(
                     square: Square,
-                    square_validator: SquareValidator,
+                    square_validator: SquareValidationProcess,
             ) -> DeletionResult[Token]
 
     Super Class:
@@ -43,7 +43,7 @@ class SquareDepartureProcess:
     def execute(
             cls,
             square: Square,
-            square_validator: SquareValidator = SquareValidator(),
+            square_validator: SquareValidationProcess = SquareValidationProcess(),
     ) -> DeletionResult[Token]:
         """
         Takes the token out of the square.
@@ -58,7 +58,7 @@ class SquareDepartureProcess:
             3.  Send the success result.
         Args:
             square: Square
-            square_validator: SquareValidator
+            square_validator: SquareValidationProcess
         Returns:
             DeletionResult[Token]
         Raises:

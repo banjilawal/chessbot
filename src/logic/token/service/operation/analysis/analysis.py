@@ -14,7 +14,7 @@ from logic.system import LoggingLevelRouter, RelationReport
 from logic.system.relation.analysis import RelationAnalysis
 from logic.token import (
     ReadinessStateNullException, TokenException, ReadinessState, TokenReadniessAnalysisException, CombatantToken,
-    KingToken, Token, TokenValidator
+    KingToken, Token, TokenValidationProcess
 )
 
 class TokenReadinessAnalysis(RelationAnalysis[ReadinessState, Token]):
@@ -24,7 +24,7 @@ class TokenReadinessAnalysis(RelationAnalysis[ReadinessState, Token]):
     def execute(
             cls,
             candidate_satellite: Token,
-            token_validator: TokenValidator = TokenValidator(),
+            token_validator: TokenValidationProcess = TokenValidationProcess(),
             candidate_primary: ReadinessState = ReadinessState(),
     ) -> RelationReport[ReadinessState, Token]:
         method = "TokenReadinessAnalysis.analyze"

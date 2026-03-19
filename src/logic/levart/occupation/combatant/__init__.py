@@ -13,4 +13,4 @@ from .transaction import *
 
 from .event import CombatantOccupationEvent
 from .builder import CombatantOccupationEventBuilder
-from .validator import CombatantOccupationEventValidator
+from .validator import CombatantOccupationEventValidationProcess

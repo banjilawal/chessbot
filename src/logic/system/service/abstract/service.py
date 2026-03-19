@@ -9,7 +9,7 @@ Created: 2025-11-18
 from abc import ABC
 from typing import Generic, TypeVar
 
-from logic.system import Validator
+from logic.system import ValidationProcess
 
 T = TypeVar("T")
 
@@ -49,7 +49,7 @@ class Service(ABC, Generic[T]):
     
     _id: int
     _name: str
-    _validator: Validator[T]
+    _validator: ValidationProcess[T]
     
     def __init__(self, id: int, name: str,):
         self._id = id

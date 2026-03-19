@@ -10,14 +10,14 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from logic.system import NumberValidator, Validator, ValidationResult, LoggingLevelRouter
+from logic.system import NumberValidationProcess, ValidationProcess, ValidationResult, LoggingLevelRouter
 from logic.coord import (
     CoordContextValidationException, CoordContextValidationRouteException, CoordContext,
     NullCoordContextException, ZeroCoordContextFlagsException
 )
 
 
-class CoordContextValidator(Validator[CoordContext]):
+class CoordContextValidationProcess(ValidationProcess[CoordContext]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -27,14 +27,14 @@ class CoordContextValidator(Validator[CoordContext]):
     2. Provide pluggable factories for validating different options separately.
   
     Super Class:
-        * Validator
+        * ValidationProcess
         
     3 PROVIDES:
     None
     
     
     3 INHERITED ATTRIBUTES:
-        *   See Validator class for inherited attributes.
+        *   See ValidationProcess class for inherited attributes.
     """
 
     @classmethod
@@ -42,7 +42,7 @@ class CoordContextValidator(Validator[CoordContext]):
     def validate(
             cls,
             candidate: Any,
-            number_validator: NumberValidator = NumberValidator(),
+            number_validator: NumberValidationProcess = NumberValidationProcess(),
     ) -> ValidationResult[CoordContext]:
         """
         # ACTION:
@@ -51,7 +51,7 @@ class CoordContextValidator(Validator[CoordContext]):
             2. Test the value passed to CoordContext passes its validation contract.
         # PARAMETERS:
           * candidate (Any): Object to verify is a Coord.
-          * validator (type[CoordValidator]): Enforces safety requirements on row, column, square_name coords.
+          * validator (type[CoordValidationProcess]): Enforces safety requirements on row, column, square_name coords.
         # RETURNS:
           *    ValidationResult[CoordContext] containing either:
                     - On failure: Exception.

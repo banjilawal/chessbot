@@ -11,7 +11,7 @@ from typing import cast
 
 from logic.game.finder.finder import GameFinder
 from logic.system import ContextService, id_emitter
-from logic.game import GameContext, GameContextBuilder, GameContextValidator
+from logic.game import GameContext, GameContextBuilder, GameContextValidationProcess
 
 
 class GameContextService(ContextService[GameContext]):
@@ -42,7 +42,7 @@ class GameContextService(ContextService[GameContext]):
             id: int = id_emitter.service_id,
             finder: GameFinder = GameFinder(),
             builder: GameContextBuilder = GameContextBuilder(),
-            validator: GameContextValidator = GameContextValidator(),
+            validator: GameContextValidationProcess = GameContextValidationProcess(),
     ):
         """
         # ACTION:
@@ -53,7 +53,7 @@ class GameContextService(ContextService[GameContext]):
             *   id (int): Default value - id_emitter.service_id
             *   finder (GameFinder): Default value - GameFinder()
             *   builder (GameContextBuilder): Default value - GameContextBuilder()
-            *   validator (GameContextValidator): Default value - GameContextValidator()
+            *   validator (GameContextValidationProcess): Default value - GameContextValidationProcess()
 
         # RETURNS:
         None
@@ -74,6 +74,6 @@ class GameContextService(ContextService[GameContext]):
         return cast(GameContextBuilder, self.entity_builder)
     
     @property
-    def validator(self) -> GameContextValidator:
-        """Get GameContextValidator instance."""
-        return cast(GameContextValidator, self.entity_validator)
+    def validator(self) -> GameContextValidationProcess:
+        """Get GameContextValidationProcess instance."""
+        return cast(GameContextValidationProcess, self.entity_validator)

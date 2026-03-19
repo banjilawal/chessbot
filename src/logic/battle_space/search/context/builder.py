@@ -10,11 +10,11 @@ version: 1.0.0
 
 from typing import Optional
 
-from logic.coord import Coord, CoordValidator
+from logic.coord import Coord, CoordValidationProcess
 from logic.rank import Rank, RankValidator, RankSpec
 from logic.team import  RosterNumberOutOfBoundsException, ROSTER_SIZE
 from logic.system import (
-    IdValidator, NameValidator, Builder, BuildResult,
+    IdValidationProcess, NameValidationProcess, Builder, BuildResult,
     MutuallyExclusiveParamsException, AllParamsSetNullException, LoggingLevelRouter
 )
 from logic.team.search.context.context import ProjectionSearchContext
@@ -46,13 +46,13 @@ class ProjectionSearchContextBuilder(Builder[ProjectionSearchContext]):
                 )
 
             if id is not None:
-                id_validation = IdValidator.validate(id)
+                id_validation = IdValidationProcess.validate(id)
                 if not id_validation.is_success():
                     return BuildResult(exception=id_validation.exception)
                 return BuildResult(payload=ProjectionSearchContext(id=id_validation.payload))
 
             if coord is not None:
-                coord_validation =CoordValidator.validate(coord)
+                coord_validation =CoordValidationProcess.validate(coord)
                 if not coord_validation.is_success():
                     return BuildResult(exception=RosterNumberOutOfBoundsException(
                             f"{method}: {RosterNumberOutOfBoundsException.MSG}"
@@ -61,7 +61,7 @@ class ProjectionSearchContextBuilder(Builder[ProjectionSearchContext]):
                 return BuildResult(payload=ProjectionSearchContext(coord=coord))
 
             if name is not None:
-                name_validation = NameValidator.validate(name)
+                name_validation = NameValidationProcess.validate(name)
                 if not name_validation.is_success():
                     return BuildResult(exception=name_validation.exception)
                 return BuildResult(payload=ProjectionSearchContext(name=name))

@@ -10,7 +10,7 @@ from typing import cast
 
 
 from logic.system import ContextService, id_emitter
-from logic.schema import SchemaLookup, SchemaKey, SchemaKeyBuilder, SchemaKeyValidator
+from logic.schema import SchemaLookup, SchemaKey, SchemaKeyBuilder, SchemaKeyValidationProcess
 
 
 class SchemaKeyService(ContextService[SchemaKey]):
@@ -39,7 +39,7 @@ class SchemaKeyService(ContextService[SchemaKey]):
             id: int = id_emitter.service_id,
             lookup: SchemaLookup = SchemaLookup(),
             builder: SchemaKeyBuilder = SchemaKeyBuilder(),
-            validator: SchemaKeyValidator = SchemaKeyValidator(),
+            validator: SchemaKeyValidationProcess = SchemaKeyValidationProcess(),
     ):
         """
         # ACTION:
@@ -48,7 +48,7 @@ class SchemaKeyService(ContextService[SchemaKey]):
             *   id (nt)
             *   name (str)
             *   builder (SchemaKeyBuilder)
-            *   validator (SchemaKeyValidator)
+            *   validator (SchemaKeyValidationProcess)
         # RETURNS:
             None
         Raises:
@@ -62,9 +62,9 @@ class SchemaKeyService(ContextService[SchemaKey]):
         return cast(SchemaKeyBuilder, self.entity_builder)
     
     @property
-    def validator(self) -> SchemaKeyValidator:
-        """get SchemaKeyValidator"""
-        return cast(SchemaKeyValidator, self.entity_validator)
+    def validator(self) -> SchemaKeyValidationProcess:
+        """get SchemaKeyValidationProcess"""
+        return cast(SchemaKeyValidationProcess, self.entity_validator)
     
     @property
     def lookup(self) -> SchemaLookup:

@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 from logic.graph import Node, NodeBuildException
-from logic.square import Square, SquareValidator
+from logic.square import Square, SquareValidationProcess
 from logic.system import BuildResult, Builder, LoggingLevelRouter
 
 
@@ -36,14 +36,14 @@ class NodeBuilder(Builder[Node]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def build(cls, square: Square, square_validator: SquareValidator = SquareValidator()) -> BuildResult[Node]:
+    def build(cls, square: Square, square_validator: SquareValidationProcess = SquareValidationProcess()) -> BuildResult[Node]:
         """
         # ACTION:
             1.  If the square is not valid send an exception chain in the BuildResult. Otherwise, use the square
                 to create a Node which is returned in the BuildResult.
         # PARAMETERS:
             *   square (Square)
-            *   squareValidator: (SquareValidator)
+            *   squareValidator: (SquareValidationProcess)
         # RETURNS:
             *   BuildResult[Node] containing either:
                     - On failure: Exception.

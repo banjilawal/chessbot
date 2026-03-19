@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import cast
 
-from logic.coord import Coord, CoordValidator
+from logic.coord import Coord, CoordValidationProcess
 from .line import Line
 
 class Path:
@@ -21,11 +21,11 @@ class Path:
   def __init__(self, u: Coord, v: Coord):
     method = "Path.__init__"
 
-    u_validation = CoordValidator.validate(u)
+    u_validation = CoordValidationProcess.validate(u)
     if not u_validation.is_success():
       raise u_validation.exception
 
-    v_validation = CoordValidator.validate(v)
+    v_validation = CoordValidationProcess.validate(v)
     if not v_validation.is_success():
       raise v_validation.exception
 

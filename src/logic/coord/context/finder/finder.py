@@ -11,7 +11,7 @@ from typing import List
 
 from logic.system import DataFinder, LoggingLevelRouter, Finder, SearchException, SearchResult
 from logic.coord import (
-    Coord, CoordContext, CoordContextValidator, CoordDatasetNullException,
+    Coord, CoordContext, CoordContextValidationProcess, CoordDatasetNullException,
     CoordSearchException, CoordSearchPayloadTypeException, CoordSearchRouteException
 )
 
@@ -43,7 +43,7 @@ class CoordFinder(DataFinder[Coord]):
             cls,
             dataset: List[Coord],
             context: CoordContext,
-            context_validator: CoordContextValidator = CoordContextValidator(),
+            context_validator: CoordContextValidationProcess = CoordContextValidationProcess(),
     ) -> SearchResult[List[Coord]]:
         """
         # ACTION:
@@ -55,7 +55,7 @@ class CoordFinder(DataFinder[Coord]):
        # PARAMETERS:
             *   dataset (List[Token]):
             *   context: TokenContext
-            *   context_validator: TokenContextValidator
+            *   context_validator: TokenContextValidationProcess
         # RETURNS:
             *   SearchResult[List[Token]] containing either:
                     - On error: Exception , payload null

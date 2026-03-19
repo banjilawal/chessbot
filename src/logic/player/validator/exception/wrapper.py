@@ -23,7 +23,7 @@ class PlayerValidationException(ValidationException):
     Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Identify the PlayerValidator method where the process failed.
+    1.  Identify the PlayerValidationProcess method where the process failed.
 
     Super Class:
         *   ValidationException
@@ -52,7 +52,7 @@ class PlayerValidationException(ValidationException):
         *   See ValidationException class for inherited methods.
     """
     ERR_CODE = "PLAYER_VALIDATION_FAILURE"
-    MSG = "Failure in PlayerValidator method."
+    MSG = "Failure in PlayerValidationProcess method."
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     

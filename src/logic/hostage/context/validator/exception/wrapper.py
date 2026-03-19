@@ -24,7 +24,7 @@ class HostageContextValidationException(ValidationException):
     # TASK: Worker Method Identifier
 
     Responsibilities:
-    1.  Identify the HostageValidator method where the process failed.
+    1.  Identify the HostageValidationProcess method where the process failed.
 
     Super Class:
         *   ValidationException
@@ -52,7 +52,7 @@ class HostageContextValidationException(ValidationException):
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     ERR_CODE = "HOSTAGE_CONTEXT_VALIDATION_FAILURE"
-    MSG = "Failure in HostageValidator method."
+    MSG = "Failure in HostageValidationProcess method."
     
     def __init__(
             self,

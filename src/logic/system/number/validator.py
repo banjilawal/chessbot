@@ -12,12 +12,12 @@ from typing import Any, cast
 
 from logic.system import (
     BOARD_DIMENSION, NullNumberException, NumberValidationException, LoggingLevelRouter,
-    NumberAboveCeilingException, NumberBelowFloorException, ValidationResult, Validator,
+    NumberAboveCeilingException, NumberBelowFloorException, ValidationResult, ValidationProcess,
 )
 from logic.system.number.exception.debug.negative import NegativeNumberNotAllowedException
 
 
-class NumberValidator(Validator[int]):
+class NumberValidationProcess(ValidationProcess[int]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -26,7 +26,7 @@ class NumberValidator(Validator[int]):
         than the Board's dimensions before its used as Coord or Vector component.
 
     Super Class:
-        *   Validator
+        *   ValidationProcess
 
     Provides:
 
@@ -60,7 +60,7 @@ class NumberValidator(Validator[int]):
               *     NumberBelowFloorException
               *     NumberAboveCeilingException
         """
-        method = "NumberValidator.validate"
+        method = "NumberValidationProcess.validate"
         
         # Handle the nonexistence case.
         if candidate is None:

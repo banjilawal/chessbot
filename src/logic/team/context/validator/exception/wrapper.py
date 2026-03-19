@@ -24,7 +24,7 @@ class TeamContextValidationException(ValidationException):
     # TASK: Worker Method Identifier
 
     Responsibilities:
-    1.  Identify the TeamValidator method where the process failed.
+    1.  Identify the TeamValidationProcess method where the process failed.
 
     Super Class:
         *   ValidationException
@@ -52,7 +52,7 @@ class TeamContextValidationException(ValidationException):
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     ERR_CODE = "TEAM_CONTEXT_VALIDATION_FAILURE"
-    MSG = "Failure in TeamValidator method."
+    MSG = "Failure in TeamValidationProcess method."
     
     def __init__(
             self,

@@ -24,7 +24,7 @@ class ScalarValidationException(ValidationException):
     # TASK: Worker Method Identifier
 
     Responsibilities:
-    1.  Identify the ScalarValidator method where the process failed.
+    1.  Identify the ScalarValidationProcess method where the process failed.
 
     Super Class:
         *   ValidationException
@@ -53,7 +53,7 @@ class ScalarValidationException(ValidationException):
         *   See ValidationException class for inherited methods.
     """
     ERR_CODE = "SCALAR_VALIDATION_FAILURE"
-    MSG = "Failure in ScalarValidator method."
+    MSG = "Failure in ScalarValidationProcess method."
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     

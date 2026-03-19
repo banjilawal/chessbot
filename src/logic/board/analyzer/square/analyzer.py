@@ -11,7 +11,7 @@ from typing import cast
 
 from logic.square import Square, SquareContext, SquareService
 from logic.system import LoggingLevelRouter, RelationAnalysis, RelationReport
-from logic.board import Board, BoardSquareAnalysisException, BoardValidator
+from logic.board import Board, BoardSquareAnalysisException, BoardValidationProcess
 
 
 class BoardSquareRelationAnalysis(RelationAnalysis[Board, Square]):
@@ -29,7 +29,7 @@ class BoardSquareRelationAnalysis(RelationAnalysis[Board, Square]):
         -   analyze(
                     candidate_primary: Board,
                     candidate_satellite: Square,
-                    board_validator: BoardValidator = BoardValidator(),
+                    board_validator: BoardValidationProcess = BoardValidationProcess(),
                     square_validator: SquareService = SquareService(),
             ) -> RelationReport[Board, Square]
 
@@ -42,7 +42,7 @@ class BoardSquareRelationAnalysis(RelationAnalysis[Board, Square]):
             cls,
             candidate_primary: Board,
             candidate_satellite: Square,
-            board_validator: BoardValidator = BoardValidator(),
+            board_validator: BoardValidationProcess = BoardValidationProcess(),
             square_service: SquareService = SquareService(),
     ) -> RelationReport[Board, Square]:
         """
@@ -58,7 +58,7 @@ class BoardSquareRelationAnalysis(RelationAnalysis[Board, Square]):
         Args::
             candidate_primary: Board
             candidate_satellite: Square
-            board_validator: BoardValidator
+            board_validator: BoardValidationProcess
             square_validator: SquareService
         Returns:
             RelationReport[Board, Square]

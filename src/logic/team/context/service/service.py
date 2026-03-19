@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast
 
 from logic.system import ContextService, id_emitter
-from logic.team import TeamContext, TeamContextBuilder, TeamContextValidator, TeamFinder
+from logic.team import TeamContext, TeamContextBuilder, TeamContextValidationProcess, TeamFinder
 
 
 class TeamContextService(ContextService[TeamContext]):
@@ -41,7 +41,7 @@ class TeamContextService(ContextService[TeamContext]):
             id: int = id_emitter.service_id,
             finder: TeamFinder = TeamFinder(),
             builder: TeamContextBuilder = TeamContextBuilder(),
-            validator: TeamContextValidator = TeamContextValidator(),
+            validator: TeamContextValidationProcess = TeamContextValidationProcess(),
     ):
         """
         # ACTION:
@@ -52,7 +52,7 @@ class TeamContextService(ContextService[TeamContext]):
             *   id (int): Default value - id_emitter.service_id
             *   finder (TeamFinder): Default value - TeamFinder()
             *   builder (TeamContextBuilder): Default value - TeamContextBuilder()
-            *   validator (TeamContextValidator): Default value - TeamContextValidator()
+            *   validator (TeamContextValidationProcess): Default value - TeamContextValidationProcess()
 
         # RETURNS:
         None
@@ -73,8 +73,8 @@ class TeamContextService(ContextService[TeamContext]):
         return cast(TeamContextBuilder, self.entity_builder)
     
     @property
-    def validator(self) -> TeamContextValidator:
-        """Get TeamContextValidator instance."""
-        return cast(TeamContextValidator, self.entity_validator)
+    def validator(self) -> TeamContextValidationProcess:
+        """Get TeamContextValidationProcess instance."""
+        return cast(TeamContextValidationProcess, self.entity_validator)
     
     

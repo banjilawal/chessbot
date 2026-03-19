@@ -13,4 +13,4 @@ from .exception import *
 
 from .domain import Domain
 from .builder import DomainBuilder
-from .validator import DomainValidator
+from .validator import DomainValidationProcess

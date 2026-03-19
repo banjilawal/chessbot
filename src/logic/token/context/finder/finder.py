@@ -14,7 +14,7 @@ from logic.square import Square
 from logic.team import Team
 from logic.system import DataFinder, GameColor, LoggingLevelRouter, SearchResult
 from logic.token import (
-    Token, TokenContext, TokenContextValidator, TokenSearchNullDatasetException, TokenSearchException,
+    Token, TokenContext, TokenContextValidationProcess, TokenSearchNullDatasetException, TokenSearchException,
     TokenSearchRouteException
 )
 
@@ -45,7 +45,7 @@ class TokenFinder(DataFinder[Token]):
             cls,
             dataset: List[Token],
             context: TokenContext,
-            context_validator: TokenContextValidator = TokenContextValidator()
+            context_validator: TokenContextValidationProcess = TokenContextValidationProcess()
     ) -> SearchResult[List[Token]]:
         """
         # ACTION:
@@ -57,7 +57,7 @@ class TokenFinder(DataFinder[Token]):
        # PARAMETERS:
             *   dataset (List[Token]):
             *   context: TokenContext
-            *   context_validator: TokenContextValidator
+            *   context_validator: TokenContextValidationProcess
         # RETURNS:
             *   SearchResult[List[Token]] containing either:
                     - On error: Exception , payload null

@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 
-from logic.system import BOARD_DIMENSION, Builder, BuildResult, LoggingLevelRouter, NumberValidator
+from logic.system import BOARD_DIMENSION, Builder, BuildResult, LoggingLevelRouter, NumberValidationProcess
 from logic.coord import Coord, CoordBuildException
 
 
@@ -40,7 +40,7 @@ class CoordBuilder(Builder[Coord]):
             cls,
             row: int,
             column: int,
-            number_validator: NumberValidator = NumberValidator(),
+            number_validator: NumberValidationProcess = NumberValidationProcess(),
     ) -> BuildResult[Coord]:
         """
         # ACTION:
@@ -50,7 +50,7 @@ class CoordBuilder(Builder[Coord]):
         # PARAMETERS:
             *   row (int)
             *   column (int)
-            *   number_bonds_validator (NumberValidator)
+            *   number_bonds_validator (NumberValidationProcess)
         # RETURNS:
             *   BuildResult[Coord] containing either:
                     - On success: Coord in the payload.

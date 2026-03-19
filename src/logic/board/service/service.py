@@ -13,7 +13,7 @@ from typing import cast
 from logic.board import (
     Board, BoardAlreadyLaidOutException, BoardBuilder, BoardLayoutFailedException, BoardRelationAnalysisContext,
     BoardRelationAnalyzer,
-    BoardState, BoardValidator
+    BoardState, BoardValidationProcess
 )
 from logic.board.service.exception.anchor import BoardServiceException
 from logic.graph import Graph, GraphComputationException
@@ -50,7 +50,7 @@ class BoardService(IntegrityService[Board]):
             self,
             name: str = SERVICE_NAME,
             builder: BoardBuilder = BoardBuilder(),
-            validator: BoardValidator = BoardValidator(),
+            validator: BoardValidationProcess = BoardValidationProcess(),
             id: int = IdFactory.next_id(class_name="BoardService"),
             relation_analyzer: BoardRelationAnalyzer = BoardRelationAnalyzer()
     ):
@@ -59,7 +59,7 @@ class BoardService(IntegrityService[Board]):
                 id: int
                 name: str
                 builder: BoardBuilder
-                validator: BoardValidator
+                validator: BoardValidationProcess
                 square_relation_analyzer: SquareRelationAnalyzer
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
@@ -70,8 +70,8 @@ class BoardService(IntegrityService[Board]):
         return cast(BoardBuilder, self.builder)
     
     @property
-    def validator(self) -> BoardValidator:
-        return cast(BoardValidator, self.validator)
+    def validator(self) -> BoardValidationProcess:
+        return cast(BoardValidationProcess, self.validator)
     
     @property
     def relation_analyzer(self) -> BoardRelationAnalyzer:

@@ -15,7 +15,7 @@ from logic.rank import RankService
 from logic.coord import CoordService
 from logic.persona import PersonaService
 from logic.system import (
-    GameColorValidator, IdentityService, LoggingLevelRouter, NumberValidator, Validator,
+    GameColorValidationProcess, IdentityService, LoggingLevelRouter, NumberValidationProcess, ValidationProcess,
     ValidationResult
 )
 from logic.token import (
@@ -23,7 +23,7 @@ from logic.token import (
     TokenContextValidationRouteException, ZeroTokenContextFlagsException
 )
 
-class TokenContextValidator(Validator[TokenContext]):
+class TokenContextValidationProcess(ValidationProcess[TokenContext]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -32,7 +32,7 @@ class TokenContextValidator(Validator[TokenContext]):
     2.  If verification fails indicate the reason in an exception returned to the caller.
 
     Super Class:
-        *   Validator
+        *   ValidationProcess
 
     Provides:
 
@@ -50,9 +50,9 @@ class TokenContextValidator(Validator[TokenContext]):
             coord_service: CoordService = CoordService(),
             square_service: SquareService = SquareService(),
             persona_service: PersonaService = PersonaService(),
-            number_validator: NumberValidator = NumberValidator(),
+            number_validator: NumberValidationProcess = NumberValidationProcess(),
             identity_service: IdentityService = IdentityService(),
-            color_validator: GameColorValidator = GameColorValidator(),
+            color_validator: GameColorValidationProcess = GameColorValidationProcess(),
     ) -> ValidationResult[TokenContext]:
         """
         # ACTION:
@@ -82,7 +82,7 @@ class TokenContextValidator(Validator[TokenContext]):
             *   TeamContextValidationException
             *   TeamContextValidationRouteException
         """
-        method = "TokenContextValidator.validate"
+        method = "TokenContextValidationProcess.validate"
         
         # Handle the nonexistence case.
         if candidate is None:

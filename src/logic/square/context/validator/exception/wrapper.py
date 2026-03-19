@@ -24,7 +24,7 @@ class SquareContextValidationException(ValidationException):
     # TASK: Worker Method Identifier
 
     Responsibilities:
-    1.  Identify the SquareValidator method where the process failed.
+    1.  Identify the SquareValidationProcess method where the process failed.
 
     Super Class:
         *   ValidationException
@@ -52,7 +52,7 @@ class SquareContextValidationException(ValidationException):
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     ERR_CODE = "SQUARE_CONTEXT_VALIDATION_FAILURE"
-    MSG = "Failure in SquareValidator method."
+    MSG = "Failure in SquareValidationProcess method."
     
     def __init__(
             self,

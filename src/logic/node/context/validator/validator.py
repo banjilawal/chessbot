@@ -13,14 +13,14 @@ import sys
 from typing import Any, cast
 
 from logic.node import (
-    ArenaNodeContextFlagsException, NodeContext, NodeContextValidationException, NodeValidator,
+    ArenaNodeContextFlagsException, NodeContext, NodeContextValidationException, NodeValidationProcess,
     NodeContextValidationRouteException, NullNodeContextException, ZeroNodeContextFlagsException
 )
 from logic.square import SquareService
-from logic.system import LoggingLevelRouter, NumberValidator, ValidationResult, Validator
+from logic.system import LoggingLevelRouter, NumberValidationProcess, ValidationResult, ValidationProcess
 
 
-class NodeContextValidator(Validator[NodeContext]):
+class NodeContextValidationProcess(ValidationProcess[NodeContext]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -29,7 +29,7 @@ class NodeContextValidator(Validator[NodeContext]):
     2.  If verification fails indicate the reason in an exception returned to the caller.
 
     Super Class:
-        *   Validator
+        *   ValidationProcess
 
     Provides:
 
@@ -43,8 +43,8 @@ class NodeContextValidator(Validator[NodeContext]):
             cls,
             candidate: Any,
             square_service: SquareService = SquareService(),
-            node_validator: NodeValidator = NodeValidator(),
-            number_validator: NumberValidator = NumberValidator(),
+            node_validator: NodeValidationProcess = NodeValidationProcess(),
+            number_validator: NumberValidationProcess = NumberValidationProcess(),
     ) -> ValidationResult[NodeContext]:
         """
         # ACTION:
@@ -58,8 +58,8 @@ class NodeContextValidator(Validator[NodeContext]):
             *   candidate (Any)
             *   discovery_status_service (Discovery_StatusService)
             *   square_validator (SquareService)
-            *   node_validator (NodeValidator)
-            *   number_validator (NumberValidator):
+            *   node_validator (NodeValidationProcess)
+            *   number_validator (NumberValidationProcess):
         # RETURNS:
             *   ValidationResult[NodeContext] containing either:
                     - On failure: Exception.
@@ -72,7 +72,7 @@ class NodeContextValidator(Validator[NodeContext]):
             *   NodeContextValidationRouteException
             *   NodeContextValidationException
         """
-        method = "NodeContextValidator.validate"
+        method = "NodeContextValidationProcess.validate"
         
         # Handle the nonexistence case.
         if candidate is None:

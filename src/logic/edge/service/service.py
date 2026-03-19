@@ -14,10 +14,10 @@ from copy import deepcopy
 from typing import cast
 
 from logic.edge import (
-    Edge, EdgeBuilder, EdgeServiceException, EdgeValidator, UpdatingEdgeHeuristicException,
+    Edge, EdgeBuilder, EdgeServiceException, EdgeValidationProcess, UpdatingEdgeHeuristicException,
     UpdatingEdgeWeightException
 )
-from logic.system import IntegrityService, IdFactory, LoggingLevelRouter, NumberValidator, UpdateResult
+from logic.system import IntegrityService, IdFactory, LoggingLevelRouter, NumberValidationProcess, UpdateResult
 
 
 class EdgeService(IntegrityService[Edge]):
@@ -45,7 +45,7 @@ class EdgeService(IntegrityService[Edge]):
             self,
             name: str = SERVICE_NAME,
             builder: EdgeBuilder = EdgeBuilder(),
-            validator: EdgeValidator = EdgeValidator(),
+            validator: EdgeValidationProcess = EdgeValidationProcess(),
             id: int = IdFactory.next_id(class_name="EdgeService"),
     ):
         """
@@ -55,7 +55,7 @@ class EdgeService(IntegrityService[Edge]):
             *   id (nt)
             *   name (str)
             *   builder (EdgeFactory)
-            *   validator (EdgeValidator)
+            *   validator (EdgeValidationProcess)
         # RETURNS:
             None
         Raises:
@@ -68,15 +68,15 @@ class EdgeService(IntegrityService[Edge]):
         return cast(EdgeBuilder, self.entity_builder)
     
     @property
-    def validator(self) -> EdgeValidator:
-        return cast(EdgeValidator, self.entity_validator)
+    def validator(self) -> EdgeValidationProcess:
+        return cast(EdgeValidationProcess, self.entity_validator)
     
     @LoggingLevelRouter.monitor
     def update_edge_heuristic(
             self,
             edge: Edge,
             heuristic: int,
-            number_validator: NumberValidator = NumberValidator()
+            number_validator: NumberValidationProcess = NumberValidationProcess()
     ) -> UpdateResult[Edge]:
         """
         # ACTION:
@@ -141,7 +141,7 @@ class EdgeService(IntegrityService[Edge]):
             self,
             edge: Edge,
             weight: int,
-            number_validator: NumberValidator = NumberValidator()
+            number_validator: NumberValidationProcess = NumberValidationProcess()
     ) -> UpdateResult[Edge]:
         """
         # ACTION:

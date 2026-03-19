@@ -10,10 +10,10 @@ from typing import Any
 
 
 from logic.checkmate import KingLocationRecord
-from logic.system import ValidationResult, Validator
+from logic.system import ValidationResult, ValidationProcess
 
 
-class KingLocationRecordValidator(Validator[KingLocationRecord]):
+class KingLocationRecordValidationProcess(ValidationProcess[KingLocationRecord]):
     
     @classmethod
     def validate(cls, candidate: Any) -> ValidationResult[KingLocationRecord]:

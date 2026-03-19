@@ -12,7 +12,7 @@ from typing import List, cast
 from logic.formation import Formation, FormationService, FormationKey
 from logic.persona import Persona
 from logic.rank import Bishop, King, Knight, Pawn, Queen, Rank, Rook
-from logic.schema import Schema, SchemaServiceException, SchemaKey, SchemaKeyService, SchemaValidator
+from logic.schema import Schema, SchemaServiceException, SchemaKey, SchemaKeyService, SchemaValidationProcess
 from logic.system import ComputationResult, GameColor, HashService, LoggingLevelRouter, SearchResult, id_emitter
 
 
@@ -23,7 +23,7 @@ class SchemaService(HashService[Schema]):
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
-            validator: SchemaValidator = SchemaValidator(),
+            validator: SchemaValidationProcess = SchemaValidationProcess(),
             super_key_service: SchemaKeyService = SchemaKeyService(),
             _schema: Schema = Schema(),
     ):
@@ -33,7 +33,7 @@ class SchemaService(HashService[Schema]):
         # PARAMETERS:
             *   id (int)
             *   name (str)
-            *   validator (SchemaValidator)
+            *   validator (SchemaValidationProcess)
             *   super_key_service (SchemaKeyService)
         # RETURNS:
             None
@@ -52,9 +52,9 @@ class SchemaService(HashService[Schema]):
         return cast(SchemaKeyService, self.hash_key_service)
     
     @property
-    def validator(self) -> SchemaValidator:
+    def validator(self) -> SchemaValidationProcess:
         """"""
-        return cast(SchemaValidator, self.hash_validator)
+        return cast(SchemaValidationProcess, self.hash_validator)
     
     @property
     def schema_colors(self) -> List[GameColor]:

@@ -12,7 +12,7 @@ from typing import cast
 
 from logic.system import (
     IntegrityService, Builder, Command, Request, RequestBuilder,
-    RequestValidator, Validator
+    RequestValidator, ValidationProcess
 )
 
 
@@ -43,7 +43,7 @@ class RequestService(IntegrityService[Command]):
         *   id (int)
         *   name (name)
         *   builder (Builder[Command])
-        *   validator (Validator[Command])
+        *   validator (ValidationProcess[Command])
 
     # LOCAL METHODS:
     None
@@ -53,7 +53,7 @@ class RequestService(IntegrityService[Command]):
     """
     SERVICE_NAME = "RequestService"
     # _builder: Builder[RequestBuilder]
-    # _validator: Validator[RequestValidator]
+    # _validator: ValidationProcess[RequestValidationProcess]
     
     def __init__(
             self,

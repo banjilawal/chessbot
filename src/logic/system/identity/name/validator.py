@@ -10,13 +10,13 @@ version: 1.0.0
 from typing import cast
 
 from logic.system import (
-    BlankTextException, MIN_NAME_LENGTH, MAX_NAME_LENGTH, NullEmptyString, StringValidator, Validator, ValidationResult,
+    BlankTextException, MIN_NAME_LENGTH, MAX_NAME_LENGTH, NullEmptyString, StringValidationProcess, ValidationProcess, ValidationResult,
     LongNameException,
     ShortNameException, WhiteSpaceNameException, NullNameException, LoggingLevelRouter, InvalidNameException
 )
 
 
-class NameValidator(Validator[str]):
+class NameValidationProcess(ValidationProcess[str]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -31,10 +31,10 @@ class NameValidator(Validator[str]):
         *   length between MIN_NAME_LENGTH and MAX_NAME_LENGTH inclusive.
 
     Super Class:
-        *   Validator
+        *   ValidationProcess
 
     # PROVIDES:
-        * NameValidator
+        * NameValidationProcess
 
 
     # INHERITED ATTRIBUTES:
@@ -45,7 +45,7 @@ class NameValidator(Validator[str]):
     def validate(
             cls,
             candidate: str,
-            text_validator: StringValidator = StringValidator()
+            text_validator: StringValidationProcess = StringValidationProcess()
     ) -> ValidationResult[str]:
         """
         # ACTION:
@@ -70,7 +70,7 @@ class NameValidator(Validator[str]):
             *   LongNameException
             *   InvalidNameException
         """
-        method = "NameValidator.validate"
+        method = "NameValidationProcess.validate"
         
         try:
             # Verify the candidate is not null and an int.

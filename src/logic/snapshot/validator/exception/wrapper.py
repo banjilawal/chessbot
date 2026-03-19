@@ -25,7 +25,7 @@ class SchemaValidationException(ValidationException):
     # TASK: Worker Method Identifier
 
     Responsibilities:
-    1.  Identify the SchemaValidator method where the process failed.
+    1.  Identify the SchemaValidationProcess method where the process failed.
 
     Super Class:
         *   ValidationException
@@ -54,7 +54,7 @@ class SchemaValidationException(ValidationException):
         *   See ValidationException class for inherited methods.
     """
     ERR_CODE = "SCHEMA_VALIDATION_FAILURE"
-    MSG = "Failure in SchemaValidator method."
+    MSG = "Failure in SchemaValidationProcess method."
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     

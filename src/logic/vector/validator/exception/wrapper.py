@@ -24,7 +24,7 @@ class VectorValidationException(ValidationException):
     # TASK: Worker Method Identifier
 
     Responsibilities:
-    1.  Identify the VectorValidator method where the process failed.
+    1.  Identify the VectorValidationProcess method where the process failed.
 
     Super Class:
         *   ValidationException
@@ -52,7 +52,7 @@ class VectorValidationException(ValidationException):
         *   See ValidationException class for inherited methods.
     """
     ERR_CODE = "VECTOR_VALIDATION_FAILURE"
-    MSG = "Failure in VectorValidator method."
+    MSG = "Failure in VectorValidationProcess method."
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     

@@ -12,7 +12,7 @@ from typing import Optional
 from logic.arena import Arena
 from logic.team import Team, TeamService
 from logic.agent import PlayerAgent, AgentService
-from logic.system import BuildResult, Builder, ExecutionRouteException, LoggingLevelRouter, NumberValidator
+from logic.system import BuildResult, Builder, ExecutionRouteException, LoggingLevelRouter, NumberValidationProcess
 from logic.game import (
     Game, SnapshotContext, SnapshotContextBuildException, ZeroSnapshotContextFlagsException,
     ArenaSnapshotContextFlagsException
@@ -51,7 +51,7 @@ class SnapshotContextBuilder(Builder[SnapshotContext]):
             exception: Optional[Exception],
             team_service: TeamService = TeamService(),
             agent_service: AgentService = AgentService(),
-            number_validator: NumberValidator = NumberValidator()
+            number_validator: NumberValidationProcess = NumberValidationProcess()
     ) -> BuildResult[SnapshotContext]:
         """
         # ACTION:

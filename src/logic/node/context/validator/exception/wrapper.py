@@ -24,7 +24,7 @@ class NodeContextValidationException(ValidationException):
     # TASK: Worker Method Identifier
 
     Responsibilities:
-    1.  Identify the NodeValidator method where the process failed.
+    1.  Identify the NodeValidationProcess method where the process failed.
 
     Super Class:
         *   ValidationException
@@ -52,7 +52,7 @@ class NodeContextValidationException(ValidationException):
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     ERR_CODE = "NODE_CONTEXT_VALIDATION_FAILURE"
-    MSG = "Failure in NodeValidator method."
+    MSG = "Failure in NodeValidationProcess method."
     
     def __init__(
             self,

@@ -10,14 +10,14 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Any, List, cast
 
-from logic.square import SquareValidator
-from logic.system import LoggingLevelRouter, NumberValidator, ValidationResult, Validator
+from logic.square import SquareValidationProcess
+from logic.system import LoggingLevelRouter, NumberValidationProcess, ValidationResult, ValidationProcess
 from logic.node import (
     DiscoveryStatus, DiscoveryStatusNullException, NullNodeException, Node, NodeValidationException
 )
 
 
-class NodeValidator(Validator[Node]):
+class NodeValidationProcess(ValidationProcess[Node]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -26,7 +26,7 @@ class NodeValidator(Validator[Node]):
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     Super Class:
-        *   Validator
+        *   ValidationProcess
 
     Provides:
 
@@ -40,8 +40,8 @@ class NodeValidator(Validator[Node]):
     def validate(
             cls,
             candidate: Any,
-            number_validator: NumberValidator = NumberValidator(),
-            square_validator: SquareValidator = SquareValidator(),
+            number_validator: NumberValidationProcess = NumberValidationProcess(),
+            square_validator: SquareValidationProcess = SquareValidationProcess(),
     ) -> ValidationResult[Node]:
         """
         # ACTION:
@@ -51,9 +51,9 @@ class NodeValidator(Validator[Node]):
                 in the ValidationResult. Else, send the node in the ValidationResult.
         # PARAMETERS:
             *   candidate (Any)
-            *   node_validator (NodeValidator)
+            *   node_validator (NodeValidationProcess)
             *   identity_service (IdentityService)
-            *   number_validator (NumberValidator)
+            *   number_validator (NumberValidationProcess)
         # RETURNS:
             *   ValidationResult[] containing either:
                     - On failure: Exception.
@@ -63,7 +63,7 @@ class NodeValidator(Validator[Node]):
             *   NullNodeException
             *   NodeValidationException
         """
-        method = "NodeValidator.validate"
+        method = "NodeValidationProcess.validate"
         
         # Handle the nonexistence case.
         if candidate is None:
@@ -183,7 +183,7 @@ class NodeValidator(Validator[Node]):
             *   TypeError
             *   DiscoveryStatusNullException
         """
-        method = "NodeContextValidator.validate_discovery_status"
+        method = "NodeContextValidationProcess.validate_discovery_status"
         
         # Handle the nonexistence case.
         if candidate is None:

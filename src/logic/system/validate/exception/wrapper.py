@@ -28,7 +28,7 @@ class ValidationException(OperationException):
 
     Responsibilities:
         1.  Indicate a validation check was not passed.
-        2.  Identify the Validator method where the failure occurred.
+        2.  Identify the ValidationProcess method where the failure occurred.
 
     Attributes:
         op: Optional[str]
@@ -47,7 +47,7 @@ class ValidationException(OperationException):
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     ERR_CODE = "VALIDATION_FAILURE"
-    MSG = "Failure in Validator method."
+    MSG = "Failure in ValidationProcess method."
     
     def __init__(
             self,

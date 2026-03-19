@@ -18,13 +18,13 @@ from logic.snapshot.context.validator.exception.flag.excess import ArenaSnapshot
 from logic.snapshot.context.validator.exception.flag.zero import ZeroSnapshotContextFlagsException
 from logic.team import TeamService
 from logic.system import (
-    IdentityService, LoggingLevelRouter, NullException, NumberValidator, NumberValidator,
-    ValidationResult, Validator
+    IdentityService, LoggingLevelRouter, NullException, NumberValidationProcess, NumberValidationProcess,
+    ValidationResult, ValidationProcess
 )
 
 
 
-class SnapshotContextValidator(Validator[SnapshotContext]):
+class SnapshotContextValidationProcess(ValidationProcess[SnapshotContext]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -33,7 +33,7 @@ class SnapshotContextValidator(Validator[SnapshotContext]):
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     Super Class:
-        *   Validator
+        *   ValidationProcess
 
     Provides:
 
@@ -82,7 +82,7 @@ class SnapshotContextValidator(Validator[SnapshotContext]):
             *   ArenaSnapshotContextFlagsException
             *   SnapshotContextValidationException
         """
-        method = "SnapshotContextValidator.validate"
+        method = "SnapshotContextValidationProcess.validate"
         try:
             # Handle the nonexistence case.
             if candidate is None:

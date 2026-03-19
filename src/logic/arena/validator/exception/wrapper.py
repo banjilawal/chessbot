@@ -23,7 +23,7 @@ class ArenaValidationException(ValidationException):
     Role:Debug Wrapper, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
-    1.  Indicate that a candidate failed a safety check in a ArenaValidator method.
+    1.  Indicate that a candidate failed a safety check in a ArenaValidationProcess method.
 
     Super Class:
         *   ValidationException

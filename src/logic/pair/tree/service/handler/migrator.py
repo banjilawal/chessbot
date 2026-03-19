@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 from logic.node import Node, NodeStackService
-from logic.pair import NodeTree, NodeTreeValidator
+from logic.pair import NodeTree, NodeTreeValidationProcess
 from logic.system import BuildResult, LoggingLevelRouter
 
 
@@ -36,7 +36,7 @@ class NodeTreeStackMigrator:
     def migrate(
             cls,
             node_tree: NodeTree,
-            node_tree_validator: NodeTreeValidator = NodeTreeValidator(),
+            node_tree_validator: NodeTreeValidationProcess = NodeTreeValidationProcess(),
     ) -> BuildResult[NodeStackService]:
         """
         Action:
@@ -44,7 +44,7 @@ class NodeTreeStackMigrator:
             
         Args:
             node_tree: NodeTree
-            node_tree_validator: NodeTreeValidator
+            node_tree_validator: NodeTreeValidationProcess
             
         Returns:
             BuildResult[NodeStackService]

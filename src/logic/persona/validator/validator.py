@@ -9,11 +9,11 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from logic.system import LoggingLevelRouter, ValidationResult, Validator
+from logic.system import LoggingLevelRouter, ValidationResult, ValidationProcess
 from logic.persona import Persona, PersonaValidationException, NullPersonaException
 
 
-class PersonaValidator(Validator[Persona]):
+class PersonaValidationProcess(ValidationProcess[Persona]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 

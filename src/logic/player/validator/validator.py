@@ -11,11 +11,11 @@ from typing import Any, cast
 
 from logic.team import UniqueTeamDataService
 from logic.engine.service import EngineService
-from logic.system import IdentityService, LoggingLevelRouter, ServiceValidator, ValidationResult, Validator
+from logic.system import IdentityService, LoggingLevelRouter, ServiceValidator, ValidationResult, ValidationProcess
 
 
 
-class PlayerValidator(Validator[Player]):
+class PlayerValidationProcess(ValidationProcess[Player]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -24,7 +24,7 @@ class PlayerValidator(Validator[Player]):
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     Super Class:
-        *   Validator
+        *   ValidationProcess
 
     # PROVIDES:
         *   validate: -> ValidationResult[Player]
@@ -69,7 +69,7 @@ class PlayerValidator(Validator[Player]):
             *   NullPlayerException
             *   InvalidPlayerException
         """
-        method = "PlayerValidator.validate"
+        method = "PlayerValidationProcess.validate"
         try:
             # If candidate does not exist no point continuing
             if candidate is None:
@@ -143,7 +143,7 @@ class PlayerValidator(Validator[Player]):
             *   NullPlayerVarietyException
             *   InvalidPlayerVarietyException
         """
-        method = "PlayerValidator.certify_variety"
+        method = "PlayerValidationProcess.certify_variety"
         try:
             # Handle the null case.
             if candidate is None:
@@ -192,7 +192,7 @@ class PlayerValidator(Validator[Player]):
         Raises:
             *   InvalidMachinePlayerException
         """
-        method = "PlayerValidator.certify_machine_player_engine"
+        method = "PlayerValidationProcess.certify_machine_player_engine"
         try:
             engine_validation = engine_service_validator.validate_engine(machine_player.engine_service)
             if engine_validation.is_failure():

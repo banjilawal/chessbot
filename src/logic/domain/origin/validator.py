@@ -12,14 +12,14 @@ from typing import Any, cast
 
 
 from logic.piece import PieceValidator
-from logic.square import SquareValidator
-from logic.system import LoggingLevelRouter, Validator, ValidationResult
+from logic.square import SquareValidationProcess
+from logic.system import LoggingLevelRouter, ValidationProcess, ValidationResult
 from logic.domain import DomainOrigin, InvalidDomainOriginException, NullDomainOriginException
 
 
 
 
-class DomainOriginValidator(Validator[DomainOrigin]):
+class DomainOriginValidationProcess(ValidationProcess[DomainOrigin]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -28,10 +28,10 @@ class DomainOriginValidator(Validator[DomainOrigin]):
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     Super Class:
-        *   Validator
+        *   ValidationProcess
 
     # PROVIDES:
-        * DomainOriginValidator
+        * DomainOriginValidationProcess
 
 
     # INHERITED ATTRIBUTES:
@@ -44,17 +44,17 @@ class DomainOriginValidator(Validator[DomainOrigin]):
             cls,
             candidate: Any,
             piece_validator: type[PieceValidator] = PieceValidator,
-            square_validator: type[SquareValidator] = SquareValidator
+            square_validator: type[SquareValidationProcess] = SquareValidationProcess
     ) -> ValidationResult[DomainOrigin]:
         """
         # ACTION:
-        Use chained PieceValidator and SquareValidator to ensure a candidate is a valid DomainOrigin before
+        Use chained PieceValidator and SquareValidationProcess to ensure a candidate is a valid DomainOrigin before
         the client can use it.
 
         # PARAMETERS:
           * candidate (Any): Object to verify is a Domain.
           * piece_validator (type[PieceValidator]): Injected into validator.
-          * validator (type[SquareValidator]): verifies the relationship between the
+          * validator (type[SquareValidationProcess]): verifies the relationship between the
                 Domain's owning Token and Square.
 
         # RETURNS:
@@ -66,7 +66,7 @@ class DomainOriginValidator(Validator[DomainOrigin]):
             * TypeError
             * InvalidDomainOriginException
         """
-        method = "DomainOriginValidator.validate"
+        method = "DomainOriginValidationProcess.validate"
         
         try:
             if candidate is None:

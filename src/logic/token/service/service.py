@@ -16,7 +16,7 @@ from logic.coord import Coord, CoordService
 from logic.rank import Rank, RankService
 from logic.schema import SchemaService
 from logic.system import DeletionResult, IdFactory, InsertionResult, IntegrityService, LoggingLevelRouter, UpdateResult
-from logic.token import PawnToken, Token, TokenFactory, TokenOpsController, TokenServiceException, TokenValidator
+from logic.token import PawnToken, Token, TokenFactory, TokenOpsController, TokenServiceException, TokenValidationProcess
 
 
 class TokenService(IntegrityService[Token]):
@@ -37,7 +37,7 @@ class TokenService(IntegrityService[Token]):
         id: int
         name: name
         builder: TokenBuilder
-        validator: TokenValidator
+        validator: TokenValidationProcess
         controller: TokenOpsController
 
     Provides:
@@ -73,7 +73,7 @@ class TokenService(IntegrityService[Token]):
             self,
             name: str = SERVICE_NAME,
             builder: TokenFactory = TokenFactory(),
-            validator: TokenValidator = TokenValidator(),
+            validator: TokenValidationProcess = TokenValidationProcess(),
             id: int = IdFactory.next_id(class_name="TokenService"),
             controller: TokenOpsController = TokenOpsController(),
     ):
@@ -82,7 +82,7 @@ class TokenService(IntegrityService[Token]):
             id: int
             name: str
             builder: TokenFactory
-            validator: TokenValidator
+            validator: TokenValidationProcess
             controller: TokenOpsController
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
@@ -93,8 +93,8 @@ class TokenService(IntegrityService[Token]):
         return cast(TokenFactory, self.entity_builder)
     
     @property
-    def validator(self) -> TokenValidator:
-        return cast(TokenValidator, self.entity_validator)
+    def validator(self) -> TokenValidationProcess:
+        return cast(TokenValidationProcess, self.entity_validator)
     
     @property
     def controller(self) -> TokenOpsController:

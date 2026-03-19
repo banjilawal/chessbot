@@ -13,7 +13,7 @@ from logic.persona import (
     ArenaPersonaKeysException, PersonaKey, PersonaKeyBuildException,
     PersonaKeyBuildRouteException, ZeroPersonaKeysException
 )
-from logic.system import NumberValidator, BuildResult, Builder, IdentityService, LoggingLevelRouter
+from logic.system import NumberValidationProcess, BuildResult, Builder, IdentityService, LoggingLevelRouter
 
 
 class PersonaKeyBuilder(Builder[PersonaKey]):
@@ -44,7 +44,7 @@ class PersonaKeyBuilder(Builder[PersonaKey]):
             ransom: Optional[int] = None,
             designation: Optional[str] = None,
             identity_service: IdentityService = IdentityService(),
-            number_validator: NumberValidator = NumberValidator(),
+            number_validator: NumberValidationProcess = NumberValidationProcess(),
     ) -> BuildResult[PersonaKey]:
         """
         # ACTION:
@@ -59,9 +59,9 @@ class PersonaKeyBuilder(Builder[PersonaKey]):
                     *   ransom (Optional[int])
                     *   designation (Optional[str])
             *   These Parameters must be provided:
-                    *   color_validator (GameColorValidator)
+                    *   color_validator (GameColorValidationProcess)
                     *   identity_service (IdentityService)
-                    *   number_validator (NumberValidator)
+                    *   number_validator (NumberValidationProcess)
 
         # RETURNS:
             *   BuildResult[PersonaKey] containing either:

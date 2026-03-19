@@ -15,7 +15,7 @@ from logic.player.finder import BoardSearch
 from logic.square import Square
 from assurance import ThrowHelper
 from logic.event import AttackEvent, AttackEventBuilderException, TargetSquareMismatchException
-from logic.system import IdValidator, BuildResult, ExecutionContext
+from logic.system import IdValidationProcess, BuildResult, ExecutionContext
 from logic.piece import Piece, PieceValidator, InvalidAttackException, CombatantPiece, \
   CaptureFriendException, KingCaptureException
 
@@ -36,7 +36,7 @@ class CombatantOccupationEventBuilder(Builder[CombatantOccupationEvent]):
     method = "AttackEventBuilder.builder"
 
     try:
-      id_validation = IdValidator.validate(event_id)
+      id_validation = IdValidationProcess.validate(event_id)
       if not id_validation.is_success():
         ThrowHelper.log_and_raise_exception(AttackEventBuilder, id_validation)
 

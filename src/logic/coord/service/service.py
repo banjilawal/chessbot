@@ -11,7 +11,7 @@ from typing import cast
 
 from logic.scalar import Scalar, ScalarService
 from logic.vector import Vector, VectorService
-from logic.coord import Coord, CoordBuilder, CoordServiceException, CoordValidator
+from logic.coord import Coord, CoordBuilder, CoordServiceException, CoordValidationProcess
 from logic.system import BuildResult, ComputationResult, IntegrityService, id_emitter
 
 class CoordService(IntegrityService[Coord]):
@@ -40,7 +40,7 @@ class CoordService(IntegrityService[Coord]):
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             builder: CoordBuilder = CoordBuilder(),
-            validator: CoordValidator = CoordValidator(),
+            validator: CoordValidationProcess = CoordValidationProcess(),
     ):
         """
         # ACTION:
@@ -50,7 +50,7 @@ class CoordService(IntegrityService[Coord]):
             *   id (nt)
             *   name (str)
             *   builder (CoordFactory)
-            *   validator (CoordValidator)
+            *   validator (CoordValidationProcess)
 
         # RETURNS:
         None
@@ -65,9 +65,9 @@ class CoordService(IntegrityService[Coord]):
         return cast(CoordBuilder, self.entity_builder)
     
     @property
-    def validator(self) -> CoordValidator:
-        """get CoordValidator"""
-        return cast(CoordValidator, self.entity_validator)
+    def validator(self) -> CoordValidationProcess:
+        """get CoordValidationProcess"""
+        return cast(CoordValidationProcess, self.entity_validator)
     
     def add_vector_to_coord(
             self,

@@ -14,10 +14,10 @@ from typing import Optional
 
 from logic.node import (
     DiscoveryStatus, ArenaNodeContextFlagsException, Node, NodeContext, NodeContextBuildException,
-    NodeContextBuildRouteException, NodeValidator, ZeroNodeContextFlagsException
+    NodeContextBuildRouteException, NodeValidationProcess, ZeroNodeContextFlagsException
 )
 from logic.square import Square, SquareService
-from logic.system import Builder, BuildResult, NumberValidator
+from logic.system import Builder, BuildResult, NumberValidationProcess
 
 
 
@@ -48,8 +48,8 @@ class NodeContextBuilder(Builder[NodeContext]):
             predecessor: Optional[Node] = None,
             discovery_status: Optional[DiscoveryStatus] = None,
             square_service: SquareService = SquareService(),
-            node_validator: NodeValidator = NodeValidator(),
-            number_validator: NumberValidator = NumberValidator(),
+            node_validator: NodeValidationProcess = NodeValidationProcess(),
+            number_validator: NumberValidationProcess = NumberValidationProcess(),
     ) -> BuildResult[NodeContext]:
         """
         # ACTION:

@@ -24,7 +24,7 @@ class CoordContextValidationException(ValidationException):
     # TASK: Worker Method Identifier
 
     Responsibilities:
-    1.  Identify the CoordValidator method where the process failed.
+    1.  Identify the CoordValidationProcess method where the process failed.
 
     Super Class:
         *   ValidationException
@@ -52,7 +52,7 @@ class CoordContextValidationException(ValidationException):
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     ERR_CODE = "COORD_CONTEXT_VALIDATION_FAILURE"
-    MSG = "Failure in CoordValidator method."
+    MSG = "Failure in CoordValidationProcess method."
     
     def __init__(
             self,

@@ -9,10 +9,10 @@ Created: 2025-08-12
 import sys
 from typing import Any, cast
 
-from logic.system import IdValidationException, NumberValidator, Validator, ValidationResult, LoggingLevelRouter
+from logic.system import IdValidationException, NumberValidationProcess, ValidationProcess, ValidationResult, LoggingLevelRouter
 
 
-class IdValidator(Validator[int]):
+class IdValidationProcess(ValidationProcess[int]):
     """
      Role:Validation, Data Integrity Guarantor, Security., Integrity
   
@@ -36,7 +36,7 @@ class IdValidator(Validator[int]):
     3.  An Id is required to be greater than zero.
 
     Super Class:
-        *   Validator
+        *   ValidationProcess
 
     # PROVIDES:
         * IdeValidator
@@ -50,7 +50,7 @@ class IdValidator(Validator[int]):
     def validate(
             cls,
             candidate: Any,
-            number_validator: NumberValidator = NumberValidator()
+            number_validator: NumberValidationProcess = NumberValidationProcess()
     ) -> ValidationResult[int]:
         """
         # ACTION:
@@ -59,7 +59,7 @@ class IdValidator(Validator[int]):
             3.  When all checks pass send the number in a ValidationResult's payload.
         # PARAMETERS:
             *   candidate (Any):
-            *   not_negative_validator (NumberValidator)
+            *   not_negative_validator (NumberValidationProcess)
         # RETURNS:
             *   ValidationResult[int] containing either:
                 - On failure: Exception.
@@ -67,7 +67,7 @@ class IdValidator(Validator[int]):
         Raises:
             *   IdValidationException
         """
-        method = "IdValidator.validate"
+        method = "IdValidationProcess.validate"
         
         # Handle the case that, the id is not a positive number.
         validation = number_validator.validate(candidate=candidate, floor=1, ceiling=sys.maxsize)

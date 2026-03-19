@@ -2,7 +2,7 @@ from enum import Enum
 
 from assurance import ThrowHelper
 from logic.board import BoardSearch
-from logic.system import IdValidator, BuildResult, IdValidationException
+from logic.system import IdValidationProcess, BuildResult, IdValidationException
 from logic.event import TargetSquareMismatchException, AttackEvent
 from logic.token.event.attack.event.exception import AttackEventBuilderException
 from logic.token.event.travel_exception import TravelEventResourceNotFoundException
@@ -16,7 +16,7 @@ class CheckEventBuilder(Enum):
 
   `AttackEventBuilder` ensures that `KingCheckEvent` objects are always created successfully by performing comprehensive validate
    checks during construction. This separates the responsibility of building from validating - `AttackEventBuilder`
-   focuses on creation while `AttackEventValidator` is used for validating existing `KingCheckEvent` instances that are passed
+   focuses on creation while `AttackEventValidationProcess` is used for validating existing `KingCheckEvent` instances that are passed
    around the system.
 
   The builder runs through all validate checks individually to guarantee that any `KingCheckEvent` instance it produces
@@ -33,7 +33,7 @@ class CheckEventBuilder(Enum):
 
   See Also:
     `KingCheckEvent`: The entity_service structure being constructed
-    `AttackEventValidator`: Used for validating existing `KingCheckEvent` instances
+    `AttackEventValidationProcess`: Used for validating existing `KingCheckEvent` instances
     `BuildResult`: Return type containing the built `KingCheckEvent` or error information
   """
 
@@ -55,7 +55,7 @@ class CheckEventBuilder(Enum):
     with team_name successful status is returned, the contained `KingCheckEvent` is valid and ready for use.
 
     Args:
-      `event_id`(`int`): The unique visitor_id for the attackEvent. Must pass `IdValidator` checks.
+      `event_id`(`int`): The unique visitor_id for the attackEvent. Must pass `IdValidationProcess` checks.
       `actor_candidate`(`Token`): Initiates attack after successful validate`.
       `enemy`(`Token`): The `Token` attackned by `actor_candidate`.
       `roster`(`ExecutionContext`): `roster.board_validator` verifies `actor_candidate` and `enemy` are on the board_validator.
@@ -79,7 +79,7 @@ class CheckEventBuilder(Enum):
 
     Note:
       The builder runs through all the checks on parameters and state to guarantee only team_name valid `KingCheckEvent` is
-      created, while `AttackEventValidator` is used for validating `KingCheckEvent` instances that are passed around after
+      created, while `AttackEventValidationProcess` is used for validating `KingCheckEvent` instances that are passed around after
       creating. This separation of concerns makes the validate and building independent of each other and
       simplifies maintenance.
 
@@ -95,7 +95,7 @@ class CheckEventBuilder(Enum):
     method = "AttackEventBuilder.builder"
 
     try:
-      id_validation = IdValidator.validate(event_id)
+      id_validation = IdValidationProcess.validate(event_id)
       if not id_validation.is_success():
         ThrowHelper.log_and_raise_exception(AttackEventBuilder, id_validation)
 

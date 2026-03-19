@@ -9,7 +9,7 @@ version: 1.0.0
 from wsgiref.validate import validator
 
 from logic.system import Builder, BuildResult, LoggingLevelRouter
-from logic.scalar import Scalar, ScalarBuildException, ScalarValidator
+from logic.scalar import Scalar, ScalarBuildException, ScalarValidationProcess
 
 
 class ScalarBuilder(Builder[Scalar]):
@@ -40,7 +40,7 @@ class ScalarBuilder(Builder[Scalar]):
     def build(
             self,
             value: int,
-            scalar_validator: ScalarValidator = ScalarValidator()
+            scalar_validator: ScalarValidationProcess = ScalarValidationProcess()
     ) -> BuildResult[Scalar]:
         """
         # ACTION:
@@ -49,7 +49,7 @@ class ScalarBuilder(Builder[Scalar]):
     
         # PARAMETERS:
             *   value (int)
-            *   scalar_validator (ScalarValidator)
+            *   scalar_validator (ScalarValidationProcess)
     
         # RETURNS:
           BuildResult[Scalar] containing either:

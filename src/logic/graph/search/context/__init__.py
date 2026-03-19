@@ -12,4 +12,4 @@ from .model import *
 from .exception import *
 
 from .builder import VisitorSearchContextBuilder
-from .validator import VisitorSearchContextValidator
+from .validator import VisitorSearchContextValidationProcess

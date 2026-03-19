@@ -13,4 +13,4 @@ version: 1.0.0
 from .exception import *
 
 # Modules
-from .validator import GameContextValidator
+from .validator import GameContextValidationProcess

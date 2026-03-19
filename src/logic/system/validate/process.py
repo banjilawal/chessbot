@@ -15,7 +15,7 @@ from logic.system import LoggingLevelRouter, ValidationResult
 T = TypeVar("T")
 
 
-class Validator(ABC, Generic[T]):
+class ValidationProcess(ABC, Generic[T]):
     """
      Role:Worker:
      # Task: Validation, Data Integrity Guarantor, Security.
@@ -28,7 +28,7 @@ class Validator(ABC, Generic[T]):
     None
 
     # PROVIDES:
-        * Validator
+        * ValidationProcess
 
 
     # INHERITED ATTRIBUTES:

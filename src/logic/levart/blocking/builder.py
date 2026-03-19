@@ -53,7 +53,7 @@
   with team_name successful status is returned, the contained `BlockingEvent` is valid and ready for use.
 
   Args:
-    `event_id`(`int`): The unique visitor_id for the scanEvent. Must pass `IdValidator` checks.
+    `event_id`(`int`): The unique visitor_id for the scanEvent. Must pass `IdValidationProcess` checks.
     `actor_candidate`(`Token`): Initiates blocking after successful validate`.
     `enemy`(`Token`): The `Token` scanned by `actor_candidate`.
     `roster`(`ExecutionContext`): `roster.board_validator` verifies `actor_candidate` and `enemy` are on the board_validator.

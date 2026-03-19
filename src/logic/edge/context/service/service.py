@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import cast
 
 from logic.system import ContextService, id_emitter
-from logic.edge import EdgeContext, EdgeContextBuilder, EdgeContextValidator, EdgeFinder
+from logic.edge import EdgeContext, EdgeContextBuilder, EdgeContextValidationProcess, EdgeFinder
 
 
 class EdgeContextService(ContextService[EdgeContext]):
@@ -43,7 +43,7 @@ class EdgeContextService(ContextService[EdgeContext]):
             id: int = id_emitter.service_id,
             finder: EdgeFinder = EdgeFinder(),
             builder: EdgeContextBuilder = EdgeContextBuilder(),
-            validator: EdgeContextValidator = EdgeContextValidator(),
+            validator: EdgeContextValidationProcess = EdgeContextValidationProcess(),
     ):
         """
         # ACTION:
@@ -53,7 +53,7 @@ class EdgeContextService(ContextService[EdgeContext]):
             *   id (int)
             *   finder (EdgeFinder)
             *   builder (EdgeContextBuilder)
-            *   validator (EdgeContextValidator)
+            *   validator (EdgeContextValidationProcess)
         # RETURNS:
             None
         Raises:
@@ -73,6 +73,6 @@ class EdgeContextService(ContextService[EdgeContext]):
         return cast(EdgeContextBuilder, self.entity_builder)
     
     @property
-    def validator(self) -> EdgeContextValidator:
-        """Get EdgeContextValidator instance."""
-        return cast(EdgeContextValidator, self.entity_validator)
+    def validator(self) -> EdgeContextValidationProcess:
+        """Get EdgeContextValidationProcess instance."""
+        return cast(EdgeContextValidationProcess, self.entity_validator)

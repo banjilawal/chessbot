@@ -13,5 +13,5 @@ from .transaction import *
 
 from .event import KingOccupationEvent
 from .builder import KingOccupationEventBuilder
-from .validator import KingOccupationEventValidator
+from .validator import KingOccupationEventValidationProcess
 

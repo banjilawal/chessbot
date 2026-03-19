@@ -25,7 +25,7 @@ class TeamValidationException(ValidationException):
     # TASK: Worker Method Identifier
 
     Responsibilities:
-    1.  Identify the TeamValidator method where the process failed.
+    1.  Identify the TeamValidationProcess method where the process failed.
 
     Super Class:
         *   ValidationException
@@ -54,7 +54,7 @@ class TeamValidationException(ValidationException):
         *   See ValidationException class for inherited methods.
     """
     ERR_CODE = "TEAM_VALIDATION_FAILURE"
-    MSG = "Failure in TeamValidator method."
+    MSG = "Failure in TeamValidationProcess method."
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     

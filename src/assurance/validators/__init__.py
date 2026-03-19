@@ -1,7 +1,7 @@
 
 
-from .hostage_validator import HostageValidator
-from logic.system.identity.name import NameValidator
+from .hostage_validator import HostageValidationProcess
+from logic.system.identity.name import NameValidationProcess
 
 # Package metadata (organic to __init__.py)
 __version__ = "1.0.0"
@@ -11,9 +11,9 @@ __package_name__ = "assurance.notification"
 # Export control - only what belongs in public API
 __all__ = [
   # Core classes
-  "HostageValidator",
-  "IdValidator",
-  "NameValidator",
+    "HostageValidationProcess",
+  "IdValidationProcess",
+    "NameValidationProcess",
 
   # Package metadata and utilities
   "__version__",

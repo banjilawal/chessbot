@@ -5,11 +5,11 @@ from logic.hostage import (
     CaptivityContextValidationException, CaptivityContextValidationRouteException, CaptivityContext,
     ArenaCaptivityContextFlagsException, NullCaptivityContextException, ZeroCaptivityContextFlagsException,
 )
-from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
+from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, ValidationProcess
 from logic.hostage import CombatantHostage, HostageService
 
 
-class CaptivityContextValidator(Validator[CaptivityContext]):
+class CaptivityContextValidationProcess(ValidationProcess[CaptivityContext]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -19,14 +19,14 @@ class CaptivityContextValidator(Validator[CaptivityContext]):
     2. Provide pluggable factories for validating different options separately.
 
     Super Class:
-        * Validator
+        * ValidationProcess
 
     3 PROVIDES:
     None
 
 
     3 INHERITED ATTRIBUTES:
-        *   See Validator class for inherited attributes.
+        *   See ValidationProcess class for inherited attributes.
     """
     
     @classmethod
@@ -45,7 +45,7 @@ class CaptivityContextValidator(Validator[CaptivityContext]):
             2. Test the value passed to CaptivityContext passes its validation contract.
         # PARAMETERS:
             * candidate (Any): Object to verify is a Square.
-            * validator (type[SquareValidator]): Enforces safety requirements on row, column, square_name squares.
+            * validator (type[SquareValidationProcess]): Enforces safety requirements on row, column, square_name squares.
         # RETURNS:
             * ValidationResult[CaptivityContext] containing either:
                     - On failure: Exception.
@@ -57,7 +57,7 @@ class CaptivityContextValidator(Validator[CaptivityContext]):
             * CaptivityContextValidationException
             * CaptivityContextValidationRouteException
         """
-        method = "CaptivityContextValidator.validate"
+        method = "CaptivityContextValidationProcess.validate"
         
         # Handle the nonexistence case.
         if candidate is None:

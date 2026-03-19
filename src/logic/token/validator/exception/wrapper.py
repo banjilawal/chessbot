@@ -24,7 +24,7 @@ class TokenValidationException(ValidationException):
     # TASK: Worker Method Identifier
 
     Responsibilities:
-    1.  Identify the TokenValidator method where the process failed.
+    1.  Identify the TokenValidationProcess method where the process failed.
 
     Super Class:
         *   ValidationException
@@ -54,7 +54,7 @@ class TokenValidationException(ValidationException):
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     ERR_CODE = "TOKEN_VALIDATION_FAILURE"
-    MSG = "Failure in TokenValidator method."
+    MSG = "Failure in TokenValidationProcess method."
 
     
     def __init__(

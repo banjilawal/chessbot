@@ -23,7 +23,7 @@ class HostageValidationException(ValidationException):
     Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Identify the HostageValidator method where the process failed.
+    1.  Identify the HostageValidationProcess method where the process failed.
 
     Super Class:
         *   ValidationException
@@ -52,7 +52,7 @@ class HostageValidationException(ValidationException):
         *   See ValidationException class for inherited methods.
     """
     ERR_CODE = "HOSTAGE_VALIDATION_FAILURE"
-    MSG = "Failure in HostageValidator method."
+    MSG = "Failure in HostageValidationProcess method."
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     

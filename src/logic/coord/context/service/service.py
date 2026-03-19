@@ -11,7 +11,7 @@ version: 1.0.0
 from typing import cast
 
 from logic.system import ContextService, id_emitter
-from logic.coord import CoordContext, CoordContextBuilder, CoordContextValidator, CoordFinder
+from logic.coord import CoordContext, CoordContextBuilder, CoordContextValidationProcess, CoordFinder
 
 
 class CoordContextService(ContextService[CoordContext]):
@@ -41,7 +41,7 @@ class CoordContextService(ContextService[CoordContext]):
             id: int = id_emitter.service_id,
             finder: CoordFinder = CoordFinder(),
             builder: CoordContextBuilder = CoordContextBuilder(),
-            validator: CoordContextValidator = CoordContextValidator(),
+            validator: CoordContextValidationProcess = CoordContextValidationProcess(),
     ):
         """
         # ACTION:
@@ -52,7 +52,7 @@ class CoordContextService(ContextService[CoordContext]):
             *   name (str)
             *   finder (CoordFinder)
             *   builder (CoordContextBuilder)
-            *   validator (CoordContextValidator)
+            *   validator (CoordContextValidationProcess)
 
         # RETURNS:
         None
@@ -73,6 +73,6 @@ class CoordContextService(ContextService[CoordContext]):
         return cast(CoordContextBuilder, self.entity_builder)
     
     @property
-    def validator(self) -> CoordContextValidator:
-        """Get CoordContextValidator instance."""
-        return cast(CoordContextValidator, self.entity_validator)
+    def validator(self) -> CoordContextValidationProcess:
+        """Get CoordContextValidationProcess instance."""
+        return cast(CoordContextValidationProcess, self.entity_validator)

@@ -19,14 +19,14 @@ class CaptivityContextBuilder(Builder[CaptivityContext]):
     2. Provide pluggable factories for validating different options separately.
 
     Super Class:
-        * Validator
+        * ValidationProcess
 
     3 PROVIDES:
     None
 
 
     3 INHERITED ATTRIBUTES:
-        *   See Validator class for inherited attributes.
+        *   See ValidationProcess class for inherited attributes.
     """
     
     @classmethod
@@ -48,7 +48,7 @@ class CaptivityContextBuilder(Builder[CaptivityContext]):
             2. Test the value passed to CaptivityContext passes its validation contract.
         # PARAMETERS:
             * candidate (Any): Object to verify is a Square.
-            * validator (type[SquareValidator]): Enforces safety requirements on row, column, square_name squares.
+            * validator (type[SquareValidationProcess]): Enforces safety requirements on row, column, square_name squares.
         # RETURNS:
             * BuildResult[CaptivityContext] containing either:
                     - On failure: Exception.

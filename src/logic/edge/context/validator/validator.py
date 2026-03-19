@@ -13,7 +13,7 @@ from typing import Any, cast
 from logic.board import BoardService
 from logic.coord.service import CoordService
 from logic.edge.state import EdgeState
-from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
+from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, ValidationProcess
 from logic.edge import (
     EdgeContextValidationException, ZeroEdgeContextFlagsException, EdgeContext,
     NullEdgeContextException, ArenaEdgeContextFlagsException, EdgeContextValidationRouteException
@@ -21,7 +21,7 @@ from logic.edge import (
 from logic.edge import EdgeService
 
 
-class EdgeContextValidator(Validator[EdgeContext]):
+class EdgeContextValidationProcess(ValidationProcess[EdgeContext]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -30,7 +30,7 @@ class EdgeContextValidator(Validator[EdgeContext]):
     2.  If verification fails indicate the reason in an exception returned to the caller.
 
     Super Class:
-        *   Validator
+        *   ValidationProcess
 
     Provides:
 
@@ -74,7 +74,7 @@ class EdgeContextValidator(Validator[EdgeContext]):
             *   EdgeContextValidationRouteException
             *   EdgeContextValidationException
         """
-        method = "EdgeContextValidator.validate"
+        method = "EdgeContextValidationProcess.validate"
         
         # Handle the nonexistence case.
         if candidate is None:

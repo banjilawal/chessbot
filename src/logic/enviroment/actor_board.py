@@ -9,13 +9,13 @@ Version: 1.0.1
 
 from typing import cast, Tuple
 
-from logic.board import Board, BoardPieceFinder, BoardContext, BoardValidator
+from logic.board import Board, BoardPieceFinder, BoardContext, BoardValidationProcess
 
 
 from logic.king import KingPiece
 from logic.piece import Piece, CombatantPiece
 from logic.token.validator import PieceValidator
-from logic.system import LoggingLevelRouter, Validator, ValidationResult
+from logic.system import LoggingLevelRouter, ValidationProcess, ValidationResult
 from logic.enviroment import (
   NoInitialPlacementException, NullTravelerEnvironmentTupleException, CheckMatedKingCannotMoveException,
   BoardPieceRemovedCannotActException, PieceNotOnRosterCannotActException, CapturedActorCannotMoveException
@@ -35,9 +35,9 @@ Attributes:
   * `_run_scan`: Static method for handling discoveries on occupied squares.
   * `_switch_squares`: Static method the transferring team_name owner to team_name different `Square`.
 """
-class BoardActorValidator(Validator[Tuple[Piece, Board]]):
+class BoardActorValidationProcess(ValidationProcess[Tuple[Piece, Board]]):
   """
-  Role:Validator, Data Integrity
+  Role:ValidationProcess, Data Integrity
 
   Responsibilities:
   1. Ensure `TravelEvent` actor_candidate has a valid binding to the execution environment for `TravelEventFactory`.
@@ -56,7 +56,7 @@ class BoardActorValidator(Validator[Tuple[Piece, Board]]):
   @LoggingLevelRouter.monitor
   def validate(cls, candidate: Tuple[Piece, Board])-> ValidationResult[Tuple[Piece, Board]]:
     """"""
-    method = "BoardActorValidator.validate"
+    method = "BoardActorValidationProcess.validate"
 
     try:
       if candidate is None:
@@ -98,7 +98,7 @@ class BoardActorValidator(Validator[Tuple[Piece, Board]]):
             CheckMatedKingCannotMoveException(f"{method}: {CheckMatedKingCannotMoveException.MSG}")
           )
       
-      environment_validation = BoardValidator.validate(environment_candidate)
+      environment_validation = BoardValidationProcess.validate(environment_candidate)
       if environment_validation.is_failure():
         return ValidationResult.failure(environment_validation.exception)
       

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from logic.coord import Coord, CoordService, DuplicateCoordPushException
 from logic.system import InsertionResult, LoggingLevelRouter
-from logic.token import InactiveTokenPushingCoordException, Token, TokenPushCoordException, TokenValidator
+from logic.token import InactiveTokenPushingCoordException, Token, TokenPushCoordException, TokenValidationProcess
 
 
 class TokenPushCoordProcess:
@@ -34,7 +34,7 @@ class TokenPushCoordProcess:
                         token: Token,
                         coord: Coord,
                         coord_service: CoordService = CoordService(),
-                        token_validator: TokenValidator = TokenValidator(),
+                        token_validator: TokenValidationProcess = TokenValidationProcess(),
                 ) -> InsertionResult
     Super Class:
     """
@@ -46,7 +46,7 @@ class TokenPushCoordProcess:
             token: Token,
             coord: Coord,
             coord_service: CoordService = CoordService(),
-            token_validator: TokenValidator = TokenValidator(),
+            token_validator: TokenValidationProcess = TokenValidationProcess(),
     ) -> InsertionResult:
         """
         Forwards a request that the CoordDatabase insert  a new record.
@@ -61,7 +61,7 @@ class TokenPushCoordProcess:
             coord: Coord
             token: Token
             coord_service: CoordService
-            token_validator: TokenValidator
+            token_validator: TokenValidationProcess
         Returns:
             InsertionResult[bool]
         Raises:

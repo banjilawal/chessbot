@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast
 
 from logic.system import ContextService, id_emitter
-from logic.formation import FormationLookup, FormationKey, FormationKeyBuilder, FormationKeyValidator
+from logic.formation import FormationLookup, FormationKey, FormationKeyBuilder, FormationKeyValidationProcess
 
 
 class FormationKeyService(ContextService[FormationKey]):
@@ -40,7 +40,7 @@ class FormationKeyService(ContextService[FormationKey]):
             id: int = id_emitter.service_id,
             lookup: FormationLookup = FormationLookup(),
             builder: FormationKeyBuilder = FormationKeyBuilder(),
-            validator: FormationKeyValidator = FormationKeyValidator(),
+            validator: FormationKeyValidationProcess = FormationKeyValidationProcess(),
     ):
         """
         # ACTION:
@@ -49,7 +49,7 @@ class FormationKeyService(ContextService[FormationKey]):
             *   id (nt)
             *   name (str)
             *   builder (FormationKeyBuilder)
-            *   validator (FormationKeyValidator)
+            *   validator (FormationKeyValidationProcess)
         # RETURNS:
             None
         Raises:
@@ -63,9 +63,9 @@ class FormationKeyService(ContextService[FormationKey]):
         return cast(FormationKeyBuilder, self.entity_builder)
     
     @property
-    def validator(self) -> FormationKeyValidator:
-        """get FormationKeyValidator"""
-        return cast(FormationKeyValidator, self.entity_validator)
+    def validator(self) -> FormationKeyValidationProcess:
+        """get FormationKeyValidationProcess"""
+        return cast(FormationKeyValidationProcess, self.entity_validator)
     
     @property
     def lookup(self) -> FormationLookup:

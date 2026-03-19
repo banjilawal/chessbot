@@ -10,14 +10,14 @@ version: 1.0.0
 from typing import Any, cast
 
 from logic.arena.service import ArenaService
-from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
+from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, ValidationProcess
 from logic.board import (
     BoardContextValidationException, ZeroBoardContextFlagsException, BoardContext,
     NullBoardContextException, ArenaBoardContextFlagsException, BoardContextValidationRouteException
 )
 
 
-class BoardContextValidator(Validator[BoardContext]):
+class BoardContextValidationProcess(ValidationProcess[BoardContext]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -26,7 +26,7 @@ class BoardContextValidator(Validator[BoardContext]):
     2.  If verification fails indicate the reason in an exception returned to the caller.
 
     Super Class:
-        *   Validator
+        *   ValidationProcess
 
     Provides:
 
@@ -67,7 +67,7 @@ class BoardContextValidator(Validator[BoardContext]):
             *   BoardContextValidationRouteException
             *   BoardContextValidationException
         """
-        method = "BoardContextValidator.validate"
+        method = "BoardContextValidationProcess.validate"
         
         # Handle the nonexistence case.
         if candidate is None:

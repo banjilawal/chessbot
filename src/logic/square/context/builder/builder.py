@@ -14,7 +14,7 @@ from logic.board import Board, BoardService
 from logic.coord import Coord, CoordService
 from logic.system import Builder, BuildResult, IdentityService
 from logic.square import (
-    SquareContextBuildRouteException, SquareState, SquareValidator, ZeroSquareContextFlagsException, SquareContext,
+    SquareContextBuildRouteException, SquareState, SquareValidationProcess, ZeroSquareContextFlagsException, SquareContext,
     SquareContextBuildException, ExcessSquareContextFlagsException
 )
 from logic.token import Token, TokenService
@@ -72,7 +72,7 @@ class SquareContextBuilder(Builder[SquareContext]):
             board_service: BoardService = BoardService(),
             coord_service: CoordService = CoordService(),
             identity_service: IdentityService = IdentityService(),
-            square_validator: SquareValidator = SquareValidator(),
+            square_validator: SquareValidationProcess = SquareValidationProcess(),
     ) -> BuildResult[SquareContext]:
         """
         # ACTION:

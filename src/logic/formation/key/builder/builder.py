@@ -15,7 +15,7 @@ from logic.formation import (
 )
 from logic.persona import Persona, PersonaService
 from logic.square import Square, SquareService
-from logic.system import BuildResult, Builder, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
+from logic.system import BuildResult, Builder, GameColor, GameColorValidationProcess, IdentityService, LoggingLevelRouter
 
 
 class FormationKeyBuilder(Builder[FormationKey]):
@@ -48,7 +48,7 @@ class FormationKeyBuilder(Builder[FormationKey]):
             square_service: SquareService = SquareService(),
             persona_service: PersonaService = PersonaService(),
             identity_service: IdentityService = IdentityService(),
-            color_validator: GameColorValidator = GameColorValidator(),
+            color_validator: GameColorValidationProcess = GameColorValidationProcess(),
     ) -> BuildResult[FormationKey]:
         """
         # ACTION:
@@ -64,7 +64,7 @@ class FormationKeyBuilder(Builder[FormationKey]):
             *   These Parameters must be provided:
                     *   square_validator (SquareService)
                     *   identity_service (IdentityService)
-                    *   color_validator (GameColorValidator)
+                    *   color_validator (GameColorValidationProcess)
         # RETURNS:
             *   BuildResult[FormationKey] containing either:
                     - On failure: Exception.

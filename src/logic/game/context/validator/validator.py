@@ -11,14 +11,14 @@ from typing import Any, cast
 
 
 from logic.agent import AgentService
-from logic.system import LoggingLevelRouter, Validator, ValidationResult, IdentityService
+from logic.system import LoggingLevelRouter, ValidationProcess, ValidationResult, IdentityService
 from logic.game import (
     GameContext, InvalidGameContextException, ZeroGameContextFlagsException, NullGameContextException,
     ArenaGameContextFlagsException
 )
 
 
-class GameContextValidator(Validator[GameContext]):
+class GameContextValidationProcess(ValidationProcess[GameContext]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -27,10 +27,10 @@ class GameContextValidator(Validator[GameContext]):
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     Super Class:
-        *   Validator
+        *   ValidationProcess
 
     # PROVIDES:
-        * GameContextValidator
+        * GameContextValidationProcess
 
     
     # INHERITED ATTRIBUTES:
@@ -73,7 +73,7 @@ class GameContextValidator(Validator[GameContext]):
             *   ArenaGameContextFlagsException
             *   InvalidGameContextException
         """
-        method = "GameContextValidator.validate"
+        method = "GameContextValidationProcess.validate"
         try:
             # Handle the case that, the candidate does not exist.
             if candidate is None:

@@ -16,10 +16,10 @@ from logic.formation import (
     FormationKeyValidationRouteException, NullFormationKeyException, ZeroFormationKeysException
 )
 from logic.persona import PersonaService
-from logic.system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
+from logic.system import GameColorValidationProcess, IdentityService, LoggingLevelRouter, ValidationResult, ValidationProcess
 
 
-class FormationKeyValidator(Validator[FormationKey]):
+class FormationKeyValidationProcess(ValidationProcess[FormationKey]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -28,7 +28,7 @@ class FormationKeyValidator(Validator[FormationKey]):
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     Super Class:
-        *   Validator
+        *   ValidationProcess
 
     Provides:
 
@@ -43,7 +43,7 @@ class FormationKeyValidator(Validator[FormationKey]):
             candidate: Any,
             persona_service: PersonaService = PersonaService(),
             identity_service: IdentityService = IdentityService(),
-            color_validator: GameColorValidator = GameColorValidator(),
+            color_validator: GameColorValidationProcess = GameColorValidationProcess(),
     ) -> ValidationResult[FormationKey]:
         """
         # ACTION:
@@ -69,7 +69,7 @@ class FormationKeyValidator(Validator[FormationKey]):
             *   ArenaFormationKeysException
             *   FormationKeyValidationException
         """
-        method = "FormationKeyValidator.validate"
+        method = "FormationKeyValidationProcess.validate"
         
         # Handle the nonexistence case.
         if candidate is None:

@@ -13,10 +13,10 @@ from logic.board import BoardService
 from logic.square import (
     Square, SquareDataSourceEmptyException, SquareDataSourceNullException, SquareValidationException
 )
-from logic.system import LoggingLevelRouter, ValidationResult, Validator
+from logic.system import LoggingLevelRouter, ValidationResult, ValidationProcess
 
 
-class SquareListValidator(Validator[List[Square]]):
+class SquareListValidationProcess(ValidationProcess[List[Square]]):
     """
     Role:
         - Data Integrity Worker
@@ -37,7 +37,7 @@ class SquareListValidator(Validator[List[Square]]):
             ) -> ValidationResult[[List[Square]]
 
     Super:
-        Validator
+        ValidationProcess
     """
     
     @classmethod

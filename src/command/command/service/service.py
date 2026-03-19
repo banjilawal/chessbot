@@ -10,7 +10,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from logic.system import CommandBuilder, CommandValidator, IntegrityService, Builder, Command, Validator
+from logic.system import CommandBuilder, CommandValidator, IntegrityService, Builder, Command, ValidationProcess
 
 
 class CommandService(IntegrityService[Command]):
@@ -40,7 +40,7 @@ class CommandService(IntegrityService[Command]):
         *   id (int)
         *   name (name)
         *   builder (Builder[Command])
-        *   validator (Validator[Command])
+        *   validator (ValidationProcess[Command])
 
     # LOCAL METHODS:
     None
@@ -63,7 +63,7 @@ class CommandService(IntegrityService[Command]):
         return cast(CommandBuilder, self.builder)
 
     @property
-    def validator(self) -> Validator[Command]:
+    def validator(self) -> ValidationProcess[Command]:
         return cast(CommandValidator, self.validator)
     #
     # def __eq__(self, other):

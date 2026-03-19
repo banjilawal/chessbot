@@ -13,7 +13,7 @@ from logic.arena import Arena
 from logic.coord import Coord
 from logic.system import DataFinder, LoggingLevelRouter, SearchResult
 from logic.board import (
-    Board, BoardContext, BoardContextValidator, BoardSearchException, BoardSearchRouteException,
+    Board, BoardContext, BoardContextValidationProcess, BoardSearchException, BoardSearchRouteException,
     BoardSearchNullDatasetException, BoardSearchPayloadTypeException,
 )
 
@@ -45,7 +45,7 @@ class BoardFinder(DataFinder[Board]):
             cls,
             dataset: List[Board],
             context: BoardContext,
-            context_validator: BoardContextValidator = BoardContextValidator()
+            context_validator: BoardContextValidationProcess = BoardContextValidationProcess()
     ) -> SearchResult[List[Board]]:
         """
         # ACTION:
@@ -57,7 +57,7 @@ class BoardFinder(DataFinder[Board]):
        # PARAMETERS:
             *   dataset (List[Board]):
             *   context: BoardContext
-            *   context_validator: BoardContextValidator
+            *   context_validator: BoardContextValidationProcess
         # RETURNS:
             *   SearchResult[List[Board]] containing either:
                     - On error: Exception , payload null

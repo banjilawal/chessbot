@@ -13,7 +13,7 @@ from typing import cast
 from logic.edge import Edge, EdgeService
 from logic.node import (
     AddIncomingEdgeFailedException, AddOutgoingEdgeFailedException, IncomingEdgeWrongTailException, Node, NodeBuilder,
-    NodeServiceException, NodeValidator, OutgoingEdgeWrongHeadException, RemoveIncomingEdgeFailedException,
+    NodeServiceException, NodeValidationProcess, OutgoingEdgeWrongHeadException, RemoveIncomingEdgeFailedException,
     RemoveOutgoingEdgeFailedException
 )
 from logic.system import DeletionResult, IntegrityService, IdFactory, InsertionResult, LoggingLevelRouter
@@ -44,7 +44,7 @@ class NodeService(IntegrityService[Node]):
             self,
             name: str = SERVICE_NAME,
             builder: NodeBuilder = NodeBuilder(),
-            validator: NodeValidator = NodeValidator(),
+            validator: NodeValidationProcess = NodeValidationProcess(),
             id: int = IdFactory.next_id(class_name="NodeService"),
     ):
         """
@@ -54,7 +54,7 @@ class NodeService(IntegrityService[Node]):
             *   id (nt)
             *   name (str)
             *   builder (NodeFactory)
-            *   validator (NodeValidator)
+            *   validator (NodeValidationProcess)
         # RETURNS:
             None
         Raises:
@@ -67,8 +67,8 @@ class NodeService(IntegrityService[Node]):
         return cast(NodeBuilder, self.entity_builder)
     
     @property
-    def validator(self) -> NodeValidator:
-        return cast(NodeValidator, self.entity_validator)
+    def validator(self) -> NodeValidationProcess:
+        return cast(NodeValidationProcess, self.entity_validator)
     
     @LoggingLevelRouter.monitor
     def add_incoming_edge(self, node: Node, edge: Edge) -> InsertionResult:

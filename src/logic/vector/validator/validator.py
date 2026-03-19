@@ -10,13 +10,13 @@ version: 1.0.0
 from typing import Any, cast
 
 from logic.system import (
-    LONGEST_KNIGHT_LEG_SIZE, LoggingLevelRouter, NumberValidator, ValidationResult,
-    Validator
+    LONGEST_KNIGHT_LEG_SIZE, LoggingLevelRouter, NumberValidationProcess, ValidationResult,
+    ValidationProcess
 )
 from logic.vector import InvalidVectorException, NullVectorException, Vector
 
 
-class VectorValidator(Validator[Vector]):
+class VectorValidationProcess(ValidationProcess[Vector]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -25,7 +25,7 @@ class VectorValidator(Validator[Vector]):
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     Super Class:
-        *   Validator
+        *   ValidationProcess
 
     Provides:
 
@@ -38,7 +38,7 @@ class VectorValidator(Validator[Vector]):
     def validate(
             cls,
             candidate: Any,
-            number_in_bounds_validator: NumberValidator = NumberValidator()
+            number_in_bounds_validator: NumberValidationProcess = NumberValidationProcess()
     ) -> ValidationResult[Vector]:
         """
         # ACTION:
@@ -51,7 +51,7 @@ class VectorValidator(Validator[Vector]):
             4.  All tests are passed return the ValidationResult containing vector in the payload.
         # PARAMETERS:
             *   candidate (Any)
-            *   number_in_bounds_validator (NumberValidator)
+            *   number_in_bounds_validator (NumberValidationProcess)
         # RETURNS:
             *   ValidationResult[Vector] containing either:
                     - On failure: Exception.
@@ -61,7 +61,7 @@ class VectorValidator(Validator[Vector]):
             *   NullVectorException
             *   InvalidVectorException
         """
-        method = "VectorValidator.validate"
+        method = "VectorValidationProcess.validate"
         # Handle the nonexistence case.
         if candidate is None:
             # Return the exception chain on failure.

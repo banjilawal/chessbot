@@ -12,7 +12,7 @@ from typing import List
 from logic.team import Team
 from logic.agent import PlayerAgent
 from logic.system import Finder, LoggingLevelRouter, SearchException, SearchResult
-from logic.snapshot import GameTimeline, NullGameTimelineException, Snapshot, SnapshotContext, SnapshotContextValidator
+from logic.snapshot import GameTimeline, NullGameTimelineException, Snapshot, SnapshotContext, SnapshotContextValidationProcess
 
 
 
@@ -43,7 +43,7 @@ class SnapshotFinder(Finder[Snapshot]):
             cls,
             dataset: GameTimeline,
             context: SnapshotContext,
-            context_validator: SnapshotContextValidator = SnapshotContextValidator()
+            context_validator: SnapshotContextValidationProcess = SnapshotContextValidationProcess()
     ) -> SearchResult[List[Snapshot]]:
         """
         # ACTION:
@@ -55,7 +55,7 @@ class SnapshotFinder(Finder[Snapshot]):
         # PARAMETERS:
             *   dataset (GameTimeline):
             *   map: SnapshotContext
-            *   context_validator: SnapshotContextValidator
+            *   context_validator: SnapshotContextValidationProcess
 
         # RETURNS:
         SearchResult[List[Snapshot]] containing either:

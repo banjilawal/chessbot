@@ -9,7 +9,7 @@ Version: 1.0.1
 from typing import cast
 
 from logic.board import (
-    Board, BoardContext, BoardSquareFinder, BoardValidator,
+    Board, BoardContext, BoardSquareFinder, BoardValidationProcess,
     SquareInvariantBreachException
 )
 from logic.board.search.context.builder import BoardContextBuilder
@@ -25,17 +25,17 @@ from logic.king import KingPiece
 from logic.pawn import ActorNotOnBoardException, ActorPlacementRequiredException, CapturedPieceCannotActException
 from logic.piece import CombatantPiece, Piece, PieceValidator
 from logic.square import Square
-from logic.system import IdValidator, LoggingLevelRouter, Validator, ValidationResult
+from logic.system import IdValidationProcess, LoggingLevelRouter, ValidationProcess, ValidationResult
 
 
-class TurnSceneValidator(Validator[TurnScene]):
+class TurnSceneValidationProcess(ValidationProcess[TurnScene]):
     """"""
     
     @classmethod
     @LoggingLevelRouter.monitor
     def validate(cls, candidate) -> ValidationResult[TurnScene]:
         """"""
-        method = "TurnSceneValidator.validate"
+        method = "TurnSceneValidationProcess.validate"
         
         try:
             if candidate is None:
@@ -50,11 +50,11 @@ class TurnSceneValidator(Validator[TurnScene]):
             
             turn_scene = cast(TurnScene, candidate)
             
-            id_validation = IdValidator.validate(turn_scene.id)
+            id_validation = IdValidationProcess.validate(turn_scene.id)
             if id_validation.is_failure():
                 return ValidationResult.failure(id_validation.exception)
 
-            board_validator = BoardValidator.validate(turn_scene.board)
+            board_validator = BoardValidationProcess.validate(turn_scene.board)
             if board_validator.is_failure():
                 return ValidationResult.failure(board_validator.exception)
               
@@ -127,7 +127,7 @@ class TurnSceneValidator(Validator[TurnScene]):
     @LoggingLevelRouter.monitor
     def actor_board_validation_helper(cls, piece: Piece, board: Board) -> ValidationResult[PieceValidator]:
         """"""
-        method = "TurnSceneValidator._actor_validation_helper"
+        method = "TurnSceneValidationProcess._actor_validation_helper"
         
         try:
             piece_validation = PieceValidator.validate(piece)

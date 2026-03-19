@@ -12,10 +12,10 @@ version: 1.0.0
 
 ***Limitation 2***: There is no guarantee properly created `Board` objects released by the module will satisfy client
     requirements. Clients are responsible for ensuring a `BoardBuilder` product will not fail when used. Products
-    from `BoardBuilder` --should-- satisfy `BoardValidator` requirements.
+    from `BoardBuilder` --should-- satisfy `BoardValidationProcess` requirements.
 
 **Related Features**:
-    Authenticating existing boards -> See BoardValidator, module[logic.board_validator.coord_stack_validator],
+    Authenticating existing boards -> See BoardValidationProcess, module[logic.board_validator.coord_stack_validator],
     Handling process and rolling back failures --> See `Transaction`, module[logic.system]
 
 # THEME:
@@ -36,7 +36,7 @@ version: 1.0.0
 ---------------
 From `logic.system`:
     `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
-    `IdValidator`, `NameValidator`
+    `IdValidationProcess`, `NameValidationProcess`
 
 From `logic.board_validator`:
     `Board`, `NullBoard`, `BoardBuildException`, `BoardSchema`
@@ -58,7 +58,7 @@ from logic.battle_space import Projection, ProjectionSearchContext
 from logic.battle_space.service import ProjectionService
 from logic.coord import Coord
 from logic.piece import Piece
-from logic.board import Board, BoardContext, BoardSearchContextValidator, BoardValidator
+from logic.board import Board, BoardContext, BoardSearchContextValidator, BoardValidationProcess
 from logic.system import (
     Finder, SearchResult, LoggingLevelRouter, PieceSearchNameCollisionException, PieceSearchCoordCollisionException,
     PieceSearchIdCollisionException

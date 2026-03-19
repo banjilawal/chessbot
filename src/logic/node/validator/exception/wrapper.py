@@ -24,7 +24,7 @@ class NodeValidationException(ValidationException):
     Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Identify the NodeValidator method where the process failed.
+    1.  Identify the NodeValidationProcess method where the process failed.
 
     Super Class:
         *   ValidationException
@@ -52,7 +52,7 @@ class NodeValidationException(ValidationException):
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     ERR_CODE = "NODE_VALIDATION_FAILURE"
-    MSG = "Failure in NodeValidator method."
+    MSG = "Failure in NodeValidationProcess method."
     
     def __init__(
             self,

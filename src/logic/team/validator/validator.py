@@ -12,7 +12,7 @@ from typing import cast, Any
 from logic.board import Board, BoardService
 from logic.player import Player, PlayerService
 from logic.schema import SchemaService
-from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
+from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, ValidationProcess
 from logic.team import (
     BoardHasStaleTeamLinkException, NullTeamException, PlayerHasStaleTeamLinkException, Team,
     TeamBelongsToDifferentBoardException,
@@ -22,7 +22,7 @@ from logic.team import (
 )
 
 
-class TeamValidator(Validator[Team]):
+class TeamValidationProcess(ValidationProcess[Team]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -31,7 +31,7 @@ class TeamValidator(Validator[Team]):
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     Super Class:
-        *   Validator
+        *   ValidationProcess
 
     Provides:
 
@@ -92,7 +92,7 @@ class TeamValidator(Validator[Team]):
             *   NullTeamException
             *   TeamValidationException
         """
-        method = "TeamValidator.validate"
+        method = "TeamValidationProcess.validate"
         
         # Handle the nonexistence case.
         if candidate is None:
@@ -185,7 +185,7 @@ class TeamValidator(Validator[Team]):
             *   TeamNotRegisteredOwnerException
             *   PlayerHasStaleTeamLinkException
         """
-        method = "TeamValidator._verify_team_owner"
+        method = "TeamValidationProcess._verify_team_owner"
         
         # Handle the case that, either team.owner is not certified as safe or the analysis aborts.
         owner_team_relation = player_service.player_team_relation_analyzer.execute(
@@ -249,7 +249,7 @@ class TeamValidator(Validator[Team]):
             *   TeamNotRegisteredBoardException
             *   BoardHasStaleTeamLinkException
         """
-        method = "TeamValidator._verify_team_board"
+        method = "TeamValidationProcess._verify_team_board"
         
         # Handle the case that, either team.board is not certified as safe or the analysis aborts.
         board_team_relation = board_service.board_team_relation_analyzer.execute(

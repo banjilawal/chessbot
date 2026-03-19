@@ -11,7 +11,7 @@ from typing import Optional
 
 from logic.coord.context.builder.exception import CoordContextBuildException, CoordContextBuildRouteException
 from logic.system import (
-    BOARD_DIMENSION, BuildResult, Builder, NumberValidator, ExecutionRouteException, LoggingLevelRouter,
+    BOARD_DIMENSION, BuildResult, Builder, NumberValidationProcess, ExecutionRouteException, LoggingLevelRouter,
 )
 from logic.coord import CoordContext, ZeroCoordContextFlagsException
 
@@ -41,7 +41,7 @@ class CoordContextBuilder(Builder[CoordContext]):
             cls,
             row: Optional[int] = None,
             column: Optional[int] = None,
-            number_validator: NumberValidator = NumberValidator(),
+            number_validator: NumberValidationProcess = NumberValidationProcess(),
     ) -> BuildResult[CoordContext]:
         """
         # ACTION:
@@ -54,7 +54,7 @@ class CoordContextBuilder(Builder[CoordContext]):
                 *   row (Optional[int])
                 *   column (Optional[int])
             This parameter is Required:
-                *   number_validator (NumberValidator)
+                *   number_validator (NumberValidationProcess)
         # RETURNS:
             *   BuildResult[CoordContext] containing either:
                     - On failure: Exception.

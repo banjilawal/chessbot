@@ -9,7 +9,7 @@ version: 1.0.0
 
 
 from logic.house import House
-from logic.enviroment import TurnScene, TurnSceneValidator
+from logic.enviroment import TurnScene, TurnSceneValidationProcess
 from logic.system import Builder, BuildResult, LoggingLevelRouter
 
 
@@ -23,7 +23,7 @@ class HouseBuilder(Builder[House]):
         method = "HouseBuilder.builder"
         
         try:
-            turn_scene_validation = TurnSceneValidator.validate(turn_scene)
+            turn_scene_validation = TurnSceneValidationProcess.validate(turn_scene)
             if turn_scene_validation.is_failure():
                 return BuildResult.failure(turn_scene_validation.exception)
             

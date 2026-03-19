@@ -9,16 +9,16 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from logic.coord import CoordValidator
+from logic.coord import CoordValidationProcess
 from logic.rank import RankBoundsChecker
-from logic.system import Validator, IdValidator, NameValidator, ValidationResult, LoggingLevelRouter
+from logic.system import ValidationProcess, IdValidationProcess, NameValidationProcess, ValidationResult, LoggingLevelRouter
 from logic.domain import (
     NullResidentSearchContextException, ResidentFilter, NoResidentSearchParamException,
     ArenaResidentSearchParamsException
 )
 
 
-class ResidentFilterValidator(Validator[ResidentFilter]):
+class ResidentFilterValidationProcess(ValidationProcess[ResidentFilter]):
     """
      Role:Validation, Data Integrity Guarantor, Security., Data Integrity
   
@@ -38,7 +38,7 @@ class ResidentFilterValidator(Validator[ResidentFilter]):
     @LoggingLevelRouter.monitor
     def validate(cls, candidate: Any) -> ValidationResult[ResidentFilter]:
         """"""
-        method = "ResidentFilterValidator.validate"
+        method = "ResidentFilterValidationProcess.validate"
         
         try:
             if candidate is None:
@@ -66,22 +66,22 @@ class ResidentFilterValidator(Validator[ResidentFilter]):
                 )
             
             if search_context.resident_id is not None:
-                id_validation = IdValidator.validate(search_context.resident_id)
+                id_validation = IdValidationProcess.validate(search_context.resident_id)
                 if id_validation.is_failure():
                     return ValidationResult.failure(id_validation.exception)
             
             if search_context.resident_name is not None:
-                name_validation = NameValidator.validate(search_context.resident_name)
+                name_validation = NameValidationProcess.validate(search_context.resident_name)
                 if name_validation.is_failure():
                     return ValidationResult.failure(name_validation.exception)
             
             if search_context.team_id is not None:
-                team_id_validation = IdValidator.validate(search_context.team_id)
+                team_id_validation = IdValidationProcess.validate(search_context.team_id)
                 if team_id_validation.is_failure():
                     return ValidationResult.failure(team_id_validation.exception)
             
             if search_context.resident_team is not None:
-                team_name_validation = NameValidator.validate(search_context.resident_team)
+                team_name_validation = NameValidationProcess.validate(search_context.resident_team)
                 if team_name_validation.is_failure():
                     return ValidationResult.failure(team_name_validation.exception)
             
@@ -96,7 +96,7 @@ class ResidentFilterValidator(Validator[ResidentFilter]):
                     return ValidationResult.failure(ransom_bounds_check.exception)
             
             if search_context.resident_coord is not None:
-                coord_validation = CoordValidator.validate(search_context.resident_coord)
+                coord_validation = CoordValidationProcess.validate(search_context.resident_coord)
                 if coord_validation.is_failure():
                     return ValidationResult.failure(coord_validation.exception)
             

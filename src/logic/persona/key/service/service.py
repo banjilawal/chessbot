@@ -9,7 +9,7 @@ version: 1.0.0
 from typing import cast
 
 from logic.system import ContextService, id_emitter
-from logic.persona import PersonaLookup, PersonaKey, PersonaKeyBuilder, PersonaKeyValidator
+from logic.persona import PersonaLookup, PersonaKey, PersonaKeyBuilder, PersonaKeyValidationProcess
 
 
 class PersonaKeyService(ContextService[PersonaKey]):
@@ -39,7 +39,7 @@ class PersonaKeyService(ContextService[PersonaKey]):
             id: int = id_emitter.service_id,
             lookup: PersonaLookup = PersonaLookup(),
             builder: PersonaKeyBuilder = PersonaKeyBuilder(),
-            validator: PersonaKeyValidator = PersonaKeyValidator(),
+            validator: PersonaKeyValidationProcess = PersonaKeyValidationProcess(),
     ):
         """
         # ACTION:
@@ -48,7 +48,7 @@ class PersonaKeyService(ContextService[PersonaKey]):
             *   id (nt)
             *   name (str)
             *   builder (PersonaKeyBuilder)
-            *   validator (PersonaKeyValidator)
+            *   validator (PersonaKeyValidationProcess)
         # RETURNS:
             None
         Raises:
@@ -62,9 +62,9 @@ class PersonaKeyService(ContextService[PersonaKey]):
         return cast(PersonaKeyBuilder, self.entity_builder)
     
     @property
-    def validator(self) -> PersonaKeyValidator:
-        """get PersonaKeyValidator"""
-        return cast(PersonaKeyValidator, self.entity_validator)
+    def validator(self) -> PersonaKeyValidationProcess:
+        """get PersonaKeyValidationProcess"""
+        return cast(PersonaKeyValidationProcess, self.entity_validator)
     
     @property
     def lookup(self) -> PersonaLookup:

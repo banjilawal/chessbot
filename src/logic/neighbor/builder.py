@@ -8,11 +8,11 @@ version: 1.0.0
 """
 
 
-from logic.domain import DomainValidator
+from logic.domain import DomainValidationProcess
 from logic.neighbor import VisitationEvent
 from logic.piece import Piece, PieceValidator
 
-from logic.system import BuildResult, Builder, ChessException, IdValidator, IdValidationException, LoggingLevelRouter
+from logic.system import BuildResult, Builder, ChessException, IdValidationProcess, IdValidationException, LoggingLevelRouter
 
 
 
@@ -26,13 +26,13 @@ class VisitationEventBuilder(Builder[VisitationEvent]):
         method = "VisitationBuilder.builder"
         
         try:
-            id_validation = IdValidator.validate(id)
+            id_validation = IdValidationProcess.validate(id)
             if id_validation.is_failure():
                 return BuildResult.failure(
                     IdValidationException(f"{method}: {IdValidationException.MSG}")
                 )
             
-            domain_validation = DomainValidator.validate(domain)
+            domain_validation = DomainValidationProcess.validate(domain)
             if domain_validation.is_failure():
                 return BuildResult.failure(domain_validation.exception)
             

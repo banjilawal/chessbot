@@ -12,13 +12,13 @@ from typing import Any, cast
 
 from logic.coord import CoordDatabase, CoordDatabaseNullException, CoordService
 from logic.rank import RankService
-from logic.system import IdentityService, LoggingLevelRouter, NumberValidator, ValidationResult, Validator
+from logic.system import IdentityService, LoggingLevelRouter, NumberValidationProcess, ValidationResult, ValidationProcess
 from logic.team import TeamService
 from logic.token import CombatantToken, KingToken, Token, TokenException, TokenValidationException
 from logic.token.validator.exception.debug.null import NullTokenException
 
 
-class TokenValidator(Validator[Token]):
+class TokenValidationProcess(ValidationProcess[Token]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -27,10 +27,10 @@ class TokenValidator(Validator[Token]):
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     Super Class:
-        *   Validator
+        *   ValidationProcess
 
     # PROVIDES:
-        * TokenValidator
+        * TokenValidationProcess
 
 
     # INHERITED ATTRIBUTES:
@@ -46,7 +46,7 @@ class TokenValidator(Validator[Token]):
             rank_service: RankService = RankService(),
             coord_service: CoordService = CoordService(),
             identity_service: IdentityService = IdentityService(),
-            number_validation: NumberValidator = NumberValidator(),
+            number_validation: NumberValidationProcess = NumberValidationProcess(),
     ) -> ValidationResult[Token]:
         """
         # ACTION:
@@ -61,7 +61,7 @@ class TokenValidator(Validator[Token]):
             *   team_service (TeamService)
             *   coord_service (CoordService)
             *   identity_service (IdentityService)
-            *   number_validator (NumberValidator)
+            *   number_validator (NumberValidationProcess)
         # RETURNS:
             *   ValidationResult[Team] containing either:
                     - On failure: Exception.
@@ -264,7 +264,7 @@ class TokenValidator(Validator[Token]):
         
     @classmethod
     def verify_token_is_king(cls, candidate: Any) -> ValidationResult[KingToken]:
-        method = "TokenValidator.validate_token_is_king"
+        method = "TokenValidationProcess.validate_token_is_king"
         # Handle the case that, the candidate is not certified as a safe occupant.
         validation = cls.validate(candidate)
         if validation.is_failure:

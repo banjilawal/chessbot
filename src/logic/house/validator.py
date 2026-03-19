@@ -10,18 +10,18 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from logic.square import SquareValidator
-from logic.system import LoggingLevelRouter, Validator, ValidationResult
+from logic.square import SquareValidationProcess
+from logic.system import LoggingLevelRouter, ValidationProcess, ValidationResult
 from logic.house import House, NullHouseException, NullHouseResidentException
 
 
-class HouseValidator(Validator[House]):
+class HouseValidationProcess(ValidationProcess[House]):
     
     @classmethod
     @LoggingLevelRouter.monitor
     def validate(cls, candidate: Any) -> ValidationResult[House]:
         """"""
-        method = "HouseValidator.validate"
+        method = "HouseValidationProcess.validate"
         try:
             if candidate is None:
                 return ValidationResult.failure(
@@ -34,7 +34,7 @@ class HouseValidator(Validator[House]):
                 )
             
             house = cast(House, candidate)
-            square_validation = SquareValidator.validate(house.square)
+            square_validation = SquareValidationProcess.validate(house.square)
             if square_validation.is_failure():
                 return ValidationResult.failure(square_validation.exception)
             

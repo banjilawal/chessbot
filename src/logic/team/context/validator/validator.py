@@ -11,14 +11,14 @@ from typing import Any, cast
 
 from logic.arena import ArenaService
 from logic.player import PlayerService
-from logic.system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
+from logic.system import GameColorValidationProcess, IdentityService, LoggingLevelRouter, ValidationResult, ValidationProcess
 from logic.team import (
     ArenaTeamContextFlagsException, NullTeamContextException, TeamContext, TeamContextValidationException,
     TeamContextValidationRouteException, ZeroTeamContextFlagsException
 )
 
 
-class TeamContextValidator(Validator[TeamContext]):
+class TeamContextValidationProcess(ValidationProcess[TeamContext]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -27,7 +27,7 @@ class TeamContextValidator(Validator[TeamContext]):
     2.  If verification fails indicate the reason in an exception returned to the caller.
 
     Super Class:
-        *   Validator
+        *   ValidationProcess
 
     Provides:
 
@@ -43,7 +43,7 @@ class TeamContextValidator(Validator[TeamContext]):
             arena_service: ArenaService = ArenaService(),
             player_service: PlayerService = PlayerService(),
             identity_service: IdentityService = IdentityService(),
-            color_validator: GameColorValidator = GameColorValidator(),
+            color_validator: GameColorValidationProcess = GameColorValidationProcess(),
     ) -> ValidationResult[TeamContext]:
         """
         # ACTION:
@@ -71,7 +71,7 @@ class TeamContextValidator(Validator[TeamContext]):
             *   TeamContextValidationException
             *   TeamContextValidationRouteException
         """
-        method = "TeamContextValidator.validate"
+        method = "TeamContextValidationProcess.validate"
         
         # Handle the nonexistence case.
         if candidate is None:

@@ -12,7 +12,7 @@ from typing import cast
 from logic.team import Team, TeamService
 from logic.system import LoggingLevelRouter, RelationReport, RelationAnalysis
 from logic.arena import (
-    Arena, ArenaSlotAlreadyOccupiedException, ArenaValidator, ArenaTeamAnalysisException,
+    Arena, ArenaSlotAlreadyOccupiedException, ArenaValidationProcess, ArenaTeamAnalysisException,
     TeamPlayingDifferentArenaException
 )
 
@@ -40,7 +40,7 @@ class ArenaTeamRelationAnalysis(RelationAnalysis[Arena, Team]):
             cls,
             candidate_primary: Arena,
             candidate_satellite: Team,
-            arena_validator: ArenaValidator = ArenaValidator(),
+            arena_validator: ArenaValidationProcess = ArenaValidationProcess(),
             team_service: TeamService = TeamService(),
     ) -> RelationReport[Arena, Team]:
         """
@@ -54,7 +54,7 @@ class ArenaTeamRelationAnalysis(RelationAnalysis[Arena, Team]):
         # PARAMETERS:
             *   candidate_primary (Arena)
             *   candidate_satellite (Team)
-            *   arena_validator (ArenaValidator)
+            *   arena_validator (ArenaValidationProcess)
             *   team_service (TeamService)
 
         # RETURN:

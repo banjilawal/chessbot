@@ -46,7 +46,7 @@ class SquareListValidationException(ValidationException):
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     ERR_CODE = "SQUARE_LIST_VALIDATION_FAILURE"
-    MSG = "Failure in SquareListValidator method."
+    MSG = "Failure in SquareListValidationProcess method."
     
     def __init__(
             self,

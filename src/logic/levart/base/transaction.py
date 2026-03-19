@@ -58,7 +58,7 @@ class TravelTransaction(Transaction[TravelEvent]):
   #   """
   #   method = "TravelEventFactory.execute"
   #
-  #   event_validation = TravelEventValidator.validate(travel)
+  #   event_validation = TravelEventValidationProcess.validate(travel)
   #   if not event_validation.is_success():
   #     return TransactionResult(
   #       checkpoint=travel,

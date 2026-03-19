@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 from logic.persona import Persona
-from logic.team import Team, TeamValidator
+from logic.team import Team, TeamValidationProcess
 from logic.rank import RankService
 from logic.formation import Formation, FormationService
 from logic.system import BuildResult, Builder, IdFactory, IdentityService, LoggingLevelRouter, id_emitter
@@ -43,7 +43,7 @@ class TokenFactory(Builder[Token]):
             owner: Team,
             formation: Formation,
             rank_service: RankService = RankService(),
-            team_validator: TeamValidator = TeamValidator(),
+            team_validator: TeamValidationProcess = TeamValidationProcess(),
             id: int = IdFactory.next_id(class_name="Token"),
             identity_service: IdentityService = IdentityService(),
             formation_service: FormationService = FormationService(),
@@ -57,7 +57,7 @@ class TokenFactory(Builder[Token]):
             *   owner (Team)
             *   formation: (Formation)
             *   rank_service (RankService)
-            *   team_validator (TeamValidator)
+            *   team_validator (TeamValidationProcess)
             *   identity_service (IdentityService)
             *   formation_service: (FormationService)
         # RETURNS:
@@ -145,7 +145,7 @@ class TokenFactory(Builder[Token]):
             *   owner (Team)
             *   formation: (Formation)
             *   rank_service (RankService)
-            *   team_validator (TeamValidator)
+            *   team_validator (TeamValidationProcess)
             *   identity_service (IdentityService)
             *   formation_service: (FormationService)
         # RETURNS:
@@ -184,7 +184,7 @@ class TokenFactory(Builder[Token]):
             *   owner (Team)
             *   formation: (Formation)
             *   rank_service (RankService)
-            *   team_validator (TeamValidator)
+            *   team_validator (TeamValidationProcess)
             *   identity_service (IdentityService)
             *   formation_service: (FormationService)
         # RETURNS:

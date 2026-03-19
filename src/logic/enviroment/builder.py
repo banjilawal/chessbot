@@ -11,10 +11,10 @@ from typing import cast
 
 
 from logic.square import Square
-from logic.board import Board, BoardValidator
+from logic.board import Board, BoardValidationProcess
 from logic.piece import Piece, PieceValidator
-from logic.enviroment.validator import TurnScene, TurnSceneValidator
-from logic.system import Builder, BuildResult, IdValidator, LoggingLevelRouter
+from logic.enviroment.validator import TurnScene, TurnSceneValidationProcess
+from logic.system import Builder, BuildResult, IdValidationProcess, LoggingLevelRouter
 
 
 class TurnSceneBuilder(Builder[TurnScene]):
@@ -27,7 +27,7 @@ class TurnSceneBuilder(Builder[TurnScene]):
         method = "TurnSceneBuilder.builder"
         
         try:
-            id_validation = IdValidator.validate(id)
+            id_validation = IdValidationProcess.validate(id)
             if id_validation.is_failure():
                 return BuildResult.failure(id_validation.exception)
             
@@ -35,15 +35,15 @@ class TurnSceneBuilder(Builder[TurnScene]):
             if piece_validation.is_failure():
                 return BuildResult.failure(piece_validation.exception)
             
-            board_validation = BoardValidator.validate(board)
+            board_validation = BoardValidationProcess.validate(board)
             if board_validation.is_failure():
                 return BuildResult.failure(board_validation.exception)
             
-            actor_board_validation = TurnSceneValidator.actor_board_validation_helper(piece=piece, board=board)
+            actor_board_validation = TurnSceneValidationProcess.actor_board_validation_helper(piece=piece, board=board)
             if actor_board_validation.is_failure():
                 return BuildResult.failure(actor_board_validation.exception)
             
-            actor_square_validation = TurnSceneValidator.actor_square_validation_helper(piece=piece, board=board)
+            actor_square_validation = TurnSceneValidationProcess.actor_square_validation_helper(piece=piece, board=board)
             if actor_square_validation.is_failure():
                 return BuildResult.failure(actor_square_validation.exception)
             

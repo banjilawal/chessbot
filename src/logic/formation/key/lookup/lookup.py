@@ -12,7 +12,7 @@ from typing import List, cast
 from logic.formation import (
     Formation, FormationColorBoundsException, FormationDesignationBoundsException, FormationLookupFailedException,
     FormationLookupRouteException, FormationPersonaBoundsException, FormationSquareBoundsException, FormationKey,
-    FormationKeyValidator
+    FormationKeyValidationProcess
 )
 from logic.persona import Persona
 from logic.system import GameColor, HashLookup, LoggingLevelRouter, SearchResult
@@ -44,7 +44,7 @@ class FormationLookup(HashLookup[Formation]):
     def query(
             cls, 
             super_key: FormationKey,
-            super_key_validator: FormationKeyValidator = FormationKeyValidator()
+            super_key_validator: FormationKeyValidationProcess = FormationKeyValidationProcess()
     ) -> SearchResult[List[Formation]]:
         """
         # ACTION:
@@ -53,7 +53,7 @@ class FormationLookup(HashLookup[Formation]):
                 the formation entries with the targeted key-values.
         # PARAMETERS:
             *   key: FormationKey
-            *   key_validator: FormationKeyValidator
+            *   key_validator: FormationKeyValidationProcess
         # RETURNS:
             *   SearchResult[List[Formation]] containing either:
                     - On error: Exception , payload null

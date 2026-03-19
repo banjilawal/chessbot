@@ -12,7 +12,7 @@ from typing import cast
 
 from logic.token import Token, TokenService, TokenContext
 from logic.system import LoggingLevelRouter, RelationReport, RelationAnalysis
-from logic.team import Team, TeamRosterRelationAnalysisException, TeamValidator
+from logic.team import Team, TeamRosterRelationAnalysisException, TeamValidationProcess
 
 
 class RosterRelationAnalysis(RelationAnalysis[Team, Token]):
@@ -39,7 +39,7 @@ class RosterRelationAnalysis(RelationAnalysis[Team, Token]):
             candidate_primary: Team,
             candidate_satellite: Token,
             piece_service: TokenService = TokenService(),
-            team_validator: TeamValidator = TeamValidator(),
+            team_validator: TeamValidationProcess = TeamValidationProcess(),
     ) -> RelationReport[Team, Token]:
         """
         # ACTION:
@@ -53,7 +53,7 @@ class RosterRelationAnalysis(RelationAnalysis[Team, Token]):
             *   candidate_primary (Team)
             *   candidate_satellite (Token)
             *   piece_service (PieceService)
-            *   team_validator (TeamValidator)
+            *   team_validator (TeamValidationProcess)
         # RETURN:
             *   RelationReport[Team, Token] containing either:
                 - On failure: Exception

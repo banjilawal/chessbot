@@ -10,8 +10,8 @@ version: 1.0.0
 from typing import Optional
 
 from logic.rank import RankBoundsChecker
-from logic.coord import Coord, CoordValidator
-from logic.system import Builder, BuildResult, IdValidator, LoggingLevelRouter, NameValidator
+from logic.coord import Coord, CoordValidationProcess
+from logic.system import Builder, BuildResult, IdValidationProcess, LoggingLevelRouter, NameValidationProcess
 from logic.domain import (
     VisitorSearchContext, ArenaVisitorSearchParamsException, NoVisitorSearchFilterSelectionException
 )
@@ -54,22 +54,22 @@ class VisitorSearchContextBuilder(Builder[VisitorSearchContext]):
                 )
             
             if id is not None:
-                id_validation = IdValidator.validate(id)
+                id_validation = IdValidationProcess.validate(id)
                 if not id_validation.is_failure():
                     return BuildResult.result(id_validation.exception)
             
             if name is not None:
-                name_validation = NameValidator.validate(name)
+                name_validation = NameValidationProcess.validate(name)
                 if name_validation.is_failure():
                     return BuildResult.failure(name_validation.exception)
             
             if team_id is not None:
-                team_id_validation = IdValidator.validate(team_id)
+                team_id_validation = IdValidationProcess.validate(team_id)
                 if team_id_validation.is_failure():
                     return BuildResult.failure(team_id_validation.exception)
             
             if team_name is not None:
-                team_name_validation = NameValidator.validate(team_name)
+                team_name_validation = NameValidationProcess.validate(team_name)
                 if team_name_validation.is_failure():
                     return BuildResult.failure(team_name_validation.exception)
             
@@ -84,7 +84,7 @@ class VisitorSearchContextBuilder(Builder[VisitorSearchContext]):
                     return BuildResult.failure(ransom_bounds_check.exception)
             
             if coord is not None:
-                coord_validation = CoordValidator.validate(coord)
+                coord_validation = CoordValidationProcess.validate(coord)
                 if coord_validation.is_failure():
                     return BuildResult.failure(coord_validation.exception)
             

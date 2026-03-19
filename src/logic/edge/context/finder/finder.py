@@ -14,7 +14,7 @@ from logic.board import Board
 from logic.coord import Coord
 from logic.system import LoggingLevelRouter, SearchResult, StackSearcher
 from logic.edge import (
-    Edge, EdgeContext, EdgeContextValidator, EdgeSearchException, EdgeSearchRouteException,
+    Edge, EdgeContext, EdgeContextValidationProcess, EdgeSearchException, EdgeSearchRouteException,
     EdgeSearchNullDatasetException, EdgeSearchPayloadTypeException, EdgeState
 )
 from logic.token import Token
@@ -47,7 +47,7 @@ class EdgeFinder(StackSearcher[Edge]):
             cls,
             dataset: List[Edge],
             context: EdgeContext,
-            context_validator: EdgeContextValidator = EdgeContextValidator()
+            context_validator: EdgeContextValidationProcess = EdgeContextValidationProcess()
     ) -> SearchResult[List[Edge]]:
         """
         # ACTION:
@@ -59,7 +59,7 @@ class EdgeFinder(StackSearcher[Edge]):
        # PARAMETERS:
             *   dataset (List[Edge]):
             *   context: EdgeContext
-            *   context_validator: EdgeContextValidator
+            *   context_validator: EdgeContextValidationProcess
         # RETURNS:
             *   SearchResult[List[Edge]] containing either:
                     - On error: Exception , payload null

@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Any, cast
 
 
-from logic.system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
+from logic.system import GameColorValidationProcess, IdentityService, LoggingLevelRouter, ValidationResult, ValidationProcess
 from logic.schema import (
     ArenaSchemaKeysException, NullSchemaKeyException, SchemaKey,
     SchemaKeyValidationException,
@@ -18,7 +18,7 @@ from logic.schema import (
 )
 
 
-class SchemaKeyValidator(Validator[SchemaKey]):
+class SchemaKeyValidationProcess(ValidationProcess[SchemaKey]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -27,7 +27,7 @@ class SchemaKeyValidator(Validator[SchemaKey]):
     2.  If verification fails indicate the reason in an exception returned to the caller.
 
     Super Class:
-        *   Validator
+        *   ValidationProcess
 
     Provides:
 
@@ -41,7 +41,7 @@ class SchemaKeyValidator(Validator[SchemaKey]):
             cls,
             candidate: Any,
             identity_service: IdentityService = IdentityService(),
-            color_validator: GameColorValidator = GameColorValidator(),
+            color_validator: GameColorValidationProcess = GameColorValidationProcess(),
     ) -> ValidationResult[SchemaKey]:
         """
         # ACTION:
@@ -66,7 +66,7 @@ class SchemaKeyValidator(Validator[SchemaKey]):
             *   ArenaSchemaKeysException
             *   SchemaKeyValidationException
         """
-        method = "SchemaKeyValidator.validate"
+        method = "SchemaKeyValidationProcess.validate"
         
         # Handle the nonexistence case.
         if candidate is None:
