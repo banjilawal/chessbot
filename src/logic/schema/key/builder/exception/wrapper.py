@@ -1,7 +1,7 @@
 # src/logic/schema/key/builder/exception/worker.py
 
 """
-Module: logic.schema.key.builder.exception.wrapper
+Module: logic.schema.key.builder.exception.work
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

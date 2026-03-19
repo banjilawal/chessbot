@@ -13,4 +13,4 @@ Version: 1.0.0
 None
 
 # Modules
-from .wrapper import DeletionException
+from .work import DeletionException

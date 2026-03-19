@@ -1,7 +1,7 @@
 # src/logic/system/transfer/exception/worker.py
 
 """
-Module: logic.system.transfer.exception.wrapper
+Module: logic.system.transfer.exception.work
 Author: Banji Lawal
 Created: 2026-02-01
 version: 1.0.0
@@ -18,7 +18,7 @@ __all__ = [
 # ======================# TRANSFER_FAILURE #======================#
 class TransferException(OperationException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Indicate that an exception prevented a transfer operation from completing successfully.

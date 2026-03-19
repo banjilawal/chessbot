@@ -1,7 +1,7 @@
 # src/logic/rank/validator/exception/worker.py
 
 """
-Module: logic.rank.validator.exception.wrapper
+Module: logic.rank.validator.exception.work
 Author: Banji Lawal
 Created: 2025-09-08
 Version: 1.0.0

@@ -1,7 +1,7 @@
 # src/logic/team/hash/validator/worker.py
 
 """
-Module: logic.team.hash.validator.wrapper
+Module: logic.team.hash.validator.work
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0
@@ -20,7 +20,7 @@ from logic.system import ValidationException
 # ======================# TEAM_HASH_VALIDATION_FAILURE #======================#
 class TeamHashValidationException(TeamHashException, ValidationException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why a candidate failed its validation as a Team. The exception chain 

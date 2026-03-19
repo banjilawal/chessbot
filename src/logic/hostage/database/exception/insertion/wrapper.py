@@ -1,7 +1,7 @@
 # src/logic/hostage/database/core/exception/insertion/worker.py
 
 """
-Module: logic.hostage.database.core.exception.insertion.wrapper
+Module: logic.hostage.database.core.exception.insertion.work
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -19,7 +19,7 @@ from logic.system import InsertionException
 # ======================# UNIQUE_HOSTAGE_INSERTION_FAILURE #======================#
 class UniqueHostageInsertionException(HostageException, InsertionException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why inserting a unique manifest failed. The encapsulated

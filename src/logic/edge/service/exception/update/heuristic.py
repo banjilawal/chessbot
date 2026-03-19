@@ -19,7 +19,7 @@ __all__ = [
 # ======================# EDGE_HEURISTIC_UPDATE_FAILURE #======================#
 class UpdatingEdgeHeuristicException(EdgeServiceException, UpdateException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why an edge's heuristic could not be updated. The exception chain

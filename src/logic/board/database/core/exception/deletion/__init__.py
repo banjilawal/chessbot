@@ -13,6 +13,6 @@ version: 1.0.0
 None
 
 # Modules
-from .wrapper import BoardDeletionException
+from .work import BoardDeletionException
 from. emptty import PoppingEmptyBoardStackException
 from .unfound import BoardDoesNotExistForRemovalException

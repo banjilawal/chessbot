@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .wrapper import CoordContextBuildException
+from .work import CoordContextBuildException
 from .route import CoordContextExecutionRouteException

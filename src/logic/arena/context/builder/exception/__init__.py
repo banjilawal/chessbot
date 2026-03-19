@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .wrapper import ArenaContextBuildException
+from .work import ArenaContextBuildException
 from .route import ArenaContextExecutionRouteException

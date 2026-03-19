@@ -13,5 +13,5 @@ Version: 1.0.0
 None
 
 # Modules
-from .wrapper import SearchException
+from .work import SearchException
 from .route import NoExecutionRouteException

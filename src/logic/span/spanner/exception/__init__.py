@@ -14,4 +14,4 @@ None
 
 # Modules
 from .anchor import SpannerException
-from .wrapper import SpanComputationException
+from .work import SpanComputationException

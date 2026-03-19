@@ -13,4 +13,4 @@ version: 1.0.0
 None
 
 # Packages
-from .wrapper import PerpendicularRayComputationException
+from .work import PerpendicularRayComputationException

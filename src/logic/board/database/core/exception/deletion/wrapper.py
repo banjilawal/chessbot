@@ -1,7 +1,7 @@
 # src/logic/board/database/core/exception/deletion/worker.py
 
 """
-Module: logic.board.database.core.exception.deletion.wrapper
+Module: logic.board.database.core.exception.deletion.work
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -19,7 +19,7 @@ from logic.system import DeletionException
 # ======================# BOARD_DELETION_FAILURE #======================#
 class BoardDeletionException(BoardException, DeletionException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why a BoardStack deletion fails. The encapsulated exceptions create

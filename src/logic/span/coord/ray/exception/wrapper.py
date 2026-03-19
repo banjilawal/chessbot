@@ -1,7 +1,7 @@
 # src/logic/diagonalRay/computation/exception/worker.py
 
 """
-Module: logic.diagonalRay.computation.exception.wrapper
+Module: logic.diagonalRay.computation.exception.work
 Author: Banji Lawal
 Created: 2025-09-08
 Version: 1.0.0

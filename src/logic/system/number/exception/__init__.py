@@ -14,4 +14,4 @@ from .debug import *
 
 # Modules
 from .base import NumberException
-from .wrapper import NumberValidationException
+from .work import NumberValidationException

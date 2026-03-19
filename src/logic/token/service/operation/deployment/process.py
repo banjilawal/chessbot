@@ -43,7 +43,7 @@ class TokenDeploymentProcess:
             
         - _run_opening_square_tests(token: Token) -> SearchResult[List[Square]]
         
-        - _square_visitation_process_wrapper(
+        - _square_visitation_process_work(
                     token: Token,
                     pre_update_token: Token,
                     opening_square: Square,
@@ -131,8 +131,8 @@ class TokenDeploymentProcess:
         # --- Integrity and consistency checks are passed. Make a deep copy of the original token. ---#
         pre_update_token = deepcopy(token)
         
-        #--- Run _square_visitation_process_wrapper which runs token side consistency checks ---#
-        update_result = cls._square_visitation_process_wrapper(
+        #--- Run _square_visitation_process_work which runs token side consistency checks ---#
+        update_result = cls._square_visitation_process_work(
             token=token,
             pre_update_token=pre_update_token,
             square_service=token.team.board.squares.integrity_service,
@@ -238,7 +238,7 @@ class TokenDeploymentProcess:
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _square_visitation_process_wrapper(
+    def _square_visitation_process_work(
             cls,
             token: Token,
             pre_update_token: Token,
@@ -266,7 +266,7 @@ class TokenDeploymentProcess:
             InconsistentTokenSquareException
             InconsistentTokenCoordException
         """
-        method = f"{cls.__class__.__name__}._visitation_process_wrapper"
+        method = f"{cls.__class__.__name__}._visitation_process_work"
         
         # Make a visitation request to square_validator.
         visitation_result = token.team.board.squares.integrity_service.begin_square_visit(

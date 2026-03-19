@@ -1,7 +1,7 @@
 # src/logic/edge/finder/exception/worker.py
 
 """
-Module: logic.edge.finder.exception.wrapper
+Module: logic.edge.finder.exception.work
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -100,7 +100,7 @@ from logic.edge import EdgeException
 # ======================# EDGE_SEARCH_FAILURE #======================#
 class EdgeSearchException(EdgeException, SearchException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why a edge search operation failed. The exception chain

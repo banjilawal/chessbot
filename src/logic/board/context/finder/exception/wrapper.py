@@ -1,7 +1,7 @@
 # src/logic/board/finder/exception/worker.py
 
 """
-Module: logic.board.finder.exception.wrapper
+Module: logic.board.finder.exception.work
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -100,7 +100,7 @@ from logic.board import BoardException
 # ======================# BOARD_SEARCH_FAILURE #======================#
 class BoardSearchException(BoardException, SearchException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why a board search operation failed. The exception chain

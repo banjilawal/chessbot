@@ -1,7 +1,7 @@
 # src/logic/board/database/core/exception/insertion/worker.py
 
 """
-Module: logic.board.database.core.exception.insertion.wrapper
+Module: logic.board.database.core.exception.insertion.work
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
@@ -19,7 +19,7 @@ from logic.system import InsertionException
 # ======================# BOARD_INSERTION_FAILURE #======================#
 class BoardInsertionException(BoardException, InsertionException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Indicate that add a occupant to the roster failed.

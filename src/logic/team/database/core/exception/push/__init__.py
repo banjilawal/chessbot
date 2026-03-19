@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .wrapper import PushingTeamFailedException
+from .work import PushingTeamFailedException
 from .duplicate import AddingDuplicateTeamException

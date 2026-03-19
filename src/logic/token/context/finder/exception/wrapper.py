@@ -1,7 +1,7 @@
 # src/logic/token/finder/exception/worker.py
 
 """
-Module: logic.token.finder.exception.wrapper
+Module: logic.token.finder.exception.work
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -100,7 +100,7 @@ from logic.token import TokenException
 # ======================# TOKEN_SEARCH_FAILURE #======================#
 class TokenSearchException(TokenException, SearchException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why a token search operation failed. The exception chain

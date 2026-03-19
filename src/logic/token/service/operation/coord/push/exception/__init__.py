@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .wrapper import TokenPushCoordException
+from .work import TokenPushCoordException
 from .inactive import InactiveTokenPushingCoordException

@@ -1,7 +1,7 @@
 # src/logic/token/service/operation/promotion/exception/worker.py
 
 """
-Module: logic.token.service.operation.promotion.exception.wrapper
+Module: logic.token.service.operation.promotion.exception.work
 Author: Banji Lawal
 Created: 2026-02-08
 version: 1.0.0

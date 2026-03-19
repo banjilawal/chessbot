@@ -19,7 +19,7 @@ __all__ = [
 # ======================# TRANSACTION_FAILURE #======================#
 class TransactionException(OperationException, RollbackException):
     """
-    Role:Exception Wrapper, Integrity Debugging, State Restoration,
+    Role:Exception Work, Integrity Debugging, State Restoration,
 
     Responsibilities:
     1.  Wraps a transaction DebugException and indicates that the transaction was rolled back before the

@@ -14,4 +14,4 @@ None
 
 # Modules
 from .empty import PoppingEmptySquareStackException
-from .wrapper import SquareStackPopException
+from .work import SquareStackPopException

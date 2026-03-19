@@ -19,7 +19,7 @@ __all__ = [
 # ====================== STACK_SERVICE EXCEPTION #======================#
 class StackServiceException(CollectionException, ServiceException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Parent of exception raised by StackServices.

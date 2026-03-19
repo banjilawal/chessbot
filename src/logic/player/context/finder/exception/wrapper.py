@@ -1,7 +1,7 @@
 # src/logic/player/finder/exception/worker.py
 
 """
-Module: logic.player.finder.exception.wrapper
+Module: logic.player.finder.exception.work
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -100,7 +100,7 @@ from logic.player import PlayerException
 # ======================# PLAYER_SEARCH_FAILURE #======================#
 class PlayerSearchException(PlayerException, SearchException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why a player search operation failed. The exception chain

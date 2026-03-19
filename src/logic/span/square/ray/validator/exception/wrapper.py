@@ -1,7 +1,7 @@
 # src/logic/span/square/ray/validator/exception/worker.py
 
 """
-Module: logic.span.square.ray.validator.exception.wrapper
+Module: logic.span.square.ray.validator.exception.work
 Author: Banji Lawal
 Created: 2026-03-12
 Version: 1.0.0

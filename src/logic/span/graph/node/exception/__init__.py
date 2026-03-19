@@ -10,7 +10,7 @@ version: 1.0.0
 # =========== SPAN.SERVICE.HANDLER.NODE.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-from .wrapper import *
+from .work import *
 
 # Modules
 from .anchor import NodeTreeProducerException

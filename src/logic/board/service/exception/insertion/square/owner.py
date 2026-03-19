@@ -20,7 +20,7 @@ from logic.board import BoardException
 # ======================# SQUARE_ON_DIFFERENT_BOARD EXCEPTION #======================#
 class SquareOnDifferentBoardException(BoardException, SquareException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Indicate that inserting a BoardSquare failed because the item belonged to a  different board.

@@ -1,7 +1,7 @@
 # src/logic/schema/key/lookup/exception/worker.py
 
 """
-Module: logic.schema.key.lookup.exception.wrapper
+Module: logic.schema.key.lookup.exception.work
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -23,7 +23,7 @@ from logic.system import ForwardLookupFailedException
 # ======================# SCHEMA_LOOKUP_FAILURE #======================#
 class SchemaLookupFailedException(SchemaException, ForwardLookupFailedException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Wrap an exception that hits the try-finally block of a SchemaLookup method.

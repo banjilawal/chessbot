@@ -1,7 +1,7 @@
 # src/logic/coord/database/core/handler/crud/exception/push/worker.py
 
 """
-Module: logic.coord.database.core.handler.crud.exception.push.wrapper
+Module: logic.coord.database.core.handler.crud.exception.push.work
 Author: Banji Lawal
 Created: 2026-03-14
 version: 1.0.0

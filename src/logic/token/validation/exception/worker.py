@@ -1,7 +1,7 @@
 # src/logic/token/validation/exception/worker.py
 
 """
-Module: logic.token.validation.exception.wrapper
+Module: logic.token.validation.exception.work
 Author: Banji Lawal
 Created: 2025-09-08
 Version: 1.0.0

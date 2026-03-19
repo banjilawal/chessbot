@@ -1,7 +1,7 @@
 # src/logic/square/database/kernel/operation/stats/exception/work/worker.py
 
 """
-Module: logic.square.database.kernel.operation.stats.exception.work.wrapper
+Module: logic.square.database.kernel.operation.stats.exception.work.work
 Author: Banji Lawal
 Created: 2026-02-22
 version: 1.0.0

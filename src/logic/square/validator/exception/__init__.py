@@ -12,4 +12,4 @@ Created: 2025-11-19
 from .debug import *
 
 # Modules
-from .wrapper import SquareValidationException
+from .work import SquareValidationException

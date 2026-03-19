@@ -14,4 +14,4 @@ None
 
 # Modules
 from .empty import PoppingEmptyTokenStackException
-from .wrapper import TokenStackPopException
+from .work import TokenStackPopException

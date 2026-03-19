@@ -1,7 +1,7 @@
 # src/logic/token/service/operation/tokenDeployment/exception/worker.py
 
 """
-Module: logic.token.service.operation.tokenDeployment.exception.wrapper
+Module: logic.token.service.operation.tokenDeployment.exception.work
 Author: Banji Lawal
 Created: 2026-03-14
 version: 1.0.0

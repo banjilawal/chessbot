@@ -13,5 +13,5 @@ version: 1.0.0
 from .full import *
 
 # Modules
-from .wrapper import PushingPairException
+from .work import PushingPairException
 from .duplicate import AddingDuplicatePairException

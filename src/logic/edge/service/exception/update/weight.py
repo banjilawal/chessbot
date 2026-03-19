@@ -19,7 +19,7 @@ __all__ = [
 # ======================# EDGE_WEIGHT_UPDATE_FAILURE #======================#
 class UpdatingEdgeWeightException(EdgeServiceException, UpdateException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why an edge's weight could not be updated. The exception chain

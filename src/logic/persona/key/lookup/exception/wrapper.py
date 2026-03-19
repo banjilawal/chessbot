@@ -1,7 +1,7 @@
 # src/logic/persona/key/lookup/exception/worker.py
 
 """
-Module: logic.persona.key.lookup.exception.wrapper
+Module: logic.persona.key.lookup.exception.work
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

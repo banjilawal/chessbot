@@ -1,7 +1,7 @@
 # src/logic/system/relation/exception/worker.py
 
 """
-Module: logic.system.relation.exception.wrapper
+Module: logic.system.relation.exception.work
 Author: Banji Lawal
 Created: 2026-01-18
 version: 1.0.0

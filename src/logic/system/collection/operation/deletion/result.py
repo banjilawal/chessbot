@@ -1,7 +1,7 @@
 # src/logic/system/collection/operation/deletion/worker.py
 
 """
-Module: logic.system.collection.operation.deletion.wrapper
+Module: logic.system.collection.operation.deletion.work
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
@@ -41,7 +41,7 @@ class DeletionResult(DataResult, Generic[T]):
     ):
         super().__init__(state=state, payload=payload, exception=exception)
         """INTERNAL: Use factory methods instead of direct constructor."""
-        method = "DeletionResult.wrapper"
+        method = "DeletionResult.work"
     
     @property
     def is_success(self) -> bool:

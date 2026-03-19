@@ -15,4 +15,4 @@ None
 # Modules
 from .validator import TeamHashValidationProcess
 from .null import TeamHashNullException
-from .wrapper import TeamHashValidationException
+from .work import TeamHashValidationException

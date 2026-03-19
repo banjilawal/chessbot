@@ -1,7 +1,7 @@
 # src/logic/board/builder/exception/worker.py
 
 """
-Module: logic.board.builder.exception.wrapper
+Module: logic.board.builder.exception.work
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

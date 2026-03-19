@@ -14,4 +14,4 @@ None
 
 # Modules
 from .route import TransferRouteException
-from .wrapper import TransferException
+from .work import TransferException

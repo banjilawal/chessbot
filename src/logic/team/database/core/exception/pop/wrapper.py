@@ -1,7 +1,7 @@
 # src/logic/team/database/core/exception/pop/worker.py
 
 """
-Module: logic.team.database.core.exception.pop.wrapper
+Module: logic.team.database.core.exception.pop.work
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
@@ -19,7 +19,7 @@ from logic.system import DeletionException
 # ======================# POPPING_TEAM_STACK_FAILURE #======================#
 class PoppingTeamStackFailedException(TeamStackException, DeletionException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why TeamStack could not delete a team. The exception chain traces the ultimate source of failure.

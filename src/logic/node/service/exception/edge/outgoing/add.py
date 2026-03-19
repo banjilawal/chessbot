@@ -18,7 +18,7 @@ __all__ = [
 # ======================# ADD_OUTGOING_EDGE_FAILURE #======================#
 class AddOutgoingEdgeFailedException(NodeException, InsertionException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why adding a new outgoing edge to a node failed.

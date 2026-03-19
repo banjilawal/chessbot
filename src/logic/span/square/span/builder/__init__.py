@@ -14,4 +14,4 @@ None
 
 # Modules
 from .builder import SquareSpanBuilder
-from .wrapper import SquareSpanBuildException
+from .work import SquareSpanBuildException

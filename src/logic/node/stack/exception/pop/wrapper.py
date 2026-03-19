@@ -1,7 +1,7 @@
 # src/logic/node/stack/exception/pop/worker.py
 
 """
-Module: logic.node.stack.exception.pop.wrapper
+Module: logic.node.stack.exception.pop.work
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -19,7 +19,7 @@ from logic.system import DeletionException
 # ======================# NODE_DELETION_FAILURE #======================#
 class NodePopException(NodeStackException, DeletionException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why a NodeStackService deletion fails. The encapsulated exceptions create

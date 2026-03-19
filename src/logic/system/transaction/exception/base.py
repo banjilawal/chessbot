@@ -18,7 +18,7 @@ __all__ = [
 #====================== TRANSACTION EXCEPTION #======================#
 class TransactionException(ChessException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
   
     Responsibilities:
     1.  Parent of exception raised by Transaction objects

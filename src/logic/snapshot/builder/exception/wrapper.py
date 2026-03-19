@@ -1,7 +1,7 @@
 # src/logic/snapshot/builder/exception/worker.py
 
 """
-Module: logic.snapshot.builder.exception.wrapper
+Module: logic.snapshot.builder.exception.work
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

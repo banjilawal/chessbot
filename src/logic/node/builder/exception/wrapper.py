@@ -1,7 +1,7 @@
 # src/logic/node/builder/exception/worker.py
 
 """
-Module: logic.node.builder.exception.wrapper
+Module: logic.node.builder.exception.work
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

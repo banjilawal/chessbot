@@ -1,7 +1,7 @@
 # src/logic/edge/stack/exception/push/worker.py
 
 """
-Module: logic.edge.stack.exception.push.wrapper
+Module: logic.edge.stack.exception.push.work
 Author: Banji Lawal
 Created: 2026-02-18
 version: 1.0.0
@@ -19,7 +19,7 @@ from logic.system import InsertionException
 # ======================# EDGE_INSERTION_FAILURE #======================#
 class PushingEdgeException(EdgeStackException, InsertionException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Indicate that pushing a Edge on the Stack failed.

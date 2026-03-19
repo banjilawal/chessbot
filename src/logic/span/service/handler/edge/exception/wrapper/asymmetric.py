@@ -1,7 +1,7 @@
-# src/logic/span/service/handler/edge/exception/wrapper/asymmetric.py
+# src/logic/span/service/handler/edge/exception/work/asymmetric.py
 
 """
-Module: logic.span.service.handler.edge.exception.wrapper.asymmetric
+Module: logic.span.service.handler.edge.exception.work.asymmetric
 Author: Banji Lawal
 Created: 2026-03-11
 version: 1.0.0

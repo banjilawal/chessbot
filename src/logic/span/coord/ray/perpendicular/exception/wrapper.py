@@ -1,7 +1,7 @@
 # src/logic/span/coord/ray/perpendicular/exception/worker.py
 
 """
-Module: logic.span.coord.ray.perpendicular.exception.wrapper
+Module: logic.span.coord.ray.perpendicular.exception.work
 Author: Banji Lawal
 Created: 2026-03-8
 version: 1.0.0

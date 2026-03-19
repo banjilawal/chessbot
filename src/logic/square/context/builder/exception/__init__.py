@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .wrapper import SquareContextBuildException
+from .work import SquareContextBuildException
 from .route import SquareContextExecutionRouteException

@@ -14,4 +14,4 @@ from .token import *
 from .square import *
 
 # Modules
-from .wrapper import BoardServiceInsertionOpFailedException
+from .work import BoardServiceInsertionOpFailedException

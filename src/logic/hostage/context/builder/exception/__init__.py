@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .wrapper import HostageContextBuildException
+from .work import HostageContextBuildException
 from .route import HostageContextExecutionRouteException

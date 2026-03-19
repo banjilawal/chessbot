@@ -1,7 +1,7 @@
-# src/logic/system/err/wrapper/operation/root.py
+# src/logic/system/err/work/operation/root.py
 
 """
-Module: logic.system.err.wrapper.operation.root
+Module: logic.system.err.work.operation.root
 Author: Banji Lawal
 Created: 2026-02-25
 version: 1.0.0
@@ -22,7 +22,7 @@ from logic.system import WorkException
 class OperationException(WorkException):
     """
     Role:
-        -   Wrapper Method Identifier
+        -   Work Method Identifier
         -   Exception Chain Layer 1
         -   Exception Messaging
 

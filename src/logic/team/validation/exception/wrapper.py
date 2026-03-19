@@ -1,7 +1,7 @@
 # src/logic/team/validation/exception/worker.py
 
 """
-Module: logic.team.validation.exception.wrapper
+Module: logic.team.validation.exception.work
 Author: Banji Lawal
 Created: 2025-09-08
 Version: 1.0.0

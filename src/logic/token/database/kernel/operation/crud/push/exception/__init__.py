@@ -13,7 +13,7 @@ version: 1.0.0
 None
 
 # Modules
-from .wrapper import TokenStackPushException
+from .work import TokenStackPushException
 from .duplicate import AddingDuplicateTokenException
 from .full import TokenStackFullException
 from .rank import RankQuotaFullException

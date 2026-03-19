@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .wrapper import TokenContextBuildException
+from .work import TokenContextBuildException
 from .route import TokenContextBuildRouteException

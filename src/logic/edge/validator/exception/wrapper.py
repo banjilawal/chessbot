@@ -1,7 +1,7 @@
 # src/logic/edge/validator/exception/worker.py
 
 """
-Module: logic.edge.validator.exception.wrapper
+Module: logic.edge.validator.exception.work
 Author: Banji Lawal
 Created: 2025-09-08
 Version: 1.0.0

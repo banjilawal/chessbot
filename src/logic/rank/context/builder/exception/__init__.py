@@ -1,2 +1,2 @@
-from .wrapper import RankContextBuildException
+from .work import RankContextBuildException
 from .route import RankContextBuildRouteException

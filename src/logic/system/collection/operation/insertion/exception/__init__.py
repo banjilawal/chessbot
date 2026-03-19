@@ -13,5 +13,5 @@ Version: 1.0.0
 None
 
 # Modules
-from .wrapper import InsertionException
+from .work import InsertionException
 from .unsupported import UnsupportedEmptyInsertionResultException

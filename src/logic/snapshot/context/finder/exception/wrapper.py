@@ -1,7 +1,7 @@
 # src/logic/snapshot/finder/exception/worker.py
 
 """
-Module: logic.snapshot.finder.exception.wrapper
+Module: logic.snapshot.finder.exception.work
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -100,7 +100,7 @@ from logic.snapshot import SnapshotException
 # ======================# SNAPSHOT_SEARCH_FAILURE #======================#
 class SnapshotSearchException(SnapshotException, SearchException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why a snapshot search operation failed. The exception chain

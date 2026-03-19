@@ -9,7 +9,7 @@ from logic.hostage import HostageException
 # ======================# KING_CANNOT_BE_CAPTURED EXCEPTION #======================#
 class KingCannotBeCapturedException(HostageException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Indicate that adding a occupant to the prisoners failed because it was a KingToken instead of a CombatantToken

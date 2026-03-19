@@ -9,7 +9,7 @@ from logic.hostage import HostageException
 # ======================# FRIEND_CANNOT_CAPTURE_FRIEND EXCEPTION #======================#
 class FriendCannotCaptureFriendException(HostageException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Indicate that adding a combatant to the prisoners failed because the occupant was a friend.

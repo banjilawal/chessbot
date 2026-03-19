@@ -16,7 +16,7 @@ from .color import *
 from .resource import *
 from .consistency import *
 from .debug import *
-from .wrapper import *
+from .work import *
 
 # Modules
 from .root import ChessException

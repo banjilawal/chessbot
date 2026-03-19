@@ -10,7 +10,7 @@ from logic.system import InsertionException
 # ======================# BOARD_LAYOUT_FAILURE #======================#
 class BoardLayoutFailedException(BoardException, InsertionException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why laying out tokens on a board failed. The encapsulated

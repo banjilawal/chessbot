@@ -54,12 +54,12 @@ class TurnScene(Scene[Piece, Board, Square]):
         
     @property
     def board(self) -> Board:
-        """Convenience wrapper stage."""
+        """Convenience work stage."""
         return self._stage
     
     @property
     def actor_square(self) -> Optional[Square]:
-        """Convenience wrapper prop."""
+        """Convenience work prop."""
         return self._prop
     
     

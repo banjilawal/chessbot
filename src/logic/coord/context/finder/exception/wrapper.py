@@ -1,7 +1,7 @@
 # src/logic/coord/finder/exception/worker.py
 
 """
-Module: logic.coord.finder.exception.wrapper
+Module: logic.coord.finder.exception.work
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -100,7 +100,7 @@ from logic.coord import CoordException
 # ======================# COORD_SEARCH_FAILURE #======================#
 class CoordSearchException(CoordException, SearchException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why a coord search operation failed. The exception chain

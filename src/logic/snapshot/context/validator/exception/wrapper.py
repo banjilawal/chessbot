@@ -18,7 +18,7 @@ __all__ = [
 # ======================# SNAPSHOT_CONTEXT_VALIDATION_FAILURE #======================#
 class SnapshotContextValidationException(SnapshotContextException, ValidationException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why a candidate failed its validation as a SnapshotContext. The

@@ -1,7 +1,7 @@
 # src/logic/system/err/worker.py
 
 """
-Module: logic.system.err.wrapper
+Module: logic.system.err.work
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -11,23 +11,23 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# WRAPPER_EXCEPTION #======================#
+    # ======================# WORK_EXCEPTION #======================#
     "WorkException",
 ]
 
 from logic.system import ChessException
 
-# ======================# WRAPPER_EXCEPTION #======================#
+# ======================# WORK_EXCEPTION #======================#
 class WorkException(ChessException):
     """
     Role:
-        -   Wrapper Method Identifier
+        -   Work Method Identifier
         -   Exception Chain Layer 1
         -   Exception Messaging
 
     Responsibilities:
-        1.  Abstract exception for Wrapper subclasses which indicate
-                -   The wrapper
+        1.  Abstract exception for Work subclasses which indicate
+                -   The work
                 -   It's method
             that produced an exception instead of a payload in it's result.
     

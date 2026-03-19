@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .wrapper import NodePopException
+from .work import NodePopException
 from .empty import PoppingEmptyNodeStackException

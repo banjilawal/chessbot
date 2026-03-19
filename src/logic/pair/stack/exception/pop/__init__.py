@@ -13,6 +13,6 @@ version: 1.0.0
 None
 
 # Modules
-from .wrapper import PoppingPairException
+from .work import PoppingPairException
 from .empty import PoppingEmptyPairStackException
 from .exists import PairNotFoundException

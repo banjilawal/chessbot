@@ -1,7 +1,7 @@
 # src/logic/team/finder/exception/worker.py
 
 """
-Module: logic.team.finder.exception.wrapper
+Module: logic.team.finder.exception.work
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -100,7 +100,7 @@ from logic.team import TeamException
 # ======================# TEAM_SEARCH_FAILURE #======================#
 class TeamSearchException(TeamException, SearchException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why a team search operation failed. The exception chain

@@ -19,7 +19,7 @@ __all__ = [
 # ======================# INCOMING_EDGE_WRONG_TAIL EXCEPTION #======================#
 class IncomingEdgeWrongTailException(NodeException, InsertionException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Indicate that adding an incoming edge failed because the edge was pointing to a different

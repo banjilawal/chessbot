@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .wrapper import HostageInsertionException
+from .work import HostageInsertionException
 from .direct import AppendingHostageDirectlyIntoItemsFailedException

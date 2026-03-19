@@ -18,7 +18,7 @@ from logic.system import NumberException, ValidationException
 # ======================# NUMBER_VALIDATION_FAILURE #======================#
 class NumberValidationException(NumberException, ValidationException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why a candidate failed its validation as an Int. The exception chain traces the ultimate source of failure.

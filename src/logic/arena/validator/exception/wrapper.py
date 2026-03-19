@@ -1,7 +1,7 @@
 # src/logic/arena/validator/exception/worker.py
 
 """
-Module: logic.arena.validator.exception.wrapper
+Module: logic.arena.validator.exception.work
 Author: Banji Lawal
 Created: 2025-09-08
 Version: 1.0.0
@@ -20,7 +20,7 @@ __all__ = [
 # ======================# ARENA_VALIDATION_FAILURE #======================#
 class ArenaValidationException(ValidationException):
     """
-    Role:Debug Wrapper, Exception Chain Layer 2, Exception Messaging
+    Role:Debug Work, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
     1.  Indicate that a candidate failed a safety check in a ArenaValidationProcess method.

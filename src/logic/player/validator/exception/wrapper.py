@@ -1,7 +1,7 @@
 # src/logic/player/validator/exception/worker.py
 
 """
-Module: logic.player.validator.exception.wrapper
+Module: logic.player.validator.exception.work
 Author: Banji Lawal
 Created: 2025-09-08
 Version: 1.0.0

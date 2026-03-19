@@ -1,7 +1,7 @@
 # src/logic/pair/listing/builder/worker.py
 
 """
-Module: logic.pair.listing.builder.wrapper
+Module: logic.pair.listing.builder.work
 Author: Banji Lawal
 Created: 2026-03-12
 version: 1.0.0

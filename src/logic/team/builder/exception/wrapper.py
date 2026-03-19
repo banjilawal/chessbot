@@ -1,7 +1,7 @@
 # src/logic/team/builder/exception/worker.py
 
 """
-Module: logic.team.builder.exception.wrapper
+Module: logic.team.builder.exception.work
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

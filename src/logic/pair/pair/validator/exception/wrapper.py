@@ -1,7 +1,7 @@
 # src/logic/pair/pair/validator/exception/worker.py
 
 """
-Module: logic.pair.pair.validator.exception.wrapper
+Module: logic.pair.pair.validator.exception.work
 Author: Banji Lawal
 Created: 2025-09-08
 Version: 1.0.0

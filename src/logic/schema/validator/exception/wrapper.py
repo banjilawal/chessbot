@@ -1,7 +1,7 @@
 # src/logic/schema/validator/exception/worker.py
 
 """
-Module: logic.schema.validator.exception.wrapper
+Module: logic.schema.validator.exception.work
 Author: Banji Lawal
 Created: 2025-09-08
 Version: 1.0.0

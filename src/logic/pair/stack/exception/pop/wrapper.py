@@ -1,7 +1,7 @@
 # src/logic/pair/stack/exception/deletion/worker.py
 
 """
-Module: logic.pair.stack.exception.deletion.wrapper
+Module: logic.pair.stack.exception.deletion.work
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

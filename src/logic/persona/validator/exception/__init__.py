@@ -14,6 +14,6 @@ None
 
 # Modules
 from .null import NullPersonaException
-from .wrapper import PersonaValidationException
+from .work import PersonaValidationException
 
 

@@ -14,4 +14,4 @@ None
 
 # Packages
 from .debug import ComputedNullRayDebugException
-from .wrapper import RayComputationException
+from .work import RayComputationException

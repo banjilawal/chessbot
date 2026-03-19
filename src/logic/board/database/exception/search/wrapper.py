@@ -1,7 +1,7 @@
 # src/logic/board/database/core/exception/search/worker.py
 
 """
-Module: logic.board.database.core.exception.search.wrapper
+Module: logic.board.database.core.exception.search.work
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -19,7 +19,7 @@ from logic.system import SearchException
 # ======================# UNIQUE_BOARD_SEARCH_FAILURE #======================#
 class UniqueBoardSearchException(BoardException, SearchException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why inserting a unique board failed. The encapsulated exceptions create 

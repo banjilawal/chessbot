@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .wrapper import NodeContextBuildException
+from .work import NodeContextBuildException
 from .route import NodeContextExecutionRouteException

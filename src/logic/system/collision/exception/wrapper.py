@@ -1,7 +1,7 @@
 # src/logic/system/collision/exception/worker.py
 
 """
-Module: logic.system.collision.exception.wrapper
+Module: logic.system.collision.exception.work
 Author: Banji Lawal
 Created: 2026-02-21
 Version: 1.0.0

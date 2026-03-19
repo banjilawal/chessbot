@@ -14,4 +14,4 @@ None
 
 # Modules
 from logic.edge.builder.builder import EdgeBuilder
-from logic.edge.builder.exception.wrapper import EdgeBuildException
+from logic.edge.builder.exception.work import EdgeBuildException

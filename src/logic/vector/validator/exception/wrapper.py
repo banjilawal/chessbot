@@ -1,7 +1,7 @@
 # src/logic/vector/validator/exception/worker.py
 
 """
-Module: logic.vector.validator.exception.wrapper
+Module: logic.vector.validator.exception.work
 Author: Banji Lawal
 Created: 2025-09-08
 Version: 1.0.0

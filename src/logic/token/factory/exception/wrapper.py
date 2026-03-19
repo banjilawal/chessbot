@@ -1,7 +1,7 @@
 # src/logic/token/factory/exception/worker.py
 
 """
-Module: logic.token.factory.exception.wrapper
+Module: logic.token.factory.exception.work
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

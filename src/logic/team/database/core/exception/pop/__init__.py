@@ -14,6 +14,6 @@ version: 1.0.0
 None
 
 # Modules
-from .wrapper import PoppingTeamStackFailedException
+from .work import PoppingTeamStackFailedException
 from .empty import PoppingEmptyTeamStackException
 from .unfound import TeamDoesNotExistForRemovalException

@@ -11,7 +11,7 @@ from typing import Dict, List, Optional, cast
 
 
 from logic.rank import Bishop, King, Knight, Pawn, Queen, Rank, RankService, Rook
-from logic.rank.factory.exception.wrapper import RankBuildException
+from logic.rank.factory.exception.work import RankBuildException
 from logic.system import (
     BuildResult, ComputationResult, HashService, LoggingLevelRouter, Result, SearchResult,
     id_emitter

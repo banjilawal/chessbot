@@ -1,7 +1,7 @@
 # src/logic/player/relation/worker.py
 
 """
-Module: logic.player.relation.wrapper
+Module: logic.player.relation.work
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -18,7 +18,7 @@ from logic.system import AnalysisException
 # ======================# PLAYER_TEAM_RELATION_ANALYSIS_FAILURE #======================#
 class PlayerTeamAnalysisException(AnalysisException):
     """
-    Role:Exception Wrapper, Encapsulation, Error Chaining
+    Role:Exception Work, Encapsulation, Error Chaining
 
     Responsibilities:
     1.  Wrap any exception that kills the relation test process before the agent-team relationship

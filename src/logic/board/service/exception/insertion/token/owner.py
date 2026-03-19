@@ -19,7 +19,7 @@ from logic.board import BoardException
 # ======================# TOKEN_ON_DIFFERENT_BOARD EXCEPTION #======================#
 class TokenOnDifferentBoardException(BoardException, TokenException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Indicate that inserting a BoardToken failed because the occupant belonged to a  different board.

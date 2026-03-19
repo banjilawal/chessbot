@@ -16,7 +16,7 @@ __all__ = [
 # ======================# GAME_TIMELINE EXCEPTION #======================#
 class GameTimelineException(ResultStackException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Parent of exception raised by GameTimeline objects.

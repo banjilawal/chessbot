@@ -1,7 +1,7 @@
 # src/logic/coord/database/core/exception/insertion/worker.py
 
 """
-Module: logic.coord.database.core.exception.insertion.wrapper
+Module: logic.coord.database.core.exception.insertion.work
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -19,7 +19,7 @@ from logic.system import InsertionException
 # ======================# UNIQUE_COORD_INSERTION_FAILURE #======================#
 class UniqueCoordInsertionException(CoordException, InsertionException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why inserting a unique coord failed. The encapsulated exceptions create 

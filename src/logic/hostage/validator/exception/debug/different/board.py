@@ -17,7 +17,7 @@ from logic.hostage import HostageException
 # ======================# VICTOR_AND_PRISONER_ON_DIFFERENT_BOARDS EXCEPTION #======================#
 class VictorAndPrisoneOnDifferentBoardsException(HostageException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Indicate that a candidate failed its Hostage validation because the victor and prisoner

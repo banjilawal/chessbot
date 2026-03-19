@@ -1,7 +1,7 @@
 # src/logic/coord/database/core/handler/crud/exception/pop/worker.py
 
 """
-Module: logic.coord.database.core.handler.crud.exception.pop.wrapper
+Module: logic.coord.database.core.handler.crud.exception.pop.work
 Author: Banji Lawal
 Created: 2026-03-14
 version: 1.0.0

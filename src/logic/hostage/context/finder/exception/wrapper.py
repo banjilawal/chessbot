@@ -1,7 +1,7 @@
 # src/logic/hostage/finder/exception/worker.py
 
 """
-Module: logic.hostage.finder.exception.wrapper
+Module: logic.hostage.finder.exception.work
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -100,7 +100,7 @@ from logic.hostage import HostageException
 # ======================# HOSTAGE_SEARCH_FAILURE #======================#
 class HostageSearchException(HostageException, SearchException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why a hostage search operation failed. The exception chain

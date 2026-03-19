@@ -17,7 +17,7 @@ __all__ = [
 #======================# HUMAN_PLAYER EXCEPTION #======================#
 class HumanPlayerException(PlayerException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Indicate an attribute, method, or operation organic to a HumanPlayer encountered a condition which

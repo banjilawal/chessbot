@@ -1,7 +1,7 @@
 # src/logic/team/database/core/exception/insertion/worker.py
 
 """
-Module: logic.team.database.core.exception.insertion.wrapper
+Module: logic.team.database.core.exception.insertion.work
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
@@ -18,7 +18,7 @@ from logic.system import InsertionException
 # ======================# TEAM_INSERTION_FAILURE #======================#
 class TeamInsertionException(InsertionException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why TeamStack could not delete a team. The exception chain traces the ultimate source of failure.

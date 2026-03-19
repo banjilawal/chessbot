@@ -1,7 +1,7 @@
 # src/logic/team/roster/exception/insertion/worker.py
 
 """
-Module: logic.team.roster.exception.insertion.wrapper
+Module: logic.team.roster.exception.insertion.work
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0

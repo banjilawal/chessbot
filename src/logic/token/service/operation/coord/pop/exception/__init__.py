@@ -14,6 +14,6 @@ None
 
 # Modules
 from .limit import MoveUndoLimitException
-from .wrapper import TokenPopCoordException
+from .work import TokenPopCoordException
 from .inactive import InactiveTokenPoppingCoordException
 from .opening import UnopenedTokenPoppingCoordException

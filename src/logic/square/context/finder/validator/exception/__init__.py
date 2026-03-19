@@ -12,4 +12,4 @@ Created: 2025-11-19
 from .debug import *
 
 # Modules
-from .wrapper import SquareListValidationException
+from .work import SquareListValidationException

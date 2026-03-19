@@ -13,5 +13,5 @@ Version: 1.0.0
 None
 
 # Modules
-from .wrapper import UpdateException
+from .work import UpdateException
 from .unsupported import UnsupportedEmptyUpdateResultException

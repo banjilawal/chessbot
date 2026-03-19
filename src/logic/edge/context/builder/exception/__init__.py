@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .wrapper import EdgeContextBuildException
+from .work import EdgeContextBuildException
 from .route import EdgeContextExecutionRouteException

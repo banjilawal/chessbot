@@ -14,4 +14,4 @@ None
 
 # Modules
 from .duplicate import AddingDuplicateCoordException
-from .wrapper import UniqueCoordInsertionException
+from .work import UniqueCoordInsertionException

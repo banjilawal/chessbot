@@ -12,7 +12,7 @@ __all__ = [
     "ZeroFormationKeysException",
 ]
 
-from logic.formation.key.validator.exception.wrapper import InvalidFormationKeyException
+from logic.formation.key.validator.exception.work import InvalidFormationKeyException
 from logic.system import ContextFlagCountException
 
 

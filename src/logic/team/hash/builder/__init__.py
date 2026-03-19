@@ -14,4 +14,4 @@ None
 
 # Modules
 from .builder import TeamHashBuilder
-from .wrapper import TeamHashBuildException
+from .work import TeamHashBuildException

@@ -20,7 +20,7 @@ from logic.system import ServiceException
 # ======================# GAME_STACK_SERVICE EXCEPTION #======================#
 class GameDataServiceException(GameException, ServiceException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Indicate that an GameStackService encountered an error which prevented the service from completing a task.

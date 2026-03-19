@@ -1,7 +1,7 @@
 # src/logic/square/finder/exception/worker.py
 
 """
-Module: logic.square.finder.exception.wrapper
+Module: logic.square.finder.exception.work
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -100,7 +100,7 @@ from logic.square import SquareException
 # ======================# SQUARE_SEARCH_FAILURE #======================#
 class SquareSearchException(SquareException, SearchException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why a square search operation failed. The exception chain

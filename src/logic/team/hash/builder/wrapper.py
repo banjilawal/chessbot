@@ -1,7 +1,7 @@
 # src/logic/team/hash/builder/worker.py
 
 """
-Module: logic.team.hash.builder.wrapper
+Module: logic.team.hash.builder.work
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0
@@ -19,7 +19,7 @@ from logic.system import BuildException
 # ======================# TEAM_HASH_BUILD_FAILURE #======================#
 class TeamHashBuildException(TeamHashException, BuildException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why a TeamHash build failed. The exception chain

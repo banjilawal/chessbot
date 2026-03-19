@@ -1,7 +1,7 @@
 # src/logic/hostage/databse/coreexception/search/worker.py
 
 """
-Module: logic.hostage.database.core.exception.search.wrapper
+Module: logic.hostage.database.core.exception.search.work
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -19,7 +19,7 @@ from logic.system import SearchException
 # ======================# UNIQUE_SEARCH_FAILURE #======================#
 class UniqueHostageSearchException(HostageException, SearchException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why inserting a unique Hostage failed. The encapsulated

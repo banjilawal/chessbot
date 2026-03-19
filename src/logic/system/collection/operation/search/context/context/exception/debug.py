@@ -18,7 +18,7 @@ __all__ = [
 # ======================# CONTEXT_FLAG_COUNT EXCEPTION #======================#
 class ContextFlagCountException(ContextException, BoundsException):
     """
-    Role:Exception Wrapper,
+    Role:Exception Work,
   
     Responsibilities:
     1.  Parent of exceptions which indicate the attributee-value flags enabled in a Context is out of bounds.

@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .wrapper import PlayerBuildException
+from .work import PlayerBuildException
 from .route import PlayerBuildRouteException

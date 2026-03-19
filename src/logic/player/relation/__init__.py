@@ -14,4 +14,4 @@ None
 
 # Modules
 from .analyzer import PlayerTeamRelationAnalysis
-from .wrapper import PlayerTeamAnalysisException
+from .work import PlayerTeamAnalysisException

@@ -1,7 +1,7 @@
-# src/logic/span/service/handler/node/exception/wrapper/push.py
+# src/logic/span/service/handler/node/exception/work/push.py
 
 """
-Module: logic.span.service.handler.node.exception.wrapper.push
+Module: logic.span.service.handler.node.exception.work.push
 Author: Banji Lawal
 Created: 2026-03-11
 version: 1.0.0

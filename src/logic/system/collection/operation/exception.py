@@ -22,7 +22,7 @@ from logic.system import OperationException
 class CollectionOperationException(OperationException):
     """
     Role:
-        -   Wrapper Method Identifier
+        -   Work Method Identifier
         -   Exception Chain Layer 1
         -   Exception Messaging
 

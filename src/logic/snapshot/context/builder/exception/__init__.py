@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .wrapper import SnapshotContextBuildException
+from .work import SnapshotContextBuildException
 from .route import SnapshotContextExecutionRouteException

@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .wrapper import BoardLayoutFailedException
+from .work import BoardLayoutFailedException
 from .double import BoardAlreadyLaidOutException

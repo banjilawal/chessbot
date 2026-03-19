@@ -20,7 +20,7 @@ from logic.system import InvalidStringException, NullException
 class VoidStringException(InvalidStringException):
     """
     Role:Error Tracing, Debugging
-    Role:Exception Wrapper
+    Role:Exception Work
     
     Responsibilities:
     1.  Parent of exceptions which indicate an entity, method, or operation requires a String but gets either

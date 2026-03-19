@@ -1,7 +1,7 @@
 # src/logic/persona/key/validator/exception/worker.py
 
 """
-Module: logic.persona.key.validator.exception.wrapper
+Module: logic.persona.key.validator.exception.work
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
@@ -19,7 +19,7 @@ from logic.system import ValidationException
 # ======================# PERSONA_KEY_VALIDATION_FAILURE #======================#
 class PersonaKeyValidationException(PersonaKeyException, ValidationException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  A debug exception is created when a PersonaKey candidate fails a validation test. Validation debug

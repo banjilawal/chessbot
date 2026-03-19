@@ -19,7 +19,7 @@ __all__ = [
 # ======================# REMOVE_OUTGOING_EDGE_FAILURE #======================#
 class RemoveOutgoingEdgeFailedException(NodeException, InsertionException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why 

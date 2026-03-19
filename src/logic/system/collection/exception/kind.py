@@ -18,7 +18,7 @@ __all__ = [
 # ====================== WRONG_COLLECTION_TYPE EXCEPTION #======================#
 class WrongCollectionTypeException(CollectionException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
     
     Responsibilities:
     1.  The Collection contains the wrong type of data.

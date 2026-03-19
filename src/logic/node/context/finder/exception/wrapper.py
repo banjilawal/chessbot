@@ -1,7 +1,7 @@
 # src/logic/node/finder/exception/worker.py
 
 """
-Module: logic.node.finder.exception.wrapper
+Module: logic.node.finder.exception.work
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -100,7 +100,7 @@ from logic.node import NodeException
 # ======================# NODE_SEARCH_FAILURE #======================#
 class NodeSearchException(NodeException, SearchException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why a node search operation failed. The exception chain

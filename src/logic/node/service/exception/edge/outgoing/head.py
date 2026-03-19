@@ -19,7 +19,7 @@ __all__ = [
 # ======================# OUTGOING_EDGE_WRONG_HEAD EXCEPTION #======================#
 class OutgoingEdgeWrongHeadException(NodeException, InsertionException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Indicate that adding outgoing edge failed because the edge was originated from a different

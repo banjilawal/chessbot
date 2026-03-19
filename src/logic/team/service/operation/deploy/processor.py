@@ -13,14 +13,14 @@ from typing import List
 
 from logic.square.database.kernel.operation.execute import ExecutementSquareDiscoveryException
 
-from logic.square.database.kernel.operation.formation.discovery.exception.wrapper import OpeningSquareDiscoveryException
+from logic.square.database.kernel.operation.formation.discovery.exception.work import OpeningSquareDiscoveryException
 from logic.system import DeletionResult, InsertionResult, LoggingLevelRouter, SearchResult, ValidationResult
 from logic.square import (
     SquareContext, SquareStackCapacityFullException, Square, SquareStackFullException,
     SquareStackExecuteException, SquareStackService, SquareStackState
 )
 from logic.team import Team
-from logic.team.service.operation.deploy.exception.wrapper import DeployTeamException
+from logic.team.service.operation.deploy.exception.work import DeployTeamException
 from logic.token import Token, TokenBoardState, TokenService
 
 

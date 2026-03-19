@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .wrapper import NodePushException
+from .work import NodePushException
 from .duplicate import AddingDuplicateNodeException

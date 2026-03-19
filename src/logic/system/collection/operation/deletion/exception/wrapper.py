@@ -1,7 +1,7 @@
 # src/logic/system/collection/operation/deletion/exception/worker.py
 
 """
-Module: logic.system.collection.operation.deletion.exception.wrapper
+Module: logic.system.collection.operation.deletion.exception.work
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0

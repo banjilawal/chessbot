@@ -19,7 +19,7 @@ __all__ = [
 #======================# UNIQUE_AGENT_STACK_SERVICE EXCEPTION #======================#
 class UniqueAgentDataServiceException(AgentException, DatabaseException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Parent of exception raised by UniqueAgentDataService objects.

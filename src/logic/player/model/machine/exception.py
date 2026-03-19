@@ -17,7 +17,7 @@ __all__ = [
 #======================# MACHINE_PLAYER EXCEPTION #======================#
 class MachinePlayerException(PlayerException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Indicate an attribute, method, or operation organic to a MachinePlayer encountered a condition which

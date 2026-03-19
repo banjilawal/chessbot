@@ -14,4 +14,4 @@ None
 
 # Modules
 from .route import TokenBuildRouteException
-from .wrapper import TokenBuildException
+from .work import TokenBuildException

@@ -1,7 +1,7 @@
 # src/logic/square/service/visitation/exception/terminate/worker.py
 
 """
-Module: logic.square.service.visitation.exception.terminate.wrapper
+Module: logic.square.service.visitation.exception.terminate.work
 Author: Banji Lawal
 Created: 2026-02-22
 version: 1.0.0

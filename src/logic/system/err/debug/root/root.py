@@ -34,7 +34,7 @@ class DebugException(ChessException):
     1.  All caps, snake case description of the error with _EXCEPTION as the suffix.
     
     # DEFAULT MSG CONVENTION:
-    1.  Wrapper msg followed by a colon. Description of the error after the colon.
+    1.  Work msg followed by a colon. Description of the error after the colon.
     2.  The Syntax is: [Class] operation failed: [Description]
 
     Super Class:

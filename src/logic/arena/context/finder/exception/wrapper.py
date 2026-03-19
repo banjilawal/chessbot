@@ -1,7 +1,7 @@
 # src/logic/arena/finder/exception/worker.py
 
 """
-Module: logic.arena.finder.exception.wrapper
+Module: logic.arena.finder.exception.work
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -100,7 +100,7 @@ from logic.arena import ArenaException
 # ======================# ARENA_SEARCH_FAILURE #======================#
 class ArenaSearchException(ArenaException, SearchException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why a arena search operation failed. The exception chain

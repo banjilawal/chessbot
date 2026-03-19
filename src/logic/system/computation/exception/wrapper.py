@@ -1,7 +1,7 @@
 # src/logic/system/computation/exception/worker.py
 
 """
-Module: logic.system.computation.exception.wrapper
+Module: logic.system.computation.exception.work
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0

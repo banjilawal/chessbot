@@ -18,7 +18,7 @@ __all__ = [
 # ======================# CONTEXT_SERVICE EXCEPTION #======================#
 class ContextServiceException(ContextException, ServiceException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Parent of exceptions raised by ServiceContext objects.

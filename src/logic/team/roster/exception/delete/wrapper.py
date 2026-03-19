@@ -10,7 +10,7 @@ from logic.team import TeamRosterException
 # ======================# ROSTER_TOKEN_DELETION_FAILURE #======================#
 class TeamRosterTokenDeletionException(TeamRosterException, OperationException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why deleting a Roster member fails. The encapsulated exceptions create

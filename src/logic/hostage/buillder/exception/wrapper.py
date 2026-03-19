@@ -1,7 +1,7 @@
 # src/logic/hostage/builder/exception/worker.py
 
 """
-Module: logic.hostage.builder.exception.wrapper
+Module: logic.hostage.builder.exception.work
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

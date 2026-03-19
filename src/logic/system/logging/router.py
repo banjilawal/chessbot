@@ -80,7 +80,7 @@ class LoggingLevelRouter:
     def decorator(func: Callable[.., T]) -> Callable[.., T]:
 
       @wraps(func)
-      def wrapper(*args: Any, **kwargs: Any) -> T:
+      def work(*args: Any, **kwargs: Any) -> T:
         actual_context = context or (args[0] if args else func)
         method_name = func.__name__
         try:
@@ -90,5 +90,5 @@ class LoggingLevelRouter:
         except Exception as e:
           LogWriter.log_exception(actual_context, e)
           raise
-        return wrapper
+        return work
     return decorator

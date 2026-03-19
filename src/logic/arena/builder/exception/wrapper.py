@@ -1,7 +1,7 @@
 # src/logic/arena/builder/exception/worker.py
 
 """
-Module: logic.arena.builder.exception.wrapper
+Module: logic.arena.builder.exception.work
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

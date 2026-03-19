@@ -14,4 +14,4 @@ from debug import *
 
 
 # Modules
-from .wrapper import  ArenaValidationException
+from .work import  ArenaValidationException

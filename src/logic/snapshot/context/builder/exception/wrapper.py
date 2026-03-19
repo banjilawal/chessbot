@@ -1,7 +1,7 @@
 # src/logic/snapshotContext/context/builder/exception/worker.py
 
 """
-Module: logic.snapshotContext.context.builder.exception.wrapper
+Module: logic.snapshotContext.context.builder.exception.work
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

@@ -17,7 +17,7 @@ __all__ = [
 #======================# GAME_COLOR_VALIDATION EXCEPTION #======================#
 class InvalidGameColorException(GameColorException, ValidationException):
     """
-    Role:Exception Wrapper
+    Role:Exception Work
 
     Responsibilities:
     1.  Indicate a candidate failed a GameColor validation test.

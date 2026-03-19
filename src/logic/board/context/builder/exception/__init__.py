@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .wrapper import BoardContextBuildException
+from .work import BoardContextBuildException
 from .route import BoardContextExecutionRouteException

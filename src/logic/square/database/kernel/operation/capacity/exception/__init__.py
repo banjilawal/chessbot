@@ -14,4 +14,4 @@ None
 
 # Modules
 from .full import SquareStackCapacityFullException
-from .wrapper import SquareStackAnalysisException
+from .work import SquareStackAnalysisException

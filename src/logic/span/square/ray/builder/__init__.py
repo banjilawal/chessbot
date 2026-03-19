@@ -14,4 +14,4 @@ None
 
 # Modules
 from .builder import SquareRayBuilder
-from .wrapper import SquareRayBuildException
+from .work import SquareRayBuildException

@@ -13,7 +13,7 @@ version: 1.0.0
 None
 
 # Modules
-from .wrapper import TokenDeploymentProcessException
+from .work import TokenDeploymentProcessException
 from .duplicate import AddingDuplicateSquareException
 from .full import SquareStackFullException
 from .rank import SquareStackCapacityFullException

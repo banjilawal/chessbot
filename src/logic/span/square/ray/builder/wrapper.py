@@ -1,7 +1,7 @@
 # src/logic/ray/square/ray/builder/worker.py
 
 """
-Module: logic.ray.square.ray.builder.wrapper
+Module: logic.ray.square.ray.builder.work
 Author: Banji Lawal
 Created: 2026-03-11
 version: 1.0.0

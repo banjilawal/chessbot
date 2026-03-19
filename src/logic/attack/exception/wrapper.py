@@ -1,7 +1,7 @@
 # src/logic/attack/exception/worker.py
 
 """
-Module: logic.attack.exception.wrapper
+Module: logic.attack.exception.work
 Author: Banji Lawal
 Created: 2025-09-08
 Version: 1.0.0

@@ -14,4 +14,4 @@ None
 
 # Modules
 from .empty import DepartingEmptySquareException
-from .wrapper import SquareDepartureException
+from .work import SquareDepartureException

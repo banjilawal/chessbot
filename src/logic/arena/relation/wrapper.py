@@ -1,7 +1,7 @@
 # src/logic/arena/relation/worker.py
 
 """
-Module: logic.arena.relation.wrapper
+Module: logic.arena.relation.work
 Author: Banji Lawal
 Created: 2026-01-22
 version: 1.0.0
@@ -18,7 +18,7 @@ from logic.system import AnalysisException
 # ======================# ARENA_TEAM_RELATION_ANALYSIS_FAILURE #======================#
 class ArenaTeamAnalysisException(AnalysisException):
     """
-    Role:Exception Wrapper, Encapsulation, Error Chaining
+    Role:Exception Work, Encapsulation, Error Chaining
 
     Responsibilities:
     1.  Wrap any exception that kills the relation test process before the arena-team relationship

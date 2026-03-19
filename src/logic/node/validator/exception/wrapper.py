@@ -1,7 +1,7 @@
 # src/logic/node/validator/exception/worker.py
 
 """
-Module: logic.node.validator.exception.wrapper
+Module: logic.node.validator.exception.work
 Author: Banji Lawal
 Created: 2025-09-08
 Version: 1.0.0
