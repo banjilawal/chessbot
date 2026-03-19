@@ -1,7 +1,7 @@
-# src/logic/checkmate/post/check/__init__.py
+# src/logic/mate/post/check/__init__.py
 
 """
-Module: logic.checkmate.post/check
+Module: logic.mate.post/check
 Author: Banji Lawal
 Created: 2025-10-27
 version: 1.0.0

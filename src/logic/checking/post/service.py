@@ -1,7 +1,7 @@
-# src/logic/checkmate/post/service.py
+# src/logic/mate/post/service.py
 
 """
-Module: logic.checkmate.post.service
+Module: logic.mate.post.service
 Author: Banji Lawal
 Created: 2025-10-24
 version: 1.0.0

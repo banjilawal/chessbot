@@ -10,7 +10,7 @@ version: 1.0.0
 # =========== TOKEN.SERVICE.OPERATION.CHECKED PACKAGE CONTENTS ===========#
 
 # Packages
-from logic.token.service.operation.check.build.exception import *
+from .build import *
 
 # Modules
-from logic.token.service.operation.check.build.process import CheckKingProcess
+from .check import Check

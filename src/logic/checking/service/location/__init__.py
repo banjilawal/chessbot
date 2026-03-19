@@ -1,7 +1,7 @@
-# src/logic/checkmate/location/__init__.py
+# src/logic/mate/location/__init__.py
 
 """
-Module: logic.checkmate.location
+Module: logic.mate.location
 Author: Banji Lawal
 Created: 2025-10-24
 version: 1.0.0

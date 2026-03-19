@@ -1,7 +1,7 @@
-# src/logic/checkmate/post/check/validate.py
+# src/logic/mate/post/check/validate.py
 
 """
-Module: logic.checkmate.post.check.validate
+Module: logic.mate.post.check.validate
 Author: Banji Lawal
 Created: 2025-10-27
 version: 1.0.0

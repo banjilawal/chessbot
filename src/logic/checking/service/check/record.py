@@ -1,7 +1,7 @@
-# src/logic/checkmate/check.py
+# src/logic/mate/check.py
 
 """
-Module: logic.checkmate.check.check
+Module: logic.mate.check.check
 Author: Banji Lawal
 Created: 2025-10-24
 version: 1.0.0

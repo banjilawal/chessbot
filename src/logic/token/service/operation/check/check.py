@@ -7,12 +7,13 @@ Created: 2026-03-14
 version: 1.0.0
 """
 
+from __future__ import annotations
 
 from logic.square import Square
 from logic.token import KingToken
 
 
-class KingCheck:
+class Check:
     
     _id: int
     _king: KingToken
@@ -50,7 +51,7 @@ class KingCheck:
     def __eq__(self, other):
         if other == self: return True
         if other is None: return False
-        if isinstance(other, KingCheck):
+        if isinstance(other, Check):
             return (
                     other.king == self.king and
                     other.attack_source == self._attack_source and

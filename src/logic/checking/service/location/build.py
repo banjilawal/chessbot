@@ -1,7 +1,7 @@
-# src/logic/checkmate/post/check/process.py
+# src/logic/mate/post/check/process.py
 
 """
-Module: logic.checkmate.post.check.builder
+Module: logic.mate.post.check.builder
 Author: Banji Lawal
 Created: 2025-10-27
 version: 1.0.0

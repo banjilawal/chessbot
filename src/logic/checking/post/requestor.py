@@ -1,7 +1,7 @@
-# src/logic/checkmate/post/requestor.py
+# src/logic/mate/post/requestor.py
 
 """
-Module: logic.checkmate.post.requestor
+Module: logic.mate.post.requestor
 Author: Banji Lawal
 Created: 2025-10-24
 version: 1.0.0

@@ -87,7 +87,7 @@ class BoardActorValidationProcess(ValidationProcess[Tuple[Piece, Board]]):
         )
 
       # A captured combatant cannot be a TravelEvent actor_candidate. No need for validating a checkmated
-      # occupation as an actor_candidate because the game ends when a occupation is in checkmate.
+      # occupation as an actor_candidate because the game ends when a occupation is in mate.
       if isinstance(actor, CombatantPiece) and cast(CombatantPiece, actor).victor is not None:
         return ValidationResult.failure(
           CapturedActorCannotMoveException(f"{method}: {CapturedActorCannotMoveException.MSG}")

@@ -1,7 +1,7 @@
-# src/logic/checkmate/service.py
+# src/logic/mate/service.py
 
 """
-Module: logic.checkmate.table
+Module: logic.mate.table
 Author: Banji Lawal
 Created: 2025-10-24
 version: 1.0.0

@@ -10,11 +10,14 @@ version: 1.0.0
 # =========== TOKEN.SERVICE.OPERATION PACKAGE CONTENTS ===========#
 
 # Packages
+from .build import *
 from .coord import *
-from .checkmate import *
+from .check import *
+from .mate import *
 from .promotion import *
 from .deployment import *
 from .analysis import *
+from .validation import *
 
 # Modules
 from .controller import TokenOpsController
