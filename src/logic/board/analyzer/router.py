@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.board import BoardSquareRelationAnalyzer, BoardTeamRelationAnalyzer
+from logic.board import BoardSquareRelationAnalysis, BoardTeamRelationAnalysis
 from logic.board.analyzer.context import BoardRelationAnalysisContext
 from logic.system import LoggingLevelRouter, RelationReport
 
@@ -23,20 +23,20 @@ class BoardRelationAnalyzer:
         1.  Provide a single entry point for transactions TokenStackService runs.
 
     Attributes:
-        team_relation: BoardTeamRelationAnalyzer
-        square_relation: BoardSquareRelationAnalyzer
+        team_relation: BoardTeamRelationAnalysis
+        square_relation: BoardSquareRelationAnalysis
 
     Provides:
          -  analyze(self, context: BoardRelationAnalysisContext) -> RelationReport
     Parent:
     """
-    _team_relation: BoardTeamRelationAnalyzer
-    _square_relation: BoardSquareRelationAnalyzer
+    _team_relation: BoardTeamRelationAnalysis
+    _square_relation: BoardSquareRelationAnalysis
     
     def __init__(
             self,
-            team_relation: BoardTeamRelationAnalyzer = BoardTeamRelationAnalyzer(),
-            square_relation: BoardSquareRelationAnalyzer = BoardSquareRelationAnalyzer(),
+            team_relation: BoardTeamRelationAnalysis = BoardTeamRelationAnalysis(),
+            square_relation: BoardSquareRelationAnalysis = BoardSquareRelationAnalysis(),
     ):
         self._square_relation = square_relation
         self._team_relation = team_relation
@@ -45,12 +45,12 @@ class BoardRelationAnalyzer:
     def analyze(self, context: BoardRelationAnalysisContext) -> RelationReport:
         
         if context.team is not None:
-            return self._team_relation.analyze(
+            return self._team_relation.execute(
                 candidate_primary=context.board,
                 candidate_secondary=context.team,
             )
         
-        return self._square_relation.analyze(
+        return self._square_relation.execute(
             candidate_primary=context.board,
             candidate_secondary=context.square,
         )

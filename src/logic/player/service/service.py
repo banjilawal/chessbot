@@ -11,7 +11,7 @@ version: 1.0.0
 from typing import cast
 
 from logic.system import DeletionResult, IntegrityService, InsertionResult, LoggingLevelRouter, id_emitter
-from logic.player import Player, PlayerFactory, PlayerServiceException, PlayerTeamRelationAnalyzer, PlayerValidator
+from logic.player import Player, PlayerFactory, PlayerServiceException, PlayerTeamRelationAnalysis, PlayerValidator
 from logic.team import (
     AddingDuplicateTeamException, PoppingEmptyTeamStackException, Team, PoppingTeamStackFailedException, TeamService,
     TeamInsertionException,
@@ -37,7 +37,7 @@ class PlayerService(IntegrityService[Player]):
         *   See IntegrityService class for inherited attributes.
     """
     DEFAULT_NAME = "PlayerService"
-    _player_team_relation_analyzer: PlayerTeamRelationAnalyzer
+    _player_team_relation_analyzer: PlayerTeamRelationAnalysis
     
     def __init__(
             self,
@@ -45,7 +45,7 @@ class PlayerService(IntegrityService[Player]):
             id: int = id_emitter.service_id,
             builder: PlayerFactory = PlayerFactory(),
             validator: PlayerValidator = PlayerValidator(),
-            player_team_relation_analyzer: PlayerTeamRelationAnalyzer = PlayerTeamRelationAnalyzer(),
+            player_team_relation_analyzer: PlayerTeamRelationAnalysis = PlayerTeamRelationAnalysis(),
     ):
         """
         # ACTION:
@@ -74,7 +74,7 @@ class PlayerService(IntegrityService[Player]):
         return cast(PlayerValidator, self.entity_validator)
     
     @property
-    def player_team_relation_analyzer(self) -> PlayerTeamRelationAnalyzer:
+    def player_team_relation_analyzer(self) -> PlayerTeamRelationAnalysis:
         return self._player_team_relation_analyzer
     
     @LoggingLevelRouter.monitor
@@ -168,7 +168,7 @@ class PlayerService(IntegrityService[Player]):
         """
         method = "PlayerService.push_team_to_player"
         
-        relation = self.player_team_relation_analyzer.analyze(
+        relation = self.player_team_relation_analyzer.execute(
             candidate_primary=player,
             candidate_secondary=team,
             owner_validator=self.validator,

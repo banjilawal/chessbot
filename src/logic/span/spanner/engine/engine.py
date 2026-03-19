@@ -1,4 +1,4 @@
-# src/logic/span/span/computer.py
+# src/logic/span/span/compute.py
 
 """
 Module: logic.span.span.computer

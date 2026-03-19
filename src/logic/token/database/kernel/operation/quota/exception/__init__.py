@@ -14,4 +14,4 @@ None
 
 # Modules
 from .full import RankQuotaFullException
-from .wrapper import RankQuotaAnalyzerFailureException
+from .wrapper import RankQuotaAnalysisException

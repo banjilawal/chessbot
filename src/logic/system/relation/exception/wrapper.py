@@ -1,35 +1,35 @@
-# src/logic/system/computation/exception/wrapper.py
+# src/logic/system/relation/exception/wrapper.py
 
 """
-Module: logic.system.computation.exception.wrapper
+Module: logic.system.relation.exception.wrapper
 Author: Banji Lawal
-Created: 2025-11-18
-Version: 1.0.0
+Created: 2026-01-18
+version: 1.0.0
 """
 
 from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# COMPUTATION_FAILURE #======================#
-    "ComputationException",
+    # ======================# RELATION_ANALYSIS_FAILURE #======================#
+    "RelationAnalysisException",
 ]
 
 from logic.system import OperationException
 
 
-# ======================# COMPUTATION_FAILURE #======================#
-class ComputationException(OperationException):
+# ======================# RELATION_ANALYSIS_FAILURE #======================#
+class RelationAnalysisException(OperationException):
     """
     Role:
-        - Worker Method Identification
-        - Exception Chain Layer 1
-        - Exception Messaging
+        -   Worker Method Identification
+        -   Exception Chain Layer 1,
+        -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate a computation was unsuccessful and did not produce a result.
-        2.  Identify the method where the failure occurred.
-        
+        1.  Indicate a RelationAnalysis process was aborted because of an error.
+        2.  Identify the process' method where the failure occurred.
+
     Attributes:
         op: Optional[str]
         msg: Optional[str]
@@ -41,13 +41,13 @@ class ComputationException(OperationException):
 
     Provides:
 
-    Super:
+    Super Class:
         OperationException
     """
-    OP = "Computation"
-    RSLT_TYPE = "ComputationResult"
-    ERR_CODE = "COMPUTATION_FAILURE"
-    MSG = "Computation method failed."
+    OP = "RelationAnalysis"
+    RSLT_TYPE = "RelationAnalysisResult"
+    ERR_CODE = "RELATION_ANALYSIS_FAILURE"
+    MSG = "RelationAnalysis experienced an error. Analysis aborted."
     
     def __init__(
             self,
@@ -82,3 +82,8 @@ class ComputationException(OperationException):
             err_code=err_code,
             rslt_type=rslt_type,
         )
+
+
+
+    
+

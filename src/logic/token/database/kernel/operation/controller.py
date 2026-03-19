@@ -9,10 +9,10 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.token import RankQuotaAnalyzer, TokenCollisionDetector, TokenStackCrudManager
+from logic.token import RankQuotaAnalysis, TokenCollisionDetector, TokenStackCrudManager
 
 
-class TokenStackOpsDispatcher:
+class TokenStackOpsController:
     """
     Role:
         - Utilities Provider
@@ -22,20 +22,20 @@ class TokenStackOpsDispatcher:
 
     Attributes:
         crud: TokenStackCrudController
-        rank_quota_analyzer: RankQuotaAnalyzer
+        rank_quota_analyzer: RankQuotaAnalysis
         collision_detector: TokenCollisionDetector
 
     Provides:
     Parent:
     """
     _crud: TokenStackCrudManager
-    _rank_quota_analyzer: RankQuotaAnalyzer
+    _rank_quota_analyzer: RankQuotaAnalysis
     _collision_detector: TokenCollisionDetector
     
     def __init__(
             self,
             crud: TokenStackCrudManager = TokenStackCrudManager(),
-            rank_quota_analyzer: RankQuotaAnalyzer = RankQuotaAnalyzer(),
+            rank_quota_analyzer: RankQuotaAnalysis = RankQuotaAnalysis(),
             collision_detector: TokenCollisionDetector = TokenCollisionDetector(),
     ):
         self._crud = crud
@@ -47,7 +47,7 @@ class TokenStackOpsDispatcher:
         return self._crud
     
     @property
-    def rank_quota_analyzer(self) -> RankQuotaAnalyzer:
+    def rank_quota_analyzer(self) -> RankQuotaAnalysis:
         return self._rank_quota_analyzer
     
     @property

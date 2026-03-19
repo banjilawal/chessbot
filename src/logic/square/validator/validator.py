@@ -203,13 +203,13 @@ class SquareValidator(Validator[Square]):
             )
         
         # --- Request an analysis of the relation between the board and square. ---#
-        board_square_relation = board_service.board_square_relation_analyzer.analyze(
+        board_square_relation = board_service.board_square_relation_analyzer.execute(
             candidate_primary=square.board,
             candidate_satellite=square,
         )
 
         # Handle the case that, the analyzer did not complete the request..
-        if board_square_relation.is_analyzer_failure:
+        if board_square_relation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidationException(

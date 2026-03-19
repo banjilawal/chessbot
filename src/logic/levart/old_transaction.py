@@ -261,7 +261,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
         exception=OccupationEventException(f"{method}: {OccupationEventException.MSG}")
       )
 
-    directive.actor.positions.push(directive.friend.position)
+    directive.actor.positions.execute(directive.friend.position)
     if not directive.actor.current_position == directive.friend.position:
       # Rollback all changes in reverse order
       directive.actor.positions.undo_push()

@@ -1,4 +1,4 @@
-# src/logic/span/coord/ray/diagonal/computer.py
+# src/logic/span/coord/ray/diagonal/compute.py
 
 """
 Module: logic.span.coord.ray.diagonal.computer

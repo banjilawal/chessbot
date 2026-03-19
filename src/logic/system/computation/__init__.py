@@ -14,4 +14,4 @@ from .result import *
 from .exception import *
 
 # Modules
-from .computer import Computer
+from .computer import Compute

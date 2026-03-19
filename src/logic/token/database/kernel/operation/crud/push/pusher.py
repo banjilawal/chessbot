@@ -12,12 +12,12 @@ from __future__ import annotations
 from logic.rank import RankService
 from logic.system import InsertionResult, LoggingLevelRouter
 from logic.token import (
-    RankQuotaAnalyzer, RankQuotaFullException, Token, TokenCollisionDetector, TokenStackFullException,
+    RankQuotaAnalysis, RankQuotaFullException, Token, TokenCollisionDetector, TokenStackFullException,
     TokenStackPushException, TokenStackService, TokenStackState
 )
 
 
-class TokenStackPusher:
+class TokenStackPushPusher:
     """
     Role:
         - Transaction Worker
@@ -31,12 +31,12 @@ class TokenStackPusher:
     Attributes:
 
     Provides:
-        -   push(
+        -   execute(
                     cls,
                     token: Token,
                     token_stack: TokenStackService,
                     rank_service: RankService = RankService(),
-                    rank_quota_analyzer: RankQuotaAnalyzer = RankQuotaAnalyzer(),
+                    rank_quota_analyzer: RankQuotaAnalysis = RankQuotaAnalysis(),
                     collision_detector: TokenCollisionDetector = TokenCollisionDetector(),
             ) -> InsertionResult
 
@@ -45,12 +45,12 @@ class TokenStackPusher:
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def push(
+    def execute(
             cls,
             token: Token,
             token_stack: TokenStackService,
             rank_service: RankService = RankService(),
-            rank_quota_analyzer: RankQuotaAnalyzer = RankQuotaAnalyzer(),
+            rank_quota_analyzer: RankQuotaAnalysis = RankQuotaAnalysis(),
             collision_detector: TokenCollisionDetector = TokenCollisionDetector(),
     ) -> InsertionResult[bool]:
         """
@@ -64,7 +64,7 @@ class TokenStackPusher:
            token: Token
            rank_service: RankService
            token_stack: TokenStackService
-           rank_quota_analyzer: RankQuotaAnalyzer
+           rank_quota_analyzer: RankQuotaAnalysis
            collision_detector: TokenCollisionDetector
         Returns:
             InsertionResult

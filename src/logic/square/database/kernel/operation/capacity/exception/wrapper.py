@@ -12,14 +12,14 @@ from typing import Optional
 
 __all__ = [
     # ======================# RANK_QUOTA_ANALYSIS_FAILURE #======================#
-    "SquareStackAnalyzerFailureException",
+    "SquareStackAnalysisException",
 ]
 
-from logic.system import AnalyzerFailureException
+from logic.system import AnalysisException
 
 
 # ======================# RANK_QUOTA_ANALYSIS_FAILURE #======================#
-class SquareStackAnalyzerFailureException(AnalyzerFailureException):
+class SquareStackAnalysisException(AnalysisException):
     """
     Role:
         - Worker Method Identification
@@ -41,7 +41,7 @@ class SquareStackAnalyzerFailureException(AnalyzerFailureException):
     Provides:
 
     Super:
-        AnalyzerFailureException
+        AnalysisException
     """
     OP = "Computation"
     RSLT_TYPE = "ComputationResult"

@@ -14,7 +14,7 @@ from .coord import *
 from .checkmate import *
 from .promotion import *
 from .deployment import *
-from .analyzer import *
+from .analysis import *
 
 # Modules
-from .dispatcher import TokenOpsDispatcher
+from .controller import TokenOpsController

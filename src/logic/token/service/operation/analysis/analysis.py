@@ -10,17 +10,18 @@ version: 1.0.0
 from __future__ import annotations
 from typing import cast
 
-from logic.system import LoggingLevelRouter, RelationAnalyzer, RelationReport
+from logic.system import LoggingLevelRouter, RelationReport
+from logic.system.relation.analysis import RelationAnalysis
 from logic.token import (
     ReadinessStateNullException, TokenException, ReadinessState, TokenReadniessAnalysisException, CombatantToken,
     KingToken, Token, TokenValidator
 )
 
-class TokenReadinessAnalyzer(RelationAnalyzer[ReadinessState, Token]):
+class TokenReadinessAnalysis(RelationAnalysis[ReadinessState, Token]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def analyze(
+    def execute(
             cls,
             candidate_satellite: Token,
             token_validator: TokenValidator = TokenValidator(),

@@ -147,7 +147,7 @@ class SquareStackService(StackService[Square]):
         method = "SquareStackService.push"
         
         # --- Handoff the push responsibility to _handler ---#
-        insertion_result = self._handler.crud.push(stack=self, item=item)
+        insertion_result = self._handler.crud.execute(stack=self, item=item)
     
         # Handle the case that, the search is not completed.
         if insertion_result.is_failure:

@@ -11,11 +11,11 @@ from __future__ import annotations
 from typing import cast
 
 from logic.token import Token, TokenService, TokenContext
-from logic.system import LoggingLevelRouter, RelationReport, RelationAnalyzer
+from logic.system import LoggingLevelRouter, RelationReport, RelationAnalysis
 from logic.team import Team, TeamRosterRelationAnalysisException, TeamValidator
 
 
-class RosterRelationAnalyzer(RelationAnalyzer[Team, Token]):
+class RosterRelationAnalysis(RelationAnalysis[Team, Token]):
     """
     Role:Reporting, Test for Relationship
 
@@ -24,7 +24,7 @@ class RosterRelationAnalyzer(RelationAnalyzer[Team, Token]):
         completely bidirectional.
 
     Super Class:
-        *   RelationAnalyzer
+        *   RelationAnalysis
 
     Provides:
 
@@ -34,7 +34,7 @@ class RosterRelationAnalyzer(RelationAnalyzer[Team, Token]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def analyze(
+    def execute(
             cls,
             candidate_primary: Team,
             candidate_satellite: Token,
@@ -63,7 +63,7 @@ class RosterRelationAnalyzer(RelationAnalyzer[Team, Token]):
         Raises:
             *   TeamRosterRelationAnalysisException
         """
-        method = "RosterRelationAnalyzer.test"
+        method = "RosterRelationAnalysis.test"
         
         # Process the possible team_validation outcomes.
         team_validation = team_validator.validate(candidate_primary)

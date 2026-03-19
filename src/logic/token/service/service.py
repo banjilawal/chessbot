@@ -16,7 +16,7 @@ from logic.coord import Coord, CoordService
 from logic.rank import Rank, RankService
 from logic.schema import SchemaService
 from logic.system import DeletionResult, IdFactory, InsertionResult, IntegrityService, LoggingLevelRouter, UpdateResult
-from logic.token import PawnToken, Token, TokenFactory, TokenOpsDispatcher, TokenServiceException, TokenValidator
+from logic.token import PawnToken, Token, TokenFactory, TokenOpsController, TokenServiceException, TokenValidator
 
 
 class TokenService(IntegrityService[Token]):
@@ -38,7 +38,7 @@ class TokenService(IntegrityService[Token]):
         name: name
         builder: TokenBuilder
         validator: TokenValidator
-        dispatcher: TokenOpsDispatcher
+        controller: TokenOpsController
 
     Provides:
         -   pop_coord_from_token(token) -> DeletionResult[Coord]
@@ -67,7 +67,7 @@ class TokenService(IntegrityService[Token]):
         IntegrityService
     """
     SERVICE_NAME = "TokenService"
-    _dispatcher: TokenOpsDispatcher
+    _controller: TokenOpsController
     
     def __init__(
             self,
@@ -75,7 +75,7 @@ class TokenService(IntegrityService[Token]):
             builder: TokenFactory = TokenFactory(),
             validator: TokenValidator = TokenValidator(),
             id: int = IdFactory.next_id(class_name="TokenService"),
-            dispatcher: TokenOpsDispatcher = TokenOpsDispatcher(),
+            controller: TokenOpsController = TokenOpsController(),
     ):
         """
         Args:
@@ -83,10 +83,10 @@ class TokenService(IntegrityService[Token]):
             name: str
             builder: TokenFactory
             validator: TokenValidator
-            dispatcher: TokenOpsDispatcher
+            controller: TokenOpsController
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
-        self._dispatcher = dispatcher
+        self._controller = controller
     
     @property
     def builder(self) -> TokenFactory:
@@ -97,8 +97,8 @@ class TokenService(IntegrityService[Token]):
         return cast(TokenValidator, self.entity_validator)
     
     @property
-    def dispatcher(self) -> TokenOpsDispatcher:
-        return self._dispatcher
+    def controller(self) -> TokenOpsController:
+        return self._controller
     
     @LoggingLevelRouter.monitor
     def pop_coord_from_token(self, token) -> DeletionResult[Coord]:
@@ -116,8 +116,8 @@ class TokenService(IntegrityService[Token]):
         """
         method = f"{self.__class__.__name__}.pop_coord_from_token"
         
-        #--- Forward the request to the dispatcher. ---#
-        popping_coord_result = self._dispatcher.coord.undo_current_token_position(
+        #--- Forward the request to the controller. ---#
+        popping_coord_result = self._controller.position.pop.execute(
             token=token,
             token_validator=self.validator,
         )
@@ -159,8 +159,8 @@ class TokenService(IntegrityService[Token]):
         """
         method = f"{self.__class__.__name__}.push_coord_to_token"
         
-        # --- Forward the request to the dispatcher. ---#
-        insertion_result = self._dispatcher.coord.push_coord(
+        # --- Forward the request to the controller. ---#
+        insertion_result = self._controller.position.push.execute(
             token=token,
             coord=coord,
             coord_service=coord_service,
@@ -207,9 +207,9 @@ class TokenService(IntegrityService[Token]):
         """
         method = f"{self.__class__.__name__}.promote_pawn"
         
-        # --- Forward the request to the dispatcher. ---#
+        # --- Forward the request to the controller. ---#
         pre_update_pawn_token = deepcopy(pawn_token)
-        promotion_result = self._dispatcher.pawn_promotion.execute(
+        promotion_result = self._controller.pawn_promotion.execute(
             rank=rank,
             pawn_token=pawn_token,
             rank_service=rank_service,
@@ -251,9 +251,9 @@ class TokenService(IntegrityService[Token]):
         """
         method = f"{self.__class__.__name__}.deploy_on_board"
         
-        # --- Forward the request to the dispatcher. ---#
+        # --- Forward the request to the controller. ---#
         pre_update_token = deepcopy(token)
-        deployment_result = self._dispatcher.deployment.execute(
+        deployment_result = self._controller.deployment.execute(
             token=token,
             token_validator=self.validator,
         )

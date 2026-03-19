@@ -12,14 +12,14 @@ from typing import Any, Optional
 
 __all__ = [
     # ======================# BOARD_TEAM_RELATION_ANALYSIS_FAILURE #======================#
-    "BoardTeamAnalyzerFailureException",
+    "BoardTeamAnalysisException",
 ]
 
-from logic.system import AnalyzerFailureException
+from logic.system import AnalysisException
 
 
 # ======================# BOARD_TEAM_RELATION_ANALYSIS_FAILURE #======================#
-class BoardTeamAnalyzerFailureException(AnalyzerFailureException):
+class BoardTeamAnalysisException(AnalysisException):
     """
     Role:
         - Worker Method Identification

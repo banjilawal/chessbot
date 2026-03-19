@@ -12,8 +12,7 @@ version: 1.0.0
 # Packages
 from .report import *
 from .analyzer import *
-from .debug import *
+from logic.system.relation.exception.debug import *
 from .exception import *
 
 # Modules
-from .analyzer import RelationAnalyzer

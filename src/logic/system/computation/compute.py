@@ -18,10 +18,10 @@ from logic.system.computation import ComputationResult
 T = TypeVar("T")
 
 
-class Computer(ABC, Generic[T]):
+class Compute(ABC, Generic[T]):
     
     @classmethod
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def compute(cls, *args, **kwargs) -> ComputationResult[T]:
+    def execute(cls, *args, **kwargs) -> ComputationResult[T]:
         pass

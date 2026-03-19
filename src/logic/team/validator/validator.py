@@ -188,7 +188,7 @@ class TeamValidator(Validator[Team]):
         method = "TeamValidator._verify_team_owner"
         
         # Handle the case that, either team.owner is not certified as safe or the analysis aborts.
-        owner_team_relation = player_service.player_team_relation_analyzer.analyze(
+        owner_team_relation = player_service.player_team_relation_analyzer.execute(
             candidate_primary=team.owner,
             candidate_satellite=team,
         )
@@ -252,7 +252,7 @@ class TeamValidator(Validator[Team]):
         method = "TeamValidator._verify_team_board"
         
         # Handle the case that, either team.board is not certified as safe or the analysis aborts.
-        board_team_relation = board_service.board_team_relation_analyzer.analyze(
+        board_team_relation = board_service.board_team_relation_analyzer.execute(
             candidate_primary=team.board,
             candidate_satellite=team,
         )

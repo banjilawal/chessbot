@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.token import TokenStackPopper, TokenStackPusher
+from logic.token import TokenStackPopper, TokenStackPushPusher
 
 
 class TokenStackCrudController:
@@ -30,7 +30,7 @@ class TokenStackCrudController:
         -   push(
                     token: Token,
                     token_stack: TokenStackService,
-                    rank_quota_analyzer: RankQuotaAnalyzer = RankQuotaAnalyzer(),
+                    rank_quota_analyzer: RankQuotaAnalysis = RankQuotaAnalysis(),
                     collision_detector: TokenCollisionDetector = TokenCollisionDetector(),
             ) -> InsertionResult
 
@@ -38,12 +38,12 @@ class TokenStackCrudController:
     """
     
     _popper: TokenStackPopper
-    _pusher: TokenStackPusher
+    _pusher: TokenStackPushPusher
     
     def __init__(
             self,
             popper: TokenStackPopper = TokenStackPopper(),
-            pusher: TokenStackPusher = TokenStackPusher(),
+            pusher: TokenStackPushPusher = TokenStackPushPusher(),
     ):
         self._popper = popper
         self._pusher = pusher
@@ -53,6 +53,6 @@ class TokenStackCrudController:
         return self._popper
     
     @property
-    def pusher(self) -> TokenStackPusher:
+    def pusher(self) -> TokenStackPushPusher:
         return self._pusher
     

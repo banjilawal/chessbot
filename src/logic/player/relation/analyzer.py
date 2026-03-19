@@ -12,11 +12,11 @@ from typing import cast
 from logic.player import Player, PlayerValidator
 from logic.player.relation import PlayerTeamAnalysisException
 from logic.team import Team, TeamContext, TeamService
-from logic.system import LoggingLevelRouter, RelationReport, RelationAnalyzer
+from logic.system import LoggingLevelRouter, RelationReport, RelationAnalysis
 
 
 
-class PlayerTeamRelationAnalyzer(RelationAnalyzer[Player, Team]):
+class PlayerTeamRelationAnalysis(RelationAnalysis[Player, Team]):
     """
     Role:Reporting, Test for Relationship
 
@@ -25,7 +25,7 @@ class PlayerTeamRelationAnalyzer(RelationAnalyzer[Player, Team]):
     2.  If the testing was not completed send an exception chain to the caller.
 
     Super Class:
-        *   RelationAnalyzer
+        *   RelationAnalysis
 
     Provides:
 
@@ -36,7 +36,7 @@ class PlayerTeamRelationAnalyzer(RelationAnalyzer[Player, Team]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def analyze(
+    def execute(
             cls,
             candidate_satellite: Team,
             candidate_primary: Player,

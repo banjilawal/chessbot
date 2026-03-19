@@ -12,7 +12,8 @@ version: 1.0.0
 # Packages
 from .crud import *
 from .quota import *
+from .deploy import *
 from .collision import *
 
 # Modules
-from .dispatcher import TokenStackOpsDispatcher
+from .controller import TokenStackOpsController

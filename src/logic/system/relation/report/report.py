@@ -85,7 +85,7 @@ class RelationReport:
         )
     
     @property
-    def is_analyzer_failure(self) -> bool:
+    def is_failure(self) -> bool:
         return (
                 self._exception is not None and
                 self._primary is None and
@@ -97,7 +97,7 @@ class RelationReport:
         )
     
     @property
-    def is_analyzer_timed_out(self) -> bool:
+    def is_timed_out(self) -> bool:
         return (
                 self._exception is not None and
                 self._primary is None and
@@ -109,7 +109,7 @@ class RelationReport:
         )
     
     @classmethod
-    def analyzer_failure(cls, exception: Exception) -> RelationReport:
+    def failure(cls, exception: Exception) -> RelationReport:
         return RelationReport(
             primary=None,
             satellite=None,
@@ -118,7 +118,7 @@ class RelationReport:
         )
     
     @classmethod
-    def analyzer_timed_out(cls, exception: Exception) -> RelationReport:
+    def timed_out(cls, exception: Exception) -> RelationReport:
         return RelationReport(
             primary=None,
             satellite=None,

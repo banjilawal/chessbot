@@ -10,11 +10,11 @@ version: 1.0.0
 from typing import cast
 
 from logic.team import Team, TeamService
-from logic.system import LoggingLevelRouter, RelationAnalyzer, RelationReport
-from logic.board import Board, BoardTeamAnalyzerFailureException, BoardValidator
+from logic.system import LoggingLevelRouter, RelationAnalysis, RelationReport
+from logic.board import Board, BoardTeamAnalysisException, BoardValidator
 
 
-class BoardTeamRelationAnalyzer(RelationAnalyzer[Board, Team]):
+class BoardTeamRelationAnalysis(RelationAnalysis[Board, Team]):
     """
     Role:
         - Relation Analyzer
@@ -38,7 +38,7 @@ class BoardTeamRelationAnalyzer(RelationAnalyzer[Board, Team]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def analyze(
+    def execute(
             cls,
             candidate_primary: Board,
             candidate_satellite: Team,
@@ -63,7 +63,7 @@ class BoardTeamRelationAnalyzer(RelationAnalyzer[Board, Team]):
         Returns:
             RelationReport[Board, Team]
         Raises:
-            BoardTeamAnalyzerFailureException
+            BoardTeamAnalysisException
         """
         method = f"{cls.__name__}.analyze"
         
@@ -71,10 +71,10 @@ class BoardTeamRelationAnalyzer(RelationAnalyzer[Board, Team]):
         board_validation = board_validator.validate(candidate_primary)
         if board_validation.is_failure:
             # Return the exception chain on failure.
-            return RelationReport.analyzer_failure(
-                BoardTeamAnalyzerFailureException(
-                    msg=BoardTeamAnalyzerFailureException.MSG,
-                    err_code=BoardTeamAnalyzerFailureException.ERR_CODE,
+            return RelationReport.failure(
+                BoardTeamAnalysisException(
+                    msg=BoardTeamAnalysisException.MSG,
+                    err_code=BoardTeamAnalysisException.ERR_CODE,
                     ex=board_validation.exception,
                 )
             )
@@ -85,10 +85,10 @@ class BoardTeamRelationAnalyzer(RelationAnalyzer[Board, Team]):
         team_validation = team_service.validator.validate(candidate_satellite)
         if team_validation.is_failure:
             # Return the exception chain on failure.
-            return RelationReport.analyzer_failure(
-                BoardTeamAnalyzerFailureException(
-                    msg=BoardTeamAnalyzerFailureException.MSG,
-                    err_code=BoardTeamAnalyzerFailureException.ERR_CODE,
+            return RelationReport.failure(
+                BoardTeamAnalysisException(
+                    msg=BoardTeamAnalysisException.MSG,
+                    err_code=BoardTeamAnalysisException.ERR_CODE,
                     ex=team_validation.exception,
                 )
             )

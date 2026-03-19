@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .analyzer import ArenaTeamRelationAnalyzer
+from .analyzer import ArenaTeamRelationAnalysis
 from .wrapper import ArenaTeamAnalysisException

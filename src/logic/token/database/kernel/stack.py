@@ -14,7 +14,7 @@ from logic.system import (
      SearchResult, StackService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, IdFactory
 )
 from logic.token import (
-    Token, TokenContext, TokenContextService, TokenService, TokenStackOpsDispatcher, TokenStackServiceException,
+    Token, TokenContext, TokenContextService, TokenService, TokenStackOpsController, TokenStackServiceException,
     TokenStackState
 )
 
@@ -41,7 +41,7 @@ class TokenStackService(StackService[Token]):
         stack: List[Token]
         service: TokenService
         state: TokenStackState
-        dispatcher: TokenStackOpsDispatcher
+        dispatcher: TokenStackOpsController
         context_service: TokenContextService
 
     Provides:
@@ -58,7 +58,7 @@ class TokenStackService(StackService[Token]):
         -   pop() -> DeletionResult[T]
         -   delete_by_id(id: int) -> DeletionResult[T]
         -   query(dataset: List[T], context: Context[T]) -> SearchResult[List[T]]
-        -   operation() -> TokenStackOpsDispatcher
+        -   operation() -> TokenStackOpsController
         -   is_getting_ready_for_deployment() -> bool
         -   is_ready_for_deployment() -> bool
         -   is_being_deployed() -> bool
@@ -74,7 +74,7 @@ class TokenStackService(StackService[Token]):
     _stack: List[Token]
     _service: TokenService
     _state: TokenStackState
-    _dispatcher: TokenStackOpsDispatcher
+    _dispatcher: TokenStackOpsController
     _context_service: TokenContextService
     
     def __init__(
@@ -84,7 +84,7 @@ class TokenStackService(StackService[Token]):
             service: TokenService = TokenService(),
             id: int = IdFactory.next_id(class_name="TokenStackService"),
             context_service: TokenContextService = TokenContextService(),
-            dispatcher: TokenStackOpsDispatcher = TokenStackOpsDispatcher(),
+            dispatcher: TokenStackOpsController = TokenStackOpsController(),
     ):
         """
         Args:
@@ -92,7 +92,7 @@ class TokenStackService(StackService[Token]):
             name: str
             capacity: int
             service: TokenService
-            dispatcher: TokenStackOpsDispatcher
+            dispatcher: TokenStackOpsController
             context_service: TokenContextService
         """
         super().__init__(id=id, name=name,)
@@ -144,7 +144,7 @@ class TokenStackService(StackService[Token]):
         return self._context_service
     
     @property
-    def operation(self) -> TokenStackOpsDispatcher:
+    def operation(self) -> TokenStackOpsController:
         return self._dispatcher
     
     @property
@@ -226,7 +226,7 @@ class TokenStackService(StackService[Token]):
         method = f"{self.__class__.__name__}.push"
         
         # --- Forward the request to the dispatcher. ---#
-        insertion_result = self._dispatcher.crud.pusher.push(
+        insertion_result = self._dispatcher.crud.pusher.execute(
             token=item,
             token_stack=self,
             rank_quota_analyzer=self._dispatcher.rank_quota_analyzer,

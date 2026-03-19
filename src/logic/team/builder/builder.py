@@ -365,7 +365,7 @@ class SquareBuilder(Builder[Square]):
         method = "SquareBuilder._build_square_board_relationship"
         
         # If the item does not have  a fully bidirectional relationship with the board process the registration.
-        relation_analysis = board_service.square_relation_analyzer.analyze(
+        relation_analysis = board_service.square_relation_analyzer.execute(
             candidate_primary=board,
             candidate_satellite=square
         )

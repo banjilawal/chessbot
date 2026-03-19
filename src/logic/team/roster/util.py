@@ -14,7 +14,7 @@ from copy import deepcopy
 from logic.rank import RankService
 from logic.formation import FormationKey, FormationService
 from logic.system import IdFactory, IdentityService, UpdateResult
-from logic.team import FillingTeamRosterException, RosterRelationAnalyzer, Team, TeamValidator
+from logic.team import FillingTeamRosterException, RosterRelationAnalysis, Team, TeamValidator
 
 
 class RosterUtil:
@@ -22,14 +22,14 @@ class RosterUtil:
     _rank_service: RankService
     _identity_service: IdentityService
     _formation_service: FormationService
-    _roster_relation_analyzer: RosterRelationAnalyzer
+    _roster_relation_analyzer: RosterRelationAnalysis
     
     def __init__(
             self,
             rank_service: RankService = RankService(),
             identity_service: IdentityService = IdentityService(),
             formation_service: FormationService = FormationService(),
-            roster_relation_analyzer: RosterRelationAnalyzer = RosterRelationAnalyzer(),
+            roster_relation_analyzer: RosterRelationAnalysis = RosterRelationAnalysis(),
     ):
         self._rank_service = rank_service
         self._identity_service = identity_service
@@ -49,7 +49,7 @@ class RosterUtil:
         return self._formation_service
         
     @property
-    def roster_relation_analyzer(self) -> RosterRelationAnalyzer:
+    def roster_relation_analyzer(self) -> RosterRelationAnalysis:
         return self._roster_relation_analyzer
        
     def fill_team_roster(

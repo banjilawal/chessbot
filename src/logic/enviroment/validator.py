@@ -71,7 +71,7 @@ class TurnSceneValidator(Validator[TurnScene]):
                     return ValidationResult.failure(square_validation.exception)
                 return ValidationResult.success(turn_scene)
             
-            if turn_scene.square is not None and turn_scene.actor_square.coord != actor.coord:
+            if turn_scene.square is not None and turn_scene.actor_square.coord != actor.position:
                 return ValidationResult.failure(
                     ActorAndScenePropCoordMismatchException(
                         f"{method}: {ActorAndScenePropCoordMismatchException.MSG}"

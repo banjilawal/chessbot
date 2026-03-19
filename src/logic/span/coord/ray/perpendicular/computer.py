@@ -1,4 +1,4 @@
-# src/logic/span/coord/ray/perpendicular/computer.py
+# src/logic/span/coord/ray/perpendicular/compute.py
 
 """
 Module: logic.span.coord.ray.perpendicular.computer

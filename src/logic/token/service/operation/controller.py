@@ -9,10 +9,10 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.token import PawnPromotionProcess, TokenPositionController, TokenDeploymentProcess, TokenReadinessAnalyzer
+from logic.token import PawnPromotionProcess, TokenPositionController, TokenDeploymentProcess, TokenReadinessAnalysis
 
 
-class TokenOpsDispatcher:
+class TokenOpsController:
     """
     Role:
         - Utilities Provider
@@ -23,8 +23,8 @@ class TokenOpsDispatcher:
     Attributes:
         promotion: PawnPromotionProcess
         deployment: TokenDeploymentProcess
-        coord_handler: TokenPositionController
-        readiness_analyzer: TokenReadinessAnalyzer
+        position_controller: TokenPositionController
+        readiness_analyzer: TokenReadinessAnalysis
 
     Provides:
     
@@ -33,27 +33,27 @@ class TokenOpsDispatcher:
 
     _promotion: PawnPromotionProcess
     _deployment: TokenDeploymentProcess
-    _coord_handler: TokenPositionController
-    _readiness_analyzer: TokenReadinessAnalyzer
+    _position_controller: TokenPositionController
+    _readiness_analyzer: TokenReadinessAnalysis
     
     
     def __init__(
             self,
             promotion: PawnPromotionProcess = PawnPromotionProcess(),
             deployment: TokenDeploymentProcess = TokenDeploymentProcess(),
-            coord_handler: TokenPositionController = TokenPositionController(),
-            readiness_analyzer: TokenReadinessAnalyzer = TokenReadinessAnalyzer(),
+            position_controller: TokenPositionController = TokenPositionController(),
+            readiness_analyzer: TokenReadinessAnalysis = TokenReadinessAnalysis(),
     ):
         """
         Args:
             promotion: PawnPromotionProcess
             deployment: TokenDeploymentProcess
-            coord_handler: TokenPositionController
-            readiness_analyzer: TokenReadinessAnalyzer
+            position_controller: TokenPositionController
+            readiness_analyzer: TokenReadinessAnalysis
         """
         self._promotion = promotion
         self._deployment = deployment
-        self._coord_handler = coord_handler
+        self._position_controller = position_controller
         self._readiness_analyzer = readiness_analyzer
         
     @property
@@ -65,9 +65,9 @@ class TokenOpsDispatcher:
         return self._deployment
     
     @property
-    def coord(self) -> TokenPositionController:
-        return self._coord_handler
+    def position(self) -> TokenPositionController:
+        return self._position_controller
     
     @property
-    def readiness_analyzer(self) -> TokenReadinessAnalyzer:
+    def readiness_analyzer(self) -> TokenReadinessAnalysis:
         return self._readiness_analyzer

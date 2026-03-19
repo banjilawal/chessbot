@@ -254,8 +254,8 @@ class BishopSpanService(SpanService):
                         square=square_u,
                         square_validator=square_database.integrity_service.validator,
                     )
-                    graph.vertices.push(u_build_result.payload)
-                    graph.vertices.push(v_build_result.payload)
+                    graph.vertices.execute(u_build_result.payload)
+                    graph.vertices.execute(v_build_result.payload)
                     
                     e = graph.edges.pair_service.builder.build(
                         head=u_build_result.payload,
@@ -267,8 +267,8 @@ class BishopSpanService(SpanService):
                         tail=u_build_result.payload,
                         coord_service=self.coord_service,
                     )
-                    graph.edges.push(e)
-                    graph.edges.push(f)
+                    graph.edges.execute(e)
+                    graph.edges.execute(f)
                     
                     u = graph.vertices.pair_service.add_vertex(previous_square)
                     
@@ -277,7 +277,7 @@ class BishopSpanService(SpanService):
                         target=v,
                         weight=graph.edges.pair_service
                     )
-                    f = graph.edges.push(
+                    f = graph.edges.execute(
                         graph.edges.pair_service.builder.build(
                         
                         )

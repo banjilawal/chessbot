@@ -12,13 +12,13 @@ from typing import Optional
 
 __all__ = [
     # ======================# TOKEN_DEPLOYMENT_FAILURE #======================#
-    "TokenDeploymentException",
+    "TokenDeploymentProcessException",
 ]
 
 from logic.system import UpdateException
 
 # ======================# TOKEN_DEPLOYMENT_FAILURE #======================#
-class TokenDeploymentException(UpdateException):
+class TokenDeploymentProcessException(UpdateException):
     """
     Role:Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 

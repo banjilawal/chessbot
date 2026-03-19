@@ -10,11 +10,11 @@ version: 1.0.0
 from typing import cast
 
 from logic.square import Square, SquareContext, SquareService
-from logic.system import LoggingLevelRouter, RelationAnalyzer, RelationReport
-from logic.board import Board, BoardSquareAnalyzerFailureException, BoardValidator
+from logic.system import LoggingLevelRouter, RelationAnalysis, RelationReport
+from logic.board import Board, BoardSquareAnalysisException, BoardValidator
 
 
-class BoardSquareRelationAnalyzer(RelationAnalyzer[Board, Square]):
+class BoardSquareRelationAnalysis(RelationAnalysis[Board, Square]):
     """
     Role:
         - Relation Analyzer
@@ -38,7 +38,7 @@ class BoardSquareRelationAnalyzer(RelationAnalyzer[Board, Square]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def analyze(
+    def execute(
             cls,
             candidate_primary: Board,
             candidate_satellite: Square,
@@ -63,7 +63,7 @@ class BoardSquareRelationAnalyzer(RelationAnalyzer[Board, Square]):
         Returns:
             RelationReport[Board, Square]
         Raises:
-            BoardSquareAnalyzerFailureException
+            BoardSquareAnalysisException
         """
         method = f"{cls.__name__}.analyze"
         
@@ -71,10 +71,10 @@ class BoardSquareRelationAnalyzer(RelationAnalyzer[Board, Square]):
         board_validation = board_validator.validate(candidate_primary)
         if board_validation.is_failure:
             # Return the exception chain on failure.
-            return RelationReport.analyzer_failure(
-                BoardSquareAnalyzerFailureException(
-                    msg=BoardSquareAnalyzerFailureException.MSG,
-                    err_code=BoardSquareAnalyzerFailureException.ERR_CODE,
+            return RelationReport.failure(
+                BoardSquareAnalysisException(
+                    msg=BoardSquareAnalysisException.MSG,
+                    err_code=BoardSquareAnalysisException.ERR_CODE,
                     ex=board_validation.exception,
                 )
             )
@@ -85,10 +85,10 @@ class BoardSquareRelationAnalyzer(RelationAnalyzer[Board, Square]):
         square_validation = square_service.validator.validate(candidate_satellite)
         if square_validation.is_failure:
             # Return the exception chain on failure.
-            return RelationReport.analyzer_failure(
-                BoardSquareAnalyzerFailureException(
-                    msg=BoardSquareAnalyzerFailureException.MSG,
-                    err_code=BoardSquareAnalyzerFailureException.ERR_CODE,
+            return RelationReport.failure(
+                BoardSquareAnalysisException(
+                    msg=BoardSquareAnalysisException.MSG,
+                    err_code=BoardSquareAnalysisException.ERR_CODE,
                     ex=square_validation.exception,
                 )
             )
@@ -101,10 +101,10 @@ class BoardSquareRelationAnalyzer(RelationAnalyzer[Board, Square]):
         # Handle the case that, the search was aborted.
         if square_search.is_failure:
             # Return the exception chain on failure.
-            return RelationReport.analyzer_failure(
-                BoardSquareAnalyzerFailureException(
-                    msg=BoardSquareAnalyzerFailureException.MSG,
-                    err_code=BoardSquareAnalyzerFailureException.ERR_CODE,
+            return RelationReport.failure(
+                BoardSquareAnalysisException(
+                    msg=BoardSquareAnalysisException.MSG,
+                    err_code=BoardSquareAnalysisException.ERR_CODE,
                     ex=square_search.exception,
                 )
             )

@@ -1,4 +1,4 @@
-# src/logic/span/spanner/computer.py
+# src/logic/span/spanner/compute.py
 
 """
 Module: logic.span.spanner.computer
@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Dict
 
 from logic.span import CoordSpan
-from logic.system import ComputationResult, Computer
+from logic.system import ComputationResult, Compute
 
 
-class Spanner(Computer[CoordSpan]):
+class Spanner(Compute[CoordSpan]):
     """
     """
     

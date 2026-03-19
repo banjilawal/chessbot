@@ -12,7 +12,7 @@ from typing import cast
 
 from logic.arena import (
     Arena, ArenaAlreadyContainsTeamException, ArenaBuilder, ArenaServiceException,
-    ArenaTeamRelationAnalyzer, ArenaValidator, ChangingArenaTeamBlockedException, TeamPlayingDifferentArenaException
+    ArenaTeamRelationAnalysis, ArenaValidator, ChangingArenaTeamBlockedException, TeamPlayingDifferentArenaException
 )
 from logic.schema import Schema, SchemaService
 from logic.system import IntegrityService, InsertionResult, LoggingLevelRouter, Result, SearchResult, id_emitter
@@ -39,7 +39,7 @@ class ArenaService(IntegrityService[Arena]):
         *   See IntegrityService for inherited attributes.
     """
     DEFAULT_NAME = "ArenaService"
-    _arena_team_relation_analyzer: ArenaTeamRelationAnalyzer
+    _arena_team_relation_analyzer: ArenaTeamRelationAnalysis
     
     def __init__(
             self,
@@ -47,7 +47,7 @@ class ArenaService(IntegrityService[Arena]):
             id: int = id_emitter.service_id,
             builder: ArenaBuilder = ArenaBuilder(),
             validator: ArenaValidator = ArenaValidator(),
-            team_relation_tester: ArenaTeamRelationAnalyzer = ArenaTeamRelationAnalyzer(),
+            team_relation_tester: ArenaTeamRelationAnalysis = ArenaTeamRelationAnalysis(),
     ):
         """
         # ACTION:
@@ -76,14 +76,14 @@ class ArenaService(IntegrityService[Arena]):
         return cast(ArenaValidator, self.entity_validator)
     
     @property
-    def arena_team_relation_analyzer(self) -> ArenaTeamRelationAnalyzer:
+    def arena_team_relation_analyzer(self) -> ArenaTeamRelationAnalysis:
         return self._arena_team_relation_analyzer
     
     
     @LoggingLevelRouter.monitor
     def add_team(self, arena: Arena, team: Team, team_service: TeamService = ()) -> InsertionResult[Team]:
         method = "ArenaService.add_team"
-        relation = self._arena_team_relation_analyzer.analyze(
+        relation = self._arena_team_relation_analyzer.execute(
             candidate_primary=arena,
             candidate_satellite=team,
             arena_validator=self.validator,

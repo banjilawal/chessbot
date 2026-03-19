@@ -17,7 +17,7 @@ from logic.square import Square, SquareContext, SquareNotFoundException, SquareO
 from logic.system import LoggingLevelRouter, SearchResult, UpdateResult
 from logic.token import (
     InconsistentTokenCoordException, InconsistentTokenSquareException, Token, TokenAlreadyDeployedException,
-    TokenBoardState, TokenDeploymentException, TokenValidator
+    TokenBoardState, TokenDeploymentProcessException, TokenValidator
 )
 
 
@@ -32,7 +32,9 @@ class TokenDeploymentProcess:
         1.  Token deployment process owner.
         2.  Preserve original and updated data for rollbacks.
         3.  Ensure the token's integrity and consistency are maintained during the transaction.
+    
     Attributes:
+    
     Provides:
         -   execute(
                     token: Token,
@@ -46,6 +48,7 @@ class TokenDeploymentProcess:
                     pre_update_token: Token,
                     opening_square: Square,
             ) -> UpdateResult[Token]
+            
     Super:
     """
 
@@ -74,7 +77,7 @@ class TokenDeploymentProcess:
         Returns:
             UpdateResult[Token]
         Raises:
-            TokenDeploymentException
+            TokenDeploymentProcessException
             TokenAlreadyDeployedException
         """
         method = f"{cls.__class__.__name__}.deploy_on_board"
@@ -84,12 +87,12 @@ class TokenDeploymentProcess:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
                 original=token,
-                exception=TokenDeploymentException(
+                exception=TokenDeploymentProcessException(
                     mthd=method,
-                    op=TokenDeploymentException.OP,
-                    msg=TokenDeploymentException.MSG,
-                    err_code=TokenDeploymentException.ERR_CODE,
-                    rslt_type=TokenDeploymentException.RSLT_TYPE,
+                    op=TokenDeploymentProcessException.OP,
+                    msg=TokenDeploymentProcessException.MSG,
+                    err_code=TokenDeploymentProcessException.ERR_CODE,
+                    rslt_type=TokenDeploymentProcessException.RSLT_TYPE,
                     ex=token_validation.exception,
                 )
             )
@@ -98,15 +101,15 @@ class TokenDeploymentProcess:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
                 original=token,
-                exception=TokenDeploymentException(
+                exception=TokenDeploymentProcessException(
                     mthd=method,
-                    op=TokenDeploymentException.OP,
-                    msg=TokenDeploymentException.MSG,
-                    err_code=TokenDeploymentException.ERR_CODE,
-                    rslt_type=TokenDeploymentException.RSLT_TYPE,
+                    op=TokenDeploymentProcessException.OP,
+                    msg=TokenDeploymentProcessException.MSG,
+                    err_code=TokenDeploymentProcessException.ERR_CODE,
+                    rslt_type=TokenDeploymentProcessException.RSLT_TYPE,
                     ex=TokenAlreadyDeployedException(
-                        msg=TokenDeploymentException.MSG,
-                        err_code=TokenDeploymentException.ERR_CODE,
+                        msg=TokenDeploymentProcessException.MSG,
+                        err_code=TokenDeploymentProcessException.ERR_CODE,
                     ),
                 )
             )
@@ -116,12 +119,12 @@ class TokenDeploymentProcess:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
                 original=token,
-                exception=TokenDeploymentException(
+                exception=TokenDeploymentProcessException(
                     mthd=method,
-                    op=TokenDeploymentException.OP,
-                    msg=TokenDeploymentException.MSG,
-                    err_code=TokenDeploymentException.ERR_CODE,
-                    rslt_type=TokenDeploymentException.RSLT_TYPE,
+                    op=TokenDeploymentProcessException.OP,
+                    msg=TokenDeploymentProcessException.MSG,
+                    err_code=TokenDeploymentProcessException.ERR_CODE,
+                    rslt_type=TokenDeploymentProcessException.RSLT_TYPE,
                     ex=opening_square_search_result.exception,
                 )
             )
@@ -140,12 +143,12 @@ class TokenDeploymentProcess:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
                 original=token,
-                exception=TokenDeploymentException(
+                exception=TokenDeploymentProcessException(
                     mthd=method,
-                    op=TokenDeploymentException.OP,
-                    msg=TokenDeploymentException.MSG,
-                    err_code=TokenDeploymentException.ERR_CODE,
-                    rslt_type=TokenDeploymentException.RSLT_TYPE,
+                    op=TokenDeploymentProcessException.OP,
+                    msg=TokenDeploymentProcessException.MSG,
+                    err_code=TokenDeploymentProcessException.ERR_CODE,
+                    rslt_type=TokenDeploymentProcessException.RSLT_TYPE,
                     ex=update_result.exception,
                 )
             )
@@ -170,7 +173,7 @@ class TokenDeploymentProcess:
         Returns:
             SearchResult[Square]
         Raises:
-            TokenDeploymentException
+            TokenDeploymentProcessException
             SquareNotFoundException
             SquareOccupiedException
         """
@@ -184,12 +187,12 @@ class TokenDeploymentProcess:
         if opening_square_search_result.is_failure:
             # Return the exception chain on failure.
             return SearchResult.failure(
-                exception=TokenDeploymentException(
+                exception=TokenDeploymentProcessException(
                     mthd=method,
-                    op=TokenDeploymentException.OP,
-                    msg=TokenDeploymentException.MSG,
-                    err_code=TokenDeploymentException.ERR_CODE,
-                    rslt_type=TokenDeploymentException.RSLT_TYPE,
+                    op=TokenDeploymentProcessException.OP,
+                    msg=TokenDeploymentProcessException.MSG,
+                    err_code=TokenDeploymentProcessException.ERR_CODE,
+                    rslt_type=TokenDeploymentProcessException.RSLT_TYPE,
                     ex=opening_square_search_result.exception,
                 )
             )
@@ -197,17 +200,17 @@ class TokenDeploymentProcess:
         if opening_square_search_result.is_empty:
             # Return the exception chain on failure.
             return SearchResult.failure(
-                exception=TokenDeploymentException(
+                exception=TokenDeploymentProcessException(
                     mthd=method,
-                    op=TokenDeploymentException.OP,
-                    msg=TokenDeploymentException.MSG,
-                    err_code=TokenDeploymentException.ERR_CODE,
-                    rslt_type=TokenDeploymentException.RSLT_TYPE,
+                    op=TokenDeploymentProcessException.OP,
+                    msg=TokenDeploymentProcessException.MSG,
+                    err_code=TokenDeploymentProcessException.ERR_CODE,
+                    rslt_type=TokenDeploymentProcessException.RSLT_TYPE,
                     ex=SquareNotFoundException(
                         var="opening_square_name",
                         val=token.opening_square_name,
-                        msg=TokenDeploymentException.MSG,
-                        err_code=TokenDeploymentException.ERR_CODE,
+                        msg=TokenDeploymentProcessException.MSG,
+                        err_code=TokenDeploymentProcessException.ERR_CODE,
                     )
                 )
             )
@@ -216,12 +219,12 @@ class TokenDeploymentProcess:
             square = opening_square_search_result.payload[0]
             # Return the exception chain on failure.
             return SearchResult.failure(
-                exception=TokenDeploymentException(
+                exception=TokenDeploymentProcessException(
                     mthd=method,
-                    op=TokenDeploymentException.OP,
-                    msg=TokenDeploymentException.MSG,
-                    err_code=TokenDeploymentException.ERR_CODE,
-                    rslt_type=TokenDeploymentException.RSLT_TYPE,
+                    op=TokenDeploymentProcessException.OP,
+                    msg=TokenDeploymentProcessException.MSG,
+                    err_code=TokenDeploymentProcessException.ERR_CODE,
+                    rslt_type=TokenDeploymentProcessException.RSLT_TYPE,
                     ex=SquareOccupiedException(
                         var="square_occupant",
                         msg=f"square:{square.name} already occupied by {square.occupant.designation}",
@@ -259,7 +262,7 @@ class TokenDeploymentProcess:
         Returns:
             UpdateResult[Square]
         Raises:
-            TokenDeploymentException
+            TokenDeploymentProcessException
             InconsistentTokenSquareException
             InconsistentTokenCoordException
         """
@@ -275,12 +278,12 @@ class TokenDeploymentProcess:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
                 original=token,
-                exception=TokenDeploymentException(
+                exception=TokenDeploymentProcessException(
                     mthd=method,
-                    op=TokenDeploymentException.OP,
-                    msg=TokenDeploymentException.MSG,
-                    err_code=TokenDeploymentException.ERR_CODE,
-                    rslt_type=TokenDeploymentException.RSLT_TYPE,
+                    op=TokenDeploymentProcessException.OP,
+                    msg=TokenDeploymentProcessException.MSG,
+                    err_code=TokenDeploymentProcessException.ERR_CODE,
+                    rslt_type=TokenDeploymentProcessException.RSLT_TYPE,
                     ex=visitation_result.exception,
                 )
             )
@@ -289,12 +292,12 @@ class TokenDeploymentProcess:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pre_update_token,
-                exception=TokenDeploymentException(
+                exception=TokenDeploymentProcessException(
                     mthd=method,
-                    op=TokenDeploymentException.OP,
-                    msg=TokenDeploymentException.MSG,
-                    err_code=TokenDeploymentException.ERR_CODE,
-                    rslt_type=TokenDeploymentException.RSLT_TYPE,
+                    op=TokenDeploymentProcessException.OP,
+                    msg=TokenDeploymentProcessException.MSG,
+                    err_code=TokenDeploymentProcessException.ERR_CODE,
+                    rslt_type=TokenDeploymentProcessException.RSLT_TYPE,
                     ex=InconsistentTokenSquareException(
                         msg=InconsistentTokenSquareException.MSG,
                         err_code=InconsistentTokenSquareException.ERR_CODE,
@@ -306,12 +309,12 @@ class TokenDeploymentProcess:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pre_update_token,
-                exception=TokenDeploymentException(
+                exception=TokenDeploymentProcessException(
                     mthd=method,
-                    op=TokenDeploymentException.OP,
-                    msg=TokenDeploymentException.MSG,
-                    err_code=TokenDeploymentException.ERR_CODE,
-                    rslt_type=TokenDeploymentException.RSLT_TYPE,
+                    op=TokenDeploymentProcessException.OP,
+                    msg=TokenDeploymentProcessException.MSG,
+                    err_code=TokenDeploymentProcessException.ERR_CODE,
+                    rslt_type=TokenDeploymentProcessException.RSLT_TYPE,
                     ex=InconsistentTokenCoordException(
                         msg=InconsistentTokenCoordException.MSG,
                         err_code=InconsistentTokenCoordException.ERR_CODE,

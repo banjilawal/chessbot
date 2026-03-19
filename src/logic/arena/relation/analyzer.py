@@ -10,14 +10,14 @@ version: 1.0.0
 from typing import cast
 
 from logic.team import Team, TeamService
-from logic.system import LoggingLevelRouter, RelationReport, RelationAnalyzer
+from logic.system import LoggingLevelRouter, RelationReport, RelationAnalysis
 from logic.arena import (
     Arena, ArenaSlotAlreadyOccupiedException, ArenaValidator, ArenaTeamAnalysisException,
     TeamPlayingDifferentArenaException
 )
 
 
-class ArenaTeamRelationAnalyzer(RelationAnalyzer[Arena, Team]):
+class ArenaTeamRelationAnalysis(RelationAnalysis[Arena, Team]):
     """
     Role:Reporting, Test for Relationship
 
@@ -26,7 +26,7 @@ class ArenaTeamRelationAnalyzer(RelationAnalyzer[Arena, Team]):
     2.  If the testing was not completed send an exception chain to the caller.
 
     Super Class:
-        *   RelationAnalyzer
+        *   RelationAnalysis
 
     Provides:
 
@@ -36,7 +36,7 @@ class ArenaTeamRelationAnalyzer(RelationAnalyzer[Arena, Team]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def analyze(
+    def execute(
             cls,
             candidate_primary: Arena,
             candidate_satellite: Team,

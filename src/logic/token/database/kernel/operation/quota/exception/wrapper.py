@@ -12,14 +12,14 @@ from typing import Optional
 
 __all__ = [
     # ======================# RANK_QUOTA_ANALYZER_FAILURE_EXCEPTION #======================#
-    "RankQuotaAnalyzerFailureException",
+    "RankQuotaAnalysisException",
 ]
 
-from logic.system import AnalyzerFailureException
+from logic.system import AnalysisException
 
 
 # ======================# RANK_QUOTA_ANALYZER_FAILURE_EXCEPTION #======================#
-class RankQuotaAnalyzerFailureException(AnalyzerFailureException):
+class RankQuotaAnalysisException(AnalysisException):
     """
     Role:
         - Worker Method Identification
@@ -40,7 +40,7 @@ class RankQuotaAnalyzerFailureException(AnalyzerFailureException):
     Provides:
 
     Super:
-        AnalyzerFailureException
+        AnalysisException
     """
     MSG = "Rank quota analysis failed."
     ERR_CODE = "RANK_QUOTA_ANALYZER_FAILURE_EXCEPTION"

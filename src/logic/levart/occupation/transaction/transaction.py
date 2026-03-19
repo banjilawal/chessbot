@@ -75,7 +75,7 @@ class OccupationTransaction(TravelTransaction[OccupationEvent]):
                     )
                 )
             
-            self.event.actor.positions.push(self.event.destination_square.point)
+            self.event.actor.positions.execute(self.event.destination_square.point)
             
             # If the push destination point is not the traveler's updated position rollback the rollback,
             # then return the rollback_exception.
