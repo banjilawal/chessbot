@@ -18,7 +18,7 @@ from logic.token import CombatantToken, KingToken, Token, TokenException, TokenV
 from logic.token.service.operation.validation.exception.debug.null import NullTokenException
 
 
-class TokenValidationProcess(ValidationProcess[Token]):
+class TokenValidation(ValidationProcess[Token]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -30,7 +30,7 @@ class TokenValidationProcess(ValidationProcess[Token]):
         *   ValidationProcess
 
     # PROVIDES:
-        * TokenValidationProcess
+        * TokenValidation
 
 
     # INHERITED ATTRIBUTES:
@@ -264,7 +264,7 @@ class TokenValidationProcess(ValidationProcess[Token]):
         
     @classmethod
     def verify_token_is_king(cls, candidate: Any) -> ValidationResult[KingToken]:
-        method = "TokenValidationProcess.validate_token_is_king"
+        method = "TokenValidation.validate_token_is_king"
         # Handle the case that, the candidate is not certified as a safe occupant.
         validation = cls.execute(candidate)
         if validation.is_failure:

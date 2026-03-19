@@ -9,7 +9,10 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.token import PawnPromotionProcess, TokenPositionController, TokenDeploymentProcess, TokenReadinessAnalysis
+from logic.token import (
+    PawnPromotionProcess, TokenBuild, TokenPositionController, TokenDeploymentProcess,
+    TokenReadinessAnalysis, TokenValidation
+)
 
 
 class TokenOpsController:
@@ -18,9 +21,11 @@ class TokenOpsController:
         - Utilities Provider
         
     Responsibilities:
-        1.  Provide a single entry point for transactions TokenService runs.
+        1.  Provide a single entry point for operations TokenService supports.
         
     Attributes:
+        build: TokenBuild
+        validate: TokenValidation
         promotion: PawnPromotionProcess
         deployment: TokenDeploymentProcess
         position_controller: TokenPositionController
@@ -30,7 +35,8 @@ class TokenOpsController:
     
     Parent:
     """
-
+    _build: TokenBuild
+    _validation: TokenValidation
     _promotion: PawnPromotionProcess
     _deployment: TokenDeploymentProcess
     _position_controller: TokenPositionController
@@ -39,6 +45,8 @@ class TokenOpsController:
     
     def __init__(
             self,
+            build: TokenBuild = TokenBuild(),
+            validation: TokenValidation = TokenValidation(),
             promotion: PawnPromotionProcess = PawnPromotionProcess(),
             deployment: TokenDeploymentProcess = TokenDeploymentProcess(),
             position_controller: TokenPositionController = TokenPositionController(),
@@ -55,6 +63,14 @@ class TokenOpsController:
         self._deployment = deployment
         self._position_controller = position_controller
         self._readiness_analyzer = readiness_analyzer
+        
+    @property
+    def build(self) -> TokenBuild:
+        return self._build
+        
+    @property
+    def validation(self) ->TokenValidation:
+        return self._validation
         
     @property
     def pawn_promotion(self) -> PawnPromotionProcess:

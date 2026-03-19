@@ -66,12 +66,12 @@ class TokenContextService(ContextService[TokenContext]):
         return cast(TokenFinder, self.entity_finder)
     
     @property
-    def builder(self) ->TokenContextBuildProcess:
+    def build(self) ->TokenContextBuildProcess:
         """GetTokenContextBuilder instance."""
         return cast(TokenContextBuildProcess, self.entity_builder)
     
     @property
-    def validator(self) ->TokenContextValidationProcess:
+    def validation(self) ->TokenContextValidationProcess:
         """GetTokenContextValidator instance."""
         return cast(TokenContextValidationProcess, self.entity_validator)
     

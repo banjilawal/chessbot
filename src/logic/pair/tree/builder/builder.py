@@ -77,7 +77,7 @@ class NodeTreeBuildProcess(BuildProcess[NodeTree]):
         method = f"{cls.__class__.__name__}._build"
         
         # Handle the case that the square_span is not certified as safe.
-        square_span_result = square_span_service.validator.execute(candidate=square_span)
+        square_span_result = square_span_service.validation.execute(candidate=square_span)
         if square_span_result.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
@@ -92,7 +92,7 @@ class NodeTreeBuildProcess(BuildProcess[NodeTree]):
             )
         # --- Process the sub_span_roots then, build the tree's root node. ---#
         insertion_result = cls._convert_sub_span_roots_to_ray(span=square_span)
-        root_node_build_result = node_service.builder.execute(square=square_span.origin)
+        root_node_build_result = node_service.build.execute(square=square_span.origin)
         
         # Handle the case that, the root_node is not built successfully.
         if root_node_build_result.is_failure:

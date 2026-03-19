@@ -65,7 +65,7 @@ class TokenDeploymentProcess:
         Returns:
             UpdateResult[Square]
         Raises:
-            TokenDeploymentProcessException
+            TokenDeploymentException
             SquareStackFullException
         """
         method =  f"{cls.__name__}.execute"

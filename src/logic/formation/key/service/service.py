@@ -58,12 +58,12 @@ class FormationKeyService(ContextService[FormationKey]):
         super().__init__(id=id, name=name, builder=builder, validator=validator, finder=lookup)
     
     @property
-    def builder(self) -> FormationKeyBuildProcess:
+    def build(self) -> FormationKeyBuildProcess:
         """get FormationKeyBuildProcess"""
         return cast(FormationKeyBuildProcess, self.entity_builder)
     
     @property
-    def validator(self) -> FormationKeyValidationProcess:
+    def validation(self) -> FormationKeyValidationProcess:
         """get FormationKeyValidationProcess"""
         return cast(FormationKeyValidationProcess, self.entity_validator)
     

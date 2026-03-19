@@ -60,11 +60,11 @@ class NodeTreeService(IntegrityService[NodeTree]):
         
     
     @property
-    def builder(self) -> NodeTreeBuildProcess:
+    def build(self) -> NodeTreeBuildProcess:
         return cast(NodeTreeBuildProcess, self.entity_builder)
     
     @property
-    def validator(self) -> NodeTreeValidationProcess:
+    def validation(self) -> NodeTreeValidationProcess:
         return cast(NodeTreeValidationProcess, self.entity_validator)
     
     @property

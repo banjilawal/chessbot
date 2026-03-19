@@ -70,11 +70,11 @@ class AgentContextService(ContextService[AgentContext]):
         return cast(AgentFinder, self.entity_finder)
     
     @property
-    def builder(self) -> AgentContextBuilder:
+    def build(self) -> AgentContextBuilder:
         """Get AgentContextBuildProcess instance."""
         return cast(AgentContextBuilder, self.entity_builder)
     
     @property
-    def validator(self) -> AgentContextValidator:
+    def validation(self) -> AgentContextValidator:
         """Get AgentContextValidator instance."""
         return cast(AgentContextValidator, self.entity_validator)

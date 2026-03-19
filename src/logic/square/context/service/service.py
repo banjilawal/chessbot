@@ -68,11 +68,11 @@ class SquareContextService(ContextService[SquareContext]):
         return cast(SquareFinder, self.entity_finder)
     
     @property
-    def builder(self) -> SquareContextBuildProcess:
+    def build(self) -> SquareContextBuildProcess:
         """Get SquareContextBuildProcess instance."""
         return cast(SquareContextBuildProcess, self.entity_builder)
     
     @property
-    def validator(self) -> SquareContextValidationProcess:
+    def validation(self) -> SquareContextValidationProcess:
         """Get SquareContextValidationProcess instance."""
         return cast(SquareContextValidationProcess, self.entity_validator)

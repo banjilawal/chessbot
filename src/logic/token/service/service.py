@@ -16,7 +16,7 @@ from logic.coord import Coord, CoordService
 from logic.rank import Rank, RankService
 from logic.schema import SchemaService
 from logic.system import DeletionResult, IdFactory, InsertionResult, IntegrityService, LoggingLevelRouter, UpdateResult
-from logic.token import PawnToken, Token, TokenBuildProcess, TokenOpsController, TokenServiceException, TokenValidationProcess
+from logic.token import PawnToken, Token, TokenBuild, TokenOpsController, TokenServiceException, TokenValidation
 
 
 class TokenService(IntegrityService[Token]):
@@ -36,8 +36,8 @@ class TokenService(IntegrityService[Token]):
         
         id: int
         name: name
-        builder: TokenBuilder
-        validator: TokenValidationProcess
+        build: Tokenbuild
+        validation: TokenValidation
         controller: TokenOpsController
 
     Provides:
@@ -72,8 +72,6 @@ class TokenService(IntegrityService[Token]):
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            builder: TokenBuildProcess = TokenBuildProcess(),
-            validator: TokenValidationProcess = TokenValidationProcess(),
             id: int = IdFactory.next_id(class_name="TokenService"),
             controller: TokenOpsController = TokenOpsController(),
     ):
@@ -81,20 +79,20 @@ class TokenService(IntegrityService[Token]):
         Args:
             id: int
             name: str
-            builder: TokenBuildProcess
-            validator: TokenValidationProcess
+            build: TokenBuild
+            validation: TokenValidation
             controller: TokenOpsController
         """
-        super().__init__(id=id, name=name, builder=builder, validator=validator)
+        super().__init__(id=id, name=name)
         self._controller = controller
     
     @property
-    def builder(self) -> TokenBuildProcess:
-        return cast(TokenBuildProcess, self.entity_builder)
+    def build(self) -> TokenBuild:
+        return cast(TokenBuild, self.entity_build)
     
     @property
-    def validator(self) -> TokenValidationProcess:
-        return cast(TokenValidationProcess, self.entity_validator)
+    def validation(self) -> TokenValidation:
+        return cast(TokenValidation, self.entity_validation)
     
     @property
     def controller(self) -> TokenOpsController:
@@ -119,7 +117,7 @@ class TokenService(IntegrityService[Token]):
         #--- Forward the request to the controller. ---#
         popping_coord_result = self._controller.position.pop.execute(
             token=token,
-            token_validator=self.validator,
+            token_validation=self.validation,
         )
         # Handle the case that, the request was not completed.
         if popping_coord_result.is_failure:
@@ -164,7 +162,7 @@ class TokenService(IntegrityService[Token]):
             token=token,
             coord=coord,
             coord_service=coord_service,
-            token_validator=self.validator,
+            token_validation=self.validation,
         )
         # Handle the case that, the request was not completed.
         if insertion_result.is_failure:
@@ -214,7 +212,7 @@ class TokenService(IntegrityService[Token]):
             pawn_token=pawn_token,
             rank_service=rank_service,
             schema_service=schema_service,
-            token_validator=self.validator,
+            token_validation=self.validation,
         )
         # Handle the case that, the request was not completed.
         if promotion_result.is_failure:
@@ -255,7 +253,7 @@ class TokenService(IntegrityService[Token]):
         pre_update_token = deepcopy(token)
         deployment_result = self._controller.deployment.execute(
             token=token,
-            token_validator=self.validator,
+            token_validation=self.validation,
         )
         # Handle the case that, the request was not completed.
         if deployment_result.is_failure:

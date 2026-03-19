@@ -165,13 +165,13 @@ class TeamBuildProcess(BuildProcess[Team]):
             return ValidationResult.failure(schema_validation.exception)
         
         # Handle the case that, the owner is not certified as safe.
-        owner_validation = player_service.validator.execute(candidate=owner)
+        owner_validation = player_service.validation.execute(candidate=owner)
         if owner_validation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(owner_validation.exception)
         
         # Handle the case that, the board is not certified as safe.
-        board_validation = board_service.validator.execute(candidate=board)
+        board_validation = board_service.validation.execute(candidate=board)
         if owner_validation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(board_validation.exception)

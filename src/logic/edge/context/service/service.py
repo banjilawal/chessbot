@@ -68,11 +68,11 @@ class EdgeContextService(ContextService[EdgeContext]):
         return cast(EdgeFinder, self.entity_finder)
     
     @property
-    def builder(self) -> EdgeContextBuildProcess:
+    def build(self) -> EdgeContextBuildProcess:
         """Get EdgeContextBuildProcess instance."""
         return cast(EdgeContextBuildProcess, self.entity_builder)
     
     @property
-    def validator(self) -> EdgeContextValidationProcess:
+    def validation(self) -> EdgeContextValidationProcess:
         """Get EdgeContextValidationProcess instance."""
         return cast(EdgeContextValidationProcess, self.entity_validator)

@@ -61,11 +61,11 @@ class NodeContextService(ContextService[NodeContext]):
         return cast(NodeFinder, self.entity_finder)
     
     @property
-    def builder(self) -> NodeContextBuildProcess:
+    def build(self) -> NodeContextBuildProcess:
         """Get NodeContextBuildProcess instance."""
         return cast(NodeContextBuildProcess, self.entity_builder)
     
     @property
-    def validator(self) -> NodeContextValidationProcess:
+    def validation(self) -> NodeContextValidationProcess:
         """Get NodeContextValidationProcess instance."""
         return cast(NodeContextValidationProcess, self.entity_validator)

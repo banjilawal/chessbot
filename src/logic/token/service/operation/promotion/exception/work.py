@@ -12,13 +12,13 @@ from typing import Optional
 
 __all__ = [
     # ======================# PAWN_PROMOTION_FAILURE #======================#
-    "PromotionProcessException",
+    "PromotionException",
 ]
 
 from logic.system import UpdateException
 
 # ======================# PAWN_PROMOTION_FAILURE #======================#
-class PromotionProcessException(UpdateException):
+class PromotionException(UpdateException):
     """
     Role:
         -   Worker Method Identification

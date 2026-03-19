@@ -46,7 +46,7 @@ class Attack:
                 )
             )
         # Handle the case the item is not certified as safe.
-        square_validation = square_database.integrity_service.validator.execute(candidate=square)
+        square_validation = square_database.integrity_service.validation.execute(candidate=square)
         if square_validation.is_failure:
             # Return the exception chain on failure.
             return AttackResult.failure(
@@ -169,7 +169,7 @@ class Attack:
             )
         
         # Build the hostage manifest
-        manifest_build_result = hostage_service.builder.execute(
+        manifest_build_result = hostage_service.build.execute(
             prisoner=prisoner,
             captured_square=square,
             token_service=token_service,

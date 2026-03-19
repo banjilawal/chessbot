@@ -1,7 +1,7 @@
-# src/logic/token/service/operation/analyzer.py
+# src/logic/token/service/operation/analysis.py
 
 """
-Module: logic.token.service.operation.analyzer
+Module: logic.token.service.operation.analysis
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -14,7 +14,7 @@ from logic.system import LoggingLevelRouter, RelationReport
 from logic.system.relation.analysis import RelationAnalysis
 from logic.token import (
     ReadinessStateNullException, TokenException, ReadinessState, TokenReadniessAnalysisException, CombatantToken,
-    KingToken, Token, TokenValidationProcess
+    KingToken, Token, TokenValidation
 )
 
 class TokenReadinessAnalysis(RelationAnalysis[ReadinessState, Token]):
@@ -24,7 +24,7 @@ class TokenReadinessAnalysis(RelationAnalysis[ReadinessState, Token]):
     def execute(
             cls,
             candidate_satellite: Token,
-            token_validator: TokenValidationProcess = TokenValidationProcess(),
+            token_validator: TokenValidation = TokenValidation(),
             candidate_primary: ReadinessState = ReadinessState(),
     ) -> RelationReport[ReadinessState, Token]:
         method = "TokenReadinessAnalysis.analyze"

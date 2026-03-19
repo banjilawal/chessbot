@@ -64,12 +64,12 @@ class TeamService(IntegrityService[Team]):
         self._roster_util = roster_util
     
     @property
-    def builder(self) -> TeamBuildProcess:
+    def build(self) -> TeamBuildProcess:
         """get TeamBuildProcess."""
         return cast(TeamBuildProcess, self.entity_builder)
     
     @property
-    def validator(self) -> TeamValidationProcess:
+    def validation(self) -> TeamValidationProcess:
         """get TeamValidationProcess."""
         return cast(TeamValidationProcess, self.entity_validator)
     

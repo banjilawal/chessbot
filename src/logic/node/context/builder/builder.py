@@ -128,7 +128,7 @@ class NodeContextBuildProcess(BuildProcess[NodeContext]):
         
         # Build the square NodeContext if its flag is enabled.
         if square is not None:
-            validation = square_service.validator.execute(candidate=square)
+            validation = square_service.validation.execute(candidate=square)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(

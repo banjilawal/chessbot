@@ -64,12 +64,12 @@ class RankService(IntegrityService[Rank]):
         self._persona_service = persona_service
     
     @property
-    def builder(self) -> RankFactory:
+    def build(self) -> RankFactory:
         """get RankBuilder."""
         return cast(RankFactory, self.entity_builder)
     
     @property
-    def validator(self) -> RankValidationProcessFactory:
+    def validation(self) -> RankValidationProcessFactory:
         """get RankValidator."""
         return cast(RankValidationProcessFactory, self.entity_validator)
     

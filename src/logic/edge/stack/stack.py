@@ -120,7 +120,7 @@ class EdgeStack(StackService[Edge]):
         method = "EdgeStack.push"
         
         # Handle the case that, the item is unsafe.
-        validation = self.integrity_service.validator.execute(candidate=item)
+        validation = self.integrity_service.validation.execute(candidate=item)
         if validation.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(

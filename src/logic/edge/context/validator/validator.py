@@ -152,7 +152,7 @@ class EdgeContextValidationProcess(ValidationProcess[EdgeContext]):
         
         # Certification for the search-by-coord target.
         if context.coord is not None:
-            validation = coord_service.validator.execute(context.coord)
+            validation = coord_service.validation.execute(context.coord)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
@@ -166,7 +166,7 @@ class EdgeContextValidationProcess(ValidationProcess[EdgeContext]):
         
         # Certification for the search-by-board target.
         if context.board is not None:
-            validation = board_service.validator.execute(context.board)
+            validation = board_service.validation.execute(context.board)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
@@ -180,7 +180,7 @@ class EdgeContextValidationProcess(ValidationProcess[EdgeContext]):
         
         # Certification for the search-by-occupant target.
         if context.occupant is not None:
-            validation = edge_service.validator.execute(context.occupant)
+            validation = edge_service.validation.execute(context.occupant)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(

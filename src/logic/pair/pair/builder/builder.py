@@ -72,7 +72,7 @@ class PairBuildProcess(BuildProcess[Pair]):
         method = f"{cls.__class__.__name__}._build"
         
         # Handle the case that, the head is not certified as safe.
-        node_validation_result = node_service.validator.execute(candidate=head)
+        node_validation_result = node_service.validation.execute(candidate=head)
         if node_validation_result.is_failure:
             # Return the exception chain on failure
             return BuildResult.failure(
@@ -115,7 +115,7 @@ class PairBuildProcess(BuildProcess[Pair]):
                 )
             )
         # --- Attempt building the tail node. ---#
-        tail_node_build_result = node_service.builder.execute(
+        tail_node_build_result = node_service.build.execute(
             square=tail_square,
             square_validator=square_validator,
         )

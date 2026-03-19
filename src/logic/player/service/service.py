@@ -64,12 +64,12 @@ class PlayerService(IntegrityService[Player]):
         self._player_team_relation_analyzer = player_team_relation_analyzer
         
     @property
-    def builder(self) -> PlayerFactory:
+    def build(self) -> PlayerFactory:
         """get PlayerBuilder"""
         return cast(PlayerFactory, self.entity_builder)
     
     @property
-    def validator(self) -> PlayerValidationProcess:
+    def validation(self) -> PlayerValidationProcess:
         """get PlayerValidationProcess"""
         return cast(PlayerValidationProcess, self.entity_validator)
     
@@ -100,7 +100,7 @@ class PlayerService(IntegrityService[Player]):
         method = "PlayerService.pop_team_from_player"
         
         # Handle the case that, the owner is not certified safe.
-        validation = self.validator.execute(player)
+        validation = self.validation.execute(player)
         if validation.is_failure:
             # Return the exception chain on failure.
             return DeletionResult.failure(
@@ -171,7 +171,7 @@ class PlayerService(IntegrityService[Player]):
         relation = self.player_team_relation_analyzer.execute(
             candidate_primary=player,
             candidate_secondary=team,
-            owner_validator=self.validator,
+            owner_validator=self.validation,
             team_service=team_service,
         )
         # Handle the case that, the relation analysis is not completed.

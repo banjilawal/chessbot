@@ -76,12 +76,12 @@ class VectorService(IntegrityService[Vector]):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
     
     @property
-    def builder(self) -> VectorBuildProcess:
+    def build(self) -> VectorBuildProcess:
         """get VectorBuildProcess"""
         return cast(VectorBuildProcess, self.entity_builder)
     
     @property
-    def validator(self) -> VectorValidationProcess:
+    def validation(self) -> VectorValidationProcess:
         """get VectorValidationProcess"""
         return cast(VectorValidationProcess, self.entity_validator)
     
@@ -114,7 +114,7 @@ class VectorService(IntegrityService[Vector]):
         
         # Handle the case that, one of the vectors in not certified as safe
         for vector in vectors:
-            validation_result = self.validator.execute(candidate=vector)
+            validation_result = self.validation.execute(candidate=vector)
             if validation_result.is_failure:
                 # Send an exception chain on failure.
                 return ComputationResult.failure(
@@ -130,7 +130,7 @@ class VectorService(IntegrityService[Vector]):
         sum = Vector(x=0, y=0)
         
         for vector in vectors:
-            summation_result = self.builder.execute(
+            summation_result = self.build.execute(
                 x=sum.x + vector.x,
                 y=sum.y + vector.y,
                 number_validator=number_validator,
@@ -187,7 +187,7 @@ class VectorService(IntegrityService[Vector]):
         method = f"{self.__class__.__name__}.multiply_vector_by_scalar"
         
         # Handle the case that, the vector is not certified as safe.
-        vector_validation_result = self.validator.execute(candidate=vector)
+        vector_validation_result = self.validation.execute(candidate=vector)
         if vector_validation_result.is_failure:
             # Send an exception chain on failure.
             return ComputationResult.failure(
@@ -200,7 +200,7 @@ class VectorService(IntegrityService[Vector]):
                 )
             )
         # Handle the case that, the scalar is not certified as safe.
-        scalar_validation_result = scalar_service.validator.execute(candidate=scalar)
+        scalar_validation_result = scalar_service.validation.execute(candidate=scalar)
         if scalar_validation_result.is_failure:
             # Send an exception chain on failure.
             return ComputationResult.failure(
@@ -213,7 +213,7 @@ class VectorService(IntegrityService[Vector]):
                 )
             )
         # Handle the case that, the new build is unsuccessful.
-        build_result = self.builder.execute(
+        build_result = self.build.execute(
             x=vector.x * scalar,
             y=vector.y * scalar,
             number_validator=number_validator,
@@ -260,7 +260,7 @@ class VectorService(IntegrityService[Vector]):
         method = f"{self.__class__.__name__}.convert_coord_to_vector"
         
         # Handle the case that, the coord is not certified as safe.
-        coord_validation_result = coord_service.validator.execute(candidate=coord)
+        coord_validation_result = coord_service.validation.execute(candidate=coord)
         if coord_validation_result.is_failure:
             # Send an exception chain on failure.
             return ComputationResult.failure(
@@ -272,7 +272,7 @@ class VectorService(IntegrityService[Vector]):
                     ex=coord_validation_result.exception,
                 )
             )
-        vector_build_result = self.builder.execute(
+        vector_build_result = self.build.execute(
             x=coord.column,
             y=coord.row,
             number_validator=number_validator,

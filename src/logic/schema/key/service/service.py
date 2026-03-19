@@ -57,12 +57,12 @@ class SchemaKeyService(ContextService[SchemaKey]):
         super().__init__(id=id, name=name, builder=builder, validator=validator, finder=lookup)
         
     @property
-    def builder(self) -> SchemaKeyBuildProcess:
+    def build(self) -> SchemaKeyBuildProcess:
         """get SchemaKeyBuildProcess"""
         return cast(SchemaKeyBuildProcess, self.entity_builder)
     
     @property
-    def validator(self) -> SchemaKeyValidationProcess:
+    def validation(self) -> SchemaKeyValidationProcess:
         """get SchemaKeyValidationProcess"""
         return cast(SchemaKeyValidationProcess, self.entity_validator)
     

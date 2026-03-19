@@ -137,7 +137,7 @@ class SquareValidationProcess(ValidationProcess[Square]):
                 )
             )
         # Handle the case that, square.coord is not certified safe.
-        coord_validation_result = coord_service.validator.execute(square.coord)
+        coord_validation_result = coord_service.validation.execute(square.coord)
         if coord_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -186,7 +186,7 @@ class SquareValidationProcess(ValidationProcess[Square]):
         method = f"{cls.__name__}._run_board_tests"
         
         # Handle the case that, the square's board is nnt certified as safe.
-        board_validation_result = board_service.integrity_service.validator.validat(
+        board_validation_result = board_service.integrity_service.validation.validat(
             candidate=square.board
         )
         if board_validation_result.is_faiure:

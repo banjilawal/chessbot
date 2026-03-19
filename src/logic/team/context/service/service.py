@@ -68,12 +68,12 @@ class TeamContextService(ContextService[TeamContext]):
         return cast(TeamFinder, self.entity_finder)
     
     @property
-    def builder(self) -> TeamContextBuildProcess:
+    def build(self) -> TeamContextBuildProcess:
         """Get TeamContextBuildProcess instance."""
         return cast(TeamContextBuildProcess, self.entity_builder)
     
     @property
-    def validator(self) -> TeamContextValidationProcess:
+    def validation(self) -> TeamContextValidationProcess:
         """Get TeamContextValidationProcess instance."""
         return cast(TeamContextValidationProcess, self.entity_validator)
     

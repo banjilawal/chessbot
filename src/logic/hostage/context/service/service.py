@@ -67,11 +67,11 @@ class HostageContextService(ContextService[CaptivityContext]):
         return cast(HostageFinder, self.entity_finder)
     
     @property
-    def builder(self) -> CaptivityContextBuildProcess:
+    def build(self) -> CaptivityContextBuildProcess:
         """Get CaptivityContextBuildProcess instance."""
         return cast(CaptivityContextBuildProcess, self.entity_builder)
     
     @property
-    def validator(self) -> CaptivityContextValidationProcess:
+    def validation(self) -> CaptivityContextValidationProcess:
         """Get CaptivityContextValidationProcess instance."""
         return cast(CaptivityContextValidationProcess, self.entity_validator)

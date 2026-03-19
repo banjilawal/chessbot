@@ -135,7 +135,7 @@ class CaptivityContextBuildProcess(BuildProcess[CaptivityContext]):
         
         # Certification for the search-by-captured-item target.
         if captured_square is not None:
-            validation = square_service.validator.execute(candidate=captured_square)
+            validation = square_service.validation.execute(candidate=captured_square)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(

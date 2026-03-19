@@ -83,7 +83,7 @@ class DiagonalRayComputer:
         
         members: List[Coord] = []
         # --- Use starting_x and the slope to build the cursor. ---#
-        cursor_initialization_result = vector_service.builder.execute(
+        cursor_initialization_result = vector_service.build.execute(
             x=factors.start_x,
             y=cls._f_of_x(x=factors.start_x, slope=factors.slope),
         )
@@ -125,7 +125,7 @@ class DiagonalRayComputer:
                 members.append(conversion_result.payload)
             
             # --- Update the cursor. ---#
-            cursor_update_result = vector_service.builder.execute(
+            cursor_update_result = vector_service.build.execute(
                 x=cursor.x,
                 y=cls._f_of_x(x=cursor.x, slope=factors.slope),
             )

@@ -70,11 +70,11 @@ class ScalarService(IntegrityService[Scalar]):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
     
     @property
-    def builder(self) -> BuildProcess[Scalar]:
+    def build(self) -> BuildProcess[Scalar]:
         return self._builder
     
     @property
-    def validator(self) -> ValidationProcess[Scalar]:
+    def validation(self) -> ValidationProcess[Scalar]:
         return self.certifier
     
     def __eq__(self, other):

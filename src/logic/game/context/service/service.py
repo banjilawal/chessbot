@@ -69,11 +69,11 @@ class GameContextService(ContextService[GameContext]):
         return cast(GameFinder, self.entity_finder)
     
     @property
-    def builder(self) -> GameContextBuildProcess:
+    def build(self) -> GameContextBuildProcess:
         """Get GameContextBuildProcess instance."""
         return cast(GameContextBuildProcess, self.entity_builder)
     
     @property
-    def validator(self) -> GameContextValidationProcess:
+    def validation(self) -> GameContextValidationProcess:
         """Get GameContextValidationProcess instance."""
         return cast(GameContextValidationProcess, self.entity_validator)

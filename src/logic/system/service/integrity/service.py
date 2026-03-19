@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2025-11-18
 """
 
-from abc import ABC
+from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from logic.system import Service, BuildProcess, ValidationProcess
@@ -29,42 +29,30 @@ class IntegrityService(ABC, Service[Generic[T]]):
     Attributes:
         id: int
         name: name
-        builder: BuildProcess[T]
-        validator: ValidationProcess[T]
 
     Provides:
 
     Super Class:
         Service
     """
-    _builder: BuildProcess[T]
-    _validator: ValidationProcess[T]
     
-    def __init__(
-            self,
-            id: int,
-            name: str,
-            builder: BuildProcess[T],
-            validator: ValidationProcess[T]
-    ):
+    def __init__(self, id: int, name: str,):
         """
         Args:
             id: int
-            name: str
-            builder: BuildProcess[T]
-            validator: ValidationProcess[T]
+            name: str[T]
         """
         super().__init__(id=id, name=name,)
-        self._builder = builder
-        self._validator = validator
     
     @property
-    def builder(self) -> BuildProcess[T]:
-        return self._builder
+    @abstractmethod
+    def build(self) -> BuildProcess[T]:
+        pass
     
     @property
-    def validator(self) -> ValidationProcess[T]:
-        return self.certifier
+    @abstractmethod
+    def validation(self) -> ValidationProcess[T]:
+        pass
     
     def __eq__(self, other):
         if super().__eq__(other):

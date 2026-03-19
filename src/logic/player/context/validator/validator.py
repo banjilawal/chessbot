@@ -118,13 +118,13 @@ class PlayerContextValidationProcess(ValidationProcess[PlayerContext]):
                 return ValidationResult.success(context)
             
             if context.team is not None:
-                validation = team_service.validator.execute(candidate=context.team)
+                validation = team_service.validation.execute(candidate=context.team)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
                 return ValidationResult.success(context)
             
             if context.game is not None:
-                validation = game_service.validator.execute(candidate=context.game)
+                validation = game_service.validation.execute(candidate=context.game)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
                 return ValidationResult.success(context)

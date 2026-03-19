@@ -60,12 +60,12 @@ class CoordService(IntegrityService[Coord]):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
 
     @property
-    def builder(self) -> CoordBuildProcess:
+    def build(self) -> CoordBuildProcess:
         """get CoordBuildProcess"""
         return cast(CoordBuildProcess, self.entity_builder)
     
     @property
-    def validator(self) -> CoordValidationProcess:
+    def validation(self) -> CoordValidationProcess:
         """get CoordValidationProcess"""
         return cast(CoordValidationProcess, self.entity_validator)
     
@@ -103,13 +103,13 @@ class CoordService(IntegrityService[Coord]):
             if coord_validation.is_failure:
                 return BuildResult.failure(coord_validation.exception)
             # Certify the vector param.
-            vector_validation = vector_service.validator.execute(candidate=vector)
+            vector_validation = vector_service.validation.execute(candidate=vector)
             if vector_validation.is_failure:
                 return BuildResult.failure(vector_validation.exception)
             
             # when params are certified return the BuildResult.
-            build_result =  self.builder.execute(
-                row=(coord.row + vector.y), column=(coord.column + vector.x), validator=self.validator
+            build_result =  self.build.execute(
+                row=(coord.row + vector.y), column=(coord.column + vector.x), validator=self.validation
             )
             if build_result.is_failure:
                 return ComputationResult.failure(build_result.exception)
@@ -156,13 +156,13 @@ class CoordService(IntegrityService[Coord]):
             if coord_validation.is_failure:
                 return BuildResult.failure(coord_validation.exception)
             # Certify the scalar param
-            scalar_validation = scalar_service.validator.execute(candidate=scalar)
+            scalar_validation = scalar_service.validation.execute(candidate=scalar)
             if scalar_validation.is_failure:
                 return BuildResult.failure(scalar_validation.exception)
             
             # when params are certified return the BuildResult.
             return self._builder.execute(
-                row=(coord.y * scalar.value), column=(coord.x * scalar.value), validator=self.validator
+                row=(coord.y * scalar.value), column=(coord.x * scalar.value), validator=self.validation
             )
             # Finally, catch any missed exception and wrap A CoordServiceException around it then return the
             # exception-chain inside the BuildResult.
@@ -216,11 +216,11 @@ class CoordService(IntegrityService[Coord]):
         method = "CoordService.convert_vector_to_coord"
         try:
             # Certify the vector param
-            vector_validation = vector_service.validator.execute(candidate=vector)
+            vector_validation = vector_service.validation.execute(candidate=vector)
             if vector_validation.is_failure:
                 return BuildResult.failure(vector_validation.exception)
             # After the vector is certified return the BuildResult.
-            return self._builder.execute(row=vector.y, column=vector.x, validator=self.validator
+            return self._builder.execute(row=vector.y, column=vector.x, validator=self.validation
                                          )
             # Finally, catch any missed exception and wrap A CoordServiceException around it then return the
             # exception-chain inside the BuildResult.

@@ -88,7 +88,7 @@ class HostageBuildProcess(BuildProcess[Hostage]):
                 )
             )
         # Handle the case that, the captured_square is not certified safe.
-        captured_square_validation = square_service.validator.execute(candidate=captured_square)
+        captured_square_validation = square_service.validation.execute(candidate=captured_square)
         if captured_square_validation.failure:
             # Send the exception chain on failure
             return BuildResult.failure(

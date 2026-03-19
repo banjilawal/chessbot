@@ -66,12 +66,12 @@ class ArenaService(IntegrityService[Arena]):
         self._arena_team_relation_analyzer = team_relation_tester
     
     @property
-    def builder(self) -> ArenaBuildProcess:
+    def build(self) -> ArenaBuildProcess:
         """get ArenaBuildProcess"""
         return cast(ArenaBuildProcess, self.entity_builder)
     
     @property
-    def validator(self) -> ArenaValidationProcess:
+    def validation(self) -> ArenaValidationProcess:
         """get ArenaValidationProcess"""
         return cast(ArenaValidationProcess, self.entity_validator)
     
@@ -86,7 +86,7 @@ class ArenaService(IntegrityService[Arena]):
         relation = self._arena_team_relation_analyzer.execute(
             candidate_primary=arena,
             candidate_satellite=team,
-            arena_validator=self.validator,
+            arena_validator=self.validation,
             team_service=team_service,
         )
         # Handle the case that, one of the parties fails validation.
@@ -142,7 +142,7 @@ class ArenaService(IntegrityService[Arena]):
     ) -> SearchResult[Team]:
         """"""
         method = "ArenaService.team_from_schema"
-        arena_validation = self.validator.execute(arena)
+        arena_validation = self.validation.execute(arena)
         if arena_validation.is_failure:
             return SearchResult.failure(
                 ArenaServiceException(

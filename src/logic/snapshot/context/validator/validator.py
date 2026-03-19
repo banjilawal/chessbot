@@ -118,7 +118,7 @@ class SnapshotContextValidationProcess(ValidationProcess[SnapshotContext]):
             
             # Validation subflow for game SnapshotContexts.
             if context.game is not None:
-                validation = game_service.validator.execute(candidate=context.game)
+                validation = game_service.validation.execute(candidate=context.game)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
                 # On validation success return the game_SnapshotContext in the validation Result.
@@ -126,7 +126,7 @@ class SnapshotContextValidationProcess(ValidationProcess[SnapshotContext]):
 
             # Validation subflow for team SnapshotContexts.
             if context.team is not None:
-                validation = team_service.validator.execute(candidate=context.team)
+                validation = team_service.validation.execute(candidate=context.team)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
                 # On validation success return the team_SnapshotContext ValidationResult.
@@ -134,7 +134,7 @@ class SnapshotContextValidationProcess(ValidationProcess[SnapshotContext]):
             
             # Validation subflow for arena SnapshotContexts.
             if context.arena is not None:
-                validation = arena_service.validator.execute(candidate=context.arena)
+                validation = arena_service.validation.execute(candidate=context.arena)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
                 # On validation success return the arena_SnapshotContext in the validation Result.
@@ -157,7 +157,7 @@ class SnapshotContextValidationProcess(ValidationProcess[SnapshotContext]):
 
             # Validation subflow for owner SnapshotContexts.
             if context.plyer is not None:
-                validation = player_service.validator.execute(candidate=context.player)
+                validation = player_service.validation.execute(candidate=context.player)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
                 # On validation success return the player_SnapshotContext in the ValidationResult

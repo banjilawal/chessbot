@@ -68,11 +68,11 @@ class CoordContextService(ContextService[CoordContext]):
         return cast(CoordFinder, self.entity_finder)
     
     @property
-    def builder(self) -> CoordContextBuildProcess:
+    def build(self) -> CoordContextBuildProcess:
         """Get CoordContextBuildProcess instance."""
         return cast(CoordContextBuildProcess, self.entity_builder)
     
     @property
-    def validator(self) -> CoordContextValidationProcess:
+    def validation(self) -> CoordContextValidationProcess:
         """Get CoordContextValidationProcess instance."""
         return cast(CoordContextValidationProcess, self.entity_validator)

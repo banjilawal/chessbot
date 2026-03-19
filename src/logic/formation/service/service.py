@@ -114,7 +114,7 @@ class FormationService(HashService[Formation]):
         method = "FormationService.get_team_square"
         
         # Handle the case that, the team does not get certfied safe.
-        team_validation = team_service.validator.execute(candidate=team)
+        team_validation = team_service.validation.execute(candidate=team)
         # Return the exception chain on failure.
         if team_validation.is_failure:
             return SearchResult.failure(
@@ -191,7 +191,7 @@ class FormationService(HashService[Formation]):
             None
         """
         method = "FormationService.lookup_formation"
-        result = self.key_service.lookup.query(super_key=super_key, super_key_validator=self.key_service.validator)
+        result = self.key_service.lookup.query(super_key=super_key, super_key_validator=self.key_service.validation)
         
         # Handle the case search failed by raising an exception.
         if result.is_failure:

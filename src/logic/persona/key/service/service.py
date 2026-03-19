@@ -57,12 +57,12 @@ class PersonaKeyService(ContextService[PersonaKey]):
         super().__init__(id=id, name=name, builder=builder, validator=validator, finder=lookup)
     
     @property
-    def builder(self) -> PersonaKeyBuildProcess:
+    def build(self) -> PersonaKeyBuildProcess:
         """get PersonaKeyBuildProcess"""
         return cast(PersonaKeyBuildProcess, self.entity_builder)
     
     @property
-    def validator(self) -> PersonaKeyValidationProcess:
+    def validation(self) -> PersonaKeyValidationProcess:
         """get PersonaKeyValidationProcess"""
         return cast(PersonaKeyValidationProcess, self.entity_validator)
     

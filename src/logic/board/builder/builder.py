@@ -81,7 +81,7 @@ class BoardBuildProcess(BuildProcess[Board]):
                 )
             )
         # Handle the case that, the arena is not certified safe.
-        arena_validation = arena_service.validator.execute(candidate=arena)
+        arena_validation = arena_service.validation.execute(candidate=arena)
         if arena_validation.is_failure:
             # On failure return the exception.
             return BuildResult.failure(

@@ -73,11 +73,11 @@ class SquareService(IntegrityService[Square]):
         self._visit_processor = visit_processor
     
     @property
-    def builder(self) -> SquareBuildProcess:
+    def build(self) -> SquareBuildProcess:
         return cast(SquareBuildProcess, self.entity_builder)
     
     @property
-    def validator(self) -> SquareValidationProcess:
+    def validation(self) -> SquareValidationProcess:
         return cast(SquareValidationProcess, self.entity_validator)
     
     @property
@@ -115,7 +115,7 @@ class SquareService(IntegrityService[Square]):
             token=visitor,
             square=square,
             token_service=token_service,
-            square_validator=self.validator,
+            square_validator=self.validation,
         )
         # Handle the case that, the request was not completed.
         if visitation_result.is_failure:
@@ -153,7 +153,7 @@ class SquareService(IntegrityService[Square]):
         # --- Forward the request to the processor. ---#
         visitation_result = self._visit_processor.departure_processor.execute(
             square=square,
-            square_validator=self.validator,
+            square_validator=self.validation,
         )
         # Handle the case that, the request was not completed.
         if visitation_result.is_failure:

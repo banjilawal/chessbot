@@ -60,11 +60,11 @@ class PairListService(IntegrityService[PairList]):
         self._pair_service = pair_service
     
     @property
-    def builder(self) -> PairListBuildProcess:
+    def build(self) -> PairListBuildProcess:
         return cast(PairListBuildProcess, self.entity_builder)
     
     @property
-    def validator(self) -> PairListValidationProcess:
+    def validation(self) -> PairListValidationProcess:
         return cast(PairListValidationProcess, self.entity_validator)
     
     @property
@@ -91,7 +91,7 @@ class PairListService(IntegrityService[PairList]):
         method = f"{self.__class__.__name__}.unique_nodes"
         
         # Handle the case that, the pair_list is not certified as safe.
-        validation_result = self.validator.execute(pair_list)
+        validation_result = self.validation.execute(pair_list)
         if validation_result.is_failure:
             return SearchResult.failure(
                 PairListServiceException(

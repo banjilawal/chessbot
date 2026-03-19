@@ -67,11 +67,11 @@ class BoardContextService(ContextService[BoardContext]):
         return cast(BoardFinder, self.entity_finder)
     
     @property
-    def builder(self) -> BoardContextBuildProcess:
+    def build(self) -> BoardContextBuildProcess:
         """Get BoardContextBuildProcess instance."""
         return cast(BoardContextBuildProcess, self.entity_builder)
     
     @property
-    def validator(self) -> BoardContextValidationProcess:
+    def validation(self) -> BoardContextValidationProcess:
         """Get BoardContextValidationProcess instance."""
         return cast(BoardContextValidationProcess, self.entity_validator)

@@ -60,11 +60,11 @@ class TemplateService(IntegrityService[Template]):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
 
     @property
-    def builder(self) -> BuildProcess[Template]:
+    def build(self) -> BuildProcess[Template]:
         return self._builder
     
     @property
-    def validator(self) -> ValidationProcess[Template]:
+    def validation(self) -> ValidationProcess[Template]:
         return self.certifier
     
     def __eq__(self, other):

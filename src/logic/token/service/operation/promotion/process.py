@@ -15,7 +15,7 @@ from logic.rank import King, Pawn, Rank, RankService
 from logic.system import LoggingLevelRouter, UpdateResult, ValidationResult
 from logic.token import (
     PawnAlreadyPromotedException, PawnPromotionRowException, PawnToken, PromoteInactivePawnException,
-    PromoteToPawnException, PromotionProcessException, PromotionState, PromotionToKingException, TokenValidationProcess
+    PromoteToPawnException, PromotionState, PromotionToKingException, TokenValidation
 )
 
 
@@ -40,7 +40,7 @@ class PawnPromotionProcess:
                     pawn_token: PawnToken,
                     rank_service: RankService,
                     schema_service: SchemaService,
-                    token_validator: TokenValidationProcess
+                    token_validator: TokenValidation
             ) -> UpdateResult[PawnToken]
         
         -   _run_promotable_rank_tests(
@@ -65,7 +65,7 @@ class PawnPromotionProcess:
             pawn_token: PawnToken,
             rank_service: RankService = RankService(),
             schema_service: SchemaService = SchemaService(),
-            token_validator: TokenValidationProcess = TokenValidationProcess(),
+            token_validator: TokenValidation = TokenValidation(),
     ) -> UpdateResult[PawnToken]:
         """
         Executes the promotion transaction.
@@ -86,11 +86,11 @@ class PawnPromotionProcess:
             pawn_token: PawnToken
             rank_service: RankService
             schema_service: SchemaService
-            token_validator: TokenValidationProcess
+            token_validator: TokenValidation
         Returns:
             UpdateResult[PawnToken]
         Raises:
-            PromotionProcessException
+            PromotionException
             PromoteInactivePawnException
             PawnAlreadyPromotedException
         """
@@ -233,14 +233,14 @@ class PawnPromotionProcess:
         Returns:
             ValidationResult[int]
         Raises:
-            PromotionProcessException
+            PromotionException
             PromoteToPawnException
             PromoteToKingException
         """
         method = f"{cls.__class__.__name__}. _run_promotable_rank_tests"
         
         # Handle the case that, the rank is not certified as safe.
-        validation_result = rank_service.validator.execute(rank)
+        validation_result = rank_service.validation.execute(rank)
         if validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -310,7 +310,7 @@ class PawnPromotionProcess:
         Returns:
             ValidationResult[int]
         Raises:
-            PromotionProcessException
+            PromotionException
             PawnPromotionRowException
         """
         method = f"{cls.__class__.__name__}._run_enemy_rank_row_tests"

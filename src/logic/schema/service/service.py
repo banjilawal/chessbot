@@ -162,7 +162,7 @@ class SchemaService(HashService[Schema]):
             None
         """
         method = "SchemaService.lookup_schema"
-        result = self.key_service.lookup.query(super_key=super_key, super_key_validator=self.key_service.validator)
+        result = self.key_service.lookup.query(super_key=super_key, super_key_validator=self.key_service.validation)
         
         # Handle the case search failed by raising an exception.
         if result.is_failure:

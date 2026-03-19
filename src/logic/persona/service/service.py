@@ -138,7 +138,7 @@ class PersonaService(HashService[Persona]):
         method = "PersonaService.quota_per_rank"
         
         # Handle the case that, rank is not certified safe.
-        validation = rank_service.validator.execute(candidate=rank)
+        validation = rank_service.validation.execute(candidate=rank)
         if validation.is_failure:
             return ComputationResult.failure(
                 # Return exception chain on failure.
@@ -225,7 +225,7 @@ class PersonaService(HashService[Persona]):
             None
         """
         method = "PersonaService.lookup_persona"
-        result = self.key_service.lookup.query(super_key=super_key, super_key_validator=self.key_service.validator)
+        result = self.key_service.lookup.query(super_key=super_key, super_key_validator=self.key_service.validation)
         
         # Handle the case search failed by raising an exception.
         if result.is_failure:

@@ -154,7 +154,7 @@ class NodeContextValidationProcess(ValidationProcess[NodeContext]):
         
         # Certification for the search-by-square target.
         if context.square is not None:
-            validation = square_service.validator.execute(context.square)
+            validation = square_service.validation.execute(context.square)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(

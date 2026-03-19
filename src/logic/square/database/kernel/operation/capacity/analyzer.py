@@ -55,7 +55,7 @@ class SquareStackCapacityAnalyzer:
         method = f"{cls.__name__}.analyze"
         
         # Handle the case that, the rank is not certified as safe.
-        rank_validation_result = rank_service.validator.execute(rank)
+        rank_validation_result = rank_service.validation.execute(rank)
         if rank_validation_result.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(

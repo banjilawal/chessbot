@@ -59,12 +59,12 @@ class CommandService(IntegrityService[Command]):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
 
     @property
-    def builder(self) -> CommandBuilder:
-        return cast(CommandBuilder, self.builder)
+    def build(self) -> CommandBuilder:
+        return cast(CommandBuilder, self.build)
 
     @property
-    def validator(self) -> ValidationProcess[Command]:
-        return cast(CommandValidator, self.validator)
+    def validation(self) -> ValidationProcess[Command]:
+        return cast(CommandValidator, self.validation)
     #
     # def __eq__(self, other):
     #     if super().__eq__(other):

@@ -118,7 +118,7 @@ class AgentContextBuildProcess(BuildProcess[AgentContext]):
             
             # Build the team AgentContext if its flag is enabled.
             if team is not None:
-                validation = team_service.validator.execute(candidate=team)
+                validation = team_service.validation.execute(candidate=team)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
                 # On validation success return a team_AgentContext in the BuildResult.
@@ -126,7 +126,7 @@ class AgentContextBuildProcess(BuildProcess[AgentContext]):
             
             # Build the game AgentContext if its flag is enabled.
             if game is not None:
-                validation = game_service.validator.execute(candidate=game)
+                validation = game_service.validation.execute(candidate=game)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
                 # On validation success return a game_AgentContext in the BuildResult.

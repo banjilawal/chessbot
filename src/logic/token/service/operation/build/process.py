@@ -16,7 +16,7 @@ from logic.formation import Formation, FormationService
 from logic.system import BuildResult, BuildProcess, IdBuild, IdentityService, LoggingLevelRouter, id_emitter
 from logic.token import CombatantToken, KingToken, PawnToken, TokenBuildException, Token
 
-class TokenBuildProcess(BuildProcess[Token]):
+class TokenBuild(BuildProcess[Token]):
     """
     Role:Build, Data Integrity Guarantor
 
@@ -67,7 +67,7 @@ class TokenBuildProcess(BuildProcess[Token]):
         Raises:
             *   TokenBuildException
         """
-        method = "TokenBuildProcess.builder"
+        method = "TokenBuild.builder"
         
         # Handle the case that, the id is not certified as safe.
         id_validation = identity_service.validate_id(candidate=id)
@@ -154,7 +154,7 @@ class TokenBuildProcess(BuildProcess[Token]):
         Raises:
             *   None
         """
-        method = "TokenBuildProcess._build_pawn"
+        method = "TokenBuild._build_pawn"
         
         return BuildResult.success(
             payload=PawnToken(
@@ -192,7 +192,7 @@ class TokenBuildProcess(BuildProcess[Token]):
         Raises:
             *   None
         """
-        method = "TokenBuildProcess._build_king"
+        method = "TokenBuild._build_king"
         
         return BuildResult.success(
                 payload=KingToken(
@@ -227,10 +227,10 @@ class TokenBuildProcess(BuildProcess[Token]):
         Raises:
             *   None
         """
-        method = "TokenBuildProcess._build_combatant"
+        method = "TokenBuild._build_combatant"
         
         # Handle the case that, the rank build is not completed.
-        rank_build_result = rank_service.builder.execute(persona=formation.persona)
+        rank_build_result = rank_service.build.execute(persona=formation.persona)
         if rank_build_result.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(

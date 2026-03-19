@@ -66,12 +66,12 @@ class BoardService(IntegrityService[Board]):
         self._relation_analyzer = relation_analyzer
     
     @property
-    def builder(self) -> BoardBuildProcess:
-        return cast(BoardBuildProcess, self.builder)
+    def build(self) -> BoardBuildProcess:
+        return cast(BoardBuildProcess, self.build)
     
     @property
-    def validator(self) -> BoardValidationProcess:
-        return cast(BoardValidationProcess, self.validator)
+    def validation(self) -> BoardValidationProcess:
+        return cast(BoardValidationProcess, self.validation)
     
     @property
     def relation_analyzer(self) -> BoardRelationAnalyzer:
@@ -141,7 +141,7 @@ class BoardService(IntegrityService[Board]):
         method = "BoardService.layout_board"
         
         # Handle the case that, the board is not certified as safe.
-        validation = self.validator.execute(candidate=board)
+        validation = self.validation.execute(candidate=board)
         if validation.is_failure:
             # Return exception chain on failure
             return InsertionResult.failure(
@@ -189,7 +189,7 @@ class BoardService(IntegrityService[Board]):
         method = "BoardService.generate_graph"
     
         # Handle the case that, the board is not certified as safe.
-        validation = self.validator.execute(candidate=board)
+        validation = self.validation.execute(candidate=board)
         if validation.is_failure:
             # Return exception chain on failure
             return ComputationResult.failure(

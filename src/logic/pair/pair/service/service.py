@@ -52,10 +52,10 @@ class PairService(IntegrityService[Pair]):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         
     @property
-    def builder(self) -> PairBuildProcess:
+    def build(self) -> PairBuildProcess:
         return cast(PairBuildProcess, self.entity_builder)
     
     @property
-    def validator(self) -> PairValidationProcess:
+    def validation(self) -> PairValidationProcess:
         return cast(PairValidationProcess, self.entity_validator)
         

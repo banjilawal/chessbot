@@ -62,12 +62,12 @@ class GameService(IntegrityService[Game]):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
     
     @property
-    def builder(self) -> GameBuildProcess:
+    def build(self) -> GameBuildProcess:
         """get GameBuildProcess"""
         return cast(GameBuildProcess, self.entity_builder)
     
     @property
-    def validator(self) -> GameValidationProcess:
+    def validation(self) -> GameValidationProcess:
         """get GameValidationProcess"""
         return cast(GameValidationProcess, self.entity_validator)
     

@@ -12,7 +12,7 @@ from __future__ import annotations
 from logic.coord import Coord
 from logic.system import DeletionResult, LoggingLevelRouter
 from logic.token import (
-    InactiveTokenPoppingCoordException, MoveUndoLimitException, Token, TokenPopCoordException, TokenValidationProcess,
+    InactiveTokenPoppingCoordException, MoveUndoLimitException, Token, TokenPopCoordException, TokenValidation,
     UnopenedTokenPoppingCoordException
 )
 
@@ -33,7 +33,7 @@ class TokenPopCoordProcess:
     Provides:
             -   execute(
                         token: Token,
-                        token_validator: TokenValidationProcess = TokenValidationProcess(),
+                        token_validator: TokenValidation = TokenValidation(),
                 ) -> DeletionResult[Coord]
     Super Class:
     """
@@ -43,7 +43,7 @@ class TokenPopCoordProcess:
     def execute(
             cls,
             token: Token,
-            token_validator: TokenValidationProcess = TokenValidationProcess(),
+            token_validator: TokenValidation = TokenValidation(),
     ) -> DeletionResult[Coord]:
         """
         Forwards a request that the CoordDatabase instance removed its latest insert.
@@ -56,7 +56,7 @@ class TokenPopCoordProcess:
             2.  Otherwise, pop the last move and send the success result.
         Args:
             token: Token
-            token_validator: TokenValidationProcess
+            token_validator: TokenValidation
         Returns:
             DeletionResult[Coord]
         Raises:

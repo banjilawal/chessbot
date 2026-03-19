@@ -65,12 +65,12 @@ class RankContextService(ContextService[RankContext]):
         return cast(RankFinder, self.entity_finder)
     
     @property
-    def builder(self) -> RankContextBuilder:
+    def build(self) -> RankContextBuilder:
         """Get RankContextBuildProcess instance."""
         return cast(RankContextBuilder, self.entity_builder)
     
     @property
-    def validator(self) -> RankContextValidator:
+    def validation(self) -> RankContextValidator:
         """Get RankContextValidationProcess instance."""
         return cast(RankContextValidator, self.entity_validator)
 

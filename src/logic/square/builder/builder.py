@@ -185,13 +185,13 @@ class SquareBuildProcess(BuildProcess[Square]):
             return ValidationResult.failure(identity_validation.exception)
         
         # Handle the case that, the coord is not certified safe.
-        coord_validation = coord_service.validator.execute(coord)
+        coord_validation = coord_service.validation.execute(coord)
         if coord_validation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(coord_validation.exception)
         
         # Handle the case that, the board is not certified safe.
-        board_validation = board_service.validator.execute(board)
+        board_validation = board_service.validation.execute(board)
         if board_validation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(board_validation.exception)

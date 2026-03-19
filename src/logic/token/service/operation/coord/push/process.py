@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from logic.coord import Coord, CoordService, DuplicateCoordPushException
 from logic.system import InsertionResult, LoggingLevelRouter
-from logic.token import InactiveTokenPushingCoordException, Token, TokenPushCoordException, TokenValidationProcess
+from logic.token import InactiveTokenPushingCoordException, Token, TokenPushCoordException, TokenValidation
 
 
 class TokenPushCoordProcess:
@@ -34,7 +34,7 @@ class TokenPushCoordProcess:
                         token: Token,
                         coord: Coord,
                         coord_service: CoordService = CoordService(),
-                        token_validator: TokenValidationProcess = TokenValidationProcess(),
+                        token_validator: TokenValidation = TokenValidation(),
                 ) -> InsertionResult
     Super Class:
     """
@@ -46,7 +46,7 @@ class TokenPushCoordProcess:
             token: Token,
             coord: Coord,
             coord_service: CoordService = CoordService(),
-            token_validator: TokenValidationProcess = TokenValidationProcess(),
+            token_validator: TokenValidation = TokenValidation(),
     ) -> InsertionResult:
         """
         Forwards a request that the CoordDatabase insert  a new record.
@@ -61,7 +61,7 @@ class TokenPushCoordProcess:
             coord: Coord
             token: Token
             coord_service: CoordService
-            token_validator: TokenValidationProcess
+            token_validator: TokenValidation
         Returns:
             InsertionResult[bool]
         Raises:
@@ -106,7 +106,7 @@ class TokenPushCoordProcess:
                 )
             )
         # Handle the case that, the coord is not certified as safe.
-        coord_validation_result = coord_service.validator.execute(coord)
+        coord_validation_result = coord_service.validation.execute(coord)
         if coord_validation_result.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
