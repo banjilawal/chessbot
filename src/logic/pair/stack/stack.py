@@ -22,7 +22,7 @@ from logic.system.collection.stack.stack import T
 
 class PairStack(StackService[Pair]):
     """
-    Role:Data Stack, SearchWorker IntegrityService, CRUD Operations, Encapsulation, API layer.
+    Role:Data Stack, SearchWorker IntegrityService, CRUD Controller, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing API.

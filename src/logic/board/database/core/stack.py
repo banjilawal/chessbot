@@ -21,7 +21,7 @@ from logic.board import (
 
 class BoardStackService(StackService[Board]):
     """
-    Role:Data Stack, SearchWorker IntegrityService, CRUD Operations, Encapsulation, API layer.
+    Role:Data Stack, SearchWorker IntegrityService, CRUD Controller, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing API.

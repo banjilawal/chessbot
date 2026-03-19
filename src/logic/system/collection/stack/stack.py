@@ -23,7 +23,7 @@ class StackService(ABC, Generic[T]):
     """
     Role:
         -   Data layer
-        -   CRUD operations.
+        -   CRUD controller.
         -   ACID compliance.
         -   Microservice API
         -   Interface

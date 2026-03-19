@@ -11,14 +11,14 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# TOKEN_POSITION_PUSH_EXCEPTION #======================#
-    "TokenPushCoordException",
+    # ======================# TOKEN_COORD_POP_EXCEPTION #======================#
+    "TokenPopCoordException",
 ]
 
-from logic.system import InsertionException, UpdateException
+from logic.system import DeletionException
 
-# ======================# TOKEN_POSITION_PUSH_EXCEPTION #======================#
-class TokenPushCoordException(InsertionException):
+# ======================# TOKEN_COORD_POP_EXCEPTION #======================#
+class TokenPopCoordException(DeletionException):
     """
     Role:
         -   Worker Method Identification
@@ -26,7 +26,7 @@ class TokenPushCoordException(InsertionException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that the TokenPushCoord process was aborted.
+        1.  Indicate that the TokenPopCoord process was aborted.
         2.  Identify the method where the error occurred.
         
     Attributes:
@@ -43,10 +43,10 @@ class TokenPushCoordException(InsertionException):
     Super Class:
         UpdateException
     """
-    OP = "Insertion"
-    RSLT_TYPE = "InsertionResult"
-    ERR_CODE = "TOKEN_POSITION_PUSH_EXCEPTION"
-    MSG = "TokenCoordPushProcess method failed."
+    OP = "Deletion"
+    RSLT_TYPE = "DeletionResult"
+    ERR_CODE = "TOKEN_COORD_POP_EXCEPTION"
+    MSG = "TokenCoordPopProcess method failed."
     
     def __init__(
             self,

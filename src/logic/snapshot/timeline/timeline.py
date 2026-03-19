@@ -15,7 +15,7 @@ from logic.system import DeletionResult, InsertionResult, ResultStack
 
 class GameTimeline(ResultStack[Snapshot]):
     """
-    Role:Persistence, Unique Result Stack CRUD Operations.
+    Role:Persistence, Unique Result Stack CRUD Controller.
 
     Responsibilities:
     1.  Ensure all snapshots in managed by GameTimeline are unique.

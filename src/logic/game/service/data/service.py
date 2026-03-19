@@ -16,7 +16,7 @@ from logic.game import Game, GameContext, GameContextService, GameService
 
 class GameStackService(StackService[Game]):
     """
-    Role:Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
+    Role:Data Stack, Search Service, CRUD Controller, Encapsulation, API layer.
 
     Responsibilities:
     1.  Microservice API for managing and searching Game collections.

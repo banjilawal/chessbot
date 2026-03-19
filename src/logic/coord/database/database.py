@@ -17,7 +17,7 @@ from logic.coord import Coord, CoordContext, CoordContextService, CoordDatabaseE
 
 class CoordDatabase(Database[Coord]):
     """
-    Role:Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
+    Role:Unique Data Stack, Search Service, CRUD Controller, Encapsulation, API layer.
 
     Responsibilities:
     1.  Ensure all bag managed by CoordStack are unique.

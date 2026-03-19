@@ -22,7 +22,7 @@ from logic.pipeline import (
 
 class PipelineStack(StackService[Pipeline]):
     """
-    Role:Data Stack, Search AbstractService, CRUD Operations, Encapsulation, API layer.
+    Role:Data Stack, Search AbstractService, CRUD Controller, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing API.

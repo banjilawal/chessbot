@@ -21,7 +21,7 @@ class TokenStackOpsDispatcher:
         1.  Provide a single entry point for transactions TokenStackService operates.
 
     Attributes:
-        crud: TokenStackCrudManager
+        crud: TokenStackCrudController
         rank_quota_analyzer: RankQuotaAnalyzer
         collision_detector: TokenCollisionDetector
 

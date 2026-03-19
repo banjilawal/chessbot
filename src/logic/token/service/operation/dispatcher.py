@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.token import PawnPromotionProcess, TokenCoordHandler, TokenDeploymentProcess, TokenReadinessAnalyzer
+from logic.token import PawnPromotionProcess, TokenPositionController, TokenDeploymentProcess, TokenReadinessAnalyzer
 
 
 class TokenOpsDispatcher:
@@ -23,7 +23,7 @@ class TokenOpsDispatcher:
     Attributes:
         promotion: PawnPromotionProcess
         deployment: TokenDeploymentProcess
-        coord_handler: TokenCoordHandler
+        coord_handler: TokenPositionController
         readiness_analyzer: TokenReadinessAnalyzer
 
     Provides:
@@ -33,7 +33,7 @@ class TokenOpsDispatcher:
 
     _promotion: PawnPromotionProcess
     _deployment: TokenDeploymentProcess
-    _coord_handler: TokenCoordHandler
+    _coord_handler: TokenPositionController
     _readiness_analyzer: TokenReadinessAnalyzer
     
     
@@ -41,14 +41,14 @@ class TokenOpsDispatcher:
             self,
             promotion: PawnPromotionProcess = PawnPromotionProcess(),
             deployment: TokenDeploymentProcess = TokenDeploymentProcess(),
-            coord_handler: TokenCoordHandler = TokenCoordHandler(),
+            coord_handler: TokenPositionController = TokenPositionController(),
             readiness_analyzer: TokenReadinessAnalyzer = TokenReadinessAnalyzer(),
     ):
         """
         Args:
             promotion: PawnPromotionProcess
             deployment: TokenDeploymentProcess
-            coord_handler: TokenCoordHandler
+            coord_handler: TokenPositionController
             readiness_analyzer: TokenReadinessAnalyzer
         """
         self._promotion = promotion
@@ -65,7 +65,7 @@ class TokenOpsDispatcher:
         return self._deployment
     
     @property
-    def coord(self) -> TokenCoordHandler:
+    def coord(self) -> TokenPositionController:
         return self._coord_handler
     
     @property

@@ -18,7 +18,7 @@ from logic.system import StackService, InsertionResult, LoggingLevelRouter, id_e
 
 class HostageList(StackService[Hostage]):
     """
-    Role:Data Stack, SearchWorker IntegrityService, CRUD Operations, Encapsulation, API layer.
+    Role:Data Stack, SearchWorker IntegrityService, CRUD Controller, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing API.

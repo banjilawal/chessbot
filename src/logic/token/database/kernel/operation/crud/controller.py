@@ -12,10 +12,12 @@ from __future__ import annotations
 from logic.token import TokenStackPopper, TokenStackPusher
 
 
-class TokenStackCrudManager:
+class TokenStackCrudController:
     """
     Role:
-        - Utilities Provider
+        -   CRUD controller
+        -   Consistency provider
+        -   Integrity lifecycle manager
 
     Responsibilities:
         1.  Manage insertion/deletion operations for TokenStackService.
