@@ -15,22 +15,22 @@ from logic.pawn.promotion.event import PromotionEvent
 from logic.pawn.promotion.exception import DoublePromotionException
 from logic.rank import Bishop, Knight, Pawn, Queen, Rank, Rook
 from logic.square import Square
-from logic.system import BuildResult, Builder, Event, LoggingLevelRouter, ValidationResult, id_emitter
+from logic.system import BuildResult, BuildProcess, Event, LoggingLevelRouter, ValidationResult, id_emitter
 from logic.piece import (
     PawnPiece, PromotablePiece,
     BoardActorValidator
 )
 
 
-class OldPromotionEventBuilder(Builder[PromotionEvent]):
+class OldPromotionEventBuildProcess(BuildProcess[PromotionEvent]):
     """"""
     PROMOTABLE_RANKS = Tuple[Queen, Knight, Bishop, Rook]
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def build(cls, actor: Pawn, execution_environment: Board, parent: Event, new_rank: Rank=Queen) -> BuildResult[PromotionEvent]:
+    def execute(cls, actor: Pawn, execution_environment: Board, parent: Event, new_rank: Rank=Queen) -> BuildResult[PromotionEvent]:
         """"""
-        method = "PromotionEventBuilder.builder"
+        method = "PromotionEventBuildProcess.builder"
         
         try:
             if not isinstance(actor, PawnPiece):
@@ -73,7 +73,7 @@ class OldPromotionEventBuilder(Builder[PromotionEvent]):
                     DoublePromotionException(f"{method}: {DoublePromotionException.MSG}")
                 )
             
-            context_build_result = BoardContextBuilder.build(piece_id=actor.visitor_id)
+            context_build_result = BoardContextBuilder.execute(piece_id=actor.visitor_id)
             if context_build_result.is_failure():
                 return ValidationResult.failure(context_build_result.exception)
             context = cast(BoardContext, context_build_result.payload)

@@ -14,21 +14,21 @@ from logic.coord import Coord, CoordValidationProcess
 from logic.rank import Rank, RankValidator, RankSpec
 from logic.team import  RosterNumberOutOfBoundsException, ROSTER_SIZE
 from logic.system import (
-    IdValidationProcess, NameValidationProcess, Builder, BuildResult,
+    IdValidationProcess, NameValidationProcess, BuildProcess, BuildResult,
     MutuallyExclusiveParamsException, AllParamsSetNullException, LoggingLevelRouter
 )
 from logic.team.search.context.context import ProjectionSearchContext
 from logic.team.search import RansomOutOfBoundsException
 
 
-class ProjectionSearchContextBuilder(Builder[ProjectionSearchContext]):
+class ProjectionSearchContextBuildProcess(BuildProcess[ProjectionSearchContext]):
     """"""
 
     @classmethod
     @LoggingLevelRouter.monitor
-    def build (cls, id: Optional[int], name: Optional[str], coord: Optional[Coord]) -> BuildResult[ProjectionSearchContext]:
+    def execute (cls, id: Optional[int], name: Optional[str], coord: Optional[Coord]) -> BuildResult[ProjectionSearchContext]:
         """"""
-        method = "ProjectionSearchContextBuilder.builder"
+        method = "ProjectionSearchContextBuildProcess.builder"
         try:
             params = [id, name, coord]
             param_count = sum(bool(p) for p in params)

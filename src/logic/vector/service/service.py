@@ -12,7 +12,7 @@ from typing import List, cast
 
 from logic.coord import Coord, CoordService
 from logic.scalar import Scalar, ScalarService
-from logic.vector import Vector, VectorBuilder, VectorServiceException, VectorValidationProcess
+from logic.vector import Vector, VectorBuildProcess, VectorServiceException, VectorValidationProcess
 from logic.system import (
     BuildResult, ComputationResult, IdFactory, LoggingLevelRouter, IntegrityService, NumberValidationProcess
 )
@@ -46,7 +46,7 @@ class VectorService(IntegrityService[Vector]):
     Attributes:
         *   id (int)
         *   name (str)
-        *   builder (VectorBuilder) = VectorBuilder()
+        *   builder (VectorBuildProcess) = VectorBuildProcess()
         *   validator (VectorValidationProcess) = VectorValidationProcess()
 
     # LOCAL METHODS:
@@ -69,16 +69,16 @@ class VectorService(IntegrityService[Vector]):
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            builder: VectorBuilder = VectorBuilder(),
+            builder: VectorBuildProcess = VectorBuildProcess(),
             validator: VectorValidationProcess = VectorValidationProcess(),
             id: int = IdFactory.next_id(class_name="VectorService"),
     ):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
     
     @property
-    def builder(self) -> VectorBuilder:
-        """get VectorBuilder"""
-        return cast(VectorBuilder, self.entity_builder)
+    def builder(self) -> VectorBuildProcess:
+        """get VectorBuildProcess"""
+        return cast(VectorBuildProcess, self.entity_builder)
     
     @property
     def validator(self) -> VectorValidationProcess:
@@ -130,7 +130,7 @@ class VectorService(IntegrityService[Vector]):
         sum = Vector(x=0, y=0)
         
         for vector in vectors:
-            summation_result = self.builder.build(
+            summation_result = self.builder.execute(
                 x=sum.x + vector.x,
                 y=sum.y + vector.y,
                 number_validator=number_validator,
@@ -213,7 +213,7 @@ class VectorService(IntegrityService[Vector]):
                 )
             )
         # Handle the case that, the new build is unsuccessful.
-        build_result = self.builder.build(
+        build_result = self.builder.execute(
             x=vector.x * scalar,
             y=vector.y * scalar,
             number_validator=number_validator,
@@ -272,7 +272,7 @@ class VectorService(IntegrityService[Vector]):
                     ex=coord_validation_result.exception,
                 )
             )
-        vector_build_result = self.builder.build(
+        vector_build_result = self.builder.execute(
             x=coord.column,
             y=coord.row,
             number_validator=number_validator,

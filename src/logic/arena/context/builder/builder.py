@@ -1,4 +1,4 @@
-# src/logic/arena/builder/builder.py
+# src/logic/arena/builder/process.py
 
 """
 Module: logic.arena.builder.builder
@@ -11,15 +11,15 @@ from typing import Optional
 
 from logic.game import Game, GameService
 from logic.team import Team, TeamService
-from logic.system import Builder, BuildResult, ExecutionRouteException, IdentityService, LoggingLevelRouter
+from logic.system import BuildProcess, BuildResult, ExecutionRouteException, IdentityService, LoggingLevelRouter
 from logic.arena import (
     ArenaContext, ArenaContextBuildException, ExcessArenaContextFlagsException, ZeroArenaContextFlagsException,
 )
 
 
-class ArenaContextBuilder(Builder[ArenaContext]):
+class ArenaContextBuildProcess(BuildProcess[ArenaContext]):
     """
-    Role:Builder, Data Integrity And Reliability Guarantor
+    Role:BuildProcess, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce ArenaContext instances whose integrity is guaranteed at creation.
@@ -28,7 +28,7 @@ class ArenaContextBuilder(Builder[ArenaContext]):
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     Super Class:
-        *   Builder
+        *   BuildProcess
 
     Provides:
 
@@ -39,7 +39,7 @@ class ArenaContextBuilder(Builder[ArenaContext]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def build(
+    def execute(
             cls,
             id: Optional[int] = None,
             name: Optional[str] = None,

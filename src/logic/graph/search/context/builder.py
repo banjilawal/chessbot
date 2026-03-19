@@ -11,18 +11,18 @@ from typing import Optional
 
 from logic.rank import RankBoundsChecker
 from logic.coord import Coord, CoordValidationProcess
-from logic.system import Builder, BuildResult, IdValidationProcess, LoggingLevelRouter, NameValidationProcess
+from logic.system import BuildProcess, BuildResult, IdValidationProcess, LoggingLevelRouter, NameValidationProcess
 from logic.domain import (
     VisitorSearchContext, ArenaVisitorSearchParamsException, NoVisitorSearchFilterSelectionException
 )
 
 
-class VisitorSearchContextBuilder(Builder[VisitorSearchContext]):
+class VisitorSearchContextBuildProcess(BuildProcess[VisitorSearchContext]):
     """"""
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def build(
+    def execute(
             cls,
             id: Optional[int] = None,
             name: Optional[str] = None,
@@ -33,7 +33,7 @@ class VisitorSearchContextBuilder(Builder[VisitorSearchContext]):
             team_name: Optional[str] = None
     ) -> BuildResult[VisitorSearchContext]:
         """"""
-        method = "VisitorSearchContextBuilder.builder"
+        method = "VisitorSearchContextBuildProcess.builder"
         
         try:
             params = [name, ransom, id, team_id, team_name, rank_name, coord]

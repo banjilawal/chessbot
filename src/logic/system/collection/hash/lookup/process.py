@@ -1,4 +1,4 @@
-# src/logic/system/collection/hash/lookup/lookup.py
+# src/logic/system/collection/hash/lookup/process.py
 
 """
 Module: logic.system.collection.hash.lookup.lookup
@@ -11,10 +11,10 @@ from enum import Enum
 from typing import List
 from abc import abstractmethod
 
-from logic.system import SearchWorker, Context, LoggingLevelRouter, SearchResult, ValidationProcess
+from logic.system import SearchProcess, Context, LoggingLevelRouter, SearchResult, ValidationProcess
 
 
-class HashLookup(SearchWorker[Enum]):
+class HashLookupProcess(SearchProcess[Enum]):
     """
     Role:Forward Lookups,
 
@@ -25,7 +25,7 @@ class HashLookup(SearchWorker[Enum]):
     3.  Indicate the HashMap does have an entry for the Key with an exception in the SearchResult.
 
     Super Class:
-        *   SearchWorker
+        *   SearchProcess
 
     Provides:
 

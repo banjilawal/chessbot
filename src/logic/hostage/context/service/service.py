@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast
 
 from logic.system import ContextService, id_emitter
-from logic.hostage import CaptivityContext, CaptivityContextBuilder, CaptivityContextValidationProcess, HostageFinder
+from logic.hostage import CaptivityContext, CaptivityContextBuildProcess, CaptivityContextValidationProcess, HostageFinder
 
 
 class HostageContextService(ContextService[CaptivityContext]):
@@ -41,7 +41,7 @@ class HostageContextService(ContextService[CaptivityContext]):
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             finder: HostageFinder = HostageFinder(),
-            builder: CaptivityContextBuilder = CaptivityContextBuilder(),
+            builder: CaptivityContextBuildProcess = CaptivityContextBuildProcess(),
             validator: CaptivityContextValidationProcess = CaptivityContextValidationProcess(),
     ):
         """
@@ -51,7 +51,7 @@ class HostageContextService(ContextService[CaptivityContext]):
             *   name (str)
             *   id (int)
             *   finder (HostageFinder)
-            *   builder (CaptivityContextBuilder)
+            *   builder (CaptivityContextBuildProcess)
             *   validator (CaptivityContextValidationProcess)
         # RETURNS:
             None
@@ -67,9 +67,9 @@ class HostageContextService(ContextService[CaptivityContext]):
         return cast(HostageFinder, self.entity_finder)
     
     @property
-    def builder(self) -> CaptivityContextBuilder:
-        """Get CaptivityContextBuilder instance."""
-        return cast(CaptivityContextBuilder, self.entity_builder)
+    def builder(self) -> CaptivityContextBuildProcess:
+        """Get CaptivityContextBuildProcess instance."""
+        return cast(CaptivityContextBuildProcess, self.entity_builder)
     
     @property
     def validator(self) -> CaptivityContextValidationProcess:

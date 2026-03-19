@@ -1,4 +1,4 @@
-# src/logic/token/token/service/collision/detector.py
+# src/logic/token/token/service/collision/detection.py
 
 """
 Module: logic.token.service.collision.detector
@@ -9,14 +9,14 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.system import CollisionDetector, CollisionReport, LoggingLevelRouter
+from logic.system import CollisionDetectionProcess, CollisionReport, LoggingLevelRouter
 from logic.token import (
     Token, TokenCollisionDetectorFailureException, TokenDesignationCollisionException,
     TokenIdCollisionException, TokenOpeningSquareCollisionException, TokenStackService
 )
 
 
-class TokenCollisionDetector(CollisionDetector[Token]):
+class TokenCollisionDetectionProcess(CollisionDetectionProcess[Token]):
     """
      Role:
          - Collision Detection Worker
@@ -34,12 +34,12 @@ class TokenCollisionDetector(CollisionDetector[Token]):
             ) -> CollisionReport
             
      Super:
-        -   CollisionDetector[T]
+        -   CollisionDetectionProcess[T]
     """
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def detect(
+    def execute(
             cls,
             target: Token,
             token_stack: TokenStackService,
@@ -73,7 +73,7 @@ class TokenCollisionDetector(CollisionDetector[Token]):
             candidate=target
         )
         if validation_result.is_failure:
-            return CollisionReport.detector_failure(
+            return CollisionReport.failure(
                 exception=TokenCollisionDetectorFailureException(
                     val=method,
                     var="token failed integrity validation",

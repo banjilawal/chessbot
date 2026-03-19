@@ -22,7 +22,7 @@ from logic.system import WorkException
 class OperationException(WorkException):
     """
     Role:
-        -   Work Method Identifier
+        -   Process Identifier
         -   Exception Chain Layer 1
         -   Exception Messaging
 

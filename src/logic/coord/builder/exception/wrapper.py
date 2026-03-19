@@ -23,8 +23,8 @@ class CoordBuildException(BuildException):
     Role:Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Indicate the CoordBuilder did not produce a valid work product.
-    2.  Identify the CoordBuilder method where the failure occurred.
+    1.  Indicate the CoordBuildProcess did not produce a valid work product.
+    2.  Identify the CoordBuildProcess method where the failure occurred.
 
     Super Class:
         *   BuildException
@@ -52,7 +52,7 @@ class CoordBuildException(BuildException):
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     ERR_CODE = "COORD_BUILD_FAILURE"
-    MSG = "Failure in CoordBuilder method."
+    MSG = "Failure in CoordBuildProcess method."
 
     def __init__(
             self,

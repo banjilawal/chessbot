@@ -53,7 +53,7 @@ class BlockedPathTransaction(TravelTransaction[BlockingEvent]):
             
             self.event.actor.discoveries.append(Discovery(self.event.friend))
             
-            context_build = DiscoverySearchContextBuilder.build(piece_id=self.event.friend.visitor_id)
+            context_build = DiscoverySearchContextBuilder.execute(piece_id=self.event.friend.visitor_id)
             if context_build.is_failure():
                 return TransactionResult.errored(
                     event_update=self.event,

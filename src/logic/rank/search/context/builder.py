@@ -10,16 +10,16 @@ version: 1.0.0
 from typing import Optional
 
 
-from logic.system import BuildResult, Builder, LoggingLevelRouter
+from logic.system import BuildResult, BuildProcess, LoggingLevelRouter
 from logic.rank import (
     Rank, RankValidator, RankContext, RankContextBuildException,
     NoRankSearchOptionSelectedException, MoreThanOneRankSearchOptionPickedException,
 )
 
 
-class RankContextBuilder(Builder[RankContext]):
+class RankContextBuildProcess(BuildProcess[RankContext]):
     """
-    Role:Builder, Data Integrity And Reliability Guarantor
+    Role:BuildProcess, Data Integrity And Reliability Guarantor
 
     Responsibilities:
         1. Manage conintuction of RankFinder instances that can be used safely by the client.
@@ -38,7 +38,7 @@ class RankContextBuilder(Builder[RankContext]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def build(
+    def execute(
             cls,
             id: Optional[int] = None,
             name: Optional[str] = None,
@@ -71,7 +71,7 @@ class RankContextBuilder(Builder[RankContext]):
             * NoRankSearchOptionSelectedException
             * MoreThanOneRankSearchOptionPickedException
         """
-        method = "RankContextBuilder.builder"
+        method = "RankContextBuildProcess.builder"
         
         try:
             params = [id, name, ransom, team_quota, designation]
@@ -136,7 +136,7 @@ class RankContextBuilder(Builder[RankContext]):
         Raises:
             * InvalidRankContextException
         """
-        method = "RankContextBuilder.build_id_search_context"
+        method = "RankContextBuildProcess.build_id_search_context"
         try:
             match = id in rank_validator.get_all_ids()
         
@@ -170,7 +170,7 @@ class RankContextBuilder(Builder[RankContext]):
         Raises:
             * InvalidRankContextException
         """
-        method = "RankContextBuilder.build_column_search_context"
+        method = "RankContextBuildProcess.build_column_search_context"
         
         try:
             column_validation = rank_validator(column)
@@ -209,7 +209,7 @@ class RankContextBuilder(Builder[RankContext]):
         Raises:
             * InvalidRankContextException
         """
-        method = "RankContextBuilder.build_rank_search_context"
+        method = "RankContextBuildProcess.build_rank_search_context"
         
         try:
             rank_validation = rank_validator.execute(rank)

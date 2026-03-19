@@ -5,7 +5,7 @@ This module is exclusively for defining all custom **rollback_exception classes*
 creation, coord_stack_validator, and manipulation of `Vector` objects.
 
 **Limitations** It does not contain any logic for raising these exception; that responsibility
-`Vector`, `VectorBuilder`, and `VectorValidationProcess`
+`Vector`, `VectorBuildProcess`, and `VectorValidationProcess`
 
 THEME:
 -----
@@ -91,7 +91,7 @@ This module is exclusively for defining all custom **rollback_exception classes*
 creation, coord_stack_validator, and manipulation of `Vector` objects.
 
 **Limitations** It does not contain any logic for raising these exception; that responsibility
-`Vector`, `VectorBuilder`, and `VectorValidationProcess`
+`Vector`, `VectorBuildProcess`, and `VectorValidationProcess`
 
 THEME:
 -----

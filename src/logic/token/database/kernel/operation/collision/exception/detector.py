@@ -27,7 +27,7 @@ class TokenCollisionDetectorFailureException(TokenDebugException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that the TokenCollisionDetector experienced an error. It did not run the collision tests.
+        1.  Indicate that the TokenCollisionDetectionProcess experienced an error. It did not run the collision tests.
 
     Super:
         TokenDebugException
@@ -42,7 +42,7 @@ class TokenCollisionDetectorFailureException(TokenDebugException):
         err_code: Optional[str]        
     """
     ERR_CODE = "TOKEN_COLLISION_DETECTOR_FAILURE"
-    MSG = "TokenCollisionDetector experienced an error. no collision tests were run."
+    MSG = "TokenCollisionDetectionProcess experienced an error. no collision tests were run."
     
     def __init__(
             self,

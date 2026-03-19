@@ -1,7 +1,7 @@
 # src/command/command/command/build/validator/worker.py
 
 """
-Module: command.command.command.build.validator.wrapper
+Module: command.command.command.build.validator.work
 Author: Banji Lawal
 Created: 2026-02-24
 """

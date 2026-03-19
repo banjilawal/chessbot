@@ -36,4 +36,4 @@ class FormationSquareBoundsException(FormationException, BoundsException):
     None
     """
     ERR_CODE = "FORMATION_SQUARE_NAME_BOUNDS"
-    MSG = "FormationLookup failed: Target was outside the set of possible Formation item names."
+    MSG = "FormationLookupProcess failed: Target was outside the set of possible Formation item names."

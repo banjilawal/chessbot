@@ -23,8 +23,8 @@ class TeamBuildException(BuildException):
     Role:Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Indicate the TeamBuilder did not produce a valid work product.
-    2.  Identify the TeamBuilder method where the failure occurred.
+    1.  Indicate the TeamBuildProcess did not produce a valid work product.
+    2.  Identify the TeamBuildProcess method where the failure occurred.
 
     Super Class:
         *   BuildException
@@ -52,7 +52,7 @@ class TeamBuildException(BuildException):
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     ERR_CODE = "TEAM_BUILD_FAILURE"
-    MSG = "Failure in TeamBuilder method."
+    MSG = "Failure in TeamBuildProcess method."
 
     def __init__(
             self,

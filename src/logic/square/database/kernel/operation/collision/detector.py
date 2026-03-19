@@ -1,4 +1,4 @@
-# src/logic/square/square/service/collision/detector.py
+# src/logic/square/square/service/collision/detection.py
 
 """
 Module: logic.square.service.collision.detector
@@ -14,10 +14,10 @@ from logic.square import (
     SquareNameCollisionException
 )
 from logic.square.database.kernel import SquareStackService
-from logic.system import CollisionDetector, CollisionReport, LoggingLevelRouter
+from logic.system import CollisionDetectionProcess, CollisionReport, LoggingLevelRouter
 
 
-class SquareCollisionDetector(CollisionDetector[Square]):
+class SquareCollisionDetectionProcess(CollisionDetectionProcess[Square]):
     """
      Role:
          - Collision Detection Worker
@@ -35,12 +35,12 @@ class SquareCollisionDetector(CollisionDetector[Square]):
             ) -> CollisionReport
             
      Super:
-        -   CollisionDetector[T]
+        -   CollisionDetectionProcess[T]
     """
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def detect(
+    def execute(
             cls,
             target: Square,
             square_stack: SquareStackService,
@@ -74,7 +74,7 @@ class SquareCollisionDetector(CollisionDetector[Square]):
             candidate=target
         )
         if validation_result.is_failure:
-            return CollisionReport.detector_failure(
+            return CollisionReport.failure(
                 exception=SquareCollisionDetectorFailureException(
                     val=method,
                     var="square failed integrity validation",

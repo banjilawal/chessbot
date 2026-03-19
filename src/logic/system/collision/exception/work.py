@@ -12,14 +12,14 @@ from typing import Optional
 
 __all__ = [
     # ======================# COLLIDER_DETECTED #======================#
-    "ColliderException",
+    "CollisionDetectionException",
 ]
 
 from logic.system import OperationException
 
 
 # ======================# COLLIDER_DETECTED #======================#
-class ColliderException(OperationException):
+class CollisionDetectionException(OperationException):
     """
     Role:Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 

@@ -12,7 +12,7 @@ from __future__ import annotations
 from logic.rank import RankService
 from logic.system import InsertionResult, LoggingLevelRouter
 from logic.token import (
-    RankQuotaAnalysis, RankQuotaFullException, Token, TokenCollisionDetector, TokenStackFullException,
+    RankQuotaAnalysis, RankQuotaFullException, Token, TokenCollisionDetectionProcess, TokenStackFullException,
     TokenStackPushException, TokenStackService, TokenStackState
 )
 
@@ -37,7 +37,7 @@ class TokenStackPushPusher:
                     token_stack: TokenStackService,
                     rank_service: RankService = RankService(),
                     rank_quota_analyzer: RankQuotaAnalysis = RankQuotaAnalysis(),
-                    collision_detector: TokenCollisionDetector = TokenCollisionDetector(),
+                    collision_detector: TokenCollisionDetectionProcess = TokenCollisionDetectionProcess(),
             ) -> InsertionResult
 
     Super:
@@ -51,7 +51,7 @@ class TokenStackPushPusher:
             token_stack: TokenStackService,
             rank_service: RankService = RankService(),
             rank_quota_analyzer: RankQuotaAnalysis = RankQuotaAnalysis(),
-            collision_detector: TokenCollisionDetector = TokenCollisionDetector(),
+            collision_detector: TokenCollisionDetectionProcess = TokenCollisionDetectionProcess(),
     ) -> InsertionResult[bool]:
         """
         Action:
@@ -65,7 +65,7 @@ class TokenStackPushPusher:
            rank_service: RankService
            token_stack: TokenStackService
            rank_quota_analyzer: RankQuotaAnalysis
-           collision_detector: TokenCollisionDetector
+           collision_detector: TokenCollisionDetectionProcess
         Returns:
             InsertionResult
         Raises:
@@ -91,7 +91,7 @@ class TokenStackPushPusher:
                 )
             )
         # Request a collision report. The token is verified during the report generation. ---#
-        collision_detection_result = collision_detector.detect(
+        collision_detection_result = collision_detector.execute(
             target=token,
             dataset=token_stack.items,
         )

@@ -9,7 +9,7 @@ version: 1.0.0
 from typing import cast
 
 from logic.system import ContextService, id_emitter
-from logic.persona import PersonaLookup, PersonaKey, PersonaKeyBuilder, PersonaKeyValidationProcess
+from logic.persona import PersonaLookupProcess, PersonaKey, PersonaKeyBuildProcess, PersonaKeyValidationProcess
 
 
 class PersonaKeyService(ContextService[PersonaKey]):
@@ -37,8 +37,8 @@ class PersonaKeyService(ContextService[PersonaKey]):
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
-            lookup: PersonaLookup = PersonaLookup(),
-            builder: PersonaKeyBuilder = PersonaKeyBuilder(),
+            lookup: PersonaLookupProcess = PersonaLookupProcess(),
+            builder: PersonaKeyBuildProcess = PersonaKeyBuildProcess(),
             validator: PersonaKeyValidationProcess = PersonaKeyValidationProcess(),
     ):
         """
@@ -47,7 +47,7 @@ class PersonaKeyService(ContextService[PersonaKey]):
         # PARAMETERS:
             *   id (nt)
             *   name (str)
-            *   builder (PersonaKeyBuilder)
+            *   builder (PersonaKeyBuildProcess)
             *   validator (PersonaKeyValidationProcess)
         # RETURNS:
             None
@@ -57,9 +57,9 @@ class PersonaKeyService(ContextService[PersonaKey]):
         super().__init__(id=id, name=name, builder=builder, validator=validator, finder=lookup)
     
     @property
-    def builder(self) -> PersonaKeyBuilder:
-        """get PersonaKeyBuilder"""
-        return cast(PersonaKeyBuilder, self.entity_builder)
+    def builder(self) -> PersonaKeyBuildProcess:
+        """get PersonaKeyBuildProcess"""
+        return cast(PersonaKeyBuildProcess, self.entity_builder)
     
     @property
     def validator(self) -> PersonaKeyValidationProcess:
@@ -67,5 +67,5 @@ class PersonaKeyService(ContextService[PersonaKey]):
         return cast(PersonaKeyValidationProcess, self.entity_validator)
     
     @property
-    def lookup(self) -> PersonaLookup:
-        return cast(PersonaLookup, self.entity_finder)
+    def lookup(self) -> PersonaLookupProcess:
+        return cast(PersonaLookupProcess, self.entity_finder)

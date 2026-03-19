@@ -36,4 +36,4 @@ class PersonaRansomBoundsException(PersonaException, BoundsException):
     None
     """
     ERR_CODE = "PERSONA_RANSOM_BOUNDS_EXCEPTION"
-    MSG = "PersonaLookup failed: Target was outside the set of possible Persona ransoms."
+    MSG = "PersonaLookupProcess failed: Target was outside the set of possible Persona ransoms."

@@ -37,4 +37,4 @@ class PersonaQuotaBoundsException(PersonaException, BoundsException):
     None
     """
     ERR_CODE = "PERSONA_QUOTA_BOUNDS_EXCEPTION"
-    MSG = "PersonaLookup failed: Target was outside the set of possible Persona quotas."
+    MSG = "PersonaLookupProcess failed: Target was outside the set of possible Persona quotas."

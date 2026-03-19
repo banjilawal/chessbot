@@ -13,7 +13,7 @@ from copy import deepcopy
 from typing import cast
 
 from logic.token import Token, TokenService
-from logic.square import Square, SquareBuilder, SquareServiceException, SquareValidationProcess, VisitationProcessor
+from logic.square import Square, SquareBuildProcess, SquareServiceException, SquareValidationProcess, VisitationProcessor
 from logic.system import DeletionResult, IntegrityService, IdFactory, LoggingLevelRouter, UpdateResult
 
 
@@ -33,7 +33,7 @@ class SquareService(IntegrityService[Square]):
         
         id: int
         name: str
-        builder: SquareBuilder
+        builder: SquareBuildProcess
         validator: SquareValidationProcess
         visit_processor: VisitationProcessor
 
@@ -56,7 +56,7 @@ class SquareService(IntegrityService[Square]):
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            builder: SquareBuilder = SquareBuilder(),
+            builder: SquareBuildProcess = SquareBuildProcess(),
             validator: SquareValidationProcess = SquareValidationProcess(),
             id: int = IdFactory.next_id(class_name="SquareService"),
             visit_processor: VisitationProcessor = VisitationProcessor(),
@@ -65,7 +65,7 @@ class SquareService(IntegrityService[Square]):
         Args:
             id: int
             name: str
-            builder: Builder
+            builder: BuildProcess
             validator: ValidationProcess
             visit_processor: VisitationProcessor
         """
@@ -73,8 +73,8 @@ class SquareService(IntegrityService[Square]):
         self._visit_processor = visit_processor
     
     @property
-    def builder(self) -> SquareBuilder:
-        return cast(SquareBuilder, self.entity_builder)
+    def builder(self) -> SquareBuildProcess:
+        return cast(SquareBuildProcess, self.entity_builder)
     
     @property
     def validator(self) -> SquareValidationProcess:

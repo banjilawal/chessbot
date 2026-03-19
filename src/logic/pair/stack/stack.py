@@ -22,7 +22,7 @@ from logic.system.collection.stack.stack import T
 
 class PairStack(StackService[Pair]):
     """
-    Role:Data Stack, SearchWorker IntegrityService, CRUD Controller, Encapsulation, API layer.
+    Role:Data Stack, SearchProcess IntegrityService, CRUD Controller, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing API.
@@ -130,7 +130,7 @@ class PairStack(StackService[Pair]):
                 )
             )
         # --- Handoff validation, id, designation or opening_square collision detection. ---#
-        collision_report = self.integrity_service.collision_detector.detect(
+        collision_report = self.integrity_service.collision_detector.execute(
             target=item,
             dataset=self._stack,
         )

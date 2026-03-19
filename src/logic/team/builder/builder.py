@@ -1,4 +1,4 @@
-# src/logic/team/builder/builder.py
+# src/logic/team/builder/process.py
 
 """
 Module: logic.team.builder.builder
@@ -11,13 +11,13 @@ from logic.board import Board, BoardService
 from logic.schema import Schema, SchemaService
 from logic.player import Player, PlayerService
 from logic.team import Team, TeamBuildException
-from logic.system import Builder, BuildResult, IdFactory, IdentityService, LoggingLevelRouter
+from logic.system import BuildProcess, BuildResult, IdFactory, IdentityService, LoggingLevelRouter
 from logic.token import TokenDatabase
 
 
-class TeamBuilder(Builder[Team]):
+class TeamBuildProcess(BuildProcess[Team]):
     """
-     Role:Builder, Data Integrity And Reliability Guarantor
+     Role:BuildProcess, Data Integrity And Reliability Guarantor
 
      Responsibilities:
      1.  Produce Team instances whose integrity is guaranteed at creation.
@@ -26,7 +26,7 @@ class TeamBuilder(Builder[Team]):
      4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
      Super Class:
-         * Builder
+         * BuildProcess
 
      # PROVIDES:
      None
@@ -39,7 +39,7 @@ class TeamBuilder(Builder[Team]):
      """
     @classmethod
     @LoggingLevelRouter.monitor()
-    def build(
+    def execute(
             cls,
             board: Board,
             owner: Player,
@@ -73,7 +73,7 @@ class TeamBuilder(Builder[Team]):
         RAISES:
             *   TeamBuildException
         """
-        method = "TeamBuilder.builder"
+        method = "TeamBuildProcess.builder"
         
         # Handle the case that, a build param is not certified as safe.
         build_params_validation_result = cls._validate_build_params(
@@ -150,7 +150,7 @@ class TeamBuilder(Builder[Team]):
                     - On success: Square in the payload.
         Raises:
         """
-        method = "TeamBuilder._validate_build_params"
+        method = "TeamBuildProcess._validate_build_params"
         
         # Handle the case that, the id is not certified as safe.
         id_validation = identity_service.validate_id(candidate=id)
@@ -180,7 +180,7 @@ class TeamBuilder(Builder[Team]):
         return ValidationResult.success(4)
 
 
-# src/logic/square/builder/builder.py
+# src/logic/square/builder/process.py
 
 """
 Module: logic.square.builder.builder
@@ -195,19 +195,19 @@ from typing import cast
 from logic.board import Board, BoardService
 from logic.coord import Coord, CoordService
 from logic.square import (
-    AddingDuplicateSquareException, Square, SquareBuildException, SquareCollisionDetector, SquareContext,
+    AddingDuplicateSquareException, Square, SquareBuildException, SquareCollisionDetectionProcess, SquareContext,
     SquareCoordCollisionException,
     SquareIdCollisionException, SquareNameCollisionException
 )
 from logic.system import (
-    Builder, BuildResult, IdFactory, IdentityService, InsertionResult, InvariantBreachException, LoggingLevelRouter,
+    BuildProcess, BuildResult, IdFactory, IdentityService, InsertionResult, InvariantBreachException, LoggingLevelRouter,
     ValidationResult,
 )
 
 
-class SquareBuilder(Builder[Square]):
+class SquareBuildProcess(BuildProcess[Square]):
     """
-     Role:Builder, Data Integrity And Reliability Guarantor
+     Role:BuildProcess, Data Integrity And Reliability Guarantor
 
      Responsibilities:
      1.  Produce Square instances whose integrity and reliability are guaranteed.
@@ -215,7 +215,7 @@ class SquareBuilder(Builder[Square]):
      3.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
      Super Class:
-         * Builder
+         * BuildProcess
 
     Provides:
 
@@ -244,7 +244,7 @@ class SquareBuilder(Builder[Square]):
     
     @classmethod
     @LoggingLevelRouter.monitor()
-    def build(
+    def execute(
             cls,
             name: str,
             board: Board,
@@ -253,7 +253,7 @@ class SquareBuilder(Builder[Square]):
             board_service: BoardService = BoardService(),
             coord_service: CoordService = CoordService(),
             identity_service: IdentityService = IdentityService(),
-            square_collision_detector: SquareCollisionDetector = SquareCollisionDetector(),
+            square_collision_detector: SquareCollisionDetectionProcess = SquareCollisionDetectionProcess(),
     ) -> BuildResult[Square]:
         """
         # ACTION:
@@ -279,7 +279,7 @@ class SquareBuilder(Builder[Square]):
         Raises:
             *   SquareBuildException
         """
-        method = "SquareBuilder.builder"
+        method = "SquareBuildProcess.builder"
         
         # Handle the case that, a build param fails is not certified as safe.
         build_params_validation_result = cls._validate_build_params(
@@ -362,7 +362,7 @@ class SquareBuilder(Builder[Square]):
                     - On success: bool.
         Raises:
         """
-        method = "SquareBuilder._build_square_board_relationship"
+        method = "SquareBuildProcess._build_square_board_relationship"
         
         # If the item does not have  a fully bidirectional relationship with the board process the registration.
         relation_analysis = board_service.square_relation_analyzer.execute(

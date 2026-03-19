@@ -23,7 +23,7 @@ class SchemaLookupRouteException(SchemaException, ExecutionRouteException):
     Role:Fallback Result
     
     Responsibilities:
-    1. Indicate that SchemaLookup did not handle a build option or parameter with its own execution route.
+    1. Indicate that SchemaLookupProcess did not handle a build option or parameter with its own execution route.
     
     Super Class:
         *   SchemaException
@@ -38,5 +38,5 @@ class SchemaLookupRouteException(SchemaException, ExecutionRouteException):
     None
     """
     ERR_CODE = "NO_SCHEMA_LOOKUP_ROUTE_EXCEPTION"
-    MSG = "SchemaLookup failed: No search route was provided for a Schema attribute."
+    MSG = "SchemaLookupProcess failed: No search route was provided for a Schema attribute."
  

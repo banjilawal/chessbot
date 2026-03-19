@@ -1,4 +1,4 @@
-# src/logic/system/build/builder/builder.py
+# src/logic/system/build/builder/process.py
 
 """
 Module: logic.system.build.builder.builder
@@ -15,7 +15,7 @@ from logic.system import BuildResult, LoggingLevelRouter, ValidationProcess
 T = TypeVar("T")
 
 
-class Builder(ABC, Generic[T]):
+class BuildProcess(ABC, Generic[T]):
     """
     Role:Worker:
     # TASK: Build Data Integrity And Reliability Guarantor,
@@ -39,5 +39,5 @@ class Builder(ABC, Generic[T]):
     @classmethod
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def build(cls, *args, **kwargs) -> BuildResult[T]:
+    def execute(cls, *args, **kwargs) -> BuildResult[T]:
         pass

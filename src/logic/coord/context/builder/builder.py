@@ -1,4 +1,4 @@
-# src/logic/coord/context/builder/builder.py
+# src/logic/coord/context/builder/process.py
 
 """
 Module: logic.coord.context.builder.builder
@@ -11,14 +11,14 @@ from typing import Optional
 
 from logic.coord.context.builder.exception import CoordContextBuildException, CoordContextBuildRouteException
 from logic.system import (
-    BOARD_DIMENSION, BuildResult, Builder, NumberValidationProcess, ExecutionRouteException, LoggingLevelRouter,
+    BOARD_DIMENSION, BuildResult, BuildProcess, NumberValidationProcess, ExecutionRouteException, LoggingLevelRouter,
 )
 from logic.coord import CoordContext, ZeroCoordContextFlagsException
 
 
-class CoordContextBuilder(Builder[CoordContext]):
+class CoordContextBuildProcess(BuildProcess[CoordContext]):
     """
-    Role:Builder, Data Integrity And Reliability Guarantor
+    Role:BuildProcess, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce CoordContext instances whose integrity is guaranteed at creation.
@@ -27,7 +27,7 @@ class CoordContextBuilder(Builder[CoordContext]):
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     Super Class:
-        *   Builder
+        *   BuildProcess
 
     Provides:
 
@@ -37,7 +37,7 @@ class CoordContextBuilder(Builder[CoordContext]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def build(
+    def execute(
             cls,
             row: Optional[int] = None,
             column: Optional[int] = None,
@@ -64,7 +64,7 @@ class CoordContextBuilder(Builder[CoordContext]):
             *   CoordContextBuildException
             *   ArenaCoordContextFlagsException
         """
-        method = "CoordContextBuilder.builder"
+        method = "CoordContextBuildProcess.builder"
         
         # Count how many optional parameters are not-null. One param needs to be not-null.
         params = [row, column]

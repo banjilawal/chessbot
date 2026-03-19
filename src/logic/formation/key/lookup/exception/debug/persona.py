@@ -36,4 +36,4 @@ class FormationPersonaBoundsException(FormationException, BoundsException):
     None
     """
     ERR_CODE = "FORMATION_PERSONA_BOUNDS_EXCEPTION"
-    MSG = "FormationLookup failed: Target was outside the set of possible Formation personas."
+    MSG = "FormationLookupProcess failed: Target was outside the set of possible Formation personas."

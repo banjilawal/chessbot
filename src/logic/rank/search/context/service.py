@@ -48,7 +48,7 @@ class RankContextService(ContextService[RankContext]):
             *   name (str): Default value - SERVICE_NAME
             *   id (int): Default value - id_emitter.service_id
             *   finder (RankFinder): Default value - RankFinder()
-            *   builder (RankContextBuilder): Default value - RankContextBuilder()
+            *   builder (RankContextBuildProcess): Default value - RankContextBuildProcess()
             *   validator (RankContextValidationProcess): Default value - RankContextValidationProcess()
 
         # RETURNS:
@@ -66,7 +66,7 @@ class RankContextService(ContextService[RankContext]):
     
     @property
     def builder(self) -> RankContextBuilder:
-        """Get RankContextBuilder instance."""
+        """Get RankContextBuildProcess instance."""
         return cast(RankContextBuilder, self.entity_builder)
     
     @property

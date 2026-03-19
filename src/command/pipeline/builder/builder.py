@@ -1,4 +1,4 @@
-# src/command/command/build/request/builder/builder.py
+# src/command/command/build/request/builder/process.py
 
 """
 Module: command.command.build.request.builder.builder
@@ -9,22 +9,22 @@ Created: 2026-02-24
 from __future__ import annotations
 
 from logic.system import (
-    ArgumentCountException, ArgumentNameException, ArgumentTypeException, Builder, Command, CommandBuilderException,
+    ArgumentCountException, ArgumentNameException, ArgumentTypeException, BuildProcess, Command, CommandBuilderException,
     CommandNameException, LoggingLevelRouter, RequestValidator, BuildResult, Request
 )
 
 
-class CommandBuilder(Builder[Command]):
+class CommandBuildProcess(BuildProcess[Command]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def build(
+    def execute(
             cls,
             cipher: Command,
             request: Request,
             request_validator: RequestValidator = RequestValidator(),
     ) -> BuildResult[Command]:
-        method = "CommandBuilder.build"
+        method = "CommandBuildProcess.build"
         
         # Handle the case that, the request is not certified as safe.
         validation_result = request_validator.execute(candidate=request)

@@ -11,16 +11,16 @@ from __future__ import annotations
 from typing import List
 
 from logic.square import Square
-from logic.system import LoggingLevelRouter, SearchResult, StackSearcher
+from logic.system import LoggingLevelRouter, SearchResult, StackSearchProcess
 from logic.node import (
     DiscoveryStatus, Node, NodeContext, NodeContextValidationProcess, NodeSearchException, NodeSearchRouteException,
     NodeSearchNullDatasetException, NodeSearchPayloadTypeException
 )
 
 
-class NodeFinder(StackSearcher[Node]):
+class NodeFinder(StackSearchProcess[Node]):
     """
-    Role:SearchWorker
+    Role:SearchProcess
 
     Responsibilities:
     1.  Send bag in a NodeList whose attribute value match the context.key value to the caller.
@@ -30,7 +30,7 @@ class NodeFinder(StackSearcher[Node]):
     1.  NodeFinder sends the raw list of matches. Resolving id collisions is the caller's responsibility.
 
     # PARENT
-        *   SearchWorker
+        *   SearchProcess
 
     Provides:
 

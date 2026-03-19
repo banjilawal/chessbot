@@ -1,4 +1,4 @@
-# src/logic/snapshot/validator/exception/base.py
+# src/logic/snapshot/validator/exception/anchor.py
 
 """
 Module: logic.snapshot.validator.exception.base

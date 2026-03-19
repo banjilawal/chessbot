@@ -119,7 +119,7 @@ class Player(ABC):
     # )
     #
     # # Which internally uses your transactional system:
-    # # 1. SearchWorker returns Result[Token]
+    # # 1. SearchProcess returns Result[Token]
     # # 2. Validates inputs
     # # 3. Creates MoveEvent
     # # 4. Executes via TravelTransaction

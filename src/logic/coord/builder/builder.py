@@ -1,4 +1,4 @@
-# src/logic/coord/builder/builder.py
+# src/logic/coord/builder/process.py
 
 """
 Module: logic.coord.builder.builder
@@ -8,14 +8,14 @@ version: 1.0.0
 """
 
 
-from logic.system import BOARD_DIMENSION, Builder, BuildResult, LoggingLevelRouter, NumberValidationProcess
+from logic.system import BOARD_DIMENSION, BuildProcess, BuildResult, LoggingLevelRouter, NumberValidationProcess
 from logic.coord import Coord, CoordBuildException
 
 
 
-class CoordBuilder(Builder[Coord]):
+class CoordBuildProcess(BuildProcess[Coord]):
     """
-     Role:Builder, Data Integrity And Reliability Guarantor
+     Role:BuildProcess, Data Integrity And Reliability Guarantor
      
      Responsibilities:
      1.  Produce Coord instances whose integrity is guaranteed at creation.
@@ -23,7 +23,7 @@ class CoordBuilder(Builder[Coord]):
      3.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
      Super Class:
-         * Builder
+         * BuildProcess
 
      # PROVIDES:
      None
@@ -36,7 +36,7 @@ class CoordBuilder(Builder[Coord]):
      """
     @classmethod
     @LoggingLevelRouter.monitor
-    def build(
+    def execute(
             cls,
             row: int,
             column: int,
@@ -58,7 +58,7 @@ class CoordBuilder(Builder[Coord]):
         Raises:
             *   CoordBuildException
         """
-        method = "CoordBuilder.builder"
+        method = "CoordBuildProcess.builder"
         
         # Handle the case that, the row param is not certified safe
         row_validation = number_validator.execute(candidate=row, floor=0, ceiling=BOARD_DIMENSION - 1)

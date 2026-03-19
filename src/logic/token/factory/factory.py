@@ -13,10 +13,10 @@ from logic.persona import Persona
 from logic.team import Team, TeamValidationProcess
 from logic.rank import RankService
 from logic.formation import Formation, FormationService
-from logic.system import BuildResult, Builder, IdFactory, IdentityService, LoggingLevelRouter, id_emitter
+from logic.system import BuildResult, BuildProcess, IdFactory, IdentityService, LoggingLevelRouter, id_emitter
 from logic.token import CombatantToken, KingToken, PawnToken, TokenBuildException, Token
 
-class TokenFactory(Builder[Token]):
+class TokenFactory(BuildProcess[Token]):
     """
     Role:Factory, Data Integrity Guarantor
 
@@ -27,7 +27,7 @@ class TokenFactory(Builder[Token]):
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     Super Class:
-        *   Builder
+        *   BuildProcess
 
     Provides:
 
@@ -38,7 +38,7 @@ class TokenFactory(Builder[Token]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def build(
+    def execute(
             cls,
             owner: Team,
             formation: Formation,
@@ -230,7 +230,7 @@ class TokenFactory(Builder[Token]):
         method = "TokenFactory._build_combatant"
         
         # Handle the case that, the rank build is not completed.
-        rank_build_result = rank_service.builder.build(persona=formation.persona)
+        rank_build_result = rank_service.builder.execute(persona=formation.persona)
         if rank_build_result.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(

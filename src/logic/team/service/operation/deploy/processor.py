@@ -43,7 +43,7 @@ class DeployTeam:
                     square_stack: SquareStackService,
                     rank_service: RankService = RankService(),
                     rank_quota_analyzer: SquareStackCapacityAnalyzer = SquareStackCapacityAnalyzer(),
-                    collision_detector: SquareCollisionDetector = SquareCollisionDetector(),
+                    collision_detector: SquareCollisionDetectionProcess = SquareCollisionDetectionProcess(),
             ) -> InsertionResult
 
     Super:

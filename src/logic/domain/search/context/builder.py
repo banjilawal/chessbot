@@ -11,18 +11,18 @@ from typing import Optional
 
 from logic.rank import RankBoundsChecker
 from logic.coord import Coord, CoordValidationProcess
-from logic.system import Builder, BuildResult, IdValidationProcess, LoggingLevelRouter, NameValidationProcess
+from logic.system import BuildProcess, BuildResult, IdValidationProcess, LoggingLevelRouter, NameValidationProcess
 from logic.domain import (
     ResidentFilter, ArenaResidentSearchParamsException, NoResidentSearchParamException
 )
 
 
-class ResidentFilterBuilder(Builder[ResidentFilter]):
+class ResidentFilterBuildProcess(BuildProcess[ResidentFilter]):
     """"""
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def build(
+    def execute(
             cls,
             id: Optional[int] = None,
             name: Optional[str] = None,
@@ -33,7 +33,7 @@ class ResidentFilterBuilder(Builder[ResidentFilter]):
             team_name: Optional[str] = None
     ) -> BuildResult[ResidentFilter]:
         """"""
-        method = "ResidentFilterBuilder.builder"
+        method = "ResidentFilterBuildProcess.builder"
         
         try:
             params = [

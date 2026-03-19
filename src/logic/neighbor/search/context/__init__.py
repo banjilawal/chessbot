@@ -10,5 +10,5 @@ version: 1.0.0
 from .exception import *
 
 from .context import VisitationSearchContext
-from .builder import VisitationSearchContextBuilder
+from .builder import VisitationSearchContextBuildProcess
 from .validator import *

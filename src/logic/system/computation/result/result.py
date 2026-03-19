@@ -33,6 +33,7 @@ class ComputationResult(Result[T], Generic[T]):
     # INHERITED ATTRIBUTES:
         *   See DataResult class for inherited attributes.
     """
+    _state: ComputationState
     
     def __init__(
             self,
@@ -40,16 +41,16 @@ class ComputationResult(Result[T], Generic[T]):
             exception: Optional[Exception] = None,
             payload: Optional[T] = None,
     ):
-        super().__init__(state=state, payload=payload, exception=exception)
+        super().__init__(payload=payload, exception=exception)
         """INTERNAL: Use factory methods instead of direct constructor."""
-        method = "ComputationResult.result"
+        self._state = state
 
     @property
     def is_success(self) -> bool:
         return (
                 self.payload is not None and
                 self.exception is None and
-                self.state.classification == ComputationState.SUCCESS
+                self._state == ComputationState.SUCCESS
         )
     
     @property
@@ -57,7 +58,7 @@ class ComputationResult(Result[T], Generic[T]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self.state.classification == ComputationState.FAILURE
+                self._state == ComputationState.FAILURE
         )
     
     @property
@@ -65,7 +66,7 @@ class ComputationResult(Result[T], Generic[T]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self.state == ComputationState.TIMED_OUT
+                self._state == ComputationState.TIMED_OUT
         )
     
     @classmethod
@@ -73,7 +74,7 @@ class ComputationResult(Result[T], Generic[T]):
         return cls(
             payload=payload,
             exception=None,
-            state=ComputationState(classification=ComputationState.SUCCESS),
+            state=ComputationState.SUCCESS,
         )
     
     @classmethod
@@ -81,7 +82,7 @@ class ComputationResult(Result[T], Generic[T]):
         return cls(
             payload=None,
             exception=exception,
-            state=ComputationState(classification=ComputationState.FAILURE),
+            state=ComputationState.FAILURE,
         )
     
     @classmethod
@@ -89,7 +90,7 @@ class ComputationResult(Result[T], Generic[T]):
         return cls(
             payload=None,
             exception=exception,
-            state=ComputationState(classification=ComputationState.TIMED_OUT),
+            state=ComputationState.TIMED_OUT,
         )
 
     

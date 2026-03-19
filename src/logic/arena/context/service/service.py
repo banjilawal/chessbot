@@ -28,7 +28,7 @@ class AgentContextService(ContextService[AgentContext]):
         *   ContextService
 
     # PROVIDES:
-        *   builder:    -> AgentContextBuilder
+        *   builder:    -> AgentContextBuildProcess
         *   validator:  -> AgentContextValidator
         *   finder:     -> AgentFinder
 
@@ -53,7 +53,7 @@ class AgentContextService(ContextService[AgentContext]):
             *   name (str): Default value - SERVICE_NAME
             *   id (int): Default value - id_emitter.service_id
             *   finder (AgentFinder): Default value - AgentFinder()
-            *   builder (AgentContextBuilder): Default value - AgentContextBuilder()
+            *   builder (AgentContextBuildProcess): Default value - AgentContextBuildProcess()
             *   validator (AgentContextValidator): Default value - AgentContextValidator()
 
         # RETURNS:
@@ -71,7 +71,7 @@ class AgentContextService(ContextService[AgentContext]):
     
     @property
     def builder(self) -> AgentContextBuilder:
-        """Get AgentContextBuilder instance."""
+        """Get AgentContextBuildProcess instance."""
         return cast(AgentContextBuilder, self.entity_builder)
     
     @property

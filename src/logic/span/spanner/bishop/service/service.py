@@ -12,9 +12,9 @@ from __future__ import annotations
 from typing import Dict
 
 from logic.coord import Coord, CoordService
-from logic.edge import Edge, EdgeBuilder
+from logic.edge import Edge, EdgeBuildProcess
 from logic.graph import Graph
-from logic.node import Node, NodeBuilder
+from logic.node import Node, NodeBuildProcess
 from logic.span import BishopSpanServiceException, BishopSpanner, CoordSpan, SpanService
 from logic.square import Square, SquareContext, SquareDatabase
 from logic.system import BuildResult, ComputationResult, IdFactory, LoggingLevelRouter
@@ -151,23 +151,23 @@ class BishopSpanService(SpanService):
                         tail_square=square_v,
                         node_builder=graph.vertices.integrity_service.builder
                     )
-                    v_build_result = graph.vertices.integrity_service.builder.build(
+                    v_build_result = graph.vertices.integrity_service.builder.execute(
                         square=square_v,
                         square_validator=square_database.integrity_service.validator,
                     )
-                    u_build_result = graph.vertices.integrity_service.builder.build(
+                    u_build_result = graph.vertices.integrity_service.builder.execute(
                         square=square_u,
                         square_validator=square_database.integrity_service.validator,
                     )
                     graph.vertices.push(u_build_result.payload)
                     graph.vertices.push(v_build_result.payload)
                     
-                    e = graph.edges.integrity_service.builder.build(
+                    e = graph.edges.integrity_service.builder.execute(
                         head=u_build_result.payload,
                         tail=v_build_result.payload,
                         coord_service=self.coord_service,
                     )
-                    f = graph.edges.integrity_service.builder.build(
+                    f = graph.edges.integrity_service.builder.execute(
                         head=v_build_result.payload,
                         tail=u_build_result.payload,
                         coord_service=self.coord_service,
@@ -183,7 +183,7 @@ class BishopSpanService(SpanService):
                         weight=graph.edges.integrity_service
                     )
                     f = graph.edges.push(
-                        graph.edges.integrity_service.builder.build(
+                        graph.edges.integrity_service.builder.execute(
                         
                         )
                     )
@@ -246,23 +246,23 @@ class BishopSpanService(SpanService):
                         tail_square=square_v,
                         node_builder=graph.vertices.pair_service.builder
                     )
-                    v_build_result = graph.vertices.pair_service.builder.build(
+                    v_build_result = graph.vertices.pair_service.builder.execute(
                         square=square_v,
                         square_validator=square_database.integrity_service.validator,
                     )
-                    u_build_result = graph.vertices.pair_service.builder.build(
+                    u_build_result = graph.vertices.pair_service.builder.execute(
                         square=square_u,
                         square_validator=square_database.integrity_service.validator,
                     )
                     graph.vertices.execute(u_build_result.payload)
                     graph.vertices.execute(v_build_result.payload)
                     
-                    e = graph.edges.pair_service.builder.build(
+                    e = graph.edges.pair_service.builder.execute(
                         head=u_build_result.payload,
                         tail=v_build_result.payload,
                         coord_service=self.coord_service,
                     )
-                    f = graph.edges.pair_service.builder.build(
+                    f = graph.edges.pair_service.builder.execute(
                         head=v_build_result.payload,
                         tail=u_build_result.payload,
                         coord_service=self.coord_service,
@@ -278,7 +278,7 @@ class BishopSpanService(SpanService):
                         weight=graph.edges.pair_service
                     )
                     f = graph.edges.execute(
-                        graph.edges.pair_service.builder.build(
+                        graph.edges.pair_service.builder.execute(
                         
                         )
                     )
@@ -290,13 +290,13 @@ class BishopSpanService(SpanService):
                 self,
                 head_square: Square,
                 tail_square: Square,
-                node_builder: NodeBuilder,
+                node_builder: NodeBuildProcess,
         ) -> BuildResult[Dict[str, Node]]:
             """
             Args:
                 head_square: Square
                 tail_square: Square
-                node_builder: NodeBuilder
+                node_builder: NodeBuildProcess
                 
             Returns:
                 BuildResult[Dict[str, Node]]
@@ -306,7 +306,7 @@ class BishopSpanService(SpanService):
             """
             method = f"{self.__class__.__name__}._build_pair"
             
-            head_build_result = node_builder.build(square=head_square)
+            head_build_result = node_builder.execute(square=head_square)
             # Handle the case that, the head node is not built successfully.
             if head_build_result.is_failure:
                 # Return the exception chain on failure.
@@ -320,7 +320,7 @@ class BishopSpanService(SpanService):
                     )
                 )
             
-            tail_build_result = node_builder.build(square=tail_square)
+            tail_build_result = node_builder.execute(square=tail_square)
             # Handle the case that, the tail node is not built successfully.
             if tail_build_result.is_failure:
                 # Return the exception chain on failure.
@@ -345,13 +345,13 @@ class BishopSpanService(SpanService):
                 self,
                 head: Node,
                 tail: Node,
-                edge_builder: EdgeBuilder,
+                edge_builder: EdgeBuildProcess,
         ) -> BuildResult[Dict[str, Edge]]:
             """
             """
             method = f"{self.__class__.__name__}._build_edge_pair"
             
-            forward_edge_result = edge_builder.build(head=head, tail=tail,)
+            forward_edge_result = edge_builder.execute(head=head, tail=tail, )
             # Handle the case that, the e is not built successfully.
             if forward_edge_result.is_failure:
                 # Return the exception chain on failure.
@@ -365,7 +365,7 @@ class BishopSpanService(SpanService):
                     )
                 )
             
-            reverse_edge_result = edge_builder.build(head=tail, tail=head)
+            reverse_edge_result = edge_builder.execute(head=tail, tail=head)
             # Handle the case that, the tail node is not built successfully.
             if reverse_edge_result.is_failure:
                 # Return the exception chain on failure.

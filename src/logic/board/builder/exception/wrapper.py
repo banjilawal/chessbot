@@ -23,8 +23,8 @@ class BoardBuildException(BuildException):
     Role:Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Indicate the BoardBuilder did not produce a valid work product.
-    2.  Identify the BoardBuilder method where the failure occurred.
+    1.  Indicate the BoardBuildProcess did not produce a valid work product.
+    2.  Identify the BoardBuildProcess method where the failure occurred.
 
     Super Class:
         *   BuildException
@@ -52,7 +52,7 @@ class BoardBuildException(BuildException):
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     ERR_CODE = "BOARD_BUILD_FAILURE"
-    MSG = "Failure in BoardBuilder method."
+    MSG = "Failure in BoardBuildProcess method."
 
     def __init__(
             self,

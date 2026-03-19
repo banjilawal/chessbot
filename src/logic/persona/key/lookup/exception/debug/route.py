@@ -22,7 +22,7 @@ class PersonaLookupRouteException(PersonaException, ExecutionRouteException):
     Role:Fallback Result
 
     Responsibilities:
-    1. Indicate that PersonaLookup did not handle a build option or parameter with its own execution route.
+    1. Indicate that PersonaLookupProcess did not handle a build option or parameter with its own execution route.
 
     Super Class:
         *   PersonaException
@@ -37,4 +37,4 @@ class PersonaLookupRouteException(PersonaException, ExecutionRouteException):
     None
     """
     ERR_CODE = "NO_PERSONA_LOOKUP_ROUTE_EXCEPTION"
-    MSG = "PersonaLookup failed: No search route was provided for a Persona attribute."
+    MSG = "PersonaLookupProcess failed: No search route was provided for a Persona attribute."

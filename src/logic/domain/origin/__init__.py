@@ -10,5 +10,5 @@ version: 1.0.0
 
 from .exception import *
 from .origin import DomainOrigin
-from .builder import DomainOriginBuilder
+from .builder import DomainOriginBuildProcess
 from .validator import DomainOriginValidationProcess

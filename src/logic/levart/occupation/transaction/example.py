@@ -1,5 +1,5 @@
 """
-Builder class responsible for safely constructing `KingCheckEvent` instances.
+BuildProcess class responsible for safely constructing `KingCheckEvent` instances.
 
 `AttackEventBuilder` ensures that `KingCheckEvent` objects are always created successfully by performing comprehensive validate
  checks during construction. This separates the responsibility of building from validating - `AttackEventBuilder`
@@ -434,7 +434,7 @@ This module is exclusively for defining all custom **rollback_exception classes*
 creation, coord_stack_validator, and manipulation of `Vector` objects.
 
 **Limitations** It does not contain any logic for raising these exception; that responsibility
-`Vector`, `VectorBuilder`, and `VectorValidationProcess`
+`Vector`, `VectorBuildProcess`, and `VectorValidationProcess`
 
 THEME:
 -----

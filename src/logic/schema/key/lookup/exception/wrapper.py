@@ -26,7 +26,7 @@ class SchemaLookupFailedException(SchemaException, ForwardLookupFailedException)
     Role:Exception Work
 
     Responsibilities:
-    1.  Wrap an exception that hits the try-finally block of a SchemaLookup method.
+    1.  Wrap an exception that hits the try-finally block of a SchemaLookupProcess method.
 
     Super Class:
         *   SchemaException
@@ -39,4 +39,4 @@ class SchemaLookupFailedException(SchemaException, ForwardLookupFailedException)
     None
     """
     ERR_CODE = "SCHEMA_LOOKUP_FAILED"
-    MSG = "SchemaLookup failed."
+    MSG = "SchemaLookupProcess failed."

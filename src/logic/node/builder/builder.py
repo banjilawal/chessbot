@@ -1,4 +1,4 @@
-# src/logic/node/builder/builder.py
+# src/logic/node/builder/process.py
 
 """
 Module: logic.node.builder.builder
@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from logic.graph import Node, NodeBuildException
 from logic.square import Square, SquareValidationProcess
-from logic.system import BuildResult, Builder, LoggingLevelRouter
+from logic.system import BuildResult, BuildProcess, LoggingLevelRouter
 
 
-class NodeBuilder(Builder[Node]):
+class NodeBuildProcess(BuildProcess[Node]):
     """
     Role:Factory, Data Integrity Guarantor
 
@@ -25,7 +25,7 @@ class NodeBuilder(Builder[Node]):
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     Super Class:
-        *   Builder
+        *   BuildProcess
 
     Provides:
 
@@ -36,7 +36,7 @@ class NodeBuilder(Builder[Node]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def build(cls, square: Square, square_validator: SquareValidationProcess = SquareValidationProcess()) -> BuildResult[Node]:
+    def execute(cls, square: Square, square_validator: SquareValidationProcess = SquareValidationProcess()) -> BuildResult[Node]:
         """
         # ACTION:
             1.  If the square is not valid send an exception chain in the BuildResult. Otherwise, use the square
@@ -51,7 +51,7 @@ class NodeBuilder(Builder[Node]):
         Raises:
             *   NodeBuildException
         """
-        method = "NodeBuilder.build"
+        method = "NodeBuildProcess.build"
         
         # Handle the case that, the square is not certified as safe.
         validation_result = square_validator.execute(square)

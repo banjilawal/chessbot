@@ -14,7 +14,7 @@ from copy import deepcopy
 from typing import cast
 
 from logic.edge import (
-    Edge, EdgeBuilder, EdgeServiceException, EdgeValidationProcess, UpdatingEdgeHeuristicException,
+    Edge, EdgeBuildProcess, EdgeServiceException, EdgeValidationProcess, UpdatingEdgeHeuristicException,
     UpdatingEdgeWeightException
 )
 from logic.system import IntegrityService, IdFactory, LoggingLevelRouter, NumberValidationProcess, UpdateResult
@@ -44,7 +44,7 @@ class EdgeService(IntegrityService[Edge]):
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            builder: EdgeBuilder = EdgeBuilder(),
+            builder: EdgeBuildProcess = EdgeBuildProcess(),
             validator: EdgeValidationProcess = EdgeValidationProcess(),
             id: int = IdFactory.next_id(class_name="EdgeService"),
     ):
@@ -64,8 +64,8 @@ class EdgeService(IntegrityService[Edge]):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         
     @property
-    def builder(self) -> EdgeBuilder:
-        return cast(EdgeBuilder, self.entity_builder)
+    def builder(self) -> EdgeBuildProcess:
+        return cast(EdgeBuildProcess, self.entity_builder)
     
     @property
     def validator(self) -> EdgeValidationProcess:

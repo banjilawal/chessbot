@@ -24,8 +24,8 @@ class SchemaKeyBuildException(BuildException):
     Role:Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Indicate the SchemaKeyBuilder did not produce a valid work product.
-    2.  Identify the SchemaKeyBuilder method where the failure occurred.
+    1.  Indicate the SchemaKeyBuildProcess did not produce a valid work product.
+    2.  Identify the SchemaKeyBuildProcess method where the failure occurred.
 
     Super Class:
         *   BuildException
@@ -53,7 +53,7 @@ class SchemaKeyBuildException(BuildException):
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     ERR_CODE = "SCHEMA_KEY_BUILD_FAILURE"
-    MSG = "Failure in SchemaKeyBuilder method."
+    MSG = "Failure in SchemaKeyBuildProcess method."
     
     def __init__(
             self,

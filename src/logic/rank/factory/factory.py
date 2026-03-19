@@ -8,13 +8,13 @@ version: 1.0.0
 """
 
 from logic.persona import Persona, PersonaService
-from logic.system import Builder, BuildResult, LoggingLevelRouter, id_emitter
+from logic.system import BuildProcess, BuildResult, LoggingLevelRouter, id_emitter
 from logic.rank import (
     Bishop, King, Knight, Pawn, Queen, Rank, RankBuildException, RankBuildRouteException,
     RankFactoryException, Rook
 )
 
-class RankFactory(Builder[Rank]):
+class RankFactory(BuildProcess[Rank]):
     """
     Role:Factory, Data Integrity Guarantor
   
@@ -25,7 +25,7 @@ class RankFactory(Builder[Rank]):
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
         
     Super Class:
-        *   Builder
+        *   BuildProcess
 
     # PROVIDES:
         *   RankFactory
@@ -37,7 +37,7 @@ class RankFactory(Builder[Rank]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def build(
+    def execute(
             cls,
             persona: Persona,
             id: int = id_emitter.rank_id,

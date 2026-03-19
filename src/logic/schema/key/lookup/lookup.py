@@ -1,4 +1,4 @@
-# src/logic/schema/key/lookup/lookup.py
+# src/logic/schema/key/lookup/process.py
 
 """
 Module: logic.schema.key.lookup.lookup
@@ -13,10 +13,10 @@ from logic.schema import (
     SchemaLookupFailedException, SchemaLookupRouteException, SchemaColorBoundsException, SchemaKey, Schema,
     SchemaNameBoundsException, SchemaKeyValidationProcess,
 )
-from logic.system import GameColor, HashLookup, LoggingLevelRouter, SearchResult
+from logic.system import GameColor, HashLookupProcess, LoggingLevelRouter, SearchResult
 
 
-class SchemaLookup(HashLookup[Schema]):
+class SchemaLookupProcess(HashLookupProcess[Schema]):
     """
     Role:Forward Lookups
 
@@ -57,7 +57,7 @@ class SchemaLookup(HashLookup[Schema]):
         Raises:
             *   SchemaLookupFailedException
         """
-        method = "SchemaLookup.query"
+        method = "SchemaLookupProcess.query"
 
         # Handle the case that, the Key fails validation.
         validation = super_key_validator.execute(candidate=super_key)
@@ -102,7 +102,7 @@ class SchemaLookup(HashLookup[Schema]):
             *   SchemaNameBoundsException
             *   SchemaLookupFailedException
         """
-        method = "SchemaLookup._by_name"
+        method = "SchemaLookupProcess._by_name"
         
         matches = [entry for entry in Schema if entry.name.upper() == name.upper()]
         # Finding at least one match is success.
@@ -137,7 +137,7 @@ class SchemaLookup(HashLookup[Schema]):
             *   SchemaColorBoundsException
             *   SchemaLookupFailedException
         """
-        method = "SchemaLookup._find_by_color"
+        method = "SchemaLookupProcess._find_by_color"
         
         matches = [entry for entry in Schema if entry.color == color]
         # Finding at least one match is success.

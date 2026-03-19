@@ -56,7 +56,7 @@ This module provides:
 The module covers `Transaction` instances that emit a `TransactionResult` and consumers of the notification.
 
 # SECTION 3 - Limitations:
-  1. The module is limited to presenting the answer from a `SearchWorker` entity_service provider to the client delivering a query.
+  1. The module is limited to presenting the answer from a `SearchProcess` entity_service provider to the client delivering a query.
   2. The module does not guarantee the accuracy or precision of entity_service in the notification.
 
 # SECTION 4 - Design Considerations and Themes:
@@ -85,7 +85,7 @@ The major theme influencing the modules design are
 1. `SearchResult`
 """
 """
- Role:Builder, Data Integrity And Reliability Guarantor implementation
+ Role:BuildProcess, Data Integrity And Reliability Guarantor implementation
 
  Responsibilities:
  1. Process and validate parameters for creating `Team` instances.
@@ -133,7 +133,7 @@ The module only covers the basic properties and behavior objects in the `Event` 
       `logic.system.travel.notification` is responsible for the `Event` lifecycle.
   2. The module does not verify the correctness of entity_service control or routing information it contains. Directly using the
       module can breach entity_service integrity, propagate inconsistencies or negatively impact performance. Use a
-        * `Builder` for the
+        * `BuildProcess` for the
       DO NOT USE THE MODULE DIRECTLY. is not responsible for verifying the uniqueness of an ID. the `AutoId` class in
       `logic.system.visitor_id.auto_id` module.
   1. The module is not responsible for supplying or publishing IDs that meet system requirements.
@@ -188,7 +188,7 @@ The module only covers the basic properties and behavior objects in the `Event` 
       `logic.system.travel.notification` is responsible for the `Event` lifecycle.
   2. The module does not verify the correctness of entity_service control or routing information it contains. Directly using the
       module can breach entity_service integrity, propagate inconsistencies or negatively impact performance. Use a
-        * `Builder` for the
+        * `BuildProcess` for the
       DO NOT USE THE MODULE DIRECTLY. is not responsible for verifying the uniqueness of an ID. the `AutoId` class in
       `logic.system.visitor_id.auto_id` module.
   1. The module is not responsible for supplying or publishing IDs that meet system requirements.

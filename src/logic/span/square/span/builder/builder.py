@@ -1,4 +1,4 @@
-# src/logic/span/square/span/builder/builder.py
+# src/logic/span/square/span/builder/process.py
 
 """
 Module: logic.span.square.span.builder.builder
@@ -15,14 +15,14 @@ from logic.coord import Coord
 from logic.span.square.exception import SquareSpanBuildException
 from logic.square import Square, SquareContext, SquareNotFoundException, SquareStackService
 from logic.span import CoordRay, CoordSpan, SquareRay, SquareSpan
-from logic.system import BuildResult, Builder, ComputationResult, LoggingLevelRouter, SearchResult
+from logic.system import BuildResult, BuildProcess, ComputationResult, LoggingLevelRouter, SearchResult
 
 
-class SquareSpanBuilder(Builder[SquareSpan]):
+class SquareSpanBuildProcess(BuildProcess[SquareSpan]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def build(cls, coord_span: CoordSpan, square_stack: SquareStackService) -> BuildResult[SquareSpan]:
+    def execute(cls, coord_span: CoordSpan, square_stack: SquareStackService) -> BuildResult[SquareSpan]:
         """
         Args:
             coord_span: CoordSpan

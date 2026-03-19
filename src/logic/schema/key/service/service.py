@@ -10,7 +10,7 @@ from typing import cast
 
 
 from logic.system import ContextService, id_emitter
-from logic.schema import SchemaLookup, SchemaKey, SchemaKeyBuilder, SchemaKeyValidationProcess
+from logic.schema import SchemaLookupProcess, SchemaKey, SchemaKeyBuildProcess, SchemaKeyValidationProcess
 
 
 class SchemaKeyService(ContextService[SchemaKey]):
@@ -37,8 +37,8 @@ class SchemaKeyService(ContextService[SchemaKey]):
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
-            lookup: SchemaLookup = SchemaLookup(),
-            builder: SchemaKeyBuilder = SchemaKeyBuilder(),
+            lookup: SchemaLookupProcess = SchemaLookupProcess(),
+            builder: SchemaKeyBuildProcess = SchemaKeyBuildProcess(),
             validator: SchemaKeyValidationProcess = SchemaKeyValidationProcess(),
     ):
         """
@@ -47,7 +47,7 @@ class SchemaKeyService(ContextService[SchemaKey]):
         # PARAMETERS:
             *   id (nt)
             *   name (str)
-            *   builder (SchemaKeyBuilder)
+            *   builder (SchemaKeyBuildProcess)
             *   validator (SchemaKeyValidationProcess)
         # RETURNS:
             None
@@ -57,9 +57,9 @@ class SchemaKeyService(ContextService[SchemaKey]):
         super().__init__(id=id, name=name, builder=builder, validator=validator, finder=lookup)
         
     @property
-    def builder(self) -> SchemaKeyBuilder:
-        """get SchemaKeyBuilder"""
-        return cast(SchemaKeyBuilder, self.entity_builder)
+    def builder(self) -> SchemaKeyBuildProcess:
+        """get SchemaKeyBuildProcess"""
+        return cast(SchemaKeyBuildProcess, self.entity_builder)
     
     @property
     def validator(self) -> SchemaKeyValidationProcess:
@@ -67,5 +67,5 @@ class SchemaKeyService(ContextService[SchemaKey]):
         return cast(SchemaKeyValidationProcess, self.entity_validator)
     
     @property
-    def lookup(self) -> SchemaLookup:
-        return cast(SchemaLookup, self.entity_finder)
+    def lookup(self) -> SchemaLookupProcess:
+        return cast(SchemaLookupProcess, self.entity_finder)

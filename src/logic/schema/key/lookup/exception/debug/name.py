@@ -35,4 +35,4 @@ class SchemaNameBoundsException(SchemaException, BoundsException):
     None
     """
     ERR_CODE = "SCHEMA_NAME_BOUNDS_EXCEPTION"
-    MSG = "SchemaLookup failed: No schema entries use the target as their key."
+    MSG = "SchemaLookupProcess failed: No schema entries use the target as their key."

@@ -1,4 +1,4 @@
-# src/logic/system/text/exception/void/base.py
+# src/logic/system/text/exception/void/anchor.py
 
 """
 Module: logic.system.text.exception.void.base

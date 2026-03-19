@@ -83,5 +83,5 @@ class HostageValidationProcess(ValidationProcess):
 
 
 def main():
-  person = CommanderBuilder.build(commander_id=id_emitter.machine_agent, visitor_name=RandomName.person())
-  side = TeamBuilder.build()
+  person = CommanderBuilder.execute(commander_id=id_emitter.machine_agent, visitor_name=RandomName.person())
+  side = TeamBuilder.execute()

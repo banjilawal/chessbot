@@ -1,4 +1,4 @@
-# src/logic/square/context/builder/builder.py
+# src/logic/square/context/builder/process.py
 
 """
 Module: logic.square.context.builder.builder
@@ -12,7 +12,7 @@ from typing import Optional
 
 from logic.board import Board, BoardService
 from logic.coord import Coord, CoordService
-from logic.system import Builder, BuildResult, IdentityService
+from logic.system import BuildProcess, BuildResult, IdentityService
 from logic.square import (
     SquareContextBuildRouteException, SquareState, SquareValidationProcess, ZeroSquareContextFlagsException, SquareContext,
     SquareContextBuildException, ExcessSquareContextFlagsException
@@ -20,9 +20,9 @@ from logic.square import (
 from logic.token import Token, TokenService
 
 
-class SquareContextBuilder(Builder[SquareContext]):
+class SquareContextBuildProcess(BuildProcess[SquareContext]):
     """
-    Role:Builder, Data Integrity And Reliability Guarantor
+    Role:BuildProcess, Data Integrity And Reliability Guarantor
 
     Responsibilities:
      1.  Produce SquareContext instances whose integrity and reliability are guaranteed.
@@ -30,7 +30,7 @@ class SquareContextBuilder(Builder[SquareContext]):
      3.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
      Super Class:
-         * Builder
+         * BuildProcess
 
     Provides:
 
@@ -60,7 +60,7 @@ class SquareContextBuilder(Builder[SquareContext]):
     None
     """
     @classmethod
-    def build(
+    def execute(
             cls,
             id: Optional[int] = None,
             name: Optional[str] = None,
@@ -109,7 +109,7 @@ class SquareContextBuilder(Builder[SquareContext]):
             ExcessSquareContextFlagsException
             SquareContextBuildRouteException
         """
-        method = "SquareContextBuilder.build"
+        method = "SquareContextBuildProcess.build"
 
         # --- Count how many optional parameters are not-null. only one should be not null. ---#
         params = [id, name, coord, token,board, state,]

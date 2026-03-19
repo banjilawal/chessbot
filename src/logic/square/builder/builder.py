@@ -1,4 +1,4 @@
-# src/logic/square/builder/builder.py
+# src/logic/square/builder/process.py
 
 """
 Module: logic.square.builder.builder
@@ -13,18 +13,18 @@ from typing import cast
 from logic.board import Board, BoardService
 from logic.coord import Coord, CoordService
 from logic.square import (
-    AddingDuplicateSquareException, Square, SquareBuildException, SquareCollisionDetector, SquareContext,
+    AddingDuplicateSquareException, Square, SquareBuildException, SquareCollisionDetectionProcess, SquareContext,
     SquareCoordCollisionException,
     SquareIdCollisionException, SquareNameCollisionException
 )
 from logic.system import (
-    Builder, BuildResult, IdFactory, IdentityService, InsertionResult, InvariantBreachException, LoggingLevelRouter,
+    BuildProcess, BuildResult, IdFactory, IdentityService, InsertionResult, InvariantBreachException, LoggingLevelRouter,
     ValidationResult,
 )
 
-class SquareBuilder(Builder[Square]):
+class SquareBuildProcess(BuildProcess[Square]):
     """
-     Role:Builder, Data Integrity And Reliability Guarantor
+     Role:BuildProcess, Data Integrity And Reliability Guarantor
 
      Responsibilities:
      1.  Produce Square instances whose integrity and reliability are guaranteed.
@@ -32,13 +32,13 @@ class SquareBuilder(Builder[Square]):
      3.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
      Super Class:
-         * Builder
+         * BuildProcess
 
     Provides:
 
 
     # INHERITED ATTRIBUTES:
-        *   See Builder class for inherited attributes.
+        *   See BuildProcess class for inherited attributes.
 
     Attributes:
     None
@@ -47,12 +47,12 @@ class SquareBuilder(Builder[Square]):
     None
 
     # INHERITED METHODS:
-        *   See Builder class for inherited methods.
+        *   See BuildProcess class for inherited methods.
     """
     
     @classmethod
     @LoggingLevelRouter.monitor()
-    def build(
+    def execute(
             cls,
             name: str,
             board: Board,
@@ -61,7 +61,7 @@ class SquareBuilder(Builder[Square]):
             board_service: BoardService = BoardService(),
             coord_service: CoordService = CoordService(),
             identity_service: IdentityService = IdentityService(),
-            square_collision_detector: SquareCollisionDetector = SquareCollisionDetector(),
+            square_collision_detector: SquareCollisionDetectionProcess = SquareCollisionDetectionProcess(),
     ) -> BuildResult[Square]:
         """
         Action:
@@ -173,7 +173,7 @@ class SquareBuilder(Builder[Square]):
                     - On success: Square in the payload.
         Raises:
         """
-        method = "SquareBuilder._validate_build_params"
+        method = "SquareBuildProcess._validate_build_params"
         
         # Handle the case that, either id or name are not certified safe.
         identity_validation = identity_service.validate_identity(
@@ -225,7 +225,7 @@ class SquareBuilder(Builder[Square]):
                     - On success: bool.
         Raises:
         """
-        method = "SquareBuilder._build_square_board_relationship"
+        method = "SquareBuildProcess._build_square_board_relationship"
         
         # If the item does not have  a fully bidirectional relationship with the board process the registration.
         relation_analysis = board_service.square_relation_analyzer.execute(

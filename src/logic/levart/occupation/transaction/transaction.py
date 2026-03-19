@@ -94,7 +94,7 @@ class OccupationTransaction(TravelTransaction[OccupationEvent]):
             
             self.event.actor.discoveries.clear()
             
-            promotion_event_build = PromotionEventBuilder.build(
+            promotion_event_build = PromotionEventBuilder.execute(
                 actor=self.event.actor,
                 parentpiece=self.event,
                 destination_square=self.event.destination_square,

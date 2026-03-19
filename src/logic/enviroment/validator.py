@@ -92,7 +92,7 @@ class TurnSceneValidationProcess(ValidationProcess[TurnScene]):
         method = "TurnScene._actor_square_validation_helper"
         
         try:
-            search_context_build = BoardContextBuilder.build(coord=actor.current_position)
+            search_context_build = BoardContextBuilder.execute(coord=actor.current_position)
             if search_context_build.is_failure():
                 return ValidationResult.failure(search_context_build.exception)
             search_context = cast(BoardContext, search_context_build.payload)

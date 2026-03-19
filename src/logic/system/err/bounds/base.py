@@ -1,4 +1,4 @@
-# src/logic/system/err/bounds/base.py
+# src/logic/system/err/bounds/anchor.py
 
 """
 Module: logic.system.err.bounds.base

@@ -507,7 +507,7 @@ from chess.team import Team
 from chess.rank import Knight
 from chess.piece import CombatantPiece, PieceFactory
 
-build_result = PieceFactory.build(name="WN2", rank=Knight(), team=white_team)
+build_result = PieceFactory.execute(name="WN2", rank=Knight(), team=white_team)
 if not build_result.is_success():
     raise build_result.exception
 
@@ -515,7 +515,7 @@ piece = cast(CombatantPiece, build_result.payload)
 ```
 ### Sequence Diagram for the Usage Example
 ```mermaid
-%% Builder Flow Example
+%% BuildProcess Flow Example
 sequenceDiagram
   User->>CommanderBuilder: Request new Commander
   CommanderBuilder->>IdValidator: Validate ID

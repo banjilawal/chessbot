@@ -7,16 +7,16 @@ Created: 2025-11-18
 Version: 1.0.0
 """
 
-from logic.system import StackServiceException
+from logic.system import DebugException
 
 __all__ = [
     #======================# CANNOT_ADD_DUPLICATE_ITEM EXCEPTION  #======================#
-    "AddingDuplicateException",
+    "AddingDuplicateItemException",
 ]
 
 
 #======================# CANNOT_ADD_DUPLICATE_ITEM EXCEPTION  #======================#
-class AddingDuplicateException(StackServiceException):
+class AddingDuplicateItemException(DebugException):
     """
     Role:Error Tracing, Debugging
 

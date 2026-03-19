@@ -119,7 +119,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
     actor_square = BoardSearch.find()
 
     if destination_occupant is None:
-      build_result = OccupationEventBuilder.build(
+      build_result = OccupationEventBuilder.execute(
         parent=event,
         actor=event.actor,
         actor_square=actor_square,
@@ -308,7 +308,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
     """
     method = "OccupationExecutor._run_scan"
 
-    build_outcome = DiscoveryBuilder.build(observer=directive.observer, subject=directive.friend)
+    build_outcome = DiscoveryBuilder.execute(observer=directive.observer, subject=directive.friend)
     if not build_outcome.is_success():
       return TransactionResult(op_result_id, directive, exception=build_outcome.exception)
 

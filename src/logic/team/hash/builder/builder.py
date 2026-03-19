@@ -1,4 +1,4 @@
-# src/logic/team/hash/builder/builder.py
+# src/logic/team/hash/builder/process.py
 
 """
 Module: logic.team.hash.builder.builder
@@ -10,25 +10,25 @@ version: 1.0.0
 from __future__ import annotations
 
 from logic.schema import SchemaService
-from logic.system import BuildResult, Builder, LoggingLevelRouter
+from logic.system import BuildResult, BuildProcess, LoggingLevelRouter
 from logic.team import (
     BlackTeamHasWrongSchemaException, Team, TeamHash, TeamHashBuildException,
     TeamSchemaCollisionException, TeamValidationProcess, WhiteTeamHasWrongSchemaException
 )
 
 
-class TeamHashBuilder(Builder[TeamHash]):
+class TeamHashBuildProcess(BuildProcess[TeamHash]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def build(
+    def execute(
             cls,
             white_team: Team,
             black_team: Team,
             team_validator: TeamValidationProcess = TeamValidationProcess(),
             schema_service: SchemaService = SchemaService(),
     ) -> BuildResult[TeamHash]:
-        method = "TeamHashBuilder.build"
+        method = "TeamHashBuildProcess.build"
         
         # Handle the case that, the white_team is not certified as safe.
         white_team_validation_result = team_validator.execute(white_team)

@@ -11,5 +11,5 @@ from .exception import *
 
 from .record import CheckRecord
 from .table import CheckRecordTable
-from .build import CheckRecordBuilder
+from .build import CheckRecordBuildProcess
 from .validate import CheckRecordValidationProcess

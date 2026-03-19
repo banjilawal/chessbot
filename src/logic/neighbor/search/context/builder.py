@@ -11,14 +11,14 @@ from typing import Optional
 
 from logic.coord import Coord, CoordValidationProcess
 from logic.rank import Queen, RankSpec
-from logic.system import BuildResult, Builder, IdValidationProcess, LoggingLevelRouter, NameValidationProcess
+from logic.system import BuildResult, BuildProcess, IdValidationProcess, LoggingLevelRouter, NameValidationProcess
 from logic.neighbor import (
     VisitationSearchContext, ArenaVisitationSearchParamsException, ZeroVisitationSearchParamsException, VisitationInvalidRankNameParamException,
 )
 
-class VisitationSearchContextBuilder(Builder[VisitationSearchContext]):
+class VisitationSearchContextBuildProcess(BuildProcess[VisitationSearchContext]):
     """iece
-    Role:Builder, Data Integrity And Reliability Guarantor implementation
+    Role:BuildProcess, Data Integrity And Reliability Guarantor implementation
 
     Responsibilities:
     1. Process and validate parameters for creating `VisitationSearchContext` instances.
@@ -34,7 +34,7 @@ class VisitationSearchContextBuilder(Builder[VisitationSearchContext]):
 
     @classmethod
     @LoggingLevelRouter.monitor
-    def build (
+    def execute (
         cls,
         name: Optional[str] = None,
         ransom: Optional[int] = None,
@@ -51,7 +51,7 @@ class VisitationSearchContextBuilder(Builder[VisitationSearchContext]):
         RAISES:
         MethodNameException wraps
         """
-        method = "VisitationSearchContextBuilder.builder"
+        method = "VisitationSearchContextBuildProcess.builder"
 
         try:
             params = [name, ransom, piece_id, team_id, team_name, rank_name, position]

@@ -12,7 +12,7 @@ from __future__ import annotations
 from logic.rank import RankService
 from logic.system import InsertionResult, LoggingLevelRouter
 from logic.square import (
-    SquareStackCapacityAnalyzer, SquareStackCapacityFullException, Square, SquareCollisionDetector, SquareStackFullException,
+    SquareStackCapacityAnalyzer, SquareStackCapacityFullException, Square, SquareCollisionDetectionProcess, SquareStackFullException,
     SquareStackPushException, SquareStackService, SquareStackState
 )
 
@@ -37,7 +37,7 @@ class SquareStackPusher:
                     square_stack: SquareStackService,
                     rank_service: RankService = RankService(),
                     rank_quota_analyzer: SquareStackCapacityAnalyzer = SquareStackCapacityAnalyzer(),
-                    collision_detector: SquareCollisionDetector = SquareCollisionDetector(),
+                    collision_detector: SquareCollisionDetectionProcess = SquareCollisionDetectionProcess(),
             ) -> InsertionResult
 
     Super:
@@ -51,7 +51,7 @@ class SquareStackPusher:
             square_stack: SquareStackService,
             rank_service: RankService = RankService(),
             rank_quota_analyzer: SquareStackCapacityAnalyzer = SquareStackCapacityAnalyzer(),
-            collision_detector: SquareCollisionDetector = SquareCollisionDetector(),
+            collision_detector: SquareCollisionDetectionProcess = SquareCollisionDetectionProcess(),
     ) -> InsertionResult[bool]:
         """
         Action:
@@ -65,7 +65,7 @@ class SquareStackPusher:
            rank_service: RankService
            square_stack: SquareStackService
            rank_quota_analyzer: SquareStackCapacityAnalyzer
-           collision_detector: SquareCollisionDetector
+           collision_detector: SquareCollisionDetectionProcess
         Returns:
             InsertionResult
         Raises:
@@ -91,7 +91,7 @@ class SquareStackPusher:
                 )
             )
         # Request a collision report. The square is verified during the report generation. ---#
-        collision_detection_result = collision_detector.detect(
+        collision_detection_result = collision_detector.execute(
             target=square,
             dataset=square_stack.items,
         )

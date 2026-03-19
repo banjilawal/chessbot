@@ -1,4 +1,4 @@
-# src/logic/system/transaction/exception/base.py
+# src/logic/system/transaction/exception/anchor.py
 
 """
 Module: logic.system.transaction.exception.base

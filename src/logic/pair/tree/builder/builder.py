@@ -1,4 +1,4 @@
-# src/logic/pair/builder/builder.py
+# src/logic/pair/builder/process.py
 
 """
 Module: logic.pair.builder.builder
@@ -10,16 +10,16 @@ version: 1.0.0
 from __future__ import annotations
 
 from logic.node import NodeService
-from logic.pair import PairListBuilder, NodeTreeBuildException
+from logic.pair import PairListBuildProcess, NodeTreeBuildException
 from logic.pair.pair.service.service import PairService
 from logic.pair.tree.tree import NodeTree
 from logic.span import SquareSpan, SquareSpanService
-from logic.system import BuildResult, Builder, LoggingLevelRouter
+from logic.system import BuildResult, BuildProcess, LoggingLevelRouter
 
 
-class NodeTreeBuilder(Builder[NodeTree]):
+class NodeTreeBuildProcess(BuildProcess[NodeTree]):
     """
-     Role:Builder, Data Integrity And Reliability Guarantor
+     Role:BuildProcess, Data Integrity And Reliability Guarantor
 
      Responsibilities:
      1.  Produce NodeTree instances whose integrity and reliability are guaranteed.
@@ -27,13 +27,13 @@ class NodeTreeBuilder(Builder[NodeTree]):
      3.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
      Super Class:
-         * Builder
+         * BuildProcess
 
     Provides:
 
 
     # INHERITED ATTRIBUTES:
-        *   See Builder class for inherited attributes.
+        *   See BuildProcess class for inherited attributes.
 
     Attributes:
     None
@@ -42,18 +42,18 @@ class NodeTreeBuilder(Builder[NodeTree]):
     None
 
     # INHERITED METHODS:
-        *   See Builder class for inherited methods.
+        *   See BuildProcess class for inherited methods.
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def build(
+    def execute(
             cls,
             square_span: SquareSpan,
             node_service: NodeService = NodeService(),
             pair_service: PairService = PairService(),
             square_span_service: SquareSpanService = SquareSpanService(),
-            pair_list_builder: PairListBuilder = PairListBuilder(),
-    ) -> BuildResult[NodeTreeBuilder]:
+            pair_list_builder: PairListBuildProcess = PairListBuildProcess(),
+    ) -> BuildResult[NodeTreeBuildProcess]:
         """
         Action:
             1.  If building a node from the tail_square fails send an exception chain in
@@ -65,7 +65,7 @@ class NodeTreeBuilder(Builder[NodeTree]):
             square_span: SquareSpan
             node_service: NodeService
             square_span_service: SquareSpanService
-            pair_list_builder: PairListBuilder
+            pair_list_builder: PairListBuildProcess
             
 
         Returns:
@@ -92,7 +92,7 @@ class NodeTreeBuilder(Builder[NodeTree]):
             )
         # --- Process the sub_span_roots then, build the tree's root node. ---#
         insertion_result = cls._convert_sub_span_roots_to_ray(span=square_span)
-        root_node_build_result = node_service.builder.build(square=square_span.origin)
+        root_node_build_result = node_service.builder.execute(square=square_span.origin)
         
         # Handle the case that, the root_node is not built successfully.
         if root_node_build_result.is_failure:
@@ -111,7 +111,7 @@ class NodeTreeBuilder(Builder[NodeTree]):
         node_tree = NodeTree(root=root_node_build_result.payload, branches=[])
         
         for ray in square_span.rays:
-            branch_build_result = pair_list_builder.build(
+            branch_build_result = pair_list_builder.execute(
                 square_ray=ray,
                 parent_node=node_tree.root,
             )

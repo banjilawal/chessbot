@@ -11,7 +11,7 @@ SCOPE:
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
 creation, coord_stack_validator, and manipulation of **Coord objects**. It handles boundary checks (row/column)
 limits and validation checks. It does not contain any logic for *raising* these exception; that responsibility
-falls to the `CoordValidationProcess` and `CoordBuilder`processes.
+falls to the `CoordValidationProcess` and `CoordBuildProcess`processes.
 
 THEME:
 -----
@@ -53,7 +53,7 @@ This module provides:
   2. A satisfaction of the `ChessBot` reliability requirement.
 
 # SECTION 2 - Scope:
-The module's effects and actions cover exception raised by implementors of the `SearchWorker` interface.
+The module's effects and actions cover exception raised by implementors of the `SearchProcess` interface.
 
 # SECTION 3: Limitations
   1. Does not provide granular, precise information pertinent to debugging. The module's

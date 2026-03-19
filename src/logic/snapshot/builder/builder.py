@@ -1,4 +1,4 @@
-# src/logic/snapshot/builder/builder.py
+# src/logic/snapshot/builder/process.py
 
 """
 Module: logic.snapshot.builder.builder
@@ -8,11 +8,11 @@ version: 1.0.0
 """
 
 from logic.snapshot import Snapshot
-from logic.system import BuildResult, Builder
+from logic.system import BuildResult, BuildProcess
 
 
 
-class SnapshotBuilder(Builder[Snapshot]):
+class SnapshotBuildProcess(BuildProcess[Snapshot]):
     @classmethod
-    def build(cls, *args, **kwargs) -> BuildResult[Snapshot]:
+    def execute(cls, *args, **kwargs) -> BuildResult[Snapshot]:
         pass

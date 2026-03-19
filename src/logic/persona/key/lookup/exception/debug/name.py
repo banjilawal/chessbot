@@ -35,4 +35,4 @@ class PersonaNameBoundsException(PersonaException, BoundsException):
     None
     """
     ERR_CODE = "PERSONA_NAME_BOUNDS_EXCEPTION"
-    MSG = "PersonaLookup failed: No Persona entries use the target as their key."
+    MSG = "PersonaLookupProcess failed: No Persona entries use the target as their key."

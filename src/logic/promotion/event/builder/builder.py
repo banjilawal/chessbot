@@ -1,4 +1,4 @@
-# src/logic/promotion/event/builder/builder.py
+# src/logic/promotion/event/builder/process.py
 
 """
 Module: logic.promotion.event.builder.builder
@@ -9,12 +9,12 @@ version: 1.0.0
 
 
 from logic.promotion import PromotionEvent
-from logic.system import BuildResult, Builder
+from logic.system import BuildResult, BuildProcess
 
 
 
-class PromotionEventBuilder(Builder[PromotionEvent]):
+class PromotionEventBuildProcess(BuildProcess[PromotionEvent]):
     
     @classmethod
-    def build(self, *args, **kwargs) -> BuildResult[PromotionEvent]:
+    def execute(self, *args, **kwargs) -> BuildResult[PromotionEvent]:
         pass

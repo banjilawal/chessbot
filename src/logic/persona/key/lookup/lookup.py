@@ -1,4 +1,4 @@
-# src/logic/persona/key/lookup/lookup.py
+# src/logic/persona/key/lookup/process.py
 
 """
 Module: logic.persona.key.lookup.lookup
@@ -15,10 +15,10 @@ from logic.persona import (
     PersonaNameBoundsException, PersonaQuotaBoundsException, PersonaRansomBoundsException, PersonaKey,
     PersonaKeyValidationProcess
 )
-from logic.system import HashLookup, LoggingLevelRouter, SearchResult
+from logic.system import HashLookupProcess, LoggingLevelRouter, SearchResult
 
 
-class PersonaLookup(HashLookup[Persona]):
+class PersonaLookupProcess(HashLookupProcess[Persona]):
     """
     Role:Forward Lookups
 
@@ -59,7 +59,7 @@ class PersonaLookup(HashLookup[Persona]):
         Raises:
             *  PersonaLookupFailedException
         """
-        method = "PersonaLookup.query"
+        method = "PersonaLookupProcess.query"
         
         # Handle the case that, the Key fails validation.
         validation = super_key_validator.execute(candidate=super_key)
@@ -112,7 +112,7 @@ class PersonaLookup(HashLookup[Persona]):
             *  PersonaNameBoundsException
             *  PersonaLookupFailedException
         """
-        method = "PersonaLookup._by_name"
+        method = "PersonaLookupProcess._by_name"
         
         matches = [entry for entry in Persona if entry.name.upper() == name.upper()]
         # Finding at least one match is success.
@@ -144,7 +144,7 @@ class PersonaLookup(HashLookup[Persona]):
             *  PersonaNameBoundsException
             *  PersonaLookupFailedException
         """
-        method = "PersonaLookup._by_designation"
+        method = "PersonaLookupProcess._by_designation"
         matches = [entry for entry in Persona if entry.designation.upper() == designation.upper()]
         
         # Finding at least one match is success.
@@ -175,7 +175,7 @@ class PersonaLookup(HashLookup[Persona]):
             *  PersonaNameBoundsException
             *  PersonaLookupFailedException
         """
-        method = "PersonaLookup._by_quota"
+        method = "PersonaLookupProcess._by_quota"
         matches = [entry for entry in Persona if entry.quota == quota]
         
         # Finding at least one match is success.
@@ -206,7 +206,7 @@ class PersonaLookup(HashLookup[Persona]):
             *  PersonaNameBoundsException
             *  PersonaLookupFailedException
         """
-        method = "PersonaLookup._by_ransom"
+        method = "PersonaLookupProcess._by_ransom"
         matches = [entry for entry in Persona if entry.ransom == ransom]
         
         # Finding at least one match is success.

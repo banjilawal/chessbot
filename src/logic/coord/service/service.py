@@ -11,7 +11,7 @@ from typing import cast
 
 from logic.scalar import Scalar, ScalarService
 from logic.vector import Vector, VectorService
-from logic.coord import Coord, CoordBuilder, CoordServiceException, CoordValidationProcess
+from logic.coord import Coord, CoordBuildProcess, CoordServiceException, CoordValidationProcess
 from logic.system import BuildResult, ComputationResult, IntegrityService, id_emitter
 
 class CoordService(IntegrityService[Coord]):
@@ -39,7 +39,7 @@ class CoordService(IntegrityService[Coord]):
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
-            builder: CoordBuilder = CoordBuilder(),
+            builder: CoordBuildProcess = CoordBuildProcess(),
             validator: CoordValidationProcess = CoordValidationProcess(),
     ):
         """
@@ -60,9 +60,9 @@ class CoordService(IntegrityService[Coord]):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
 
     @property
-    def builder(self) -> CoordBuilder:
-        """get CoordBuilder"""
-        return cast(CoordBuilder, self.entity_builder)
+    def builder(self) -> CoordBuildProcess:
+        """get CoordBuildProcess"""
+        return cast(CoordBuildProcess, self.entity_builder)
     
     @property
     def validator(self) -> CoordValidationProcess:
@@ -81,7 +81,7 @@ class CoordService(IntegrityService[Coord]):
         2.  Certify the coord argument with the service's validator.
         3.  Get the new row and column using the expression
                     new_row, new_colum = coord.row + vector.y, coord.column + vector.x
-        5.  Using the service's CoordBuilder instance create and return the new Coord.
+        5.  Using the service's CoordBuildProcess instance create and return the new Coord.
 
         # PARAMETERS:
             *   coord(Coord)
@@ -108,7 +108,7 @@ class CoordService(IntegrityService[Coord]):
                 return BuildResult.failure(vector_validation.exception)
             
             # when params are certified return the BuildResult.
-            build_result =  self.builder.build(
+            build_result =  self.builder.execute(
                 row=(coord.row + vector.y), column=(coord.column + vector.x), validator=self.validator
             )
             if build_result.is_failure:
@@ -133,7 +133,7 @@ class CoordService(IntegrityService[Coord]):
         2.  Certify the coord argument with the service's validator.
         3.  Get the new row and column using the expression
                     new_row, new_colum = coord.row * scalar.value, coord.column + scalar.value
-        5.  Using the service's CoordBuilder instance create and return the new Coord.
+        5.  Using the service's CoordBuildProcess instance create and return the new Coord.
 
         # PARAMETERS:
             *   coord(Coord)
@@ -161,7 +161,7 @@ class CoordService(IntegrityService[Coord]):
                 return BuildResult.failure(scalar_validation.exception)
             
             # when params are certified return the BuildResult.
-            return self._builder.build(
+            return self._builder.execute(
                 row=(coord.y * scalar.value), column=(coord.x * scalar.value), validator=self.validator
             )
             # Finally, catch any missed exception and wrap A CoordServiceException around it then return the
@@ -220,8 +220,8 @@ class CoordService(IntegrityService[Coord]):
             if vector_validation.is_failure:
                 return BuildResult.failure(vector_validation.exception)
             # After the vector is certified return the BuildResult.
-            return self._builder.build(row=vector.y, column=vector.x, validator=self.validator
-                                       )
+            return self._builder.execute(row=vector.y, column=vector.x, validator=self.validator
+                                         )
             # Finally, catch any missed exception and wrap A CoordServiceException around it then return the
             # exception-chain inside the BuildResult.
         except Exception as ex:

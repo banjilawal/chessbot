@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast
 
 from logic.system import ContextService, id_emitter
-from logic.formation import FormationLookup, FormationKey, FormationKeyBuilder, FormationKeyValidationProcess
+from logic.formation import FormationLookupProcess, FormationKey, FormationKeyBuildProcess, FormationKeyValidationProcess
 
 
 class FormationKeyService(ContextService[FormationKey]):
@@ -38,8 +38,8 @@ class FormationKeyService(ContextService[FormationKey]):
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
-            lookup: FormationLookup = FormationLookup(),
-            builder: FormationKeyBuilder = FormationKeyBuilder(),
+            lookup: FormationLookupProcess = FormationLookupProcess(),
+            builder: FormationKeyBuildProcess = FormationKeyBuildProcess(),
             validator: FormationKeyValidationProcess = FormationKeyValidationProcess(),
     ):
         """
@@ -48,7 +48,7 @@ class FormationKeyService(ContextService[FormationKey]):
         # PARAMETERS:
             *   id (nt)
             *   name (str)
-            *   builder (FormationKeyBuilder)
+            *   builder (FormationKeyBuildProcess)
             *   validator (FormationKeyValidationProcess)
         # RETURNS:
             None
@@ -58,9 +58,9 @@ class FormationKeyService(ContextService[FormationKey]):
         super().__init__(id=id, name=name, builder=builder, validator=validator, finder=lookup)
     
     @property
-    def builder(self) -> FormationKeyBuilder:
-        """get FormationKeyBuilder"""
-        return cast(FormationKeyBuilder, self.entity_builder)
+    def builder(self) -> FormationKeyBuildProcess:
+        """get FormationKeyBuildProcess"""
+        return cast(FormationKeyBuildProcess, self.entity_builder)
     
     @property
     def validator(self) -> FormationKeyValidationProcess:
@@ -68,5 +68,5 @@ class FormationKeyService(ContextService[FormationKey]):
         return cast(FormationKeyValidationProcess, self.entity_validator)
     
     @property
-    def lookup(self) -> FormationLookup:
-        return cast(FormationLookup, self.entity_finder)
+    def lookup(self) -> FormationLookupProcess:
+        return cast(FormationLookupProcess, self.entity_finder)

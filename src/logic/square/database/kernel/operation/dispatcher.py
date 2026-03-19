@@ -24,7 +24,7 @@ class SquareStackOpsDispatcher:
     Attributes:
         crud: SquareStackCrudManager
         rank_quota_analyzer: SquareStackCapacityAnalyzer
-        collision_detector: TokenCollisionDetector
+        collision_detector: TokenCollisionDetectionProcess
 
     Provides:
     Parent:

@@ -1,4 +1,4 @@
-# src/logic/player/builder/builder.py
+# src/logic/player/builder/process.py
 
 """
 Module: logic.player.builder.builder
@@ -12,7 +12,7 @@ from typing import Optional
 
 from logic.game import Game, GameService
 from logic.team import Team, TeamService
-from logic.system import Builder, BuildResult, ExecutionRouteException, IdentityService, LoggingLevelRouter
+from logic.system import BuildProcess, BuildResult, ExecutionRouteException, IdentityService, LoggingLevelRouter
 from logic.agent import (
     AgentVariety, AgentContext, AgentContextBuildException, ZeroAgentContextFlagsException,
     ArenaAgentContextFlagsException
@@ -20,9 +20,9 @@ from logic.agent import (
 
 
 
-class AgentContextBuilder(Builder[AgentContext]):
+class AgentContextBuildProcess(BuildProcess[AgentContext]):
     """
-    Role:Builder, Data Integrity And Reliability Guarantor
+    Role:BuildProcess, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce AgentContext instances whose integrity is guaranteed at creation.
@@ -31,7 +31,7 @@ class AgentContextBuilder(Builder[AgentContext]):
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     Super Class:
-        *   Builder
+        *   BuildProcess
 
     Provides:
 
@@ -41,7 +41,7 @@ class AgentContextBuilder(Builder[AgentContext]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def build(
+    def execute(
             cls,
             id: Optional[int] = None,
             name: Optional[str] = None,

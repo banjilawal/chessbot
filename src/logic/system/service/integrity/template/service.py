@@ -8,7 +8,7 @@ Created: 2025-11-18
 
 from __future__ import annotations
 
-from logic.system import IntegrityService, Builder, Template, ValidationProcess
+from logic.system import IntegrityService, BuildProcess, Template, ValidationProcess
 
 
 class TemplateService(IntegrityService[Template]):
@@ -37,7 +37,7 @@ class TemplateService(IntegrityService[Template]):
     Attributes:
         *   id (int)
         *   name (name)
-        *   builder (Builder[Template])
+        *   builder (BuildProcess[Template])
         *   validator (ValidationProcess[Template])
 
     # LOCAL METHODS:
@@ -47,20 +47,20 @@ class TemplateService(IntegrityService[Template]):
     *   See IntegrityService class for inherited methods.
     """
     SERVICE_NAME = "TemplateService"
-    _builder: Builder[Template]
+    _builder: BuildProcess[Template]
     _validator: ValidationProcess[Template]
     
     def __init__(
             self,
             id: int,
             name: str,
-            builder: Builder[Template],
+            builder: BuildProcess[Template],
             validator: ValidationProcess[Template]
     ):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
 
     @property
-    def builder(self) -> Builder[Template]:
+    def builder(self) -> BuildProcess[Template]:
         return self._builder
     
     @property

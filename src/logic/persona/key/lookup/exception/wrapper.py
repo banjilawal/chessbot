@@ -35,5 +35,5 @@ class PersonaLookupFailedException(PersonaException, LookupException):
     None
     """
     ERR_CODE = "PERSONA_LOOKUP_FAILURE"
-    MSG = "PersonaLookup failed."
+    MSG = "PersonaLookupProcess failed."
 

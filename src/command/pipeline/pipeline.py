@@ -37,7 +37,7 @@ class CommandPipeline(ABC, Generic[C]):
 
     # LOCAL ATTRIBUTES:
         *   cipher: (C)
-        *   builder: (Builder[Command])
+        *   builder: (BuildProcess[Command])
         *   request_validator: (ServiceRequestValidator)
 
     # INHERITED ATTRIBUTES:
@@ -45,7 +45,7 @@ class CommandPipeline(ABC, Generic[C]):
 
     Attributes:
         *   cipher: (C)
-        *   builder: (Builder[Command])
+        *   builder: (BuildProcess[Command])
         *   request_validator: (ServiceRequestValidator)
 
     # LOCAL METHODS:
@@ -99,7 +99,7 @@ class CommandPipeline(ABC, Generic[C]):
         method = "CommandPipeline.build_request"
         
         # Handle the case that the
-        build_result = self._request_service.builder.build(
+        build_result = self._request_service.builder.execute(
             command_name=command_name,
             arguments=arguments
         )
@@ -120,10 +120,10 @@ class CommandPipeline(ABC, Generic[C]):
     def _build_command(self, request: Request) -> BuildResult[C]:
         method = "CommandPipeline._build_command"
         
-        build_result = self._command_service.builder.build(request=request)
+        build_result = self._command_service.builder.execute(request=request)
         
         # Handle the case that, the command is not created.
-        command_build_result = self._command_service.builder.build(
+        command_build_result = self._command_service.builder.execute(
             request=request,
             cipher=self._cipher,
             request_validator=self._request_service.validator,

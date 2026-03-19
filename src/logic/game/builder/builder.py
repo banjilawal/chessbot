@@ -1,4 +1,4 @@
-# src/logic/game/builder.builder.py
+# src/logic/game/builder.process.py
 
 """
 Module: logic.game.builder.builder
@@ -11,12 +11,12 @@ from logic.agent import PlayerAgent, AgentService, UniqueAgentDataService
 from logic.board import BoardService
 from logic.team import Team, UniqueTeamDataService
 from logic.game import Game, GameBuildException
-from logic.system import Builder, BuildResult, IdentityService, LoggingLevelRouter, id_emitter
+from logic.system import BuildProcess, BuildResult, IdentityService, LoggingLevelRouter, id_emitter
 
 
-class GameBuilder(Builder[Game]):
+class GameBuildProcess(BuildProcess[Game]):
     """
-    Role:Builder, Data Integrity And Reliability Guarantor
+    Role:BuildProcess, Data Integrity And Reliability Guarantor
   
     Responsibilities:
     Produce Game instances whose integrity is guaranteed at creation.
@@ -33,7 +33,7 @@ class GameBuilder(Builder[Game]):
     
     @classmethod
     @LoggingLevelRouter.monitor()
-    def build(
+    def execute(
             cls,
             white_player: PlayerAgent,
             black_player: PlayerAgent,
@@ -69,7 +69,7 @@ class GameBuilder(Builder[Game]):
         RAISES:
             *   GameBuildException
         """
-        method = "GameBuilder.builder"
+        method = "GameBuildProcess.builder"
         
         try:
             # Start the error detection process.

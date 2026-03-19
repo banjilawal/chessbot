@@ -1,4 +1,4 @@
-# src/logic/edge/context/builder/builder.py
+# src/logic/edge/context/builder/process.py
 
 """
 Module: logic.edge.context.builder.builder
@@ -13,7 +13,7 @@ from typing import Optional
 from logic.board import Board, BoardService
 from logic.coord import Coord, CoordService
 from logic.edge.state import EdgeState
-from logic.system import Builder, BuildResult, IdentityService
+from logic.system import BuildProcess, BuildResult, IdentityService
 from logic.edge import (
     EdgeContextBuildRouteException, ZeroEdgeContextFlagsException, EdgeContext, EdgeContextBuildException,
     ArenaEdgeContextFlagsException
@@ -21,9 +21,9 @@ from logic.edge import (
 from logic.token import Token, TokenService
 
 
-class EdgeContextBuilder(Builder[EdgeContext]):
+class EdgeContextBuildProcess(BuildProcess[EdgeContext]):
     """
-    Role:Builder, Data Integrity And Reliability Guarantor
+    Role:BuildProcess, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce EdgeContext instances whose integrity is guaranteed at creation.
@@ -32,7 +32,7 @@ class EdgeContextBuilder(Builder[EdgeContext]):
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     Super Class:
-        *   Builder
+        *   BuildProcess
 
     Provides:
 
@@ -41,7 +41,7 @@ class EdgeContextBuilder(Builder[EdgeContext]):
     None
     """
     @classmethod
-    def build(
+    def execute(
             cls,
             id: Optional[int] = None,
             name: Optional[str] = None,
@@ -82,7 +82,7 @@ class EdgeContextBuilder(Builder[EdgeContext]):
                 *   ArenaEdgeContextFlagsException
                 *   EdgeContextBuildRouteException
             """
-        method = "EdgeContextBuilder.build"
+        method = "EdgeContextBuildProcess.build"
 
         # --- Count how many optional parameters are not-null. only one should be not null. ---#
         params = [id, name, coord, token,board, state,]

@@ -12,7 +12,7 @@ from typing import List
 
 from logic.board import Board
 from logic.coord import Coord
-from logic.system import LoggingLevelRouter, SearchResult, StackSearcher
+from logic.system import LoggingLevelRouter, SearchResult, StackSearchProcess
 from logic.square import (
     Square, SquareContext, SquareContextValidationProcess, SquareSearchException, SquareSearchRouteException, SquareState,
     SquareValidationProcess
@@ -20,7 +20,7 @@ from logic.square import (
 from logic.token import Token
 
 
-class SquareFinder(StackSearcher[Square]):
+class SquareFinder(StackSearchProcess[Square]):
     """
     Role:Search
 
@@ -34,18 +34,18 @@ class SquareFinder(StackSearcher[Square]):
     1.  A search result might contain duplicates.
 
     # PARENT
-        *   SearchWorker
+        *   SearchProcess
 
     Provides:
 
 
     # INHERITED ATTRIBUTES:
-        *   See SearchWorker for inherited attributes.
+        *   See SearchProcess for inherited attributes.
         
     Attributes:
     None
         Inherited:
-            *   See SearchWorker for inherited constructor parameters.
+            *   See SearchProcess for inherited constructor parameters.
         
     # LOCAL METHODS:
         *   find(

@@ -22,7 +22,7 @@ class SnapshotContext(Context[Snapshot]):
     Role:Filter, Search, Selection, Reverse/Forward Lookups
 
     Responsibilities:
-    1.  Provide an SchemaLookup with an attribute-value-tuple to perform forward Schema entry lookups.
+    1.  Provide an SchemaLookupProcess with an attribute-value-tuple to perform forward Schema entry lookups.
     # Provtimestampe a SnapshotFinder with a Snapshot or Arena attribute used to find snapshots which a matching
     # attribute.
 

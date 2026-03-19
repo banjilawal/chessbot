@@ -1,4 +1,4 @@
-# src/logic/scalar/builder/builder.py
+# src/logic/scalar/builder/process.py
 
 """
 Module: logic.scalar.builder.builder
@@ -8,13 +8,13 @@ version: 1.0.0
 """
 from wsgiref.validate import validator
 
-from logic.system import Builder, BuildResult, LoggingLevelRouter
+from logic.system import BuildProcess, BuildResult, LoggingLevelRouter
 from logic.scalar import Scalar, ScalarBuildException, ScalarValidationProcess
 
 
-class ScalarBuilder(Builder[Scalar]):
+class ScalarBuildProcess(BuildProcess[Scalar]):
     """
-     Role:Builder, Data Integrity And Reliability Guarantor
+     Role:BuildProcess, Data Integrity And Reliability Guarantor
 
      Responsibilities:
      1.  Produce Scalar instances whose integrity is guaranteed at creation.
@@ -23,10 +23,10 @@ class ScalarBuilder(Builder[Scalar]):
      4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
      Super Class:
-         * Builder
+         * BuildProcess
 
      # PROVIDES:
-         *   ScalarBuilder
+         *   ScalarBuildProcess
 
      # LOCAL ATTRIBUTES:
      None
@@ -37,7 +37,7 @@ class ScalarBuilder(Builder[Scalar]):
 
 
     @LoggingLevelRouter.monitor
-    def build(
+    def execute(
             self,
             value: int,
             scalar_validator: ScalarValidationProcess = ScalarValidationProcess()
@@ -59,7 +59,7 @@ class ScalarBuilder(Builder[Scalar]):
         Raises:
             * ScalarBuildException
         """
-        method = "ScalarBuilder.builder"
+        method = "ScalarBuildProcess.builder"
         
         try:
             validation = scalar_validator.validate_value(value)

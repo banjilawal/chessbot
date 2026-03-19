@@ -1,4 +1,4 @@
-# src/logic/token/builder/builder.py
+# src/logic/token/builder/process.py
 
 """
 Module: logic.token.builder.builder
@@ -14,7 +14,7 @@ from logic.square import Square, SquareService
 from logic.team import Team, TeamService
 from logic.coord import Coord, CoordService
 from logic.system import (
-    NumberValidationProcess, Builder, BuildResult, GameColor, GameColorValidationProcess, IdentityService, LoggingLevelRouter
+    NumberValidationProcess, BuildProcess, BuildResult, GameColor, GameColorValidationProcess, IdentityService, LoggingLevelRouter
 )
 from logic.token import (
     ArenaTokenContextFlagsException, TokenContext, TokenContextBuildException,
@@ -22,9 +22,9 @@ from logic.token import (
 )
 
 
-class TokenContextBuilder(Builder[TokenContext]):
+class TokenContextBuildProcess(BuildProcess[TokenContext]):
     """
-    Role:Builder, Data Integrity And Reliability Guarantor
+    Role:BuildProcess, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce TokenContext instances whose integrity is guaranteed at creation.
@@ -33,7 +33,7 @@ class TokenContextBuilder(Builder[TokenContext]):
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     Super Class:
-        *   Builder
+        *   BuildProcess
 
     Provides:
 
@@ -43,7 +43,7 @@ class TokenContextBuilder(Builder[TokenContext]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def build(
+    def execute(
             cls,
             id: Optional[int] = None,
             team: Optional[Team] = None,
@@ -94,7 +94,7 @@ class TokenContextBuilder(Builder[TokenContext]):
             *   TokenContextBuildException
             *   TokenContextBuildRouteException
         """
-        method = "TokenContextBuilder.builder"
+        method = "TokenContextBuildProcess.builder"
         
         # --- Count how many optional parameters are not-null. only one should be not null. ---#
         params = [id, designation, team, rank, ransom, coord, color, opening_square_name]

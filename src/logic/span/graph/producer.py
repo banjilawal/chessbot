@@ -1,4 +1,4 @@
-# src/logic/span/square/graph/builder.py
+# src/logic/span/square/graph/process.py
 
 """
 Module: logic.span.square.graph.builder
@@ -12,14 +12,14 @@ from __future__ import annotations
 from logic.graph import Graph
 from logic.span import SquareSpan
 from logic.square import SquareStackService
-from logic.system import BuildResult, Builder, LoggingLevelRouter
+from logic.system import BuildResult, BuildProcess, LoggingLevelRouter
 
 
-class SpanningGraphProducer(Builder[Graph]):
+class SpanningGraphProducer(BuildProcess[Graph]):
     
     @classmethod
     @LoggingLevelRouter
-    def build(
+    def execute(
         cls,
         square_span: SquareSpan,
         square_stack: SquareStackService,

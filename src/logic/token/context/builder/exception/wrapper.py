@@ -23,8 +23,8 @@ class TokenContextBuildException(BuildException):
     Role:Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Indicate the TokenContextBuilder did not produce a valid work product.
-    2.  Identify the TokenContextBuilder method where the failure occurred.
+    1.  Indicate the TokenContextBuildProcess did not produce a valid work product.
+    2.  Identify the TokenContextBuildProcess method where the failure occurred.
 
     Super Class:
         *   BuildException
@@ -52,7 +52,7 @@ class TokenContextBuildException(BuildException):
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     ERR_CODE = "TOKEN_CONTEXT_BUILD_FAILURE"
-    MSG = "Failure in TokenContextBuilder method."
+    MSG = "Failure in TokenContextBuildProcess method."
 
     def __init__(
             self,

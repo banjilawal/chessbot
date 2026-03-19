@@ -1,4 +1,4 @@
-# src/command/request/builder/builder.py
+# src/command/request/builder/process.py
 
 """
 Module: command.request.builder.builder
@@ -11,15 +11,15 @@ from __future__ import annotations
 from typing import Any, Dict
 
 from logic.system import (
-    BuildResult, Builder, IdentityService, LoggingLevelRouter, NullArgumentsException, Request, RequestBuildException
+    BuildResult, BuildProcess, IdentityService, LoggingLevelRouter, NullArgumentsException, Request, RequestBuildException
 )
 
 
-class RequestBuilder(Builder[Request]):
+class RequestBuildProcess(BuildProcess[Request]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def build(
+    def execute(
             cls,
             name: str,
             arguments: Dict[str: Any],

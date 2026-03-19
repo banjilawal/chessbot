@@ -73,7 +73,7 @@ class ArenaVisitorSearchParamsException(VisitorSearchContextException):
 # #======================# VISITOR_SEARCH_CONTEXT BUILD EXCEPTION #======================# 
 class VisitorSearchContextBuildException(VisitorSearchContextException, BuildException):
     """
-    Raised when VisitorSearchContextBuilder encounters an error while building team_name team_name.
+    Raised when VisitorSearchContextBuildProcess encounters an error while building team_name team_name.
     Exists primarily to catch all exception raised builder team_name new visitorSearchContext
     """
     ERR_CODE = "VISITOR_SEARCH_CONTEXT_BUILD_FAILED"

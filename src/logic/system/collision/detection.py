@@ -16,7 +16,7 @@ from logic.system import CollisionReport, LoggingLevelRouter
 
 T = TypeVar("T")
 
-class CollisionDetector(Generic[T]):
+class CollisionDetectionProcess(Generic[T]):
     """
     Role:Detector, Consistency and Uniqueness Guarantor,
 
@@ -37,5 +37,5 @@ class CollisionDetector(Generic[T]):
     @classmethod
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def detect(cls, dataset: List[T], target: T, *args, **kwargs) -> CollisionReport[T]:
+    def execute(cls, target: T, dataset: List[T], *args, **kwargs,) -> CollisionReport[T]:
         pass

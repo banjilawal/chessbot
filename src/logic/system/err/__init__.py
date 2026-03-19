@@ -14,7 +14,6 @@ from .anchor import *
 from .bounds import *
 from .color import *
 from .resource import *
-from .consistency import *
 from .debug import *
 from .work import *
 

@@ -1,4 +1,4 @@
-# src/command/command/build/request/builder/builder.py
+# src/command/command/build/request/builder/process.py
 
 """
 Module: command.command.build.request.builder.builder
@@ -25,7 +25,7 @@ class CommandBuilder(Builder[Command]):
             id: int = IdFactory.next_id(class_name="Command"),
             identity_service: IdentityService = IdentityService(),
     ) -> BuildResult[Command]:
-        method = "CommandBuilder.build"
+        method = "CommandBuildProcess.build"
         
         # Handle the case that, the request is not certified as safe.
         identity_validation_result = identity_service.validate_identity(

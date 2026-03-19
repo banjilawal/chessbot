@@ -12,16 +12,16 @@ from logic.domain import DomainValidationProcess
 from logic.neighbor import VisitationEvent
 from logic.piece import Piece, PieceValidator
 
-from logic.system import BuildResult, Builder, ChessException, IdValidationProcess, IdValidationException, LoggingLevelRouter
+from logic.system import BuildResult, BuildProcess, ChessException, IdValidationProcess, IdValidationException, LoggingLevelRouter
 
 
 
-class VisitationEventBuilder(Builder[VisitationEvent]):
+class VisitationEventBuildProcess(BuildProcess[VisitationEvent]):
     """"""
 
     @classmethod
     @LoggingLevelRouter.monitor
-    def build(cls, id: int, domain, domain_visitor: Piece) -> BuildResult[VisitationEvent]:
+    def execute(cls, id: int, domain, domain_visitor: Piece) -> BuildResult[VisitationEvent]:
         """"""
         method = "VisitationBuilder.builder"
         

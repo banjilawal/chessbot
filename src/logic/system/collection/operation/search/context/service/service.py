@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import TypeVar
 
-from logic.system import Builder, Context, IntegrityService, ValidationProcess
+from logic.system import BuildProcess, Context, IntegrityService, ValidationProcess
 
 T = TypeVar("T")
 
@@ -28,7 +28,7 @@ class ContextService(IntegrityService[Context[T]]):
     Provides:
 
     # LOCAL ATTRIBUTES:
-        *   finder (SearchWorker[T])
+        *   finder (SearchProcess[T])
         
     # INHERITED ATTRIBUTES:
         *   See IntegrityService for inherited attributes.
@@ -38,7 +38,7 @@ class ContextService(IntegrityService[Context[T]]):
             self,
             id: int,
             name: str,
-            builder: Builder[Context[T]],
+            builder: BuildProcess[Context[T]],
             validator: ValidationProcess[Context[T]],
             finder: Finder[T],
     ):
@@ -49,8 +49,8 @@ class ContextService(IntegrityService[Context[T]]):
         # PARAMETERS:
             *   name (str)
             *   id (int)
-            *   finder (SearchWorker[T])
-            *   builder (Builder[Context[T]])
+            *   finder (SearchProcess[T])
+            *   builder (BuildProcess[Context[T]])
             *   validator (ValidationProcess[Context[T]])
 
         # RETURNS:

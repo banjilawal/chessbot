@@ -1,4 +1,4 @@
-# src/logic/board/context/builder/builder.py
+# src/logic/board/context/builder/process.py
 
 """
 Module: logic.board.context.builder.builder
@@ -10,15 +10,15 @@ version: 1.0.0
 from typing import Optional
 
 from logic.arena import Arena, ArenaService
-from logic.system import Builder, BuildResult, IdentityService
+from logic.system import BuildProcess, BuildResult, IdentityService
 from logic.board import (
     BoardContextBuildRouteException, ZeroBoardContextFlagsException, BoardContext, BoardContextBuildException,
     ArenaBoardContextFlagsException
 )
 
-class BoardContextBuilder(Builder[BoardContext]):
+class BoardContextBuildProcess(BuildProcess[BoardContext]):
     """
-    Role:Builder, Data Integrity And Reliability Guarantor
+    Role:BuildProcess, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce BoardContext instances whose integrity is guaranteed at creation.
@@ -27,7 +27,7 @@ class BoardContextBuilder(Builder[BoardContext]):
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     Super Class:
-        *   Builder
+        *   BuildProcess
 
     Provides:
 
@@ -36,7 +36,7 @@ class BoardContextBuilder(Builder[BoardContext]):
     None
     """
     @classmethod
-    def build(
+    def execute(
             cls,
             id: Optional[int] = None,
             arena: Optional[Arena] = None,
@@ -66,7 +66,7 @@ class BoardContextBuilder(Builder[BoardContext]):
             *   ArenaBoardContextFlagsException
             *   BoardContextBuildRouteException
         """
-        method = "BoardContextBuilder.build"
+        method = "BoardContextBuildProcess.build"
         
         # --- Count how many optional parameters are not-null. only one should be not null. ---#
         params = [id, arena]

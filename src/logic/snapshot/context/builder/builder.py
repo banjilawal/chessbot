@@ -1,4 +1,4 @@
-# src/logic/snapshot/builder/builder.py
+# src/logic/snapshot/builder/process.py
 
 """
 Module: logic.snapshot.builder.builder
@@ -12,7 +12,7 @@ from typing import Optional
 from logic.arena import Arena
 from logic.team import Team, TeamService
 from logic.agent import PlayerAgent, AgentService
-from logic.system import BuildResult, Builder, ExecutionRouteException, LoggingLevelRouter, NumberValidationProcess
+from logic.system import BuildResult, BuildProcess, ExecutionRouteException, LoggingLevelRouter, NumberValidationProcess
 from logic.game import (
     Game, SnapshotContext, SnapshotContextBuildException, ZeroSnapshotContextFlagsException,
     ArenaSnapshotContextFlagsException
@@ -20,9 +20,9 @@ from logic.game import (
 
 
 
-class SnapshotContextBuilder(Builder[SnapshotContext]):
+class SnapshotContextBuildProcess(BuildProcess[SnapshotContext]):
     """
-    Role:Builder, Data Integrity And Reliability Guarantor
+    Role:BuildProcess, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce SnapshotContext instances whose integrity is guaranteed at creation.
@@ -31,7 +31,7 @@ class SnapshotContextBuilder(Builder[SnapshotContext]):
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     Super Class:
-        *   Builder
+        *   BuildProcess
 
     Provides:
 
@@ -41,7 +41,7 @@ class SnapshotContextBuilder(Builder[SnapshotContext]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def build(
+    def execute(
             cls,
             game: Optional[Game],
             team: Optional[Team],
@@ -86,7 +86,7 @@ class SnapshotContextBuilder(Builder[SnapshotContext]):
             *   SnapshotContextBuildException
             *   ArenaSnapshotContextFlagsException
         """
-        method = "SnapshotContextBuilder.build"
+        method = "SnapshotContextBuildProcess.build"
         try:
             # Count how many optional parameters are not-null. One param needs to be not-null.
             params = [team, agent, timestamp]

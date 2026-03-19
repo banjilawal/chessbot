@@ -36,5 +36,5 @@ class SchemaColorBoundsException(SchemaException, BoundsException):
     None
     """
     ERR_CODE = "COLOR_OUT_OF_SCHEMA_BOUNDS_EXCEPTION"
-    MSG = "SchemaLookup failed: target was outside the set of permissible schema colors."
+    MSG = "SchemaLookupProcess failed: target was outside the set of permissible schema colors."
     

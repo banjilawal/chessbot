@@ -36,4 +36,4 @@ class FormationDesignationBoundsException(FormationException, BoundsException):
     None
     """
     ERR_CODE = "FORMATION_DESIGNATION_BOUNDS_EXCEPTION"
-    MSG = "FormationLookup failed: Target was outside the set of possible Formation designations."
+    MSG = "FormationLookupProcess failed: Target was outside the set of possible Formation designations."

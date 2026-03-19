@@ -21,7 +21,7 @@ from logic.system import ChessException
 class WorkException(ChessException):
     """
     Role:
-        -   Work Method Identifier
+        -   Process Identifier
         -   Exception Chain Layer 1
         -   Exception Messaging
 

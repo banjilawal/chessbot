@@ -9,7 +9,7 @@ SCOPE:
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
 creation, coord_stack_validator, and manipulation of **TeamSearchContext objects**. It handles boundary checks (row/column)
 limits and validation checks. It does not contain any logic for *raising* these exception; that responsibility
-falls to the `BoardSearchContextValidator` and `ProjectionSearchContextBuilder`processes.
+falls to the `BoardSearchContextValidator` and `ProjectionSearchContextBuildProcess`processes.
 
 THEME:
 -----
@@ -104,7 +104,7 @@ class ProjectionSearchContextMaxParamCountException(ProjectionSearchContextExcep
 # #======================#   PROJECTION_SEARCH_CONTEXT BUILD EXCEPTION #======================# 
 class ProjectionSearchContextBuildException(ProjectionSearchContextException, BuildException):
     """
-    Raised when ProjectionSearchContextBuilder encounters an error while building team_name team_name.
+    Raised when ProjectionSearchContextBuildProcess encounters an error while building team_name team_name.
     Exists primarily to catch all exception raised builder team_name new projectionSearchContext
     """
     ERR_CODE = "SEARCH_CONTEXT_BUILD_FAILED"

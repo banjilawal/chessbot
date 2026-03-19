@@ -76,7 +76,7 @@ class BlockingEventValidationProcess(ValidationProcess[BlockingEvent]):
                     f"{method}: {EnemyCannotBeBlockerException.MSG}")
                 )
             
-            context_build_result = DiscoverySearchContextBuilder.build(piece_id=event.friend.visitor_id)
+            context_build_result = DiscoverySearchContextBuilder.execute(piece_id=event.friend.visitor_id)
             if context_build_result.is_failure():
                 return ValidationResult.failure(context_build_result.exception)
             search_context = cast(DiscoverySearchContext, context_build_result.payload)

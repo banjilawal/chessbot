@@ -1,4 +1,4 @@
-# src/logic/persona/builder/builder.py
+# src/logic/persona/builder/process.py
 
 """
 Module: logic.persona.builder.builder
@@ -13,12 +13,12 @@ from logic.persona import (
     ArenaPersonaKeysException, PersonaKey, PersonaKeyBuildException,
     PersonaKeyBuildRouteException, ZeroPersonaKeysException
 )
-from logic.system import NumberValidationProcess, BuildResult, Builder, IdentityService, LoggingLevelRouter
+from logic.system import NumberValidationProcess, BuildResult, BuildProcess, IdentityService, LoggingLevelRouter
 
 
-class PersonaKeyBuilder(Builder[PersonaKey]):
+class PersonaKeyBuildProcess(BuildProcess[PersonaKey]):
     """
-    Role:Builder, Data Integrity And Reliability Guarantor
+    Role:BuildProcess, Data Integrity And Reliability Guarantor
 
     Responsibilities:
         1.  Produce PersonaKey instances whose integrity is guaranteed at creation.
@@ -27,7 +27,7 @@ class PersonaKeyBuilder(Builder[PersonaKey]):
         4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     Super Class:
-        *   Builder
+        *   BuildProcess
 
     Provides:
 
@@ -37,7 +37,7 @@ class PersonaKeyBuilder(Builder[PersonaKey]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def build(
+    def execute(
             cls,
             name: Optional[str] = None,
             quota: Optional[int] = None,
@@ -73,7 +73,7 @@ class PersonaKeyBuilder(Builder[PersonaKey]):
             *   ArenaPersonaKeysException
             *   PersonaKeyBuildRouteException
         """
-        method = "PersonaKeyBuilder.build"
+        method = "PersonaKeyBuildProcess.build"
         
         # Count how many optional parameters are not-null. One param needs to be not-null.
         params = [name, designation, quota, ransom]

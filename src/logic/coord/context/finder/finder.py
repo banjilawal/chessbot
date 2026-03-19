@@ -18,7 +18,7 @@ from logic.coord import (
 
 class CoordFinder(DataFinder[Coord]):
     """
-    Role:SearchWorker
+    Role:SearchProcess
 
     Responsibilities:
     1.  Send bag in a TokenList whose attribute value match the context.key value to the caller.
@@ -28,7 +28,7 @@ class CoordFinder(DataFinder[Coord]):
     1.  TokenFinder sends the raw list of matches. Resolving id collisions is the caller's responsibility.
 
     # PARENT
-        *   SearchWorker
+        *   SearchProcess
 
     Provides:
 

@@ -1,7 +1,7 @@
 # src/command/pipeline/database/core/exception/pop/worker.py
 
 """
-Module: command.pipeline.database.core.exception.pop.wrapper
+Module: command.pipeline.database.core.exception.pop.work
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0

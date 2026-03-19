@@ -63,7 +63,7 @@ Both use cases do forward and reverse lookups unlike dataset searches.
         HashContext
         HashContextBuilder,
         HashContextValidator,
-        HashLookup(HashContext, HashContextValidator) -> SearchResult[HashMember]
+        HashLookupProcess(HashContext, HashContextValidator) -> SearchResult[HashMember]
         .........................................................................
         HashContextExceptions {
             ZeroHashMapKeysException
@@ -78,7 +78,7 @@ Both use cases do forward and reverse lookups unlike dataset searches.
         HashMember_EntityMapper
         ReverseHashLookup(
             EntityDataSet,
-            HashLookup(EntityDataSet, entity.attribute, HashContextService.validator),
+            HashLookupProcess(EntityDataSet, entity.attribute, HashContextService.validator),
         ) --> SearchResult[List[Entity]]
     }
     .................................................................................

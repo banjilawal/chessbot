@@ -1,4 +1,4 @@
-# src/logic/system/collection/stack/exception/base.py
+# src/logic/system/collection/stack/exception/anchor.py
 
 """
 Module: logic.system.collection.stack.exception.base
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ====================== STACK_SERVICE EXCEPTION #======================#
-class StackServiceException(CollectionException, ServiceException):
+class StackServiceException(ServiceException):
     """
     Role:Exception Work
 
@@ -26,7 +26,6 @@ class StackServiceException(CollectionException, ServiceException):
     2.  Wraps an exception that hits the try-finally block of a StackService method.
 
     Super Class:
-        *   CollectionException
         *   ServiceException
 
     Provides:

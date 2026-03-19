@@ -26,8 +26,8 @@ class BuildException(OperationException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate the Builder did not produce a valid work product.
-        2.  Identify the Builder method where the failure occurred.
+        1.  Indicate the BuildProcess did not produce a valid work product.
+        2.  Identify the BuildProcess method where the failure occurred.
 
     Attributes:
         op: Optional[str]
@@ -46,7 +46,7 @@ class BuildException(OperationException):
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     ERR_CODE = "BUILD_FAILURE"
-    MSG = "Failure Builder method."
+    MSG = "Failure BuildProcess method."
     
     def __init__(
             self,

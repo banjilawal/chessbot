@@ -25,7 +25,7 @@ class SquareSpanBuildException(BuildException):
     # TASK: Worker Method Identifier
 
     Responsibilities:
-    1.  Identify the SquareSpanBuilder method where the process failed.
+    1.  Identify the SquareSpanBuildProcess method where the process failed.
 
     Super Class:
         *   BuildException
@@ -53,7 +53,7 @@ class SquareSpanBuildException(BuildException):
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     ERR_CODE = "SQUARE_SPAN_BUILD_FAILURE"
-    MSG = "Failure in SquareSpanBuilder method."
+    MSG = "Failure in SquareSpanBuildProcess method."
     
     def __init__(
             self,

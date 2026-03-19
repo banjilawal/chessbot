@@ -1,4 +1,4 @@
-# src/logic/pair/listing/builder/builder.py
+# src/logic/pair/listing/builder/process.py
 
 """
 Module: logic.pair.listing.builder.builder
@@ -10,14 +10,14 @@ version: 1.0.0
 from __future__ import annotations
 
 from logic.node import Node, NodeService
-from logic.pair import PairBuilder, PairList, PairListBuildException, TreeDoesNotOwnRayException
+from logic.pair import PairBuildProcess, PairList, PairListBuildException, TreeDoesNotOwnRayException
 from logic.span import SquareRay, SquareRayService
-from logic.system import BuildResult, Builder, LoggingLevelRouter
+from logic.system import BuildResult, BuildProcess, LoggingLevelRouter
 
 
-class PairListBuilder(Builder[PairList]):
+class PairListBuildProcess(BuildProcess[PairList]):
     """
-     Role:Builder, Data Integrity And Reliability Guarantor
+     Role:BuildProcess, Data Integrity And Reliability Guarantor
     
      Responsibilities:
      1.  Produce PairList instances whose integrity and reliability are guaranteed.
@@ -25,13 +25,13 @@ class PairListBuilder(Builder[PairList]):
      3.  Return an exception to the client if a build resource does not satisfy integrity requirements.
     
      Super Class:
-         * Builder
+         * BuildProcess
     
     Provides:
     
     
     # INHERITED ATTRIBUTES:
-        *   See Builder class for inherited attributes.
+        *   See BuildProcess class for inherited attributes.
     
     Attributes:
     None
@@ -40,17 +40,17 @@ class PairListBuilder(Builder[PairList]):
     None
     
     # INHERITED METHODS:
-        *   See Builder class for inherited methods.
+        *   See BuildProcess class for inherited methods.
     """
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def build(
+    def execute(
             cls,
             parent_node: Node,
             square_ray: SquareRay,
             node_service: NodeService = NodeService(),
-            pair_builder: PairBuilder = PairBuilder(),
+            pair_builder: PairBuildProcess = PairBuildProcess(),
             square_ray_service: SquareRayService = SquareRayService(),
     ) -> BuildResult[PairList]:
         """
@@ -70,7 +70,7 @@ class PairListBuilder(Builder[PairList]):
             parent_node: Node
             square_ray: SquareRay
             node_service: NodeService
-            pair_builder: PairBuilder
+            pair_builder: PairBuildProcess
             square_ray_service: SquareRayService
 
         Returns:
@@ -131,7 +131,7 @@ class PairListBuilder(Builder[PairList]):
 
         # --- Do the pair building work on each ray member. ---#
         for member in square_ray.members:
-            build_result = pair_builder.build(
+            build_result = pair_builder.execute(
                 head=cursor,
                 tail_square=member,
                 node_service=node_service,

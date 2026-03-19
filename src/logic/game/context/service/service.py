@@ -11,7 +11,7 @@ from typing import cast
 
 from logic.game.finder.finder import GameFinder
 from logic.system import ContextService, id_emitter
-from logic.game import GameContext, GameContextBuilder, GameContextValidationProcess
+from logic.game import GameContext, GameContextBuildProcess, GameContextValidationProcess
 
 
 class GameContextService(ContextService[GameContext]):
@@ -41,7 +41,7 @@ class GameContextService(ContextService[GameContext]):
             name: str = DEFAULT_NAME,
             id: int = id_emitter.service_id,
             finder: GameFinder = GameFinder(),
-            builder: GameContextBuilder = GameContextBuilder(),
+            builder: GameContextBuildProcess = GameContextBuildProcess(),
             validator: GameContextValidationProcess = GameContextValidationProcess(),
     ):
         """
@@ -52,7 +52,7 @@ class GameContextService(ContextService[GameContext]):
             *   name (str): Default value - SERVICE_NAME
             *   id (int): Default value - id_emitter.service_id
             *   finder (GameFinder): Default value - GameFinder()
-            *   builder (GameContextBuilder): Default value - GameContextBuilder()
+            *   builder (GameContextBuildProcess): Default value - GameContextBuildProcess()
             *   validator (GameContextValidationProcess): Default value - GameContextValidationProcess()
 
         # RETURNS:
@@ -69,9 +69,9 @@ class GameContextService(ContextService[GameContext]):
         return cast(GameFinder, self.entity_finder)
     
     @property
-    def builder(self) -> GameContextBuilder:
-        """Get GameContextBuilder instance."""
-        return cast(GameContextBuilder, self.entity_builder)
+    def builder(self) -> GameContextBuildProcess:
+        """Get GameContextBuildProcess instance."""
+        return cast(GameContextBuildProcess, self.entity_builder)
     
     @property
     def validator(self) -> GameContextValidationProcess:

@@ -9,11 +9,11 @@ version: 1.0.0
 
 
 from logic.engine import Engine
-from logic.system import BuildResult, Builder
+from logic.system import BuildResult, BuildProcess
 
 
-class EngineBuilder(Builder[Engine]):
+class EngineBuildProcess(BuildProcess[Engine]):
     
     @classmethod
-    def build(cls, *args, **kwargs) -> BuildResult[Engine]:
+    def execute(cls, *args, **kwargs) -> BuildResult[Engine]:
         pass

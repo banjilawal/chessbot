@@ -24,7 +24,7 @@ from logic.system.collection.stack.stack import T
 
 class NodeStackService(StackService[Node]):
     """
-    Role:Data Stack, SearchWorker IntegrityService, CRUD Controller, Encapsulation, API layer.
+    Role:Data Stack, SearchProcess IntegrityService, CRUD Controller, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing API.

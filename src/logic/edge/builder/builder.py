@@ -1,4 +1,4 @@
-# src/logic/edge/builder/builder.py
+# src/logic/edge/builder/process.py
 
 """
 Module: logic.edge.builder.builder
@@ -12,10 +12,10 @@ from __future__ import annotations
 from logic.coord import CoordService
 from logic.edge import EdgeBuildException, HeadCannotBeTailException
 from logic.node import Node
-from logic.system import BuildResult, Builder, IdFactory, IdentityService, LoggingLevelRouter
+from logic.system import BuildResult, BuildProcess, IdFactory, IdentityService, LoggingLevelRouter
 
 
-class EdgeBuilder(Builder[Edge]):
+class EdgeBuildProcess(BuildProcess[Edge]):
     """
     Role:Factory, Data Integrity Guarantor
 
@@ -26,7 +26,7 @@ class EdgeBuilder(Builder[Edge]):
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     Super Class:
-        *   Builder
+        *   BuildProcess
 
     Provides:
 
@@ -36,7 +36,7 @@ class EdgeBuilder(Builder[Edge]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def build(
+    def execute(
             cls,
             head: Node,
             tail: Node,
@@ -66,7 +66,7 @@ class EdgeBuilder(Builder[Edge]):
          Raises:
              *   EdgeBuildException
          """
-         method = "EdgeBuilder.build"
+         method = "EdgeBuildProcess.build"
          
          # Handle the case that, the id is not certified safe.
          id_validation = identity_service.validate_id(id)

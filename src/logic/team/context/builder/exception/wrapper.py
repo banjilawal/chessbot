@@ -23,8 +23,8 @@ class TeamContextBuildException(BuildException):
     Role:Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Indicate the TeamContextBuilder did not produce a valid work product.
-    2.  Identify the TeamContextBuilder method where the failure occurred.
+    1.  Indicate the TeamContextBuildProcess did not produce a valid work product.
+    2.  Identify the TeamContextBuildProcess method where the failure occurred.
 
     Super Class:
         *   BuildException
@@ -52,7 +52,7 @@ class TeamContextBuildException(BuildException):
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     ERR_CODE = "TEAM_CONTEXT_BUILD_FAILURE"
-    MSG = "Failure in TeamContextBuilder method."
+    MSG = "Failure in TeamContextBuildProcess method."
 
     def __init__(
             self,

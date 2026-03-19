@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import cast
 
 from logic.system import (
-    IntegrityService, Builder, Command, Request, RequestBuilder,
+    IntegrityService, BuildProcess, Command, Request, RequestBuilder,
     RequestValidator, ValidationProcess
 )
 
@@ -42,7 +42,7 @@ class RequestService(IntegrityService[Command]):
     Attributes:
         *   id (int)
         *   name (name)
-        *   builder (Builder[Command])
+        *   builder (BuildProcess[Command])
         *   validator (ValidationProcess[Command])
 
     # LOCAL METHODS:
@@ -52,7 +52,7 @@ class RequestService(IntegrityService[Command]):
     *   See IntegrityService class for inherited methods.
     """
     SERVICE_NAME = "RequestService"
-    # _builder: Builder[RequestBuilder]
+    # _builder: BuildProcess[RequestBuildProcess]
     # _validator: ValidationProcess[RequestValidationProcess]
     
     def __init__(

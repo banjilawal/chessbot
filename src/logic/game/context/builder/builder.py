@@ -1,4 +1,4 @@
-# src/logic/game/builder/builder.py
+# src/logic/game/builder/process.py
 
 """
 Module: logic.game.builder.builder
@@ -11,16 +11,16 @@ from typing import Optional
 
 
 from logic.agent import PlayerAgent, AgentService
-from logic.system import Builder, BuildResult, ExecutionRouteException, IdentityService, LoggingLevelRouter
+from logic.system import BuildProcess, BuildResult, ExecutionRouteException, IdentityService, LoggingLevelRouter
 from logic.game import (
     GameContext, GameContextBuildException, ZeroGameContextFlagsException, ArenaGameContextFlagsException
 )
 
 
 
-class GameContextBuilder(Builder[GameContext]):
+class GameContextBuildProcess(BuildProcess[GameContext]):
     """
-    Role:Builder, Data Integrity And Reliability Guarantor
+    Role:BuildProcess, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce GameContext instances whose integrity is guaranteed at creation.
@@ -29,7 +29,7 @@ class GameContextBuilder(Builder[GameContext]):
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     Super Class:
-        *   Builder
+        *   BuildProcess
 
     Provides:
 
@@ -39,7 +39,7 @@ class GameContextBuilder(Builder[GameContext]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def build(
+    def execute(
             cls,
             id: Optional[int] = None,
             agent: Optional[PlayerAgent] = None,

@@ -1,4 +1,4 @@
-# src/logic/pair/pair/builder/builder.py
+# src/logic/pair/pair/builder/process.py
 
 """
 Module: logic.pair.pair.builder.builder
@@ -11,12 +11,12 @@ from __future__ import annotations
 
 from logic.node import Node, NodeService
 from logic.square import Square, SquareValidationProcess
-from logic.system import BuildResult, Builder, LoggingLevelRouter
+from logic.system import BuildResult, BuildProcess, LoggingLevelRouter
 from logic.pair import HeadTailSquareException, Pair, PairBuildException
 
-class PairBuilder(Builder[Pair]):
+class PairBuildProcess(BuildProcess[Pair]):
     """
-     Role:Builder, Data Integrity And Reliability Guarantor
+     Role:BuildProcess, Data Integrity And Reliability Guarantor
 
      Responsibilities:
      1.  Produce Pair instances whose integrity and reliability are guaranteed.
@@ -24,13 +24,13 @@ class PairBuilder(Builder[Pair]):
      3.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
      Super Class:
-         * Builder
+         * BuildProcess
 
     Provides:
 
 
     # INHERITED ATTRIBUTES:
-        *   See Builder class for inherited attributes.
+        *   See BuildProcess class for inherited attributes.
 
     Attributes:
     None
@@ -39,11 +39,11 @@ class PairBuilder(Builder[Pair]):
     None
 
     # INHERITED METHODS:
-        *   See Builder class for inherited methods.
+        *   See BuildProcess class for inherited methods.
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def build(
+    def execute(
             cls,
             head: Node,
             tail_square: Square,
@@ -115,7 +115,7 @@ class PairBuilder(Builder[Pair]):
                 )
             )
         # --- Attempt building the tail node. ---#
-        tail_node_build_result = node_service.builder.build(
+        tail_node_build_result = node_service.builder.execute(
             square=tail_square,
             square_validator=square_validator,
         )

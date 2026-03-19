@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import cast
 
 from logic.system import ContextService, id_emitter
-from logic.node import NodeContext, NodeContextBuilder, NodeContextValidationProcess, NodeFinder
+from logic.node import NodeContext, NodeContextBuildProcess, NodeContextValidationProcess, NodeFinder
 
 
 class NodeContextService(ContextService[NodeContext]):
@@ -42,7 +42,7 @@ class NodeContextService(ContextService[NodeContext]):
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             finder: NodeFinder = NodeFinder(),
-            builder: NodeContextBuilder = NodeContextBuilder(),
+            builder: NodeContextBuildProcess = NodeContextBuildProcess(),
             validator: NodeContextValidationProcess = NodeContextValidationProcess(),
     ):
         """
@@ -50,7 +50,7 @@ class NodeContextService(ContextService[NodeContext]):
             id: int
             name: str
             finder: NodeFinder
-            builder: NodeContextBuilder
+            builder: NodeContextBuildProcess
             validator: NodeContextValidationProcess
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator, finder=finder)
@@ -61,9 +61,9 @@ class NodeContextService(ContextService[NodeContext]):
         return cast(NodeFinder, self.entity_finder)
     
     @property
-    def builder(self) -> NodeContextBuilder:
-        """Get NodeContextBuilder instance."""
-        return cast(NodeContextBuilder, self.entity_builder)
+    def builder(self) -> NodeContextBuildProcess:
+        """Get NodeContextBuildProcess instance."""
+        return cast(NodeContextBuildProcess, self.entity_builder)
     
     @property
     def validator(self) -> NodeContextValidationProcess:

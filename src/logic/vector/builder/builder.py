@@ -1,4 +1,4 @@
-# src/logic/vector/builder/builder.py
+# src/logic/vector/builder/process.py
 
 """
 Module: logic.vector.builder.__init__
@@ -9,13 +9,13 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from logic.system import Builder, BuildResult, LONGEST_KNIGHT_LEG_SIZE, LoggingLevelRouter, NumberValidationProcess
+from logic.system import BuildProcess, BuildResult, LONGEST_KNIGHT_LEG_SIZE, LoggingLevelRouter, NumberValidationProcess
 from logic.vector import Vector, VectorBuildException,VectorValidationProcess
 
 
-class VectorBuilder(Builder[Vector]):
+class VectorBuildProcess(BuildProcess[Vector]):
     """
-     Role:Builder, Data Integrity And Reliability Guarantor
+     Role:BuildProcess, Data Integrity And Reliability Guarantor
 
      Responsibilities:
      1.  Produce Vector instances whose integrity is guaranteed at creation.
@@ -24,10 +24,10 @@ class VectorBuilder(Builder[Vector]):
      4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
      Super Class:
-         * Builder
+         * BuildProcess
 
      # PROVIDES:
-         *   VectorBuilder
+         *   VectorBuildProcess
 
      # LOCAL ATTRIBUTES:
      None
@@ -36,7 +36,7 @@ class VectorBuilder(Builder[Vector]):
      None
      """
     @LoggingLevelRouter.monitor
-    def build(
+    def execute(
             self,
             x: int,
             y: int,
@@ -60,7 +60,7 @@ class VectorBuilder(Builder[Vector]):
         RAISES:
             *   VectorBuildException
         """
-        method = "VectorBuilder.builder"
+        method = "VectorBuildProcess.builder"
         # Handle the x component
         x_validation = bound_number_validator.execute(floor=0, ceiling=LONGEST_KNIGHT_LEG_SIZE, candidate=abs(x))
         if x_validation.is_failure:

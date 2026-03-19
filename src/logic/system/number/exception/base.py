@@ -1,4 +1,4 @@
-# src/logic/system/number/exception/base.py
+# src/logic/system/number/exception/anchor.py
 
 """
 Module: logic.system.number.exception.base

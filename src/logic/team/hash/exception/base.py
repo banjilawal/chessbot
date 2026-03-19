@@ -1,4 +1,4 @@
-# src/logic/team/hash/exception/base.py
+# src/logic/team/hash/exception/anchor.py
 
 """
 Module: logic.team.hash.exception.base

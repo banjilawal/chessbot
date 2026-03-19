@@ -13,7 +13,7 @@ from typing import TypeVar, Generic
 T = TypeVar("T")
 
 
-class SearchWorker(ABC, Generic[T]):
+class SearchProcess(ABC, Generic[T]):
     """
     Role:Debug Coverage Target, Exception Chain Layer 0
 

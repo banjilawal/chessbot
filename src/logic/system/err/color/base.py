@@ -1,4 +1,4 @@
-# src/logic/system/err/color/base.py
+# src/logic/system/err/color/anchor.py
 
 """
 Module: logic.system.err.color.base

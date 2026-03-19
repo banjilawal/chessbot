@@ -108,7 +108,7 @@ class CollisionReport(Generic[T]):
         )
     
     @property
-    def is_analyzer_failure(self) -> bool:
+    def is_failure(self) -> bool:
         return (
                 self.var is None and
                 self.value is None and
@@ -122,7 +122,7 @@ class CollisionReport(Generic[T]):
         )
     
     @property
-    def is_analyzer_timed_out(self) -> bool:
+    def is_timed_out(self) -> bool:
         return (
                 self.var is None and
                 self.value is None and
@@ -162,7 +162,7 @@ class CollisionReport(Generic[T]):
         )
     
     @classmethod
-    def detector_failure(cls, exception: Exception):
+    def failure(cls, exception: Exception):
         return cls(
             var=None,
             value=None,
@@ -173,7 +173,7 @@ class CollisionReport(Generic[T]):
         )
     
     @classmethod
-    def detector_timed_out(cls, exception: Exception):
+    def timed_out(cls, exception: Exception):
         return cls(
             var=None,
             value=None,

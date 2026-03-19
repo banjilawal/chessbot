@@ -1,4 +1,4 @@
-# src/logic/arena/builder.py
+# src/logic/arena/process.py
 
 """
 Module: logic.arena.builder
@@ -13,12 +13,12 @@ from logic.team import Team
 from logic.board import Board
 from logic.agent import PlayerAgent, AgentService
 from logic.arena import Arena, ArenaBuildException, DuplicatePlayerInArenaException
-from logic.system import Builder, BuildResult, IdentityService, LoggingLevelRouter, ValidationResult, id_emitter
+from logic.system import BuildProcess, BuildResult, IdentityService, LoggingLevelRouter, ValidationResult, id_emitter
 
 
-class ArenaBuilder(Builder[Arena]):
+class ArenaBuildProcess(BuildProcess[Arena]):
     """
-    Role:Builder, Data Integrity And Reliability Guarantor
+    Role:BuildProcess, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce Arena instances whose integrity is guaranteed at creation.
@@ -27,10 +27,10 @@ class ArenaBuilder(Builder[Arena]):
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
     
     Super Class:
-        *   Builder
+        *   BuildProcess
 
     # PROVIDES:
-        *   ArenaBuilder
+        *   ArenaBuildProcess
 
     
     # INHERITED ATTRIBUTES:
@@ -38,7 +38,7 @@ class ArenaBuilder(Builder[Arena]):
     """
     
     @classmethod
-    def build(
+    def execute(
             cls,
             board: Board,
             id: int = id_emitter.arena_id,
@@ -64,7 +64,7 @@ class ArenaBuilder(Builder[Arena]):
         Raises:
             *   ArenaBuildException
         """
-        method = "ArenaBuilder.build"
+        method = "ArenaBuildProcess.build"
         try:
             # Ensure the id is safe to use.
             id_validation = identity_service.validate_id(candidate=id)
@@ -95,7 +95,7 @@ class ArenaBuilder(Builder[Arena]):
             player_service: AgentService = AgentService()
     ) -> ValidationResult[List[PlayerAgent]]:
         """"""
-        method = "ArenaBuilder._certify_players"
+        method = "ArenaBuildProcess._certify_players"
         try:
             # Perform the basic owner safety validation.
             for player in players:
@@ -124,10 +124,10 @@ class ArenaBuilder(Builder[Arena]):
             arena: Arena,
             team_param_tuples: List[(PlayerAgent, Schema)],
     ) -> BuildResult[List[Team]]:
-        method = "ArenaBuilder._build_teams"
+        method = "ArenaBuildProcess._build_teams"
         for param_tuple in team_param_tuples:
             agent, team_schema = param_tuple
-            build_result = player.teams.pair_service.factory.build(
+            build_result = player.teams.pair_service.factory.execute(
                 arena=arena,
                 player=agent,
                 team_schema=team_schema

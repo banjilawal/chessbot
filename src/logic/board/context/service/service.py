@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast
 
 from logic.system import ContextService, id_emitter
-from logic.board import BoardContext, BoardContextBuilder, BoardContextValidationProcess, BoardFinder
+from logic.board import BoardContext, BoardContextBuildProcess, BoardContextValidationProcess, BoardFinder
 
 
 class BoardContextService(ContextService[BoardContext]):
@@ -41,7 +41,7 @@ class BoardContextService(ContextService[BoardContext]):
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             finder: BoardFinder = BoardFinder(),
-            builder: BoardContextBuilder = BoardContextBuilder(),
+            builder: BoardContextBuildProcess = BoardContextBuildProcess(),
             validator: BoardContextValidationProcess = BoardContextValidationProcess(),
     ):
         """
@@ -51,7 +51,7 @@ class BoardContextService(ContextService[BoardContext]):
             *   name (str)
             *   id (int)
             *   finder (BoardFinder)
-            *   builder (BoardContextBuilder)
+            *   builder (BoardContextBuildProcess)
             *   validator (BoardContextValidationProcess)
         # RETURNS:
             None
@@ -67,9 +67,9 @@ class BoardContextService(ContextService[BoardContext]):
         return cast(BoardFinder, self.entity_finder)
     
     @property
-    def builder(self) -> BoardContextBuilder:
-        """Get BoardContextBuilder instance."""
-        return cast(BoardContextBuilder, self.entity_builder)
+    def builder(self) -> BoardContextBuildProcess:
+        """Get BoardContextBuildProcess instance."""
+        return cast(BoardContextBuildProcess, self.entity_builder)
     
     @property
     def validator(self) -> BoardContextValidationProcess:

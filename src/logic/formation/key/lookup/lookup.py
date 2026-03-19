@@ -1,4 +1,4 @@
-# src/logic/formation/key/lookup/lookup.py
+# src/logic/formation/key/lookup/process.py
 
 """
 Module: logic.formation.key.lookup.lookup
@@ -15,10 +15,10 @@ from logic.formation import (
     FormationKeyValidationProcess
 )
 from logic.persona import Persona
-from logic.system import GameColor, HashLookup, LoggingLevelRouter, SearchResult
+from logic.system import GameColor, HashLookupProcess, LoggingLevelRouter, SearchResult
 
 
-class FormationLookup(HashLookup[Formation]):
+class FormationLookupProcess(HashLookupProcess[Formation]):
     """
      Role:Forward Lookups
 
@@ -62,7 +62,7 @@ class FormationLookup(HashLookup[Formation]):
         Raises:
             *   FormationLookupFailedException
         """
-        method = "FormationLookup.find"
+        method = "FormationLookupProcess.find"
 
         # Handle the case that, the Key fails validation.
         validation = super_key_validator.execute(candidate=super_key)
@@ -116,7 +116,7 @@ class FormationLookup(HashLookup[Formation]):
             *   FormationDesignationBoundsException
             *   FormationLookupFailedException
         """
-        method = "FormationLookup._find_by_designation"
+        method = "FormationLookupProcess._find_by_designation"
         matches = [entry for entry in Formation if entry.designation.upper() == designation.upper()]
         
         # Finding at least one match is success.
@@ -147,7 +147,7 @@ class FormationLookup(HashLookup[Formation]):
             *   FormationSquareNameBoundsException
             *   FormationLookupFailedException
         """
-        method = "FormationLookup._query_b_square_name"
+        method = "FormationLookupProcess._query_b_square_name"
         matches = [entry for entry in Formation if entry.square_name.upper() == square_name.upper()]
         # Finding at least one match is success.
         if len(matches) >= 1:
@@ -177,7 +177,7 @@ class FormationLookup(HashLookup[Formation]):
             *   FormationColorBoundsException
             *   FormationLookupFailedException
         """
-        method = "FormationLookup._by_color"
+        method = "FormationLookupProcess._by_color"
         matches = [entry for entry in Formation if entry.color == color]
         
         # Finding at least one match is success.
@@ -208,7 +208,7 @@ class FormationLookup(HashLookup[Formation]):
             *   FormationColorBoundsException
             *   FormationLookupFailedException
         """
-        method = "FormationLookup._by_color"
+        method = "FormationLookupProcess._by_color"
         matches = [entry for entry in Formation if entry.persona == persona]
         
         # Finding at least one match is success.

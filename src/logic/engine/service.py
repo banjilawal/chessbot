@@ -11,7 +11,7 @@ version: 1.0.0
 from typing import Any
 
 from logic.engine import Engine
-from logic.engine.builder import EngineBuilder
+from logic.engine.builder import EngineBuildProcess
 from logic.engine.validator import EngineValidationProcess
 from logic.system import BuildResult, ValidationResult
 
@@ -19,10 +19,10 @@ from logic.system import BuildResult, ValidationResult
 class EngineService:
     _id: int
     _engine: Engine
-    _builder: EngineBuilder
+    _builder: EngineBuildProcess
     _validator: EngineValidationProcess
     
-    def __init__(self, engine_id: int, builder: EngineBuilder, validator: EngineValidationProcess):
+    def __init__(self, engine_id: int, builder: EngineBuildProcess, validator: EngineValidationProcess):
         self._id = engine_id
         self._builder = builder
         self._validator = validator
@@ -39,7 +39,7 @@ class EngineService:
     
     
     def build_engine(self, *args, **kwargs) -> BuildResult[Engine]:
-        return self._builder.build()
+        return self._builder.execute()
     
     
     def validate_engine(self, candidate: Any) -> ValidationResult[Engine]:

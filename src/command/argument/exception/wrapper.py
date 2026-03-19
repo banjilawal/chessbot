@@ -1,7 +1,7 @@
 # src/command/request/validator/worker.py
 
 """
-Module: command.request.validator.wrapper
+Module: command.request.validator.work
 Author: Banji Lawal
 Created: 2026-02-24
 """

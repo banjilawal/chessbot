@@ -1,4 +1,4 @@
-# src/logic/schema/key/builder/builder.py
+# src/logic/schema/key/builder/process.py
 
 """
 Module: logic.schema.key.builder.builder
@@ -11,23 +11,23 @@ from typing import Optional
 
 from logic.schema.key.builder.exception import SchemaKeyBuildException, SchemaKeyBuildRouteException
 from logic.system import (
-    BuildResult, Builder, GameColor, GameColorValidationProcess, IdentityService, LoggingLevelRouter
+    BuildResult, BuildProcess, GameColor, GameColorValidationProcess, IdentityService, LoggingLevelRouter
 )
 from logic.schema import (
     ZeroSchemaKeysException, SchemaKey, ArenaSchemaKeysException,
 )
 
 
-class SchemaKeyBuilder(Builder[SchemaKey]):
+class SchemaKeyBuildProcess(BuildProcess[SchemaKey]):
     """
-    Role:Builder, Data Integrity And Reliability Guarantor
+    Role:BuildProcess, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce SchemaKey instances whose integrity is always guaranteed at creation.
     2.  If the build fails indicate the reason in an exception returned to the caller.
 
     Super Class:
-        *   Builder
+        *   BuildProcess
 
     Provides:
 
@@ -37,7 +37,7 @@ class SchemaKeyBuilder(Builder[SchemaKey]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def build(
+    def execute(
             cls,
             name: Optional[str] = None,
             color: Optional[GameColor] = None,
@@ -66,7 +66,7 @@ class SchemaKeyBuilder(Builder[SchemaKey]):
             *   SchemaKeyBuildException
             *   ArenaSchemaKeysException
         """
-        method = "SchemaKeyBuilder.build"
+        method = "SchemaKeyBuildProcess.build"
         
         # Count how many optional parameters are not-null.
         params = [name, color,]

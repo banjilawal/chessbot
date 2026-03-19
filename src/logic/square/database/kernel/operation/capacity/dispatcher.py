@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.square import SquareStackCapacityAnalyzer, SquareCollisionDetector, SquareStackCrudManager
+from logic.square import SquareStackCapacityAnalyzer, SquareCollisionDetectionProcess, SquareStackCrudManager
 
 
 class SquareStackOpsDispatcher:
@@ -23,20 +23,20 @@ class SquareStackOpsDispatcher:
     Attributes:
         crud: SquareStackCrudManager
         rank_quota_analyzer: SquareStackCapacityAnalyzer
-        collision_detector: SquareCollisionDetector
+        collision_detector: SquareCollisionDetectionProcess
 
     Provides:
     Parent:
     """
     _crud: SquareStackCrudManager
     _rank_quota_analyzer: SquareStackCapacityAnalyzer
-    _collision_detector: SquareCollisionDetector
+    _collision_detector: SquareCollisionDetectionProcess
     
     def __init__(
             self,
             crud: SquareStackCrudManager = SquareStackCrudManager(),
             rank_quota_analyzer: SquareStackCapacityAnalyzer = SquareStackCapacityAnalyzer(),
-            collision_detector: SquareCollisionDetector = SquareCollisionDetector(),
+            collision_detector: SquareCollisionDetectionProcess = SquareCollisionDetectionProcess(),
     ):
         self._crud = crud
         self._collision_detector = collision_detector
@@ -51,5 +51,5 @@ class SquareStackOpsDispatcher:
         return self._rank_quota_analyzer
     
     @property
-    def collision_detector(self) -> SquareCollisionDetector:
+    def collision_detector(self) -> SquareCollisionDetectionProcess:
         return self._collision_detector

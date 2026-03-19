@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast
 
 from logic.system import IntegrityService, id_emitter
-from logic.game import Game, GameBuilder, GameValidationProcess
+from logic.game import Game, GameBuildProcess, GameValidationProcess
 
 
 class GameService(IntegrityService[Game]):
@@ -27,7 +27,7 @@ class GameService(IntegrityService[Game]):
         *   IntegrityService
 
     # PROVIDES:
-        *   builder: --> GameBuilder
+        *   builder: --> GameBuildProcess
         *   validator: --> GameValidationProcess
 
 
@@ -40,7 +40,7 @@ class GameService(IntegrityService[Game]):
             self,
             name: str = DEFAULT_NAME,
             id: int = id_emitter.service_id,
-            builder: GameBuilder = GameBuilder(),
+            builder: GameBuildProcess = GameBuildProcess(),
             validator: GameValidationProcess = GameValidationProcess(),
     ):
         """
@@ -62,9 +62,9 @@ class GameService(IntegrityService[Game]):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
     
     @property
-    def builder(self) -> GameBuilder:
-        """get GameBuilder"""
-        return cast(GameBuilder, self.entity_builder)
+    def builder(self) -> GameBuildProcess:
+        """get GameBuildProcess"""
+        return cast(GameBuildProcess, self.entity_builder)
     
     @property
     def validator(self) -> GameValidationProcess:

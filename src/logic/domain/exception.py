@@ -71,6 +71,6 @@ class DomainNullFriendsDictException(DomainException, InconsistencyException):
 
 #======================# DOMAIN BUILD EXCEPTION #======================#
 class DomainBuildException(DomainException, BuilderException):
-    """Super Exception for DomainBuilder when it stops because of an error."""
+    """Super Exception for DomainBuildProcess when it stops because of an error."""
     ERR_CODE = "DOMAIN_BUILD_FAILED"
     MSG = "Domain build failed."

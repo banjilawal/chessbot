@@ -12,7 +12,7 @@ from typing import Dict, List
 
 from logic.node import Node
 from logic.graph import Graph
-from logic.edge import Edge, EdgeBuilder, PushingEdgeException
+from logic.edge import Edge, EdgeBuildProcess, PushingEdgeException
 from logic.system import BuildResult, InsertionResult, LoggingLevelRouter
 from logic.span import AsymmetricEdgeBuildException, NodeEdgeHandlerException, SymmetricEdgeBuildException
 
@@ -23,14 +23,14 @@ class NodeEdgeHandler:
     def build_symmetric_edges(
             cls,
             node_dict: Dict[str, Node],
-            edge_builder: EdgeBuilder = EdgeBuilder(),
+            edge_builder: EdgeBuildProcess = EdgeBuildProcess(),
     ) -> BuildResult[List[Edge]]:
         """
         Action:
             Build a dictionary of adjacent edges from a square hashtable., from a square hashtable.
             
         Args:
-            edge_builder: EdgeBuilder
+            edge_builder: EdgeBuildProcess
             node_dict: Dict[str, Node]
             
         Returns:
@@ -52,7 +52,7 @@ class NodeEdgeHandler:
             else:
                 tal_node = node_dict["head"]
                 
-            build_result = edge_builder.build(
+            build_result = edge_builder.execute(
                 head=head_node,
                 tail=tail_node,
             )   
@@ -82,14 +82,14 @@ class NodeEdgeHandler:
     def build__edge(
             cls,
             node_dict: Dict[str, Node],
-            edge_builder: EdgeBuilder = EdgeBuilder(),
+            edge_builder: EdgeBuildProcess = EdgeBuildProcess(),
     ) -> BuildResult[List[Edge]]:
         """
         Action:
             Build a dictionary of adjacent edges from a square hashtable., from a square hashtable.
 
         Args:
-            edge_builder: EdgeBuilder
+            edge_builder: EdgeBuildProcess
             node_dict: Dict[str, Square]
 
         Returns:
@@ -100,7 +100,7 @@ class NodeEdgeHandler:
         """
         method = f"{cls.__class__.__name__}.build"
         
-        build_result = edge_builder.build(
+        build_result = edge_builder.execute(
             head=node_dict["head"],
             tail=node_dict["tail"],
         )

@@ -1,4 +1,4 @@
-# src/logic/system/collection/stack/search/searcher.py
+# src/logic/system/collection/stack/search/process.py
 
 """
 Module: logic.system.collection.stack.search.searcher
@@ -10,12 +10,12 @@ Version: 1.0.0
 from abc import abstractmethod
 from typing import TypeVar, List
 
-from logic.system import Context, SearchWorker, ValidationProcess, SearchResult
+from logic.system import Context, SearchProcess, ValidationProcess, SearchResult
 
 T = TypeVar("T")
 
 
-class StackSearcher(SearchWorker[T]):
+class StackSearchProcess(SearchProcess[T]):
     """"""
     
     @classmethod

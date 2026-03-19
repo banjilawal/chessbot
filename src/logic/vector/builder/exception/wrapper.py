@@ -23,8 +23,8 @@ class VectorBuildException(BuildException):
     Role:Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Indicate the VectorBuilder did not produce a valid work product.
-    2.  Identify the VectorBuilder method where the failure occurred.
+    1.  Indicate the VectorBuildProcess did not produce a valid work product.
+    2.  Identify the VectorBuildProcess method where the failure occurred.
 
     Super Class:
         *   BuildException
@@ -52,7 +52,7 @@ class VectorBuildException(BuildException):
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     ERR_CODE = "VECTOR_BUILD_FAILURE"
-    MSG = "Failure in VectorBuilder method."
+    MSG = "Failure in VectorBuildProcess method."
 
     def __init__(
             self,

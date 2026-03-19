@@ -8,7 +8,7 @@ Version: 1.0.0
 """
 
 
-from logic.system import StackServiceException
+from logic.system import DebugException
 
 __all__ = [
     # ====================== POPPING_EMPTY_STACK EXCEPTION #======================#
@@ -16,7 +16,7 @@ __all__ = [
 ]
 
 # ====================== POPPING_EMPTY_STACK EXCEPTION #======================#
-class PoppingEmptyStackException(StackServiceException):
+class PoppingEmptyStackException(DebugException):
     """
     Role:Error Tracing, Debugging
 
@@ -24,7 +24,7 @@ class PoppingEmptyStackException(StackServiceException):
     Indicate there was an attempt to pop an empty stack.
 
     Super Class:
-        *   StackServiceException
+        *   DebugException
 
     Provides:
 

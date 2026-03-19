@@ -24,7 +24,7 @@ class SquareRayBuildException(BuildException):
     # TASK: Worker Method Identifier
 
     Responsibilities:
-    1.  Identify the SquareRayBuilder method where the process failed.
+    1.  Identify the SquareRayBuildProcess method where the process failed.
 
     Super Class:
         *   BuildException
@@ -52,7 +52,7 @@ class SquareRayBuildException(BuildException):
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     ERR_CODE = "SQUARE_RAY_BUILD_FAILURE"
-    MSG = "Failure in SquareRayBuilder method."
+    MSG = "Failure in SquareRayBuildProcess method."
     
     def __init__(
             self,

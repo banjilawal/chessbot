@@ -9,13 +9,13 @@ version: 1.0.0
 
 from logic.board import Board
 from logic.piece import Piece
-from logic.domain import Domain, DomainOriginBuilder
-from logic.system import Builder, BuildResult, LoggingLevelRouter
+from logic.domain import Domain, DomainOriginBuildProcess
+from logic.system import BuildProcess, BuildResult, LoggingLevelRouter
 
 
-class DomainBuilder(Builder[Domain]):
+class DomainBuildProcess(BuildProcess[Domain]):
     """
-     Role:Builder, Data Integrity And Reliability Guarantor
+     Role:BuildProcess, Data Integrity And Reliability Guarantor
 
      Responsibilities:
      1.  Produce Domain instances whose integrity is guaranteed at creation.
@@ -24,10 +24,10 @@ class DomainBuilder(Builder[Domain]):
      4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
      Super Class:
-         * Builder
+         * BuildProcess
 
      # PROVIDES:
-         *   DomainBuilder
+         *   DomainBuildProcess
 
      # LOCAL ATTRIBUTES:
      None
@@ -38,11 +38,11 @@ class DomainBuilder(Builder[Domain]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def build(
+    def execute(
             cls,
             piece: Piece,
             board: Board,
-            domain_origin_builder: DomainOriginBuilder
+            domain_origin_builder: DomainOriginBuildProcess
     ) -> BuildResult[Domain]:
         """
         # ACTION:
@@ -51,7 +51,7 @@ class DomainBuilder(Builder[Domain]):
         # PARAMETERS:
           * piece (Token): The points owner
           * board (Board): Provides the Square of the Domain owner.
-          * domain_origin_builder (DomainOriginBuilder): Creates the DomainOwner object.
+          * domain_origin_builder (DomainOriginBuildProcess): Creates the DomainOwner object.
 
         # RETURNS:
           BuildResult[Domain] containing either:
@@ -66,7 +66,7 @@ class DomainBuilder(Builder[Domain]):
             * DomainNullFriendsDictException
             * InvalidDomainException
         """
-        method = "DomainBuilder.builder"
+        method = "DomainBuildProcess.builder"
         
         try:
             board_actor_validation = BoardActorValidator.execute(piece, board)

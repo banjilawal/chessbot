@@ -36,4 +36,4 @@ class FormationColorBoundsException(FormationException, BoundsException):
     None
     """
     ERR_CODE = "FORMATION_COLOR_BOUNDS_EXCEPTION"
-    MSG = "FormationLookup failed: Target was outside the set of possible Formation colors."
+    MSG = "FormationLookupProcess failed: Target was outside the set of possible Formation colors."

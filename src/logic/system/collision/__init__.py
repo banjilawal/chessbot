@@ -13,6 +13,6 @@ Version: 1.0.0
 from .exception import *
 
 # Modules
-from .status import CollisionStatus
-from .detector import CollisionDetector
 from .result import CollisionReport
+from .status import CollisionStatus
+from .detection import CollisionDetectionProcess

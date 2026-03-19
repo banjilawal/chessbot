@@ -1,4 +1,4 @@
-# src/logic/node/context/builder/builder.py
+# src/logic/node/context/builder/process.py
 
 """
 Module: logic.node.context.builder.builder
@@ -17,13 +17,13 @@ from logic.node import (
     NodeContextBuildRouteException, NodeValidationProcess, ZeroNodeContextFlagsException
 )
 from logic.square import Square, SquareService
-from logic.system import Builder, BuildResult, NumberValidationProcess
+from logic.system import BuildProcess, BuildResult, NumberValidationProcess
 
 
 
-class NodeContextBuilder(Builder[NodeContext]):
+class NodeContextBuildProcess(BuildProcess[NodeContext]):
     """
-    Role:Builder, Data Integrity And Reliability Guarantor
+    Role:BuildProcess, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce NodeContext instances whose integrity is guaranteed at creation.
@@ -32,7 +32,7 @@ class NodeContextBuilder(Builder[NodeContext]):
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     Super Class:
-        *   Builder
+        *   BuildProcess
 
     Provides:
 
@@ -41,7 +41,7 @@ class NodeContextBuilder(Builder[NodeContext]):
     None
     """
     @classmethod
-    def build(
+    def execute(
             cls,
             priority: Optional[int] = None,
             square: Optional[Square] = None,
@@ -78,7 +78,7 @@ class NodeContextBuilder(Builder[NodeContext]):
                 *   ArenaNodeContextFlagsException
                 *   NodeContextBuildRouteException
             """
-        method = "NodeContextBuilder.build"
+        method = "NodeContextBuildProcess.build"
 
         # --- Count how many optional parameters are not-null. only one should be not null. ---#
         params = [priority, square,predecessor, discovery_status,]

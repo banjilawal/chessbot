@@ -12,7 +12,7 @@ from typing import List
 
 from logic.board import Board
 from logic.coord import Coord
-from logic.system import LoggingLevelRouter, SearchResult, StackSearcher
+from logic.system import LoggingLevelRouter, SearchResult, StackSearchProcess
 from logic.edge import (
     Edge, EdgeContext, EdgeContextValidationProcess, EdgeSearchException, EdgeSearchRouteException,
     EdgeSearchNullDatasetException, EdgeSearchPayloadTypeException, EdgeState
@@ -20,9 +20,9 @@ from logic.edge import (
 from logic.token import Token
 
 
-class EdgeFinder(StackSearcher[Edge]):
+class EdgeFinder(StackSearchProcess[Edge]):
     """
-    Role:SearchWorker
+    Role:SearchProcess
 
     Responsibilities:
     1.  Send bag in a EdgeList whose attribute value match the context.key value to the caller.
@@ -32,7 +32,7 @@ class EdgeFinder(StackSearcher[Edge]):
     1.  EdgeFinder sends the raw list of matches. Resolving id collisions is the caller's responsibility.
 
     # PARENT
-        *   SearchWorker
+        *   SearchProcess
 
     Provides:
 

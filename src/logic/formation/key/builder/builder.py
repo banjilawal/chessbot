@@ -1,4 +1,4 @@
-# src/logic/formation/key/builder/builder.py
+# src/logic/formation/key/builder/process.py
 
 """
 Module: logic.formation.key.builder.builder
@@ -15,12 +15,12 @@ from logic.formation import (
 )
 from logic.persona import Persona, PersonaService
 from logic.square import Square, SquareService
-from logic.system import BuildResult, Builder, GameColor, GameColorValidationProcess, IdentityService, LoggingLevelRouter
+from logic.system import BuildResult, BuildProcess, GameColor, GameColorValidationProcess, IdentityService, LoggingLevelRouter
 
 
-class FormationKeyBuilder(Builder[FormationKey]):
+class FormationKeyBuildProcess(BuildProcess[FormationKey]):
     """
-    Role:Builder, Data Integrity And Reliability Guarantor
+    Role:BuildProcess, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce FormationKey instances whose integrity is guaranteed at creation.
@@ -29,7 +29,7 @@ class FormationKeyBuilder(Builder[FormationKey]):
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     Super Class:
-        *   Builder
+        *   BuildProcess
 
     Provides:
 
@@ -39,7 +39,7 @@ class FormationKeyBuilder(Builder[FormationKey]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def build(
+    def execute(
             cls,
             square: Optional[Square] = None,
             persona: Optional[Persona] = None,
@@ -75,7 +75,7 @@ class FormationKeyBuilder(Builder[FormationKey]):
             *   ArenaFormationKeysException
             *   FormationKeyBuildException
         """
-        method = "FormationKeyBuilder.build"
+        method = "FormationKeyBuildProcess.build"
         
         # Count how many optional parameters are not-null.
         params = [designation, square, color, persona]

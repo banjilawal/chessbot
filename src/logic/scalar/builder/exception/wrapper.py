@@ -23,8 +23,8 @@ class ScalarBuildException(BuildException):
     Role:Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Indicate the ScalarBuilder did not produce a valid work product.
-    2.  Identify the ScalarBuilder method where the failure occurred.
+    1.  Indicate the ScalarBuildProcess did not produce a valid work product.
+    2.  Identify the ScalarBuildProcess method where the failure occurred.
 
     Super Class:
         *   BuildException
@@ -52,7 +52,7 @@ class ScalarBuildException(BuildException):
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     ERR_CODE = "SCALAR_BUILD_FAILURE"
-    MSG = "Failure in ScalarBuilder method."
+    MSG = "Failure in ScalarBuildProcess method."
 
     def __init__(
             self,

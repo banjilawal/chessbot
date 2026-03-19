@@ -24,8 +24,8 @@ class PersonaKeyBuildException(BuildException):
     Role:Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Indicate the PersonaKeyBuilder did not produce a valid work product.
-    2.  Identify the PersonaKeyBuilder method where the failure occurred.
+    1.  Indicate the PersonaKeyBuildProcess did not produce a valid work product.
+    2.  Identify the PersonaKeyBuildProcess method where the failure occurred.
 
     Super Class:
         *   BuildException
@@ -53,7 +53,7 @@ class PersonaKeyBuildException(BuildException):
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     ERR_CODE = "PERSONA_KEY_BUILD_FAILURE"
-    MSG = "Failure in PersonaKeyBuilder method."
+    MSG = "Failure in PersonaKeyBuildProcess method."
     
     def __init__(
             self,

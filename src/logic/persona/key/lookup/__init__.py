@@ -13,4 +13,4 @@ version: 1.0.0
 from .exception import *
 
 # Modules
-from .lookup import PersonaLookup
+from .lookup import PersonaLookupProcess

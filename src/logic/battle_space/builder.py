@@ -9,11 +9,11 @@ version: 1.0.0
 
 
 from logic.battle_space import ProjectionService
-from logic.system import BuildResult, Builder
+from logic.system import BuildResult, BuildProcess
 
 
 
-class ProjectionSearchBuilder(Builder[ProjectionService]):
+class ProjectionSearchBuildProcess(BuildProcess[ProjectionService]):
     @classmethod
-    def build(cls, *args, **kwargs) -> BuildResult[ProjectionService]:
+    def execute(cls, *args, **kwargs) -> BuildResult[ProjectionService]:
         pass

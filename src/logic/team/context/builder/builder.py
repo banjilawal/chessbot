@@ -1,4 +1,4 @@
-# src/logic/team/context/builder/builder.py
+# src/logic/team/context/builder/process.py
 
 """
 Module: logic.team.context.builder.builder
@@ -11,16 +11,16 @@ from typing import Optional
 
 from logic.arena import Arena, ArenaService
 from logic.player import Player, PlayerService
-from logic.system import Builder, BuildResult,  GameColor, GameColorValidationProcess, IdentityService, LoggingLevelRouter
+from logic.system import BuildProcess, BuildResult,  GameColor, GameColorValidationProcess, IdentityService, LoggingLevelRouter
 from logic.team import (
     TeamContext, TeamContextBuildException, ArenaTeamContextFlagsException, TeamContextBuildRouteException,
     ZeroTeamContextFlagsException
 )
 
 
-class TeamContextBuilder(Builder[TeamContext]):
+class TeamContextBuildProcess(BuildProcess[TeamContext]):
     """
-    Role:Builder, Data Integrity And Reliability Guarantor
+    Role:BuildProcess, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce TeamContext instances whose integrity is guaranteed at creation.
@@ -29,7 +29,7 @@ class TeamContextBuilder(Builder[TeamContext]):
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     Super Class:
-        *   Builder
+        *   BuildProcess
 
     Provides:
 
@@ -39,7 +39,7 @@ class TeamContextBuilder(Builder[TeamContext]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def build(
+    def execute(
             cls,
             id: Optional[int] = None,
             name: Optional[str] = None,

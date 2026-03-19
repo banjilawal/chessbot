@@ -89,7 +89,7 @@ class OldPromotionEventValidationProcess(ValidationProcess[PromotionEvent]):
                     DoublePromotionException(f"{method}: {DoublePromotionException.MSG}")
                 )
             
-            context_build_result = BoardContextBuilder.build(piece_id=event.actor.visitor_id)
+            context_build_result = BoardContextBuilder.execute(piece_id=event.actor.visitor_id)
             if context_build_result.is_failure():
                 return ValidationResult.failure(context_build_result.exception)
             context = cast(BoardContext, context_build_result.payload)

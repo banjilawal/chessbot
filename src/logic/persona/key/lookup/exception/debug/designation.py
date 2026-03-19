@@ -38,4 +38,4 @@ class PersonaDesignationBoundsException(PersonaException, BoundsException):
     None
     """
     ERR_CODE = "PERSONA_DESIGNATION_BOUNDS_EXCEPTION"
-    MSG = "PersonaLookup failed: Target was outside the set of possible Persona designations."
+    MSG = "PersonaLookupProcess failed: Target was outside the set of possible Persona designations."

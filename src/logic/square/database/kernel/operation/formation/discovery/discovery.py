@@ -39,7 +39,7 @@ class OpeningSquareDiscovery:
                     square_stack: SquareStackService,
                     rank_service: RankService = RankService(),
                     rank_quota_analyzer: SquareStackCapacityAnalyzer = SquareStackCapacityAnalyzer(),
-                    collision_detector: SquareCollisionDetector = SquareCollisionDetector(),
+                    collision_detector: SquareCollisionDetectionProcess = SquareCollisionDetectionProcess(),
             ) -> InsertionResult
 
     Super:
@@ -100,7 +100,7 @@ class OpeningSquareDiscovery:
         )
 
         # Request a collision report. The square is verified during the report generation. ---#
-        collision_detection_result = collision_detector.detect(
+        collision_detection_result = collision_detector.execute(
             target=square,
             dataset=square_stack.items,
         )

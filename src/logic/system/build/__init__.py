@@ -13,6 +13,6 @@ version: 1.0.0
 from .exception import *
 
 # Modules
-from .builder import Builder
+from .process import BuildProcess
 from .result import BuildResult
 
