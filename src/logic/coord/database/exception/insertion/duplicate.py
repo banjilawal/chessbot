@@ -21,7 +21,7 @@ class AddingDuplicateCoordException(UniqueCoordStackException):
     Role:Debug, Error Tracing
 
     Responsibilities:
-    1.  Indicate that an attempt to add a coord to the CoordDatabase's dataset failed because the coord was
+    1.  Indicate that an attempt to add a coord to the CoordDatabase's collider_candidates failed because the coord was
         already in the collection
 
     Super Class:

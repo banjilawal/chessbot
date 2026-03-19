@@ -195,7 +195,7 @@ from typing import cast
 from logic.board import Board, BoardService
 from logic.coord import Coord, CoordService
 from logic.square import (
-    AddingDuplicateSquareException, Square, SquareBuildException, SquareCollisionDetectionProcess, SquareContext,
+    AddingDuplicateSquareException, Square, SquareBuildException, SquareCollisionAnalysis, SquareContext,
     SquareCoordCollisionException,
     SquareIdCollisionException, SquareNameCollisionException
 )
@@ -253,7 +253,7 @@ class SquareBuildProcess(BuildProcess[Square]):
             board_service: BoardService = BoardService(),
             coord_service: CoordService = CoordService(),
             identity_service: IdentityService = IdentityService(),
-            square_collision_detector: SquareCollisionDetectionProcess = SquareCollisionDetectionProcess(),
+            square_collision_detector: SquareCollisionAnalysis = SquareCollisionAnalysis(),
     ) -> BuildResult[Square]:
         """
         # ACTION:

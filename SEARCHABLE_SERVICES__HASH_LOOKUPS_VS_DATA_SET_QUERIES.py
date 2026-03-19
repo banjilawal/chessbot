@@ -27,7 +27,7 @@ subclass. These classes are:
 -----------------------------------------
     *   Build configuration.
     *   Writing search filters.
-Both use cases do forward and reverse lookups unlike dataset searches.
+Both use cases do forward and reverse lookups unlike collider_candidates searches.
     *   FORWARD LOOKUP: object.field_value --> Enum.MEMBER
     *   REVERSE LOOKUP: Enum.MEMBER --> Class
 

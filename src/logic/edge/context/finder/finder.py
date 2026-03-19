@@ -51,13 +51,13 @@ class EdgeFinder(StackSearchProcess[Edge]):
     ) -> SearchResult[List[Edge]]:
         """
         # ACTION:
-        1.  If the dataset is null or the wrong type send the exception in the SearchResult.
+        1.  If the collider_candidates is null or the wrong type send the exception in the SearchResult.
         2.  If the context fails validation send the exception in the SearchResult. Else, route to the 
             search method which matches the context key.
         3.  The search method returns either an empty result or a list of edges. Any exceptions were caught earlier
             by the search router.
        # PARAMETERS:
-            *   dataset (List[Edge]):
+            *   collider_candidates (List[Edge]):
             *   context: EdgeContext
             *   context_validator: EdgeContextValidationProcess
         # RETURNS:
@@ -72,7 +72,7 @@ class EdgeFinder(StackSearchProcess[Edge]):
         """
         method = "EdgeFinder.find"
         
-        # Handle the case that, the dataset is null.
+        # Handle the case that, the collider_candidates is null.
         if dataset is None:
             # Return the exception chain on failure.
             return SearchResult.failure(
@@ -83,7 +83,7 @@ class EdgeFinder(StackSearchProcess[Edge]):
                     )
                 )
             )
-        # Handle the case that, dataset is the wrong type
+        # Handle the case that, collider_candidates is the wrong type
         if not isinstance(dataset, List):
             # Return the exception chain on failure.
             return SearchResult.failure(
@@ -144,7 +144,7 @@ class EdgeFinder(StackSearchProcess[Edge]):
             1.  Get the Edges with the desired id.
         # PARAMETERS:
             *   id (int)
-            *   dataset (List[Edge])
+            *   collider_candidates (List[Edge])
         # RETURNS:
             *   SearchResult[List[Edge]] containing either:
                     - On error: Exception , payload null
@@ -169,7 +169,7 @@ class EdgeFinder(StackSearchProcess[Edge]):
             1.  Get the Edges which match the name.
         # PARAMETERS:
             *   name (str)
-            *   dataset (List[Edge])
+            *   collider_candidates (List[Edge])
         # RETURNS:
             *   SearchResult[List[Edge]] containing either:
                     - On error: Exception , payload null
@@ -193,7 +193,7 @@ class EdgeFinder(StackSearchProcess[Edge]):
             1.  Get the Edges which match the name.
         # PARAMETERS:
             *   coord (Coord)
-            *   dataset (List[Edge])
+            *   collider_candidates (List[Edge])
         # RETURNS:
             *   SearchResult[List[Edge]] containing either:
                     - On error: Exception , payload null
@@ -217,7 +217,7 @@ class EdgeFinder(StackSearchProcess[Edge]):
             1.  Get the Edges which match the board.
         # PARAMETERS:
             *   board (Board)
-            *   dataset (List[Edge])
+            *   collider_candidates (List[Edge])
         # RETURNS:
             *   SearchResult[List[Edge]] containing either:
                     - On error: Exception , payload null
@@ -241,7 +241,7 @@ class EdgeFinder(StackSearchProcess[Edge]):
             1.  Get the Edges which match the token.
         # PARAMETERS:
             *   board (Board)
-            *   dataset (List[Edge])
+            *   collider_candidates (List[Edge])
         # RETURNS:
             *   SearchResult[List[Edge]] containing either:
                     - On error: Exception , payload null
@@ -267,7 +267,7 @@ class EdgeFinder(StackSearchProcess[Edge]):
             1.  Get the Edges which are empty.
         # PARAMETERS:
             *   board (Board)
-            *   dataset (List[Edge])
+            *   collider_candidates (List[Edge])
         # RETURNS:
             *   SearchResult[List[Edge]] containing either:
                     - On error: Exception , payload null
@@ -291,7 +291,7 @@ class EdgeFinder(StackSearchProcess[Edge]):
             1.  Get the Edges which are empty.
         # PARAMETERS:
             *   board (Board)
-            *   dataset (List[Edge])
+            *   collider_candidates (List[Edge])
         # RETURNS:
             *   SearchResult[List[Edge]] containing either:
                     - On error: Exception , payload null

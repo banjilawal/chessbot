@@ -24,7 +24,7 @@ class PairNotFoundException(PairDebugException):
 
     Responsibilities:
     1.  Indicate that an attempt to remove instances of a item by a unique attribute failed because no bag
-        matching the property were found in the dataset.
+        matching the property were found in the collider_candidates.
 
     Super Class:
         *   NullException
@@ -37,4 +37,4 @@ class PairNotFoundException(PairDebugException):
     None
     """
     ERR_CODE = "PAIR_NOT_FOUND_EXCEPTION"
-    MSG = "Pair deletion failed: The item was not found in the dataset. Nothing to remove."
+    MSG = "Pair deletion failed: The item was not found in the collider_candidates. Nothing to remove."

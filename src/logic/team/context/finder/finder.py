@@ -48,13 +48,13 @@ class TeamFinder(DataFinder[Team]):
     ) -> SearchResult[List[Team]]:
         """
         # ACTION:
-        1.  If the dataset is null or the wrong type send the exception in the SearchResult.
+        1.  If the collider_candidates is null or the wrong type send the exception in the SearchResult.
         2.  If the context fails validation send the exception in the SearchResult. Else, route to the
             search method which matches the context key.
         3.  The search method returns either an empty result or a list of teams. Any exceptions were caught earlier
             by the search router.
        # PARAMETERS:
-            *   dataset (List[Team]):
+            *   collider_candidates (List[Team]):
             *   context: TeamContext
             *   context_validator: TeamContextValidationProcess
         # RETURNS:
@@ -69,7 +69,7 @@ class TeamFinder(DataFinder[Team]):
         """
         method = "TeamFinder.find"
         
-        # Handle the case that, the dataset is null.
+        # Handle the case that, the collider_candidates is null.
         if dataset is None:
             # Return the exception chain on failure.
             return SearchResult.failure(
@@ -78,7 +78,7 @@ class TeamFinder(DataFinder[Team]):
                     ex=TeamSearchDatasetNullException(f"{method}: {TeamSearchDatasetNullException.MSG}")
                 )
             )
-        # Handle the case that, dataset is the wrong type
+        # Handle the case that, collider_candidates is the wrong type
         if not isinstance(dataset, List):
             # Return the exception chain on failure.
             return SearchResult.failure(
@@ -121,7 +121,7 @@ class TeamFinder(DataFinder[Team]):
             2.  Multiple, unique matches in the result indicate that  a problem.
         # PARAMETERS:
             *   id (int)
-            *   dataset (List[Player])
+            *   collider_candidates (List[Player])
         # RETURNS:
             *   SearchResult[List[Team]] containing either:
                     - On error: Exception , payload null
@@ -147,7 +147,7 @@ class TeamFinder(DataFinder[Team]):
             1.  Get any teams which have entered the arena
         # PARAMETERS:
             *   arena (Arena)
-            *   dataset (List[Player])
+            *   collider_candidates (List[Player])
         # RETURNS:
             *   SearchResult[List[Team]] containing either:
                     - On error: Exception , payload null
@@ -172,7 +172,7 @@ class TeamFinder(DataFinder[Team]):
             1.  Get any teams which have been played by the owner,
         # PARAMETERS:
             *   arena (Arena)
-            *   dataset (List[Player])
+            *   collider_candidates (List[Player])
         # RETURNS:
             *   SearchResult[List[Team]] containing either:
                     - On error: Exception , payload null
@@ -197,7 +197,7 @@ class TeamFinder(DataFinder[Team]):
             1.  Get any teams which have been assigned the targeted color
         # PARAMETERS:
             *   arena (Arena)
-            *   dataset (List[Player])
+            *   collider_candidates (List[Player])
         # RETURNS:
             *   SearchResult[List[Team]] containing either:
                     - On error: Exception , payload null

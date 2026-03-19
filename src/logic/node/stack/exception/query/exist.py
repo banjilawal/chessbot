@@ -24,7 +24,7 @@ class NodeNotFoundException(NodeDebugException):
 
     Responsibilities:
     1.  Indicate that an attempt to remove instances of a item by a unique attribute failed because no bag
-        matching the property were found in the dataset.
+        matching the property were found in the collider_candidates.
 
     Super Class:
         *   NullException
@@ -37,4 +37,4 @@ class NodeNotFoundException(NodeDebugException):
     None
     """
     ERR_CODE = "NODE_NOT_FOUND_EXCEPTION"
-    MSG = "Node deletion failed: The item was not found in the dataset. Nothing to remove."
+    MSG = "Node deletion failed: The item was not found in the collider_candidates. Nothing to remove."

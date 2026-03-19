@@ -24,7 +24,7 @@ class TeamDoesNotExistForRemovalException(TeamStackException, NullException):
 
     Responsibilities:
     1.  Indicate that an attempt to remove instances of a team by a unique attribute failed because no bag
-        matching the property were found in the dataset.
+        matching the property were found in the collider_candidates.
 
     Super Class:
         *   TeamDaaServiceException
@@ -36,4 +36,4 @@ class TeamDoesNotExistForRemovalException(TeamStackException, NullException):
     None
     """
     ERR_CODE = "TEAM_DOES_NOT_EXIST_FOR_REMOVAL_EXCEPTION"
-    MSG = "Team pop failed: The team was not found in the dataset. Nothing to remove."
+    MSG = "Team pop failed: The team was not found in the collider_candidates. Nothing to remove."

@@ -1,14 +1,14 @@
 __all__ = [
     # ======================# ROSTER_RELATION_ANALYSIS_FAILURE #======================#
-    "TokenReadniessAnalysisException",
+    "TokenReadinessAnalysisException",
 ]
 
-from logic.system import AnalysisException
+from logic.system import AnalysisException, RelationAnalysisException
 from logic.token import TokenStateException
 
 
 # ======================# ROSTER_RELATION_ANALYSIS_FAILURE #======================#
-class TokenReadniessAnalysisException(TokenStateException, AnalysisException):
+class TokenReadinessAnalysisException(RelationAnalysisException):
     """
     Role:Exception Work, Encapsulation, Error Chaining
 

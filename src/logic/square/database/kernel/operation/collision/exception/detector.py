@@ -27,7 +27,7 @@ class SquareCollisionDetectorFailureException(SquareDebugException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that the SquareCollisionDetectionProcess experienced an error. It did
+        1.  Indicate that the SquareCollisionAnalysis experienced an error. It did
             not run the collision tests.
 
     Super:
@@ -43,7 +43,7 @@ class SquareCollisionDetectorFailureException(SquareDebugException):
         err_code: Optional[str]        
     """
     ERR_CODE = "SQUARE_COLLISION_DETECTOR_FAILURE"
-    MSG = "SquareCollisionDetectionProcess experienced an error, tests aborted."
+    MSG = "SquareCollisionAnalysis experienced an error, tests aborted."
     
     def __init__(
             self,

@@ -21,7 +21,7 @@ class AddingDuplicateHostageException(HostageDatabase):
     Role:Debug, Error Tracing
 
     Responsibilities:
-    1.  Indicate that an attempt to add a item to the HostageDatabase's dataset failed
+    1.  Indicate that an attempt to add a item to the HostageDatabase's collider_candidates failed
         because it was already present.
 
     Super Class:

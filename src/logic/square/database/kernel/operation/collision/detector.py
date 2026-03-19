@@ -14,10 +14,10 @@ from logic.square import (
     SquareNameCollisionException
 )
 from logic.square.database.kernel import SquareStackService
-from logic.system import CollisionDetectionProcess, CollisionReport, LoggingLevelRouter
+from logic.system import CollisionAnalysis, CollisionReport, LoggingLevelRouter
 
 
-class SquareCollisionDetectionProcess(CollisionDetectionProcess[Square]):
+class SquareCollisionAnalysis(CollisionAnalysis[Square]):
     """
      Role:
          - Collision Detection Worker
@@ -35,7 +35,7 @@ class SquareCollisionDetectionProcess(CollisionDetectionProcess[Square]):
             ) -> CollisionReport
             
      Super:
-        -   CollisionDetectionProcess[T]
+        -   CollisionAnalysis[T]
     """
     
     @classmethod
@@ -83,10 +83,10 @@ class SquareCollisionDetectionProcess(CollisionDetectionProcess[Square]):
                     ex=validation_result.exception
                 )
             )
-        # --- Loop through the dataset to find matches. ---#
+        # --- Loop through the collider_candidates to find matches. ---#
         
         for square in square_stack.items:
-            # Handle the case that, the target shares its id with a dataset member.
+            # Handle the case that, the target shares its id with a collider_candidates member.
             if square.id == target.id:
                 # Return target, the collider, and the exception explaining the collision.
                 return CollisionReport.collision_occurred(
@@ -101,7 +101,7 @@ class SquareCollisionDetectionProcess(CollisionDetectionProcess[Square]):
                             err_code=SquareIdCollisionException.ERR_CODE
                     )
                 )
-            # Handle the case that, the target shares its name with a dataset member.
+            # Handle the case that, the target shares its name with a collider_candidates member.
             if square.name.upper() == target.name.upper():
                 # Return target, the collider, and the exception explaining the collision.
                 return CollisionReport.collision_occurred(
@@ -116,7 +116,7 @@ class SquareCollisionDetectionProcess(CollisionDetectionProcess[Square]):
                             err_code=SquareNameCollisionException.ERR_CODE,
                     )
                 )
-            # Handle the case that, the target shares its coord with a dataset member.
+            # Handle the case that, the target shares its coord with a collider_candidates member.
             if square.coord == target.coord:
                 # Return target, the collider, and the exception explaining the collision.
                 return CollisionReport.collision_occurred(

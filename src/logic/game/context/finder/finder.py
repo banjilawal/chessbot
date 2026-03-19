@@ -46,13 +46,13 @@ class GameFinder(DataFinder[Game]):
     ) -> SearchResult[List[Game]]:
         """
         # ACTION:
-        1.  Verify the dataset is not null and contains only Game objects,
+        1.  Verify the collider_candidates is not null and contains only Game objects,
         2.  Use context_validator to certify the provided map.
         3.  Context attribute routes the search. Attribute value is the search target.
         4.  The outcome of the search is sent back to the caller in a SearchResult object.
 
         # PARAMETERS:
-            *   dataset (List[Game]):
+            *   collider_candidates (List[Game]):
             *   map: GameContext
             *   context_validator: GameContextValidationProcess
 
@@ -69,7 +69,7 @@ class GameFinder(DataFinder[Game]):
         """
         method = "GameFinder.find"
         try:
-            # Don't want to run a search if the dataset is null.
+            # Don't want to run a search if the collider_candidates is null.
             if dataset is None:
                 return SearchResult.failure(
                     GameSearchDatasetNullException(f"{method}: {GameSearchDatasetNullException.MSG}")
@@ -109,7 +109,7 @@ class GameFinder(DataFinder[Game]):
 
         # PARAMETERS:
             *   id (int)
-            *   dataset (List[Game])
+            *   collider_candidates (List[Game])
 
         # RETURNS:
         SearchResult[List[Game]] containing either:
@@ -148,7 +148,7 @@ class GameFinder(DataFinder[Game]):
 
         # PARAMETERS:
             *   owner (Player)
-            *   dataset (List[Player])
+            *   collider_candidates (List[Player])
 
         # RETURNS:
         SearchResult[List[Game]] containing either:

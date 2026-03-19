@@ -24,7 +24,7 @@ class PipelineNotFoundException(PipelineDebugException):
 
     Responsibilities:
     1.  Indicate that an attempt to remove instances of a item by a unique attribute failed because no bag
-        matching the property were found in the dataset.
+        matching the property were found in the collider_candidates.
 
     Super Class:
         *   NullException
@@ -37,4 +37,4 @@ class PipelineNotFoundException(PipelineDebugException):
     None
     """
     ERR_CODE = "PIPELINE_NOT_FOUND_EXCEPTION"
-    MSG = "Pipeline deletion failed: The item was not found in the dataset. Nothing to remove."
+    MSG = "Pipeline deletion failed: The item was not found in the collider_candidates. Nothing to remove."

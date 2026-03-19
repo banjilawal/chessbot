@@ -24,7 +24,7 @@ class TeamNotFoundException(TeamDebugException):
 
     Responsibilities:
     1.  Indicate that an attempt to remove instances of a item by a unique attribute failed because no bag
-        matching the property were found in the dataset.
+        matching the property were found in the collider_candidates.
 
     Super Class:
         *   NullException
@@ -37,4 +37,4 @@ class TeamNotFoundException(TeamDebugException):
     None
     """
     ERR_CODE = "TEAM_NOT_FOUND_EXCEPTION"
-    MSG = "Team deletion failed: The item was not found in the dataset. Nothing to remove."
+    MSG = "Team deletion failed: The item was not found in the collider_candidates. Nothing to remove."

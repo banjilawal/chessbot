@@ -46,14 +46,14 @@ class AgentFinder(DataFinder[PlayerAgent]):
     ) -> SearchResult[List[PlayerAgent]]:
         """
         # ACTION:
-        1.  Verify the dataset is not null and contains only Player objects,
+        1.  Verify the collider_candidates is not null and contains only Player objects,
         2.  Use context_validator to certify the provided map.
         3.  Route to the appropriate finder-helper based on the attribute-value tuple which is enabled.
         4.  The finder-helper sends the SearchResult to the caller.
 
         # PARAMETERS:
             *   map: AgentContext
-            *   dataset (List[Player])
+            *   collider_candidates (List[Player])
             *   context_validator: AgentContextValidator
 
         # RETURNS:
@@ -69,7 +69,7 @@ class AgentFinder(DataFinder[PlayerAgent]):
         """
         method = "AgentFinder.find"
         try:
-            # Don't want to run a search if the dataset is null.
+            # Don't want to run a search if the collider_candidates is null.
             if dataset is None:
                 return SearchResult.failure(
                     AgentNullDatasetException(f"{method}: {AgentNullDatasetException.MSG}")
@@ -118,7 +118,7 @@ class AgentFinder(DataFinder[PlayerAgent]):
 
         # PARAMETERS:
             *   id (int)
-            *   dataset (List[Player])
+            *   collider_candidates (List[Player])
 
         # RETURNS:
         SearchResult[List[Player]] containing either:
@@ -162,7 +162,7 @@ class AgentFinder(DataFinder[PlayerAgent]):
 
         # PARAMETERS:
             *   name (str)
-            *   dataset (List[Player])
+            *   collider_candidates (List[Player])
 
         # RETURNS:
         SearchResult[List[Player]] containing either:
@@ -205,7 +205,7 @@ class AgentFinder(DataFinder[PlayerAgent]):
 
         # PARAMETERS:
             *   team (Team)
-            *   dataset (List[Player])
+            *   collider_candidates (List[Player])
 
         # RETURNS:
         SearchResult[List[Player]] containing either:
@@ -248,7 +248,7 @@ class AgentFinder(DataFinder[PlayerAgent]):
 
         # PARAMETERS:
             *   team (Team)
-            *   dataset (List[Player])
+            *   collider_candidates (List[Player])
 
         # RETURNS:
         SearchResult[List[Player]] containing either:

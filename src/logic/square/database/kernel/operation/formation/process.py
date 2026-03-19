@@ -37,7 +37,7 @@ class TokenDeploymentProcess:
                     square_stack: SquareStackService,
                     rank_service: RankService = RankService(),
                     rank_quota_analyzer: SquareStackCapacityAnalyzer = SquareStackCapacityAnalyzer(),
-                    collision_detector: SquareCollisionDetectionProcess = SquareCollisionDetectionProcess(),
+                    collision_detector: SquareCollisionAnalysis = SquareCollisionAnalysis(),
             ) -> InsertionResult
 
     Super:
@@ -106,7 +106,7 @@ class TokenDeploymentProcess:
         # Request a collision report. The square is verified during the report generation. ---#
         collision_detection_result = collision_detector.execute(
             target=square,
-            dataset=square_stack.items,
+            collider_candidates=square_stack.items,
         )
         # Handle the case that, the either a collision was detected or square wis not safe.
         if not collision_detection_result.is_no_collision:

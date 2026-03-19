@@ -47,13 +47,13 @@ class SnapshotFinder(Finder[Snapshot]):
     ) -> SearchResult[List[Snapshot]]:
         """
         # ACTION:
-        1.  Verify the dataset is not null and contains only Snapshot objects,
+        1.  Verify the collider_candidates is not null and contains only Snapshot objects,
         2.  Use context_validator to certify the provided map.
         3.  Call the finder method which matches the attribute whose flag was raised.
         4.  If the logic does not account for an Player attribute drop to the try-finally block.
 
         # PARAMETERS:
-            *   dataset (GameTimeline):
+            *   collider_candidates (GameTimeline):
             *   map: SnapshotContext
             *   context_validator: SnapshotContextValidationProcess
 
@@ -69,7 +69,7 @@ class SnapshotFinder(Finder[Snapshot]):
         """
         method = "SnapshotFinder.find"
         try:
-            # Don't want to run a search if the dataset is null.
+            # Don't want to run a search if the collider_candidates is null.
             if dataset is None:
                 return SearchResult.failure(
                     NullGameTimelineException(f"{method}: {NullGameTimelineException.MSG}")
@@ -116,7 +116,7 @@ class SnapshotFinder(Finder[Snapshot]):
 
         # PARAMETERS:
             *   id (int)
-            *   dataset (List[Snapshot])
+            *   collider_candidates (List[Snapshot])
 
         # RETURNS:
         SearchResult[List[Snapshot]] containing either:
@@ -156,7 +156,7 @@ class SnapshotFinder(Finder[Snapshot]):
 
         # PARAMETERS:
             *   owner (Player)
-            *   dataset (GameTimeline)
+            *   collider_candidates (GameTimeline)
 
         # RETURNS:
         SearchResult[List[Snapshot]] containing either:
@@ -196,7 +196,7 @@ class SnapshotFinder(Finder[Snapshot]):
 
         # PARAMETERS:
             *   team (Team)
-            *   dataset (List[Snapshot])
+            *   collider_candidates (List[Snapshot])
 
         # RETURNS:
         SearchResult[List[Snapshot]] containing either:
@@ -236,7 +236,7 @@ class SnapshotFinder(Finder[Snapshot]):
 
         # PARAMETERS:
             *   agent_exception (AgentException)
-            *   dataset (List[Snapshot])
+            *   collider_candidates (List[Snapshot])
 
         # RETURNS:
         SearchResult[List[Snapshot]] containing either:

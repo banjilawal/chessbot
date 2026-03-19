@@ -1,7 +1,7 @@
-# src/logic/square/validator/exception/debug/dataset/square.py
+# src/logic/square/validator/exception/debug/collider_candidates/square.py
 
 """
-Module: logic.square.validator.exception.debug.dataset.square
+Module: logic.square.validator.exception.debug.collider_candidates.square
 Author: Banji Lawal
 Created: 2026-02-23
 """
@@ -21,7 +21,7 @@ class SquareDataSourceNullException(SquareDebugException, SquareException):
     Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
-    1.  A failing SearchResult was returned because no dataset was provided for the query.
+    1.  A failing SearchResult was returned because no collider_candidates was provided for the query.
 
     Super Class:
         *   SquareDebugException
@@ -34,4 +34,4 @@ class SquareDataSourceNullException(SquareDebugException, SquareException):
     None
     """
     ERR_CODE = "NO_SQUARE_DATASOURCE_PROVIDED_EXCEPTION"
-    MSG = "No square dataset was provided. Received square instead."
+    MSG = "No square collider_candidates was provided. Received square instead."

@@ -49,7 +49,7 @@ class SquareFinder(StackSearchProcess[Square]):
         
     # LOCAL METHODS:
         *   find(
-                dataset: List[Square],
+                collider_candidates: List[Square],
                 context: SquareContext,
                 square_validator: SquareValidationProcess
                 context_validator: SquareContextValidationProcess
@@ -71,14 +71,14 @@ class SquareFinder(StackSearchProcess[Square]):
         """
         # ACTION:
             1.  If either
-                    *   the dataset.
+                    *   the collider_candidates.
                     *   context.
                 Is not certified as safe send an exception chain in the SearchResult.
             2.  Once Action.1 has been completed successfully searches are guaranteed to complete successfully.
             3.  Route to the search method that matches the context.
             4.  The searcher returns a List contain zero or more squares.
         # PARAMETERS:
-                *   dataset [List[Square]]
+                *   collider_candidates [List[Square]]
                 *   context [SquareContext]
                 *   square_validator [SquareValidationProcess]
                 *   context_validator [SquareContextValidationProcess]
@@ -92,7 +92,7 @@ class SquareFinder(StackSearchProcess[Square]):
         """
         method = "SquareFinder.find"
         
-        # Handle the case that, the dataset is either null, not List[Square] or empty.
+        # Handle the case that, the collider_candidates is either null, not List[Square] or empty.
         dataset_validation_result = square_validator.verify_square_search_data_set(candidate=dataset)
         if dataset_validation_result.is_failure:
             # Return the exception chain on failure.

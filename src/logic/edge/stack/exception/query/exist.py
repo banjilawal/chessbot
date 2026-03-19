@@ -24,7 +24,7 @@ class EdgeNotFoundException(EdgeDebugException):
 
     Responsibilities:
     1.  Indicate that an attempt to remove instances of a item by a unique attribute failed because no bag
-        matching the property were found in the dataset.
+        matching the property were found in the collider_candidates.
 
     Super Class:
         *   NullException
@@ -37,4 +37,4 @@ class EdgeNotFoundException(EdgeDebugException):
     None
     """
     ERR_CODE = "EDGE_NOT_FOUND_EXCEPTION"
-    MSG = "Edge deletion failed: The item was not found in the dataset. Nothing to remove."
+    MSG = "Edge deletion failed: The item was not found in the collider_candidates. Nothing to remove."

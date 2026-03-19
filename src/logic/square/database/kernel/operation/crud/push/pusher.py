@@ -12,7 +12,7 @@ from __future__ import annotations
 from logic.rank import RankService
 from logic.system import InsertionResult, LoggingLevelRouter
 from logic.square import (
-    SquareStackCapacityAnalyzer, SquareStackCapacityFullException, Square, SquareCollisionDetectionProcess, SquareStackFullException,
+    SquareStackCapacityAnalyzer, SquareStackCapacityFullException, Square, SquareCollisionAnalysis, SquareStackFullException,
     SquareStackPushException, SquareStackService, SquareStackState
 )
 
@@ -37,7 +37,7 @@ class SquareStackPusher:
                     square_stack: SquareStackService,
                     rank_service: RankService = RankService(),
                     rank_quota_analyzer: SquareStackCapacityAnalyzer = SquareStackCapacityAnalyzer(),
-                    collision_detector: SquareCollisionDetectionProcess = SquareCollisionDetectionProcess(),
+                    collision_detector: SquareCollisionAnalysis = SquareCollisionAnalysis(),
             ) -> InsertionResult
 
     Super:
@@ -51,7 +51,7 @@ class SquareStackPusher:
             square_stack: SquareStackService,
             rank_service: RankService = RankService(),
             rank_quota_analyzer: SquareStackCapacityAnalyzer = SquareStackCapacityAnalyzer(),
-            collision_detector: SquareCollisionDetectionProcess = SquareCollisionDetectionProcess(),
+            collision_detector: SquareCollisionAnalysis = SquareCollisionAnalysis(),
     ) -> InsertionResult[bool]:
         """
         Action:
@@ -65,7 +65,7 @@ class SquareStackPusher:
            rank_service: RankService
            square_stack: SquareStackService
            rank_quota_analyzer: SquareStackCapacityAnalyzer
-           collision_detector: SquareCollisionDetectionProcess
+           collision_detector: SquareCollisionAnalysis
         Returns:
             InsertionResult
         Raises:

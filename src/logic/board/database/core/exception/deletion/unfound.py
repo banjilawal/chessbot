@@ -22,7 +22,7 @@ class BoardDoesNotExistForRemovalException(BoardException):
 
     Responsibilities:
     1.  Indicate that an attempt to remove instances of a board by a unique attribute failed because no bag
-        matching the property were found in the dataset.
+        matching the property were found in the collider_candidates.
 
     Super Class:
         *   BoardException
@@ -34,4 +34,4 @@ class BoardDoesNotExistForRemovalException(BoardException):
     None
     """
     ERR_CODE = "BOARD_DOES_NOT_EXIST_FOR_REMOVAL_EXCEPTION"
-    MSG = "Board deletion failed: The board was not found in the dataset. Nothing to remove."
+    MSG = "Board deletion failed: The board was not found in the collider_candidates. Nothing to remove."

@@ -110,10 +110,10 @@ class HostageList(StackService[Hostage]):
                 )
             )
 
-        # --- Hostage order is not required. Direct insertion into the dataset is simpler that a push. ---#
+        # --- Hostage order is not required. Direct insertion into the collider_candidates is simpler that a push. ---#
         self.items.append(manifest)
         
-        # Handle the case that, the hostage was not appended to the dataset.
+        # Handle the case that, the hostage was not appended to the collider_candidates.
         if manifest not in self.items:
             # Return the exception chain on failure.
             return InsertionResult.failure(

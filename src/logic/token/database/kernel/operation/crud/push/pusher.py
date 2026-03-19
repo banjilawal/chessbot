@@ -12,7 +12,7 @@ from __future__ import annotations
 from logic.rank import RankService
 from logic.system import InsertionResult, LoggingLevelRouter
 from logic.token import (
-    RankQuotaAnalysis, RankQuotaFullException, Token, TokenCollisionDetectionProcess, TokenStackFullException,
+    RankQuotaAnalysis, RankQuotaFullException, Token, TokenCollisionAnalysis, TokenStackFullException,
     TokenStackPushException, TokenStackService, TokenStackState
 )
 
@@ -37,7 +37,7 @@ class TokenStackPushPusher:
                     token_stack: TokenStackService,
                     rank_service: RankService = RankService(),
                     rank_quota_analyzer: RankQuotaAnalysis = RankQuotaAnalysis(),
-                    collision_detector: TokenCollisionDetectionProcess = TokenCollisionDetectionProcess(),
+                    collision_detector: TokenCollisionAnalysis = TokenCollisionAnalysis(),
             ) -> InsertionResult
 
     Super:
@@ -51,7 +51,7 @@ class TokenStackPushPusher:
             token_stack: TokenStackService,
             rank_service: RankService = RankService(),
             rank_quota_analyzer: RankQuotaAnalysis = RankQuotaAnalysis(),
-            collision_detector: TokenCollisionDetectionProcess = TokenCollisionDetectionProcess(),
+            collision_detector: TokenCollisionAnalysis = TokenCollisionAnalysis(),
     ) -> InsertionResult[bool]:
         """
         Action:
@@ -65,7 +65,7 @@ class TokenStackPushPusher:
            rank_service: RankService
            token_stack: TokenStackService
            rank_quota_analyzer: RankQuotaAnalysis
-           collision_detector: TokenCollisionDetectionProcess
+           collision_detector: TokenCollisionAnalysis
         Returns:
             InsertionResult
         Raises:

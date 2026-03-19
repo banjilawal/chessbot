@@ -39,7 +39,7 @@ class OpeningSquareDiscovery:
                     square_stack: SquareStackService,
                     rank_service: RankService = RankService(),
                     rank_quota_analyzer: SquareStackCapacityAnalyzer = SquareStackCapacityAnalyzer(),
-                    collision_detector: SquareCollisionDetectionProcess = SquareCollisionDetectionProcess(),
+                    collision_detector: SquareCollisionAnalysis = SquareCollisionAnalysis(),
             ) -> InsertionResult
 
     Super:

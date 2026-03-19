@@ -9,14 +9,14 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.system import CollisionDetectionProcess, CollisionReport, LoggingLevelRouter
+from logic.system import CollisionAnalysis, CollisionReport, LoggingLevelRouter
 from logic.token import (
-    Token, TokenCollisionDetectorFailureException, TokenDesignationCollisionException,
+    Token, TokenCollisionDetectionException, TokenDesignationCollisionException,
     TokenIdCollisionException, TokenOpeningSquareCollisionException, TokenStackService
 )
 
 
-class TokenCollisionDetectionProcess(CollisionDetectionProcess[Token]):
+class TokenCollisionAnalysis(CollisionAnalysis[Token]):
     """
      Role:
          - Collision Detection Worker
@@ -34,7 +34,7 @@ class TokenCollisionDetectionProcess(CollisionDetectionProcess[Token]):
             ) -> CollisionReport
             
      Super:
-        -   CollisionDetectionProcess[T]
+        -   CollisionAnalysis[T]
     """
     
     @classmethod
@@ -64,7 +64,7 @@ class TokenCollisionDetectionProcess(CollisionDetectionProcess[Token]):
             TokenIdCollisionException
             TokenDesignationCollisionException
             TokenOpeningSquareCollisionException
-            TokenCollisionDetectorFailureException
+            TokenCollisionDetectionException
         """
         method = f"{cls.__class__.__name__}.detect"
         
@@ -74,18 +74,18 @@ class TokenCollisionDetectionProcess(CollisionDetectionProcess[Token]):
         )
         if validation_result.is_failure:
             return CollisionReport.failure(
-                exception=TokenCollisionDetectorFailureException(
+                exception=TokenCollisionDetectionException(
                     val=method,
                     var="token failed integrity validation",
-                    msg=TokenCollisionDetectorFailureException.MSG,
-                    err_code=TokenCollisionDetectorFailureException.ERR_CODE,
+                    msg=TokenCollisionDetectionException.MSG,
+                    err_code=TokenCollisionDetectionException.ERR_CODE,
                     ex=validation_result.exception
                 )
             )
-        # --- Loop through the dataset to find matches. ---#
+        # --- Loop through the collider_candidates to find matches. ---#
         
         for token in token_stack.items:
-            # Handle the case that, the target shares its id with a dataset member.
+            # Handle the case that, the target shares its id with a collider_candidates member.
             if token.id == target.id:
                 # Return target, the collider, and the exception explaining the collision.
                 return CollisionReport.collision_occurred(
@@ -100,7 +100,7 @@ class TokenCollisionDetectionProcess(CollisionDetectionProcess[Token]):
                             err_code=TokenIdCollisionException.ERR_CODE
                     )
                 )
-            # Handle the case that, the target shares its designation with a dataset member.
+            # Handle the case that, the target shares its designation with a collider_candidates member.
             if token.designation.upper() == target.designation.upper():
                 # Return target, the collider, and the exception explaining the collision.
                 return CollisionReport.collision_occurred(
@@ -115,7 +115,7 @@ class TokenCollisionDetectionProcess(CollisionDetectionProcess[Token]):
                             err_code=TokenDesignationCollisionException.ERR_CODE,
                     )
                 )
-            # Handle the case that, the target shares its opening_square_name with a dataset member.
+            # Handle the case that, the target shares its opening_square_name with a collider_candidates member.
             if token.opening_square_name.upper()== target.opening_square_name.upper():
                 # Return target, the collider, and the exception explaining the collision.
                 return CollisionReport.collision_occurred(

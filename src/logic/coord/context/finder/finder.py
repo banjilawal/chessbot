@@ -47,13 +47,13 @@ class CoordFinder(DataFinder[Coord]):
     ) -> SearchResult[List[Coord]]:
         """
         # ACTION:
-            1.  If the dataset is null or the wrong type send the exception in the SearchResult.
+            1.  If the collider_candidates is null or the wrong type send the exception in the SearchResult.
             2.  If the context fails validation send the exception in the SearchResult. Else, route to the
                 search method which matches the context key.
             3.  The search method returns either an empty result or a list of tokens. Any exceptions were caught earlier
                 by the search router.
        # PARAMETERS:
-            *   dataset (List[Token]):
+            *   collider_candidates (List[Token]):
             *   context: TokenContext
             *   context_validator: TokenContextValidationProcess
         # RETURNS:
@@ -68,7 +68,7 @@ class CoordFinder(DataFinder[Coord]):
         """
         method = "CoordFinder.find"
         
-        # Handle the case that, the dataset is null.
+        # Handle the case that, the collider_candidates is null.
         if dataset is None:
             # Return the exception chain on failure.
             return SearchResult.failure(
@@ -77,7 +77,7 @@ class CoordFinder(DataFinder[Coord]):
                     ex=CoordDatasetNullException(f"{method}: {CoordDatasetNullException.MSG}")
                 )
             )
-        # Handle the case that, the dataset is of the wrong type.
+        # Handle the case that, the collider_candidates is of the wrong type.
         if not isinstance(dataset, List):
             # Return the exception chain on failure.
             return SearchResult.failure(

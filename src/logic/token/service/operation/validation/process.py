@@ -215,7 +215,7 @@ class TokenValidation(ValidationProcess[Token]):
                     msg=TokenValidationException.MSG,
                     err_code=TokenValidationException.ERR_CODE,
                     rslt_type=TokenValidationException.RSLT_TYPE,
-                    ex=TypeError(f"Expected CoordDatabase, got {type(candidate).__name__} instead.")
+                    ex=TypeError(f"Expected CoordDatabase, got {type(token.positions).__name__} instead.")
                 )
             )
         return ValidationResult.success(payload=1)

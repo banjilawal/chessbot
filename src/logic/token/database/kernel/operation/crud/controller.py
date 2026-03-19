@@ -31,7 +31,7 @@ class TokenStackCrudController:
                     token: Token,
                     token_stack: TokenStackService,
                     rank_quota_analyzer: RankQuotaAnalysis = RankQuotaAnalysis(),
-                    collision_detector: TokenCollisionDetectionProcess = TokenCollisionDetectionProcess(),
+                    collision_detector: TokenCollisionAnalysis = TokenCollisionAnalysis(),
             ) -> InsertionResult
 
     Super Class:

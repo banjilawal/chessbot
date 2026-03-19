@@ -10,11 +10,10 @@ version: 1.0.0
 from __future__ import annotations
 
 from copy import deepcopy
-from typing import cast
 
-from logic.coord import Coord, CoordService
-from logic.rank import Rank, RankService
 from logic.schema import SchemaService
+from logic.rank import Rank, RankService
+from logic.coord import Coord, CoordService
 from logic.system import DeletionResult, IdFactory, InsertionResult, IntegrityService, LoggingLevelRouter, UpdateResult
 from logic.token import PawnToken, Token, TokenBuild, TokenOpsController, TokenServiceException, TokenValidation
 
@@ -79,8 +78,6 @@ class TokenService(IntegrityService[Token]):
         Args:
             id: int
             name: str
-            build: TokenBuild
-            validation: TokenValidation
             controller: TokenOpsController
         """
         super().__init__(id=id, name=name)
@@ -88,11 +85,11 @@ class TokenService(IntegrityService[Token]):
     
     @property
     def build(self) -> TokenBuild:
-        return cast(TokenBuild, self.entity_build)
+        return self._controller.build
     
     @property
     def validation(self) -> TokenValidation:
-        return cast(TokenValidation, self.entity_validation)
+        return self._controller.validation
     
     @property
     def controller(self) -> TokenOpsController:

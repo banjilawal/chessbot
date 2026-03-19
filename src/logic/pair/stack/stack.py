@@ -132,7 +132,7 @@ class PairStack(StackService[Pair]):
         # --- Handoff validation, id, designation or opening_square collision detection. ---#
         collision_report = self.integrity_service.collision_detector.execute(
             target=item,
-            dataset=self._stack,
+            collider_candidates=self._stack,
         )
         # Handle the case that, the collision analysis is not completed.
         if collision_report.is_failure:

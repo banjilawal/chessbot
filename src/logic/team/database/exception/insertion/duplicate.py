@@ -21,7 +21,7 @@ class AddingDuplicateTeamException(UniqueTeamStackServiceException):
     Role:Debug, Error Tracing
 
     Responsibilities:
-    1.  Indicate that an attempt to add a team to the TeamDatabase's dataset failed because the team was
+    1.  Indicate that an attempt to add a team to the TeamDatabase's collider_candidates failed because the team was
         already in the collection
 
     Super Class:
@@ -36,5 +36,5 @@ class AddingDuplicateTeamException(UniqueTeamStackServiceException):
     ERR_CODE = "ADDING_DUPLICATE_TEAM_EXCEPTION"
     MSG = (
         "Team insertion failed: TeamDatabase is already managing the team. It cannot be added to the "
-        "dataset again."
+        "collider_candidates again."
     )

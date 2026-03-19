@@ -116,7 +116,7 @@ class AgentStackService(StackService[PlayerAgent]):
     #     agent_context_service = cast(PlayerContextService, self.context_service)
     #
     #     return self.context_service.finder.find(
-    #         dataset=self.bag,
+    #         collider_candidates=self.bag,
     #         map=map,
     #         context_validator=self.context_service.item_validator
     #     )

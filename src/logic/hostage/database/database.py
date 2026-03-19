@@ -112,7 +112,7 @@ class HostageDatabase(Database[Hostage]):
                     )
                 )
             )
-        # --- Check if the hostage is already in the dataset before adding it. ---#
+        # --- Check if the hostage is already in the collider_candidates before adding it. ---#
         search_result = self.search_hostages(context=CaptivityContext(id=manifest.id))
         
         # Handle the case that, the search is not completed.
@@ -127,7 +127,7 @@ class HostageDatabase(Database[Hostage]):
                     )
                 )
             )
-        # Handle the case that, the hostage is already in the dataset.
+        # Handle the case that, the hostage is already in the collider_candidates.
         if search_result.is_success:
             # Return the exception chain on failure.
             return InsertionResult.failure(

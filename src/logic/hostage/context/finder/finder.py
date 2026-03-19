@@ -50,13 +50,13 @@ class HostageFinder(DataFinder[Hostage]):
     ) -> SearchResult[List[Hostage]]:
         """
         # ACTION:
-        1.  If the dataset is null or the wrong type send the exception in the SearchResult.
+        1.  If the collider_candidates is null or the wrong type send the exception in the SearchResult.
         2.  If the context fails validation send the exception in the SearchResult. Else, route to the 
             search method which matches the context key.
         3.  The search method returns either an empty result or a list of hostages. Any exceptions were caught earlier
             by the search router.
        # PARAMETERS:
-            *   dataset (List[Hostage]):
+            *   collider_candidates (List[Hostage]):
             *   context: CaptivityContext
             *   context_validator: CaptivityContextValidationProcess
         # RETURNS:
@@ -71,7 +71,7 @@ class HostageFinder(DataFinder[Hostage]):
         """
         method = "HostageFinder.find"
         
-        # Handle the case that, the dataset is null.
+        # Handle the case that, the collider_candidates is null.
         if dataset is None:
             # Return the exception chain on failure.
             return SearchResult.failure(
@@ -82,7 +82,7 @@ class HostageFinder(DataFinder[Hostage]):
                     )
                 )
             )
-        # Handle the case that, dataset is the wrong type
+        # Handle the case that, collider_candidates is the wrong type
         if not isinstance(dataset, List):
             # Return the exception chain on failure.
             return SearchResult.failure(
@@ -134,7 +134,7 @@ class HostageFinder(DataFinder[Hostage]):
             1.  Get the Hostages with the desired id.
         # PARAMETERS:
             *   id (int)
-            *   dataset (List[Hostage])
+            *   collider_candidates (List[Hostage])
         # RETURNS:
             *   SearchResult[List[Hostage]] containing either:
                     - On error: Exception , payload null
@@ -162,7 +162,7 @@ class HostageFinder(DataFinder[Hostage]):
             1.  Get the Hostages which match the name.
         # PARAMETERS:
             *   name (str)
-            *   dataset (List[Hostage])
+            *   collider_candidates (List[Hostage])
         # RETURNS:
             *   SearchResult[List[Hostage]] containing either:
                     - On error: Exception , payload null
@@ -190,7 +190,7 @@ class HostageFinder(DataFinder[Hostage]):
             1.  Get the Hostages which match the name.
         # PARAMETERS:
             *   coord (Coord)
-            *   dataset (List[Hostage])
+            *   collider_candidates (List[Hostage])
         # RETURNS:
             *   SearchResult[List[Hostage]] containing either:
                     - On error: Exception , payload null
@@ -218,7 +218,7 @@ class HostageFinder(DataFinder[Hostage]):
             1.  Get the Hostages which match the board.
         # PARAMETERS:
             *   board (Board)
-            *   dataset (List[Hostage])
+            *   collider_candidates (List[Hostage])
         # RETURNS:
             *   SearchResult[List[Hostage]] containing either:
                     - On error: Exception , payload null

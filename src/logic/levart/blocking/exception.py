@@ -99,7 +99,7 @@ class EnemyCannotBeBlockerException(BlockingEventException):
 class DiscoveryAlreadyExistsException(BlockingEventException):
   """"""
   ERR_CODE = "DISCOVERY_ALREADY_EXISTS_EXCEPTION"
-  MSG = "The Discovery already exists in the dataset."
+  MSG = "The Discovery already exists in the collider_candidates."
 
 #
 # class DoubleEncounterException(BlockingEventException):

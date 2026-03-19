@@ -143,10 +143,10 @@ class BoardStackService(StackService[Board]):
                     )
                 )
             )
-        # --- Board order is not required. Direct insertion into the dataset is simpler that a push. ---#
+        # --- Board order is not required. Direct insertion into the collider_candidates is simpler that a push. ---#
         self.items.append(board)
         
-        # Handle the case that, the board was not appended to the dataset.
+        # Handle the case that, the board was not appended to the collider_candidates.
         if board not in self.items:
             # Return the exception chain on failure.
             return InsertionResult.failure(

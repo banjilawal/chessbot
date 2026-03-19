@@ -24,7 +24,7 @@ class PipelineDoesNotExistForRemovalException(PipelineStackException, NullExcept
 
     Responsibilities:
     1.  Indicate that an attempt to remove instances of a pipeline by a unique attribute failed because no bag
-        matching the property were found in the dataset.
+        matching the property were found in the collider_candidates.
 
     Super Class:
         *   PipelineDaaServiceException
@@ -36,4 +36,4 @@ class PipelineDoesNotExistForRemovalException(PipelineStackException, NullExcept
     None
     """
     ERR_CODE = "PIPELINE_DOES_NOT_EXIST_FOR_REMOVAL_EXCEPTION"
-    MSG = "Pipeline pop failed: The pipeline was not found in the dataset. Nothing to remove."
+    MSG = "Pipeline pop failed: The pipeline was not found in the collider_candidates. Nothing to remove."

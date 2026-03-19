@@ -49,13 +49,13 @@ class NodeFinder(StackSearchProcess[Node]):
     ) -> SearchResult[List[Node]]:
         """
         # ACTION:
-        1.  If the dataset is null or the wrong type send the exception in the SearchResult.
+        1.  If the collider_candidates is null or the wrong type send the exception in the SearchResult.
         2.  If the context fails validation send the exception in the SearchResult. Else, route to the 
             search method which matches the context key.
         3.  The search method returns either an empty result or a list of nodes. Any exceptions were caught earlier
             by the search router.
        # PARAMETERS:
-            *   dataset (List[Node]):
+            *   collider_candidates (List[Node]):
             *   context: NodeContext
             *   context_validator: NodeContextValidationProcess
         # RETURNS:
@@ -70,7 +70,7 @@ class NodeFinder(StackSearchProcess[Node]):
         """
         method = "NodeFinder.find"
         
-        # Handle the case that, the dataset is null.
+        # Handle the case that, the collider_candidates is null.
         if dataset is None:
             # Return the exception chain on failure.
             return SearchResult.failure(
@@ -81,7 +81,7 @@ class NodeFinder(StackSearchProcess[Node]):
                     )
                 )
             )
-        # Handle the case that, dataset is the wrong type
+        # Handle the case that, collider_candidates is the wrong type
         if not isinstance(dataset, List):
             # Return the exception chain on failure.
             return SearchResult.failure(
@@ -133,7 +133,7 @@ class NodeFinder(StackSearchProcess[Node]):
             1.  Get the Nodes with the desired id.
         # PARAMETERS:
             *   id (int)
-            *   dataset (List[Node])
+            *   collider_candidates (List[Node])
         # RETURNS:
             *   SearchResult[List[Node]] containing either:
                     - On error: Exception , payload null
@@ -158,7 +158,7 @@ class NodeFinder(StackSearchProcess[Node]):
             1.  Get the Nodes which match the square.
         # PARAMETERS:
             *   square (square)
-            *   dataset (List[Node])
+            *   collider_candidates (List[Node])
         # RETURNS:
             *   SearchResult[List[Node]] containing either:
                     - On error: Exception , payload null
@@ -182,7 +182,7 @@ class NodeFinder(StackSearchProcess[Node]):
             1.  Get the Nodes which match the predecessor.
         # PARAMETERS:
             *   predecessor (Predecessor)
-            *   dataset (List[Node])
+            *   collider_candidates (List[Node])
         # RETURNS:
             *   SearchResult[List[Node]] containing either:
                     - On error: Exception , payload null
@@ -210,7 +210,7 @@ class NodeFinder(StackSearchProcess[Node]):
             1.  Get the Nodes which are empty.
         # PARAMETERS:
             *   predecessor (Predecessor)
-            *   dataset (List[Node])
+            *   collider_candidates (List[Node])
         # RETURNS:
             *   SearchResult[List[Node]] containing either:
                     - On error: Exception , payload null

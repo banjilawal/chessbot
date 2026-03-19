@@ -15,5 +15,5 @@ None
 # Modules
 from .id import TokenIdCollisionException
 from .square import TokenOpeningSquareCollisionException
-from .detector import TokenCollisionDetectorFailureException
+from .detector import TokenCollisionDetectionException
 from .designation import TokenDesignationCollisionException

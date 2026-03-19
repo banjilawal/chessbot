@@ -12,14 +12,13 @@ from typing import Any, Optional
 
 __all__ = [
     # ======================# TOKEN_COLLISION_DETECTOR_FAILURE #======================#
-    "TokenCollisionDetectorFailureException",
+    "TokenCollisionDetectionException",
 ]
 
-from logic.token import TokenDebugException
-
+from logic.system import RelationAnalysisException
 
 # ======================# TOKEN_COLLISION_DETECTOR_FAILURE #======================#
-class TokenCollisionDetectorFailureException(TokenDebugException):
+class TokenCollisionDetectionException(RelationAnalysisException):
     """
     Role: 
         -   Error Variable Identifier
@@ -27,7 +26,7 @@ class TokenCollisionDetectorFailureException(TokenDebugException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that the TokenCollisionDetectionProcess experienced an error. It did not run the collision tests.
+        1.  Indicate that the TokenCollisionAnalysis experienced an error. It did not run the collision tests.
 
     Super:
         TokenDebugException
@@ -42,7 +41,7 @@ class TokenCollisionDetectorFailureException(TokenDebugException):
         err_code: Optional[str]        
     """
     ERR_CODE = "TOKEN_COLLISION_DETECTOR_FAILURE"
-    MSG = "TokenCollisionDetectionProcess experienced an error. no collision tests were run."
+    MSG = "TokenCollisionAnalysis experienced an error. no collision tests were run."
     
     def __init__(
             self,

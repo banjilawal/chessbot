@@ -8,55 +8,63 @@ version: 1.0.0
 """
 
 from __future__ import annotations
+
+import token
 from typing import cast
 
 from logic.system import LoggingLevelRouter, RelationReport
 from logic.system.relation.analysis import RelationAnalysis
 from logic.token import (
-    ReadinessStateNullException, TokenException, ReadinessState, TokenReadniessAnalysisException, CombatantToken,
+    ReadinessStateNullException, TokenException, ReadinessState, TokenReadinessAnalysisException, CombatantToken,
     KingToken, Token, TokenValidation
 )
 
-class TokenReadinessAnalysis(RelationAnalysis[ReadinessState, Token]):
+class TokenReadinessAnalysis(RelationAnalysis[ReadinessState.FREE, Token]):
     
     @classmethod
     @LoggingLevelRouter.monitor
     def execute(
             cls,
             candidate_satellite: Token,
+            candidate_primary: ReadinessState = ReadinessState.FREE,
             token_validator: TokenValidation = TokenValidation(),
-            candidate_primary: ReadinessState = ReadinessState(),
     ) -> RelationReport[ReadinessState, Token]:
-        method = "TokenReadinessAnalysis.analyze"
+        """
+        Analyses if a Token is ready
         
-        # Handle the case that, the candidate_primary does not exist.
+        Args:
+            candidate_satellite: Token
+            candidate_primary: ReadinessState
+            token_validator: TokenValidator
+        Returns:
+              RelationReport[ReadinessState, Token]
+        Raises:
+        
+        """
+        method = f"{cls.__name__}.analyze"
+        
+        # Handle the case that, the candidate_secondary does not exist.
         if candidate_primary is None:
-            # Return the exception chain on failure.
-            return RelationReport.failure(
-                TokenReadniessAnalysisException(
-                    msg=f"{method}: {TokenReadniessAnalysisException.MSG}",
-                    ex=ReadinessStateNullException(f"{method}: {ReadinessStateNullException.MSG}")
-                )
-            )
-        # Handle the case that, the candidate_primary is the wrong type.
-        if not isinstance(candidate_primary, ReadinessState):
-            # Return the exception chain on failure.
-            return RelationReport.failure(
-                TokenReadniessAnalysisException(
-                    msg=f"{method}: {TokenReadniessAnalysisException.MSG}",
-                    ex=TypeError(f"{method}: Expected TokenState, got {type(candidate_primary).__name__} instead.")
-                )
-            )
+            candidate_primary = ReadinessState.FREE
+        
         # Handle the case that, the token is not certified as safe.
         validation_result = token_validator.execute(candidate=candidate_satellite)
-        # Send the exception chain on failre.
+        # Send the exception chain on failure.
         if validation_result.is_failure:
             return RelationReport.failure(
-                TokenException(
-                    f"{method}: {TokenException.MSG}",
+                TokenReadinessAnalysisException(
+                    mthd=method,
+                    title=cls.__name__,
+                    msg=TokenReadinessAnalysisException.MSG,
+                    err_code=TokenReadinessAnalysisException.ERR_CODE,
+                    rslt_type=TokenReadinessAnalysisException.RSLT_TYPE,
                     ex=validation_result.exception
                 )
             )
+        
+        if candidate_satellite.is_not_deployed:
+            return
+            
         if isinstance(candidate_satellite, CombatantToken):
             return cls._analyze_combatant_readiness(combatant=cast(CombatantToken, candidate_satellite))
         return cls._analyze_king_readiness(king=cast(KingToken, candidate_satellite))

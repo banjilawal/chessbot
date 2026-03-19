@@ -49,13 +49,13 @@ class BoardFinder(DataFinder[Board]):
     ) -> SearchResult[List[Board]]:
         """
         # ACTION:
-        1.  If the dataset is null or the wrong type send the exception in the SearchResult.
+        1.  If the collider_candidates is null or the wrong type send the exception in the SearchResult.
         2.  If the context fails validation send the exception in the SearchResult. Else, route to the 
             search method which matches the context key.
         3.  The search method returns either an empty result or a list of boards. Any exceptions were caught earlier
             by the search router.
        # PARAMETERS:
-            *   dataset (List[Board]):
+            *   collider_candidates (List[Board]):
             *   context: BoardContext
             *   context_validator: BoardContextValidationProcess
         # RETURNS:
@@ -70,7 +70,7 @@ class BoardFinder(DataFinder[Board]):
         """
         method = "BoardFinder.find"
         
-        # Handle the case that, the dataset is null.
+        # Handle the case that, the collider_candidates is null.
         if dataset is None:
             # Return the exception chain on failure.
             return SearchResult.failure(
@@ -79,7 +79,7 @@ class BoardFinder(DataFinder[Board]):
                     ex=BoardSearchNullDatasetException( f"{method}: {BoardSearchNullDatasetException.MSG}")
                 )
             )
-        # Handle the case that, dataset is the wrong type
+        # Handle the case that, collider_candidates is the wrong type
         if not isinstance(dataset, List):
             # Return the exception chain on failure.
             return SearchResult.failure(
@@ -123,7 +123,7 @@ class BoardFinder(DataFinder[Board]):
             1.  Get the Boards with the desired id.
         # PARAMETERS:
             *   id (int)
-            *   dataset (List[Board])
+            *   collider_candidates (List[Board])
         # RETURNS:
             *   SearchResult[List[Board]] containing either:
                     - On error: Exception , payload null
@@ -147,7 +147,7 @@ class BoardFinder(DataFinder[Board]):
             1.  Get the Boards which match the arena.
         # PARAMETERS:
             *   arena (Arena)
-            *   dataset (List[Board])
+            *   collider_candidates (List[Board])
         # RETURNS:
             *   SearchResult[List[Board]] containing either:
                     - On error: Exception , payload null
