@@ -1,4 +1,4 @@
-# src/logic/token/finder/exception/worker.py
+# src/logic/token/finder/exception/work.py
 
 """
 Module: logic.token.finder.exception.work

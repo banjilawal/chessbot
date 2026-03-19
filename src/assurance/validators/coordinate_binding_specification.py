@@ -1,6 +1,6 @@
 from typing import Generic, cast
 
-from logic.token.validation import ChessPieceValidator
+from logic.token.service.operation.validation import ChessPieceValidator
 from logic.system.validate.validator import Validator
 from assurance.exception.validation.base_validationpy import ChessPieceValidationException
 from logic.board.coordinate_bind import CoordinateBinding

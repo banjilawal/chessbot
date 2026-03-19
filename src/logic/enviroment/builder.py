@@ -1,4 +1,4 @@
-# src/logic/environment/factory.py
+# src/logic/environment/process.py
 
 """
 Module: logic.environment.builder

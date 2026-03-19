@@ -1,4 +1,4 @@
-# src/logic/token/database/kernel/operation/crud/exception/push/worker.py
+# src/logic/token/database/kernel/operation/crud/exception/push/work.py
 
 """
 Module: logic.token.database.kernel.OPERATION.CRUD.exception.push.work

@@ -14,7 +14,7 @@ class BooleanResult(Result[bool]):
             exception: Optional[Exception] = None
     ):
         super().__init__(payload=outcome, exception=exception)
-        """INTERNAL: Use factory methods instead of direct constructor."""
+        """INTERNAL: Use build methods instead of direct constructor."""
         method = "TransactionResult.__init__"
         self._outcome = outcome
     

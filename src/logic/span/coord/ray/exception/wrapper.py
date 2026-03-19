@@ -1,4 +1,4 @@
-# src/logic/diagonalRay/computation/exception/worker.py
+# src/logic/diagonalRay/computation/exception/work.py
 
 """
 Module: logic.diagonalRay.computation.exception.work

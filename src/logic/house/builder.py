@@ -1,7 +1,7 @@
-# src/logic/house/factory.py
+# src/logic/house/process.py
 
 """
-Module: logic.house.factory.py
+Module: logic.house.process.py
 Author: Banji Lawal
 Created: 2025-11-10
 version: 1.0.0

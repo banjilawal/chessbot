@@ -1,4 +1,4 @@
-# src/logic/square/finder/exception/worker.py
+# src/logic/square/finder/exception/work.py
 
 """
 Module: logic.square.finder.exception.work

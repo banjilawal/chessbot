@@ -1,4 +1,4 @@
-# src/logic/neighbor/factory.py
+# src/logic/neighbor/process.py
 
 """
 Module: logic.neighbor.neighbor

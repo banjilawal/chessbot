@@ -1,4 +1,4 @@
-# src/logic/owner/travel/occupation/factory.py
+# src/logic/owner/travel/occupation/process.py
 
 """
 Module: `logic.owner.travel.occupation.coord_stack_validator`

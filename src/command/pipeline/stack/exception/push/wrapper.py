@@ -1,4 +1,4 @@
-# src/command/pipeline/database/core/exception/push/worker.py
+# src/command/pipeline/database/core/exception/push/work.py
 
 """
 Module: command.pipeline.database.core.exception.push.work

@@ -1,4 +1,4 @@
-# src/logic/points/searcher/factory.py
+# src/logic/points/searcher/process.py
 
 """
 Module: logic.points.searcher.coord_stack_validator

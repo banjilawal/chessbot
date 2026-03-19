@@ -1,4 +1,4 @@
-# src/logic/system/err/worker.py
+# src/logic/system/err/work.py
 
 """
 Module: logic.system.err.work

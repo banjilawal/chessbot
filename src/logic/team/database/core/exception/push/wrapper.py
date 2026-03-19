@@ -1,4 +1,4 @@
-# src/logic/team/database/core/exception/push/worker.py
+# src/logic/team/database/core/exception/push/work.py
 
 """
 Module: logic.team.database.core.exception.push.work

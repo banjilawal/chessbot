@@ -1,4 +1,4 @@
-# src/logic/points/origin/factory.py
+# src/logic/points/origin/process.py
 
 """
 Module: logic.points.origin.builder

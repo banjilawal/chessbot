@@ -1,7 +1,7 @@
-# src/logic/player/builder/factory.py
+# src/logic/player/builder/process.py
 
 """
-Module: logic.player.builder.factory
+Module: logic.player.builder.build
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -53,7 +53,7 @@ class PlayerFactory(BuildProcess[Player]):
         """
         # ACTION:
         1.  verify player_variety is a not-null PlayerVariety object.
-        2.  Use player_variety to pick which factory method will create the concrete Player object.
+        2.  Use player_variety to pick which build method will create the concrete Player object.
 
         # PARAMETERS:
             *   id (int)
@@ -75,7 +75,7 @@ class PlayerFactory(BuildProcess[Player]):
             variety_validation = player_validator.certify_player_variety(candidate=player_variety)
             if variety_validation.failure():
                 return BuildResult.failure(variety_validation.exception)
-            # Use player_variety to decide which factory method to call.
+            # Use player_variety to decide which build method to call.
             
             if isinstance(player_variety, HumanPlayer):
                 return cls.build_human_player(id=id, name=name,)

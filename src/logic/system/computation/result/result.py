@@ -42,7 +42,7 @@ class ComputationResult(Result[T], Generic[T]):
             payload: Optional[T] = None,
     ):
         super().__init__(payload=payload, exception=exception)
-        """INTERNAL: Use factory methods instead of direct constructor."""
+        """INTERNAL: Use build methods instead of direct constructor."""
         self._state = state
 
     @property

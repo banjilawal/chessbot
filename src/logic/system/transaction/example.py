@@ -101,7 +101,7 @@ The major theme influencing the modules design are
 """
 Result of team_name notification that changes an entity's state.
 
-Use factory methods to create instances:
+Use build methods to create instances:
 - TransactionResult.success()
 - TransactionResult.failed()
 - TransactionResult.rolled_back()

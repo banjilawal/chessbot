@@ -1,4 +1,4 @@
-# src/logic/team/relation/roster/worker.py
+# src/logic/team/relation/roster/work.py
 
 """
 Module: logic.team.relation.roster.work

@@ -1,4 +1,4 @@
-# src/logic/span/square/builder/worker.py
+# src/logic/span/square/builder/work.py
 
 """
 Module: logic.span.square.builder.work

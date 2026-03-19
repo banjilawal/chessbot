@@ -1,4 +1,4 @@
-# src/logic/arena/relation/worker.py
+# src/logic/arena/relation/work.py
 
 """
 Module: logic.arena.relation.work

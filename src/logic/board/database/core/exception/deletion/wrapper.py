@@ -1,4 +1,4 @@
-# src/logic/board/database/core/exception/deletion/worker.py
+# src/logic/board/database/core/exception/deletion/work.py
 
 """
 Module: logic.board.database.core.exception.deletion.work

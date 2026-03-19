@@ -1,4 +1,4 @@
-# src/logic/edge/stack/exception/pop/worker.py
+# src/logic/edge/stack/exception/pop/work.py
 
 """
 Module: logic.edge.stack.exception.pop.work

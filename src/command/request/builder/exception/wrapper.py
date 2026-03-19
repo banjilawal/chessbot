@@ -1,4 +1,4 @@
-# src/command/request/builder/worker.py
+# src/command/request/builder/work.py
 
 """
 Module: command.request.builder.work

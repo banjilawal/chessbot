@@ -1,4 +1,4 @@
-# src/logic/square/service/visitation/exception/terminate/worker.py
+# src/logic/square/service/visitation/exception/terminate/work.py
 
 """
 Module: logic.square.service.visitation.exception.terminate.work

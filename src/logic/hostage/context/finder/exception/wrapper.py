@@ -1,4 +1,4 @@
-# src/logic/hostage/finder/exception/worker.py
+# src/logic/hostage/finder/exception/work.py
 
 """
 Module: logic.hostage.finder.exception.work

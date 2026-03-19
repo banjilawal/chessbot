@@ -1,4 +1,4 @@
-# src/logic/system/collection/operation/update/exception/worker.py
+# src/logic/system/collection/operation/update/exception/work.py
 
 """
 Module: logic.system.collection.operation.update.exception.work

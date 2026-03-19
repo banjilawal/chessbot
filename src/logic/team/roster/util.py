@@ -128,7 +128,7 @@ class RosterUtil:
                         ex=token_build_result.exception
                     )
                 )
-            # --- The factory returns only instances of concrete tokens so don't cast during the insert.---#
+            # --- The build returns only instances of concrete tokens so don't cast during the insert.---#
             insertion_result = team.roster.insert(token=token_build_result.payload)
             
             # Handle the case that, the insertion was not completed.

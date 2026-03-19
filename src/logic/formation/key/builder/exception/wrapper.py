@@ -1,4 +1,4 @@
-# src/logic/formation/key/builder/exception/worker.py
+# src/logic/formation/key/builder/exception/work.py
 
 """
 Module: logic.formation.key.builder.exception.work

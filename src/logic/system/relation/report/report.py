@@ -25,7 +25,7 @@ class RelationReport:
             status: RelationStatus,
             exception: Optional[Exception],
     ):
-        """INTERNAL: Use factory methods instead of direct constructor."""
+        """INTERNAL: Use build methods instead of direct constructor."""
         method = "RelationReport.__init__"
         self._primary = primary
         self._satellite = satellite

@@ -38,7 +38,7 @@ class InsertionResult(DataResult[bool]):
             exception: Optional[Exception] = None,
     ):
         super().__init__(state=state, payload=payload, exception=exception)
-        """INTERNAL: Use factory methods instead of direct constructor."""
+        """INTERNAL: Use build methods instead of direct constructor."""
         method = "InsertionResult.__init__"
         
     @property

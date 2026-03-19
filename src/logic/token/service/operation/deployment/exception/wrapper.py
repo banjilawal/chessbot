@@ -1,4 +1,4 @@
-# src/logic/token/service/operation/tokenDeployment/exception/worker.py
+# src/logic/token/service/operation/tokenDeployment/exception/work.py
 
 """
 Module: logic.token.service.operation.tokenDeployment.exception.work

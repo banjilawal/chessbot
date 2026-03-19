@@ -1,4 +1,4 @@
-# src/logic/persona/validator/exception/worker.py
+# src/logic/persona/validator/exception/work.py
 
 """
 Module: logic.persona.validator.exception.work

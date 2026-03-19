@@ -1,4 +1,4 @@
-# src/logic/system/build/exception/worker.py
+# src/logic/system/build/exception/work.py
 
 """
 Module: logic.system.build.exception.work

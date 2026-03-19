@@ -1,4 +1,4 @@
-# src/logic/owner/travel/blocking/factory.py
+# src/logic/owner/travel/blocking/process.py
 
 """
 Module: `logic.owner.travel.blocking.event`

@@ -16,7 +16,7 @@ from logic.coord import Coord, CoordService
 from logic.rank import Rank, RankService
 from logic.schema import SchemaService
 from logic.system import DeletionResult, IdFactory, InsertionResult, IntegrityService, LoggingLevelRouter, UpdateResult
-from logic.token import PawnToken, Token, TokenFactory, TokenOpsController, TokenServiceException, TokenValidationProcess
+from logic.token import PawnToken, Token, TokenBuildProcess, TokenOpsController, TokenServiceException, TokenValidationProcess
 
 
 class TokenService(IntegrityService[Token]):
@@ -72,7 +72,7 @@ class TokenService(IntegrityService[Token]):
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            builder: TokenFactory = TokenFactory(),
+            builder: TokenBuildProcess = TokenBuildProcess(),
             validator: TokenValidationProcess = TokenValidationProcess(),
             id: int = IdFactory.next_id(class_name="TokenService"),
             controller: TokenOpsController = TokenOpsController(),
@@ -81,7 +81,7 @@ class TokenService(IntegrityService[Token]):
         Args:
             id: int
             name: str
-            builder: TokenFactory
+            builder: TokenBuildProcess
             validator: TokenValidationProcess
             controller: TokenOpsController
         """
@@ -89,8 +89,8 @@ class TokenService(IntegrityService[Token]):
         self._controller = controller
     
     @property
-    def builder(self) -> TokenFactory:
-        return cast(TokenFactory, self.entity_builder)
+    def builder(self) -> TokenBuildProcess:
+        return cast(TokenBuildProcess, self.entity_builder)
     
     @property
     def validator(self) -> TokenValidationProcess:

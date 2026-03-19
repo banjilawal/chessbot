@@ -1,4 +1,4 @@
-# src/logic/board/database/core/exception/search/worker.py
+# src/logic/board/database/core/exception/search/work.py
 
 """
 Module: logic.board.database.core.exception.search.work

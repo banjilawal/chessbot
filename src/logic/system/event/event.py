@@ -1,4 +1,4 @@
-# src/logic/system/event/factory.py
+# src/logic/system/event/process.py
 
 """
 Module: logic.system.event.event

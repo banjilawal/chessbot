@@ -1,4 +1,4 @@
-# src/logic/formation/lookup/exception/worker.py
+# src/logic/formation/lookup/exception/work.py
 
 """
 Module: logic.formation.lookup.exception.work

@@ -1,4 +1,4 @@
-# src/logic/square/database/kernel/operation/crud/exception/deploy/worker.py
+# src/logic/square/database/kernel/operation/crud/exception/deploy/work.py
 
 """
 Module: logic.square.database.kernel.OPERATION.CRUD.exception.deploy.work

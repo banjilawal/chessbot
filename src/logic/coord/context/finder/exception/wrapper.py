@@ -1,4 +1,4 @@
-# src/logic/coord/finder/exception/worker.py
+# src/logic/coord/finder/exception/work.py
 
 """
 Module: logic.coord.finder.exception.work

@@ -1,4 +1,4 @@
-# src/logic/player/relation/worker.py
+# src/logic/player/relation/work.py
 
 """
 Module: logic.player.relation.work

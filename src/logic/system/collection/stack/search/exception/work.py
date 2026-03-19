@@ -1,4 +1,4 @@
-# src/logic/system/collection/stack/search/exception/worker.py
+# src/logic/system/collection/stack/search/exception/work.py
 
 """
 Module: logic.system.collection.stack.search.exception.work

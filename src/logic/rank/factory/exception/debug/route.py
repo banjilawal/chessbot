@@ -1,7 +1,7 @@
-# src/logic/rank/factory/exception/debug/route.py
+# src/logic/rank/build/exception/debug/route.py
 
 """
-Module: logic.rank.factory.exception.debug.route
+Module: logic.rank.build.exception.debug.route
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0

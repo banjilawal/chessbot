@@ -1,4 +1,4 @@
-# src/logic/battle_space/factory.py
+# src/logic/battle_space/process.py
 """
 Module: logic.battle_space.searcher.builder
 Author: Banji Lawal

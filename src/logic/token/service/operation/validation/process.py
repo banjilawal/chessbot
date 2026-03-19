@@ -15,7 +15,7 @@ from logic.rank import RankService
 from logic.system import IdentityService, LoggingLevelRouter, NumberValidationProcess, ValidationResult, ValidationProcess
 from logic.team import TeamService
 from logic.token import CombatantToken, KingToken, Token, TokenException, TokenValidationException
-from logic.token.validation.exception.debug.null import NullTokenException
+from logic.token.service.operation.validation.exception.debug.null import NullTokenException
 
 
 class TokenValidationProcess(ValidationProcess[Token]):

@@ -1,7 +1,7 @@
-# src/logic/rank/factory/exception/worker.py
+# src/logic/rank/build/exception/work.py
 
 """
-Module: logic.rank.factory.exception.work
+Module: logic.rank.build.exception.work
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

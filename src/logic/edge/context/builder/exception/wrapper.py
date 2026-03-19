@@ -1,4 +1,4 @@
-# src/logic/edge/context/builder/exception/worker.py
+# src/logic/edge/context/builder/exception/work.py
 
 """
 Module: logic.edge.context.builder.exception.work

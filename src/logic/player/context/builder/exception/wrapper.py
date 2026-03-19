@@ -1,4 +1,4 @@
-# src/logic/player/context/builder/exception/worker.py
+# src/logic/player/context/builder/exception/work.py
 
 """
 Module: logic.player.context.builder.exception.work

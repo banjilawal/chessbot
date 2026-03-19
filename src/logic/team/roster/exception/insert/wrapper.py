@@ -1,4 +1,4 @@
-# src/logic/team/roster/exception/insertion/worker.py
+# src/logic/team/roster/exception/insertion/work.py
 
 """
 Module: logic.team.roster.exception.insertion.work

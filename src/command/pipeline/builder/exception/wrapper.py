@@ -1,4 +1,4 @@
-# src/command/command/builder/exception/worker.py
+# src/command/command/builder/exception/work.py
 
 """
 Module: command.command.builder.exception.work

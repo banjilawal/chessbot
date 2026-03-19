@@ -27,7 +27,7 @@ class TransactionResult(Result[Event]):
             exception: Optional[Exception] = None
     ):
         super().__init__(payload=checkpoint, exception=exception)
-        """INTERNAL: Use factory methods instead of direct constructor."""
+        """INTERNAL: Use build methods instead of direct constructor."""
         method = "TransactionResult.__init__"
         self._state = state
     

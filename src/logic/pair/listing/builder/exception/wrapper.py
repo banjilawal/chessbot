@@ -1,4 +1,4 @@
-# src/logic/pair/listing/builder/worker.py
+# src/logic/pair/listing/builder/work.py
 
 """
 Module: logic.pair.listing.builder.work

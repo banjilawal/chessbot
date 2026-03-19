@@ -1,4 +1,4 @@
-# src/logic/token/context/builder/exception/worker.py
+# src/logic/token/context/builder/exception/work.py
 
 """
 Module: logic.token.context.builder.exception.work

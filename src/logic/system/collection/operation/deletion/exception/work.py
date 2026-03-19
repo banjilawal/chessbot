@@ -1,4 +1,4 @@
-# src/logic/system/collection/operation/deletion/exception/worker.py
+# src/logic/system/collection/operation/deletion/exception/work.py
 
 """
 Module: logic.system.collection.operation.deletion.exception.work

@@ -1,7 +1,7 @@
-# src/logic/token/factory/exception/worker.py
+# src/logic/token/build/exception/work.py
 
 """
-Module: logic.token.factory.exception.work
+Module: logic.token.build.exception.work
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

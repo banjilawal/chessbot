@@ -1,4 +1,4 @@
-# src/logic/schema/key/builder/exception/worker.py
+# src/logic/schema/key/builder/exception/work.py
 
 """
 Module: logic.schema.key.builder.exception.work

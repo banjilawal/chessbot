@@ -1,7 +1,7 @@
-# src/logic/system/identity/id/factory.py
+# src/logic/system/identity/id/process.py
 
 """
-Module: logic.system.identity.id.factory
+Module: logic.system.identity.id.build
 Author: Banji Lawal
 Created: 2025-09-17
 version: 1.0.0

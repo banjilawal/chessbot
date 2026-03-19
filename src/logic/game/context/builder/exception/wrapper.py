@@ -1,4 +1,4 @@
-# src/logic/game/context/builder/exception/worker.py
+# src/logic/game/context/builder/exception/work.py
 
 """
 Module: logic.game.context.builder.exception.work

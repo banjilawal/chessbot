@@ -1,7 +1,7 @@
-# src/logic/rank/validator/factory.py
+# src/logic/rank/validator/process.py
 
 """
-Module: logic.rank.validator.factory
+Module: logic.rank.validator.build
 Author: Banji Lawal
 Created: 2025-11-08
 version: 1.0.0
@@ -118,10 +118,10 @@ class RankValidationProcessFactory(ValidationProcess[Rank]):
             )
 
 
-# src/logic/rank/factory/factory.py
+# src/logic/rank/build/process.py
 
 """
-Module: logic.rank.factory.factory
+Module: logic.rank.build.build
 Author: Banji Lawal
 Created: 2025-08-25
 version: 1.0.0

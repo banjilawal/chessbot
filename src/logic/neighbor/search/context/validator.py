@@ -1,4 +1,4 @@
-# src/logic/neighbor/searcher/factory.py
+# src/logic/neighbor/searcher/process.py
 
 """
 Module: logic.neighbor.searcher.coord_stack_validator

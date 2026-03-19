@@ -1,7 +1,7 @@
-# src/logic/rank/factory/factory.py
+# src/logic/rank/build/process.py
 
 """
-Module: logic.rank.factory.factory
+Module: logic.rank.build.build
 Author: Banji Lawal
 Created: 2025-08-25
 version: 1.0.0

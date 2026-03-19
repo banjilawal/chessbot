@@ -1,4 +1,4 @@
-# src/logic/arena/finder/exception/worker.py
+# src/logic/arena/finder/exception/work.py
 
 """
 Module: logic.arena.finder.exception.work

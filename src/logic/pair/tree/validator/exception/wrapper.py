@@ -1,4 +1,4 @@
-# src/logic/pair/tree/validator/exception/worker.py
+# src/logic/pair/tree/validator/exception/work.py
 
 """
 Module: logic.pair.tree.validator.exception.work

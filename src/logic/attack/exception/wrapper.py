@@ -1,4 +1,4 @@
-# src/logic/attack/exception/worker.py
+# src/logic/attack/exception/work.py
 
 """
 Module: logic.attack.exception.work

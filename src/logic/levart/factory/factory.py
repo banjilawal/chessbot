@@ -1,7 +1,7 @@
-# src/logic/owner/travel/factory/factory.py
+# src/logic/owner/travel/build/process.py
 
 """
-Module: logic.owner.travel.factory.factory
+Module: logic.owner.travel.build.build
 Author: Banji Lawal
 Created: 2025-10-21
 version: 1.0.0

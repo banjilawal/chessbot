@@ -1,4 +1,4 @@
-# src/logic/snapshotContext/context/builder/exception/worker.py
+# src/logic/snapshotContext/context/builder/exception/work.py
 
 """
 Module: logic.snapshotContext.context.builder.exception.work

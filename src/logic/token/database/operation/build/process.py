@@ -1,7 +1,7 @@
-# src/logic/token/factory/factory.py
+# src/logic/token/build/process.py
 
 """
-Module: logic.token.factory.factory
+Module: logic.token.build.build
 Author: Banji Lawal
 Created: 2025-09-04
 version: 1.0.0
@@ -13,12 +13,12 @@ from logic.persona import Persona
 from logic.team import Team, TeamValidationProcess
 from logic.rank import RankService
 from logic.formation import Formation, FormationService
-from logic.system import BuildResult, BuildProcess, IdFactory, IdentityService, LoggingLevelRouter, id_emitter
+from logic.system import BuildResult, BuildProcess, IdBuild, IdentityService, LoggingLevelRouter, id_emitter
 from logic.token import CombatantToken, KingToken, PawnToken, TokenBuildException, Token
 
-class TokenFactory(BuildProcess[Token]):
+class TokenBuildProcess(BuildProcess[Token]):
     """
-    Role:Factory, Data Integrity Guarantor
+    Role:Build, Data Integrity Guarantor
 
     Responsibilities:
     1.  Produce Token instances whose integrity is guaranteed at creation.
@@ -44,7 +44,7 @@ class TokenFactory(BuildProcess[Token]):
             formation: Formation,
             rank_service: RankService = RankService(),
             team_validator: TeamValidationProcess = TeamValidationProcess(),
-            id: int = IdFactory.next_id(class_name="Token"),
+            id: int = IdBuild.next_id(class_name="Token"),
             identity_service: IdentityService = IdentityService(),
             formation_service: FormationService = FormationService(),
     ) -> BuildResult[Token]:
@@ -67,7 +67,7 @@ class TokenFactory(BuildProcess[Token]):
         Raises:
             *   TokenBuildException
         """
-        method = "TokenFactory.builder"
+        method = "TokenBuildProcess.builder"
         
         # Handle the case that, the id is not certified as safe.
         id_validation = identity_service.validate_id(candidate=id)
@@ -154,7 +154,7 @@ class TokenFactory(BuildProcess[Token]):
         Raises:
             *   None
         """
-        method = "TokenFactory._build_pawn"
+        method = "TokenBuildProcess._build_pawn"
         
         return BuildResult.success(
             payload=PawnToken(
@@ -192,7 +192,7 @@ class TokenFactory(BuildProcess[Token]):
         Raises:
             *   None
         """
-        method = "TokenFactory._build_king"
+        method = "TokenBuildProcess._build_king"
         
         return BuildResult.success(
                 payload=KingToken(
@@ -227,7 +227,7 @@ class TokenFactory(BuildProcess[Token]):
         Raises:
             *   None
         """
-        method = "TokenFactory._build_combatant"
+        method = "TokenBuildProcess._build_combatant"
         
         # Handle the case that, the rank build is not completed.
         rank_build_result = rank_service.builder.execute(persona=formation.persona)

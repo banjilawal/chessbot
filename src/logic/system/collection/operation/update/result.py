@@ -44,7 +44,7 @@ class UpdateResult(DataResult[T], Generic[T]):
             updated: Optional[T] = None,
     ):
         super().__init__(state=state, payload=original, exception=exception)
-        """INTERNAL: Use factory methods instead of direct constructor."""
+        """INTERNAL: Use build methods instead of direct constructor."""
         method = "UpdateResult.result"
         self._updated = updated
         

@@ -1,4 +1,4 @@
-# src/logic/square/context/builder/exception/worker.py
+# src/logic/square/context/builder/exception/work.py
 
 """
 Module: logic.square.context.builder.exception.work

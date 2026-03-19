@@ -52,7 +52,7 @@ class CollisionReport(Generic[T]):
             exception: Optional[Exception] = None,
     ):
         super().__init__(state=state, target=target, exception=exception)
-        """INTERNAL: Use factory methods instead of direct constructor."""
+        """INTERNAL: Use build methods instead of direct constructor."""
         method = "CollisionReport.result"
         self._var = var
         self._value = value

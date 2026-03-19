@@ -1,4 +1,4 @@
-# src/logic/system/collection/operation/deletion/worker.py
+# src/logic/system/collection/operation/deletion/work.py
 
 """
 Module: logic.system.collection.operation.deletion.work
@@ -40,7 +40,7 @@ class DeletionResult(DataResult, Generic[T]):
             payload: Optional[T] = None,
     ):
         super().__init__(state=state, payload=payload, exception=exception)
-        """INTERNAL: Use factory methods instead of direct constructor."""
+        """INTERNAL: Use build methods instead of direct constructor."""
         method = "DeletionResult.work"
     
     @property

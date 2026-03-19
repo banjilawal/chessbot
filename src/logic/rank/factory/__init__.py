@@ -1,7 +1,7 @@
-# src/logic/rank/factory/__init__.py
+# src/logic/rank/build/__init__.py
 
 """
-Module: logic.rank.factory.__init__
+Module: logic.rank.build.__init__
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0

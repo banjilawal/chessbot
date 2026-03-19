@@ -1,4 +1,4 @@
-# src/logic/system/collision/exception/worker.py
+# src/logic/system/collision/exception/work.py
 
 """
 Module: logic.system.collision.exception.work
