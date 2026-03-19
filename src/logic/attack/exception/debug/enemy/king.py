@@ -24,4 +24,4 @@ class AttackingEnemyKingException(AttackDebugException):
     None
     """
     ERR_CODE = "ATTACKING_EMPTY_SQUARE_EXCEPTION"
-    MSG = "Attack failed: The enemy was a king which can only be checked or checkmated."
+    MSG = "Attack failed: The enemy was a king which can only be check or checkmated."

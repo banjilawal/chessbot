@@ -15,7 +15,7 @@
 #   ))
 #
 # # If the square_name is not on its team_name roster it cannot be a TravelEvent resource_candidate. This might have been
-# # checked by the SquareValidationProcess
+# # check by the SquareValidationProcess
 # team_name = square_name.team_name
 # if square_name not in team_name.roster:
 #   return ValidationResult(rollback_exception=ResourceNotOnRosterCannotMoveException(

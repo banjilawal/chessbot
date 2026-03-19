@@ -1,7 +1,7 @@
-# src/logic/token/build/process.py
+# src/logic/token/service/operation/build/process.py
 
 """
-Module: logic.token.build.build
+Module: logic.token.service.operation.build.build
 Author: Banji Lawal
 Created: 2025-09-04
 version: 1.0.0

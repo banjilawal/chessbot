@@ -1,4 +1,4 @@
-# src/logic/token/service/operation/coord/handler.py
+# src/logic/token/service/operation/coord/process.py
 
 """
 Module: logic.token.service.operation.coord.handler

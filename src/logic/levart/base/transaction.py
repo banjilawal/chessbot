@@ -194,7 +194,7 @@ class TravelTransaction(Transaction[TravelEvent]):
   #   was called `execute_directive`: validated the parameters, handled exception, and confirmed
   #   `directive.blocked_square` contained either
   #     * A friendly owner blocking `actor_candidate` from `blocked_square`
-  #     * An enemy occupation. Kings cannot be captured, only checked or checkmated.
+  #     * An enemy occupation. Kings cannot be captured, only check or checkmated.
   #
   #   Args:
   #     - `op_result_id` (`int`): The `visitor_id` of the `OperationResult` passed to the caller.

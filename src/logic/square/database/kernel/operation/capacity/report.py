@@ -1,4 +1,4 @@
-# src/logic/square/database/kernel/operation/quota/report.py
+# src/logic/square/database/kernel/operation/quota/check.py
 
 """
 Module: logic.square.database.kernel.operation.quota.report

@@ -1,4 +1,4 @@
-# src/logic/token/database/kernel/operation/handler.py
+# src/logic/token/database/kernel/operation/process.py
 
 """
 Module: logic.token.database.kernel.operation.pusher

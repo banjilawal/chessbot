@@ -1,4 +1,4 @@
-# src/logic/span/service/handler/edge/handler.py
+# src/logic/span/service/handler/edge/process.py
 
 """
 Module: logic.span.service.handler.edge.handler

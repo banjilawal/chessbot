@@ -1,4 +1,4 @@
-# src/logic/square/database/kernel/operation/handler.py
+# src/logic/square/database/kernel/operation/process.py
 
 """
 Module: logic.square.database.kernel.operation.handler

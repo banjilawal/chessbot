@@ -91,7 +91,7 @@ class ActorSameAsBlockerException(BlockingEventException):
 class EnemyCannotBeBlockerException(BlockingEventException):
   """"""
   ERR_CODE = "BLOCKER_IS_ENEMY_EXCEPTION"
-  MSG = ("Blocker cannot be an enemy. An enemy at the destination is attacked or checked."
+  MSG = ("Blocker cannot be an enemy. An enemy at the destination is attacked or check."
      " Only friends can block the owner."
   )
 

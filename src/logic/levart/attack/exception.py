@@ -63,7 +63,7 @@ class AttackingFriendException(AttackEventException):
 class AttackingEnemyKingException(AttackEventException):
   """"""
   ERR_CODE = "ATTACKING_ENEMY_KING_EXCEPTION"
-  MSG = "An enemy cannot be attacked. They can only be checked or checkmated."
+  MSG = "An enemy cannot be attacked. They can only be check or checkmated."
 
 class DoublyAttackingPrisonerException(AttackEventException):
   """"""

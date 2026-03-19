@@ -13,7 +13,7 @@ version: 1.0.0
 from .database import *
 from .context import *
 from .exception import *
-from logic.token.database.operation.build import *
+from logic.token.service.operation.build import *
 from .model import *
 from .service import *
 from logic.token.service.operation.analyzer import *
