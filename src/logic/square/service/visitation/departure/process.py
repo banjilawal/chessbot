@@ -15,7 +15,7 @@ from logic.square import (
     DepartingEmptySquareException, Square, SquareDepartureException, SquareValidator, SquareState
 )
 
-class SquareDepartureProcessor:
+class SquareDepartureProcess:
     """
     Role:
         - Transaction Worker

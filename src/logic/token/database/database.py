@@ -24,29 +24,42 @@ from logic.system import (
 class TokenDatabase(Database[Token]):
     """
     Role:
-        - Repo
-        - Interface
-        - API
+        -   Repo interface.
+        -   Data Protection layer.
 
     Responsibilities:
-        1.  Interface for TokenStackService
-        
+        1.  Protects TokenStackService data from direct access.
+        2.  Middle layer between clients and TokenStackService.
+        3.  Platform for extending TokenStackService features.
+
     Attributes:
-        SERVICE_NAME = TokenDatabase
+        SERVICE_NAME = "TokenDatabase"
         
         id: int
         name: str
         kernel: TokenStackService
-        
+
     Provides:
-        -   number_of_openings_for_rank(rank: Rank) -> ComputationResult[int]
-        -   current_rank_size(rank: Rank) -> ComputationResult[int]
-        -   does_rank_opening_exist(rank: Rank) -> ComputationResult[bool]
-        -   does_rank_opening_exist(self, rank: Rank) -> ComputationResult[bool]
-        -   def delete_by_id(id: int) -> DeletionResult[Token]
-        -   def insert(self, token: Token) -> InsertionResult[bool]
-        -   def search(self, context: TokenContext) -> SearchResult[List[Token]]
+        -   size() -> int
+        -   is_empty() -> bool
+        -   integrity_service() -> IntegrityService[T]
+        -   iterator(self) -> iter
+        -   is_ready_for_deployment() -> bool
+        -   is_deployed_on_board(self) -> bool
         
+        -   rank_quota_report(
+                    rank: Rank,
+                    rank_service: RankService = RankService(),
+            ) -> ComputationResult[RankQuotaReport]
+            
+        -   delete_by_id(
+                    id: int,
+                    identity_service: IdentityService,
+            ) -> DeletionResult
+            
+        -   insert(token: Token) -> InsertionResult[bool]
+        -   search(context: TokenContext) -> SearchResult[List[Token]]
+
     Super:
         Database
     """
@@ -71,10 +84,6 @@ class TokenDatabase(Database[Token]):
     @property
     def integrity_service(self) -> TokenService:
         return self._kernel.integrity_service
-    
-    @property
-    def context_service(self) -> TokenContextService:
-        return self._kernel.context_service
     
     @property
     def iterator(self) -> iter:

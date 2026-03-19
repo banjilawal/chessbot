@@ -23,7 +23,7 @@ class TokenService(IntegrityService[Token]):
     """
     Role:
         -   Microservice API
-        -   Integrity Lifecycle Manager
+        -   Stateless Integrity Lifecycle Manager
 
     Responsibilities:
         1.  Mutates Token instances

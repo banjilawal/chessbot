@@ -19,33 +19,25 @@ from logic.token import TokenDebugException
 # ======================# PAWN_PROMOTION_ROW_EXCEPTION #======================#
 class PawnPromotionRowException(TokenDebugException):
     """
-    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+        -   Error Variable Identifier
+        -   Exception Chain Layer 2
+        -   Exception Messaging
 
     Responsibilities:
-    1.  Indicate that a pawn_token could not be promoted because, it was not on its enemy's
-        rank row.
-
-    Super Class:
-        *   TokenDebugException
-
-    Provides:
-
-
-    # INHERITED ATTRIBUTES:
-        *   TokenDebugException class for inherited attributes.
-
+        1.  Indicate that a pawn_token could not be promoted because, it was not on its enemy's
+            rank row.
+        
     Attributes:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]
         ex: Optional[Exception]
         err_code: Optional[str]
+        
+    Provides:
 
-    # LOCAL METHODS:
-    None
-
-    # INHERITED METHODS:
-        *   See TokenDebugException class for inherited methods.
+    Super Class:
+        TokenDebugException
     """
     ERR_CODE = "PAWN_PROMOTION_ROW_EXCEPTION"
     MSG = "The pawn_token is not on its enemy's rank row."

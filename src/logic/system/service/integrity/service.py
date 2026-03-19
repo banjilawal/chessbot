@@ -18,7 +18,7 @@ class IntegrityService(ABC, Service[Generic[T]]):
     """
     Role:
         -   Microservice API
-        -   Integrity Lifecycle Manager
+        -   Stateless Integrity Lifecycle Manager
 
     Responsibilities:
         1.  Mutates Model instances

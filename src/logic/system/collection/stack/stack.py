@@ -22,7 +22,6 @@ C = TypeVar("C", bound=Context)
 class StackService(ABC, Generic[T]):
     """
     Role:
-     Search Service, CRUD Operations, Encapsulation, API layer.
         -   Data layer
         -   CRUD operations.
         -   ACID compliance.
@@ -31,8 +30,8 @@ class StackService(ABC, Generic[T]):
 
     Responsibilities:
         1.  Preserve consistency during updates and deletes.
-        2.  Efficient, scalable IntegrityService provision for objects it manages.
-        3.  Read access to the data-modeling objects.
+        2.  Stateful, scalable integrity management of objects.
+        3.  Grant read access to the data-modeling objects.
 
     Attributes:
         id: int
@@ -129,8 +128,7 @@ class StackService(ABC, Generic[T]):
     def delete_by_id(
             self,
             id: int,
-            identity_service: IdentityService = IdentityService()
-    ) -> DeletionResult[T]:
+            identity_service: IdentityService = IdentityService()) -> DeletionResult[T]:
         """Implement to delete an item from the stack."""
         pass
     

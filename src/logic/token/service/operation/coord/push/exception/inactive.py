@@ -11,14 +11,14 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# INACTIVE_TOKEN_UNDO_COORD_PUSH_EXCEPTION  #======================#
+    # ======================# INACTIVE_TOKEN_PUSHING_COORD_EXCEPTION  #======================#
     "InactiveTokenPushingCoordException",
 ]
 
 from logic.token import TokenDebugException
 
 
-# ======================# INACTIVE_TOKEN_UNDO_COORD_PUSH_EXCEPTION  #======================#
+# ======================# INACTIVE_TOKEN_PUSHING_COORD_EXCEPTION  #======================#
 class InactiveTokenPushingCoordException(TokenDebugException):
     """
     Role:
@@ -27,7 +27,7 @@ class InactiveTokenPushingCoordException(TokenDebugException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that an inactive Token add a  new position.
+        1.  Indicate that an inactive Token tried to add a new position.
 
     Attributes:
         var: Optional[str]
@@ -41,7 +41,7 @@ class InactiveTokenPushingCoordException(TokenDebugException):
     Super Class:
         TokenDebugException
     """
-    ERR_CODE = "INACTIVE_TOKEN_UNDO_COORD_PUSH_EXCEPTION"
+    ERR_CODE = "INACTIVE_TOKEN_PUSHING_COORD_EXCEPTION"
     MSG = "An inactive token cannot pop its CoordStack."
     
     def __init__(

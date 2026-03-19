@@ -22,29 +22,21 @@ class PromotionToKingException(TokenDebugException):
     Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
-    1.  Indicate that a pawn_token could not be promoted because, it had already been promoted.
-
-    Super Class:
-        *   TokenDebugException
-
-    Provides:
-
-
-    # INHERITED ATTRIBUTES:
-        *   TokenDebugException class for inherited attributes.
-
+        -   Error Variable Identifier
+        -   Exception Chain Layer 2
+        -   Exception Messaging
+    
     Attributes:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]
         ex: Optional[Exception]
         err_code: Optional[str]
+        
+    Provides:
 
-    # LOCAL METHODS:
-    None
-
-    # INHERITED METHODS:
-        *   See TokenDebugException class for inherited methods.
+    Super Class:
+        TokenDebugException
     """
     ERR_CODE = "PROMOTING_TO_KING_NOT_ALLOWED_EXCEPTION"
     MSG = "Cannot promote a pawn_token to a king."

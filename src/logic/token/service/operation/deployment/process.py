@@ -13,7 +13,7 @@ from _ast import List
 from copy import deepcopy
 from typing import cast
 
-from logic.square import Square, SquareContext, SquareNotFoundException, VisitingOccupiedSquareException
+from logic.square import Square, SquareContext, SquareNotFoundException, SquareOccupiedException
 from logic.system import LoggingLevelRouter, SearchResult, UpdateResult
 from logic.token import (
     InconsistentTokenCoordException, InconsistentTokenSquareException, Token, TokenAlreadyDeployedException,
@@ -21,7 +21,7 @@ from logic.token import (
 )
 
 
-class TokenDeployment:
+class TokenDeploymentProcess:
     """
     Role:
         - Transaction Worker
@@ -213,6 +213,7 @@ class TokenDeployment:
             )
         # Handle the case that the token's opening square is occupied
         if opening_square_search_result.payload[0].is_occupied:
+            square = opening_square_search_result.payload[0]
             # Return the exception chain on failure.
             return SearchResult.failure(
                 exception=TokenDeploymentException(
@@ -221,10 +222,10 @@ class TokenDeployment:
                     msg=TokenDeploymentException.MSG,
                     err_code=TokenDeploymentException.ERR_CODE,
                     rslt_type=TokenDeploymentException.RSLT_TYPE,
-                    ex=VisitingOccupiedSquareException(
+                    ex=SquareOccupiedException(
                         var="square_occupant",
-                        msg=TokenDeploymentException.MSG,
-                        err_code=TokenDeploymentException.ERR_CODE,
+                        msg=f"square:{square.name} already occupied by {square.occupant.designation}",
+                        err_code=SquareOccupiedException.ERR_CODE,
                         val=opening_square_search_result.payload[0].occupant.designation,
                     )
                 )
@@ -300,7 +301,7 @@ class TokenDeployment:
                     )
                 )
             )
-        # Handle the case that the, token's current position is not the square's
+        # Handle the case that, the token's current position is not the square's
         if opening_square.coord != token.current_position:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(

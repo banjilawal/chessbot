@@ -33,7 +33,7 @@ class ResolvingIDConflictFailedException(ResolutionException):
         *   CheckmateException
         *   HostageException
         *   NullException
-        *   PromotionException
+        *   PromotionProcessException
         *   RosterException
         *   TravelException
     """

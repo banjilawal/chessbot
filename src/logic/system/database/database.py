@@ -10,7 +10,7 @@ Version: 1.0.0
 from __future__ import annotations
 
 from abc import abstractmethod
-from typing import Generic, List, TypeVar
+from typing import Generic, List, Optional, TypeVar
 
 from logic.system import (
     Context, DeletionResult, InsertionResult, IntegrityService, LoggingLevelRouter, SearchResult, Service
@@ -25,8 +25,9 @@ class Database(Service, Generic[T]):
         -   Data Protection layer.
 
     Responsibilities:
-        1.  Prevents direct access to data managed by StackService.
+        1.  Protects StackService data from direct access.
         2.  Middle layer between clients and StackService.
+        3.  Platform for extending StackService features.
 
     Attributes:
         id: int
@@ -68,6 +69,12 @@ class Database(Service, Generic[T]):
     @property
     @abstractmethod
     def integrity_service(self) -> IntegrityService[T]:
+        """"Implement to access the model's integrity service."""
+        pass
+    
+    @property
+    @abstractmethod
+    def current_item(self) -> Optional[T]:
         """"Implement to access the model's integrity service."""
         pass
 

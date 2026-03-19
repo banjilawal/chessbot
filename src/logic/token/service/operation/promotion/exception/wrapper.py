@@ -12,29 +12,23 @@ from typing import Optional
 
 __all__ = [
     # ======================# PAWN_PROMOTION_FAILURE #======================#
-    "PromotionException",
+    "PromotionProcessException",
 ]
 
 from logic.system import UpdateException
 
 # ======================# PAWN_PROMOTION_FAILURE #======================#
-class PromotionException(UpdateException):
+class PromotionProcessException(UpdateException):
     """
-    Role:Worker Method Identification, Exception Chain Layer 1, Exception Messaging
+    Role:
+        -   Worker Method Identification
+        -   Exception Chain Layer 1
+        -   Exception Messaging
 
     Responsibilities:
-    1.  Indicate that promoting a pawn_token failed.
-    2.  Identify the PawnPromotion method where the failure occurred.
-
-    Super Class:
-        UpdateException
-
-    Provides:
-
-
-    # INHERITED ATTRIBUTES:
-        *   See UpdateException class for inherited attributes.
-
+        1.  Indicate that promoting a pawn_token failed.
+        2.  Identify the PawnPromotionProcess method where the failure occurred.
+    
     Attributes:
         op: Optional[str]
         ex: Optional[str]
@@ -42,17 +36,16 @@ class PromotionException(UpdateException):
         mthd: Optional[str]
         err_code: Optional[str]
         rslt_type: Optional[str]
+        
+    Provides:
 
-    # LOCAL METHODS:
-   None
-
-    # INHERITED METHODS:
-        *   See UpdateException class for inherited methods.
+    Super Class:
+        TokenDebugException
     """
-    OP = "PawnPromotion"
+    OP = "PawnPromotionProcess"
     RSLT_TYPE = "UpdateResult"
     ERR_CODE = "PAWN_PROMOTION_FAILURE"
-    MSG = "PawnPromotion method failed."
+    MSG = "PawnPromotionProcess method failed."
     
     def __init__(
             self,
@@ -74,7 +67,6 @@ class PromotionException(UpdateException):
         """
         op = op or self.OP
         msg = msg or self.MSG
-        mthd = mthd or self.MTHD
         err_code = err_code or self.ERR_CODE
         rslt_type = rslt_type or self.RSLT_TYPE
         

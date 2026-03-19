@@ -15,32 +15,46 @@ from logic.rank import King, Pawn, Rank, RankService
 from logic.system import LoggingLevelRouter, UpdateResult, ValidationResult
 from logic.token import (
     PawnAlreadyPromotedException, PawnPromotionRowException, PawnToken, PromoteInactivePawnException,
-    PromoteToPawnException, PromotionException, PromotionState, PromotionToKingException, TokenValidator
+    PromoteToPawnException, PromotionProcessException, PromotionState, PromotionToKingException, TokenValidator
 )
 
 
-class PawnPromotion:
+class PawnPromotionProcess:
     """
     Role:
-        Transaction Worker, Consistency, Integrity Maintenance, Process Runner
+        -   Transaction Worker
+        -   Consistency
+        -   Integrity Maintenance
+        -   Process Runner
+        
     Responsibilities:
         1.  Pawn promotion process owner.
         2.  Preserve original and updated data for rollbacks.
         3.  Ensure the pawn's integrity and consistency are maintained during the transaction.
+        
     Attributes:
+    
     Provides:
-            - execute(
-                        rank: Rank,
-                        pawn_token: PawnToken,
-                        rank_service: RankService,
-                        schema_service: SchemaService,
-                        token_validator: TokenValidator
-                ) -> UpdateResult[PawnToken]
+        -   execute(
+                    rank: Rank,
+                    pawn_token: PawnToken,
+                    rank_service: RankService,
+                    schema_service: SchemaService,
+                    token_validator: TokenValidator
+            ) -> UpdateResult[PawnToken]
         
-            - _run_promotable_rank_tests(rank: Rank, rank_service: RankService) -> ValidationResult[int]
+        -   _run_promotable_rank_tests(
+                    rank: Rank,
+                    rank_service: RankService
+            ) -> ValidationResult[int]
         
-            - _run_enemy_rank_row_tests(pawn_token: PawnToken, schema_service: SchemaService) -> ValidationResult[int]:
-    Parent:
+        -    _run_enemy_rank_row_tests(
+                    pawn_token: PawnToken,
+                    schema_service: SchemaService
+            ) -> ValidationResult[int]:
+            
+            
+    Super Class:
     """
     
     @classmethod
@@ -76,7 +90,7 @@ class PawnPromotion:
         Returns:
             UpdateResult[PawnToken]
         Raises:
-            PromotionException
+            PromotionProcessException
             PromoteInactivePawnException
             PawnAlreadyPromotedException
         """
@@ -88,12 +102,12 @@ class PawnPromotion:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pawn_token,
-                exception=PromotionException(
+                exception=PromotionProcessException(
                         mthd=method,
-                        op=PromotionException.OP,
-                        msg=PromotionException.MSG,
-                        err_code=PromotionException.ERR_CODE,
-                        rslt_type=PromotionException.RSLT_TYPE,
+                        op=PromotionProcessException.OP,
+                        msg=PromotionProcessException.MSG,
+                        err_code=PromotionProcessException.ERR_CODE,
+                        rslt_type=PromotionProcessException.RSLT_TYPE,
                         ex=token_validation_result.exception
                     )
             )
@@ -102,14 +116,15 @@ class PawnPromotion:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pawn_token,
-                exception=PromotionException(
+                exception=PromotionProcessException(
                         mthd=method,
-                        op=PromotionException.OP,
-                        msg=PromotionException.MSG,
-                        err_code=PromotionException.ERR_CODE,
-                        rslt_type=PromotionException.RSLT_TYPE,
+                        op=PromotionProcessException.OP,
+                        msg=PromotionProcessException.MSG,
+                        err_code=PromotionProcessException.ERR_CODE,
+                        rslt_type=PromotionProcessException.RSLT_TYPE,
                         ex=TypeError(
-                            f"Expected type PawnToken for promotion. Got {type(pawn_token).__name__} instead."
+                            f"Expected type PawnToken for promotion. "
+                            f"Got {type(pawn_token).__name__} instead."
                         )
                 )
             )
@@ -118,12 +133,12 @@ class PawnPromotion:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pawn_token,
-                exception=PromotionException(
+                exception=PromotionProcessException(
                         mthd=method,
-                        op=PromotionException.OP,
-                        msg=PromotionException.MSG,
-                        err_code=PromotionException.ERR_CODE,
-                        rslt_type=PromotionException.RSLT_TYPE,
+                        op=PromotionProcessException.OP,
+                        msg=PromotionProcessException.MSG,
+                        err_code=PromotionProcessException.ERR_CODE,
+                        rslt_type=PromotionProcessException.RSLT_TYPE,
                         ex=PromoteInactivePawnException(
                             var=pawn_token.designation,
                             msg=PromoteInactivePawnException.MSG,
@@ -136,12 +151,12 @@ class PawnPromotion:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pawn_token,
-                exception=PromotionException(
+                exception=PromotionProcessException(
                         mthd=method,
-                        op=PromotionException.OP,
-                        msg=PromotionException.MSG,
-                        err_code=PromotionException.ERR_CODE,
-                        rslt_type=PromotionException.RSLT_TYPE,
+                        op=PromotionProcessException.OP,
+                        msg=PromotionProcessException.MSG,
+                        err_code=PromotionProcessException.ERR_CODE,
+                        rslt_type=PromotionProcessException.RSLT_TYPE,
                         ex=PawnAlreadyPromotedException(
                             var=pawn_token.designation,
                             msg=PawnAlreadyPromotedException.MSG,
@@ -158,12 +173,12 @@ class PawnPromotion:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pawn_token,
-                exception=PromotionException(
+                exception=PromotionProcessException(
                         mthd=method,
-                        op=PromotionException.OP,
-                        msg=PromotionException.MSG,
-                        err_code=PromotionException.ERR_CODE,
-                        rslt_type=PromotionException.RSLT_TYPE,
+                        op=PromotionProcessException.OP,
+                        msg=PromotionProcessException.MSG,
+                        err_code=PromotionProcessException.ERR_CODE,
+                        rslt_type=PromotionProcessException.RSLT_TYPE,
                         ex=enemy_rank_row_test_results.exception
                 )
             )
@@ -177,12 +192,12 @@ class PawnPromotion:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pawn_token,
-                exception=PromotionException(
+                exception=PromotionProcessException(
                     mthd=method,
-                    op=PromotionException.OP,
-                    msg=PromotionException.MSG,
-                    err_code=PromotionException.ERR_CODE,
-                    rslt_type=PromotionException.RSLT_TYPE,
+                    op=PromotionProcessException.OP,
+                    msg=PromotionProcessException.MSG,
+                    err_code=PromotionProcessException.ERR_CODE,
+                    rslt_type=PromotionProcessException.RSLT_TYPE,
                     ex=promotable_rank_verification_result.exception,
                 )
             )
@@ -195,7 +210,7 @@ class PawnPromotion:
         pawn_token.promotion_state = PromotionState.PROMOTED
         
         # --- Send the work product. ---#
-        UpdateResult.update_success( original=pre_update_pawn_token, updated=pawn_token)
+        UpdateResult.update_success(original=pre_update_pawn_token, updated=pawn_token)
 
     @classmethod
     @LoggingLevelRouter.monitor
@@ -218,22 +233,23 @@ class PawnPromotion:
         Returns:
             ValidationResult[int]
         Raises:
-            PromotionException
+            PromotionProcessException
             PromoteToPawnException
             PromoteToKingException
         """
         method = f"{cls.__class__.__name__}. _run_promotable_rank_tests"
+        
         # Handle the case that, the rank is not certified as safe.
         validation_result = rank_service.validator.validate(rank)
         if validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                exception=PromotionException(
+                exception=PromotionProcessException(
                         mthd=method,
-                        op=PromotionException.OP,
-                        msg=PromotionException.MSG,
-                        err_code=PromotionException.ERR_CODE,
-                        rslt_type=PromotionException.RSLT_TYPE,
+                        op=PromotionProcessException.OP,
+                        msg=PromotionProcessException.MSG,
+                        err_code=PromotionProcessException.ERR_CODE,
+                        rslt_type=PromotionProcessException.RSLT_TYPE,
                         ex=validation_result.exception
                 )
             )
@@ -242,12 +258,12 @@ class PawnPromotion:
         if isinstance(rank, King):
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                exception=PromotionException(
+                exception=PromotionProcessException(
                         mthd=method,
-                        op=PromotionException.OP,
-                        msg=PromotionException.MSG,
-                        err_code=PromotionException.ERR_CODE,
-                        rslt_type=PromotionException.RSLT_TYPE,
+                        op=PromotionProcessException.OP,
+                        msg=PromotionProcessException.MSG,
+                        err_code=PromotionProcessException.ERR_CODE,
+                        rslt_type=PromotionProcessException.RSLT_TYPE,
                         ex=PromotionToKingException(
                             msg=PromotionToKingException.MSG,
                             err_code=PromotionToKingException.ERR_CODE,
@@ -258,12 +274,12 @@ class PawnPromotion:
         if isinstance(rank, Pawn):
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                exception=PromotionException(
+                exception=PromotionProcessException(
                         mthd=method,
-                        op=PromotionException.OP,
-                        msg=PromotionException.MSG,
-                        err_code=PromotionException.ERR_CODE,
-                        rslt_type=PromotionException.RSLT_TYPE,
+                        op=PromotionProcessException.OP,
+                        msg=PromotionProcessException.MSG,
+                        err_code=PromotionProcessException.ERR_CODE,
+                        rslt_type=PromotionProcessException.RSLT_TYPE,
                         ex=PromoteToPawnException(
                             msg=PromoteToPawnException.MSG,
                             err_code=PromoteToPawnException.ERR_CODE,
@@ -294,7 +310,7 @@ class PawnPromotion:
         Returns:
             ValidationResult[int]
         Raises:
-            PromotionException
+            PromotionProcessException
             PawnPromotionRowException
         """
         method = f"{cls.__class__.__name__}._run_enemy_rank_row_tests"
@@ -306,12 +322,12 @@ class PawnPromotion:
         if enemy_schema_search_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                exception=PromotionException(
+                exception=PromotionProcessException(
                         mthd=method,
-                        op=PromotionException.OP,
-                        msg=PromotionException.MSG,
-                        err_code=PromotionException.ERR_CODE,
-                        rslt_type=PromotionException.RSLT_TYPE,
+                        op=PromotionProcessException.OP,
+                        msg=PromotionProcessException.MSG,
+                        err_code=PromotionProcessException.ERR_CODE,
+                        rslt_type=PromotionProcessException.RSLT_TYPE,
                         ex=enemy_schema_search_result.exception
                 )
             )
@@ -319,16 +335,16 @@ class PawnPromotion:
         if pawn_token.current_position.row != enemy_schema_search_result.payload[0].rank_row:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                exception=PromotionException(
+                exception=PromotionProcessException(
                     mthd=method,
-                    op=PromotionException.OP,
-                    msg=PromotionException.MSG,
-                    err_code=PromotionException.ERR_CODE,
-                    rslt_type=PromotionException.RSLT_TYPE,
+                    op=PromotionProcessException.OP,
+                    msg=PromotionProcessException.MSG,
+                    err_code=PromotionProcessException.ERR_CODE,
+                    rslt_type=PromotionProcessException.RSLT_TYPE,
                     ex=PawnPromotionRowException(
                         var=pawn_token.designation,
-                        msg=PromotionException.MSG,
-                        err_code=PromotionException.ERR_CODE,
+                        msg=PromotionProcessException.MSG,
+                        err_code=PromotionProcessException.ERR_CODE,
                     )
                 )
             )

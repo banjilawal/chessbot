@@ -24,7 +24,7 @@ class TokenDeploymentException(UpdateException):
 
     Responsibilities:
     1.  Indicate that deploying a token failed.
-    2.  Identify the TokenDeployment method where the failure occurred.
+    2.  Identify the TokenDeploymentProcess method where the failure occurred.
 
     Super Class:
         *   UpdateException
@@ -49,10 +49,10 @@ class TokenDeploymentException(UpdateException):
     # INHERITED METHODS:
         *   See UpdateException class for inherited methods.
     """
-    OP = "TokenDeployment"
+    OP = "TokenDeploymentProcess"
     RSLT_TYPE = "UpdateResult"
     ERR_CODE = "TOKEN_DEPLOYMENT_FAILURE"
-    MSG = "TokenDeployment method failed."
+    MSG = "TokenDeploymentProcess method failed."
     
     def __init__(
             self,
@@ -74,7 +74,6 @@ class TokenDeploymentException(UpdateException):
         """
         op = op or self.OP
         msg = msg or self.MSG
-        mthd = mthd or self.MTHD
         err_code = err_code or self.ERR_CODE
         rslt_type = rslt_type or self.RSLT_TYPE
         

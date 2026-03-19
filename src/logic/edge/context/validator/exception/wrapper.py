@@ -74,7 +74,6 @@ class EdgeContextValidationException(ValidationException):
         """
         op = op or self.OP
         msg = msg or self.MSG
-        mthd = mthd or self.MTHD
         err_code = err_code or self.ERR_CODE
         rslt_type = rslt_type or self.RSLT_TYPE
         

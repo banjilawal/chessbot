@@ -20,32 +20,25 @@ from logic.token import TokenDebugException
 # ======================# PAWN_ALREADY_PROMOTED_EXCEPTION #======================#
 class PawnAlreadyPromotedException(TokenDebugException):
     """
-    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:
+        -   Error Variable Identifier
+        -   Exception Chain Layer 2
+        -   Exception Messaging
 
     Responsibilities:
-    1.  Indicate that a pawn_token could not be promoted because, it had already been promoted.
-
-    Super Class:
-        *   TokenDebugException
-
-    Provides:
-
-
-    # INHERITED ATTRIBUTES:
-        *   TokenDebugException class for inherited attributes.
-
+        1.  Indicate that a pawn_token could not be promoted because, it had already been promoted.
+        
     Attributes:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]
         ex: Optional[Exception]
         err_code: Optional[str]
+        
+    Provides:
 
-    # LOCAL METHODS:
-    None
-
-    # INHERITED METHODS:
-        *   See TokenDebugException class for inherited methods.
+    Super Class:
+        TokenDebugException
     """
     ERR_CODE = "PAWN_ALREADY_PROMOTED_EXCEPTION"
     MSG = "The pawn_token has already been promoted."

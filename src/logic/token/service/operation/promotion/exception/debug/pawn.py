@@ -24,29 +24,21 @@ class PromoteToPawnException(TokenDebugException):
     Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
-    1.  Indicate that promoting a PawnToken failed because the new rank was still a Pawn's rank.
-
-    Super Class:
-        *   TokenDebugException
-
-    Provides:
-
-
-    # INHERITED ATTRIBUTES:
-        *   TokenDebugException class for inherited attributes.
-
+        -   Error Variable Identifier
+        -   Exception Chain Layer 2
+        -   Exception Messaging
+    
     Attributes:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]
         ex: Optional[Exception]
         err_code: Optional[str]
+        
+    Provides:
 
-    # LOCAL METHODS:
-    None
-
-    # INHERITED METHODS:
-        *   See TokenDebugException class for inherited methods.
+    Super Class:
+        TokenDebugException
     """
     ERR_CODE = "CIRCULAR_PAWN_RANK_PROMOTION_EXCEPTION"
     MSG = "Cannot promote a pawn_token to be a pawn_token again."

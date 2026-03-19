@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.token import PawnPromotion, TokenCoordHandler, TokenDeployment, TokenReadinessAnalyzer
+from logic.token import PawnPromotionProcess, TokenCoordHandler, TokenDeploymentProcess, TokenReadinessAnalyzer
 
 
 class TokenOpsDispatcher:
@@ -21,8 +21,8 @@ class TokenOpsDispatcher:
         1.  Provide a single entry point for transactions TokenService runs.
         
     Attributes:
-        promotion: PawnPromotion
-        deployment: TokenDeployment
+        promotion: PawnPromotionProcess
+        deployment: TokenDeploymentProcess
         coord_handler: TokenCoordHandler
         readiness_analyzer: TokenReadinessAnalyzer
 
@@ -31,23 +31,23 @@ class TokenOpsDispatcher:
     Parent:
     """
 
-    _promotion: PawnPromotion
-    _deployment: TokenDeployment
+    _promotion: PawnPromotionProcess
+    _deployment: TokenDeploymentProcess
     _coord_handler: TokenCoordHandler
     _readiness_analyzer: TokenReadinessAnalyzer
     
     
     def __init__(
             self,
-            promotion: PawnPromotion = PawnPromotion(),
-            deployment: TokenDeployment = TokenDeployment(),
+            promotion: PawnPromotionProcess = PawnPromotionProcess(),
+            deployment: TokenDeploymentProcess = TokenDeploymentProcess(),
             coord_handler: TokenCoordHandler = TokenCoordHandler(),
             readiness_analyzer: TokenReadinessAnalyzer = TokenReadinessAnalyzer(),
     ):
         """
         Args:
-            promotion: PawnPromotion
-            deployment: TokenDeployment
+            promotion: PawnPromotionProcess
+            deployment: TokenDeploymentProcess
             coord_handler: TokenCoordHandler
             readiness_analyzer: TokenReadinessAnalyzer
         """
@@ -57,11 +57,11 @@ class TokenOpsDispatcher:
         self._readiness_analyzer = readiness_analyzer
         
     @property
-    def pawn_promotion(self) -> PawnPromotion:
+    def pawn_promotion(self) -> PawnPromotionProcess:
         return self._promotion
     
     @property
-    def deployment(self) -> TokenDeployment:
+    def deployment(self) -> TokenDeploymentProcess:
         return self._deployment
     
     @property

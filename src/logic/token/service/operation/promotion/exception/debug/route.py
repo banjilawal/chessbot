@@ -21,33 +21,25 @@ from logic.token import TokenDebugException
 # ======================# NO_PROMOTION_ROUTE_TO_NEW_RANK_EXCEPTION #======================#
 class PawnPromotionRouteException(TokenDebugException):
     """
-    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+        -   Error Variable Identifier
+        -   Exception Chain Layer 2
+        -   Exception Messaging
 
     Responsibilities:
-    1.  Indicate that a pawn_token could not be promoted because, there was no routing logic to
-        the new route.
-
-    Super Class:
-        *   TokenDebugException
-
-    Provides:
-
-
-    # INHERITED ATTRIBUTES:
-        *   TokenDebugException class for inherited attributes.
-
+        1.  Indicate that a pawn_token could not be promoted because, there was no routing logic to
+            the new route.
+        
     Attributes:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]
         ex: Optional[Exception]
         err_code: Optional[str]
+        
+    Provides:
 
-    # LOCAL METHODS:
-    None
-
-    # INHERITED METHODS:
-        *   See TokenDebugException class for inherited methods.
+    Super Class:
+        TokenDebugException
     """
     MSG = "No promotion route to the new rank."
     ERR_CODE = "NO_PROMOTION_ROUTE_TO_NEW_RANK_EXCEPTION"

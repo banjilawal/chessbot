@@ -47,7 +47,7 @@ class ResolutionFailedException(ResolutionException):
         *   CheckmateException
         *   HostageException
         *   NullException
-        *   PromotionException
+        *   PromotionProcessException
         *   RosterException
         *   TravelException
     """

@@ -22,14 +22,16 @@ from logic.token import (
 class TokenStackService(StackService[Token]):
     """
     Role:
-        - Microservice
-        - Baremetal CRUD Integrity and Consistency service
-        - API layer
+        -   Data layer
+        -   CRUD operations.
+        -   ACID compliance.
+        -   Microservice API
+        -   Interface
 
     Responsibilities:
-        1.  API for Token data structure.
-        2.  Guarantee records are uniqure.
-        2.  Provides single entry and exit points for the Token lifecycle.
+        1.  Preserve consistency during updates and deletes.
+        2.  Stateful, scalable integrity management of Tokens.
+        3.  Grant read access to tokens.
 
     Attributes:
         CAPACITY = 16
@@ -43,17 +45,27 @@ class TokenStackService(StackService[Token]):
         context_service: TokenContextService
 
     Provides:
-        -   pop() -> DeletionResult[Token]
-        -   push(item: Token) -> InsertionResult[bool]
-        -   query(context: TokenContext) -> SearchResult[List[Token]]
-        
-        -   delete_by_id(
-                    id: int,
-                    identity_service: IdentityService
-            ) -> DeletionResult[Token]
+        -   id: int
+        -   name: str
+        -   items() -> List[T]
+        -   size() -> int
+        -   iterator() -> Iterator[T]
+        -   is_empty() -> bool
+        -   current_item(self) -> T
+        -   integrity_service() -> IntegrityService[T]
+        -   context_service(self) -> ContextService[T]
+        -   push(item: T) -> InsertionResult
+        -   pop() -> DeletionResult[T]
+        -   delete_by_id(id: int) -> DeletionResult[T]
+        -   query(dataset: List[T], context: Context[T]) -> SearchResult[List[T]]
+        -   operation() -> TokenStackOpsDispatcher
+        -   is_getting_ready_for_deployment() -> bool
+        -   is_ready_for_deployment() -> bool
+        -   is_being_deployed() -> bool
+        -   is_deployed_on_board() -> bool
+        -   stack_state(self) -> TokenStackState
 
     Super:
-        StackService
     """
     DEFAULT_CAPACITY: int = 16
     SERVICE_NAME: str = "TokenStackService"
@@ -70,9 +82,9 @@ class TokenStackService(StackService[Token]):
             name: str = SERVICE_NAME,
             capacity: int = DEFAULT_CAPACITY,
             service: TokenService = TokenService(),
-            dispatcher: TokenStackOpsDispatcher = TokenStackOpsDispatcher(),
             id: int = IdFactory.next_id(class_name="TokenStackService"),
             context_service: TokenContextService = TokenContextService(),
+            dispatcher: TokenStackOpsDispatcher = TokenStackOpsDispatcher(),
     ):
         """
         Args:
