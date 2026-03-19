@@ -1,4 +1,4 @@
-# src/logic/system/collection/operation/deletion/wrapper.py
+# src/logic/system/collection/operation/deletion/worker.py
 
 """
 Module: logic.system.collection.operation.deletion.wrapper

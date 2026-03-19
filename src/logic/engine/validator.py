@@ -16,5 +16,5 @@ from logic.system import ValidationProcess, ValidationResult
 class EngineValidationProcess(ValidationProcess[Engine]):
     
     @classmethod
-    def validate(cls, candidate: Any, *args, **kwargs) -> ValidationResult[Engine]:
+    def execute(cls, candidate: Any, *args, **kwargs) -> ValidationResult[Engine]:
         pass

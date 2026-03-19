@@ -54,22 +54,22 @@ class ResidentFilterBuilder(Builder[ResidentFilter]):
                 )
             
             if id is not None:
-                id_validation = IdValidationProcess.validate(id)
+                id_validation = IdValidationProcess.execute(id)
                 if not id_validation.is_failure():
                     return BuildResult.result(id_validation.exception)
             
             if name is not None:
-                name_validation = NameValidationProcess.validate(name)
+                name_validation = NameValidationProcess.execute(name)
                 if name_validation.is_failure():
                     return BuildResult.failure(name_validation.exception)
             
             if team_id is not None:
-                team_id_validation = IdValidationProcess.validate(team_id)
+                team_id_validation = IdValidationProcess.execute(team_id)
                 if team_id_validation.is_failure():
                     return BuildResult.failure(team_id_validation.exception)
             
             if team_name is not None:
-                team_name_validation = NameValidationProcess.validate(team_name)
+                team_name_validation = NameValidationProcess.execute(team_name)
                 if team_name_validation.is_failure():
                     return BuildResult.failure(team_name_validation.exception)
             
@@ -84,7 +84,7 @@ class ResidentFilterBuilder(Builder[ResidentFilter]):
                     return BuildResult.failure(ransom_bounds_check.exception)
             
             if coord is not None:
-                coord_validation = CoordValidationProcess.validate(coord)
+                coord_validation = CoordValidationProcess.execute(coord)
                 if coord_validation.is_failure():
                     return BuildResult.failure(coord_validation.exception)
             

@@ -42,7 +42,7 @@ class SquareListValidationProcess(ValidationProcess[List[Square]]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate: Any) -> ValidationResult[List[Square]]:
+    def execute(cls, candidate: Any) -> ValidationResult[List[Square]]:
         """
         Tests if a squareFinder is getting a List[Square]
 

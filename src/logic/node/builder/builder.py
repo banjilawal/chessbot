@@ -54,7 +54,7 @@ class NodeBuilder(Builder[Node]):
         method = "NodeBuilder.build"
         
         # Handle the case that, the square is not certified as safe.
-        validation_result = square_validator.validate(square)
+        validation_result = square_validator.execute(square)
         if validation_result.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(

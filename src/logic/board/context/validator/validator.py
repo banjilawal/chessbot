@@ -37,7 +37,7 @@ class BoardContextValidationProcess(ValidationProcess[BoardContext]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(
+    def execute(
             cls,
             candidate: Any,
             arena_service: ArenaService = ArenaService(),
@@ -129,7 +129,7 @@ class BoardContextValidationProcess(ValidationProcess[BoardContext]):
         
         # Certification for the search-by-arena target.
         if context.arena is not None:
-            validation = arena_service.validator.validate(context.arena)
+            validation = arena_service.validator.execute(context.arena)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(

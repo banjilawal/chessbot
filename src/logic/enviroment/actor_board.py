@@ -14,7 +14,7 @@ from logic.board import Board, BoardPieceFinder, BoardContext, BoardValidationPr
 
 from logic.king import KingPiece
 from logic.piece import Piece, CombatantPiece
-from logic.token.validator import PieceValidator
+from logic.token.validation import PieceValidator
 from logic.system import LoggingLevelRouter, ValidationProcess, ValidationResult
 from logic.enviroment import (
   NoInitialPlacementException, NullTravelerEnvironmentTupleException, CheckMatedKingCannotMoveException,
@@ -54,7 +54,7 @@ class BoardActorValidationProcess(ValidationProcess[Tuple[Piece, Board]]):
 
   @classmethod
   @LoggingLevelRouter.monitor
-  def validate(cls, candidate: Tuple[Piece, Board])-> ValidationResult[Tuple[Piece, Board]]:
+  def execute(cls, candidate: Tuple[Piece, Board])-> ValidationResult[Tuple[Piece, Board]]:
     """"""
     method = "BoardActorValidationProcess.validate"
 
@@ -66,7 +66,7 @@ class BoardActorValidationProcess(ValidationProcess[Tuple[Piece, Board]]):
       
       actor_candidate, environment_candidate = candidate
       
-      actor_validation = PieceValidator.validate(actor_candidate)
+      actor_validation = PieceValidator.execute(actor_candidate)
       if actor_validation.is_failure():
         return ValidationResult.failure(actor_validation.exception)
 
@@ -98,7 +98,7 @@ class BoardActorValidationProcess(ValidationProcess[Tuple[Piece, Board]]):
             CheckMatedKingCannotMoveException(f"{method}: {CheckMatedKingCannotMoveException.MSG}")
           )
       
-      environment_validation = BoardValidationProcess.validate(environment_candidate)
+      environment_validation = BoardValidationProcess.execute(environment_candidate)
       if environment_validation.is_failure():
         return ValidationResult.failure(environment_validation.exception)
       

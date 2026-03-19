@@ -1,4 +1,4 @@
-# src/logic/snapshot/finder/exception/wrapper.py
+# src/logic/snapshot/finder/exception/worker.py
 
 """
 Module: logic.snapshot.finder.exception.wrapper

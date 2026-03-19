@@ -29,11 +29,11 @@ class DomainResidentFinder(Finder[Domain, Piece]):
         method = "DomainResidentFinder.searcher"
         
         try:
-            domain_validation = DomainValidationProcess.validate(data_owner)
+            domain_validation = DomainValidationProcess.execute(data_owner)
             if domain_validation.is_failure():
                 return SearchResult.failure(domain_validation.exception)
             
-            search_context_validation = ResidentFilterValidationProcess.validate(search_context)
+            search_context_validation = ResidentFilterValidationProcess.execute(search_context)
             if search_context_validation.is_failure():
                 return SearchResult.failure(search_context_validation.exception)
             

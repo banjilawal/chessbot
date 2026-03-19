@@ -1,4 +1,4 @@
-# src/logic/ray/square/ray/builder/wrapper.py
+# src/logic/ray/square/ray/builder/worker.py
 
 """
 Module: logic.ray.square.ray.builder.wrapper

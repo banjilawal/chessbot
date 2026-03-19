@@ -32,7 +32,7 @@ class CoordValidationProcess(ValidationProcess[Coord]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(
+    def execute(
             cls,
             candidate: Any,
             number_validator: NumberValidationProcess = NumberValidationProcess(),
@@ -80,7 +80,7 @@ class CoordValidationProcess(ValidationProcess[Coord]):
         coord = cast(Coord, candidate)
         
         # Handle the case that, coord.row is not an int between [0-7] inclusive.
-        row_validation = number_validator.validate(floor=0, ceiling=NUMBER_OF_ROWS, candidate=coord.row)
+        row_validation = number_validator.execute(floor=0, ceiling=NUMBER_OF_ROWS, candidate=coord.row)
         if row_validation.is_failure:
             # Return the exception on failure.
             return ValidationResult.failure(
@@ -90,7 +90,7 @@ class CoordValidationProcess(ValidationProcess[Coord]):
                 )
             )
         # Handle the case that, coord.column is not an int between [0-7] inclusive.
-        column_validation = number_validator.validate(floor=0, ceiling=NUMBER_OF_ROWS, candidate=coord.column)
+        column_validation = number_validator.execute(floor=0, ceiling=NUMBER_OF_ROWS, candidate=coord.column)
         if row_validation.is_failure:
             # Return the exception on failure.
             return ValidationResult.failure(

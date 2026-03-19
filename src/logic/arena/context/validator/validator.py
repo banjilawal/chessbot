@@ -17,5 +17,5 @@ from logic.system import ValidationResult, ValidationProcess
 class ArenaContextValidationProcess(ValidationProcess[ArenaContext]):
     
     @classmethod
-    def validate(cls, candidate: Any, *args, **kwargs) -> ValidationResult[ArenaContext]:
+    def execute(cls, candidate: Any, *args, **kwargs) -> ValidationResult[ArenaContext]:
         pass

@@ -18,7 +18,7 @@ class VisitationEventValidationProcess(ValidationProcess[VisitationEvent]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate: Any) -> ValidationResult[VisitationEvent]:
+    def execute(cls, candidate: Any) -> ValidationResult[VisitationEvent]:
         """"""
         method = "VisitationEventValidationProcess.validate"
         

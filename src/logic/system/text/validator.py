@@ -32,7 +32,7 @@ class StringValidationProcess(ValidationProcess[str]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate: str) -> ValidationResult[str]:
+    def execute(cls, candidate: str) -> ValidationResult[str]:
         """
         # ACTION:
              1. If the candidate passes existence and type checks cast into a str for

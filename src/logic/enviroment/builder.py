@@ -27,7 +27,7 @@ class TurnSceneBuilder(Builder[TurnScene]):
         method = "TurnSceneBuilder.builder"
         
         try:
-            id_validation = IdValidationProcess.validate(id)
+            id_validation = IdValidationProcess.execute(id)
             if id_validation.is_failure():
                 return BuildResult.failure(id_validation.exception)
             
@@ -35,7 +35,7 @@ class TurnSceneBuilder(Builder[TurnScene]):
             if piece_validation.is_failure():
                 return BuildResult.failure(piece_validation.exception)
             
-            board_validation = BoardValidationProcess.validate(board)
+            board_validation = BoardValidationProcess.execute(board)
             if board_validation.is_failure():
                 return BuildResult.failure(board_validation.exception)
             

@@ -17,5 +17,5 @@ class NumberValidationService(ValidationProcess[int]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate: Any, testing_level: TestingLevel) -> ValidationResult[int]:
+    def execute(cls, candidate: Any, testing_level: TestingLevel) -> ValidationResult[int]:
         pass

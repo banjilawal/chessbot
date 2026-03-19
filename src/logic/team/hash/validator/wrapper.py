@@ -1,4 +1,4 @@
-# src/logic/team/hash/validator/wrapper.py
+# src/logic/team/hash/validator/worker.py
 
 """
 Module: logic.team.hash.validator.wrapper

@@ -76,7 +76,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
     """
     method = "TravelEventFactory.execute"
 
-    event_validation = TravelEventValidator.validate(event)
+    event_validation = TravelEventValidator.execute(event)
     if not event_validation.is_success():
       return TransactionResult(
         checkpoint=event,
@@ -180,7 +180,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
       )
 
 
-    attack_validation = AttackValidator.validate(
+    attack_validation = AttackValidator.execute(
       CaptureContext(piece=event.actor, enemy=destination_occupant, board=context.board)
     )
     if not attack_validation.is_success():

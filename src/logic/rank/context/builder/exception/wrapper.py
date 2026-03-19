@@ -1,4 +1,4 @@
-# src/logic/rank/context/builder/exception/wrapper.py
+# src/logic/rank/context/builder/exception/worker.py
 
 """
 Module: logic.rank.context.builder.exception.wrapper

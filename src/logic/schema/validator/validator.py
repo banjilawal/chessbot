@@ -32,7 +32,7 @@ class SchemaValidationProcess(ValidationProcess[Schema]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate: Any) -> ValidationResult[Schema]:
+    def execute(cls, candidate: Any) -> ValidationResult[Schema]:
         """
         # ACTION:.
             1.  If the candidate passes existence and type checks cast into a Schema instance and return

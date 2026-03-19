@@ -17,5 +17,5 @@ from logic.battle_space.service import ProjectionService
 class ProjectionServiceValidationProcess(ValidationProcess[ProjectionService]):
     
     @classmethod
-    def validate(cls, candidate: Any) -> ValidationResult[ProjectionService]:
+    def execute(cls, candidate: Any) -> ValidationResult[ProjectionService]:
         pass

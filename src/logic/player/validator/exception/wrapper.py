@@ -1,4 +1,4 @@
-# src/logic/player/validator/exception/wrapper.py
+# src/logic/player/validator/exception/worker.py
 
 """
 Module: logic.player.validator.exception.wrapper

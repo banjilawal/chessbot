@@ -1,4 +1,4 @@
-# src/logic/formation/validator/exception/wrapper.py
+# src/logic/formation/validator/exception/worker.py
 
 """
 Module: logic.formation.validator.exception.wrapper

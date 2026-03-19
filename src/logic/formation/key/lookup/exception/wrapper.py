@@ -1,4 +1,4 @@
-# src/logic/formation/lookup/exception/wrapper.py
+# src/logic/formation/lookup/exception/worker.py
 
 """
 Module: logic.formation.lookup.exception.wrapper
@@ -19,7 +19,7 @@ __all__ = [
 # ======================# FORMATION_LOOKUP_WRAPPER EXCEPTION #======================#
 class FormationLookupFailedException(FormationException, LookupException):
     """
-    Role:WrapperException, Encapsulation
+    Role:WorkerException, Encapsulation
 
     Responsibilities:
     1.  If a Formation lookup runs into an error a debug exception is created and encapsulated in a

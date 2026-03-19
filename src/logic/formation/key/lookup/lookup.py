@@ -65,7 +65,7 @@ class FormationLookup(HashLookup[Formation]):
         method = "FormationLookup.find"
 
         # Handle the case that, the Key fails validation.
-        validation = super_key_validator.validate(candidate=super_key)
+        validation = super_key_validator.execute(candidate=super_key)
         if validation.is_failure:
             # Return the exception chain on failure.
             return SearchResult.failure(

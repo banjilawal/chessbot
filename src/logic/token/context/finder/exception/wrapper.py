@@ -1,4 +1,4 @@
-# src/logic/token/finder/exception/wrapper.py
+# src/logic/token/finder/exception/worker.py
 
 """
 Module: logic.token.finder.exception.wrapper

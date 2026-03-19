@@ -37,7 +37,7 @@ class SchemaKeyValidationProcess(ValidationProcess[SchemaKey]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(
+    def execute(
             cls,
             candidate: Any,
             identity_service: IdentityService = IdentityService(),
@@ -130,7 +130,7 @@ class SchemaKeyValidationProcess(ValidationProcess[SchemaKey]):
         
         # Certification for lookup-by-color value.
         if super_key.color is not None:
-            validation = color_validator.validate(candidate=super_key.color)
+            validation = color_validator.execute(candidate=super_key.color)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(

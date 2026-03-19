@@ -80,7 +80,7 @@ class TokenFactory(Builder[Token]):
                 )
             )
         # Handle the case that, the team is not certified as safe.
-        owner_validation = team_validator.validate(candidate=owner)
+        owner_validation = team_validator.execute(candidate=owner)
         if owner_validation.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
@@ -90,7 +90,7 @@ class TokenFactory(Builder[Token]):
                 )
             )
         # Handle the case that, the formation is not certified as safe.
-        formation_validation = formation_service.validator.validate(candidate=formation)
+        formation_validation = formation_service.validator.execute(candidate=formation)
         if formation_validation.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(

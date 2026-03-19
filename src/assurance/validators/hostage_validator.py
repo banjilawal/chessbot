@@ -15,7 +15,7 @@ from logic.piece import CombatantPiece
 class HostageValidationProcess(ValidationProcess):
 
   @staticmethod
-  def validate(candidate: Generic[T]) -> Result[CombatantPiece]:
+  def execute(candidate: Generic[T]) -> Result[CombatantPiece]:
     entity = "Hostage"
     class_name = f"{entity}Validator"
     method = f"{class_name}.validate"
@@ -47,7 +47,7 @@ class HostageValidationProcess(ValidationProcess):
     """
 
     try:
-      validation = PieceValidator.validate(candidate)
+      validation = PieceValidator.execute(candidate)
       if not validation.is_success():
         raise validation.exception
 

@@ -24,7 +24,7 @@ class TeamHashValidationProcess(ValidationProcess[TeamHash]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(
+    def execute(
             cls,
             candidate: Any,
             schema_service: SchemaService = SchemaService(),
@@ -75,7 +75,7 @@ class TeamHashValidationProcess(ValidationProcess[TeamHash]):
         hash = cast(TeamHash, candidate)
         
         # Handle the case that, the white team is not certified as safe.
-        white_team_validation_result = team_validator.validate(hash.white_team)
+        white_team_validation_result = team_validator.execute(hash.white_team)
         if white_team_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -85,7 +85,7 @@ class TeamHashValidationProcess(ValidationProcess[TeamHash]):
                 )
             )
         # Handle the case that, the black team is not certified as safe.
-        black_team_validation_result = team_validator.validate(hash.black_team)
+        black_team_validation_result = team_validator.execute(hash.black_team)
         if black_team_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(

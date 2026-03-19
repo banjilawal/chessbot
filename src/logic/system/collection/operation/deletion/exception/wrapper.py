@@ -1,4 +1,4 @@
-# src/logic/system/collection/operation/deletion/exception/wrapper.py
+# src/logic/system/collection/operation/deletion/exception/worker.py
 
 """
 Module: logic.system.collection.operation.deletion.exception.wrapper

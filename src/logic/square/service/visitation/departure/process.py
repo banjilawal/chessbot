@@ -68,7 +68,7 @@ class SquareDepartureProcess:
         method = f"{cls.__name__}.execute"
         
         # Handle the case that, the square is not certified as safe.
-        validation_result = square_validator.validator.validate(candidate=square)
+        validation_result = square_validator.validator.execute(candidate=square)
         if validation_result.is_failure:
             # Return the exception chain on failure.
             return DeletionResult.failure(

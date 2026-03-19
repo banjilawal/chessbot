@@ -39,7 +39,7 @@ class ArenaValidationProcess(ValidationProcess[Arena]):
     None
     """
     @classmethod
-    def validate(
+    def execute(
             cls,
             candidate: Any,
             board_service: BoardService = BoardService(),
@@ -86,12 +86,12 @@ class ArenaValidationProcess(ValidationProcess[Arena]):
                 return ValidationResult.failure(id_validation.exception)
              
             # Verify the board.
-            board_validation = board_service.validator.validate(arena.board)
+            board_validation = board_service.validator.execute(arena.board)
             if board_validation.failure:
                 return ValidationResult.failure(board_validation.exception)
             
             # Verify the team service exists and is the right type.
-            team_service_validation = service_validator.validate(arena.team_service)
+            team_service_validation = service_validator.execute(arena.team_service)
             if team_service_validation.failure:
                 return ValidationResult.failure(team_service_validation.exception)
             

@@ -37,7 +37,7 @@ class RankContextValidationProcess(ValidationProcess[RankContext]):
 
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(
+    def execute(
             cls,
             candidate: Any,
     ) -> ValidationResult[RankContext]:

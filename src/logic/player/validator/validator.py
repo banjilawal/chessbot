@@ -36,7 +36,7 @@ class PlayerValidationProcess(ValidationProcess[Player]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(
+    def execute(
             cls,
             candidate: Any,
             identity_service: IdentityService = IdentityService(),
@@ -90,12 +90,12 @@ class PlayerValidationProcess(ValidationProcess[Player]):
                 return ValidationResult.failure(identity_validation.exception)
             
             # Certify the owner's TeamStack is correct.
-            team_stack_certification = service_validator.validate(candidate=player.teams)
+            team_stack_certification = service_validator.execute(candidate=player.teams)
             if team_stack_certification.is_failure():
                 return ValidationResult.failure(team_stack_certification.exception)
             
             # Certify the owner's GameStackService is correct.
-            game_stack_certification = service_validator.validate(candidate=player.games)
+            game_stack_certification = service_validator.execute(candidate=player.games)
             if game_stack_certification.is_failure():
                 return ValidationResult.failure(game_stack_certification.exception)
             

@@ -27,7 +27,7 @@ class CommandBuilder(Builder[Command]):
         method = "CommandBuilder.build"
         
         # Handle the case that, the request is not certified as safe.
-        validation_result = request_validator.validate(candidate=request)
+        validation_result = request_validator.execute(candidate=request)
         if validation_result.is_failure:
             # Return the exception on failure.
             return BuildResult.failure(

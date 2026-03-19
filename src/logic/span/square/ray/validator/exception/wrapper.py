@@ -1,4 +1,4 @@
-# src/logic/span/square/ray/validator/exception/wrapper.py
+# src/logic/span/square/ray/validator/exception/worker.py
 
 """
 Module: logic.span.square.ray.validator.exception.wrapper

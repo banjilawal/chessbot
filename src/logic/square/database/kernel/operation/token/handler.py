@@ -162,7 +162,7 @@ class SquareStackTokenHandler:
         method = "SquareService.remove_occupant_from_stack"
         
         # Handle the case that, the token is not certified as safe.
-        token_validation = token_service.validator.validate(occupant)
+        token_validation = token_service.validator.execute(occupant)
         if token_validation.is_failure:
             # Send the debug exception to the client.
             return DeletionResult.failure(
@@ -229,7 +229,7 @@ class SquareStackTokenHandler:
         method = "SquareStackTokenHandler._safe_square_exists"
         
         # Handle the case that, the square is not certified safe.
-        square_validation = square_stack.integrity_service.validator.validate(square)
+        square_validation = square_stack.integrity_service.validator.execute(square)
         if square_validation.is_failure:
             return ValidationResult.failure(
                 exception=SquareStackTokenHandlerException(

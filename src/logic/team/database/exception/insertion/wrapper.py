@@ -1,4 +1,4 @@
-# src/logic/team/database/core/exception/insertion/wrapper.py
+# src/logic/team/database/core/exception/insertion/worker.py
 
 """
 Module: logic.team.database.core.exception.insertion.wrapper

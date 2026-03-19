@@ -19,7 +19,7 @@ class HouseValidationProcess(ValidationProcess[House]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate: Any) -> ValidationResult[House]:
+    def execute(cls, candidate: Any) -> ValidationResult[House]:
         """"""
         method = "HouseValidationProcess.validate"
         try:
@@ -34,7 +34,7 @@ class HouseValidationProcess(ValidationProcess[House]):
                 )
             
             house = cast(House, candidate)
-            square_validation = SquareValidationProcess.validate(house.square)
+            square_validation = SquareValidationProcess.execute(house.square)
             if square_validation.is_failure():
                 return ValidationResult.failure(square_validation.exception)
             

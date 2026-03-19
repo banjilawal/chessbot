@@ -1,4 +1,4 @@
-# src/command/pipeline/database/core/exception/pop/wrapper.py
+# src/command/pipeline/database/core/exception/pop/worker.py
 
 """
 Module: command.pipeline.database.core.exception.pop.wrapper

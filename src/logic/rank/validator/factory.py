@@ -46,7 +46,7 @@ class RankValidationProcessFactory(ValidationProcess[Rank]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(
+    def execute(
             cls,
             candidate: Any,
             rook_validator: RookValidator = RookValidator(),
@@ -97,17 +97,17 @@ class RankValidationProcessFactory(ValidationProcess[Rank]):
             rank = cast(Rank, candidate)
             # Pick which validator to run.
             if isinstance(candidate, King):
-                return king_validator.validate(rank)
+                return king_validator.execute(rank)
             if isinstance(candidate, Queen):
-                return queen_validator.validate(rank)
+                return queen_validator.execute(rank)
             if isinstance(candidate, Rook):
-                return rook_validator.validate(rank)
+                return rook_validator.execute(rank)
             if isinstance(candidate, Bishop):
-                return bishop_validator.validate(rank)
+                return bishop_validator.execute(rank)
             if isinstance(candidate, Knight):
-                return knight_validator.validate(rank)
+                return knight_validator.execute(rank)
             if isinstance(candidate, Pawn):
-                return pawn_validator.validate(rank)
+                return pawn_validator.execute(rank)
             
         # If the candidate is not any of the concrete Ranks control passes to the except block.
         # The unhandled exception is wrapped inside an RankValidationException which is sent inside
@@ -155,7 +155,7 @@ class RankValiatorFactory(ValidationProcess[Rank]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(
+    def execute(
             cls, candidate: Any,
             persona_service: PersonaService = PersonaService(),
             identity_service: IdentityService = IdentityService(),

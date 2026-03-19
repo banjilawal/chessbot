@@ -101,7 +101,7 @@ class GameContextBuilder(Builder[GameContext]):
             
             # Build the owner GameContext if its flag is enabled.
             if agent is not None:
-                validation = agent_service.validator.validate(candidate=agent)
+                validation = agent_service.validator.execute(candidate=agent)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
                 # On validation success return a player_GameContext in the BuildResult.

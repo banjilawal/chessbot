@@ -70,7 +70,7 @@ class SquareCollisionDetector(CollisionDetector[Square]):
         method = f"{cls.__class__.__name__}.detect"
         
         # Handle the case that, the target is not certified as safe.
-        validation_result = square_stack.integrity_service.validator.validate(
+        validation_result = square_stack.integrity_service.validator.execute(
             candidate=target
         )
         if validation_result.is_failure:

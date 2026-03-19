@@ -121,7 +121,7 @@ class CoordStack(StackService[Coord]):
         method = "CoordStack.push"
         
         # Handle the case that, coord validation fails.
-        validation = self.integrity_service.validator.validate(candidate=item)
+        validation = self.integrity_service.validator.execute(candidate=item)
         if validation.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(

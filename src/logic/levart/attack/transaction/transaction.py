@@ -31,7 +31,7 @@ class AttackTransaction(TravelTransaction[AttackEvent]):
         method = "AttackTransaction.execute"
         
         try:
-            event_validation = AttackEventValidator.validate(self.event)
+            event_validation = AttackEventValidator.execute(self.event)
             if event_validation.is_failure():
                 return TransactionResult.errored(event_update=self.event, exception=event_validation.exception)
             

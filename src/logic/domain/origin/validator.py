@@ -40,7 +40,7 @@ class DomainOriginValidationProcess(ValidationProcess[DomainOrigin]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(
+    def execute(
             cls,
             candidate: Any,
             piece_validator: type[PieceValidator] = PieceValidator,

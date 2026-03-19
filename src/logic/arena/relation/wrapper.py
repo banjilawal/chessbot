@@ -1,4 +1,4 @@
-# src/logic/arena/relation/wrapper.py
+# src/logic/arena/relation/worker.py
 
 """
 Module: logic.arena.relation.wrapper
@@ -25,7 +25,7 @@ class ArenaTeamAnalysisException(AnalysisException):
         status has been evaluated.
 
     Super Class:
-        *   WrapperException
+        *   WorkerException
 
     Provides:
 

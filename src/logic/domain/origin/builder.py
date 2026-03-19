@@ -59,7 +59,7 @@ class DomainOriginBuilder(Builder[DomainOrigin]):
         method = "DomainOriginBuilder.builder"
         
         try:
-            turn_scene_validation = TurnSceneValidationProcess.validate(turn_scene)
+            turn_scene_validation = TurnSceneValidationProcess.execute(turn_scene)
             if turn_scene_validation.failure():
                 return BuildResult.failure(turn_scene_validation.exception)
             

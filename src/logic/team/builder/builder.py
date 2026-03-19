@@ -159,19 +159,19 @@ class TeamBuilder(Builder[Team]):
             return ValidationResult.failure(id_validation.exception)
         
         # Handle the case that, the schema is not certified as safe.
-        schema_validation = schema_service.validator.validate(candidate=schema)
+        schema_validation = schema_service.validator.execute(candidate=schema)
         if schema_validation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(schema_validation.exception)
         
         # Handle the case that, the owner is not certified as safe.
-        owner_validation = player_service.validator.validate(candidate=owner)
+        owner_validation = player_service.validator.execute(candidate=owner)
         if owner_validation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(owner_validation.exception)
         
         # Handle the case that, the board is not certified as safe.
-        board_validation = board_service.validator.validate(candidate=board)
+        board_validation = board_service.validator.execute(candidate=board)
         if owner_validation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(board_validation.exception)

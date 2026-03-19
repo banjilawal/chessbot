@@ -1,4 +1,4 @@
-# src/logic/arena/validator/exception/wrapper.py
+# src/logic/arena/validator/exception/worker.py
 
 """
 Module: logic.arena.validator.exception.wrapper

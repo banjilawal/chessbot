@@ -1,4 +1,4 @@
-# src/logic/square/database/kernel/operation/stats/exception/work/wrapper.py
+# src/logic/square/database/kernel/operation/stats/exception/work/worker.py
 
 """
 Module: logic.square.database.kernel.operation.stats.exception.work.wrapper

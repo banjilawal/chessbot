@@ -36,7 +36,7 @@ class NumberValidationProcess(ValidationProcess[int]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(
+    def execute(
             cls,
             candidate: Any,
             floor: int = 0,

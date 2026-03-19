@@ -72,7 +72,7 @@ class ArenaBuilder(Builder[Arena]):
                 return BuildResult.failure(id_validation.exception)
             
             # Verify the board.
-            board_validation = board_service.validator.validate(candidate=board)
+            board_validation = board_service.validator.execute(candidate=board)
             if board_validation.is_failure:
                 return BuildResult.failure(board_validation.exception)
             
@@ -99,7 +99,7 @@ class ArenaBuilder(Builder[Arena]):
         try:
             # Perform the basic owner safety validation.
             for player in players:
-                validation = player_service.validator.validate(candidate=player)
+                validation = player_service.validator.execute(candidate=player)
                 if validation.failure:
                     return ValidationResult.failure(validation.exception)
             # Handle the case the agents are the same.

@@ -50,7 +50,7 @@ class ArgumentsValidationProcess(ValidationProcess[Dict]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(
+    def execute(
             cls,
             cipher: Command,
             candidate: Any,

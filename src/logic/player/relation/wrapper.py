@@ -1,4 +1,4 @@
-# src/logic/player/relation/wrapper.py
+# src/logic/player/relation/worker.py
 
 """
 Module: logic.player.relation.wrapper
@@ -25,7 +25,7 @@ class PlayerTeamAnalysisException(AnalysisException):
         status has been evaluated.
 
     Super Class:
-        *   WrapperException
+        *   WorkerException
 
     Provides:
 

@@ -1,4 +1,4 @@
-# src/logic/pair/stack/exception/deletion/wrapper.py
+# src/logic/pair/stack/exception/deletion/worker.py
 
 """
 Module: logic.pair.stack.exception.deletion.wrapper

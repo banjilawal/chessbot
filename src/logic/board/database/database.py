@@ -102,7 +102,7 @@ class BoardDatabase(Database[Board]):
         # --- To assure uniqueness the member_service has to conduct a search. The board should be validated first. ---#
         
         # Handle the case that, the board is not certified safe.
-        validation = self.integrity_service.validator.validate(candidate=board)
+        validation = self.integrity_service.validator.execute(candidate=board)
         if validation.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(

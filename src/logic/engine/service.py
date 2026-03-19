@@ -43,4 +43,4 @@ class EngineService:
     
     
     def validate_engine(self, candidate: Any) -> ValidationResult[Engine]:
-        return self._validator.validate(candidate=candidate)
+        return self._validator.execute(candidate=candidate)

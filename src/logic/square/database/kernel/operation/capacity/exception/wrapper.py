@@ -1,4 +1,4 @@
-# src/logic/square/database/kernel/util/quota/exception/wrapper.py
+# src/logic/square/database/kernel/util/quota/exception/worker.py
 
 """
 Module: logic.square.database.kernel.util.quota.exception.wrapper

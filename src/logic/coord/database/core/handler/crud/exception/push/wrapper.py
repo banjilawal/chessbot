@@ -1,4 +1,4 @@
-# src/logic/coord/database/core/handler/crud/exception/push/wrapper.py
+# src/logic/coord/database/core/handler/crud/exception/push/worker.py
 
 """
 Module: logic.coord.database.core.handler.crud.exception.push.wrapper

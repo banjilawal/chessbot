@@ -164,7 +164,7 @@ class TokenContextBuilder(Builder[TokenContext]):
         
         # Build the opening_square_name TokenContext if its flag is enabled.
         if opening_square is not None:
-            validation = square_service.validator.validate(opening_square)
+            validation = square_service.validator.execute(opening_square)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
@@ -180,7 +180,7 @@ class TokenContextBuilder(Builder[TokenContext]):
         
         # Build the coord TokenContext if its flag is enabled.
         if coord is not None:
-            validation = coord_service.validator.validate(coord)
+            validation = coord_service.validator.execute(coord)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
@@ -196,7 +196,7 @@ class TokenContextBuilder(Builder[TokenContext]):
         
         # Build the rank TokenContext if its flag is enabled.
         if rank is not None:
-            validation = rank_service.validator.validate(rank)
+            validation = rank_service.validator.execute(rank)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
@@ -212,7 +212,7 @@ class TokenContextBuilder(Builder[TokenContext]):
         
         # Build the team TokenContext if its flag is enabled.
         if team is not None:
-            validation = team_service.validator.validate(team)
+            validation = team_service.validator.execute(team)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
@@ -228,7 +228,7 @@ class TokenContextBuilder(Builder[TokenContext]):
         
         # Build the color TokenContext if its flag is enabled.
         if color is not None:
-            validation = color_validator.validate(color)
+            validation = color_validator.execute(color)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
@@ -244,7 +244,7 @@ class TokenContextBuilder(Builder[TokenContext]):
         
         # Build the ransom TokenContext if its flag is enabled.
         if ransom is not None:
-            validation = number_validator.validate(
+            validation = number_validator.execute(
                 candidate=ransom,
                 floor=rank_service.persona_service.min_ransom,
                 ceiling=rank_service.persona_service.max_ransom

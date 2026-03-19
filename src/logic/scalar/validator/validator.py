@@ -40,7 +40,7 @@ class ScalarValidationProcess(ValidationProcess[Scalar]):
     
 
     @LoggingLevelRouter.monitor
-    def validate(self) -> ValidationResult[Scalar]:
+    def execute(self) -> ValidationResult[Scalar]:
         """
         # ACTION:
         Verifies candidate is a Scalar whose absolute value is within BOARD_DIMENSION.

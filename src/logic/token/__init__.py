@@ -17,7 +17,7 @@ from .factory import *
 from .model import *
 from .service import *
 from logic.token.service.operation.analyzer import *
-from .validator import *
+from .validation import *
 
 # Modules
 None

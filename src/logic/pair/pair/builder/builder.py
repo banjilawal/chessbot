@@ -72,7 +72,7 @@ class PairBuilder(Builder[Pair]):
         method = f"{cls.__class__.__name__}._build"
         
         # Handle the case that, the head is not certified as safe.
-        node_validation_result = node_service.validator.validate(candidate=head)
+        node_validation_result = node_service.validator.execute(candidate=head)
         if node_validation_result.is_failure:
             # Return the exception chain on failure
             return BuildResult.failure(
@@ -85,7 +85,7 @@ class PairBuilder(Builder[Pair]):
                 )
             )
         # Handle the case that, the pair is not certified as safe.
-        tail_square_validation_result = square_validator.validate(candidate=tail_square)
+        tail_square_validation_result = square_validator.execute(candidate=tail_square)
         if tail_square_validation_result.is_failure:
             # Return the exception chain on failure
             return BuildResult.failure(

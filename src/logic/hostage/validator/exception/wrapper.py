@@ -1,4 +1,4 @@
-# src/logic/hostage/validator/exception/wrapper.py
+# src/logic/hostage/validator/exception/worker.py
 
 """
 Module: logic.hostage.validator.exception.wrapper

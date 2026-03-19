@@ -43,7 +43,7 @@ class EdgeValidationProcess(ValidationProcess[Edge]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(
+    def execute(
             cls,
             candidate: Any,
             node_validator: NodeValidationProcess = NodeValidationProcess(),
@@ -104,7 +104,7 @@ class EdgeValidationProcess(ValidationProcess[Edge]):
                 )
             )
         # Handle the case that, the distance is not at between 0 and the board's diagonal.
-        distance_validation_result = number_validator.validate(
+        distance_validation_result = number_validator.execute(
             candidate=edge.distance,
             floor=0,
             # Ceiling is the diagonal to an int and increment by 1 to handle truncation.
@@ -122,7 +122,7 @@ class EdgeValidationProcess(ValidationProcess[Edge]):
                 )
             )
         # Handle the case that, the heuristic is not a number.
-        heuristic_validation_result = number_validator.validate(
+        heuristic_validation_result = number_validator.execute(
             candidate=edge.heuristic,
             # Heuristic is probably going to be distance and the max ransom (the king's).
             ceiling=sys.maxsize,
@@ -140,7 +140,7 @@ class EdgeValidationProcess(ValidationProcess[Edge]):
                 )
             )
         # Handle the case that, the weight is not a number.
-        weight_validation_result = number_validator.validate(
+        weight_validation_result = number_validator.execute(
             candidate=edge.weight,
             ceiling=sys.maxsize,
             floor=(-sys.maxsize + 1),
@@ -157,7 +157,7 @@ class EdgeValidationProcess(ValidationProcess[Edge]):
                 )
             )
         # Handle the case that, the head is not certified as a safe node.
-        head_validation_result = node_validator.validate(edge.head)
+        head_validation_result = node_validator.execute(edge.head)
         if head_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -167,7 +167,7 @@ class EdgeValidationProcess(ValidationProcess[Edge]):
                 )
             )
         # Handle the case that, the tail is not certified as a safe node.
-        tail_validation_result = node_validator.validate(edge.head)
+        tail_validation_result = node_validator.execute(edge.head)
         if tail_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(

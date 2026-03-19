@@ -1,4 +1,4 @@
-# src/logic/system/computation/exception/wrapper.py
+# src/logic/system/computation/exception/worker.py
 
 """
 Module: logic.system.computation.exception.wrapper

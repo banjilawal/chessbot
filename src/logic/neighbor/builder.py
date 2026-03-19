@@ -26,17 +26,17 @@ class VisitationEventBuilder(Builder[VisitationEvent]):
         method = "VisitationBuilder.builder"
         
         try:
-            id_validation = IdValidationProcess.validate(id)
+            id_validation = IdValidationProcess.execute(id)
             if id_validation.is_failure():
                 return BuildResult.failure(
                     IdValidationException(f"{method}: {IdValidationException.MSG}")
                 )
             
-            domain_validation = DomainValidationProcess.validate(domain)
+            domain_validation = DomainValidationProcess.execute(domain)
             if domain_validation.is_failure():
                 return BuildResult.failure(domain_validation.exception)
             
-            piece_validation = PieceValidator.validate(domain)
+            piece_validation = PieceValidator.execute(domain)
             if piece_validation.is_failure():
                 return BuildResult.failure(piece_validation.exception)
             

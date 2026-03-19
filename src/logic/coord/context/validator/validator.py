@@ -39,7 +39,7 @@ class CoordContextValidationProcess(ValidationProcess[CoordContext]):
 
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(
+    def execute(
             cls,
             candidate: Any,
             number_validator: NumberValidationProcess = NumberValidationProcess(),
@@ -103,7 +103,7 @@ class CoordContextValidationProcess(ValidationProcess[CoordContext]):
         # Certification for the search-by-column-and-row target.
         if switch_count == 2:
             # Handle the case that, row of search-by-column-and-row target fails its integrity checks.
-            row_validation = number_validator.validate(context.row)
+            row_validation = number_validator.execute(context.row)
             if row_validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
@@ -113,7 +113,7 @@ class CoordContextValidationProcess(ValidationProcess[CoordContext]):
                     )
                 )
             # Handle the case that, column of search-by-column-and-row target fails its integrity checks.
-            column_validation = number_validator.validate(context.column)
+            column_validation = number_validator.execute(context.column)
             if column_validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
@@ -127,7 +127,7 @@ class CoordContextValidationProcess(ValidationProcess[CoordContext]):
         
         # Certification for the search-by-row target.
         if context.row is not None and context.column is not None:
-            row_validation = number_validator.validate(context.row)
+            row_validation = number_validator.execute(context.row)
             if row_validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
@@ -141,7 +141,7 @@ class CoordContextValidationProcess(ValidationProcess[CoordContext]):
         
         # Certification for the search-by-column target.
         if context.column is not None and context.column is not None:
-            column_validation = number_validator.validate(context.column)
+            column_validation = number_validator.execute(context.column)
             if column_validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(

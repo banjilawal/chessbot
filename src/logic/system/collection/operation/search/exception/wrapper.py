@@ -1,4 +1,4 @@
-# src/logic/system/collection/operation/search/exception/wrapper.py
+# src/logic/system/collection/operation/search/exception/worker.py
 
 """
 Module: logic.system.collection.operation.search.exception.wrapper

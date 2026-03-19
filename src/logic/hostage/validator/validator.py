@@ -44,7 +44,7 @@ class HostageValidationProcess(ValidationProcess[Hostage]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(
+    def execute(
             cls,
             candidate: Any,
             token_service: TokenService = TokenService(),
@@ -113,7 +113,7 @@ class HostageValidationProcess(ValidationProcess[Hostage]):
                 )
             )
         # Handle the case that, the item where the capture occurred is not certified safe.
-        captured_square_validation = square_service.validator.validate(candidate=manifest.captured_square)
+        captured_square_validation = square_service.validator.execute(candidate=manifest.captured_square)
         if captured_square_validation.failure:
             # Send the exception chain on failure
             return ValidationResult.failure(
@@ -123,7 +123,7 @@ class HostageValidationProcess(ValidationProcess[Hostage]):
                 )
             )
         # Handle the case that, the victor's item is not certified safe.
-        victor_square_validation = square_service.validator.validate(candidate=manifest.victor_square)
+        victor_square_validation = square_service.validator.execute(candidate=manifest.victor_square)
         if victor_square_validation.failure:
             # Send the exception chain on failure
             return ValidationResult.failure(
@@ -183,7 +183,7 @@ class HostageValidationProcess(ValidationProcess[Hostage]):
             # --- Perform tests on the manifest.victor that do not rely on the prisoner. ---#
             
         # Handle the case that, the victor is not certified safe.
-        victor_validation = token_service.validator.validate(candidate=manifest.victor)
+        victor_validation = token_service.validator.execute(candidate=manifest.victor)
         if victor_validation.failure:
             # Send the exception chain on failure
             return ValidationResult.failure(

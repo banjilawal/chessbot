@@ -72,7 +72,7 @@ class TokenPushCoordProcess:
         method = "TokenService.execute_to_token"
         
         # Handle the case that, the token is not certified as safe.
-        token_validation_result = token_validator.validate(token)
+        token_validation_result = token_validator.execute(token)
         if token_validation_result.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -106,7 +106,7 @@ class TokenPushCoordProcess:
                 )
             )
         # Handle the case that, the coord is not certified as safe.
-        coord_validation_result = coord_service.validator.validate(coord)
+        coord_validation_result = coord_service.validator.execute(coord)
         if coord_validation_result.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(

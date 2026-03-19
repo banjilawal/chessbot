@@ -1,4 +1,4 @@
-# src/logic/hostage/database/core/exception/insertion/wrapper.py
+# src/logic/hostage/database/core/exception/insertion/worker.py
 
 """
 Module: logic.hostage.database.core.exception.insertion.wrapper

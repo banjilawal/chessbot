@@ -1,4 +1,4 @@
-# src/logic/visit/exception/wrapper.py
+# src/logic/visit/exception/worker.py
 
 """
 Module: logic.visit.exception.wrapper

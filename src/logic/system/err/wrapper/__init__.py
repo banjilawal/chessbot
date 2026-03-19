@@ -13,4 +13,4 @@ version: 1.0.0
 from .operation import *
 
 # Modules
-from .root import WrapperException
+from .root import WorkerException

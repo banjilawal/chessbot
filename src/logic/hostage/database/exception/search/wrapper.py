@@ -1,4 +1,4 @@
-# src/logic/hostage/databse/coreexception/search/wrapper.py
+# src/logic/hostage/databse/coreexception/search/worker.py
 
 """
 Module: logic.hostage.database.core.exception.search.wrapper

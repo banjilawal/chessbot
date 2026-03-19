@@ -42,7 +42,7 @@ class NameValidationProcess(ValidationProcess[str]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(
+    def execute(
             cls,
             candidate: str,
             text_validator: StringValidationProcess = StringValidationProcess()
@@ -74,7 +74,7 @@ class NameValidationProcess(ValidationProcess[str]):
         
         try:
             # Verify the candidate is not null and an int.
-            validation = text_validator.validate(candidate)
+            validation = text_validator.execute(candidate)
             if validation.is_failure():
                 return ValidationResult.failure(validation.exception)
             

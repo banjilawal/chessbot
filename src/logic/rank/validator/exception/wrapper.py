@@ -1,4 +1,4 @@
-# src/logic/rank/validator/exception/wrapper.py
+# src/logic/rank/validator/exception/worker.py
 
 """
 Module: logic.rank.validator.exception.wrapper

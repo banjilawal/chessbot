@@ -44,7 +44,7 @@ class BlockedPathTransaction(TravelTransaction[BlockingEvent]):
         method = "OccupationTransaction.execute"
         
         try:
-            event_validation = BlockingEventValidator.validate(event=self.event)
+            event_validation = BlockingEventValidator.execute(event=self.event)
             if event_validation.is_failure():
                 return TransactionResult.errored(
                     event_update=self.event,

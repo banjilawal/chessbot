@@ -1,6 +1,6 @@
 from typing import Generic, cast
 
-from logic.token.validator import ChessPieceValidator
+from logic.token.validation import ChessPieceValidator
 from logic.system.validate.validator import Validator
 from assurance.exception.validation.base_validationpy import ChessPieceValidationException
 from logic.board.coordinate_bind import CoordinateBinding
@@ -55,7 +55,7 @@ class CoordinateSBindingValidator(Validator):
 
       coordinate_binding = cast(CoordinateBinding, candidate)
 
-      if not ChessPieceValidator.validate(coordinate_binding.chess_piece):
+      if not ChessPieceValidator.execute(coordinate_binding.chess_piece):
         raise ChessPieceValidationException(
           f"{method} {ChessPieceValidationException.default_msg}"
         )

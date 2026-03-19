@@ -95,7 +95,7 @@ class SquareStackRosterHandler:
         method = "SquareStackRosterHandler.deploy_roster_on_stack"
         
         # Handle the case that, the team is not certified as safe.
-        team_validation = team_service.validator.validate(candidate=team)
+        team_validation = team_service.validator.execute(candidate=team)
         if team_validation.is_failure:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(

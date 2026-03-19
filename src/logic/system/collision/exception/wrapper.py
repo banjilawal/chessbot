@@ -1,4 +1,4 @@
-# src/logic/system/collision/exception/wrapper.py
+# src/logic/system/collision/exception/worker.py
 
 """
 Module: logic.system.collision.exception.wrapper

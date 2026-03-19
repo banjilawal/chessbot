@@ -1,4 +1,4 @@
-# src/logic/rank/finder/exception/wrapper.py
+# src/logic/rank/finder/exception/worker.py
 
 """
 Module: logic.rank.finder.exception.wrapper

@@ -1,4 +1,4 @@
-# src/logic/team/database/core/exception/pop/wrapper.py
+# src/logic/team/database/core/exception/pop/worker.py
 
 """
 Module: logic.team.database.core.exception.pop.wrapper

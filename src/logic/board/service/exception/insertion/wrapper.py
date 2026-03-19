@@ -1,4 +1,4 @@
-# src/logic/item/database/core/exception/insertion/wrapper.py
+# src/logic/item/database/core/exception/insertion/worker.py
 
 """
 Module: logic.item.database.core.exception.insertion.wrapper

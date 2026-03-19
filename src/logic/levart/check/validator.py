@@ -18,7 +18,7 @@ class KingCheckEventValidationProcess(ValidationProcess[KingCheckEvent]):
 
   @staticmethod
   @LoggingLevelRouter.monitor
-  def validate(candidate: Any) -> ValidationResult:
+  def execute(candidate: Any) -> ValidationResult:
     """
     Validates an KingCheckEvent meets specifications:
       - Not validation
@@ -60,15 +60,15 @@ class KingCheckEventValidationProcess(ValidationProcess[KingCheckEvent]):
 
       event = cast(AttackEvent, t)
 
-      id_validation = IdValidationProcess.validate(event.visitor_id)
+      id_validation = IdValidationProcess.execute(event.visitor_id)
       if not id_validation.is_success():
         raise IdValidationException(f"{method}: {IdValidationException.MSG}")
 
-      actor_validation = PieceValidator.validate(event.actor)
+      actor_validation = PieceValidator.execute(event.actor)
       if not actor_validation.is_success():
         raise InvalidAttackException(f"{method}: actor_candidate validation failed.")
 
-      destination_square_validation = SquareValidationProcess.validate(event.enemy_square)
+      destination_square_validation = SquareValidationProcess.execute(event.enemy_square)
       if not destination_square_validation.is_success():
         raise InvalidSqaureException(f"{method}: {InvalidSqaureException.MSG}")
 

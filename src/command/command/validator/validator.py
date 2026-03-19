@@ -19,7 +19,7 @@ class CommandValidationProcess(ValidationProcess[Command]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(
+    def execute(
             cls,
             candidate: Any,
             cipher: Command = Command.cipher(),
@@ -79,7 +79,7 @@ class CommandValidationProcess(ValidationProcess[Command]):
                 )
             )
         # Handle the case that, command's arguments are incorrect. does not match the cipher's\
-        arguments_validation_result = arguments_validator.validate(command.name, cipher, identity_service)
+        arguments_validation_result = arguments_validator.execute(command.name, cipher, identity_service)
         if arguments_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(

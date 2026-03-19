@@ -48,7 +48,7 @@ class TokenReadinessAnalysis(RelationAnalysis[ReadinessState, Token]):
                 )
             )
         # Handle the case that, the token is not certified as safe.
-        validation_result = token_validator.validate(candidate=candidate_satellite)
+        validation_result = token_validator.execute(candidate=candidate_satellite)
         # Send the exception chain on failre.
         if validation_result.is_failure:
             return RelationReport.failure(

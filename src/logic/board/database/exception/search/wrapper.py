@@ -1,4 +1,4 @@
-# src/logic/board/database/core/exception/search/wrapper.py
+# src/logic/board/database/core/exception/search/worker.py
 
 """
 Module: logic.board.database.core.exception.search.wrapper

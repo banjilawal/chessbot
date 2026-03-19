@@ -1,4 +1,4 @@
-# src/logic/formation/key/builder/exception/wrapper.py
+# src/logic/formation/key/builder/exception/worker.py
 
 """
 Module: logic.formation.key.builder.exception.wrapper

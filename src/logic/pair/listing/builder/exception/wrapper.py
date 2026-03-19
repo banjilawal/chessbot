@@ -1,4 +1,4 @@
-# src/logic/pair/listing/builder/wrapper.py
+# src/logic/pair/listing/builder/worker.py
 
 """
 Module: logic.pair.listing.builder.wrapper

@@ -32,7 +32,7 @@ class CheckTransaction(TravelTransaction[KingCheckEvent]):
   def execute(self) -> TransactionResult:
     method = "AttackTransaction.execute"
 
-    validation = AttackEventValidator.validate(self.event)
+    validation = AttackEventValidator.execute(self.event)
     if not validation.is_success():
       return TransactionResult(event, validation.exception)
 

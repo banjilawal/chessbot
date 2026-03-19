@@ -1,4 +1,4 @@
-# src/logic/persona/key/lookup/exception/wrapper.py
+# src/logic/persona/key/lookup/exception/worker.py
 
 """
 Module: logic.persona.key.lookup.exception.wrapper
@@ -19,7 +19,7 @@ __all__ = [
 # ======================# PERSONA_LOOKUP_FAILURE #======================#
 class PersonaLookupFailedException(PersonaException, LookupException):
     """
-    Role:WrapperException, Encapsulation
+    Role:WorkerException, Encapsulation
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why a candidate failed its validation as a Square. The exception chain traces the ultimate source of failure.

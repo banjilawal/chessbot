@@ -66,7 +66,7 @@ class RosterRelationAnalysis(RelationAnalysis[Team, Token]):
         method = "RosterRelationAnalysis.test"
         
         # Process the possible team_validation outcomes.
-        team_validation = team_validator.validate(candidate_primary)
+        team_validation = team_validator.execute(candidate_primary)
         if team_validation.is_failure:
             # Return the exception chain on failure.
             return RelationReport(
@@ -78,7 +78,7 @@ class RosterRelationAnalysis(RelationAnalysis[Team, Token]):
         team = cast(Team, team_validation.payload)
         
         # Process the possible piece_validation outcomes.
-        piece_validation = piece_service.validator.validate(candidate_satellite)
+        piece_validation = piece_service.validator.execute(candidate_satellite)
         if piece_validation.is_failure:
             return RelationReport(
                 TeamRosterRelationAnalysisException(

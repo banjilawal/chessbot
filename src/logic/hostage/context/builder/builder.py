@@ -106,7 +106,7 @@ class CaptivityContextBuilder(Builder[CaptivityContext]):
         
         # Build the victor CaptivityContext if its flag is enabled.
         if victor is not None:
-            validation = token_service.validator.validate(candidate=victor)
+            validation = token_service.validator.execute(candidate=victor)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
@@ -135,7 +135,7 @@ class CaptivityContextBuilder(Builder[CaptivityContext]):
         
         # Certification for the search-by-captured-item target.
         if captured_square is not None:
-            validation = square_service.validator.validate(candidate=captured_square)
+            validation = square_service.validator.execute(candidate=captured_square)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(

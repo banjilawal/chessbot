@@ -1,4 +1,4 @@
-# src/logic/edge/validator/exception/wrapper.py
+# src/logic/edge/validator/exception/worker.py
 
 """
 Module: logic.edge.validator.exception.wrapper

@@ -1,4 +1,4 @@
-# src/command/request/builder/wrapper.py
+# src/command/request/builder/worker.py
 
 """
 Module: command.request.builder.wrapper
@@ -49,7 +49,7 @@ class RequestBuildException(BuildException):
        None
 
         # INHERITED METHODS:
-            *   See WrapperException class for inherited methods.
+            *   See WorkerException class for inherited methods.
         """
     ERR_CODE = "SERVICE_REQUEST_BUILD_FAILURE"
     MSG = "RequestBuilder returned an error."

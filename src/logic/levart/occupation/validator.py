@@ -20,7 +20,7 @@ class OccupationEventValidationProcess(ValidationProcess[OccupationEvent]):
     """"""
     
     @classmethod
-    def validate(cls, candidate: Any) -> ValidationResult[OccupationEvent]:
+    def execute(cls, candidate: Any) -> ValidationResult[OccupationEvent]:
         """"""
         method = "OccupationEventValidationProcess.validate"
         
@@ -38,15 +38,15 @@ class OccupationEventValidationProcess(ValidationProcess[OccupationEvent]):
                 )
             event = cast(OccupationEvent, candidate)
             
-            id_validation = ValidationProcess.validate(candidate.visitor_id)
+            id_validation = ValidationProcess.execute(candidate.visitor_id)
             if not id_validation.is_success():
                 return ValidationResult(exception=id_validation.exception)
             
-            actor_binding_validation = PieceBindingBoardValidator.validate(event.actor, event.execution_environment)
+            actor_binding_validation = PieceBindingBoardValidator.execute(event.actor, event.execution_environment)
             if actor_binding_validation.is_failure():
                 return ValidationResult(exception=actor_binding_validation.exception)
             
-            resource_binding_validation = TravelResourceValidator.validate(
+            resource_binding_validation = TravelResourceValidator.execute(
                 event.square,
                 event.execution_environment
             )

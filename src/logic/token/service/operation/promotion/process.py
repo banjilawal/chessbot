@@ -240,7 +240,7 @@ class PawnPromotionProcess:
         method = f"{cls.__class__.__name__}. _run_promotable_rank_tests"
         
         # Handle the case that, the rank is not certified as safe.
-        validation_result = rank_service.validator.validate(rank)
+        validation_result = rank_service.validator.execute(rank)
         if validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(

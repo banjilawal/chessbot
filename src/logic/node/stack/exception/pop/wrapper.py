@@ -1,4 +1,4 @@
-# src/logic/node/stack/exception/pop/wrapper.py
+# src/logic/node/stack/exception/pop/worker.py
 
 """
 Module: logic.node.stack.exception.pop.wrapper

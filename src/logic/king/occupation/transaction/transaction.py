@@ -34,7 +34,7 @@ class KingTravelTransaction(TravelTransaction[KingOccupationEvent]):
         try:
             # Step 1: Ensure the travel will not have failure conditions, i.e, traveler is a prisoner,
             # the enemy_square is empty.
-            validation = OccupationEventValidator.validate(self.event)
+            validation = OccupationEventValidator.execute(self.event)
             if validation.is_failure():
                 return TransactionResult.errored(event_update=self.event, exception=validation.exception)
             

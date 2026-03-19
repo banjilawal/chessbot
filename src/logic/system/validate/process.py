@@ -40,7 +40,7 @@ class ValidationProcess(ABC, Generic[T]):
     @classmethod
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate: Any, *args, **kwargs) -> ValidationResult[T]:
+    def execute(cls, candidate: Any, *args, **kwargs) -> ValidationResult[T]:
         """
         # ACTION:
         1.  Check if candidate is validation.

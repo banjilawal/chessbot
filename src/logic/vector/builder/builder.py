@@ -62,7 +62,7 @@ class VectorBuilder(Builder[Vector]):
         """
         method = "VectorBuilder.builder"
         # Handle the x component
-        x_validation = bound_number_validator.validate(floor=0, ceiling=LONGEST_KNIGHT_LEG_SIZE, candidate=abs(x))
+        x_validation = bound_number_validator.execute(floor=0, ceiling=LONGEST_KNIGHT_LEG_SIZE, candidate=abs(x))
         if x_validation.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
@@ -72,7 +72,7 @@ class VectorBuilder(Builder[Vector]):
                 )
             )
         # Handle the y component
-        y_validation = bound_number_validator.validate(floor=0, ceiling=LONGEST_KNIGHT_LEG_SIZE, candidate=abs(y))
+        y_validation = bound_number_validator.execute(floor=0, ceiling=LONGEST_KNIGHT_LEG_SIZE, candidate=abs(y))
         if y_validation.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(

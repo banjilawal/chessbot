@@ -1,4 +1,4 @@
-# src/logic/board/database/exception/deletion/wrapper.py
+# src/logic/board/database/exception/deletion/worker.py
 
 """
 Module: logic.board.database.exception.deletion.wrapper

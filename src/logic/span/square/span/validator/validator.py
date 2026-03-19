@@ -32,7 +32,7 @@ class SquareSpanValidationProcess(ValidationProcess[SquareSpan]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(
+    def execute(
             cls,
             candidate: Any,
             square_validator: SquareValidationProcess = SquareValidationProcess(),
@@ -93,7 +93,7 @@ class SquareSpanValidationProcess(ValidationProcess[SquareSpan]):
         square_span = cast(SquareSpan, candidate)
         
         # Handle the case that, the origin does not pass square safety checks.
-        origin_validation_result = square_validator.validate(candidate=square_span.origin)
+        origin_validation_result = square_validator.execute(candidate=square_span.origin)
         if origin_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(

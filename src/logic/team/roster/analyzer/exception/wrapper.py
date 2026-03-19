@@ -1,4 +1,4 @@
-# src/logic/team/relation/roster/wrapper.py
+# src/logic/team/relation/roster/worker.py
 
 """
 Module: logic.team.relation.roster.wrapper
@@ -25,7 +25,7 @@ class TeamRosterRelationAnalysisException(TeamRosterException):
         status has been evaluated.
 
     Super Class:
-        *   WrapperException
+        *   WorkerException
 
     Provides:
 

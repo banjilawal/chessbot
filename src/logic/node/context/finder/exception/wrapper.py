@@ -1,4 +1,4 @@
-# src/logic/node/finder/exception/wrapper.py
+# src/logic/node/finder/exception/worker.py
 
 """
 Module: logic.node.finder.exception.wrapper

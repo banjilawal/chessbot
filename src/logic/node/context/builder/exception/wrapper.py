@@ -1,4 +1,4 @@
-# src/logic/node/context/builder/exception/wrapper.py
+# src/logic/node/context/builder/exception/worker.py
 
 """
 Module: logic.node.context.builder.exception.wrapper

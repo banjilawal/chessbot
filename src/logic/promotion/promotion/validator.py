@@ -28,7 +28,7 @@ class OldPromotionEventValidationProcess(ValidationProcess[PromotionEvent]):
     """"""
     
     @classmethod
-    def validate(cls, candidate: Any) -> ValidationResult[OccupationEvent]:
+    def execute(cls, candidate: Any) -> ValidationResult[OccupationEvent]:
         """"""
         method = "PromotionEventValidationProcess.validate"
         
@@ -45,11 +45,11 @@ class OldPromotionEventValidationProcess(ValidationProcess[PromotionEvent]):
             
             event = cast(PromotionEvent, candidate)
             
-            id_validation = ValidationProcess.validate(candidate.id)
+            id_validation = ValidationProcess.execute(candidate.id)
             if not id_validation.is_success():
                 return ValidationResult(exception=id_validation.exception)
             
-            actor_validator = BoardActorValidator.validate(event.actor, event.execution_environment)
+            actor_validator = BoardActorValidator.execute(event.actor, event.execution_environment)
             if actor_validator.is_failure():
                 return ValidationResult.failure(actor_validator.exception)
             
@@ -99,7 +99,7 @@ class OldPromotionEventValidationProcess(ValidationProcess[PromotionEvent]):
                 return ValidationResult.failure(square_search_result.exception)
             square = cast(Square, square_search_result.payload)
             
-            resource_validation = TravelResourceValidator.validate(event.square, event.execution_environment)
+            resource_validation = TravelResourceValidator.execute(event.square, event.execution_environment)
             if resource_validation.is_failure():
                 return ValidationResult(exception=resource_validation.exception)
             

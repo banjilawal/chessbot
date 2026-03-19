@@ -84,7 +84,7 @@ class CoordContextBuilder(Builder[CoordContext]):
         # Build the row_column CoordContext if both flags are enabled.
         if row is not None and column is not None:
             # Handle the case that, the row is not certified safe.
-            row_validation = number_validator.validate(candidate=row, floor=0, ceiling=BOARD_DIMENSION - 1)
+            row_validation = number_validator.execute(candidate=row, floor=0, ceiling=BOARD_DIMENSION - 1)
             if row_validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
@@ -94,7 +94,7 @@ class CoordContextBuilder(Builder[CoordContext]):
                     )
                 )
             # Handle the case that, the column is not certified safe.
-            column_validation = number_validator.validate(candidate=column, floor=0, ceiling=BOARD_DIMENSION - 1)
+            column_validation = number_validator.execute(candidate=column, floor=0, ceiling=BOARD_DIMENSION - 1)
             if column_validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
@@ -108,7 +108,7 @@ class CoordContextBuilder(Builder[CoordContext]):
         
         # Build the row CoordContext if it's the only flag enabled.
         if row is not None:
-            validation = number_validator.validate(candidate=row, floor=0, ceiling=BOARD_DIMENSION-1)
+            validation = number_validator.execute(candidate=row, floor=0, ceiling=BOARD_DIMENSION - 1)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
@@ -122,7 +122,7 @@ class CoordContextBuilder(Builder[CoordContext]):
         
         # Build the column CoordContext if it's the only flag enabled.
         if column is not None:
-            validation = number_validator.validate(candidate=column, floor=0, ceiling=BOARD_DIMENSION - 1)
+            validation = number_validator.execute(candidate=column, floor=0, ceiling=BOARD_DIMENSION - 1)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(

@@ -1,4 +1,4 @@
-# src/logic/team/hash/builder/wrapper.py
+# src/logic/team/hash/builder/worker.py
 
 """
 Module: logic.team.hash.builder.wrapper

@@ -99,11 +99,11 @@ class CoordService(IntegrityService[Coord]):
         method = "CoordService.add_vector_to_coord"
         try:
             # Certify the coord param
-            coord_validation = self._validator.validate(candidate=coord)
+            coord_validation = self._validator.execute(candidate=coord)
             if coord_validation.is_failure:
                 return BuildResult.failure(coord_validation.exception)
             # Certify the vector param.
-            vector_validation = vector_service.validator.validate(candidate=vector)
+            vector_validation = vector_service.validator.execute(candidate=vector)
             if vector_validation.is_failure:
                 return BuildResult.failure(vector_validation.exception)
             
@@ -152,11 +152,11 @@ class CoordService(IntegrityService[Coord]):
         method = "CoordService.multiply_coord_by_scalar"
         try:
             # Certify the coord param
-            coord_validation = self._validator.validate(candidate=coord)
+            coord_validation = self._validator.execute(candidate=coord)
             if coord_validation.is_failure:
                 return BuildResult.failure(coord_validation.exception)
             # Certify the scalar param
-            scalar_validation = scalar_service.validator.validate(candidate=scalar)
+            scalar_validation = scalar_service.validator.execute(candidate=scalar)
             if scalar_validation.is_failure:
                 return BuildResult.failure(scalar_validation.exception)
             
@@ -175,12 +175,12 @@ class CoordService(IntegrityService[Coord]):
         method = "CoordService.euclidean_distance"
         
         # Handle the case that, the u is not certified as safe.
-        u_validation = self._validator.validate(candidate=u)
+        u_validation = self._validator.execute(candidate=u)
         if u_validation.is_failure:
             return ComputationResult.failure(u_validation.exception)
         
         # Handle the case that, v is not certified as safe.
-        v_validation = self._validator.validate(candidate=v)
+        v_validation = self._validator.execute(candidate=v)
         if v_validation.is_failure:
             return ComputationResult.failure(v_validation.exception)
         
@@ -216,7 +216,7 @@ class CoordService(IntegrityService[Coord]):
         method = "CoordService.convert_vector_to_coord"
         try:
             # Certify the vector param
-            vector_validation = vector_service.validator.validate(candidate=vector)
+            vector_validation = vector_service.validator.execute(candidate=vector)
             if vector_validation.is_failure:
                 return BuildResult.failure(vector_validation.exception)
             # After the vector is certified return the BuildResult.

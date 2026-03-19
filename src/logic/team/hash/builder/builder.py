@@ -31,7 +31,7 @@ class TeamHashBuilder(Builder[TeamHash]):
         method = "TeamHashBuilder.build"
         
         # Handle the case that, the white_team is not certified as safe.
-        white_team_validation_result = team_validator.validate(white_team)
+        white_team_validation_result = team_validator.execute(white_team)
         if white_team_validation_result.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(

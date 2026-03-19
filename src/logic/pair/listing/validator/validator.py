@@ -31,7 +31,7 @@ class PairListValidationProcess(ValidationProcess[PairList]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate: Any) -> ValidationResult[PairList]:
+    def execute(cls, candidate: Any) -> ValidationResult[PairList]:
         """
         Action:
             1.  Send an exception chain in the ValidationResult if, the candidate is either

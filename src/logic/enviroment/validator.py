@@ -33,7 +33,7 @@ class TurnSceneValidationProcess(ValidationProcess[TurnScene]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate) -> ValidationResult[TurnScene]:
+    def execute(cls, candidate) -> ValidationResult[TurnScene]:
         """"""
         method = "TurnSceneValidationProcess.validate"
         
@@ -50,11 +50,11 @@ class TurnSceneValidationProcess(ValidationProcess[TurnScene]):
             
             turn_scene = cast(TurnScene, candidate)
             
-            id_validation = IdValidationProcess.validate(turn_scene.id)
+            id_validation = IdValidationProcess.execute(turn_scene.id)
             if id_validation.is_failure():
                 return ValidationResult.failure(id_validation.exception)
 
-            board_validator = BoardValidationProcess.validate(turn_scene.board)
+            board_validator = BoardValidationProcess.execute(turn_scene.board)
             if board_validator.is_failure():
                 return ValidationResult.failure(board_validator.exception)
               
@@ -130,7 +130,7 @@ class TurnSceneValidationProcess(ValidationProcess[TurnScene]):
         method = "TurnSceneValidationProcess._actor_validation_helper"
         
         try:
-            piece_validation = PieceValidator.validate(piece)
+            piece_validation = PieceValidator.execute(piece)
             if piece_validation.is_failure():
                 return ValidationResult.failure(piece_validation.exception)
             

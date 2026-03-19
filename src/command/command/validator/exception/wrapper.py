@@ -1,4 +1,4 @@
-# src/command/command/command/build/validator/wrapper.py
+# src/command/command/command/build/validator/worker.py
 
 """
 Module: command.command.command.build.validator.wrapper

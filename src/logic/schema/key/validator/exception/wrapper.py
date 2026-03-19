@@ -1,4 +1,4 @@
-# src/logic/schema/key/validator/exception/wrapper.py
+# src/logic/schema/key/validator/exception/worker.py
 
 """
 Module: logic.schema.key.validator.exception.wrapper

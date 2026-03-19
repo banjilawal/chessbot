@@ -1,4 +1,4 @@
-# src/logic/game/builder/exception/wrapper.py
+# src/logic/game/builder/exception/worker.py
 
 """
 Module: logic.game.builder.exception.wrapper

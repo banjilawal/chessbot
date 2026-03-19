@@ -1,4 +1,4 @@
-# src/logic/square/service/visitation/exception/terminate/wrapper.py
+# src/logic/square/service/visitation/exception/terminate/worker.py
 
 """
 Module: logic.square.service.visitation.exception.terminate.wrapper

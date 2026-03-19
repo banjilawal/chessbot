@@ -1,4 +1,4 @@
-# src/logic/coord/validator/exception/wrapper.py
+# src/logic/coord/validator/exception/worker.py
 
 """
 Module: logic.coord.validator.exception.wrapper

@@ -87,7 +87,7 @@ class CoordFinder(DataFinder[Coord]):
                 )
             )
         # handle the case that, context fails integrity tests.
-        context_validation = context_validator.validate(context)
+        context_validation = context_validator.execute(context)
         if context_validation.is_failure:
             # Return the exception chain on failure.
             return SearchResult.failure(

@@ -30,7 +30,7 @@ class PersonaValidationProcess(ValidationProcess[Persona]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate: Any, ) -> ValidationResult[Persona]:
+    def execute(cls, candidate: Any, ) -> ValidationResult[Persona]:
         """
         Action:
             1.  Send an exception chain in the ValidationResult if, the candidate is either

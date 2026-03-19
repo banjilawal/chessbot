@@ -31,7 +31,7 @@ class NodeTreeValidationProcess(ValidationProcess[NodeTree]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate: Any) -> ValidationResult[NodeTree]:
+    def execute(cls, candidate: Any) -> ValidationResult[NodeTree]:
         """
         Action:
             1.  Send an exception chain in the ValidationResult if, the candidate is either

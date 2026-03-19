@@ -142,7 +142,7 @@ class EdgeContextBuilder(Builder[EdgeContext]):
         
         # Build the coord EdgeContext if its flag is enabled.
         if coord is not None:
-            validation = coord_service.validator.validate(coord)
+            validation = coord_service.validator.execute(coord)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
@@ -156,7 +156,7 @@ class EdgeContextBuilder(Builder[EdgeContext]):
         
         # Build the board EdgeContext if its flag is enabled.
         if board is not None:
-            validation = board_service.validator.validate(candidate=board)
+            validation = board_service.validator.execute(candidate=board)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
@@ -170,7 +170,7 @@ class EdgeContextBuilder(Builder[EdgeContext]):
         
         # Build the occupant EdgeContext if its flag is enabled.
         if token is not None:
-            validation = token_service.validator.validate(candidate=token)
+            validation = token_service.validator.execute(candidate=token)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(

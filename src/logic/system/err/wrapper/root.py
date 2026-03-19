@@ -1,4 +1,4 @@
-# src/logic/system/err/wrapper.py
+# src/logic/system/err/worker.py
 
 """
 Module: logic.system.err.wrapper
@@ -12,13 +12,13 @@ from typing import Optional
 
 __all__ = [
     # ======================# WRAPPER_EXCEPTION #======================#
-    "WrapperException",
+    "WorkerException",
 ]
 
 from logic.system import ChessException
 
 # ======================# WRAPPER_EXCEPTION #======================#
-class WrapperException(ChessException):
+class WorkerException(ChessException):
     """
     Role:
         -   Wrapper Method Identifier

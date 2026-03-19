@@ -22,7 +22,7 @@ class BlockingEventValidationProcess(ValidationProcess[BlockingEvent]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate: BlockingEvent) -> ValidationResult[BlockingEvent]:
+    def execute(cls, candidate: BlockingEvent) -> ValidationResult[BlockingEvent]:
         """"""
         method = "BlockingEventValidationProcess.validate"
         
@@ -39,18 +39,18 @@ class BlockingEventValidationProcess(ValidationProcess[BlockingEvent]):
             
             event = cast(BlockingEvent, candidate)
             
-            id_validation = IdValidationProcess.validate(event.visitor_id)
+            id_validation = IdValidationProcess.execute(event.visitor_id)
             if id_validation.is_failure():
                 return ValidationResult.failure(id_validation.exception)
             
-            actor_validation = BoardActorValidator.validate(
+            actor_validation = BoardActorValidator.execute(
                 actor=event.actor,
                 environment=event.execution_environment
             )
             if actor_validation.is_failure():
                 return ValidationResult.failure(actor_validation.exception)
             
-            resource_validation = TravelResourceValidator.validate(
+            resource_validation = TravelResourceValidator.execute(
                 resource=event.blocked_square,
                 environment=event.execution_environment
             )
@@ -62,7 +62,7 @@ class BlockingEventValidationProcess(ValidationProcess[BlockingEvent]):
                     ActorBlockingOwnSquareException(f"{method}: {ActorBlockingOwnSquareException.MSG}")
                 )
             
-            blocker_validation = PieceValidator.validate(event.friend)
+            blocker_validation = PieceValidator.execute(event.friend)
             if blocker_validation.is_failure():
                 return ValidationResult(exception=blocker_validation.exception)
             
