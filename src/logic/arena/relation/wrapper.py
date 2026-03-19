@@ -25,7 +25,7 @@ class ArenaTeamAnalysisException(AnalysisException):
         status has been evaluated.
 
     Super Class:
-        *   WorkerException
+        *   WorkException
 
     Provides:
 

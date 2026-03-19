@@ -25,7 +25,7 @@ class TeamRosterRelationAnalysisException(TeamRosterException):
         status has been evaluated.
 
     Super Class:
-        *   WorkerException
+        *   WorkException
 
     Provides:
 

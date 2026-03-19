@@ -15,11 +15,11 @@ __all__ = [
     "OperationException",
 ]
 
-from logic.system import WorkerException
+from logic.system import WorkException
 
 
 # ======================# OPERATION_FAILURE #======================#
-class OperationException(WorkerException):
+class OperationException(WorkException):
     """
     Role:
         -   Wrapper Method Identifier
@@ -61,7 +61,7 @@ class OperationException(WorkerException):
     Provides:
     
     Super Class:
-        WorkerException
+        WorkException
     """
     MSG = "Failure in method."
     ERR_CODE = "OPERATION_FAILURE"

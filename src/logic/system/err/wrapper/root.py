@@ -12,13 +12,13 @@ from typing import Optional
 
 __all__ = [
     # ======================# WRAPPER_EXCEPTION #======================#
-    "WorkerException",
+    "WorkException",
 ]
 
 from logic.system import ChessException
 
 # ======================# WRAPPER_EXCEPTION #======================#
-class WorkerException(ChessException):
+class WorkException(ChessException):
     """
     Role:
         -   Wrapper Method Identifier

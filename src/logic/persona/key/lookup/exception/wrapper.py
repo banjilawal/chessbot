@@ -19,7 +19,7 @@ __all__ = [
 # ======================# PERSONA_LOOKUP_FAILURE #======================#
 class PersonaLookupFailedException(PersonaException, LookupException):
     """
-    Role:WorkerException, Encapsulation
+    Role:WorkException, Encapsulation
 
     Responsibilities:
     1.  Wrap debug exceptions indicating why a candidate failed its validation as a Square. The exception chain traces the ultimate source of failure.
