@@ -26,7 +26,7 @@ class SquareEntryProcess:
         - Process Runner
 
     Responsibilities:
-        1.  Square entry process owner.
+        1.  Square entry exception owner.
         2.  Preserve original and updated square data for rollbacks.
         3.  Ensure both the token and the squares are consistent throughout
             square entry lifecycle.

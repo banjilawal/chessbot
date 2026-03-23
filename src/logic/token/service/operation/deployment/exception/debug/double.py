@@ -20,19 +20,13 @@ from logic.token import TokenDebugException
 # ======================# TOKEN_ALREADY_DEPLOYED_EXCEPTION #======================#
 class TokenAlreadyDeployedException(TokenDebugException):
     """
-    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:
+        -   Error Variable Identifier
+        -   Exception Chain Layer 2
+        -   Exception Messaging
 
     Responsibilities:
-    1.  Indicate that a token has already been deployed on the board..
-
-    Super Class:
-        *   TokenDebugException
-
-    Provides:
-
-
-    # INHERITED ATTRIBUTES:
-        *   TokenDebugException class for inherited attributes.
+        1.  Indicate that a token has already been deployed on the board..
 
     Attributes:
         var: Optional[str]
@@ -40,12 +34,11 @@ class TokenAlreadyDeployedException(TokenDebugException):
         msg: Optional[str]
         ex: Optional[Exception]
         err_code: Optional[str]
-
-    # LOCAL METHODS:
-    None
-
-    # INHERITED METHODS:
-        *   See TokenDebugException class for inherited methods.
+        
+    Provides:
+    
+    Super Class:
+        TokenDebugException
     """
     ERR_CODE = "TOKEN_ALREADY_DEPLOYED_EXCEPTION"
     MSG = "The token has already been deployed."

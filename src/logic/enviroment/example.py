@@ -42,7 +42,7 @@
 #
 # board = cast(Board, environment_validation.payload)
 #
-# # Check if the square_name is on the board. If there is going to be a problem finding the square_name on
+# # CheckSquare if the square_name is on the board. If there is going to be a problem finding the square_name on
 # # the board an earlier check was likely to fail. If this fails there is probably a entity_service integrity
 # # or consistency problem.
 # square_search = BoardSquareFinder.searcher(

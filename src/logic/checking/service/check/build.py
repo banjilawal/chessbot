@@ -1,4 +1,4 @@
-# src/logic/mate/post/check/process.py
+# src/logic/mate/post/check/exception.py
 
 """
 Module: logic.mate.post.check.builder

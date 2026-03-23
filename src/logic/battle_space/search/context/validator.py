@@ -1,4 +1,4 @@
-# src/logic/battle_space/searcher/process.py
+# src/logic/battle_space/searcher/exception.py
 
 """
 Module: logic.battle_space.searcher.coord_stack_validator

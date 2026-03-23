@@ -94,10 +94,10 @@ class TokenCollisionAnalysis(CollisionAnalysis[Token]):
                     collider=token,
                     val=f"{token.id}",
                     exception=TokenIdCollisionException(
-                            var="id",
-                            val=f"{token.id}",
-                            msg=TokenIdCollisionException.MSG,
-                            err_code=TokenIdCollisionException.ERR_CODE
+                        var="id",
+                        val=f"{token.id}",
+                        msg=TokenIdCollisionException.MSG,
+                        err_code=TokenIdCollisionException.ERR_CODE
                     )
                 )
             # Handle the case that, the target shares its designation with a collider_candidates member.
@@ -109,10 +109,10 @@ class TokenCollisionAnalysis(CollisionAnalysis[Token]):
                     collider=token,
                     val=f"{token.designation}",
                     exception=TokenDesignationCollisionException(
-                            var="designation",
-                            val=f"{token.designation}",
-                            msg=TokenDesignationCollisionException.MSG,
-                            err_code=TokenDesignationCollisionException.ERR_CODE,
+                        var="designation",
+                        val=f"{token.designation}",
+                        msg=TokenDesignationCollisionException.MSG,
+                        err_code=TokenDesignationCollisionException.ERR_CODE,
                     )
                 )
             # Handle the case that, the target shares its opening_square_name with a collider_candidates member.
@@ -124,10 +124,10 @@ class TokenCollisionAnalysis(CollisionAnalysis[Token]):
                     collider=token,
                     val=f"{token.opening_square_name}",
                     exception=TokenOpeningSquareCollisionException(
-                            var="opening_square_name",
-                            val=f"{token.opening_square_name}",
-                            msg=TokenOpeningSquareCollisionException.MSG,
-                            err_code=TokenOpeningSquareCollisionException.ERR_CODE,
+                        var="opening_square_name",
+                        val=f"{token.opening_square_name}",
+                        msg=TokenOpeningSquareCollisionException.MSG,
+                        err_code=TokenOpeningSquareCollisionException.ERR_CODE,
                     )
                 )
         # --- Send the no collisions detected report. ---#

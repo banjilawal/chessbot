@@ -1,4 +1,4 @@
-# src/logic/neighbor/process.py
+# src/logic/neighbor/exception.py
 
 """
 Module: logic.neighbor.neighbor

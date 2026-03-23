@@ -1,4 +1,4 @@
-# src/logic/chess/owner/travel/occupation/process.py
+# src/logic/chess/owner/travel/occupation/exception.py
 
 """
 Module: `logic.owner.travel.occupation.coord_stack_validator`

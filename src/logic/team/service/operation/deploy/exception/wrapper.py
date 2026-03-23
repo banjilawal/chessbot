@@ -27,7 +27,7 @@ class DeployTeamException(DeletionException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that, the team deployment process was aborted by an error.
+        1.  Indicate that, the team deployment exception was aborted by an error.
         2.  Identify the method where the failure occurred.
 
     Attributes:

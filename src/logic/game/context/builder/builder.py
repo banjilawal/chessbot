@@ -1,4 +1,4 @@
-# src/logic/game/builder/process.py
+# src/logic/game/builder/exception.py
 
 """
 Module: logic.game.builder.builder

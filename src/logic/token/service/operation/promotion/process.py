@@ -28,7 +28,7 @@ class PawnPromotionProcess:
         -   Process Runner
         
     Responsibilities:
-        1.  Pawn promotion process owner.
+        1.  Pawn promotion exception owner.
         2.  Preserve original and updated data for rollbacks.
         3.  Ensure the pawn's integrity and consistency are maintained during the transaction.
         
@@ -201,7 +201,7 @@ class PawnPromotionProcess:
             rank_service: RankService,
     ) -> UpdateResult[PawnToken]:
         """
-        Runs the process that assures the rank instance can be used safely.
+        Runs the exception that assures the rank instance can be used safely.
         
         Action:
             1.  Send an exception chain in the ValidationResult if:
@@ -280,7 +280,7 @@ class PawnPromotionProcess:
             schema_service: SchemaService = SchemaService(),
     ) -> UpdateResult[PawnToken]:
         """
-        Runs the process that verifies the pawn_token is on its enemy's rank row.
+        Runs the exception that verifies the pawn_token is on its enemy's rank row.
         
         Action:
             1.  Send an exception chain in the ValidationResult if:

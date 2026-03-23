@@ -1,7 +1,7 @@
-# src/logic/square/database/kernel/operation/crud/deploy/exception/rank.py
+# src/logic/square/database/kernel/operation/crud/deployment/exception/rank.py
 
 """
-Module: logic.square.database.kernel.operation.crud.deploy.exception.rank
+Module: logic.square.database.kernel.operation.crud.deployment.exception.rank
 Author: Banji Lawal
 Created: 2026-02-22
 version: 1.0.0

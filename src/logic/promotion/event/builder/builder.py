@@ -1,4 +1,4 @@
-# src/logic/promotion/event/builder/process.py
+# src/logic/promotion/event/builder/exception.py
 
 """
 Module: logic.promotion.event.builder.builder

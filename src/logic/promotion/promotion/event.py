@@ -1,4 +1,4 @@
-# src/logic/travel/promotion/process.py
+# src/logic/travel/promotion/exception.py
 
 """
 Module: logic.travel.promotion.event

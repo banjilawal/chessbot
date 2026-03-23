@@ -1,4 +1,4 @@
-# src/logic/environment/process.py
+# src/logic/environment/exception.py
 
 """
 Module: logic.environment.builder

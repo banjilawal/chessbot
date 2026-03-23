@@ -1,4 +1,4 @@
-# src/logic/board/analyzer/analyzer.py
+# src/logic/board/analyzer/process.py
 
 """
 Module: logic.board.analyzer.analyzer

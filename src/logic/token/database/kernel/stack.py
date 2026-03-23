@@ -10,6 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import List, Optional
 
+from logic.board import Board
 from logic.system import (
      SearchResult, StackService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, IdFactory
 )
@@ -102,6 +103,7 @@ class TokenStackService(StackService[Token]):
         self._dispatcher = dispatcher
         self._context_service = context_service
         self._state = TokenStackState.NOT_READY_FORD_DEPLOYMENT
+
 
     @property
     def size(self) -> int:

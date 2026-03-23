@@ -20,36 +20,27 @@ from logic.system import ValidationException
 # ======================# TOKEN_VALIDATION_FAILURE #======================#
 class TokenValidationException(ValidationException):
     """
-    Role:Exception Chain Layer 1, Exception Messaging
-    # TASK: Worker Method Identifier
+    Role:
+        - Worker Method Identification
+        - Exception Chain Layer 1
+        - Exception Messaging
 
     Responsibilities:
-    1.  Identify the TokenValidation method where the process failed.
-
-    Super Class:
-        *   ValidationException
+        1.  Identify the TokenValidation method where the exception failed.
+        
+    Attributes:
+        op: Optional[str]
+        ex: Optional[str]
+        msg: Optional[str]
+        mthd: Optional[str]
+        title: Optional[str]
+        err_code: Optional[str]
+        rslt_type: Optional[str]
 
     Provides:
 
-    # LOCAL ATTRIBUTES:
-   None
-   
-    # INHERITED ATTRIBUTES:
-        *   See ValidationException class for inherited attributes.
-
-    Attributes:
-        *   err_code (str)
-        *   msg (str)
-        *   ex (Optional[Exception])
-        *   mthd (Optional[str])
-        *   op (Optional[str])
-        *   rslt_type (Optional[str])
-
-    # LOCAL METHODS:
-   None
-
-    # INHERITED METHODS:
-        *   See ValidationException class for inherited methods.
+    Super:
+        ValidationException
     """
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"

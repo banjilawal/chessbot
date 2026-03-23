@@ -179,7 +179,7 @@ class Scout(BaseModel):
 
 class ExplorationMaster(BaseModel):
   """
-  Orchestrates the scouting process.
+  Orchestrates the scouting exception.
 
   Attributes:
     scouts (List[Scout]): A list of all disabled scout instances.

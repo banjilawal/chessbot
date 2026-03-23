@@ -1,4 +1,4 @@
-# src/logic/token/database/kernel/operation/process.py
+# src/logic/token/database/kernel/operation/exception.py
 
 """
 Module: logic.token.database.kernel.operation.pusher
@@ -25,7 +25,7 @@ class TokenStackPushPusher:
         - Process Runner
 
     Responsibilities:
-        1.  Token insertion process owner.
+        1.  Token insertion exception owner.
         2.  Guarantees all tokens are safe and unique.
 
     Attributes:

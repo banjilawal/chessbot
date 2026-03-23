@@ -1,4 +1,4 @@
-# src/logic/neighbor/searcher/process.py
+# src/logic/neighbor/searcher/exception.py
 
 """
 Module: logic.neighbor.searcher.builder

@@ -25,7 +25,7 @@ class NodeStackServiceProductionException(BuildException):
     # TASK: Worker Method Identifier
 
     Responsibilities:
-    1.  Identify the NodeStackServiceProducer method where the process failed.
+    1.  Identify the NodeStackServiceProducer method where the exception failed.
 
     Super Class:
         *   BuildException

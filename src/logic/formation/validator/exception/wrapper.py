@@ -23,7 +23,7 @@ class FormationValidationException(ValidationException):
     Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Identify the FormationValidationProcess method where the process failed.
+    1.  Identify the FormationValidationProcess method where the exception failed.
 
     Super Class:
         *   ValidationException

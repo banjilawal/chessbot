@@ -1,4 +1,4 @@
-# src/logic/formation/key/lookup/process.py
+# src/logic/formation/key/lookup/exception.py
 
 """
 Module: logic.formation.key.lookup.lookup

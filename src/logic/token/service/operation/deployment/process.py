@@ -29,7 +29,7 @@ class TokenDeploymentProcess:
         - Process Runner
         
     Responsibilities:
-        1.  Token deployment process owner.
+        1.  Token deployment exception owner.
         2.  Preserve original and updated data for rollbacks.
         3.  Ensure the token's integrity and consistency are maintained during the transaction.
     

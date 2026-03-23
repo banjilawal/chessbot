@@ -14,24 +14,24 @@ from typing import Optional
 from logic.rank import Rank
 from logic.team import Team
 from logic.token import TokenBoardState, ReadinessState
-from logic.coord import Coord, CoordStack
+from logic.coord import Coord, CoordDatabase
 
 class Token(ABC):
     """
     Role:
         -   Model
         -   Data-Holder
+        
     Responsibilities:
-        1. Keep an immutable record of Coords the Token has occupied.
-        2. Superclass of CombatantPiece, KingPiece, and PawnPiece.
-        3. Cannot be instantiated directly.
+        1. Abstract representation of a chess piece.
+        
     Attributes:
         id: int
         team: Team
         rank: Rank
         designation: str
         roster_number: int
-        positions: CoordStack
+        positions: CoordDatabase
         opening_square_name: str
         current_position: Optional[Coord]
         previous_address: Optional[Coord]
@@ -44,14 +44,14 @@ class Token(ABC):
         - is_disabled(self) -> bool
         - is_enemy(self, token: Token) -> bool
         
-    Parent:
+    Super Class:
     """
     _id: int
     _team: Team
     _rank: Rank
     _designation: str
     _roster_number: int
-    _positions: CoordStack
+    _positions: CoordDatabase
     _opening_square_name: str
     _current_position: Optional[Coord]
     _previous_address: Optional[Coord]
@@ -66,7 +66,7 @@ class Token(ABC):
             designation: str,
             roster_number: int,
             opening_square_name: str,
-            positions: CoordStack = CoordStack(),
+            positions: CoordDatabase = CoordDatabase(),
     ):
         """
         Args:
@@ -76,6 +76,7 @@ class Token(ABC):
             designation: str
             roster_number: int
             opening_square_name: str
+            positions: CoordDatabase
         """
         self._id = id
         self._team = team
@@ -84,7 +85,7 @@ class Token(ABC):
         self._designation = designation
         self._roster_number = roster_number
         self._opening_square_name = opening_square_name
-        self._current_position = self._positions.current_coord
+        self._current_position = self._positions.current_item
         self._previous_address = self._positions.previous_coord
         self._token_board_state = TokenBoardState.NEVER_BEEN_PLACED
         self._readiness_state = ReadinessState.NOT_INITIALIZED
@@ -122,7 +123,7 @@ class Token(ABC):
         self._readiness_state = readiness_state
     
     @property
-    def positions(self) -> CoordStack:
+    def positions(self) -> CoordDatabase:
         return self._positions
     
     @property

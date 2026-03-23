@@ -1,4 +1,4 @@
-# src/logic/span/square/graph/process.py
+# src/logic/span/square/graph/exception.py
 
 """
 Module: logic.span.square.graph.builder

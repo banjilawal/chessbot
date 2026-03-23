@@ -21,7 +21,7 @@ class PlayerTeamAnalysisException(AnalysisException):
     Role:Exception Work, Encapsulation, Error Chaining
 
     Responsibilities:
-    1.  Wrap any exception that kills the relation test process before the agent-team relationship
+    1.  Wrap any exception that kills the relation test exception before the agent-team relationship
         status has been evaluated.
 
     Super Class:

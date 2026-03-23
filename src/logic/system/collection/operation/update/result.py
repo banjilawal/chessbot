@@ -71,6 +71,15 @@ class UpdateResult(DataResult[T], Generic[T]):
         )
     
     @property
+    def is_nothing_to_update(self) -> bool:
+        return (
+                self._updated is None and
+                self.original is None and
+                self.exception is None and
+                self.state == UpdateResultEnum.ORIGINAL_AND_UPDATE_ARE_SAME
+        )
+    
+    @property
     def is_timed_out(self) -> bool:
         return (
                 self._updated is None and
@@ -107,9 +116,19 @@ class UpdateResult(DataResult[T], Generic[T]):
         )
     
     @classmethod
+    def nothing_to_update(cls, ) -> UpdateResult[T]:
+        method = f"{cls.__name__}.nothing_to_update"
+        return cls(
+            original=None,
+            updated=None,
+            exception=None,
+            state=UpdateResultState(classification=UpdateResultEnum.ORIGINAL_AND_UPDATE_ARE_SAME),
+        )
+    
+    @classmethod
     def success(cls, payload: T) -> UpdateResult[T]:
         method = "UpdateResult.success"
-        return cls.update_failure(
+        return cls(
             original=payload,
             exception=MethodImplementationException(
                 f"UpdateResult does not support Result.success. Use UpdateResult.update_success instead."
@@ -122,7 +141,8 @@ class UpdateResult(DataResult[T], Generic[T]):
         return cls.update_failure(
             original=None,
             exception=MethodImplementationException(
-                f"UpdateResult does not support Result.failure. Use UpdateResult.update_failure instead."
+                f"UpdateResult does not support Result.failure. Use UpdateResult.update_failure instead.",
+                ex=exception
             )
         )
     
@@ -132,6 +152,10 @@ class UpdateResult(DataResult[T], Generic[T]):
         return cls.update_timed_out(
             original=None,
             exception=MethodImplementationException(
-                f"UpdateResult does not support Result.timed_out. Use UpdateResult.update_timed instead."
+                f"UpdateResult does not support Result.timed_out. Use UpdateResult.update_timed instead.",
+                ex=exception
             )
         )
+    
+
+    

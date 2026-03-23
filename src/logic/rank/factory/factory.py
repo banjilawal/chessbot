@@ -1,4 +1,4 @@
-# src/logic/rank/build/process.py
+# src/logic/rank/build/exception.py
 
 """
 Module: logic.rank.build.build

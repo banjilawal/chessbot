@@ -25,7 +25,7 @@ class SchemaValidationException(ValidationException):
     # TASK: Worker Method Identifier
 
     Responsibilities:
-    1.  Identify the SchemaValidationProcess method where the process failed.
+    1.  Identify the SchemaValidationProcess method where the exception failed.
 
     Super Class:
         *   ValidationException

@@ -1,4 +1,4 @@
-# src/logic/vector/builder/process.py
+# src/logic/vector/builder/exception.py
 
 """
 Module: logic.vector.builder.__init__

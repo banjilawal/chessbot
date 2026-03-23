@@ -1,4 +1,4 @@
-# src/logic/system/collection/hash/lookup/process.py
+# src/logic/system/collection/hash/lookup/exception.py
 
 """
 Module: logic.system.collection.hash.lookup.lookup

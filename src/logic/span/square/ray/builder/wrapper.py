@@ -24,7 +24,7 @@ class SquareRayBuildException(BuildException):
     # TASK: Worker Method Identifier
 
     Responsibilities:
-    1.  Identify the SquareRayBuildProcess method where the process failed.
+    1.  Identify the SquareRayBuildProcess method where the exception failed.
 
     Super Class:
         *   BuildException

@@ -1,4 +1,4 @@
-# src/logic/square/database/kernel/operation/process.py
+# src/logic/square/database/kernel/operation/exception.py
 
 """
 Module: logic.square.database.kernel.operation.pusher
@@ -25,7 +25,7 @@ class SquareStackPusher:
         - Process Runner
 
     Responsibilities:
-        1.  Square insertion process owner.
+        1.  Square insertion exception owner.
         2.  Guarantees all squares are safe and unique.
 
     Attributes:

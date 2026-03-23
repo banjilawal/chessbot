@@ -24,7 +24,7 @@ class BoardContextValidationException(ValidationException):
     # TASK: Worker Method Identifier
 
     Responsibilities:
-    1.  Identify the BoardValidationProcess method where the process failed.
+    1.  Identify the BoardValidationProcess method where the exception failed.
 
     Super Class:
         *   ValidationException

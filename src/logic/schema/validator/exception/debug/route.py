@@ -25,7 +25,7 @@ class SchemaValidationRouteException(ResultException, ExecutionRouteException):
     Responsibilities:
     1.  Indicate that SchemaValidationProcess did not handle one of the paths necessary to assure a candidate is a
         safe to use Schema. There are different configurations of Schema that are correct. Each
-        configuration must have a testing route for a thorough verification process. If a Schema configuration
+        configuration must have a testing route for a thorough verification exception. If a Schema configuration
         does not have a validation route the last step in the logic will return a ValidationResult containing a
         SchemaValidationRouteException.
     

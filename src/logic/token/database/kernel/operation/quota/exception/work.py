@@ -1,7 +1,7 @@
-# src/logic/token/database/kernel/util/quota/exception/work.py
+# src/logic/token/database/kernel/operation/quota/exception/work.py
 
 """
-Module: logic.token.database.kernel.util.quota.exception.work
+Module: logic.token.database.kernel.operation.quota.exception.work
 Author: Banji Lawal
 Created: 2026-02-21
 version: 1.0.0
@@ -15,11 +15,11 @@ __all__ = [
     "RankQuotaAnalysisException",
 ]
 
-from logic.system import AnalysisException
+from logic.system import OperationException
 
 
 # ======================# RANK_QUOTA_ANALYZER_FAILURE_EXCEPTION #======================#
-class RankQuotaAnalysisException(AnalysisException):
+class RankQuotaAnalysisException(OperationException):
     """
     Role:
         - Worker Method Identification

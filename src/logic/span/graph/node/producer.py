@@ -1,4 +1,4 @@
-# src/logic/span/service/handler/node/process.py
+# src/logic/span/service/handler/node/exception.py
 
 """
 Module: logic.span.service.handler.node.handler

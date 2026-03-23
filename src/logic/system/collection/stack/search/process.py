@@ -1,4 +1,4 @@
-# src/logic/system/collection/stack/search/process.py
+# src/logic/system/collection/stack/search/exception.py
 
 """
 Module: logic.system.collection.stack.search.searcher

@@ -1,4 +1,4 @@
-# src/logic/rank/validator/process.py
+# src/logic/rank/validator/exception.py
 
 """
 Module: logic.rank.validator.build
@@ -58,7 +58,7 @@ class RankValidationProcessFactory(ValidationProcess[Rank]):
     ) -> ValidationResult[Rank]:
         """
         # ACTION:
-        1.  Check if the candidate is null. If so return an exception in a ValidationResult.
+        1.  CheckSquare if the candidate is null. If so return an exception in a ValidationResult.
         2.  If the candidate is not a Rank instance return an exception in a ValidationResult.
         3.  Find the candidate's matching concrete rank and hand off its validation to the
             subclass validator.
@@ -118,7 +118,7 @@ class RankValidationProcessFactory(ValidationProcess[Rank]):
             )
 
 
-# src/logic/rank/build/process.py
+# src/logic/rank/build/exception.py
 
 """
 Module: logic.rank.build.build

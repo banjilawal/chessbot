@@ -1,4 +1,4 @@
-# src/logic/persona/key/lookup/process.py
+# src/logic/persona/key/lookup/exception.py
 
 """
 Module: logic.persona.key.lookup.lookup

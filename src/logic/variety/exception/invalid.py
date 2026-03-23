@@ -23,7 +23,7 @@ class InvalidAgentVarietyException(AgentVarietyException, ValidationException):
     Role:Exception Work
 
     Responsibilities:
-    1.  Parent of exception raised during AgentVariety verification process.
+    1.  Parent of exception raised during AgentVariety verification exception.
     2.  Wraps an exception that hits the try-finally block of an AgentVariety certifying method.
 
     Super Class:

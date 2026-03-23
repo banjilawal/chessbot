@@ -24,7 +24,7 @@ class SymmetricEdgeBuildException(BuildException):
     # TASK: Worker Method Identifier
 
     Responsibilities:
-    1.  Identify the NodeEdgeHandler method where the process failed.
+    1.  Identify the NodeEdgeHandler method where the exception failed.
 
     Super Class:
         *   BuildException

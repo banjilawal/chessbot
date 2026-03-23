@@ -28,8 +28,8 @@ class CollisionAnalysisException(OperationException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate a CollisionAnalysis process was aborted because of an error.
-        2.  Identify the process' method where the failure occurred.
+        1.  Indicate a CollisionAnalysis exception was aborted because of an error.
+        2.  Identify the exception' method where the failure occurred.
 
     Attributes:
         op: Optional[str]

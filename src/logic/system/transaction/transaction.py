@@ -36,7 +36,7 @@ class Transaction(ABC, Generic[V]):
     def execute(self) -> TransactionResult:
         """
         # ACTION:
-        Fire a process from the event.
+        Fire a exception from the event.
     
         # PARAMETERS:
         None

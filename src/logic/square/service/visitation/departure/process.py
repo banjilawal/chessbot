@@ -1,7 +1,7 @@
-# src/logic/square/service/visitation/departure/process.py
+# src/logic/square/service/visitation/departure/exception.py
 
 """
-Module: logic.square.service.visitation.departure.process
+Module: logic.square.service.visitation.departure.exception
 Author: Banji Lawal
 Created: 2026-02-22
 version: 1.0.0
@@ -23,7 +23,7 @@ class SquareDepartureProcess:
         - Process Runner
         
     Responsibilities:
-        1.  Square departure process owner.
+        1.  Square departure exception owner.
         2.  Ensure both the token and the squares are consistent throughout
             square departure lifecycle.
 

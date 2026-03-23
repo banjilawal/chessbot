@@ -1,4 +1,4 @@
-# src/logic/arena/process.py
+# src/logic/arena/exception.py
 
 """
 Module: logic.arena.builder

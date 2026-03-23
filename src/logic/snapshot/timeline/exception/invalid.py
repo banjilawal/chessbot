@@ -24,7 +24,7 @@ class InvalidGameTimelineException(GameTimelineException, ValidationException):
     Role:Exception Work
 
     Responsibilities:
-    1.  Parent of exception raised during GameTimeline verification process.
+    1.  Parent of exception raised during GameTimeline verification exception.
     2.  Wraps an exception that hits the try-finally block of an GameTimelineValidator method.
 
     Super Class:

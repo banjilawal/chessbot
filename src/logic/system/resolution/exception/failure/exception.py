@@ -38,7 +38,7 @@ class ResolutionFailedException(ResolutionException):
     """
     # RESPONSIBILITY
     Raised when searching with a globally unique attribute like an id and
-    the resolution process shows the entity is a orphan
+    the resolution exception shows the entity is a orphan
 
 
     # RELATED EXCEPTION
@@ -52,7 +52,7 @@ class ResolutionFailedException(ResolutionException):
         *   TravelException
     """
     ERR_CODE = "RESOLUTION_FAILED_EXCEPTION"
-    MSG = "The resolution process failed to break the attribute conflict."
+    MSG = "The resolution exception failed to break the attribute conflict."
 
 
 

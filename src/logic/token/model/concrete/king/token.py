@@ -9,6 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
+from logic.coord import CoordDatabase
 from logic.rank import King
 from logic.team import Team
 from logic.token import Token, TokenBoardState, ReadinessState
@@ -16,38 +17,36 @@ from logic.token import Token, TokenBoardState, ReadinessState
 
 class KingToken(Token):
     """
-    Role:Data-Holder, Abstract Data Type
+    Role:
+        -   Model
+        -   Data-Holder
 
     Responsibilities:
-    1.  Represents a Token with a King's Rank and properties.
-    2.  Cannot be captured on placed in check or checkmated.
-
-    Super Class:
-        *   Token
-
-    Provides:
-
-
-    # INHERITED ATTRIBUTES:
-        *   See Token class for inherited attributes.
+        1. Represent a piece with a king's rank.
 
     Attributes:
-        *   id (int)
-        *   team (Team)
-        *   rank (Rank)
-        *   designation (str)
-        *   roster_number (int)
-        *   opening_square_name (str)
+        id: int
+        team: Team
+        rank: Rank
+        designation: str
+        roster_number: int
+        positions: CoordDatabase
+        opening_square_name: str
+        current_position: Optional[Coord]
+        previous_address: Optional[Coord]
+        token_board_state: TokenBoardState
+        readiness_state: ReadinessState
 
-    Methods:
-        *   is_in_check(self) -> bool
-        *   is_checkmated(self) -> bool
-        *   is_active(self) -> bool
-        *   is_disabled(self) -> bool
+    Provides:
+        - is_checkmated() -> bool
+        - is_active() -> bool
+        - is_disabled() -> bool
+        - is_in_check() -> bool
 
-    # INHERITED METHODS:
-        *   See Token class for inherited methods.
+    Super Class:
+        Token
     """
+
     def __init__(
             self,
             id: int,
@@ -55,7 +54,17 @@ class KingToken(Token):
             designation: str,
             roster_number: int,
             opening_square_name: str,
+            positions: CoordDatabase = CoordDatabase(),
     ):
+        """
+        Args:
+            id: int
+            team: Team
+            designation: str
+            roster_number: int
+            opening_square_name: str
+            positions: CoordDatabase
+        """
         super().__init__(
             id=id,
             team=team,
@@ -63,6 +72,7 @@ class KingToken(Token):
             designation=designation,
             roster_number=roster_number,
             opening_square_name=opening_square_name,
+            positions=positions,
         )
      
     @property

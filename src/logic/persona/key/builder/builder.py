@@ -1,4 +1,4 @@
-# src/logic/persona/builder/process.py
+# src/logic/persona/builder/exception.py
 
 """
 Module: logic.persona.builder.builder

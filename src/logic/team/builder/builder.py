@@ -1,4 +1,4 @@
-# src/logic/team/builder/process.py
+# src/logic/team/builder/exception.py
 
 """
 Module: logic.team.builder.builder
@@ -180,7 +180,7 @@ class TeamBuildProcess(BuildProcess[Team]):
         return ValidationResult.success(4)
 
 
-# src/logic/square/builder/process.py
+# src/logic/square/builder/exception.py
 
 """
 Module: logic.square.builder.builder
@@ -364,7 +364,7 @@ class SquareBuildProcess(BuildProcess[Square]):
         """
         method = "SquareBuildProcess._build_square_board_relationship"
         
-        # If the item does not have  a fully bidirectional relationship with the board process the registration.
+        # If the item does not have  a fully bidirectional relationship with the board exception the registration.
         relation_analysis = board_service.square_relation_analyzer.execute(
             candidate_primary=board,
             candidate_satellite=square

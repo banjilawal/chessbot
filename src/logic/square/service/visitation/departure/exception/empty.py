@@ -27,7 +27,7 @@ class DepartingEmptySquareException(SquareDebugException):
         - Exception Messaging
 
     Responsibilities:
-        1.  Indicate a SquareDeparture process failed because the square was already empty..
+        1.  Indicate a SquareDeparture exception failed because the square was already empty..
 
     Attributes:
         var: Optional[str]

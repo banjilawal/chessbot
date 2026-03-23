@@ -1,4 +1,4 @@
-# src/logic/span/square/span/builder/process.py
+# src/logic/span/square/span/builder/exception.py
 
 """
 Module: logic.span.square.span.builder.builder

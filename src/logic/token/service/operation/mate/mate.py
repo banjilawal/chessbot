@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import List
 
-from logic.token import Check, KingToken
+from logic.token import CheckSquare, KingToken
 
 
 class Checkmate:
     
     _king: KingToken
-    _mates: List[Check]
+    _mates: List[CheckSquare]

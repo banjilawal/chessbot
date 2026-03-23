@@ -1,4 +1,4 @@
-# src/logic/square/database/kernel/operation/process.py
+# src/logic/square/database/kernel/operation/exception.py
 
 """
 Module: logic.square.database.kernel.operation.deployer
@@ -26,12 +26,12 @@ class TokenDeploymentProcess:
         - Process Runner
 
     Responsibilities:
-        1.  Token deployment process owner.
+        1.  Token deployment exception owner.
 
     Attributes:
 
     Provides:
-        -   deploy(
+        -   deployment(
                     cls,
                     square: Square,
                     square_stack: SquareStackService,

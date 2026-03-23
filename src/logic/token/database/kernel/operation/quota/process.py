@@ -1,4 +1,4 @@
-# src/logic/token/database/kernel/operation/quota/analyzer.py
+# src/logic/token/database/kernel/operation/quota/process.py
 
 """
 Module: logic.token.database.kernel.operation.quota.analyzer

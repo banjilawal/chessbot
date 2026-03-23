@@ -48,7 +48,7 @@ The major theme influencing the modules design are
 See the list of exception in the `__all__` list following (e.g., `EventException`,`TransactionException`).
 """
 
-# src/logic/system/travel/process.py
+# src/logic/system/travel/exception.py
 
 """
 Module: logic.system.visitor_id.coord_stack_validator

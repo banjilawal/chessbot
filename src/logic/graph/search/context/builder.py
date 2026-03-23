@@ -1,4 +1,4 @@
-# src/logic/points/searcher/process.py
+# src/logic/points/searcher/exception.py
 
 """
 Module: logic.points.searcher.builder

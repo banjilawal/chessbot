@@ -1,7 +1,7 @@
-# src/logic/square/database/kernel/operation/crud/deploy/exception/duplicate.py
+# src/logic/square/database/kernel/operation/crud/deployment/exception/duplicate.py
 
 """
-Module: logic.square.database.kernel.operation.crud.deploy.exception.duplicate
+Module: logic.square.database.kernel.operation.crud.deployment.exception.duplicate
 Author: Banji Lawal
 Created: 2026-02-22
 version: 1.0.0

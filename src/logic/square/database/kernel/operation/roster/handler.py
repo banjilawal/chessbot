@@ -1,4 +1,4 @@
-# src/logic/square/database/kernel/operation/roster/process.py
+# src/logic/square/database/kernel/operation/roster/exception.py
 
 """
 Module: logic.square.database.kernel.operation.roster.handler

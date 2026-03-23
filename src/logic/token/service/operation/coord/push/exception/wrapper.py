@@ -26,7 +26,7 @@ class TokenPushCoordException(InsertionException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that the TokenPushCoord process was aborted.
+        1.  Indicate that the TokenPushCoord exception was aborted.
         2.  Identify the method where the error occurred.
         
     Attributes:

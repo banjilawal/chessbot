@@ -45,7 +45,7 @@
       * `NegativeIdException`: if candidate is negative `
  
   Constructs team_name new `BlockingEvent` instance with comprehensive checks on the parameters and states during the
-  builder process.
+  builder exception.
 
   Performs individual validate checks on each component to ensure the resulting `BlockingEvent` meets all
   specifications. If all checks are passed, team_name `BlockingEvent` instance will be returned. It is not necessary to perform
@@ -64,7 +64,7 @@
       - On failure: Error information and error details
 
   RAISES:
-    ScanEventBuilderException: Wraps any underlying validate failures that occur during the construction process.
+    ScanEventBuilderException: Wraps any underlying validate failures that occur during the construction exception.
     This includes:
       * `IdValidationException`: if `scanEvent_id` fails validate checks
       * `InvalidNameException`: if `visitor_name` fails validate checks

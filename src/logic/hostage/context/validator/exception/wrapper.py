@@ -24,7 +24,7 @@ class HostageContextValidationException(ValidationException):
     # TASK: Worker Method Identifier
 
     Responsibilities:
-    1.  Identify the HostageValidationProcess method where the process failed.
+    1.  Identify the HostageValidationProcess method where the exception failed.
 
     Super Class:
         *   ValidationException

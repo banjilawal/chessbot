@@ -1,4 +1,4 @@
-# src/command/request/builder/process.py
+# src/command/request/builder/exception.py
 
 """
 Module: command.request.builder.builder

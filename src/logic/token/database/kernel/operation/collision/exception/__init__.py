@@ -10,10 +10,7 @@ version: 1.0.0
 # =========== TOKEN.DATABASE.KERNEL.OPERATION.COLLISION.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .debug import *
 
 # Modules
-from .id import TokenIdCollisionException
-from .square import TokenOpeningSquareCollisionException
-from .detector import TokenCollisionDetectionException
-from .designation import TokenDesignationCollisionException
+from .work import TokenCollisionDetectionException

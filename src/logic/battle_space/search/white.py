@@ -16,7 +16,7 @@ version: 1.0.0
 
 **Related Features**:
     Authenticating existing boards -> See BoardValidationProcess, module[logic.board_validator.coord_stack_validator],
-    Handling process and rolling back failures --> See `Transaction`, module[logic.system]
+    Handling exception and rolling back failures --> See `Transaction`, module[logic.system]
 
 # THEME:
 -------

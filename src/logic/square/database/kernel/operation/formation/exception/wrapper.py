@@ -1,7 +1,7 @@
-# src/logic/square/database/kernel/operation/crud/exception/deploy/work.py
+# src/logic/square/database/kernel/operation/crud/exception/deployment/work.py
 
 """
-Module: logic.square.database.kernel.OPERATION.CRUD.exception.deploy.work
+Module: logic.square.database.kernel.OPERATION.CRUD.exception.deployment.work
 Author: Banji Lawal
 Created: 2026-02-22
 version: 1.0.0

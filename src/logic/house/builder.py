@@ -1,7 +1,7 @@
-# src/logic/house/process.py
+# src/logic/house/exception.py
 
 """
-Module: logic.house.process.py
+Module: logic.house.exception.py
 Author: Banji Lawal
 Created: 2025-11-10
 version: 1.0.0

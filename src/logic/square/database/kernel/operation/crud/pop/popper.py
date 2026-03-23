@@ -22,7 +22,7 @@ class SquareStackPopper:
         - Process Runner
 
     Responsibilities:
-        1.  Square deletion process owner.
+        1.  Square deletion exception owner.
         2.  Prevent deleting from an empty stack.
         
     Attributes:

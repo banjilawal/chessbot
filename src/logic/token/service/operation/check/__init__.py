@@ -13,4 +13,4 @@ version: 1.0.0
 from .build import *
 
 # Modules
-from .check import Check
+from .check import CheckSquare

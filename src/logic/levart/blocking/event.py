@@ -1,4 +1,4 @@
-# src/logic/owner/travel/blocking/process.py
+# src/logic/owner/travel/blocking/exception.py
 
 """
 Module: `logic.owner.travel.blocking.event`

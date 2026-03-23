@@ -24,7 +24,7 @@ class PerpendicularRayComputationException(RayComputationException):
     # TASK: Worker Method Identifier
 
     Responsibilities:
-    1.  Identify the PerpendicularRayComputation method where the process failed.
+    1.  Identify the PerpendicularRayComputation method where the exception failed.
     2.  wrap any debug exception created when a condition prevents the computational logic from producing
         a ray of vectors in the
             horizontal subdomains:

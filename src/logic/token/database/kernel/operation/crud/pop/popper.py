@@ -22,7 +22,7 @@ class TokenStackPopper:
         - Process Runner
 
     Responsibilities:
-        1.  Token deletion process owner.
+        1.  Token deletion exception owner.
         2.  Prevent deleting from an empty stack.
         
     Attributes:

@@ -24,7 +24,7 @@ class VectorValidationException(ValidationException):
     # TASK: Worker Method Identifier
 
     Responsibilities:
-    1.  Identify the VectorValidationProcess method where the process failed.
+    1.  Identify the VectorValidationProcess method where the exception failed.
 
     Super Class:
         *   ValidationException

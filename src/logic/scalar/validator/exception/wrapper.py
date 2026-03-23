@@ -24,7 +24,7 @@ class ScalarValidationException(ValidationException):
     # TASK: Worker Method Identifier
 
     Responsibilities:
-    1.  Identify the ScalarValidationProcess method where the process failed.
+    1.  Identify the ScalarValidationProcess method where the exception failed.
 
     Super Class:
         *   ValidationException

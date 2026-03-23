@@ -1,4 +1,4 @@
-# src/logic/schema/key/builder/process.py
+# src/logic/schema/key/builder/exception.py
 
 """
 Module: logic.schema.key.builder.builder

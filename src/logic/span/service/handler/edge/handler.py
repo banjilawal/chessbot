@@ -1,4 +1,4 @@
-# src/logic/span/service/handler/edge/process.py
+# src/logic/span/service/handler/edge/exception.py
 
 """
 Module: logic.span.service.handler.edge.handler

@@ -16,7 +16,7 @@ version: 1.0.0
 
 **Related Features**:
     Authenticating existing discoverySearchContexts -> See DiscoverySearchContextValidator, module[logic.discoverySearchContext.coord_stack_validator],
-    Handling process and rolling back failures --> See `Transaction`, module[logic.system]
+    Handling exception and rolling back failures --> See `Transaction`, module[logic.system]
 
 # THEME:
 -------
@@ -70,7 +70,7 @@ version: 1.0.0
 
 **Related Features**:
     Authenticating existing team_service -> See TeamValidationProcess, module[logic.team_name.coord_stack_validator],
-    Handling process and rolling back failures --> See `Transaction`, module[logic.system]
+    Handling exception and rolling back failures --> See `Transaction`, module[logic.system]
 
 # THEME:
 -------
@@ -179,7 +179,7 @@ version: 1.0.0
 
 **Related Features**:
     Authenticating existing discoverySearchContexts -> See DiscoverySearchContextValidator, module[logic.discoverySearchContext.coord_stack_validator],
-    Handling process and rolling back failures --> See `Transaction`, module[logic.system]
+    Handling exception and rolling back failures --> See `Transaction`, module[logic.system]
 
 # THEME:
 -------
@@ -233,7 +233,7 @@ version: 1.0.0
 
 **Related Features**:
     Authenticating existing discoverySearchContexts -> See DiscoverySearchContextValidator, module[logic.discoverySearchContext.coord_stack_validator],
-    Handling process and rolling back failures --> See `Transaction`, module[logic.system]
+    Handling exception and rolling back failures --> See `Transaction`, module[logic.system]
 
 # THEME:
 -------

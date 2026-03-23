@@ -1,4 +1,4 @@
-# src/logic/token/service/operation/mate/process.py
+# src/logic/token/service/operation/mate/exception.py
 
 """
 Module: logic.token.service.operation.mate.handler

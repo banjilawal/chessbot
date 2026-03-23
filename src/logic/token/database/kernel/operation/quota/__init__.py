@@ -14,4 +14,4 @@ from .exception import *
 
 # Modules
 from .report import RankQuotaReport
-from .analyzer import RankQuotaAnalysis
+from .process import RankQuotaAnalysis

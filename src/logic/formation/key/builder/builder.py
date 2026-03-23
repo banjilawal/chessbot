@@ -1,4 +1,4 @@
-# src/logic/formation/key/builder/process.py
+# src/logic/formation/key/builder/exception.py
 
 """
 Module: logic.formation.key.builder.builder

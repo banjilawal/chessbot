@@ -27,8 +27,8 @@ class RelationAnalysisException(OperationException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate a RelationAnalysis process was aborted because of an error.
-        2.  Identify the process' method where the failure occurred.
+        1.  Indicate a RelationAnalysis exception was aborted because of an error.
+        2.  Identify the exception' method where the failure occurred.
 
     Attributes:
         op: Optional[str]

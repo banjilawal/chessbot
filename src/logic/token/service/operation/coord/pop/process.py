@@ -1,4 +1,4 @@
-# src/logic/token/service/operation/coord/process.py
+# src/logic/token/service/operation/coord/exception.py
 
 """
 Module: logic.token.service.operation.coord.handler
@@ -148,12 +148,12 @@ class TokenPopCoordProcess:
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 TokenPopCoordException(
-                        mthd=method,
-                        op=TokenPopCoordException.OP,
-                        msg=TokenPopCoordException.MSG,
-                        err_code=TokenPopCoordException.ERR_CODE,
-                        rslt_type=TokenPopCoordException.RSLT_TYPE,
-                        ex=popping_cord_stack_result.exception
+                    mthd=method,
+                    op=TokenPopCoordException.OP,
+                    msg=TokenPopCoordException.MSG,
+                    err_code=TokenPopCoordException.ERR_CODE,
+                    rslt_type=TokenPopCoordException.RSLT_TYPE,
+                    ex=popping_cord_stack_result.exception
                 )
             )
         # --- Forward the work product to the client. ---#

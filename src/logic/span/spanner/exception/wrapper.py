@@ -25,7 +25,7 @@ class SpanComputationException(ComputationException):
     # TASK: Worker Method Identifier
 
     Responsibilities:
-    1.  Identify the Spanner method where the process failed.
+    1.  Identify the Spanner method where the exception failed.
 
     Super Class:
         *   ComputationException

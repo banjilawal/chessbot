@@ -41,8 +41,8 @@ class GameColorValidationProcess(ValidationProcess[GameColor]):
     ) -> ValidationResult[GameColor]:
         """
         # ACTION:
-        1.  Check candidate is not validation.
-        2.  Check if candidate is a GameColor.
+        1.  CheckSquare candidate is not validation.
+        2.  CheckSquare if candidate is a GameColor.
         3.  When all checks pass cast candidate to a GameColor instance, then return inside a ValidationResult.
 
         # PARAMETERS:

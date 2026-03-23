@@ -1,4 +1,4 @@
-# src/logic/token/service/operation/build/process.py
+# src/logic/token/service/operation/build/exception.py
 
 """
 Module: logic.token.service.operation.build.build

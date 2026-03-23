@@ -1,7 +1,7 @@
-# src/logic/square/database/kernel/operation/crud/deploy/exception/full.py
+# src/logic/square/database/kernel/operation/crud/deployment/exception/full.py
 
 """
-Module: logic.square.database.kernel.operation.crud.deploy.exception.full
+Module: logic.square.database.kernel.operation.crud.deployment.exception.full
 Author: Banji Lawal
 Created: 2026-02-22
 version: 1.0.0
@@ -41,7 +41,7 @@ class SquareStackFullException(DebugException):
         SquareDebugException
     """
     ERR_CODE = "SQUARE_STACK_FULL_EXCEPTION"
-    MSG = "Cannot deploy a square onto a full stack."
+    MSG = "Cannot deployment a square onto a full stack."
     
     def __init__(
             self,

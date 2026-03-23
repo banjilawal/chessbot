@@ -24,7 +24,7 @@ class RayComputationException(ComputationException):
     Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Identify the DiagonalRayComputation method where the process failed.
+    1.  Identify the DiagonalRayComputation method where the exception failed.
     2.  wrap any debug exception created when a condition prevents the computational logic
         from producing a ray of vectors in the
              where

@@ -1,4 +1,4 @@
-# src/logic/coord/context/builder/process.py
+# src/logic/coord/context/builder/exception.py
 
 """
 Module: logic.coord.context.builder.builder

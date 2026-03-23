@@ -1,4 +1,4 @@
-# src/logic/snapshot/builder/process.py
+# src/logic/snapshot/builder/exception.py
 
 """
 Module: logic.snapshot.builder.builder

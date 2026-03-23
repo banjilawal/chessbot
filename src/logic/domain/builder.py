@@ -1,4 +1,4 @@
-# src/logic/points/process.py
+# src/logic/points/exception.py
 
 """
 Module: logic.points.builder

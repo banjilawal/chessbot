@@ -1,4 +1,4 @@
-# src/logic/game/builder.process.py
+# src/logic/game/builder.exception.py
 
 """
 Module: logic.game.builder.builder
@@ -72,7 +72,7 @@ class GameBuildProcess(BuildProcess[Game]):
         method = "GameBuildProcess.builder"
         
         try:
-            # Start the error detection process.
+            # Start the error detection exception.
             id_validation = identity_service.validate_id(id)
             if id_validation.is_failure():
                 return BuildResult.failure(id_validation.exception)

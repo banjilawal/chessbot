@@ -1,4 +1,4 @@
-# src/logic/square/database/kernel/operation/process.py
+# src/logic/square/database/kernel/operation/exception.py
 
 """
 Module: logic.square.database.kernel.operation.handler

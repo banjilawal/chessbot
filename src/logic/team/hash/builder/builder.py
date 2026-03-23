@@ -1,4 +1,4 @@
-# src/logic/team/hash/builder/process.py
+# src/logic/team/hash/builder/exception.py
 
 """
 Module: logic.team.hash.builder.builder

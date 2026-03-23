@@ -1,4 +1,4 @@
-# src/logic/token/service/operation/check/process.py
+# src/logic/token/service/operation/check/exception.py
 
 """
 Module: logic.token.service.operation.check.handler
@@ -10,10 +10,10 @@ version: 1.0.0
 from __future__ import annotations
 
 from logic.system import BuildProcess, BuildResult, LoggingLevelRouter
-from logic.token import Check, KingToken
+from logic.token import CheckSquare, KingToken
 
 
-class BuildCheckProcess(BuildProcess[Check]):
+class BuildCheck(BuildProcess[CheckSquare]):
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -22,5 +22,9 @@ class BuildCheckProcess(BuildProcess[Check]):
             king: KingToken,
             token_validator: TokenValidator = TokenValidator(),
             square_validator: SquareValidator = SquareValidator(),
-    ) -> BuildResult[Check]:
+    ) -> BuildResult[CheckSquare]:
         pass
+
+
+5
+gZpDCDLCma9oWvaYHBcfzC8ym2X6

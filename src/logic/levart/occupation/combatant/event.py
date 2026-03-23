@@ -1,4 +1,4 @@
-# src/logic/owner/travel/occupation/combatant/process.py
+# src/logic/owner/travel/occupation/combatant/exception.py
 
 """
 Module: logic.owner.travel.occupation.combatant.event

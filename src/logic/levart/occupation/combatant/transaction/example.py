@@ -25,7 +25,7 @@ See Also:
 """
 """
 Constructs team_name new `KingCheckEvent` instance with comprehensive checks on the parameters and states during the
-builder process.
+builder exception.
 
 Performs individual validate checks on each component to ensure the resulting `KingCheckEvent` meets all
 specifications. If all checks are passed, team_name `KingCheckEvent` instance will be returned. It is not necessary to perform
@@ -44,7 +44,7 @@ RETURNS:
     - On failure: Error information and error details
 
 RAISES:
-  AttackEventBuilderException: Wraps any underlying validate failures that occur during the construction process.
+  AttackEventBuilderException: Wraps any underlying validate failures that occur during the construction exception.
   This includes:
     * `IdValidationException`: if `attackEvent_id` fails validate checks
     * `InvalidNameException`: if `visitor_name` fails validate checks

@@ -1,7 +1,7 @@
-# src/logic/token/database/kernel/util/util.py
+# src/logic/token/database/kernel/operation/operation.py
 
 """
-Module: logic.token.database.kernel.operation.util
+Module: logic.token.database.kernel.operation.operation
 Author: Banji Lawal
 Created: 2026-02-21
 version: 1.0.0
@@ -15,7 +15,7 @@ from logic.token import RankQuotaAnalysis, TokenCollisionAnalysis, TokenStackCru
 class TokenStackOpsController:
     """
     Role:
-        - Utilities Provider
+        - operations Provider
 
     Responsibilities:
         1.  Provide a single entry point for transactions TokenStackService operates.

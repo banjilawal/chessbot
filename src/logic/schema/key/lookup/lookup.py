@@ -1,4 +1,4 @@
-# src/logic/schema/key/lookup/process.py
+# src/logic/schema/key/lookup/exception.py
 
 """
 Module: logic.schema.key.lookup.lookup

@@ -3,7 +3,7 @@
 """
 Module: logic.token.service.operation.check.report
 Author: Banji Lawal
-Created: 2026-03-14
+Created: 2026-03-19
 version: 1.0.0
 """
 
@@ -13,11 +13,28 @@ from logic.square import Square
 from logic.token import KingToken
 
 
-class Check:
-    
+class CheckSquare:
+    """
+    Role:
+        -   Reporter
+        -   Messaging
+        -   Data holder
+        
+    Responsibilities:
+        1.  Record that a king will be placed in check from the
+            direction of the attacking square.
+
+    Attributes:
+        king: KingToken
+        square: Square
+        attack_square: Square
+
+    Provides:
+    Super Class:
+    """
     _id: int
     _king: KingToken
-    _checked_square: Square
+    _square: Square
     _attack_source: Square
     
     def __init__(
@@ -29,7 +46,7 @@ class Check:
     ):
         self._id = id
         self._king = king
-        self._checked_square = checked_square
+        self._square = checked_square
         self._attack_source = attack_source
         
     @property
@@ -42,7 +59,7 @@ class Check:
     
     @property
     def checked_square(self) -> Square:
-        return self._checked_square
+        return self._square
     
     @property
     def attack_source(self) -> Square:
@@ -51,11 +68,11 @@ class Check:
     def __eq__(self, other):
         if other == self: return True
         if other is None: return False
-        if isinstance(other, Check):
+        if isinstance(other, CheckSquare):
             return (
                     other.king == self.king and
                     other.attack_source == self._attack_source and
-                    other.checked_square == self._checked_square
+                    other.checked_square == self._square
             )
         return False
     

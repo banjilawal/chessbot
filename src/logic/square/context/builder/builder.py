@@ -1,4 +1,4 @@
-# src/logic/square/context/builder/process.py
+# src/logic/square/context/builder/exception.py
 
 """
 Module: logic.square.context.builder.builder

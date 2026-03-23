@@ -1,4 +1,4 @@
-# src/logic/system/build/builder/process.py
+# src/logic/system/build/builder/exception.py
 
 """
 Module: logic.system.build.builder.builder

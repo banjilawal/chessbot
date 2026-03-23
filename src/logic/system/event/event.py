@@ -1,4 +1,4 @@
-# src/logic/system/event/process.py
+# src/logic/system/event/exception.py
 
 """
 Module: logic.system.event.event

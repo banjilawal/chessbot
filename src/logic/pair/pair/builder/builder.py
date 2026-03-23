@@ -1,4 +1,4 @@
-# src/logic/pair/pair/builder/process.py
+# src/logic/pair/pair/builder/exception.py
 
 """
 Module: logic.pair.pair.builder.builder

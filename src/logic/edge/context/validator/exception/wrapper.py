@@ -24,7 +24,7 @@ class EdgeContextValidationException(ValidationException):
     # TASK: Worker Method Identifier
 
     Responsibilities:
-    1.  Identify the EdgeValidationProcess method where the process failed.
+    1.  Identify the EdgeValidationProcess method where the exception failed.
 
     Super Class:
         *   ValidationException

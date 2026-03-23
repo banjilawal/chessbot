@@ -20,34 +20,28 @@ from logic.system import BuildException
 # ======================# TOKEN_BUILD_FAILURE #======================#
 class TokenBuildException(BuildException):
     """
-    Role:Worker Method Identification, Exception Chain Layer 1, Exception Messaging
-
+    Role:
+        - Worker Method Identification
+        - Exception Chain Layer 1
+        - Exception Messaging
+        
     Responsibilities:
-    1.  Indicate the TokenBuilder did not produce a valid work product.
-    2.  Identify the TokenBuilder method where the failure occurred.
-
-    Super Class:
-        *   BuildException
-
-    Provides:
-
-
-    # INHERITED ATTRIBUTES:
-        *   See BuildException class for inherited attributes.
-
+        1.  Indicate that  an error prevented a token from being built.
+        2.  Identify the method where the failure occurred.
+        
     Attributes:
         op: Optional[str]
         ex: Optional[str]
         msg: Optional[str]
         mthd: Optional[str]
+        title: Optional[str]
         err_code: Optional[str]
         rslt_type: Optional[str]
 
-    # LOCAL METHODS:
-    None
+    Provides:
 
-    # INHERITED METHODS:
-        *   See BuildException class for inherited methods.
+    Super:
+        BuildException
     """
     OP = "Build"
     RSLT_TYPE = "BuildResult"
@@ -59,6 +53,7 @@ class TokenBuildException(BuildException):
             op: Optional[str] = None,
             msg: Optional[str] = None,
             mthd: Optional[str] = None,
+            title: Optional[str] = None,
             ex: Optional[Exception] = None,
             err_code: Optional[str] = None,
             rslt_type: Optional[str] = None,
@@ -69,6 +64,7 @@ class TokenBuildException(BuildException):
             ex: Optional[str]
             msg: Optional[str]
             mthd: Optional[str]
+            title: Optional[str]
             err_code: Optional[str]
             rslt_type: Optional[str]
         """
@@ -82,6 +78,8 @@ class TokenBuildException(BuildException):
             op=op,
             msg=msg,
             mthd=mthd,
+            title=title,
             err_code=err_code,
             rslt_type=rslt_type,
         )
+        

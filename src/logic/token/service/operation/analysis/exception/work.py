@@ -13,7 +13,7 @@ class TokenReadinessAnalysisException(RelationAnalysisException):
     Role:Exception Work, Encapsulation, Error Chaining
 
     Responsibilities:
-    1.  Wrap any exception that kills the relation test process before the occupant's state has been evaluated.
+    1.  Wrap any exception that kills the relation test exception before the occupant's state has been evaluated.
 
     Super Class:
         *   WorkException

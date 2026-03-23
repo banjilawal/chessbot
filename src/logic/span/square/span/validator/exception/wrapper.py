@@ -23,7 +23,7 @@ class SquareSpanValidationException(ValidationException):
     Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Identify the SquareSpanValidationProcess method where the process failed.
+    1.  Identify the SquareSpanValidationProcess method where the exception failed.
 
     Super Class:
         *   ValidationException

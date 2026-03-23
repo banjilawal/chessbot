@@ -1,4 +1,4 @@
-# src/logic/scalar/builder/process.py
+# src/logic/scalar/builder/exception.py
 
 """
 Module: logic.scalar.builder.builder

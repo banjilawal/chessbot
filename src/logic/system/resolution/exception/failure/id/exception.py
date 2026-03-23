@@ -24,7 +24,7 @@ class ResolvingIDConflictFailedException(ResolutionException):
     """
     # RESPONSIBILITY
     Raised when searching with a globally unique attribute like an id and
-    the resolution process shows the entity is a orphan
+    the resolution exception shows the entity is a orphan
 
 
     # RELATED EXCEPTION
@@ -38,31 +38,31 @@ class ResolvingIDConflictFailedException(ResolutionException):
         *   TravelException
     """
     ERR_CODE = "RESOLUTION_FAILED_EXCEPTION"
-    MSG = "The resolution process failed to break the attribute conflict."
+    MSG = "The resolution exception failed to break the attribute conflict."
 
 
 class ResolvingSquareIDConflictFailedException(ResolvingIDConflictFailedException):
     DEFAULT_CODE = "SQUARE_ID_CONFLICT_RESOLUTION_EXCEPTION"
-    MSG = "The resolution process failed to break the Square.id conflict."
+    MSG = "The resolution exception failed to break the Square.id conflict."
 
 
 class ResolvingPieceIDConflictFailedException(ResolvingIDConflictFailedException):
     DEFAULT_CODE = "PIECE_ID_CONFLICT_RESOLUTION_EXCEPTION"
-    MSG = "The resolution process failed to break the Token.id conflict."
+    MSG = "The resolution exception failed to break the Token.id conflict."
 
 
 class ResolvingTeamIDConflictFailedException(ResolvingIDConflictFailedException):
     DEFAULT_CODE = "TEAM_ID_CONFLICT_RESOLUTION_EXCEPTION"
-    MSG = "The resolution process failed to break the Team.id conflict."
+    MSG = "The resolution exception failed to break the Team.id conflict."
 
 
 class ResolvingAgentIDConflictFailedException(ResolvingIDConflictFailedException):
     DEFAULT_CODE = "AGENT_ID_CONFLICT_RESOLUTION_EXCEPTION"
-    MSG = "The resolution process failed to break the Player.id conflict."
+    MSG = "The resolution exception failed to break the Player.id conflict."
 
 
 class ResolvingBoardIDConflictFailedException(ResolvingIDConflictFailedException):
     DEFAULT_CODE = "BOARD_ID_CONFLICT_RESOLUTION_EXCEPTION"
-    MSG = "The resolution process failed to break the Board.id conflict."
+    MSG = "The resolution exception failed to break the Board.id conflict."
     
     

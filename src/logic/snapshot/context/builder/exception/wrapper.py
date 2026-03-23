@@ -23,7 +23,7 @@ class SnapshotContextBuildException(BuildException):
     Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Identify the SnapshotContextBuildProcess method where the process failed.
+    1.  Identify the SnapshotContextBuildProcess method where the exception failed.
 
     Super Class:
         *   BuildException

@@ -21,7 +21,7 @@ class ArenaTeamAnalysisException(AnalysisException):
     Role:Exception Work, Encapsulation, Error Chaining
 
     Responsibilities:
-    1.  Wrap any exception that kills the relation test process before the arena-team relationship
+    1.  Wrap any exception that kills the relation test exception before the arena-team relationship
         status has been evaluated.
 
     Super Class:

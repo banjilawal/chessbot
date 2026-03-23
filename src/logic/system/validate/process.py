@@ -43,8 +43,8 @@ class ValidationProcess(ABC, Generic[T]):
     def execute(cls, candidate: Any, *args, **kwargs) -> ValidationResult[T]:
         """
         # ACTION:
-        1.  Check if candidate is validation.
-        2.  Check if candidate is of type V.
+        1.  CheckSquare if candidate is validation.
+        2.  CheckSquare if candidate is of type V.
         3.  Run integrity check on each of the candidate's attributes.
         4.  If any check fails, it raises an exception, return the exception inside a ValidationResult.
         3.  When all checks pass, cast candidate to V, then return it inside a ValidationResult.

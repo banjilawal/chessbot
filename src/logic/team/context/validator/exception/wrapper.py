@@ -24,7 +24,7 @@ class TeamContextValidationException(ValidationException):
     # TASK: Worker Method Identifier
 
     Responsibilities:
-    1.  Identify the TeamValidationProcess method where the process failed.
+    1.  Identify the TeamValidationProcess method where the exception failed.
 
     Super Class:
         *   ValidationException

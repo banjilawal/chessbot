@@ -1,4 +1,4 @@
-# src/logic/rank/searcher/process.py
+# src/logic/rank/searcher/exception.py
 
 """
 Module: logic.rank.searcher.builder

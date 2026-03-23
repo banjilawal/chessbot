@@ -1,4 +1,4 @@
-# src/logic/owner/travel/attack/process.py
+# src/logic/owner/travel/attack/exception.py
 
 """
 Module: `logic.owner.travel.attack.coord_stack_validator`
