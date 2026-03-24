@@ -13,7 +13,7 @@ from logic.persona import Persona
 from logic.team import Team, TeamValidationProcess
 from logic.rank import RankService
 from logic.formation import Formation, FormationService
-from logic.system import BuildResult, BuildProcess, IdBuild, IdentityService, LoggingLevelRouter, id_emitter
+from logic.system import BuildResult, BuildProcess, IdentityService, LoggingLevelRouter
 from logic.token import CombatantToken, KingToken, PawnToken, TokenBuildException, Token
 
 class TokenBuild(BuildProcess[Token]):
@@ -49,56 +49,40 @@ class TokenBuild(BuildProcess[Token]):
             formation_service: FormationService = FormationService(),
     ) -> BuildResult[Token]:
         """
-        # ACTION:
-            1.  If any build param fails its certification tests send the exception in the BuildResult. Else,
-                route to the appropriate concrete Token builder method.
-        # PARAMETERS:
-            *   id (int)
-            *   owner (Team)
-            *   formation: (Formation)
-            *   rank_service (RankService)
-            *   team_validator (TeamValidationProcess)
-            *   identity_service (IdentityService)
-            *   formation_service: (FormationService)
-        # RETURNS:
-            *   BuildResult[Token] containing either:
-                    - On failure: Exception.
-                    - On success: Token in the payload.
+        Action:
+            1.  Send an exception chain in the BuildResult if, either
+                    -   id
+                    -   name
+                    -   team
+                    -   formation
+                fail their validation checks.
+            2.  Otherwise, build the token then, send the success result.
+        Args:
+            id: int
+            owner: Team
+            formation: Formation
+            rank_service: RankService
+            identity_service: IdentityService
+            formation_service: FormationService
+        Returns:
+            BuildResult[Token]
         Raises:
             *   TokenBuildException
         """
-        method = "TokenBuild.builder"
+        method = f"{cls.__name__}.execute"
         
-        # Handle the case that, the id is not certified as safe.
-        id_validation = identity_service.validate_id(candidate=id)
-        if id_validation.is_failure:
-            # Return the exception chain on failure.
-            return BuildResult.failure(
-                TokenBuildException(
-                    msg=f"{method}: {TokenBuildException.ERR_CODE}",
-                    ex=id_validation.exception
-                )
-            )
-        # Handle the case that, the team is not certified as safe.
-        owner_validation = team_validator.execute(candidate=owner)
-        if owner_validation.is_failure:
-            # Return the exception chain on failure.
-            return BuildResult.failure(
-                TokenBuildException(
-                    msg=f"{method}: {TokenBuildException.ERR_CODE}",
-                    ex=owner_validation.exception
-                )
-            )
-        # Handle the case that, the formation is not certified as safe.
-        formation_validation = formation_service.validator.execute(candidate=formation)
-        if formation_validation.is_failure:
-            # Return the exception chain on failure.
-            return BuildResult.failure(
-                TokenBuildException(
-                    msg=f"{method}: {TokenBuildException.ERR_CODE}",
-                    ex=formation_validation.exception
-                )
-            )
+
+        # Handle the case that, a build param is not safe.
+        param_validation_results = cls._run_build_param_checks(
+            id=id,
+            owner=owner,
+            formation=formation,
+            identity_service=identity_service,
+            formation_service=formation_service,
+            team_validator=team_validator,
+        )
+        if param_validation_results.is_failure:
+            return param_validation_results
         # --- Route to the appropriate concrete Token builder method. ---#
         
         if formation.persona == Persona.PAWN:
@@ -126,6 +110,62 @@ class TokenBuild(BuildProcess[Token]):
             formation=formation,
             rank_service=rank_service,
         )
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _run_build_param_checks(
+            cls,
+            id: int,
+            owner: Team,
+            formation: Formation,
+            team_validator: TeamValidationProcess,
+            identity_service: IdentityService = IdentityService(),
+            formation_service: FormationService = FormationService(),
+    ):
+        method = f"{cls.__name__}._run_build_param_checks"
+        
+        # Handle the case that, the id is not certified as safe.
+        id_validation = identity_service.validate_id(candidate=id)
+        if id_validation.is_failure:
+            # Return the exception chain on failure.
+            return BuildResult.failure(
+                TokenBuildException(
+                    mthd=method,
+                    title=cls.__name__,
+                    op=TokenBuildException.OP,
+                    msg=TokenBuildException.MSG,
+                    err_code=TokenBuildException.ERR_CODE,
+                    ex=id_validation.exception,
+                )
+            )
+        # Handle the case that, the team is not certified as safe.
+        owner_validation = team_validator.execute(candidate=owner)
+        if owner_validation.is_failure:
+            # Return the exception chain on failure.
+            return BuildResult.failure(
+                TokenBuildException(
+                    mthd=method,
+                    title=cls.__name__,
+                    op=TokenBuildException.OP,
+                    msg=TokenBuildException.MSG,
+                    err_code=TokenBuildException.ERR_CODE,
+                    ex=owner_validation.exception,
+                )
+            )
+        # Handle the case that, the formation is not certified as safe.
+        formation_validation = formation_service.validator.execute(candidate=formation)
+        if formation_validation.is_failure:
+            # Return the exception chain on failure.
+            return BuildResult.failure(
+                TokenBuildException(
+                    mthd=method,
+                    title=cls.__name__,
+                    op=TokenBuildException.OP,
+                    msg=TokenBuildException.MSG,
+                    err_code=TokenBuildException.ERR_CODE,
+                    ex=formation_validation.exception,
+                )
+            )
         
     @classmethod
     @LoggingLevelRouter.monitor

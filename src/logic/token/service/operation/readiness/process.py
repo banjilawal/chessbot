@@ -20,17 +20,45 @@ from logic.token import (
 )
 
 class TokenReadinessAnalysis(RelationAnalysis[ReadinessState.FREE, Token]):
+    """
+    Role:
+        -   Analysis Factory
+        -   Consistency maintenance
+        
+
+    Responsibilities:
+        1.  Analyze a token's aliveness before its used in the brought into play.
+        2.  Combine safety and aliveness tests unique to each subclass under one roof.
+
+    Attributes:
+
+    Provides:
+        -   execute(
+                    candidate_satellite: Token,
+                    candidate_primary: ReadinessState.FREE,
+                    token_validator: TokenValidation,
+            ) -> RelationReport[ReadinessState, Token]
+    Parent:
+    """
     
     @classmethod
     @LoggingLevelRouter.monitor
     def execute(
             cls,
             candidate_satellite: Token,
-            candidate_primary: ReadinessState = ReadinessState.FREE,
+            candidate_primary: ReadinessState.FREE = ReadinessState.FREE,
             token_validator: TokenValidation = TokenValidation(),
     ) -> RelationReport[ReadinessState, Token]:
         """
-        Analyses if a Token is ready
+        MAke sure the token can be used.
+        
+        Action:
+            1.  If the token fails its certification send an exception chain in the
+                RelationReport.
+            2.  Otherwise, decide if the token is actionable base on.
+                    -   It hs it been deployed.
+                    -   It has not been captured or, it has not been checkmated.
+            3.  Send the success result.
         
         Args:
             candidate_satellite: Token
@@ -42,10 +70,6 @@ class TokenReadinessAnalysis(RelationAnalysis[ReadinessState.FREE, Token]):
         
         """
         method = f"{cls.__name__}.analyze"
-        
-        # Handle the case that, the candidate_secondary does not exist.
-        if candidate_primary is None:
-            candidate_primary = ReadinessState.FREE
         
         # Handle the case that, the token is not certified as safe.
         validation_result = token_validator.execute(candidate=candidate_satellite)
@@ -61,17 +85,26 @@ class TokenReadinessAnalysis(RelationAnalysis[ReadinessState.FREE, Token]):
                     ex=validation_result.exception
                 )
             )
-        
+        # Deal with the simplest universal case first, token has no been deployed.
         if candidate_satellite.is_not_deployed:
-            return
-            
+            return RelationReport.no_relation()
+        
         if isinstance(candidate_satellite, CombatantToken):
-            return cls._analyze_combatant_readiness(combatant=cast(CombatantToken, candidate_satellite))
+            return cls._analyze_combatant_readiness(
+                combatant=cast(CombatantToken, candidate_satellite)
+            )
         return cls._analyze_king_readiness(king=cast(KingToken, candidate_satellite))
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _analyze_combatant_readiness(cls, combatant: CombatantToken) -> RelationReport[ReadinessState, Token]:
+    def _analyze_combatant_readiness(
+            cls,
+            combatant: CombatantToken,
+            aliveness_state = ReadinessState.FREE,
+    ) -> RelationReport[ReadinessState, Token]:
+        method = f"{cls.__name__}._analyze_combatant_readiness"
+        
+        # Captured tokens are not free.
         if combatant.has_entered_hostage_process:
             return RelationReport.bidirectional(
                 primary=ReadinessState.HOSTAGE_CREATED,

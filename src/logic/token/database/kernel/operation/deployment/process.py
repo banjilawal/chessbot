@@ -60,12 +60,11 @@ class TokenStackDeployment:
                     ex=TokenStackAlreadyDeployedException(
                         msg=TokenStackAlreadyDeployedException.MSG,
                         err_code=TokenStackAlreadyDeployedException.ERR_CODE
-                    ),
+                    )
                 )
             )
-
+        # --- Make a deep copy of the stack then deploy its members in a loop. ---#
         pre_deployment_token_stack = deepcopy(token_stack)
-        
         for token in token_stack.iterator:
             deployment_result = token_stack.integrity_service.controller.deployment.execute(token)
             
@@ -84,9 +83,14 @@ class TokenStackDeployment:
                         ex=deployment_result.exception,
                     )
                 )
+        # --- Clean up and update the stack' state. ---#
         token_stack.items.clear()
         token_stack.stack_state = TokenStackState.DEPLOYED_ON_BOARD
         
-        return UpdateResult.update_success(original=pre_deployment_token_stack, updated=token_stack)
+        # --- Forward the work product to the caller. ---#
+        return UpdateResult.update_success(
+            original=pre_deployment_token_stack,
+            updated=token_stack
+        )
 
         

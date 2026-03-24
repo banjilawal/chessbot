@@ -175,6 +175,7 @@ class TokenValidation(ValidationProcess[Token]):
             return ValidationResult.failure(
                 TokenValidationException(
                     mthd=method,
+                    title=cls.__name__,
                     op=TokenValidationException.OP,
                     msg=TokenValidationException.MSG,
                     err_code=TokenValidationException.ERR_CODE,
@@ -195,6 +196,7 @@ class TokenValidation(ValidationProcess[Token]):
             return ValidationResult.failure(
                 TokenValidationException(
                     mthd=method,
+                    title=cls.__name__,
                     op=TokenValidationException.OP,
                     msg=TokenValidationException.MSG,
                     err_code=TokenValidationException.ERR_CODE,
@@ -211,6 +213,7 @@ class TokenValidation(ValidationProcess[Token]):
             return ValidationResult.failure(
                 TokenValidationException(
                     mthd=method,
+                    title=cls.__name__,
                     op=TokenValidationException.OP,
                     msg=TokenValidationException.MSG,
                     err_code=TokenValidationException.ERR_CODE,

@@ -58,7 +58,7 @@ class TokenDeploymentProcess:
             cls,
             token: Token,
             token_validator: TokenValidation = TokenValidation(),
-    ) -> UpdateResult[Token]:
+    ) -> UpdateResult[Square]:
         """
         Executes the deployment transaction.
         

@@ -40,7 +40,7 @@ class TokenStackPushPusher:
                     collision_detector: TokenCollisionAnalysis = TokenCollisionAnalysis(),
             ) -> InsertionResult
 
-    Super:
+    Super Class:
     """
     
     @classmethod

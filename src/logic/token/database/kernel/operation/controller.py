@@ -15,7 +15,7 @@ from logic.token import RankQuotaAnalysis, TokenCollisionAnalysis, TokenStackCru
 class TokenStackOpsController:
     """
     Role:
-        - operations Provider
+        -   Operations Controller
 
     Responsibilities:
         1.  Provide a single entry point for transactions TokenStackService operates.

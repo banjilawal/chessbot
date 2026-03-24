@@ -12,11 +12,11 @@ version: 1.0.0
 # Packages
 from .hash import *
 from .roster import *
-from .builder import *
+from logic.team.service.operation.builder import *
 from .context import *
 from .database import *
 from .service import *
-from .validation import *
+from logic.team.service.operation.validation import *
 from .exception import *
 
 # Modules

@@ -12,7 +12,7 @@ from typing import List, Optional
 
 from logic.rank import Rank, RankService
 from logic.token import (
-    RankQuotaReport, Token, TokenContext, TokenContextService, TokenStackService, TokenService,
+    RankQuotaReport, Token, TokenContext, TokenStackService, TokenService,
     TokenDatabaseException, TokenStackState
 )
 from logic.system import (
