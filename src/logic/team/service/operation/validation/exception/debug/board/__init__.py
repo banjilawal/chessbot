@@ -1,13 +1,13 @@
-# src/logic/team/validation/exception/debug/board/__init__.py
+# src/logic/team/service/operation/validation/exception/debug/board/__init__.py
 
 """
-Module: logic.team.validation.exception.debug.board.__init__
+Module: logic.team.service.operation.validation.exception.debug.board.__init__
 Author: Banji Lawal
 Created: 2026-02-23
 version: 1.0.0
 """
 
-# =========== TEAM.VALIDATION.EXCEPTION.DEBUG.BOARD PACKAGE CONTENTS ===========#
+# =========== TEAM.SERVICE.OPERATION.VALIDATION.EXCEPTION.DEBUG.BOARD PACKAGE CONTENTS ===========#
 
 # Packages
 None

@@ -1,7 +1,7 @@
-# src/logic/team/validation/exception/debug/board/stale.py
+# src/logic/team/service/operation/validation/exception/debug/board/stale.py
 
 """
-Module: logic.team.validation.exception.board.stale
+Module: logic.team.service.operation.validation.exception.board.stale
 Author: Banji Lawal
 Created: 2026-02-23
 version: 1.0.0

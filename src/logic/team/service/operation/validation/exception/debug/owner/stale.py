@@ -1,7 +1,7 @@
-# src/logic/team/validation/exception/debug/player/stale.py
+# src/logic/team/service/operation/validation/exception/debug/player/stale.py
 
 """
-Module: logic.team.validation.exception.player.stale
+Module: logic.team.service.operation.validation.exception.player.stale
 Author: Banji Lawal
 Created: 2026-02-23
 version: 1.0.0

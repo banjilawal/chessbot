@@ -1,7 +1,7 @@
-# src/logic/team/validation/exception/debug/board/register.py
+# src/logic/team/service/operation/validation/exception/debug/board/register.py
 
 """
-Module: logic.team.validation.exception.board.register
+Module: logic.team.service.operation.validation.exception.board.register
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0

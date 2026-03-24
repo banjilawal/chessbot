@@ -12,7 +12,7 @@ version: 1.0.0
 # Packages
 from .hash import *
 from .roster import *
-from logic.team.service.operation.builder import *
+from logic.team.service.operation.build import *
 from .context import *
 from .database import *
 from .service import *

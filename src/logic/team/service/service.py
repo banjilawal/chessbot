@@ -12,7 +12,7 @@ from typing import List, cast
 
 
 from logic.system import IntegrityService, IdFactory
-from logic.team import RosterUtil, Team, TeamBuildProcess, TeamValidationProcess
+from logic.team import RosterUtil, Team, TeamBuild, TeamValidationProcess
 
 class TeamService(IntegrityService[Team]):
     """
@@ -41,7 +41,7 @@ class TeamService(IntegrityService[Team]):
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            builder: TeamBuildProcess = TeamBuildProcess(),
+            builder: TeamBuild = TeamBuild(),
             roster_util: RosterUtil = RosterUtil(),
             validator: TeamValidationProcess = TeamValidationProcess(),
             id: int = IdFactory.next_id(class_name="TeamService"),
@@ -52,7 +52,7 @@ class TeamService(IntegrityService[Team]):
         # PARAMETERS:
             *   id (nt)
             *   name (str)
-            *   builder (TeamBuildProcess)
+            *   builder (TeamBuild)
             *   validator (TeamValidationProcess)
             *   roster_util (RosterUtil)
         # RETURNS:
@@ -64,9 +64,9 @@ class TeamService(IntegrityService[Team]):
         self._roster_util = roster_util
     
     @property
-    def build(self) -> TeamBuildProcess:
-        """get TeamBuildProcess."""
-        return cast(TeamBuildProcess, self.entity_builder)
+    def build(self) -> TeamBuild:
+        """get TeamBuild."""
+        return cast(TeamBuild, self.entity_builder)
     
     @property
     def validation(self) -> TeamValidationProcess:

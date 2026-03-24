@@ -65,8 +65,8 @@ version: 1.0.0
   its CRUD interfaces goes against recommended usage.
 
 ***Limitation 2***: There is no guarantee properly created `Team` objects released by the module will satisfy client
-    requirements. Clients are responsible for ensuring a `TeamBuildProcess` product will not fail when used. Products
-    from `TeamBuildProcess` --should-- satisfy `TeamValidationProcess` requirements.
+    requirements. Clients are responsible for ensuring a `TeamBuild` product will not fail when used. Products
+    from `TeamBuild` --should-- satisfy `TeamValidationProcess` requirements.
 
 **Related Features**:
     Authenticating existing team_service -> See TeamValidationProcess, module[logic.team_name.coord_stack_validator],

@@ -1,7 +1,7 @@
-# src/logic/team/validation/validation.py
+# src/logic/team/service/operation/validation/validation.py
 
 """
-Module: logic.team.validation
+Module: logic.team.service.operation.validation
 Author: Banji Lawal
 Created: 2025-09-11
 """
@@ -16,9 +16,8 @@ from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, 
 from logic.team import (
     BoardHasStaleTeamLinkException, NullTeamException, PlayerHasStaleTeamLinkException, Team,
     TeamBelongsToDifferentBoardException,
-    TeamHasDifferentOwnerException,
-    TeamNotRegisteredBoardException, TeamNotRegisteredOwnerException,
-    TeamValidationException
+    TeamHasDifferentOwnerException, TeamNotRegisteredBoardException, TeamNotRegisteredOwnerException,
+    TeamValidationException,
 )
 
 

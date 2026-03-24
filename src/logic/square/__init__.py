@@ -10,11 +10,11 @@ version: 1.0.0
 #=========== SQUARE PACKAGE CONTENTS ===========#
 
 # Packages
-from .builder import *
+from logic.square.service.operation.build import *
 from .context import *
 from .database import *
 from .service import *
-from .validator import *
+from logic.square.service.operation.validation import *
 from .exception import *
 
 # Modules

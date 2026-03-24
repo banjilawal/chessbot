@@ -7,7 +7,7 @@ Created: 2025-09-04
 version: 1.0.0
 """
 
-from logic.board import Board, BoardService
+from logic.board import BoardService
 from logic.schema import Schema, SchemaService
 from logic.player import Player, PlayerService
 from logic.team import Team, TeamBuildException
@@ -15,7 +15,7 @@ from logic.system import BuildProcess, BuildResult, IdFactory, IdentityService, 
 from logic.token import TokenDatabase
 
 
-class TeamBuildProcess(BuildProcess[Team]):
+class TeamBuild(BuildProcess[Team]):
     """
      Role:BuildProcess, Data Integrity And Reliability Guarantor
 
@@ -73,7 +73,7 @@ class TeamBuildProcess(BuildProcess[Team]):
         RAISES:
             *   TeamBuildException
         """
-        method = "TeamBuildProcess.builder"
+        method = "TeamBuild.builder"
         
         # Handle the case that, a build param is not certified as safe.
         build_params_validation_result = cls._validate_build_params(
@@ -150,7 +150,7 @@ class TeamBuildProcess(BuildProcess[Team]):
                     - On success: Square in the payload.
         Raises:
         """
-        method = "TeamBuildProcess._validate_build_params"
+        method = "TeamBuild._validate_build_params"
         
         # Handle the case that, the id is not certified as safe.
         id_validation = identity_service.validate_id(candidate=id)

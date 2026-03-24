@@ -1,7 +1,7 @@
-# src/logic/team/validation/exception/work.py
+# src/logic/team/service/operation/validation/exception/work.py
 
 """
-Module: logic.team.validation.exception.work
+Module: logic.team.service.operation.validation.exception.work
 Author: Banji Lawal
 Created: 2025-09-08
 Version: 1.0.0

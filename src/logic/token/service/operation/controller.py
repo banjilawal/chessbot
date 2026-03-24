@@ -18,7 +18,7 @@ from logic.token import (
 class TokenOpsController:
     """
     Role:
-        - Utilities Provider
+        - Controller
         
     Responsibilities:
         1.  Provide a single entry point for operations TokenService supports.

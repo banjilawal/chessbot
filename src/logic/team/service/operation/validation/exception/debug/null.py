@@ -1,7 +1,7 @@
-# src/logic/team/validation/exception/debug/null.py
+# src/logic/team/service/operation/validation/exception/debug/null.py
 
 """
-Module: logic.team.validation.exception.debug.null
+Module: logic.team.service.operation.validation.exception.debug.null
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
