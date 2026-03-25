@@ -1,7 +1,7 @@
-# src/logic/coord/context/validator/exception/debug/null.py
+# src/logic/coord/query/validator/exception/debug/null.py
 
 """
-Module: logic.coord.context.validator.exception.debug.null
+Module: logic.coord.query.validator.exception.debug.null
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

@@ -258,12 +258,12 @@ class EdgeStack(StackService[Edge]):
     def query(self, context: EdgeContext) -> SearchResult[List[Edge]]:
         """
         # ACTION:
-            1.  Pass the context param to context_service manages all error handling and operations in search lifecycle.
+            1.  Pass the query param to context_service manages all error handling and operations in search lifecycle.
             2.  Any failures context_service will be encapsulated inside a EdgeStackException  which is sent inside a
                 SearchResult.
             3.  If the search completes successfully return the result directly because its a SearchResult instance.
         # PARAMETERS:
-            *   context (EdgeContext)
+            *   query (EdgeContext)
         # RETURN:
             *   SearchResult[List[Edge]] containing either:
                     - On failure: An exception.

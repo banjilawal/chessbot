@@ -203,14 +203,14 @@ class NodeStackService(StackService[Node]):
     def query(self, context: NodeContext) -> SearchResult[List[Node]]:
         """
         # ACTION:
-            1.  Pass the context param to context_service manages all error handling and operations in
+            1.  Pass the query param to context_service manages all error handling and operations in
                 search lifecycle.
             2.  Any failures context_service will be encapsulated inside a NodeStackException 
                 which is sent inside a SearchResult.
             3.  If the search completes successfully the result can be sent directly because it will contain the
                 payload.
         # PARAMETERS:
-            *   context (NodeContext)
+            *   query (NodeContext)
         # RETURN:
             *   SearchResult[List[Node] containing either:
                     - On failure: An exception.

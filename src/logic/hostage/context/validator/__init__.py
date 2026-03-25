@@ -1,7 +1,7 @@
-# src/logic/hostage/context/validator/__init__.py
+# src/logic/hostage/query/validator/__init__.py
 
 """
-Module: logic.hostage.context.validator.__init__
+Module: logic.hostage.query.validator.__init__
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

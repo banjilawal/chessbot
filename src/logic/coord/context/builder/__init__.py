@@ -1,7 +1,7 @@
-# src/logic/coord/context/builder/__init__.py
+# src/logic/coord/query/builder/__init__.py
 
 """
-Module: logic.coord.context.builder.__init__
+Module: logic.coord.query.builder.__init__
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0

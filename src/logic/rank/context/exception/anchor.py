@@ -1,7 +1,7 @@
-# src/logic/rank/context/exception/anchor.py
+# src/logic/rank/query/exception/anchor.py
 
 """
-Module: logic.rank.context.exception.anchor
+Module: logic.rank.query.exception.anchor
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

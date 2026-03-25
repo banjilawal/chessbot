@@ -258,14 +258,14 @@ class TeamStack(StackService[Team]):
     def query(self, context: TeamContext) -> SearchResult[List[Team]]:
         """
         # ACTION:
-            1.  Pass the context param to context_service manages all error handling and operations in
+            1.  Pass the query param to context_service manages all error handling and operations in
                 search lifecycle.
             2.  Any failures context_service will be encapsulated inside a TeamStackException 
                 which is sent inside a SearchResult.
             3.  If the search completes successfully the result can be sent directly because it will contain the
                 payload.
         # PARAMETERS:
-            *   context (TeamContext)
+            *   query (TeamContext)
         # RETURN:
             *   SearchResult[List[Team] containing either:
                     - On failure: An exception.
@@ -295,14 +295,14 @@ class TeamStack(StackService[Team]):
     def query(self, context: TeamContext) -> SearchResult[List[Team]]:
         """
         # ACTION:
-            1.  Pass the context param to context_service manages all error handling and operations in
+            1.  Pass the query param to context_service manages all error handling and operations in
                 search lifecycle.
             2.  Any failures context_service will be encapsulated inside a TeamStackException 
                 which is sent inside a SearchResult.
             3.  If the search completes successfully the result can be sent directly because it will contain the
                 payload.
         # PARAMETERS:
-            *   context (TeamContext)
+            *   query (TeamContext)
         # RETURN:
             *   SearchResult[List[Team] containing either:
                     - On failure: An exception.

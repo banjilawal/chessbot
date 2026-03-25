@@ -1,7 +1,7 @@
-# src/logic/coord/context/validator/validator.py
+# src/logic/coord/query/validator/validator.py
 
 """
-Module: logic.coord.context.validator.validator
+Module: logic.coord.query.validator.validator
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0
@@ -86,10 +86,10 @@ class CoordContextValidationProcess(ValidationProcess[CoordContext]):
         # --- Cast candidate to the CoordContext for additional tests. ---#
         context = cast(CoordContext, candidate)
         
-        # Get how many context flags are set.
+        # Get how many query flags are set.
         switch_count = len(context.to_dict())
         
-        # Handle the case that, no context flags are set.
+        # Handle the case that, no query flags are set.
         if switch_count == 0:
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -153,7 +153,7 @@ class CoordContextValidationProcess(ValidationProcess[CoordContext]):
             # On certification success return the column_CoordContext in the ValidationResult.
             return ValidationResult.success(payload=context)
         
-        # Return the exception chain if there was no validation route for the context.
+        # Return the exception chain if there was no validation route for the query.
         return ValidationResult.failure(
             CoordContextValidationException(
                 msg=f"{method}: {CoordContextValidationException.MSG}",

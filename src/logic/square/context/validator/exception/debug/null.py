@@ -1,7 +1,7 @@
-# src/logic/square/context/validator/exception/debug/null.py
+# src/logic/square/query/validator/exception/debug/null.py
 
 """
-Module: logic.square.context.validator.exception.debug.null
+Module: logic.square.query.validator.exception.debug.null
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

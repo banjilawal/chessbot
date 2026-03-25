@@ -27,7 +27,7 @@ class BoardRelationAnalyzer:
         square_relation: BoardSquareRelationAnalysis
 
     Provides:
-         -  analyze(self, context: BoardRelationAnalysisContext) -> RelationReport
+         -  analyze(self, query: BoardRelationAnalysisContext) -> RelationReport
     Parent:
     """
     _team_relation: BoardTeamRelationAnalysis

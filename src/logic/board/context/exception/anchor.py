@@ -1,7 +1,7 @@
-# src/logic/board/context/exception/anchor.py
+# src/logic/board/query/exception/anchor.py
 
 """
-Module: logic.board.context.exception.anchor
+Module: logic.board.query.exception.anchor
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

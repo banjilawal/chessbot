@@ -1,7 +1,7 @@
-# src/logic/square/context/validator/validator.py
+# src/logic/square/query/validator/validator.py
 
 """
-Module: logic.square.context.validator.validator
+Module: logic.square.query.validator.validator
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
@@ -55,7 +55,7 @@ class SquareContextValidationProcess(ValidationProcess[SquareContext]):
                     *   A null check.
                     *   A type check.
                 Send an exception chain in the ValidationResult. Else, cast candidate to SquareContext
-                instance context.
+                instance query.
             2.  Send an exception chain in the ValidationResult if either
                     *   The id
                     *   The name
@@ -64,8 +64,8 @@ class SquareContextValidationProcess(ValidationProcess[SquareContext]):
                     *   The board
                     *   The occupant
                 are is not certified as safe by their services, or there is no validation
-                route for the context.
-            3.  The context has been certified as safe, send the validation success result.
+                route for the query.
+            3.  The query has been certified as safe, send the validation success result.
         # PARAMETERS:
             *   candidate (Any)
             *   board_service (BoardService)
@@ -216,7 +216,7 @@ class SquareContextValidationProcess(ValidationProcess[SquareContext]):
             # On certification success return the board_SquareContext in the ValidationResult.
             return ValidationResult.success(payload=context)
         
-        # Return the exception chain if there is no validation route for the context.
+        # Return the exception chain if there is no validation route for the query.
         return ValidationResult.failure(
             SquareContextValidationException(
                 msg=f"{method}: {SquareContextValidationException.MSG}",

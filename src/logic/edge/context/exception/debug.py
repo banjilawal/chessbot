@@ -1,7 +1,7 @@
-# src/logic/edge/context/exception/debug.py
+# src/logic/edge/query/exception/debug.py
 
 """
-Module: logic.edge.context.exception.debug
+Module: logic.edge.query.exception.debug
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

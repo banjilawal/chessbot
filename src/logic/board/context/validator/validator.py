@@ -1,7 +1,7 @@
-# src/logic/board/context/validator/validator.py
+# src/logic/board/query/validator/validator.py
 
 """
-Module: logic.board.context.validator.validator
+Module: logic.board.query.validator.validator
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
@@ -141,7 +141,7 @@ class BoardContextValidationProcess(ValidationProcess[BoardContext]):
             # On certification success return the arena_BoardContext in the ValidationResult.
             return ValidationResult.success(payload=context)
         
-        # Return the exception chain if there is no validation route for the context.
+        # Return the exception chain if there is no validation route for the query.
         return ValidationResult.failure(
             BoardContextValidationException(
                 msg=f"{method}: {BoardContextValidationException.MSG}",

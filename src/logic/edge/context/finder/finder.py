@@ -1,7 +1,7 @@
-# src/logic/edge/context/finder/finder.py
+# src/logic/edge/query/finder/finder.py
 
 """
-Module: logic.edge.context.finder.finder
+Module: logic.edge.query.finder.finder
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -25,7 +25,7 @@ class EdgeFinder(StackSearchProcess[Edge]):
     Role:SearchProcess
 
     Responsibilities:
-    1.  Send bag in a EdgeList whose attribute value match the context.key value to the caller.
+    1.  Send bag in a EdgeList whose attribute value match the query.key value to the caller.
     2.  If a search does not complete forward the exception chain to the caller for debugging.
 
     # LIMITATIONS:
@@ -52,13 +52,13 @@ class EdgeFinder(StackSearchProcess[Edge]):
         """
         # ACTION:
         1.  If the collider_candidates is null or the wrong type send the exception in the SearchResult.
-        2.  If the context fails validation send the exception in the SearchResult. Else, route to the 
-            search method which matches the context key.
+        2.  If the query fails validation send the exception in the SearchResult. Else, route to the
+            search method which matches the query key.
         3.  The search method returns either an empty result or a list of edges. Any exceptions were caught earlier
             by the search router.
        # PARAMETERS:
             *   collider_candidates (List[Edge]):
-            *   context: EdgeContext
+            *   query: EdgeContext
             *   context_validator: EdgeContextValidationProcess
         # RETURNS:
             *   SearchResult[List[Edge]] containing either:
@@ -94,7 +94,7 @@ class EdgeFinder(StackSearchProcess[Edge]):
                     )
                 )
             )
-        # Handle the case that, the context fails validation.
+        # Handle the case that, the query fails validation.
         validation_result = context_validator.execute(context)
         if validation_result.is_failure:
             # Return the exception chain on failure.
@@ -104,7 +104,7 @@ class EdgeFinder(StackSearchProcess[Edge]):
                     ex=validation_result.exception
                 )
             )
-        # --- Route to the search method which matches the context key. ---#
+        # --- Route to the search method which matches the query key. ---#
         
         # Entry point into finding by item's id.
         if context.id is not None:
@@ -128,7 +128,7 @@ class EdgeFinder(StackSearchProcess[Edge]):
         if context.state is not None and context.state == EdgeState.OCCUPIED:
             return cls._find_by_occupied_state(dataset=dataset)
         
-        # If a context does not have a search route defined send an exception chain.
+        # If a query does not have a search route defined send an exception chain.
         return SearchResult.failure(
             EdgeSearchException(
                 msg=f"{method}: {EdgeSearchException.ERR_CODE}",

@@ -1,7 +1,7 @@
-# src/logic/arena/context/finder/__init__.py
+# src/logic/arena/query/finder/__init__.py
 
 """
-Module: logic.arena.context.finder.__init__
+Module: logic.arena.query.finder.__init__
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/logic/edge/context/validator/exception/__init__.py
+# src/logic/edge/query/validator/exception/__init__.py
 
 """
-Module: logic.edge.context.validator.exception.__init__
+Module: logic.edge.query.validator.exception.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

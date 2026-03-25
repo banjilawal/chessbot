@@ -1,7 +1,7 @@
-# src/logic/coord/context/builder/exception.py
+# src/logic/coord/query/builder/exception.py
 
 """
-Module: logic.coord.context.builder.builder
+Module: logic.coord.query.builder.builder
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0
@@ -134,7 +134,7 @@ class CoordContextBuildProcess(BuildProcess[CoordContext]):
             # On validation success return a column_CoordContext in the BuildResult.
             return BuildResult.success(CoordContext(column=column))
   
-        # Return the exception chain if there is no build route for the context.
+        # Return the exception chain if there is no build route for the query.
         return BuildResult.failure(
             CoordContextBuildException(
                 msg=f"{method}: {CoordContextBuildException.ERR_CODE}",

@@ -58,7 +58,7 @@ class TokenDatabase(Database[Token]):
             ) -> DeletionResult
             
         -   insert(token: Token) -> InsertionResult[bool]
-        -   search(context: TokenContext) -> SearchResult[List[Token]]
+        -   search(query: TokenContext) -> SearchResult[List[Token]]
 
     Super:
         Database
@@ -244,7 +244,7 @@ class TokenDatabase(Database[Token]):
     @LoggingLevelRouter.monitor
     def search(self, context: TokenContext) -> SearchResult[List[Token]]:
         """
-        Find tokens whose attribute value fits the context.
+        Find tokens whose attribute value fits the query.
 
         Action:
             Send an exception chain if the operation gets interrupted. Otherwise, send

@@ -1,7 +1,7 @@
-# src/logic/arena/context/finder/exception/debug/exist.py
+# src/logic/arena/query/finder/exception/debug/exist.py
 
 """
-Module: logic.arena.context.finder.exception.debug.exist
+Module: logic.arena.query.finder.exception.debug.exist
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

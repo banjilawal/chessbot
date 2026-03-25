@@ -1,7 +1,7 @@
-# src/logic/board/context/validator/exception/__init__.py
+# src/logic/board/query/validator/exception/__init__.py
 
 """
-Module: logic.board.context.validator.exception.__init__
+Module: logic.board.query.validator.exception.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

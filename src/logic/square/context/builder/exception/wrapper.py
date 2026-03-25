@@ -1,7 +1,7 @@
-# src/logic/square/context/builder/exception/work.py
+# src/logic/square/query/builder/exception/work.py
 
 """
-Module: logic.square.context.builder.exception.work
+Module: logic.square.query.builder.exception.work
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

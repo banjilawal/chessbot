@@ -11,7 +11,7 @@ version: 1.0.0
 
 # Packages
 from .database import *
-from .context import *
+from .query import *
 from .exception import *
 from logic.token.service.operation.build import *
 from .model import *

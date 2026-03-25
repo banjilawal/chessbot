@@ -161,7 +161,7 @@ class FormationService(HashService[Formation]):
         # squares = List[Square]
         # # Loop through the formations to find their squares from the team.
         # for formation in Formation:
-        #     square_search = team.squares.search(context=SquareContext(name=formation.square_name))
+        #     square_search = team.squares.search(query=SquareContext(name=formation.square_name))
         #
         #     # Handle the case that, no item with the denomination is found.
         #     if square_search.is_empty:

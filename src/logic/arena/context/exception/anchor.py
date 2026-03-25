@@ -1,7 +1,7 @@
-# src/logic/arena/context/exception/anchor.py
+# src/logic/arena/query/exception/anchor.py
 
 """
-Module: logic.arena.context.exception.anchor
+Module: logic.arena.query.exception.anchor
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

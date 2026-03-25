@@ -1,7 +1,7 @@
-# src/logic/hostage/context/context.py
+# src/logic/hostage/query/query.py
 
 """
-Module: logic.hostage.context.context
+Module: logic.hostage.query.query
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

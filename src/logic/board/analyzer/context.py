@@ -1,7 +1,7 @@
-# src/logic/board/analyzer/context.py
+# src/logic/board/analyzer/query.py
 
 """
-Module: logic.board.analyzer.context
+Module: logic.board.analyzer.query
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

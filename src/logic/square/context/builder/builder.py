@@ -1,7 +1,7 @@
-# src/logic/square/context/builder/exception.py
+# src/logic/square/query/builder/exception.py
 
 """
-Module: logic.square.context.builder.builder
+Module: logic.square.query.builder.builder
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
@@ -80,13 +80,13 @@ class SquareContextBuildProcess(BuildProcess[SquareContext]):
                     *   A null check.
                     *   A type check.
                 Send an exception chain in the ValidationResult. Else, cast candidate to SquareContext
-                instance context.
+                instance query.
             2.  Send an exception chain in the BuildResult if either
                     *   One and only one of attributes is not null.
                     *   There is no build route for the enabled option.
                     *   The enabled attribute is not certified as safe by its service.
                 are is not certified as safe by their services.
-            3.  Build the appropriate context, sed the build success result.
+            3.  Build the appropriate query, sed the build success result.
             
         Args:
             id: Optional[int]
@@ -209,7 +209,7 @@ class SquareContextBuildProcess(BuildProcess[SquareContext]):
             # On validation success return a state_SquareContext in the BuildResult.
             return BuildResult.success(SquareContext(state=state))
         
-        # Return the exception chain if there is no build route for the context.
+        # Return the exception chain if there is no build route for the query.
         return BuildResult.failure(
             SquareContextBuildException(
                 msg=f"{method}: {SquareContextBuildException.MSG}",

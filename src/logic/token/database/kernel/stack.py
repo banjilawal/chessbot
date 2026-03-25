@@ -58,7 +58,7 @@ class TokenStackService(StackService[Token]):
         -   push(item: T) -> InsertionResult
         -   pop() -> DeletionResult[T]
         -   delete_by_id(id: int) -> DeletionResult[T]
-        -   query(collider_candidates: List[T], context: Context[T]) -> SearchResult[List[T]]
+        -   query(collider_candidates: List[T], query: Context[T]) -> SearchResult[List[T]]
         -   operation() -> TokenStackOpsController
         -   is_getting_ready_for_deployment() -> bool
         -   is_ready_for_deployment() -> bool
@@ -294,7 +294,7 @@ class TokenStackService(StackService[Token]):
     @LoggingLevelRouter.monitor
     def query(self, context: TokenContext) -> SearchResult[List[Token]]:
         """
-        Find tokens whose attribute value fits the context.
+        Find tokens whose attribute value fits the query.
 
         Action:
             Send an exception chain if the operation gets interrupted. Otherwise, send

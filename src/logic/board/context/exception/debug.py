@@ -1,7 +1,7 @@
-# src/logic/board/context/exception/debug.py
+# src/logic/board/query/exception/debug.py
 
 """
-Module: logic.board.context.exception.debug
+Module: logic.board.query.exception.debug
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

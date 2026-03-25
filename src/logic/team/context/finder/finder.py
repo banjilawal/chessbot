@@ -1,7 +1,7 @@
-# src/logic/team/context/finder/finder.py
+# src/logic/team/query/finder/finder.py
 
 """
-Module: logic.team.context.finder.finder
+Module: logic.team.query.finder.finder
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -23,7 +23,7 @@ class TeamFinder(DataFinder[Team]):
     Role:SearchProcess
 
     Responsibilities:
-    1.  Send bag in a TeamList whose attribute value match the context.key value to the caller.
+    1.  Send bag in a TeamList whose attribute value match the query.key value to the caller.
     2.  If a search does not complete forward the exception chain to the caller for debugging.
 
     # LIMITATIONS:
@@ -49,13 +49,13 @@ class TeamFinder(DataFinder[Team]):
         """
         # ACTION:
         1.  If the collider_candidates is null or the wrong type send the exception in the SearchResult.
-        2.  If the context fails validation send the exception in the SearchResult. Else, route to the
-            search method which matches the context key.
+        2.  If the query fails validation send the exception in the SearchResult. Else, route to the
+            search method which matches the query key.
         3.  The search method returns either an empty result or a list of teams. Any exceptions were caught earlier
             by the search router.
        # PARAMETERS:
             *   collider_candidates (List[Team]):
-            *   context: TeamContext
+            *   query: TeamContext
             *   context_validator: TeamContextValidationProcess
         # RETURNS:
             *   SearchResult[List[Team]] containing either:
@@ -88,7 +88,7 @@ class TeamFinder(DataFinder[Team]):
                 )
             )
         
-        # --- Route to the search method which matches the context key. ---#
+        # --- Route to the search method which matches the query key. ---#
         
         # Entry point into searching by team's id.
         if context.id is not None:
@@ -103,7 +103,7 @@ class TeamFinder(DataFinder[Team]):
         if context.color is not None:
             return cls._find_by_color(dataset=dataset, team=context.color)
         
-        # The default path is only reached when a context.key does not have a search route. Return
+        # The default path is only reached when a query.key does not have a search route. Return
         # the exception chain.
         return SearchResult.failure(
             TeamSearchException(

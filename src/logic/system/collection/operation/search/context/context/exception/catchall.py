@@ -1,7 +1,7 @@
-# src/logic/system/collection/operation/search/context/service/exception/super.py
+# src/logic/system/collection/operation/search/query/service/exception/super.py
 
 """
-Module: logic.system.collection.operation.search.context.service.exceptionsuper
+Module: logic.system.collection.operation.search.query.service.exceptionsuper
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0

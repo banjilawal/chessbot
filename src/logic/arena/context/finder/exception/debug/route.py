@@ -1,7 +1,7 @@
-# src/logic/arena/context/finder/exception/debug/route.py
+# src/logic/arena/query/finder/exception/debug/route.py
 
 """
-Module: logic.arena.context.finder.exception.debug.route
+Module: logic.arena.query.finder.exception.debug.route
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

@@ -50,7 +50,7 @@ class StackService(ABC, Generic[T]):
         -   push(item: T) -> InsertionResult
         -   pop() -> DeletionResult[T]
         -   delete_by_id(id: int) -> DeletionResult[T]
-        -   query(collider_candidates: List[T], context: Context[T]) -> SearchResult[List[T]]
+        -   query(collider_candidates: List[T], query: Context[T]) -> SearchResult[List[T]]
 
     Super:
     """

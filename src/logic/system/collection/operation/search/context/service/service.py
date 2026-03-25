@@ -1,7 +1,7 @@
-# src/logic/system/context/service/service.py
+# src/logic/system/query/service/service.py
 
 """
-Module: logic.system.context.service.service
+Module: logic.system.query.service.service
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

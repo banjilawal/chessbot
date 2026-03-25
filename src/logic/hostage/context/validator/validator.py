@@ -161,7 +161,7 @@ class CaptivityContextValidationProcess(ValidationProcess[CaptivityContext]):
             # On certification success return the captured_square_CaptivityContext in the ValidationResult.
             return ValidationResult.success(payload=context)
         
-        # Return the exception chain if there was no validation route for the context.
+        # Return the exception chain if there was no validation route for the query.
         return ValidationResult.failure(
             CaptivityContextValidationException(
                 msg=f"{method}: {CaptivityContextValidationException.MSG}",

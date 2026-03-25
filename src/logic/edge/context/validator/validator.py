@@ -1,7 +1,7 @@
-# src/logic/edge/context/validator/validator.py
+# src/logic/edge/query/validator/validator.py
 
 """
-Module: logic.edge.context.validator.validator
+Module: logic.edge.query.validator.validator
 Author: Banji Lawal
 Created: 2026-02-18
 version: 1.0.0
@@ -207,7 +207,7 @@ class EdgeContextValidationProcess(ValidationProcess[EdgeContext]):
             # On certification success return the board_EdgeContext in the ValidationResult.
             return ValidationResult.success(payload=context)
         
-        # Return the exception chain if there is no validation route for the context.
+        # Return the exception chain if there is no validation route for the query.
         return ValidationResult.failure(
             EdgeContextValidationException(
                 msg=f"{method}: {EdgeContextValidationException.MSG}",

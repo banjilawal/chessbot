@@ -1,7 +1,7 @@
-# src/logic/team/context/service/exception/anchor.py
+# src/logic/team/query/service/exception/anchor.py
 
 """
-Module: logic.team.context.service.exception.anchor
+Module: logic.team.query.service.exception.anchor
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/logic/edge/context/service/servicepy
+# src/logic/edge/query/service/servicepy
 
 """
-Module: logic.edge.context.service.service
+Module: logic.edge.query.service.service
 Author: Banji Lawal
 Created: 2026-02-18
 version: 1.0.0

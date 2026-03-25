@@ -49,7 +49,7 @@ class SquareDatabase(Database[Square]):
         *   add_occupant_to_square(token: Token, square: Square) -> UpdateResult[Square]
         *   remove_occupant_by_search(occupant: Token) -> DeletionResult[Token]
         *   insert_square(square: Square) -> InsertionResult[bool]
-        *   search(context: SquareContext) -> SearchResult[List[Square]]
+        *   search(query: SquareContext) -> SearchResult[List[Square]]
 
     # INHERITED METHODS:
     None
@@ -229,7 +229,7 @@ class SquareDatabase(Database[Square]):
             2.  If stack_service fails, wrap the exception in SquareDatabaseException then send in the SearchResult.
             3.  Forward the search_result to the client.
         # PARAMETERS:
-            *   context (SquareContext)
+            *   query (SquareContext)
         # RETURN:
             *   SearchResult
         Raises:

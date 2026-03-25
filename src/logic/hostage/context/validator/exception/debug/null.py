@@ -1,7 +1,7 @@
-# src/logic/hostage/context/validator/exception/debug/null.py
+# src/logic/hostage/query/validator/exception/debug/null.py
 
 """
-Module: logic.hostage.context.validator.exception.debug.null
+Module: logic.hostage.query.validator.exception.debug.null
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

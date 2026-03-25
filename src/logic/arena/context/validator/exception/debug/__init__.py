@@ -1,7 +1,7 @@
-# src/logic/arena/context/validator/exception/debug/__init__.py
+# src/logic/arena/query/validator/exception/debug/__init__.py
 
 """
-Module: logic.arena.context.validator.exception.debug.__init__
+Module: logic.arena.query.validator.exception.debug.__init__
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/logic/node/context/context.py
+# src/logic/node/query/query.py
 
 """
-Module: logic.node.context.context
+Module: logic.node.query.query
 Author: Banji Lawal
 Created: 2026-02-18
 version: 1.0.0

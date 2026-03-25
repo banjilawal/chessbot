@@ -1,7 +1,7 @@
-# src/logic/context/coord/finder/finder.py
+# src/logic/query/coord/finder/finder.py
 
 """
-Module: logic.context.coord.finder.finder
+Module: logic.query.coord.finder.finder
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -21,7 +21,7 @@ class CoordFinder(DataFinder[Coord]):
     Role:SearchProcess
 
     Responsibilities:
-    1.  Send bag in a TokenList whose attribute value match the context.key value to the caller.
+    1.  Send bag in a TokenList whose attribute value match the query.key value to the caller.
     2.  If a search does not complete forward the exception chain to the caller for debugging.
 
     # LIMITATIONS:
@@ -48,13 +48,13 @@ class CoordFinder(DataFinder[Coord]):
         """
         # ACTION:
             1.  If the collider_candidates is null or the wrong type send the exception in the SearchResult.
-            2.  If the context fails validation send the exception in the SearchResult. Else, route to the
-                search method which matches the context key.
+            2.  If the query fails validation send the exception in the SearchResult. Else, route to the
+                search method which matches the query key.
             3.  The search method returns either an empty result or a list of tokens. Any exceptions were caught earlier
                 by the search router.
        # PARAMETERS:
             *   collider_candidates (List[Token]):
-            *   context: TokenContext
+            *   query: TokenContext
             *   context_validator: TokenContextValidationProcess
         # RETURNS:
             *   SearchResult[List[Token]] containing either:
@@ -86,7 +86,7 @@ class CoordFinder(DataFinder[Coord]):
                     ex=CoordSearchPayloadTypeException(f"{method}: {CoordSearchPayloadTypeException.MSG}")
                 )
             )
-        # handle the case that, context fails integrity tests.
+        # handle the case that, query fails integrity tests.
         context_validation = context_validator.execute(context)
         if context_validation.is_failure:
             # Return the exception chain on failure.
@@ -96,7 +96,7 @@ class CoordFinder(DataFinder[Coord]):
                     ex=context_validation.exception
                 )
             )
-        # --- Route to the search method which matches the context key. ---#
+        # --- Route to the search method which matches the query key. ---#
         
         # Entry point into finding by coord's row.
         if context.row is not None and context.column is None:
@@ -108,7 +108,7 @@ class CoordFinder(DataFinder[Coord]):
         if context.column is not None and context.row is not None:
             return cls._find_by_row_and_column(dataset=dataset, row=context.row, column=context.column)
         
-        # If a context does not have a search route defined send an exception chain.
+        # If a query does not have a search route defined send an exception chain.
         return SearchResult.failure(
             CoordSearchException(
                 msg=f"{method}: {CoordSearchException.MSG}",

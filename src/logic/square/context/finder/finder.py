@@ -1,7 +1,7 @@
-# src/logic/square/context/finder/finder.py
+# src/logic/square/query/finder/finder.py
 
 """
-Module: logic.square.context.finder.finder
+Module: logic.square.query.finder.finder
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -26,7 +26,7 @@ class SquareFinder(StackSearchProcess[Square]):
 
     Responsibilities:
     1.  Single point of entry into different square search routes.
-    2.  Return a list of squares which match the context attribute's value.
+    2.  Return a list of squares which match the query attribute's value.
     3.  Provide an exception chain the client can use to trace a search that does is not completed.
     4.  Manages all phases of the SquareSearch lifecycle.
 
@@ -50,7 +50,7 @@ class SquareFinder(StackSearchProcess[Square]):
     # LOCAL METHODS:
         *   find(
                 collider_candidates: List[Square],
-                context: SquareContext,
+                query: SquareContext,
                 square_validator: SquareValidationProcess
                 context_validator: SquareContextValidationProcess
             ) -> SearchResult[List[Square]]
@@ -72,14 +72,14 @@ class SquareFinder(StackSearchProcess[Square]):
         # ACTION:
             1.  If either
                     *   the collider_candidates.
-                    *   context.
+                    *   query.
                 Is not certified as safe send an exception chain in the SearchResult.
             2.  Once Action.1 has been completed successfully searches are guaranteed to complete successfully.
-            3.  Route to the search method that matches the context.
+            3.  Route to the search method that matches the query.
             4.  The searcher returns a List contain zero or more squares.
         # PARAMETERS:
                 *   collider_candidates [List[Square]]
-                *   context [SquareContext]
+                *   query [SquareContext]
                 *   square_validator [SquareValidationProcess]
                 *   context_validator [SquareContextValidationProcess]
         # RETURNS:
@@ -102,7 +102,7 @@ class SquareFinder(StackSearchProcess[Square]):
                     ex=dataset_validation_result.exception
                 )
             )
-        # Handle the case that, the context fails validation.
+        # Handle the case that, the query fails validation.
         context_validation_result = context_validator.execute(context)
         if context_validation_result.is_failure:
             # Return the exception chain on failure.
@@ -112,7 +112,7 @@ class SquareFinder(StackSearchProcess[Square]):
                     ex=context_validation_result.exception
                 )
             )
-        # --- Route to the search method which matches the context key. ---#
+        # --- Route to the search method which matches the query key. ---#
         
         # Entry point into finding by the square's id.
         if context.id is not None:
@@ -133,7 +133,7 @@ class SquareFinder(StackSearchProcess[Square]):
         if context.state:
             return cls._find_by_state(dataset=dataset, state=context.state)
         
-        # If a context does not have a search route defined send an exception chain.
+        # If a query does not have a search route defined send an exception chain.
         return SearchResult.failure(
             SquareSearchException(
                 msg=f"{method}: {SquareSearchException.ERR_CODE}",

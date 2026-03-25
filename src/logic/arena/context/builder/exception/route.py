@@ -1,7 +1,7 @@
 # src/logic/arena/_context/builder/exception/route.py
 
 """
-Module: logic.arena.context.builder.exception.route
+Module: logic.arena.query.builder.exception.route
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

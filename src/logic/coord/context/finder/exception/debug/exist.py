@@ -1,7 +1,7 @@
-# src/logic/coord/context/finder/exception/debug/exist.py
+# src/logic/coord/query/finder/exception/debug/exist.py
 
 """
-Module: logic.coord.context.finder.exception.debug.exist
+Module: logic.coord.query.finder.exception.debug.exist
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

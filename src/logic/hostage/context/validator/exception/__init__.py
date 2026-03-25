@@ -1,7 +1,7 @@
-# src/logic/hostage/context/validator/exception/__init__.py
+# src/logic/hostage/query/validator/exception/__init__.py
 
 """
-Module: logic.hostage.context.validator.exception.__init__
+Module: logic.hostage.query.validator.exception.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

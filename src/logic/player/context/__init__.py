@@ -1,7 +1,7 @@
-# src/logic/player/context/__init__.py
+# src/logic/player/query/__init__.py
 
 """
-Module: logic.player.context.__init__
+Module: logic.player.query.__init__
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

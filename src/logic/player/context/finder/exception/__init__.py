@@ -1,6 +1,6 @@
-# src/logic/player/context/finder/exception/__init__.py
+# src/logic/player/query/finder/exception/__init__.py
 """
-Module: logic.player.context.finder.exception.__init__
+Module: logic.player.query.finder.exception.__init__
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0

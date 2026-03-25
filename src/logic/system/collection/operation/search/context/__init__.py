@@ -1,7 +1,7 @@
-# src/logic/system/collection/operation/search/context/__init__.py
+# src/logic/system/collection/operation/search/query/__init__.py
 
 """
-Module: logic.system.collection.operation.search.context.__init__
+Module: logic.system.collection.operation.search.query.__init__
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0

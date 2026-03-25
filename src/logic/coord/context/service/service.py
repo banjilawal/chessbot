@@ -1,7 +1,7 @@
-# src/logic/coord/context/service/service.py
+# src/logic/coord/query/service/service.py
 
 """
-Module: logic.coord.context.service.service
+Module: logic.coord.query.service.service
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0
