@@ -1,7 +1,7 @@
-# src/logic/board/builder/exception.py
+# src/logic/board/build/exception.py
 
 """
-Module: logic.board.builder.builder
+Module: logic.board.build.build
 Author: Banji Lawal
 Created: 2025-09-03
 version: 1.0.0
@@ -68,7 +68,7 @@ class BoardBuildProcess(BuildProcess[Board]):
             *   BoardBuildException
             *   ArenaAlreadyContainsBoardException
         """
-        method = "BoardBuildProcess.builder"
+        method = "BoardBuildProcess.build"
         
         # Handle the case that, the id is not certified safe.
         id_validation = identity_service.validate_id(candidate=id)

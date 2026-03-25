@@ -49,8 +49,8 @@ class CoordService(IntegrityService[Coord]):
         # PARAMETERS:
             *   id (nt)
             *   name (str)
-            *   builder (CoordFactory)
-            *   validator (CoordValidationProcess)
+            *   build (CoordFactory)
+            *   validation (CoordValidationProcess)
 
         # RETURNS:
         None
@@ -78,7 +78,7 @@ class CoordService(IntegrityService[Coord]):
         """
         # ACTION:
         1.  Certify the vector argument with vector_service.
-        2.  Certify the coord argument with the service's validator.
+        2.  Certify the coord argument with the service's validation.
         3.  Get the new row and column using the expression
                     new_row, new_colum = coord.row + vector.y, coord.column + vector.x
         5.  Using the service's CoordBuildProcess instance create and return the new Coord.
@@ -130,7 +130,7 @@ class CoordService(IntegrityService[Coord]):
         """
         # ACTION:
         1.  Certify the vector argument with vector_service.
-        2.  Certify the coord argument with the service's validator.
+        2.  Certify the coord argument with the service's validation.
         3.  Get the new row and column using the expression
                     new_row, new_colum = coord.row * scalar.value, coord.column + scalar.value
         5.  Using the service's CoordBuildProcess instance create and return the new Coord.

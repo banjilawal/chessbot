@@ -1,7 +1,7 @@
-# src/logic/edge/validator/exception/work.py
+# src/logic/edge/validation/exception/work.py
 
 """
-Module: logic.edge.validator.exception.work
+Module: logic.edge.validation.exception.work
 Author: Banji Lawal
 Created: 2025-09-08
 Version: 1.0.0

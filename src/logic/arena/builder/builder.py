@@ -1,7 +1,7 @@
 # src/logic/arena/exception.py
 
 """
-Module: logic.arena.builder
+Module: logic.arena.build
 Author: Banji Lawal
 Created: 2025-09-11
 version: 1.0.0
@@ -48,7 +48,7 @@ class ArenaBuildProcess(BuildProcess[Arena]):
         """
         # ACTION:
         1.  verify arena_variety is a not-null ArenaVariety object.
-        2.  Use arena_variety to pick which builder method will create the concrete Arena object.
+        2.  Use arena_variety to pick which build method will create the concrete Arena object.
 
         # PARAMETERS:
             *   id (int)

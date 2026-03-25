@@ -9,11 +9,11 @@ version: 1.0.0
 
 from typing import cast
 
-from logic.system import ContextService, id_emitter
+from logic.system import QueryService, id_emitter
 from logic.team import TeamContext, TeamContextBuildProcess, TeamContextValidationProcess, TeamFinder
 
 
-class TeamContextService(ContextService[TeamContext]):
+class TeamQueryService(QueryService[TeamContext]):
     """
     Role:Search Service, Lifecycle Management, Encapsulation, API layer.
 
@@ -25,15 +25,15 @@ class TeamContextService(ContextService[TeamContext]):
         Team search flow.
 
     Super Class:
-        *   ContextService
+        *   QueryService
 
     Provides:
 
 
     # INHERITED ATTRIBUTES:
-        *   See ContextService for inherited attributes.
+        *   See QueryService for inherited attributes.
     """
-    SERVICE_NAME = "TeamContextService"
+    SERVICE_NAME = "TeamQueryService"
     
     def __init__(
             self,
@@ -50,16 +50,16 @@ class TeamContextService(ContextService[TeamContext]):
         # PARAMETERS:
             *   name (str): Default value - SERVICE_NAME
             *   id (int): Default value - id_emitter.service_id
-            *   finder (TeamFinder): Default value - TeamFinder()
-            *   builder (TeamContextBuildProcess): Default value - TeamContextBuildProcess()
-            *   validator (TeamContextValidationProcess): Default value - TeamContextValidationProcess()
+            *   route (TeamFinder): Default value - TeamFinder()
+            *   build (TeamContextBuildProcess): Default value - TeamContextBuildProcess()
+            *   validation (TeamContextValidationProcess): Default value - TeamContextValidationProcess()
 
         # RETURNS:
         None
 
         Raises:
         """
-        method = "TeamContextService.__init__"
+        method = "TeamQueryService.__init__"
         super().__init__(id=id, name=name, builder=builder, validator=validator, finder=finder)
     
     @property

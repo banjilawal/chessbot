@@ -1,7 +1,7 @@
-# src/logic/team/hash/validator/work.py
+# src/logic/team/hash/validation/work.py
 
 """
-Module: logic.team.hash.validator.work
+Module: logic.team.hash.validation.work
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0

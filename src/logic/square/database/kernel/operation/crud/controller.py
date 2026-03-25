@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.square import SquareContext, SquareContextService, SquareStackPopper, SquareStackPush
+from logic.square import SquareContext, SquareQueryService, SquareStackPopper, SquareStackPush
 
 
 class SquareStackCrudController:
@@ -37,13 +37,13 @@ class SquareStackCrudController:
     
     _popper: SquareStackPopper
     _pusher: SquareStackPush
-    _query: SquareContextService
+    _query: SquareQueryService
     
     def __init__(
             self,
             popper: SquareStackPopper = SquareStackPopper(),
             pusher: SquareStackPush = SquareStackPush(),
-            query: SquareContextService = SquareContextService(),
+            query: SquareQueryService = SquareQueryService(),
     ):
         self._popper = popper
         self._pusher = pusher
@@ -58,6 +58,6 @@ class SquareStackCrudController:
         return self._pusher
     
     @property
-    def query(self) -> SquareContextService:
+    def query(self) -> SquareQueryService:
         return self._query
     

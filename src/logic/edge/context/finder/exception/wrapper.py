@@ -1,7 +1,7 @@
-# src/logic/edge/finder/exception/work.py
+# src/logic/edge/route/exception/work.py
 
 """
-Module: logic.edge.finder.exception.work
+Module: logic.edge.route.exception.work
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0

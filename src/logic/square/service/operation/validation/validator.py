@@ -1,4 +1,4 @@
-# src/logic/square/service/operation/validation/validator.py
+# src/logic/square/service/operation/validation/validation.py
 
 """
 Module: logic.square.service.operation.validation

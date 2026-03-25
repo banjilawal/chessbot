@@ -1,7 +1,7 @@
-# src/logic/player/finder/finder.py
+# src/logic/player/route/route.py
 
 """
-Module: logic.player.cntext.finder.finder
+Module: logic.player.cntext.route.route
 Author: Banji Lawal
 Created: 2025-11-17
 version: 1.0.0
@@ -48,8 +48,8 @@ class AgentFinder(DataFinder[PlayerAgent]):
         # ACTION:
         1.  Verify the collider_candidates is not null and contains only Player objects,
         2.  Use context_validator to certify the provided map.
-        3.  Route to the appropriate finder-helper based on the attribute-value tuple which is enabled.
-        4.  The finder-helper sends the SearchResult to the caller.
+        3.  Route to the appropriate route-helper based on the attribute-value tuple which is enabled.
+        4.  The route-helper sends the SearchResult to the caller.
 
         # PARAMETERS:
             *   map: AgentContext

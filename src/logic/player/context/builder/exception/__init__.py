@@ -1,7 +1,7 @@
-# src/logic/player/_context/builder/exception/__init__.py
+# src/logic/player/_context/build/exception/__init__.py
 
 """
-Module: logic.player.query.builder.exception.__init__
+Module: logic.player.query.build.exception.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

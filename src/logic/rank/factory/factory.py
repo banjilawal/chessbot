@@ -80,7 +80,7 @@ class RankFactory(BuildProcess[Rank]):
                     )
                 )
             )
-        # --- Route to the appropriate concrete builder. ---#
+        # --- Route to the appropriate concrete build. ---#
         
         # Entry point into building a King instance.
         if persona == Persona.KING:

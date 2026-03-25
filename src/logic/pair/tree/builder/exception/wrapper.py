@@ -1,7 +1,7 @@
-# src/logic/pair/builder/exception/work.py
+# src/logic/pair/build/exception/work.py
 
 """
-Module: logic.pair.builder.exception.work
+Module: logic.pair.build.exception.work
 Author: Banji Lawal
 Created: 2026-03-12
 version: 1.0.0

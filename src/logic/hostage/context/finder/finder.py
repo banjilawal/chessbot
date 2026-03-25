@@ -1,7 +1,7 @@
-# src/logic/hostage/query/finder/finder.py
+# src/logic/hostage/query/route/route.py
 
 """
-Module: logic.hostage.query.finder.finder
+Module: logic.hostage.query.route.route
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

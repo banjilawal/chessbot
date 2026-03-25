@@ -1,7 +1,7 @@
-# src/logic/coord/query/builder/exception.py
+# src/logic/coord/query/build/exception.py
 
 """
-Module: logic.coord.query.builder.builder
+Module: logic.coord.query.build.build
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0
@@ -64,7 +64,7 @@ class CoordContextBuildProcess(BuildProcess[CoordContext]):
             *   CoordContextBuildException
             *   ArenaCoordContextFlagsException
         """
-        method = "CoordContextBuildProcess.builder"
+        method = "CoordContextBuildProcess.build"
         
         # Count how many optional parameters are not-null. One param needs to be not-null.
         params = [row, column]

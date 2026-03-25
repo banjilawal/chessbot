@@ -1,7 +1,7 @@
-# src/logic/square/validator/exception/debug/collider_candidates/square.py
+# src/logic/square/validation/exception/debug/collider_candidates/square.py
 
 """
-Module: logic.square.validator.exception.debug.collider_candidates.square
+Module: logic.square.validation.exception.debug.collider_candidates.square
 Author: Banji Lawal
 Created: 2026-02-23
 """

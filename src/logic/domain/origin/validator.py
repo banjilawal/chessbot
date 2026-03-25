@@ -53,8 +53,8 @@ class DomainOriginValidationProcess(ValidationProcess[DomainOrigin]):
 
         # PARAMETERS:
           * candidate (Any): Object to verify is a Domain.
-          * piece_validator (type[PieceValidator]): Injected into validator.
-          * validator (type[SquareValidationProcess]): verifies the relationship between the
+          * piece_validator (type[PieceValidator]): Injected into validation.
+          * validation (type[SquareValidationProcess]): verifies the relationship between the
                 Domain's owning Token and Square.
 
         # RETURNS:

@@ -1,7 +1,7 @@
-# src/logic/player/validator/exception/registration/arena.py
+# src/logic/player/validation/exception/registration/arena.py
 
 """
-Module: logic.player.validator.exception.registration.arena
+Module: logic.player.validation.exception.registration.arena
 Author: Banji Lawal
 Created: 2026-01-08
 version: 1.0.0

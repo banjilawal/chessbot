@@ -1,7 +1,7 @@
-# src/logic/persona/key/builder/exception/work.py
+# src/logic/persona/key/build/exception/work.py
 
 """
-Module: logic.persona.key.builder.exception.work
+Module: logic.persona.key.build.exception.work
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

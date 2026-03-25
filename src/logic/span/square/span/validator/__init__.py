@@ -1,7 +1,7 @@
-# src/logic/span/square/span/validator/__init__.py
+# src/logic/span/square/span/validation/__init__.py
 
 """
-Module: logic.span.square.span.validator.__init__
+Module: logic.span.square.span.validation.__init__
 Author: Banji Lawal
 Created: 2026-03-12
 version: 1.0.0

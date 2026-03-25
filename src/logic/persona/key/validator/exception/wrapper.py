@@ -1,7 +1,7 @@
-# src/logic/persona/key/validator/exception/work.py
+# src/logic/persona/key/validation/exception/work.py
 
 """
-Module: logic.persona.key.validator.exception.work
+Module: logic.persona.key.validation.exception.work
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

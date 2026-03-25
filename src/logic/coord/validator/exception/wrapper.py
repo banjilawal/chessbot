@@ -1,7 +1,7 @@
-# src/logic/coord/validator/exception/work.py
+# src/logic/coord/validation/exception/work.py
 
 """
-Module: logic.coord.validator.exception.work
+Module: logic.coord.validation.exception.work
 Author: Banji Lawal
 Created: 2025-09-08
 Version: 1.0.0

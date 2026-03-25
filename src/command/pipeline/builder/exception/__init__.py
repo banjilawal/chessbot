@@ -1,7 +1,7 @@
-# src/command/command/builder/exception/__init__.py
+# src/command/command/build/exception/__init__.py
 
 """
-Module: command.command.builder.exception.__init__
+Module: command.command.build.exception.__init__
 Author: Banji Lawal
 Created: 2026-02-24
 """

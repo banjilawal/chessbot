@@ -1,7 +1,7 @@
 # src/logic/points/exception.py
 
 """
-Module: logic.points.builder
+Module: logic.points.build
 Author: Banji Lawal
 Created: 2025-11-03
 version: 1.0.0
@@ -66,7 +66,7 @@ class DomainBuildProcess(BuildProcess[Domain]):
             * DomainNullFriendsDictException
             * InvalidDomainException
         """
-        method = "DomainBuildProcess.builder"
+        method = "DomainBuildProcess.build"
         
         try:
             board_actor_validation = BoardActorValidator.execute(piece, board)

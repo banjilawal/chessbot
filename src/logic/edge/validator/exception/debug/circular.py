@@ -1,7 +1,7 @@
-# src/logic/edge/validator/exception/debug/circular.py
+# src/logic/edge/validation/exception/debug/circular.py
 
 """
-Module: logic.edge.validator.exception.debug.circular
+Module: logic.edge.validation.exception.debug.circular
 Author: Banji Lawal
 Created: 2026-02-17
 version: 1.0.0

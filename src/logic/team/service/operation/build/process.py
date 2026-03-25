@@ -1,7 +1,7 @@
-# src/logic/team/builder/exception.py
+# src/logic/team/build/exception.py
 
 """
-Module: logic.team.builder.builder
+Module: logic.team.build.build
 Author: Banji Lawal
 Created: 2025-09-04
 version: 1.0.0
@@ -73,7 +73,7 @@ class TeamBuild(BuildProcess[Team]):
         RAISES:
             *   TeamBuildException
         """
-        method = "TeamBuild.builder"
+        method = "TeamBuild.build"
         
         # Handle the case that, a build param is not certified as safe.
         build_params_validation_result = cls._validate_build_params(
@@ -180,10 +180,10 @@ class TeamBuild(BuildProcess[Team]):
         return ValidationResult.success(4)
 
 
-# src/logic/square/builder/exception.py
+# src/logic/square/build/exception.py
 
 """
-Module: logic.square.builder.builder
+Module: logic.square.build.build
 Author: Banji Lawal
 Created: 2025-09-03
 version: 1.0.0
@@ -279,7 +279,7 @@ class SquareBuildProcess(BuildProcess[Square]):
         Raises:
             *   SquareBuildException
         """
-        method = "SquareBuildProcess.builder"
+        method = "SquareBuildProcess.build"
         
         # Handle the case that, a build param fails is not certified as safe.
         build_params_validation_result = cls._validate_build_params(

@@ -45,7 +45,7 @@ class CaptivityContextValidationProcess(ValidationProcess[CaptivityContext]):
             2. Test the value passed to CaptivityContext passes its validation contract.
         # PARAMETERS:
             * candidate (Any): Object to verify is a Square.
-            * validator (type[SquareValidationProcess]): Enforces safety requirements on row, column, square_name squares.
+            * validation (type[SquareValidationProcess]): Enforces safety requirements on row, column, square_name squares.
         # RETURNS:
             * ValidationResult[CaptivityContext] containing either:
                     - On failure: Exception.

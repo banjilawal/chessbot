@@ -35,4 +35,4 @@ class ContextServiceException(ContextException, ServiceException):
     None
     """
     ERR_CODE = "CONTEXT_SERVICE_EXCEPTION"
-    MSG = "ContextService raised an exception."
+    MSG = "QueryService raised an exception."

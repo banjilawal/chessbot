@@ -1,7 +1,7 @@
-# src/logic/arena/validator/exception/debug/player/none.py
+# src/logic/arena/validation/exception/debug/player/none.py
 
 """
-Module: logic.arena.validator.exception.debug.player.none
+Module: logic.arena.validation.exception.debug.player.none
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

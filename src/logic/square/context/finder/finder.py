@@ -1,7 +1,7 @@
-# src/logic/square/query/finder/finder.py
+# src/logic/square/query/route/route.py
 
 """
-Module: logic.square.query.finder.finder
+Module: logic.square.query.route.route
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -12,7 +12,7 @@ from typing import List
 
 from logic.board import Board
 from logic.coord import Coord
-from logic.system import LoggingLevelRouter, SearchResult, StackSearchProcess
+from logic.system import LoggingLevelRouter, SearchResult, StackSearchRouter
 from logic.square import (
     Square, SquareContext, SquareContextValidationProcess, SquareSearchException, SquareSearchRouteException, SquareState,
     SquareValidationProcess
@@ -20,7 +20,7 @@ from logic.square import (
 from logic.token import Token
 
 
-class SquareFinder(StackSearchProcess[Square]):
+class SquareFinder(StackSearchRouter[Square]):
     """
     Role:Search
 
@@ -61,7 +61,7 @@ class SquareFinder(StackSearchProcess[Square]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def find(
+    def route(
             cls,
             dataset: List[Square],
             context: SquareContext,

@@ -16,7 +16,7 @@ from logic.system import (
 )
 from logic.team import (
     AddingDuplicateTeamException, PoppingEmptyTeamStackException, PoppingTeamStackFailedException,
-    PushingTeamFailedException, Team, TeamContext, TeamContextService, TeamService, TeamStackException
+    PushingTeamFailedException, Team, TeamContext, TeamQueryService, TeamService, TeamStackException
 )
 
 
@@ -43,14 +43,14 @@ class TeamStack(StackService[Team]):
     
     _stack: List[Team]
     _service: TeamService
-    _context_service: TeamContextService
+    _context_service: TeamQueryService
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             service: TeamService = TeamService(),
             id: int = IdFactory.next_id(class_name="TeamStack"),
-            context_service: TeamContextService = TeamContextService(),
+            context_service: TeamQueryService = TeamQueryService(),
     ):
         """
         # ACTION:
@@ -59,7 +59,7 @@ class TeamStack(StackService[Team]):
             *   id (int)
             *   name (str)
             *   service (TeamService)
-            *   context_service (TeamContextService)
+            *   context_service (TeamQueryService)
         # RETURNS:
             None
         Raises:
@@ -84,7 +84,7 @@ class TeamStack(StackService[Team]):
         return self._service
     
     @property
-    def context_service(self) -> TeamContextService:
+    def context_service(self) -> TeamQueryService:
         return self.context_service
     
     @property

@@ -1,7 +1,7 @@
-# src/logic/player/_/builder/exception/route.py
+# src/logic/player/_/build/exception/route.py
 
 """
-Module: logic.player..builder.exception.route
+Module: logic.player..build.exception.route
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

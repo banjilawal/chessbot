@@ -1,7 +1,7 @@
-# src/logic/vector/builder/__init__.py
+# src/logic/vector/build/__init__.py
 
 """
-Module: logic.vector.builder.__init__
+Module: logic.vector.build.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

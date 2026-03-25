@@ -13,7 +13,7 @@ from typing import List
 from logic.system import (
     DeletionResult, InsertionResult, LoggingLevelRouter, SearchResult, Database, id_emitter
 )
-from logic.coord import Coord, CoordContext, CoordContextService, CoordDatabaseException, CoordStack, CoordService
+from logic.coord import Coord, CoordContext, CoordQueryService, CoordDatabaseException, CoordStack, CoordService
 
 class CoordDatabase(Database[Coord]):
     """
@@ -71,7 +71,7 @@ class CoordDatabase(Database[Coord]):
         return self._coord_stack.integrity_service
     
     @property
-    def context_service(self) -> CoordContextService:
+    def context_service(self) -> CoordQueryService:
         return self._coord_stack.context_service
     
     @LoggingLevelRouter.monitor

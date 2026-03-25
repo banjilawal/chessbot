@@ -1,4 +1,4 @@
-# src/logic/token/database/kernel/operation/crud/pop/popper.py
+# src/logic/token/database/kernel/operation/crud/pop/process.py
 
 """
 Module: logic.token.database.kernel.operation.crud.pop.popper
@@ -36,7 +36,7 @@ class TokenStackPop:
 
     @classmethod
     @LoggingLevelRouter.monitor
-    def pop(cls, token_stack: TokenStackService) -> DeletionResult[Token]:
+    def execute(cls, token_stack: TokenStackService) -> DeletionResult[Token]:
         """
         Remove the token at the top of the stack.
         

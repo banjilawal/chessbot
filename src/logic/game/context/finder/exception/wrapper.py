@@ -1,7 +1,7 @@
-# src/logic/game/finder/exception/work.py
+# src/logic/game/route/exception/work.py
 
 """
-Module: logic.game.finder.exception.work
+Module: logic.game.route.exception.work
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/logic/node/query/finder/__init__.py
+# src/logic/node/query/route/__init__.py
 
 """
-Module: logic.node.query.finder.__init__
+Module: logic.node.query.route.__init__
 Author: Banji Lawal
 Created: 2026-02-18
 version: 1.0.0

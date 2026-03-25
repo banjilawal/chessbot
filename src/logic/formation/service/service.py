@@ -29,7 +29,7 @@ class FormationService(HashService[Formation]):
         # PARAMETERS:
             *   id (int)
             *   name (str)
-            *   validator (FormationValidationProcess)
+            *   validation (FormationValidationProcess)
             *   super_key_service (FormationKeyService)
         # RETURNS:
             None

@@ -1,7 +1,7 @@
-# src/logic/schema/validator/exception/debug/__init__.py
+# src/logic/schema/validation/exception/debug/__init__.py
 
 """
-Module: logic.schema.validator.exception.debug.__init__
+Module: logic.schema.validation.exception.debug.__init__
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

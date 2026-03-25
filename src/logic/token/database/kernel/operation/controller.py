@@ -9,7 +9,9 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.token import RankQuotaAnalysis, TokenCollisionAnalysis, TokenStackCrudManager
+from logic.system import IntegrityService
+from logic.token import RankQuotaAnalysis, TokenCollisionAnalysis, TokenStackCrudController, TokenService
+from logic.token.database.kernel.operation.deployment.process import TokenStackDeployment
 
 
 class TokenStackOpsController:
@@ -28,23 +30,37 @@ class TokenStackOpsController:
     Provides:
     Parent:
     """
-    _crud: TokenStackCrudManager
+    _crud: TokenStackCrudController
+    _deployment: TokenStackDeployment
+    _integrity_service: IntegrityService
     _rank_quota_analyzer: RankQuotaAnalysis
     _collision_detector: TokenCollisionAnalysis
     
     def __init__(
             self,
-            crud: TokenStackCrudManager = TokenStackCrudManager(),
+            crud: TokenStackCrudController = TokenStackCrudController(),
+            integrity_service: IntegrityService = IntegrityService(),
+            deployment: TokenStackDeployment = TokenStackDeployment(),
             rank_quota_analyzer: RankQuotaAnalysis = RankQuotaAnalysis(),
             collision_detector: TokenCollisionAnalysis = TokenCollisionAnalysis(),
     ):
         self._crud = crud
+        self._deployment = deployment
+        self._integrity_service = integrity_service
         self._collision_detector = collision_detector
         self._rank_quota_analyzer = rank_quota_analyzer
 
     @property
-    def crud(self) -> TokenStackCrudManager:
+    def crud(self) -> TokenStackCrudController:
         return self._crud
+    
+    @property
+    def deployment(self) -> TokenStackDeployment:
+        return self._deployment
+    
+    @property
+    def integrity_service(self) -> TokenService:
+        return self._integrity_service
     
     @property
     def rank_quota_analyzer(self) -> RankQuotaAnalysis:

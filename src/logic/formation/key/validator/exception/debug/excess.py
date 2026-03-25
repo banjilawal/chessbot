@@ -1,7 +1,7 @@
-# src/logic/formation/key/validator/exception/debug/excess.py
+# src/logic/formation/key/validation/exception/debug/excess.py
 
 """
-Module: logic.formation.key.validator.exception.debug.excess
+Module: logic.formation.key.validation.exception.debug.excess
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

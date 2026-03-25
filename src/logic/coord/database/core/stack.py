@@ -13,7 +13,7 @@ from typing import List, Optional, cast
 
 from logic.system import StackService, DeletionResult, InsertionResult, SearchResult, id_emitter
 from logic.coord import (
-    Coord, CoordContext, CoordService, CoordContextService, CoordStackException, PushingDuplicateCoordException,
+    Coord, CoordContext, CoordService, CoordQueryService, CoordStackException, PushingDuplicateCoordException,
     MaxConsecutiveCoordPopException,
     PoppingCoordStackFailedException, PoppingEmtpyCoordStackException, PushingCoordFailedException
 )
@@ -53,7 +53,7 @@ class CoordStack(StackService[Coord]):
             id: int = id_emitter.service_id,
             items: List[Coord] = List[Coord],
             service: CoordService = CoordService(),
-            context_service: CoordContextService = CoordContextService(),
+            context_service: CoordQueryService = CoordQueryService(),
     ):
         """
         Args:
@@ -61,7 +61,7 @@ class CoordStack(StackService[Coord]):
             id: int
             items: List[Coord]
             service: CoordService
-            context_service: CoordContextService
+            context_service: CoordQueryService
         """
         super().__init__(
             id=id,
@@ -96,9 +96,9 @@ class CoordStack(StackService[Coord]):
         return cast(CoordService, self.integrity_service)
     
     @property
-    def context_service(self) -> CoordContextService:
-        """Get CoordContextService."""
-        return cast(CoordContextService, self.context_service)
+    def context_service(self) -> CoordQueryService:
+        """Get CoordQueryService."""
+        return cast(CoordQueryService, self.context_service)
     
     def push(self, item: Coord) -> InsertionResult[bool]:
         """

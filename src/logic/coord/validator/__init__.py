@@ -1,7 +1,7 @@
-# src/logic/coord/validator/__init__.py
+# src/logic/coord/validation/__init__.py
 
 """
-Module: logic.coord.validator.__init__
+Module: logic.coord.validation.__init__
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

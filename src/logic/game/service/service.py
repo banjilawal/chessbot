@@ -27,8 +27,8 @@ class GameService(IntegrityService[Game]):
         *   IntegrityService
 
     # PROVIDES:
-        *   builder: --> GameBuildProcess
-        *   validator: --> GameValidationProcess
+        *   build: --> GameBuildProcess
+        *   validation: --> GameValidationProcess
 
 
     # INHERITED ATTRIBUTES:
@@ -50,8 +50,8 @@ class GameService(IntegrityService[Game]):
         # PARAMETERS:
             *   id (nt)
             *   name (str)
-            *   builder (GameFactory)
-            *   validator (GameValidationProcess)
+            *   build (GameFactory)
+            *   validation (GameValidationProcess)
 
         # RETURNS:
         None

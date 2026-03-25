@@ -1,7 +1,7 @@
-# src/logic/persona/validator/exception/quota.py
+# src/logic/persona/validation/exception/quota.py
 
 """
-Module: logic.persona.validator.exception.quota
+Module: logic.persona.validation.exception.quota
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

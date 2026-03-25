@@ -1,6 +1,6 @@
-# src/logic/hostage/validator/exception/debug/formation/prisoner
+# src/logic/hostage/validation/exception/debug/formation/prisoner
 """
-Module: logic.hostage.validator.exception.debug.formation.prisoner
+Module: logic.hostage.validation.exception.debug.formation.prisoner
 Author: Banji Lawal
 Created: 2025-11-19
 """

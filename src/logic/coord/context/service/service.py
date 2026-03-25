@@ -10,11 +10,11 @@ version: 1.0.0
 
 from typing import cast
 
-from logic.system import ContextService, id_emitter
+from logic.system import QueryService, id_emitter
 from logic.coord import CoordContext, CoordContextBuildProcess, CoordContextValidationProcess, CoordFinder
 
 
-class CoordContextService(ContextService[CoordContext]):
+class CoordQueryService(QueryService[CoordContext]):
     """
     Role:Search Service, Lifecycle Management, Encapsulation, API layer.
 
@@ -26,15 +26,15 @@ class CoordContextService(ContextService[CoordContext]):
         Coord search flow.
 
     Super Class:
-        *   ContextService
+        *   QueryService
 
     Provides:
 
 
     # INHERITED ATTRIBUTES:
-        *   See ContextService for inherited attributes.
+        *   See QueryService for inherited attributes.
     """
-    DEFAULT_NAME = "CoordContextService"
+    DEFAULT_NAME = "CoordQueryService"
     def service(
             self,
             name: str = DEFAULT_NAME,
@@ -50,16 +50,16 @@ class CoordContextService(ContextService[CoordContext]):
         # PARAMETERS:
             *   id (int)
             *   name (str)
-            *   finder (CoordFinder)
-            *   builder (CoordContextBuildProcess)
-            *   validator (CoordContextValidationProcess)
+            *   route (CoordFinder)
+            *   build (CoordContextBuildProcess)
+            *   validation (CoordContextValidationProcess)
 
         # RETURNS:
         None
 
         Raises:
         """
-        method = "CoordContextService.service"
+        method = "CoordQueryService.service"
         super().service(id=id, name=name, builder=builder, validator=validator, finder=finder)
     
     @property

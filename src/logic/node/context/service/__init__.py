@@ -14,4 +14,4 @@ None
 
 # Modules
 from .exception import *
-from .service import NodeContextService
+from .service import NodeQueryService

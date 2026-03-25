@@ -1,7 +1,7 @@
-# src/logic/square/query/validator/validator.py
+# src/logic/square/query/validation/validation.py
 
 """
-Module: logic.square.query.validator.validator
+Module: logic.square.query.validation.validation
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

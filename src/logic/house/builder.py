@@ -20,7 +20,7 @@ class HouseBuildProcess(BuildProcess[House]):
     @LoggingLevelRouter.monitor
     def execute(cls, turn_scene: TurnScene) -> BuildResult[House]:
         """"""
-        method = "HouseBuildProcess.builder"
+        method = "HouseBuildProcess.build"
         
         try:
             turn_scene_validation = TurnSceneValidationProcess.execute(turn_scene)

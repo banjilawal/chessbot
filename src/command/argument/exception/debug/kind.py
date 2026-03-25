@@ -1,7 +1,7 @@
-# src/command/request/validator/exception/debug/null.py
+# src/command/request/validation/exception/debug/null.py
 
 """
-Module: command.request.validator.exception.debug.null
+Module: command.request.validation.exception.debug.null
 Author: Banji Lawal
 Created: 2026-02-24
 """

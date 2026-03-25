@@ -1,7 +1,7 @@
-# src/logic/snapshot/builder/exception.py
+# src/logic/snapshot/build/exception.py
 
 """
-Module: logic.snapshot.builder.builder
+Module: logic.snapshot.build.build
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

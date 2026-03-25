@@ -1,7 +1,7 @@
-# src/logic/schema/key/validator/exception/debug/null.py
+# src/logic/schema/key/validation/exception/debug/null.py
 
 """
-Module: logic.schema.key.validator.exception.debug.null
+Module: logic.schema.key.validation.exception.debug.null
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

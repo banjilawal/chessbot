@@ -7,10 +7,10 @@ Created: 2025-11-16
 version: 1.0.0
 """
 
-from logic.system import ContextService
+from logic.system import QueryService
 from logic.rank import RankContext, RankContextValidator, RankContextBuilder, RankFinder
 
-class RankContextService(ContextService[RankContext]):
+class RankQueryService(QueryService[RankContext]):
     """
     Role:Search Service, Lifecycle Management, Encapsulation, API layer.
 
@@ -22,16 +22,16 @@ class RankContextService(ContextService[RankContext]):
         Rank search flow.
 
     Super Class:
-        *   ContextService
+        *   QueryService
 
     # PROVIDES:
-        *   RankContextService
+        *   RankQueryService
 
 
     # INHERITED ATTRIBUTES:
-        *   See ContextService for inherited attributes.
+        *   See QueryService for inherited attributes.
     """
-    DEFAULT_NAME = "RankContextService"
+    DEFAULT_NAME = "RankQueryService"
     def __init__(
             self,
             name: str = DEFAULT_NAME,
@@ -47,16 +47,16 @@ class RankContextService(ContextService[RankContext]):
         # PARAMETERS:
             *   name (str): Default value - SERVICE_NAME
             *   id (int): Default value - id_emitter.service_id
-            *   finder (RankFinder): Default value - RankFinder()
-            *   builder (RankContextBuildProcess): Default value - RankContextBuildProcess()
-            *   validator (RankContextValidationProcess): Default value - RankContextValidationProcess()
+            *   route (RankFinder): Default value - RankFinder()
+            *   build (RankContextBuildProcess): Default value - RankContextBuildProcess()
+            *   validation (RankContextValidationProcess): Default value - RankContextValidationProcess()
 
         # RETURNS:
         None
 
         Raises:
         """
-        method = "RankContextService.__init__"
+        method = "RankQueryService.__init__"
         super().__init__(id=id, name=name, builder=builder, validator=validator, finder=finder)
     
     @property

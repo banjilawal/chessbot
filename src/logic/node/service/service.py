@@ -53,8 +53,8 @@ class NodeService(IntegrityService[Node]):
         # PARAMETERS:
             *   id (nt)
             *   name (str)
-            *   builder (NodeFactory)
-            *   validator (NodeValidationProcess)
+            *   build (NodeFactory)
+            *   validation (NodeValidationProcess)
         # RETURNS:
             None
         Raises:

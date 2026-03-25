@@ -1,7 +1,7 @@
-# src/logic/pair/pair/validator/validator.py
+# src/logic/pair/pair/validation/validation.py
 
 """
-Module: logic.pair.pair.validator.validator
+Module: logic.pair.pair.validation.validation
 Author: Banji Lawal
 Created: 2026-03-13
 version: 1.0.0

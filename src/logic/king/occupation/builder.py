@@ -27,7 +27,7 @@ class KingOccupationEventBuilder(Enum):
   ) -> BuildResult[KingOccupationEvent]:
 
 
-    method = "KingOccupationEventBuilder.builder"
+    method = "KingOccupationEventBuilder.build"
 
     try:
       id_validation = IdValidationProcess.execute(event_id)

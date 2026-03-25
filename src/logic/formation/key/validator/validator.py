@@ -1,7 +1,7 @@
-# src/logic/formation/key/validator/validator.py
+# src/logic/formation/key/validation/validation.py
 
 """
-Module: logic.formation.key.validator.validator
+Module: logic.formation.key.validation.validation
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

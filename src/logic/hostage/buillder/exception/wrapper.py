@@ -1,7 +1,7 @@
-# src/logic/hostage/builder/exception/work.py
+# src/logic/hostage/build/exception/work.py
 
 """
-Module: logic.hostage.builder.exception.work
+Module: logic.hostage.build.exception.work
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/logic/formation/key/builder/exception.py
+# src/logic/formation/key/build/exception.py
 
 """
-Module: logic.formation.key.builder.builder
+Module: logic.formation.key.build.build
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

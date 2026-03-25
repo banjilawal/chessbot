@@ -1,7 +1,7 @@
-# src/logic/node/validator/exception/flag/excess.py
+# src/logic/node/validation/exception/flag/excess.py
 
 """
-Module: logic.node.validator.exception.flag.excess
+Module: logic.node.validation.exception.flag.excess
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

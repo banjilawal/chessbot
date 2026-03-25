@@ -14,7 +14,7 @@ from logic.system import StackService, DeletionResult, IdentityService, Insertio
 from logic.board import (
     AppendingBoardDirectlyIntoItemsFailedException, ArenaAlreadyContainsBoardException, PoppingEmptyBoardStackException,
     Board, BoardContext,
-    BoardDataServiceException, BoardDoesNotExistForRemovalException, BoardService, BoardContextService,
+    BoardDataServiceException, BoardDoesNotExistForRemovalException, BoardService, BoardQueryService,
     BoardDeletionException, BoardInsertionException
 )
 
@@ -46,7 +46,7 @@ class BoardStackService(StackService[Board]):
             id: int = id_emitter.service_id,
             items: List[Board] = List[Board],
             service: BoardService = BoardService(),
-            context_service: BoardContextService = BoardContextService(),
+            context_service: BoardQueryService = BoardQueryService(),
     ):
         """
         # ACTION:
@@ -56,7 +56,7 @@ class BoardStackService(StackService[Board]):
             *   name (str)
             *   bag (List[Team])
             *   service (TeamService)
-            *   context_service (TeamContextService)
+            *   context_service (TeamQueryService)
         # RETURNS:
             None
         Raises:
@@ -76,8 +76,8 @@ class BoardStackService(StackService[Board]):
         return cast(BoardService, self.entity_service)
     
     @property
-    def board_context_service(self) -> BoardContextService:
-        return cast(BoardContextService, self.context_service)
+    def board_context_service(self) -> BoardQueryService:
+        return cast(BoardQueryService, self.context_service)
     
     @LoggingLevelRouter.monitor
     def insert_board(self, board: Board) -> InsertionResult[Board]:

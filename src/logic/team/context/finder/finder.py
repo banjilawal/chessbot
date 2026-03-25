@@ -1,7 +1,7 @@
-# src/logic/team/query/finder/finder.py
+# src/logic/team/query/route/route.py
 
 """
-Module: logic.team.query.finder.finder
+Module: logic.team.query.route.route
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0

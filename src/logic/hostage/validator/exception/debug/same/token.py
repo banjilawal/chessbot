@@ -1,7 +1,7 @@
-# src/logic/manifest/validator/exception/debug/occupant.py
+# src/logic/manifest/validation/exception/debug/occupant.py
 
 """
-Module: logic.manifest.validator.exception.debug.toke
+Module: logic.manifest.validation.exception.debug.toke
 Author: Banji Lawal
 Created: 2025-11-19
 """

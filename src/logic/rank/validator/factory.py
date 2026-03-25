@@ -1,7 +1,7 @@
-# src/logic/rank/validator/exception.py
+# src/logic/rank/validation/exception.py
 
 """
-Module: logic.rank.validator.build
+Module: logic.rank.validation.build
 Author: Banji Lawal
 Created: 2025-11-08
 version: 1.0.0
@@ -61,7 +61,7 @@ class RankValidationProcessFactory(ValidationProcess[Rank]):
         1.  CheckSquare if the candidate is null. If so return an exception in a ValidationResult.
         2.  If the candidate is not a Rank instance return an exception in a ValidationResult.
         3.  Find the candidate's matching concrete rank and hand off its validation to the
-            subclass validator.
+            subclass validation.
 
         # PARAMETERS:
             *   candidate (Any)
@@ -95,7 +95,7 @@ class RankValidationProcessFactory(ValidationProcess[Rank]):
                     TypeError(f"{method}: Expected a Rank, got {type(candidate).__name__} instead.")
                 )
             rank = cast(Rank, candidate)
-            # Pick which validator to run.
+            # Pick which validation to run.
             if isinstance(candidate, King):
                 return king_validator.execute(rank)
             if isinstance(candidate, Queen):
@@ -175,7 +175,7 @@ class RankValiatorFactory(ValidationProcess[Rank]):
         Raises:
             * RankValidationException
         """
-        method = "RankFactory.builder"
+        method = "RankFactory.build"
         # Handle the case that, the candidate does not exist.
         if candidate is None:
             # Return the exception chain on failure.

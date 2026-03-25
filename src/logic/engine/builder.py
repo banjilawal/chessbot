@@ -1,7 +1,7 @@
 # src/logic/engine/exception.py
 
 """
-Module: logic.engine.builder
+Module: logic.engine.build
 Author: Banji Lawal
 Created: 2025-11-18
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/logic/system/build/builder/exception.py
+# src/logic/system/build/build/exception.py
 
 """
-Module: logic.system.build.builder.builder
+Module: logic.system.build.build.build
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

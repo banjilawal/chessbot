@@ -1,7 +1,7 @@
-# src/logic/game/validator/exception/work.py
+# src/logic/game/validation/exception/work.py
 
 """
-Module: logic.game.validator.exception.work
+Module: logic.game.validation.exception.work
 Author: Banji Lawal
 Created: 2025-09-08
 Version: 1.0.0

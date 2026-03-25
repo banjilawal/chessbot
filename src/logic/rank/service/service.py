@@ -52,8 +52,8 @@ class RankService(IntegrityService[Rank]):
         # PARAMETERS:
             *   id (nt)
             *   name (str)
-            *   builder (RankFactory)
-            *   validator (RankValidator)
+            *   build (RankFactory)
+            *   validation (RankValidator)
 
         # RETURNS:
         None

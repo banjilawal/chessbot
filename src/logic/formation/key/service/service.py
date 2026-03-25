@@ -9,11 +9,11 @@ version: 1.0.0
 
 from typing import cast
 
-from logic.system import ContextService, id_emitter
+from logic.system import QueryService, id_emitter
 from logic.formation import FormationLookupProcess, FormationKey, FormationKeyBuildProcess, FormationKeyValidationProcess
 
 
-class FormationKeyService(ContextService[FormationKey]):
+class FormationKeyService(QueryService[FormationKey]):
     """
     Role:Service, Lifecycle Management, Encapsulation, API layer.
 
@@ -24,13 +24,13 @@ class FormationKeyService(ContextService[FormationKey]):
     4.  Single entry and entry points to FormationKey lifecycle.
 
     Super Class:
-        *   ContextService
+        *   QueryService
 
     Provides:
 
 
     # INHERITED ATTRIBUTES:
-        *   See ContextService for inherited attributes.
+        *   See QueryService for inherited attributes.
     """
     SERVICE_NAME = "FormationKeyService"
     
@@ -48,8 +48,8 @@ class FormationKeyService(ContextService[FormationKey]):
         # PARAMETERS:
             *   id (nt)
             *   name (str)
-            *   builder (FormationKeyBuildProcess)
-            *   validator (FormationKeyValidationProcess)
+            *   build (FormationKeyBuildProcess)
+            *   validation (FormationKeyValidationProcess)
         # RETURNS:
             None
         Raises:

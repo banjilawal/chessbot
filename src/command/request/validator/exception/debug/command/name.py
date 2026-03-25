@@ -1,7 +1,7 @@
-# src/command/request/validator/exception/debug/command.py
+# src/command/request/validation/exception/debug/command.py
 
 """
-Module: command.request.validator.exception.debug.command
+Module: command.request.validation.exception.debug.command
 Author: Banji Lawal
 Created: 2026-02-24
 """

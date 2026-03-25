@@ -1,7 +1,7 @@
-# src/logic/system/text/validator.py
+# src/logic/system/text/validation.py
 
 """
-Module: logic.system.text.validator
+Module: logic.system.text.validation
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -18,7 +18,7 @@ class StringValidationProcess(ValidationProcess[str]):
 
     Responsibilities:
     1.  Ensure a String is neither null, empty, nor whitespace before use.
-    2.  If a candidate fails a safety test, the validator sends an exception in a ValidationResult.
+    2.  If a candidate fails a safety test, the validation sends an exception in a ValidationResult.
     
     Super Class:
         *   ValidationProcess

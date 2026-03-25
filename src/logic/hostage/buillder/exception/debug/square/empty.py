@@ -1,7 +1,7 @@
-# src/logic/hostage/builder/exception/debug/victor/empty.py
+# src/logic/hostage/build/exception/debug/victor/empty.py
 
 """
-Module: logic.hostage.builder.exception.debug.victor.empty
+Module: logic.hostage.build.exception.debug.victor.empty
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

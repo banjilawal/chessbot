@@ -1,7 +1,7 @@
-# src/logic/schema/key/validator/exception/debug/excess.py
+# src/logic/schema/key/validation/exception/debug/excess.py
 
 """
-Module: logic.schema.key.validator.exception.debug.excess
+Module: logic.schema.key.validation.exception.debug.excess
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

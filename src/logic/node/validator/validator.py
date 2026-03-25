@@ -1,7 +1,7 @@
-# src/logic/node/validator/validator.py
+# src/logic/node/validation/validation.py
 
 """
-Module: logic.node.validator.validator
+Module: logic.node.validation.validation
 Author: Banji Lawal
 Created: 2025-02-17
 version: 1.0.0

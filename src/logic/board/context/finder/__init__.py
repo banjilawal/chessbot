@@ -1,7 +1,7 @@
-# src/logic/board/query/finder/__init__.py
+# src/logic/board/query/route/__init__.py
 
 """
-Module: logic.board.query.finder.__init__
+Module: logic.board.query.route.__init__
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

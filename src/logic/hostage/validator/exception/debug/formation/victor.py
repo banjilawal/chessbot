@@ -1,6 +1,6 @@
-# src/logic/hostage/validator/exception/debug/formation/victor
+# src/logic/hostage/validation/exception/debug/formation/victor
 """
-Module: logic.hostage.validator.exception.debug.formation.victor
+Module: logic.hostage.validation.exception.debug.formation.victor
 Author: Banji Lawal
 Created: 2025-11-19
 """

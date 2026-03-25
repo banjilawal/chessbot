@@ -52,7 +52,7 @@ class OccupationDestinationNotEmptyException(CombatantOccupationEventException):
 class AttackEventBuilderException(AttackEventException, BuilderException):
   """
   Indicate That  Coord could not be built. Wraps and re-raises errors that occurred
-  during builder.
+  during build.
   """
   ERR_CODE = "ATTACK_EVENT_BUILD_FAILED"
   MSG = "AttackEventBuilder failed to create combatantOccupationEvent"

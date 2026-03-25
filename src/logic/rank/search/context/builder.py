@@ -1,7 +1,7 @@
 # src/logic/rank/searcher/exception.py
 
 """
-Module: logic.rank.searcher.builder
+Module: logic.rank.searcher.build
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0
@@ -50,7 +50,7 @@ class RankContextBuildProcess(BuildProcess[RankContext]):
         """
         # ACTION:
             1. Use dependency injected validators to verify correctness of parameters required to
-                builder a RankContext instance.
+                build a RankContext instance.
             2. If the parameters are safe the RankContext is built and returned.
 
         # PARAMETERS:
@@ -71,7 +71,7 @@ class RankContextBuildProcess(BuildProcess[RankContext]):
             * NoRankSearchOptionSelectedException
             * MoreThanOneRankSearchOptionPickedException
         """
-        method = "RankContextBuildProcess.builder"
+        method = "RankContextBuildProcess.build"
         
         try:
             params = [id, name, ransom, team_quota, designation]

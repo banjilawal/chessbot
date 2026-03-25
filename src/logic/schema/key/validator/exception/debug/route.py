@@ -1,7 +1,7 @@
-# src/logic/schema/key/validator/exception/debug/route.py
+# src/logic/schema/key/validation/exception/debug/route.py
 
 """
-Module: logic.schema.key.validator.exception.debug.route
+Module: logic.schema.key.validation.exception.debug.route
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

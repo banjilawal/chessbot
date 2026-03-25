@@ -9,11 +9,11 @@ version: 1.0.0
 from typing import cast
 
 
-from logic.system import ContextService, id_emitter
+from logic.system import QueryService, id_emitter
 from logic.schema import SchemaLookupProcess, SchemaKey, SchemaKeyBuildProcess, SchemaKeyValidationProcess
 
 
-class SchemaKeyService(ContextService[SchemaKey]):
+class SchemaKeyService(QueryService[SchemaKey]):
     """
     Role:Service, Lifecycle Management, Encapsulation, API layer.
 
@@ -24,13 +24,13 @@ class SchemaKeyService(ContextService[SchemaKey]):
     4.  Single entry and entry points to SchemaKey lifecycle.
 
     Super Class:
-        *   ContextService
+        *   QueryService
 
     Provides:
 
 
     # INHERITED ATTRIBUTES:
-        *   See ContextService for inherited attributes.
+        *   See QueryService for inherited attributes.
     """
     SERVICE_NAME = "SchemaKeyService"
     def __init__(
@@ -47,8 +47,8 @@ class SchemaKeyService(ContextService[SchemaKey]):
         # PARAMETERS:
             *   id (nt)
             *   name (str)
-            *   builder (SchemaKeyBuildProcess)
-            *   validator (SchemaKeyValidationProcess)
+            *   build (SchemaKeyBuildProcess)
+            *   validation (SchemaKeyValidationProcess)
         # RETURNS:
             None
         Raises:

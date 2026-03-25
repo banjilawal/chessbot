@@ -1,7 +1,7 @@
-# src/logic/game/validator/validator.py
+# src/logic/game/validation/validation.py
 
 """
-Module: logic.game.validator
+Module: logic.game.validation
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -48,7 +48,7 @@ class GameContextValidationProcess(ValidationProcess[GameContext]):
         """
         # ACTION:
             1.  Confirm that only one in the (id, owner) tuple is not null.
-            2.  Certify the not-null attribute is safe using the appropriate entity_service and validator.
+            2.  Certify the not-null attribute is safe using the appropriate entity_service and validation.
             3.  If any check fais return a BuildResult containing the exception raised by the failure.
             4.  On success send the verified GameContext in a ValidationResult.
 

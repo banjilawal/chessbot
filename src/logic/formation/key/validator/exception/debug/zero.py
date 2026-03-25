@@ -1,7 +1,7 @@
-# src/logic/formation/validator/exception/debug/zero.py
+# src/logic/formation/validation/exception/debug/zero.py
 
 """
-Module: logic.formation.validator.exception.debug.zero
+Module: logic.formation.validation.exception.debug.zero
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

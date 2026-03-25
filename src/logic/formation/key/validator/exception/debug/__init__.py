@@ -1,7 +1,7 @@
-# src/logic/formation/validator/exception/debug/__init__.py
+# src/logic/formation/validation/exception/debug/__init__.py
 
 """
-Module: logic.formation.validator.exception.debug.__init__
+Module: logic.formation.validation.exception.debug.__init__
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

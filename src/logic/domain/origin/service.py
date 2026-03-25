@@ -38,8 +38,8 @@ class DomainOriginService(IntegrityService[DomainOrigin]):
         # PARAMETERS:
             *   id (nt)
             *   name (str)
-            *   builder (DomainOriginFactory)
-            *   validator (DomainOriginValidationProcess)
+            *   build (DomainOriginFactory)
+            *   validation (DomainOriginValidationProcess)
 
         # RETURNS:
         None

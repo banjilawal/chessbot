@@ -1,7 +1,7 @@
-# src/command/command/command/build/validator/work.py
+# src/command/command/command/build/validation/work.py
 
 """
-Module: command.command.command.build.validator.work
+Module: command.command.command.build.validation.work
 Author: Banji Lawal
 Created: 2026-02-24
 """

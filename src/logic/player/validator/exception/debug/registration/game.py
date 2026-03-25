@@ -1,7 +1,7 @@
-# src/logic/player/validator/exception/registration/game.py
+# src/logic/player/validation/exception/registration/game.py
 
 """
-Module: logic.player.validator.exception.registration.game
+Module: logic.player.validation.exception.registration.game
 Author: Banji Lawal
 Created: 2026-01-08
 version: 1.0.0

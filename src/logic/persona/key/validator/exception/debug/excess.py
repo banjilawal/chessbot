@@ -1,7 +1,7 @@
-# src/logic/persona/key/validator/exception/debug/excess.py
+# src/logic/persona/key/validation/exception/debug/excess.py
 
 """
-Module: logic.persona.key.validator.exception.debug.excess
+Module: logic.persona.key.validation.exception.debug.excess
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

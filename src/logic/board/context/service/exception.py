@@ -22,8 +22,8 @@ class BoardContextServiceException(BoardContextException, ServiceException):
     Role:Exception Work
 
     Responsibilities:
-    1.  Indicate that an BoardContextService encountered an error which prevented the service from completing a task.
-    2.  Wrap an exception that hits the try-finally block of an BoardContextService method.
+    1.  Indicate that an BoardQueryService encountered an error which prevented the service from completing a task.
+    2.  Wrap an exception that hits the try-finally block of an BoardQueryService method.
 
     Super Class:
         *   ServiceException
@@ -36,4 +36,4 @@ class BoardContextServiceException(BoardContextException, ServiceException):
     None
     """
     ERR_CODE = "BOARD_CONTEXT_SERVICE_EXCEPTION"
-    MSG = "BoardContextService raised an exception."
+    MSG = "BoardQueryService raised an exception."

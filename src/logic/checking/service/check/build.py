@@ -1,7 +1,7 @@
 # src/logic/mate/post/check/exception.py
 
 """
-Module: logic.mate.post.check.builder
+Module: logic.mate.post.check.build
 Author: Banji Lawal
 Created: 2025-10-27
 version: 1.0.0

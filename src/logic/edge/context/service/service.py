@@ -10,11 +10,11 @@ version: 1.0.0
 from __future__ import annotations
 from typing import cast
 
-from logic.system import ContextService, id_emitter
+from logic.system import QueryService, id_emitter
 from logic.edge import EdgeContext, EdgeContextBuildProcess, EdgeContextValidationProcess, EdgeFinder
 
 
-class EdgeContextService(ContextService[EdgeContext]):
+class EdgeQueryService(QueryService[EdgeContext]):
     """
     Role:Search Service, Lifecycle Management, Encapsulation, API layer.
 
@@ -26,16 +26,16 @@ class EdgeContextService(ContextService[EdgeContext]):
         Edge search flow.
 
     Super Class:
-        *   ContextService
+        *   QueryService
 
     # PROVIDES:
-        *   EdgeContextService
+        *   EdgeQueryService
 
 
     # INHERITED ATTRIBUTES:
-        *   See ContextService for inherited attributes.
+        *   See QueryService for inherited attributes.
     """
-    SERVICE_NAME = "EdgeContextService"
+    SERVICE_NAME = "EdgeQueryService"
     
     def __init__(
             self,
@@ -51,15 +51,15 @@ class EdgeContextService(ContextService[EdgeContext]):
         # PARAMETERS:
             *   name (str)
             *   id (int)
-            *   finder (EdgeFinder)
-            *   builder (EdgeContextBuildProcess)
-            *   validator (EdgeContextValidationProcess)
+            *   route (EdgeFinder)
+            *   build (EdgeContextBuildProcess)
+            *   validation (EdgeContextValidationProcess)
         # RETURNS:
             None
         Raises:
             None
         """
-        method = "EdgeContextService.__init__"
+        method = "EdgeQueryService.__init__"
         super().__init__(id=id, name=name, builder=builder, validator=validator, finder=finder)
     
     @property

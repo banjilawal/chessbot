@@ -10,11 +10,11 @@ version: 1.0.0
 from __future__ import annotations
 from typing import cast
 
-from logic.system import ContextService, id_emitter
+from logic.system import QueryService, id_emitter
 from logic.node import NodeContext, NodeContextBuildProcess, NodeContextValidationProcess, NodeFinder
 
 
-class NodeContextService(ContextService[NodeContext]):
+class NodeQueryService(QueryService[NodeContext]):
     """
     Role:Search Service, Lifecycle Management, Encapsulation, API layer.
 
@@ -26,16 +26,16 @@ class NodeContextService(ContextService[NodeContext]):
         Node search flow.
 
     Super Class:
-        *   ContextService
+        *   QueryService
 
     # PROVIDES:
-        *   NodeContextService
+        *   NodeQueryService
 
 
     # INHERITED ATTRIBUTES:
-        *   See ContextService for inherited attributes.
+        *   See QueryService for inherited attributes.
     """
-    SERVICE_NAME = "NodeContextService"
+    SERVICE_NAME = "NodeQueryService"
     
     def __init__(
             self,

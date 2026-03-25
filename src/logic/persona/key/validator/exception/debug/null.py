@@ -1,7 +1,7 @@
-# src/logic/persona/key/validator/exception/debug/null.py
+# src/logic/persona/key/validation/exception/debug/null.py
 
 """
-Module: logic.persona.key.validator.exception.debug.null
+Module: logic.persona.key.validation.exception.debug.null
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

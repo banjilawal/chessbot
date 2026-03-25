@@ -1,7 +1,7 @@
 # src/logic/span/square/graph/exception.py
 
 """
-Module: logic.span.square.graph.builder
+Module: logic.span.square.graph.build
 Author: Banji Lawal
 Created: 2026-03-11
 version: 1.0.0

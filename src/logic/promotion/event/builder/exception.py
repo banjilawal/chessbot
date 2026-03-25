@@ -1,7 +1,7 @@
-# src/logic/promotion/event/builder/exception.py
+# src/logic/promotion/event/build/exception.py
 
 """
-Module: logic.promotion.event.builder.exception
+Module: logic.promotion.event.build.exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0

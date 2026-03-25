@@ -1,7 +1,7 @@
-# src/logic/pair/pair/validator/exception/__init__.py
+# src/logic/pair/pair/validation/exception/__init__.py
 
 """
-Module: logic.pair.pair.validator.exception.__init__
+Module: logic.pair.pair.validation.exception.__init__
 Author: Banji Lawal
 Created: 2026-03-13
 version: 1.0.0

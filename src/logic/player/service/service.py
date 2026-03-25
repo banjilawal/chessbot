@@ -53,8 +53,8 @@ class PlayerService(IntegrityService[Player]):
         # PARAMETERS:
             *   id (nt)
             *   name (str)
-            *   builder (PlayerFactory)
-            *   validator (PlayerValidationProcess)
+            *   build (PlayerFactory)
+            *   validation (PlayerValidationProcess)
         # RETURNS:
             None
         Raises:

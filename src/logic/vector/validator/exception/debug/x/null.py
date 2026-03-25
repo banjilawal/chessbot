@@ -1,7 +1,7 @@
-# src/logic/vector/validator/exception/debug/x/null.py
+# src/logic/vector/validation/exception/debug/x/null.py
 
 """
-Module: logic.vector.validator.exception.debug.x.null
+Module: logic.vector.validation.exception.debug.x.null
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

@@ -14,4 +14,4 @@ None
 
 # Modules
 from .exception import *
-from .service import BoardContextService
+from .service import BoardQueryService

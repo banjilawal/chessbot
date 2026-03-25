@@ -1,7 +1,7 @@
-# src/logic/game/builder.exception.py
+# src/logic/game/build.exception.py
 
 """
-Module: logic.game.builder.builder
+Module: logic.game.build.build
 Author: Banji Lawal
 Created: 2025-09-04
 version: 1.0.0
@@ -69,7 +69,7 @@ class GameBuildProcess(BuildProcess[Game]):
         RAISES:
             *   GameBuildException
         """
-        method = "GameBuildProcess.builder"
+        method = "GameBuildProcess.build"
         
         try:
             # Start the error detection exception.

@@ -1,7 +1,7 @@
 # src/logic/neighbor/searcher/exception.py
 
 """
-Module: logic.neighbor.searcher.builder
+Module: logic.neighbor.searcher.build
 Author: Banji Lawal
 Created: 2025-11-05
 version: 1.0.0
@@ -51,7 +51,7 @@ class VisitationSearchContextBuildProcess(BuildProcess[VisitationSearchContext])
         RAISES:
         MethodNameException wraps
         """
-        method = "VisitationSearchContextBuildProcess.builder"
+        method = "VisitationSearchContextBuildProcess.build"
 
         try:
             params = [name, ransom, piece_id, team_id, team_name, rank_name, position]

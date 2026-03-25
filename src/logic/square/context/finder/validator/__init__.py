@@ -1,7 +1,7 @@
-# src/logic/square/validator/__init__.py
+# src/logic/square/validation/__init__.py
 
 """
-Module: logic.square.validator.__init__
+Module: logic.square.validation.__init__
 Author: Banji Lawal
 Created: 2025-11-19
 """

@@ -1,7 +1,7 @@
-# src/logic/game/validator/exception/flag/excess.py
+# src/logic/game/validation/exception/flag/excess.py
 
 """
-Module: logic.game.validator.exception.flag.excess
+Module: logic.game.validation.exception.flag.excess
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

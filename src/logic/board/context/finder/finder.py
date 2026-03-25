@@ -1,4 +1,4 @@
-# src/logic/board/searcher/finder.py
+# src/logic/board/searcher/route.py
 
 """
 Module: logic.board.searcher.service

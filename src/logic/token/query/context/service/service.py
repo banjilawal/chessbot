@@ -1,78 +1,70 @@
-# src/logic/token/query/service/service.py
+# src/logic/tokenContext/query/context/service/service.py
 
 """
-Module: logic.token.query.service.service
+Module: logic.tokenContext.query.context.service.service
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
 """
 
-from typing import cast
-
-from logic.system import ContextService, id_emitter
-from logic.token import TokenContext, TokenContextBuildProcess, TokenContextValidationProcess, TokenFinder
+from logic.system import IntegrityService, IdFactory
+from logic.token import TokenContext, TokenContextBuildProcess, TokenContextValidationProcess
 
 
-class TokenQueryService(ContextService[TokenContext]):
+class TokenContextService(IntegrityService[TokenContext]):
     """
-    Role:Search Service, Lifecycle Management, Encapsulation, API layer.
+    Role:
+        -   Microservice API
+        -   Stateless Integrity Lifecycle Manager
 
     Responsibilities:
-    1.  Public facingToken search microservice API.
-    2.  Provides a map aware utility for searchingToken objects.
-    3.  Encapsulate integrity assurance logic in one extendable module.
-    4.  Create a single source of truth forToken search results by having single entry and exit points for the
-       Token search flow.
+        1.  Mutates TokenContext instances
+        2.  Ensure TokenContext integrity and consistency when its state changes.
+        3.  Build TokenContext instances that satisfy integrity contracts
+        4.  Maintain the TokenContext integrity lifecycle.
+
+    Attributes:
+        SERVICE_NAME: TokenContextService
+
+        id: int
+        name: name
+        build: TokenContextbuild
+        validation: TokenContextValidation
+        controller: TokenContextOpsController
+
+    Provides:
 
     Super Class:
-        *   ContextService
-
-    # PROVIDES:
-        *  TokenQueryService
-
-
-    # INHERITED ATTRIBUTES:
-        *   See ContextService for inherited attributes.
+        IntegrityService
     """
-    SERVICE_NAME = "TokenQueryService"
+    SERVICE_NAME = "TokenContextService"
+    _build: TokenContextBuildProcess
+    _validation: TokenContextValidationProcess
+    
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            id: int = id_emitter.service_id,
-            finder: TokenFinder = TokenFinder(),
-            builder: TokenContextBuildProcess =TokenContextBuildProcess(),
-            validator: TokenContextValidationProcess =TokenContextValidationProcess(),
+            id: int = IdFactory.next_id(class_name="TokenContextService"),
+            build: TokenContextBuildProcess =TokenContextBuildProcess(),
+            validation: TokenContextValidationProcess =TokenContextValidationProcess(),
     ):
         """
-        # ACTION:
-            Constructor
-        # PARAMETERS:
-            *   id (int)
-            *   name (str)
-            *   finder (TokenFinder)
-            *   builder (TokenContextBuildProcess)
-            *   validator (TokenContextValidationProcess)
-        # RETURNS:
-            None
-        Raises:
-            None
+        Args:
+            id: int
+            name: str
+            build: TokenContextBuildProcess
+            validation: TokenContextValidationProcess
         """
-        method = "TokenQueryService.__init__"
-        super().__init__(id=id, name=name, builder=builder, validator=validator, finder=finder)
-    
-    @property
-    def finder(self) ->TokenFinder:
-        """GetTokenFinder instance."""
-        return cast(TokenFinder, self.entity_finder)
+        super().__init__(id=id, name=name)
+        self._build = build
+        self._validation = validation
     
     @property
     def build(self) ->TokenContextBuildProcess:
-        """GetTokenContextBuilder instance."""
-        return cast(TokenContextBuildProcess, self.entity_builder)
+        return self._build
     
     @property
     def validation(self) ->TokenContextValidationProcess:
-        """GetTokenContextValidator instance."""
-        return cast(TokenContextValidationProcess, self.entity_validator)
+        return self._validation
     
     

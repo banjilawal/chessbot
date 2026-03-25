@@ -1,7 +1,7 @@
-# src/logic/system/identity/id/validator.py
+# src/logic/system/identity/id/validation.py
 
 """
-Module: logic.system.identity.id.validator
+Module: logic.system.identity.id.validation
 Author: Banji Lawal
 Created: 2025-08-12
 """

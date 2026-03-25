@@ -1,7 +1,7 @@
-# src/logic/board/query/validator/validator.py
+# src/logic/board/query/validation/validation.py
 
 """
-Module: logic.board.query.validator.validator
+Module: logic.board.query.validation.validation
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

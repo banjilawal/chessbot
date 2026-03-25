@@ -1,7 +1,7 @@
-# src/logic/game/validator/exception/debug/null.py
+# src/logic/game/validation/exception/debug/null.py
 
 """
-Module: logic.game.validator.exception.debug.null
+Module: logic.game.validation.exception.debug.null
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

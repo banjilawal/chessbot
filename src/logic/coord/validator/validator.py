@@ -1,7 +1,7 @@
-# src/logic/coord/validator/validator.py
+# src/logic/coord/validation/validation.py
 
 """
-Module: logic.coord.validator.validator
+Module: logic.coord.validation.validation
 Author: Banji Lawal
 Created: 2025-08-12
 version: 1.0.0
@@ -45,7 +45,7 @@ class CoordValidationProcess(ValidationProcess[Coord]):
                 exception chain in the ValidationResult. Else, send coord in the ValidationResult.
         # PARAMETERS:
             *   candidate (Any)
-            *   validator (NNumberInBoundsValidator)
+            *   validation (NNumberInBoundsValidator)
         # RETURNS:
             *   ValidationResult[Coord] containing either:
                     - On failure: Exception.

@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import List, Optional
 
 from logic.edge import (
-    AddingDuplicateEdgeException, Edge, EdgeContext, EdgeContextService, EdgeService, PoppingEdgeException,
+    AddingDuplicateEdgeException, Edge, EdgeContext, EdgeQueryService, EdgeService, PoppingEdgeException,
     PoppingEmptyEdgeStackException, PushingEdgeException
 )
 from logic.edge.stack.exception.catchall import EdgeStackException
@@ -53,14 +53,14 @@ class EdgeStack(StackService[Edge]):
     
     _stack: List[Edge]
     _service: EdgeService
-    _context_service: EdgeContextService
+    _context_service: EdgeQueryService
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             service: EdgeService = EdgeService(),
             id: int = IdFactory.next_id(class_name="EdgeStack"),
-            context_service: EdgeContextService = EdgeContextService(),
+            context_service: EdgeQueryService = EdgeQueryService(),
     ):
         """
         # ACTION:
@@ -69,7 +69,7 @@ class EdgeStack(StackService[Edge]):
             *   id (int)
             *   name (str)
             *   service (EdgeService)
-            *   context_service (EdgeContextService)
+            *   context_service (EdgeQueryService)
         # RETURNS:
             None
         Raises:
@@ -93,7 +93,7 @@ class EdgeStack(StackService[Edge]):
         return self._service
     
     @property
-    def context_service(self) -> EdgeContextService:
+    def context_service(self) -> EdgeQueryService:
         return self._context_service
     
     @property
@@ -275,7 +275,7 @@ class EdgeStack(StackService[Edge]):
         method = "EdgeStack.query"
         
         # --- Handoff the search responsibility to _context_service. ---#
-        query_result = self._context_service.finder.find(dataset=self._stack, context=context)
+        query_result = self._context_service.finder.route(dataset=self._stack, context=context)
         
         # Handle the case that, the search is not completed.
         if query_result.is_failure:

@@ -1,7 +1,7 @@
-# src/logic/schema/key/builder/exception/__init__.py
+# src/logic/schema/key/build/exception/__init__.py
 
 """
-Module: logic.schema.key.builder.exception__init__
+Module: logic.schema.key.build.exception__init__
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/logic/arena/validator/exception/owner/duplicate.py
+# src/logic/arena/validation/exception/owner/duplicate.py
 
 """
-Module: logic.arena.validator.exception.owner.duplicate
+Module: logic.arena.validation.exception.owner.duplicate
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

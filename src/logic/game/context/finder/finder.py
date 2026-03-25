@@ -1,7 +1,7 @@
-# src/logic/game/finder/finder
+# src/logic/game/route/route
 
 """
-Module: logic.game.finder.finder
+Module: logic.game.route.route
 Author: Banji Lawal
 Created: 2025-11-17
 version: 1.0.0

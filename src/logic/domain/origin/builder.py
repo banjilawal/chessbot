@@ -1,7 +1,7 @@
 # src/logic/points/origin/exception.py
 
 """
-Module: logic.points.origin.builder
+Module: logic.points.origin.build
 Author: Banji Lawal
 Created: 2025-11-11
 version: 1.0.0
@@ -56,7 +56,7 @@ class DomainOriginBuildProcess(BuildProcess[DomainOrigin]):
         Raises:
             None
         """
-        method = "DomainOriginBuildProcess.builder"
+        method = "DomainOriginBuildProcess.build"
         
         try:
             turn_scene_validation = TurnSceneValidationProcess.execute(turn_scene)

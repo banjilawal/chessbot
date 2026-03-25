@@ -1,7 +1,7 @@
-# src/logic/arena/finder/finder.py
+# src/logic/arena/route/route.py
 
 """
-Module: logic.arena.finder.finder
+Module: logic.arena.route.route
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

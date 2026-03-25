@@ -1,7 +1,7 @@
-# src/logic/team/query/validator/validator.py
+# src/logic/team/query/validation/validation.py
 
 """
-Module: logic.team.query.validator.validator
+Module: logic.team.query.validation.validation
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
@@ -51,7 +51,7 @@ class TeamContextValidationProcess(ValidationProcess[TeamContext]):
                 Else, cast to TeamContext instance query.
             2.  If one-and-only-one query attribute is not null return an exception in the ValidationResult.
             3.  If there is no certification route for the attribute return an exception in the ValidationResult.
-            4.  If the certification route exists use the appropriate service or validator to send either an exception
+            4.  If the certification route exists use the appropriate service or validation to send either an exception
                 chain the ValidationResult or the query.
         # PARAMETERS:
             *   candidate (Any)

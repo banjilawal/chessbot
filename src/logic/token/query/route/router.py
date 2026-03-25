@@ -12,14 +12,13 @@ from typing import List
 from logic.rank import Rank
 from logic.square import Square
 from logic.team import Team
-from logic.system import DataFinder, GameColor, LoggingLevelRouter, SearchResult
+from logic.system import GameColor, LoggingLevelRouter, SearchResult, StackSearchRouter
 from logic.token import (
-    Token, TokenContext, TokenContextValidationProcess, TokenSearchNullDatasetException, TokenSearchException,
-    TokenSearchRouteException
+    Token, TokenContext, TokenContextValidationProcess, TokenSearchException, TokenSearchRouteException
 )
 
 
-class TokenSearchRouter(DataFinder[Token]):
+class TokenSearchRouter(StackSearchRouter[Token]):
     """
     Role:SearchProcess
 
@@ -41,7 +40,7 @@ class TokenSearchRouter(DataFinder[Token]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def find(
+    def route(
             cls,
             dataset: List[Token],
             context: TokenContext,
@@ -69,62 +68,53 @@ class TokenSearchRouter(DataFinder[Token]):
             *   TokenSearchException
         """
         method = "TokenSearchRouter.find"
-        
-        # Handle the case that, the collider_candidates is null.
-        if dataset is None:
-            # Return the exception chain on failure.
-            return SearchResult.failure(
-                TokenSearchException(
-                    msg=f"{method}: {TokenSearchException.ERR_CODE}",
-                    ex=TokenSearchNullDatasetException(
-                        f"{method}: {TokenSearchNullDatasetException.MSG}"
-                    )
-                )
-            )
-        # Handle the case that, collider_candidates is the wrong type
-        if not isinstance(dataset, List):
-            # Return the exception chain on failure.
-            return SearchResult.failure(
-                TokenSearchException(
-                    msg=f"{method}: {TokenSearchException.ERR_CODE}",
-                    ex=TypeError(f"{method}: Expected List[Token], got {type(dataset).__name__} instead.")
-                )
-            )
-        # Handle the case that, the query fails validation.
-        validation_result = context_validator.execute(context)
-        if validation_result.is_failure:
-            # Return the exception chain on failure.
-            return SearchResult.failure(
-                TokenSearchException(
-                    msg=f"{method}: {TokenSearchException.ERR_CODE}",
-                    ex=validation_result.exception
-                )
-            )
+
+
     
     # --- Route to the search method which matches the query key. ---#
         
         # Entry point into finding by occupant's id.
         if context.id is not None:
-            return cls._find_by_id(dataset=dataset, id=context.id)
+            return cls._find_by_id(
+                dataset=dataset,
+                id=context.id
+            )
         # Entry point into finding by occupant's designation.
         if context.designation is not None:
-            return cls._find_by_designation(dataset=dataset, name=context.designation)
-        # Entry point into finding by occupant's opening_square_name.
-        if context.opening_square is not None:
-            return cls._find_by_opening_square(dataset=dataset, name=context.opening_square)
+            return cls._find_by_designation(
+                dataset=dataset,
+                name=context.designation
+            )
+        # Entry point into finding by occupant's opening_square_name_name.
+        if context.opening_square_name is not None:
+            return cls._find_by_opening_square_name(
+                dataset=dataset,
+                name=context.opening_square_name
+            )
         # Entry point into finding by occupant's team.
         if context.team is not None:
-            return cls._find_by_team(dataset=dataset, team=context.team)
+            return cls._find_by_team(
+                dataset=dataset,
+                team=context.team
+            )
         # Entry point into searching by toke's rank.
         if context.rank is not None:
-            return cls._find_by_rank(dataset=dataset, team=context.rank)
+            return cls._find_by_rank(
+                dataset=dataset,
+                team=context.rank
+            )
         # Entry point into searching by occupant's ransom.
         if context.ransom is not None:
-            return cls._find_by_ransom(dataset=dataset, ransom=context.ransom)
+            return cls._find_by_ransom(
+                dataset=dataset,
+                ransom=context.ransom
+            )
         # Entry point into searching by occupant's color.
         if context.ransom is not None:
-            return cls._find_by_color(dataset=dataset, ransom=context.color)
-        
+            return cls._find_by_color(
+                dataset=dataset,
+                ransom=context.color
+            )
         # If a query does not have a search route defined send an exception chain.
         return SearchResult.failure(
             TokenSearchException(
@@ -186,12 +176,12 @@ class TokenSearchRouter(DataFinder[Token]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_opening_square(cls, dataset: List[Token], opening_square: Square) -> SearchResult[List[Token]]:
+    def _find_by_opening_square_name(cls, dataset: List[Token], opening_square_name: Square) -> SearchResult[List[Token]]:
         """
         # ACTION:
             1.  Get the Tokens which match the designation.
         # PARAMETERS:
-            *   opening_square_name (Square)
+            *   opening_square_name_name (Square)
             *   collider_candidates (List[Token])
         # RETURNS:
             *   SearchResult[List[Token]] containing either:
@@ -201,8 +191,8 @@ class TokenSearchRouter(DataFinder[Token]):
         Raises:
             None
         """
-        method = "TokenSearchRouter._find_by_opening_square"
-        matches = [token for token in dataset if token.opening_square == opening_square]
+        method = "TokenSearchRouter._find_by_opening_square_name"
+        matches = [token for token in dataset if token.opening_square_name == opening_square_name]
         # Handle the nothing found case.
         if len(matches) == 0:
             return SearchResult.empty()

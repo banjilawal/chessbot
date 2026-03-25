@@ -1,7 +1,7 @@
-# src/logic/player/validator/__init__.py
+# src/logic/player/validation/__init__.py
 
 """
-Module: logic.player.validator.__init__
+Module: logic.player.validation.__init__
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

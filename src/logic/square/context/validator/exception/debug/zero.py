@@ -1,7 +1,7 @@
-# src/logic/square/validator/exception/flag/zero.py
+# src/logic/square/validation/exception/flag/zero.py
 
 """
-Module: logic.square.validator.exception.flag.zero
+Module: logic.square.validation.exception.flag.zero
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

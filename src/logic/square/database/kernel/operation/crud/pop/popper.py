@@ -1,4 +1,4 @@
-# src/logic/square/database/kernel/operation/crud/pop/popper.py
+# src/logic/square/database/kernel/operation/crud/pop/process.py
 
 """
 Module: logic.square.database.kernel.operation.crud.pop.popper

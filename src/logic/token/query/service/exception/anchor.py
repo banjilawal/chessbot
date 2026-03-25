@@ -12,14 +12,14 @@ from typing import Optional
 
 __all__ = [
     # ======================# TOKEN_CONTEXT_SERVICE_EXCEPTION #======================#
-    "TokenContextServiceException",
+    "TokenQueryServiceException",
 ]
 
 from logic.system import ServiceException
 
 
 # ======================# TOKEN_CONTEXT_SERVICE_EXCEPTION #======================#
-class TokenContextServiceException(ServiceException):
+class TokenQueryServiceException(ServiceException):
     """
     Role:Coverage Target, Exception Chain Layer 0
 

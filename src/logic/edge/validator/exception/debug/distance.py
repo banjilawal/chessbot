@@ -1,7 +1,7 @@
-# src/logic/graph/square/validator/exception/debug/distance.py
+# src/logic/graph/square/validation/exception/debug/distance.py
 
 """
-Module: logic.graph.square.validator.exception.debug/distance
+Module: logic.graph.square.validation.exception.debug/distance
 Author: Banji Lawal
 Created: 2026-02-17
 version: 1.0.0

@@ -83,7 +83,7 @@ class TokenBuild(BuildProcess[Token]):
         )
         if param_validation_results.is_failure:
             return param_validation_results
-        # --- Route to the appropriate concrete Token builder method. ---#
+        # --- Route to the appropriate concrete Token build method. ---#
         
         if formation.persona == Persona.PAWN:
         # Build path for Pawns.

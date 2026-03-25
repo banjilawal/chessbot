@@ -28,8 +28,8 @@ class TemplateService(IntegrityService[Template]):
     Provides:
 
     # LOCAL ATTRIBUTES:
-        *   builder (Builder[Template])
-        *   validator (Validator[Template])
+        *   build (Builder[Template])
+        *   validation (Validator[Template])
 
     # INHERITED ATTRIBUTES:
         *   See IntegrityService class for inherited attributes.
@@ -37,8 +37,8 @@ class TemplateService(IntegrityService[Template]):
     Attributes:
         *   id (int)
         *   name (name)
-        *   builder (BuildProcess[Template])
-        *   validator (ValidationProcess[Template])
+        *   build (BuildProcess[Template])
+        *   validation (ValidationProcess[Template])
 
     # LOCAL METHODS:
     None

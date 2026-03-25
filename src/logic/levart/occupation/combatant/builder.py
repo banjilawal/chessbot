@@ -1,7 +1,7 @@
 # src/logic/owner/travel/occupation/combatant/compute.py
 
 """
-Module: logic.owner.travel.occupation.combatant.builder
+Module: logic.owner.travel.occupation.combatant.build
 Author: Banji Lawal
 Created: 2025-10-24
 version: 1.0.0
@@ -33,7 +33,7 @@ class CombatantOccupationEventBuilder(Builder[CombatantOccupationEvent]):
   ) -> BuildResult[AttackEvent]:
 
 
-    method = "AttackEventBuilder.builder"
+    method = "AttackEventBuilder.build"
 
     try:
       id_validation = IdValidationProcess.execute(event_id)

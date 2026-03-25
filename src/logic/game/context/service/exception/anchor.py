@@ -24,11 +24,11 @@ class GameContextServiceException(ServiceException):
     Role:Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
-    1.  Anchoring target for GameContextService debug (layer-2) error state firing incident
+    1.  Anchoring target for GameQueryService debug (layer-2) error state firing incident
         reports on
             *   the triggering variable
             *   The trigger's value.
-    2.  Indicate which GameContextService method received a worker's (layer-1) failure result.
+    2.  Indicate which GameQueryService method received a worker's (layer-1) failure result.
 
     Super Class:
         *   ServiceException
@@ -52,9 +52,9 @@ class GameContextServiceException(ServiceException):
     # INHERITED METHODS:
         *   See ServiceException class for inherited methods.
     """
-    CLS_NAME = " GameContextService"
+    CLS_NAME = " GameQueryService"
     ERR_CODE = " GAME_CONTEXT_SERVICE_EXCEPTION"
-    MSG = " GameContextService raised an exception."
+    MSG = " GameQueryService raised an exception."
     
     def __init__(
             self,

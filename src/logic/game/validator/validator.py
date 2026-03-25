@@ -1,7 +1,7 @@
-# src/logic/game/validator/validator.py
+# src/logic/game/validation/validation.py
 
 """
-Module: logic.game.validator.validator
+Module: logic.game.validation.validation
 Author: Banji Lawal
 Created: 2025-08-31
 version: 1.0.0

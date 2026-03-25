@@ -1,7 +1,7 @@
-# src/logic/promotion/event/validator/__init__.py
+# src/logic/promotion/event/validation/__init__.py
 
 """
-Module: logic.promotion.event.validator.__init__
+Module: logic.promotion.event.validation.__init__
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0

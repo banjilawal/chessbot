@@ -1,7 +1,7 @@
-# src/logic/player/validator/exception/work.py
+# src/logic/player/validation/exception/work.py
 
 """
-Module: logic.player.validator.exception.work
+Module: logic.player.validation.exception.work
 Author: Banji Lawal
 Created: 2025-09-08
 Version: 1.0.0

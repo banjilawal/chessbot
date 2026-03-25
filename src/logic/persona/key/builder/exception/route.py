@@ -1,7 +1,7 @@
-# src/logic/persona/key/builder/exception/route.py
+# src/logic/persona/key/build/exception/route.py
 
 """
-Module: logic.persona.key.builder.exception.route
+Module: logic.persona.key.build.exception.route
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

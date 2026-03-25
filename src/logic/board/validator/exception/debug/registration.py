@@ -1,7 +1,7 @@
-# src/logic/owner/validator/exception/registration/arena.py
+# src/logic/owner/validation/exception/registration/arena.py
 
 """
-Module: logic.owner.validator.exception.registration.arena
+Module: logic.owner.validation.exception.registration.arena
 Author: Banji Lawal
 Created: 2026-01-08
 version: 1.0.0

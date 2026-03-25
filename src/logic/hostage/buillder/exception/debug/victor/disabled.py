@@ -1,7 +1,7 @@
-# src/logic/hostage/builder/exception/debug/victor/disabled.py
+# src/logic/hostage/build/exception/debug/victor/disabled.py
 
 """
-Module: logic.hostage.builder.exception.debug.victor.disabled
+Module: logic.hostage.build.exception.debug.victor.disabled
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

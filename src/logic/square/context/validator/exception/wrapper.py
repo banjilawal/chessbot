@@ -1,7 +1,7 @@
-# src/logic/square/validator/exception/exception.py
+# src/logic/square/validation/exception/exception.py
 
 """
-Module: logic.square.validator.exception.exception
+Module: logic.square.validation.exception.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

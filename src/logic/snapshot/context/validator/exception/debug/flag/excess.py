@@ -1,7 +1,7 @@
-# src/logic/snapshot/validator/experience/flag/exception.py
+# src/logic/snapshot/validation/experience/flag/exception.py
 
 """
-Module: logic.snapshot.validator.experience.flag.exception
+Module: logic.snapshot.validation.experience.flag.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

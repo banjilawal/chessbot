@@ -1,7 +1,7 @@
-# src/logic/game/builder/exception.py
+# src/logic/game/build/exception.py
 
 """
-Module: logic.game.builder.builder
+Module: logic.game.build.build
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

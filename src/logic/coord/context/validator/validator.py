@@ -1,7 +1,7 @@
-# src/logic/coord/query/validator/validator.py
+# src/logic/coord/query/validation/validation.py
 
 """
-Module: logic.coord.query.validator.validator
+Module: logic.coord.query.validation.validation
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0
@@ -51,7 +51,7 @@ class CoordContextValidationProcess(ValidationProcess[CoordContext]):
             2. Test the value passed to CoordContext passes its validation contract.
         # PARAMETERS:
           * candidate (Any): Object to verify is a Coord.
-          * validator (type[CoordValidationProcess]): Enforces safety requirements on row, column, square_name coords.
+          * validation (type[CoordValidationProcess]): Enforces safety requirements on row, column, square_name coords.
         # RETURNS:
           *    ValidationResult[CoordContext] containing either:
                     - On failure: Exception.

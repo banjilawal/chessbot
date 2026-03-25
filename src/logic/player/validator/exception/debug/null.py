@@ -1,7 +1,7 @@
-# src/logic/player/validator/exception/debug/null.py
+# src/logic/player/validation/exception/debug/null.py
 
 """
-Module: logic.player.validator.exception.debug.null
+Module: logic.player.validation.exception.debug.null
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

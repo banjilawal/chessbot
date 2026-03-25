@@ -33,7 +33,7 @@ class SchemaService(HashService[Schema]):
         # PARAMETERS:
             *   id (int)
             *   name (str)
-            *   validator (SchemaValidationProcess)
+            *   validation (SchemaValidationProcess)
             *   super_key_service (SchemaKeyService)
         # RETURNS:
             None

@@ -1,7 +1,7 @@
-# src/command/request/validator/exception/__init__.py
+# src/command/request/validation/exception/__init__.py
 
 """
-Module: command.request.validator.exception.__init__
+Module: command.request.validation.exception.__init__
 Author: Banji Lawal
 Created: 2026-02-24
 """

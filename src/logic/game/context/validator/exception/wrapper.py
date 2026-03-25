@@ -1,7 +1,7 @@
-# src/logic/game/validator/exception/exception.py
+# src/logic/game/validation/exception/exception.py
 
 """
-Module: logic.game.validator.exception.exception
+Module: logic.game.validation.exception.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

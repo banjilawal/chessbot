@@ -1,7 +1,7 @@
-# src/logic/persona/key/validator/exception/debug/route.py
+# src/logic/persona/key/validation/exception/debug/route.py
 
 """
-Module: logic.persona.key.validator.exception.debug.route
+Module: logic.persona.key.validation.exception.debug.route
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

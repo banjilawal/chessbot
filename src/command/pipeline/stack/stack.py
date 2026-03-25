@@ -275,7 +275,7 @@ class PipelineStack(StackService[Pipeline]):
         method = "PipelineStack.query"
         
         # --- Handoff the search responsibility to _stack_service. ---#
-        query_result = self._context_service.finder.find(dataset=self._stack, context=context)
+        query_result = self._context_service.finder.route(dataset=self._stack, context=context)
         
         # Handle the case that, the search is not completed.
         if query_result.is_failure:
@@ -312,7 +312,7 @@ class PipelineStack(StackService[Pipeline]):
         method = "PipelineStack.query"
         
         # --- Handoff the search responsibility to _stack_service. ---#
-        query_result = self._context_service.finder.find(dataset=self._stack, context=context)
+        query_result = self._context_service.finder.route(dataset=self._stack, context=context)
         
         # Handle the case that, the search is not completed.
         if query_result.is_failure:

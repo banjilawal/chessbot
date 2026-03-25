@@ -24,11 +24,11 @@ class SquareContextServiceException(ServiceException):
     Role:Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
-    1.  Anchoring target for SquareContextService debug (layer-2) error state firing incident
+    1.  Anchoring target for SquareQueryService debug (layer-2) error state firing incident
         reports on
             *   the triggering variable
             *   The trigger's value.
-    2.  Indicate which SquareContextService method received a worker's (layer-1) failure result.
+    2.  Indicate which SquareQueryService method received a worker's (layer-1) failure result.
 
     Super Class:
         *   ServiceException
@@ -52,9 +52,9 @@ class SquareContextServiceException(ServiceException):
     # INHERITED METHODS:
         *   See ServiceException class for inherited methods.
     """
-    CLS_NAME = " SquareContextService"
+    CLS_NAME = " SquareQueryService"
     ERR_CODE = " SQUARE_CONTEXT_SERVICE_EXCEPTION"
-    MSG = " SquareContextService raised an exception."
+    MSG = " SquareQueryService raised an exception."
     
     def __init__(
             self,

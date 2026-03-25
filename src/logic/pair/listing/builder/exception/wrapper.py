@@ -1,7 +1,7 @@
-# src/logic/pair/listing/builder/work.py
+# src/logic/pair/listing/build/work.py
 
 """
-Module: logic.pair.listing.builder.work
+Module: logic.pair.listing.build.work
 Author: Banji Lawal
 Created: 2026-03-12
 version: 1.0.0

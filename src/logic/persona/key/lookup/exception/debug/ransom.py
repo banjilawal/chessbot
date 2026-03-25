@@ -1,7 +1,7 @@
-# src/logic/persona/validator/exception/ransom.py
+# src/logic/persona/validation/exception/ransom.py
 
 """
-Module: logic.persona.validator.exception.ransom
+Module: logic.persona.validation.exception.ransom
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

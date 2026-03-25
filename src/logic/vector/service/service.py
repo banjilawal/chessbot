@@ -46,8 +46,8 @@ class VectorService(IntegrityService[Vector]):
     Attributes:
         *   id (int)
         *   name (str)
-        *   builder (VectorBuildProcess) = VectorBuildProcess()
-        *   validator (VectorValidationProcess) = VectorValidationProcess()
+        *   build (VectorBuildProcess) = VectorBuildProcess()
+        *   validation (VectorValidationProcess) = VectorValidationProcess()
 
     # LOCAL METHODS:
         *   multiply_vector_by_scalar(

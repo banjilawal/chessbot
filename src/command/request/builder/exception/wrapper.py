@@ -1,7 +1,7 @@
-# src/command/request/builder/work.py
+# src/command/request/build/work.py
 
 """
-Module: command.request.builder.work
+Module: command.request.build.work
 Author: Banji Lawal
 Created: 2026-02-24
 """

@@ -1,7 +1,7 @@
-# src/logic/promotion/event/validator/exception/exception.py
+# src/logic/promotion/event/validation/exception/exception.py
 
 """
-Module: logic.promotion.event.validator.exception.exception
+Module: logic.promotion.event.validation.exception.exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/logic/node/query/finder/finder.py
+# src/logic/node/query/route/route.py
 
 """
-Module: logic.node.query.finder.finder
+Module: logic.node.query.route.route
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -11,14 +11,14 @@ from __future__ import annotations
 from typing import List
 
 from logic.square import Square
-from logic.system import LoggingLevelRouter, SearchResult, StackSearchProcess
+from logic.system import LoggingLevelRouter, SearchResult, StackSearchRouter
 from logic.node import (
     DiscoveryStatus, Node, NodeContext, NodeContextValidationProcess, NodeSearchException, NodeSearchRouteException,
     NodeSearchNullDatasetException, NodeSearchPayloadTypeException
 )
 
 
-class NodeFinder(StackSearchProcess[Node]):
+class NodeFinder(StackSearchRouter[Node]):
     """
     Role:SearchProcess
 
@@ -41,7 +41,7 @@ class NodeFinder(StackSearchProcess[Node]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def find(
+    def route(
             cls,
             dataset: List[Node],
             context: NodeContext,

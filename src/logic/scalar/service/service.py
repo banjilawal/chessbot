@@ -38,8 +38,8 @@ class ScalarService(IntegrityService[Scalar]):
     Provides:
 
     # LOCAL ATTRIBUTES:
-        *   builder (Builder[Scalar])
-        *   validator (Validator[Scalar])
+        *   build (Builder[Scalar])
+        *   validation (Validator[Scalar])
 
     # INHERITED ATTRIBUTES:
         *   See IntegrityService class for inherited attributes.
@@ -47,8 +47,8 @@ class ScalarService(IntegrityService[Scalar]):
     Attributes:
         *   id (int)
         *   name (name)
-        *   builder (BuildProcess[Scalar])
-        *   validator (ValidationProcess[Scalar])
+        *   build (BuildProcess[Scalar])
+        *   validation (ValidationProcess[Scalar])
 
     # LOCAL METHODS:
     None

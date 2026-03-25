@@ -1,7 +1,7 @@
-# src/logic/persona/builder/exception.py
+# src/logic/persona/build/exception.py
 
 """
-Module: logic.persona.builder.builder
+Module: logic.persona.build.build
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/logic/hostage/validator/exception/work.py
+# src/logic/hostage/validation/exception/work.py
 
 """
-Module: logic.hostage.validator.exception.work
+Module: logic.hostage.validation.exception.work
 Author: Banji Lawal
 Created: 2025-09-08
 Version: 1.0.0

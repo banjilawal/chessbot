@@ -1,7 +1,7 @@
-# src/logic/arena/validator/exception/exception.py
+# src/logic/arena/validation/exception/exception.py
 
 """
-Module: logic.arena.validator.exception.exception
+Module: logic.arena.validation.exception.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

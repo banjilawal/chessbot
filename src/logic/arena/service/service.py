@@ -55,8 +55,8 @@ class ArenaService(IntegrityService[Arena]):
         # PARAMETERS:
             *   id (nt)
             *   name (str)
-            *   builder (ArenaFactory)
-            *   validator (ArenaValidationProcess)
+            *   build (ArenaFactory)
+            *   validation (ArenaValidationProcess)
         # RETURNS:
             None
         Raises:

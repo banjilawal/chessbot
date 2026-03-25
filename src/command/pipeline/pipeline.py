@@ -37,7 +37,7 @@ class CommandPipeline(ABC, Generic[C]):
 
     # LOCAL ATTRIBUTES:
         *   cipher: (C)
-        *   builder: (BuildProcess[Command])
+        *   build: (BuildProcess[Command])
         *   request_validator: (ServiceRequestValidator)
 
     # INHERITED ATTRIBUTES:
@@ -45,7 +45,7 @@ class CommandPipeline(ABC, Generic[C]):
 
     Attributes:
         *   cipher: (C)
-        *   builder: (BuildProcess[Command])
+        *   build: (BuildProcess[Command])
         *   request_validator: (ServiceRequestValidator)
 
     # LOCAL METHODS:

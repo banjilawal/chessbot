@@ -1,7 +1,7 @@
-# src/logic/team/hash/builder/exception.py
+# src/logic/team/hash/build/exception.py
 
 """
-Module: logic.team.hash.builder.builder
+Module: logic.team.hash.build.build
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0

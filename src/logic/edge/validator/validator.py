@@ -1,7 +1,7 @@
-# src/logic/edge/validator/validator.py
+# src/logic/edge/validation/validation.py
 
 """
-Module: logic.edge.validator.validator
+Module: logic.edge.validation.validation
 Author: Banji Lawal
 Created: 2026-02-17
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/logic/rank/finder/exception/work.py
+# src/logic/rank/route/exception/work.py
 
 """
-Module: logic.rank.finder.exception.work
+Module: logic.rank.route.exception.work
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/logic/edge/query/finder/finder.py
+# src/logic/edge/query/route/route.py
 
 """
-Module: logic.edge.query.finder.finder
+Module: logic.edge.query.route.route
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -12,7 +12,7 @@ from typing import List
 
 from logic.board import Board
 from logic.coord import Coord
-from logic.system import LoggingLevelRouter, SearchResult, StackSearchProcess
+from logic.system import LoggingLevelRouter, SearchResult, StackSearchRouter
 from logic.edge import (
     Edge, EdgeContext, EdgeContextValidationProcess, EdgeSearchException, EdgeSearchRouteException,
     EdgeSearchNullDatasetException, EdgeSearchPayloadTypeException, EdgeState
@@ -20,7 +20,7 @@ from logic.edge import (
 from logic.token import Token
 
 
-class EdgeFinder(StackSearchProcess[Edge]):
+class EdgeFinder(StackSearchRouter[Edge]):
     """
     Role:SearchProcess
 
@@ -43,7 +43,7 @@ class EdgeFinder(StackSearchProcess[Edge]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def find(
+    def route(
             cls,
             dataset: List[Edge],
             context: EdgeContext,

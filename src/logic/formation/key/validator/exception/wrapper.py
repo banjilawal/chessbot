@@ -1,7 +1,7 @@
-# src/logic/formation/validator/exception/anchor.py
+# src/logic/formation/validation/exception/anchor.py
 
 """
-Module: logic.formation.validator.exception.base
+Module: logic.formation.validation.exception.base
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

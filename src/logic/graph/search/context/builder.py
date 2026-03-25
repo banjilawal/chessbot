@@ -1,7 +1,7 @@
 # src/logic/points/searcher/exception.py
 
 """
-Module: logic.points.searcher.builder
+Module: logic.points.searcher.build
 Author: Banji Lawal
 Created: 2025-11-08
 version: 1.0.0
@@ -33,7 +33,7 @@ class VisitorSearchContextBuildProcess(BuildProcess[VisitorSearchContext]):
             team_name: Optional[str] = None
     ) -> BuildResult[VisitorSearchContext]:
         """"""
-        method = "VisitorSearchContextBuildProcess.builder"
+        method = "VisitorSearchContextBuildProcess.build"
         
         try:
             params = [name, ransom, id, team_id, team_name, rank_name, coord]

@@ -1,7 +1,7 @@
-# src/logic/snapshot/finder/finder.py
+# src/logic/snapshot/route/route.py
 
 """
-Module: logic.snapshot.finder.finder
+Module: logic.snapshot.route.route
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -49,7 +49,7 @@ class SnapshotFinder(Finder[Snapshot]):
         # ACTION:
         1.  Verify the collider_candidates is not null and contains only Snapshot objects,
         2.  Use context_validator to certify the provided map.
-        3.  Call the finder method which matches the attribute whose flag was raised.
+        3.  Call the route method which matches the attribute whose flag was raised.
         4.  If the logic does not account for an Player attribute drop to the try-finally block.
 
         # PARAMETERS:
@@ -79,7 +79,7 @@ class SnapshotFinder(Finder[Snapshot]):
             if validation_result.is_failure:
                 return SearchResult.failure(validation_result.exception)
             
-            # After checks are passed pick which finder method to call.
+            # After checks are passed pick which route method to call.
             if context.timestamp is not None:
                 return cls._find_by_timestamp(dataset, context.timestamp)
             # Find by owner
@@ -112,7 +112,7 @@ class SnapshotFinder(Finder[Snapshot]):
         1.  Get the agents whose id matched the target.
         2.  If no matches are found return an empty SearchResult.
         3.  If exactly one match is found return a successful SearchResult with the single item in an array.
-        4.  If the finder returns multiple unique hits there is a problem.
+        4.  If the route returns multiple unique hits there is a problem.
 
         # PARAMETERS:
             *   id (int)
@@ -152,7 +152,7 @@ class SnapshotFinder(Finder[Snapshot]):
         1.  Get the agents whose agents are a case-insensitive. match for the target.
         2.  If no matches are found return an empty SearchResult.
         3.  If exactly one match is found return a successful SearchResult with the single item in an array.
-        4.  If the finder returns multiple hits call _resolve_matching_ids.
+        4.  If the route returns multiple hits call _resolve_matching_ids.
 
         # PARAMETERS:
             *   owner (Player)
@@ -232,7 +232,7 @@ class SnapshotFinder(Finder[Snapshot]):
         1.  Get the agents whose agents are an agent_exception. match for the target.
         2.  If no matches are found return an empty SearchResult.
         3.  If exactly one match is found return a successful SearchResult with the single item in an array.
-        4.  If the finder returns multiple hits call _resolve_matching_ids.
+        4.  If the route returns multiple hits call _resolve_matching_ids.
 
         # PARAMETERS:
             *   agent_exception (AgentException)

@@ -12,7 +12,7 @@ version: 1.0.0
 # Packages
 from .crud import *
 from .quota import *
-from .deploy import *
+from .deployment import *
 from .collision import *
 
 # Modules

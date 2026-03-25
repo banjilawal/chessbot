@@ -24,11 +24,11 @@ class TeamContextServiceException(ServiceException):
     Role:Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
-    1.  Anchoring target for TeamContextService debug (layer-2) error state firing incident
+    1.  Anchoring target for TeamQueryService debug (layer-2) error state firing incident
         reports on
             *   the triggering variable
             *   The trigger's value.
-    2.  Indicate which TeamContextService method received a worker's (layer-1) failure result.
+    2.  Indicate which TeamQueryService method received a worker's (layer-1) failure result.
 
     Super Class:
         *   ServiceException
@@ -52,9 +52,9 @@ class TeamContextServiceException(ServiceException):
     # INHERITED METHODS:
         *   See ServiceException class for inherited methods.
     """
-    CLS_NAME = " TeamContextService"
+    CLS_NAME = " TeamQueryService"
     ERR_CODE = " TEAM_CONTEXT_SERVICE_EXCEPTION"
-    MSG = " TeamContextService raised an exception."
+    MSG = " TeamQueryService raised an exception."
     
     def __init__(
             self,

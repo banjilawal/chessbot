@@ -1,7 +1,7 @@
-# src/logic/system/number/validator.py
+# src/logic/system/number/validation.py
 
 """
-Module: logic.system.number.validator
+Module: logic.system.number.validation
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

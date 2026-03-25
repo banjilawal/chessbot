@@ -1,7 +1,7 @@
-# src/logic/player/builder/exception.py
+# src/logic/player/build/exception.py
 
 """
-Module: logic.player.builder.builder
+Module: logic.player.build.build
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -82,7 +82,7 @@ class AgentContextBuildProcess(BuildProcess[AgentContext]):
             *   AgentContextBuildException
             *   ArenaAgentContextFlagsException
         """
-        method = "AgentSearchContextBuilder.builder"
+        method = "AgentSearchContextBuilder.build"
         try:
             # Count how many optional parameters are not-null. One param needs to be not-null.
             params = [id, name, team, game, variety,]

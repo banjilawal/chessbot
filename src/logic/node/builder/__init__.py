@@ -1,7 +1,7 @@
-# src/logic/node/builder/__init__.py
+# src/logic/node/build/__init__.py
 
 """
-Module: logic.node.builder.__init__
+Module: logic.node.build.__init__
 Author: Banji Lawal
 Created: 2026-02-17
 version: 1.0.0

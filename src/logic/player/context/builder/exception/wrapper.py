@@ -1,7 +1,7 @@
-# src/logic/player/query/builder/exception/work.py
+# src/logic/player/query/build/exception/work.py
 
 """
-Module: logic.player.query.builder.exception.work
+Module: logic.player.query.build.exception.work
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

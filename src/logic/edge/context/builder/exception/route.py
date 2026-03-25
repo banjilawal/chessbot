@@ -1,7 +1,7 @@
-# src/logic/edge/_context/builder/exception/route.py
+# src/logic/edge/_context/build/exception/route.py
 
 """
-Module: logic.edge.query.builder.exception.route
+Module: logic.edge.query.build.exception.route
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

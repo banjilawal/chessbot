@@ -52,7 +52,7 @@ class InvalidVisitationEventException(VisitationEventException, ValidationExcept
 
 class VisitationTeamFieldIsNullException(VisitationEventException, InconsistencyException):
     """
-    Raised if `visitationation.team_name` is validation. Might indicate a consistency or builder problem because `Visitationation.team_name` should
+    Raised if `visitationation.team_name` is validation. Might indicate a consistency or build problem because `Visitationation.team_name` should
     never be validation.
     """
     ERR_CODE = "VISITATION_TEAM_FIELD_NULL_EXCEPTION"
@@ -86,7 +86,7 @@ class UnregisteredTeamMemberException(VisitationEventException):
 class VisitationRosterNumberIsNullException(VisitationEventException, NullException):
     """
     Raised a visitationation's roster number is validation. This should never happen. the invariant roster number
-    is set during builder. If its validation during coord_stack_validator there has been entity_service loss or an inconsistency.
+    is set during build. If its validation during coord_stack_validator there has been entity_service loss or an inconsistency.
     """
     ERR_CODE = "VISITATION_NULL_ROSTER_NUMBER_EXCEPTION"
     MSG = "A `Visitationation` object cannot have a validation roster number. There may be entity_service inconsistency or loss."
@@ -132,7 +132,7 @@ class NullCombatantException(NullVisitationEventException):
 class VisitationBuildException(VisitationEventException, BuilderException):
     """
     Indicate That  Coord could not be built. Wraps and re-raises errors that occurred
-    during builder.
+    during build.
     """
     ERR_CODE = "VISITATION_BUILD_FAILED"
     MSG = "Visitationation build failed."

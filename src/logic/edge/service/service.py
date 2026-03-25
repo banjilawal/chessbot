@@ -54,8 +54,8 @@ class EdgeService(IntegrityService[Edge]):
         # PARAMETERS:
             *   id (nt)
             *   name (str)
-            *   builder (EdgeFactory)
-            *   validator (EdgeValidationProcess)
+            *   build (EdgeFactory)
+            *   validation (EdgeValidationProcess)
         # RETURNS:
             None
         Raises:

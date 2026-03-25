@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import List, cast
 
-from logic.game import Game, GameContext, GameContextService, GameStackService, GameService
+from logic.game import Game, GameContext, GameQueryService, GameStackService, GameService
 from logic.system import (
     DeletionResult, InsertionResult, LoggingLevelRouter, SearchResult, Database, id_emitter
 )
@@ -61,7 +61,7 @@ class UniqueGameDataService(Database[Game]):
         return cast(GameStackService, self.data_service).game_service
     
     @property
-    def context_service(self) -> GameContextService:
+    def context_service(self) -> GameQueryService:
         return cast(GameStackService, self.data_service).game_context_service
     
     @property

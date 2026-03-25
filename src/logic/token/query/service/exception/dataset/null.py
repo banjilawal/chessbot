@@ -12,13 +12,13 @@ from typing import Optional
 
 __all__ = [
 #======================# NULL_SQUARE_EXCEPTION #======================#
-    "NullSquareException",
+    "TokenDatasetNullException",
 ]
 
 from logic.system import NullException
 
 #======================# NULL_SQUARE_EXCEPTION #======================#
-class NullSquareException(NullException):
+class TokenDatasetNullException(NullException):
     """
     Role:Error Tracing, Debugging
 

@@ -1,7 +1,7 @@
-# src/logic/team/hash/builder/work.py
+# src/logic/team/hash/build/work.py
 
 """
-Module: logic.team.hash.builder.work
+Module: logic.team.hash.build.work
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/logic/arena/validator/exception/debug/player/single.py
+# src/logic/arena/validation/exception/debug/player/single.py
 
 """
-Module: logic.arena.validator.exception.debug.player.single
+Module: logic.arena.validation.exception.debug.player.single
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

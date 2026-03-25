@@ -7,9 +7,9 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from logic.system import ContextService
+from logic.system import QueryService
 from logic.game import SnapshotContext
 
 
-class SnapshotContextService(ContextService[SnapshotContext]):
+class SnapshotQueryService(QueryService[SnapshotContext]):
     pass

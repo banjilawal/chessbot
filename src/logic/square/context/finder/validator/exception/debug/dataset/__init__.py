@@ -1,7 +1,7 @@
-# src/logic/square/validator/exception/debug/collider_candidates/__init__.py
+# src/logic/square/validation/exception/debug/collider_candidates/__init__.py
 
 """
-Module: logic.square.validator.exception.debug.collider_candidates.__init__
+Module: logic.square.validation.exception.debug.collider_candidates.__init__
 Author: Banji Lawal
 Created: 2026-02-23
 """

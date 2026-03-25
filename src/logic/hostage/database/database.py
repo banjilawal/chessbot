@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import List
 
 from logic.hostage import (
-    AddingDuplicateHostageException, CaptivityContext, HostageContextService, Hostage,
+    AddingDuplicateHostageException, CaptivityContext, HostageQueryService, Hostage,
     HostageList, HostageService, UniqueHostageInsertionException,
     UniqueHostageSearchException
 )
@@ -64,7 +64,7 @@ class HostageDatabase(Database[Hostage]):
         return self._database_core.pair_service
     
     @property
-    def context_service(self) -> HostageContextService:
+    def context_service(self) -> HostageQueryService:
         return self._database_core.context_service
     
     @property
@@ -184,7 +184,7 @@ class HostageDatabase(Database[Hostage]):
         method = "HostageDatabase.searchnanifests"
         
         # --- Handoff the search responsibility to _hostage_database_core. ---#
-        search_result = self._database_core.context_service.finder.find(context=context)
+        search_result = self._database_core.context_service.finder.route(context=context)
         
         # Handle the case that, the search is not completed.
         if search_result.is_failure:

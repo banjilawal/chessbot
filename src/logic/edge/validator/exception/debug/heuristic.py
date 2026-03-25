@@ -1,7 +1,7 @@
-# src/logic/graph/square/validator/exception/debug/heuristic.py
+# src/logic/graph/square/validation/exception/debug/heuristic.py
 
 """
-Module: logic.graph.square.validator.exception.debug/heuristic
+Module: logic.graph.square.validation.exception.debug/heuristic
 Author: Banji Lawal
 Created: 2026-02-17
 version: 1.0.0

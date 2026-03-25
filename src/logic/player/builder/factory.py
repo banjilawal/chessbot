@@ -1,7 +1,7 @@
-# src/logic/player/builder/exception.py
+# src/logic/player/build/exception.py
 
 """
-Module: logic.player.builder.build
+Module: logic.player.build.build
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

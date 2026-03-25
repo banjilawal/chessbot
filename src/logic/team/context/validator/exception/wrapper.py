@@ -1,7 +1,7 @@
-# src/logic/team/validator/exception/exception.py
+# src/logic/team/validation/exception/exception.py
 
 """
-Module: logic.team.validator.exception.exception
+Module: logic.team.validation.exception.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

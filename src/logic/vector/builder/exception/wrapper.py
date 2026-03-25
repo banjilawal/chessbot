@@ -1,7 +1,7 @@
-# src/logic/vector/builder/exception/work.py
+# src/logic/vector/build/exception/work.py
 
 """
-Module: logic.vector.builder.exception.work
+Module: logic.vector.build.exception.work
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

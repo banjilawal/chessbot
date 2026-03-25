@@ -1,7 +1,7 @@
-# src/logic/pair/listing/validator/__init__.py
+# src/logic/pair/listing/validation/__init__.py
 
 """
-Module: logic.pair.listing.validator.__init__
+Module: logic.pair.listing.validation.__init__
 Author: Banji Lawal
 Created: 2026-03-12
 version: 1.0.0

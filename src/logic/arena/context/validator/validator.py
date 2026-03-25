@@ -1,7 +1,7 @@
-# src/logic/arena/validator/validator.py
+# src/logic/arena/validation/validation.py
 
 """
-Module: logic.arena.validator
+Module: logic.arena.validation
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

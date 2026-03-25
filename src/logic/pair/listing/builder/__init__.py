@@ -1,7 +1,7 @@
-# src/logic/pair/listing/builder/__init__.py
+# src/logic/pair/listing/build/__init__.py
 
 """
-Module: logic.pair.listing.builder.__init__
+Module: logic.pair.listing.build.__init__
 Author: Banji Lawal
 Created: 2026-03-12
 version: 1.0.0

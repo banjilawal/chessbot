@@ -9,24 +9,24 @@ Version: 1.0.0
 
 from enum import Enum
 
-from logic.system import ContextService, Service, ValidationProcess
+from logic.system import QueryService, Service, ValidationProcess
 
 
 class HashService(Service[Enum]):
-    _hash_key_service: ContextService[Enum]
+    _hash_key_service: QueryService[Enum]
   
     def __init__(
             self,
             id: int,
             name: str,
             validator: ValidationProcess[Enum],
-            super_key_service: ContextService[Enum],
+            super_key_service: QueryService[Enum],
     ):
         super().__init__(id=id, name=name, certifier=validator)
         self._hash_key_service = super_key_service
         
     @property
-    def hash_key_service(self) -> ContextService[Enum]:
+    def hash_key_service(self) -> QueryService[Enum]:
         return self._hash_key_service
     
     @property

@@ -1,7 +1,7 @@
-# src/logic/span/validator/exception/work.py
+# src/logic/span/validation/exception/work.py
 
 """
-Module: logic.span.validator.exception.work
+Module: logic.span.validation.exception.work
 Author: Banji Lawal
 Created: 2025-09-08
 Version: 1.0.0

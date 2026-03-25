@@ -1,7 +1,7 @@
-# src/logic/vector/validator/exception/debug/y/above.py
+# src/logic/vector/validation/exception/debug/y/above.py
 
 """
-Module: logic.vector.validator.exception.debug.y.above
+Module: logic.vector.validation.exception.debug.y.above
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

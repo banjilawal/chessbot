@@ -1,7 +1,7 @@
-# src/logic/player/validator/validator.py
+# src/logic/player/validation/validation.py
 
 """
-Module: logic.player.validator.validator
+Module: logic.player.validation.validation
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -24,7 +24,7 @@ class PlayerContextValidationProcess(ValidationProcess[PlayerContext]):
 
     Responsibilities:
     1.  Ensure an PlayerContext instance is certified safe, reliable and consistent before use.
-    2.  If a candidate fails a safety test, the validator sends an exception in a ValidationResult.
+    2.  If a candidate fails a safety test, the validation sends an exception in a ValidationResult.
     
     Super Class:
         *   ValidationProcess
@@ -104,7 +104,7 @@ class PlayerContextValidationProcess(ValidationProcess[PlayerContext]):
             
             # Using the tuple's attribute as an address, route to appropriate validation subflow.
             
-            # Which ever attribute value is not null should be certified safe by the appropriate validator.
+            # Which ever attribute value is not null should be certified safe by the appropriate validation.
             if context.id is not None:
                 validation = identity_service.validate_id(candidate=context.id)
                 if validation.is_failure:

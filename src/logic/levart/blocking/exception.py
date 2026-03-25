@@ -117,7 +117,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 # class BlockingEventExceptionBuildException(BlockingEventException, BuildException):
 #   """
 #   Indicate That  Coord could not be built. Wraps and re-raises errors that occurred
-#   during builder.
+#   during build.
 #   """
 #   ERR_CODE = "BLOCKING_EVENT_BUILD_FAILED"
 #   MSG = "BlockingEventException build failed."

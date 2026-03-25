@@ -1,7 +1,7 @@
-# src/logic/persona/validator/exception/work.py
+# src/logic/persona/validation/exception/work.py
 
 """
-Module: logic.persona.validator.exception.work
+Module: logic.persona.validation.exception.work
 Author: Banji Lawal
 Created: 2025-09-08
 Version: 1.0.0

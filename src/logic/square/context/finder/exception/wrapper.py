@@ -1,7 +1,7 @@
-# src/logic/square/finder/exception/work.py
+# src/logic/square/route/exception/work.py
 
 """
-Module: logic.square.finder.exception.work
+Module: logic.square.route.exception.work
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0

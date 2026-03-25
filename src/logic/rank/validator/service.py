@@ -1,7 +1,7 @@
-# src/logic/rank/validator/service.py
+# src/logic/rank/validation/service.py
 
 """
-Module: logic.rank.validator.service
+Module: logic.rank.validation.service
 Author: Banji Lawal
 Created: 2025-11-08
 version: 1.0.0

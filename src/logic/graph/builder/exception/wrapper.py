@@ -1,7 +1,7 @@
-# src/logic/graph/builder/exception/work.py
+# src/logic/graph/build/exception/work.py
 
 """
-Module: logic.graph.builder.exception.work
+Module: logic.graph.build.exception.work
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

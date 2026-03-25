@@ -1,7 +1,7 @@
-# src/logic/game/builder/__init__.py
+# src/logic/game/build/__init__.py
 
 """
-Module: logic.game.builder.__init__
+Module: logic.game.build.__init__
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0

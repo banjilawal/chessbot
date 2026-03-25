@@ -1,7 +1,7 @@
-# src/logic/schema/key/validator/exception/debug/flag/zero.py
+# src/logic/schema/key/validation/exception/debug/flag/zero.py
 
 """
-Module: logic.schema.key.validator.exception.debug.flag.zero
+Module: logic.schema.key.validation.exception.debug.flag.zero
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

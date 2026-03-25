@@ -1,7 +1,7 @@
-# src/logic/player/query/finder/exception/debug/exist.py
+# src/logic/player/query/route/exception/debug/exist.py
 
 """
-Module: logic.player.query.finder.exception.debug.exist
+Module: logic.player.query.route.exception.debug.exist
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

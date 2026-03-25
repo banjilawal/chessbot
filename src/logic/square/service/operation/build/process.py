@@ -1,7 +1,7 @@
-# src/logic/square/service/operation/builder/exception.py
+# src/logic/square/service/operation/build/exception.py
 
 """
-Module: logic.square.service.operation.builder.builder
+Module: logic.square.service.operation.build.build
 Author: Banji Lawal
 Created: 2025-09-03
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/logic/scalar/validator/validator.py
+# src/logic/scalar/validation/validation.py
 
 """
-Module: logic.scalar.validator
+Module: logic.scalar.validation
 Author: Banji Lawal
 Created: 2025-08-26
 version: 1.0.0

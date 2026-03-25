@@ -1,7 +1,7 @@
-# src/logic/coord/finder/exception/work.py
+# src/logic/coord/route/exception/work.py
 
 """
-Module: logic.coord.finder.exception.work
+Module: logic.coord.route.exception.work
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0

@@ -48,8 +48,8 @@ class HostageService(IntegrityService[Hostage]):
         # PARAMETERS:
             *   id (nt)
             *   name (str)
-            *   builder (SquareFactory)
-            *   validator (SquareValidationProcess)
+            *   build (SquareFactory)
+            *   validation (SquareValidationProcess)
         # RETURNS:
             None
         Raises:

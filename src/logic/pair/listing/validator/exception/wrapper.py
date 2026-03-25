@@ -1,7 +1,7 @@
-# src/logic/pair/listing/validator/exception/work.py
+# src/logic/pair/listing/validation/exception/work.py
 
 """
-Module: logic.pair.listing.validator.exception.work
+Module: logic.pair.listing.validation.exception.work
 Author: Banji Lawal
 Created: 2026-03-12
 Version: 1.0.0

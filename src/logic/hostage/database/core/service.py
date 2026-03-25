@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import List, cast
 
 from logic.hostage import (
-    AppendingHostageDirectlyIntoItemsFailedException, HostageContextService, Hostage,
+    AppendingHostageDirectlyIntoItemsFailedException, HostageQueryService, Hostage,
     HostageDataListException, HostageInsertionException, HostageService
 )
 from logic.system import StackService, InsertionResult, LoggingLevelRouter, id_emitter
@@ -43,7 +43,7 @@ class HostageList(StackService[Hostage]):
             id: int = id_emitter.service_id,
             items: List[Hostage] = List[Hostage],
             service: HostageService = HostageService(),
-            context_service: HostageContextService = HostageContextService(),
+            context_service: HostageQueryService = HostageQueryService(),
     ):
         """
         # ACTION:
@@ -53,7 +53,7 @@ class HostageList(StackService[Hostage]):
             *   name (str)
             *   bag (List[Team])
             *   service (TeamService)
-            *   context_service (TeamContextService)
+            *   context_service (TeamQueryService)
         # RETURNS:
             None
         Raises:
@@ -73,8 +73,8 @@ class HostageList(StackService[Hostage]):
         return cast(HostageService, self.entity_service)
     
     @property
-    def captivity_context_service(self) -> HostageContextService:
-        return cast(HostageContextService, self.context_service)
+    def captivity_context_service(self) -> HostageQueryService:
+        return cast(HostageQueryService, self.context_service)
     
     @LoggingLevelRouter.monitor
     def insert(self, manifest: Hostage) -> InsertionResult[Hostage]:

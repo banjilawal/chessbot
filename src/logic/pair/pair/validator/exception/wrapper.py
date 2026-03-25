@@ -1,7 +1,7 @@
-# src/logic/pair/pair/validator/exception/work.py
+# src/logic/pair/pair/validation/exception/work.py
 
 """
-Module: logic.pair.pair.validator.exception.work
+Module: logic.pair.pair.validation.exception.work
 Author: Banji Lawal
 Created: 2025-09-08
 Version: 1.0.0

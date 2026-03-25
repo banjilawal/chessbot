@@ -11,7 +11,7 @@ from typing import List
 
 from logic.board import (
     AddingDuplicateBoardException, ExhaustiveBoardDeletionException, Board, BoardContext,
-    BoardContextService,
+    BoardQueryService,
     BoardStackService, BoardService, UniqueBoardDataServiceException, UniqueBoardInsertionException,
     UniqueBoardSearchException
 )
@@ -66,7 +66,7 @@ class BoardDatabase(Database[Board]):
         return self._board_database_core.board_service
     
     @property
-    def context_service(self) -> BoardContextService:
+    def context_service(self) -> BoardQueryService:
         return self._board_database_core.context_service
     
     @property
@@ -181,7 +181,7 @@ class BoardDatabase(Database[Board]):
         method = "BoardDatabase.search_boards"
         
         # --- Handoff the search responsibility to _board_database_core. ---#
-        search_result = self._board_database_core.board_context_service.finder.find(context=context)
+        search_result = self._board_database_core.board_context_service.finder.route(context=context)
         
         # Handle the case that, the search is not completed.
         if search_result.is_failure:

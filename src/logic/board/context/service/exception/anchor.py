@@ -24,11 +24,11 @@ class BoardContextServiceException(ServiceException):
     Role:Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
-    1.  Anchoring target for BoardContextService debug (layer-2) error state firing incident
+    1.  Anchoring target for BoardQueryService debug (layer-2) error state firing incident
         reports on
             *   the triggering variable
             *   The trigger's value.
-    2.  Indicate which BoardContextService method received a worker's (layer-1) failure result.
+    2.  Indicate which BoardQueryService method received a worker's (layer-1) failure result.
 
     Super Class:
         *   ServiceException
@@ -52,9 +52,9 @@ class BoardContextServiceException(ServiceException):
     # INHERITED METHODS:
         *   See ServiceException class for inherited methods.
     """
-    CLS_NAME = " BoardContextService"
+    CLS_NAME = " BoardQueryService"
     ERR_CODE = " BOARD_CONTEXT_SERVICE_EXCEPTION"
-    MSG = " BoardContextService raised an exception."
+    MSG = " BoardQueryService raised an exception."
     
     def __init__(
             self,

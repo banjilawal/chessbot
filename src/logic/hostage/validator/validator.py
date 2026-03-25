@@ -1,7 +1,7 @@
-# src/logic/hostage/validator/validator.py
+# src/logic/hostage/validation/validation.py
 
 """
-Module: logic.hostage.validator
+Module: logic.hostage.validation
 Author: Banji Lawal
 Created: 2026-01-18
 version: 1.0.0

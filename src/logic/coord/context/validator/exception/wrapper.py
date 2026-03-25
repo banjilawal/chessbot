@@ -1,7 +1,7 @@
-# src/logic/coord/validator/exception/exception.py
+# src/logic/coord/validation/exception/exception.py
 
 """
-Module: logic.coord.validator.exception.exception
+Module: logic.coord.validation.exception.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

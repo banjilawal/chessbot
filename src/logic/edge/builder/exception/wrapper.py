@@ -1,7 +1,7 @@
-# src/logic/edge/builder/exception/work.py
+# src/logic/edge/build/exception/work.py
 
 """
-Module: logic.edge.builder.exception.work
+Module: logic.edge.build.exception.work
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

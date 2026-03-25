@@ -1,7 +1,7 @@
-# src/command/command/builder/exception/work.py
+# src/command/command/build/exception/work.py
 
 """
-Module: command.command.builder.exception.work
+Module: command.command.build.exception.work
 Author: Banji Lawal
 Created: 2026-02-24
 """

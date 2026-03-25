@@ -1,7 +1,7 @@
-# src/logic/edge/query/validator/exception/debug/__init__.py
+# src/logic/edge/query/validation/exception/debug/__init__.py
 
 """
-Module: logic.edge.query.validator.exception.debug.__init__
+Module: logic.edge.query.validation.exception.debug.__init__
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

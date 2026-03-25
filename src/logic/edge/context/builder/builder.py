@@ -1,7 +1,7 @@
-# src/logic/edge/query/builder/exception.py
+# src/logic/edge/query/build/exception.py
 
 """
-Module: logic.edge.query.builder.builder
+Module: logic.edge.query.build.build
 Author: Banji Lawal
 Created: 2026-02-18
 version: 1.0.0

@@ -33,8 +33,8 @@ class RequestService(IntegrityService[Command]):
     Provides:
 
     # LOCAL ATTRIBUTES:
-        *   builder (Builder[Command])
-        *   validator (Validator[Command])
+        *   build (Builder[Command])
+        *   validation (Validator[Command])
 
     # INHERITED ATTRIBUTES:
         *   See IntegrityService class for inherited attributes.
@@ -42,8 +42,8 @@ class RequestService(IntegrityService[Command]):
     Attributes:
         *   id (int)
         *   name (name)
-        *   builder (BuildProcess[Command])
-        *   validator (ValidationProcess[Command])
+        *   build (BuildProcess[Command])
+        *   validation (ValidationProcess[Command])
 
     # LOCAL METHODS:
     None

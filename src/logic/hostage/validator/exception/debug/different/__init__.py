@@ -1,7 +1,7 @@
-# src/logic/hostage/validator/exception/debug/different/__init__.py
+# src/logic/hostage/validation/exception/debug/different/__init__.py
 
 """
-Module: logic.hostage.validator.exception.debug.different.__init__
+Module: logic.hostage.validation.exception.debug.different.__init__
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

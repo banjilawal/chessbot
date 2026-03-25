@@ -1,7 +1,7 @@
-# src/logic/snapshot/finder/__init__.py
+# src/logic/snapshot/route/__init__.py
 
 """
-Module: logic.snapshot.finder.__init__
+Module: logic.snapshot.route.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

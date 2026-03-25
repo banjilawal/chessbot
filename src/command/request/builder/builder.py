@@ -1,7 +1,7 @@
-# src/command/request/builder/exception.py
+# src/command/request/build/exception.py
 
 """
-Module: command.request.builder.builder
+Module: command.request.build.build
 Author: Banji Lawal
 Created: 2026-02-24
 """

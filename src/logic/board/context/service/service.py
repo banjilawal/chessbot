@@ -9,11 +9,11 @@ version: 1.0.0
 
 from typing import cast
 
-from logic.system import ContextService, id_emitter
+from logic.system import QueryService, id_emitter
 from logic.board import BoardContext, BoardContextBuildProcess, BoardContextValidationProcess, BoardFinder
 
 
-class BoardContextService(ContextService[BoardContext]):
+class BoardQueryService(QueryService[BoardContext]):
     """
     Role:Search Service, Lifecycle Management, Encapsulation, API layer.
 
@@ -25,16 +25,16 @@ class BoardContextService(ContextService[BoardContext]):
         Board search flow.
 
     Super Class:
-        *   ContextService
+        *   QueryService
 
     # PROVIDES:
-        *   BoardContextService
+        *   BoardQueryService
 
 
     # INHERITED ATTRIBUTES:
-        *   See ContextService for inherited attributes.
+        *   See QueryService for inherited attributes.
     """
-    SERVICE_NAME = "BoardContextService"
+    SERVICE_NAME = "BoardQueryService"
     
     def __init__(
             self,
@@ -50,15 +50,15 @@ class BoardContextService(ContextService[BoardContext]):
         # PARAMETERS:
             *   name (str)
             *   id (int)
-            *   finder (BoardFinder)
-            *   builder (BoardContextBuildProcess)
-            *   validator (BoardContextValidationProcess)
+            *   route (BoardFinder)
+            *   build (BoardContextBuildProcess)
+            *   validation (BoardContextValidationProcess)
         # RETURNS:
             None
         Raises:
             None
         """
-        method = "BoardContextService.__init__"
+        method = "BoardQueryService.__init__"
         super().__init__(id=id, name=name, builder=builder, validator=validator, finder=finder)
     
     @property

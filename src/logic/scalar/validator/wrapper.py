@@ -1,7 +1,7 @@
-# src/logic/scalar/validator/exception/work.py
+# src/logic/scalar/validation/exception/work.py
 
 """
-Module: logic.scalar.validator.exception.work
+Module: logic.scalar.validation.exception.work
 Author: Banji Lawal
 Created: 2025-09-08
 Version: 1.0.0

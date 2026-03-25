@@ -22,7 +22,7 @@ class TokenContext(Context[Token]):
     Role:SearchProcess option filter
 
     Responsibilities:
-    Provides options for what type of key-value pair TokenFinder should use to find matches.
+    Provides options for what type of key-value pair TokenSearchRouter should use to find matches.
 
     # PROVIDES:
     TokenContext.

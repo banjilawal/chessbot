@@ -1,7 +1,7 @@
 # src/logic/points/searcher/exception.py
 
 """
-Module: logic.points.searcher.builder
+Module: logic.points.searcher.build
 Author: Banji Lawal
 Created: 2025-11-08
 version: 1.0.0
@@ -33,7 +33,7 @@ class ResidentFilterBuildProcess(BuildProcess[ResidentFilter]):
             team_name: Optional[str] = None
     ) -> BuildResult[ResidentFilter]:
         """"""
-        method = "ResidentFilterBuildProcess.builder"
+        method = "ResidentFilterBuildProcess.build"
         
         try:
             params = [

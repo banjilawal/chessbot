@@ -1,7 +1,7 @@
-# src/logic/manifest/validator/exception/debug/captor.py
+# src/logic/manifest/validation/exception/debug/captor.py
 
 """
-Module: logic.manifest.validator.exception.debug.captor
+Module: logic.manifest.validation.exception.debug.captor
 Author: Banji Lawal
 Created: 2025-11-19
 """

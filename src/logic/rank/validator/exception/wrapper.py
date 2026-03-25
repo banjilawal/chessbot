@@ -1,7 +1,7 @@
-# src/logic/rank/validator/exception/work.py
+# src/logic/rank/validation/exception/work.py
 
 """
-Module: logic.rank.validator.exception.work
+Module: logic.rank.validation.exception.work
 Author: Banji Lawal
 Created: 2025-09-08
 Version: 1.0.0

@@ -1,7 +1,7 @@
-# src/logic/span/square/builder/work.py
+# src/logic/span/square/build/work.py
 
 """
-Module: logic.span.square.builder.work
+Module: logic.span.square.build.work
 Author: Banji Lawal
 Created: 2026-03-11
 version: 1.0.0

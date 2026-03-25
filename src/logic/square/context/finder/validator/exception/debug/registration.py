@@ -1,7 +1,7 @@
-# src/logic/square/validator/exception/registration/player.py
+# src/logic/square/validation/exception/registration/player.py
 
 """
-Module: logic.square.validator.exception.registration.player
+Module: logic.square.validation.exception.registration.player
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/logic/formation/key/builder/exception/route.py
+# src/logic/formation/key/build/exception/route.py
 
 """
-Module: logic.formation.key.builder.exception.route
+Module: logic.formation.key.build.exception.route
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

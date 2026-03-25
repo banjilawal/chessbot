@@ -1,7 +1,7 @@
-# src/logic/edge/builder/__init__.py
+# src/logic/edge/build/__init__.py
 
 """
-Module: logic.edge.builder.__init__
+Module: logic.edge.build.__init__
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

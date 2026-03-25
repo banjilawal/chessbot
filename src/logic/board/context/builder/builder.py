@@ -1,7 +1,7 @@
-# src/logic/board/query/builder/exception.py
+# src/logic/board/query/build/exception.py
 
 """
-Module: logic.board.query.builder.builder
+Module: logic.board.query.build.build
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

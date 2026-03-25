@@ -9,11 +9,11 @@ version: 1.0.0
 
 from typing import cast
 
-from logic.system import ContextService, id_emitter
+from logic.system import QueryService, id_emitter
 from logic.agent import AgentContext, AgentContextBuilder, AgentContextValidator, AgentFinder
 
 
-class AgentContextService(ContextService[AgentContext]):
+class AgentQueryService(QueryService[AgentContext]):
     """
     Role:Search Service, Lifecycle Management, Encapsulation, API layer.
 
@@ -25,18 +25,18 @@ class AgentContextService(ContextService[AgentContext]):
         Player search flow.
 
     Super Class:
-        *   ContextService
+        *   QueryService
 
     # PROVIDES:
-        *   builder:    -> AgentContextBuildProcess
-        *   validator:  -> AgentContextValidator
-        *   finder:     -> AgentFinder
+        *   build:    -> AgentContextBuildProcess
+        *   validation:  -> AgentContextValidator
+        *   route:     -> AgentFinder
 
 
     # INHERITED ATTRIBUTES:
-        *   See ContextService for inherited attributes.
+        *   See QueryService for inherited attributes.
     """
-    DEFAULT_NAME = "PlayerContextService"
+    DEFAULT_NAME = "PlayerQueryService"
     def __init__(
             self,
             name: str = DEFAULT_NAME,
@@ -52,16 +52,16 @@ class AgentContextService(ContextService[AgentContext]):
         # PARAMETERS:
             *   name (str): Default value - SERVICE_NAME
             *   id (int): Default value - id_emitter.service_id
-            *   finder (AgentFinder): Default value - AgentFinder()
-            *   builder (AgentContextBuildProcess): Default value - AgentContextBuildProcess()
-            *   validator (AgentContextValidator): Default value - AgentContextValidator()
+            *   route (AgentFinder): Default value - AgentFinder()
+            *   build (AgentContextBuildProcess): Default value - AgentContextBuildProcess()
+            *   validation (AgentContextValidator): Default value - AgentContextValidator()
 
         # RETURNS:
         None
 
         Raises:
         """
-        method = "PlayerContextService.__init__"
+        method = "PlayerQueryService.__init__"
         super().__init__(id=id, name=name, builder=builder, validator=validator, finder=finder)
         
     @property

@@ -7,71 +7,73 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from typing import TypeVar
+from abc import ABC, abstractmethod
+from typing import Generic, List, TypeVar
 
-from logic.system import BuildProcess, Context, IntegrityService, ValidationProcess
+from logic.system import (
+    BuildProcess, Context, IntegrityService, LoggingLevelRouter, SearchResult, Service, StackSearchRouter,
+    ValidationProcess
+)
 
+C = TypeVar("C", bound="Context")
 T = TypeVar("T")
 
-class ContextService(IntegrityService[Context[T]]):
+class QueryService(Service[T]):
     """
-    Role:Search Service, Lifecycle Management, Encapsulation, API layer.
+    Role:
+        -   API
+        -   Search Micro Service,
 
     Responsibilities:
-    1.  Public facing API for querying datasets of T objects.
-    2.  Encapsulates Search and search filter validation in one extendable module.
-    3.  Manage Context integrity lifecycle.
+        1.  Public facing API for querying datasets of T objects.
+        2.  Encapsulates Search and search filter validation in one extendable module.
+        3.  Manage Context integrity lifecycle.
 
-    Super Class:
-        *   IntegrityService
-
-    Provides:
-
-    # LOCAL ATTRIBUTES:
-        *   finder (SearchProcess[T])
+    Args:
+        id: int
+        name: str
+        router: SearchRouter[T]
+        context_service: IntegrityService[Context[T]]
         
-    # INHERITED ATTRIBUTES:
-        *   See IntegrityService for inherited attributes.
+    Provides:
+        -   execute(dataset: List[T], context: Context[T]) -> SearchResult[List[T]]
+        
+    Super Class:
+        QueryService
     """
-    _finder: Finder[T]
+    _router: StackSearchRouter
+    _context_service: SquareContextService
+    
     def __init__(
             self,
             id: int,
             name: str,
-            builder: BuildProcess[Context[T]],
-            validator: ValidationProcess[Context[T]],
-            finder: Finder[T],
+            router: StackSearchRouter[T],
+            context_service: IntegrityService[Context[T]],
     ):
         """
-        # ACTION:
-            1.  Constructor
-
-        # PARAMETERS:
-            *   name (str)
-            *   id (int)
-            *   finder (SearchProcess[T])
-            *   builder (BuildProcess[Context[T]])
-            *   validator (ValidationProcess[Context[T]])
-
-        # RETURNS:
-        None
-
-        Raises:
+        Args:
+            id: int
+            name: str
+            router: StackSearchRouter[T]
+            context_service: IntegrityService[Context[T]]
         """
-        super().__init__(id=id, name=name, builder=builder, validator=validator)
-        method="ContextService.__init__"
-        self._finder = finder
+        super().__init__(id=id, name=name)
+        self._router = router
+        self._context_service = context_service
     
     @property
-    def entity_finder(self) -> Finder[T]:
-        """Get entity finder."""
-        return self._finder
+    @abstractmethod
+    def context_service(self) -> IntegrityService[Context[T]]:
+        pass
     
-    def __eq__(self, other):
-        if super().__eq__(other):
-            if isinstance(other, ContextService):
-                return True
-        return False
+    @property
+    @abstractmethod
+    def router(self) -> StackSearchRouter[T]:
+        pass
     
-    def __hash__(self):
-        return hash(self._id)
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def execute(cls, dataset: List[T], context: Context[T]) -> SearchResult[List[T]]:
+        pass
+    

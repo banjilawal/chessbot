@@ -1,7 +1,7 @@
 # src/logic/environment/exception.py
 
 """
-Module: logic.environment.builder
+Module: logic.environment.build
 Author: Banji Lawal
 Created: 2025-11-10
 Version: 1.0.1
@@ -24,7 +24,7 @@ class TurnSceneBuildProcess(BuildProcess[TurnScene]):
     @LoggingLevelRouter.monitor
     def execute(cls, id: int, piece: Piece, board: Board) -> BuildResult[TurnScene]:
         """"""
-        method = "TurnSceneBuildProcess.builder"
+        method = "TurnSceneBuildProcess.build"
         
         try:
             id_validation = IdValidationProcess.execute(id)

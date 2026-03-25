@@ -1,7 +1,7 @@
-# src/logic/arena/builder/exception.py
+# src/logic/arena/build/exception.py
 
 """
-Module: logic.arena.builder.builder
+Module: logic.arena.build.build
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -80,7 +80,7 @@ class ArenaContextBuildProcess(BuildProcess[ArenaContext]):
             *   ArenaContextBuildException
             *   ExcessArenaContextFlagsException
         """
-        method = "ArenaSearchContextBuilder.builder"
+        method = "ArenaSearchContextBuilder.build"
         try:
             # Count how many optional parameters are not-null. One param needs to be not-null.
             params = [id, name, team, game, variety, ]

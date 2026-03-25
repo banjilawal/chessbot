@@ -72,7 +72,7 @@ class NullTravelEventException(TravelEventException, NullException):
 class TravelEventBuildException(TravelEventException, BuildException):
   """
   Indicate That  TravelEvent could not be built. Wraps and re-raises errors that occurred
-  during builder.
+  during build.
   """
   ERR_CODE = "TRAVEL_EVENT_BUILD_FAILED"
   MSG = "TravelEvent build failed."
@@ -80,7 +80,7 @@ class TravelEventBuildException(TravelEventException, BuildException):
 class OccupationEventBuildException(TravelEventBuildException):
   """
   Indicate That  OldOccupationEventValidator could not be built. Wraps and re-raises errors that occurred
-  during builder.
+  during build.
   """
   ERR_CODE = "OCCUPATION_EVENT_BUILD_FAILED"
 

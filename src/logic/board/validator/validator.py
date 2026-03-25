@@ -1,7 +1,7 @@
-# src/logic/board/validator/validator.py
+# src/logic/board/validation/validation.py
 
 """
-Module: logic.board.validator.validator
+Module: logic.board.validation.validation
 Author: Banji Lawal
 Created: 2025-11-21
 version: 1.0.0
@@ -166,5 +166,5 @@ class BoardValidationProcess(ValidationProcess[Board]):
                     )
                 )
             )
-        # On certification successes send the board back to the validator.
+        # On certification successes send the board back to the validation.
         return ValidationResult.success(payload=board.arena)

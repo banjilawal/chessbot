@@ -1,7 +1,7 @@
-# src/logic/team/query/validator/exception/debug/null.py
+# src/logic/team/query/validation/exception/debug/null.py
 
 """
-Module: logic.team.query.validator.exception.debug.null
+Module: logic.team.query.validation.exception.debug.null
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

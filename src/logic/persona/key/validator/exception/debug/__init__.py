@@ -1,7 +1,7 @@
-# src/logic/persona/key/validator/exception/debug/__init__.py
+# src/logic/persona/key/validation/exception/debug/__init__.py
 
 """
-Module: logic.persona.key.validator.exception.debug.__init__
+Module: logic.persona.key.validation.exception.debug.__init__
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

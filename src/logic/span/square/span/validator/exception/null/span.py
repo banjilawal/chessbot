@@ -1,7 +1,7 @@
-# src/logic/span/square/span/validator/exception/null/span.py
+# src/logic/span/square/span/validation/exception/null/span.py
 
 """
-Module: logic.span.square.span.validator.exception.null.span
+Module: logic.span.square.span.validation.exception.null.span
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

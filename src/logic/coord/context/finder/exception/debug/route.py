@@ -1,7 +1,7 @@
-# src/logic/coord/query/finder/exception/debug/route.py
+# src/logic/coord/query/route/exception/debug/route.py
 
 """
-Module: logic.coord.query.finder.exception.debug.route
+Module: logic.coord.query.route.exception.debug.route
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

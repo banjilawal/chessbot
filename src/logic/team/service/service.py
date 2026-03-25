@@ -52,8 +52,8 @@ class TeamService(IntegrityService[Team]):
         # PARAMETERS:
             *   id (nt)
             *   name (str)
-            *   builder (TeamBuild)
-            *   validator (TeamValidationProcess)
+            *   build (TeamBuild)
+            *   validation (TeamValidationProcess)
             *   roster_util (RosterUtil)
         # RETURNS:
                 None

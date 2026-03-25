@@ -1,7 +1,7 @@
-# src/logic/query/coord/finder/finder.py
+# src/logic/query/coord/route/route.py
 
 """
-Module: logic.query.coord.finder.finder
+Module: logic.query.coord.route.route
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -25,7 +25,7 @@ class CoordFinder(DataFinder[Coord]):
     2.  If a search does not complete forward the exception chain to the caller for debugging.
 
     # LIMITATIONS:
-    1.  TokenFinder sends the raw list of matches. Resolving id collisions is the caller's responsibility.
+    1.  TokenSearchRouter sends the raw list of matches. Resolving id collisions is the caller's responsibility.
 
     # PARENT
         *   SearchProcess

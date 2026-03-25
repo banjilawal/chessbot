@@ -1,7 +1,7 @@
-# src/logic/system/validate/validator.py
+# src/logic/system/validate/validation.py
 
 """
-Module: logic.system.validate.validator
+Module: logic.system.validate.validation
 Author: Banji Lawal
 Created: 2025-09-28
 """

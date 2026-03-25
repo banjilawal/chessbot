@@ -1,7 +1,7 @@
-# src/logic/persona/validator/validator.py
+# src/logic/persona/validation/validation.py
 
 """
-Module: logic.persona.validator
+Module: logic.persona.validation
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

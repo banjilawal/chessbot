@@ -16,7 +16,7 @@ from logic.system import (
 )
 from logic.square import (
     SquareContext, SquareStackException, SquareStackOpsController, SquareService,
-    SquareContextService, Square, SquareStackOpsController,
+    SquareQueryService, Square, SquareStackOpsController,
 )
 from logic.token import Token, TokenService
 
@@ -40,7 +40,7 @@ class SquareStackService(StackService[Square]):
             stack: List[Square]
             controller: SquareStackOpsController
             service: SquareService:
-            context_service: SquareContextService
+            context_service: SquareQueryService
     
     # INHERITED ATTRIBUTES:
         *   See StackService for inherited attributes.
@@ -52,7 +52,7 @@ class SquareStackService(StackService[Square]):
             *   capacity (int)
             *   controller (SquareStackOpsController)
             *   service (SquareService)
-            *   context_service (SquareContextService)
+            *   context_service (SquareQueryService)
 
         Inherited:
         None
@@ -76,7 +76,7 @@ class SquareStackService(StackService[Square]):
     _controller: SquareStackOpsController
     _service: SquareService
     _controller: SquareStackOpsController
-    _context_service: SquareContextService
+    _context_service: SquareQueryService
     
     def __init__(
             self,
@@ -85,7 +85,7 @@ class SquareStackService(StackService[Square]):
             controller: SquareStackOpsController = SquareStackOpsController(),
             capacity: int = NUMBER_OF_ROWS * NUMBER_OF_COLUMNS,
             id: int = IdFactory.next_id(class_name="SquareStackService"),
-            context_service: SquareContextService = SquareContextService(),
+            context_service: SquareQueryService = SquareQueryService(),
     ):
         """
         Args:
@@ -93,7 +93,7 @@ class SquareStackService(StackService[Square]):
             name: str
             capacity: int
             service: SquareService
-            context_service: SquareContextService
+            context_service: SquareQueryService
         """
         method = "SquareService.__init__"
         super().__init__(id=id,name=name,)
@@ -132,7 +132,7 @@ class SquareStackService(StackService[Square]):
         return self._service
     
     @property
-    def context_service(self) -> SquareContextService:
+    def context_service(self) -> SquareQueryService:
         return self._context_service
     
     @property
@@ -299,7 +299,7 @@ class SquareStackService(StackService[Square]):
         method = "SquareStackService.query"
         
         # --- Handoff the search responsibility to _stack_service. ---#
-        query_result = self._context_service.finder.find(
+        query_result = self._context_service.finder.route(
             context=context,
             dataset=self._stack,
         )

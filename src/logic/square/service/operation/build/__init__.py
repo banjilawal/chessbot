@@ -1,4 +1,4 @@
-# src/logic/square/service/operation/builder/__init__.py
+# src/logic/square/service/operation/build/__init__.py
 
 """
 Module: logic.square.service.operation.builder__init__

@@ -1,7 +1,7 @@
-# src/logic/pair/listing/builder/exception.py
+# src/logic/pair/listing/build/exception.py
 
 """
-Module: logic.pair.listing.builder.builder
+Module: logic.pair.listing.build.build
 Author: Banji Lawal
 Created: 2026-03-12
 version: 1.0.0

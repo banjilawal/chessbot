@@ -1,7 +1,7 @@
-# src/logic/node/query/finder/exception/debug/exist.py
+# src/logic/node/query/route/exception/debug/exist.py
 
 """
-Module: logic.node.query.finder.exception.debug.exist
+Module: logic.node.query.route.exception.debug.exist
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

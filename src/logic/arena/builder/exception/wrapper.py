@@ -1,7 +1,7 @@
-# src/logic/arena/builder/exception/work.py
+# src/logic/arena/build/exception/work.py
 
 """
-Module: logic.arena.builder.exception.work
+Module: logic.arena.build.exception.work
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/logic/graph/square/validator/exception/debug/__init__.py
+# src/logic/graph/square/validation/exception/debug/__init__.py
 
 """
-Module: logic.graph.square.validator.exception.debug.__init__
+Module: logic.graph.square.validation.exception.debug.__init__
 Author: Banji Lawal
 Created: 2026-02-17
 version: 1.0.0

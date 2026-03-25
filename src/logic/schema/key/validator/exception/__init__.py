@@ -1,7 +1,7 @@
-# src/logic/schema/key/validator/exception/__init__.py
+# src/logic/schema/key/validation/exception/__init__.py
 
 """
-Module: logic.schema.key.validator.exception.__init__
+Module: logic.schema.key.validation.exception.__init__
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

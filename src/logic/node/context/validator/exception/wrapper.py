@@ -1,7 +1,7 @@
-# src/logic/node/validator/exception/exception.py
+# src/logic/node/validation/exception/exception.py
 
 """
-Module: logic.node.validator.exception.exception
+Module: logic.node.validation.exception.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

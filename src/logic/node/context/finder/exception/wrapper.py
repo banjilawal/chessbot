@@ -1,7 +1,7 @@
-# src/logic/node/finder/exception/work.py
+# src/logic/node/route/exception/work.py
 
 """
-Module: logic.node.finder.exception.work
+Module: logic.node.route.exception.work
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0

@@ -101,7 +101,7 @@ class TravelTransaction(Transaction[TravelEvent]):
   #   actor_square = BoardSearch.searcher()
   #
   #   if destination_occupant is None:
-  #     build_result = OccupationEventBuilder.builder(
+  #     build_result = OccupationEventBuilder.build(
   #       parent=travel,
   #       traveler=travel.traveler,
   #       actor_square=actor_square,
@@ -290,7 +290,7 @@ class TravelTransaction(Transaction[TravelEvent]):
   #   """
   #   method = "OccupationExecutor._run_scan"
   #
-  #   build_outcome = DiscoveryBuilder.builder(observer=directive.observer, friend=directive.friend)
+  #   build_outcome = DiscoveryBuilder.build(observer=directive.observer, friend=directive.friend)
   #   if not build_outcome.is_success():
   #     return TransactionResult(op_result_id, directive, rollback_exception=build_outcome.rollback_exception)
   #

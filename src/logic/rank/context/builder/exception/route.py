@@ -1,7 +1,7 @@
-# src/logic/route/query/builder/exception/route.py
+# src/logic/route/query/build/exception/route.py
 
 """
-Module: logic.rank.query.builder.exception.route
+Module: logic.rank.query.build.exception.route
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

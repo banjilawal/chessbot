@@ -1,7 +1,7 @@
-# src/logic/team/query/builder/exception.py
+# src/logic/team/query/build/exception.py
 
 """
-Module: logic.team.query.builder.builder
+Module: logic.team.query.build.build
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
@@ -77,7 +77,7 @@ class TeamContextBuildProcess(BuildProcess[TeamContext]):
             *   TeamContextBuildException
             *   ArenaTeamContextFlagsException
         """
-        method = "PieceSearchContextBuilder.builder"
+        method = "PieceSearchContextBuilder.build"
         
         # --- Count how many optional parameters are not-null. only one should be not null. ---#
         params = [id, name, arena, player, color]

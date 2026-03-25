@@ -1,7 +1,7 @@
-# src/command/command/builder/__init__.py
+# src/command/command/build/__init__.py
 
 """
-Module: command.command.builder.__init__
+Module: command.command.build.__init__
 Author: Banji Lawal
 Created: 2026-02-24
 """

@@ -34,13 +34,13 @@ class PersonaService(HashService[Persona]):
         Persona search flow.
 
     Super Class:
-        *   ContextService
+        *   QueryService
 
     Provides:
 
 
     # INHERITED ATTRIBUTES:
-        *   See ContextService for inherited attributes.
+        *   See QueryService for inherited attributes.
     """
     SERVICE_NAME = "PersonaService"
     _persona: Persona
@@ -59,7 +59,7 @@ class PersonaService(HashService[Persona]):
         # PARAMETERS:
             *   id (int)
             *   name (str)
-            *   validator (PersonaValidationProcess)
+            *   validation (PersonaValidationProcess)
             *   super_key_service (PersonaKeyService)
         # RETURNS:
             None
@@ -180,7 +180,7 @@ class PersonaService(HashService[Persona]):
     #     method = "PersonaService.rank_from_persona"
     #
     #     # Handle the case that, persona is not certified safe.
-    #     validation = self.validator.validate(candidate=persona)
+    #     validation = self.validation.validate(candidate=persona)
     #     if validation.is_failure:
     #         return BuildResult.failure(
     #             # Return exception chain on failure.

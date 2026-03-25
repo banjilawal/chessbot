@@ -1,7 +1,7 @@
-# src/logic/schema/validator/exception/route.py
+# src/logic/schema/validation/exception/route.py
 
 """
-Module: logic.schema.validator.exception.route
+Module: logic.schema.validation.exception.route
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/logic/scalar/builder/__init__.py
+# src/logic/scalar/build/__init__.py
 
 """
-Module: logic.scalar.builder.__init__
+Module: logic.scalar.build.__init__
 Author: Banji Lawal
 Created: 2026-02-17
 version: 1.0.0

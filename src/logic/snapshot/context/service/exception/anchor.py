@@ -24,11 +24,11 @@ class SnapshotContextServiceException(ServiceException):
     Role:Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
-    1.  Anchoring target for SnapshotContextService debug (layer-2) error state firing incident
+    1.  Anchoring target for SnapshotQueryService debug (layer-2) error state firing incident
         reports on
             *   the triggering variable
             *   The trigger's value.
-    2.  Indicate which SnapshotContextService method received a worker's (layer-1) failure result.
+    2.  Indicate which SnapshotQueryService method received a worker's (layer-1) failure result.
 
     Super Class:
         *   ServiceException
@@ -52,9 +52,9 @@ class SnapshotContextServiceException(ServiceException):
     # INHERITED METHODS:
         *   See ServiceException class for inherited methods.
     """
-    CLS_NAME = " SnapshotContextService"
+    CLS_NAME = " SnapshotQueryService"
     ERR_CODE = " SNAPSHOT_CONTEXT_SERVICE_EXCEPTION"
-    MSG = " SnapshotContextService raised an exception."
+    MSG = " SnapshotQueryService raised an exception."
     
     def __init__(
             self,

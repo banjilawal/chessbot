@@ -9,11 +9,11 @@ version: 1.0.0
 
 from typing import cast
 
-from logic.system import ContextService, id_emitter
+from logic.system import QueryService, id_emitter
 from logic.hostage import CaptivityContext, CaptivityContextBuildProcess, CaptivityContextValidationProcess, HostageFinder
 
 
-class HostageContextService(ContextService[CaptivityContext]):
+class HostageQueryService(QueryService[CaptivityContext]):
     """
     Role:Search Service, Lifecycle Management, Encapsulation, API layer.
 
@@ -25,16 +25,16 @@ class HostageContextService(ContextService[CaptivityContext]):
         Captivity search flow.
 
     Super Class:
-        *   ContextService
+        *   QueryService
 
     # PROVIDES:
-        *   HostageContextService
+        *   HostageQueryService
 
 
     # INHERITED ATTRIBUTES:
-        *   See ContextService for inherited attributes.
+        *   See QueryService for inherited attributes.
     """
-    SERVICE_NAME = "HostageContextService"
+    SERVICE_NAME = "HostageQueryService"
     
     def __init__(
             self,
@@ -50,15 +50,15 @@ class HostageContextService(ContextService[CaptivityContext]):
         # PARAMETERS:
             *   name (str)
             *   id (int)
-            *   finder (HostageFinder)
-            *   builder (CaptivityContextBuildProcess)
-            *   validator (CaptivityContextValidationProcess)
+            *   route (HostageFinder)
+            *   build (CaptivityContextBuildProcess)
+            *   validation (CaptivityContextValidationProcess)
         # RETURNS:
             None
         Raises:
             None
         """
-        method = "HostageContextService.__init__"
+        method = "HostageQueryService.__init__"
         super().__init__(id=id, name=name, builder=builder, validator=validator, finder=finder)
     
     @property

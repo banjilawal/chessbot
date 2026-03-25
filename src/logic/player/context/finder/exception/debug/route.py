@@ -1,7 +1,7 @@
-# src/logic/player/query/finder/exception/debug/route.py
+# src/logic/player/query/route/exception/debug/route.py
 
 """
-Module: logic.player.query.finder.exception.debug.route
+Module: logic.player.query.route.exception.debug.route
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

@@ -42,7 +42,7 @@ class TokenStackService(StackService[Token]):
         stack: List[Token]
         service: TokenService
         state: TokenStackState
-        dispatcher: TokenStackOpsController
+        controller: TokenStackOpsController
         context_service: TokenQueryService
 
     Provides:
@@ -54,7 +54,7 @@ class TokenStackService(StackService[Token]):
         -   is_empty() -> bool
         -   current_item(self) -> T
         -   integrity_service() -> IntegrityService[T]
-        -   context_service(self) -> ContextService[T]
+        -   context_service(self) -> QueryService[T]
         -   push(item: T) -> InsertionResult
         -   pop() -> DeletionResult[T]
         -   delete_by_id(id: int) -> DeletionResult[T]
@@ -73,19 +73,15 @@ class TokenStackService(StackService[Token]):
     
     _capacity: int
     _stack: List[Token]
-    _service: TokenService
     _state: TokenStackState
-    _dispatcher: TokenStackOpsController
-    _context_service: TokenQueryService
+    _controller: TokenStackOpsController
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             capacity: int = DEFAULT_CAPACITY,
-            service: TokenService = TokenService(),
             id: int = IdFactory.next_id(class_name="TokenStackService"),
-            context_service: TokenQueryService = TokenQueryService(),
-            dispatcher: TokenStackOpsController = TokenStackOpsController(),
+            controller: TokenStackOpsController = TokenStackOpsController(),
     ):
         """
         Args:
@@ -93,15 +89,13 @@ class TokenStackService(StackService[Token]):
             name: str
             capacity: int
             service: TokenService
-            dispatcher: TokenStackOpsController
+            controller: TokenStackOpsController
             context_service: TokenQueryService
         """
         super().__init__(id=id, name=name,)
         self._stack = []
-        self._service = service
         self._capacity = capacity
-        self._dispatcher = dispatcher
-        self._context_service = context_service
+        self._controller = controller
         self._state = TokenStackState.NOT_READY_FORD_DEPLOYMENT
 
 
@@ -137,17 +131,10 @@ class TokenStackService(StackService[Token]):
     def items(self) -> List[Token]:
         return self._stack
     
-    @property
-    def integrity_service(self) -> TokenService:
-        return self._service
     
     @property
-    def context_service(self) -> TokenQueryService:
-        return self._context_service
-    
-    @property
-    def operation(self) -> TokenStackOpsController:
-        return self._dispatcher
+    def controller(self) -> TokenStackOpsController:
+        return self._controller
     
     @property
     def is_getting_ready_for_deployment(self) -> bool:
@@ -192,8 +179,8 @@ class TokenStackService(StackService[Token]):
         """
         method = f"{self.__class__.__name__}.pop"
         
-        # --- Forward the request to the dispatcher. ---#
-        pop_result = self._dispatcher.crud.popper.pop()
+        # --- Forward the request to the controller. ---#
+        pop_result = self._controller.crud.pop.execute()
         
         # Handle the case that, the request was not completed.
         if pop_result.is_failure:
@@ -227,12 +214,12 @@ class TokenStackService(StackService[Token]):
         """
         method = f"{self.__class__.__name__}.push"
         
-        # --- Forward the request to the dispatcher. ---#
-        insertion_result = self._dispatcher.crud.pusher.execute(
+        # --- Forward the request to the controller. ---#
+        insertion_result = self._controller.crud.push.execute(
             token=item,
             token_stack=self,
-            rank_quota_analyzer=self._dispatcher.rank_quota_analyzer,
-            token_collision_detector=self._dispatcher.collision_detector
+            rank_quota_analyzer=self._controller.rank_quota_analyzer,
+            token_collision_detector=self._controller.collision_detector
         )
         # Handle the case that, the request was not completed.
         if insertion_result.is_failure:
@@ -271,8 +258,8 @@ class TokenStackService(StackService[Token]):
         """
         method = f"{self.__class__.__name__}.delete_by_id"
         
-        # --- Forward the request to the dispatcher. ---#
-        delete_by_id_result = self._dispatcher.crud.popper.delete_by_id(
+        # --- Forward the request to the controller. ---#
+        delete_by_id_result = self._controller.crud.pop.delete_by_id(
             id=id,
             identity_service=identity_service
         )
@@ -309,7 +296,7 @@ class TokenStackService(StackService[Token]):
         method = f"{self.__class__.__name__}.query"
         
         # --- Forward the request to the context_service. ---#
-        query_result = self._context_service.finder.find(dataset=self._stack, context=context)
+        query_result = self._controller.crud.query.execute(context=context)
         
         # Handle the case that, the request was not completed.
         if query_result.is_failure:

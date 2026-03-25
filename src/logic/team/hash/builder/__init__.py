@@ -1,7 +1,7 @@
-# src/logic/team/hash/builder/__init__.py
+# src/logic/team/hash/build/__init__.py
 
 """
-Module: logic.team.hash.builder.__init__
+Module: logic.team.hash.build.__init__
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0

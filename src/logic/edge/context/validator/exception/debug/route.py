@@ -1,7 +1,7 @@
-# src/logic/edge/query/validator/exception/debug/route.py
+# src/logic/edge/query/validation/exception/debug/route.py
 
 """
-Module: logic.edge.query.validator.exception.debug.route
+Module: logic.edge.query.validation.exception.debug.route
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/logic/persona/builder/__init__.py
+# src/logic/persona/build/__init__.py
 
 """
-Module: logic.persona.builder.__init__
+Module: logic.persona.build.__init__
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

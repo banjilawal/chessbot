@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import List, Optional, cast
 
 from logic.node import (
-    AddingDuplicateNodeException, Node, NodeContext, NodeContextService, NodePopException, NodePushException,
+    AddingDuplicateNodeException, Node, NodeContext, NodeQueryService, NodePopException, NodePushException,
     NodeService,
     NodeStackException, PoppingEmptyNodeStackException
 )
@@ -47,21 +47,21 @@ class NodeStackService(StackService[Node]):
     _id: int
     _stack: List[Node]
     _service: NodeService
-    _context_service: NodeContextService
+    _context_service: NodeQueryService
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             integrity_service: NodeService = NodeService(),
             id: int = IdFactory.next_id(class_name="NodeStackService"),
-            context_service: NodeContextService = NodeContextService(),
+            context_service: NodeQueryService = NodeQueryService(),
     ):
         """
         Args:
             id: int
             name: str
             integrity_service: NodeService
-            context_service: NodeContextService
+            context_service: NodeQueryService
         """
         super().__init__(id=id,name=name,)
         self._stack = []
@@ -81,7 +81,7 @@ class NodeStackService(StackService[Node]):
         return self._service
     
     @property
-    def context_service(self) -> NodeContextService:
+    def context_service(self) -> NodeQueryService:
         return self._context_service
     
     @property
@@ -222,7 +222,7 @@ class NodeStackService(StackService[Node]):
         method = "NodeStackService.query"
         
         # --- Handoff the search responsibility to _stack_service. ---#
-        query_result = self._context_service.finder.find(dataset=self._stack, context=context)
+        query_result = self._context_service.finder.route(dataset=self._stack, context=context)
         
         # Handle the case that, the search is not completed.
         if query_result.is_failure:

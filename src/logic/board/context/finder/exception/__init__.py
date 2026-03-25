@@ -1,6 +1,6 @@
-# src/logic/board/query/finder/exception/__init__.py
+# src/logic/board/query/route/exception/__init__.py
 """
-Module: logic.board.query.finder.exception.__init__
+Module: logic.board.query.route.exception.__init__
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0

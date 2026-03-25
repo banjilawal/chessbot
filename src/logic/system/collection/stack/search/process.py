@@ -15,12 +15,12 @@ from logic.system import Context, SearchProcess, ValidationProcess, SearchResult
 T = TypeVar("T")
 
 
-class StackSearchProcess(SearchProcess[T]):
+class StackSearchRouter(SearchProcess[T]):
     """"""
     
     @classmethod
     @abstractmethod
-    def find(
+    def route(
             cls,
             dataset: List[T],
             context: Context[T],

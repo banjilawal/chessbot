@@ -1,7 +1,7 @@
-# src/logic/game/validator/exception/flag/zero.py
+# src/logic/game/validation/exception/flag/zero.py
 
 """
-Module: logic.game.validator.exception.flag.zero
+Module: logic.game.validation.exception.flag.zero
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

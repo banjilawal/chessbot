@@ -11,7 +11,7 @@ from typing import List, cast
 
 
 from logic.system import StackService, LoggingLevelRouter, id_emitter
-from logic.game import Game, GameContext, GameContextService, GameService
+from logic.game import Game, GameContext, GameQueryService, GameService
 
 
 class GameStackService(StackService[Game]):
@@ -45,7 +45,7 @@ class GameStackService(StackService[Game]):
             id: int = id_emitter.service_id,
             items: List[Game] = List[Game],
             service: GameService = GameService(),
-            context_service: GameContextService = GameContextService(),
+            context_service: GameQueryService = GameQueryService(),
     ):
         """
         # ACTION:
@@ -56,7 +56,7 @@ class GameStackService(StackService[Game]):
             *   name (str): = SERVICE_NAME
             *   bag (List[Game]): = List[Game]
             *   service (GameService): = GameService()
-            *   context_service (GameContextService): = GameContextService()
+            *   context_service (GameQueryService): = GameQueryService()
 
         # RETURNS:
         None
@@ -76,24 +76,24 @@ class GameStackService(StackService[Game]):
         return cast(GameService, self.entity_service)
     
     @property
-    def game_context_service(self) -> GameContextService:
-        return cast(GameContextService, self.context_service)
+    def game_context_service(self) -> GameQueryService:
+        return cast(GameQueryService, self.context_service)
 
     # @property
     # def data(self) -> GameService:
     #     return cast(GameService, self.data)
     #
     # @property
-    # def builder(self) -> GameFactory:
+    # def build(self) -> GameFactory:
     #     return cast(GameFactory, self.service.item_builder)
     #
     # @property
-    # def validator(self) -> GameValidationProcess:
+    # def validation(self) -> GameValidationProcess:
     #     return cast(GameValidationProcess, self.service.item_validator)
     #
     # @property
-    # def context_service(self) -> GameContextService:
-    #     return cast(GameContextService, self.context_service)
+    # def context_service(self) -> GameQueryService:
+    #     return cast(GameQueryService, self.context_service)
     #
     # @LoggingLevelRouter.monitor
     # def push_item(self, item: Game) -> InsertionResult[Game]:
@@ -112,10 +112,10 @@ class GameStackService(StackService[Game]):
     #
     # @LoggingLevelRouter.monitor
     # def search(self, map: GameContext) -> SearchResult[List[Game]]:
-    #     method = "GameStackService.finder"
-    #     game_context_service = cast(GameContextService, self.context_service)
+    #     method = "GameStackService.route"
+    #     game_context_service = cast(GameQueryService, self.context_service)
     #
-    #     return self.context_service.finder.find(
+    #     return self.context_service.route.find(
     #         collider_candidates=self.bag,
     #         map=map,
     #         context_validator=self.context_service.item_validator

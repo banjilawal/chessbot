@@ -1,7 +1,7 @@
-# src/logic/board/builder/exception/debug/board.py
+# src/logic/board/build/exception/debug/board.py
 
 """
-Module: logic.board.builder.exception.debug.board
+Module: logic.board.build.exception.debug.board
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Dict, List, Optional
 
 from logic.square import (
-    Square, SquareContext, SquareContextService, SquareDatabaseException, SquareService,
+    Square, SquareContext, SquareQueryService, SquareDatabaseException, SquareService,
     SquareStackService
 )
 from logic.system import Database, IdFactory, LoggingLevelRouter, SearchResult, UpdateResult
@@ -79,7 +79,7 @@ class SquareDatabase(Database[Square]):
         return self._stack_service.integrity_service
     
     @property
-    def context_service(self) -> SquareContextService:
+    def context_service(self) -> SquareQueryService:
         return self._stack_service.context_service
     
     @property

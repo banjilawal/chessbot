@@ -1,7 +1,7 @@
-# src/logic/snapshot/validator/validator.py
+# src/logic/snapshot/validation/validation.py
 
 """
-Module: logic.snapshot.validator.validator
+Module: logic.snapshot.validation.validation
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

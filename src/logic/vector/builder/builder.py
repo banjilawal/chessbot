@@ -1,7 +1,7 @@
-# src/logic/vector/builder/exception.py
+# src/logic/vector/build/exception.py
 
 """
-Module: logic.vector.builder.__init__
+Module: logic.vector.build.__init__
 Author: Banji Lawal
 Created: 2025-09083
 version: 1.0.0
@@ -60,7 +60,7 @@ class VectorBuildProcess(BuildProcess[Vector]):
         RAISES:
             *   VectorBuildException
         """
-        method = "VectorBuildProcess.builder"
+        method = "VectorBuildProcess.build"
         # Handle the x component
         x_validation = bound_number_validator.execute(floor=0, ceiling=LONGEST_KNIGHT_LEG_SIZE, candidate=abs(x))
         if x_validation.is_failure:

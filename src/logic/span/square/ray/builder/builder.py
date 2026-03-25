@@ -1,7 +1,7 @@
-# src/logic/span/square/ray/builder/exception.py
+# src/logic/span/square/ray/build/exception.py
 
 """
-Module: logic.span.square.ray.builder.builder
+Module: logic.span.square.ray.build.build
 Author: Banji Lawal
 Created: 2026-03-11
 version: 1.0.0

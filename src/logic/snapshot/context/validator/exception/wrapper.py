@@ -1,7 +1,7 @@
-# src/logic/snapshot/validator/exception/anchor.py
+# src/logic/snapshot/validation/exception/anchor.py
 
 """
-Module: logic.snapshot.validator.exception.base
+Module: logic.snapshot.validation.exception.base
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

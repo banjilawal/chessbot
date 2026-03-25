@@ -1,7 +1,7 @@
 # src/logic/battle_space/searcher/compute.py
 
 """
-Module: logic.battle_space.searcher.builder
+Module: logic.battle_space.searcher.build
 Author: Banji Lawal
 Created: 2025-10-27
 version: 1.0.0
@@ -28,7 +28,7 @@ class ProjectionSearchContextBuildProcess(BuildProcess[ProjectionSearchContext])
     @LoggingLevelRouter.monitor
     def execute (cls, id: Optional[int], name: Optional[str], coord: Optional[Coord]) -> BuildResult[ProjectionSearchContext]:
         """"""
-        method = "ProjectionSearchContextBuildProcess.builder"
+        method = "ProjectionSearchContextBuildProcess.build"
         try:
             params = [id, name, coord]
             param_count = sum(bool(p) for p in params)

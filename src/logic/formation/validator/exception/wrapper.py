@@ -1,7 +1,7 @@
-# src/logic/formation/validator/exception/work.py
+# src/logic/formation/validation/exception/work.py
 
 """
-Module: logic.formation.validator.exception.work
+Module: logic.formation.validation.exception.work
 Author: Banji Lawal
 Created: 2025-09-08
 Version: 1.0.0

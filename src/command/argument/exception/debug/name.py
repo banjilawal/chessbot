@@ -1,7 +1,7 @@
-# src/command/request/validator/exception/debug/identifier.py
+# src/command/request/validation/exception/debug/identifier.py
 
 """
-Module: command.request.validator.exception.debug.identifier
+Module: command.request.validation.exception.debug.identifier
 Author: Banji Lawal
 Created: 2026-02-24
 """

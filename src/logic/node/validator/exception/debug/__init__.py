@@ -1,7 +1,7 @@
-# src/logic/node/validator/exception/debug/__init__.py
+# src/logic/node/validation/exception/debug/__init__.py
 
 """
-Module: logic.node.validator.exception.debug/__init__
+Module: logic.node.validation.exception.debug/__init__
 Author: Banji Lawal
 Created: 2025-02-17
 version: 1.0.0

@@ -36,7 +36,7 @@ Both use cases do forward and reverse lookups unlike collider_candidates searche
 
 ### ARCHITECTURE FOR ENTITY DATA SERVICE:
 ````````````````````````````````````````
-    *   ContextService{
+    *   QueryService{
             EntityContext
             EntityContextBuilder,
             EntityContextValidator,
@@ -78,7 +78,7 @@ Both use cases do forward and reverse lookups unlike collider_candidates searche
         HashMember_EntityMapper
         ReverseHashLookup(
             EntityDataSet,
-            HashLookupProcess(EntityDataSet, entity.attribute, HashContextService.validator),
+            HashLookupProcess(EntityDataSet, entity.attribute, HashContextService.validation),
         ) --> SearchResult[List[Entity]]
     }
     .................................................................................

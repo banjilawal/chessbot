@@ -1,7 +1,7 @@
-# src/logic/coord/builder/exception/work.py
+# src/logic/coord/build/exception/work.py
 
 """
-Module: logic.coord.builder.exception.work
+Module: logic.coord.build.exception.work
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

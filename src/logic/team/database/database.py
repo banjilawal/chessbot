@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import List, Optional, cast
 
 from logic.schema import Schema
-from logic.team import Team, TeamContext, TeamContextService, TeamDatabaseException, TeamService, TeamStack
+from logic.team import Team, TeamContext, TeamQueryService, TeamDatabaseException, TeamService, TeamStack
 from logic.system import (
     DeletionResult, InsertionResult, LoggingLevelRouter, SearchResult, Database, id_emitter
 )
@@ -63,7 +63,7 @@ class TeamDatabase(Database[Team]):
         return self._stack_service.integrity_service
     
     @property
-    def context_service(self) -> TeamContextService:
+    def context_service(self) -> TeamQueryService:
         return self._stack_service.context_service
     
     @property
@@ -169,7 +169,7 @@ class TeamDatabase(Database[Team]):
         method = "TokenDatabase.search"
         
         # --- Handoff the search responsibility to _token_database_core. ---#
-        search_result = self._team_stack.context_service.finder.find(context=context)
+        search_result = self._team_stack.context_service.finder.route(context=context)
         
         # Handle the case that, the search is not completed.
         if search_result.is_failure:

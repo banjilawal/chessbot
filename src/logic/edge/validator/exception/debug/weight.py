@@ -1,7 +1,7 @@
-# src/logic/graph/square/validator/exception/debug/weight.py
+# src/logic/graph/square/validation/exception/debug/weight.py
 
 """
-Module: logic.graph.square.validator.exception.debug/weight
+Module: logic.graph.square.validation.exception.debug/weight
 Author: Banji Lawal
 Created: 2026-02-17
 version: 1.0.0

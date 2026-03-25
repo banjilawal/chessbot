@@ -55,7 +55,7 @@ class AgentStackService(StackService[PlayerAgent]):
             *   name (str): = SERVICE_NAME
             *   bag (List[Player]): = List[Player]
             *   service (AgentService): = AgentService()
-            *   context_service (PlayerContextService): = PlayerContextService()
+            *   context_service (PlayerQueryService): = PlayerQueryService()
 
         # RETURNS:
         None
@@ -84,16 +84,16 @@ class AgentStackService(StackService[PlayerAgent]):
     #     return cast(AgentService, self.data)
     #
     # @property
-    # def builder(self) -> AgentFactory:
+    # def build(self) -> AgentFactory:
     #     return cast(AgentFactory, self.service.item_builder)
     #
     # @property
-    # def validator(self) -> AgentValidator:
+    # def validation(self) -> AgentValidator:
     #     return cast(AgentValidator, self.service.item_validator)
     #
     # @property
-    # def context_service(self) -> PlayerContextService:
-    #     return cast(PlayerContextService, self.context_service)
+    # def context_service(self) -> PlayerQueryService:
+    #     return cast(PlayerQueryService, self.context_service)
     #
     # @LoggingLevelRouter.monitor
     # def push_item(self, item: Player) -> InsertionResult[Player]:
@@ -112,10 +112,10 @@ class AgentStackService(StackService[PlayerAgent]):
     #
     # @LoggingLevelRouter.monitor
     # def search(self, map: AgentContext) -> SearchResult[List[Player]]:
-    #     method = "AgentStackService.finder"
-    #     agent_context_service = cast(PlayerContextService, self.context_service)
+    #     method = "AgentStackService.route"
+    #     agent_context_service = cast(PlayerQueryService, self.context_service)
     #
-    #     return self.context_service.finder.find(
+    #     return self.context_service.route.find(
     #         collider_candidates=self.bag,
     #         map=map,
     #         context_validator=self.context_service.item_validator

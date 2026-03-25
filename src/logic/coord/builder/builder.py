@@ -1,7 +1,7 @@
-# src/logic/coord/builder/exception.py
+# src/logic/coord/build/exception.py
 
 """
-Module: logic.coord.builder.builder
+Module: logic.coord.build.build
 Author: Banji Lawal
 Created: 2025-08-24
 version: 1.0.0
@@ -44,7 +44,7 @@ class CoordBuildProcess(BuildProcess[Coord]):
     ) -> BuildResult[Coord]:
         """
         # ACTION:
-            1.  Use the validator to verify the row and column are within the bounds of the Board's 2D array.
+            1.  Use the validation to verify the row and column are within the bounds of the Board's 2D array.
             2.  If any check fails snd the exception in the BuildResult. Else, create a Coord object and send in the
                 BuildResult.
         # PARAMETERS:
@@ -58,7 +58,7 @@ class CoordBuildProcess(BuildProcess[Coord]):
         Raises:
             *   CoordBuildException
         """
-        method = "CoordBuildProcess.builder"
+        method = "CoordBuildProcess.build"
         
         # Handle the case that, the row param is not certified safe
         row_validation = number_validator.execute(candidate=row, floor=0, ceiling=BOARD_DIMENSION - 1)

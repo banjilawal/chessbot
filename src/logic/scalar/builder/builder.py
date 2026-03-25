@@ -1,7 +1,7 @@
-# src/logic/scalar/builder/exception.py
+# src/logic/scalar/build/exception.py
 
 """
-Module: logic.scalar.builder.builder
+Module: logic.scalar.build.build
 Author: Banji Lawal
 Created: 2025-08-25
 version: 1.0.0
@@ -59,7 +59,7 @@ class ScalarBuildProcess(BuildProcess[Scalar]):
         Raises:
             * ScalarBuildException
         """
-        method = "ScalarBuildProcess.builder"
+        method = "ScalarBuildProcess.build"
         
         try:
             validation = scalar_validator.validate_value(value)

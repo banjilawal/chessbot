@@ -1,7 +1,7 @@
 # src/logic/neighbor/exception.py
 
 """
-Module: logic.graph.neighbor.builder
+Module: logic.graph.neighbor.build
 Author: Banji Lawal
 Created: 2025-111-03
 version: 1.0.0
@@ -23,7 +23,7 @@ class VisitationEventBuildProcess(BuildProcess[VisitationEvent]):
     @LoggingLevelRouter.monitor
     def execute(cls, id: int, domain, domain_visitor: Piece) -> BuildResult[VisitationEvent]:
         """"""
-        method = "VisitationBuilder.builder"
+        method = "VisitationBuilder.build"
         
         try:
             id_validation = IdValidationProcess.execute(id)

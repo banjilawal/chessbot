@@ -1,7 +1,7 @@
-# src/logic/player/validator/validator.py
+# src/logic/player/validation/validation.py
 
 """
-Module: logic.player.validator
+Module: logic.player.validation
 Author: Banji Lawal
 Created: 2025-08-31
 version: 1.0.0
