@@ -16,7 +16,7 @@ from logic.square import (
     Square, SquareBuildException, SquareCollisionAnalysis
 )
 from logic.system import (
-    BuildProcess, BuildResult, IdFactory, IdentityService, InsertionResult, InvariantBreachException, LoggingLevelRouter,
+    BuildProcess, BuildResult, IdFactory, IdentityService, BuildResult, InvariantBreachException, LoggingLevelRouter,
     ValidationResult,
 )
 
@@ -42,7 +42,7 @@ class SquareBuildProcess(BuildProcess[Square]):
                 board_service: BoardService,
                 coord_service: CoordService,
                 identity_service: IdentityService,
-                square_collision_detector: SquareCollisionAnalysis),
+                square_collision_analyzer: SquareCollisionAnalysis),
             ) -> BuildResult[Square]
 
      Super Class:
@@ -60,7 +60,7 @@ class SquareBuildProcess(BuildProcess[Square]):
             board_service: BoardService = BoardService(),
             coord_service: CoordService = CoordService(),
             identity_service: IdentityService = IdentityService(),
-            square_collision_detector: SquareCollisionAnalysis = SquareCollisionAnalysis(),
+            square_collision_analyzer: SquareCollisionAnalysis = SquareCollisionAnalysis(),
     ) -> BuildResult[Square]:
         """
         Action:
@@ -98,52 +98,16 @@ class SquareBuildProcess(BuildProcess[Square]):
             board_service=board_service,
             coord_service=coord_service,
             identity_service=identity_service,
+            collision_analyzer=square_collision_analyzer,
         )
         if build_param_validation_result.is_failure:
-
-            # Return the exception chain on failure.
-            return BuildResult.failure(
-                SquareBuildException(
-                    
-                    msg=f"{method}: {SquareBuildException.MSG}",
-                    ex=
-                )
-            )
-        # Handle the case that, the square's attributes have already been used.
-        collision_detection_result = square_collision_detector.execute(
-            id=id,
-            name=name,
-            coord=coord,
-            board=board
-        )
-        if collision_detection_result.is_failure:
-            # Return the exception chain on failure.
-            return BuildResult.failure(
-                SquareBuildException(
-                    msg=f"{method}: {SquareBuildException.MSG}",
-                    ex=collision_detection_result.exception
-                )
-            )
-        # --- Create the Square. ---#
-        square = Square(id=id, name=name, coord=coord, board=board)
-        
-        # Ensure the square and board have a bidirectional relationship by handling insertion.
-        insertion_result = cls._build_square_board_relationship(
-            square=square,
+            return build_param_validation_result
+        # --- Forward the result of binding the square to the client. ---#
+        return cls._bind_square_board(
             board=board,
-            board_service=board_service
+            board_service=board_service,
+            square=Square(id=id, name=name, coord=coord, board=board),
         )
-        # Handle the case that, the insertion was not successful.
-        if insertion_result.is_failure:
-            # Return the exception chain on failure.
-            return BuildResult.failure(
-                SquareBuildException(
-                    msg=f"{method}: {SquareBuildException.MSG}",
-                    ex=insertion_result.exception
-                )
-            )
-        # --- Send the success result to the client. ---#
-        return BuildResult.success(square)
     
     @classmethod
     def _run_build_param_checks(
@@ -152,29 +116,39 @@ class SquareBuildProcess(BuildProcess[Square]):
             name: str,
             coord: Coord,
             board: Board,
-            board_service: BoardService = BoardService(),
-            coord_service: CoordService = CoordService(),
-            identity_service: IdentityService = IdentityService(),
-    ) -> BuildResult[int]:
+            board_service: BoardService,
+            coord_service: CoordService,
+            identity_service: IdentityService,
+            collision_analyzer: SquareCollisionAnalysis,
+    ) -> BuildResult[Square]:
         """
-        # ACTION:
-            1.  If either the id, name, coord, or board are is not certified as safe by their validators, return the
-                validation exception to the caller. Otherwise, return the number of attributes in the success result.
-        # PARAMETERS:
-            *   id (int)
-            *   name (str)
-            *   cord (Coord)
-            *   board (Board)
-            *   board_service (BoardService)
-            *   coord_service (CoordService)
-            *   identity_service (IdentityService)
-        # RETURNS:
-            *   ValidationResult[int] containing either:
-                    - On failure: Exception.
-                    - On success: Square in the payload.
+        Verify that, the square's build params are safe. A BuildResult is returned
+        instead of a Validation to avoid visual clutter and let the param_check runner
+        handle the result.
+        
+       Action:
+            1.  Send an exception chain in the BuildResult if either:
+                    -   id
+                    -   name
+                    -   coord
+                    -   board
+                fails its validation checks.
+            2.  Otherwise, send the success result of a null square.
+        Args:
+            id: int
+            name: str
+            coord: Coord
+            board: Board
+            board_service: BoardService
+            coord_service: CoordService
+            identity_service: IdentityService
+            collision_analyzer: SquareCollisionAnalysis
+        Returns:
+            BuildResult[Square]
         Raises:
+            SquareBuildException
         """
-        method = "SquareBuildProcess._validate_build_params"
+        method = f"{cls.__name__}_run_build_param_checks"
         
         # Handle the case that, either id or name are not certified safe.
         identity_validation = identity_service.validate_identity(
@@ -224,38 +198,56 @@ class SquareBuildProcess(BuildProcess[Square]):
                     ex=board_validation.exception,
                 )
             )
+        # Handle the case that, the square's attributes have already been used.
+        collision_detection_result = collision_analyzer.execute(
+            id=id,
+            name=name,
+            coord=coord,
+            board=board
+        )
+        if collision_detection_result.is_failure:
+            # Return the exception chain on failure.
+            return BuildResult.failure(
+                SquareBuildException(
+                    mthd=method,
+                    title=cls.__name__,
+                    op=SquareBuildException.OP,
+                    msg=SquareBuildException.MSG,
+                    err_code=SquareBuildException.ERR_CODE,
+                    rslt_type=SquareBuildException.RSLT_TYPE,
+                    ex=collision_detection_result.exception,
+                )
+            )
         # --- Forward the work product to the caller. ---#
-        return BuildResult.success(1)
+        return BuildResult.success(None)
     
     @classmethod
-    def _build_square_board_relationship(
+    def _bind_square_board(
             cls,
-            square: Square,
             board: Board,
+            square: Square,
             board_service: BoardService,
-    ) -> InsertionResult[bool]:
+    ) -> BuildResult[Square]:
         """
-        # ACTION:
-            1.  Conduct an analysis to find out if the square and board have a bidirectional relationship with
-                each other. If the relation_analyzer aborts return the exception in the InsertionResult.
-            2.  If the analysis reveals:
-                    *   There is no relation between them, send the failure result.
-                    *   They have a bidirectional relation, send the success result.
-                    *   The square has not registered with the board use board_service for a square insertion.
-                        return the service operation's result.
-       # PARAMETERS:
-            *   square (Square)
-            *   board (Board)
-            *   board_service (BoardService)
-        # RETURNS:
-            *   InsertionResult[bool] containing either:
-                    - On failure: Exception.
-                    - On success: bool.
+        Establish the bidirectional relationship between the square and its board
+        to finalize the build.
+        
+        Action:
+            1.  If the square and board are not related send an exception chain in teh BuildResult.
+            2.  For the case that
+                    -   The square and board are not related, send an exception chain.
+                    -   The square has not registered, create the registration.
+            3.  When the registration exists send the success result.
+        Args:
+            board: Board
+            square: Square
+            board_service: BoardService
+        Returns:
+            BuildResult[Square]
         Raises:
         """
-        method = "SquareBuildProcess._build_square_board_relationship"
+        method = f"{cls.__name__}.bind_square_board"
         
-        # If the item does not have  a fully bidirectional relationship with the board exception the registration.
         relation_analysis = board_service.square_relation_analyzer.execute(
             candidate_primary=board,
             candidate_satellite=square
@@ -263,27 +255,49 @@ class SquareBuildProcess(BuildProcess[Square]):
         # Handle the case that, the relation analysis was not completed.
         if relation_analysis.is_failure:
             # Return the exception chain on failure.
-            return InsertionResult.failure(relation_analysis.exception)
-        
-        # Handle the case that, the board and item are not related.
-        if relation_analysis.not_related:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                InvariantBreachException(msg=f"{method}:{InvariantBreachException.MSG}",)
+            return BuildResult.failure(
+                SquareBuildException(
+                    mthd=method,
+                    title=cls.__name__,
+                    op=SquareBuildException.OP,
+                    msg=SquareBuildException.MSG,
+                    err_code=SquareBuildException.ERR_CODE,
+                    rslt_type=SquareBuildException.RSLT_TYPE,
+                    ex=relation_analysis.exception,
+                )
             )
-        
-        # Handle the case that, the board and item are have a fully bidirectional relationship.
-        if relation_analysis.is_bidirectional:
+        # Handle the case that, the board and item are not related.
+        if relation_analysis.not_related or relation_analysis.stale_link_exists:
             # Return the exception chain on failure.
-            return InsertionResult.success()
-        
-        # --- Last relationship state is a partial binding. This is the only case for registering the Square ---#
-        
-        # Handle the case that, the insertion fails.
-        insertion_result = board.squares.insert_square(square=square)
-        if insertion_result.is_failure:
-            # On failure return the exception.
-            return InsertionResult.failure(insertion_result.exception)
-        
-        # --- On insertion success extract the insertion payload and send in the BuildResult. ---#
-        return BuildResult.success(cast(Square, insertion_result.payload))
+            return BuildResult.failure(
+                SquareBuildException(
+                    mthd=method,
+                    title=cls.__name__,
+                    op=SquareBuildException.OP,
+                    msg=SquareBuildException.MSG,
+                    err_code=SquareBuildException.ERR_CODE,
+                    rslt_type=SquareBuildException.RSLT_TYPE,
+                    ex=InvariantBreachException(
+                        msg=InvariantBreachException.MSG,
+                        err_code=InvariantBreachException.ERR_CODE,
+                    ),
+                )
+            )
+        # Handle the case that, the square has not registered with the board.
+        if relation_analysis.not_registered:
+            insertion_result = board.squares.insert_square(square=square)
+            if insertion_result.is_failure:
+                # Return the exception chain on failure.
+                return BuildResult.failure(
+                    SquareBuildException(
+                        mthd=method,
+                        title=cls.__name__,
+                        op=SquareBuildException.OP,
+                        msg=SquareBuildException.MSG,
+                        err_code=SquareBuildException.ERR_CODE,
+                        rslt_type=SquareBuildException.RSLT_TYPE,
+                        ex=insertion_result.exception,
+                    )
+                )
+        # --- Forward the work product to the client. ---#
+        return BuildResult.success(square)
