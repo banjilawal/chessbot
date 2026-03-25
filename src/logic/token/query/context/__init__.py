@@ -1,7 +1,7 @@
-# src/logic/token/qery/context/__init__.py
+# src/logic/token/qery/query/__init__.py
 
 """
-Module: logic.token.query.context.__init__
+Module: logic.token.query.query.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

@@ -36,7 +36,7 @@ class QueryService(Service[T]):
         context_service: IntegrityService[Context[T]]
         
     Provides:
-        -   execute(dataset: List[T], context: Context[T]) -> SearchResult[List[T]]
+        -   execute(dataset: List[T], query: Context[T]) -> SearchResult[List[T]]
         
     Super Class:
         QueryService

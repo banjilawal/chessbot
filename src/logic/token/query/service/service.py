@@ -31,7 +31,7 @@ class TokenQueryService(QueryService[Token]):
         context_service: IntegrityService[Context[T]]
 
     Provides:
-        -   execute(dataset: List[T], context: Context[T]) -> SearchResult[List[T]]
+        -   execute(dataset: List[T], query: Context[T]) -> SearchResult[List[T]]
 
     Super Class:
         Service
@@ -134,7 +134,7 @@ class TokenQueryService(QueryService[Token]):
     ) -> SearchResult[List[Token]]:
         method = f"{self.__class__.__name__}._run_safety_checks"
         
-        # Handle the case that, the context is incorrect
+        # Handle the case that, the query is incorrect
         context_validation_result = self._context_service.validation.execute(context)
         if context_validation_result.is_failure:
             # Return the exception chain on failure.

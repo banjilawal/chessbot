@@ -13,9 +13,7 @@ from typing import cast
 from logic.board import Board, BoardService
 from logic.coord import Coord, CoordService
 from logic.square import (
-    AddingDuplicateSquareException, Square, SquareBuildException, SquareCollisionAnalysis, SquareContext,
-    SquareCoordCollisionException,
-    SquareIdCollisionException, SquareNameCollisionException
+    Square, SquareBuildException, SquareCollisionAnalysis
 )
 from logic.system import (
     BuildProcess, BuildResult, IdFactory, IdentityService, InsertionResult, InvariantBreachException, LoggingLevelRouter,
@@ -24,18 +22,31 @@ from logic.system import (
 
 class SquareBuildProcess(BuildProcess[Square]):
     """
-     Role:BuildProcess, Data Integrity And Reliability Guarantor
+     Role:
+        -   Worker,
+        -   Integrity Management
 
      Responsibilities:
-         1.  Produce Square instances whose integrity and reliability are guaranteed.
+         1.  Produce Square instances whose integrity is guaranteed at creation.
          2.  Ensure params for Square creation have met the application's safety contract.
          3.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-    Attributes:
+     Attributes:
+
     Provides:
-    
-    Super Class:
-        BuildProcess
+        -   def execute(
+                name: str,
+                board: Board,
+                coord: Coord,
+                id: int = IdFactory,
+                board_service: BoardService,
+                coord_service: CoordService,
+                identity_service: IdentityService,
+                square_collision_detector: SquareCollisionAnalysis),
+            ) -> BuildResult[Square]
+
+     Super Class:
+         BuildProcess
     """
     
     @classmethod
@@ -79,7 +90,7 @@ class SquareBuildProcess(BuildProcess[Square]):
         method = f"{cls.__class__.__name__}.build"
         
         # Handle the case that, a build param fails is not certified as safe.
-        build_params_validation_result = cls._validate_build_params(
+        build_param_validation_result = cls._run_build_param_checks(
             id=id,
             name=name,
             coord=coord,
@@ -88,16 +99,18 @@ class SquareBuildProcess(BuildProcess[Square]):
             coord_service=coord_service,
             identity_service=identity_service,
         )
-        if build_params_validation_result.is_failure:
+        if build_param_validation_result.is_failure:
+
             # Return the exception chain on failure.
             return BuildResult.failure(
                 SquareBuildException(
+                    
                     msg=f"{method}: {SquareBuildException.MSG}",
-                    ex=build_params_validation_result.exception
+                    ex=
                 )
             )
         # Handle the case that, the square's attributes have already been used.
-        collision_detection_result = square_collision_detector.detect_attribute_collisions(
+        collision_detection_result = square_collision_detector.execute(
             id=id,
             name=name,
             coord=coord,
@@ -133,7 +146,7 @@ class SquareBuildProcess(BuildProcess[Square]):
         return BuildResult.success(square)
     
     @classmethod
-    def _validate_build_params(
+    def _run_build_param_checks(
             cls,
             id: int,
             name: str,
@@ -142,7 +155,7 @@ class SquareBuildProcess(BuildProcess[Square]):
             board_service: BoardService = BoardService(),
             coord_service: CoordService = CoordService(),
             identity_service: IdentityService = IdentityService(),
-    ) -> ValidationResult[int]:
+    ) -> BuildResult[int]:
         """
         # ACTION:
             1.  If either the id, name, coord, or board are is not certified as safe by their validators, return the
@@ -170,22 +183,49 @@ class SquareBuildProcess(BuildProcess[Square]):
         )
         if identity_validation.is_failure:
             # Return the exception chain on failure.
-            return ValidationResult.failure(identity_validation.exception)
-        
+            return BuildResult.failure(
+                SquareBuildException(
+                    mthd=method,
+                    title=cls.__name__,
+                    op=SquareBuildException.OP,
+                    msg=SquareBuildException.MSG,
+                    err_code=SquareBuildException.ERR_CODE,
+                    rslt_type=SquareBuildException.RSLT_TYPE,
+                    ex=identity_validation.exception,
+                )
+            )
         # Handle the case that, the coord is not certified safe.
         coord_validation = coord_service.validation.execute(coord)
         if coord_validation.is_failure:
             # Return the exception chain on failure.
-            return ValidationResult.failure(coord_validation.exception)
-        
+            return BuildResult.failure(
+                SquareBuildException(
+                    mthd=method,
+                    title=cls.__name__,
+                    op=SquareBuildException.OP,
+                    msg=SquareBuildException.MSG,
+                    err_code=SquareBuildException.ERR_CODE,
+                    rslt_type=SquareBuildException.RSLT_TYPE,
+                    ex=coord_validation.exception,
+                )
+            )
         # Handle the case that, the board is not certified safe.
         board_validation = board_service.validation.execute(board)
         if board_validation.is_failure:
             # Return the exception chain on failure.
-            return ValidationResult.failure(board_validation.exception)
-    
-        # --- Send the success result indicating no attribute conditions. ---#
-        return ValidationResult.success(3)
+            return BuildResult.failure(
+                SquareBuildException(
+                    mthd=method,
+                    title=cls.__name__,
+                    op=SquareBuildException.OP,
+                    msg=SquareBuildException.MSG,
+                    err_code=SquareBuildException.ERR_CODE,
+                    rslt_type=SquareBuildException.RSLT_TYPE,
+                    ex=board_validation.exception,
+                )
+            )
+        # --- Forward the work product to the caller. ---#
+        return BuildResult.success(1)
     
     @classmethod
     def _build_square_board_relationship(

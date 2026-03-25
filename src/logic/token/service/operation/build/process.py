@@ -13,28 +13,36 @@ from logic.persona import Persona
 from logic.team import Team, TeamValidationProcess
 from logic.rank import RankService
 from logic.formation import Formation, FormationService
-from logic.system import BuildResult, BuildProcess, IdentityService, LoggingLevelRouter
+from logic.system import BuildResult, BuildProcess, IdFactory, IdentityService, LoggingLevelRouter
 from logic.token import CombatantToken, KingToken, PawnToken, TokenBuildException, Token
 
 class TokenBuild(BuildProcess[Token]):
     """
-    Role:Build, Data Integrity Guarantor
+     Role:
+        -   Worker, 
+        -   Integrity Management
 
-    Responsibilities:
-    1.  Produce Token instances whose integrity is guaranteed at creation.
-    2.  Manage construction of Token instances that can be used safely by the client.
-    3.  Ensure params for Token creation have met the application's safety contract.
-    4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
+     Responsibilities:
+         1.  Produce Token instances whose integrity is guaranteed at creation.
+         2.  Ensure params for Token creation have met the application's safety contract.
+         3.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-    Super Class:
-        *   BuildProcess
+     Attributes:
 
     Provides:
+        -   def execute(
+                    owner: Team,
+                    id: int = IdFactory,
+                    formation: Formation,
+                    rank_service: RankService,
+                    identity_service: IdentityService,
+                    formation_service: FormationService,
+                    team_validator: TeamValidationProcess,
+            ) -> BuildResult[Token]
 
-
-    # INHERITED ATTRIBUTES:
-    None
-    """
+     Super Class:
+         BuildProcess
+     """
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -43,10 +51,10 @@ class TokenBuild(BuildProcess[Token]):
             owner: Team,
             formation: Formation,
             rank_service: RankService = RankService(),
-            team_validator: TeamValidationProcess = TeamValidationProcess(),
-            id: int = IdBuild.next_id(class_name="Token"),
+            id: int = IdFactory.next_id(class_name="Token"),
             identity_service: IdentityService = IdentityService(),
             formation_service: FormationService = FormationService(),
+            team_validator: TeamValidationProcess = TeamValidationProcess(),
     ) -> BuildResult[Token]:
         """
         Action:
@@ -64,6 +72,7 @@ class TokenBuild(BuildProcess[Token]):
             rank_service: RankService
             identity_service: IdentityService
             formation_service: FormationService
+            team_validator: TeamValidationProcess
         Returns:
             BuildResult[Token]
         Raises:

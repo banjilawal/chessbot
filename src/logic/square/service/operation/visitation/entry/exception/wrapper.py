@@ -33,6 +33,7 @@ class SquareEntryException(UpdateException):
         op: Optional[str]
         msg: Optional[str]
         mthd: Optional[str]
+        title: Optional[str]
         ex: Optional[Exception]
         err_code: Optional[str]
         rslt_type: Optional[str]
@@ -53,6 +54,7 @@ class SquareEntryException(UpdateException):
             op: Optional[str] = None,
             msg: Optional[str] = None,
             mthd: Optional[str] = None,
+            title: Optional[str] = None,
             err_code: Optional[str] = None,
             ex: Optional[Exception] = None,
             rslt_type: Optional[str] = None,
@@ -62,6 +64,7 @@ class SquareEntryException(UpdateException):
             op: Optional[str]
             msg: Optional[str]
             mthd: Optional[str]
+            title: Optional[str]
             ex: Optional[Exception]
             err_code: Optional[str]
             rslt_type: Optional[str]
@@ -70,12 +73,12 @@ class SquareEntryException(UpdateException):
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
         rslt_type = rslt_type or self.RSLT_TYPE
-        
         super().__init__(
             ex=ex,
             op=op,
             msg=msg,
             mthd=mthd,
+            title=title,
             err_code=err_code,
             rslt_type=rslt_type,
         )

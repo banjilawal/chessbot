@@ -1,7 +1,7 @@
-# src/logic/token/qery/context/validation/__init__.py
+# src/logic/token/qery/query/validation/__init__.py
 
 """
-Module: logic.token.query.context.validation.__init__
+Module: logic.token.query.query.validation.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

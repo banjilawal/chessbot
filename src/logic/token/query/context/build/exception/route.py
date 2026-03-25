@@ -1,7 +1,7 @@
 # src/logic/token/_context/build/exception/route.py
 
 """
-Module: logic.token.query.context.build.exception.route
+Module: logic.token.query.query.build.exception.route
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

@@ -1,0 +1,17 @@
+# src/logic/coord/query/route/exception/__init__.py
+"""
+Module: logic.coord.query.route.exception.__init__
+Author: Banji Lawal
+Created: 2025-10-06
+version: 1.0.0
+"""
+
+# =========== COORD.CONTEXT.FINDER.EXCEPTION PACKAGE CONTENTS ===========#
+
+# Packages
+None
+
+# Modules
+from .exist import CoordNotFoundException
+from .route import CoordSearchRouteException
+from .work import CoordSearchException

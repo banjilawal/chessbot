@@ -1,7 +1,7 @@
-# src/logic/tokenContext/query/context/service/service.py
+# src/logic/tokenContext/query/query/service/service.py
 
 """
-Module: logic.tokenContext.query.context.service.service
+Module: logic.tokenContext.query.query.service.service
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
