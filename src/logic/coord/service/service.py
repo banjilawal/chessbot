@@ -6,6 +6,8 @@ Author: Banji Lawal
 Created: 2025-11-12
 version: 1.0.0
 """
+
+from __future__ import annotations
 from math import sqrt
 from typing import cast
 

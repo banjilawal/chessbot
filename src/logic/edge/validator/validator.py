@@ -60,7 +60,7 @@ class EdgeValidationProcess(ValidationProcess[Edge]):
             *   candidate (Any)
             *   node_validator (NodeValidationProcess)
             *   identity_service (IdentityService)
-            *   number_validator (NumberValidationProcess)
+            *   number_validation (NumberValidationProcess)
         # RETURNS:
             *   ValidationResult[Edge] containing either:
                     - On failure: Exception.

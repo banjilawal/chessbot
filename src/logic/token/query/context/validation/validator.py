@@ -69,7 +69,7 @@ class TokenContextValidationProcess(ValidationProcess[TokenContext]):
             *   coord_service (CoordService)
             *   color_validator (ColorValidator)
             *   identity_service (IdentityService)
-            *   number_validator (NotNegativeNumberValidator)
+            *   number_validation (NotNegativeNumberValidator)
         # RETURNS:
             *   ValidationResult[TeamContext] containing either:
                     - On failure: Exception.

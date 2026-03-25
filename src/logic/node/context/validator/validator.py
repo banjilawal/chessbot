@@ -59,7 +59,7 @@ class NodeContextValidationProcess(ValidationProcess[NodeContext]):
             *   discovery_status_service (Discovery_StatusService)
             *   square_validator (SquareService)
             *   node_validator (NodeValidationProcess)
-            *   number_validator (NumberValidationProcess):
+            *   number_validation (NumberValidationProcess):
         # RETURNS:
             *   ValidationResult[NodeContext] containing either:
                     - On failure: Exception.

@@ -88,7 +88,7 @@ class EdgeService(IntegrityService[Edge]):
         # PARAMETERS:
             *   edge (Edge)
             *   heuristic (int)
-            *   number_validator (NUmberValidator)
+            *   number_validation (NUmberValidator)
         # RETURN:
             *   UpdateResult[Edge]
         Raises:
@@ -153,7 +153,7 @@ class EdgeService(IntegrityService[Edge]):
         # PARAMETERS:
             *   edge (Edge)
             *   weight (int)
-            *   number_validator (NUmberValidator)
+            *   number_validation (NUmberValidator)
         # RETURN:
             *   UpdateResult[Edge]
         Raises:

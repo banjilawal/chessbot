@@ -61,7 +61,7 @@ class PersonaKeyBuildProcess(BuildProcess[PersonaKey]):
             *   These Parameters must be provided:
                     *   color_validator (GameColorValidationProcess)
                     *   identity_service (IdentityService)
-                    *   number_validator (NumberValidationProcess)
+                    *   number_validation (NumberValidationProcess)
 
         # RETURNS:
             *   BuildResult[PersonaKey] containing either:

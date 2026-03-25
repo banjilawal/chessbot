@@ -7,9 +7,11 @@ Created: 2025-08-12
 version: 1.0.0
 """
 
+from __future__ import annotations
 from typing import cast, Any
 
-from logic.coord import Coord, CoordValidationException, NullCoordException
+from logic.coord import Coord, NullCoordException
+from logic.coord.service.operation.validation.exception.wrapper import CoordValidationException
 from logic.system import NUMBER_OF_ROWS, ValidationProcess, ValidationResult, LoggingLevelRouter, NumberValidationProcess
 
 class CoordValidationProcess(ValidationProcess[Coord]):
@@ -35,35 +37,41 @@ class CoordValidationProcess(ValidationProcess[Coord]):
     def execute(
             cls,
             candidate: Any,
-            number_validator: NumberValidationProcess = NumberValidationProcess(),
+            number_validation: NumberValidationProcess = NumberValidationProcess(),
     ) -> ValidationResult[Coord]:
         """
-        # ACTION:
+        Action:
             1.  If the candidate fails existence or type checks send an exception chain in the ValidationResult.
                 Else, cast to Coord instance coord.
             2.  If either coord.row or coord.column are not ints bound in the range [0, BOARD_DIMENSION] send an
                 exception chain in the ValidationResult. Else, send coord in the ValidationResult.
-        # PARAMETERS:
-            *   candidate (Any)
-            *   validation (NNumberInBoundsValidator)
-        # RETURNS:
-            *   ValidationResult[Coord] containing either:
-                    - On failure: Exception.
-                    - On success: Coord in the payload.
+        Args:
+            candidate: Any
+            number_validation: NumberValidationProcess
+        Returns:
+            ValidationResult[Coord]
         Raises:
-            * TypeError
-            * NullCoordException
-            * CoordValidationException
+            TypeError
+            NullCoordException
+            CoordValidationException
         """
-        method = "CoordValidationProcess.validate"
+        method = f"{cls.__name__}.execute"
         
         # Handle the case that, the candidate does not exist.
         if candidate is None:
             # Return the exception on failure.
             return ValidationResult.failure(
                 CoordValidationException(
-                    msg=f"{method}: {CoordValidationException.MSG}",
-                    ex=NullCoordException(f"{method}: {NullCoordException.MSG}")
+                    mthd=method,
+                    title=cls.__name__,
+                    op=CoordValidationException.OP,
+                    msg=CoordValidationException.MSG,
+                    err_code=CoordValidationException.ERR_CODE,
+                    rslt_type=CoordValidationException.RSLT_TYPE,
+                    ex=NullCoordException(
+                        msg=NullCoordException.MSG,
+                        err_code=NullCoordException.ERR_CODE,
+                    )
                 )
             )
         # Handle the case that, the candidate is the wrong type.
@@ -71,33 +79,38 @@ class CoordValidationProcess(ValidationProcess[Coord]):
             # Return the exception on failure.
             return ValidationResult.failure(
                 CoordValidationException(
-                    msg=f"{method}: {CoordValidationException.MSG}",
-                    ex=TypeError(f"{method}: Expected a Coord, got {type(candidate).__name__} instead.")
+                    mthd=method,
+                    title=cls.__name__,
+                    op=CoordValidationException.OP,
+                    msg=CoordValidationException.MSG,
+                    err_code=CoordValidationException.ERR_CODE,
+                    rslt_type=CoordValidationException.RSLT_TYPE,
+                    ex=TypeError(
+                        f"Expected a Coord, got {type(candidate).__name__} instead."
+                    )
                 )
             )
-        
         # --- Cast candidate to a Coord for additional tests ---#
         coord = cast(Coord, candidate)
         
-        # Handle the case that, coord.row is not an int between [0-7] inclusive.
-        row_validation = number_validator.execute(floor=0, ceiling=NUMBER_OF_ROWS, candidate=coord.row)
-        if row_validation.is_failure:
+        # Handle the either the row or column are not between [0-7] inclusive.
+        for attribute in [coord.row, coord.column]:
+            validate_result = number_validation.execute(
+                ceiling=NUMBER_OF_ROWS,
+                candidate=attribute,
+                floor=0,
+            )
             # Return the exception on failure.
             return ValidationResult.failure(
                 CoordValidationException(
-                    msg=f"{method}: {CoordValidationException.MSG}",
-                    ex=row_validation.exception
+                    mthd=method,
+                    title=cls.__name__,
+                    op=CoordValidationException.OP,
+                    msg=CoordValidationException.MSG,
+                    err_code=CoordValidationException.ERR_CODE,
+                    rslt_type=CoordValidationException.RSLT_TYPE,
+                    ex=validate_result.exception
                 )
             )
-        # Handle the case that, coord.column is not an int between [0-7] inclusive.
-        column_validation = number_validator.execute(floor=0, ceiling=NUMBER_OF_ROWS, candidate=coord.column)
-        if row_validation.is_failure:
-            # Return the exception on failure.
-            return ValidationResult.failure(
-                CoordValidationException(
-                    msg=f"{method}: {CoordValidationException.MSG}",
-                    ex=column_validation.exception
-                )
-            )
-        # Return the Coord if integrity checks are passed.
-        return ValidationResult.success(payload=coord)
+        # --- Cast candidate to a Coord for additional tests ---#
+        return ValidationResult.success(oord)

@@ -67,7 +67,7 @@ class NodeContextBuildProcess(BuildProcess[NodeContext]):
                 *   predecessor_service (PredecessorService)
                 *   priority_service (PriorityService)
                 *   square_validator (SquareService)
-                *   number_validator (IdentityService)
+                *   number_validation (IdentityService)
             # RETURNS:
                 *   BuildResult[NodeContext] containing either:
                         - On failure: Exception.

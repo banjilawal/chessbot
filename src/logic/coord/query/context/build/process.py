@@ -52,7 +52,7 @@ class CoordContextBuildProcess(BuildProcess[CoordContext]):
                 *   row (Optional[int])
                 *   column (Optional[int])
             This parameter is Required:
-                *   number_validator (NumberValidationProcess)
+                *   number_validation (NumberValidationProcess)
         # RETURNS:
             *   BuildResult[CoordContext] containing either:
                     - On failure: Exception.

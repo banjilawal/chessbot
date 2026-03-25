@@ -53,7 +53,7 @@ class NodeValidationProcess(ValidationProcess[Node]):
             *   candidate (Any)
             *   node_validator (NodeValidationProcess)
             *   identity_service (IdentityService)
-            *   number_validator (NumberValidationProcess)
+            *   number_validation (NumberValidationProcess)
         # RETURNS:
             *   ValidationResult[] containing either:
                     - On failure: Exception.

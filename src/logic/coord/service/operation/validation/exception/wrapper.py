@@ -20,64 +20,62 @@ from logic.system import ValidationException
 # ======================# COORD_VALIDATION_FAILURE #======================#
 class CoordValidationException(ValidationException):
     """
-    Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
-
+    Role:
+        -   Worker Method Identification
+        -   Exception Chain Layer 1,
+        -   Exception Messaging
+    
     Responsibilities:
-    1.  Identify the CoordValidationProcess method where the exception failed.
-
-    Super Class:
-        *   ValidationException
-
-    Provides:
-
-    # LOCAL ATTRIBUTES:
-        *   op (Optional[str])
-        *   rslt_type (Optional[str])
-
-    # INHERITED ATTRIBUTES:
-        *   See ValidationException class for inherited attributes.
-
+        1.  Indicate a Coord validation check was not passed.
+        2.  Identify the ValidationProcess method where the failure occurred.
+    
     Attributes:
-        *   err_code (str)
-        *   msg (str)
-        *   ex (Optional[Exception])
-        *   mthd (Optional[str])
-        *   op (Optional[str])
-        *   rslt_type (Optional[str])
-
-    # LOCAL METHODS:
-   None
-
-    # INHERITED METHODS:
-        *   See ValidationException class for inherited methods.
+        op: Optional[str]
+        msg: Optional[str]
+        mthd: Optional[str]
+        title: Optional[str]
+        ex: Optional[Exception]
+        err_code: Optional[str]
+        rslt_type: Optional[str]
+    
+    Provides:
+    
+    Super Class:
+        OperationException
     """
     ERR_CODE = "COORD_VALIDATION_FAILURE"
     MSG = "Failure in CoordValidationProcess method."
-    OP = "Validation"
-    RSLT_TYPE = "ValidationResult"
-    
-    _op = Optional[str]
-    _rslt_type = Optional[str]
     
     def __init__(
             self,
-            err_code: Optional[str] = None,
-            msg: Optional[str] = None,
-            ex: Optional[Exception] = None,
-            mthd: Optional[str] = None,
             op: Optional[str] = None,
+            msg: Optional[str] = None,
+            mthd: Optional[str] = None,
+            title: Optional[str] = None,
+            err_code: Optional[str] = None,
+            ex: Optional[Exception] = None,
             rslt_type: Optional[str] = None,
     ):
+        """
+        Args:
+            op: Optional[str]
+            msg: Optional[str]
+            mthd: Optional[str]
+            title: Optional[str]
+            ex: Optional[Exception]
+            err_code: Optional[str]
+            rslt_type: Optional[str]
+        """
         op = op or self.OP
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
         rslt_type = rslt_type or self.RSLT_TYPE
-        
         super().__init__(
             ex=ex,
             op=op,
             msg=msg,
             mthd=mthd,
+            title=title,
             err_code=err_code,
             rslt_type=rslt_type,
         )

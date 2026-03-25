@@ -8,16 +8,12 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import cast
 
 from logic.board import Board, BoardService
 from logic.coord import Coord, CoordService
-from logic.square import (
-    Square, SquareBuildException, SquareCollisionAnalysis
-)
+from logic.square import Square, SquareBuildException, SquareCollisionAnalysis
 from logic.system import (
-    BuildProcess, BuildResult, IdFactory, IdentityService, BuildResult, InvariantBreachException, LoggingLevelRouter,
-    ValidationResult,
+    BuildProcess, IdFactory, IdentityService, BuildResult, InvariantBreachException, LoggingLevelRouter
 )
 
 class SquareBuildProcess(BuildProcess[Square]):
@@ -31,7 +27,7 @@ class SquareBuildProcess(BuildProcess[Square]):
          2.  Ensure params for Square creation have met the application's safety contract.
          3.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-     Attributes:
+    Attributes:
 
     Provides:
         -   def execute(
@@ -65,13 +61,12 @@ class SquareBuildProcess(BuildProcess[Square]):
         """
         Action:
             1.  Send an exception chain in the BuildResult if
-                    * Any build param fails is not certified as safe.
-                    * The square's attributes have already been used on the board.
+                    -   Any build param fails is not certified as safe.
+                    -   The square's attributes have already been used on the board.
             2.  Build the Square instance with the params.
             3.  Send an exception chain in the BuildResult if
                     * The square requires insertion into the board but the insertion fails.
             4.  Return the Square instance in the BuildResult.
-            
         Args:
             id: int
             name: str
@@ -80,9 +75,8 @@ class SquareBuildProcess(BuildProcess[Square]):
             coord_service: CoordService
             board_service: BoardService
             identity_service: IdentityService
-
         Returns:
-            ValidationResult[Square]
+            BuildResult[Square]
             
         Raises:
             SquareBuildException
@@ -233,11 +227,13 @@ class SquareBuildProcess(BuildProcess[Square]):
         to finalize the build.
         
         Action:
-            1.  If the square and board are not related send an exception chain in teh BuildResult.
-            2.  For the case that
-                    -   The square and board are not related, send an exception chain.
-                    -   The square has not registered, create the registration.
-            3.  When the registration exists send the success result.
+            1.  Send an exception chain in the BuildResult if either:
+                    -   The analysis is not completed.
+                    -   TThe square and board are not related.
+                    -   The board has a stale link to the square.
+            2.  If the square has not been registered with the board insert in the board's
+                squares.
+            3.  Send the success result.
         Args:
             board: Board
             square: Square
@@ -245,6 +241,7 @@ class SquareBuildProcess(BuildProcess[Square]):
         Returns:
             BuildResult[Square]
         Raises:
+            SquareBuildException
         """
         method = f"{cls.__name__}.bind_square_board"
         
@@ -280,7 +277,7 @@ class SquareBuildProcess(BuildProcess[Square]):
                     ex=InvariantBreachException(
                         msg=InvariantBreachException.MSG,
                         err_code=InvariantBreachException.ERR_CODE,
-                    ),
+                    )
                 )
             )
         # Handle the case that, the square has not registered with the board.

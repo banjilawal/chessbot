@@ -20,9 +20,7 @@ class CoordBuildProcess(BuildProcess[Coord]):
         -   Integrity Management
      
      Responsibilities:
-         1.  Produce Coord instances whose integrity is guaranteed at creation.
-         2.  Ensure params for Coord creation have met the application's safety contract.
-         3.  Return an exception to the client if a build resource does not satisfy integrity requirements.
+         1.  Produce Coord instances that satisfy integrity constraints.
 
      Attributes:
      
@@ -30,7 +28,7 @@ class CoordBuildProcess(BuildProcess[Coord]):
         -   execute(
                     row: int,
                     column: int,
-                    number_validator: NumberValidationProcess,
+                    number_validation: NumberValidationProcess,
             ) -> BuildResult[Coord]
 
      Super Class:
@@ -64,45 +62,25 @@ class CoordBuildProcess(BuildProcess[Coord]):
         """
         method = f"{cls.__name__}.build"
         
-        # Handle the case that, the row is not certified safe
-        row_validation_result = number_validator.execute(
-            candidate=row,
-            floor=0,
-            ceiling=BOARD_DIMENSION - 1
-        )
-        if row_validation_result.is_failure:
-            # Return the validation chain on failure.
-            return BuildResult.failure(
-                CoordBuildException(
-                    mthd=method,
-                    title=cls.__name__,
-                    op=CoordBuildException.OP,
-                    msg=CoordBuildException.MSG,
-                    err_code=CoordBuildException.ERR_CODE,
-                    rslt_type=CoordBuildException.RSLT_TYPE,
-                    ex=row_validation_result.exception,
-                )
+        # Handle the case that, either the row or column is not certofoed as safe.
+        for param in [row, column]:
+            validation_result = number_validator.execute(
+                ceiling=BOARD_DIMENSION - 1,
+                candidate=param,
+                floor=0,
             )
-        # Handle the case that, the column is not certified safe
-        column_validation_result = number_validator.execute(
-            candidate=column,
-            floor=0,
-            ceiling=BOARD_DIMENSION - 1
-        )
-        if column_validation_result.is_failure:
-            # Return the validation chain on failure.
-            return BuildResult.failure(
-                CoordBuildException(
-                    mthd=method,
-                    title=cls.__name__,
-                    op=CoordBuildException.OP,
-                    msg=CoordBuildException.MSG,
-                    err_code=CoordBuildException.ERR_CODE,
-                    rslt_type=CoordBuildException.RSLT_TYPE,
-                    ex=column_validation_result.exception,
+            if validation_result.is_failure:
+                # Return the validation chain on failure.
+                return BuildResult.failure(
+                    CoordBuildException(
+                        mthd=method,
+                        title=cls.__name__,
+                        op=CoordBuildException.OP,
+                        msg=CoordBuildException.MSG,
+                        err_code=CoordBuildException.ERR_CODE,
+                        rslt_type=CoordBuildException.RSLT_TYPE,
+                        ex=validation_result.exception,
+                    )
                 )
-            )
         # --- Forward the work product to the caller. ---#
-        return BuildResult.success(
-            Coord(row=row, column=column)
-        )
+        return BuildResult.success(Coord(row=row, column=column))
