@@ -17,7 +17,7 @@ from logic.square import (
 )
 
 
-class SquareStackPusher:
+class SquareStackPush:
     """
     Role:
         - Transaction Worker
@@ -36,7 +36,7 @@ class SquareStackPusher:
                     square: Square,
                     square_stack: SquareStackService,
                     rank_service: RankService = RankService(),
-                    rank_quota_analyzer: SquareStackCapacityAnalyzer = SquareStackCapacityAnalyzer(),
+                    rank_quota_analyzer: SquareStackCapacityAnalysis = SquareStackCapacityAnalysis(),
                     collision_detector: SquareCollisionAnalysis = SquareCollisionAnalysis(),
             ) -> InsertionResult
 
@@ -45,7 +45,7 @@ class SquareStackPusher:
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def push(
+    def execute(
             cls,
             square: Square,
             square_stack: SquareStackService,
@@ -64,7 +64,7 @@ class SquareStackPusher:
            square: Square
            rank_service: RankService
            square_stack: SquareStackService
-           rank_quota_analyzer: SquareStackCapacityAnalyzer
+           rank_quota_analyzer: SquareStackCapacityAnalysis
            collision_detector: SquareCollisionAnalysis
         Returns:
             InsertionResult

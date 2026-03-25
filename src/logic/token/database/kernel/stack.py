@@ -15,7 +15,7 @@ from logic.system import (
      SearchResult, StackService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, IdFactory
 )
 from logic.token import (
-    Token, TokenContext, TokenContextService, TokenService, TokenStackOpsController, TokenStackServiceException,
+    Token, TokenContext, TokenQueryService, TokenService, TokenStackOpsController, TokenStackServiceException,
     TokenStackState
 )
 
@@ -43,7 +43,7 @@ class TokenStackService(StackService[Token]):
         service: TokenService
         state: TokenStackState
         dispatcher: TokenStackOpsController
-        context_service: TokenContextService
+        context_service: TokenQueryService
 
     Provides:
         -   id: int
@@ -76,7 +76,7 @@ class TokenStackService(StackService[Token]):
     _service: TokenService
     _state: TokenStackState
     _dispatcher: TokenStackOpsController
-    _context_service: TokenContextService
+    _context_service: TokenQueryService
     
     def __init__(
             self,
@@ -84,7 +84,7 @@ class TokenStackService(StackService[Token]):
             capacity: int = DEFAULT_CAPACITY,
             service: TokenService = TokenService(),
             id: int = IdFactory.next_id(class_name="TokenStackService"),
-            context_service: TokenContextService = TokenContextService(),
+            context_service: TokenQueryService = TokenQueryService(),
             dispatcher: TokenStackOpsController = TokenStackOpsController(),
     ):
         """
@@ -94,7 +94,7 @@ class TokenStackService(StackService[Token]):
             capacity: int
             service: TokenService
             dispatcher: TokenStackOpsController
-            context_service: TokenContextService
+            context_service: TokenQueryService
         """
         super().__init__(id=id, name=name,)
         self._stack = []
@@ -142,7 +142,7 @@ class TokenStackService(StackService[Token]):
         return self._service
     
     @property
-    def context_service(self) -> TokenContextService:
+    def context_service(self) -> TokenQueryService:
         return self._context_service
     
     @property

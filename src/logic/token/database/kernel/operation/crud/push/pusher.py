@@ -17,7 +17,7 @@ from logic.token import (
 )
 
 
-class TokenStackPushPusher:
+class TokenStackPush:
     """
     Role:
         - Transaction Worker

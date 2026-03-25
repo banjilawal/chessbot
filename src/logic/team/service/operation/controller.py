@@ -1,4 +1,4 @@
-# src/logic/team/service/operation/manager.py
+# src/logic/team/service/operation/controller.py
 
 """
 Module: logic.team.service.operation.manager

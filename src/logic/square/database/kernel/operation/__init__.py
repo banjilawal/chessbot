@@ -13,7 +13,6 @@ version: 1.0.0
 from .crud import *
 from .token import *
 from .roster import *
-from .collision import *
 
 # Modules
-from .dispatcher import SquareStackOpsDispatcher
+from .controller import SquareStackOpsController

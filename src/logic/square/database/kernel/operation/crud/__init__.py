@@ -14,4 +14,4 @@ from .pop import *
 from .push import *
 
 # Modules
-from .manager import SquareStackCrudManager
+from .controller import SquareStackCrudController

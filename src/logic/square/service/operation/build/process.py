@@ -1,7 +1,7 @@
-# src/logic/square/builder/exception.py
+# src/logic/square/service/operation/builder/exception.py
 
 """
-Module: logic.square.builder.builder
+Module: logic.square.service.operation.builder.builder
 Author: Banji Lawal
 Created: 2025-09-03
 version: 1.0.0
@@ -27,27 +27,15 @@ class SquareBuildProcess(BuildProcess[Square]):
      Role:BuildProcess, Data Integrity And Reliability Guarantor
 
      Responsibilities:
-     1.  Produce Square instances whose integrity and reliability are guaranteed.
-     2.  Ensure params for Square creation have met the application's safety contract.
-     3.  Return an exception to the client if a build resource does not satisfy integrity requirements.
-
-     Super Class:
-         * BuildProcess
-
-    Provides:
-
-
-    # INHERITED ATTRIBUTES:
-        *   See BuildProcess class for inherited attributes.
+         1.  Produce Square instances whose integrity and reliability are guaranteed.
+         2.  Ensure params for Square creation have met the application's safety contract.
+         3.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     Attributes:
-    None
-
-    # LOCAL METHODS:
-    None
-
-    # INHERITED METHODS:
-        *   See BuildProcess class for inherited methods.
+    Provides:
+    
+    Super Class:
+        BuildProcess
     """
     
     @classmethod

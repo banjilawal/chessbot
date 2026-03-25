@@ -1,12 +1,12 @@
-# src/logic/square/validator/__init__.py
+# src/logic/square/service/operation/validation/__init__.py
 
 """
-Module: logic.square.validator.__init__
+Module: logic.square.service.operation.validation.__init__
 Author: Banji Lawal
 Created: 2025-11-19
 """
 
-# =========== SQUARE.VALIDATOR PACKAGE CONTENTS ===========#
+# =========== SQUARE.SERVICE.OPERATION.VALIDATION PACKAGE CONTENTS ===========#
 
 # Packages
 from.exception import *

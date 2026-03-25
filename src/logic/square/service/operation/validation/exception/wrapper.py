@@ -1,7 +1,7 @@
-# src/logic/square/validator/exception/work.py
+# src/logic/square/service/operation/validation/exception/work.py
 
 """
-Module: logic.square.validator.exception.work
+Module: logic.square.service.operation.validation.exception.work
 Author: Banji Lawal
 Created: 2025-09-08
 Version: 1.0.0

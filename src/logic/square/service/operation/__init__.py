@@ -10,7 +10,10 @@ version: 1.0.0
 # =========== SQUARE.SERVICE PACKAGE CONTENTS ===========#
 
 # Packages
-from .operation import *
-from .exception import *
+from .build import *
+from .collision import *
+from .visitation import *
+from .validation import *
 
 # Modules
+from .controller import SquareOpsController

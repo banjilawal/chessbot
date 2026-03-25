@@ -1,7 +1,7 @@
-# src/logic/square/database/kernel/operation/collision/exception/debug/designation.py
+# src/logic/square/service/operation/collision/exception/debug/id.py
 
 """
-Module: logic.square.database.kernel.operation.collision.exception.debug.designation
+Module: logic.square.service.operation.collision.exception.debug.id
 Author: Banji Lawal
 Created: 2026-02-22
 version: 1.0.0
@@ -11,20 +11,19 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# SQUARE_DESIGNATION_COLLISION EXCEPTION #======================#
-    "SquareNameCollisionException",
+    # ======================# SQUARE_ID_COLLISION EXCEPTION #======================#
+    "SquareIdCollisionException",
 ]
 
 from logic.square import SquareDebugException
 
-
-# ======================# SQUARE_DESIGNATION_COLLISION EXCEPTION #======================#
-class SquareNameCollisionException(SquareDebugException):
+# ======================# SQUARE_ID_COLLISION EXCEPTION #======================#
+class SquareIdCollisionException(SquareDebugException):
     """
     Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
-    1.  Indicate that two squares share a designation instead of having one of their own.
+    1.  Indicate that two squares share an id instead of having one of their own.
 
     Super Class:
         *   SquareDebugException
@@ -48,15 +47,15 @@ class SquareNameCollisionException(SquareDebugException):
     # INHERITED METHODS:
         *   See SquareDebugException class for inherited methods.
     """
-    ERR_CODE = "SQUARE_DESIGNATION_COLLISION EXCEPTION"
-    MSG = "Designation has already been assigned."
+    ERR_CODE = "SQUARE_ID_COLLISION EXCEPTION"
+    MSG = "Id has already been assigned."
     
     def __init__(
             self,
             var: Optional[str] = None,
             val: Optional[Any] = None,
-            msg: Optional[str] = None,
             err_code: Optional[str] = None,
+            msg: Optional[str] = None,
             ex: Optional[Exception] = None,
     ):
         """

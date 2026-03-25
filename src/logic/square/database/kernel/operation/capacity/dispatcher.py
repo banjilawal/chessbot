@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.square import SquareStackCapacityAnalyzer, SquareCollisionAnalysis, SquareStackCrudManager
+from logic.square import SquareStackCapacityAnalyzer, SquareCollisionAnalysis, SquareStackCrudController
 
 
 class SquareStackOpsDispatcher:
@@ -21,20 +21,20 @@ class SquareStackOpsDispatcher:
         1.  Provide a single entry point for transactions SquareStackService operates.
 
     Attributes:
-        crud: SquareStackCrudManager
-        rank_quota_analyzer: SquareStackCapacityAnalyzer
+        crud: SquareStackCrudController
+        rank_quota_analyzer: SquareStackCapacityAnalysis
         collision_detector: SquareCollisionAnalysis
 
     Provides:
     Parent:
     """
-    _crud: SquareStackCrudManager
+    _crud: SquareStackCrudController
     _rank_quota_analyzer: SquareStackCapacityAnalyzer
     _collision_detector: SquareCollisionAnalysis
     
     def __init__(
             self,
-            crud: SquareStackCrudManager = SquareStackCrudManager(),
+            crud: SquareStackCrudController = SquareStackCrudController(),
             rank_quota_analyzer: SquareStackCapacityAnalyzer = SquareStackCapacityAnalyzer(),
             collision_detector: SquareCollisionAnalysis = SquareCollisionAnalysis(),
     ):
@@ -43,7 +43,7 @@ class SquareStackOpsDispatcher:
         self._rank_quota_analyzer = rank_quota_analyzer
 
     @property
-    def crud(self) -> SquareStackCrudManager:
+    def crud(self) -> SquareStackCrudController:
         return self._crud
     
     @property

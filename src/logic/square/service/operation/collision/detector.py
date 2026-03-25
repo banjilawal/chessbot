@@ -13,7 +13,7 @@ from logic.square import (
     Square, SquareCollisionDetectorFailureException, SquareCoordCollisionException, SquareIdCollisionException,
     SquareNameCollisionException
 )
-from logic.square.database.kernel import SquareStackService
+from logic.square.service import SquareStackService
 from logic.system import CollisionAnalysis, CollisionReport, LoggingLevelRouter
 
 

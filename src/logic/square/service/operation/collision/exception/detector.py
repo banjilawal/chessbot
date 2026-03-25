@@ -1,7 +1,7 @@
-# src/logic/square/database/kernel/operation/collision/exception/debug/designation.py
+# src/logic/square/service/operation/collision/exception/debug/designation.py
 
 """
-Module: logic.square.database.kernel.operation.collision.exception.debug.designation
+Module: logic.square.service.operation.collision.exception.debug.designation
 Author: Banji Lawal
 Created: 2026-02-22
 version: 1.0.0

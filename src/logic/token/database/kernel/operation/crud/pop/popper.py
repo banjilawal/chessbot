@@ -14,7 +14,7 @@ from logic.token import (
     PoppingEmptyTokenStackException, Token, TokenStackPopException, TokenStackService, TokenStackState
 )
 
-class TokenStackPopper:
+class TokenStackPop:
     """
     Role:
         - Transaction Worker

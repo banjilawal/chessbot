@@ -12,14 +12,14 @@ from typing import Optional
 
 __all__ = [
     # ======================# RANK_QUOTA_ANALYSIS_FAILURE #======================#
-    "SquareStackAnalysisException",
+    "SquareStackCapacityAnalysisException",
 ]
 
-from logic.system import AnalysisException
+from logic.system import OperationException
 
 
 # ======================# RANK_QUOTA_ANALYSIS_FAILURE #======================#
-class SquareStackAnalysisException(AnalysisException):
+class SquareStackCapacityAnalysisException(OperationException):
     """
     Role:
         - Worker Method Identification

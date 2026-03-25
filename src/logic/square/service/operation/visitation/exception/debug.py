@@ -30,7 +30,7 @@ class TokenVisitHandlerDebugException(DebugException):
                 *   variable,
                 *   it's value,
                 *   event which fired the variable into its error state.
-            which occurred in the VisitationProcessor method identified in layer-0 of the exception chain.
+            which occurred in the VisitationController method identified in layer-0 of the exception chain.
 
     Attributes:
         msg (Optional[str]):
@@ -45,7 +45,7 @@ class TokenVisitHandlerDebugException(DebugException):
         DebugException
     """
     ERR_CODE = "SQUARE_STACK_TOKEN_HANDLER_EXCEPTION"
-    MSG = str = "VisitationProcessor had an error."
+    MSG = str = "VisitationController had an error."
     
     def __init__(
             self,

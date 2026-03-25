@@ -15,8 +15,8 @@ from logic.system import (
     NUMBER_OF_ROWS, SearchResult, UpdateResult
 )
 from logic.square import (
-    SquareContext, SquareStackException, SquareStackHandler, SquareService,
-    SquareContextService, Square,
+    SquareContext, SquareStackException, SquareStackOpsController, SquareService,
+    SquareContextService, Square, SquareStackOpsController,
 )
 from logic.token import Token, TokenService
 
@@ -38,7 +38,7 @@ class SquareStackService(StackService[Square]):
             SERVICE_NAME: str
             capacity: int
             stack: List[Square]
-            handler: SquareStackOpsDispatcher
+            controller: SquareStackOpsController
             service: SquareService:
             context_service: SquareContextService
     
@@ -50,7 +50,7 @@ class SquareStackService(StackService[Square]):
             *   id (int)
             *   name (str)
             *   capacity (int)
-            *   handler (SquareStackOpsDispatcher)
+            *   controller (SquareStackOpsController)
             *   service (SquareService)
             *   context_service (SquareContextService)
 
@@ -73,15 +73,16 @@ class SquareStackService(StackService[Square]):
     SERVICE_NAME = "SquareStackService"
     _capacity: int
     _stack: List[Square]
+    _controller: SquareStackOpsController
     _service: SquareService
-    _handler: SquareStackHandler
+    _controller: SquareStackOpsController
     _context_service: SquareContextService
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             service: SquareService = SquareService(),
-            handler: SquareStackHandler = SquareStackHandler(),
+            controller: SquareStackOpsController = SquareStackOpsController(),
             capacity: int = NUMBER_OF_ROWS * NUMBER_OF_COLUMNS,
             id: int = IdFactory.next_id(class_name="SquareStackService"),
             context_service: SquareContextService = SquareContextService(),
@@ -96,7 +97,7 @@ class SquareStackService(StackService[Square]):
         """
         method = "SquareService.__init__"
         super().__init__(id=id,name=name,)
-        self._handler = handler
+        self._controller = controller
         self._service = service
         self._capacity = capacity
         self._context_service = context_service
@@ -135,8 +136,8 @@ class SquareStackService(StackService[Square]):
         return self._context_service
     
     @property
-    def handler(self) -> SquareStackHandler:
-        return self._handler
+    def controller(self) -> SquareStackOpsController:
+        return self._controller
     
     @LoggingLevelRouter.monitor
     def push(self, item: Square) -> InsertionResult[bool]:
@@ -146,8 +147,8 @@ class SquareStackService(StackService[Square]):
         """
         method = "SquareStackService.push"
         
-        # --- Handoff the push responsibility to _handler ---#
-        insertion_result = self._handler.crud.execute(stack=self, item=item)
+        # --- Handoff the push responsibility to _controller ---#
+        insertion_result = self._controller.crud.pusher.execute(stack=self, item=item)
     
         # Handle the case that, the search is not completed.
         if insertion_result.is_failure:
@@ -168,8 +169,8 @@ class SquareStackService(StackService[Square]):
     def pop(self) -> DeletionResult[Square]:
         method = "SquareStackService.pop"
         
-        # --- Handoff the push responsibility to _handler ---#
-        deletion_result = self._handler.crud.pop()
+        # --- Handoff the push responsibility to _controller ---#
+        deletion_result = self._controller.crud.pop()
         
         # Handle the case that, the search is not completed.
         if deletion_result.is_failure:
@@ -194,8 +195,8 @@ class SquareStackService(StackService[Square]):
     ) -> DeletionResult[Square]:
         method = "SquareStackService.delete_by_id"
         
-        # --- Handoff the delete_by_id responsibility to _handler ---#
-        deletion_result =self._handler.crud.delete_by_id(
+        # --- Handoff the delete_by_id responsibility to _controller ---#
+        deletion_result =self._controller.crud.delete_by_id(
             id=id,
             square_stack=self,
             identity_service=identity_service
@@ -223,8 +224,8 @@ class SquareStackService(StackService[Square]):
 ) -> UpdateResult[Square]:
         method = "SquareStackService.start_square_visit"
         
-        # --- Handoff the visit management responsibility to _handler ---#
-        visitation_result = self._handler.token.occupy_stack_square(
+        # --- Handoff the visit management responsibility to _controller ---#
+        visitation_result = self._controller.token.occupy_stack_square(
             token=token,
             square=square,
             square_stack=self,
@@ -252,8 +253,8 @@ class SquareStackService(StackService[Square]):
     ) -> DeletionResult[Token]:
         method = "SquareStackService.end_square_visit"
         
-        # --- Handoff the visit management responsibility to _handler ---#
-        visitation_result = self._handler.token.remove_occupant_from_stack(
+        # --- Handoff the visit management responsibility to _controller ---#
+        visitation_result = self._controller.token.remove_occupant_from_stack(
             occupant=token,
             square_stack=self,
             token_service=token_service,
@@ -281,7 +282,7 @@ class SquareStackService(StackService[Square]):
         # ACTION:
             1.  Pass the context param to context_service manages all error handling and operations in
                 search lifecycle.
-            2.  Any failures context_service will be encapsulated inside a SquareCrudHandlerException
+            2.  Any failures context_service will be encapsulated inside a SquareCrudControllerException
                 which is sent inside a SearchResult.
             3.  If the search completes successfully the result can be sent directly because it will contain the
                 payload.
@@ -293,7 +294,7 @@ class SquareStackService(StackService[Square]):
                     - On success: List[Square] in payload.
                     - On Empty: No payload nor exception.
         Raises:
-            *   SquareCrudHandlerException
+            *   SquareCrudControllerException
         """
         method = "SquareStackService.query"
         

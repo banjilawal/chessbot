@@ -1,4 +1,4 @@
-# src/logic/token/service/operation/manager.py
+# src/logic/token/service/operation/controller.py
 
 """
 Module: logic.token.service.operation.manager

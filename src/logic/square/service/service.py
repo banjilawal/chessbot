@@ -13,7 +13,10 @@ from copy import deepcopy
 from typing import cast
 
 from logic.token import Token, TokenService
-from logic.square import Square, SquareBuildProcess, SquareServiceException, SquareValidationProcess, VisitationProcessor
+from logic.square import (
+    Square, SquareBuildProcess, SquareOpsController, SquareServiceException,
+    SquareValidationProcess, VisitationProcessor
+)
 from logic.system import DeletionResult, IntegrityService, IdFactory, LoggingLevelRouter, UpdateResult
 
 
@@ -33,9 +36,7 @@ class SquareService(IntegrityService[Square]):
         
         id: int
         name: str
-        builder: SquareBuildProcess
-        validator: SquareValidationProcess
-        visit_processor: VisitationProcessor
+        controller: SquareBuildProcess
 
     Provides:
         -   begin_square_visit(
@@ -51,11 +52,13 @@ class SquareService(IntegrityService[Square]):
         IntegrityService
      """
     SERVICE_NAME = "SquareService"
+    _controller: SquareOpsController
     _visit_processor: VisitationProcessor
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
+            controller: SquareOpsController = SquareOpsController(),
             builder: SquareBuildProcess = SquareBuildProcess(),
             validator: SquareValidationProcess = SquareValidationProcess(),
             id: int = IdFactory.next_id(class_name="SquareService"),
@@ -67,18 +70,19 @@ class SquareService(IntegrityService[Square]):
             name: str
             builder: BuildProcess
             validator: ValidationProcess
-            visit_processor: VisitationProcessor
+            visit_processor: VisitationController
         """
-        super().__init__(id=id, name=name, builder=builder, validator=validator)
+        super().__init__(id=id, name=name)
+        self._controller = controller
         self._visit_processor = visit_processor
     
     @property
     def build(self) -> SquareBuildProcess:
-        return cast(SquareBuildProcess, self.entity_builder)
+        return self._controller.build
     
     @property
     def validation(self) -> SquareValidationProcess:
-        return cast(SquareValidationProcess, self.entity_validator)
+        return self._controller.validation
     
     @property
     def visit_processor(self) -> VisitationProcessor:
@@ -111,7 +115,7 @@ class SquareService(IntegrityService[Square]):
         # Backup the square
         pre_update_square = deepcopy(square)
         # --- Forward the request to the processor. ---#
-        visitation_result = self._visit_processor.entry_processor.execute(
+        visitation_result = self._controller.visitation.entry.execute(
             token=visitor,
             square=square,
             token_service=token_service,
@@ -151,7 +155,7 @@ class SquareService(IntegrityService[Square]):
         method = f"{self.__class__.__name__}.end_square_visit"
         
         # --- Forward the request to the processor. ---#
-        visitation_result = self._visit_processor.departure_processor.execute(
+        visitation_result = self._controller.visitation.departure.execute(
             square=square,
             square_validator=self.validation,
         )

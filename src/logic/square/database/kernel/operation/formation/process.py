@@ -36,7 +36,7 @@ class TokenDeploymentProcess:
                     square: Square,
                     square_stack: SquareStackService,
                     rank_service: RankService = RankService(),
-                    rank_quota_analyzer: SquareStackCapacityAnalyzer = SquareStackCapacityAnalyzer(),
+                    rank_quota_analyzer: SquareStackCapacityAnalysis = SquareStackCapacityAnalysis(),
                     collision_detector: SquareCollisionAnalysis = SquareCollisionAnalysis(),
             ) -> InsertionResult
 

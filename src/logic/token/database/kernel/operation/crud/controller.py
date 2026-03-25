@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.token import TokenStackPopper, TokenStackPushPusher
+from logic.token import TokenQueryService, TokenStackPop, TokenStackPush
 
 
 class TokenStackCrudController:
@@ -23,8 +23,8 @@ class TokenStackCrudController:
         1.  Manage insertion/deletion operations for TokenStackService.
 
     Attributes:
-        popper: TokenStackPopper
-        pusher: TokenStackServicePusher
+        pop: TokenStackPop
+        push: TokenStackServicePush
 
     Provides:
         -   push(
@@ -37,24 +37,31 @@ class TokenStackCrudController:
     Super Class:
     """
     
-    _popper: TokenStackPopper
-    _pusher: TokenStackPushPusher
+    _pop: TokenStackPop
+    _push: TokenStackPush
+    _query: TokenQueryService
     
     def __init__(
             self,
-            popper: TokenStackPopper = TokenStackPopper(),
-            pusher: TokenStackPushPusher = TokenStackPushPusher(),
+            pop: TokenStackPop = TokenStackPop(),
+            query: TokenQueryService = TokenQueryService(),
+            push: TokenStackPush = TokenStackPush(),
     ):
-        self._popper = popper
-        self._pusher = pusher
+        self._pop = pop
+        self._push = push
+        self._query = query
         
     @property
-    def popper(self) -> TokenStackPopper:
-        return self._popper
+    def pop(self) -> TokenStackPop:
+        return self._pop
     
     @property
-    def pusher(self) -> TokenStackPushPusher:
-        return self._pusher
+    def push(self) -> TokenStackPush:
+        return self._push
+    
+    @property
+    def query(self) -> TokenQueryService:
+        return self._query
     
     
     

@@ -13,7 +13,7 @@ from logic.system import ContextService, id_emitter
 from logic.token import TokenContext, TokenContextBuildProcess, TokenContextValidationProcess, TokenFinder
 
 
-class TokenContextService(ContextService[TokenContext]):
+class TokenQueryService(ContextService[TokenContext]):
     """
     Role:Search Service, Lifecycle Management, Encapsulation, API layer.
 
@@ -28,13 +28,13 @@ class TokenContextService(ContextService[TokenContext]):
         *   ContextService
 
     # PROVIDES:
-        *  TokenContextService
+        *  TokenQueryService
 
 
     # INHERITED ATTRIBUTES:
         *   See ContextService for inherited attributes.
     """
-    SERVICE_NAME = "TokenContextService"
+    SERVICE_NAME = "TokenQueryService"
     def __init__(
             self,
             name: str = SERVICE_NAME,
@@ -57,7 +57,7 @@ class TokenContextService(ContextService[TokenContext]):
         Raises:
             None
         """
-        method = "TokenContextService.__init__"
+        method = "TokenQueryService.__init__"
         super().__init__(id=id, name=name, builder=builder, validator=validator, finder=finder)
     
     @property

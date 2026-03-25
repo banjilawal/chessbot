@@ -1,12 +1,12 @@
-# src/logic/square/validator/exception/debug/__init__.py
+# src/logic/square/service/operation/validation/exception/debug/__init__.py
 
 """
-Module: logic.square.validator.exception.debug.__init__
+Module: logic.square.service.operation.validation.exception.debug.__init__
 Author: Banji Lawal
 Created: 2025-11-19
 """
 
-# =========== SQUARE.VALIDATOR.EXCEPTION.DEBUG PACKAGE CONTENTS ===========#
+# =========== SQUARE.SERVICE.OPERATION.VALIDATION.EXCEPTION.DEBUG PACKAGE CONTENTS ===========#
 
 # Packages
 None

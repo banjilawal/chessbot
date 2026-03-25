@@ -1,7 +1,7 @@
-# src/logic/square/database/kernel/operation/collision/exception/debug/id.py
+# src/logic/square/service/operation/collision/exception/debug/square.py
 
 """
-Module: logic.square.database.kernel.operation.collision.exception.debug.id
+Module: logic.square.service.operation.collision.exception.debug.square
 Author: Banji Lawal
 Created: 2026-02-22
 version: 1.0.0
@@ -11,29 +11,23 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# SQUARE_ID_COLLISION EXCEPTION #======================#
-    "SquareIdCollisionException",
+    # ======================# SQUARE_COORD_COLLISION_EXCEPTION #======================#
+    "SquareCoordCollisionException",
 ]
 
 from logic.square import SquareDebugException
 
-# ======================# SQUARE_ID_COLLISION EXCEPTION #======================#
-class SquareIdCollisionException(SquareDebugException):
+# ======================# SQUARE_COORD_COLLISION_EXCEPTION #======================#
+class SquareCoordCollisionException(SquareDebugException):
     """
-    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:
+        -   Error Variable Identifier
+        -   Exception Chain Layer 2, 
+        -   Exception Messaging
 
     Responsibilities:
-    1.  Indicate that two squares share an id instead of having one of their own.
-
-    Super Class:
-        *   SquareDebugException
-
-    Provides:
-
-
-    # INHERITED ATTRIBUTES:
-        *   SquareDebugException class for inherited attributes.
-
+        1.  Indicate that two squares share a coord instead of having one of their own.
+        
     Attributes:
         var: Optional[str]
         val: Optional[Any]
@@ -41,14 +35,13 @@ class SquareIdCollisionException(SquareDebugException):
         ex: Optional[Exception]
         err_code: Optional[str]
 
-    # LOCAL METHODS:
-    None
+    Provides:
 
-    # INHERITED METHODS:
-        *   See SquareDebugException class for inherited methods.
+    Super Class:
+        SquareDebugException
     """
-    ERR_CODE = "SQUARE_ID_COLLISION EXCEPTION"
-    MSG = "Id has already been assigned."
+    ERR_CODE = "SQUARE_COORD_COLLISION_EXCEPTION"
+    MSG = "Another Square is using that coord"
     
     def __init__(
             self,

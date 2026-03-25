@@ -10,10 +10,10 @@ version: 1.0.0
 from __future__ import annotations
 
 from logic.square import (
-    SquareStackRosterHandler, SquareStackTokenHandler, SquareStackCrudHandler, SquareStackCountsAnalyzer
+    SquareService, SquareStackRosterHandler, SquareStackTokenHandler, SquareStackCrudController, SquareStackCountsAnalyzer
 )
 
-class SquareStackOpsDispatcher:
+class SquareStackOpsController:
     """
     Role:
         - Utilities Provider
@@ -22,8 +22,8 @@ class SquareStackOpsDispatcher:
         1.  Provide a single entry point for transactions SquareStackService operates.
 
     Attributes:
-        crud: SquareStackCrudManager
-        rank_quota_analyzer: SquareStackCapacityAnalyzer
+        crud: SquareStackCrudController
+        rank_quota_analyzer: SquareStackCapacityAnalysis
         collision_detector: TokenCollisionAnalysis
 
     Provides:
@@ -66,21 +66,23 @@ class SquareStackOpsDispatcher:
     # INHERITED METHODS:
     None
     """
+    _integrity_service: SquareService
     _stats: SquareStackCountsAnalyzer
-    _crud: SquareStackCrudHandler
+    _crud: SquareStackCrudController
     _token: SquareStackTokenHandler
     _roster: SquareStackRosterHandler
     
     def __init__(
             self,
-            crud: SquareStackCrudHandler = SquareStackCrudHandler(),
+            integrity_service: SquareService = SquareService(),
+            crud: SquareStackCrudController = SquareStackCrudController(),
             token: SquareStackTokenHandler = SquareStackTokenHandler(),
             roster: SquareStackRosterHandler = SquareStackRosterHandler(),
             stats: SquareStackCountsAnalyzer = SquareStackCountsAnalyzer(),
     ):
         """
         Args:
-            crud: SquareStackCrudHandler
+            crud: SquareStackCrudController
             token: SquareStackTokenHandler
             roster: SquareStackRosterHandler
             stats: SquareStackCountsAnalyzer
@@ -103,5 +105,5 @@ class SquareStackOpsDispatcher:
         return self._roster
     
     @property
-    def crud(self) -> SquareStackCrudHandler:
+    def crud(self) -> SquareStackCrudController:
         return self._crud

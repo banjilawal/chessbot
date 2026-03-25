@@ -8,5 +8,5 @@ version: 1.0.0
 """
 
 from .exception import *
-from .service import TokenContextService
+from .service import TokenQueryService
 

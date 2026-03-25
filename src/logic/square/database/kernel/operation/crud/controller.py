@@ -9,10 +9,10 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.square import SquareStackPopper, SquareStackPusher
+from logic.square import SquareContext, SquareContextService, SquareStackPopper, SquareStackPush
 
 
-class SquareStackCrudManager:
+class SquareStackCrudController:
     """
     Role:
         - Utilities Provider
@@ -28,7 +28,7 @@ class SquareStackCrudManager:
         -   push(
                     square: Square,
                     square_stack: SquareStackService,
-                    rank_quota_analyzer: SquareStackCapacityAnalyzer = SquareStackCapacityAnalyzer(),
+                    rank_quota_analyzer: SquareStackCapacityAnalysis = SquareStackCapacityAnalysis(),
                     collision_detector: SquareCollisionAnalysis = SquareCollisionAnalysis(),
             ) -> InsertionResult
 
@@ -36,21 +36,28 @@ class SquareStackCrudManager:
     """
     
     _popper: SquareStackPopper
-    _pusher: SquareStackPusher
+    _pusher: SquareStackPush
+    _query: SquareContextService
     
     def __init__(
             self,
             popper: SquareStackPopper = SquareStackPopper(),
-            pusher: SquareStackPusher = SquareStackPusher(),
+            pusher: SquareStackPush = SquareStackPush(),
+            query: SquareContextService = SquareContextService(),
     ):
         self._popper = popper
         self._pusher = pusher
+        self._query = query
         
     @property
     def popper(self) -> SquareStackPopper:
         return self._popper
     
     @property
-    def pusher(self) -> SquareStackPusher:
+    def pusher(self) -> SquareStackPush:
         return self._pusher
+    
+    @property
+    def query(self) -> SquareContextService:
+        return self._query
     

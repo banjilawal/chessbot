@@ -14,4 +14,4 @@ from .exception import *
 
 # Modules
 from .report import SquareStackCapacityReport
-from .analyzer import SquareStackCapacityAnalyzer
+from .analyzer import SquareStackCapacityAnalysis

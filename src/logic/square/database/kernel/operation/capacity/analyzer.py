@@ -9,12 +9,12 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.rank import Rank, RankService
+
 from logic.system import ComputationResult, LoggingLevelRouter
-from logic.square import SquareStackCapacityAnalysisException, SquareStackCapacityReport, SquareContext, SquareStackService
+from logic.square import SquareStackService
 
 
-class SquareStackCapacityAnalyzer:
+class SquareStackCapacityAnalysis:
     """
     Role:
         - Statistical Analyzer
@@ -37,7 +37,7 @@ class SquareStackCapacityAnalyzer:
  
     @classmethod
     @LoggingLevelRouter.monitor
-    def analyze(cls,  square_stack: SquareStackService,) -> ComputationResult[SquareStackCapacityReport]:
+    def execute(cls,  square_stack: SquareStackService, ) -> SquareStackCapacityReport:
         """
         Create a SquareStackCapacityReport.
         
