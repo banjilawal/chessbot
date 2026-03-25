@@ -26,7 +26,7 @@ class CommandBuildProcess(BuildProcess[Command]):
     ) -> BuildResult[Command]:
         method = "CommandBuildProcess.build"
         
-        # Handle the case that, the request is not certified as safe.
+        # Handle the case that, the request does not pass a validation check.
         validation_result = request_validator.execute(candidate=request)
         if validation_result.is_failure:
             # Return the exception on failure.

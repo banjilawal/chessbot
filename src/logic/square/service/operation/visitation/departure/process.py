@@ -50,7 +50,7 @@ class SquareDepartureProcess:
 
         Action:
             1.  Send  an exception chain in the DeletionResult if:
-                    -   The square is not certified as safe.
+                    -   The square does not pass a validation check.
                     -   The square is empty.
             2.  Otherwise:
                     -   Store the occupant before setting square.occupant null.
@@ -67,7 +67,7 @@ class SquareDepartureProcess:
         """
         method = f"{cls.__name__}.execute"
         
-        # Handle the case that, the square is not certified as safe.
+        # Handle the case that, the square does not pass a validation check.
         validation_result = square_validator.validator.execute(candidate=square)
         if validation_result.is_failure:
             # Return the exception chain on failure.

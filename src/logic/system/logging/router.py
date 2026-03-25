@@ -77,7 +77,7 @@ class LoggingLevelRouter:
      - errors as error
     Works on instance/class methods or free functions.
     """
-    def decorator(func: Callable[.., T]) -> Callable[.., T]:
+    def decorator(func: Callable[., T]) -> Callable[., T]:
 
       @wraps(func)
       def work(*args: Any, **kwargs: Any) -> T:

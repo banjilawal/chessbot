@@ -73,7 +73,7 @@ class SquareFinder(StackSearchRouter[Square]):
             1.  If either
                     *   the collider_candidates.
                     *   query.
-                Is not certified as safe send an exception chain in the SearchResult.
+                Does not pass a validation check. send an exception chain in the SearchResult.
             2.  Once Action.1 has been completed successfully searches are guaranteed to complete successfully.
             3.  Route to the search method that matches the query.
             4.  The searcher returns a List contain zero or more squares.

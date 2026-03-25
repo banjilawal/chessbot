@@ -63,7 +63,7 @@ class SquareContextValidationProcess(ValidationProcess[SquareContext]):
                     *   The state
                     *   The board
                     *   The occupant
-                are is not certified as safe by their services, or there is no validation
+                are does not pass a validation check. by their services, or there is no validation
                 route for the query.
             3.  The query has been certified as safe, send the validation success result.
         # PARAMETERS:

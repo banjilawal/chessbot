@@ -1,7 +1,7 @@
 # src/logic//service/operation/promotion/exception/debug/double.py
 
 """
-Module: logic..service.operation.promotion.exception.debug.double
+Module: logic.service.operation.promotion.exception.debug.double
 Author: Banji Lawal
 Created: 2026-03-14
 version: 1.0.0
@@ -25,7 +25,7 @@ class InconsistentTokenBoardStateException(InconsistentStateException):
 
     Responsibilities:
     1.  Indicate that when a Token.board_state == TokenBoardState.NEVER_DEPLOYED after
-        its been placed on the board..
+        its been placed on the board.
 
     Super Class:
         *   InconsistentStateException

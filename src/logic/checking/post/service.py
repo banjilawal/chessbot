@@ -1,4 +1,4 @@
-# src/logic/mate/post/service.py
+# src/logic/mate/post/process.py
 
 """
 Module: logic.mate.post.service

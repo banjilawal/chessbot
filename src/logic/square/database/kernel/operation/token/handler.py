@@ -1,4 +1,4 @@
-# src/logic/square/database/kernel/operation/token/service.py
+# src/logic/square/database/kernel/operation/token/process.py
 
 """
 Module: logic.square.database.kernel.operation.token.service
@@ -161,7 +161,7 @@ class SquareStackTokenHandler:
         """
         method = "SquareService.remove_occupant_from_stack"
         
-        # Handle the case that, the token is not certified as safe.
+        # Handle the case that, the token does not pass a validation check.
         token_validation = token_service.validator.execute(occupant)
         if token_validation.is_failure:
             # Send the debug exception to the client.

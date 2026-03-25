@@ -172,7 +172,7 @@ class SquareEntryProcess:
 
         Action:
             1.  Send the square and an exception chain in the UpdateResult if:
-                    -   The token is not certified as safe.
+                    -   The token does not pass a validation check.
                     -   The token is disabled.
             2.  Otherwise, send the success result.
         Args:

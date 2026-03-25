@@ -64,7 +64,7 @@ class TokenDeploymentProcess:
         
         Action:
             1.  Send the unmodified pawn_token along with an exception chain in the UpdateResult if:
-                        *   The token is not certified as safe and actionable.
+                        *   The token does not pass a validation check. and actionable.
                         *   The token is already deployed.
                         *   Its opening square fails a test
                         *   The square visitation transaction fails.

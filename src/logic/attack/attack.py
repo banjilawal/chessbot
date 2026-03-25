@@ -45,7 +45,7 @@ class Attack:
                     ex=attacker_validation.exception
                 )
             )
-        # Handle the case the item is not certified as safe.
+        # Handle the case the item does not pass a validation check.
         square_validation = square_database.integrity_service.validation.execute(candidate=square)
         if square_validation.is_failure:
             # Return the exception chain on failure.

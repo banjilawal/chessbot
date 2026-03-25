@@ -71,7 +71,7 @@ class PairBuildProcess(BuildProcess[Pair]):
         """
         method = f"{cls.__class__.__name__}._build"
         
-        # Handle the case that, the head is not certified as safe.
+        # Handle the case that, the head does not pass a validation check.
         node_validation_result = node_service.validation.execute(candidate=head)
         if node_validation_result.is_failure:
             # Return the exception chain on failure
@@ -84,7 +84,7 @@ class PairBuildProcess(BuildProcess[Pair]):
                     ex=node_validation_result.exception
                 )
             )
-        # Handle the case that, the pair is not certified as safe.
+        # Handle the case that, the pair does not pass a validation check.
         tail_square_validation_result = square_validator.execute(candidate=tail_square)
         if tail_square_validation_result.is_failure:
             # Return the exception chain on failure

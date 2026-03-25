@@ -69,7 +69,7 @@ class TokenPopCoordProcess:
         """
         method = f"{cls.__class__.__name__}undo_last_coord_push"
         
-        # Handle the case that, the token is not certified as safe.
+        # Handle the case that, the token does not pass a validation check.
         validation_result = token_validator.execute(token)
         if validation_result.is_failure:
             # Return the exception chain on failure.

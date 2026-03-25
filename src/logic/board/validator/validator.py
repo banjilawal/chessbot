@@ -87,7 +87,7 @@ class BoardValidationProcess(ValidationProcess[Board]):
         # --- Cast candidate to a Board for additional tests. ---#
         board = cast(Board, candidate)
         
-        # Handle the case board.id or board.name is not certified as safe.
+        # Handle the case board.id or board.name does not pass a validation check.
         id_validation = identity_service.validate_id(candidate=board.id)
         if id_validation.is_failure:
             # Return the exception chain on failure.

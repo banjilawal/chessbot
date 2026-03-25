@@ -1,7 +1,7 @@
 # src/logic/span/spanner//anchor.py
 
 """
-Module: logic.span.spanner..anchor
+Module: logic.span.spanner.anchor
 Author: Banji Lawal
 Created: 2026-03-10
 version: 1.0.0

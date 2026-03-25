@@ -26,7 +26,7 @@ class TokenAlreadyDeployedException(TokenDebugException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that a token has already been deployed on the board..
+        1.  Indicate that a token has already been deployed on the board.
 
     Attributes:
         var: Optional[str]

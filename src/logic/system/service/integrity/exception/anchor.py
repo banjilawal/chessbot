@@ -23,7 +23,7 @@ class IntegrityServiceException(ServiceException):
     Role:Debug Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
-    1.  Indicate that an error occurred in an IntegrityService instance..
+    1.  Indicate that an error occurred in an IntegrityService instance.
 
     Super Class:
     *   ServiceException

@@ -75,7 +75,7 @@ class TeamBuild(BuildProcess[Team]):
         """
         method = "TeamBuild.build"
         
-        # Handle the case that, a build param is not certified as safe.
+        # Handle the case that, a build param does not pass a validation check.
         build_params_validation_result = cls._validate_build_params(
             id=id,
             board=board,
@@ -134,7 +134,7 @@ class TeamBuild(BuildProcess[Team]):
     ) -> ValidationResult[int]:
         """
         # ACTION:
-            1.  If either the id, name, coord, or board are is not certified as safe by their validators, return the
+            1.  If either the id, name, coord, or board are does not pass a validation check. by their validators, return the
                 validation exception to the caller. Otherwise, return the number of attributes in the success result.
         # PARAMETERS:
             *   id (int)
@@ -152,25 +152,25 @@ class TeamBuild(BuildProcess[Team]):
         """
         method = "TeamBuild._validate_build_params"
         
-        # Handle the case that, the id is not certified as safe.
+        # Handle the case that, the id does not pass a validation check.
         id_validation = identity_service.validate_id(candidate=id)
         # Return the exception chain on failure.
         if id_validation.is_failure:
             return ValidationResult.failure(id_validation.exception)
         
-        # Handle the case that, the schema is not certified as safe.
+        # Handle the case that, the schema does not pass a validation check.
         schema_validation = schema_service.validator.execute(candidate=schema)
         if schema_validation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(schema_validation.exception)
         
-        # Handle the case that, the owner is not certified as safe.
+        # Handle the case that, the owner does not pass a validation check.
         owner_validation = player_service.validation.execute(candidate=owner)
         if owner_validation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(owner_validation.exception)
         
-        # Handle the case that, the board is not certified as safe.
+        # Handle the case that, the board does not pass a validation check.
         board_validation = board_service.validation.execute(candidate=board)
         if owner_validation.is_failure:
             # Return the exception chain on failure.
@@ -258,7 +258,7 @@ class SquareBuildProcess(BuildProcess[Square]):
         """
         # ACTION:
             1.  Send an exception chain in the BuildResult if
-                    * Any build param fails is not certified as safe.
+                    * Any build param fails does not pass a validation check.
                     * The square's attributes have already been used on the board.
             2.  Build the Square instance with the params.
             3.  Send an exception chain in the BuildResult if
@@ -281,7 +281,7 @@ class SquareBuildProcess(BuildProcess[Square]):
         """
         method = "SquareBuildProcess.build"
         
-        # Handle the case that, a build param fails is not certified as safe.
+        # Handle the case that, a build param fails does not pass a validation check.
         build_params_validation_result = cls._validate_build_params(
             id=id,
             name=name,

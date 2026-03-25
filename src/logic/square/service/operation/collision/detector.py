@@ -51,7 +51,7 @@ class SquareCollisionAnalysis(CollisionAnalysis[Square]):
         
         Action:
             1.  Send only exception chain in the CollisionReport if:
-                    *   The target is not certified as safe.
+                    *   The target does not pass a validation check.
             2.  Otherwise, send:
                     *   The target.
                     *   The collider.
@@ -69,7 +69,7 @@ class SquareCollisionAnalysis(CollisionAnalysis[Square]):
         """
         method = f"{cls.__class__.__name__}.detect"
         
-        # Handle the case that, the target is not certified as safe.
+        # Handle the case that, the target does not pass a validation check.
         validation_result = square_stack.integrity_service.validation.execute(
             candidate=target
         )

@@ -44,7 +44,6 @@ class SquareEntryException(UpdateException):
         UpdateException
     """
     OP = "Update"
-    MTHD = Optional[None]
     RSLT_TYPE = "UpdateResult"
     MSG = "SquareVisit start failed."
     ERR_CODE = "SQUARE_ENTRY_FAILURE"

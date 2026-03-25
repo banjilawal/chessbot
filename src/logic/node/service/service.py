@@ -1,4 +1,4 @@
-# src/logic/node/service/service.py
+# src/logic/node/service/process.py
 
 """
 Module: logic.node.service.service
@@ -74,7 +74,7 @@ class NodeService(IntegrityService[Node]):
     def add_incoming_edge(self, node: Node, edge: Edge) -> InsertionResult:
         """
         # ACTION:
-            1.  If either the node or edge are is not certified as safe send an exception chain in the InsertionResult.
+            1.  If either the node or edge are does not pass a validation check. send an exception chain in the InsertionResult.
             2.  If the node is not the edge's tail send an exception chain in the InsertionResult.
             3.  Let the node's incoming_edges stack exception the addition.
             4.  If  node.incoming_edges.push fails encapsulate its exception inside a NodeServiceException which is
@@ -93,7 +93,7 @@ class NodeService(IntegrityService[Node]):
         """
         method = "NodeService.add_incoming_edge"
         
-        # Handle the case that, the node is not certified as safe.
+        # Handle the case that, the node does not pass a validation check.
         node_validation_result = self.validation.execute(candidate=node)
         if node_validation_result.is_failure:
             # Return the exception chain on failure.
@@ -106,7 +106,7 @@ class NodeService(IntegrityService[Node]):
                     )
                 )
             )
-        # Using the node.incoming_edges handle the case that the edge is not certified as safe.
+        # Using the node.incoming_edges handle the case that the edge does not pass a validation check.
         edge_validation_result = node.incoming_edges.integrity_service.validation.execute(candidate=edge)
         if edge_validation_result.is_failure:
             # Return the exception chain on failure.
@@ -155,7 +155,7 @@ class NodeService(IntegrityService[Node]):
     def add_incoming_edge(self, node: Node, edge: Edge) -> InsertionResult:
         """
         # ACTION:
-            1.  If either the node or edge are is not certified as safe send an exception chain in the InsertionResult.
+            1.  If either the node or edge are does not pass a validation check. send an exception chain in the InsertionResult.
             2.  If the node is not the edge's tail send an exception chain in the InsertionResult.
             3.  Let the node's incoming_edges stack exception the addition.
             4.  If  node.incoming_edges.push fails encapsulate its exception inside a NodeServiceException which is
@@ -174,7 +174,7 @@ class NodeService(IntegrityService[Node]):
         """
         method = "NodeService.add_incoming_edge"
         
-        # Handle the case that, the node is not certified as safe.
+        # Handle the case that, the node does not pass a validation check.
         node_validation_result = self.validation.execute(candidate=node)
         if node_validation_result.is_failure:
             # Return the exception chain on failure.
@@ -187,7 +187,7 @@ class NodeService(IntegrityService[Node]):
                     )
                 )
             )
-        # Using the node.incoming_edges handle the case that the edge is not certified as safe.
+        # Using the node.incoming_edges handle the case that the edge does not pass a validation check.
         edge_validation_result = node.incoming_edges.integrity_service.validation.execute(candidate=edge)
         if edge_validation_result.is_failure:
             # Return the exception chain on failure.
@@ -236,7 +236,7 @@ class NodeService(IntegrityService[Node]):
     def remove_incoming_edge(self, node: Node, edge: Edge) -> DeletionResult[Edge]:
         """
         # ACTION:
-            1.  If either the node or edge are is not certified as safe send an exception chain in the DeletionResult.
+            1.  If either the node or edge are does not pass a validation check. send an exception chain in the DeletionResult.
             2.  If the node is not the edge's tail send an exception chain in the DeletionResult.
             3.  Let the node's incoming_edges stack exception the removal.
             4.  If  node.incoming_edges.pop fails encapsulate its exception inside a NodeServiceException which is
@@ -255,7 +255,7 @@ class NodeService(IntegrityService[Node]):
         """
         method = "NodeService.remove_incoming_edge"
         
-        # Handle the case that, the node is not certified as safe.
+        # Handle the case that, the node does not pass a validation check.
         node_validation_result = self.validation.execute(candidate=node)
         if node_validation_result.is_failure:
             # Return the exception chain on failure.
@@ -268,7 +268,7 @@ class NodeService(IntegrityService[Node]):
                     )
                 )
             )
-        # Using the node.incoming_edges handle the case that the edge is not certified as safe.
+        # Using the node.incoming_edges handle the case that the edge does not pass a validation check.
         edge_validation_result = node.incoming_edges.integrity_service.validation.execute(candidate=edge)
         if edge_validation_result.is_failure:
             # Return the exception chain on failure.
@@ -301,7 +301,7 @@ class NodeService(IntegrityService[Node]):
     def add_outgoing_edge(self, node: Node, edge: Edge) -> InsertionResult:
         """
         # ACTION:
-            1.  If either the node or edge are is not certified as safe send an exception chain in the InsertionResult.
+            1.  If either the node or edge are does not pass a validation check. send an exception chain in the InsertionResult.
             2.  If the node is not the edge's tail send an exception chain in the InsertionResult.
             3.  Let the node's outgoing_edges stack exception the addition.
             4.  If  node.outgoing_edges.push fails encapsulate its exception inside a NodeServiceException which is
@@ -320,7 +320,7 @@ class NodeService(IntegrityService[Node]):
         """
         method = "NodeService.add_outgoing_edge"
         
-        # Handle the case that, the node is not certified as safe.
+        # Handle the case that, the node does not pass a validation check.
         node_validation_result = self.validation.execute(candidate=node)
         if node_validation_result.is_failure:
             # Return the exception chain on failure.
@@ -333,7 +333,7 @@ class NodeService(IntegrityService[Node]):
                     )
                 )
             )
-        # Using the node.outgoing_edges handle the case that the edge is not certified as safe.
+        # Using the node.outgoing_edges handle the case that the edge does not pass a validation check.
         edge_validation_result = node.outgoing_edges.integrity_service.validation.execute(candidate=edge)
         if edge_validation_result.is_failure:
             # Return the exception chain on failure.
@@ -383,7 +383,7 @@ class NodeService(IntegrityService[Node]):
 def remove_outgoing_edge(self, node: Node, edge: Edge) -> DeletionResult[Edge]:
     """
     # ACTION:
-        1.  If either the node or edge are is not certified as safe send an exception chain in the DeletionResult.
+        1.  If either the node or edge are does not pass a validation check. send an exception chain in the DeletionResult.
         2.  If the node is not the edge's tail send an exception chain in the DeletionResult.
         3.  Let the node's outgoing_edges stack exception the removal.
         4.  If  node.outgoing_edges.pop fails encapsulate its exception inside a NodeServiceException which is
@@ -402,7 +402,7 @@ def remove_outgoing_edge(self, node: Node, edge: Edge) -> DeletionResult[Edge]:
     """
     method = "NodeService.remove_outgoing_edge"
     
-    # Handle the case that, the node is not certified as safe.
+    # Handle the case that, the node does not pass a validation check.
     node_validation_result = self.validation.execute(candidate=node)
     if node_validation_result.is_failure:
         # Return the exception chain on failure.
@@ -415,7 +415,7 @@ def remove_outgoing_edge(self, node: Node, edge: Edge) -> DeletionResult[Edge]:
                 )
             )
         )
-    # Using the node.outgoing_edges handle the case that the edge is not certified as safe.
+    # Using the node.outgoing_edges handle the case that the edge does not pass a validation check.
     edge_validation_result = node.outgoing_edges.integrity_service.validation.execute(candidate=edge)
     if edge_validation_result.is_failure:
         # Return the exception chain on failure.

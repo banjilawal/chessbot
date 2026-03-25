@@ -45,7 +45,7 @@ class PawnSpanner(Spanner):
     ) -> ComputationResult[Dict[str, CoordSpan]]:
         """
         Action:
-            1.  If the pawn_token's origin is not certified as safe send and exception chain in the
+            1.  If the pawn_token's origin does not pass a validation check. send and exception chain in the
                 computation result.
             2.  Handoff solution development to process_vector_dictionary with the PawnVectorSet that 
                 matches if the pawn_token

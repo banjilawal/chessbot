@@ -70,7 +70,7 @@ class TokenDeploymentProcess:
         """
         method =  f"{cls.__name__}.execute"
         
-        # Handle the case that, the token is not certified as safe.
+        # Handle the case that, the token does not pass a validation check.
         token_validation_result = token_service.validator.execute(token)
         if token_validation_result.is_failure:
             # Return the exception chain on failure
@@ -175,7 +175,7 @@ class TokenDeploymentProcess:
     ):
         method = f"{cls.__name__}._run_token_tests"
         
-        # Handle the case that, the token is not certified as safe.
+        # Handle the case that, the token does not pass a validation check.
         token_validation_result = token_service.validator.execute(token)
         if token_validation_result.is_failure:
             # Return the exception chain on failure.

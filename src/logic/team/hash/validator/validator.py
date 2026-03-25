@@ -74,7 +74,7 @@ class TeamHashValidationProcess(ValidationProcess[TeamHash]):
         # --- Cast the candidate to a TeamHash for additional tests ---#
         hash = cast(TeamHash, candidate)
         
-        # Handle the case that, the white team is not certified as safe.
+        # Handle the case that, the white team does not pass a validation check.
         white_team_validation_result = team_validator.execute(hash.white_team)
         if white_team_validation_result.is_failure:
             # Return the exception chain on failure.
@@ -84,7 +84,7 @@ class TeamHashValidationProcess(ValidationProcess[TeamHash]):
                     ex=white_team_validation_result.exception
                 )
             )
-        # Handle the case that, the black team is not certified as safe.
+        # Handle the case that, the black team does not pass a validation check.
         black_team_validation_result = team_validator.execute(hash.black_team)
         if black_team_validation_result.is_failure:
             # Return the exception chain on failure.

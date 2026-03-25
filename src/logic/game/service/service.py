@@ -1,4 +1,4 @@
-# src/logic/game/service/service.py
+# src/logic/game/service/process.py
 
 """
 Module: logic.game.service.service

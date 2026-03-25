@@ -76,7 +76,7 @@ class NodeTreeBuildProcess(BuildProcess[NodeTree]):
         """
         method = f"{cls.__class__.__name__}._build"
         
-        # Handle the case that the square_span is not certified as safe.
+        # Handle the case that the square_span does not pass a validation check.
         square_span_result = square_span_service.validation.execute(candidate=square_span)
         if square_span_result.is_failure:
             # Return the exception chain on failure.

@@ -27,7 +27,7 @@ class CommandBuilder(Builder[Command]):
     ) -> BuildResult[Command]:
         method = "CommandBuildProcess.build"
         
-        # Handle the case that, the request is not certified as safe.
+        # Handle the case that, the request does not pass a validation check.
         identity_validation_result = identity_service.validate_identity(
             id_candidate=id,
             name_candidate=name,

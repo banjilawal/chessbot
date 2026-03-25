@@ -1,4 +1,4 @@
-# src/logic/pair/listing/service/service.py
+# src/logic/pair/listing/service/process.py
 
 """
 Module: logic.pair.listing.service.service
@@ -90,7 +90,7 @@ class PairListService(IntegrityService[PairList]):
         """
         method = f"{self.__class__.__name__}.unique_nodes"
         
-        # Handle the case that, the pair_list is not certified as safe.
+        # Handle the case that, the pair_list does not pass a validation check.
         validation_result = self.validation.execute(pair_list)
         if validation_result.is_failure:
             return SearchResult.failure(

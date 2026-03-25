@@ -1,4 +1,4 @@
-# src/logic/arena/service/service.py
+# src/logic/arena/service/process.py
 
 """
 Module: logic.arena.service.service

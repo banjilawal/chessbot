@@ -1,4 +1,4 @@
-# src/logic/system/query/service/service.py
+# src/logic/system/query/service/process.py
 
 """
 Module: logic.system.query.service.service

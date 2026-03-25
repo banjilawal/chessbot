@@ -1,4 +1,4 @@
-# src/logic/vector/service.py
+# src/logic/vector/process.py
 
 """
 Module: logic.vector.service
@@ -164,8 +164,8 @@ class VectorService(IntegrityService[Vector]):
         Action:
             
             1.  Return an exception chain in the ComputationResult if, either
-                    *   The vector is not certified as safe.
-                    *   The scalar is not certified as safe.
+                    *   The vector does not pass a validation check.
+                    *   The scalar does not pass a validation check.
             2.  Using scalar c, and vector v, create vector p.
                     p = (v.x * c), (v.y * c)
             3.  If p does not satisfy the system's vector contract send an
@@ -186,7 +186,7 @@ class VectorService(IntegrityService[Vector]):
         """
         method = f"{self.__class__.__name__}.multiply_vector_by_scalar"
         
-        # Handle the case that, the vector is not certified as safe.
+        # Handle the case that, the vector does not pass a validation check.
         vector_validation_result = self.validation.execute(candidate=vector)
         if vector_validation_result.is_failure:
             # Send an exception chain on failure.
@@ -199,7 +199,7 @@ class VectorService(IntegrityService[Vector]):
                     ex=vector_validation_result.exception,
                 )
             )
-        # Handle the case that, the scalar is not certified as safe.
+        # Handle the case that, the scalar does not pass a validation check.
         scalar_validation_result = scalar_service.validation.execute(candidate=scalar)
         if scalar_validation_result.is_failure:
             # Send an exception chain on failure.
@@ -242,7 +242,7 @@ class VectorService(IntegrityService[Vector]):
         """
         Action:
             1.  Send an exception chain in the BuildResult if, either
-                    *   The coord is not certified as safe.
+                    *   The coord does not pass a validation check.
                     *   The coord's attributes don't meet Vector specs.
             2.  Otherwise, return the work product.
 
@@ -259,7 +259,7 @@ class VectorService(IntegrityService[Vector]):
         """
         method = f"{self.__class__.__name__}.convert_coord_to_vector"
         
-        # Handle the case that, the coord is not certified as safe.
+        # Handle the case that, the coord does not pass a validation check.
         coord_validation_result = coord_service.validation.execute(candidate=coord)
         if coord_validation_result.is_failure:
             # Send an exception chain on failure.

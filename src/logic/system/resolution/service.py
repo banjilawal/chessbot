@@ -1,4 +1,4 @@
-# src/logic/system/resolution/service.py
+# src/logic/system/resolution/process.py
 
 """
 module: logic.system.resolution.service

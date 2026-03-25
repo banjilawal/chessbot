@@ -1,7 +1,7 @@
 # src/logic/player/_/build/exception/route.py
 
 """
-Module: logic.player..build.exception.route
+Module: logic.player.build.exception.route
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -24,7 +24,7 @@ class PlayerBuildRouteException(ExecutionRouteException):
     Role:Error Tracing, Debugging, Super Exception
 
     Responsibilities:
-    1.  Indicate that the PlayerFactory does not have abuild rout for a Player subclass..
+    1.  Indicate that the PlayerFactory does not have abuild rout for a Player subclass.
 
     Super Class:
         *   ExecutionRoute

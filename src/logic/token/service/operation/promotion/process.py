@@ -205,7 +205,7 @@ class PawnPromotionProcess:
         
         Action:
             1.  Send an exception chain in the ValidationResult if:
-                    *   The rank is not certified as safe.
+                    *   The rank does not pass a validation check.
                     *   It's not a Pawn or King.
             2.  Otherwise, send the success result.
         Args:
@@ -220,7 +220,7 @@ class PawnPromotionProcess:
         """
         method = f"{cls.__class__.__name__}. _run_promotable_rank_tests"
         
-        # Handle the case that, the rank is not certified as safe.
+        # Handle the case that, the rank does not pass a validation check.
         validation_result = rank_service.validation.execute(rank)
         if validation_result.is_failure:
             # Return the exception chain on failure.

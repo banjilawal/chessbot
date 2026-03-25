@@ -60,7 +60,7 @@ class RankFactory(BuildProcess[Rank]):
         """
         method = f"{cls.__name__}.build"
         
-        # Handle the case that, the persona is not certified as safe.
+        # Handle the case that, the persona does not pass a validation check.
         validation_result = persona_service.validator.execute(candidate=persona)
         if validation_result.is_failure:
             # Return the exception chain on failure.

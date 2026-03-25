@@ -1,4 +1,4 @@
-# src/logic/scalar/service/service.py
+# src/logic/scalar/service/process.py
 
 """
 Module: logic.scalar.service.service
@@ -8,7 +8,7 @@ version: 1.0.0
 """
 from logic.scalar import Scalar
 
-# src/logic/system/service/integrity/service.py
+# src/logic/system/service/integrity/process.py
 
 """
 Module: logic.system.service.integrity.service

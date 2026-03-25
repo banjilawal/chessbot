@@ -49,7 +49,7 @@ class ArenaValidationException(ValidationException):
         *   See ValidationException class for inherited methods.
     """
     ERR_CODE = "ARENA_ARENA_VALIDATION_FAILURE"
-    MSG = "Safety check failed.."
+    MSG = "Safety check failed."
     MTHD = "validate"
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"

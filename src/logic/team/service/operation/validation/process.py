@@ -74,7 +74,7 @@ class TeamValidationProcess(ValidationProcess[Team]):
                     *   The schema
                     *   The board
                     *   The owner
-                are is not certified as safe by their services.
+                are does not pass a validation check. by their services.
             3.  The team has been certified as safe, send the validation success result.
         # PARAMETERS:
             *   candidate (Any)
@@ -114,7 +114,7 @@ class TeamValidationProcess(ValidationProcess[Team]):
         # --- Cast the candidate to a Team for additional tests ---#
         team = cast(Team, candidate)
         
-        # Handle the case that, team.id is not certified as safe.
+        # Handle the case that, team.id does not pass a validation check.
         id_validation = identity_service.validate_id(candidate=team.id)
         if id_validation.is_failure:
             # Return the exception chain on failure.
@@ -124,7 +124,7 @@ class TeamValidationProcess(ValidationProcess[Team]):
                     ex=id_validation.exception
                 )
             )
-        # Handle the case that, team.schema is not certified as safe.
+        # Handle the case that, team.schema does not pass a validation check.
         schema_validation = schema_service.validation.execute(team.schema)
         if schema_validation.is_failure:
             # Return the exception chain on failure.
@@ -186,7 +186,7 @@ class TeamValidationProcess(ValidationProcess[Team]):
         """
         method = "TeamValidationProcess._verify_team_owner"
         
-        # Handle the case that, either team.owner is not certified as safe or the analysis aborts.
+        # Handle the case that, either team.owner does not pass a validation check. or the analysis aborts.
         owner_team_relation = player_service.player_team_relation_analyzer.execute(
             candidate_primary=team.owner,
             candidate_satellite=team,
@@ -250,7 +250,7 @@ class TeamValidationProcess(ValidationProcess[Team]):
         """
         method = "TeamValidationProcess._verify_team_board"
         
-        # Handle the case that, either team.board is not certified as safe or the analysis aborts.
+        # Handle the case that, either team.board does not pass a validation check. or the analysis aborts.
         board_team_relation = board_service.board_team_relation_analyzer.execute(
             candidate_primary=team.board,
             candidate_satellite=team,

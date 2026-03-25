@@ -67,8 +67,8 @@ class SquareValidationProcess(ValidationProcess[Square]):
                     -   The candidate is null
                     -   The candidate is not a Square
                     -   The id and name are not certified as safe.
-                    -   The coord is not certified as safe.
-                    -   The board is not certified as safe.
+                    -   The coord does not pass a validation check.
+                    -   The board does not pass a validation check.
                     -   There is no bidirectional relationship between the board and square.
             2.  Otherwise, send the succes result.
         Args:
@@ -119,7 +119,7 @@ class SquareValidationProcess(ValidationProcess[Square]):
         # --- Cast candidate to a Square for additional tests. ---#
         square = cast(Square, candidate)
         
-        # Handle the case that, square.id or square.name is not certified as safe.
+        # Handle the case that, square.id or square.name does not pass a validation check.
         identity_validation_result = identity_service.validate_identity(
             id_candidate=square.id,
             name_candidate=square.name
@@ -208,7 +208,7 @@ class SquareValidationProcess(ValidationProcess[Square]):
             candidate_satellite=square,
         )
 
-        # Handle the case that, the analyzer did not complete the request..
+        # Handle the case that, the analyzer did not complete the request.
         if board_square_relation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(

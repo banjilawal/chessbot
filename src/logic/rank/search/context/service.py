@@ -1,4 +1,4 @@
-# src/logic/rank/searcher/service.py
+# src/logic/rank/searcher/process.py
 
 """
 Module: logic.rank.searcher.service

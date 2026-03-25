@@ -30,7 +30,7 @@ class TeamHashBuildProcess(BuildProcess[TeamHash]):
     ) -> BuildResult[TeamHash]:
         method = "TeamHashBuildProcess.build"
         
-        # Handle the case that, the white_team is not certified as safe.
+        # Handle the case that, the white_team does not pass a validation check.
         white_team_validation_result = team_validator.execute(white_team)
         if white_team_validation_result.is_failure:
             # Return the exception chain on failure.

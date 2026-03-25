@@ -133,7 +133,7 @@ class TokenBuild(BuildProcess[Token]):
     ):
         method = f"{cls.__name__}._run_build_param_checks"
         
-        # Handle the case that, the id is not certified as safe.
+        # Handle the case that, the id does not pass a validation check.
         id_validation = identity_service.validate_id(candidate=id)
         if id_validation.is_failure:
             # Return the exception chain on failure.
@@ -147,7 +147,7 @@ class TokenBuild(BuildProcess[Token]):
                     ex=id_validation.exception,
                 )
             )
-        # Handle the case that, the team is not certified as safe.
+        # Handle the case that, the team does not pass a validation check.
         owner_validation = team_validator.execute(candidate=owner)
         if owner_validation.is_failure:
             # Return the exception chain on failure.
@@ -161,7 +161,7 @@ class TokenBuild(BuildProcess[Token]):
                     ex=owner_validation.exception,
                 )
             )
-        # Handle the case that, the formation is not certified as safe.
+        # Handle the case that, the formation does not pass a validation check.
         formation_validation = formation_service.validator.execute(candidate=formation)
         if formation_validation.is_failure:
             # Return the exception chain on failure.

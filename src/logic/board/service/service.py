@@ -1,4 +1,4 @@
-# src/logic/board/service.py
+# src/logic/board/process.py
 
 """
 Module: logic.board.service
@@ -90,7 +90,7 @@ class BoardService(IntegrityService[Board]):
     ) -> InsertionResult:
         method = "BoardService.forma_team_on_board"
         
-        # Handle the case that, the team is not certified as safe.
+        # Handle the case that, the team does not pass a validation check.
         team_validation = team_service.validate(candidate=team)
         if team_validation.is_failure:
             # Return the exception chain on failure.
@@ -140,7 +140,7 @@ class BoardService(IntegrityService[Board]):
     def layout_board(self, board: Board) -> InsertionResult[bool]:
         method = "BoardService.layout_board"
         
-        # Handle the case that, the board is not certified as safe.
+        # Handle the case that, the board does not pass a validation check.
         validation = self.validation.execute(candidate=board)
         if validation.is_failure:
             # Return exception chain on failure
@@ -188,7 +188,7 @@ class BoardService(IntegrityService[Board]):
     def generate_graph(self, board: Board) -> ComputationResult[Graph]:
         method = "BoardService.generate_graph"
     
-        # Handle the case that, the board is not certified as safe.
+        # Handle the case that, the board does not pass a validation check.
         validation = self.validation.execute(candidate=board)
         if validation.is_failure:
             # Return exception chain on failure

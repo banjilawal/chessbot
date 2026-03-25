@@ -71,7 +71,7 @@ class TokenReadinessAnalysis(RelationAnalysis[ReadinessState.FREE, Token]):
         """
         method = f"{cls.__name__}.analyze"
         
-        # Handle the case that, the token is not certified as safe.
+        # Handle the case that, the token does not pass a validation check.
         validation_result = token_validator.execute(candidate=candidate_satellite)
         # Send the exception chain on failure.
         if validation_result.is_failure:

@@ -27,7 +27,7 @@ class RequestBuildProcess(BuildProcess[Request]):
     ) -> BuildResult[Request]:
         method = "RequestBuild.build"
         
-        # Handle the case that, the name is not certified as safe.
+        # Handle the case that, the name does not pass a validation check.
         name_validation_result = identity_service.validate_name(candidate=name)
         # Return the exception chain on failure.
         if name_validation_result.is_failure:

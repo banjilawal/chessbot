@@ -96,7 +96,7 @@ class PairValidationProcess(ValidationProcess[Pair]):
         # --- Cast the candidate to an Node for additional tests ---#
         pair = cast(Pair, candidate)
         
-        # Handle the case that either the head or tail is not certified as safe.
+        # Handle the case that either the head or tail does not pass a validation check.
         for member in pair.members:
             validation_result = node_validator.execute(candidate=member)
             if validation_result.is_failure:

@@ -1,4 +1,4 @@
-# src/logic/coord/service/service.py
+# src/logic/coord/service/process.py
 
 """
 Module: logic.coord.service.service
@@ -176,12 +176,12 @@ class CoordService(IntegrityService[Coord]):
     def euclidean_distance(self, u: Coord, v: Coord) -> ComputationResult[int]:
         method = "CoordService.euclidean_distance"
         
-        # Handle the case that, the u is not certified as safe.
+        # Handle the case that, the u does not pass a validation check.
         u_validation = self._validator.execute(candidate=u)
         if u_validation.is_failure:
             return ComputationResult.failure(u_validation.exception)
         
-        # Handle the case that, v is not certified as safe.
+        # Handle the case that, v does not pass a validation check.
         v_validation = self._validator.execute(candidate=v)
         if v_validation.is_failure:
             return ComputationResult.failure(v_validation.exception)

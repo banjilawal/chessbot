@@ -61,7 +61,7 @@ class SquareBuildProcess(BuildProcess[Square]):
         """
         Action:
             1.  Send an exception chain in the BuildResult if
-                    -   Any build param fails is not certified as safe.
+                    -   Any build param fails does not pass a validation check.
                     -   The square's attributes have already been used on the board.
             2.  Build the Square instance with the params.
             3.  Send an exception chain in the BuildResult if
@@ -83,7 +83,7 @@ class SquareBuildProcess(BuildProcess[Square]):
         """
         method = f"{cls.__class__.__name__}.build"
         
-        # Handle the case that, a build param fails is not certified as safe.
+        # Handle the case that, a build param fails does not pass a validation check.
         build_param_validation_result = cls._run_build_param_checks(
             id=id,
             name=name,

@@ -53,7 +53,7 @@ class NodeBuildProcess(BuildProcess[Node]):
         """
         method = "NodeBuildProcess.build"
         
-        # Handle the case that, the square is not certified as safe.
+        # Handle the case that, the square does not pass a validation check.
         validation_result = square_validator.execute(square)
         if validation_result.is_failure:
             # Return the exception chain on failure.

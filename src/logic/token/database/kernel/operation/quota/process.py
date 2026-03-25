@@ -50,7 +50,7 @@ class RankQuotaAnalysis:
         
         Actions:
             1.  Send an exception chain in the ComputationResult if:
-                    *   The rank is not certified as safe.
+                    *   The rank does not pass a validation check.
                     *   The rank search fails.
             2.  Otherwise, send the success result.
         Args:
@@ -64,7 +64,7 @@ class RankQuotaAnalysis:
         """
         method = f"{cls.__name__}.execute"
         
-        # Handle the case that, the rank is not certified as safe.
+        # Handle the case that, the rank does not pass a validation check.
         rank_validation_result = rank_service.validation.execute(rank)
         if rank_validation_result.is_failure:
             # Return the exception chain on failure.

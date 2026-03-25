@@ -53,7 +53,7 @@ class TokenPushCoordProcess:
 
         Action:
             1.  Send an exception chain in the InsertionResult if:
-                    *   Either the token or the coord are not certified as safe..
+                    *   Either the token or the coord are not certified as safe.
                     *   The token is already at the coord.
                     *   The CoordDatabase does not complete the insertion.
             2.  Otherwise, send the success result.
@@ -71,7 +71,7 @@ class TokenPushCoordProcess:
         """
         method = "TokenService.execute_to_token"
         
-        # Handle the case that, the token is not certified as safe.
+        # Handle the case that, the token does not pass a validation check.
         token_validation_result = token_validator.execute(token)
         if token_validation_result.is_failure:
             # Return the exception chain on failure.
@@ -105,7 +105,7 @@ class TokenPushCoordProcess:
                     )
                 )
             )
-        # Handle the case that, the coord is not certified as safe.
+        # Handle the case that, the coord does not pass a validation check.
         coord_validation_result = coord_service.validation.execute(coord)
         if coord_validation_result.is_failure:
             # Return the exception chain on failure.

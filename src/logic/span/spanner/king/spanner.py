@@ -45,7 +45,7 @@ class KingSpanner(Spanner):
     ) -> ComputationResult[Dict[str, CoordSpan]]:
         """
         Action:
-            1.  If the origin is not certified as safe send and exception chain in the computation
+            1.  If the origin does not pass a validation check. send and exception chain in the computation
                 result.
             2.  Iterate through the vectors to get rays from the origin. If any ray derivation fails
                 send an exception chain in the computation result. Else append to the span.

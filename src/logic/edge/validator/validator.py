@@ -93,7 +93,7 @@ class EdgeValidationProcess(ValidationProcess[Edge]):
         # --- Cast the candidate to an Edge for additional tests. ---#
         edge = cast(candidate, Edge)
         
-        # Handle the case that, the label is not certified as safe
+        # Handle the case that, the label does not pass a validation check.
         label_validation_result = identity_service.validate_id(edge.id)
         # Return the exception chain on failure.
         if label_validation_result.is_failure:

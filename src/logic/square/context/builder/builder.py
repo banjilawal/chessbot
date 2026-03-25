@@ -84,8 +84,8 @@ class SquareContextBuildProcess(BuildProcess[SquareContext]):
             2.  Send an exception chain in the BuildResult if either
                     *   One and only one of attributes is not null.
                     *   There is no build route for the enabled option.
-                    *   The enabled attribute is not certified as safe by its service.
-                are is not certified as safe by their services.
+                    *   The enabled attribute does not pass a validation check. by its service.
+                are does not pass a validation check. by their services.
             3.  Build the appropriate query, sed the build success result.
             
         Args:
