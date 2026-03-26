@@ -54,7 +54,7 @@ class EdgeValidationProcess(ValidationProcess[Edge]):
         # ACTION:
             1.  If the candidate fails existence or type tests send the exception in the ValidationResult.
                 Else, cast to Edge instance, edge.
-            2.  If either the head, tail, distance, heuristic or weight fail verification send an exception chain 
+            2.  If either the head, tail, dist, heuristic or weight fail verification send an exception chain
                 in the ValidationResult. Else, send the edge in the ValidationResult.
         # PARAMETERS:
             *   candidate (Any)
@@ -103,7 +103,7 @@ class EdgeValidationProcess(ValidationProcess[Edge]):
                     ex=label_validation_result.exception
                 )
             )
-        # Handle the case that, the distance is not at between 0 and the board's diagonal.
+        # Handle the case that, the dist is not at between 0 and the board's diagonal.
         distance_validation_result = number_validator.execute(
             candidate=edge.distance,
             floor=0,
@@ -124,7 +124,7 @@ class EdgeValidationProcess(ValidationProcess[Edge]):
         # Handle the case that, the heuristic is not a number.
         heuristic_validation_result = number_validator.execute(
             candidate=edge.heuristic,
-            # Heuristic is probably going to be distance and the max ransom (the king's).
+            # Heuristic is probably going to be dist and the max ransom (the king's).
             ceiling=sys.maxsize,
             floor=0,
         )

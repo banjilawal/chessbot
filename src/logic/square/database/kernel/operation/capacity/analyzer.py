@@ -1,4 +1,4 @@
-# src/logic/square/database/kernel/operation/quota/process.py
+# src/logic/square/database/kernel/operation/quota/compute.py
 
 """
 Module: logic.square.database.kernel.operation.quota.analyzer

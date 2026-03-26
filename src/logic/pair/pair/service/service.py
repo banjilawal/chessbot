@@ -1,4 +1,4 @@
-# src/logic/pair/pair/service/process.py
+# src/logic/pair/pair/service/compute.py
 
 """
 Module: logic.pair.pair.service.service

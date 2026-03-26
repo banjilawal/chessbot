@@ -1,36 +1,38 @@
-# src/logic/token/service/operation/computation/process.py
+# src/logic/token/service/operation/computation/multiplication/computation.py
 
 """
-Module: logic.token.service.operation.computation.process
+Module: logic.token.service.operation.computation.multiplication.computation
 Author: Banji Lawal
 Created: 2026-03-25
 version: 1.0.0
 """
 
 from __future__ import annotations
-n
-from logic.scalar import Scalar, ScalarService
+
 from logic.system import ComputationResult
-from logic.coord import Coord, CoordMultiplicationException, CoordValidationProcess
+from logic.scalar import Scalar, ScalarService
+from logic.coord import Coord, CoordMultiplicationException, CoordService
 
 class CoordScalarProduct:
     """
-    Role:Service, Lifecycle Management, Encapsulation, API layer.
+    Role:
+        -   Worker
+        -   Computation
 
     Responsibilities:
-    1.  Public facing Coord microservice API.
-    2.  Encapsulate integrity assurance logic in one extendable module.
-    3.  Authoritative, single source of truth for Coord state by providing single entry and exit points to Coord
-        lifecycle.
-
+        1.  Compute the product of a Coord and a Scalar.
+        
+    Attributes:
+        
+    Properties:
+        -   compute(
+                    coord: Coord,
+                    scalar: Scalar,
+                    coord_service: CoordService,
+                    scalar_service: ScalarService,
+            ) -> ComputationResult[[Coord]]
+    
     Super Class:
-        *   IntegrityService
-
-    Provides:
-
-
-    # INHERITED ATTRIBUTES:
-        *   See IntegrityService for inherited attributes.
     """
     
     @classmethod
@@ -38,9 +40,9 @@ class CoordScalarProduct:
             cls,
             coord: Coord,
             scalar: Scalar,
+            coord_service: CoordService = CoordService(),
             scalar_service: ScalarService = ScalarService(),
-            coord_validator: CoordValidationProcess = CoordValidationProcess(),
-    ) -> ComputationResult[[Coord]]:
+    ) -> ComputationResult[Coord]:
         """
         Action:
             1.  Send an exception chain in the ComputationResult if:
@@ -51,13 +53,17 @@ class CoordScalarProduct:
         Args:
             coord: Coord
             scalar: Scalar
+            coord_service: CoordService
             scalar_service: ScalarService
-            coord_validator: CoordValidationProcess
+        Returns:
+            ComputationResult[Coord]
+        Raises:
+            CoordMultiplicationException
         """
         method = f"{cls.__name__}.compute"
         
         # Handle the case that, the coord does not pass a validation check.
-        coord_validation_result = coord_validator.execute(candidate=coord)
+        coord_validation_result =coord_service.validation.execute(coord)
         if coord_validation_result.is_failure:
             # Return exception chain on failure.
             return ComputationResult.failure(
@@ -86,14 +92,13 @@ class CoordScalarProduct:
                     ex=scalar_validation_result.exception,
                 )
             )
-        # --- Forward the work product to the caller. ---#
-        product = Coord(
-                row=coord.row * scalar.value,
+        # --- Create the product. ---#
+        product_build_result = coord_service.build.execute(
+            row=coord.row * scalar.value,
             column=coord.column * scalar.value
         )
         # Handle the case that, the product does not satisfy integrity requirements
-        product_validation_result = coord_validator.execute(product)
-        if product_validation_result.is_failure:
+        if product_build_result.is_failure:
             # Return exception chain on failure.
             return ComputationResult.failure(
                 CoordMultiplicationException(
@@ -103,8 +108,9 @@ class CoordScalarProduct:
                     msg=CoordMultiplicationException.MSG,
                     err_code=CoordMultiplicationException.ERR_CODE,
                     rslt_type=CoordMultiplicationException.RSLT_TYPE,
-                    ex=product_validation_result.exception,
+                    ex=product_build_result.exception,
                 )
             )
         # --- Forward the work product to the caller. ---#
+        ComputationResult.success(product_build_result.payload)
     

@@ -1,4 +1,4 @@
-# src/logic/player/database/process.py
+# src/logic/player/database/compute.py
 
 """
 Module: logic.player.database.service

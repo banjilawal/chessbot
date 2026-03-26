@@ -45,7 +45,7 @@ class PairValidationProcess(ValidationProcess[Pair]):
         Actin:
             1.  If the candidate fails existence or type tests send the exception in the ValidationResult.
                 Else, cast to Node instance, node.
-            2.  If either the head, tail, distance, heuristic or weight fail verification send an exception chain
+            2.  If either the head, tail, dist, heuristic or weight fail verification send an exception chain
                 in the ValidationResult. Else, send the node in the ValidationResult.
                 
         Args:

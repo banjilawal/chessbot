@@ -1,4 +1,4 @@
-# src/logic/square/database/kernel/operation/token/process.py
+# src/logic/square/database/kernel/operation/token/compute.py
 
 """
 Module: logic.square.database.kernel.operation.token.service

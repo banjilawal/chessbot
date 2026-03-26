@@ -1,7 +1,7 @@
-# src/logic/token/service/operation/computation/multiplication/exception/work.py
+# src/logic/token/service/operation/computation/distance/exception/work.py
 
 """
-Module: logic.token.service.operation.computation.multiplication.exception.work
+Module: logic.token.service.operation.computation.distance.exception.work
 Author: Banji Lawal
 Created: 2026-03-25
 version: 1.0.0
@@ -11,14 +11,14 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# COORD_MULTIPLICATION_FAILURE #======================#
-    "CoordMultiplicationException",
+    # ======================# EUCLIDEAN_DISTANCE_FAILURE #======================#
+    "EuclideanDistanceException",
 ]
 
 from logic.system import ComputationException
 
-# ======================# COORD_MULTIPLICATION_FAILURE #======================#
-class CoordMultiplicationException(ComputationException):
+# ======================# EUCLIDEAN_DISTANCE_FAILURE #======================#
+class EuclideanDistanceException(ComputationException):
     """
     Role:
         -   Worker Method Identifier
@@ -26,7 +26,7 @@ class CoordMultiplicationException(ComputationException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that a CoordMultiplicationProcess was not completed.
+        1.  Indicate that a EuclideanDistanceProcess was not completed.
         2.  Identify the method where the failure occurred.
 
     Attributes:
@@ -43,8 +43,8 @@ class CoordMultiplicationException(ComputationException):
     Super Class:
         ComputationException
     """
-    MSG = "Coord multiplication failed."
-    ERR_CODE = "COORD_MULTIPLICATION_FAILURE"
+    MSG = "Euclidean Distance computation failed."
+    ERR_CODE = "EUCLIDEAN_DISTANCE_FAILURE"
     
     def __init__(
             self,

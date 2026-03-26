@@ -1,4 +1,4 @@
-# src/logic/board/process.py
+# src/logic/board/compute.py
 
 """
 Module: logic.board.service

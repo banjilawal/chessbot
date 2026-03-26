@@ -1,4 +1,4 @@
-# template/service/process.py
+# template/service/compute.py
 
 """
 Module: template.service.service

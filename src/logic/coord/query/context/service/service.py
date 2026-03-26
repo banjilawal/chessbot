@@ -1,4 +1,4 @@
-# src/logic/coordContext/query/query/service/process.py
+# src/logic/coordContext/query/query/service/compute.py
 
 """
 Module: logic.coordContext.query.query.service.service

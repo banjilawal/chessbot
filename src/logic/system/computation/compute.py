@@ -1,4 +1,4 @@
-# src/logic/system/relation/analysis/process.py
+# src/logic/system/relation/analysis/compute.py
 
 """
 Module: logic.system.relation.analysis.analyzer

@@ -1,4 +1,4 @@
-# src/logic/board/database/process.py
+# src/logic/board/database/compute.py
 
 """
 Module: logic.board.database.service

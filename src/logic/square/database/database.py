@@ -1,4 +1,4 @@
-# src/logic/square/database/process.py
+# src/logic/square/database/compute.py
 
 """
 Module: logic.square.database.service

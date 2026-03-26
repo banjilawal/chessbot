@@ -1,4 +1,4 @@
-# src/logic/owner/searcher/process.py
+# src/logic/owner/searcher/compute.py
 
 """
 Module: logic.owner.searcher.exception

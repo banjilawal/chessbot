@@ -1,4 +1,4 @@
-# src/logic/rank/service/process.py
+# src/logic/rank/service/compute.py
 
 """
 Module: logic.rank.service.service

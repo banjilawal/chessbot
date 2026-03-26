@@ -1,4 +1,4 @@
-# src/logic/team/service/process.py
+# src/logic/team/service/compute.py
 
 """
 Module: logic.team.service.service

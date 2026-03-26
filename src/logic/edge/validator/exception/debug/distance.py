@@ -1,7 +1,7 @@
-# src/logic/graph/square/validation/exception/debug/distance.py
+# src/logic/graph/square/validation/exception/debug/dist.py
 
 """
-Module: logic.graph.square.validation.exception.debug/distance
+Module: logic.graph.square.validation.exception.debug/dist
 Author: Banji Lawal
 Created: 2026-02-17
 version: 1.0.0
@@ -21,7 +21,7 @@ class EdgeDistanceException(EdgeDebugException):
     Role:Error Tracing, Debugging
 
     Responsibilities:
-    1.  Indicate that a candidate was not validated as an edge because its distance was a negative number.
+    1.  Indicate that a candidate was not validated as an edge because its dist was a negative number.
 
     Super Class:
         *   EdgeDebugException
@@ -33,4 +33,4 @@ class EdgeDistanceException(EdgeDebugException):
     None
     """
     ERR_CODE = "EDGE_DISTANCE_EXCEPTION"
-    MSG = "Edge validation failed: the distance cannot be a negative number."
+    MSG = "Edge validation failed: the dist cannot be a negative number."

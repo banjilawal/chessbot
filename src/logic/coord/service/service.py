@@ -1,4 +1,4 @@
-# src/logic/coord/service/process.py
+# src/logic/coord/service/compute.py
 
 """
 Module: logic.coord.service.service
@@ -186,7 +186,7 @@ class CoordService(IntegrityService[Coord]):
         if v_validation.is_failure:
             return ComputationResult.failure(v_validation.exception)
         
-        # Compute the Euclidean distance and return it.
+        # Compute the Euclidean dist and return it.
         distance = sqrt(pow(base=(u.row - v.row), exp=2) + pow(base=(u.column - v.column), exp=2))
         return ComputationResult.success(payload=cast(int, distance))
         

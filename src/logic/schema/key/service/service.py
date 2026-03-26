@@ -1,4 +1,4 @@
-# src/logic/schema/key/service/process.py
+# src/logic/schema/key/service/compute.py
 
 """
 Module: logic.schema.key.service.service

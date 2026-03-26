@@ -48,7 +48,7 @@ class EdgeBuildProcess(BuildProcess[Edge]):
          """
          # ACTION:
              1. If any build param fails its certification tests send the exception in the BuildResult.
-             2. Use coord_service to compute the edge's Euclidean distance. If the computation fails send the
+             2. Use coord_service to compute the edge's Euclidean dist. If the computation fails send the
                 exception in the BuildResult.
             3.  Return an Edge whose heuristic is zero in the BuildResult.
          # PARAMETERS:
@@ -107,12 +107,12 @@ class EdgeBuildProcess(BuildProcess[Edge]):
                      ex=HeadCannotBeTailException(f"{method}: {HeadCannotBeTailException.MSG}")
                  )
              )
-         # --- After the inputs have been validated compute the edge's Euclidean distance. ---#
+         # --- After the inputs have been validated compute the edge's Euclidean dist. ---#
          distance_computation_result = coord_service.euclidean_distance(
              u=head.square.coord,
              v=tail.square.coord
          )
-         # Handle the case that, the distance is not computed successfully.
+         # Handle the case that, the dist is not computed successfully.
          if distance_computation_result.is_failure:
              # Return the exception chain on failure
              return BuildResult.failure(

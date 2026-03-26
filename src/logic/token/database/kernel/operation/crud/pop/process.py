@@ -1,4 +1,4 @@
-# src/logic/token/database/kernel/operation/crud/pop/process.py
+# src/logic/token/database/kernel/operation/crud/pop/compute.py
 
 """
 Module: logic.token.database.kernel.operation.crud.pop.popper

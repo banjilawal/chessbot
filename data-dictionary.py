@@ -111,12 +111,12 @@ class Coordinate(BaseModel):
 
 class CartesianDistance(BaseModel):
   """
-  Calculates the squared Euclidean distance between two coordinates.
+  Calculates the squared Euclidean dist between two coordinates.
 
   Attributes:
     p (Coordinate): The first point.
     q (Coordinate): The second point.
-    distance (int): The squared Euclidean distance, calculated automatically.
+    distance (int): The squared Euclidean dist, calculated automatically.
   """
   p: Coordinate
   q: Coordinate
@@ -125,10 +125,10 @@ class CartesianDistance(BaseModel):
   class Config:
     frozen = True # Makes the model immutable
 
-  @validator('distance', always=True)
+  @validator('dist', always=True)
   def calculate_distance(cls, v: Optional[int], values) -> int:
     """
-    Pydantic coord_stack_validator to calculate the distance automatically upon creation.
+    Pydantic coord_stack_validator to calculate the dist automatically upon creation.
     """
     p = values.get('p')
     q = values.get('q')
@@ -257,7 +257,7 @@ class Coordinate(BaseModel):
 
 class CartesianDistance(BaseModel):
   """
-  Calculates the squared Euclidean distance between two coordinates.
+  Calculates the squared Euclidean dist between two coordinates.
   """
   p: Coordinate
   q: Coordinate
@@ -266,7 +266,7 @@ class CartesianDistance(BaseModel):
   class Config:
     frozen = True
 
-  @validator('distance', always=True)
+  @validator('dist', always=True)
   def calculate_distance(cls, v: Optional[int], values) -> int:
     p = values.get('p')
     q = values.get('q')

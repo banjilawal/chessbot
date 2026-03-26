@@ -1,4 +1,4 @@
-# src/logic/persona/key/service/process.py
+# src/logic/persona/key/service/compute.py
 
 """
 Module: logic.persona.key.service.service

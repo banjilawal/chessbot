@@ -1,4 +1,4 @@
-# src/logic/snapshot/service/process.py
+# src/logic/snapshot/service/compute.py
 
 """
 Module: logic.snapshot.service.service

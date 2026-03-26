@@ -1,4 +1,4 @@
-# src/logic/player/service/process.py
+# src/logic/player/service/compute.py
 
 """
 Module: logic.player.service.service

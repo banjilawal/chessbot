@@ -11,6 +11,7 @@ version: 1.0.0
 
 # Packages
 from .distance import *
+from .addition import *
 from .multiplication import *
 
 # Modules

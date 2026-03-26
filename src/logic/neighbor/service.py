@@ -1,4 +1,4 @@
-# src/logic/neighbor/process.py
+# src/logic/neighbor/compute.py
 
 """
 Module: logic.neighbor.service

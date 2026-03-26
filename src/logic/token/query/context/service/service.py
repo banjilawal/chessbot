@@ -1,4 +1,4 @@
-# src/logic/tokenContext/query/query/service/process.py
+# src/logic/tokenContext/query/query/service/compute.py
 
 """
 Module: logic.tokenContext.query.query.service.service

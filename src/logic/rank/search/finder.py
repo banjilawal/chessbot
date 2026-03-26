@@ -1,4 +1,4 @@
-# src/logic/rank/searcher/process.py
+# src/logic/rank/searcher/compute.py
 
 """
 Module: logic.rank.searcher.searcher

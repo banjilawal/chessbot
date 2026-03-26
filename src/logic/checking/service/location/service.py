@@ -1,4 +1,4 @@
-# src/logic/mate/process.py
+# src/logic/mate/compute.py
 
 """
 Module: logic.mate.table
