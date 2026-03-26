@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.coord import CoordBuild, CoordValidation
+from logic.coord import CoordArithmeticController, CoordBuildProcess, CoordValidationProcess
 
 
 class CoordOpsController:
@@ -29,13 +29,15 @@ class CoordOpsController:
     
     Super Class:
     """
-    _build: CoordBuild
-    _validation: CoordValidation
+    _build: CoordBuildProcess
+    _validation: CoordValidationProcess
+    _arithmetic: CoordArithmeticController
     
     def __init__(
             self,
-            build: CoordBuild = CoordBuild(),
-            validation: CoordValidation = CoordValidation(),
+            build: CoordBuildProcess = CoordBuildProcess(),
+            validation: CoordValidationProcess = CoordValidationProcess(),
+            arithmetic_controller: CoordArithmeticController = CoordArithmeticController(),
     ):
         """
         Args:
@@ -44,11 +46,16 @@ class CoordOpsController:
         """
         self._build = build
         self._validation = validation
+        self._arithmetic = arithmetic_controller
         
     @property
-    def build(self) -> CoordBuild:
+    def build(self) -> CoordBuildProcess:
         return self._build
         
     @property
-    def validation(self) ->CoordValidation:
+    def validation(self) ->CoordValidationProcess:
         return self._validation
+    
+    @property
+    def arithmetic(self) -> CoordArithmeticController:
+        return self._arithmetic
