@@ -27,7 +27,7 @@ class CoordOpsController:
 
     Provides:
     
-    Parent:
+    Super Class:
     """
     _build: CoordBuild
     _validation: CoordValidation

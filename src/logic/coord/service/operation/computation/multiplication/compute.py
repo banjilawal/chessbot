@@ -49,7 +49,7 @@ class CoordScalarProduct:
                 -   The coord does not pass a validation check.
                 -   The scalar does not pass a validation check.
                 -   Their product does not satisfy the constraints of the Coord.
-            2.  Otherwise, send the success resul.
+            2.  Otherwise, send the success result.
         Args:
             coord: Coord
             scalar: Scalar

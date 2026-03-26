@@ -10,9 +10,10 @@ version: 1.0.0
 # =========== TOKEN.SERVICE.OPERATION.COMPUTATION PACKAGE CONTENTS ===========#
 
 # Packages
+from .convert import *
 from .distance import *
 from .addition import *
 from .multiplication import *
 
 # Modules
-from .controller import ComputationController
+from .controller import CoordArithmeticController
