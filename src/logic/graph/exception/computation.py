@@ -1,7 +1,7 @@
-# src/logic/graph/exception/computation.py
+# src/logic/graph/exception/arithmetic.py
 
 """
-Module: logic.graph.exception.computation
+Module: logic.graph.exception.arithmetic
 Author: Banji Lawal
 Created: 2026-02-18
 version: 1.0.0

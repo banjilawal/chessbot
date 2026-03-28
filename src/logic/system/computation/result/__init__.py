@@ -1,7 +1,7 @@
-# src/logic/system/computation/result/__init__.py
+# src/logic/system/arithmetic/result/__init__.py
 
 """
-Module: logic.system.computation.result.__init__
+Module: logic.system.arithmetic.result.__init__
 Author: Banji Lawal
 Created: 2026-01-25
 Version: 1.0.0

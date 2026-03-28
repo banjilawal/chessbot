@@ -12,7 +12,7 @@ version: 1.0.0
 # Packages
 from .build import *
 from .validation import *
-from .computation import *
+from .arithmetic import *
 
 # Modules
 from .controller import CoordOpsController

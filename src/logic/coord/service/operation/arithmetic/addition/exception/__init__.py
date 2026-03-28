@@ -1,7 +1,7 @@
-# src/logic/token/service/operation/computation/addition/exception/__init__.py
+# src/logic/token/service/operation/arithmetic/addition/exception/__init__.py
 
 """
-Module: logic.token.service.operation.computation.addition.exception.__init__
+Module: logic.token.service.operation.arithmetic.addition.exception.__init__
 Author: Banji Lawal
 Created: 2026-03-25
 version: 1.0.0
@@ -10,7 +10,7 @@ version: 1.0.0
 # =========== TOKEN.SERVICE.OPERATION.COMPUTATION.ADDITION PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .debug import *
 
 # Modules
 from .work import CoordAdditionException

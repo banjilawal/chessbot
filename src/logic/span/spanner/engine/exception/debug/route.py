@@ -25,7 +25,7 @@ class SpanComputationRouteException(ExecutionRouteException):
     # TASK: Capture Error Variable State
 
     Responsibilities:
-    1.  A failure ComputationResult was sent because there was no computation route for the RayProvider.
+    1.  A failure ComputationResult was sent because there was no arithmetic route for the RayProvider.
 
     Super Class:
         *   ExecutionRoute
@@ -50,7 +50,7 @@ class SpanComputationRouteException(ExecutionRouteException):
         *   See ExecutionRoute class for inherited methods.
     """
     ERR_CODE = "SPAN_COMPUTATION_ROUTE_EXCEPTION"
-    MSG = "No span computation route for the ray provider."
+    MSG = "No span arithmetic route for the ray provider."
     
     def __init__(
             self,

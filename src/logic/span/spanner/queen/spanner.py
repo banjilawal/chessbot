@@ -71,7 +71,7 @@ class QueenSpanner(Spanner):
             diagonal_ray_provider=diagonal_ray_provider,
             perpendicular_ray_provider=perpendicular_ray_provider,
         )
-        # Handle the case that the span computation does not produce a result.
+        # Handle the case that the span arithmetic does not produce a result.
         if span_result.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(

@@ -1,7 +1,7 @@
-# src/logic/diagonalRay/computation/exception/work.py
+# src/logic/diagonalRay/arithmetic/exception/work.py
 
 """
-Module: logic.diagonalRay.computation.exception.work
+Module: logic.diagonalRay.arithmetic.exception.work
 Author: Banji Lawal
 Created: 2025-09-08
 Version: 1.0.0
@@ -57,7 +57,7 @@ class RayComputationException(ComputationException):
     OP = "Computation"
     RSLT_TYPE = "ComputationResult"
     ERR_CODE = "RAY_COMPUTATION_FAILURE"
-    MSG = "CoordRay computation failed."
+    MSG = "CoordRay arithmetic failed."
     
     def __init__(
             self,

@@ -48,7 +48,7 @@ class EdgeBuildProcess(BuildProcess[Edge]):
          """
          # ACTION:
              1. If any build param fails its certification tests send the exception in the BuildResult.
-             2. Use coord_service to compute the edge's Euclidean dist. If the computation fails send the
+             2. Use coord_service to compute the edge's Euclidean dist. If the arithmetic fails send the
                 exception in the BuildResult.
             3.  Return an Edge whose heuristic is zero in the BuildResult.
          # PARAMETERS:

@@ -1,7 +1,7 @@
-# src/logic/token/service/operation/computation/multiplication/exception/work.py
+# src/logic/token/service/operation/arithmetic/multiplication/exception/work.py
 
 """
-Module: logic.token.service.operation.computation.multiplication.exception.work
+Module: logic.token.service.operation.arithmetic.multiplication.exception.work
 Author: Banji Lawal
 Created: 2026-03-25
 version: 1.0.0

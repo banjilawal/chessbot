@@ -100,7 +100,7 @@ class SpannerEngine:
                     )
                 )
             )
-        # --- Route to the appropriate computation logic. ---#
+        # --- Route to the appropriate arithmetic logic. ---#
         
         # Get a queen's span if perpendicular and diagonal providers are included.
         if diagonal_ray_provider is not None and perpendicular_ray_provider is not None:

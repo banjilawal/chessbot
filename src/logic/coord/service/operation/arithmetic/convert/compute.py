@@ -1,7 +1,7 @@
-# src/logic/token/service/operation/computation/convert/computation.py
+# src/logic/token/service/operation/arithmetic/convert/arithmetic.py
 
 """
-Module: logic.token.service.operation.computation.convert.computation
+Module: logic.token.service.operation.arithmetic.convert.arithmetic
 Author: Banji Lawal
 Created: 2026-03-25
 version: 1.0.0

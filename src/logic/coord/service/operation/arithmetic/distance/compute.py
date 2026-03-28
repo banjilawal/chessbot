@@ -1,7 +1,7 @@
-# src/logic/token/service/operation/computation/distance/computation.py
+# src/logic/token/service/operation/arithmetic/distance/arithmetic.py
 
 """
-Module: logic.token.service.operation.computation.distance.computation
+Module: logic.token.service.operation.arithmetic.distance.arithmetic
 Author: Banji Lawal
 Created: 2026-03-25
 version: 1.0.0

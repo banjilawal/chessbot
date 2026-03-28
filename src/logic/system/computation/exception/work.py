@@ -1,7 +1,7 @@
-# src/logic/system/computation/exception/work.py
+# src/logic/system/arithmetic/exception/work.py
 
 """
-Module: logic.system.computation.exception.work
+Module: logic.system.arithmetic.exception.work
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
@@ -27,7 +27,7 @@ class ComputationException(OperationException):
         - Exception Messaging
 
     Responsibilities:
-        1.  Indicate a computation was unsuccessful and did not produce a result.
+        1.  Indicate a arithmetic was unsuccessful and did not produce a result.
         2.  Identify the method where the failure occurred.
         
     Attributes:

@@ -24,7 +24,7 @@ class SquareStackCountsAnalysisException(ComputationException):
     # TASK: Worker Method Identifier
 
     Responsibilities:
-    1.  Encapsulate the Layer-1 DebugException which describes the cause the computation failed.
+    1.  Encapsulate the Layer-1 DebugException which describes the cause the arithmetic failed.
 
     Super Class:
         *   ComputationException

@@ -1,7 +1,7 @@
-# src/logic/token/service/operation/computation/multiplication/computation.py
+# src/logic/token/service/operation/arithmetic/multiplication/arithmetic.py
 
 """
-Module: logic.token.service.operation.computation.multiplication.computation
+Module: logic.token.service.operation.arithmetic.multiplication.arithmetic
 Author: Banji Lawal
 Created: 2026-03-25
 version: 1.0.0

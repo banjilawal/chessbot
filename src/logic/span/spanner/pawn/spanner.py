@@ -46,7 +46,7 @@ class PawnSpanner(Spanner):
         """
         Action:
             1.  If the pawn_token's origin does not pass a validation check. send and exception chain in the
-                computation result.
+                arithmetic result.
             2.  Handoff solution development to process_vector_dictionary with the PawnVectorSet that 
                 matches if the pawn_token
                     *   has been deployed only.
@@ -105,7 +105,7 @@ class PawnSpanner(Spanner):
         """
         Action:
             1.  For each key generate the spanning set. On success add to the dictionary. Otherwise,
-                send an exception chain in the computation result.
+                send an exception chain in the arithmetic result.
             2.  After the loop has finished send the success result.
 
         Args:
@@ -160,7 +160,7 @@ class PawnSpanner(Spanner):
         """
         Action:
             1.  Iterate through the vectors to get rays from the origin. If any ray derivation fails
-                send an exception chain in the computation result. Else append to the span.
+                send an exception chain in the arithmetic result. Else append to the span.
             2.  After the loop is finished send the span in the success result.
 
         Args:
@@ -185,7 +185,7 @@ class PawnSpanner(Spanner):
                 coord_service=coord_service,
                 vector_service=vector_service,
             )
-            # Handle the case that the ray computation is not completed.
+            # Handle the case that the ray arithmetic is not completed.
             if ray_result.is_failure:
                 # Return the exception chain on failure.
                 return ComputationResult.failure(

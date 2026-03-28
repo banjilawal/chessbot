@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from logic.coord import CoordScalarProduct, CoordVectorAddition, VectorToCoordConversion
-from logic.coord.service.operation.computation.distance.compute import EuclideanDistance
+from logic.coord.service.operation.arithmetic.distance.compute import EuclideanDistance
 
 
 class CoordArithmeticController:

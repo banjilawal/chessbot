@@ -27,7 +27,7 @@ class BoardSquareAnalysisException(AnalysisException):
         - Exception Messaging
 
     Responsibilities:
-        1.  Indicate a computation was unsuccessful and did not produce a result.
+        1.  Indicate a arithmetic was unsuccessful and did not produce a result.
         2.  Identify the method where the failure occurred.
 
     Attributes:

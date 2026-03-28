@@ -35,7 +35,7 @@ class PerpendicularRayComputer:
 
     Responsibilities:
     1.  Compute the spanning subset in the horizontal and vertical plane with no duplicates.
-    2.  If the computation fails send an exception chain to the caller for error tracing.
+    2.  If the arithmetic fails send an exception chain to the caller for error tracing.
 
     Super Class:
     None

@@ -1,7 +1,7 @@
-# src/logic/token/service/operation/computation/distance/exception/work.py
+# src/logic/token/service/operation/arithmetic/distance/exception/work.py
 
 """
-Module: logic.token.service.operation.computation.distance.exception.work
+Module: logic.token.service.operation.arithmetic.distance.exception.work
 Author: Banji Lawal
 Created: 2026-03-25
 version: 1.0.0
@@ -43,7 +43,7 @@ class EuclideanDistanceException(ComputationException):
     Super Class:
         ComputationException
     """
-    MSG = "Euclidean Distance computation failed."
+    MSG = "Euclidean Distance arithmetic failed."
     ERR_CODE = "EUCLIDEAN_DISTANCE_FAILURE"
     
     def __init__(
