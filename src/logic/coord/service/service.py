@@ -14,7 +14,7 @@ from typing import cast
 from logic.scalar import Scalar, ScalarService
 from logic.vector import Vector, VectorService
 from logic.coord import Coord, CoordBuildProcess, CoordOpsController, CoordServiceException, CoordValidationProcess
-from logic.system import BuildResult, ComputationResult, IntegrityService, id_emitter
+from logic.system import BuildResult, ComputationResult, IdFactory, IntegrityService, id_emitter
 
 class CoordService(IntegrityService[Coord]):
     """
@@ -41,7 +41,7 @@ class CoordService(IntegrityService[Coord]):
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            id: int = id_emitter.service_id,
+            id: int = IdFactory.next_id(class_name="CoordService"),
             ops_controller: CoordOpsController = CoordOpsController(),
     ):
         """

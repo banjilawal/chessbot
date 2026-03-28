@@ -17,22 +17,21 @@ T = TypeVar("T")
 
 class ValidationProcess(ABC, Generic[T]):
     """
-     Role:Worker:
-     # Task: Validation, Data Integrity Guarantor, Security.
+    Role
+        -   Transaction Worker
+        -   Integrity Maintenance
+        -   Consistency Assurance
+        -   Process Runner
 
     Responsibilities:
-    1.  Ensure an object is certified safe, reliable and consistent before use.
-    2.  If verification fails indicate the reason in an exception, returned to the caller.
-
-    Super Class:
-    None
-
-    # PROVIDES:
-        * ValidationProcess
-
-
-    # INHERITED ATTRIBUTES:
-    None
+        1.  Ensure data-holders are safe before they are used or saved.
+        
+    Attributes:
+    
+    Provides:
+        -   execute(candidate: Any, *args, **kwargs) -> ValidationResult[T]
+        
+    super Class:
     """
     def __init__(self):
         pass

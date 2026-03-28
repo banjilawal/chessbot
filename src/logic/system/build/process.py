@@ -17,23 +17,24 @@ T = TypeVar("T")
 
 class BuildProcess(ABC, Generic[T]):
     """
-    Role:Worker:
-    # TASK: Build Data Integrity And Reliability Guarantor,
+    Role
+        -   Transaction Worker
+        -   Integrity Maintenance
+        -   Consistency Assurance
+        -   Process Runner
 
     Responsibilities:
-    1.  Produce objects whose integrity is guaranteed at creation.
-    2.  Manage construction of objects that can be used safely by the client.
-    3.  Ensure resources for building a object have met the application's safety contracts.
-    4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
-
-    Super Class:
-    None
+        1.  Creation process owners.
+        2.  Execute binding logic for related entities.
+        3.  Assure objects comply with business logic at point of creation.
+        4.  Ensure stateful data-holding build resources meet satisfy contracts.
+    
+    Attributes:
 
     Provides:
-
-
-    # INHERITED ATTRIBUTES:
-    None
+        -   execute(*args, **kwargs) -> BuildResult[T]
+        
+    Super Class:
     """
     
     @classmethod

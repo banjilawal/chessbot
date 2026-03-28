@@ -12,8 +12,6 @@ from __future__ import annotations
 from logic.system import ComputationResult
 from logic.vector import Vector, VectorService
 from logic.coord import Coord, CoordAdditionException, CoordService
-from logic.vector import Vector, VectorService
-
 
 class CoordVectorAddition:
     """

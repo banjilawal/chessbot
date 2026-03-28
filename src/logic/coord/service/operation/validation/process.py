@@ -16,9 +16,11 @@ from logic.system import NUMBER_OF_ROWS, ValidationProcess, ValidationResult, Lo
 
 class CoordValidationProcess(ValidationProcess[Coord]):
     """
-     Role:
-        -   Worker
-        -   Integrity management
+    Role
+        -   Transaction Worker
+        -   Integrity Maintenance
+        -   Consistency Assurance
+        -   Process Runner
 
     Responsibilities:
         1.  Ensure a Coord instance is certified safe, reliable and consistent before use.

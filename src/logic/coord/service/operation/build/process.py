@@ -13,14 +13,18 @@ from logic.coord import Coord, CoordBuildException
 from logic.system import BOARD_DIMENSION, BuildProcess, BuildResult, LoggingLevelRouter, NumberValidationProcess
 
 
-class CoordBuildProcess(BuildProcess[Coord]):
+class CoordBuilder(BuildProcess[Coord]):
     """
-     Role:
-        -   Worker,
-        -   Integrity Management
-     
-     Responsibilities:
-         1.  Produce Coord instances that satisfy integrity constraints.
+    Role
+        -   Transaction Worker
+        -   Integrity Maintenance
+        -   Consistency Assurance
+        -   Process Runner
+
+    Responsibilities:
+        1.  Coord creation process owner.
+        2.  Ensure Coord build resources meet satisfy contracts.
+        3.  Assure Coord instances comply with business logc at point of creation.s.
 
      Attributes:
      

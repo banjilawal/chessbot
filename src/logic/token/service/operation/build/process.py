@@ -18,14 +18,17 @@ from logic.token import CombatantToken, KingToken, PawnToken, TokenBuildExceptio
 
 class TokenBuild(BuildProcess[Token]):
     """
-     Role:
-        -   Worker, 
-        -   Integrity Management
-
-     Responsibilities:
-         1.  Produce Token instances whose integrity is guaranteed at creation.
-         2.  Ensure params for Token creation have met the application's safety contract.
-         3.  Return an exception to the client if a build resource does not satisfy integrity requirements.
+    Role
+        -   Transaction Worker
+        -   Integrity Maintenance
+        -   Consistency Assurance
+        -   Process Runner
+        
+   Responsibilities:
+        1.  Token creation process owner.
+        2.  Ensure Token build resources meet satisfy contracts.
+        3.  Assure tokens  comply with business logic at point of creation.
+        4.  Execute 1:M binding logic a token has with its owning entities..
 
      Attributes:
 
@@ -76,62 +79,9 @@ class TokenBuild(BuildProcess[Token]):
         Returns:
             BuildResult[Token]
         Raises:
-            *   TokenBuildException
+            TokenBuildException
         """
         method = f"{cls.__name__}.execute"
-        
-
-        # Handle the case that, a build param is not safe.
-        param_validation_results = cls._run_build_param_checks(
-            id=id,
-            owner=owner,
-            formation=formation,
-            identity_service=identity_service,
-            formation_service=formation_service,
-            team_validator=team_validator,
-        )
-        if param_validation_results.is_failure:
-            return param_validation_results
-        # --- Route to the appropriate concrete Token build method. ---#
-        
-        if formation.persona == Persona.PAWN:
-        # Build path for Pawns.
-            return cls._build_pawn(
-                id=id,
-                owner=owner,
-                designation=formation.designation,
-                roster_number=formation.roster_number,
-                opening_square_name=formation.square_name,
-            )
-        # Build path for Kings
-        if formation.persona == Persona.KING:
-            return cls._build_king(
-                id=id,
-                owner=owner,
-                designation=formation.designation,
-                roster_number=formation.roster_number,
-                Opening_square_name=formation.square_name,
-            )
-        # The default path builds Combatants
-        return cls._build_combatant(
-            id=id,
-            owner=owner,
-            formation=formation,
-            rank_service=rank_service,
-        )
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def _run_build_param_checks(
-            cls,
-            id: int,
-            owner: Team,
-            formation: Formation,
-            team_validator: TeamValidationProcess,
-            identity_service: IdentityService = IdentityService(),
-            formation_service: FormationService = FormationService(),
-    ):
-        method = f"{cls.__name__}._run_build_param_checks"
         
         # Handle the case that, the id does not pass a validation check.
         id_validation = identity_service.validate_id(candidate=id)
@@ -175,110 +125,79 @@ class TokenBuild(BuildProcess[Token]):
                     ex=formation_validation.exception,
                 )
             )
+        # --- Param checks are passed, Handoff creation to _create_concrete_token. ---#
         
+        creation_result = cls._create_concrete_token(
+            id=id,
+            owner=owner,
+            formation=formation,
+            rank_service=rank_service
+        )
+        # Handle the case that, the creation was not successful.
+        if creation_result.is_failure:
+            return creation_result
+        # --- Handoff binding to binding and finalization tasks. ---#
+        binding_result = cls._create_bindings(token=creation_result.payload)
+        
+        # For legibility, handle the case that binding is not successful.
+        if binding_result.is_failure:
+            return binding_result
+        # --- Forward the work product to the caller. ---#
+        return BuildResult.success(binding_result.payload)
+    
     @classmethod
     @LoggingLevelRouter.monitor
-    def _build_pawn(
+    def _create_concrete_token(
             cls,
             id: int,
             owner: Team,
-            designation: str,
-            roster_number: int,
-            opening_square_name: str,
-    ) -> BuildResult[PawnToken]:
+            formation: Formation,
+            rank_service: RankService
+    ) -> BuildResult[Token]:
         """
-        # ACTION:
-            1.  Use the params to build the PawnToken then return to caller in the
-        # PARAMETERS:
-            *   id (int)
-            *   owner (Team)
-            *   formation: (Formation)
-            *   rank_service (RankService)
-            *   team_validator (TeamValidationProcess)
-            *   identity_service (IdentityService)
-            *   formation_service: (FormationService)
-        # RETURNS:
-            *   BuildResult[PawnToken]
-
+        Create a concrete token.
+        
+        Action:
+            1.  If the formation's rank is not a king or pawn and its Rank instance is not
+                build successfully send an exception chain in the BuildResult.
+            2.  Otherwise, build the token then, send the success result.
+        Args:
+            id: int
+            owner: Team
+            formation: Formation
+            rank_service: RankService
+        Returns:
+            BuildResult[Token]
         Raises:
-            *   None
+            TokenBuildException
         """
         method = "TokenBuild._build_pawn"
         
-        return BuildResult.success(
-            payload=PawnToken(
-                id=id,
-                team=owner,
-                designation=designation,
-                roster_number=roster_number,
-                opening_square_name=opening_square_name,
+        # Build path for pawns.
+        if formation.persona == Persona.PAWN:
+            return BuildResult.success(
+                PawnToken(
+                    id=id,
+                    team=owner,
+                    designation=formation.designation,
+                    roster_number=formation.roster_number,
+                    opening_square_name=formation.square_name,
+                )
             )
-        )
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def _build_king(
-            cls,
-            id: int,
-            owner: Team,
-            designation: str,
-            roster_number: int,
-            Opening_square_name: str
-    ) -> BuildResult[KingToken]:
-        """
-        # ACTION:
-            1.  Build KingToken and return to the caller.
-        # PARAMETERS:
-            *   id (int)
-            *   owner (Team)
-            *   formation: (Formation)
-            *   rank_service (RankService)
-            *   team_validator (TeamValidationProcess)
-            *   identity_service (IdentityService)
-            *   formation_service: (FormationService)
-        # RETURNS:
-            *   BuildResult[PawnToken]
-        Raises:
-            *   None
-        """
-        method = "TokenBuild._build_king"
-        
-        return BuildResult.success(
-                payload=KingToken(
-                id=id,
-                team=owner,
-                designation=designation,
-                roster_number=roster_number,
-                opening_square_name=Opening_square_name,
+        # Build path for kings.
+        if formation.persona == Persona.KING:
+            return BuildResult.success(
+                KingToken(
+                    id=id,
+                    team=owner,
+                    designation=formation.designation,
+                    roster_number=formation.roster_number,
+                    opening_square_name=formation.square_name,
+                )
             )
-        )
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def _build_combatant(
-            cls,
-            id: int,
-            owner: Team,
-            formation: Formation, str,
-            rank_service: RankService,
-    ) -> BuildResult[KingToken]:
-        """
-        # ACTION:
-            1.  Use the formation's Persona property to build the combatant's rank. If the rank build fails
-                send an exception chain the BuildResult.
-        # PARAMETERS:
-            *   id (int)
-            *   owner (Team)
-            *   formation (Formation)
-            *   formation_service: (FormationService)
-        # RETURNS:
-            *   BuildResult[CombatantToken]
-        Raises:
-            *   None
-        """
-        method = "TokenBuild._build_combatant"
+        # --- All other ranks run the CombatantToken build steps. ---#
         
-        # Handle the case that, the rank build is not completed.
+        # Handle the case that its Rank instance request is not satisfied.
         rank_build_result = rank_service.build.execute(persona=formation.persona)
         if rank_build_result.is_failure:
             # Return the exception chain on failure.
@@ -288,7 +207,7 @@ class TokenBuild(BuildProcess[Token]):
                     ex=rank_build_result.exception
                 )
             )
-        # Return the combatant's build result to the caller
+        # --- Forward the work product to the caller. ---#
         return BuildResult.success(
             payload=CombatantToken(
                 id=id,
@@ -299,3 +218,41 @@ class TokenBuild(BuildProcess[Token]):
                 opening_square_name=formation.square_name,
             )
         )
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _create_bindings(cls, token: Token):
+        """
+        Binda token to its team with an insert.
+        
+        Action:
+            1.  If the token cannot be inserted into the team roster send an exception chain
+                in the BuildResult.
+            2.  Otherwise, send the success result.
+        Args:
+            token: Token
+        Returns:
+            BuildResult[Token]
+        Raises:
+            TokenBuildException
+        """
+        method = f"{cls.__name__}._create_bindings"
+        
+        team = token.team
+        if token not in team.roster:
+            insertion_result = team.roster.insert(item=token)
+            # Handle the case that, the token is not successfully registered with its team.
+            if insertion_result.is_failure:
+                return BuildResult.failure(
+                    TokenBuildException(
+                        mthd=method,
+                        title=cls.__name__,
+                        op=TokenBuildException.OP,
+                        msg=TokenBuildException.MSG,
+                        err_code=TokenBuildException.ERR_CODE,
+                        ex=insertion_result.exception,
+                    )
+                )
+        # --- Forward the work product to the caller. ---#
+        return BuildResult.success(token)
+        
