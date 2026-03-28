@@ -1,7 +1,7 @@
-# src/logic/team/database/core/exception/push/work.py
+# src/logic/team/database/kernel/exception/push/work.py
 
 """
-Module: logic.team.database.core.exception.push.work
+Module: logic.team.database.kernel.exception.push.work
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/logic/board/database/core/exception/insertion/direct.py
+# src/logic/board/database/kernel/exception/insertion/direct.py
 
 """
-Module: logic.board.database.core.exception.insertion.direct
+Module: logic.board.database.kernel.exception.insertion.direct
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

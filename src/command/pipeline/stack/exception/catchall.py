@@ -1,7 +1,7 @@
-# src/command/pipeline/database/core/exception/super.py
+# src/command/pipeline/database/kernel/exception/super.py
 
 """
-Module: command.pipeline.database.core.exception.super
+Module: command.pipeline.database.kernel.exception.super
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0

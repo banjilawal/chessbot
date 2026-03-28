@@ -1,7 +1,7 @@
-# src/logic/game/database/core/exception.py
+# src/logic/game/database/kernel/exception.py
 
 """
-Module: logic.game.database.core.exception
+Module: logic.game.database.kernel.exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

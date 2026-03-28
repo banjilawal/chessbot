@@ -1,7 +1,7 @@
 # src/logic/token/database/kernel/operation/exception.py
 
 """
-Module: logic.token.database.kernel.operation.handler
+Module: logic.token.database.kernel.operation.operation
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

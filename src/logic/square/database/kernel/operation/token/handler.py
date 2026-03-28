@@ -108,7 +108,7 @@ class SquareStackTokenHandler:
                     ex=square_verification_result.exception
                 )
             )
-        # --- After the square is validated, get a snapshot of its pre-update state. then call visit handler.---#
+        # --- After the square is validated, get a snapshot of its pre-update state. then call visit operation.---#
         pre_update_square = deepcopy(square)
         update_result = square_stack.integrity_service.token_visit_handler.start_visit(
             token=token,
@@ -141,7 +141,7 @@ class SquareStackTokenHandler:
     ) -> DeletionResult[Token]:
         """
         # ACTION:
-            1.  If the search handler cannot certify the occupant is a valid token the exception chain will include.
+            1.  If the search operation cannot certify the occupant is a valid token the exception chain will include.
                 TokenVerificationFailedException.
             2.  If the token is not found in any of the squares send a nothing_to_delete result.
             3.  If the token was found in a square but the removal failed send the wrapped exception in the

@@ -11,7 +11,7 @@ version: 1.0.0
 # =========== COORD.DATABASE PACKAGE CONTENTS ===========#
 
 # Packages
-from .core import *
+from .kernel import *
 from .exception import *
 
 # Modules

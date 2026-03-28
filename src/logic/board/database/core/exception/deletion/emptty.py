@@ -1,7 +1,7 @@
-# src/logic/board/database/core/exception/deletion/empty.py
+# src/logic/board/database/kernel/exception/deletion/empty.py
 
 """
-Module: logic.board.database.core.exception.deletion.empty
+Module: logic.board.database.kernel.exception.deletion.empty
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

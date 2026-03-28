@@ -1,7 +1,7 @@
-# src/command/pipeline/database/core/exception/pop/empty
+# src/command/pipeline/database/kernel/exception/pop/empty
 
 """
-Module: command.pipeline.database.core.exception.pop.empty
+Module: command.pipeline.database.kernel.exception.pop.empty
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

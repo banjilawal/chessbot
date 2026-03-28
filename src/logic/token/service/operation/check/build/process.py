@@ -1,7 +1,7 @@
 # src/logic/token/service/operation/check/exception.py
 
 """
-Module: logic.token.service.operation.check.handler
+Module: logic.token.service.operation.check.operation
 Author: Banji Lawal
 Created: 2026-03-14
 version: 1.0.0

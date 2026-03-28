@@ -1,7 +1,7 @@
-# src/logic/span/service/handler/node/exception.py
+# src/logic/span/service/operation/node/exception.py
 
 """
-Module: logic.span.service.handler.node.handler
+Module: logic.span.service.operation.node.operation
 Author: Banji Lawal
 Created: 2026-03-11
 version: 1.0.0

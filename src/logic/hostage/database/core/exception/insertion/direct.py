@@ -1,7 +1,7 @@
 # src/logic/hostage/databse/coreexception/insertion/direct.py
 
 """
-Module: logic.hostage.database.core.exception.insertion.direct
+Module: logic.hostage.database.kernel.exception.insertion.direct
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

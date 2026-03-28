@@ -1,7 +1,7 @@
-# src/logic/coord/database/core/exception/insertion/work.py
+# src/logic/coord/database/kernel/exception/insertion/work.py
 
 """
-Module: logic.coord.database.core.exception.insertion.work
+Module: logic.coord.database.kernel.exception.insertion.work
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

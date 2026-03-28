@@ -15,7 +15,7 @@ the updated `Board` to find the best move.
    actually it will be something like AlgorithmSelector tht will select the optimization algorthim for team_name MachinePlayer.
 
  # EXPORTS
-This package exposes core classes and all exception from its sub-modules:
+This package exposes kernel classes and all exception from its sub-modules:
   - `Engine`: Abstract super class defining shared traits and behaviors of engines.
   - `GreedyEngine`: `Engine` that uses team_name greedy algorithm
   - All exception from `rollback_exception` package.
@@ -25,7 +25,7 @@ This package exposes core classes and all exception from its sub-modules:
 
 
 # HOW TO IMPORT
-DO NOT reference submodules directly. Import all core classes and exception from this `engine` package level
+DO NOT reference submodules directly. Import all kernel classes and exception from this `engine` package level
 (e.g., `from logic.engine import EngineBuild`). See USAGE EXAMPLES section
 
 # USAGE EXAMPLES

@@ -1,7 +1,7 @@
-# src/logic/team/database/core/stack.py
+# src/logic/team/database/kernel/stack.py
 
 """
-Module: logic.team.database.core.service
+Module: logic.team.database.kernel.service
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0

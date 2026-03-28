@@ -1,7 +1,7 @@
-# src/logic/player/database/core/_exception.py
+# src/logic/player/database/kernel/_exception.py
 
 """
-Module: logic.player.database.core._exception
+Module: logic.player.database.kernel._exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

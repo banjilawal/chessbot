@@ -1,7 +1,7 @@
-# src/logic/team/database/core/exception/pop/unfound.py
+# src/logic/team/database/kernel/exception/pop/unfound.py
 
 """
-Module: logic.team.database.core.exception.pop.unfound
+Module: logic.team.database.kernel.exception.pop.unfound
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

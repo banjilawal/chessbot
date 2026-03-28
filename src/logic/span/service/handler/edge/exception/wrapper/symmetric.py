@@ -1,7 +1,7 @@
-# src/logic/span/service/handler/edge/exception/work/symmetric.py
+# src/logic/span/service/operation/edge/exception/work/symmetric.py
 
 """
-Module: logic.span.service.handler.edge.exception.work.symmetric
+Module: logic.span.service.operation.edge.exception.work.symmetric
 Author: Banji Lawal
 Created: 2026-03-11
 version: 1.0.0

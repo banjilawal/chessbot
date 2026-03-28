@@ -1,7 +1,7 @@
 # src/logic/hostage/databse/coreexception/__init__.py
 
 """
-Module: logic.hostage.database.core.exception.__init__
+Module: logic.hostage.database.kernel.exception.__init__
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

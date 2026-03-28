@@ -1,7 +1,7 @@
-# src/logic/span/service/handler/edge/__init__.py
+# src/logic/span/service/operation/edge/__init__.py
 
 """
-Module: logic.span.service.handler.edge.__init__
+Module: logic.span.service.operation.edge.__init__
 Author: Banji Lawal
 Created: 2026-03-11
 version: 1.0.0

@@ -13,7 +13,7 @@ from typing import cast
 
 from logic.scalar import Scalar, ScalarService
 from logic.vector import Vector, VectorService
-from logic.coord import Coord, CoordBuildProcess, CoordServiceException, CoordValidationProcess
+from logic.coord import Coord, CoordBuildProcess, CoordOpsController, CoordServiceException, CoordValidationProcess
 from logic.system import BuildResult, ComputationResult, IntegrityService, id_emitter
 
 class CoordService(IntegrityService[Coord]):
@@ -36,40 +36,34 @@ class CoordService(IntegrityService[Coord]):
         *   See IntegrityService for inherited attributes.
     """
     SERVICE_NAME = "CoordService"
+    _ops_controller: CoordOpsController
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
-            builder: CoordBuildProcess = CoordBuildProcess(),
-            validator: CoordValidationProcess = CoordValidationProcess(),
+            ops_controller: CoordOpsController = CoordOpsController(),
     ):
         """
-        # ACTION:
-        Constructor
-
-        # PARAMETERS:
-            *   id (nt)
-            *   name (str)
-            *   build (CoordFactory)
-            *   validation (CoordValidationProcess)
-
-        # RETURNS:
-        None
-
-        Raises:
+        Args:
+            id: int
+            name: str
+            ops_controller: CoordOpsController
         """
-        super().__init__(id=id, name=name, builder=builder, validator=validator)
+        super().__init__(id=id, name=name)
+        self._ops_controller = ops_controller
 
     @property
     def build(self) -> CoordBuildProcess:
-        """get CoordBuildProcess"""
-        return cast(CoordBuildProcess, self.entity_builder)
+        return self._ops_controller.build
     
     @property
     def validation(self) -> CoordValidationProcess:
-        """get CoordValidationProcess"""
-        return cast(CoordValidationProcess, self.entity_validator)
+        return self._ops_controller.validation
+    
+    @property
+    def ops_controller(self) -> CoordOpsController:
+        return self._ops_controller
     
     def add_vector_to_coord(
             self,
@@ -98,30 +92,14 @@ class CoordService(IntegrityService[Coord]):
         RAISES:
             *   CoordServiceException
         """
-        method = "CoordService.add_vector_to_coord"
-        try:
-            # Certify the coord param
-            coord_validation = self._validator.execute(candidate=coord)
-            if coord_validation.is_failure:
-                return BuildResult.failure(coord_validation.exception)
-            # Certify the vector param.
-            vector_validation = vector_service.validation.execute(candidate=vector)
-            if vector_validation.is_failure:
-                return BuildResult.failure(vector_validation.exception)
-            
-            # when params are certified return the BuildResult.
-            build_result =  self.build.execute(
-                row=(coord.row + vector.y), column=(coord.column + vector.x), validator=self.validation
-            )
-            if build_result.is_failure:
-                return ComputationResult.failure(build_result.exception)
-            return ComputationResult.success(build_result.payload)
-        # Finally, catch any missed exception and wrap A CoordServiceException around it then return the
-        # exception-chain inside the BuildResult.
-        except Exception as ex:
-            return BuildResult.failure(
-                CoordServiceException(ex=ex, msg= f"{method}: {CoordServiceException.MSG}")
-            )
+        method = f"{self.__class__.__name__}.add_vector_to_coord"
+        
+        return self._ops_controller.arithmetic.add_vector_to_coord.compute(
+            coord=coord,
+            vector=vector,
+            coord_service=self,
+            vector_service=vector_service,
+        )
       
     def multiply_coord_by_scalar(
             self,
@@ -149,53 +127,31 @@ class CoordService(IntegrityService[Coord]):
             - On failure: Exception.
 
         RAISES:
-            *   CoordServiceException
+            *   CoordServiceExceptio
         """
-        method = "CoordService.multiply_coord_by_scalar"
-        try:
-            # Certify the coord param
-            coord_validation = self._validator.execute(candidate=coord)
-            if coord_validation.is_failure:
-                return BuildResult.failure(coord_validation.exception)
-            # Certify the scalar param
-            scalar_validation = scalar_service.validation.execute(candidate=scalar)
-            if scalar_validation.is_failure:
-                return BuildResult.failure(scalar_validation.exception)
-            
-            # when params are certified return the BuildResult.
-            return self._builder.execute(
-                row=(coord.y * scalar.value), column=(coord.x * scalar.value), validator=self.validation
-            )
-            # Finally, catch any missed exception and wrap A CoordServiceException around it then return the
-            # exception-chain inside the BuildResult.
-        except Exception as ex:
-            return BuildResult.failure(
-                CoordServiceException(ex=ex, msg=f"{method}: {CoordServiceException.MSG}")
-            )
+        method = f"f{self.__class__.__name__}.multiply_coord_by_scalar"
+        
+        return self._osp.arithmetic.multiply_coord_by_scalar.compute(
+            coord=coord,
+            scalar=scalar,
+            coord_service=self,
+            scalar_service=scalar_service,
+        )
         
     def euclidean_distance(self, u: Coord, v: Coord) -> ComputationResult[int]:
-        method = "CoordService.euclidean_distance"
+        method = f"{self.__class__.__name__}.euclidean_distance"
         
-        # Handle the case that, the u does not pass a validation check.
-        u_validation = self._validator.execute(candidate=u)
-        if u_validation.is_failure:
-            return ComputationResult.failure(u_validation.exception)
-        
-        # Handle the case that, v does not pass a validation check.
-        v_validation = self._validator.execute(candidate=v)
-        if v_validation.is_failure:
-            return ComputationResult.failure(v_validation.exception)
-        
-        # Compute the Euclidean dist and return it.
-        distance = sqrt(pow(base=(u.row - v.row), exp=2) + pow(base=(u.column - v.column), exp=2))
-        return ComputationResult.success(payload=cast(int, distance))
-        
+        return self._ops_controller.arithmetic.euclidean_distance.compute(
+            u=u,
+            v=v,
+            coord_service=self,
+        )
     
     def convert_vector_to_coord(
             self,
             vector: Vector,
             vector_service: VectorService = VectorService()
-    ) -> BuildResult[Coord]:
+    ) -> ComputationResult[Coord]:
         """
         # ACTION:
         1.  vector_service runs integrity checks on param.
@@ -215,19 +171,11 @@ class CoordService(IntegrityService[Coord]):
         RAISES:
             *   CoordServiceException
         """
-        method = "CoordService.convert_vector_to_coord"
-        try:
-            # Certify the vector param
-            vector_validation = vector_service.validation.execute(candidate=vector)
-            if vector_validation.is_failure:
-                return BuildResult.failure(vector_validation.exception)
-            # After the vector is certified return the BuildResult.
-            return self._builder.execute(row=vector.y, column=vector.x, validator=self.validation
-                                         )
-            # Finally, catch any missed exception and wrap A CoordServiceException around it then return the
-            # exception-chain inside the BuildResult.
-        except Exception as ex:
-            return BuildResult.failure(
-                CoordServiceException(ex=ex, msg=f"{method}: {CoordServiceException.MSG}")
-            )
+        method = f"{self.__class__.__name__}.convert_vector_to_coord"
+        
+        return self._ops_controller.arithmetic.convert_vector_to_coord.compute(
+            vector=vector,
+            vector_service=vector_service,
+            coord_service=self,
+        )
     

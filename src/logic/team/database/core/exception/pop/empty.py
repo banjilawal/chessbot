@@ -1,7 +1,7 @@
-# src/logic/team/database/core/exception/pop/empty
+# src/logic/team/database/kernel/exception/pop/empty
 
 """
-Module: logic.team.database.core.exception.pop.empty
+Module: logic.team.database.kernel.exception.pop.empty
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

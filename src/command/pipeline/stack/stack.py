@@ -1,7 +1,7 @@
-# src/command/pipeline/database/core/stack.py
+# src/command/pipeline/database/kernel/stack.py
 
 """
-Module: command.pipeline.database.core.service
+Module: command.pipeline.database.kernel.service
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0

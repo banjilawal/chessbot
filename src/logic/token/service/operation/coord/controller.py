@@ -1,7 +1,7 @@
 # src/logic/token/service/operation/coord/exception.py
 
 """
-Module: logic.token.service.operation.coord.handler
+Module: logic.token.service.operation.coord.operation
 Author: Banji Lawal
 Created: 2026-03-14
 version: 1.0.0

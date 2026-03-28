@@ -1,7 +1,7 @@
 # src/logic/square/database/kernel/operation/exception.py
 
 """
-Module: logic.square.database.kernel.operation.handler
+Module: logic.square.database.kernel.operation.operation
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

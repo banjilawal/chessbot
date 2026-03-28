@@ -1,7 +1,7 @@
 # src/logic/hostage/databse/coreexception/search/work.py
 
 """
-Module: logic.hostage.database.core.exception.search.work
+Module: logic.hostage.database.kernel.exception.search.work
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/logic/coord/database/core/exception/anchor.py
+# src/logic/coord/database/kernel/exception/anchor.py
 
 """
-Module: logic.coord.database.core.exception.anchor
+Module: logic.coord.database.kernel.exception.anchor
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

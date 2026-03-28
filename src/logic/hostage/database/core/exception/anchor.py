@@ -1,7 +1,7 @@
-# src/logic/hostage/database/core/exception/anchor.py
+# src/logic/hostage/database/kernel/exception/anchor.py
 
 """
-Module: logic.hostage.database.core.exception.anchor
+Module: logic.hostage.database.kernel.exception.anchor
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/logic/span/service/handler/edge/exception/anchor.py
+# src/logic/span/service/operation/edge/exception/anchor.py
 
 """
-Module: logic.span.service.handler.edge.exception.anchor
+Module: logic.span.service.operation.edge.exception.anchor
 Author: Banji Lawal
 Created: 2026-03-11
 version: 1.0.0

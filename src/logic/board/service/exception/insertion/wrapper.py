@@ -1,7 +1,7 @@
-# src/logic/item/database/core/exception/insertion/work.py
+# src/logic/item/database/kernel/exception/insertion/work.py
 
 """
-Module: logic.item.database.core.exception.insertion.work
+Module: logic.item.database.kernel.exception.insertion.work
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

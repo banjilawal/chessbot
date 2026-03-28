@@ -1,7 +1,7 @@
-# src/logic/team/database/core/exception/query/exist.py
+# src/logic/team/database/kernel/exception/query/exist.py
 
 """
-Module: logic.team.database.core.exception.query.exist
+Module: logic.team.database.kernel.exception.query.exist
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

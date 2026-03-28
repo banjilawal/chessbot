@@ -1,7 +1,7 @@
-# src/command/pipeline/database/core/exception/push/duplicate.py
+# src/command/pipeline/database/kernel/exception/push/duplicate.py
 
 """
-Module: command.pipeline.database.core.exception.push.duplicate
+Module: command.pipeline.database.kernel.exception.push.duplicate
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

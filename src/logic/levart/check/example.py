@@ -28,7 +28,7 @@ PURPOSE:
 
 DEPENDENCIES:
 ------------
-Requires base rollback_exception classes and constants from the core system:
+Requires base rollback_exception classes and constants from the kernel system:
 From `logic.system`:
   * Exception: `ChessException`, `ValidationException`, `NullException`,
         `BuildException`.
@@ -114,7 +114,7 @@ PURPOSE:
 
 DEPENDENCIES:
 ------------
-Requires base rollback_exception classes and constants from the core system:
+Requires base rollback_exception classes and constants from the kernel system:
 From `logic.system`:
   * Exception: `ChessException`, `ValidationException`, `NullException`,
         `BuildException`.

@@ -1,7 +1,7 @@
-# src/logic/coord/database/core/handler/__init__.py
+# src/logic/coord/database/kernel/operation/__init__.py
 
 """
-Module: logic.coord.database.core.handler.__init__
+Module: logic.coord.database.kernel.operation.__init__
 Author: Banji Lawal
 Created: 2026-03-14
 version: 1.0.0

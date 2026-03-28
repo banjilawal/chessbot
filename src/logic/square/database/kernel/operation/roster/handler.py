@@ -1,7 +1,7 @@
 # src/logic/square/database/kernel/operation/roster/exception.py
 
 """
-Module: logic.square.database.kernel.operation.roster.handler
+Module: logic.square.database.kernel.operation.roster.operation
 Author: Banji Lawal
 Created: 2026-02-22
 version: 1.0.0

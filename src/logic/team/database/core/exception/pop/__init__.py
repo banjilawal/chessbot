@@ -1,8 +1,8 @@
-# src/logic/team/database/core/exception/pop/__init__.py
+# src/logic/team/database/kernel/exception/pop/__init__.py
 
 """
 
-Module: logic.team.database.core.exception.pop.__init__
+Module: logic.team.database.kernel.exception.pop.__init__
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0

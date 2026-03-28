@@ -1,7 +1,7 @@
-# src/logic/player/database/core/stack.py
+# src/logic/player/database/kernel/stack.py
 
 """
-Module: logic.player.database.core.stack
+Module: logic.player.database.kernel.stack
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

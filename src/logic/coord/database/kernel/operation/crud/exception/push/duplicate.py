@@ -1,7 +1,7 @@
-# src/logic/coord/database/core/handler/crud/exception/push/duplicate.py
+# src/logic/coord/database/kernel/operation/crud/exception/push/duplicate.py
 
 """
-Module: logic.coord.database.core.handler.crud.exception.push.duplicate
+Module: logic.coord.database.kernel.operation.crud.exception.push.duplicate
 Author: Banji Lawal
 Created: 2026-03-14
 version: 1.0.0

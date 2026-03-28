@@ -1,7 +1,7 @@
-# src/logic/coord/database/core/stack.py
+# src/logic/coord/database/kernel/stack.py
 
 """
-Module: logic.coord.database.core.stack
+Module: logic.coord.database.kernel.stack
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

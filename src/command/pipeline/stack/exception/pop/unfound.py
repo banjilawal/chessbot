@@ -1,7 +1,7 @@
-# src/command/pipeline/database/core/exception/pop/unfound.py
+# src/command/pipeline/database/kernel/exception/pop/unfound.py
 
 """
-Module: command.pipeline.database.core.exception.pop.unfound
+Module: command.pipeline.database.kernel.exception.pop.unfound
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

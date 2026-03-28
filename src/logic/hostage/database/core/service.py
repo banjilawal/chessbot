@@ -1,7 +1,7 @@
 # src/logic/hostage/databse/coreservice_.py
 
 """
-Module: logic.hostage.database.core.service
+Module: logic.hostage.database.kernel.service
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

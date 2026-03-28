@@ -1,7 +1,7 @@
-# src/logic/team/database/core/exception/pop/work.py
+# src/logic/team/database/kernel/exception/pop/work.py
 
 """
-Module: logic.team.database.core.exception.pop.work
+Module: logic.team.database.kernel.exception.pop.work
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0

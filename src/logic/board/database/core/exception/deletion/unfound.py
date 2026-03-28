@@ -1,7 +1,7 @@
-# src/logic/board/database/core/exception/deletion/unfound.py
+# src/logic/board/database/kernel/exception/deletion/unfound.py
 
 """
-Module: logic.board.database.core.exception.deletion.unfound
+Module: logic.board.database.kernel.exception.deletion.unfound
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

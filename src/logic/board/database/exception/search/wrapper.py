@@ -1,7 +1,7 @@
-# src/logic/board/database/core/exception/search/work.py
+# src/logic/board/database/kernel/exception/search/work.py
 
 """
-Module: logic.board.database.core.exception.search.work
+Module: logic.board.database.kernel.exception.search.work
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

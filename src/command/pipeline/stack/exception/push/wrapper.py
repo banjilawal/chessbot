@@ -1,7 +1,7 @@
-# src/command/pipeline/database/core/exception/push/work.py
+# src/command/pipeline/database/kernel/exception/push/work.py
 
 """
-Module: command.pipeline.database.core.exception.push.work
+Module: command.pipeline.database.kernel.exception.push.work
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

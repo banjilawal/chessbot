@@ -13,7 +13,7 @@ version: 1.0.0
 <WRITE_SINGLE_PARAGRAPH_HERE_IF_NECESSARY>
 
  # EXPORTS
-This package exposes core classes and all exception from its sub-modules:
+This package exposes kernel classes and all exception from its sub-modules:
   - `CLASS>ANE`: <LINE_ABOUT_CLASS_PURPOSE_HERE>.
   - All exception from `rollback_exception` package.
 
@@ -22,7 +22,7 @@ This package exposes core classes and all exception from its sub-modules:
   - `.ADDITIONAL_SUB_PACKAGE`: Logic for capturing, promoting, castling, and moving pieces on `Board`.
 
 # HOW TO IMPORT
-DO NOT reference submodules directly. Import all core classes and exception from this `board_validator` package level
+DO NOT reference submodules directly. Import all kernel classes and exception from this `board_validator` package level
 (e.g., `from logic.board_validator import BoardValidationException`). See USAGE EXAMPLES section
 
 # USAGE EXAMPLES

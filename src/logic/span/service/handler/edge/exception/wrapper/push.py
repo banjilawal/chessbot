@@ -1,7 +1,7 @@
-# src/logic/span/service/handler/edge/exception/work/push.py
+# src/logic/span/service/operation/edge/exception/work/push.py
 
 """
-Module: logic.span.service.handler.edge.exception.work.push
+Module: logic.span.service.operation.edge.exception.work.push
 Author: Banji Lawal
 Created: 2026-03-11
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/logic/team/database/core/exception/push/duplicate.py
+# src/logic/team/database/kernel/exception/push/duplicate.py
 
 """
-Module: logic.team.database.core.exception.push.duplicate
+Module: logic.team.database.kernel.exception.push.duplicate
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
