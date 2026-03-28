@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from logic.coord import CoordScalarProduct, CoordAdditionTransaction, VectorToCoordConversion
+from logic.coord import CoordScalarProduct, CoordAdditionTransaction, ConvertVectorToCoordTransaction
 from logic.coord.service.operation.arithmetic.distance.compute import EuclideanDistance
 
 
@@ -13,7 +13,7 @@ class CoordArithmeticController:
         1.  Provide a single entry point for Coord arithmetic operations.
 
     Attributes:
-        converter: VectorToCoordConversion
+        converter: ConvertVectorToCoordTransaction
         scalar_product: CoordScalarProduct
         vector_addition: CoordAdditionTransaction
         euclidean_distance: EuclideanDistance
@@ -22,7 +22,7 @@ class CoordArithmeticController:
     Super Class:
     """
     _scalar_product: CoordScalarProduct
-    _conversion: VectorToCoordConversion
+    _conversion: ConvertVectorToCoordTransaction
     _vector_addition: CoordAdditionTransaction
     _euclidean_distance: EuclideanDistance
     
@@ -31,11 +31,11 @@ class CoordArithmeticController:
             scalar_product: CoordScalarProduct = CoordScalarProduct(),
             euclidean_distance: EuclideanDistance = EuclideanDistance(),
             vector_addition: CoordAdditionTransaction = CoordAdditionTransaction(),
-            converter: VectorToCoordConversion = VectorToCoordConversion(),
+            converter: ConvertVectorToCoordTransaction = ConvertVectorToCoordTransaction(),
     ):
         """
         Args:
-            converter: VectorToCoordConversion
+            converter: ConvertVectorToCoordTransaction
             scalar_product: CoordScalarProduct
             vector_addition: CoordAdditionTransaction
             euclidean_distance: EuclideanDistance
@@ -46,7 +46,7 @@ class CoordArithmeticController:
         self._euclidean_distance = euclidean_distance
     
     @property
-    def convert_vector_to_coord(self) -> VectorToCoordConversion:
+    def convert_vector_to_coord(self) -> ConvertVectorToCoordTransaction:
         return self._converter
     
     @property

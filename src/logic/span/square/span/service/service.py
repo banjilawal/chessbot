@@ -1,4 +1,4 @@
-# src/logic/span/square/span/service/compute.py
+# src/logic/span/square/span/service/transaction.py
 
 """
 Module: logic.span.square.span.service.service

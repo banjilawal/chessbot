@@ -1,4 +1,4 @@
-# src/logic/owner/travel/occupation/combatant/compute.py
+# src/logic/owner/travel/occupation/combatant/transaction.py
 
 """
 Module: logic.owner.travel.occupation.combatant.build

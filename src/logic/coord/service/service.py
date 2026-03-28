@@ -1,4 +1,4 @@
-# src/logic/coord/service/compute.py
+# src/logic/coord/service/transaction.py
 
 """
 Module: logic.coord.service.service
@@ -121,7 +121,7 @@ class CoordService(IntegrityService[Coord]):
         """
         method = f"{self.__class__.__name__}.add_to_coord"
         
-        return self._ops_controller.arithmetic.add_to_coord.compute(
+        return self._ops_controller.arithmetic.add_to_coord.execute(
             coord=coord,
             operand=operand,
             coord_service=self,
@@ -158,7 +158,7 @@ class CoordService(IntegrityService[Coord]):
         """
         method = f"f{self.__class__.__name__}.multiply_by_scalar"
         
-        return self._osp.arithmetic.multiply_by_scalar.compute(
+        return self._osp.arithmetic.multiply_by_scalar.execute(
             coord=coord,
             scalar=scalar,
             coord_service=self,
@@ -200,7 +200,7 @@ class CoordService(IntegrityService[Coord]):
         """
         method = f"{self.__class__.__name__}.convert_vector_to_coord"
         
-        return self._ops_controller.arithmetic.convert_vector_to_coord.compute(
+        return self._ops_controller.arithmetic.convert_vector_to_coord.execute(
             vector=vector,
             vector_service=vector_service,
             coord_service=self,

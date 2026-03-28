@@ -1,4 +1,4 @@
-# src/logic/system/service/integrity/compute.py
+# src/logic/system/service/integrity/transaction.py
 
 """
 Module: logic.system.service.integrity.service

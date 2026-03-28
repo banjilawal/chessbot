@@ -1,4 +1,4 @@
-# src/logic/arena/service/compute.py
+# src/logic/arena/service/transaction.py
 
 """
 Module: logic.arena.service.service

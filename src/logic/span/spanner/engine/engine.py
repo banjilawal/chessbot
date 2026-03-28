@@ -1,4 +1,4 @@
-# src/logic/span/span/compute.py
+# src/logic/span/span/transaction.py
 
 """
 Module: logic.span.span.computer

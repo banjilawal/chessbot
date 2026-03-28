@@ -1,4 +1,4 @@
-# src/logic/edge/service/compute.py
+# src/logic/edge/service/transaction.py
 
 """
 Module: logic.edge.service.service

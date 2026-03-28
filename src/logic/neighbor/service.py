@@ -1,4 +1,4 @@
-# src/logic/neighbor/compute.py
+# src/logic/neighbor/transaction.py
 
 """
 Module: logic.neighbor.service

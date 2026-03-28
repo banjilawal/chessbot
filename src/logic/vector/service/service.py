@@ -1,4 +1,4 @@
-# src/logic/vector/compute.py
+# src/logic/vector/transaction.py
 
 """
 Module: logic.vector.service

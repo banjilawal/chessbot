@@ -14,7 +14,7 @@ from logic.vector import Vector, VectorService
 from logic.coord import ConvertVectorException, Coord, CoordService
 
 
-class VectorToCoordConversion:
+class ConvertVectorToCoordTransaction:
     """
     Role:
         -   Worker
@@ -36,7 +36,7 @@ class VectorToCoordConversion:
     """
     
     @classmethod
-    def compute(
+    def execute(
             cls,
             vector: Vector,
             coord_service: CoordService = CoordService(),

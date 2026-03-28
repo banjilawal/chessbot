@@ -1,4 +1,4 @@
-# src/logic/token/database/kernel/operation/deployment/compute.py
+# src/logic/token/database/kernel/operation/deployment/transaction.py
 
 """
 Module: logic.token.database.kernel.operation.deployment.process

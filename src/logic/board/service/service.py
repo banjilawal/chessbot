@@ -1,4 +1,4 @@
-# src/logic/board/compute.py
+# src/logic/board/transaction.py
 
 """
 Module: logic.board.service

@@ -1,4 +1,4 @@
-# src/logic/points/searcher/compute.py
+# src/logic/points/searcher/transaction.py
 
 """
 Module: logic.points.searcher.searcher

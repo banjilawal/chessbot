@@ -1,4 +1,4 @@
-# src/logic/owner/service/compute.py
+# src/logic/owner/service/transaction.py
 
 """
 Module: logic.owner.service.service

@@ -1,7 +1,7 @@
-# src/logic/token/service/operation/arithmetic/addition/arithmetic.py
+# src/logic/token/service/operation/arithmetic/addition/transaction.py
 
 """
-Module: logic.token.service.operation.arithmetic.addition.arithmetic
+Module: logic.token.service.operation.arithmetic.addition.transaction
 Author: Banji Lawal
 Created: 2026-03-25
 version: 1.0.0

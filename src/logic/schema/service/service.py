@@ -1,4 +1,4 @@
-# src/logic/schema/service/compute.py
+# src/logic/schema/service/transaction.py
 
 """
 Module: logic.schema.service.service

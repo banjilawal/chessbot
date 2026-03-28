@@ -1,4 +1,4 @@
-# template/service/compute.py
+# template/service/transaction.py
 
 """
 Module: template.service.service

@@ -1,4 +1,4 @@
-# src/logic/system/service/abstract/compute.py
+# src/logic/system/service/abstract/transaction.py
 
 """
 Module: logic.system.service.abstract.service

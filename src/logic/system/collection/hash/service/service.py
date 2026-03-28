@@ -1,4 +1,4 @@
-# src/logic/system/collection/hash/service/compute.py
+# src/logic/system/collection/hash/service/transaction.py
 
 """
 Module: logic.system.collection.hash.service.service

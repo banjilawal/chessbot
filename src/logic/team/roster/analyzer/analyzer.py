@@ -1,4 +1,4 @@
-# src/logic/team/relation/roster/compute.py
+# src/logic/team/relation/roster/transaction.py
 
 """
 Module: logic.team.relation.roster.analyzer
