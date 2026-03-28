@@ -13,4 +13,4 @@ version: 1.0.0
 from .exception import *
 
 # Modules
-from .compute import CoordScalarProduct
+from .transaction import MultiplyCoordTransaction

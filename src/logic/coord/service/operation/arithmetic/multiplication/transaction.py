@@ -13,7 +13,7 @@ from logic.system import ComputationResult
 from logic.scalar import Scalar, ScalarService
 from logic.coord import Coord, CoordMultiplicationException, CoordService
 
-class CoordScalarProduct:
+class MultiplyCoordTransaction:
     """
     Role:
         -   Worker

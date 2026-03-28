@@ -45,9 +45,8 @@ class ConvertVectorToCoordTransaction:
         """
         Action:
             1.  Send an exception chain in the ComputationResult if:
-                    -   The coord does not pass a validation check.
                     -   The vector does not pass a validation check.
-                    -   Their sum does not satisfy the constraints of the Coord.
+                    -   Build a Coord from the vectors components is unsuccessful.
             2.  Otherwise, send the success result.
         Args:
             vector: Vector
@@ -58,7 +57,7 @@ class ConvertVectorToCoordTransaction:
         Raises:
             ConvertVectorException
         """
-        method = f"{cls.__name__}.compute"
+        method = f"{cls.__name__}.execute"
         
         # Handle the case that, the vector does not pass a validation check.
         vector_validation_result = vector_service.validation.execute(vector)
