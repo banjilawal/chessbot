@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2025-11-12
 version: 1.0.0
 """
-from logic.scalar import Scalar
+from logic.scalar import Scalar, ScalarBuildTransaction
 
 # src/logic/system/service/integrity/transaction.py
 
@@ -18,7 +18,7 @@ Created: 2025-11-18
 
 from __future__ import annotations
 
-from logic.system import IntegrityService, BuildTransaction, ValidationTransaction
+from logic.system import IdFactory, IntegrityService, BuildTransaction, ValidationTransaction
 
 
 class ScalarService(IntegrityService[Scalar]):
@@ -62,12 +62,14 @@ class ScalarService(IntegrityService[Scalar]):
     
     def __init__(
             self,
-            id: int,
-            name: str,
-            builder: BuildTransaction[Scalar],
-            validator: ValidationTransaction[Scalar]
+            name: str = SERVICE_NAME,
+            id: int = IdFactory.next_id(class_name="ScalarService"),
+            builder: BuildTransaction[Scalar] = ScalarBuildTransaction(),
+            validator: ValidationTransaction[Scalar] = ValidationTransaction(),
     ):
-        super().__init__(id=id, name=name, builder=builder, validator=validator)
+        super().__init__(id=id, name=name)
+        self._builder = builder
+        self._validator = validator
     
     @property
     def build(self) -> BuildTransaction[Scalar]:

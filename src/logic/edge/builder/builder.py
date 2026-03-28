@@ -108,7 +108,7 @@ class EdgeBuildTransaction(BuildTransaction[Edge]):
                  )
              )
          # --- After the inputs have been validated compute the edge's Euclidean dist. ---#
-         distance_computation_result = coord_service.euclidean_distance(
+         distance_computation_result = coord_service.distance(
              u=head.square.coord,
              v=tail.square.coord
          )

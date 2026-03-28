@@ -59,7 +59,7 @@ class CoordAdditionTransaction:
     """
     
     @classmethod
-    def compute(
+    def execute(
             cls,
             coord: Coord,
             operand: Union[Vector, Coord],

@@ -94,85 +94,136 @@ class CoordService(IntegrityService[Coord]):
     
     def add_to_coord(
             self,
-            coord: [Coord],
+            coord: Coord,
             operand: Union[Vector, Coord],
             vector_service: VectorService = VectorService(),
     ) -> ComputationResult[Coord]:
         """
-        # ACTION:
-        1.  Certify the vector argument with vector_service.
-        2.  Certify the coord argument with the service's validation.
-        3.  Get the new row and column using the expression
-                    new_row, new_colum = coord.row + vector.y, coord.column + vector.x
-        5.  Using the service's CoordBuildProcess instance create and return the new Coord.
-
-        # PARAMETERS:
-            *   coord(Coord)
-            *   vector (Vector)
-            *   vector_service (VectorService)
-
-        # RETURNS:
-        BuildResult[Coord] containing either:
-            - On success: Coord in the payload.
-            - On failure: Exception.
-
-        RAISES:
-            *   CoordServiceException
+        Add an operand to a coord.
+        
+        Actions:
+            1.  Send an exception chain in the ComputationResult if either:
+                    -   The coord is unsafe.
+                    -   The operand is unsafe.
+                    -   Their summation is not computed.
+            2.  Otherwise, send the success result.
+        Args:
+            coord: [Coord]
+            operand: Union[Vector, Coord]
+            vector_service: VectorService
+        Returns:
+            ComputationResult[Coord]
+        Raises:
+            CoordServiceException
         """
         method = f"{self.__class__.__name__}.add_to_coord"
         
-        return self._ops_controller.arithmetic.add_to_coord.execute(
+        # Request a summation from the controller.
+        request_result = self._ops_controller.arithmetic.addition.execute(
             coord=coord,
             operand=operand,
             coord_service=self,
             vector_service=vector_service,
         )
+        # Handle the case that, the request is not fulfilled.
+        if request_result.is_failure:
+            return ComputationResult.failure(
+                CoordServiceException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=CoordServiceException.MSG,
+                    err_code=CoordServiceException.ERR_CODE,
+                    ex=request_result.exception,
+                )
+            )
+        # --- Forward the work product to the caller. ---#
+        return request_result
       
-    def multiply_by_scalar(
+    def multiply_coord(
             self,
             coord: Coord,
             scalar: Scalar,
             scalar_service: ScalarService = ScalarService(),
-    ) -> BuildResult[Coord]:
+    ) -> ComputationResult[Coord]:
         """
-        # ACTION:
-        1.  Certify the vector argument with vector_service.
-        2.  Certify the coord argument with the service's validation.
-        3.  Get the new row and column using the expression
-                    new_row, new_colum = coord.row * scalar.value, coord.column + scalar.value
-        5.  Using the service's CoordBuildProcess instance create and return the new Coord.
+        Multiply a cord by a scalar.
 
-        # PARAMETERS:
-            *   coord(Coord)
-            *   scalar (Scalar)
-            *   scalar_service (ScalarService)
-            *   not_negative_validator (NotNegativeNumberValidator)
-
-        # RETURNS:
-        BuildResult[Coord] containing either:
-            - On success: Coord in the payload.
-            - On failure: Exception.
-
-        RAISES:
-            *   CoordServiceExceptio
+        Actions:
+            1.  Send an exception chain in the ComputationResult if either:
+                    -   The coord is unsafe.
+                    -   The scalar is unsafe.
+                    -   Their product is not computed.
+            2.  Otherwise, send the success result.
+        Args:
+            coord: [Coord]
+            scalar: Scalar
+            scalar_service: ScalarService
+        Returns:
+            ComputationResult[Coord]
+        Raises:
+            CoordServiceException
         """
-        method = f"f{self.__class__.__name__}.multiply_by_scalar"
+        method = f"{self.__class__.__name__}.multiply_coord"
         
-        return self._osp.arithmetic.multiply_by_scalar.execute(
+        # Request a multiplication from the controller.
+        request_result = self._ops_controller.arithmetic.multiplication.execute(
             coord=coord,
             scalar=scalar,
             coord_service=self,
             scalar_service=scalar_service,
         )
+        # Handle the case that, the request is not fulfilled.
+        if request_result.is_failure:
+            return ComputationResult.failure(
+                CoordServiceException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=CoordServiceException.MSG,
+                    err_code=CoordServiceException.ERR_CODE,
+                    ex=request_result.exception,
+                )
+            )
+        # --- Forward the work product to the caller. ---#
+        return request_result
         
-    def euclidean_distance(self, u: Coord, v: Coord) -> ComputationResult[int]:
-        method = f"{self.__class__.__name__}.euclidean_distance"
+    def distance(self, u: Coord, v: Coord) -> ComputationResult[int]:
+        """
+        Find the distance between two coords.
+
+        Actions:
+            1.  Send an exception chain in the ComputationResult if either:
+                    -   A coord is unsafe.
+                    -   Their distance is not computed.
+            2.  Otherwise, send the success result.
+        Args:
+            u: Coord
+            v: Coord
+        Returns:
+            ComputationResult[Coord]
+        Raises:
+            CoordServiceException
+        """
+        method = f"{self.__class__.__name__}.distance"
         
-        return self._ops_controller.arithmetic.euclidean_distance.compute(
+        # Request a multiplication from the controller.
+        request_result = self._ops_controller.arithmetic.distance.compute(
             u=u,
             v=v,
             coord_service=self,
         )
+        # Handle the case that, the request is not fulfilled.
+        if request_result.is_failure:
+            return ComputationResult.failure(
+                CoordServiceException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=CoordServiceException.MSG,
+                    err_code=CoordServiceException.ERR_CODE,
+                    ex=request_result.exception,
+                )
+            )
+        # --- Forward the work product to the caller. ---#
+        return request_result
     
     def convert_vector_to_coord(
             self,
@@ -180,29 +231,40 @@ class CoordService(IntegrityService[Coord]):
             vector_service: VectorService = VectorService()
     ) -> ComputationResult[Coord]:
         """
-        # ACTION:
-        1.  vector_service runs integrity checks on param.
-        2.  If any checks raise an exception return it in the BuildResult.
-        3.  Run build_coord(row=y, column=y) to ensure the computed values produce a
-            safe Coord instance.
+        Convert a vector to a coord.
 
-        # PARAMETERS:
-            *   vector (Vector)
-            *   vector_service (VectorService)
-
-        # RETURNS:
-        BuildResult[Coord] containing either:
-            - On success: Coord in the payload.
-            - On failure: Exception.
-
-        RAISES:
-            *   CoordServiceException
+        Actions:
+            1.  Send an exception chain in the ComputationResult if either:
+                    -   The vector is unsafe.
+                    -   A coord cannot be built from the vector's components.
+            2.  Otherwise, send the success result.
+        Args:
+            vector: Vector,
+            vector_service: VectorService
+        Returns:
+            ComputationResult[Coord]
+        Raises:
+            CoordServiceException
         """
         method = f"{self.__class__.__name__}.convert_vector_to_coord"
         
-        return self._ops_controller.arithmetic.conversion.execute(
+        # Request a conversion from the controller.
+        request_result = self._ops_controller.arithmetic.conversion.execute(
             vector=vector,
-            vector_service=vector_service,
             coord_service=self,
+            vector_service=vector_service,
         )
+        # Handle the case that, the request is not fulfilled.
+        if request_result.is_failure:
+            return ComputationResult.failure(
+                CoordServiceException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=CoordServiceException.MSG,
+                    err_code=CoordServiceException.ERR_CODE,
+                    ex=request_result.exception,
+                )
+            )
+        # --- Forward the work product to the caller. ---#
+        return request_result
     
