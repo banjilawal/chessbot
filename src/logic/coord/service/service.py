@@ -13,7 +13,7 @@ from typing import Union, cast
 
 from logic.scalar import Scalar, ScalarService
 from logic.vector import Vector, VectorService
-from logic.coord import Coord, CoordBuildProcess, CoordOpsController, CoordServiceException, CoordValidationProcess
+from logic.coord import Coord, CoordBuildProcess, CoordOpsController, CoordServiceException, CoordValidationTransaction
 from logic.system import BuildResult, ComputationResult, IdFactory, IntegrityService, id_emitter
 
 class CoordService(IntegrityService[Coord]):
@@ -85,7 +85,7 @@ class CoordService(IntegrityService[Coord]):
         return self._ops_controller.build
     
     @property
-    def validation(self) -> CoordValidationProcess:
+    def validation(self) -> CoordValidationTransaction:
         return self._ops_controller.validation
     
     @property
@@ -200,7 +200,7 @@ class CoordService(IntegrityService[Coord]):
         """
         method = f"{self.__class__.__name__}.convert_vector_to_coord"
         
-        return self._ops_controller.arithmetic.convert_vector_to_coord.execute(
+        return self._ops_controller.arithmetic.conversion.execute(
             vector=vector,
             vector_service=vector_service,
             coord_service=self,

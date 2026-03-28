@@ -9,11 +9,11 @@ version: 1.0.0
 
 
 from logic.promotion import PromotionEvent
-from logic.system import BuildResult, BuildProcess
+from logic.system import BuildResult, BuildTransaction
 
 
 
-class PromotionEventBuildProcess(BuildProcess[PromotionEvent]):
+class PromotionEventBuildTransaction(BuildTransaction[PromotionEvent]):
     
     @classmethod
     def execute(self, *args, **kwargs) -> BuildResult[PromotionEvent]:

@@ -12,9 +12,11 @@ from typing import cast, Any
 
 from logic.coord import Coord, NullCoordException
 from logic.coord.service.operation.validation.exception.work import CoordValidationException
-from logic.system import NUMBER_OF_ROWS, ValidationProcess, ValidationResult, LoggingLevelRouter, NumberValidationProcess
+from logic.system import (
+    NUMBER_OF_ROWS, ValidationTransaction, ValidationResult, LoggingLevelRouter, NumberValidationTransaction
+)
 
-class CoordValidationProcess(ValidationProcess[Coord]):
+class CoordValidationTransaction(ValidationTransaction[Coord]):
     """
     Role
         -   Transaction Worker
@@ -30,11 +32,11 @@ class CoordValidationProcess(ValidationProcess[Coord]):
     Provides:
        -    execute(
                     candidate: Any,
-                    number_validation: NumberValidationProcess,
+                    number_validation: NumberValidationTransaction,
             ) -> ValidationResult[Coord]
 
     Super Class:
-        ValidationProcess
+        ValidationTransaction
     """
     
     @classmethod
@@ -42,7 +44,7 @@ class CoordValidationProcess(ValidationProcess[Coord]):
     def execute(
             cls,
             candidate: Any,
-            number_validation: NumberValidationProcess = NumberValidationProcess(),
+            number_validation: NumberValidationTransaction = NumberValidationTransaction(),
     ) -> ValidationResult[Coord]:
         """
         Verify the candidate is a Coord that is safe to use.
@@ -55,7 +57,7 @@ class CoordValidationProcess(ValidationProcess[Coord]):
             2.  Otherwise, after the candidate is cast to a Coord, send the success result.
         Args:
             candidate: Any
-            number_validation: NumberValidationProcess
+            number_validation: NumberValidationTransaction
         Returns:
             ValidationResult[Coord]
         Raises:

@@ -29,7 +29,7 @@ class ZeroArenaContextFlagsException(DebugException):
             *   variable,
             *   it's value,
             *   event which fired the variable into its error state.
-        which occurred in the ArenaContextValidationProcess method identified in layer-0 of the exception chain.
+        which occurred in the ArenaContextValidationTransaction method identified in layer-0 of the exception chain.
 
     2.  A failing ValidationResult was returned because ArenaContext candidate had no query flags enabled.
 

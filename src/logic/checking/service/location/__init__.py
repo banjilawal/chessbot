@@ -11,5 +11,5 @@ from .exception import *
 
 from .service import KingMonitoringService
 from .record import KingLocationRecord
-from .build import KingLocationRecordBuildProcess
-from .validate import KingLocationRecordValidationProcess
+from .build import KingLocationRecordBuildTransaction
+from .validate import KingLocationRecordValidationTransaction

@@ -14,7 +14,7 @@ from logic.square import Square
 from logic.team import Team
 from logic.system import GameColor, LoggingLevelRouter, SearchResult, StackSearchRouter
 from logic.token import (
-    Token, TokenContext, TokenContextValidationProcess, TokenSearchException, TokenSearchRouteException
+    Token, TokenContext, TokenContextValidationTransaction, TokenSearchException, TokenSearchRouteException
 )
 
 
@@ -44,7 +44,7 @@ class TokenSearchRouter(StackSearchRouter[Token]):
             cls,
             dataset: List[Token],
             context: TokenContext,
-            context_validator: TokenContextValidationProcess = TokenContextValidationProcess()
+            context_validator: TokenContextValidationTransaction = TokenContextValidationTransaction()
     ) -> SearchResult[List[Token]]:
         """
         # ACTION:
@@ -56,7 +56,7 @@ class TokenSearchRouter(StackSearchRouter[Token]):
        # PARAMETERS:
             *   collider_candidates (List[Token]):
             *   query: TokenContext
-            *   context_validator: TokenContextValidationProcess
+            *   context_validator: TokenContextValidationTransaction
         # RETURNS:
             *   SearchResult[List[Token]] containing either:
                     - On error: Exception , payload null

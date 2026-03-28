@@ -9,11 +9,11 @@ version: 1.0.0
 
 from typing import Any
 
-from logic.system import LoggingLevelRouter, ValidationResult, ValidationProcess
+from logic.system import LoggingLevelRouter, ValidationResult, ValidationTransaction
 from logic.system.number import TestingLevel
 
 
-class NumberValidationService(ValidationProcess[int]):
+class NumberValidationService(ValidationTransaction[int]):
     
     @classmethod
     @LoggingLevelRouter.monitor

@@ -12,10 +12,10 @@ from __future__ import annotations
 from logic.graph import Graph
 from logic.span import SquareSpan
 from logic.square import SquareStackService
-from logic.system import BuildResult, BuildProcess, LoggingLevelRouter
+from logic.system import BuildResult, BuildTransaction, LoggingLevelRouter
 
 
-class SpanningGraphProducer(BuildProcess[Graph]):
+class SpanningGraphProducer(BuildTransaction[Graph]):
     
     @classmethod
     @LoggingLevelRouter

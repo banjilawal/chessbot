@@ -11,23 +11,23 @@ from typing import cast
 
 
 from logic.square import Square
-from logic.board import Board, BoardValidationProcess
+from logic.board import Board, BoardValidationTransaction
 from logic.piece import Piece, PieceValidator
-from logic.enviroment.validator import TurnScene, TurnSceneValidationProcess
-from logic.system import BuildProcess, BuildResult, IdValidationProcess, LoggingLevelRouter
+from logic.enviroment.validator import TurnScene, TurnSceneValidationTransaction
+from logic.system import BuildTransaction, BuildResult, IdValidationTransaction, LoggingLevelRouter
 
 
-class TurnSceneBuildProcess(BuildProcess[TurnScene]):
+class TurnSceneBuildTransaction(BuildTransaction[TurnScene]):
     """"""
     
     @classmethod
     @LoggingLevelRouter.monitor
     def execute(cls, id: int, piece: Piece, board: Board) -> BuildResult[TurnScene]:
         """"""
-        method = "TurnSceneBuildProcess.build"
+        method = "TurnSceneBuildTransaction.build"
         
         try:
-            id_validation = IdValidationProcess.execute(id)
+            id_validation = IdValidationTransaction.execute(id)
             if id_validation.is_failure():
                 return BuildResult.failure(id_validation.exception)
             
@@ -35,15 +35,15 @@ class TurnSceneBuildProcess(BuildProcess[TurnScene]):
             if piece_validation.is_failure():
                 return BuildResult.failure(piece_validation.exception)
             
-            board_validation = BoardValidationProcess.execute(board)
+            board_validation = BoardValidationTransaction.execute(board)
             if board_validation.is_failure():
                 return BuildResult.failure(board_validation.exception)
             
-            actor_board_validation = TurnSceneValidationProcess.actor_board_validation_helper(piece=piece, board=board)
+            actor_board_validation = TurnSceneValidationTransaction.actor_board_validation_helper(piece=piece, board=board)
             if actor_board_validation.is_failure():
                 return BuildResult.failure(actor_board_validation.exception)
             
-            actor_square_validation = TurnSceneValidationProcess.actor_square_validation_helper(piece=piece, board=board)
+            actor_square_validation = TurnSceneValidationTransaction.actor_square_validation_helper(piece=piece, board=board)
             if actor_square_validation.is_failure():
                 return BuildResult.failure(actor_square_validation.exception)
             

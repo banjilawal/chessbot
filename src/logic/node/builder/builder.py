@@ -10,11 +10,11 @@ version: 1.0.0
 from __future__ import annotations
 
 from logic.graph import Node, NodeBuildException
-from logic.square import Square, SquareValidationProcess
-from logic.system import BuildResult, BuildProcess, LoggingLevelRouter
+from logic.square import Square, SquareValidationTransaction
+from logic.system import BuildResult, BuildTransaction, LoggingLevelRouter
 
 
-class NodeBuildProcess(BuildProcess[Node]):
+class NodeBuildTransaction(BuildTransaction[Node]):
     """
     Role:Factory, Data Integrity Guarantor
 
@@ -25,7 +25,7 @@ class NodeBuildProcess(BuildProcess[Node]):
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     Super Class:
-        *   BuildProcess
+        *   BuildTransaction
 
     Provides:
 
@@ -36,14 +36,14 @@ class NodeBuildProcess(BuildProcess[Node]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(cls, square: Square, square_validator: SquareValidationProcess = SquareValidationProcess()) -> BuildResult[Node]:
+    def execute(cls, square: Square, square_validator: SquareValidationTransaction = SquareValidationTransaction()) -> BuildResult[Node]:
         """
         # ACTION:
             1.  If the square is not valid send an exception chain in the BuildResult. Otherwise, use the square
                 to create a Node which is returned in the BuildResult.
         # PARAMETERS:
             *   square (Square)
-            *   squareValidator: (SquareValidationProcess)
+            *   squareValidator: (SquareValidationTransaction)
         # RETURNS:
             *   BuildResult[Node] containing either:
                     - On failure: Exception.
@@ -51,7 +51,7 @@ class NodeBuildProcess(BuildProcess[Node]):
         Raises:
             *   NodeBuildException
         """
-        method = "NodeBuildProcess.build"
+        method = "NodeBuildTransaction.build"
         
         # Handle the case that, the square does not pass a validation check.
         validation_result = square_validator.execute(square)

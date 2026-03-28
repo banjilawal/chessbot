@@ -11,11 +11,11 @@ from typing import Any, cast
 
 from logic.team import UniqueTeamDataService
 from logic.engine.service import EngineService
-from logic.system import IdentityService, LoggingLevelRouter, ServiceValidator, ValidationResult, ValidationProcess
+from logic.system import IdentityService, LoggingLevelRouter, ServiceValidator, ValidationResult, ValidationTransaction
 
 
 
-class PlayerValidationProcess(ValidationProcess[Player]):
+class PlayerValidationTransaction(ValidationTransaction[Player]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -24,7 +24,7 @@ class PlayerValidationProcess(ValidationProcess[Player]):
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     Super Class:
-        *   ValidationProcess
+        *   ValidationTransaction
 
     # PROVIDES:
         *   validate: -> ValidationResult[Player]
@@ -69,7 +69,7 @@ class PlayerValidationProcess(ValidationProcess[Player]):
             *   NullPlayerException
             *   InvalidPlayerException
         """
-        method = "PlayerValidationProcess.validate"
+        method = "PlayerValidationTransaction.validate"
         try:
             # If candidate does not exist no point continuing
             if candidate is None:
@@ -143,7 +143,7 @@ class PlayerValidationProcess(ValidationProcess[Player]):
             *   NullPlayerVarietyException
             *   InvalidPlayerVarietyException
         """
-        method = "PlayerValidationProcess.certify_variety"
+        method = "PlayerValidationTransaction.certify_variety"
         try:
             # Handle the null case.
             if candidate is None:
@@ -192,7 +192,7 @@ class PlayerValidationProcess(ValidationProcess[Player]):
         Raises:
             *   InvalidMachinePlayerException
         """
-        method = "PlayerValidationProcess.certify_machine_player_engine"
+        method = "PlayerValidationTransaction.certify_machine_player_engine"
         try:
             engine_validation = engine_service_validator.validate_engine(machine_player.engine_service)
             if engine_validation.is_failure():

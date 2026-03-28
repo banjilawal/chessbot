@@ -11,12 +11,12 @@ from logic.agent import PlayerAgent, AgentService, UniqueAgentDataService
 from logic.board import BoardService
 from logic.team import Team, UniqueTeamDataService
 from logic.game import Game, GameBuildException
-from logic.system import BuildProcess, BuildResult, IdentityService, LoggingLevelRouter, id_emitter
+from logic.system import BuildTransaction, BuildResult, IdentityService, LoggingLevelRouter, id_emitter
 
 
-class GameBuildProcess(BuildProcess[Game]):
+class GameBuildTransaction(BuildTransaction[Game]):
     """
-    Role:BuildProcess, Data Integrity And Reliability Guarantor
+    Role:BuildTransaction, Data Integrity And Reliability Guarantor
   
     Responsibilities:
     Produce Game instances whose integrity is guaranteed at creation.
@@ -69,7 +69,7 @@ class GameBuildProcess(BuildProcess[Game]):
         RAISES:
             *   GameBuildException
         """
-        method = "GameBuildProcess.build"
+        method = "GameBuildTransaction.build"
         
         try:
             # Start the error detection exception.

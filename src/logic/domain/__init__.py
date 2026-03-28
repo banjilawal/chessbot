@@ -12,5 +12,5 @@ from .search import *
 from .exception import *
 
 from .domain import Domain
-from .builder import DomainBuildProcess
-from .validator import DomainValidationProcess
+from .builder import DomainBuildTransaction
+from .validator import DomainValidationTransaction

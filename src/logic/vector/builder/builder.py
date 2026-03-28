@@ -9,13 +9,13 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from logic.system import BuildProcess, BuildResult, LONGEST_KNIGHT_LEG_SIZE, LoggingLevelRouter, NumberValidationProcess
-from logic.vector import Vector, VectorBuildException,VectorValidationProcess
+from logic.system import BuildTransaction, BuildResult, LONGEST_KNIGHT_LEG_SIZE, LoggingLevelRouter, NumberValidationTransaction
+from logic.vector import Vector, VectorBuildException,VectorValidationTransaction
 
 
-class VectorBuildProcess(BuildProcess[Vector]):
+class VectorBuildTransaction(BuildTransaction[Vector]):
     """
-     Role:BuildProcess, Data Integrity And Reliability Guarantor
+     Role:BuildTransaction, Data Integrity And Reliability Guarantor
 
      Responsibilities:
      1.  Produce Vector instances whose integrity is guaranteed at creation.
@@ -24,10 +24,10 @@ class VectorBuildProcess(BuildProcess[Vector]):
      4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
      Super Class:
-         * BuildProcess
+         * BuildTransaction
 
      # PROVIDES:
-         *   VectorBuildProcess
+         *   VectorBuildTransaction
 
      # LOCAL ATTRIBUTES:
      None
@@ -40,7 +40,7 @@ class VectorBuildProcess(BuildProcess[Vector]):
             self,
             x: int,
             y: int,
-            bound_number_validator: NumberValidationProcess = NumberValidationProcess(),
+            bound_number_validator: NumberValidationTransaction = NumberValidationTransaction(),
     ) -> BuildResult[Vector]:
         """
         # ACTION:
@@ -50,7 +50,7 @@ class VectorBuildProcess(BuildProcess[Vector]):
         # PARAMETERS:
             *   x (int)
             *   y (int)
-            *   bound_number_validator (NumberValidationProcess)
+            *   bound_number_validator (NumberValidationTransaction)
             
         # RETURNS:
         BuildResult[Vector] containing either:
@@ -60,7 +60,7 @@ class VectorBuildProcess(BuildProcess[Vector]):
         RAISES:
             *   VectorBuildException
         """
-        method = "VectorBuildProcess.build"
+        method = "VectorBuildTransaction.build"
         # Handle the x component
         x_validation = bound_number_validator.execute(floor=0, ceiling=LONGEST_KNIGHT_LEG_SIZE, candidate=abs(x))
         if x_validation.is_failure:

@@ -23,7 +23,7 @@ class SchemaValidationException(ValidationException):
     Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Identify the SchemaValidationProcess method where the exception failed.
+    1.  Identify the SchemaValidationTransaction method where the exception failed.
 
     Super Class:
         *   ValidationException
@@ -51,7 +51,7 @@ class SchemaValidationException(ValidationException):
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     ERR_CODE = "SCHEMA_VALIDATION_FAILURE"
-    MSG = "Failure in SchemaValidationProcess method."
+    MSG = "Failure in SchemaValidationTransaction method."
     
     def __init__(
             self,

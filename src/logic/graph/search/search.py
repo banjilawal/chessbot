@@ -14,7 +14,7 @@ from logic.coord import Coord
 from logic.piece import Piece
 from logic.system import LoggingLevelRouter, Finder, SearchResult
 from logic.domain import (
-    Domain, DomainValidationProcess, VisitorSearchContext, VisitorSearchContextValidator, ResidentSearchCoordCollisionException,
+    Domain, DomainValidationTransaction, VisitorSearchContext, VisitorSearchContextValidator, ResidentSearchCoordCollisionException,
     ResidentSearchIdCollisionException, ResidentSearchNameCollisionException
 )
 
@@ -29,7 +29,7 @@ class DomainVisitorFinder(Finder[Domain, Piece]):
         method = "DomainResidentFinder.searcher"
         
         try:
-            domain_validation = DomainValidationProcess.execute(data_owner)
+            domain_validation = DomainValidationTransaction.execute(data_owner)
             if domain_validation.is_failure():
                 return SearchResult.failure(domain_validation.exception)
             

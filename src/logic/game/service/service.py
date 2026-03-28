@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast
 
 from logic.system import IntegrityService, id_emitter
-from logic.game import Game, GameBuildProcess, GameValidationProcess
+from logic.game import Game, GameBuildTransaction, GameValidationTransaction
 
 
 class GameService(IntegrityService[Game]):
@@ -27,8 +27,8 @@ class GameService(IntegrityService[Game]):
         *   IntegrityService
 
     # PROVIDES:
-        *   build: --> GameBuildProcess
-        *   validation: --> GameValidationProcess
+        *   build: --> GameBuildTransaction
+        *   validation: --> GameValidationTransaction
 
 
     # INHERITED ATTRIBUTES:
@@ -40,8 +40,8 @@ class GameService(IntegrityService[Game]):
             self,
             name: str = DEFAULT_NAME,
             id: int = id_emitter.service_id,
-            builder: GameBuildProcess = GameBuildProcess(),
-            validator: GameValidationProcess = GameValidationProcess(),
+            builder: GameBuildTransaction = GameBuildTransaction(),
+            validator: GameValidationTransaction = GameValidationTransaction(),
     ):
         """
         # ACTION:
@@ -51,7 +51,7 @@ class GameService(IntegrityService[Game]):
             *   id (nt)
             *   name (str)
             *   build (GameFactory)
-            *   validation (GameValidationProcess)
+            *   validation (GameValidationTransaction)
 
         # RETURNS:
         None
@@ -62,14 +62,14 @@ class GameService(IntegrityService[Game]):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
     
     @property
-    def build(self) -> GameBuildProcess:
-        """get GameBuildProcess"""
-        return cast(GameBuildProcess, self.entity_builder)
+    def build(self) -> GameBuildTransaction:
+        """get GameBuildTransaction"""
+        return cast(GameBuildTransaction, self.entity_builder)
     
     @property
-    def validation(self) -> GameValidationProcess:
-        """get GameValidationProcess"""
-        return cast(GameValidationProcess, self.entity_validator)
+    def validation(self) -> GameValidationTransaction:
+        """get GameValidationTransaction"""
+        return cast(GameValidationTransaction, self.entity_validator)
     
     
     

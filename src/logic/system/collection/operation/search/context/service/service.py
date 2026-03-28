@@ -11,8 +11,8 @@ from abc import ABC, abstractmethod
 from typing import Generic, List, TypeVar
 
 from logic.system import (
-    BuildProcess, Context, IntegrityService, LoggingLevelRouter, SearchResult, Service, StackSearchRouter,
-    ValidationProcess
+    BuildTransaction, Context, IntegrityService, LoggingLevelRouter, SearchResult, Service, StackSearchRouter,
+    ValidationTransaction
 )
 
 C = TypeVar("C", bound="Context")

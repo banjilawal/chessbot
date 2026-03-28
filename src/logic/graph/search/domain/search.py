@@ -14,7 +14,7 @@ from logic.piece import Piece
 from logic.graph import Graph, GraphDomainFilter, GraphValidator, graph
 from logic.system import LoggingLevelRouter, Finder, SearchResult
 from logic.domain import (
-    Domain, DomainValidationProcess, GraphSearchContext, GraphSearchContextValidator, ResidentSearchCoordCollisionException,
+    Domain, DomainValidationTransaction, GraphSearchContext, GraphSearchContextValidator, ResidentSearchCoordCollisionException,
     ResidentSearchIdCollisionException, ResidentSearchNameCollisionException
 )
 

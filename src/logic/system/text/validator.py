@@ -9,10 +9,10 @@ version: 1.0.0
 
 from typing import cast
 
-from logic.system import LoggingLevelRouter, ValidationProcess, ValidationResult
+from logic.system import LoggingLevelRouter, ValidationTransaction, ValidationResult
 
 
-class StringValidationProcess(ValidationProcess[str]):
+class StringValidationTransaction(ValidationTransaction[str]):
     """
      Role:Validation, Data Integrity Guarantor, Security., Integrity
 
@@ -21,7 +21,7 @@ class StringValidationProcess(ValidationProcess[str]):
     2.  If a candidate fails a safety test, the validation sends an exception in a ValidationResult.
     
     Super Class:
-        *   ValidationProcess
+        *   ValidationTransaction
 
     Provides:
 
@@ -54,7 +54,7 @@ class StringValidationProcess(ValidationProcess[str]):
             *   TypeError
             *   BlankTextError
         """
-        method = "StringValidationProcess.validate"
+        method = "StringValidationTransaction.validate"
         
         try:
             # Handle the nonexistence case.

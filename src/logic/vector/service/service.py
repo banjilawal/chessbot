@@ -12,9 +12,9 @@ from typing import List, cast
 
 from logic.coord import Coord, CoordService
 from logic.scalar import Scalar, ScalarService
-from logic.vector import Vector, VectorBuildProcess, VectorServiceException, VectorValidationProcess
+from logic.vector import Vector, VectorBuildTransaction, VectorServiceException, VectorValidationTransaction
 from logic.system import (
-    BuildResult, ComputationResult, IdFactory, LoggingLevelRouter, IntegrityService, NumberValidationProcess
+    BuildResult, ComputationResult, IdFactory, LoggingLevelRouter, IntegrityService, NumberValidationTransaction
 )
 
 class VectorService(IntegrityService[Vector]):
@@ -46,8 +46,8 @@ class VectorService(IntegrityService[Vector]):
     Attributes:
         *   id (int)
         *   name (str)
-        *   build (VectorBuildProcess) = VectorBuildProcess()
-        *   validation (VectorValidationProcess) = VectorValidationProcess()
+        *   build (VectorBuildTransaction) = VectorBuildTransaction()
+        *   validation (VectorValidationTransaction) = VectorValidationTransaction()
 
     # LOCAL METHODS:
         *   multiply_vector_by_scalar(
@@ -69,27 +69,27 @@ class VectorService(IntegrityService[Vector]):
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            builder: VectorBuildProcess = VectorBuildProcess(),
-            validator: VectorValidationProcess = VectorValidationProcess(),
+            builder: VectorBuildTransaction = VectorBuildTransaction(),
+            validator: VectorValidationTransaction = VectorValidationTransaction(),
             id: int = IdFactory.next_id(class_name="VectorService"),
     ):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
     
     @property
-    def build(self) -> VectorBuildProcess:
-        """get VectorBuildProcess"""
-        return cast(VectorBuildProcess, self.entity_builder)
+    def build(self) -> VectorBuildTransaction:
+        """get VectorBuildTransaction"""
+        return cast(VectorBuildTransaction, self.entity_builder)
     
     @property
-    def validation(self) -> VectorValidationProcess:
-        """get VectorValidationProcess"""
-        return cast(VectorValidationProcess, self.entity_validator)
+    def validation(self) -> VectorValidationTransaction:
+        """get VectorValidationTransaction"""
+        return cast(VectorValidationTransaction, self.entity_validator)
     
     @LoggingLevelRouter.monitor
     def add_vectors(
             self,
             vectors: List[Vector],
-            number_validator: NumberValidationProcess = NumberValidationProcess(),
+            number_validator: NumberValidationTransaction = NumberValidationTransaction(),
     ) -> ComputationResult[Vector]:
         """
         Action:
@@ -102,7 +102,7 @@ class VectorService(IntegrityService[Vector]):
 
         Args:
             vectors: List[Vector]
-            number_validator: NumberValidationProcess
+            number_validator: NumberValidationTransaction
 
         Returns:
             ComputationResult[Vector]
@@ -158,7 +158,7 @@ class VectorService(IntegrityService[Vector]):
             vector: Vector,
             scalar: Scalar,
             scalar_service: ScalarService = ScalarService(),
-            number_validator: NumberValidationProcess = NumberValidationProcess(),
+            number_validator: NumberValidationTransaction = NumberValidationTransaction(),
     ) -> ComputationResult[Vector]:
         """
         Action:
@@ -176,7 +176,7 @@ class VectorService(IntegrityService[Vector]):
             vector: Vector
             scalar: Scalar
             scalar_service: ScalarService
-            number_validator: NumberValidationProcess
+            number_validator: NumberValidationTransaction
             
         Returns:
             ComputationResult[Vector]
@@ -237,7 +237,7 @@ class VectorService(IntegrityService[Vector]):
             self,
             coord: Coord,
             coord_service: CoordService = CoordService(),
-            number_validator: NumberValidationProcess = NumberValidationProcess(),
+            number_validator: NumberValidationTransaction = NumberValidationTransaction(),
     ) -> BuildResult[Vector]:
         """
         Action:
@@ -249,7 +249,7 @@ class VectorService(IntegrityService[Vector]):
         Args:
             coord: Coord
             coord_service: CoordService
-            number_validator: NumberValidationProcess
+            number_validator: NumberValidationTransaction
 
         Args:
             BuildResult[Vector]

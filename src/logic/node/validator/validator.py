@@ -10,14 +10,14 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Any, List, cast
 
-from logic.square import SquareValidationProcess
-from logic.system import LoggingLevelRouter, NumberValidationProcess, ValidationResult, ValidationProcess
+from logic.square import SquareValidationTransaction
+from logic.system import LoggingLevelRouter, NumberValidationTransaction, ValidationResult, ValidationTransaction
 from logic.node import (
     DiscoveryStatus, DiscoveryStatusNullException, NullNodeException, Node, NodeValidationException
 )
 
 
-class NodeValidationProcess(ValidationProcess[Node]):
+class NodeValidationTransaction(ValidationTransaction[Node]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -26,7 +26,7 @@ class NodeValidationProcess(ValidationProcess[Node]):
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     Super Class:
-        *   ValidationProcess
+        *   ValidationTransaction
 
     Provides:
 
@@ -40,8 +40,8 @@ class NodeValidationProcess(ValidationProcess[Node]):
     def execute(
             cls,
             candidate: Any,
-            number_validator: NumberValidationProcess = NumberValidationProcess(),
-            square_validator: SquareValidationProcess = SquareValidationProcess(),
+            number_validator: NumberValidationTransaction = NumberValidationTransaction(),
+            square_validator: SquareValidationTransaction = SquareValidationTransaction(),
     ) -> ValidationResult[Node]:
         """
         # ACTION:
@@ -51,9 +51,9 @@ class NodeValidationProcess(ValidationProcess[Node]):
                 in the ValidationResult. Else, send the node in the ValidationResult.
         # PARAMETERS:
             *   candidate (Any)
-            *   node_validator (NodeValidationProcess)
+            *   node_validator (NodeValidationTransaction)
             *   identity_service (IdentityService)
-            *   number_validation (NumberValidationProcess)
+            *   number_validation (NumberValidationTransaction)
         # RETURNS:
             *   ValidationResult[] containing either:
                     - On failure: Exception.
@@ -63,7 +63,7 @@ class NodeValidationProcess(ValidationProcess[Node]):
             *   NullNodeException
             *   NodeValidationException
         """
-        method = "NodeValidationProcess.validate"
+        method = "NodeValidationTransaction.validate"
         
         # Handle the nonexistence case.
         if candidate is None:
@@ -183,7 +183,7 @@ class NodeValidationProcess(ValidationProcess[Node]):
             *   TypeError
             *   DiscoveryStatusNullException
         """
-        method = "NodeContextValidationProcess.validate_discovery_status"
+        method = "NodeContextValidationTransaction.validate_discovery_status"
         
         # Handle the nonexistence case.
         if candidate is None:

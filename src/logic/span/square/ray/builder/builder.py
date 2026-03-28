@@ -13,10 +13,10 @@ from typing import List
 from logic.coord import Coord
 from logic.span import CoordRay, SquareRay, SquareRayBuildException
 from logic.square import Square, SquareContext, SquareNotFoundException, SquareStackService
-from logic.system import BuildProcess, BuildResult, LoggingLevelRouter, SearchResult
+from logic.system import BuildTransaction, BuildResult, LoggingLevelRouter, SearchResult
 
 
-class SquareRayBuildProcess(BuildProcess[SquareRay]):
+class SquareRayBuildTransaction(BuildTransaction[SquareRay]):
     
     @classmethod
     @LoggingLevelRouter.monitor

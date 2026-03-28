@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import List, cast
 
 from logic.node import Node
-from logic.pair import PairList, PairListBuildProcess, PairListValidationProcess, PairService
+from logic.pair import PairList, PairListBuildTransaction, PairListValidationTransaction, PairService
 from logic.pair.listing.service import PairListServiceException
 from logic.system import IdFactory, IntegrityService, LoggingLevelRouter, SearchResult
 
@@ -44,28 +44,28 @@ class PairListService(IntegrityService[PairList]):
             self,
             name: str = SERVICE_NAME,
             pair_service: PairService = PairService(),
-            builder: PairListBuildProcess = PairListBuildProcess(),
-            validator: PairListValidationProcess = PairListValidationProcess(),
+            builder: PairListBuildTransaction = PairListBuildTransaction(),
+            validator: PairListValidationTransaction = PairListValidationTransaction(),
             id: int = IdFactory.next_id(class_name="PairListService"),
     ):
         """
         Args:
             id: int
             name: str
-            builder: PairListBuildProcess
+            builder: PairListBuildTransaction
             pair_service: PairService
-            validator: PairListValidationProcess
+            validator: PairListValidationTransaction
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         self._pair_service = pair_service
     
     @property
-    def build(self) -> PairListBuildProcess:
-        return cast(PairListBuildProcess, self.entity_builder)
+    def build(self) -> PairListBuildTransaction:
+        return cast(PairListBuildTransaction, self.entity_builder)
     
     @property
-    def validation(self) -> PairListValidationProcess:
-        return cast(PairListValidationProcess, self.entity_validator)
+    def validation(self) -> PairListValidationTransaction:
+        return cast(PairListValidationTransaction, self.entity_validator)
     
     @property
     def pair_service(self) -> PairService:

@@ -15,12 +15,12 @@ from logic.formation import (
 )
 from logic.persona import Persona, PersonaService
 from logic.square import Square, SquareService
-from logic.system import BuildResult, BuildProcess, GameColor, GameColorValidationProcess, IdentityService, LoggingLevelRouter
+from logic.system import BuildResult, BuildTransaction, GameColor, GameColorValidationTransaction, IdentityService, LoggingLevelRouter
 
 
-class FormationKeyBuildProcess(BuildProcess[FormationKey]):
+class FormationKeyBuildTransaction(BuildTransaction[FormationKey]):
     """
-    Role:BuildProcess, Data Integrity And Reliability Guarantor
+    Role:BuildTransaction, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce FormationKey instances whose integrity is guaranteed at creation.
@@ -29,7 +29,7 @@ class FormationKeyBuildProcess(BuildProcess[FormationKey]):
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     Super Class:
-        *   BuildProcess
+        *   BuildTransaction
 
     Provides:
 
@@ -48,7 +48,7 @@ class FormationKeyBuildProcess(BuildProcess[FormationKey]):
             square_service: SquareService = SquareService(),
             persona_service: PersonaService = PersonaService(),
             identity_service: IdentityService = IdentityService(),
-            color_validator: GameColorValidationProcess = GameColorValidationProcess(),
+            color_validator: GameColorValidationTransaction = GameColorValidationTransaction(),
     ) -> BuildResult[FormationKey]:
         """
         # ACTION:
@@ -64,7 +64,7 @@ class FormationKeyBuildProcess(BuildProcess[FormationKey]):
             *   These Parameters must be provided:
                     *   square_validator (SquareService)
                     *   identity_service (IdentityService)
-                    *   color_validator (GameColorValidationProcess)
+                    *   color_validator (GameColorValidationTransaction)
         # RETURNS:
             *   BuildResult[FormationKey] containing either:
                     - On failure: Exception.
@@ -75,7 +75,7 @@ class FormationKeyBuildProcess(BuildProcess[FormationKey]):
             *   ArenaFormationKeysException
             *   FormationKeyBuildException
         """
-        method = "FormationKeyBuildProcess.build"
+        method = "FormationKeyBuildTransaction.build"
         
         # Count how many optional parameters are not-null.
         params = [designation, square, color, persona]

@@ -9,7 +9,7 @@ version: 1.0.0
 from typing import cast
 
 from logic.system import QueryService, id_emitter
-from logic.persona import PersonaLookupProcess, PersonaKey, PersonaKeyBuildProcess, PersonaKeyValidationProcess
+from logic.persona import PersonaLookupProcess, PersonaKey, PersonaKeyBuildTransaction, PersonaKeyValidationTransaction
 
 
 class PersonaKeyService(QueryService[PersonaKey]):
@@ -38,8 +38,8 @@ class PersonaKeyService(QueryService[PersonaKey]):
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             lookup: PersonaLookupProcess = PersonaLookupProcess(),
-            builder: PersonaKeyBuildProcess = PersonaKeyBuildProcess(),
-            validator: PersonaKeyValidationProcess = PersonaKeyValidationProcess(),
+            builder: PersonaKeyBuildTransaction = PersonaKeyBuildTransaction(),
+            validator: PersonaKeyValidationTransaction = PersonaKeyValidationTransaction(),
     ):
         """
         # ACTION:
@@ -47,8 +47,8 @@ class PersonaKeyService(QueryService[PersonaKey]):
         # PARAMETERS:
             *   id (nt)
             *   name (str)
-            *   build (PersonaKeyBuildProcess)
-            *   validation (PersonaKeyValidationProcess)
+            *   build (PersonaKeyBuildTransaction)
+            *   validation (PersonaKeyValidationTransaction)
         # RETURNS:
             None
         Raises:
@@ -57,14 +57,14 @@ class PersonaKeyService(QueryService[PersonaKey]):
         super().__init__(id=id, name=name, builder=builder, validator=validator, finder=lookup)
     
     @property
-    def build(self) -> PersonaKeyBuildProcess:
-        """get PersonaKeyBuildProcess"""
-        return cast(PersonaKeyBuildProcess, self.entity_builder)
+    def build(self) -> PersonaKeyBuildTransaction:
+        """get PersonaKeyBuildTransaction"""
+        return cast(PersonaKeyBuildTransaction, self.entity_builder)
     
     @property
-    def validation(self) -> PersonaKeyValidationProcess:
-        """get PersonaKeyValidationProcess"""
-        return cast(PersonaKeyValidationProcess, self.entity_validator)
+    def validation(self) -> PersonaKeyValidationTransaction:
+        """get PersonaKeyValidationTransaction"""
+        return cast(PersonaKeyValidationTransaction, self.entity_validator)
     
     @property
     def lookup(self) -> PersonaLookupProcess:

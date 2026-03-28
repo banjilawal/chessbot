@@ -11,10 +11,10 @@ from __future__ import annotations
 from typing import Any, cast
 
 from logic.pair import PairList, PairListNullException, PairListValidationException
-from logic.system import LoggingLevelRouter, ValidationResult, ValidationProcess
+from logic.system import LoggingLevelRouter, ValidationResult, ValidationTransaction
 
 
-class PairListValidationProcess(ValidationProcess[PairList]):
+class PairListValidationTransaction(ValidationTransaction[PairList]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 

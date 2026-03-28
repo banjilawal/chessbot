@@ -24,8 +24,8 @@ class FormationKeyBuildException(BuildException):
     Role:Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Indicate the FormationKeyBuildProcess did not produce a valid work product.
-    2.  Identify the FormationKeyBuildProcess method where the failure occurred.
+    1.  Indicate the FormationKeyBuildTransaction did not produce a valid work product.
+    2.  Identify the FormationKeyBuildTransaction method where the failure occurred.
 
     Super Class:
         *   BuildException
@@ -53,7 +53,7 @@ class FormationKeyBuildException(BuildException):
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     ERR_CODE = "FORMATION_KEY_BUILD_FAILURE"
-    MSG = "Failure in FormationKeyBuildProcess method."
+    MSG = "Failure in FormationKeyBuildTransaction method."
     
     def __init__(
             self,

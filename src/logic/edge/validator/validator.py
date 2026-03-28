@@ -13,9 +13,9 @@ import sys
 from math import sqrt
 from typing import Any, cast
 
-from logic.node import NodeValidationProcess
+from logic.node import NodeValidationTransaction
 from logic.system import (
-    BOARD_DIMENSION, IdentityService, LoggingLevelRouter, NumberValidationProcess, ValidationResult, ValidationProcess
+    BOARD_DIMENSION, IdentityService, LoggingLevelRouter, NumberValidationTransaction, ValidationResult, ValidationTransaction
 )
 from logic.edge import (
     CircularEdgeException, Edge, EdgeDistanceException, EdgeHeuristicException, NullEdgeException,
@@ -23,7 +23,7 @@ from logic.edge import (
     EdgeWeightException,
 )
 
-class EdgeValidationProcess(ValidationProcess[Edge]):
+class EdgeValidationTransaction(ValidationTransaction[Edge]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -32,7 +32,7 @@ class EdgeValidationProcess(ValidationProcess[Edge]):
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     Super Class:
-        *   ValidationProcess
+        *   ValidationTransaction
 
     Provides:
 
@@ -46,8 +46,8 @@ class EdgeValidationProcess(ValidationProcess[Edge]):
     def execute(
             cls,
             candidate: Any,
-            node_validator: NodeValidationProcess = NodeValidationProcess(),
-            number_validator: NumberValidationProcess = NumberValidationProcess(),
+            node_validator: NodeValidationTransaction = NodeValidationTransaction(),
+            number_validator: NumberValidationTransaction = NumberValidationTransaction(),
             identity_service: IdentityService = IdentityService(),
     ) -> ValidationResult[Edge]:
         """
@@ -58,9 +58,9 @@ class EdgeValidationProcess(ValidationProcess[Edge]):
                 in the ValidationResult. Else, send the edge in the ValidationResult.
         # PARAMETERS:
             *   candidate (Any)
-            *   node_validator (NodeValidationProcess)
+            *   node_validator (NodeValidationTransaction)
             *   identity_service (IdentityService)
-            *   number_validation (NumberValidationProcess)
+            *   number_validation (NumberValidationTransaction)
         # RETURNS:
             *   ValidationResult[Edge] containing either:
                     - On failure: Exception.
@@ -70,7 +70,7 @@ class EdgeValidationProcess(ValidationProcess[Edge]):
             *   NullEdgeException
             *   ValidatingEdgeException
         """
-        method = "EdgeValidationProcess.validate"
+        method = "EdgeValidationTransaction.validate"
         
         # Handle the nonexistence case.
         if candidate is None:

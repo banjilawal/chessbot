@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from logic.edge.builder.builder import EdgeBuildProcess
+from logic.edge.builder.builder import EdgeBuildTransaction
 from logic.edge.builder.exception.work import EdgeBuildException

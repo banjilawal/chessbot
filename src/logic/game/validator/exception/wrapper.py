@@ -23,7 +23,7 @@ class GameValidationException(ValidationException):
     Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Identify the GameValidationProcess method where the exception failed.
+    1.  Identify the GameValidationTransaction method where the exception failed.
 
     Super Class:
         *   ValidationException
@@ -52,7 +52,7 @@ class GameValidationException(ValidationException):
         *   See ValidationException class for inherited methods.
     """
     ERR_CODE = "GAME_VALIDATION_FAILURE"
-    MSG = "Failure in GameValidationProcess method."
+    MSG = "Failure in GameValidationTransaction method."
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     

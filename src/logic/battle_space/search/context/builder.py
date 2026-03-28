@@ -10,25 +10,25 @@ version: 1.0.0
 
 from typing import Optional
 
-from logic.coord import Coord, CoordValidationProcess
+from logic.coord import Coord, CoordValidationTransaction
 from logic.rank import Rank, RankValidator, RankSpec
 from logic.team import  RosterNumberOutOfBoundsException, ROSTER_SIZE
 from logic.system import (
-    IdValidationProcess, NameValidationProcess, BuildProcess, BuildResult,
+    IdValidationTransaction, NameValidationTransaction, BuildTransaction, BuildResult,
     MutuallyExclusiveParamsException, AllParamsSetNullException, LoggingLevelRouter
 )
 from logic.team.search.context.context import ProjectionSearchContext
 from logic.team.search import RansomOutOfBoundsException
 
 
-class ProjectionSearchContextBuildProcess(BuildProcess[ProjectionSearchContext]):
+class ProjectionSearchContextBuildTransaction(BuildTransaction[ProjectionSearchContext]):
     """"""
 
     @classmethod
     @LoggingLevelRouter.monitor
     def execute (cls, id: Optional[int], name: Optional[str], coord: Optional[Coord]) -> BuildResult[ProjectionSearchContext]:
         """"""
-        method = "ProjectionSearchContextBuildProcess.build"
+        method = "ProjectionSearchContextBuildTransaction.build"
         try:
             params = [id, name, coord]
             param_count = sum(bool(p) for p in params)
@@ -46,13 +46,13 @@ class ProjectionSearchContextBuildProcess(BuildProcess[ProjectionSearchContext])
                 )
 
             if id is not None:
-                id_validation = IdValidationProcess.execute(id)
+                id_validation = IdValidationTransaction.execute(id)
                 if not id_validation.is_success():
                     return BuildResult(exception=id_validation.exception)
                 return BuildResult(payload=ProjectionSearchContext(id=id_validation.payload))
 
             if coord is not None:
-                coord_validation =CoordValidationProcess.execute(coord)
+                coord_validation =CoordValidationTransaction.execute(coord)
                 if not coord_validation.is_success():
                     return BuildResult(exception=RosterNumberOutOfBoundsException(
                             f"{method}: {RosterNumberOutOfBoundsException.MSG}"
@@ -61,7 +61,7 @@ class ProjectionSearchContextBuildProcess(BuildProcess[ProjectionSearchContext])
                 return BuildResult(payload=ProjectionSearchContext(coord=coord))
 
             if name is not None:
-                name_validation = NameValidationProcess.execute(name)
+                name_validation = NameValidationTransaction.execute(name)
                 if not name_validation.is_success():
                     return BuildResult(exception=name_validation.exception)
                 return BuildResult(payload=ProjectionSearchContext(name=name))

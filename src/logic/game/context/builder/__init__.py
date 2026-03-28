@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .builder import GameContextBuildProcess
+from .builder import GameContextBuildTransaction
 from .exception import GameContextBuildException

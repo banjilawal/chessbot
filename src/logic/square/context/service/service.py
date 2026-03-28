@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import cast
 
 from logic.system import QueryService, id_emitter
-from logic.square import SquareContext, SquareContextBuildProcess, SquareContextValidationProcess, SquareFinder
+from logic.square import SquareContext, SquareContextBuildTransaction, SquareContextValidationTransaction, SquareFinder
 
 
 class SquareQueryService(QueryService[SquareContext]):
@@ -42,8 +42,8 @@ class SquareQueryService(QueryService[SquareContext]):
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             finder: SquareFinder = SquareFinder(),
-            builder: SquareContextBuildProcess = SquareContextBuildProcess(),
-            validator: SquareContextValidationProcess = SquareContextValidationProcess(),
+            builder: SquareContextBuildTransaction = SquareContextBuildTransaction(),
+            validator: SquareContextValidationTransaction = SquareContextValidationTransaction(),
     ):
         """
         # ACTION:
@@ -52,8 +52,8 @@ class SquareQueryService(QueryService[SquareContext]):
             *   name (str)
             *   id (int)
             *   route (SquareFinder)
-            *   build (SquareContextBuildProcess)
-            *   validation (SquareContextValidationProcess)
+            *   build (SquareContextBuildTransaction)
+            *   validation (SquareContextValidationTransaction)
         # RETURNS:
             None
         Raises:
@@ -68,11 +68,11 @@ class SquareQueryService(QueryService[SquareContext]):
         return cast(SquareFinder, self.entity_finder)
     
     @property
-    def build(self) -> SquareContextBuildProcess:
-        """Get SquareContextBuildProcess instance."""
-        return cast(SquareContextBuildProcess, self.entity_builder)
+    def build(self) -> SquareContextBuildTransaction:
+        """Get SquareContextBuildTransaction instance."""
+        return cast(SquareContextBuildTransaction, self.entity_builder)
     
     @property
-    def validation(self) -> SquareContextValidationProcess:
-        """Get SquareContextValidationProcess instance."""
-        return cast(SquareContextValidationProcess, self.entity_validator)
+    def validation(self) -> SquareContextValidationTransaction:
+        """Get SquareContextValidationTransaction instance."""
+        return cast(SquareContextValidationTransaction, self.entity_validator)

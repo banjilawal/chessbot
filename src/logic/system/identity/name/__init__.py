@@ -15,4 +15,4 @@ None
 
 # Modules
 from .exception import *
-from .validator import NameValidationProcess
+from .validator import NameValidationTransaction

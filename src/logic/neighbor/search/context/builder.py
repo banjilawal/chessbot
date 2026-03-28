@@ -9,16 +9,16 @@ version: 1.0.0
 
 from typing import Optional
 
-from logic.coord import Coord, CoordValidationProcess
+from logic.coord import Coord, CoordValidationTransaction
 from logic.rank import Queen, RankSpec
-from logic.system import BuildResult, BuildProcess, IdValidationProcess, LoggingLevelRouter, NameValidationProcess
+from logic.system import BuildResult, BuildTransaction, IdValidationTransaction, LoggingLevelRouter, NameValidationTransaction
 from logic.neighbor import (
     VisitationSearchContext, ArenaVisitationSearchParamsException, ZeroVisitationSearchParamsException, VisitationInvalidRankNameParamException,
 )
 
-class VisitationSearchContextBuildProcess(BuildProcess[VisitationSearchContext]):
+class VisitationSearchContextBuildTransaction(BuildTransaction[VisitationSearchContext]):
     """iece
-    Role:BuildProcess, Data Integrity And Reliability Guarantor implementation
+    Role:BuildTransaction, Data Integrity And Reliability Guarantor implementation
 
     Responsibilities:
     1. Process and validate parameters for creating `VisitationSearchContext` instances.
@@ -51,7 +51,7 @@ class VisitationSearchContextBuildProcess(BuildProcess[VisitationSearchContext])
         RAISES:
         MethodNameException wraps
         """
-        method = "VisitationSearchContextBuildProcess.build"
+        method = "VisitationSearchContextBuildTransaction.build"
 
         try:
             params = [name, ransom, piece_id, team_id, team_name, rank_name, position]
@@ -68,22 +68,22 @@ class VisitationSearchContextBuildProcess(BuildProcess[VisitationSearchContext])
                 )
 
             if piece_id is not None:
-                id_validation = IdValidationProcess.execute(piece_id)
+                id_validation = IdValidationTransaction.execute(piece_id)
                 if not id_validation.is_failure():
                     return BuildResult(exception=id_validation.exception)
 
             if name is not None:
-                piece_name_validation = NameValidationProcess.execute(name)
+                piece_name_validation = NameValidationTransaction.execute(name)
                 if piece_name_validation.is_failure():
                     return BuildResult(exception=piece_name_validation.exception)
 
             if team_id is not None:
-                team_id_validation = IdValidationProcess.execute(team_id)
+                team_id_validation = IdValidationTransaction.execute(team_id)
                 if team_id_validation.is_failure():
                     return BuildResult(exception=team_id_validation.exception)
 
             if team_name is not None:
-                team_name_validation = NameValidationProcess.execute(team_name)
+                team_name_validation = NameValidationTransaction.execute(team_name)
                 if team_name_validation.is_failure():
                     return BuildResult.failure(team_name_validation.exception)
 
@@ -98,7 +98,7 @@ class VisitationSearchContextBuildProcess(BuildProcess[VisitationSearchContext])
                 )
 
             if position is not None:
-                position_validation = CoordValidationProcess.execute(position)
+                position_validation = CoordValidationTransaction.execute(position)
                 if position_validation.is_failure():
                     return BuildResult.failure(position_validation.exception)
 

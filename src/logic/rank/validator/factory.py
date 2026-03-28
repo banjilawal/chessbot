@@ -13,10 +13,10 @@ from logic.rank import (
     Bishop, BishopValidator, InvalidRankException, King, KingValidator, Knight, KnightValidator,
     NullRankException, Pawn, PawnValidator, Queen, QueenValidator, Rank, RankSpecValidator, Rook, RookValidator
 )
-from logic.system import IdentityService, LoggingLevelRouter, ValidationProcess, ValidationResult
+from logic.system import IdentityService, LoggingLevelRouter, ValidationTransaction, ValidationResult
 
 
-class RankValidationProcessFactory(ValidationProcess[Rank]):
+class RankValidationTransactionFactory(ValidationTransaction[Rank]):
     """
     Role:Validation, Data Integrity Guarantor, Security.
 
@@ -42,7 +42,7 @@ class RankValidationProcessFactory(ValidationProcess[Rank]):
         ) -> ValidationResult[Rank]: ValidationResult[(Team, Game)]:
 
     # INSTANCE METHODS:
-        *   rank_spec_validator: PersonaValidationProcess
+        *   rank_spec_validator: PersonaValidationTransaction
     """
     @classmethod
     @LoggingLevelRouter.monitor
@@ -82,7 +82,7 @@ class RankValidationProcessFactory(ValidationProcess[Rank]):
             *   NullRankException
             *   RankValidationException
         """
-        method = "RankValidationProcessFactory.validate"
+        method = "RankValidationTransactionFactory.validate"
         try:
             # Make sure its not null first.
             if candidate is None:
@@ -128,11 +128,11 @@ version: 1.0.0
 """
 
 from logic.persona import Persona, PersonaService
-from logic.system import BuildProcess, ValidationResult, LoggingLevelRouter, id_emitter
+from logic.system import BuildTransaction, ValidationResult, LoggingLevelRouter, id_emitter
 from logic.rank import Bishop, King, Knight, Pawn, Queen, Rank, RankValidationException, RankBuildRouteException, Rook
 
 
-class RankValiatorFactory(ValidationProcess[Rank]):
+class RankValiatorFactory(ValidationTransaction[Rank]):
     """
     Role:Factory, Data Integrity Guarantor
 
@@ -143,7 +143,7 @@ class RankValiatorFactory(ValidationProcess[Rank]):
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     Super Class:
-        *   BuildProcess
+        *   BuildTransaction
 
     # PROVIDES:
         *   RankFactory

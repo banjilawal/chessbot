@@ -14,7 +14,7 @@ from logic.square import Square, SquareService
 from logic.team import Team, TeamService
 from logic.coord import Coord, CoordService
 from logic.system import (
-    NumberValidationProcess, BuildProcess, BuildResult, GameColor, GameColorValidationProcess, IdentityService, LoggingLevelRouter
+    NumberValidationTransaction, BuildTransaction, BuildResult, GameColor, GameColorValidationTransaction, IdentityService, LoggingLevelRouter
 )
 from logic.token import (
     ArenaTokenContextFlagsException, TokenContext, TokenContextBuildException,
@@ -22,9 +22,9 @@ from logic.token import (
 )
 
 
-class TokenContextBuildProcess(BuildProcess[TokenContext]):
+class TokenContextBuildTransaction(BuildTransaction[TokenContext]):
     """
-    Role:BuildProcess, Data Integrity And Reliability Guarantor
+    Role:BuildTransaction, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce TokenContext instances whose integrity is guaranteed at creation.
@@ -33,7 +33,7 @@ class TokenContextBuildProcess(BuildProcess[TokenContext]):
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     Super Class:
-        *   BuildProcess
+        *   BuildTransaction
 
     Provides:
 
@@ -58,8 +58,8 @@ class TokenContextBuildProcess(BuildProcess[TokenContext]):
             coord_service: CoordService = CoordService(),
             square_service: SquareService = SquareService(),
             identity_service: IdentityService = IdentityService(),
-            color_validator: GameColorValidationProcess = GameColorValidationProcess(),
-            number_validator: NumberValidationProcess = NumberValidationProcess(),
+            color_validator: GameColorValidationTransaction = GameColorValidationTransaction(),
+            number_validator: NumberValidationTransaction = NumberValidationTransaction(),
     ) -> BuildResult[TokenContext]:
         """
         # ACTION:
@@ -81,7 +81,7 @@ class TokenContextBuildProcess(BuildProcess[TokenContext]):
                 *   team_service (TeamService)
                 *   rank_service (RankService)
                 *   coord_service (CoordService)
-                *   color_validator (GameColorValidationProcess)
+                *   color_validator (GameColorValidationTransaction)
                 *   identity_service (IdentityService)
         # RETURNS:
           *     BuildResult[TokenContext] containing either:
@@ -94,7 +94,7 @@ class TokenContextBuildProcess(BuildProcess[TokenContext]):
             *   TokenContextBuildException
             *   TokenContextBuildRouteException
         """
-        method = "TokenContextBuildProcess.build"
+        method = "TokenContextBuildTransaction.build"
         
         # --- Count how many optional parameters are not-null. only one should be not null. ---#
         params = [id, designation, team, rank, ransom, coord, color, opening_square_name]

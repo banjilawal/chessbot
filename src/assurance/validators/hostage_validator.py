@@ -3,7 +3,7 @@ from typing import cast, Generic
 
 
 
-from logic.system import ValidationProcess
+from logic.system import ValidationTransaction
 from logic.piece import PieceValidator
 from logic.system.identity.id import id_emitter
 from logic.exception import HostageCaptorNullException, RosterRemovalException, HostageAdditionException
@@ -12,7 +12,7 @@ from logic.randomize.competitor import RandomName
 from logic.piece import CombatantPiece
 
 
-class HostageValidationProcess(ValidationProcess):
+class HostageValidationTransaction(ValidationTransaction):
 
   @staticmethod
   def execute(candidate: Generic[T]) -> Result[CombatantPiece]:

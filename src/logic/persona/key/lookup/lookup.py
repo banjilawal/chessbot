@@ -13,7 +13,7 @@ from typing import List
 from logic.persona import (
     Persona, PersonaDesignationBoundsException, PersonaLookupFailedException, PersonaLookupRouteException,
     PersonaNameBoundsException, PersonaQuotaBoundsException, PersonaRansomBoundsException, PersonaKey,
-    PersonaKeyValidationProcess
+    PersonaKeyValidationTransaction
 )
 from logic.system import HashLookupProcess, LoggingLevelRouter, SearchResult
 
@@ -40,7 +40,7 @@ class PersonaLookupProcess(HashLookupProcess[Persona]):
     def query(
             cls,
             super_key: PersonaKey,
-            super_key_validator: PersonaKeyValidationProcess = PersonaKeyValidationProcess()
+            super_key_validator: PersonaKeyValidationTransaction = PersonaKeyValidationTransaction()
     ) -> SearchResult[List[Persona]]:
         """
         # ACTION:
@@ -50,7 +50,7 @@ class PersonaLookupProcess(HashLookupProcess[Persona]):
                 chain in the SearchResult. Else, send Personas whose targeted attribute values match.
         # PARAMETERS:
             *   key: PersonaKey
-            *   key_validator: PersonaKeyValidationProcess
+            *   key_validator: PersonaKeyValidationTransaction
         # RETURNS:
             *   SearchResult[List[Persona]] containing either:
                     - On error: Exception , payload null

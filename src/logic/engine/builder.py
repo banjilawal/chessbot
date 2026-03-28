@@ -9,10 +9,10 @@ version: 1.0.0
 
 
 from logic.engine import Engine
-from logic.system import BuildResult, BuildProcess
+from logic.system import BuildResult, BuildTransaction
 
 
-class EngineBuildProcess(BuildProcess[Engine]):
+class EngineBuildTransaction(BuildTransaction[Engine]):
     
     @classmethod
     def execute(cls, *args, **kwargs) -> BuildResult[Engine]:

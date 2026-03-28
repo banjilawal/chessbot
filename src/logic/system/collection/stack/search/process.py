@@ -10,7 +10,7 @@ Version: 1.0.0
 from abc import abstractmethod
 from typing import TypeVar, List
 
-from logic.system import Context, SearchProcess, ValidationProcess, SearchResult
+from logic.system import Context, SearchProcess, ValidationTransaction, SearchResult
 
 T = TypeVar("T")
 
@@ -24,14 +24,14 @@ class StackSearchRouter(SearchProcess[T]):
             cls,
             dataset: List[T],
             context: Context[T],
-            context_validator: ValidationProcess[Context[T]]
+            context_validator: ValidationTransaction[Context[T]]
     ) -> SearchResult[List[T]]:
         """
         ACTION:
         PARAMETERS:
             * dataset (List[D])
             * context (Context[D)
-            * context_validator (ValidationProcess[Context[D])
+            * context_validator (ValidationTransaction[Context[D])
         RETURNS:
             SearchResult[List[R]] or Void
         Raise:

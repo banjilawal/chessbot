@@ -12,9 +12,9 @@ from __future__ import annotations
 from typing import Dict
 
 from logic.coord import Coord, CoordService
-from logic.edge import Edge, EdgeBuildProcess
+from logic.edge import Edge, EdgeBuildTransaction
 from logic.graph import Graph
-from logic.node import Node, NodeBuildProcess
+from logic.node import Node, NodeBuildTransaction
 from logic.span import BishopSpanServiceException, BishopSpanner, CoordSpan, SpanService
 from logic.square import Square, SquareContext, SquareDatabase
 from logic.system import BuildResult, ComputationResult, IdFactory, LoggingLevelRouter
@@ -290,13 +290,13 @@ class BishopSpanService(SpanService):
                 self,
                 head_square: Square,
                 tail_square: Square,
-                node_builder: NodeBuildProcess,
+                node_builder: NodeBuildTransaction,
         ) -> BuildResult[Dict[str, Node]]:
             """
             Args:
                 head_square: Square
                 tail_square: Square
-                node_builder: NodeBuildProcess
+                node_builder: NodeBuildTransaction
                 
             Returns:
                 BuildResult[Dict[str, Node]]
@@ -345,7 +345,7 @@ class BishopSpanService(SpanService):
                 self,
                 head: Node,
                 tail: Node,
-                edge_builder: EdgeBuildProcess,
+                edge_builder: EdgeBuildTransaction,
         ) -> BuildResult[Dict[str, Edge]]:
             """
             """

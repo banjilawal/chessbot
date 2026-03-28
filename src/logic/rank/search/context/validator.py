@@ -11,13 +11,13 @@ version: 1.0.0
 from typing import Any, cast
 
 
-from logic.system import ValidationProcess, ValidationResult, LoggingLevelRouter
+from logic.system import ValidationTransaction, ValidationResult, LoggingLevelRouter
 from logic.rank import (
     Rank, RankContext, InvalidRankContextException, NullRankContextException,
     MoreThanOneRankSearchOptionPickedException, NoRankSearchOptionSelectedException,
 )
 
-class RankContextValidationProcess(ValidationProcess[RankContext]):
+class RankContextValidationTransaction(ValidationTransaction[RankContext]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -64,7 +64,7 @@ class RankContextValidationProcess(ValidationProcess[RankContext]):
             * NoRankSearchOptionSelectedException
             * MoreThanOneRankSearchOptionPickedException
         """
-        method = "RankContextValidationProcess.validate"
+        method = "RankContextValidationTransaction.validate"
         
         try:
             if candidate is None:
@@ -124,7 +124,7 @@ class RankContextValidationProcess(ValidationProcess[RankContext]):
     #     Raises:
     #         * InvalidRankContextException
     #     """
-    #     method = "RankContextValidationProcess.validate_id_search_option"
+    #     method = "RankContextValidationTransaction.validate_id_search_option"
     #
     #     try:
     #         row_validation = rank_validator.validate_row(candidate)
@@ -165,7 +165,7 @@ class RankContextValidationProcess(ValidationProcess[RankContext]):
     #     Raises:
     #         * InvalidRankContextException
     #     """
-    #     method = "RankContextValidationProcess.validate_column_search_option"
+    #     method = "RankContextValidationTransaction.validate_column_search_option"
     #
     #     try:
     #         column_validation = rank_validator.validate(candidate)
@@ -206,7 +206,7 @@ class RankContextValidationProcess(ValidationProcess[RankContext]):
     #     Raises:
     #         * InvalidRankContextException
     #     """
-    #     method = "RankContextValidationProcess.validate_rank_search_option"
+    #     method = "RankContextValidationTransaction.validate_rank_search_option"
     #
     #     try:
     #         rank_validation = rank_validator.validate(candidate)

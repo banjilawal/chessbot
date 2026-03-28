@@ -9,11 +9,11 @@ version: 1.0.0
 
 from typing import cast, Any
 
-from logic.system import ValidationProcess, ValidationResult, LoggingLevelRouter
+from logic.system import ValidationTransaction, ValidationResult, LoggingLevelRouter
 from logic.schema import Schema, SchemaValidationException, NullSchemaException
 
 
-class SchemaValidationProcess(ValidationProcess[Schema]):
+class SchemaValidationTransaction(ValidationTransaction[Schema]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -22,7 +22,7 @@ class SchemaValidationProcess(ValidationProcess[Schema]):
     2.  If verification fails indicate the reason in an exception returned to the caller.
 
     Super Class:
-        *   ValidationProcess
+        *   ValidationTransaction
 
     Provides:
 
@@ -48,7 +48,7 @@ class SchemaValidationProcess(ValidationProcess[Schema]):
             *   NullSchemaException
             *   SchemaValidationException
         """
-        method = "SchemaValidationProcess.validate"
+        method = "SchemaValidationTransaction.validate"
         # Handle the nonexistence case.
         if candidate is None:
             # Return the exception chain on failure.

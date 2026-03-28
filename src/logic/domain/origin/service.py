@@ -1,6 +1,6 @@
 
 from logic.system import IntegrityService, id_emitter
-from logic.domain import DomainOrigin, DomainOriginBuildProcess, DomainOriginValidationProcess
+from logic.domain import DomainOrigin, DomainOriginBuildTransaction, DomainOriginValidationTransaction
 
 class DomainOriginService(IntegrityService[DomainOrigin]):
     """
@@ -28,8 +28,8 @@ class DomainOriginService(IntegrityService[DomainOrigin]):
             self,
             name: str = DEFAULT_NAME,
             id: int = id_emitter.service_id,
-            builder: DomainOriginBuildProcess = DomainOriginBuildProcess(),
-            validator: DomainOriginValidationProcess = DomainOriginValidationProcess(),
+            builder: DomainOriginBuildTransaction = DomainOriginBuildTransaction(),
+            validator: DomainOriginValidationTransaction = DomainOriginValidationTransaction(),
     ):
         """
         # ACTION:
@@ -39,7 +39,7 @@ class DomainOriginService(IntegrityService[DomainOrigin]):
             *   id (nt)
             *   name (str)
             *   build (DomainOriginFactory)
-            *   validation (DomainOriginValidationProcess)
+            *   validation (DomainOriginValidationTransaction)
 
         # RETURNS:
         None
@@ -49,11 +49,11 @@ class DomainOriginService(IntegrityService[DomainOrigin]):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
     
     @property
-    def build(self) -> DomainOriginBuildProcess:
-        """get DomainOriginBuildProcess"""
-        return cast(DomainOriginBuildProcess, self.entity_builder)
+    def build(self) -> DomainOriginBuildTransaction:
+        """get DomainOriginBuildTransaction"""
+        return cast(DomainOriginBuildTransaction, self.entity_builder)
     
     @property
-    def validation(self) -> DomainOriginValidationProcess:
-        """get DomainOriginValidationProcess"""
-        return cast(DomainOriginValidationProcess, self.entity_validator)
+    def validation(self) -> DomainOriginValidationTransaction:
+        """get DomainOriginValidationTransaction"""
+        return cast(DomainOriginValidationTransaction, self.entity_validator)

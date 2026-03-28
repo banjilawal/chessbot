@@ -29,7 +29,7 @@ class ZeroBoardContextFlagsException(DebugException):
             *   variable,
             *   it's value,
             *   event which fired the variable into its error state.
-        which occurred in the BoardContextValidationProcess method identified in layer-0 of the exception chain.
+        which occurred in the BoardContextValidationTransaction method identified in layer-0 of the exception chain.
 
     2.  A failing ValidationResult was returned because BoardContext candidate had no query flags enabled.
 

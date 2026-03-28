@@ -9,12 +9,12 @@ version: 1.0.0
 
 from logic.arena import Arena, ArenaService
 from logic.board import ArenaAlreadyContainsBoardException, Board, BoardBuildException
-from logic.system import BuildProcess, BuildResult, BOARD_DIMENSION, IdentityService, LoggingLevelRouter, id_emitter
+from logic.system import BuildTransaction, BuildResult, BOARD_DIMENSION, IdentityService, LoggingLevelRouter, id_emitter
 
 
-class BoardBuildProcess(BuildProcess[Board]):
+class BoardBuildTransaction(BuildTransaction[Board]):
     """
-     Role:BuildProcess, Data Integrity And Reliability Guarantor
+     Role:BuildTransaction, Data Integrity And Reliability Guarantor
 
      Responsibilities:
      1.  Produce Board instances whose integrity is guaranteed at creation.
@@ -23,10 +23,10 @@ class BoardBuildProcess(BuildProcess[Board]):
      4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
      Super Class:
-         * BuildProcess
+         * BuildTransaction
 
      # PROVIDES:
-         *   BoardBuildProcess
+         *   BoardBuildTransaction
 
      # LOCAL ATTRIBUTES:
      None
@@ -68,7 +68,7 @@ class BoardBuildProcess(BuildProcess[Board]):
             *   BoardBuildException
             *   ArenaAlreadyContainsBoardException
         """
-        method = "BoardBuildProcess.build"
+        method = "BoardBuildTransaction.build"
         
         # Handle the case that, the id is not certified safe.
         id_validation = identity_service.validate_id(candidate=id)

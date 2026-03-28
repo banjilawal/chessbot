@@ -23,8 +23,8 @@ class GameContextBuildException(BuildException):
     Role:Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Indicate the GameContextBuildProcess did not produce a valid work product.
-    2.  Identify the GameContextBuildProcess method where the failure occurred.
+    1.  Indicate the GameContextBuildTransaction did not produce a valid work product.
+    2.  Identify the GameContextBuildTransaction method where the failure occurred.
 
     Super Class:
         *   BuildException
@@ -52,7 +52,7 @@ class GameContextBuildException(BuildException):
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     ERR_CODE = "GAME_CONTEXT_BUILD_FAILURE"
-    MSG = "Failure in GameContextBuildProcess method."
+    MSG = "Failure in GameContextBuildTransaction method."
 
     def __init__(
             self,

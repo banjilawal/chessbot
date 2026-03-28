@@ -12,7 +12,7 @@ This module is exclusively for defining all custom **rollback_exception classes*
 creation, coord_stack_validator, and manipulation of `Vector` objects.
 
 **Limitations** It does not contain any logic for raising these exception; that responsibility
-`Vector`, `VectorBuildProcess`, and `VectorValidationProcess`
+`Vector`, `VectorBuildTransaction`, and `VectorValidationTransaction`
 
 THEME:
 -----
@@ -72,7 +72,7 @@ class NullEngineException(EngineException, NullException):
 
 class EngineBuild(EngineException, BuildException):
   """
-  Raised when `EngineBuildProcess` crashed while building team_name new object. Exists
+  Raised when `EngineBuildTransaction` crashed while building team_name new object. Exists
   primarily to catch all exception raised creating engines.
   """
   ERR_CODE = "ENGINE_BUILD_FAILED"

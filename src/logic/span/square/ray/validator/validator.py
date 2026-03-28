@@ -10,12 +10,12 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Any, List, cast
 
-from logic.square import SquareValidationProcess
-from logic.system import LoggingLevelRouter, ValidationResult, ValidationProcess
+from logic.square import SquareValidationTransaction
+from logic.system import LoggingLevelRouter, ValidationResult, ValidationTransaction
 from logic.span import SquareRay, SquareRayMembersNullException, SquareRayNullException, SquareRayValidationException
 
 
-class SquareRayValidationProcess(ValidationProcess[SquareRay]):
+class SquareRayValidationTransaction(ValidationTransaction[SquareRay]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -35,7 +35,7 @@ class SquareRayValidationProcess(ValidationProcess[SquareRay]):
     def execute(
             cls,
             candidate: Any,
-            square_validator: SquareValidationProcess = SquareValidationProcess(),
+            square_validator: SquareValidationTransaction = SquareValidationTransaction(),
     ) -> ValidationResult[SquareRay]:
         """
         Action:
@@ -46,7 +46,7 @@ class SquareRayValidationProcess(ValidationProcess[SquareRay]):
             
         Args:
             candidate: Any
-            square_validator: SquareRayValidationProcess
+            square_validator: SquareRayValidationTransaction
             
         Returns:
             ValidationResult[SquareRay]

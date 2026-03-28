@@ -35,8 +35,8 @@ version: 1.0.0
 # DEPENDENCIES:
 ---------------
 From `logic.system`:
-    `BuildResult`, `BuildProcess`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
-    `IdValidationProcess`, `NameValidationProcess`
+    `BuildResult`, `BuildTransaction`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
+    `IdValidationTransaction`, `NameValidationTransaction`
 
 From `logic.discoverySearchContext`:
     `DiscoverySearchContext`, `NullDiscoverySearchContext`, `DiscoverySearchContextBuildException`, `DiscoverySearchContextSchema`
@@ -66,10 +66,10 @@ version: 1.0.0
 
 ***Limitation 2***: There is no guarantee properly created `Team` objects released by the module will satisfy client
     requirements. Clients are responsible for ensuring a `TeamBuild` product will not fail when used. Products
-    from `TeamBuild` --should-- satisfy `TeamValidationProcess` requirements.
+    from `TeamBuild` --should-- satisfy `TeamValidationTransaction` requirements.
 
 **Related Features**:
-    Authenticating existing team_service -> See TeamValidationProcess, module[logic.team_name.coord_stack_validator],
+    Authenticating existing team_service -> See TeamValidationTransaction, module[logic.team_name.coord_stack_validator],
     Handling exception and rolling back failures --> See `Transaction`, module[logic.system]
 
 # THEME:
@@ -89,8 +89,8 @@ version: 1.0.0
 # DEPENDENCIES:
 ---------------
 From `logic.system`:
-    `BuildResult`, `BuildProcess`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
-    `IdValidationProcess`, `NameValidationProcess`
+    `BuildResult`, `BuildTransaction`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
+    `IdValidationTransaction`, `NameValidationTransaction`
 
 From `logic.team_name`:
     `Team`, `NullTeam`, `TeamBuildException`, `Schema`
@@ -106,7 +106,7 @@ From `logic.owner`:
  * `Team`
 """
 """
-Role:BuildProcess, Data Integrity And Reliability Guarantor implementation
+Role:BuildTransaction, Data Integrity And Reliability Guarantor implementation
 
 Responsibilities:
 1. Process and validate parameters for creating `DiscoverySearchContext` instances.
@@ -198,8 +198,8 @@ version: 1.0.0
 # DEPENDENCIES:
 ---------------
 From `logic.system`:
-    `BuildResult`, `BuildProcess`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
-    `IdValidationProcess`, `NameValidationProcess`
+    `BuildResult`, `BuildTransaction`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
+    `IdValidationTransaction`, `NameValidationTransaction`
 
 From `logic.discoverySearchContext`:
     `DiscoverySearchContext`, `NullDiscoverySearchContext`, `DiscoverySearchContextBuildException`, `DiscoverySearchContextSchema`
@@ -252,8 +252,8 @@ version: 1.0.0
 # DEPENDENCIES:
 ---------------
 From `logic.system`:
-    `BuildResult`, `BuildProcess`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
-    `IdValidationProcess`, `NameValidationProcess`
+    `BuildResult`, `BuildTransaction`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
+    `IdValidationTransaction`, `NameValidationTransaction`
 
 From `logic.discoverySearchContext`:
     `DiscoverySearchContext`, `NullDiscoverySearchContext`, `DiscoverySearchContextBuildException`, `DiscoverySearchContextSchema`

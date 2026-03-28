@@ -20,11 +20,11 @@ This module provides:
   2. A satisfaction of the `ChessBot` reliability requirement.
 
 # SECTION 2 - Scope:
-The module's only covers exception raised by `IdValidationProcess`;
+The module's only covers exception raised by `IdValidationTransaction`;
 
 # SECTION 3: Limitations
   1. Does not provide logic for fixing the errors or causing the rollback_exception being raised.
-       `IdValidationProcess` is responsible for the logic which raises these exception.
+       `IdValidationTransaction` is responsible for the logic which raises these exception.
 
 # SECTION 4 - Design Considerations and Themes:
 The major theme influencing the modules design are
@@ -136,7 +136,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 # This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
 # creation, coord_stack_validator, and manipulation of **Coord objects**. It handles boundary checks (row/column)
 # limits and validation checks. It does not contain any logic for *raising* these exception; that responsibility
-# falls to the `CoordValidationProcess` and `CoordBuildProcess`processes.
+# falls to the `CoordValidationTransaction` and `CoordBuildProcess`processes.
 #
 # THEME:
 # -----

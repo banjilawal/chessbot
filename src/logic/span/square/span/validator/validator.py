@@ -10,12 +10,12 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Any, List, cast
 
-from logic.square import SquareValidationProcess
-from logic.system import LoggingLevelRouter, ValidationResult, ValidationProcess
+from logic.square import SquareValidationTransaction
+from logic.system import LoggingLevelRouter, ValidationResult, ValidationTransaction
 from logic.span import SquareSpanNullException, SquareSpan, SquareSpanRaysNullException, SquareSpanValidationException
 
 
-class SquareSpanValidationProcess(ValidationProcess[SquareSpan]):
+class SquareSpanValidationTransaction(ValidationTransaction[SquareSpan]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -35,7 +35,7 @@ class SquareSpanValidationProcess(ValidationProcess[SquareSpan]):
     def execute(
             cls,
             candidate: Any,
-            square_validator: SquareValidationProcess = SquareValidationProcess(),
+            square_validator: SquareValidationTransaction = SquareValidationTransaction(),
     ) -> ValidationResult[SquareSpan]:
         """
         Action:
@@ -46,7 +46,7 @@ class SquareSpanValidationProcess(ValidationProcess[SquareSpan]):
             
         Args:
             candidate: Any
-            square_validator: SquareSpanValidationProcess
+            square_validator: SquareSpanValidationTransaction
             
         Returns:
             ValidationResult[SquareSpan]

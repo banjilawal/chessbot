@@ -10,13 +10,13 @@ version: 1.0.0
 from typing import Any, cast
 
 from logic.system import (
-    LONGEST_KNIGHT_LEG_SIZE, LoggingLevelRouter, NumberValidationProcess, ValidationResult,
-    ValidationProcess
+    LONGEST_KNIGHT_LEG_SIZE, LoggingLevelRouter, NumberValidationTransaction, ValidationResult,
+    ValidationTransaction
 )
 from logic.vector import InvalidVectorException, NullVectorException, Vector
 
 
-class VectorValidationProcess(ValidationProcess[Vector]):
+class VectorValidationTransaction(ValidationTransaction[Vector]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -25,7 +25,7 @@ class VectorValidationProcess(ValidationProcess[Vector]):
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     Super Class:
-        *   ValidationProcess
+        *   ValidationTransaction
 
     Provides:
 
@@ -38,7 +38,7 @@ class VectorValidationProcess(ValidationProcess[Vector]):
     def execute(
             cls,
             candidate: Any,
-            number_in_bounds_validator: NumberValidationProcess = NumberValidationProcess()
+            number_in_bounds_validator: NumberValidationTransaction = NumberValidationTransaction()
     ) -> ValidationResult[Vector]:
         """
         # ACTION:
@@ -51,7 +51,7 @@ class VectorValidationProcess(ValidationProcess[Vector]):
             4.  All tests are passed return the ValidationResult containing vector in the payload.
         # PARAMETERS:
             *   candidate (Any)
-            *   number_in_bounds_validator (NumberValidationProcess)
+            *   number_in_bounds_validator (NumberValidationTransaction)
         # RETURNS:
             *   ValidationResult[Vector] containing either:
                     - On failure: Exception.
@@ -61,7 +61,7 @@ class VectorValidationProcess(ValidationProcess[Vector]):
             *   NullVectorException
             *   InvalidVectorException
         """
-        method = "VectorValidationProcess.validate"
+        method = "VectorValidationTransaction.validate"
         # Handle the nonexistence case.
         if candidate is None:
             # Return the exception chain on failure.

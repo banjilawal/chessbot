@@ -22,11 +22,11 @@ This module provides:
   2. A satisfaction of the `ChessBot` reliability requirement.
 
 # SECTION 2 - Scope:
-The module's only covers exception raised by `NameValidationProcess`;
+The module's only covers exception raised by `NameValidationTransaction`;
 
 # SECTION 3: Limitations
   1. Does not provide logic for fixing the errors or causing the rollback_exception being raised.
-       `NameValidationProcess` is responsible for the logic which raises these exception.
+       `NameValidationTransaction` is responsible for the logic which raises these exception.
 
 # SECTION 4 - Design Considerations and Themes:
 The major theme influencing the modules design are
@@ -78,7 +78,7 @@ Major themes influencing the design include:
 # SECTION 5 - Features Supporting Requirements:
 1. No direct support for any user level features.
 2. Direct support for reliability, verification, and integrity.
-3. `NameValidationProcess` can be used as component in more complex verifications.
+3. `NameValidationTransaction` can be used as component in more complex verifications.
 
 # SECTION G - Feature Delivery Mechanism:
 1. An exception for each requirement providing granular, accurate and precise error reporting.
@@ -87,11 +87,11 @@ Major themes influencing the design include:
 # SECTION 7 - Dependencies:
 * From `logic.system`:
     `MIN_NAME_LENGTH`, `MAX_NAME_LENGTH`, `LongNameException`, `ShortNameException`, `WhiteSpaceNameException`
-    `NullNameException`, `ValidationProcess`,
+    `NullNameException`, `ValidationTransaction`,
 
 * From Python `typing` Library:
     `cast`
 
 # SECTION 8 - Contains:
-1. `NameValidationProcess`
+1. `NameValidationTransaction`
 """

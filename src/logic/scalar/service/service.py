@@ -18,7 +18,7 @@ Created: 2025-11-18
 
 from __future__ import annotations
 
-from logic.system import IntegrityService, BuildProcess, ValidationProcess
+from logic.system import IntegrityService, BuildTransaction, ValidationTransaction
 
 
 class ScalarService(IntegrityService[Scalar]):
@@ -47,8 +47,8 @@ class ScalarService(IntegrityService[Scalar]):
     Attributes:
         *   id (int)
         *   name (name)
-        *   build (BuildProcess[Scalar])
-        *   validation (ValidationProcess[Scalar])
+        *   build (BuildTransaction[Scalar])
+        *   validation (ValidationTransaction[Scalar])
 
     # LOCAL METHODS:
     None
@@ -57,24 +57,24 @@ class ScalarService(IntegrityService[Scalar]):
     *   See IntegrityService class for inherited methods.
     """
     SERVICE_NAME = "ScalarService"
-    _builder: BuildProcess[Scalar]
-    _validator: ValidationProcess[Scalar]
+    _builder: BuildTransaction[Scalar]
+    _validator: ValidationTransaction[Scalar]
     
     def __init__(
             self,
             id: int,
             name: str,
-            builder: BuildProcess[Scalar],
-            validator: ValidationProcess[Scalar]
+            builder: BuildTransaction[Scalar],
+            validator: ValidationTransaction[Scalar]
     ):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
     
     @property
-    def build(self) -> BuildProcess[Scalar]:
+    def build(self) -> BuildTransaction[Scalar]:
         return self._builder
     
     @property
-    def validation(self) -> ValidationProcess[Scalar]:
+    def validation(self) -> ValidationTransaction[Scalar]:
         return self.certifier
     
     def __eq__(self, other):

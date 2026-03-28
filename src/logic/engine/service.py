@@ -11,18 +11,18 @@ version: 1.0.0
 from typing import Any
 
 from logic.engine import Engine
-from logic.engine.builder import EngineBuildProcess
-from logic.engine.validator import EngineValidationProcess
+from logic.engine.builder import EngineBuildTransaction
+from logic.engine.validator import EngineValidationTransaction
 from logic.system import BuildResult, ValidationResult
 
 
 class EngineService:
     _id: int
     _engine: Engine
-    _builder: EngineBuildProcess
-    _validator: EngineValidationProcess
+    _builder: EngineBuildTransaction
+    _validator: EngineValidationTransaction
     
-    def __init__(self, engine_id: int, builder: EngineBuildProcess, validator: EngineValidationProcess):
+    def __init__(self, engine_id: int, builder: EngineBuildTransaction, validator: EngineValidationTransaction):
         self._id = engine_id
         self._builder = builder
         self._validator = validator

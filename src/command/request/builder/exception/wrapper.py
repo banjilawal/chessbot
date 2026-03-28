@@ -23,7 +23,7 @@ class RequestBuildException(BuildException):
     Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Indicate that an error prevented RequestBuildProcess from returning a product.
+    1.  Indicate that an error prevented RequestBuildTransaction from returning a product.
 
         Super Class:
             *   BuildException
@@ -52,7 +52,7 @@ class RequestBuildException(BuildException):
             *   See WorkException class for inherited methods.
         """
     ERR_CODE = "SERVICE_REQUEST_BUILD_FAILURE"
-    MSG = "RequestBuildProcess returned an error."
+    MSG = "RequestBuildTransaction returned an error."
     MTHD = "build"
     OP = "Build"
     RSLT_TYPE = "BuildResult"

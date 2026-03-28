@@ -9,12 +9,12 @@ version: 1.0.0
 
 from typing import Any
 
-from logic.system import ValidationResult, ValidationProcess
+from logic.system import ValidationResult, ValidationTransaction
 from logic.battle_space.service import ProjectionService
 
 
 
-class ProjectionServiceValidationProcess(ValidationProcess[ProjectionService]):
+class ProjectionServiceValidationTransaction(ValidationTransaction[ProjectionService]):
     
     @classmethod
     def execute(cls, candidate: Any) -> ValidationResult[ProjectionService]:

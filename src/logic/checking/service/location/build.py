@@ -10,11 +10,11 @@ from logic.board import Board
 from logic.piece import KingPiece, Piece
 from logic.checkmate import KingLocationRecord
 
-from logic.system import BuildResult, BuildProcess, LoggingLevelRouter
+from logic.system import BuildResult, BuildTransaction, LoggingLevelRouter
 
 
 
-class KingLocationRecordBuildProcess(BuildProcess[KingLocationRecord]):
+class KingLocationRecordBuildTransaction(BuildTransaction[KingLocationRecord]):
     
     @classmethod
     @LoggingLevelRouter.monitor

@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import cast
 
-from logic.span import SquareRay, SquareRayBuildProcess, SquareRayValidationProcess
+from logic.span import SquareRay, SquareRayBuildTransaction, SquareRayValidationTransaction
 from logic.system import IdFactory, IntegrityService
 
 
@@ -54,23 +54,23 @@ class SquareRayService(IntegrityService[SquareRay]):
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            builder: SquareRayBuildProcess = SquareRayBuildProcess(),
-            validator: SquareRayValidationProcess = SquareRayValidationProcess(),
+            builder: SquareRayBuildTransaction = SquareRayBuildTransaction(),
+            validator: SquareRayValidationTransaction = SquareRayValidationTransaction(),
             id: int = IdFactory.next_id(class_name="SquareRayService"),
     ):
         """
         Args:
             id: int
             name: str
-            builder: SquareRayBuildProcess
-            validator: SquareRayValidationProcess
+            builder: SquareRayBuildTransaction
+            validator: SquareRayValidationTransaction
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         
     @property
-    def build(self) -> SquareRayBuildProcess:
-        return cast(SquareRayBuildProcess, self.build)
+    def build(self) -> SquareRayBuildTransaction:
+        return cast(SquareRayBuildTransaction, self.build)
     
     @property
-    def validation(self) -> SquareRayValidationProcess:
-        return cast(SquareRayValidationProcess, self.validation)
+    def validation(self) -> SquareRayValidationTransaction:
+        return cast(SquareRayValidationTransaction, self.validation)

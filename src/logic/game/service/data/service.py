@@ -88,8 +88,8 @@ class GameStackService(StackService[Game]):
     #     return cast(GameFactory, self.service.item_builder)
     #
     # @property
-    # def validation(self) -> GameValidationProcess:
-    #     return cast(GameValidationProcess, self.service.item_validator)
+    # def validation(self) -> GameValidationTransaction:
+    #     return cast(GameValidationTransaction, self.service.item_validator)
     #
     # @property
     # def context_service(self) -> GameQueryService:

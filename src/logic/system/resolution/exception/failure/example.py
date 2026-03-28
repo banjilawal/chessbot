@@ -11,7 +11,7 @@ SCOPE:
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
 creation, coord_stack_validator, and manipulation of **Coord objects**. It handles boundary checks (row/column)
 limits and validation checks. It does not contain any logic for *raising* these exception; that responsibility
-falls to the `CoordValidationProcess` and `CoordBuildProcess`processes.
+falls to the `CoordValidationTransaction` and `CoordBuildProcess`processes.
 
 THEME:
 -----

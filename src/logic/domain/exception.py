@@ -46,7 +46,7 @@ class NullDomainException(DomainException, NullException):
 
 #======================# DOMAIN VALIDATION EXCEPTION #======================#
 class InvalidDomainException(DomainException, ValidationException):
-    """Super Exception for SquareValidationProcess when a candidate fails a sanity check.""""""
+    """Super Exception for SquareValidationTransaction when a candidate fails a sanity check.""""""
     ERR_CODE = "DOMAIN_VALIDATION_EXCEPTION"
     MSG = "Domain validation failed."
 
@@ -71,6 +71,6 @@ class DomainNullFriendsDictException(DomainException, InconsistencyException):
 
 #======================# DOMAIN BUILD EXCEPTION #======================#
 class DomainBuildException(DomainException, BuilderException):
-    """Super Exception for DomainBuildProcess when it stops because of an error."""
+    """Super Exception for DomainBuildTransaction when it stops because of an error."""
     ERR_CODE = "DOMAIN_BUILD_FAILED"
     MSG = "Domain build failed."

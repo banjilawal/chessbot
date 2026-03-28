@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import cast
 
 from logic.system import QueryService, id_emitter
-from logic.edge import EdgeContext, EdgeContextBuildProcess, EdgeContextValidationProcess, EdgeFinder
+from logic.edge import EdgeContext, EdgeContextBuildTransaction, EdgeContextValidationTransaction, EdgeFinder
 
 
 class EdgeQueryService(QueryService[EdgeContext]):
@@ -42,8 +42,8 @@ class EdgeQueryService(QueryService[EdgeContext]):
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             finder: EdgeFinder = EdgeFinder(),
-            builder: EdgeContextBuildProcess = EdgeContextBuildProcess(),
-            validator: EdgeContextValidationProcess = EdgeContextValidationProcess(),
+            builder: EdgeContextBuildTransaction = EdgeContextBuildTransaction(),
+            validator: EdgeContextValidationTransaction = EdgeContextValidationTransaction(),
     ):
         """
         # ACTION:
@@ -52,8 +52,8 @@ class EdgeQueryService(QueryService[EdgeContext]):
             *   name (str)
             *   id (int)
             *   route (EdgeFinder)
-            *   build (EdgeContextBuildProcess)
-            *   validation (EdgeContextValidationProcess)
+            *   build (EdgeContextBuildTransaction)
+            *   validation (EdgeContextValidationTransaction)
         # RETURNS:
             None
         Raises:
@@ -68,11 +68,11 @@ class EdgeQueryService(QueryService[EdgeContext]):
         return cast(EdgeFinder, self.entity_finder)
     
     @property
-    def build(self) -> EdgeContextBuildProcess:
-        """Get EdgeContextBuildProcess instance."""
-        return cast(EdgeContextBuildProcess, self.entity_builder)
+    def build(self) -> EdgeContextBuildTransaction:
+        """Get EdgeContextBuildTransaction instance."""
+        return cast(EdgeContextBuildTransaction, self.entity_builder)
     
     @property
-    def validation(self) -> EdgeContextValidationProcess:
-        """Get EdgeContextValidationProcess instance."""
-        return cast(EdgeContextValidationProcess, self.entity_validator)
+    def validation(self) -> EdgeContextValidationTransaction:
+        """Get EdgeContextValidationTransaction instance."""
+        return cast(EdgeContextValidationTransaction, self.entity_validator)

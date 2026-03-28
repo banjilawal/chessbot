@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .builder import SnapshotContextBuildProcess
+from .builder import SnapshotContextBuildTransaction
 from .exception import SnapshotContextBuildException

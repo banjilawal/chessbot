@@ -10,10 +10,10 @@ version: 1.0.0
 from typing import Any
 
 from logic.engine import Engine
-from logic.system import ValidationProcess, ValidationResult
+from logic.system import ValidationTransaction, ValidationResult
 
 
-class EngineValidationProcess(ValidationProcess[Engine]):
+class EngineValidationTransaction(ValidationTransaction[Engine]):
     
     @classmethod
     def execute(cls, candidate: Any, *args, **kwargs) -> ValidationResult[Engine]:

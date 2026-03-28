@@ -10,13 +10,13 @@ version: 1.0.0
 from __future__ import annotations
 
 from logic.node import Node, NodeService
-from logic.square import Square, SquareValidationProcess
-from logic.system import BuildResult, BuildProcess, LoggingLevelRouter
+from logic.square import Square, SquareValidationTransaction
+from logic.system import BuildResult, BuildTransaction, LoggingLevelRouter
 from logic.pair import HeadTailSquareException, Pair, PairBuildException
 
-class PairBuildProcess(BuildProcess[Pair]):
+class PairBuildTransaction(BuildTransaction[Pair]):
     """
-     Role:BuildProcess, Data Integrity And Reliability Guarantor
+     Role:BuildTransaction, Data Integrity And Reliability Guarantor
 
      Responsibilities:
      1.  Produce Pair instances whose integrity and reliability are guaranteed.
@@ -24,13 +24,13 @@ class PairBuildProcess(BuildProcess[Pair]):
      3.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
      Super Class:
-         * BuildProcess
+         * BuildTransaction
 
     Provides:
 
 
     # INHERITED ATTRIBUTES:
-        *   See BuildProcess class for inherited attributes.
+        *   See BuildTransaction class for inherited attributes.
 
     Attributes:
     None
@@ -39,7 +39,7 @@ class PairBuildProcess(BuildProcess[Pair]):
     None
 
     # INHERITED METHODS:
-        *   See BuildProcess class for inherited methods.
+        *   See BuildTransaction class for inherited methods.
     """
     @classmethod
     @LoggingLevelRouter.monitor
@@ -48,7 +48,7 @@ class PairBuildProcess(BuildProcess[Pair]):
             head: Node,
             tail_square: Square,
             node_service: NodeService = NodeService(),
-            square_validator: SquareValidationProcess = SquareValidationProcess(),
+            square_validator: SquareValidationTransaction = SquareValidationTransaction(),
     ) -> BuildResult[Pair]:
         """
         Action:
@@ -61,7 +61,7 @@ class PairBuildProcess(BuildProcess[Pair]):
             head: Node
             tail_square: Pair
             node_service: NodeService
-            square_validator: SquareValidationProcess
+            square_validator: SquareValidationTransaction
 
         Returns:
             BuildResult[Pair]

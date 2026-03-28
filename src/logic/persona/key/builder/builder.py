@@ -13,12 +13,12 @@ from logic.persona import (
     ArenaPersonaKeysException, PersonaKey, PersonaKeyBuildException,
     PersonaKeyBuildRouteException, ZeroPersonaKeysException
 )
-from logic.system import NumberValidationProcess, BuildResult, BuildProcess, IdentityService, LoggingLevelRouter
+from logic.system import NumberValidationTransaction, BuildResult, BuildTransaction, IdentityService, LoggingLevelRouter
 
 
-class PersonaKeyBuildProcess(BuildProcess[PersonaKey]):
+class PersonaKeyBuildTransaction(BuildTransaction[PersonaKey]):
     """
-    Role:BuildProcess, Data Integrity And Reliability Guarantor
+    Role:BuildTransaction, Data Integrity And Reliability Guarantor
 
     Responsibilities:
         1.  Produce PersonaKey instances whose integrity is guaranteed at creation.
@@ -27,7 +27,7 @@ class PersonaKeyBuildProcess(BuildProcess[PersonaKey]):
         4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     Super Class:
-        *   BuildProcess
+        *   BuildTransaction
 
     Provides:
 
@@ -44,7 +44,7 @@ class PersonaKeyBuildProcess(BuildProcess[PersonaKey]):
             ransom: Optional[int] = None,
             designation: Optional[str] = None,
             identity_service: IdentityService = IdentityService(),
-            number_validator: NumberValidationProcess = NumberValidationProcess(),
+            number_validator: NumberValidationTransaction = NumberValidationTransaction(),
     ) -> BuildResult[PersonaKey]:
         """
         # ACTION:
@@ -59,9 +59,9 @@ class PersonaKeyBuildProcess(BuildProcess[PersonaKey]):
                     *   ransom (Optional[int])
                     *   designation (Optional[str])
             *   These Parameters must be provided:
-                    *   color_validator (GameColorValidationProcess)
+                    *   color_validator (GameColorValidationTransaction)
                     *   identity_service (IdentityService)
-                    *   number_validation (NumberValidationProcess)
+                    *   number_validation (NumberValidationTransaction)
 
         # RETURNS:
             *   BuildResult[PersonaKey] containing either:
@@ -73,7 +73,7 @@ class PersonaKeyBuildProcess(BuildProcess[PersonaKey]):
             *   ArenaPersonaKeysException
             *   PersonaKeyBuildRouteException
         """
-        method = "PersonaKeyBuildProcess.build"
+        method = "PersonaKeyBuildTransaction.build"
         
         # Count how many optional parameters are not-null. One param needs to be not-null.
         params = [name, designation, quota, ransom]

@@ -12,11 +12,11 @@ This module provides:
   2. A satisfaction of the `ChessBot` reliability requirement.
 
 # SECTION 2 - Scope:
-The module's only covers exception raised by `IdValidationProcess`;
+The module's only covers exception raised by `IdValidationTransaction`;
 
 # SECTION 3: Limitations
   1. Does not provide logic for fixing the errors or causing the rollback_exception being raised.
-       `IdValidationProcess` is responsible for the logic which raises these exception.
+       `IdValidationTransaction` is responsible for the logic which raises these exception.
 
 # SECTION 4 - Design Considerations and Themes:
 The major theme influencing the modules design are
@@ -85,7 +85,7 @@ The major theme influencing the modules design are
 1. `SearchResult`
 """
 """
- Role:BuildProcess, Data Integrity And Reliability Guarantor implementation
+ Role:BuildTransaction, Data Integrity And Reliability Guarantor implementation
 
  Responsibilities:
  1. Process and validate parameters for creating `Team` instances.
@@ -133,7 +133,7 @@ The module only covers the basic properties and behavior objects in the `Event` 
       `logic.system.travel.notification` is responsible for the `Event` lifecycle.
   2. The module does not verify the correctness of entity_service control or routing information it contains. Directly using the
       module can breach entity_service integrity, propagate inconsistencies or negatively impact performance. Use a
-        * `BuildProcess` for the
+        * `BuildTransaction` for the
       DO NOT USE THE MODULE DIRECTLY. is not responsible for verifying the uniqueness of an ID. the `AutoId` class in
       `logic.system.visitor_id.auto_id` module.
   1. The module is not responsible for supplying or publishing IDs that meet system requirements.
@@ -151,7 +151,7 @@ Major themes influencing the design include:
 # SECTION G - Feature Delivery Mechanism:
 1. An exception for each requirement providing granular, accurate and precise error reporting.
 2. Minimizing the boilerplate error handling and logging code with the `LoggingLevelRouter` decorator.
-3. `IdValidationProcess` can be used as component in more complex verifications.
+3. `IdValidationTransaction` can be used as component in more complex verifications.
 
 # SECTION 7 - Dependencies:
 * From `logic.system`:
@@ -188,7 +188,7 @@ The module only covers the basic properties and behavior objects in the `Event` 
       `logic.system.travel.notification` is responsible for the `Event` lifecycle.
   2. The module does not verify the correctness of entity_service control or routing information it contains. Directly using the
       module can breach entity_service integrity, propagate inconsistencies or negatively impact performance. Use a
-        * `BuildProcess` for the
+        * `BuildTransaction` for the
       DO NOT USE THE MODULE DIRECTLY. is not responsible for verifying the uniqueness of an ID. the `AutoId` class in
       `logic.system.visitor_id.auto_id` module.
   1. The module is not responsible for supplying or publishing IDs that meet system requirements.
@@ -206,7 +206,7 @@ Major themes influencing the design include:
 # SECTION G - Feature Delivery Mechanism:
 1. An exception for each requirement providing granular, accurate and precise error reporting.
 2. Minimizing the boilerplate error handling and logging code with the `LoggingLevelRouter` decorator.
-3. `IdValidationProcess` can be used as component in more complex verifications.
+3. `IdValidationTransaction` can be used as component in more complex verifications.
 
 # SECTION 7 - Dependencies:
 * From `logic.system`:

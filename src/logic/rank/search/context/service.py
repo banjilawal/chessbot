@@ -48,8 +48,8 @@ class RankQueryService(QueryService[RankContext]):
             *   name (str): Default value - SERVICE_NAME
             *   id (int): Default value - id_emitter.service_id
             *   route (RankFinder): Default value - RankFinder()
-            *   build (RankContextBuildProcess): Default value - RankContextBuildProcess()
-            *   validation (RankContextValidationProcess): Default value - RankContextValidationProcess()
+            *   build (RankContextBuildTransaction): Default value - RankContextBuildTransaction()
+            *   validation (RankContextValidationTransaction): Default value - RankContextValidationTransaction()
 
         # RETURNS:
         None
@@ -66,12 +66,12 @@ class RankQueryService(QueryService[RankContext]):
     
     @property
     def build(self) -> RankContextBuilder:
-        """Get RankContextBuildProcess instance."""
+        """Get RankContextBuildTransaction instance."""
         return cast(RankContextBuilder, self.entity_builder)
     
     @property
     def validation(self) -> RankContextValidator:
-        """Get RankContextValidationProcess instance."""
+        """Get RankContextValidationTransaction instance."""
         return cast(RankContextValidator, self.entity_validator)
 
     

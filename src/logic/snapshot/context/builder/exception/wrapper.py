@@ -23,7 +23,7 @@ class SnapshotContextBuildException(BuildException):
     Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Identify the SnapshotContextBuildProcess method where the exception failed.
+    1.  Identify the SnapshotContextBuildTransaction method where the exception failed.
 
     Super Class:
         *   BuildException
@@ -52,7 +52,7 @@ class SnapshotContextBuildException(BuildException):
         *   See BuildException class for inherited methods.
     """
     ERR_CODE = "SNAPSHOT_CONTEXT_BUILD_FAILURE"
-    MSG = "Failure in SnapshotContextBuildProcess method."
+    MSG = "Failure in SnapshotContextBuildTransaction method."
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     

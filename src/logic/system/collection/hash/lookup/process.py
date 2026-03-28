@@ -11,7 +11,7 @@ from enum import Enum
 from typing import List
 from abc import abstractmethod
 
-from logic.system import SearchProcess, Context, LoggingLevelRouter, SearchResult, ValidationProcess
+from logic.system import SearchProcess, Context, LoggingLevelRouter, SearchResult, ValidationTransaction
 
 
 class HashLookupProcess(SearchProcess[Enum]):
@@ -40,7 +40,7 @@ class HashLookupProcess(SearchProcess[Enum]):
     def query(
             cls,
             super_key: Context[Enum],
-            super_key_validator: ValidationProcess[Context[Enum]]
+            super_key_validator: ValidationTransaction[Context[Enum]]
     ) -> SearchResult[List[Enum]]:
         """"""
         pass

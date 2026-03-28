@@ -11,7 +11,7 @@ from typing import cast
 
 from logic.game.finder.finder import GameFinder
 from logic.system import QueryService, id_emitter
-from logic.game import GameContext, GameContextBuildProcess, GameContextValidationProcess
+from logic.game import GameContext, GameContextBuildTransaction, GameContextValidationTransaction
 
 
 class GameQueryService(QueryService[GameContext]):
@@ -41,8 +41,8 @@ class GameQueryService(QueryService[GameContext]):
             name: str = DEFAULT_NAME,
             id: int = id_emitter.service_id,
             finder: GameFinder = GameFinder(),
-            builder: GameContextBuildProcess = GameContextBuildProcess(),
-            validator: GameContextValidationProcess = GameContextValidationProcess(),
+            builder: GameContextBuildTransaction = GameContextBuildTransaction(),
+            validator: GameContextValidationTransaction = GameContextValidationTransaction(),
     ):
         """
         # ACTION:
@@ -52,8 +52,8 @@ class GameQueryService(QueryService[GameContext]):
             *   name (str): Default value - SERVICE_NAME
             *   id (int): Default value - id_emitter.service_id
             *   route (GameFinder): Default value - GameFinder()
-            *   build (GameContextBuildProcess): Default value - GameContextBuildProcess()
-            *   validation (GameContextValidationProcess): Default value - GameContextValidationProcess()
+            *   build (GameContextBuildTransaction): Default value - GameContextBuildTransaction()
+            *   validation (GameContextValidationTransaction): Default value - GameContextValidationTransaction()
 
         # RETURNS:
         None
@@ -69,11 +69,11 @@ class GameQueryService(QueryService[GameContext]):
         return cast(GameFinder, self.entity_finder)
     
     @property
-    def build(self) -> GameContextBuildProcess:
-        """Get GameContextBuildProcess instance."""
-        return cast(GameContextBuildProcess, self.entity_builder)
+    def build(self) -> GameContextBuildTransaction:
+        """Get GameContextBuildTransaction instance."""
+        return cast(GameContextBuildTransaction, self.entity_builder)
     
     @property
-    def validation(self) -> GameContextValidationProcess:
-        """Get GameContextValidationProcess instance."""
-        return cast(GameContextValidationProcess, self.entity_validator)
+    def validation(self) -> GameContextValidationTransaction:
+        """Get GameContextValidationTransaction instance."""
+        return cast(GameContextValidationTransaction, self.entity_validator)

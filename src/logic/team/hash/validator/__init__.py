@@ -13,6 +13,6 @@ version: 1.0.0
 None
 
 # Modules
-from .validator import TeamHashValidationProcess
+from .validator import TeamHashValidationTransaction
 from .null import TeamHashNullException
 from .work import TeamHashValidationException

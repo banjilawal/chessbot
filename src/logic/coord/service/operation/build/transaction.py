@@ -1,7 +1,7 @@
-# src/logic/coord/service/operation/build/exception.py
+# src/logic/coord/service/operation/build/transaction.py
 
 """
-Module: logic.coord.service.operation.build.build
+Module: logic.coord.service.operation.build.transaction
 Author: Banji Lawal
 Created: 2025-08-24
 version: 1.0.0
@@ -10,10 +10,10 @@ version: 1.0.0
 from __future__ import annotations
 
 from logic.coord import Coord, CoordBuildException
-from logic.system import BOARD_DIMENSION, BuildProcess, BuildResult, LoggingLevelRouter, NumberValidationProcess
+from logic.system import BOARD_DIMENSION, BuildTransaction, BuildResult, LoggingLevelRouter, NumberValidationTransaction
 
 
-class CoordBuilder(BuildProcess[Coord]):
+class CoordBuildTransaction(BuildTransaction[Coord]):
     """
     Role
         -   Transaction Worker
@@ -32,11 +32,11 @@ class CoordBuilder(BuildProcess[Coord]):
         -   execute(
                     row: int,
                     column: int,
-                    number_validation: NumberValidationProcess,
+                    number_validation: NumberValidationTransaction,
             ) -> BuildResult[Coord]
 
      Super Class:
-         BuildProcess
+         BuildTransaction
      """
     @classmethod
     @LoggingLevelRouter.monitor
@@ -44,7 +44,7 @@ class CoordBuilder(BuildProcess[Coord]):
             cls,
             row: int,
             column: int,
-            number_validator: NumberValidationProcess = NumberValidationProcess(),
+            number_validator: NumberValidationTransaction = NumberValidationTransaction(),
     ) -> BuildResult[Coord]:
         """
         Build a Coord.
@@ -58,7 +58,7 @@ class CoordBuilder(BuildProcess[Coord]):
         Args:
             row: int
             column: int
-            number_validator: NumberValidationProcess)
+            number_validator: NumberValidationTransaction)
         Returns:
             BuildResult[Coord]
         Raises:

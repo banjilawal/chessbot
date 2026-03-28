@@ -15,7 +15,7 @@ from logic.pawn.promotion.event import PromotionEvent
 from logic.pawn.promotion.exception import DoublePromotionException
 from logic.rank import Bishop, Knight, Queen, Rook
 from logic.square import Square
-from logic.system import ValidationProcess, ValidationResult
+from logic.system import ValidationTransaction, ValidationResult
 from logic.piece import (
     NullPromotionEventException, OccupationEvent,
     PawnPiece, PromotablePiece,
@@ -24,13 +24,13 @@ from logic.piece import (
 )
 
 
-class OldPromotionEventValidationProcess(ValidationProcess[PromotionEvent]):
+class OldPromotionEventValidationTransaction(ValidationTransaction[PromotionEvent]):
     """"""
     
     @classmethod
     def execute(cls, candidate: Any) -> ValidationResult[OccupationEvent]:
         """"""
-        method = "PromotionEventValidationProcess.validate"
+        method = "PromotionEventValidationTransaction.validate"
         
         try:
             if candidate is None:
@@ -45,7 +45,7 @@ class OldPromotionEventValidationProcess(ValidationProcess[PromotionEvent]):
             
             event = cast(PromotionEvent, candidate)
             
-            id_validation = ValidationProcess.execute(candidate.id)
+            id_validation = ValidationTransaction.execute(candidate.id)
             if not id_validation.is_success():
                 return ValidationResult(exception=id_validation.exception)
             

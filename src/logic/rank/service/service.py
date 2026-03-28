@@ -11,7 +11,7 @@ from typing import cast
 
 from logic.persona import PersonaService
 from logic.system import IntegrityService, id_emitter
-from logic.rank import Rank, RankFactory, RankValidationProcessFactory
+from logic.rank import Rank, RankFactory, RankValidationTransactionFactory
 
 
 class RankService(IntegrityService[Rank]):
@@ -43,7 +43,7 @@ class RankService(IntegrityService[Rank]):
             id: int = id_emitter.service_id,
             builder: RankFactory = RankFactory(),
             persona_service: PersonaService = PersonaService(),
-            validator: RankValidationProcessFactory = RankValidationProcessFactory(),
+            validator: RankValidationTransactionFactory = RankValidationTransactionFactory(),
     ):
         """
         # ACTION:
@@ -69,9 +69,9 @@ class RankService(IntegrityService[Rank]):
         return cast(RankFactory, self.entity_builder)
     
     @property
-    def validation(self) -> RankValidationProcessFactory:
+    def validation(self) -> RankValidationTransactionFactory:
         """get RankValidator."""
-        return cast(RankValidationProcessFactory, self.entity_validator)
+        return cast(RankValidationTransactionFactory, self.entity_validator)
     
     @property
     def persona_service(self) -> PersonaService:

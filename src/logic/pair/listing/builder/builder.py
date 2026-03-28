@@ -10,14 +10,14 @@ version: 1.0.0
 from __future__ import annotations
 
 from logic.node import Node, NodeService
-from logic.pair import PairBuildProcess, PairList, PairListBuildException, TreeDoesNotOwnRayException
+from logic.pair import PairBuildTransaction, PairList, PairListBuildException, TreeDoesNotOwnRayException
 from logic.span import SquareRay, SquareRayService
-from logic.system import BuildResult, BuildProcess, LoggingLevelRouter
+from logic.system import BuildResult, BuildTransaction, LoggingLevelRouter
 
 
-class PairListBuildProcess(BuildProcess[PairList]):
+class PairListBuildTransaction(BuildTransaction[PairList]):
     """
-     Role:BuildProcess, Data Integrity And Reliability Guarantor
+     Role:BuildTransaction, Data Integrity And Reliability Guarantor
     
      Responsibilities:
      1.  Produce PairList instances whose integrity and reliability are guaranteed.
@@ -25,13 +25,13 @@ class PairListBuildProcess(BuildProcess[PairList]):
      3.  Return an exception to the client if a build resource does not satisfy integrity requirements.
     
      Super Class:
-         * BuildProcess
+         * BuildTransaction
     
     Provides:
     
     
     # INHERITED ATTRIBUTES:
-        *   See BuildProcess class for inherited attributes.
+        *   See BuildTransaction class for inherited attributes.
     
     Attributes:
     None
@@ -40,7 +40,7 @@ class PairListBuildProcess(BuildProcess[PairList]):
     None
     
     # INHERITED METHODS:
-        *   See BuildProcess class for inherited methods.
+        *   See BuildTransaction class for inherited methods.
     """
     
     @classmethod
@@ -50,7 +50,7 @@ class PairListBuildProcess(BuildProcess[PairList]):
             parent_node: Node,
             square_ray: SquareRay,
             node_service: NodeService = NodeService(),
-            pair_builder: PairBuildProcess = PairBuildProcess(),
+            pair_builder: PairBuildTransaction = PairBuildTransaction(),
             square_ray_service: SquareRayService = SquareRayService(),
     ) -> BuildResult[PairList]:
         """
@@ -70,7 +70,7 @@ class PairListBuildProcess(BuildProcess[PairList]):
             parent_node: Node
             square_ray: SquareRay
             node_service: NodeService
-            pair_builder: PairBuildProcess
+            pair_builder: PairBuildTransaction
             square_ray_service: SquareRayService
 
         Returns:

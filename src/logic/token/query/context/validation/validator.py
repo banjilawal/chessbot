@@ -15,7 +15,7 @@ from logic.rank import RankService
 from logic.coord import CoordService
 from logic.persona import PersonaService
 from logic.system import (
-    GameColorValidationProcess, IdentityService, LoggingLevelRouter, NumberValidationProcess, ValidationProcess,
+    GameColorValidationTransaction, IdentityService, LoggingLevelRouter, NumberValidationTransaction, ValidationTransaction,
     ValidationResult
 )
 from logic.token import (
@@ -23,7 +23,7 @@ from logic.token import (
     TokenContextValidationRouteException, ZeroTokenContextFlagsException
 )
 
-class TokenContextValidationProcess(ValidationProcess[TokenContext]):
+class TokenContextValidationTransaction(ValidationTransaction[TokenContext]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -32,7 +32,7 @@ class TokenContextValidationProcess(ValidationProcess[TokenContext]):
     2.  If verification fails indicate the reason in an exception returned to the caller.
 
     Super Class:
-        *   ValidationProcess
+        *   ValidationTransaction
 
     Provides:
 
@@ -50,9 +50,9 @@ class TokenContextValidationProcess(ValidationProcess[TokenContext]):
             coord_service: CoordService = CoordService(),
             square_service: SquareService = SquareService(),
             persona_service: PersonaService = PersonaService(),
-            number_validator: NumberValidationProcess = NumberValidationProcess(),
+            number_validator: NumberValidationTransaction = NumberValidationTransaction(),
             identity_service: IdentityService = IdentityService(),
-            color_validator: GameColorValidationProcess = GameColorValidationProcess(),
+            color_validator: GameColorValidationTransaction = GameColorValidationTransaction(),
     ) -> ValidationResult[TokenContext]:
         """
         # ACTION:
@@ -82,7 +82,7 @@ class TokenContextValidationProcess(ValidationProcess[TokenContext]):
             *   TeamContextValidationException
             *   TeamContextValidationRouteException
         """
-        method = "TokenContextValidationProcess.validate"
+        method = "TokenContextValidationTransaction.validate"
         
         # Handle the nonexistence case.
         if candidate is None:

@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .builder import ArenaContextBuildProcess
+from .builder import ArenaContextBuildTransaction
 from .exception import ArenaContextBuildException

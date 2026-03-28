@@ -14,16 +14,16 @@ from typing import Optional
 
 from logic.node import (
     DiscoveryStatus, ArenaNodeContextFlagsException, Node, NodeContext, NodeContextBuildException,
-    NodeContextBuildRouteException, NodeValidationProcess, ZeroNodeContextFlagsException
+    NodeContextBuildRouteException, NodeValidationTransaction, ZeroNodeContextFlagsException
 )
 from logic.square import Square, SquareService
-from logic.system import BuildProcess, BuildResult, NumberValidationProcess
+from logic.system import BuildTransaction, BuildResult, NumberValidationTransaction
 
 
 
-class NodeContextBuildProcess(BuildProcess[NodeContext]):
+class NodeContextBuildTransaction(BuildTransaction[NodeContext]):
     """
-    Role:BuildProcess, Data Integrity And Reliability Guarantor
+    Role:BuildTransaction, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce NodeContext instances whose integrity is guaranteed at creation.
@@ -32,7 +32,7 @@ class NodeContextBuildProcess(BuildProcess[NodeContext]):
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     Super Class:
-        *   BuildProcess
+        *   BuildTransaction
 
     Provides:
 
@@ -48,8 +48,8 @@ class NodeContextBuildProcess(BuildProcess[NodeContext]):
             predecessor: Optional[Node] = None,
             discovery_status: Optional[DiscoveryStatus] = None,
             square_service: SquareService = SquareService(),
-            node_validator: NodeValidationProcess = NodeValidationProcess(),
-            number_validator: NumberValidationProcess = NumberValidationProcess(),
+            node_validator: NodeValidationTransaction = NodeValidationTransaction(),
+            number_validator: NumberValidationTransaction = NumberValidationTransaction(),
     ) -> BuildResult[NodeContext]:
         """
         # ACTION:
@@ -78,7 +78,7 @@ class NodeContextBuildProcess(BuildProcess[NodeContext]):
                 *   ArenaNodeContextFlagsException
                 *   NodeContextBuildRouteException
             """
-        method = "NodeContextBuildProcess.build"
+        method = "NodeContextBuildTransaction.build"
 
         # --- Count how many optional parameters are not-null. only one should be not null. ---#
         params = [priority, square,predecessor, discovery_status,]

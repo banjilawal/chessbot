@@ -12,7 +12,7 @@ from typing import Optional
 from logic.arena import Arena
 from logic.team import Team, TeamService
 from logic.agent import PlayerAgent, AgentService
-from logic.system import BuildResult, BuildProcess, ExecutionRouteException, LoggingLevelRouter, NumberValidationProcess
+from logic.system import BuildResult, BuildTransaction, ExecutionRouteException, LoggingLevelRouter, NumberValidationTransaction
 from logic.game import (
     Game, SnapshotContext, SnapshotContextBuildException, ZeroSnapshotContextFlagsException,
     ArenaSnapshotContextFlagsException
@@ -20,9 +20,9 @@ from logic.game import (
 
 
 
-class SnapshotContextBuildProcess(BuildProcess[SnapshotContext]):
+class SnapshotContextBuildTransaction(BuildTransaction[SnapshotContext]):
     """
-    Role:BuildProcess, Data Integrity And Reliability Guarantor
+    Role:BuildTransaction, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce SnapshotContext instances whose integrity is guaranteed at creation.
@@ -31,7 +31,7 @@ class SnapshotContextBuildProcess(BuildProcess[SnapshotContext]):
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     Super Class:
-        *   BuildProcess
+        *   BuildTransaction
 
     Provides:
 
@@ -51,7 +51,7 @@ class SnapshotContextBuildProcess(BuildProcess[SnapshotContext]):
             exception: Optional[Exception],
             team_service: TeamService = TeamService(),
             agent_service: AgentService = AgentService(),
-            number_validator: NumberValidationProcess = NumberValidationProcess()
+            number_validator: NumberValidationTransaction = NumberValidationTransaction()
     ) -> BuildResult[SnapshotContext]:
         """
         # ACTION:
@@ -86,7 +86,7 @@ class SnapshotContextBuildProcess(BuildProcess[SnapshotContext]):
             *   SnapshotContextBuildException
             *   ArenaSnapshotContextFlagsException
         """
-        method = "SnapshotContextBuildProcess.build"
+        method = "SnapshotContextBuildTransaction.build"
         try:
             # Count how many optional parameters are not-null. One param needs to be not-null.
             params = [team, agent, timestamp]

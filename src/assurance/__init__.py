@@ -39,9 +39,9 @@ __all__ = [
   "LogWriter",
   "Deployment",
   "TransactionReport",
-    "HostageValidationProcess",
+    "HostageValidationTransaction",
     
-    "NameValidationProcess",
+    "NameValidationTransaction",
 
 
 

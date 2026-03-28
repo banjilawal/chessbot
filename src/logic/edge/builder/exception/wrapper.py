@@ -23,8 +23,8 @@ class EdgeBuildException(BuildException):
     Role:Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Indicate the EdgeBuildProcess did not produce a valid work product.
-    2.  Identify the EdgeBuildProcess method where the failure occurred.
+    1.  Indicate the EdgeBuildTransaction did not produce a valid work product.
+    2.  Identify the EdgeBuildTransaction method where the failure occurred.
 
     Super Class:
         *   BuildException
@@ -52,7 +52,7 @@ class EdgeBuildException(BuildException):
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     ERR_CODE = "EDGE_BUILD_FAILURE"
-    MSG = "Failure in EdgeBuildProcess method."
+    MSG = "Failure in EdgeBuildTransaction method."
 
     def __init__(
             self,

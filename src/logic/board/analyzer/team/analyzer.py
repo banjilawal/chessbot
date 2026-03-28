@@ -11,7 +11,7 @@ from typing import cast
 
 from logic.team import Team, TeamService
 from logic.system import LoggingLevelRouter, RelationAnalysis, RelationReport
-from logic.board import Board, BoardTeamAnalysisException, BoardValidationProcess
+from logic.board import Board, BoardTeamAnalysisException, BoardValidationTransaction
 
 
 class BoardTeamRelationAnalysis(RelationAnalysis[Board, Team]):
@@ -29,7 +29,7 @@ class BoardTeamRelationAnalysis(RelationAnalysis[Board, Team]):
         -   analyze(
                     candidate_primary: Board,
                     candidate_satellite: Team,
-                    board_validator: BoardValidationProcess = BoardValidationProcess(),
+                    board_validator: BoardValidationTransaction = BoardValidationTransaction(),
                     team_service: TeamService = TeamService(),
             ) -> RelationReport[Board, Team]
 
@@ -42,7 +42,7 @@ class BoardTeamRelationAnalysis(RelationAnalysis[Board, Team]):
             cls,
             candidate_primary: Board,
             candidate_satellite: Team,
-            board_validator: BoardValidationProcess = BoardValidationProcess(),
+            board_validator: BoardValidationTransaction = BoardValidationTransaction(),
             team_service: TeamService = TeamService(),
     ) -> RelationReport[Board, Team]:
         """
@@ -58,7 +58,7 @@ class BoardTeamRelationAnalysis(RelationAnalysis[Board, Team]):
         Args::
             candidate_primary: Board
             candidate_satellite: Team
-            board_validator: BoardValidationProcess
+            board_validator: BoardValidationTransaction
             team_service: TeamService
         Returns:
             RelationReport[Board, Team]

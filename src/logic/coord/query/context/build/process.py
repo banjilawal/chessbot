@@ -10,13 +10,13 @@ version: 1.0.0
 from typing import Optional
 
 from logic.system import (
-    BOARD_DIMENSION, BuildResult, BuildProcess, NumberValidationProcess, LoggingLevelRouter,
+    BOARD_DIMENSION, BuildResult, BuildTransaction, NumberValidationTransaction, LoggingLevelRouter,
 )
 
 
-class CoordContextBuildProcess(BuildProcess[CoordContext]):
+class CoordContextBuildTransaction(BuildTransaction[CoordContext]):
     """
-    Role:BuildProcess, Data Integrity And Reliability Guarantor
+    Role:BuildTransaction, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce CoordContext instances whose integrity is guaranteed at creation.
@@ -25,7 +25,7 @@ class CoordContextBuildProcess(BuildProcess[CoordContext]):
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     Super Class:
-        *   BuildProcess
+        *   BuildTransaction
 
     Provides:
 
@@ -39,7 +39,7 @@ class CoordContextBuildProcess(BuildProcess[CoordContext]):
             cls,
             row: Optional[int] = None,
             column: Optional[int] = None,
-            number_validator: NumberValidationProcess = NumberValidationProcess(),
+            number_validator: NumberValidationTransaction = NumberValidationTransaction(),
     ) -> BuildResult[CoordContext]:
         """
         # ACTION:
@@ -52,7 +52,7 @@ class CoordContextBuildProcess(BuildProcess[CoordContext]):
                 *   row (Optional[int])
                 *   column (Optional[int])
             This parameter is Required:
-                *   number_validation (NumberValidationProcess)
+                *   number_validation (NumberValidationTransaction)
         # RETURNS:
             *   BuildResult[CoordContext] containing either:
                     - On failure: Exception.
@@ -62,7 +62,7 @@ class CoordContextBuildProcess(BuildProcess[CoordContext]):
             *   CoordContextBuildException
             *   ArenaCoordContextFlagsException
         """
-        method = "CoordContextBuildProcess.build"
+        method = "CoordContextBuildTransaction.build"
         
         # Count how many optional parameters are not-null. One param needs to be not-null.
         params = [row, column]

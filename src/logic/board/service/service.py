@@ -11,9 +11,9 @@ from __future__ import annotations
 from typing import cast
 
 from logic.board import (
-    Board, BoardAlreadyLaidOutException, BoardBuildProcess, BoardLayoutFailedException, BoardRelationAnalysisContext,
+    Board, BoardAlreadyLaidOutException, BoardBuildTransaction, BoardLayoutFailedException, BoardRelationAnalysisContext,
     BoardRelationAnalyzer,
-    BoardState, BoardValidationProcess
+    BoardState, BoardValidationTransaction
 )
 from logic.board.service.exception.anchor import BoardServiceException
 from logic.graph import Graph, GraphComputationException
@@ -49,8 +49,8 @@ class BoardService(IntegrityService[Board]):
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            builder: BoardBuildProcess = BoardBuildProcess(),
-            validator: BoardValidationProcess = BoardValidationProcess(),
+            builder: BoardBuildTransaction = BoardBuildTransaction(),
+            validator: BoardValidationTransaction = BoardValidationTransaction(),
             id: int = IdFactory.next_id(class_name="BoardService"),
             relation_analyzer: BoardRelationAnalyzer = BoardRelationAnalyzer()
     ):
@@ -58,20 +58,20 @@ class BoardService(IntegrityService[Board]):
         Args:
                 id: int
                 name: str
-                builder: BoardBuildProcess
-                validator: BoardValidationProcess
+                builder: BoardBuildTransaction
+                validator: BoardValidationTransaction
                 square_relation_analyzer: SquareRelationAnalyzer
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         self._relation_analyzer = relation_analyzer
     
     @property
-    def build(self) -> BoardBuildProcess:
-        return cast(BoardBuildProcess, self.build)
+    def build(self) -> BoardBuildTransaction:
+        return cast(BoardBuildTransaction, self.build)
     
     @property
-    def validation(self) -> BoardValidationProcess:
-        return cast(BoardValidationProcess, self.validation)
+    def validation(self) -> BoardValidationTransaction:
+        return cast(BoardValidationTransaction, self.validation)
     
     @property
     def relation_analyzer(self) -> BoardRelationAnalyzer:

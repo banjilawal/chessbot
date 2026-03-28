@@ -9,10 +9,10 @@ Created: 2025-08-12
 import sys
 from typing import Any, cast
 
-from logic.system import IdValidationException, NumberValidationProcess, ValidationProcess, ValidationResult, LoggingLevelRouter
+from logic.system import IdValidationException, NumberValidationTransaction, ValidationTransaction, ValidationResult, LoggingLevelRouter
 
 
-class IdValidationProcess(ValidationProcess[int]):
+class IdValidationTransaction(ValidationTransaction[int]):
     """
      Role:Validation, Data Integrity Guarantor, Security., Integrity
   
@@ -36,7 +36,7 @@ class IdValidationProcess(ValidationProcess[int]):
     3.  An Id is required to be greater than zero.
 
     Super Class:
-        *   ValidationProcess
+        *   ValidationTransaction
 
     # PROVIDES:
         * IdeValidator
@@ -50,7 +50,7 @@ class IdValidationProcess(ValidationProcess[int]):
     def execute(
             cls,
             candidate: Any,
-            number_validator: NumberValidationProcess = NumberValidationProcess()
+            number_validator: NumberValidationTransaction = NumberValidationTransaction()
     ) -> ValidationResult[int]:
         """
         # ACTION:
@@ -59,7 +59,7 @@ class IdValidationProcess(ValidationProcess[int]):
             3.  When all checks pass send the number in a ValidationResult's payload.
         # PARAMETERS:
             *   candidate (Any):
-            *   not_negative_validator (NumberValidationProcess)
+            *   not_negative_validator (NumberValidationTransaction)
         # RETURNS:
             *   ValidationResult[int] containing either:
                 - On failure: Exception.
@@ -67,7 +67,7 @@ class IdValidationProcess(ValidationProcess[int]):
         Raises:
             *   IdValidationException
         """
-        method = "IdValidationProcess.validate"
+        method = "IdValidationTransaction.validate"
         
         # Handle the case that, the id is not a positive number.
         validation = number_validator.execute(candidate=candidate, floor=1, ceiling=sys.maxsize)

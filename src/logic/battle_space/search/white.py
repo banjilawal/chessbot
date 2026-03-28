@@ -11,11 +11,11 @@ version: 1.0.0
   its CRUD interfaces goes against recommended usage.
 
 ***Limitation 2***: There is no guarantee properly created `Board` objects released by the module will satisfy client
-    requirements. Clients are responsible for ensuring a `BoardBuildProcess` product will not fail when used. Products
-    from `BoardBuildProcess` --should-- satisfy `BoardValidationProcess` requirements.
+    requirements. Clients are responsible for ensuring a `BoardBuildTransaction` product will not fail when used. Products
+    from `BoardBuildTransaction` --should-- satisfy `BoardValidationTransaction` requirements.
 
 **Related Features**:
-    Authenticating existing boards -> See BoardValidationProcess, module[logic.board_validator.coord_stack_validator],
+    Authenticating existing boards -> See BoardValidationTransaction, module[logic.board_validator.coord_stack_validator],
     Handling exception and rolling back failures --> See `Transaction`, module[logic.system]
 
 # THEME:
@@ -35,8 +35,8 @@ version: 1.0.0
 # DEPENDENCIES:
 ---------------
 From `logic.system`:
-    `BuildResult`, `BuildProcess`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
-    `IdValidationProcess`, `NameValidationProcess`
+    `BuildResult`, `BuildTransaction`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
+    `IdValidationTransaction`, `NameValidationTransaction`
 
 From `logic.board_validator`:
     `Board`, `NullBoard`, `BoardBuildException`, `BoardSchema`
@@ -58,7 +58,7 @@ from logic.battle_space import Projection, ProjectionSearchContext
 from logic.battle_space.service import ProjectionService
 from logic.coord import Coord
 from logic.piece import Piece
-from logic.board import Board, BoardContext, BoardSearchContextValidator, BoardValidationProcess
+from logic.board import Board, BoardContext, BoardSearchContextValidator, BoardValidationTransaction
 from logic.system import (
     Finder, SearchResult, LoggingLevelRouter, PieceSearchNameCollisionException, PieceSearchCoordCollisionException,
     PieceSearchIdCollisionException

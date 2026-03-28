@@ -9,11 +9,11 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.system import BuildProcess, BuildResult, LoggingLevelRouter
+from logic.system import BuildTransaction, BuildResult, LoggingLevelRouter
 from logic.token import CheckSquare, KingToken
 
 
-class BuildCheck(BuildProcess[CheckSquare]):
+class BuildCheck(BuildTransaction[CheckSquare]):
     
     @classmethod
     @LoggingLevelRouter.monitor

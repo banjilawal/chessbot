@@ -8,13 +8,13 @@ version: 1.0.0
 """
 
 from logic.persona import Persona, PersonaService
-from logic.system import BuildProcess, BuildResult, LoggingLevelRouter, id_emitter
+from logic.system import BuildTransaction, BuildResult, LoggingLevelRouter, id_emitter
 from logic.rank import (
     Bishop, King, Knight, Pawn, Queen, Rank, RankBuildException, RankBuildRouteException,
     RankFactoryException, Rook
 )
 
-class RankFactory(BuildProcess[Rank]):
+class RankFactory(BuildTransaction[Rank]):
     """
     Role:Factory, Data Integrity Guarantor
   
@@ -25,7 +25,7 @@ class RankFactory(BuildProcess[Rank]):
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
         
     Super Class:
-        *   BuildProcess
+        *   BuildTransaction
 
     # PROVIDES:
         *   RankFactory

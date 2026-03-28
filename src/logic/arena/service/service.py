@@ -11,8 +11,8 @@ version: 1.0.0
 from typing import cast
 
 from logic.arena import (
-    Arena, ArenaAlreadyContainsTeamException, ArenaBuildProcess, ArenaServiceException,
-    ArenaTeamRelationAnalysis, ArenaValidationProcess, ChangingArenaTeamBlockedException, TeamPlayingDifferentArenaException
+    Arena, ArenaAlreadyContainsTeamException, ArenaBuildTransaction, ArenaServiceException,
+    ArenaTeamRelationAnalysis, ArenaValidationTransaction, ChangingArenaTeamBlockedException, TeamPlayingDifferentArenaException
 )
 from logic.schema import Schema, SchemaService
 from logic.system import IntegrityService, InsertionResult, LoggingLevelRouter, Result, SearchResult, id_emitter
@@ -45,8 +45,8 @@ class ArenaService(IntegrityService[Arena]):
             self,
             name: str = DEFAULT_NAME,
             id: int = id_emitter.service_id,
-            builder: ArenaBuildProcess = ArenaBuildProcess(),
-            validator: ArenaValidationProcess = ArenaValidationProcess(),
+            builder: ArenaBuildTransaction = ArenaBuildTransaction(),
+            validator: ArenaValidationTransaction = ArenaValidationTransaction(),
             team_relation_tester: ArenaTeamRelationAnalysis = ArenaTeamRelationAnalysis(),
     ):
         """
@@ -56,7 +56,7 @@ class ArenaService(IntegrityService[Arena]):
             *   id (nt)
             *   name (str)
             *   build (ArenaFactory)
-            *   validation (ArenaValidationProcess)
+            *   validation (ArenaValidationTransaction)
         # RETURNS:
             None
         Raises:
@@ -66,14 +66,14 @@ class ArenaService(IntegrityService[Arena]):
         self._arena_team_relation_analyzer = team_relation_tester
     
     @property
-    def build(self) -> ArenaBuildProcess:
-        """get ArenaBuildProcess"""
-        return cast(ArenaBuildProcess, self.entity_builder)
+    def build(self) -> ArenaBuildTransaction:
+        """get ArenaBuildTransaction"""
+        return cast(ArenaBuildTransaction, self.entity_builder)
     
     @property
-    def validation(self) -> ArenaValidationProcess:
-        """get ArenaValidationProcess"""
-        return cast(ArenaValidationProcess, self.entity_validator)
+    def validation(self) -> ArenaValidationTransaction:
+        """get ArenaValidationTransaction"""
+        return cast(ArenaValidationTransaction, self.entity_validator)
     
     @property
     def arena_team_relation_analyzer(self) -> ArenaTeamRelationAnalysis:

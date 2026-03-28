@@ -10,11 +10,11 @@ version: 1.0.0
 from logic.piece import KingPiece, Piece
 from logic.checkmate import CheckRecord
 
-from logic.system import BuildResult, BuildProcess, LoggingLevelRouter
+from logic.system import BuildResult, BuildTransaction, LoggingLevelRouter
 
 
 
-class CheckRecordBuildProcess(BuildProcess[CheckRecord]):
+class CheckRecordBuildTransaction(BuildTransaction[CheckRecord]):
     
     @classmethod
     @LoggingLevelRouter.monitor

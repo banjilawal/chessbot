@@ -9,12 +9,12 @@ Created: 2025-11-17
 from typing import Any, cast
 
 from logic.system import (
-    ValidationProcess, ValidationResult, NameValidationProcess, LoggingLevelRouter, GameColor, NullGameColorException,
+    ValidationTransaction, ValidationResult, NameValidationTransaction, LoggingLevelRouter, GameColor, NullGameColorException,
     InvalidGameColorException
 )
 
 
-class GameColorValidationProcess(ValidationProcess[GameColor]):
+class GameColorValidationTransaction(ValidationTransaction[GameColor]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -23,10 +23,10 @@ class GameColorValidationProcess(ValidationProcess[GameColor]):
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     Super Class:
-        *   ValidationProcess
+        *   ValidationTransaction
 
     # PROVIDES:
-        * GameColorValidationProcess
+        * GameColorValidationTransaction
 
 
     # INHERITED ATTRIBUTES:
@@ -58,7 +58,7 @@ class GameColorValidationProcess(ValidationProcess[GameColor]):
             * NullGameColorException
             * InvalidGameColorException
         """
-        method = "GameColorValidationProcess.validate"
+        method = "GameColorValidationTransaction.validate"
         
         try:
             if candidate is None:

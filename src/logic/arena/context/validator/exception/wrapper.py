@@ -24,7 +24,7 @@ class ArenaContextValidationException(ValidationException):
     # TASK: Worker Method Identifier
 
     Responsibilities:
-    1.  Identify the ArenaValidationProcess method where the exception failed.
+    1.  Identify the ArenaValidationTransaction method where the exception failed.
 
     Super Class:
         *   ValidationException
@@ -52,7 +52,7 @@ class ArenaContextValidationException(ValidationException):
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     ERR_CODE = "ARENA_CONTEXT_VALIDATION_FAILURE"
-    MSG = "Failure in ArenaValidationProcess method."
+    MSG = "Failure in ArenaValidationTransaction method."
     
     def __init__(
             self,

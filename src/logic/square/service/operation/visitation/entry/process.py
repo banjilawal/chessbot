@@ -11,7 +11,7 @@ from __future__ import annotations
 from copy import deepcopy
 
 from logic.square import (
-    Square, SquareEntryException, SquareOccupiedException, SquareState, SquareValidationProcess, SquareVisitorBoardException,
+    Square, SquareEntryException, SquareOccupiedException, SquareState, SquareValidationTransaction, SquareVisitorBoardException,
     SquareVisitorDisabledException, WrongOpeningSquareException
 )
 from logic.system import LoggingLevelRouter, UpdateResult
@@ -38,7 +38,7 @@ class SquareEntryProcess:
                     token: Token,
                     square: Square,
                     token_service: TokenService,
-                    square_validator: SquareValidationProcess,
+                    square_validator: SquareValidationTransaction,
             ) -> UpdateResult[Square]:
 
     Super Class:
@@ -51,7 +51,7 @@ class SquareEntryProcess:
             token: Token,
             square: Square,
             token_service: TokenService = TokenService(),
-            square_validator: SquareValidationProcess = SquareValidationProcess(),
+            square_validator: SquareValidationTransaction = SquareValidationTransaction(),
     ) -> UpdateResult[Square]:
         """
         Action:
@@ -68,7 +68,7 @@ class SquareEntryProcess:
             token: Token
             square: Square
             token_service: TokenService
-            square_validator: SquareValidationProcess
+            square_validator: SquareValidationTransaction
        Returns:
             UpdateResult[Square]
         Raises:
@@ -244,7 +244,7 @@ class SquareEntryProcess:
     def _run_square_tests(
             cls,
             square: Square,
-            square_validator: SquareValidationProcess
+            square_validator: SquareValidationTransaction
     ) -> UpdateResult[Square]:
         """
         Tests if the square can be visited.
@@ -256,7 +256,7 @@ class SquareEntryProcess:
             2.  Otherwise, send the success result.
         Args:
             square: Square
-            square_validator: SquareValidationProcess
+            square_validator: SquareValidationTransaction
         Returns:
             UpdateResult[Square]
         Raises:

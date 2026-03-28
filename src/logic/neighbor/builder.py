@@ -8,15 +8,15 @@ version: 1.0.0
 """
 
 
-from logic.domain import DomainValidationProcess
+from logic.domain import DomainValidationTransaction
 from logic.neighbor import VisitationEvent
 from logic.piece import Piece, PieceValidator
 
-from logic.system import BuildResult, BuildProcess, ChessException, IdValidationProcess, IdValidationException, LoggingLevelRouter
+from logic.system import BuildResult, BuildTransaction, ChessException, IdValidationTransaction, IdValidationException, LoggingLevelRouter
 
 
 
-class VisitationEventBuildProcess(BuildProcess[VisitationEvent]):
+class VisitationEventBuildTransaction(BuildTransaction[VisitationEvent]):
     """"""
 
     @classmethod
@@ -26,13 +26,13 @@ class VisitationEventBuildProcess(BuildProcess[VisitationEvent]):
         method = "VisitationBuilder.build"
         
         try:
-            id_validation = IdValidationProcess.execute(id)
+            id_validation = IdValidationTransaction.execute(id)
             if id_validation.is_failure():
                 return BuildResult.failure(
                     IdValidationException(f"{method}: {IdValidationException.MSG}")
                 )
             
-            domain_validation = DomainValidationProcess.execute(domain)
+            domain_validation = DomainValidationTransaction.execute(domain)
             if domain_validation.is_failure():
                 return BuildResult.failure(domain_validation.exception)
             

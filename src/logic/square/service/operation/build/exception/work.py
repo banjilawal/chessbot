@@ -26,8 +26,8 @@ class SquareBuildException(BuildException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate the SquareBuildProcess was not completed.
-        2.  Identify the SquareBuildProcess method where the failure occurred.
+        1.  Indicate the SquareBuildTransaction was not completed.
+        2.  Identify the SquareBuildTransaction method where the failure occurred.
 
     Attributes:
         op: Optional[str]
@@ -46,7 +46,7 @@ class SquareBuildException(BuildException):
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     ERR_CODE = "Square_BUILD_FAILURE"
-    MSG = "Failure in SquareBuildProcess method."
+    MSG = "Failure in SquareBuildTransaction method."
     
     def __init__(
             self,

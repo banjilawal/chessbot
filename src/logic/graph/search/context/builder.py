@@ -10,14 +10,14 @@ version: 1.0.0
 from typing import Optional
 
 from logic.rank import RankBoundsChecker
-from logic.coord import Coord, CoordValidationProcess
-from logic.system import BuildProcess, BuildResult, IdValidationProcess, LoggingLevelRouter, NameValidationProcess
+from logic.coord import Coord, CoordValidationTransaction
+from logic.system import BuildTransaction, BuildResult, IdValidationTransaction, LoggingLevelRouter, NameValidationTransaction
 from logic.domain import (
     VisitorSearchContext, ArenaVisitorSearchParamsException, NoVisitorSearchFilterSelectionException
 )
 
 
-class VisitorSearchContextBuildProcess(BuildProcess[VisitorSearchContext]):
+class VisitorSearchContextBuildTransaction(BuildTransaction[VisitorSearchContext]):
     """"""
     
     @classmethod
@@ -33,7 +33,7 @@ class VisitorSearchContextBuildProcess(BuildProcess[VisitorSearchContext]):
             team_name: Optional[str] = None
     ) -> BuildResult[VisitorSearchContext]:
         """"""
-        method = "VisitorSearchContextBuildProcess.build"
+        method = "VisitorSearchContextBuildTransaction.build"
         
         try:
             params = [name, ransom, id, team_id, team_name, rank_name, coord]
@@ -54,22 +54,22 @@ class VisitorSearchContextBuildProcess(BuildProcess[VisitorSearchContext]):
                 )
             
             if id is not None:
-                id_validation = IdValidationProcess.execute(id)
+                id_validation = IdValidationTransaction.execute(id)
                 if not id_validation.is_failure():
                     return BuildResult.result(id_validation.exception)
             
             if name is not None:
-                name_validation = NameValidationProcess.execute(name)
+                name_validation = NameValidationTransaction.execute(name)
                 if name_validation.is_failure():
                     return BuildResult.failure(name_validation.exception)
             
             if team_id is not None:
-                team_id_validation = IdValidationProcess.execute(team_id)
+                team_id_validation = IdValidationTransaction.execute(team_id)
                 if team_id_validation.is_failure():
                     return BuildResult.failure(team_id_validation.exception)
             
             if team_name is not None:
-                team_name_validation = NameValidationProcess.execute(team_name)
+                team_name_validation = NameValidationTransaction.execute(team_name)
                 if team_name_validation.is_failure():
                     return BuildResult.failure(team_name_validation.exception)
             
@@ -84,7 +84,7 @@ class VisitorSearchContextBuildProcess(BuildProcess[VisitorSearchContext]):
                     return BuildResult.failure(ransom_bounds_check.exception)
             
             if coord is not None:
-                coord_validation = CoordValidationProcess.execute(coord)
+                coord_validation = CoordValidationTransaction.execute(coord)
                 if coord_validation.is_failure():
                     return BuildResult.failure(coord_validation.exception)
             

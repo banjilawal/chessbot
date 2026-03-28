@@ -14,10 +14,10 @@ from copy import deepcopy
 from typing import cast
 
 from logic.edge import (
-    Edge, EdgeBuildProcess, EdgeServiceException, EdgeValidationProcess, UpdatingEdgeHeuristicException,
+    Edge, EdgeBuildTransaction, EdgeServiceException, EdgeValidationTransaction, UpdatingEdgeHeuristicException,
     UpdatingEdgeWeightException
 )
-from logic.system import IntegrityService, IdFactory, LoggingLevelRouter, NumberValidationProcess, UpdateResult
+from logic.system import IntegrityService, IdFactory, LoggingLevelRouter, NumberValidationTransaction, UpdateResult
 
 
 class EdgeService(IntegrityService[Edge]):
@@ -44,8 +44,8 @@ class EdgeService(IntegrityService[Edge]):
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            builder: EdgeBuildProcess = EdgeBuildProcess(),
-            validator: EdgeValidationProcess = EdgeValidationProcess(),
+            builder: EdgeBuildTransaction = EdgeBuildTransaction(),
+            validator: EdgeValidationTransaction = EdgeValidationTransaction(),
             id: int = IdFactory.next_id(class_name="EdgeService"),
     ):
         """
@@ -55,7 +55,7 @@ class EdgeService(IntegrityService[Edge]):
             *   id (nt)
             *   name (str)
             *   build (EdgeFactory)
-            *   validation (EdgeValidationProcess)
+            *   validation (EdgeValidationTransaction)
         # RETURNS:
             None
         Raises:
@@ -64,19 +64,19 @@ class EdgeService(IntegrityService[Edge]):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         
     @property
-    def build(self) -> EdgeBuildProcess:
-        return cast(EdgeBuildProcess, self.entity_builder)
+    def build(self) -> EdgeBuildTransaction:
+        return cast(EdgeBuildTransaction, self.entity_builder)
     
     @property
-    def validation(self) -> EdgeValidationProcess:
-        return cast(EdgeValidationProcess, self.entity_validator)
+    def validation(self) -> EdgeValidationTransaction:
+        return cast(EdgeValidationTransaction, self.entity_validator)
     
     @LoggingLevelRouter.monitor
     def update_edge_heuristic(
             self,
             edge: Edge,
             heuristic: int,
-            number_validator: NumberValidationProcess = NumberValidationProcess()
+            number_validator: NumberValidationTransaction = NumberValidationTransaction()
     ) -> UpdateResult[Edge]:
         """
         # ACTION:
@@ -141,7 +141,7 @@ class EdgeService(IntegrityService[Edge]):
             self,
             edge: Edge,
             weight: int,
-            number_validator: NumberValidationProcess = NumberValidationProcess()
+            number_validator: NumberValidationTransaction = NumberValidationTransaction()
     ) -> UpdateResult[Edge]:
         """
         # ACTION:

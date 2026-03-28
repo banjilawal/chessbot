@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast
 
 from logic.system import QueryService, id_emitter
-from logic.board import BoardContext, BoardContextBuildProcess, BoardContextValidationProcess, BoardFinder
+from logic.board import BoardContext, BoardContextBuildTransaction, BoardContextValidationTransaction, BoardFinder
 
 
 class BoardQueryService(QueryService[BoardContext]):
@@ -41,8 +41,8 @@ class BoardQueryService(QueryService[BoardContext]):
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             finder: BoardFinder = BoardFinder(),
-            builder: BoardContextBuildProcess = BoardContextBuildProcess(),
-            validator: BoardContextValidationProcess = BoardContextValidationProcess(),
+            builder: BoardContextBuildTransaction = BoardContextBuildTransaction(),
+            validator: BoardContextValidationTransaction = BoardContextValidationTransaction(),
     ):
         """
         # ACTION:
@@ -51,8 +51,8 @@ class BoardQueryService(QueryService[BoardContext]):
             *   name (str)
             *   id (int)
             *   route (BoardFinder)
-            *   build (BoardContextBuildProcess)
-            *   validation (BoardContextValidationProcess)
+            *   build (BoardContextBuildTransaction)
+            *   validation (BoardContextValidationTransaction)
         # RETURNS:
             None
         Raises:
@@ -67,11 +67,11 @@ class BoardQueryService(QueryService[BoardContext]):
         return cast(BoardFinder, self.entity_finder)
     
     @property
-    def build(self) -> BoardContextBuildProcess:
-        """Get BoardContextBuildProcess instance."""
-        return cast(BoardContextBuildProcess, self.entity_builder)
+    def build(self) -> BoardContextBuildTransaction:
+        """Get BoardContextBuildTransaction instance."""
+        return cast(BoardContextBuildTransaction, self.entity_builder)
     
     @property
-    def validation(self) -> BoardContextValidationProcess:
-        """Get BoardContextValidationProcess instance."""
-        return cast(BoardContextValidationProcess, self.entity_validator)
+    def validation(self) -> BoardContextValidationTransaction:
+        """Get BoardContextValidationTransaction instance."""
+        return cast(BoardContextValidationTransaction, self.entity_validator)

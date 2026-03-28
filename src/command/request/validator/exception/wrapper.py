@@ -23,7 +23,7 @@ class RequestValidationException(ValidationException):
     Role:Debug Wrapper, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
-    1.  Indicate that a candidate failed a safety check in a RequestValidationProcess
+    1.  Indicate that a candidate failed a safety check in a RequestValidationTransaction
         method.
 
     Super Class:

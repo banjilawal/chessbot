@@ -24,7 +24,7 @@ class PlayerContextValidationException(ValidationException):
     # TASK: Worker Method Identifier
 
     Responsibilities:
-    1.  Identify the PlayerValidationProcess method where the exception failed.
+    1.  Identify the PlayerValidationTransaction method where the exception failed.
 
     Super Class:
         *   ValidationException
@@ -52,7 +52,7 @@ class PlayerContextValidationException(ValidationException):
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     ERR_CODE = "PLAYER_CONTEXT_VALIDATION_FAILURE"
-    MSG = "Failure in PlayerValidationProcess method."
+    MSG = "Failure in PlayerValidationTransaction method."
     
     def __init__(
             self,

@@ -9,11 +9,11 @@ version: 1.0.0
 
 from typing import cast, Any
 
-from logic.system import ValidationProcess, ValidationResult, LoggingLevelRouter
+from logic.system import ValidationTransaction, ValidationResult, LoggingLevelRouter
 from logic.formation import Formation, FormationValidationException, NullFormationException
 
 
-class FormationValidationProcess(ValidationProcess[Formation]):
+class FormationValidationTransaction(ValidationTransaction[Formation]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -22,7 +22,7 @@ class FormationValidationProcess(ValidationProcess[Formation]):
     2.  If verification fails indicate the reason in an exception returned to the caller.
 
     Super Class:
-        *   ValidationProcess
+        *   ValidationTransaction
 
     Provides:
 
@@ -49,7 +49,7 @@ class FormationValidationProcess(ValidationProcess[Formation]):
             *   NullFormationException
             *   FormationValidationException
         """
-        method = "FormationValidationProcess.validate"
+        method = "FormationValidationTransaction.validate"
         # Handle the nonexistence case.
         if candidate is None:
             # Return the exception chain on failure.

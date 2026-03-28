@@ -11,13 +11,13 @@ from __future__ import annotations
 
 from logic.persona import Persona
 from logic.rank import RankService
-from logic.team import Team, TeamValidationProcess
+from logic.team import Team, TeamValidationTransaction
 from logic.formation import Formation, FormationService
 from logic.token import CombatantToken, KingToken, PawnToken, TokenBuildException, Token
-from logic.system import BuildResult, BuildProcess, IdFactory, IdentityService, LoggingLevelRouter
+from logic.system import BuildResult, BuildTransaction, IdFactory, IdentityService, LoggingLevelRouter
 
 
-class TokenBuild(BuildProcess[Token]):
+class TokenBuild(BuildTransaction[Token]):
     """
     Role
         -   Transaction Worker
@@ -41,11 +41,11 @@ class TokenBuild(BuildProcess[Token]):
                     rank_service: RankService,
                     identity_service: IdentityService,
                     formation_service: FormationService,
-                    team_validator: TeamValidationProcess,
+                    team_validator: TeamValidationTransaction,
             ) -> BuildResult[Token]
 
      Super Class:
-         BuildProcess
+         BuildTransaction
      """
     
     @classmethod
@@ -58,7 +58,7 @@ class TokenBuild(BuildProcess[Token]):
             id: int = IdFactory.next_id(class_name="Token"),
             identity_service: IdentityService = IdentityService(),
             formation_service: FormationService = FormationService(),
-            team_validator: TeamValidationProcess = TeamValidationProcess(),
+            team_validator: TeamValidationTransaction = TeamValidationTransaction(),
     ) -> BuildResult[Token]:
         """
         Action:
@@ -76,7 +76,7 @@ class TokenBuild(BuildProcess[Token]):
             rank_service: RankService
             identity_service: IdentityService
             formation_service: FormationService
-            team_validator: TeamValidationProcess
+            team_validator: TeamValidationTransaction
         Returns:
             BuildResult[Token]
         Raises:

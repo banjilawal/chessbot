@@ -23,7 +23,7 @@ class BoardValidationException(ValidationException):
     Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Identify the BoardValidationProcess method where the exception failed.
+    1.  Identify the BoardValidationTransaction method where the exception failed.
 
     Super Class:
         *   ValidationException
@@ -52,7 +52,7 @@ class BoardValidationException(ValidationException):
         *   See ValidationException class for inherited methods.
     """
     ERR_CODE = "BOARD_VALIDATION_FAILURE"
-    MSG = "Failure in BoardValidationProcess method."
+    MSG = "Failure in BoardValidationTransaction method."
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     

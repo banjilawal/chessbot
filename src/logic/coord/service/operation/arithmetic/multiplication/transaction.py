@@ -36,7 +36,7 @@ class MultiplyCoordTransaction:
     """
     
     @classmethod
-    def compute(
+    def execute(
             cls,
             coord: Coord,
             scalar: Scalar,
@@ -60,7 +60,7 @@ class MultiplyCoordTransaction:
         Raises:
             CoordMultiplicationException
         """
-        method = f"{cls.__name__}.compute"
+        method = f"{cls.__name__}.execute"
         
         # Handle the case that, the coord does not pass a validation check.
         coord_validation_result =coord_service.validation.execute(coord)

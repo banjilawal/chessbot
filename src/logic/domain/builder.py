@@ -9,13 +9,13 @@ version: 1.0.0
 
 from logic.board import Board
 from logic.piece import Piece
-from logic.domain import Domain, DomainOriginBuildProcess
-from logic.system import BuildProcess, BuildResult, LoggingLevelRouter
+from logic.domain import Domain, DomainOriginBuildTransaction
+from logic.system import BuildTransaction, BuildResult, LoggingLevelRouter
 
 
-class DomainBuildProcess(BuildProcess[Domain]):
+class DomainBuildTransaction(BuildTransaction[Domain]):
     """
-     Role:BuildProcess, Data Integrity And Reliability Guarantor
+     Role:BuildTransaction, Data Integrity And Reliability Guarantor
 
      Responsibilities:
      1.  Produce Domain instances whose integrity is guaranteed at creation.
@@ -24,10 +24,10 @@ class DomainBuildProcess(BuildProcess[Domain]):
      4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
      Super Class:
-         * BuildProcess
+         * BuildTransaction
 
      # PROVIDES:
-         *   DomainBuildProcess
+         *   DomainBuildTransaction
 
      # LOCAL ATTRIBUTES:
      None
@@ -42,7 +42,7 @@ class DomainBuildProcess(BuildProcess[Domain]):
             cls,
             piece: Piece,
             board: Board,
-            domain_origin_builder: DomainOriginBuildProcess
+            domain_origin_builder: DomainOriginBuildTransaction
     ) -> BuildResult[Domain]:
         """
         # ACTION:
@@ -51,7 +51,7 @@ class DomainBuildProcess(BuildProcess[Domain]):
         # PARAMETERS:
           * piece (Token): The points owner
           * board (Board): Provides the Square of the Domain owner.
-          * domain_origin_builder (DomainOriginBuildProcess): Creates the DomainOwner object.
+          * domain_origin_builder (DomainOriginBuildTransaction): Creates the DomainOwner object.
 
         # RETURNS:
           BuildResult[Domain] containing either:
@@ -66,7 +66,7 @@ class DomainBuildProcess(BuildProcess[Domain]):
             * DomainNullFriendsDictException
             * InvalidDomainException
         """
-        method = "DomainBuildProcess.build"
+        method = "DomainBuildTransaction.build"
         
         try:
             board_actor_validation = BoardActorValidator.execute(piece, board)

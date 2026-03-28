@@ -5,11 +5,11 @@ from logic.hostage import (
     CaptivityContextBuildRouteException, ArenaCaptivityContextFlagsException, ZeroCaptivityContextFlagsException
 )
 from logic.square import Square, SquareService
-from logic.system import IdentityService, LoggingLevelRouter, BuildResult, BuildProcess, id_emitter
+from logic.system import IdentityService, LoggingLevelRouter, BuildResult, BuildTransaction, id_emitter
 from logic.token import CombatantToken, Token, TokenService
 
 
-class CaptivityContextBuildProcess(BuildProcess[CaptivityContext]):
+class CaptivityContextBuildTransaction(BuildTransaction[CaptivityContext]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -19,14 +19,14 @@ class CaptivityContextBuildProcess(BuildProcess[CaptivityContext]):
     2. Provide pluggable factories for validating different options separately.
 
     Super Class:
-        * ValidationProcess
+        * ValidationTransaction
 
     3 PROVIDES:
     None
 
 
     3 INHERITED ATTRIBUTES:
-        *   See ValidationProcess class for inherited attributes.
+        *   See ValidationTransaction class for inherited attributes.
     """
     
     @classmethod
@@ -48,7 +48,7 @@ class CaptivityContextBuildProcess(BuildProcess[CaptivityContext]):
             2. Test the value passed to CaptivityContext passes its validation contract.
         # PARAMETERS:
             * candidate (Any): Object to verify is a Square.
-            * validation (type[SquareValidationProcess]): Enforces safety requirements on row, column, square_name squares.
+            * validation (type[SquareValidationTransaction]): Enforces safety requirements on row, column, square_name squares.
         # RETURNS:
             * BuildResult[CaptivityContext] containing either:
                     - On failure: Exception.
@@ -60,7 +60,7 @@ class CaptivityContextBuildProcess(BuildProcess[CaptivityContext]):
             * CaptivityContextBuildException
             * CaptivityContextBuildRouteException
         """
-        method = "CaptivityContextBuildProcess.validate"
+        method = "CaptivityContextBuildTransaction.validate"
         
         # --- Count how many optional parameters are not-null. only one should be not null. ---#
         params = [id, prisoner, victor, captured_square]

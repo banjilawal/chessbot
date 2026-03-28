@@ -23,7 +23,7 @@ class SquareSpanValidationException(ValidationException):
     Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Identify the SquareSpanValidationProcess method where the exception failed.
+    1.  Identify the SquareSpanValidationTransaction method where the exception failed.
 
     Super Class:
         *   ValidationException
@@ -51,7 +51,7 @@ class SquareSpanValidationException(ValidationException):
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     ERR_CODE = "SQUARE_SPAN_VALIDATION_FAILURE"
-    MSG = "Failure in SquareSpanValidationProcess method."
+    MSG = "Failure in SquareSpanValidationTransaction method."
 
     def __init__(
             self,

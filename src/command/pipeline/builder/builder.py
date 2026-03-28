@@ -9,12 +9,12 @@ Created: 2026-02-24
 from __future__ import annotations
 
 from logic.system import (
-    ArgumentCountException, ArgumentNameException, ArgumentTypeException, BuildProcess, Command, CommandBuilderException,
+    ArgumentCountException, ArgumentNameException, ArgumentTypeException, BuildTransaction, Command, CommandBuilderException,
     CommandNameException, LoggingLevelRouter, RequestValidator, BuildResult, Request
 )
 
 
-class CommandBuildProcess(BuildProcess[Command]):
+class CommandBuildTransaction(BuildTransaction[Command]):
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -24,7 +24,7 @@ class CommandBuildProcess(BuildProcess[Command]):
             request: Request,
             request_validator: RequestValidator = RequestValidator(),
     ) -> BuildResult[Command]:
-        method = "CommandBuildProcess.build"
+        method = "CommandBuildTransaction.build"
         
         # Handle the case that, the request does not pass a validation check.
         validation_result = request_validator.execute(candidate=request)

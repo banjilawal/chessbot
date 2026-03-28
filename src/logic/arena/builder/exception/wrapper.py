@@ -23,8 +23,8 @@ class ArenaBuildException(BuildException):
     Role:Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Indicate the ArenaBuildProcess did not produce a valid work product.
-    2.  Identify the ArenaBuildProcess method where the failure occurred.
+    1.  Indicate the ArenaBuildTransaction did not produce a valid work product.
+    2.  Identify the ArenaBuildTransaction method where the failure occurred.
 
     Super Class:
         *   BuildException
@@ -52,7 +52,7 @@ class ArenaBuildException(BuildException):
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     ERR_CODE = "ARENA_BUILD_FAILURE"
-    MSG = "Failure in ArenaBuildProcess method."
+    MSG = "Failure in ArenaBuildTransaction method."
 
     def __init__(
             self,

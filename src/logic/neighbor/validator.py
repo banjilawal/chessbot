@@ -10,17 +10,17 @@ version: 1.0.0
 from typing import Any, cast
 
 from logic.neighbor import VisitationEvent, NullVisitationEventException
-from logic.system import LoggingLevelRouter, ValidationResult, ValidationProcess
+from logic.system import LoggingLevelRouter, ValidationResult, ValidationTransaction
 
 
-class VisitationEventValidationProcess(ValidationProcess[VisitationEvent]):
+class VisitationEventValidationTransaction(ValidationTransaction[VisitationEvent]):
     """"""
     
     @classmethod
     @LoggingLevelRouter.monitor
     def execute(cls, candidate: Any) -> ValidationResult[VisitationEvent]:
         """"""
-        method = "VisitationEventValidationProcess.validate"
+        method = "VisitationEventValidationTransaction.validate"
         
         try:
             if candidate is None:

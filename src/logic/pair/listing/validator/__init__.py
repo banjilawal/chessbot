@@ -13,4 +13,4 @@ version: 1.0.0
 from .exception import *
 
 # Modules
-from .validator import PairListValidationProcess
+from .validator import PairListValidationTransaction

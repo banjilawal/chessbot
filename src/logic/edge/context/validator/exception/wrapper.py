@@ -24,7 +24,7 @@ class EdgeContextValidationException(ValidationException):
     # TASK: Worker Method Identifier
 
     Responsibilities:
-    1.  Identify the EdgeValidationProcess method where the exception failed.
+    1.  Identify the EdgeValidationTransaction method where the exception failed.
 
     Super Class:
         *   ValidationException
@@ -52,7 +52,7 @@ class EdgeContextValidationException(ValidationException):
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     ERR_CODE = "EDGE_CONTEXT_VALIDATION_FAILURE"
-    MSG = "Failure in EdgeValidationProcess method."
+    MSG = "Failure in EdgeValidationTransaction method."
     
     def __init__(
             self,

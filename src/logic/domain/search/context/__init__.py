@@ -10,5 +10,5 @@ version: 1.0.0
 from .exception import *
 
 from .context import ResidentFilter
-from .builder import ResidentFilterBuildProcess
-from .validator import ResidentFilterValidationProcess
+from .builder import ResidentFilterBuildTransaction
+from .validator import ResidentFilterValidationTransaction

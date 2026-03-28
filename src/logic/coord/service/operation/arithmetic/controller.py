@@ -13,50 +13,51 @@ class CoordArithmeticController:
         1.  Provide a single entry point for Coord arithmetic operations.
 
     Attributes:
-        converter: ConvertVectorToCoordTransaction
-        scalar_product: MultiplyCoordTransaction
-        vector_addition: CoordAdditionTransaction
-        euclidean_distance: EuclideanDistance
+        distance: EuclideanDistance
+        addition: CoordAdditionTransaction
+        multiplication: MultiplyCoordTransaction
+        conversion: ConvertVectorToCoordTransaction
 
     Provides:
     Super Class:
     """
-    _scalar_product: MultiplyCoordTransaction
+    _distance: EuclideanDistance
+    _addition: CoordAdditionTransaction
+    _multiplication: MultiplyCoordTransaction
     _conversion: ConvertVectorToCoordTransaction
-    _vector_addition: CoordAdditionTransaction
-    _euclidean_distance: EuclideanDistance
-    
+
     def __init__(
             self,
-            scalar_product: MultiplyCoordTransaction = MultiplyCoordTransaction(),
-            euclidean_distance: EuclideanDistance = EuclideanDistance(),
-            vector_addition: CoordAdditionTransaction = CoordAdditionTransaction(),
-            converter: ConvertVectorToCoordTransaction = ConvertVectorToCoordTransaction(),
+            distance: EuclideanDistance = EuclideanDistance(),
+            addition: CoordAdditionTransaction = CoordAdditionTransaction(),
+            multiplication: MultiplyCoordTransaction = MultiplyCoordTransaction(),
+            conversion: ConvertVectorToCoordTransaction = ConvertVectorToCoordTransaction(),
     ):
         """
         Args:
-            converter: ConvertVectorToCoordTransaction
-            scalar_product: MultiplyCoordTransaction
-            vector_addition: CoordAdditionTransaction
-            euclidean_distance: EuclideanDistance
+            distance: EuclideanDistance
+            addition: CoordAdditionTransaction
+            multiplication: MultiplyCoordTransaction
+            conversion: ConvertVectorToCoordTransaction
         """
-        self._converter = converter
-        self._vector_addition = vector_addition
-        self._scalar_product = scalar_product
-        self._euclidean_distance = euclidean_distance
+        self._addition = addition
+        self._distance = distance
+        self._conversion = conversion
+        self._multiplication = multiplication
+
     
     @property
-    def convert_vector_to_coord(self) -> ConvertVectorToCoordTransaction:
-        return self._converter
+    def conversion(self) -> ConvertVectorToCoordTransaction:
+        return self._conversion
     
     @property
-    def add_vector_to_coord(self) -> CoordAdditionTransaction:
-        return self._vector_addition
+    def addition(self) -> CoordAdditionTransaction:
+        return self._addition
     
     @property
-    def scalar_product(self) -> MultiplyCoordTransaction:
-        return self._scalar_product
+    def multiplication(self) -> MultiplyCoordTransaction:
+        return self._multiplication
     
     @property
-    def euclidean_distance(self) -> EuclideanDistance:
-        return self._euclidean_distance
+    def distance(self) -> EuclideanDistance:
+        return self._distance

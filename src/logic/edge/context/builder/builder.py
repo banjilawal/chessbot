@@ -13,7 +13,7 @@ from typing import Optional
 from logic.board import Board, BoardService
 from logic.coord import Coord, CoordService
 from logic.edge.state import EdgeState
-from logic.system import BuildProcess, BuildResult, IdentityService
+from logic.system import BuildTransaction, BuildResult, IdentityService
 from logic.edge import (
     EdgeContextBuildRouteException, ZeroEdgeContextFlagsException, EdgeContext, EdgeContextBuildException,
     ArenaEdgeContextFlagsException
@@ -21,9 +21,9 @@ from logic.edge import (
 from logic.token import Token, TokenService
 
 
-class EdgeContextBuildProcess(BuildProcess[EdgeContext]):
+class EdgeContextBuildTransaction(BuildTransaction[EdgeContext]):
     """
-    Role:BuildProcess, Data Integrity And Reliability Guarantor
+    Role:BuildTransaction, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce EdgeContext instances whose integrity is guaranteed at creation.
@@ -32,7 +32,7 @@ class EdgeContextBuildProcess(BuildProcess[EdgeContext]):
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     Super Class:
-        *   BuildProcess
+        *   BuildTransaction
 
     Provides:
 
@@ -82,7 +82,7 @@ class EdgeContextBuildProcess(BuildProcess[EdgeContext]):
                 *   ArenaEdgeContextFlagsException
                 *   EdgeContextBuildRouteException
             """
-        method = "EdgeContextBuildProcess.build"
+        method = "EdgeContextBuildTransaction.build"
 
         # --- Count how many optional parameters are not-null. only one should be not null. ---#
         params = [id, name, coord, token,board, state,]

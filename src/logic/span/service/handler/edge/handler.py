@@ -12,7 +12,7 @@ from typing import Dict, List
 
 from logic.node import Node
 from logic.graph import Graph
-from logic.edge import Edge, EdgeBuildProcess, PushingEdgeException
+from logic.edge import Edge, EdgeBuildTransaction, PushingEdgeException
 from logic.system import BuildResult, InsertionResult, LoggingLevelRouter
 from logic.span import AsymmetricEdgeBuildException, NodeEdgeHandlerException, SymmetricEdgeBuildException
 
@@ -23,14 +23,14 @@ class NodeEdgeHandler:
     def build_symmetric_edges(
             cls,
             node_dict: Dict[str, Node],
-            edge_builder: EdgeBuildProcess = EdgeBuildProcess(),
+            edge_builder: EdgeBuildTransaction = EdgeBuildTransaction(),
     ) -> BuildResult[List[Edge]]:
         """
         Action:
             Build a dictionary of adjacent edges from a square hashtable., from a square hashtable.
             
         Args:
-            edge_builder: EdgeBuildProcess
+            edge_builder: EdgeBuildTransaction
             node_dict: Dict[str, Node]
             
         Returns:
@@ -82,14 +82,14 @@ class NodeEdgeHandler:
     def build__edge(
             cls,
             node_dict: Dict[str, Node],
-            edge_builder: EdgeBuildProcess = EdgeBuildProcess(),
+            edge_builder: EdgeBuildTransaction = EdgeBuildTransaction(),
     ) -> BuildResult[List[Edge]]:
         """
         Action:
             Build a dictionary of adjacent edges from a square hashtable., from a square hashtable.
 
         Args:
-            edge_builder: EdgeBuildProcess
+            edge_builder: EdgeBuildTransaction
             node_dict: Dict[str, Square]
 
         Returns:

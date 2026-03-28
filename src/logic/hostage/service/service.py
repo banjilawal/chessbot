@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast
 
 from logic.system import IntegrityService, id_emitter
-from logic.hostage import Hostage, HostageBuildProcess, HostageValidationProcess
+from logic.hostage import Hostage, HostageBuildTransaction, HostageValidationTransaction
 
 
 class HostageService(IntegrityService[Hostage]):
@@ -39,8 +39,8 @@ class HostageService(IntegrityService[Hostage]):
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
-            builder: HostageBuildProcess = HostageBuildProcess(),
-            validator: HostageValidationProcess = HostageValidationProcess(),
+            builder: HostageBuildTransaction = HostageBuildTransaction(),
+            validator: HostageValidationTransaction = HostageValidationTransaction(),
     ):
         """
         # ACTION:
@@ -49,7 +49,7 @@ class HostageService(IntegrityService[Hostage]):
             *   id (nt)
             *   name (str)
             *   build (SquareFactory)
-            *   validation (SquareValidationProcess)
+            *   validation (SquareValidationTransaction)
         # RETURNS:
             None
         Raises:
@@ -58,11 +58,11 @@ class HostageService(IntegrityService[Hostage]):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
     
     @property
-    def build(self) -> HostageBuildProcess:
-        """get SquareBuildProcess"""
-        return cast(HostageBuildProcess, self.entity_builder)
+    def build(self) -> HostageBuildTransaction:
+        """get SquareBuildTransaction"""
+        return cast(HostageBuildTransaction, self.entity_builder)
     
     @property
-    def validation(self) -> HostageValidationProcess:
-        """get SquareValidationProcess"""
-        return cast(HostageValidationProcess, self.entity_validator)
+    def validation(self) -> HostageValidationTransaction:
+        """get SquareValidationTransaction"""
+        return cast(HostageValidationTransaction, self.entity_validator)

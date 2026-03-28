@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast
 
 from logic.system import QueryService, id_emitter
-from logic.team import TeamContext, TeamContextBuildProcess, TeamContextValidationProcess, TeamFinder
+from logic.team import TeamContext, TeamContextBuildTransaction, TeamContextValidationTransaction, TeamFinder
 
 
 class TeamQueryService(QueryService[TeamContext]):
@@ -40,8 +40,8 @@ class TeamQueryService(QueryService[TeamContext]):
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             finder: TeamFinder = TeamFinder(),
-            builder: TeamContextBuildProcess = TeamContextBuildProcess(),
-            validator: TeamContextValidationProcess = TeamContextValidationProcess(),
+            builder: TeamContextBuildTransaction = TeamContextBuildTransaction(),
+            validator: TeamContextValidationTransaction = TeamContextValidationTransaction(),
     ):
         """
         # ACTION:
@@ -51,8 +51,8 @@ class TeamQueryService(QueryService[TeamContext]):
             *   name (str): Default value - SERVICE_NAME
             *   id (int): Default value - id_emitter.service_id
             *   route (TeamFinder): Default value - TeamFinder()
-            *   build (TeamContextBuildProcess): Default value - TeamContextBuildProcess()
-            *   validation (TeamContextValidationProcess): Default value - TeamContextValidationProcess()
+            *   build (TeamContextBuildTransaction): Default value - TeamContextBuildTransaction()
+            *   validation (TeamContextValidationTransaction): Default value - TeamContextValidationTransaction()
 
         # RETURNS:
         None
@@ -68,13 +68,13 @@ class TeamQueryService(QueryService[TeamContext]):
         return cast(TeamFinder, self.entity_finder)
     
     @property
-    def build(self) -> TeamContextBuildProcess:
-        """Get TeamContextBuildProcess instance."""
-        return cast(TeamContextBuildProcess, self.entity_builder)
+    def build(self) -> TeamContextBuildTransaction:
+        """Get TeamContextBuildTransaction instance."""
+        return cast(TeamContextBuildTransaction, self.entity_builder)
     
     @property
-    def validation(self) -> TeamContextValidationProcess:
-        """Get TeamContextValidationProcess instance."""
-        return cast(TeamContextValidationProcess, self.entity_validator)
+    def validation(self) -> TeamContextValidationTransaction:
+        """Get TeamContextValidationTransaction instance."""
+        return cast(TeamContextValidationTransaction, self.entity_validator)
     
     

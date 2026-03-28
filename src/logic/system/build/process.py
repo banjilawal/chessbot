@@ -10,12 +10,12 @@ version: 1.0.0
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
-from logic.system import BuildResult, LoggingLevelRouter, ValidationProcess
+from logic.system import BuildResult, LoggingLevelRouter, ValidationTransaction
 
 T = TypeVar("T")
 
 
-class BuildProcess(ABC, Generic[T]):
+class BuildTransaction(ABC, Generic[T]):
     """
     Role
         -   Transaction Worker

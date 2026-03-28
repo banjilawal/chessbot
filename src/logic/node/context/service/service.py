@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import cast
 
 from logic.system import QueryService, id_emitter
-from logic.node import NodeContext, NodeContextBuildProcess, NodeContextValidationProcess, NodeFinder
+from logic.node import NodeContext, NodeContextBuildTransaction, NodeContextValidationTransaction, NodeFinder
 
 
 class NodeQueryService(QueryService[NodeContext]):
@@ -42,16 +42,16 @@ class NodeQueryService(QueryService[NodeContext]):
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             finder: NodeFinder = NodeFinder(),
-            builder: NodeContextBuildProcess = NodeContextBuildProcess(),
-            validator: NodeContextValidationProcess = NodeContextValidationProcess(),
+            builder: NodeContextBuildTransaction = NodeContextBuildTransaction(),
+            validator: NodeContextValidationTransaction = NodeContextValidationTransaction(),
     ):
         """
         Args:
             id: int
             name: str
             finder: NodeFinder
-            builder: NodeContextBuildProcess
-            validator: NodeContextValidationProcess
+            builder: NodeContextBuildTransaction
+            validator: NodeContextValidationTransaction
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator, finder=finder)
     
@@ -61,11 +61,11 @@ class NodeQueryService(QueryService[NodeContext]):
         return cast(NodeFinder, self.entity_finder)
     
     @property
-    def build(self) -> NodeContextBuildProcess:
-        """Get NodeContextBuildProcess instance."""
-        return cast(NodeContextBuildProcess, self.entity_builder)
+    def build(self) -> NodeContextBuildTransaction:
+        """Get NodeContextBuildTransaction instance."""
+        return cast(NodeContextBuildTransaction, self.entity_builder)
     
     @property
-    def validation(self) -> NodeContextValidationProcess:
-        """Get NodeContextValidationProcess instance."""
-        return cast(NodeContextValidationProcess, self.entity_validator)
+    def validation(self) -> NodeContextValidationTransaction:
+        """Get NodeContextValidationTransaction instance."""
+        return cast(NodeContextValidationTransaction, self.entity_validator)

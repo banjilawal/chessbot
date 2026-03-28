@@ -15,7 +15,7 @@ version: 1.0.0
 from .auto import AutoId
 from .factory import IdFactory
 from .emitter import IdEmitter, id_emitter
-from .validator import IdValidationProcess
+from .validator import IdValidationTransaction
 from .work import IdValidationException
 
 

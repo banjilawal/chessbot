@@ -14,8 +14,8 @@ from typing import cast
 
 from logic.token import Token, TokenService
 from logic.square import (
-    Square, SquareBuildProcess, SquareOpsController, SquareServiceException,
-    SquareValidationProcess, VisitationProcessor
+    Square, SquareBuildTransaction, SquareOpsController, SquareServiceException,
+    SquareValidationTransaction, VisitationProcessor
 )
 from logic.system import DeletionResult, IntegrityService, IdFactory, LoggingLevelRouter, UpdateResult
 
@@ -36,7 +36,7 @@ class SquareService(IntegrityService[Square]):
         
         id: int
         name: str
-        controller: SquareBuildProcess
+        controller: SquareBuildTransaction
 
     Provides:
         -   begin_square_visit(
@@ -59,8 +59,8 @@ class SquareService(IntegrityService[Square]):
             self,
             name: str = SERVICE_NAME,
             controller: SquareOpsController = SquareOpsController(),
-            builder: SquareBuildProcess = SquareBuildProcess(),
-            validator: SquareValidationProcess = SquareValidationProcess(),
+            builder: SquareBuildTransaction = SquareBuildTransaction(),
+            validator: SquareValidationTransaction = SquareValidationTransaction(),
             id: int = IdFactory.next_id(class_name="SquareService"),
             visit_processor: VisitationProcessor = VisitationProcessor(),
     ):
@@ -68,8 +68,8 @@ class SquareService(IntegrityService[Square]):
         Args:
             id: int
             name: str
-            builder: BuildProcess
-            validator: ValidationProcess
+            builder: BuildTransaction
+            validator: ValidationTransaction
             visit_processor: VisitationController
         """
         super().__init__(id=id, name=name)
@@ -77,11 +77,11 @@ class SquareService(IntegrityService[Square]):
         self._visit_processor = visit_processor
     
     @property
-    def build(self) -> SquareBuildProcess:
+    def build(self) -> SquareBuildTransaction:
         return self._controller.build
     
     @property
-    def validation(self) -> SquareValidationProcess:
+    def validation(self) -> SquareValidationTransaction:
         return self._controller.validation
     
     @property

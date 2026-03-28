@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Any
 
 from logic.system import (
-    IdFactory, IdValidationProcess, NameValidationProcess, ValidationResult, IdEmitter, InvalidIdentityException, id_emitter
+    IdFactory, IdValidationTransaction, NameValidationTransaction, ValidationResult, IdEmitter, InvalidIdentityException, id_emitter
 )
 
 
@@ -30,22 +30,22 @@ class IdentityService:
 
     # PROVIDES:
         *   IdEmitter
-        *   IdValidationProcess
-        *   NameValidationProcess
+        *   IdValidationTransaction
+        *   NameValidationTransaction
 
 
     # ATTRIBUTES:
-        *   id_validator (type[IdValidationProcess]):
-        *   name_validator (type[NameValidationProcess]):
+        *   id_validator (type[IdValidationTransaction]):
+        *   name_validator (type[NameValidationTransaction]):
         *   id_emitter (type[IdEmitter]):
     """
-    _id_validator: IdValidationProcess
-    _name_validator: NameValidationProcess
+    _id_validator: IdValidationTransaction
+    _name_validator: NameValidationTransaction
     
     def __init__(
             self,
-            id_validator: IdValidationProcess = IdValidationProcess(),
-            name_validator: NameValidationProcess = NameValidationProcess(),
+            id_validator: IdValidationTransaction = IdValidationTransaction(),
+            name_validator: NameValidationTransaction = NameValidationTransaction(),
     ):
         method = "IdentityService.__init__"
         self._id_validator=id_validator

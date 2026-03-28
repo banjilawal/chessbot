@@ -15,10 +15,10 @@ from logic.coord import Coord
 from logic.span.square.exception import SquareSpanBuildException
 from logic.square import Square, SquareContext, SquareNotFoundException, SquareStackService
 from logic.span import CoordRay, CoordSpan, SquareRay, SquareSpan
-from logic.system import BuildResult, BuildProcess, ComputationResult, LoggingLevelRouter, SearchResult
+from logic.system import BuildResult, BuildTransaction, ComputationResult, LoggingLevelRouter, SearchResult
 
 
-class SquareSpanBuildProcess(BuildProcess[SquareSpan]):
+class SquareSpanBuildTransaction(BuildTransaction[SquareSpan]):
     
     @classmethod
     @LoggingLevelRouter.monitor

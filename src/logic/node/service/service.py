@@ -12,8 +12,8 @@ from typing import cast
 
 from logic.edge import Edge, EdgeService
 from logic.node import (
-    AddIncomingEdgeFailedException, AddOutgoingEdgeFailedException, IncomingEdgeWrongTailException, Node, NodeBuildProcess,
-    NodeServiceException, NodeValidationProcess, OutgoingEdgeWrongHeadException, RemoveIncomingEdgeFailedException,
+    AddIncomingEdgeFailedException, AddOutgoingEdgeFailedException, IncomingEdgeWrongTailException, Node, NodeBuildTransaction,
+    NodeServiceException, NodeValidationTransaction, OutgoingEdgeWrongHeadException, RemoveIncomingEdgeFailedException,
     RemoveOutgoingEdgeFailedException
 )
 from logic.system import DeletionResult, IntegrityService, IdFactory, InsertionResult, LoggingLevelRouter
@@ -43,8 +43,8 @@ class NodeService(IntegrityService[Node]):
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            builder: NodeBuildProcess = NodeBuildProcess(),
-            validator: NodeValidationProcess = NodeValidationProcess(),
+            builder: NodeBuildTransaction = NodeBuildTransaction(),
+            validator: NodeValidationTransaction = NodeValidationTransaction(),
             id: int = IdFactory.next_id(class_name="NodeService"),
     ):
         """
@@ -54,7 +54,7 @@ class NodeService(IntegrityService[Node]):
             *   id (nt)
             *   name (str)
             *   build (NodeFactory)
-            *   validation (NodeValidationProcess)
+            *   validation (NodeValidationTransaction)
         # RETURNS:
             None
         Raises:
@@ -63,12 +63,12 @@ class NodeService(IntegrityService[Node]):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         
     @property
-    def build(self) -> NodeBuildProcess:
-        return cast(NodeBuildProcess, self.entity_builder)
+    def build(self) -> NodeBuildTransaction:
+        return cast(NodeBuildTransaction, self.entity_builder)
     
     @property
-    def validation(self) -> NodeValidationProcess:
-        return cast(NodeValidationProcess, self.entity_validator)
+    def validation(self) -> NodeValidationTransaction:
+        return cast(NodeValidationTransaction, self.entity_validator)
     
     @LoggingLevelRouter.monitor
     def add_incoming_edge(self, node: Node, edge: Edge) -> InsertionResult:

@@ -10,15 +10,15 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from logic.square import SquareValidationProcess
-from logic.system import IdValidationProcess, LoggingLevelRouter, ValidationProcess, ValidationResult
+from logic.square import SquareValidationTransaction
+from logic.system import IdValidationTransaction, LoggingLevelRouter, ValidationTransaction, ValidationResult
 from logic.domain import (
-    Domain, DomainOriginValidationProcess, InvalidDomainException, NullDomainException, DomainNullEnemiesDictException,
+    Domain, DomainOriginValidationTransaction, InvalidDomainException, NullDomainException, DomainNullEnemiesDictException,
     DomainNullFriendsDictException, DomainNullSquaresListException,
 )
 
 
-class DomainValidationProcess(ValidationProcess[Domain]):
+class DomainValidationTransaction(ValidationTransaction[Domain]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -27,10 +27,10 @@ class DomainValidationProcess(ValidationProcess[Domain]):
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     Super Class:
-        *   ValidationProcess
+        *   ValidationTransaction
 
     # PROVIDES:
-        * DomainValidationProcess
+        * DomainValidationTransaction
 
 
     # INHERITED ATTRIBUTES:
@@ -42,7 +42,7 @@ class DomainValidationProcess(ValidationProcess[Domain]):
     def execute(
             cls,
             candidate: Any,
-            domain_origin_validator: type[DomainOriginValidationProcess] = DomainOriginValidationProcess,
+            domain_origin_validator: type[DomainOriginValidationTransaction] = DomainOriginValidationTransaction,
     ) -> ValidationResult[Domain]:
         """
         # ACTION:
@@ -51,7 +51,7 @@ class DomainValidationProcess(ValidationProcess[Domain]):
 
         # PARAMETERS:
           * candidate (Any): Object to verify is a Domain.
-          * domain_origin_validator (type[DomainOriginValidationProcess]): verifies the DomainOrigin.
+          * domain_origin_validator (type[DomainOriginValidationTransaction]): verifies the DomainOrigin.
 
         # RETURNS:
           ValidationResult[Domain] containing either:
@@ -66,7 +66,7 @@ class DomainValidationProcess(ValidationProcess[Domain]):
             * DomainNullFriendsDictException
             * InvalidDomainException
         """
-        method = "DomainValidationProcess.validate"
+        method = "DomainValidationTransaction.validate"
         
         try:
             if candidate is None:
@@ -81,7 +81,7 @@ class DomainValidationProcess(ValidationProcess[Domain]):
             
             domain = cast(Domain, candidate)
             
-            id_validation = IdValidationProcess.execute(domain.id)
+            id_validation = IdValidationTransaction.execute(domain.id)
             if id_validation.is_failure():
                 return ValidationResult.failure(id_validation.exception)
             

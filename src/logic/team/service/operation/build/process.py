@@ -11,13 +11,13 @@ from logic.board import BoardService
 from logic.schema import Schema, SchemaService
 from logic.player import Player, PlayerService
 from logic.team import Team, TeamBuildException
-from logic.system import BuildProcess, BuildResult, IdFactory, IdentityService, LoggingLevelRouter
+from logic.system import BuildTransaction, BuildResult, IdFactory, IdentityService, LoggingLevelRouter
 from logic.token import TokenDatabase
 
 
-class TeamBuild(BuildProcess[Team]):
+class TeamBuild(BuildTransaction[Team]):
     """
-     Role:BuildProcess, Data Integrity And Reliability Guarantor
+     Role:BuildTransaction, Data Integrity And Reliability Guarantor
 
      Responsibilities:
      1.  Produce Team instances whose integrity is guaranteed at creation.
@@ -26,7 +26,7 @@ class TeamBuild(BuildProcess[Team]):
      4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
      Super Class:
-         * BuildProcess
+         * BuildTransaction
 
      # PROVIDES:
      None
@@ -200,14 +200,14 @@ from logic.square import (
     SquareIdCollisionException, SquareNameCollisionException
 )
 from logic.system import (
-    BuildProcess, BuildResult, IdFactory, IdentityService, InsertionResult, InvariantBreachException, LoggingLevelRouter,
+    BuildTransaction, BuildResult, IdFactory, IdentityService, InsertionResult, InvariantBreachException, LoggingLevelRouter,
     ValidationResult,
 )
 
 
-class SquareBuildProcess(BuildProcess[Square]):
+class SquareBuildTransaction(BuildTransaction[Square]):
     """
-     Role:BuildProcess, Data Integrity And Reliability Guarantor
+     Role:BuildTransaction, Data Integrity And Reliability Guarantor
 
      Responsibilities:
      1.  Produce Square instances whose integrity and reliability are guaranteed.
@@ -215,7 +215,7 @@ class SquareBuildProcess(BuildProcess[Square]):
      3.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
      Super Class:
-         * BuildProcess
+         * BuildTransaction
 
     Provides:
 
@@ -279,7 +279,7 @@ class SquareBuildProcess(BuildProcess[Square]):
         Raises:
             *   SquareBuildException
         """
-        method = "SquareBuildProcess.build"
+        method = "SquareBuildTransaction.build"
         
         # Handle the case that, a build param fails does not pass a validation check.
         build_params_validation_result = cls._validate_build_params(
@@ -362,7 +362,7 @@ class SquareBuildProcess(BuildProcess[Square]):
                     - On success: bool.
         Raises:
         """
-        method = "SquareBuildProcess._build_square_board_relationship"
+        method = "SquareBuildTransaction._build_square_board_relationship"
         
         # If the item does not have  a fully bidirectional relationship with the board exception the registration.
         relation_analysis = board_service.square_relation_analyzer.execute(

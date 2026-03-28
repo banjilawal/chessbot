@@ -10,7 +10,7 @@ from typing import cast
 
 
 from logic.system import QueryService, id_emitter
-from logic.schema import SchemaLookupProcess, SchemaKey, SchemaKeyBuildProcess, SchemaKeyValidationProcess
+from logic.schema import SchemaLookupProcess, SchemaKey, SchemaKeyBuildTransaction, SchemaKeyValidationTransaction
 
 
 class SchemaKeyService(QueryService[SchemaKey]):
@@ -38,8 +38,8 @@ class SchemaKeyService(QueryService[SchemaKey]):
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             lookup: SchemaLookupProcess = SchemaLookupProcess(),
-            builder: SchemaKeyBuildProcess = SchemaKeyBuildProcess(),
-            validator: SchemaKeyValidationProcess = SchemaKeyValidationProcess(),
+            builder: SchemaKeyBuildTransaction = SchemaKeyBuildTransaction(),
+            validator: SchemaKeyValidationTransaction = SchemaKeyValidationTransaction(),
     ):
         """
         # ACTION:
@@ -47,8 +47,8 @@ class SchemaKeyService(QueryService[SchemaKey]):
         # PARAMETERS:
             *   id (nt)
             *   name (str)
-            *   build (SchemaKeyBuildProcess)
-            *   validation (SchemaKeyValidationProcess)
+            *   build (SchemaKeyBuildTransaction)
+            *   validation (SchemaKeyValidationTransaction)
         # RETURNS:
             None
         Raises:
@@ -57,14 +57,14 @@ class SchemaKeyService(QueryService[SchemaKey]):
         super().__init__(id=id, name=name, builder=builder, validator=validator, finder=lookup)
         
     @property
-    def build(self) -> SchemaKeyBuildProcess:
-        """get SchemaKeyBuildProcess"""
-        return cast(SchemaKeyBuildProcess, self.entity_builder)
+    def build(self) -> SchemaKeyBuildTransaction:
+        """get SchemaKeyBuildTransaction"""
+        return cast(SchemaKeyBuildTransaction, self.entity_builder)
     
     @property
-    def validation(self) -> SchemaKeyValidationProcess:
-        """get SchemaKeyValidationProcess"""
-        return cast(SchemaKeyValidationProcess, self.entity_validator)
+    def validation(self) -> SchemaKeyValidationTransaction:
+        """get SchemaKeyValidationTransaction"""
+        return cast(SchemaKeyValidationTransaction, self.entity_validator)
     
     @property
     def lookup(self) -> SchemaLookupProcess:

@@ -23,8 +23,8 @@ class BoardContextBuildException(BuildException):
     Role:Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Indicate the BoardContextBuildProcess did not produce a valid work product.
-    2.  Identify the BoardContextBuildProcess method where the failure occurred.
+    1.  Indicate the BoardContextBuildTransaction did not produce a valid work product.
+    2.  Identify the BoardContextBuildTransaction method where the failure occurred.
 
     Super Class:
         *   BuildException
@@ -52,7 +52,7 @@ class BoardContextBuildException(BuildException):
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     ERR_CODE = "BOARD_CONTEXT_BUILD_FAILURE"
-    MSG = "Failure in BoardContextBuildProcess method."
+    MSG = "Failure in BoardContextBuildTransaction method."
 
     def __init__(
             self,

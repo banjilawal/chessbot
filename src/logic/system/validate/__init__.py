@@ -13,5 +13,5 @@ version: 1.0.0
 from .exception import *
 
 # Modules
-from .process import ValidationProcess
+from .process import ValidationTransaction
 from .result import ValidationResult

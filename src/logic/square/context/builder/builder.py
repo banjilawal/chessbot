@@ -12,17 +12,17 @@ from typing import Optional
 
 from logic.board import Board, BoardService
 from logic.coord import Coord, CoordService
-from logic.system import BuildProcess, BuildResult, IdentityService
+from logic.system import BuildTransaction, BuildResult, IdentityService
 from logic.square import (
-    SquareContextBuildRouteException, SquareState, SquareValidationProcess, ZeroSquareContextFlagsException, SquareContext,
+    SquareContextBuildRouteException, SquareState, SquareValidationTransaction, ZeroSquareContextFlagsException, SquareContext,
     SquareContextBuildException, ExcessSquareContextFlagsException
 )
 from logic.token import Token, TokenService
 
 
-class SquareContextBuildProcess(BuildProcess[SquareContext]):
+class SquareContextBuildTransaction(BuildTransaction[SquareContext]):
     """
-    Role:BuildProcess, Data Integrity And Reliability Guarantor
+    Role:BuildTransaction, Data Integrity And Reliability Guarantor
 
     Responsibilities:
      1.  Produce SquareContext instances whose integrity and reliability are guaranteed.
@@ -30,7 +30,7 @@ class SquareContextBuildProcess(BuildProcess[SquareContext]):
      3.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
      Super Class:
-         * BuildProcess
+         * BuildTransaction
 
     Provides:
 
@@ -72,7 +72,7 @@ class SquareContextBuildProcess(BuildProcess[SquareContext]):
             board_service: BoardService = BoardService(),
             coord_service: CoordService = CoordService(),
             identity_service: IdentityService = IdentityService(),
-            square_validator: SquareValidationProcess = SquareValidationProcess(),
+            square_validator: SquareValidationTransaction = SquareValidationTransaction(),
     ) -> BuildResult[SquareContext]:
         """
         # ACTION:
@@ -109,7 +109,7 @@ class SquareContextBuildProcess(BuildProcess[SquareContext]):
             ExcessSquareContextFlagsException
             SquareContextBuildRouteException
         """
-        method = "SquareContextBuildProcess.build"
+        method = "SquareContextBuildTransaction.build"
 
         # --- Count how many optional parameters are not-null. only one should be not null. ---#
         params = [id, name, coord, token,board, state,]

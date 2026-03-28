@@ -10,5 +10,5 @@ Version: 1.0.1
 from .exception import *
 
 from .turn import TurnScene
-from .builder import TurnSceneBuildProcess
-from .validator import TurnSceneValidationProcess
+from .builder import TurnSceneBuildTransaction
+from .validator import TurnSceneValidationTransaction

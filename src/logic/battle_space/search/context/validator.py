@@ -9,18 +9,18 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from logic.system import LoggingLevelRouter, ValidationResult, ValidationProcess
+from logic.system import LoggingLevelRouter, ValidationResult, ValidationTransaction
 from logic.battle_space.search.search import ProjectionSearchContext
 
 
-class ProjectionSearchContextValidationProcess(ValidationProcess[ProjectionSearchContext]):
+class ProjectionSearchContextValidationTransaction(ValidationTransaction[ProjectionSearchContext]):
     """"""
     
     @classmethod
     @LoggingLevelRouter.monitor
     def execute(cls, candidate: Any) -> ValidationResult[ProjectionSearchContext]:
         """"""
-        method = "ProjectionSearchContextValidationProcess.validate"
+        method = "ProjectionSearchContextValidationTransaction.validate"
         
         try:
             if candidate is None:

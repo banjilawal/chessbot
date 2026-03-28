@@ -10,14 +10,14 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from logic.system import NumberValidationProcess, ValidationProcess, ValidationResult, LoggingLevelRouter
+from logic.system import NumberValidationTransaction, ValidationTransaction, ValidationResult, LoggingLevelRouter
 from logic.coord import (
     CoordContextValidationException, CoordContextValidationRouteException, CoordContext,
     NullCoordContextException, ZeroCoordContextFlagsException
 )
 
 
-class CoordContextValidationProcess(ValidationProcess[CoordContext]):
+class CoordContextValidationTransaction(ValidationTransaction[CoordContext]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -27,14 +27,14 @@ class CoordContextValidationProcess(ValidationProcess[CoordContext]):
     2. Provide pluggable factories for validating different options separately.
   
     Super Class:
-        * ValidationProcess
+        * ValidationTransaction
         
     3 PROVIDES:
     None
     
     
     3 INHERITED ATTRIBUTES:
-        *   See ValidationProcess class for inherited attributes.
+        *   See ValidationTransaction class for inherited attributes.
     """
 
     @classmethod
@@ -42,7 +42,7 @@ class CoordContextValidationProcess(ValidationProcess[CoordContext]):
     def execute(
             cls,
             candidate: Any,
-            number_validator: NumberValidationProcess = NumberValidationProcess(),
+            number_validator: NumberValidationTransaction = NumberValidationTransaction(),
     ) -> ValidationResult[CoordContext]:
         """
         # ACTION:
@@ -51,7 +51,7 @@ class CoordContextValidationProcess(ValidationProcess[CoordContext]):
             2. Test the value passed to CoordContext passes its validation contract.
         # PARAMETERS:
           * candidate (Any): Object to verify is a Coord.
-          * validation (type[CoordValidationProcess]): Enforces safety requirements on row, column, square_name coords.
+          * validation (type[CoordValidationTransaction]): Enforces safety requirements on row, column, square_name coords.
         # RETURNS:
           *    ValidationResult[CoordContext] containing either:
                     - On failure: Exception.

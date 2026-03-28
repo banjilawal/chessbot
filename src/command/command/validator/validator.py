@@ -11,11 +11,11 @@ from __future__ import annotations
 from typing import Any, Dict, cast
 
 from logic.system import (
-    Command, IdentityService, ValidationProcess
+    Command, IdentityService, ValidationTransaction
 )
 
 
-class CommandValidationProcess(ValidationProcess[Command]):
+class CommandValidationTransaction(ValidationTransaction[Command]):
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -24,10 +24,10 @@ class CommandValidationProcess(ValidationProcess[Command]):
             candidate: Any,
             cipher: Command = Command.cipher(),
             identity_service: IdentityService = IdentityService(),
-            command_validator: CommandValidationProcess = CommandValidator(),
+            command_validator: CommandValidationTransaction = CommandValidator(),
             arguments_validator: ArgumentsValidator = ArgumentsValidator(),
     ) -> ValidationResult[Command]:
-        method = "CommandValidationProcess.validate"
+        method = "CommandValidationTransaction.validate"
         
         # Handle the nonexistence case.
         if candidate is None:
@@ -105,7 +105,7 @@ class CommandValidationProcess(ValidationProcess[Command]):
             identity_service: IdentityService = IdentityService(),
     ) -> ValidationResult[str]:
         
-        method = "CommandValidationProcess._validate_command_name"
+        method = "CommandValidationTransaction._validate_command_name"
         
         # Handle the case that the command name is not a safe string.
         name_validation_result = identity_service.validate_name(command.name)

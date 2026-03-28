@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import cast
 
-from logic.pair import NodeTree, NodeTreeBuildProcess, NodeTreeValidationProcess
+from logic.pair import NodeTree, NodeTreeBuildTransaction, NodeTreeValidationTransaction
 from logic.pair.listing.service import PairListService
 from logic.system import IdFactory, IntegrityService
 
@@ -42,8 +42,8 @@ class NodeTreeService(IntegrityService[NodeTree]):
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            builder: NodeTreeBuildProcess = NodeTreeBuildProcess(),
-            validator: NodeTreeValidationProcess = NodeTreeValidationProcess(),
+            builder: NodeTreeBuildTransaction = NodeTreeBuildTransaction(),
+            validator: NodeTreeValidationTransaction = NodeTreeValidationTransaction(),
             branch_service: PairListService = PairListService(),
             id: int = IdFactory.next_id(class_name="NodeTreeService"),
     ):
@@ -51,8 +51,8 @@ class NodeTreeService(IntegrityService[NodeTree]):
         Args:
             id: int
             name: str
-            builder: NodeTreeBuildProcess
-            validator: NodeTreeValidationProcess
+            builder: NodeTreeBuildTransaction
+            validator: NodeTreeValidationTransaction
             branch_service: PairListService
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
@@ -60,12 +60,12 @@ class NodeTreeService(IntegrityService[NodeTree]):
         
     
     @property
-    def build(self) -> NodeTreeBuildProcess:
-        return cast(NodeTreeBuildProcess, self.entity_builder)
+    def build(self) -> NodeTreeBuildTransaction:
+        return cast(NodeTreeBuildTransaction, self.entity_builder)
     
     @property
-    def validation(self) -> NodeTreeValidationProcess:
-        return cast(NodeTreeValidationProcess, self.entity_validator)
+    def validation(self) -> NodeTreeValidationTransaction:
+        return cast(NodeTreeValidationTransaction, self.entity_validator)
     
     @property
     def branch_service(self) -> PairListService:

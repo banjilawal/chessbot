@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .builder import AgentContextBuildProcess
+from .builder import AgentContextBuildTransaction
 from .exception import AgentContextBuildException

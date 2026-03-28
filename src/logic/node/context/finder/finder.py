@@ -13,7 +13,7 @@ from typing import List
 from logic.square import Square
 from logic.system import LoggingLevelRouter, SearchResult, StackSearchRouter
 from logic.node import (
-    DiscoveryStatus, Node, NodeContext, NodeContextValidationProcess, NodeSearchException, NodeSearchRouteException,
+    DiscoveryStatus, Node, NodeContext, NodeContextValidationTransaction, NodeSearchException, NodeSearchRouteException,
     NodeSearchNullDatasetException, NodeSearchPayloadTypeException
 )
 
@@ -45,7 +45,7 @@ class NodeFinder(StackSearchRouter[Node]):
             cls,
             dataset: List[Node],
             context: NodeContext,
-            context_validator: NodeContextValidationProcess = NodeContextValidationProcess()
+            context_validator: NodeContextValidationTransaction = NodeContextValidationTransaction()
     ) -> SearchResult[List[Node]]:
         """
         # ACTION:
@@ -57,7 +57,7 @@ class NodeFinder(StackSearchRouter[Node]):
        # PARAMETERS:
             *   collider_candidates (List[Node]):
             *   query: NodeContext
-            *   context_validator: NodeContextValidationProcess
+            *   context_validator: NodeContextValidationTransaction
         # RETURNS:
             *   SearchResult[List[Node]] containing either:
                     - On error: Exception , payload null

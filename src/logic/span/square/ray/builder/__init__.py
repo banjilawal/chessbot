@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .builder import SquareRayBuildProcess
+from .builder import SquareRayBuildTransaction
 from .work import SquareRayBuildException

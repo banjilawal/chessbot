@@ -8,13 +8,13 @@ version: 1.0.0
 """
 from wsgiref.validate import validator
 
-from logic.system import BuildProcess, BuildResult, LoggingLevelRouter
-from logic.scalar import Scalar, ScalarBuildException, ScalarValidationProcess
+from logic.system import BuildTransaction, BuildResult, LoggingLevelRouter
+from logic.scalar import Scalar, ScalarBuildException, ScalarValidationTransaction
 
 
-class ScalarBuildProcess(BuildProcess[Scalar]):
+class ScalarBuildTransaction(BuildTransaction[Scalar]):
     """
-     Role:BuildProcess, Data Integrity And Reliability Guarantor
+     Role:BuildTransaction, Data Integrity And Reliability Guarantor
 
      Responsibilities:
      1.  Produce Scalar instances whose integrity is guaranteed at creation.
@@ -23,10 +23,10 @@ class ScalarBuildProcess(BuildProcess[Scalar]):
      4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
      Super Class:
-         * BuildProcess
+         * BuildTransaction
 
      # PROVIDES:
-         *   ScalarBuildProcess
+         *   ScalarBuildTransaction
 
      # LOCAL ATTRIBUTES:
      None
@@ -40,7 +40,7 @@ class ScalarBuildProcess(BuildProcess[Scalar]):
     def execute(
             self,
             value: int,
-            scalar_validator: ScalarValidationProcess = ScalarValidationProcess()
+            scalar_validator: ScalarValidationTransaction = ScalarValidationTransaction()
     ) -> BuildResult[Scalar]:
         """
         # ACTION:
@@ -49,7 +49,7 @@ class ScalarBuildProcess(BuildProcess[Scalar]):
     
         # PARAMETERS:
             *   value (int)
-            *   scalar_validator (ScalarValidationProcess)
+            *   scalar_validator (ScalarValidationTransaction)
     
         # RETURNS:
           BuildResult[Scalar] containing either:
@@ -59,7 +59,7 @@ class ScalarBuildProcess(BuildProcess[Scalar]):
         Raises:
             * ScalarBuildException
         """
-        method = "ScalarBuildProcess.build"
+        method = "ScalarBuildTransaction.build"
         
         try:
             validation = scalar_validator.validate_value(value)

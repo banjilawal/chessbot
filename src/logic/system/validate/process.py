@@ -15,7 +15,7 @@ from logic.system import LoggingLevelRouter, ValidationResult
 T = TypeVar("T")
 
 
-class ValidationProcess(ABC, Generic[T]):
+class ValidationTransaction(ABC, Generic[T]):
     """
     Role
         -   Transaction Worker

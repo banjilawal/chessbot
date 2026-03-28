@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Any, cast
 
 
-from logic.system import GameColorValidationProcess, IdentityService, LoggingLevelRouter, ValidationResult, ValidationProcess
+from logic.system import GameColorValidationTransaction, IdentityService, LoggingLevelRouter, ValidationResult, ValidationTransaction
 from logic.schema import (
     ArenaSchemaKeysException, NullSchemaKeyException, SchemaKey,
     SchemaKeyValidationException,
@@ -18,7 +18,7 @@ from logic.schema import (
 )
 
 
-class SchemaKeyValidationProcess(ValidationProcess[SchemaKey]):
+class SchemaKeyValidationTransaction(ValidationTransaction[SchemaKey]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -27,7 +27,7 @@ class SchemaKeyValidationProcess(ValidationProcess[SchemaKey]):
     2.  If verification fails indicate the reason in an exception returned to the caller.
 
     Super Class:
-        *   ValidationProcess
+        *   ValidationTransaction
 
     Provides:
 
@@ -41,7 +41,7 @@ class SchemaKeyValidationProcess(ValidationProcess[SchemaKey]):
             cls,
             candidate: Any,
             identity_service: IdentityService = IdentityService(),
-            color_validator: GameColorValidationProcess = GameColorValidationProcess(),
+            color_validator: GameColorValidationTransaction = GameColorValidationTransaction(),
     ) -> ValidationResult[SchemaKey]:
         """
         # ACTION:
@@ -66,7 +66,7 @@ class SchemaKeyValidationProcess(ValidationProcess[SchemaKey]):
             *   ArenaSchemaKeysException
             *   SchemaKeyValidationException
         """
-        method = "SchemaKeyValidationProcess.validate"
+        method = "SchemaKeyValidationTransaction.validate"
         
         # Handle the nonexistence case.
         if candidate is None:

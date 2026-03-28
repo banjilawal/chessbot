@@ -24,8 +24,8 @@ class PairBuildException(BuildException):
     Role:Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Indicate the PairBuildProcess did not produce a valid work product.
-    2.  Identify the PairBuildProcess method where the failure occurred.
+    1.  Indicate the PairBuildTransaction did not produce a valid work product.
+    2.  Identify the PairBuildTransaction method where the failure occurred.
 
     Super Class:
         *   BuildException
@@ -53,7 +53,7 @@ class PairBuildException(BuildException):
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     ERR_CODE = "PAIR_BUILD_FAILURE"
-    MSG = "Failure in PairBuildProcess method."
+    MSG = "Failure in PairBuildTransaction method."
     
     def __init__(
             self,

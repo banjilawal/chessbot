@@ -11,7 +11,7 @@ version: 1.0.0
 from typing import cast
 
 from logic.system import DeletionResult, IntegrityService, InsertionResult, LoggingLevelRouter, id_emitter
-from logic.player import Player, PlayerFactory, PlayerServiceException, PlayerTeamRelationAnalysis, PlayerValidationProcess
+from logic.player import Player, PlayerFactory, PlayerServiceException, PlayerTeamRelationAnalysis, PlayerValidationTransaction
 from logic.team import (
     AddingDuplicateTeamException, PoppingEmptyTeamStackException, Team, PoppingTeamStackFailedException, TeamService,
     TeamInsertionException,
@@ -44,7 +44,7 @@ class PlayerService(IntegrityService[Player]):
             name: str = DEFAULT_NAME,
             id: int = id_emitter.service_id,
             builder: PlayerFactory = PlayerFactory(),
-            validator: PlayerValidationProcess = PlayerValidationProcess(),
+            validator: PlayerValidationTransaction = PlayerValidationTransaction(),
             player_team_relation_analyzer: PlayerTeamRelationAnalysis = PlayerTeamRelationAnalysis(),
     ):
         """
@@ -54,7 +54,7 @@ class PlayerService(IntegrityService[Player]):
             *   id (nt)
             *   name (str)
             *   build (PlayerFactory)
-            *   validation (PlayerValidationProcess)
+            *   validation (PlayerValidationTransaction)
         # RETURNS:
             None
         Raises:
@@ -69,9 +69,9 @@ class PlayerService(IntegrityService[Player]):
         return cast(PlayerFactory, self.entity_builder)
     
     @property
-    def validation(self) -> PlayerValidationProcess:
-        """get PlayerValidationProcess"""
-        return cast(PlayerValidationProcess, self.entity_validator)
+    def validation(self) -> PlayerValidationTransaction:
+        """get PlayerValidationTransaction"""
+        return cast(PlayerValidationTransaction, self.entity_validator)
     
     @property
     def player_team_relation_analyzer(self) -> PlayerTeamRelationAnalysis:

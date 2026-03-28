@@ -485,7 +485,7 @@ object's build history.
 *(placeholder for Validators explanation)*
 
 ```mermaid
-%% ValidationProcess Flow Example
+%% ValidationTransaction Flow Example
 sequenceDiagram
   Event->>AttackEventValidator: Validate event legality
   AttackEventValidator-->>Event: Return ValidationResult
@@ -515,7 +515,7 @@ piece = cast(CombatantPiece, build_result.payload)
 ```
 ### Sequence Diagram for the Usage Example
 ```mermaid
-%% BuildProcess Flow Example
+%% BuildTransaction Flow Example
 sequenceDiagram
   User->>CommanderBuilder: Request new Commander
   CommanderBuilder->>IdValidator: Validate ID

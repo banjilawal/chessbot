@@ -10,13 +10,13 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Any, cast
 
-from logic.node import NodeValidationProcess
+from logic.node import NodeValidationTransaction
 from logic.edge import HeadCannotBeTailException
 from logic.pair import Pair, NullPairException, PairValidationException
-from logic.system import LoggingLevelRouter, ValidationResult, ValidationProcess
+from logic.system import LoggingLevelRouter, ValidationResult, ValidationTransaction
 
 
-class PairValidationProcess(ValidationProcess[Pair]):
+class PairValidationTransaction(ValidationTransaction[Pair]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -25,7 +25,7 @@ class PairValidationProcess(ValidationProcess[Pair]):
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     Super Class:
-        *   ValidationProcess
+        *   ValidationTransaction
 
     Provides:
 
@@ -39,7 +39,7 @@ class PairValidationProcess(ValidationProcess[Pair]):
     def execute(
             cls,
             candidate: Any,
-            node_validator: NodeValidationProcess = NodeValidationProcess(),
+            node_validator: NodeValidationTransaction = NodeValidationTransaction(),
     ) -> ValidationResult[Pair]:
         """
         Actin:
@@ -50,7 +50,7 @@ class PairValidationProcess(ValidationProcess[Pair]):
                 
         Args:
             candidate: Any
-            node_validator: NodeValidationProcess
+            node_validator: NodeValidationTransaction
             
         Returns:
             ValidationResult[Pair]

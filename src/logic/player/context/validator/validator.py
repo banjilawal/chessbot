@@ -11,14 +11,14 @@ from typing import Any, cast
 
 from logic.game import GameService
 from logic.team import TeamService
-from logic.system import LoggingLevelRouter, ValidationProcess, ValidationResult, IdentityService
+from logic.system import LoggingLevelRouter, ValidationTransaction, ValidationResult, IdentityService
 from logic.player import (
     PlayerContext,  ArenaPlayerContextFlagsException, InvalidPlayerContextException,
     NullPlayerContextException, ZeroPlayerContextFlagsException
 )
 
 
-class PlayerContextValidationProcess(ValidationProcess[PlayerContext]):
+class PlayerContextValidationTransaction(ValidationTransaction[PlayerContext]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -27,7 +27,7 @@ class PlayerContextValidationProcess(ValidationProcess[PlayerContext]):
     2.  If a candidate fails a safety test, the validation sends an exception in a ValidationResult.
     
     Super Class:
-        *   ValidationProcess
+        *   ValidationTransaction
 
     Provides:
 
@@ -72,7 +72,7 @@ class PlayerContextValidationProcess(ValidationProcess[PlayerContext]):
             *   ArenaPlayerContextFlagsException
             *   InvalidPlayerContextException
         """
-        method = "PlayerContextValidationProcess.validate"
+        method = "PlayerContextValidationTransaction.validate"
         try:
             # Handle the nonexistence case.
             if candidate is None:

@@ -12,14 +12,14 @@ from typing import Any, cast
 from logic.agent import AgentService
 from logic.board import BoardService
 from logic.engine.service import EngineService
-from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, ValidationProcess
+from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, ValidationTransaction
 from logic.game import (
     Game, GameVariety, GameVarietyNullException, GameValidationException, MachineGame, NullGameException,
 )
 
 
 
-class GameValidationProcess(ValidationProcess[Game]):
+class GameValidationTransaction(ValidationTransaction[Game]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -28,10 +28,10 @@ class GameValidationProcess(ValidationProcess[Game]):
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     Super Class:
-        *   ValidationProcess
+        *   ValidationTransaction
 
     # PROVIDES:
-        * GameValidationProcess
+        * GameValidationTransaction
 
 
     # INHERITED ATTRIBUTES:
@@ -73,7 +73,7 @@ class GameValidationProcess(ValidationProcess[Game]):
           
           InvalidCommanderException: Wraps any preceding team_exception
         """
-        method = "GameValidationProcess.validate"
+        method = "GameValidationTransaction.validate"
         
         try:
             # Handle the case that, the candidate does not exist.

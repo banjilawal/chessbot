@@ -23,7 +23,7 @@ class PairValidationException(ValidationException):
     Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Identify the PairValidationProcess method where the exception failed.
+    1.  Identify the PairValidationTransaction method where the exception failed.
 
     Super Class:
         *   ValidationException
@@ -51,7 +51,7 @@ class PairValidationException(ValidationException):
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     ERR_CODE = "PAIR_VALIDATION_FAILURE"
-    MSG = "Failure in PairValidationProcess method."
+    MSG = "Failure in PairValidationTransaction method."
     
     def __init__(
             self,

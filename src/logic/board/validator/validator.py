@@ -14,10 +14,10 @@ from logic.board import (
     Board, BoardNotSubmittedArenaRegistrationException, BoardOwnedByDifferentArenaException, NullBoardException,
     BoardValidationException,
 )
-from logic.system import IdentityService, LoggingLevelRouter, ValidationProcess, ValidationResult
+from logic.system import IdentityService, LoggingLevelRouter, ValidationTransaction, ValidationResult
 
 
-class BoardValidationProcess(ValidationProcess[Board]):
+class BoardValidationTransaction(ValidationTransaction[Board]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -26,10 +26,10 @@ class BoardValidationProcess(ValidationProcess[Board]):
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     Super Class:
-        *   ValidationProcess
+        *   ValidationTransaction
 
     # PROVIDES:
-        * BoardValidationProcess
+        * BoardValidationTransaction
 
 
     # INHERITED ATTRIBUTES:
@@ -64,7 +64,7 @@ class BoardValidationProcess(ValidationProcess[Board]):
             *   NullBoardException
             *   BoardValidationException
         """
-        method = "BoardValidationProcess.validate"
+        method = "BoardValidationTransaction.validate"
         
         # Handle the nonexistence case.
         if candidate is None:
@@ -129,7 +129,7 @@ class BoardValidationProcess(ValidationProcess[Board]):
         *   BoardValidationException
         """
         
-        method = "BoardValidationProcess._validate_arena"
+        method = "BoardValidationTransaction._validate_arena"
         
         relation_analysis = arena_service.relation_analysis_analyzer.execute(
             candidate_primary=board.arena,

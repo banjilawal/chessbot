@@ -7,7 +7,7 @@ Created: 2026-03-25
 version: 1.0.0
 """
 
-# =========== TOKEN.SERVICE.OPERATION.COMPUTATION.ADDITION PACKAGE CONTENTS ===========#
+# =========== TOKEN.SERVICE.OPERATION.ARITHMETIC.ADDITION PACKAGE CONTENTS ===========#
 
 # Packages
 from .exception import *

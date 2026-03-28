@@ -11,23 +11,23 @@ from typing import Optional
 
 from logic.schema.key.builder.exception import SchemaKeyBuildException, SchemaKeyBuildRouteException
 from logic.system import (
-    BuildResult, BuildProcess, GameColor, GameColorValidationProcess, IdentityService, LoggingLevelRouter
+    BuildResult, BuildTransaction, GameColor, GameColorValidationTransaction, IdentityService, LoggingLevelRouter
 )
 from logic.schema import (
     ZeroSchemaKeysException, SchemaKey, ArenaSchemaKeysException,
 )
 
 
-class SchemaKeyBuildProcess(BuildProcess[SchemaKey]):
+class SchemaKeyBuildTransaction(BuildTransaction[SchemaKey]):
     """
-    Role:BuildProcess, Data Integrity And Reliability Guarantor
+    Role:BuildTransaction, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce SchemaKey instances whose integrity is always guaranteed at creation.
     2.  If the build fails indicate the reason in an exception returned to the caller.
 
     Super Class:
-        *   BuildProcess
+        *   BuildTransaction
 
     Provides:
 
@@ -42,7 +42,7 @@ class SchemaKeyBuildProcess(BuildProcess[SchemaKey]):
             name: Optional[str] = None,
             color: Optional[GameColor] = None,
             identity_service: IdentityService = IdentityService(),
-            color_validator: GameColorValidationProcess = GameColorValidationProcess(),
+            color_validator: GameColorValidationTransaction = GameColorValidationTransaction(),
     ) -> BuildResult[SchemaKey]:
         """
         # ACTION:
@@ -55,7 +55,7 @@ class SchemaKeyBuildProcess(BuildProcess[SchemaKey]):
                     *   name (Optional[str])
                     *   color (Optional[GameColor])
             *   These Parameters must be provided:
-                    *   color_validator (GameColorValidationProcess)
+                    *   color_validator (GameColorValidationTransaction)
                     *   identity_service (IdentityService)
         # RETURNS:
             *   BuildResult[SchemaKey] containing either:
@@ -66,7 +66,7 @@ class SchemaKeyBuildProcess(BuildProcess[SchemaKey]):
             *   SchemaKeyBuildException
             *   ArenaSchemaKeysException
         """
-        method = "SchemaKeyBuildProcess.build"
+        method = "SchemaKeyBuildTransaction.build"
         
         # Count how many optional parameters are not-null.
         params = [name, color,]

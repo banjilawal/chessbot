@@ -9,7 +9,7 @@ Created: 2025-11-18
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
-from logic.system import Service, BuildProcess, ValidationProcess
+from logic.system import Service, BuildTransaction, ValidationTransaction
 
 T = TypeVar("T")
 
@@ -31,8 +31,8 @@ class IntegrityService(ABC, Service[Generic[T]]):
         name: name
 
     Provides:
-        -   build() -> BuildProcess[T]
-        -   validation() -> ValidationProcess[T]
+        -   build() -> BuildTransaction[T]
+        -   validation() -> ValidationTransaction[T]
 
     Super Class:
         Service
@@ -48,12 +48,12 @@ class IntegrityService(ABC, Service[Generic[T]]):
     
     @property
     @abstractmethod
-    def build(self) -> BuildProcess[T]:
+    def build(self) -> BuildTransaction[T]:
         pass
     
     @property
     @abstractmethod
-    def validation(self) -> ValidationProcess[T]:
+    def validation(self) -> ValidationTransaction[T]:
         pass
     
     def __eq__(self, other):
