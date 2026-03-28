@@ -10,11 +10,12 @@ version: 1.0.0
 from __future__ import annotations
 
 from logic.persona import Persona
-from logic.team import Team, TeamValidationProcess
 from logic.rank import RankService
+from logic.team import Team, TeamValidationProcess
 from logic.formation import Formation, FormationService
-from logic.system import BuildResult, BuildProcess, IdFactory, IdentityService, LoggingLevelRouter
 from logic.token import CombatantToken, KingToken, PawnToken, TokenBuildException, Token
+from logic.system import BuildResult, BuildProcess, IdFactory, IdentityService, LoggingLevelRouter
+
 
 class TokenBuild(BuildProcess[Token]):
     """

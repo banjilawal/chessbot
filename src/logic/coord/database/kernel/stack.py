@@ -8,15 +8,16 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import List, Optional, cast
+from typing import Iterator, List, Optional, cast
 
 
-from logic.system import StackService, DeletionResult, InsertionResult, SearchResult, id_emitter
+from logic.system import IdentityService, StackService, DeletionResult, InsertionResult, SearchResult, id_emitter
 from logic.coord import (
     Coord, CoordContext, CoordService, CoordQueryService, CoordStackException, PushingDuplicateCoordException,
     MaxConsecutiveCoordPopException,
     PoppingCoordStackFailedException, PoppingEmtpyCoordStackException, PushingCoordFailedException
 )
+from logic.system.collection.stack.stack import C, T
 
 
 class CoordStack(StackService[Coord]):
@@ -41,6 +42,21 @@ class CoordStack(StackService[Coord]):
     # INHERITED ATTRIBUTES:
         *   See StackService class for inherited attributes.
     """
+    
+    @property
+    def items(self) -> List[T]:
+        pass
+    
+    @property
+    def iterator(self) -> Iterator[T]:
+        pass
+    
+    def delete_by_id(self, id: int, identity_service: IdentityService = IdentityService()) -> DeletionResult[T]:
+        pass
+    
+    def query(self, dataset: List[T], context: C) -> SearchResult[List[T]]:
+        pass
+    
     SERVICE_NAME = "CoordStack"
     
     _current_coord: Optional[Coord]

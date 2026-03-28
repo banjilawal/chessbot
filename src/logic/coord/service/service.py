@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 from math import sqrt
-from typing import cast
+from typing import Union, cast
 
 from logic.scalar import Scalar, ScalarService
 from logic.vector import Vector, VectorService
@@ -18,22 +18,49 @@ from logic.system import BuildResult, ComputationResult, IdFactory, IntegritySer
 
 class CoordService(IntegrityService[Coord]):
     """
-    Role:Service, Lifecycle Management, Encapsulation, API layer.
+    Role:
+        -   API
+        -   Stateless microservice
+        -   Lifecycle Manager
+        -   Operations Provider
 
     Responsibilities:
-    1.  Public facing Coord microservice API.
-    2.  Encapsulate integrity assurance logic in one extendable module.
-    3.  Authoritative, single source of truth for Coord state by providing single entry and exit points to Coord
-        lifecycle.
+        1.  Baremetal service request API for Coord operations.
+        2.  Maintain the build-validation security lifecycle for Coord instances.
 
-    Super Class:
-        *   IntegrityService
+    Attributes:
+        SERVICE_NAME: CoordService
+
+        id: int
+        name: name
+        build: Coordbuild
+        validation: CoordValidation
+        controller: CoordOpsController
 
     Provides:
+    
+        -   euclidean_distance(u: Coord, v: Coord) -> ComputationResult[int]
+        
+        -   add_to_coord(
+                    coord: Optional[Coord],
+                    operand: Union[Vector, Coord],
+                    vector_service: VectorService,
+            ) -> ComputationResult[Coord]
 
+        -   multiply_by_scalar(
+                    coord: Coord,
+                    scalar: Scalar,
+                    scalar_service: ScalarService,
+            ) -> ComputationResult[Coord]
 
-    # INHERITED ATTRIBUTES:
-        *   See IntegrityService for inherited attributes.
+        -   convert_vector_to_coord(
+                    self,
+                    vector: Vector,
+                    vector_service: VectorService = VectorService()
+            ) -> BuildResult[Coord]
+
+    Super Class:
+        IntegrityService
     """
     SERVICE_NAME = "CoordService"
     _ops_controller: CoordOpsController
@@ -65,10 +92,10 @@ class CoordService(IntegrityService[Coord]):
     def ops_controller(self) -> CoordOpsController:
         return self._ops_controller
     
-    def add_vector_to_coord(
+    def add_to_coord(
             self,
-            coord: Coord,
-            vector: Vector,
+            coord: [Coord],
+            operand: Union[Vector, Coord],
             vector_service: VectorService = VectorService(),
     ) -> ComputationResult[Coord]:
         """
@@ -92,16 +119,16 @@ class CoordService(IntegrityService[Coord]):
         RAISES:
             *   CoordServiceException
         """
-        method = f"{self.__class__.__name__}.add_vector_to_coord"
+        method = f"{self.__class__.__name__}.add_to_coord"
         
-        return self._ops_controller.arithmetic.add_vector_to_coord.compute(
+        return self._ops_controller.arithmetic.add_to_coord.compute(
             coord=coord,
-            vector=vector,
+            operand=operand,
             coord_service=self,
             vector_service=vector_service,
         )
       
-    def multiply_coord_by_scalar(
+    def multiply_by_scalar(
             self,
             coord: Coord,
             scalar: Scalar,
@@ -129,9 +156,9 @@ class CoordService(IntegrityService[Coord]):
         RAISES:
             *   CoordServiceExceptio
         """
-        method = f"f{self.__class__.__name__}.multiply_coord_by_scalar"
+        method = f"f{self.__class__.__name__}.multiply_by_scalar"
         
-        return self._osp.arithmetic.multiply_coord_by_scalar.compute(
+        return self._osp.arithmetic.multiply_by_scalar.compute(
             coord=coord,
             scalar=scalar,
             coord_service=self,

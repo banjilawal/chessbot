@@ -17,20 +17,22 @@ T = TypeVar("T")
 class IntegrityService(ABC, Service[Generic[T]]):
     """
     Role:
-        -   Microservice API
-        -   Stateless Integrity Lifecycle Manager
+        -   API
+        -   Stateless microservice
+        -   Lifecycle Manager
+        -   Operations Provider
 
     Responsibilities:
-        1.  Mutates Model instances
-        2.  Ensure Model integrity and consistency when its state changes.
-        3.  Build Model instances that satisfy integrity contracts
-        4.  Maintain the Model integrity lifecycle.
+        1.  Baremetal service request API.
+        2.  Maintain the build-validation security lifecycle.
 
     Attributes:
         id: int
         name: name
 
     Provides:
+        -   build() -> BuildProcess[T]
+        -   validation() -> ValidationProcess[T]
 
     Super Class:
         Service
