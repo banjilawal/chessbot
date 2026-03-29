@@ -8,124 +8,190 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import List
 
+from collections.abc import Iterator
+from typing import List, Optional
+
+from logic.coord import Coord, CoordContext, CoordDatabaseException, CoordStackService, CoordService
 from logic.system import (
-    DeletionResult, InsertionResult, LoggingLevelRouter, SearchResult, Database, id_emitter
+    DeletionResult, IdFactory, IdentityService, InsertionResult, LoggingLevelRouter, MethodImplementationException,
+    SearchResult, Database,
 )
-from logic.coord import Coord, CoordContext, CoordQueryService, CoordDatabaseException, CoordStackService, CoordService
+
 
 class CoordDatabase(Database[Coord]):
     """
-    Role:Unique Data Stack, Search Service, CRUD Controller, Encapsulation, API layer.
+    Role:
+        -   Repo interface.
+        -   Data Protection layer.
 
     Responsibilities:
-    1.  Ensure all bag managed by CoordStackService are unique.
-    2.  Guarantee consistency of records in CoordStackService.
+        1.  Protects TokenStackService data from direct access.
+        2.  Middle layer between clients and TokenStackService.
+        3.  Platform for extending TokenStackService features.
 
-    Super Class:
-        *   Database
+    Attributes:
+        SERVICE_NAME = "TokenDatabase"
+
+        id: int
+        name: str
+        size: int
+        is_empty: bool
+        iterator: Iterator[Token]
+        kernel: TokenStackService
+        current_item: Optional[Token]
+        integrity_service: TokenService
 
     Provides:
+        -   insert(token: Token) -> InsertionResult[bool]
+        -   search(query: TokenContext) -> SearchResult[List[Token]]
 
-
-    # INHERITED ATTRIBUTES:
-        *   See Database class for inherited attributes.
+    Super:
+        Database
     """
     SERVICE_NAME = "CoordDatabase"
+    _kernel: CoordStackService
     
-    _coord_stack: CoordStackService
     def __init__(
             self,
+            kernel: CoordStackService,
             name: str = SERVICE_NAME,
-            id: int = id_emitter.service_id,
-            coord_stack: CoordStackService = CoordStackService(),
+            id: int = IdFactory.next_id(class_name="CoordDatabase"),
     ):
         """
-        # ACTION:
-        Constructor
-
-        # PARAMETERS:
-            *   id (int): = id_emitter.service_id
-            *   name (str): = SERVICE_NAME
-            *   member_service (CoordStackService): = CoordStackService()
-
-        # RETURNS:
-        None
-
-        Raises:
+        Args:
+            id: int
+            name: str
+            kernel: CoordStackService
         """
-        super().__init__(id=id, name=name, data_service=coord_stack)
-        self._coord_stack = coord_stack
-    
-    @property
-    def size(self) -> int:
-        return self._coord_stack.size
-    
-    @property
-    def is_empty(self) -> bool:
-        return self._coord_stack.is_empty
+        super().__init__(id=id, name=name)
+        self._kernel = kernel
     
     @property
     def integrity_service(self) -> CoordService:
-        return self._coord_stack.integrity_service
+        return self._kernel.integrity_service
     
     @property
-    def context_service(self) -> CoordQueryService:
-        return self._coord_stack.context_service
+    def iterator(self) -> Iterator[Coord]:
+        return self._kernel.iterator
+    
+    @property
+    def size(self) -> int:
+        return self._kernel.size
+    
+    @property
+    def is_empty(self) -> bool:
+        return self._kernel.is_empty
+    
+    @property
+    def current_item(self) -> Optional[Coord]:
+        return self._kernel.current_item
     
     @LoggingLevelRouter.monitor
-    def push(self, coord: Coord) -> InsertionResult[bool]:
-        push_result = self._coord_stack.push(coord)
-        if push_result.is_failure:
+    def insert(self, coord: Coord) -> InsertionResult[bool]:
+        """
+        Insert a coord into the database.
+
+        Action:
+            If the insertion fails, send an exception chain. Otherwise, send the success result.
+        Args:
+            coord: Coord
+        Returns:
+            InsertionResult[Coord]
+        Raises:
+            CoordDatabaseException
+        """
+        method = f"{self.__class__.__name__}.insert"
+        
+        # --- Forward the request to the kernel. ---#
+        request_result = self._kernel.push(item=coord)
+        
+        # Handle the case that, the request was not completed.
+        if request_result.is_failure:
+            # Return the exception chain on failure
             return InsertionResult.failure(
                 CoordDatabaseException(
-                    msg=f"ServiceId:{self.id}, {CoordDatabaseException.ERR_CODE}",
-                    ex=push_result.exception
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=CoordDatabaseException.MSG,
+                    err_code=CoordDatabaseException.ERR_CODE,
+                    ex=request_result.exception
                 )
             )
-        return push_result
-    
-    @LoggingLevelRouter.monitor
-    def undo_push(self) -> DeletionResult[Coord]:
-        pop_result = self._coord_stack.pop()
-        if pop_result.is_failure:
-            return InsertionResult.failure(
-                CoordDatabaseException(
-                    msg=f"ServiceId:{self.id}, {CoordDatabaseException.ERR_CODE}",
-                    ex=pop_result.exception
-                )
-            )
-        return pop_result
+        # --- Forward the response to the client. ---#
+        return request_result
     
     @LoggingLevelRouter.monitor
     def search(self, context: CoordContext) -> SearchResult[List[Coord]]:
         """
-        # ACTION:
-            1.  If coord_context fails validation send the exception chain in the SearchResult. Else use the
-                coord_context_service to run the search.
-            2.  If the search fails send the exception chain in the SearchResult. Else, send the search_result.
-        # PARAMETERS:
-            *   coord_context (CoordContext)
-        # RETURN:
-            *   SearchResult[Coord] containing either:
-                - On failure: Exception
-                - On success: Coord in the payload.
-                - On empty: Payload is null, Exception is null.
+        Find coords whose attribute value fits the query.
+
+        Action:
+            Send an exception chain if the operation gets interrupted. Otherwise, send
+            the success result.
+        Args:
+            context: CoordContext
+        Returns:
+            SearchResult[List[Coord]]
         Raises:
-            *   CoordStackException
+            CoordDatabaseException
         """
-        method = "CoordStackService.coord_search"
+        method = f"{self.__class__.__name__}.search_coords"
         
-        search_result = self._coord_stack.context_service.finder.route(context=context)
-        # Handle the case that, a successful search result does not have List[Coord] as its payload.
-        if search_result.is_failure:
-            # Return the exception chain on failure.
+        # --- Forward the request to the kernel. ---#
+        request_result = self._kernel.query(context=context)
+        
+        # Handle the case that, the request was not completed.
+        if request_result.is_failure:
+            # Return the exception chain on failure
             return SearchResult.failure(
                 CoordDatabaseException(
-                    msg=f"ServiceId:{self.id}, {CoordDatabaseException.ERR_CODE}",
-                    ex=search_result.exception
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=CoordDatabaseException.MSG,
+                    err_code=CoordDatabaseException.ERR_CODE,
+                    ex=request_result.exception
                 )
             )
-        # Empty or successful searches are directly returned to the caller.
-        return search_result
+        # --- Forward the response to the client. ---#
+        return request_result
+    
+    @LoggingLevelRouter.monitor
+    def delete_by_id(
+            self,
+            id: int,
+            identity_service: IdentityService = IdentityService(),
+    ) -> DeletionResult[Coord]:
+        """
+        Send an exception chain in the DeletionResult if the method
+        is called. Coords do not have ids.
+
+        Actions:
+            1.  Coords do not have ids. Send an exception chain if this method is called.
+        Args:
+            id: int
+            identity_service: IdentityService
+        Returns:
+            DeletionResult[Coord]
+        Raises:
+            CoordDatabaseException
+            MethodImplementationException
+        """
+        method = f"{self.__class__.__name__}.delete_by_id"
+        
+        # Handle the case that, the method is called.
+        return DeletionResult.failure(
+            CoordDatabaseException(
+                cls_mthd=method,
+                cls_name=self.__class__.__name__,
+                msg=CoordDatabaseException.MSG,
+                err_code=CoordDatabaseException.ERR_CODE,
+                ex=MethodImplementationException(
+                    var=method,
+                    err_code=MethodImplementationException.ERR_CODE,
+                    msg=(
+                        f"{method} is not implemented: coords does not have ids."
+                    )
+                )
+            )
+        )

@@ -108,7 +108,7 @@ class CoordStackService(StackService[Coord]):
     @property
     def iterator(self) -> Iterator[Coord]:
         return iter(self._stack)
-    
+   
     @LoggingLevelRouter.monitor
     def push(self, item: Coord) -> InsertionResult:
         """
@@ -126,7 +126,7 @@ class CoordStackService(StackService[Coord]):
         """
         method = f"{self.__class__.__name__}.push"
         
-        # Request a push from the controller.
+        # --- Handoff request fulfilment to the ops_controller. ---#
         request_result = self._ops_controller.crud_controller.push.execute(
             coord=item,
             coord_stack=self,
@@ -161,13 +161,51 @@ class CoordStackService(StackService[Coord]):
         """
         method = f"{self.__class__.__name__}.pop"
         
-        # Request a pop from the controller.
+        # --- Handoff request fulfilment to the ops_controller. ---#
         request_result = self._ops_controller.crud_controller.pop.execute(
             coord_stack=self,
         )
         # Handle the case that, the request is not fulfilled.
         if request_result.is_failure:
             return DeletionResult.failure(
+                CoordStackServiceException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=CoordStackServiceException.MSG,
+                    err_code=CoordStackServiceException.ERR_CODE,
+                    ex=request_result.exception,
+                )
+            )
+        # --- Forward the work product to the caller. ---#
+        return request_result
+    
+    @LoggingLevelRouter.monitor
+    def query(self, context: CoordContext) -> SearchResult[List[Coord]]:
+        """
+        Find a coord in the stack.
+
+        Actions:
+            1.  Send an exception chain in the ComputationResult if either:
+                    -   The vector is unsafe.
+                    -   A coord cannot be built from the vector's components.
+            2.  Otherwise, send the success result.
+        Args:
+            context: CoordContext
+        Returns:
+            SearchResult[Coord]
+        Raises:
+            CoordStackServiceException
+        """
+        method = f"{self.__class__.__name__}.query"
+        
+        # --- Handoff request fulfilment to the ops_controller. ---#
+        request_result = self._ops_controller.crud_controller.query.execute(
+            context=context,
+            dataset=self.items,
+        )
+        # Handle the case that, the request is not fulfilled.
+        if request_result.is_failure:
+            return SearchResult.failure(
                 CoordStackServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -212,47 +250,10 @@ class CoordStackService(StackService[Coord]):
                     err_code=MethodImplementationException.ERR_CODE,
                     msg=(
                         f"{method} is not implemented: coords does not have ids."
-                    ),
-  
-                ),
-            )
-            )
-    
-    @LoggingLevelRouter.monitor
-    def query(self, context: CoordContext) -> SearchResult[List[Coord]]:
-        """
-        Find a coord in the stack.
-
-        Actions:
-            1.  Send an exception chain in the ComputationResult if either:
-                    -   The vector is unsafe.
-                    -   A coord cannot be built from the vector's components.
-            2.  Otherwise, send the success result.
-        Args:
-            context: CoordContext
-        Returns:
-            SearchResult[Coord]
-        Raises:
-            CoordStackServiceException
-        """
-        method = f"{self.__class__.__name__}.query"
-        
-        # Request a search from the controller.
-        request_result = self._ops_controller.crud_controller.query.execute(
-            context=context,
-            dataset=self.items,
-        )
-        # Handle the case that, the request is not fulfilled.
-        if request_result.is_failure:
-            return SearchResult.failure(
-                CoordStackServiceException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=CoordStackServiceException.MSG,
-                    err_code=CoordStackServiceException.ERR_CODE,
-                    ex=request_result.exception,
+                    )
                 )
             )
-        # --- Forward the work product to the caller. ---#
-        return request_result
+        )
+    
+
     

@@ -12,12 +12,12 @@ from typing import List, Optional
 
 from logic.rank import Rank, RankService
 from logic.token import (
-    RankQuotaReport, Token, TokenContext, TokenStackService, TokenService,
-    TokenDatabaseException, TokenStackState
+    RankQuotaReport, Token, TokenContext, TokenStackService, TokenService, TokenDatabaseException,
+    TokenStackState
 )
 from logic.system import (
-    ComputationResult, Database, DeletionResult, IdFactory, IdentityService, InsertionResult, LoggingLevelRouter,
-    SearchResult,
+    ComputationResult, Database, DeletionResult, IdFactory, IdentityService, InsertionResult,
+    LoggingLevelRouter, SearchResult,
 )
 
 
@@ -37,15 +37,19 @@ class TokenDatabase(Database[Token]):
         
         id: int
         name: str
+        size: int
+        is_empty: bool
+        is_full: bool
+        iterator: Iterator[Token]
         kernel: TokenStackService
+        is_deployed_on_board: bool
+        is_ready_for_deployment: bool
+        current_item: Optional[Token]
+        integrity_service: TokenService
 
     Provides:
-        -   size() -> int
-        -   is_empty() -> bool
-        -   integrity_service() -> IntegrityService[T]
-        -   iterator(self) -> iter
-        -   is_ready_for_deployment() -> bool
-        -   is_deployed_on_board(self) -> bool
+        -   insert(token: Token) -> InsertionResult[bool]
+        -   search(query: TokenContext) -> SearchResult[List[Token]]
         
         -   rank_quota_report(
                     rank: Rank,
@@ -57,9 +61,6 @@ class TokenDatabase(Database[Token]):
                     identity_service: IdentityService,
             ) -> DeletionResult
             
-        -   insert(token: Token) -> InsertionResult[bool]
-        -   search(query: TokenContext) -> SearchResult[List[Token]]
-
     Super:
         Database
     """
@@ -112,14 +113,14 @@ class TokenDatabase(Database[Token]):
     @property
     def is_deployed_on_board(self) -> bool:
         return self._kernel.is_deployed_on_board
-    
-    @property
-    def stack_state(self) -> TokenStackState:
-        return self._kernel.stack_state
-    
-    @stack_state.setter
-    def stack_state(self, state: TokenStackState):
-        self._kernel.deployment_state = state
+    #
+    # @property
+    # def stack_state(self) -> TokenStackState:
+    #     return self._kernel.stack_state
+    #
+    # @stack_state.setter
+    # def stack_state(self, state: TokenStackState):
+    #     self._kernel.deployment_state = state
     
     @LoggingLevelRouter.monitor
     def rank_quota_report(
@@ -144,7 +145,7 @@ class TokenDatabase(Database[Token]):
         method = f"T{self.__class__.name}.number_of_openings_for_rank"
         
         # --- Forward the request to the kernel. ---#
-        rank_quota_analysis_result = self._kernel.operation.rank_quota_analyzer.execute(
+        rank_quota_analysis_result = self._kernel.request.rank_quota_analyzer.execute(
             rank=rank,
             token_stack=self._kernel,
             rank_service=rank_service,
@@ -161,7 +162,7 @@ class TokenDatabase(Database[Token]):
                     ex=rank_quota_analysis_result.exception
                 )
             )
-        # --- Forward the work product to the caller. ---#
+        # --- Forward the response to the client. ---#
         return rank_quota_analysis_result
     
     @LoggingLevelRouter.monitor
@@ -186,14 +187,13 @@ class TokenDatabase(Database[Token]):
         """
         method = f"{self.__class__.__name__}.delete_by_id"
         
-        # --- Forward the request to the dispatcher. ---#
-        deletion_result = self._kernel.delete_by_id(
+        # --- Forward the request to the kernel. ---#
+        request_result = self._kernel.delete_by_id(
             id=id,
             identity_service=identity_service,
         )
         # Handle the case that, the request was not completed
-        # Handle the case that, the deletion was not completed.
-        if deletion_result.is_failure:
+        if request_result.is_failure:
             # Return the exception chain on failure
             return ComputationResult.failure(
                 TokenDatabaseException(
@@ -201,11 +201,11 @@ class TokenDatabase(Database[Token]):
                     cls_name=self.__class__.__name__,
                     msg=TokenDatabaseException.MSG,
                     err_code=TokenDatabaseException.ERR_CODE,
-                    ex=deletion_result.exception
+                    ex=request_result.exception
                 )
             )
-        # --- Forward the work product to the caller. ---#
-        return deletion_result
+        # --- Forward the response to the client. ---#
+        return request_result
    
     @LoggingLevelRouter.monitor
     def insert(self, token: Token) -> InsertionResult[bool]:
@@ -238,7 +238,7 @@ class TokenDatabase(Database[Token]):
                     ex=insertion_result.exception
                 )
             )
-        # --- Forward the work product to the caller. ---#
+        # --- Forward the response to the client. ---#
         return insertion_result
     
     @LoggingLevelRouter.monitor
@@ -259,10 +259,10 @@ class TokenDatabase(Database[Token]):
         method = f"{self.__class__.__name__}.search_tokens"
         
         # --- Forward the request to the kernel. ---#
-        search_result = self._kernel.query(context=context)
+        query_result = self._kernel.query(context=context)
         
         # Handle the case that, the request was not completed.
-        if search_result.is_failure:
+        if query_result.is_failure:
             # Return the exception chain on failure
             return ComputationResult.failure(
                 TokenDatabaseException(
@@ -270,8 +270,8 @@ class TokenDatabase(Database[Token]):
                     cls_name=self.__class__.__name__,
                     msg=TokenDatabaseException.MSG,
                     err_code=TokenDatabaseException.ERR_CODE,
-                    ex=search_result.exception
+                    ex=query_result.exception
                 )
             )
-        # --- Forward the work product to the caller. ---#
-        return search_result
+        # --- Forward the response to the client. ---#
+        return query_result

@@ -128,10 +128,10 @@ class TokenStackService(StackService[Token]):
         return iter(self._stack)
     
     @property
-    def ops_controller(self) -> TokenStackOpsController:
+    def request(self) -> TokenStackOpsController:
         return self._ops_controller
     
-    @@property
+    @property
     def integrity_service(self) -> TokenService:
         return self._ops_controller.integrity_service
     
@@ -183,11 +183,11 @@ class TokenStackService(StackService[Token]):
         """
         method = f"{self.__class__.__name__}.pop"
         
-        # --- Forward the request to the ops_controller. ---#
-        pop_result = self._ops_controller.crud.pop.execute()
+        # --- Handoff request fulfilment to the ops_controller. ---#
+        request_result = self._ops_controller.crud.pop.execute()
         
-        # Handle the case that, the request was not completed.
-        if pop_result.is_failure:
+        # Handle the case that, the request was not fulfilled.
+        if request_result.is_failure:
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 TokenStackServiceException(
@@ -195,11 +195,11 @@ class TokenStackService(StackService[Token]):
                     cls_name=self.__class__.__name__,
                     msg=TokenStackServiceException.MSG,
                     err_code=TokenStackServiceException.ERR_CODE,
-                    ex=pop_result.exception,
+                    ex=request_result.exception,
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return pop_result
+        return request_result
     
     @LoggingLevelRouter.monitor
     def push(self, item: Token) -> InsertionResult[bool]:
@@ -218,15 +218,15 @@ class TokenStackService(StackService[Token]):
         """
         method = f"{self.__class__.__name__}.push"
         
-        # --- Forward the request to the ops_controller. ---#
-        insertion_result = self._ops_controller.crud.push.execute(
+        # --- Handoff request fulfilment to the ops_controller. ---#
+        request_result = self._ops_controller.crud.push.execute(
             token=item,
             token_stack=self,
             rank_quota_analyzer=self._ops_controller.rank_quota_analyzer,
             token_collision_detector=self._ops_controller.collision_detector
         )
-        # Handle the case that, the request was not completed.
-        if insertion_result.is_failure:
+        # Handle the case that, the request was not fulfilled.
+        if request_result.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 TokenStackServiceException(
@@ -234,7 +234,7 @@ class TokenStackService(StackService[Token]):
                     cls_name=self.__class__.__name__,
                     msg=TokenStackServiceException.MSG,
                     err_code=TokenStackServiceException.ERR_CODE,
-                    ex=insertion_result.exception,
+                    ex=request_result.exception,
                 )
             )
         # --- Forward the work product to the caller. ---#
@@ -262,7 +262,7 @@ class TokenStackService(StackService[Token]):
         """
         method = f"{self.__class__.__name__}.delete_by_id"
         
-        # --- Forward the request to the ops_controller. ---#
+        # --- Handoff request fulfilment to the ops_controller. ---#
         request_result = self._ops_controller.crud.pop.delete_by_id(
             id=id,
             identity_service=identity_service
@@ -299,10 +299,10 @@ class TokenStackService(StackService[Token]):
         """
         method = f"{self.__class__.__name__}.query"
         
-        # --- Forward the request to the context_service. ---#
+        # --- Handoff request fulfilment to the ops_controller. ---#
         request_result = self._ops_controller.crud.query.execute(context=context)
         
-        # Handle the case that, the request was not completed.
+        # Handle the case that, the request was not fulfilled.
         if request_result.is_failure:
             # Return the exception chain on failure.
             return SearchResult.failure(
