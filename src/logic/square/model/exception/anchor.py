@@ -52,9 +52,9 @@ class SquareContextException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_NAME = " SquareContext"
-    ERR_CODE = " SQUARE_CONTEXT_EXCEPTION"
-    MSG = " SquareContext raised an exception."
+    CLS_NAME = "SquareContext"
+    ERR_CODE = "SQUARE_CONTEXT_EXCEPTION"
+    MSG = "SquareContext raised an exception."
     
     def __init__(
             self,

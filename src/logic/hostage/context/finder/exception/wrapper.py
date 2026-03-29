@@ -54,7 +54,7 @@ class HostageSearchException(SearchException):
     OP = "Search"
     RSLT_TYPE = "SearchResult"
     ERR_CODE = "HOSTAGE_SEARCH_FAILURE"
-    MSG = " Hostage search method failed."
+    MSG = "Hostage search method failed."
  
     def __init__(
             self,

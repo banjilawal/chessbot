@@ -52,9 +52,9 @@ class FormationKeyException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_NAME = " FormationKey"
-    ERR_CODE = " FORMATION_KEY_EXCEPTION"
-    MSG = " FormationKey raised an exception."
+    CLS_NAME = "FormationKey"
+    ERR_CODE = "FORMATION_KEY_EXCEPTION"
+    MSG = "FormationKey raised an exception."
     
     def __init__(
             self,

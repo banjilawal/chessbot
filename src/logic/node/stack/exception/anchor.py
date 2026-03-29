@@ -51,9 +51,9 @@ class NodeStackServiceException(StackServiceException):
     # INHERITED METHODS:
         *   See StackServiceException class for inherited methods.
     """
-    CLS_NAME = " NodeStackService"
-    ERR_CODE = " NODE_STACK_SERVICE_EXCEPTION"
-    MSG = " NodeStackService raised an exception."
+    CLS_NAME = "NodeStackService"
+    ERR_CODE = "NODE_STACK_SERVICE_EXCEPTION"
+    MSG = "NodeStackService raised an exception."
     
     def __init__(
             self,

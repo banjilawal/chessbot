@@ -21,23 +21,13 @@ from logic.system import AnchorException
 # ======================# TOKEN_EXCEPTION #======================#
 class TokenException(AnchorException):
     """
-    Role:Coverage Target, Exception Chain Layer 0
+    Role:
+        -   Exception Chain Layer 0
+        -   Exception coverage target
 
     Responsibilities:
-    1.  Anchoring target for Token debug (layer-2) error state firing incident
-        reports on
-            *   the triggering variable
-            *   The trigger's value.
-    2.  Indicate which Token method received a worker's (layer-1) failure result.
-
-    Super Class:
-        *   AnchorException
-
-    Provides:
-
-
-    # INHERITED ATTRIBUTES:
-        *   See AnchorException class for inherited attributes.
+        1.  Anchoring target for Token debug exceptions.
+        2.  Indicate which Token method received a worker's (layer-1) failure result.
 
     Attributes:
         msg: Optional[str]
@@ -46,15 +36,14 @@ class TokenException(AnchorException):
         cls_mthd: Optional[str]
         err_code: Optional[str]
 
-    # LOCAL METHODS:
-    None
+    Provides:
 
-    # INHERITED METHODS:
-        *   See AnchorException class for inherited methods.
+    Super Class:
+        AnchorException
     """
-    CLS_NAME = " Token"
-    ERR_CODE = " TOKEN_EXCEPTION"
-    MSG = " Token raised an exception."
+    CLS_NAME = "Token"
+    ERR_CODE = "TOKEN_EXCEPTION"
+    MSG = "Token raised an exception."
     
     def __init__(
             self,

@@ -51,9 +51,9 @@ class PairListServiceException(ServiceException):
     # INHERITED METHODS:
         *   See ServiceException class for inherited methods.
     """
-    CLS_NAME = " PairListService"
-    ERR_CODE = " PAIR_LIST_SERVICE_EXCEPTION"
-    MSG = " PairListService raised an exception."
+    CLS_NAME = "PairListService"
+    ERR_CODE = "PAIR_LIST_SERVICE_EXCEPTION"
+    MSG = "PairListService raised an exception."
     
     def __init__(
             self,

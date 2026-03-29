@@ -52,9 +52,9 @@ class GameException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_NAME = " Game"
-    ERR_CODE = " GAME_EXCEPTION"
-    MSG = " Game raised an exception."
+    CLS_NAME = "Game"
+    ERR_CODE = "GAME_EXCEPTION"
+    MSG = "Game raised an exception."
     
     def __init__(
             self,

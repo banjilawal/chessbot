@@ -52,9 +52,9 @@ class SchemaServiceException(ServiceException):
     # INHERITED METHODS:
         *   See ServiceException class for inherited methods.
     """
-    CLS_NAME = " SchemaService"
-    ERR_CODE = " SCHEMA_SERVICE_EXCEPTION"
-    MSG = " SchemaService raised an exception."
+    CLS_NAME = "SchemaService"
+    ERR_CODE = "SCHEMA_SERVICE_EXCEPTION"
+    MSG = "SchemaService raised an exception."
     
     def __init__(
             self,

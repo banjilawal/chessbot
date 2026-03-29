@@ -52,9 +52,9 @@ class SnapshotServiceException(ServiceException):
     # INHERITED METHODS:
         *   See ServiceException class for inherited methods.
     """
-    CLS_NAME = " SnapshotService"
-    ERR_CODE = " SNAPSHOT_SERVICE_EXCEPTION"
-    MSG = " SnapshotService raised an exception."
+    CLS_NAME = "SnapshotService"
+    ERR_CODE = "SNAPSHOT_SERVICE_EXCEPTION"
+    MSG = "SnapshotService raised an exception."
     
     def __init__(
             self,

@@ -52,9 +52,9 @@ class EdgeStackServiceException(StackServiceException):
     # INHERITED METHODS:
         *   See StackServiceException class for inherited methods.
     """
-    CLS_NAME = " EdgeStackService"
-    ERR_CODE = " EDGE_STACK_SERVICE_EXCEPTION"
-    MSG = " EdgeStackService raised an exception."
+    CLS_NAME = "EdgeStackService"
+    ERR_CODE = "EDGE_STACK_SERVICE_EXCEPTION"
+    MSG = "EdgeStackService raised an exception."
     
     def __init__(
             self,

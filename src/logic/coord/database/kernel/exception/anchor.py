@@ -52,9 +52,9 @@ class CoordStackServiceException(StackServiceException):
     # INHERITED METHODS:
         *   See StackServiceException class for inherited methods.
     """
-    CLS_NAME = " CoordStackService"
-    ERR_CODE = " COORD_STACK_SERVICE_EXCEPTION"
-    MSG = " CoordStackService raised an exception."
+    CLS_NAME = "CoordStackService"
+    ERR_CODE = "COORD_STACK_SERVICE_EXCEPTION"
+    MSG = "CoordStackService raised an exception."
     
     def __init__(
             self,

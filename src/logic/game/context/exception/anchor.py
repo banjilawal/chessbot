@@ -52,9 +52,9 @@ class GameContextException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_NAME = " GameContext"
-    ERR_CODE = " GAME_CONTEXT_EXCEPTION"
-    MSG = " GameContext raised an exception."
+    CLS_NAME = "GameContext"
+    ERR_CODE = "GAME_CONTEXT_EXCEPTION"
+    MSG = "GameContext raised an exception."
     
     def __init__(
             self,

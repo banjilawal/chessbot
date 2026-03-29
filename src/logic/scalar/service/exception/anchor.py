@@ -52,9 +52,9 @@ class ScalarServiceException(ServiceException):
     # INHERITED METHODS:
         *   See ServiceException class for inherited methods.
     """
-    CLS_NAME = " ScalarService"
-    ERR_CODE = " SCALAR_SERVICE_EXCEPTION"
-    MSG = " ScalarService raised an exception."
+    CLS_NAME = "ScalarService"
+    ERR_CODE = "SCALAR_SERVICE_EXCEPTION"
+    MSG = "ScalarService raised an exception."
     
     def __init__(
             self,

@@ -52,9 +52,9 @@ class PairServiceException(ServiceException):
     # INHERITED METHODS:
         *   See ServiceException class for inherited methods.
     """
-    CLS_NAME = " PairService"
-    ERR_CODE = " PAIR_SERVICE_EXCEPTION"
-    MSG = " PairService raised an exception."
+    CLS_NAME = "PairService"
+    ERR_CODE = "PAIR_SERVICE_EXCEPTION"
+    MSG = "PairService raised an exception."
     
     def __init__(
             self,

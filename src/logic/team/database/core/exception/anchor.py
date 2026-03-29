@@ -52,9 +52,9 @@ class TeamStackServiceException(StackServiceException):
     # INHERITED METHODS:
         *   See StackServiceException class for inherited methods.
     """
-    CLS_NAME = " TeamStackService"
-    ERR_CODE = " TEAM_STACK_SERVICE_EXCEPTION"
-    MSG = " TeamStackService raised an exception."
+    CLS_NAME = "TeamStackService"
+    ERR_CODE = "TEAM_STACK_SERVICE_EXCEPTION"
+    MSG = "TeamStackService raised an exception."
     
     def __init__(
             self,

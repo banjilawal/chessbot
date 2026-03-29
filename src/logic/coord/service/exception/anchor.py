@@ -52,9 +52,9 @@ class CoordServiceException(ServiceException):
     # INHERITED METHODS:
         *   See ServiceException class for inherited methods.
     """
-    CLS_NAME = " CoordService"
-    ERR_CODE = " COORD_SERVICE_EXCEPTION"
-    MSG = " CoordService raised an exception."
+    CLS_NAME = "CoordService"
+    ERR_CODE = "COORD_SERVICE_EXCEPTION"
+    MSG = "CoordService raised an exception."
     
     def __init__(
             self,

@@ -52,9 +52,9 @@ class SchemaException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_NAME = " Schema"
-    ERR_CODE = " SCHEMA_EXCEPTION"
-    MSG = " Schema raised an exception."
+    CLS_NAME = "Schema"
+    ERR_CODE = "SCHEMA_EXCEPTION"
+    MSG = "Schema raised an exception."
     
     def __init__(
             self,

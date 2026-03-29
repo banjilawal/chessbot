@@ -52,9 +52,9 @@ class SnapshotContextServiceException(ServiceException):
     # INHERITED METHODS:
         *   See ServiceException class for inherited methods.
     """
-    CLS_NAME = " SnapshotQueryService"
-    ERR_CODE = " SNAPSHOT_CONTEXT_SERVICE_EXCEPTION"
-    MSG = " SnapshotQueryService raised an exception."
+    CLS_NAME = "SnapshotQueryService"
+    ERR_CODE = "SNAPSHOT_CONTEXT_SERVICE_EXCEPTION"
+    MSG = "SnapshotQueryService raised an exception."
     
     def __init__(
             self,

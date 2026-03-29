@@ -52,9 +52,9 @@ class PlayerException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_NAME = " Player"
-    ERR_CODE = " PLAYER_EXCEPTION"
-    MSG = " Player raised an exception."
+    CLS_NAME = "Player"
+    ERR_CODE = "PLAYER_EXCEPTION"
+    MSG = "Player raised an exception."
     
     def __init__(
             self,

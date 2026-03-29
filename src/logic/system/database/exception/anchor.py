@@ -47,9 +47,9 @@ class DatabaseException(AnchorException):
         *   See AnchorException class for inherited methods.
     """
     CLS_MTHD = Optional[str]
-    CLS_NAME = " Database"
-    ERR_CODE = " DATABASE_EXCEPTION"
-    MSG = " Database raised an exception."
+    CLS_NAME = "Database"
+    ERR_CODE = "DATABASE_EXCEPTION"
+    MSG = "Database raised an exception."
     
     def __init__(
             self,

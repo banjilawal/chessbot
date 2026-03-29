@@ -52,9 +52,9 @@ class CoordContextException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_NAME = " CoordContext"
-    ERR_CODE = " COORD_CONTEXT_EXCEPTION"
-    MSG = " CoordContext raised an exception."
+    CLS_NAME = "CoordContext"
+    ERR_CODE = "COORD_CONTEXT_EXCEPTION"
+    MSG = "CoordContext raised an exception."
     
     def __init__(
             self,

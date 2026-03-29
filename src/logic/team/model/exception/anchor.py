@@ -1,7 +1,7 @@
-# src/logic/team/exception/anchor.py
+# src/logic/team/model/exception/anchor.py
 
 """
-Module: logic.team.exception.anchor
+Module: logic.team.model.exception.anchor
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -21,23 +21,13 @@ from logic.system import AnchorException
 # ======================# TEAM_EXCEPTION #======================#
 class TeamException(AnchorException):
     """
-    Role:Coverage Target, Exception Chain Layer 0
+    Role:
+        -   Exception Chain Layer 0
+        -   Exception coverage target
 
     Responsibilities:
-    1.  Anchoring target for Team debug (layer-2) error state firing incident
-        reports on
-            *   the triggering variable
-            *   The trigger's value.
-    2.  Indicate which Team method received a worker's (layer-1) failure result.
-
-    Super Class:
-        *   AnchorException
-
-    Provides:
-
-
-    # INHERITED ATTRIBUTES:
-        *   See AnchorException class for inherited attributes.
+        1.  Anchoring target for Team debug exceptions.
+        2.  Indicate which Team method received a worker's (layer-1) failure result.
 
     Attributes:
         msg: Optional[str]
@@ -46,15 +36,14 @@ class TeamException(AnchorException):
         cls_mthd: Optional[str]
         err_code: Optional[str]
 
-    # LOCAL METHODS:
-    None
-
-    # INHERITED METHODS:
-        *   See AnchorException class for inherited methods.
+    Provides:
+    
+    Super Class:
+        AnchorException
     """
-    CLS_NAME = " Team"
-    ERR_CODE = " TEAM_EXCEPTION"
-    MSG = " Team raised an exception."
+    CLS_NAME = "Team"
+    ERR_CODE = "TEAM_EXCEPTION"
+    MSG = "Team raised an exception."
     
     def __init__(
             self,

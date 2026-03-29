@@ -52,9 +52,9 @@ class TokenCoordHandlerException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_NAME = " TokenPositionController"
-    ERR_CODE = " TOKEN_COORD_HANDLER_EXCEPTION"
-    MSG = " TokenPositionController method raised an exception."
+    CLS_NAME = "TokenPositionController"
+    ERR_CODE = "TOKEN_COORD_HANDLER_EXCEPTION"
+    MSG = "TokenPositionController method raised an exception."
     
     def __init__(
             self,

@@ -52,9 +52,9 @@ class SquareDatabaseException(DatabaseException):
     # INHERITED METHODS:
         *   See DatabaseException class for inherited methods.
     """
-    CLS_NAME = " SquareDatabase"
-    ERR_CODE = " SQUARE_DATABASE_EXCEPTION"
-    MSG = " SquareDatabase raised an exception."
+    CLS_NAME = "SquareDatabase"
+    ERR_CODE = "SQUARE_DATABASE_EXCEPTION"
+    MSG = "SquareDatabase raised an exception."
     
     def __init__(
             self,

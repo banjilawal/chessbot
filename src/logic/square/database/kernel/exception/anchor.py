@@ -52,9 +52,9 @@ class SquareStackServiceException(StackServiceException):
     # INHERITED METHODS:
         *   See StackServiceException class for inherited methods.
     """
-    CLS_NAME = " SquareStackService"
-    ERR_CODE = " SQUARE_STACK_SERVICE_EXCEPTION"
-    MSG = " SquareStackService raised an exception."
+    CLS_NAME = "SquareStackService"
+    ERR_CODE = "SQUARE_STACK_SERVICE_EXCEPTION"
+    MSG = "SquareStackService raised an exception."
     
     def __init__(
             self,

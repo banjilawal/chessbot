@@ -51,9 +51,9 @@ class NodeTreeStackMigratorException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_NAME = " NodeTreeStackMigrator"
-    ERR_CODE = " NODE_TREE_STACK_MIGRATOR_EXCEPTION"
-    MSG = " NodeTreeStackMigrator raised an exception."
+    CLS_NAME = "NodeTreeStackMigrator"
+    ERR_CODE = "NODE_TREE_STACK_MIGRATOR_EXCEPTION"
+    MSG = "NodeTreeStackMigrator raised an exception."
     
     def __init__(
             self,

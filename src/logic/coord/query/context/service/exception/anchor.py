@@ -52,9 +52,9 @@ class CoordContextServiceException(ServiceException):
     # INHERITED METHODS:
         *   See ServiceException class for inherited methods.
     """
-    CLS_NAME = " CoordQueryService"
-    ERR_CODE = " COORD_CONTEXT_SERVICE_EXCEPTION"
-    MSG = " CoordQueryService raised an exception."
+    CLS_NAME = "CoordQueryService"
+    ERR_CODE = "COORD_CONTEXT_SERVICE_EXCEPTION"
+    MSG = "CoordQueryService raised an exception."
     
     def __init__(
             self,

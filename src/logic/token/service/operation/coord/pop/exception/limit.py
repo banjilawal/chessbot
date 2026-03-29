@@ -22,12 +22,13 @@ from logic.token import TokenDebugException
 class MoveUndoLimitException(TokenDebugException):
     """
     Role:
+        -   Debug targeting information
         -   Error Variable Identifier
         -   Exception Chain Layer 2
         -   Exception Messaging
 
     Responsibilities:
-       1.  Indicate that a token tried to undo mre than one move.
+        1.  Indicate that a token tried to undo mre than one move.
 
     Attributes:
         var: Optional[str]

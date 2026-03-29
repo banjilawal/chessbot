@@ -54,7 +54,7 @@ class ArenaSearchException(SearchException):
     OP = "Search"
     RSLT_TYPE = "SearchResult"
     ERR_CODE = "ARENA_SEARCH_FAILURE"
-    MSG = " Arena search method failed."
+    MSG = "Arena search method failed."
  
     def __init__(
             self,

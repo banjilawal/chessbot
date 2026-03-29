@@ -52,9 +52,9 @@ class EdgeServiceException(ServiceException):
     # INHERITED METHODS:
         *   See ServiceException class for inherited methods.
     """
-    CLS_NAME = " EdgeService"
-    ERR_CODE = " EDGE_SERVICE_EXCEPTION"
-    MSG = " EdgeService raised an exception."
+    CLS_NAME = "EdgeService"
+    ERR_CODE = "EDGE_SERVICE_EXCEPTION"
+    MSG = "EdgeService raised an exception."
     
     def __init__(
             self,

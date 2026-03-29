@@ -52,9 +52,9 @@ class PersonaKeyServiceException(ServiceException):
     # INHERITED METHODS:
         *   See ServiceException class for inherited methods.
     """
-    CLS_NAME = " PersonaKeyService"
-    ERR_CODE = " PERSONA_KEY_SERVICE_EXCEPTION"
-    MSG = " PersonaKeyService raised an exception."
+    CLS_NAME = "PersonaKeyService"
+    ERR_CODE = "PERSONA_KEY_SERVICE_EXCEPTION"
+    MSG = "PersonaKeyService raised an exception."
     
     def __init__(
             self,

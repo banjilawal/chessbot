@@ -52,9 +52,9 @@ class TokenContextServiceException(ServiceException):
     # INHERITED METHODS:
         *   See ServiceException class for inherited methods.
     """
-    CLS_NAME = " TokenQueryService"
-    ERR_CODE = " TOKEN_CONTEXT_SERVICE_EXCEPTION"
-    MSG = " TokenQueryService raised an exception."
+    CLS_NAME = "TokenQueryService"
+    ERR_CODE = "TOKEN_CONTEXT_SERVICE_EXCEPTION"
+    MSG = "TokenQueryService raised an exception."
     
     def __init__(
             self,

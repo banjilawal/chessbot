@@ -52,9 +52,9 @@ class GameServiceException(ServiceException):
     # INHERITED METHODS:
         *   See ServiceException class for inherited methods.
     """
-    CLS_NAME = " GameService"
-    ERR_CODE = " GAME_SERVICE_EXCEPTION"
-    MSG = " GameService raised an exception."
+    CLS_NAME = "GameService"
+    ERR_CODE = "GAME_SERVICE_EXCEPTION"
+    MSG = "GameService raised an exception."
     
     def __init__(
             self,

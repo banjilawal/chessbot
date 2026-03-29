@@ -52,9 +52,9 @@ class PlayerContextException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_NAME = " PlayerContext"
-    ERR_CODE = " PLAYER_CONTEXT_EXCEPTION"
-    MSG = " PlayerContext raised an exception."
+    CLS_NAME = "PlayerContext"
+    ERR_CODE = "PLAYER_CONTEXT_EXCEPTION"
+    MSG = "PlayerContext raised an exception."
     
     def __init__(
             self,

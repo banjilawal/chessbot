@@ -52,9 +52,9 @@ class BoardException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_NAME = " Board"
-    ERR_CODE = " BOARD_EXCEPTION"
-    MSG = " Board raised an exception."
+    CLS_NAME = "Board"
+    ERR_CODE = "BOARD_EXCEPTION"
+    MSG = "Board raised an exception."
     
     def __init__(
             self,

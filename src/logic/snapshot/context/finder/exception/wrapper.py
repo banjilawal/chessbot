@@ -54,7 +54,7 @@ class SnapshotSearchException(SearchException):
     OP = "Search"
     RSLT_TYPE = "SearchResult"
     ERR_CODE = "SNAPSHOT_SEARCH_FAILURE"
-    MSG = " Snapshot search method failed."
+    MSG = "Snapshot search method failed."
  
     def __init__(
             self,

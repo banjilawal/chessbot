@@ -52,9 +52,9 @@ class FormationServiceException(ServiceException):
     # INHERITED METHODS:
         *   See ServiceException class for inherited methods.
     """
-    CLS_NAME = " FormationService"
-    ERR_CODE = " FORMATION_SERVICE_EXCEPTION"
-    MSG = " FormationService raised an exception."
+    CLS_NAME = "FormationService"
+    ERR_CODE = "FORMATION_SERVICE_EXCEPTION"
+    MSG = "FormationService raised an exception."
     
     def __init__(
             self,

@@ -52,9 +52,9 @@ class HostageContextException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_NAME = " HostageContext"
-    ERR_CODE = " HOSTAGE_CONTEXT_EXCEPTION"
-    MSG = " HostageContext raised an exception."
+    CLS_NAME = "HostageContext"
+    ERR_CODE = "HOSTAGE_CONTEXT_EXCEPTION"
+    MSG = "HostageContext raised an exception."
     
     def __init__(
             self,

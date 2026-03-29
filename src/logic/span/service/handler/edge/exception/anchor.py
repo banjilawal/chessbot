@@ -50,7 +50,7 @@ class NodeEdgeHandlerException(AnchorException):
     CLS_MTHD = Optional[str]
     CLS_NAME = "NodeEdgeHandler"
     ERR_CODE = "SQUARE_DICT_EDGE_HANDLER_EXCEPTION"
-    MSG = " NodeEdgeHandler raised an exception."
+    MSG = "NodeEdgeHandler raised an exception."
   
     def __init__(
             self,

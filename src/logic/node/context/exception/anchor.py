@@ -52,9 +52,9 @@ class NodeContextException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_NAME = " NodeContext"
-    ERR_CODE = " NODE_CONTEXT_EXCEPTION"
-    MSG = " NodeContext raised an exception."
+    CLS_NAME = "NodeContext"
+    ERR_CODE = "NODE_CONTEXT_EXCEPTION"
+    MSG = "NodeContext raised an exception."
     
     def __init__(
             self,

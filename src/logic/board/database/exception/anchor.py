@@ -52,9 +52,9 @@ class BoardDatabaseException(DatabaseException):
     # INHERITED METHODS:
         *   See DatabaseException class for inherited methods.
     """
-    CLS_NAME = " BoardDatabase"
-    ERR_CODE = " BOARD_DATABASE_EXCEPTION"
-    MSG = " BoardDatabase raised an exception."
+    CLS_NAME = "BoardDatabase"
+    ERR_CODE = "BOARD_DATABASE_EXCEPTION"
+    MSG = "BoardDatabase raised an exception."
     
     def __init__(
             self,

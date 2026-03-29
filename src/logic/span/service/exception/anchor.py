@@ -52,9 +52,9 @@ class VectorServiceException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_NAME = " VectorService"
-    ERR_CODE = " VECTOR_SERVICE_EXCEPTION"
-    MSG = " VectorService raised an exception."
+    CLS_NAME = "VectorService"
+    ERR_CODE = "VECTOR_SERVICE_EXCEPTION"
+    MSG = "VectorService raised an exception."
     
     def __init__(
             self,

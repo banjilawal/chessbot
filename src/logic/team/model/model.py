@@ -1,4 +1,4 @@
-# src/logic/team/team.py
+# src/logic/team/model.py
 
 """
 Module: logic.team.team

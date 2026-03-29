@@ -21,23 +21,13 @@ from logic.system import ServiceException
 # ======================# TOKEN_SERVICE_EXCEPTION #======================#
 class TokenServiceException(ServiceException):
     """
-    Role:Coverage Target, Exception Chain Layer 0
+    Role:
+        -   Exception Chain Layer 0
+        -   Exception coverage target
 
     Responsibilities:
-    1.  Anchoring target for TokenService debug (layer-2) error state firing incident
-        reports on
-            *   the triggering variable
-            *   The trigger's value.
-    2.  Indicate which TokenService method received a worker's (layer-1) failure result.
-
-    Super Class:
-        *   ServiceException
-
-    Provides:
-
-
-    # INHERITED ATTRIBUTES:
-        *   See ServiceException class for inherited attributes.
+        1.  Anchoring target for TokenService debug exceptions.
+        2.  Indicate which TokenService method received a worker's (layer-1) failure result.
 
     Attributes:
         msg: Optional[str]
@@ -46,15 +36,14 @@ class TokenServiceException(ServiceException):
         cls_mthd: Optional[str]
         err_code: Optional[str]
 
-    # LOCAL METHODS:
-    None
+    Provides:
 
-    # INHERITED METHODS:
-        *   See ServiceException class for inherited methods.
+    Super Class:
+        ServiceException
     """
-    CLS_NAME = " TokenService"
-    ERR_CODE = " TOKEN_SERVICE_EXCEPTION"
-    MSG = " TokenService raised an exception."
+    CLS_NAME = "TokenService"
+    ERR_CODE = "TOKEN_SERVICE_EXCEPTION"
+    MSG = "TokenService raised an exception."
     
     def __init__(
             self,

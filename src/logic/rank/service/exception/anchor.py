@@ -52,9 +52,9 @@ class RankServiceException(ServiceException):
     # INHERITED METHODS:
         *   See ServiceException class for inherited methods.
     """
-    CLS_NAME = " RankService"
-    ERR_CODE = " RANK_SERVICE_EXCEPTION"
-    MSG = " RankService raised an exception."
+    CLS_NAME = "RankService"
+    ERR_CODE = "RANK_SERVICE_EXCEPTION"
+    MSG = "RankService raised an exception."
     
     def __init__(
             self,

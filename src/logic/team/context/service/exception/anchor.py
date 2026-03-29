@@ -52,9 +52,9 @@ class TeamContextServiceException(ServiceException):
     # INHERITED METHODS:
         *   See ServiceException class for inherited methods.
     """
-    CLS_NAME = " TeamQueryService"
-    ERR_CODE = " TEAM_CONTEXT_SERVICE_EXCEPTION"
-    MSG = " TeamQueryService raised an exception."
+    CLS_NAME = "TeamQueryService"
+    ERR_CODE = "TEAM_CONTEXT_SERVICE_EXCEPTION"
+    MSG = "TeamQueryService raised an exception."
     
     def __init__(
             self,

@@ -52,9 +52,9 @@ class RankContextException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_NAME = " RankContext"
-    ERR_CODE = " RANK_CONTEXT_EXCEPTION"
-    MSG = " RankContext raised an exception."
+    CLS_NAME = "RankContext"
+    ERR_CODE = "RANK_CONTEXT_EXCEPTION"
+    MSG = "RankContext raised an exception."
     
     def __init__(
             self,

@@ -52,9 +52,9 @@ class HostageException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_NAME = " Hostage"
-    ERR_CODE = " HOSTAGE_EXCEPTION"
-    MSG = " Hostage raised an exception."
+    CLS_NAME = "Hostage"
+    ERR_CODE = "HOSTAGE_EXCEPTION"
+    MSG = "Hostage raised an exception."
     
     def __init__(
             self,

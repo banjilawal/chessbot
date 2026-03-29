@@ -50,9 +50,9 @@ class NodeContextServiceException(ServiceException):
     # INHERITED METHODS:
         *   See ServiceException class for inherited methods.
     """
-    CLS_NAME = " NodeQueryService"
-    ERR_CODE = " NODE_CONTEXT_SERVICE_EXCEPTION"
-    MSG = " NodeQueryService raised an exception."
+    CLS_NAME = "NodeQueryService"
+    ERR_CODE = "NODE_CONTEXT_SERVICE_EXCEPTION"
+    MSG = "NodeQueryService raised an exception."
     
     def __init__(
             self,

@@ -52,9 +52,9 @@ class EdgeException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_NAME = " Edge"
-    ERR_CODE = " EDGE_EXCEPTION"
-    MSG = " Edge raised an exception."
+    CLS_NAME = "Edge"
+    ERR_CODE = "EDGE_EXCEPTION"
+    MSG = "Edge raised an exception."
     
     def __init__(
             self,

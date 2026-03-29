@@ -52,9 +52,9 @@ class SquareContextServiceException(ServiceException):
     # INHERITED METHODS:
         *   See ServiceException class for inherited methods.
     """
-    CLS_NAME = " SquareQueryService"
-    ERR_CODE = " SQUARE_CONTEXT_SERVICE_EXCEPTION"
-    MSG = " SquareQueryService raised an exception."
+    CLS_NAME = "SquareQueryService"
+    ERR_CODE = "SQUARE_CONTEXT_SERVICE_EXCEPTION"
+    MSG = "SquareQueryService raised an exception."
     
     def __init__(
             self,

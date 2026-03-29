@@ -51,9 +51,9 @@ class NodeTreeServiceException(ServiceException):
     # INHERITED METHODS:
         *   See ServiceException class for inherited methods.
     """
-    CLS_NAME = " NodeTreeService"
-    ERR_CODE = " NODE_TREE_SERVICE_EXCEPTION"
-    MSG = " NodeTreeService raised an exception."
+    CLS_NAME = "NodeTreeService"
+    ERR_CODE = "NODE_TREE_SERVICE_EXCEPTION"
+    MSG = "NodeTreeService raised an exception."
     
     def __init__(
             self,

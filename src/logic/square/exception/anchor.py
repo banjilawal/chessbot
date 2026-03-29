@@ -52,9 +52,9 @@ class SquareException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_NAME = " Square"
-    ERR_CODE = " SQUARE_EXCEPTION"
-    MSG = " Square raised an exception."
+    CLS_NAME = "Square"
+    ERR_CODE = "SQUARE_EXCEPTION"
+    MSG = "Square raised an exception."
     
     def __init__(
             self,

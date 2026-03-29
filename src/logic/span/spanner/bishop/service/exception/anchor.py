@@ -49,7 +49,7 @@ class BishopSpanServiceException(SpanServiceException):
     CLS_MTHD = Optional[str]
     CLS_NAME = "BishopSpanService"
     ERR_CODE = "BISHOP_SPAN_SERVICE_EXCEPTION"
-    MSG = " BishopSpanService raised an exception."
+    MSG = "BishopSpanService raised an exception."
   
     def __init__(
             self,

@@ -52,9 +52,9 @@ class AttackServiceException(ServiceException):
     # INHERITED METHODS:
         *   See ServiceException class for inherited methods.
     """
-    CLS_NAME = " AttackService"
-    ERR_CODE = " ATTACK_SERVICE_EXCEPTION"
-    MSG = " AttackService raised an exception."
+    CLS_NAME = "AttackService"
+    ERR_CODE = "ATTACK_SERVICE_EXCEPTION"
+    MSG = "AttackService raised an exception."
     
     def __init__(
             self,

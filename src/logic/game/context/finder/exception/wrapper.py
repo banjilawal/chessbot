@@ -54,7 +54,7 @@ class GameSearchException(SearchException):
     OP = "Search"
     RSLT_TYPE = "SearchResult"
     ERR_CODE = "GAME_SEARCH_FAILURE"
-    MSG = " Game search method failed."
+    MSG = "Game search method failed."
  
     def __init__(
             self,

@@ -54,7 +54,7 @@ class TeamSearchException(SearchException):
     OP = "Search"
     RSLT_TYPE = "SearchResult"
     ERR_CODE = "TEAM_SEARCH_FAILURE"
-    MSG = " Team search method failed."
+    MSG = "Team search method failed."
  
     def __init__(
             self,

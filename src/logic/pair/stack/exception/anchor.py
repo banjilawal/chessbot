@@ -52,9 +52,9 @@ class PairStackServiceException(StackServiceException):
     # INHERITED METHODS:
         *   See StackServiceException class for inherited methods.
     """
-    CLS_NAME = " PairStackService"
-    ERR_CODE = " PAIR_STACK_SERVICE_EXCEPTION"
-    MSG = " PairStackService raised an exception."
+    CLS_NAME = "PairStackService"
+    ERR_CODE = "PAIR_STACK_SERVICE_EXCEPTION"
+    MSG = "PairStackService raised an exception."
     
     def __init__(
             self,

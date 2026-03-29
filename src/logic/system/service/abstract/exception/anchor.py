@@ -53,7 +53,7 @@ class ServiceException(AnchorException):
         *   See AnchorException class for inherited methods.
     """
     ERR_CODE = "SERVICE_EXCEPTION"
-    MSG = " Service raised an exception."
+    MSG = "Service raised an exception."
     CLS_NAME = "Service"
     
     _cls_name:str = None

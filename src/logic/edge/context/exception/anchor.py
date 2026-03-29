@@ -52,9 +52,9 @@ class EdgeContextException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_NAME = " EdgeContext"
-    ERR_CODE = " EDGE_CONTEXT_EXCEPTION"
-    MSG = " EdgeContext raised an exception."
+    CLS_NAME = "EdgeContext"
+    ERR_CODE = "EDGE_CONTEXT_EXCEPTION"
+    MSG = "EdgeContext raised an exception."
     
     def __init__(
             self,

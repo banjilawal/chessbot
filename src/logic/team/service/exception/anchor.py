@@ -52,9 +52,9 @@ class TeamServiceException(ServiceException):
     # INHERITED METHODS:
         *   See ServiceException class for inherited methods.
     """
-    CLS_NAME = " TeamService"
-    ERR_CODE = " TEAM_SERVICE_EXCEPTION"
-    MSG = " TeamService raised an exception."
+    CLS_NAME = "TeamService"
+    ERR_CODE = "TEAM_SERVICE_EXCEPTION"
+    MSG = "TeamService raised an exception."
     
     def __init__(
             self,

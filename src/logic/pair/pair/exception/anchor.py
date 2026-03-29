@@ -54,7 +54,7 @@ class PairException(AnchorException):
     """
     CLS_NAME = "Pair"
     ERR_CODE = "PAIR_EXCEPTION"
-    MSG = " Pair raised an exception."
+    MSG = "Pair raised an exception."
     
     def __init__(
             self,

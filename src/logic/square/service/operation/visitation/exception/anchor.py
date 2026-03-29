@@ -52,7 +52,7 @@ class TokenVisitHandlerException(AnchorException):
     CLS_MTHD = Optional[str]
     CLS_NAME = "VisitationController"
     ERR_CODE = "TOKEN_VISIT_HANDLER_EXCEPTION"
-    MSG = " VisitationController raised an exception."
+    MSG = "VisitationController raised an exception."
     
     def __init__(
             self,

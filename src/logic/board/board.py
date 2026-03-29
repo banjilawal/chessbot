@@ -123,5 +123,5 @@ class Board:
     #             else:
     #                 # Display the square_name's visitor_name in brackets if it's empty.
     #                 row_str_parts.append(f"[{square_name.designation}]")
-    #         string += " ".join(row_str_parts) + "\n"
+    #         string += "".join(row_str_parts) + "\n"
     #     return string.strip()

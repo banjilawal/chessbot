@@ -52,9 +52,9 @@ class GraphServiceException(ServiceException):
     # INHERITED METHODS:
         *   See ServiceException class for inherited methods.
     """
-    CLS_NAME = " GraphService"
-    ERR_CODE = " GRAPH_SERVICE_EXCEPTION"
-    MSG = " GraphService raised an exception."
+    CLS_NAME = "GraphService"
+    ERR_CODE = "GRAPH_SERVICE_EXCEPTION"
+    MSG = "GraphService raised an exception."
     
     def __init__(
             self,

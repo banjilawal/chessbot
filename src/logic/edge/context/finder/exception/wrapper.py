@@ -54,7 +54,7 @@ class EdgeSearchException(SearchException):
     OP = "Search"
     RSLT_TYPE = "SearchResult"
     ERR_CODE = "EDGE_SEARCH_FAILURE"
-    MSG = " Edge search method failed."
+    MSG = "Edge search method failed."
  
     def __init__(
             self,

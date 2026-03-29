@@ -52,9 +52,9 @@ class GraphException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_NAME = " Graph"
-    ERR_CODE = " GRAPH_EXCEPTION"
-    MSG = " Graph raised an exception."
+    CLS_NAME = "Graph"
+    ERR_CODE = "GRAPH_EXCEPTION"
+    MSG = "Graph raised an exception."
     
     def __init__(
             self,

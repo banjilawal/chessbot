@@ -52,9 +52,9 @@ class PersonaKeyException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_NAME = " PersonaKey"
-    ERR_CODE = " PERSONA_KEY_EXCEPTION"
-    MSG = " PersonaKey raised an exception."
+    CLS_NAME = "PersonaKey"
+    ERR_CODE = "PERSONA_KEY_EXCEPTION"
+    MSG = "PersonaKey raised an exception."
     
     def __init__(
             self,

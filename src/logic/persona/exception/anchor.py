@@ -52,9 +52,9 @@ class PersonaException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_NAME = " Persona"
-    ERR_CODE = " PERSONA_EXCEPTION"
-    MSG = " Persona raised an exception."
+    CLS_NAME = "Persona"
+    ERR_CODE = "PERSONA_EXCEPTION"
+    MSG = "Persona raised an exception."
     
     def __init__(
             self,

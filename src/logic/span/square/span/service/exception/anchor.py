@@ -49,7 +49,7 @@ class SquareSpanServiceException(AnchorException):
     CLS_MTHD = Optional[str]
     CLS_NAME = "SquareSpanService"
     ERR_CODE = "SQUARE_SPAN_SERVICE_EXCEPTION"
-    MSG = " SquareSpanService raised an exception."
+    MSG = "SquareSpanService raised an exception."
   
     def __init__(
             self,

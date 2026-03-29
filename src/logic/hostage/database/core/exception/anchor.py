@@ -52,9 +52,9 @@ class HostageStackServiceException(StackServiceException):
     # INHERITED METHODS:
         *   See StackServiceException class for inherited methods.
     """
-    CLS_NAME = " HostageStackService"
-    ERR_CODE = " HOSTAGE_STACK_SERVICE_EXCEPTION"
-    MSG = " HostageStackService raised an exception."
+    CLS_NAME = "HostageStackService"
+    ERR_CODE = "HOSTAGE_STACK_SERVICE_EXCEPTION"
+    MSG = "HostageStackService raised an exception."
     
     def __init__(
             self,

@@ -52,9 +52,9 @@ class GraphContextServiceException(ServiceException):
     # INHERITED METHODS:
         *   See ServiceException class for inherited methods.
     """
-    CLS_NAME = " GraphContextService"
-    ERR_CODE = " GRAPH_CONTEXT_SERVICE_EXCEPTION"
-    MSG = " GraphContextService raised an exception."
+    CLS_NAME = "GraphContextService"
+    ERR_CODE = "GRAPH_CONTEXT_SERVICE_EXCEPTION"
+    MSG = "GraphContextService raised an exception."
     
     def __init__(
             self,

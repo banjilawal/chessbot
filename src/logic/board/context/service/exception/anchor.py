@@ -52,9 +52,9 @@ class BoardContextServiceException(ServiceException):
     # INHERITED METHODS:
         *   See ServiceException class for inherited methods.
     """
-    CLS_NAME = " BoardQueryService"
-    ERR_CODE = " BOARD_CONTEXT_SERVICE_EXCEPTION"
-    MSG = " BoardQueryService raised an exception."
+    CLS_NAME = "BoardQueryService"
+    ERR_CODE = "BOARD_CONTEXT_SERVICE_EXCEPTION"
+    MSG = "BoardQueryService raised an exception."
     
     def __init__(
             self,

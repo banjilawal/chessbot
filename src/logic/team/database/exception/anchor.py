@@ -52,9 +52,9 @@ class TeamDatabaseException(DatabaseException):
     # INHERITED METHODS:
         *   See DatabaseException class for inherited methods.
     """
-    CLS_NAME = " TeamDatabase"
-    ERR_CODE = " TEAM_DATABASE_EXCEPTION"
-    MSG = " TeamDatabase raised an exception."
+    CLS_NAME = "TeamDatabase"
+    ERR_CODE = "TEAM_DATABASE_EXCEPTION"
+    MSG = "TeamDatabase raised an exception."
     
     def __init__(
             self,

@@ -52,9 +52,9 @@ class HostageDatabaseException(DatabaseException):
     # INHERITED METHODS:
         *   See DatabaseException class for inherited methods.
     """
-    CLS_NAME = " HostageDatabase"
-    ERR_CODE = " HOSTAGE_DATABASE_EXCEPTION"
-    MSG = " HostageDatabase raised an exception."
+    CLS_NAME = "HostageDatabase"
+    ERR_CODE = "HOSTAGE_DATABASE_EXCEPTION"
+    MSG = "HostageDatabase raised an exception."
     
     def __init__(
             self,

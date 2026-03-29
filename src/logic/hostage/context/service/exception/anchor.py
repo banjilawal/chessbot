@@ -52,9 +52,9 @@ class HostageContextServiceException(ServiceException):
     # INHERITED METHODS:
         *   See ServiceException class for inherited methods.
     """
-    CLS_NAME = " HostageQueryService"
-    ERR_CODE = " HOSTAGE_CONTEXT_SERVICE_EXCEPTION"
-    MSG = " HostageQueryService raised an exception."
+    CLS_NAME = "HostageQueryService"
+    ERR_CODE = "HOSTAGE_CONTEXT_SERVICE_EXCEPTION"
+    MSG = "HostageQueryService raised an exception."
     
     def __init__(
             self,

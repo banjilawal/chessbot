@@ -52,9 +52,9 @@ class ArenaContextServiceException(ServiceException):
     # INHERITED METHODS:
         *   See ServiceException class for inherited methods.
     """
-    CLS_NAME = " ArenaContextService"
-    ERR_CODE = " ARENA_CONTEXT_SERVICE_EXCEPTION"
-    MSG = " ArenaContextService raised an exception."
+    CLS_NAME = "ArenaContextService"
+    ERR_CODE = "ARENA_CONTEXT_SERVICE_EXCEPTION"
+    MSG = "ArenaContextService raised an exception."
     
     def __init__(
             self,

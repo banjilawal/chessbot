@@ -52,9 +52,9 @@ class ScalarException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_NAME = " Scalar"
-    ERR_CODE = " SCALAR_EXCEPTION"
-    MSG = " Scalar raised an exception."
+    CLS_NAME = "Scalar"
+    ERR_CODE = "SCALAR_EXCEPTION"
+    MSG = "Scalar raised an exception."
     
     def __init__(
             self,

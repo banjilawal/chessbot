@@ -54,7 +54,7 @@ class BoardSearchException(SearchException):
     OP = "Search"
     RSLT_TYPE = "SearchResult"
     ERR_CODE = "BOARD_SEARCH_FAILURE"
-    MSG = " Board search method failed."
+    MSG = "Board search method failed."
  
     def __init__(
             self,

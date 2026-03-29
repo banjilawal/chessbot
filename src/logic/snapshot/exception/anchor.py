@@ -52,9 +52,9 @@ class SnapshotException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_NAME = " Snapshot"
-    ERR_CODE = " SNAPSHOT_EXCEPTION"
-    MSG = " Snapshot raised an exception."
+    CLS_NAME = "Snapshot"
+    ERR_CODE = "SNAPSHOT_EXCEPTION"
+    MSG = "Snapshot raised an exception."
     
     def __init__(
             self,

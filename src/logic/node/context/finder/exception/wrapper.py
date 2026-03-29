@@ -54,7 +54,7 @@ class NodeSearchException(SearchException):
     OP = "Search"
     RSLT_TYPE = "SearchResult"
     ERR_CODE = "NODE_SEARCH_FAILURE"
-    MSG = " Node search method failed."
+    MSG = "Node search method failed."
  
     def __init__(
             self,

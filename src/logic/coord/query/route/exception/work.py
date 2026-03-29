@@ -54,7 +54,7 @@ class CoordSearchException(SearchException):
     OP = "Search"
     RSLT_TYPE = "SearchResult"
     ERR_CODE = "COORD_SEARCH_FAILURE"
-    MSG = " Coord search method failed."
+    MSG = "Coord search method failed."
  
     def __init__(
             self,

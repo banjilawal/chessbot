@@ -54,7 +54,7 @@ class TokenSearchException(SearchException):
     OP = "Search"
     RSLT_TYPE = "SearchResult"
     ERR_CODE = "TOKEN_SEARCH_FAILURE"
-    MSG = " Token search method failed."
+    MSG = "Token search method failed."
  
     def __init__(
             self,

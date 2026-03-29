@@ -52,9 +52,9 @@ class BoardStackServiceException(StackServiceException):
     # INHERITED METHODS:
         *   See StackServiceException class for inherited methods.
     """
-    CLS_NAME = " BoardStackService"
-    ERR_CODE = " BOARD_STACK_SERVICE_EXCEPTION"
-    MSG = " BoardStackService raised an exception."
+    CLS_NAME = "BoardStackService"
+    ERR_CODE = "BOARD_STACK_SERVICE_EXCEPTION"
+    MSG = "BoardStackService raised an exception."
     
     def __init__(
             self,

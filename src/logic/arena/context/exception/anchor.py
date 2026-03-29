@@ -52,9 +52,9 @@ class ArenaContextException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_NAME = " ArenaContext"
-    ERR_CODE = " ARENA_CONTEXT_EXCEPTION"
-    MSG = " ArenaContext raised an exception."
+    CLS_NAME = "ArenaContext"
+    ERR_CODE = "ARENA_CONTEXT_EXCEPTION"
+    MSG = "ArenaContext raised an exception."
     
     def __init__(
             self,

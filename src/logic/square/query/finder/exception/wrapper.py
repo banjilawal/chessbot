@@ -54,7 +54,7 @@ class SquareSearchException(SearchException):
     OP = "Search"
     RSLT_TYPE = "SearchResult"
     ERR_CODE = "SQUARE_SEARCH_FAILURE"
-    MSG = " Square search method failed."
+    MSG = "Square search method failed."
  
     def __init__(
             self,

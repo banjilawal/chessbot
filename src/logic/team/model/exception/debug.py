@@ -1,7 +1,7 @@
-# src/logic/team/exception/debug.py
+# src/logic/team/model/exception/debug.py
 
 """
-Module: logic.team.exception.debug
+Module: logic.team.model.exception.debug
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -20,9 +20,17 @@ from logic.system import DebugException
 # ======================# TEAM_DEBUG_EXCEPTION #======================#
 class TeamDebugException(DebugException):
     """
+    Role:
+        Exception Chain Layer 2
+        Debugging metadata
+
+    Responsibilities:
+        1.  Anchoring target for Team debug exceptions.
+        2.  Indicate which Team method received a worker's (layer-1) failure result.
     Role:Capture Error Variable State, Exception Chain Layer 2, Exception Messaging
     
     Responsibilities:
+        1.
     1.  Produce the:
             *   variable,
             *   it's value,

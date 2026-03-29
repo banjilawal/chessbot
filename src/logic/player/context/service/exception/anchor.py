@@ -52,9 +52,9 @@ class PlayerContextServiceException(ServiceException):
     # INHERITED METHODS:
         *   See ServiceException class for inherited methods.
     """
-    CLS_NAME = " PlayerQueryService"
-    ERR_CODE = " PLAYER_CONTEXT_SERVICE_EXCEPTION"
-    MSG = " PlayerQueryService raised an exception."
+    CLS_NAME = "PlayerQueryService"
+    ERR_CODE = "PLAYER_CONTEXT_SERVICE_EXCEPTION"
+    MSG = "PlayerQueryService raised an exception."
     
     def __init__(
             self,

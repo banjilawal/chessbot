@@ -52,9 +52,9 @@ class TeamContextException(AnchorException):
     # INHERITED METHODS:
         *   See AnchorException class for inherited methods.
     """
-    CLS_NAME = " TeamContext"
-    ERR_CODE = " TEAM_CONTEXT_EXCEPTION"
-    MSG = " TeamContext raised an exception."
+    CLS_NAME = "TeamContext"
+    ERR_CODE = "TEAM_CONTEXT_EXCEPTION"
+    MSG = "TeamContext raised an exception."
     
     def __init__(
             self,

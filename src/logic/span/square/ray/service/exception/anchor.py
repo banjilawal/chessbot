@@ -49,7 +49,7 @@ class SquareRayServiceException(AnchorException):
     CLS_MTHD = Optional[str]
     CLS_NAME = "SquareRayService"
     ERR_CODE = "SQUARE_RAY_SERVICE_EXCEPTION"
-    MSG = " SquareRayService raised an exception."
+    MSG = "SquareRayService raised an exception."
   
     def __init__(
             self,

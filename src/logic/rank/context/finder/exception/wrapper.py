@@ -54,7 +54,7 @@ class RankSearchException(SearchException):
     OP = "Search"
     RSLT_TYPE = "SearchResult"
     ERR_CODE = "RANK_SEARCH_FAILURE"
-    MSG = " Rank search method failed."
+    MSG = "Rank search method failed."
  
     def __init__(
             self,

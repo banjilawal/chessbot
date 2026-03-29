@@ -52,9 +52,9 @@ class CoordDatabaseException(DatabaseException):
     # INHERITED METHODS:
         *   See DatabaseException class for inherited methods.
     """
-    CLS_NAME = " CoordDatabase"
-    ERR_CODE = " COORD_DATABASE_EXCEPTION"
-    MSG = " CoordDatabase raised an exception."
+    CLS_NAME = "CoordDatabase"
+    ERR_CODE = "COORD_DATABASE_EXCEPTION"
+    MSG = "CoordDatabase raised an exception."
     
     def __init__(
             self,
