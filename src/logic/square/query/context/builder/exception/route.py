@@ -1,31 +1,30 @@
-# src/logic/square/query/validation/exception/debug/route.py
+# src/logic/square/_context/build/exception/route.py
 
 """
-Module: logic.square.query.validation.exception.debug.route
+Module: logic.square.query.context.build.exception.route
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-10-03
 version: 1.0.0
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
-
 __all__ = [
-    # ======================# SQUARE_CONTEXT_VALIDATION_ROUTE_EXCEPTION #======================#
-    "SquareContextValidationRouteException",
+    # ======================# SQUARE_CONTEXT_EXECUTION_ROUTE_EXCEPTION #======================#
+    "SquareContextExecutionRouteException",
 ]
 
 from logic.system import ExecutionRouteException
 
-# ======================# SQUARE_CONTEXT_VALIDATION_ROUTE_EXCEPTION #======================#
-class SquareContextValidationRouteException(ExecutionRouteException):
+
+# ======================# SQUARE_CONTEXT_EXECUTION_ROUTE_EXCEPTION #======================#
+class SquareContextExecutionRouteException(ExecutionRouteException):
     """
-    Role:Exception Chain Layer 2, Exception Messaging
-    # TASK: Capture Error Variable State
+    Role:Error Tracing, Debugging, Super Exception
 
     Responsibilities:
-    1.  A failure ValidationResult was sent because there was no validation route for the SquareContext
-        attribute.
+    1.  Indicate that there is no build route for a SquareContext attribute.
 
     Super Class:
         *   ExecutionRoute
@@ -49,8 +48,8 @@ class SquareContextValidationRouteException(ExecutionRouteException):
     # INHERITED METHODS:
         *   See ExecutionRoute class for inherited methods.
     """
-    MSG = "No validation route for SquareContext attribute"
-    ERR_CODE = "SQUARE_CONTEXT_VALIDATION_ROUTE_EXCEPTION"
+    MSG = "No build route for SquareContext attribute"
+    ERR_CODE = "SQUARE_CONTEXT_EXECUTION_ROUTE_EXCEPTION"
     
     def __init__(
             self,

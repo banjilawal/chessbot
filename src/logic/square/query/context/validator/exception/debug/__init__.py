@@ -1,13 +1,13 @@
-# src/logic/square/query/validation/exception/debug/__init__.py
+# src/logic/square/query/context/validation/exception/debug/__init__.py
 
 """
-Module: logic.square.query.validation.exception.debug.__init__
+Module: logic.square.query.context.validation.exception.debug.__init__
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
-# =========== SQUARE.CONTEXT.VALIDATOR.EXCEPTION.DEBUG PACKAGE CONTENTS ===========#
+# =========== SQUARE.QUERY.CONTEXT.VALIDATOR.EXCEPTION.DEBUG PACKAGE CONTENTS ===========#
 
 # Packages
 None

@@ -1,7 +1,7 @@
-# src/logic/square/map.py
+# src/logic/square/query/context/context/context.py
 
 """
-Module: logic.square.map
+Module: logic.square.query.context.context.context
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

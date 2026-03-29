@@ -1,7 +1,7 @@
-# src/logic/square/query/exception/debug.py
+# src/logic/square/query/context/exception/debug.py
 
 """
-Module: logic.square.query.exception.debug
+Module: logic.square.query.context.exception.debug
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

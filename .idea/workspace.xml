@@ -5,7 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/square/query/context/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/square/query/query/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/query/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/query/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/query/builder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/query/context/builder/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/query/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/query/context/builder/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/query/builder/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/query/context/builder/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/query/builder/exception/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/query/context/builder/exception/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/query/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/query/context/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/query/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/query/context/context.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/query/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/query/context/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/query/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/query/context/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/query/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/query/context/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/query/validator/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/query/context/validator/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/query/validator/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/query/context/validator/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/query/validator/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/query/context/validator/exception/debug/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/query/validator/exception/debug/excess.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/query/context/validator/exception/debug/excess.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/query/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/query/context/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/query/validator/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/query/context/validator/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/query/validator/exception/debug/zero.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/query/context/validator/exception/debug/zero.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/query/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/query/context/validator/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/query/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/query/context/validator/validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -308,11 +328,11 @@
       <recent name="$PROJECT_DIR$/src/logic/coord/service/exception/multiply" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/logic/square/query/context" />
       <recent name="$PROJECT_DIR$/src/logic/coord/database/kernel/operation/crud/pop/exception" />
       <recent name="$PROJECT_DIR$/src/logic/coord/database/kernel/operation/crud" />
       <recent name="$PROJECT_DIR$/src/logic/coord/service/operation/computation" />
       <recent name="$PROJECT_DIR$/src/logic/coord/service/operation" />
-      <recent name="$PROJECT_DIR$/src/logic/coord/query/route/exception" />
     </key>
   </component>
   <component name="RunManager" selected="Python.inactive">
@@ -859,7 +879,7 @@
       <workItem from="1774245837652" duration="42949000" />
       <workItem from="1774454082016" duration="10781000" />
       <workItem from="1774483839135" duration="10440000" />
-      <workItem from="1774551231807" duration="51149000" />
+      <workItem from="1774551231807" duration="52244000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1008,7 +1028,7 @@
           <option name="timeStamp" value="87" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/logic/square/context/finder/validator/validator.py</url>
+          <url>file://$PROJECT_DIR$/src/logic/square/query/finder/validator/validator.py</url>
           <line>8</line>
           <option name="timeStamp" value="89" />
         </line-breakpoint>
@@ -1021,6 +1041,11 @@
           <url>file://$PROJECT_DIR$/src/logic/coord/query/context/service/service.py</url>
           <line>9</line>
           <option name="timeStamp" value="91" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/logic/square/query/context/context.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="96" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -1,7 +1,7 @@
-# src/logic/square/query/build/exception.py
+# src/logic/square/query/context/build/exception.py
 
 """
-Module: logic.square.query.build.build
+Module: logic.square.query.context.build.build
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

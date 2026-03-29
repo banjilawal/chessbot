@@ -1,7 +1,7 @@
-# src/logic/square/query/validation/validation.py
+# src/logic/square/query/context/validation/validation.py
 
 """
-Module: logic.square.query.validation.validation
+Module: logic.square.query.context.validation.validation
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
