@@ -5,7 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change beforePath="$PROJECT_DIR$/src/logic/coord/service/operation/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/service/operation/controller.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/coord/database/kernel/operation/controller.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/coord/database/kernel/operation/crud/controller.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/coord/database/kernel/operation/crud/pop/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/coord/database/kernel/operation/crud/pop/exception/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/coord/database/kernel/operation/crud/pop/exception/empty.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/coord/database/kernel/operation/crud/pop/transaction.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/coord/database/kernel/operation/crud/push/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/coord/database/kernel/operation/crud/push/exception/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/coord/database/kernel/operation/crud/push/exception/duplicate.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/coord/database/kernel/operation/crud/push/exception/full.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/coord/database/kernel/operation/crud/push/exception/rank.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/coord/database/kernel/operation/crud/push/pusher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/database/kernel/operation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/database/kernel/operation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/database/kernel/operation/crud/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/database/kernel/operation/crud/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/database/kernel/operation/crud/exception/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/database/kernel/operation/crud/exception/pop/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/database/kernel/operation/crud/exception/pop/empty.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/database/kernel/operation/crud/exception/pop/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/database/kernel/operation/crud/pop/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/database/kernel/operation/crud/exception/push/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/database/kernel/operation/crud/exception/push/duplicate.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/database/kernel/operation/crud/exception/push/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/database/kernel/operation/crud/push/exception/wrapper.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -274,7 +295,7 @@
     "ToolWindow.Python Packages.ShowToolbar": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/logic/coord/service/operation/computation",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/logic/coord/database/kernel",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -301,18 +322,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/logic/coord/database/kernel" />
+      <recent name="$PROJECT_DIR$/src/logic/coord/database/kernel/operation/crud/pop" />
       <recent name="$PROJECT_DIR$/src/logic/coord/service/operation/computation" />
       <recent name="$PROJECT_DIR$/src/logic/coord/service/operation/computation/distance" />
       <recent name="$PROJECT_DIR$/src/logic/coord/service/exception/multiply" />
-      <recent name="$PROJECT_DIR$/src/logic/square/service/operation/build/exception" />
-      <recent name="$PROJECT_DIR$/src/logic/coord/service/operation" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/logic/coord/database/kernel/operation/crud/pop/exception" />
+      <recent name="$PROJECT_DIR$/src/logic/coord/database/kernel/operation/crud" />
       <recent name="$PROJECT_DIR$/src/logic/coord/service/operation/computation" />
       <recent name="$PROJECT_DIR$/src/logic/coord/service/operation" />
       <recent name="$PROJECT_DIR$/src/logic/coord/query/route/exception" />
-      <recent name="$PROJECT_DIR$/src/logic/coord/context/vontext" />
-      <recent name="$PROJECT_DIR$/src/logic/token/query/context" />
     </key>
   </component>
   <component name="RunManager" selected="Python.inactive">
@@ -859,7 +880,7 @@
       <workItem from="1774245837652" duration="42949000" />
       <workItem from="1774454082016" duration="10781000" />
       <workItem from="1774483839135" duration="10440000" />
-      <workItem from="1774551231807" duration="27167000" />
+      <workItem from="1774551231807" duration="31947000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -920,11 +941,6 @@
           <url>file://$PROJECT_DIR$/src/logic/system/err/implementation/__init__.py</url>
           <line>14</line>
           <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/logic/coord/service/__init__.py</url>
-          <line>12</line>
-          <option name="timeStamp" value="27" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/logic/enviroment/turn.py</url>

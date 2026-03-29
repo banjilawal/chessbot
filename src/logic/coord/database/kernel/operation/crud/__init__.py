@@ -1,16 +1,17 @@
 # src/logic/coord/database/kernel/operation/crud/__init__.py
 
 """
-Module: logic.coord.database.kernel.operation.crud.__init__
+Module: logic.coord.database.kernel.OPERATION.CRUD.__init__
 Author: Banji Lawal
-Created: 2026-03-14
+Created: 2026-03-28
 version: 1.0.0
 """
 
-# =========== COORD.DATABASE.CORE.HANDLER.CRUD PACKAGE CONTENTS ===========#
+# =========== COORD.DATABASE.KERNEL.OPERATION.CRUD PACKAGE CONTENTS ===========#
 
 # Packages
-from .exception import *
+from .pop import *
+from .push import *
 
 # Modules
-None
+from .controller import CoordStackCrudController

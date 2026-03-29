@@ -1,9 +1,9 @@
-# src/logic/coord/database/kernel/operation/crud/exception/push/work.py
+# src/logic/coord/database/kernel/operation/crud/pop/exception/empty.py
 
 """
-Module: logic.coord.database.kernel.operation.crud.exception.push.work
+Module: logic.coord.database.kernel.operation.crud.pop.exception.empty
 Author: Banji Lawal
-Created: 2026-03-14
+Created: 2026-03-28
 version: 1.0.0
 """
 
@@ -11,31 +11,24 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# PUSHING_COORD_EXCEPTION #======================#
-    "PushingCoordException",
+    # ======================# COORD_STACK_POP_FAILURE #======================#
+    "CoordStackPopException",
 ]
 
-from logic.system import InsertionException
+from logic.system import DeletionException
 
-
-# ======================# PUSHING_COORD_EXCEPTION #======================#
-class PushingCoordException(InsertionException):
+# ======================# COORD_STACK_POP_FAILURE #======================#
+class CoordStackPopException(DeletionException):
     """
-    Role:Worker Method Identification, Exception Chain Layer 1, Exception Messaging
+    Role:
+        -   Worker Method Identification
+        -   Exception Chain Layer 1
+        -   Exception Messaging
 
     Responsibilities:
-    1.  Indicate a Coord insertion was unsuccessful.
-    2.  Identify the method where the failure occurred.
-
-    Super Class:
-        *   InsertionException
-
-    Provides:
-
-
-    # INHERITED ATTRIBUTES:
-        *   See InsertionException class for inherited attributes.
-
+        1.  Indicate a CoordStackStack pop was unsuccessful.
+        2.  Identify the CoordStackService method where the pop operation failed.
+        
     Attributes:
         op: Optional[str]
         ex: Optional[str]
@@ -44,16 +37,15 @@ class PushingCoordException(InsertionException):
         err_code: Optional[str]
         rslt_type: Optional[str]
 
-    # LOCAL METHODS:
-   None
-
-    # INHERITED METHODS:
-        *   See InsertionException class for inherited methods.
+    Provides:
+    
+    Super Class:
+        DeletionOperation
     """
-    OP = "Insertion"
-    RSLT_TYPE = "InsertionResult"
-    ERR_CODE = "PUSHING_COORD_EXCEPTION"
-    MSG = "Pushing a coord from the stack failed."
+    OP = "Deletion"
+    RSLT_TYPE = "DeletionResult"
+    ERR_CODE = "COORD_STACK_POP_FAILURE"
+    MSG = "CoordStackService pop failed."
     
     def __init__(
             self,

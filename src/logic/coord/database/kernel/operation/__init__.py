@@ -3,14 +3,17 @@
 """
 Module: logic.coord.database.kernel.operation.__init__
 Author: Banji Lawal
-Created: 2026-03-14
+Created: 2026-02-21
 version: 1.0.0
 """
 
-# =========== COORD.DATABASE.CORE.HANDLER PACKAGE CONTENTS ===========#
+# =========== COORD.DATABASE.KERNEL.OPERATION PACKAGE CONTENTS ===========#
 
 # Packages
 from .crud import *
+from .quota import *
+from .deployment import *
+from .collision import *
 
 # Modules
-None
+from .controller import CoordStackOpsController
