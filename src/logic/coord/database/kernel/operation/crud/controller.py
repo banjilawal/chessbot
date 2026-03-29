@@ -27,12 +27,6 @@ class CoordStackCrudController:
         push: CoordStackServicePush
 
     Provides:
-        -   push(
-                    coord: Coord,
-                    coord_stack: CoordStackService,
-                    rank_quota_analyzer: RankQuotaAnalysis = RankQuotaAnalysis(),
-                    collision_detector: CoordCollisionAnalysis = CoordCollisionAnalysis(),
-            ) -> InsertionResult
 
     Super Class:
     """
@@ -44,8 +38,8 @@ class CoordStackCrudController:
     def __init__(
             self,
             pop: CoordStackPop = CoordStackPop(),
-            query: CoordQueryService = CoordQueryService(),
             push: CoordStackPush = CoordStackPush(),
+            query: CoordQueryService = CoordQueryService(),
     ):
         self._pop = pop
         self._push = push
