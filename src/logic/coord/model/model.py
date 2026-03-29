@@ -1,50 +1,40 @@
-# src/logic/coord/coord.py
+# src/logic/coord/mode/model.py
 
 """
-Module: logic.coord.coord
+Module: logic.coord.model.model
 Author: Banji Lawal
 Created: 2025-07-26
 version: 1.0.0
 """
 
+from __future__ import annotations
 
 class Coord:
     """
-    Role:Addressing, Data Object
+    Role:
+        -   Addressing
+        -   Data-Holder
   
-    # RESPONSIBILITY:
-    1.  Provide global, low-level addressing for referencing bag on Board by row and column indexes.
+    Responsibilities:
+        1.  Provide global, low-level addressing squares and tokens on the board.
+        
+    Attributes:
+        row: int
+        column: int
+        
+    Provides:
     
     Super Class:
-    None
-  
-    Provides:
-  
-    # LOCAL ATTRIBUTES:
-        *   row (int)
-        *   column (int)
-    
-    INHERITED ATTRIBUTES:
-    None
     """
     _row: int
     _column: int
     
     def __init__(self, row: int, column: int):
         """
-        # ACTION:
-        Construct a Coord instance.
-        
-        # PARAMETERS:
-            *   row (int): index of row.
-            *   column (int): index of column.
-        
-        # RETURNS:
-        None
-        
-        Raises:
+        Args:
+            row: int
+            column: int
         """
-        method = "Coord.__init__"
         self._row = row
         self._column = column
     

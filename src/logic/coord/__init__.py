@@ -13,8 +13,7 @@ version: 1.0.0
 from .query import *
 from .service import *
 from .database import *
-from .exception import *
+from logic.coord.model.exception import *
 
 # Modules
-from .coord import Coord
 
