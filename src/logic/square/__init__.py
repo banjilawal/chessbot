@@ -18,6 +18,5 @@ from logic.square.service.operation.validation import *
 from .exception import *
 
 # Modules
-from .square import Square
-from .state import SquareState
+from logic.square.model.model import Square
 

@@ -1,4 +1,4 @@
-# src/logic/pair/pair/build/exception/square.py
+# src/logic/pair/pair/build/exception/model.py
 
 """
 Module: logic.pair.pair.build.exception.square

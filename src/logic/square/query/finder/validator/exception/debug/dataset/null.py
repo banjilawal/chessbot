@@ -1,4 +1,4 @@
-# src/logic/square/validation/exception/debug/collider_candidates/square.py
+# src/logic/square/validation/exception/debug/collider_candidates/model.py
 
 """
 Module: logic.square.validation.exception.debug.collider_candidates.square

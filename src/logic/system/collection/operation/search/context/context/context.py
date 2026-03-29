@@ -18,11 +18,10 @@ class Context(ABC, Generic[T]):
     Role:
         -   Selection
         -   Routing mask
+        -   Data-Holder
 
     Responsibilities:
         1.  Supply an attribute-value pair for selecting an execution path among different routes.
-                i.  Pick route by attribute (key)
-                ii. Logic performed on value.
                 
     Attributes:
         id: Optional[int]
@@ -34,11 +33,16 @@ class Context(ABC, Generic[T]):
     Super Class:
     
     Notes:
-        Used optional attributes with null default values instead of a union type because:
-            -   It's easier to extend
-            -   Implementations can decide if context can be mutually exclusive or not.
-            -   Unions are clunky if there are many attributes.
-            -   Unions don't lower validation and build integrity overhead.
+        1.  Attribute is an entity's property.
+        2.  Attribute is routing key.
+        3.  Execution logic performed on attribute value.
+        
+        4.  Why Not Union:
+                Used optional attributes with null default values instead of a union type because:
+                    -   It's easier to extend
+                    -   Implementations can decide if context can be mutually exclusive or not.
+                    -   Unions are clunky if there are many attributes.
+                    -   Unions don't lower validation and build integrity overhead.
     """
     _id: Optional[int]
     _name: Optional[str]
@@ -48,6 +52,11 @@ class Context(ABC, Generic[T]):
             id: Optional[int] = None,
             name: Optional[str] = None
     ):
+        """
+        Args:
+            id: Optional[int]
+            name: Optional[str]
+        """
         self._id = id
         self._name = name
     

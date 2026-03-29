@@ -1,9 +1,10 @@
-# src/logic/square/item.py
+# src/logic/square/model/model.py
 
 """
-Module: logic.square.item
+Module: logic.square.model.model
 Author: Banji Lawal
-Created: 2025-07-26
+Created: 2025-11-22
+version: 1.0.0
 """
 
 from __future__ import annotations
@@ -12,23 +13,25 @@ from typing import Optional
 from logic.board import Board
 from logic.coord import Coord
 from logic.token import Token
-from logic.square.state import SquareState
+from logic.square.model.state import SquareState
 
 
 class Square:
     """
     Role:
-    Model,
-    
-    Data-Holder, Addressing, Referencing
+        -   Model
+        -   Stateful Data Holder
 
     Responsibilities:
-    1.  Maps a Coord to a nameable, occupyable board location.
-    2.  Space on Board a Token can occupy.
-    3.  Metadata about a reference on the Board.
+        1.  Maps a Coord to a nameable, occupyable board location.
+        2.  Space on Board a Token can occupy.
+        3.  Metadata about a reference on the Board.
+    
+    Attributes:
+    
+    Provides:
 
     Super Class:
-    None
 
     Provides:
 

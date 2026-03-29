@@ -1,4 +1,4 @@
-# src/logic/token/database/kernel/operation/collision/exception/debug/square.py
+# src/logic/token/database/kernel/operation/collision/exception/debug/model.py
 
 """
 Module: logic.token.database.kernel.operation.collision.exception.debug.square

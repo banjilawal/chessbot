@@ -1,4 +1,4 @@
-# src/logic/square/service/operation/collision/exception/debug/square.py
+# src/logic/square/service/operation/collision/exception/debug/model.py
 
 """
 Module: logic.square.service.operation.collision.exception.debug.square

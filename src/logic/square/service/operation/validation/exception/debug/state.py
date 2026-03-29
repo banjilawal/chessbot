@@ -1,4 +1,4 @@
-# src/logic/square/service/operation/validation/exception/square.py
+# src/logic/square/service/operation/validation/exception/model.py
 
 """
 Module: logic.square.service.operation.validation.exception.square

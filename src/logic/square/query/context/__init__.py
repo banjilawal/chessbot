@@ -12,7 +12,6 @@ version: 1.0.0
 # Packages
 from .build import *
 from .validator import *
-from .exception import *
 
 # Modules
 from .context import SquareContext

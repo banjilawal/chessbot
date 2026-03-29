@@ -14,46 +14,36 @@ from logic.board import Board
 from logic.coord import Coord
 from logic.square import Square
 
-
-from logic.square.state import SquareState
+from logic.square.model.state import SquareState
 from logic.system import Context
 from logic.token import Token
 
 
 class SquareContext(Context[Square]):
     """
-    Role:Factory, Switch, Attribute Selection
+    Role:
+        -   Selection
+        -   Routing mask
+        -   Data-Holder
 
     Responsibilities:
-    Factory that produces Context instances for searching Square datasets by different Square attributes.
-
-    Super Class:
-        *   Context
-
-    Provides:
-
-    # LOCAL ATTRIBUTES:
-        *   board (Optional[Board])
-        *   coord (Optional[Coord])
-        *   state (Optional[SquareState])
-
-    # INHERITED ATTRIBUTES:
-        *   See Context class for inherited attributes.
+        1.  Supply Square related workers with execution routing information where:
+                -   Square.attribute: execution path selector (routing key).
+                -   attribute.value: executor input.
 
     Attributes:
-        Local:
-            *   board (Optional[Board])
-            *   coord (Optional[Coord])
-            *   state (Optional[SquareState])
+        id: Optional[int]
+        name: Optional[str]
+        board: Optional[Board]
+        coord: Optional[Coord]
+        occupant: Optional[Token]
+        state: Optional[SquareState]
 
-        Inherited:
-            *   See Context class for inherited constructor parameters.
+    Provides:
+        -   to_dict() -> Dict[str, Any]
 
-    # LOCAL METHODS:
-        *   to_dict() -> dict
-
-    # INHERITED METHODS:
-        *   See StackService class for inherited methods.
+    Super Class:
+        Context
     """
     _board: Optional[Board]
     _coord: Optional[Coord]
@@ -62,14 +52,22 @@ class SquareContext(Context[Square]):
     
     def __init__(
             self,
-            id: Optional[int],
-            name: Optional[str],
+            id: Optional[int] = None,
+            name: Optional[str] = None,
             board: Optional[Board] = None,
             coord: Optional[Coord] = None,
             occupant: Optional[Token] = None,
             state: Optional[SquareState] = None,
     ):
-        method = "SquareContext.__init__"
+        """
+        Args:
+            id: Optional[int]
+            name: Optional[str]
+            board: Optional[Board]
+            coord: Optional[Coord]
+            occupant: Optional[Token]
+            state: Optional[SquareState]
+        """
         super().__init__(id=id, name=name)
         self._board = board
         self._coord = coord

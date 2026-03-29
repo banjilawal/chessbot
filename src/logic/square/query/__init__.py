@@ -14,6 +14,5 @@ from logic.square.query.context.build import *
 from .finder import *
 from .service import *
 from logic.square.query.context.validator import *
-from logic.square.query.context.exception import *
 
 # Modules
