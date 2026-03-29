@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import Iterator, List, Optional, cast
+from typing import Iterator, List, Optional
 
 from logic.system import (
     IdFactory, IdentityService, LoggingLevelRouter, MethodImplementationException,
@@ -16,61 +16,71 @@ from logic.system import (
 )
 from logic.coord import (
     Coord, CoordContext, CoordService, CoordStackOpsController, CoordStackServiceException
-
 )
 
 class CoordStackService(StackService[Coord]):
     """
-    Role:Data Stack, Search Service, CRUD Controller, Encapsulation, API layer.
+    Role:
+        -   API
+        -   ACID compliance
+        -   Stateful microservice
+        -   Stateful CRUD Controller
+        -   Operations Provider
 
     Responsibilities:
-    1.  Microservice API for managing and searching Coord collections.
-    2.  Assures collection is always reliable.
-    3.  Assure only valid Coords are put in the collection.
-    4.  Assure updates do not break the integrity individual bag in the collection or
-        the collection itself.
-    5.  Provide Coord stack data structure with no guarantee of uniqueness.
-    6.  Search utility.
+        1.  Baremetal service request API for Coord collections.
+        2.  Preserve consistency during updates and deletes.
+        3.  Stateful, scalable integrity management of Coords.
+        4.  Coord search and retrieval.
 
-    Super Class:
-        *   StackService
+    Attributes:
+        SERVICE_NAME = CoordStackService
+
+        id: int
+        name: str
+        size: int
+        is_empty: bool
+        items: List[Coord]
+        iterator: Iterator[Coord]
+        stack_state: CoordStackState
+        current_item: Optional[Coord]
+        integrity_service: CoordService
+        previous_coord: Optional[Coord]
+        ops_controller: CoordStackOpsController
 
     Provides:
+        -   pop() -> DeletionResult[Coord]
+        -   push(item: Coord) -> InsertionResult
+        -   query(context: Context[Coord]) -> SearchResult[List[Coord]]
 
-
-    # INHERITED ATTRIBUTES:
-        *   See StackService class for inherited attributes.
+    Super Class:
+        StackService
     """
-    
     SERVICE_NAME = "CoordStackService"
     
     _stack: List[Coord]
     _current_coord: Optional[Coord]
     _previous_coord: Optional[Coord]
     _ops_controller: CoordStackOpsController
-
     
     def service(
             self,
             name: str = SERVICE_NAME,
-            items: List[Coord] = List[Coord],
             id: int = IdFactory.next_id(class_name="CoordStackService"),
             ops_controller: CoordStackOpsController = CoordStackOpsController(),
     ):
         """
         Args:
-            name: str
             id: int
-            items: List[Coord]
+            name: str
             ops_controller: CoordStackOpsController
         """
         super().__init__(id=id, name=name,)
-        self._stack = items
-        self._previous_coord = None
+        self._stack = []
         self._current_coord = None
+        self._previous_coord = None
         self._ops_controller = ops_controller
 
-    
     @property
     def size(self) -> int:
         return len(self._stack)
@@ -191,7 +201,7 @@ class CoordStackService(StackService[Coord]):
         method = f"{self.__class__.__name__}.delete_by_id"
         
         # Handle the case that, the method is called.
-        return SearchResult.failure(
+        return DeletionResult.failure(
             CoordStackServiceException(
                 cls_mthd=method,
                 cls_name=self.__class__.__name__,

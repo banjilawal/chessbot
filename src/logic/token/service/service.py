@@ -20,15 +20,15 @@ from logic.token import PawnToken, Token, TokenBuild, TokenOpsController, TokenS
 
 class TokenService(IntegrityService[Token]):
     """
-    Role:
-        -   Microservice API
-        -   Stateless Integrity Lifecycle Manager
+        Role:
+        -   API
+        -   Stateless microservice
+        -   Lifecycle Manager
+        -   Operations Provider
 
     Responsibilities:
-        1.  Mutates Token instances
-        2.  Ensure Token integrity and consistency when its state changes.
-        3.  Build Token instances that satisfy integrity contracts
-        4.  Maintain the Token integrity lifecycle.
+        1.  Baremetal service request API for Token operations.
+        2.  Maintain the build-validation security lifecycle for Token instances.
 
     Attributes:
         SERVICE_NAME: TokenService

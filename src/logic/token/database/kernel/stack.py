@@ -8,65 +8,60 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import List, Optional
+from typing import Iterator, List, Optional
 
-from logic.board import Board
 from logic.system import (
-     SearchResult, StackService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, IdFactory
+     SearchResult, StackService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter,
+     IdFactory
 )
 from logic.token import (
-    Token, TokenContext, TokenQueryService, TokenService, TokenStackOpsController, TokenStackServiceException,
-    TokenStackState
+    Token, TokenContext, TokenService, TokenStackOpsController, TokenStackServiceException, TokenStackState
 )
 
 
 class TokenStackService(StackService[Token]):
     """
     Role:
-        -   Data layer
-        -   CRUD controller.
-        -   ACID compliance.
-        -   Microservice API
-        -   Interface
+        -   API
+        -   ACID compliance
+        -   Stateful microservice
+        -   Stateful CRUD Controller
+        -   Operations Provider
 
     Responsibilities:
-        1.  Preserve consistency during updates and deletes.
-        2.  Stateful, scalable integrity management of Tokens.
-        3.  Grant read access to tokens.
+        1.  Baremetal service request API for Token collections.
+        2.  Preserve consistency during updates and deletes.
+        3.  Stateful, scalable integrity management of Tokens.
+        4.  Token search and retrieval.
 
     Attributes:
         CAPACITY = 16
         SERVICE_NAME = TokenStackService
  
+        id: int
+        name: str
+        size: int
         capacity: int
-        stack: List[Token]
-        service: TokenService
-        state: TokenStackState
-        controller: TokenStackOpsController
-        context_service: TokenQueryService
+        items: List[Token]
+        iterator: Iterator[Token]
+        stack_state: TokenStackState
+        current_item: Optional[Token]
+        integrity_service: TokenService
+        ops_controller: TokenStackOpsController
 
     Provides:
-        -   id: int
-        -   name: str
-        -   items() -> List[T]
-        -   size() -> int
-        -   iterator() -> Iterator[T]
         -   is_empty() -> bool
-        -   current_item(self) -> T
-        -   integrity_service() -> IntegrityService[T]
-        -   context_service(self) -> QueryService[T]
-        -   push(item: T) -> InsertionResult
-        -   pop() -> DeletionResult[T]
-        -   delete_by_id(id: int) -> DeletionResult[T]
-        -   query(collider_candidates: List[T], query: Context[T]) -> SearchResult[List[T]]
-        -   operation() -> TokenStackOpsController
-        -   is_getting_ready_for_deployment() -> bool
-        -   is_ready_for_deployment() -> bool
         -   is_being_deployed() -> bool
         -   is_deployed_on_board() -> bool
-        -   stack_state(self) -> TokenStackState
+        -   pop() -> DeletionResult[Token]
+        -   push(item: Token) -> InsertionResult
+        -   is_ready_for_deployment() -> bool
+        -   is_getting_ready_for_deployment() -> bool
+        -   delete_by_id(id: int) -> DeletionResult[Token]
+        -   query(context: Context[Token]) -> SearchResult[List[Token]]
 
-    Super:
+    Super Class:
+        StackService
     """
     DEFAULT_CAPACITY: int = 16
     SERVICE_NAME: str = "TokenStackService"
@@ -74,30 +69,27 @@ class TokenStackService(StackService[Token]):
     _capacity: int
     _stack: List[Token]
     _state: TokenStackState
-    _controller: TokenStackOpsController
+    _ops_controller: TokenStackOpsController
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             capacity: int = DEFAULT_CAPACITY,
             id: int = IdFactory.next_id(class_name="TokenStackService"),
-            controller: TokenStackOpsController = TokenStackOpsController(),
+            ops_controller: TokenStackOpsController = TokenStackOpsController(),
     ):
         """
         Args:
             id: int
             name: str
             capacity: int
-            service: TokenService
-            controller: TokenStackOpsController
-            context_service: TokenQueryService
+            ops_controller: TokenStackOpsController
         """
         super().__init__(id=id, name=name,)
         self._stack = []
         self._capacity = capacity
-        self._controller = controller
+        self._ops_controller = ops_controller
         self._state = TokenStackState.NOT_READY_FORD_DEPLOYMENT
-
 
     @property
     def size(self) -> int:
@@ -131,18 +123,31 @@ class TokenStackService(StackService[Token]):
     def items(self) -> List[Token]:
         return self._stack
     
+    @property
+    def iterator(self) -> Iterator[Token]:
+        return iter(self._stack)
     
     @property
-    def controller(self) -> TokenStackOpsController:
-        return self._controller
+    def ops_controller(self) -> TokenStackOpsController:
+        return self._ops_controller
+    
+    @@property
+    def integrity_service(self) -> TokenService:
+        return self._ops_controller.integrity_service
     
     @property
     def is_getting_ready_for_deployment(self) -> bool:
-        return not self.is_full and self._state == TokenStackState.NOT_READY_FORD_DEPLOYMENT
+        return not (
+                self.is_full and
+                self._state == TokenStackState.NOT_READY_FORD_DEPLOYMENT
+        )
     
     @property
     def is_ready_for_deployment(self) -> bool:
-        return self.is_full and self._state == TokenStackState.READY_FOR_DEPLOYMENT
+        return (
+                self.is_full and
+                self._state == TokenStackState.READY_FOR_DEPLOYMENT
+        )
     
     @property
     def is_being_deployed(self) -> bool:
@@ -150,7 +155,10 @@ class TokenStackService(StackService[Token]):
     
     @property
     def is_deployed_on_board(self) -> bool:
-        return self.is_empty and self._state == TokenStackState.DEPLOYED_ON_BOARD
+        return (
+                self.is_empty and
+                self._state == TokenStackState.DEPLOYED_ON_BOARD
+        )
     
     @property
     def stack_state(self) -> TokenStackState:
@@ -159,10 +167,6 @@ class TokenStackService(StackService[Token]):
     @stack_state.setter
     def stack_state(self, state: TokenStackState):
         self._state = state
-        
-    @property
-    def iterator(self) -> iter:
-        return iter(self._stack)
     
     @LoggingLevelRouter.monitor
     def pop(self) -> DeletionResult[Token]:
@@ -179,8 +183,8 @@ class TokenStackService(StackService[Token]):
         """
         method = f"{self.__class__.__name__}.pop"
         
-        # --- Forward the request to the controller. ---#
-        pop_result = self._controller.crud.pop.execute()
+        # --- Forward the request to the ops_controller. ---#
+        pop_result = self._ops_controller.crud.pop.execute()
         
         # Handle the case that, the request was not completed.
         if pop_result.is_failure:
@@ -214,12 +218,12 @@ class TokenStackService(StackService[Token]):
         """
         method = f"{self.__class__.__name__}.push"
         
-        # --- Forward the request to the controller. ---#
-        insertion_result = self._controller.crud.push.execute(
+        # --- Forward the request to the ops_controller. ---#
+        insertion_result = self._ops_controller.crud.push.execute(
             token=item,
             token_stack=self,
-            rank_quota_analyzer=self._controller.rank_quota_analyzer,
-            token_collision_detector=self._controller.collision_detector
+            rank_quota_analyzer=self._ops_controller.rank_quota_analyzer,
+            token_collision_detector=self._ops_controller.collision_detector
         )
         # Handle the case that, the request was not completed.
         if insertion_result.is_failure:
@@ -258,13 +262,13 @@ class TokenStackService(StackService[Token]):
         """
         method = f"{self.__class__.__name__}.delete_by_id"
         
-        # --- Forward the request to the controller. ---#
-        delete_by_id_result = self._controller.crud.pop.delete_by_id(
+        # --- Forward the request to the ops_controller. ---#
+        request_result = self._ops_controller.crud.pop.delete_by_id(
             id=id,
             identity_service=identity_service
         )
         # Handle the case that, the request was not completed
-        if delete_by_id_result.is_failure:
+        if request_result.is_failure:
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 TokenStackServiceException(
@@ -272,11 +276,11 @@ class TokenStackService(StackService[Token]):
                     cls_name=self.__class__.__name__,
                     msg=TokenStackServiceException.MSG,
                     err_code=TokenStackServiceException.ERR_CODE,
-                    ex=delete_by_id_result.exception,
+                    ex=request_result.exception,
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return delete_by_id_result
+        return request_result
     
     @LoggingLevelRouter.monitor
     def query(self, context: TokenContext) -> SearchResult[List[Token]]:
@@ -296,10 +300,10 @@ class TokenStackService(StackService[Token]):
         method = f"{self.__class__.__name__}.query"
         
         # --- Forward the request to the context_service. ---#
-        query_result = self._controller.crud.query.execute(context=context)
+        request_result = self._ops_controller.crud.query.execute(context=context)
         
         # Handle the case that, the request was not completed.
-        if query_result.is_failure:
+        if request_result.is_failure:
             # Return the exception chain on failure.
             return SearchResult.failure(
                 TokenStackServiceException(
@@ -307,8 +311,8 @@ class TokenStackService(StackService[Token]):
                     cls_name=self.__class__.__name__,
                     msg=TokenStackServiceException.MSG,
                     err_code=TokenStackServiceException.ERR_CODE,
-                    ex=query_result.exception,
+                    ex=request_result.exception,
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return query_result
+        return request_result
