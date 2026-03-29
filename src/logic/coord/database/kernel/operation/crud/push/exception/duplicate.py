@@ -14,14 +14,14 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# ADDING_DUPLICATE_COORD_EXCEPTION #======================#
-    "AddingDuplicateCoordException",
+    # ======================# PUSHING_DUPLICATE_COORD_EXCEPTION #======================#
+    "PushingDuplicateCoordException",
 ]
 
 from logic.system import DebugException
 
-# ======================# ADDING_DUPLICATE_COORD_EXCEPTION #======================#
-class AddingDuplicateCoordException(DebugException):
+# ======================# PUSHING_DUPLICATE_COORD_EXCEPTION #======================#
+class PushingDuplicateCoordException(DebugException):
     """
     Role:
         - Error Variable Identifier
@@ -43,7 +43,7 @@ class AddingDuplicateCoordException(DebugException):
     Super Class:
         CoordDebugException
     """
-    ERR_CODE = "ADDING_DUPLICATE_COORD_EXCEPTION"
+    ERR_CODE = "PUSHING_DUPLICATE_COORD_EXCEPTION"
     MSG = "Coord is already in the stack."
     
     def __init__(

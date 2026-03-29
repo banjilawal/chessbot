@@ -14,6 +14,4 @@ None
 
 # Modules
 from .work import CoordStackPushException
-from .duplicate import AddingDuplicateCoordException
-from .full import CoordStackFullException
-from .rank import RankQuotaFullException
+from .duplicate import PushingDuplicateCoordException
