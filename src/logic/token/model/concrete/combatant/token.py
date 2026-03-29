@@ -35,7 +35,7 @@ class CombatantToken(Token):
         *   rank (Rank)
         *   designation (str)
         *   roster_number (int)
-        *   positions (CoordStack)
+        *   positions (CoordStackService)
         *   opening_square_name (str)
         *   current_position (Optional[Coord])
         *   previous_address (Optional[Coord])

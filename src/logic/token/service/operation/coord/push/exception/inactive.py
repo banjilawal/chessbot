@@ -42,7 +42,7 @@ class InactiveTokenPushingCoordException(TokenDebugException):
         TokenDebugException
     """
     ERR_CODE = "INACTIVE_TOKEN_PUSHING_COORD_EXCEPTION"
-    MSG = "An inactive token cannot pop its CoordStack."
+    MSG = "An inactive token cannot pop its CoordStackService."
     
     def __init__(
             self,

@@ -13,15 +13,15 @@ from typing import List
 from logic.system import (
     DeletionResult, InsertionResult, LoggingLevelRouter, SearchResult, Database, id_emitter
 )
-from logic.coord import Coord, CoordContext, CoordQueryService, CoordDatabaseException, CoordStack, CoordService
+from logic.coord import Coord, CoordContext, CoordQueryService, CoordDatabaseException, CoordStackService, CoordService
 
 class CoordDatabase(Database[Coord]):
     """
     Role:Unique Data Stack, Search Service, CRUD Controller, Encapsulation, API layer.
 
     Responsibilities:
-    1.  Ensure all bag managed by CoordStack are unique.
-    2.  Guarantee consistency of records in CoordStack.
+    1.  Ensure all bag managed by CoordStackService are unique.
+    2.  Guarantee consistency of records in CoordStackService.
 
     Super Class:
         *   Database
@@ -34,12 +34,12 @@ class CoordDatabase(Database[Coord]):
     """
     SERVICE_NAME = "CoordDatabase"
     
-    _coord_stack: CoordStack
+    _coord_stack: CoordStackService
     def __init__(
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
-            coord_stack: CoordStack = CoordStack(),
+            coord_stack: CoordStackService = CoordStackService(),
     ):
         """
         # ACTION:
@@ -48,7 +48,7 @@ class CoordDatabase(Database[Coord]):
         # PARAMETERS:
             *   id (int): = id_emitter.service_id
             *   name (str): = SERVICE_NAME
-            *   member_service (CoordStack): = CoordStack()
+            *   member_service (CoordStackService): = CoordStackService()
 
         # RETURNS:
         None
@@ -115,7 +115,7 @@ class CoordDatabase(Database[Coord]):
         Raises:
             *   CoordStackException
         """
-        method = "CoordStack.coord_search"
+        method = "CoordStackService.coord_search"
         
         search_result = self._coord_stack.context_service.finder.route(context=context)
         # Handle the case that, a successful search result does not have List[Coord] as its payload.

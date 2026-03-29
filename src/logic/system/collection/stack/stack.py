@@ -12,7 +12,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, Iterator, List, Optional, TypeVar
 
 from logic.system import (
-    Context, QueryService, IdentityService, InsertionResult, LoggingLevelRouter, IntegrityService, DeletionResult,
+    Context, IdentityService, InsertionResult, LoggingLevelRouter, IntegrityService, DeletionResult,
     SearchResult
 )
 
@@ -52,7 +52,7 @@ class StackService(ABC, Generic[T]):
         -   delete_by_id(id: int) -> DeletionResult[T]
         -   query(collider_candidates: List[T], query: Context[T]) -> SearchResult[List[T]]
 
-    Super:
+    Super class:
     """
     _id: int
     _name: str
@@ -105,12 +105,6 @@ class StackService(ABC, Generic[T]):
         """"Implement to access the model's integrity service."""
         pass
     
-    @property
-    @abstractmethod
-    def context_service(self) -> QueryService[T]:
-        """"Implement to access the QueryService."""
-        pass
-    
     @abstractmethod
     @LoggingLevelRouter.monitor
     def push(self, item: T) -> InsertionResult:
@@ -134,6 +128,6 @@ class StackService(ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def query(self, dataset: List[T], context: C) -> SearchResult[List[T]]:
+    def query(self, context: Context[T]) -> SearchResult[List[T]]:
         """Implement to read from the stack.'"""
         pass

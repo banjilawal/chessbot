@@ -27,7 +27,7 @@ class InactiveTokenPoppingCoordException(TokenDebugException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that an inactive Token cannot undo its last move by popping its CoordStack.
+        1.  Indicate that an inactive Token cannot undo its last move by popping its CoordStackService.
     
     Attributes:
         var: Optional[str]
@@ -42,7 +42,7 @@ class InactiveTokenPoppingCoordException(TokenDebugException):
         TokenDebugException
     """
     ERR_CODE = "INACTIVE_TOKEN_UNDO_COORD_POP_EXCEPTION"
-    MSG = "An inactive token cannot pop its CoordStack."
+    MSG = "An inactive token cannot pop its CoordStackService."
     
     def __init__(
             self,

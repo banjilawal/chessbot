@@ -27,7 +27,7 @@ class UnopenedTokenPoppingCoordException(TokenDebugException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that a deployed token which has not opened cannot pop its CoordStack
+        1.  Indicate that a deployed token which has not opened cannot pop its CoordStackService
 
     Attributes:
         var: Optional[str]
@@ -42,7 +42,7 @@ class UnopenedTokenPoppingCoordException(TokenDebugException):
         TokenDebugException
     """
     ERR_CODE = "UNOPENED__TOKEN_POPPING_COORD_EXCEPTION"
-    MSG = "An unopened token cannot pop its CoordStack."
+    MSG = "An unopened token cannot pop its CoordStackService."
     
     def __init__(
             self,

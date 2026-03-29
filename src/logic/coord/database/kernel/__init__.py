@@ -14,4 +14,4 @@ from .operation import *
 from .exception import *
 
 # Modules
-from .stack import CoordStack
+from .stack import CoordStackService

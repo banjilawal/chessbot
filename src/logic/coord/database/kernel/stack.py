@@ -10,17 +10,16 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Iterator, List, Optional, cast
 
-
-from logic.system import IdentityService, StackService, DeletionResult, InsertionResult, SearchResult, id_emitter
-from logic.coord import (
-    Coord, CoordContext, CoordService, CoordQueryService, CoordStackException, PushingDuplicateCoordException,
-    MaxConsecutiveCoordPopException,
-    PoppingCoordStackFailedException, PoppingEmtpyCoordStackException, PushingCoordFailedException
+from logic.system import (
+    IdFactory, IdentityService, LoggingLevelRouter, MethodImplementationException,
+    StackService, DeletionResult, InsertionResult, SearchResult,
 )
-from logic.system.collection.stack.stack import C, T
+from logic.coord import (
+    Coord, CoordContext, CoordService, CoordStackOpsController, CoordStackServiceException
 
+)
 
-class CoordStack(StackService[Coord]):
+class CoordStackService(StackService[Coord]):
     """
     Role:Data Stack, Search Service, CRUD Controller, Encapsulation, API layer.
 
@@ -43,52 +42,34 @@ class CoordStack(StackService[Coord]):
         *   See StackService class for inherited attributes.
     """
     
-    @property
-    def items(self) -> List[T]:
-        pass
+    SERVICE_NAME = "CoordStackService"
     
-    @property
-    def iterator(self) -> Iterator[T]:
-        pass
-    
-    def delete_by_id(self, id: int, identity_service: IdentityService = IdentityService()) -> DeletionResult[T]:
-        pass
-    
-    def query(self, dataset: List[T], context: C) -> SearchResult[List[T]]:
-        pass
-    
-    SERVICE_NAME = "CoordStack"
-    
+    _stack: List[Coord]
     _current_coord: Optional[Coord]
     _previous_coord: Optional[Coord]
-    _stack: List[Coord]
+    _ops_controller: CoordStackOpsController
+
     
     def service(
             self,
             name: str = SERVICE_NAME,
-            id: int = id_emitter.service_id,
             items: List[Coord] = List[Coord],
-            service: CoordService = CoordService(),
-            context_service: CoordQueryService = CoordQueryService(),
+            id: int = IdFactory.next_id(class_name="CoordStackService"),
+            ops_controller: CoordStackOpsController = CoordStackOpsController(),
     ):
         """
         Args:
             name: str
             id: int
             items: List[Coord]
-            service: CoordService
-            context_service: CoordQueryService
+            ops_controller: CoordStackOpsController
         """
-        super().__init__(
-            id=id,
-            name=name,
-            items=items,
-            entity_service=service,
-            context_service=context_service,
-        )
+        super().__init__(id=id, name=name,)
+        self._stack = items
         self._previous_coord = None
         self._current_coord = None
-        self._stack = items
+        self._ops_controller = ops_controller
+
     
     @property
     def size(self) -> int:
@@ -108,110 +89,160 @@ class CoordStack(StackService[Coord]):
     
     @property
     def integrity_service(self) -> CoordService:
-        """Get CoordService instance."""
-        return cast(CoordService, self.integrity_service)
+        return self._ops_controller.integrity_service
     
     @property
-    def context_service(self) -> CoordQueryService:
-        """Get CoordQueryService."""
-        return cast(CoordQueryService, self.context_service)
+    def items(self) -> List[Coord]:
+        return self._stack
     
-    def push(self, item: Coord) -> InsertionResult[bool]:
+    @property
+    def iterator(self) -> Iterator[Coord]:
+        return iter(self._stack)
+    
+    @LoggingLevelRouter.monitor
+    def push(self, item: Coord) -> InsertionResult:
         """
-        # ACTION:
-            1.  If the coord fails validation send an exception chain in the InsertionResult.
-            2.  If the current_position is not null, store it in previous_top then call super().push_item.
-            3.  If super().push_item fails send the exception chain in the InsertionResult. Else,
-                *   Set self.previous_coord = previous_top.
-                *   Forward the InsertionResult from super().push_item to the caller.
-                       
+        Put a coord ontop of the stack.
+
+        Actions:
+            1.  Send an exception chain in the InsertionResult if push fails.
+                Otherwise, send the success result.
         Args:
             item: Coord
-            
         Returns:
-            InsertionResult[Coord]
-            
+            InsertionResult
         Raises:
-            CoordStackException
+            CoordStackServiceException
         """
-        method = "CoordStack.push"
+        method = f"{self.__class__.__name__}.push"
         
-        # Handle the case that, coord validation fails.
-        validation = self.integrity_service.validation.execute(candidate=item)
-        if validation.is_failure:
-            # Return the exception chain on failure.
+        # Request a push from the controller.
+        request_result = self._ops_controller.crud_controller.push.execute(
+            coord=item,
+            coord_stack=self,
+        )
+        # Handle the case that, the request is not fulfilled.
+        if request_result.is_failure:
             return InsertionResult.failure(
-                CoordStackException(
-                    msg=f"ServiceId:{self.id}, {method}: {CoordStackException.ERR_CODE}",
-                    ex=PushingCoordFailedException(
-                        msg=f"{method}: {PushingCoordFailedException.ERR_CODE}",
-                        ex=validation.exception
-                    )
+                CoordStackServiceException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=CoordStackServiceException.MSG,
+                    err_code=CoordStackServiceException.ERR_CODE,
+                    ex=request_result.exception,
                 )
             )
-        # Handle the case that, the Coord is already at the top.
-        if item == self._current_coord:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                CoordStackException(
-                    msg=f"ServiceId:{self.id}, {method}: {CoordStackException.ERR_CODE}",
-                    ex=PushingCoordFailedException(
-                        msg=f"{method}: {PushingCoordFailedException.ERR_CODE}",
-                        ex=PushingDuplicateCoordException(f"{method}: {PushingDuplicateCoordException.MSG}")
-                    )
-                )
-            )
-        #--- Set the updated coord as the original one then, push the new coord. ---#
-        self._previous_coord = self._current_coord
-        self._stack.append(item)
-        
-        # Return the successful result to the caller.
-        return InsertionResult.success()
+        # --- Forward the work product to the caller. ---#
+        return request_result
     
+    @LoggingLevelRouter.monitor
     def pop(self) -> DeletionResult[Coord]:
         """
-        # ACTION:
-            1.  If the list is empty send the exception in the DeletionResult. Else, call the super class undo_push
-            2.  If the super class undo_push failed encapsulate the super class exception and send in the
-                DeletionResult, Else, forward the super().push_item() result to the caller.
+        Get the coord at the top of the stack, if it exists.
+
+        Actions:
+            1.  Send an exception chain in the DeletionResult if pop fails.
+                Otherwise, send the success result.
         Args:
-        
         Returns:
             DeletionResult[Coord]
-            
         Raises:
-            CoordStackException
-            PoppingEmtpyCoordStackException
+            CoordStackServiceException
         """
-        method = "CoordStack.pop_coord"
+        method = f"{self.__class__.__name__}.pop"
         
-        # Handle the case that, the list is empty
-        if self.is_empty:
-            # Return the exception chain on failure.
+        # Request a pop from the controller.
+        request_result = self._ops_controller.crud_controller.pop.execute(
+            coord_stack=self,
+        )
+        # Handle the case that, the request is not fulfilled.
+        if request_result.is_failure:
             return DeletionResult.failure(
-                CoordStackException(
-                    msg=f"ServiceId:{self.id}, {CoordStackException.ERR_CODE}",
-                    ex=PoppingCoordStackFailedException(
-                        msg=f"{method}: {PoppingCoordStackFailedException.ERR_CODE}",
-                        ex=PoppingEmtpyCoordStackException(f"{method}: {CoordStackException.MSG}")
-                    )
+                CoordStackServiceException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=CoordStackServiceException.MSG,
+                    err_code=CoordStackServiceException.ERR_CODE,
+                    ex=request_result.exception,
                 )
             )
-        # Handle the case that, a new coord has not been pushed onto the stack. Only one undo is allowed in a turn.
-        if self._previous_coord == self._current_coord:
-            # Return the exception chain on failure.
-            return DeletionResult.failure(
-                CoordStackException(
-                    msg=f"ServiceId:{self.id}, {CoordStackException.ERR_CODE}",
-                    ex=PoppingCoordStackFailedException(
-                        msg=f"{method}: {PoppingCoordStackFailedException.ERR_CODE}",
-                        ex=MaxConsecutiveCoordPopException(
-                            f"{method}: {MaxConsecutiveCoordPopException.MSG}"
-                        )
-                    )
+        # --- Forward the work product to the caller. ---#
+        return request_result
+    
+    @LoggingLevelRouter.monitor
+    def delete_by_id(
+            self, id: int, identity_service: IdentityService = IdentityService()
+    ) -> DeletionResult[Coord]:
+        """
+        Send an exception chain in the DeletionResult if the method
+        is called. Coords do not have ids.
+
+        Actions:
+            1.  Coords do not have ids. Send an exception chain if this method is called.
+        Args:
+            id: int
+            identity_service: IdentityService
+        Returns:
+            DeletionResult[Coord]
+        Raises:
+            CoordStackServiceException
+            MethodImplementationException
+        """
+        method = f"{self.__class__.__name__}.delete_by_id"
+        
+        # Handle the case that, the method is called.
+        return SearchResult.failure(
+            CoordStackServiceException(
+                cls_mthd=method,
+                cls_name=self.__class__.__name__,
+                msg=CoordStackServiceException.MSG,
+                err_code=CoordStackServiceException.ERR_CODE,
+                ex=MethodImplementationException(
+                    var=method,
+                    err_code=MethodImplementationException.ERR_CODE,
+                    msg=(
+                        f"{method} is not implemented: coords does not have ids."
+                    ),
+  
+                ),
+            )
+            )
+    
+    @LoggingLevelRouter.monitor
+    def query(self, context: CoordContext) -> SearchResult[List[Coord]]:
+        """
+        Find a coord in the stack.
+
+        Actions:
+            1.  Send an exception chain in the ComputationResult if either:
+                    -   The vector is unsafe.
+                    -   A coord cannot be built from the vector's components.
+            2.  Otherwise, send the success result.
+        Args:
+            context: CoordContext
+        Returns:
+            SearchResult[Coord]
+        Raises:
+            CoordStackServiceException
+        """
+        method = f"{self.__class__.__name__}.query"
+        
+        # Request a search from the controller.
+        request_result = self._ops_controller.crud_controller.query.execute(
+            context=context,
+            dataset=self.items,
+        )
+        # Handle the case that, the request is not fulfilled.
+        if request_result.is_failure:
+            return SearchResult.failure(
+                CoordStackServiceException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=CoordStackServiceException.MSG,
+                    err_code=CoordStackServiceException.ERR_CODE,
+                    ex=request_result.exception,
                 )
             )
-        # --- Remove the coord at the top of the stack and send in the DeletionResult. ---#
-        coord = self._stack.pop(-1)
-        return DeletionResult.success(payload=coord)
+        # --- Forward the work product to the caller. ---#
+        return request_result
     

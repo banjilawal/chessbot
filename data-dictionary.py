@@ -284,7 +284,7 @@ class CoordinateStack(BaseModel):
   class Config:
     frozen = True
 
-  def push_coordinate(self, coordinate: Coordinate) -> 'CoordStack':
+  def push_coordinate(self, coordinate: Coordinate) -> 'CoordStackService':
     new_stack = self._stack + [coordinate]
     return CoordinateStack(_stack=new_stack)
 
