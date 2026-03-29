@@ -26,9 +26,10 @@ class TokenContextException(AnchorException):
         -   Exception coverage target
 
     Responsibilities:
-        1.  Anchoring target for TokenContext debug exceptions.
-        2.  Indicate which TokenContext method received a worker's
-            (layer-1) failure result.
+        1.  Anchoring target for TokenContext debug (layer-2) error variable
+            information.
+        2.  Indicate which TokenContext method received a worker's (layer-1)
+            failure result.
 
     Attributes:
         msg: Optional[str]

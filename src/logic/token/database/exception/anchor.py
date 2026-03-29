@@ -26,7 +26,7 @@ class TokenDatabaseException(DatabaseException):
         -   Exception coverage target
 
     Responsibilities:
-        1.  Anchoring target for TokenDatabase debug exceptions.
+        1.  Anchoring target for TokenDatabase debug (layer-2) error variable information.
         2.  Indicate which TokenDatabase method received a worker's (layer-1) failure result.
 
     Attributes:

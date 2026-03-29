@@ -21,23 +21,13 @@ from logic.system import AnchorException
 # ======================# SQUARE_CONTEXT_EXCEPTION #======================#
 class SquareContextException(AnchorException):
     """
-    Role:Coverage Target, Exception Chain Layer 0
+    Role:
+        -   Exception Chain Layer 0
+        -   Exception coverage target
 
     Responsibilities:
-    1.  Anchoring target for SquareContext debug (layer-2) error state firing incident
-        reports on
-            *   the triggering variable
-            *   The trigger's value.
-    2.  Indicate which SquareContext method received a worker's (layer-1) failure result.
-
-    Super Class:
-        *   AnchorException
-
-    Provides:
-
-
-    # INHERITED ATTRIBUTES:
-        *   See AnchorException class for inherited attributes.
+        1.  Anchoring target for SquareContext debug (layer-2) error variable information.
+        2.  Indicate which SquareContext method received a worker's (layer-1) failure result.
 
     Attributes:
         msg: Optional[str]
@@ -46,11 +36,10 @@ class SquareContextException(AnchorException):
         cls_mthd: Optional[str]
         err_code: Optional[str]
 
-    # LOCAL METHODS:
-    None
+    Provides:
 
-    # INHERITED METHODS:
-        *   See AnchorException class for inherited methods.
+    Super Class:
+        AnchorException
     """
     CLS_NAME = "SquareContext"
     ERR_CODE = "SQUARE_CONTEXT_EXCEPTION"

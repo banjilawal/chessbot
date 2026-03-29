@@ -21,9 +21,9 @@ from logic.system import DebugException
 class TokenStackFullException(DebugException):
     """
     Role:
-        - Error Variable Identifier
-        - Exception Chain Layer 2
-        - Exception Messaging
+        -   Exception Chain Layer 2
+        -   Error Variable Identifier
+        -   Debugging Metadata provider
 
     Responsibilities:
         1.  Indicate that pushing a token to the stack failed because the stack was full.

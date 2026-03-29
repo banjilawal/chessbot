@@ -26,7 +26,7 @@ class TokenServiceException(ServiceException):
         -   Exception coverage target
 
     Responsibilities:
-        1.  Anchoring target for TokenService debug exceptions.
+        1.  Anchoring target for TokenService debug (layer-2) error variable information.
         2.  Indicate which TokenService method received a worker's (layer-1) failure result.
 
     Attributes:
