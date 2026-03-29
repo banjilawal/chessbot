@@ -10,7 +10,7 @@ version: 1.0.0
 #=========== SQUARE.CONTEXT PACKAGE CONTENTS ===========#
 
 # Packages
-from logic.square.query.context.builder import *
+from logic.square.query.context.build import *
 from .finder import *
 from .service import *
 from logic.square.query.context.validator import *

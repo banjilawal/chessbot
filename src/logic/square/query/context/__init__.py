@@ -10,7 +10,7 @@ version: 1.0.0
 # =========== SQUARE.QUERY.CONTEXT.CONTEXT PACKAGE CONTENTS ===========#
 
 # Packages
-from .builder import *
+from .build import *
 from .validator import *
 from .exception import *
 

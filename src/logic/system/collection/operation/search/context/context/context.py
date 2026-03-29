@@ -1,7 +1,7 @@
-# src/logic/system/collection/operation/search/query/query.py
+# src/logic/system/collection/operation/search/query/context.py
 
 """
-Module: logic.system.collection.operation.search.query.query
+Module: logic.system.collection.operation.search.query.context
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
@@ -15,19 +15,30 @@ T = TypeVar("T")
 
 class Context(ABC, Generic[T]):
     """
-    Role:Filtering Options, Data Transfer
-  
+    Role:
+        -   Selection
+        -   Routing mask
+
     Responsibilities:
-    1.  Provide a set of attribute-value pairs. Used in searches or forward lookups.
-    2.  For a search the attribute routes to search-by-attribute method and the value is the search target.
-    3.  In a forward hashmap lookup The query represents a Key for a KeyHash{Key: {str: [attribute-value-set]}
-  
-  
+        1.  Supply an attribute-value pair for selecting an execution path among different routes.
+                i.  Pick route by attribute (key)
+                ii. Logic performed on value.
+                
+    Attributes:
+        id: Optional[int]
+        name: Optional[str]
+        
     Provides:
-  
-    # ATTRIBUTES:
-        *   id (Optional[int])
-        *   name (Optional[str])
+        -   to_dict() -> Dict[str, Any]
+        
+    Super Class:
+    
+    Notes:
+        Used optional attributes with null default values instead of a union type because:
+            -   It's easier to extend
+            -   Implementations can decide if context can be mutually exclusive or not.
+            -   Unions are clunky if there are many attributes.
+            -   Unions don't lower validation and build integrity overhead.
     """
     _id: Optional[int]
     _name: Optional[str]
@@ -50,17 +61,5 @@ class Context(ABC, Generic[T]):
     
     @abstractmethod
     def to_dict(self) -> dict:
-        """
-        # ACTION:
-        1.  Convert a Context into a dictionary.
-        2.  Subclasses must implement this method.
-
-        # PARAMETERS:
-        None
-
-        # RETURNS:
-            dict
-
-        Raises:
-        """
+        """Implementations must override."""
         pass

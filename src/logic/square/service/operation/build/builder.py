@@ -1,4 +1,4 @@
-# src/logic/square/service/operation/build/exception.py
+# src/logic/square/service/operation/build/build.py
 
 """
 Module: logic.square.service.operation.build.build
