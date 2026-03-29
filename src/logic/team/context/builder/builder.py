@@ -11,16 +11,16 @@ from typing import Optional
 
 from logic.arena import Arena, ArenaService
 from logic.player import Player, PlayerService
-from logic.system import BuildTransaction, BuildResult,  GameColor, GameColorValidationTransaction, IdentityService, LoggingLevelRouter
+from logic.system import Builder, BuildResult,  GameColor, GameColorValidationTransaction, IdentityService, LoggingLevelRouter
 from logic.team import (
     TeamContext, TeamContextBuildException, ArenaTeamContextFlagsException, TeamContextBuildRouteException,
     ZeroTeamContextFlagsException
 )
 
 
-class TeamContextBuildTransaction(BuildTransaction[TeamContext]):
+class TeamContextBuilder(Builder[TeamContext]):
     """
-    Role:BuildTransaction, Data Integrity And Reliability Guarantor
+    Role:Builder, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce TeamContext instances whose integrity is guaranteed at creation.
@@ -29,7 +29,7 @@ class TeamContextBuildTransaction(BuildTransaction[TeamContext]):
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     Super Class:
-        *   BuildTransaction
+        *   Builder
 
     Provides:
 

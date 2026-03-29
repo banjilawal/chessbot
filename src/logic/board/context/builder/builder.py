@@ -10,15 +10,15 @@ version: 1.0.0
 from typing import Optional
 
 from logic.arena import Arena, ArenaService
-from logic.system import BuildTransaction, BuildResult, IdentityService
+from logic.system import Builder, BuildResult, IdentityService
 from logic.board import (
     BoardContextBuildRouteException, ZeroBoardContextFlagsException, BoardContext, BoardContextBuildException,
     ArenaBoardContextFlagsException
 )
 
-class BoardContextBuildTransaction(BuildTransaction[BoardContext]):
+class BoardContextBuilder(Builder[BoardContext]):
     """
-    Role:BuildTransaction, Data Integrity And Reliability Guarantor
+    Role:Builder, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce BoardContext instances whose integrity is guaranteed at creation.
@@ -27,7 +27,7 @@ class BoardContextBuildTransaction(BuildTransaction[BoardContext]):
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     Super Class:
-        *   BuildTransaction
+        *   Builder
 
     Provides:
 
@@ -66,7 +66,7 @@ class BoardContextBuildTransaction(BuildTransaction[BoardContext]):
             *   ArenaBoardContextFlagsException
             *   BoardContextBuildRouteException
         """
-        method = "BoardContextBuildTransaction.build"
+        method = "BoardContextBuilder.build"
         
         # --- Count how many optional parameters are not-null. only one should be not null. ---#
         params = [id, arena]

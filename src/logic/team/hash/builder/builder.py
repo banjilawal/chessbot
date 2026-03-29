@@ -10,14 +10,14 @@ version: 1.0.0
 from __future__ import annotations
 
 from logic.schema import SchemaService
-from logic.system import BuildResult, BuildTransaction, LoggingLevelRouter
+from logic.system import BuildResult, Builder, LoggingLevelRouter
 from logic.team import (
     BlackTeamHasWrongSchemaException, Team, TeamHash, TeamHashBuildException,
     TeamSchemaCollisionException, TeamValidationTransaction, WhiteTeamHasWrongSchemaException
 )
 
 
-class TeamHashBuildTransaction(BuildTransaction[TeamHash]):
+class TeamHashBuilder(Builder[TeamHash]):
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -28,7 +28,7 @@ class TeamHashBuildTransaction(BuildTransaction[TeamHash]):
             team_validator: TeamValidationTransaction = TeamValidationTransaction(),
             schema_service: SchemaService = SchemaService(),
     ) -> BuildResult[TeamHash]:
-        method = "TeamHashBuildTransaction.build"
+        method = "TeamHashBuilder.build"
         
         # Handle the case that, the white_team does not pass a validation check.
         white_team_validation_result = team_validator.execute(white_team)

@@ -15,7 +15,7 @@ from logic.system import BuildResult, LoggingLevelRouter, ValidationTransaction
 T = TypeVar("T")
 
 
-class BuildTransaction(ABC, Generic[T]):
+class Builder(ABC, Generic[T]):
     """
     Role
         -   Transaction Worker

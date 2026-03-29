@@ -10,16 +10,16 @@ version: 1.0.0
 from __future__ import annotations
 
 from logic.node import NodeService
-from logic.pair import PairListBuildTransaction, NodeTreeBuildException
+from logic.pair import PairListBuilder, NodeTreeBuildException
 from logic.pair.pair.service.service import PairService
 from logic.pair.tree.tree import NodeTree
 from logic.span import SquareSpan, SquareSpanService
-from logic.system import BuildResult, BuildTransaction, LoggingLevelRouter
+from logic.system import BuildResult, Builder, LoggingLevelRouter
 
 
-class NodeTreeBuildTransaction(BuildTransaction[NodeTree]):
+class NodeTreeBuilder(Builder[NodeTree]):
     """
-     Role:BuildTransaction, Data Integrity And Reliability Guarantor
+     Role:Builder, Data Integrity And Reliability Guarantor
 
      Responsibilities:
      1.  Produce NodeTree instances whose integrity and reliability are guaranteed.
@@ -27,13 +27,13 @@ class NodeTreeBuildTransaction(BuildTransaction[NodeTree]):
      3.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
      Super Class:
-         * BuildTransaction
+         * Builder
 
     Provides:
 
 
     # INHERITED ATTRIBUTES:
-        *   See BuildTransaction class for inherited attributes.
+        *   See Builder class for inherited attributes.
 
     Attributes:
     None
@@ -42,7 +42,7 @@ class NodeTreeBuildTransaction(BuildTransaction[NodeTree]):
     None
 
     # INHERITED METHODS:
-        *   See BuildTransaction class for inherited methods.
+        *   See Builder class for inherited methods.
     """
     @classmethod
     @LoggingLevelRouter.monitor
@@ -52,8 +52,8 @@ class NodeTreeBuildTransaction(BuildTransaction[NodeTree]):
             node_service: NodeService = NodeService(),
             pair_service: PairService = PairService(),
             square_span_service: SquareSpanService = SquareSpanService(),
-            pair_list_builder: PairListBuildTransaction = PairListBuildTransaction(),
-    ) -> BuildResult[NodeTreeBuildTransaction]:
+            pair_list_builder: PairListBuilder = PairListBuilder(),
+    ) -> BuildResult[NodeTreeBuilder]:
         """
         Action:
             1.  If building a node from the tail_square fails send an exception chain in
@@ -65,7 +65,7 @@ class NodeTreeBuildTransaction(BuildTransaction[NodeTree]):
             square_span: SquareSpan
             node_service: NodeService
             square_span_service: SquareSpanService
-            pair_list_builder: PairListBuildTransaction
+            pair_list_builder: PairListBuilder
             
 
         Returns:

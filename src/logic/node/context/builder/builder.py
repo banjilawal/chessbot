@@ -17,13 +17,13 @@ from logic.node import (
     NodeContextBuildRouteException, NodeValidationTransaction, ZeroNodeContextFlagsException
 )
 from logic.square import Square, SquareService
-from logic.system import BuildTransaction, BuildResult, NumberValidationTransaction
+from logic.system import Builder, BuildResult, NumberValidationTransaction
 
 
 
-class NodeContextBuildTransaction(BuildTransaction[NodeContext]):
+class NodeContextBuilder(Builder[NodeContext]):
     """
-    Role:BuildTransaction, Data Integrity And Reliability Guarantor
+    Role:Builder, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce NodeContext instances whose integrity is guaranteed at creation.
@@ -32,7 +32,7 @@ class NodeContextBuildTransaction(BuildTransaction[NodeContext]):
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     Super Class:
-        *   BuildTransaction
+        *   Builder
 
     Provides:
 
@@ -78,7 +78,7 @@ class NodeContextBuildTransaction(BuildTransaction[NodeContext]):
                 *   ArenaNodeContextFlagsException
                 *   NodeContextBuildRouteException
             """
-        method = "NodeContextBuildTransaction.build"
+        method = "NodeContextBuilder.build"
 
         # --- Count how many optional parameters are not-null. only one should be not null. ---#
         params = [priority, square,predecessor, discovery_status,]

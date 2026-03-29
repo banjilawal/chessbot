@@ -9,7 +9,7 @@ version: 1.0.0
 from typing import cast
 
 from logic.system import QueryService, id_emitter
-from logic.persona import PersonaLookupProcess, PersonaKey, PersonaKeyBuildTransaction, PersonaKeyValidationTransaction
+from logic.persona import PersonaLookupProcess, PersonaKey, PersonaKeyBuilder, PersonaKeyValidationTransaction
 
 
 class PersonaKeyService(QueryService[PersonaKey]):
@@ -38,7 +38,7 @@ class PersonaKeyService(QueryService[PersonaKey]):
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             lookup: PersonaLookupProcess = PersonaLookupProcess(),
-            builder: PersonaKeyBuildTransaction = PersonaKeyBuildTransaction(),
+            builder: PersonaKeyBuilder = PersonaKeyBuilder(),
             validator: PersonaKeyValidationTransaction = PersonaKeyValidationTransaction(),
     ):
         """
@@ -47,7 +47,7 @@ class PersonaKeyService(QueryService[PersonaKey]):
         # PARAMETERS:
             *   id (nt)
             *   name (str)
-            *   build (PersonaKeyBuildTransaction)
+            *   build (PersonaKeyBuilder)
             *   validation (PersonaKeyValidationTransaction)
         # RETURNS:
             None
@@ -57,9 +57,9 @@ class PersonaKeyService(QueryService[PersonaKey]):
         super().__init__(id=id, name=name, builder=builder, validator=validator, finder=lookup)
     
     @property
-    def build(self) -> PersonaKeyBuildTransaction:
-        """get PersonaKeyBuildTransaction"""
-        return cast(PersonaKeyBuildTransaction, self.entity_builder)
+    def build(self) -> PersonaKeyBuilder:
+        """get PersonaKeyBuilder"""
+        return cast(PersonaKeyBuilder, self.entity_builder)
     
     @property
     def validation(self) -> PersonaKeyValidationTransaction:

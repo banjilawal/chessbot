@@ -11,7 +11,7 @@ version: 1.0.0
 from typing import cast
 
 from logic.arena import (
-    Arena, ArenaAlreadyContainsTeamException, ArenaBuildTransaction, ArenaServiceException,
+    Arena, ArenaAlreadyContainsTeamException, ArenaBuilder, ArenaServiceException,
     ArenaTeamRelationAnalysis, ArenaValidationTransaction, ChangingArenaTeamBlockedException, TeamPlayingDifferentArenaException
 )
 from logic.schema import Schema, SchemaService
@@ -45,7 +45,7 @@ class ArenaService(IntegrityService[Arena]):
             self,
             name: str = DEFAULT_NAME,
             id: int = id_emitter.service_id,
-            builder: ArenaBuildTransaction = ArenaBuildTransaction(),
+            builder: ArenaBuilder = ArenaBuilder(),
             validator: ArenaValidationTransaction = ArenaValidationTransaction(),
             team_relation_tester: ArenaTeamRelationAnalysis = ArenaTeamRelationAnalysis(),
     ):
@@ -66,9 +66,9 @@ class ArenaService(IntegrityService[Arena]):
         self._arena_team_relation_analyzer = team_relation_tester
     
     @property
-    def build(self) -> ArenaBuildTransaction:
-        """get ArenaBuildTransaction"""
-        return cast(ArenaBuildTransaction, self.entity_builder)
+    def build(self) -> ArenaBuilder:
+        """get ArenaBuilder"""
+        return cast(ArenaBuilder, self.entity_builder)
     
     @property
     def validation(self) -> ArenaValidationTransaction:

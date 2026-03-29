@@ -23,8 +23,8 @@ class HostageBuildException(BuildException):
     Role:Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Indicate the HostageBuildTransaction did not produce a valid work product.
-    2.  Identify the HostageBuildTransaction method where the failure occurred.
+    1.  Indicate the HostageBuilder did not produce a valid work product.
+    2.  Identify the HostageBuilder method where the failure occurred.
 
     Super Class:
         *   BuildException
@@ -52,7 +52,7 @@ class HostageBuildException(BuildException):
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     ERR_CODE = "HOSTAGE_BUILD_FAILURE"
-    MSG = "Failure in HostageBuildTransaction method."
+    MSG = "Failure in HostageBuilder method."
 
     def __init__(
             self,

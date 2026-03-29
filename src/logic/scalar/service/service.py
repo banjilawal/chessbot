@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2025-11-12
 version: 1.0.0
 """
-from logic.scalar import Scalar, ScalarBuildTransaction
+from logic.scalar import Scalar, ScalarBuilder
 
 # src/logic/system/service/integrity/transaction.py
 
@@ -18,7 +18,7 @@ Created: 2025-11-18
 
 from __future__ import annotations
 
-from logic.system import IdFactory, IntegrityService, BuildTransaction, ValidationTransaction
+from logic.system import IdFactory, IntegrityService, Builder, ValidationTransaction
 
 
 class ScalarService(IntegrityService[Scalar]):
@@ -47,7 +47,7 @@ class ScalarService(IntegrityService[Scalar]):
     Attributes:
         *   id (int)
         *   name (name)
-        *   build (BuildTransaction[Scalar])
+        *   build (Builder[Scalar])
         *   validation (ValidationTransaction[Scalar])
 
     # LOCAL METHODS:
@@ -57,14 +57,14 @@ class ScalarService(IntegrityService[Scalar]):
     *   See IntegrityService class for inherited methods.
     """
     SERVICE_NAME = "ScalarService"
-    _builder: BuildTransaction[Scalar]
+    _builder: Builder[Scalar]
     _validator: ValidationTransaction[Scalar]
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             id: int = IdFactory.next_id(class_name="ScalarService"),
-            builder: BuildTransaction[Scalar] = ScalarBuildTransaction(),
+            builder: Builder[Scalar] = ScalarBuilder(),
             validator: ValidationTransaction[Scalar] = ValidationTransaction(),
     ):
         super().__init__(id=id, name=name)
@@ -72,7 +72,7 @@ class ScalarService(IntegrityService[Scalar]):
         self._validator = validator
     
     @property
-    def build(self) -> BuildTransaction[Scalar]:
+    def build(self) -> Builder[Scalar]:
         return self._builder
     
     @property

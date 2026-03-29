@@ -14,7 +14,7 @@ from logic.square import Square, SquareService
 from logic.team import Team, TeamService
 from logic.coord import Coord, CoordService
 from logic.system import (
-    NumberValidationTransaction, BuildTransaction, BuildResult, GameColor, GameColorValidationTransaction, IdentityService, LoggingLevelRouter
+    NumberValidationTransaction, Builder, BuildResult, GameColor, GameColorValidationTransaction, IdentityService, LoggingLevelRouter
 )
 from logic.token import (
     ArenaTokenContextFlagsException, TokenContext, TokenContextBuildException,
@@ -22,9 +22,9 @@ from logic.token import (
 )
 
 
-class TokenContextBuildTransaction(BuildTransaction[TokenContext]):
+class TokenContextBuilder(Builder[TokenContext]):
     """
-    Role:BuildTransaction, Data Integrity And Reliability Guarantor
+    Role:Builder, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce TokenContext instances whose integrity is guaranteed at creation.
@@ -33,7 +33,7 @@ class TokenContextBuildTransaction(BuildTransaction[TokenContext]):
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     Super Class:
-        *   BuildTransaction
+        *   Builder
 
     Provides:
 
@@ -94,7 +94,7 @@ class TokenContextBuildTransaction(BuildTransaction[TokenContext]):
             *   TokenContextBuildException
             *   TokenContextBuildRouteException
         """
-        method = "TokenContextBuildTransaction.build"
+        method = "TokenContextBuilder.build"
         
         # --- Count how many optional parameters are not-null. only one should be not null. ---#
         params = [id, designation, team, rank, ransom, coord, color, opening_square_name]

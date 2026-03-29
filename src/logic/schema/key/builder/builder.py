@@ -11,23 +11,23 @@ from typing import Optional
 
 from logic.schema.key.builder.exception import SchemaKeyBuildException, SchemaKeyBuildRouteException
 from logic.system import (
-    BuildResult, BuildTransaction, GameColor, GameColorValidationTransaction, IdentityService, LoggingLevelRouter
+    BuildResult, Builder, GameColor, GameColorValidationTransaction, IdentityService, LoggingLevelRouter
 )
 from logic.schema import (
     ZeroSchemaKeysException, SchemaKey, ArenaSchemaKeysException,
 )
 
 
-class SchemaKeyBuildTransaction(BuildTransaction[SchemaKey]):
+class SchemaKeyBuilder(Builder[SchemaKey]):
     """
-    Role:BuildTransaction, Data Integrity And Reliability Guarantor
+    Role:Builder, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce SchemaKey instances whose integrity is always guaranteed at creation.
     2.  If the build fails indicate the reason in an exception returned to the caller.
 
     Super Class:
-        *   BuildTransaction
+        *   Builder
 
     Provides:
 
@@ -66,7 +66,7 @@ class SchemaKeyBuildTransaction(BuildTransaction[SchemaKey]):
             *   SchemaKeyBuildException
             *   ArenaSchemaKeysException
         """
-        method = "SchemaKeyBuildTransaction.build"
+        method = "SchemaKeyBuilder.build"
         
         # Count how many optional parameters are not-null.
         params = [name, color,]

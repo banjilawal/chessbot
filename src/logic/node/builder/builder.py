@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from logic.graph import Node, NodeBuildException
 from logic.square import Square, SquareValidationTransaction
-from logic.system import BuildResult, BuildTransaction, LoggingLevelRouter
+from logic.system import BuildResult, Builder, LoggingLevelRouter
 
 
-class NodeBuildTransaction(BuildTransaction[Node]):
+class NodeBuilder(Builder[Node]):
     """
     Role:Factory, Data Integrity Guarantor
 
@@ -25,7 +25,7 @@ class NodeBuildTransaction(BuildTransaction[Node]):
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     Super Class:
-        *   BuildTransaction
+        *   Builder
 
     Provides:
 
@@ -51,7 +51,7 @@ class NodeBuildTransaction(BuildTransaction[Node]):
         Raises:
             *   NodeBuildException
         """
-        method = "NodeBuildTransaction.build"
+        method = "NodeBuilder.build"
         
         # Handle the case that, the square does not pass a validation check.
         validation_result = square_validator.execute(square)

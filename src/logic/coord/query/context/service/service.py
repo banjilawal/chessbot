@@ -51,7 +51,7 @@ class CoordContextService(IntegrityService[CoordContext]):
         Args:
             id: int
             name: str
-            build: CoordContextBuildTransaction
+            build: CoordContextBuilder
             validation: CoordContextValidationTransaction
         """
         super().__init__(id=id, name=name)

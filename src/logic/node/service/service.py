@@ -12,7 +12,7 @@ from typing import cast
 
 from logic.edge import Edge, EdgeService
 from logic.node import (
-    AddIncomingEdgeFailedException, AddOutgoingEdgeFailedException, IncomingEdgeWrongTailException, Node, NodeBuildTransaction,
+    AddIncomingEdgeFailedException, AddOutgoingEdgeFailedException, IncomingEdgeWrongTailException, Node, NodeBuilder,
     NodeServiceException, NodeValidationTransaction, OutgoingEdgeWrongHeadException, RemoveIncomingEdgeFailedException,
     RemoveOutgoingEdgeFailedException
 )
@@ -43,7 +43,7 @@ class NodeService(IntegrityService[Node]):
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            builder: NodeBuildTransaction = NodeBuildTransaction(),
+            builder: NodeBuilder = NodeBuilder(),
             validator: NodeValidationTransaction = NodeValidationTransaction(),
             id: int = IdFactory.next_id(class_name="NodeService"),
     ):
@@ -63,8 +63,8 @@ class NodeService(IntegrityService[Node]):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         
     @property
-    def build(self) -> NodeBuildTransaction:
-        return cast(NodeBuildTransaction, self.entity_builder)
+    def build(self) -> NodeBuilder:
+        return cast(NodeBuilder, self.entity_builder)
     
     @property
     def validation(self) -> NodeValidationTransaction:

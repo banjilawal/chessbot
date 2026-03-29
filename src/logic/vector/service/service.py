@@ -12,7 +12,7 @@ from typing import List, cast
 
 from logic.coord import Coord, CoordService
 from logic.scalar import Scalar, ScalarService
-from logic.vector import Vector, VectorBuildTransaction, VectorServiceException, VectorValidationTransaction
+from logic.vector import Vector, VectorBuilder, VectorServiceException, VectorValidationTransaction
 from logic.system import (
     BuildResult, ComputationResult, IdFactory, LoggingLevelRouter, IntegrityService, NumberValidationTransaction
 )
@@ -46,7 +46,7 @@ class VectorService(IntegrityService[Vector]):
     Attributes:
         *   id (int)
         *   name (str)
-        *   build (VectorBuildTransaction) = VectorBuildTransaction()
+        *   build (VectorBuilder) = VectorBuilder()
         *   validation (VectorValidationTransaction) = VectorValidationTransaction()
 
     # LOCAL METHODS:
@@ -69,16 +69,16 @@ class VectorService(IntegrityService[Vector]):
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            builder: VectorBuildTransaction = VectorBuildTransaction(),
+            builder: VectorBuilder = VectorBuilder(),
             validator: VectorValidationTransaction = VectorValidationTransaction(),
             id: int = IdFactory.next_id(class_name="VectorService"),
     ):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
     
     @property
-    def build(self) -> VectorBuildTransaction:
-        """get VectorBuildTransaction"""
-        return cast(VectorBuildTransaction, self.entity_builder)
+    def build(self) -> VectorBuilder:
+        """get VectorBuilder"""
+        return cast(VectorBuilder, self.entity_builder)
     
     @property
     def validation(self) -> VectorValidationTransaction:

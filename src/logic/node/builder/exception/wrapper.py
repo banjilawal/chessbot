@@ -23,8 +23,8 @@ class NodeBuildException(BuildException):
     Role:Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Indicate the NodeBuildTransaction did not produce a valid work product.
-    2.  Identify the NodeBuildTransaction method where the failure occurred.
+    1.  Indicate the NodeBuilder did not produce a valid work product.
+    2.  Identify the NodeBuilder method where the failure occurred.
 
     Super Class:
         *   BuildException
@@ -52,7 +52,7 @@ class NodeBuildException(BuildException):
     OP = "Build"
     RSLT_TYPE = "BuildResult"
     ERR_CODE = "NODE_BUILD_FAILURE"
-    MSG = "Failure in NodeBuildTransaction method."
+    MSG = "Failure in NodeBuilder method."
 
     def __init__(
             self,

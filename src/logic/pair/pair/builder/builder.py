@@ -11,12 +11,12 @@ from __future__ import annotations
 
 from logic.node import Node, NodeService
 from logic.square import Square, SquareValidationTransaction
-from logic.system import BuildResult, BuildTransaction, LoggingLevelRouter
+from logic.system import BuildResult, Builder, LoggingLevelRouter
 from logic.pair import HeadTailSquareException, Pair, PairBuildException
 
-class PairBuildTransaction(BuildTransaction[Pair]):
+class PairBuilder(Builder[Pair]):
     """
-     Role:BuildTransaction, Data Integrity And Reliability Guarantor
+     Role:Builder, Data Integrity And Reliability Guarantor
 
      Responsibilities:
      1.  Produce Pair instances whose integrity and reliability are guaranteed.
@@ -24,13 +24,13 @@ class PairBuildTransaction(BuildTransaction[Pair]):
      3.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
      Super Class:
-         * BuildTransaction
+         * Builder
 
     Provides:
 
 
     # INHERITED ATTRIBUTES:
-        *   See BuildTransaction class for inherited attributes.
+        *   See Builder class for inherited attributes.
 
     Attributes:
     None
@@ -39,7 +39,7 @@ class PairBuildTransaction(BuildTransaction[Pair]):
     None
 
     # INHERITED METHODS:
-        *   See BuildTransaction class for inherited methods.
+        *   See Builder class for inherited methods.
     """
     @classmethod
     @LoggingLevelRouter.monitor

@@ -16,11 +16,11 @@ from logic.hostage import (
     VictorCannotBeDisableTokenException, VictorNotOccupyingCapturedSquareException,
 )
 from logic.square import Square, SquareService
-from logic.system import IdentityService, LoggingLevelRouter, BuildResult, BuildTransaction, id_emitter
+from logic.system import IdentityService, LoggingLevelRouter, BuildResult, Builder, id_emitter
 from logic.token import CombatantActivityState, CombatantReadinessEnum, CombatantToken, Token, TokenService
 
 
-class HostageBuildTransaction(BuildTransaction[Hostage]):
+class HostageBuilder(Builder[Hostage]):
     """
     Role:Validation, Data Integrity And Reliability Guarantor
 
@@ -75,7 +75,7 @@ class HostageBuildTransaction(BuildTransaction[Hostage]):
             *   PrisonerAlreadyHasHostageException
             *   PrisonerCapturedOnDifferentSquareException
         """
-        method = "HostageBuildTransaction.build"
+        method = "HostageBuilder.build"
         
         # Handle the case that, the id is not certified safe.
         id_validation = identity_service.validate_id(candidate=id)

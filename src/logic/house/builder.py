@@ -10,17 +10,17 @@ version: 1.0.0
 
 from logic.house import House
 from logic.enviroment import TurnScene, TurnSceneValidationTransaction
-from logic.system import BuildTransaction, BuildResult, LoggingLevelRouter
+from logic.system import Builder, BuildResult, LoggingLevelRouter
 
 
-class HouseBuildTransaction(BuildTransaction[House]):
+class HouseBuilder(Builder[House]):
     """"""
     
     @classmethod
     @LoggingLevelRouter.monitor
     def execute(cls, turn_scene: TurnScene) -> BuildResult[House]:
         """"""
-        method = "HouseBuildTransaction.build"
+        method = "HouseBuilder.build"
         
         try:
             turn_scene_validation = TurnSceneValidationTransaction.execute(turn_scene)

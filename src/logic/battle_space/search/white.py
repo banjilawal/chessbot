@@ -11,8 +11,8 @@ version: 1.0.0
   its CRUD interfaces goes against recommended usage.
 
 ***Limitation 2***: There is no guarantee properly created `Board` objects released by the module will satisfy client
-    requirements. Clients are responsible for ensuring a `BoardBuildTransaction` product will not fail when used. Products
-    from `BoardBuildTransaction` --should-- satisfy `BoardValidationTransaction` requirements.
+    requirements. Clients are responsible for ensuring a `BoardBuilder` product will not fail when used. Products
+    from `BoardBuilder` --should-- satisfy `BoardValidationTransaction` requirements.
 
 **Related Features**:
     Authenticating existing boards -> See BoardValidationTransaction, module[logic.board_validator.coord_stack_validator],
@@ -35,7 +35,7 @@ version: 1.0.0
 # DEPENDENCIES:
 ---------------
 From `logic.system`:
-    `BuildResult`, `BuildTransaction`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
+    `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
     `IdValidationTransaction`, `NameValidationTransaction`
 
 From `logic.board_validator`:

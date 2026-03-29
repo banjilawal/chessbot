@@ -9,13 +9,13 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from logic.system import BuildTransaction, BuildResult, LONGEST_KNIGHT_LEG_SIZE, LoggingLevelRouter, NumberValidationTransaction
+from logic.system import Builder, BuildResult, LONGEST_KNIGHT_LEG_SIZE, LoggingLevelRouter, NumberValidationTransaction
 from logic.vector import Vector, VectorBuildException,VectorValidationTransaction
 
 
-class VectorBuildTransaction(BuildTransaction[Vector]):
+class VectorBuilder(Builder[Vector]):
     """
-     Role:BuildTransaction, Data Integrity And Reliability Guarantor
+     Role:Builder, Data Integrity And Reliability Guarantor
 
      Responsibilities:
      1.  Produce Vector instances whose integrity is guaranteed at creation.
@@ -24,10 +24,10 @@ class VectorBuildTransaction(BuildTransaction[Vector]):
      4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
      Super Class:
-         * BuildTransaction
+         * Builder
 
      # PROVIDES:
-         *   VectorBuildTransaction
+         *   VectorBuilder
 
      # LOCAL ATTRIBUTES:
      None
@@ -60,7 +60,7 @@ class VectorBuildTransaction(BuildTransaction[Vector]):
         RAISES:
             *   VectorBuildException
         """
-        method = "VectorBuildTransaction.build"
+        method = "VectorBuilder.build"
         # Handle the x component
         x_validation = bound_number_validator.execute(floor=0, ceiling=LONGEST_KNIGHT_LEG_SIZE, candidate=abs(x))
         if x_validation.is_failure:

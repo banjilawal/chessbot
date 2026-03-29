@@ -13,12 +13,12 @@ from logic.persona import (
     ArenaPersonaKeysException, PersonaKey, PersonaKeyBuildException,
     PersonaKeyBuildRouteException, ZeroPersonaKeysException
 )
-from logic.system import NumberValidationTransaction, BuildResult, BuildTransaction, IdentityService, LoggingLevelRouter
+from logic.system import NumberValidationTransaction, BuildResult, Builder, IdentityService, LoggingLevelRouter
 
 
-class PersonaKeyBuildTransaction(BuildTransaction[PersonaKey]):
+class PersonaKeyBuilder(Builder[PersonaKey]):
     """
-    Role:BuildTransaction, Data Integrity And Reliability Guarantor
+    Role:Builder, Data Integrity And Reliability Guarantor
 
     Responsibilities:
         1.  Produce PersonaKey instances whose integrity is guaranteed at creation.
@@ -27,7 +27,7 @@ class PersonaKeyBuildTransaction(BuildTransaction[PersonaKey]):
         4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     Super Class:
-        *   BuildTransaction
+        *   Builder
 
     Provides:
 
@@ -73,7 +73,7 @@ class PersonaKeyBuildTransaction(BuildTransaction[PersonaKey]):
             *   ArenaPersonaKeysException
             *   PersonaKeyBuildRouteException
         """
-        method = "PersonaKeyBuildTransaction.build"
+        method = "PersonaKeyBuilder.build"
         
         # Count how many optional parameters are not-null. One param needs to be not-null.
         params = [name, designation, quota, ransom]

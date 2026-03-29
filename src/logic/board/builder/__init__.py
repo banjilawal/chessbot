@@ -13,4 +13,4 @@ version: 1.0.0
 from .exception import *
 
 # Module
-from .builder import BoardBuildTransaction
+from .builder import BoardBuilder

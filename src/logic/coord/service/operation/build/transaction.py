@@ -10,10 +10,10 @@ version: 1.0.0
 from __future__ import annotations
 
 from logic.coord import Coord, CoordBuildException
-from logic.system import BOARD_DIMENSION, BuildTransaction, BuildResult, LoggingLevelRouter, NumberValidationTransaction
+from logic.system import BOARD_DIMENSION, Builder, BuildResult, LoggingLevelRouter, NumberValidationTransaction
 
 
-class CoordBuildTransaction(BuildTransaction[Coord]):
+class CoordBuilder(Builder[Coord]):
     """
     Role
         -   Transaction Worker
@@ -36,7 +36,7 @@ class CoordBuildTransaction(BuildTransaction[Coord]):
             ) -> BuildResult[Coord]
 
      Super Class:
-         BuildTransaction
+         Builder
      """
     @classmethod
     @LoggingLevelRouter.monitor

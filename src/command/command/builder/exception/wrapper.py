@@ -23,7 +23,7 @@ class CommandBuilderException(BuildException):
     Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Indicate that an error prevented CommandBuildTransaction from returning a product.
+    1.  Indicate that an error prevented CommandBuilder from returning a product.
 
         Super Class:
             *   BuildException
@@ -52,7 +52,7 @@ class CommandBuilderException(BuildException):
             *   See WorkException class for inherited methods.
         """
     ERR_CODE = "COMMAND_BUILD_FAILURE"
-    MSG = "CommandBuildTransaction returned an error."
+    MSG = "CommandBuilder returned an error."
     MTHD = "build"
     OP = "Build"
     RSLT_TYPE = "BuildResult"

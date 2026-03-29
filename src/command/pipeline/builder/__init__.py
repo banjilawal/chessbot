@@ -12,4 +12,4 @@ Created: 2026-02-24
 from .exception import *
 
 # Modules
-from .builder import CommandBuildTransaction
+from .builder import CommandBuilder

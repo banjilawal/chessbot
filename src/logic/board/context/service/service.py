@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast
 
 from logic.system import QueryService, id_emitter
-from logic.board import BoardContext, BoardContextBuildTransaction, BoardContextValidationTransaction, BoardFinder
+from logic.board import BoardContext, BoardContextBuilder, BoardContextValidationTransaction, BoardFinder
 
 
 class BoardQueryService(QueryService[BoardContext]):
@@ -41,7 +41,7 @@ class BoardQueryService(QueryService[BoardContext]):
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             finder: BoardFinder = BoardFinder(),
-            builder: BoardContextBuildTransaction = BoardContextBuildTransaction(),
+            builder: BoardContextBuilder = BoardContextBuilder(),
             validator: BoardContextValidationTransaction = BoardContextValidationTransaction(),
     ):
         """
@@ -51,7 +51,7 @@ class BoardQueryService(QueryService[BoardContext]):
             *   name (str)
             *   id (int)
             *   route (BoardFinder)
-            *   build (BoardContextBuildTransaction)
+            *   build (BoardContextBuilder)
             *   validation (BoardContextValidationTransaction)
         # RETURNS:
             None
@@ -67,9 +67,9 @@ class BoardQueryService(QueryService[BoardContext]):
         return cast(BoardFinder, self.entity_finder)
     
     @property
-    def build(self) -> BoardContextBuildTransaction:
-        """Get BoardContextBuildTransaction instance."""
-        return cast(BoardContextBuildTransaction, self.entity_builder)
+    def build(self) -> BoardContextBuilder:
+        """Get BoardContextBuilder instance."""
+        return cast(BoardContextBuilder, self.entity_builder)
     
     @property
     def validation(self) -> BoardContextValidationTransaction:

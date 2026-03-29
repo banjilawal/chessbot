@@ -9,13 +9,13 @@ version: 1.0.0
 
 from logic.board import Board
 from logic.piece import Piece
-from logic.domain import Domain, DomainOriginBuildTransaction
-from logic.system import BuildTransaction, BuildResult, LoggingLevelRouter
+from logic.domain import Domain, DomainOriginBuilder
+from logic.system import Builder, BuildResult, LoggingLevelRouter
 
 
-class DomainBuildTransaction(BuildTransaction[Domain]):
+class DomainBuilder(Builder[Domain]):
     """
-     Role:BuildTransaction, Data Integrity And Reliability Guarantor
+     Role:Builder, Data Integrity And Reliability Guarantor
 
      Responsibilities:
      1.  Produce Domain instances whose integrity is guaranteed at creation.
@@ -24,10 +24,10 @@ class DomainBuildTransaction(BuildTransaction[Domain]):
      4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
      Super Class:
-         * BuildTransaction
+         * Builder
 
      # PROVIDES:
-         *   DomainBuildTransaction
+         *   DomainBuilder
 
      # LOCAL ATTRIBUTES:
      None
@@ -42,7 +42,7 @@ class DomainBuildTransaction(BuildTransaction[Domain]):
             cls,
             piece: Piece,
             board: Board,
-            domain_origin_builder: DomainOriginBuildTransaction
+            domain_origin_builder: DomainOriginBuilder
     ) -> BuildResult[Domain]:
         """
         # ACTION:
@@ -51,7 +51,7 @@ class DomainBuildTransaction(BuildTransaction[Domain]):
         # PARAMETERS:
           * piece (Token): The points owner
           * board (Board): Provides the Square of the Domain owner.
-          * domain_origin_builder (DomainOriginBuildTransaction): Creates the DomainOwner object.
+          * domain_origin_builder (DomainOriginBuilder): Creates the DomainOwner object.
 
         # RETURNS:
           BuildResult[Domain] containing either:
@@ -66,7 +66,7 @@ class DomainBuildTransaction(BuildTransaction[Domain]):
             * DomainNullFriendsDictException
             * InvalidDomainException
         """
-        method = "DomainBuildTransaction.build"
+        method = "DomainBuilder.build"
         
         try:
             board_actor_validation = BoardActorValidator.execute(piece, board)

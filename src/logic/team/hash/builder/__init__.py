@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .builder import TeamHashBuildTransaction
+from .builder import TeamHashBuilder
 from .work import TeamHashBuildException

@@ -15,14 +15,14 @@ from logic.pawn.promotion.event import PromotionEvent
 from logic.pawn.promotion.exception import DoublePromotionException
 from logic.rank import Bishop, Knight, Pawn, Queen, Rank, Rook
 from logic.square import Square
-from logic.system import BuildResult, BuildTransaction, Event, LoggingLevelRouter, ValidationResult, id_emitter
+from logic.system import BuildResult, Builder, Event, LoggingLevelRouter, ValidationResult, id_emitter
 from logic.piece import (
     PawnPiece, PromotablePiece,
     BoardActorValidator
 )
 
 
-class OldPromotionEventBuildTransaction(BuildTransaction[PromotionEvent]):
+class OldPromotionEventBuilder(Builder[PromotionEvent]):
     """"""
     PROMOTABLE_RANKS = Tuple[Queen, Knight, Bishop, Rook]
     
@@ -30,7 +30,7 @@ class OldPromotionEventBuildTransaction(BuildTransaction[PromotionEvent]):
     @LoggingLevelRouter.monitor
     def execute(cls, actor: Pawn, execution_environment: Board, parent: Event, new_rank: Rank=Queen) -> BuildResult[PromotionEvent]:
         """"""
-        method = "PromotionEventBuildTransaction.build"
+        method = "PromotionEventBuilder.build"
         
         try:
             if not isinstance(actor, PawnPiece):

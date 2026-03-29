@@ -11,13 +11,13 @@ from typing import Optional
 
 from logic.rank import RankBoundsChecker
 from logic.coord import Coord, CoordValidationTransaction
-from logic.system import BuildTransaction, BuildResult, IdValidationTransaction, LoggingLevelRouter, NameValidationTransaction
+from logic.system import Builder, BuildResult, IdValidationTransaction, LoggingLevelRouter, NameValidationTransaction
 from logic.domain import (
     VisitorSearchContext, ArenaVisitorSearchParamsException, NoVisitorSearchFilterSelectionException
 )
 
 
-class VisitorSearchContextBuildTransaction(BuildTransaction[VisitorSearchContext]):
+class VisitorSearchContextBuilder(Builder[VisitorSearchContext]):
     """"""
     
     @classmethod
@@ -33,7 +33,7 @@ class VisitorSearchContextBuildTransaction(BuildTransaction[VisitorSearchContext
             team_name: Optional[str] = None
     ) -> BuildResult[VisitorSearchContext]:
         """"""
-        method = "VisitorSearchContextBuildTransaction.build"
+        method = "VisitorSearchContextBuilder.build"
         
         try:
             params = [name, ransom, id, team_id, team_name, rank_name, coord]

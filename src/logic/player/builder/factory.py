@@ -12,7 +12,7 @@ from typing import Optional
 from logic.engine import EngineService
 from logic.game import UniqueGameDataService
 from logic.team import UniqueTeamDataService
-from logic.system import BuildTransaction, BuildResult, IdentityService, LoggingLevelRouter,ValidationResult, id_emitter
+from logic.system import Builder, BuildResult, IdentityService, LoggingLevelRouter,ValidationResult, id_emitter
 
 from logic.player import (
     Player, PlayerBuildException, PlayerVariety, PlayerValidationTransaction, HumanPlayer, HumanPlayerBuildException,
@@ -20,7 +20,7 @@ from logic.player import (
 )
 
 
-class PlayerFactory(BuildTransaction[Player]):
+class PlayerFactory(Builder[Player]):
     """
     Role:Factory, Data Integrity Guarantor
 
@@ -31,7 +31,7 @@ class PlayerFactory(BuildTransaction[Player]):
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
     
     Super Class:
-        *   BuildTransaction
+        *   Builder
 
     # PROVIDES:
         *   build:  -> ValidationResult[HumanPlayer|MachinePlayer]

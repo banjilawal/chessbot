@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import cast
 
-from logic.pair import NodeTree, NodeTreeBuildTransaction, NodeTreeValidationTransaction
+from logic.pair import NodeTree, NodeTreeBuilder, NodeTreeValidationTransaction
 from logic.pair.listing.service import PairListService
 from logic.system import IdFactory, IntegrityService
 
@@ -42,7 +42,7 @@ class NodeTreeService(IntegrityService[NodeTree]):
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            builder: NodeTreeBuildTransaction = NodeTreeBuildTransaction(),
+            builder: NodeTreeBuilder = NodeTreeBuilder(),
             validator: NodeTreeValidationTransaction = NodeTreeValidationTransaction(),
             branch_service: PairListService = PairListService(),
             id: int = IdFactory.next_id(class_name="NodeTreeService"),
@@ -51,7 +51,7 @@ class NodeTreeService(IntegrityService[NodeTree]):
         Args:
             id: int
             name: str
-            builder: NodeTreeBuildTransaction
+            builder: NodeTreeBuilder
             validator: NodeTreeValidationTransaction
             branch_service: PairListService
         """
@@ -60,8 +60,8 @@ class NodeTreeService(IntegrityService[NodeTree]):
         
     
     @property
-    def build(self) -> NodeTreeBuildTransaction:
-        return cast(NodeTreeBuildTransaction, self.entity_builder)
+    def build(self) -> NodeTreeBuilder:
+        return cast(NodeTreeBuilder, self.entity_builder)
     
     @property
     def validation(self) -> NodeTreeValidationTransaction:

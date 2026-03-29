@@ -3,13 +3,16 @@
 """
 Module: logic.square.query.context.context.__init__
 Author: Banji Lawal
-Created: 2025-11-22
+Created: 2026-03-29
 version: 1.0.0
 """
 
 # =========== SQUARE.QUERY.CONTEXT.CONTEXT PACKAGE CONTENTS ===========#
 
 # Packages
+from .builder import *
+from .validator import *
 from .exception import *
 
 # Modules
+from .context import SquareContext

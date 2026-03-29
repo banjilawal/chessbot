@@ -10,6 +10,6 @@ version: 1.0.0
 from .exception import *
 
 from .house import House
-from .builder import HouseBuildTransaction
+from .builder import HouseBuilder
 from .category import HouseCategory
 from .validator import HouseValidationTransaction

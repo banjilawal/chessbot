@@ -28,7 +28,7 @@ class PlayerQueryService(QueryService[AgentContext]):
         *   QueryService
 
     # PROVIDES:
-        *   build:    -> AgentContextBuildTransaction
+        *   build:    -> AgentContextBuilder
         *   validation:  -> AgentContextValidator
         *   route:     -> AgentFinder
 
@@ -53,7 +53,7 @@ class PlayerQueryService(QueryService[AgentContext]):
             *   name (str): Default value - SERVICE_NAME
             *   id (int): Default value - id_emitter.service_id
             *   route (AgentFinder): Default value - AgentFinder()
-            *   build (AgentContextBuildTransaction): Default value - AgentContextBuildTransaction()
+            *   build (AgentContextBuilder): Default value - AgentContextBuilder()
             *   validation (AgentContextValidator): Default value - AgentContextValidator()
 
         # RETURNS:
@@ -71,7 +71,7 @@ class PlayerQueryService(QueryService[AgentContext]):
     
     @property
     def build(self) -> AgentContextBuilder:
-        """Get AgentContextBuildTransaction instance."""
+        """Get AgentContextBuilder instance."""
         return cast(AgentContextBuilder, self.entity_builder)
     
     @property

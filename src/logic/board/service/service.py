@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import cast
 
 from logic.board import (
-    Board, BoardAlreadyLaidOutException, BoardBuildTransaction, BoardLayoutFailedException, BoardRelationAnalysisContext,
+    Board, BoardAlreadyLaidOutException, BoardBuilder, BoardLayoutFailedException, BoardRelationAnalysisContext,
     BoardRelationAnalyzer,
     BoardState, BoardValidationTransaction
 )
@@ -49,7 +49,7 @@ class BoardService(IntegrityService[Board]):
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            builder: BoardBuildTransaction = BoardBuildTransaction(),
+            builder: BoardBuilder = BoardBuilder(),
             validator: BoardValidationTransaction = BoardValidationTransaction(),
             id: int = IdFactory.next_id(class_name="BoardService"),
             relation_analyzer: BoardRelationAnalyzer = BoardRelationAnalyzer()
@@ -58,7 +58,7 @@ class BoardService(IntegrityService[Board]):
         Args:
                 id: int
                 name: str
-                builder: BoardBuildTransaction
+                builder: BoardBuilder
                 validator: BoardValidationTransaction
                 square_relation_analyzer: SquareRelationAnalyzer
         """
@@ -66,8 +66,8 @@ class BoardService(IntegrityService[Board]):
         self._relation_analyzer = relation_analyzer
     
     @property
-    def build(self) -> BoardBuildTransaction:
-        return cast(BoardBuildTransaction, self.build)
+    def build(self) -> BoardBuilder:
+        return cast(BoardBuilder, self.build)
     
     @property
     def validation(self) -> BoardValidationTransaction:

@@ -53,7 +53,7 @@ This module is exclusively for defining all custom **rollback_exception classes*
 creation, coord_stack_validator, and manipulation of `Vector` objects.
 
 **Limitations** It does not contain any logic for raising these exception; that responsibility
-`Vector`, `VectorBuildTransaction`, and `VectorValidationTransaction`
+`Vector`, `VectorBuilder`, and `VectorValidationTransaction`
 
 THEME:
 -----
@@ -185,7 +185,7 @@ class DoublePromotionRolledBackException(PieceRollBackException):
 #======================# PROMOTION_EVENT BUILD EXCEPTION #======================#
 class PromotionEventBuild(PromotionEventException, BuildException):
   """
-  Raised when `PromotionEventBuildTransaction` crashed while building team_name new `PromotionEven`. Exists
+  Raised when `PromotionEventBuilder` crashed while building team_name new `PromotionEven`. Exists
   primarily to catch all exception raised creating `PromotionEvent` objects.
   """
   ERR_CODE = "PROMOTION_EVENT_BUILD_FAILED"

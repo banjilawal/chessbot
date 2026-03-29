@@ -11,11 +11,11 @@ from __future__ import annotations
 from typing import Any, Dict
 
 from logic.system import (
-    BuildResult, BuildTransaction, IdentityService, LoggingLevelRouter, NullArgumentsException, Request, RequestBuildException
+    BuildResult, Builder, IdentityService, LoggingLevelRouter, NullArgumentsException, Request, RequestBuildException
 )
 
 
-class RequestBuildTransaction(BuildTransaction[Request]):
+class RequestBuilder(Builder[Request]):
     
     @classmethod
     @LoggingLevelRouter.monitor

@@ -9,4 +9,4 @@ version: 1.0.0
 
 
 from .exception import *
-from .builder import PromotionEventBuildTransaction
+from .builder import PromotionEventBuilder

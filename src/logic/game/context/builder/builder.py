@@ -11,16 +11,16 @@ from typing import Optional
 
 
 from logic.agent import PlayerAgent, AgentService
-from logic.system import BuildTransaction, BuildResult, ExecutionRouteException, IdentityService, LoggingLevelRouter
+from logic.system import Builder, BuildResult, ExecutionRouteException, IdentityService, LoggingLevelRouter
 from logic.game import (
     GameContext, GameContextBuildException, ZeroGameContextFlagsException, ArenaGameContextFlagsException
 )
 
 
 
-class GameContextBuildTransaction(BuildTransaction[GameContext]):
+class GameContextBuilder(Builder[GameContext]):
     """
-    Role:BuildTransaction, Data Integrity And Reliability Guarantor
+    Role:Builder, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce GameContext instances whose integrity is guaranteed at creation.
@@ -29,7 +29,7 @@ class GameContextBuildTransaction(BuildTransaction[GameContext]):
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     Super Class:
-        *   BuildTransaction
+        *   Builder
 
     Provides:
 

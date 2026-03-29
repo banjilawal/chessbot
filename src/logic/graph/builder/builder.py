@@ -1,7 +1,7 @@
 from typing import List
 
 from logic.board import Board
-from logic.edge import EdgeBuildTransaction
+from logic.edge import EdgeBuilder
 from logic.graph import Graph
 from logic.square import Square
 from logic.system import BuildResult

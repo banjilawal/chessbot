@@ -85,7 +85,7 @@ The major theme influencing the modules design are
 1. `SearchResult`
 """
 """
- Role:BuildTransaction, Data Integrity And Reliability Guarantor implementation
+ Role:Builder, Data Integrity And Reliability Guarantor implementation
 
  Responsibilities:
  1. Process and validate parameters for creating `Team` instances.
@@ -133,7 +133,7 @@ The module only covers the basic properties and behavior objects in the `Event` 
       `logic.system.travel.notification` is responsible for the `Event` lifecycle.
   2. The module does not verify the correctness of entity_service control or routing information it contains. Directly using the
       module can breach entity_service integrity, propagate inconsistencies or negatively impact performance. Use a
-        * `BuildTransaction` for the
+        * `Builder` for the
       DO NOT USE THE MODULE DIRECTLY. is not responsible for verifying the uniqueness of an ID. the `AutoId` class in
       `logic.system.visitor_id.auto_id` module.
   1. The module is not responsible for supplying or publishing IDs that meet system requirements.
@@ -188,7 +188,7 @@ The module only covers the basic properties and behavior objects in the `Event` 
       `logic.system.travel.notification` is responsible for the `Event` lifecycle.
   2. The module does not verify the correctness of entity_service control or routing information it contains. Directly using the
       module can breach entity_service integrity, propagate inconsistencies or negatively impact performance. Use a
-        * `BuildTransaction` for the
+        * `Builder` for the
       DO NOT USE THE MODULE DIRECTLY. is not responsible for verifying the uniqueness of an ID. the `AutoId` class in
       `logic.system.visitor_id.auto_id` module.
   1. The module is not responsible for supplying or publishing IDs that meet system requirements.

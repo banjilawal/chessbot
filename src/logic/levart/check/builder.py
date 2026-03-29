@@ -12,7 +12,7 @@ from logic.token.exception import PieceCapturingItSelfException, CaptureFriendEx
 
 class CheckEventBuilder(Enum):
   """
-  BuildTransaction class responsible for safely constructing `KingCheckEvent` instances.
+  Builder class responsible for safely constructing `KingCheckEvent` instances.
 
   `AttackEventBuilder` ensures that `KingCheckEvent` objects are always created successfully by performing comprehensive validate
    checks during construction. This separates the responsibility of building from validating - `AttackEventBuilder`

@@ -14,10 +14,10 @@ from logic.rank import RankService
 from logic.team import Team, TeamValidationTransaction
 from logic.formation import Formation, FormationService
 from logic.token import CombatantToken, KingToken, PawnToken, TokenBuildException, Token
-from logic.system import BuildResult, BuildTransaction, IdFactory, IdentityService, LoggingLevelRouter
+from logic.system import BuildResult, Builder, IdFactory, IdentityService, LoggingLevelRouter
 
 
-class TokenBuild(BuildTransaction[Token]):
+class TokenBuild(Builder[Token]):
     """
     Role
         -   Transaction Worker
@@ -45,7 +45,7 @@ class TokenBuild(BuildTransaction[Token]):
             ) -> BuildResult[Token]
 
      Super Class:
-         BuildTransaction
+         Builder
      """
     
     @classmethod

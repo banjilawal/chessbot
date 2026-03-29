@@ -10,7 +10,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from logic.system import CommandBuilder, CommandValidator, IntegrityService, BuildTransaction, Command, ValidationTransaction
+from logic.system import CommandBuilder, CommandValidator, IntegrityService, Builder, Command, ValidationTransaction
 
 
 class CommandService(IntegrityService[Command]):
@@ -39,7 +39,7 @@ class CommandService(IntegrityService[Command]):
     Attributes:
         *   id (int)
         *   name (name)
-        *   build (BuildTransaction[Command])
+        *   build (Builder[Command])
         *   validation (ValidationTransaction[Command])
 
     # LOCAL METHODS:

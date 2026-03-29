@@ -35,7 +35,7 @@ version: 1.0.0
 # DEPENDENCIES:
 ---------------
 From `logic.system`:
-    `BuildResult`, `BuildTransaction`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
+    `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
     `IdValidationTransaction`, `NameValidationTransaction`
 
 From `logic.discoverySearchContext`:
@@ -89,7 +89,7 @@ version: 1.0.0
 # DEPENDENCIES:
 ---------------
 From `logic.system`:
-    `BuildResult`, `BuildTransaction`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
+    `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
     `IdValidationTransaction`, `NameValidationTransaction`
 
 From `logic.team_name`:
@@ -106,7 +106,7 @@ From `logic.owner`:
  * `Team`
 """
 """
-Role:BuildTransaction, Data Integrity And Reliability Guarantor implementation
+Role:Builder, Data Integrity And Reliability Guarantor implementation
 
 Responsibilities:
 1. Process and validate parameters for creating `DiscoverySearchContext` instances.
@@ -198,7 +198,7 @@ version: 1.0.0
 # DEPENDENCIES:
 ---------------
 From `logic.system`:
-    `BuildResult`, `BuildTransaction`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
+    `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
     `IdValidationTransaction`, `NameValidationTransaction`
 
 From `logic.discoverySearchContext`:
@@ -252,7 +252,7 @@ version: 1.0.0
 # DEPENDENCIES:
 ---------------
 From `logic.system`:
-    `BuildResult`, `BuildTransaction`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
+    `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
     `IdValidationTransaction`, `NameValidationTransaction`
 
 From `logic.discoverySearchContext`:

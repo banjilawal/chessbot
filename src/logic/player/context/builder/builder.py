@@ -12,7 +12,7 @@ from typing import Optional
 
 from logic.game import Game, GameService
 from logic.team import Team, TeamService
-from logic.system import BuildTransaction, BuildResult, ExecutionRouteException, IdentityService, LoggingLevelRouter
+from logic.system import Builder, BuildResult, ExecutionRouteException, IdentityService, LoggingLevelRouter
 from logic.agent import (
     AgentVariety, AgentContext, AgentContextBuildException, ZeroAgentContextFlagsException,
     ArenaAgentContextFlagsException
@@ -20,9 +20,9 @@ from logic.agent import (
 
 
 
-class AgentContextBuildTransaction(BuildTransaction[AgentContext]):
+class AgentContextBuilder(Builder[AgentContext]):
     """
-    Role:BuildTransaction, Data Integrity And Reliability Guarantor
+    Role:Builder, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce AgentContext instances whose integrity is guaranteed at creation.
@@ -31,7 +31,7 @@ class AgentContextBuildTransaction(BuildTransaction[AgentContext]):
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     Super Class:
-        *   BuildTransaction
+        *   Builder
 
     Provides:
 

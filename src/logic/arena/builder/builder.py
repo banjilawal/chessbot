@@ -13,12 +13,12 @@ from logic.team import Team
 from logic.board import Board
 from logic.agent import PlayerAgent, AgentService
 from logic.arena import Arena, ArenaBuildException, DuplicatePlayerInArenaException
-from logic.system import BuildTransaction, BuildResult, IdentityService, LoggingLevelRouter, ValidationResult, id_emitter
+from logic.system import Builder, BuildResult, IdentityService, LoggingLevelRouter, ValidationResult, id_emitter
 
 
-class ArenaBuildTransaction(BuildTransaction[Arena]):
+class ArenaBuilder(Builder[Arena]):
     """
-    Role:BuildTransaction, Data Integrity And Reliability Guarantor
+    Role:Builder, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce Arena instances whose integrity is guaranteed at creation.
@@ -27,10 +27,10 @@ class ArenaBuildTransaction(BuildTransaction[Arena]):
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
     
     Super Class:
-        *   BuildTransaction
+        *   Builder
 
     # PROVIDES:
-        *   ArenaBuildTransaction
+        *   ArenaBuilder
 
     
     # INHERITED ATTRIBUTES:
@@ -64,7 +64,7 @@ class ArenaBuildTransaction(BuildTransaction[Arena]):
         Raises:
             *   ArenaBuildException
         """
-        method = "ArenaBuildTransaction.build"
+        method = "ArenaBuilder.build"
         try:
             # Ensure the id is safe to use.
             id_validation = identity_service.validate_id(candidate=id)
@@ -95,7 +95,7 @@ class ArenaBuildTransaction(BuildTransaction[Arena]):
             player_service: AgentService = AgentService()
     ) -> ValidationResult[List[PlayerAgent]]:
         """"""
-        method = "ArenaBuildTransaction._certify_players"
+        method = "ArenaBuilder._certify_players"
         try:
             # Perform the basic owner safety validation.
             for player in players:
@@ -124,7 +124,7 @@ class ArenaBuildTransaction(BuildTransaction[Arena]):
             arena: Arena,
             team_param_tuples: List[(PlayerAgent, Schema)],
     ) -> BuildResult[List[Team]]:
-        method = "ArenaBuildTransaction._build_teams"
+        method = "ArenaBuilder._build_teams"
         for param_tuple in team_param_tuples:
             agent, team_schema = param_tuple
             build_result = player.teams.pair_service.factory.execute(

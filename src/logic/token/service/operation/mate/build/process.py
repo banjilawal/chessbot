@@ -9,11 +9,11 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.system import BuildTransaction, BuildResult, LoggingLevelRouter
+from logic.system import Builder, BuildResult, LoggingLevelRouter
 from logic.token import Checkmate, KingToken
 
 
-class BuildCheckmate(BuildTransaction[Checkmate]):
+class BuildCheckmate(Builder[Checkmate]):
     
     @classmethod
     @LoggingLevelRouter.monitor

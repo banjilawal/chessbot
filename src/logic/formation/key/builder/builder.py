@@ -15,12 +15,12 @@ from logic.formation import (
 )
 from logic.persona import Persona, PersonaService
 from logic.square import Square, SquareService
-from logic.system import BuildResult, BuildTransaction, GameColor, GameColorValidationTransaction, IdentityService, LoggingLevelRouter
+from logic.system import BuildResult, Builder, GameColor, GameColorValidationTransaction, IdentityService, LoggingLevelRouter
 
 
-class FormationKeyBuildTransaction(BuildTransaction[FormationKey]):
+class FormationKeyBuilder(Builder[FormationKey]):
     """
-    Role:BuildTransaction, Data Integrity And Reliability Guarantor
+    Role:Builder, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce FormationKey instances whose integrity is guaranteed at creation.
@@ -29,7 +29,7 @@ class FormationKeyBuildTransaction(BuildTransaction[FormationKey]):
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     Super Class:
-        *   BuildTransaction
+        *   Builder
 
     Provides:
 
@@ -75,7 +75,7 @@ class FormationKeyBuildTransaction(BuildTransaction[FormationKey]):
             *   ArenaFormationKeysException
             *   FormationKeyBuildException
         """
-        method = "FormationKeyBuildTransaction.build"
+        method = "FormationKeyBuilder.build"
         
         # Count how many optional parameters are not-null.
         params = [designation, square, color, persona]

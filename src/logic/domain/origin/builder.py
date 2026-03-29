@@ -10,12 +10,12 @@ version: 1.0.0
 
 from logic.domain import DomainOrigin, DomainOriginBuildException
 from logic.enviroment import TurnScene, TurnSceneValidationTransaction
-from logic.system import BuildTransaction, BuildResult, LoggingLevelRouter
+from logic.system import Builder, BuildResult, LoggingLevelRouter
 
 
-class DomainOriginBuildTransaction(BuildTransaction[DomainOrigin]):
+class DomainOriginBuilder(Builder[DomainOrigin]):
     """
-     Role:BuildTransaction, Data Integrity And Reliability Guarantor
+     Role:Builder, Data Integrity And Reliability Guarantor
 
      Responsibilities:
      1.  Produce DomainOrigin instances whose integrity is guaranteed at creation.
@@ -24,10 +24,10 @@ class DomainOriginBuildTransaction(BuildTransaction[DomainOrigin]):
      4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
      Super Class:
-         * BuildTransaction
+         * Builder
 
      # PROVIDES:
-         *   DomainOriginBuildTransaction
+         *   DomainOriginBuilder
 
      # LOCAL ATTRIBUTES:
      None
@@ -56,7 +56,7 @@ class DomainOriginBuildTransaction(BuildTransaction[DomainOrigin]):
         Raises:
             None
         """
-        method = "DomainOriginBuildTransaction.build"
+        method = "DomainOriginBuilder.build"
         
         try:
             turn_scene_validation = TurnSceneValidationTransaction.execute(turn_scene)

@@ -49,7 +49,7 @@ __package_name__ = 'logic.system.build'
 # Export control - only what belongs in public API
 __all__ = [
   # Core classes
-  'BuildTransaction',
+  'Builder',
   'BuildResult',
   *exception.__all__,
 

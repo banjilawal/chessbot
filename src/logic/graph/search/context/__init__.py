@@ -11,5 +11,5 @@ version: 1.0.0
 from .model import *
 from .exception import *
 
-from .builder import VisitorSearchContextBuildTransaction
+from .builder import VisitorSearchContextBuilder
 from .validator import VisitorSearchContextValidationTransaction

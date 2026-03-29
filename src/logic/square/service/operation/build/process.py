@@ -13,10 +13,10 @@ from logic.board import Board, BoardService
 from logic.coord import Coord, CoordService
 from logic.square import Square, SquareBuildException, SquareCollisionAnalysis
 from logic.system import (
-    BuildTransaction, IdFactory, IdentityService, BuildResult, InvariantBreachException, LoggingLevelRouter
+    Builder, IdFactory, IdentityService, BuildResult, InvariantBreachException, LoggingLevelRouter
 )
 
-class SquareBuildTransaction(BuildTransaction[Square]):
+class SquareBuilder(Builder[Square]):
     """
      Role:
         -   Worker,
@@ -42,7 +42,7 @@ class SquareBuildTransaction(BuildTransaction[Square]):
             ) -> BuildResult[Square]
 
      Super Class:
-         BuildTransaction
+         Builder
     """
     
     @classmethod

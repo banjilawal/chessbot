@@ -15,5 +15,5 @@ from .exception import *
 from .neighbor import NeighborTuple
 from .event import VisitationEvent
 from .service import VisitationService
-from .builder import VisitationEventBuildTransaction
+from .builder import VisitationEventBuilder
 from .validator import VisitationEventValidationTransaction

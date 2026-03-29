@@ -5,11 +5,11 @@ from logic.hostage import (
     CaptivityContextBuildRouteException, ArenaCaptivityContextFlagsException, ZeroCaptivityContextFlagsException
 )
 from logic.square import Square, SquareService
-from logic.system import IdentityService, LoggingLevelRouter, BuildResult, BuildTransaction, id_emitter
+from logic.system import IdentityService, LoggingLevelRouter, BuildResult, Builder, id_emitter
 from logic.token import CombatantToken, Token, TokenService
 
 
-class CaptivityContextBuildTransaction(BuildTransaction[CaptivityContext]):
+class CaptivityContextBuilder(Builder[CaptivityContext]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -60,7 +60,7 @@ class CaptivityContextBuildTransaction(BuildTransaction[CaptivityContext]):
             * CaptivityContextBuildException
             * CaptivityContextBuildRouteException
         """
-        method = "CaptivityContextBuildTransaction.validate"
+        method = "CaptivityContextBuilder.validate"
         
         # --- Count how many optional parameters are not-null. only one should be not null. ---#
         params = [id, prisoner, victor, captured_square]

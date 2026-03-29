@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast
 
 from logic.system import QueryService, id_emitter
-from logic.team import TeamContext, TeamContextBuildTransaction, TeamContextValidationTransaction, TeamFinder
+from logic.team import TeamContext, TeamContextBuilder, TeamContextValidationTransaction, TeamFinder
 
 
 class TeamQueryService(QueryService[TeamContext]):
@@ -40,7 +40,7 @@ class TeamQueryService(QueryService[TeamContext]):
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             finder: TeamFinder = TeamFinder(),
-            builder: TeamContextBuildTransaction = TeamContextBuildTransaction(),
+            builder: TeamContextBuilder = TeamContextBuilder(),
             validator: TeamContextValidationTransaction = TeamContextValidationTransaction(),
     ):
         """
@@ -51,7 +51,7 @@ class TeamQueryService(QueryService[TeamContext]):
             *   name (str): Default value - SERVICE_NAME
             *   id (int): Default value - id_emitter.service_id
             *   route (TeamFinder): Default value - TeamFinder()
-            *   build (TeamContextBuildTransaction): Default value - TeamContextBuildTransaction()
+            *   build (TeamContextBuilder): Default value - TeamContextBuilder()
             *   validation (TeamContextValidationTransaction): Default value - TeamContextValidationTransaction()
 
         # RETURNS:
@@ -68,9 +68,9 @@ class TeamQueryService(QueryService[TeamContext]):
         return cast(TeamFinder, self.entity_finder)
     
     @property
-    def build(self) -> TeamContextBuildTransaction:
-        """Get TeamContextBuildTransaction instance."""
-        return cast(TeamContextBuildTransaction, self.entity_builder)
+    def build(self) -> TeamContextBuilder:
+        """Get TeamContextBuilder instance."""
+        return cast(TeamContextBuilder, self.entity_builder)
     
     @property
     def validation(self) -> TeamContextValidationTransaction:

@@ -12,11 +12,11 @@ from logic.domain import DomainValidationTransaction
 from logic.neighbor import VisitationEvent
 from logic.piece import Piece, PieceValidator
 
-from logic.system import BuildResult, BuildTransaction, ChessException, IdValidationTransaction, IdValidationException, LoggingLevelRouter
+from logic.system import BuildResult, Builder, ChessException, IdValidationTransaction, IdValidationException, LoggingLevelRouter
 
 
 
-class VisitationEventBuildTransaction(BuildTransaction[VisitationEvent]):
+class VisitationEventBuilder(Builder[VisitationEvent]):
     """"""
 
     @classmethod

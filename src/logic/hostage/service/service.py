@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast
 
 from logic.system import IntegrityService, id_emitter
-from logic.hostage import Hostage, HostageBuildTransaction, HostageValidationTransaction
+from logic.hostage import Hostage, HostageBuilder, HostageValidationTransaction
 
 
 class HostageService(IntegrityService[Hostage]):
@@ -39,7 +39,7 @@ class HostageService(IntegrityService[Hostage]):
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
-            builder: HostageBuildTransaction = HostageBuildTransaction(),
+            builder: HostageBuilder = HostageBuilder(),
             validator: HostageValidationTransaction = HostageValidationTransaction(),
     ):
         """
@@ -58,9 +58,9 @@ class HostageService(IntegrityService[Hostage]):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
     
     @property
-    def build(self) -> HostageBuildTransaction:
-        """get SquareBuildTransaction"""
-        return cast(HostageBuildTransaction, self.entity_builder)
+    def build(self) -> HostageBuilder:
+        """get SquareBuilder"""
+        return cast(HostageBuilder, self.entity_builder)
     
     @property
     def validation(self) -> HostageValidationTransaction:

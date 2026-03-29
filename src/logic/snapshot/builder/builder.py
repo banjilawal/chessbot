@@ -8,11 +8,11 @@ version: 1.0.0
 """
 
 from logic.snapshot import Snapshot
-from logic.system import BuildResult, BuildTransaction
+from logic.system import BuildResult, Builder
 
 
 
-class SnapshotBuildTransaction(BuildTransaction[Snapshot]):
+class SnapshotBuilder(Builder[Snapshot]):
     @classmethod
     def execute(cls, *args, **kwargs) -> BuildResult[Snapshot]:
         pass

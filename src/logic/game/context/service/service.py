@@ -11,7 +11,7 @@ from typing import cast
 
 from logic.game.finder.finder import GameFinder
 from logic.system import QueryService, id_emitter
-from logic.game import GameContext, GameContextBuildTransaction, GameContextValidationTransaction
+from logic.game import GameContext, GameContextBuilder, GameContextValidationTransaction
 
 
 class GameQueryService(QueryService[GameContext]):
@@ -41,7 +41,7 @@ class GameQueryService(QueryService[GameContext]):
             name: str = DEFAULT_NAME,
             id: int = id_emitter.service_id,
             finder: GameFinder = GameFinder(),
-            builder: GameContextBuildTransaction = GameContextBuildTransaction(),
+            builder: GameContextBuilder = GameContextBuilder(),
             validator: GameContextValidationTransaction = GameContextValidationTransaction(),
     ):
         """
@@ -52,7 +52,7 @@ class GameQueryService(QueryService[GameContext]):
             *   name (str): Default value - SERVICE_NAME
             *   id (int): Default value - id_emitter.service_id
             *   route (GameFinder): Default value - GameFinder()
-            *   build (GameContextBuildTransaction): Default value - GameContextBuildTransaction()
+            *   build (GameContextBuilder): Default value - GameContextBuilder()
             *   validation (GameContextValidationTransaction): Default value - GameContextValidationTransaction()
 
         # RETURNS:
@@ -69,9 +69,9 @@ class GameQueryService(QueryService[GameContext]):
         return cast(GameFinder, self.entity_finder)
     
     @property
-    def build(self) -> GameContextBuildTransaction:
-        """Get GameContextBuildTransaction instance."""
-        return cast(GameContextBuildTransaction, self.entity_builder)
+    def build(self) -> GameContextBuilder:
+        """Get GameContextBuilder instance."""
+        return cast(GameContextBuilder, self.entity_builder)
     
     @property
     def validation(self) -> GameContextValidationTransaction:

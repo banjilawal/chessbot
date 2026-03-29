@@ -10,16 +10,16 @@ version: 1.0.0
 from typing import Optional
 
 
-from logic.system import BuildResult, BuildTransaction, LoggingLevelRouter
+from logic.system import BuildResult, Builder, LoggingLevelRouter
 from logic.rank import (
     Rank, RankValidator, RankContext, RankContextBuildException,
     NoRankSearchOptionSelectedException, MoreThanOneRankSearchOptionPickedException,
 )
 
 
-class RankContextBuildTransaction(BuildTransaction[RankContext]):
+class RankContextBuilder(Builder[RankContext]):
     """
-    Role:BuildTransaction, Data Integrity And Reliability Guarantor
+    Role:Builder, Data Integrity And Reliability Guarantor
 
     Responsibilities:
         1. Manage conintuction of RankFinder instances that can be used safely by the client.
@@ -71,7 +71,7 @@ class RankContextBuildTransaction(BuildTransaction[RankContext]):
             * NoRankSearchOptionSelectedException
             * MoreThanOneRankSearchOptionPickedException
         """
-        method = "RankContextBuildTransaction.build"
+        method = "RankContextBuilder.build"
         
         try:
             params = [id, name, ransom, team_quota, designation]
@@ -136,7 +136,7 @@ class RankContextBuildTransaction(BuildTransaction[RankContext]):
         Raises:
             * InvalidRankContextException
         """
-        method = "RankContextBuildTransaction.build_id_search_context"
+        method = "RankContextBuilder.build_id_search_context"
         try:
             match = id in rank_validator.get_all_ids()
         
@@ -170,7 +170,7 @@ class RankContextBuildTransaction(BuildTransaction[RankContext]):
         Raises:
             * InvalidRankContextException
         """
-        method = "RankContextBuildTransaction.build_column_search_context"
+        method = "RankContextBuilder.build_column_search_context"
         
         try:
             column_validation = rank_validator(column)
@@ -209,7 +209,7 @@ class RankContextBuildTransaction(BuildTransaction[RankContext]):
         Raises:
             * InvalidRankContextException
         """
-        method = "RankContextBuildTransaction.build_rank_search_context"
+        method = "RankContextBuilder.build_rank_search_context"
         
         try:
             rank_validation = rank_validator.execute(rank)

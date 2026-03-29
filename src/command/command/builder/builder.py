@@ -25,7 +25,7 @@ class CommandBuilder(Builder[Command]):
             id: int = IdFactory.next_id(class_name="Command"),
             identity_service: IdentityService = IdentityService(),
     ) -> BuildResult[Command]:
-        method = "CommandBuildTransaction.build"
+        method = "CommandBuilder.build"
         
         # Handle the case that, the request does not pass a validation check.
         identity_validation_result = identity_service.validate_identity(

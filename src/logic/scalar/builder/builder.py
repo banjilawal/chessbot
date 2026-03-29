@@ -8,13 +8,13 @@ version: 1.0.0
 """
 from wsgiref.validate import validator
 
-from logic.system import BuildTransaction, BuildResult, LoggingLevelRouter
+from logic.system import Builder, BuildResult, LoggingLevelRouter
 from logic.scalar import Scalar, ScalarBuildException, ScalarValidationTransaction
 
 
-class ScalarBuildTransaction(BuildTransaction[Scalar]):
+class ScalarBuilder(Builder[Scalar]):
     """
-     Role:BuildTransaction, Data Integrity And Reliability Guarantor
+     Role:Builder, Data Integrity And Reliability Guarantor
 
      Responsibilities:
      1.  Produce Scalar instances whose integrity is guaranteed at creation.
@@ -23,10 +23,10 @@ class ScalarBuildTransaction(BuildTransaction[Scalar]):
      4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
      Super Class:
-         * BuildTransaction
+         * Builder
 
      # PROVIDES:
-         *   ScalarBuildTransaction
+         *   ScalarBuilder
 
      # LOCAL ATTRIBUTES:
      None
@@ -59,7 +59,7 @@ class ScalarBuildTransaction(BuildTransaction[Scalar]):
         Raises:
             * ScalarBuildException
         """
-        method = "ScalarBuildTransaction.build"
+        method = "ScalarBuilder.build"
         
         try:
             validation = scalar_validator.validate_value(value)

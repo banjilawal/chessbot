@@ -1,6 +1,6 @@
 
   """
-  BuildTransaction class responsible for safely constructing `BlockingEvent` instances.
+  Builder class responsible for safely constructing `BlockingEvent` instances.
 
   `EncounterEventBuilder` ensures that `BlockingEvent` objects are always created successfully by performing comprehensive validate
    checks during construction. This separates the responsibility of building from validating - `EncounterEventBuilder`

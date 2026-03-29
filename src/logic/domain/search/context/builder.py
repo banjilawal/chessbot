@@ -11,13 +11,13 @@ from typing import Optional
 
 from logic.rank import RankBoundsChecker
 from logic.coord import Coord, CoordValidationTransaction
-from logic.system import BuildTransaction, BuildResult, IdValidationTransaction, LoggingLevelRouter, NameValidationTransaction
+from logic.system import Builder, BuildResult, IdValidationTransaction, LoggingLevelRouter, NameValidationTransaction
 from logic.domain import (
     ResidentFilter, ArenaResidentSearchParamsException, NoResidentSearchParamException
 )
 
 
-class ResidentFilterBuildTransaction(BuildTransaction[ResidentFilter]):
+class ResidentFilterBuilder(Builder[ResidentFilter]):
     """"""
     
     @classmethod
@@ -33,7 +33,7 @@ class ResidentFilterBuildTransaction(BuildTransaction[ResidentFilter]):
             team_name: Optional[str] = None
     ) -> BuildResult[ResidentFilter]:
         """"""
-        method = "ResidentFilterBuildTransaction.build"
+        method = "ResidentFilterBuilder.build"
         
         try:
             params = [

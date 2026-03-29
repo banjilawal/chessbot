@@ -11,7 +11,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, List, TypeVar
 
 from logic.system import (
-    BuildTransaction, Context, IntegrityService, LoggingLevelRouter, SearchResult, Service, StackSearchRouter,
+    Builder, Context, IntegrityService, LoggingLevelRouter, SearchResult, Service, StackSearchRouter,
     ValidationTransaction
 )
 

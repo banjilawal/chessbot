@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import cast
 
-from logic.pair import Pair, PairBuildTransaction, PairValidationTransaction
+from logic.pair import Pair, PairBuilder, PairValidationTransaction
 from logic.system import IdFactory, IntegrityService
 
 
@@ -38,7 +38,7 @@ class PairService(IntegrityService[Pair]):
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            builder: PairBuildTransaction = PairBuildTransaction(),
+            builder: PairBuilder = PairBuilder(),
             validator: PairValidationTransaction = PairValidationTransaction(),
             id: int = IdFactory.next_id(class_name="PairService"),
     ):
@@ -46,14 +46,14 @@ class PairService(IntegrityService[Pair]):
         Args:
             id: int
             name: str
-            builder: PairBuildTransaction
+            builder: PairBuilder
             validator: PairValidationTransaction
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         
     @property
-    def build(self) -> PairBuildTransaction:
-        return cast(PairBuildTransaction, self.entity_builder)
+    def build(self) -> PairBuilder:
+        return cast(PairBuilder, self.entity_builder)
     
     @property
     def validation(self) -> PairValidationTransaction:

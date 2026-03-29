@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import List, cast
 
 from logic.node import Node
-from logic.pair import PairList, PairListBuildTransaction, PairListValidationTransaction, PairService
+from logic.pair import PairList, PairListBuilder, PairListValidationTransaction, PairService
 from logic.pair.listing.service import PairListServiceException
 from logic.system import IdFactory, IntegrityService, LoggingLevelRouter, SearchResult
 
@@ -44,7 +44,7 @@ class PairListService(IntegrityService[PairList]):
             self,
             name: str = SERVICE_NAME,
             pair_service: PairService = PairService(),
-            builder: PairListBuildTransaction = PairListBuildTransaction(),
+            builder: PairListBuilder = PairListBuilder(),
             validator: PairListValidationTransaction = PairListValidationTransaction(),
             id: int = IdFactory.next_id(class_name="PairListService"),
     ):
@@ -52,7 +52,7 @@ class PairListService(IntegrityService[PairList]):
         Args:
             id: int
             name: str
-            builder: PairListBuildTransaction
+            builder: PairListBuilder
             pair_service: PairService
             validator: PairListValidationTransaction
         """
@@ -60,8 +60,8 @@ class PairListService(IntegrityService[PairList]):
         self._pair_service = pair_service
     
     @property
-    def build(self) -> PairListBuildTransaction:
-        return cast(PairListBuildTransaction, self.entity_builder)
+    def build(self) -> PairListBuilder:
+        return cast(PairListBuilder, self.entity_builder)
     
     @property
     def validation(self) -> PairListValidationTransaction:

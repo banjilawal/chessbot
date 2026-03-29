@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import cast
 
 from logic.system import QueryService, id_emitter
-from logic.edge import EdgeContext, EdgeContextBuildTransaction, EdgeContextValidationTransaction, EdgeFinder
+from logic.edge import EdgeContext, EdgeContextBuilder, EdgeContextValidationTransaction, EdgeFinder
 
 
 class EdgeQueryService(QueryService[EdgeContext]):
@@ -42,7 +42,7 @@ class EdgeQueryService(QueryService[EdgeContext]):
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             finder: EdgeFinder = EdgeFinder(),
-            builder: EdgeContextBuildTransaction = EdgeContextBuildTransaction(),
+            builder: EdgeContextBuilder = EdgeContextBuilder(),
             validator: EdgeContextValidationTransaction = EdgeContextValidationTransaction(),
     ):
         """
@@ -52,7 +52,7 @@ class EdgeQueryService(QueryService[EdgeContext]):
             *   name (str)
             *   id (int)
             *   route (EdgeFinder)
-            *   build (EdgeContextBuildTransaction)
+            *   build (EdgeContextBuilder)
             *   validation (EdgeContextValidationTransaction)
         # RETURNS:
             None
@@ -68,9 +68,9 @@ class EdgeQueryService(QueryService[EdgeContext]):
         return cast(EdgeFinder, self.entity_finder)
     
     @property
-    def build(self) -> EdgeContextBuildTransaction:
-        """Get EdgeContextBuildTransaction instance."""
-        return cast(EdgeContextBuildTransaction, self.entity_builder)
+    def build(self) -> EdgeContextBuilder:
+        """Get EdgeContextBuilder instance."""
+        return cast(EdgeContextBuilder, self.entity_builder)
     
     @property
     def validation(self) -> EdgeContextValidationTransaction:

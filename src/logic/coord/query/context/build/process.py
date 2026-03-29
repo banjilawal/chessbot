@@ -10,13 +10,13 @@ version: 1.0.0
 from typing import Optional
 
 from logic.system import (
-    BOARD_DIMENSION, BuildResult, BuildTransaction, NumberValidationTransaction, LoggingLevelRouter,
+    BOARD_DIMENSION, BuildResult, Builder, NumberValidationTransaction, LoggingLevelRouter,
 )
 
 
-class CoordContextBuildTransaction(BuildTransaction[CoordContext]):
+class CoordContextBuilder(Builder[CoordContext]):
     """
-    Role:BuildTransaction, Data Integrity And Reliability Guarantor
+    Role:Builder, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce CoordContext instances whose integrity is guaranteed at creation.
@@ -25,7 +25,7 @@ class CoordContextBuildTransaction(BuildTransaction[CoordContext]):
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     Super Class:
-        *   BuildTransaction
+        *   Builder
 
     Provides:
 
@@ -62,7 +62,7 @@ class CoordContextBuildTransaction(BuildTransaction[CoordContext]):
             *   CoordContextBuildException
             *   ArenaCoordContextFlagsException
         """
-        method = "CoordContextBuildTransaction.build"
+        method = "CoordContextBuilder.build"
         
         # Count how many optional parameters are not-null. One param needs to be not-null.
         params = [row, column]

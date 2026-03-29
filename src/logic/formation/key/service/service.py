@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast
 
 from logic.system import QueryService, id_emitter
-from logic.formation import FormationLookupProcess, FormationKey, FormationKeyBuildTransaction, FormationKeyValidationTransaction
+from logic.formation import FormationLookupProcess, FormationKey, FormationKeyBuilder, FormationKeyValidationTransaction
 
 
 class FormationKeyService(QueryService[FormationKey]):
@@ -39,7 +39,7 @@ class FormationKeyService(QueryService[FormationKey]):
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             lookup: FormationLookupProcess = FormationLookupProcess(),
-            builder: FormationKeyBuildTransaction = FormationKeyBuildTransaction(),
+            builder: FormationKeyBuilder = FormationKeyBuilder(),
             validator: FormationKeyValidationTransaction = FormationKeyValidationTransaction(),
     ):
         """
@@ -48,7 +48,7 @@ class FormationKeyService(QueryService[FormationKey]):
         # PARAMETERS:
             *   id (nt)
             *   name (str)
-            *   build (FormationKeyBuildTransaction)
+            *   build (FormationKeyBuilder)
             *   validation (FormationKeyValidationTransaction)
         # RETURNS:
             None
@@ -58,9 +58,9 @@ class FormationKeyService(QueryService[FormationKey]):
         super().__init__(id=id, name=name, builder=builder, validator=validator, finder=lookup)
     
     @property
-    def build(self) -> FormationKeyBuildTransaction:
-        """get FormationKeyBuildTransaction"""
-        return cast(FormationKeyBuildTransaction, self.entity_builder)
+    def build(self) -> FormationKeyBuilder:
+        """get FormationKeyBuilder"""
+        return cast(FormationKeyBuilder, self.entity_builder)
     
     @property
     def validation(self) -> FormationKeyValidationTransaction:

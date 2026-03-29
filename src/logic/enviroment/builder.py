@@ -14,17 +14,17 @@ from logic.square import Square
 from logic.board import Board, BoardValidationTransaction
 from logic.piece import Piece, PieceValidator
 from logic.enviroment.validator import TurnScene, TurnSceneValidationTransaction
-from logic.system import BuildTransaction, BuildResult, IdValidationTransaction, LoggingLevelRouter
+from logic.system import Builder, BuildResult, IdValidationTransaction, LoggingLevelRouter
 
 
-class TurnSceneBuildTransaction(BuildTransaction[TurnScene]):
+class TurnSceneBuilder(Builder[TurnScene]):
     """"""
     
     @classmethod
     @LoggingLevelRouter.monitor
     def execute(cls, id: int, piece: Piece, board: Board) -> BuildResult[TurnScene]:
         """"""
-        method = "TurnSceneBuildTransaction.build"
+        method = "TurnSceneBuilder.build"
         
         try:
             id_validation = IdValidationTransaction.execute(id)

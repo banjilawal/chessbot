@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from logic.system import IntegrityService, IdFactory
-from logic.token import TokenContext, TokenContextBuildTransaction, TokenContextValidationTransaction
+from logic.token import TokenContext, TokenContextBuilder, TokenContextValidationTransaction
 
 
 class TokenContextService(IntegrityService[TokenContext]):
@@ -38,21 +38,21 @@ class TokenContextService(IntegrityService[TokenContext]):
         IntegrityService
     """
     SERVICE_NAME = "TokenContextService"
-    _build: TokenContextBuildTransaction
+    _build: TokenContextBuilder
     _validation: TokenContextValidationTransaction
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             id: int = IdFactory.next_id(class_name="TokenContextService"),
-            build: TokenContextBuildTransaction =TokenContextBuildTransaction(),
+            build: TokenContextBuilder =TokenContextBuilder(),
             validation: TokenContextValidationTransaction =TokenContextValidationTransaction(),
     ):
         """
         Args:
             id: int
             name: str
-            build: TokenContextBuildTransaction
+            build: TokenContextBuilder
             validation: TokenContextValidationTransaction
         """
         super().__init__(id=id, name=name)
@@ -60,7 +60,7 @@ class TokenContextService(IntegrityService[TokenContext]):
         self._validation = validation
     
     @property
-    def build(self) ->TokenContextBuildTransaction:
+    def build(self) ->TokenContextBuilder:
         return self._build
     
     @property

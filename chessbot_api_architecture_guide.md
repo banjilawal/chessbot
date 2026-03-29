@@ -515,7 +515,7 @@ piece = cast(CombatantPiece, build_result.payload)
 ```
 ### Sequence Diagram for the Usage Example
 ```mermaid
-%% BuildTransaction Flow Example
+%% Builder Flow Example
 sequenceDiagram
   User->>CommanderBuilder: Request new Commander
   CommanderBuilder->>IdValidator: Validate ID

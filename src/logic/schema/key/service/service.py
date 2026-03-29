@@ -10,7 +10,7 @@ from typing import cast
 
 
 from logic.system import QueryService, id_emitter
-from logic.schema import SchemaLookupProcess, SchemaKey, SchemaKeyBuildTransaction, SchemaKeyValidationTransaction
+from logic.schema import SchemaLookupProcess, SchemaKey, SchemaKeyBuilder, SchemaKeyValidationTransaction
 
 
 class SchemaKeyService(QueryService[SchemaKey]):
@@ -38,7 +38,7 @@ class SchemaKeyService(QueryService[SchemaKey]):
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             lookup: SchemaLookupProcess = SchemaLookupProcess(),
-            builder: SchemaKeyBuildTransaction = SchemaKeyBuildTransaction(),
+            builder: SchemaKeyBuilder = SchemaKeyBuilder(),
             validator: SchemaKeyValidationTransaction = SchemaKeyValidationTransaction(),
     ):
         """
@@ -47,7 +47,7 @@ class SchemaKeyService(QueryService[SchemaKey]):
         # PARAMETERS:
             *   id (nt)
             *   name (str)
-            *   build (SchemaKeyBuildTransaction)
+            *   build (SchemaKeyBuilder)
             *   validation (SchemaKeyValidationTransaction)
         # RETURNS:
             None
@@ -57,9 +57,9 @@ class SchemaKeyService(QueryService[SchemaKey]):
         super().__init__(id=id, name=name, builder=builder, validator=validator, finder=lookup)
         
     @property
-    def build(self) -> SchemaKeyBuildTransaction:
-        """get SchemaKeyBuildTransaction"""
-        return cast(SchemaKeyBuildTransaction, self.entity_builder)
+    def build(self) -> SchemaKeyBuilder:
+        """get SchemaKeyBuilder"""
+        return cast(SchemaKeyBuilder, self.entity_builder)
     
     @property
     def validation(self) -> SchemaKeyValidationTransaction:

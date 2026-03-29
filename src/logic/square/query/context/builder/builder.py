@@ -12,7 +12,7 @@ from typing import Optional
 
 from logic.board import Board, BoardService
 from logic.coord import Coord, CoordService
-from logic.system import BuildTransaction, BuildResult, IdentityService
+from logic.system import Builder, BuildResult, IdentityService
 from logic.square import (
     SquareContextBuildRouteException, SquareState, SquareValidationTransaction, ZeroSquareContextFlagsException, SquareContext,
     SquareContextBuildException, ExcessSquareContextFlagsException
@@ -20,9 +20,9 @@ from logic.square import (
 from logic.token import Token, TokenService
 
 
-class SquareContextBuildTransaction(BuildTransaction[SquareContext]):
+class SquareContextBuilder(Builder[SquareContext]):
     """
-    Role:BuildTransaction, Data Integrity And Reliability Guarantor
+    Role:Builder, Data Integrity And Reliability Guarantor
 
     Responsibilities:
      1.  Produce SquareContext instances whose integrity and reliability are guaranteed.
@@ -30,7 +30,7 @@ class SquareContextBuildTransaction(BuildTransaction[SquareContext]):
      3.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
      Super Class:
-         * BuildTransaction
+         * Builder
 
     Provides:
 
@@ -109,7 +109,7 @@ class SquareContextBuildTransaction(BuildTransaction[SquareContext]):
             ExcessSquareContextFlagsException
             SquareContextBuildRouteException
         """
-        method = "SquareContextBuildTransaction.build"
+        method = "SquareContextBuilder.build"
 
         # --- Count how many optional parameters are not-null. only one should be not null. ---#
         params = [id, name, coord, token,board, state,]

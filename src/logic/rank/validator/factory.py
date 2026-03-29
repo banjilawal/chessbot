@@ -128,7 +128,7 @@ version: 1.0.0
 """
 
 from logic.persona import Persona, PersonaService
-from logic.system import BuildTransaction, ValidationResult, LoggingLevelRouter, id_emitter
+from logic.system import Builder, ValidationResult, LoggingLevelRouter, id_emitter
 from logic.rank import Bishop, King, Knight, Pawn, Queen, Rank, RankValidationException, RankBuildRouteException, Rook
 
 
@@ -143,7 +143,7 @@ class RankValiatorFactory(ValidationTransaction[Rank]):
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     Super Class:
-        *   BuildTransaction
+        *   Builder
 
     # PROVIDES:
         *   RankFactory

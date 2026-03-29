@@ -9,5 +9,5 @@ version: 1.0.0
 
 from .exception import *
 from .context import ProjectionSearchContext
-from .builder import ProjectionSearchContextBuildTransaction
+from .builder import ProjectionSearchContextBuilder
 from .validator import ProjectionSearchContextValidationTransaction

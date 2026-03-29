@@ -28,7 +28,7 @@ class ExcessCoordContextFlagsException(DebugException):
             *   variable,
             *   it's value,
             *   event which fired the variable into its error state.
-        which occurred in the CoordContextBuildTransaction method identified in layer-0 of the exception chain.
+        which occurred in the CoordContextBuilder method identified in layer-0 of the exception chain.
 
     2.  A failing ValidationResult was returned because CoordContext candidate had more than one flag enabled.
     
