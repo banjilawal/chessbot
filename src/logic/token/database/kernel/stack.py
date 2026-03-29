@@ -58,7 +58,7 @@ class TokenStackService(StackService[Token]):
         -   is_ready_for_deployment() -> bool
         -   is_getting_ready_for_deployment() -> bool
         -   delete_by_id(id: int) -> DeletionResult[Token]
-        -   query(context: Context[Token]) -> SearchResult[List[Token]]
+        -   query(query: Context[Token]) -> SearchResult[List[Token]]
 
     Super Class:
         StackService

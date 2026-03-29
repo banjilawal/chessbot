@@ -11,7 +11,7 @@ version: 1.0.0
 
 # Packages
 from logic.square.service.operation.build import *
-from .context import *
+from .query import *
 from .database import *
 from .service import *
 from logic.square.service.operation.validation import *

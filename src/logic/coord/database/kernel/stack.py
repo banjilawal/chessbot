@@ -51,7 +51,7 @@ class CoordStackService(StackService[Coord]):
     Provides:
         -   pop() -> DeletionResult[Coord]
         -   push(item: Coord) -> InsertionResult
-        -   query(context: Context[Coord]) -> SearchResult[List[Coord]]
+        -   query(query: Context[Coord]) -> SearchResult[List[Coord]]
 
     Super Class:
         StackService
