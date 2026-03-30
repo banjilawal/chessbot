@@ -63,5 +63,11 @@ class PoppingEmptyTokenStackException(DebugException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)
+        super().__init__(
+            ex=ex,
+            var=var,
+            val=val,
+            msg=msg,
+            err_code=err_code,
+        )
 

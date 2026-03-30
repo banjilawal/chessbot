@@ -1,9 +1,9 @@
-# src/logic/token/query/route/exception/debug/exist.py
+# src/logic/token/query/service/exception/exist.py
 
 """
-Module: logic.token.query.route.exception.debug.exist
+Module: logic.token.query.service.exception.exist
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-10-01
 version: 1.0.0
 """
 

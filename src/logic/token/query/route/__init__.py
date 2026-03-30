@@ -10,7 +10,7 @@ version: 1.0.0
 # =========== TOKEN.QUERY.ROUTE PACKAGE CONTENTS ===========#
 
 # Packages
-from .router import *
+from .model import *
 from .validation import *
 
 # Modules

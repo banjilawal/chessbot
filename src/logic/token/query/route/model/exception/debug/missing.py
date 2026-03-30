@@ -1,9 +1,8 @@
-# src/logic/token/query/route/exception/debug/route.py
-
+# src/logic/token/query/route/model/exception/debug/missing.py
 """
-Module: logic.token.query.route.exception.debug.route
+Module: logic.token.query.route.model.exception.debug.missing
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-10-06
 version: 1.0.0
 """
 
@@ -11,29 +10,22 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# NO_TOKEN_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#
-    "TokenSearchRouteException",
+    # ======================# MISSING_TOKEN_SEARCH_ROUTE_EXCEPTION #======================#
+    "MissingTokenSearchRouteException",
 ]
 
 from logic.token import TokenDebugException
 
-
-# ======================# NO_TOKEN_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#
-class TokenSearchRouteException(TokenDebugException):
+# ======================# MISSING_TOKEN_SEARCH_ROUTE_EXCEPTION #======================#
+class MissingTokenSearchRouteException(TokenDebugException):
     """
-    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:
+        -   Error Variable Identifier
+        -   Exception Chain Layer 2,
+        -   Exception Messaging
 
     Responsibilities:
-    1.  Indicate that there was no search logic for a token attribute.
-
-    Super Class:
-        *   TokenDebugException
-
-    Provides:
-
-
-    # INHERITED ATTRIBUTES:
-        *   TokenDebugException class for inherited attributes.
+        1.  Indicate that there was no search logic for a token attribute.
 
     Attributes:
         var: Optional[str]
@@ -42,13 +34,12 @@ class TokenSearchRouteException(TokenDebugException):
         ex: Optional[Exception]
         err_code: Optional[str]
 
-    # LOCAL METHODS:
-    None
+    Provides:
 
-    # INHERITED METHODS:
-        *   See TokenDebugException class for inherited methods.
+    Super Class:
+        TokenDebugException
     """
-    ERR_CODE = "NO_TOKEN_SEARCH_ROUTE_ROUTE_EXCEPTION"
+    ERR_CODE = "MISSING_TOKEN_SEARCH_ROUTE_EXCEPTION"
     MSG = "There is no search logic for the token attribute."
     
     def __init__(
@@ -69,4 +60,10 @@ class TokenSearchRouteException(TokenDebugException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)
+        super().__init__(
+            ex=ex,
+            var=var,
+            val=val,
+            msg=msg,
+            err_code=err_code,
+        )

@@ -10,7 +10,8 @@ version: 1.0.0
 # =========== TOKEN.QUERY.SERVICE.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-from .dataset import *
+None
 
 # Modules
+from .exist import TokenNotFoundException
 from .anchor import TokenQueryServiceException

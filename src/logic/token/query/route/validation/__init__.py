@@ -1,16 +1,16 @@
-# src/logic/token/query/route/validator/__init__.py
+# src/logic/token/query/route/validation/__init__.py
+
 """
-Module: logic.token.query.route.validator.__init__
+Module: logic.token.query.route.validation.__init__
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
 """
 
-# =========== TOKEN.CONTEXT.ROUTE.VALIDATOR PACKAGE CONTENTS ===========#
+# =========== TOKEN.CONTEXT.ROUTE.VALIDATION PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .exception import *
 
 # Modules
 from .validator import TokenQueryParamsValidator
-from .exception import TokenQueryParamsValidationException
