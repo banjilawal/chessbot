@@ -5,21 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
+      <change afterPath="$PROJECT_DIR$/src/logic/zone/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/zone/model/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/zone/service/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/coord/model/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/model/exception/anchor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/square/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/exception/debug.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/square/model/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/model/exception/anchor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/square/model/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/model/exception/debug.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/team/model/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/team/model/exception/anchor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/team/model/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/team/model/exception/debug.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/exception/anchor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/kernel/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/exception/anchor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/crud/push/exception/full.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/crud/push/exception/full.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/exception/anchor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/exception/debug.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/query/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/query/exception/anchor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/query/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/query/exception/debug.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/exception/anchor.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -288,7 +277,7 @@
     "ToolWindow.Python Packages.ShowToolbar": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/logic/token/exception",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/logic/coord/model/exception",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -315,11 +304,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/logic/coord/model/exception" />
+      <recent name="$PROJECT_DIR$/src/logic/square/exception" />
       <recent name="$PROJECT_DIR$/src/logic/token/exception" />
       <recent name="$PROJECT_DIR$/src/logic/team" />
       <recent name="$PROJECT_DIR$/src/logic/coord/database/kernel" />
-      <recent name="$PROJECT_DIR$/src/logic/coord/database/kernel/operation/crud/pop" />
-      <recent name="$PROJECT_DIR$/src/logic/coord/service/operation/computation" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/logic/team/model" />
@@ -873,7 +862,7 @@
       <workItem from="1774245837652" duration="42949000" />
       <workItem from="1774454082016" duration="10781000" />
       <workItem from="1774483839135" duration="10440000" />
-      <workItem from="1774551231807" duration="71427000" />
+      <workItem from="1774551231807" duration="74330000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
