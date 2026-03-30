@@ -4,7 +4,7 @@ from enum import Enum
 from typing import cast
 
 from logic.exception import SearchException
-from logic.token.exception import PieceCapturingItSelfException
+from logic.token.model.exception import PieceCapturingItSelfException
 from logic.player.finder import BoardSearch
 from logic.square import Square
 from assurance import ThrowHelper

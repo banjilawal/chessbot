@@ -8,12 +8,11 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import List, cast
+from typing import List
 
 from logic.system import QueryService, IdFactory, LoggingLevelRouter, SearchResult
 from logic.token import (
-    Token, TokenContext, TokenContextService, TokenDatasetNullException, TokenQueryServiceException,
-    TokenSearchRouter
+    Token, TokenContext, TokenContextService, TokenQueryServiceException, TokenSearchRouter
 )
 
 class TokenQueryService(QueryService[Token]):
@@ -32,31 +31,10 @@ class TokenQueryService(QueryService[Token]):
         context_service: IntegrityService[Context[T]]
 
     Provides:
-        -   execute(dataset: List[T], query: Context[T]) -> SearchResult[List[T]]
+        -  query(data_set: List[Token], context: TokenContext) -> SearchResult[List[Token]]
 
     Super Class:
-        Service
-    """
-    """
-    Role:
-        Search Service, Lifecycle Management, Encapsulation, API layer.
-
-    Responsibilities:
-    1.  Public facingToken search microservice API.
-    2.  Provides a map aware utility for searchingToken objects.
-    3.  Encapsulate integrity assurance logic in one extendable module.
-    4.  Create a single source of truth forToken search results by having single entry and exit points for the
-       Token search flow.
-
-    Super Class:
-        *   QueryService
-
-    # PROVIDES:
-        *  TokenQueryService
-
-
-    # INHERITED ATTRIBUTES:
-        *   See QueryService for inherited attributes.
+        QueryService
     """
     SERVICE_NAME = "TokenQueryService"
     _router: TokenSearchRouter
@@ -89,16 +67,14 @@ class TokenQueryService(QueryService[Token]):
         return self._context_service
     
     @LoggingLevelRouter.monitor
-    def execute(self, dataset: List[Token], context: TokenContext) -> SearchResult[List[Token]]:
+    def query(self, data_set: List[Token], context: TokenContext) -> SearchResult[List[Token]]:
         """
-        Find tokens whose attribute value fits the query.
-
         Action:
-            Send an exception chain if the operation gets interrupted. Otherwise, send
-            the success result.
+            If the request is not completed send the exception in the SearchResult.
+            Otherwise, send the success result.
         Args:
+            data_set: List[Token]
             context: TokenContext
-            dataset: List[Token]
         Returns:
             SearchResult[List[Token]]
         Raises:
@@ -106,14 +82,11 @@ class TokenQueryService(QueryService[Token]):
         """
         method = f"{self.__class__.__name__}.query"
         
-        param_validation_result = self._run_safety_checks(dataset=dataset, context=context)
-        if param_validation_result.is_failure:
-            return param_validation_result
-        # --- Forward the request to the context_service. ---#
-        query_result = self._router.route(dataset=dataset, context=context)
+        # --- Forward the request to the search_router. ---#
+        search_result = self._router.route(dataset=data_set, context=context)
         
         # Handle the case that, the request was not completed.
-        if query_result.is_failure:
+        if search_result.is_failure:
             # Return the exception chain on failure.
             return SearchResult.failure(
                 TokenQueryServiceException(
@@ -121,72 +94,10 @@ class TokenQueryService(QueryService[Token]):
                     cls_name=self.__class__.__name__,
                     msg=TokenQueryServiceException.MSG,
                     err_code=TokenQueryServiceException.ERR_CODE,
-                    ex=query_result.exception,
+                    ex=search_result.exception
                 )
             )
-        # --- Forward the work product to the caller. ---#
-        return query_result
-    
-    @LoggingLevelRouter.monitor
-    def _run_safety_checks(
-            self,
-            dataset: List[Token],
-            context: TokenContext
-    ) -> SearchResult[List[Token]]:
-        method = f"{self.__class__.__name__}._run_safety_checks"
-        
-        # Handle the case that, the query is incorrect
-        context_validation_result = self._context_service.validation.execute(context)
-        if context_validation_result.is_failure:
-            # Return the exception chain on failure.
-            return SearchResult.failure(
-                TokenQueryServiceException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=TokenQueryServiceException.MSG,
-                    err_code=TokenQueryServiceException.ERR_CODE,
-                    ex=context_validation_result.exception,
-                )
-            )
-        # Handle the case that, the dataset does not exist
-        if dataset is None:
-            # Return the exception chain on failure.
-            return SearchResult.failure(
-                TokenQueryServiceException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=TokenQueryServiceException.MSG,
-                    err_code=TokenQueryServiceException.ERR_CODE,
-                    ex=TokenDatasetNullException(
-                        msg=TokenDatasetNullException.MSG,
-                        err_code=TokenDatasetNullException.ERR_CODE,
-                    )
-                )
-            )
-        # Handle the case that, the dataset is the wrong type.
-        if not isinstance(dataset, List):
-            # Return the exception chain on failure.
-            return SearchResult.failure(
-                TokenQueryServiceException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=TokenQueryServiceException.MSG,
-                    err_code=TokenQueryServiceException.ERR_CODE,
-                    ex=TypeError(f"Expected List, got {type(dataset).__name__} instead.")
-                )
-            )
-        # Handle the case that, the does not contain tokens.
-        if not isinstance(dataset[0], Token):
-            # Return the exception chain on failure.
-            return SearchResult.failure(
-                TokenQueryServiceException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=TokenQueryServiceException.MSG,
-                    err_code=TokenQueryServiceException.ERR_CODE,
-                    ex=TypeError(f"List contains {type(dataset).__name__}  instead of squares.")
-                )
-            )
-        return SearchResult.empty()
+        # --- Forward the work product to the client. ---#
+        return search_result
     
     

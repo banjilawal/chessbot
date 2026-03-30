@@ -7,7 +7,7 @@ from logic.event import TargetSquareMismatchException, AttackEvent
 from logic.token.event.attack.event.exception import AttackEventBuilderException
 from logic.token.event.travel_exception import TravelEventResourceNotFoundException
 from logic.piece import PieceValidator, InvalidAttackException, CombatantPiece
-from logic.token.exception import PieceCapturingItSelfException, CaptureFriendException, KingCaptureException
+from logic.token.model.exception import PieceCapturingItSelfException, CaptureFriendException, KingCaptureException
 
 
 class CheckEventBuilder(Enum):

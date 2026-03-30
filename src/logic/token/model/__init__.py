@@ -12,6 +12,7 @@ version: 1.0.0
 # Packages
 from .state import *
 from .concrete import *
+from .exception import *
 
 # Modules
 from .abstract import Token
