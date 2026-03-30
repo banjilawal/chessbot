@@ -7,6 +7,7 @@ Created: 2025-11-24
 version: 1.0.0
 """
 
+from __future__ import annotations
 from typing import List, cast
 
 from logic.system import QueryService, IdFactory, LoggingLevelRouter, SearchResult

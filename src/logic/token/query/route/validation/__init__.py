@@ -12,5 +12,5 @@ version: 1.0.0
 None
 
 # Modules
-from .validator import TokenQueryValidator
-from .transaction import TokenQueryValidationException
+from .validator import TokenQueryParamsValidator
+from .exception import TokenQueryParamsValidationException

@@ -10,14 +10,10 @@ version: 1.0.0
 #=========== TEAM PACKAGE CONTENTS ===========#
 
 # Packages
-from logic.team.model.hash import *
-from logic.team.model.roster import *
-from logic.team.service.operation.build import *
+from .model import *
 from .context import *
 from .database import *
 from .service import *
-from logic.team.service.operation.validation import *
-from .exception import *
 
 # Modules
-from logic.team.model.state import TeamState
+None

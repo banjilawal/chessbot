@@ -1,12 +1,13 @@
-# src/logic/token/query/route/route.py
+# src/logic/token/query/route/router/router.py
 
 """
-Module: logic.token.query.route.route
+Module: logic.token.query.route.router.router
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
 """
 
+from __future__ import annotations
 from typing import List
 
 from logic.rank import Rank
@@ -14,7 +15,7 @@ from logic.square import Square
 from logic.team import Team
 from logic.system import GameColor, LoggingLevelRouter, SearchResult, StackSearchRouter
 from logic.token import (
-    Token, TokenContext, TokenQueryValidator, TokenSearchException, TokenSearchRouteException
+    Token, TokenContext, TokenQueryParamsValidator, TokenSearchException, TokenSearchRouteException
 )
 
 
@@ -44,7 +45,7 @@ class TokenSearchRouter(StackSearchRouter[Token]):
             cls,
             dataset: List[Token],
             context: TokenContext,
-            query_validator: TokenQueryValidator = TokenQueryValidator(),
+            query_validator: TokenQueryParamsValidator = TokenQueryParamsValidator(),
     ) -> SearchResult[List[Token]]:
         """
         # ACTION:
