@@ -1,13 +1,18 @@
-# src/logic/coordContext/query/query/service/validator.py
+# src/logic/coord/query/context/service/service.py
 
 """
-Module: logic.coordContext.query.query.service.service
+Module: logic.coord.query.context.service.service
 Author: Banji Lawal
-Created: 2025-11-24
+Created: 2025-10-03
 version: 1.0.0
 """
 
+from __future__ import annotations
+
 from logic.system import IntegrityService, IdFactory
+from logic.coord import (
+    CoordContext, CoordContextBuilder, CoordContextContextOpsController, CoordContextValidator
+)
 
 
 class CoordContextService(IntegrityService[CoordContext]):
@@ -26,10 +31,9 @@ class CoordContextService(IntegrityService[CoordContext]):
         SERVICE_NAME: CoordContextService
 
         id: int
-        name: name
-        build: CoordContextbuild
-        validation: CoordContextValidation
-        controller: CoordContextOpsController
+        name: str
+        builder: CoordContextBuilder
+        validator: CoordContextValidator
 
     Provides:
 
@@ -37,33 +41,32 @@ class CoordContextService(IntegrityService[CoordContext]):
         IntegrityService
     """
     SERVICE_NAME = "CoordContextService"
-    _build: CoordContextBuildProcess
-    _validation: CoordContextValidationProcess
+    _ops_controller: CoordContextContextOpsController
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             id: int = IdFactory.next_id(class_name="CoordContextService"),
-            build: CoordContextBuildProcess =CoordContextBuildProcess(),
-            validation: CoordContextValidationProcess =CoordContextValidationProcess(),
+            ops_controller: CoordContextContextOpsController = CoordContextContextOpsController(),
     ):
         """
         Args:
             id: int
             name: str
-            build: CoordContextBuilder
-            validation: CoordContextValidator
+            ops_controller: CoordContextOpsController
         """
         super().__init__(id=id, name=name)
-        self._build = build
-        self._validation = validation
+        self._ops_controller = ops_controller
     
     @property
-    def build(self) -> CoordContextBuildProcess:
-        return self._build
+    def builder(self) -> CoordContextBuilder:
+        return self._ops_controller.builder
     
     @property
-    def validation(self) -> CoordContextValidationProcess:
-        return self._validation
+    def validator(self) -> CoordContextValidator:
+        return self._ops_controller.validator
     
+    @property
+    def ops_controller(self) -> CoordContextContextOpsController:
+        return self._ops_controller
     

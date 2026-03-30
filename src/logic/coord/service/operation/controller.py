@@ -1,7 +1,7 @@
 # src/logic/coord/service/operation/controller.py
 
 """
-Module: logic.coord.service.operation.manager
+Module: logic.coord.service.operation.controller
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
