@@ -1,22 +1,32 @@
-from email.headerregistry import Address
+# src/transport/request/modelrequest.py
+
+"""
+Module: transport.request.model.request
+Author: Banji Lawal
+Created: 2026-03-30
+version: 1.0.0
+"""
+
+from __future__ import annotations
 
 from command import Command
+from transport import Label
 
 
 class Request:
     _id: int
-    _address: Address
+    _label: Label
     _command: Command
     
-    def __init__(self, id: int, address: Address, command: Command):
+    def __init__(self, id: int, label: Label, command: Command):
         """
         Args:
             id: int
-            address: Address
+            label: Label
             command: Command
         """
         self._id = id
-        self._address = address
+        self._label = label
         self._command = command
         
         
@@ -25,8 +35,8 @@ class Request:
         return self._id
     
     @property
-    def address(self) -> Address:
-        return self._address
+    def label(self) -> Label:
+        return self._label
     
     @property
     def command(self) -> Command:

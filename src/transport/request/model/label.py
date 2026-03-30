@@ -1,8 +1,24 @@
-class Address:
+# src/transport/request/model/label.py
+
+"""
+Module: transport.request.model.label
+Author: Banji Lawal
+Created: 2026-03-30
+version: 1.0.0
+"""
+
+from __future__ import annotations
+
+class Label:
     _id: int
     _name: str
     
     def __init__(self, id: int, name: str):
+        """
+        Args:
+            id: int
+            name: str
+        """
         self._id = id
         self._name = name
         
@@ -17,6 +33,6 @@ class Address:
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, Address):
+        if isinstance(other, Label):
             return self._id == other.id and self._name.upper() == other.name.upper()
         return False
