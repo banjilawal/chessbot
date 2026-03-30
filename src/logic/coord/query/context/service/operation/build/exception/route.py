@@ -1,7 +1,7 @@
-# src/logic/coord/_context/build/exception/route.py
+# src/logic/coord/query/context/service/operation/build/exception/route.py
 
 """
-Module: logic.coord.query.build.exception.route
+Module: logic.coord.query.context.service.operation.build.exception.route
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -12,14 +12,14 @@ from typing import Optional
 
 __all__ = [
     # ======================# COORD_CONTEXT_EXECUTION_ROUTE_EXCEPTION #======================#
-    "CoordContextExecutionRouteException",
+    "CoordContextBuildRouteException",
 ]
 
 from logic.system import ExecutionRouteException
 
 
 # ======================# COORD_CONTEXT_EXECUTION_ROUTE_EXCEPTION #======================#
-class CoordContextExecutionRouteException(ExecutionRouteException):
+class CoordContextBuildRouteException(ExecutionRouteException):
     """
     Role:Error Tracing, Debugging, Super Exception
 

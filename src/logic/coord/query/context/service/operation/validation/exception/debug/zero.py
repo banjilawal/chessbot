@@ -1,9 +1,9 @@
-# src/logic/coord/validation/exception/flag/excess.py
+# src/logic/coord/query/context/service/operation/validation/exception/debug/zero.py
 
 """
-Module: logic.coord.validation.exception.flag.excess
+Module: logic.coord.query.context.service.operation.validation.exception.debug.zero
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-10-03
 version: 1.0.0
 """
 
@@ -11,14 +11,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# EXCESS_COORD_CONTEXT_FLAGS_EXCEPTION #======================#
-    "ExcessCoordContextFlagsException",
+    # ======================# ZERO_COORD_CONTEXT_FLAGS_EXCEPTION #======================#
+    "ZeroCoordContextFlagsException",
 ]
 
 from logic.system import DebugException
 
-# ======================# EXCESS_COORD_CONTEXT_FLAGS_EXCEPTION #======================#
-class ExcessCoordContextFlagsException(DebugException):
+
+# ======================# ZERO_COORD_CONTEXT_FLAGS_EXCEPTION #======================#
+class ZeroCoordContextFlagsException(DebugException):
     """
     Role:Exception Chain Layer 2, Exception Messaging
     # TASK: Capture Error Variable State
@@ -28,10 +29,10 @@ class ExcessCoordContextFlagsException(DebugException):
             *   variable,
             *   it's value,
             *   event which fired the variable into its error state.
-        which occurred in the CoordContextBuilder method identified in layer-0 of the exception chain.
+        which occurred in the CoordContextValidator method identified in layer-0 of the exception chain.
 
-    2.  A failing ValidationResult was returned because CoordContext candidate had more than one flag enabled.
-    
+    2.  A failing ValidationResult was returned because CoordContext candidate had no query flags enabled.
+
     Super Class:
         *   DebugException
 
@@ -54,8 +55,8 @@ class ExcessCoordContextFlagsException(DebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    MSG = "More than one CoordContext flag enabled."
-    ERR_CODE = "EXCESS_COORD_CONTEXT_FLAGS_EXCEPTION"
+    MSG = "No CoordContext flags are enabled."
+    ERR_CODE = "ZERO_COORD_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(
             self,

@@ -1,11 +1,12 @@
-# src/logic/coord/query/query/validation/exception/debug/route.py
+# src/logic/coord/query/context/service/operation/validation/exception/debug/route.py
 
 """
-Module: logic.coord.query.validation.exception.debug.route
+Module: logic.coord.query.context.service.operation.validation.exception.debug.route
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-10-03
 version: 1.0.0
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 

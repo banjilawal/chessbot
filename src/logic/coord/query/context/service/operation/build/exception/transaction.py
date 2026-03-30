@@ -1,7 +1,7 @@
-# src/logic/coord/query/query/build/exception/validator.py
+# src/logic/coord/query/context/service/operation/build/exception/transaction.py
 
 """
-Module: logic.coord.query.build.exception.work
+Module: logic.coord.query.context.service.operation.build.exception.transaction
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -73,7 +73,6 @@ class CoordContextBuildException(BuildException):
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
         rslt_type = rslt_type or self.RSLT_TYPE
-        
         super().__init__(
             ex=ex,
             op=op,

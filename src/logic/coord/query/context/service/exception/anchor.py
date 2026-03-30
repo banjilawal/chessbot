@@ -1,4 +1,4 @@
-# src/logic/coord/query/query/service/exception/anchor.py
+# src/logic/coord/query/context/service/service/exception/anchor.py
 
 """
 Module: logic.coord.query.query.service.exception.anchor

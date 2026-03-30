@@ -1,4 +1,4 @@
-# src/logic/coord/query/query/service/exception/__init__.py
+# src/logic/coord/query/context/service/service/exception/__init__.py
 
 """
 Module: logic.coord.query.query.service.exception.__init__

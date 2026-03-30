@@ -1,4 +1,4 @@
-# src/logic/coord/query/query/__init__.py
+# src/logic/coord/query/context/__init__.py
 
 """
 Module: logic.coord.query.query.__init__
@@ -10,10 +10,10 @@ version: 1.0.0
 # =========== COORD.QUERY.CONTEXT PACKAGE CONTENTS ===========#
 
 # Packages
-from .build import *
+from logic.coord.query.context.service.operation.build import *
+from .model import *
 from .service import *
-from .context import *
-from .exception import *
+from logic.coord.query.context.service.operation.validation import *
 
 # Modules
-from .context import CoordContext
+None

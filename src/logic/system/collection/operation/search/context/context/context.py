@@ -1,4 +1,4 @@
-# src/logic/system/collection/operation/search/query/context.py
+# src/logic/system/collection/operation/search/query/model.py
 
 """
 Module: logic.system.collection.operation.search.query.context

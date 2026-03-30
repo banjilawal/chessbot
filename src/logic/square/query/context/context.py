@@ -1,4 +1,4 @@
-# src/logic/square/query/context/context/context.py
+# src/logic/square/query/context/context/model.py
 
 """
 Module: logic.square.query.context.context.context

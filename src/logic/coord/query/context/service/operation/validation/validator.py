@@ -1,13 +1,13 @@
-# src/logic/coord/query/query/validation/validation.py
+# src/logic/coord/query/context/service/operation/validation/validator.py
 
 """
-Module: logic.coord.query.validation.validation
+Module: logic.coord.query.context.service.operation.validation.validator
 Author: Banji Lawal
-Created: 2025-11-16
+Created: 2025-10-03
 version: 1.0.0
 """
 
-
+from __future__ import annotations
 from typing import Any, cast
 
 from logic.system import NumberValidator, Validator, ValidationResult, LoggingLevelRouter

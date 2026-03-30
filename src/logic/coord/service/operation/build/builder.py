@@ -24,9 +24,9 @@ class CoordBuilder(Builder[Coord]):
     Responsibilities:
         1.  Coord creation process owner.
         2.  Ensure Coord build resources meet satisfy contracts.
-        3.  Assure Coord instances comply with business logc at point of creation.s.
+        3.  Assure Coord instances comply with business logic at point of creation.
 
-     Attributes:
+    Attributes:
      
     Provides:
         -   execute(

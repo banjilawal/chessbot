@@ -1,9 +1,9 @@
-# src/logic/coord/validation/exception/flag/zero.py
+# src/logic/coord/query/context/service/operation/validation/exception/debug/null.py
 
 """
-Module: logic.coord.validation.exception.flag.zero
+Module: logic.coord.query.context.service.operation.validation.exception.debug.null
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-10-03
 version: 1.0.0
 """
 
@@ -11,15 +11,14 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# ZERO_COORD_CONTEXT_FLAGS_EXCEPTION #======================#
-    "ZeroCoordContextFlagsException",
+    # ======================# NULL_COORD_CONTEXT_EXCEPTION #======================#
+    "NullCoordContextException",
 ]
 
-from logic.system import DebugException
+from logic.system import NullException
 
-
-# ======================# ZERO_COORD_CONTEXT_FLAGS_EXCEPTION #======================#
-class ZeroCoordContextFlagsException(DebugException):
+# ======================# NULL_COORD_CONTEXT_EXCEPTION #======================#
+class NullCoordContextException(NullException):
     """
     Role:Exception Chain Layer 2, Exception Messaging
     # TASK: Capture Error Variable State
@@ -31,16 +30,16 @@ class ZeroCoordContextFlagsException(DebugException):
             *   event which fired the variable into its error state.
         which occurred in the CoordContextValidator method identified in layer-0 of the exception chain.
 
-    2.  A failing ValidationResult was returned because CoordContext candidate had no query flags enabled.
+    2.  A failing ValidationResult was returned because the candidate was null.
 
     Super Class:
-        *   DebugException
+        *   NullException
 
     Provides:
 
 
     # INHERITED ATTRIBUTES:
-        *   See DebugException class for inherited attributes.
+        *   See NullException class for inherited attributes.
 
     Attributes:
         *   msg (str)
@@ -53,10 +52,10 @@ class ZeroCoordContextFlagsException(DebugException):
    None
 
     # INHERITED METHODS:
-        *   See DebugException class for inherited methods.
+        *   See NullException class for inherited methods.
     """
-    MSG = "No CoordContext flags are enabled."
-    ERR_CODE = "ZERO_COORD_CONTEXT_FLAGS_EXCEPTION"
+    MSG = "CoordContext cannot be null."
+    ERR_CODE = "NULL_COORD_CONTEXT_EXCEPTION"
     
     def __init__(
             self,
@@ -76,4 +75,4 @@ class ZeroCoordContextFlagsException(DebugException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        super().__init__(ex=ex, msg=msg, err_code=err_code, var=var, val=val,)
+        super().__init__(ex=ex, msg=msg, err_code=err_code, var=var, val=val, )

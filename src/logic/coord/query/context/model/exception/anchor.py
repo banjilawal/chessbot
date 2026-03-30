@@ -1,7 +1,7 @@
-# src/logic/coord/query/query/exception/anchor.py
+# src/logic/coord/query/context/model/exception/anchor.py
 
 """
-Module: logic.coord.query.exception.anchor
+Module: logic.coord.query.context.model.exception.anchor
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0
@@ -21,23 +21,13 @@ from logic.system import AnchorException
 # ======================# COORD_CONTEXT_EXCEPTION #======================#
 class CoordContextException(AnchorException):
     """
-    Role:Coverage Target, Exception Chain Layer 0
+    Role:
+        -   Exception Chain Layer 0
+        -   Exception coverage target
 
     Responsibilities:
-    1.  Anchoring target for CoordContext debug (layer-2) error state firing incident
-        reports on
-            *   the triggering variable
-            *   The trigger's value.
-    2.  Indicate which CoordContext method received a worker's (layer-1) failure result.
-
-    Super Class:
-        *   AnchorException
-
-    Provides:
-
-
-    # INHERITED ATTRIBUTES:
-        *   See AnchorException class for inherited attributes.
+        1.  Anchoring target for CoordContext debug (layer-2) error variable information.
+        2.  Indicate which CoordContext method received a worker's (layer-1) failure result.
 
     Attributes:
         msg: Optional[str]
@@ -46,11 +36,10 @@ class CoordContextException(AnchorException):
         cls_mthd: Optional[str]
         err_code: Optional[str]
 
-    # LOCAL METHODS:
-    None
+    Provides:
 
-    # INHERITED METHODS:
-        *   See AnchorException class for inherited methods.
+    Super Class:
+        AnchorException
     """
     CLS_NAME = "CoordContext"
     ERR_CODE = "COORD_CONTEXT_EXCEPTION"
@@ -75,4 +64,4 @@ class CoordContextException(AnchorException):
         msg = msg or self.MSG
         cls_name = cls_name or self.CLS_NAME
         err_code = err_code or self.ERR_CODE
-        super().__init__(msg=msg, err_code=err_code, ex=ex, cls_name=cls_name, cls_mthd=cls_mthd)
+        super().__init__(msg=msg, err_code=err_code, ex=ex, cls_name=cls_name, cls_mthd=cls_mthd,)

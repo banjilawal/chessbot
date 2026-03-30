@@ -10,10 +10,11 @@ version: 1.0.0
 # =========== COORD PACKAGE CONTENTS ===========#
 
 # Packages
+from .model import *
 from .query import *
 from .service import *
 from .database import *
-from logic.coord.model.exception import *
 
 # Modules
+None
 

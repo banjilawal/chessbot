@@ -25,7 +25,7 @@ class ZoneBuilder(Builder[Zone]):
     Responsibilities:
         1.  Zone creation process owner.
         2.  Ensure Zone build resources meet satisfy contracts.
-        3.  Assure Zone instances comply with business logc at point of creation.s.
+        3.  Assure Zone instances comply with business logic at point of creation.
 
      Attributes:
      
