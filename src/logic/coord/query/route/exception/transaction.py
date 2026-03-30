@@ -1,7 +1,7 @@
-# src/logic/coord/route/exception/validator.py
+# src/logic/coord/route/exception/transaction.py
 
 """
-Module: logic.coord.route.exception.work
+Module: logic.coord.route.exception.transaction
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -107,7 +107,7 @@ class CoordSearchException(CoordException, SearchException):
         traces the ultimate source of failure.
 
     Super Class:
-        *   FinderException
+        *   RouteException
 
     Provides:
 

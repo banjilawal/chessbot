@@ -32,8 +32,7 @@ class CoordContextService(IntegrityService[CoordContext]):
 
         id: int
         name: str
-        builder: CoordContextBuilder
-        validator: CoordContextValidator
+        ops_controller: CoordContextContextOpsController
 
     Provides:
 

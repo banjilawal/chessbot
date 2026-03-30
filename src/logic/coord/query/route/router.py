@@ -1,18 +1,19 @@
-# src/logic/query/coord/route/route.py
+# src/logic/query/coord/route/router.py
 
 """
-Module: logic.query.coord.route.route
+Module: logic.query.coord.route.router
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
+from __future__ import annotations
 from typing import List
 
-from logic.system import DataFinder, LoggingLevelRouter, Finder, SearchException, SearchResult, StackSearchRouter
+from logic.system import LoggingLevelRouter, SearchResult, StackSearchRouter
 from logic.coord import (
-    Coord, CoordContext, CoordContextValidationProcess, CoordDatasetNullException,
-    CoordSearchException, CoordSearchPayloadTypeException, CoordSearchRouteException
+    Coord, CoordContext, CoordDatasetNullException,
+    CoordSearchException, CoordSearchRouteException
 )
 
 

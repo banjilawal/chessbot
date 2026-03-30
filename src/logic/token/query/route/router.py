@@ -14,7 +14,7 @@ from logic.square import Square
 from logic.team import Team
 from logic.system import GameColor, LoggingLevelRouter, SearchResult, StackSearchRouter
 from logic.token import (
-    Token, TokenContext, TokenContextValidator, TokenSearchException, TokenSearchRouteException
+    Token, TokenContext, TokenQueryValidator, TokenSearchException, TokenSearchRouteException
 )
 
 
@@ -44,7 +44,7 @@ class TokenSearchRouter(StackSearchRouter[Token]):
             cls,
             dataset: List[Token],
             context: TokenContext,
-            context_validator: TokenContextValidator = TokenContextValidator()
+            query_validator: TokenQueryValidator = TokenQueryValidator(),
     ) -> SearchResult[List[Token]]:
         """
         # ACTION:
@@ -69,7 +69,7 @@ class TokenSearchRouter(StackSearchRouter[Token]):
         """
         method = "TokenSearchRouter.find"
 
-
+    validation_result = query_validator.execute(dataset=dataset, context=context)
     
     # --- Route to the search method which matches the query key. ---#
         
