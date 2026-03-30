@@ -17,50 +17,44 @@ __all__ = [
 
 from logic.system import ValidationException
 
+
 # ======================# COORD_CONTEXT_VALIDATION_FAILURE #======================#
 class CoordContextValidationException(ValidationException):
     """
-    Role:Exception Chain Layer 1, Exception Messaging
-    # TASK: Worker Method Identifier
+    Role:
+        -   Worker Method Identification
+        -   Exception Chain Layer 1,
+        -   Exception Messaging
 
     Responsibilities:
-    1.  Identify the CoordValidator method where the exception failed.
+        1.  Indicate a CoordContext validation check was not passed.
+        2.  Identify the CoordContextValidator method where the failure occurred.
 
-    Super Class:
-        *   ValidationException
+    Attributes:
+        op: Optional[str]
+        msg: Optional[str]
+        mthd: Optional[str]
+        title: Optional[str]
+        ex: Optional[Exception]
+        err_code: Optional[str]
+        rslt_type: Optional[str]
 
     Provides:
 
-
-    # INHERITED ATTRIBUTES:
-        *   See ValidationException class for inherited attributes.
-
-    Attributes:
-        *   err_code (str)
-        *   msg (str)
-        *   ex (Optional[Exception])
-        *   mthd (Optional[str])
-        *   op (Optional[str])
-        *   rslt_type (Optional[str])
-
-    # LOCAL METHODS:
-    None
-
-    # INHERITED METHODS:
-        *   See ValidationException class for inherited methods.
+    Super Class:
+        ValidationException
     """
-    OP = "Validation"
-    RSLT_TYPE = "ValidationResult"
-    ERR_CODE = "COORD_CONTEXT_VALIDATION_FAILURE"
     MSG = "Failure in CoordValidator method."
+    ERR_CODE = "COORD_CONTEXT_VALIDATION_FAILURE"
     
     def __init__(
             self,
-            err_code: Optional[str] = None,
-            msg: Optional[str] = None,
-            ex: Optional[Exception] = None,
-            mthd: Optional[str] = None,
             op: Optional[str] = None,
+            msg: Optional[str] = None,
+            mthd: Optional[str] = None,
+            title: Optional[str] = None,
+            err_code: Optional[str] = None,
+            ex: Optional[Exception] = None,
             rslt_type: Optional[str] = None,
     ):
         """
@@ -68,6 +62,7 @@ class CoordContextValidationException(ValidationException):
             op: Optional[str]
             msg: Optional[str]
             mthd: Optional[str]
+            title: Optional[str]
             ex: Optional[Exception]
             err_code: Optional[str]
             rslt_type: Optional[str]
@@ -76,12 +71,12 @@ class CoordContextValidationException(ValidationException):
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
         rslt_type = rslt_type or self.RSLT_TYPE
-        
         super().__init__(
             ex=ex,
             op=op,
             msg=msg,
             mthd=mthd,
+            title=title,
             err_code=err_code,
             rslt_type=rslt_type,
         )

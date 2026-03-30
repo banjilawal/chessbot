@@ -27,7 +27,7 @@ class CoordValidationException(ValidationException):
     
     Responsibilities:
         1.  Indicate a Coord validation check was not passed.
-        2.  Identify the Validator method where the failure occurred.
+        2.  Identify the CoordValidator method where the failure occurred.
     
     Attributes:
         op: Optional[str]
@@ -41,7 +41,7 @@ class CoordValidationException(ValidationException):
     Provides:
     
     Super Class:
-        OperationException
+        ValidationException
     """
     ERR_CODE = "COORD_VALIDATION_FAILURE"
     MSG = "Failure in CoordValidator method."

@@ -8,9 +8,9 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import Any, cast
+from typing import Any, List, cast
 
-from logic.system import NumberValidator, Validator, ValidationResult, LoggingLevelRouter
+from logic.system import BOARD_DIMENSION, NumberValidator, Validator, ValidationResult, LoggingLevelRouter
 from logic.coord import (
     CoordContextValidationException, CoordContextValidationRouteException, CoordContext,
     NullCoordContextException, ZeroCoordContextFlagsException
@@ -19,22 +19,30 @@ from logic.coord import (
 
 class CoordContextValidator(Validator[CoordContext]):
     """
-     Role:Validation, Data Integrity Guarantor, Security.
+    Role
+        -   Transaction Worker
+        -   Integrity Maintenance
+        -   Consistency Assurance
+        -   Process Runner
 
     Responsibilities:
-    1. Verify a candidate is a CoordContext that meets the application's safety contract before the client
-        is allowed to use the CoordContext object.
-    2. Provide pluggable factories for validating different options separately.
-  
+        1.  Ensure a CoordContext instance is certified safe, reliable and consistent before use.
+
+    Attributes:
+
+    Provides:
+        -   execute(
+                    candidate: Any,
+                    number_validator: NumberValidator = NumberValidator(),
+            ) -> ValidationResult[CoordContext]
+            
+        -   _run_attribute_checks(
+                    attributes: List[int],
+                    number_validator: NumberValidator,
+            ) -> ValidationResult[CoordContext]
+
     Super Class:
-        * Validator
-        
-    3 PROVIDES:
-    None
-    
-    
-    3 INHERITED ATTRIBUTES:
-        *   See Validator class for inherited attributes.
+        Validator
     """
 
     @classmethod
@@ -45,33 +53,41 @@ class CoordContextValidator(Validator[CoordContext]):
             number_validator: NumberValidator = NumberValidator(),
     ) -> ValidationResult[CoordContext]:
         """
-        # ACTION:
-        Verifies candidate is a CoordContext in two steps.
-            1. Test the candidate is a valid SearchCoordContext with a single searcher option switched on.
-            2. Test the value passed to CoordContext passes its validation contract.
-        # PARAMETERS:
-          * candidate (Any): Object to verify is a Coord.
-          * validation (type[CoordValidator]): Enforces safety requirements on row, column, square_name coords.
-        # RETURNS:
-          *    ValidationResult[CoordContext] containing either:
-                    - On failure: Exception.
-                    - On success: CoordContext in the payload.
+        Action:
+            1.  If the candidate is either:
+                    -   is null.
+                    -   the type wrong
+                    -   The attribute fails a validation check.
+                send an exception chain in the ValidationResult.
+            2.  Otherwise, send the success result.
+        Args:
+            candidate: Any
+            number_validator: NumberValidator
+        Returns:
+            ValidationResult[CoordContext]
         Raises:
-            * TypeError
-            * NullCoordContextException
-            * ZeroCoordContextFlagsException
-            * CoordContextValidationException
-            * CoordContextValidationRouteException
+            TypeError
+            CoordContextException
+            NullCoordContextException
+            ZeroCoordContextFlagsException
         """
-        method = "CoordSearchContextValidator.validate"
+        method = f"{cls.__name__}.validate"
         
         # Handle the nonexistence case.
         if candidate is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 CoordContextValidationException(
-                    msg=f"{method}: {CoordContextValidationException.MSG}",
-                    ex=NullCoordContextException(f"{method}: {NullCoordContextException.MSG}")
+                    mthd=method,
+                    title=cls.__name__,
+                    op=CoordContextValidationException.OP,
+                    msg=CoordContextValidationException.MSG,
+                    err_code=CoordContextValidationException.ERR_CODE,
+                    rslt_type=CoordContextValidationException.RSLT_TYPE,
+                    ex=NullCoordContextException(
+                        msg=CoordContextValidationException.MSG,
+                        err_code=CoordContextValidationException.ERR_CODE,
+                    )
                 )
             )
         # Handle the case that, they type is wrong.
@@ -79,8 +95,13 @@ class CoordContextValidator(Validator[CoordContext]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 CoordContextValidationException(
-                    msg=f"{method}: {CoordContextValidationException.MSG}",
-                    ex=TypeError(f"{method}: Expected a CoordContext, got {type(candidate).__name__} instead.")
+                    mthd=method,
+                    title=cls.__name__,
+                    op=CoordContextValidationException.OP,
+                    msg=CoordContextValidationException.MSG,
+                    err_code=CoordContextValidationException.ERR_CODE,
+                    rslt_type=CoordContextValidationException.RSLT_TYPE,
+                    ex=TypeError(f"Expected a CoordContext, got {type(candidate).__name__} instead.")
                 )
             )
         # --- Cast candidate to the CoordContext for additional tests. ---#
@@ -94,72 +115,119 @@ class CoordContextValidator(Validator[CoordContext]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 CoordContextValidationException(
-                    msg=f"{method}: {CoordContextValidationException.MSG}",
-                    ex=ZeroCoordContextFlagsException(f"{method}: {ZeroCoordContextFlagsException.MSG}")
+                    mthd=method,
+                    title=cls.__name__,
+                    op=CoordContextValidationException.OP,
+                    msg=CoordContextValidationException.MSG,
+                    err_code=CoordContextValidationException.ERR_CODE,
+                    rslt_type=CoordContextValidationException.RSLT_TYPE,
+                    ex=ZeroCoordContextFlagsException(
+                        msg=CoordContextValidationException.MSG,
+                        err_code=CoordContextValidationException.ERR_CODE,
+                    )
                 )
             )
         # --- Route to the appropriate validation branch. ---#
         
         # Certification for the search-by-column-and-row target.
         if switch_count == 2:
-            # Handle the case that, row of search-by-column-and-row target fails its integrity checks.
-            row_validation = number_validator.execute(context.row)
-            if row_validation.is_failure:
-                # Return the exception chain on failure.
-                return ValidationResult.failure(
-                    CoordContextValidationException(
-                        msg=f"{method}: {CoordContextValidationException.MSG}",
-                        ex=row_validation.exception
-                    )
-                )
-            # Handle the case that, column of search-by-column-and-row target fails its integrity checks.
-            column_validation = number_validator.execute(context.column)
-            if column_validation.is_failure:
-                # Return the exception chain on failure.
-                return ValidationResult.failure(
-                    CoordContextValidationException(
-                        msg=f"{method}: {CoordContextValidationException.MSG}",
-                        ex=column_validation.exception
-                    )
-                )
-            # On certification success return the row-and-column_CoordContext in the ValidationResult.
-            return ValidationResult.success(payload=context)
+            # Handle the case that, the search-by-column-and-row target fails its integrity checks.
+            validation_result = cls._run_attribute_checks(
+                attributes=[context.row, context.column],
+                number_validator=number_validator,
+            )
+            # On failure, forward the result
+            if validation_result.is_failure:
+                return validation_result
+            # --- Otherwise forward the work product to the client. ---#
+            return ValidationResult.success(context)
         
-        # Certification for the search-by-row target.
-        if context.row is not None and context.column is not None:
-            row_validation = number_validator.execute(context.row)
-            if row_validation.is_failure:
-                # Return the exception chain on failure.
-                return ValidationResult.failure(
-                    CoordContextValidationException(
-                        msg=f"{method}: {CoordContextValidationException.MSG}",
-                        ex=row_validation.exception
-                    )
-                )
-            # On certification success return the row_CoordContext in the ValidationResult.
-            return ValidationResult.success(payload=context)
+        # --- Validation route for row_CoordContext. ---#
+        if context.row is not None:
+            # Handle the case that, the context.row fails a check.
+            validation_result = cls._run_attribute_checks(
+                attributes=[context.row],
+                number_validator=number_validator,
+            )
+            # On failure, forward the result
+            if validation_result.is_failure:
+                return validation_result
+            # --- Otherwise forward the work product to the client. ---#
+            return ValidationResult.success(context)
         
-        # Certification for the search-by-column target.
-        if context.column is not None and context.column is not None:
-            column_validation = number_validator.execute(context.column)
-            if column_validation.is_failure:
-                # Return the exception chain on failure.
-                return ValidationResult.failure(
-                    CoordContextValidationException(
-                        msg=f"{method}: {CoordContextValidationException.MSG}",
-                        ex=column_validation.exception
-                    )
-                )
-            # On certification success return the column_CoordContext in the ValidationResult.
-            return ValidationResult.success(payload=context)
+        # --- Validation route for column_CoordContext. ---#
+        if context.column is not None:
+            # Handle the case that, the context.column fails a check.
+            validation_result = cls._run_attribute_checks(
+                attributes=[context.column],
+                number_validator=number_validator,
+            )
+            # On failure forward the result
+            if validation_result.is_failure:
+                return validation_result
+            # --- Otherwise forward the work product to the client. ---#
+            return ValidationResult.success(context)
         
-        # Return the exception chain if there was no validation route for the query.
+        # Handle the case that, there is no validation route for the context.
         return ValidationResult.failure(
             CoordContextValidationException(
-                msg=f"{method}: {CoordContextValidationException.MSG}",
-                ex=CoordContextValidationRouteException(f"{method}: {CoordContextValidationRouteException.MSG}")
+                mthd=method,
+                title=cls.__name__,
+                op=CoordContextValidationException.OP,
+                msg=CoordContextValidationException.MSG,
+                err_code=CoordContextValidationException.ERR_CODE,
+                rslt_type=CoordContextValidationException.RSLT_TYPE,
+                ex=CoordContextValidationRouteException(
+                    msg=CoordContextValidationException.MSG,
+                    err_code=CoordContextValidationException.ERR_CODE,
+                )
             )
         )
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _run_attribute_checks(
+            cls,
+            attributes: List[int],
+            number_validator: NumberValidator,
+    ) -> ValidationResult[CoordContext]:
+        """
+        Run checks on which ether attributes have been enabled.
+        Action:
+            Send an exception in the ValidationResult if list member fails a check.
+            Otherwise, send the success result.
+        Args:
+            attributes: List[int]
+            number_validator: NumberValidator
+        Returns:
+            ValidationResult[CoordContext]
+        Raises:
+            CoordContextValidationException
+        """
+        method = f"{cls.__name__}._run_validation_check"
+        
+        for attribute in attributes:
+            # Handle the case that, the row is not certified safe.
+            validation_result = number_validator.execute(
+                candidate=attribute,
+                ceiling=BOARD_DIMENSION - 1,
+                floor=0,
+            )
+            if validation_result.is_failure:
+                # Return the exception chain on failure.
+                return ValidationResult.failure(
+                    CoordContextValidationException(
+                        mthd=method,
+                        title=cls.__name__,
+                        op=CoordContextValidationException.OP,
+                        msg=CoordContextValidationException.MSG,
+                        err_code=CoordContextValidationException.ERR_CODE,
+                        rslt_type=CoordContextValidationException.RSLT_TYPE,
+                        ex=validation_result.exception
+                    )
+                )
+        # --- Forward the work product to the caller. ---#
+        return ValidationResult.success(CoordContext())
         
 
 
