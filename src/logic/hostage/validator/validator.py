@@ -18,11 +18,11 @@ from logic.hostage import (
     PrisonerCapturedByDifferentEnemyException, TokenCannotCaptureItselfException, UnformedTokenCannotBeVictorException,
     VictorAndPrisoneOnDifferentBoardsException, PrisonerCapturedOnDifferentSquareException,
 )
-from logic.system import IdentityService, LoggingLevelRouter, ValidationResult,ValidationTransaction
+from logic.system import IdentityService, LoggingLevelRouter, ValidationResult,Validator
 
 
 
-class HostageValidationTransaction(ValidationTransaction[Hostage]):
+class HostageValidator(Validator[Hostage]):
     """
     Role:Validation, Data Integrity And Reliability Guarantor
 
@@ -78,7 +78,7 @@ class HostageValidationTransaction(ValidationTransaction[Hostage]):
             *   PrisonerAlreadyHasHostageException
             *   PrisonerCapturedOnDifferentSquareException
         """
-        method = "HostageValidationTransaction.validate"
+        method = "HostageValidator.validate"
         
         # Handle the case that, the candidate does not exist.
         if candidate is None:

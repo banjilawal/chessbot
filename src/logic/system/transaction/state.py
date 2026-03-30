@@ -40,7 +40,7 @@ Major themes influencing the design include:
 # SECTION G - Feature Delivery Mechanism:
 1. An exception for each requirement providing granular, accurate and precise error reporting.
 2. Minimizing the boilerplate error handling and logging code with the `LoggingLevelRouter` decorator.
-3. `IdValidationTransaction` can be used as component in more complex verifications.
+3. `IdValidator` can be used as component in more complex verifications.
 
 # SECTION 7 - Dependencies:
 * From `logic.system`:

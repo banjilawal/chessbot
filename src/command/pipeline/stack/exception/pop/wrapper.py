@@ -1,4 +1,4 @@
-# src/command/pipeline/database/kernel/exception/pop/work.py
+# src/command/pipeline/database/kernel/exception/pop/validator.py
 
 """
 Module: command.pipeline.database.kernel.exception.pop.work

@@ -1,4 +1,4 @@
-# src/logic/pair/listing/build/work.py
+# src/logic/pair/listing/build/validator.py
 
 """
 Module: logic.pair.listing.build.work

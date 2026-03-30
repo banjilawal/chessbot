@@ -1,4 +1,4 @@
-# src/logic/scalar/build/exception/work.py
+# src/logic/scalar/build/exception/validator.py
 
 """
 Module: logic.scalar.build.exception.work

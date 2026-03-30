@@ -1,4 +1,4 @@
-# src/logic/owner/travel/attack/transaction/transaction.py
+# src/logic/owner/travel/attack/transaction/validator.py
 
 """
 Module: logic.owner.travel.attack.transaction.transaction

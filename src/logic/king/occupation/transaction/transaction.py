@@ -1,4 +1,4 @@
-# src/logic/king/occupation/transaction/transaction.py
+# src/logic/king/occupation/transaction/validator.py
 
 """
 Module: `logic.king.occupation.transaction.transaction`

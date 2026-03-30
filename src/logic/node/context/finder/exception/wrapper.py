@@ -1,4 +1,4 @@
-# src/logic/node/route/exception/work.py
+# src/logic/node/route/exception/validator.py
 
 """
 Module: logic.node.route.exception.work

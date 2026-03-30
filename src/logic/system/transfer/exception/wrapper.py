@@ -1,4 +1,4 @@
-# src/logic/system/transfer/exception/work.py
+# src/logic/system/transfer/exception/validator.py
 
 """
 Module: logic.system.transfer.exception.work

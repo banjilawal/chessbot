@@ -1,4 +1,4 @@
-# src/logic/occupant/travel/base/transaction.py
+# src/logic/occupant/travel/base/validator.py
 
 """
 Module: logic.occupant.travel.base.transaction
@@ -58,7 +58,7 @@ class TravelTransaction(Transaction[TravelEvent]):
   #   """
   #   method = "TravelEventFactory.execute"
   #
-  #   event_validation = TravelEventValidationTransaction.validate(travel)
+  #   event_validation = TravelEventValidator.validate(travel)
   #   if not event_validation.is_success():
   #     return TransactionResult(
   #       checkpoint=travel,

@@ -3,7 +3,7 @@
 """
 Module: logic.zone.validation.exception.__init__
 Author: Banji Lawal
-Created: 2025-11-19
+Created: 2026-03-29
 version: 1.0.0
 """
 
@@ -13,5 +13,5 @@ version: 1.0.0
 from .debug import *
 
 # Modules
-from .work import ZoneValidationException
+from .transaction import ZoneValidationException
 

@@ -1,4 +1,4 @@
-# src/logic/square/database/kernel/util/quota/exception/work.py
+# src/logic/square/database/kernel/util/quota/exception/validator.py
 
 """
 Module: logic.square.database.kernel.util.quota.exception.work

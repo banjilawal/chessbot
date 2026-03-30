@@ -1,4 +1,4 @@
-# src/logic/snapshot/service/transaction.py
+# src/logic/snapshot/service/validator.py
 
 """
 Module: logic.snapshot.service.service

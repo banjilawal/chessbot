@@ -1,4 +1,4 @@
-# src/logic/system/collection/operation/deletion/exception/work.py
+# src/logic/system/collection/operation/deletion/exception/validator.py
 
 """
 Module: logic.system.collection.operation.deletion.exception.work

@@ -1,4 +1,4 @@
-# src/logic/token/database/kernel/operation/quota/exception/work.py
+# src/logic/token/database/kernel/operation/quota/exception/validator.py
 
 """
 Module: logic.token.database.kernel.operation.quota.exception.work

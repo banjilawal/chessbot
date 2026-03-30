@@ -12,11 +12,11 @@ from typing import Any, Dict, cast
 
 from logic.system import (
     ArgumentCountException, ArgumentNameException, ArgumentTypeException, ArgumentsValidationException,
-    IdentityService, LoggingLevelRouter, NullArgumentsException, ValidationResult, ValidationTransaction
+    IdentityService, LoggingLevelRouter, NullArgumentsException, ValidationResult, Validator
 )
 
 
-class ArgumentsValidationTransaction(ValidationTransaction[Dict]):
+class ArgumentsValidator(Validator[Dict]):
     """
     Role:Validation, Data Integrity Guarantor, Security.
     
@@ -27,7 +27,7 @@ class ArgumentsValidationTransaction(ValidationTransaction[Dict]):
     *   The correct types.
     
     Super Class:
-    *   ValidationTransaction
+    *   Validator
     
     Provides:
     
@@ -83,7 +83,7 @@ class ArgumentsValidationTransaction(ValidationTransaction[Dict]):
              *   ArgumentTypeException
              *   ArgumentValidationException
          """
-        method = "ArgumentsValidationTransaction.validate"
+        method = "ArgumentsValidator.validate"
         
         # Handle the nonexistence case.
         if candidate is None:

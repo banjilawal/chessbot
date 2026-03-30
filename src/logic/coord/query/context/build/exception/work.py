@@ -1,4 +1,4 @@
-# src/logic/coord/query/query/build/exception/work.py
+# src/logic/coord/query/query/build/exception/validator.py
 
 """
 Module: logic.coord.query.build.exception.work

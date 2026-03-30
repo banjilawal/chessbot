@@ -1,4 +1,4 @@
-# src/logic/tokenContext/query/query/service/transaction.py
+# src/logic/tokenContext/query/query/service/validator.py
 
 """
 Module: logic.tokenContext.query.query.service.service
@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from logic.system import IntegrityService, IdFactory
-from logic.token import TokenContext, TokenContextBuilder, TokenContextValidationTransaction
+from logic.token import TokenContext, TokenContextBuilder, TokenContextValidator
 
 
 class TokenContextService(IntegrityService[TokenContext]):
@@ -39,21 +39,21 @@ class TokenContextService(IntegrityService[TokenContext]):
     """
     SERVICE_NAME = "TokenContextService"
     _build: TokenContextBuilder
-    _validation: TokenContextValidationTransaction
+    _validation: TokenContextValidator
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             id: int = IdFactory.next_id(class_name="TokenContextService"),
             build: TokenContextBuilder =TokenContextBuilder(),
-            validation: TokenContextValidationTransaction =TokenContextValidationTransaction(),
+            validation: TokenContextValidator =TokenContextValidator(),
     ):
         """
         Args:
             id: int
             name: str
             build: TokenContextBuilder
-            validation: TokenContextValidationTransaction
+            validation: TokenContextValidator
         """
         super().__init__(id=id, name=name)
         self._build = build
@@ -64,7 +64,7 @@ class TokenContextService(IntegrityService[TokenContext]):
         return self._build
     
     @property
-    def validation(self) ->TokenContextValidationTransaction:
+    def validation(self) ->TokenContextValidator:
         return self._validation
     
     

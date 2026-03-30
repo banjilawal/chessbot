@@ -1,4 +1,4 @@
-# src/logic/pair/pair/validation/exception/work.py
+# src/logic/pair/pair/validation/exception/validator.py
 
 """
 Module: logic.pair.pair.validation.exception.work
@@ -23,7 +23,7 @@ class PairValidationException(ValidationException):
     Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Identify the PairValidationTransaction method where the exception failed.
+    1.  Identify the PairValidator method where the exception failed.
 
     Super Class:
         *   ValidationException
@@ -51,7 +51,7 @@ class PairValidationException(ValidationException):
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     ERR_CODE = "PAIR_VALIDATION_FAILURE"
-    MSG = "Failure in PairValidationTransaction method."
+    MSG = "Failure in PairValidator method."
     
     def __init__(
             self,

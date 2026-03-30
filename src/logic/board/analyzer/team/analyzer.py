@@ -1,4 +1,4 @@
-# src/logic/board/analyzer/transaction.py
+# src/logic/board/analyzer/validator.py
 
 """
 Module: logic.board.analyzer.analyzer
@@ -11,7 +11,7 @@ from typing import cast
 
 from logic.team import Team, TeamService
 from logic.system import LoggingLevelRouter, RelationAnalysis, RelationReport
-from logic.board import Board, BoardTeamAnalysisException, BoardValidationTransaction
+from logic.board import Board, BoardTeamAnalysisException, BoardValidator
 
 
 class BoardTeamRelationAnalysis(RelationAnalysis[Board, Team]):
@@ -29,7 +29,7 @@ class BoardTeamRelationAnalysis(RelationAnalysis[Board, Team]):
         -   analyze(
                     candidate_primary: Board,
                     candidate_satellite: Team,
-                    board_validator: BoardValidationTransaction = BoardValidationTransaction(),
+                    board_validator: BoardValidator = BoardValidator(),
                     team_service: TeamService = TeamService(),
             ) -> RelationReport[Board, Team]
 
@@ -42,7 +42,7 @@ class BoardTeamRelationAnalysis(RelationAnalysis[Board, Team]):
             cls,
             candidate_primary: Board,
             candidate_satellite: Team,
-            board_validator: BoardValidationTransaction = BoardValidationTransaction(),
+            board_validator: BoardValidator = BoardValidator(),
             team_service: TeamService = TeamService(),
     ) -> RelationReport[Board, Team]:
         """
@@ -58,7 +58,7 @@ class BoardTeamRelationAnalysis(RelationAnalysis[Board, Team]):
         Args::
             candidate_primary: Board
             candidate_satellite: Team
-            board_validator: BoardValidationTransaction
+            board_validator: BoardValidator
             team_service: TeamService
         Returns:
             RelationReport[Board, Team]

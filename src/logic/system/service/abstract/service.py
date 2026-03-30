@@ -1,4 +1,4 @@
-# src/logic/system/service/abstract/transaction.py
+# src/logic/system/service/abstract/validator.py
 
 """
 Module: logic.system.service.abstract.service
@@ -9,7 +9,7 @@ Created: 2025-11-18
 from abc import ABC
 from typing import Generic, TypeVar
 
-from logic.system import ValidationTransaction
+from logic.system import Validator
 
 T = TypeVar("T")
 
@@ -49,7 +49,7 @@ class Service(ABC, Generic[T]):
     
     _id: int
     _name: str
-    _validator: ValidationTransaction[T]
+    _validator: Validator[T]
     
     def __init__(self, id: int, name: str,):
         self._id = id

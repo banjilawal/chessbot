@@ -1,4 +1,4 @@
-# src/logic/scalar/validation/exception/work.py
+# src/logic/scalar/validation/exception/validator.py
 
 """
 Module: logic.scalar.validation.exception.work
@@ -21,7 +21,7 @@ class ScalarValidationException(ValidationException):
     Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  An error occurred in ScalarValidationTransaction.validate that, prevented A successful validation result
+    1.  An error occurred in ScalarValidator.validate that, prevented A successful validation result
         from being returned.
 
     Super Class:

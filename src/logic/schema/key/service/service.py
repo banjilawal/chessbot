@@ -1,4 +1,4 @@
-# src/logic/schema/key/service/transaction.py
+# src/logic/schema/key/service/validator.py
 
 """
 Module: logic.schema.key.service.service
@@ -10,7 +10,7 @@ from typing import cast
 
 
 from logic.system import QueryService, id_emitter
-from logic.schema import SchemaLookupProcess, SchemaKey, SchemaKeyBuilder, SchemaKeyValidationTransaction
+from logic.schema import SchemaLookupProcess, SchemaKey, SchemaKeyBuilder, SchemaKeyValidator
 
 
 class SchemaKeyService(QueryService[SchemaKey]):
@@ -39,7 +39,7 @@ class SchemaKeyService(QueryService[SchemaKey]):
             id: int = id_emitter.service_id,
             lookup: SchemaLookupProcess = SchemaLookupProcess(),
             builder: SchemaKeyBuilder = SchemaKeyBuilder(),
-            validator: SchemaKeyValidationTransaction = SchemaKeyValidationTransaction(),
+            validator: SchemaKeyValidator = SchemaKeyValidator(),
     ):
         """
         # ACTION:
@@ -48,7 +48,7 @@ class SchemaKeyService(QueryService[SchemaKey]):
             *   id (nt)
             *   name (str)
             *   build (SchemaKeyBuilder)
-            *   validation (SchemaKeyValidationTransaction)
+            *   validation (SchemaKeyValidator)
         # RETURNS:
             None
         Raises:
@@ -62,9 +62,9 @@ class SchemaKeyService(QueryService[SchemaKey]):
         return cast(SchemaKeyBuilder, self.entity_builder)
     
     @property
-    def validation(self) -> SchemaKeyValidationTransaction:
-        """get SchemaKeyValidationTransaction"""
-        return cast(SchemaKeyValidationTransaction, self.entity_validator)
+    def validation(self) -> SchemaKeyValidator:
+        """get SchemaKeyValidator"""
+        return cast(SchemaKeyValidator, self.entity_validator)
     
     @property
     def lookup(self) -> SchemaLookupProcess:

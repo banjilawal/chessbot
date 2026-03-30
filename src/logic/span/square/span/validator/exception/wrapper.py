@@ -1,4 +1,4 @@
-# src/logic/span/square/span/validation/exception/work.py
+# src/logic/span/square/span/validation/exception/validator.py
 
 """
 Module: logic.span.square.span.validation.exception.work
@@ -23,7 +23,7 @@ class SquareSpanValidationException(ValidationException):
     Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Identify the SquareSpanValidationTransaction method where the exception failed.
+    1.  Identify the SquareSpanValidator method where the exception failed.
 
     Super Class:
         *   ValidationException
@@ -51,7 +51,7 @@ class SquareSpanValidationException(ValidationException):
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     ERR_CODE = "SQUARE_SPAN_VALIDATION_FAILURE"
-    MSG = "Failure in SquareSpanValidationTransaction method."
+    MSG = "Failure in SquareSpanValidator method."
 
     def __init__(
             self,

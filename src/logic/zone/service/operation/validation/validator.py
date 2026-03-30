@@ -3,7 +3,7 @@
 """
 Module: logic.zone.validation.validation
 Author: Banji Lawal
-Created: 2025-08-12
+Created: 2026-03-29
 version: 1.0.0
 """
 
@@ -11,12 +11,12 @@ from __future__ import annotations
 from typing import cast, Any
 
 from logic.zone import Zone, NullZoneException
-from logic.zone.service.operation.validation.exception.work import ZoneValidationException
+from logic.zone.service.operation.validation.exception.transaction import ZoneValidationException
 from logic.system import (
-    NUMBER_OF_ROWS, ValidationTransaction, ValidationResult, LoggingLevelRouter, NumberValidationTransaction
+    NUMBER_OF_ROWS, Validator, ValidationResult, LoggingLevelRouter, NumberValidator
 )
 
-class ZoneValidationTransaction(ValidationTransaction[Zone]):
+class ZoneValidator(Validator[Zone]):
     """
     Role
         -   Transaction Worker
@@ -32,11 +32,11 @@ class ZoneValidationTransaction(ValidationTransaction[Zone]):
     Provides:
        -    execute(
                     candidate: Any,
-                    number_validation: NumberValidationTransaction,
+                    number_validation: NumberValidator,
             ) -> ValidationResult[Zone]
 
     Super Class:
-        ValidationTransaction
+        Validator
     """
     
     @classmethod
@@ -44,7 +44,7 @@ class ZoneValidationTransaction(ValidationTransaction[Zone]):
     def execute(
             cls,
             candidate: Any,
-            number_validation: NumberValidationTransaction = NumberValidationTransaction(),
+            number_validation: NumberValidator = NumberValidator(),
     ) -> ValidationResult[Zone]:
         """
         Verify the candidate is a Zone that is safe to use.
@@ -57,7 +57,7 @@ class ZoneValidationTransaction(ValidationTransaction[Zone]):
             2.  Otherwise, after the candidate is cast to a Zone, send the success result.
         Args:
             candidate: Any
-            number_validation: NumberValidationTransaction
+            number_validation: NumberValidator
         Returns:
             ValidationResult[Zone]
         Raises:

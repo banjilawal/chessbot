@@ -15,7 +15,7 @@ from logic.team import UniqueTeamDataService
 from logic.system import Builder, BuildResult, IdentityService, LoggingLevelRouter,ValidationResult, id_emitter
 
 from logic.player import (
-    Player, PlayerBuildException, PlayerVariety, PlayerValidationTransaction, HumanPlayer, HumanPlayerBuildException,
+    Player, PlayerBuildException, PlayerVariety, PlayerValidator, HumanPlayer, HumanPlayerBuildException,
     MachinePlayer, MachinePlayerBuildException
 )
 
@@ -48,7 +48,7 @@ class PlayerFactory(Builder[Player]):
             id: id_emitter.player_id,
             player_variety: PlayerVariety,
             engine_service: Optional[EngineService] = None,
-            player_validator: PlayerValidationTransaction = PlayerValidationTransaction(),
+            player_validator: PlayerValidator = PlayerValidator(),
     ) -> BuildResult[HumanPlayer|MachinePlayer]:
         """
         # ACTION:

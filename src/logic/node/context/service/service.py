@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import cast
 
 from logic.system import QueryService, id_emitter
-from logic.node import NodeContext, NodeContextBuilder, NodeContextValidationTransaction, NodeFinder
+from logic.node import NodeContext, NodeContextBuilder, NodeContextValidator, NodeFinder
 
 
 class NodeQueryService(QueryService[NodeContext]):
@@ -43,7 +43,7 @@ class NodeQueryService(QueryService[NodeContext]):
             id: int = id_emitter.service_id,
             finder: NodeFinder = NodeFinder(),
             builder: NodeContextBuilder = NodeContextBuilder(),
-            validator: NodeContextValidationTransaction = NodeContextValidationTransaction(),
+            validator: NodeContextValidator = NodeContextValidator(),
     ):
         """
         Args:
@@ -51,7 +51,7 @@ class NodeQueryService(QueryService[NodeContext]):
             name: str
             finder: NodeFinder
             builder: NodeContextBuilder
-            validator: NodeContextValidationTransaction
+            validator: NodeContextValidator
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator, finder=finder)
     
@@ -66,6 +66,6 @@ class NodeQueryService(QueryService[NodeContext]):
         return cast(NodeContextBuilder, self.entity_builder)
     
     @property
-    def validation(self) -> NodeContextValidationTransaction:
-        """Get NodeContextValidationTransaction instance."""
-        return cast(NodeContextValidationTransaction, self.entity_validator)
+    def validation(self) -> NodeContextValidator:
+        """Get NodeContextValidator instance."""
+        return cast(NodeContextValidator, self.entity_validator)

@@ -14,7 +14,7 @@ from logic.square import Square, SquareService
 from logic.team import Team, TeamService
 from logic.coord import Coord, CoordService
 from logic.system import (
-    NumberValidationTransaction, Builder, BuildResult, GameColor, GameColorValidationTransaction, IdentityService, LoggingLevelRouter
+    NumberValidator, Builder, BuildResult, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
 )
 from logic.token import (
     ArenaTokenContextFlagsException, TokenContext, TokenContextBuildException,
@@ -58,8 +58,8 @@ class TokenContextBuilder(Builder[TokenContext]):
             coord_service: CoordService = CoordService(),
             square_service: SquareService = SquareService(),
             identity_service: IdentityService = IdentityService(),
-            color_validator: GameColorValidationTransaction = GameColorValidationTransaction(),
-            number_validator: NumberValidationTransaction = NumberValidationTransaction(),
+            color_validator: GameColorValidator = GameColorValidator(),
+            number_validator: NumberValidator = NumberValidator(),
     ) -> BuildResult[TokenContext]:
         """
         # ACTION:
@@ -81,7 +81,7 @@ class TokenContextBuilder(Builder[TokenContext]):
                 *   team_service (TeamService)
                 *   rank_service (RankService)
                 *   coord_service (CoordService)
-                *   color_validator (GameColorValidationTransaction)
+                *   color_validator (GameColorValidator)
                 *   identity_service (IdentityService)
         # RETURNS:
           *     BuildResult[TokenContext] containing either:

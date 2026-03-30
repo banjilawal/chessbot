@@ -11,7 +11,7 @@ from typing import Optional
 
 from logic.schema.key.builder.exception import SchemaKeyBuildException, SchemaKeyBuildRouteException
 from logic.system import (
-    BuildResult, Builder, GameColor, GameColorValidationTransaction, IdentityService, LoggingLevelRouter
+    BuildResult, Builder, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
 )
 from logic.schema import (
     ZeroSchemaKeysException, SchemaKey, ArenaSchemaKeysException,
@@ -42,7 +42,7 @@ class SchemaKeyBuilder(Builder[SchemaKey]):
             name: Optional[str] = None,
             color: Optional[GameColor] = None,
             identity_service: IdentityService = IdentityService(),
-            color_validator: GameColorValidationTransaction = GameColorValidationTransaction(),
+            color_validator: GameColorValidator = GameColorValidator(),
     ) -> BuildResult[SchemaKey]:
         """
         # ACTION:
@@ -55,7 +55,7 @@ class SchemaKeyBuilder(Builder[SchemaKey]):
                     *   name (Optional[str])
                     *   color (Optional[GameColor])
             *   These Parameters must be provided:
-                    *   color_validator (GameColorValidationTransaction)
+                    *   color_validator (GameColorValidator)
                     *   identity_service (IdentityService)
         # RETURNS:
             *   BuildResult[SchemaKey] containing either:

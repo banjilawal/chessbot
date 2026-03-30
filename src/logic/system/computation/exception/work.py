@@ -1,4 +1,4 @@
-# src/logic/system/arithmetic/exception/work.py
+# src/logic/system/arithmetic/exception/validator.py
 
 """
 Module: logic.system.arithmetic.exception.work

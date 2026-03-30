@@ -485,7 +485,7 @@ object's build history.
 *(placeholder for Validators explanation)*
 
 ```mermaid
-%% ValidationTransaction Flow Example
+%% Validator Flow Example
 sequenceDiagram
   Event->>AttackEventValidator: Validate event legality
   AttackEventValidator-->>Event: Return ValidationResult

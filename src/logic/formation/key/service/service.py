@@ -1,4 +1,4 @@
-# src/logic/formation/key/service/transaction.py
+# src/logic/formation/key/service/validator.py
 
 """
 Module: logic.formation.key.service.service
@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast
 
 from logic.system import QueryService, id_emitter
-from logic.formation import FormationLookupProcess, FormationKey, FormationKeyBuilder, FormationKeyValidationTransaction
+from logic.formation import FormationLookupProcess, FormationKey, FormationKeyBuilder, FormationKeyValidator
 
 
 class FormationKeyService(QueryService[FormationKey]):
@@ -40,7 +40,7 @@ class FormationKeyService(QueryService[FormationKey]):
             id: int = id_emitter.service_id,
             lookup: FormationLookupProcess = FormationLookupProcess(),
             builder: FormationKeyBuilder = FormationKeyBuilder(),
-            validator: FormationKeyValidationTransaction = FormationKeyValidationTransaction(),
+            validator: FormationKeyValidator = FormationKeyValidator(),
     ):
         """
         # ACTION:
@@ -49,7 +49,7 @@ class FormationKeyService(QueryService[FormationKey]):
             *   id (nt)
             *   name (str)
             *   build (FormationKeyBuilder)
-            *   validation (FormationKeyValidationTransaction)
+            *   validation (FormationKeyValidator)
         # RETURNS:
             None
         Raises:
@@ -63,9 +63,9 @@ class FormationKeyService(QueryService[FormationKey]):
         return cast(FormationKeyBuilder, self.entity_builder)
     
     @property
-    def validation(self) -> FormationKeyValidationTransaction:
-        """get FormationKeyValidationTransaction"""
-        return cast(FormationKeyValidationTransaction, self.entity_validator)
+    def validation(self) -> FormationKeyValidator:
+        """get FormationKeyValidator"""
+        return cast(FormationKeyValidator, self.entity_validator)
     
     @property
     def lookup(self) -> FormationLookupProcess:

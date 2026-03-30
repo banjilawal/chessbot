@@ -12,7 +12,7 @@ version: 1.0.0
 from typing import List
 
 from logic.agent import PlayerAgent
-from logic.game import Game, GameContext, GameContextValidationTransaction
+from logic.game import Game, GameContext, GameContextValidator
 from logic.system import (
     DataFinder, ExecutionRouteException, LoggingLevelRouter, SearchException, SearchResult
 )
@@ -42,7 +42,7 @@ class GameFinder(DataFinder[Game]):
             cls,
             dataset: List[Game],
             context: GameContext,
-            context_validator: GameContextValidationTransaction = GameContextValidationTransaction()
+            context_validator: GameContextValidator = GameContextValidator()
     ) -> SearchResult[List[Game]]:
         """
         # ACTION:
@@ -54,7 +54,7 @@ class GameFinder(DataFinder[Game]):
         # PARAMETERS:
             *   collider_candidates (List[Game]):
             *   map: GameContext
-            *   context_validator: GameContextValidationTransaction
+            *   context_validator: GameContextValidator
 
         # RETURNS:
         SearchResult[List[Game]] containing either:

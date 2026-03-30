@@ -2,11 +2,11 @@ from abc import abstractmethod
 from typing import Any
 
 from logic.piece import TravelEvent
-from logic.system import ValidationResult, ValidationTransaction
+from logic.system import ValidationResult, Validator
 
 
 
-class TravelEventValidationTransaction(ValidationTransaction[TravelEvent]):
+class TravelEventValidator(Validator[TravelEvent]):
     
     @classmethod
     @abstractmethod

@@ -1,4 +1,4 @@
-# src/logic/pair/tree/validation/exception/work.py
+# src/logic/pair/tree/validation/exception/validator.py
 
 """
 Module: logic.pair.tree.validation.exception.work
@@ -23,7 +23,7 @@ class NodeTreeValidationException(ValidationException):
     Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Identify the NodeTreeValidationTransaction method where the exception failed.
+    1.  Identify the NodeTreeValidator method where the exception failed.
 
     Super Class:
         *   ValidationException
@@ -51,7 +51,7 @@ class NodeTreeValidationException(ValidationException):
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     ERR_CODE = "NODE_TREE_VALIDATION_FAILURE"
-    MSG = "Failure in NodeTreeValidationTransaction method."
+    MSG = "Failure in NodeTreeValidator method."
     
     def __init__(
             self,

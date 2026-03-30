@@ -1,4 +1,4 @@
-# src/logic/travel/promotion/transaction/transaction.py
+# src/logic/travel/promotion/transaction/validator.py
 
 """
 Module: logic.travel.promotion.transaction.transaction

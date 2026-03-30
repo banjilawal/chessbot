@@ -13,4 +13,4 @@ version: 1.0.0
 from .exception import *
 
 # Modules
-from .validator import PlayerContextValidationTransaction
+from .validator import PlayerContextValidator

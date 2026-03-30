@@ -11,7 +11,7 @@ from typing import List
 
 from logic.schema import (
     SchemaLookupFailedException, SchemaLookupRouteException, SchemaColorBoundsException, SchemaKey, Schema,
-    SchemaNameBoundsException, SchemaKeyValidationTransaction,
+    SchemaNameBoundsException, SchemaKeyValidator,
 )
 from logic.system import GameColor, HashLookupProcess, LoggingLevelRouter, SearchResult
 
@@ -38,7 +38,7 @@ class SchemaLookupProcess(HashLookupProcess[Schema]):
     def query(
             cls,
             super_key: SchemaKey,
-            super_key_validator: SchemaKeyValidationTransaction = SchemaKeyValidationTransaction()
+            super_key_validator: SchemaKeyValidator = SchemaKeyValidator()
     ) -> SearchResult[List[Schema]]:
         """
         # ACTION:
@@ -48,7 +48,7 @@ class SchemaLookupProcess(HashLookupProcess[Schema]):
                 chain in the SearchResult. Else, send Personas whose targeted attribute values match.
         # PARAMETERS:
             *   key: SchemaKey
-            *   key_validator: SchemaKeyValidationTransaction
+            *   key_validator: SchemaKeyValidator
         # RETURNS:
             *   SearchResult[List[Schema]] containing either:
                     - On error: Exception , payload null

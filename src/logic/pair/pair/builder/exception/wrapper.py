@@ -1,4 +1,4 @@
-# src/logic/pair/pair/build/exception/work.py
+# src/logic/pair/pair/build/exception/validator.py
 
 """
 Module: logic.pair.pair.build.exception.work

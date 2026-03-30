@@ -1,4 +1,4 @@
-# src/logic/engine/transaction.py
+# src/logic/engine/validator.py
 
 """
 Module: logic.engine.service
@@ -12,7 +12,7 @@ from typing import Any
 
 from logic.engine import Engine
 from logic.engine.builder import EngineBuilder
-from logic.engine.validator import EngineValidationTransaction
+from logic.engine.validator import EngineValidator
 from logic.system import BuildResult, ValidationResult
 
 
@@ -20,9 +20,9 @@ class EngineService:
     _id: int
     _engine: Engine
     _builder: EngineBuilder
-    _validator: EngineValidationTransaction
+    _validator: EngineValidator
     
-    def __init__(self, engine_id: int, builder: EngineBuilder, validator: EngineValidationTransaction):
+    def __init__(self, engine_id: int, builder: EngineBuilder, validator: EngineValidator):
         self._id = engine_id
         self._builder = builder
         self._validator = validator

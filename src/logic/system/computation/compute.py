@@ -1,4 +1,4 @@
-# src/logic/system/relation/analysis/transaction.py
+# src/logic/system/relation/analysis/validator.py
 
 """
 Module: logic.system.relation.analysis.analyzer

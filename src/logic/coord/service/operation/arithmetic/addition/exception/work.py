@@ -1,4 +1,4 @@
-# src/logic/token/service/operation/arithmetic/addition/exception/work.py
+# src/logic/token/service/operation/arithmetic/addition/exception/validator.py
 
 """
 Module: logic.token.service.operation.arithmetic.addition.exception.work

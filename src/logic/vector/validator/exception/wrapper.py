@@ -1,4 +1,4 @@
-# src/logic/vector/validation/exception/work.py
+# src/logic/vector/validation/exception/validator.py
 
 """
 Module: logic.vector.validation.exception.work
@@ -24,7 +24,7 @@ class VectorValidationException(ValidationException):
     # TASK: Worker Method Identifier
 
     Responsibilities:
-    1.  Identify the VectorValidationTransaction method where the exception failed.
+    1.  Identify the VectorValidator method where the exception failed.
 
     Super Class:
         *   ValidationException
@@ -52,7 +52,7 @@ class VectorValidationException(ValidationException):
         *   See ValidationException class for inherited methods.
     """
     ERR_CODE = "VECTOR_VALIDATION_FAILURE"
-    MSG = "Failure in VectorValidationTransaction method."
+    MSG = "Failure in VectorValidator method."
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     

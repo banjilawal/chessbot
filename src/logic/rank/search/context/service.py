@@ -1,4 +1,4 @@
-# src/logic/rank/searcher/transaction.py
+# src/logic/rank/searcher/validator.py
 
 """
 Module: logic.rank.searcher.service
@@ -49,7 +49,7 @@ class RankQueryService(QueryService[RankContext]):
             *   id (int): Default value - id_emitter.service_id
             *   route (RankFinder): Default value - RankFinder()
             *   build (RankContextBuilder): Default value - RankContextBuilder()
-            *   validation (RankContextValidationTransaction): Default value - RankContextValidationTransaction()
+            *   validation (RankContextValidator): Default value - RankContextValidator()
 
         # RETURNS:
         None
@@ -71,7 +71,7 @@ class RankQueryService(QueryService[RankContext]):
     
     @property
     def validation(self) -> RankContextValidator:
-        """Get RankContextValidationTransaction instance."""
+        """Get RankContextValidator instance."""
         return cast(RankContextValidator, self.entity_validator)
 
     

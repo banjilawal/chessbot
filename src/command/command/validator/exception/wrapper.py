@@ -1,4 +1,4 @@
-# src/command/command/command/build/validation/work.py
+# src/command/command/command/build/validation/validator.py
 
 """
 Module: command.command.command.build.validation.work
@@ -22,7 +22,7 @@ class CommandValidationException(ValidationException):
     Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Identify the CommandValidationTransaction method where the exception failed.
+    1.  Identify the CommandValidator method where the exception failed.
 
     Super Class:
         *   ValidationException
@@ -51,7 +51,7 @@ class CommandValidationException(ValidationException):
         *   See ValidationException class for inherited methods.
     """
     ERR_CODE = "COMMAND_VALIDATION_FAILURE"
-    MSG = "Failure in CommandValidationTransaction method."
+    MSG = "Failure in CommandValidator method."
     OP = "Validate"
     RSLT_TYPE = "ValidationResult"
     

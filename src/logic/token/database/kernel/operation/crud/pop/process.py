@@ -1,4 +1,4 @@
-# src/logic/token/database/kernel/operation/crud/pop/transaction.py
+# src/logic/token/database/kernel/operation/crud/pop/validator.py
 
 """
 Module: logic.token.database.kernel.operation.crud.pop.popper

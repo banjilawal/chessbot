@@ -10,11 +10,11 @@ version: 1.0.0
 from typing import Any
 
 from logic.arena import ArenaContext
-from logic.system import ValidationResult, ValidationTransaction
+from logic.system import ValidationResult, Validator
 
 
 
-class ArenaContextValidationTransaction(ValidationTransaction[ArenaContext]):
+class ArenaContextValidator(Validator[ArenaContext]):
     
     @classmethod
     def execute(cls, candidate: Any, *args, **kwargs) -> ValidationResult[ArenaContext]:

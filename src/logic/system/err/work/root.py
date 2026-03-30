@@ -1,4 +1,4 @@
-# src/logic/system/err/work.py
+# src/logic/system/err/validator.py
 
 """
 Module: logic.system.err.work

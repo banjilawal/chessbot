@@ -55,7 +55,7 @@ class CoordSearchRouter(StackSearchRouter[Coord]):
        # PARAMETERS:
             *   collider_candidates (List[Coord]):
             *   query: CoordContext
-            *   context_validator: CoordContextValidationTransaction
+            *   context_validator: CoordContextValidator
         # RETURNS:
             *   SearchResult[List[Coord]] containing either:
                     - On error: Exception , payload null

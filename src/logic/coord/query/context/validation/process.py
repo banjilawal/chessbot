@@ -10,14 +10,14 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from logic.system import NumberValidationTransaction, ValidationTransaction, ValidationResult, LoggingLevelRouter
+from logic.system import NumberValidator, Validator, ValidationResult, LoggingLevelRouter
 from logic.coord import (
     CoordContextValidationException, CoordContextValidationRouteException, CoordContext,
     NullCoordContextException, ZeroCoordContextFlagsException
 )
 
 
-class CoordContextValidationTransaction(ValidationTransaction[CoordContext]):
+class CoordContextValidator(Validator[CoordContext]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -27,14 +27,14 @@ class CoordContextValidationTransaction(ValidationTransaction[CoordContext]):
     2. Provide pluggable factories for validating different options separately.
   
     Super Class:
-        * ValidationTransaction
+        * Validator
         
     3 PROVIDES:
     None
     
     
     3 INHERITED ATTRIBUTES:
-        *   See ValidationTransaction class for inherited attributes.
+        *   See Validator class for inherited attributes.
     """
 
     @classmethod
@@ -42,7 +42,7 @@ class CoordContextValidationTransaction(ValidationTransaction[CoordContext]):
     def execute(
             cls,
             candidate: Any,
-            number_validator: NumberValidationTransaction = NumberValidationTransaction(),
+            number_validator: NumberValidator = NumberValidator(),
     ) -> ValidationResult[CoordContext]:
         """
         # ACTION:
@@ -51,7 +51,7 @@ class CoordContextValidationTransaction(ValidationTransaction[CoordContext]):
             2. Test the value passed to CoordContext passes its validation contract.
         # PARAMETERS:
           * candidate (Any): Object to verify is a Coord.
-          * validation (type[CoordValidationTransaction]): Enforces safety requirements on row, column, square_name coords.
+          * validation (type[CoordValidator]): Enforces safety requirements on row, column, square_name coords.
         # RETURNS:
           *    ValidationResult[CoordContext] containing either:
                     - On failure: Exception.

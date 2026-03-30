@@ -9,16 +9,16 @@ version: 1.0.0
 
 from typing import cast, TypeVar
 
-from logic.coord import CoordValidationTransaction
+from logic.coord import CoordValidator
 from logic.rank import Bishop, King, Knight, Pawn, Queen, Rank, RankSpec, Rook
-from logic.system import IdValidationTransaction, LoggingLevelRouter, NameValidationTransaction, ValidationTransaction, ValidationResult
+from logic.system import IdValidator, LoggingLevelRouter, NameValidator, Validator, ValidationResult
 from logic.piece import (
     DomainSearchContext, InvalidDomainSearchContextException, NullDomainSearchContextException,
     ArenaDomainSearchParamsException, ZeroDomainSearchParamsException, DomainInvalidRankNameParamException
 )
 
 
-class DomainSearchContextValidationTransaction(ValidationTransaction[DomainSearchContext]):
+class DomainSearchContextValidator(Validator[DomainSearchContext]):
     """
      Role:Validation, Data Integrity Guarantor, Security., Data Integrity
   
@@ -38,7 +38,7 @@ class DomainSearchContextValidationTransaction(ValidationTransaction[DomainSearc
     @LoggingLevelRouter.monitor
     def execute(cls, candidate: T) -> ValidationResult[DomainSearchContext]:
         """"""
-        method = "DomainSearchContextValidationTransaction.validate"
+        method = "DomainSearchContextValidator.validate"
         
         try:
             if candidate is None:
@@ -68,22 +68,22 @@ class DomainSearchContextValidationTransaction(ValidationTransaction[DomainSearc
                 )
             
             if search_context.piece_id is not None:
-                piece_id_validation = IdValidationTransaction.execute(search_context.piece_id)
+                piece_id_validation = IdValidator.execute(search_context.piece_id)
                 if piece_id_validation.is_failure():
                     return ValidationResult.failure(piece_id_validation.exception)
             
             if search_context.visitor_name is not None:
-                piece_name_validation = NameValidationTransaction.execute(search_context.visitor_name)
+                piece_name_validation = NameValidator.execute(search_context.visitor_name)
                 if piece_name_validation.is_failure():
                     return ValidationResult.failure(piece_name_validation.exception)
             
             if search_context.team_id is not None:
-                team_id_validation = IdValidationTransaction.execute(search_context.team_id)
+                team_id_validation = IdValidator.execute(search_context.team_id)
                 if team_id_validation.is_failure():
                     return ValidationResult.failure(team_id_validation.exception)
             
             if search_context.visitor_team is not None:
-                team_name_validation = NameValidationTransaction.execute(search_context.visitor_team)
+                team_name_validation = NameValidator.execute(search_context.visitor_team)
                 if team_name_validation.is_failure():
                     return ValidationResult.failure(team_name_validation.exception)
             
@@ -102,7 +102,7 @@ class DomainSearchContextValidationTransaction(ValidationTransaction[DomainSearc
                 )
             
             if search_context.position is not None:
-                position_validation = CoordValidationTransaction.execute(search_context.position)
+                position_validation = CoordValidator.execute(search_context.position)
                 if position_validation.is_failure():
                     return ValidationResult.failure(position_validation.exception)
             

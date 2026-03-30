@@ -1,4 +1,4 @@
-# src/logic/graph/build/exception/work.py
+# src/logic/graph/build/exception/validator.py
 
 """
 Module: logic.graph.build.exception.work

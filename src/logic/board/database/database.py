@@ -1,4 +1,4 @@
-# src/logic/board/database/transaction.py
+# src/logic/board/database/validator.py
 
 """
 Module: logic.board.database.service

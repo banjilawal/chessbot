@@ -3,13 +3,13 @@
 """
 Module: logic.zone.service.operation.manager
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2026-03-29
 version: 1.0.0
 """
 
 from __future__ import annotations
 
-from logic.zone import ZoneArithmeticController, ZoneBuilder, ZoneValidationTransaction
+from logic.zone import ZoneBuilder, ZoneValidator
 
 
 class ZoneOpsController:
@@ -21,42 +21,33 @@ class ZoneOpsController:
         1.  Provide a single entry point for operations ZoneService supports.
         
     Attributes:
-        build: ZoneBuilder
-        validation: ZoneValidationTransaction
-        arithmetic_controller: ZoneArithmeticController
+        builder: ZoneBuilder
+        validator: ZoneValidator
 
     Provides:
     
     Super Class:
     """
-    _build: ZoneBuilder
-    _validation: ZoneValidationTransaction
-    _arithmetic_controller: ZoneArithmeticController
+    _builder: ZoneBuilder
+    _validator: ZoneValidator
     
     def __init__(
             self,
-            build: ZoneBuilder = ZoneBuilder(),
-            validation: ZoneValidationTransaction = ZoneValidationTransaction(),
-            arithmetic_controller: ZoneArithmeticController = ZoneArithmeticController(),
+            builder: ZoneBuilder = ZoneBuilder(),
+            validator: ZoneValidator = ZoneValidator(),
     ):
         """
         Args:
-            build: ZoneBuilder
-            validation: ZoneValidationTransaction
-            arithmetic_controller: ZoneArithmeticController
+            builder: ZoneBuilder
+            validator: ZoneValidator
         """
-        self._build = build
-        self._validation = validation
-        self._arithmetic = arithmetic_controller
+        self._builder = builder
+        self._validator = validator
         
     @property
-    def build(self) -> ZoneBuilder:
-        return self._build
+    def builder(self) -> ZoneBuilder:
+        return self._builder
         
     @property
-    def validation(self) ->ZoneValidationTransaction:
-        return self._validation
-    
-    @property
-    def arithmetic(self) -> ZoneArithmeticController:
-        return self._arithmetic
+    def validator(self) ->ZoneValidator:
+        return self._validator

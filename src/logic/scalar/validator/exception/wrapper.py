@@ -1,4 +1,4 @@
-# src/logic/scalar/validation/exception/work.py
+# src/logic/scalar/validation/exception/validator.py
 
 """
 Module: logic.scalar.validation.exception.work
@@ -24,7 +24,7 @@ class ScalarValidationException(ValidationException):
     # TASK: Worker Method Identifier
 
     Responsibilities:
-    1.  Identify the ScalarValidationTransaction method where the exception failed.
+    1.  Identify the ScalarValidator method where the exception failed.
 
     Super Class:
         *   ValidationException
@@ -53,7 +53,7 @@ class ScalarValidationException(ValidationException):
         *   See ValidationException class for inherited methods.
     """
     ERR_CODE = "SCALAR_VALIDATION_FAILURE"
-    MSG = "Failure in ScalarValidationTransaction method."
+    MSG = "Failure in ScalarValidator method."
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     

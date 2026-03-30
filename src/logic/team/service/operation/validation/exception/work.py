@@ -1,4 +1,4 @@
-# src/logic/team/service/operation/validation/exception/work.py
+# src/logic/team/service/operation/validation/exception/validator.py
 
 """
 Module: logic.team.service.operation.validation.exception.work
@@ -25,7 +25,7 @@ class TeamValidationException(ValidationException):
     # TASK: Worker Method Identifier
 
     Responsibilities:
-    1.  Identify the TeamValidationTransaction method where the exception failed.
+    1.  Identify the TeamValidator method where the exception failed.
 
     Super Class:
         *   ValidationException
@@ -54,7 +54,7 @@ class TeamValidationException(ValidationException):
         *   See ValidationException class for inherited methods.
     """
     ERR_CODE = "TEAM_VALIDATION_FAILURE"
-    MSG = "Failure in TeamValidationTransaction method."
+    MSG = "Failure in TeamValidator method."
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     

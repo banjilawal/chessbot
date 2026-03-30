@@ -12,4 +12,4 @@ from .exception import *
 from .record import CheckRecord
 from .table import CheckRecordTable
 from .build import CheckRecordBuilder
-from .validate import CheckRecordValidationTransaction
+from .validate import CheckRecordValidator

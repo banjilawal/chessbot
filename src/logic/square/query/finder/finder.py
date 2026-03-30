@@ -14,8 +14,8 @@ from logic.board import Board
 from logic.coord import Coord
 from logic.system import LoggingLevelRouter, SearchResult, StackSearchRouter
 from logic.square import (
-    Square, SquareContext, SquareContextValidationTransaction, SquareSearchException, SquareSearchRouteException, SquareState,
-    SquareValidationTransaction
+    Square, SquareContext, SquareContextValidator, SquareSearchException, SquareSearchRouteException, SquareState,
+    SquareValidator
 )
 from logic.token import Token
 
@@ -51,8 +51,8 @@ class SquareFinder(StackSearchRouter[Square]):
         *   find(
                 collider_candidates: List[Square],
                 query: SquareContext,
-                square_validator: SquareValidationTransaction
-                context_validator: SquareContextValidationTransaction
+                square_validator: SquareValidator
+                context_validator: SquareContextValidator
             ) -> SearchResult[List[Square]]
         
     # INHERITED METHODS:
@@ -65,8 +65,8 @@ class SquareFinder(StackSearchRouter[Square]):
             cls,
             dataset: List[Square],
             context: SquareContext,
-            square_validator: SquareValidationTransaction = SquareValidationTransaction(),
-            context_validator: SquareContextValidationTransaction = SquareContextValidationTransaction()
+            square_validator: SquareValidator = SquareValidator(),
+            context_validator: SquareContextValidator = SquareContextValidator()
     ) -> SearchResult[List[Square]]:
         """
         # ACTION:
@@ -80,8 +80,8 @@ class SquareFinder(StackSearchRouter[Square]):
         # PARAMETERS:
                 *   collider_candidates [List[Square]]
                 *   query [SquareContext]
-                *   square_validator [SquareValidationTransaction]
-                *   context_validator [SquareContextValidationTransaction]
+                *   square_validator [SquareValidator]
+                *   context_validator [SquareContextValidator]
         # RETURNS:
             *   SearchResult[List[Square]] containing either:
                     - On error: Exception , payload null

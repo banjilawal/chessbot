@@ -1,4 +1,4 @@
-# src/logic/node/stack/exception/pop/work.py
+# src/logic/node/stack/exception/pop/validator.py
 
 """
 Module: logic.node.stack.exception.pop.work

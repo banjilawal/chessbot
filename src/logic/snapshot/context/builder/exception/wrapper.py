@@ -1,4 +1,4 @@
-# src/logic/snapshotContext/query/build/exception/work.py
+# src/logic/snapshotContext/query/build/exception/validator.py
 
 """
 Module: logic.snapshotContext.query.build.exception.work

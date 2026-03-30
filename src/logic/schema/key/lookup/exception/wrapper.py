@@ -1,4 +1,4 @@
-# src/logic/schema/key/lookup/exception/work.py
+# src/logic/schema/key/lookup/exception/validator.py
 
 """
 Module: logic.schema.key.lookup.exception.work

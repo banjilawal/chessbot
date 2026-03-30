@@ -1,4 +1,4 @@
-# src/logic/tokenContext/qery/query/build/exception/work.py
+# src/logic/tokenContext/qery/query/build/exception/validator.py
 
 """
 Module: logic.tokenContext.query.query.build.exception.work

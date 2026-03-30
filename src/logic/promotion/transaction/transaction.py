@@ -1,4 +1,4 @@
-# src/logic/promotion/transaction/transaction.py
+# src/logic/promotion/transaction/validator.py
 
 """
 Module: logic.promotion.transaction.transaction

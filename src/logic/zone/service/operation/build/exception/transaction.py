@@ -1,9 +1,9 @@
-# src/logic/token/service/operation/arithmetic/multiplication/exception/work.py
+# src/logic/zone/service/operation/build/exception/validator.py
 
 """
-Module: logic.token.service.operation.arithmetic.multiplication.exception.work
+Module: logic.zone.service.operation.build.exception.work
 Author: Banji Lawal
-Created: 2026-03-25
+Created: 2026-03-29
 version: 1.0.0
 """
 
@@ -11,14 +11,14 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# ZONE_MULTIPLICATION_FAILURE #======================#
-    "ZoneMultiplicationException",
+    # ======================# ZONE_BUILD_FAILURE #======================#
+    "ZoneBuildException",
 ]
 
-from logic.system import ComputationException
+from logic.system import BuildException
 
-# ======================# ZONE_MULTIPLICATION_FAILURE #======================#
-class ZoneMultiplicationException(ComputationException):
+# ======================# ZONE_BUILD_FAILURE #======================#
+class ZoneBuildException(BuildException):
     """
     Role:
         -   Worker Method Identifier
@@ -26,8 +26,8 @@ class ZoneMultiplicationException(ComputationException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that a ZoneMultiplicationProcess was not completed.
-        2.  Identify the method where the failure occurred.
+        1.  Indicate the ZoneBuildProcess was not completed.
+        2.  Identify the ZoneBuildProcess method where the failure occurred.
 
     Attributes:
         op: Optional[str]
@@ -41,10 +41,12 @@ class ZoneMultiplicationException(ComputationException):
     Provides
 
     Super Class:
-        ComputationException
+        BuildException
     """
-    MSG = "Zone multiplication failed."
-    ERR_CODE = "ZONE_MULTIPLICATION_FAILURE"
+    OP = "Build"
+    RSLT_TYPE = "BuildResult"
+    ERR_CODE = "ZONE_BUILD_FAILURE"
+    MSG = "Failure in ZoneBuildProcess method."
     
     def __init__(
             self,

@@ -13,15 +13,15 @@ from typing import Any, cast
 from logic.square import SquareService
 from logic.board import BoardService
 from logic.coord.service import CoordService
-from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, ValidationTransaction
+from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from logic.square import (
-    SquareContextValidationException, SquareValidationTransaction, ZeroSquareContextFlagsException, SquareContext,
+    SquareContextValidationException, SquareValidator, ZeroSquareContextFlagsException, SquareContext,
     NullSquareContextException, ExcessSquareContextFlagsException, SquareContextValidationRouteException
 )
 
 
 
-class SquareContextValidationTransaction(ValidationTransaction[SquareContext]):
+class SquareContextValidator(Validator[SquareContext]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -30,7 +30,7 @@ class SquareContextValidationTransaction(ValidationTransaction[SquareContext]):
     2.  If verification fails send an exception detailing the failure.
 
     Super Class:
-        *   ValidationTransaction
+        *   Validator
 
     Provides:
 
@@ -47,7 +47,7 @@ class SquareContextValidationTransaction(ValidationTransaction[SquareContext]):
             coord_service: CoordService = CoordService(),
             square_service: SquareService = SquareService(),
             identity_service: IdentityService = IdentityService(),
-            square_validator: SquareValidationTransaction = SquareValidationTransaction(),
+            square_validator: SquareValidator = SquareValidator(),
     ) -> ValidationResult[SquareContext]:
         """
         # ACTION:
@@ -71,7 +71,7 @@ class SquareContextValidationTransaction(ValidationTransaction[SquareContext]):
             *   board_service (BoardService)
             *   coord_service (CoordService)
             *   identity_service: (IdentityService)
-            *   square_validator (SquareValidationTransaction)
+            *   square_validator (SquareValidator)
         # RETURNS:
             *   ValidationResult[SquareContext] containing either:
                     - On failure: Exception.
@@ -84,7 +84,7 @@ class SquareContextValidationTransaction(ValidationTransaction[SquareContext]):
             *   SquareContextValidationRouteException
             *   SquareContextValidationException
         """
-        method = "SquareContextValidationTransaction.validate"
+        method = "SquareContextValidator.validate"
         
         # Handle the nonexistence case.
         if candidate is None:

@@ -1,4 +1,4 @@
-# src/logic/system/transaction/transaction.py
+# src/logic/system/transaction/validator.py
 
 """
 Module: logic.system.transaction.transaction

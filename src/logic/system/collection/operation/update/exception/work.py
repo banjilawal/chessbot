@@ -1,4 +1,4 @@
-# src/logic/system/collection/operation/update/exception/work.py
+# src/logic/system/collection/operation/update/exception/validator.py
 
 """
 Module: logic.system.collection.operation.update.exception.work

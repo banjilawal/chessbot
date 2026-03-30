@@ -10,14 +10,14 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Any, List, cast
 
-from logic.square import SquareValidationTransaction
-from logic.system import LoggingLevelRouter, NumberValidationTransaction, ValidationResult, ValidationTransaction
+from logic.square import SquareValidator
+from logic.system import LoggingLevelRouter, NumberValidator, ValidationResult, Validator
 from logic.node import (
     DiscoveryStatus, DiscoveryStatusNullException, NullNodeException, Node, NodeValidationException
 )
 
 
-class NodeValidationTransaction(ValidationTransaction[Node]):
+class NodeValidator(Validator[Node]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -26,7 +26,7 @@ class NodeValidationTransaction(ValidationTransaction[Node]):
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     Super Class:
-        *   ValidationTransaction
+        *   Validator
 
     Provides:
 
@@ -40,8 +40,8 @@ class NodeValidationTransaction(ValidationTransaction[Node]):
     def execute(
             cls,
             candidate: Any,
-            number_validator: NumberValidationTransaction = NumberValidationTransaction(),
-            square_validator: SquareValidationTransaction = SquareValidationTransaction(),
+            number_validator: NumberValidator = NumberValidator(),
+            square_validator: SquareValidator = SquareValidator(),
     ) -> ValidationResult[Node]:
         """
         # ACTION:
@@ -51,9 +51,9 @@ class NodeValidationTransaction(ValidationTransaction[Node]):
                 in the ValidationResult. Else, send the node in the ValidationResult.
         # PARAMETERS:
             *   candidate (Any)
-            *   node_validator (NodeValidationTransaction)
+            *   node_validator (NodeValidator)
             *   identity_service (IdentityService)
-            *   number_validation (NumberValidationTransaction)
+            *   number_validation (NumberValidator)
         # RETURNS:
             *   ValidationResult[] containing either:
                     - On failure: Exception.
@@ -63,7 +63,7 @@ class NodeValidationTransaction(ValidationTransaction[Node]):
             *   NullNodeException
             *   NodeValidationException
         """
-        method = "NodeValidationTransaction.validate"
+        method = "NodeValidator.validate"
         
         # Handle the nonexistence case.
         if candidate is None:
@@ -183,7 +183,7 @@ class NodeValidationTransaction(ValidationTransaction[Node]):
             *   TypeError
             *   DiscoveryStatusNullException
         """
-        method = "NodeContextValidationTransaction.validate_discovery_status"
+        method = "NodeContextValidator.validate_discovery_status"
         
         # Handle the nonexistence case.
         if candidate is None:

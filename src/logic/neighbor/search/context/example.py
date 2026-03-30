@@ -36,7 +36,7 @@ version: 1.0.0
 ---------------
 From `logic.system`:
     `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
-    `IdValidationTransaction`, `NameValidationTransaction`
+    `IdValidator`, `NameValidator`
 
 From `logic.discoverySearchContext`:
     `DiscoverySearchContext`, `NullDiscoverySearchContext`, `DiscoverySearchContextBuildException`, `DiscoverySearchContextSchema`
@@ -66,10 +66,10 @@ version: 1.0.0
 
 ***Limitation 2***: There is no guarantee properly created `Team` objects released by the module will satisfy client
     requirements. Clients are responsible for ensuring a `TeamBuild` product will not fail when used. Products
-    from `TeamBuild` --should-- satisfy `TeamValidationTransaction` requirements.
+    from `TeamBuild` --should-- satisfy `TeamValidator` requirements.
 
 **Related Features**:
-    Authenticating existing team_service -> See TeamValidationTransaction, module[logic.team_name.coord_stack_validator],
+    Authenticating existing team_service -> See TeamValidator, module[logic.team_name.coord_stack_validator],
     Handling exception and rolling back failures --> See `Transaction`, module[logic.system]
 
 # THEME:
@@ -90,7 +90,7 @@ version: 1.0.0
 ---------------
 From `logic.system`:
     `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
-    `IdValidationTransaction`, `NameValidationTransaction`
+    `IdValidator`, `NameValidator`
 
 From `logic.team_name`:
     `Team`, `NullTeam`, `TeamBuildException`, `Schema`
@@ -199,7 +199,7 @@ version: 1.0.0
 ---------------
 From `logic.system`:
     `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
-    `IdValidationTransaction`, `NameValidationTransaction`
+    `IdValidator`, `NameValidator`
 
 From `logic.discoverySearchContext`:
     `DiscoverySearchContext`, `NullDiscoverySearchContext`, `DiscoverySearchContextBuildException`, `DiscoverySearchContextSchema`
@@ -253,7 +253,7 @@ version: 1.0.0
 ---------------
 From `logic.system`:
     `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
-    `IdValidationTransaction`, `NameValidationTransaction`
+    `IdValidator`, `NameValidator`
 
 From `logic.discoverySearchContext`:
     `DiscoverySearchContext`, `NullDiscoverySearchContext`, `DiscoverySearchContextBuildException`, `DiscoverySearchContextSchema`

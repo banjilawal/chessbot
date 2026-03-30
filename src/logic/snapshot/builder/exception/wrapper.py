@@ -1,4 +1,4 @@
-# src/logic/snapshot/build/exception/work.py
+# src/logic/snapshot/build/exception/validator.py
 
 """
 Module: logic.snapshot.build.exception.work

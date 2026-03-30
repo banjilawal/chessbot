@@ -1,4 +1,4 @@
-# src/logic/persona/service/transaction.py
+# src/logic/persona/service/validator.py
 
 """
 Module: logic.persona.service.service
@@ -17,7 +17,7 @@ from logic.system import (
     id_emitter
 )
 from logic.persona import (
-    Persona, PersonaLookupFailedException, PersonaServiceException, PersonaKey, PersonaKeyService, PersonaValidationTransaction,
+    Persona, PersonaLookupFailedException, PersonaServiceException, PersonaKey, PersonaKeyService, PersonaValidator,
     RankQuotaPerTeamLookupFailedException
 )
 
@@ -50,7 +50,7 @@ class PersonaService(HashService[Persona]):
             name: str = SERVICE_NAME,
             persona: Persona = Persona(),
             id: int = id_emitter.service_id,
-            validator: PersonaValidationTransaction = PersonaValidationTransaction(),
+            validator: PersonaValidator = PersonaValidator(),
             super_key_service: PersonaKeyService = PersonaKeyService(),
     ):
         """
@@ -59,7 +59,7 @@ class PersonaService(HashService[Persona]):
         # PARAMETERS:
             *   id (int)
             *   name (str)
-            *   validation (PersonaValidationTransaction)
+            *   validation (PersonaValidator)
             *   super_key_service (PersonaKeyService)
         # RETURNS:
             None
@@ -78,9 +78,9 @@ class PersonaService(HashService[Persona]):
         return cast(PersonaKeyService, self.hash_key_service)
     
     @property
-    def validator(self) -> PersonaValidationTransaction:
+    def validator(self) -> PersonaValidator:
         """"""
-        return cast(PersonaValidationTransaction, self.hash_validator)
+        return cast(PersonaValidator, self.hash_validator)
     
     @property
     def names(self) -> List[str]:

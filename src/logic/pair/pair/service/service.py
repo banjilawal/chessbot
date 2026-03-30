@@ -1,4 +1,4 @@
-# src/logic/pair/pair/service/transaction.py
+# src/logic/pair/pair/service/validator.py
 
 """
 Module: logic.pair.pair.service.service
@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import cast
 
-from logic.pair import Pair, PairBuilder, PairValidationTransaction
+from logic.pair import Pair, PairBuilder, PairValidator
 from logic.system import IdFactory, IntegrityService
 
 
@@ -39,7 +39,7 @@ class PairService(IntegrityService[Pair]):
             self,
             name: str = SERVICE_NAME,
             builder: PairBuilder = PairBuilder(),
-            validator: PairValidationTransaction = PairValidationTransaction(),
+            validator: PairValidator = PairValidator(),
             id: int = IdFactory.next_id(class_name="PairService"),
     ):
         """
@@ -47,7 +47,7 @@ class PairService(IntegrityService[Pair]):
             id: int
             name: str
             builder: PairBuilder
-            validator: PairValidationTransaction
+            validator: PairValidator
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         
@@ -56,6 +56,6 @@ class PairService(IntegrityService[Pair]):
         return cast(PairBuilder, self.entity_builder)
     
     @property
-    def validation(self) -> PairValidationTransaction:
-        return cast(PairValidationTransaction, self.entity_validator)
+    def validation(self) -> PairValidator:
+        return cast(PairValidator, self.entity_validator)
         

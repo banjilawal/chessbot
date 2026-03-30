@@ -1,4 +1,4 @@
-# src/logic/vector/build/exception/work.py
+# src/logic/vector/build/exception/validator.py
 
 """
 Module: logic.vector.build.exception.work

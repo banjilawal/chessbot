@@ -1,4 +1,4 @@
-# src/logic/diagonalRay/arithmetic/exception/work.py
+# src/logic/diagonalRay/arithmetic/exception/validator.py
 
 """
 Module: logic.diagonalRay.arithmetic.exception.work

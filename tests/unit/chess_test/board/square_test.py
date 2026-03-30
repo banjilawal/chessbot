@@ -24,9 +24,9 @@ class SquareTest(unittest.TestCase):
     square.position=coordinate
     return square
 
-  @patch('assurance.notification.point.CoordValidationTransaction.validate')
-  @patch('assurance.notification.visitor_name.NameValidationTransaction.validate')
-  @patch('assurance.notification.visitor_id.IdValidationTransaction.validate')
+  @patch('assurance.notification.point.CoordValidator.validate')
+  @patch('assurance.notification.visitor_name.NameValidator.validate')
+  @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_square_failed_id_validation_raises_error(
     self,
     mock_coord_validate,
@@ -43,9 +43,9 @@ class SquareTest(unittest.TestCase):
       Square(square_id=-1, name="A1", coord=Mock())
 
 
-  @patch('assurance.notification.point.CoordValidationTransaction.validate')
-  @patch('assurance.notification.visitor_name.NameValidationTransaction.validate')
-  @patch('assurance.notification.visitor_id.IdValidationTransaction.validate')
+  @patch('assurance.notification.point.CoordValidator.validate')
+  @patch('assurance.notification.visitor_name.NameValidator.validate')
+  @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_square_failed_name_validation_raises_error(
     self,
     mock_coord_validate,
@@ -63,9 +63,9 @@ class SquareTest(unittest.TestCase):
       Square(square_id=1, name="", coord=Mock())
 
 
-  @patch('assurance.notification.point.CoordValidationTransaction.validate')
-  @patch('assurance.notification.visitor_name.NameValidationTransaction.validate')
-  @patch('assurance.notification.visitor_id.IdValidationTransaction.validate')
+  @patch('assurance.notification.point.CoordValidator.validate')
+  @patch('assurance.notification.visitor_name.NameValidator.validate')
+  @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_square_failed_coordinate_validation_raises_error(
     self,
     mock_coord_validate,
@@ -86,9 +86,9 @@ class SquareTest(unittest.TestCase):
       Square(square_id=1, name="A-2", coord=None)
 
 
-  @patch('assurance.notification.point.CoordValidationTransaction.validate')
-  @patch('assurance.notification.visitor_name.NameValidationTransaction.validate')
-  @patch('assurance.notification.visitor_id.IdValidationTransaction.validate')
+  @patch('assurance.notification.point.CoordValidator.validate')
+  @patch('assurance.notification.visitor_name.NameValidator.validate')
+  @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_square_constructed_if_all_validations_pass(
     self,
     mock_coord_validate,

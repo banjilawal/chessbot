@@ -1,4 +1,4 @@
-# src/logic/token/query/service/transaction.py
+# src/logic/token/query/service/validator.py
 
 """
 Module: logic.token.query.service.service

@@ -9,14 +9,14 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from logic.coord import CoordValidationTransaction
+from logic.coord import CoordValidator
 from logic.domain import NullVisitorSearchContextException, VisitorSearchContext
 from logic.rank import RankBoundsChecker, RankBoundsException
-from logic.system import ValidationTransaction, IdValidationTransaction, NameValidationTransaction, ValidationResult, LoggingLevelRouter
+from logic.system import Validator, IdValidator, NameValidator, ValidationResult, LoggingLevelRouter
 from logic.neighbor import ArenaVisitationSearchParamsException, ZeroVisitationSearchParamsException
 
 
-class VisitorSearchContextValidationTransaction(ValidationTransaction[VisitorSearchContext]):
+class VisitorSearchContextValidator(Validator[VisitorSearchContext]):
     """
      Role:Validation, Data Integrity Guarantor, Security., Data Integrity
   
@@ -36,7 +36,7 @@ class VisitorSearchContextValidationTransaction(ValidationTransaction[VisitorSea
     @LoggingLevelRouter.monitor
     def execute(cls, candidate: Any) -> ValidationResult[VisitorSearchContext]:
         """"""
-        method = "VisitorSearchContextValidationTransaction.validate"
+        method = "VisitorSearchContextValidator.validate"
         
         try:
             if candidate is None:
@@ -66,22 +66,22 @@ class VisitorSearchContextValidationTransaction(ValidationTransaction[VisitorSea
                 )
             
             if search_context.visitor_id is not None:
-                id_validation = IdValidationTransaction.execute(search_context.visitor_id)
+                id_validation = IdValidator.execute(search_context.visitor_id)
                 if id_validation.is_failure():
                     return ValidationResult.failure(id_validation.exception)
             
             if search_context.visitor_name is not None:
-                name_validation = NameValidationTransaction.execute(search_context.visitor_name)
+                name_validation = NameValidator.execute(search_context.visitor_name)
                 if name_validation.is_failure():
                     return ValidationResult.failure(name_validation.exception)
             
             if search_context.team_id is not None:
-                team_id_validation = IdValidationTransaction.execute(search_context.team_id)
+                team_id_validation = IdValidator.execute(search_context.team_id)
                 if team_id_validation.is_failure():
                     return ValidationResult.failure(team_id_validation.exception)
             
             if search_context.visitor_team is not None:
-                team_name_validation = NameValidationTransaction.execute(search_context.visitor_team)
+                team_name_validation = NameValidator.execute(search_context.visitor_team)
                 if team_name_validation.is_failure():
                     return ValidationResult.failure(team_name_validation.exception)
             
@@ -96,7 +96,7 @@ class VisitorSearchContextValidationTransaction(ValidationTransaction[VisitorSea
                     return ValidationResult.failure(ransom_bounds_check.exception)
             
             if search_context.point is not None:
-                coord_validation = CoordValidationTransaction.execute(search_context.point)
+                coord_validation = CoordValidator.execute(search_context.point)
                 if coord_validation.is_failure():
                     return ValidationResult.failure(coord_validation.exception)
             

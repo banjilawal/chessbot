@@ -5,10 +5,280 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change afterPath="$PROJECT_DIR$/src/logic/zone/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/zone/model/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/zone/service/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/argument/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/argument/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/command/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/command/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/command/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/command/validator/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/pipeline/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/pipeline/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/pipeline/stack/exception/pop/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/pipeline/stack/exception/pop/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/pipeline/stack/exception/push/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/pipeline/stack/exception/push/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/request/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/request/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/request/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/request/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/request/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/request/validator/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/arena/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/arena/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/arena/context/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/arena/context/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/arena/context/finder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/arena/context/finder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/arena/context/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/arena/context/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/arena/relation/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/arena/relation/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/arena/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/arena/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/arena/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/arena/validator/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/attack/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/attack/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/battle_space/search/context/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/battle_space/search/context/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/battle_space/search/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/battle_space/search/search.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/board/analyzer/square/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/board/analyzer/square/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/board/analyzer/team/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/board/analyzer/team/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/board/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/board/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/board/context/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/board/context/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/board/context/finder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/board/context/finder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/board/database/core/exception/deletion/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/board/database/core/exception/deletion/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/board/database/core/exception/insertion/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/board/database/core/exception/insertion/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/board/database/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/board/database/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/board/database/exception/deletion/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/board/database/exception/deletion/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/board/database/exception/insertion/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/board/database/exception/insertion/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/board/database/exception/search/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/board/database/exception/search/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/board/service/exception/insertion/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/board/service/exception/insertion/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/board/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/board/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/board/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/board/validator/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/checking/post/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/checking/post/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/checking/service/check/table.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/checking/service/check/table.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/checking/service/location/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/checking/service/location/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/database/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/database/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/database/exception/deletion/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/database/exception/deletion/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/database/exception/insertion/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/database/exception/insertion/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/database/kernel/operation/crud/pop/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/database/kernel/operation/crud/pop/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/database/kernel/operation/crud/push/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/database/kernel/operation/crud/push/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/query/context/build/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/query/context/build/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/query/context/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/query/context/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/query/route/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/query/route/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/query/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/query/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/service/operation/arithmetic/addition/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/service/operation/arithmetic/addition/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/service/operation/arithmetic/addition/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/service/operation/arithmetic/addition/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/service/operation/arithmetic/convert/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/service/operation/arithmetic/convert/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/service/operation/arithmetic/distance/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/service/operation/arithmetic/distance/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/service/operation/arithmetic/multiplication/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/service/operation/arithmetic/multiplication/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/service/operation/build/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/service/operation/build/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/service/operation/build/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/service/operation/build/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/service/operation/validation/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/service/operation/validation/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/coord/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/coord/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/domain/search/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/domain/search/search.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/edge/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/edge/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/edge/context/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/edge/context/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/edge/context/finder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/edge/context/finder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/edge/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/edge/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/edge/stack/exception/pop/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/edge/stack/exception/pop/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/edge/stack/exception/push/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/edge/stack/exception/push/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/edge/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/edge/validator/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/engine/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/engine/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/formation/key/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/formation/key/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/formation/key/lookup/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/formation/key/lookup/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/formation/key/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/formation/key/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/formation/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/formation/validator/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/game/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/game/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/game/context/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/game/context/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/game/context/finder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/game/context/finder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/game/context/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/game/context/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/game/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/game/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/game/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/game/validator/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/graph/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/graph/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/graph/search/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/graph/search/search.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/hostage/buillder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/hostage/buillder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/hostage/context/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/hostage/context/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/hostage/context/finder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/hostage/context/finder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/hostage/database/core/exception/insertion/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/hostage/database/core/exception/insertion/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/hostage/database/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/hostage/database/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/hostage/database/exception/insertion/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/hostage/database/exception/insertion/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/hostage/database/exception/search/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/hostage/database/exception/search/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/hostage/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/hostage/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/hostage/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/hostage/validator/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/king/occupation/transaction/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/king/occupation/transaction/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/levart/attack/transaction/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/levart/attack/transaction/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/levart/base/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/levart/base/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/levart/occupation/combatant/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/levart/occupation/combatant/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/levart/occupation/combatant/transaction/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/levart/occupation/combatant/transaction/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/neighbor/search/example.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/neighbor/search/example.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/neighbor/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/neighbor/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/node/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/node/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/node/context/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/node/context/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/node/context/finder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/node/context/finder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/node/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/node/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/node/stack/exception/pop/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/node/stack/exception/pop/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/node/stack/exception/push/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/node/stack/exception/push/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/node/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/node/validator/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/pair/listing/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/pair/listing/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/pair/listing/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/pair/listing/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/pair/listing/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/pair/listing/validator/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/pair/pair/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/pair/pair/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/pair/pair/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/pair/pair/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/pair/pair/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/pair/pair/validator/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/pair/stack/exception/pop/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/pair/stack/exception/pop/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/pair/stack/exception/push/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/pair/stack/exception/push/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/pair/tree/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/pair/tree/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/pair/tree/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/pair/tree/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/pair/tree/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/pair/tree/validator/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/persona/key/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/persona/key/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/persona/key/lookup/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/persona/key/lookup/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/persona/key/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/persona/key/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/persona/key/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/persona/key/validator/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/persona/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/persona/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/persona/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/persona/validator/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/player/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/player/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/player/context/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/player/context/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/player/context/finder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/player/context/finder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/player/context/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/player/context/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/player/relation/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/player/relation/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/player/service/data/unique/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/player/service/data/unique/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/player/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/player/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/player/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/player/validator/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/promotion/promotion/transaction/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/promotion/promotion/transaction/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/promotion/transaction/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/promotion/transaction/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/rank/context/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/rank/context/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/rank/context/finder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/rank/context/finder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/rank/factory/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/rank/factory/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/rank/search/context/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/rank/search/context/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/rank/search/finder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/rank/search/finder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/rank/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/rank/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/rank/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/rank/validator/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/rank/validator/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/rank/validator/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/scalar/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/scalar/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/scalar/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/scalar/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/scalar/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/scalar/validator/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/scalar/validator/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/scalar/validator/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/schema/key/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/schema/key/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/schema/key/lookup/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/schema/key/lookup/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/schema/key/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/schema/key/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/schema/key/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/schema/key/validator/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/schema/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/schema/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/schema/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/schema/validator/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/snapshot/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/snapshot/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/snapshot/context/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/snapshot/context/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/snapshot/context/finder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/snapshot/context/finder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/snapshot/context/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/snapshot/context/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/snapshot/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/snapshot/validator/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/span/coord/ray/diagonal/computer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/coord/ray/diagonal/computer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/span/coord/ray/diagonal/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/coord/ray/diagonal/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/span/coord/ray/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/coord/ray/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/span/coord/ray/perpendicular/computer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/coord/ray/perpendicular/computer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/span/coord/ray/perpendicular/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/coord/ray/perpendicular/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/span/graph/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/graph/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/span/graph/node/exception/wrapper/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/graph/node/exception/wrapper/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/span/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/span/spanner/bishop/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/spanner/bishop/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/span/spanner/engine/engine.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/spanner/engine/engine.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/span/spanner/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/spanner/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/span/spanner/spanner.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/spanner/spanner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/span/square/ray/builder/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/square/ray/builder/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/span/square/ray/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/square/ray/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/span/square/ray/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/square/ray/validator/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/span/square/span/builder/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/square/span/builder/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/span/square/span/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/square/span/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/span/square/span/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/span/square/span/validator/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/database/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/database/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/database/kernel/operation/capacity/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/database/kernel/operation/capacity/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/database/kernel/operation/capacity/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/database/kernel/operation/capacity/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/database/kernel/operation/crud/pop/popper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/database/kernel/operation/crud/pop/popper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/database/kernel/operation/crud/push/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/database/kernel/operation/crud/push/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/database/kernel/operation/formation/discovery/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/database/kernel/operation/formation/discovery/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/database/kernel/operation/formation/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/database/kernel/operation/formation/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/database/kernel/operation/token/handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/database/kernel/operation/token/handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/database/kernel/operation/yticapacy/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/database/kernel/operation/yticapacy/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/database/kernel/operation/yticapacy/exception/work/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/database/kernel/operation/yticapacy/exception/work/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/query/context/build/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/query/context/build/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/query/finder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/query/finder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/query/finder/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/query/finder/validator/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/service/operation/build/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/service/operation/build/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/service/operation/validation/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/service/operation/validation/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/service/operation/visitation/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/service/operation/visitation/controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/service/operation/visitation/departure/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/service/operation/visitation/departure/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/square/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/square/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/system/build/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/build/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/system/collection/hash/lookup/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/collection/hash/lookup/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/system/collection/hash/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/collection/hash/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/system/collection/operation/deletion/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/collection/operation/deletion/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/system/collection/operation/deletion/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/collection/operation/deletion/result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/system/collection/operation/insertion/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/collection/operation/insertion/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/system/collection/operation/search/context/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/collection/operation/search/context/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/system/collection/operation/search/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/collection/operation/search/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/system/collection/operation/update/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/collection/operation/update/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/system/collection/stack/search/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/collection/stack/search/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/system/collision/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/collision/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/system/computation/compute.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/computation/compute.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/system/computation/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/computation/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/system/err/work/root.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/err/work/root.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/system/identity/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/identity/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/system/relation/analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/relation/analysis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/system/relation/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/relation/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/system/resolution/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/resolution/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/system/service/abstract/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/service/abstract/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/system/service/integrity/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/service/integrity/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/system/service/integrity/template/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/service/integrity/template/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/system/transaction/example.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/transaction/example.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/system/transaction/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/transaction/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/system/transfer/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/transfer/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/team/context/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/team/context/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/team/context/finder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/team/context/finder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/team/context/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/team/context/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/team/database/core/exception/pop/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/team/database/core/exception/pop/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/team/database/core/exception/push/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/team/database/core/exception/push/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/team/database/exception/insertion/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/team/database/exception/insertion/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/team/model/hash/builder/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/team/model/hash/builder/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/team/model/hash/validator/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/team/model/hash/validator/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/team/model/roster/analyzer/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/team/model/roster/analyzer/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/team/model/roster/analyzer/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/team/model/roster/analyzer/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/team/model/roster/exception/insert/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/team/model/roster/exception/insert/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/team/service/operation/build/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/team/service/operation/build/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/team/service/operation/deploy/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/team/service/operation/deploy/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/team/service/operation/validation/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/team/service/operation/validation/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/team/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/team/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/crud/pop/process.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/crud/pop/process.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/crud/push/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/crud/push/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/deployment/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/deployment/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/deployment/process.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/deployment/process.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/quota/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/quota/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/quota/process.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/kernel/operation/quota/process.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/query/context/build/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/query/context/build/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/query/context/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/query/context/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/query/route/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/query/route/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/query/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/query/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operation/build/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/build/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operation/coord/pop/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/coord/pop/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operation/coord/push/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/coord/push/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operation/deployment/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/deployment/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operation/promotion/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/promotion/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/service/operation/validation/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/operation/validation/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/vector/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/vector/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/vector/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/vector/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/vector/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/vector/validator/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/visit/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/visit/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/zone/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/zone/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/arithmetic/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/arithmetic/addition/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/arithmetic/addition/exception/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/arithmetic/addition/exception/debug/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/arithmetic/addition/exception/debug/operand.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/arithmetic/addition/exception/work.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/arithmetic/addition/transaction.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/arithmetic/controller.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/arithmetic/convert/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/arithmetic/convert/exception/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/arithmetic/convert/exception/work.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/arithmetic/convert/transaction.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/arithmetic/distance/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/arithmetic/distance/compute.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/arithmetic/distance/exception/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/arithmetic/distance/exception/work.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/arithmetic/multiplication/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/arithmetic/multiplication/exception/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/arithmetic/multiplication/exception/work.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/arithmetic/multiplication/transaction.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/build/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/zone/service/operation/build/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/build/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/zone/service/operation/build/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/build/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/zone/service/operation/build/exception/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/build/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/zone/service/operation/build/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/validation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/zone/service/operation/validation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/validation/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/zone/service/operation/validation/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/validation/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/zone/service/operation/validation/exception/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/validation/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/zone/service/operation/validation/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/zone/service/service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -277,7 +547,7 @@
     "ToolWindow.Python Packages.ShowToolbar": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/logic/coord/model/exception",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/logic",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -304,18 +574,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/logic" />
       <recent name="$PROJECT_DIR$/src/logic/coord/model/exception" />
       <recent name="$PROJECT_DIR$/src/logic/square/exception" />
       <recent name="$PROJECT_DIR$/src/logic/token/exception" />
       <recent name="$PROJECT_DIR$/src/logic/team" />
-      <recent name="$PROJECT_DIR$/src/logic/coord/database/kernel" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/logic/zone/model" />
       <recent name="$PROJECT_DIR$/src/logic/team/model" />
       <recent name="$PROJECT_DIR$/src/logic/coord/model" />
       <recent name="$PROJECT_DIR$/src/logic/square/model" />
       <recent name="$PROJECT_DIR$/src/logic/square/query/context" />
-      <recent name="$PROJECT_DIR$/src/logic/coord/database/kernel/operation/crud/pop/exception" />
     </key>
   </component>
   <component name="RunManager" selected="Python.inactive">
@@ -862,7 +1132,7 @@
       <workItem from="1774245837652" duration="42949000" />
       <workItem from="1774454082016" duration="10781000" />
       <workItem from="1774483839135" duration="10440000" />
-      <workItem from="1774551231807" duration="74330000" />
+      <workItem from="1774551231807" duration="76334000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1029,6 +1299,11 @@
           <url>file://$PROJECT_DIR$/src/logic/square/query/context/context.py</url>
           <line>9</line>
           <option name="timeStamp" value="96" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/logic/zone/__init__.py</url>
+          <line>12</line>
+          <option name="timeStamp" value="97" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

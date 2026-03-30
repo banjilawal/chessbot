@@ -12,4 +12,4 @@ Created: 2025-11-19
 from.exception import *
 
 # Modules
-from .validator import SquareValidationTransaction
+from .validator import SquareValidator

@@ -1,4 +1,4 @@
-# src/logic/system/service/integrity/transaction.py
+# src/logic/system/service/integrity/validator.py
 
 """
 Module: logic.system.service.integrity.service
@@ -9,7 +9,7 @@ Created: 2025-11-18
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
-from logic.system import Service, Builder, ValidationTransaction
+from logic.system import Service, Builder, Validator
 
 T = TypeVar("T")
 
@@ -32,7 +32,7 @@ class IntegrityService(ABC, Service[Generic[T]]):
 
     Provides:
         -   build() -> Builder[T]
-        -   validation() -> ValidationTransaction[T]
+        -   validation() -> Validator[T]
 
     Super Class:
         Service
@@ -53,7 +53,7 @@ class IntegrityService(ABC, Service[Generic[T]]):
     
     @property
     @abstractmethod
-    def validation(self) -> ValidationTransaction[T]:
+    def validation(self) -> Validator[T]:
         pass
     
     def __eq__(self, other):

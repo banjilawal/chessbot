@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import cast
 
-from logic.system import ValidationTransaction, ValidationResult, IdValidationTransaction, LoggingLevelRouter
+from logic.system import Validator, ValidationResult, IdValidator, LoggingLevelRouter
 from logic.piece import (
     BlockingEvent, NullBlockingEventException, PieceValidator, BoardActorValidator, TravelResourceValidator,
     DiscoverySearchContextBuilder, DiscoverySearchContext, DiscoverySearch, ActorSameAsBlockerException,
@@ -18,13 +18,13 @@ from logic.piece import (
 
 
 
-class BlockingEventValidationTransaction(ValidationTransaction[BlockingEvent]):
+class BlockingEventValidator(Validator[BlockingEvent]):
     
     @classmethod
     @LoggingLevelRouter.monitor
     def execute(cls, candidate: BlockingEvent) -> ValidationResult[BlockingEvent]:
         """"""
-        method = "BlockingEventValidationTransaction.validate"
+        method = "BlockingEventValidator.validate"
         
         try:
             if candidate is None:
@@ -39,7 +39,7 @@ class BlockingEventValidationTransaction(ValidationTransaction[BlockingEvent]):
             
             event = cast(BlockingEvent, candidate)
             
-            id_validation = IdValidationTransaction.execute(event.visitor_id)
+            id_validation = IdValidator.execute(event.visitor_id)
             if id_validation.is_failure():
                 return ValidationResult.failure(id_validation.exception)
             

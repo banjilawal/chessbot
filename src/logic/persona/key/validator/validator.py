@@ -14,11 +14,11 @@ from logic.persona import (
     PersonaKeyValidationException, PersonaKeyValidationRouteException
 )
 from logic.system import (
-    IdentityService, LoggingLevelRouter, NumberValidationTransaction, ValidationException, ValidationResult, ValidationTransaction
+    IdentityService, LoggingLevelRouter, NumberValidator, ValidationException, ValidationResult, Validator
 )
 
 
-class PersonaKeyValidationTransaction(ValidationTransaction[PersonaKey]):
+class PersonaKeyValidator(Validator[PersonaKey]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -27,7 +27,7 @@ class PersonaKeyValidationTransaction(ValidationTransaction[PersonaKey]):
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     Super Class:
-        *   ValidationTransaction
+        *   Validator
 
     Provides:
 
@@ -41,7 +41,7 @@ class PersonaKeyValidationTransaction(ValidationTransaction[PersonaKey]):
     def execute(
             cls,
             candidate: Any,
-            number_validator: NumberValidationTransaction = NumberValidationTransaction(),
+            number_validator: NumberValidator = NumberValidator(),
             identity_service: IdentityService = IdentityService(),
     ) -> ValidationResult[PersonaKey]:
         """
@@ -67,7 +67,7 @@ class PersonaKeyValidationTransaction(ValidationTransaction[PersonaKey]):
             *   ArenaPersonaKeysException
             *   PersonaKeyValidationException
         """
-        method = "PersonaKeyValidationTransaction.validate"
+        method = "PersonaKeyValidator.validate"
         
         # Handle the nonexistence case.
         if candidate is None:

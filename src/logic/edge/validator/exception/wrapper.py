@@ -1,4 +1,4 @@
-# src/logic/edge/validation/exception/work.py
+# src/logic/edge/validation/exception/validator.py
 
 """
 Module: logic.edge.validation.exception.work
@@ -23,7 +23,7 @@ class EdgeValidationException(ValidationException):
     Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Identify the EdgeValidationTransaction method where the exception failed.
+    1.  Identify the EdgeValidator method where the exception failed.
 
     Super Class:
         *   ValidationException
@@ -52,7 +52,7 @@ class EdgeValidationException(ValidationException):
         *   See ValidationException class for inherited methods.
     """
     ERR_CODE = "EDGE_VALIDATION_FAILURE"
-    MSG = "Failure in EdgeValidationTransaction method."
+    MSG = "Failure in EdgeValidator method."
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     

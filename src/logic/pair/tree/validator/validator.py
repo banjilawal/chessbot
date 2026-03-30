@@ -11,10 +11,10 @@ from __future__ import annotations
 from typing import Any, cast
 
 from logic.pair import NodeTree, NodeTreeNullException, NodeTreeValidationException
-from logic.system import LoggingLevelRouter, ValidationResult, ValidationTransaction
+from logic.system import LoggingLevelRouter, ValidationResult, Validator
 
 
-class NodeTreeValidationTransaction(ValidationTransaction[NodeTree]):
+class NodeTreeValidator(Validator[NodeTree]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 

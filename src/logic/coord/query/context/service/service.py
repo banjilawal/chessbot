@@ -1,4 +1,4 @@
-# src/logic/coordContext/query/query/service/transaction.py
+# src/logic/coordContext/query/query/service/validator.py
 
 """
 Module: logic.coordContext.query.query.service.service
@@ -52,7 +52,7 @@ class CoordContextService(IntegrityService[CoordContext]):
             id: int
             name: str
             build: CoordContextBuilder
-            validation: CoordContextValidationTransaction
+            validation: CoordContextValidator
         """
         super().__init__(id=id, name=name)
         self._build = build

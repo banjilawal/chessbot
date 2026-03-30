@@ -24,7 +24,7 @@ class BoardContextValidationException(ValidationException):
     # TASK: Worker Method Identifier
 
     Responsibilities:
-    1.  Identify the BoardValidationTransaction method where the exception failed.
+    1.  Identify the BoardValidator method where the exception failed.
 
     Super Class:
         *   ValidationException
@@ -52,7 +52,7 @@ class BoardContextValidationException(ValidationException):
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     ERR_CODE = "BOARD_CONTEXT_VALIDATION_FAILURE"
-    MSG = "Failure in BoardValidationTransaction method."
+    MSG = "Failure in BoardValidator method."
     
     def __init__(
             self,

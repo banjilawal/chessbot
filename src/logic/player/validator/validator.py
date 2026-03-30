@@ -11,11 +11,11 @@ from typing import Any, cast
 
 from logic.team import UniqueTeamDataService
 from logic.engine.service import EngineService
-from logic.system import IdentityService, LoggingLevelRouter, ServiceValidator, ValidationResult, ValidationTransaction
+from logic.system import IdentityService, LoggingLevelRouter, ServiceValidator, ValidationResult, Validator
 
 
 
-class PlayerValidationTransaction(ValidationTransaction[Player]):
+class PlayerValidator(Validator[Player]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -24,7 +24,7 @@ class PlayerValidationTransaction(ValidationTransaction[Player]):
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     Super Class:
-        *   ValidationTransaction
+        *   Validator
 
     # PROVIDES:
         *   validate: -> ValidationResult[Player]
@@ -69,7 +69,7 @@ class PlayerValidationTransaction(ValidationTransaction[Player]):
             *   NullPlayerException
             *   InvalidPlayerException
         """
-        method = "PlayerValidationTransaction.validate"
+        method = "PlayerValidator.validate"
         try:
             # If candidate does not exist no point continuing
             if candidate is None:
@@ -143,7 +143,7 @@ class PlayerValidationTransaction(ValidationTransaction[Player]):
             *   NullPlayerVarietyException
             *   InvalidPlayerVarietyException
         """
-        method = "PlayerValidationTransaction.certify_variety"
+        method = "PlayerValidator.certify_variety"
         try:
             # Handle the null case.
             if candidate is None:
@@ -192,7 +192,7 @@ class PlayerValidationTransaction(ValidationTransaction[Player]):
         Raises:
             *   InvalidMachinePlayerException
         """
-        method = "PlayerValidationTransaction.certify_machine_player_engine"
+        method = "PlayerValidator.certify_machine_player_engine"
         try:
             engine_validation = engine_service_validator.validate_engine(machine_player.engine_service)
             if engine_validation.is_failure():

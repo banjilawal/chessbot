@@ -1,4 +1,4 @@
-# src/logic/rank/searcher/transaction.py
+# src/logic/rank/searcher/validator.py
 
 """
 Module: logic.rank.searcher.searcher

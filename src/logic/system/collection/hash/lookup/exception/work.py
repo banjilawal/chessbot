@@ -1,4 +1,4 @@
-# src/logic/system/collection/hash/lookup/exception/work.py
+# src/logic/system/collection/hash/lookup/exception/validator.py
 
 """
 Module: logic.system.collection.hash.lookup.exception.work

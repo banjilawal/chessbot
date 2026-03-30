@@ -3,7 +3,7 @@
 """
 Module: logic.zone.model.table
 Author: Banji Lawal
-Created: 2025-07-26
+Created: 2026-03-29
 version: 1.0.0
 """
 
@@ -11,8 +11,6 @@ from __future__ import annotations
 
 from typing import Dict
 
-from logic.schema import Schema
-from logic.system import GameColor
 from logic.team.model.model import Team
 from logic.zone.model import Zone
 

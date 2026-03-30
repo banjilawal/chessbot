@@ -1,4 +1,4 @@
-# src/logic/board/analyzer/transaction.py
+# src/logic/board/analyzer/validator.py
 
 """
 Module: logic.board.analyzer.analyzer
@@ -11,7 +11,7 @@ from typing import cast
 
 from logic.square import Square, SquareContext, SquareService
 from logic.system import LoggingLevelRouter, RelationAnalysis, RelationReport
-from logic.board import Board, BoardSquareAnalysisException, BoardValidationTransaction
+from logic.board import Board, BoardSquareAnalysisException, BoardValidator
 
 
 class BoardSquareRelationAnalysis(RelationAnalysis[Board, Square]):
@@ -29,7 +29,7 @@ class BoardSquareRelationAnalysis(RelationAnalysis[Board, Square]):
         -   analyze(
                     candidate_primary: Board,
                     candidate_satellite: Square,
-                    board_validator: BoardValidationTransaction = BoardValidationTransaction(),
+                    board_validator: BoardValidator = BoardValidator(),
                     square_validator: SquareService = SquareService(),
             ) -> RelationReport[Board, Square]
 
@@ -42,7 +42,7 @@ class BoardSquareRelationAnalysis(RelationAnalysis[Board, Square]):
             cls,
             candidate_primary: Board,
             candidate_satellite: Square,
-            board_validator: BoardValidationTransaction = BoardValidationTransaction(),
+            board_validator: BoardValidator = BoardValidator(),
             square_service: SquareService = SquareService(),
     ) -> RelationReport[Board, Square]:
         """
@@ -58,7 +58,7 @@ class BoardSquareRelationAnalysis(RelationAnalysis[Board, Square]):
         Args::
             candidate_primary: Board
             candidate_satellite: Square
-            board_validator: BoardValidationTransaction
+            board_validator: BoardValidator
             square_validator: SquareService
         Returns:
             RelationReport[Board, Square]

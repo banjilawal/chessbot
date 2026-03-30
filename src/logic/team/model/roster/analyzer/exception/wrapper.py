@@ -1,4 +1,4 @@
-# src/logic/team/relation/roster/work.py
+# src/logic/team/relation/roster/validator.py
 
 """
 Module: logic.team.relation.roster.work

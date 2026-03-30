@@ -12,11 +12,11 @@ This module provides:
   2. A satisfaction of the `ChessBot` reliability requirement.
 
 # SECTION 2 - Scope:
-The module's only covers exception raised by `IdValidationTransaction`;
+The module's only covers exception raised by `IdValidator`;
 
 # SECTION 3: Limitations
   1. Does not provide logic for fixing the errors or causing the rollback_exception being raised.
-       `IdValidationTransaction` is responsible for the logic which raises these exception.
+       `IdValidator` is responsible for the logic which raises these exception.
 
 # SECTION 4 - Design Considerations and Themes:
 The major theme influencing the modules design are
@@ -151,7 +151,7 @@ Major themes influencing the design include:
 # SECTION G - Feature Delivery Mechanism:
 1. An exception for each requirement providing granular, accurate and precise error reporting.
 2. Minimizing the boilerplate error handling and logging code with the `LoggingLevelRouter` decorator.
-3. `IdValidationTransaction` can be used as component in more complex verifications.
+3. `IdValidator` can be used as component in more complex verifications.
 
 # SECTION 7 - Dependencies:
 * From `logic.system`:
@@ -164,7 +164,7 @@ Major themes influencing the design include:
 1. `Transaction`
 """
 
-# src/logic/system/transaction/transaction.py
+# src/logic/system/transaction/validator.py
 
 """
 Module: logic.system.transaction.transaction
@@ -206,7 +206,7 @@ Major themes influencing the design include:
 # SECTION G - Feature Delivery Mechanism:
 1. An exception for each requirement providing granular, accurate and precise error reporting.
 2. Minimizing the boilerplate error handling and logging code with the `LoggingLevelRouter` decorator.
-3. `IdValidationTransaction` can be used as component in more complex verifications.
+3. `IdValidator` can be used as component in more complex verifications.
 
 # SECTION 7 - Dependencies:
 * From `logic.system`:

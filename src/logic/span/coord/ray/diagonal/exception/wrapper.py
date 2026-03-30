@@ -1,4 +1,4 @@
-# src/logic/span/coord/ray/diagonal/diagonal/exception/work.py
+# src/logic/span/coord/ray/diagonal/diagonal/exception/validator.py
 
 """
 Module: logic.span.coord.ray.diagonal.diagonal.exception.work

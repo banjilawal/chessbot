@@ -1,4 +1,4 @@
-# src/logic/persona/key/service/transaction.py
+# src/logic/persona/key/service/validator.py
 
 """
 Module: logic.persona.key.service.service
@@ -9,7 +9,7 @@ version: 1.0.0
 from typing import cast
 
 from logic.system import QueryService, id_emitter
-from logic.persona import PersonaLookupProcess, PersonaKey, PersonaKeyBuilder, PersonaKeyValidationTransaction
+from logic.persona import PersonaLookupProcess, PersonaKey, PersonaKeyBuilder, PersonaKeyValidator
 
 
 class PersonaKeyService(QueryService[PersonaKey]):
@@ -39,7 +39,7 @@ class PersonaKeyService(QueryService[PersonaKey]):
             id: int = id_emitter.service_id,
             lookup: PersonaLookupProcess = PersonaLookupProcess(),
             builder: PersonaKeyBuilder = PersonaKeyBuilder(),
-            validator: PersonaKeyValidationTransaction = PersonaKeyValidationTransaction(),
+            validator: PersonaKeyValidator = PersonaKeyValidator(),
     ):
         """
         # ACTION:
@@ -48,7 +48,7 @@ class PersonaKeyService(QueryService[PersonaKey]):
             *   id (nt)
             *   name (str)
             *   build (PersonaKeyBuilder)
-            *   validation (PersonaKeyValidationTransaction)
+            *   validation (PersonaKeyValidator)
         # RETURNS:
             None
         Raises:
@@ -62,9 +62,9 @@ class PersonaKeyService(QueryService[PersonaKey]):
         return cast(PersonaKeyBuilder, self.entity_builder)
     
     @property
-    def validation(self) -> PersonaKeyValidationTransaction:
-        """get PersonaKeyValidationTransaction"""
-        return cast(PersonaKeyValidationTransaction, self.entity_validator)
+    def validation(self) -> PersonaKeyValidator:
+        """get PersonaKeyValidator"""
+        return cast(PersonaKeyValidator, self.entity_validator)
     
     @property
     def lookup(self) -> PersonaLookupProcess:

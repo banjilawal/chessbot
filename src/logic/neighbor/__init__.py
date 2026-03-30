@@ -16,4 +16,4 @@ from .neighbor import NeighborTuple
 from .event import VisitationEvent
 from .service import VisitationService
 from .builder import VisitationEventBuilder
-from .validator import VisitationEventValidationTransaction
+from .validator import VisitationEventValidator

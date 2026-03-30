@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast
 
 from logic.system import QueryService, id_emitter
-from logic.hostage import CaptivityContext, CaptivityContextBuilder, CaptivityContextValidationTransaction, HostageFinder
+from logic.hostage import CaptivityContext, CaptivityContextBuilder, CaptivityContextValidator, HostageFinder
 
 
 class HostageQueryService(QueryService[CaptivityContext]):
@@ -42,7 +42,7 @@ class HostageQueryService(QueryService[CaptivityContext]):
             id: int = id_emitter.service_id,
             finder: HostageFinder = HostageFinder(),
             builder: CaptivityContextBuilder = CaptivityContextBuilder(),
-            validator: CaptivityContextValidationTransaction = CaptivityContextValidationTransaction(),
+            validator: CaptivityContextValidator = CaptivityContextValidator(),
     ):
         """
         # ACTION:
@@ -52,7 +52,7 @@ class HostageQueryService(QueryService[CaptivityContext]):
             *   id (int)
             *   route (HostageFinder)
             *   build (CaptivityContextBuilder)
-            *   validation (CaptivityContextValidationTransaction)
+            *   validation (CaptivityContextValidator)
         # RETURNS:
             None
         Raises:
@@ -72,6 +72,6 @@ class HostageQueryService(QueryService[CaptivityContext]):
         return cast(CaptivityContextBuilder, self.entity_builder)
     
     @property
-    def validation(self) -> CaptivityContextValidationTransaction:
-        """Get CaptivityContextValidationTransaction instance."""
-        return cast(CaptivityContextValidationTransaction, self.entity_validator)
+    def validation(self) -> CaptivityContextValidator:
+        """Get CaptivityContextValidator instance."""
+        return cast(CaptivityContextValidator, self.entity_validator)

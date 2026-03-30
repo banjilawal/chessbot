@@ -12,7 +12,7 @@ Builder class responsible for safely constructing `KingCheckEvent` instances.
 
 `AttackEventBuilder` ensures that `KingCheckEvent` objects are always created successfully by performing comprehensive validate
  checks during construction. This separates the responsibility of building from validating - `AttackEventBuilder`
- focuses on creation while `AttackEventValidationTransaction` is used for validating existing `KingCheckEvent` instances that are passed
+ focuses on creation while `AttackEventValidator` is used for validating existing `KingCheckEvent` instances that are passed
  around the system.
 
 The build runs through all validate checks individually to guarantee that any `KingCheckEvent` instance it produces
@@ -29,7 +29,7 @@ Usage:
 
 See Also:
   `KingCheckEvent`: The entity_service structure being constructed
-  `AttackEventValidationTransaction`: Used for validating existing `KingCheckEvent` instances
+  `AttackEventValidator`: Used for validating existing `KingCheckEvent` instances
   `BuildResult`: Return type containing the built `KingCheckEvent` or error information
 """
 """
@@ -42,7 +42,7 @@ any additional validate checks on the returned `KingCheckEvent` instance. This m
 with team_name successful status is returned, the contained `KingCheckEvent` is valid and ready for use.
 
 Args:
-  `event_id`(`int`): The unique visitor_id for the attackEvent. Must pass `IdValidationTransaction` checks.
+  `event_id`(`int`): The unique visitor_id for the attackEvent. Must pass `IdValidator` checks.
   `actor_candidate`(`Token`): Initiates attack after successful validate`.
   `enemy`(`Token`): The `Token` attackned by `actor_candidate`.
   `roster`(`ExecutionContext`): `roster.board_validator` verifies `actor_candidate` and `enemy` are on the board_validator.
@@ -66,7 +66,7 @@ RAISES:
 
 Note:
   The build runs through all the checks on parameters and state to guarantee only team_name valid `KingCheckEvent` is
-  created, while `AttackEventValidationTransaction` is used for validating `KingCheckEvent` instances that are passed around after
+  created, while `AttackEventValidator` is used for validating `KingCheckEvent` instances that are passed around after
   creating. This separation of concerns makes the validate and building independent of each other and
   simplifies maintenance.
 
@@ -402,11 +402,11 @@ This module provides:
   2. A satisfaction of the `ChessBot` reliability requirement.
 
 # SECTION 2 - Scope:
-The module's only covers exception raised by `IdValidationTransaction`;
+The module's only covers exception raised by `IdValidator`;
 
 # SECTION 3: Limitations
   1. Does not provide logic for fixing the errors or causing the rollback_exception being raised.
-       `IdValidationTransaction` is responsible for the logic which raises these exception.
+       `IdValidator` is responsible for the logic which raises these exception.
 
 # SECTION 4 - Design Considerations and Themes:
 The major theme influencing the modules design are
@@ -443,7 +443,7 @@ This module is exclusively for defining all custom **rollback_exception classes*
 creation, coord_stack_validator, and manipulation of `Vector` objects.
 
 **Limitations** It does not contain any logic for raising these exception; that responsibility
-`Vector`, `VectorBuilder`, and `VectorValidationTransaction`
+`Vector`, `VectorBuilder`, and `VectorValidator`
 
 THEME:
 -----

@@ -1,34 +1,34 @@
-# src/logic/zone/service/operation/build/exception/work.py
+# src/logic/zone/validation/exception/validator.py
 
 """
-Module: logic.zone.service.operation.build.exception.work
+Module: logic.zone.validation.exception.work
 Author: Banji Lawal
-Created: 2025-09-16
-version: 1.0.0
+Created: 2026-03-29
+Version: 1.0.0
 """
 
 from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# ZONE_BUILD_FAILURE #======================#
-    "ZoneBuildException",
+    # ======================# ZONE_VALIDATION_FAILURE #======================#
+    "ZoneValidationException",
 ]
 
-from logic.system import BuildException
+from logic.system import ValidationException
 
-# ======================# ZONE_BUILD_FAILURE #======================#
-class ZoneBuildException(BuildException):
+# ======================# ZONE_VALIDATION_FAILURE #======================#
+class ZoneValidationException(ValidationException):
     """
     Role:
-        -   Worker Method Identifier
+        -   Worker Method Identification
         -   Exception Chain Layer 1,
         -   Exception Messaging
-
+    
     Responsibilities:
-        1.  Indicate the ZoneBuildProcess was not completed.
-        2.  Identify the ZoneBuildProcess method where the failure occurred.
-
+        1.  Indicate a Zone validation check was not passed.
+        2.  Identify the Validator method where the failure occurred.
+    
     Attributes:
         op: Optional[str]
         msg: Optional[str]
@@ -37,16 +37,14 @@ class ZoneBuildException(BuildException):
         ex: Optional[Exception]
         err_code: Optional[str]
         rslt_type: Optional[str]
-
-    Provides
-
+    
+    Provides:
+    
     Super Class:
-        BuildException
+        OperationException
     """
-    OP = "Build"
-    RSLT_TYPE = "BuildResult"
-    ERR_CODE = "ZONE_BUILD_FAILURE"
-    MSG = "Failure in ZoneBuildProcess method."
+    ERR_CODE = "ZONE_VALIDATION_FAILURE"
+    MSG = "Failure in ZoneValidator method."
     
     def __init__(
             self,

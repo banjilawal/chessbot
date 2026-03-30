@@ -10,13 +10,13 @@ version: 1.0.0
 from typing import Any, cast
 
 from logic.system import (
-    LONGEST_KNIGHT_LEG_SIZE, LoggingLevelRouter, NumberValidationTransaction, ValidationResult,
-    ValidationTransaction
+    LONGEST_KNIGHT_LEG_SIZE, LoggingLevelRouter, NumberValidator, ValidationResult,
+    Validator
 )
 from logic.vector import InvalidVectorException, NullVectorException, Vector
 
 
-class VectorValidationTransaction(ValidationTransaction[Vector]):
+class VectorValidator(Validator[Vector]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -25,7 +25,7 @@ class VectorValidationTransaction(ValidationTransaction[Vector]):
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     Super Class:
-        *   ValidationTransaction
+        *   Validator
 
     Provides:
 
@@ -38,7 +38,7 @@ class VectorValidationTransaction(ValidationTransaction[Vector]):
     def execute(
             cls,
             candidate: Any,
-            number_in_bounds_validator: NumberValidationTransaction = NumberValidationTransaction()
+            number_in_bounds_validator: NumberValidator = NumberValidator()
     ) -> ValidationResult[Vector]:
         """
         # ACTION:
@@ -51,7 +51,7 @@ class VectorValidationTransaction(ValidationTransaction[Vector]):
             4.  All tests are passed return the ValidationResult containing vector in the payload.
         # PARAMETERS:
             *   candidate (Any)
-            *   number_in_bounds_validator (NumberValidationTransaction)
+            *   number_in_bounds_validator (NumberValidator)
         # RETURNS:
             *   ValidationResult[Vector] containing either:
                     - On failure: Exception.
@@ -61,7 +61,7 @@ class VectorValidationTransaction(ValidationTransaction[Vector]):
             *   NullVectorException
             *   InvalidVectorException
         """
-        method = "VectorValidationTransaction.validate"
+        method = "VectorValidator.validate"
         # Handle the nonexistence case.
         if candidate is None:
             # Return the exception chain on failure.

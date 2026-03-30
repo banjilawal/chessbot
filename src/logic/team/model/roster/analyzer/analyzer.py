@@ -1,4 +1,4 @@
-# src/logic/team/relation/roster/transaction.py
+# src/logic/team/relation/roster/validator.py
 
 """
 Module: logic.team.relation.roster.analyzer
@@ -12,7 +12,7 @@ from typing import cast
 
 from logic.token import Token, TokenService, TokenContext
 from logic.system import LoggingLevelRouter, RelationReport, RelationAnalysis
-from logic.team import Team, TeamRosterRelationAnalysisException, TeamValidationTransaction
+from logic.team import Team, TeamRosterRelationAnalysisException, TeamValidator
 
 
 class RosterRelationAnalysis(RelationAnalysis[Team, Token]):
@@ -39,7 +39,7 @@ class RosterRelationAnalysis(RelationAnalysis[Team, Token]):
             candidate_primary: Team,
             candidate_satellite: Token,
             piece_service: TokenService = TokenService(),
-            team_validator: TeamValidationTransaction = TeamValidationTransaction(),
+            team_validator: TeamValidator = TeamValidator(),
     ) -> RelationReport[Team, Token]:
         """
         # ACTION:
@@ -53,7 +53,7 @@ class RosterRelationAnalysis(RelationAnalysis[Team, Token]):
             *   candidate_primary (Team)
             *   candidate_satellite (Token)
             *   piece_service (PieceService)
-            *   team_validator (TeamValidationTransaction)
+            *   team_validator (TeamValidator)
         # RETURN:
             *   RelationReport[Team, Token] containing either:
                 - On failure: Exception

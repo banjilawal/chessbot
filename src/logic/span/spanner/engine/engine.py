@@ -1,4 +1,4 @@
-# src/logic/span/span/transaction.py
+# src/logic/span/span/validator.py
 
 """
 Module: logic.span.span.computer

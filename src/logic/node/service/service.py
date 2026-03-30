@@ -1,4 +1,4 @@
-# src/logic/node/service/transaction.py
+# src/logic/node/service/validator.py
 
 """
 Module: logic.node.service.service
@@ -13,7 +13,7 @@ from typing import cast
 from logic.edge import Edge, EdgeService
 from logic.node import (
     AddIncomingEdgeFailedException, AddOutgoingEdgeFailedException, IncomingEdgeWrongTailException, Node, NodeBuilder,
-    NodeServiceException, NodeValidationTransaction, OutgoingEdgeWrongHeadException, RemoveIncomingEdgeFailedException,
+    NodeServiceException, NodeValidator, OutgoingEdgeWrongHeadException, RemoveIncomingEdgeFailedException,
     RemoveOutgoingEdgeFailedException
 )
 from logic.system import DeletionResult, IntegrityService, IdFactory, InsertionResult, LoggingLevelRouter
@@ -44,7 +44,7 @@ class NodeService(IntegrityService[Node]):
             self,
             name: str = SERVICE_NAME,
             builder: NodeBuilder = NodeBuilder(),
-            validator: NodeValidationTransaction = NodeValidationTransaction(),
+            validator: NodeValidator = NodeValidator(),
             id: int = IdFactory.next_id(class_name="NodeService"),
     ):
         """
@@ -54,7 +54,7 @@ class NodeService(IntegrityService[Node]):
             *   id (nt)
             *   name (str)
             *   build (NodeFactory)
-            *   validation (NodeValidationTransaction)
+            *   validation (NodeValidator)
         # RETURNS:
             None
         Raises:
@@ -67,8 +67,8 @@ class NodeService(IntegrityService[Node]):
         return cast(NodeBuilder, self.entity_builder)
     
     @property
-    def validation(self) -> NodeValidationTransaction:
-        return cast(NodeValidationTransaction, self.entity_validator)
+    def validation(self) -> NodeValidator:
+        return cast(NodeValidator, self.entity_validator)
     
     @LoggingLevelRouter.monitor
     def add_incoming_edge(self, node: Node, edge: Edge) -> InsertionResult:

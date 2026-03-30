@@ -9,7 +9,7 @@ Version: 1.0.1
 from typing import cast
 
 from logic.board import (
-    Board, BoardContext, BoardSquareFinder, BoardValidationTransaction,
+    Board, BoardContext, BoardSquareFinder, BoardValidator,
     SquareInvariantBreachException
 )
 from logic.board.search.context.builder import BoardContextBuilder
@@ -25,17 +25,17 @@ from logic.king import KingPiece
 from logic.pawn import ActorNotOnBoardException, ActorPlacementRequiredException, CapturedPieceCannotActException
 from logic.piece import CombatantPiece, Piece, PieceValidator
 from logic.square import Square
-from logic.system import IdValidationTransaction, LoggingLevelRouter, ValidationTransaction, ValidationResult
+from logic.system import IdValidator, LoggingLevelRouter, Validator, ValidationResult
 
 
-class TurnSceneValidationTransaction(ValidationTransaction[TurnScene]):
+class TurnSceneValidator(Validator[TurnScene]):
     """"""
     
     @classmethod
     @LoggingLevelRouter.monitor
     def execute(cls, candidate) -> ValidationResult[TurnScene]:
         """"""
-        method = "TurnSceneValidationTransaction.validate"
+        method = "TurnSceneValidator.validate"
         
         try:
             if candidate is None:
@@ -50,11 +50,11 @@ class TurnSceneValidationTransaction(ValidationTransaction[TurnScene]):
             
             turn_scene = cast(TurnScene, candidate)
             
-            id_validation = IdValidationTransaction.execute(turn_scene.id)
+            id_validation = IdValidator.execute(turn_scene.id)
             if id_validation.is_failure():
                 return ValidationResult.failure(id_validation.exception)
 
-            board_validator = BoardValidationTransaction.execute(turn_scene.board)
+            board_validator = BoardValidator.execute(turn_scene.board)
             if board_validator.is_failure():
                 return ValidationResult.failure(board_validator.exception)
               
@@ -127,7 +127,7 @@ class TurnSceneValidationTransaction(ValidationTransaction[TurnScene]):
     @LoggingLevelRouter.monitor
     def actor_board_validation_helper(cls, piece: Piece, board: Board) -> ValidationResult[PieceValidator]:
         """"""
-        method = "TurnSceneValidationTransaction._actor_validation_helper"
+        method = "TurnSceneValidator._actor_validation_helper"
         
         try:
             piece_validation = PieceValidator.execute(piece)

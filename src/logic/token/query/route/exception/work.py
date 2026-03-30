@@ -1,4 +1,4 @@
-# src/logic/token/route/exception/work.py
+# src/logic/token/route/exception/validator.py
 
 """
 Module: logic.token.route.exception.work

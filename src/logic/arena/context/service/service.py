@@ -1,4 +1,4 @@
-# src/logic/owner/service/transaction.py
+# src/logic/owner/service/validator.py
 
 """
 Module: logic.owner.service.service

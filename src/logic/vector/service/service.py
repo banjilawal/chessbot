@@ -1,4 +1,4 @@
-# src/logic/vector/transaction.py
+# src/logic/vector/validator.py
 
 """
 Module: logic.vector.service
@@ -12,9 +12,9 @@ from typing import List, cast
 
 from logic.coord import Coord, CoordService
 from logic.scalar import Scalar, ScalarService
-from logic.vector import Vector, VectorBuilder, VectorServiceException, VectorValidationTransaction
+from logic.vector import Vector, VectorBuilder, VectorServiceException, VectorValidator
 from logic.system import (
-    BuildResult, ComputationResult, IdFactory, LoggingLevelRouter, IntegrityService, NumberValidationTransaction
+    BuildResult, ComputationResult, IdFactory, LoggingLevelRouter, IntegrityService, NumberValidator
 )
 
 class VectorService(IntegrityService[Vector]):
@@ -47,7 +47,7 @@ class VectorService(IntegrityService[Vector]):
         *   id (int)
         *   name (str)
         *   build (VectorBuilder) = VectorBuilder()
-        *   validation (VectorValidationTransaction) = VectorValidationTransaction()
+        *   validation (VectorValidator) = VectorValidator()
 
     # LOCAL METHODS:
         *   multiply_vector_by_scalar(
@@ -70,7 +70,7 @@ class VectorService(IntegrityService[Vector]):
             self,
             name: str = SERVICE_NAME,
             builder: VectorBuilder = VectorBuilder(),
-            validator: VectorValidationTransaction = VectorValidationTransaction(),
+            validator: VectorValidator = VectorValidator(),
             id: int = IdFactory.next_id(class_name="VectorService"),
     ):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
@@ -81,15 +81,15 @@ class VectorService(IntegrityService[Vector]):
         return cast(VectorBuilder, self.entity_builder)
     
     @property
-    def validation(self) -> VectorValidationTransaction:
-        """get VectorValidationTransaction"""
-        return cast(VectorValidationTransaction, self.entity_validator)
+    def validation(self) -> VectorValidator:
+        """get VectorValidator"""
+        return cast(VectorValidator, self.entity_validator)
     
     @LoggingLevelRouter.monitor
     def add_vectors(
             self,
             vectors: List[Vector],
-            number_validator: NumberValidationTransaction = NumberValidationTransaction(),
+            number_validator: NumberValidator = NumberValidator(),
     ) -> ComputationResult[Vector]:
         """
         Action:
@@ -102,7 +102,7 @@ class VectorService(IntegrityService[Vector]):
 
         Args:
             vectors: List[Vector]
-            number_validator: NumberValidationTransaction
+            number_validator: NumberValidator
 
         Returns:
             ComputationResult[Vector]
@@ -158,7 +158,7 @@ class VectorService(IntegrityService[Vector]):
             vector: Vector,
             scalar: Scalar,
             scalar_service: ScalarService = ScalarService(),
-            number_validator: NumberValidationTransaction = NumberValidationTransaction(),
+            number_validator: NumberValidator = NumberValidator(),
     ) -> ComputationResult[Vector]:
         """
         Action:
@@ -176,7 +176,7 @@ class VectorService(IntegrityService[Vector]):
             vector: Vector
             scalar: Scalar
             scalar_service: ScalarService
-            number_validator: NumberValidationTransaction
+            number_validator: NumberValidator
             
         Returns:
             ComputationResult[Vector]
@@ -237,7 +237,7 @@ class VectorService(IntegrityService[Vector]):
             self,
             coord: Coord,
             coord_service: CoordService = CoordService(),
-            number_validator: NumberValidationTransaction = NumberValidationTransaction(),
+            number_validator: NumberValidator = NumberValidator(),
     ) -> BuildResult[Vector]:
         """
         Action:
@@ -249,7 +249,7 @@ class VectorService(IntegrityService[Vector]):
         Args:
             coord: Coord
             coord_service: CoordService
-            number_validator: NumberValidationTransaction
+            number_validator: NumberValidator
 
         Args:
             BuildResult[Vector]

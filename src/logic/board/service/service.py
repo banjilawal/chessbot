@@ -1,4 +1,4 @@
-# src/logic/board/transaction.py
+# src/logic/board/validator.py
 
 """
 Module: logic.board.service
@@ -13,7 +13,7 @@ from typing import cast
 from logic.board import (
     Board, BoardAlreadyLaidOutException, BoardBuilder, BoardLayoutFailedException, BoardRelationAnalysisContext,
     BoardRelationAnalyzer,
-    BoardState, BoardValidationTransaction
+    BoardState, BoardValidator
 )
 from logic.board.service.exception.anchor import BoardServiceException
 from logic.graph import Graph, GraphComputationException
@@ -50,7 +50,7 @@ class BoardService(IntegrityService[Board]):
             self,
             name: str = SERVICE_NAME,
             builder: BoardBuilder = BoardBuilder(),
-            validator: BoardValidationTransaction = BoardValidationTransaction(),
+            validator: BoardValidator = BoardValidator(),
             id: int = IdFactory.next_id(class_name="BoardService"),
             relation_analyzer: BoardRelationAnalyzer = BoardRelationAnalyzer()
     ):
@@ -59,7 +59,7 @@ class BoardService(IntegrityService[Board]):
                 id: int
                 name: str
                 builder: BoardBuilder
-                validator: BoardValidationTransaction
+                validator: BoardValidator
                 square_relation_analyzer: SquareRelationAnalyzer
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
@@ -70,8 +70,8 @@ class BoardService(IntegrityService[Board]):
         return cast(BoardBuilder, self.build)
     
     @property
-    def validation(self) -> BoardValidationTransaction:
-        return cast(BoardValidationTransaction, self.validation)
+    def validation(self) -> BoardValidator:
+        return cast(BoardValidator, self.validation)
     
     @property
     def relation_analyzer(self) -> BoardRelationAnalyzer:

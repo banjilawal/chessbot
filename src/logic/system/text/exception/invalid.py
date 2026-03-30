@@ -23,7 +23,7 @@ class InvalidStringException(StringException, ValidationException):
 
     Responsibilities:
     1.  Indicate That  a candidate failed String validation checks.
-    2.  Wraps an exception that hits the try-finally block of a StringValidationTransaction method.
+    2.  Wraps an exception that hits the try-finally block of a StringValidator method.
 
     Super Class:
         *   StringException

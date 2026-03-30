@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 from logic.node import Node, NodeService
-from logic.square import Square, SquareValidationTransaction
+from logic.square import Square, SquareValidator
 from logic.system import BuildResult, Builder, LoggingLevelRouter
 from logic.pair import HeadTailSquareException, Pair, PairBuildException
 
@@ -48,7 +48,7 @@ class PairBuilder(Builder[Pair]):
             head: Node,
             tail_square: Square,
             node_service: NodeService = NodeService(),
-            square_validator: SquareValidationTransaction = SquareValidationTransaction(),
+            square_validator: SquareValidator = SquareValidator(),
     ) -> BuildResult[Pair]:
         """
         Action:
@@ -61,7 +61,7 @@ class PairBuilder(Builder[Pair]):
             head: Node
             tail_square: Pair
             node_service: NodeService
-            square_validator: SquareValidationTransaction
+            square_validator: SquareValidator
 
         Returns:
             BuildResult[Pair]

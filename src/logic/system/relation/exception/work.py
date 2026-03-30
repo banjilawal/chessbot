@@ -1,4 +1,4 @@
-# src/logic/system/relation/exception/work.py
+# src/logic/system/relation/exception/validator.py
 
 """
 Module: logic.system.relation.exception.work

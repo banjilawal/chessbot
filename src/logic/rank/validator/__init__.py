@@ -13,4 +13,4 @@ version: 1.0.0
 
 # Modules
 from .exception import *
-from .factory import RankValidationTransactionFactory
+from .factory import RankValidatorFactory

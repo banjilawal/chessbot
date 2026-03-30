@@ -1,4 +1,4 @@
-# src/logic/square/service/transaction.py
+# src/logic/square/service/validator.py
 
 """
 Module: logic.square.service.service
@@ -15,7 +15,7 @@ from typing import cast
 from logic.token import Token, TokenService
 from logic.square import (
     Square, SquareBuilder, SquareOpsController, SquareServiceException,
-    SquareValidationTransaction, VisitationProcessor
+    SquareValidator, VisitationProcessor
 )
 from logic.system import DeletionResult, IntegrityService, IdFactory, LoggingLevelRouter, UpdateResult
 
@@ -60,7 +60,7 @@ class SquareService(IntegrityService[Square]):
             name: str = SERVICE_NAME,
             controller: SquareOpsController = SquareOpsController(),
             builder: SquareBuilder = SquareBuilder(),
-            validator: SquareValidationTransaction = SquareValidationTransaction(),
+            validator: SquareValidator = SquareValidator(),
             id: int = IdFactory.next_id(class_name="SquareService"),
             visit_processor: VisitationProcessor = VisitationProcessor(),
     ):
@@ -69,7 +69,7 @@ class SquareService(IntegrityService[Square]):
             id: int
             name: str
             builder: Builder
-            validator: ValidationTransaction
+            validator: Validator
             visit_processor: VisitationController
         """
         super().__init__(id=id, name=name)
@@ -81,7 +81,7 @@ class SquareService(IntegrityService[Square]):
         return self._controller.build
     
     @property
-    def validation(self) -> SquareValidationTransaction:
+    def validation(self) -> SquareValidator:
         return self._controller.validation
     
     @property

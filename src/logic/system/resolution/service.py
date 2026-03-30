@@ -1,4 +1,4 @@
-# src/logic/system/resolution/transaction.py
+# src/logic/system/resolution/validator.py
 
 """
 module: logic.system.resolution.service

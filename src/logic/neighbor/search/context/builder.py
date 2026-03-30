@@ -9,9 +9,9 @@ version: 1.0.0
 
 from typing import Optional
 
-from logic.coord import Coord, CoordValidationTransaction
+from logic.coord import Coord, CoordValidator
 from logic.rank import Queen, RankSpec
-from logic.system import BuildResult, Builder, IdValidationTransaction, LoggingLevelRouter, NameValidationTransaction
+from logic.system import BuildResult, Builder, IdValidator, LoggingLevelRouter, NameValidator
 from logic.neighbor import (
     VisitationSearchContext, ArenaVisitationSearchParamsException, ZeroVisitationSearchParamsException, VisitationInvalidRankNameParamException,
 )
@@ -68,22 +68,22 @@ class VisitationSearchContextBuilder(Builder[VisitationSearchContext]):
                 )
 
             if piece_id is not None:
-                id_validation = IdValidationTransaction.execute(piece_id)
+                id_validation = IdValidator.execute(piece_id)
                 if not id_validation.is_failure():
                     return BuildResult(exception=id_validation.exception)
 
             if name is not None:
-                piece_name_validation = NameValidationTransaction.execute(name)
+                piece_name_validation = NameValidator.execute(name)
                 if piece_name_validation.is_failure():
                     return BuildResult(exception=piece_name_validation.exception)
 
             if team_id is not None:
-                team_id_validation = IdValidationTransaction.execute(team_id)
+                team_id_validation = IdValidator.execute(team_id)
                 if team_id_validation.is_failure():
                     return BuildResult(exception=team_id_validation.exception)
 
             if team_name is not None:
-                team_name_validation = NameValidationTransaction.execute(team_name)
+                team_name_validation = NameValidator.execute(team_name)
                 if team_name_validation.is_failure():
                     return BuildResult.failure(team_name_validation.exception)
 
@@ -98,7 +98,7 @@ class VisitationSearchContextBuilder(Builder[VisitationSearchContext]):
                 )
 
             if position is not None:
-                position_validation = CoordValidationTransaction.execute(position)
+                position_validation = CoordValidator.execute(position)
                 if position_validation.is_failure():
                     return BuildResult.failure(position_validation.exception)
 

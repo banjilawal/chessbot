@@ -1,4 +1,4 @@
-# src/logic/game/service/transaction.py
+# src/logic/game/service/validator.py
 
 """
 Module: logic.game.service.service
@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast
 
 from logic.system import IntegrityService, id_emitter
-from logic.game import Game, GameBuilder, GameValidationTransaction
+from logic.game import Game, GameBuilder, GameValidator
 
 
 class GameService(IntegrityService[Game]):
@@ -28,7 +28,7 @@ class GameService(IntegrityService[Game]):
 
     # PROVIDES:
         *   build: --> GameBuilder
-        *   validation: --> GameValidationTransaction
+        *   validation: --> GameValidator
 
 
     # INHERITED ATTRIBUTES:
@@ -41,7 +41,7 @@ class GameService(IntegrityService[Game]):
             name: str = DEFAULT_NAME,
             id: int = id_emitter.service_id,
             builder: GameBuilder = GameBuilder(),
-            validator: GameValidationTransaction = GameValidationTransaction(),
+            validator: GameValidator = GameValidator(),
     ):
         """
         # ACTION:
@@ -51,7 +51,7 @@ class GameService(IntegrityService[Game]):
             *   id (nt)
             *   name (str)
             *   build (GameFactory)
-            *   validation (GameValidationTransaction)
+            *   validation (GameValidator)
 
         # RETURNS:
         None
@@ -67,9 +67,9 @@ class GameService(IntegrityService[Game]):
         return cast(GameBuilder, self.entity_builder)
     
     @property
-    def validation(self) -> GameValidationTransaction:
-        """get GameValidationTransaction"""
-        return cast(GameValidationTransaction, self.entity_validator)
+    def validation(self) -> GameValidator:
+        """get GameValidator"""
+        return cast(GameValidator, self.entity_validator)
     
     
     

@@ -1,4 +1,4 @@
-# src/logic/team/transaction.py
+# src/logic/team/validator.py
 
 """
 Module: logic.team.service
@@ -12,7 +12,7 @@ from typing import List, cast
 
 
 from logic.system import IntegrityService, IdFactory
-from logic.team import RosterUtil, Team, TeamBuild, TeamValidationTransaction
+from logic.team import RosterUtil, Team, TeamBuild, TeamValidator
 
 class TeamService(IntegrityService[Team]):
     """
@@ -43,7 +43,7 @@ class TeamService(IntegrityService[Team]):
             name: str = SERVICE_NAME,
             builder: TeamBuild = TeamBuild(),
             roster_util: RosterUtil = RosterUtil(),
-            validator: TeamValidationTransaction = TeamValidationTransaction(),
+            validator: TeamValidator = TeamValidator(),
             id: int = IdFactory.next_id(class_name="TeamService"),
     ):
         """
@@ -53,7 +53,7 @@ class TeamService(IntegrityService[Team]):
             *   id (nt)
             *   name (str)
             *   build (TeamBuild)
-            *   validation (TeamValidationTransaction)
+            *   validation (TeamValidator)
             *   roster_util (RosterUtil)
         # RETURNS:
                 None
@@ -69,9 +69,9 @@ class TeamService(IntegrityService[Team]):
         return cast(TeamBuild, self.entity_builder)
     
     @property
-    def validation(self) -> TeamValidationTransaction:
-        """get TeamValidationTransaction."""
-        return cast(TeamValidationTransaction, self.entity_validator)
+    def validation(self) -> TeamValidator:
+        """get TeamValidator."""
+        return cast(TeamValidator, self.entity_validator)
     
     @property
     def roster_util(self) -> RosterUtil:

@@ -5,11 +5,11 @@ from logic.hostage import (
     CaptivityContextValidationException, CaptivityContextValidationRouteException, CaptivityContext,
     ArenaCaptivityContextFlagsException, NullCaptivityContextException, ZeroCaptivityContextFlagsException,
 )
-from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, ValidationTransaction
+from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from logic.hostage import CombatantHostage, HostageService
 
 
-class CaptivityContextValidationTransaction(ValidationTransaction[CaptivityContext]):
+class CaptivityContextValidator(Validator[CaptivityContext]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -19,14 +19,14 @@ class CaptivityContextValidationTransaction(ValidationTransaction[CaptivityConte
     2. Provide pluggable factories for validating different options separately.
 
     Super Class:
-        * ValidationTransaction
+        * Validator
 
     3 PROVIDES:
     None
 
 
     3 INHERITED ATTRIBUTES:
-        *   See ValidationTransaction class for inherited attributes.
+        *   See Validator class for inherited attributes.
     """
     
     @classmethod
@@ -45,7 +45,7 @@ class CaptivityContextValidationTransaction(ValidationTransaction[CaptivityConte
             2. Test the value passed to CaptivityContext passes its validation contract.
         # PARAMETERS:
             * candidate (Any): Object to verify is a Square.
-            * validation (type[SquareValidationTransaction]): Enforces safety requirements on row, column, square_name squares.
+            * validation (type[SquareValidator]): Enforces safety requirements on row, column, square_name squares.
         # RETURNS:
             * ValidationResult[CaptivityContext] containing either:
                     - On failure: Exception.
@@ -57,7 +57,7 @@ class CaptivityContextValidationTransaction(ValidationTransaction[CaptivityConte
             * CaptivityContextValidationException
             * CaptivityContextValidationRouteException
         """
-        method = "CaptivityContextValidationTransaction.validate"
+        method = "CaptivityContextValidator.validate"
         
         # Handle the nonexistence case.
         if candidate is None:

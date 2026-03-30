@@ -1,4 +1,4 @@
-# src/logic/hostage/database/kernel/exception/insertion/work.py
+# src/logic/hostage/database/kernel/exception/insertion/validator.py
 
 """
 Module: logic.hostage.database.kernel.exception.insertion.work

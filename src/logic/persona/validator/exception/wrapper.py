@@ -1,4 +1,4 @@
-# src/logic/persona/validation/exception/work.py
+# src/logic/persona/validation/exception/validator.py
 
 """
 Module: logic.persona.validation.exception.work
@@ -23,7 +23,7 @@ class PersonaValidationException(ValidationException):
     Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Identify the PersonaValidationTransaction method where the exception failed.
+    1.  Identify the PersonaValidator method where the exception failed.
 
     Super Class:
         *   ValidationException
@@ -52,7 +52,7 @@ class PersonaValidationException(ValidationException):
         *   See ValidationException class for inherited methods.
     """
     ERR_CODE = "PERSONA_VALIDATION_FAILURE"
-    MSG = "Failure in PersonaValidationTransaction method."
+    MSG = "Failure in PersonaValidator method."
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     

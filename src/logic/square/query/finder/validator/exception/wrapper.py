@@ -1,4 +1,4 @@
-# src/logic/square/validation/exception/work.py
+# src/logic/square/validation/exception/validator.py
 
 """
 Module: logic.square.validation.exception.work
@@ -46,7 +46,7 @@ class SquareListValidationException(ValidationException):
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     ERR_CODE = "SQUARE_LIST_VALIDATION_FAILURE"
-    MSG = "Failure in SquareListValidationTransaction method."
+    MSG = "Failure in SquareListValidator method."
     
     def __init__(
             self,

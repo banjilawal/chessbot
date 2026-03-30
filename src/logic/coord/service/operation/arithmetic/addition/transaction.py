@@ -1,4 +1,4 @@
-# src/logic/token/service/operation/arithmetic/addition/transaction.py
+# src/logic/token/service/operation/arithmetic/addition/validator.py
 
 """
 Module: logic.token.service.operation.arithmetic.addition.transaction

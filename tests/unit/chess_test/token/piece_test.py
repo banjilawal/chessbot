@@ -28,8 +28,8 @@ class PieceTest(unittest.TestCase):
     return piece
 
 
-  @patch('assurance.notification.visitor_name.NameValidationTransaction.validate')
-  @patch('assurance.notification.visitor_id.IdValidationTransaction.validate')
+  @patch('assurance.notification.visitor_name.NameValidator.validate')
+  @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_piece_failed_id_validation_raises_error(
     self,
     mock_name_validate,
@@ -47,8 +47,8 @@ class PieceTest(unittest.TestCase):
       Piece(piece_id=-1, name="discovery", team=mock_side, rank=mock_rank)
 
 
-  @patch('assurance.notification.visitor_name.NameValidationTransaction.validate')
-  @patch('assurance.notification.visitor_id.IdValidationTransaction.validate')
+  @patch('assurance.notification.visitor_name.NameValidator.validate')
+  @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_piece_failed_name_validation_raises_error(
     self,
     mock_name_validate,
@@ -63,8 +63,8 @@ class PieceTest(unittest.TestCase):
       Piece(piece_id=1, name="a1")
 
 
-  @patch('assurance.notification.visitor_name.NameValidationTransaction.validate')
-  @patch('assurance.notification.visitor_id.IdValidationTransaction.validate')
+  @patch('assurance.notification.visitor_name.NameValidator.validate')
+  @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_piece_constructed_if_params_are_valid(
     self,
     mock_name_validate,

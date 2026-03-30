@@ -11,7 +11,7 @@ from typing import Optional
 
 from logic.arena import Arena, ArenaService
 from logic.player import Player, PlayerService
-from logic.system import Builder, BuildResult,  GameColor, GameColorValidationTransaction, IdentityService, LoggingLevelRouter
+from logic.system import Builder, BuildResult,  GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
 from logic.team import (
     TeamContext, TeamContextBuildException, ArenaTeamContextFlagsException, TeamContextBuildRouteException,
     ZeroTeamContextFlagsException
@@ -49,7 +49,7 @@ class TeamContextBuilder(Builder[TeamContext]):
             arena_service: ArenaService = ArenaService(),
             player_service: PlayerService = PlayerService(),
             identity_service: IdentityService = IdentityService(),
-            color_validator: GameColorValidationTransaction = GameColorValidationTransaction(),
+            color_validator: GameColorValidator = GameColorValidator(),
     ) -> BuildResult[TeamContext]:
         """
         # ACTION:

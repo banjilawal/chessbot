@@ -1,4 +1,4 @@
-# src/logic/team/database/kernel/exception/push/work.py
+# src/logic/team/database/kernel/exception/push/validator.py
 
 """
 Module: logic.team.database.kernel.exception.push.work

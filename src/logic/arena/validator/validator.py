@@ -14,12 +14,12 @@ from logic.team import Team, UniqueTeamDataService
 from logic.arena import Arena, ArenaValidationException, NullArenaException, ArenaTeamsInArenaException
 from logic.system import (
     IdentityService, LoggingLevelRouter, SearchResult, ServiceValidator, ValidationResult,
-    ValidationTransaction
+    Validator
 )
 
 
 
-class ArenaValidationTransaction(ValidationTransaction[Arena]):
+class ArenaValidator(Validator[Arena]):
     """
     Role:Validation, Data Integrity And Reliability Guarantor
 
@@ -65,7 +65,7 @@ class ArenaValidationTransaction(ValidationTransaction[Arena]):
         Raises:
             *   ArenaValidationException
         """
-        method = "ArenaValidationTransaction.validate"
+        method = "ArenaValidator.validate"
         try:
             # If candidate does not exist no point continuing
             if candidate is None:

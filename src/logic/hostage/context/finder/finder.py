@@ -12,7 +12,7 @@ from typing import List
 from logic.square import Square
 from logic.system import DataFinder, LoggingLevelRouter, SearchResult
 from logic.hostage import (
-    CaptivityContext, CaptivityContextValidationTransaction, Hostage, HostageSearchException,
+    CaptivityContext, CaptivityContextValidator, Hostage, HostageSearchException,
     HostageSearchNullDatasetException, HostageSearchPayloadTypeException,
     HostageSearchRouteException
 )
@@ -46,7 +46,7 @@ class HostageFinder(DataFinder[Hostage]):
             cls,
             dataset: List[Hostage],
             context: CaptivityContext,
-            context_validator: CaptivityContextValidationTransaction = CaptivityContextValidationTransaction()
+            context_validator: CaptivityContextValidator = CaptivityContextValidator()
     ) -> SearchResult[List[Hostage]]:
         """
         # ACTION:
@@ -58,7 +58,7 @@ class HostageFinder(DataFinder[Hostage]):
        # PARAMETERS:
             *   collider_candidates (List[Hostage]):
             *   query: CaptivityContext
-            *   context_validator: CaptivityContextValidationTransaction
+            *   context_validator: CaptivityContextValidator
         # RETURNS:
             *   SearchResult[List[Hostage]] containing either:
                     - On error: Exception , payload null

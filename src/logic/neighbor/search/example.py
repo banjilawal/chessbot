@@ -1,4 +1,4 @@
-# src/logic/owner/searcher/transaction.py
+# src/logic/owner/searcher/validator.py
 
 """
 Module: logic.owner.searcher.exception

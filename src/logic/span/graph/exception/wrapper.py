@@ -1,4 +1,4 @@
-# src/logic/span/square/build/work.py
+# src/logic/span/square/build/validator.py
 
 """
 Module: logic.span.square.build.work

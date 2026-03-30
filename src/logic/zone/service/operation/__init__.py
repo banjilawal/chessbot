@@ -3,7 +3,7 @@
 """
 Module: logic.token.service.operation.__init__
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2026-03-29
 version: 1.0.0
 """
 
@@ -12,7 +12,6 @@ version: 1.0.0
 # Packages
 from .build import *
 from .validation import *
-from .arithmetic import *
 
 # Modules
 from .controller import ZoneOpsController

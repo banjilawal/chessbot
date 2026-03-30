@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Optional
 
 from logic.system import (
-    BOARD_DIMENSION, BuildResult, Builder, NumberValidationTransaction, LoggingLevelRouter,
+    BOARD_DIMENSION, BuildResult, Builder, NumberValidator, LoggingLevelRouter,
 )
 
 
@@ -39,7 +39,7 @@ class CoordContextBuilder(Builder[CoordContext]):
             cls,
             row: Optional[int] = None,
             column: Optional[int] = None,
-            number_validator: NumberValidationTransaction = NumberValidationTransaction(),
+            number_validator: NumberValidator = NumberValidator(),
     ) -> BuildResult[CoordContext]:
         """
         # ACTION:
@@ -52,7 +52,7 @@ class CoordContextBuilder(Builder[CoordContext]):
                 *   row (Optional[int])
                 *   column (Optional[int])
             This parameter is Required:
-                *   number_validation (NumberValidationTransaction)
+                *   number_validation (NumberValidator)
         # RETURNS:
             *   BuildResult[CoordContext] containing either:
                     - On failure: Exception.

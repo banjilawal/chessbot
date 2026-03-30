@@ -3,7 +3,7 @@ from typing import List, cast
 
 from logic.team import Team
 from logic.team.service.service import TeamService
-from logic.formation import Formation, FormationKey, FormationKeyService, FormationValidationTransaction, FormationServiceException
+from logic.formation import Formation, FormationKey, FormationKeyService, FormationValidator, FormationServiceException
 from logic.persona import PersonaService
 from logic.square import Square, SquareContext
 from logic.system import GameColor, HashService, InvariantBreachException, LoggingLevelRouter, SearchResult, id_emitter
@@ -19,7 +19,7 @@ class FormationService(HashService[Formation]):
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             formation: Formation = Formation(),
-            validator: FormationValidationTransaction = FormationValidationTransaction(),
+            validator: FormationValidator = FormationValidator(),
             super_key_service: FormationKeyService = FormationKeyService(),
             persona_service: PersonaService = PersonaService()
     ):
@@ -29,7 +29,7 @@ class FormationService(HashService[Formation]):
         # PARAMETERS:
             *   id (int)
             *   name (str)
-            *   validation (FormationValidationTransaction)
+            *   validation (FormationValidator)
             *   super_key_service (FormationKeyService)
         # RETURNS:
             None
@@ -58,9 +58,9 @@ class FormationService(HashService[Formation]):
         return cast(FormationKeyService, self.hash_key_service)
     
     @property
-    def validator(self) -> FormationValidationTransaction:
+    def validator(self) -> FormationValidator:
         """"""
-        return cast(FormationValidationTransaction, self.hash_validator)
+        return cast(FormationValidator, self.hash_validator)
     
     @classmethod
     def formation_colors(cls) -> List[GameColor]:

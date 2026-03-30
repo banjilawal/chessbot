@@ -44,7 +44,7 @@ class NullDomainOriginException(DomainOriginException, NullException):
 
 #====================== DOMAIN_ORIGIN VALIDATION EXCEPTION #======================#
 class InvalidDomainOriginException(DomainOriginException, ValidationException):
-    """Super Exception for DomainOriginValidationTransaction when a candidate fails a sanity check.""""""
+    """Super Exception for DomainOriginValidator when a candidate fails a sanity check.""""""
     ERR_CODE = "DOMAIN_ORIGIN_VALIDATION_EXCEPTION"
     MSG = "DomainOrigin validation failed."
 

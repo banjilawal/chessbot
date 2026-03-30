@@ -13,4 +13,4 @@ from .projection import *
 from .service import ProjectionService
 from .calculate import ProjectionCalculator
 from .builder import ProjectionServiceBuilder
-from .validator import ProjectionServiceValidationTransaction
+from .validator import ProjectionServiceValidator

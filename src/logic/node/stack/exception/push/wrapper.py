@@ -1,4 +1,4 @@
-# src/logic/node/stack/exception/push/work.py
+# src/logic/node/stack/exception/push/validator.py
 
 """
 Module: logic.node.stack.exception.push.work

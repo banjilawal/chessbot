@@ -1,4 +1,4 @@
-# src/logic/system/identity/transaction.py
+# src/logic/system/identity/validator.py
 
 """
 Module: logic.system.identity.service
@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Any
 
 from logic.system import (
-    IdFactory, IdValidationTransaction, NameValidationTransaction, ValidationResult, IdEmitter, InvalidIdentityException, id_emitter
+    IdFactory, IdValidator, NameValidator, ValidationResult, IdEmitter, InvalidIdentityException, id_emitter
 )
 
 
@@ -30,22 +30,22 @@ class IdentityService:
 
     # PROVIDES:
         *   IdEmitter
-        *   IdValidationTransaction
-        *   NameValidationTransaction
+        *   IdValidator
+        *   NameValidator
 
 
     # ATTRIBUTES:
-        *   id_validator (type[IdValidationTransaction]):
-        *   name_validator (type[NameValidationTransaction]):
+        *   id_validator (type[IdValidator]):
+        *   name_validator (type[NameValidator]):
         *   id_emitter (type[IdEmitter]):
     """
-    _id_validator: IdValidationTransaction
-    _name_validator: NameValidationTransaction
+    _id_validator: IdValidator
+    _name_validator: NameValidator
     
     def __init__(
             self,
-            id_validator: IdValidationTransaction = IdValidationTransaction(),
-            name_validator: NameValidationTransaction = NameValidationTransaction(),
+            id_validator: IdValidator = IdValidator(),
+            name_validator: NameValidator = NameValidator(),
     ):
         method = "IdentityService.__init__"
         self._id_validator=id_validator

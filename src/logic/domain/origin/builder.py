@@ -9,7 +9,7 @@ version: 1.0.0
 
 
 from logic.domain import DomainOrigin, DomainOriginBuildException
-from logic.enviroment import TurnScene, TurnSceneValidationTransaction
+from logic.enviroment import TurnScene, TurnSceneValidator
 from logic.system import Builder, BuildResult, LoggingLevelRouter
 
 
@@ -59,7 +59,7 @@ class DomainOriginBuilder(Builder[DomainOrigin]):
         method = "DomainOriginBuilder.build"
         
         try:
-            turn_scene_validation = TurnSceneValidationTransaction.execute(turn_scene)
+            turn_scene_validation = TurnSceneValidator.execute(turn_scene)
             if turn_scene_validation.failure():
                 return BuildResult.failure(turn_scene_validation.exception)
             

@@ -1,4 +1,4 @@
-# src/logic/arena/relation/work.py
+# src/logic/arena/relation/validator.py
 
 """
 Module: logic.arena.relation.work

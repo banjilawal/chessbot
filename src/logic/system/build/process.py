@@ -10,7 +10,7 @@ version: 1.0.0
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
-from logic.system import BuildResult, LoggingLevelRouter, ValidationTransaction
+from logic.system import BuildResult, LoggingLevelRouter, Validator
 
 T = TypeVar("T")
 

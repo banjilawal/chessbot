@@ -15,7 +15,7 @@ from logic.rank import RankService
 from logic.coord import CoordService
 from logic.persona import PersonaService
 from logic.system import (
-    GameColorValidationTransaction, IdentityService, LoggingLevelRouter, NumberValidationTransaction, ValidationTransaction,
+    GameColorValidator, IdentityService, LoggingLevelRouter, NumberValidator, Validator,
     ValidationResult
 )
 from logic.token import (
@@ -23,7 +23,7 @@ from logic.token import (
     TokenContextValidationRouteException, ZeroTokenContextFlagsException
 )
 
-class TokenContextValidationTransaction(ValidationTransaction[TokenContext]):
+class TokenContextValidator(Validator[TokenContext]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -32,7 +32,7 @@ class TokenContextValidationTransaction(ValidationTransaction[TokenContext]):
     2.  If verification fails indicate the reason in an exception returned to the caller.
 
     Super Class:
-        *   ValidationTransaction
+        *   Validator
 
     Provides:
 
@@ -50,9 +50,9 @@ class TokenContextValidationTransaction(ValidationTransaction[TokenContext]):
             coord_service: CoordService = CoordService(),
             square_service: SquareService = SquareService(),
             persona_service: PersonaService = PersonaService(),
-            number_validator: NumberValidationTransaction = NumberValidationTransaction(),
+            number_validator: NumberValidator = NumberValidator(),
             identity_service: IdentityService = IdentityService(),
-            color_validator: GameColorValidationTransaction = GameColorValidationTransaction(),
+            color_validator: GameColorValidator = GameColorValidator(),
     ) -> ValidationResult[TokenContext]:
         """
         # ACTION:
@@ -82,7 +82,7 @@ class TokenContextValidationTransaction(ValidationTransaction[TokenContext]):
             *   TeamContextValidationException
             *   TeamContextValidationRouteException
         """
-        method = "TokenContextValidationTransaction.validate"
+        method = "TokenContextValidator.validate"
         
         # Handle the nonexistence case.
         if candidate is None:

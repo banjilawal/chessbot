@@ -3,8 +3,8 @@ from typing import Any, Generic, TypeVar, cast
 
 from logic.event import EventValidator
 from logic.piece import KingCheckEvent, PieceValidator, InvalidAttackException
-from logic.square import SquareValidationTransaction, InvalidSqaureException
-from logic.system import LoggingLevelRouter, Result, IdValidationTransaction, IdValidationException, ValidationResult, ValidationTransaction
+from logic.square import SquareValidator, InvalidSqaureException
+from logic.system import LoggingLevelRouter, Result, IdValidator, IdValidationException, ValidationResult, Validator
 from logic.token.event import (
   AttackEvent,
   NullAttackEventException,
@@ -14,7 +14,7 @@ from logic.token.event import (
 
 T = TypeVar('V')
 
-class KingCheckEventValidationTransaction(ValidationTransaction[KingCheckEvent]):
+class KingCheckEventValidator(Validator[KingCheckEvent]):
 
   @staticmethod
   @LoggingLevelRouter.monitor
@@ -60,7 +60,7 @@ class KingCheckEventValidationTransaction(ValidationTransaction[KingCheckEvent])
 
       event = cast(AttackEvent, t)
 
-      id_validation = IdValidationTransaction.execute(event.visitor_id)
+      id_validation = IdValidator.execute(event.visitor_id)
       if not id_validation.is_success():
         raise IdValidationException(f"{method}: {IdValidationException.MSG}")
 
@@ -68,7 +68,7 @@ class KingCheckEventValidationTransaction(ValidationTransaction[KingCheckEvent])
       if not actor_validation.is_success():
         raise InvalidAttackException(f"{method}: actor_candidate validation failed.")
 
-      destination_square_validation = SquareValidationTransaction.execute(event.enemy_square)
+      destination_square_validation = SquareValidator.execute(event.enemy_square)
       if not destination_square_validation.is_success():
         raise InvalidSqaureException(f"{method}: {InvalidSqaureException.MSG}")
 

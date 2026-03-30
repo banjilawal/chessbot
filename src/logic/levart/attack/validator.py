@@ -19,17 +19,17 @@ from logic.travel.attack.exception import (
     AttackingPieceMissingFromBoardException,
     EnemyNotInExpectedSquareException
 )
-from logic.system import ValidationResult, ValidationTransaction
+from logic.system import ValidationResult, Validator
 from logic.team import InconsistentHostageEntry
 
 
-class AttackEventValidationTransaction(ValidationTransaction[AttackEvent]):
+class AttackEventValidator(Validator[AttackEvent]):
     """"""
     
     @classmethod
     def execute(cls, candidate: Any) -> ValidationResult[AttackEvent]:
         """"""
-        method = "AttackEventValidationTransaction.validate"
+        method = "AttackEventValidator.validate"
         
         try:
             if candidate is None:

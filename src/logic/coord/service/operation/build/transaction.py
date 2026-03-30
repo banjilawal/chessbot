@@ -1,4 +1,4 @@
-# src/logic/coord/service/operation/build/transaction.py
+# src/logic/coord/service/operation/build/validator.py
 
 """
 Module: logic.coord.service.operation.build.transaction
@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 from logic.coord import Coord, CoordBuildException
-from logic.system import BOARD_DIMENSION, Builder, BuildResult, LoggingLevelRouter, NumberValidationTransaction
+from logic.system import BOARD_DIMENSION, Builder, BuildResult, LoggingLevelRouter, NumberValidator
 
 
 class CoordBuilder(Builder[Coord]):
@@ -32,7 +32,7 @@ class CoordBuilder(Builder[Coord]):
         -   execute(
                     row: int,
                     column: int,
-                    number_validation: NumberValidationTransaction,
+                    number_validation: NumberValidator,
             ) -> BuildResult[Coord]
 
      Super Class:
@@ -44,7 +44,7 @@ class CoordBuilder(Builder[Coord]):
             cls,
             row: int,
             column: int,
-            number_validator: NumberValidationTransaction = NumberValidationTransaction(),
+            number_validator: NumberValidator = NumberValidator(),
     ) -> BuildResult[Coord]:
         """
         Build a Coord.
@@ -58,7 +58,7 @@ class CoordBuilder(Builder[Coord]):
         Args:
             row: int
             column: int
-            number_validator: NumberValidationTransaction)
+            number_validator: NumberValidator)
         Returns:
             BuildResult[Coord]
         Raises:

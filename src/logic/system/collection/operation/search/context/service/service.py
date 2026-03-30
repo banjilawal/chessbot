@@ -1,4 +1,4 @@
-# src/logic/system/query/service/transaction.py
+# src/logic/system/query/service/validator.py
 
 """
 Module: logic.system.query.service.service
@@ -12,7 +12,7 @@ from typing import Generic, List, TypeVar
 
 from logic.system import (
     Builder, Context, IntegrityService, LoggingLevelRouter, SearchResult, Service, StackSearchRouter,
-    ValidationTransaction
+    Validator
 )
 
 C = TypeVar("C", bound="Context")

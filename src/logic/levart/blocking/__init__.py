@@ -11,4 +11,4 @@ from .example import *
 from .exception import *
 from .transaction import *
 from .event import BlockingEvent
-from .validator import BlockingEventValidationTransaction
+from .validator import BlockingEventValidator

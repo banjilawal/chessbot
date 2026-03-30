@@ -1,6 +1,6 @@
 
 from logic.system import IntegrityService, id_emitter
-from logic.domain import DomainOrigin, DomainOriginBuilder, DomainOriginValidationTransaction
+from logic.domain import DomainOrigin, DomainOriginBuilder, DomainOriginValidator
 
 class DomainOriginService(IntegrityService[DomainOrigin]):
     """
@@ -29,7 +29,7 @@ class DomainOriginService(IntegrityService[DomainOrigin]):
             name: str = DEFAULT_NAME,
             id: int = id_emitter.service_id,
             builder: DomainOriginBuilder = DomainOriginBuilder(),
-            validator: DomainOriginValidationTransaction = DomainOriginValidationTransaction(),
+            validator: DomainOriginValidator = DomainOriginValidator(),
     ):
         """
         # ACTION:
@@ -39,7 +39,7 @@ class DomainOriginService(IntegrityService[DomainOrigin]):
             *   id (nt)
             *   name (str)
             *   build (DomainOriginFactory)
-            *   validation (DomainOriginValidationTransaction)
+            *   validation (DomainOriginValidator)
 
         # RETURNS:
         None
@@ -54,6 +54,6 @@ class DomainOriginService(IntegrityService[DomainOrigin]):
         return cast(DomainOriginBuilder, self.entity_builder)
     
     @property
-    def validation(self) -> DomainOriginValidationTransaction:
-        """get DomainOriginValidationTransaction"""
-        return cast(DomainOriginValidationTransaction, self.entity_validator)
+    def validation(self) -> DomainOriginValidator:
+        """get DomainOriginValidator"""
+        return cast(DomainOriginValidator, self.entity_validator)

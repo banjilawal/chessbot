@@ -1,4 +1,4 @@
-# src/logic/neighbor/transaction.py
+# src/logic/neighbor/validator.py
 
 """
 Module: logic.neighbor.service

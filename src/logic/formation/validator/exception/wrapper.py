@@ -1,4 +1,4 @@
-# src/logic/formation/validation/exception/work.py
+# src/logic/formation/validation/exception/validator.py
 
 """
 Module: logic.formation.validation.exception.work
@@ -23,7 +23,7 @@ class FormationValidationException(ValidationException):
     Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Identify the FormationValidationTransaction method where the exception failed.
+    1.  Identify the FormationValidator method where the exception failed.
 
     Super Class:
         *   ValidationException
@@ -52,7 +52,7 @@ class FormationValidationException(ValidationException):
         *   See ValidationException class for inherited methods.
     """
     ERR_CODE = "FORMATION_VALIDATION_FAILURE"
-    MSG = "Failure in FormationValidationTransaction method."
+    MSG = "Failure in FormationValidator method."
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     

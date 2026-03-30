@@ -1,4 +1,4 @@
-# template/service/transaction.py
+# template/service/validator.py
 
 """
 Module: template.service.service
@@ -8,7 +8,7 @@ Created: 2025-11-18
 
 from __future__ import annotations
 
-from logic.system import IntegrityService, Builder, Template, ValidationTransaction
+from logic.system import IntegrityService, Builder, Template, Validator
 
 
 class TemplateService(IntegrityService[Template]):
@@ -38,7 +38,7 @@ class TemplateService(IntegrityService[Template]):
         *   id (int)
         *   name (name)
         *   build (Builder[Template])
-        *   validation (ValidationTransaction[Template])
+        *   validation (Validator[Template])
 
     # LOCAL METHODS:
     None
@@ -48,14 +48,14 @@ class TemplateService(IntegrityService[Template]):
     """
     SERVICE_NAME = "TemplateService"
     _builder: Builder[Template]
-    _validator: ValidationTransaction[Template]
+    _validator: Validator[Template]
     
     def __init__(
             self,
             id: int,
             name: str,
             builder: Builder[Template],
-            validator: ValidationTransaction[Template]
+            validator: Validator[Template]
     ):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
 
@@ -64,7 +64,7 @@ class TemplateService(IntegrityService[Template]):
         return self._builder
     
     @property
-    def validation(self) -> ValidationTransaction[Template]:
+    def validation(self) -> Validator[Template]:
         return self.certifier
     
     def __eq__(self, other):

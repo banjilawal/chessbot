@@ -9,8 +9,8 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from logic.system import Builder, BuildResult, LONGEST_KNIGHT_LEG_SIZE, LoggingLevelRouter, NumberValidationTransaction
-from logic.vector import Vector, VectorBuildException,VectorValidationTransaction
+from logic.system import Builder, BuildResult, LONGEST_KNIGHT_LEG_SIZE, LoggingLevelRouter, NumberValidator
+from logic.vector import Vector, VectorBuildException,VectorValidator
 
 
 class VectorBuilder(Builder[Vector]):
@@ -40,7 +40,7 @@ class VectorBuilder(Builder[Vector]):
             self,
             x: int,
             y: int,
-            bound_number_validator: NumberValidationTransaction = NumberValidationTransaction(),
+            bound_number_validator: NumberValidator = NumberValidator(),
     ) -> BuildResult[Vector]:
         """
         # ACTION:
@@ -50,7 +50,7 @@ class VectorBuilder(Builder[Vector]):
         # PARAMETERS:
             *   x (int)
             *   y (int)
-            *   bound_number_validator (NumberValidationTransaction)
+            *   bound_number_validator (NumberValidator)
             
         # RETURNS:
         BuildResult[Vector] containing either:

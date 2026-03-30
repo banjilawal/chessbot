@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import cast
 
 from logic.system import QueryService, id_emitter
-from logic.square import SquareContext, SquareContextBuilder, SquareContextValidationTransaction, SquareFinder
+from logic.square import SquareContext, SquareContextBuilder, SquareContextValidator, SquareFinder
 
 
 class SquareQueryService(QueryService[SquareContext]):
@@ -43,7 +43,7 @@ class SquareQueryService(QueryService[SquareContext]):
             id: int = id_emitter.service_id,
             finder: SquareFinder = SquareFinder(),
             builder: SquareContextBuilder = SquareContextBuilder(),
-            validator: SquareContextValidationTransaction = SquareContextValidationTransaction(),
+            validator: SquareContextValidator = SquareContextValidator(),
     ):
         """
         # ACTION:
@@ -53,7 +53,7 @@ class SquareQueryService(QueryService[SquareContext]):
             *   id (int)
             *   route (SquareFinder)
             *   build (SquareContextBuilder)
-            *   validation (SquareContextValidationTransaction)
+            *   validation (SquareContextValidator)
         # RETURNS:
             None
         Raises:
@@ -73,6 +73,6 @@ class SquareQueryService(QueryService[SquareContext]):
         return cast(SquareContextBuilder, self.entity_builder)
     
     @property
-    def validation(self) -> SquareContextValidationTransaction:
-        """Get SquareContextValidationTransaction instance."""
-        return cast(SquareContextValidationTransaction, self.entity_validator)
+    def validation(self) -> SquareContextValidator:
+        """Get SquareContextValidator instance."""
+        return cast(SquareContextValidator, self.entity_validator)

@@ -10,11 +10,11 @@ from __future__ import annotations
 from typing import Any, cast
 
 from logic.system import (
-    IdentityService, LoggingLevelRouter, NullArgumentsException, NullRequestException, ValidationTransaction, Request,
+    IdentityService, LoggingLevelRouter, NullArgumentsException, NullRequestException, Validator, Request,
     RequestValidationException, ValidationResult,
 )
 
-class RequestValidationTransaction(ValidationTransaction[Request]):
+class RequestValidator(Validator[Request]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -25,7 +25,7 @@ class RequestValidationTransaction(ValidationTransaction[Request]):
             *   The correct types.
 
     Super Class:
-        *   ValidationTransaction
+        *   Validator
 
     Provides:
 
@@ -80,7 +80,7 @@ class RequestValidationTransaction(ValidationTransaction[Request]):
             *   NullRequestException
             *   RequestValidationException
         """
-        method = "RequestValidationTransaction.validate"
+        method = "RequestValidator.validate"
         
         # Handle the nonexistence case.
         if candidate is None:

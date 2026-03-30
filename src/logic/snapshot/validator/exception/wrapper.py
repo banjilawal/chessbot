@@ -1,4 +1,4 @@
-# src/logic/schema/validation/exception/work.py
+# src/logic/schema/validation/exception/validator.py
 
 """
 Module: logic.schema.validation.exception.work
@@ -25,7 +25,7 @@ class SchemaValidationException(ValidationException):
     # TASK: Worker Method Identifier
 
     Responsibilities:
-    1.  Identify the SchemaValidationTransaction method where the exception failed.
+    1.  Identify the SchemaValidator method where the exception failed.
 
     Super Class:
         *   ValidationException
@@ -54,7 +54,7 @@ class SchemaValidationException(ValidationException):
         *   See ValidationException class for inherited methods.
     """
     ERR_CODE = "SCHEMA_VALIDATION_FAILURE"
-    MSG = "Failure in SchemaValidationTransaction method."
+    MSG = "Failure in SchemaValidator method."
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     

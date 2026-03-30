@@ -1,4 +1,4 @@
-# src/logic/item/service/transaction.py
+# src/logic/item/service/validator.py
 
 """
 Module: logic.item.service.service
@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast
 
 from logic.system import IntegrityService, id_emitter
-from logic.hostage import Hostage, HostageBuilder, HostageValidationTransaction
+from logic.hostage import Hostage, HostageBuilder, HostageValidator
 
 
 class HostageService(IntegrityService[Hostage]):
@@ -40,7 +40,7 @@ class HostageService(IntegrityService[Hostage]):
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             builder: HostageBuilder = HostageBuilder(),
-            validator: HostageValidationTransaction = HostageValidationTransaction(),
+            validator: HostageValidator = HostageValidator(),
     ):
         """
         # ACTION:
@@ -49,7 +49,7 @@ class HostageService(IntegrityService[Hostage]):
             *   id (nt)
             *   name (str)
             *   build (SquareFactory)
-            *   validation (SquareValidationTransaction)
+            *   validation (SquareValidator)
         # RETURNS:
             None
         Raises:
@@ -63,6 +63,6 @@ class HostageService(IntegrityService[Hostage]):
         return cast(HostageBuilder, self.entity_builder)
     
     @property
-    def validation(self) -> HostageValidationTransaction:
-        """get SquareValidationTransaction"""
-        return cast(HostageValidationTransaction, self.entity_validator)
+    def validation(self) -> HostageValidator:
+        """get SquareValidator"""
+        return cast(HostageValidator, self.entity_validator)

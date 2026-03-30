@@ -1,4 +1,4 @@
-# src/logic/Square/service/operation/build/exception/work.py
+# src/logic/Square/service/operation/build/exception/validator.py
 
 """
 Module: logic.Square.service.operation.build.exception.work

@@ -1,4 +1,4 @@
-# src/logic/board/database/kernel/exception/deletion/work.py
+# src/logic/board/database/kernel/exception/deletion/validator.py
 
 """
 Module: logic.board.database.kernel.exception.deletion.work

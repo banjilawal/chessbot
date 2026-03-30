@@ -1,4 +1,4 @@
-# src/logic/game/query/build/exception/work.py
+# src/logic/game/query/build/exception/validator.py
 
 """
 Module: logic.game.query.build.exception.work

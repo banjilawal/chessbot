@@ -1,4 +1,4 @@
-# src/logic/hostage/validation/exception/work.py
+# src/logic/hostage/validation/exception/validator.py
 
 """
 Module: logic.hostage.validation.exception.work
@@ -23,7 +23,7 @@ class HostageValidationException(ValidationException):
     Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Identify the HostageValidationTransaction method where the exception failed.
+    1.  Identify the HostageValidator method where the exception failed.
 
     Super Class:
         *   ValidationException
@@ -52,7 +52,7 @@ class HostageValidationException(ValidationException):
         *   See ValidationException class for inherited methods.
     """
     ERR_CODE = "HOSTAGE_VALIDATION_FAILURE"
-    MSG = "Failure in HostageValidationTransaction method."
+    MSG = "Failure in HostageValidator method."
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     

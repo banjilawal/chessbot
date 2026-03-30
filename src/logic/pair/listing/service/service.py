@@ -1,4 +1,4 @@
-# src/logic/pair/listing/service/transaction.py
+# src/logic/pair/listing/service/validator.py
 
 """
 Module: logic.pair.listing.service.service
@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import List, cast
 
 from logic.node import Node
-from logic.pair import PairList, PairListBuilder, PairListValidationTransaction, PairService
+from logic.pair import PairList, PairListBuilder, PairListValidator, PairService
 from logic.pair.listing.service import PairListServiceException
 from logic.system import IdFactory, IntegrityService, LoggingLevelRouter, SearchResult
 
@@ -45,7 +45,7 @@ class PairListService(IntegrityService[PairList]):
             name: str = SERVICE_NAME,
             pair_service: PairService = PairService(),
             builder: PairListBuilder = PairListBuilder(),
-            validator: PairListValidationTransaction = PairListValidationTransaction(),
+            validator: PairListValidator = PairListValidator(),
             id: int = IdFactory.next_id(class_name="PairListService"),
     ):
         """
@@ -54,7 +54,7 @@ class PairListService(IntegrityService[PairList]):
             name: str
             builder: PairListBuilder
             pair_service: PairService
-            validator: PairListValidationTransaction
+            validator: PairListValidator
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         self._pair_service = pair_service
@@ -64,8 +64,8 @@ class PairListService(IntegrityService[PairList]):
         return cast(PairListBuilder, self.entity_builder)
     
     @property
-    def validation(self) -> PairListValidationTransaction:
-        return cast(PairListValidationTransaction, self.entity_validator)
+    def validation(self) -> PairListValidator:
+        return cast(PairListValidator, self.entity_validator)
     
     @property
     def pair_service(self) -> PairService:

@@ -1,4 +1,4 @@
-# src/logic/points/searcher/transaction.py
+# src/logic/points/searcher/validator.py
 
 """
 Module: logic.points.searcher.searcher
@@ -14,7 +14,7 @@ from logic.coord import Coord
 from logic.piece import Piece
 from logic.system import LoggingLevelRouter, Finder, SearchResult
 from logic.domain import (
-    Domain, DomainValidationTransaction, ResidentFilter, ResidentFilterValidationTransaction, ResidentSearchCoordCollisionException,
+    Domain, DomainValidator, ResidentFilter, ResidentFilterValidator, ResidentSearchCoordCollisionException,
     ResidentSearchIdCollisionException, ResidentSearchNameCollisionException
 )
 
@@ -29,11 +29,11 @@ class DomainResidentFinder(Finder[Domain, Piece]):
         method = "DomainResidentFinder.searcher"
         
         try:
-            domain_validation = DomainValidationTransaction.execute(data_owner)
+            domain_validation = DomainValidator.execute(data_owner)
             if domain_validation.is_failure():
                 return SearchResult.failure(domain_validation.exception)
             
-            search_context_validation = ResidentFilterValidationTransaction.execute(search_context)
+            search_context_validation = ResidentFilterValidator.execute(search_context)
             if search_context_validation.is_failure():
                 return SearchResult.failure(search_context_validation.exception)
             

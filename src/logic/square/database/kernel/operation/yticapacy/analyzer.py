@@ -1,4 +1,4 @@
-# src/logic/square/database/kernel/util/stats/transaction.py
+# src/logic/square/database/kernel/util/stats/validator.py
 
 """
 Module: logic.square.database.kernel.operation.stats.analyzer

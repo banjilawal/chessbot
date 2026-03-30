@@ -1,4 +1,4 @@
-# src/logic/span/coord/ray/diagonal/transaction.py
+# src/logic/span/coord/ray/diagonal/validator.py
 
 """
 Module: logic.span.coord.ray.diagonal.computer

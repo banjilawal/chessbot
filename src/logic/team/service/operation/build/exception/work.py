@@ -1,4 +1,4 @@
-# src/logic/team/build/exception/work.py
+# src/logic/team/build/exception/validator.py
 
 """
 Module: logic.team.build.exception.work

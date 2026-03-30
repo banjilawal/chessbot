@@ -1,4 +1,4 @@
-# src/logic/coord/service/transaction.py
+# src/logic/coord/service/validator.py
 
 """
 Module: logic.coord.service.service
@@ -13,7 +13,7 @@ from typing import Union, cast
 
 from logic.scalar import Scalar, ScalarService
 from logic.vector import Vector, VectorService
-from logic.coord import Coord, CoordBuildProcess, CoordOpsController, CoordServiceException, CoordValidationTransaction
+from logic.coord import Coord, CoordBuildProcess, CoordOpsController, CoordServiceException, CoordValidator
 from logic.system import BuildResult, ComputationResult, IdFactory, IntegrityService, id_emitter
 
 class CoordService(IntegrityService[Coord]):
@@ -85,7 +85,7 @@ class CoordService(IntegrityService[Coord]):
         return self._ops_controller.build
     
     @property
-    def validation(self) -> CoordValidationTransaction:
+    def validation(self) -> CoordValidator:
         return self._ops_controller.validation
     
     @property

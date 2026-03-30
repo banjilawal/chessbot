@@ -11,4 +11,4 @@ from .exception import *
 
 from .context import ResidentFilter
 from .builder import ResidentFilterBuilder
-from .validator import ResidentFilterValidationTransaction
+from .validator import ResidentFilterValidator

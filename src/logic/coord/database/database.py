@@ -1,4 +1,4 @@
-# src/logic/coord/database/transaction.py
+# src/logic/coord/database/validator.py
 
 """
 Module: logic.coord.database.service

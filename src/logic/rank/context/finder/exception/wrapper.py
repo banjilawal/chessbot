@@ -1,4 +1,4 @@
-# src/logic/rank/route/exception/work.py
+# src/logic/rank/route/exception/validator.py
 
 """
 Module: logic.rank.route.exception.work

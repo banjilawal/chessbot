@@ -12,13 +12,13 @@ from typing import Any, cast
 
 from logic.coord import CoordDatabase, CoordDatabaseNullException, CoordService
 from logic.rank import RankService
-from logic.system import IdentityService, LoggingLevelRouter, NumberValidationTransaction, ValidationResult, ValidationTransaction
+from logic.system import IdentityService, LoggingLevelRouter, NumberValidator, ValidationResult, Validator
 from logic.team import TeamService
 from logic.token import CombatantToken, KingToken, Token, TokenException, TokenValidationException
 from logic.token.service.operation.validation.exception.debug.null import NullTokenException
 
 
-class TokenValidation(ValidationTransaction[Token]):
+class TokenValidation(Validator[Token]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -27,7 +27,7 @@ class TokenValidation(ValidationTransaction[Token]):
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     Super Class:
-        *   ValidationTransaction
+        *   Validator
 
     # PROVIDES:
         * TokenValidation
@@ -46,7 +46,7 @@ class TokenValidation(ValidationTransaction[Token]):
             rank_service: RankService = RankService(),
             coord_service: CoordService = CoordService(),
             identity_service: IdentityService = IdentityService(),
-            number_validation: NumberValidationTransaction = NumberValidationTransaction(),
+            number_validation: NumberValidator = NumberValidator(),
     ) -> ValidationResult[Token]:
         """
         # ACTION:
@@ -61,7 +61,7 @@ class TokenValidation(ValidationTransaction[Token]):
             *   team_service (TeamService)
             *   coord_service (CoordService)
             *   identity_service (IdentityService)
-            *   number_validation (NumberValidationTransaction)
+            *   number_validation (NumberValidator)
         # RETURNS:
             *   ValidationResult[Team] containing either:
                     - On failure: Exception.

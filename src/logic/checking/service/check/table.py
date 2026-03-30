@@ -1,4 +1,4 @@
-# src/logic/mate/transaction.py
+# src/logic/mate/validator.py
 
 """
 Module: logic.mate.table

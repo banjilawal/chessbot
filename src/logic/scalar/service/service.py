@@ -1,4 +1,4 @@
-# src/logic/scalar/service/transaction.py
+# src/logic/scalar/service/validator.py
 
 """
 Module: logic.scalar.service.service
@@ -8,7 +8,7 @@ version: 1.0.0
 """
 from logic.scalar import Scalar, ScalarBuilder
 
-# src/logic/system/service/integrity/transaction.py
+# src/logic/system/service/integrity/validator.py
 
 """
 Module: logic.system.service.integrity.service
@@ -18,7 +18,7 @@ Created: 2025-11-18
 
 from __future__ import annotations
 
-from logic.system import IdFactory, IntegrityService, Builder, ValidationTransaction
+from logic.system import IdFactory, IntegrityService, Builder, Validator
 
 
 class ScalarService(IntegrityService[Scalar]):
@@ -48,7 +48,7 @@ class ScalarService(IntegrityService[Scalar]):
         *   id (int)
         *   name (name)
         *   build (Builder[Scalar])
-        *   validation (ValidationTransaction[Scalar])
+        *   validation (Validator[Scalar])
 
     # LOCAL METHODS:
     None
@@ -58,14 +58,14 @@ class ScalarService(IntegrityService[Scalar]):
     """
     SERVICE_NAME = "ScalarService"
     _builder: Builder[Scalar]
-    _validator: ValidationTransaction[Scalar]
+    _validator: Validator[Scalar]
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             id: int = IdFactory.next_id(class_name="ScalarService"),
             builder: Builder[Scalar] = ScalarBuilder(),
-            validator: ValidationTransaction[Scalar] = ValidationTransaction(),
+            validator: Validator[Scalar] = Validator(),
     ):
         super().__init__(id=id, name=name)
         self._builder = builder
@@ -76,7 +76,7 @@ class ScalarService(IntegrityService[Scalar]):
         return self._builder
     
     @property
-    def validation(self) -> ValidationTransaction[Scalar]:
+    def validation(self) -> Validator[Scalar]:
         return self.certifier
     
     def __eq__(self, other):

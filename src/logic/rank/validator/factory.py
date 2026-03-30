@@ -13,10 +13,10 @@ from logic.rank import (
     Bishop, BishopValidator, InvalidRankException, King, KingValidator, Knight, KnightValidator,
     NullRankException, Pawn, PawnValidator, Queen, QueenValidator, Rank, RankSpecValidator, Rook, RookValidator
 )
-from logic.system import IdentityService, LoggingLevelRouter, ValidationTransaction, ValidationResult
+from logic.system import IdentityService, LoggingLevelRouter, Validator, ValidationResult
 
 
-class RankValidationTransactionFactory(ValidationTransaction[Rank]):
+class RankValidatorFactory(Validator[Rank]):
     """
     Role:Validation, Data Integrity Guarantor, Security.
 
@@ -42,7 +42,7 @@ class RankValidationTransactionFactory(ValidationTransaction[Rank]):
         ) -> ValidationResult[Rank]: ValidationResult[(Team, Game)]:
 
     # INSTANCE METHODS:
-        *   rank_spec_validator: PersonaValidationTransaction
+        *   rank_spec_validator: PersonaValidator
     """
     @classmethod
     @LoggingLevelRouter.monitor
@@ -82,7 +82,7 @@ class RankValidationTransactionFactory(ValidationTransaction[Rank]):
             *   NullRankException
             *   RankValidationException
         """
-        method = "RankValidationTransactionFactory.validate"
+        method = "RankValidatorFactory.validate"
         try:
             # Make sure its not null first.
             if candidate is None:
@@ -132,7 +132,7 @@ from logic.system import Builder, ValidationResult, LoggingLevelRouter, id_emitt
 from logic.rank import Bishop, King, Knight, Pawn, Queen, Rank, RankValidationException, RankBuildRouteException, Rook
 
 
-class RankValiatorFactory(ValidationTransaction[Rank]):
+class RankValiatorFactory(Validator[Rank]):
     """
     Role:Factory, Data Integrity Guarantor
 

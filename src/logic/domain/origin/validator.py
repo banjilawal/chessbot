@@ -12,14 +12,14 @@ from typing import Any, cast
 
 
 from logic.piece import PieceValidator
-from logic.square import SquareValidationTransaction
-from logic.system import LoggingLevelRouter, ValidationTransaction, ValidationResult
+from logic.square import SquareValidator
+from logic.system import LoggingLevelRouter, Validator, ValidationResult
 from logic.domain import DomainOrigin, InvalidDomainOriginException, NullDomainOriginException
 
 
 
 
-class DomainOriginValidationTransaction(ValidationTransaction[DomainOrigin]):
+class DomainOriginValidator(Validator[DomainOrigin]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -28,10 +28,10 @@ class DomainOriginValidationTransaction(ValidationTransaction[DomainOrigin]):
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     Super Class:
-        *   ValidationTransaction
+        *   Validator
 
     # PROVIDES:
-        * DomainOriginValidationTransaction
+        * DomainOriginValidator
 
 
     # INHERITED ATTRIBUTES:
@@ -44,17 +44,17 @@ class DomainOriginValidationTransaction(ValidationTransaction[DomainOrigin]):
             cls,
             candidate: Any,
             piece_validator: type[PieceValidator] = PieceValidator,
-            square_validator: type[SquareValidationTransaction] = SquareValidationTransaction
+            square_validator: type[SquareValidator] = SquareValidator
     ) -> ValidationResult[DomainOrigin]:
         """
         # ACTION:
-        Use chained PieceValidator and SquareValidationTransaction to ensure a candidate is a valid DomainOrigin before
+        Use chained PieceValidator and SquareValidator to ensure a candidate is a valid DomainOrigin before
         the client can use it.
 
         # PARAMETERS:
           * candidate (Any): Object to verify is a Domain.
           * piece_validator (type[PieceValidator]): Injected into validation.
-          * validation (type[SquareValidationTransaction]): verifies the relationship between the
+          * validation (type[SquareValidator]): verifies the relationship between the
                 Domain's owning Token and Square.
 
         # RETURNS:
@@ -66,7 +66,7 @@ class DomainOriginValidationTransaction(ValidationTransaction[DomainOrigin]):
             * TypeError
             * InvalidDomainOriginException
         """
-        method = "DomainOriginValidationTransaction.validate"
+        method = "DomainOriginValidator.validate"
         
         try:
             if candidate is None:

@@ -1,4 +1,4 @@
-# src/logic/board/validation/exception/work.py
+# src/logic/board/validation/exception/validator.py
 
 """
 Module: logic.board.validation.exception.work
@@ -23,7 +23,7 @@ class BoardValidationException(ValidationException):
     Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Identify the BoardValidationTransaction method where the exception failed.
+    1.  Identify the BoardValidator method where the exception failed.
 
     Super Class:
         *   ValidationException
@@ -52,7 +52,7 @@ class BoardValidationException(ValidationException):
         *   See ValidationException class for inherited methods.
     """
     ERR_CODE = "BOARD_VALIDATION_FAILURE"
-    MSG = "Failure in BoardValidationTransaction method."
+    MSG = "Failure in BoardValidator method."
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     

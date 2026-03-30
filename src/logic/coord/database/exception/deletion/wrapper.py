@@ -1,4 +1,4 @@
-# src/logic/coord/database/exception/deletion/work.py
+# src/logic/coord/database/exception/deletion/validator.py
 
 """
 Module: logic.coord.database.exception.deletion.work

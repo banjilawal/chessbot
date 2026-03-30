@@ -1,4 +1,4 @@
-# src/command/pipeline/database/kernel/exception/push/work.py
+# src/command/pipeline/database/kernel/exception/push/validator.py
 
 """
 Module: command.pipeline.database.kernel.exception.push.work

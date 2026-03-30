@@ -12,7 +12,7 @@ from typing import cast, Any
 from logic.board import Board, BoardService
 from logic.player import Player, PlayerService
 from logic.schema import SchemaService
-from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, ValidationTransaction
+from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from logic.team import (
     BoardHasStaleTeamLinkException, NullTeamException, PlayerHasStaleTeamLinkException, Team,
     TeamBelongsToDifferentBoardException,
@@ -21,7 +21,7 @@ from logic.team import (
 )
 
 
-class TeamValidationTransaction(ValidationTransaction[Team]):
+class TeamValidator(Validator[Team]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -30,7 +30,7 @@ class TeamValidationTransaction(ValidationTransaction[Team]):
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     Super Class:
-        *   ValidationTransaction
+        *   Validator
 
     Provides:
 
@@ -91,7 +91,7 @@ class TeamValidationTransaction(ValidationTransaction[Team]):
             *   NullTeamException
             *   TeamValidationException
         """
-        method = "TeamValidationTransaction.validate"
+        method = "TeamValidator.validate"
         
         # Handle the nonexistence case.
         if candidate is None:
@@ -184,7 +184,7 @@ class TeamValidationTransaction(ValidationTransaction[Team]):
             *   TeamNotRegisteredOwnerException
             *   PlayerHasStaleTeamLinkException
         """
-        method = "TeamValidationTransaction._verify_team_owner"
+        method = "TeamValidator._verify_team_owner"
         
         # Handle the case that, either team.owner does not pass a validation check. or the analysis aborts.
         owner_team_relation = player_service.player_team_relation_analyzer.execute(
@@ -248,7 +248,7 @@ class TeamValidationTransaction(ValidationTransaction[Team]):
             *   TeamNotRegisteredBoardException
             *   BoardHasStaleTeamLinkException
         """
-        method = "TeamValidationTransaction._verify_team_board"
+        method = "TeamValidator._verify_team_board"
         
         # Handle the case that, either team.board does not pass a validation check. or the analysis aborts.
         board_team_relation = board_service.board_team_relation_analyzer.execute(

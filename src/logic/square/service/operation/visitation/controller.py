@@ -1,4 +1,4 @@
-# src/logic/square/service/visitation/transaction.py
+# src/logic/square/service/visitation/validator.py
 
 """
 Module: logic.square.service.visitation.process

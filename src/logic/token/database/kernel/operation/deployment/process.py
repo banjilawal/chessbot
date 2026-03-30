@@ -1,4 +1,4 @@
-# src/logic/token/database/kernel/operation/deployment/transaction.py
+# src/logic/token/database/kernel/operation/deployment/validator.py
 
 """
 Module: logic.token.database.kernel.operation.deployment.process

@@ -1,4 +1,4 @@
-# src/logic/arena/validation/exception/work.py
+# src/logic/arena/validation/exception/validator.py
 
 """
 Module: logic.arena.validation.exception.work
@@ -23,7 +23,7 @@ class ArenaValidationException(ValidationException):
     Role:Debug Work, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
-    1.  Indicate that a candidate failed a safety check in a ArenaValidationTransaction method.
+    1.  Indicate that a candidate failed a safety check in a ArenaValidator method.
 
     Super Class:
         *   ValidationException

@@ -11,4 +11,4 @@ from .exception import *
 
 from .turn import TurnScene
 from .builder import TurnSceneBuilder
-from .validator import TurnSceneValidationTransaction
+from .validator import TurnSceneValidator

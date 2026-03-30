@@ -1,4 +1,4 @@
-# src/logic/hostage/query/build/exception/work.py
+# src/logic/hostage/query/build/exception/validator.py
 
 """
 Module: logic.hostage.query.build.exception.work

@@ -14,3 +14,4 @@ from .exception import *
 
 # Modules
 from .model import Zone
+from .table import ZoneTable

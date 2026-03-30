@@ -1,4 +1,4 @@
-# src/logic/persona/key/lookup/exception/work.py
+# src/logic/persona/key/lookup/exception/validator.py
 
 """
 Module: logic.persona.key.lookup.exception.work

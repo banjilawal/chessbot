@@ -10,14 +10,14 @@ Version: 1.0.1
 from typing import cast, Tuple
 
 
-from logic.square import Square, SquareValidationTransaction
-from logic.system import LoggingLevelRouter, ValidationResult, ValidationTransaction
-from logic.board import Board, BoardContext, BoardSquareFinder, BoardValidationTransaction, SquareInvariantBreachException
+from logic.square import Square, SquareValidator
+from logic.system import LoggingLevelRouter, ValidationResult, Validator
+from logic.board import Board, BoardContext, BoardSquareFinder, BoardValidator, SquareInvariantBreachException
 
 
-class BoardResourceValidationTransaction(ValidationTransaction[Square, Board]):
+class BoardResourceValidator(Validator[Square, Board]):
   """
-  Role:ValidationTransaction, Data Integrity
+  Role:Validator, Data Integrity
 
   Responsibilities:
   1. Ensure `TravelEvent` resource_candidate has a valid binding to the execution environment for `TravelEventFresourcey`.
@@ -36,7 +36,7 @@ class BoardResourceValidationTransaction(ValidationTransaction[Square, Board]):
   @LoggingLevelRouter.monitor
   def execute(cls, candidate: Tuple[Square, Board]) -> ValidationResult[Tuple[Square, Board]]:
     """"""
-    method = "BoardResourceValidationTransaction.validate"
+    method = "BoardResourceValidator.validate"
 
     try:
       if candidate is None:
@@ -46,13 +46,13 @@ class BoardResourceValidationTransaction(ValidationTransaction[Square, Board]):
       
       resource_candidate, environment_candidate = candidate
 
-      resource_validation = SquareValidationTransaction.execute(resource_candidate)
+      resource_validation = SquareValidator.execute(resource_candidate)
       if resource_validation.is_failure():
         return ValidationResult.failure(resource_validation.exception)
 
       resource = cast(Square, resource_validation.payload)
 
-      environment_validation = BoardValidationTransaction.execute(environment_candidate)
+      environment_validation = BoardValidator.execute(environment_candidate)
       if environment_validation.is_failure():
         return ValidationResult.failure(environment_validation.exception)
 

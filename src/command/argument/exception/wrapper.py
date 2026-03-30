@@ -1,4 +1,4 @@
-# src/command/request/validation/work.py
+# src/command/request/validation/validator.py
 
 """
 Module: command.request.validation.work
@@ -23,7 +23,7 @@ class ArgumentsValidationException(ValidationException):
     Role:Debug Wrapper, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
-    1.  Indicate that a candidate failed a safety check in a ArgumentsValidationTransaction
+    1.  Indicate that a candidate failed a safety check in a ArgumentsValidator
         method.
 
     Super Class:

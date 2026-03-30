@@ -12,4 +12,4 @@ from .exception import *
 from .service import KingMonitoringService
 from .record import KingLocationRecord
 from .build import KingLocationRecordBuilder
-from .validate import KingLocationRecordValidationTransaction
+from .validate import KingLocationRecordValidator

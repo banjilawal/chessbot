@@ -1,4 +1,4 @@
-# src/logic/game/validation/exception/work.py
+# src/logic/game/validation/exception/validator.py
 
 """
 Module: logic.game.validation.exception.work
@@ -23,7 +23,7 @@ class GameValidationException(ValidationException):
     Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Identify the GameValidationTransaction method where the exception failed.
+    1.  Identify the GameValidator method where the exception failed.
 
     Super Class:
         *   ValidationException
@@ -52,7 +52,7 @@ class GameValidationException(ValidationException):
         *   See ValidationException class for inherited methods.
     """
     ERR_CODE = "GAME_VALIDATION_FAILURE"
-    MSG = "Failure in GameValidationTransaction method."
+    MSG = "Failure in GameValidator method."
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     

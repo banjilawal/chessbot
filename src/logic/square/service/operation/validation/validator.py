@@ -15,10 +15,10 @@ from logic.square import (
     BoardOrphanSquareLinkException, NullSquareException, Square, SquareBoardRegisteredException,
     SquareState, SquareValidationException
 )
-from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, ValidationTransaction
+from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 
 
-class SquareValidationTransaction(ValidationTransaction[Square]):
+class SquareValidator(Validator[Square]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -27,7 +27,7 @@ class SquareValidationTransaction(ValidationTransaction[Square]):
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     Super Class:
-        *   ValidationTransaction
+        *   Validator
 
     Provides:
 
@@ -83,7 +83,7 @@ class SquareValidationTransaction(ValidationTransaction[Square]):
             NullSquareException
             SquareValidationException
         """
-        method = "SquareValidationTransaction.validate"
+        method = "SquareValidator.validate"
         
         # Handle the nonexistence case.
         if candidate is None:

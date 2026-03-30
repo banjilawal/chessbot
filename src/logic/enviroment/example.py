@@ -2,7 +2,7 @@
 #
 #
 #
-# resource_validation = SquareValidationTransaction.validate(resource_candidate)
+# resource_validation = SquareValidator.validate(resource_candidate)
 # if resource_validation.is_failure():
 #   return ValidationResult(rollback_exception=resource_validation.rollback_exception)
 #
@@ -15,7 +15,7 @@
 #   ))
 #
 # # If the square_name is not on its team_name roster it cannot be a TravelEvent resource_candidate. This might have been
-# # check by the SquareValidationTransaction
+# # check by the SquareValidator
 # team_name = square_name.team_name
 # if square_name not in team_name.roster:
 #   return ValidationResult(rollback_exception=ResourceNotOnRosterCannotMoveException(
@@ -36,7 +36,7 @@
 #       f"{method}: {CheckmatedKingCannotActException.MSG}"
 #     ))
 #
-# environment_validation = ValidationTransaction.validate(environment_candidate)
+# environment_validation = Validator.validate(environment_candidate)
 # if environment_validation.is_failure():
 #   return ValidationResult(rollback_exception=environment_validation.rollback_exception)
 #
@@ -94,7 +94,7 @@ SCOPE:
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
 creation, coord_stack_validator, and manipulation of **Coord objects**. It handles boundary checks (row/column)
 limits and validation checks. It does not contain any logic for *raising* these exception; that responsibility
-falls to the `CoordValidationTransaction` and `CoordBuildProcess`processes.
+falls to the `CoordValidator` and `CoordBuildProcess`processes.
 
 THEME:
 -----

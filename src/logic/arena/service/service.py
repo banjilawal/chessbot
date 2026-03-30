@@ -1,4 +1,4 @@
-# src/logic/arena/service/transaction.py
+# src/logic/arena/service/validator.py
 
 """
 Module: logic.arena.service.service
@@ -12,7 +12,7 @@ from typing import cast
 
 from logic.arena import (
     Arena, ArenaAlreadyContainsTeamException, ArenaBuilder, ArenaServiceException,
-    ArenaTeamRelationAnalysis, ArenaValidationTransaction, ChangingArenaTeamBlockedException, TeamPlayingDifferentArenaException
+    ArenaTeamRelationAnalysis, ArenaValidator, ChangingArenaTeamBlockedException, TeamPlayingDifferentArenaException
 )
 from logic.schema import Schema, SchemaService
 from logic.system import IntegrityService, InsertionResult, LoggingLevelRouter, Result, SearchResult, id_emitter
@@ -46,7 +46,7 @@ class ArenaService(IntegrityService[Arena]):
             name: str = DEFAULT_NAME,
             id: int = id_emitter.service_id,
             builder: ArenaBuilder = ArenaBuilder(),
-            validator: ArenaValidationTransaction = ArenaValidationTransaction(),
+            validator: ArenaValidator = ArenaValidator(),
             team_relation_tester: ArenaTeamRelationAnalysis = ArenaTeamRelationAnalysis(),
     ):
         """
@@ -56,7 +56,7 @@ class ArenaService(IntegrityService[Arena]):
             *   id (nt)
             *   name (str)
             *   build (ArenaFactory)
-            *   validation (ArenaValidationTransaction)
+            *   validation (ArenaValidator)
         # RETURNS:
             None
         Raises:
@@ -71,9 +71,9 @@ class ArenaService(IntegrityService[Arena]):
         return cast(ArenaBuilder, self.entity_builder)
     
     @property
-    def validation(self) -> ArenaValidationTransaction:
-        """get ArenaValidationTransaction"""
-        return cast(ArenaValidationTransaction, self.entity_validator)
+    def validation(self) -> ArenaValidator:
+        """get ArenaValidator"""
+        return cast(ArenaValidator, self.entity_validator)
     
     @property
     def arena_team_relation_analyzer(self) -> ArenaTeamRelationAnalysis:

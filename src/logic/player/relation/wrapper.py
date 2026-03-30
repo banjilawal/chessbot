@@ -1,4 +1,4 @@
-# src/logic/player/relation/work.py
+# src/logic/player/relation/validator.py
 
 """
 Module: logic.player.relation.work

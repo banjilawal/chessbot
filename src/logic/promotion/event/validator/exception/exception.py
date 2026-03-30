@@ -19,7 +19,7 @@ from logic.promotion import PromotionEventException
 
 class InvalidPromotionEventException(PromotionEventException, ValidationException):
     """
-    Raised by PromotionEventValidationTransaction if team_name client fails sanity checks. Exists to catch all
+    Raised by PromotionEventValidator if team_name client fails sanity checks. Exists to catch all
     exception raised validating an existing `PromotionEvent` candidate.
     """
     ERR_CODE = "PROMOTION_EVENT_VALIDATION_EXCEPTION"

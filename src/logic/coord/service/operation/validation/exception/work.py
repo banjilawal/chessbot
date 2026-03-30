@@ -1,4 +1,4 @@
-# src/logic/coord/validation/exception/work.py
+# src/logic/coord/validation/exception/validator.py
 
 """
 Module: logic.coord.validation.exception.work
@@ -27,7 +27,7 @@ class CoordValidationException(ValidationException):
     
     Responsibilities:
         1.  Indicate a Coord validation check was not passed.
-        2.  Identify the ValidationTransaction method where the failure occurred.
+        2.  Identify the Validator method where the failure occurred.
     
     Attributes:
         op: Optional[str]
@@ -44,7 +44,7 @@ class CoordValidationException(ValidationException):
         OperationException
     """
     ERR_CODE = "COORD_VALIDATION_FAILURE"
-    MSG = "Failure in CoordValidationTransaction method."
+    MSG = "Failure in CoordValidator method."
     
     def __init__(
             self,

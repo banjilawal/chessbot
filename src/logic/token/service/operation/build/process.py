@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from logic.persona import Persona
 from logic.rank import RankService
-from logic.team import Team, TeamValidationTransaction
+from logic.team import Team, TeamValidator
 from logic.formation import Formation, FormationService
 from logic.token import CombatantToken, KingToken, PawnToken, TokenBuildException, Token
 from logic.system import BuildResult, Builder, IdFactory, IdentityService, LoggingLevelRouter
@@ -41,7 +41,7 @@ class TokenBuild(Builder[Token]):
                     rank_service: RankService,
                     identity_service: IdentityService,
                     formation_service: FormationService,
-                    team_validator: TeamValidationTransaction,
+                    team_validator: TeamValidator,
             ) -> BuildResult[Token]
 
      Super Class:
@@ -58,7 +58,7 @@ class TokenBuild(Builder[Token]):
             id: int = IdFactory.next_id(class_name="Token"),
             identity_service: IdentityService = IdentityService(),
             formation_service: FormationService = FormationService(),
-            team_validator: TeamValidationTransaction = TeamValidationTransaction(),
+            team_validator: TeamValidator = TeamValidator(),
     ) -> BuildResult[Token]:
         """
         Action:
@@ -76,7 +76,7 @@ class TokenBuild(Builder[Token]):
             rank_service: RankService
             identity_service: IdentityService
             formation_service: FormationService
-            team_validator: TeamValidationTransaction
+            team_validator: TeamValidator
         Returns:
             BuildResult[Token]
         Raises:

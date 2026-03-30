@@ -1,4 +1,4 @@
-# src/logic/hostage/database/transaction.py
+# src/logic/hostage/database/validator.py
 
 """
 Module: logic.hostage.database.service

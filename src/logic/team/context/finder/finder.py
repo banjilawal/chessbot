@@ -13,7 +13,7 @@ from logic.arena import Arena
 from logic.player import Player
 from logic.system import DataFinder, GameColor, LoggingLevelRouter, SearchResult
 from logic.team import (
-    Team, TeamContext, TeamContextValidationTransaction, TeamSearchDatasetNullException, TeamSearchRouteException,
+    Team, TeamContext, TeamContextValidator, TeamSearchDatasetNullException, TeamSearchRouteException,
     TeamSearchException
 )
 
@@ -44,7 +44,7 @@ class TeamFinder(DataFinder[Team]):
             cls,
             dataset: List[Team],
             context: TeamContext,
-            context_validator: TeamContextValidationTransaction = TeamContextValidationTransaction()
+            context_validator: TeamContextValidator = TeamContextValidator()
     ) -> SearchResult[List[Team]]:
         """
         # ACTION:
@@ -56,7 +56,7 @@ class TeamFinder(DataFinder[Team]):
        # PARAMETERS:
             *   collider_candidates (List[Team]):
             *   query: TeamContext
-            *   context_validator: TeamContextValidationTransaction
+            *   context_validator: TeamContextValidator
         # RETURNS:
             *   SearchResult[List[Team]] containing either:
                     - On error: Exception , payload null

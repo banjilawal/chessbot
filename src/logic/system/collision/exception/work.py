@@ -1,4 +1,4 @@
-# src/logic/system/collision/exception/work.py
+# src/logic/system/collision/exception/validator.py
 
 """
 Module: logic.system.collision.exception.work

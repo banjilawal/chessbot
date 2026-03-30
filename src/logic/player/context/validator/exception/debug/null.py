@@ -28,7 +28,7 @@ class NullPlayerContextException(NullException):
             *   variable,
             *   it's value,
             *   event which fired the variable into its error state.
-        which occurred in the PlayerContextValidationTransaction method identified in layer-0 of the exception chain.
+        which occurred in the PlayerContextValidator method identified in layer-0 of the exception chain.
 
     2.  A failing ValidationResult was returned because the candidate was null.
 

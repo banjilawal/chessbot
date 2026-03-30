@@ -1,4 +1,4 @@
-# src/logic/battle_space/transaction.py
+# src/logic/battle_space/validator.py
 
 """
 Module: logic.battle_space.searcher

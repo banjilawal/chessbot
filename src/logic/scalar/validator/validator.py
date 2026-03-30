@@ -10,13 +10,13 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from logic.system import ValidationResult, ValidationTransaction, BOARD_DIMENSION, LoggingLevelRouter, NullNumberException
+from logic.system import ValidationResult, Validator, BOARD_DIMENSION, LoggingLevelRouter, NullNumberException
 from logic.scalar import (
     Scalar, NullScalarException, ScalarBelowBoundsException, ScalarAboveBoundsException, InvalidScalarException
 )
 
 
-class ScalarValidationTransaction(ValidationTransaction[Scalar]):
+class ScalarValidator(Validator[Scalar]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
@@ -25,10 +25,10 @@ class ScalarValidationTransaction(ValidationTransaction[Scalar]):
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     Super Class:
-        *   ValidationTransaction
+        *   Validator
 
     # PROVIDES:
-        * ScalarValidationTransaction
+        * ScalarValidator
 
 
     # INHERITED ATTRIBUTES:
@@ -57,7 +57,7 @@ class ScalarValidationTransaction(ValidationTransaction[Scalar]):
             * TypeError
             * NullScalarException
         """
-        method = "ScalarValidationTransaction.validate"
+        method = "ScalarValidator.validate"
         
         try:
             if self.candidate is None:
@@ -131,7 +131,7 @@ class ScalarValidationTransaction(ValidationTransaction[Scalar]):
             * ScalarBelowBoundsException
             * ScalarAboveBoundsException
         """
-        method = "ScalarValidationTransaction.validate"
+        method = "ScalarValidator.validate"
         
         try:
             if self.candidate is None:

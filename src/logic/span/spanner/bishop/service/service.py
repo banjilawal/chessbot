@@ -1,4 +1,4 @@
-# src/logic/span/service/transaction.py
+# src/logic/span/service/validator.py
 
 """
 Module: logic.span.service.service

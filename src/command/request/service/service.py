@@ -1,4 +1,4 @@
-# src/command/request/service/transaction.py
+# src/command/request/service/validator.py
 
 """
 Module: command.request.service.service
@@ -12,7 +12,7 @@ from typing import cast
 
 from logic.system import (
     IntegrityService, Builder, Command, Request, RequestBuilder,
-    RequestValidator, ValidationTransaction
+    RequestValidator, Validator
 )
 
 
@@ -43,7 +43,7 @@ class RequestService(IntegrityService[Command]):
         *   id (int)
         *   name (name)
         *   build (Builder[Command])
-        *   validation (ValidationTransaction[Command])
+        *   validation (Validator[Command])
 
     # LOCAL METHODS:
     None
@@ -53,7 +53,7 @@ class RequestService(IntegrityService[Command]):
     """
     SERVICE_NAME = "RequestService"
     # _builder: Builder[RequestBuilder]
-    # _validator: ValidationTransaction[RequestValidationTransaction]
+    # _validator: Validator[RequestValidator]
     
     def __init__(
             self,
