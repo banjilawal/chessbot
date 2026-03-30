@@ -9,9 +9,9 @@ version: 1.0.0
 
 from __future__ import annotations
 
+from logic.zone import Zone
 from logic.schema import SchemaService
-from logic.zone import Zone, ZoneBuildException
-from logic.system import BOARD_DIMENSION, Builder, BuildResult, GameColor, LoggingLevelRouter, NumberValidator
+from logic.system import Builder, BuildResult, GameColor, LoggingLevelRouter
 
 
 class ZoneBuilder(Builder[Zone]):
