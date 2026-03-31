@@ -1,9 +1,10 @@
-# src/command/root/model/command.py
+# src/command/adt/command/root.py
 
 """
-Module: command.root.model/.command
+Module: command.adt.command.root
 Author: Banji Lawal
 Created: 2026-02-24
+Version: 1.0.0
 """
 
 from __future__ import annotations

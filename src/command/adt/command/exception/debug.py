@@ -1,9 +1,10 @@
-# src/command/root/model/exception/debug.py
+# src/command/adt/command/exception/debug.py
 
 """
-Module: command.root.model.exception.debug
+Module: command.adt.command.exception.debug
 Author: Banji Lawal
 Created: 2026-02-24
+version: 1.0.0
 """
 
 from __future__ import annotations

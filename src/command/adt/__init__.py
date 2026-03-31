@@ -4,12 +4,15 @@
 Module: command.root.__init__
 Author: Banji Lawal
 Created: 2026-02-25
+version: 1.0.0
 """
 
-# =========== COMMAND PACKAGE CONTENTS ===========#
+# =========== ADT PACKAGE CONTENTS ===========#
 
 # Packages
-from .model import *
+from .args import *
+from .table import *
+from .command import *
 from .service import *
 
 # Modules

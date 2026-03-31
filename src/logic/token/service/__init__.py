@@ -10,6 +10,7 @@ version: 1.0.0
 # =========== TOKEN.SERVICE PACKAGE CONTENTS ===========#
 
 # Packages
+from .menu import *
 from .operation import *
 from .exception import *
 

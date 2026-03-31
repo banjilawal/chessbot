@@ -1,31 +1,32 @@
-# src/command/root/model/exception/anchor.py
+# src/command/adt/table/exception/anchor.py
 
 """
-Module: command.root.model.exception.anchor
+Module: command.adt.table.exception.anchor
 Author: Banji Lawal
 Created: 2026-02-24
+version: 1.0.0
 """
 
 from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# COMMAND_EXCEPTION #======================#
-    "CommandException",
+    # ======================# COMMAND_ARGS_EXCEPTION #======================#
+    "CommandArgsException",
 ]
 
 from logic.system import AnchorException
 
-# ======================# COMMAND_EXCEPTION #======================#
-class CommandException(AnchorException):
+# ======================# COMMAND_ARGS_EXCEPTION #======================#
+class CommandArgsException(AnchorException):
     """
     Role:
         -   Exception Chain Layer 0
         -   Exception coverage target
 
     Responsibilities:
-        1.  Anchoring target for Command debug (layer-2) error variable information.
-        2.  Indicate which Command method received a worker's (layer-1) failure result.
+        1.  Anchoring target for CommandArgs debug (layer-2) error variable information.
+        2.  Indicate which CommandArgs method received a worker's (layer-1) failure result.
 
     Attributes:
         msg: Optional[str]
@@ -39,8 +40,8 @@ class CommandException(AnchorException):
     Super Class:
         AnchorException
     """
-    ERR_CODE = "COMMAND_EXCEPTION"
-    MSG = "Command raised an exception."
+    ERR_CODE = "COMMAND_ARGS_EXCEPTION"
+    MSG = "CommandArgs raised an exception."
     
     def __init__(
             self,

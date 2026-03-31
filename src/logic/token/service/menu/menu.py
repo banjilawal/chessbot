@@ -9,13 +9,18 @@ Version: 1.0.0
 
 from __future__ import annotations
 
-from typing import Any
+from dataclasses import dataclass
+from typing import Any, Dict
 
 from command.token import DeployTokenCommand, PromotePawnCommand, TokenCommand, ValidateTokenCommand
 from command.token.service.build import BuildTokenCommand
+from logic.formation import Formation
 from logic.system import LoggingLevelRouter, Router
-from logic.token import TokenOpsController, TokenService
+from logic.team import Team
+from logic.token import PawnToken, Token, TokenService
 
+
+    
 
 class TokenServiceMenu(Router[TokenService]):
     """
@@ -33,23 +38,35 @@ class TokenServiceMenu(Router[TokenService]):
 
     super Class:
     """
+    
+    COMMAND_TABLE: Dict[TokenCommand, CommandArgs]= {
+        BuildTokenCommand: {"owner": Team, "formation": Formation},
+        PromotePawnCommand: {"pawn_token": PawnToken},
+        ValidateTokenCommand: {"candidate": Any},
+        DeployTokenCommand: {"token": Token},
+    }
     _service: TokenService
-    _controller: TokenOpsController
+    _commands: list[TokenCommand]
     
     def __init__(
             self,
-            service: TokenService,
-            controller: TokenOpsController = TokenOpsController(),
+            service: TokenService = TokenService(),
+            commands: list[TokenCommand] = SERVICE_COMMANDS,
     ):
         self._service = service
-        self._controller = controller
-    
+        self._commands = commands
+        
     @property
-    def ops(self) -> TokenOpsController:
-        return self._controller
+    def commands(self) -> list[TokenCommand]:
+        return self._commands
     
     @LoggingLevelRouter.monitor
-    def route(self, command: TokenCommand) -> Any:
+    def route(
+            self,
+            command: TokenCommand,
+            command_validator: TokenServiceCommandValidator = TokenServiceCommandValidator(),
+    ) -> Any:
+        
         if isinstance(command, BuildTokenCommand):
             return self._service.builder.build(
                 owner=command.parameters["owner"],

@@ -5,7 +5,56 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
+      <change afterPath="$PROJECT_DIR$/src/command/adt/args/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/command/adt/args/exception/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/command/adt/command/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/command/adt/command/exception/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/command/adt/command/exception/anchor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/command/adt/command/exception/debug.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/command/adt/command/root.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/command/adt/table/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/command/adt/table/exception/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/command/adt/table/exception/anchor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/command/adt/table/exception/debug.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/command/adt/table/root.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/root/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/adt/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/root/model/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/root/model/exception/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/root/model/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/adt/args/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/root/model/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/adt/args/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/root/model/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/adt/args/root.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/root/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/adt/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/root/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/adt/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/root/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/adt/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/root/service/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/adt/service/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/root/service/operation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/adt/service/operation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/root/service/operation/build/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/adt/service/operation/build/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/root/service/operation/build/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/adt/service/operation/build/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/root/service/operation/build/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/adt/service/operation/build/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/root/service/operation/build/exception/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/adt/service/operation/build/exception/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/root/service/operation/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/adt/service/operation/controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/root/service/operation/validation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/adt/service/operation/validation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/root/service/operation/validation/argument/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/adt/service/operation/validation/argument/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/root/service/operation/validation/argument/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/adt/service/operation/validation/argument/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/root/service/operation/validation/argument/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/adt/service/operation/validation/argument/exception/debug/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/root/service/operation/validation/argument/exception/debug/count.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/adt/service/operation/validation/argument/exception/debug/count.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/root/service/operation/validation/argument/exception/debug/kind.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/adt/service/operation/validation/argument/exception/debug/kind.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/root/service/operation/validation/argument/exception/debug/name.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/adt/service/operation/validation/argument/exception/debug/name.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/root/service/operation/validation/argument/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/adt/service/operation/validation/argument/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/root/service/operation/validation/argument/exception/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/adt/service/operation/validation/argument/exception/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/root/service/operation/validation/argument/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/adt/service/operation/validation/argument/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/root/service/operation/validation/command/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/adt/service/operation/validation/command/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/root/service/operation/validation/command/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/adt/service/operation/validation/command/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/root/service/operation/validation/command/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/adt/service/operation/validation/command/exception/debug/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/root/service/operation/validation/command/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/adt/service/operation/validation/command/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/root/service/operation/validation/command/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/adt/service/operation/validation/command/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/root/service/operation/validation/command/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/adt/service/operation/validation/command/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/root/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/adt/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/service/router/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/menu/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/service/router/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/menu/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/service/router/menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/service/menu/menu.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -274,7 +323,7 @@
     "ToolWindow.Python Packages.ShowToolbar": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/command/token/service",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/command/adt",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -301,18 +350,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/command/adt" />
       <recent name="$PROJECT_DIR$/src/command/token/service" />
       <recent name="$PROJECT_DIR$/src/logic/token/service/operation" />
       <recent name="$PROJECT_DIR$/src/command/command/service/operation" />
       <recent name="$PROJECT_DIR$/src/deployment/log" />
-      <recent name="$PROJECT_DIR$/src/transport" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/logic/token/service/router" />
       <recent name="$PROJECT_DIR$/src/command/token/service" />
       <recent name="$PROJECT_DIR$/src/logic/token/service/operation" />
       <recent name="$PROJECT_DIR$/src/command/command/service/operation/validation" />
       <recent name="$PROJECT_DIR$/src/command/command/service/operation/validation/command" />
-      <recent name="$PROJECT_DIR$/src/command/command/service/operation" />
     </key>
   </component>
   <component name="RunManager" selected="Python.inactive">
@@ -859,7 +908,7 @@
       <workItem from="1774245837652" duration="42949000" />
       <workItem from="1774454082016" duration="10781000" />
       <workItem from="1774483839135" duration="10440000" />
-      <workItem from="1774551231807" duration="149407000" />
+      <workItem from="1774551231807" duration="154431000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
