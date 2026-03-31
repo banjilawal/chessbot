@@ -65,8 +65,8 @@ class RequestService(IntegrityService[Command]):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
 
     @property
-    def build(self) -> RequestBuilder:
-        return cast(RequestBuilder, self.build)
+    def builder(self) -> RequestBuilder:
+        return cast(RequestBuilder, self.builder)
 
     @property
     def validation(self) -> RequestValidator:

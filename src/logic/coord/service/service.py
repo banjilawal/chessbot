@@ -81,7 +81,7 @@ class CoordService(IntegrityService[Coord]):
         self._ops_controller = ops_controller
 
     @property
-    def build(self) -> CoordBuilder:
+    def builder(self) -> CoordBuilder:
         return self._ops_controller.build
     
     @property

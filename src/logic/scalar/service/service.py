@@ -72,7 +72,7 @@ class ScalarService(IntegrityService[Scalar]):
         self._validator = validator
     
     @property
-    def build(self) -> Builder[Scalar]:
+    def builder(self) -> Builder[Scalar]:
         return self._builder
     
     @property

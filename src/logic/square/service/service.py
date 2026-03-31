@@ -77,7 +77,7 @@ class SquareService(IntegrityService[Square]):
         self._visit_processor = visit_processor
     
     @property
-    def build(self) -> SquareBuilder:
+    def builder(self) -> SquareBuilder:
         return self._controller.build
     
     @property

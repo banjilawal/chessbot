@@ -14,4 +14,4 @@ None
 
 # Modules
 from .route import TokenBuildRouteException
-from .work import TokenBuildException
+from .transaction import TokenBuildException

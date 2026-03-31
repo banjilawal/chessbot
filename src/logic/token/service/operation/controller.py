@@ -9,9 +9,10 @@ version: 1.0.0
 
 from __future__ import annotations
 
+
 from logic.token import (
-    PawnPromotionProcess, TokenBuilder, TokenPositionController, TokenDeploymentProcess,
-    TokenReadinessAnalysis, TokenValidation
+    PawnPromoter, TokenBuilder, TokenPositionController, TokenDeployer,
+    TokenReadinessAnalyzer, TokenValidator
 )
 
 
@@ -24,66 +25,79 @@ class TokenOpsController:
         1.  Provide a single entry point for operations TokenService supports.
         
     Attributes:
-        build: TokenBuilder
-        validate: TokenValidation
-        promotion: PawnPromotionProcess
-        deployment: TokenDeploymentProcess
+        WORKER_OP_MENU = Dict[str, Any]
+        
+        builder: TokenBuilder
+        validator: TokenValidator
+        promoter: PawnPromoter
+        deployer: TokenDeployer
         position_controller: TokenPositionController
-        readiness_analyzer: TokenReadinessAnalysis
+        readiness_analyzer: TokenReadinessAnalyzer
 
     Provides:
     
     Parent:
     """
-    _build: TokenBuilder
-    _validation: TokenValidation
-    _promotion: PawnPromotionProcess
-    _deployment: TokenDeploymentProcess
+    WORKER_OP_MENU = {
+        "build": TokenBuilder,
+        "validate": TokenValidator,
+        "promote": PawnPromoter,
+        "deploy": TokenDeployer,
+        "readiness_analysis": TokenReadinessAnalyzer,
+        "control_position": TokenPositionController,
+    }
+    
+    _builder: TokenBuilder
+    _validator: TokenValidator
+    _promoter: PawnPromoter
+    _deployer: TokenDeployer
     _position_controller: TokenPositionController
-    _readiness_analyzer: TokenReadinessAnalysis
+    _readiness_analyzer: TokenReadinessAnalyzer
     
     
     def __init__(
             self,
-            build: TokenBuilder = TokenBuilder(),
-            validation: TokenValidation = TokenValidation(),
-            promotion: PawnPromotionProcess = PawnPromotionProcess(),
-            deployment: TokenDeploymentProcess = TokenDeploymentProcess(),
+            builder: TokenBuilder = TokenBuilder(),
+            promoter: PawnPromoter = PawnPromoter(),
+            deployer: TokenDeployer = TokenDeployer(),
+            validator: TokenValidator = TokenValidator(),
             position_controller: TokenPositionController = TokenPositionController(),
-            readiness_analyzer: TokenReadinessAnalysis = TokenReadinessAnalysis(),
+            readiness_analyzer: TokenReadinessAnalyzer = TokenReadinessAnalyzer(),
     ):
         """
         Args:
-            promotion: PawnPromotionProcess
-            deployment: TokenDeploymentProcess
+            promoter: PawnPromoter
+            deployer: TokenDeployer
             position_controller: TokenPositionController
-            readiness_analyzer: TokenReadinessAnalysis
+            readiness_analyzer: TokenReadinessAnalyzer
         """
-        self._promotion = promotion
-        self._deployment = deployment
+        self._builder = builder
+        self._promoter = promoter
+        self._deployer = deployer
+        self._validator = validator
         self._position_controller = position_controller
         self._readiness_analyzer = readiness_analyzer
         
     @property
-    def build(self) -> TokenBuilder:
-        return self._build
+    def builder(self) -> TokenBuilder:
+        return self._builder
         
     @property
-    def validation(self) ->TokenValidation:
-        return self._validation
+    def validator(self) ->TokenValidator:
+        return self._validator
         
     @property
-    def pawn_promotion(self) -> PawnPromotionProcess:
-        return self._promotion
+    def pawn_promoter(self) -> PawnPromoter:
+        return self._promoter
     
     @property
-    def deployment(self) -> TokenDeploymentProcess:
-        return self._deployment
+    def deployer(self) -> TokenDeployer:
+        return self._deployer
     
     @property
     def position(self) -> TokenPositionController:
         return self._position_controller
     
     @property
-    def readiness_analyzer(self) -> TokenReadinessAnalysis:
+    def readiness_analyzer(self) -> TokenReadinessAnalyzer:
         return self._readiness_analyzer

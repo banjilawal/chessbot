@@ -27,7 +27,7 @@ class PromotionException(UpdateException):
 
     Responsibilities:
         1.  Indicate that promoting a pawn_token failed.
-        2.  Identify the PawnPromotionProcess method where the failure occurred.
+        2.  Identify the PawnPromoter method where the failure occurred.
     
     Attributes:
         op: Optional[str]
@@ -43,10 +43,10 @@ class PromotionException(UpdateException):
     Super Class:
         TokenDebugException
     """
-    OP = "PawnPromotionProcess"
+    OP = "PawnPromoter"
     RSLT_TYPE = "UpdateResult"
     ERR_CODE = "PAWN_PROMOTION_FAILURE"
-    MSG = "PawnPromotionProcess method failed."
+    MSG = "PawnPromoter method failed."
     
     def __init__(
             self,

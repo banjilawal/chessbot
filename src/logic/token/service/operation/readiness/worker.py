@@ -19,7 +19,7 @@ from logic.token import (
     KingToken, Token, TokenValidation
 )
 
-class TokenReadinessAnalysis(RelationAnalysis[ReadinessState.FREE, Token]):
+class TokenReadinessAnalyzer(RelationAnalysis[ReadinessState.FREE, Token]):
     """
     Role:
         -   Analysis Factory
@@ -36,14 +36,14 @@ class TokenReadinessAnalysis(RelationAnalysis[ReadinessState.FREE, Token]):
         -   execute(
                     candidate_satellite: Token,
                     candidate_primary: ReadinessState.FREE,
-                    token_validator: TokenValidation,
+                    token_validator: TokenValidator,
             ) -> RelationReport[ReadinessState, Token]
     Parent:
     """
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def work(
             cls,
             candidate_satellite: Token,
             candidate_primary: ReadinessState.FREE = ReadinessState.FREE,

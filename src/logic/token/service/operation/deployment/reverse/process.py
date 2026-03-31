@@ -38,7 +38,7 @@ class ReverseTokenDeployment:
     Provides:
         -   execute(
                     Square,
-                    token_validator: TokenValidation,
+                    token_validator: TokenValidator,
             ) -> UpdateResult[Token]
             
         - _run_opening_square_tests(token: Token) -> SearchResult[List[Square]]

@@ -37,5 +37,5 @@ class RelationAnalysis(ABC, Generic[P, S]):
     @classmethod
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(cls, candidate_primary: P, candidate_satellite: S, *args, **kwargs) -> RelationReport:
+    def work(cls, candidate_primary: P, candidate_satellite: S, *args, **kwargs) -> RelationReport:
         pass

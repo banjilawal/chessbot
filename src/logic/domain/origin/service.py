@@ -49,7 +49,7 @@ class DomainOriginService(IntegrityService[DomainOrigin]):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
     
     @property
-    def build(self) -> DomainOriginBuilder:
+    def builder(self) -> DomainOriginBuilder:
         """get DomainOriginBuilder"""
         return cast(DomainOriginBuilder, self.entity_builder)
     

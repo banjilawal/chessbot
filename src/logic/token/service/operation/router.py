@@ -9,12 +9,13 @@ Version: 1.0.0
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
-from typing import Any, Dict, Generic, TypeVar
+from typing import Any, Dict
 
+from command.token.deploy import DeployTokenCommand
+from command.token.root import TokenCommand
 from logic.system import LoggingLevelRouter, Router
+from logic.token import Token, TokenOpsController, TokenService
 
-T = TypeVar("T")
 
 class TokenOpsRouter(Router[str]):
     """
@@ -32,20 +33,31 @@ class TokenOpsRouter(Router[str]):
 
     super Class:
     """
-    MENU = {
-        "build": TokenBuilder,
-        
-    }
-    _menu: Dict[str, Any]
+    _service: TokenService
+    _controller: TokenOpsController
     
-    def __init__(self,):
-        self._menu = {}
-        
+    def __init__(
+            self,
+            service: TokenService,
+            controller: TokenOpsController = TokenOpsController(),
+    ):
+        self._service = service
+        self._controller = controller
+    
     @property
-    def menu(self) -> Dict[str, Any]:
-        return self._menu
+    def ops(self) -> TokenOpsController:
+        return self._controller
     
-    @abstractmethod
     @LoggingLevelRouter.monitor
-    def route(self, op_name: str) -> Result:
-        pass
+    def route(self, command: TokenCommand) -> Any:
+        if command.name.upper() == "build".upper():
+            return self._service.builder
+        if command.name.upper() == "validate".upper():
+            return self._service.validator
+        if isinstance(command, DeployTokenCommand):
+            cipher = Dict[str, Token]
+            
+            return self._service.deploy_on_board(token=command.parameters["token"])
+        if command.name.upper() == "promote".upper():
+            return self._controller.pawn_promoter
+        

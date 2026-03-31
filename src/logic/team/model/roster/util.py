@@ -109,7 +109,7 @@ class RosterUtil:
         for formation in formation_lookup_result.payload:
             
             # Build the token.
-            token_build_result = team.roster.integrity_service.build.build(
+            token_build_result = team.roster.integrity_service.builder.build(
                 owner=team,
                 id=IdFactory.next_id(class_name="Token"),
                 formation=formation,

@@ -24,7 +24,7 @@ class TokenContextValidationException(ValidationException):
     # TASK: Worker Method Identifier
 
     Responsibilities:
-    1.  Identify the TokenValidation method where the exception failed.
+    1.  Identify the TokenValidator method where the exception failed.
 
     Super Class:
         *   ValidationException
@@ -52,7 +52,7 @@ class TokenContextValidationException(ValidationException):
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     ERR_CODE = "TOKEN_CONTEXT_VALIDATION_FAILURE"
-    MSG = "Failure in TokenValidation method."
+    MSG = "Failure in TokenValidator method."
     
     def __init__(
             self,

@@ -63,7 +63,7 @@ class NodeService(IntegrityService[Node]):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         
     @property
-    def build(self) -> NodeBuilder:
+    def builder(self) -> NodeBuilder:
         return cast(NodeBuilder, self.entity_builder)
     
     @property

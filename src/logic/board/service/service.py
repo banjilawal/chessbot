@@ -66,8 +66,8 @@ class BoardService(IntegrityService[Board]):
         self._relation_analyzer = relation_analyzer
     
     @property
-    def build(self) -> BoardBuilder:
-        return cast(BoardBuilder, self.build)
+    def builder(self) -> BoardBuilder:
+        return cast(BoardBuilder, self.builder)
     
     @property
     def validation(self) -> BoardValidator:

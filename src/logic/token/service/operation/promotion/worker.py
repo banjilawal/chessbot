@@ -8,18 +8,19 @@ version: 1.0.0
 """
 
 from __future__ import annotations
+
 from copy import deepcopy
 
-from logic.schema import SchemaService
 from logic.rank import King, Pawn, Rank, RankService
+from logic.schema import SchemaService
 from logic.system import LoggingLevelRouter, UpdateResult
 from logic.token import (
     PawnAlreadyPromotedException, PawnPromotionRowException, PawnToken, PromoteInactivePawnException,
-    PromoteToPawnException, PromotionException, PromotionState, PromotionToKingException, TokenValidation
+    PromoteToPawnException, PromotionException, PromotionState, PromotionToKingException, TokenValidator,
 )
 
 
-class PawnPromotionProcess:
+class PawnPromoter:
     """
     Role:
         -   Transaction Worker
@@ -40,7 +41,7 @@ class PawnPromotionProcess:
                     pawn_token: PawnToken,
                     rank_service: RankService,
                     schema_service: SchemaService,
-                    token_validator: TokenValidation
+                    token_validator: TokenValidator
             ) -> UpdateResult[PawnToken]
         
         -   _run_promotable_rank_tests(
@@ -58,13 +59,13 @@ class PawnPromotionProcess:
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def work(
             cls,
             rank: Rank,
             pawn_token: PawnToken,
             rank_service: RankService = RankService(),
             schema_service: SchemaService = SchemaService(),
-            token_validator: TokenValidation = TokenValidation(),
+            token_validator: TokenValidator = TokenValidator(),
     ) -> UpdateResult[PawnToken]:
         """
         Executes the promotion transaction.
@@ -85,7 +86,7 @@ class PawnPromotionProcess:
             pawn_token: PawnToken
             rank_service: RankService
             schema_service: SchemaService
-            token_validator: TokenValidation
+            token_validator: TokenValidator
         Returns:
             UpdateResult[PawnToken]
         Raises:

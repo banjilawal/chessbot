@@ -68,8 +68,8 @@ class SquareRayService(IntegrityService[SquareRay]):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         
     @property
-    def build(self) -> SquareRayBuilder:
-        return cast(SquareRayBuilder, self.build)
+    def builder(self) -> SquareRayBuilder:
+        return cast(SquareRayBuilder, self.builder)
     
     @property
     def validation(self) -> SquareRayValidator:

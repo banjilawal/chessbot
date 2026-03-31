@@ -60,7 +60,7 @@ class TemplateService(IntegrityService[Template]):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
 
     @property
-    def build(self) -> Builder[Template]:
+    def builder(self) -> Builder[Template]:
         return self._builder
     
     @property

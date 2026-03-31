@@ -17,11 +17,11 @@ from logic.square import Square, SquareContext, SquareNotFoundException, SquareO
 from logic.system import LoggingLevelRouter, SearchResult, UpdateResult
 from logic.token import (
     InconsistentTokenCoordException, InconsistentTokenSquareException, Token, TokenAlreadyDeployedException,
-    TokenBoardState, TokenDeploymentException, TokenValidation
+    TokenBoardState, TokenDeploymentException, TokenValidator
 )
 
 
-class TokenDeploymentProcess:
+class TokenDeployer:
     """
     Role:
         - Transaction Worker
@@ -38,7 +38,7 @@ class TokenDeploymentProcess:
     Provides:
         -   execute(
                     token: Token,
-                    token_validator: TokenValidation,
+                    token_validator: TokenValidator,
             ) -> UpdateResult[Token]
             
         - _run_opening_square_tests(token: Token) -> SearchResult[List[Square]]
@@ -54,10 +54,10 @@ class TokenDeploymentProcess:
 
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def work(
             cls,
             token: Token,
-            token_validator: TokenValidation = TokenValidation(),
+            token_validator: TokenValidator = TokenValidator(),
     ) -> UpdateResult[Square]:
         """
         Executes the deployment transaction.

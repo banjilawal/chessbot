@@ -34,7 +34,7 @@ class TokenPushCoordProcess:
                         token: Token,
                         coord: Coord,
                         coord_service: CoordService = CoordService(),
-                        token_validator: TokenValidation = TokenValidation(),
+                        token_validator: TokenValidator = TokenValidator(),
                 ) -> InsertionResult
     Super Class:
     """
@@ -61,7 +61,7 @@ class TokenPushCoordProcess:
             coord: Coord
             token: Token
             coord_service: CoordService
-            token_validator: TokenValidation
+            token_validator: TokenValidator
         Returns:
             InsertionResult[bool]
         Raises:

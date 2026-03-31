@@ -58,7 +58,7 @@ class HostageService(IntegrityService[Hostage]):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
     
     @property
-    def build(self) -> HostageBuilder:
+    def builder(self) -> HostageBuilder:
         """get SquareBuilder"""
         return cast(HostageBuilder, self.entity_builder)
     

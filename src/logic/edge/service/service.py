@@ -64,7 +64,7 @@ class EdgeService(IntegrityService[Edge]):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         
     @property
-    def build(self) -> EdgeBuilder:
+    def builder(self) -> EdgeBuilder:
         return cast(EdgeBuilder, self.entity_builder)
     
     @property

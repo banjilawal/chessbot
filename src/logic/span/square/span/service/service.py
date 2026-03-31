@@ -68,8 +68,8 @@ class SquareSpanService(IntegrityService[SquareSpan]):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         
     @property
-    def build(self) -> SquareSpanBuilder:
-        return cast(SquareSpanBuilder, self.build)
+    def builder(self) -> SquareSpanBuilder:
+        return cast(SquareSpanBuilder, self.builder)
     
     @property
     def validation(self) -> SquareSpanValidator:

@@ -115,7 +115,7 @@ class PairBuilder(Builder[Pair]):
                 )
             )
         # --- Attempt building the tail node. ---#
-        tail_node_build_result = node_service.build.build(
+        tail_node_build_result = node_service.builder.build(
             square=tail_square,
             square_validator=square_validator,
         )

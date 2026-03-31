@@ -149,25 +149,25 @@ class BishopSpanService(SpanService):
                     pair_build_result = self._build_pair(
                         head_square=square_u,
                         tail_square=square_v,
-                        node_builder=graph.vertices.integrity_service.build
+                        node_builder=graph.vertices.integrity_service.builder
                     )
-                    v_build_result = graph.vertices.integrity_service.build.build(
+                    v_build_result = graph.vertices.integrity_service.builder.build(
                         square=square_v,
                         square_validator=square_database.integrity_service.validation,
                     )
-                    u_build_result = graph.vertices.integrity_service.build.build(
+                    u_build_result = graph.vertices.integrity_service.builder.build(
                         square=square_u,
                         square_validator=square_database.integrity_service.validation,
                     )
                     graph.vertices.push(u_build_result.payload)
                     graph.vertices.push(v_build_result.payload)
                     
-                    e = graph.edges.integrity_service.build.build(
+                    e = graph.edges.integrity_service.builder.build(
                         head=u_build_result.payload,
                         tail=v_build_result.payload,
                         coord_service=self.coord_service,
                     )
-                    f = graph.edges.integrity_service.build.build(
+                    f = graph.edges.integrity_service.builder.build(
                         head=v_build_result.payload,
                         tail=u_build_result.payload,
                         coord_service=self.coord_service,
@@ -183,7 +183,7 @@ class BishopSpanService(SpanService):
                         weight=graph.edges.integrity_service
                     )
                     f = graph.edges.push(
-                        graph.edges.integrity_service.build.build(
+                        graph.edges.integrity_service.builder.build(
                         
                         )
                     )
@@ -244,25 +244,25 @@ class BishopSpanService(SpanService):
                     pair_build_result = self._build_pair(
                         head_square=square_u,
                         tail_square=square_v,
-                        node_builder=graph.vertices.pair_service.build
+                        node_builder=graph.vertices.pair_service.builder
                     )
-                    v_build_result = graph.vertices.pair_service.build.query(
+                    v_build_result = graph.vertices.pair_service.builder.query(
                         square=square_v,
                         square_validator=square_database.integrity_service.validation,
                     )
-                    u_build_result = graph.vertices.pair_service.build.query(
+                    u_build_result = graph.vertices.pair_service.builder.query(
                         square=square_u,
                         square_validator=square_database.integrity_service.validation,
                     )
                     graph.vertices.query(u_build_result.payload)
                     graph.vertices.query(v_build_result.payload)
                     
-                    e = graph.edges.pair_service.build.query(
+                    e = graph.edges.pair_service.builder.query(
                         head=u_build_result.payload,
                         tail=v_build_result.payload,
                         coord_service=self.coord_service,
                     )
-                    f = graph.edges.pair_service.build.query(
+                    f = graph.edges.pair_service.builder.query(
                         head=v_build_result.payload,
                         tail=u_build_result.payload,
                         coord_service=self.coord_service,
@@ -278,7 +278,7 @@ class BishopSpanService(SpanService):
                         weight=graph.edges.pair_service
                     )
                     f = graph.edges.query(
-                        graph.edges.pair_service.build.query(
+                        graph.edges.pair_service.builder.query(
                         
                         )
                     )

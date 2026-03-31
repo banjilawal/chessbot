@@ -92,7 +92,7 @@ class NodeTreeBuilder(Builder[NodeTree]):
             )
         # --- Process the sub_span_roots then, build the tree's root node. ---#
         insertion_result = cls._convert_sub_span_roots_to_ray(span=square_span)
-        root_node_build_result = node_service.build.build(square=square_span.origin)
+        root_node_build_result = node_service.builder.build(square=square_span.origin)
         
         # Handle the case that, the root_node is not built successfully.
         if root_node_build_result.is_failure:

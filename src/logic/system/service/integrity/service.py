@@ -48,7 +48,7 @@ class IntegrityService(ABC, Service[Generic[T]]):
     
     @property
     @abstractmethod
-    def build(self) -> Builder[T]:
+    def builder(self) -> Builder[T]:
         pass
     
     @property

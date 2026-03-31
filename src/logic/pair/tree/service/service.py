@@ -60,7 +60,7 @@ class NodeTreeService(IntegrityService[NodeTree]):
         
     
     @property
-    def build(self) -> NodeTreeBuilder:
+    def builder(self) -> NodeTreeBuilder:
         return cast(NodeTreeBuilder, self.entity_builder)
     
     @property

@@ -26,7 +26,7 @@ class TokenValidationException(ValidationException):
         - Exception Messaging
 
     Responsibilities:
-        1.  Identify the TokenValidation method where the exception failed.
+        1.  Identify the TokenValidator method where the exception failed.
         
     Attributes:
         op: Optional[str]
@@ -45,7 +45,7 @@ class TokenValidationException(ValidationException):
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     ERR_CODE = "TOKEN_VALIDATION_FAILURE"
-    MSG = "Failure in TokenValidation method."
+    MSG = "Failure in TokenValidator method."
 
     
     def __init__(

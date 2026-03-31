@@ -66,7 +66,7 @@ class TokenStackDeployment:
         # --- Make a deep copy of the stack then deploy its members in a loop. ---#
         pre_deployment_token_stack = deepcopy(token_stack)
         for token in token_stack.iterator:
-            deployment_result = token_stack.integrity_service.controller.deployment.execute(token)
+            deployment_result = token_stack.integrity_service.controller.deployment.work(token)
             
             # Handle the case that, the token's deployment failed.
             if deployment_result.is_failure:

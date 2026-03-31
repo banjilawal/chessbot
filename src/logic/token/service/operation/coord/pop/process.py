@@ -33,7 +33,7 @@ class TokenPopCoordProcess:
     Provides:
             -   execute(
                         token: Token,
-                        token_validator: TokenValidation = TokenValidation(),
+                        token_validator: TokenValidator = TokenValidator(),
                 ) -> DeletionResult[Coord]
     Super Class:
     """
@@ -56,7 +56,7 @@ class TokenPopCoordProcess:
             2.  Otherwise, pop the last move and send the success result.
         Args:
             token: Token
-            token_validator: TokenValidation
+            token_validator: TokenValidator
         Returns:
             DeletionResult[Coord]
         Raises:

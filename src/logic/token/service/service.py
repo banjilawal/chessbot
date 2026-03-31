@@ -36,7 +36,7 @@ class TokenService(IntegrityService[Token]):
         id: int
         name: name
         build: Tokenbuild
-        validation: TokenValidation
+        validation: TokenValidator
         controller: TokenOpsController
 
     Provides:
@@ -84,7 +84,7 @@ class TokenService(IntegrityService[Token]):
         self._controller = controller
     
     @property
-    def build(self) -> TokenBuilder:
+    def builder(self) -> TokenBuilder:
         return self._controller.build
     
     @property
@@ -204,7 +204,7 @@ class TokenService(IntegrityService[Token]):
         
         # --- Forward the request to the controller. ---#
         pre_update_pawn_token = deepcopy(pawn_token)
-        promotion_result = self._controller.pawn_promotion.execute(
+        promotion_result = self._controller.pawn_promotion.work(
             rank=rank,
             pawn_token=pawn_token,
             rank_service=rank_service,
@@ -248,7 +248,7 @@ class TokenService(IntegrityService[Token]):
         
         # --- Forward the request to the controller. ---#
         pre_update_token = deepcopy(token)
-        deployment_result = self._controller.deployment.execute(
+        deployment_result = self._controller.deployment.work(
             token=token,
             token_validation=self.validation,
         )

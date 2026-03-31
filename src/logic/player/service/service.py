@@ -64,7 +64,7 @@ class PlayerService(IntegrityService[Player]):
         self._player_team_relation_analyzer = player_team_relation_analyzer
         
     @property
-    def build(self) -> PlayerFactory:
+    def builder(self) -> PlayerFactory:
         """get PlayerBuilder"""
         return cast(PlayerFactory, self.entity_builder)
     

@@ -60,7 +60,7 @@ class TokenContextService(IntegrityService[TokenContext]):
         self._validation = validation
     
     @property
-    def build(self) ->TokenContextBuilder:
+    def builder(self) ->TokenContextBuilder:
         return self._build
     
     @property

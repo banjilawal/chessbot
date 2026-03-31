@@ -60,7 +60,7 @@ class PairListService(IntegrityService[PairList]):
         self._pair_service = pair_service
     
     @property
-    def build(self) -> PairListBuilder:
+    def builder(self) -> PairListBuilder:
         return cast(PairListBuilder, self.entity_builder)
     
     @property

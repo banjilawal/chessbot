@@ -258,12 +258,12 @@ class CoordAdditionTransaction:
         
         # Build a new coord from a coord and vector.
         if isinstance(operand, Vector):
-            return coord_service.build.build(
+            return coord_service.builder.build(
                 row=coord.row + operand.y,
                 column=coord.column * operand.x
             )
         # Build a new coord from two coords.
-        return coord_service.build.build(
+        return coord_service.builder.build(
             row=coord.row + operand.row,
             column=coord.column + operand.column
         )

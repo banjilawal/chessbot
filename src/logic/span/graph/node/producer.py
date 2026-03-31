@@ -65,7 +65,7 @@ class NodeTreeProducer:
             square_span.sub_span_roots.clear()
             
         # --- build the tree's root node. ---#
-        root_node_build_result = node_service.build.build(square=square_span.origin)
+        root_node_build_result = node_service.builder.build(square=square_span.origin)
         # Handle the case that, the root_node is not built successfully.
         if root_node_build_result.is_failure:
             # Return the exception chain on failure.

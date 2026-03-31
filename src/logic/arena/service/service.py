@@ -66,7 +66,7 @@ class ArenaService(IntegrityService[Arena]):
         self._arena_team_relation_analyzer = team_relation_tester
     
     @property
-    def build(self) -> ArenaBuilder:
+    def builder(self) -> ArenaBuilder:
         """get ArenaBuilder"""
         return cast(ArenaBuilder, self.entity_builder)
     

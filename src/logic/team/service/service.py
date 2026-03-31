@@ -64,7 +64,7 @@ class TeamService(IntegrityService[Team]):
         self._roster_util = roster_util
     
     @property
-    def build(self) -> TeamBuild:
+    def builder(self) -> TeamBuild:
         """get TeamBuild."""
         return cast(TeamBuild, self.entity_builder)
     

@@ -199,7 +199,7 @@ class TokenBuilder(Builder[Token]):
         # --- All other ranks run the CombatantToken build steps. ---#
         
         # Handle the case that its Rank instance request is not satisfied.
-        rank_build_result = rank_service.build.build(persona=formation.persona)
+        rank_build_result = rank_service.builder.build(persona=formation.persona)
         if rank_build_result.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
