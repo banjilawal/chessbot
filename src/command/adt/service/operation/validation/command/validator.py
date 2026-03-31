@@ -55,7 +55,7 @@ class CommandValidator(Validator[Command]):
                     err_code=CommandValidationException.ERR_CODE,
                     rslt_type=CommandValidationException.RSLT_TYPE,
                     ex=TypeError(
-                        f"{method}: Expected Command type, got "
+                        f"Expected Command type, got "
                         f"{type(candidate).__name__} instead."
                     )
                 )
@@ -64,7 +64,20 @@ class CommandValidator(Validator[Command]):
         command = cast(Command, candidate)
         
         # Handle the case that, the command's type is not in the cipher_table.
-        if not isinstance(command, ciphers.table.) is not Command:
+        if not isinstance(command, ciphers.command_types):
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                CommandValidationException(
+                    mthd=method,
+                    op=CommandValidationException.OP,
+                    msg=CommandValidationException.MSG,
+                    err_code=CommandValidationException.ERR_CODE,
+                    rslt_type=CommandValidationException.RSLT_TYPE,
+                    ex=TypeError(
+                        f"{type(command).__name__}: "
+                    )
+                )
+            )
         
         # Handle the case that, command's name does not match the cipher's\
         command_name_validation_result = cls._validate_command_name(command.name, cipher, identity_service)

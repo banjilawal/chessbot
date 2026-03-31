@@ -9,19 +9,16 @@ Created: 2026-02-24
 from __future__ import annotations
 from typing import Any, Optional
 
-from __future__ import annotations
-from typing import Any, Optional
-
 __all__ = [
-    # ======================# NULL_COMMAND_EXCEPTION #======================#
-    "NullCommandException",
+    # ======================# COMMAND_NOT_FOUND_EXCEPTION #======================#
+    "CommandNotFoundException",
 ]
 
-from logic.system import NullException
+from command import CommandDebugException
 
 
-# ======================# NULL_COMMAND_EXCEPTION #======================#
-class NullCommandException(NullException):
+# ======================# COMMAND_NOT_FOUND_EXCEPTION #======================#
+class CommandNotFoundException(CommandDebugException):
     """
     Role:
         -   Exception Chain Layer 2
@@ -43,8 +40,8 @@ class NullCommandException(NullException):
     Super Class:
         CommandDebugException
     """
-    ERR_CODE = "NULL_COMMAND_EXCEPTION"
-    MSG = str = "Command cannot be null"
+    ERR_CODE = "COMMAND_NOT_FOUND_EXCEPTION"
+    MSG = str = "Command does not exist in the CommandTable."
     
     def __init__(
             self,

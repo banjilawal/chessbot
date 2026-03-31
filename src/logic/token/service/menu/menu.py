@@ -19,6 +19,7 @@ from logic.formation import Formation
 from logic.system import ExecutionRouteException, IdentityService, LoggingLevelRouter, Result, Router, ValidationResult
 from logic.team import Team
 from logic.token import PawnToken, Token, TokenCommandTable, TokenService, TokenServiceMenuException
+from logic.token.service.menu.exception.exist import TokenCommandNotFoundException
 
 
 class TokenServiceMenu(Router[TokenService]):
