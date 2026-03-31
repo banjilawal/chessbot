@@ -130,7 +130,7 @@ class PersonaKeyBuilder(Builder[PersonaKey]):
         # Build the quota PersonaKey if its flag is enabled.
         if quota is not None:
             # Quotas have to be between king_count=1 and pawn_count=8
-            validation = number_validator.execute(floor=1, ceiling=9)
+            validation = number_validator.validate(floor=1, ceiling=9)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
@@ -145,7 +145,7 @@ class PersonaKeyBuilder(Builder[PersonaKey]):
         # Build the ransom PersonaKey if its flag is enabled.
         if ransom is not None:
             # Ransoms have to be between king_ransom=0 and 20
-            validation = number_validator.execute(floor=0, ceiling=20)
+            validation = number_validator.validate(floor=0, ceiling=20)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(

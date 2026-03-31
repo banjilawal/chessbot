@@ -30,7 +30,7 @@ class KingOccupationEventBuilder(Enum):
     method = "KingOccupationEventBuilder.build"
 
     try:
-      id_validation = IdValidator.execute(event_id)
+      id_validation = IdValidator.validate(event_id)
       if not id_validation.is_success():
         ThrowHelper.log_and_raise_exception(KingOccupationEventBuilder, id_validation)
 

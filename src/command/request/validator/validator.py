@@ -48,7 +48,7 @@ class RequestValidator(Validator[Request]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def validate(
             cls,
             candidate: Any,
             identity_service: IdentityService = IdentityService(),

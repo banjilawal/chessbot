@@ -266,7 +266,7 @@ class SquareEntryProcess:
         method = f"{cls.__module__}._run_square_tests"
         
         # Handle the case that, the square is not certified safe.
-        square_validation_result = square_validator.execute(square)
+        square_validation_result = square_validator.validate(square)
         if square_validation_result.is_failure:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(

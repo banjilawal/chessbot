@@ -221,7 +221,7 @@ class PawnPromotionProcess:
         method = f"{cls.__class__.__name__}. _run_promotable_rank_tests"
         
         # Handle the case that, the rank does not pass a validation check.
-        validation_result = rank_service.validation.execute(rank)
+        validation_result = rank_service.validation.validate(rank)
         if validation_result.is_failure:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(

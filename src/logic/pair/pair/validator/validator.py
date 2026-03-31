@@ -36,7 +36,7 @@ class PairValidator(Validator[Pair]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def validate(
             cls,
             candidate: Any,
             node_validator: NodeValidator = NodeValidator(),
@@ -98,7 +98,7 @@ class PairValidator(Validator[Pair]):
         
         # Handle the case that either the head or tail does not pass a validation check.
         for member in pair.members:
-            validation_result = node_validator.execute(candidate=member)
+            validation_result = node_validator.validate(candidate=member)
             if validation_result.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(

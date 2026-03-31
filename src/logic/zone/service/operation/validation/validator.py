@@ -41,7 +41,7 @@ class ZoneValidator(Validator[Zone]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def validate(
             cls,
             candidate: Any,
             number_validation: NumberValidator = NumberValidator(),
@@ -105,7 +105,7 @@ class ZoneValidator(Validator[Zone]):
         
         # Handle the case that, either the row or column are not between [0-7] inclusive.
         for attribute in [zone.row, zone.column]:
-            validate_result = number_validation.execute(
+            validate_result = number_validation.validate(
                 ceiling=NUMBER_OF_ROWS,
                 candidate=attribute,
                 floor=0,

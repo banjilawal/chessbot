@@ -39,7 +39,7 @@ class GameContextValidator(Validator[GameContext]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def validate(
             cls,
             candidate: Any,
             agent_service: AgentService = AgentService(),

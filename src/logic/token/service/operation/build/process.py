@@ -99,7 +99,7 @@ class TokenBuild(Builder[Token]):
                 )
             )
         # Handle the case that, the team does not pass a validation check.
-        owner_validation = team_validator.execute(candidate=owner)
+        owner_validation = team_validator.validate(candidate=owner)
         if owner_validation.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
@@ -113,7 +113,7 @@ class TokenBuild(Builder[Token]):
                 )
             )
         # Handle the case that, the formation does not pass a validation check.
-        formation_validation = formation_service.validator.execute(candidate=formation)
+        formation_validation = formation_service.validator.validate(candidate=formation)
         if formation_validation.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(

@@ -33,7 +33,7 @@ class RankValidatorService(Validator[Rank]):
         return self._rank_spec_validator
     
     @classmethod
-    def execute(cls, candidate: Any, *args, **kwargs) -> ValidationResult[Rank]:
+    def validate(cls, candidate: Any, *args, **kwargs) -> ValidationResult[Rank]:
         factory = RankValidatorFactory()
-        return factory.execute(candidate)
+        return factory.validate(candidate)
     

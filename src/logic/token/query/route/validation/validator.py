@@ -67,7 +67,7 @@ class TokenQueryParamsValidator:
         method = f"{cls.__name__}._validate"
         
         # Handle the case that, the context is not certified as safe.
-        validation_result = context_validator.execute(context)
+        validation_result = context_validator.validate(context)
         if validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(

@@ -8,13 +8,15 @@ Created: 2026-02-24
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
-from typing import Any, Generic, TypeVar
+from abc import abstractmethod
+from typing import Any, TypeVar
 
+from command import Command
+from logic.system import LoggingLevelRouter, Router
 
 S = TypeVar("S")
 
-class CommandRouter(ABC, Generic[S]):
+class CommandRouter(Router[Command]):
     """
     Role:Interface, Routing, Worker
 

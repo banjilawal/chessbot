@@ -36,7 +36,7 @@ class PlayerValidator(Validator[Player]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def validate(
             cls,
             candidate: Any,
             identity_service: IdentityService = IdentityService(),

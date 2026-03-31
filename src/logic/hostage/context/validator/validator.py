@@ -31,7 +31,7 @@ class CaptivityContextValidator(Validator[CaptivityContext]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def validate(
             cls,
             candidate: Any,
             hostage_service: HostageService = HostageService(),
@@ -121,7 +121,7 @@ class CaptivityContextValidator(Validator[CaptivityContext]):
         
         # Certification for the search-by-victor target.
         if context.victor is not None:
-            validation = hostage_service.validation.execute(context.victor)
+            validation = hostage_service.validation.validate(context.victor)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
@@ -149,7 +149,7 @@ class CaptivityContextValidator(Validator[CaptivityContext]):
         
         # Certification for the search-by-captured_square target.
         if context.captured_square is not None:
-            validation = square_service.validation.execute(context.captured_square)
+            validation = square_service.validation.validate(context.captured_square)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(

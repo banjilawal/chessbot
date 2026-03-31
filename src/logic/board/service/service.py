@@ -141,7 +141,7 @@ class BoardService(IntegrityService[Board]):
         method = "BoardService.layout_board"
         
         # Handle the case that, the board does not pass a validation check.
-        validation = self.validation.execute(candidate=board)
+        validation = self.validation.validate(candidate=board)
         if validation.is_failure:
             # Return exception chain on failure
             return InsertionResult.failure(
@@ -189,7 +189,7 @@ class BoardService(IntegrityService[Board]):
         method = "BoardService.generate_graph"
     
         # Handle the case that, the board does not pass a validation check.
-        validation = self.validation.execute(candidate=board)
+        validation = self.validation.validate(candidate=board)
         if validation.is_failure:
             # Return exception chain on failure
             return ComputationResult.failure(

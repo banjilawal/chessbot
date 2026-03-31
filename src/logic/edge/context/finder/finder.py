@@ -95,7 +95,7 @@ class EdgeFinder(StackSearchRouter[Edge]):
                 )
             )
         # Handle the case that, the query fails validation.
-        validation_result = context_validator.execute(context)
+        validation_result = context_validator.validate(context)
         if validation_result.is_failure:
             # Return the exception chain on failure.
             return SearchResult.failure(

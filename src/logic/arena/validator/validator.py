@@ -39,7 +39,7 @@ class ArenaValidator(Validator[Arena]):
     None
     """
     @classmethod
-    def execute(
+    def validate(
             cls,
             candidate: Any,
             board_service: BoardService = BoardService(),
@@ -86,7 +86,7 @@ class ArenaValidator(Validator[Arena]):
                 return ValidationResult.failure(id_validation.exception)
              
             # Verify the board.
-            board_validation = board_service.validation.execute(arena.board)
+            board_validation = board_service.validation.validate(arena.board)
             if board_validation.failure:
                 return ValidationResult.failure(board_validation.exception)
             

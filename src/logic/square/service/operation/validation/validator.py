@@ -54,7 +54,7 @@ class SquareValidator(Validator[Square]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def validate(
             cls,
             candidate: Any,
             board_service: BoardService = BoardService(),
@@ -137,7 +137,7 @@ class SquareValidator(Validator[Square]):
                 )
             )
         # Handle the case that, square.coord is not certified safe.
-        coord_validation_result = coord_service.validation.execute(square.coord)
+        coord_validation_result = coord_service.validation.validate(square.coord)
         if coord_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(

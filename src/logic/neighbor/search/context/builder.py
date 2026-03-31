@@ -68,22 +68,22 @@ class VisitationSearchContextBuilder(Builder[VisitationSearchContext]):
                 )
 
             if piece_id is not None:
-                id_validation = IdValidator.execute(piece_id)
+                id_validation = IdValidator.validate(piece_id)
                 if not id_validation.is_failure():
                     return BuildResult(exception=id_validation.exception)
 
             if name is not None:
-                piece_name_validation = NameValidator.execute(name)
+                piece_name_validation = NameValidator.validate(name)
                 if piece_name_validation.is_failure():
                     return BuildResult(exception=piece_name_validation.exception)
 
             if team_id is not None:
-                team_id_validation = IdValidator.execute(team_id)
+                team_id_validation = IdValidator.validate(team_id)
                 if team_id_validation.is_failure():
                     return BuildResult(exception=team_id_validation.exception)
 
             if team_name is not None:
-                team_name_validation = NameValidator.execute(team_name)
+                team_name_validation = NameValidator.validate(team_name)
                 if team_name_validation.is_failure():
                     return BuildResult.failure(team_name_validation.exception)
 
@@ -98,7 +98,7 @@ class VisitationSearchContextBuilder(Builder[VisitationSearchContext]):
                 )
 
             if position is not None:
-                position_validation = CoordValidator.execute(position)
+                position_validation = CoordValidator.validate(position)
                 if position_validation.is_failure():
                     return BuildResult.failure(position_validation.exception)
 

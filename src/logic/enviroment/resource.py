@@ -34,7 +34,7 @@ class BoardResourceValidator(Validator[Square, Board]):
 
   @classmethod
   @LoggingLevelRouter.monitor
-  def execute(cls, candidate: Tuple[Square, Board]) -> ValidationResult[Tuple[Square, Board]]:
+  def validate(cls, candidate: Tuple[Square, Board]) -> ValidationResult[Tuple[Square, Board]]:
     """"""
     method = "BoardResourceValidator.validate"
 
@@ -46,13 +46,13 @@ class BoardResourceValidator(Validator[Square, Board]):
       
       resource_candidate, environment_candidate = candidate
 
-      resource_validation = SquareValidator.execute(resource_candidate)
+      resource_validation = SquareValidator.validate(resource_candidate)
       if resource_validation.is_failure():
         return ValidationResult.failure(resource_validation.exception)
 
       resource = cast(Square, resource_validation.payload)
 
-      environment_validation = BoardValidator.execute(environment_candidate)
+      environment_validation = BoardValidator.validate(environment_candidate)
       if environment_validation.is_failure():
         return ValidationResult.failure(environment_validation.exception)
 

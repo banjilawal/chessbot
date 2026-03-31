@@ -33,7 +33,7 @@ class FormationValidator(Validator[Formation]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(cls, candidate: Any) -> ValidationResult[Formation]:
+    def validate(cls, candidate: Any) -> ValidationResult[Formation]:
         """
         # ACTION:.
             1.  If the candidate passes existence and type checks cast into a Formation instance and return

@@ -10,5 +10,5 @@ class TravelEventValidator(Validator[TravelEvent]):
     
     @classmethod
     @abstractmethod
-    def execute(cls, candidate: Any) -> ValidationResult[TravelEvent]:
+    def validate(cls, candidate: Any) -> ValidationResult[TravelEvent]:
         pass

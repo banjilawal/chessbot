@@ -16,5 +16,5 @@ class PromotionEventValidator(Validator[PromotionEvent]):
     
     
     @classmethod
-    def execute(cls, candidate: Any, *args, **kwargs) -> ValidationResult[PromotionEvent]:
+    def validate(cls, candidate: Any, *args, **kwargs) -> ValidationResult[PromotionEvent]:
         pass

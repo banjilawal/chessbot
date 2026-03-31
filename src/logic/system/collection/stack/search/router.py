@@ -27,6 +27,4 @@ class StackSearchRouter(SearchRouter[T]):
             context: Context[T],
             context_validator: Validator[Context[T]]
     ) -> SearchResult[List[T]]:
-        """
-        """
         pass

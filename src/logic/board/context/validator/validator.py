@@ -37,7 +37,7 @@ class BoardContextValidator(Validator[BoardContext]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def validate(
             cls,
             candidate: Any,
             arena_service: ArenaService = ArenaService(),

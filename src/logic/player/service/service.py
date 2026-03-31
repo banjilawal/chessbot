@@ -100,7 +100,7 @@ class PlayerService(IntegrityService[Player]):
         method = "PlayerService.pop_team_from_player"
         
         # Handle the case that, the owner is not certified safe.
-        validation = self.validation.execute(player)
+        validation = self.validation.validate(player)
         if validation.is_failure:
             # Return the exception chain on failure.
             return DeletionResult.failure(

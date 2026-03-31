@@ -38,7 +38,7 @@ class FormationKeyValidator(Validator[FormationKey]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def validate(
             cls,
             candidate: Any,
             persona_service: PersonaService = PersonaService(),
@@ -162,7 +162,7 @@ class FormationKeyValidator(Validator[FormationKey]):
 
         # Certification for the lookup-by-color target.
         if super_key.color is not None:
-            validation = color_validator.execute(candidate=super_key.color)
+            validation = color_validator.validate(candidate=super_key.color)
             if validation.is_failure:
                 return ValidationResult.failure(
                     FormationKeyValidationException(
@@ -175,7 +175,7 @@ class FormationKeyValidator(Validator[FormationKey]):
         
         # Certification for the lookup-by-persona target.
         if super_key.persona is not None:
-            validation = persona_service.validator.execute(candidate=super_key.persona)
+            validation = persona_service.validator.validate(candidate=super_key.persona)
             if validation.is_failure:
                 return ValidationResult.failure(
                     FormationKeyValidationException(

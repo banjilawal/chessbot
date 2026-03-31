@@ -66,7 +66,7 @@ class RosterRelationAnalysis(RelationAnalysis[Team, Token]):
         method = "RosterRelationAnalysis.test"
         
         # Process the possible team_validation outcomes.
-        team_validation = team_validator.execute(candidate_primary)
+        team_validation = team_validator.validate(candidate_primary)
         if team_validation.is_failure:
             # Return the exception chain on failure.
             return RelationReport(

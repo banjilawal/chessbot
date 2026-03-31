@@ -46,7 +46,7 @@ class RankValidatorFactory(Validator[Rank]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def validate(
             cls,
             candidate: Any,
             rook_validator: RookValidator = RookValidator(),
@@ -155,7 +155,7 @@ class RankValiatorFactory(Validator[Rank]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def validate(
             cls, candidate: Any,
             persona_service: PersonaService = PersonaService(),
             identity_service: IdentityService = IdentityService(),

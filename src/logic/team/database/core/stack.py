@@ -112,7 +112,7 @@ class TeamStack(StackService[Team]):
         method = "TeamStack.push"
         
         # Handle the case that, the team is unsafe.
-        validation = self.integrity_service.validation.execute(candidate=item)
+        validation = self.integrity_service.validation.validate(candidate=item)
         if validation.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(

@@ -20,7 +20,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
     """"""
     
     @classmethod
-    def execute(cls, candidate: Any) -> ValidationResult[OccupationEvent]:
+    def validate(cls, candidate: Any) -> ValidationResult[OccupationEvent]:
         """"""
         method = "OccupationEventValidator.validate"
         
@@ -38,7 +38,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
                 )
             event = cast(OccupationEvent, candidate)
             
-            id_validation = Validator.execute(candidate.visitor_id)
+            id_validation = Validator.validate(candidate.visitor_id)
             if not id_validation.is_success():
                 return ValidationResult(exception=id_validation.exception)
             

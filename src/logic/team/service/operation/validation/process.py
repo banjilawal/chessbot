@@ -55,7 +55,7 @@ class TeamValidator(Validator[Team]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def validate(
             cls,
             candidate: Any,
             board_service: BoardService(),

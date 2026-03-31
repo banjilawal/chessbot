@@ -19,7 +19,7 @@ class CommandValidator(Validator[Command]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def validate(
             cls,
             candidate: Any,
             cipher: Command = Command.cipher(),

@@ -68,7 +68,7 @@ class CoordBuilder(Builder[Coord]):
         
         # Handle the case that, either the row or column is not certofoed as safe.
         for param in [row, column]:
-            validation_result = number_validator.execute(
+            validation_result = number_validator.validate(
                 ceiling=BOARD_DIMENSION - 1,
                 candidate=param,
                 floor=0,

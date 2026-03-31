@@ -21,11 +21,11 @@ class Path:
   def __init__(self, u: Coord, v: Coord):
     method = "Path.__init__"
 
-    u_validation = CoordValidator.execute(u)
+    u_validation = CoordValidator.validate(u)
     if not u_validation.is_success():
       raise u_validation.exception
 
-    v_validation = CoordValidator.execute(v)
+    v_validation = CoordValidator.validate(v)
     if not v_validation.is_success():
       raise v_validation.exception
 

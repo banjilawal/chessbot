@@ -39,7 +39,7 @@ class GameValidator(Validator[Game]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def validate(
             cls,
             candidate: Any,
             board_service: BoardService = BoardService(),
@@ -93,7 +93,7 @@ class GameValidator(Validator[Game]):
             if id_validation.is_failure:
                 return ValidationResult.failure(id_validation.exception)
             
-            board_validation = board_service.validation.execute(game.board)
+            board_validation = board_service.validation.validate(game.board)
             if board_validation.is_failure:
                 return ValidationResult.failure(board_validation.exception)
             

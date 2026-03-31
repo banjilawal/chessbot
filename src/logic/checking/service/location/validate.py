@@ -16,5 +16,5 @@ from logic.system import ValidationResult, Validator
 class KingLocationRecordValidator(Validator[KingLocationRecord]):
     
     @classmethod
-    def execute(cls, candidate: Any) -> ValidationResult[KingLocationRecord]:
+    def validate(cls, candidate: Any) -> ValidationResult[KingLocationRecord]:
         pass

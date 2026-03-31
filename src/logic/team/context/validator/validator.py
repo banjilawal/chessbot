@@ -37,7 +37,7 @@ class TeamContextValidator(Validator[TeamContext]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def validate(
             cls,
             candidate: Any,
             arena_service: ArenaService = ArenaService(),
@@ -132,7 +132,7 @@ class TeamContextValidator(Validator[TeamContext]):
         
         # Certification for the search-by-owner target.
         if context.owner is not None:
-            validation = player_service.validation.execute(candidate=context.owner)
+            validation = player_service.validation.validate(candidate=context.owner)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
@@ -159,7 +159,7 @@ class TeamContextValidator(Validator[TeamContext]):
         
         # Certification for the search-by-color target.
         if context.color is not None:
-            validation = color_validator.execute(candidate=context.color)
+            validation = color_validator.validate(candidate=context.color)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(

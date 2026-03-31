@@ -39,7 +39,7 @@ class TokenValidation(Validator[Token]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def validate(
             cls,
             candidate: Any,
             team_service: TeamService = TeamService(),
@@ -124,7 +124,7 @@ class TokenValidation(Validator[Token]):
                 )
             )
         # Handle the case that, the occupant's team fails validation.
-        team_validation_result = team_service.validation.execute(token.team)
+        team_validation_result = team_service.validation.validate(token.team)
         if team_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -155,7 +155,7 @@ class TokenValidation(Validator[Token]):
                 )
             )
         # Handle the case that, the rank is not certified safe.
-        rank_validation_result = rank_service.validation.execute(candidate=token.rank)
+        rank_validation_result = rank_service.validation.validate(candidate=token.rank)
         if rank_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -236,7 +236,7 @@ class TokenValidation(Validator[Token]):
         """
         method = f"{cls.__class__.__name__}.validate_token_is_combatant"
         # Handle the case that, the candidate is not certified as a safe occupant.
-        validation_result = cls.execute(candidate)
+        validation_result = cls.validate(candidate)
         if validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -269,7 +269,7 @@ class TokenValidation(Validator[Token]):
     def verify_token_is_king(cls, candidate: Any) -> ValidationResult[KingToken]:
         method = "TokenValidation.validate_token_is_king"
         # Handle the case that, the candidate is not certified as a safe occupant.
-        validation = cls.execute(candidate)
+        validation = cls.validate(candidate)
         if validation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -294,7 +294,7 @@ class TokenValidation(Validator[Token]):
     def verify_actionable_token(cls, token: Token) -> ValidationResult[Token]:
         method = "TokenService.verify_actionable_token"
         # Handle the case that, the occupant is not certified safe.
-        token_validation = cls.execute(candidate=token)
+        token_validation = cls.validate(candidate=token)
         if token_validation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -321,7 +321,7 @@ class TokenValidation(Validator[Token]):
     def verify_disabled_token(cls, token: Token) -> ValidationResult[Token]:
         method = "TokenService.verify_disabled_token"
         # Handle the case that, the occupant is not certified safe.
-        token_validation = cls.execute(candidate=token)
+        token_validation = cls.validate(candidate=token)
         if token_validation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(

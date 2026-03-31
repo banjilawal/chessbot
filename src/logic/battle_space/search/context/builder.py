@@ -46,13 +46,13 @@ class ProjectionSearchContextBuilder(Builder[ProjectionSearchContext]):
                 )
 
             if id is not None:
-                id_validation = IdValidator.execute(id)
+                id_validation = IdValidator.validate(id)
                 if not id_validation.is_success():
                     return BuildResult(exception=id_validation.exception)
                 return BuildResult(payload=ProjectionSearchContext(id=id_validation.payload))
 
             if coord is not None:
-                coord_validation =CoordValidator.execute(coord)
+                coord_validation =CoordValidator.validate(coord)
                 if not coord_validation.is_success():
                     return BuildResult(exception=RosterNumberOutOfBoundsException(
                             f"{method}: {RosterNumberOutOfBoundsException.MSG}"
@@ -61,7 +61,7 @@ class ProjectionSearchContextBuilder(Builder[ProjectionSearchContext]):
                 return BuildResult(payload=ProjectionSearchContext(coord=coord))
 
             if name is not None:
-                name_validation = NameValidator.execute(name)
+                name_validation = NameValidator.validate(name)
                 if not name_validation.is_success():
                     return BuildResult(exception=name_validation.exception)
                 return BuildResult(payload=ProjectionSearchContext(name=name))

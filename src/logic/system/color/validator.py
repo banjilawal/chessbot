@@ -34,7 +34,7 @@ class GameColorValidator(Validator[GameColor]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def validate(
             cls,
             candidate: Any,
             game_color_enum: GameColor

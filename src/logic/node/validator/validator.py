@@ -37,7 +37,7 @@ class NodeValidator(Validator[Node]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def validate(
             cls,
             candidate: Any,
             number_validator: NumberValidator = NumberValidator(),
@@ -87,7 +87,7 @@ class NodeValidator(Validator[Node]):
         node = cast(Node, candidate)
         
         # Handle the case that, the square is not valid.
-        square_validation_result = square_validator.execute(node.square)
+        square_validation_result = square_validator.validate(node.square)
         if square_validation_result.is_failure:
             # Return the exception chain on failure.
             ValidationResult.failure(
@@ -133,7 +133,7 @@ class NodeValidator(Validator[Node]):
                 )
             )
         # Handle the case that, the priority is not a number
-        priority_validation_result = number_validator.execute(node.priority)
+        priority_validation_result = number_validator.validate(node.priority)
         if priority_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(

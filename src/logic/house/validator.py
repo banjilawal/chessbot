@@ -19,7 +19,7 @@ class HouseValidator(Validator[House]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(cls, candidate: Any) -> ValidationResult[House]:
+    def validate(cls, candidate: Any) -> ValidationResult[House]:
         """"""
         method = "HouseValidator.validate"
         try:
@@ -34,7 +34,7 @@ class HouseValidator(Validator[House]):
                 )
             
             house = cast(House, candidate)
-            square_validation = SquareValidator.execute(house.square)
+            square_validation = SquareValidator.validate(house.square)
             if square_validation.is_failure():
                 return ValidationResult.failure(square_validation.exception)
             

@@ -22,7 +22,7 @@ class BlockingEventValidator(Validator[BlockingEvent]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(cls, candidate: BlockingEvent) -> ValidationResult[BlockingEvent]:
+    def validate(cls, candidate: BlockingEvent) -> ValidationResult[BlockingEvent]:
         """"""
         method = "BlockingEventValidator.validate"
         
@@ -39,7 +39,7 @@ class BlockingEventValidator(Validator[BlockingEvent]):
             
             event = cast(BlockingEvent, candidate)
             
-            id_validation = IdValidator.execute(event.visitor_id)
+            id_validation = IdValidator.validate(event.visitor_id)
             if id_validation.is_failure():
                 return ValidationResult.failure(id_validation.exception)
             

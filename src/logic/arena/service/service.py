@@ -142,14 +142,14 @@ class ArenaService(IntegrityService[Arena]):
     ) -> SearchResult[Team]:
         """"""
         method = "ArenaService.team_from_schema"
-        arena_validation = self.validation.execute(arena)
+        arena_validation = self.validation.validate(arena)
         if arena_validation.is_failure:
             return SearchResult.failure(
                 ArenaServiceException(
                     msg=f"{method}: {ArenaServiceException.ERR_CODE}", ex=arena_validation.exception
                 )
             )
-        schema_validation = schema_service.validator.execute(schema)
+        schema_validation = schema_service.validator.validate(schema)
         if schema_validation.is_failure:
             return SearchResult.failure(
                 ArenaServiceException(

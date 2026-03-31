@@ -56,11 +56,11 @@ class IdentityService:
         return IdFactory.next_id(class_name=class_name)
         
     def validate_id(self, candidate: Any) -> ValidationResult[int]:
-        return self._id_validator.execute(candidate)
+        return self._id_validator.validate(candidate)
     
     def validate_name(self, candidate: Any) -> ValidationResult[str]:
         method = "IdentityService.validate_name"
-        return self._name_validator.execute(candidate)
+        return self._name_validator.validate(candidate)
     
     def validate_identity(
             self,
@@ -91,12 +91,12 @@ class IdentityService:
         """
         method = "IdentityService.validate_identity"
         try:
-            id_validation = self._id_validator.execute(id_candidate)
+            id_validation = self._id_validator.validate(id_candidate)
             if id_validation.is_failure():
                 return ValidationResult.failure(id_validation.exception)
             id = id_validation.payload
             
-            name_validation = self._name_validator.execute(name_candidate)
+            name_validation = self._name_validator.validate(name_candidate)
             if name_validation.is_failure():
                 return ValidationResult.failure(name_validation.exception)
             name = name_validation.payload

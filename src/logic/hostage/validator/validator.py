@@ -44,7 +44,7 @@ class HostageValidator(Validator[Hostage]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def validate(
             cls,
             candidate: Any,
             token_service: TokenService = TokenService(),
@@ -113,7 +113,7 @@ class HostageValidator(Validator[Hostage]):
                 )
             )
         # Handle the case that, the item where the capture occurred is not certified safe.
-        captured_square_validation = square_service.validation.execute(candidate=manifest.captured_square)
+        captured_square_validation = square_service.validation.validate(candidate=manifest.captured_square)
         if captured_square_validation.failure:
             # Send the exception chain on failure
             return ValidationResult.failure(
@@ -123,7 +123,7 @@ class HostageValidator(Validator[Hostage]):
                 )
             )
         # Handle the case that, the victor's item is not certified safe.
-        victor_square_validation = square_service.validation.execute(candidate=manifest.victor_square)
+        victor_square_validation = square_service.validation.validate(candidate=manifest.victor_square)
         if victor_square_validation.failure:
             # Send the exception chain on failure
             return ValidationResult.failure(

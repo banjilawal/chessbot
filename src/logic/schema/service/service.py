@@ -84,7 +84,7 @@ class SchemaService(HashService[Schema]):
             formation_service: FormationService = FormationService()
     ) -> SearchResult[List[Formation]]:
         method = "SchemaService.formations_for_schema"
-        schema_validation = self.validator.execute(candidate=schema)
+        schema_validation = self.validator.validate(candidate=schema)
         if schema_validation.is_failure:
             # On failure return the exception chain.
             return SearchResult.failure(
@@ -110,7 +110,7 @@ class SchemaService(HashService[Schema]):
         Raises:
         """
         method = "SchemaService.pawn_row"
-        validation = self.validator.execute(schema)
+        validation = self.validator.validate(schema)
         
         # Handle the validation failure branch.
         if validation.is_failure:
@@ -135,7 +135,7 @@ class SchemaService(HashService[Schema]):
             None
         """
         method = "SchemaService.enemy_schema"
-        validation = self.validator.execute(schema)
+        validation = self.validator.validate(schema)
         
         # Handle the validation failure branch.
         if validation.is_failure:

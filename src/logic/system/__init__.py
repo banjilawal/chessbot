@@ -10,7 +10,6 @@ version: 1.0.0
 #=========== SYSTEM PACKAGE CONTENTS ===========#
 
 # Packages
-from .adt import *
 from .build import *
 from .color import *
 from .config import *
@@ -33,6 +32,7 @@ from .text import *
 from .transaction import *
 from .utils import *
 from .validate import *
+from .route import *
 
 # Modules
 None

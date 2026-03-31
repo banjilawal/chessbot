@@ -108,7 +108,7 @@ class SchemaKeyBuilder(Builder[SchemaKey]):
         
         # Build the color_key SchemaKey if its value is set.
         if color is not None:
-            validation = color_validator.execute(candidate=color)
+            validation = color_validator.validate(candidate=color)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(

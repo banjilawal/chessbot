@@ -103,7 +103,7 @@ class SquareFinder(StackSearchRouter[Square]):
                 )
             )
         # Handle the case that, the query fails validation.
-        context_validation_result = context_validator.execute(context)
+        context_validation_result = context_validator.validate(context)
         if context_validation_result.is_failure:
             # Return the exception chain on failure.
             return SearchResult.failure(

@@ -27,7 +27,7 @@ class AttackEventValidator(Validator[AttackEvent]):
     """"""
     
     @classmethod
-    def execute(cls, candidate: Any) -> ValidationResult[AttackEvent]:
+    def validate(cls, candidate: Any) -> ValidationResult[AttackEvent]:
         """"""
         method = "AttackEventValidator.validate"
         

@@ -35,7 +35,7 @@ class VectorValidator(Validator[Vector]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def validate(
             cls,
             candidate: Any,
             number_in_bounds_validator: NumberValidator = NumberValidator()
@@ -83,7 +83,7 @@ class VectorValidator(Validator[Vector]):
         vector = cast(Vector, candidate)
         
         # Validate the vector.x field. Use the absolute value because vectors can have negative components.
-        x_axis_validation = number_in_bounds_validator.execute(
+        x_axis_validation = number_in_bounds_validator.validate(
             floor=0,
             ceiling=LONGEST_KNIGHT_LEG_SIZE,
             candidate=abs(vector.x),
@@ -97,7 +97,7 @@ class VectorValidator(Validator[Vector]):
                 )
             )
         # Validate the vector.y field. Use the absolute value because vectors can have negative components.
-        y_axis_validation = number_in_bounds_validator.execute(
+        y_axis_validation = number_in_bounds_validator.validate(
             floor=0,
             ceiling=LONGEST_KNIGHT_LEG_SIZE,
             candidate=abs(vector.y),

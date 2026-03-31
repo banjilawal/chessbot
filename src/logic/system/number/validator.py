@@ -36,7 +36,7 @@ class NumberValidator(Validator[int]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def validate(
             cls,
             candidate: Any,
             floor: int = 0,

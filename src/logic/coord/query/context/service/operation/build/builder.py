@@ -180,7 +180,7 @@ class CoordContextBuilder(Builder[CoordContext]):
         
         for attribute in attributes:
             # Handle the case that, the row is not certified safe.
-            validation_result = number_validator.execute(
+            validation_result = number_validator.validate(
                 candidate=attribute,
                 ceiling=BOARD_DIMENSION - 1,
                 floor=0,

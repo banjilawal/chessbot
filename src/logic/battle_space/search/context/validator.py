@@ -18,7 +18,7 @@ class ProjectionSearchContextValidator(Validator[ProjectionSearchContext]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(cls, candidate: Any) -> ValidationResult[ProjectionSearchContext]:
+    def validate(cls, candidate: Any) -> ValidationResult[ProjectionSearchContext]:
         """"""
         method = "ProjectionSearchContextValidator.validate"
         

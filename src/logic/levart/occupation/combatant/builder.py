@@ -36,7 +36,7 @@ class CombatantOccupationEventBuilder(Builder[CombatantOccupationEvent]):
     method = "AttackEventBuilder.build"
 
     try:
-      id_validation = IdValidator.execute(event_id)
+      id_validation = IdValidator.validate(event_id)
       if not id_validation.is_success():
         ThrowHelper.log_and_raise_exception(AttackEventBuilder, id_validation)
 

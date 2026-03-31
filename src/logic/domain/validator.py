@@ -39,7 +39,7 @@ class DomainValidator(Validator[Domain]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def validate(
             cls,
             candidate: Any,
             domain_origin_validator: type[DomainOriginValidator] = DomainOriginValidator,
@@ -81,11 +81,11 @@ class DomainValidator(Validator[Domain]):
             
             domain = cast(Domain, candidate)
             
-            id_validation = IdValidator.execute(domain.id)
+            id_validation = IdValidator.validate(domain.id)
             if id_validation.is_failure():
                 return ValidationResult.failure(id_validation.exception)
             
-            domain_origin_validation = domain_origin_validator.execute(domain.origin)
+            domain_origin_validation = domain_origin_validator.validate(domain.origin)
             if domain_origin_validation.is_failure():
                 return ValidationResult.failure(domain_origin_validation.exception)
       
