@@ -1,0 +1,16 @@
+# src/logic/token/service/menu.__init__.py
+
+"""
+Module: logic.token.service.menu.__init__
+Author: Banji Lawal
+Created: 2025-09-16
+version: 1.0.0
+"""
+
+# =========== TOKEN.SERVICE.MENU PACKAGE CONTENTS ===========#
+
+# Packages
+from .exception import *
+
+# Modules
+from .menu import TokenServiceMenu

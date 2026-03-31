@@ -17,7 +17,7 @@ from logic.system import LoggingLevelRouter, Router
 from logic.token import TokenOpsController, TokenService
 
 
-class TokenOpsRouter(Router[str]):
+class TokenServiceMenu(Router[TokenService]):
     """
     Role
         -   Transaction Worker

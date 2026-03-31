@@ -21,4 +21,3 @@ from .validation import *
 
 # Modules
 from .controller import TokenOpsController
-from .router import TokenOpsRouter
