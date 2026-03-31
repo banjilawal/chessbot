@@ -8,21 +8,29 @@ Version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import Dict
+from typing import Dict, List, cast
 
 from command.adt import Command, CommandArgs
 
 
 class CommandTable:
-    _table: Dict[Command: CommandArgs]
+    _hash: Dict[Command: CommandArgs]
     
     def __init__(self):
-        self._table = {}
+        self._hash = {}
     
     @property
-    def table(self) -> Dict[Command: CommandArgs]:
-        return self._table
+    def size(self) -> int:
+        return len(self._hash)
     
-    @table.setter
-    def table(self, value: Dict[Command: CommandArgs]):
-        self._table = value
+    @property
+    def is_empty(self) -> bool:
+        return len(self._hash) == 0
+    
+    @property
+    def hash(self) -> Dict[Command: CommandArgs]:
+        return self._hash
+    
+    @property
+    def command_types(self) -> List[Command]:
+        return cast(List[Command], self._hash.keys())

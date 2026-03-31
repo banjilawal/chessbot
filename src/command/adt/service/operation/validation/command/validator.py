@@ -8,7 +8,7 @@ Created: 2026-02-24
 
 from __future__ import annotations
 
-from typing import Any
+from typing import Any, cast
 
 from command import Command, CommandArgsValidator, CommandTable, CommandValidationException, NullCommandException
 from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
@@ -21,7 +21,7 @@ class CommandValidator(Validator[Command]):
     def validate(
             cls,
             candidate: Any,
-            cipher_table: CommandTable,
+            ciphers: CommandTable,
             identity_service: IdentityService = IdentityService(),
             args_validator: CommandArgsValidator = CommandArgsValidator(),
     ) -> ValidationResult[Command]:
@@ -45,7 +45,7 @@ class CommandValidator(Validator[Command]):
                 )
             )
         # Handle the wrong class case.
-        if not isinstance(candidate, type(key)):
+        if not isinstance(candidate, Command):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 CommandValidationException(
@@ -55,13 +55,16 @@ class CommandValidator(Validator[Command]):
                     err_code=CommandValidationException.ERR_CODE,
                     rslt_type=CommandValidationException.RSLT_TYPE,
                     ex=TypeError(
-                        f"{method}: Expected {type(key).__name__}, got "
+                        f"{method}: Expected Command type, got "
                         f"{type(candidate).__name__} instead."
                     )
                 )
             )
         # --- Cast candidate to the key's type for additional tests. ---#
-        command = cast(type(cipher), candidate)
+        command = cast(Command, candidate)
+        
+        # Handle the case that, the command's type is not in the cipher_table.
+        if not isinstance(command, ciphers.table.) is not Command:
         
         # Handle the case that, command's name does not match the cipher's\
         command_name_validation_result = cls._validate_command_name(command.name, cipher, identity_service)
