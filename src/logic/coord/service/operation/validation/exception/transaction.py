@@ -26,8 +26,7 @@ class CoordValidationException(ValidationException):
         -   Exception Messaging
     
     Responsibilities:
-        1.  Indicate a Coord validation check was not passed.
-        2.  Identify the CoordValidator method where the failure occurred.
+        1.  Identify which CoordValidator method, a test failed.
     
     Attributes:
         op: Optional[str]
@@ -44,7 +43,7 @@ class CoordValidationException(ValidationException):
         ValidationException
     """
     ERR_CODE = "COORD_VALIDATION_FAILURE"
-    MSG = "Failure in CoordValidator method."
+    MSG = "Coord validation check failed."
     
     def __init__(
             self,

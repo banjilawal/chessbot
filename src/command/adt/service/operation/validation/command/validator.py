@@ -10,7 +10,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from command import Command, CommandArgsValidator, CommandValidationException, NullCommandException
+from command import Command, CommandArgsValidator, CommandTable, CommandValidationException, NullCommandException
 from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 
 
@@ -21,7 +21,7 @@ class CommandValidator(Validator[Command]):
     def validate(
             cls,
             candidate: Any,
-            cipher: Command = Command.cipher(),
+            cipher_table: CommandTable,
             identity_service: IdentityService = IdentityService(),
             args_validator: CommandArgsValidator = CommandArgsValidator(),
     ) -> ValidationResult[Command]:
@@ -33,6 +33,7 @@ class CommandValidator(Validator[Command]):
             return ValidationResult.failure(
                 CommandValidationException(
                     mthd=method,
+                    title=cls.__name__,
                     op=CommandValidationException.OP,
                     msg=CommandValidationException.MSG,
                     err_code=CommandValidationException.ERR_CODE,
