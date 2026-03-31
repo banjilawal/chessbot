@@ -170,7 +170,7 @@ class EdgeContextBuilder(Builder[EdgeContext]):
         
         # Build the occupant EdgeContext if its flag is enabled.
         if token is not None:
-            validation = token_service.validator.execute(candidate=token)
+            validation = token_service.validator.query(candidate=token)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(

@@ -33,7 +33,7 @@ class DomainVisitorFinder(Finder[Domain, Piece]):
             if domain_validation.is_failure():
                 return SearchResult.failure(domain_validation.exception)
             
-            search_context_validation = VisitorSearchContextValidator.execute(search_context)
+            search_context_validation = VisitorSearchContextValidator.query(search_context)
             if search_context_validation.is_failure():
                 return SearchResult.failure(search_context_validation.exception)
             

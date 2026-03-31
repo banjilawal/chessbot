@@ -7,27 +7,26 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
+from __future__ import annotations
+
 from abc import ABC, abstractmethod
-from typing import Generic, List, TypeVar
+from typing import List, TypeVar
 
 from logic.system import (
-    Builder, Context, IntegrityService, LoggingLevelRouter, SearchResult, Service, StackSearchRouter,
-    Validator
+    Context, IntegrityService, LoggingLevelRouter, SearchResult, Service, StackSearchRouter
 )
 
-C = TypeVar("C", bound="Context")
 T = TypeVar("T")
 
-class QueryService(Service[T]):
+class QueryService(ABC, Service[T]):
     """
     Role:
         -   API
-        -   Search Micro Service,
+        -   Stateless microservice
+        -   Operations Provider
 
     Responsibilities:
-        1.  Public facing API for querying datasets of T objects.
-        2.  Encapsulates Search and search filter validation in one extendable module.
-        3.  Manage Context integrity lifecycle.
+        1.  Baremetal microservice for querying collections.
 
     Args:
         id: int
@@ -36,13 +35,13 @@ class QueryService(Service[T]):
         context_service: IntegrityService[Context[T]]
         
     Provides:
-        -   execute(dataset: List[T], query: Context[T]) -> SearchResult[List[T]]
+        -   query(dataset: List[T], query: Context[T]) -> SearchResult[List[T]]
         
     Super Class:
-        QueryService
+        Service
     """
     _router: StackSearchRouter
-    _context_service: SquareContextService
+    _context_service: IntegrityService[Context[T]]
     
     def __init__(
             self,
@@ -74,6 +73,6 @@ class QueryService(Service[T]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(cls, dataset: List[T], context: Context[T]) -> SearchResult[List[T]]:
+    def query(cls, dataset: List[T], context: Context[T]) -> SearchResult[List[T]]:
         pass
     

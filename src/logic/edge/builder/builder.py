@@ -79,7 +79,7 @@ class EdgeBuilder(Builder[Edge]):
                  )
              )
          # Handle the case that, the head is not certified as a safe edge.
-         head_validation = node_service.validation.execute(candidate=head)
+         head_validation = node_service.validation.query(candidate=head)
          if head_validation.is_failure:
              # Return the exception chain on failure
              return BuildResult.failure(
@@ -89,7 +89,7 @@ class EdgeBuilder(Builder[Edge]):
                  )
              )
          # Handle the case that, the tail is not certified as a safe edge.
-         tail_validation = node_service.execute.execute(candidate=tail)
+         tail_validation = node_service.query.query(candidate=tail)
          if tail_validation.is_failure:
              # Return the exception chain on failure
              return BuildResult.failure(

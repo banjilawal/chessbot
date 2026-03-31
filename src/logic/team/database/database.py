@@ -134,7 +134,7 @@ class TeamDatabase(Database[Team]):
         method = "TeamDatabase.insert"
         
         # --- Use _token_database_core.insert_token because order does not matter for the occupant access. ---#
-        insertion_result = self._team_stack.execute(item=team)
+        insertion_result = self._team_stack.query(item=team)
         
         # Handle the case that, the insertion is not completed.
         if insertion_result.is_failure:

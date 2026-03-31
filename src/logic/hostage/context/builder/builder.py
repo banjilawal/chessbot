@@ -106,7 +106,7 @@ class CaptivityContextBuilder(Builder[CaptivityContext]):
         
         # Build the victor CaptivityContext if its flag is enabled.
         if victor is not None:
-            validation = token_service.validator.execute(candidate=victor)
+            validation = token_service.validator.query(candidate=victor)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(

@@ -17,27 +17,18 @@ __all__ = [
 
 from logic.system import ServiceException
 
-
 # ======================# TOKEN_CONTEXT_SERVICE_EXCEPTION #======================#
 class TokenQueryServiceException(ServiceException):
     """
-    Role:Coverage Target, Exception Chain Layer 0
+    Role:
+        -   Exception Chain Layer 0
+        -   Exception coverage target
 
     Responsibilities:
-    1.  Anchoring target for TokenQueryService debug (layer-2) error state firing incident
-        reports on
-            *   the triggering variable
-            *   The trigger's value.
-    2.  Indicate which TokenQueryService method received a worker's (layer-1) failure result.
-
-    Super Class:
-        *   ServiceException
-
-    Provides:
-
-
-    # INHERITED ATTRIBUTES:
-        *   See ServiceException class for inherited attributes.
+        1.  Anchoring target for TokenQueryService debug (layer-2) error variable
+            information.
+        2.  Indicate which TokenQueryService method received a worker's (layer-1)
+            failure result.
 
     Attributes:
         msg: Optional[str]
@@ -46,11 +37,10 @@ class TokenQueryServiceException(ServiceException):
         cls_mthd: Optional[str]
         err_code: Optional[str]
 
-    # LOCAL METHODS:
-    None
-
-    # INHERITED METHODS:
-        *   See ServiceException class for inherited methods.
+    Provides:
+   
+    Super Class:
+        ServiceException
     """
     CLS_NAME = "TokenQueryService"
     ERR_CODE = "TOKEN_CONTEXT_SERVICE_EXCEPTION"

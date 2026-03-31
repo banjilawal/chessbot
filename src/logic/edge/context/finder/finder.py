@@ -22,7 +22,7 @@ from logic.token import Token
 
 class EdgeFinder(StackSearchRouter[Edge]):
     """
-    Role:SearchProcess
+    Role:SearchRouter
 
     Responsibilities:
     1.  Send bag in a EdgeList whose attribute value match the query.key value to the caller.
@@ -32,7 +32,7 @@ class EdgeFinder(StackSearchRouter[Edge]):
     1.  EdgeFinder sends the raw list of matches. Resolving id collisions is the caller's responsibility.
 
     # PARENT
-        *   SearchProcess
+        *   SearchRouter
 
     Provides:
 

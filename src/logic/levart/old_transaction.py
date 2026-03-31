@@ -76,7 +76,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
     """
     method = "TravelEventFactory.execute"
 
-    event_validation = TravelEventValidator.execute(event)
+    event_validation = TravelEventValidator.query(event)
     if not event_validation.is_success():
       return TransactionResult(
         checkpoint=event,
@@ -119,7 +119,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
     actor_square = BoardSearch.route()
 
     if destination_occupant is None:
-      build_result = OccupationEventBuilder.execute(
+      build_result = OccupationEventBuilder.query(
         parent=event,
         actor=event.actor,
         actor_square=actor_square,
@@ -180,7 +180,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
       )
 
 
-    attack_validation = AttackValidator.execute(
+    attack_validation = AttackValidator.query(
       CaptureContext(piece=event.actor, enemy=destination_occupant, board=context.board)
     )
     if not attack_validation.is_success():
@@ -261,7 +261,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
         exception=OccupationEventException(f"{method}: {OccupationEventException.MSG}")
       )
 
-    directive.actor.positions.execute(directive.friend.position)
+    directive.actor.positions.query(directive.friend.position)
     if not directive.actor.current_position == directive.friend.position:
       # Rollback all changes in reverse order
       directive.actor.positions.undo_push()
@@ -308,7 +308,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
     """
     method = "OccupationExecutor._run_scan"
 
-    build_outcome = DiscoveryBuilder.execute(observer=directive.observer, subject=directive.friend)
+    build_outcome = DiscoveryBuilder.query(observer=directive.observer, subject=directive.friend)
     if not build_outcome.is_success():
       return TransactionResult(op_result_id, directive, exception=build_outcome.exception)
 

@@ -199,7 +199,7 @@ class CoordStackService(StackService[Coord]):
         method = f"{self.__class__.__name__}.query"
         
         # --- Handoff request fulfilment to the ops_controller. ---#
-        request_result = self._ops_controller.crud_controller.query.execute(
+        request_result = self._ops_controller.crud_controller.query.query(
             context=context,
             dataset=self.items,
         )

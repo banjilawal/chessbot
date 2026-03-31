@@ -27,7 +27,7 @@ class CommandBuilder(Builder[Command]):
         method = "CommandBuilder.build"
         
         # Handle the case that, the request does not pass a validation check.
-        validation_result = request_validator.execute(candidate=request)
+        validation_result = request_validator.query(candidate=request)
         if validation_result.is_failure:
             # Return the exception on failure.
             return BuildResult.failure(

@@ -19,7 +19,7 @@ from logic.coord import (
 
 class CoordSearchRouter(StackSearchRouter[Coord]):
     """
-    Role:SearchProcess
+    Role:SearchRouter
 
     Responsibilities:
     1.  Send bag in a CoordList whose attribute value match the query.key value to the caller.
@@ -29,7 +29,7 @@ class CoordSearchRouter(StackSearchRouter[Coord]):
     1.  CoordSearchRouter sends the raw list of matches. Resolving id collisions is the caller's responsibility.
 
     # PARENT
-        *   SearchProcess
+        *   SearchRouter
 
     Provides:
 
@@ -88,7 +88,7 @@ class CoordSearchRouter(StackSearchRouter[Coord]):
                 )
             )
         # handle the case that, query fails integrity tests.
-        context_validation = context_validator.execute(context)
+        context_validation = context_validator.query(context)
         if context_validation.is_failure:
             # Return the exception chain on failure.
             return SearchResult.failure(

@@ -300,7 +300,7 @@ class TokenStackService(StackService[Token]):
         method = f"{self.__class__.__name__}.query"
         
         # --- Handoff request fulfilment to the ops_controller. ---#
-        request_result = self._ops_controller.crud.query.execute(context=context)
+        request_result = self._ops_controller.crud.query.query(context=context)
         
         # Handle the case that, the request was not fulfilled.
         if request_result.is_failure:

@@ -28,12 +28,12 @@ __all__ = [
 
 class VisitationSearchException(ChessException):
   """
-  Super class of exception organic to `SearchProcess` objects. DO NOT USE DIRECTLY. Subclasses give
-  details useful for debugging. `FinderException` exists primarily to allow catching all `SearchProcess`
+  Super class of exception organic to `SearchRouter` objects. DO NOT USE DIRECTLY. Subclasses give
+  details useful for debugging. `FinderException` exists primarily to allow catching all `SearchRouter`
   exception.
   """
   DEFAULT_CODE = "SEARCH_EXCEPTION"
-  MSG = "SearchProcess raised an exception."
+  MSG = "SearchRouter raised an exception."
 
 
 #======================# SEARCH_COLLISION EXCEPTION #======================#

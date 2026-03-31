@@ -17,7 +17,7 @@ class Move:
     ):
         method = "Move.execute"
         
-        readiness_analysis_result = token_service.readiness_analyzer.execute(token=token)
+        readiness_analysis_result = token_service.readiness_analyzer.query(token=token)
         if readiness_analysis_result.is_failure:
             return MoveResult.failure(
                 MoveFailedException(

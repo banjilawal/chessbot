@@ -69,7 +69,7 @@ class DomainBuilder(Builder[Domain]):
         method = "DomainBuilder.build"
         
         try:
-            board_actor_validation = BoardActorValidator.execute(piece, board)
+            board_actor_validation = BoardActorValidator.query(piece, board)
             if board_actor_validation.is_failure():
                 return BuildResult.failure(board_actor_validation.exception)
             

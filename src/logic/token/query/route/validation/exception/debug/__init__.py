@@ -14,4 +14,3 @@ None
 
 # Modules
 from .null import TokenDatasetNullException
-from .empty import EmptyTokenDatasetException

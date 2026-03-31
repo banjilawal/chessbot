@@ -17,7 +17,7 @@ class CoordQueryService(QueryService[Coord]):
     """
     Role:
         -   API
-        -   Search Micro Service,
+        -   Search Microservice,
 
     Responsibilities:
         1.  Public facing API for querying square collections.
@@ -86,7 +86,7 @@ class CoordQueryService(QueryService[Coord]):
         return self._context_service
     
     @LoggingLevelRouter.monitor
-    def execute(self, dataset: List[Coord], context: CoordContext) -> SearchResult[List[Coord]]:
+    def query(self, dataset: List[Coord], context: CoordContext) -> SearchResult[List[Coord]]:
         """
         Find coords whose attribute value fits the query.
 
@@ -133,7 +133,7 @@ class CoordQueryService(QueryService[Coord]):
         method = f"{self.__class__.__name__}._run_safety_checks"
         
         # Handle the case that, the query is incorrect
-        context_validation_result = self._context_service.validation.execute(context)
+        context_validation_result = self._context_service.validation.query(context)
         if context_validation_result.is_failure:
             # Return the exception chain on failure.
             return SearchResult.failure(

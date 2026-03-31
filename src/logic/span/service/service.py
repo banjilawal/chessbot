@@ -127,7 +127,7 @@ class SpanService(Service[CoordSpan]):
         """
         method = f"{self.__class__.name}.graph"
         
-        span_result = self._spanner.execute(
+        span_result = self._spanner.query(
             origin=token.current_position,
             coord_service=self.coord_service,
         )

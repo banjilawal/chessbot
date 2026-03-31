@@ -19,7 +19,7 @@ from logic.system import Context, GameColor, LoggingLevelRouter
 
 class TokenContext(Context[Token]):
     """
-    Role:SearchProcess option filter
+    Role:SearchRouter option filter
 
     Responsibilities:
     Provides options for what type of key-value pair TokenSearchRouter should use to find matches.

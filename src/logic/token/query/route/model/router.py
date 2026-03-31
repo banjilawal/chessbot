@@ -11,18 +11,17 @@ from __future__ import annotations
 from typing import List
 
 from logic.rank import Rank
-from logic.square import Square
 from logic.team import Team
 from logic.system import GameColor, LoggingLevelRouter, SearchResult, StackSearchRouter
 from logic.token import (
-    Token, TokenContext, TokenQueryParamsValidator, TokenSearchException, MissingTokenSearchRouteException,
+    Token, TokenContext, TokenQueryParamsValidator, MissingTokenSearchRouteException,
     TokenSearchRouterException
 )
 
 
 class TokenSearchRouter(StackSearchRouter[Token]):
     """
-    Role:SearchProcess
+    Role:SearchRouter
 
     Responsibilities:
     1.  Send bag in a TokenList whose attribute value match the query.key value to the caller.
@@ -32,7 +31,7 @@ class TokenSearchRouter(StackSearchRouter[Token]):
     1.  TokenSearchRouter sends the raw list of matches. Resolving id collisions is the caller's responsibility.
 
     # PARENT
-        *   SearchProcess
+        *   SearchRouter
 
     Provides:
 

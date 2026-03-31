@@ -20,7 +20,7 @@ from logic.node import (
 
 class NodeFinder(StackSearchRouter[Node]):
     """
-    Role:SearchProcess
+    Role:SearchRouter
 
     Responsibilities:
     1.  Send bag in a NodeList whose attribute value match the query.key value to the caller.
@@ -30,7 +30,7 @@ class NodeFinder(StackSearchRouter[Node]):
     1.  NodeFinder sends the raw list of matches. Resolving id collisions is the caller's responsibility.
 
     # PARENT
-        *   SearchProcess
+        *   SearchRouter
 
     Provides:
 

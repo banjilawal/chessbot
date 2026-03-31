@@ -99,7 +99,7 @@ class CommandPipeline(ABC, Generic[C]):
         method = "CommandPipeline.build_request"
         
         # Handle the case that the
-        build_result = self._request_service.build.execute(
+        build_result = self._request_service.build.query(
             command_name=command_name,
             arguments=arguments
         )
@@ -120,10 +120,10 @@ class CommandPipeline(ABC, Generic[C]):
     def _build_command(self, request: Request) -> BuildResult[C]:
         method = "CommandPipeline._build_command"
         
-        build_result = self._command_service.build.execute(request=request)
+        build_result = self._command_service.build.query(request=request)
         
         # Handle the case that, the command is not created.
-        command_build_result = self._command_service.build.execute(
+        command_build_result = self._command_service.build.query(
             request=request,
             cipher=self._cipher,
             request_validator=self._request_service.validation,

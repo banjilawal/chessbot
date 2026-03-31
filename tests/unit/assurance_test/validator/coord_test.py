@@ -22,14 +22,14 @@ class CoordValidatorTest(unittest.TestCase):
 
   def test_null_coord_raises_exception(self):
     with self.assertRaises(CoordValidationException) as ctx:
-      CoordValidator.execute(None)
+      CoordValidator.query(None)
 
     self.assertIsInstance(ctx.exception.__cause__, NullCoordException)
 
 
   def test_cast_to_coord_failure_raises_exception(self):
     with self.assertRaises(CoordValidationException) as ctx:
-      CoordValidator.execute(1)
+      CoordValidator.query(1)
 
     self.assertIsInstance(ctx.exception.__cause__, TypeError)
 
@@ -41,7 +41,7 @@ class CoordValidatorTest(unittest.TestCase):
     mock_coord.column = 0 # valid column
 
     with self.assertRaises(CoordValidationException) as ctx:
-      CoordValidator.execute(mock_coord)
+      CoordValidator.query(mock_coord)
 
     self.assertIsInstance(ctx.exception.__cause__, NullRowException)
 
@@ -53,7 +53,7 @@ class CoordValidatorTest(unittest.TestCase):
     mock_coord.column = 0 # valid column
 
     with self.assertRaises(CoordValidationException) as ctx:
-      CoordValidator.execute(mock_coord)
+      CoordValidator.query(mock_coord)
 
     self.assertIsInstance(ctx.exception.__cause__, RowBelowBoundsException)
 
@@ -64,7 +64,7 @@ class CoordValidatorTest(unittest.TestCase):
     mock_coord.column = 0 # valid column
 
     with self.assertRaises(CoordValidationException) as ctx:
-      CoordValidator.execute(mock_coord)
+      CoordValidator.query(mock_coord)
 
     self.assertIsInstance(ctx.exception.__cause__, RowAboveBoundsException)
 
@@ -76,7 +76,7 @@ class CoordValidatorTest(unittest.TestCase):
     mock_coord.column = None
 
     with self.assertRaises(CoordValidationException) as ctx:
-      CoordValidator.execute(mock_coord)
+      CoordValidator.query(mock_coord)
 
     self.assertIsInstance(ctx.exception.__cause__, NullColumnException)
 
@@ -87,7 +87,7 @@ class CoordValidatorTest(unittest.TestCase):
     mock_coord.column = -1
 
     with self.assertRaises(CoordValidationException) as ctx:
-      CoordValidator.execute(mock_coord)
+      CoordValidator.query(mock_coord)
 
     self.assertIsInstance(ctx.exception.__cause__, ColumnBelowBoundsException)
 
@@ -98,14 +98,14 @@ class CoordValidatorTest(unittest.TestCase):
     mock_coord.column = NUMBER_OF_COLUMNS
 
     with self.assertRaises(CoordValidationException) as ctx:
-      CoordValidator.execute(mock_coord)
+      CoordValidator.query(mock_coord)
 
     self.assertIsInstance(ctx.exception.__cause__, ColumnAboveBoundsException)
 
 
   def test_validation_payload_equals_input_param(self):
     mock_coord = CoordValidataorTest.valid_mock_coord(3, 4)
-    result = CoordValidator.execute(mock_coord)
+    result = CoordValidator.query(mock_coord)
     self.assertEqual(result.payload, mock_coord)
 
 

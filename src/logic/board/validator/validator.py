@@ -131,7 +131,7 @@ class BoardValidator(Validator[Board]):
         
         method = "BoardValidator._validate_arena"
         
-        relation_analysis = arena_service.relation_analysis_analyzer.execute(
+        relation_analysis = arena_service.relation_analysis_analyzer.query(
             candidate_primary=board.arena,
             candidate_satellite=board,
         )

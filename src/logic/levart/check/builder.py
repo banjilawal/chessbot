@@ -99,11 +99,11 @@ class CheckEventBuilder(Enum):
       if not id_validation.is_success():
         ThrowHelper.log_and_raise_exception(AttackEventBuilder, id_validation)
 
-      actor_validation = PieceValidator.execute(actor)
+      actor_validation = PieceValidator.query(actor)
       if not actor_validation.is_success():
         raise InvalidAttackException(f"{method}: KingCheckEvent actor_candidate failed validate")
 
-      enemy_validation = PieceValidator.execute(enemy)
+      enemy_validation = PieceValidator.query(enemy)
       if not enemy_validation.is_success():
         raise InvalidAttackException(f"{method}: KingCheckEvent enemy failed validate")
 

@@ -46,15 +46,15 @@ class OldOccupationEventValidator(EventValidator[OccupationEvent]):
 
       event = cast(OccupationEvent, t)
 
-      id_validation = IdValidator.execute(event.visitor_id)
+      id_validation = IdValidator.query(event.visitor_id)
       if not id_validation.is_success():
         raise IdValidationException(f"{method}: {IdValidationException.MSG}")
 
-      actor_validation = ActorValidator.execute(event.actor)
+      actor_validation = ActorValidator.query(event.actor)
       if not actor_validation.is_success():
         raise InvalidActorException(f"{method}: {InvalidActorException.MSG}")
 
-      destination_square_validation = SquareValidator.execute(event.friend)
+      destination_square_validation = SquareValidator.query(event.friend)
       if not destination_square_validation.is_success():
         raise InvalidSquareException(f"{method}: {InvalidSqaureException.MSG}")
 

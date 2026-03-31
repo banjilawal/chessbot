@@ -23,7 +23,7 @@ from logic.system import (
 
 class EdgeStack(StackService[Edge]):
     """
-    Role:Data Stack, SearchProcess IntegrityService, CRUD Controller, Encapsulation, API layer.
+    Role:Data Stack, SearchRouter IntegrityService, CRUD Controller, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing API.

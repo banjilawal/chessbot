@@ -108,7 +108,7 @@ class SquareStackPush:
                 )
             )
         # --- ServiceRequest a rank quota report. ---#
-        rank_quota_report = rank_quota_analyzer.execute(
+        rank_quota_report = rank_quota_analyzer.query(
             rank=square.rank,
             square_stack=square_stack,
             rank_service=rank_service,

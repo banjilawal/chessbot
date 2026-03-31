@@ -17,23 +17,15 @@ __all__ = [
 
 from logic.token import TokenDebugException
 
-
 # ======================# TOKEN_NOT_FOUND_EXCEPTION #======================#
 class TokenNotFoundException(TokenDebugException):
     """
-    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
-
+    Role:
+        -   Exception Chain Layer 0
+        -   Exception coverage target
+    
     Responsibilities:
-    1.  Indicate that no token was found.
-
-    Super Class:
-        *   TokenDebugException
-
-    Provides:
-
-
-    # INHERITED ATTRIBUTES:
-        *   TokenDebugException class for inherited attributes.
+        1.  Indicate that no token was found.
 
     Attributes:
         var: Optional[str]
@@ -41,12 +33,11 @@ class TokenNotFoundException(TokenDebugException):
         msg: Optional[str]
         ex: Optional[Exception]
         err_code: Optional[str]
-
-    # LOCAL METHODS:
-    None
-
-    # INHERITED METHODS:
-        *   See TokenDebugException class for inherited methods.
+    
+    Provides
+    
+    Super Class:
+        TokenDebugException
     """
     ERR_CODE = "TOKEN_NOT_FOUND_EXCEPTION"
     MSG = "No token matching the attribute was found."

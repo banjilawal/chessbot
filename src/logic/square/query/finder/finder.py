@@ -34,18 +34,18 @@ class SquareFinder(StackSearchRouter[Square]):
     1.  A search result might contain duplicates.
 
     # PARENT
-        *   SearchProcess
+        *   SearchRouter
 
     Provides:
 
 
     # INHERITED ATTRIBUTES:
-        *   See SearchProcess for inherited attributes.
+        *   See SearchRouter for inherited attributes.
         
     Attributes:
     None
         Inherited:
-            *   See SearchProcess for inherited constructor parameters.
+            *   See SearchRouter for inherited constructor parameters.
         
     # LOCAL METHODS:
         *   find(

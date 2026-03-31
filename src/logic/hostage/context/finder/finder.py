@@ -21,7 +21,7 @@ from logic.token import CombatantToken, Token
 
 class HostageFinder(DataFinder[Hostage]):
     """
-    Role:SearchProcess
+    Role:SearchRouter
 
     Responsibilities:
     1.  Send bag in a HostageList whose attribute value match the query.key value to the caller.
@@ -31,7 +31,7 @@ class HostageFinder(DataFinder[Hostage]):
     1.  HostageFinder sends the raw list of matches. Resolving id collisions is the caller's responsibility.
 
     # PARENT
-        *   SearchProcess
+        *   SearchRouter
 
     Provides:
 

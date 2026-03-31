@@ -11,10 +11,10 @@ from enum import Enum
 from typing import List
 from abc import abstractmethod
 
-from logic.system import SearchProcess, Context, LoggingLevelRouter, SearchResult, Validator
+from logic.system import SearchRouter, Context, LoggingLevelRouter, SearchResult, Validator
 
 
-class HashLookupProcess(SearchProcess[Enum]):
+class HashLookupProcess(SearchRouter[Enum]):
     """
     Role:Forward Lookups,
 
@@ -25,7 +25,7 @@ class HashLookupProcess(SearchProcess[Enum]):
     3.  Indicate the HashMap does have an entry for the Key with an exception in the SearchResult.
 
     Super Class:
-        *   SearchProcess
+        *   SearchRouter
 
     Provides:
 

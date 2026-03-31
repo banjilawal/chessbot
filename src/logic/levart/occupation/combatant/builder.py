@@ -41,11 +41,11 @@ class CombatantOccupationEventBuilder(Builder[CombatantOccupationEvent]):
         ThrowHelper.log_and_raise_exception(AttackEventBuilder, id_validation)
 
 
-      actor_validation = PieceValidator.execute(actor)
+      actor_validation = PieceValidator.query(actor)
       if not actor_validation.is_success():
         raise InvalidAttackException(f"{method}: AttackEvent actor_candidate failed validate")
 
-      enemy_validation = PieceValidator.execute(enemy)
+      enemy_validation = PieceValidator.query(enemy)
       if not enemy_validation.is_success():
         raise InvalidAttackException(f"{method}: AttackEvent enemy failed validate")
 

@@ -97,17 +97,17 @@ class RankValidatorFactory(Validator[Rank]):
             rank = cast(Rank, candidate)
             # Pick which validation to run.
             if isinstance(candidate, King):
-                return king_validator.execute(rank)
+                return king_validator.query(rank)
             if isinstance(candidate, Queen):
-                return queen_validator.execute(rank)
+                return queen_validator.query(rank)
             if isinstance(candidate, Rook):
-                return rook_validator.execute(rank)
+                return rook_validator.query(rank)
             if isinstance(candidate, Bishop):
-                return bishop_validator.execute(rank)
+                return bishop_validator.query(rank)
             if isinstance(candidate, Knight):
-                return knight_validator.execute(rank)
+                return knight_validator.query(rank)
             if isinstance(candidate, Pawn):
-                return pawn_validator.execute(rank)
+                return pawn_validator.query(rank)
             
         # If the candidate is not any of the concrete Ranks control passes to the except block.
         # The unhandled exception is wrapped inside an RankValidationException which is sent inside

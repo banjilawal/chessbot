@@ -10,24 +10,24 @@ class IdValidatorTest(unittest.TestCase):
 
   def test_null_id_raises_exception(self):
     with self.assertRaises(IdValidationException) as ctx:
-      IdValidator.execute(None)
+      IdValidator.query(None)
     self.assertIsInstance(ctx.exception.__cause__,IdNullException)
 
 
   def test_cast_to_int_failure_raises_exception(self):
     with self.assertRaises(IdValidationException) as ctx:
-      IdValidator.execute("5")
+      IdValidator.query("5")
     self.assertIsInstance(ctx.exception.__cause__, TypeError)
 
 
   def test_negative_id_raises_exception(self):
     with self.assertRaises(IdValidationException) as ctx:
-      IdValidator.execute(-1)
+      IdValidator.query(-1)
     self.assertIsInstance(ctx.exception.__cause__, NegativeIdException)
 
 
   def test_validation_payload_equals_input_param(self):
-    result = IdValidator.execute(1)
+    result = IdValidator.query(1)
     self.assertEqual(result.payload, 1)
 
 

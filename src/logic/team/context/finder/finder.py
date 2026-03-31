@@ -20,7 +20,7 @@ from logic.team import (
 
 class TeamFinder(DataFinder[Team]):
     """
-    Role:SearchProcess
+    Role:SearchRouter
 
     Responsibilities:
     1.  Send bag in a TeamList whose attribute value match the query.key value to the caller.
@@ -30,7 +30,7 @@ class TeamFinder(DataFinder[Team]):
     1.  TeamFinder sends the raw list of matches. Resolving id collisions is the caller's responsibility.
 
     # PARENT
-        *   SearchProcess
+        *   SearchRouter
 
     Provides:
 

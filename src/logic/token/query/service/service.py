@@ -1,4 +1,4 @@
-# src/logic/token/query/service/validator.py
+# src/logic/token/query/service/service.py
 
 """
 Module: logic.token.query.service.service
@@ -19,10 +19,11 @@ class TokenQueryService(QueryService[Token]):
     """
     Role:
         -   API
-        -   Search Micro Service,
+        -   Stateless microservice
+        -   Operations Provider
 
     Responsibilities:
-        1.  Public facing API for querying square collections.
+        1.  Baremetal microservice for querying Tokens.
 
     Args:
         id: int

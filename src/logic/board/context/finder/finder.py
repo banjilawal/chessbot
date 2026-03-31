@@ -20,7 +20,7 @@ from logic.board import (
 
 class BoardFinder(DataFinder[Board]):
     """
-    Role:SearchProcess
+    Role:SearchRouter
 
     Responsibilities:
     1.  Send bag in a BoardList whose attribute value match the query.key value to the caller.
@@ -30,7 +30,7 @@ class BoardFinder(DataFinder[Board]):
     1.  BoardFinder sends the raw list of matches. Resolving id collisions is the caller's responsibility.
 
     # PARENT
-        *   SearchProcess
+        *   SearchRouter
 
     Provides:
 

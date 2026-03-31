@@ -66,7 +66,7 @@ class BoardActorValidator(Validator[Tuple[Piece, Board]]):
       
       actor_candidate, environment_candidate = candidate
       
-      actor_validation = PieceValidator.execute(actor_candidate)
+      actor_validation = PieceValidator.query(actor_candidate)
       if actor_validation.is_failure():
         return ValidationResult.failure(actor_validation.exception)
 

@@ -7,15 +7,16 @@ Created: 2025-11-18
 Version: 1.0.0
 """
 
+from __future__ import annotations
 from abc import abstractmethod
 from typing import TypeVar, List
 
-from logic.system import Context, SearchProcess, Validator, SearchResult
+from logic.system import Context, SearchRouter, Validator, SearchResult
 
 T = TypeVar("T")
 
 
-class StackSearchRouter(SearchProcess[T]):
+class StackSearchRouter(SearchRouter[T]):
     """"""
     
     @classmethod
@@ -27,14 +28,5 @@ class StackSearchRouter(SearchProcess[T]):
             context_validator: Validator[Context[T]]
     ) -> SearchResult[List[T]]:
         """
-        ACTION:
-        PARAMETERS:
-            * dataset (List[D])
-            * context (Context[D)
-            * context_validator (Validator[Context[D])
-        RETURNS:
-            SearchResult[List[R]] or Void
-        Raise:
-            No exception. Subclasses raise exception.
         """
         pass

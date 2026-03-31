@@ -43,14 +43,14 @@ class BlockingEventValidator(Validator[BlockingEvent]):
             if id_validation.is_failure():
                 return ValidationResult.failure(id_validation.exception)
             
-            actor_validation = BoardActorValidator.execute(
+            actor_validation = BoardActorValidator.query(
                 actor=event.actor,
                 environment=event.execution_environment
             )
             if actor_validation.is_failure():
                 return ValidationResult.failure(actor_validation.exception)
             
-            resource_validation = TravelResourceValidator.execute(
+            resource_validation = TravelResourceValidator.query(
                 resource=event.blocked_square,
                 environment=event.execution_environment
             )
@@ -62,7 +62,7 @@ class BlockingEventValidator(Validator[BlockingEvent]):
                     ActorBlockingOwnSquareException(f"{method}: {ActorBlockingOwnSquareException.MSG}")
                 )
             
-            blocker_validation = PieceValidator.execute(event.friend)
+            blocker_validation = PieceValidator.query(event.friend)
             if blocker_validation.is_failure():
                 return ValidationResult(exception=blocker_validation.exception)
             
@@ -76,7 +76,7 @@ class BlockingEventValidator(Validator[BlockingEvent]):
                     f"{method}: {EnemyCannotBeBlockerException.MSG}")
                 )
             
-            context_build_result = DiscoverySearchContextBuilder.execute(piece_id=event.friend.visitor_id)
+            context_build_result = DiscoverySearchContextBuilder.query(piece_id=event.friend.visitor_id)
             if context_build_result.is_failure():
                 return ValidationResult.failure(context_build_result.exception)
             search_context = cast(DiscoverySearchContext, context_build_result.payload)

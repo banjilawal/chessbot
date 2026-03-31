@@ -246,29 +246,29 @@ class BishopSpanService(SpanService):
                         tail_square=square_v,
                         node_builder=graph.vertices.pair_service.build
                     )
-                    v_build_result = graph.vertices.pair_service.build.execute(
+                    v_build_result = graph.vertices.pair_service.build.query(
                         square=square_v,
                         square_validator=square_database.integrity_service.validation,
                     )
-                    u_build_result = graph.vertices.pair_service.build.execute(
+                    u_build_result = graph.vertices.pair_service.build.query(
                         square=square_u,
                         square_validator=square_database.integrity_service.validation,
                     )
-                    graph.vertices.execute(u_build_result.payload)
-                    graph.vertices.execute(v_build_result.payload)
+                    graph.vertices.query(u_build_result.payload)
+                    graph.vertices.query(v_build_result.payload)
                     
-                    e = graph.edges.pair_service.build.execute(
+                    e = graph.edges.pair_service.build.query(
                         head=u_build_result.payload,
                         tail=v_build_result.payload,
                         coord_service=self.coord_service,
                     )
-                    f = graph.edges.pair_service.build.execute(
+                    f = graph.edges.pair_service.build.query(
                         head=v_build_result.payload,
                         tail=u_build_result.payload,
                         coord_service=self.coord_service,
                     )
-                    graph.edges.execute(e)
-                    graph.edges.execute(f)
+                    graph.edges.query(e)
+                    graph.edges.query(f)
                     
                     u = graph.vertices.pair_service.add_vertex(previous_square)
                     
@@ -277,8 +277,8 @@ class BishopSpanService(SpanService):
                         target=v,
                         weight=graph.edges.pair_service
                     )
-                    f = graph.edges.execute(
-                        graph.edges.pair_service.build.execute(
+                    f = graph.edges.query(
+                        graph.edges.pair_service.build.query(
                         
                         )
                     )

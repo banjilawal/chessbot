@@ -119,7 +119,7 @@ class Player(ABC):
     # )
     #
     # # Which internally uses your transactional system:
-    # # 1. SearchProcess returns Result[Token]
+    # # 1. SearchRouter returns Result[Token]
     # # 2. Validates inputs
     # # 3. Creates MoveEvent
     # # 4. Executes via TravelTransaction
@@ -129,7 +129,7 @@ class Player(ABC):
         method = "Player.move_piece"
         
         try:
-            validation = NameValidator.execute(piece_name)
+            validation = NameValidator.query(piece_name)
             if not validation.is_success():
                 raise validation.exception
             
@@ -150,7 +150,7 @@ class Player(ABC):
             if isinstance(piece, CombatantPiece) and piece.victor is not None:
                 raise PrisonerEscapeException(f"{method}: Cannot move {piece.name} it has been captured.")
             
-            validation = CoordValidator.execute(destination)
+            validation = CoordValidator.query(destination)
             if not validation.is_success():
                 raise validation.exception
             

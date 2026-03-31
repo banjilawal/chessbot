@@ -14,4 +14,4 @@ None
 
 # Modules
 from .empty import DepartingEmptySquareException
-from .work import SquareDepartureException
+from .transaction import SquareDepartureException

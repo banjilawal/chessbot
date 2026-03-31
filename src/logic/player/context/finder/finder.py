@@ -21,20 +21,20 @@ from logic.team import Team, TeamContext
 
 class AgentFinder(DataFinder[PlayerAgent]):
     """
-    Role:SearchProcess
+    Role:SearchRouter
 
     Responsibilities:
     1.  Search Player collections for bag which match the attribute target specified in the AgentContext parameter.
     2.  Safely forward any errors encountered during a search to the caller.
 
     Super Class:
-        *   SearchProcess
+        *   SearchRouter
 
     Provides:
 
 
     # INHERITED ATTRIBUTES:
-        *   See SearchProcess class for inherited attributes.
+        *   See SearchRouter class for inherited attributes.
     """
     @classmethod
     @LoggingLevelRouter.monitor
@@ -75,7 +75,7 @@ class AgentFinder(DataFinder[PlayerAgent]):
                     AgentNullDatasetException(f"{method}: {AgentNullDatasetException.MSG}")
                 )
             # certify the map is safe.
-            validation_result = context_validator.execute(context)
+            validation_result = context_validator.query(context)
             if validation_result.is_failure:
                 return SearchResult.failure(validation_result.exception)
             

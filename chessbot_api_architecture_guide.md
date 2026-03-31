@@ -507,7 +507,7 @@ from chess.team import Team
 from chess.rank import Knight
 from chess.piece import CombatantPiece, PieceFactory
 
-build_result = PieceFactory.execute(name="WN2", rank=Knight(), team=white_team)
+build_result = PieceFactory.query(name="WN2", rank=Knight(), team=white_team)
 if not build_result.is_success():
     raise build_result.exception
 

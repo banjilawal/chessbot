@@ -16,14 +16,14 @@ class SquareValidatorTest(unittest.TestCase):
 
   def test_null_square_raises_exception(self):
     with self.assertRaises(SquareValidationException) as ctx:
-      SquareValidator.execute(None)
+      SquareValidator.query(None)
 
     self.assertIsInstance(ctx.exception.__cause__, NullSquareException)
 
 
   def test_cast_to_square_failure_raises_exception(self):
     with self.assertRaises(SquareValidationException) as ctx:
-      SquareValidator.execute(1)
+      SquareValidator.query(1)
 
     self.assertIsInstance(ctx.exception.__cause__, TypeError)
 
@@ -35,7 +35,7 @@ class SquareValidatorTest(unittest.TestCase):
     mock_square._position=CoordTest.valid_mock_coord()
 
     with self.assertRaises(SquareValidationException) as ctx:
-      SquareValidator.execute(mock_square)
+      SquareValidator.query(mock_square)
 
     self.assertIsInstance(ctx.exception.__cause__, IdValidationException)
 
@@ -47,7 +47,7 @@ class SquareValidatorTest(unittest.TestCase):
     mock_square._position=CoordTest.valid_mock_coord()
 
     with self.assertRaises(SquareValidationException) as ctx:
-      SquareValidator.execute(mock_square)
+      SquareValidator.query(mock_square)
 
     self.assertIsInstance(ctx.exception.__cause__, NameValidationException)
 
@@ -59,14 +59,14 @@ class SquareValidatorTest(unittest.TestCase):
     mock_square.position=None
 
     with self.assertRaises(SquareValidationException) as ctx:
-      SquareValidator.execute(mock_square)
+      SquareValidator.query(mock_square)
 
     self.assertIsInstance(ctx.exception.__cause__, CoordValidationException)
 
 
   def test_square_validator_payload_equals_valid_square(self):
     square = SquareTest.valid_mock_square()
-    validation = SquareValidator.execute(square)
+    validation = SquareValidator.query(square)
     self.assertEqual(validation.payload, square)
 
 

@@ -32,7 +32,7 @@ class CheckTransaction(TravelTransaction[KingCheckEvent]):
   def execute(self) -> TransactionResult:
     method = "AttackTransaction.execute"
 
-    validation = AttackEventValidator.execute(self.event)
+    validation = AttackEventValidator.query(self.event)
     if not validation.is_success():
       return TransactionResult(event, validation.exception)
 
@@ -118,6 +118,6 @@ class CheckTransaction(TravelTransaction[KingCheckEvent]):
       event_id=id_emitter.attack_id,
       actor_square=event.actor_square
     )
-    return OccupationTransaction.execute(transfer_event, context)
+    return OccupationTransaction.query(transfer_event, context)
 
 

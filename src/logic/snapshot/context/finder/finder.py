@@ -19,7 +19,7 @@ from logic.snapshot import GameTimeline, NullGameTimelineException, Snapshot, Sn
 
 class SnapshotFinder(Finder[Snapshot]):
     """
-    Role:SearchProcess
+    Role:SearchRouter
 
     Responsibilities:
     1.  Search AgentStackService or Database objects for Agents with an attribute that matches the
@@ -27,7 +27,7 @@ class SnapshotFinder(Finder[Snapshot]):
     2.  Safely forward any errors encountered during a search to the caller.
 
     Super Class:
-        *   SearchProcess
+        *   SearchRouter
 
     # PROVIDES:
     SnapshotFinder:

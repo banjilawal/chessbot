@@ -115,7 +115,7 @@ class SquareService(IntegrityService[Square]):
         # Backup the square
         pre_update_square = deepcopy(square)
         # --- Forward the request to the processor. ---#
-        visitation_result = self._controller.visitation.entry.execute(
+        visitation_result = self._controller.visitation.entry.query(
             token=visitor,
             square=square,
             token_service=token_service,
@@ -155,7 +155,7 @@ class SquareService(IntegrityService[Square]):
         method = f"{self.__class__.__name__}.end_square_visit"
         
         # --- Forward the request to the processor. ---#
-        visitation_result = self._controller.visitation.departure.execute(
+        visitation_result = self._controller.visitation.departure.query(
             square=square,
             square_validator=self.validation,
         )
