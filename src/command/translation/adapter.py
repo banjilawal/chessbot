@@ -10,7 +10,7 @@ from __future__ import annotations
 from typing import Any, Dict
 
 
-class Request:
+class CommandServiceRequestAdapter:
     """
     Role:Messaging. Service ServiceRequest, Command Build Params.
 

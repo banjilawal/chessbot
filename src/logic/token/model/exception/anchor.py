@@ -41,7 +41,6 @@ class TokenException(AnchorException):
     Super Class:
         AnchorException
     """
-    CLS_NAME = "Token"
     ERR_CODE = "TOKEN_EXCEPTION"
     MSG = "Token raised an exception."
     
@@ -62,6 +61,11 @@ class TokenException(AnchorException):
             err_code: Optional[str]
         """
         msg = msg or self.MSG
-        cls_name = cls_name or self.CLS_NAME
         err_code = err_code or self.ERR_CODE
-        super().__init__(msg=msg, err_code=err_code, ex=ex, cls_name=cls_name, cls_mthd=cls_mthd)
+        super().__init__(
+            ex=ex,
+            msg=msg,
+            err_code=err_code,
+            cls_name=cls_name,
+            cls_mthd=cls_mthd,
+        )

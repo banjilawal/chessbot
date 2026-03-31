@@ -1,7 +1,7 @@
-# src/command/command/command.py
+# src/command/command/model/command.py
 
 """
-Module: command.command.command
+Module: command.command.model/.command
 Author: Banji Lawal
 Created: 2026-02-24
 """
@@ -11,26 +11,55 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Dict, Generic, TypeVar
 
+from logic.system import Service
+
 T = TypeVar("T")
 
 class Command(ABC, Generic[T]):
     """
-    A class representing a service command.
+    Role
+        -   Data-Holder
+        -   Messaging
+
+    Naming Conventions:
+        -   <Operation>Command.
+
+    Responsibilities:
+        1.  Issue its server instructions on how the client wants the operation to be executed.
+
+    Attributes:
+        id: int
+        name: str - Name of the server's operation.
+        server: Service - Operation provider
+        parameters: Dict[str, Any] - Parameters for the operation's methods.
+
+    Provides:
+        -   execute(candidate: Any, *args, **kwargs) -> ValidationResult[T]
+
+    super Class:
     """
     _id: int
     _name: str
-    _service: T
+    _service: Service
     _parameters: Dict[str: Any]
     
     def __init__(
             self,
             id: int,
             name: str,
-            service: T,
+            service: Service,
             parameters: Dict[str, Any],
     ):
+        """
+        Args:
+            id: int
+            name: str
+            service: Service
+            parameters: Dict[str, Any]
+        """
         self._id = id
         self._name = name
+        self._service = service
         self._parameters = parameters
         
     @property
@@ -42,7 +71,7 @@ class Command(ABC, Generic[T]):
         return self._name
     
     @property
-    def service(self) -> T:
+    def service(self) -> Service:
         return self._service
     
     @property
@@ -58,6 +87,7 @@ class Command(ABC, Generic[T]):
     
     def __hash__(self) -> int:
         return hash(self._id)
+    
     @classmethod
     @abstractmethod
     def cipher(cls,) -> T:

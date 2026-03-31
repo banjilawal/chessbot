@@ -1,53 +1,65 @@
-# src/command/command/exception/super.py
+# src/command/command/model/exception/anchor.py
 
 """
-Module: command.command.exception.super
+Module: command.command.model.exception.anchor
 Author: Banji Lawal
 Created: 2026-02-24
 """
 
 from __future__ import annotations
+from typing import Optional
 
 __all__ = [
     # ======================# COMMAND_EXCEPTION #======================#
     "CommandException",
 ]
 
-from typing import Optional
 from logic.system import AnchorException
-
 
 # ======================# COMMAND_EXCEPTION #======================#
 class CommandException(AnchorException):
     """
-    Role:Debug Coverage Target, Exception Chain Layer 0
+    Role:
+        -   Exception Chain Layer 0
+        -   Exception coverage target
 
     Responsibilities:
-    1.  Layer-0 of Exception chain which is the Parent of CommandDebugException
+        1.  Anchoring target for Command debug (layer-2) error variable information.
+        2.  Indicate which Command method received a worker's (layer-1) failure result.
 
-    Super Class:
-      *   AnchorException
+    Attributes:
+        msg: Optional[str]
+        ex: Optional[Exception]
+        cls_name: Optional[str]
+        cls_mthd: Optional[str]
+        err_code: Optional[str]
 
     Provides:
 
-    # ATTRIBUTES:
-    None
+    Super Class:
+        AnchorException
     """
     ERR_CODE = "COMMAND_EXCEPTION"
     MSG = "Command raised an exception."
-    CLS_NAME = "Command"
     
     def __init__(
             self,
-            err_code: Optional[str] = None,
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
             cls_name: Optional[str] = None,
             cls_mthd: Optional[str] = None,
+            err_code: Optional[str] = None,
     ):
+        """
+        Args:
+            msg: Optional[str]
+            ex: Optional[Exception]
+            cls_name: Optional[str]
+            cls_mthd: Optional[str]
+            err_code: Optional[str]
+        """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        cls_name = cls_name or self.CLS_NAME
         super().__init__(
             ex=ex,
             msg=msg,
