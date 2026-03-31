@@ -22,6 +22,7 @@ from .menu import *
 from .pipeline import *
 from .request import *
 from .route import *
+from .root import *
 
 # Modules
 None

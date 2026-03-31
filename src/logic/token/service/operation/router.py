@@ -9,12 +9,12 @@ Version: 1.0.0
 
 from __future__ import annotations
 
-from typing import Any, Dict
+from typing import Any
 
-from command.token.deploy import DeployTokenCommand
-from command.token.root import TokenCommand
+from command.token import DeployTokenCommand, PromotePawnCommand, TokenCommand, ValidateTokenCommand
+from command.token.service.build import BuildTokenCommand
 from logic.system import LoggingLevelRouter, Router
-from logic.token import Token, TokenOpsController, TokenService
+from logic.token import TokenOpsController, TokenService
 
 
 class TokenOpsRouter(Router[str]):
@@ -50,14 +50,18 @@ class TokenOpsRouter(Router[str]):
     
     @LoggingLevelRouter.monitor
     def route(self, command: TokenCommand) -> Any:
-        if command.name.upper() == "build".upper():
-            return self._service.builder
-        if command.name.upper() == "validate".upper():
-            return self._service.validator
+        if isinstance(command, BuildTokenCommand):
+            return self._service.builder.build(
+                owner=command.parameters["owner"],
+                formation=command.parameters["formation"],
+            )
+        if isinstance(command, ValidateTokenCommand):
+            return self._service.validator.validate(candidate=command.parameters["candidate"])
         if isinstance(command, DeployTokenCommand):
-            cipher = Dict[str, Token]
-            
             return self._service.deploy_on_board(token=command.parameters["token"])
-        if command.name.upper() == "promote".upper():
-            return self._controller.pawn_promoter
+        if isinstance(command, PromotePawnCommand):
+            return self._service.promote_pawn(
+                pawn_token=command.parameters["pawn_token"],
+                rank=command.parameters["rank"],
+            )
         
