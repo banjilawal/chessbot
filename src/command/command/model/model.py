@@ -40,14 +40,14 @@ class Command(ABC, Generic[T]):
     """
     _id: int
     _name: str
-    _service: Service
+    _server: Service
     _parameters: Dict[str: Any]
     
     def __init__(
             self,
             id: int,
             name: str,
-            service: Service,
+            server: Service,
             parameters: Dict[str, Any],
     ):
         """
@@ -59,7 +59,7 @@ class Command(ABC, Generic[T]):
         """
         self._id = id
         self._name = name
-        self._service = service
+        self._server = server
         self._parameters = parameters
         
     @property
@@ -71,8 +71,8 @@ class Command(ABC, Generic[T]):
         return self._name
     
     @property
-    def service(self) -> Service:
-        return self._service
+    def server(self) -> Service:
+        return self._server
     
     @property
     def parameters(self) -> Dict[str, Any]:

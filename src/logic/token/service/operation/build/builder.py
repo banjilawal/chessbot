@@ -17,7 +17,7 @@ from logic.token import CombatantToken, KingToken, PawnToken, TokenBuildExceptio
 from logic.system import BuildResult, Builder, IdFactory, IdentityService, LoggingLevelRouter
 
 
-class TokenBuild(Builder[Token]):
+class TokenBuilder(Builder[Token]):
     """
     Role
         -   Transaction Worker
@@ -172,7 +172,7 @@ class TokenBuild(Builder[Token]):
         Raises:
             TokenBuildException
         """
-        method = "TokenBuild._build_pawn"
+        method = "TokenBuilder._build_pawn"
         
         # Build path for pawns.
         if formation.persona == Persona.PAWN:

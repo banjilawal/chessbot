@@ -1,15 +1,15 @@
-# src/command/command/argument/__init__.py
+# src/command/command/service/operation/validation/argument/__init__.py
 
 """
-Module: command.command.argument.__init__
+Module: command.command.service.operation.validation.argument.__init__
 Author: Banji Lawal
 Created: 2026-02-24
 """
 
-# =========== COMMAND.ARGUMENT PACKAGE CONTENTS ===========#
+# =========== COMMAND.SERVICE.OPERATION.VALIDATION.ARGUMENT PACKAGE CONTENTS ===========#
 
 # Packages
 from .exception import *
 
 # Modules
-from .validator import CommandParamValidator
+from .validator import CommandArgsValidator

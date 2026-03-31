@@ -15,7 +15,7 @@ from logic.schema import SchemaService
 from logic.rank import Rank, RankService
 from logic.coord import Coord, CoordService
 from logic.system import DeletionResult, IdFactory, InsertionResult, IntegrityService, LoggingLevelRouter, UpdateResult
-from logic.token import PawnToken, Token, TokenBuild, TokenOpsController, TokenServiceException, TokenValidation
+from logic.token import PawnToken, Token, TokenBuilder, TokenOpsController, TokenServiceException, TokenValidation
 
 
 class TokenService(IntegrityService[Token]):
@@ -84,7 +84,7 @@ class TokenService(IntegrityService[Token]):
         self._controller = controller
     
     @property
-    def build(self) -> TokenBuild:
+    def build(self) -> TokenBuilder:
         return self._controller.build
     
     @property

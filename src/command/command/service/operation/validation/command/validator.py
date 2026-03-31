@@ -1,18 +1,17 @@
-# src/command/command/command/service/operation/build/validation/validation.py
+# src/command/command/service/operation/validation/command/validator.py
 
 """
-Module: command.command.command.service.operation.build.validation.validation
+Module: command.command.service.operation.validation.command.validator
 Author: Banji Lawal
 Created: 2026-02-24
 """
 
 from __future__ import annotations
 
-from typing import Any, Dict, cast
+from typing import Any
 
-from logic.system import (
-    Command, IdentityService, Validator
-)
+from command import Command, CommandArgsValidator, CommandValidationException, NullCommandException
+from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 
 
 class CommandValidator(Validator[Command]):
@@ -24,10 +23,9 @@ class CommandValidator(Validator[Command]):
             candidate: Any,
             cipher: Command = Command.cipher(),
             identity_service: IdentityService = IdentityService(),
-            command_validator: CommandValidator = CommandValidator(),
-            arguments_validator: ArgumentsValidator = ArgumentsValidator(),
+            args_validator: CommandArgsValidator = CommandArgsValidator(),
     ) -> ValidationResult[Command]:
-        method = "CommandValidator.validate"
+        method = f"{cls.__name__}.validate"
         
         # Handle the nonexistence case.
         if candidate is None:
@@ -79,8 +77,8 @@ class CommandValidator(Validator[Command]):
                 )
             )
         # Handle the case that, command's arguments are incorrect. does not match the cipher's\
-        arguments_validation_result = arguments_validator.query(command.name, cipher, identity_service)
-        if arguments_validation_result.is_failure:
+        args_validation_result = args_validator.validate(command.name, cipher, identity_service)
+        if args_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 CommandValidationException(
@@ -89,7 +87,7 @@ class CommandValidator(Validator[Command]):
                     msg=CommandValidationException.MSG,
                     err_code=CommandValidationException.ERR_CODE,
                     rslt_type=CommandValidationException.RSLT_TYPE,
-                    ex=arguments_validation_result.exception
+                    ex=args_validation_result.exception
                 )
             )
         # --- On certification successes send the square in the ValidationResult. ---#

@@ -10,13 +10,13 @@ Version: 1.0.0
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Any, Generic, TypeVar
+from typing import Any, Dict, Generic, TypeVar
 
-from logic.system import LoggingLevelRouter
+from logic.system import LoggingLevelRouter, Router
 
 T = TypeVar("T")
 
-class Router(ABC, Generic[T]):
+class TokenOpsRouter(Router[str]):
     """
     Role
         -   Transaction Worker
@@ -28,12 +28,24 @@ class Router(ABC, Generic[T]):
     Attributes:
 
     Provides:
-        -   route(*args, **kwargs) -> Any
+        -   route(op_name: str) -> Result
 
     super Class:
     """
+    MENU = {
+        "build": TokenBuilder,
+        
+    }
+    _menu: Dict[str, Any]
+    
+    def __init__(self,):
+        self._menu = {}
+        
+    @property
+    def menu(self) -> Dict[str, Any]:
+        return self._menu
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def route(self, *args, **kwargs) -> Any:
+    def route(self, op_name: str) -> Result:
         pass

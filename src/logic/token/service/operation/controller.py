@@ -1,7 +1,7 @@
 # src/logic/token/service/operation/controller.py
 
 """
-Module: logic.token.service.operation.manager
+Module: logic.token.service.operation.controller
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 from logic.token import (
-    PawnPromotionProcess, TokenBuild, TokenPositionController, TokenDeploymentProcess,
+    PawnPromotionProcess, TokenBuilder, TokenPositionController, TokenDeploymentProcess,
     TokenReadinessAnalysis, TokenValidation
 )
 
@@ -24,7 +24,7 @@ class TokenOpsController:
         1.  Provide a single entry point for operations TokenService supports.
         
     Attributes:
-        build: TokenBuild
+        build: TokenBuilder
         validate: TokenValidation
         promotion: PawnPromotionProcess
         deployment: TokenDeploymentProcess
@@ -35,7 +35,7 @@ class TokenOpsController:
     
     Parent:
     """
-    _build: TokenBuild
+    _build: TokenBuilder
     _validation: TokenValidation
     _promotion: PawnPromotionProcess
     _deployment: TokenDeploymentProcess
@@ -45,7 +45,7 @@ class TokenOpsController:
     
     def __init__(
             self,
-            build: TokenBuild = TokenBuild(),
+            build: TokenBuilder = TokenBuilder(),
             validation: TokenValidation = TokenValidation(),
             promotion: PawnPromotionProcess = PawnPromotionProcess(),
             deployment: TokenDeploymentProcess = TokenDeploymentProcess(),
@@ -65,7 +65,7 @@ class TokenOpsController:
         self._readiness_analyzer = readiness_analyzer
         
     @property
-    def build(self) -> TokenBuild:
+    def build(self) -> TokenBuilder:
         return self._build
         
     @property
