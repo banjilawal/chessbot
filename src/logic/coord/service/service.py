@@ -118,7 +118,7 @@ class CoordService(IntegrityService[Coord]):
         """
         method = f"{self.__class__.__name__}.add_to_coord"
         
-        # Request a summation from the controller.
+        # ServiceRequest a summation from the controller.
         request_result = self._ops_controller.arithmetic.addition.execute(
             coord=coord,
             operand=operand,
@@ -165,7 +165,7 @@ class CoordService(IntegrityService[Coord]):
         """
         method = f"{self.__class__.__name__}.multiply_coord"
         
-        # Request a multiplication from the controller.
+        # ServiceRequest a multiplication from the controller.
         request_result = self._ops_controller.arithmetic.multiplication.execute(
             coord=coord,
             scalar=scalar,
@@ -205,7 +205,7 @@ class CoordService(IntegrityService[Coord]):
         """
         method = f"{self.__class__.__name__}.distance"
         
-        # Request a multiplication from the controller.
+        # ServiceRequest a multiplication from the controller.
         request_result = self._ops_controller.arithmetic.distance.compute(
             u=u,
             v=v,
@@ -248,7 +248,7 @@ class CoordService(IntegrityService[Coord]):
         """
         method = f"{self.__class__.__name__}.convert_vector_to_coord"
         
-        # Request a conversion from the controller.
+        # ServiceRequest a conversion from the controller.
         request_result = self._ops_controller.arithmetic.conversion.execute(
             vector=vector,
             coord_service=self,

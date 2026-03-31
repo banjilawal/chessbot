@@ -27,8 +27,8 @@ class CommandPipeline(ABC, Generic[C]):
 
     Responsibilities:
     1.  Integrity Lifecycle of a Command.
-            *   Validating a Request object.
-            *   Building a Command instance from the Request.
+            *   Validating a ServiceRequest object.
+            *   Building a Command instance from the ServiceRequest.
 
     Super Class:
     None
@@ -49,7 +49,7 @@ class CommandPipeline(ABC, Generic[C]):
         *   request_validator: (ServiceRequestValidator)
 
     # LOCAL METHODS:
-        *   process_service_request(request: Request) -> BuildResult[C]
+        *   process_service_request(request: ServiceRequest) -> BuildResult[C]
 
     # INHERITED METHODS:
     None

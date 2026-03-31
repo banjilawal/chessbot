@@ -13,7 +13,7 @@ from command import Command
 from transport import Label
 
 
-class Request:
+class ServiceRequest:
     _id: int
     _label: Label
     _command: Command
@@ -45,7 +45,7 @@ class Request:
     def __eq__(self, other: object) -> bool:
         if other is self: return True
         if other is None: return False
-        if isinstance(other, Request):
+        if isinstance(other, ServiceRequest):
             return self._id == other._id
         return False
         

@@ -13,5 +13,4 @@ version: 1.0.0
 None
 
 # Modules
-from .label import Label
-from .request import Request
+from .request import ServiceRequest

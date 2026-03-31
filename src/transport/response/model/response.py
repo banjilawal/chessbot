@@ -11,19 +11,19 @@ from __future__ import annotations
 
 from response import Response
 from logic.system import Result
-from transport import Request
+from transport import ServiceRequest
 
 
 class Response:
     _id: int
-    _request: Request
+    _request: ServiceRequest
     _result: Result
     
-    def __init__(self, id: int, request: Request, response: Response):
+    def __init__(self, id: int, request: ServiceRequest, response: Response):
         """
         Args:
             id: int
-            request: Request
+            request: ServiceRequest
             response: Response
         """
         self._id = id
@@ -36,7 +36,7 @@ class Response:
         return self._id
     
     @property
-    def request(self) -> Request:
+    def request(self) -> ServiceRequest:
         return self._request
     
     @property

@@ -1,7 +1,7 @@
-# src/transport/request/model/label.py
+# src/transport/root/message/label.py
 
 """
-Module: transport.request.model.label
+Module: transport.root.message.label
 Author: Banji Lawal
 Created: 2026-03-30
 version: 1.0.0

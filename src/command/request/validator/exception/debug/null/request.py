@@ -48,7 +48,7 @@ class NullRequestException(NullException):
         *   See DebugException class for inherited methods.
     """
     ERR_CODE = "SERVICE_REQUEST_NULL_EXCEPTION"
-    MSG = "Request is null"
+    MSG = "ServiceRequest is null"
     
     def __init__(
             self,

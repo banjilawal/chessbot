@@ -34,8 +34,8 @@ class RequestException(AnchorException):
     None
     """
     ERR_CODE = "SERVICE_REQUEST_EXCEPTION"
-    MSG = "Request raised an exception."
-    CLS_NAME = "Request"
+    MSG = "ServiceRequest raised an exception."
+    CLS_NAME = "ServiceRequest"
     
     def __init__(
             self,

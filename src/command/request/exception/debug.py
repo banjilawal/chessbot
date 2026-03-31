@@ -23,7 +23,7 @@ class RequestDebugException(DebugException):
     Role:Information, Reporting, Debug
 
     Responsibilities:
-    1.  Parent of DebugExceptions pertinent to Request instances.
+    1.  Parent of DebugExceptions pertinent to ServiceRequest instances.
 
     Super Class:
         *  DebugException
@@ -48,7 +48,7 @@ class RequestDebugException(DebugException):
         *   See DebugException class for inherited methods.
     """
     ERR_CODE = "SERVICE_REQUEST_DEBUG_EXCEPTION"
-    MSG = "Request attribute raised an exception."
+    MSG = "ServiceRequest attribute raised an exception."
     
     def __init__(
             self,

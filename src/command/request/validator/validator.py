@@ -19,7 +19,7 @@ class RequestValidator(Validator[Request]):
      Role:Validation, Data Integrity Guarantor, Security.
 
     Responsibilities:
-    1.  Ensure a Request has.
+    1.  Ensure a ServiceRequest has.
             *   The correct number of arguments.
             *   The arguments have the correct names.
             *   The correct types.
@@ -38,9 +38,9 @@ class RequestValidator(Validator[Request]):
 
     # LOCAL METHODS:
         *   validate(
-                candidate: Request,
+                candidate: ServiceRequest,
                 key: Command,
-            ) -> ValidationResult[Request]
+            ) -> ValidationResult[ServiceRequest]
 
     # INHERITED METHODS:
     None
@@ -58,7 +58,7 @@ class RequestValidator(Validator[Request]):
             1.  If the candidate fails either:
                     *   existence
                     *   type
-                tests send an exception chain in the ValidationResult. Else, cast to Request
+                tests send an exception chain in the ValidationResult. Else, cast to ServiceRequest
                 instance, request.
             2.  Use identity_service does not verify request.command_name is a valid str. Send an
                 exception chain in th ValidationResult.
@@ -71,9 +71,9 @@ class RequestValidator(Validator[Request]):
             *   candidate (Any)
             *   identity_service (IdentityService)
         # RETURNS:
-            *   ValidationResult[Request] containing either:
+            *   ValidationResult[ServiceRequest] containing either:
                     - On failure: Exception.
-                    - On success: Request in the payload.
+                    - On success: ServiceRequest in the payload.
         Raises:
             *   TypeError
             *   NullArgumentsException
@@ -105,11 +105,11 @@ class RequestValidator(Validator[Request]):
                     msg=RequestValidationException.MSG,
                     mthd=RequestValidationException.MTHD,
                     ex=TypeError(
-                        f"{method}: Expected Request, got {type(candidate).__name__} instead."
+                        f"{method}: Expected ServiceRequest, got {type(candidate).__name__} instead."
                     )
                 )
             )
-        # --- Cast candidate to a Request for additional tests. ---#
+        # --- Cast candidate to a ServiceRequest for additional tests. ---#
         request = cast(Request, candidate)
         
         # Handle the case that, the request.command_name is not a string.
@@ -148,7 +148,7 @@ class RequestValidator(Validator[Request]):
                     msg=RequestValidationException.MSG,
                     mthd=RequestValidationException.MTHD,
                     ex=TypeError(
-                        f"Request.arguments type is not Dict[str, Any]. "
+                        f"ServiceRequest.arguments type is not Dict[str, Any]. "
                     )
                 )
             )

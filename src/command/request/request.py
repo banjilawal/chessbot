@@ -12,7 +12,7 @@ from typing import Any, Dict
 
 class Request:
     """
-    Role:Messaging. Service Request, Command Build Params.
+    Role:Messaging. Service ServiceRequest, Command Build Params.
 
     Responsibilities:
     1.  Client send a request for one of a service's operations. supported by

@@ -202,7 +202,7 @@ class SquareValidator(Validator[Square]):
                 )
             )
         
-        # --- Request an analysis of the relation between the board and square. ---#
+        # --- ServiceRequest an analysis of the relation between the board and square. ---#
         board_square_relation = board_service.board_square_relation_analyzer.execute(
             candidate_primary=square.board,
             candidate_satellite=square,

@@ -140,7 +140,7 @@ class TokenPopCoordProcess:
                     )
                 )
             )
-        # --- Integrity are passed. Request that, the CoordDatabase instance pop the last record. ---#
+        # --- Integrity are passed. ServiceRequest that, the CoordDatabase instance pop the last record. ---#
         popping_cord_stack_result = token.positions.pop()
         
         # Handle the case that, the pop was not completed.

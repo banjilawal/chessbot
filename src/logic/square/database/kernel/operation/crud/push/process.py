@@ -90,7 +90,7 @@ class SquareStackPush:
                     )
                 )
             )
-        # Request a collision report. The square is verified during the report generation. ---#
+        # ServiceRequest a collision report. The square is verified during the report generation. ---#
         collision_detection_result = collision_detector.execute(
             target=square,
             dataset=square_stack.items,
@@ -107,7 +107,7 @@ class SquareStackPush:
                         ex=collision_detection_result.exception
                 )
             )
-        # --- Request a rank quota report. ---#
+        # --- ServiceRequest a rank quota report. ---#
         rank_quota_report = rank_quota_analyzer.execute(
             rank=square.rank,
             square_stack=square_stack,
