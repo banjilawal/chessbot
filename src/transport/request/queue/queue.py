@@ -11,53 +11,37 @@ from __future__ import annotations
 
 from typing import Iterator, List, Optional
 
-from logic.system import (
-    Context, DeletionResult, IdentityService, InsertionResult, IntegrityService, SearchResult,
-    StackService
-)
+from logic.system import InsertionResult, LoggingLevelRouter
+from transport import MessageQueue, ServiceRequest
 
-from transport import ServiceRequest
-
-
-class ServiceRequestQueue(StackService[ServiceRequest]):
+class ServiceRequestQueue(MessageQueue[ServiceRequest]):
+   
+    _messages: List[ServiceRequest]
+    
+    def __init__(self,):
+        self._messages = []
+    
     @property
-    def items(self) -> List[ServiceRequest]:
-        pass
+    def messages(self) -> List[ServiceRequest]:
+        return self._messages
     
     @property
     def iterator(self) -> Iterator[ServiceRequest]:
-        pass
+        return iter(self._messages)
     
     @property
     def size(self) -> int:
-        pass
+        return len(self._messages)
     
     @property
     def is_empty(self) -> bool:
+        return len(self._messages) == 0
+    
+    @LoggingLevelRouter.monitor
+    def enqueue(self, message: ServiceRequest) -> InsertionResult:
         pass
     
-    @property
-    def current_item(self) -> Optional[ServiceRequest]:
+    @LoggingLevelRouter.monitor
+    def dequeue(self) -> Optional[ServiceRequest]:
         pass
-    
-    @property
-    def integrity_service(self) -> IntegrityService[ServiceRequest]:
-        pass
-    
-    def push(self, item: T) -> InsertionResult:
-        pass
-    
-    def pop(self) -> DeletionResult[ServiceRequest]:
-        pass
-    
-    def delete_by_id(self, id: int, identity_service: IdentityService = IdentityService()) -> DeletionResult[ServiceRequest]:
-        pass
-    
-    def query(self, context: Context[ServiceRequest]) -> SearchResult[List[ServiceRequest]]:
-        pass
-    
-    _requests: List[ServiceRequest]
-    
-    def __init__(self,):
-        self._requests = []
     
