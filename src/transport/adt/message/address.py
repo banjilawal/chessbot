@@ -1,7 +1,7 @@
-# src/transport/root/message/label.py
+# src/transport/adt/message/address.py
 
 """
-Module: transport.root.message.label
+Module: transport.adt.message.address
 Author: Banji Lawal
 Created: 2026-03-30
 version: 1.0.0
@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-class Label:
+class AddressTag:
     _id: int
     _name: str
     
@@ -33,6 +33,6 @@ class Label:
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, Label):
+        if isinstance(other, AddressTag):
             return self._id == other.id and self._name.upper() == other.name.upper()
         return False

@@ -17,7 +17,7 @@ log = logging.getLogger("chessbot")
 from .request import *
 from .response import *
 from .route import *
-from .root import *
+from .adt import *
 
 # Modules
 None

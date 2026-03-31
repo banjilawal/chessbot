@@ -10,23 +10,20 @@ version: 1.0.0
 from __future__ import annotations
 
 from command import Command
-from transport import Label
+from transport import AddressTag, Message
 
 
-class ServiceRequest:
-    _id: int
-    _label: Label
+class ServiceRequest(Message):
     _command: Command
     
-    def __init__(self, id: int, label: Label, command: Command):
+    def __init__(self, id: int, source_: AddressTag, command: Command):
         """
         Args:
             id: int
-            label: Label
+            label: AddressTag
             command: Command
         """
-        self._id = id
-        self._label = label
+        super().__init__(id=id, label=label)
         self._command = command
         
         
@@ -35,7 +32,7 @@ class ServiceRequest:
         return self._id
     
     @property
-    def label(self) -> Label:
+    def label(self) -> AddressTag:
         return self._label
     
     @property
