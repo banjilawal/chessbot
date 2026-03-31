@@ -12,6 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Dict, Generic, TypeVar
 
+from command import CommandArgs
 from logic.system import Service
 
 T = TypeVar("T")
@@ -41,26 +42,22 @@ class Command(ABC, Generic[T]):
     """
     _id: int
     _name: str
-    _server: Service
-    _parameters: Dict[str: Any]
+    _parameters: CommandArgs
     
     def __init__(
             self,
             id: int,
             name: str,
-            server: Service,
-            parameters: Dict[str, Any],
+            parameters: CommandArgs,
     ):
         """
         Args:
             id: int
             name: str
-            service: Service
             parameters: Dict[str, Any]
         """
         self._id = id
         self._name = name
-        self._server = server
         self._parameters = parameters
         
     @property
@@ -72,11 +69,7 @@ class Command(ABC, Generic[T]):
         return self._name
     
     @property
-    def server(self) -> Service:
-        return self._server
-    
-    @property
-    def parameters(self) -> Dict[str, Any]:
+    def parameters(self) -> CommandArgs:
         return self._parameters
     
     def __eq__(self, other: Any) -> bool:

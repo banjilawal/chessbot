@@ -1,7 +1,7 @@
 # command.service/exception.anchor.py
 
 """
-Module: src.command.root.command.service.exception.anchor
+Module: src.command.token.service.exception.anchor
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -12,18 +12,18 @@ from typing import Optional
 
 __all__ = [
     # ======================# COMMAND_SERVICE_EXCEPTION #======================#
-    "CommandServiceException",
+    "TokenCommandServiceException",
 ]
 
 from logic.system import IntegrityServiceException
 
 # ======================# COMMAND_SERVICE_EXCEPTION #======================#
-class CommandServiceException(IntegrityServiceException):
+class TokenCommandServiceException(IntegrityServiceException):
     """
     Role:Debug Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
-    1.  Indicate that an error occurred in CommandService instance.
+    1.  Indicate that an error occurred in a TokenCommandService instance.
 
     Super Class:
     *   ServiceException

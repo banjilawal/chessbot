@@ -3,16 +3,14 @@
 """
 Module: command.token.service.__init__
 Author: Banji Lawal
-Created: 2026-03-31
+Created: 2025-11-18
 """
 
 # =========== COMMAND.TOKEN.SERVICE PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .exception import *
+from .operation import *
 
 # Modules
-from .build import BuildTokenCommand
-from .deploy import DeployTokenCommand
-from .promote import PromotePawnCommand
-from .validate import ValidateTokenCommand
+from .service import CommandService

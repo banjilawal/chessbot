@@ -20,7 +20,7 @@ class ValidateTokenCommand(TokenCommand):
     
     def __init__(
             self,
-            server: TokenService,
+            candidate: Any,
             name: str = NAME,
             parameters: Dict[str, Any] = None,
             id: int = IdFactory.next_id(class_name="ValidateTokenCommand"),

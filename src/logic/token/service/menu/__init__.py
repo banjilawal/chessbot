@@ -14,3 +14,4 @@ from .exception import *
 
 # Modules
 from .menu import TokenServiceMenu
+from .table import TokenCommandTable

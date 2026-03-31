@@ -6,10 +6,11 @@ Author: Banji Lawal
 Created: 2026-03-31
 """
 
-# =========== TOKEN PACKAGE CONTENTS ===========#
+# =========== COMMAND.TOKEN PACKAGE CONTENTS ===========#
 
 # Packages
 from .service import *
+from .exception import *
 
 # Modules
 from .root import TokenCommand

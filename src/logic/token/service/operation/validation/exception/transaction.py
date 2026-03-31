@@ -42,8 +42,6 @@ class TokenValidationException(ValidationException):
     Super:
         ValidationException
     """
-    OP = "Validation"
-    RSLT_TYPE = "ValidationResult"
     ERR_CODE = "TOKEN_VALIDATION_FAILURE"
     MSG = "Failure in TokenValidator method."
 
@@ -54,6 +52,7 @@ class TokenValidationException(ValidationException):
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
             mthd: Optional[str] = None,
+            title: Optional[str] = None,
             op: Optional[str] = None,
             rslt_type: Optional[str] = None,
     ):
@@ -62,6 +61,7 @@ class TokenValidationException(ValidationException):
             op: Optional[str]
             msg: Optional[str]
             mthd: Optional[str]
+            title: Optional[str]
             ex: Optional[Exception]
             err_code: Optional[str]
             rslt_type: Optional[str]
@@ -76,6 +76,7 @@ class TokenValidationException(ValidationException):
             op=op,
             msg=msg,
             mthd=mthd,
+            title=title,
             err_code=err_code,
             rslt_type=rslt_type,
         )

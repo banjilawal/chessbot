@@ -14,4 +14,4 @@ from .debug import *
 
 
 # Modules
-from .work import TokenValidationException
+from .transaction import TokenValidationException
