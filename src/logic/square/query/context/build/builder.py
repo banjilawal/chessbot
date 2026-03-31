@@ -60,7 +60,7 @@ class SquareContextBuilder(Builder[SquareContext]):
     None
     """
     @classmethod
-    def execute(
+    def build(
             cls,
             id: Optional[int] = None,
             name: Optional[str] = None,

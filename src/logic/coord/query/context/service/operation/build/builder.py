@@ -51,7 +51,7 @@ class CoordContextBuilder(Builder[CoordContext]):
      """
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def build(
             cls,
             row: Optional[int] = None,
             column: Optional[int] = None,

@@ -17,7 +17,7 @@ class BuildCheckmate(Builder[Checkmate]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def build(
             cls,
             king: KingToken,
     ) -> BuildResult[Checkmate]:

@@ -45,7 +45,7 @@ class PairListBuilder(Builder[PairList]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def build(
             cls,
             parent_node: Node,
             square_ray: SquareRay,
@@ -131,7 +131,7 @@ class PairListBuilder(Builder[PairList]):
 
         # --- Do the pair building work on each ray member. ---#
         for member in square_ray.members:
-            build_result = pair_builder.execute(
+            build_result = pair_builder.build(
                 head=cursor,
                 tail_square=member,
                 node_service=node_service,

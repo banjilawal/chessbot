@@ -37,7 +37,7 @@ class RankFactory(Builder[Rank]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def build(
             cls,
             persona: Persona,
             id: int = id_emitter.rank_id,

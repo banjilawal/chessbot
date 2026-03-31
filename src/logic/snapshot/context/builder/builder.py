@@ -41,7 +41,7 @@ class SnapshotContextBuilder(Builder[SnapshotContext]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def build(
             cls,
             game: Optional[Game],
             team: Optional[Team],

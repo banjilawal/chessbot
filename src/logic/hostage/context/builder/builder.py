@@ -31,7 +31,7 @@ class CaptivityContextBuilder(Builder[CaptivityContext]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def build(
             cls,
             victor: Optional[Token],
             captured_square: Optional[Square],

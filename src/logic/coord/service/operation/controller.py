@@ -29,33 +29,33 @@ class CoordOpsController:
     
     Super Class:
     """
-    _build: CoordBuilder
-    _validation: CoordValidator
+    _builder: CoordBuilder
+    _validator: CoordValidator
     _arithmetic_controller: CoordArithmeticController
     
     def __init__(
             self,
-            build: CoordBuilder = CoordBuilder(),
-            validation: CoordValidator = CoordValidator(),
+            builder: CoordBuilder = CoordBuilder(),
+            validator: CoordValidator = CoordValidator(),
             arithmetic_controller: CoordArithmeticController = CoordArithmeticController(),
     ):
         """
         Args:
-            build: CoordBuilder
-            validation: CoordValidator
+            builder: CoordBuilder
+            validator: CoordValidator
             arithmetic_controller: CoordArithmeticController
         """
-        self._build = build
-        self._validation = validation
+        self._build = builder
+        self._validation = validator
         self._arithmetic = arithmetic_controller
         
     @property
-    def build(self) -> CoordBuilder:
-        return self._build
+    def builder(self) -> CoordBuilder:
+        return self._builder
         
     @property
-    def validation(self) ->CoordValidator:
-        return self._validation
+    def validator(self) ->CoordValidator:
+        return self._validatior
     
     @property
     def arithmetic(self) -> CoordArithmeticController:

@@ -8,9 +8,9 @@ Created: 2025-11-18
 
 from __future__ import annotations
 
-from typing import cast
 
-from logic.system import CommandBuilder, CommandValidator, IntegrityService, Builder, Command, Validator
+from command import Command, CommandBuilder, CommandOpsController
+from logic.system import IntegrityService
 
 
 class CommandService(IntegrityService[Command]):
@@ -49,31 +49,30 @@ class CommandService(IntegrityService[Command]):
     *   See IntegrityService class for inherited methods.
     """
     SERVICE_NAME = "CommandService"
+    _ops_controller = CommandOpsController
     def __init__(
             self,
             id: int,
             name: str = SERVICE_NAME,
-            builder: CommandBuilder = CommandBuilder(),
-            validator: CommandValidator = CommandValidator(),
+            ops_controller: CommandOpsController = CommandOpsController(),
     ):
-        super().__init__(id=id, name=name, builder=builder, validator=validator)
+        """
+        Args:
+            id: int
+            name: str
+            ops_controller: CommandOpsController
+        """
+        super().__init__(id=id, name=name,)
+        self._ops_controller = ops_controller
 
     @property
-    def build(self) -> CommandBuilder:
-        return cast(CommandBuilder, self.build)
+    def builder(self) -> CommandBuilder:
+        return self._ops_controller.builder
 
     @property
-    def validation(self) -> Validator[Command]:
-        return cast(CommandValidator, self.validation)
-    #
-    # def __eq__(self, other):
-    #     if super().__eq__(other):
-    #         if isinstance(other, CommandService):
-    #             return True
-    #     return False
-    #
-    # def __hash__(self):
-    #     return hash(self._id)
-    #
-    # def __str__(self):
-    #     return f"id:{self._id}, name:{self._name}"
+    def validation(self) -> CommandValidator:
+        return self._ops_controller.validator
+    
+    @property
+    def ops_controller(self) -> CommandOpsController:
+        return self._ops_controller

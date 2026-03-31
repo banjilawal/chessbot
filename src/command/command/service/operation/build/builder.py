@@ -1,7 +1,7 @@
-# src/command/command/build/request/build/exception.py
+# src/command/command/service/operation/build/builder.py
 
 """
-Module: command.command.build.request.build.build
+Module: command.command.service.operation.build.builder
 Author: Banji Lawal
 Created: 2026-02-24
 """
@@ -10,7 +10,8 @@ from __future__ import annotations
 
 from typing import Any, Dict
 
-from logic import Builder
+from command import Command
+from logic.system import BuildResult, Builder, IdFactory, IdentityService, LoggingLevelRouter, Service
 
 
 class CommandBuilder(Builder[Command]):
@@ -20,7 +21,7 @@ class CommandBuilder(Builder[Command]):
     def build(
             cls,
             name: str,
-            service: Service,
+            server: Service,
             parameters: Dict[str, Any] = Dict[str, Any],
             id: int = IdFactory.next_id(class_name="Command"),
             identity_service: IdentityService = IdentityService(),
@@ -35,11 +36,11 @@ class CommandBuilder(Builder[Command]):
         if identity_validation_result.is_failure:
             # Return the exception on failure.
             return BuildResult.failure(
-                CommandBuilderException(
-                    err_code=CommandBuilderException.ERR_CODE,
-                    msg=CommandBuilderException.MSG,
-                    mthd=CommandBuilderException.MTHD,
-                    op=CommandBuilderException.OP,
+                CommandBuildException(
+                    err_code=CommandBuildException.ERR_CODE,
+                    msg=CommandBuildException.MSG,
+                    mthd=CommandBuildException.MTHD,
+                    op=CommandBuildException.OP,
                     ex=identity_validation_result.exception
                 )
             )
@@ -48,11 +49,11 @@ class CommandBuilder(Builder[Command]):
         if parameters is None:
             # Return the exception on failure.
             return BuildResult.failure(
-                CommandBuilderException(
-                    err_code=CommandBuilderException.ERR_CODE,
-                    msg=CommandBuilderException.MSG,
-                    mthd=CommandBuilderException.MTHD,
-                    op=CommandBuilderException.OP,
+                CommandBuildException(
+                    err_code=CommandBuildException.ERR_CODE,
+                    msg=CommandBuildException.MSG,
+                    mthd=CommandBuildException.MTHD,
+                    op=CommandBuildException.OP,
                     ex=NullArgumentsException(
                         err_code=NullArgumentsException.ERR_CODE,
                         msg=NullArgumentsException.MSG,
@@ -63,11 +64,11 @@ class CommandBuilder(Builder[Command]):
         if not isinstance(parameters, Dict):
             # Return the exception on failure.
             return BuildResult.failure(
-                CommandBuilderException(
-                    err_code=CommandBuilderException.ERR_CODE,
-                    msg=CommandBuilderException.MSG,
-                    mthd=CommandBuilderException.MTHD,
-                    op=CommandBuilderException.OP,
+                CommandBuildException(
+                    err_code=CommandBuildException.ERR_CODE,
+                    msg=CommandBuildException.MSG,
+                    mthd=CommandBuildException.MTHD,
+                    op=CommandBuildException.OP,
                     ex=TypeError(
                         f"{method}: Expected Dict, got {type(parameters).__name__} instead."
                     )
@@ -78,7 +79,7 @@ class CommandBuilder(Builder[Command]):
             Command(
                 id=id,
                 name=name,
-                service=service,
+                server=server,
                 parameters=parameters,
             )
         )

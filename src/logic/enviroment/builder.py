@@ -22,7 +22,7 @@ class TurnSceneBuilder(Builder[TurnScene]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(cls, id: int, piece: Piece, board: Board) -> BuildResult[TurnScene]:
+    def build(cls, id: int, piece: Piece, board: Board) -> BuildResult[TurnScene]:
         """"""
         method = "TurnSceneBuilder.build"
         

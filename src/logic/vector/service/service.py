@@ -130,7 +130,7 @@ class VectorService(IntegrityService[Vector]):
         sum = Vector(x=0, y=0)
         
         for vector in vectors:
-            summation_result = self.build.execute(
+            summation_result = self.build.build(
                 x=sum.x + vector.x,
                 y=sum.y + vector.y,
                 number_validator=number_validator,
@@ -213,7 +213,7 @@ class VectorService(IntegrityService[Vector]):
                 )
             )
         # Handle the case that, the new build is unsuccessful.
-        build_result = self.build.execute(
+        build_result = self.build.build(
             x=vector.x * scalar,
             y=vector.y * scalar,
             number_validator=number_validator,
@@ -272,7 +272,7 @@ class VectorService(IntegrityService[Vector]):
                     ex=coord_validation_result.exception,
                 )
             )
-        vector_build_result = self.build.execute(
+        vector_build_result = self.build.build(
             x=coord.column,
             y=coord.row,
             number_validator=number_validator,

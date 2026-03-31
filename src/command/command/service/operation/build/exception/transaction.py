@@ -1,7 +1,7 @@
-# src/command/command/build/exception/validator.py
+# src/command/command/service/operation/build/exception/validator.py
 
 """
-Module: command.command.build.exception.work
+Module: command.command.service.operation.build.exception.work
 Author: Banji Lawal
 Created: 2026-02-24
 """
@@ -11,14 +11,14 @@ from typing import Optional
 
 __all__ = [
     # ======================# COMMAND_BUILD_FAILURE #======================#
-    "CommandBuilderException",
+    "CommandBuildException",
 ]
 
 from logic.system import BuildException
 
 
 # ======================# COMMAND_BUILD_FAILURE #======================#
-class CommandBuilderException(BuildException):
+class CommandBuildException(BuildException):
     """
     Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 

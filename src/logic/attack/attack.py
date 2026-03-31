@@ -169,7 +169,7 @@ class Attack:
             )
         
         # Build the hostage manifest
-        manifest_build_result = hostage_service.build.execute(
+        manifest_build_result = hostage_service.build.build(
             prisoner=prisoner,
             captured_square=square,
             token_service=token_service,

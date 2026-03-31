@@ -26,7 +26,7 @@ class ProjectionSearchContextBuilder(Builder[ProjectionSearchContext]):
 
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute (cls, id: Optional[int], name: Optional[str], coord: Optional[Coord]) -> BuildResult[ProjectionSearchContext]:
+    def build (cls, id: Optional[int], name: Optional[str], coord: Optional[Coord]) -> BuildResult[ProjectionSearchContext]:
         """"""
         method = "ProjectionSearchContextBuilder.build"
         try:

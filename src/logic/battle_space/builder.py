@@ -15,5 +15,5 @@ from logic.system import BuildResult, Builder
 
 class ProjectionSearchBuilder(Builder[ProjectionService]):
     @classmethod
-    def execute(cls, *args, **kwargs) -> BuildResult[ProjectionService]:
+    def build(cls, *args, **kwargs) -> BuildResult[ProjectionService]:
         pass

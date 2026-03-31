@@ -28,7 +28,7 @@ class OldPromotionEventBuilder(Builder[PromotionEvent]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(cls, actor: Pawn, execution_environment: Board, parent: Event, new_rank: Rank=Queen) -> BuildResult[PromotionEvent]:
+    def build(cls, actor: Pawn, execution_environment: Board, parent: Event, new_rank: Rank=Queen) -> BuildResult[PromotionEvent]:
         """"""
         method = "PromotionEventBuilder.build"
         

@@ -39,7 +39,7 @@ class EngineService:
     
     
     def build_engine(self, *args, **kwargs) -> BuildResult[Engine]:
-        return self._builder.execute()
+        return self._builder.build()
     
     
     def validate_engine(self, candidate: Any) -> ValidationResult[Engine]:

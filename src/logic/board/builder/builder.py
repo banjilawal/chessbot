@@ -37,7 +37,7 @@ class BoardBuilder(Builder[Board]):
     
     @classmethod
     @LoggingLevelRouter.monitor()
-    def execute(
+    def build(
             cls,
             arena: Arena,
             id: int = id_emitter.board_id,

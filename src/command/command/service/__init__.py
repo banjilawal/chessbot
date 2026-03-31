@@ -6,10 +6,11 @@ Author: Banji Lawal
 Created: 2025-11-18
 """
 
-# =========== COMMAND PACKAGE CONTENTS ===========#
+# =========== COMMAND.SERVICE PACKAGE CONTENTS ===========#
 
 # Packages
 from .exception import *
+from .operation import *
 
 # Modules
 from .service import CommandService

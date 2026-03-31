@@ -43,7 +43,7 @@ class PairBuilder(Builder[Pair]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def build(
             cls,
             head: Node,
             tail_square: Square,
@@ -115,7 +115,7 @@ class PairBuilder(Builder[Pair]):
                 )
             )
         # --- Attempt building the tail node. ---#
-        tail_node_build_result = node_service.build.execute(
+        tail_node_build_result = node_service.build.build(
             square=tail_square,
             square_validator=square_validator,
         )

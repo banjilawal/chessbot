@@ -75,7 +75,7 @@ class ConvertVectorToCoordTransaction:
                 )
             )
         # --- Create the Coord. ---#
-        conversion_result = coord_service.build.execute(
+        conversion_result = coord_service.build.build(
             row=vector.y,
             column=vector.x
         )

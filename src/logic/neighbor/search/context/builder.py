@@ -34,7 +34,7 @@ class VisitationSearchContextBuilder(Builder[VisitationSearchContext]):
 
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute (
+    def build (
         cls,
         name: Optional[str] = None,
         ransom: Optional[int] = None,

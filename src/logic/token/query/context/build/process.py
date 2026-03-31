@@ -43,7 +43,7 @@ class TokenContextBuilder(Builder[TokenContext]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def build(
             cls,
             id: Optional[int] = None,
             team: Optional[Team] = None,

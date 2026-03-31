@@ -21,7 +21,7 @@ class TeamHashBuilder(Builder[TeamHash]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def build(
             cls,
             white_team: Team,
             black_team: Team,

@@ -39,7 +39,7 @@ class GameContextBuilder(Builder[GameContext]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def build(
             cls,
             id: Optional[int] = None,
             agent: Optional[PlayerAgent] = None,

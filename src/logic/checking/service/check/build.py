@@ -18,5 +18,5 @@ class CheckRecordBuilder(Builder[CheckRecord]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(cls, king_checker: Piece, enemy_king: KingPiece) -> BuildResult[CheckRecord]:
+    def build(cls, king_checker: Piece, enemy_king: KingPiece) -> BuildResult[CheckRecord]:
         pass

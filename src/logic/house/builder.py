@@ -18,7 +18,7 @@ class HouseBuilder(Builder[House]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(cls, turn_scene: TurnScene) -> BuildResult[House]:
+    def build(cls, turn_scene: TurnScene) -> BuildResult[House]:
         """"""
         method = "HouseBuilder.build"
         

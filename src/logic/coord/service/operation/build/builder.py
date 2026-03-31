@@ -40,7 +40,7 @@ class CoordBuilder(Builder[Coord]):
      """
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def build(
             cls,
             row: int,
             column: int,

@@ -41,7 +41,7 @@ class NodeContextBuilder(Builder[NodeContext]):
     None
     """
     @classmethod
-    def execute(
+    def build(
             cls,
             priority: Optional[int] = None,
             square: Optional[Square] = None,

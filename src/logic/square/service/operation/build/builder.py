@@ -47,7 +47,7 @@ class SquareBuilder(Builder[Square]):
     
     @classmethod
     @LoggingLevelRouter.monitor()
-    def execute(
+    def build(
             cls,
             name: str,
             board: Board,

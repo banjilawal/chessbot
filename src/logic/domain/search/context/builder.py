@@ -22,7 +22,7 @@ class ResidentFilterBuilder(Builder[ResidentFilter]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def build(
             cls,
             id: Optional[int] = None,
             name: Optional[str] = None,

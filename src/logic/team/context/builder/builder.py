@@ -39,7 +39,7 @@ class TeamContextBuilder(Builder[TeamContext]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def build(
             cls,
             id: Optional[int] = None,
             name: Optional[str] = None,

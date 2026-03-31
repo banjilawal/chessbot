@@ -36,7 +36,7 @@ class BoardContextBuilder(Builder[BoardContext]):
     None
     """
     @classmethod
-    def execute(
+    def build(
             cls,
             id: Optional[int] = None,
             arena: Optional[Arena] = None,

@@ -16,5 +16,5 @@ from logic.system import BuildResult, Builder
 class PromotionEventBuilder(Builder[PromotionEvent]):
     
     @classmethod
-    def execute(self, *args, **kwargs) -> BuildResult[PromotionEvent]:
+    def build(self, *args, **kwargs) -> BuildResult[PromotionEvent]:
         pass

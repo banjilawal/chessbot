@@ -16,7 +16,7 @@ log = logging.getLogger("chessbot")
 # =========== PACKAGE CONTENTS ===========#
 
 # Packages
-from .argument import *
+from command.command.service.operation.validation.argument import *
 from .command import *
 from .menu import *
 from .pipeline import *

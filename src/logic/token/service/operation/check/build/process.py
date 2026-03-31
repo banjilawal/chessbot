@@ -17,7 +17,7 @@ class BuildCheck(Builder[CheckSquare]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def build(
             cls,
             king: KingToken,
             token_validator: TokenValidator = TokenValidator(),

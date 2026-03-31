@@ -21,7 +21,7 @@ class VisitationEventBuilder(Builder[VisitationEvent]):
 
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(cls, id: int, domain, domain_visitor: Piece) -> BuildResult[VisitationEvent]:
+    def build(cls, id: int, domain, domain_visitor: Piece) -> BuildResult[VisitationEvent]:
         """"""
         method = "VisitationBuilder.build"
         

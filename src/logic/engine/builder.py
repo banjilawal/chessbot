@@ -15,5 +15,5 @@ from logic.system import BuildResult, Builder
 class EngineBuilder(Builder[Engine]):
     
     @classmethod
-    def execute(cls, *args, **kwargs) -> BuildResult[Engine]:
+    def build(cls, *args, **kwargs) -> BuildResult[Engine]:
         pass

@@ -42,7 +42,7 @@ class PlayerFactory(Builder[Player]):
     """
     
     @classmethod
-    def execute(
+    def build(
             cls,
             name: str,
             id: id_emitter.player_id,

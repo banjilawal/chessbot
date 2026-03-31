@@ -39,7 +39,7 @@ class FormationKeyBuilder(Builder[FormationKey]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def build(
             cls,
             square: Optional[Square] = None,
             persona: Optional[Persona] = None,

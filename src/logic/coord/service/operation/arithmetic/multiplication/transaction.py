@@ -93,7 +93,7 @@ class MultiplyCoordTransaction:
                 )
             )
         # --- Create the product. ---#
-        product_build_result = coord_service.build.execute(
+        product_build_result = coord_service.build.build(
             row=coord.row * scalar.value,
             column=coord.column * scalar.value
         )

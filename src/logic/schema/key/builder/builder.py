@@ -37,7 +37,7 @@ class SchemaKeyBuilder(Builder[SchemaKey]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def build(
             cls,
             name: Optional[str] = None,
             color: Optional[GameColor] = None,

@@ -37,7 +37,7 @@ class ScalarBuilder(Builder[Scalar]):
 
 
     @LoggingLevelRouter.monitor
-    def execute(
+    def build(
             self,
             value: int,
             scalar_validator: ScalarValidator = ScalarValidator()

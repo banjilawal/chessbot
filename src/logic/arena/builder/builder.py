@@ -38,7 +38,7 @@ class ArenaBuilder(Builder[Arena]):
     """
     
     @classmethod
-    def execute(
+    def build(
             cls,
             board: Board,
             id: int = id_emitter.arena_id,

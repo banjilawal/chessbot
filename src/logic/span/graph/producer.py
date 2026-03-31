@@ -19,7 +19,7 @@ class SpanningGraphProducer(Builder[Graph]):
     
     @classmethod
     @LoggingLevelRouter
-    def execute(
+    def build(
         cls,
         square_span: SquareSpan,
         square_stack: SquareStackService,

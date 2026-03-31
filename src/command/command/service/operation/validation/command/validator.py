@@ -1,7 +1,7 @@
-# src/command/command/command/build/validation/validation.py
+# src/command/command/command/service/operation/build/validation/validation.py
 
 """
-Module: command.command.command.build.validation.validation
+Module: command.command.command.service.operation.build.validation.validation
 Author: Banji Lawal
 Created: 2026-02-24
 """

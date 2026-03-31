@@ -14,5 +14,5 @@ from logic.system import BuildResult, Builder
 
 class SnapshotBuilder(Builder[Snapshot]):
     @classmethod
-    def execute(cls, *args, **kwargs) -> BuildResult[Snapshot]:
+    def build(cls, *args, **kwargs) -> BuildResult[Snapshot]:
         pass

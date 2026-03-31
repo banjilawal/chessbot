@@ -39,7 +39,7 @@ class TeamBuild(Builder[Team]):
      """
     @classmethod
     @LoggingLevelRouter.monitor()
-    def execute(
+    def build(
             cls,
             board: Board,
             owner: Player,
@@ -244,7 +244,7 @@ class SquareBuilder(Builder[Square]):
     
     @classmethod
     @LoggingLevelRouter.monitor()
-    def execute(
+    def build(
             cls,
             name: str,
             board: Board,

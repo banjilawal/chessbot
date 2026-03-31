@@ -33,7 +33,7 @@ class GameBuilder(Builder[Game]):
     
     @classmethod
     @LoggingLevelRouter.monitor()
-    def execute(
+    def build(
             cls,
             white_player: PlayerAgent,
             black_player: PlayerAgent,

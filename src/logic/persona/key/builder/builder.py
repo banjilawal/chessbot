@@ -37,7 +37,7 @@ class PersonaKeyBuilder(Builder[PersonaKey]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def build(
             cls,
             name: Optional[str] = None,
             quota: Optional[int] = None,

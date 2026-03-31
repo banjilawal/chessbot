@@ -38,7 +38,7 @@ class DomainBuilder(Builder[Domain]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def build(
             cls,
             piece: Piece,
             board: Board,

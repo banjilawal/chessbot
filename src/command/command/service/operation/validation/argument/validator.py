@@ -10,13 +10,14 @@ from __future__ import annotations
 
 from typing import Any, Dict, cast
 
+from command import Command
 from logic.system import (
     ArgumentCountException, ArgumentNameException, ArgumentTypeException, ArgumentsValidationException,
     IdentityService, LoggingLevelRouter, NullArgumentsException, ValidationResult, Validator
 )
 
 
-class ArgumentsValidator(Validator[Dict]):
+class CommandParamValidator(Validator[Dict]):
     """
     Role:Validation, Data Integrity Guarantor, Security.
     
@@ -83,7 +84,7 @@ class ArgumentsValidator(Validator[Dict]):
              *   ArgumentTypeException
              *   ArgumentValidationException
          """
-        method = "ArgumentsValidator.validate"
+        method = "CommandParamValidator.validate"
         
         # Handle the nonexistence case.
         if candidate is None:

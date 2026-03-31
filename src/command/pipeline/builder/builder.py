@@ -18,7 +18,7 @@ class CommandBuilder(Builder[Command]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def build(
             cls,
             cipher: Command,
             request: Request,

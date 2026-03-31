@@ -36,7 +36,7 @@ class EdgeBuilder(Builder[Edge]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def build(
             cls,
             head: Node,
             tail: Node,

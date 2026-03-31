@@ -41,7 +41,7 @@ class EdgeContextBuilder(Builder[EdgeContext]):
     None
     """
     @classmethod
-    def execute(
+    def build(
             cls,
             id: Optional[int] = None,
             name: Optional[str] = None,

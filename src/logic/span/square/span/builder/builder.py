@@ -22,7 +22,7 @@ class SquareSpanBuilder(Builder[SquareSpan]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(cls, coord_span: CoordSpan, square_stack: SquareStackService) -> BuildResult[SquareSpan]:
+    def build(cls, coord_span: CoordSpan, square_stack: SquareStackService) -> BuildResult[SquareSpan]:
         """
         Args:
             coord_span: CoordSpan

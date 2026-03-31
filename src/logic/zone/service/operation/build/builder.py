@@ -41,7 +41,7 @@ class ZoneBuilder(Builder[Zone]):
      """
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def build(
             cls,
             color: GameColor,
             schema_service: SchemaService,

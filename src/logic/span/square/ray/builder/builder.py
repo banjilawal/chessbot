@@ -20,7 +20,7 @@ class SquareRayBuilder(Builder[SquareRay]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def build(
             cls,
             coord_ray: CoordRay,
             square_stack: SquareStackService,

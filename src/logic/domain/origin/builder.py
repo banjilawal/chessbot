@@ -38,7 +38,7 @@ class DomainOriginBuilder(Builder[DomainOrigin]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(cls, turn_scene: TurnScene) -> BuildResult[DomainOrigin]:
+    def build(cls, turn_scene: TurnScene) -> BuildResult[DomainOrigin]:
         """
         # ACTION:
         Create a new DomainOrigin object that can be safely used in the system if and only if:

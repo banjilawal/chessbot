@@ -22,7 +22,7 @@ class VisitorSearchContextBuilder(Builder[VisitorSearchContext]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def build(
             cls,
             id: Optional[int] = None,
             name: Optional[str] = None,

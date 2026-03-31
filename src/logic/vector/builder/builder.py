@@ -36,7 +36,7 @@ class VectorBuilder(Builder[Vector]):
      None
      """
     @LoggingLevelRouter.monitor
-    def execute(
+    def build(
             self,
             x: int,
             y: int,

@@ -66,5 +66,5 @@ class Builder(ABC, Generic[T]):
     @classmethod
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(cls, *args, **kwargs) -> BuildResult[T]:
+    def build(cls, *args, **kwargs) -> BuildResult[T]:
         pass

@@ -18,5 +18,5 @@ class KingLocationRecordBuilder(Builder[KingLocationRecord]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(cls, king: KingPiece, board: Board) -> BuildResult[KingLocationRecord]:
+    def build(cls, king: KingPiece, board: Board) -> BuildResult[KingLocationRecord]:
         pass

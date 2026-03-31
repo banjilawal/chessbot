@@ -42,7 +42,7 @@ class HostageBuilder(Builder[Hostage]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def build(
             cls,
             captured_square: Square,
             prisoner: CombatantToken,

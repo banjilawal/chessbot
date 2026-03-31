@@ -36,7 +36,7 @@ class NodeBuilder(Builder[Node]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(cls, square: Square, square_validator: SquareValidator = SquareValidator()) -> BuildResult[Node]:
+    def build(cls, square: Square, square_validator: SquareValidator = SquareValidator()) -> BuildResult[Node]:
         """
         # ACTION:
             1.  If the square is not valid send an exception chain in the BuildResult. Otherwise, use the square
