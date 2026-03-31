@@ -6,14 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transport/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transport/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/deployment/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/deployment_mode.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/deployment/mode.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/result.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/result/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/transaction_report.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validators/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validators/coordinate_binding_specification.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validators/hostage_validator.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/transport/request/model/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transport/request/model/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transport/root/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transport/adt/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transport/root/message/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transport/adt/message/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transport/root/message/label.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transport/adt/message/address.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transport/root/message/message.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transport/adt/message/message.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transport/root/queue/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transport/adt/queue/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transport/root/queue/queue.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transport/adt/queue/queue.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -867,7 +869,7 @@
       <workItem from="1774245837652" duration="42949000" />
       <workItem from="1774454082016" duration="10781000" />
       <workItem from="1774483839135" duration="10440000" />
-      <workItem from="1774551231807" duration="118482000" />
+      <workItem from="1774551231807" duration="119737000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

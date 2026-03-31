@@ -16,24 +16,15 @@ from transport import AddressTag, Message
 class ServiceRequest(Message):
     _command: Command
     
-    def __init__(self, id: int, source_: AddressTag, command: Command):
+    def __init__(self, id: int, sender_address: AddressTag, command: Command):
         """
         Args:
             id: int
-            label: AddressTag
             command: Command
+            sender_address: AddressTag
         """
-        super().__init__(id=id, label=label)
+        super().__init__(id=id, sender_address=sender_address)
         self._command = command
-        
-        
-    @property
-    def id(self) -> int:
-        return self._id
-    
-    @property
-    def label(self) -> AddressTag:
-        return self._label
     
     @property
     def command(self) -> Command:
@@ -43,6 +34,6 @@ class ServiceRequest(Message):
         if other is self: return True
         if other is None: return False
         if isinstance(other, ServiceRequest):
-            return self._id == other._id
+            return super().__eq__(other)
         return False
         
