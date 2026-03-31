@@ -9,9 +9,8 @@ Created: 2026-02-25
 # =========== COMMAND PACKAGE CONTENTS ===========#
 
 # Packages
-from command.command.model.command import *
-from .validator import *
+from .model import *
 from .service import *
 
 # Modules
-from command.command.model.command import Command
+None
