@@ -10,15 +10,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# COMMAND_NOT_FOUND_EXCEPTION #======================#
-    "CommandNotFoundException",
+    # ======================# COMMAND_TYPE_NOT_SUPPORTED #======================#
+    "CommandTypeSupportException",
 ]
 
 from command import CommandDebugException
 
 
-# ======================# COMMAND_NOT_FOUND_EXCEPTION #======================#
-class CommandNotFoundException(CommandDebugException):
+# ======================# COMMAND_TYPE_NOT_SUPPORTED #======================#
+class CommandTypeSupportException(CommandDebugException):
     """
     Role:
         -   Exception Chain Layer 2
@@ -26,7 +26,7 @@ class CommandNotFoundException(CommandDebugException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that the Command does not exist in the CommandTable.
+        1.  Indicate that the Command's type does not exist in the CommandTable.
 
     Attributes:
         var: Optional[str]
@@ -40,8 +40,8 @@ class CommandNotFoundException(CommandDebugException):
     Super Class:
         CommandDebugException
     """
-    ERR_CODE = "COMMAND_NOT_FOUND_EXCEPTION"
-    MSG = str = "Command does not exist in the CommandTable."
+    ERR_CODE = "COMMAND_TYPE_NOT_SUPPORTED"
+    MSG = str = "Table does not support command's type."
     
     def __init__(
             self,

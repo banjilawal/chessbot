@@ -10,7 +10,11 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from command import Command, CommandArgsValidator, CommandTable, CommandValidationException, NullCommandException
+from command import (
+    Command, CommandArgsValidator, CommandNotFoundException, CommandTable, CommandValidationException,
+    NullCommandException
+)
+from command.service import CommandNameNotFoundException, CommandTypeSupportException
 from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 
 
@@ -73,15 +77,20 @@ class CommandValidator(Validator[Command]):
                     msg=CommandValidationException.MSG,
                     err_code=CommandValidationException.ERR_CODE,
                     rslt_type=CommandValidationException.RSLT_TYPE,
-                    ex=TypeError(
-                        f"{type(command).__name__}: "
+                    ex=CommandTypeSupportException(
+                        var=command.name,
+                        val=command,
+                        msg=CommandTypeSupportException.MSG,
+                        err_code=CommandTypeSupportException.ERR_CODE,
                     )
                 )
             )
-        
-        # Handle the case that, command's name does not match the cipher's\
-        command_name_validation_result = cls._validate_command_name(command.name, cipher, identity_service)
-        if command_name_validation_result.is_failure:
+        # Handle the case that, the command identity is not safe.
+        identity_validation_result = identity_service.validate_identity(
+            id_candidate=command.id,
+            name_candidate=command.name,
+        )
+        if identity_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 CommandValidationException(
@@ -90,9 +99,28 @@ class CommandValidator(Validator[Command]):
                     msg=CommandValidationException.MSG,
                     err_code=CommandValidationException.ERR_CODE,
                     rslt_type=CommandValidationException.RSLT_TYPE,
-                    ex=command_name_validation_result.exception
+                    ex=identity_validation_result.exception
                 )
             )
+        # Handle the case that, command has an incorrect name.
+        if command.name not in ciphers.command_names:
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                CommandValidationException(
+                    mthd=method,
+                    op=CommandValidationException.OP,
+                    msg=CommandValidationException.MSG,
+                    err_code=CommandValidationException.ERR_CODE,
+                    rslt_type=CommandValidationException.RSLT_TYPE,
+                    ex=CommandNameNotFoundException(
+                        var=command.name,
+                        val=command,
+                        msg=CommandNameNotFoundException.MSG,
+                        err_code=CommandNameNotFoundException.ERR_CODE,
+                    )
+                )
+            )
+        # --- Command identity and type checks are passed. conduct param tests. ---#
         # Handle the case that, command's arguments are incorrect. does not match the cipher's\
         args_validation_result = args_validator.validate(command.name, cipher, identity_service)
         if args_validation_result.is_failure:

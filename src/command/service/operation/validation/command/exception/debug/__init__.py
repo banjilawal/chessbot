@@ -13,4 +13,5 @@ None
 
 # Modules
 from .null import NullCommandException
-from .exist import CommandNotFoundException
+from .name import CommandNameNotFoundException
+from .support import CommandTypeSupportException

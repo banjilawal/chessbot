@@ -34,3 +34,10 @@ class CommandTable:
     @property
     def command_types(self) -> Union:
         return cast(Union, self._entries.keys())
+    
+    @property
+    def command_names(self) -> List[str]:
+        names = []
+        for key in self._entries:
+            names.append(key.name)
+        return names

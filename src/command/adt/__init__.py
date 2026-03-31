@@ -13,7 +13,6 @@ version: 1.0.0
 from .args import *
 from .table import *
 from .command import *
-from .service import *
 
 # Modules
 None
