@@ -10,10 +10,11 @@ Version: 1.0.0
 # =========== SYSTEM.SEARCH PACKAGE CONTENTS ===========#
 
 # Packages
+from .route import *
 from .query import *
 from .result import *
 from .context import *
 from .exception import *
 
 # Modules
-from .router import SearchRouter
+from logic.system.search.route.router import SearchRouter

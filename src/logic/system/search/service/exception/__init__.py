@@ -1,4 +1,4 @@
-# src/logic/system/search/query/service/exception/__init__.py
+# src/logic/system/search/context/service/exception/__init__.py
 
 """
 Module: logic.system.search.query.service.exception.__init__
@@ -13,5 +13,4 @@ Version: 1.0.0
 None
 
 # Modules
-from .super import ContextException
-from .debug import ContextFlagCountException
+from .super import ContextServiceException

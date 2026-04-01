@@ -1,4 +1,4 @@
-# src/logic/system/search/query/service/exception/super.py
+# src/logic/system/search/context/service/exception/super.py
 
 """
 Module: logic.system.search.query.service.exception.__init__
