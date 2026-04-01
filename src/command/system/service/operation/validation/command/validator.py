@@ -10,12 +10,6 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from command import (
-    Command, CommandArgsValidator, CommandNotFoundException, CommandTable, CommandValidationException,
-    NullCommandException
-)
-from command.service import CommandNameNotFoundException, CommandTypeSupportException
-from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 
 
 class CommandValidator(Validator[Command]):
@@ -120,11 +114,12 @@ class CommandValidator(Validator[Command]):
                     )
                 )
             )
-        # --- Command identity and type checks are passed. conduct param tests. ---#
-        
-        # Handle the case that, command's arguments are incorrect. does not match the cipher's\
-        args_validation_result = args_validator.validate(command.name, cipher, identity_service)
-        if args_validation_result.is_failure:
+        # Handle the case that, the command's arguments are not correct.
+        arguments_validation_results = args_validator.validate(
+            command=command,
+            signature=ciphers.entries[command],
+        )
+        if arguments_validation_results.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 CommandValidationException(
@@ -133,58 +128,11 @@ class CommandValidator(Validator[Command]):
                     msg=CommandValidationException.MSG,
                     err_code=CommandValidationException.ERR_CODE,
                     rslt_type=CommandValidationException.RSLT_TYPE,
-                    ex=args_validation_result.exception
+                    ex=arguments_validation_results.exception
                 )
             )
-        # --- On certification successes send the square in the ValidationResult. ---#
+        # --- Forward the work product. ---#
         return ValidationResult.success(command)
-        
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def _validate_command_name(
-            cls,
-            name: str,
-            cipher: Command,
-            identity_service: IdentityService = IdentityService(),
-    ) -> ValidationResult[str]:
-        
-        method = "CommandValidator._validate_command_name"
-        
-        # Handle the case that the command name is not a safe string.
-        name_validation_result = identity_service.validate_name(command.name)
-        if name_validation_result.is_failure:
-            # Return the exception chain on failure.
-            return ValidationResult.failure(
-                CommandValidationException(
-                    mthd=method,
-                    op=CommandValidationException.OP,
-                    msg=CommandValidationException.MSG,
-                    err_code=CommandValidationException.ERR_CODE,
-                    rslt_type=CommandValidationException.RSLT_TYPE,
-                    ex=name_validation_result.exception
-                )
-            )
-        # Handle the case that, the command's name is wrong.
-        if name.upper() != cipher.name.upper():
-            # Return the exception chain on failure.
-            return ValidationResult.failure(
-                CommandValidationException(
-                    mthd=method,
-                    op=CommandValidationException.OP,
-                    msg=CommandValidationException.MSG,
-                    err_code=CommandValidationException.ERR_CODE,
-                    rslt_type=CommandValidationException.RSLT_TYPE,
-                    ex=CommandNameException(
-                        err_code=CommandNameException.ERR_CODE,
-                        msg=f"unknown command: {name}",
-                        var=name,
-                        val=f"{name}",
-                    )
-                )
-            )
-        # --- Return the verified command name to the caller. ---#
-        return ValidationResult.success(name)
  
 
     

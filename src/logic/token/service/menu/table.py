@@ -14,7 +14,7 @@ from typing import Any, Dict
 from logic.team import Team
 from logic.token import PawnToken, Token
 from logic.formation import Formation
-from command.adt import CommandArgs, CommandTable
+from command.system.adt import CommandArgs, CommandTable
 from command.token import (
     BuildTokenCommand, DeployTokenCommand, PromotePawnCommand, TokenCommand, ValidateTokenCommand
 )

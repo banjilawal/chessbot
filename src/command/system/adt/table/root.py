@@ -10,7 +10,7 @@ Version: 1.0.0
 from __future__ import annotations
 from typing import Dict, List, Union, cast
 
-from command.adt import Command, CommandArgs
+from command.system.adt import Command, CommandArgs
 
 
 class CommandTable:

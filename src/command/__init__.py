@@ -16,7 +16,7 @@ log = logging.getLogger("chessbot")
 # =========== PACKAGE CONTENTS ===========#
 
 # Packages
-from .adt import *
+from command.system.adt import *
 from .menu import *
 from .pipeline import *
 from .token import *
