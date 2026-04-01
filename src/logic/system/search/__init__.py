@@ -14,7 +14,7 @@ from .route import *
 from .query import *
 from .result import *
 from .context import *
-from .exception import *
+from logic.system.search.route.exception import *
 
 # Modules
 from logic.system.search.route.router import SearchRouter

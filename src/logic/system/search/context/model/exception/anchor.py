@@ -1,37 +1,71 @@
-# src/logic/system/search/context/service/exception/super.py
+# src/logic/system/search/context/mode/exception/anchor.py
 
 """
-Module: logic.system.search.query.service.exceptionsuper
+Module: logic.system.search.context.model.exception.anchor
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
 """
 
-from logic.system import ChessException
+from __future__ import annotations
+from typing import Optional
 
 __all__ = [
-    # ======================# CONTEXT EXCEPTION #======================#
+    # ======================# CONTEXT_EXCEPTION #======================#
     "ContextException",
 ]
 
+from logic.system import AnchorException
 
-# ======================# CONTEXT EXCEPTION #======================#
-class ContextException(ChessException):
+
+# ======================# CONTEXT_EXCEPTION #======================#
+class ContextException(AnchorException):
     """
-    Role:Exception Work
+    Role:
+        -   Exception Chain Layer 0
+        -   Exception coverage target
 
     Responsibilities:
-    1.  Parent of exception raised by CONTEXT objects
-    3.  Super for CONTEXT errors not covered by lower level CONTEXT exception.
+        1.  Anchoring target for Context debug (layer-2) error variable information.
+        2.  Indicate which Context method received a worker's (layer-1) failure result.
 
-    Super Class:
-        *   ChessException
+    Attributes:
+        msg: Optional[str]
+        ex: Optional[Exception]
+        cls_name: Optional[str]
+        cls_mthd: Optional[str]
+        err_code: Optional[str]
 
     Provides:
 
-
-    # INHERITED ATTRIBUTES:
-    None
+    Super Class:
+        AnchorException
     """
     ERR_CODE = "CONTEXT_EXCEPTION"
-    MSG = "CONTEXT raised an exception."
+    MSG = "Context raised an exception."
+    
+    def __init__(
+            self,
+            msg: Optional[str] = None,
+            ex: Optional[Exception] = None,
+            cls_name: Optional[str] = None,
+            cls_mthd: Optional[str] = None,
+            err_code: Optional[str] = None,
+    ):
+        """
+        Args:
+            msg: Optional[str]
+            ex: Optional[Exception]
+            cls_name: Optional[str]
+            cls_mthd: Optional[str]
+            err_code: Optional[str]
+        """
+        msg = msg or self.MSG
+        err_code = err_code or self.ERR_CODE
+        super().__init__(
+            ex=ex,
+            msg=msg,
+            err_code=err_code,
+            cls_name=cls_name,
+            cls_mthd=cls_mthd,
+        )
