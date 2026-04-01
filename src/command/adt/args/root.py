@@ -9,8 +9,7 @@ Version: 1.0.0
 
 from __future__ import annotations
 
-from collections.abc import dict_keys
-from typing import Any, Dict, List, cast
+from typing import Any, Dict, List, Union, cast
 
 
 class CommandArgs:
@@ -20,20 +19,16 @@ class CommandArgs:
         self._args = {}
     
     @property
-    def args(self) -> Dict[str, Any]:
+    def entries(self) -> Dict[str, Any]:
         return self._args
-    
-    @args.setter
-    def args(self, value: Dict[str, Any]):
-        self._args = value
         
     @property
-    def variables(self) -> List[str]:
+    def identifiers(self) -> List[str]:
         return cast(List, self._args.keys())
     
     @property
-    def types(self) -> List[str]:
-        return cast(List, self._args.values())
+    def types(self) -> Union:
+        return cast(Union, self._args.values())
         
     @property
     def count(self) -> int:

@@ -12,7 +12,8 @@ Created: 2026-02-24
 None
 
 # Modules
+from .name import ArgumentNameException
+from .genus import ArgumentTypeException
 from .null import NullArgumentsException
 from .count import ArgumentCountException
-from .name import ArgumentNameException
-from .kind import ArgumentTypeException
+from .binding import ArgumentNameTypeBindingException

@@ -22,8 +22,8 @@ class BuildTokenCommandArgs(CommandArgs):
     
     def __init__(self):
         super().__init__()
-        self.args["owner"] = Team
-        self.args["formation"] = Formation
+        self.entries["owner"] = Team
+        self.entries["formation"] = Formation
 
 class BuildTokenCommand(TokenCommand):
     COMMAND_NAME = "build_token"

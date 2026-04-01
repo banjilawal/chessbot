@@ -121,6 +121,7 @@ class CommandValidator(Validator[Command]):
                 )
             )
         # --- Command identity and type checks are passed. conduct param tests. ---#
+        
         # Handle the case that, command's arguments are incorrect. does not match the cipher's\
         args_validation_result = args_validator.validate(command.name, cipher, identity_service)
         if args_validation_result.is_failure:

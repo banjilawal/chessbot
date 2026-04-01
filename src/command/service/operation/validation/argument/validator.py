@@ -10,10 +10,13 @@ from __future__ import annotations
 
 from typing import Any, Dict, cast
 
+from pip._internal.models import candidate
+
 from command import (
     ArgumentCountException, ArgumentNameException, ArgumentTypeException, ArgumentsValidationException,
-    Command, NullArgumentsException
+    Command, CommandArgs, NullArgumentsException
 )
+from command.service import ArgumentNameTypeBindingException
 from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 
 class CommandArgsValidator(Validator[Dict]):
@@ -52,41 +55,37 @@ class CommandArgsValidator(Validator[Dict]):
     @LoggingLevelRouter.monitor
     def validate(
             cls,
-            cipher: Command,
-            candidate: Any,
+            command: Command,
+            signature: CommandArgs,
             identity_service: IdentityService = IdentityService(),
-    ) -> ValidationResult[Dict[str, Any]]:
+    ) -> ValidationResult[CommandArgs]:
         """
-         # ACTION:
-             1. If the candidate fails either
-                    *   existence
-                    *   type.
-                Send an exception chain the ValidationResult. Else cast to Dict, arguments.
-            2.  If the arguments.length != cipher.parameters.length, send an exception chain the
-                ValidationResult.
-            3.  Iterate through the arguments and if a entry fails either tests
-                    *   The is not a str inside cipher.keys().
-                    *   arguments[name].type != cipher[name]
-                Send an exception chain the ValidationResult.
-            4.  The tests have been passed, return the success result.
-         # PARAMETERS:
-             *  cipher (Command)
-             *  candidate (Any)
-             *  identity_service (IdentityService)
-         # RETURNS:
-             *   ValidationResult[Dict[Str, Any]] containing either:
-                     - On failure: Exception.
-                     - On success: Dict[Str, Any] in the payload.
-         Raises:
-             *   ArgumentCountException
-             *   ArgumentNameException
-             *   ArgumentTypeException
-             *   ArgumentValidationException
-         """
-        method = "CommandArgsValidator.validate"
+        Verifies a command's arguments match the method's parameter list
         
-        # Handle the nonexistence case.
-        if candidate is None:
+        Action:
+            1.  Send an exception chain in the ValidationResult if either of
+                the following occur,
+                    -   The command's parameters fail a type check.
+                    -   The ccommand's identifier fails a name check.
+            2.  Otherwise, send the success result.
+        Args:
+            command: Command
+            signature: CommandArgs
+            identity_service: IdentityService
+        Returns:
+            ValidationResult[CommandArgs]
+        Raises:
+            ArgumentsValidationException
+        """
+        method = f"{cls.__name__}.validate"
+        
+
+        # Handle the case that, the candidate does not pass type of count checks
+        type_validation_results = cls._run_type_checks(
+            signature=signature,
+            candidate=command.parameters,
+        )
+        if type_validation_results.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 ArgumentsValidationException(
@@ -95,15 +94,86 @@ class CommandArgsValidator(Validator[Dict]):
                     msg=ArgumentsValidationException.MSG,
                     err_code=ArgumentsValidationException.ERR_CODE,
                     rslt_type=ArgumentsValidationException.RSLT_TYPE,
+                    ex=type_validation_results.exception
+                )
+            )
+        # Handle the case that, an identifier, or the identifier-type binding checks fail.
+        identifier_validation_results = cls._run_identifier_checks(
+            signature=signature,
+            candidate=type_validation_results.payload,
+            identity_service=identity_service,
+        )
+        if not identifier_validation_results.is_failure:
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                ArgumentsValidationException(
+                    mthd=method,
+                    op=ArgumentsValidationException.OP,
+                    msg=ArgumentsValidationException.MSG,
+                    err_code=ArgumentsValidationException.ERR_CODE,
+                    rslt_type=ArgumentsValidationException.RSLT_TYPE,
+                    ex=identifier_validation_results.exception
+                )
+            )
+        # --- Return the work product. ---#
+        return ValidationResult.success(
+            payload=identifier_validation_results.payload
+        )
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _run_type_checks(
+            cls,
+            candidate: CommandArgs,
+            signature: CommandArgs,
+    ) -> ValidationResult[CommandArgs]:
+        """
+        Verifies a command's arguments types match the types in the signature.
+
+        Action:
+            1.  Send an exception chain in the ValidationResult if any of t
+                the following occurs:
+                    -   The candidate is null.
+                    -   The candidate's type is not the signature's.
+                    -   The candidate has the wrong number of arguments.
+                    -   One of the candidate's types is not in the signature
+            2.  Otherwise, send the success result.
+        Args:
+            candidate: CommandArgs
+            signature: CommandArgs
+        Returns:
+            ValidationResult[CommandArgs]
+        Raises:
+            TypeError
+            ArgumentTypeException
+            NullArgumentsException
+            ArgumentCountException
+            ArgumentsValidationException
+        """
+        method = f"{cls.__name__}._run_type_checks"
+        
+        # Handle the nonexistence case.
+        if candidate is None:
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                ArgumentsValidationException(
+                    mthd=method,
+                    title=cls.__name__,
+                    op=ArgumentsValidationException.OP,
+                    msg=ArgumentsValidationException.MSG,
+                    err_code=ArgumentsValidationException.ERR_CODE,
+                    rslt_type=ArgumentsValidationException.RSLT_TYPE,
                     ex=NullArgumentsException(
+                        msg=ArgumentsValidationException.MSG,
                         err_code=NullArgumentsException.ERR_CODE,
-                        msg=NullArgumentsException.MSG,
                     )
                 )
             )
         # Handle the wrong class case.
-        if not isinstance(candidate, Dict):
+        if not isinstance(candidate, type(signature)):
             # Return the exception chain on failure.
+            signature_type = type(signature).__name__
+            actual_type = type(candidate).__name__
             return ValidationResult.failure(
                 ArgumentsValidationException(
                     mthd=method,
@@ -112,15 +182,15 @@ class CommandArgsValidator(Validator[Dict]):
                     err_code=ArgumentsValidationException.ERR_CODE,
                     rslt_type=ArgumentsValidationException.RSLT_TYPE,
                     ex=TypeError(
-                            f"{method}: Expected Dict, got {type(candidate).__name__} instead."
-                        )
+                        f"Expected {signature_type}, got {actual_type}."
+                    )
                 )
             )
-        # --- Cast candidate to a Dict additional tests. ---#
-        arguments = cast(Dict, candidate)
-
-        # Handle the case that, arguments has the wrong number of arguments.
-        if len(arguments) != len(cipher.parameters):
+        # --- Cast candidate to the signature's type for additional tests. ---#
+        args = cast(type(signature), candidate)
+        
+        # Handle the case that, the number of arguments is wrong.
+        if args.count != signature.count:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 ArgumentsValidationException(
@@ -130,18 +200,14 @@ class CommandArgsValidator(Validator[Dict]):
                     err_code=ArgumentsValidationException.ERR_CODE,
                     rslt_type=ArgumentsValidationException.RSLT_TYPE,
                     ex=ArgumentCountException(
-                        err_code=ArgumentCountException.ERR_CODE,
                         msg=ArgumentCountException.MSG,
-                        val=len(arguments),
+                        err_code=ArgumentCountException.ERR_CODE,
                     )
                 )
             )
-        # --- Iterated through the dictionary to verify the argument names. ---#
-        
-        for name in arguments.keys():
-            # Handle the case that, the key is not a safe string.
-            name_validation_result = identity_service.validate_name(name)
-            if name_validation_result.is_failure:
+        # Handle the case that, an argument is the wrong type.
+        for genus in args.types:
+            if not isinstance(genus, signature.types):
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
                     ArgumentsValidationException(
@@ -150,11 +216,67 @@ class CommandArgsValidator(Validator[Dict]):
                         msg=ArgumentsValidationException.MSG,
                         err_code=ArgumentsValidationException.ERR_CODE,
                         rslt_type=ArgumentsValidationException.RSLT_TYPE,
-                        ex=name_validation_result.exception,
+                        ex=ArgumentTypeException(
+                            var=genus.__name__,
+                            msg=ArgumentTypeException.MSG,
+                            err_code=ArgumentTypeException.ERR_CODE,
+                        )
                     )
+                )
+        # --- Argument type tests passed. Return the work product. ---#
+        return ValidationResult.success(args)
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _run_identifier_checks(
+            cls,
+            candidate: CommandArgs,
+            signature: CommandArgs,
+            identity_service: IdentityService,
+    ) -> ValidationResult[CommandArgs]:
+        """
+        Verifies a command's arguments match the method's parameter list
+
+        Action:
+            1.  Send an exception chain in the ValidationResult if any of
+                the following occurs:
+                    -   An identifier fails a safety check.
+                    -   A identifier's type does not match what's in the
+                        signature.
+            2.  Otherwise, send the success result.
+        Args:
+            candidate CommandArgs
+            signature: CommandArgs
+            identity_service: IdentityService
+        Returns:
+            ValidationResult[CommandArgs]
+        Raises:
+            ArgumentNameException
+            ArgumentsValidationException
+            ArgumentNameTypeBindingException
+        """
+        method = f"{cls.__name__}._run_identifier_checks"
+        
+        # Handle the case that identifier is not a valid string,
+        for key in candidate.entries.keys():
+            str_validation_result = identity_service.validate_name(
+                candidate=key,
             )
-            # Handle the case that, the name isn't among the parameters.
-            if name.upper() not in [param.upper() for param in cipher.parameters]:
+            if str_validation_result.is_failure:
+                # Return the exception chain on failure.
+                return ValidationResult.failure(
+                    ArgumentsValidationException(
+                        mthd=method,
+                        op=ArgumentsValidationException.OP,
+                        msg=ArgumentsValidationException.MSG,
+                        err_code=ArgumentsValidationException.ERR_CODE,
+                        rslt_type=ArgumentsValidationException.RSLT_TYPE,
+                        ex=str_validation_result.exception,
+                    )
+                )
+        # Handle the case that, an identifier is not in the signature.
+        for identifier in candidate.identifiers:
+            if identifier.upper() not in signature.identifiers:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
                     ArgumentsValidationException(
@@ -164,35 +286,30 @@ class CommandArgsValidator(Validator[Dict]):
                         err_code=ArgumentsValidationException.ERR_CODE,
                         rslt_type=ArgumentsValidationException.RSLT_TYPE,
                         ex=ArgumentNameException(
+                            var=identifier,
+                            msg=ArgumentNameException.MSG,
                             err_code=ArgumentNameException.ERR_CODE,
-                            msg=f"Unknown argument:  {name}",
-                            var=f"{name}",
-                            val=name,
                         )
                     )
                 )
-            # --- Iterated through the dictionary to verify the argument names. ---#
-        
-            for name in arguments.keys():
-                # Handle the case that an argument's type is wrong.
-                if not isinstance(arguments[name], type(cipher.parameters[name])):
+            # Handle the case that, of an incorrect identifier-type binding.
+            for key in candidate.entries.keys():
+                if not isinstance(candidate.entries[key], signature.entries[key]):
                     # Return the exception chain on failure.
-                    correct_type = type(cipher.parameters[name]).__name__
-                    wrong_type = type(arguments[name]).__name__
-                    
                     return ValidationResult.failure(
                         ArgumentsValidationException(
+                            mthd=method,
                             op=ArgumentsValidationException.OP,
                             msg=ArgumentsValidationException.MSG,
                             err_code=ArgumentsValidationException.ERR_CODE,
                             rslt_type=ArgumentsValidationException.RSLT_TYPE,
-                            ex=ArgumentTypeException(
-                                err_code=ArgumentTypeException.ERR_CODE,
-                                msg=f"Expected {correct_type} for {name}. Got {wrong_type} instead.",
-                                var=f"{name}",
-                                val=name,
+                            ex=ArgumentNameTypeBindingException(
+                                var=key,
+                                val=f"expected type: {type(signature.entries[key]).__name__}",
+                                msg=ArgumentNameTypeBindingException.MSG,
+                                err_code=ArgumentNameTypeBindingException.ERR_CODE,
                             )
                         )
                     )
-        # --- The Arguments are correct, send the success result. ---#
-        return ValidationResult.success(arguments)
+        # --- Argument identifier tests passed. Return the work product. ---#
+        return ValidationResult.success(candidate)
