@@ -4,7 +4,50 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path." />
+    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/context/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/context/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/context/build/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/context/build/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/context/build/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/context/build/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/context/build/exception/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/context/build/exception/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/context/build/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/context/build/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/context/build/process.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/context/build/process.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/context/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/context/context.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/context/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/context/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/context/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/context/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/context/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/context/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/context/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/context/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/context/validation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/context/validation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/context/validation/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/context/validation/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/context/validation/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/context/validation/exception/debug/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/context/validation/exception/debug/excess.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/context/validation/exception/debug/excess.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/context/validation/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/context/validation/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/context/validation/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/context/validation/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/context/validation/exception/debug/zero.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/context/validation/exception/debug/zero.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/context/validation/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/context/validation/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/context/validation/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/context/validation/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/route/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/route/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/route/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/route/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/route/model/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/route/model/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/route/model/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/route/model/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/route/model/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/route/model/exception/debug/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/route/model/exception/debug/missing.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/route/model/exception/debug/missing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/route/model/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/route/model/router.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/route/validation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/route/validation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/route/validation/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/route/validation/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/route/validation/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/route/validation/exception/debug/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/route/validation/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/route/validation/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/route/validation/exception/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/route/validation/exception/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/route/validation/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/route/validation/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/service/exception/exist.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/service/exception/exist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/search/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/service/service.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -306,11 +349,11 @@
       <recent name="$PROJECT_DIR$/src/command/service/operation/validation/command/exception/debug" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/logic/token/database" />
+      <recent name="$PROJECT_DIR$/src/logic/system/search/context/model" />
       <recent name="$PROJECT_DIR$/src/logic/system/search/query/concrete" />
       <recent name="$PROJECT_DIR$/src/logic/system/search/query/abstract" />
       <recent name="$PROJECT_DIR$/src/logic/system/search/context" />
-      <recent name="$PROJECT_DIR$/src/logic/system/search/route" />
-      <recent name="$PROJECT_DIR$/src/logic/system/search/context/model" />
     </key>
   </component>
   <component name="RunManager" selected="Python.inactive">
@@ -858,7 +901,7 @@
       <workItem from="1774454082016" duration="10781000" />
       <workItem from="1774483839135" duration="10440000" />
       <workItem from="1774551231807" duration="159138000" />
-      <workItem from="1774976324979" duration="48575000" />
+      <workItem from="1774976324979" duration="48982000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -941,7 +984,7 @@
           <option name="timeStamp" value="32" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/logic/token/query/context/build/exception/__init__.py</url>
+          <url>file://$PROJECT_DIR$/src/logic/token/database/search/context/build/exception/__init__.py</url>
           <line>14</line>
           <option name="timeStamp" value="41" />
         </line-breakpoint>
