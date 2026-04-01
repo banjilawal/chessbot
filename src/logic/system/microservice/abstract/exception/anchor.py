@@ -23,8 +23,8 @@ class ServiceException(AnchorException):
     Role:Debug Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
-    1.  Reporting and coverage for MicroService DebugExceptions.
-    2.  Uses cls_mthd attribute to show which MicroService method received a failure
+    1.  Reporting and coverage for Microservice DebugExceptions.
+    2.  Uses cls_mthd attribute to show which Microservice method received a failure
         result from a worker.
 
     Super Class:
@@ -53,8 +53,8 @@ class ServiceException(AnchorException):
         *   See AnchorException class for inherited methods.
     """
     ERR_CODE = "SERVICE_EXCEPTION"
-    MSG = "MicroService raised an exception."
-    CLS_NAME = "MicroService"
+    MSG = "Microservice raised an exception."
+    CLS_NAME = "Microservice"
     
     _cls_name:str = None
     _id: int = None

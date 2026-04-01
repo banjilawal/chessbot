@@ -15,7 +15,7 @@ from logic.team import TeamContext, TeamContextBuilder, TeamContextValidator, Te
 
 class TeamQueryService(QueryService[TeamContext]):
     """
-    Role:Search MicroService, Lifecycle Management, Encapsulation, API layer.
+    Role:Search Microservice, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing Team search microservice API.

@@ -11,22 +11,22 @@ from __future__ import annotations
 from typing import cast
 
 from logic.span import SquareSpan, SquareSpanBuilder, SquareSpanValidator
-from logic.system import IdFactory, IntegrityMicroService
+from logic.system import IdFactory, IntegrityMicroservice
 
 
-class SquareSpanService(IntegrityMicroService[SquareSpan]):
+class SquareSpanService(IntegrityMicroservice[SquareSpan]):
     """
-    ROLE: MicroService, Computation
+    ROLE: Microservice, Computation
     TASK: Graphing
     
     RESPONSIBILITIES:
         1.  Generate a Graph from a Token's current position.
     
     INHERITED RESPONSIBILITIES:
-        * See MicroService for inherited responsibilities.
+        * See Microservice for inherited responsibilities.
     
     PARENT:
-        *   MicroService
+        *   Microservice
     
     PROVIDES:
     None
@@ -35,7 +35,7 @@ class SquareSpanService(IntegrityMicroService[SquareSpan]):
     None
     
     INHERITED ATTRIBUTES:
-        *   See IntegrityMicroService for inherited attributes.
+        *   See IntegrityMicroservice for inherited attributes.
     
     CONSTRUCTOR PARAMETERS:
         *   id: int
@@ -47,7 +47,7 @@ class SquareSpanService(IntegrityMicroService[SquareSpan]):
     None
     
     INHERITED METHODS:
-        *   See IntegrityMicroService for inherited methods.
+        *   See IntegrityMicroservice for inherited methods.
     """
     SERVICE_NAME = "SquareSpanService"
     

@@ -23,7 +23,7 @@ class IntegrityServiceException(ServiceException):
     Role:Debug Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
-    1.  Indicate that an error occurred in an IntegrityMicroService instance.
+    1.  Indicate that an error occurred in an IntegrityMicroservice instance.
 
     Super Class:
     *   ServiceException
@@ -48,8 +48,8 @@ class IntegrityServiceException(ServiceException):
         *   See ServiceException class for inherited methods.
     """
     ERR_CODE = "INTEGRITY_SERVICE_EXCEPTION"
-    MSG = "IntegrityMicroService raised an exception."
-    CLS_NAME = "IntegrityMicroService"
+    MSG = "IntegrityMicroservice raised an exception."
+    CLS_NAME = "IntegrityMicroservice"
     
     def __init__(
             self,

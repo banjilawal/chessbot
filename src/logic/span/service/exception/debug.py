@@ -23,7 +23,7 @@ class SpanServiceDebugException(DebugException):
     Role:Error Tracing, Debugging
 
     Responsibilities:
-    1.  Describes the condition that caused a SpanMicroService operation failure.
+    1.  Describes the condition that caused a SpanMicroservice operation failure.
 
     Super Class:
         *   DebugException
@@ -48,7 +48,7 @@ class SpanServiceDebugException(DebugException):
         *   See DebugException class for inherited methods.
     """
     ERR_CODE = "SPAN_SERVICE_EXCEPTION"
-    MSG = "A variable in SpanMicroService raised an exception."
+    MSG = "A variable in SpanMicroservice raised an exception."
     
     def __init__(
             self,

@@ -1,10 +1,10 @@
 
-from logic.system import IntegrityMicroService, id_emitter
+from logic.system import IntegrityMicroservice, id_emitter
 from logic.domain import DomainOrigin, DomainOriginBuilder, DomainOriginValidator
 
-class DomainOriginService(IntegrityMicroService[DomainOrigin]):
+class DomainOriginService(IntegrityMicroservice[DomainOrigin]):
     """
-    Role:MicroService, Lifecycle Management, Encapsulation, API layer.
+    Role:Microservice, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing DomainOrigin microservice API.
@@ -13,14 +13,14 @@ class DomainOriginService(IntegrityMicroService[DomainOrigin]):
         lifecycle.
 
     Super Class:
-        *   IntegrityMicroService
+        *   IntegrityMicroservice
 
     # PROVIDES:
         *   DomainOriginService
 
 
     # INHERITED ATTRIBUTES:
-        *   See IntegrityMicroService for inherited attributes.
+        *   See IntegrityMicroservice for inherited attributes.
     """
     DEFAULT_NAME = "DomainOriginService"
     

@@ -14,11 +14,11 @@ from copy import deepcopy
 from logic.schema import SchemaService
 from logic.rank import Rank, RankService
 from logic.coord import Coord, CoordService
-from logic.system import DeletionResult, IdFactory, InsertionResult, IntegrityMicroService, LoggingLevelRouter, UpdateResult
+from logic.system import DeletionResult, IdFactory, InsertionResult, IntegrityMicroservice, LoggingLevelRouter, UpdateResult
 from logic.token import PawnToken, Token, TokenBuilder, TokenOpsController, TokenServiceException, TokenValidation
 
 
-class TokenService(IntegrityMicroService[Token]):
+class TokenService(IntegrityMicroservice[Token]):
     """
         Role:
         -   API
@@ -63,7 +63,7 @@ class TokenService(IntegrityMicroService[Token]):
             ) -> UpdateResult[PawnToken]
             
     Super Class:
-        IntegrityMicroService
+        IntegrityMicroservice
     """
     SERVICE_NAME = "TokenService"
     _controller: TokenOpsController

@@ -16,7 +16,7 @@ from logic.game import GameContext, GameContextBuilder, GameContextValidator
 
 class GameQueryService(QueryService[GameContext]):
     """
-    Role:Search MicroService, Lifecycle Management, Encapsulation, API layer.
+    Role:Search Microservice, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing Game search microservice API.

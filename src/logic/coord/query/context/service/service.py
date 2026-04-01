@@ -9,13 +9,13 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.system import IntegrityMicroService, IdFactory
+from logic.system import IntegrityMicroservice, IdFactory
 from logic.coord import (
     CoordContext, CoordContextBuilder, CoordContextContextOpsController, CoordContextValidator
 )
 
 
-class CoordContextService(IntegrityMicroService[CoordContext]):
+class CoordContextService(IntegrityMicroservice[CoordContext]):
     """
     Role:
         -   Microservice API
@@ -37,7 +37,7 @@ class CoordContextService(IntegrityMicroService[CoordContext]):
     Provides:
 
     Super Class:
-        IntegrityMicroService
+        IntegrityMicroservice
     """
     SERVICE_NAME = "CoordContextService"
     _ops_controller: CoordContextContextOpsController

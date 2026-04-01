@@ -15,7 +15,7 @@ from logic.formation import FormationLookupProcess, FormationKey, FormationKeyBu
 
 class FormationKeyService(QueryService[FormationKey]):
     """
-    Role:MicroService, Lifecycle Management, Encapsulation, API layer.
+    Role:Microservice, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing FormationKey microservice API.

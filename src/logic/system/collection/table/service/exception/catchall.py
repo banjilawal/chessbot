@@ -22,7 +22,7 @@ class HashServiceException(ServiceException):
     Role:Exception Work
 
     Responsibilities:
-    1.  Basic, MicroService Primitive
+    1.  Basic, Microservice Primitive
 
     Super Class:
         *   ServiceException
@@ -34,4 +34,4 @@ class HashServiceException(ServiceException):
     None
     """
     ERR_CODE = "HASH_SERVICE_EXCEPTION"
-    MSG = "HashMicroService raised an exception."
+    MSG = "HashMicroservice raised an exception."

@@ -29,7 +29,7 @@ class TokenQueryService(QueryService[Token]):
         id: int
         name: str
         router: SearchRouter[T]
-        context_service: IntegrityMicroService[Context[T]]
+        context_service: IntegrityMicroservice[Context[T]]
 
     Provides:
         -  query(data_set: List[Token], context: TokenContext) -> SearchResult[List[Token]]

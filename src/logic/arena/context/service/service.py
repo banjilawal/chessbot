@@ -15,7 +15,7 @@ from logic.agent import AgentContext, AgentContextBuilder, AgentContextValidator
 
 class AgentQueryService(QueryService[AgentContext]):
     """
-    Role:Search MicroService, Lifecycle Management, Encapsulation, API layer.
+    Role:Search Microservice, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing Player search microservice API.

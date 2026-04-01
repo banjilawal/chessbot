@@ -15,26 +15,26 @@ from logic.coord import Coord, CoordService
 from logic.edge import Edge, EdgeBuilder
 from logic.graph import Graph
 from logic.node import Node, NodeBuilder
-from logic.span import BishopSpanServiceException, BishopSpanner, CoordSpan, SpanMicroService
+from logic.span import BishopSpanServiceException, BishopSpanner, CoordSpan, SpanMicroservice
 from logic.square import Square, SquareContext, SquareDatabase
 from logic.system import BuildResult, ComputationResult, IdFactory, LoggingLevelRouter
 from logic.token import Token, TokenService
 from logic.vector import VectorService
 
 
-class BishopSpanService(SpanMicroService):
+class BishopSpanService(SpanMicroservice):
     """
-    ROLE: MicroService, Computation
+    ROLE: Microservice, Computation
     TASK: Graphing
 
     RESPONSIBILITIES:
         1.  Generate a Graph from a Token's current position.
 
     INHERITED RESPONSIBILITIES:
-        * See SpanMicroService for inherited responsibilities.
+        * See SpanMicroservice for inherited responsibilities.
 
     PARENT:
-        *   SpanMicroService
+        *   SpanMicroservice
 
     PROVIDES:
     None
@@ -43,7 +43,7 @@ class BishopSpanService(SpanMicroService):
         *   spanner: BishopSpanner
 
     INHERITED ATTRIBUTES:
-        *   See SpanMicroService for inherited attributes.
+        *   See SpanMicroservice for inherited attributes.
 
     CONSTRUCTOR PARAMETERS:
         *   id: int
@@ -56,7 +56,7 @@ class BishopSpanService(SpanMicroService):
     None
 
     INHERITED METHODS:
-        *   See SpanMicroService for inherited messages.
+        *   See SpanMicroservice for inherited messages.
     """
     SERVICE_NAME = "BishopSpanService"
     _spanner: BishopSpanner

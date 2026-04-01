@@ -49,7 +49,7 @@ Both use cases do forward and reverse lookups unlike collider_candidates searche
             ..........................................
         }
         ..............................................
-    *   IntegrityMicroService{
+    *   IntegrityMicroservice{
             EntityBuilder,
             EntityValidator
         }
@@ -73,7 +73,7 @@ Both use cases do forward and reverse lookups unlike collider_candidates searche
     ................................................
 *   Hash{Category: MetadataSet}
     ...............................................
-*   HashMicroService{
+*   HashMicroservice{
         HashValidator,
         HashMember_EntityMapper
         ReverseHashLookup(

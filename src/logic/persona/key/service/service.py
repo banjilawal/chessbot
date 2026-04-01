@@ -14,7 +14,7 @@ from logic.persona import PersonaLookupProcess, PersonaKey, PersonaKeyBuilder, P
 
 class PersonaKeyService(QueryService[PersonaKey]):
     """
-    Role:MicroService, Lifecycle Management, Encapsulation, API layer.
+    Role:Microservice, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing PersonaKey microservice API.

@@ -18,10 +18,10 @@ Created: 2025-11-18
 
 from __future__ import annotations
 
-from logic.system import IdFactory, IntegrityMicroService, Builder, Validator
+from logic.system import IdFactory, IntegrityMicroservice, Builder, Validator
 
 
-class ScalarService(IntegrityMicroService[Scalar]):
+class ScalarService(IntegrityMicroservice[Scalar]):
     """
     Role:Microservice API, Integrity Lifecycle Manager, APLifecycle Management.
 
@@ -33,7 +33,7 @@ class ScalarService(IntegrityMicroService[Scalar]):
             *   At object invocation.
 
     Super Class:
-        *   IntegrityMicroService
+        *   IntegrityMicroservice
 
     Provides:
 
@@ -42,7 +42,7 @@ class ScalarService(IntegrityMicroService[Scalar]):
         *   validation (Validator[Scalar])
 
     # INHERITED ATTRIBUTES:
-        *   See IntegrityMicroService class for inherited attributes.
+        *   See IntegrityMicroservice class for inherited attributes.
 
     Attributes:
         *   id (int)
@@ -54,7 +54,7 @@ class ScalarService(IntegrityMicroService[Scalar]):
     None
 
     # INHERITED METHODS:
-    *   See IntegrityMicroService class for inherited methods.
+    *   See IntegrityMicroservice class for inherited methods.
     """
     SERVICE_NAME = "ScalarService"
     _builder: Builder[Scalar]

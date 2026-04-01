@@ -13,4 +13,4 @@ Version: 1.0.0
 from .exception import *
 
 # Modules
-from .service import SearchMicroService
+from .service import SearchMicroservice

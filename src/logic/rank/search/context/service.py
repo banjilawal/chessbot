@@ -12,7 +12,7 @@ from logic.rank import RankContext, RankContextValidator, RankContextBuilder, Ra
 
 class RankQueryService(QueryService[RankContext]):
     """
-    Role:Search MicroService, Lifecycle Management, Encapsulation, API layer.
+    Role:Search Microservice, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing Rank search microservice API.

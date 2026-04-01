@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Dict, Generic, TypeVar
 
 from command import CommandArgs
-from logic.system import MicroService
+from logic.system import Microservice
 
 T = TypeVar("T")
 
@@ -32,7 +32,7 @@ class Command(ABC, Generic[T]):
     Attributes:
         id: int
         name: str - Name of the server's operation.
-        server: MicroService - Operation provider
+        server: Microservice - Operation provider
         parameters: Dict[str, Any] - Parameters for the operation's methods.
 
     Provides:

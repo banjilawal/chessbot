@@ -23,7 +23,7 @@ class ServiceDebugException(DebugException):
     Role:Information, Reporting, Debug
 
     Responsibilities:
-    1.  Parent of DebugExceptions pertinent to MicroService instances.
+    1.  Parent of DebugExceptions pertinent to Microservice instances.
 
     Super Class:
         *  DebugException
@@ -48,7 +48,7 @@ class ServiceDebugException(DebugException):
         *   See DebugException class for inherited methods.
     """
     ERR_CODE = "SERVICE_DEBUG_EXCEPTION"
-    MSG = "MicroService attribute raised an exception."
+    MSG = "Microservice attribute raised an exception."
     
     def __init__(
             self,

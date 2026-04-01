@@ -11,12 +11,12 @@ from __future__ import annotations
 from typing import cast
 
 from logic.pair import Pair, PairBuilder, PairValidator
-from logic.system import IdFactory, IntegrityMicroService
+from logic.system import IdFactory, IntegrityMicroservice
 
 
-class PairService(IntegrityMicroService[Pair]):
+class PairService(IntegrityMicroservice[Pair]):
     """
-    Role:MicroService, Lifecycle Management, Encapsulation, API layer.
+    Role:Microservice, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing Pair microservice API.
@@ -25,13 +25,13 @@ class PairService(IntegrityMicroService[Pair]):
         single entry and exit points to Pair lifecycle.
 
     Super Class:
-        *   IntegrityMicroService
+        *   IntegrityMicroservice
 
     Provides:
 
 
     # INHERITED ATTRIBUTES:
-        *   See IntegrityMicroService for inherited attributes.
+        *   See IntegrityMicroservice for inherited attributes.
     """
     SERVICE_NAME = "PairService"
     

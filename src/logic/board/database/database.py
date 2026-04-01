@@ -22,7 +22,7 @@ from logic.system import (
 
 class BoardDatabase(Database[Board]):
     """
-    Role:Unique Data Stack, Search MicroService, CRUD Controller, Encapsulation, API layer.
+    Role:Unique Data Stack, Search Microservice, CRUD Controller, Encapsulation, API layer.
 
     Responsibilities:
     1.  Ensure all bag in managed by BoardStackService are unique.

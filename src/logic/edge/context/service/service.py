@@ -16,7 +16,7 @@ from logic.edge import EdgeContext, EdgeContextBuilder, EdgeContextValidator, Ed
 
 class EdgeQueryService(QueryService[EdgeContext]):
     """
-    Role:Search MicroService, Lifecycle Management, Encapsulation, API layer.
+    Role:Search Microservice, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing Edge search microservice API.

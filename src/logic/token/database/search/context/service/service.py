@@ -7,11 +7,11 @@ Created: 2025-11-24
 version: 1.0.0
 """
 
-from logic.system import IntegrityMicroService, IdFactory
+from logic.system import IntegrityMicroservice, IdFactory
 from logic.token import TokenContext, TokenContextBuilder, TokenContextValidator
 
 
-class TokenContextService(IntegrityMicroService[TokenContext]):
+class TokenContextService(IntegrityMicroservice[TokenContext]):
     """
     Role:
         -   Microservice API
@@ -35,7 +35,7 @@ class TokenContextService(IntegrityMicroService[TokenContext]):
     Provides:
 
     Super Class:
-        IntegrityMicroService
+        IntegrityMicroservice
     """
     SERVICE_NAME = "TokenContextService"
     _build: TokenContextBuilder

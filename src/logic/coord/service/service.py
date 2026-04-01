@@ -12,11 +12,11 @@ from typing import Union
 
 from logic.scalar import Scalar, ScalarService
 from logic.vector import Vector, VectorService
-from logic.system import ComputationResult, IdFactory, IntegrityMicroService
+from logic.system import ComputationResult, IdFactory, IntegrityMicroservice
 from logic.coord import Coord, CoordBuilder, CoordOpsController, CoordServiceException, CoordValidator
 
 
-class CoordService(IntegrityMicroService[Coord]):
+class CoordService(IntegrityMicroservice[Coord]):
     """
     Role:
         -   API
@@ -60,7 +60,7 @@ class CoordService(IntegrityMicroService[Coord]):
             ) -> BuildResult[Coord]
 
     Super Class:
-        IntegrityMicroService
+        IntegrityMicroservice
     """
     SERVICE_NAME = "CoordService"
     _ops_controller: CoordOpsController

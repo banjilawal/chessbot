@@ -26,17 +26,17 @@ class CoordQueryService(QueryService[Coord]):
         id: int
         name: str
         router: SearchRouter[T]
-        context_service: IntegrityMicroService[Context[T]]
+        context_service: IntegrityMicroservice[Context[T]]
 
     Provides:
         -   execute(dataset: List[T], query: Context[T]) -> SearchResult[List[T]]
 
     Super Class:
-        MicroService
+        Microservice
     """
     """
     Role:
-        Search MicroService, Lifecycle Management, Encapsulation, API layer.
+        Search Microservice, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facingCoord search microservice API.

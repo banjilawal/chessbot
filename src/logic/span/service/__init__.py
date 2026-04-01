@@ -14,4 +14,4 @@ from .handler import *
 from .exception import *
 
 # Modules
-from .service import SpanMicroService
+from .service import SpanMicroservice

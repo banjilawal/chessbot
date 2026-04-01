@@ -13,12 +13,12 @@ from typing import List, cast
 from logic.node import Node
 from logic.pair import PairList, PairListBuilder, PairListValidator, PairService
 from logic.pair.listing.service import PairListServiceException
-from logic.system import IdFactory, IntegrityMicroService, LoggingLevelRouter, SearchResult
+from logic.system import IdFactory, IntegrityMicroservice, LoggingLevelRouter, SearchResult
 
 
-class PairListService(IntegrityMicroService[PairList]):
+class PairListService(IntegrityMicroservice[PairList]):
     """
-    Role:MicroService, Lifecycle Management, Encapsulation, API layer.
+    Role:Microservice, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing PairList microservice API.
@@ -27,7 +27,7 @@ class PairListService(IntegrityMicroService[PairList]):
         single entry and exit points to PairList lifecycle.
 
     Super Class:
-        *   IntegrityMicroService
+        *   IntegrityMicroservice
 
     Provides:
 
@@ -35,7 +35,7 @@ class PairListService(IntegrityMicroService[PairList]):
         *   pair_service:   PairService
 
     # INHERITED ATTRIBUTES:
-        *   See IntegrityMicroService for inherited attributes.
+        *   See IntegrityMicroservice for inherited attributes.
     """
     SERVICE_NAME = "PairListService"
     _pair_service: PairService

@@ -12,12 +12,12 @@ from typing import cast
 
 from logic.pair import NodeTree, NodeTreeBuilder, NodeTreeValidator
 from logic.pair.listing.service import PairListService
-from logic.system import IdFactory, IntegrityMicroService
+from logic.system import IdFactory, IntegrityMicroservice
 
 
-class NodeTreeService(IntegrityMicroService[NodeTree]):
+class NodeTreeService(IntegrityMicroservice[NodeTree]):
     """
-    Role:MicroService, Lifecycle Management, Encapsulation, API layer.
+    Role:Microservice, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing NodeTree microservice API.
@@ -26,7 +26,7 @@ class NodeTreeService(IntegrityMicroService[NodeTree]):
         single entry and exit points to NodeTree lifecycle.
 
     Super Class:
-        *   IntegrityMicroService
+        *   IntegrityMicroservice
 
     Provides:
 
@@ -34,7 +34,7 @@ class NodeTreeService(IntegrityMicroService[NodeTree]):
         *   branch_service: PairListService
 
     # INHERITED ATTRIBUTES:
-        *   See IntegrityMicroService for inherited attributes.
+        *   See IntegrityMicroservice for inherited attributes.
     """
     SERVICE_NAME = "NodeTreeService"
     _branch_service: PairListService

@@ -16,21 +16,21 @@ from logic.span import CoordSpan, SpanGraphHandler, SpanServiceException, Spanne
 from logic.vector import VectorService
 from logic.square import SquareDatabase
 from logic.token import Token, TokenService
-from logic.system import ComputationResult, IdFactory, IdentityService, LoggingLevelRouter, MicroService
+from logic.system import ComputationResult, IdFactory, IdentityService, LoggingLevelRouter, Microservice
 
-class SpanMicroService(MicroService[CoordSpan]):
+class SpanMicroservice(Microservice[CoordSpan]):
     """
-    ROLE: MicroService, Computation
+    ROLE: Microservice, Computation
     TASK: Graphing
     
     RESPONSIBILITIES:
         1.  Generate a Graph from a Token's current position.
     
     INHERITED RESPONSIBILITIES:
-        * See MicroService for inherited responsibilities.
+        * See Microservice for inherited responsibilities.
     
     PARENT:
-        *   MicroService
+        *   Microservice
     
     PROVIDES:
     None
@@ -40,7 +40,7 @@ class SpanMicroService(MicroService[CoordSpan]):
         *   vector_service: VectorService
     
     INHERITED ATTRIBUTES:
-        *   See MicroService for inherited attributes.
+        *   See Microservice for inherited attributes.
     
     CONSTRUCTOR PARAMETERS:
         *   id: int
@@ -56,7 +56,7 @@ class SpanMicroService(MicroService[CoordSpan]):
     INHERITED METHODS:
     None
     """
-    SERVICE_NAME = "SpanMicroService"
+    SERVICE_NAME = "SpanMicroservice"
     _graph_handler: SpanGraphHandler
     _coord_service: CoordService
     _vector_service: VectorService
@@ -67,7 +67,7 @@ class SpanMicroService(MicroService[CoordSpan]):
             name: str = SERVICE_NAME,
             coord_service: CoordService = CoordService(),
             vector_service: VectorService = VectorService(),
-            id: int = IdFactory.next_id(class_name="SpanMicroService"),
+            id: int = IdFactory.next_id(class_name="SpanMicroservice"),
             identity_service: IdentityService = IdentityService(),
             graph_handler: SpanGraphHandler = SpanGraphHandler(),
     ):

@@ -16,7 +16,7 @@ from logic.system import (
 
 class IdentityService:
     """
-    Role:MicroService, Validation, Data Integrity, ID Generation
+    Role:Microservice, Validation, Data Integrity, ID Generation
 
     Responsibilities:
     1.  Issue IDs to new objects.

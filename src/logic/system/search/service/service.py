@@ -13,12 +13,12 @@ from abc import ABC, abstractmethod
 from typing import List, TypeVar
 
 from logic.system import (
-    Context, IntegrityMicroService, LoggingLevelRouter, Query, SearchResult, MicroService, StackSearchRouter
+    Context, IntegrityMicroservice, LoggingLevelRouter, Query, SearchResult, Microservice, StackSearchRouter
 )
 
 T = TypeVar("T")
 
-class SearchMicroService(ABC, MicroService[T]):
+class SearchMicroservice(ABC, Microservice[T]):
     """
     Role:
         -   API
@@ -32,30 +32,30 @@ class SearchMicroService(ABC, MicroService[T]):
         id: int
         name: str
         router: SearchRouter[T]
-        context_service: IntegrityMicroService[Context[T]]
+        context_service: IntegrityMicroservice[Context[T]]
         
     Provides:
         -   search(query: Query[T]) -> List[SearchResult[T]]
         
     Super Class:
-        MicroService
+        Microservice
     """
     _router: StackSearchRouter
-    _context_service: IntegrityMicroService[Context[T]]
+    _context_service: IntegrityMicroservice[Context[T]]
     
     def __init__(
             self,
             id: int,
             name: str,
             router: StackSearchRouter[T],
-            context_service: IntegrityMicroService[Context[T]],
+            context_service: IntegrityMicroservice[Context[T]],
     ):
         """
         Args:
             id: int
             name: str
             router: StackSearchRouter[T]
-            context_service: IntegrityMicroService[Context[T]]
+            context_service: IntegrityMicroservice[Context[T]]
         """
         super().__init__(id=id, name=name)
         self._router = router
@@ -63,7 +63,7 @@ class SearchMicroService(ABC, MicroService[T]):
     
     @property
     @abstractmethod
-    def context_service(self) -> IntegrityMicroService[Context[T]]:
+    def context_service(self) -> IntegrityMicroservice[Context[T]]:
         pass
     
     @property

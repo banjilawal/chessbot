@@ -15,13 +15,13 @@ from logic.arena import (
     ArenaTeamRelationAnalysis, ArenaValidator, ChangingArenaTeamBlockedException, TeamPlayingDifferentArenaException
 )
 from logic.schema import Schema, SchemaService
-from logic.system import IntegrityMicroService, InsertionResult, LoggingLevelRouter, Result, SearchResult, id_emitter
+from logic.system import IntegrityMicroservice, InsertionResult, LoggingLevelRouter, Result, SearchResult, id_emitter
 from logic.team import Team, TeamService
 
 
-class ArenaService(IntegrityMicroService[Arena]):
+class ArenaService(IntegrityMicroservice[Arena]):
     """
-    Role:MicroService, Lifecycle Management, Encapsulation, API layer.
+    Role:Microservice, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing Arena microservice API.
@@ -30,13 +30,13 @@ class ArenaService(IntegrityMicroService[Arena]):
     4.  Single entry and entry points to Arena lifecycle.
 
     Super Class:
-        *   IntegrityMicroService
+        *   IntegrityMicroservice
 
     Provides:
 
 
     # INHERITED ATTRIBUTES:
-        *   See IntegrityMicroService for inherited attributes.
+        *   See IntegrityMicroservice for inherited attributes.
     """
     DEFAULT_NAME = "ArenaService"
     _arena_team_relation_analyzer: ArenaTeamRelationAnalysis

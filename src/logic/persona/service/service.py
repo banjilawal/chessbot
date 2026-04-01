@@ -24,7 +24,7 @@ from logic.persona import (
 
 class PersonaService(HashService[Persona]):
     """
-    Role:Search MicroService, Lifecycle Management, Encapsulation, API layer.
+    Role:Search Microservice, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing Persona search microservice API.

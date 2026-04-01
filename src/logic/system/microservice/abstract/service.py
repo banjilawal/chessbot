@@ -14,7 +14,7 @@ from logic.system import Validator
 T = TypeVar("T")
 
 
-class MicroService(ABC, Generic[T]):
+class Microservice(ABC, Generic[T]):
     """
         -   API
         
@@ -59,7 +59,7 @@ class MicroService(ABC, Generic[T]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, MicroService):
+        if isinstance(other, Microservice):
             return self._id == other.id
         return False
     

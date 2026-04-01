@@ -16,7 +16,7 @@ from logic.square import SquareContext, SquareContextBuilder, SquareContextValid
 
 class SquareQueryService(QueryService[SquareContext]):
     """
-    Role:Search MicroService, Lifecycle Management, Encapsulation, API layer.
+    Role:Search Microservice, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing Square search microservice API.

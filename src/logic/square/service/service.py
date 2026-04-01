@@ -17,10 +17,10 @@ from logic.square import (
     Square, SquareBuilder, SquareOpsController, SquareServiceException,
     SquareValidator, VisitationProcessor
 )
-from logic.system import DeletionResult, IntegrityMicroService, IdFactory, LoggingLevelRouter, UpdateResult
+from logic.system import DeletionResult, IntegrityMicroservice, IdFactory, LoggingLevelRouter, UpdateResult
 
 
-class SquareService(IntegrityMicroService[Square]):
+class SquareService(IntegrityMicroservice[Square]):
     """
     Role:
         -   API Layer
@@ -49,7 +49,7 @@ class SquareService(IntegrityMicroService[Square]):
             
             
     Super Class:
-        IntegrityMicroService
+        IntegrityMicroservice
      """
     SERVICE_NAME = "SquareService"
     _controller: SquareOpsController

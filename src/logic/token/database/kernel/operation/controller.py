@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.system import IntegrityMicroService
+from logic.system import IntegrityMicroservice
 from logic.token import RankQuotaAnalysis, TokenCollisionAnalysis, TokenStackCrudController, TokenService
 from logic.token.database.kernel.operation.deployment.process import TokenStackDeployment
 
@@ -32,14 +32,14 @@ class TokenStackOpsController:
     """
     _crud: TokenStackCrudController
     _deployment: TokenStackDeployment
-    _integrity_service: IntegrityMicroService
+    _integrity_service: IntegrityMicroservice
     _rank_quota_analyzer: RankQuotaAnalysis
     _collision_detector: TokenCollisionAnalysis
     
     def __init__(
             self,
             crud: TokenStackCrudController = TokenStackCrudController(),
-            integrity_service: IntegrityMicroService = IntegrityMicroService(),
+            integrity_service: IntegrityMicroservice = IntegrityMicroservice(),
             deployment: TokenStackDeployment = TokenStackDeployment(),
             rank_quota_analyzer: RankQuotaAnalysis = RankQuotaAnalysis(),
             collision_detector: TokenCollisionAnalysis = TokenCollisionAnalysis(),

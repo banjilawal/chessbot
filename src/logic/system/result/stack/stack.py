@@ -21,7 +21,7 @@ T = TypeVar("T", bound=Result)
 
 class ResultStack(ABC, Generic[T]):
     """
-    Role:Data Stack, Search MicroService, CRUD Controller, Encapsulation, API layer.
+    Role:Data Stack, Search Microservice, CRUD Controller, Encapsulation, API layer.
 
     Responsibilities:
     1.  Scales Builder and Validator operations for collection of objects.

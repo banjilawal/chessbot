@@ -9,12 +9,12 @@ Created: 2025-11-18
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
-from logic.system import MicroService, Builder, Validator
+from logic.system import Microservice, Builder, Validator
 
 T = TypeVar("T")
 
 
-class IntegrityMicroService(ABC, MicroService[Generic[T]]):
+class IntegrityMicroservice(ABC, Microservice[Generic[T]]):
     """
     Role:
         -   API
@@ -39,7 +39,7 @@ class IntegrityMicroService(ABC, MicroService[Generic[T]]):
         -   validator() -> Validator[T]
 
     Super Class:
-        MicroService
+        Microservice
     """
     
     def __init__(self, id: int, name: str,):
@@ -62,7 +62,7 @@ class IntegrityMicroService(ABC, MicroService[Generic[T]]):
     
     def __eq__(self, other):
         if super().__eq__(other):
-            if isinstance(other, IntegrityMicroService):
+            if isinstance(other, IntegrityMicroservice):
                 return True
         return False
 

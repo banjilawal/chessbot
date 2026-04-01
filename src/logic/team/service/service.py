@@ -11,12 +11,12 @@ from __future__ import annotations
 from typing import List, cast
 
 
-from logic.system import IntegrityMicroService, IdFactory
+from logic.system import IntegrityMicroservice, IdFactory
 from logic.team import RosterUtil, Team, TeamBuild, TeamValidator
 
-class TeamService(IntegrityMicroService[Team]):
+class TeamService(IntegrityMicroservice[Team]):
     """
-    Role:MicroService, Lifecycle Management, Encapsulation, API layer.
+    Role:Microservice, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing Team microservice API.
@@ -25,7 +25,7 @@ class TeamService(IntegrityMicroService[Team]):
         lifecycle.
 
     Super Class:
-        *   IntegrityMicroService
+        *   IntegrityMicroservice
 
     Provides:
 
@@ -33,7 +33,7 @@ class TeamService(IntegrityMicroService[Team]):
         *   roster_util (RosterUtil)
 
     # INHERITED ATTRIBUTES:
-        *   See IntegrityMicroService for inherited attributes.
+        *   See IntegrityMicroservice for inherited attributes.
     """
     SERVICE_NAME = "TeamService"
     _roster_util: RosterUtil

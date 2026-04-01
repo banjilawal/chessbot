@@ -9,11 +9,11 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.system import IdFactory, IntegrityMicroService
+from logic.system import IdFactory, IntegrityMicroservice
 from logic.zone import Zone, ZoneBuilder, ZoneOpsController, ZoneTable, ZoneValidator
 
 
-class ZoneService(IntegrityMicroService[Zone]):
+class ZoneService(IntegrityMicroservice[Zone]):
     """
     Role:
         -   API
@@ -36,7 +36,7 @@ class ZoneService(IntegrityMicroService[Zone]):
     Provides:
 
     Super Class:
-        IntegrityMicroService
+        IntegrityMicroservice
     """
     SERVICE_NAME = "ZoneService"
     _table: ZoneTable
