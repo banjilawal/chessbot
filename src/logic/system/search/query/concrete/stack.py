@@ -1,7 +1,7 @@
-# src/logic/system/search/query/stack.py
+# src/logic/system/search/query/concrete/stack.py
 
 """
-Module: logic.system.search.query.stack
+Module: logic.system.search.query.concrete.stack
 Author: Banji Lawal
 Created: 2026-04-01
 Version: 1.0.0

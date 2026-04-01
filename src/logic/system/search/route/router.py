@@ -1,9 +1,9 @@
-# src/logic/system/search/router.py
+# src/logic/system/search/route/router.py
 
 """
-Module: logic.system.search.router
+Module: logic.system.search.route.router
 Author: Banji Lawal
-Created: 2025-11-18
+Created: 2026-03-31
 Version: 1.0.0
 """
 

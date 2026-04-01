@@ -1,10 +1,10 @@
-# src/logic/system/query/service/validator.py
+# src/logic/system/search/service/service.py
 
 """
-Module: logic.system.query.service.service
+Module: logic.system.search.service.service
 Author: Banji Lawal
-Created: 2025-10-03
-version: 1.0.0
+Created: 2025-11-18
+Version: 1.0.0
 """
 
 from __future__ import annotations
@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import List, TypeVar
 
 from logic.system import (
-    Context, IntegrityService, LoggingLevelRouter, SearchResult, Service, StackSearchRouter
+    Context, IntegrityService, LoggingLevelRouter, Query, SearchResult, Service, StackSearchRouter
 )
 
 T = TypeVar("T")
@@ -35,7 +35,7 @@ class SearchService(ABC, Service[T]):
         context_service: IntegrityService[Context[T]]
         
     Provides:
-        -   query(dataset: List[T], query: Context[T]) -> SearchResult[List[T]]
+        -   search(query: Query[T]) -> List[SearchResult[T]]
         
     Super Class:
         Service
@@ -73,10 +73,6 @@ class SearchService(ABC, Service[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def search(
-            self,
-            dataset: List[T],
-            context: Context[T]
-    ) -> SearchResult[List[T]]:
+    def search(self, query: Query[T]) -> List[SearchResult[T]]:
         pass
     

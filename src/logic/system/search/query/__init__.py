@@ -10,8 +10,8 @@ Version: 1.0.0
 # =========== SYSTEM.SEARCH.QUERY PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .abstract import *
+from .concrete import *
 
 # Modules
-from .root import *
-from .stack import *
+None

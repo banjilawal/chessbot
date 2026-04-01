@@ -1,7 +1,7 @@
-# src/logic/system/search/query/root.py
+# src/logic/system/search/query/abstract/model.py
 
 """
-Module: logic.system.search.query.root
+Module: logic.system.search.query.abstract.model
 Author: Banji Lawal
 Created: 2026-04-01
 Version: 1.0.0
