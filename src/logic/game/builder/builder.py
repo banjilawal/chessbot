@@ -77,11 +77,11 @@ class GameBuilder(Builder[Game]):
             if id_validation.is_failure():
                 return BuildResult.failure(id_validation.exception)
             
-            white_player_validation = agent_service.validation.query(white_player)
+            white_player_validation = agent_service.validator.query(white_player)
             if white_player_validation.is_failure():
                 return BuildResult.failure(white_player_validation.exception)
                 
-            black_player_validation = agent_service.validation.query(black_player)
+            black_player_validation = agent_service.validator.query(black_player)
             if black_player_validation.is_failure():
                 return BuildResult.failure(black_player_validation.exception)
             

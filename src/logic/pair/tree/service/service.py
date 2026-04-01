@@ -64,7 +64,7 @@ class NodeTreeService(IntegrityMicroService[NodeTree]):
         return cast(NodeTreeBuilder, self.entity_builder)
     
     @property
-    def validation(self) -> NodeTreeValidator:
+    def validator(self) -> NodeTreeValidator:
         return cast(NodeTreeValidator, self.entity_validator)
     
     @property

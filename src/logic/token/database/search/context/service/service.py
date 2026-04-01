@@ -64,7 +64,7 @@ class TokenContextService(IntegrityMicroService[TokenContext]):
         return self._build
     
     @property
-    def validation(self) ->TokenContextValidator:
+    def validator(self) ->TokenContextValidator:
         return self._validation
     
     

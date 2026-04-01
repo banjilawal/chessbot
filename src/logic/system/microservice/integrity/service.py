@@ -18,9 +18,13 @@ class IntegrityMicroService(ABC, MicroService[Generic[T]]):
     """
     Role:
         -   API
-        -   Stateless microservice
         -   Lifecycle Manager
         -   Operations Provider
+        -   Stateless Microservice
+        
+    About:
+        Avoids casting an entity's builders and validators by making them abstract
+        properties.
 
     Responsibilities:
         1.  Baremetal service request API.
@@ -31,8 +35,8 @@ class IntegrityMicroService(ABC, MicroService[Generic[T]]):
         name: name
 
     Provides:
-        -   build() -> Builder[T]
-        -   validation() -> Validator[T]
+        -   builder() -> Builder[T]
+        -   validator() -> Validator[T]
 
     Super Class:
         MicroService
@@ -53,7 +57,7 @@ class IntegrityMicroService(ABC, MicroService[Generic[T]]):
     
     @property
     @abstractmethod
-    def validation(self) -> Validator[T]:
+    def validator(self) -> Validator[T]:
         pass
     
     def __eq__(self, other):

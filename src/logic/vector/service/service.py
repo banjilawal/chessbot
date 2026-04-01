@@ -81,7 +81,7 @@ class VectorService(IntegrityMicroService[Vector]):
         return cast(VectorBuilder, self.entity_builder)
     
     @property
-    def validation(self) -> VectorValidator:
+    def validator(self) -> VectorValidator:
         """get VectorValidator"""
         return cast(VectorValidator, self.entity_validator)
     
@@ -114,7 +114,7 @@ class VectorService(IntegrityMicroService[Vector]):
         
         # Handle the case that, one of the vectors in not certified as safe
         for vector in vectors:
-            validation_result = self.validation.validate(candidate=vector)
+            validation_result = self.validator.validate(candidate=vector)
             if validation_result.is_failure:
                 # Send an exception chain on failure.
                 return ComputationResult.failure(
@@ -187,7 +187,7 @@ class VectorService(IntegrityMicroService[Vector]):
         method = f"{self.__class__.__name__}.multiply_vector_by_scalar"
         
         # Handle the case that, the vector does not pass a validation check.
-        vector_validation_result = self.validation.validate(candidate=vector)
+        vector_validation_result = self.validator.validate(candidate=vector)
         if vector_validation_result.is_failure:
             # Send an exception chain on failure.
             return ComputationResult.failure(
@@ -200,7 +200,7 @@ class VectorService(IntegrityMicroService[Vector]):
                 )
             )
         # Handle the case that, the scalar does not pass a validation check.
-        scalar_validation_result = scalar_service.validation.validate(candidate=scalar)
+        scalar_validation_result = scalar_service.validator.validate(candidate=scalar)
         if scalar_validation_result.is_failure:
             # Send an exception chain on failure.
             return ComputationResult.failure(
@@ -260,7 +260,7 @@ class VectorService(IntegrityMicroService[Vector]):
         method = f"{self.__class__.__name__}.convert_coord_to_vector"
         
         # Handle the case that, the coord does not pass a validation check.
-        coord_validation_result = coord_service.validation.validate(candidate=coord)
+        coord_validation_result = coord_service.validator.validate(candidate=coord)
         if coord_validation_result.is_failure:
             # Send an exception chain on failure.
             return ComputationResult.failure(

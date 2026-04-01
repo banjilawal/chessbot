@@ -72,5 +72,5 @@ class SquareRayService(IntegrityMicroService[SquareRay]):
         return cast(SquareRayBuilder, self.builder)
     
     @property
-    def validation(self) -> SquareRayValidator:
-        return cast(SquareRayValidator, self.validation)
+    def validator(self) -> SquareRayValidator:
+        return cast(SquareRayValidator, self.validator)

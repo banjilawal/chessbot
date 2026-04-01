@@ -183,7 +183,7 @@ class PlayerFactory(Builder[Player]):
                 return BuildResult.failure(identity_validation.exception)
             
             # Certify the engine_service has all the required components
-            engine_service_validation = engine_service.validation.query(candidate=engine_service)
+            engine_service_validation = engine_service.validator.query(candidate=engine_service)
             if engine_service_validation.is_failure():
                 return BuildResult.failure(engine_service_validation.exception)
             # When all checks pass send a MachinePlayer back.

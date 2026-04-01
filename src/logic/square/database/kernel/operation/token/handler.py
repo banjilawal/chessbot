@@ -229,7 +229,7 @@ class SquareStackTokenHandler:
         method = "SquareStackTokenHandler._safe_square_exists"
         
         # Handle the case that, the square is not certified safe.
-        square_validation = square_stack.integrity_service.validation.validate(square)
+        square_validation = square_stack.integrity_service.validator.validate(square)
         if square_validation.is_failure:
             return ValidationResult.failure(
                 exception=SquareStackTokenHandlerException(

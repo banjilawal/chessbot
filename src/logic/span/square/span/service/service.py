@@ -72,5 +72,5 @@ class SquareSpanService(IntegrityMicroService[SquareSpan]):
         return cast(SquareSpanBuilder, self.builder)
     
     @property
-    def validation(self) -> SquareSpanValidator:
-        return cast(SquareSpanValidator, self.validation)
+    def validator(self) -> SquareSpanValidator:
+        return cast(SquareSpanValidator, self.validator)

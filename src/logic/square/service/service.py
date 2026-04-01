@@ -81,7 +81,7 @@ class SquareService(IntegrityMicroService[Square]):
         return self._controller.build
     
     @property
-    def validation(self) -> SquareValidator:
+    def validator(self) -> SquareValidator:
         return self._controller.validation
     
     @property
@@ -119,7 +119,7 @@ class SquareService(IntegrityMicroService[Square]):
             token=visitor,
             square=square,
             token_service=token_service,
-            square_validator=self.validation,
+            square_validator=self.validator,
         )
         # Handle the case that, the request was not completed.
         if visitation_result.is_failure:
@@ -157,7 +157,7 @@ class SquareService(IntegrityMicroService[Square]):
         # --- Forward the request to the processor. ---#
         visitation_result = self._controller.visitation.departure.query(
             square=square,
-            square_validator=self.validation,
+            square_validator=self.validator,
         )
         # Handle the case that, the request was not completed.
         if visitation_result.is_failure:

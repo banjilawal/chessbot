@@ -106,7 +106,7 @@ class FormationKeyBuilder(Builder[FormationKey]):
         
         # Build the square_name FormationKey if its value is set.
         if square is not None:
-            validation = square_service.validation.validate(square)
+            validation = square_service.validator.validate(square)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(

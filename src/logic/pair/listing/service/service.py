@@ -64,7 +64,7 @@ class PairListService(IntegrityMicroService[PairList]):
         return cast(PairListBuilder, self.entity_builder)
     
     @property
-    def validation(self) -> PairListValidator:
+    def validator(self) -> PairListValidator:
         return cast(PairListValidator, self.entity_validator)
     
     @property
@@ -91,7 +91,7 @@ class PairListService(IntegrityMicroService[PairList]):
         method = f"{self.__class__.__name__}.unique_nodes"
         
         # Handle the case that, the pair_list does not pass a validation check.
-        validation_result = self.validation.validate(pair_list)
+        validation_result = self.validator.validate(pair_list)
         if validation_result.is_failure:
             return SearchResult.failure(
                 PairListServiceException(

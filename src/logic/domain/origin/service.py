@@ -54,6 +54,6 @@ class DomainOriginService(IntegrityMicroService[DomainOrigin]):
         return cast(DomainOriginBuilder, self.entity_builder)
     
     @property
-    def validation(self) -> DomainOriginValidator:
+    def validator(self) -> DomainOriginValidator:
         """get DomainOriginValidator"""
         return cast(DomainOriginValidator, self.entity_validator)

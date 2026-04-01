@@ -153,11 +153,11 @@ class BishopSpanService(SpanMicroService):
                     )
                     v_build_result = graph.vertices.integrity_service.builder.build(
                         square=square_v,
-                        square_validator=square_database.integrity_service.validation,
+                        square_validator=square_database.integrity_service.validator,
                     )
                     u_build_result = graph.vertices.integrity_service.builder.build(
                         square=square_u,
-                        square_validator=square_database.integrity_service.validation,
+                        square_validator=square_database.integrity_service.validator,
                     )
                     graph.vertices.push(u_build_result.payload)
                     graph.vertices.push(v_build_result.payload)
@@ -248,11 +248,11 @@ class BishopSpanService(SpanMicroService):
                     )
                     v_build_result = graph.vertices.pair_service.builder.query(
                         square=square_v,
-                        square_validator=square_database.integrity_service.validation,
+                        square_validator=square_database.integrity_service.validator,
                     )
                     u_build_result = graph.vertices.pair_service.builder.query(
                         square=square_u,
-                        square_validator=square_database.integrity_service.validation,
+                        square_validator=square_database.integrity_service.validator,
                     )
                     graph.vertices.query(u_build_result.payload)
                     graph.vertices.query(v_build_result.payload)

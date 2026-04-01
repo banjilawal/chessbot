@@ -68,7 +68,7 @@ class EdgeService(IntegrityMicroService[Edge]):
         return cast(EdgeBuilder, self.entity_builder)
     
     @property
-    def validation(self) -> EdgeValidator:
+    def validator(self) -> EdgeValidator:
         return cast(EdgeValidator, self.entity_validator)
     
     @LoggingLevelRouter.monitor
@@ -98,7 +98,7 @@ class EdgeService(IntegrityMicroService[Edge]):
         method = "EdgeService.update_edge_heuristic"
         
         # Handle the case that, the edge is unsafe.
-        edge_validation = self.integrity_service.validation.query(candidate=edge)
+        edge_validation = self.integrity_service.validator.query(candidate=edge)
         if edge_validation.is_failure:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
@@ -163,7 +163,7 @@ class EdgeService(IntegrityMicroService[Edge]):
         method = "EdgeService.update_edge_weight"
         
         # Handle the case that, the edge is unsafe.
-        edge_validation = self.integrity_service.validation.query(candidate=edge)
+        edge_validation = self.integrity_service.validator.query(candidate=edge)
         if edge_validation.is_failure:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(

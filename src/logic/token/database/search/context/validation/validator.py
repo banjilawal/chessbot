@@ -159,7 +159,7 @@ class TokenContextValidator(Validator[TokenContext]):
         
         # Certification for the search-by-opening_square_name target.
         if context.opening_square is not None:
-            validation = square_service.validation.validate(candidate=context.opening_square)
+            validation = square_service.validator.validate(candidate=context.opening_square)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
@@ -173,7 +173,7 @@ class TokenContextValidator(Validator[TokenContext]):
         
         # Certification for the search-by-coord target.
         if context.coord is not None:
-            validation = coord_service.validation.validate(candidate=context.coord)
+            validation = coord_service.validator.validate(candidate=context.coord)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
@@ -187,7 +187,7 @@ class TokenContextValidator(Validator[TokenContext]):
         
         # Certification for the search-by-team target.
         if context.team is not None:
-            validation = team_service.validation.validate(candidate=context.team)
+            validation = team_service.validator.validate(candidate=context.team)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
@@ -201,7 +201,7 @@ class TokenContextValidator(Validator[TokenContext]):
         
         # Certification for the search-by-rank target.
         if context.rank is not None:
-            validation = rank_service.validation.validate(candidate=context.rank)
+            validation = rank_service.validator.validate(candidate=context.rank)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(

@@ -76,7 +76,7 @@ class ScalarService(IntegrityMicroService[Scalar]):
         return self._builder
     
     @property
-    def validation(self) -> Validator[Scalar]:
+    def validator(self) -> Validator[Scalar]:
         return self.certifier
     
     def __eq__(self, other):

@@ -69,7 +69,7 @@ class RankService(IntegrityMicroService[Rank]):
         return cast(RankFactory, self.entity_builder)
     
     @property
-    def validation(self) -> RankValidatorFactory:
+    def validator(self) -> RankValidatorFactory:
         """get RankValidator."""
         return cast(RankValidatorFactory, self.entity_validator)
     

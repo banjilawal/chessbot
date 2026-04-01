@@ -56,6 +56,6 @@ class PairService(IntegrityMicroService[Pair]):
         return cast(PairBuilder, self.entity_builder)
     
     @property
-    def validation(self) -> PairValidator:
+    def validator(self) -> PairValidator:
         return cast(PairValidator, self.entity_validator)
         

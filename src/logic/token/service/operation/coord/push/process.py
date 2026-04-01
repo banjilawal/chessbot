@@ -106,7 +106,7 @@ class TokenPushCoordProcess:
                 )
             )
         # Handle the case that, the coord does not pass a validation check.
-        coord_validation_result = coord_service.validation.validate(coord)
+        coord_validation_result = coord_service.validator.validate(coord)
         if coord_validation_result.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(

@@ -85,7 +85,7 @@ class CoordService(IntegrityMicroService[Coord]):
         return self._ops_controller.build
     
     @property
-    def validation(self) -> CoordValidator:
+    def validator(self) -> CoordValidator:
         return self._ops_controller.validation
     
     @property

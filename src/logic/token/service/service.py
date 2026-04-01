@@ -22,10 +22,10 @@ class TokenService(IntegrityMicroService[Token]):
     """
         Role:
         -   API
-        -   Stateless microservice
         -   Lifecycle Manager
         -   Operations Provider
-
+        -   Stateless microservice
+        
     Responsibilities:
         1.  Baremetal service request API for Token operations.
         2.  Maintain the build-validation security lifecycle for Token instances.
@@ -88,7 +88,7 @@ class TokenService(IntegrityMicroService[Token]):
         return self._controller.build
     
     @property
-    def validation(self) -> TokenValidation:
+    def validator(self) -> TokenValidation:
         return self._controller.validation
     
     @property
@@ -114,7 +114,7 @@ class TokenService(IntegrityMicroService[Token]):
         #--- Forward the request to the controller. ---#
         popping_coord_result = self._controller.position.pop.execute(
             token=token,
-            token_validation=self.validation,
+            token_validation=self.validator,
         )
         # Handle the case that, the request was not completed.
         if popping_coord_result.is_failure:
@@ -159,7 +159,7 @@ class TokenService(IntegrityMicroService[Token]):
             token=token,
             coord=coord,
             coord_service=coord_service,
-            token_validation=self.validation,
+            token_validation=self.validator,
         )
         # Handle the case that, the request was not completed.
         if insertion_result.is_failure:
@@ -209,7 +209,7 @@ class TokenService(IntegrityMicroService[Token]):
             pawn_token=pawn_token,
             rank_service=rank_service,
             schema_service=schema_service,
-            token_validation=self.validation,
+            token_validation=self.validator,
         )
         # Handle the case that, the request was not completed.
         if promotion_result.is_failure:
@@ -250,7 +250,7 @@ class TokenService(IntegrityMicroService[Token]):
         pre_update_token = deepcopy(token)
         deployment_result = self._controller.deployment.work(
             token=token,
-            token_validation=self.validation,
+            token_validation=self.validator,
         )
         # Handle the case that, the request was not completed.
         if deployment_result.is_failure:

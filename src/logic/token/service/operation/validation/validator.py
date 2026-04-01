@@ -124,7 +124,7 @@ class TokenValidator(Validator[Token]):
                 )
             )
         # Handle the case that, the occupant's team fails validation.
-        team_validation_result = team_service.validation.validate(token.team)
+        team_validation_result = team_service.validator.validate(token.team)
         if team_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -155,7 +155,7 @@ class TokenValidator(Validator[Token]):
                 )
             )
         # Handle the case that, the rank is not certified safe.
-        rank_validation_result = rank_service.validation.validate(candidate=token.rank)
+        rank_validation_result = rank_service.validator.validate(candidate=token.rank)
         if rank_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(

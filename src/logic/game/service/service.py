@@ -67,7 +67,7 @@ class GameService(IntegrityMicroService[Game]):
         return cast(GameBuilder, self.entity_builder)
     
     @property
-    def validation(self) -> GameValidator:
+    def validator(self) -> GameValidator:
         """get GameValidator"""
         return cast(GameValidator, self.entity_validator)
     

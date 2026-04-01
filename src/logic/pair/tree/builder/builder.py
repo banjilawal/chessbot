@@ -77,7 +77,7 @@ class NodeTreeBuilder(Builder[NodeTree]):
         method = f"{cls.__class__.__name__}._build"
         
         # Handle the case that the square_span does not pass a validation check.
-        square_span_result = square_span_service.validation.validate(candidate=square_span)
+        square_span_result = square_span_service.validator.validate(candidate=square_span)
         if square_span_result.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(

@@ -69,7 +69,7 @@ class TeamService(IntegrityMicroService[Team]):
         return cast(TeamBuild, self.entity_builder)
     
     @property
-    def validation(self) -> TeamValidator:
+    def validator(self) -> TeamValidator:
         """get TeamValidator."""
         return cast(TeamValidator, self.entity_validator)
     

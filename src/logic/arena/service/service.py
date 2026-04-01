@@ -71,7 +71,7 @@ class ArenaService(IntegrityMicroService[Arena]):
         return cast(ArenaBuilder, self.entity_builder)
     
     @property
-    def validation(self) -> ArenaValidator:
+    def validator(self) -> ArenaValidator:
         """get ArenaValidator"""
         return cast(ArenaValidator, self.entity_validator)
     
@@ -86,7 +86,7 @@ class ArenaService(IntegrityMicroService[Arena]):
         relation = self._arena_team_relation_analyzer.execute(
             candidate_primary=arena,
             candidate_satellite=team,
-            arena_validator=self.validation,
+            arena_validator=self.validator,
             team_service=team_service,
         )
         # Handle the case that, one of the parties fails validation.
@@ -142,7 +142,7 @@ class ArenaService(IntegrityMicroService[Arena]):
     ) -> SearchResult[Team]:
         """"""
         method = "ArenaService.team_from_schema"
-        arena_validation = self.validation.validate(arena)
+        arena_validation = self.validator.validate(arena)
         if arena_validation.is_failure:
             return SearchResult.failure(
                 ArenaServiceException(

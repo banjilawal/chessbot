@@ -167,7 +167,7 @@ class CoordAdditionTransaction:
             )
         # Handle the case that, the operand is a vector that fails a validation check.
         if isinstance(operand, Vector):
-            vector_validation_result = vector_service.validation.validate(candidate=operand)
+            vector_validation_result = vector_service.validator.validate(candidate=operand)
             if vector_validation_result.is_failure:
                 # Return exception chain on failure.
                 return ComputationResult.failure(
@@ -212,7 +212,7 @@ class CoordAdditionTransaction:
         
         # Handle the case that, a coord_param fails a validation check.
         for coord in coords:
-            coord_validation_result = coord_service.validation.validate(coord)
+            coord_validation_result = coord_service.validator.validate(coord)
             if coord_validation_result.is_failure:
                 # Return exception chain on failure.
                 return ComputationResult.failure(

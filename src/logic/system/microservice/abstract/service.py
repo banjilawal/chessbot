@@ -16,42 +16,35 @@ T = TypeVar("T")
 
 class MicroService(ABC, Generic[T]):
     """
-    Role:MicroService
+        -   API
+        
+    About Microservices:
+        -   Stateless
+        -   Pluggable
+        -   Source of operations producing different Result types.
+        -   Hosts workers that complete tasks for a stateful data-holder.
+        
 
     Responsibilities:
-    1.  Platform primitive to build Microservice APIs.
-    2.  A Microservice is
-            *   A set of modules, methods that are related to a either a task or data object.
-            *   Its modules produce different Result types
-
-    Super Class:
-    None
-
-    Provides:
-
-    # LOCAL ATTRIBUTES:
-        *   id (int)
-        *   name (name)
-
-    # INHERITED ATTRIBUTES:
-    None
-
+        1.  Platform primitive to build Microservice APIs.
+        
     Attributes:
-        *   id (int)
-        *   name (name)
-
-    # LOCAL METHODS:
-   None
-
-    # INHERITED METHODS:
-    None
-    """
+        id: int
+        name: str
+        
+    Provides:
     
+    Super Class:
+    """
     _id: int
     _name: str
-    _validator: Validator[T]
-    
+
     def __init__(self, id: int, name: str,):
+        """
+        Args:
+            id: int
+            name: str
+        """
         self._id = id
         self._name = name
     

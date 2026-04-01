@@ -165,13 +165,13 @@ class TeamBuild(Builder[Team]):
             return ValidationResult.failure(schema_validation.exception)
         
         # Handle the case that, the owner does not pass a validation check.
-        owner_validation = player_service.validation.validate(candidate=owner)
+        owner_validation = player_service.validator.validate(candidate=owner)
         if owner_validation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(owner_validation.exception)
         
         # Handle the case that, the board does not pass a validation check.
-        board_validation = board_service.validation.validate(candidate=board)
+        board_validation = board_service.validator.validate(candidate=board)
         if owner_validation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(board_validation.exception)

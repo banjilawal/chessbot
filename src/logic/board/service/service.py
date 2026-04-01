@@ -70,8 +70,8 @@ class BoardService(IntegrityMicroService[Board]):
         return cast(BoardBuilder, self.builder)
     
     @property
-    def validation(self) -> BoardValidator:
-        return cast(BoardValidator, self.validation)
+    def validator(self) -> BoardValidator:
+        return cast(BoardValidator, self.validator)
     
     @property
     def relation_analyzer(self) -> BoardRelationAnalyzer:
@@ -141,7 +141,7 @@ class BoardService(IntegrityMicroService[Board]):
         method = "BoardService.layout_board"
         
         # Handle the case that, the board does not pass a validation check.
-        validation = self.validation.validate(candidate=board)
+        validation = self.validator.validate(candidate=board)
         if validation.is_failure:
             # Return exception chain on failure
             return InsertionResult.failure(
@@ -189,7 +189,7 @@ class BoardService(IntegrityMicroService[Board]):
         method = "BoardService.generate_graph"
     
         # Handle the case that, the board does not pass a validation check.
-        validation = self.validation.validate(candidate=board)
+        validation = self.validator.validate(candidate=board)
         if validation.is_failure:
             # Return exception chain on failure
             return ComputationResult.failure(

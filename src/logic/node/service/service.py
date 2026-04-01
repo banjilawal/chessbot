@@ -67,7 +67,7 @@ class NodeService(IntegrityMicroService[Node]):
         return cast(NodeBuilder, self.entity_builder)
     
     @property
-    def validation(self) -> NodeValidator:
+    def validator(self) -> NodeValidator:
         return cast(NodeValidator, self.entity_validator)
     
     @LoggingLevelRouter.monitor
@@ -94,7 +94,7 @@ class NodeService(IntegrityMicroService[Node]):
         method = "NodeService.add_incoming_edge"
         
         # Handle the case that, the node does not pass a validation check.
-        node_validation_result = self.validation.validate(candidate=node)
+        node_validation_result = self.validator.validate(candidate=node)
         if node_validation_result.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -107,7 +107,7 @@ class NodeService(IntegrityMicroService[Node]):
                 )
             )
         # Using the node.incoming_edges handle the case that the edge does not pass a validation check.
-        edge_validation_result = node.incoming_edges.integrity_service.validation.validate(candidate=edge)
+        edge_validation_result = node.incoming_edges.integrity_service.validator.validate(candidate=edge)
         if edge_validation_result.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -175,7 +175,7 @@ class NodeService(IntegrityMicroService[Node]):
         method = "NodeService.add_incoming_edge"
         
         # Handle the case that, the node does not pass a validation check.
-        node_validation_result = self.validation.validate(candidate=node)
+        node_validation_result = self.validator.validate(candidate=node)
         if node_validation_result.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -188,7 +188,7 @@ class NodeService(IntegrityMicroService[Node]):
                 )
             )
         # Using the node.incoming_edges handle the case that the edge does not pass a validation check.
-        edge_validation_result = node.incoming_edges.integrity_service.validation.validate(candidate=edge)
+        edge_validation_result = node.incoming_edges.integrity_service.validator.validate(candidate=edge)
         if edge_validation_result.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -256,7 +256,7 @@ class NodeService(IntegrityMicroService[Node]):
         method = "NodeService.remove_incoming_edge"
         
         # Handle the case that, the node does not pass a validation check.
-        node_validation_result = self.validation.validate(candidate=node)
+        node_validation_result = self.validator.validate(candidate=node)
         if node_validation_result.is_failure:
             # Return the exception chain on failure.
             return DeletionResult.failure(
@@ -269,7 +269,7 @@ class NodeService(IntegrityMicroService[Node]):
                 )
             )
         # Using the node.incoming_edges handle the case that the edge does not pass a validation check.
-        edge_validation_result = node.incoming_edges.integrity_service.validation.validate(candidate=edge)
+        edge_validation_result = node.incoming_edges.integrity_service.validator.validate(candidate=edge)
         if edge_validation_result.is_failure:
             # Return the exception chain on failure.
             return DeletionResult.failure(
@@ -321,7 +321,7 @@ class NodeService(IntegrityMicroService[Node]):
         method = "NodeService.add_outgoing_edge"
         
         # Handle the case that, the node does not pass a validation check.
-        node_validation_result = self.validation.validate(candidate=node)
+        node_validation_result = self.validator.validate(candidate=node)
         if node_validation_result.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -334,7 +334,7 @@ class NodeService(IntegrityMicroService[Node]):
                 )
             )
         # Using the node.outgoing_edges handle the case that the edge does not pass a validation check.
-        edge_validation_result = node.outgoing_edges.integrity_service.validation.validate(candidate=edge)
+        edge_validation_result = node.outgoing_edges.integrity_service.validator.validate(candidate=edge)
         if edge_validation_result.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -403,7 +403,7 @@ def remove_outgoing_edge(self, node: Node, edge: Edge) -> DeletionResult[Edge]:
     method = "NodeService.remove_outgoing_edge"
     
     # Handle the case that, the node does not pass a validation check.
-    node_validation_result = self.validation.query(candidate=node)
+    node_validation_result = self.validator.query(candidate=node)
     if node_validation_result.is_failure:
         # Return the exception chain on failure.
         return DeletionResult.failure(
@@ -416,7 +416,7 @@ def remove_outgoing_edge(self, node: Node, edge: Edge) -> DeletionResult[Edge]:
             )
         )
     # Using the node.outgoing_edges handle the case that the edge does not pass a validation check.
-    edge_validation_result = node.outgoing_edges.integrity_service.validation.validate(candidate=edge)
+    edge_validation_result = node.outgoing_edges.integrity_service.validator.validate(candidate=edge)
     if edge_validation_result.is_failure:
         # Return the exception chain on failure.
         return DeletionResult.failure(

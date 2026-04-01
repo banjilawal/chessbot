@@ -70,7 +70,7 @@ class CommandService(IntegrityMicroService[Command]):
         return self._ops_controller.builder
 
     @property
-    def validation(self) -> CommandValidator:
+    def validator(self) -> CommandValidator:
         return self._ops_controller.validator
     
     @property

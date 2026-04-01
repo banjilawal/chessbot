@@ -82,7 +82,7 @@ class BoardTeamRelationAnalysis(RelationAnalysis[Board, Team]):
         board = cast(Board, board_validation.payload)
         
         # Handle the case that, the team is unsecure.
-        team_validation = team_service.validation.validate(candidate_satellite)
+        team_validation = team_service.validator.validate(candidate_satellite)
         if team_validation.is_failure:
             # Return the exception chain on failure.
             return RelationReport.failure(

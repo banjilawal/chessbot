@@ -164,7 +164,7 @@ class TokenContextBuilder(Builder[TokenContext]):
         
         # Build the opening_square_name TokenContext if its flag is enabled.
         if opening_square is not None:
-            validation = square_service.validation.validate(opening_square)
+            validation = square_service.validator.validate(opening_square)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
@@ -180,7 +180,7 @@ class TokenContextBuilder(Builder[TokenContext]):
         
         # Build the coord TokenContext if its flag is enabled.
         if coord is not None:
-            validation = coord_service.validation.validate(coord)
+            validation = coord_service.validator.validate(coord)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
@@ -196,7 +196,7 @@ class TokenContextBuilder(Builder[TokenContext]):
         
         # Build the rank TokenContext if its flag is enabled.
         if rank is not None:
-            validation = rank_service.validation.validate(rank)
+            validation = rank_service.validator.validate(rank)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
@@ -212,7 +212,7 @@ class TokenContextBuilder(Builder[TokenContext]):
         
         # Build the team TokenContext if its flag is enabled.
         if team is not None:
-            validation = team_service.validation.validate(team)
+            validation = team_service.validator.validate(team)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(

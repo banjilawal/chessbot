@@ -63,6 +63,6 @@ class HostageService(IntegrityMicroService[Hostage]):
         return cast(HostageBuilder, self.entity_builder)
     
     @property
-    def validation(self) -> HostageValidator:
+    def validator(self) -> HostageValidator:
         """get SquareValidator"""
         return cast(HostageValidator, self.entity_validator)

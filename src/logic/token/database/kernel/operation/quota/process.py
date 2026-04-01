@@ -65,7 +65,7 @@ class RankQuotaAnalysis:
         method = f"{cls.__name__}.execute"
         
         # Handle the case that, the rank does not pass a validation check.
-        rank_validation_result = rank_service.validation.validate(rank)
+        rank_validation_result = rank_service.validator.validate(rank)
         if rank_validation_result.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(

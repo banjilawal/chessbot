@@ -100,7 +100,7 @@ class BoardStackService(StackService[Board]):
         method = "BoardStackService.add_board"
         
         # Handle the case that, the board is unsafe.
-        validation = self.board_service.validation.validate(candidate=board)
+        validation = self.board_service.validator.validate(candidate=board)
         if validation.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(

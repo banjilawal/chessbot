@@ -69,7 +69,7 @@ class PlayerService(IntegrityMicroService[Player]):
         return cast(PlayerFactory, self.entity_builder)
     
     @property
-    def validation(self) -> PlayerValidator:
+    def validator(self) -> PlayerValidator:
         """get PlayerValidator"""
         return cast(PlayerValidator, self.entity_validator)
     
@@ -100,7 +100,7 @@ class PlayerService(IntegrityMicroService[Player]):
         method = "PlayerService.pop_team_from_player"
         
         # Handle the case that, the owner is not certified safe.
-        validation = self.validation.validate(player)
+        validation = self.validator.validate(player)
         if validation.is_failure:
             # Return the exception chain on failure.
             return DeletionResult.failure(
@@ -171,7 +171,7 @@ class PlayerService(IntegrityMicroService[Player]):
         relation = self.player_team_relation_analyzer.execute(
             candidate_primary=player,
             candidate_secondary=team,
-            owner_validator=self.validation,
+            owner_validator=self.validator,
             team_service=team_service,
         )
         # Handle the case that, the relation analysis is not completed.
