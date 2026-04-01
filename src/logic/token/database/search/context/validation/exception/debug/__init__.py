@@ -1,7 +1,7 @@
 # src/logic/token/qery/query/validation/exception/debug/__init__.py
 
 """
-Module: logic.token.database.search.query.validation.exception.debug.__init__
+Module: logic.token.database.search.context.validation.exception.debug.__init__
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

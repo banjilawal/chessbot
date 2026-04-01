@@ -21,36 +21,29 @@ from logic.system import DebugException
 # ======================# EXECUTION_ROUTE_EXCEPTION #======================#
 class ExecutionRouteException(DebugException):
     """
-    Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
+    Role:
+        -   Exception Chain Layer 2
+        -   Error Variable Identifier
+        -   Debugging Metadata provider
     
     Responsibilities:
-    1.  Indicate that an execution route was missing from the logic.
-
-    Super Class:
-        *   DebugException
-
-    Provides:
-
-
-    # INHERITED ATTRIBUTES:
-        *   See DebugException class for inherited attributes.
-
+        1.  Indicate that an execution route was missing from the logic.
+        
     Attributes:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]
         ex: Optional[Exception]
         err_code: Optional[str]
-
-    # LOCAL METHODS:
-   None
-
-    # INHERITED METHODS:
-        *   See DebugException class for inherited methods.
-    """
-    ERR_CODE = "EXECUTION_ROUTE_EXCEPTION"
-    MSG = "Missing execution route."
+        
+    Provides:
     
+    Super Class:
+        DebugException
+    """
+    MSG = "Missing execution route."
+    ERR_CODE = "EXECUTION_ROUTE_EXCEPTION"
+
     def __init__(
             self,
             var: Optional[str] = None,
@@ -69,7 +62,10 @@ class ExecutionRouteException(DebugException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)
-
- 
-    
+        super().__init__(
+            ex=ex,
+            msg=msg,
+            var=var,
+            val=val,
+            err_code=err_code,
+        )

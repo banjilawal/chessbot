@@ -1,7 +1,7 @@
 # src/logic/token/qery/query/validation/exception/debug/null.py
 
 """
-Module: logic.token.database.search.query.validation.exception.debug.null
+Module: logic.token.database.search.context.validation.exception.debug.null
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

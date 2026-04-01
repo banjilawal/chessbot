@@ -1,17 +1,17 @@
-# src/logic/token/_context/build/exception/__init__.py
+# src/logic/token/database/search/context/service/operation/build/exception/__init__.py
 
 """
-Module: logic.token.database.search.query.build.exception.__init__
+Module: logic.token.database.search.context.service.operation.build.exception.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
 
-# =========== TOKEN.DATABASE.SEARCH.BUILDER PACKAGE CONTENTS ===========#
+# =========== TOKEN.DATABASE.SEARCH.CONTEXT.SERVICE.OPERATION.BUILD PACKAGE CONTENTS ===========#
 
 # Packages
 None
 
 # Modules
-from .work import TokenContextBuildException
 from .route import TokenContextBuildRouteException
+from .transaction import TokenContextBuildException

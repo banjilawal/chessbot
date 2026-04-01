@@ -26,7 +26,7 @@ class TokenBuildException(BuildException):
         - Exception Messaging
         
     Responsibilities:
-        1.  Indicate that  an error prevented a token from being built.
+        1.  Indicate that, an error prevented a token from being built.
         2.  Identify the method where the failure occurred.
         
     Attributes:
@@ -43,10 +43,8 @@ class TokenBuildException(BuildException):
     Super:
         BuildException
     """
-    OP = "Build"
-    RSLT_TYPE = "BuildResult"
     ERR_CODE = "TOKEN_BUILD_FAILURE"
-    MSG = "Failure in TokenBuilder method."
+    MSG = "A TokenBuilder method failed."
 
     def __init__(
             self,
@@ -72,7 +70,6 @@ class TokenBuildException(BuildException):
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
         rslt_type = rslt_type or self.RSLT_TYPE
-        
         super().__init__(
             ex=ex,
             op=op,

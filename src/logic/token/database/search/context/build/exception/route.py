@@ -1,7 +1,7 @@
-# src/logic/token/_context/build/exception/route.py
+# src/logic/token/database/search/context/service/operation/build/exception/route.py
 
 """
-Module: logic.token.database.search.query.build.exception.route
+Module: logic.token.database.search.context.service.operation.build.exception.route
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -20,12 +20,64 @@ from logic.system import ExecutionRouteException
 # ======================# TOKEN_CONTEXT_BUILD_ROUTE_EXCEPTION #======================#
 class TokenContextBuildRouteException(ExecutionRouteException):
     """
+    Role:
+        -   Exception Chain Layer 2
+        -   Error Variable Identifier
+        -   Debugging Metadata provider
+
+    Responsibilities:
+        1.  Indicate that TokenContext build failed because there was no creation path for
+            the context's attribute.
+
+    Attributes:
+        var: Optional[str]
+        val: Optional[Any]
+        msg: Optional[str]
+        ex: Optional[Exception]
+        err_code: Optional[str]
+
+    Provides:
+
+    Super Class:
+        DebugException
+    """
+    MSG = "No build path for the TokenContext attribute."
+    ERR_CODE = "TOKEN_CONTEXT_BUILD_ROUTE_EXCEPTION"
+    
+    def __init__(
+            self,
+            var: Optional[str] = None,
+            val: Optional[Any] = None,
+            msg: Optional[str] = None,
+            err_code: Optional[str] = None,
+            ex: Optional[Exception] = None,
+    ):
+        """
+        Args:
+            var: Optional[str]
+            val: Optional[Any]
+            msg: Optional[str]
+            ex: Optional[Exception]
+            err_code: Optional[str]
+        """
+        msg = msg or self.MSG
+        err_code = err_code or self.ERR_CODE
+        super().__init__(
+            ex=ex,
+            msg=msg,
+            var=var,
+            val=val,
+            err_code=err_code,
+        )
+
+
+
+    """
     Role:Exception Chain Layer 2, Exception Messaging
     # TASK: Capture Error Variable State
 
     Responsibilities:
-    1.  A failure BuildResult was sent because there was no build route for the TokenContext
-        attribute.
+
 
     Super Class:
         *   ExecutionRoute
@@ -49,8 +101,7 @@ class TokenContextBuildRouteException(ExecutionRouteException):
     # INHERITED METHODS:
         *   See ExecutionRoute class for inherited methods.
     """
-    MSG = "No build route for TokenContext attribute"
-    ERR_CODE = "TOKEN_CONTEXT_BUILD_ROUTE_EXCEPTION"
+
     
     def __init__(
             self,
