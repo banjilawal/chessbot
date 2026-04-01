@@ -7,10 +7,10 @@ Created: 2026-03-14
 version: 1.0.0
 """
 
-# =========== TOKEN.SERVICE.OPERATION.CHECKED PACKAGE CONTENTS ===========#
+# =========== TOKEN.SERVICE.OPERATION.CHECK PACKAGE CONTENTS ===========#
 
 # Packages
 from .build import *
 
 # Modules
-from .check import CheckSquare
+from .record import KingCheckRecord
