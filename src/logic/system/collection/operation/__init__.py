@@ -10,7 +10,6 @@ Version: 1.0.0
 # =========== SYSTEM.COLLECTION.OPERATION PACKAGE CONTENTS ===========#
 
 # Packages
-from .search import *
 from .update import *
 from .deletion import *
 from .insertion import *
