@@ -1,7 +1,7 @@
-# system/command/root/serviceservice.py
+# system/command/system/serviceservice.py
 
 """
-Module: src.command.root.command.service.service
+Module: src.command.root.system.service.service
 Author: Banji Lawal
 Created: 2025-11-18
 """

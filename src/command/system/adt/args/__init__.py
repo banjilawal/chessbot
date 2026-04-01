@@ -1,7 +1,7 @@
-# src/command/adt/args/__init__.py
+# src/command/service/adt/args/__init__.py
 
 """
-Module: command.adt.args.__init__
+Module: command.service.adt.args.__init__
 Author: Banji Lawal
 Created: 2025-11-18
 version: 1.0.0

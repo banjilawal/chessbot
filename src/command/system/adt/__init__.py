@@ -1,13 +1,13 @@
-# src/command/root/__init__.py
+# src/command/system/adt/__init__.py
 
 """
-Module: command.root.__init__
+Module: command.system.adt.__init__
 Author: Banji Lawal
 Created: 2026-02-25
 version: 1.0.0
 """
 
-# =========== ADT PACKAGE CONTENTS ===========#
+# =========== SYSTEM.ADT PACKAGE CONTENTS ===========#
 
 # Packages
 from .args import *

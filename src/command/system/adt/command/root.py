@@ -1,7 +1,7 @@
-# src/command/adt/command/root.py
+# src/command/service/adt/command/root.py
 
 """
-Module: command.adt.command.root
+Module: command.service.adt.command.root
 Author: Banji Lawal
 Created: 2026-02-24
 Version: 1.0.0

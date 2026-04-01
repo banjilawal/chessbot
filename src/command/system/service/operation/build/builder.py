@@ -1,7 +1,7 @@
-# src/command/root/service/operation/build/builder.py
+# src/command/system/service/operation/build/builder.py
 
 """
-Module: command.root.service.operation.build.builder
+Module: command.system.service.operation.build.builder
 Author: Banji Lawal
 Created: 2026-02-24
 """

@@ -1,7 +1,7 @@
-# src/command/root/service/operation/build/exception/validator.py
+# src/command/system/service/operation/build/exception/validator.py
 
 """
-Module: command.root.service.operation.build.exception.work
+Module: command.system.service.operation.build.exception.work
 Author: Banji Lawal
 Created: 2026-02-24
 """

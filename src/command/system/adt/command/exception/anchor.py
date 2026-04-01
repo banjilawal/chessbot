@@ -1,7 +1,7 @@
-# src/command/adt/command/exception/anchor.py
+# src/command/service/adt/command/exception/anchor.py
 
 """
-Module: command.adt.command.exception.anchor
+Module: command.service.adt.command.exception.anchor
 Author: Banji Lawal
 Created: 2026-02-24
 version: 1.0.0

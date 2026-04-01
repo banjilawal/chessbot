@@ -1,7 +1,7 @@
-# src/command/root/service/operation/validation/command/validator.py
+# src/command/system/service/operation/validation/command/validator.py
 
 """
-Module: command.root.service.operation.validation.command.validator
+Module: command.system.service.operation.validation.command.validator
 Author: Banji Lawal
 Created: 2026-02-24
 """
@@ -10,6 +10,11 @@ from __future__ import annotations
 
 from typing import Any, cast
 
+from command import (
+    Command, CommandArgsValidator, CommandNameNotFoundException, CommandTable, CommandTypeSupportException,
+    CommandValidationException, NullCommandException
+)
+from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 
 
 class CommandValidator(Validator[Command]):
@@ -23,6 +28,27 @@ class CommandValidator(Validator[Command]):
             identity_service: IdentityService = IdentityService(),
             args_validator: CommandArgsValidator = CommandArgsValidator(),
     ) -> ValidationResult[Command]:
+        """
+        Verifies a Command is safe to use.
+        Action:
+            1.  Send an exception chain in the ValidationResult if any
+                of the following occur:
+                    -   The candidate is null or the wrong type.
+                    -   Its candidate's parameters fail a test.
+            2.  Otherwise, send the success result.
+        Args:
+            candidate: Any
+            ciphers: CommandTable
+            identity_service: IdentityService
+            args_validator: CommandArgsValidator
+        Returns:
+            ValidationResult[Command]
+        Raises:
+            TypeError
+            CommandValidationException
+            CommandTypeSupportException
+            CommandNameNotFoundException
+        """
         method = f"{cls.__name__}.validate"
         
         # Handle the nonexistence case.

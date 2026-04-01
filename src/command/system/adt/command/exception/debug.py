@@ -1,7 +1,7 @@
-# src/command/adt/command/exception/debug.py
+# src/command/service/adt/command/exception/debug.py
 
 """
-Module: command.adt.command.exception.debug
+Module: command.service.adt.command.exception.debug
 Author: Banji Lawal
 Created: 2026-02-24
 version: 1.0.0

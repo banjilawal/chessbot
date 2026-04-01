@@ -1,7 +1,7 @@
-# src/command/root/service/operation/validation/argument/validator.py
+# src/command/system/service/operation/validation/argument/validator.py
 
 """
-Module: command.root.service.operation.validation.argument.validator
+Module: command.system.service.operation.validation.argument.validator
 Author: Banji Lawal
 Created: 2026-02-24
 """

@@ -9,7 +9,8 @@ Created: 2026-03-31
 # =========== COMMAND.SYSTEM PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .adt import *
+from .service import *
 
 # Modules
 None

@@ -1,7 +1,7 @@
-# src/command/root/command/service/operation/build/validation/validator.py
+# src/command/system/service/operation/build/validation/validator.py
 
 """
-Module: command.root.command.service.operation.build.validation.work
+Module: command.root.system.service.operation.build.validation.work
 Author: Banji Lawal
 Created: 2026-02-24
 """

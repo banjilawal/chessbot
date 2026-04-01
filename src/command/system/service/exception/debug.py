@@ -1,7 +1,7 @@
-# system/command/root/serviceexception/debug.py
+# system/command/system/serviceexception/debug.py
 
 """
-Module: src.command.root.command.service.exception.debug
+Module: src.command.root.system.service.exception.debug
 Author: Banji Lawal
 Created: 2026-02-25
 """

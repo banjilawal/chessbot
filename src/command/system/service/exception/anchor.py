@@ -1,7 +1,7 @@
-# command.service/exception.anchor.py
+# system.service/exception.anchor.py
 
 """
-Module: src.command.root.command.service.exception.anchor
+Module: src.command.root.system.service.exception.anchor
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

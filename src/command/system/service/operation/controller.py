@@ -1,7 +1,7 @@
-# src/command/root/service/operation/controller.py
+# src/command/system/service/operation/controller.py
 
 """
-Module: command.root.service.operation.controller
+Module: command.system.service.operation.controller
 Author: Banji Lawal
 Created: 2026-02-24
 """
