@@ -11,7 +11,6 @@ Version: 1.0.0
 
 # Packages
 from .model import *
-from .service import *
 
 # Modules
-None
+from .root import Context
