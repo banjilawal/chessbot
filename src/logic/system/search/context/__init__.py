@@ -13,4 +13,4 @@ Version: 1.0.0
 from .model import *
 
 # Modules
-from .root import Context
+from logic.system.search.context.model.root import Context

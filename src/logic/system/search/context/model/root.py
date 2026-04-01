@@ -1,7 +1,7 @@
-# # src/logic/system/search/context/mode/model.py
+# # src/logic/system/search/context/mode/root.py
 #
 # """
-# Module: logic.system.search.context.model.model
+# Module: logic.system.search.context.model.root
 # Author: Banji Lawal
 # Created: 2025-11-18
 # Version: 1.0.0
