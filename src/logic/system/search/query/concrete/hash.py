@@ -12,7 +12,7 @@ from __future__ import annotations
 from enum import Enum
 from typing import Generic, List, TypeVar
 
-from logic.system import SearchRouter, Context, LoggingLevelRouter, SearchResult, Validator
+from logic.system import Query, SearchRouter, Context, LoggingLevelRouter, SearchResult, Validator
 
 E = TypeVar("E", bound=Enum)
 
