@@ -1,13 +1,13 @@
-# src/logic/system/collection/operation/search/exception/__init__.py
+# src/logic/system/search/exception/__init__.py
 
 """
-Module: logic.system.collection.operation.search.exception.__init__
+Module: logic.system.search.exception.__init__
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
 """
 
-# =========== SYSTEM.COLLECTION.OPERATION.SEARCH.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== SYSTEM.SEARCH.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
 None

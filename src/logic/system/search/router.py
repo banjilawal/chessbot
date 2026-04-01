@@ -1,7 +1,7 @@
-# src/logic/system/collection/operation/search/abstract.py
+# src/logic/system/search/abstract.py
 
 """
-Module: logic.system.collection.operation.search.abstract
+Module: logic.system.search.abstract
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0

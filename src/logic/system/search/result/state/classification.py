@@ -1,7 +1,7 @@
-# src/logic/system/collection/operation/search/result/state/classification.py
+# src/logic/system/search/result/state/classification.py
 
 """
-Module: logic.system.collection.operation.search.result.state.classification
+Module: logic.system.search.result.state.classification
 Author: Banji Lawal
 Created: 2026-01-25
 Version: 1.0.0

@@ -1,7 +1,7 @@
-# src/logic/system/collection/operation/search/exception/validator.py
+# src/logic/system/search/exception/validator.py
 
 """
-Module: logic.system.collection.operation.search.exception.work
+Module: logic.system.search.exception.work
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0

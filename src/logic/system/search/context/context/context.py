@@ -1,7 +1,7 @@
-# src/logic/system/collection/operation/search/query/model.py
+# src/logic/system/search/query/model.py
 
 """
-Module: logic.system.collection.operation.search.query.context
+Module: logic.system.search.query.context
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0

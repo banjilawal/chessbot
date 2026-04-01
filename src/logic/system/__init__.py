@@ -34,6 +34,7 @@ from .utils import *
 from .validate import *
 from .route import *
 from .pipeline import *
+from .search import *
 
 # Modules
 None
