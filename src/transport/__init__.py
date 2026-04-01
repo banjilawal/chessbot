@@ -14,10 +14,10 @@ log = logging.getLogger("chessbot")
 # =========== PACKAGE CONTENTS ===========#
 
 # Packages
-from .request import *
-from .response import *
+from transport.system.adt.request import *
+from transport.system.adt.response import *
 from .route import *
-from .adt import *
+from transport.system.adt import *
 
 # Modules
 None

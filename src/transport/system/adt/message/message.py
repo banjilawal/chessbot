@@ -1,7 +1,7 @@
-# src/transport/adt/message/message.py
+# src/transport/system/adt/message/message.py
 
 """
-Module: transport.adt.message.message
+Module: transport.system.adt.message.message
 Author: Banji Lawal
 Created: 2026-03-30
 version: 1.0.0

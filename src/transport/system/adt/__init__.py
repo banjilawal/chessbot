@@ -1,7 +1,7 @@
-# src/transport/adt/__init__.py
+# src/transport/system/adt/__init__.py
 
 """
-Module: transport.adt.__init__
+Module: transport.system.adt.__init__
 Author: Banji Lawal
 Created: 2026-03-30
 version: 1.0.0
@@ -10,8 +10,9 @@ version: 1.0.0
 # =========== ADT PACKAGE CONTENTS ===========#
 
 # Packages
+from .request import *
 from .message import *
-from .queue import *
+from .response import *
 
 # Modules
 None

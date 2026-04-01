@@ -1,7 +1,7 @@
-# src/transport/adt/message/address.py
+# src/transport/system/adt/message/address.py
 
 """
-Module: transport.adt.message.address
+Module: transport.system.adt.message.address
 Author: Banji Lawal
 Created: 2026-03-30
 version: 1.0.0
