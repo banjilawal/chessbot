@@ -16,7 +16,7 @@ from logic.agent import PlayerAgent, AgentContextService, AgentService
 
 class AgentStackService(StackService[PlayerAgent]):
     """
-    Role:Data Stack, Search Service, CRUD Controller, Encapsulation, API layer.
+    Role:Data Stack, Search MicroService, CRUD Controller, Encapsulation, API layer.
 
     Responsibilities:
     1.  Microservice API for managing and searching Player collections.

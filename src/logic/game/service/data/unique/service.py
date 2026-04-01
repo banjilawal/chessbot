@@ -17,7 +17,7 @@ from logic.system import (
 
 class UniqueGameDataService(Database[Game]):
     """
-    Role:Unique Data Stack, Search Service, CRUD Controller, Encapsulation, API layer.
+    Role:Unique Data Stack, Search MicroService, CRUD Controller, Encapsulation, API layer.
 
     Responsibilities:
     1.  Ensure all bag managed by GameStackService are unique.

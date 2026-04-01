@@ -16,7 +16,7 @@ from logic.agent import PlayerAgent, AgentContext, AgentContextService, AgentDat
 
 class UniqueAgentDataService(Database[PlayerAgent]):
     """
-    Role:Unique Data Stack, Search Service, CRUD Controller, Encapsulation, API layer.
+    Role:Unique Data Stack, Search MicroService, CRUD Controller, Encapsulation, API layer.
 
     Responsibilities:
     1.  Ensure all bag in managed by AgentStackService are unique.

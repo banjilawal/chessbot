@@ -15,7 +15,7 @@ from logic.hostage import CaptivityContext, CaptivityContextBuilder, CaptivityCo
 
 class HostageQueryService(QueryService[CaptivityContext]):
     """
-    Role:Search Service, Lifecycle Management, Encapsulation, API layer.
+    Role:Search MicroService, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing Captivity search microservice API.

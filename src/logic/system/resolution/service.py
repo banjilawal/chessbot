@@ -11,12 +11,12 @@ version: 0.0.1
 from abc import ABC
 from typing import Generic, TypeVar
 
-from logic.system.service import IntegrityService
+from logic.system.service import IntegrityMicroService
 
 T = TypeVar("T")
 
 
-class CollisionResolutionService(IntegrityService[ABC, Generic[T]]):
+class CollisionResolutionService(IntegrityMicroService[ABC, Generic[T]]):
     """"""""
     pass
 

@@ -15,7 +15,7 @@ from logic.board import BoardContext, BoardContextBuilder, BoardContextValidator
 
 class BoardQueryService(QueryService[BoardContext]):
     """
-    Role:Search Service, Lifecycle Management, Encapsulation, API layer.
+    Role:Search MicroService, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing Board search microservice API.

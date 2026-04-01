@@ -10,13 +10,13 @@ version: 1.0.0
 from typing import cast
 
 from logic.persona import PersonaService
-from logic.system import IntegrityService, id_emitter
+from logic.system import IntegrityMicroService, id_emitter
 from logic.rank import Rank, RankFactory, RankValidatorFactory
 
 
-class RankService(IntegrityService[Rank]):
+class RankService(IntegrityMicroService[Rank]):
     """
-    Role:Service, Lifecycle Management, Encapsulation, API layer.
+    Role:MicroService, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing Rank microservice API.
@@ -25,14 +25,14 @@ class RankService(IntegrityService[Rank]):
         lifecycle.
 
     Super Class:
-        *   IntegrityService
+        *   IntegrityMicroService
 
     # PROVIDES:
         *   RankService
 
 
     # INHERITED ATTRIBUTES:
-        *   See IntegrityService for inherited attributes.
+        *   See IntegrityMicroService for inherited attributes.
     """
     DEFAULT_NAME = "RankService"
     _persona_service: PersonaService

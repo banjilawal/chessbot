@@ -10,16 +10,16 @@ version: 1.0.0
 
 from typing import cast
 
-from logic.system import DeletionResult, IntegrityService, InsertionResult, LoggingLevelRouter, id_emitter
+from logic.system import DeletionResult, IntegrityMicroService, InsertionResult, LoggingLevelRouter, id_emitter
 from logic.player import Player, PlayerFactory, PlayerServiceException, PlayerTeamRelationAnalysis, PlayerValidator
 from logic.team import (
     AddingDuplicateTeamException, PoppingEmptyTeamStackException, Team, PoppingTeamStackFailedException, TeamService,
     TeamInsertionException,
 )
 
-class PlayerService(IntegrityService[Player]):
+class PlayerService(IntegrityMicroService[Player]):
     """
-    Role:Service, Lifecycle Management, Encapsulation, API layer.
+    Role:MicroService, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing Player microservice API.
@@ -28,13 +28,13 @@ class PlayerService(IntegrityService[Player]):
         lifecycle.
 
     Super Class:
-        *   IntegrityService
+        *   IntegrityMicroService
     
     Provides:
 
     
     # INHERITED ATTRIBUTES:
-        *   See IntegrityService class for inherited attributes.
+        *   See IntegrityMicroService class for inherited attributes.
     """
     DEFAULT_NAME = "PlayerService"
     _player_team_relation_analyzer: PlayerTeamRelationAnalysis

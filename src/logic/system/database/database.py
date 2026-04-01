@@ -13,12 +13,12 @@ from abc import abstractmethod
 from typing import Generic, List, Optional, TypeVar
 
 from logic.system import (
-    Context, DeletionResult, InsertionResult, IntegrityService, LoggingLevelRouter, SearchResult, Service
+    Context, DeletionResult, InsertionResult, IntegrityMicroService, LoggingLevelRouter, SearchResult, MicroService
 )
 
 T = TypeVar("T")
 
-class Database(Service, Generic[T]):
+class Database(MicroService, Generic[T]):
     """
     Role:
         -   Repo interface.
@@ -36,14 +36,14 @@ class Database(Service, Generic[T]):
     Provides:
         -   size() -> int
         -   is_empty() -> bool
-        -   integrity_service() -> IntegrityService[T]
+        -   integrity_service() -> IntegrityMicroService[T]
         -   iterator(self) -> iter
         -   insert(item: T) -> InsertionResult
         -   delete_by_id(id: int) -> DeletionResult[T]
         -   search(self, query: Context[T]) -> SearchResult[List[T]]
 
     Super:
-        Service
+        MicroService
     """
     
     def __init__(self, id: int, name: str):
@@ -68,7 +68,7 @@ class Database(Service, Generic[T]):
     
     @property
     @abstractmethod
-    def integrity_service(self) -> IntegrityService[T]:
+    def integrity_service(self) -> IntegrityMicroService[T]:
         """"Implement to access the model's integrity service."""
         pass
     

@@ -1,4 +1,4 @@
-# src/logic/coord/service/service.py
+# src/logic/coord/service/microservice.py
 
 """
 Module: logic.coord.service.service
@@ -12,11 +12,11 @@ from typing import Union
 
 from logic.scalar import Scalar, ScalarService
 from logic.vector import Vector, VectorService
-from logic.system import ComputationResult, IdFactory, IntegrityService
+from logic.system import ComputationResult, IdFactory, IntegrityMicroService
 from logic.coord import Coord, CoordBuilder, CoordOpsController, CoordServiceException, CoordValidator
 
 
-class CoordService(IntegrityService[Coord]):
+class CoordService(IntegrityMicroService[Coord]):
     """
     Role:
         -   API
@@ -60,7 +60,7 @@ class CoordService(IntegrityService[Coord]):
             ) -> BuildResult[Coord]
 
     Super Class:
-        IntegrityService
+        IntegrityMicroService
     """
     SERVICE_NAME = "CoordService"
     _ops_controller: CoordOpsController

@@ -16,7 +16,7 @@ from logic.node import NodeContext, NodeContextBuilder, NodeContextValidator, No
 
 class NodeQueryService(QueryService[NodeContext]):
     """
-    Role:Search Service, Lifecycle Management, Encapsulation, API layer.
+    Role:Search MicroService, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing Node search microservice API.

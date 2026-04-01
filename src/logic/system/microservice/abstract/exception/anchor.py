@@ -1,7 +1,7 @@
-# src/logic/system/service/abstract/exception.anchor.py
+# src/logic/system/microservice/abstract/exception.anchor.py
 
 """
-Module: logic.system.service.abstract.exception.anchor
+Module: logic.system.microservice.abstract.exception.anchor
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -23,8 +23,8 @@ class ServiceException(AnchorException):
     Role:Debug Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
-    1.  Reporting and coverage for Service DebugExceptions.
-    2.  Uses cls_mthd attribute to show which Service method received a failure
+    1.  Reporting and coverage for MicroService DebugExceptions.
+    2.  Uses cls_mthd attribute to show which MicroService method received a failure
         result from a worker.
 
     Super Class:
@@ -53,8 +53,8 @@ class ServiceException(AnchorException):
         *   See AnchorException class for inherited methods.
     """
     ERR_CODE = "SERVICE_EXCEPTION"
-    MSG = "Service raised an exception."
-    CLS_NAME = "Service"
+    MSG = "MicroService raised an exception."
+    CLS_NAME = "MicroService"
     
     _cls_name:str = None
     _id: int = None

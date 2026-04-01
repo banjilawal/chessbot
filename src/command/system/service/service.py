@@ -10,10 +10,10 @@ from __future__ import annotations
 
 
 from command import Command, CommandBuilder, CommandOpsController
-from logic.system import IntegrityService
+from logic.system import IntegrityMicroService
 
 
-class CommandService(IntegrityService[Command]):
+class CommandService(IntegrityMicroService[Command]):
     """
     Role:Microservice API, Integrity Lifecycle Manager, APLifecycle Management.
 
@@ -25,7 +25,7 @@ class CommandService(IntegrityService[Command]):
             *   At object invocation.
 
     Super Class:
-        *   IntegrityService
+        *   IntegrityMicroService
 
     Provides:
 
@@ -34,7 +34,7 @@ class CommandService(IntegrityService[Command]):
         *   validation (Validator[Command])
 
     # INHERITED ATTRIBUTES:
-        *   See IntegrityService class for inherited attributes.
+        *   See IntegrityMicroService class for inherited attributes.
 
     Attributes:
         *   id (int)
@@ -46,7 +46,7 @@ class CommandService(IntegrityService[Command]):
     None
 
     # INHERITED METHODS:
-    *   See IntegrityService class for inherited methods.
+    *   See IntegrityMicroService class for inherited methods.
     """
     SERVICE_NAME = "CommandService"
     _ops_controller = CommandOpsController

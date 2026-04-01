@@ -14,26 +14,26 @@ from logic.coord import Coord, CoordService
 from logic.scalar import Scalar, ScalarService
 from logic.vector import Vector, VectorBuilder, VectorServiceException, VectorValidator
 from logic.system import (
-    BuildResult, ComputationResult, IdFactory, LoggingLevelRouter, IntegrityService, NumberValidator
+    BuildResult, ComputationResult, IdFactory, LoggingLevelRouter, IntegrityMicroService, NumberValidator
 )
 
-class VectorService(IntegrityService[Vector]):
+class VectorService(IntegrityMicroService[Vector]):
     """
     # LOCAL ROLE:
         Computation, Transformer
     
     # INHERITED ROLE:
-        *   See IntegrityService class for inherited role.
+        *   See IntegrityMicroService class for inherited role.
     
     # LOCAL RESPONSIBILITIES:
     1.  Creating new Vector objects by scalar multiplication.
     2.  Converting a Vector into a Coord.
     
     # INHERITED RESPONSIBILITIES:
-        *   See IntegrityService class for inherited responsibilities.
+        *   See IntegrityMicroService class for inherited responsibilities.
 
     Super Class:
-        *   IntegrityService
+        *   IntegrityMicroService
 
     Provides:
 
@@ -41,7 +41,7 @@ class VectorService(IntegrityService[Vector]):
         *   SERVICE_NAME (str)
 
     # INHERITED ATTRIBUTES:
-        *   See IntegrityService for inherited attributes.
+        *   See IntegrityMicroService for inherited attributes.
 
     Attributes:
         *   id (int)
@@ -62,7 +62,7 @@ class VectorService(IntegrityService[Vector]):
             ) -> BuildResult[Vector]:
 
     # INHERITED METHODS:
-        *   See IntegrityService class for inherited methods.
+        *   See IntegrityMicroService class for inherited methods.
     """
     SERVICE_NAME = "VectorService"
     

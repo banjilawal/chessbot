@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 
-# =========== TOKEN.CONTEXT.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== TOKEN.DATABASE.SEARCH.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
 from .debug import *

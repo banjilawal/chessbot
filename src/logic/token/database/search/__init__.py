@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-# =========== TOKEN.CONTEXT PACKAGE CONTENTS ===========#
+# =========== TOKEN.DATABASE.SEARCH PACKAGE CONTENTS ===========#
 
 # Packages
 from .context import *

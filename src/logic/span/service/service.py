@@ -16,21 +16,21 @@ from logic.span import CoordSpan, SpanGraphHandler, SpanServiceException, Spanne
 from logic.vector import VectorService
 from logic.square import SquareDatabase
 from logic.token import Token, TokenService
-from logic.system import ComputationResult, IdFactory, IdentityService, LoggingLevelRouter, Service
+from logic.system import ComputationResult, IdFactory, IdentityService, LoggingLevelRouter, MicroService
 
-class SpanService(Service[CoordSpan]):
+class SpanMicroService(MicroService[CoordSpan]):
     """
-    ROLE: Service, Computation
+    ROLE: MicroService, Computation
     TASK: Graphing
     
     RESPONSIBILITIES:
         1.  Generate a Graph from a Token's current position.
     
     INHERITED RESPONSIBILITIES:
-        * See Service for inherited responsibilities.
+        * See MicroService for inherited responsibilities.
     
     PARENT:
-        *   Service
+        *   MicroService
     
     PROVIDES:
     None
@@ -40,7 +40,7 @@ class SpanService(Service[CoordSpan]):
         *   vector_service: VectorService
     
     INHERITED ATTRIBUTES:
-        *   See Service for inherited attributes.
+        *   See MicroService for inherited attributes.
     
     CONSTRUCTOR PARAMETERS:
         *   id: int
@@ -56,7 +56,7 @@ class SpanService(Service[CoordSpan]):
     INHERITED METHODS:
     None
     """
-    SERVICE_NAME = "SpanService"
+    SERVICE_NAME = "SpanMicroService"
     _graph_handler: SpanGraphHandler
     _coord_service: CoordService
     _vector_service: VectorService
@@ -67,7 +67,7 @@ class SpanService(Service[CoordSpan]):
             name: str = SERVICE_NAME,
             coord_service: CoordService = CoordService(),
             vector_service: VectorService = VectorService(),
-            id: int = IdFactory.next_id(class_name="SpanService"),
+            id: int = IdFactory.next_id(class_name="SpanMicroService"),
             identity_service: IdentityService = IdentityService(),
             graph_handler: SpanGraphHandler = SpanGraphHandler(),
     ):

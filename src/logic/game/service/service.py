@@ -9,13 +9,13 @@ version: 1.0.0
 
 from typing import cast
 
-from logic.system import IntegrityService, id_emitter
+from logic.system import IntegrityMicroService, id_emitter
 from logic.game import Game, GameBuilder, GameValidator
 
 
-class GameService(IntegrityService[Game]):
+class GameService(IntegrityMicroService[Game]):
     """
-    Role:Service, Lifecycle Management, Encapsulation, API layer.
+    Role:MicroService, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing Game microservice API.
@@ -24,7 +24,7 @@ class GameService(IntegrityService[Game]):
         lifecycle.
 
     Super Class:
-        *   IntegrityService
+        *   IntegrityMicroService
 
     # PROVIDES:
         *   build: --> GameBuilder
@@ -32,7 +32,7 @@ class GameService(IntegrityService[Game]):
 
 
     # INHERITED ATTRIBUTES:
-        *   See IntegrityService for inherited attributes.
+        *   See IntegrityMicroService for inherited attributes.
     """
     DEFAULT_NAME = "GameService"
     

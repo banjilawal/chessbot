@@ -1,7 +1,7 @@
-# src/logic/system/service/abstract/exception/debug.py
+# src/logic/system/microservice/abstract/exception/debug.py
 
 """
-Module: logic.system.service.abstract.exception.debug
+Module: logic.system.microservice.abstract.exception.debug
 Author: Banji Lawal
 Created: 2025-11-18
 """
@@ -23,7 +23,7 @@ class ServiceDebugException(DebugException):
     Role:Information, Reporting, Debug
 
     Responsibilities:
-    1.  Parent of DebugExceptions pertinent to Service instances.
+    1.  Parent of DebugExceptions pertinent to MicroService instances.
 
     Super Class:
         *  DebugException
@@ -48,7 +48,7 @@ class ServiceDebugException(DebugException):
         *   See DebugException class for inherited methods.
     """
     ERR_CODE = "SERVICE_DEBUG_EXCEPTION"
-    MSG = "Service attribute raised an exception."
+    MSG = "MicroService attribute raised an exception."
     
     def __init__(
             self,

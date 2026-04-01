@@ -18,15 +18,15 @@ from logic.board import (
 from logic.board.service.exception.anchor import BoardServiceException
 from logic.graph import Graph, GraphComputationException
 from logic.system import (
-    ComputationResult, IdFactory, InsertionResult, IntegrityService, LoggingLevelRouter,
+    ComputationResult, IdFactory, InsertionResult, IntegrityMicroService, LoggingLevelRouter,
     RelationReport
 )
 from logic.team import Team, TeamBelongsToDifferentBoardException, TeamService, TeamSlotAlreadyOccupiedException
 
 
-class BoardService(IntegrityService[Board]):
+class BoardService(IntegrityMicroService[Board]):
     """
-    Role:Service, Lifecycle Management, Encapsulation, API layer.
+    Role:MicroService, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing Board microservice API.
@@ -35,13 +35,13 @@ class BoardService(IntegrityService[Board]):
         lifecycle.
 
     Super Class:
-        *   IntegrityService
+        *   IntegrityMicroService
 
     Provides:
 
 
     # INHERITED ATTRIBUTES:
-        *   See IntegrityService for inherited attributes.
+        *   See IntegrityMicroService for inherited attributes.
     """
     SERVICE_NAME = "BoardService"
     _relation_analyzer: BoardRelationAnalyzer

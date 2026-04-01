@@ -9,10 +9,10 @@ Version: 1.0.0
 
 from enum import Enum
 
-from logic.system import QueryService, Service, Validator
+from logic.system import QueryService, MicroService, Validator
 
 
-class HashService(Service[Enum]):
+class HashMicroService(MicroService[Enum]):
     _hash_key_service: QueryService[Enum]
   
     def __init__(

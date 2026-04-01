@@ -15,7 +15,7 @@ from logic.schema import SchemaLookupProcess, SchemaKey, SchemaKeyBuilder, Schem
 
 class SchemaKeyService(QueryService[SchemaKey]):
     """
-    Role:Service, Lifecycle Management, Encapsulation, API layer.
+    Role:MicroService, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing SchemaKey microservice API.

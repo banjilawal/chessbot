@@ -1,4 +1,4 @@
-# src/logic/coord/query/context/service/service.py
+# src/logic/coord/query/context/service/microservice.py
 
 """
 Module: logic.coord.query.context.service.service
@@ -9,13 +9,13 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.system import IntegrityService, IdFactory
+from logic.system import IntegrityMicroService, IdFactory
 from logic.coord import (
     CoordContext, CoordContextBuilder, CoordContextContextOpsController, CoordContextValidator
 )
 
 
-class CoordContextService(IntegrityService[CoordContext]):
+class CoordContextService(IntegrityMicroService[CoordContext]):
     """
     Role:
         -   Microservice API
@@ -37,7 +37,7 @@ class CoordContextService(IntegrityService[CoordContext]):
     Provides:
 
     Super Class:
-        IntegrityService
+        IntegrityMicroService
     """
     SERVICE_NAME = "CoordContextService"
     _ops_controller: CoordContextContextOpsController

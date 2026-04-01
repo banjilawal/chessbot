@@ -8,10 +8,10 @@ Created: 2025-11-18
 
 from __future__ import annotations
 
-from logic.system import IntegrityService, Builder, Template, Validator
+from logic.system import IntegrityMicroService, Builder, Template, Validator
 
 
-class TemplateService(IntegrityService[Template]):
+class TemplateService(IntegrityMicroService[Template]):
     """
     Role:Microservice API, Integrity Lifecycle Manager, APLifecycle Management.
 
@@ -23,7 +23,7 @@ class TemplateService(IntegrityService[Template]):
             *   At object invocation.
 
     Super Class:
-        *   IntegrityService
+        *   IntegrityMicroService
 
     Provides:
 
@@ -32,7 +32,7 @@ class TemplateService(IntegrityService[Template]):
         *   validation (Validator[Template])
 
     # INHERITED ATTRIBUTES:
-        *   See IntegrityService class for inherited attributes.
+        *   See IntegrityMicroService class for inherited attributes.
 
     Attributes:
         *   id (int)
@@ -44,7 +44,7 @@ class TemplateService(IntegrityService[Template]):
     None
 
     # INHERITED METHODS:
-    *   See IntegrityService class for inherited methods.
+    *   See IntegrityMicroService class for inherited methods.
     """
     SERVICE_NAME = "TemplateService"
     _builder: Builder[Template]

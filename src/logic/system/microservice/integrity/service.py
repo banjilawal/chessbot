@@ -1,7 +1,7 @@
-# src/logic/system/service/integrity/validator.py
+# src/logic/system/microservice/integrity/validator.py
 
 """
-Module: logic.system.service.integrity.service
+Module: logic.system.microservice.integrity.service
 Author: Banji Lawal
 Created: 2025-11-18
 """
@@ -9,12 +9,12 @@ Created: 2025-11-18
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
-from logic.system import Service, Builder, Validator
+from logic.system import MicroService, Builder, Validator
 
 T = TypeVar("T")
 
 
-class IntegrityService(ABC, Service[Generic[T]]):
+class IntegrityMicroService(ABC, MicroService[Generic[T]]):
     """
     Role:
         -   API
@@ -35,7 +35,7 @@ class IntegrityService(ABC, Service[Generic[T]]):
         -   validation() -> Validator[T]
 
     Super Class:
-        Service
+        MicroService
     """
     
     def __init__(self, id: int, name: str,):
@@ -58,7 +58,7 @@ class IntegrityService(ABC, Service[Generic[T]]):
     
     def __eq__(self, other):
         if super().__eq__(other):
-            if isinstance(other, IntegrityService):
+            if isinstance(other, IntegrityMicroService):
                 return True
         return False
 

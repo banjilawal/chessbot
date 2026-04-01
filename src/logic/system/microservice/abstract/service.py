@@ -1,7 +1,7 @@
-# src/logic/system/service/abstract/validator.py
+# src/logic/system/microservice/abstract/validator.py
 
 """
-Module: logic.system.service.abstract.service
+Module: logic.system.microservice.abstract.service
 Author: Banji Lawal
 Created: 2025-11-18
 """
@@ -14,9 +14,9 @@ from logic.system import Validator
 T = TypeVar("T")
 
 
-class Service(ABC, Generic[T]):
+class MicroService(ABC, Generic[T]):
     """
-    Role:Service
+    Role:MicroService
 
     Responsibilities:
     1.  Platform primitive to build Microservice APIs.
@@ -66,7 +66,7 @@ class Service(ABC, Generic[T]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, Service):
+        if isinstance(other, MicroService):
             return self._id == other.id
         return False
     

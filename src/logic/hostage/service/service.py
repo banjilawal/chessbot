@@ -9,13 +9,13 @@ version: 1.0.0
 
 from typing import cast
 
-from logic.system import IntegrityService, id_emitter
+from logic.system import IntegrityMicroService, id_emitter
 from logic.hostage import Hostage, HostageBuilder, HostageValidator
 
 
-class HostageService(IntegrityService[Hostage]):
+class HostageService(IntegrityMicroService[Hostage]):
     """
-    Role:Service, Lifecycle Management, Encapsulation, API layer.
+    Role:MicroService, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing Square microservice API.
@@ -24,14 +24,14 @@ class HostageService(IntegrityService[Hostage]):
         lifecycle.
 
     Super Class:
-        *   IntegrityService
+        *   IntegrityMicroService
 
     # PROVIDES:
         *   HostageService
 
 
     # INHERITED ATTRIBUTES:
-        *   See IntegrityService for inherited attributes.
+        *   See IntegrityMicroService for inherited attributes.
     """
     SERVICE_NAME = "HostageService"
     

@@ -22,7 +22,7 @@ from logic.team import (
 
 class TeamStack(StackService[Team]):
     """
-    Role:Data Stack, Search Service, CRUD Controller, Encapsulation, API layer.
+    Role:Data Stack, Search MicroService, CRUD Controller, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing API.

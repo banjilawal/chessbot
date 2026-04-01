@@ -7,7 +7,7 @@ Created: 2025-10-06
 version: 1.0.0
 """
 
-# =========== TOKEN.CONTEXT.ROUTE.VALIDATION.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== TOKEN.DATABASE.SEARCH.ROUTE.VALIDATION.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
 from .debug import *

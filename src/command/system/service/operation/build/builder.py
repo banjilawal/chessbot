@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Any, Dict
 
 from command import Command, CommandBuildException, NullArgumentsException
-from logic.system import BuildResult, Builder, IdFactory, IdentityService, LoggingLevelRouter, Service
+from logic.system import BuildResult, Builder, IdFactory, IdentityService, LoggingLevelRouter, MicroService
 
 
 class CommandBuilder(Builder[Command]):
@@ -21,7 +21,7 @@ class CommandBuilder(Builder[Command]):
     def build(
             cls,
             name: str,
-            server: Service,
+            server: MicroService,
             parameters: Dict[str, Any] = Dict[str, Any],
             id: int = IdFactory.next_id(class_name="Command"),
             identity_service: IdentityService = IdentityService(),

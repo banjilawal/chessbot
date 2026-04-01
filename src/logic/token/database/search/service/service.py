@@ -1,4 +1,4 @@
-# src/logic/token/database/search/service/service.py
+# src/logic/token/database/search/service/microservice.py
 
 """
 Module: logic.token.database.search.service.service
@@ -29,7 +29,7 @@ class TokenQueryService(QueryService[Token]):
         id: int
         name: str
         router: SearchRouter[T]
-        context_service: IntegrityService[Context[T]]
+        context_service: IntegrityMicroService[Context[T]]
 
     Provides:
         -  query(data_set: List[Token], context: TokenContext) -> SearchResult[List[Token]]

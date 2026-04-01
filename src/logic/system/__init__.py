@@ -27,7 +27,7 @@ from .number import *
 from .result import *
 from .relation import *
 from .resolution import *
-from .service import *
+from .microservice import *
 from .text import *
 from .transaction import *
 from .utils import *

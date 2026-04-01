@@ -12,7 +12,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, Iterator, List, Optional, TypeVar
 
 from logic.system import (
-    Context, IdentityService, InsertionResult, LoggingLevelRouter, IntegrityService, DeletionResult,
+    Context, IdentityService, InsertionResult, LoggingLevelRouter, IntegrityMicroService, DeletionResult,
     SearchResult
 )
 
@@ -45,7 +45,7 @@ class StackService(ABC, Generic[T]):
         -   iterator() -> Iterator[T]
         -   is_empty() -> bool
         -   current_item(self) -> T
-        -   integrity_service() -> IntegrityService[T]
+        -   integrity_service() -> IntegrityMicroService[T]
         -   context_service(self) -> QueryService[T]
         -   push(item: T) -> InsertionResult
         -   pop() -> DeletionResult[T]
@@ -101,7 +101,7 @@ class StackService(ABC, Generic[T]):
 
     @property
     @abstractmethod
-    def integrity_service(self) -> IntegrityService[T]:
+    def integrity_service(self) -> IntegrityMicroService[T]:
         """"Implement to access the model's integrity service."""
         pass
     

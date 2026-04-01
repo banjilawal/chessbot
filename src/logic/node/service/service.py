@@ -16,12 +16,12 @@ from logic.node import (
     NodeServiceException, NodeValidator, OutgoingEdgeWrongHeadException, RemoveIncomingEdgeFailedException,
     RemoveOutgoingEdgeFailedException
 )
-from logic.system import DeletionResult, IntegrityService, IdFactory, InsertionResult, LoggingLevelRouter
+from logic.system import DeletionResult, IntegrityMicroService, IdFactory, InsertionResult, LoggingLevelRouter
 
 
-class NodeService(IntegrityService[Node]):
+class NodeService(IntegrityMicroService[Node]):
     """
-    Role:Service, Lifecycle Management, Encapsulation, API layer.
+    Role:MicroService, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing Node microservice API.
@@ -30,13 +30,13 @@ class NodeService(IntegrityService[Node]):
         lifecycle.
 
     Super Class:
-        *   IntegrityService
+        *   IntegrityMicroService
 
     Provides:
 
 
     # INHERITED ATTRIBUTES:
-        *   See IntegrityService for inherited attributes.
+        *   See IntegrityMicroService for inherited attributes.
     """
     SERVICE_NAME = "NodeService"
     

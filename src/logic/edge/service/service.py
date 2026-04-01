@@ -17,12 +17,12 @@ from logic.edge import (
     Edge, EdgeBuilder, EdgeServiceException, EdgeValidator, UpdatingEdgeHeuristicException,
     UpdatingEdgeWeightException
 )
-from logic.system import IntegrityService, IdFactory, LoggingLevelRouter, NumberValidator, UpdateResult
+from logic.system import IntegrityMicroService, IdFactory, LoggingLevelRouter, NumberValidator, UpdateResult
 
 
-class EdgeService(IntegrityService[Edge]):
+class EdgeService(IntegrityMicroService[Edge]):
     """
-    Role:Service, Lifecycle Management, Encapsulation, API layer.
+    Role:MicroService, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
     1.  Public facing Edge microservice API.
@@ -31,13 +31,13 @@ class EdgeService(IntegrityService[Edge]):
         lifecycle.
 
     Super Class:
-        *   IntegrityService
+        *   IntegrityMicroService
 
     Provides:
 
 
     # INHERITED ATTRIBUTES:
-        *   See IntegrityService for inherited attributes.
+        *   See IntegrityMicroService for inherited attributes.
     """
     SERVICE_NAME = "EdgeService"
     

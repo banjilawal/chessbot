@@ -7,7 +7,7 @@ Created: 2025-10-01
 version: 1.0.0
 """
 
-# =========== TOKEN.CONTEXT.SERVICE.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== TOKEN.DATABASE.SEARCH.SERVICE.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
 None

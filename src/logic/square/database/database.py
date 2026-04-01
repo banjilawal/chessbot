@@ -20,7 +20,7 @@ from logic.token import Token, TokenService
 
 class SquareDatabase(Database[Square]):
     """
-    Role:Data Repository, CRUD Search Service, CRUD Controller, Encapsulation, API layer.
+    Role:Data Repository, CRUD Search MicroService, CRUD Controller, Encapsulation, API layer.
 
     Responsibilities:
     1.  Higher level API for SquareStackService.

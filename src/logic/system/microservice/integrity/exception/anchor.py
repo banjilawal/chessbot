@@ -1,7 +1,7 @@
-# src/logic/system/service/integrity/exception.super.py
+# src/logic/system/microservice/integrity/exception.super.py
 
 """
-Module: logic.system.service.integrity.exception.super
+Module: logic.system.microservice.integrity.exception.super
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -23,7 +23,7 @@ class IntegrityServiceException(ServiceException):
     Role:Debug Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
-    1.  Indicate that an error occurred in an IntegrityService instance.
+    1.  Indicate that an error occurred in an IntegrityMicroService instance.
 
     Super Class:
     *   ServiceException
@@ -48,8 +48,8 @@ class IntegrityServiceException(ServiceException):
         *   See ServiceException class for inherited methods.
     """
     ERR_CODE = "INTEGRITY_SERVICE_EXCEPTION"
-    MSG = "IntegrityService raised an exception."
-    CLS_NAME = "IntegrityService"
+    MSG = "IntegrityMicroService raised an exception."
+    CLS_NAME = "IntegrityMicroService"
     
     def __init__(
             self,
