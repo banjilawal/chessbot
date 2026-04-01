@@ -33,6 +33,7 @@ from .transaction import *
 from .utils import *
 from .validate import *
 from .route import *
+from .pipeline import *
 
 # Modules
 None
