@@ -1,9 +1,16 @@
+# src/logic/system/search/query/stack.py
 
+"""
+Module: logic.system.search.query.stack
+Author: Banji Lawal
+Created: 2026-04-01
+Version: 1.0.0
+"""
 
 from __future__ import annotations
-from abc import ABC
 from typing import Generic, List, TypeVar
 
+from logic.system import Query
 from logic.system.search import Context
 
 

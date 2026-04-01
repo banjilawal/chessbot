@@ -1,4 +1,11 @@
+# src/logic/system/search/query/root.py
 
+"""
+Module: logic.system.search.query.root
+Author: Banji Lawal
+Created: 2026-04-01
+Version: 1.0.0
+"""
 
 from __future__ import annotations
 from abc import ABC
