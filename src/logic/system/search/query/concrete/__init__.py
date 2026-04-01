@@ -13,5 +13,5 @@ Version: 1.0.0
 None
 
 # Modules
-from .hash import HashQuery
+from .table import TableQuery
 from .stack import StackQuery

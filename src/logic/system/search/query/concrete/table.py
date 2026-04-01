@@ -1,10 +1,10 @@
-# src/logic/system/collection/table/lookup/exception.py
+# src/logic/system/search/query/concrete/table.py
 
 """
-Module: logic.system.collection.table.lookup.lookup
+Module: logic.system.search.query.concrete.table
 Author: Banji Lawal
-Created: 2025-10-03
-version: 1.0.0
+Created: 2026-04-01
+Version: 1.0.0
 """
 
 from __future__ import annotations
@@ -19,15 +19,19 @@ E = TypeVar("E", bound=Enum)
 class TableQuery(Query, Generic[E]):
     _table: E
     
-    def __init__(self, table: E, super_key: Context[E]):
+    def __init__(self, table: E, lookup_key: Context[E]):
         """
         Args:
             table: E
-            super_key: Context[E]
+            lookup_key: Context[E]
         """
-        super().__init__(context=super_key)
+        super().__init__(context=lookup_key)
         self._table = table
     
     @property
     def table(self) -> E:
         return self._table
+    
+    @property
+    def lookup_key(self) -> Context[E]:
+        return self.context
