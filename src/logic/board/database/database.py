@@ -114,7 +114,7 @@ class BoardDatabase(Database[Board]):
                     )
                 )
             )
-        # --- CheckSquare if the board is already in the collider_candidates before adding it. ---#
+        # --- KingCheckRecord if the board is already in the collider_candidates before adding it. ---#
         search_result = self.search_boards(context=BoardContext(id=board.id))
         
         # Handle the case that, the search is not completed.

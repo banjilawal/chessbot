@@ -58,7 +58,7 @@ class RankValidatorFactory(Validator[Rank]):
     ) -> ValidationResult[Rank]:
         """
         # ACTION:
-        1.  CheckSquare if the candidate is null. If so return an exception in a ValidationResult.
+        1.  KingCheckRecord if the candidate is null. If so return an exception in a ValidationResult.
         2.  If the candidate is not a Rank instance return an exception in a ValidationResult.
         3.  Find the candidate's matching concrete rank and hand off its validation to the
             subclass validation.

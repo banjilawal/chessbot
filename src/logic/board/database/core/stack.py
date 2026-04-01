@@ -112,7 +112,7 @@ class BoardStackService(StackService[Board]):
                     )
                 )
             )
-        # --- CheckSquare if an item in the list shares the board's arena. ---#
+        # --- KingCheckRecord if an item in the list shares the board's arena. ---#
         search_result = self.board_context_service.finder.find(
             dataset=self.items,
             context=BoardContext(arena=board.arena)
