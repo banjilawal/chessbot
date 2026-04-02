@@ -9,12 +9,10 @@ Version: 1.0.0
 
 # =========== SYSTEM.SEARCH PACKAGE CONTENTS ===========#
 
-# Packages
-from logic.system.search.resource.route import *
-from logic.system.search.resource.query import *
+# Package
 from .result import *
-from logic.system.search.resource.context import *
 from .service import *
+from .resource import *
 
 # Modules
 None
