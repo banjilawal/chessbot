@@ -6,10 +6,9 @@ Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
-
+from logic.schema.search import SchemaContextBuilder, SchemaContextOpsController, SchemaContextValidator
+from logic.schema.search.resource.context.model import SchemaContext
 from logic.system import IntegrityMicroservice, IdFactory
-from logic.schema import SchemaContext, SchemaContextBuilder, SchemaContextOpsController, SchemaContextValidator
-
 
 class SchemaContextService(IntegrityMicroservice[SchemaContext]):
     """
@@ -27,7 +26,7 @@ class SchemaContextService(IntegrityMicroservice[SchemaContext]):
         SERVICE_NAME: SchemaContextService
 
         id: int
-        stack: stack
+        name: name
         controller: SchemaContextOpsController
 
     Provides:

@@ -1,16 +1,16 @@
-# src/logic/token/database/search/query/__init__.py
+# src/logic/schema/database/search/query/__init__.py
 
 """
-Module: logic.token.database.search.query.__init__
+Module: logic.schema.database.search.query.__init__
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
 """
 
-# =========== TOKEN.DATABASE.SEARCH.QUERY PACKAGE CONTENTS ===========#
+# =========== SCHEMA.DATABASE.SEARCH.QUERY PACKAGE CONTENTS ===========#
 
 # Packages
 from .service import *
 
 # Modules
-from .query import TokenQuery
+from .query import SchemaQuery

@@ -15,10 +15,10 @@ __all__ = [
     "TokenContextBuildRouteException",
 ]
 
-from logic.system import ExecutionRouteException
+from logic.system import ContextRouteException
 
 # ======================# TOKEN_CONTEXT_BUILD_ROUTE_EXCEPTION #======================#
-class TokenContextBuildRouteException(ExecutionRouteException):
+class TokenContextBuildRouteException(ContextRouteException):
     """
     Role:
         -   Exception Chain Layer 2
@@ -39,7 +39,7 @@ class TokenContextBuildRouteException(ExecutionRouteException):
     Provides:
 
     Super Class:
-        DebugException
+        ContextRouteException
     """
     ERR_CODE = "TOKEN_CONTEXT_BUILD_ROUTE_EXCEPTION"
     MSG = "No build path for the TokenContext attribute."

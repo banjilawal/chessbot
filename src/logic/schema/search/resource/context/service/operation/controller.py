@@ -9,7 +9,9 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.schema import SchemaContextBuilder, SchemaContextIntegrityWorkers, SchemaContextValidator
+from logic.schema.search import (
+    SchemaContextBuilder, SchemaContextIntegrityWorkers, SchemaContextValidator
+)
 
 
 class SchemaContextOpsController:

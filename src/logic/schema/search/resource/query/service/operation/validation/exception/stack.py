@@ -1,7 +1,7 @@
-# src/logic/token/database/search/query/service/operation/validation/exception/null.py
+# src/logic/schema/database/search/query/service/operation/validation/exception/null.py
 
 """
-Module: logic.token.database.search.query.service.operation.validation.exception.null
+Module: logic.schema.database.search.query.service.operation.validation.exception.null
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -11,14 +11,14 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# TOKEN_STACK_NULL_EXCEPTION #======================#
-    "TokenStackNullException",
+    # ======================# SCHEMA_STACK_NULL_EXCEPTION #======================#
+    "SchemaStackNullException",
 ]
 
 from logic.system import NullException
 
-# ======================# TOKEN_STACK_NULL_EXCEPTION #======================#
-class TokenStackNullException(NullException):
+# ======================# SCHEMA_STACK_NULL_EXCEPTION #======================#
+class SchemaStackNullException(NullException):
     """
     Role:
         -   Exception Chain Layer 2
@@ -26,7 +26,7 @@ class TokenStackNullException(NullException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that a client got null instead of a List[Token].
+        1.  Indicate that a client got null instead of a List[Schema].
 
     Attributes:
         var: Optional[str]
@@ -40,8 +40,8 @@ class TokenStackNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = "TokenStack cannot be null."
-    ERR_CODE = "TOKEN_STACK_NULL_EXCEPTION"
+    MSG = "SchemaStack cannot be null."
+    ERR_CODE = "SCHEMA_STACK_NULL_EXCEPTION"
 
     
     def __init__(

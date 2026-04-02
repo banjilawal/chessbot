@@ -1,7 +1,7 @@
-# src/logic/schema/database/search/context/service/operation/build/exception/route.py
+# src/logic/schema/database/search/context/model/exception/debug/__init__.py
 
 """
-Module: logic.schema.database.search.context.service.operation.build.exception.route
+Module: logic.schema.database.search.context.model.exception.debug.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -11,14 +11,14 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# SCHEMA_CONTEXT_BUILD_ROUTE_EXCEPTION #======================#
-    "SchemaContextBuildRouteException",
+    # ======================# SCHEMA_CONTEXT_DEBUG_EXCEPTION #======================#
+    "SchemaContextDebugException",
 ]
 
-from logic.system import ContextRouteException
+from logic.system import DebugException
 
-# ======================# SCHEMA_CONTEXT_BUILD_ROUTE_EXCEPTION #======================#
-class SchemaContextBuildRouteException(ContextRouteException):
+# ======================# SCHEMA_CONTEXT_DEBUG_EXCEPTION #======================#
+class SchemaContextDebugException(DebugException):
     """
     Role:
         -   Exception Chain Layer 2
@@ -26,8 +26,7 @@ class SchemaContextBuildRouteException(ContextRouteException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that SchemaContext build failed because attribute did not have a
-            creation path.
+        1.  Record the condition that fired a SchemaContext variable's error state.
 
     Attributes:
         var: Optional[str]
@@ -39,10 +38,10 @@ class SchemaContextBuildRouteException(ContextRouteException):
     Provides:
 
     Super Class:
-        ContextRouteException
+        DebugException
     """
-    ERR_CODE = "SCHEMA_CONTEXT_BUILD_ROUTE_EXCEPTION"
-    MSG = "No build path for the SchemaContext attribute."
+    ERR_CODE = "SCHEMA_CONTEXT_EXCEPTION"
+    MSG = str = "SchemaContext had an error."
     
     def __init__(
             self,
@@ -69,3 +68,5 @@ class SchemaContextBuildRouteException(ContextRouteException):
             val=val,
             err_code=err_code,
         )
+
+

@@ -1,7 +1,7 @@
-# src/logic/system/search/query/concrete/table.py
+# src/logic/system/search/query/concrete/catalog.py
 
 """
-Module: logic.system.search.query.concrete.table
+Module: logic.system.search.query.concrete.catalog
 Author: Banji Lawal
 Created: 2026-04-01
 Version: 1.0.0
@@ -16,21 +16,21 @@ from logic.system import Query, Context
 
 E = TypeVar("E", bound=Enum)
 
-class TableQuery(Query, Generic[E]):
-    _table: E
+class CatalofQuery(Query, Generic[E]):
+    _catalog: E
     
-    def __init__(self, table: E, context: Context[E]):
+    def __init__(self, catalog: E, context: Context[E]):
         """
         Args:
-            table: E
+            catalog: E
             context: Context[E]
         """
         super().__init__(context=context)
-        self._table = table
+        self._catalog = catalog
     
     @property
-    def table(self) -> E:
-        return self._table
+    def catalog(self) -> E:
+        return self._catalog
     
     @property
     def lookup_key(self) -> Context[E]:

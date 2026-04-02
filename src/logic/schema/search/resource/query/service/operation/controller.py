@@ -1,7 +1,7 @@
-# src/logic/token/database/search/query/service/operation/controller.py
+# src/logic/schema/database/search/query/service/operation/controller.py
 
 """
-Module: logic.token.database.search.query.service.operation.controller
+Module: logic.schema.database.search.query.service.operation.controller
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -9,54 +9,54 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.token import TokenQueryBuilder, TokenContextIntegrityWorkers, TokenQueryValidator
+from logic.schema import SchemaQueryBuilder, SchemaContextIntegrityWorkers, SchemaQueryValidator
 
 
-class TokenQueryOpsController:
+class SchemaQueryOpsController:
     """
     Role:
         - Controller
         
     Responsibilities:
-        1.  Provide a single entry point for operations TokenService supports.
+        1.  Provide a single entry point for operations SchemaService supports.
         
     Attributes:
-        builder: TokenQueryBuilder
-        validator: TokenQueryValidator
-        workers: TokenContextIntegrityWorkers
+        builder: SchemaQueryBuilder
+        validator: SchemaQueryValidator
+        workers: SchemaContextIntegrityWorkers
 
     Provides:
     
     Super Class:
     """
-    _builder: TokenQueryBuilder
-    _validator: TokenQueryValidator
-    _workers: TokenContextIntegrityWorkers
+    _builder: SchemaQueryBuilder
+    _validator: SchemaQueryValidator
+    _workers: SchemaContextIntegrityWorkers
     
     def __init__(
             self,
-            builder: TokenQueryBuilder = TokenQueryBuilder(),
-            validator: TokenQueryValidator = TokenQueryValidator(),
-            workers: TokenContextIntegrityWorkers = TokenContextIntegrityWorkers(),
+            builder: SchemaQueryBuilder = SchemaQueryBuilder(),
+            validator: SchemaQueryValidator = SchemaQueryValidator(),
+            workers: SchemaContextIntegrityWorkers = SchemaContextIntegrityWorkers(),
     ):
         """
         Args:
-            builder: TokenQueryBuilder
-            validator: TokenQueryValidator
-            workers: TokenContextIntegrityWorkers
+            builder: SchemaQueryBuilder
+            validator: SchemaQueryValidator
+            workers: SchemaContextIntegrityWorkers
         """
         self._build = builder
         self._validation = validator
         self._arithmetic = workers
         
     @property
-    def builder(self) -> TokenQueryBuilder:
+    def builder(self) -> SchemaQueryBuilder:
         return self._builder
         
     @property
-    def validator(self) ->TokenQueryValidator:
+    def validator(self) ->SchemaQueryValidator:
         return self._validator
     
     @property
-    def arithmetic(self) -> TokenContextIntegrityWorkers:
+    def arithmetic(self) -> SchemaContextIntegrityWorkers:
         return self._arithmetic

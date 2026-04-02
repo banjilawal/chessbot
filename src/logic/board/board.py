@@ -96,8 +96,8 @@ class Board:
         return self._hostage_database
     
     def layout(self):
-        for key in self._team_hash.table.keys():
-            self._team_hash.table[key].roster.deploy_tokens_on_board()
+        for key in self._team_hash.catalog.keys():
+            self._team_hash.catalog[key].roster.deploy_tokens_on_board()
     
     
     def __eq__(self, other):

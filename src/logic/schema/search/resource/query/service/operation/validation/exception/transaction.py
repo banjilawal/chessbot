@@ -1,7 +1,7 @@
-# src/logic/token/database/search/query/service/operation/validation/exception/transaction.py
+# src/logic/schema/database/search/query/service/operation/validation/exception/transaction.py
 
 """
-Module: logic.token.database.search.query.service.operation.validation.exception.transaction
+Module: logic.schema.database.search.query.service.operation.validation.exception.transaction
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -11,15 +11,15 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# TOKEN_QUERY_VALIDATION_FAILURE #======================#
-    "TokenQueryValidationException",
+    # ======================# SCHEMA_QUERY_VALIDATION_FAILURE #======================#
+    "SchemaQueryValidationException",
 ]
 
 from logic.system import ValidationException
 
 
-# ======================# TOKEN_QUERY_VALIDATION_FAILURE #======================#
-class TokenQueryValidationException(ValidationException):
+# ======================# SCHEMA_QUERY_VALIDATION_FAILURE #======================#
+class SchemaQueryValidationException(ValidationException):
     """
     Role:
         -   Worker Method Identification
@@ -27,7 +27,7 @@ class TokenQueryValidationException(ValidationException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that one of the TokenQuery's params failed a safety test.
+        1.  Indicate that one of the SchemaQuery's params failed a safety test.
 
     Attributes:
         op: Optional[str]
@@ -43,8 +43,8 @@ class TokenQueryValidationException(ValidationException):
     Super Class:
         ValidationException
     """
-    MSG = "TokenQuery validation check failed."
-    ERR_CODE = "TOKEN_QUERY_VALIDATION_FAILURE"
+    MSG = "SchemaQuery validation check failed."
+    ERR_CODE = "SCHEMA_QUERY_VALIDATION_FAILURE"
     
     def __init__(
             self,

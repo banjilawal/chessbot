@@ -13,5 +13,5 @@ Version: 1.0.0
 None
 
 # Modules
-from .table import TableQuery
+from .table import CatalofQuery
 from .stack import StackQuery

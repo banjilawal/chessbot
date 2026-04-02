@@ -1,7 +1,7 @@
-# src/logic/token/database/search/query/service/exception/anchor.py
+# src/logic/schema/database/search/query/service/exception/anchor.py
 
 """
-Module: logic.token.database.search.query.service.exception.anchor
+Module: logic.schema.database.search.query.service.exception.anchor
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,24 +11,24 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# TOKEN_CONTEXT_SERVICE_EXCEPTION #======================#
-    "TokenContextServiceException",
+    # ======================# SCHEMA_CONTEXT_SERVICE_EXCEPTION #======================#
+    "SchemaContextServiceException",
 ]
 
 from logic.system import ServiceException
 
 
-# ======================# TOKEN_CONTEXT_SERVICE_EXCEPTION #======================#
-class TokenContextServiceException(ServiceException):
+# ======================# SCHEMA_CONTEXT_SERVICE_EXCEPTION #======================#
+class SchemaContextServiceException(ServiceException):
     """
     Role:Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
-    1.  Anchors TokenQueryService debug (layer-2) error state firing incident
+    1.  Anchors SchemaQueryService debug (layer-2) error state firing incident
         reports on
             *   the triggering variable
             *   The trigger's value.
-    2.  Indicate which TokenQueryService method received a worker's (layer-1) failure result.
+    2.  Indicate which SchemaQueryService method received a worker's (layer-1) failure result.
 
     Super Class:
         *   ServiceException
@@ -52,9 +52,9 @@ class TokenContextServiceException(ServiceException):
     # INHERITED METHODS:
         *   See ServiceException class for inherited methods.
     """
-    CLS_NAME = "TokenQueryService"
-    ERR_CODE = "TOKEN_CONTEXT_SERVICE_EXCEPTION"
-    MSG = "TokenQueryService raised an exception."
+    CLS_NAME = "SchemaQueryService"
+    ERR_CODE = "SCHEMA_CONTEXT_SERVICE_EXCEPTION"
+    MSG = "SchemaQueryService raised an exception."
     
     def __init__(
             self,

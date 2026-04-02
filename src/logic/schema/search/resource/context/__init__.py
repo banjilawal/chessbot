@@ -10,8 +10,7 @@ version: 1.0.0
 # =========== SCHEMA.DATABASE.SEARCH PACKAGE CONTENTS ===========#
 
 # Packages
-from logic.schema.database.search.operation.context.service.operation.build import *
-from logic.schema.database.search.operation.context.service.operation.validation import *
+from .model import *
 from .service import *
 
 # Modules

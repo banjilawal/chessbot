@@ -1,15 +1,15 @@
-# src/logic/token/database/search/query/service/operation/validation/exception/debug/null.py
+# src/logic/schema/database/search/query/service/operation/validation/exception/debug/null.py
 
 """
-Module: logic.token.database.search.query.service.operation.validation.exception.debug.null
+Module: logic.schema.database.search.query.service.operation.validation.exception.debug.null
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
 __all__ = [
-    # ======================# TOKEN_QUERY_NULL_EXCEPTION #======================#
-    "TokenQueryNullException",
+    # ======================# SCHEMA_QUERY_NULL_EXCEPTION #======================#
+    "SchemaQueryNullException",
 ]
 
 from typing import Any, Optional
@@ -17,8 +17,8 @@ from typing import Any, Optional
 from logic.system import NullException
 
 
-# ======================# TOKEN_QUERY_NULL_EXCEPTION #======================#
-class TokenQueryNullException(NullException):
+# ======================# SCHEMA_QUERY_NULL_EXCEPTION #======================#
+class SchemaQueryNullException(NullException):
     """
     Role:
         -   Exception Chain Layer 2
@@ -26,7 +26,7 @@ class TokenQueryNullException(NullException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that a client got null instead of a List[Token].
+        1.  Indicate that a client got null instead of a List[Schema].
 
     Attributes:
         var: Optional[str]
@@ -40,8 +40,8 @@ class TokenQueryNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = "TokenQuery cannot be null."
-    ERR_CODE = "TOKEN_QUERY_NULL_EXCEPTION"
+    MSG = "SchemaQuery cannot be null."
+    ERR_CODE = "SCHEMA_QUERY_NULL_EXCEPTION"
     
     def __init__(
             self,

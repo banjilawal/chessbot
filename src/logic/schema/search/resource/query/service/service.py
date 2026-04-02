@@ -1,64 +1,64 @@
-# src/logic/token/database/search/query/service/__init__.py
+# src/logic/schema/database/search/query/service/__init__.py
 
 """
-Module: logic.token.database.search.query.service.__init__
+Module: logic.schema.database.search.query.service.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
 
 from logic.system import IntegrityMicroservice, IdFactory
-from logic.token import TokenQuery, TokenQueryBuilder, TokenQueryOpsController, TokenQueryValidator
+from logic.schema import SchemaQuery, SchemaQueryBuilder, SchemaQueryOpsController, SchemaQueryValidator
 
 
-class TokenQueryService(IntegrityMicroservice[TokenQuery]):
+class SchemaQueryService(IntegrityMicroservice[SchemaQuery]):
     """
     Role:
         -   Microservice API
         -   Stateless Integrity Lifecycle Manager
 
     Responsibilities:
-        1.  Mutates TokenQuery instances
-        2.  Ensure TokenQuery integrity and consistency when its state changes.
-        3.  Build TokenQuery instances that satisfy integrity contracts
-        4.  Maintain the TokenQuery integrity lifecycle.
+        1.  Mutates SchemaQuery instances
+        2.  Ensure SchemaQuery integrity and consistency when its state changes.
+        3.  Build SchemaQuery instances that satisfy integrity contracts
+        4.  Maintain the SchemaQuery integrity lifecycle.
 
     Attributes:
-        SERVICE_NAME: TokenQueryService
+        SERVICE_NAME: SchemaQueryService
 
         id: int
         stack: stack
-        controller: TokenQueryOpsController
+        controller: SchemaQueryOpsController
 
     Provides:
 
     Super Class:
         IntegrityMicroservice
     """
-    SERVICE_NAME = "TokenQueryService"
-    _ops_controller: TokenQueryOpsController
+    SERVICE_NAME = "SchemaQueryService"
+    _ops_controller: SchemaQueryOpsController
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            id: int = IdFactory.next_id(class_name="TokenQueryService"),
-            ops_controller: TokenQueryOpsController = TokenQueryOpsController(),
+            id: int = IdFactory.next_id(class_name="SchemaQueryService"),
+            ops_controller: SchemaQueryOpsController = SchemaQueryOpsController(),
     ):
         """
         Args:
             id: int
             name: str
-            ops_controller: TokenQueryOpsController
+            ops_controller: SchemaQueryOpsController
         """
         super().__init__(id=id, name=name)
         self._ops_controller = ops_controller
     
     @property
-    def builder(self) ->TokenQueryBuilder:
+    def builder(self) ->SchemaQueryBuilder:
         return self._ops_controller.builder
     
     @property
-    def validator(self) ->TokenQueryValidator:
+    def validator(self) ->SchemaQueryValidator:
         return self._ops_controller.validator
     
     

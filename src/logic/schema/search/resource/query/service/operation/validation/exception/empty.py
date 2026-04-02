@@ -1,7 +1,7 @@
-# src/logic/token/database/kernel/operation/crud/pop/exception/empty.py
+# src/logic/schema/database/kernel/operation/crud/pop/exception/empty.py
 
 """
-Module: logic.token.database.kernel.operation.crud.pop.exception.empty
+Module: logic.schema.database.kernel.operation.crud.pop.exception.empty
 Author: Banji Lawal
 Created: 2026-02-22
 version: 1.0.0
@@ -11,15 +11,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# TOKEN_QUERY_STACK_EMPTY_EXCEPTION #======================#
-    "TokenQueryStackEmptyException",
+    # ======================# SCHEMA_QUERY_STACK_EMPTY_EXCEPTION #======================#
+    "SchemaQueryStackEmptyException",
 ]
 
 from logic.system import DebugException
 
 
-# ======================# TOKEN_QUERY_STACK_EMPTY_EXCEPTION #======================#
-class TokenQueryStackEmptyException(DebugException):
+# ======================# SCHEMA_QUERY_STACK_EMPTY_EXCEPTION #======================#
+class SchemaQueryStackEmptyException(DebugException):
     """
     Role:
         -   Error Variable Identifier
@@ -27,7 +27,7 @@ class TokenQueryStackEmptyException(DebugException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that the TokenQuery validation failed because the stack is empty.
+        1.  Indicate that the SchemaQuery validation failed because the stack is empty.
         
     Attributes:
         var: Optional[str]
@@ -39,11 +39,11 @@ class TokenQueryStackEmptyException(DebugException):
     Provides:
 
     Super Class:
-        TokenDebugException
+        SchemaDebugException
 
     """
-    ERR_CODE = "TOKEN_QUERY_STACK_EMPTY_EXCEPTION"
-    MSG = "TokenQuery.stack cannot be empty."
+    ERR_CODE = "SCHEMA_QUERY_STACK_EMPTY_EXCEPTION"
+    MSG = "SchemaQuery.stack cannot be empty."
     
     def __init__(
             self,

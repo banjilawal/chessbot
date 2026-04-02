@@ -1,7 +1,7 @@
-# src/logic/token/database/search/query/service/operation/build/exception/transaction.py
+# src/logic/schema/database/search/query/service/operation/build/exception/transaction.py
 
 """
-Module: logic.token.database.search.query.service.operation.build.exception.transaction
+Module: logic.schema.database.search.query.service.operation.build.exception.transaction
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -11,15 +11,15 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# TOKEN_QUERY_BUILD_FAILURE #======================#
-    "TokenQueryBuildException",
+    # ======================# SCHEMA_QUERY_BUILD_FAILURE #======================#
+    "SchemaQueryBuildException",
 ]
 
 from logic.system import BuildException
 
 
-# ======================# TOKEN_QUERY_BUILD_FAILURE #======================#
-class TokenQueryBuildException(BuildException):
+# ======================# SCHEMA_QUERY_BUILD_FAILURE #======================#
+class SchemaQueryBuildException(BuildException):
     """
     Role:
         -   Worker Method Identification
@@ -27,7 +27,7 @@ class TokenQueryBuildException(BuildException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that, an error prevented a TokenCQuery from being built.
+        1.  Indicate that, an error prevented a SchemaCQuery from being built.
         2.  Identify the method where the failure occurred.
 
     Attributes:
@@ -44,8 +44,8 @@ class TokenQueryBuildException(BuildException):
     Super Class:
         BuildException
     """
-    MSG = "A TokenQueryBuilder method failed."
-    ERR_CODE = "TOKEN_QUERY_BUILD_FAILURE"
+    MSG = "A SchemaQueryBuilder method failed."
+    ERR_CODE = "SCHEMA_QUERY_BUILD_FAILURE"
     
     def __init__(
             self,
