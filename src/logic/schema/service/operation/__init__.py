@@ -12,6 +12,7 @@ version: 1.0.0
 # Packages
 from .search import *
 from .validator import *
+from .properties import *
 
 # Modules
-None
+from .controller import SchemaOpsController

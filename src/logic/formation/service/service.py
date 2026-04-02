@@ -1,6 +1,7 @@
 import sys
 from typing import List, cast
 
+from logic.schema import SchemaValidator
 from logic.team import Team
 from logic.team.service.service import TeamService
 from logic.formation import Formation, FormationKey, FormationKeyService, FormationValidator, FormationServiceException
@@ -82,7 +83,6 @@ class FormationService(HashService[Formation]):
         """Full schema of the formation made up of color, rank, and number."""
         return [order.name.upper() for order in Formation]
     
-
     @LoggingLevelRouter.monitor
     def derive_token(
             self,

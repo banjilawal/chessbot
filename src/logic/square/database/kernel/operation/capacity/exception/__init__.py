@@ -13,5 +13,4 @@ version: 1.0.0
 None
 
 # Modules
-from .full import SquareStackCapacityFullException
-from .work import SquareStackCapacityAnalysisException
+from .transaction import SquareStackCapacityAnalysisException

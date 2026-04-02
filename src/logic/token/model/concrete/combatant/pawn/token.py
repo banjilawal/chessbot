@@ -98,7 +98,7 @@ class PawnToken(CombatantToken):
     def can_promote(self) -> bool:
         return (
             self.is_active and not self.is_promoted and
-            self.current_position.row == self.team.schema.opposite.pawn_row
+            self.current_position.row == self.team.schema.enemy_schema.pawn_row
         )
     
     @property

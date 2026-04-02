@@ -27,7 +27,7 @@ class CoordContextBuildException(BuildException):
         - Exception Messaging
 
     Responsibilities:
-        1.  Indicate that  an error prevented a coordContext from being built.
+        1.  Indicate that an error prevented a coordContext from being built.
         2.  Identify the method where the failure occurred.
 
     Attributes:

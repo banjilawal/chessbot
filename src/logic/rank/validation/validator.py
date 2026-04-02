@@ -26,7 +26,7 @@ class RankValidator(Validator[Rank]):
         -   Process Runner
 
     Responsibilities:
-        1.  Ensure a Coord instance is certified safe, reliable and consistent before use.
+        1.  Ensure a Rank instance is certified safe, reliable and consistent before use.
 
     Attributes:
 
@@ -70,7 +70,7 @@ class RankValidator(Validator[Rank]):
             NullRankException
             RankValidationException
         """
-        method = f"{cls.__name__}.build"
+        method = f"{cls.__name__}.validate"
         
         # Handle the case that, the rank does not exist.
         if candidate is None:
@@ -105,7 +105,7 @@ class RankValidator(Validator[Rank]):
                     )
                 )
             )
-        # --- Cast rank to a Coord for additional tests ---#
+        # --- Cast rank to a Rank for additional tests ---#
         rank = cast(Rank, candidate)
         
         # Handle the case that, the rank's id is not safe.
