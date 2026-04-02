@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/search/resource/query/model/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/resource/query/model/exception/anchor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/database/search/resource/query/model/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/database/search/resource/query/model/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/schema/search/resource/query/service/operation/build/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/schema/search/resource/query/service/operation/build/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/schema/search/resource/query/service/operation/validation/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/schema/search/resource/query/service/operation/validation/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/schema/search/resource/route/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/schema/search/resource/route/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/schema/search/resource/route/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/schema/search/resource/route/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/schema/search/resource/route/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/schema/search/resource/route/exception/debug/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/schema/search/resource/route/exception/debug/missing.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/schema/search/resource/route/exception/debug/missing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/schema/search/resource/route/exception/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/schema/search/resource/route/exception/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/schema/search/resource/route/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/schema/search/resource/route/router.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -249,6 +256,7 @@
     "Python.rank_builder.executor": "Run",
     "Python.rank_factory.executor": "Run",
     "Python.rank_spec.executor": "Run",
+    "Python.router.executor": "Debug",
     "Python.run_game.executor": "Run",
     "Python.scalar.executor": "Run",
     "Python.service.executor": "Debug",
@@ -316,7 +324,7 @@
       <recent name="$PROJECT_DIR$/src/logic/token/database/search/operation" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.inactive">
+  <component name="RunManager" selected="Python.router">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -432,29 +440,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="edge" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="chessbot" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/chess/graph/edge" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/chess/graph/edge/edge.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="inactive" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="chessbot" />
       <option name="ENV_FILES" value="" />
@@ -470,6 +455,29 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/logic/token/service/operation/coord/push/exception/inactive.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="router" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="chessbot" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/logic/schema/search/resource/route" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/logic/schema/search/resource/route/router.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -526,11 +534,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.router" />
         <item itemvalue="Python.inactive" />
         <item itemvalue="Python.transaction" />
         <item itemvalue="Python.anchor" />
         <item itemvalue="Python.service" />
-        <item itemvalue="Python.edge" />
       </list>
     </recent_temporary>
   </component>
@@ -862,7 +870,7 @@
       <workItem from="1774483839135" duration="10440000" />
       <workItem from="1774551231807" duration="159138000" />
       <workItem from="1774976324979" duration="49944000" />
-      <workItem from="1775073975276" duration="54620000" />
+      <workItem from="1775073975276" duration="58512000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

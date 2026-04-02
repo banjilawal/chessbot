@@ -11,15 +11,15 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# TOKEN_SEARCH_FAILURE #======================#
-    "TokenSearchException",
+    # ======================# SCHEMA_SEARCH_FAILURE #======================#
+    "SchemaSearchException",
 ]
 
 from logic.system import SearchException
 
 
-# ======================# TOKEN_SEARCH_FAILURE #======================#
-class TokenSearchException(SearchException):
+# ======================# SCHEMA_SEARCH_FAILURE #======================#
+class SchemaSearchException(SearchException):
     """
      Role:
         -   Worker Method Identification
@@ -27,8 +27,8 @@ class TokenSearchException(SearchException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate a Token search was not completed because an error occurred.
-        2.  Identify the TokenSearchRouter method where the failure occurred.
+        1.  Indicate a Schema search was not completed because an error occurred.
+        2.  Identify the SchemaSearchRouter method where the failure occurred.
 
     Attributes:
         op: Optional[str]
@@ -46,7 +46,7 @@ class TokenSearchException(SearchException):
     """
     OP = "Search"
     RSLT_TYPE = "SearchResult"
-    ERR_CODE = "TOKEN_SEARCH_FAILURE"
+    ERR_CODE = "SCHEMA_SEARCH_FAILURE"
     MSG = "Search method failed."
     
     def __init__(

@@ -1,7 +1,7 @@
-# src/logic/token/database/search/route/router.py
+# src/logic/schema/database/search/route/router.py
 
 """
-Module: logic.token.database.search.route.router
+Module: logic.schema.database.search.route.router
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -14,19 +14,19 @@ from logic.coord import Coord
 from logic.rank import Rank
 from logic.team import Team
 from logic.system import GameColor, LoggingLevelRouter, SearchResult, SearchRouter
-from logic.token import MissingTokenSearchRouteException, Token, TokenQuery, TokenQueryValidator, TokenSearchException
+from logic.schema import MissingSchemaSearchRouteException, Schema, SchemaQuery, SchemaQueryValidator, SchemaSearchException
 
 
-class TokenSearchRouter(SearchRouter[Token]):
+class SchemaSearchRouter(SearchRouter[Schema]):
     """
     Role:SearchRouter
 
     Responsibilities:
-    1.  Send bag in a TokenList whose attribute value match the context.key value to the caller.
+    1.  Send bag in a SchemaList whose attribute value match the context.key value to the caller.
     2.  If a search does not complete forward the exception chain to the caller for debugging.
     
     # LIMITATIONS:
-    1.  TokenSearchRouter sends the raw list of matches. Resolving id collisions is the caller's responsibility.
+    1.  SchemaSearchRouter sends the raw list of matches. Resolving id collisions is the caller's responsibility.
 
     # PARENT
         *   SearchRouter
@@ -41,11 +41,11 @@ class TokenSearchRouter(SearchRouter[Token]):
     @LoggingLevelRouter.monitor
     def route(
             cls,
-            query: TokenQuery,
-            query_validator:TokenQueryValidator = TokenQueryValidator(),
-    ) -> SearchResult[List[Token]]:
+            query: SchemaQuery,
+            query_validator:SchemaQueryValidator = SchemaQueryValidator(),
+    ) -> SearchResult[List[Schema]]:
         """
-        Find tokens whith an attribute that fits the context.
+        Find schemas whith an attribute that fits the context.
         
         Action:
             1.  Send an exception chain in the SearchResult if either:
@@ -53,301 +53,105 @@ class TokenSearchRouter(SearchRouter[Token]):
                     -   There is no search logic for the context
             2.  Otherwise, send the success result.
         Args:
-            query: TokenQuery,
-            query_validator: TokenQueryValidator,
+            query: SchemaQuery,
+            query_validator: SchemaQueryValidator,
         Returns:
-            SearchResult[List[Token]]
+            SearchResult[List[Schema]]
         Raises:
-            TokenSearchException
-            MissingTokenSearchRouteException
+            SchemaSearchException
+            MissingSchemaSearchRouteException
         """
         method = f"{cls.__name__}.route"
 
-        # Handle the case that, the context does not pass a test.
-        validation_result = query_validator.validate(query)
-        if validation_result.is_failure:
+        # Handle the case that, the query is not certified as safe.
+        query_validation_result = query_validator.validate(query)
+        if query_validation_result.is_failure:
             # Send the exception chain on failure.
             return SearchResult.failure(
-                TokenSearchException(
+                SchemaSearchException(
                     mthd=method,
                     title=cls.__name__,
-                    op=TokenSearchException.OP,
-                    msg=TokenSearchException.MSG,
-                    err_code=TokenSearchException.ERR_CODE,
-                    rslt_type=TokenSearchException.RSLT_TYPE,
-                    ex=validation_result.exception
+                    op=SchemaSearchException.OP,
+                    msg=SchemaSearchException.MSG,
+                    err_code=SchemaSearchException.ERR_CODE,
+                    rslt_type=SchemaSearchException.RSLT_TYPE,
+                    ex=query_validation_result.exception
                 )
             )
     # --- Route to the search method which matches the context key. ---#
         
-        # token.id search entry point.
-        if query.context.id is not None:
-            return cls._find_by_id(
-                stack=query.stack,
-                id=query.context.id
+        # schema.name search entry point.
+        if query.context.name is not None:
+            return cls._find_by_name(
+                catalog=query.catalog,
+                name=query.context.name,
             )
-        # token.designation search entry point
-        if query.context.designation is not None:
-            return cls._find_by_designation(
-                dataset=query.stack,
-                stack=query.context.designation
+        # schema.color search entry point
+        if query.context.color is not None:
+            return cls._find_by_name(
+                catalog=query.catalog,
+                color=query.context.name,
             )
-        # token.opening_square_name search entry point.
-        if query.context.opening_square_name is not None:
-            return cls._find_by_opening_square_name(
-                stack=query.stack,
-                name=query.context.opening_square_name
-            )
-        # token.team search entry point.
-        if query.context.team is not None:
-            return cls._find_by_team(
-                stack=query.stack,
-                team=query.context.team
-            )
-        # token.rank search entry point.
-        if query.context.rank is not None:
-            return cls._find_by_rank(
-                stack=query.stack,
-                team=query.context.rank
-            )
-        # token.ransom search entry point.
-        if query.context.ransom is not None:
-            return cls._find_by_ransom(
-                stack=query.stack,
-                ransom=query.context.ransom
-            )
-        # token.color search entry point.
-        if query.context.ransom is not None:
-            return cls._find_by_color(
-                stack=query.stack,
-                ransom=query.context.color
-            )
-        # token.current_position search entry point.
-        if query.context.ransom is not None:
-            return cls._find_by_current_position(
-                stack=query.stack,
-                ransom=query.context.current_position
-            )
+
         # Handle the case that, there is no search path for the context context..
         return SearchResult.failure(
-            TokenSearchException(
+            SchemaSearchException(
                 mthd=method,
                 title=cls.__name__,
-                op=TokenSearchException.OP,
-                msg=TokenSearchException.MSG,
-                err_code=TokenSearchException.ERR_CODE,
-                rslt_type=TokenSearchException.RSLT_TYPE,
-                ex=MissingTokenSearchRouteException(
-                    msg=MissingTokenSearchRouteException.MSG,
-                    err_code=MissingTokenSearchRouteException.ERR_CODE,
+                op=SchemaSearchException.OP,
+                msg=SchemaSearchException.MSG,
+                err_code=SchemaSearchException.ERR_CODE,
+                rslt_type=SchemaSearchException.RSLT_TYPE,
+                ex=MissingSchemaSearchRouteException(
+                    msg=MissingSchemaSearchRouteException.MSG,
+                    err_code=MissingSchemaSearchRouteException.ERR_CODE,
                 )
             )
         )
         
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_id(
+    def _find_by_name(
             cls,
-            stack: List[Token],
-            id: int
-    ) -> SearchResult[List[Token]]:
+            name: str,
+            catalog: Schema,
+    ) -> SearchResult[List[Schema]]:
         """
-        Search the schema by a token id
+        Search the schema by a schema id
         
-            1.  Get the Tokens with the desired id.
+            1.  Get the Schemas with the desired id.
         Args:
-            id: int
-            stack: List[Token]
+            name: str
+            catalog: List[Schema]
         Returns:
-            SearchResult[List[Token]]
+            SearchResult[List[Schema]]
         Raises:
         """
-        matches = [token for token in stack if token.id == id]
+        matches = [entry for entry in Schema if entry.name.upper() == name.upper()]
         # Handle the nothing found case.
         if len(matches) == 0:
             return SearchResult.empty()
         # Only other case
         return SearchResult.success(matches)
-
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def _find_by_designation(
-            cls,
-            dataset: List[Token],
-            designation: str
-    ) -> SearchResult[List[Token]]:
-        """
-        Search the schema by a token id
-        
-        Args:
-            designation: str
-            dataset: List[Token]
-        Returns:
-            SearchResult[List[Token]]
-        Raises
-        """
-        matches = [
-            token for token in dataset if
-                (token.designation.upper() == designation.upper())
-        ]
-        # Handle the nothing found case.
-        if len(matches) == 0:
-            return SearchResult.empty()
-        # Only other case
-        return SearchResult.success(payload=matches)
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def _find_by_opening_square_name(
-            cls,
-            stack: List[Token],
-            opening_square_name: str
-    ) -> SearchResult[List[Token]]:
-        """
-        Search the schema by a opening square's schema'
-
-        Args:
-            opening_square_name: str
-            stack: List[Token]
-        Returns:
-            SearchResult[List[Token]]
-        Raises
-        """
-        matches = [
-            token for token in stack if
-                (token.opening_square_name.upper() == opening_square_name.upper())
-        ]
-        # Handle the nothing found case.
-        if len(matches) == 0:
-            return SearchResult.empty()
-        # Only other case
-        return SearchResult.success(payload=matches)
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def _find_by_team(
-            cls,
-            stack: List[Token],
-            team: Team
-    ) -> SearchResult[List[Token]]:
-        """
-        Search the schema by a team.
-
-        Args:
-            team: Team
-            stack: List[Token]
-        Returns:
-            SearchResult[List[Token]]
-        Raises
-        """
-        matches = [
-            token for token in stack if token.team == team
-        ]
-        # Handle the nothing found case.
-        if len(matches) == 0:
-            return SearchResult.empty()
-        # Only other case
-        return SearchResult.success(payload=matches)
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def _find_by_rank(
-            cls,
-            stack: List[Token],
-            rank: Rank
-    ) -> SearchResult[List[Token]]:
-        """
-        Search the schema by a rank.
-
-        Args:
-            rank: Rank
-            stack: List[Token]
-        Returns:
-            SearchResult[List[Token]]
-        Raises
-        """
-        matches = [
-            token for token in stack if token.rank == rank
-        ]
-        # Handle the nothing found case.
-        if len(matches) == 0:
-            return SearchResult.empty()
-        # Only other case
-        return SearchResult.success(payload=matches)
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def _find_by_ransom(
-            cls,
-            dataset: List[Token],
-            ransom: int
-    ) -> SearchResult[List[Token]]:
-        """
-        Search the schema by a random.
-
-        Args:
-            ransom: int
-            dataset: List[Token]
-        Returns:
-            SearchResult[List[Token]]
-        Raises
-        """
-        matches = [
-            token for token in dataset if token.rank.persona.ransom == ransom
-        ]
-        # Handle the nothing found case.
-        if len(matches) == 0:
-            return SearchResult.empty()
-        # Only other case
-        return SearchResult.success(payload=matches)
     
     @classmethod
     @LoggingLevelRouter.monitor
     def _find_by_color(
             cls,
-            stack: List[Token],
-            color: GameColor
-    ) -> SearchResult[List[Token]]:
+            catalog: Schema,
+            color: GameColor,
+    ) -> SearchResult[List[Schema]]:
         """
-        Search the schema by a random.
+        Search the schema by color.
 
         Args:
             color: GameColor
-            stack: List[Token]
+            catalog: Schema
         Returns:
-            SearchResult[List[Token]]
+            SearchResult[List[Schema]]
         Raises
         """
-        matches = [
-            token for token in stack if token.team.schema.color == color
-        ]
-        # Handle the nothing found case.
-        if len(matches) == 0:
-            return SearchResult.empty()
-        # Only other case
-        return SearchResult.success(payload=matches)
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def _find_by_current_position(
-            cls,
-            stack: List[Token],
-            current_position: Coord
-    ) -> SearchResult[List[Token]]:
-        """
-        Search the schema by a random.
-
-        Args:
-            current_position: Coord
-            stack: List[Token]
-        Returns:
-            SearchResult[List[Token]]
-        Raises
-        """
-        matches = [
-            token for token in stack if token.current_position == current_position
-        ]
+        matches = [entry for entry in Schema if entry.color == color]
         # Handle the nothing found case.
         if len(matches) == 0:
             return SearchResult.empty()

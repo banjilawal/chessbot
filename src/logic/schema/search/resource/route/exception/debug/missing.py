@@ -1,6 +1,6 @@
-# src/logic/token/database/search/route/model/exception/debug/missing.py
+# src/logic/schema/database/search/route/model/exception/debug/missing.py
 """
-Module: logic.token.database.search.route.model.exception.debug.missing
+Module: logic.schema.database.search.route.model.exception.debug.missing
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -10,14 +10,14 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# MISSING_TOKEN_SEARCH_ROUTE_EXCEPTION #======================#
-    "MissingTokenSearchRouteException",
+    # ======================# MISSING_SCHEMA_SEARCH_ROUTE_EXCEPTION #======================#
+    "MissingSchemaSearchRouteException",
 ]
 
-from logic.token import TokenDebugException
+from logic.schema import SchemaDebugException
 
-# ======================# MISSING_TOKEN_SEARCH_ROUTE_EXCEPTION #======================#
-class MissingTokenSearchRouteException(TokenDebugException):
+# ======================# MISSING_SCHEMA_SEARCH_ROUTE_EXCEPTION #======================#
+class MissingSchemaSearchRouteException(SchemaDebugException):
     """
     Role:
         -   Error Variable Identifier
@@ -25,7 +25,7 @@ class MissingTokenSearchRouteException(TokenDebugException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that there was no search logic for a token attribute.
+        1.  Indicate that there was no search logic for a schema attribute.
 
     Attributes:
         var: Optional[str]
@@ -37,10 +37,10 @@ class MissingTokenSearchRouteException(TokenDebugException):
     Provides:
 
     Super Class:
-        TokenDebugException
+        SchemaDebugException
     """
-    ERR_CODE = "MISSING_TOKEN_SEARCH_ROUTE_EXCEPTION"
-    MSG = "There is no search logic for the token attribute."
+    ERR_CODE = "MISSING_SCHEMA_SEARCH_ROUTE_EXCEPTION"
+    MSG = "There is no search logic for the schema attribute."
     
     def __init__(
             self,

@@ -1,15 +1,15 @@
-# src/logic/token/database/search/route/model/exception/debug/__init__.py
+# src/logic/schema/database/search/route/model/exception/debug/__init__.py
 """
-Module: logic.token.database.search.route.model.exception.debug.__init__
+Module: logic.schema.database.search.route.model.exception.debug.__init__
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
 """
 
-# =========== TOKEN.DATABASE.SEARCH.ROUTE.MODEL.EXCEPTION.DEBUG PACKAGE CONTENTS ===========#
+# =========== SCHEMA.DATABASE.SEARCH.ROUTE.MODEL.EXCEPTION.DEBUG PACKAGE CONTENTS ===========#
 
 # Packages
 None
 
 # Modules
-from .missing import MissingTokenSearchRouteException
+from .missing import MissingSchemaSearchRouteException

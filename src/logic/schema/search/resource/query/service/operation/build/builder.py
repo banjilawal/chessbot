@@ -11,8 +11,7 @@ from __future__ import annotations
 
 from logic.system import Builder, LoggingLevelRouter, BuildResult
 from logic.schema import (
-    Schema, SchemaContext, SchemaContextValidator, SchemaQuery, SchemaQueryBuildException,
-    SchemaQueryIntegrityWorkers, SchemaValidator
+    Schema, SchemaContext, SchemaQuery, SchemaQueryBuildException, SchemaQueryIntegrityWorkers
 )
 
 
