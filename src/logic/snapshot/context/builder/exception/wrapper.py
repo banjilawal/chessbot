@@ -1,7 +1,7 @@
-# src/logic/snapshotContext/query/build/exception/validator.py
+# src/logic/snapshotContext/context/build/exception/validator.py
 
 """
-Module: logic.snapshotContext.query.build.exception.work
+Module: logic.snapshotContext.context.build.exception.work
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

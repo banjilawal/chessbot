@@ -277,7 +277,7 @@ class CartesianDistance(BaseModel):
 
 class CoordinateStack(BaseModel):
   """
-  An immutable stack for storing team_name ChessPiece's movement history.
+  An immutable schema for storing team_name ChessPiece's movement history.
   """
   _stack: List[Coordinate] = Field(default_factory=list)
 

@@ -1,7 +1,7 @@
-# src/logic/team/query/service/exception.py
+# src/logic/team/context/service/exception.py
 
 """
-Module: logic.team.query.service.exception
+Module: logic.team.context.service.exception
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0

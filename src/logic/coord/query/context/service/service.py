@@ -1,7 +1,7 @@
-# src/logic/coord/query/context/service/microservice.py
+# src/logic/coord/context/context/service/microservice.py
 
 """
-Module: logic.coord.query.context.service.service
+Module: logic.coord.context.context.service.service
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -31,7 +31,7 @@ class CoordContextService(IntegrityMicroservice[CoordContext]):
         SERVICE_NAME: CoordContextService
 
         id: int
-        stack: str
+        schema: str
         ops_controller: CoordContextContextOpsController
 
     Provides:

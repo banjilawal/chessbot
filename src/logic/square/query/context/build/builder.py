@@ -1,7 +1,7 @@
-# src/logic/square/query/context/build/exception.py
+# src/logic/square/context/context/build/exception.py
 
 """
-Module: logic.square.query.context.build.build
+Module: logic.square.context.context.build.build
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
@@ -45,7 +45,7 @@ class SquareContextBuilder(Builder[SquareContext]):
         *   build(
                 cls,
                 id: Optional[int] = None,
-                stack: Optional[str] = None,
+                schema: Optional[str] = None,
                 coord: Optional[Coord] = None,
                 board: Optional[Board] = None,
                 token: Optional[Token] = None,
@@ -80,13 +80,13 @@ class SquareContextBuilder(Builder[SquareContext]):
                     *   A null check.
                     *   A type check.
                 Send an exception chain in the ValidationResult. Else, cast candidate to SquareContext
-                instance query.
+                instance context.
             2.  Send an exception chain in the BuildResult if either
                     *   One and only one of attributes is not null.
                     *   There is no build route for the enabled option.
                     *   The enabled attribute does not pass a validation check. by its service.
                 are does not pass a validation check. by their services.
-            3.  Build the appropriate query, sed the build success result.
+            3.  Build the appropriate context, sed the build success result.
             
         Args:
             id: Optional[int]
@@ -153,7 +153,7 @@ class SquareContextBuilder(Builder[SquareContext]):
             # On validation success return an id_SquareContext in the BuildResult.
             return BuildResult.success(SquareContext(id=id))
         
-        # Build the stack SquareContext if its flag is enabled.
+        # Build the schema SquareContext if its flag is enabled.
         if name is not None:
             validation = identity_service.validate_name(candidate=name)
             if validation.is_failure:
@@ -209,7 +209,7 @@ class SquareContextBuilder(Builder[SquareContext]):
             # On validation success return a state_SquareContext in the BuildResult.
             return BuildResult.success(SquareContext(state=state))
         
-        # Return the exception chain if there is no build route for the query.
+        # Return the exception chain if there is no build route for the context.
         return BuildResult.failure(
             SquareContextBuildException(
                 msg=f"{method}: {SquareContextBuildException.MSG}",

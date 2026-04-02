@@ -1,7 +1,7 @@
-# src/logic/pair/stack/stack.py
+# src/logic/pair/schema/schema.py
 
 """
-Module: logic.pair.stack.stack
+Module: logic.pair.schema.schema
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -26,7 +26,7 @@ class PairStack(StackService[Pair]):
     Responsibilities:
     1.  Public facing API.
     2.  Microservice for managing Pair objects and their lifecycles.
-    3.  Ensure integrity of Pair data stack
+    3.  Ensure integrity of Pair data schema
     4.  Stack data structure for Pair objects with no guarantee of uniqueness.
     
     Super Class:
@@ -56,7 +56,7 @@ class PairStack(StackService[Pair]):
             Constructor
         # PARAMETERS:
             *   id (int)
-            *   stack (str)
+            *   schema (str)
             *   service (PairService)
             *   context_service (PairContextService)
         # RETURNS:
@@ -162,7 +162,7 @@ class PairStack(StackService[Pair]):
                     )
                 )
             )
-        # --- Capacity, collision and opening check are completed. Push the pair onto the stack ---#
+        # --- Capacity, collision and opening check are completed. Push the pair onto the schema ---#
         self._stack.append(item)
         
         # --- Perform cleanup and integrity maintenance tasks. ---#
@@ -176,8 +176,8 @@ class PairStack(StackService[Pair]):
     def pop(self) -> DeletionResult[Pair]:
         """
         # ACTION:
-            1.  If the stack is empty send an exception in the DeletionResult. Else remove the
-                pair at the top of the stack and send in the DeletionResult
+            1.  If the schema is empty send an exception in the DeletionResult. Else remove the
+                pair at the top of the schema and send in the DeletionResult
         # PARAMETERS:
                     *   None
         # RETURNS:
@@ -190,7 +190,7 @@ class PairStack(StackService[Pair]):
         """
         method = "PairStack.pop"
         
-        # Handle the case that, there are no pairs in the stack.
+        # Handle the case that, there are no pairs in the schema.
         if self.is_empty:
             # Return the exception chain on failure.
             return DeletionResult.failure(
@@ -204,7 +204,7 @@ class PairStack(StackService[Pair]):
                     )
                 )
             )
-        # --- Pop the non-empty pair stack. ---#
+        # --- Pop the non-empty pair schema. ---#
         pair = self._stack.pop(-1)
         # --- Perform cleanup and integrity maintenance tasks. ---#
         if self.is_empty:
@@ -271,7 +271,7 @@ class PairStack(StackService[Pair]):
         target = None
         for pair in self._stack:
             if pair.id == id:
-                # Record a hit before pulling it from the stack.
+                # Record a hit before pulling it from the schema.
                 target = pair
                 self._stack.remove(pair)
         # --- Perform cleanup and integrity maintenance tasks after the purging loop finishes. ---#
@@ -289,13 +289,13 @@ class PairStack(StackService[Pair]):
     def query(self, context: PairContext) -> SearchResult[List[Pair]]:
         """
         # ACTION:
-            1.  Pass the query param to context_service manages all error handling and operations in
+            1.  Pass the context param to context_service manages all error handling and operations in
                 search lifecycle.
             2.  Any failures context_service will be encapsulated inside a PairStackException which is
                 sent inside a SearchResult.
             3.  If the search completes successfully return the result directly because its a SearchResult instance.
         # PARAMETERS:
-            *   query (PairContext)
+            *   context (PairContext)
         # RETURN:
             *   SearchResult[List[Pair]] containing either:
                     - On failure: An exception.
@@ -304,7 +304,7 @@ class PairStack(StackService[Pair]):
         Raises:
             *   PairStackException
         """
-        method = "PairStack.query"
+        method = "PairStack.context"
         
         # --- Handoff the search responsibility to _context_service. ---#
         query_result = self._context_service.finder.route(dataset=self._stack, context=context)

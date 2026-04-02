@@ -1,7 +1,7 @@
-# src/logic/pair/stack/exception/query/exist.py
+# src/logic/pair/schema/exception/context/exist.py
 
 """
-Module: logic.pair.stack.exception.query.exist
+Module: logic.pair.schema.exception.context.exist
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

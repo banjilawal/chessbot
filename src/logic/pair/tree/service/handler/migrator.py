@@ -1,7 +1,7 @@
-# src/logic/pair/tree/service/operation/stack.py
+# src/logic/pair/tree/service/operation/schema.py
 
 """
-Module: logic.pair.tree.service.operation.stack
+Module: logic.pair.tree.service.operation.schema
 Author: Banji Lawal
 Created: 2026-03-12
 version: 1.0.0

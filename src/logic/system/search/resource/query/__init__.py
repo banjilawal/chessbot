@@ -1,7 +1,7 @@
-# src/logic/system/search/resource/query/stack.py
+# src/logic/system/search/resource/context/schema.py
 
 """
-Module: logic.system.search.resource.query.stack
+Module: logic.system.search.resource.context.schema
 Author: Banji Lawal
 Created: 2026-04-01
 Version: 1.0.0

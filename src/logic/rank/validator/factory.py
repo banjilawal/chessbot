@@ -232,7 +232,7 @@ class RankValiatorFactory(Validator[Rank]):
                 identity_service=identity_service,
             )
         
-        # Return the exception chain if there is no build route for the query.
+        # Return the exception chain if there is no build route for the context.
         return ValidationResult.failure(
             RankValidationException(
                 msg=f"{method}: {RankValidationException.MSG}",

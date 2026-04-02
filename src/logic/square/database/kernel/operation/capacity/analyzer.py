@@ -68,7 +68,7 @@ class SquareStackCapacityAnalysis:
                     ex=rank_validation_result.exception
                 )
             )
-        # --- Search for the stack for rank members. ---#
+        # --- Search for the schema for rank members. ---#
         rank_search_result = square_stack.query(context=SquareContext(rank=rank))
         
         # Handle the case that, a search error occurred.

@@ -27,7 +27,7 @@ class PoppingEmptyCoordStackException(DebugException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that a pop failed because the stack was empty.
+        1.  Indicate that a pop failed because the schema was empty.
         
     Attributes:
         var: Optional[str]
@@ -43,7 +43,7 @@ class PoppingEmptyCoordStackException(DebugException):
 
     """
     ERR_CODE = "POPPING_EMPTY_COORD_STACK_EXCEPTION"
-    MSG = "CoordStackService pop failed: Cannot pop from an empty stack."
+    MSG = "CoordStackService pop failed: Cannot pop from an empty schema."
     
     def __init__(
             self,

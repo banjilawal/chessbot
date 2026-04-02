@@ -1,7 +1,7 @@
-# src/logic/rank/query/exception/debug.py
+# src/logic/rank/context/exception/debug.py
 
 """
-Module: logic.rank.query.exception.debug
+Module: logic.rank.context.exception.debug
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

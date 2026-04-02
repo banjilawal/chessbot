@@ -1,7 +1,7 @@
-# src/logic/token/database/search/token/model/exception/debug/__init__.py
+# src/logic/token/database/search/token/model/exception/queryDebug/__init__.py
 
 """
-Module: logic.token.database.search.token.model.exception.debug.__init__
+Module: logic.token.database.search.token.model.exception.queryDebug.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -11,22 +11,22 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# TOKEN_TOKEN_DEBUG_EXCEPTION #======================#
-    "TokenTokenDebugException",
+    # ======================# TOKEN_QUERY_DEBUG_EXCEPTION #======================#
+    "TokenQueryDebugException",
 ]
 
-from logic.system import DebugException
+from logic.system import QueryDebugException
 
-# ======================# TOKEN_TOKEN_DEBUG_EXCEPTION #======================#
-class TokenTokenDebugException(DebugException):
+# ======================# TOKEN_QUERY_DEBUG_EXCEPTION #======================#
+class TokenQueryDebugException(QueryDebugException):
     """
     Role:
         -   Exception Chain Layer 2
         -   Error Variable Identifier
-        -   Debugging Metadata provider
+        -   QueryDebugging Metadata provider
 
     Responsibilities:
-        1.  Record the condition that fired a TokenToken variable's error state.
+        1.  Record the condition that fired a Token variable's error state.
 
     Attributes:
         var: Optional[str]
@@ -38,10 +38,10 @@ class TokenTokenDebugException(DebugException):
     Provides:
 
     Super Class:
-        DebugException
+        QueryDebugException
     """
-    ERR_CODE = "TOKEN_TOKEN_EXCEPTION"
-    MSG = str = "TokenToken had an error."
+    ERR_CODE = "TOKEN_QUERY_DEBUG_EXCEPTION"
+    MSG = str = "Token had an error."
     
     def __init__(
             self,

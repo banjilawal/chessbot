@@ -46,7 +46,7 @@ class PersonaKeyService(QueryService[PersonaKey]):
             Constructor
         # PARAMETERS:
             *   id (nt)
-            *   stack (str)
+            *   schema (str)
             *   build (PersonaKeyBuilder)
             *   validation (PersonaKeyValidator)
         # RETURNS:

@@ -1,7 +1,7 @@
-# src/logic/system/search/resource/query/concrete/__init__.py
+# src/logic/system/search/resource/context/concrete/__init__.py
 
 """
-Module: logic.system.search.resource.query.concrete.__init__
+Module: logic.system.search.resource.context.concrete.__init__
 Author: Banji Lawal
 Created: 2026-04-01
 Version: 1.0.0

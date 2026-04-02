@@ -58,7 +58,7 @@ class PersonaService(HashService[Persona]):
             Constructor
         # PARAMETERS:
             *   id (int)
-            *   stack (str)
+            *   schema (str)
             *   validation (PersonaValidator)
             *   super_key_service (PersonaKeyService)
         # RETURNS:

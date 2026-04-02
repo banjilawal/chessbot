@@ -52,7 +52,7 @@ class NodeService(IntegrityMicroservice[Node]):
             Constructor
         # PARAMETERS:
             *   id (nt)
-            *   stack (str)
+            *   schema (str)
             *   build (NodeFactory)
             *   validation (NodeValidator)
         # RETURNS:
@@ -76,7 +76,7 @@ class NodeService(IntegrityMicroservice[Node]):
         # ACTION:
             1.  If either the node or edge are does not pass a validation check. send an exception chain in the InsertionResult.
             2.  If the node is not the edge's tail send an exception chain in the InsertionResult.
-            3.  Let the node's incoming_edges stack exception the addition.
+            3.  Let the node's incoming_edges schema exception the addition.
             4.  If  node.incoming_edges.push fails encapsulate its exception inside a NodeServiceException which is
                 sent in the InsertionResult. Else, send the success result.
         # PARAMETERS:
@@ -136,7 +136,7 @@ class NodeService(IntegrityMicroservice[Node]):
         # --- After the validation checks are passed exception the edge insertion. ---#
         edge_insertion_result = node.incoming_edges.push(edge)
         
-        # Most likely cause of insertion failure is the edge already exists in the stack.
+        # Most likely cause of insertion failure is the edge already exists in the schema.
         if edge_insertion_result.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -157,7 +157,7 @@ class NodeService(IntegrityMicroservice[Node]):
         # ACTION:
             1.  If either the node or edge are does not pass a validation check. send an exception chain in the InsertionResult.
             2.  If the node is not the edge's tail send an exception chain in the InsertionResult.
-            3.  Let the node's incoming_edges stack exception the addition.
+            3.  Let the node's incoming_edges schema exception the addition.
             4.  If  node.incoming_edges.push fails encapsulate its exception inside a NodeServiceException which is
                 sent in the InsertionResult. Else, send the success result.
         # PARAMETERS:
@@ -217,7 +217,7 @@ class NodeService(IntegrityMicroservice[Node]):
         # --- After the validation checks are passed exception the edge insertion. ---#
         edge_insertion_result = node.incoming_edges.push(edge)
         
-        # Most likely cause of insertion failure is the edge already exists in the stack.
+        # Most likely cause of insertion failure is the edge already exists in the schema.
         if edge_insertion_result.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -238,7 +238,7 @@ class NodeService(IntegrityMicroservice[Node]):
         # ACTION:
             1.  If either the node or edge are does not pass a validation check. send an exception chain in the DeletionResult.
             2.  If the node is not the edge's tail send an exception chain in the DeletionResult.
-            3.  Let the node's incoming_edges stack exception the removal.
+            3.  Let the node's incoming_edges schema exception the removal.
             4.  If  node.incoming_edges.pop fails encapsulate its exception inside a NodeServiceException which is
                 sent in the InsertionResult. Else, send the success result.
         # PARAMETERS:
@@ -303,7 +303,7 @@ class NodeService(IntegrityMicroservice[Node]):
         # ACTION:
             1.  If either the node or edge are does not pass a validation check. send an exception chain in the InsertionResult.
             2.  If the node is not the edge's tail send an exception chain in the InsertionResult.
-            3.  Let the node's outgoing_edges stack exception the addition.
+            3.  Let the node's outgoing_edges schema exception the addition.
             4.  If  node.outgoing_edges.push fails encapsulate its exception inside a NodeServiceException which is
                 sent in the InsertionResult. Else, send the success result.
         # PARAMETERS:
@@ -363,7 +363,7 @@ class NodeService(IntegrityMicroservice[Node]):
         # --- After the validation checks are passed exception the edge insertion. ---#
         edge_insertion_result = node.outgoing_edges.push(edge)
         
-        # Most likely cause of insertion failure is the edge already exists in the stack.
+        # Most likely cause of insertion failure is the edge already exists in the schema.
         if edge_insertion_result.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -385,7 +385,7 @@ def remove_outgoing_edge(self, node: Node, edge: Edge) -> DeletionResult[Edge]:
     # ACTION:
         1.  If either the node or edge are does not pass a validation check. send an exception chain in the DeletionResult.
         2.  If the node is not the edge's tail send an exception chain in the DeletionResult.
-        3.  Let the node's outgoing_edges stack exception the removal.
+        3.  Let the node's outgoing_edges schema exception the removal.
         4.  If  node.outgoing_edges.pop fails encapsulate its exception inside a NodeServiceException which is
             sent in the InsertionResult. Else, send the success result.
     # PARAMETERS:

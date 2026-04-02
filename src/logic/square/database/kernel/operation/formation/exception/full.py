@@ -26,7 +26,7 @@ class SquareStackFullException(DebugException):
         - Exception Messaging
 
     Responsibilities:
-        1.  Indicate that deploying a square to the stack failed because the stack was full.
+        1.  Indicate that deploying a square to the schema failed because the schema was full.
         
     Attributes:
         var: Optional[str]
@@ -41,7 +41,7 @@ class SquareStackFullException(DebugException):
         SquareDebugException
     """
     ERR_CODE = "SQUARE_STACK_FULL_EXCEPTION"
-    MSG = "Cannot deployment a square onto a full stack."
+    MSG = "Cannot deployment a square onto a full schema."
     
     def __init__(
             self,

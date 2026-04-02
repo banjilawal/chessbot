@@ -44,7 +44,7 @@ class Builder(ABC, Generic[T]):
    
         Build Worker Naming:
             -   Builders are a core workers in the system.
-            -   The least clunky and intuitive stack is <EntityName>Builder.
+            -   The least clunky and intuitive schema is <EntityName>Builder.
             -   Developers might assume other process exceptions are about the worker and use confusing naming
                 conventions for other processes and their exceptions.
             -   Despite the possible confusion <EntityName>Builder naming is worth the trade off.

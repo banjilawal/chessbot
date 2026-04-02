@@ -21,7 +21,7 @@ class PoppingEmptyBoardStackException(BoardException):
     Role:Debug, Error Tracing
 
     Responsibilities:
-    1.  Indicate that an attempt to remove a board failed because the stack was empty
+    1.  Indicate that an attempt to remove a board failed because the schema was empty
 
     Super Class:
         *   BoardException

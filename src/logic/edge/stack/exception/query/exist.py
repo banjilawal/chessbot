@@ -1,7 +1,7 @@
-# src/logic/edge/stack/exception/query/exist.py
+# src/logic/edge/schema/exception/context/exist.py
 
 """
-Module: logic.edge.stack.exception.query.exist
+Module: logic.edge.schema.exception.context.exist
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

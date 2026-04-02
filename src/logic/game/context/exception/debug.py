@@ -1,7 +1,7 @@
-# src/logic/game/query/exception/debug.py
+# src/logic/game/context/exception/debug.py
 
 """
-Module: logic.game.query.exception.debug
+Module: logic.game.context.exception.debug
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

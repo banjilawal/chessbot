@@ -1,7 +1,7 @@
-# src/logic/square/query/context/context/__init__.py
+# src/logic/square/context/context/context/__init__.py
 
 """
-Module: logic.square.query.context.context.__init__
+Module: logic.square.context.context.context.__init__
 Author: Banji Lawal
 Created: 2026-03-29
 version: 1.0.0

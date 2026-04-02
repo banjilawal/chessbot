@@ -151,7 +151,7 @@ class OpeningSquareDiscovery:
             )
         # --- Integrity and performance tests are passed. ---#
         
-        # Execute the square onto the stack
+        # Execute the square onto the schema
         square_stack.items.append(square)
         # Maintain state.
         if square_stack.is_full:

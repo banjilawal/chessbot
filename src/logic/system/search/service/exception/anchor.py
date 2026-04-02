@@ -1,7 +1,7 @@
 # src/logic/system/search/context/service/exception/super.py
 
 """
-Module: logic.system.search.query.service.exception.__init__
+Module: logic.system.search.context.service.exception.__init__
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0

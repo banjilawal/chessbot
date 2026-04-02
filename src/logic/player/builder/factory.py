@@ -57,7 +57,7 @@ class PlayerFactory(Builder[Player]):
 
         # PARAMETERS:
             *   id (int)
-            *   stack (str)
+            *   schema (str)
             *   player_variety (PlayerVariety)
             *   engine_service (Optional[EngineService])
 
@@ -110,7 +110,7 @@ class PlayerFactory(Builder[Player]):
 
         # PARAMETERS:
             *   id (int)
-            *   stack (str)
+            *   schema (str)
             *   identity_service (IdentityService)
 
         # RETURNS:
@@ -162,7 +162,7 @@ class PlayerFactory(Builder[Player]):
 
         # PARAMETERS:
             *   id (int)
-            *   stack (str)
+            *   schema (str)
             *   engine_service (EngineService)
             *   identity_service (IdentityService)
             *   engine_service_validator (EngineServiceValidator)

@@ -23,7 +23,7 @@ class TokenPushCoordProcess:
 
     Responsibilities:
         1.  Maintain the token's integrity and consistency when a coord is pushed
-            onto its positions stack.
+            onto its positions schema.
         2.  Enforce chess constraints on coord pushes.
 
     Attributes:
@@ -141,7 +141,7 @@ class TokenPushCoordProcess:
             )
         # --- Integrity tests are passed. Start the insertion tasks. ---#
         
-        # Copy the top of the stack.
+        # Copy the top of the schema.
         pre_insertion_top_coord = token.current_position
         # Run the insertion request.
         coord_insertion_result = token.positions.push(coord)

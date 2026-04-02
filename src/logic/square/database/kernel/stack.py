@@ -1,7 +1,7 @@
-# src/logic/square/database/kernel/stack.py
+# src/logic/square/database/kernel/schema.py
 
 """
-Module: logic.square.database.kernel.stack
+Module: logic.square.database.kernel.schema
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -27,7 +27,7 @@ class SquareStackService(StackService[Square]):
 
     Responsibilities:
     1.  Microservice for managing Square objects and their lifecycles.
-    2.  Guarantee all Square instances in stack are unique.
+    2.  Guarantee all Square instances in schema are unique.
 
     Super Class:
         *   StackService
@@ -37,7 +37,7 @@ class SquareStackService(StackService[Square]):
     Attributes:
             SERVICE_NAME: str
             capacity: int
-            stack: List[Square]
+            schema: List[Square]
             controller: SquareStackOpsController
             service: SquareService:
             context_service: SquareQueryService
@@ -48,7 +48,7 @@ class SquareStackService(StackService[Square]):
     Attributes:
         Local:
             *   id (int)
-            *   stack (str)
+            *   schema (str)
             *   capacity (int)
             *   controller (SquareStackOpsController)
             *   service (SquareService)
@@ -64,7 +64,7 @@ class SquareStackService(StackService[Square]):
     Methods:
     - pop(): Return DeletionResult[Square]
         *   push(item: Square) -> InsertionResult[bool]
-        *   query(query: SquareContext) -> SearchResult[List[Square]]
+        *   context(context: SquareContext) -> SearchResult[List[Square]]
         *   delete_by_id(id: int, identity_service: IdentityService) -> DeletionResult[Square]
 
     # INHERITED METHODS:
@@ -280,14 +280,14 @@ class SquareStackService(StackService[Square]):
     ) -> SearchResult[List[Square]]:
         """
         # ACTION:
-            1.  Pass the query param to context_service manages all error handling and operations in
+            1.  Pass the context param to context_service manages all error handling and operations in
                 search lifecycle.
             2.  Any failures context_service will be encapsulated inside a SquareCrudControllerException
                 which is sent inside a SearchResult.
             3.  If the search completes successfully the result can be sent directly because it will contain the
                 payload.
         # PARAMETERS:
-            *   query (SquareContext)
+            *   context (SquareContext)
         # RETURN:
             *   SearchResult[List[Square] containing either:
                     - On failure: An exception.
@@ -296,7 +296,7 @@ class SquareStackService(StackService[Square]):
         Raises:
             *   SquareCrudControllerException
         """
-        method = "SquareStackService.query"
+        method = "SquareStackService.context"
         
         # --- Handoff the search responsibility to _stack_service. ---#
         query_result = self._context_service.finder.route(

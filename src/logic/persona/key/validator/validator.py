@@ -114,7 +114,7 @@ class PersonaKeyValidator(Validator[PersonaKey]):
         
         # Route to the appropriate validation branch.
         
-        # Certification for the lookup-by-stack target.
+        # Certification for the lookup-by-schema target.
         if super_key.designation is not None:
             validation = identity_service.validate_name(candidate=super_key.designation)
             if validation.is_failure:
@@ -125,7 +125,7 @@ class PersonaKeyValidator(Validator[PersonaKey]):
                         ex=validation.exception
                     )
                 )
-            # On certification success return the battle_persona.stack in a ValidationResult.
+            # On certification success return the battle_persona.schema in a ValidationResult.
             return ValidationResult.success(super_key)
         
         # Certification for the lookup-by-designation target.

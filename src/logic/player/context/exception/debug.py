@@ -1,7 +1,7 @@
-# src/logic/player/query/exception/debug.py
+# src/logic/player/context/exception/debug.py
 
 """
-Module: logic.player.query.exception.debug
+Module: logic.player.context.exception.debug
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

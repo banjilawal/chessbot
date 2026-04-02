@@ -1,7 +1,7 @@
-# src/logic/edge/stack/exception/pop/validator.py
+# src/logic/edge/schema/exception/pop/validator.py
 
 """
-Module: logic.edge.stack.exception.pop.work
+Module: logic.edge.schema.exception.pop.work
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

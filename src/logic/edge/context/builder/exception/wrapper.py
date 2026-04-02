@@ -1,7 +1,7 @@
-# src/logic/edge/query/build/exception/validator.py
+# src/logic/edge/context/build/exception/validator.py
 
 """
-Module: logic.edge.query.build.exception.work
+Module: logic.edge.context.build.exception.work
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

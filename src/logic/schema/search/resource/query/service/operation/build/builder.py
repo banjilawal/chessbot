@@ -1,7 +1,7 @@
-# src/logic/schema/database/search/query/service/operation/build/builder.py
+# src/logic/schema/database/search/context/service/operation/build/builder.py
 
 """
-Module: logic.schema.database.search.query.service.operation.build.builder
+Module: logic.schema.database.search.context.service.operation.build.builder
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -11,9 +11,11 @@ from __future__ import annotations
 from typing import List
 
 
-from logic.system import BuildResult, Builder, LoggingLevelRouter, ValidationResult
+from logic.system import BuildResult, Builder, LoggingLevelRouter, BuildResult
 from logic.schema import (
-    Schema, SchemaContext, SchemaContextValidator, SchemaQueryBuildException, SchemaStackNullException, SchemaQuery,
+    Schema, SchemaContext, SchemaContextValidator, SchemaQuery, SchemaContextValidator, SchemaQueryBuildException,
+
+    SchemaQuery, SchemaValidator,
 )
 
 
@@ -22,107 +24,87 @@ class SchemaQueryBuilder(Builder[SchemaQuery]):
     Role
         -   Transaction Worker
         -   Integrity Maintenance
+        -   Consistency Assurance
         -   Process Runner
 
     Responsibilities:
-        1.  Validate inputs passed to a SchemaSearchRouter.
+        1.  SchemaQuery creation process owner.
+        2.  Ensure SchemaQuerry build resources meet satisfy contracts.
+        3.  Guarantee new instances comply with business logic at birth.
 
     Attributes:
 
     Provides:
-        -   validate(
-                    stack: List[Schema],
-                    context: SchemaContext,
-                    context_validator: SchemaContextValidator,
-            ) -> ValidationResult[int]
+        -   def build(
+                schema: Schema
+                context: SchemaContext
+                schema_validator: SchemaValidator
+                context_validator: SchemaContextValidator
+            ) -> BuildResult[SchemaContext]:
 
-    Super Class:
+     Super Class:
+         Builder
     """
     
     @classmethod
     @LoggingLevelRouter.monitor
     def build(
             cls,
-            stack: List[Schema],
+            schema: Schema,
             context: SchemaContext,
+            schema_validator: SchemaValidator = SchemaValidator(),
             context_validator: SchemaContextValidator = SchemaContextValidator(),
     ) -> BuildResult[SchemaQuery]:
         """
         Action:
-            1.  Send an exception chain in the ValidationResult if any of the following
+            1.  Send an exception chain in the BuildResult if any of the following
                 conditions occur:
-                    -   The context fails a safety check.
-                    -   The stack is null.
-                    -   The stack's type is not ist[Schema]
+                    -   The schema fails a safety check.
+                    -   The context fails a safety check
             2.  Otherwise, send the success result.
         Args:
-            stack: List[Schema]
+            schema: Schema
             context: SchemaContext
+            schema_validator: SchemaValidator
             context_validator: SchemaContextValidator
         Returns:
-            ValidationResult[int]
+            BuildResult[SchemaQuery]
         Raises:
             TypeError
             SchemaStackNullException
             SchemaQueryBuildException
         """
-        method = f"{cls.__name__}._validate"
+        method = f"{cls.__name__}.build"
+        
+        # Handle the case that, the schema is not certified as safe.
+        schema_validation_result = schema_validator.validate(schema)
+        if schema_validation_result.is_failure:
+            # Return the exception chain on failure.
+            return BuildResult.failure(
+                SchemaQueryBuildException(
+                    mthd=method,
+                    title=cls.__class__.__name__,
+                    op=SchemaQueryBuildException.OP,
+                    msg=SchemaQueryBuildException.MSG,
+                    err_code=SchemaQueryBuildException.ERR_CODE,
+                    ex=schema_validation_result.exception,
+                )
+            )
         
         # Handle the case that, the context is not certified as safe.
-        validation_result = context_validator.validate(context)
-        if validation_result.is_failure:
+        context_validation_result = context_validator.validate(context)
+        if context_validation_result.is_failure:
             # Return the exception chain on failure.
-            return ValidationResult.failure(
+            # Return the exception chain on failure.
+            return BuildResult.failure(
                 SchemaQueryBuildException(
                     mthd=method,
                     title=cls.__class__.__name__,
+                    op=SchemaQueryBuildException.OP,
                     msg=SchemaQueryBuildException.MSG,
                     err_code=SchemaQueryBuildException.ERR_CODE,
-                    ex=validation_result.exception,
-                )
-            )
-        # Handle the case that, the stack does not exist
-        if stack is None:
-            # Return the exception chain on failure.
-            return ValidationResult.failure(
-                SchemaQueryBuildException(
-                    mthd=method,
-                    title=cls.__class__.__name__,
-                    msg=SchemaQueryBuildException.MSG,
-                    err_code=SchemaQueryBuildException.ERR_CODE,
-                    ex=SchemaStackNullException(
-                        msg=SchemaStackNullException.MSG,
-                        err_code=SchemaStackNullException.ERR_CODE,
-                    )
-                )
-            )
-        # Handle the case that, the stack is the wrong type.
-        if not isinstance(stack, List):
-            # Return the exception chain on failure.
-            return ValidationResult.failure(
-                SchemaQueryBuildException(
-                    mthd=method,
-                    title=cls.__class__.__name__,
-                    msg=SchemaQueryBuildException.MSG,
-                    err_code=SchemaQueryBuildException.ERR_CODE,
-                    ex=TypeError(
-                        f"Expected List, got {type(stack).__name__} instead."
-                    )
-                )
-            )
-        # Handle the case that, the does not contain schemas.
-        if not isinstance(stack[0], Schema):
-            # Return the exception chain on failure.
-            return ValidationResult.failure(
-                SchemaQueryBuildException(
-                    mthd=method,
-                    title=cls.__class__.__name__,
-                    msg=SchemaQueryBuildException.MSG,
-                    err_code=SchemaQueryBuildException.ERR_CODE,
-                    ex=TypeError(
-                        f"List contains {type(stack).__name__}  instead of schemas."
-                    )
+                    ex=context_validation_result.exception,
                 )
             )
         # --- Forward the work product to the client. ---#
-        return BuildResult(SchemaQuery(stack=stack, context=context))
+        return BuildResult(SchemaQuery(catalog=schema, context=context))

@@ -1,7 +1,7 @@
 # src/logic/hostage/_context/build/exception/__init__.py
 
 """
-Module: logic.hostage.query.build.exception.__init__
+Module: logic.hostage.context.build.exception.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

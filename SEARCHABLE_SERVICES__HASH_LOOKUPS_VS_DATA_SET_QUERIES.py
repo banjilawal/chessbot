@@ -3,7 +3,7 @@
 ====== THE SEARCHABLE SERVICES FORWARD/REVERSE MAP LOOKUPS VS DATASET SEARCHES =======
 ======================================================================================
 The application has two types of searchable objects.
-    1.  DataServices -- contain a data stack.
+    1.  DataServices -- contain a data schema.
     2.  Metadata Tables -- static read-only hash table represented as an enum.
 
 Both searchables uses contexts to create a search attribute-value pair to find matches. DatasServices are

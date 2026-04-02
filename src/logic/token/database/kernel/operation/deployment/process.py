@@ -31,11 +31,11 @@ class TokenStackDeployment:
         
         Action:
             1.  Create a container for tokens that have been deployed.
-            2.  Process the stack's members in a loop.
+            2.  Process the schema's members in a loop.
             3.  If a token's deployment fails:
                     -   Undo all the previous deployments.
                     -   Send an exception chain the deletion result.
-            4.  Otherwise, empty the stack and send the success result.
+            4.  Otherwise, empty the schema and send the success result.
         Args:
             token_stack: TokenStack
         Returns:
@@ -63,7 +63,7 @@ class TokenStackDeployment:
                     )
                 )
             )
-        # --- Make a deep copy of the stack then deploy its members in a loop. ---#
+        # --- Make a deep copy of the schema then deploy its members in a loop. ---#
         pre_deployment_token_stack = deepcopy(token_stack)
         for token in token_stack.iterator:
             deployment_result = token_stack.integrity_service.controller.deployment.work(token)
@@ -83,7 +83,7 @@ class TokenStackDeployment:
                         ex=deployment_result.exception,
                     )
                 )
-        # --- Clean up and update the stack' state. ---#
+        # --- Clean up and update the schema' state. ---#
         token_stack.items.clear()
         token_stack.stack_state = TokenStackState.DEPLOYED_ON_BOARD
         

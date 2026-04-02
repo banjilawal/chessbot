@@ -26,7 +26,7 @@ class CommandNameNotFoundException(CommandDebugException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that the Command's stack is not found in the CommandTable.
+        1.  Indicate that the Command's schema is not found in the CommandTable.
 
     Attributes:
         var: Optional[str]

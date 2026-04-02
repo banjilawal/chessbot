@@ -41,7 +41,7 @@ class TokenStackAlreadyDeployedException(TokenDebugException):
         TokenDebugException
     """
     ERR_CODE = "TOKEN_STACK_ALREADY_DEPLOYED_EXCEPTION"
-    MSG = "The token stack has already been deployed."
+    MSG = "The token schema has already been deployed."
     
     def __init__(
             self,

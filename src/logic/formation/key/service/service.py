@@ -47,7 +47,7 @@ class FormationKeyService(QueryService[FormationKey]):
             Constructor
         # PARAMETERS:
             *   id (nt)
-            *   stack (str)
+            *   schema (str)
             *   build (FormationKeyBuilder)
             *   validation (FormationKeyValidator)
         # RETURNS:

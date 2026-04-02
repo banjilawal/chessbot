@@ -31,7 +31,7 @@ class Database(Microservice, Generic[T]):
 
     Attributes:
         id: int
-        stack: str
+        schema: str
 
     Provides:
         -   size() -> int
@@ -40,7 +40,7 @@ class Database(Microservice, Generic[T]):
         -   iterator(self) -> iter
         -   insert(item: T) -> InsertionResult
         -   delete_by_id(id: int) -> DeletionResult[T]
-        -   search(self, query: Context[T]) -> SearchResult[List[T]]
+        -   search(self, context: Context[T]) -> SearchResult[List[T]]
 
     Super:
         Microservice

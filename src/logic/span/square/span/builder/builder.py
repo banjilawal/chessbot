@@ -204,7 +204,7 @@ class SquareSpanBuilder(Builder[SquareSpan]):
         method = f"{cls.__class__.__name__}.square_from_coord"
         
         search_result = square_stack.query(context=SquareContext(coord=coord))
-        # Handle the case that the query is not completed.
+        # Handle the case that the context is not completed.
         if search_result.is_failure:
             # Return the exception chain on failure.
             SearchResult.failure(

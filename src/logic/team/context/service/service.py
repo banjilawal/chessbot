@@ -48,7 +48,7 @@ class TeamQueryService(QueryService[TeamContext]):
         Constructor
 
         # PARAMETERS:
-            *   stack (str): Default value - SERVICE_NAME
+            *   schema (str): Default value - SERVICE_NAME
             *   id (int): Default value - id_emitter.service_id
             *   route (TeamFinder): Default value - TeamFinder()
             *   build (TeamContextBuilder): Default value - TeamContextBuilder()

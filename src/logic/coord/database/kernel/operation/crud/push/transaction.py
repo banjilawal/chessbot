@@ -80,7 +80,7 @@ class CoordStackPush:
                     ex=validation_result.exception
                 )
             )
-        # Handle the case that, the coord is already on top of the stack.
+        # Handle the case that, the coord is already on top of the schema.
         if coord == coord_stack.current_item:
             # Return the exception chain on failure
             return InsertionResult.failure(
@@ -97,7 +97,7 @@ class CoordStackPush:
                     )
                 )
             )
-        # --- Push the coord onto the stack, then send the work product.---#
+        # --- Push the coord onto the schema, then send the work product.---#
         coord_stack.items.append(coord)
         return InsertionResult.success()
 

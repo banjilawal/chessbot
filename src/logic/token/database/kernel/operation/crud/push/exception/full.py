@@ -26,7 +26,7 @@ class TokenStackFullException(DebugException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that pushing a token to the stack failed because the stack was full.
+        1.  Indicate that pushing a token to the schema failed because the schema was full.
         
     Attributes:
         var: Optional[str]
@@ -41,7 +41,7 @@ class TokenStackFullException(DebugException):
         TokenDebugException
     """
     ERR_CODE = "TOKEN_STACK_FULL_EXCEPTION"
-    MSG = "Cannot push a token onto a full stack."
+    MSG = "Cannot push a token onto a full schema."
     
     def __init__(
             self,

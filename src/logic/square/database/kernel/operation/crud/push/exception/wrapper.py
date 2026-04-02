@@ -26,7 +26,7 @@ class SquareStackPushException(InsertionException):
         - Exception Messaging
 
     Responsibilities:
-        1.  Indicate that pushing a square to the stack failed because the stack was full.
+        1.  Indicate that pushing a square to the schema failed because the schema was full.
 
     Attributes:
         var: Optional[str]
@@ -47,7 +47,7 @@ class SquareStackPushException(InsertionException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that pushing a square on to the stack failed.
+        1.  Indicate that pushing a square on to the schema failed.
         2.  Identify the SquareStackService method where the failure occurred.
         
 

@@ -1,7 +1,7 @@
-# src/logic/game/query/validation/exception/debug/null.py
+# src/logic/game/context/validation/exception/debug/null.py
 
 """
-Module: logic.game.query.validation.exception.debug.null
+Module: logic.game.context.validation.exception.debug.null
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

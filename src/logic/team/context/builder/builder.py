@@ -1,7 +1,7 @@
-# src/logic/team/query/build/exception.py
+# src/logic/team/context/build/exception.py
 
 """
-Module: logic.team.query.build.build
+Module: logic.team.context.build.build
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
@@ -159,7 +159,7 @@ class TeamContextBuilder(Builder[TeamContext]):
             # On validation success return a color_TeamContext in the BuildResult.
             return BuildResult.success(payload=TeamContext(color=color))
         
-        # Return the exception chain if there is no build route for the query.
+        # Return the exception chain if there is no build route for the context.
         return BuildResult.failure(
             TeamContextBuildException(
                 msg=f"{method}: {TeamContextBuildException.ERR_CODE}",

@@ -57,7 +57,7 @@ class SchemaLookupProcess(HashLookupProcess[Schema]):
         Raises:
             *   SchemaLookupFailedException
         """
-        method = "SchemaLookupProcess.query"
+        method = "SchemaLookupProcess.context"
 
         # Handle the case that, the Key fails validation.
         validation = super_key_validator.validate(candidate=super_key)
@@ -70,7 +70,7 @@ class SchemaLookupProcess(HashLookupProcess[Schema]):
             )
         # After verification use the hash key to route to the appropriate lookup method.
         
-        # Entry point into forward lookups by stack.
+        # Entry point into forward lookups by schema.
         if super_key.designation is not None:
             return cls._query_by_name(name=super_key.designation)
         # Entry point into forward lookups by color.
@@ -90,7 +90,7 @@ class SchemaLookupProcess(HashLookupProcess[Schema]):
     def _query_by_name(cls, name: str) -> SearchResult[List[Schema]]:
         """
         # ACTION:
-            1.  Get any Schema entry whose stack matches the target value.
+            1.  Get any Schema entry whose schema matches the target value.
         # PARAMETERS:
             *   target (str)
         # RETURNS:

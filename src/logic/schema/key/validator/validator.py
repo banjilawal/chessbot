@@ -114,7 +114,7 @@ class SchemaKeyValidator(Validator[SchemaKey]):
         
         # Route to the appropriate validation branch.
         
-        # Certification for lookup-by-stack value.
+        # Certification for lookup-by-schema value.
         if super_key.designation is not None:
             validation = identity_service.validate_name(candidate=super_key.designation)
             # Return the exception chain on failure.

@@ -1,7 +1,7 @@
-# src/logic/square/query/context/build/exception/validator.py
+# src/logic/square/context/context/build/exception/validator.py
 
 """
-Module: logic.square.query.context.build.exception.work
+Module: logic.square.context.context.build.exception.work
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/logic/coord/query/service/validator.py
+# src/logic/coord/context/service/validator.py
 
 """
-Module: logic.coord.query.service.service
+Module: logic.coord.context.service.service
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
@@ -29,7 +29,7 @@ class CoordQueryService(QueryService[Coord]):
         context_service: IntegrityMicroservice[Context[T]]
 
     Provides:
-        -   execute(stack: List[T], query: Context[T]) -> SearchResult[List[T]]
+        -   execute(schema: List[T], context: Context[T]) -> SearchResult[List[T]]
 
     Super Class:
         Microservice
@@ -88,7 +88,7 @@ class CoordQueryService(QueryService[Coord]):
     @LoggingLevelRouter.monitor
     def query(self, dataset: List[Coord], context: CoordContext) -> SearchResult[List[Coord]]:
         """
-        Find coords whose attribute value fits the query.
+        Find coords whose attribute value fits the context.
 
         Action:
             Send an exception chain if the operation gets interrupted. Otherwise, send
@@ -101,7 +101,7 @@ class CoordQueryService(QueryService[Coord]):
         Raises:
             CoordQueryServiceException
         """
-        method = f"{self.__class__.__name__}.query"
+        method = f"{self.__class__.__name__}.context"
         
         param_validation_result = self._run_safety_checks(dataset=dataset, context=context)
         if param_validation_result.is_failure:
@@ -132,7 +132,7 @@ class CoordQueryService(QueryService[Coord]):
     ) -> SearchResult[List[Coord]]:
         method = f"{self.__class__.__name__}._run_safety_checks"
         
-        # Handle the case that, the query is incorrect
+        # Handle the case that, the context is incorrect
         context_validation_result = self._context_service.validator.search(context)
         if context_validation_result.is_failure:
             # Return the exception chain on failure.
@@ -145,7 +145,7 @@ class CoordQueryService(QueryService[Coord]):
                     ex=context_validation_result.exception,
                 )
             )
-        # Handle the case that, the stack does not exist
+        # Handle the case that, the schema does not exist
         if dataset is None:
             # Return the exception chain on failure.
             return SearchResult.failure(
@@ -160,7 +160,7 @@ class CoordQueryService(QueryService[Coord]):
                     )
                 )
             )
-        # Handle the case that, the stack is the wrong type.
+        # Handle the case that, the schema is the wrong type.
         if not isinstance(dataset, List):
             # Return the exception chain on failure.
             return SearchResult.failure(

@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .anchor import SchemaSchemaException
-from .debug import SchemaSchemaDebugException
+from .anchor import SchemaQueryException
+from .debug import SchemaQueryDebugException

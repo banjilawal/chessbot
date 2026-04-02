@@ -44,7 +44,7 @@ class SpanMicroservice(Microservice[CoordSpan]):
     
     CONSTRUCTOR PARAMETERS:
         *   id: int
-        *   stack: str
+        *   schema: str
         *   coord_service: CoordService
         *   vector_service: VectorService
     

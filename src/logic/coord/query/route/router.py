@@ -1,7 +1,7 @@
-# src/logic/query/coord/route/router.py
+# src/logic/context/coord/route/router.py
 
 """
-Module: logic.query.coord.route.router
+Module: logic.context.coord.route.router
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -22,7 +22,7 @@ class CoordSearchRouter(StackSearchRouter[Coord]):
     Role:SearchRouter
 
     Responsibilities:
-    1.  Send bag in a CoordList whose attribute value match the query.key value to the caller.
+    1.  Send bag in a CoordList whose attribute value match the context.key value to the caller.
     2.  If a search does not complete forward the exception chain to the caller for debugging.
 
     # LIMITATIONS:
@@ -49,13 +49,13 @@ class CoordSearchRouter(StackSearchRouter[Coord]):
         """
         # ACTION:
             1.  If the collider_candidates is null or the wrong type send the exception in the SearchResult.
-            2.  If the query fails validation send the exception in the SearchResult. Else, route to the
-                search method which matches the query key.
+            2.  If the context fails validation send the exception in the SearchResult. Else, route to the
+                search method which matches the context key.
             3.  The search method returns either an empty result or a list of coords. Any exceptions were caught earlier
                 by the search router.
        # PARAMETERS:
             *   collider_candidates (List[Coord]):
-            *   query: CoordContext
+            *   context: CoordContext
             *   context_validator: CoordContextValidator
         # RETURNS:
             *   SearchResult[List[Coord]] containing either:
@@ -87,7 +87,7 @@ class CoordSearchRouter(StackSearchRouter[Coord]):
                     ex=CoordSearchPayloadTypeException(f"{method}: {CoordSearchPayloadTypeException.MSG}")
                 )
             )
-        # handle the case that, query fails integrity tests.
+        # handle the case that, context fails integrity tests.
         context_validation = context_validator.search(context)
         if context_validation.is_failure:
             # Return the exception chain on failure.
@@ -97,7 +97,7 @@ class CoordSearchRouter(StackSearchRouter[Coord]):
                     ex=context_validation.exception
                 )
             )
-        # --- Route to the search method which matches the query key. ---#
+        # --- Route to the search method which matches the context key. ---#
         
         # Entry point into finding by coord's row.
         if context.row is not None and context.column is None:
@@ -109,7 +109,7 @@ class CoordSearchRouter(StackSearchRouter[Coord]):
         if context.column is not None and context.row is not None:
             return cls._find_by_row_and_column(dataset=dataset, row=context.row, column=context.column)
         
-        # If a query does not have a search route defined send an exception chain.
+        # If a context does not have a search route defined send an exception chain.
         return SearchResult.failure(
             CoordSearchException(
                 msg=f"{method}: {CoordSearchException.MSG}",

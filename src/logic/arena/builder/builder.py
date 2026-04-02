@@ -52,7 +52,7 @@ class ArenaBuilder(Builder[Arena]):
 
         # PARAMETERS:
             *   id (int)
-            *   stack (str)
+            *   schema (str)
             *   arena_variety (ArenaVariety)
             *   engine_service (Optional[EngineService])
 

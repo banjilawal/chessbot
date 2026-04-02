@@ -32,7 +32,7 @@ class SchemaService(HashService[Schema]):
             Constructor
         # PARAMETERS:
             *   id (int)
-            *   stack (str)
+            *   schema (str)
             *   validation (SchemaValidator)
             *   super_key_service (SchemaKeyService)
         # RETURNS:
@@ -63,7 +63,7 @@ class SchemaService(HashService[Schema]):
     
     @property
     def schema_names(self) -> List[str]:
-        """A Schema stack is the key to a metadata dictionary."""
+        """A Schema schema is the key to a metadata dictionary."""
         return [entry.name for entry in Schema]
     
     @property

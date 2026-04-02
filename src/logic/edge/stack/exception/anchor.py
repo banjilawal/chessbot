@@ -1,7 +1,7 @@
-# src/edge/exception/edge/stack/exception/anchor.py
+# src/edge/exception/edge/schema/exception/anchor.py
 
 """
-Module: logic.edge.stack.exception.anchor
+Module: logic.edge.schema.exception.anchor
 Author: Banji Lawal
 Created: 2025-02-18
 version: 1.0.0

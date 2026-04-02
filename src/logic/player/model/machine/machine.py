@@ -44,7 +44,7 @@ class MachinePlayer(Player):
             Constructor
         # PARAMETERS:
             *   id (nt)
-            *   stack (str)
+            *   schema (str)
             *   games (UniqueGameDataService)
             *   teams (TeamDatabase)
             *   engine_service (EngineService)

@@ -1,4 +1,4 @@
-# src/logic/token/qery/query/__init__.py
+# src/logic/token/qery/context/__init__.py
 
 """
 Module: logic.token.database.search.context.__init__

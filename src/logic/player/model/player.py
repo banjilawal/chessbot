@@ -53,7 +53,7 @@ class Player(ABC):
             Constructor
         # PARAMETERS:
             *   id (int)
-            *   stack (str)
+            *   schema (str)
             *   teams (TeamDatabase)
         # RETURNS:
             None

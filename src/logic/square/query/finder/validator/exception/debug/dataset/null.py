@@ -21,7 +21,7 @@ class SquareDataSourceNullException(SquareDebugException, SquareException):
     Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
-    1.  A failing SearchResult was returned because no collider_candidates was provided for the query.
+    1.  A failing SearchResult was returned because no collider_candidates was provided for the context.
 
     Super Class:
         *   SquareDebugException

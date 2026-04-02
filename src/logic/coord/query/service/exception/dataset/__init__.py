@@ -1,7 +1,7 @@
-# src/logic/coord/query/service/exception/stack/__init__.py
+# src/logic/coord/context/service/exception/schema/__init__.py
 
 """
-Module: logic.coord.query.service.exception.stack.__init__
+Module: logic.coord.context.service.exception.schema.__init__
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

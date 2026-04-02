@@ -35,7 +35,7 @@ class SquareService(IntegrityMicroservice[Square]):
         SERVICE_NAME = SquareService
         
         id: int
-        stack: str
+        schema: str
         controller: SquareBuilder
 
     Provides:

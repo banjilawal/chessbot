@@ -27,7 +27,7 @@ class SquareStackCapacityFullException(SquareDebugException):
         - Exception Messaging
 
     Responsibilities:
-        1.  Indicate that pushing a square to the stack failed because there were no
+        1.  Indicate that pushing a square to the schema failed because there were no
             openings for the square's rank.
         
     Attributes:

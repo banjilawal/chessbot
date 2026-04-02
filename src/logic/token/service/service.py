@@ -34,7 +34,7 @@ class TokenService(IntegrityMicroservice[Token]):
         SERVICE_NAME: TokenService
         
         id: int
-        stack: stack
+        schema: schema
         build: Tokenbuild
         validation: TokenValidator
         controller: TokenOpsController

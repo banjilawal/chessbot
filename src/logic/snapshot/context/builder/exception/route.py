@@ -1,7 +1,7 @@
 # src/logic/snapshot/_context/build/exception/route.py
 
 """
-Module: logic.snapshot.query.build.exception.route
+Module: logic.snapshot.context.build.exception.route
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

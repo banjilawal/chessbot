@@ -1,7 +1,7 @@
-# src/logic/coord/query/context/service/operation/validation/exception/debug/excess.py
+# src/logic/coord/context/context/service/operation/validation/exception/debug/excess.py
 
 """
-Module: logic.coord.query.context.service.operation.validation.exception.debug.excess
+Module: logic.coord.context.context.service.operation.validation.exception.debug.excess
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

@@ -52,7 +52,7 @@ class PlayerService(IntegrityMicroservice[Player]):
             Constructor
         # PARAMETERS:
             *   id (nt)
-            *   stack (str)
+            *   schema (str)
             *   build (PlayerFactory)
             *   validation (PlayerValidator)
         # RETURNS:
@@ -224,7 +224,7 @@ class PlayerService(IntegrityMicroservice[Player]):
                     )
                 )
             )
-        # If the team was successfully pushed onto the owner's team stack forward the insertion result.
+        # If the team was successfully pushed onto the owner's team schema forward the insertion result.
         return insertion_result
 
     

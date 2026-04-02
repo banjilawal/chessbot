@@ -27,7 +27,7 @@ class SchemaQueryStackEmptyException(DebugException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that the SchemaQuery validation failed because the stack is empty.
+        1.  Indicate that the SchemaQuery validation failed because the schema is empty.
         
     Attributes:
         var: Optional[str]
@@ -43,7 +43,7 @@ class SchemaQueryStackEmptyException(DebugException):
 
     """
     ERR_CODE = "SCHEMA_QUERY_STACK_EMPTY_EXCEPTION"
-    MSG = "SchemaQuery.stack cannot be empty."
+    MSG = "SchemaQuery.schema cannot be empty."
     
     def __init__(
             self,

@@ -1,7 +1,7 @@
 # src/logic/rank/_context/build/exception/route.py
 
 """
-Module: logic.rank.query.build.exception.route
+Module: logic.rank.context.build.exception.route
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

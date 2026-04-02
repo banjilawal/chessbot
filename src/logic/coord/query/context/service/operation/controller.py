@@ -1,7 +1,7 @@
-# src/logic/coord/query/context/service/operation/controller.py
+# src/logic/coord/context/context/service/operation/controller.py
 
 """
-Module: logic.coord.query.context.service.operation.controller
+Module: logic.coord.context.context.service.operation.controller
 Author: Banji Lawal
 Created: 2026-03-29
 version: 1.0.0

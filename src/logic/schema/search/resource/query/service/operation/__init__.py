@@ -1,7 +1,7 @@
-# src/logic/schema/database/search/query/service/operation/__init__.py
+# src/logic/schema/database/search/context/service/operation/__init__.py
 
 """
-Module: logic.schema.database.search.query.service.operation.__init__
+Module: logic.schema.database.search.context.service.operation.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -15,4 +15,4 @@ from .validation import *
 
 # Modules
 from .controller import SchemaQueryOpsController
-from .workers import SchemaContextIntegrityWorkers
+from .workers import SchemaQueryIntegrityWorkers

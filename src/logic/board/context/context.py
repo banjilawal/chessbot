@@ -1,7 +1,7 @@
-# src/logic/board/query/query.py
+# src/logic/board/context/context.py
 
 """
-Module: logic.board.query.query
+Module: logic.board.context.context
 Author: Banji Lawal
 Created: 2025-10-02
 version: 1.0.0

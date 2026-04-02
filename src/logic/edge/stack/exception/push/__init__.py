@@ -1,7 +1,7 @@
-# src/logic/edge/stack/exception/push/__init__.py
+# src/logic/edge/schema/exception/push/__init__.py
 
 """
-Module: logic.edge.stack.exception.push.__init__
+Module: logic.edge.schema.exception.push.__init__
 Author: Banji Lawal
 Created: 2026-02-18
 version: 1.0.0

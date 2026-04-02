@@ -1,7 +1,7 @@
-# src/logic/hostage/query/service/exception.py
+# src/logic/hostage/context/service/exception.py
 
 """
-Module: logic.hostage.query.service.exception
+Module: logic.hostage.context.service.exception
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

@@ -12,6 +12,7 @@ version: 1.0.0
 # Packages
 from .key import *
 from .validator import *
+from .search import *
 from .service import *
 from .exception import *
 

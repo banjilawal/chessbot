@@ -62,7 +62,7 @@ class SquareStackRosterHandler:
     ) -> UpdateResult[Team]:
         """
         # ACTION:
-            The stack is also updated but team is not tied to the stack. Its easier to verify and not
+            The schema is also updated but team is not tied to the schema. Its easier to verify and not
             used anymore.
             1.  If the team fails its validation checks send the exception chain and team back in the
                 UpdatedResult.
@@ -72,7 +72,7 @@ class SquareStackRosterHandler:
                     *   The deep copy can be sent back instead of doing an expensive rollback.
                     *   If the update succeeds the client can use the pre-deployment copy for
                         verifying correctness.
-            4.  Iterate through the squares in the stack and search the roster for tokens which open on the
+            4.  Iterate through the squares in the schema and search the roster for tokens which open on the
                 squares. If any search fails send the exception chain and the pre-deployment team back.
             5.  For each successful search, handoff the token to the integrity service. If any occupation
                 fails send the exception chain and the pre-deployment team back.

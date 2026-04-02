@@ -1,7 +1,7 @@
-# src/logic/token/database/search/query/service/operation/validation/validator.py
+# src/logic/token/database/search/context/service/operation/validation/validator.py
 
 """
-Module: logic.token.database.search.query.service.operation.validation.validator
+Module: logic.token.database.search.context.service.operation.validation.validator
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -55,8 +55,8 @@ class TokenQueryValidator(Validator[TokenQuery]):
                     -   The candidate is null
                     -   The candidate is not a TokenQuery
                     -   The context fails a safety check.
-                    -   The stack is null.
-                    -   The stack's type is not ist[Token]
+                    -   The schema is null.
+                    -   The schema's type is not ist[Token]
             2.  Otherwise, send the success result.
         Args:
             candidate: Any
@@ -122,7 +122,7 @@ class TokenQueryValidator(Validator[TokenQuery]):
                     ex=validation_result.exception
                 )
             )
-        # Handle the case that, the stack does not exist
+        # Handle the case that, the schema does not exist
         if query.stack is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -139,7 +139,7 @@ class TokenQueryValidator(Validator[TokenQuery]):
                     )
                 )
             )
-        # Handle the case that, the stack is the wrong type.
+        # Handle the case that, the schema is the wrong type.
         if not isinstance(query.stack, List):
             # Return the exception chain on failure.
             return ValidationResult.failure(

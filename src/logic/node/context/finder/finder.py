@@ -1,7 +1,7 @@
-# src/logic/node/query/route/route.py
+# src/logic/node/context/route/route.py
 
 """
-Module: logic.node.query.route.route
+Module: logic.node.context.route.route
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -23,7 +23,7 @@ class NodeFinder(StackSearchRouter[Node]):
     Role:SearchRouter
 
     Responsibilities:
-    1.  Send bag in a NodeList whose attribute value match the query.key value to the caller.
+    1.  Send bag in a NodeList whose attribute value match the context.key value to the caller.
     2.  If a search does not complete forward the exception chain to the caller for debugging.
 
     # LIMITATIONS:
@@ -50,13 +50,13 @@ class NodeFinder(StackSearchRouter[Node]):
         """
         # ACTION:
         1.  If the collider_candidates is null or the wrong type send the exception in the SearchResult.
-        2.  If the query fails validation send the exception in the SearchResult. Else, route to the
-            search method which matches the query key.
+        2.  If the context fails validation send the exception in the SearchResult. Else, route to the
+            search method which matches the context key.
         3.  The search method returns either an empty result or a list of nodes. Any exceptions were caught earlier
             by the search router.
        # PARAMETERS:
             *   collider_candidates (List[Node]):
-            *   query: NodeContext
+            *   context: NodeContext
             *   context_validator: NodeContextValidator
         # RETURNS:
             *   SearchResult[List[Node]] containing either:
@@ -92,7 +92,7 @@ class NodeFinder(StackSearchRouter[Node]):
                     )
                 )
             )
-        # Handle the case that, the query fails validation.
+        # Handle the case that, the context fails validation.
         validation_result = context_validator.validate(context)
         if validation_result.is_failure:
             # Return the exception chain on failure.
@@ -102,7 +102,7 @@ class NodeFinder(StackSearchRouter[Node]):
                     ex=validation_result.exception
                 )
             )
-        # --- Route to the search method which matches the query key. ---#
+        # --- Route to the search method which matches the context key. ---#
         
         # Entry point into finding by item's priority.
         if context.priority is not None:
@@ -117,7 +117,7 @@ class NodeFinder(StackSearchRouter[Node]):
         if context.discovery_status is not None:
             return cls._find_by_discovery_status(dataset=dataset, discovery_status=context.discovery_status)
         
-        # If a query does not have a search route defined send an exception chain.
+        # If a context does not have a search route defined send an exception chain.
         return SearchResult.failure(
             NodeSearchException(
                 msg=f"{method}: {NodeSearchException.ERR_CODE}",

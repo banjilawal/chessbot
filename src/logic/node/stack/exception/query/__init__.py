@@ -1,7 +1,7 @@
-# src/logic/node/stack/exception/query/__init__.py
+# src/logic/node/schema/exception/context/__init__.py
 
 """
-Module: logic.node.stack.exception.query.__init__
+Module: logic.node.schema.exception.context.__init__
 Author: Banji Lawal
 Created: 2026-02-18
 version: 1.0.0

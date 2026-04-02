@@ -1,7 +1,7 @@
-# src/logic/edge/stack/stack.py
+# src/logic/edge/schema/schema.py
 
 """
-Module: logic.edge.stack.stack
+Module: logic.edge.schema.schema
 Author: Banji Lawal
 Created: 2025-02-17
 version: 1.0.0
@@ -27,8 +27,8 @@ class EdgeStack(StackService[Edge]):
 
     Responsibilities:
     1.  Public facing API.
-    2.  Ensure integrity of Edge stack.
-    3.  Ensure uniqueness of edges in the stack.
+    2.  Ensure integrity of Edge schema.
+    3.  Ensure uniqueness of edges in the schema.
     4.  Interface for CRUD controller on Edge collections.
     5.  Microservice for managing integrity of Edge objects throughout their lifecycles
 
@@ -67,7 +67,7 @@ class EdgeStack(StackService[Edge]):
             Constructor
         # PARAMETERS:
             *   id (int)
-            *   stack (str)
+            *   schema (str)
             *   service (EdgeService)
             *   context_service (EdgeQueryService)
         # RETURNS:
@@ -104,8 +104,8 @@ class EdgeStack(StackService[Edge]):
     def push(self, item: Edge) -> InsertionResult:
         """
         # ACTION:
-            1.  If the item is not validated or, it already exists in the stack send an exception chain in the
-                InsertionResult. Else, append the edge to the stack and send the success result.
+            1.  If the item is not validated or, it already exists in the schema send an exception chain in the
+                InsertionResult. Else, append the edge to the schema and send the success result.
         # PARAMETERS:
             *   item (Edge)
         # RETURNS:
@@ -152,8 +152,8 @@ class EdgeStack(StackService[Edge]):
     def pop(self) -> DeletionResult[Edge]:
         """
         # ACTION:
-            1.  If the stack is empty send an exception in the DeletionResult. Else remove the
-                edge at the top of the stack and send in the DeletionResult
+            1.  If the schema is empty send an exception in the DeletionResult. Else remove the
+                edge at the top of the schema and send in the DeletionResult
         # PARAMETERS:
                     *   None
         # RETURNS:
@@ -167,7 +167,7 @@ class EdgeStack(StackService[Edge]):
         """
         method = "EdgeStack.pop"
         
-        # Handle the case that, there are no edges in the stack.
+        # Handle the case that, there are no edges in the schema.
         if self.is_empty:
             # Return the exception chain on failure.
             return DeletionResult.failure(
@@ -181,7 +181,7 @@ class EdgeStack(StackService[Edge]):
                     )
                 )
             )
-        # --- Remove the top edge in the stack and return in the DeletionResult. ---#
+        # --- Remove the top edge in the schema and return in the DeletionResult. ---#
         edge = self._stack.pop(-1)
         DeletionResult.success(edge)
     
@@ -243,7 +243,7 @@ class EdgeStack(StackService[Edge]):
         target = None
         for edge in self._stack:
             if edge.label == label:
-                # Record a hit before pulling it from the stack.
+                # Record a hit before pulling it from the schema.
                 target = edge
                 self._stack.remove(edge)
         # --- After the purging loop finished handle the possible return cases. ---#
@@ -258,12 +258,12 @@ class EdgeStack(StackService[Edge]):
     def query(self, context: EdgeContext) -> SearchResult[List[Edge]]:
         """
         # ACTION:
-            1.  Pass the query param to context_service manages all error handling and operations in search lifecycle.
+            1.  Pass the context param to context_service manages all error handling and operations in search lifecycle.
             2.  Any failures context_service will be encapsulated inside a EdgeStackException  which is sent inside a
                 SearchResult.
             3.  If the search completes successfully return the result directly because its a SearchResult instance.
         # PARAMETERS:
-            *   query (EdgeContext)
+            *   context (EdgeContext)
         # RETURN:
             *   SearchResult[List[Edge]] containing either:
                     - On failure: An exception.
@@ -272,7 +272,7 @@ class EdgeStack(StackService[Edge]):
         Raises:
             *   EdgeStackException
         """
-        method = "EdgeStack.query"
+        method = "EdgeStack.context"
         
         # --- Handoff the search responsibility to _context_service. ---#
         query_result = self._context_service.finder.route(dataset=self._stack, context=context)

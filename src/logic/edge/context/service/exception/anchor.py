@@ -1,7 +1,7 @@
-# src/logic/edge/query/service/exception/anchor.py
+# src/logic/edge/context/service/exception/anchor.py
 
 """
-Module: logic.edge.query.service.exception.anchor
+Module: logic.edge.context.service.exception.anchor
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

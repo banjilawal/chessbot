@@ -1,7 +1,7 @@
-# src/logic/coord/query/context/model/exception/anchor.py
+# src/logic/coord/context/context/model/exception/anchor.py
 
 """
-Module: logic.coord.query.context.model.exception.anchor
+Module: logic.coord.context.context.model.exception.anchor
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

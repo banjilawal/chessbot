@@ -1,7 +1,7 @@
-# src/logic/schema/database/search/query/service/operation/workers.py
+# src/logic/schema/database/search/context/service/operation/workers.py
 
 """
-Module: logic.schema.database.search.query.service.operation.workers
+Module: logic.schema.database.search.context.service.operation.workers
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -16,13 +16,13 @@ from logic.coord import CoordService
 from logic.square import SquareService
 from logic.system import GameColorValidator, IdentityService, NumberValidator
 
-class SchemaContextIntegrityWorkers:
+class SchemaQueryIntegrityWorkers:
     """
     Role:
         -   Container
 
     Responsibilities:
-        1.  Reduces the number params in SchemaContext Builder and Validator entry points.
+        1.  Reduces the number params in SchemaQuery Builder and Validator entry points.
 
     Attributes:
         team_service: TeamService

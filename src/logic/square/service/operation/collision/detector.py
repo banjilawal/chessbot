@@ -46,7 +46,7 @@ class SquareCollisionAnalysis(CollisionAnalysis[Square]):
             square_stack: SquareStackService,
     ) -> CollisionReport[Square]:
         """
-        Report if any stack member has the same id, stack or
+        Report if any schema member has the same id, schema or
         coord as the target.
         
         Action:
@@ -101,16 +101,16 @@ class SquareCollisionAnalysis(CollisionAnalysis[Square]):
                             err_code=SquareIdCollisionException.ERR_CODE
                     )
                 )
-            # Handle the case that, the target shares its stack with a collider_candidates member.
+            # Handle the case that, the target shares its schema with a collider_candidates member.
             if square.designation.upper() == target.name.upper():
                 # Return target, the collider, and the exception explaining the collision.
                 return CollisionReport.collision_occurred(
-                    var="stack",
+                    var="schema",
                     target=target,
                     collider=square,
                     val=f"{square.designation}",
                     exception=SquareNameCollisionException(
-                            var="stack",
+                            var="schema",
                             val=f"{square.designation}",
                             msg=SquareNameCollisionException.MSG,
                             err_code=SquareNameCollisionException.ERR_CODE,

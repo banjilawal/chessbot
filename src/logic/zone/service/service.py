@@ -29,7 +29,7 @@ class ZoneService(IntegrityMicroservice[Zone]):
         SERVICE_NAME: ZoneService
 
         id: int
-        stack: stack
+        schema: schema
         table: ZoneTable
         controller: ZoneOpsController
 

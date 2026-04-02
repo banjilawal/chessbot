@@ -1,7 +1,7 @@
-# src/logic/board/query/service/servicepy
+# src/logic/board/context/service/servicepy
 
 """
-Module: logic.board.query.service.service
+Module: logic.board.context.service.service
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
@@ -48,7 +48,7 @@ class BoardQueryService(QueryService[BoardContext]):
         # ACTION:
             Constructor
         # PARAMETERS:
-            *   stack (str)
+            *   schema (str)
             *   id (int)
             *   route (BoardFinder)
             *   build (BoardContextBuilder)

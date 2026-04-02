@@ -1,7 +1,7 @@
-# src/logic/snapshot/query/route/exception/debug/exist.py
+# src/logic/snapshot/context/route/exception/debug/exist.py
 
 """
-Module: logic.snapshot.query.route.exception.debug.exist
+Module: logic.snapshot.context.route.exception.debug.exist
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

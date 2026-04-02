@@ -1,7 +1,7 @@
-# src/logic/token/database/kernel/stack.py
+# src/logic/token/database/kernel/schema.py
 
 """
-Module: logic.token.database.kernel.stack
+Module: logic.token.database.kernel.schema
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -39,7 +39,7 @@ class TokenStackService(StackService[Token]):
         SERVICE_NAME = TokenStackService
  
         id: int
-        stack: str
+        schema: str
         size: int
         capacity: int
         items: List[Token]
@@ -58,7 +58,7 @@ class TokenStackService(StackService[Token]):
         -   is_ready_for_deployment() -> bool
         -   is_getting_ready_for_deployment() -> bool
         -   delete_by_id(id: int) -> DeletionResult[Token]
-        -   query(query: Context[Token]) -> SearchResult[List[Token]]
+        -   context(context: Context[Token]) -> SearchResult[List[Token]]
 
     Super Class:
         StackService
@@ -171,7 +171,7 @@ class TokenStackService(StackService[Token]):
     @LoggingLevelRouter.monitor
     def pop(self) -> DeletionResult[Token]:
         """
-        Remove the last token put on the stack.
+        Remove the last token put on the schema.
 
         Action:
             If the pop fails, send an exception chain. Otherwise, send the success result.
@@ -204,7 +204,7 @@ class TokenStackService(StackService[Token]):
     @LoggingLevelRouter.monitor
     def push(self, item: Token) -> InsertionResult[bool]:
         """
-        Put the token onto the stack.
+        Put the token onto the schema.
 
         Action:
             If the insertion fails, send an exception chain. Otherwise, send
@@ -285,7 +285,7 @@ class TokenStackService(StackService[Token]):
     @LoggingLevelRouter.monitor
     def query(self, context: TokenContext) -> SearchResult[List[Token]]:
         """
-        Find tokens whose attribute value fits the query.
+        Find tokens whose attribute value fits the context.
 
         Action:
             Send an exception chain if the operation gets interrupted. Otherwise, send
@@ -297,7 +297,7 @@ class TokenStackService(StackService[Token]):
         Raises:
             TokenStackServiceException
         """
-        method = f"{self.__class__.__name__}.query"
+        method = f"{self.__class__.__name__}.context"
         
         # --- Handoff request fulfilment to the ops_controller. ---#
         request_result = self._ops_controller.crud.query.search(context=context)

@@ -21,7 +21,7 @@ class AddingDuplicateTeamException(TeamStackException):
     Role:Debug, Error Tracing
 
     Responsibilities:
-    1.  Indicate that an attempt to add a team to teh stack failed because it was already present.
+    1.  Indicate that an attempt to add a team to teh schema failed because it was already present.
 
     Super Class:
         *   TeamStackException
@@ -33,4 +33,4 @@ class AddingDuplicateTeamException(TeamStackException):
     None
     """
     ERR_CODE = "ADDING_DUPLICATE_TEAM_EXCEPTION"
-    MSG = "Pushing team onto stack failed: The team is already present."
+    MSG = "Pushing team onto schema failed: The team is already present."

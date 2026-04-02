@@ -46,7 +46,7 @@ class SchemaKeyService(QueryService[SchemaKey]):
             Constructor
         # PARAMETERS:
             *   id (nt)
-            *   stack (str)
+            *   schema (str)
             *   build (SchemaKeyBuilder)
             *   validation (SchemaKeyValidator)
         # RETURNS:

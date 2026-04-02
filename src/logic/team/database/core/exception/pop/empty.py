@@ -36,4 +36,4 @@ class PoppingEmptyTeamStackException(TeamStackException, NullException):
     None
     """
     ERR_CODE = "POPPING_EMPTY_TEAM_STACK_EXCEPTION"
-    MSG = "Team pop failed: The stack is empty. Nothing to delete"
+    MSG = "Team pop failed: The schema is empty. Nothing to delete"

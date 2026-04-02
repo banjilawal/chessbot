@@ -1,7 +1,7 @@
-# src/logic/coord/database/kernel/stack.py
+# src/logic/coord/database/kernel/schema.py
 
 """
-Module: logic.coord.database.kernel.stack
+Module: logic.coord.database.kernel.schema
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -37,7 +37,7 @@ class CoordStackService(StackService[Coord]):
         SERVICE_NAME = CoordStackService
 
         id: int
-        stack: str
+        schema: str
         size: int
         is_empty: bool
         items: List[Coord]
@@ -51,7 +51,7 @@ class CoordStackService(StackService[Coord]):
     Provides:
         -   pop() -> DeletionResult[Coord]
         -   push(item: Coord) -> InsertionResult
-        -   query(query: Context[Coord]) -> SearchResult[List[Coord]]
+        -   context(context: Context[Coord]) -> SearchResult[List[Coord]]
 
     Super Class:
         StackService
@@ -112,7 +112,7 @@ class CoordStackService(StackService[Coord]):
     @LoggingLevelRouter.monitor
     def push(self, item: Coord) -> InsertionResult:
         """
-        Put a coord ontop of the stack.
+        Put a coord ontop of the schema.
 
         Actions:
             1.  Send an exception chain in the InsertionResult if push fails.
@@ -148,7 +148,7 @@ class CoordStackService(StackService[Coord]):
     @LoggingLevelRouter.monitor
     def pop(self) -> DeletionResult[Coord]:
         """
-        Get the coord at the top of the stack, if it exists.
+        Get the coord at the top of the schema, if it exists.
 
         Actions:
             1.  Send an exception chain in the DeletionResult if pop fails.
@@ -182,7 +182,7 @@ class CoordStackService(StackService[Coord]):
     @LoggingLevelRouter.monitor
     def query(self, context: CoordContext) -> SearchResult[List[Coord]]:
         """
-        Find a coord in the stack.
+        Find a coord in the schema.
 
         Actions:
             1.  Send an exception chain in the ComputationResult if either:
@@ -196,7 +196,7 @@ class CoordStackService(StackService[Coord]):
         Raises:
             CoordStackServiceException
         """
-        method = f"{self.__class__.__name__}.query"
+        method = f"{self.__class__.__name__}.context"
         
         # --- Handoff request fulfilment to the ops_controller. ---#
         request_result = self._ops_controller.crud_controller.query.query(

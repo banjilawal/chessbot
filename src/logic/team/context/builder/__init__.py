@@ -1,7 +1,7 @@
-# src/logic/team/query/build/__init__.py
+# src/logic/team/context/build/__init__.py
 
 """
-Module: logic.team.query.build.__init__
+Module: logic.team.context.build.__init__
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0

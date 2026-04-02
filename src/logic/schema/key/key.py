@@ -64,7 +64,7 @@ class SchemaKey(Context[Schema]):
         Constructor
 
         # PARAMETERS:
-            *   stack (Optional[str])
+            *   schema (Optional[str])
             *   color (Optional[Color])
 
         # RETURNS:
@@ -91,6 +91,6 @@ class SchemaKey(Context[Schema]):
             *   None
         """
         return {
-            "stack": self.designation,
+            "schema": self.designation,
             "color": self._color,
         }

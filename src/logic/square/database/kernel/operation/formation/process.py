@@ -155,7 +155,7 @@ class TokenDeploymentProcess:
             )
         # --- Integrity and performance tests are passed. ---#
         
-        # Deploy the square onto the stack
+        # Deploy the square onto the schema
         square_stack.items.append(square)
         # Maintain state.
         if square_stack.is_full:

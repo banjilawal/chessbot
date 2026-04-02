@@ -1,7 +1,7 @@
-# src/logic/node/query/validation/validation.py
+# src/logic/node/context/validation/validation.py
 
 """
-Module: logic.node.query.validation.validation
+Module: logic.node.context.validation.validation
 Author: Banji Lawal
 Created: 2026-02-18
 version: 1.0.0
@@ -180,7 +180,7 @@ class NodeContextValidator(Validator[NodeContext]):
             # On certification success return the discovery_status_NodeContext in the ValidationResult.
             return ValidationResult.success(payload=context)
         
-        # Return the exception chain if there is no validation route for the query.
+        # Return the exception chain if there is no validation route for the context.
         return ValidationResult.failure(
             NodeContextValidationException(
                 msg=f"{method}: {NodeContextValidationException.MSG}",

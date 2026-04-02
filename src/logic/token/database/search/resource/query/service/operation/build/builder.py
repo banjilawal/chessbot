@@ -1,7 +1,7 @@
-# src/logic/token/database/search/query/service/operation/build/builder.py
+# src/logic/token/database/search/context/service/operation/build/builder.py
 
 """
-Module: logic.token.database.search.query.service.operation.build.builder
+Module: logic.token.database.search.context.service.operation.build.builder
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -31,7 +31,7 @@ class TokenQueryBuilder(Builder[TokenQuery]):
 
     Provides:
         -   validate(
-                    stack: List[Token],
+                    schema: List[Token],
                     context: TokenContext,
                     context_validator: TokenContextValidator,
             ) -> ValidationResult[int]
@@ -52,8 +52,8 @@ class TokenQueryBuilder(Builder[TokenQuery]):
             1.  Send an exception chain in the ValidationResult if any of the following
                 conditions occur:
                     -   The context fails a safety check.
-                    -   The stack is null.
-                    -   The stack's type is not ist[Token]
+                    -   The schema is null.
+                    -   The schema's type is not ist[Token]
             2.  Otherwise, send the success result.
         Args:
             stack: List[Token]
@@ -81,7 +81,7 @@ class TokenQueryBuilder(Builder[TokenQuery]):
                     ex=validation_result.exception,
                 )
             )
-        # Handle the case that, the stack does not exist
+        # Handle the case that, the schema does not exist
         if stack is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -96,7 +96,7 @@ class TokenQueryBuilder(Builder[TokenQuery]):
                     )
                 )
             )
-        # Handle the case that, the stack is the wrong type.
+        # Handle the case that, the schema is the wrong type.
         if not isinstance(stack, List):
             # Return the exception chain on failure.
             return ValidationResult.failure(

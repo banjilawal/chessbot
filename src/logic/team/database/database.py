@@ -48,7 +48,7 @@ class TeamDatabase(Database[Team]):
             Constructor
         # PARAMETERS:
             *   id (int)
-            *   stack (str)
+            *   schema (str)
             *   member_service (TeamStack)
         # RETURNS:
             None

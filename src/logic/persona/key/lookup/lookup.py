@@ -59,7 +59,7 @@ class PersonaLookupProcess(HashLookupProcess[Persona]):
         Raises:
             *  PersonaLookupFailedException
         """
-        method = "PersonaLookupProcess.query"
+        method = "PersonaLookupProcess.context"
         
         # Handle the case that, the Key fails validation.
         validation = super_key_validator.validate(candidate=super_key)
@@ -73,7 +73,7 @@ class PersonaLookupProcess(HashLookupProcess[Persona]):
             )
         # After verification use the hash key to route to the appropriate lookup method.
         
-        # Entry point into forward lookups by stack.
+        # Entry point into forward lookups by schema.
         if super_key.designation is not None:
             return cls._query_by_name(designation=super_key.designation)
         # Entry point into forward lookups by designation.
@@ -82,7 +82,7 @@ class PersonaLookupProcess(HashLookupProcess[Persona]):
         # Entry point into forward lookups by ransom.
         if super_key.ransom is not None:
             return cls._query_by_ransom(ransom=super_key.ransom)
-        # Entry point into forward lookups by stack.
+        # Entry point into forward lookups by schema.
         if super_key.quota is not None:
             return cls._query_by_quota(quota=super_key.quota)
         
@@ -100,9 +100,9 @@ class PersonaLookupProcess(HashLookupProcess[Persona]):
     def _query_by_name(cls, name: str) -> SearchResult[List[Persona]]:
         """
         # ACTION:
-            1.  Get any Persona entry whose stack matches the target value.
+            1.  Get any Persona entry whose schema matches the target value.
         # PARAMETERS:
-            *   stack (str)
+            *   schema (str)
         # RETURNS:
             *   SearchResult[List[Persona]] containing either:
                     - On error: Exception
@@ -132,7 +132,7 @@ class PersonaLookupProcess(HashLookupProcess[Persona]):
     def _query_by_designation(cls, designation: str) -> SearchResult[List[Persona]]:
         """
         # ACTION:
-            1.  Get any Persona entry whose stack matches the target value.
+            1.  Get any Persona entry whose schema matches the target value.
         # PARAMETERS:
             *   designation (str)
         # RETURNS:
@@ -163,7 +163,7 @@ class PersonaLookupProcess(HashLookupProcess[Persona]):
     def _query_by_quota(cls, quota: int) -> SearchResult[List[Persona]]:
         """
         # ACTION:
-            1.  Get any Persona entry whose stack matches the target value.
+            1.  Get any Persona entry whose schema matches the target value.
         # PARAMETERS:
             *   quota (int)
         # RETURNS:
@@ -194,7 +194,7 @@ class PersonaLookupProcess(HashLookupProcess[Persona]):
     def _query_by_ransom(cls, ransom: int) -> SearchResult[List[Persona]]:
         """
         # ACTION:
-            1.  Get any Persona entry whose stack matches the target value.
+            1.  Get any Persona entry whose schema matches the target value.
         # PARAMETERS:
             *   ransom (int)
         # RETURNS:

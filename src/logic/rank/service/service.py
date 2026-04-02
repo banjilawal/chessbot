@@ -51,7 +51,7 @@ class RankService(IntegrityMicroservice[Rank]):
 
         # PARAMETERS:
             *   id (nt)
-            *   stack (str)
+            *   schema (str)
             *   build (RankFactory)
             *   validation (RankValidator)
 

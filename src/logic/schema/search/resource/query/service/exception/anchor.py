@@ -1,7 +1,7 @@
-# src/logic/schema/database/search/query/service/exception/anchor.py
+# src/logic/schema/database/search/context/service/exception/anchor.py
 
 """
-Module: logic.schema.database.search.query.service.exception.anchor
+Module: logic.schema.database.search.context.service.exception.anchor
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,15 +11,15 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# SCHEMA_CONTEXT_SERVICE_EXCEPTION #======================#
-    "SchemaContextServiceException",
+    # ======================# SCHEMA_QUERY_SERVICE_EXCEPTION #======================#
+    "SchemaQueryServiceException",
 ]
 
 from logic.system import ServiceException
 
 
-# ======================# SCHEMA_CONTEXT_SERVICE_EXCEPTION #======================#
-class SchemaContextServiceException(ServiceException):
+# ======================# SCHEMA_QUERY_SERVICE_EXCEPTION #======================#
+class SchemaQueryServiceException(ServiceException):
     """
     Role:Coverage Target, Exception Chain Layer 0
 
@@ -53,7 +53,7 @@ class SchemaContextServiceException(ServiceException):
         *   See ServiceException class for inherited methods.
     """
     CLS_NAME = "SchemaQueryService"
-    ERR_CODE = "SCHEMA_CONTEXT_SERVICE_EXCEPTION"
+    ERR_CODE = "SCHEMA_QUERY_SERVICE_EXCEPTION"
     MSG = "SchemaQueryService raised an exception."
     
     def __init__(

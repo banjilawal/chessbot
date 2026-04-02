@@ -1,7 +1,7 @@
-# src/logic/pair/stack/exception/deletion/empty.py
+# src/logic/pair/schema/exception/deletion/empty.py
 
 """
-Module: logic.pair.stack.exception.deletion.empty
+Module: logic.pair.schema.exception.deletion.empty
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

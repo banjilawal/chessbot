@@ -50,7 +50,7 @@ class UniqueAgentDataService(Database[PlayerAgent]):
 
         # PARAMETERS:
             *   id (int): = id_emitter.service_id
-            *   stack (str): = SERVICE_NAME
+            *   schema (str): = SERVICE_NAME
             *   member_service (AgentStackService): = AgentStackService()
 
         # RETURNS:

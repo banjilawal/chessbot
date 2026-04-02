@@ -1,7 +1,7 @@
-# src/logic/team/query/exception/debug.py
+# src/logic/team/context/exception/debug.py
 
 """
-Module: logic.team.query.exception.debug
+Module: logic.team.context.exception.debug
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

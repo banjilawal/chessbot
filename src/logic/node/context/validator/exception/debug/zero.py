@@ -31,7 +31,7 @@ class ZeroNodeContextFlagsException(DebugException):
             *   event which fired the variable into its error state.
         which occurred in the NodeContextValidator method identified in layer-0 of the exception chain.
 
-    2.  A failing ValidationResult was returned because NodeContext candidate had no query flags enabled.
+    2.  A failing ValidationResult was returned because NodeContext candidate had no context flags enabled.
 
     Super Class:
         *   DebugException

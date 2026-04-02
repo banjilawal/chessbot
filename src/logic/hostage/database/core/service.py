@@ -23,7 +23,7 @@ class HostageList(StackService[Hostage]):
     Responsibilities:
     1.  Public facing API.
     2.  Microservice for managing Hostage objects and their lifecycles.
-    3.  Ensure integrity of Hostage data stack
+    3.  Ensure integrity of Hostage data schema
     4.  Stack data structure for Hostage objects with no guarantee of uniqueness.
 
     Super Class:
@@ -50,7 +50,7 @@ class HostageList(StackService[Hostage]):
             Constructor
         # PARAMETERS:
             *   id (int)
-            *   stack (str)
+            *   schema (str)
             *   bag (List[Team])
             *   service (TeamService)
             *   context_service (TeamQueryService)

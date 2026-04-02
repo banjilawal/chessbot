@@ -1,7 +1,7 @@
-# src/logic/node/query/validation/exception/__init__.py
+# src/logic/node/context/validation/exception/__init__.py
 
 """
-Module: logic.node.query.validation.exception.__init__
+Module: logic.node.context.validation.exception.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

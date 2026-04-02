@@ -1,7 +1,7 @@
-# src/logic/node/query/build/exception.py
+# src/logic/node/context/build/exception.py
 
 """
-Module: logic.node.query.build.build
+Module: logic.node.context.build.build
 Author: Banji Lawal
 Created: 2026-02-18
 version: 1.0.0
@@ -53,10 +53,10 @@ class NodeContextBuilder(Builder[NodeContext]):
     ) -> BuildResult[NodeContext]:
         """
         # ACTION:
-            1.  If one-and-only-one query attribute is not null send an exception chain in the BuildResult.
-            2.  If there is no build route for the not-null query attribute send an exception chain in the BuildResult.
-            3.  If the build route exists and the query attribute is not verified send an exception chain in the
-                BuildResult. Else build the query and send it in the BuildResult's payload.
+            1.  If one-and-only-one context attribute is not null send an exception chain in the BuildResult.
+            2.  If there is no build route for the not-null context attribute send an exception chain in the BuildResult.
+            3.  If the build route exists and the context attribute is not verified send an exception chain in the
+                BuildResult. Else build the context and send it in the BuildResult's payload.
         # PARAMETERS:
             Only one these must be provided:
 
@@ -168,7 +168,7 @@ class NodeContextBuilder(Builder[NodeContext]):
             # On validation success return a predecessor_NodeContext in the BuildResult.
             return BuildResult.success(NodeContext(discovery_status=discovery_status))
         
-        # Return the exception chain if there is no build route for the query.
+        # Return the exception chain if there is no build route for the context.
         return BuildResult.failure(
             NodeContextBuildException(
                 msg=f"{method}: {NodeContextBuildException.MSG}",

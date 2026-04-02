@@ -1,7 +1,7 @@
-# src/logic/pair/stack/exception/anchor.py
+# src/logic/pair/schema/exception/anchor.py
 
 """
-Module: logic.pair.stack.exception.anchor
+Module: logic.pair.schema.exception.anchor
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

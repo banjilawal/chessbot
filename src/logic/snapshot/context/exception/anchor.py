@@ -1,7 +1,7 @@
-# src/logic/snapshot/query/exception/anchor.py
+# src/logic/snapshot/context/exception/anchor.py
 
 """
-Module: logic.snapshot.query.exception.anchor
+Module: logic.snapshot.context.exception.anchor
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

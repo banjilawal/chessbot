@@ -1,7 +1,7 @@
-# src/logic/edge/stack/__init__.py
+# src/logic/edge/schema/__init__.py
 
 """
-Module: logic.edge.stack.__init__
+Module: logic.edge.schema.__init__
 Author: Banji Lawal
 Created: 2026-02-17
 version: 1.0.0

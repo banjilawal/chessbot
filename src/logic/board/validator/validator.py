@@ -47,7 +47,7 @@ class BoardValidator(Validator[Board]):
         # ACTION:
             1.  If the candidate fails existence or type checks send an exception chain in the ValidationResult. Else,
                 cast candidate to a Board instance board.
-            2.  If the board's stack or id fails integrity checks send an exception chain in the ValidationResult.
+            2.  If the board's schema or id fails integrity checks send an exception chain in the ValidationResult.
                 Else validate is board using arena_service.
             3.  If the board's arena fails integrity checks send an exception chain in the ValidationResult. 
                 Else, the board has been successfully validated. Send it in the ValidationResult's payload.
@@ -87,7 +87,7 @@ class BoardValidator(Validator[Board]):
         # --- Cast candidate to a Board for additional tests. ---#
         board = cast(Board, candidate)
         
-        # Handle the case board.id or board.stack does not pass a validation check.
+        # Handle the case board.id or board.schema does not pass a validation check.
         id_validation = identity_service.validate_id(candidate=board.id)
         if id_validation.is_failure:
             # Return the exception chain on failure.

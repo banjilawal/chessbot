@@ -1,7 +1,7 @@
-# src/logic/board/database/kernel/stack.py
+# src/logic/board/database/kernel/schema.py
 
 """
-Module: logic.board.database.kernel.stack
+Module: logic.board.database.kernel.schema
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -26,7 +26,7 @@ class BoardStackService(StackService[Board]):
     Responsibilities:
     1.  Public facing API.
     2.  Microservice for managing Board objects and their lifecycles.
-    3.  Ensure integrity of Board data stack
+    3.  Ensure integrity of Board data schema
     4.  Stack data structure for Board objects with no guarantee of uniqueness.
 
     Super Class:
@@ -53,7 +53,7 @@ class BoardStackService(StackService[Board]):
             Constructor
         # PARAMETERS:
             *   id (int)
-            *   stack (str)
+            *   schema (str)
             *   bag (List[Team])
             *   service (TeamService)
             *   context_service (TeamQueryService)

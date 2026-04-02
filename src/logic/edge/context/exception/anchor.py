@@ -1,7 +1,7 @@
-# src/logic/edge/query/exception/anchor.py
+# src/logic/edge/context/exception/anchor.py
 
 """
-Module: logic.edge.query.exception.anchor
+Module: logic.edge.context.exception.anchor
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

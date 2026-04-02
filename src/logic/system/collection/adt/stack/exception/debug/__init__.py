@@ -1,7 +1,7 @@
-# src/logic/system/collection/stack/exception/debug/__init__.py
+# src/logic/system/collection/schema/exception/debug/__init__.py
 
 """
-Module: logic.system.collection.stack.exception.debug.__init__
+Module: logic.system.collection.schema.exception.debug.__init__
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0

@@ -147,7 +147,7 @@ class CaptivityContextBuilder(Builder[CaptivityContext]):
             # On validation success return a captured_squareCaptivityContext in the BuildResult.
             return BuildResult.success(CaptivityContext(captured_square=captured_square))
         
-        # Return the exception chain if there is no build route for the query.
+        # Return the exception chain if there is no build route for the context.
         return BuildResult.failure(
             CaptivityContextBuildException(
                 msg=f"{method}: {CaptivityContextBuildException.MSG}",

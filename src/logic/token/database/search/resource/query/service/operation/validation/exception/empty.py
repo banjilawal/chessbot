@@ -27,7 +27,7 @@ class TokenQueryStackEmptyException(DebugException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that the TokenQuery validation failed because the stack is empty.
+        1.  Indicate that the TokenQuery validation failed because the schema is empty.
         
     Attributes:
         var: Optional[str]
@@ -43,7 +43,7 @@ class TokenQueryStackEmptyException(DebugException):
 
     """
     ERR_CODE = "TOKEN_QUERY_STACK_EMPTY_EXCEPTION"
-    MSG = "TokenQuery.stack cannot be empty."
+    MSG = "TokenQuery.schema cannot be empty."
     
     def __init__(
             self,

@@ -54,7 +54,7 @@ class PersonaKeyBuilder(Builder[PersonaKey]):
             3.  After the active param is validated create the PersonaKey object and return in the BuildResult.
         # PARAMETERS:
             *   Only one these must be provided:
-                    *   stack (Optional[str])
+                    *   schema (Optional[str])
                     *   quota (Optional[int])
                     *   ransom (Optional[int])
                     *   designation (Optional[str])
@@ -99,7 +99,7 @@ class PersonaKeyBuilder(Builder[PersonaKey]):
             )
         # After verifying only one Persona hash key-value is set, validate it.
         
-        # Build the stack PersonaKey if its flag is enabled.
+        # Build the schema PersonaKey if its flag is enabled.
         if name is not None:
             validation = identity_service.validate_name(candidate=name)
             if validation.is_failure:

@@ -22,7 +22,7 @@ class TokenSearchRouter(SearchRouter[Token]):
     Role:SearchRouter
 
     Responsibilities:
-    1.  Send bag in a TokenList whose attribute value match the query.key value to the caller.
+    1.  Send bag in a TokenList whose attribute value match the context.key value to the caller.
     2.  If a search does not complete forward the exception chain to the caller for debugging.
     
     # LIMITATIONS:
@@ -63,7 +63,7 @@ class TokenSearchRouter(SearchRouter[Token]):
         """
         method = f"{cls.__name__}.route"
 
-        # Handle the case that, the query does not pass a test.
+        # Handle the case that, the context does not pass a test.
         validation_result = query_validator.validate(query)
         if validation_result.is_failure:
             # Send the exception chain on failure.
@@ -78,7 +78,7 @@ class TokenSearchRouter(SearchRouter[Token]):
                     ex=validation_result.exception
                 )
             )
-    # --- Route to the search method which matches the query key. ---#
+    # --- Route to the search method which matches the context key. ---#
         
         # token.id search entry point.
         if query.context.id is not None:
@@ -128,7 +128,7 @@ class TokenSearchRouter(SearchRouter[Token]):
                 stack=query.stack,
                 ransom=query.context.current_position
             )
-        # Handle the case that, there is no search path for the query context..
+        # Handle the case that, there is no search path for the context context..
         return SearchResult.failure(
             TokenSearchException(
                 mthd=method,
@@ -152,7 +152,7 @@ class TokenSearchRouter(SearchRouter[Token]):
             id: int
     ) -> SearchResult[List[Token]]:
         """
-        Search the stack by a token id
+        Search the schema by a token id
         
             1.  Get the Tokens with the desired id.
         Args:
@@ -178,7 +178,7 @@ class TokenSearchRouter(SearchRouter[Token]):
             designation: str
     ) -> SearchResult[List[Token]]:
         """
-        Search the stack by a token id
+        Search the schema by a token id
         
         Args:
             designation: str
@@ -205,7 +205,7 @@ class TokenSearchRouter(SearchRouter[Token]):
             opening_square_name: str
     ) -> SearchResult[List[Token]]:
         """
-        Search the stack by a opening square's stack'
+        Search the schema by a opening square's schema'
 
         Args:
             opening_square_name: str
@@ -232,7 +232,7 @@ class TokenSearchRouter(SearchRouter[Token]):
             team: Team
     ) -> SearchResult[List[Token]]:
         """
-        Search the stack by a team.
+        Search the schema by a team.
 
         Args:
             team: Team
@@ -258,7 +258,7 @@ class TokenSearchRouter(SearchRouter[Token]):
             rank: Rank
     ) -> SearchResult[List[Token]]:
         """
-        Search the stack by a rank.
+        Search the schema by a rank.
 
         Args:
             rank: Rank
@@ -284,7 +284,7 @@ class TokenSearchRouter(SearchRouter[Token]):
             ransom: int
     ) -> SearchResult[List[Token]]:
         """
-        Search the stack by a random.
+        Search the schema by a random.
 
         Args:
             ransom: int
@@ -310,7 +310,7 @@ class TokenSearchRouter(SearchRouter[Token]):
             color: GameColor
     ) -> SearchResult[List[Token]]:
         """
-        Search the stack by a random.
+        Search the schema by a random.
 
         Args:
             color: GameColor
@@ -336,7 +336,7 @@ class TokenSearchRouter(SearchRouter[Token]):
             current_position: Coord
     ) -> SearchResult[List[Token]]:
         """
-        Search the stack by a random.
+        Search the schema by a random.
 
         Args:
             current_position: Coord

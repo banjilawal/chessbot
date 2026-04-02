@@ -1,7 +1,7 @@
-# src/logic/snapshot/query/exception/debug.py
+# src/logic/snapshot/context/exception/debug.py
 
 """
-Module: logic.snapshot.query.exception.debug
+Module: logic.snapshot.context.exception.debug
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

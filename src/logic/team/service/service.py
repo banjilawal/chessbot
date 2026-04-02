@@ -51,7 +51,7 @@ class TeamService(IntegrityMicroservice[Team]):
              Constructor
         # PARAMETERS:
             *   id (nt)
-            *   stack (str)
+            *   schema (str)
             *   build (TeamBuild)
             *   validation (TeamValidator)
             *   roster_util (RosterUtil)

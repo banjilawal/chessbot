@@ -1,7 +1,7 @@
-# src/logic/player/query/validation/exception/debug/null.py
+# src/logic/player/context/validation/exception/debug/null.py
 
 """
-Module: logic.player.query.validation.exception.debug.null
+Module: logic.player.context.validation.exception.debug.null
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

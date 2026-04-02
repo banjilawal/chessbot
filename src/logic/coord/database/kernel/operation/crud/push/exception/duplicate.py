@@ -29,7 +29,7 @@ class PushingDuplicateCoordException(DebugException):
         - Exception Messaging
 
     Responsibilities:
-        1.  Indicate an insertion failed because the coord was already in the stack.
+        1.  Indicate an insertion failed because the coord was already in the schema.
 
     Attributes:
         var: Optional[str]
@@ -44,7 +44,7 @@ class PushingDuplicateCoordException(DebugException):
         CoordDebugException
     """
     ERR_CODE = "PUSHING_DUPLICATE_COORD_EXCEPTION"
-    MSG = "Coord is already in the stack."
+    MSG = "Coord is already in the schema."
     
     def __init__(
             self,

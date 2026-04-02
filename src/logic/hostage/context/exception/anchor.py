@@ -1,7 +1,7 @@
-# src/logic/hostage/query/exception/anchor.py
+# src/logic/hostage/context/exception/anchor.py
 
 """
-Module: logic.hostage.query.exception.anchor
+Module: logic.hostage.context.exception.anchor
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

@@ -142,7 +142,7 @@ class TokenStackPush:
             )
         # --- Integrity and performance tests are passed. ---#
         
-        # Push the token onto the stack
+        # Push the token onto the schema
         token_stack.items.append(token)
         # Maintain state.
         if token_stack.is_full:

@@ -1,7 +1,7 @@
 # src/logic/node/_context/build/exception/__init__.py
 
 """
-Module: logic.node.query.build.exception.__init__
+Module: logic.node.context.build.exception.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

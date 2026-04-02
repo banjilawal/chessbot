@@ -1,7 +1,7 @@
-# src/logic/edge/query/service/servicepy
+# src/logic/edge/context/service/servicepy
 
 """
-Module: logic.edge.query.service.service
+Module: logic.edge.context.service.service
 Author: Banji Lawal
 Created: 2026-02-18
 version: 1.0.0
@@ -49,7 +49,7 @@ class EdgeQueryService(QueryService[EdgeContext]):
         # ACTION:
             Constructor
         # PARAMETERS:
-            *   stack (str)
+            *   schema (str)
             *   id (int)
             *   route (EdgeFinder)
             *   build (EdgeContextBuilder)

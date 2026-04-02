@@ -1,7 +1,7 @@
-# src/logic/hostage/query/service/servicepy
+# src/logic/hostage/context/service/servicepy
 
 """
-Module: logic.hostage.query.service.service
+Module: logic.hostage.context.service.service
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
@@ -48,7 +48,7 @@ class HostageQueryService(QueryService[CaptivityContext]):
         # ACTION:
             Constructor
         # PARAMETERS:
-            *   stack (str)
+            *   schema (str)
             *   id (int)
             *   route (HostageFinder)
             *   build (CaptivityContextBuilder)

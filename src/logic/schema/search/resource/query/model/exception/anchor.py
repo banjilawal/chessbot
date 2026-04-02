@@ -11,23 +11,23 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# SCHEMA_SCHEMA_EXCEPTION #======================#
-    "SchemaSchemaException",
+    # ======================# SCHEMA_QUERY_EXCEPTION #======================#
+    "SchemaQueryException",
 ]
 
 from logic.system import AnchorException
 
 
-# ======================# SCHEMA_SCHEMA_EXCEPTION #======================#
-class SchemaSchemaException(AnchorException):
+# ======================# SCHEMA_QUERY_EXCEPTION #======================#
+class SchemaQueryException(AnchorException):
     """
     Role:
         -   Exception Chain Layer 0
         -   Exception coverage target
 
     Responsibilities:
-        1.  Anchors SchemaSchema debug (layer-2) information.
-        2.  Indicate which SchemaSchema method received a worker's (layer-1)
+        1.  Anchors SchemaQuery debug (layer-2) information.
+        2.  Indicate which SchemaQuery method received a worker's (layer-1)
             failure result.
 
     Attributes:
@@ -42,8 +42,8 @@ class SchemaSchemaException(AnchorException):
     Super Class:
         AnchorException
     """
-    ERR_CODE = "SCHEMA_SCHEMA_EXCEPTION"
-    MSG = "SchemaSchema raised an exception."
+    ERR_CODE = "SCHEMA_QUERY_EXCEPTION"
+    MSG = "SchemaQuery raised an exception."
     
     def __init__(
             self,

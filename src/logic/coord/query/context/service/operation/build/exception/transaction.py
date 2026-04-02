@@ -1,7 +1,7 @@
-# src/logic/coord/query/context/service/operation/build/exception/transaction.py
+# src/logic/coord/context/context/service/operation/build/exception/transaction.py
 
 """
-Module: logic.coord.query.context.service.operation.build.exception.transaction
+Module: logic.coord.context.context.service.operation.build.exception.transaction
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

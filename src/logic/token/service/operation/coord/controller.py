@@ -20,7 +20,7 @@ class TokenPositionController:
         -   Integrity lifecycle manager
         
     Responsibilities:
-        1.  Maintain integrity of a token's position stack during pushes and pops.
+        1.  Maintain integrity of a token's position schema during pushes and pops.
         
     Attributes:
         _pop_process: TokenPopCoordProcess

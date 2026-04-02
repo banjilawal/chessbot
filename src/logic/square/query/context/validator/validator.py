@@ -1,7 +1,7 @@
-# src/logic/square/query/context/validation/validation.py
+# src/logic/square/context/context/validation/validation.py
 
 """
-Module: logic.square.query.context.validation.validation
+Module: logic.square.context.context.validation.validation
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
@@ -55,17 +55,17 @@ class SquareContextValidator(Validator[SquareContext]):
                     *   A null check.
                     *   A type check.
                 Send an exception chain in the ValidationResult. Else, cast candidate to SquareContext
-                instance query.
+                instance context.
             2.  Send an exception chain in the ValidationResult if either
                     *   The id
-                    *   The stack
+                    *   The schema
                     *   The coord
                     *   The state
                     *   The board
                     *   The occupant
                 are does not pass a validation check. by their services, or there is no validation
-                route for the query.
-            3.  The query has been certified as safe, send the validation success result.
+                route for the context.
+            3.  The context has been certified as safe, send the validation success result.
         # PARAMETERS:
             *   candidate (Any)
             *   board_service (BoardService)
@@ -146,7 +146,7 @@ class SquareContextValidator(Validator[SquareContext]):
             # On certification success return the id_SquareContext in the ValidationResult.
             return ValidationResult.success(payload=context)
         
-        # Certification for the search-by-stack target.
+        # Certification for the search-by-schema target.
         if context.designation is not None:
             validation = identity_service.validate_name(context.designation)
             if validation.is_failure:
@@ -216,7 +216,7 @@ class SquareContextValidator(Validator[SquareContext]):
             # On certification success return the board_SquareContext in the ValidationResult.
             return ValidationResult.success(payload=context)
         
-        # Return the exception chain if there is no validation route for the query.
+        # Return the exception chain if there is no validation route for the context.
         return ValidationResult.failure(
             SquareContextValidationException(
                 msg=f"{method}: {SquareContextValidationException.MSG}",

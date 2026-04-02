@@ -29,7 +29,7 @@ class AddingDuplicateSquareException(DebugException):
         - Exception Messaging
 
     Responsibilities:
-        1.  Indicate an insertion failed because the square was already in the stack.
+        1.  Indicate an insertion failed because the square was already in the schema.
 
     Attributes:
         var: Optional[str]
@@ -44,7 +44,7 @@ class AddingDuplicateSquareException(DebugException):
         SquareDebugException
     """
     ERR_CODE = "ADDING_DUPLICATE_SQUARE_EXCEPTION"
-    MSG = "Square is already in the stack."
+    MSG = "Square is already in the schema."
     
     def __init__(
             self,

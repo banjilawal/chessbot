@@ -1,7 +1,7 @@
-# src/logic/token/database/search/token/model/exception/anchor.py
+# src/logic/token/database/search/token/model/exception/context.py
 
 """
-Module: logic.token.database.search.token.model.exception.anchor
+Module: logic.token.database.search.token.model.exception.context
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -11,23 +11,23 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# TOKEN_TOKEN_EXCEPTION #======================#
-    "TokenTokenException",
+    # ======================# TOKEN_QUERY_EXCEPTION #======================#
+    "TokenQueryException",
 ]
 
-from logic.system import AnchorException
+from logic.system import QueryException
 
 
-# ======================# TOKEN_TOKEN_EXCEPTION #======================#
-class TokenTokenException(AnchorException):
+# ======================# TOKEN_QUERY_EXCEPTION #======================#
+class TokenQueryException(QueryException):
     """
     Role:
         -   Exception Chain Layer 0
         -   Exception coverage target
 
     Responsibilities:
-        1.  Anchors TokenToken debug (layer-2) information.
-        2.  Indicate which TokenToken method received a worker's (layer-1)
+        1.  Querys TokenQuery debug (layer-2) information.
+        2.  Indicate which TokenQuery method received a worker's (layer-1)
             failure result.
 
     Attributes:
@@ -40,10 +40,10 @@ class TokenTokenException(AnchorException):
     Provides:
 
     Super Class:
-        AnchorException
+        QueryException
     """
-    ERR_CODE = "TOKEN_TOKEN_EXCEPTION"
-    MSG = "TokenToken raised an exception."
+    ERR_CODE = "TOKEN_QUERY_EXCEPTION"
+    MSG = "TokenQuery raised an exception."
     
     def __init__(
             self,

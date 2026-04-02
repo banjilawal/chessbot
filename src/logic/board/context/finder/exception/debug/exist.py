@@ -1,7 +1,7 @@
-# src/logic/board/query/route/exception/debug/exist.py
+# src/logic/board/context/route/exception/debug/exist.py
 
 """
-Module: logic.board.query.route.exception.debug.exist
+Module: logic.board.context.route.exception.debug.exist
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

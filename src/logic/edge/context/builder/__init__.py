@@ -1,7 +1,7 @@
-# src/logic/edge/query/build/__init__.py
+# src/logic/edge/context/build/__init__.py
 
 """
-Module: logic.edge.query.build.__init__
+Module: logic.edge.context.build.__init__
 Author: Banji Lawal
 Created: 2026-02-18
 version: 1.0.0

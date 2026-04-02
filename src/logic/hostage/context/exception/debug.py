@@ -1,7 +1,7 @@
-# src/logic/hostage/query/exception/debug.py
+# src/logic/hostage/context/exception/debug.py
 
 """
-Module: logic.hostage.query.exception.debug
+Module: logic.hostage.context.exception.debug
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

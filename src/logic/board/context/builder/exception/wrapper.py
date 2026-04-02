@@ -1,7 +1,7 @@
-# src/logic/board/query/build/exception/validator.py
+# src/logic/board/context/build/exception/validator.py
 
 """
-Module: logic.board.query.build.exception.work
+Module: logic.board.context.build.exception.work
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/logic/edge/stack/exception/push/duplicate.py
+# src/logic/edge/schema/exception/push/duplicate.py
 
 """
-Module: logic.edge.stack.exception.push.duplicate
+Module: logic.edge.schema.exception.push.duplicate
 Author: Banji Lawal
 Created: 2026-02-18
 version: 1.0.0
@@ -21,7 +21,7 @@ class AddingDuplicateEdgeException(EdgeDebugException):
     Role:Debug, Error Tracing
 
     Responsibilities:
-    1.  Indicate that an attempt to add a edge to teh stack failed because it was already present.
+    1.  Indicate that an attempt to add a edge to teh schema failed because it was already present.
 
     Super Class:
         *   EdgeStackException
@@ -33,4 +33,4 @@ class AddingDuplicateEdgeException(EdgeDebugException):
     None
     """
     ERR_CODE = "ADDING_DUPLICATE_EDGE_EXCEPTION"
-    MSG = "Pushing edge onto stack failed: The edge is already present."
+    MSG = "Pushing edge onto schema failed: The edge is already present."

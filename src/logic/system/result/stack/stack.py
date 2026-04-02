@@ -1,7 +1,7 @@
-# src/logic/system/result/stack/stack.py
+# src/logic/system/result/schema/schema.py
 
 """
-Module: logic.system.result.stack.stack
+Module: logic.system.result.schema.schema
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

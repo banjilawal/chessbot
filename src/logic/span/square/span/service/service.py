@@ -39,7 +39,7 @@ class SquareSpanService(IntegrityMicroservice[SquareSpan]):
     
     CONSTRUCTOR PARAMETERS:
         *   id: int
-        *   stack: str
+        *   schema: str
         *   coord_service: CoordService
         *   vector_service: VectorService
     

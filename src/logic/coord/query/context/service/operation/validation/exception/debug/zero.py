@@ -1,7 +1,7 @@
-# src/logic/coord/query/context/service/operation/validation/exception/debug/zero.py
+# src/logic/coord/context/context/service/operation/validation/exception/debug/zero.py
 
 """
-Module: logic.coord.query.context.service.operation.validation.exception.debug.zero
+Module: logic.coord.context.context.service.operation.validation.exception.debug.zero
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -31,7 +31,7 @@ class ZeroCoordContextFlagsException(DebugException):
             *   event which fired the variable into its error state.
         which occurred in the CoordContextValidator method identified in layer-0 of the exception chain.
 
-    2.  A failing ValidationResult was returned because CoordContext candidate had no query flags enabled.
+    2.  A failing ValidationResult was returned because CoordContext candidate had no context flags enabled.
 
     Super Class:
         *   DebugException

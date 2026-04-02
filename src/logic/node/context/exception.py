@@ -1,7 +1,7 @@
-# src/logic/node/query/exception.py
+# src/logic/node/context/exception.py
 
 """
-Module: logic.node.query.exception
+Module: logic.node.context.exception
 Author: Banji Lawal
 Created: 2026-02-19
 version: 1.0.0

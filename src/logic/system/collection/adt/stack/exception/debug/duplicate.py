@@ -1,7 +1,7 @@
-# src/logic/system/collection/stack/exception/duplicate.py
+# src/logic/system/collection/schema/exception/duplicate.py
 
 """
-Module: logic.system.collection.stack.exception.duplicate
+Module: logic.system.collection.schema.exception.duplicate
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0

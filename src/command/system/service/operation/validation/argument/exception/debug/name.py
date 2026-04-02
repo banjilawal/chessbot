@@ -47,7 +47,7 @@ class ArgumentNameException(ServiceRequestDebugException):
         *   See DebugException class for inherited methods.
     """
     ERR_CODE = "WRONG_ARGUMENT_NAME_EXCEPTION"
-    MSG = "Argument stack incorrect."
+    MSG = "Argument schema incorrect."
     
     def __init__(
             self,

@@ -27,7 +27,7 @@ class TokenContextService(IntegrityMicroservice[TokenContext]):
         SERVICE_NAME: TokenContextService
 
         id: int
-        stack: stack
+        schema: schema
         controller: TokenContextOpsController
 
     Provides:

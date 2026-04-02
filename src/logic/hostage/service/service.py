@@ -47,7 +47,7 @@ class HostageService(IntegrityMicroservice[Hostage]):
             Constructor
         # PARAMETERS:
             *   id (nt)
-            *   stack (str)
+            *   schema (str)
             *   build (SquareFactory)
             *   validation (SquareValidator)
         # RETURNS:

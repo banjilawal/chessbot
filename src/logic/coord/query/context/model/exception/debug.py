@@ -1,7 +1,7 @@
-# src/logic/coord/query/context/model/exception/debug.py
+# src/logic/coord/context/context/model/exception/debug.py
 
 """
-Module: logic.coord.query.context.model.exception.debug
+Module: logic.coord.context.context.model.exception.debug
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

@@ -26,7 +26,7 @@ class SquareStackTokenHandler:
     Responsibilities:
     1.  Owns Token operations in SquareStackService.
     2.  Transfers Team.roster members to their opening squares.
-    2.  Conducts update transactions for individual squares in the stack
+    2.  Conducts update transactions for individual squares in the schema
 
     Super Class:
     None
@@ -44,7 +44,7 @@ class SquareStackTokenHandler:
     Attributes:
         Local:
             *   id (int)
-            *   stack (str)
+            *   schema (str)
             *   roster_deployer (SquareStackRosterHandler)
             
         Inherited:

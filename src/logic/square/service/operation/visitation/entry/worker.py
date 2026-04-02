@@ -111,7 +111,7 @@ class SquareEntryProcess:
 
         Action:
             1.  Send the square and an exception chain in the UpdateResult if:
-                    - Pushing the square's coord onto the token's stack fails.
+                    - Pushing the square's coord onto the token's schema fails.
             2.  Otherwise, after:
                     -   The square makes the token its occupant
                     -   The token updates its position
@@ -131,7 +131,7 @@ class SquareEntryProcess:
         square.occupant = token
         square.state = SquareState.OCCUPIED
         
-        # --- Push the square's coord onto the stack. ---#
+        # --- Push the square's coord onto the schema. ---#
         coord_insertion_result = token.positions.push(square.coord)
         
         # Handle the case that, the push failed

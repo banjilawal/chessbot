@@ -1,7 +1,7 @@
-# src/logic/pair/stack/exception/deletion/exist.py
+# src/logic/pair/schema/exception/deletion/exist.py
 
 """
-Module: logic.pair.stack.exception.deletion.exist
+Module: logic.pair.schema.exception.deletion.exist
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

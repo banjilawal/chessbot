@@ -1,7 +1,7 @@
-# src/logic/system/search/resource/query/exception/debug.py
+# src/logic/system/search/resource/context/exception/debug.py
 
 """
-Module: logic.system.search.resource.query.exception.debug
+Module: logic.system.search.resource.context.exception.debug
 Author: Banji Lawal
 Created: 2026-04-01
 Version: 1.0.0

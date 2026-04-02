@@ -33,7 +33,7 @@ class TokenSearchService(SearchMicroservice[Token]):
         resource_host: TokenSearchResourceHost
 
     Provides:
-        -  def search(query: TokenQuery) -> SearchResult[List[Token]]
+        -  def search(context: TokenQuery) -> SearchResult[List[Token]]
 
     Super Class:
         SearchMicroservice
@@ -80,7 +80,7 @@ class TokenSearchService(SearchMicroservice[Token]):
         Raises:
             TokenSearchServiceException
         """
-        method = f"{self.__class__.__name__}.query"
+        method = f"{self.__class__.__name__}.context"
         
         # --- Forward the request to the search_router. ---#
         search_result = self._resource_host.search_router.route(

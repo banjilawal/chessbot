@@ -1,7 +1,7 @@
-# src/logic/coord/query/context/model/model.py
+# src/logic/coord/context/context/model/model.py
 
 """
-Module: logic.coord.query.context.model.model
+Module: logic.coord.context.context.model.model
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0

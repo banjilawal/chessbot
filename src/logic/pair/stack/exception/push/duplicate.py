@@ -21,7 +21,7 @@ class AddingDuplicatePairException(PairStackException):
     Role:Debug, Error Tracing
 
     Responsibilities:
-    1.  Indicate that pushing a pair onto the stack failed because it was already present in the stack.
+    1.  Indicate that pushing a pair onto the schema failed because it was already present in the schema.
 
     Super Class:
         *   PairStackException
@@ -33,4 +33,4 @@ class AddingDuplicatePairException(PairStackException):
     None
     """
     ERR_CODE = "ADDING_DUPLICATE_PAIR_EXCEPTION"
-    MSG = "Pushing pair failed: The pair was already present in the stack."
+    MSG = "Pushing pair failed: The pair was already present in the schema."

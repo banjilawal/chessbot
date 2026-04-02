@@ -1,7 +1,7 @@
-# src/logic/persona/key/lookup/exception/debug/stack.py
+# src/logic/persona/key/lookup/exception/debug/schema.py
 
 """
-Module: logic.persona.key.lookup.exception.debug.stack
+Module: logic.persona.key.lookup.exception.debug.schema
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
@@ -22,7 +22,7 @@ class PersonaNameBoundsException(PersonaException, BoundsException):
     Role:Error Tracing, Debugging
 
     Responsibilities:
-    1.  Indicate that a Persona lookup failed because the stack was not a key to any Persona variant.
+    1.  Indicate that a Persona lookup failed because the schema was not a key to any Persona variant.
 
     Super Class:
         *   PersonaException

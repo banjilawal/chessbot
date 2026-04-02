@@ -1,7 +1,7 @@
-# src/logic/node/stack/exception/pop/empty.py
+# src/logic/node/schema/exception/pop/empty.py
 
 """
-Module: logic.node.stack.exception.pop.empty
+Module: logic.node.schema.exception.pop.empty
 Author: Banji Lawal
 Created: 2026-02-18
 version: 1.0.0
@@ -23,7 +23,7 @@ class PoppingEmptyNodeStackException(NodeDebugException):
     Role:Debug, Error Tracing
 
     Responsibilities:
-    1.  Indicate that an attempt to remove a item failed because the stack was empty
+    1.  Indicate that an attempt to remove a item failed because the schema was empty
 
     Super Class:
         *   NodeException

@@ -45,7 +45,7 @@ class TokenCollisionAnalysis(CollisionAnalysis[Token]):
             token_stack: TokenStackService,
     ) -> CollisionReport[Token]:
         """
-        Report if any stack member has the same id, designation or
+        Report if any schema member has the same id, designation or
         opening_square_name as the target.
         
         Action:

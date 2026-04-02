@@ -1,7 +1,7 @@
-# src/logic/square/query/route/route.py
+# src/logic/square/context/route/route.py
 
 """
-Module: logic.square.query.route.route
+Module: logic.square.context.route.route
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -26,7 +26,7 @@ class SquareFinder(StackSearchRouter[Square]):
 
     Responsibilities:
     1.  Single point of entry into different square search routes.
-    2.  Return a list of squares which match the query attribute's value.
+    2.  Return a list of squares which match the context attribute's value.
     3.  Provide an exception chain the client can use to trace a search that does is not completed.
     4.  Manages all phases of the SquareSearch lifecycle.
 
@@ -50,7 +50,7 @@ class SquareFinder(StackSearchRouter[Square]):
     # LOCAL METHODS:
         *   find(
                 collider_candidates: List[Square],
-                query: SquareContext,
+                context: SquareContext,
                 square_validator: SquareValidator
                 context_validator: SquareContextValidator
             ) -> SearchResult[List[Square]]
@@ -72,14 +72,14 @@ class SquareFinder(StackSearchRouter[Square]):
         # ACTION:
             1.  If either
                     *   the collider_candidates.
-                    *   query.
+                    *   context.
                 Does not pass a validation check. send an exception chain in the SearchResult.
             2.  Once Action.1 has been completed successfully searches are guaranteed to complete successfully.
-            3.  Route to the search method that matches the query.
+            3.  Route to the search method that matches the context.
             4.  The searcher returns a List contain zero or more squares.
         # PARAMETERS:
                 *   collider_candidates [List[Square]]
-                *   query [SquareContext]
+                *   context [SquareContext]
                 *   square_validator [SquareValidator]
                 *   context_validator [SquareContextValidator]
         # RETURNS:
@@ -102,7 +102,7 @@ class SquareFinder(StackSearchRouter[Square]):
                     ex=dataset_validation_result.exception
                 )
             )
-        # Handle the case that, the query fails validation.
+        # Handle the case that, the context fails validation.
         context_validation_result = context_validator.validate(context)
         if context_validation_result.is_failure:
             # Return the exception chain on failure.
@@ -112,12 +112,12 @@ class SquareFinder(StackSearchRouter[Square]):
                     ex=context_validation_result.exception
                 )
             )
-        # --- Route to the search method which matches the query key. ---#
+        # --- Route to the search method which matches the context key. ---#
         
         # Entry point into finding by the square's id.
         if context.id is not None:
             return cls._find_by_id(dataset=dataset, id=context.id)
-        # Entry point into finding by the square's stack.
+        # Entry point into finding by the square's schema.
         if context.designation is not None:
             return cls._find_by_name(dataset=dataset, name=context.designation)
         # Entry point into finding by the square's coord.
@@ -133,7 +133,7 @@ class SquareFinder(StackSearchRouter[Square]):
         if context.state:
             return cls._find_by_state(dataset=dataset, state=context.state)
         
-        # If a query does not have a search route defined send an exception chain.
+        # If a context does not have a search route defined send an exception chain.
         return SearchResult.failure(
             SquareSearchException(
                 msg=f"{method}: {SquareSearchException.ERR_CODE}",
@@ -161,7 +161,7 @@ class SquareFinder(StackSearchRouter[Square]):
     def _find_by_name(cls, dataset: List[Square], name: str) -> SearchResult[List[Square]]:
         """
         # ACTION:
-            1.  Get the Squares which match the stack.
+            1.  Get the Squares which match the schema.
         """
         matches = [square for square in dataset if square.name.upper() == name.upper()]
         # Handle the nothing found case.

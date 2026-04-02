@@ -49,7 +49,7 @@ class GameService(IntegrityMicroservice[Game]):
 
         # PARAMETERS:
             *   id (nt)
-            *   stack (str)
+            *   schema (str)
             *   build (GameFactory)
             *   validation (GameValidator)
 

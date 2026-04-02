@@ -1,7 +1,7 @@
-# src/logic/coord/query/context/service/operation/build/exception/route.py
+# src/logic/coord/context/context/service/operation/build/exception/route.py
 
 """
-Module: logic.coord.query.context.service.operation.build.exception.route
+Module: logic.coord.context.context.service.operation.build.exception.route
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

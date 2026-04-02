@@ -1,7 +1,7 @@
-# src/logic/square/query/service/servicepy
+# src/logic/square/context/service/servicepy
 
 """
-Module: logic.square.query.service.service
+Module: logic.square.context.service.service
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
@@ -49,7 +49,7 @@ class SquareQueryService(QueryService[SquareContext]):
         # ACTION:
             Constructor
         # PARAMETERS:
-            *   stack (str)
+            *   schema (str)
             *   id (int)
             *   route (SquareFinder)
             *   build (SquareContextBuilder)

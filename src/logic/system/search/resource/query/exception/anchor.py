@@ -1,7 +1,7 @@
-# src/logic/system/search/resource/query/exception/anchor.py
+# src/logic/system/search/resource/context/exception/anchor.py
 
 """
-Module: logic.system.search.resource.query.exception.anchor
+Module: logic.system.search.resource.context.exception.anchor
 Author: Banji Lawal
 Created: 2026-04-01
 Version: 1.0.0

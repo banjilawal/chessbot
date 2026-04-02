@@ -1,7 +1,7 @@
-# src/logic/player/database/kernel/stack.py
+# src/logic/player/database/kernel/schema.py
 
 """
-Module: logic.player.database.kernel.stack
+Module: logic.player.database.kernel.schema
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -24,7 +24,7 @@ class AgentStackService(StackService[PlayerAgent]):
     3.  Assure only valid Agents are put in the collection.
     4.  Assure updates do not break the integrity individual bag in the collection or
         the collection itself.
-    5.  Provide Player stack data structure with no guarantee of uniqueness.
+    5.  Provide Player schema data structure with no guarantee of uniqueness.
     6.  Search utility.
     
     Super Class:
@@ -52,7 +52,7 @@ class AgentStackService(StackService[PlayerAgent]):
 
         # PARAMETERS:
             *   id (int): = id_emitter.service_id
-            *   stack (str): = SERVICE_NAME
+            *   schema (str): = SERVICE_NAME
             *   bag (List[Player]): = List[Player]
             *   service (AgentService): = AgentService()
             *   context_service (PlayerQueryService): = PlayerQueryService()

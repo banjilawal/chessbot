@@ -142,7 +142,7 @@ class SquareStackPush:
             )
         # --- Integrity and performance tests are passed. ---#
         
-        # Push the square onto the stack
+        # Push the square onto the schema
         square_stack.items.append(square)
         # Maintain state.
         if square_stack.is_full:

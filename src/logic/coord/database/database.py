@@ -34,7 +34,7 @@ class CoordDatabase(Database[Coord]):
         SERVICE_NAME = "TokenDatabase"
 
         id: int
-        stack: str
+        schema: str
         size: int
         is_empty: bool
         iterator: Iterator[Token]
@@ -44,7 +44,7 @@ class CoordDatabase(Database[Coord]):
 
     Provides:
         -   insert(token: Token) -> InsertionResult[bool]
-        -   search(query: TokenContext) -> SearchResult[List[Token]]
+        -   search(context: TokenContext) -> SearchResult[List[Token]]
 
     Super:
         Database
@@ -124,7 +124,7 @@ class CoordDatabase(Database[Coord]):
     @LoggingLevelRouter.monitor
     def search(self, context: CoordContext) -> SearchResult[List[Coord]]:
         """
-        Find coords whose attribute value fits the query.
+        Find coords whose attribute value fits the context.
 
         Action:
             Send an exception chain if the operation gets interrupted. Otherwise, send

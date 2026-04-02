@@ -1,7 +1,7 @@
-# src/logic/hostage/query/build/__init__.py
+# src/logic/hostage/context/build/__init__.py
 
 """
-Module: logic.hostage.query.build.__init__
+Module: logic.hostage.context.build.__init__
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

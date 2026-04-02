@@ -88,7 +88,7 @@ class EdgeContext(Context[Edge]):
         """
         return {
             "id": self.id,
-            "stack": self.designation,
+            "schema": self.designation,
             "board": self._board,
             "coord": self._coord,
             "occupant": self._occupant,

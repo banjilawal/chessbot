@@ -1,7 +1,7 @@
-# src/logic/arena/query/exception/debug.py
+# src/logic/arena/context/exception/debug.py
 
 """
-Module: logic.arena.query.exception.debug
+Module: logic.arena.context.exception.debug
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

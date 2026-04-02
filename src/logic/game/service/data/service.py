@@ -1,7 +1,7 @@
-# src/logic/game/database/kernel/stack.py
+# src/logic/game/database/kernel/schema.py
 
 """
-Module: logic.game.database.kernel.stack
+Module: logic.game.database.kernel.schema
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -24,7 +24,7 @@ class GameStackService(StackService[Game]):
     3.  Assure only valid Games are put in the collection.
     4.  Assure updates do not break the integrity individual bag in the collection or
         the collection itself.
-    5.  Provide Game stack data structure with no guarantee of uniqueness.
+    5.  Provide Game schema data structure with no guarantee of uniqueness.
     6.  Search utility.
     
     Super Class:
@@ -53,7 +53,7 @@ class GameStackService(StackService[Game]):
 
         # PARAMETERS:
             *   id (int): = id_emitter.service_id
-            *   stack (str): = SERVICE_NAME
+            *   schema (str): = SERVICE_NAME
             *   bag (List[Game]): = List[Game]
             *   service (GameService): = GameService()
             *   context_service (GameQueryService): = GameQueryService()

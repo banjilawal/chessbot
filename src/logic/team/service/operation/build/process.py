@@ -99,7 +99,7 @@ class TeamBuild(Builder[Team]):
         team = Team(id=id, board=board, schema=schema, owner=owner, roster=roster,)
         
         
-        # Push the team onto the owner's stack.
+        # Push the team onto the owner's schema.
         insertion_result = player_service.push_team_to_player(player=owner, team=team)
         if insertion_result.is_failure:
             # If the push failed return the exception chain.
@@ -134,11 +134,11 @@ class TeamBuild(Builder[Team]):
     ) -> ValidationResult[int]:
         """
         # ACTION:
-            1.  If either the id, stack, coord, or board are does not pass a validation check. by their validators, return the
+            1.  If either the id, schema, coord, or board are does not pass a validation check. by their validators, return the
                 validation exception to the caller. Otherwise, return the number of attributes in the success result.
         # PARAMETERS:
             *   id (int)
-            *   stack (str)
+            *   schema (str)
             *   cord (Coord)
             *   board (Board)
             *   board_service (BoardService)
@@ -229,7 +229,7 @@ class SquareBuilder(Builder[Square]):
     # LOCAL METHODS:
         *   build(
                 cls,
-                stack: str,
+                schema: str,
                 board: Board,
                 coord: Coord,
                 id: int = IdFactory.next_id(Square.__name__),
@@ -266,7 +266,7 @@ class SquareBuilder(Builder[Square]):
             4.  Return the Square instance in the BuildResult.
         # PARAMETERS:
             *   id (int)
-            *   stack (str)
+            *   schema (str)
             *   cord (Coord)
             *   board (Board)
             *   board_service (BoardService)

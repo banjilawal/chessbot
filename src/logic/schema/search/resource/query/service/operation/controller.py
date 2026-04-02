@@ -1,7 +1,7 @@
-# src/logic/schema/database/search/query/service/operation/controller.py
+# src/logic/schema/database/search/context/service/operation/controller.py
 
 """
-Module: logic.schema.database.search.query.service.operation.controller
+Module: logic.schema.database.search.context.service.operation.controller
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.schema import SchemaQueryBuilder, SchemaContextIntegrityWorkers, SchemaQueryValidator
+from logic.schema import SchemaQueryBuilder, SchemaQueryIntegrityWorkers, SchemaQueryValidator
 
 
 class SchemaQueryOpsController:
@@ -23,7 +23,7 @@ class SchemaQueryOpsController:
     Attributes:
         builder: SchemaQueryBuilder
         validator: SchemaQueryValidator
-        workers: SchemaContextIntegrityWorkers
+        workers: SchemaQueryIntegrityWorkers
 
     Provides:
     
@@ -31,19 +31,19 @@ class SchemaQueryOpsController:
     """
     _builder: SchemaQueryBuilder
     _validator: SchemaQueryValidator
-    _workers: SchemaContextIntegrityWorkers
+    _workers: SchemaQueryIntegrityWorkers
     
     def __init__(
             self,
             builder: SchemaQueryBuilder = SchemaQueryBuilder(),
             validator: SchemaQueryValidator = SchemaQueryValidator(),
-            workers: SchemaContextIntegrityWorkers = SchemaContextIntegrityWorkers(),
+            workers: SchemaQueryIntegrityWorkers = SchemaQueryIntegrityWorkers(),
     ):
         """
         Args:
             builder: SchemaQueryBuilder
             validator: SchemaQueryValidator
-            workers: SchemaContextIntegrityWorkers
+            workers: SchemaQueryIntegrityWorkers
         """
         self._build = builder
         self._validation = validator
@@ -58,5 +58,5 @@ class SchemaQueryOpsController:
         return self._validator
     
     @property
-    def arithmetic(self) -> SchemaContextIntegrityWorkers:
+    def arithmetic(self) -> SchemaQueryIntegrityWorkers:
         return self._arithmetic

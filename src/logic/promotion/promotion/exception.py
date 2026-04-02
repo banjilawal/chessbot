@@ -319,7 +319,7 @@ class ActorPlacementRequiredException(ActorException):
   """Raised when team_name potential actor_candidate has not been placed on the board_validator."""
   ERR_CODE = "ACTOR_PLACEMENT_REQUIRED_EXCEPTION"
   MSG = (
-    "Required actor_candidate has an empty position stack. It as not been placed on the board_validator. Event cannot be executed."
+    "Required actor_candidate has an empty position schema. It as not been placed on the board_validator. Event cannot be executed."
   )
 
 
@@ -385,6 +385,6 @@ class SubjectPlacementRequiredException(SubjectException):
   """Raised when team_name required enemy has not been placed on the board_validator."""
   ERR_CODE = "SUBJECT_PLACEMENT_REQUIRED_EXCEPTION"
   MSG = (
-    "Required enemy has an empty position stack. It as not been placed on the board_validator. Actor cannot"
+    "Required enemy has an empty position schema. It as not been placed on the board_validator. Actor cannot"
     "fire travel onto enemy."
   )

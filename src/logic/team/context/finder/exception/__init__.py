@@ -1,6 +1,6 @@
-# src/logic/team/query/route/exception/__init__.py
+# src/logic/team/context/route/exception/__init__.py
 """
-Module: logic.team.query.route.exception.__init__
+Module: logic.team.context.route.exception.__init__
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/logic/system/collection/stack/__init__.py
+# src/logic/system/collection/schema/__init__.py
 
 """
-Module: logic.system.collection.stack.__init__
+Module: logic.system.collection.schema.__init__
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0

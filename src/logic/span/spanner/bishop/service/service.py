@@ -47,7 +47,7 @@ class BishopSpanService(SpanMicroservice):
 
     CONSTRUCTOR PARAMETERS:
         *   id: int
-        *   stack: str
+        *   schema: str
         *   spanner: BishopSpanner
         *   coord_service: CoordService
         *   vector_service: VectorService

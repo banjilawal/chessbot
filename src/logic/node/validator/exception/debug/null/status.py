@@ -1,7 +1,7 @@
-# src/logic/pair/pair/query/validation/exception/debug/null/status.py
+# src/logic/pair/pair/context/validation/exception/debug/null/status.py
 
 """
-Module: logic.pair.pair.query.validation.exception.debug.null.status
+Module: logic.pair.pair.context.validation.exception.debug.null.status
 Author: Banji Lawal
 Created: 2026-02-18
 version: 1.0.0

@@ -35,7 +35,7 @@ class SearchMicroservice(ABC, Microservice[T]):
         context_service: IntegrityMicroservice[Context[T]]
         
     Provides:
-        -   search(query: Query[T]) -> List[SearchResult[T]]
+        -   search(context: Query[T]) -> List[SearchResult[T]]
         
     Super Class:
         Microservice

@@ -61,7 +61,7 @@ class VisitationTeamFieldIsNullException(VisitationEventException, Inconsistency
 
 class VisitationMissingCoordStackException(VisitationEventException, InconsistencyException):
     """
-    Raised if `visitationation.positions` stack does not exist. If the `visitationation.positions == validation there is entity_service inconsistency
+    Raised if `visitationation.positions` schema does not exist. If the `visitationation.positions == validation there is entity_service inconsistency
     or loss.
     """
     ERR_CODE = "VISITATION_COORD_STACK_MISSING_EXCEPTION"

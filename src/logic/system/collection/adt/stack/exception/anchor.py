@@ -1,7 +1,7 @@
-# src/logic/system/collection/stack/exception/anchor.py
+# src/logic/system/collection/schema/exception/anchor.py
 
 """
-Module: logic.system.collection.stack.exception.base
+Module: logic.system.collection.schema.exception.base
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0

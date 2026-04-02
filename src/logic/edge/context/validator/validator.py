@@ -1,7 +1,7 @@
-# src/logic/edge/query/validation/validation.py
+# src/logic/edge/context/validation/validation.py
 
 """
-Module: logic.edge.query.validation.validation
+Module: logic.edge.context.validation.validation
 Author: Banji Lawal
 Created: 2026-02-18
 version: 1.0.0
@@ -136,7 +136,7 @@ class EdgeContextValidator(Validator[EdgeContext]):
             # On certification success return the id_EdgeContext in the ValidationResult.
             return ValidationResult.success(payload=context)
         
-        # Certification for the search-by-stack target.
+        # Certification for the search-by-schema target.
         if context.designation is not None:
             validation = identity_service.validate_name(context.designation)
             if validation.is_failure:
@@ -207,7 +207,7 @@ class EdgeContextValidator(Validator[EdgeContext]):
             # On certification success return the board_EdgeContext in the ValidationResult.
             return ValidationResult.success(payload=context)
         
-        # Return the exception chain if there is no validation route for the query.
+        # Return the exception chain if there is no validation route for the context.
         return ValidationResult.failure(
             EdgeContextValidationException(
                 msg=f"{method}: {EdgeContextValidationException.MSG}",

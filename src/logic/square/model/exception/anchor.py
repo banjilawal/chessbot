@@ -1,7 +1,7 @@
-# src/logic/square/query/context/exception/anchor.py
+# src/logic/square/context/context/exception/anchor.py
 
 """
-Module: logic.square.query.context.exception.anchor
+Module: logic.square.context.context.exception.anchor
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

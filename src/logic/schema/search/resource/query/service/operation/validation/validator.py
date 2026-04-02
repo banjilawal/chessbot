@@ -1,7 +1,7 @@
-# src/logic/schema/database/search/query/service/operation/validation/validator.py
+# src/logic/schema/database/search/context/service/operation/validation/validator.py
 
 """
-Module: logic.schema.database.search.query.service.operation.validation.validator
+Module: logic.schema.database.search.context.service.operation.validation.validator
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -13,7 +13,7 @@ from typing import Any, List, cast
 
 from logic.system import LoggingLevelRouter, ValidationResult, Validator
 from logic.schema import (
-    Schema, SchemaContextValidator, SchemaQueryNullException, SchemaQueryStackEmptyException,
+    Schema, SchemaQueryValidator, SchemaQueryNullException, SchemaQueryStackEmptyException,
     SchemaStackNullException, SchemaQuery, SchemaQueryValidationException
 )
 
@@ -33,7 +33,7 @@ class SchemaQueryValidator(Validator[SchemaQuery]):
     Provides:
         -   validate(
                     candidate: Any
-                    context_validator: SchemaContextValidator,
+                    query_validator: SchemaQueryValidator,
             ) -> ValidationResult[int]
 
     Super Class:
@@ -44,7 +44,7 @@ class SchemaQueryValidator(Validator[SchemaQuery]):
     def validate(
             cls,
             candidate: Any,
-            context_validator: SchemaContextValidator = SchemaContextValidator(),
+            query_validator: SchemaQueryValidator = SchemaQueryValidator(),
     ) -> ValidationResult[SchemaQuery]:
         """
         Certify a candidate is a SchemaQuery that is safe to use.
@@ -55,12 +55,12 @@ class SchemaQueryValidator(Validator[SchemaQuery]):
                     -   The candidate is null
                     -   The candidate is not a SchemaQuery
                     -   The context fails a safety check.
-                    -   The stack is null.
-                    -   The stack's type is not ist[Schema]
+                    -   The schema is null.
+                    -   The schema's type is not ist[Schema]
             2.  Otherwise, send the success result.
         Args:
             candidate: Any
-            context_validator: SchemaContextValidator
+            query_validator: SchemaQueryValidator
         Returns:
             ValidationResult[int]
         Raises:
@@ -108,7 +108,7 @@ class SchemaQueryValidator(Validator[SchemaQuery]):
         query = cast(SchemaQuery, candidate)
         
         # Handle the case that, the context is not certified as safe.
-        validation_result = context_validator.validate(query.context)
+        validation_result = query_validator.validate(query.query)
         if validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -122,7 +122,7 @@ class SchemaQueryValidator(Validator[SchemaQuery]):
                     ex=validation_result.exception
                 )
             )
-        # Handle the case that, the stack does not exist
+        # Handle the case that, the schema does not exist
         if query.stack is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -139,7 +139,7 @@ class SchemaQueryValidator(Validator[SchemaQuery]):
                     )
                 )
             )
-        # Handle the case that, the stack is the wrong type.
+        # Handle the case that, the schema is the wrong type.
         if not isinstance(query.stack, List):
             # Return the exception chain on failure.
             return ValidationResult.failure(

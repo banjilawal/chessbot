@@ -1,7 +1,7 @@
-# src/logic/pair/stack/exception/deletion/validator.py
+# src/logic/pair/schema/exception/deletion/validator.py
 
 """
-Module: logic.pair.stack.exception.deletion.work
+Module: logic.pair.schema.exception.deletion.work
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

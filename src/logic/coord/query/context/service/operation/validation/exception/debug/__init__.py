@@ -1,7 +1,7 @@
-# src/logic/coord/query/context/service/operation/validation/exception/debug/__init__.py
+# src/logic/coord/context/context/service/operation/validation/exception/debug/__init__.py
 
 """
-Module: logic.coord.query.context.service.operation.validation.exception.debug.__init__
+Module: logic.coord.context.context.service.operation.validation.exception.debug.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

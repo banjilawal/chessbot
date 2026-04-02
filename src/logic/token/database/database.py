@@ -36,7 +36,7 @@ class TokenDatabase(Database[Token]):
         SERVICE_NAME = "TokenDatabase"
         
         id: int
-        stack: str
+        schema: str
         size: int
         is_empty: bool
         is_full: bool
@@ -49,7 +49,7 @@ class TokenDatabase(Database[Token]):
 
     Provides:
         -   insert(token: Token) -> InsertionResult[bool]
-        -   search(query: TokenContext) -> SearchResult[List[Token]]
+        -   search(context: TokenContext) -> SearchResult[List[Token]]
         
         -   rank_quota_report(
                     rank: Rank,
@@ -244,7 +244,7 @@ class TokenDatabase(Database[Token]):
     @LoggingLevelRouter.monitor
     def search(self, context: TokenContext) -> SearchResult[List[Token]]:
         """
-        Find tokens whose attribute value fits the query.
+        Find tokens whose attribute value fits the context.
 
         Action:
             Send an exception chain if the operation gets interrupted. Otherwise, send

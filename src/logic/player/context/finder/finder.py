@@ -154,14 +154,14 @@ class AgentFinder(DataFinder[PlayerAgent]):
     def _find_by_name(cls, dataset: [PlayerAgent], name: str) -> SearchResult[List[PlayerAgent]]:
         """
         # ACTION:
-        1.  Get the PlayerAgents with the matching upper class stack.
+        1.  Get the PlayerAgents with the matching upper class schema.
         2.  If no hits are found an empty SearchResult is returned. For one or more unique hits a success
             SearchResult is returned. Otherwise, a SearchResult failure containing an exception is sent.
         3.  There really should only be one or none hits on a unique id but, the multiple hits error condition is
             relaxed for testing.
 
         # PARAMETERS:
-            *   stack (str)
+            *   schema (str)
             *   collider_candidates (List[Player])
 
         # RETURNS:
@@ -175,7 +175,7 @@ class AgentFinder(DataFinder[PlayerAgent]):
         """
         method = "AgentFinder._find_by_name"
         try:
-            # Get the list of agents with the same stack in upper case.
+            # Get the list of agents with the same schema in upper case.
             matches = [agent for agent in dataset if player.designation.upper() == name.upper()]
             
             # An empty array means nothing was found.

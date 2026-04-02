@@ -1,7 +1,7 @@
-# src/logic/square.stack/exception/debug.py
+# src/logic/square.schema/exception/debug.py
 
 """
-Module: logic.square.stack.exception.debug
+Module: logic.square.schema.exception.debug
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

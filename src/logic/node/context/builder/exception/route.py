@@ -1,7 +1,7 @@
 # src/logic/node/_context/build/exception/route.py
 
 """
-Module: logic.node.query.build.exception.route
+Module: logic.node.context.build.exception.route
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

@@ -27,7 +27,7 @@ class PoppingEmptyTokenStackException(DebugException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that a pop failed because the stack was empty.
+        1.  Indicate that a pop failed because the schema was empty.
         
     Attributes:
         var: Optional[str]
@@ -43,7 +43,7 @@ class PoppingEmptyTokenStackException(DebugException):
 
     """
     ERR_CODE = "POPPING_EMPTY_TOKEN_STACK_EXCEPTION"
-    MSG = "TokenStackService pop failed: Cannot pop from an empty stack."
+    MSG = "TokenStackService pop failed: Cannot pop from an empty schema."
     
     def __init__(
             self,

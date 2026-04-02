@@ -1,7 +1,7 @@
-# src/logic/schema/database/search/query/query.py
+# src/logic/schema/database/search/context/context.py
 
 """
-Module: logic.schema.database.search.query.query
+Module: logic.schema.database.search.context.context
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0

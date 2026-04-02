@@ -37,7 +37,7 @@ class Square:
 
     # LOCAL ATTRIBUTES:
         *   id (int)
-        *   stack (str)
+        *   schema (str)
         *   board (Board)
         *   coord (Coord)
         *    state (SquareState)
@@ -48,7 +48,7 @@ class Square:
 
     Attributes:
         *   id (int)
-        *   stack (str)
+        *   schema (str)
         *   board (Board)
         *   coord (Coord)
         *   state (SquareState)

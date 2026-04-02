@@ -23,7 +23,7 @@ class CoordStackPop:
 
     Responsibilities:
         1.  Coord deletion exception owner.
-        2.  Prevent deleting from an empty stack.
+        2.  Prevent deleting from an empty schema.
         
     Attributes:
     
@@ -37,11 +37,11 @@ class CoordStackPop:
     @LoggingLevelRouter.monitor
     def execute(cls, coord_stack: CoordStackService) -> DeletionResult[Coord]:
         """
-        Remove the coord at the top of the stack.
+        Remove the coord at the top of the schema.
         
         Action:
-            1.  Send an exception chain in the DeletionResult if the stack is empty.
-            2.  Otherwise, pop the coord from the stack.
+            1.  Send an exception chain in the DeletionResult if the schema is empty.
+            2.  Otherwise, pop the coord from the schema.
             3.  Send the success result containing the finished work product.
         Args:
             coord_stack: CoordStackService
@@ -53,7 +53,7 @@ class CoordStackPop:
         """
         method = f"{cls.__class__.__name__}.pop"
         
-        # Handle the case that the stack is empty.
+        # Handle the case that the schema is empty.
         if coord_stack.is_empty:
             # Return the exception chain on failure.
             return DeletionResult.failure(

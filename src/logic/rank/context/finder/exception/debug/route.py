@@ -1,7 +1,7 @@
-# src/logic/rank/query/route/exception/debug/route.py
+# src/logic/rank/context/route/exception/debug/route.py
 
 """
-Module: logic.rank.query.route.exception.debug.route
+Module: logic.rank.context.route.exception.debug.route
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

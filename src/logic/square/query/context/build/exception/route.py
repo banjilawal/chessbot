@@ -1,7 +1,7 @@
 # src/logic/square/_context/build/exception/route.py
 
 """
-Module: logic.square.query.context.build.exception.route
+Module: logic.square.context.context.build.exception.route
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

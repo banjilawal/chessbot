@@ -1,7 +1,7 @@
-# src/logic/square/query/context/context/model.py
+# src/logic/square/context/context/context/model.py
 
 """
-Module: logic.square.query.context.context.context
+Module: logic.square.context.context.context.context
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
@@ -33,7 +33,7 @@ class SquareContext(Context[Square]):
 
     Attributes:
         id: Optional[int]
-        stack: Optional[str]
+        schema: Optional[str]
         board: Optional[Board]
         coord: Optional[Coord]
         occupant: Optional[Token]
@@ -96,7 +96,7 @@ class SquareContext(Context[Square]):
         """
         return {
             "id": self.id,
-            "stack": self.designation,
+            "schema": self.designation,
             "board": self._board,
             "coord": self._coord,
             "occupant": self._occupant,

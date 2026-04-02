@@ -1,7 +1,7 @@
-# src/logic/system/collection/stack/exception/empty.py
+# src/logic/system/collection/schema/exception/empty.py
 
 """
-Module: logic.system.collection.stack.exception.empty
+Module: logic.system.collection.schema.exception.empty
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
@@ -21,7 +21,7 @@ class PoppingEmptyStackException(DebugException):
     Role:Error Tracing, Debugging
 
     Responsibilities:
-    Indicate there was an attempt to pop an empty stack.
+    Indicate there was an attempt to pop an empty schema.
 
     Super Class:
         *   DebugException

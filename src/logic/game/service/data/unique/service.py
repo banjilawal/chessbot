@@ -46,7 +46,7 @@ class UniqueGameDataService(Database[Game]):
 
         # PARAMETERS:
             *   id (int): = id_emitter.service_id
-            *   stack (str): = SERVICE_NAME
+            *   schema (str): = SERVICE_NAME
             *   member_service (GameStackService): = GameStackService()
 
         # RETURNS:

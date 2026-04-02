@@ -1,7 +1,7 @@
-# src/logic/team/query/validation/validation.py
+# src/logic/team/context/validation/validation.py
 
 """
-Module: logic.team.query.validation.validation
+Module: logic.team.context.validation.validation
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
@@ -48,11 +48,11 @@ class TeamContextValidator(Validator[TeamContext]):
         """
         # ACTION:
             1.  If the candidate fails existence or type tests send the exception in the ValidationResult.
-                Else, cast to TeamContext instance query.
-            2.  If one-and-only-one query attribute is not null return an exception in the ValidationResult.
+                Else, cast to TeamContext instance context.
+            2.  If one-and-only-one context attribute is not null return an exception in the ValidationResult.
             3.  If there is no certification route for the attribute return an exception in the ValidationResult.
             4.  If the certification route exists use the appropriate service or validation to send either an exception
-                chain the ValidationResult or the query.
+                chain the ValidationResult or the context.
         # PARAMETERS:
             *   candidate (Any)
             *   color_validator (ColorValidator)
@@ -171,7 +171,7 @@ class TeamContextValidator(Validator[TeamContext]):
             # On certification success return the team_color_context in a ValidationResult.
             return ValidationResult.success(payload=context)
         
-        # Return the exception chain if there is no validation route for the query.
+        # Return the exception chain if there is no validation route for the context.
         return ValidationResult.failure(
             TeamContextValidationException(
                 msg=f"{method}: {TeamContextValidationException.ERR_CODE}",

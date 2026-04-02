@@ -52,7 +52,7 @@ class PersonaKey(Context[Persona]):
         # ACTION:
             Constructor
         # PARAMETERS:
-            *   stack (Optional[str])
+            *   schema (Optional[str])
             *   quota (Optional[int])
             *   ransom (Optional[int])
             *   designation (Optional[str])
@@ -90,7 +90,7 @@ class PersonaKey(Context[Persona]):
             *   None
         """
         return {
-            "stack": self.designation,
+            "schema": self.designation,
             "ransom": self._ransom,
             "quota": self._quota,
             "designation": self.designation,

@@ -1,7 +1,7 @@
-# src/logic/node/stack/exception/push/validator.py
+# src/logic/node/schema/exception/push/validator.py
 
 """
-Module: logic.node.stack.exception.push.work
+Module: logic.node.schema.exception.push.work
 Author: Banji Lawal
 Created: 2026-02-18
 version: 1.0.0

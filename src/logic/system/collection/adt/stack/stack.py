@@ -1,7 +1,7 @@
-# src/logic/system/collection/stack/exception/stack.py
+# src/logic/system/collection/schema/exception/schema.py
 
 """
-Module: logic.system.collection.stack.exception.stack
+Module: logic.system.collection.schema.exception.schema
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
@@ -35,11 +35,11 @@ class StackService(ABC, Generic[T]):
 
     Attributes:
         id: int
-        stack: str
+        schema: str
 
     Provides:
         -   id: int
-        -   stack: str
+        -   schema: str
         -   items() -> List[T]
         -   size() -> int
         -   iterator() -> Iterator[T]
@@ -50,7 +50,7 @@ class StackService(ABC, Generic[T]):
         -   push(item: T) -> InsertionResult
         -   pop() -> DeletionResult[T]
         -   delete_by_id(id: int) -> DeletionResult[T]
-        -   query(collider_candidates: List[T], query: Context[T]) -> SearchResult[List[T]]
+        -   context(collider_candidates: List[T], context: Context[T]) -> SearchResult[List[T]]
 
     Super class:
     """
@@ -72,31 +72,31 @@ class StackService(ABC, Generic[T]):
     @property
     @abstractmethod
     def items(self) -> List[T]:
-        """Implement to access the stack's items"""
+        """Implement to access the schema's items"""
         pass
     
     @property
     @abstractmethod
     def iterator(self) -> Iterator[T]:
-        """Implement to access the stack's iterator."""
+        """Implement to access the schema's iterator."""
         pass
     
     @property
     @abstractmethod
     def size(self) -> int:
-        """Implement to return the size of the stack."""
+        """Implement to return the size of the schema."""
         pass
     
     @property
     @abstractmethod
     def is_empty(self) -> bool:
-        """Implement to test if the stack is empty."""
+        """Implement to test if the schema is empty."""
         pass
     
     @property
     @abstractmethod
     def current_item(self) -> Optional[T]:
-        """Implement to get the item ontop of the stack."""
+        """Implement to get the item ontop of the schema."""
         pass
 
     @property
@@ -108,13 +108,13 @@ class StackService(ABC, Generic[T]):
     @abstractmethod
     @LoggingLevelRouter.monitor
     def push(self, item: T) -> InsertionResult:
-        """Implement to push a new item into the stack."""
+        """Implement to push a new item into the schema."""
         pass
     
     @abstractmethod
     @LoggingLevelRouter.monitor
     def pop(self) -> DeletionResult[T]:
-        """Implement to pop an item from the stack."""
+        """Implement to pop an item from the schema."""
         pass
     
     @abstractmethod
@@ -123,11 +123,11 @@ class StackService(ABC, Generic[T]):
             self,
             id: int,
             identity_service: IdentityService = IdentityService()) -> DeletionResult[T]:
-        """Implement to delete an item from the stack."""
+        """Implement to delete an item from the schema."""
         pass
     
     @abstractmethod
     @LoggingLevelRouter.monitor
     def query(self, context: Context[T]) -> SearchResult[List[T]]:
-        """Implement to read from the stack.'"""
+        """Implement to read from the schema.'"""
         pass

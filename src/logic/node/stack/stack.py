@@ -1,7 +1,7 @@
-# src/logic/node/stack/stack.py
+# src/logic/node/schema/schema.py
 
 """
-Module: logic.node.stack.stack
+Module: logic.node.schema.schema
 Author: Banji Lawal
 Created: 2025-02-17
 version: 1.0.0
@@ -28,8 +28,8 @@ class NodeStackService(StackService[Node]):
 
     Responsibilities:
     1.  Public facing API.
-    2.  Ensure integrity of Node stack.
-    3.  Ensure uniqueness of nodes in the stack.
+    2.  Ensure integrity of Node schema.
+    3.  Ensure uniqueness of nodes in the schema.
     4.  Interface for CRUD controller on Node collections.
     5.  Microservice for managing integrity of Node objects throughout their lifecycles
 
@@ -118,8 +118,8 @@ class NodeStackService(StackService[Node]):
     def push(self, item: Node) -> InsertionResult:
         """
         # ACTION:
-            1.  If the item is not validated or, it already exists in the stack send an exception chain in the
-                InsertionResult. Else, append the node to the stack and send the success result.
+            1.  If the item is not validated or, it already exists in the schema send an exception chain in the
+                InsertionResult. Else, append the node to the schema and send the success result.
         # PARAMETERS:
             *   item (Node)
         # RETURNS:
@@ -166,8 +166,8 @@ class NodeStackService(StackService[Node]):
     def pop(self) -> DeletionResult[Node]:
         """
         # ACTION:
-            1.  If the stack is empty send an exception in the DeletionResult. Else remove the
-                node at the top of the stack and send in the DeletionResult
+            1.  If the schema is empty send an exception in the DeletionResult. Else remove the
+                node at the top of the schema and send in the DeletionResult
         # PARAMETERS:
                     *   None
         # RETURNS:
@@ -181,7 +181,7 @@ class NodeStackService(StackService[Node]):
         """
         method = "NodeStackService.pop"
         
-        # Handle the case that, there are no nodes in the stack.
+        # Handle the case that, there are no nodes in the schema.
         if self.is_empty:
             # Return the exception chain on failure.
             return DeletionResult.failure(
@@ -195,7 +195,7 @@ class NodeStackService(StackService[Node]):
                     )
                 )
             )
-        # --- Pop the updated node of the non-empty stack and return in the DeletionResult. ---#
+        # --- Pop the updated node of the non-empty schema and return in the DeletionResult. ---#
         node = self._stack.pop(-1)
         DeletionResult.success(node)
     
@@ -203,14 +203,14 @@ class NodeStackService(StackService[Node]):
     def query(self, context: NodeContext) -> SearchResult[List[Node]]:
         """
         # ACTION:
-            1.  Pass the query param to context_service manages all error handling and operations in
+            1.  Pass the context param to context_service manages all error handling and operations in
                 search lifecycle.
             2.  Any failures context_service will be encapsulated inside a NodeStackException 
                 which is sent inside a SearchResult.
             3.  If the search completes successfully the result can be sent directly because it will contain the
                 payload.
         # PARAMETERS:
-            *   query (NodeContext)
+            *   context (NodeContext)
         # RETURN:
             *   SearchResult[List[Node] containing either:
                     - On failure: An exception.
@@ -219,7 +219,7 @@ class NodeStackService(StackService[Node]):
         Raises:
             *   NodeStackException
         """
-        method = "NodeStackService.query"
+        method = "NodeStackService.context"
         
         # --- Handoff the search responsibility to _stack_service. ---#
         query_result = self._context_service.finder.route(dataset=self._stack, context=context)

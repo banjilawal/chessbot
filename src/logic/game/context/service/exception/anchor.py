@@ -1,7 +1,7 @@
-# src/logic/game/query/service/exception/anchor.py
+# src/logic/game/context/service/exception/anchor.py
 
 """
-Module: logic.game.query.service.exception.anchor
+Module: logic.game.context.service.exception.anchor
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

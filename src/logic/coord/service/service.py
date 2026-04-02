@@ -32,7 +32,7 @@ class CoordService(IntegrityMicroservice[Coord]):
         SERVICE_NAME: CoordService
 
         id: int
-        stack: stack
+        schema: schema
         build: Coordbuild
         validation: CoordValidation
         controller: CoordOpsController

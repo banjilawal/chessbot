@@ -1,4 +1,4 @@
-# src/logic/team/database/kernel/stack.py
+# src/logic/team/database/kernel/schema.py
 
 """
 Module: logic.team.database.kernel.service
@@ -27,7 +27,7 @@ class TeamStack(StackService[Team]):
     Responsibilities:
     1.  Public facing API.
     2.  Microservice for managing team objects and their lifecycles.
-    3.  Ensure integrity of team data stack
+    3.  Ensure integrity of team data schema
     4.  Stack data structure for Team objects with no guarantee of uniqueness.
     
     Super Class:
@@ -57,7 +57,7 @@ class TeamStack(StackService[Team]):
             Constructor
         # PARAMETERS:
             *   id (int)
-            *   stack (str)
+            *   schema (str)
             *   service (TeamService)
             *   context_service (TeamQueryService)
         # RETURNS:
@@ -124,7 +124,7 @@ class TeamStack(StackService[Team]):
                     )
                 )
             )
-        # Handle the case that, the team is already present in the stack.
+        # Handle the case that, the team is already present in the schema.
         if item in self._stack:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -138,7 +138,7 @@ class TeamStack(StackService[Team]):
                     )
                 )
             )
-        # --- Team order is not required. Direct insertion into the stack is simpler that a push. ---#
+        # --- Team order is not required. Direct insertion into the schema is simpler that a push. ---#
         self._stack.append(item)
         return InsertionResult.success()
     
@@ -258,14 +258,14 @@ class TeamStack(StackService[Team]):
     def query(self, context: TeamContext) -> SearchResult[List[Team]]:
         """
         # ACTION:
-            1.  Pass the query param to context_service manages all error handling and operations in
+            1.  Pass the context param to context_service manages all error handling and operations in
                 search lifecycle.
             2.  Any failures context_service will be encapsulated inside a TeamStackException 
                 which is sent inside a SearchResult.
             3.  If the search completes successfully the result can be sent directly because it will contain the
                 payload.
         # PARAMETERS:
-            *   query (TeamContext)
+            *   context (TeamContext)
         # RETURN:
             *   SearchResult[List[Team] containing either:
                     - On failure: An exception.
@@ -274,7 +274,7 @@ class TeamStack(StackService[Team]):
         Raises:
             *   TeamStackException
         """
-        method = "TeamStack.query"
+        method = "TeamStack.context"
         
         # --- Handoff the search responsibility to _stack_service. ---#
         query_result = self._context_service.finder.find(dataset=self._stack, context=context)
@@ -295,14 +295,14 @@ class TeamStack(StackService[Team]):
     def query(self, context: TeamContext) -> SearchResult[List[Team]]:
         """
         # ACTION:
-            1.  Pass the query param to context_service manages all error handling and operations in
+            1.  Pass the context param to context_service manages all error handling and operations in
                 search lifecycle.
             2.  Any failures context_service will be encapsulated inside a TeamStackException 
                 which is sent inside a SearchResult.
             3.  If the search completes successfully the result can be sent directly because it will contain the
                 payload.
         # PARAMETERS:
-            *   query (TeamContext)
+            *   context (TeamContext)
         # RETURN:
             *   SearchResult[List[Team] containing either:
                     - On failure: An exception.
@@ -311,7 +311,7 @@ class TeamStack(StackService[Team]):
         Raises:
             *   TeamStackException
         """
-        method = "TeamStack.query"
+        method = "TeamStack.context"
         
         # --- Handoff the search responsibility to _stack_service. ---#
         query_result = self._context_service.finder.find(dataset=self._stack, context=context)

@@ -23,7 +23,7 @@ class SquareStackPopper:
 
     Responsibilities:
         1.  Square deletion exception owner.
-        2.  Prevent deleting from an empty stack.
+        2.  Prevent deleting from an empty schema.
         
     Attributes:
     
@@ -38,11 +38,11 @@ class SquareStackPopper:
     @LoggingLevelRouter.monitor
     def pop(cls, square_stack: SquareStackService) -> DeletionResult[Square]:
         """
-        Remove the square at the top of the stack.
+        Remove the square at the top of the schema.
         
         Action:
-            1.  Send an exception chain in the DeletionResult if the stack is empty.
-            2.  Otherwise, pop the square from the stack.
+            1.  Send an exception chain in the DeletionResult if the schema is empty.
+            2.  Otherwise, pop the square from the schema.
             3.  Send the success result containing the finished work product.
         Args:
             square_stack: SquareStackService
@@ -54,7 +54,7 @@ class SquareStackPopper:
         """
         method = f"{cls.__class__.__name__}.pop"
         
-        # Handle the case that the stack is empty.
+        # Handle the case that the schema is empty.
         if square_stack.is_empty:
             # Return the exception chain on failure.
             return DeletionResult.failure(
@@ -105,7 +105,7 @@ class SquareStackPopper:
         """
         method = f"{cls.__name__}.delete_by_id"
         
-        # Handle the case that the stack is empty.
+        # Handle the case that the schema is empty.
         if square_stack.is_empty:
             # Return the exception chain on failure.
             return DeletionResult.failure(
@@ -139,7 +139,7 @@ class SquareStackPopper:
         target = None
         for square in square_stack.items:
             if square.id == id:
-                # Record a hit before pulling it from the stack.
+                # Record a hit before pulling it from the schema.
                 target = square
                 square_stack.items.remove(square)
         # --- After the purging loop finishes handle the possible return cases. ---#

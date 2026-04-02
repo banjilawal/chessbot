@@ -1,7 +1,7 @@
-# src/logic/token/database/search/query/query.py
+# src/logic/token/database/search/context/context.py
 
 """
-Module: logic.token.database.search.query.query
+Module: logic.token.database.search.context.context
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0

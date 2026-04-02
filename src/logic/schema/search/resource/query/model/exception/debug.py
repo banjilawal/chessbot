@@ -11,14 +11,14 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# SCHEMA_SCHEMA_DEBUG_EXCEPTION #======================#
-    "SchemaSchemaDebugException",
+    # ======================# SCHEMA_QUERY_DEBUG_EXCEPTION #======================#
+    "SchemaQueryDebugException",
 ]
 
 from logic.system import DebugException
 
-# ======================# SCHEMA_SCHEMA_DEBUG_EXCEPTION #======================#
-class SchemaSchemaDebugException(DebugException):
+# ======================# SCHEMA_QUERY_DEBUG_EXCEPTION #======================#
+class SchemaQueryDebugException(DebugException):
     """
     Role:
         -   Exception Chain Layer 2
@@ -26,7 +26,7 @@ class SchemaSchemaDebugException(DebugException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Record the condition that fired a SchemaSchema variable's error state.
+        1.  Record the condition that fired a SchemaQuery variable's error state.
 
     Attributes:
         var: Optional[str]
@@ -40,8 +40,8 @@ class SchemaSchemaDebugException(DebugException):
     Super Class:
         DebugException
     """
-    ERR_CODE = "SCHEMA_SCHEMA_EXCEPTION"
-    MSG = str = "SchemaSchema had an error."
+    ERR_CODE = "SCHEMA_QUERY_EXCEPTION"
+    MSG = str = "SchemaQuery had an error."
     
     def __init__(
             self,

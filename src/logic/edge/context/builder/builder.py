@@ -1,7 +1,7 @@
-# src/logic/edge/query/build/exception.py
+# src/logic/edge/context/build/exception.py
 
 """
-Module: logic.edge.query.build.build
+Module: logic.edge.context.build.build
 Author: Banji Lawal
 Created: 2026-02-18
 version: 1.0.0
@@ -56,14 +56,14 @@ class EdgeContextBuilder(Builder[EdgeContext]):
     ) -> BuildResult[EdgeContext]:
         """
         # ACTION:
-            1.  If one-and-only-one query attribute is not null send an exception chain in the BuildResult.
-            2.  If there is no build route for the not-null query attribute send an exception chain in the BuildResult.
-            3.  If the build route exists and the query attribute is not verified send an exception chain in the
-                BuildResult. Else build the query and send it in the BuildResult's payload.
+            1.  If one-and-only-one context attribute is not null send an exception chain in the BuildResult.
+            2.  If there is no build route for the not-null context attribute send an exception chain in the BuildResult.
+            3.  If the build route exists and the context attribute is not verified send an exception chain in the
+                BuildResult. Else build the context and send it in the BuildResult's payload.
         # PARAMETERS:
             Only one these must be provided:
                 *   id Optional[(int)]
-                *   stack Optional[(str)]
+                *   schema Optional[(str)]
                 *   cord Optional[(Coord)]
                 *   board Optional[(Board)]
                 *   state Optional[EdgeState]
@@ -126,7 +126,7 @@ class EdgeContextBuilder(Builder[EdgeContext]):
             # On validation success return an id_EdgeContext in the BuildResult.
             return BuildResult.success(EdgeContext(id=id))
         
-        # Build the stack EdgeContext if its flag is enabled.
+        # Build the schema EdgeContext if its flag is enabled.
         if name is not None:
             validation = identity_service.validate_name(candidate=name)
             if validation.is_failure:
@@ -197,7 +197,7 @@ class EdgeContextBuilder(Builder[EdgeContext]):
             # On validation success return a token_EdgeContext in the BuildResult.
             return BuildResult.success(EdgeContext(state=state))
         
-        # Return the exception chain if there is no build route for the query.
+        # Return the exception chain if there is no build route for the context.
         return BuildResult.failure(
             EdgeContextBuildException(
                 msg=f"{method}: {EdgeContextBuildException.MSG}",

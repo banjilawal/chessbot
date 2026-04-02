@@ -1,7 +1,7 @@
-# src/logic/node/stack/exception/pop/__init__.py
+# src/logic/node/schema/exception/pop/__init__.py
 
 """
-Module: logic.node.stack.exception.pop.__init__
+Module: logic.node.schema.exception.pop.__init__
 Author: Banji Lawal
 Created: 2026-02-18
 version: 1.0.0

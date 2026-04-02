@@ -1,4 +1,4 @@
-# src/logic/schema/qery/query/__init__.py
+# src/logic/schema/qery/context/__init__.py
 
 """
 Module: logic.schema.database.search.context.__init__

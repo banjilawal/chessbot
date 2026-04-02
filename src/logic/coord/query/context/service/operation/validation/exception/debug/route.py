@@ -1,7 +1,7 @@
-# src/logic/coord/query/context/service/operation/validation/exception/debug/route.py
+# src/logic/coord/context/context/service/operation/validation/exception/debug/route.py
 
 """
-Module: logic.coord.query.context.service.operation.validation.exception.debug.route
+Module: logic.coord.context.context.service.operation.validation.exception.debug.route
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

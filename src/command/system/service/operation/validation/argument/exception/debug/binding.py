@@ -24,7 +24,7 @@ class ArgumentNameTypeBindingException(ServiceRequestDebugException):
     Role:Information, Reporting, Debug
 
     Responsibilities:
-    1.  Indicate that there is a mismatch between a parameter's stack and its type.
+    1.  Indicate that there is a mismatch between a parameter's schema and its type.
 
     Super Class:
         *  ServiceRequestDebugException

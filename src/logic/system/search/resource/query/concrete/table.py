@@ -1,7 +1,7 @@
-# src/logic/system/search/resource/query/concrete/catalog.py
+# src/logic/system/search/resource/context/concrete/schema.py
 
 """
-Module: logic.system.search.resource.query.concrete.catalog
+Module: logic.system.search.resource.context.concrete.schema
 Author: Banji Lawal
 Created: 2026-04-01
 Version: 1.0.0

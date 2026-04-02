@@ -48,7 +48,7 @@ class BoardBuilder(Builder[Board]):
     ) -> BuildResult[Board]:
         """
         # ACTION:
-            1.  If the id or stack are not certified safe send an exception chain in the BuildResult.
+            1.  If the id or schema are not certified safe send an exception chain in the BuildResult.
             2.  If the arena fails its integrity checks send an exception chain in the BuildResult.
             3.  Create a Board instance board then register it with the arena using ArenaBoardService.
             4.  If the registration is not successful send an exception chain in the BuildResult. Otherwise, send
