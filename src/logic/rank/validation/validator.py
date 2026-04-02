@@ -10,20 +10,14 @@ version: 1.0.0
 from __future__ import annotations
 from typing import cast, Any
 
-from logic.coord import Coord, NullRankException
-from logic.coord.service.operation.validation.exception.transaction import RankValidationException
+from logic.system import LoggingLevelRouter, ValidationResult, Validator
 from logic.rank import (
-    Bishop, BishopPersonaMismatchException, King, KingPersonaMismatchException, Knight, KnightPersonaMismatchException,
-    Pawn, PawnPersonaMismatchException, Queen,
-    QueenPersonaMismatchException,
-    Rank, RankValidationRouteException, Rook, RookPersonaMismatchException
-)
-from logic.system import (
-    NUMBER_OF_ROWS, Validator, ValidationResult, LoggingLevelRouter, NumberValidator
+    NullRankException, Rank, RankIntegrityWorkers, RankPersonaValidator, RankValidationException
 )
 
 
-class RankValidator(Validator[Coord]):
+
+class RankValidator(Validator[Rank]):
     """
     Role
         -   Transaction Worker
@@ -38,9 +32,9 @@ class RankValidator(Validator[Coord]):
 
     Provides:
         -   def validate(
-                    cls,
                     rank: Any,
                     workers: RankIntegrityWorkers,
+                    persona_validator: RankPersonaValidator
             ) -> ValidationResult[Rank]:
 
     Super Class:
@@ -53,6 +47,7 @@ class RankValidator(Validator[Coord]):
             cls,
             candidate: Any,
             workers: RankIntegrityWorkers = RankIntegrityWorkers(),
+            persona_validator: RankPersonaValidator = RankPersonaValidator(),
     ) -> ValidationResult[Rank]:
         """
         Verify the rank is a Rank that is safe to use.
@@ -62,10 +57,12 @@ class RankValidator(Validator[Coord]):
                     -   the rank does not exist.
                     -   the rank is not a Rank.
                     -   Any integrity worker raises a failed test.
+                    -   persona_validator returns an exception.
             2.  Otherwise, after the rank is cast to a Rank, send the success result.
         Args:
             candidate: Any
             workers: RankIntegrityWorkers
+            persona_validator: RankPersonaValidator
         Returns:
             ValidationResult[Rank]
         Raises:
@@ -126,161 +123,23 @@ class RankValidator(Validator[Coord]):
                     ex=id_validation_result.exception,
                 )
             )
-
-        # --- Handle the case that, a King has the wrong Persona. ---#
-        if isinstance(rank, King):
-            if rank.persona != workers.persona_service.persona:
-                # Return the exception on failure.
-                return ValidationResult.failure(
-                    RankValidationException(
-                        mthd=method,
-                        title=cls.__name__,
-                        op=RankValidationException.OP,
-                        msg=RankValidationException.MSG,
-                        err_code=RankValidationException.ERR_CODE,
-                        rslt_type=RankValidationException.RSLT_TYPE,
-                        ex=KingPersonaMismatchException(
-                            val=rank.persona,
-                            var="rank.persona",
-                            msg=KingPersonaMismatchException.MSG,
-                            err_code=KingPersonaMismatchException.ERR_CODE,
-                        ),
-                    )
-                )
-            # --- Otherwise return the work product. ---#
-            return ValidationResult.success(rank)
-        
-        # --- Handle the case that, a Pawn has the wrong Persona. ---#
-        if isinstance(rank, Pawn):
-            if rank.persona != workers.persona_service.persona:
-                # Return the exception on failure.
-                return ValidationResult.failure(
-                    RankValidationException(
-                        mthd=method,
-                        title=cls.__name__,
-                        op=RankValidationException.OP,
-                        msg=RankValidationException.MSG,
-                        err_code=RankValidationException.ERR_CODE,
-                        rslt_type=RankValidationException.RSLT_TYPE,
-                        ex=PawnPersonaMismatchException(
-                            val=rank.persona,
-                            var="rank.persona",
-                            msg=PawnPersonaMismatchException.MSG,
-                            err_code=PawnPersonaMismatchException.ERR_CODE,
-                        ),
-                    )
-                )
-            # --- Otherwise return the work product. ---#
-            return ValidationResult.success(rank)
-        
-        # --- Handle the case that, a Knight has the wrong Persona. ---#
-        if isinstance(rank, Knight):
-            if rank.persona != workers.persona_service.persona:
-                # Return the exception on failure.
-                return ValidationResult.failure(
-                    RankValidationException(
-                        mthd=method,
-                        title=cls.__name__,
-                        op=RankValidationException.OP,
-                        msg=RankValidationException.MSG,
-                        err_code=RankValidationException.ERR_CODE,
-                        rslt_type=RankValidationException.RSLT_TYPE,
-                        ex=KnightPersonaMismatchException(
-                            val=rank.persona,
-                            var="rank.persona",
-                            msg=KnightPersonaMismatchException.MSG,
-                            err_code=KnightPersonaMismatchException.ERR_CODE,
-                        ),
-                    )
-                )
-            # --- Otherwise return the work product. ---#
-            return ValidationResult.success(rank)
-        
-        # --- Handle the case that, a Bishop has the wrong Persona. ---#
-        if isinstance(rank, Bishop):
-            if rank.persona != workers.persona_service.persona:
-                # Return the exception on failure.
-                return ValidationResult.failure(
-                    RankValidationException(
-                        mthd=method,
-                        title=cls.__name__,
-                        op=RankValidationException.OP,
-                        msg=RankValidationException.MSG,
-                        err_code=RankValidationException.ERR_CODE,
-                        rslt_type=RankValidationException.RSLT_TYPE,
-                        ex=BishopPersonaMismatchException(
-                            val=rank.persona,
-                            var="rank.persona",
-                            msg=BishopPersonaMismatchException.MSG,
-                            err_code=BishopPersonaMismatchException.ERR_CODE,
-                        ),
-                    )
-                )
-            # --- Otherwise return the work product. ---#
-            return ValidationResult.success(rank)
-        
-        # --- Handle the case that, a Bishop has the wrong Persona. ---#
-        if isinstance(rank, Rook):
-            if rank.persona != workers.persona_service.persona:
-                # Return the exception on failure.
-                return ValidationResult.failure(
-                    RankValidationException(
-                        mthd=method,
-                        title=cls.__name__,
-                        op=RankValidationException.OP,
-                        msg=RankValidationException.MSG,
-                        err_code=RankValidationException.ERR_CODE,
-                        rslt_type=RankValidationException.RSLT_TYPE,
-                        ex=RookPersonaMismatchException(
-                            val=rank.persona,
-                            var="rank.persona",
-                            msg=RookPersonaMismatchException.MSG,
-                            err_code=RookPersonaMismatchException.ERR_CODE,
-                        ),
-                    )
-                )
-            # --- Otherwise return the work product. ---#
-            return ValidationResult.success(rank)
-        
-        # --- Handle the case that, a Bishop has the wrong Persona. ---#
-        if isinstance(rank, Queen):
-            if rank.persona != workers.persona_service.persona:
-                # Return the exception on failure.
-                return ValidationResult.failure(
-                    RankValidationException(
-                        mthd=method,
-                        title=cls.__name__,
-                        op=RankValidationException.OP,
-                        msg=RankValidationException.MSG,
-                        err_code=RankValidationException.ERR_CODE,
-                        rslt_type=RankValidationException.RSLT_TYPE,
-                        ex=QueenPersonaMismatchException(
-                            val=rank.persona,
-                            var="rank.persona",
-                            msg=QueenPersonaMismatchException.MSG,
-                            err_code=QueenPersonaMismatchException.ERR_CODE,
-                        ),
-                    )
-                )
-            # --- Otherwise return the work product. ---#
-            return ValidationResult.success(rank)
-        
-        # Handle the case that, the there is no persona validator logic for the rank.
-        return ValidationResult.failure(
-            RankValidationException(
-                mthd=method,
-                title=cls.__name__,
-                op=RankValidationException.OP,
-                msg=RankValidationException.MSG,
-                err_code=RankValidationException.ERR_CODE,
-                rslt_type=RankValidationException.RSLT_TYPE,
-                ex=RankValidationRouteException(
-                    val=rank,
-                    var=rank.persona.name,
+        # Handle the case that, the rank has the wrong persona.
+        rank_persona_validation = persona_validator.validate(
+            rank=rank,
+            persona_service=workers.persona_service
+        )
+        if rank_persona_validation.is_failure:
+            # Return the exception on failure.
+            return ValidationResult.failure(
+                RankValidationException(
+                    mthd=method,
+                    title=cls.__name__,
+                    op=RankValidationException.OP,
                     msg=RankValidationException.MSG,
                     err_code=RankValidationException.ERR_CODE,
+                    rslt_type=RankValidationException.RSLT_TYPE,
+                    ex=rank_persona_validation.exception,
                 )
             )
-        )
- 
-
+        # --- Forward the work product to the caller. ---#
+        return ValidationResult.success(rank)

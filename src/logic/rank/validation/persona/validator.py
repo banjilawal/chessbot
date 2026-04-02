@@ -47,17 +47,23 @@ class RankPersonaValidator(Validator[Rank]):
         -   Assumes the rank param has already been validated. Should only
             be called inside RankValidator.
             
-    IntegrityWorker Responsibilities:
-        -   IntegrityWorkers are validators and external services and validators.
-        -   IntegrityWorkers simplify and modularize dependency management.
-        -   They decrease the number of imports.
-        -   Simplify Builder/Validator entry point signatures.
-        -   This is too large for a simple RankIntegrityWorker.
+        IntegrityWorker Responsibilities:
+            -   IntegrityWorkers are validators and external services and validators.
+            -   IntegrityWorkers simplify and modularize dependency management.
+            -   They decrease the number of imports.
+            -   Simplify Builder/Validator entry point signatures.
+            -   This is too large for a simple RankIntegrityWorker.
+            -   Single files
+            
+        RankPersonaValidator is Not an IntegrityWorker:
+            -   RankPersonaValidator lives inside the *.rank.validator package.
+            -   Highly cohesive with RankValidator.
+            -   Don't want any cyclic dependencies with RankIntegrityWorkers.persona_service.
+            -   Requires its package.
         
-    RankPersonaValidator is Not an IntegrityWorker:
-        -   RankPersonaValidator lives inside the rank.validator package.
-        -   Highly cohesive with RankValidator.
-        -   Don't want any cyclic dependencies with RankIntegrityWorkers.persona_service.
+        Contractors:
+            -   If I need to writer other validators for ranks I'put them all in a contractors
+                package.
     """
     
     @classmethod
