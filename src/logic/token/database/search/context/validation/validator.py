@@ -7,20 +7,15 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
+from __future__ import annotations
 from typing import Any, cast
 
-from logic.square import SquareService
-from logic.team import TeamService
-from logic.rank import RankService
-from logic.coord import CoordService
-from logic.persona import PersonaService
-from logic.system import (
-    GameColorValidator, IdentityService, LoggingLevelRouter, NumberValidator, Validator,
-    ValidationResult
-)
+
+from logic.system import LoggingLevelRouter, Validator, ValidationResult
 from logic.token import (
-    ArenaTokenContextFlagsException, NullTokenContextException, TokenContext, TokenContextValidationException,
-    TokenContextValidationRouteException, ZeroTokenContextFlagsException
+    ExcessTokenContextFlagsException, NullTokenContextException, TokenContext,
+    TokenContextIntegrityWorkers,
+    TokenContextValidationException, TokenContextValidationRouteException, ZeroTokenContextFlagsException
 )
 
 class TokenContextValidator(Validator[TokenContext]):
@@ -50,52 +45,51 @@ class TokenContextValidator(Validator[TokenContext]):
     def validate(
             cls,
             candidate: Any,
-            rank_service: RankService = RankService(),
-            team_service: TeamService = TeamService(),
-            coord_service: CoordService = CoordService(),
-            square_service: SquareService = SquareService(),
-            persona_service: PersonaService = PersonaService(),
-            number_validator: NumberValidator = NumberValidator(),
-            identity_service: IdentityService = IdentityService(),
-            color_validator: GameColorValidator = GameColorValidator(),
+            workers: TokenContextIntegrityWorkers,
     ) -> ValidationResult[TokenContext]:
         """
-        # ACTION:
-            1.  If the candidate fails existence or type tests send the exception in the ValidationResult.
-                Else, cast to TeamContext instance query.
-            2.  If one-and-only-one query attribute is not null return an exception in the ValidationResult.
-            3.  If there is no certification route for the attribute return an exception in the ValidationResult.
-            4.  If the certification route exists use the appropriate service or validation to send either an exception
-                chain the ValidationResult or the query.
-        # PARAMETERS:
-            *   candidate (Any)
-            *   rank_service (RankService)
-            *   team_service (TeamService)
-            *   coord_service (CoordService)
-            *   color_validator (ColorValidator)
-            *   identity_service (IdentityService)
-            *   number_validation (NotNegativeNumberValidator)
-        # RETURNS:
-            *   ValidationResult[TeamContext] containing either:
-                    - On failure: Exception.
-                    - On success: TeamContext in the payload.
+        Certify a candidate is a TokenContext that is safe to use.
+
+        Action:
+            1.  Send an exception chain in the ValidationResult if any of the following
+                occur
+                    -   The candidate is null.
+                    -   The candidate is not a TokenContext.
+                    -   It has no attributes enabled.
+                    -   It has more than one attribute enabled.
+                    -   The enabled attribute fails a safety check.
+                    -   There is no validation path for the attribute.
+            2.  Otherwise, send the success result.
+        Args:
+            candidate: Any,
+            workers: TokenContextIntegrityWorkers
+        Returns:
+            ValiationResult[TokenContext]
         Raises:
-            *   TypeError
-            *   NullTeamContextException
-            *   ZeroTeamContextFlagsException
-            *   ArenaTeamContextFlagsException
-            *   TeamContextValidationException
-            *   TeamContextValidationRouteException
+            TypeError
+            NullTokenContextException
+            ZeroTokenContextFlagsException
+            TokenContextValidationException
+            ExcessTokenContextFlagsException
+            TeamContextValidationRouteException
         """
-        method = "TokenContextValidator.validate"
+        method = f"{cls.__name__}.validate"
         
         # Handle the nonexistence case.
         if candidate is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenContextValidationException(
-                    msg=f"{method}: {TokenContextValidationException.ERR_CODE}",
-                    ex=NullTokenContextException(f"{method}: {NullTokenContextException.MSG}")
+                    mthd=method,
+                    title=cls.__name__,
+                    op=TokenContextValidationException.OP,
+                    msg=TokenContextValidationException.MSG,
+                    err_code=TokenContextValidationException.ERR_CODE,
+                    rslt_type=TokenContextValidationException.RSLT_TYPE,
+                    ex=NullTokenContextException(
+                        msg=TokenContextValidationException.MSG,
+                        err_code=TokenContextValidationException.ERR_CODE,
+                    )
                 )
             )
         # Handle the wrong class case.
@@ -103,8 +97,15 @@ class TokenContextValidator(Validator[TokenContext]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenContextValidationException(
-                    msg=f"{method}: {TokenContextValidationException.ERR_CODE}",
-                    ex=TypeError(f"{method}: Expected TokenContext, got {type(candidate).__designation__} instead.")
+                    mthd=method,
+                    title=cls.__name__,
+                    op=TokenContextValidationException.OP,
+                    msg=TokenContextValidationException.MSG,
+                    err_code=TokenContextValidationException.ERR_CODE,
+                    rslt_type=TokenContextValidationException.RSLT_TYPE,
+                    ex=TypeError(
+                        f"Expected TokenContext, got {type(candidate).__name__} instead."
+                    )
                 )
             )
         # --- Cast the candidate to TokenContext for additional tests. ---#
@@ -116,8 +117,16 @@ class TokenContextValidator(Validator[TokenContext]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenContextValidationException(
-                    msg=f"{method}: {TokenContextValidationException.ERR_CODE}",
-                    ex=ZeroTokenContextFlagsException(f"{method}: {ZeroTokenContextFlagsException.MSG}")
+                    mthd=method,
+                    title=cls.__name__,
+                    op=TokenContextValidationException.OP,
+                    msg=TokenContextValidationException.MSG,
+                    err_code=TokenContextValidationException.ERR_CODE,
+                    rslt_type=TokenContextValidationException.RSLT_TYPE,
+                    ex=ZeroTokenContextFlagsException(
+                        msg=ZeroTokenContextFlagsException.MSG,
+                        err_code=ZeroTokenContextFlagsException.ERR_CODE,
+                    )
                 )
             )
         # Handle the case of too many attributes being used in a search.
@@ -125,137 +134,203 @@ class TokenContextValidator(Validator[TokenContext]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenContextValidationException(
-                    msg=f"{method}: {TokenContextValidationException.ERR_CODE}",
-                    ex=ArenaTokenContextFlagsException(
-                        f"{method}: {ArenaTokenContextFlagsException.MSG}"
+                    mthd=method,
+                    title=cls.__name__,
+                    op=TokenContextValidationException.OP,
+                    msg=TokenContextValidationException.MSG,
+                    err_code=TokenContextValidationException.ERR_CODE,
+                    rslt_type=TokenContextValidationException.RSLT_TYPE,
+                    ex=ExcessTokenContextFlagsException(
+                        msg=ExcessTokenContextFlagsException.MSG,
+                        err_code=ExcessTokenContextFlagsException.ERR_CODE,
                     )
                 )
             )
-        
         # --- Route to the appropriate validation branch. ---#
         
         # Certification for the search-by-id target.
         if context.id is not None:
-            validation = identity_service.validate_id(candidate=context.id)
-            if validation.is_failure:
+            validation_result = workers.identity_service.validate_id(
+                candidate=context.id
+            )
+            if validation_result.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
                     TokenContextValidationException(
-                        msg=f"{method}: {TokenContextValidationException.ERR_CODE}",
-                        ex=validation.exception
+                        mthd=method,
+                        title=cls.__name__,
+                        op=TokenContextValidationException.OP,
+                        msg=TokenContextValidationException.MSG,
+                        err_code=TokenContextValidationException.ERR_CODE,
+                        rslt_type=TokenContextValidationException.RSLT_TYPE,
+                        ex=validation_result.exception
                     )
                 )
-            # On certification success return the id_TokenContext in the ValidationResult.
+            # On validation success forward the work product to the caller.
             return ValidationResult.success(context)
         
         # Certification for the search-by-designation target.
         if context.designation is not None:
-            validation = identity_service.validate_name(candidate=context.designation)
-            if validation.is_failure:
+            validation_result = workers.identity_service.validate_name(
+                candidate=context.designation
+            )
+            if validation_result.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
                     TokenContextValidationException(
-                        msg=f"{method}: {TokenContextValidationException.ERR_CODE}",
-                        ex=validation.exception
+                        mthd=method,
+                        title=cls.__name__,
+                        op=TokenContextValidationException.OP,
+                        msg=TokenContextValidationException.MSG,
+                        err_code=TokenContextValidationException.ERR_CODE,
+                        rslt_type=TokenContextValidationException.RSLT_TYPE,
+                        ex=validation_result.exception
                     )
                 )
-            # On certification success return the designation_TokenContext in the ValidationResult.
+            # On validation success forward the work product to the caller.
             return ValidationResult.success(context)
         
         # Certification for the search-by-opening_square_name target.
-        if context.opening_square is not None:
-            validation = square_service.validator.validate(candidate=context.opening_square)
-            if validation.is_failure:
+        if context.opening_square_name is not None:
+            validation_result = workers.identity_service.validate_name(
+                candidate=context.opening_square_name
+            )
+            if validation_result.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
                     TokenContextValidationException(
-                        msg=f"{method}: {TokenContextValidationException.ERR_CODE}",
-                        ex=validation.exception
+                        mthd=method,
+                        title=cls.__name__,
+                        op=TokenContextValidationException.OP,
+                        msg=TokenContextValidationException.MSG,
+                        err_code=TokenContextValidationException.ERR_CODE,
+                        rslt_type=TokenContextValidationException.RSLT_TYPE,
+                        ex=validation_result.exception
                     )
                 )
-            # On certification success return the opening_square_TokenContext in the ValidationResult.
+            # On validation success forward the work product to the caller.
             return ValidationResult.success(context)
         
         # Certification for the search-by-coord target.
         if context.coord is not None:
-            validation = coord_service.validator.validate(candidate=context.coord)
-            if validation.is_failure:
+            validation_result = workers.coord_service.validator.validate(
+                candidate=context.coord
+            )
+            if validation_result.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
                     TokenContextValidationException(
-                        msg=f"{method}: {TokenContextValidationException.ERR_CODE}",
-                        ex=validation.exception
+                        mthd=method,
+                        title=cls.__name__,
+                        op=TokenContextValidationException.OP,
+                        msg=TokenContextValidationException.MSG,
+                        err_code=TokenContextValidationException.ERR_CODE,
+                        rslt_type=TokenContextValidationException.RSLT_TYPE,
+                        ex=validation_result.exception
                     )
                 )
-            # On certification success return the coord_TokenContext in the ValidationResult.
+            # On validation success forward the work product to the caller..
             return ValidationResult.success(context)
         
         # Certification for the search-by-team target.
         if context.team is not None:
-            validation = team_service.validator.validate(candidate=context.team)
-            if validation.is_failure:
+            validation_result = workers.team_service.validator.validate(
+                candidate=context.team
+            )
+            if validation_result.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
                     TokenContextValidationException(
-                        msg=f"{method}: {TokenContextValidationException.ERR_CODE}",
-                        ex=validation.exception
+                        mthd=method,
+                        title=cls.__name__,
+                        op=TokenContextValidationException.OP,
+                        msg=TokenContextValidationException.MSG,
+                        err_code=TokenContextValidationException.ERR_CODE,
+                        rslt_type=TokenContextValidationException.RSLT_TYPE,
+                        ex=validation_result.exception
                     )
                 )
-            # On certification success return the team_TokenContext in the ValidationResult.
+            # On validation success forward the work product to the caller.
             return ValidationResult.success(context)
         
         # Certification for the search-by-rank target.
         if context.rank is not None:
-            validation = rank_service.validator.validate(candidate=context.rank)
-            if validation.is_failure:
+            validation_result = workers.rank_service.validator.validate(
+                candidate=context.rank
+            )
+            if validation_result.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
                     TokenContextValidationException(
-                        msg=f"{method}: {TokenContextValidationException.ERR_CODE}",
-                        ex=validation.exception
+                        mthd=method,
+                        title=cls.__name__,
+                        op=TokenContextValidationException.OP,
+                        msg=TokenContextValidationException.MSG,
+                        err_code=TokenContextValidationException.ERR_CODE,
+                        rslt_type=TokenContextValidationException.RSLT_TYPE,
+                        ex=validation_result.exception
                     )
                 )
-            # On certification success return the rank_TokenContext in the ValidationResult.
+            # On validation success forward the work product to the caller.
             return ValidationResult.success(context)
         
         # Certification for the search-by-color target.
         if context.color is not None:
-            validation = color_validator.validate(candidate=context.color)
-            if validation.is_failure:
+            validation_result = workers.color_validator.validate(
+                candidate=context.color
+            )
+            if validation_result.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
                     TokenContextValidationException(
-                        msg=f"{method}: {TokenContextValidationException.ERR_CODE}",
-                        ex=validation.exception
+                        mthd=method,
+                        title=cls.__name__,
+                        op=TokenContextValidationException.OP,
+                        msg=TokenContextValidationException.MSG,
+                        err_code=TokenContextValidationException.ERR_CODE,
+                        rslt_type=TokenContextValidationException.RSLT_TYPE,
+                        ex=validation_result.exception
                     )
                 )
-            # On certification success return the color_TokenContext in the ValidationResult.
+            # On validation success forward the work product to the caller.
             return ValidationResult.success(context)
         
         # Certification for the search-by-ransom target.
         if context.ransom is not None:
-            validation = number_validator.validate(
+            validation_result = workers.number_validator.validate(
                 candidate=context.ransom,
-                floor=persona_service.min_ransom,
-                ceiling=persona_service.max_ransom,
+                floor=workers.persona_service.min_ransom,
+                ceiling=workers.persona_service.max_ransom,
             )
             # Return the exception chain on failure.
-            if validation.is_failure:
+            if validation_result.is_failure:
+                # Return the exception chain on failure.
                 return ValidationResult.failure(
                     TokenContextValidationException(
-                        msg=f"{method}: {TokenContextValidationException.ERR_CODE}",
-                        ex=validation.exception
+                        mthd=method,
+                        title=cls.__name__,
+                        op=TokenContextValidationException.OP,
+                        msg=TokenContextValidationException.MSG,
+                        err_code=TokenContextValidationException.ERR_CODE,
+                        rslt_type=TokenContextValidationException.RSLT_TYPE,
+                        ex=validation_result.exception
                     )
                 )
-            # On certification success return the ransom_TokenContext in the ValidationResult.
+            # On validation success forward the work product to the caller.
             return ValidationResult.success(context)
         
-        # Return the exception chain if there is no validation route for the query.
+        # Handle the case that, there is no validation logic for the attribute.
         return ValidationResult.failure(
             TokenContextValidationException(
-                msg=f"{method}: {TokenContextValidationException.ERR_CODE}",
+                mthd=method,
+                title=cls.__name__,
+                op=TokenContextValidationException.OP,
+                msg=TokenContextValidationException.MSG,
+                err_code=TokenContextValidationException.ERR_CODE,
+                rslt_type=TokenContextValidationException.RSLT_TYPE,
                 ex=TokenContextValidationRouteException(
-                    f"{method}: {TokenContextValidationRouteException.MSG}"
+                    msg=TokenContextValidationRouteException.MSG,
+                    err_code=TokenContextValidationRouteException.ERR_CODE,
                 )
             )
         )

@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-
+from logic.persona import PersonaService
 from logic.rank import RankService
 from logic.team import TeamService
 from logic.coord import CoordService
@@ -41,9 +41,11 @@ class TokenContextIntegrityWorkers:
     _rank_service: RankService
     _coord_service: CoordService
     _square_service: SquareService
+    _persona_service: PersonaService
     _identity_service: IdentityService
     _number_validator: NumberValidator
     _color_validator: GameColorValidator
+
 
     
     def __init__(
@@ -52,6 +54,7 @@ class TokenContextIntegrityWorkers:
             rank_service: RankService = RankService(),
             coord_service: CoordService = CoordService(),
             square_service: SquareService = SquareService(),
+            persona_service: PersonaService = PersonaService(),
             number_validator: NumberValidator = NumberValidator(),
             identity_service: IdentityService = IdentityService(),
             color_validator: GameColorValidator = GameColorValidator(),
@@ -72,6 +75,7 @@ class TokenContextIntegrityWorkers:
         self._coord_service = coord_service
         self._square_service = square_service
         self._color_validator = color_validator
+        self._persona_service = persona_service
         self._number_validator = number_validator
         self._identity_service = identity_service
         
@@ -102,6 +106,10 @@ class TokenContextIntegrityWorkers:
     @property
     def color_validator(self) -> GameColorValidator:
         return self._color_validator
+    
+    @property
+    def persona_service(self) -> PersonaService:
+        return self._persona_service
     
 
         
