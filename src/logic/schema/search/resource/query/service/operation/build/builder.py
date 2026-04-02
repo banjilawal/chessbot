@@ -12,7 +12,7 @@ from __future__ import annotations
 from logic.system import Builder, LoggingLevelRouter, BuildResult
 from logic.schema import (
     Schema, SchemaContext, SchemaContextValidator, SchemaQuery, SchemaQueryBuildException,
-    SchemaValidator
+    SchemaQueryIntegrityWorkers, SchemaValidator
 )
 
 
@@ -35,8 +35,7 @@ class SchemaQueryBuilder(Builder[SchemaQuery]):
         -   def build(
                 schema: Schema
                 context: SchemaContext
-                schema_validator: SchemaValidator
-                context_validator: SchemaContextValidator
+                workers: SchemaQueryIntegrityWorkers
             ) -> BuildResult[SchemaContext]:
 
      Super Class:
@@ -49,8 +48,7 @@ class SchemaQueryBuilder(Builder[SchemaQuery]):
             cls,
             schema: Schema,
             context: SchemaContext,
-            schema_validator: SchemaValidator = SchemaValidator(),
-            context_validator: SchemaContextValidator = SchemaContextValidator(),
+            workers: SchemaQueryIntegrityWorkers = SchemaQueryIntegrityWorkers(),
     ) -> BuildResult[SchemaQuery]:
         """
         Action:
@@ -62,8 +60,7 @@ class SchemaQueryBuilder(Builder[SchemaQuery]):
         Args:
             schema: Schema
             context: SchemaContext
-            schema_validator: SchemaValidator
-            context_validator: SchemaContextValidator
+            workers: SchemaQueryIntegrityWorkers
         Returns:
             BuildResult[SchemaQuery]
         Raises:
@@ -74,7 +71,7 @@ class SchemaQueryBuilder(Builder[SchemaQuery]):
         method = f"{cls.__name__}.build"
         
         # Handle the case that, the schema is not certified as safe.
-        schema_validation_result = schema_validator.validate(schema)
+        schema_validation_result = workers.schema_validator.validate(schema)
         if schema_validation_result.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
@@ -90,7 +87,7 @@ class SchemaQueryBuilder(Builder[SchemaQuery]):
             )
         
         # Handle the case that, the context is not certified as safe.
-        context_validation_result = context_validator.validate(context)
+        context_validation_result = workers.context_validator.validate(context)
         if context_validation_result.is_failure:
             # Return the exception chain on failure.
             # Return the exception chain on failure.
