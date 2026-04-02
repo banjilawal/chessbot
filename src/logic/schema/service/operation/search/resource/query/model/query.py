@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from logic.schema import Schema
 from logic.system import CatalofQuery
-from logic.schema.search import SchemaContext
+from logic.schema.service.operation.search import SchemaContext
 
 
 class SchemaQuery(CatalofQuery[Schema]):

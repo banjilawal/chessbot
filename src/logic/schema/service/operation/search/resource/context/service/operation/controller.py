@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.schema.search import (
+from logic.schema.service.operation.search import (
     SchemaContextBuilder, SchemaContextIntegrityWorkers, SchemaContextValidator
 )
 
