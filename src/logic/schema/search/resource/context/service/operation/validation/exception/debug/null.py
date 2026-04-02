@@ -39,7 +39,7 @@ class NullSchemaContextException(NullException):
     Provides:
 
     Super Class:
-        DebugException
+        NullException
     """
     MSG = str = "SchemaContext cannot be null."
     ERR_CODE = "NULL_SCHEMA_CONTEXT_EXCEPTION"

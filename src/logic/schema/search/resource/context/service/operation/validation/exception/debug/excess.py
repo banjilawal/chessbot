@@ -15,11 +15,11 @@ __all__ = [
     "ExcessSchemaContextFlagsException",
 ]
 
-from logic.system import DebugException
+from logic.system import  ExcessContextFlagsException
 
 
 # ======================# EXCESS_SCHEMA_CONTEXT_FLAGS_EXCEPTION #======================#
-class ExcessSchemaContextFlagsException(DebugException):
+class ExcessSchemaContextFlagsException(ExcessContextFlagsException):
     """
     Role:
         -   Exception Chain Layer 2
@@ -27,8 +27,8 @@ class ExcessSchemaContextFlagsException(DebugException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that the work was not completed because more than one
-            schema attribute was enabled.
+        1.  Indicate that no SchemaContext work was not completed
+            because more than one attribute was enabled.
 
     Attributes:
         var: Optional[str]
@@ -40,7 +40,7 @@ class ExcessSchemaContextFlagsException(DebugException):
     Provides:
 
     Super Class:
-        DebugException
+        ExcessContextFlagsException)
     """
     MSG = str = "Only one SchemaContex should be enabled."
     ERR_CODE = "EXCESS_SCHEMA_CONTEXT_FLAGS_EXCEPTION"

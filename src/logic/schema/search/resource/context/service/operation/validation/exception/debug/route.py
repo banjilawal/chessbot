@@ -15,11 +15,11 @@ __all__ = [
     "SchemaContextValidationRouteException",
 ]
 
-from logic.system import ExecutionRouteException
+from logic.system import ContextRouteException
 
 
 # ======================# SCHEMA_CONTEXT_VALIDATION_ROUTE_EXCEPTION #======================#
-class SchemaContextValidationRouteException(ExecutionRouteException):
+class SchemaContextValidationRouteException(ContextRouteException):
     """
     Role:
         -   Exception Chain Layer 2
@@ -27,7 +27,7 @@ class SchemaContextValidationRouteException(ExecutionRouteException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that SchemaContext validation failed because attribute
+        1.  Indicate that no SchemaContext validation failed because attribute
             did not have a verification path.
 
     Attributes:
@@ -40,7 +40,7 @@ class SchemaContextValidationRouteException(ExecutionRouteException):
     Provides:
 
     Super Class:
-        DebugException
+        ContextRouteException
     """
     MSG = str = "No validation path for the SchemaContext attribute."
     ERR_CODE = "SCHEMA_CONTEXT_VALIDATION_ROUTE_EXCEPTION"
