@@ -12,6 +12,8 @@ __all__ = [
     "TokenQueryNullException",
 ]
 
+from typing import Any, Optional
+
 from logic.system import NullException
 
 

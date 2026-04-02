@@ -1,9 +1,9 @@
-# src/logic/token/database/search/context/service/operation/validation/exception/null.py
+# src/logic/token/database/kernel/operation/crud/pop/exception/empty.py
 
 """
-Module: logic.token.database.search.context.service.operation.validation.exception.null
+Module: logic.token.database.kernel.operation.crud.pop.exception.empty
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2026-02-22
 version: 1.0.0
 """
 
@@ -11,39 +11,39 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# NULL_TOKEN_CONTEXT_EXCEPTION #======================#
-    "NullTokenContextException",
+    # ======================# TOKEN_QUERY_STACK_EMPTY_EXCEPTION #======================#
+    "TokenQueryStackEmptyException",
 ]
 
-from logic.system import NullException
+from logic.system import DebugException
 
 
-# ======================# NULL_TOKEN_CONTEXT_EXCEPTION #======================#
-class NullTokenContextException(NullException):
+# ======================# TOKEN_QUERY_STACK_EMPTY_EXCEPTION #======================#
+class TokenQueryStackEmptyException(DebugException):
     """
     Role:
-        - Error Variable Identifier
-        - Exception Chain Layer 2
-        - Exception Messaging
+        -   Error Variable Identifier
+        -   Exception Chain Layer 2,
+        -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that a TokenContext is null where it should not be.
-
+        1.  Indicate that the TokenQuery validation failed because the stack is empty.
+        
     Attributes:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]
         ex: Optional[Exception]
         err_code: Optional[str]
-
+        
     Provides:
 
     Super Class:
-        NulException
-    """
-    MSG = "TokenContext cannot be null."
-    ERR_CODE = "NULL_TOKEN_CONTEXT_EXCEPTION"
+        TokenDebugException
 
+    """
+    ERR_CODE = "TOKEN_QUERY_STACK_EMPTY_EXCEPTION"
+    MSG = "TokenQuery.stack cannot be empty."
     
     def __init__(
             self,
@@ -65,8 +65,9 @@ class NullTokenContextException(NullException):
         err_code = err_code or self.ERR_CODE
         super().__init__(
             ex=ex,
-            msg=msg,
             var=var,
             val=val,
+            msg=msg,
             err_code=err_code,
         )
+

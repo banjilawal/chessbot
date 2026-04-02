@@ -12,7 +12,6 @@ version: 1.0.0
 # Packages
 from .build import *
 from .validation import *
-from .validator import *
 
 # Modules
 from .controller import TokenQueryOpsController
