@@ -1,33 +1,33 @@
-# src/logic/schema/database/search/schema/model/exception/anchor.py
+# src/logic/system/search/query/exception/anchor.py
 
 """
-Module: logic.schema.database.search.schema.model.exception.anchor
+Module: logic.system.search.query.exception.anchor
 Author: Banji Lawal
-Created: 2025-10-03
-version: 1.0.0
+Created: 2026-04-01
+Version: 1.0.0
 """
 
 from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# SCHEMA_SCHEMA_EXCEPTION #======================#
-    "SchemaSchemaException",
+    # ======================# QUERY_EXCEPTION #======================#
+    "QueryException",
 ]
 
 from logic.system import AnchorException
 
 
-# ======================# SCHEMA_SCHEMA_EXCEPTION #======================#
-class SchemaSchemaException(AnchorException):
+# ======================# QUERY_EXCEPTION #======================#
+class QueryException(AnchorException):
     """
     Role:
         -   Exception Chain Layer 0
         -   Exception coverage target
 
     Responsibilities:
-        1.  Anchors SchemaSchema debug (layer-2) information.
-        2.  Indicate which SchemaSchema method received a worker's (layer-1)
+        1.  Anchors Query debug (layer-2) information.
+        2.  Indicate which Query method received a worker's (layer-1)
             failure result.
 
     Attributes:
@@ -42,8 +42,8 @@ class SchemaSchemaException(AnchorException):
     Super Class:
         AnchorException
     """
-    ERR_CODE = "SCHEMA_SCHEMA_EXCEPTION"
-    MSG = "SchemaSchema raised an exception."
+    ERR_CODE = "QUERY_EXCEPTION"
+    MSG = "Query raised an exception."
     
     def __init__(
             self,

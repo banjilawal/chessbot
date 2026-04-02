@@ -13,4 +13,4 @@ version: 1.0.0
 from .service import *
 
 # Modules
-from .query import SchemaQuery
+from logic.schema.search.resource.query.model.query import SchemaQuery

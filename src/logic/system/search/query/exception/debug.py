@@ -1,24 +1,24 @@
-# src/logic/schema/database/search/schema/model/exception/debug/__init__.py
+# src/logic/system/search/query/exception/debug.py
 
 """
-Module: logic.schema.database.search.schema.model.exception.debug.__init__
+Module: logic.system.search.query.exception.debug
 Author: Banji Lawal
-Created: 2025-10-03
-version: 1.0.0
+Created: 2026-04-01
+Version: 1.0.0
 """
 
 from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# SCHEMA_SCHEMA_DEBUG_EXCEPTION #======================#
-    "SchemaSchemaDebugException",
+    # ======================# QUERY_DEBUG_EXCEPTION #======================#
+    "QueryDebugException",
 ]
 
 from logic.system import DebugException
 
-# ======================# SCHEMA_SCHEMA_DEBUG_EXCEPTION #======================#
-class SchemaSchemaDebugException(DebugException):
+# ======================# QUERY_DEBUG_EXCEPTION #======================#
+class QueryDebugException(DebugException):
     """
     Role:
         -   Exception Chain Layer 2
@@ -26,7 +26,7 @@ class SchemaSchemaDebugException(DebugException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Record the condition that fired a SchemaSchema variable's error state.
+        1.  Record the condition that fired a Query variable's error state.
 
     Attributes:
         var: Optional[str]
@@ -40,8 +40,8 @@ class SchemaSchemaDebugException(DebugException):
     Super Class:
         DebugException
     """
-    ERR_CODE = "SCHEMA_SCHEMA_EXCEPTION"
-    MSG = str = "SchemaSchema had an error."
+    ERR_CODE = "QUERY_EXCEPTION"
+    MSG = str = "Query had an error."
     
     def __init__(
             self,
