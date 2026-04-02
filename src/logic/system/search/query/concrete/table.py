@@ -19,13 +19,13 @@ E = TypeVar("E", bound=Enum)
 class TableQuery(Query, Generic[E]):
     _table: E
     
-    def __init__(self, table: E, lookup_key: Context[E]):
+    def __init__(self, table: E, context: Context[E]):
         """
         Args:
             table: E
-            lookup_key: Context[E]
+            context: Context[E]
         """
-        super().__init__(context=lookup_key)
+        super().__init__(context=context)
         self._table = table
     
     @property
