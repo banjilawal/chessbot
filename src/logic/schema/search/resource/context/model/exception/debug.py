@@ -1,7 +1,7 @@
-# src/logic/token/database/search/context/model/exception/debug/__init__.py
+# src/logic/schema/database/search/context/model/exception/debug/__init__.py
 
 """
-Module: logic.token.database.search.context.model.exception.debug.__init__
+Module: logic.schema.database.search.context.model.exception.debug.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -11,14 +11,14 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# TOKEN_CONTEXT_DEBUG_EXCEPTION #======================#
-    "TokenContextDebugException",
+    # ======================# SCHEMA_CONTEXT_DEBUG_EXCEPTION #======================#
+    "SchemaContextDebugException",
 ]
 
 from logic.system import DebugException
 
-# ======================# TOKEN_CONTEXT_DEBUG_EXCEPTION #======================#
-class TokenContextDebugException(DebugException):
+# ======================# SCHEMA_CONTEXT_DEBUG_EXCEPTION #======================#
+class SchemaContextDebugException(DebugException):
     """
     Role:
         -   Exception Chain Layer 2
@@ -26,7 +26,7 @@ class TokenContextDebugException(DebugException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Record the condition that fired a TokenContext variable's error state.
+        1.  Record the condition that fired a SchemaContext variable's error state.
 
     Attributes:
         var: Optional[str]
@@ -40,8 +40,8 @@ class TokenContextDebugException(DebugException):
     Super Class:
         DebugException
     """
-    ERR_CODE = "TOKEN_CONTEXT_EXCEPTION"
-    MSG = str = "TokenContext had an error."
+    ERR_CODE = "SCHEMA_CONTEXT_EXCEPTION"
+    MSG = str = "SchemaContext had an error."
     
     def __init__(
             self,

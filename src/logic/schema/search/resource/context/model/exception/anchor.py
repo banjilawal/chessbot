@@ -1,7 +1,7 @@
-# src/logic/token/database/search/context/model/exception/anchor.py
+# src/logic/schema/database/search/context/model/exception/anchor.py
 
 """
-Module: logic.token.database.search.context.model.exception.anchor
+Module: logic.schema.database.search.context.model.exception.anchor
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -11,23 +11,23 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# TOKEN_CONTEXT_EXCEPTION #======================#
-    "TokenContextException",
+    # ======================# SCHEMA_CONTEXT_EXCEPTION #======================#
+    "SchemaContextException",
 ]
 
 from logic.system import AnchorException
 
 
-# ======================# TOKEN_CONTEXT_EXCEPTION #======================#
-class TokenContextException(AnchorException):
+# ======================# SCHEMA_CONTEXT_EXCEPTION #======================#
+class SchemaContextException(AnchorException):
     """
     Role:
         -   Exception Chain Layer 0
         -   Exception coverage target
 
     Responsibilities:
-        1.  Anchors TokenContext debug (layer-2) information.
-        2.  Indicate which TokenContext method received a worker's (layer-1)
+        1.  Anchors SchemaContext debug (layer-2) information.
+        2.  Indicate which SchemaContext method received a worker's (layer-1)
             failure result.
 
     Attributes:
@@ -42,8 +42,8 @@ class TokenContextException(AnchorException):
     Super Class:
         AnchorException
     """
-    ERR_CODE = "TOKEN_CONTEXT_EXCEPTION"
-    MSG = "TokenContext raised an exception."
+    ERR_CODE = "SCHEMA_CONTEXT_EXCEPTION"
+    MSG = "SchemaContext raised an exception."
     
     def __init__(
             self,

@@ -10,10 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Optional
 
-from logic.team import Team
-from logic.rank import Rank
 from logic.schema import Schema
-from logic.coord import Coord
 from logic.system import Context, GameColor, LoggingLevelRouter
 
 
@@ -51,7 +48,7 @@ class SchemaContext(Context[Schema]):
             name: Optional[str]
             color: Optional[GameColor]
         """
-        super().__init__(id=id, name=None)
+        super().__init__(id=None, name=name)
         self._color = color
     
     
@@ -61,6 +58,6 @@ class SchemaContext(Context[Schema]):
     
     def to_dict(self) -> {}:
         return {
-            "_name": self._name,
-            "_color": self._color,
+            "name": self.name,
+            "color": self._color,
         }

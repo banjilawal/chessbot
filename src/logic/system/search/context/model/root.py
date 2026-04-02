@@ -25,7 +25,7 @@ class Context(ABC, Generic[T]):
                 
     Attributes:
         id: Optional[int]
-        stack: Optional[str]
+        name: Optional[str]
         
     Provides:
         -   to_dict() -> Dict[str, Any]
@@ -65,7 +65,7 @@ class Context(ABC, Generic[T]):
         return self._id
     
     @property
-    def designation(self) -> Optional[str]:
+    def name(self) -> Optional[str]:
         return self._name
     
     @abstractmethod
