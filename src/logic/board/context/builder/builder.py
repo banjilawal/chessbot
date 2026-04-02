@@ -112,7 +112,7 @@ class BoardContextBuilder(Builder[BoardContext]):
         
         # Build the arena BoardContext if its flag is enabled.
         if arena is not None:
-            validation = arena_service.validator.query(arena)
+            validation = arena_service.validator.search(arena)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(

@@ -58,11 +58,11 @@ class TravelEventFactory:
         method = "TravelEventFactory.execute"
         
         try:
-            actor_validation = BoardActorValidator.query((actor, board))
+            actor_validation = BoardActorValidator.search((actor, board))
             if actor_validation.is_failure():
                 return BuildResult.failure(actor_validation.exception)
             
-            resource_validator = TravelResourceValidator.query((destination_square, board))
+            resource_validator = TravelResourceValidator.search((destination_square, board))
             if resource_validator.is_failure():
                 return BuildResult.failure(resource_validator.exception)
             

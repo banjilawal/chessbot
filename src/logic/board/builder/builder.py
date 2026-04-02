@@ -81,7 +81,7 @@ class BoardBuilder(Builder[Board]):
                 )
             )
         # Handle the case that, the arena is not certified safe.
-        arena_validation = arena_service.validator.query(candidate=arena)
+        arena_validation = arena_service.validator.search(candidate=arena)
         if arena_validation.is_failure:
             # On failure return the exception.
             return BuildResult.failure(

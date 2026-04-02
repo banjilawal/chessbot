@@ -212,7 +212,7 @@ class RankContextBuilder(Builder[RankContext]):
         method = "RankContextBuilder.build_rank_search_context"
         
         try:
-            rank_validation = rank_validator.query(rank)
+            rank_validation = rank_validator.search(rank)
             if rank_validation.is_failure():
                 return BuildResult.failure(rank_validation.exception)
             

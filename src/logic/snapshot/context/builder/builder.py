@@ -114,7 +114,7 @@ class SnapshotContextBuilder(Builder[SnapshotContext]):
             
             # Build the agent SnapshotContext if its flag is enabled.
             if agent is not None:
-                validation = agent_service.validator.query(candidate=agent)
+                validation = agent_service.validator.search(candidate=agent)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
                 # On validation success return an agent_SnapshotContext in the BuildResult.

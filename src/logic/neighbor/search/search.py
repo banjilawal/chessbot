@@ -26,11 +26,11 @@ class VisitationFinder(Finder[List[Coord]]):
   def search(cls, owner: Visitation, search_context: VisitationSearchContext) -> SearchResult[List[Coord]]:
       method = "VisitationFinder.searcher"
 
-      visitation_validation = VisitationValidator.query(owner)
+      visitation_validation = VisitationValidator.search(owner)
       if not visitation_validation.is_success():
         return SearchResult.failure(visitation_validation.exception)
 
-      search_context_validation = VisitationSearchContextValidator.query(search_context)
+      search_context_validation = VisitationSearchContextValidator.search(search_context)
       if not search_context_validation.is_success():
         return SearchResult.failure(search_context_validation.exception)
 

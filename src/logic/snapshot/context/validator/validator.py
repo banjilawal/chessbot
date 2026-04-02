@@ -134,7 +134,7 @@ class SnapshotContextValidator(Validator[SnapshotContext]):
             
             # Validation subflow for arena SnapshotContexts.
             if context.arena is not None:
-                validation = arena_service.validator.query(candidate=context.arena)
+                validation = arena_service.validator.search(candidate=context.arena)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
                 # On validation success return the arena_SnapshotContext in the validation Result.
@@ -157,7 +157,7 @@ class SnapshotContextValidator(Validator[SnapshotContext]):
 
             # Validation subflow for owner SnapshotContexts.
             if context.plyer is not None:
-                validation = player_service.validator.query(candidate=context.player)
+                validation = player_service.validator.search(candidate=context.player)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
                 # On validation success return the player_SnapshotContext in the ValidationResult

@@ -73,7 +73,7 @@ class OpeningSquareDiscovery:
         method =  f"{cls.__name__}.execute"
         
         # Handle the case that, the token does not pass a validation check.
-        token_validation_result = token_service.validator.query(token)
+        token_validation_result = token_service.validator.search(token)
         if token_validation_result.is_failure:
             # Return the exception chain on failure
             return SearchResult.failure(
@@ -100,7 +100,7 @@ class OpeningSquareDiscovery:
         )
 
         # ServiceRequest a collision report. The square is verified during the report generation. ---#
-        collision_detection_result = collision_detector.query(
+        collision_detection_result = collision_detector.search(
             target=square,
             dataset=square_stack.items,
         )
@@ -117,7 +117,7 @@ class OpeningSquareDiscovery:
                 )
             )
         # --- ServiceRequest a rank quota report. ---#
-        rank_quota_report = rank_quota_analyzer.query(
+        rank_quota_report = rank_quota_analyzer.search(
             rank=square.rank,
             square_stack=square_stack,
             rank_service=rank_service,
@@ -172,7 +172,7 @@ class OpeningSquareDiscovery:
         method = f"{cls.__name__}._run_token_tests"
         
         # Handle the case that, the token does not pass a validation check.
-        token_validation_result = token_service.validator.query(token)
+        token_validation_result = token_service.validator.search(token)
         if token_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(

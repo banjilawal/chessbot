@@ -36,7 +36,7 @@ class VisitationEventBuilder(Builder[VisitationEvent]):
             if domain_validation.is_failure():
                 return BuildResult.failure(domain_validation.exception)
             
-            piece_validation = PieceValidator.query(domain)
+            piece_validation = PieceValidator.search(domain)
             if piece_validation.is_failure():
                 return BuildResult.failure(piece_validation.exception)
             

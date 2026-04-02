@@ -42,11 +42,11 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
             if not id_validation.is_success():
                 return ValidationResult(exception=id_validation.exception)
             
-            actor_binding_validation = PieceBindingBoardValidator.query(event.actor, event.execution_environment)
+            actor_binding_validation = PieceBindingBoardValidator.search(event.actor, event.execution_environment)
             if actor_binding_validation.is_failure():
                 return ValidationResult(exception=actor_binding_validation.exception)
             
-            resource_binding_validation = TravelResourceValidator.query(
+            resource_binding_validation = TravelResourceValidator.search(
                 event.square,
                 event.execution_environment
             )

@@ -160,7 +160,7 @@ class SquareIterator:
 
 def main():
   vector = Vector(x=3, y=1)
-  chess_board = ChessBoardBuilder.query(chess_board_id=1)
+  chess_board = ChessBoardBuilder.search(chess_board_id=1)
   squares = chess_board.squares
   coord = chess_board.squares[0][0].position
 

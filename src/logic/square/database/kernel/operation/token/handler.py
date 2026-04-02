@@ -162,7 +162,7 @@ class SquareStackTokenHandler:
         method = "SquareService.remove_occupant_from_stack"
         
         # Handle the case that, the token does not pass a validation check.
-        token_validation = token_service.validator.query(occupant)
+        token_validation = token_service.validator.search(occupant)
         if token_validation.is_failure:
             # Send the debug exception to the client.
             return DeletionResult.failure(

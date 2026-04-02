@@ -129,7 +129,7 @@ class Player(ABC):
         method = "Player.move_piece"
         
         try:
-            validation = NameValidator.query(piece_name)
+            validation = NameValidator.search(piece_name)
             if not validation.is_success():
                 raise validation.exception
             
@@ -150,7 +150,7 @@ class Player(ABC):
             if isinstance(piece, CombatantPiece) and piece.victor is not None:
                 raise PrisonerEscapeException(f"{method}: Cannot move {piece.designation} it has been captured.")
             
-            validation = CoordValidator.query(destination)
+            validation = CoordValidator.search(destination)
             if not validation.is_success():
                 raise validation.exception
             

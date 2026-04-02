@@ -35,11 +35,11 @@ class KingOccupationEventBuilder(Enum):
         ThrowHelper.log_and_raise_exception(KingOccupationEventBuilder, id_validation)
 
 
-      actor_validation = PieceValidator.query(actor)
+      actor_validation = PieceValidator.search(actor)
       if not actor_validation.is_success():
         raise InvalidKingOccupationException(f"{method}: KingOccupationEvent actor_candidate failed validate")
 
-      enemy_validation = PieceValidator.query(enemy)
+      enemy_validation = PieceValidator.search(enemy)
       if not enemy_validation.is_success():
         raise InvalidKingOccupationException(f"{method}: KingOccupationEvent enemy failed validate")
 

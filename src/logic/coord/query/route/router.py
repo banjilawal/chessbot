@@ -88,7 +88,7 @@ class CoordSearchRouter(StackSearchRouter[Coord]):
                 )
             )
         # handle the case that, query fails integrity tests.
-        context_validation = context_validator.query(context)
+        context_validation = context_validator.search(context)
         if context_validation.is_failure:
             # Return the exception chain on failure.
             return SearchResult.failure(

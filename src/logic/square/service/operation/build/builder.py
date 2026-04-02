@@ -245,7 +245,7 @@ class SquareBuilder(Builder[Square]):
         """
         method = f"{cls.__name__}.bind_square_board"
         
-        relation_analysis = board_service.square_relation_analyzer.query(
+        relation_analysis = board_service.square_relation_analyzer.search(
             candidate_primary=board,
             candidate_satellite=square
         )

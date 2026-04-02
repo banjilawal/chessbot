@@ -41,7 +41,7 @@ class OldPromotionEventBuilder(Builder[PromotionEvent]):
                     f"Expected a PromotableRank(knight, bishop, queen ,or rook, got {type(new_rank).__name__}")
                 )
             
-            actor_validator = BoardActorValidator.query(actor, execution_environment)
+            actor_validator = BoardActorValidator.search(actor, execution_environment)
             if actor_validator.is_failure():
                 return BuildResult.failure(actor_validator.exception)
             
@@ -73,7 +73,7 @@ class OldPromotionEventBuilder(Builder[PromotionEvent]):
                     DoublePromotionException(f"{method}: {DoublePromotionException.MSG}")
                 )
             
-            context_build_result = BoardContextBuilder.query(piece_id=actor.visitor_id)
+            context_build_result = BoardContextBuilder.search(piece_id=actor.visitor_id)
             if context_build_result.is_failure():
                 return ValidationResult.failure(context_build_result.exception)
             context = cast(BoardContext, context_build_result.payload)

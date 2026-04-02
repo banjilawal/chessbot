@@ -75,7 +75,7 @@ class AgentFinder(DataFinder[PlayerAgent]):
                     AgentNullDatasetException(f"{method}: {AgentNullDatasetException.MSG}")
                 )
             # certify the map is safe.
-            validation_result = context_validator.query(context)
+            validation_result = context_validator.search(context)
             if validation_result.is_failure:
                 return SearchResult.failure(validation_result.exception)
             

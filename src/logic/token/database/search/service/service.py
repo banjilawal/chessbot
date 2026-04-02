@@ -10,12 +10,12 @@ version: 1.0.0
 from __future__ import annotations
 from typing import List
 
-from logic.system import QueryService, IdFactory, LoggingLevelRouter, SearchResult
+from logic.system import QueryService, IdFactory, LoggingLevelRouter, SearchMicroservice, SearchResult
 from logic.token import (
-    Token, TokenContext, TokenContextService, TokenQueryServiceException, TokenSearchRouter
+    Token, TokenContext, TokenContextService, TokenQuery, TokenSearchServiceException, TokenSearchRouter
 )
 
-class TokenQueryService(QueryService[Token]):
+class TokenSearchService(SearchMicroservice[Token]):
     """
     Role:
         -   API
@@ -28,8 +28,8 @@ class TokenQueryService(QueryService[Token]):
     Args:
         id: int
         name: str
-        router: SearchRouter[T]
-        context_service: IntegrityMicroservice[Context[T]]
+        router: SearchRouter[Token]
+        context_service: IntegrityMicroservice[Context[Token]]
 
     Provides:
         -  query(data_set: List[Token], context: TokenContext) -> SearchResult[List[Token]]
@@ -37,7 +37,7 @@ class TokenQueryService(QueryService[Token]):
     Super Class:
         QueryService
     """
-    SERVICE_NAME = "TokenQueryService"
+    SERVICE_NAME = "TokenSearchService"
     _router: TokenSearchRouter
     _context_service: TokenContextService
 
@@ -45,7 +45,7 @@ class TokenQueryService(QueryService[Token]):
             self,
             name: str = SERVICE_NAME,
             router: TokenSearchRouter = TokenSearchRouter(),
-            id: int = IdFactory.next_id(class_name="TokenQueryService"),
+            id: int = IdFactory.next_id(class_name="TokenSearchService"),
             context_service: TokenContextService =TokenContextService(),
     ):
         """
@@ -68,7 +68,7 @@ class TokenQueryService(QueryService[Token]):
         return self._context_service
     
     @LoggingLevelRouter.monitor
-    def query(self, data_set: List[Token], context: TokenContext) -> SearchResult[List[Token]]:
+    def search(self, query: TokenQuery) -> SearchResult[List[Token]]:
         """
         Action:
             If the request is not completed send the exception in the SearchResult.
@@ -79,22 +79,22 @@ class TokenQueryService(QueryService[Token]):
         Returns:
             SearchResult[List[Token]]
         Raises:
-            TokenQueryServiceException
+            TokenSearchServiceException
         """
         method = f"{self.__class__.__name__}.query"
         
         # --- Forward the request to the search_router. ---#
-        search_result = self._router.route(dataset=data_set, context=context)
+        search_result = self._router.route(query=query)
         
         # Handle the case that, the request was not completed.
         if search_result.is_failure:
             # Return the exception chain on failure.
             return SearchResult.failure(
-                TokenQueryServiceException(
+                TokenSearchServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenQueryServiceException.MSG,
-                    err_code=TokenQueryServiceException.ERR_CODE,
+                    msg=TokenSearchServiceException.MSG,
+                    err_code=TokenSearchServiceException.ERR_CODE,
                     ex=search_result.exception
                 )
             )

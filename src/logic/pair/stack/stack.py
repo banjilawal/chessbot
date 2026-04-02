@@ -130,7 +130,7 @@ class PairStack(StackService[Pair]):
                 )
             )
         # --- Handoff validation, id, designation or opening_square collision detection. ---#
-        collision_report = self.integrity_service.collision_detector.query(
+        collision_report = self.integrity_service.collision_detector.search(
             target=item,
             collider_candidates=self._stack,
         )

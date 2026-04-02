@@ -9,36 +9,36 @@ class NameValidatorTest(unittest.TestCase):
 
   def test_null_name_raises_exception(self):
     with self.assertRaises(NameValidationException) as ctx:
-      NameValidator.query(None)
+      NameValidator.search(None)
     self.assertIsInstance(ctx.exception.__cause__, NullNameException)
 
 
   def test_cast_to_str_failure_raises_exception(self):
     with self.assertRaises(NameValidationException) as ctx:
-      NameValidator.query(1)
+      NameValidator.search(1)
     self.assertIsInstance(ctx.exception.__cause__, TypeError)
 
 
   def test_blank_name_raises_exception(self):
     with self.assertRaises(NameValidationException) as ctx:
-      NameValidator.query(" ")
+      NameValidator.search(" ")
     self.assertIsInstance(ctx.exception.__cause__, BlankNameException)
 
   def test_name_too_short_raises_exception(self):
     with self.assertRaises(NameValidationException) as ctx:
-      NameValidator.query("team_name")
+      NameValidator.search("team_name")
     self.assertIsInstance(ctx.exception.__cause__, ShortNameException)
 
 
   def test_name_too_long_raises_exception(self):
     long_name = "x" * 41
     with self.assertRaises(NameValidationException) as ctx:
-      NameValidator.query(long_name)
+      NameValidator.search(long_name)
     self.assertIsInstance(ctx.exception.__cause__, LongNameException)
 
 
   def test_valid_name_returns_result(self):
-    result = NameValidator.query("A-1")
+    result = NameValidator.search("A-1")
     self.assertEqual(result.payload, "A-1")
 
 

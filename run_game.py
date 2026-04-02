@@ -12,7 +12,7 @@ def main():
 
   try:
     logger.info("Starting arena initialization")
-    arena = ArenaBuilder.query()
+    arena = ArenaBuilder.search()
     print(arena.chess_board)
     visualizer = GameDisplay(
       chess_board=arena.chess_board,

@@ -98,7 +98,7 @@ class GameValidator(Validator[Game]):
                 return ValidationResult.failure(board_validation.exception)
             
             for player in game.players:
-                validation = agent_service.validator.query(player)
+                validation = agent_service.validator.search(player)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
             return ValidationResult.success(game)

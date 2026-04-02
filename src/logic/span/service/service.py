@@ -127,7 +127,7 @@ class SpanMicroservice(Microservice[CoordSpan]):
         """
         method = f"{self.__class__.name}.graph"
         
-        span_result = self._spanner.query(
+        span_result = self._spanner.search(
             origin=token.current_position,
             coord_service=self.coord_service,
         )

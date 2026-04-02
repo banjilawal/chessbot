@@ -41,19 +41,19 @@ class AttackEventValidator(Validator[AttackEvent]):
                 return ValidationResult.failure(TypeError(f"Expected an AttackEvent, got {type(candidate).__name__} instead."))
     
             event = cast(AttackEvent, candidate)
-            actor_binding_validation = BoardActorValidator.query(event.actor, event.execution_environment)
+            actor_binding_validation = BoardActorValidator.search(event.actor, event.execution_environment)
             
             if actor_binding_validation.is_failure():
                 return ValidationResult.failure(actor_binding_validation.exception)
     
-            resource_binding_validation = TravelResourceValidator.query(
+            resource_binding_validation = TravelResourceValidator.search(
                 event.resource,
                 event.execution_environment
             )
             if resource_binding_validation.is_failure():
                 return ValidationResult.failure(resource_binding_validation.exception)
             
-            piece_validation = PieceValidator.query(event.enemy_combatant)
+            piece_validation = PieceValidator.search(event.enemy_combatant)
             if piece_validation.is_failure():
                 return ValidationResult.failure(piece_validation.exception)
             
@@ -110,7 +110,7 @@ class AttackEventValidator(Validator[AttackEvent]):
             if piece_search.is_failure():
                 return ValidationResult.failure(piece_search.exception)
             
-            enemy_square_binding_validation = TravelResourceValidator.query(event.destination_square, board)
+            enemy_square_binding_validation = TravelResourceValidator.search(event.destination_square, board)
             if enemy_square_binding_validation.is_failure():
                 return ValidationResult.failure(enemy_square_binding_validation.exception)
             

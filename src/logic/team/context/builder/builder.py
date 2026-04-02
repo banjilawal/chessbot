@@ -133,7 +133,7 @@ class TeamContextBuilder(Builder[TeamContext]):
         
         # Build the arena TeamContext if its flag is enabled.
         if arena is not None:
-            validation = arena_service.item_validator.query(candidate=arena)
+            validation = arena_service.item_validator.search(candidate=arena)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(

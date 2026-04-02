@@ -29,11 +29,11 @@ class GraphDomainFinder(Finder[Graph, Domain]):
         method = "GraphDomainFinder.searcher"
         
         try:
-            graph_validation = GraphValidator.query(data_owner)
+            graph_validation = GraphValidator.search(data_owner)
             if graph_validation.is_failure():
                 return SearchResult.failure(graph_validation.exception)
             
-            filter_validation = GraphSearchContextValidator.query(search_context)
+            filter_validation = GraphSearchContextValidator.search(search_context)
             if filter_validation.is_failure():
                 return SearchResult.failure(filter_validation.exception)
             

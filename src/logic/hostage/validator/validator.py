@@ -183,7 +183,7 @@ class HostageValidator(Validator[Hostage]):
             # --- Perform tests on the manifest.victor that do not rely on the prisoner. ---#
             
         # Handle the case that, the victor is not certified safe.
-        victor_validation = token_service.validator.query(candidate=manifest.victor)
+        victor_validation = token_service.validator.search(candidate=manifest.victor)
         if victor_validation.failure:
             # Send the exception chain on failure
             return ValidationResult.failure(
