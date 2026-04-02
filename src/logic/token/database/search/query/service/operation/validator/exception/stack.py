@@ -1,9 +1,9 @@
-# src/logic/token/database/search/query/exception/mull.py
+# src/logic/token/database/search/context/service/operation/validation/exception/null.py
 
 """
-Module: logic.token.database.search.query.exception.null
+Module: logic.token.database.search.context.service.operation.validation.exception.null
 Author: Banji Lawal
-Created: 2025-10-06
+Created: 2025-10-03
 version: 1.0.0
 """
 
@@ -40,7 +40,7 @@ class TokenStackNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = "TokenQuery validation check failed."
+    MSG = "TokenStack cannot be null."
     ERR_CODE = "TOKEN_STACK_NULL_EXCEPTION"
 
     

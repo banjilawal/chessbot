@@ -10,8 +10,7 @@ version: 1.0.0
 # =========== TOKEN.DATABASE.SEARCH.QUERY PACKAGE CONTENTS ===========#
 
 # Packages
-from .validator import *
-from .builder import *
+from .service import *
 
 # Modules
 from .query import TokenQuery

@@ -1,24 +1,25 @@
-# src/logic/square/service/operation/validation/exception/registration/player.py
+# src/logic/token/database/search/context/service/operation/validation/exception/null.py
 
 """
-Module: logic.square.service.operation.validation.exception.registration.player
+Module: logic.token.database.search.context.service.operation.validation.exception.null
 Author: Banji Lawal
-Created: 2025-11-20
+Created: 2025-09-16
 version: 1.0.0
 """
+
+from __future__ import annotations
 from typing import Any, Optional
 
-from logic.square import SquareDebugException
-from logic.system import NotRegisteredException
-
 __all__ = [
-    # ======================# SQUARE_NOT_REGISTERED_WITH_BOARD_EXCEPTION #======================#
-    "SquareBoardRegisteredException",
+    # ======================# NULL_TOKEN_CONTEXT_EXCEPTION #======================#
+    "NullTokenContextException",
 ]
 
+from logic.system import NullException
 
-# ======================# SQUARE_NOT_REGISTERED_WITH_BOARD_EXCEPTION #======================#
-class SquareBoardRegisteredException(NotRegisteredException):
+
+# ======================# NULL_TOKEN_CONTEXT_EXCEPTION #======================#
+class NullTokenContextException(NullException):
     """
     Role:
         - Error Variable Identifier
@@ -26,9 +27,8 @@ class SquareBoardRegisteredException(NotRegisteredException):
         - Exception Messaging
 
     Responsibilities:
-        1.  Indicate that SquareValidation failed because the square had not added itself
-            to the board's squares.
-            
+        1.  Indicate that a TokenContext is null where it should not be.
+
     Attributes:
         var: Optional[str]
         val: Optional[Any]
@@ -39,10 +39,11 @@ class SquareBoardRegisteredException(NotRegisteredException):
     Provides:
 
     Super Class:
-        NotRegisteredException
+        NulException
     """
-    ERR_CODE = "SQUARE_NOT_REGISTERED_WITH_BOARD_EXCEPTION"
-    MSG = "Square validation failed: The square had not registered with its board."
+    MSG = "TokenContext cannot be null."
+    ERR_CODE = "NULL_TOKEN_CONTEXT_EXCEPTION"
+
     
     def __init__(
             self,
@@ -67,5 +68,5 @@ class SquareBoardRegisteredException(NotRegisteredException):
             msg=msg,
             var=var,
             val=val,
-            err_code = err_code,
+            err_code=err_code,
         )
