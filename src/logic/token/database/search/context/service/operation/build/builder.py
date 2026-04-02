@@ -16,8 +16,8 @@ from logic.coord import Coord
 from logic.team import ExcessTeamContextFlagsException, Team
 from logic.system import BuildResult, Builder, GameColor, LoggingLevelRouter
 from logic.token import (
-    TokenContext, TokenContextBuildException, TokenContextBuildRouteException, TokenContextBuildWorkers,
-    ZeroTokenContextFlagsException
+    TokenContext, TokenContextBuildException, TokenContextBuildRouteException,
+    TokenContextIntegrityWorkers, ZeroTokenContextFlagsException
 )
 
 
@@ -43,7 +43,7 @@ class TokenContextBuilder(Builder[TokenContext]):
                     team: Optional[Team] = None,
                     rank: Optional[Rank] = None,
                     ransom: Optional[int] = None,
-                    coord: Optional[Coord] = None,
+                    current_position: Optional[Coord] = None,
                     color: Optional[GameColor] = None,
                     designation: Optional[str] = None,
                     opening_square_name: Optional[str] = None,
@@ -60,11 +60,11 @@ class TokenContextBuilder(Builder[TokenContext]):
             team: Optional[Team] = None,
             rank: Optional[Rank] = None,
             ransom: Optional[int] = None,
-            coord: Optional[Coord] = None,
             color: Optional[GameColor] = None,
             designation: Optional[str] = None,
+            current_position: Optional[Coord] = None,
             opening_square_name: Optional[str] = None,
-            workers: TokenContextBuildWorkers = TokenContextBuildWorkers(),
+            workers: TokenContextIntegrityWorkers = TokenContextIntegrityWorkers(),
     ) -> BuildResult[TokenContext]:
         """
         Build a TokenContext
@@ -82,9 +82,9 @@ class TokenContextBuilder(Builder[TokenContext]):
             team: Optional[Team]
             rank: Optional[Rank]
             ransom: Optional[int]
-            coord: Optional[Coord]
             color: Optional[GameColor]
             designation: Optional[str]
+            current_position: Optional[Coord]
             opening_square_name: Optional[str]
             workers: TokenContextIntegrityWorkers
         Returns:
@@ -102,10 +102,10 @@ class TokenContextBuilder(Builder[TokenContext]):
             id,
             team,
             rank,
-            coord,
             color,
             ransom,
             designation,
+            current_position,
             opening_square_name,
         ]
         param_count = sum(bool(p) for p in params)
@@ -203,9 +203,9 @@ class TokenContextBuilder(Builder[TokenContext]):
             # On validation success forward the work product to the caller.
             return BuildResult.success(TokenContext(opening_square_name=opening_square_name))
         
-        # Build the coord TokenContext if its flag is enabled.
-        if coord is not None:
-            validation = workers.coord_service.validator.validate(coord)
+        # Build the current_position TokenContext if its flag is enabled.
+        if current_position is not None:
+            validation = workers.coord_service.validator.validate(current_position)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
@@ -220,7 +220,7 @@ class TokenContextBuilder(Builder[TokenContext]):
                     )
                 )
             # On validation success forward the work product to the caller.
-            return BuildResult.success(TokenContext(coord=coord))
+            return BuildResult.success(TokenContext(current_position=current_position))
         
         # Build the rank TokenContext if its flag is enabled.
         if rank is not None:
