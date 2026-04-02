@@ -11,7 +11,7 @@ version: 1.0.0
 
 # Packages
 from logic.token.database.search.context.service.operation.build import *
-from .validation import *
+from logic.token.database.search.context.service.operation.validation import *
 from .service import *
 
 # Modules

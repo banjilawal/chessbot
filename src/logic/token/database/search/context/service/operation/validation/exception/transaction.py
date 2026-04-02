@@ -1,4 +1,4 @@
-# src/logic/token/validation/exception/exception.py
+# src/logic/token/database/search/context/service/operation/validation/exception/exception.py
 
 """
 Module: logic.token.validation.exception.exception

@@ -14,5 +14,5 @@ from .build import *
 from .validation import *
 
 # Modules
-from .controller TokenContextOpsController
+from .controller import TokenContextOpsController
 from .workers import TokenContextIntegrityWorkers

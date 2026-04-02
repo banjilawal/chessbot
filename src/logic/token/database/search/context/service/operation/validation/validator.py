@@ -13,8 +13,7 @@ from typing import Any, cast
 
 from logic.system import LoggingLevelRouter, Validator, ValidationResult
 from logic.token import (
-    ExcessTokenContextFlagsException, NullTokenContextException, TokenContext,
-    TokenContextIntegrityWorkers,
+    ExcessTokenContextFlagsException, NullTokenContextException, TokenContext, TokenContextIntegrityWorkers,
     TokenContextValidationException, TokenContextValidationRouteException, ZeroTokenContextFlagsException
 )
 

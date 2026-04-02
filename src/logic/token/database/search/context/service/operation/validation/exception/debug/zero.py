@@ -1,7 +1,7 @@
-# src/logic/token/validation/exception/flag/zero.py
+# src/logic/token/database/search/context/service/operation/validation/exception/debug/zero.py
 
 """
-Module: logic.token.validation.exception.flag.zero
+Module: logic.token.database.search.context.service.operation.validation.exception.debug.zero
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

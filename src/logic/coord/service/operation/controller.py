@@ -21,8 +21,8 @@ class CoordOpsController:
         1.  Provide a single entry point for operations CoordService supports.
         
     Attributes:
-        build: CoordBuilder
-        validation: CoordValidator
+        builder: CoordBuilder
+        validator: CoordValidator
         arithmetic_controller: CoordArithmeticController
 
     Provides:
