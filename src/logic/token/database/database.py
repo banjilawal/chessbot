@@ -259,7 +259,7 @@ class TokenDatabase(Database[Token]):
         method = f"{self.__class__.__name__}.search_tokens"
         
         # --- Forward the request to the kernel. ---#
-        query_result = self._kernel.query(context=context)
+        query_result = self._kernel.search(context=context)
         
         # Handle the case that, the request was not completed.
         if query_result.is_failure:

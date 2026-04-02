@@ -255,7 +255,7 @@ class EdgeStack(StackService[Edge]):
         return DeletionResult.nothing_to_delete()
     
     @LoggingLevelRouter.monitor
-    def query(self, context: EdgeContext) -> SearchResult[List[Edge]]:
+    def search(self, context: EdgeContext) -> SearchResult[List[Edge]]:
         """
         # ACTION:
             1.  Pass the context param to context_service manages all error handling and operations in search lifecycle.

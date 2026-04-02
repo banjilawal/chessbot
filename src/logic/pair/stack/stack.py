@@ -286,7 +286,7 @@ class PairStack(StackService[Pair]):
         return DeletionResult.nothing_to_delete()
     
     @LoggingLevelRouter.monitor
-    def query(self, context: PairContext) -> SearchResult[List[Pair]]:
+    def search(self, context: PairContext) -> SearchResult[List[Pair]]:
         """
         # ACTION:
             1.  Pass the context param to context_service manages all error handling and operations in

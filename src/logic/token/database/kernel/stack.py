@@ -283,7 +283,7 @@ class TokenStackService(StackService[Token]):
         return request_result
     
     @LoggingLevelRouter.monitor
-    def query(self, context: TokenContext) -> SearchResult[List[Token]]:
+    def search(self, context: TokenContext) -> SearchResult[List[Token]]:
         """
         Find tokens whose attribute value fits the context.
 

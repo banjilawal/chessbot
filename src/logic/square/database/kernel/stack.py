@@ -274,7 +274,7 @@ class SquareStackService(StackService[Square]):
         return visitation_result
 
     @LoggingLevelRouter.monitor
-    def query(
+    def search(
             self,
             context: SquareContext,
     ) -> SearchResult[List[Square]]:

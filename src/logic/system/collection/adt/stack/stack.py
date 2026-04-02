@@ -13,13 +13,12 @@ from typing import Generic, Iterator, List, Optional, TypeVar
 
 from logic.system import (
     Context, IdentityService, InsertionResult, LoggingLevelRouter, IntegrityMicroservice, DeletionResult,
-    SearchResult
+    Microservice, SearchResult
 )
 
 T = TypeVar("T")
-C = TypeVar("C", bound=Context)
 
-class StackService(ABC, Generic[T]):
+class StackService(Microservice[T], Generic[T]):
     """
     Role:
         -   Data layer
@@ -58,16 +57,7 @@ class StackService(ABC, Generic[T]):
     _name: str
 
     def __init__(self, id: int, name: str,):
-        self._id = id
-        self._name = name
-    
-    @property
-    def id(self) -> int:
-        return self._id
-    
-    @property
-    def name(self) -> str:
-        return self._name
+        super().__init__(id=id, name=name)
     
     @property
     @abstractmethod
@@ -128,6 +118,6 @@ class StackService(ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def query(self, context: Context[T]) -> SearchResult[List[T]]:
+    def search(self, context: Context[T]) -> SearchResult[List[T]]:
         """Implement to read from the schema.'"""
         pass

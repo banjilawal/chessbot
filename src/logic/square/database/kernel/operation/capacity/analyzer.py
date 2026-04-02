@@ -69,7 +69,7 @@ class SquareStackCapacityAnalysis:
                 )
             )
         # --- Search for the schema for rank members. ---#
-        rank_search_result = square_stack.query(context=SquareContext(rank=rank))
+        rank_search_result = square_stack.search(context=SquareContext(rank=rank))
         
         # Handle the case that, a search error occurred.
         if rank_search_result.is_failure:

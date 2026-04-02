@@ -255,7 +255,7 @@ class TeamStack(StackService[Team]):
         return DeletionResult.nothing_to_delete()
     
     @LoggingLevelRouter.monitor
-    def query(self, context: TeamContext) -> SearchResult[List[Team]]:
+    def search(self, context: TeamContext) -> SearchResult[List[Team]]:
         """
         # ACTION:
             1.  Pass the context param to context_service manages all error handling and operations in

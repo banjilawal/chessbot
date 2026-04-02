@@ -139,7 +139,7 @@ class CoordDatabase(Database[Coord]):
         method = f"{self.__class__.__name__}.search_coords"
         
         # --- Forward the request to the kernel. ---#
-        request_result = self._kernel.query(context=context)
+        request_result = self._kernel.search(context=context)
         
         # Handle the case that, the request was not completed.
         if request_result.is_failure:

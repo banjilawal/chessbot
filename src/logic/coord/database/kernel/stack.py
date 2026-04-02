@@ -180,7 +180,7 @@ class CoordStackService(StackService[Coord]):
         return request_result
     
     @LoggingLevelRouter.monitor
-    def query(self, context: CoordContext) -> SearchResult[List[Coord]]:
+    def search(self, context: CoordContext) -> SearchResult[List[Coord]]:
         """
         Find a coord in the schema.
 

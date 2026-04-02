@@ -79,7 +79,7 @@ class RankQuotaAnalysis:
                 )
             )
         # --- Search for the schema for rank members. ---#
-        rank_search_result = token_stack.query(context=TokenContext(rank=rank))
+        rank_search_result = token_stack.search(context=TokenContext(rank=rank))
         
         # Handle the case that, a search error occurred.
         if rank_search_result.is_failure:

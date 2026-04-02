@@ -200,7 +200,7 @@ class NodeStackService(StackService[Node]):
         DeletionResult.success(node)
     
     @LoggingLevelRouter.monitor
-    def query(self, context: NodeContext) -> SearchResult[List[Node]]:
+    def search(self, context: NodeContext) -> SearchResult[List[Node]]:
         """
         # ACTION:
             1.  Pass the context param to context_service manages all error handling and operations in
