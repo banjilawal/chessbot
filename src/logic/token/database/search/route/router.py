@@ -10,6 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import List
 
+from logic.coord import Coord
 from logic.rank import Rank
 from logic.team import Team
 from logic.system import GameColor, LoggingLevelRouter, SearchResult, SearchRouter
@@ -120,6 +121,12 @@ class TokenSearchRouter(SearchRouter[Token]):
             return cls._find_by_color(
                 stack=query.stack,
                 ransom=query.context.color
+            )
+        # token.current_position search entry point.
+        if query.context.ransom is not None:
+            return cls._find_by_current_position(
+                stack=query.stack,
+                ransom=query.context.current_position
             )
         # Handle the case that, there is no search path for the query context..
         return SearchResult.failure(
@@ -314,6 +321,32 @@ class TokenSearchRouter(SearchRouter[Token]):
         """
         matches = [
             token for token in stack if token.team.schema.color == color
+        ]
+        # Handle the nothing found case.
+        if len(matches) == 0:
+            return SearchResult.empty()
+        # Only other case
+        return SearchResult.success(payload=matches)
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _find_by_current_position(
+            cls,
+            stack: List[Token],
+            current_position: Coord
+    ) -> SearchResult[List[Token]]:
+        """
+        Search the stack by a random.
+
+        Args:
+            current_position: Coord
+            stack: List[Token]
+        Returns:
+            SearchResult[List[Token]]
+        Raises
+        """
+        matches = [
+            token for token in stack if token.current_position == current_position
         ]
         # Handle the nothing found case.
         if len(matches) == 0:

@@ -211,9 +211,9 @@ class TokenContextValidator(Validator[TokenContext]):
             return ValidationResult.success(context)
         
         # Certification for the search-by-coord target.
-        if context.coord is not None:
+        if context.current_position is not None:
             validation_result = workers.coord_service.validator.validate(
-                candidate=context.coord
+                candidate=context.current_position
             )
             if validation_result.is_failure:
                 # Return the exception chain on failure.
