@@ -10,11 +10,11 @@ version: 1.0.0
 from __future__ import annotations
 from typing import List
 
-from logic.coord import Coord
-from logic.rank import Rank
-from logic.team import Team
 from logic.system import GameColor, LoggingLevelRouter, SearchResult, SearchRouter
-from logic.schema import MissingSchemaSearchRouteException, Schema, SchemaQuery, SchemaQueryValidator, SchemaSearchException
+from logic.schema import (
+    MissingSchemaSearchRouteException, Schema, SchemaQuery, SchemaQueryValidator,
+    SchemaSearchException
+)
 
 
 class SchemaSearchRouter(SearchRouter[Schema]):

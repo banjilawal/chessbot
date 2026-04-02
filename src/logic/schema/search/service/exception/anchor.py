@@ -1,7 +1,7 @@
-# src/logic/token/database/search/service/exception/anchor.py
+# src/logic/schema/database/search/service/exception/anchor.py
 
 """
-Module: logic.token.database.search.service.exception.anchor
+Module: logic.schema.database.search.service.exception.anchor
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,22 +11,22 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# TOKEN_SEARCH_SERVICE_FAILURE #======================#
-    "TokenSearchServiceException",
+    # ======================# SCHEMA_SEARCH_SERVICE_FAILURE #======================#
+    "SchemaSearchServiceException",
 ]
 
 from logic.system import ServiceException
 
-# ======================# TOKEN_SEARCH_SERVICE_FAILURE #======================#
-class TokenSearchServiceException(ServiceException):
+# ======================# SCHEMA_SEARCH_SERVICE_FAILURE #======================#
+class SchemaSearchServiceException(ServiceException):
     """
     Role:
         -   Exception Chain Layer 0
         -   Exception coverage target
 
     Responsibilities:
-        1.  Anchors TokenSearchService debug (layer-2) information.
-        2.  Indicate which TokenSearchService method received a worker's
+        1.  Anchors SchemaSearchService debug (layer-2) information.
+        2.  Indicate which SchemaSearchService method received a worker's
             (layer-1) failure result.
 
 
@@ -42,9 +42,9 @@ class TokenSearchServiceException(ServiceException):
     Super Class:
         ServiceException
     """
-    CLS_NAME = "TokenSearchService"
-    ERR_CODE = "TOKEN_SEARCH_SERVICE_FAILURE"
-    MSG = "TokenSearchService raised an exception."
+    CLS_NAME = "SchemaSearchService"
+    ERR_CODE = "SCHEMA_SEARCH_SERVICE_FAILURE"
+    MSG = "SchemaSearchService raised an exception."
     
     def __init__(
             self,

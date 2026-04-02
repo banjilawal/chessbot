@@ -1,7 +1,7 @@
-# src/logic/token/database/search/service/exception/exist.py
+# src/logic/schema/database/search/service/exception/exist.py
 
 """
-Module: logic.token.database.search.service.exception.exist
+Module: logic.schema.database.search.service.exception.exist
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0
@@ -11,21 +11,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# TOKEN_NOT_FOUND_EXCEPTION #======================#
-    "TokenNotFoundException",
+    # ======================# SCHEMA_NOT_FOUND_EXCEPTION #======================#
+    "SchemaNotFoundException",
 ]
 
-from logic.token import TokenDebugException
+from logic.schema import SchemaDebugException
 
-# ======================# TOKEN_NOT_FOUND_EXCEPTION #======================#
-class TokenNotFoundException(TokenDebugException):
+# ======================# SCHEMA_NOT_FOUND_EXCEPTION #======================#
+class SchemaNotFoundException(SchemaDebugException):
     """
     Role:
         -   Exception Chain Layer 0
         -   Exception coverage target
     
     Responsibilities:
-        1.  Indicate that no token was found.
+        1.  Indicate that no schema was found.
 
     Attributes:
         var: Optional[str]
@@ -37,10 +37,10 @@ class TokenNotFoundException(TokenDebugException):
     Provides
     
     Super Class:
-        TokenDebugException
+        SchemaDebugException
     """
-    ERR_CODE = "TOKEN_NOT_FOUND_EXCEPTION"
-    MSG = "No token matching the attribute was found."
+    ERR_CODE = "SCHEMA_NOT_FOUND_EXCEPTION"
+    MSG = "No schema matching the attribute was found."
     
     def __init__(
             self,
