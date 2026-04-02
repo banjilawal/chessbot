@@ -16,7 +16,7 @@ from .config import *
 from .collision import *
 from .collection import *
 from .computation import *
-from .database import *
+from logic.system.collection.adt.database import *
 from .err import *
 from .event import *
 from .identity import *

@@ -7,7 +7,7 @@ Created: 2025-02-17
 version: 1.0.0
 """
 
-from typing import List, Optional, cast
+from typing import List, Optional
 
 from logic.node import (
     AddingDuplicateNodeException, Node, NodeContext, NodeQueryService, NodePopException, NodePushException,
@@ -19,7 +19,7 @@ from logic.system import (
     SearchResult,
     StackService
 )
-from logic.system.collection.stack.stack import T
+from logic.system.collection.adt.stack.stack import T
 
 
 class NodeStackService(StackService[Node]):

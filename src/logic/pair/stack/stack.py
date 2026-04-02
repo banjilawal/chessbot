@@ -15,9 +15,8 @@ from logic.system import (
 )
 from logic.pair import (
     PoppingEmptyPairStackException, Pair, PairContext, PairService, PairStackException, PairContextService,
-    PoppingPairException, PushingPairException, PairStackFullException, PairStackState, PairStackUtil,
+    PoppingPairException, PushingPairException, PairStackFullException, PairStackState,
 )
-from logic.system.collection.stack.stack import T
 
 
 class PairStack(StackService[Pair]):

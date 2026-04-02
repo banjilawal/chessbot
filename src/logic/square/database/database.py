@@ -14,7 +14,6 @@ from logic.square import (
     SquareStackService
 )
 from logic.system import Database, IdFactory, LoggingLevelRouter, SearchResult, UpdateResult
-from logic.system.database.database import T
 from logic.token import Token, TokenService
 
 
