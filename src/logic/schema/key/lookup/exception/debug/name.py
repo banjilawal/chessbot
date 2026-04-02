@@ -1,7 +1,7 @@
-# src/logic/schema/key/lookup/exception/debug/name.py
+# src/logic/schema/key/lookup/exception/debug/stack.py
 
 """
-Module: logic.schema.key.lookup.exception.debug.name
+Module: logic.schema.key.lookup.exception.debug.stack
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -22,7 +22,7 @@ class SchemaNameBoundsException(SchemaException, BoundsException):
     Role:Error Tracing, Debugging
 
     Responsibilities:
-    1.  Indicate that a Schema lookup failed because the name was not a key to any Schema variant.
+    1.  Indicate that a Schema lookup failed because the stack was not a key to any Schema variant.
 
     Super Class:
         *   BoundsException

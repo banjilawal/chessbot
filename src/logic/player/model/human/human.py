@@ -41,7 +41,7 @@ class HumanPlayer(Player):
 
         # PARAMETERS:
             *   id (nt)
-            *   name (str)
+            *   stack (str)
             *   games (UniqueGameDataService)
             *   teams (TeamDatabase)
 

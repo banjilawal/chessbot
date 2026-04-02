@@ -25,6 +25,10 @@ class TokenQuery(StackQuery[Token]):
             context: TokenContext
         """
         super().__init__(stack=stack, context=context)
+        
+    @property
+    def context(self) -> TokenContext:
+        return self.context
     
     @property
     def stack(self) -> List[Token]:

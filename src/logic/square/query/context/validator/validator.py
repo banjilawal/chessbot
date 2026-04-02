@@ -58,7 +58,7 @@ class SquareContextValidator(Validator[SquareContext]):
                 instance query.
             2.  Send an exception chain in the ValidationResult if either
                     *   The id
-                    *   The name
+                    *   The stack
                     *   The coord
                     *   The state
                     *   The board
@@ -146,9 +146,9 @@ class SquareContextValidator(Validator[SquareContext]):
             # On certification success return the id_SquareContext in the ValidationResult.
             return ValidationResult.success(payload=context)
         
-        # Certification for the search-by-name target.
-        if context.name is not None:
-            validation = identity_service.validate_name(context.name)
+        # Certification for the search-by-stack target.
+        if context.designation is not None:
+            validation = identity_service.validate_name(context.designation)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(

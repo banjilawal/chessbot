@@ -45,7 +45,7 @@ class RankQueryService(QueryService[RankContext]):
         Constructor
 
         # PARAMETERS:
-            *   name (str): Default value - SERVICE_NAME
+            *   stack (str): Default value - SERVICE_NAME
             *   id (int): Default value - id_emitter.service_id
             *   route (RankFinder): Default value - RankFinder()
             *   build (RankContextBuilder): Default value - RankContextBuilder()

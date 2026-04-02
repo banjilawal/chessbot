@@ -28,7 +28,7 @@ class FormationService(HashService[Formation]):
             Constructor
         # PARAMETERS:
             *   id (int)
-            *   name (str)
+            *   stack (str)
             *   validation (FormationValidator)
             *   super_key_service (FormationKeyService)
         # RETURNS:
@@ -79,7 +79,7 @@ class FormationService(HashService[Formation]):
 
     @property
     def formation_names(self) -> List[str]:
-        """Full name of the formation made up of color, rank, and number."""
+        """Full stack of the formation made up of color, rank, and number."""
         return [order.name.upper() for order in Formation]
     
 
@@ -161,7 +161,7 @@ class FormationService(HashService[Formation]):
         # squares = List[Square]
         # # Loop through the formations to find their squares from the team.
         # for formation in Formation:
-        #     square_search = team.squares.search(query=SquareContext(name=formation.square_name))
+        #     square_search = team.squares.search(query=SquareContext(stack=formation.square_name))
         #
         #     # Handle the case that, no item with the denomination is found.
         #     if square_search.is_empty:

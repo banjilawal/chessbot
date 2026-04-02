@@ -31,7 +31,7 @@ class SquareBuilder(Builder[Square]):
 
     Provides:
         -   def execute(
-                name: str,
+                stack: str,
                 board: Board,
                 coord: Coord,
                 id: int = IdFactory,
@@ -123,7 +123,7 @@ class SquareBuilder(Builder[Square]):
        Action:
             1.  Send an exception chain in the BuildResult if either:
                     -   id
-                    -   name
+                    -   stack
                     -   coord
                     -   board
                 fails its validation checks.
@@ -144,7 +144,7 @@ class SquareBuilder(Builder[Square]):
         """
         method = f"{cls.__name__}_run_build_param_checks"
         
-        # Handle the case that, either id or name are not certified safe.
+        # Handle the case that, either id or stack are not certified safe.
         identity_validation = identity_service.validate_identity(
             id_candidate=id,
             name_candidate=name

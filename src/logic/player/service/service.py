@@ -52,7 +52,7 @@ class PlayerService(IntegrityMicroservice[Player]):
             Constructor
         # PARAMETERS:
             *   id (nt)
-            *   name (str)
+            *   stack (str)
             *   build (PlayerFactory)
             *   validation (PlayerValidator)
         # RETURNS:

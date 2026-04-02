@@ -39,7 +39,7 @@ class SquareRayService(IntegrityMicroservice[SquareRay]):
     
     CONSTRUCTOR PARAMETERS:
         *   id: int
-        *   name: str
+        *   stack: str
         *   coord_service: CoordService
         *   vector_service: VectorService
     

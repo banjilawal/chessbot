@@ -48,7 +48,7 @@ class Persona(Enum):
         *   quadrants (List[Quadrant])
 
     # INHERITED ATTRIBUTES:
-        * name (str) -->  Name give to each Enum entry.
+        * stack (str) -->  Name give to each Enum entry.
     """
     
     def __new__(

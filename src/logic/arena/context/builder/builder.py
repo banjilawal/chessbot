@@ -106,7 +106,7 @@ class ArenaContextBuilder(Builder[ArenaContext]):
                 # On validation success return an id_ArenaContext in the BuildResult.
                 return BuildResult.success(ArenaContext(id=id))
             
-            # Build the name ArenaContext if its flag is enabled.
+            # Build the stack ArenaContext if its flag is enabled.
             if name is not None:
                 validation = identity_service.validate_name(name)
                 if validation.is_failure:

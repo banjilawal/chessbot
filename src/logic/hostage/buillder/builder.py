@@ -58,7 +58,7 @@ class HostageBuilder(Builder[Hostage]):
 
         # PARAMETERS:
             *   id (int)
-            *   name (str)
+            *   stack (str)
             *   hostage_variety (HostageVariety)
             *   engine_service (Optional[EngineService])
 

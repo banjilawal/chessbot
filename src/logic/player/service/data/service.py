@@ -52,7 +52,7 @@ class AgentStackService(StackService[PlayerAgent]):
 
         # PARAMETERS:
             *   id (int): = id_emitter.service_id
-            *   name (str): = SERVICE_NAME
+            *   stack (str): = SERVICE_NAME
             *   bag (List[Player]): = List[Player]
             *   service (AgentService): = AgentService()
             *   context_service (PlayerQueryService): = PlayerQueryService()

@@ -31,7 +31,7 @@ class Rank(ABC):
 
     # ATTRIBUTES:
         *   id (int)
-        *   name (str)
+        *   stack (str)
         *   ransom (int)
         *   team_quota (int)
         *   designation(str)

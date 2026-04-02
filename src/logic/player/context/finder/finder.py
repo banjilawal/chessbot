@@ -85,8 +85,8 @@ class AgentFinder(DataFinder[PlayerAgent]):
             if context.id is not None:
                 return cls._find_by_id(dataset, context.id)
             # Entry point into searching by owner.designation.
-            if context.name is not None:
-                return cls._find_by_name(dataset, context.name)
+            if context.designation is not None:
+                return cls._find_by_name(dataset, context.designation)
             # Entry point into searching by owner's team.
             if context.team is not None:
                 return cls._find_by_team(dataset, context.team)
@@ -154,14 +154,14 @@ class AgentFinder(DataFinder[PlayerAgent]):
     def _find_by_name(cls, dataset: [PlayerAgent], name: str) -> SearchResult[List[PlayerAgent]]:
         """
         # ACTION:
-        1.  Get the PlayerAgents with the matching upper class name.
+        1.  Get the PlayerAgents with the matching upper class stack.
         2.  If no hits are found an empty SearchResult is returned. For one or more unique hits a success
             SearchResult is returned. Otherwise, a SearchResult failure containing an exception is sent.
         3.  There really should only be one or none hits on a unique id but, the multiple hits error condition is
             relaxed for testing.
 
         # PARAMETERS:
-            *   name (str)
+            *   stack (str)
             *   collider_candidates (List[Player])
 
         # RETURNS:
@@ -175,8 +175,8 @@ class AgentFinder(DataFinder[PlayerAgent]):
         """
         method = "AgentFinder._find_by_name"
         try:
-            # Get the list of agents with the same name in upper case.
-            matches = [agent for agent in dataset if player.name.upper() == name.upper()]
+            # Get the list of agents with the same stack in upper case.
+            matches = [agent for agent in dataset if player.designation.upper() == name.upper()]
             
             # An empty array means nothing was found.
             if len(matches) == 0:

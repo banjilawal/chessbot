@@ -92,7 +92,7 @@ class PlayerContext(Context[Player]):
         """
         return {
             "id": self.id,
-            "designation": self.name,
+            "designation": self.designation,
             "team": self._team,
             "game": self._game,
             "variety": self._variety,

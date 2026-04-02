@@ -31,7 +31,7 @@ class Database(Microservice, Generic[T]):
 
     Attributes:
         id: int
-        name: str
+        stack: str
 
     Provides:
         -   size() -> int

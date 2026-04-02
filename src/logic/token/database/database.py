@@ -36,7 +36,7 @@ class TokenDatabase(Database[Token]):
         SERVICE_NAME = "TokenDatabase"
         
         id: int
-        name: str
+        stack: str
         size: int
         is_empty: bool
         is_full: bool

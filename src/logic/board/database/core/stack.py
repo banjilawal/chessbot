@@ -53,7 +53,7 @@ class BoardStackService(StackService[Board]):
             Constructor
         # PARAMETERS:
             *   id (int)
-            *   name (str)
+            *   stack (str)
             *   bag (List[Team])
             *   service (TeamService)
             *   context_service (TeamQueryService)

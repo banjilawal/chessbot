@@ -48,7 +48,7 @@ class BoardQueryService(QueryService[BoardContext]):
         # ACTION:
             Constructor
         # PARAMETERS:
-            *   name (str)
+            *   stack (str)
             *   id (int)
             *   route (BoardFinder)
             *   build (BoardContextBuilder)

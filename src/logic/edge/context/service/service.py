@@ -49,7 +49,7 @@ class EdgeQueryService(QueryService[EdgeContext]):
         # ACTION:
             Constructor
         # PARAMETERS:
-            *   name (str)
+            *   stack (str)
             *   id (int)
             *   route (EdgeFinder)
             *   build (EdgeContextBuilder)

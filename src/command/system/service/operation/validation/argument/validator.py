@@ -64,7 +64,7 @@ class CommandArgsValidator(Validator[Dict]):
             1.  Send an exception chain in the ValidationResult if either of
                 the following occur,
                     -   The command's parameters fail a type check.
-                    -   The ccommand's identifier fails a name check.
+                    -   The ccommand's identifier fails a stack check.
             2.  Otherwise, send the success result.
         Args:
             command: Command

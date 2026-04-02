@@ -33,7 +33,7 @@ class SquareContext(Context[Square]):
 
     Attributes:
         id: Optional[int]
-        name: Optional[str]
+        stack: Optional[str]
         board: Optional[Board]
         coord: Optional[Coord]
         occupant: Optional[Token]
@@ -96,7 +96,7 @@ class SquareContext(Context[Square]):
         """
         return {
             "id": self.id,
-            "name": self.name,
+            "stack": self.designation,
             "board": self._board,
             "coord": self._coord,
             "occupant": self._occupant,

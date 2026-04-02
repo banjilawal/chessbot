@@ -131,7 +131,7 @@ class GameDisplay:
     if isinstance(chess_piece.rank, Queen):
       pygame.draw.rect(self.screen, QUEEN_COLOR, chess_piece_shape)
 
-    text_surface = self.font.render(str(chess_piece.name), True, GameColor.BLACK.value)
+    text_surface = self.font.render(str(chess_piece.designation), True, GameColor.BLACK.value)
     text_rectangle = text_surface.get_rect(center=chess_piece_shape.center)
     self.screen.blit(text_surface, text_rectangle)
 
@@ -277,7 +277,7 @@ class GameDisplay:
     elif isinstance(chess_piece.rank, Queen):
       pygame.draw.rect(self.screen, QUEEN_COLOR, rect)
 
-    text_surface = self.font.render(str(chess_piece.name), True, GameColor.BLACK.value)
+    text_surface = self.font.render(str(chess_piece.designation), True, GameColor.BLACK.value)
     text_rect = text_surface.get_rect(center=rect.center)
     self.screen.blit(text_surface, text_rect)
 

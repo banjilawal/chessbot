@@ -66,7 +66,7 @@ class TokenBuilder(Builder[Token]):
         Action:
             1.  Send an exception chain in the BuildResult if any of the following
                 occur:
-                    -   Either id, name, team. formation fail a validation check.
+                    -   Either id, stack, team. formation fail a validation check.
                     -   The token belongs on a different team.
                     -   The team has already filled the position.
                     -   The token's rank cannot be built.

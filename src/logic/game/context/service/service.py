@@ -49,7 +49,7 @@ class GameQueryService(QueryService[GameContext]):
         Constructor
 
         # PARAMETERS:
-            *   name (str): Default value - SERVICE_NAME
+            *   stack (str): Default value - SERVICE_NAME
             *   id (int): Default value - id_emitter.service_id
             *   route (GameFinder): Default value - GameFinder()
             *   build (GameContextBuilder): Default value - GameContextBuilder()

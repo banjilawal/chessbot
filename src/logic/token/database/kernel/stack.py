@@ -39,7 +39,7 @@ class TokenStackService(StackService[Token]):
         SERVICE_NAME = TokenStackService
  
         id: int
-        name: str
+        stack: str
         size: int
         capacity: int
         items: List[Token]

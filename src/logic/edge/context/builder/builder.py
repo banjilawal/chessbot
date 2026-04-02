@@ -63,7 +63,7 @@ class EdgeContextBuilder(Builder[EdgeContext]):
         # PARAMETERS:
             Only one these must be provided:
                 *   id Optional[(int)]
-                *   name Optional[(str)]
+                *   stack Optional[(str)]
                 *   cord Optional[(Coord)]
                 *   board Optional[(Board)]
                 *   state Optional[EdgeState]
@@ -126,7 +126,7 @@ class EdgeContextBuilder(Builder[EdgeContext]):
             # On validation success return an id_EdgeContext in the BuildResult.
             return BuildResult.success(EdgeContext(id=id))
         
-        # Build the name EdgeContext if its flag is enabled.
+        # Build the stack EdgeContext if its flag is enabled.
         if name is not None:
             validation = identity_service.validate_name(candidate=name)
             if validation.is_failure:

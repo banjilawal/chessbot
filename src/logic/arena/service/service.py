@@ -54,7 +54,7 @@ class ArenaService(IntegrityMicroservice[Arena]):
             Constructor
         # PARAMETERS:
             *   id (nt)
-            *   name (str)
+            *   stack (str)
             *   build (ArenaFactory)
             *   validation (ArenaValidator)
         # RETURNS:

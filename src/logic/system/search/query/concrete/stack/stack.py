@@ -8,6 +8,8 @@ Version: 1.0.0
 """
 
 from __future__ import annotations
+
+from abc import abstractmethod
 from typing import Generic, List, TypeVar
 
 from logic.system import Query
@@ -29,7 +31,8 @@ class StackQuery(Query, Generic[T]):
         self._stack = stack
         
     @property
+    @abstractmethod
     def stack(self) -> List[T]:
-        return self._stack
+        pass
     
     

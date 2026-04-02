@@ -66,7 +66,7 @@ class SquareValidator(Validator[Square]):
             1.  Send an exception chain in the ValidationResult if:
                     -   The candidate is null
                     -   The candidate is not a Square
-                    -   The id and name are not certified as safe.
+                    -   The id and stack are not certified as safe.
                     -   The coord does not pass a validation check.
                     -   The board does not pass a validation check.
                     -   There is no bidirectional relationship between the board and square.
@@ -119,7 +119,7 @@ class SquareValidator(Validator[Square]):
         # --- Cast candidate to a Square for additional tests. ---#
         square = cast(Square, candidate)
         
-        # Handle the case that, square.id or square.name does not pass a validation check.
+        # Handle the case that, square.id or square.stack does not pass a validation check.
         identity_validation_result = identity_service.validate_identity(
             id_candidate=square.id,
             name_candidate=square.name

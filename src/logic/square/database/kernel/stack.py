@@ -48,7 +48,7 @@ class SquareStackService(StackService[Square]):
     Attributes:
         Local:
             *   id (int)
-            *   name (str)
+            *   stack (str)
             *   capacity (int)
             *   controller (SquareStackOpsController)
             *   service (SquareService)

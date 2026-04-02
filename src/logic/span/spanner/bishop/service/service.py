@@ -47,7 +47,7 @@ class BishopSpanService(SpanMicroservice):
 
     CONSTRUCTOR PARAMETERS:
         *   id: int
-        *   name: str
+        *   stack: str
         *   spanner: BishopSpanner
         *   coord_service: CoordService
         *   vector_service: VectorService
@@ -199,7 +199,7 @@ class BishopSpanService(SpanMicroservice):
         ):
             """
             """
-            method = f"{self.__class__.name}.find_adjacent_squares"
+            method = f"{self.__class__.designation}.find_adjacent_squares"
             
             for ray in span.rays:
                 

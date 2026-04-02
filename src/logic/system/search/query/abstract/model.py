@@ -8,7 +8,7 @@ Version: 1.0.0
 """
 
 from __future__ import annotations
-from abc import ABC
+from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from logic.system.search import Context

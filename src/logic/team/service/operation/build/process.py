@@ -134,11 +134,11 @@ class TeamBuild(Builder[Team]):
     ) -> ValidationResult[int]:
         """
         # ACTION:
-            1.  If either the id, name, coord, or board are does not pass a validation check. by their validators, return the
+            1.  If either the id, stack, coord, or board are does not pass a validation check. by their validators, return the
                 validation exception to the caller. Otherwise, return the number of attributes in the success result.
         # PARAMETERS:
             *   id (int)
-            *   name (str)
+            *   stack (str)
             *   cord (Coord)
             *   board (Board)
             *   board_service (BoardService)
@@ -229,7 +229,7 @@ class SquareBuilder(Builder[Square]):
     # LOCAL METHODS:
         *   build(
                 cls,
-                name: str,
+                stack: str,
                 board: Board,
                 coord: Coord,
                 id: int = IdFactory.next_id(Square.__name__),
@@ -266,7 +266,7 @@ class SquareBuilder(Builder[Square]):
             4.  Return the Square instance in the BuildResult.
         # PARAMETERS:
             *   id (int)
-            *   name (str)
+            *   stack (str)
             *   cord (Coord)
             *   board (Board)
             *   board_service (BoardService)

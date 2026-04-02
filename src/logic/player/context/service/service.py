@@ -50,7 +50,7 @@ class PlayerQueryService(QueryService[AgentContext]):
         Constructor
 
         # PARAMETERS:
-            *   name (str): Default value - SERVICE_NAME
+            *   stack (str): Default value - SERVICE_NAME
             *   id (int): Default value - id_emitter.service_id
             *   route (AgentFinder): Default value - AgentFinder()
             *   build (AgentContextBuilder): Default value - AgentContextBuilder()

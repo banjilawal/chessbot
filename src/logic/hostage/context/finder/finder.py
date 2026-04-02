@@ -159,9 +159,9 @@ class HostageFinder(DataFinder[Hostage]):
     ) -> SearchResult[List[Hostage]]:
         """
         # ACTION:
-            1.  Get the Hostages which match the name.
+            1.  Get the Hostages which match the stack.
         # PARAMETERS:
-            *   name (str)
+            *   stack (str)
             *   collider_candidates (List[Hostage])
         # RETURNS:
             *   SearchResult[List[Hostage]] containing either:
@@ -187,7 +187,7 @@ class HostageFinder(DataFinder[Hostage]):
     ) -> SearchResult[List[Hostage]]:
         """
         # ACTION:
-            1.  Get the Hostages which match the name.
+            1.  Get the Hostages which match the stack.
         # PARAMETERS:
             *   coord (Coord)
             *   collider_candidates (List[Hostage])

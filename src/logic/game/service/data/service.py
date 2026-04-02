@@ -53,7 +53,7 @@ class GameStackService(StackService[Game]):
 
         # PARAMETERS:
             *   id (int): = id_emitter.service_id
-            *   name (str): = SERVICE_NAME
+            *   stack (str): = SERVICE_NAME
             *   bag (List[Game]): = List[Game]
             *   service (GameService): = GameService()
             *   context_service (GameQueryService): = GameQueryService()

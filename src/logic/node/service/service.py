@@ -52,7 +52,7 @@ class NodeService(IntegrityMicroservice[Node]):
             Constructor
         # PARAMETERS:
             *   id (nt)
-            *   name (str)
+            *   stack (str)
             *   build (NodeFactory)
             *   validation (NodeValidator)
         # RETURNS:

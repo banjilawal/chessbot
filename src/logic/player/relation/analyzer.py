@@ -53,7 +53,7 @@ class PlayerTeamRelationAnalysis(RelationAnalysis[Player, Team]):
 
         # PARAMETERS:
             *   id (int)
-            *   name (str)
+            *   stack (str)
             *   arena_variety (ArenaVariety)
             *   engine_service (Optional[EngineService])
 

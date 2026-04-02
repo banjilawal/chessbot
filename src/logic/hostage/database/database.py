@@ -49,7 +49,7 @@ class HostageDatabase(Database[Hostage]):
             Constructor
         # PARAMETERS:
             *   id (int)
-            *   name (str)
+            *   stack (str)
             *   member_service (HostageList)
         # RETURNS:
             None

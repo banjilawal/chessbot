@@ -46,7 +46,7 @@ class ScalarService(IntegrityMicroservice[Scalar]):
 
     Attributes:
         *   id (int)
-        *   name (name)
+        *   stack (stack)
         *   build (Builder[Scalar])
         *   validation (Validator[Scalar])
 
@@ -89,4 +89,4 @@ class ScalarService(IntegrityMicroservice[Scalar]):
         return hash(self._id)
     
     def __str__(self):
-        return f"id:{self._id}, name:{self._name}"
+        return f"id:{self._id}, stack:{self._name}"

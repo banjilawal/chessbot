@@ -35,11 +35,11 @@ class StackService(ABC, Generic[T]):
 
     Attributes:
         id: int
-        name: str
+        stack: str
 
     Provides:
         -   id: int
-        -   name: str
+        -   stack: str
         -   items() -> List[T]
         -   size() -> int
         -   iterator() -> Iterator[T]

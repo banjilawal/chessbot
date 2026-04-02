@@ -45,7 +45,7 @@ class VectorService(IntegrityMicroservice[Vector]):
 
     Attributes:
         *   id (int)
-        *   name (str)
+        *   stack (str)
         *   build (VectorBuilder) = VectorBuilder()
         *   validation (VectorValidator) = VectorValidator()
 

@@ -37,7 +37,7 @@ class DomainOriginService(IntegrityMicroservice[DomainOrigin]):
 
         # PARAMETERS:
             *   id (nt)
-            *   name (str)
+            *   stack (str)
             *   build (DomainOriginFactory)
             *   validation (DomainOriginValidator)
 

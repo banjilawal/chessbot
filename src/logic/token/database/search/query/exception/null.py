@@ -11,14 +11,14 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# TOKEN_DATASET_NULL_EXCEPTION #======================#
-    "TokenDatasetNullException",
+    # ======================# TOKEN_STACK_NULL_EXCEPTION #======================#
+    "TokenStackNullException",
 ]
 
 from logic.system import NullException
 
-# ======================# TOKEN_DATASET_NULL_EXCEPTION #======================#
-class TokenDatasetNullException(NullException):
+# ======================# TOKEN_STACK_NULL_EXCEPTION #======================#
+class TokenStackNullException(NullException):
     """
     Role:
         -   Exception Chain Layer 2
@@ -40,8 +40,8 @@ class TokenDatasetNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = "Token dataset cannot be null."
-    ERR_CODE = "TOKEN_DATASET_NULL_EXCEPTION"
+    MSG = "TokenQuery validation check failed."
+    ERR_CODE = "TOKEN_STACK_NULL_EXCEPTION"
 
     
     def __init__(
@@ -62,7 +62,13 @@ class TokenDatasetNullException(NullException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        super().__init__(ex=ex, msg=msg, err_code=err_code, var=var, val=val,)
+        super().__init__(
+            ex=ex,
+            msg=msg,
+            var=var,
+            val=val,
+            err_code=err_code,
+        )
 
 
     

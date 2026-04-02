@@ -122,7 +122,7 @@ class CommandValidator(Validator[Command]):
                     ex=identity_validation_result.exception
                 )
             )
-        # Handle the case that, command has an incorrect name.
+        # Handle the case that, command has an incorrect stack.
         if command.name not in ciphers.command_names:
             # Return the exception chain on failure.
             return ValidationResult.failure(

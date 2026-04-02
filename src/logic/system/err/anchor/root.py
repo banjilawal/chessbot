@@ -30,15 +30,15 @@ class AnchorException(ChessException):
     2.  Indicate which Anchor method received a worker's (layer-1) failure result.
 
     # NAMING CONVENTION:
-    1.  Class name followed by the Exception suffix
+    1.  Class stack followed by the Exception suffix
     2.  The Syntax is: [Class]Exception
 
     # ERROR CODE CONVENTION:
-    1.  Class name followed by the ERROR suffix.
+    1.  Class stack followed by the ERROR suffix.
     2.  The Syntax is: [Class]_EXCEPTION
 
     # DEFAULT MSG CONVENTION:
-    1.  Class name followed by "raised an exception."
+    1.  Class stack followed by "raised an exception."
     2.  The Syntax is: [Class] raised an exception
 
     Super Class:

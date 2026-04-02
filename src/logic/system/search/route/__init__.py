@@ -10,7 +10,7 @@ Version: 1.0.0
 # =========== SYSTEM.SEARCH.ROUTE PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .exception import *
 
 # Modules
 from .router import SearchRouter

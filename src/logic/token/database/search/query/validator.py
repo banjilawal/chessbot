@@ -13,7 +13,7 @@ from typing import List
 
 from logic.system import LoggingLevelRouter, ValidationResult, Validator
 from logic.token import (
-    Token, TokenContext, TokenContextValidator, TokenDatasetNullException, TokenQuery,
+    Token, TokenContext, TokenContextValidator, TokenStackNullException, TokenQuery,
     TokenQueryValidationException
 )
 
@@ -32,7 +32,7 @@ class TokenQueryValidator(Validator[TokenQuery]):
 
     Provides:
         -   validate(
-                    dataset: List[Token],
+                    stack: List[Token],
                     context: TokenContext,
                     context_validator: TokenContextValidator,
             ) -> ValidationResult[int]
@@ -53,8 +53,8 @@ class TokenQueryValidator(Validator[TokenQuery]):
             1.  Send an exception chain in the ValidationResult if any of the following
                 conditions occur:
                     -   The context fails a safety check.
-                    -   The dataset is null.
-                    -   The dataset's type is not ist[Token]
+                    -   The stack is null.
+                    -   The stack's type is not ist[Token]
             2.  Otherwise, send the success result.
         Args:
             dataset: List[Token]
@@ -64,7 +64,7 @@ class TokenQueryValidator(Validator[TokenQuery]):
             ValidationResult[int]
         Raises:
             TypeError
-            TokenDatasetNullException
+            TokenStackNullException
             TokenQueryValidationException
         """
         method = f"{cls.__name__}._validate"
@@ -82,7 +82,7 @@ class TokenQueryValidator(Validator[TokenQuery]):
                     ex=validation_result.exception,
                 )
             )
-        # Handle the case that, the dataset does not exist
+        # Handle the case that, the stack does not exist
         if dataset is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -91,13 +91,13 @@ class TokenQueryValidator(Validator[TokenQuery]):
                     title=cls.__class__.__name__,
                     msg=TokenQueryValidationException.MSG,
                     err_code=TokenQueryValidationException.ERR_CODE,
-                    ex=TokenDatasetNullException(
-                        msg=TokenDatasetNullException.MSG,
-                        err_code=TokenDatasetNullException.ERR_CODE,
+                    ex=TokenStackNullException(
+                        msg=TokenStackNullException.MSG,
+                        err_code=TokenStackNullException.ERR_CODE,
                     )
                 )
             )
-        # Handle the case that, the dataset is the wrong type.
+        # Handle the case that, the stack is the wrong type.
         if not isinstance(dataset, List):
             # Return the exception chain on failure.
             return ValidationResult.failure(

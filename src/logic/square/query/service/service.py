@@ -49,7 +49,7 @@ class SquareQueryService(QueryService[SquareContext]):
         # ACTION:
             Constructor
         # PARAMETERS:
-            *   name (str)
+            *   stack (str)
             *   id (int)
             *   route (SquareFinder)
             *   build (SquareContextBuilder)

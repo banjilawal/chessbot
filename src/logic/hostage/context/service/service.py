@@ -48,7 +48,7 @@ class HostageQueryService(QueryService[CaptivityContext]):
         # ACTION:
             Constructor
         # PARAMETERS:
-            *   name (str)
+            *   stack (str)
             *   id (int)
             *   route (HostageFinder)
             *   build (CaptivityContextBuilder)

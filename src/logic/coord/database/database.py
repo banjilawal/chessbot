@@ -34,7 +34,7 @@ class CoordDatabase(Database[Coord]):
         SERVICE_NAME = "TokenDatabase"
 
         id: int
-        name: str
+        stack: str
         size: int
         is_empty: bool
         iterator: Iterator[Token]

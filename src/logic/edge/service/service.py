@@ -53,7 +53,7 @@ class EdgeService(IntegrityMicroservice[Edge]):
             Constructor
         # PARAMETERS:
             *   id (nt)
-            *   name (str)
+            *   stack (str)
             *   build (EdgeFactory)
             *   validation (EdgeValidator)
         # RETURNS:

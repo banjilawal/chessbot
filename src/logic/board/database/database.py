@@ -51,7 +51,7 @@ class BoardDatabase(Database[Board]):
             Constructor
         # PARAMETERS:
             *   id (int)
-            *   name (str)
+            *   stack (str)
             *   member_service (BoardStackService)
         # RETURNS:
             None

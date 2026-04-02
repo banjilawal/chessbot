@@ -109,9 +109,9 @@ class EdgeFinder(StackSearchRouter[Edge]):
         # Entry point into finding by item's id.
         if context.id is not None:
             return cls._find_by_id(dataset=dataset, id=context.id)
-        # Entry point into finding by item's name.
-        if context.name is not None:
-            return cls._find_by_name(dataset=dataset, name=context.name)
+        # Entry point into finding by item's stack.
+        if context.designation is not None:
+            return cls._find_by_name(dataset=dataset, name=context.designation)
         # Entry point into finding by item's coord.
         if context.coord is not None:
             return cls._find_by_coord(dataset=dataset, coord=context.coord)
@@ -166,9 +166,9 @@ class EdgeFinder(StackSearchRouter[Edge]):
     def _find_by_name(cls, dataset: List[Edge], name: str) -> SearchResult[List[Edge]]:
         """
         # ACTION:
-            1.  Get the Edges which match the name.
+            1.  Get the Edges which match the stack.
         # PARAMETERS:
-            *   name (str)
+            *   stack (str)
             *   collider_candidates (List[Edge])
         # RETURNS:
             *   SearchResult[List[Edge]] containing either:
@@ -190,7 +190,7 @@ class EdgeFinder(StackSearchRouter[Edge]):
     def _find_by_coord(cls, dataset: List[Edge], coord: Coord) -> SearchResult[List[Edge]]:
         """
         # ACTION:
-            1.  Get the Edges which match the name.
+            1.  Get the Edges which match the stack.
         # PARAMETERS:
             *   coord (Coord)
             *   collider_candidates (List[Edge])

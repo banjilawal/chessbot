@@ -52,7 +52,7 @@ class SchemaKeyBuilder(Builder[SchemaKey]):
             3.  After the active param is validated create the SchemaKey object and return in the BuildResult.
         # PARAMETERS:
             *   Only one these must be provided:
-                    *   name (Optional[str])
+                    *   stack (Optional[str])
                     *   color (Optional[GameColor])
             *   These Parameters must be provided:
                     *   color_validator (GameColorValidator)
@@ -92,7 +92,7 @@ class SchemaKeyBuilder(Builder[SchemaKey]):
             )
         # Route to the appropriate validation/build branch.
         
-        # Build the name SchemaKey if its value is set.
+        # Build the stack SchemaKey if its value is set.
         if name is not None:
             validation = identity_service.validate_name(candidate=name)
             if validation.is_failure:

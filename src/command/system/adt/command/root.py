@@ -31,7 +31,7 @@ class Command(ABC, Generic[T]):
 
     Attributes:
         id: int
-        name: str - Name of the server's operation.
+        stack: str - Name of the server's operation.
         server: Microservice - Operation provider
         parameters: Dict[str, Any] - Parameters for the operation's methods.
 

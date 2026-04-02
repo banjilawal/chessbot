@@ -32,20 +32,20 @@ class WorkException(ChessException):
             that produced an exception instead of a payload in it's result.
     
     Naming Convention:
-        1.  Prefix is the Class name with the Result name.
-        2.  The operation name should match the Result subclass.
+        1.  Prefix is the Class stack with the Result stack.
+        2.  The operation stack should match the Result subclass.
         3.  Operation outcome. This will always be Failed.
         4.  Suffix is Exception.
         5.  The Syntax is: [ClassName][ResultClassName]FailedException
     
     Error Code Convention:
-        1.  All caps, snake case. Prefix is the class name followed by the operation name.
-        2.  The operation name should match the type of result.
+        1.  All caps, snake case. Prefix is the class stack followed by the operation stack.
+        2.  The operation stack should match the type of result.
         3.  Suffix is Exception.
         2.  The Syntax is: [WORK_TITLE]_[OPERATION]_FAILURE
     
     Default MSG Convention:
-        1.  Sentence whose first word is the class name followed by the operation name.
+        1.  Sentence whose first word is the class stack followed by the operation stack.
         2.  The sentence ends with failed.
         3.  The Syntax is: [Class] operation failed.
 

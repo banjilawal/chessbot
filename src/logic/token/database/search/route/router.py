@@ -1,7 +1,7 @@
-# src/logic/token/database/search/route/model/router.py
+# src/logic/token/database/search/route/router.py
 
 """
-Module: logic.token.database.search.route.model.router
+Module: logic.token.database.search.route.router
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -11,15 +11,12 @@ from __future__ import annotations
 from typing import List
 
 from logic.rank import Rank
+from logic.system import GameColor, LoggingLevelRouter, SearchResult, SearchRouter
 from logic.team import Team
-from logic.system import GameColor, LoggingLevelRouter, SearchResult, StackSearchRouter
-from logic.token import (
-    Token, TokenContext, TokenQueryParamsValidator, MissingTokenSearchRouteException,
-    TokenSearchRouterException
-)
+from logic.token import MissingTokenSearchRouteException, Token, TokenQuery, TokenQueryValidator
 
 
-class TokenSearchRouter(StackSearchRouter[Token]):
+class TokenSearchRouter(SearchRouter[Token]):
     """
     Role:SearchRouter
 
@@ -43,9 +40,8 @@ class TokenSearchRouter(StackSearchRouter[Token]):
     @LoggingLevelRouter.monitor
     def route(
             cls,
-            dataset: List[Token],
-            context: TokenContext,
-            params_validator: TokenQueryParamsValidator = TokenQueryParamsValidator(),
+            query: TokenQuery,
+            query_validator:TokenQueryValidator = TokenQueryValidator(),
     ) -> SearchResult[List[Token]]:
         """
         Find tokens whith an attribute that fits the context.
@@ -56,84 +52,84 @@ class TokenSearchRouter(StackSearchRouter[Token]):
                     -   There is no search logic for the context
             2.  Otherwise, send the success result.
         Args:
-            dataset: List[Token],
-            context: TokenContext,
-            params_validator: TokenQueryParamsValidator
+            query: TokenQuery,
+            query_validator: TokenQueryValidator,
         Returns:
             SearchResult[List[Token]]
         Raises:
-            TokenSearchRouterException
+            TokenSearchException
             MissingTokenSearchRouteException
         """
         method = f"{cls.__name__}.route"
 
-        # Handle the case that, a routing param does not pass a check.
-        validation_result = params_validator.validate(
-            context=context,
-            dataset=dataset,
-        )
+        # Handle the case that, the query does not pass a test.
+        validation_result = query_validator.validate(query)
         if validation_result.is_failure:
             # Send the exception chain on failure.
             return SearchResult.failure(
-                TokenSearchRouterException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=TokenSearchRouterException.MSG,
-                    err_code=TokenSearchRouterException.ERR_CODE,
+                TokenSearchException(
+                    mthd=method,
+                    title=cls.__name__,
+                    op=TokenSearchException.OP,
+                    msg=TokenSearchException.MSG,
+                    err_code=TokenSearchException.ERR_CODE,
+                    rslt_type=TokenSearchException.RSLT_TYPE,
                     ex=validation_result.exception
                 )
             )
     # --- Route to the search method which matches the query key. ---#
         
-        # Entry point into finding by occupant's id.
-        if context.id is not None:
+        # token.id search entry point.
+        if query.context.id is not None:
             return cls._find_by_id(
-                dataset=dataset,
-                id=context.id
+                stack=query.stack,
+                id=query.context.id
             )
-        # Entry point into finding by occupant's designation.
-        if context.designation is not None:
+        # token.designation search entry point
+        if query.context.designation is not None:
             return cls._find_by_designation(
-                dataset=dataset,
-                name=context.designation
+                dataset=query.stack,
+                stack=query.context.designation
             )
-        # Entry point into finding by occupant's opening_square_name_name.
-        if context.opening_square_name is not None:
+        # token.opening_square_name search entry point.
+        if query.context.opening_square_name is not None:
             return cls._find_by_opening_square_name(
-                dataset=dataset,
-                name=context.opening_square_name
+                stack=query.stack,
+                name=query.context.opening_square_name
             )
-        # Entry point into finding by occupant's team.
-        if context.team is not None:
+        # token.team search entry point.
+        if query.context.team is not None:
             return cls._find_by_team(
-                dataset=dataset,
-                team=context.team
+                stack=query.stack,
+                team=query.context.team
             )
-        # Entry point into searching by toke's rank.
-        if context.rank is not None:
+        # token.rank search entry point.
+        if query.context.rank is not None:
             return cls._find_by_rank(
-                dataset=dataset,
-                team=context.rank
+                stack=query.stack,
+                team=query.context.rank
             )
-        # Entry point into searching by occupant's ransom.
-        if context.ransom is not None:
+        # token.ransom search entry point.
+        if query.context.ransom is not None:
             return cls._find_by_ransom(
-                dataset=dataset,
-                ransom=context.ransom
+                stack=query.stack,
+                ransom=query.context.ransom
             )
-        # Entry point into searching by occupant's color.
-        if context.ransom is not None:
+        # token.color search entry point.
+        if query.context.ransom is not None:
             return cls._find_by_color(
-                dataset=dataset,
-                ransom=context.color
+                stack=query.stack,
+                ransom=query.context.color
             )
-        # If a query does not have a search route defined send an exception chain.
+        # Handle the case that, there is no search path for the query context..
         return SearchResult.failure(
-            TokenSearchRouterException(
-                cls_mthd=method,
-                cls_name=cls.__name__,
-                msg=TokenSearchRouterException.MSG,
-                err_code=TokenSearchRouterException.ERR_CODE,
+            TokenSearchException(
+                mthd=method,
+                title=cls.__name__,
+                op=TokenSearchException.OP,
+                msg=TokenSearchException.MSG,
+                err_code=TokenSearchException.ERR_CODE,
+                rslt_type=TokenSearchException.RSLT_TYPE,
                 ex=MissingTokenSearchRouteException(
                     msg=MissingTokenSearchRouteException.MSG,
                     err_code=MissingTokenSearchRouteException.ERR_CODE,
@@ -145,20 +141,21 @@ class TokenSearchRouter(StackSearchRouter[Token]):
     @LoggingLevelRouter.monitor
     def _find_by_id(
             cls,
-            dataset: List[Token],
+            stack: List[Token],
             id: int
     ) -> SearchResult[List[Token]]:
         """
-        Search the dataset by a token id
+        Search the stack by a token id
+        
             1.  Get the Tokens with the desired id.
-        Args::
+        Args:
             id: int
-            dataset: List[Token]
+            stack: List[Token]
         Returns:
             SearchResult[List[Token]]
         Raises:
         """
-        matches = [token for token in dataset if token.id == id]
+        matches = [token for token in stack if token.id == id]
         # Handle the nothing found case.
         if len(matches) == 0:
             return SearchResult.empty()
@@ -174,7 +171,7 @@ class TokenSearchRouter(StackSearchRouter[Token]):
             designation: str
     ) -> SearchResult[List[Token]]:
         """
-        Search the dataset by a token id
+        Search the stack by a token id
         
         Args:
             designation: str
@@ -197,21 +194,21 @@ class TokenSearchRouter(StackSearchRouter[Token]):
     @LoggingLevelRouter.monitor
     def _find_by_opening_square_name(
             cls,
-            dataset: List[Token],
+            stack: List[Token],
             opening_square_name: str
     ) -> SearchResult[List[Token]]:
         """
-        Search the dataset by a opening square's name'
+        Search the stack by a opening square's stack'
 
         Args:
             opening_square_name: str
-            dataset: List[Token]
+            stack: List[Token]
         Returns:
             SearchResult[List[Token]]
         Raises
         """
         matches = [
-            token for token in dataset if
+            token for token in stack if
                 (token.opening_square_name.upper() == opening_square_name.upper())
         ]
         # Handle the nothing found case.
@@ -224,21 +221,21 @@ class TokenSearchRouter(StackSearchRouter[Token]):
     @LoggingLevelRouter.monitor
     def _find_by_team(
             cls,
-            dataset: List[Token],
+            stack: List[Token],
             team: Team
     ) -> SearchResult[List[Token]]:
         """
-        Search the dataset by a team.
+        Search the stack by a team.
 
         Args:
             team: Team
-            dataset: List[Token]
+            stack: List[Token]
         Returns:
             SearchResult[List[Token]]
         Raises
         """
         matches = [
-            token for token in dataset if token.team == team
+            token for token in stack if token.team == team
         ]
         # Handle the nothing found case.
         if len(matches) == 0:
@@ -250,21 +247,21 @@ class TokenSearchRouter(StackSearchRouter[Token]):
     @LoggingLevelRouter.monitor
     def _find_by_rank(
             cls,
-            dataset: List[Token],
+            stack: List[Token],
             rank: Rank
     ) -> SearchResult[List[Token]]:
         """
-        Search the dataset by a rank.
+        Search the stack by a rank.
 
         Args:
             rank: Rank
-            dataset: List[Token]
+            stack: List[Token]
         Returns:
             SearchResult[List[Token]]
         Raises
         """
         matches = [
-            token for token in dataset if token.rank == rank
+            token for token in stack if token.rank == rank
         ]
         # Handle the nothing found case.
         if len(matches) == 0:
@@ -280,7 +277,7 @@ class TokenSearchRouter(StackSearchRouter[Token]):
             ransom: int
     ) -> SearchResult[List[Token]]:
         """
-        Search the dataset by a random.
+        Search the stack by a random.
 
         Args:
             ransom: int
@@ -302,21 +299,21 @@ class TokenSearchRouter(StackSearchRouter[Token]):
     @LoggingLevelRouter.monitor
     def _find_by_color(
             cls,
-            dataset: List[Token],
+            stack: List[Token],
             color: GameColor
     ) -> SearchResult[List[Token]]:
         """
-        Search the dataset by a random.
+        Search the stack by a random.
 
         Args:
             color: GameColor
-            dataset: List[Token]
+            stack: List[Token]
         Returns:
             SearchResult[List[Token]]
         Raises
         """
         matches = [
-            token for token in dataset if token.team.schema.color == color
+            token for token in stack if token.team.schema.color == color
         ]
         # Handle the nothing found case.
         if len(matches) == 0:

@@ -45,7 +45,7 @@ class SquareContextBuilder(Builder[SquareContext]):
         *   build(
                 cls,
                 id: Optional[int] = None,
-                name: Optional[str] = None,
+                stack: Optional[str] = None,
                 coord: Optional[Coord] = None,
                 board: Optional[Board] = None,
                 token: Optional[Token] = None,
@@ -153,7 +153,7 @@ class SquareContextBuilder(Builder[SquareContext]):
             # On validation success return an id_SquareContext in the BuildResult.
             return BuildResult.success(SquareContext(id=id))
         
-        # Build the name SquareContext if its flag is enabled.
+        # Build the stack SquareContext if its flag is enabled.
         if name is not None:
             validation = identity_service.validate_name(candidate=name)
             if validation.is_failure:

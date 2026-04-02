@@ -38,7 +38,7 @@ class CommandService(IntegrityMicroservice[Command]):
 
     Attributes:
         *   id (int)
-        *   name (name)
+        *   stack (stack)
         *   build (Builder[Command])
         *   validation (Validator[Command])
 

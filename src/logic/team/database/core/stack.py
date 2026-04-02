@@ -57,7 +57,7 @@ class TeamStack(StackService[Team]):
             Constructor
         # PARAMETERS:
             *   id (int)
-            *   name (str)
+            *   stack (str)
             *   service (TeamService)
             *   context_service (TeamQueryService)
         # RETURNS:

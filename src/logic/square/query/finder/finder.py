@@ -117,9 +117,9 @@ class SquareFinder(StackSearchRouter[Square]):
         # Entry point into finding by the square's id.
         if context.id is not None:
             return cls._find_by_id(dataset=dataset, id=context.id)
-        # Entry point into finding by the square's name.
-        if context.name is not None:
-            return cls._find_by_name(dataset=dataset, name=context.name)
+        # Entry point into finding by the square's stack.
+        if context.designation is not None:
+            return cls._find_by_name(dataset=dataset, name=context.designation)
         # Entry point into finding by the square's coord.
         if context.coord is not None:
             return cls._find_by_coord(dataset=dataset, coord=context.coord)
@@ -161,7 +161,7 @@ class SquareFinder(StackSearchRouter[Square]):
     def _find_by_name(cls, dataset: List[Square], name: str) -> SearchResult[List[Square]]:
         """
         # ACTION:
-            1.  Get the Squares which match the name.
+            1.  Get the Squares which match the stack.
         """
         matches = [square for square in dataset if square.name.upper() == name.upper()]
         # Handle the nothing found case.

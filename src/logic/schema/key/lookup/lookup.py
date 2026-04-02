@@ -70,9 +70,9 @@ class SchemaLookupProcess(HashLookupProcess[Schema]):
             )
         # After verification use the hash key to route to the appropriate lookup method.
         
-        # Entry point into forward lookups by name.
-        if super_key.name is not None:
-            return cls._query_by_name(name=super_key.name)
+        # Entry point into forward lookups by stack.
+        if super_key.designation is not None:
+            return cls._query_by_name(name=super_key.designation)
         # Entry point into forward lookups by color.
         if super_key.color is not None:
             return cls._query_by_color(color=super_key.color)
@@ -90,7 +90,7 @@ class SchemaLookupProcess(HashLookupProcess[Schema]):
     def _query_by_name(cls, name: str) -> SearchResult[List[Schema]]:
         """
         # ACTION:
-            1.  Get any Schema entry whose name matches the target value.
+            1.  Get any Schema entry whose stack matches the target value.
         # PARAMETERS:
             *   target (str)
         # RETURNS:

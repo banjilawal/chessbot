@@ -40,8 +40,8 @@ class GraphDomainFinder(Finder[Graph, Domain]):
             if search_context.id is not None:
                 return cls._id_search(graph=data_owner, id=search_context.id)
             
-            if search_context.name is not None:
-                return cls._name_search(graph=data_owner, name=search_context.name)
+            if search_context.designation is not None:
+                return cls._name_search(graph=data_owner, name=search_context.designation)
             
             if search_context.root is not None:
                 return cls._root_search(graph=data_owner, coord=search_context.root)
@@ -94,7 +94,7 @@ class GraphDomainFinder(Finder[Graph, Domain]):
         method = "GraphDomainFinder._name_search"
         
         try:
-            matches = [domain for domain in graph.domains if domain.owner.name.upper == name.upper()]
+            matches = [domain for domain in graph.domains if domain.owner.designation.upper == name.upper()]
             if len(matches) == 0:
                 return SearchResult.empty()
             elif len(matches) == 1:
@@ -145,7 +145,7 @@ class GraphDomainFinder(Finder[Graph, Domain]):
         method = "GraphDomainFinder._rank_name_search"
         
         try:
-            matches = [domain for domain in graph.domains if domain.ownerr.rank.name.upper() == name.upper()]
+            matches = [domain for domain in graph.domains if domain.ownerr.rank.designation.upper() == name.upper()]
             if len(matches) == 0:
                 return SearchResult.empty()
             
@@ -194,7 +194,7 @@ class GraphDomainFinder(Finder[Graph, Domain]):
         method = "GraphDomainFinder._team_name_search"
         
         try:
-            matches = [domain for domain in graph.domains if domain.owner.team.name.uppper() == name.upper()]
+            matches = [domain for domain in graph.domains if domain.owner.team.designation.uppper() == name.upper()]
             if len(matches) == 0:
                 return SearchResult.empty()
             
@@ -345,7 +345,7 @@ class GraphDomainFinder(Finder[Graph, Domain]):
             for visitor in domain.residents:
                 if (
                         visitor.id == target.id and
-                        visitor.name.upper() == target.name.upper() and
+                        visitor.designation.upper() == target.designation.upper() and
                         visitor.current_position == target.current_position
                 ):
                     domain.residents.remove(visitor)

@@ -67,7 +67,7 @@ class EdgeStack(StackService[Edge]):
             Constructor
         # PARAMETERS:
             *   id (int)
-            *   name (str)
+            *   stack (str)
             *   service (EdgeService)
             *   context_service (EdgeQueryService)
         # RETURNS:

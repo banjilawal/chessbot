@@ -1,7 +1,7 @@
-# src/logic/system/search/route/exception/transaction.py
+# src/logic/system/search/exception/validator.py
 
 """
-Module: logic.system.search.route.exception.transaction
+Module: logic.system.search.exception.work
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
@@ -11,15 +11,15 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# SEARCH_FAILURE #======================#
-    "SearchException",
+    # ======================# TOKEN_SEARCH_FAILURE #======================#
+    "TokenSearchException",
 ]
 
-from logic.system import CollectionOperationException
+from logic.system import SearchException
 
 
-# ======================# SEARCH_FAILURE #======================#
-class SearchException(CollectionOperationException):
+# ======================# TOKEN_SEARCH_FAILURE #======================#
+class TokenSearchException(SearchException):
     """
      Role:
         -   Worker Method Identification
@@ -27,8 +27,8 @@ class SearchException(CollectionOperationException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate a search failed.
-        2.  Identify the method where the failure occurred.
+        1.  Indicate a Token search was not completed because an error occurred.
+        2.  Identify the TokenSearchRouter method where the failure occurred.
 
     Attributes:
         op: Optional[str]
@@ -42,11 +42,11 @@ class SearchException(CollectionOperationException):
     Provides:
 
     Super Class:
-        CollectionOperationException
+        SearchException
     """
     OP = "Search"
     RSLT_TYPE = "SearchResult"
-    ERR_CODE = "SEARCH_FAILURE"
+    ERR_CODE = "TOKEN_SEARCH_FAILURE"
     MSG = "Search method failed."
     
     def __init__(

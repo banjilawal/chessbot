@@ -108,7 +108,7 @@ class AgentContextBuilder(Builder[AgentContext]):
                 # On validation success return an id_AgentContext in the BuildResult.
                 return BuildResult.success(AgentContext(id=id))
             
-            # Build the name AgentContext if its flag is enabled.
+            # Build the stack AgentContext if its flag is enabled.
             if name is not None:
                 validation = identity_service.validate_name(name)
                 if validation.is_failure:

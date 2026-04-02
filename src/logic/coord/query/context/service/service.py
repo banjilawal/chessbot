@@ -31,7 +31,7 @@ class CoordContextService(IntegrityMicroservice[CoordContext]):
         SERVICE_NAME: CoordContextService
 
         id: int
-        name: str
+        stack: str
         ops_controller: CoordContextContextOpsController
 
     Provides:

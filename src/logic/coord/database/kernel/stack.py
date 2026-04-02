@@ -37,7 +37,7 @@ class CoordStackService(StackService[Coord]):
         SERVICE_NAME = CoordStackService
 
         id: int
-        name: str
+        stack: str
         size: int
         is_empty: bool
         items: List[Coord]

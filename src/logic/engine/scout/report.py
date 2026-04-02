@@ -40,6 +40,6 @@ class ScoutReport:
 
   def __str__(self) -> str:
     return (
-      f"ScoutReport(id:{self._id} scout:{self._scout.name} "
+      f"ScoutReport(id:{self._id} scout:{self._scout.designation} "
       f"observation_count:{len(self._squares)}"
     )

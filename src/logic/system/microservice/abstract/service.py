@@ -30,7 +30,7 @@ class Microservice(ABC, Generic[T]):
         
     Attributes:
         id: int
-        name: str
+        stack: str
         
     Provides:
     
@@ -67,4 +67,4 @@ class Microservice(ABC, Generic[T]):
         return hash(self._id)
     
     def __str__(self):
-        return f"id:{self._id}, name:{self._name}"
+        return f"id:{self._id}, stack:{self._name}"

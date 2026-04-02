@@ -29,7 +29,7 @@ class CoordQueryService(QueryService[Coord]):
         context_service: IntegrityMicroservice[Context[T]]
 
     Provides:
-        -   execute(dataset: List[T], query: Context[T]) -> SearchResult[List[T]]
+        -   execute(stack: List[T], query: Context[T]) -> SearchResult[List[T]]
 
     Super Class:
         Microservice
@@ -145,7 +145,7 @@ class CoordQueryService(QueryService[Coord]):
                     ex=context_validation_result.exception,
                 )
             )
-        # Handle the case that, the dataset does not exist
+        # Handle the case that, the stack does not exist
         if dataset is None:
             # Return the exception chain on failure.
             return SearchResult.failure(
@@ -160,7 +160,7 @@ class CoordQueryService(QueryService[Coord]):
                     )
                 )
             )
-        # Handle the case that, the dataset is the wrong type.
+        # Handle the case that, the stack is the wrong type.
         if not isinstance(dataset, List):
             # Return the exception chain on failure.
             return SearchResult.failure(

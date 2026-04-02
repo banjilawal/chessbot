@@ -53,7 +53,7 @@ class Player(ABC):
             Constructor
         # PARAMETERS:
             *   id (int)
-            *   name (str)
+            *   stack (str)
             *   teams (TeamDatabase)
         # RETURNS:
             None
@@ -148,7 +148,7 @@ class Player(ABC):
                 raise PieceCoordNullException(f"{method}: {PieceCoordNullException.MSG}")
             
             if isinstance(piece, CombatantPiece) and piece.victor is not None:
-                raise PrisonerEscapeException(f"{method}: Cannot move {piece.name} it has been captured.")
+                raise PrisonerEscapeException(f"{method}: Cannot move {piece.designation} it has been captured.")
             
             validation = CoordValidator.query(destination)
             if not validation.is_success():

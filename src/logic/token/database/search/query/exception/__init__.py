@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .null import TokenDatasetNullException
+from .null import TokenStackNullException
 from .transaction import TokenQueryValidationException

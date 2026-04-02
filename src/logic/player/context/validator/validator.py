@@ -111,8 +111,8 @@ class PlayerContextValidator(Validator[PlayerContext]):
                     return ValidationResult.failure(validation.exception)
                 return ValidationResult.success(context)
             
-            if context.name is not None:
-                validation = identity_service.validate_name(candidate=context.name)
+            if context.designation is not None:
+                validation = identity_service.validate_name(candidate=context.designation)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
                 return ValidationResult.success(context)

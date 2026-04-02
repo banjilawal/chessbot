@@ -27,12 +27,12 @@ class Formation(Enum):
     # LOCAL ATTRIBUTES:
         *   square_name (str)
         *   color (GameColor)
-        *   name (str)
+        *   stack (str)
         *   roster_number (int)
         *   persona (Persona)
 
     # INHERITED ATTRIBUTES:
-        * name (str) -->  Name give to each Enum entry.
+        * stack (str) -->  Name give to each Enum entry.
     """
     def __new__(
             cls,
@@ -88,7 +88,7 @@ class Formation(Enum):
     
     @property
     def designation(self) -> str:
-        """Common chess name of the Token."""
+        """Common chess stack of the Token."""
         return self._designation
     
     @property

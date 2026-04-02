@@ -32,7 +32,7 @@ class IntegrityMicroservice(ABC, Microservice[Generic[T]]):
 
     Attributes:
         id: int
-        name: name
+        stack: stack
 
     Provides:
         -   builder() -> Builder[T]
@@ -70,4 +70,4 @@ class IntegrityMicroservice(ABC, Microservice[Generic[T]]):
         return hash(self._id)
     
     def __str__(self):
-        return f"id:{self._id}, name:{self._name}"
+        return f"id:{self._id}, stack:{self._name}"

@@ -44,7 +44,7 @@ class SquareStackTokenHandler:
     Attributes:
         Local:
             *   id (int)
-            *   name (str)
+            *   stack (str)
             *   roster_deployer (SquareStackRosterHandler)
             
         Inherited:

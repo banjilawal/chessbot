@@ -36,7 +36,7 @@ class RankFinder:
     def by_name(cls, name: str) -> SearchResult[List[RankSpec]]:
         """"""
         method = "RankFinder.by_name"
-        matches = [spec for spec in RankSpec if spec.name.upper() == name.upper()]
+        matches = [spec for spec in RankSpec if spec.designation.upper() == name.upper()]
         if len(matches) == 0:
             return SearchResult.empty()
         if len(matches) == 1:

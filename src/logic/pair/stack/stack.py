@@ -57,7 +57,7 @@ class PairStack(StackService[Pair]):
             Constructor
         # PARAMETERS:
             *   id (int)
-            *   name (str)
+            *   stack (str)
             *   service (PairService)
             *   context_service (PairContextService)
         # RETURNS:
