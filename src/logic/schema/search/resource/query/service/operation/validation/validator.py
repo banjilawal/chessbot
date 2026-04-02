@@ -13,7 +13,8 @@ from typing import Any, List, cast
 
 from logic.system import LoggingLevelRouter, ValidationResult, Validator
 from logic.schema import (
-    Schema, SchemaContextValidator, SchemaQueryValidator, SchemaQueryNullException, SchemaQueryStackEmptyException,
+    Schema, SchemaContextValidator, SchemaQueryIntegrityWorkers, SchemaQueryValidator, SchemaQueryNullException,
+    SchemaQueryStackEmptyException,
     SchemaStackNullException, SchemaQuery, SchemaQueryValidationException, SchemaValidator
 )
 
@@ -32,9 +33,8 @@ class SchemaQueryValidator(Validator[SchemaQuery]):
 
     Provides:
         -   def validate(
-                    candidate: Any,
-                    schema_validator: SchemaValidator,
-                    context_validator: SchemaContextValidator,
+                candidate: Any
+                workers: SchemaQueryIntegrityWorkers
             ) -> ValidationResult[SchemaQuery]:
 
     Super Class:
@@ -46,22 +46,20 @@ class SchemaQueryValidator(Validator[SchemaQuery]):
     def validate(
             cls,
             candidate: Any,
-            schema_validator: SchemaValidator = SchemaValidator(),
-            context_validator: SchemaContextValidator = SchemaQueryValidator(),
+            workers: SchemaQueryIntegrityWorkers = SchemaQueryIntegrityWorkers(),
     ) -> ValidationResult[SchemaQuery]:
         """
         Certify a candidate is a SchemaQuery that is safe to use.
 
         Action:
             1.  Send an exception chain in the ValidationResult if either:
-                    -   The schema
-                    -   The context
-                fail a validation check.
+                    -   The candidate is null.
+                    -   The candidate is not a SchemaQuery.
+                    -   Any integrity worker raises a failed test.
             2.  Otherwise, send the success result.
         Args:
             candidate: Any
-            schema_validator: SchemaValidator
-            context_validator: SchemaContextValidator
+            workers: SchemaQueryIntegrityWorkers
         Returns:
             ValidationResult[SchemaQuery]
         Raises:
@@ -109,7 +107,7 @@ class SchemaQueryValidator(Validator[SchemaQuery]):
         query = cast(SchemaQuery, candidate)
         
         # Handle the case that, the context is not certified as safe.
-        context_validation_result = context_validator.validate(query.context)
+        context_validation_result = workers.context_validator.validate(query.context)
         if context_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -124,7 +122,7 @@ class SchemaQueryValidator(Validator[SchemaQuery]):
                 )
             )
         # Handle the case that, the schema is not certified as safe.
-        schema_validation_result = schema_validator.validate(query.catalog)
+        schema_validation_result = workers.schema_validator.validate(query.catalog)
         if schema_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
