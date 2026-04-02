@@ -14,4 +14,4 @@ None
 
 # Modules
 from .anchor import BishopException
-from .debug import Bi
+from .debug import BishopDebugException

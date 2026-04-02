@@ -18,7 +18,7 @@ class SchemaValidator(Validator[Schema]):
      Role:Validation, Data Integrity Guarantor, Security.
 
     Responsibilities:
-    1.  Ensure a candidate is not null and the correct type before its used as a Schema.
+    1.  Ensure a rank is not null and the correct type before its used as a Schema.
     2.  If verification fails indicate the reason in an exception returned to the caller.
 
     Super Class:
@@ -35,10 +35,10 @@ class SchemaValidator(Validator[Schema]):
     def validate(cls, candidate: Any) -> ValidationResult[Schema]:
         """
         # ACTION:.
-            1.  If the candidate passes existence and type checks cast into a Schema instance and return
+            1.  If the rank passes existence and type checks cast into a Schema instance and return
                 in the ValidationResult. Else return an exception in the ValidationResult.
         # PARAMETERS:
-            *   candidate (Any)
+            *   rank (Any)
         # RETURNS:
             *   ValidationResult[Schema] containing either:
                     - On failure: Exception.

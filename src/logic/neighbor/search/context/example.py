@@ -128,7 +128,7 @@ deserialization, external sources, or need re-validate after modifications.
 Usage:
   ```python
   # Validate an existing discoverySearchContext
-  discoverySearchContext_validation = DiscoverySearchContextValidator.validate(candidate)  
+  discoverySearchContext_validation = DiscoverySearchContextValidator.validate(rank)
   if not discoverySearchContext_validation.is_success():
     raise discoverySearchContext_validation.err
   discoverySearchContext = cast(DiscoverySearchContext, discoverySearchContext_validation.payload)
@@ -145,15 +145,15 @@ which creates new valid DiscoverySearchContexts, this coord_stack_validator veri
 instances from external sources, deserialization, or after modifications.
 
 Args
-  `candidate` (`DiscoverySearchContext`): `DiscoverySearchContext` instance to validate
+  `rank` (`DiscoverySearchContext`): `DiscoverySearchContext` instance to validate
 
  RETURNS:
-  `Result`[`DiscoverySearchContext`]: A `Resul`candidate object containing the validated payload if the specification is satisfied,
+  `Result`[`DiscoverySearchContext`]: A `Resul`rank object containing the validated payload if the specification is satisfied,
   `InvalidDiscoverySearchContextException` otherwise.
 
 RAISES:
-  `TypeError`: if `candidate` is not discoverySearchContext DiscoverySearchContext` object
-  `NullDiscoverySearchContextException`: if `candidate` is validation
+  `TypeError`: if `rank` is not discoverySearchContext DiscoverySearchContext` object
+  `NullDiscoverySearchContextException`: if `rank` is validation
   `IdValidationException`: if `visitor_id` fails validate checks
   `InvalidCommanderException`: if `owner` fails validate checks
   `NullDiscoverySearchContextProfileException`: if `team_schema` is validation

@@ -33,7 +33,7 @@ class TokenValidator(Validator[Token]):
 
     Provides:
         -   def validate(
-                    candidate: Any,
+                    rank: Any,
                     workers: TokenIntegrityWorkers
             ) -> ValidationResult[Token]:
 
@@ -54,13 +54,13 @@ class TokenValidator(Validator[Token]):
     ) -> ValidationResult[Token]:
         """
         # ACTION:
-            1.  If the candidate fails existence or type tests send the exception in the ValidationResult.
+            1.  If the rank fails existence or type tests send the exception in the ValidationResult.
                 Else, cast to Token instance occupant.
             2.  If any of the attributes; id, designation, roster_number, rank or positions fail their validation
                 tests send the exception in the ValidationResult.
             3.  The occupant has passed all verification tests. Send the occupant in the ValidationResult.
         # PARAMETERS:
-            *   candidate (Any)
+            *   rank (Any)
             *   rank_service (RankService)
             *   team_service (TeamService)
             *   coord_service (CoordService)
@@ -88,7 +88,7 @@ class TokenValidator(Validator[Token]):
                     err_code=TokenValidationException.ERR_CODE,
                     rslt_type=TokenValidationException.RSLT_TYPE,
                     ex=NullTokenException(
-                        var="candidate",
+                        var="rank",
                         msg=NullTokenException.MSG,
                         err_code=NullTokenException.ERR_CODE,
                     )
@@ -107,7 +107,7 @@ class TokenValidator(Validator[Token]):
                     ex=TypeError(f"Expected Token, got {type(candidate).__name__} instead.")
                 )
             )
-        # --- Cast the candidate to a Token for additional tests ---#
+        # --- Cast the rank to a Token for additional tests ---#
         token = cast(Token, candidate)
         
         # Handle the case that, id or designation are not certified safe.
@@ -159,7 +159,7 @@ class TokenValidator(Validator[Token]):
                 )
             )
         # Handle the case that, the rankis not safe.
-        rank_validation_result = rank_service.validator.validate(candidate=token.rank)
+        rank_validation_result = rank_service.validator.validate(rank=token.rank)
         if rank_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -239,7 +239,7 @@ class TokenValidator(Validator[Token]):
         
         """
         method = f"{cls.__class__.__name__}.validate_token_is_combatant"
-        # Handle the case that, the candidate is not certified as a safe occupant.
+        # Handle the case that, the rank is not certified as a safe occupant.
         validation_result = cls.validate(candidate)
         if validation_result.is_failure:
             # Return the exception chain on failure.
@@ -253,7 +253,7 @@ class TokenValidator(Validator[Token]):
                     ex=validation_result.exception
                 )
             )
-        # Handle the case that, the candidate is not a CombatantToken.
+        # Handle the case that, the rank is not a CombatantToken.
         if not isinstance(candidate, CombatantToken):
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -266,13 +266,13 @@ class TokenValidator(Validator[Token]):
                     ex=TypeError(f"Expected CombatantToken, got {type(candidate).__name__} instead.")
                 )
             )
-        # Tests have been passed return cast the candidate to CombatantToken and return to the caller.
+        # Tests have been passed return cast the rank to CombatantToken and return to the caller.
         return ValidationResult.success(payload=cast(CombatantToken, candidate))
         
     @classmethod
     def verify_token_is_king(cls, candidate: Any) -> ValidationResult[KingToken]:
         method = "TokenValidator.validate_token_is_king"
-        # Handle the case that, the candidate is not certified as a safe occupant.
+        # Handle the case that, the rank is not certified as a safe occupant.
         validation = cls.validate(candidate)
         if validation.is_failure:
             # Return the exception chain on failure.
@@ -282,7 +282,7 @@ class TokenValidator(Validator[Token]):
                     ex=validation.exception
                 )
             )
-        # Handle the case that, the candidate is not a KingToken.
+        # Handle the case that, the rank is not a KingToken.
         if not isinstance(candidate, KingToken):
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -291,7 +291,7 @@ class TokenValidator(Validator[Token]):
                     ex=TypeError(f"{method}:Expected KingToken, got {type(candidate).__name__} instead.")
                 )
             )
-        # Tests have been passed return cast the candidate to CombatantToken and return to the caller.
+        # Tests have been passed return cast the rank to CombatantToken and return to the caller.
         return ValidationResult.success(payload=cast(CombatantToken, candidate))
     
     @classmethod

@@ -55,15 +55,15 @@ class GameValidator(Validator[Game]):
         Any failed requirement raise an exception wrapped in team_name InvalidCommanderException
         
         Args
-          candidate (Game): game to validate
+          rank (Game): game to validate
           
          RETURNS:
            Result[V]: A Result object containing the validated payload if all graph requirements
            are satisfied. InvalidCommanderException otherwise.
         
         RAISES:
-          TypeError: if candidate is not Game
-          NullCommanderException: if candidate is validation
+          TypeError: if rank is not Game
+          NullCommanderException: if rank is validation
     
           RowBelowBoundsException: If game.row < 0
           RowAboveBoundsException: If game.row >= NUMBER_OF_ROWS
@@ -76,17 +76,17 @@ class GameValidator(Validator[Game]):
         method = "GameValidator.validate"
         
         try:
-            # Handle the case that, the candidate does not exist.
+            # Handle the case that, the rank does not exist.
             if candidate is None:
                 return ValidationResult.failure(
                     NullGameException(f"{method}: {NullGameException.MSG}")
                 )
-            # Handle the case that, the candidate is not a Game.
+            # Handle the case that, the rank is not a Game.
             if not isinstance(candidate, Game):
                 return ValidationResult.failure(
                     TypeError(f"{method}: Expected Game, {type(candidate).__name__} instead.")
                 )
-            # After existence and type checks cast the candidate for further processing.
+            # After existence and type checks cast the rank for further processing.
             game = cast(Game, candidate)
             
             id_validation = identity_service.validate_id(candidate=game.id)

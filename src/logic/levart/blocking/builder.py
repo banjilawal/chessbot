@@ -26,12 +26,12 @@
 
 
   # ACTION:
-  Verify the `candidate` is a valid ID. The Application requires
+  Verify the `rank` is a valid ID. The Application requires
   1. Candidate is not validation.
   2. Is a positive integer.
 
   # PARAMETERS:
-      * `candidate` (`int`): the visitor_id.
+      * `rank` (`int`): the visitor_id.
 
   # RETURNS:
   `ValidationResult[str]`: A `ValidationResult` containing either:
@@ -40,9 +40,9 @@
 
   Raises:
   `IdValidationException`: Wraps any specification violations including:
-      * `TypeError`: if candidate is not an `int`
-      * `IdNullException`: if candidate is validation
-      * `NegativeIdException`: if candidate is negative `
+      * `TypeError`: if rank is not an `int`
+      * `IdNullException`: if rank is validation
+      * `NegativeIdException`: if rank is negative `
  
   Constructs team_name new `BlockingEvent` instance with comprehensive checks on the parameters and states during the
   build exception.

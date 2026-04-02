@@ -32,7 +32,7 @@ class TokenContextValidator(Validator[TokenContext]):
 
     Provides:
         -   def validate(
-                    candidate: Any,
+                    rank: Any,
                     workers: TokenContextIntegrityWorkers,
             ) -> BuildResult[TokenContext]:
 
@@ -47,13 +47,13 @@ class TokenContextValidator(Validator[TokenContext]):
             workers: TokenContextIntegrityWorkers,
     ) -> ValidationResult[TokenContext]:
         """
-        Certify a candidate is a TokenContext that is safe to use.
+        Certify a rank is a TokenContext that is safe to use.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -   The candidate is null.
-                    -   The candidate is not a TokenContext.
+                    -   The rank is null.
+                    -   The rank is not a TokenContext.
                     -   It has no attributes enabled.
                     -   It has more than one attribute enabled.
                     -   The enabled attribute fails a safety check.
@@ -107,7 +107,7 @@ class TokenContextValidator(Validator[TokenContext]):
                     )
                 )
             )
-        # --- Cast the candidate to TokenContext for additional tests. ---#
+        # --- Cast the rank to TokenContext for additional tests. ---#
         context = cast(TokenContext, candidate)
         
         # Handle the case of searching with no attribute-value provided.
@@ -255,7 +255,7 @@ class TokenContextValidator(Validator[TokenContext]):
         # Certification for the search-by-rank target.
         if context.rank is not None:
             validation_result = workers.rank_service.validator.validate(
-                candidate=context.rank
+                rank=context.rank
             )
             if validation_result.is_failure:
                 # Return the exception chain on failure.

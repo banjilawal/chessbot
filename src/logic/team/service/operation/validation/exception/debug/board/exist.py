@@ -22,7 +22,7 @@ class TeamBelongsToDifferentBoardException(TeamDebugException, NoRelationExcepti
     Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
-    1.  A failing TeamValidationResult was returned because the board and the candidate team
+    1.  A failing TeamValidationResult was returned because the board and the rank team
         did not have any relationship between them.
 
     Super Class:
@@ -37,5 +37,5 @@ class TeamBelongsToDifferentBoardException(TeamDebugException, NoRelationExcepti
     """
     ERR_CODE = "NO_RELATION_BETWEEN_BOARD_AND_TEAM_EXCEPTION"
     MSG = (
-        "Team validation failed: There was no relationship between the board and the candidate team."
+        "Team validation failed: There was no relationship between the board and the rank team."
     )

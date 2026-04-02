@@ -21,7 +21,7 @@ class NullNumberException(NumberException, NullException):
     Role:Error Tracing, Debugging
 
     Responsibilities:
-    1.  Indicate that number validation failed because the candidate was null.
+    1.  Indicate that number validation failed because the rank was null.
 
     Super Class:
         *   NumberException
@@ -34,4 +34,4 @@ class NullNumberException(NumberException, NullException):
     None
     """
     ERR_CODE = "NULL_NUMBER_EXCEPTION"
-    MSG = "Number validation failed: The candidate was null."
+    MSG = "Number validation failed: The rank was null."

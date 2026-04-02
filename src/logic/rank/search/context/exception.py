@@ -47,7 +47,7 @@ class NullRankSearchContextException(RankSearchContextException, NullException):
 
 #========================= RANK_SEARCH_CONTEXT VALIDATION EXCEPTION =========================#
 class InvalidRankSearchContextException(RankSearchContextException, ValidationException):
-    """Super Exception for RankSearchContextValidator when a candidate fails a sanity check."""
+    """Super Exception for RankSearchContextValidator when a rank fails a sanity check."""
     ERR_CODE = "RANK_SEARCH_CONTEXT_VALIDATION_EXCEPTION"
     MSG = "RankSearchContext validation failed."
 

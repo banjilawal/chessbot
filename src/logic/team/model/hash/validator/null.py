@@ -22,7 +22,7 @@ class TeamHashNullException(TeamHashException, NullException):
     Role:Error Tracing, Debugging
 
     Responsibilities:
-    1.  Indicate that the candidate was not validated as a TeamHash because it was null.
+    1.  Indicate that the rank was not validated as a TeamHash because it was null.
 
     Super Class:
         *   NullException
@@ -35,4 +35,4 @@ class TeamHashNullException(TeamHashException, NullException):
     None
     """
     ERR_CODE = "TEAM_HASH_NULL_EXCEPTION_EXCEPTION"
-    MSG = "TeamHash validation failed: The candidate was null."
+    MSG = "TeamHash validation failed: The rank was null."

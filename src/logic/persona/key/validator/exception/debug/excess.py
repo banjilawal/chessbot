@@ -22,7 +22,7 @@ class ArenaPersonaKeysException(PersonaKeyException, ContextFlagCountException):
     Role:Error Tracing, Debugging
 
     Responsibilities:
-    1.  Indicate that a candidate failed PersonaKey validation because more than one attribute was enabled.
+    1.  Indicate that a rank failed PersonaKey validation because more than one attribute was enabled.
 
     Super Class:
         *   ContextFlagCountException

@@ -43,7 +43,7 @@ class BoardSquareAnalysisException(AnalysisException):
         OperationException
     """
     ERR_CODE = "BOARD_SQUARE_RELATION_ANALYSIS_FAILURE"
-    MSG = "A candidate failed a validation test. BoardSquareAnalyzer cannot proceed. Analysis aborted."
+    MSG = "A rank failed a validation test. BoardSquareAnalyzer cannot proceed. Analysis aborted."
     
     def __init__(
             self,

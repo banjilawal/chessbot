@@ -40,14 +40,14 @@ class SquareValidator(Validator[Square]):
 
     # LOCAL METHODS:
         *   validate(
-                candidate: Any,
+                rank: Any,
                 board_service: BoardService = BoardService(),
                 coord_service: CoordService = CoordService(),
                 identity_service: IdentityService = IdentityService()
             ) -> ValidationResult[Square]
             
-        *   validate_square_state(candidate: Any) -> ValidationResult[SquareState]
-        *   verify_is_square_dataset(candidate: Any) -> ValidationResult[List[Square]]
+        *   validate_square_state(rank: Any) -> ValidationResult[SquareState]
+        *   verify_is_square_dataset(rank: Any) -> ValidationResult[List[Square]]
 
     # INHERITED METHODS:
     None
@@ -64,8 +64,8 @@ class SquareValidator(Validator[Square]):
         """
         # ACTION:
             1.  Send an exception chain in the ValidationResult if:
-                    -   The candidate is null
-                    -   The candidate is not a Square
+                    -   The rank is null
+                    -   The rank is not a Square
                     -   The id and schema are not certified as safe.
                     -   The coord does not pass a validation check.
                     -   The board does not pass a validation check.
@@ -116,7 +116,7 @@ class SquareValidator(Validator[Square]):
                     )
                 )
             )
-        # --- Cast candidate to a Square for additional tests. ---#
+        # --- Cast rank to a Square for additional tests. ---#
         square = cast(Square, candidate)
         
         # Handle the case that, square.id or square.schema does not pass a validation check.
@@ -275,12 +275,12 @@ class SquareValidator(Validator[Square]):
     @classmethod
     def validate_square_state(cls, candidate: Any) -> ValidationResult[SquareState]:
         """
-        Tests if the candidate is a SquareState instance.
+        Tests if the rank is a SquareState instance.
         
         Action:
             1.  Send an exception chain in the ValidationResult if:
-                    -   The candidate is null.
-                    -   The candidate has the wrong type.
+                    -   The rank is null.
+                    -   The rank has the wrong type.
             2.  Otherwise, send the success result.
         Args:
             candidate: Any

@@ -33,8 +33,8 @@ class CommandValidator(Validator[Command]):
         Action:
             1.  Send an exception chain in the ValidationResult if any
                 of the following occur:
-                    -   The candidate is null or the wrong type.
-                    -   Its candidate's parameters fail a test.
+                    -   The rank is null or the wrong type.
+                    -   Its rank's parameters fail a test.
             2.  Otherwise, send the success result.
         Args:
             candidate: Any
@@ -84,7 +84,7 @@ class CommandValidator(Validator[Command]):
                     )
                 )
             )
-        # --- Cast candidate to the key's type for additional tests. ---#
+        # --- Cast rank to the key's type for additional tests. ---#
         command = cast(Command, candidate)
         
         # Handle the case that, the command's type is not in the cipher_table.

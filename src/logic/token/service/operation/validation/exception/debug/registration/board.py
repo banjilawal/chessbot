@@ -22,7 +22,7 @@ class TokenNotRegisteredBoardException(TokenDebugException, NotRegisteredExcepti
     Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
-    1.  A failing ValidationResult was returned because the candidate token had not registered with its board.
+    1.  A failing ValidationResult was returned because the rank token had not registered with its board.
 
     Super Class:
         *   TokenDebugException
@@ -35,4 +35,4 @@ class TokenNotRegisteredBoardException(TokenDebugException, NotRegisteredExcepti
     None
     """
     ERR_CODE = "TOKEN_NOT_REGISTERED_WITH_BOARD_EXCEPTION"
-    MSG = "Token validation failed: The candidate token had not registered with its board."
+    MSG = "Token validation failed: The rank token had not registered with its board."

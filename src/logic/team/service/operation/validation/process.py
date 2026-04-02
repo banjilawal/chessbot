@@ -43,7 +43,7 @@ class TeamValidator(Validator[Team]):
 
     # LOCAL METHODS:
         *   validate(
-                candidate: Any,
+                rank: Any,
                 board_service: BoardService(),
                 player_service: BoardService = BoardService(),
                 schema_service: SchemaService = SchemaService(),
@@ -65,10 +65,10 @@ class TeamValidator(Validator[Team]):
     ) -> ValidationResult[Team]:
         """
         # ACTION:
-            1.  If the candidate fails either
+            1.  If the rank fails either
                     *   A null check.
                     *   A type check.
-                Send an exception chain in the ValidationResult. Else, cast candidate to Team instance team.
+                Send an exception chain in the ValidationResult. Else, cast rank to Team instance team.
             2.  Send an exception chain in the ValidationResult if either
                     *   The id
                     *   The schema
@@ -77,7 +77,7 @@ class TeamValidator(Validator[Team]):
                 are does not pass a validation check. by their services.
             3.  The team has been certified as safe, send the validation success result.
         # PARAMETERS:
-            *   candidate (Any)
+            *   rank (Any)
             *   board_service (BoardService)
             *   player_service (PlayerService)
             *   schema_service (SchemaService)
@@ -111,7 +111,7 @@ class TeamValidator(Validator[Team]):
                     ex=TypeError(f"{method}: Expected Team, got {type(candidate).__name__} instead.")
                 )
             )
-        # --- Cast the candidate to a Team for additional tests ---#
+        # --- Cast the rank to a Team for additional tests ---#
         team = cast(Team, candidate)
         
         # Handle the case that, team.id does not pass a validation check.

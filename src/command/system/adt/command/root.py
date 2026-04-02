@@ -36,7 +36,7 @@ class Command(ABC, Generic[T]):
         parameters: Dict[str, Any] - Parameters for the operation's methods.
 
     Provides:
-        -   execute(candidate: Any, *args, **kwargs) -> ValidationResult[T]
+        -   execute(rank: Any, *args, **kwargs) -> ValidationResult[T]
 
     super Class:
     """

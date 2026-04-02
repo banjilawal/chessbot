@@ -32,7 +32,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
 
     Provides:
         -   def validate(
-                    candidate: Any,
+                    rank: Any,
                     workers: SchemaContextIntegrityWorkers,
             ) -> BuildResult[SchemaContext]:
 
@@ -47,13 +47,13 @@ class SchemaContextValidator(Validator[SchemaContext]):
             workers: SchemaContextIntegrityWorkers,
     ) -> ValidationResult[SchemaContext]:
         """
-        Certify a candidate is a SchemaContext that is safe to use.
+        Certify a rank is a SchemaContext that is safe to use.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -   The candidate is null.
-                    -   The candidate is not a SchemaContext.
+                    -   The rank is null.
+                    -   The rank is not a SchemaContext.
                     -   It has no attributes enabled.
                     -   It has more than one attribute enabled.
                     -   The enabled attribute fails a safety check.
@@ -107,7 +107,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
                     )
                 )
             )
-        # --- Cast the candidate to SchemaContext for additional tests. ---#
+        # --- Cast the rank to SchemaContext for additional tests. ---#
         context = cast(SchemaContext, candidate)
         
         # Handle the case of searching with no attribute-value provided.
@@ -213,7 +213,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
         # Certification for the search-by-coord target.
         if context.current_position is not None:
             validation_result = workers.coord_service.validator.validate(
-                candidate=context.current_position
+                rank=context.current_position
             )
             if validation_result.is_failure:
                 # Return the exception chain on failure.
@@ -234,7 +234,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
         # Certification for the search-by-team target.
         if context.team is not None:
             validation_result = workers.team_service.validator.validate(
-                candidate=context.team
+                rank=context.team
             )
             if validation_result.is_failure:
                 # Return the exception chain on failure.
@@ -255,7 +255,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
         # Certification for the search-by-rank target.
         if context.rank is not None:
             validation_result = workers.rank_service.validator.validate(
-                candidate=context.rank
+                rank=context.rank
             )
             if validation_result.is_failure:
                 # Return the exception chain on failure.
@@ -297,7 +297,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
         # Certification for the search-by-ransom target.
         if context.ransom is not None:
             validation_result = workers.number_validator.validate(
-                candidate=context.ransom,
+                rank=context.ransom,
                 floor=workers.persona_service.min_ransom,
                 ceiling=workers.persona_service.max_ransom,
             )

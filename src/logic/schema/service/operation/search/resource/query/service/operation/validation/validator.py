@@ -31,7 +31,7 @@ class SchemaQueryValidator(Validator[SchemaQuery]):
 
     Provides:
         -   def validate(
-                candidate: Any
+                rank: Any
                 workers: SchemaQueryIntegrityWorkers
             ) -> ValidationResult[SchemaQuery]:
 
@@ -47,12 +47,12 @@ class SchemaQueryValidator(Validator[SchemaQuery]):
             workers: SchemaQueryIntegrityWorkers = SchemaQueryIntegrityWorkers(),
     ) -> ValidationResult[SchemaQuery]:
         """
-        Certify a candidate is a SchemaQuery that is safe to use.
+        Certify a rank is a SchemaQuery that is safe to use.
 
         Action:
             1.  Send an exception chain in the ValidationResult if either:
-                    -   The candidate is null.
-                    -   The candidate is not a SchemaQuery.
+                    -   The rank is null.
+                    -   The rank is not a SchemaQuery.
                     -   Any integrity worker raises a failed test.
             2.  Otherwise, send the success result.
         Args:
@@ -101,7 +101,7 @@ class SchemaQueryValidator(Validator[SchemaQuery]):
                     ),
                 )
             )
-        # --- Cast the candidate to SchemaQuery for additional tests. ---#
+        # --- Cast the rank to SchemaQuery for additional tests. ---#
         query = cast(SchemaQuery, candidate)
         
         # Handle the case that, the context is not certified as safe.

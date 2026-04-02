@@ -22,7 +22,7 @@ class PlayerNotRegisteredGameException(PlayerDebugException, NotRegisteredExcept
     Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
-    1.  A failing ValidationResult was returned because the candidate player had not registered with its game.
+    1.  A failing ValidationResult was returned because the rank player had not registered with its game.
 
     Super Class:
         *   PlayerDebugException
@@ -35,4 +35,4 @@ class PlayerNotRegisteredGameException(PlayerDebugException, NotRegisteredExcept
     None
     """
     ERR_CODE = "PLAYER_NOT_REGISTERED_WITH_GAME_EXCEPTION"
-    MSG = "Player validation failed: The candidate player had not registered with its game."
+    MSG = "Player validation failed: The rank player had not registered with its game."

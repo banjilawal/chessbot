@@ -32,7 +32,7 @@ class CoordContextValidator(Validator[CoordContext]):
 
     Provides:
         -   execute(
-                    candidate: Any,
+                    rank: Any,
                     number_validator: NumberValidator = NumberValidator(),
             ) -> ValidationResult[CoordContext]
             
@@ -54,7 +54,7 @@ class CoordContextValidator(Validator[CoordContext]):
     ) -> ValidationResult[CoordContext]:
         """
         Action:
-            1.  If the candidate is either:
+            1.  If the rank is either:
                     -   is null.
                     -   the type wrong
                     -   The attribute fails a validation check.
@@ -104,7 +104,7 @@ class CoordContextValidator(Validator[CoordContext]):
                     ex=TypeError(f"Expected a CoordContext, got {type(candidate).__name__} instead.")
                 )
             )
-        # --- Cast candidate to the CoordContext for additional tests. ---#
+        # --- Cast rank to the CoordContext for additional tests. ---#
         context = cast(CoordContext, candidate)
         
         # Get how many context flags are set.

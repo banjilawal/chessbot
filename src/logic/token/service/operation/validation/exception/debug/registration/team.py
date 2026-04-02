@@ -22,7 +22,7 @@ class TokenNotRegisteredTeamException(TokenDebugException, NotRegisteredExceptio
     Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
-    1.  A failing ValidationResult was returned because the candidate token had not registered with its team.
+    1.  A failing ValidationResult was returned because the rank token had not registered with its team.
 
     Super Class:
         *   TokenDebugException
@@ -35,4 +35,4 @@ class TokenNotRegisteredTeamException(TokenDebugException, NotRegisteredExceptio
     None
     """
     ERR_CODE = "TOKEN_NOT_REGISTERED_WITH_TEAM_EXCEPTION"
-    MSG = "Token validation failed: The candidate token had not registered with its team."
+    MSG = "Token validation failed: The rank token had not registered with its team."

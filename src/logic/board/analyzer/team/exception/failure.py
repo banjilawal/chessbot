@@ -43,7 +43,7 @@ class BoardTeamAnalysisException(AnalysisException):
         OperationException
     """
     ERR_CODE = "BOARD_TEAM_RELATION_ANALYSIS_FAILURE"
-    MSG = "A candidate failed a validation test. BoardTeamAnalyzer cannot proceed. Analysis aborted."
+    MSG = "A rank failed a validation test. BoardTeamAnalyzer cannot proceed. Analysis aborted."
     
     def __init__(
             self,

@@ -3,7 +3,7 @@ import logging.config
 from logging.handlers import RotatingFileHandler
 import os
 
-# Configuration stays ready but doesn'candidate auto-execute
+# Configuration stays ready but doesn'rank auto-execute
 LOGGING_CONFIG = {
   'version': 1,
   'disable_existing_loggers': False,

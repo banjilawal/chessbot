@@ -23,7 +23,7 @@ class ArgumentsValidationException(ValidationException):
     Role:Debug Wrapper, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
-    1.  Indicate that a candidate failed a safety check in a CommandArgsValidator
+    1.  Indicate that a rank failed a safety check in a CommandArgsValidator
         method.
 
     Super Class:

@@ -47,14 +47,14 @@ class TeamContextValidator(Validator[TeamContext]):
     ) -> ValidationResult[TeamContext]:
         """
         # ACTION:
-            1.  If the candidate fails existence or type tests send the exception in the ValidationResult.
+            1.  If the rank fails existence or type tests send the exception in the ValidationResult.
                 Else, cast to TeamContext instance context.
             2.  If one-and-only-one context attribute is not null return an exception in the ValidationResult.
             3.  If there is no certification route for the attribute return an exception in the ValidationResult.
             4.  If the certification route exists use the appropriate service or validation to send either an exception
                 chain the ValidationResult or the context.
         # PARAMETERS:
-            *   candidate (Any)
+            *   rank (Any)
             *   color_validator (ColorValidator)
             *   player_service (PlayerService)
             *   arena_service (ArenaService)
@@ -91,7 +91,7 @@ class TeamContextValidator(Validator[TeamContext]):
                     ex=TypeError(f"{method}: Expected TeamContext, got {type(candidate).__name__} instead.")
                 )
             )
-        # --- Cast the candidate to TeamContext for additional tests. ---#
+        # --- Cast the rank to TeamContext for additional tests. ---#
         context = cast(TeamContext, candidate)
         
         # Handle the case of searching with no attribute-value provided.

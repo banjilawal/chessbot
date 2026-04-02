@@ -21,7 +21,7 @@ class NumberAboveCeilingException(NumberException, BoundsException):
     Role:Error Tracing, Debugging
 
     Responsibilities:
-    1.  Indicate that number validation failed because the candidate was larger than the Board.DIMENSION.
+    1.  Indicate that number validation failed because the rank was larger than the Board.DIMENSION.
 
     Super Class:
         *   NumberException
@@ -34,4 +34,4 @@ class NumberAboveCeilingException(NumberException, BoundsException):
     None
     """
     ERR_CODE = "NUMBER_ABOVE_CEILING_EXCEPTION"
-    MSG = "Number validation failed: The candidate was above the ceiling."
+    MSG = "Number validation failed: The rank was above the ceiling."

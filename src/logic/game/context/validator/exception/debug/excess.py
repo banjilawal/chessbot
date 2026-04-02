@@ -30,7 +30,7 @@ class ExcessGameContextFlagsException(DebugException):
             *   event which fired the variable into its error state.
         which occurred in the GameContextBuilder method identified in layer-0 of the exception chain.
 
-    2.  A failing ValidationResult was returned because GameContext candidate had more than one flag enabled.
+    2.  A failing ValidationResult was returned because GameContext rank had more than one flag enabled.
     
     Super Class:
         *   DebugException

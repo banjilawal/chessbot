@@ -57,7 +57,7 @@ class EdgeContextValidator(Validator[EdgeContext]):
             3.  If no route is found for the enabled attribute send an exception chain in the ValidationResult.
             4.  If a validation route exists return the outcome of the validation to the caller.
         # PARAMETERS:
-            *   candidate (Any)
+            *   rank (Any)
             *   board_service (BoardService)
             *   coord_service (CoordService)
             *   edge_service (EdgeService)
@@ -96,7 +96,7 @@ class EdgeContextValidator(Validator[EdgeContext]):
                     )
                 )
             )
-        # --- Cast the candidate to EdgeContext for additional tests. ---#
+        # --- Cast the rank to EdgeContext for additional tests. ---#
         context = cast(EdgeContext, candidate)
         
         # Handle the case of searching with no attribute-value provided.

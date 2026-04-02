@@ -20,7 +20,7 @@ class VictorAndPrisoneOnDifferentBoardsException(HostageException):
     Role:Exception Work
 
     Responsibilities:
-    1.  Indicate that a candidate failed its Hostage validation because the victor and prisoner
+    1.  Indicate that a rank failed its Hostage validation because the victor and prisoner
         were on different boards.
 
     Super Class:

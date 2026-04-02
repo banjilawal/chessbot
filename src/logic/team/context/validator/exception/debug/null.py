@@ -30,7 +30,7 @@ class NullTeamContextException(NullException):
             *   event which fired the variable into its error state.
         which occurred in the TeamContextValidator method identified in layer-0 of the exception chain.
 
-    2.  A failing ValidationResult was returned because the candidate was null.
+    2.  A failing ValidationResult was returned because the rank was null.
 
     Super Class:
         *   NullException

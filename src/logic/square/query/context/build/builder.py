@@ -76,10 +76,10 @@ class SquareContextBuilder(Builder[SquareContext]):
     ) -> BuildResult[SquareContext]:
         """
         # ACTION:
-            1.  If the candidate fails either
+            1.  If the rank fails either
                     *   A null check.
                     *   A type check.
-                Send an exception chain in the ValidationResult. Else, cast candidate to SquareContext
+                Send an exception chain in the ValidationResult. Else, cast rank to SquareContext
                 instance context.
             2.  Send an exception chain in the BuildResult if either
                     *   One and only one of attributes is not null.

@@ -21,7 +21,7 @@ class EdgeWeightException(EdgeDebugException):
     Role:Error Tracing, Debugging
 
     Responsibilities:
-    1.  Indicate that a candidate was not validated as an edge because its weight was not a number
+    1.  Indicate that a rank was not validated as an edge because its weight was not a number
         within the allowed range.
 
     Super Class:

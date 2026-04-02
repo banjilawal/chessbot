@@ -51,10 +51,10 @@ class SquareContextValidator(Validator[SquareContext]):
     ) -> ValidationResult[SquareContext]:
         """
         # ACTION:
-            1.  If the candidate fails either
+            1.  If the rank fails either
                     *   A null check.
                     *   A type check.
-                Send an exception chain in the ValidationResult. Else, cast candidate to SquareContext
+                Send an exception chain in the ValidationResult. Else, cast rank to SquareContext
                 instance context.
             2.  Send an exception chain in the ValidationResult if either
                     *   The id
@@ -67,7 +67,7 @@ class SquareContextValidator(Validator[SquareContext]):
                 route for the context.
             3.  The context has been certified as safe, send the validation success result.
         # PARAMETERS:
-            *   candidate (Any)
+            *   rank (Any)
             *   board_service (BoardService)
             *   coord_service (CoordService)
             *   identity_service: (IdentityService)
@@ -106,7 +106,7 @@ class SquareContextValidator(Validator[SquareContext]):
                     )
                 )
             )
-        # --- Cast the candidate to SquareContext for additional tests. ---#
+        # --- Cast the rank to SquareContext for additional tests. ---#
         context = cast(SquareContext, candidate)
         
         # Handle the case of searching with no attribute-value provided.

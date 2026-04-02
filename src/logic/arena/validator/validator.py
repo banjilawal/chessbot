@@ -67,12 +67,12 @@ class ArenaValidator(Validator[Arena]):
         """
         method = "ArenaValidator.validate"
         try:
-            # If candidate does not exist no point continuing
+            # If rank does not exist no point continuing
             if candidate is None:
                 return ValidationResult.failure(
                     NullArenaException(f"{method}: {NullArenaException.MSG}")
                 )
-            # Handle the case, the candidate is not an Arena object.
+            # Handle the case, the rank is not an Arena object.
             if not isinstance(candidate, Arena):
                 return ValidationResult.failure(
                     TypeError(f"{method}: Expected Arena, {type(candidate).__name__} instead.")

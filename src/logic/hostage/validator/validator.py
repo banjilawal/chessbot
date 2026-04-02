@@ -56,7 +56,7 @@ class HostageValidator(Validator[Hostage]):
             1.  verify hostage_variety is a not-null HostageVariety object.
             2.  Use hostage_variety to pick which Validation method will create the concrete Hostage object.
         # PARAMETERS:
-            *   candidate (int)
+            *   rank (int)
             *   token_service (TokenService)
             *   square_validator (SquareService)
             *   identity_service (IdentityService)
@@ -80,7 +80,7 @@ class HostageValidator(Validator[Hostage]):
         """
         method = "HostageValidator.validate"
         
-        # Handle the case that, the candidate does not exist.
+        # Handle the case that, the rank does not exist.
         if candidate is None:
             # Send the exception chain on failure
             return ValidationResult.failure(
@@ -89,7 +89,7 @@ class HostageValidator(Validator[Hostage]):
                     ex=NullHostageException(f"{method}: {NullHostageException.MSG}")
                 )
             )
-        # Handle the case, that the candidate is the wrong type.
+        # Handle the case, that the rank is the wrong type.
         if not isinstance(candidate, Hostage):
             # Send the exception chain on failure
             return ValidationResult.failure(
@@ -99,7 +99,7 @@ class HostageValidator(Validator[Hostage]):
                 )
             )
         
-        # --- Cast the candidate into a Hostage for additional testing. ---#
+        # --- Cast the rank into a Hostage for additional testing. ---#
         manifest = cast(Hostage, candidate)
         
         # Handle the case that, the idis not safe.

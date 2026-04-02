@@ -21,7 +21,7 @@ class NullHostageException(HostageDebugException, NullException):
     Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
-    A failing ValidationResult was returned because the candidate was null.
+    A failing ValidationResult was returned because the rank was null.
 
     Super Class:
         *   NullException
@@ -34,4 +34,4 @@ class NullHostageException(HostageDebugException, NullException):
     None
     """
     ERR_CODE = "NULL_HOSTAGE_EXCEPTION"
-    MSG = "Hostage validation failed: The candidate was null."
+    MSG = "Hostage validation failed: The rank was null."

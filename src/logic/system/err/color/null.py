@@ -19,7 +19,7 @@ class NullGameColorException(GameColorException, NullException):
     Role:Error Tracing, Debugging
 
     Responsibilities:
-    1.  Indicate that a candidate failed its GameColor safety certification because it was null.
+    1.  Indicate that a rank failed its GameColor safety certification because it was null.
 
     Super Class:
         *   NullSchemaException

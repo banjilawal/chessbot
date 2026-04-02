@@ -43,10 +43,10 @@ class ScalarValidator(Validator[Scalar]):
     def validate(self) -> ValidationResult[Scalar]:
         """
         # ACTION:
-        Verifies candidate is a Scalar whose absolute value is within BOARD_DIMENSION.
+        Verifies rank is a Scalar whose absolute value is within BOARD_DIMENSION.
     
         # PARAMETERS:
-          * candidate (Any): Object to verify is a Scalar.
+          * rank (Any): Object to verify is a Scalar.
     
         # RETURNS:
           ValidationResult[Scalar] containing either:
@@ -114,10 +114,10 @@ class ScalarValidator(Validator[Scalar]):
     def validate_value(self, candidate: Any) -> ValidationResult[int]:
         """
         # ACTION:
-        Verifies candidate is a Scalar whose absolute value is within BOARD_DIMENSION.
+        Verifies rank is a Scalar whose absolute value is within BOARD_DIMENSION.
 
         # PARAMETERS:
-          * candidate (Any): Object to verify is an int within the dimensions of the board.
+          * rank (Any): Object to verify is an int within the dimensions of the board.
 
         # RETURNS:
           ValidationResult[Scalar] containing either:

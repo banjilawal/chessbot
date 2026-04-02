@@ -46,11 +46,11 @@ class DomainValidator(Validator[Domain]):
     ) -> ValidationResult[Domain]:
         """
         # ACTION:
-        Run checks verifying a candidate is a valid Domain object meeting the minimum requirements
+        Run checks verifying a rank is a valid Domain object meeting the minimum requirements
         for use in the system.
 
         # PARAMETERS:
-          * candidate (Any): Object to verify is a Domain.
+          * rank (Any): Object to verify is a Domain.
           * domain_origin_validator (type[DomainOriginValidator]): verifies the DomainOrigin.
 
         # RETURNS:

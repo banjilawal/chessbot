@@ -21,7 +21,7 @@ class NegativeNumberNotAllowedException(NumberException, BoundsException):
     Role:Error Tracing, Debugging
 
     Responsibilities:
-    1.  Indicate that number validation failed because the candidate was negative.
+    1.  Indicate that number validation failed because the rank was negative.
 
     Super Class:
         *   NumberException
@@ -34,4 +34,4 @@ class NegativeNumberNotAllowedException(NumberException, BoundsException):
     None
     """
     ERR_CODE = "NOT_NEGATIVE_NUMBER_VALIDATION_FAILURE"
-    MSG = "Number validation failed: The candidate was negative."
+    MSG = "Number validation failed: The rank was negative."

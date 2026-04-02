@@ -22,7 +22,7 @@ class SquareNotRegisteredBoardException(SquareDebugException, NotRegisteredExcep
     Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
-    1.  A failing ValidationResult was returned because the candidate square had not registered with its board.
+    1.  A failing ValidationResult was returned because the rank square had not registered with its board.
 
     Super Class:
         *   SquareDebugException
@@ -35,4 +35,4 @@ class SquareNotRegisteredBoardException(SquareDebugException, NotRegisteredExcep
     None
     """
     ERR_CODE = "SQUARE_NOT_REGISTERED_WITH_BOARD_EXCEPTION"
-    MSG = "Square validation failed: The candidate square had not registered with its board."
+    MSG = "Square validation failed: The rank square had not registered with its board."

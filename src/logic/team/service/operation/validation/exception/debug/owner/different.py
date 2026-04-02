@@ -21,7 +21,7 @@ class TeamHasDifferentOwnerException(NoRelationException):
     Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
-    1.  A failing TeamValidationResult was returned because the player and the candidate team
+    1.  A failing TeamValidationResult was returned because the player and the rank team
         did not have any relationship between them.
 
     Super Class:
@@ -35,5 +35,5 @@ class TeamHasDifferentOwnerException(NoRelationException):
     """
     ERR_CODE = "NO_RELATION_BETWEEN_PLAYER_AND_TEAM_EXCEPTION"
     MSG = (
-        "Team validation failed: There was no relationship between the player and the candidate team."
+        "Team validation failed: There was no relationship between the player and the rank team."
     )

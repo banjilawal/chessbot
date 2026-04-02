@@ -23,7 +23,7 @@ class SchemaKeyValidationException(SchemaKeyException, ValidationException):
     # TASK: Worker Method Identifier
 
     Responsibilities:
-    1.  A debug exception is created when a SchemaKey candidate fails a validation test. Validation debug exceptions are
+    1.  A debug exception is created when a SchemaKey rank fails a validation test. Validation debug exceptions are
         encapsulated inside an SchemaKeyValidationException creating an exception chain. which is sent to the caller in a
         ValidationResult.
     2.  The SchemaKeyValidationException chain is useful for tracing a  failure to its source.

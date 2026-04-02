@@ -21,7 +21,7 @@ class PrisonerAlreadyHasHostageException(HostageException, NullException):
     Role:Error Tracing, Debugging
 
     Responsibilities:
-   1.  Indicate that a candidate failed its Hostage validation because the prisoner did not have its captor set.
+   1.  Indicate that a rank failed its Hostage validation because the prisoner did not have its captor set.
     
     Super Class:
         *   NullException

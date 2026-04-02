@@ -18,7 +18,7 @@ class StringValidator(Validator[str]):
 
     Responsibilities:
     1.  Ensure a String is neither null, empty, nor whitespace before use.
-    2.  If a candidate fails a safety test, the validation sends an exception in a ValidationResult.
+    2.  If a rank fails a safety test, the validation sends an exception in a ValidationResult.
     
     Super Class:
         *   Validator
@@ -35,14 +35,14 @@ class StringValidator(Validator[str]):
     def validate(cls, candidate: str) -> ValidationResult[str]:
         """
         # ACTION:
-             1. If the candidate passes existence and type checks cast into a str for
+             1. If the rank passes existence and type checks cast into a str for
                 additional integrity tests. Else return an exception in the ValidationResult.
             2.  If the text is empty, blank, no length, return an exception in the ValidationResult.
             3.  If the text contains only white space, return an exception in the ValidationResult.
             4.  If all the checks pass return the text in the ValidationResult.
 
         # PARAMETERS:
-            *   candidate (Any)
+            *   rank (Any)
 
         # RETURNS:
         ValidationResult[str] containing either:
@@ -66,7 +66,7 @@ class StringValidator(Validator[str]):
                     TypeError(f"{method} Expected an str, got {type(candidate).__name__} instead.")
                 )
             
-            # After existence and type checks are successful cast the candidate to a str, trim all white
+            # After existence and type checks are successful cast the rank to a str, trim all white
             # space.
             text = cast(str, candidate).strip()
             

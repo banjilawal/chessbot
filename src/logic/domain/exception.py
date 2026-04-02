@@ -46,7 +46,7 @@ class NullDomainException(DomainException, NullException):
 
 #======================# DOMAIN VALIDATION EXCEPTION #======================#
 class InvalidDomainException(DomainException, ValidationException):
-    """Super Exception for SquareValidator when a candidate fails a sanity check.""""""
+    """Super Exception for SquareValidator when a rank fails a sanity check.""""""
     ERR_CODE = "DOMAIN_VALIDATION_EXCEPTION"
     MSG = "Domain validation failed."
 

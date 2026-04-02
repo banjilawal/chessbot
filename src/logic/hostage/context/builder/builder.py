@@ -14,7 +14,7 @@ class CaptivityContextBuilder(Builder[CaptivityContext]):
      Role:Validation, Data Integrity Guarantor, Security.
 
     Responsibilities:
-    1. Verify a candidate is a CaptivityContext that meets the application's safety contract before the client
+    1. Verify a rank is a CaptivityContext that meets the application's safety contract before the client
         is allowed to use the CaptivityContext object.
     2. Provide pluggable factories for validating different options separately.
 
@@ -43,11 +43,11 @@ class CaptivityContextBuilder(Builder[CaptivityContext]):
     ) -> BuildResult[CaptivityContext]:
         """
         # ACTION:
-        Verifies candidate is a CaptivityContext in two steps.
-            1. Test the candidate is a valid SearchCaptivityContext with a single searcher option switched on.
+        Verifies rank is a CaptivityContext in two steps.
+            1. Test the rank is a valid SearchCaptivityContext with a single searcher option switched on.
             2. Test the value passed to CaptivityContext passes its validation contract.
         # PARAMETERS:
-            * candidate (Any): Object to verify is a Square.
+            * rank (Any): Object to verify is a Square.
             * validation (type[SquareValidator]): Enforces safety requirements on row, column, square_name squares.
         # RETURNS:
             * BuildResult[CaptivityContext] containing either:

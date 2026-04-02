@@ -92,7 +92,7 @@ class TokenServiceMenu(Router[TokenService]):
                     )
                 )
             )
-        # --- Cast the candidate to a TokenCommand for additional tests ---#
+        # --- Cast the rank to a TokenCommand for additional tests ---#
         token_command = cast(TokenCommand, command)
         
         # Handle the case that, the command's schema or id fail a safety ccheck.
@@ -207,7 +207,7 @@ class TokenServiceMenu(Router[TokenService]):
         # Select the TokenValidation worker
         if isinstance(command, ValidateTokenCommand):
             return self._service.validator.validate(
-                candidate=command.parameters["candidate"]
+                rank=command.parameters["rank"]
             )
         # Select the TokenDeployment worker.
         if isinstance(command, DeployTokenCommand):

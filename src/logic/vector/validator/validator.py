@@ -21,7 +21,7 @@ class VectorValidator(Validator[Vector]):
      Role:Validation, Data Integrity Guarantor, Security.
 
     Responsibilities:
-    1.  Run tests verifying a candidate can safely be used as a Square.
+    1.  Run tests verifying a rank can safely be used as a Square.
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     Super Class:
@@ -42,7 +42,7 @@ class VectorValidator(Validator[Vector]):
     ) -> ValidationResult[Vector]:
         """
         # ACTION:
-            1.  If the candidate fails existence and type checks return the ValidationResult containing an
+            1.  If the rank fails existence and type checks return the ValidationResult containing an
                 exception. Else cast into Vector instance vector.
             2.  If vector.x fails either existence, type of bounds checks return the ValidationResult containing
                 an exception.
@@ -50,7 +50,7 @@ class VectorValidator(Validator[Vector]):
                 an exception.
             4.  All tests are passed return the ValidationResult containing vector in the payload.
         # PARAMETERS:
-            *   candidate (Any)
+            *   rank (Any)
             *   number_in_bounds_validator (NumberValidator)
         # RETURNS:
             *   ValidationResult[Vector] containing either:
@@ -79,7 +79,7 @@ class VectorValidator(Validator[Vector]):
                     ex=TypeError(f"{method}: Expected a Vector, got {type(candidate).__name__} instead.")
                 )
             )
-        # After existence and type checks cast the candidate to a Vector for additional tests.
+        # After existence and type checks cast the rank to a Vector for additional tests.
         vector = cast(Vector, candidate)
         
         # Validate the vector.x field. Use the absolute value because vectors can have negative components.

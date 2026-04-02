@@ -23,7 +23,7 @@ class NullSnapshotException(NullException):
     Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
-    A failing ValidationResult was returned because the candidate was null.
+    A failing ValidationResult was returned because the rank was null.
 
     Super Class:
         *   Debug
@@ -48,7 +48,7 @@ class NullSnapshotException(NullException):
         *   See NullException class for inherited methods.
     """
     ERR_CODE = "NULL_SNAPSHOT_EXCEPTION"
-    MSG = "Snapshot validation failed: The candidate cannot be null."
+    MSG = "Snapshot validation failed: The rank cannot be null."
     
     _var: Optional[str]
     _val: Optional[Any]

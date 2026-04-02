@@ -46,7 +46,7 @@ class DomainOriginBuilder(Builder[DomainOrigin]):
             2. turn_scene parameter has verified owner and their square_name have the same Coord.
 
         # PARAMETERS:
-            * candidate (int): the visitor_id.
+            * rank (int): the visitor_id.
 
         # RETURNS:
           BuildResult[DomainOrigin] containing either:

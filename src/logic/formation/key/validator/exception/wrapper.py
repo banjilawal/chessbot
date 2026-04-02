@@ -22,7 +22,7 @@ class FormationKeyValidationException(FormationKeyException, ValidationException
     Role:Exception Work
 
     Responsibilities:
-    1.  A debug exception is created when a FormationKey candidate fails a validation test. Validation debug exceptions are
+    1.  A debug exception is created when a FormationKey rank fails a validation test. Validation debug exceptions are
         encapsulated inside an FormationKeyValidationException creating an exception chain. which is sent to the caller in a
         ValidationResult.
     2.  The FormationKeyValidationException chain is useful for tracing a  failure to its source.

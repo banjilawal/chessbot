@@ -22,7 +22,7 @@ class ZeroPersonaKeysException(PersonaKeyException, ContextFlagCountException):
     Role:Error Tracing, Debugging
 
     Responsibilities:
-    1.  Indicate that a candidate failed PersonaKey validation because no attribute was enabled.
+    1.  Indicate that a rank failed PersonaKey validation because no attribute was enabled.
 
     Super Class:
         *   ContextFlagCountException

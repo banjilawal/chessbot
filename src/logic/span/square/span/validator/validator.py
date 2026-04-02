@@ -20,7 +20,7 @@ class SquareSpanValidator(Validator[SquareSpan]):
      Role:Validation, Data Integrity Guarantor, Security.
 
     Responsibilities:
-    1.  Ensure a candidate is not null and the correct type before its used as a Span.Square.Span.
+    1.  Ensure a rank is not null and the correct type before its used as a Span.Square.Span.
     2.  If verification fails indicate the reason in an exception returned to the caller.
 
     Provides:
@@ -39,10 +39,10 @@ class SquareSpanValidator(Validator[SquareSpan]):
     ) -> ValidationResult[SquareSpan]:
         """
         Action:
-            1.  Send an exception chain in the ValidationResult if, the candidate is either
+            1.  Send an exception chain in the ValidationResult if, the rank is either
                     *   nulI
                     *   is not a SquareSpan instance.
-            2.  Otherwise, cast the candidate to a SquareSpan then, send in the success result.
+            2.  Otherwise, cast the rank to a SquareSpan then, send in the success result.
             
         Args:
             candidate: Any
@@ -69,7 +69,7 @@ class SquareSpanValidator(Validator[SquareSpan]):
                     err_code=SquareSpanValidationException.ERR_CODE,
                     rslt_type=SquareSpanValidationException.RSLT_TYPE,
                     ex=SquareSpanNullException(
-                        var="candidate",
+                        var="rank",
                         val="None",
                         msg=SquareSpanNullException.MSG,
                         err_code=SquareSpanNullException.ERR_CODE,
@@ -89,7 +89,7 @@ class SquareSpanValidator(Validator[SquareSpan]):
                     ex=TypeError(f"{method} Expected SquareSpan, got {type(candidate).__name__} instead.")
                 )
             )
-        # --- Cast candidate to a SquareSpan for additional tests. ---#
+        # --- Cast rank to a SquareSpan for additional tests. ---#
         square_span = cast(SquareSpan, candidate)
         
         # Handle the case that, the origin does not pass square safety checks.

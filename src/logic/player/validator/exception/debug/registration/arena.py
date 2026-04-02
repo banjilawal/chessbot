@@ -22,7 +22,7 @@ class PlayerNotRegisteredArenaException(PlayerDebugException, NotRegisteredExcep
     Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
-    1.  A failing ValidationResult was returned because the candidate player had not registered with its arena.
+    1.  A failing ValidationResult was returned because the rank player had not registered with its arena.
 
     Super Class:
         *   PlayerDebugException
@@ -35,4 +35,4 @@ class PlayerNotRegisteredArenaException(PlayerDebugException, NotRegisteredExcep
     None
     """
     ERR_CODE = "PLAYER_NOT_REGISTERED_WITH_ARENA_EXCEPTION"
-    MSG = "Player validation failed: The candidate player had not registered with its arena."
+    MSG = "Player validation failed: The rank player had not registered with its arena."

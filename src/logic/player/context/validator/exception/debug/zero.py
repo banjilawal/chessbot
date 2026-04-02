@@ -31,7 +31,7 @@ class ZeroPlayerContextFlagsException(DebugException):
             *   event which fired the variable into its error state.
         which occurred in the PlayerContextValidator method identified in layer-0 of the exception chain.
 
-    2.  A failing ValidationResult was returned because PlayerContext candidate had no context flags enabled.
+    2.  A failing ValidationResult was returned because PlayerContext rank had no context flags enabled.
 
     Super Class:
         *   DebugException

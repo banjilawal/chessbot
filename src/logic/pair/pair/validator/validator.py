@@ -43,7 +43,7 @@ class PairValidator(Validator[Pair]):
     ) -> ValidationResult[Pair]:
         """
         Actin:
-            1.  If the candidate fails existence or type tests send the exception in the ValidationResult.
+            1.  If the rank fails existence or type tests send the exception in the ValidationResult.
                 Else, cast to Node instance, node.
             2.  If either the head, tail, dist, heuristic or weight fail verification send an exception chain
                 in the ValidationResult. Else, send the node in the ValidationResult.
@@ -93,7 +93,7 @@ class PairValidator(Validator[Pair]):
                     ex=TypeError(f"Expected Pair, got {type(candidate).__name__}. instead")
                 )
             )
-        # --- Cast the candidate to an Node for additional tests ---#
+        # --- Cast the rank to an Node for additional tests ---#
         pair = cast(Pair, candidate)
         
         # Handle the case that either the head or tail does not pass a validation check.

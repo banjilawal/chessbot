@@ -81,15 +81,15 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
 #   Any validate failure raises an `InvalidAttackEventException`.
 #
 #   Argument:
-#     `candidate` (`KingCheckEvent`): `attackEvent `to validate
+#     `rank` (`KingCheckEvent`): `attackEvent `to validate
 #
 #    RETURNS:
 #      `Result[V]`: A `Result` object containing the validated payload if the specification is satisfied,
 #       `InvalidAttackEventException` otherwise.
 #
 #   RAISES:
-#     `TypeError`: if `candidate` is not OperationEvent
-#     `NullAttackEventException`: if `candidate` is validation
+#     `TypeError`: if `rank` is not OperationEvent
+#     `NullAttackEventException`: if `rank` is validation
 #
 #     `IdValidationException`: if invalid `visitor_id`
 #     `PieceValidationException`: if `actor_candidate` fails coord_stack_validator
@@ -165,12 +165,12 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
 #   def execute(cls, travel: TravelEvent, execution_environment: Board) -> TransactionResult:
 #     """
 #     # ACTION:
-#     Verify the `candidate` is a valid ID. The Application requires
+#     Verify the `rank` is a valid ID. The Application requires
 #     1. Candidate is not validation.
 #     2. Is a positive integer.
 #
 #     # PARAMETERS:
-#         * `candidate` (`int`): the visitor_id.
+#         * `rank` (`int`): the visitor_id.
 #
 #     # RETURNS:
 #     `ValidationResult[str]`: A `ValidationResult` containing either:
@@ -179,9 +179,9 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
 #
 #     Raises:
 #     `IdValidationException`: Wraps any specification violations including:
-#         * `TypeError`: if candidate is not an `int`
-#         * `IdNullException`: if candidate is validation
-#         * `NegativeIdException`: if candidate is negative `
+#         * `TypeError`: if rank is not an `int`
+#         * `IdNullException`: if rank is validation
+#         * `NegativeIdException`: if rank is negative `
 #     """
 #     method = "TravelEventFactory.execute"
 #

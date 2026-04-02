@@ -21,7 +21,7 @@ class SnapshotContextValidationException(SnapshotContextException, ValidationExc
     Role:Exception Work
 
     Responsibilities:
-    1.  Wrap debug exceptions indicating why a candidate failed its validation as a SnapshotContext. The
+    1.  Wrap debug exceptions indicating why a rank failed its validation as a SnapshotContext. The
         encapsulated exceptions create a chain for tracing the source of the failure.
 
     Super Class:

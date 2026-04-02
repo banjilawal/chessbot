@@ -49,16 +49,16 @@ class NameValidator(Validator[str]):
     ) -> ValidationResult[str]:
         """
         # ACTION:
-        1.  Test if the candidate is:
+        1.  Test if the rank is:
             *   Not validation.
             *   Is not a white-space string.
             *   Is not an empty string.
             *   has a length between MIN_NAME_LENGTH and MAX_NAME_LENGTH.
         2.  If any check fails send their exception inside a ValidationResult.
-        3.  When all checks pass, cast the candidate to a STRING, then send to caller in a ValidationResult.
+        3.  When all checks pass, cast the rank to a STRING, then send to caller in a ValidationResult.
     
         # PARAMETERS:
-            *   candidate (Any): object to certify is a legal designation.
+            *   rank (Any): object to certify is a legal designation.
     
         # RETURNS:
         ValidationResult[str] containing either:
@@ -73,7 +73,7 @@ class NameValidator(Validator[str]):
         method = "NameValidator.validate"
         
         try:
-            # Verify the candidate is not null and an int.
+            # Verify the rank is not null and an int.
             validation = text_validator.validate(candidate)
             if validation.is_failure():
                 return ValidationResult.failure(validation.exception)

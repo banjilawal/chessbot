@@ -21,7 +21,7 @@ class EdgeDistanceException(EdgeDebugException):
     Role:Error Tracing, Debugging
 
     Responsibilities:
-    1.  Indicate that a candidate was not validated as an edge because its dist was a negative number.
+    1.  Indicate that a rank was not validated as an edge because its dist was a negative number.
 
     Super Class:
         *   EdgeDebugException

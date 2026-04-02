@@ -52,12 +52,12 @@ class EdgeValidator(Validator[Edge]):
     ) -> ValidationResult[Edge]:
         """
         # ACTION:
-            1.  If the candidate fails existence or type tests send the exception in the ValidationResult.
+            1.  If the rank fails existence or type tests send the exception in the ValidationResult.
                 Else, cast to Edge instance, edge.
             2.  If either the head, tail, dist, heuristic or weight fail verification send an exception chain
                 in the ValidationResult. Else, send the edge in the ValidationResult.
         # PARAMETERS:
-            *   candidate (Any)
+            *   rank (Any)
             *   node_validator (NodeValidator)
             *   identity_service (IdentityService)
             *   number_validation (NumberValidator)
@@ -90,7 +90,7 @@ class EdgeValidator(Validator[Edge]):
                     ex=TypeError(f"{method}: Expected an Edge, got {type(candidate).__name__}. instead")
                 )
             )
-        # --- Cast the candidate to an Edge for additional tests. ---#
+        # --- Cast the rank to an Edge for additional tests. ---#
         edge = cast(candidate, Edge)
         
         # Handle the case that, the label does not pass a validation check.

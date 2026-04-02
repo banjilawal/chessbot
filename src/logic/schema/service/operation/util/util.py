@@ -48,7 +48,7 @@ class SchemaUtil:
             formation_service: FormationService = FormationService()
     ) -> SearchResult[List[Formation]]:
         method = "SchemaService.formations_for_schema"
-        schema_validation = self.validator.validate(candidate=schema)
+        schema_validation = self.validator.validate(rank=schema)
         if schema_validation.is_failure:
             # On failure return the exception chain.
             return SearchResult.failure(

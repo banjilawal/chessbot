@@ -23,7 +23,7 @@ class SchemaValidationRouteException(ResultException, ExecutionRouteException):
     Role:Fallback Result, Debugging
     
     Responsibilities:
-    1.  Indicate that SchemaValidator did not handle one of the paths necessary to assure a candidate is a
+    1.  Indicate that SchemaValidator did not handle one of the paths necessary to assure a rank is a
         safe to use Schema. There are different configurations of Schema that are correct. Each
         configuration must have a testing route for a thorough verification exception. If a Schema configuration
         does not have a validation route the last step in the logic will return a ValidationResult containing a
@@ -42,7 +42,7 @@ class SchemaValidationRouteException(ResultException, ExecutionRouteException):
     """
     ERR_CODE = "NO_SCHEMA_VALIDATION_ROUTE_EXCEPTION"
     MSG = (
-        "The SchemaValidator did not handle one of the paths necessary to assure a candidate is a safe to use"
+        "The SchemaValidator did not handle one of the paths necessary to assure a rank is a safe to use"
         "Schema. Ensure all possible verification branches are covered to ensure the execution flow does not "
         "hit the default failure result outside the if-verification-blocks."
     )

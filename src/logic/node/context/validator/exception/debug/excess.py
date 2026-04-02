@@ -30,7 +30,7 @@ class ExcessNodeContextFlagsException(DebugException):
             *   event which fired the variable into its error state.
         which occurred in the NodeContextBuilder method identified in layer-0 of the exception chain.
 
-    2.  A failing ValidationResult was returned because NodeContext candidate had more than one flag enabled.
+    2.  A failing ValidationResult was returned because NodeContext rank had more than one flag enabled.
     
     Super Class:
         *   DebugException

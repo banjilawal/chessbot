@@ -46,14 +46,14 @@ class PersonaKeyValidator(Validator[PersonaKey]):
     ) -> ValidationResult[PersonaKey]:
         """
         # ACTION:
-            1.  If the candidate passes existence and type checks cast into a PersonaKey instance, super_key.
+            1.  If the rank passes existence and type checks cast into a PersonaKey instance, super_key.
                 Else, return an exception in the ValidationResult.
             2.  If one-and-only-one super_key field is not null return an exception in the ValidationResult.
             3.  Use super_key.attribute to route to the appropriate validation subflow.
             4.  If no Persona.VARIANT.attribute == super_key.attribute return an exception in the ValidationResult.
             5.  All tests are passed. Send super_key in the ValidationResult.
         # PARAMETERS:
-            *   candidate (Any)
+            *   rank (Any)
             *   color_validator (ColorValidator)
             *   identity_service (IdentityService)
         # RETURNS:Confirm
@@ -88,7 +88,7 @@ class PersonaKeyValidator(Validator[PersonaKey]):
                 )
             )
         
-        # After existence and type checks cast the candidate to a PersonaKey for additional tests.
+        # After existence and type checks cast the rank to a PersonaKey for additional tests.
         super_key = cast(PersonaKey, candidate)
         
         # Handle the case of searching with no attribute-value.

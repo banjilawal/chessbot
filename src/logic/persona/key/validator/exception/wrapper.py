@@ -22,7 +22,7 @@ class PersonaKeyValidationException(PersonaKeyException, ValidationException):
     Role:Exception Work
 
     Responsibilities:
-    1.  A debug exception is created when a PersonaKey candidate fails a validation test. Validation debug
+    1.  A debug exception is created when a PersonaKey rank fails a validation test. Validation debug
         exceptions are encapsulated inside an PersonaKeyValidationException creating an exception chain.
         which is sent to the caller in a ValidationResult.
     2.  The PersonaKeyValidationException chain is useful for tracing a  failure to its source.

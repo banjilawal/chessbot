@@ -31,7 +31,7 @@ class CoordValidator(Validator[Coord]):
     
     Provides:
        -    execute(
-                    candidate: Any,
+                    rank: Any,
                     number_validation: NumberValidator,
             ) -> ValidationResult[Coord]
 
@@ -47,14 +47,14 @@ class CoordValidator(Validator[Coord]):
             number_validation: NumberValidator = NumberValidator(),
     ) -> ValidationResult[Coord]:
         """
-        Verify the candidate is a Coord that is safe to use.
+        Verify the rank is a Coord that is safe to use.
         
         Action:
             1.  Send an exception chain in the ValidationResult if
-                    -   the candidate does not exist.
-                    -   the candidate is not a Coord.
+                    -   the rank does not exist.
+                    -   the rank is not a Coord.
                     -   the row or column is not between [0-7] inclusive.
-            2.  Otherwise, after the candidate is cast to a Coord, send the success result.
+            2.  Otherwise, after the rank is cast to a Coord, send the success result.
         Args:
             candidate: Any
             number_validation: NumberValidator
@@ -67,7 +67,7 @@ class CoordValidator(Validator[Coord]):
         """
         method = f"{cls.__name__}.build"
         
-        # Handle the case that, the candidate does not exist.
+        # Handle the case that, the rank does not exist.
         if candidate is None:
             # Return the exception on failure.
             return ValidationResult.failure(
@@ -84,7 +84,7 @@ class CoordValidator(Validator[Coord]):
                     )
                 )
             )
-        # Handle the case that, the candidate is the wrong type.
+        # Handle the case that, the rank is the wrong type.
         if not isinstance(candidate, Coord):
             # Return the exception on failure.
             return ValidationResult.failure(
@@ -100,7 +100,7 @@ class CoordValidator(Validator[Coord]):
                     )
                 )
             )
-        # --- Cast candidate to a Coord for additional tests ---#
+        # --- Cast rank to a Coord for additional tests ---#
         coord = cast(Coord, candidate)
         
         # Handle the case that, either the row or column are not between [0-7] inclusive.

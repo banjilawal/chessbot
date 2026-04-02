@@ -34,7 +34,7 @@ class Validator(ABC, Generic[T]):
     Attributes:
     
     Provides:
-        -   execute(candidate: Any, *args, **kwargs) -> ValidationResult[T]
+        -   execute(rank: Any, *args, **kwargs) -> ValidationResult[T]
         
     super Class:
     """

@@ -24,7 +24,7 @@ class SquareSpanRaysNullException(NullException):
     Role:Error Tracing, Debugging
 
     Responsibilities:
-    1.  Indicate that a SquareSpan candidate was not validated because it's rays
+    1.  Indicate that a SquareSpan rank was not validated because it's rays
         were null instead of a List[SquareRay]
 
     Super Class:

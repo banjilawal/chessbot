@@ -72,7 +72,7 @@ class TokenReadinessAnalyzer(RelationAnalysis[ReadinessState.FREE, Token]):
         method = f"{cls.__name__}.analyze"
         
         # Handle the case that, the token does not pass a validation check.
-        validation_result = token_validator.validate(candidate=candidate_satellite)
+        validation_result = token_validator.validate(rank=candidate_satellite)
         # Send the exception chain on failure.
         if validation_result.is_failure:
             return RelationReport.failure(

@@ -10,7 +10,7 @@ version: 1.0.0
 # =========== RANK.VALIDATION.EXCEPTION.DEBUG PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .persona import *
 
 # Modules
 from .null import NullRankException

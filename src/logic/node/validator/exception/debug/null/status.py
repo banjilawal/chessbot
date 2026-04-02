@@ -21,7 +21,7 @@ class DiscoveryStatusNullException(NullException):
     Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
-    A failing ValidationResult was returned because the candidate was null.
+    A failing ValidationResult was returned because the rank was null.
 
     Super Class:
         *   NullException

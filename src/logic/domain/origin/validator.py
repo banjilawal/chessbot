@@ -48,11 +48,11 @@ class DomainOriginValidator(Validator[DomainOrigin]):
     ) -> ValidationResult[DomainOrigin]:
         """
         # ACTION:
-        Use chained PieceValidator and SquareValidator to ensure a candidate is a valid DomainOrigin before
+        Use chained PieceValidator and SquareValidator to ensure a rank is a valid DomainOrigin before
         the client can use it.
 
         # PARAMETERS:
-          * candidate (Any): Object to verify is a Domain.
+          * rank (Any): Object to verify is a Domain.
           * piece_validator (type[PieceValidator]): Injected into validation.
           * validation (type[SquareValidator]): verifies the relationship between the
                 Domain's owning Token and Square.

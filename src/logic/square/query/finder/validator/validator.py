@@ -30,7 +30,7 @@ class SquareListValidator(Validator[List[Square]]):
 
     Provides:
         -   validate(
-                    candidate: Any,
+                    rank: Any,
                     board_service: BoardService = BoardService(),
                     coord_service: CoordService = CoordService(),
                     identity_service: IdentityService = IdentityService(),
@@ -48,13 +48,13 @@ class SquareListValidator(Validator[List[Square]]):
 
         Args:
             1.  Send an exception chain in the ValidationResult if:
-                    -   The candidate is null
+                    -   The rank is null
                     -   Is not a List.
                     -   Is an empty list.
                     -   If the first item is not a Square.
             2.  Otherwise, send the success result.
         # Args:
-            candidate: Any
+            rank: Any
         # RETURNS:
             ValidationResult[List[Square]]
         Raises:
@@ -94,7 +94,7 @@ class SquareListValidator(Validator[List[Square]]):
                     )
                 )
             )
-        # --- Cast the candidate to a List for additional tests. ---#
+        # --- Cast the rank to a List for additional tests. ---#
         square_list = cast(List, candidate)
         
         # Handle the case that, the list is empty

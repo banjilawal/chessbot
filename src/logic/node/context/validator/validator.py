@@ -55,7 +55,7 @@ class NodeContextValidator(Validator[NodeContext]):
             3.  If no route is found for the enabled attribute send an exception chain in the ValidationResult.
             4.  If a validation route exists return the outcome of the validation to the caller.
         # PARAMETERS:
-            *   candidate (Any)
+            *   rank (Any)
             *   discovery_status_service (Discovery_StatusService)
             *   square_validator (SquareService)
             *   node_validator (NodeValidator)
@@ -94,7 +94,7 @@ class NodeContextValidator(Validator[NodeContext]):
                     )
                 )
             )
-        # --- Cast the candidate to NodeContext for additional tests. ---#
+        # --- Cast the rank to NodeContext for additional tests. ---#
         context = cast(NodeContext, candidate)
         
         # Handle the case of searching with no attribute-value provided.

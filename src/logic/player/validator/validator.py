@@ -44,8 +44,8 @@ class PlayerValidator(Validator[Player]):
     ) -> ValidationResult[PlayerPlayer]:
         """
         # ACTION:
-        1.  Verify the candidate is not null.
-        2.  Verify the candidate is an Player. If so cast it to an Player instance.
+        1.  Verify the rank is not null.
+        2.  Verify the rank is an Player. If so cast it to an Player instance.
         3.  Use the identity service to verify the owner's designation and id.
         4.  If the owner is a MachinePlayer, confirm owner.engine_service is not null and
             is an EngineService instance.
@@ -55,7 +55,7 @@ class PlayerValidator(Validator[Player]):
         8.  When all checks return the successfully validated Player instance inside a ValidationResult.
         
         # PARAMETERS:
-            *   candidate (Any)
+            *   rank (Any)
             *   identity_service (IdentityService)
             *   service_validator (ServiceValidator)
 
@@ -71,12 +71,12 @@ class PlayerValidator(Validator[Player]):
         """
         method = "PlayerValidator.validate"
         try:
-            # If candidate does not exist no point continuing
+            # If rank does not exist no point continuing
             if candidate is None:
                 return ValidationResult.failure(
                     NullPlayerException(f"{method}: {NullPlayerException.MSG}")
                 )
-            # Handle the case, the candidate is not an Player object.
+            # Handle the case, the rank is not an Player object.
             if not isinstance(candidate, PlayerPlayer):
                 return ValidationResult.failure(
                     TypeError(f"{method}: Expected Player, {type(candidate).__name__} instead.")
@@ -126,12 +126,12 @@ class PlayerValidator(Validator[Player]):
         passed as an PlayerVariety is not null and is actually an PlayerVariety object. The comments
         are almost as lomg as the code.
         
-        1.  Verify the candidate is not null.
-        2.  Verify the candidate is an PlayerVariety. cast into an PlayerVariety instance and return a success.
+        1.  Verify the rank is not null.
+        2.  Verify the rank is an PlayerVariety. cast into an PlayerVariety instance and return a success.
         3.  If any check fails, return the exception inside a ValidationResult.
 
         # PARAMETERS:
-            *   candidate (Any)
+            *   rank (Any)
 
         # RETURNS:
         ValidationResult[PlayerVariety] containing either:

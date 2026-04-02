@@ -21,7 +21,7 @@ class TeamSlotAlreadyOccupiedException(TeamDebugException):
     Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
-    1.  A failing TeamValidationResult was returned because the candidate team's board slot was already occupied.
+    1.  A failing TeamValidationResult was returned because the rank team's board slot was already occupied.
 
     Super Class:
         *   TeamDebugException
@@ -33,4 +33,4 @@ class TeamSlotAlreadyOccupiedException(TeamDebugException):
     None
     """
     ERR_CODE = "TEAM_SLOT_ALREADY_OCCUPIED_EXCEPTION"
-    MSG = "Team validation failed: The candidate team slot on the board was already occupied."
+    MSG = "Team validation failed: The rank team slot on the board was already occupied."

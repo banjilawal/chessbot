@@ -45,12 +45,12 @@ class NodeValidator(Validator[Node]):
     ) -> ValidationResult[Node]:
         """
         # ACTION:
-            1.  If the candidate fails existence or type tests send the exception in the ValidationResult.
+            1.  If the rank fails existence or type tests send the exception in the ValidationResult.
                 Else, cast to Node instance, node.
             2.  If either the head, tail, dist, heuristic or weight fail verification send an exception chain
                 in the ValidationResult. Else, send the node in the ValidationResult.
         # PARAMETERS:
-            *   candidate (Any)
+            *   rank (Any)
             *   node_validator (NodeValidator)
             *   identity_service (IdentityService)
             *   number_validation (NumberValidator)
@@ -83,7 +83,7 @@ class NodeValidator(Validator[Node]):
                     ex=TypeError(f"{method}: Expected an Node, got {type(candidate).__name__}. instead")
                 )
             )
-        # --- Cast the candidate to an Node for additional tests ---#
+        # --- Cast the rank to an Node for additional tests ---#
         node = cast(Node, candidate)
         
         # Handle the case that, the square is not valid.
@@ -174,7 +174,7 @@ class NodeValidator(Validator[Node]):
             1.  If Candidate fails existence or type checks return the exception chain in the ValidationResult.
                 Else, cast to DiscoveryState and send in the ValidationResult.
         # PARAMETERS:
-            *   candidate (Any)
+            *   rank (Any)
         # RETURNS:
             *   ValidationResult[DiscoveryStatus] containing either:
                     - On failure: Exception.

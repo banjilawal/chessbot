@@ -14,15 +14,15 @@ class OldOccupationEventValidator(EventValidator[OccupationEvent]):
     Any validate failure raises an `InvalidOccupationEventException`.
 
     Argument:
-      `candidate` (`TravelEvent`): `occupationEvent `to validate
+      `rank` (`TravelEvent`): `occupationEvent `to validate
 
      RETURNS:
        `Result[V]`: A `Result` object containing the validated payload if the specification is satisfied,
         `InvalidOccupationEventException` otherwise.
 
     RAISES:
-      `TypeError`: if `candidate` is not OperationEvent
-      `NullOccupationEventException`: if `candidate` is validation
+      `TypeError`: if `rank` is not OperationEvent
+      `NullOccupationEventException`: if `rank` is validation
 
       `IdValidationException`: if invalid `visitor_id`
       `PieceValidationException`: if `actor_candidate` fails coord_stack_validator

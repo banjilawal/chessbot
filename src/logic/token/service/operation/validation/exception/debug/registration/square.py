@@ -22,7 +22,7 @@ class TokenNotRegisteredSquareException(TokenDebugException, NotRegisteredExcept
     Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
-    1.  A failing ValidationResult was returned because the candidate token had not registered with its square.
+    1.  A failing ValidationResult was returned because the rank token had not registered with its square.
 
     Super Class:
         *   TokenDebugException
@@ -35,4 +35,4 @@ class TokenNotRegisteredSquareException(TokenDebugException, NotRegisteredExcept
     None
     """
     ERR_CODE = "TOKEN_NOT_REGISTERED_WITH_SQUARE_EXCEPTION"
-    MSG = "Token validation failed: The candidate token had not registered with its square."
+    MSG = "Token validation failed: The rank token had not registered with its square."

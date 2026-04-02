@@ -20,7 +20,7 @@ class SquareRayValidator(Validator[SquareRay]):
      Role:Validation, Data Integrity Guarantor, Security.
 
     Responsibilities:
-    1.  Ensure a candidate is not null and the correct type before its used as a Span.Square.Ray.
+    1.  Ensure a rank is not null and the correct type before its used as a Span.Square.Ray.
     2.  If verification fails indicate the reason in an exception returned to the caller.
 
     Provides:
@@ -39,10 +39,10 @@ class SquareRayValidator(Validator[SquareRay]):
     ) -> ValidationResult[SquareRay]:
         """
         Action:
-            1.  Send an exception chain in the ValidationResult if, the candidate is either
+            1.  Send an exception chain in the ValidationResult if, the rank is either
                     *   nulI
                     *   is not a SquareRay instance.
-            2.  Otherwise, cast the candidate to a SquareRay then, send in the success result.
+            2.  Otherwise, cast the rank to a SquareRay then, send in the success result.
             
         Args:
             candidate: Any
@@ -69,7 +69,7 @@ class SquareRayValidator(Validator[SquareRay]):
                     err_code=SquareRayValidationException.ERR_CODE,
                     rslt_type=SquareRayValidationException.RSLT_TYPE,
                     ex=SquareRayNullException(
-                        var="candidate",
+                        var="rank",
                         val="None",
                         msg=SquareRayNullException.MSG,
                         err_code=SquareRayNullException.ERR_CODE,
@@ -89,7 +89,7 @@ class SquareRayValidator(Validator[SquareRay]):
                     ex=TypeError(f"{method} Expected SquareRay, got {type(candidate).__name__} instead.")
                 )
             )
-        # --- Cast candidate to a SquareRay for additional tests. ---#
+        # --- Cast rank to a SquareRay for additional tests. ---#
         square_ray = cast(SquareRay, candidate)
         
         # Handle the case that, the origin does not pass square safety checks.

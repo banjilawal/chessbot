@@ -19,17 +19,17 @@ from logic.system.err import ChessException
 
 
 class IdentityException(ChessException):
-    """Super Exception for IdValidator when a candidate fails a sanity check."""
+    """Super Exception for IdValidator when a rank fails a sanity check."""
     ERR_CODE = "IDENTITY_PROPERTY_VALIDATION_EXCEPTION"
     MSG = "Identity property failed validation."
 
 class InvalidIdentityException(IdentityException, ValidationException):
-    """Super Exception for IdValidator when a candidate fails a sanity check."""
+    """Super Exception for IdValidator when a rank fails a sanity check."""
     ERR_CODE = "IDENTITY_VALIDATION_EXCEPTION"
     MSG = "Identity failed validation."
 
 
 class IdentityNullException(IdentityException, NullException):
-    """Super Exception for IdValidator when a candidate fails a sanity check."""
+    """Super Exception for IdValidator when a rank fails a sanity check."""
     ERR_CODE = "IDENTITY_PROPERTY_VALIDATION_EXCEPTION"
     MSG = "Identity property failed validation."

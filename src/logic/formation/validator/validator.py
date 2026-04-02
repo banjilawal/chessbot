@@ -18,7 +18,7 @@ class FormationValidator(Validator[Formation]):
      Role:Validation, Data Integrity Guarantor, Security.
 
     Responsibilities:
-    1.  Ensure a candidate is not null and the correct type before its used as a Formation.
+    1.  Ensure a rank is not null and the correct type before its used as a Formation.
     2.  If verification fails indicate the reason in an exception returned to the caller.
 
     Super Class:
@@ -36,10 +36,10 @@ class FormationValidator(Validator[Formation]):
     def validate(cls, candidate: Any) -> ValidationResult[Formation]:
         """
         # ACTION:.
-            1.  If the candidate passes existence and type checks cast into a Formation instance and return
+            1.  If the rank passes existence and type checks cast into a Formation instance and return
                 in the ValidationResult. Else return an exception in the ValidationResult.
         # PARAMETERS:
-            *   candidate (Any)
+            *   rank (Any)
         # RETURNS:
             *   ValidationResult[Formation] containing either:
                     - On failure: Exception.

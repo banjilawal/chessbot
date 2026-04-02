@@ -24,7 +24,7 @@ class TokenCommandTable(CommandTable):
     COMMAND_TABLE: Dict[TokenCommand, CommandArgs] = {
         BuildTokenCommand: CommandArgs({"owner": Team, "formation": Formation}),
         PromotePawnCommand: CommandArgs({"pawn_token": PawnToken}),
-        ValidateTokenCommand: CommandArgs({"candidate": Any}),
+        ValidateTokenCommand: CommandArgs({"rank": Any}),
         DeployTokenCommand: CommandArgs({"token": Token}),
     }
     

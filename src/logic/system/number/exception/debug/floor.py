@@ -21,7 +21,7 @@ class NumberBelowFloorException(NumberException, BoundsException):
     Role:Error Tracing, Debugging
 
     Responsibilities:
-    1.  Indicate that number validation failed because the candidate was smaller than the floor.
+    1.  Indicate that number validation failed because the rank was smaller than the floor.
 
     Super Class:
         *   NumberException
@@ -34,4 +34,4 @@ class NumberBelowFloorException(NumberException, BoundsException):
     None
     """
     ERR_CODE = "NUMBER_BELOW_FLOOR_EXCEPTION"
-    MSG = "Number validation failed: The candidate was below the floor."
+    MSG = "Number validation failed: The rank was below the floor."

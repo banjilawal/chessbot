@@ -22,7 +22,7 @@ class BoardNotRegisteredArenaException(BoardDebugException, NotRegisteredExcepti
     Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
-    1.  A failing ValidationResult was returned because the candidate board had not registered with its arena.
+    1.  A failing ValidationResult was returned because the rank board had not registered with its arena.
 
     Super Class:
         *   BoardDebugException
@@ -35,4 +35,4 @@ class BoardNotRegisteredArenaException(BoardDebugException, NotRegisteredExcepti
     None
     """
     ERR_CODE = "BOARD_NOT_REGISTERED_WITH_ARENA_EXCEPTION"
-    MSG = "Board validation failed: The candidate board had not registered with its arena."
+    MSG = "Board validation failed: The rank board had not registered with its arena."

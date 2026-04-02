@@ -19,7 +19,7 @@ class PairListValidator(Validator[PairList]):
      Role:Validation, Data Integrity Guarantor, Security.
 
     Responsibilities:
-    1.  Ensure a candidate is not null and the correct type before its used as a Pair.Listing.
+    1.  Ensure a rank is not null and the correct type before its used as a Pair.Listing.
     2.  If verification fails indicate the reason in an exception returned to the caller.
 
     Provides:
@@ -34,10 +34,10 @@ class PairListValidator(Validator[PairList]):
     def validate(cls, candidate: Any) -> ValidationResult[PairList]:
         """
         Action:
-            1.  Send an exception chain in the ValidationResult if, the candidate is either
+            1.  Send an exception chain in the ValidationResult if, the rank is either
                     *   nulI
                     *   is not a PairList instance.
-            2.  Otherwise, cast the candidate to a PairList then, send in the success result.
+            2.  Otherwise, cast the rank to a PairList then, send in the success result.
             
         Args:
             candidate: Any
@@ -63,7 +63,7 @@ class PairListValidator(Validator[PairList]):
                     err_code=PairListValidationException.ERR_CODE,
                     rslt_type=PairListValidationException.RSLT_TYPE,
                     ex=PairListNullException(
-                        var="candidate",
+                        var="rank",
                         val="None",
                         msg=PairListNullException.MSG,
                         err_code=PairListNullException.ERR_CODE,

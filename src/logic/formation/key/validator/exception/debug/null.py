@@ -22,7 +22,7 @@ class NullFormationKeyException(FormationKeyException, NullException):
     Role:Error Tracing, Debugging
 
     Responsibilities:
-    1.  Indicate that FormationKey validation failed because the candidate was null.
+    1.  Indicate that FormationKey validation failed because the rank was null.
 
     Super Class:
         *   NullException
@@ -34,4 +34,4 @@ class NullFormationKeyException(FormationKeyException, NullException):
     None
     """
     ERR_CODE = "NULL_FORMATION_KEY_EXCEPTION"
-    MSG = "FormationKey validation failed: The candidate was null."
+    MSG = "FormationKey validation failed: The rank was null."

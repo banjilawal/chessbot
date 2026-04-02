@@ -19,7 +19,7 @@ class NodeTreeValidator(Validator[NodeTree]):
      Role:Validation, Data Integrity Guarantor, Security.
 
     Responsibilities:
-    1.  Ensure a candidate is not null and the correct type before its used as a Pair.Tree.
+    1.  Ensure a rank is not null and the correct type before its used as a Pair.Tree.
     2.  If verification fails indicate the reason in an exception returned to the caller.
 
     Provides:
@@ -34,10 +34,10 @@ class NodeTreeValidator(Validator[NodeTree]):
     def validate(cls, candidate: Any) -> ValidationResult[NodeTree]:
         """
         Action:
-            1.  Send an exception chain in the ValidationResult if, the candidate is either
+            1.  Send an exception chain in the ValidationResult if, the rank is either
                     *   nulI
                     *   is not a NodeTree instance.
-            2.  Otherwise, cast the candidate to a NodeTree then, send in the success result.
+            2.  Otherwise, cast the rank to a NodeTree then, send in the success result.
             
         Args:
             candidate: Any
@@ -63,7 +63,7 @@ class NodeTreeValidator(Validator[NodeTree]):
                     err_code=NodeTreeValidationException.ERR_CODE,
                     rslt_type=NodeTreeValidationException.RSLT_TYPE,
                     ex=NodeTreeNullException(
-                        var="candidate",
+                        var="rank",
                         val="None",
                         msg=NodeTreeNullException.MSG,
                         err_code=NodeTreeNullException.ERR_CODE,

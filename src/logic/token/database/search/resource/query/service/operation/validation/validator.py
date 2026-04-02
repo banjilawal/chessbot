@@ -32,7 +32,7 @@ class TokenQueryValidator(Validator[TokenQuery]):
 
     Provides:
         -   validate(
-                    candidate: Any
+                    rank: Any
                     context_validator: TokenContextValidator,
             ) -> ValidationResult[int]
 
@@ -47,13 +47,13 @@ class TokenQueryValidator(Validator[TokenQuery]):
             context_validator: TokenContextValidator = TokenContextValidator(),
     ) -> ValidationResult[TokenQuery]:
         """
-        Certify a candidate is a TokenQuery that is safe to use.
+        Certify a rank is a TokenQuery that is safe to use.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 conditions occur:
-                    -   The candidate is null
-                    -   The candidate is not a TokenQuery
+                    -   The rank is null
+                    -   The rank is not a TokenQuery
                     -   The context fails a safety check.
                     -   The schema is null.
                     -   The schema's type is not ist[Token]
@@ -104,7 +104,7 @@ class TokenQueryValidator(Validator[TokenQuery]):
                     )
                 )
             )
-        # --- Cast the candidate to TokenQuery for additional tests. ---#
+        # --- Cast the rank to TokenQuery for additional tests. ---#
         query = cast(TokenQuery, candidate)
         
         # Handle the case that, the context is not certified as safe.

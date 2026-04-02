@@ -43,7 +43,7 @@ class RosterRelationAnalysis(RelationAnalysis[Team, Token]):
     ) -> RelationReport[Team, Token]:
         """
         # ACTION:
-            1.  If either candidate fails its safety certification send the exception chain in the RelationReport.
+            1.  If either rank fails its safety certification send the exception chain in the RelationReport.
                 Else, cast the candidate_primary to a Team instance; arena and candidate_satellite to Token
                 instance; piece.
             2.  If the piece.team != team they are not related. Else they are partially related.

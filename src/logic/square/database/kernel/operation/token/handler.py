@@ -69,7 +69,7 @@ class SquareStackTokenHandler:
     ) -> UpdateResult[Square]:
         """
         # ACTION:
-            1.  If token_service cannot verify the occupation candidate is actionable send the wrapped exception
+            1.  If token_service cannot verify the occupation rank is actionable send the wrapped exception
                 in the InsertionResult.
             2.  If the square either:
                     *   Fails validation.

@@ -31,7 +31,7 @@ class ZeroBoardContextFlagsException(DebugException):
             *   event which fired the variable into its error state.
         which occurred in the BoardContextValidator method identified in layer-0 of the exception chain.
 
-    2.  A failing ValidationResult was returned because BoardContext candidate had no context flags enabled.
+    2.  A failing ValidationResult was returned because BoardContext rank had no context flags enabled.
 
     Super Class:
         *   DebugException

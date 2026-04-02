@@ -52,7 +52,7 @@ class BoardContextValidator(Validator[BoardContext]):
             3.  If no route is found for the enabled attribute send an exception chain in the ValidationResult.
             4.  If a validation route exists return the outcome of the validation to the caller.
         # PARAMETERS:
-            *   candidate (Any)
+            *   rank (Any)
             *   arena_service (ArenaService)
             *   identity_service (IdentityService):
         # RETURNS:
@@ -87,7 +87,7 @@ class BoardContextValidator(Validator[BoardContext]):
                     ex=TypeError(f"{method}: Was expecting a BoardContext, got {type(candidate).__name__} instead.")
                 )
             )
-        # --- Cast the candidate to BoardContext for additional tests. ---#
+        # --- Cast the rank to BoardContext for additional tests. ---#
         context = cast(BoardContext, candidate)
         
         # Handle the case of searching with no attribute-value provided.

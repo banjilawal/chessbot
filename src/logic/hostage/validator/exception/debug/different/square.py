@@ -21,7 +21,7 @@ class PrisonerCapturedOnDifferentSquareException(HostageException):
     Role:Exception Work
 
     Responsibilities:
-    1.  Indicate that a candidate failed its Hostage validation because the victor and prisoner were on
+    1.  Indicate that a rank failed its Hostage validation because the victor and prisoner were on
         different item.
 
     Super Class:

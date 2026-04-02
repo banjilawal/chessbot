@@ -17,7 +17,7 @@ class IdValidator(Validator[int]):
      Role:Validation, Data Integrity Guarantor, Security., Integrity
   
     Responsibilities:
-    Verifies a candidate is an int greater than zero before its used an ID.
+    Verifies a rank is an int greater than zero before its used an ID.
   
     # PROVIDES:
     ValidationResult[int] containing either:
@@ -54,11 +54,11 @@ class IdValidator(Validator[int]):
     ) -> ValidationResult[int]:
         """
         # ACTION:
-            1.  Test the candidate is not null and an int with not_negative_validator.
+            1.  Test the rank is not null and an int with not_negative_validator.
             2.  If the value is negative return an exception in the ValidationResult.
             3.  When all checks pass send the number in a ValidationResult's payload.
         # PARAMETERS:
-            *   candidate (Any):
+            *   rank (Any):
             *   not_negative_validator (NumberValidator)
         # RETURNS:
             *   ValidationResult[int] containing either:

@@ -29,4 +29,4 @@ class ValidateTokenCommand(TokenCommand):
     
     @classmethod
     def cipher(cls,) -> Dict[str, Any]:
-        return {"candidate": Any}
+        return {"rank": Any}

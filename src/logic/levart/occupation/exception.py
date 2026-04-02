@@ -38,13 +38,13 @@ class NullOccupationEventException(OccupationEventException, NullException):
 
 
 class InvalidOccupationEventException(OccupationEventException, ValidationException):
-  """Raised by OccupationEventValidators if a candidate fails coord_stack_validator."""
+  """Raised by OccupationEventValidators if a rank fails coord_stack_validator."""
   ERR_CODE = "OCCUPATION_EVENT_VALIDATION_EXCEPTION"
   MSG = "OccupationEvent validation failed."
 
 
 class OccupationDestinationNotEmptyException(OccupationEventException):
-  """Raised by OccupationEventValidators if a candidate fails coord_stack_validator."""
+  """Raised by OccupationEventValidators if a rank fails coord_stack_validator."""
   ERR_CODE = "OCCUPATION_EVENT_DESTINATION_NOT_EMPTY_EXCEPTION"
   MSG = "OccupationEvent destination square_name is not empty."
   

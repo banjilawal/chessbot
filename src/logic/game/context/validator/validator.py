@@ -75,17 +75,17 @@ class GameContextValidator(Validator[GameContext]):
         """
         method = "GameContextValidator.validate"
         try:
-            # Handle the case that, the candidate does not exist.
+            # Handle the case that, the rank does not exist.
             if candidate is None:
                 return ValidationResult.failure(
                     NullGameContextException(f"{method}: {NullGameContextException.MSG}")
                 )
-            # Handle the case that, the candidate is not a GameContext.
+            # Handle the case that, the rank is not a GameContext.
             if not isinstance(candidate, GameContext):
                 return ValidationResult.failure(
                     TypeError(f"{method}: Expected GameContext, got {type(candidate).__name__} instead.")
                 )
-            # After existence and type checks cast the candidate for further processing.
+            # After existence and type checks cast the rank for further processing.
             context = cast(GameContext, candidate)
             
             # Handle the case that, no attribute-value tuple is enabled.

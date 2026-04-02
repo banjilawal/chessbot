@@ -22,7 +22,7 @@ class NullPersonaKeyException(PersonaKeyException, NullException):
     Role:Error Tracing, Debugging
 
     Responsibilities:
-    1.  Indicate that PersonKey validation failed because the candidate was null.
+    1.  Indicate that PersonKey validation failed because the rank was null.
 
     Super Class:
         *   NullException
@@ -34,4 +34,4 @@ class NullPersonaKeyException(PersonaKeyException, NullException):
     None
     """
     ERR_CODE = "NULL_PERSON_KEY_EXCEPTION"
-    MSG = "PersonKey validation failed: The candidate was null."
+    MSG = "PersonKey validation failed: The rank was null."

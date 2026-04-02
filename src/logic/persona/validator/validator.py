@@ -18,7 +18,7 @@ class PersonaValidator(Validator[Persona]):
      Role:Validation, Data Integrity Guarantor, Security.
 
     Responsibilities:
-    1.  Ensure a candidate is not null and the correct type before its used as a Span.Square.Ray.
+    1.  Ensure a rank is not null and the correct type before its used as a Span.Square.Ray.
     2.  If verification fails indicate the reason in an exception returned to the caller.
 
     Provides:
@@ -33,10 +33,10 @@ class PersonaValidator(Validator[Persona]):
     def validate(cls, candidate: Any, ) -> ValidationResult[Persona]:
         """
         Action:
-            1.  Send an exception chain in the ValidationResult if, the candidate is either
+            1.  Send an exception chain in the ValidationResult if, the rank is either
                     *   nulI
                     *   is not a Persona instance.
-            2.  Otherwise, cast the candidate to a Persona then, send in the success result.
+            2.  Otherwise, cast the rank to a Persona then, send in the success result.
 
         Args:
             candidate: Any

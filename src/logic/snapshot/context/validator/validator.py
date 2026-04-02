@@ -54,7 +54,7 @@ class SnapshotContextValidator(Validator[SnapshotContext]):
     ) -> ValidationResult[SnapshotContext]:
         """
         # ACTION:
-            1.  If the candidate passes existence and type checks cast into a SnapshotContext for
+            1.  If the rank passes existence and type checks cast into a SnapshotContext for
                 additional integrity tests. Else return an exception in the ValidationResult.
             2.  If one-and-only-one SnapshotContext attribute-value-tuple is enabled goto the integrity
                 check. Else, return an exception in the ValidationResult.
@@ -63,7 +63,7 @@ class SnapshotContextValidator(Validator[SnapshotContext]):
                 Else, send the exception in the ValidationResult.
 
         # PARAMETERS:
-            *   candidate (Any)
+            *   rank (Any)
             *   game_service (GameService)
             *   team_service (TeamService)
             *   arena_service (ArenaService)
@@ -95,7 +95,7 @@ class SnapshotContextValidator(Validator[SnapshotContext]):
                     TypeError(f"{method}: Expected SnapshotContext, got {type(candidate).__name__} instead.")
                 )
             
-            # After existence and type checks are successful cast the candidate to a SnapshotContext
+            # After existence and type checks are successful cast the rank to a SnapshotContext
             # for additional tests.
             context = cast(SnapshotContext, candidate)
             

@@ -49,7 +49,7 @@ class BoardTeamRelationAnalysis(RelationAnalysis[Board, Team]):
         Generate a report on the relationship between a board and team.
         
         Action:
-            1.  Send an AnalyzerFailure exception if either candidate cannot be validated.
+            1.  Send an AnalyzerFailure exception if either rank cannot be validated.
             2.  Otherwise, send the success result which can be:
                     -   No relation between them.
                     -   Board has expired link to team.

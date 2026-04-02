@@ -42,7 +42,7 @@ class CommandArgsValidator(Validator[Dict]):
     # LOCAL METHODS:
         *   validate(
                     cipher: Command,
-                    candidate: Any,
+                    rank: Any,
                     identity_service: IdentityService = IdentityService(),
             ) -> ValidationResult[Dict[Str, Any]
         
@@ -78,7 +78,7 @@ class CommandArgsValidator(Validator[Dict]):
         method = f"{cls.__name__}.validate"
         
 
-        # Handle the case that, the candidate does not pass type of count checks
+        # Handle the case that, the rank does not pass type of count checks
         type_validation_results = cls._run_type_checks(
             signature=signature,
             candidate=command.parameters,
@@ -131,10 +131,10 @@ class CommandArgsValidator(Validator[Dict]):
         Action:
             1.  Send an exception chain in the ValidationResult if any of t
                 the following occurs:
-                    -   The candidate is null.
-                    -   The candidate's type is not the signature's.
-                    -   The candidate has the wrong number of arguments.
-                    -   One of the candidate's types is not in the signature
+                    -   The rank is null.
+                    -   The rank's type is not the signature's.
+                    -   The rank has the wrong number of arguments.
+                    -   One of the rank's types is not in the signature
             2.  Otherwise, send the success result.
         Args:
             candidate: CommandArgs
@@ -184,7 +184,7 @@ class CommandArgsValidator(Validator[Dict]):
                     )
                 )
             )
-        # --- Cast candidate to the signature's type for additional tests. ---#
+        # --- Cast rank to the signature's type for additional tests. ---#
         args = cast(type(signature), candidate)
         
         # Handle the case that, the number of arguments is wrong.
@@ -243,7 +243,7 @@ class CommandArgsValidator(Validator[Dict]):
                         signature.
             2.  Otherwise, send the success result.
         Args:
-            candidate CommandArgs
+            rank CommandArgs
             signature: CommandArgs
             identity_service: IdentityService
         Returns:

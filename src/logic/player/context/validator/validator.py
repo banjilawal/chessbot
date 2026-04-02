@@ -24,7 +24,7 @@ class PlayerContextValidator(Validator[PlayerContext]):
 
     Responsibilities:
     1.  Ensure an PlayerContext instance is certified safe, reliable and consistent before use.
-    2.  If a candidate fails a safety test, the validation sends an exception in a ValidationResult.
+    2.  If a rank fails a safety test, the validation sends an exception in a ValidationResult.
     
     Super Class:
         *   Validator
@@ -46,7 +46,7 @@ class PlayerContextValidator(Validator[PlayerContext]):
     ) -> ValidationResult[PlayerContext]:
         """
         # ACTION:
-            1.  If the candidate passes existence and type checks cast into a PlayerContext for
+            1.  If the rank passes existence and type checks cast into a PlayerContext for
                 additional integrity tests. Else return an exception in the ValidationResult.
             2.  If one-and-only-one PlayerContext attribute-value-tuple is enabled goto the integrity
                 check. Else, return an exception in the ValidationResult.
@@ -55,7 +55,7 @@ class PlayerContextValidator(Validator[PlayerContext]):
                 Else, send the exception in the ValidationResult.
 
         # PARAMETERS:
-            *   candidate (Any)
+            *   rank (Any)
             *   team_service (TeamService)
             *   game_service (GameService)
             *   identity_service (IdentityService)
@@ -85,7 +85,7 @@ class PlayerContextValidator(Validator[PlayerContext]):
                     TypeError(f"{method}: Expected PlayerContext, got {type(candidate).__name__} instead.")
                 )
             
-            # After existence and type checks are successful cast the candidate to an PlayerContext
+            # After existence and type checks are successful cast the rank to an PlayerContext
             # for additional tests.
             context = cast(PlayerContext, candidate)
             

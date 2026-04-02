@@ -67,7 +67,7 @@ class SquareIterator:
     """
     method = "SquareIterator._col_has_next"
 
-    # print(f"\candidate\tENTERED _col_has_next() with column={self._current_column}")
+    # print(f"\rank\tENTERED _col_has_next() with column={self._current_column}")
 
     if self._current_column <= len(self._squares[0])-1:
       print(f"\t\tcolumn {self._current_column} <= {len(self._squares[0])-1} returning {True}")

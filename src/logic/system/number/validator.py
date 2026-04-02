@@ -44,12 +44,12 @@ class NumberValidator(Validator[int]):
     ) -> ValidationResult[int]:
         """
         # ACTION:
-            1.  If candidate fails not-negative validation return the validation result containing the exception.
+            1.  If rank fails not-negative validation return the validation result containing the exception.
                 Else get the number from the validation payload.
             2.  If number > BOARD.DIMENSION -1 return the ValidationResult containing the exception.
             3.  The tests have been passed. Return the ValidationResult with the number in the payload.
         # PARAMETERS:
-            *   candidate (Any)
+            *   rank (Any)
             *   not_negative_validator (NotNegativeNumberValidator)
         # RETURNS:
             *   ValidationResult[int] containing either:

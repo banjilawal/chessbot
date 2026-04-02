@@ -21,7 +21,7 @@ class PrisonerCapturedByDifferentEnemyException(HostageException):
     Role:Exception Work
 
     Responsibilities:
-    1.  Indicate that a candidate failed its Hostage validation because the prisoner had a different captor.
+    1.  Indicate that a rank failed its Hostage validation because the prisoner had a different captor.
 
     Super Class:
         *   HostageException

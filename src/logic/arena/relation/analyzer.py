@@ -45,7 +45,7 @@ class ArenaTeamRelationAnalysis(RelationAnalysis[Arena, Team]):
     ) -> RelationReport[Arena, Team]:
         """
         # ACTION:
-        1.  If either candidate fails its safety certification send the exception chain in the RelationReport. Else,
+        1.  If either rank fails its safety certification send the exception chain in the RelationReport. Else,
             cast the candidate_primary to arena instance; arena and candidate_satellite to Team instance; team.
         2.  If the team.owner != owner they are not related. Else they are partially related.
         3.  If searching owner's teams for the satellite produces an error send the exception chain. If the search

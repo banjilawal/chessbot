@@ -32,12 +32,12 @@ class TeamHashValidator(Validator[TeamHash]):
     ) -> ValidationResult[TeamHash]:
         """
         # ACTION:
-            1.  If the candidate fails existence or type checks return the exception in the ValidationResult.
-                Else, cast candidate into TeamHash instance hash.
+            1.  If the rank fails existence or type checks return the exception in the ValidationResult.
+                Else, cast rank into TeamHash instance hash.
             2.  If either team's has the wrong schema send an exception to the ValidationResult.
             3.  The tests passed. Send the hash in the ValidationResult.
         # PARAMETERS:
-            *   candidate (Any)
+            *   rank (Any)
             *   schema_service (SchemaService)
             *   team_service (TeamService)
         # RETURNS:
@@ -71,7 +71,7 @@ class TeamHashValidator(Validator[TeamHash]):
                     ex=TypeError(f"{method}: Expected TeamHash, got {type(candidate).__name__} instead.")
                 )
             )
-        # --- Cast the candidate to a TeamHash for additional tests ---#
+        # --- Cast the rank to a TeamHash for additional tests ---#
         hash = cast(TeamHash, candidate)
         
         # Handle the case that, the white team does not pass a validation check.

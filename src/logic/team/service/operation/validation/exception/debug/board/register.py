@@ -22,7 +22,7 @@ class TeamNotRegisteredBoardException(TeamDebugException, NotRegisteredException
     Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
-    1.  A failing TeamValidationResult was returned because the candidate team had not
+    1.  A failing TeamValidationResult was returned because the rank team had not
         registered with its board.
 
     Super Class:
@@ -36,4 +36,4 @@ class TeamNotRegisteredBoardException(TeamDebugException, NotRegisteredException
     None
     """
     ERR_CODE = "TEAM_NOT_REGISTERED_WITH_BOARD_EXCEPTION"
-    MSG = "Team validation failed: The candidate team had not registered with its board."
+    MSG = "Team validation failed: The rank team had not registered with its board."

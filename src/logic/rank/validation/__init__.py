@@ -10,6 +10,7 @@ version: 1.0.0
 #=========== RANK.VALIDATION PACKAGE CONTENTS ===========#
 
 # Packages
+from .persona import *
 from .exception import *
 
 # Modules
