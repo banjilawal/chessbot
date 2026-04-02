@@ -26,8 +26,7 @@ class TokenStackServiceException(StackServiceException):
         -   Exception coverage target
 
     Responsibilities:
-        1.  Anchors TokenStackService debug (layer-2) error
-            variable information.
+        1.  Anchors TokenStackService debug (layer-2) information.
         2.  Indicate which TokenStackService method received a  worker's (layer-1)
             failure result.
 
@@ -66,4 +65,10 @@ class TokenStackServiceException(StackServiceException):
         msg = msg or self.MSG
         cls_name = cls_name or self.CLS_NAME
         err_code = err_code or self.ERR_CODE
-        super().__init__(msg=msg, err_code=err_code, ex=ex, cls_name=cls_name, cls_mthd=cls_mthd)
+        super().__init__(
+            ex=ex,
+            msg=msg,
+            cls_name=cls_name,
+            cls_mthd=cls_mthd,
+            err_code=err_code,
+        )

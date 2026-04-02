@@ -1,7 +1,7 @@
-# src/logic/token/database/search/context/service/operation/validation/exception/debug/null.py
+# src/logic/schema/database/search/context/service/operation/validation/exception/debug/null.py
 
 """
-Module: logic.token.database.search.context.service.operation.validation.exception.debug.null
+Module: logic.schema.database.search.context.service.operation.validation.exception.debug.null
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,68 +11,61 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# NULL_TOKEN_CONTEXT_EXCEPTION #======================#
-    "NullTokenContextException",
+    # ======================# NULL_SCHEMA_CONTEXT_EXCEPTION #======================#
+    "NullSchemaContextException",
 ]
 
 from logic.system import NullException
 
-# ======================# NULL_TOKEN_CONTEXT_EXCEPTION #======================#
-class NullTokenContextException(NullException):
+
+# ======================# NULL_SCHEMA_CONTEXT_EXCEPTION #======================#
+class NullSchemaContextException(NullException):
     """
-    Role:Exception Chain Layer 2, Exception Messaging
-    # TASK: Capture Error Variable State
+    Role:
+        -   Exception Chain Layer 2
+        -   Error Variable Identifier
+        -   Debugging Metadata provider
 
     Responsibilities:
-    1.  Produce the:
-            *   variable,
-            *   it's value,
-            *   event which fired the variable into its error state.
-        which occurred in the TokenContextValidator method identified in layer-0 of the exception chain.
+        1.  Indicate that null was received instead of a SchemaContext.
 
-    2.  A failing ValidationResult was returned because the candidate was null.
-
-    Super Class:
-        *   NullException
+    Attributes:
+        var: Optional[str]
+        val: Optional[Any]
+        msg: Optional[str]
+        ex: Optional[Exception]
+        err_code: Optional[str]
 
     Provides:
 
-
-    # INHERITED ATTRIBUTES:
-        *   See NullException class for inherited attributes.
-
-    Attributes:
-        *   msg (str)
-        *   err_code (str)
-        *   ex (Optional[Exception])
-        *   var (Optional[str])
-        *   val (Optional[Any])
-
-    # LOCAL METHODS:
-   None
-
-    # INHERITED METHODS:
-        *   See NullException class for inherited methods.
+    Super Class:
+        DebugException
     """
-    MSG = "TokenContext cannot be null."
-    ERR_CODE = "NULL_TOKEN_CONTEXT_EXCEPTION"
+    MSG = str = "SchemaContext cannot be null."
+    ERR_CODE = "NULL_SCHEMA_CONTEXT_EXCEPTION"
     
     def __init__(
             self,
-            msg: Optional[str] = None,
             var: Optional[str] = None,
             val: Optional[Any] = None,
-            ex: Optional[Exception] = None,
+            msg: Optional[str] = None,
             err_code: Optional[str] = None,
+            ex: Optional[Exception] = None,
     ):
         """
         Args:
-            msg: str
             var: Optional[str]
             val: Optional[Any]
+            msg: Optional[str]
             ex: Optional[Exception]
             err_code: Optional[str]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        super().__init__(ex=ex, msg=msg, err_code=err_code, var=var, val=val, )
+        super().__init__(
+            ex=ex,
+            msg=msg,
+            var=var,
+            val=val,
+            err_code=err_code,
+        )

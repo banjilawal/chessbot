@@ -1,7 +1,7 @@
-# src/logic/token/database/search/context/service/operation/validation/exception/debug/zero.py
+# src/logic/schema/database/search/context/service/operation/validation/exception/debug/zero.py
 
 """
-Module: logic.token.database.search.context.service.operation.validation.exception.debug.zero
+Module: logic.schema.database.search.context.service.operation.validation.exception.debug.zero
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,15 +11,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# ZERO_TOKEN_CONTEXT_FLAGS_EXCEPTION #======================#
-    "ZeroTokenContextFlagsException",
+    # ======================# ZERO_SCHEMA_CONTEXT_FLAGS_EXCEPTION #======================#
+    "ZeroSchemaContextFlagsException",
 ]
 
 from logic.system import DebugException
 
 
-# ======================# ZERO_TOKEN_CONTEXT_FLAGS_EXCEPTION #======================#
-class ZeroTokenContextFlagsException(DebugException):
+# ======================# ZERO_SCHEMA_CONTEXT_FLAGS_EXCEPTION #======================#
+class ZeroSchemaContextFlagsException(DebugException):
     """
     Role:Exception Chain Layer 2, Exception Messaging
     # TASK: Capture Error Variable State
@@ -29,9 +29,9 @@ class ZeroTokenContextFlagsException(DebugException):
             *   variable,
             *   it's value,
             *   event which fired the variable into its error state.
-        which occurred in the TokenContextValidator method identified in layer-0 of the exception chain.
+        which occurred in the SchemaContextValidator method identified in layer-0 of the exception chain.
 
-    2.  A failing ValidationResult was returned because TokenContext candidate had no query flags enabled.
+    2.  A failing ValidationResult was returned because SchemaContext candidate had no query flags enabled.
 
     Super Class:
         *   DebugException
@@ -55,8 +55,8 @@ class ZeroTokenContextFlagsException(DebugException):
     # INHERITED METHODS:
         *   See DebugException class for inherited methods.
     """
-    MSG = "No TokenContext flags are enabled."
-    ERR_CODE = "ZERO_TOKEN_CONTEXT_FLAGS_EXCEPTION"
+    MSG = "No SchemaContext flags are enabled."
+    ERR_CODE = "ZERO_SCHEMA_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(
             self,

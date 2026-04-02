@@ -1,25 +1,25 @@
-# src/logic/schema/database/search/context/service/operation/validation/exception/flag/excess.py
+# src/logic/system/search/context/mode/exception/debug/null.py
 
 """
-Module: logic.schema.validation.exception.flag.excess
+Module: logic.system.search.context.model.exception.debug.null
 Author: Banji Lawal
-Created: 2025-09-16
-version: 1.0.0
+Created: 2025-11-18
+Version: 1.0.0
 """
 
 from __future__ import annotations
 from typing import Any, Optional
 
-__all__ = [
-    # ======================# EXCESS_SCHEMA_CONTEXT_FLAGS_EXCEPTION #======================#
-    "ExcessSchemaContextFlagsException",
+_all_ = [
+    # ======================# NULL_CONTEXT_EXCEPTION #======================#
+    "NullContextException",
 ]
 
-from logic.system import DebugException
+from logic.system import NullException
 
 
-# ======================# EXCESS_SCHEMA_CONTEXT_FLAGS_EXCEPTION #======================#
-class ExcessSchemaContextFlagsException(DebugException):
+# ======================# NULL_CONTEXT_EXCEPTION #======================#
+class NullContextException(NullException):
     """
     Role:
         -   Exception Chain Layer 2
@@ -27,8 +27,7 @@ class ExcessSchemaContextFlagsException(DebugException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that the work was not completed because more than one
-            schema attribute was enabled.
+        1.  Indicate that null was received instead of a Context.
 
     Attributes:
         var: Optional[str]
@@ -42,9 +41,9 @@ class ExcessSchemaContextFlagsException(DebugException):
     Super Class:
         DebugException
     """
-    MSG = str = "Only one SchemaContex should be enabled."
-    ERR_CODE = "EXCESS_SCHEMA_CONTEXT_FLAGS_EXCEPTION"
-   
+    MSG = str = "Context cannot be null."
+    ERR_CODE = "NULL_CONTEXT_EXCEPTION"
+    
     def __init__(
             self,
             var: Optional[str] = None,

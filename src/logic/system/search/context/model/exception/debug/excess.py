@@ -1,25 +1,25 @@
-# src/logic/schema/database/search/context/service/operation/validation/exception/flag/excess.py
+# src/logic/system/search/context/mode/exception/debug/excess.py
 
 """
-Module: logic.schema.validation.exception.flag.excess
+Module: logic.system.search.context.model.exception.debug.excess
 Author: Banji Lawal
-Created: 2025-09-16
-version: 1.0.0
+Created: 2025-11-18
+Version: 1.0.0
 """
 
 from __future__ import annotations
 from typing import Any, Optional
 
-__all__ = [
-    # ======================# EXCESS_SCHEMA_CONTEXT_FLAGS_EXCEPTION #======================#
-    "ExcessSchemaContextFlagsException",
+_all_ = [
+    # ======================# EXCESS_CONTEXT_FLAGS_EXCEPTION #======================#
+    "ExcessContextFlagsException",
 ]
 
 from logic.system import DebugException
 
 
-# ======================# EXCESS_SCHEMA_CONTEXT_FLAGS_EXCEPTION #======================#
-class ExcessSchemaContextFlagsException(DebugException):
+# ======================# EXCESS_CONTEXT_FLAGS_EXCEPTION #======================#
+class ExcessContextFlagsException(DebugException):
     """
     Role:
         -   Exception Chain Layer 2
@@ -27,8 +27,8 @@ class ExcessSchemaContextFlagsException(DebugException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that the work was not completed because more than one
-            schema attribute was enabled.
+        1.  Indicate that the work was not completed because too many context
+            attributes was enabled.
 
     Attributes:
         var: Optional[str]
@@ -42,8 +42,8 @@ class ExcessSchemaContextFlagsException(DebugException):
     Super Class:
         DebugException
     """
-    MSG = str = "Only one SchemaContex should be enabled."
-    ERR_CODE = "EXCESS_SCHEMA_CONTEXT_FLAGS_EXCEPTION"
+    MSG = str = "Too many context attributes enabled."
+    ERR_CODE = "EXCESS_CONTEXT_FLAGS_EXCEPTION"
    
     def __init__(
             self,

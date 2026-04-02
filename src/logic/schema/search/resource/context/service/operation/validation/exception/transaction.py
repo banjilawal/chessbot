@@ -1,7 +1,7 @@
-# src/logic/token/database/search/context/service/operation/validation/exception/exception.py
+# src/logic/schema/database/search/context/service/operation/validation/exception/exception.py
 
 """
-Module: logic.token.validation.exception.exception
+Module: logic.schema.validation.exception.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -11,15 +11,15 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# TOKEN_CONTEXT_VALIDATION_FAILURE #======================#
-    "TokenContextValidationException",
+    # ======================# SCHEMA_CONTEXT_VALIDATION_FAILURE #======================#
+    "SchemaContextValidationException",
 ]
 
 from logic.system import ValidationException
 
 
-# ======================# TOKEN_CONTEXT_VALIDATION_FAILURE #======================#
-class TokenContextValidationException(ValidationException):
+# ======================# SCHEMA_CONTEXT_VALIDATION_FAILURE #======================#
+class SchemaContextValidationException(ValidationException):
     """
     Role:
         - Worker Method Identification
@@ -27,7 +27,7 @@ class TokenContextValidationException(ValidationException):
         - Exception Messaging
 
     Responsibilities:
-        1.  Identify which TokenContextValidator method, a test failed.
+        1.  Identify which SchemaContextValidator method, a test failed.
 
     Attributes:
         op: Optional[str]
@@ -43,8 +43,8 @@ class TokenContextValidationException(ValidationException):
     Super:
         ValidationException
     """
-    MSG = "TokenContext validation check failed."
-    ERR_CODE = "TOKEN_CONTEXT_VALIDATION_FAILURE"
+    MSG = "SchemaContext validation check failed."
+    ERR_CODE = "SCHEMA_CONTEXT_VALIDATION_FAILURE"
   
     def __init__(
             self,

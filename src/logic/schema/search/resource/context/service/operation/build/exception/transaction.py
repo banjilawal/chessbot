@@ -1,7 +1,7 @@
-# src/logic/token/database/search/context/service/operation/build/exception/transaction.py
+# src/logic/schema/database/search/context/service/operation/build/exception/transaction.py
 
 """
-Module: logic.token.database.search.context.service.operation.build.exception.transaction
+Module: logic.schema.database.search.context.service.operation.build.exception.transaction
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -12,15 +12,15 @@ from typing import Optional
 
 
 __all__ = [
-    # ======================# TOKEN_CONTEXT_BUILD_FAILURE #======================#
-    "TokenContextBuildException",
+    # ======================# SCHEMA_CONTEXT_BUILD_FAILURE #======================#
+    "SchemaContextBuildException",
 ]
 
 from logic.system import BuildException
 
 
-# ======================# TOKEN_CONTEXT_BUILD_FAILURE #======================#
-class TokenContextBuildException(BuildException):
+# ======================# SCHEMA_CONTEXT_BUILD_FAILURE #======================#
+class SchemaContextBuildException(BuildException):
     """
     Role:
         - Worker Method Identification
@@ -28,7 +28,7 @@ class TokenContextBuildException(BuildException):
         - Exception Messaging
 
     Responsibilities:
-        1.  Indicate that, an error prevented a TokenContext from being built.
+        1.  Indicate that, an error prevented a SchemaContext from being built.
         2.  Identify the method where the failure occurred.
 
     Attributes:
@@ -45,8 +45,8 @@ class TokenContextBuildException(BuildException):
     Super:
         BuildException
     """
-    ERR_CODE = "TOKEN_CONTEXT_BUILD_FAILURE"
-    MSG = "A TokenContextBuilder method failed."
+    ERR_CODE = "SCHEMA_CONTEXT_BUILD_FAILURE"
+    MSG = "A SchemaContextBuilder method failed."
     
     def __init__(
             self,

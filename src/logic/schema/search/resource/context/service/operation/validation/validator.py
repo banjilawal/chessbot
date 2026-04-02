@@ -1,7 +1,7 @@
-# src/logic/token/database/search/context/service/operation/validation/validator.py
+# src/logic/schema/database/search/context/service/operation/validation/validator.py
 
 """
-Module: logic.token.database.search.context.service.operation.validation.validator
+Module: logic.schema.database.search.context.service.operation.validation.validator
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -12,12 +12,12 @@ from typing import Any, cast
 
 
 from logic.system import LoggingLevelRouter, Validator, ValidationResult
-from logic.token import (
-    ExcessTokenContextFlagsException, NullTokenContextException, TokenContext, TokenContextIntegrityWorkers,
-    TokenContextValidationException, TokenContextValidationRouteException, ZeroTokenContextFlagsException
+from logic.schema import (
+    ExcessSchemaContextFlagsException, NullSchemaContextException, SchemaContext, SchemaContextIntegrityWorkers,
+    SchemaContextValidationException, SchemaContextValidationRouteException, ZeroSchemaContextFlagsException
 )
 
-class TokenContextValidator(Validator[TokenContext]):
+class SchemaContextValidator(Validator[SchemaContext]):
     """
     Role
         -   Transaction Worker
@@ -26,15 +26,15 @@ class TokenContextValidator(Validator[TokenContext]):
         -   Process Runner
 
     Responsibilities:
-        1.  Ensure a TokenContext instance is certified safe, reliable and consistent before use.
+        1.  Ensure a SchemaContext instance is certified safe, reliable and consistent before use.
 
     Attributes:
 
     Provides:
         -   def validate(
                     candidate: Any,
-                    workers: TokenContextIntegrityWorkers,
-            ) -> BuildResult[TokenContext]:
+                    workers: SchemaContextIntegrityWorkers,
+            ) -> BuildResult[SchemaContext]:
 
     Super Class:
         Validator
@@ -44,16 +44,16 @@ class TokenContextValidator(Validator[TokenContext]):
     def validate(
             cls,
             candidate: Any,
-            workers: TokenContextIntegrityWorkers,
-    ) -> ValidationResult[TokenContext]:
+            workers: SchemaContextIntegrityWorkers,
+    ) -> ValidationResult[SchemaContext]:
         """
-        Certify a candidate is a TokenContext that is safe to use.
+        Certify a candidate is a SchemaContext that is safe to use.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
                     -   The candidate is null.
-                    -   The candidate is not a TokenContext.
+                    -   The candidate is not a SchemaContext.
                     -   It has no attributes enabled.
                     -   It has more than one attribute enabled.
                     -   The enabled attribute fails a safety check.
@@ -61,15 +61,15 @@ class TokenContextValidator(Validator[TokenContext]):
             2.  Otherwise, send the success result.
         Args:
             candidate: Any,
-            workers: TokenContextIntegrityWorkers
+            workers: SchemaContextIntegrityWorkers
         Returns:
-            ValiationResult[TokenContext]
+            ValiationResult[SchemaContext]
         Raises:
             TypeError
-            NullTokenContextException
-            ZeroTokenContextFlagsException
-            TokenContextValidationException
-            ExcessTokenContextFlagsException
+            NullSchemaContextException
+            ZeroSchemaContextFlagsException
+            SchemaContextValidationException
+            ExcessSchemaContextFlagsException
             TeamContextValidationRouteException
         """
         method = f"{cls.__name__}.validate"
@@ -78,53 +78,53 @@ class TokenContextValidator(Validator[TokenContext]):
         if candidate is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                TokenContextValidationException(
+                SchemaContextValidationException(
                     mthd=method,
                     title=cls.__name__,
-                    op=TokenContextValidationException.OP,
-                    msg=TokenContextValidationException.MSG,
-                    err_code=TokenContextValidationException.ERR_CODE,
-                    rslt_type=TokenContextValidationException.RSLT_TYPE,
-                    ex=NullTokenContextException(
-                        msg=TokenContextValidationException.MSG,
-                        err_code=TokenContextValidationException.ERR_CODE,
+                    op=SchemaContextValidationException.OP,
+                    msg=SchemaContextValidationException.MSG,
+                    err_code=SchemaContextValidationException.ERR_CODE,
+                    rslt_type=SchemaContextValidationException.RSLT_TYPE,
+                    ex=NullSchemaContextException(
+                        msg=SchemaContextValidationException.MSG,
+                        err_code=SchemaContextValidationException.ERR_CODE,
                     )
                 )
             )
         # Handle the wrong class case.
-        if not isinstance(candidate, TokenContext):
+        if not isinstance(candidate, SchemaContext):
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                TokenContextValidationException(
+                SchemaContextValidationException(
                     mthd=method,
                     title=cls.__name__,
-                    op=TokenContextValidationException.OP,
-                    msg=TokenContextValidationException.MSG,
-                    err_code=TokenContextValidationException.ERR_CODE,
-                    rslt_type=TokenContextValidationException.RSLT_TYPE,
+                    op=SchemaContextValidationException.OP,
+                    msg=SchemaContextValidationException.MSG,
+                    err_code=SchemaContextValidationException.ERR_CODE,
+                    rslt_type=SchemaContextValidationException.RSLT_TYPE,
                     ex=TypeError(
-                        f"Expected TokenContext, got {type(candidate).__name__} instead."
+                        f"Expected SchemaContext, got {type(candidate).__name__} instead."
                     )
                 )
             )
-        # --- Cast the candidate to TokenContext for additional tests. ---#
-        context = cast(TokenContext, candidate)
+        # --- Cast the candidate to SchemaContext for additional tests. ---#
+        context = cast(SchemaContext, candidate)
         
         # Handle the case of searching with no attribute-value provided.
         flag_count = len(context.to_dict())
         if flag_count == 0:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                TokenContextValidationException(
+                SchemaContextValidationException(
                     mthd=method,
                     title=cls.__name__,
-                    op=TokenContextValidationException.OP,
-                    msg=TokenContextValidationException.MSG,
-                    err_code=TokenContextValidationException.ERR_CODE,
-                    rslt_type=TokenContextValidationException.RSLT_TYPE,
-                    ex=ZeroTokenContextFlagsException(
-                        msg=ZeroTokenContextFlagsException.MSG,
-                        err_code=ZeroTokenContextFlagsException.ERR_CODE,
+                    op=SchemaContextValidationException.OP,
+                    msg=SchemaContextValidationException.MSG,
+                    err_code=SchemaContextValidationException.ERR_CODE,
+                    rslt_type=SchemaContextValidationException.RSLT_TYPE,
+                    ex=ZeroSchemaContextFlagsException(
+                        msg=ZeroSchemaContextFlagsException.MSG,
+                        err_code=ZeroSchemaContextFlagsException.ERR_CODE,
                     )
                 )
             )
@@ -132,16 +132,16 @@ class TokenContextValidator(Validator[TokenContext]):
         if flag_count > 1:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                TokenContextValidationException(
+                SchemaContextValidationException(
                     mthd=method,
                     title=cls.__name__,
-                    op=TokenContextValidationException.OP,
-                    msg=TokenContextValidationException.MSG,
-                    err_code=TokenContextValidationException.ERR_CODE,
-                    rslt_type=TokenContextValidationException.RSLT_TYPE,
-                    ex=ExcessTokenContextFlagsException(
-                        msg=ExcessTokenContextFlagsException.MSG,
-                        err_code=ExcessTokenContextFlagsException.ERR_CODE,
+                    op=SchemaContextValidationException.OP,
+                    msg=SchemaContextValidationException.MSG,
+                    err_code=SchemaContextValidationException.ERR_CODE,
+                    rslt_type=SchemaContextValidationException.RSLT_TYPE,
+                    ex=ExcessSchemaContextFlagsException(
+                        msg=ExcessSchemaContextFlagsException.MSG,
+                        err_code=ExcessSchemaContextFlagsException.ERR_CODE,
                     )
                 )
             )
@@ -155,13 +155,13 @@ class TokenContextValidator(Validator[TokenContext]):
             if validation_result.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenContextValidationException(
+                    SchemaContextValidationException(
                         mthd=method,
                         title=cls.__name__,
-                        op=TokenContextValidationException.OP,
-                        msg=TokenContextValidationException.MSG,
-                        err_code=TokenContextValidationException.ERR_CODE,
-                        rslt_type=TokenContextValidationException.RSLT_TYPE,
+                        op=SchemaContextValidationException.OP,
+                        msg=SchemaContextValidationException.MSG,
+                        err_code=SchemaContextValidationException.ERR_CODE,
+                        rslt_type=SchemaContextValidationException.RSLT_TYPE,
                         ex=validation_result.exception
                     )
                 )
@@ -176,13 +176,13 @@ class TokenContextValidator(Validator[TokenContext]):
             if validation_result.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenContextValidationException(
+                    SchemaContextValidationException(
                         mthd=method,
                         title=cls.__name__,
-                        op=TokenContextValidationException.OP,
-                        msg=TokenContextValidationException.MSG,
-                        err_code=TokenContextValidationException.ERR_CODE,
-                        rslt_type=TokenContextValidationException.RSLT_TYPE,
+                        op=SchemaContextValidationException.OP,
+                        msg=SchemaContextValidationException.MSG,
+                        err_code=SchemaContextValidationException.ERR_CODE,
+                        rslt_type=SchemaContextValidationException.RSLT_TYPE,
                         ex=validation_result.exception
                     )
                 )
@@ -197,13 +197,13 @@ class TokenContextValidator(Validator[TokenContext]):
             if validation_result.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenContextValidationException(
+                    SchemaContextValidationException(
                         mthd=method,
                         title=cls.__name__,
-                        op=TokenContextValidationException.OP,
-                        msg=TokenContextValidationException.MSG,
-                        err_code=TokenContextValidationException.ERR_CODE,
-                        rslt_type=TokenContextValidationException.RSLT_TYPE,
+                        op=SchemaContextValidationException.OP,
+                        msg=SchemaContextValidationException.MSG,
+                        err_code=SchemaContextValidationException.ERR_CODE,
+                        rslt_type=SchemaContextValidationException.RSLT_TYPE,
                         ex=validation_result.exception
                     )
                 )
@@ -218,13 +218,13 @@ class TokenContextValidator(Validator[TokenContext]):
             if validation_result.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenContextValidationException(
+                    SchemaContextValidationException(
                         mthd=method,
                         title=cls.__name__,
-                        op=TokenContextValidationException.OP,
-                        msg=TokenContextValidationException.MSG,
-                        err_code=TokenContextValidationException.ERR_CODE,
-                        rslt_type=TokenContextValidationException.RSLT_TYPE,
+                        op=SchemaContextValidationException.OP,
+                        msg=SchemaContextValidationException.MSG,
+                        err_code=SchemaContextValidationException.ERR_CODE,
+                        rslt_type=SchemaContextValidationException.RSLT_TYPE,
                         ex=validation_result.exception
                     )
                 )
@@ -239,13 +239,13 @@ class TokenContextValidator(Validator[TokenContext]):
             if validation_result.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenContextValidationException(
+                    SchemaContextValidationException(
                         mthd=method,
                         title=cls.__name__,
-                        op=TokenContextValidationException.OP,
-                        msg=TokenContextValidationException.MSG,
-                        err_code=TokenContextValidationException.ERR_CODE,
-                        rslt_type=TokenContextValidationException.RSLT_TYPE,
+                        op=SchemaContextValidationException.OP,
+                        msg=SchemaContextValidationException.MSG,
+                        err_code=SchemaContextValidationException.ERR_CODE,
+                        rslt_type=SchemaContextValidationException.RSLT_TYPE,
                         ex=validation_result.exception
                     )
                 )
@@ -260,13 +260,13 @@ class TokenContextValidator(Validator[TokenContext]):
             if validation_result.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenContextValidationException(
+                    SchemaContextValidationException(
                         mthd=method,
                         title=cls.__name__,
-                        op=TokenContextValidationException.OP,
-                        msg=TokenContextValidationException.MSG,
-                        err_code=TokenContextValidationException.ERR_CODE,
-                        rslt_type=TokenContextValidationException.RSLT_TYPE,
+                        op=SchemaContextValidationException.OP,
+                        msg=SchemaContextValidationException.MSG,
+                        err_code=SchemaContextValidationException.ERR_CODE,
+                        rslt_type=SchemaContextValidationException.RSLT_TYPE,
                         ex=validation_result.exception
                     )
                 )
@@ -281,13 +281,13 @@ class TokenContextValidator(Validator[TokenContext]):
             if validation_result.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenContextValidationException(
+                    SchemaContextValidationException(
                         mthd=method,
                         title=cls.__name__,
-                        op=TokenContextValidationException.OP,
-                        msg=TokenContextValidationException.MSG,
-                        err_code=TokenContextValidationException.ERR_CODE,
-                        rslt_type=TokenContextValidationException.RSLT_TYPE,
+                        op=SchemaContextValidationException.OP,
+                        msg=SchemaContextValidationException.MSG,
+                        err_code=SchemaContextValidationException.ERR_CODE,
+                        rslt_type=SchemaContextValidationException.RSLT_TYPE,
                         ex=validation_result.exception
                     )
                 )
@@ -305,13 +305,13 @@ class TokenContextValidator(Validator[TokenContext]):
             if validation_result.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenContextValidationException(
+                    SchemaContextValidationException(
                         mthd=method,
                         title=cls.__name__,
-                        op=TokenContextValidationException.OP,
-                        msg=TokenContextValidationException.MSG,
-                        err_code=TokenContextValidationException.ERR_CODE,
-                        rslt_type=TokenContextValidationException.RSLT_TYPE,
+                        op=SchemaContextValidationException.OP,
+                        msg=SchemaContextValidationException.MSG,
+                        err_code=SchemaContextValidationException.ERR_CODE,
+                        rslt_type=SchemaContextValidationException.RSLT_TYPE,
                         ex=validation_result.exception
                     )
                 )
@@ -320,16 +320,16 @@ class TokenContextValidator(Validator[TokenContext]):
         
         # Handle the case that, there is no validation logic for the attribute.
         return ValidationResult.failure(
-            TokenContextValidationException(
+            SchemaContextValidationException(
                 mthd=method,
                 title=cls.__name__,
-                op=TokenContextValidationException.OP,
-                msg=TokenContextValidationException.MSG,
-                err_code=TokenContextValidationException.ERR_CODE,
-                rslt_type=TokenContextValidationException.RSLT_TYPE,
-                ex=TokenContextValidationRouteException(
-                    msg=TokenContextValidationRouteException.MSG,
-                    err_code=TokenContextValidationRouteException.ERR_CODE,
+                op=SchemaContextValidationException.OP,
+                msg=SchemaContextValidationException.MSG,
+                err_code=SchemaContextValidationException.ERR_CODE,
+                rslt_type=SchemaContextValidationException.RSLT_TYPE,
+                ex=SchemaContextValidationRouteException(
+                    msg=SchemaContextValidationRouteException.MSG,
+                    err_code=SchemaContextValidationRouteException.ERR_CODE,
                 )
             )
         )

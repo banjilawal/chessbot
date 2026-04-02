@@ -1,7 +1,7 @@
-# src/logic/token/database/search/context/service/exception/anchor.py
+# src/logic/schema/database/search/context/service/exception/anchor.py
 
 """
-Module: logic.token.database.search.context.service.exception.anchor
+Module: logic.schema.database.search.context.service.exception.anchor
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -10,34 +10,28 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Optional
 
+from __future__ import annotations
+from typing import Optional
+
 __all__ = [
-    # ======================# TOKEN_CONTEXT_SERVICE_EXCEPTION #======================#
-    "TokenContextServiceException",
+    # ======================# SCHEMA_CONTEXT_SERVICE_EXCEPTION #======================#
+    "SchemaContextServiceException",
 ]
 
 from logic.system import ServiceException
 
 
-# ======================# TOKEN_CONTEXT_SERVICE_EXCEPTION #======================#
-class TokenContextServiceException(ServiceException):
+# ======================# SCHEMA_CONTEXT_SERVICE_EXCEPTION #======================#
+class SchemaContextServiceException(ServiceException):
     """
-    Role:Coverage Target, Exception Chain Layer 0
+    Role:
+        -   Exception Chain Layer 0
+        -   Exception coverage target
 
     Responsibilities:
-    1.  Anchors TokenQueryService debug (layer-2) error state firing incident
-        reports on
-            *   the triggering variable
-            *   The trigger's value.
-    2.  Indicate which TokenQueryService method received a worker's (layer-1) failure result.
-
-    Super Class:
-        *   ServiceException
-
-    Provides:
-
-
-    # INHERITED ATTRIBUTES:
-        *   See ServiceException class for inherited attributes.
+        1.  Anchors SchemaContextService debug (layer-2) information.
+        2.  Indicate which SchemaContextService method received a  worker's (layer-1)
+            failure result.
 
     Attributes:
         msg: Optional[str]
@@ -46,15 +40,13 @@ class TokenContextServiceException(ServiceException):
         cls_mthd: Optional[str]
         err_code: Optional[str]
 
-    # LOCAL METHODS:
-    None
+    Provides:
 
-    # INHERITED METHODS:
-        *   See ServiceException class for inherited methods.
+    Super Class:
+        ServiceException
     """
-    CLS_NAME = "TokenQueryService"
-    ERR_CODE = "TOKEN_CONTEXT_SERVICE_EXCEPTION"
-    MSG = "TokenQueryService raised an exception."
+    ERR_CODE = "SCHEMA_CONTEXT_SERVICE_EXCEPTION"
+    MSG = "SchemaContextService raised an exception."
     
     def __init__(
             self,
@@ -75,4 +67,10 @@ class TokenContextServiceException(ServiceException):
         msg = msg or self.MSG
         cls_name = cls_name or self.CLS_NAME
         err_code = err_code or self.ERR_CODE
-        super().__init__(msg=msg, err_code=err_code, ex=ex, cls_name=cls_name, cls_mthd=cls_mthd)
+        super().__init__(
+            ex=ex,
+            msg=msg,
+            cls_name=cls_name,
+            cls_mthd=cls_mthd,
+            err_code=err_code,
+        )

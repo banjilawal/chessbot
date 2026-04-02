@@ -1,18 +1,18 @@
-# src/logic/token/database/search/context/service/operation/__init__.py
+# src/logic/schema/database/search/context/service/operation/__init__.py
 
 """
-Module: logic.token.database.search.context.service.operation.__init__
+Module: logic.schema.database.search.context.service.operation.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
 
-# =========== TOKEN.DATABASE.SEARCH.CONTEXT.SERVICE.OPERATION PACKAGE CONTENTS ===========#
+# =========== SCHEMA.DATABASE.SEARCH.CONTEXT.SERVICE.OPERATION PACKAGE CONTENTS ===========#
 
 # Packages
 from .build import *
 from .validation import *
 
 # Modules
-from .controller import TokenContextOpsController
-from .workers import TokenContextIntegrityWorkers
+from .controller import SchemaContextOpsController
+from .workers import SchemaContextIntegrityWorkers

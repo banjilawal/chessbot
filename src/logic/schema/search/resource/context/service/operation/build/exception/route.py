@@ -1,7 +1,7 @@
-# src/logic/token/database/search/context/service/operation/build/exception/route.py
+# src/logic/schema/database/search/context/service/operation/build/exception/route.py
 
 """
-Module: logic.token.database.search.context.service.operation.build.exception.route
+Module: logic.schema.database.search.context.service.operation.build.exception.route
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -11,14 +11,14 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# TOKEN_CONTEXT_BUILD_ROUTE_EXCEPTION #======================#
-    "TokenContextBuildRouteException",
+    # ======================# SCHEMA_CONTEXT_BUILD_ROUTE_EXCEPTION #======================#
+    "SchemaContextBuildRouteException",
 ]
 
 from logic.system import ExecutionRouteException
 
-# ======================# TOKEN_CONTEXT_BUILD_ROUTE_EXCEPTION #======================#
-class TokenContextBuildRouteException(ExecutionRouteException):
+# ======================# SCHEMA_CONTEXT_BUILD_ROUTE_EXCEPTION #======================#
+class SchemaContextBuildRouteException(ExecutionRouteException):
     """
     Role:
         -   Exception Chain Layer 2
@@ -26,7 +26,7 @@ class TokenContextBuildRouteException(ExecutionRouteException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that TokenContext build failed because attribute did not have a
+        1.  Indicate that SchemaContext build failed because attribute did not have a
             creation path.
 
     Attributes:
@@ -41,8 +41,8 @@ class TokenContextBuildRouteException(ExecutionRouteException):
     Super Class:
         DebugException
     """
-    ERR_CODE = "TOKEN_CONTEXT_BUILD_ROUTE_EXCEPTION"
-    MSG = "No build path for the TokenContext attribute."
+    ERR_CODE = "SCHEMA_CONTEXT_BUILD_ROUTE_EXCEPTION"
+    MSG = "No build path for the SchemaContext attribute."
     
     def __init__(
             self,
