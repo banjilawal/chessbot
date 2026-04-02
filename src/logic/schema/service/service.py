@@ -12,33 +12,31 @@ from typing import List, cast
 from logic.formation import Formation, FormationService, FormationKey
 from logic.persona import Persona
 from logic.rank import Bishop, King, Knight, Pawn, Queen, Rank, Rook
-from logic.schema import Schema, SchemaServiceException, SchemaKey, SchemaKeyService, SchemaValidator
-from logic.system import ComputationResult, GameColor, HashService, LoggingLevelRouter, SearchResult, id_emitter
+from logic.schema import (
+    Schema, SchemaQueryOpsController, SchemaServiceException, SchemaKey, SchemaKeyService,
+    SchemaValidator
+)
+from logic.system import (
+    ComputationResult, GameColor, HashService, IdFactory, LoggingLevelRouter, SearchResult,
+    id_emitter
+)
 
 
 class SchemaService(HashService[Schema]):
     SERVICE_NAME = "SchemaService"
-    _schema: Schema
+    _ops_controller: SchemaQueryOpsController
+    
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            id: int = id_emitter.service_id,
-            validator: SchemaValidator = SchemaValidator(),
-            super_key_service: SchemaKeyService = SchemaKeyService(),
-            _schema: Schema = Schema(),
+            id: int = IdFactory.next_id(class_name="SchemaService"),
+            ops_controller: SchemaQueryOpsController = SchemaQueryOpsController(),
     ):
         """
-        # ACTION:
-            Constructor
-        # PARAMETERS:
-            *   id (int)
-            *   schema (str)
-            *   validation (SchemaValidator)
-            *   super_key_service (SchemaKeyService)
-        # RETURNS:
-            None
-        Raises:
-            None
+        Args:
+            id: int
+            name: str
+            ops_controller: SchemaQueryOpsController
         """
         super().__init__(id=id, name=name, validator=validator, super_key_service=super_key_service)
         
