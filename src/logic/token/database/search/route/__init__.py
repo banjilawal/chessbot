@@ -11,7 +11,6 @@ version: 1.0.0
 
 # Packages
 from .exception import *
-from .validation import *
 
 # Modules
 from .router import TokenSearchRouter

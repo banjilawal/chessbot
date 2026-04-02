@@ -32,7 +32,7 @@ class TokenContext(Context[Token]):
         team: Optional[Team]
         rank: Optional[Rank]
         ransom: Optional[int]
-        coord: Optional[Coord]
+        current_position:Optional[Coord]
         designation: Optional[str]
         color: Optional[GameColor]
         opening_square_name: Optional[str]
@@ -46,9 +46,9 @@ class TokenContext(Context[Token]):
     _rank: Optional[Rank]
     _team: Optional[Team]
     _ransom: Optional[int]
-    _coord: Optional[Coord]
     _color: Optional[GameColor]
     _designation: Optional[str]
+    _current_position:Optional[Coord]
     _opening_square_name: Optional[str]
     
     @LoggingLevelRouter.monitor
@@ -58,9 +58,9 @@ class TokenContext(Context[Token]):
             team: Optional[Team] = None,
             rank: Optional[Rank] = None,
             ransom: Optional[int] = None,
-            coord: Optional[Coord] = None,
             designation: Optional[str] = None,
             color: Optional[GameColor] = None,
+            current_position: Optional[Coord] = None,
             opening_square_name: Optional[str] = None
     ):
         """
@@ -69,7 +69,7 @@ class TokenContext(Context[Token]):
             team: Optional[Team]
             rank: Optional[Rank]
             ransom: Optional[int]
-            coord: Optional[Coord]
+            current_position:Optional[Coord]
             designation: Optional[str]
             color: Optional[GameColor]
             opening_square_name: Optional[str]
@@ -77,10 +77,10 @@ class TokenContext(Context[Token]):
         super().__init__(id=id, name=None)
         self._rank = rank
         self._team = team
-        self._coord = coord
         self._color = color
         self._ransom = ransom
         self._designation = designation
+        self._current_position = current_position
         self._opening_square_name = opening_square_name
 
     @property
@@ -95,9 +95,7 @@ class TokenContext(Context[Token]):
     def ransom(self) -> Optional[int]:
         return self._ransom
     
-    @property
-    def coord(self) -> Optional[Coord]:
-        return self._coord
+
     
     @property
     def color(self) -> Optional[GameColor]:
@@ -106,6 +104,10 @@ class TokenContext(Context[Token]):
     @property
     def designation(self) -> Optional[str]:
         return self._designation
+    
+    @property
+    def current_position(self) -> Optional[Coord]:
+        return self._current_position
     
     @property
     def opening_square_name(self) -> Optional[str]:
@@ -117,8 +119,8 @@ class TokenContext(Context[Token]):
             "team": self._team,
             "rank": self._rank,
             "color": self._color,
-            "coord": self._coord,
             "ransom": self._ransom,
             "designation": self.designation,
+            "current_position": self._current_position,
             "opening_square_name_name": self._opening_square_name
         }

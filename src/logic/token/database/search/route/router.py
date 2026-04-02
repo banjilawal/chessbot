@@ -11,9 +11,9 @@ from __future__ import annotations
 from typing import List
 
 from logic.rank import Rank
-from logic.system import GameColor, LoggingLevelRouter, SearchResult, SearchRouter
 from logic.team import Team
-from logic.token import MissingTokenSearchRouteException, Token, TokenQuery, TokenQueryValidator
+from logic.system import GameColor, LoggingLevelRouter, SearchResult, SearchRouter
+from logic.token import MissingTokenSearchRouteException, Token, TokenQuery, TokenQueryValidator, TokenSearchException
 
 
 class TokenSearchRouter(SearchRouter[Token]):
