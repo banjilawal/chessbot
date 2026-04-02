@@ -8,14 +8,11 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import List
 
-
-from logic.system import BuildResult, Builder, LoggingLevelRouter, BuildResult
+from logic.system import Builder, LoggingLevelRouter, BuildResult
 from logic.schema import (
-    Schema, SchemaContext, SchemaContextValidator, SchemaQuery, SchemaContextValidator, SchemaQueryBuildException,
-
-    SchemaQuery, SchemaValidator,
+    Schema, SchemaContext, SchemaContextValidator, SchemaQuery, SchemaQueryBuildException,
+    SchemaValidator
 )
 
 
@@ -29,7 +26,7 @@ class SchemaQueryBuilder(Builder[SchemaQuery]):
 
     Responsibilities:
         1.  SchemaQuery creation process owner.
-        2.  Ensure SchemaQuerry build resources meet satisfy contracts.
+        2.  Ensure SchemaQuery build resources meet satisfy contracts.
         3.  Guarantee new instances comply with business logic at birth.
 
     Attributes:
@@ -87,6 +84,7 @@ class SchemaQueryBuilder(Builder[SchemaQuery]):
                     op=SchemaQueryBuildException.OP,
                     msg=SchemaQueryBuildException.MSG,
                     err_code=SchemaQueryBuildException.ERR_CODE,
+                    rslt_type=SchemaQueryBuildException.RSLT_TYPE,
                     ex=schema_validation_result.exception,
                 )
             )
@@ -103,6 +101,7 @@ class SchemaQueryBuilder(Builder[SchemaQuery]):
                     op=SchemaQueryBuildException.OP,
                     msg=SchemaQueryBuildException.MSG,
                     err_code=SchemaQueryBuildException.ERR_CODE,
+                    rslt_type=SchemaQueryBuildException.RSLT_TYPE,
                     ex=context_validation_result.exception,
                 )
             )
