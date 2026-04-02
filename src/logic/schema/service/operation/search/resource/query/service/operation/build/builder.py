@@ -9,6 +9,8 @@ version: 1.0.0
 
 from __future__ import annotations
 
+from typing import Type
+
 from logic.system import Builder, LoggingLevelRouter, BuildResult
 from logic.schema import (
     Schema, SchemaContext, SchemaQuery, SchemaQueryBuildException, SchemaQueryIntegrityWorkers
@@ -45,8 +47,8 @@ class SchemaQueryBuilder(Builder[SchemaQuery]):
     @LoggingLevelRouter.monitor
     def build(
             cls,
-            schema: Schema,
             context: SchemaContext,
+            schema: Schema = Type[Schema],
             workers: SchemaQueryIntegrityWorkers = SchemaQueryIntegrityWorkers(),
     ) -> BuildResult[SchemaQuery]:
         """

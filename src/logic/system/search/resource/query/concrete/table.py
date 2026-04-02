@@ -10,9 +10,9 @@ Version: 1.0.0
 from __future__ import annotations
 
 from enum import Enum
-from typing import Generic, TypeVar
+from typing import Generic, Type, TypeVar
 
-from logic.system import Query, Context
+from logic.system import Query
 
 E = TypeVar("E", bound=Enum)
 
@@ -29,7 +29,7 @@ class CatalofQuery(Query, Generic[E]):
         self._catalog = catalog
     
     @property
-    def catalog(self) -> E:
+    def catalog(self) -> Type[E]:
         return self._catalog
     
     @property

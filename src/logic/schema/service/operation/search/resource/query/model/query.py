@@ -9,6 +9,8 @@ version: 1.0.0
 
 from __future__ import annotations
 
+from typing import Type
+
 from logic.schema import Schema
 from logic.system import CatalofQuery
 from logic.schema.service.operation.search import SchemaContext
@@ -16,7 +18,11 @@ from logic.schema.service.operation.search import SchemaContext
 
 class SchemaQuery(CatalofQuery[Schema]):
     
-    def __init__(self, catalog: Schema, context: SchemaContext):
+    def __init__(
+            self,
+            context: SchemaContext,
+            catalog: Schema = Type[Schema],
+    ):
         """
         Args:
             catalog: Schema
@@ -30,4 +36,4 @@ class SchemaQuery(CatalofQuery[Schema]):
     
     @property
     def catalog(self) -> Schema:
-        return self.catalog
+        return Schema(self.catalog)

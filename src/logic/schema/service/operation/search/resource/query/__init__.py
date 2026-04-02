@@ -10,6 +10,7 @@ version: 1.0.0
 # =========== SCHEMA.DATABASE.SEARCH.QUERY PACKAGE CONTENTS ===========#
 
 # Packages
+from .model import *
 from .service import *
 
 # Modules

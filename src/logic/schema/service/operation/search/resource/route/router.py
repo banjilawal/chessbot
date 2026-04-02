@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import List
+from typing import List, Type
 
 from logic.system import GameColor, LoggingLevelRouter, SearchResult, SearchRouter
 from logic.schema import (
@@ -114,7 +114,7 @@ class SchemaSearchRouter(SearchRouter[Schema]):
     def _find_by_name(
             cls,
             name: str,
-            catalog: Schema,
+            catalog: Type[Schema],
     ) -> SearchResult[List[Schema]]:
         """
         Search the schema by a schema id
@@ -127,7 +127,7 @@ class SchemaSearchRouter(SearchRouter[Schema]):
             SearchResult[List[Schema]]
         Raises:
         """
-        matches = [entry for entry in Schema if entry.name.upper() == name.upper()]
+        matches = [entry for entry in catalog if entry.name.upper() == name.upper()]
         # Handle the nothing found case.
         if len(matches) == 0:
             return SearchResult.empty()
@@ -138,7 +138,7 @@ class SchemaSearchRouter(SearchRouter[Schema]):
     @LoggingLevelRouter.monitor
     def _find_by_color(
             cls,
-            catalog: Schema,
+            catalog: Type[Schema],
             color: GameColor,
     ) -> SearchResult[List[Schema]]:
         """
@@ -151,7 +151,7 @@ class SchemaSearchRouter(SearchRouter[Schema]):
             SearchResult[List[Schema]]
         Raises
         """
-        matches = [entry for entry in Schema if entry.color == color]
+        matches = [entry for entry in catalog if entry.color == color]
         # Handle the nothing found case.
         if len(matches) == 0:
             return SearchResult.empty()

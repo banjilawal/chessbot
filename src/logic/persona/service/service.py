@@ -7,7 +7,7 @@ Created: 2025-09-08
 version: 1.0.0
 """
 import sys
-from typing import Dict, List, Optional, cast
+from typing import Dict, List, Optional, Type, cast
 
 
 from logic.rank import Bishop, King, Knight, Pawn, Queen, Rank, RankService, Rook
@@ -48,7 +48,7 @@ class PersonaService(HashService[Persona]):
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            persona: Persona = Persona(),
+            persona: Persona = Persona,
             id: int = id_emitter.service_id,
             validator: PersonaValidator = PersonaValidator(),
             super_key_service: PersonaKeyService = PersonaKeyService(),
@@ -67,7 +67,7 @@ class PersonaService(HashService[Persona]):
             None
         """
         super().__init__(id=id, name=name, validator=validator, super_key_service=super_key_service)
-        self._persona = persona
+        self._persona = Type[Persona]
         
     @property
     def persona(self) -> Persona:
