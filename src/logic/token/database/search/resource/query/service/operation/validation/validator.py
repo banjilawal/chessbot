@@ -1,7 +1,7 @@
-# src/logic/token/database/search/context/service/operation/validation/validator.py
+# src/logic/token/database/search/query/service/operation/validation/validator.py
 
 """
-Module: logic.token.database.search.context.service.operation.validation.validator
+Module: logic.token.database.search.query.service.operation.validation.validator
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

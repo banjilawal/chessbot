@@ -1,7 +1,7 @@
-# src/logic/token/database/search/context/service/operation/workers.py
+# src/logic/token/database/search/query/service/operation/workers.py
 
 """
-Module: logic.token.database.search.context.service.operation.workers
+Module: logic.token.database.search.query.service.operation.workers
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

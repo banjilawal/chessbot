@@ -1,24 +1,24 @@
-# src/logic/token/database/search/context/service/operation/validation/exception/debug/null.py
+# src/logic/token/database/search/query/service/operation/validation/exception/null.py
 
 """
-Module: logic.token.database.search.context.service.operation.validation.exception.debug.null
+Module: logic.token.database.search.query.service.operation.validation.exception.null
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-10-03
 version: 1.0.0
 """
 
-__all__ = [
-    # ======================# TOKEN_QUERY_NULL_EXCEPTION #======================#
-    "TokenQueryNullException",
-]
-
+from __future__ import annotations
 from typing import Any, Optional
+
+__all__ = [
+    # ======================# TOKEN_STACK_NULL_EXCEPTION #======================#
+    "TokenStackNullException",
+]
 
 from logic.system import NullException
 
-
-# ======================# TOKEN_QUERY_NULL_EXCEPTION #======================#
-class TokenQueryNullException(NullException):
+# ======================# TOKEN_STACK_NULL_EXCEPTION #======================#
+class TokenStackNullException(NullException):
     """
     Role:
         -   Exception Chain Layer 2
@@ -40,8 +40,9 @@ class TokenQueryNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = "TokenQuery cannot be null."
-    ERR_CODE = "TOKEN_QUERY_NULL_EXCEPTION"
+    MSG = "TokenStack cannot be null."
+    ERR_CODE = "TOKEN_STACK_NULL_EXCEPTION"
+
     
     def __init__(
             self,
@@ -68,3 +69,11 @@ class TokenQueryNullException(NullException):
             val=val,
             err_code=err_code,
         )
+
+
+    
+
+
+
+
+

@@ -11,24 +11,24 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# TOKEN_CONTEXT_SERVICE_EXCEPTION #======================#
-    "TokenQueryServiceException",
+    # ======================# TOKEN_SEARCH_SERVICE_FAILURE #======================#
+    "TokenSearchServiceException",
 ]
 
 from logic.system import ServiceException
 
-# ======================# TOKEN_CONTEXT_SERVICE_EXCEPTION #======================#
-class TokenQueryServiceException(ServiceException):
+# ======================# TOKEN_SEARCH_SERVICE_FAILURE #======================#
+class TokenSearchServiceException(ServiceException):
     """
     Role:
         -   Exception Chain Layer 0
         -   Exception coverage target
 
     Responsibilities:
-        1.  Anchors TokenQueryService debug (layer-2) error variable
-            information.
-        2.  Indicate which TokenQueryService method received a worker's (layer-1)
-            failure result.
+        1.  Anchors TokenSearchService debug (layer-2) information.
+        2.  Indicate which TokenSearchService method received a worker's
+            (layer-1) failure result.
+
 
     Attributes:
         msg: Optional[str]
@@ -42,9 +42,9 @@ class TokenQueryServiceException(ServiceException):
     Super Class:
         ServiceException
     """
-    CLS_NAME = "TokenQueryService"
-    ERR_CODE = "TOKEN_CONTEXT_SERVICE_EXCEPTION"
-    MSG = "TokenQueryService raised an exception."
+    CLS_NAME = "TokenSearchService"
+    ERR_CODE = "TOKEN_SEARCH_SERVICE_FAILURE"
+    MSG = "TokenSearchService raised an exception."
     
     def __init__(
             self,

@@ -1,7 +1,7 @@
-# src/logic/token/database/search/context/service/operation/build/exception/transaction.py
+# src/logic/token/database/search/query/service/operation/build/exception/transaction.py
 
 """
-Module: logic.token.database.search.context.service.operation.build.exception.transaction
+Module: logic.token.database.search.query.service.operation.build.exception.transaction
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

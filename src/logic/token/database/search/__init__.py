@@ -10,10 +10,8 @@ version: 1.0.0
 # =========== TOKEN.DATABASE.SEARCH PACKAGE CONTENTS ===========#
 
 # Packages
-from .context import *
 from .service import *
-from .route import *
-from .query import *
+from .resource import *
 
 # Modules
 None

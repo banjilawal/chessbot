@@ -10,10 +10,12 @@ version: 1.0.0
 from __future__ import annotations
 from typing import List
 
-from logic.system import QueryService, IdFactory, LoggingLevelRouter, SearchMicroservice, SearchResult
+from logic.system import LoggingLevelRouter, SearchMicroservice, SearchResult
 from logic.token import (
-    Token, TokenContext, TokenContextService, TokenQuery, TokenSearchServiceException, TokenSearchRouter
+    Token, TokenContextService, TokenQuery, TokenQueryService, TokenSearchResourceHost,
+    TokenSearchRouter, TokenSearchServiceException
 )
+
 
 class TokenSearchService(SearchMicroservice[Token]):
     """
@@ -28,44 +30,42 @@ class TokenSearchService(SearchMicroservice[Token]):
     Args:
         id: int
         name: str
-        router: SearchRouter[Token]
-        context_service: IntegrityMicroservice[Context[Token]]
+        resource_host: TokenSearchResourceHost
 
     Provides:
-        -  query(data_set: List[Token], context: TokenContext) -> SearchResult[List[Token]]
+        -  def search(query: TokenQuery) -> SearchResult[List[Token]]
 
     Super Class:
-        QueryService
+        SearchMicroservice
     """
     SERVICE_NAME = "TokenSearchService"
-    _router: TokenSearchRouter
-    _context_service: TokenContextService
+    _resource_host: TokenSearchResourceHost
 
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            router: TokenSearchRouter = TokenSearchRouter(),
-            id: int = IdFactory.next_id(class_name="TokenSearchService"),
-            context_service: TokenContextService =TokenContextService(),
+            resource_host: TokenSearchResourceHost = TokenSearchResourceHost(),
     ):
         """
         Args:
             id: int
             name: str
-            router: TokenSearchRouter
-            context_service: TokenContextService
+            resource_host: TokenSearchResourceHost
         """
         super().__init__(id=id, name=name)
-        self._router = router
-        self._context_service = context_service
+        self._resource_host = resource_host
     
     @property
     def router(self) ->TokenSearchRouter:
-        return self._router
+        return self._resource_host.search_router
+    
+    @property
+    def query_service(self) -> TokenQueryService:
+        return self._resource_host.query_service
     
     @property
     def context_service(self) -> TokenContextService:
-        return self._context_service
+        return self._resource_host.context_service
     
     @LoggingLevelRouter.monitor
     def search(self, query: TokenQuery) -> SearchResult[List[Token]]:
@@ -74,8 +74,7 @@ class TokenSearchService(SearchMicroservice[Token]):
             If the request is not completed send the exception in the SearchResult.
             Otherwise, send the success result.
         Args:
-            data_set: List[Token]
-            context: TokenContext
+            query: TokenQuery
         Returns:
             SearchResult[List[Token]]
         Raises:
@@ -84,8 +83,10 @@ class TokenSearchService(SearchMicroservice[Token]):
         method = f"{self.__class__.__name__}.query"
         
         # --- Forward the request to the search_router. ---#
-        search_result = self._router.route(query=query)
-        
+        search_result = self._resource_host.search_router.route(
+            query=query,
+            query_validator=self._resource_host.query_service.validator
+        )
         # Handle the case that, the request was not completed.
         if search_result.is_failure:
             # Return the exception chain on failure.

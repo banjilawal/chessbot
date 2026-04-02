@@ -14,4 +14,4 @@ None
 
 # Modules
 from .exist import TokenNotFoundException
-from .anchor import TokenQueryServiceException
+from .anchor import TokenSearchServiceException

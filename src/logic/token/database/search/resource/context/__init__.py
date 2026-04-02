@@ -10,9 +10,8 @@ version: 1.0.0
 # =========== TOKEN.DATABASE.SEARCH PACKAGE CONTENTS ===========#
 
 # Packages
-from logic.token.database.search.context.service.operation.build import *
-from logic.token.database.search.context.service.operation.validation import *
+from logic.token.database.search.operation.context.service.operation.build import *
+from logic.token.database.search.operation.context.service.operation.validation import *
 from .service import *
 
 # Modules
-from logic.token.database.search.context.model.context import TokenContext
