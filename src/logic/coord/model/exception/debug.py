@@ -26,7 +26,7 @@ class CoordDebugException(DebugException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Carry metadata about the variable that fired a Coord instance into its  error state.
+        1.  Record the condition that fired a variable's error state. a Coord instance into its  error state.
         2.  Parent of all debugging metadata providers who must report to Coord instances.
         
     Attributes:

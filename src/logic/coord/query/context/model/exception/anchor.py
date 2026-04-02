@@ -26,7 +26,7 @@ class CoordContextException(AnchorException):
         -   Exception coverage target
 
     Responsibilities:
-        1.  Anchoring target for CoordContext debug (layer-2) error variable information.
+        1.  Anchors CoordContext debug (layer-2) information.
         2.  Indicate which CoordContext method received a worker's (layer-1) failure result.
 
     Attributes:

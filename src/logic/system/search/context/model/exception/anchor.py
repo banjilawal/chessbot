@@ -26,7 +26,7 @@ class ContextException(AnchorException):
         -   Exception coverage target
 
     Responsibilities:
-        1.  Anchoring target for Context debug (layer-2) error variable information.
+        1.  Anchors Context debug (layer-2) information.
         2.  Indicate which Context method received a worker's (layer-1) failure result.
 
     Attributes:

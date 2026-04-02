@@ -14,7 +14,6 @@ __all__ = [
     # ======================# TOKEN_VALIDATION_FAILURE #======================#
     "TokenValidationException",
 ]
-
 from logic.system import ValidationException
 
 # ======================# TOKEN_VALIDATION_FAILURE #======================#

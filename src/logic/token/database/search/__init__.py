@@ -13,7 +13,7 @@ version: 1.0.0
 from .context import *
 from .route import *
 from .service import *
-from .exception import *
+from logic.token.database.search.context.model.exception import *
 
 # Modules
 None

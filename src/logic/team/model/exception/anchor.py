@@ -26,7 +26,7 @@ class TeamException(AnchorException):
         -   Exception coverage target
 
     Responsibilities:
-        1.  Anchoring target for Team debug (layer-2) error variable information.
+        1.  Anchors Team debug (layer-2) information.
         2.  Indicate which Team method received a worker's (layer-1) failure result.
 
     Attributes:

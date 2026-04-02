@@ -24,7 +24,7 @@ class TokenCommandException(CommandException):
         -   Exception coverage target
 
     Responsibilities:
-        1.  Anchoring target for TokenCommand debug (layer-2) error variable information.
+        1.  Anchors TokenCommand debug (layer-2) information.
         2.  Indicate which TokenCommand method received a worker's (layer-1) failure result.
 
     Attributes:

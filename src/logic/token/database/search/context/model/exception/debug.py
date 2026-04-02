@@ -1,9 +1,9 @@
-# src/logic/token/database/search/exception/debug.py
+# src/logic/token/database/search/context/model/exception/debug/__init__.py
 
 """
-Module: logic.token.database.search.exception.debug
+Module: logic.token.database.search.context.model.exception.debug.__init__
 Author: Banji Lawal
-Created: 2025-10-01
+Created: 2025-10-03
 version: 1.0.0
 """
 
@@ -26,8 +26,7 @@ class TokenContextDebugException(DebugException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Carry metadata about the variable that fired a TokenContext instance into its  error state.
-        2.  Parent of all debugging metadata providers who must report to TokenContext instances.
+        1.  Record the condition that fired a TokenContext variable's error state.
 
     Attributes:
         var: Optional[str]
@@ -62,5 +61,12 @@ class TokenContextDebugException(DebugException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)
+        super().__init__(
+            ex=ex,
+            msg=msg,
+            var=var,
+            val=val,
+            err_code=err_code,
+        )
+
 

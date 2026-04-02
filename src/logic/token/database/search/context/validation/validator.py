@@ -1,7 +1,7 @@
-# src/logic/token/validation/validation.py
+# src/logic/token/database/search/context/service/operation/validation/validator.py
 
 """
-Module: logic.token.validation
+Module: logic.token.database.search.context.service.operation.validation.validator
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -25,20 +25,25 @@ from logic.token import (
 
 class TokenContextValidator(Validator[TokenContext]):
     """
-     Role:Validation, Data Integrity Guarantor, Security.
+    Role
+        -   Transaction Worker
+        -   Integrity Maintenance
+        -   Consistency Assurance
+        -   Process Runner
 
     Responsibilities:
-    1.  Ensure a TokenContext instance is certified safe, reliable and consistent before use.
-    2.  If verification fails indicate the reason in an exception returned to the caller.
+        1.  Ensure a TokenContext instance is certified safe, reliable and consistent before use.
 
-    Super Class:
-        *   Validator
+    Attributes:
 
     Provides:
+        -   def validate(
+                    candidate: Any,
+                    workers: TokenContextIntegrityWorkers,
+            ) -> BuildResult[TokenContext]:
 
-
-    # INHERITED ATTRIBUTES:
-    None
+    Super Class:
+        Validator
     """
     @classmethod
     @LoggingLevelRouter.monitor

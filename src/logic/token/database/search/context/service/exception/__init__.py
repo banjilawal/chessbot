@@ -1,4 +1,4 @@
-# src/logic/token/database/search/query/service/exception/__init__.py
+# src/logic/token/database/search/context/service/exception/__init__.py
 
 """
 Module: logic.token.database.search.context.service.exception.__init__

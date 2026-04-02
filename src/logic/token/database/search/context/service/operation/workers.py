@@ -1,7 +1,7 @@
-# src/logic/token/database/search/context/service/operation/build/workers.py
+# src/logic/token/database/search/context/service/operation/workers.py
 
 """
-Module: logic.token.database.search.context.service.operation.build.workers
+Module: logic.token.database.search.context.service.operation.workers
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -16,14 +16,13 @@ from logic.coord import CoordService
 from logic.square import SquareService
 from logic.system import GameColorValidator, IdentityService, NumberValidator
 
-class TokenContextBuildWorkers:
+class TokenContextIntegrityWorkers:
     """
     Role:
         -   Container
 
     Responsibilities:
-        1.  Reduces TokenContext build parameters by putting the necessary workers and
-            services in a static container.
+        1.  Reduces the number params in TokenContext Builder and Validator entry points.
 
     Attributes:
         team_service: TeamService

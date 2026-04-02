@@ -1,13 +1,13 @@
-# src/logic/token/qery/query/validation/__init__.py
+# src/logic/token/database/search/context/service/operation/validation/__init__.py
 
 """
-Module: logic.token.database.search.context.validation.__init__
+Module: logic.token.database.search.context.service.operation.validation.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
 
-# =========== TOKEN.DATABASE.SEARCH.VALIDATOR PACKAGE CONTENTS ===========#
+# =========== TOKEN.DATABASE.SEARCH.SERVICE.OPERATION.VALIDATION PACKAGE CONTENTS ===========#
 
 # Packages
 from .exception import *

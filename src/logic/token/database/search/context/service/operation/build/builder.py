@@ -38,7 +38,7 @@ class TokenContextBuilder(Builder[TokenContext]):
     
     Provides:
         -   def build(
-                    workers: TokenContextBuildWorkers,
+                    workers: TokenContextIntegrityWorkers,
                     id: Optional[int] = None,
                     team: Optional[Team] = None,
                     rank: Optional[Rank] = None,
@@ -86,7 +86,7 @@ class TokenContextBuilder(Builder[TokenContext]):
             color: Optional[GameColor]
             designation: Optional[str]
             opening_square_name: Optional[str]
-            workers: TokenContextBuildWorkers
+            workers: TokenContextIntegrityWorkers
         Returns:
             BuildResult[TokenContext]
         Raises:

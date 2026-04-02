@@ -25,7 +25,7 @@ class TokenQueryServiceException(ServiceException):
         -   Exception coverage target
 
     Responsibilities:
-        1.  Anchoring target for TokenQueryService debug (layer-2) error variable
+        1.  Anchors TokenQueryService debug (layer-2) error variable
             information.
         2.  Indicate which TokenQueryService method received a worker's (layer-1)
             failure result.

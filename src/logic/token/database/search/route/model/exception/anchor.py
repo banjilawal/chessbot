@@ -24,7 +24,7 @@ class TokenSearchRouterException(AnchorException):
         -   Exception coverage target
 
     Responsibilities:
-        1.  Anchoring target for TokenSearchRouter debug (layer-2) error variable
+        1.  Anchors TokenSearchRouter debug (layer-2) error variable
             information.
         2.  Indicate which TTokenSearchRouter method received a worker's (layer-1)
             failure result.

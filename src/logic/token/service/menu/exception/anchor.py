@@ -26,7 +26,7 @@ class TokenServiceMenuException(AnchorException):
         -   Exception coverage target
 
     Responsibilities:
-        1.  Anchoring target for TokenServiceMenu debug (layer-2) error variable information.
+        1.  Anchors TokenServiceMenu debug (layer-2) information.
         2.  Indicate which TokenServiceMenu method received a worker's (layer-1) failure result.
 
     Attributes:

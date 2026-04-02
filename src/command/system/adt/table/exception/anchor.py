@@ -25,7 +25,7 @@ class CommandArgsException(AnchorException):
         -   Exception coverage target
 
     Responsibilities:
-        1.  Anchoring target for CommandArgs debug (layer-2) error variable information.
+        1.  Anchors CommandArgs debug (layer-2) information.
         2.  Indicate which CommandArgs method received a worker's (layer-1) failure result.
 
     Attributes:

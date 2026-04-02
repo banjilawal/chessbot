@@ -20,21 +20,25 @@ from logic.token.service.operation.validation.exception.debug.null import NullTo
 
 class TokenValidator(Validator[Token]):
     """
-     Role:Validation, Data Integrity Guarantor, Security.
+    Role
+        -   Transaction Worker
+        -   Integrity Maintenance
+        -   Consistency Assurance
+        -   Process Runner
 
     Responsibilities:
-    1.  Ensure a Token instance is certified safe, reliable and consistent before use.
-    2.  If verification fails indicate the reason in an exception, returned to the caller.
+        1.  Ensure a Token instance is certified safe, reliable and consistent before use.
+
+    Attributes:
+
+    Provides:
+        -   def validate(
+                    candidate: Any,
+                    workers: TokenIntegrityWorkers
+            ) -> ValidationResult[Token]:
 
     Super Class:
-        *   Validator
-
-    # PROVIDES:
-        * TokenValidator
-
-
-    # INHERITED ATTRIBUTES:
-    None
+        Validator
     """
     
     @classmethod

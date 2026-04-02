@@ -27,7 +27,7 @@ class TokenServiceMenuDebuException(DebugException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Carry metadata about the variable that fired a TokenServiceMenu instance into its  error state.
+        1.  Record the condition that fired a variable's error state. a TokenServiceMenu instance into its  error state.
         2.  Parent of all debugging metadata providers who must report to TokenServiceMenu instances.
         
     Attributes:

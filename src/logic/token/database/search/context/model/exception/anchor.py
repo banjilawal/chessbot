@@ -1,9 +1,9 @@
-# src/logic/token/database/search/exception/anchor.py
+# src/logic/token/database/search/context/model/exception/anchor.py
 
 """
-Module: logic.token.database.search.exception.anchor
+Module: logic.token.database.search.context.model.exception.anchor
 Author: Banji Lawal
-Created: 2025-10-01
+Created: 2025-10-03
 version: 1.0.0
 """
 
@@ -26,8 +26,7 @@ class TokenContextException(AnchorException):
         -   Exception coverage target
 
     Responsibilities:
-        1.  Anchoring target for TokenContext debug (layer-2) error variable
-            information.
+        1.  Anchors TokenContext debug (layer-2) information.
         2.  Indicate which TokenContext method received a worker's (layer-1)
             failure result.
 
@@ -43,7 +42,6 @@ class TokenContextException(AnchorException):
     Super Class:
         AnchorException
     """
-    CLS_NAME = "TokenContext"
     ERR_CODE = "TOKEN_CONTEXT_EXCEPTION"
     MSG = "TokenContext raised an exception."
     

@@ -1,7 +1,7 @@
-# src/logic/token/qery/query/validation/exception/__init__.py
+# src/logic/token/database/search/context/service/operation/validation/exception/__init__.py
 
 """
-Module: logic.token.database.search.context.validation.exception.__init__
+Module: logic.token.database.search.context.service.operation.validation.exception.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

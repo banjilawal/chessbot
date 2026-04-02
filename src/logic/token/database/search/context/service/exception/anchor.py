@@ -1,4 +1,4 @@
-# src/logic/token/database/search/query/service/exception/anchor.py
+# src/logic/token/database/search/context/service/exception/anchor.py
 
 """
 Module: logic.token.database.search.context.service.exception.anchor
@@ -24,7 +24,7 @@ class TokenContextServiceException(ServiceException):
     Role:Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
-    1.  Anchoring target for TokenQueryService debug (layer-2) error state firing incident
+    1.  Anchors TokenQueryService debug (layer-2) error state firing incident
         reports on
             *   the triggering variable
             *   The trigger's value.

@@ -26,8 +26,7 @@ class TokenDebugException(DebugException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Carry metadata about the variable that fired a Token instance into its  error state.
-        2.  Parent of all debugging metadata providers who must report to Token instances.
+        1.  Record the condition that fired a Token variable's error state.
         
     Attributes:
         var: Optional[str]

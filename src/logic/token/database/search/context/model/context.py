@@ -1,15 +1,15 @@
-# src/logic/token/map.py
+# src/logic/token/database/search/context/model/context.py
 
 """
-Module: logic.token.map
+Module: logic.token.database.search.context.model.context
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
 
+from __future__ import annotations
 from typing import Optional
 
-from logic.square import Square
 from logic.team import Team
 from logic.rank import Rank
 from logic.token import Token
@@ -19,20 +19,29 @@ from logic.system import Context, GameColor, LoggingLevelRouter
 
 class TokenContext(Context[Token]):
     """
-    Role:SearchRouter option filter
+    Role:
+        -   Selection
+        -   Routing mask
+        -   Data-Holder
 
     Responsibilities:
-    Provides options for what type of key-value pair TokenSearchRouter should use to find matches.
+        1.  Supply a Token attribute-value pair for a worker's execution path routing.
 
-    # PROVIDES:
-    TokenContext.
+    Attributes:
+        id: Optional[int]
+        team: Optional[Team]
+        rank: Optional[Rank]
+        ransom: Optional[int]
+        coord: Optional[Coord]
+        designation: Optional[str]
+        color: Optional[GameColor]
+        opening_square_name: Optional[str]
 
-    # ATTRIBUTES:
-        *   team (Team)
-        *   rank (Rank)
-        *   ransom (str)
-        *   coord (Coord)
-        *   opening_square_name_name (Square)
+    Provides:
+        -   to_dict() -> Dict[str, Any]
+
+    Super Class:
+        Context
     """
     _rank: Optional[Rank]
     _team: Optional[Team]
@@ -40,7 +49,7 @@ class TokenContext(Context[Token]):
     _coord: Optional[Coord]
     _color: Optional[GameColor]
     _designation: Optional[str]
-    _opening_square_name: Optional[Square]
+    _opening_square_name: Optional[str]
     
     @LoggingLevelRouter.monitor
     def __init__(
@@ -54,12 +63,23 @@ class TokenContext(Context[Token]):
             color: Optional[GameColor] = None,
             opening_square_name: Optional[str] = None
     ):
+        """
+        Args:
+            id: Optional[int]
+            team: Optional[Team]
+            rank: Optional[Rank]
+            ransom: Optional[int]
+            coord: Optional[Coord]
+            designation: Optional[str]
+            color: Optional[GameColor]
+            opening_square_name: Optional[str]
+        """
         super().__init__(id=id, name=None)
-        self._coord = coord
         self._rank = rank
         self._team = team
-        self._ransom = ransom
+        self._coord = coord
         self._color = color
+        self._ransom = ransom
         self._designation = designation
         self._opening_square_name = opening_square_name
 

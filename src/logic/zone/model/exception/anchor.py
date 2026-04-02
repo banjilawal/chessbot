@@ -26,7 +26,7 @@ class ZoneException(AnchorException):
         -   Exception coverage target
 
     Responsibilities:
-        1.  Anchoring target for Zone debug (layer-2) error variable information.
+        1.  Anchors Zone debug (layer-2) information.
         2.  Indicate which Zone method received a worker's (layer-1) failure result.
 
     Attributes:

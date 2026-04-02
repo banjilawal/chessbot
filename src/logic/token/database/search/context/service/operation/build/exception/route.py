@@ -26,8 +26,8 @@ class TokenContextBuildRouteException(ExecutionRouteException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that TokenContext build failed because there was no creation path for
-            the context's attribute.
+        1.  Indicate that TokenContext build failed because attribute did not have a
+            creation path.
 
     Attributes:
         var: Optional[str]
@@ -41,8 +41,8 @@ class TokenContextBuildRouteException(ExecutionRouteException):
     Super Class:
         DebugException
     """
-    MSG = "No build path for the TokenContext attribute."
     ERR_CODE = "TOKEN_CONTEXT_BUILD_ROUTE_EXCEPTION"
+    MSG = "No build path for the TokenContext attribute."
     
     def __init__(
             self,
@@ -69,48 +69,3 @@ class TokenContextBuildRouteException(ExecutionRouteException):
             val=val,
             err_code=err_code,
         )
-
-
-
-    """
-    Role:Exception Chain Layer 2, Exception Messaging
-    # TASK: Capture Error Variable State
-
-    Responsibilities:
-
-
-    Super Class:
-        *   ExecutionRoute
-
-    Provides:
-
-
-    # INHERITED ATTRIBUTES:
-        *   See ExecutionRoute class for inherited attributes.
-
-    Attributes:
-        *   msg (str)
-        *   err_code (str)
-        *   ex (Optional[Exception])
-        *   var (Optional[str])
-        *   val Optional[Any])
-
-    # LOCAL METHODS:
-   None
-
-    # INHERITED METHODS:
-        *   See ExecutionRoute class for inherited methods.
-    """
-
-    
-    def __init__(
-            self,
-            err_code: Optional[str] = None,
-            msg: Optional[str] = None,
-            ex: Optional[Exception] = None,
-            var: Optional[str] = None,
-            val: Optional[Any] = None,
-    ):
-        err_code = err_code or self.ERR_CODE
-        msg = msg or self.MSG
-        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)

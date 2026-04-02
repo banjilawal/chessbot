@@ -27,7 +27,7 @@ class TokenCommandDebugException(CommandDebugException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Carry metadata about the variable that fired a TokenCommand instance into its error state.
+        1.  Record the condition that fired a variable's error state. a TokenCommand instance into its error state.
 
     Attributes:
         var: Optional[str]

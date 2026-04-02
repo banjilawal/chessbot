@@ -26,7 +26,7 @@ class TokenException(AnchorException):
         -   Exception coverage target
 
     Responsibilities:
-        1.  Anchoring target for Token debug (layer-2) error variable information.
+        1.  Anchors Token debug (layer-2) information.
         2.  Indicate which Token method received a worker's (layer-1) failure result.
 
     Attributes:

@@ -26,7 +26,7 @@ class TokenStackServiceException(StackServiceException):
         -   Exception coverage target
 
     Responsibilities:
-        1.  Anchoring target for TokenStackService debug (layer-2) error
+        1.  Anchors TokenStackService debug (layer-2) error
             variable information.
         2.  Indicate which TokenStackService method received a  worker's (layer-1)
             failure result.
