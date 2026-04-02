@@ -1,6 +1,7 @@
-# src/logic/token/database/search/route/validator/transaction.py
+# src/logic/token/database/search/query/exception/transaction.py
+
 """
-Module: logic.token.database.search.route.validator.transaction
+Module: logic.token.database.search.query.exception.transaction
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -10,15 +11,15 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# TOKEN_QUERY_PARAMS_VALIDATION_FAILURE #======================#
-    "TokenQueryParamsValidationException",
+    # ======================# TOKEN_QUERY_VALIDATION_FAILURE #======================#
+    "TokenQueryValidationException",
 ]
 
 from logic.system import ValidationException
 
 
-# ======================# TOKEN_QUERY_PARAMS_VALIDATION_FAILURE #======================#
-class TokenQueryParamsValidationException(ValidationException):
+# ======================# TOKEN_QUERY_VALIDATION_FAILURE #======================#
+class TokenQueryValidationException(ValidationException):
     """
     Role:
         -   Worker Method Identification
@@ -26,8 +27,7 @@ class TokenQueryParamsValidationException(ValidationException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that one of the params sent to the TokenSearchRouter did not
-            pass a safety check.
+        1.  Indicate that one of the TokenQuery's params failed a safety test.
 
     Attributes:
         op: Optional[str]
@@ -43,8 +43,8 @@ class TokenQueryParamsValidationException(ValidationException):
     Super Class:
         ValidationException
     """
-    MSG = "TokenQueryRouting param failed a verification check."
-    ERR_CODE = "TOKEN_QUERY_PARAMS_VALIDATION_FAILURE"
+    MSG = "TokenQuery validation check failed."
+    ERR_CODE = "TOKEN_QUERY_VALIDATION_FAILURE"
     
     def __init__(
             self,

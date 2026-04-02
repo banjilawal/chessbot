@@ -17,19 +17,19 @@ from logic.system.search import Context
 T = TypeVar("T")
 
 class StackQuery(Query, Generic[T]):
-    _dataset: List[T]
+    _stack: List[T]
     
-    def __init__(self, dataset: List[T], context: Context[T]):
+    def __init__(self, stack: List[T], context: Context[T]):
         """
         Args:
-            dataset: List[T]
+            stack: List[T]
             context: Context[T]
         """
         super().__init__(context=context)
-        self._dataset = dataset
+        self._stack = stack
         
     @property
-    def dataset(self) -> List[T]:
-        return self._dataset
+    def stack(self) -> List[T]:
+        return self._stack
     
     

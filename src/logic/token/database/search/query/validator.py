@@ -1,21 +1,24 @@
-# src/logic/token/database/search/route/validator/validator.py
+# src/logic/token/database/search/query/validator.py
+
 """
-Module: logic.token.database.search.route.validator.validator
+Module: logic.token.database.search.query.validator
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
 """
 
 from __future__ import annotations
+
 from typing import List
 
-from logic.system import LoggingLevelRouter,  ValidationResult
+from logic.system import LoggingLevelRouter, ValidationResult, Validator
 from logic.token import (
-    Token, TokenContext, TokenContextValidator, TokenDatasetNullException, TokenQueryValidationException
+    Token, TokenContext, TokenContextValidator, TokenDatasetNullException, TokenQuery,
+    TokenQueryValidationException
 )
 
 
-class TokenQueryParamsValidator:
+class TokenQueryValidator(Validator[TokenQuery]):
     """
     Role
         -   Transaction Worker
@@ -36,7 +39,7 @@ class TokenQueryParamsValidator:
 
     Super Class:
     """
- 
+    
     @classmethod
     @LoggingLevelRouter.monitor
     def validate(
@@ -124,5 +127,3 @@ class TokenQueryParamsValidator:
             )
         # --- Forward the work product to the client. ---#
         return ValidationResult.success(2)
-    
-    
