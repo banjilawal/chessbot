@@ -1,13 +1,13 @@
 # src/logic/rank/validation/__init__.py
 
 """
-Module: logic.rank.validation.__init__
+Module: logic.rank.validation._init__
 Author: Banji Lawal
 Created: 2025-11-08
 version: 1.0.0
 """
 
-#=========== RANK.VALIDATOR PACKAGE CONTENTS ===========#
+#=========== RANK.VALIDATION PACKAGE CONTENTS ===========#
 
 # Packages
 from .exception import *

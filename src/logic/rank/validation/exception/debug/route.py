@@ -1,7 +1,7 @@
-# src/logic/schema/database/search/context/service/operation/build/exception/route.py
+# src/logic/schema/database/search/context/service/operation/validation/exception/route.py
 
 """
-Module: logic.schema.database.search.context.service.operation.build.exception.route
+Module: logic.schema.database.search.context.service.operation.validation.exception.route
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -11,14 +11,14 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# RANK_BUILD_ROUTE_EXCEPTION #======================#
-    "RankBuildRouteException",
+    # ======================# RANK_VALIDATION_ROUTE_EXCEPTION #======================#
+    "RankValidationRouteException",
 ]
 
 from logic.system import ExecutionRouteException
 
-# ======================# RANK_BUILD_ROUTE_EXCEPTION #======================#
-class RankBuildRouteException(ExecutionRouteException):
+# ======================# RANK_VALIDATION_ROUTE_EXCEPTION #======================#
+class RankValidationRouteException(ExecutionRouteException):
     """
     Role:
         -   Exception Chain Layer 2
@@ -26,8 +26,8 @@ class RankBuildRouteException(ExecutionRouteException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that a rank build failed because there was no creation
-            path for its subclass.
+        1.  Indicate that a rank validation failed because there was no
+            validation path for its subclass.
 
     Attributes:
         var: Optional[str]
@@ -41,8 +41,8 @@ class RankBuildRouteException(ExecutionRouteException):
     Super Class:
         ExecutionRouteException
     """
-    ERR_CODE = "RANK_BUILD_ROUTE_EXCEPTION"
-    MSG = "No build path exists for the Rank's subclass."
+    ERR_CODE = "RANK_VALIDATION_ROUTE_EXCEPTION"
+    MSG = "No validation path exists for the Rank's subclass."
     
     def __init__(
             self,

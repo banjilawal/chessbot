@@ -1,9 +1,9 @@
-# src/logic/coord/validation/validation.py
+# src/logic/rank/validation/validator.py
 
 """
-Module: logic.coord.validation.validation
+Module: logic.rank.validation.validator
 Author: Banji Lawal
-Created: 2025-08-12
+Created: 2025-11-08
 version: 1.0.0
 """
 
@@ -120,9 +120,10 @@ class CoordValidator(Validator[Coord]):
                     ex=id_validation_result.exception,
                 )
             )
+        
 
         # --- Forward the work product to the caller. ---#
-        return ValidationResult.success(coord)
+        return ValidationResult.success(rank)
 
 
 # src/logic/rank/validation/exception.py
