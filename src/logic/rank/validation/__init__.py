@@ -10,7 +10,8 @@ version: 1.0.0
 #=========== RANK.VALIDATOR PACKAGE CONTENTS ===========#
 
 # Packages
+from .exception import *
 
 # Modules
-from .exception import *
-from .factory import RankValidatorFactory
+from .validator import RankValidator
+from .workers import RankIntegrityWorkers

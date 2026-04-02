@@ -193,7 +193,7 @@ class EdgeStack(StackService[Edge]):
     ) -> DeletionResult[Edge]:
         """
         # ACTION:
-            1.  If the label is not certified safe send an exception in the DeletionResult.
+            1.  If the labelis not safe send an exception in the DeletionResult.
             2.  Create a temp variable for storing a edge before it's deleted.
             3.  Iterate through the edges.
                     *   If a edge's id matches the target record the edge in a temp variable before deleting
@@ -226,7 +226,7 @@ class EdgeStack(StackService[Edge]):
                     )
                 )
             )
-        # Handle the case that, the label is not certified safe.
+        # Handle the case that, the labelis not safe.
         validation = identity_service.validate_id(candidate=label)
         if validation.is_failure:
             # Return the exception chain on failure.

@@ -102,7 +102,7 @@ class HostageValidator(Validator[Hostage]):
         # --- Cast the candidate into a Hostage for additional testing. ---#
         manifest = cast(Hostage, candidate)
         
-        # Handle the case that, the id is not certified safe.
+        # Handle the case that, the idis not safe.
         id_validation = identity_service.validate_id(candidate=id)
         if id_validation.failure:
             # Send the exception chain on failure
@@ -112,7 +112,7 @@ class HostageValidator(Validator[Hostage]):
                     ex=id_validation.exception
                 )
             )
-        # Handle the case that, the item where the capture occurred is not certified safe.
+        # Handle the case that, the item where the capture occurredis not safe.
         captured_square_validation = square_service.validator.validate(candidate=manifest.captured_square)
         if captured_square_validation.failure:
             # Send the exception chain on failure
@@ -122,7 +122,7 @@ class HostageValidator(Validator[Hostage]):
                     ex=captured_square_validation.exception
                 )
             )
-        # Handle the case that, the victor's item is not certified safe.
+        # Handle the case that, the victor's itemis not safe.
         victor_square_validation = square_service.validator.validate(candidate=manifest.victor_square)
         if victor_square_validation.failure:
             # Send the exception chain on failure
@@ -182,7 +182,7 @@ class HostageValidator(Validator[Hostage]):
             
             # --- Perform tests on the manifest.victor that do not rely on the prisoner. ---#
             
-        # Handle the case that, the victor is not certified safe.
+        # Handle the case that, the victoris not safe.
         victor_validation = token_service.validator.search(candidate=manifest.victor)
         if victor_validation.failure:
             # Send the exception chain on failure

@@ -81,7 +81,7 @@ class ReverseTokenDeployment:
             TokenAlreadyDeployedException
         """
         method = f"{cls.__class__.__name__}.deploy_on_board"
-        # Handle the case that, the token is not certified safe.
+        # Handle the case that, the tokenis not safe.
         token_validation = token_validator.validate(token)
         if token_validation.is_failure:
             # Return the exception chain on failure.

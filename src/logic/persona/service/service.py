@@ -122,7 +122,7 @@ class PersonaService(HashService[Persona]):
     def quota_per_rank(self, rank: Rank, rank_service: RankService = RankService()) -> ComputationResult[int]:
         """
         # ACTION:
-            1   f the rank is not certified safe send an exception chain in the ComputationResult.
+            1   f the rankis not safe send an exception chain in the ComputationResult.
                 Otherwise, send the quota which matches the rank in the ComputationResult's payload.
         # PARAMETERS:
             *   rank (Rank)
@@ -137,7 +137,7 @@ class PersonaService(HashService[Persona]):
         """
         method = "PersonaService.quota_per_rank"
         
-        # Handle the case that, rank is not certified safe.
+        # Handle the case that, rankis not safe.
         validation = rank_service.validator.validate(candidate=rank)
         if validation.is_failure:
             return ComputationResult.failure(
@@ -165,7 +165,7 @@ class PersonaService(HashService[Persona]):
     # def build_rank_from_persona(self, persona: Persona, rank_service: RankService = RankService()) -> BuildResult[Rank]:
     #     """
     #     # ACTION:
-    #         1   f the persona is not certified safe send an exception chain in the BuildResult.
+    #         1   f the personais not safe send an exception chain in the BuildResult.
     #             Otherwise, send a rank instance in the BuildResult's payload.'
     #     # PARAMETERS:
     #         *   persona (Persona)
@@ -179,7 +179,7 @@ class PersonaService(HashService[Persona]):
     #     """
     #     method = "PersonaService.rank_from_persona"
     #
-    #     # Handle the case that, persona is not certified safe.
+    #     # Handle the case that, personais not safe.
     #     validation = self.validation.validate(candidate=persona)
     #     if validation.is_failure:
     #         return BuildResult.failure(

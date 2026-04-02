@@ -86,7 +86,7 @@ class SquareStackPopper:
         Delete any squares whose id matches the target.
         
         Actions:
-            1.  Send an exception chain in the DeletionResult if the id is not certified safe
+            1.  Send an exception chain in the DeletionResult if the idis not safe
             2.  Otherwise, create a temp variable.
             3.  Iterate through the items. If any match the id store then in the temp variable
                 before deleting.
@@ -121,7 +121,7 @@ class SquareStackPopper:
                     )
                 )
             )
-        # Handle the case that, the id is not certified safe.
+        # Handle the case that, the idis not safe.
         id_validation_result = identity_service.validate_id(candidate=id)
         if id_validation_result.is_failure:
             # Return the exception chain on failure.

@@ -96,7 +96,7 @@ class PawnPromoter:
         """
         method = f"{cls.__class__.__name__}.promote"
         
-        # Handle the case that, the token is not certified safe.
+        # Handle the case that, the tokenis not safe.
         token_validation_result = token_validator.verify_actionable_token(pawn_token)
         if token_validation_result.is_failure:
             # Return the exception chain on failure.

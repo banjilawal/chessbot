@@ -187,7 +187,7 @@ class SquareEntryProcess:
         """
         method = f"{cls.__module__}._run_token_tests"
         
-        # Handle the case that, the token is not certified safe.
+        # Handle the case that, the tokenis not safe.
         token_validation_result = token_service.validator.search(candidate=token)
         if token_validation_result.is_failure:
             # Return the exception chain on failure.
@@ -265,7 +265,7 @@ class SquareEntryProcess:
         """
         method = f"{cls.__module__}._run_square_tests"
         
-        # Handle the case that, the square is not certified safe.
+        # Handle the case that, the squareis not safe.
         square_validation_result = square_validator.validate(square)
         if square_validation_result.is_failure:
             # Return the exception chain on failure.

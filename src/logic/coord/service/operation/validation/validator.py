@@ -50,7 +50,7 @@ class CoordValidator(Validator[Coord]):
         Verify the candidate is a Coord that is safe to use.
         
         Action:
-            1.  Send an exception chain in the ValdationResult if
+            1.  Send an exception chain in the ValidationResult if
                     -   the candidate does not exist.
                     -   the candidate is not a Coord.
                     -   the row or column is not between [0-7] inclusive.
@@ -65,7 +65,7 @@ class CoordValidator(Validator[Coord]):
             NullCoordException
             CoordValidationException
         """
-        method = f"{cls.__name__}.execute"
+        method = f"{cls.__name__}.build"
         
         # Handle the case that, the candidate does not exist.
         if candidate is None:

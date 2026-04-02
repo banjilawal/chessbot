@@ -158,7 +158,7 @@ class TokenValidator(Validator[Token]):
                     ex=roster_and_square_validation_result.exception
                 )
             )
-        # Handle the case that, the rank is not certified safe.
+        # Handle the case that, the rankis not safe.
         rank_validation_result = rank_service.validator.validate(candidate=token.rank)
         if rank_validation_result.is_failure:
             # Return the exception chain on failure.
@@ -297,7 +297,7 @@ class TokenValidator(Validator[Token]):
     @classmethod
     def verify_actionable_token(cls, token: Token) -> ValidationResult[Token]:
         method = "TokenService.verify_actionable_token"
-        # Handle the case that, the occupant is not certified safe.
+        # Handle the case that, the occupantis not safe.
         token_validation = cls.validate(candidate=token)
         if token_validation.is_failure:
             # Return the exception chain on failure.
@@ -324,7 +324,7 @@ class TokenValidator(Validator[Token]):
     @classmethod
     def verify_disabled_token(cls, token: Token) -> ValidationResult[Token]:
         method = "TokenService.verify_disabled_token"
-        # Handle the case that, the occupant is not certified safe.
+        # Handle the case that, the occupantis not safe.
         token_validation = cls.validate(candidate=token)
         if token_validation.is_failure:
             # Return the exception chain on failure.

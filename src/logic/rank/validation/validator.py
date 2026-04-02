@@ -1,3 +1,130 @@
+# src/logic/coord/validation/validation.py
+
+"""
+Module: logic.coord.validation.validation
+Author: Banji Lawal
+Created: 2025-08-12
+version: 1.0.0
+"""
+
+from __future__ import annotations
+from typing import cast, Any
+
+from logic.coord import Coord, NullRankException
+from logic.coord.service.operation.validation.exception.transaction import RankValidationException
+from logic.system import (
+    NUMBER_OF_ROWS, Validator, ValidationResult, LoggingLevelRouter, NumberValidator
+)
+
+
+class CoordValidator(Validator[Coord]):
+    """
+    Role
+        -   Transaction Worker
+        -   Integrity Maintenance
+        -   Consistency Assurance
+        -   Process Runner
+
+    Responsibilities:
+        1.  Ensure a Coord instance is certified safe, reliable and consistent before use.
+
+    Attributes:
+
+    Provides:
+        -   def validate(
+                    cls,
+                    candidate: Any,
+                    workers: RankIntegrityWorkers,
+            ) -> ValidationResult[Rank]:
+
+    Super Class:
+        Validator
+    """
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def validate(
+            cls,
+            candidate: Any,
+            workers: RankIntegrityWorkers = RankIntegrityWorkers(),
+    ) -> ValidationResult[Rank]:
+        """
+        Verify the candidate is a Rank that is safe to use.
+
+        Action:
+            1.  Send an exception chain in the ValidationResult
+                    -   the candidate does not exist.
+                    -   the candidate is not a Rank.
+                    -   Any integrity worker raises a failed test.
+            2.  Otherwise, after the candidate is cast to a Rank, send the success result.
+        Args:
+            candidate: Any
+            workers: RankIntegrityWorkers
+        Returns:
+            ValidationResult[Rank]
+        Raises:
+            TypeError
+            NullRankException
+            RankValidationException
+        """
+        method = f"{cls.__name__}.build"
+        
+        # Handle the case that, the candidate does not exist.
+        if candidate is None:
+            # Return the exception on failure.
+            return ValidationResult.failure(
+                RankValidationException(
+                    mthd=method,
+                    title=cls.__name__,
+                    op=RankValidationException.OP,
+                    msg=RankValidationException.MSG,
+                    err_code=RankValidationException.ERR_CODE,
+                    rslt_type=RankValidationException.RSLT_TYPE,
+                    ex=NullRankException(
+                        msg=NullRankException.MSG,
+                        err_code=NullRankException.ERR_CODE,
+                    )
+                )
+            )
+        # Handle the case that, the candidate is the wrong type.
+        if not isinstance(candidate, Rank):
+            # Return the exception on failure.
+            return ValidationResult.failure(
+                RankValidationException(
+                    mthd=method,
+                    title=cls.__name__,
+                    op=RankValidationException.OP,
+                    msg=RankValidationException.MSG,
+                    err_code=RankValidationException.ERR_CODE,
+                    rslt_type=RankValidationException.RSLT_TYPE,
+                    ex=TypeError(
+                        f"Expected a Rank, got {type(candidate).__name__} instead."
+                    )
+                )
+            )
+        # --- Cast candidate to a Coord for additional tests ---#
+        rank = cast(Rank, candidate)
+        
+        # Handle the case that, the rank's id is not safe.
+        id_validation_result = workers.identity_service.validate_id(rank.id)
+        if id_validation_result.is_failure:
+            # Return the exception on failure.
+            return ValidationResult.failure(
+                RankValidationException(
+                    mthd=method,
+                    title=cls.__name__,
+                    op=RankValidationException.OP,
+                    msg=RankValidationException.MSG,
+                    err_code=RankValidationException.ERR_CODE,
+                    rslt_type=RankValidationException.RSLT_TYPE,
+                    ex=id_validation_result.exception,
+                )
+            )
+
+        # --- Forward the work product to the caller. ---#
+        return ValidationResult.success(coord)
+
+
 # src/logic/rank/validation/exception.py
 
 """
@@ -7,12 +134,16 @@ Created: 2025-11-08
 version: 1.0.0
 """
 
+
+
 from typing import Any, cast
 
 from logic.rank import (
     Bishop, BishopValidator, InvalidRankException, King, KingValidator, Knight, KnightValidator,
-    NullRankException, Pawn, PawnValidator, Queen, QueenValidator, Rank, RankSpecValidator, Rook, RookValidator
+    NullRankException, Pawn, PawnValidator, Queen, QueenValidator, Rank, RankIntegrityWorkers, RankSpecValidator, Rook,
+    RookValidator
 )
+from logic.rank.validate.workers import RankIntegrityWorkers
 from logic.system import IdentityService, LoggingLevelRouter, Validator, ValidationResult
 
 
@@ -132,7 +263,7 @@ from logic.system import Builder, ValidationResult, LoggingLevelRouter, id_emitt
 from logic.rank import Bishop, King, Knight, Pawn, Queen, Rank, RankValidationException, RankBuildRouteException, Rook
 
 
-class RankValiatorFactory(Validator[Rank]):
+class RankValidator(Validator[Rank]):
     """
     Role:Factory, Data Integrity Guarantor
 
@@ -157,8 +288,7 @@ class RankValiatorFactory(Validator[Rank]):
     @LoggingLevelRouter.monitor
     def validate(
             cls, candidate: Any,
-            persona_service: PersonaService = PersonaService(),
-            identity_service: IdentityService = IdentityService(),
+            workers: RankIntegrityWorkers = RankIntegrityWorkers(),
     ) -> ValidationResult[Rank]:
         """
         # ACTION:
@@ -194,6 +324,7 @@ class RankValiatorFactory(Validator[Rank]):
                     ex=TypeError(f"{method}: Expected a Rank, got {type(candidate).__name__} instead.")
                 )
             )
+        # Handle the case that, the identity
     
         # Entry point into validating a King instance.
         if isinstance(candidate, King):
@@ -258,7 +389,7 @@ class RankValiatorFactory(Validator[Rank]):
                     ex=TypeError(f"{method}: Expected a King, got {type(candidate).__name__} instead.")
                 )
             )
-        # Handle the case that, the id is not certified safe.
+        # Handle the case that, the idis not safe.
         king = cast(King, candidate)
         id_validation = identity_service.validate_id(king.id)
         if id_validation.is_failure:
@@ -271,7 +402,7 @@ class RankValiatorFactory(Validator[Rank]):
             )
         # Handle the case that, some of the params do match a King's
         if (
-                king.ransom != Persona.KING.ransom or
+                king.persona != Persona.KING
                 king.team_quota != Persona.KING.quota or
                 king.name.upper() != Persona.KING.name.upper() or
                 king.designation.upper() != Persona.KING.designation.upper()
@@ -305,7 +436,7 @@ class RankValiatorFactory(Validator[Rank]):
                     ex=TypeError(f"{method}: Expected a Pawn, got {type(candidate).__name__} instead.")
                 )
             )
-        # Handle the case that, the id is not certified safe.
+        # Handle the case that, the idis not safe.
         pawn = cast(Pawn, candidate)
         id_validation = identity_service.validate_id(pawn.id)
         if id_validation.is_failure:
@@ -353,7 +484,7 @@ class RankValiatorFactory(Validator[Rank]):
                     ex=TypeError(f"{method}: Expected a Knight, got {type(candidate).__name__} instead.")
                 )
             )
-        # Handle the case that, the id is not certified safe.
+        # Handle the case that, the idis not safe.
         knight = cast(Knight, candidate)
         id_validation = identity_service.validate_id(knight.id)
         if id_validation.is_failure:
@@ -401,7 +532,7 @@ class RankValiatorFactory(Validator[Rank]):
                     ex=TypeError(f"{method}: Expected a Bishop, got {type(candidate).__name__} instead.")
                 )
             )
-        # Handle the case that, the id is not certified safe.
+        # Handle the case that, the idis not safe.
         bishop = cast(Bishop, candidate)
         id_validation = identity_service.validate_id(bishop.id)
         if id_validation.is_failure:
@@ -449,7 +580,7 @@ class RankValiatorFactory(Validator[Rank]):
                     ex=TypeError(f"{method}: Expected a Rook, got {type(candidate).__name__} instead.")
                 )
             )
-        # Handle the case that, the id is not certified safe.
+        # Handle the case that, the idis not safe.
         rook = cast(Rook, candidate)
         id_validation = identity_service.validate_id(rook.id)
         if id_validation.is_failure:
@@ -497,7 +628,7 @@ class RankValiatorFactory(Validator[Rank]):
                     ex=TypeError(f"{method}: Expected a Queen, got {type(candidate).__name__} instead.")
                 )
             )
-        # Handle the case that, the id is not certified safe.
+        # Handle the case that, the idis not safe.
         queen = cast(Queen, candidate)
         id_validation = identity_service.validate_id(queen.id)
         if id_validation.is_failure:

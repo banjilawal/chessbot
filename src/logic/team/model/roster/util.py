@@ -78,7 +78,7 @@ class RosterUtil:
         method = "TeamService.fill_team_roster"
         
         pre_update_team = deepcopy(team)
-        # Handle the case that, the team is not certified safe.
+        # Handle the case that, the teamis not safe.
         team_validation = team_validator.validate(candidate=team)
         if team_validation.is_failure:
             # Return exception chain on failure.

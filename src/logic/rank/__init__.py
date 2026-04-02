@@ -14,7 +14,7 @@ from .factory import *
 from .model import *
 from .search import *
 from .service import *
-from .validator import *
+from .validation import *
 from .compute import *
 
 # Modules

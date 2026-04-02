@@ -99,7 +99,7 @@ class PlayerService(IntegrityMicroservice[Player]):
         """
         method = "PlayerService.pop_team_from_player"
         
-        # Handle the case that, the owner is not certified safe.
+        # Handle the case that, the owneris not safe.
         validation = self.validator.validate(player)
         if validation.is_failure:
             # Return the exception chain on failure.

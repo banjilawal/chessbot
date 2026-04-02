@@ -146,7 +146,7 @@ class TeamStack(StackService[Team]):
     def pop(self) -> DeletionResult[Team]:
         """
         # ACTION:
-            1.  If the id is not certified safe send the exception in the DeletionResult. Else, call
+            1.  If the idis not safe send the exception in the DeletionResult. Else, call
                 _delete_Teams_by_search_result with the outcome of an id search.
             2.  Forward the DeletionResult from _delete_Teams_by_search_result to the deletion client.
         # PARAMETERS:
@@ -186,7 +186,7 @@ class TeamStack(StackService[Team]):
     ) -> DeletionResult[Team]:
         """
         # ACTION:
-            1.  If the id is not certified safe send the exception in the DeletionResult. Else, call
+            1.  If the idis not safe send the exception in the DeletionResult. Else, call
                 _delete_Teams_by_search_result with the outcome of an id search.
             2.  Forward the DeletionResult from _delete_Teams_by_search_result to the deletion client.
         # PARAMETERS:
@@ -215,7 +215,7 @@ class TeamStack(StackService[Team]):
                     )
                 )
             )
-        # Handle the case that, the id is not certified safe.
+        # Handle the case that, the idis not safe.
         validation = identity_service.validate_id(candidate=id)
         if validation.is_failure:
             # Return the exception chain on failure.

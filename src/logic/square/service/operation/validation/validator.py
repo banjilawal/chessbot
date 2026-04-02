@@ -136,7 +136,7 @@ class SquareValidator(Validator[Square]):
                     ex=identity_validation_result.exception
                 )
             )
-        # Handle the case that, square.coord is not certified safe.
+        # Handle the case that, square.coordis not safe.
         coord_validation_result = coord_service.validator.validate(square.coord)
         if coord_validation_result.is_failure:
             # Return the exception chain on failure.

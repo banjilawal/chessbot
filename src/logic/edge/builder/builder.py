@@ -68,7 +68,7 @@ class EdgeBuilder(Builder[Edge]):
          """
          method = "EdgeBuilder.build"
          
-         # Handle the case that, the id is not certified safe.
+         # Handle the case that, the idis not safe.
          id_validation = identity_service.validate_id(id)
          if id_validation.is_failure:
              # Return the exception chain on failure

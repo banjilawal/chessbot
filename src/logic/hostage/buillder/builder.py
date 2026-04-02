@@ -77,7 +77,7 @@ class HostageBuilder(Builder[Hostage]):
         """
         method = "HostageBuilder.build"
         
-        # Handle the case that, the id is not certified safe.
+        # Handle the case that, the idis not safe.
         id_validation = identity_service.validate_id(candidate=id)
         if id_validation.failure:
             # Send the exception chain on failure
@@ -87,7 +87,7 @@ class HostageBuilder(Builder[Hostage]):
                     ex=id_validation.exception
                 )
             )
-        # Handle the case that, the captured_square is not certified safe.
+        # Handle the case that, the captured_squareis not safe.
         captured_square_validation = square_service.validator.validate(candidate=captured_square)
         if captured_square_validation.failure:
             # Send the exception chain on failure

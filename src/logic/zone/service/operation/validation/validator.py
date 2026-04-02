@@ -50,7 +50,7 @@ class ZoneValidator(Validator[Zone]):
         Verify the candidate is a Zone that is safe to use.
         
         Action:
-            1.  Send an exception chain in the ValdationResult if
+            1.  Send an exception chain in the ValidationResult if
                     -   the candidate does not exist.
                     -   the candidate is not a Zone.
                     -   the row or column is not between [0-7] inclusive.

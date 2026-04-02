@@ -221,7 +221,7 @@ class PairStack(StackService[Pair]):
     ) -> DeletionResult[Pair]:
         """
         # ACTION:
-            1.  If the id is not certified safe send an exception in the DeletionResult.
+            1.  If the idis not safe send an exception in the DeletionResult.
             2.  Create a temp variable for storing a pair before it's deleted.
             3.  Iterate through the pairs.
                     *   If a pair's id matches the target record the pair in a temp variable before deleting
@@ -254,7 +254,7 @@ class PairStack(StackService[Pair]):
                     )
                 )
             )
-        # Handle the case that, the id is not certified safe.
+        # Handle the case that, the idis not safe.
         validation = identity_service.validate_id(candidate=id)
         if validation.is_failure:
             # Return the exception chain on failure.

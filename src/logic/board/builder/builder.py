@@ -70,7 +70,7 @@ class BoardBuilder(Builder[Board]):
         """
         method = "BoardBuilder.build"
         
-        # Handle the case that, the id is not certified safe.
+        # Handle the case that, the idis not safe.
         id_validation = identity_service.validate_id(candidate=id)
         if id_validation.is_failure:
             # On failure return the exception.
@@ -80,7 +80,7 @@ class BoardBuilder(Builder[Board]):
                     ex=id_validation.exception
                 )
             )
-        # Handle the case that, the arena is not certified safe.
+        # Handle the case that, the arenais not safe.
         arena_validation = arena_service.validator.search(candidate=arena)
         if arena_validation.is_failure:
             # On failure return the exception.

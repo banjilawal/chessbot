@@ -162,7 +162,7 @@ class SquareBuilder(Builder[Square]):
                     ex=identity_validation.exception,
                 )
             )
-        # Handle the case that, the coord is not certified safe.
+        # Handle the case that, the coordis not safe.
         coord_validation = coord_service.validator.validate(coord)
         if coord_validation.is_failure:
             # Return the exception chain on failure.
@@ -177,7 +177,7 @@ class SquareBuilder(Builder[Square]):
                     ex=coord_validation.exception,
                 )
             )
-        # Handle the case that, the board is not certified safe.
+        # Handle the case that, the boardis not safe.
         board_validation = board_service.validator.validate(board)
         if board_validation.is_failure:
             # Return the exception chain on failure.

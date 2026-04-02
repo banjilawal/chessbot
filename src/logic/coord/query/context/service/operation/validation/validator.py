@@ -207,7 +207,7 @@ class CoordContextValidator(Validator[CoordContext]):
         method = f"{cls.__name__}._run_validation_check"
         
         for attribute in attributes:
-            # Handle the case that, the row is not certified safe.
+            # Handle the case that, the rowis not safe.
             validation_result = number_validator.validate(
                 candidate=attribute,
                 ceiling=BOARD_DIMENSION - 1,
