@@ -8,15 +8,14 @@ Version: 1.0.0
 """
 
 from __future__ import annotations
-from abc import ABC
 from typing import Generic, TypeVar
 
-from logic.system import SearchMicroservice, Validator
+from logic.system import Microservice, SearchMicroservice, Validator
 
 E = TypeVar("E", bound="Enum")
 
 
-class CatalogService(ABC, Generic[E]):
+class CatalogService(Microservice[E], Generic[E]):
     """
     Role:
         -   Data layer
