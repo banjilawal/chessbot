@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.token import TokenBuilder, TokenContextIntegrityWorkers, TokenValidator
+from logic.token import TokenContextBuilder, TokenContextIntegrityWorkers, TokenContextValidator
 
 
 class TokenContextOpsController:
@@ -21,28 +21,28 @@ class TokenContextOpsController:
         1.  Provide a single entry point for operations TokenService supports.
         
     Attributes:
-        builder: TokenBuilder
-        validator: TokenValidator
+        builder: TokenContextBuilder
+        validator: TokenContextValidator
         workers: TokenContextIntegrityWorkers
 
     Provides:
     
     Super Class:
     """
-    _builder: TokenBuilder
-    _validator: TokenValidator
+    _builder: TokenContextBuilder
+    _validator: TokenContextValidator
     _workers: TokenContextIntegrityWorkers
     
     def __init__(
             self,
-            builder: TokenBuilder = TokenBuilder(),
-            validator: TokenValidator = TokenValidator(),
+            builder: TokenContextBuilder = TokenContextBuilder(),
+            validator: TokenContextValidator = TokenContextValidator(),
             workers: TokenContextIntegrityWorkers = TokenContextIntegrityWorkers(),
     ):
         """
         Args:
-            builder: TokenBuilder
-            validator: TokenValidator
+            builder: TokenContextBuilder
+            validator: TokenContextValidator
             workers: TokenContextIntegrityWorkers
         """
         self._build = builder
@@ -50,11 +50,11 @@ class TokenContextOpsController:
         self._arithmetic = workers
         
     @property
-    def builder(self) -> TokenBuilder:
+    def builder(self) -> TokenContextBuilder:
         return self._builder
         
     @property
-    def validator(self) ->TokenValidator:
+    def validator(self) ->TokenContextValidator:
         return self._validator
     
     @property

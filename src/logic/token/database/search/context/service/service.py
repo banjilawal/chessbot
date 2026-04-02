@@ -1,14 +1,14 @@
-# src/logic/tokenContext/query/query/service/validator.py
+# src/logic/token/database/search/context/service/__init__.py
 
 """
-Module: logic.tokenContext.query.query.service.service
+Module: logic.token.database.search.context.service.__init__
 Author: Banji Lawal
-Created: 2025-11-24
+Created: 2025-10-03
 version: 1.0.0
 """
 
 from logic.system import IntegrityMicroservice, IdFactory
-from logic.token import TokenContext, TokenContextBuilder, TokenContextValidator
+from logic.token import TokenContext, TokenContextBuilder, TokenContextOpsController, TokenContextValidator
 
 
 class TokenContextService(IntegrityMicroservice[TokenContext]):
@@ -28,8 +28,6 @@ class TokenContextService(IntegrityMicroservice[TokenContext]):
 
         id: int
         name: name
-        build: TokenContextbuild
-        validation: TokenContextValidation
         controller: TokenContextOpsController
 
     Provides:
@@ -38,33 +36,29 @@ class TokenContextService(IntegrityMicroservice[TokenContext]):
         IntegrityMicroservice
     """
     SERVICE_NAME = "TokenContextService"
-    _build: TokenContextBuilder
-    _validation: TokenContextValidator
+    _ops_controller: TokenContextOpsController
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             id: int = IdFactory.next_id(class_name="TokenContextService"),
-            build: TokenContextBuilder =TokenContextBuilder(),
-            validation: TokenContextValidator =TokenContextValidator(),
+            ops_controller: TokenContextOpsController = TokenContextOpsController(),
     ):
         """
         Args:
             id: int
             name: str
-            build: TokenContextBuilder
-            validation: TokenContextValidator
+            ops_controller: TokenContextOpsController
         """
         super().__init__(id=id, name=name)
-        self._build = build
-        self._validation = validation
+        self._ops_controller = ops_controller
     
     @property
     def builder(self) ->TokenContextBuilder:
-        return self._build
+        return self._ops_controller.builder
     
     @property
     def validator(self) ->TokenContextValidator:
-        return self._validation
+        return self._ops_controller.validator
     
     
