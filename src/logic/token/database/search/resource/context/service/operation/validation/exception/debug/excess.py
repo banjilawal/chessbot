@@ -15,64 +15,58 @@ __all__ = [
     "ExcessTokenContextFlagsException",
 ]
 
-from logic.system import DebugException
+from logic.system import  ExcessContextFlagsException
+
 
 # ======================# EXCESS_TOKEN_CONTEXT_FLAGS_EXCEPTION #======================#
-class ExcessTokenContextFlagsException(DebugException):
+class ExcessTokenContextFlagsException(ExcessContextFlagsException):
     """
-    Role:Exception Chain Layer 2, Exception Messaging
-    # TASK: Capture Error Variable State
+    Role:
+        -   Exception Chain Layer 2
+        -   Error Variable Identifier
+        -   Debugging Metadata provider
 
     Responsibilities:
-    1.  Produce the:
-            *   variable,
-            *   it's value,
-            *   event which fired the variable into its error state.
-        which occurred in the TokenContextBuilder method identified in layer-0 of the exception chain.
+        1.  Indicate that no TokenContext work was not completed
+            because more than one attribute was enabled.
 
-    2.  A failing ValidationResult was returned because TokenContext candidate had more than one flag enabled.
-    
-    Super Class:
-        *   DebugException
+    Attributes:
+        var: Optional[str]
+        val: Optional[Any]
+        msg: Optional[str]
+        ex: Optional[Exception]
+        err_code: Optional[str]
 
     Provides:
 
-
-    # INHERITED ATTRIBUTES:
-        *   See DebugException class for inherited attributes.
-
-    Attributes:
-        *   msg (str)
-        *   err_code (str)
-        *   ex (Optional[Exception])
-        *   var (Optional[str])
-        *   val (Optional[Any])
-
-    # LOCAL METHODS:
-   None
-
-    # INHERITED METHODS:
-        *   See DebugException class for inherited methods.
+    Super Class:
+        ExcessContextFlagsException)
     """
-    MSG = "More than one TokenContext flag enabled."
+    MSG = str = "Only one TokenContex should be enabled."
     ERR_CODE = "EXCESS_TOKEN_CONTEXT_FLAGS_EXCEPTION"
-    
+   
     def __init__(
             self,
-            msg: Optional[str] = None,
             var: Optional[str] = None,
             val: Optional[Any] = None,
-            ex: Optional[Exception] = None,
+            msg: Optional[str] = None,
             err_code: Optional[str] = None,
+            ex: Optional[Exception] = None,
     ):
         """
         Args:
-            msg: str
             var: Optional[str]
             val: Optional[Any]
+            msg: Optional[str]
             ex: Optional[Exception]
             err_code: Optional[str]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        super().__init__(ex=ex, msg=msg, err_code=err_code, var=var, val=val,)
+        super().__init__(
+            ex=ex,
+            msg=msg,
+            var=var,
+            val=val,
+            err_code=err_code,
+        )

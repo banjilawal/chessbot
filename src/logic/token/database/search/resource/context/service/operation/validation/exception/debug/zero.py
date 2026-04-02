@@ -15,65 +15,58 @@ __all__ = [
     "ZeroTokenContextFlagsException",
 ]
 
-from logic.system import DebugException
+from logic.system import ZeroContextFlagsException
 
 
 # ======================# ZERO_TOKEN_CONTEXT_FLAGS_EXCEPTION #======================#
-class ZeroTokenContextFlagsException(DebugException):
+class ZeroTokenContextFlagsException(ZeroContextFlagsException):
     """
-    Role:Exception Chain Layer 2, Exception Messaging
-    # TASK: Capture Error Variable State
+    Role:
+        -   Exception Chain Layer 2
+        -   Error Variable Identifier
+        -   Debugging Metadata provider
 
     Responsibilities:
-    1.  Produce the:
-            *   variable,
-            *   it's value,
-            *   event which fired the variable into its error state.
-        which occurred in the TokenContextValidator method identified in layer-0 of the exception chain.
+        1.  Indicate that no TokenContext work was not completed because
+            no attribute was enabled.
 
-    2.  A failing ValidationResult was returned because TokenContext candidate had no query flags enabled.
-
-    Super Class:
-        *   DebugException
+    Attributes:
+        var: Optional[str]
+        val: Optional[Any]
+        msg: Optional[str]
+        ex: Optional[Exception]
+        err_code: Optional[str]
 
     Provides:
 
-
-    # INHERITED ATTRIBUTES:
-        *   See DebugException class for inherited attributes.
-
-    Attributes:
-        *   msg (str)
-        *   err_code (str)
-        *   ex (Optional[Exception])
-        *   var (Optional[str])
-        *   val (Optional[Any])
-
-    # LOCAL METHODS:
-   None
-
-    # INHERITED METHODS:
-        *   See DebugException class for inherited methods.
+    Super Class:
+        ZeroContextFlagsException
     """
     MSG = "No TokenContext flags are enabled."
     ERR_CODE = "ZERO_TOKEN_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(
             self,
-            msg: Optional[str] = None,
             var: Optional[str] = None,
             val: Optional[Any] = None,
-            ex: Optional[Exception] = None,
+            msg: Optional[str] = None,
             err_code: Optional[str] = None,
+            ex: Optional[Exception] = None,
     ):
         """
         Args:
-            msg: str
             var: Optional[str]
             val: Optional[Any]
+            msg: Optional[str]
             ex: Optional[Exception]
             err_code: Optional[str]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        super().__init__(ex=ex, msg=msg, err_code=err_code, var=var, val=val,)
+        super().__init__(
+            ex=ex,
+            msg=msg,
+            var=var,
+            val=val,
+            err_code=err_code,
+        )
