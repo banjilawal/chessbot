@@ -1,45 +1,56 @@
-# src/logic/token/build/exception.py
+# src/logic/token/database/search/context/service/operation/build/builder.py
 
 """
-Module: logic.token.build.build
+Module: logic.token.database.search.context.service.operation.build.builder
 Author: Banji Lawal
-Created: 2025-11-24
+Created: 2025-10-03
 version: 1.0.0
 """
 
+from __future__ import annotations
 from typing import Optional
 
-from logic.rank import Rank, RankService
-from logic.square import Square, SquareService
-from logic.team import Team, TeamService
-from logic.coord import Coord, CoordService
-from logic.system import (
-    NumberValidator, Builder, BuildResult, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
-)
+
+from logic.rank import Rank
+from logic.coord import Coord
+from logic.team import ExcessTeamContextFlagsException, Team
+from logic.system import BuildResult, Builder, GameColor, LoggingLevelRouter
 from logic.token import (
-    ArenaTokenContextFlagsException, TokenContext, TokenContextBuildException,
-    TokenContextBuildRouteException, ZeroTokenContextFlagsException
+    TokenContext, TokenContextBuildException, TokenContextBuildRouteException, TokenContextBuildWorkers,
+    ZeroTokenContextFlagsException
 )
 
 
 class TokenContextBuilder(Builder[TokenContext]):
     """
-    Role:Builder, Data Integrity And Reliability Guarantor
-
+    Role
+        -   Transaction Worker
+        -   Integrity Maintenance
+        -   Consistency Assurance
+        -   Process Runner
+    
     Responsibilities:
-    1.  Produce TokenContext instances whose integrity is guaranteed at creation.
-    2.  Manage construction of TokenContext instances that can be used safely by the client.
-    3.  Ensure params for TokenContext creation have met the application's safety contract.
-    4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
-
-    Super Class:
-        *   Builder
-
+        1.  TokenContext creation process owner.
+        2.  Ensure TokenContext build resources meet satisfy contracts.
+        3.  Guarantee new instances comply with business logic at birth.
+    
+    Attributes:
+    
     Provides:
-
-
-    # INHERITED ATTRIBUTES:
-    None
+        -   def build(
+                    workers: TokenContextBuildWorkers,
+                    id: Optional[int] = None,
+                    team: Optional[Team] = None,
+                    rank: Optional[Rank] = None,
+                    ransom: Optional[int] = None,
+                    coord: Optional[Coord] = None,
+                    color: Optional[GameColor] = None,
+                    designation: Optional[str] = None,
+                    opening_square_name: Optional[str] = None,
+            ) -> BuildResult[TokenContext]:
+    
+     Super Class:
+         Builder
     """
     @classmethod
     @LoggingLevelRouter.monitor
@@ -53,51 +64,50 @@ class TokenContextBuilder(Builder[TokenContext]):
             color: Optional[GameColor] = None,
             designation: Optional[str] = None,
             opening_square_name: Optional[str] = None,
-            team_service: TeamService = TeamService(),
-            rank_service: RankService = RankService(),
-            coord_service: CoordService = CoordService(),
-            square_service: SquareService = SquareService(),
-            identity_service: IdentityService = IdentityService(),
-            color_validator: GameColorValidator = GameColorValidator(),
-            number_validator: NumberValidator = NumberValidator(),
+            workers: TokenContextBuildWorkers = TokenContextBuildWorkers(),
     ) -> BuildResult[TokenContext]:
         """
-        # ACTION:
-            1.  If only one, optional param is not null send an exception in the BuildResult.
-            2.  If there is no build path for the TokenContext key send and exception in the BuildResult. Else,
-                route to the appropriate build route.
-            3.  If the key's value fails validation send the exception in the BuildResult. Else, build the TeamContext
-                in the BuildResult's payload.
-        # PARAMETERS:
-            Only one these must be provided:
-                *   id (Optional[int])
-                *   designation (Optional[int])
-                *   team (Optional[Team])
-                *   rank (Optional[Rank])
-                *   ransom (Optional[int])
-                *   coord (Optional[Coord])
-                *   color (Optional[GameColor])
-            These Parameters must be provided:
-                *   team_service (TeamService)
-                *   rank_service (RankService)
-                *   coord_service (CoordService)
-                *   color_validator (GameColorValidator)
-                *   identity_service (IdentityService)
-        # RETURNS:
-          *     BuildResult[TokenContext] containing either:
-                    - On failure: Exception.
-                    - On success: TokenContext in the payload.
+        Build a TokenContext
+        
+        Action:
+            1.  Send an exception chain in the BuildResult if any of the following
+                occur
+                    -   No optional param is enabled.
+                    -   More than one optional param is enabled.
+                    -   The enabled attribute fails a validation test.
+                    -   There is no build logic for the enabled attribute.
+            2.  Otherwise, build the TokenContext then, send the success result.
+        Args:
+            id: Optional[int]
+            team: Optional[Team]
+            rank: Optional[Rank]
+            ransom: Optional[int]
+            coord: Optional[Coord]
+            color: Optional[GameColor]
+            designation: Optional[str]
+            opening_square_name: Optional[str]
+            workers: TokenContextBuildWorkers
+        Returns:
+            BuildResult[TokenContext]
         Raises:
-            *   ZeroTokenContextFlagsException
-            *   TokenContextBuildException
-            *   ArenaTokenContextFlagsException
-            *   TokenContextBuildException
-            *   TokenContextBuildRouteException
+            TokenContextBuildException
+            ZeroTokenContextFlagsException
+            TokenContextBuildRouteException
+            ExcessTokenContextFlagsException
         """
-        method = "TokenContextBuilder.build"
+        method = f"{cls.__name__}.build"
         
         # --- Count how many optional parameters are not-null. only one should be not null. ---#
-        params = [id, designation, team, rank, ransom, coord, color, opening_square_name]
+        params = [
+            id,
+            team,
+            rank,
+            coord,
+            color,
+            ransom,
+            designation,
+            opening_square_name,
+        ]
         param_count = sum(bool(p) for p in params)
         
         # Handle the case that, all the optional params are null.
@@ -106,8 +116,11 @@ class TokenContextBuilder(Builder[TokenContext]):
             return BuildResult.failure(
                 TokenContextBuildException(
                     mthd=method,
+                    title=cls.__name__,
+                    op=TokenContextBuildException.OP,
                     msg=TokenContextBuildException.MSG,
                     err_code=TokenContextBuildException.ERR_CODE,
+                    rslt_type=TokenContextBuildException.RSLT_TYPE,
                     ex=ZeroTokenContextFlagsException(
                         msg=ZeroTokenContextFlagsException.MSG,
                         err_code=ZeroTokenContextFlagsException.ERR_CODE,
@@ -120,11 +133,14 @@ class TokenContextBuilder(Builder[TokenContext]):
             return BuildResult.failure(
                 TokenContextBuildException(
                     mthd=method,
+                    title=cls.__name__,
+                    op=TokenContextBuildException.OP,
                     msg=TokenContextBuildException.MSG,
                     err_code=TokenContextBuildException.ERR_CODE,
-                    ex=ArenaTokenContextFlagsException(
-                        msg=ArenaTokenContextFlagsException.MSG,
-                        err_code=ArenaTokenContextFlagsException.ERR_CODE,
+                    rslt_type=TokenContextBuildException.RSLT_TYPE,
+                    ex=ExcessTeamContextFlagsException(
+                        msg=ExcessTeamContextFlagsException.MSG,
+                        err_code=ExcessTeamContextFlagsException.ERR_CODE,
                     )
                 )
             )
@@ -132,144 +148,172 @@ class TokenContextBuilder(Builder[TokenContext]):
         
         # Build the id TokenContext if its flag is enabled.
         if id is not None:
-            validation = identity_service.validate_id(id)
+            validation = workers.identity_service.validate_id(id)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     TokenContextBuildException(
                         mthd=method,
+                        title=cls.__name__,
+                        op=TokenContextBuildException.OP,
                         msg=TokenContextBuildException.MSG,
                         err_code=TokenContextBuildException.ERR_CODE,
+                        rslt_type=TokenContextBuildException.RSLT_TYPE,
                         ex=validation.exception,
                     )
                 )
-            # On validation success return an id_TokenContext in the BuildResult.
+            # On validation success forward the work product to the caller.
             return BuildResult.success(TokenContext(id=id))
         
         # Build the designation TokenContext if its flag is enabled.
         if designation is not None:
-            validation = identity_service.validate_name(designation)
+            validation = workers.identity_service.validate_name(designation)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     TokenContextBuildException(
                         mthd=method,
+                        title=cls.__name__,
+                        op=TokenContextBuildException.OP,
                         msg=TokenContextBuildException.MSG,
                         err_code=TokenContextBuildException.ERR_CODE,
+                        rslt_type=TokenContextBuildException.RSLT_TYPE,
                         ex=validation.exception,
                     )
                 )
-            # On validation success return a designation_TokenContext in the BuildResult.
+            # On validation success forward the work product to the caller.
             return BuildResult.success(TokenContext(designation=designation))
         
         # Build the opening_square_name TokenContext if its flag is enabled.
-        if opening_square is not None:
-            validation = square_service.validator.validate(opening_square)
+        if opening_square_name is not None:
+            validation = workers.identity_service.validate_name(opening_square_name)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     TokenContextBuildException(
                         mthd=method,
+                        title=cls.__name__,
+                        op=TokenContextBuildException.OP,
                         msg=TokenContextBuildException.MSG,
                         err_code=TokenContextBuildException.ERR_CODE,
+                        rslt_type=TokenContextBuildException.RSLT_TYPE,
                         ex=validation.exception,
                     )
                 )
-            # On validation success return a designation_TokenContext in the BuildResult.
-            return BuildResult.success(TokenContext(opening_square=opening_square))
+            # On validation success forward the work product to the caller.
+            return BuildResult.success(TokenContext(opening_square_name=opening_square_name))
         
         # Build the coord TokenContext if its flag is enabled.
         if coord is not None:
-            validation = coord_service.validator.validate(coord)
+            validation = workers.coord_service.validator.validate(coord)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     TokenContextBuildException(
                         mthd=method,
+                        title=cls.__name__,
+                        op=TokenContextBuildException.OP,
                         msg=TokenContextBuildException.MSG,
                         err_code=TokenContextBuildException.ERR_CODE,
+                        rslt_type=TokenContextBuildException.RSLT_TYPE,
                         ex=validation.exception,
                     )
                 )
-            # On validation success return a coord_TokenContext in the BuildResult.
+            # On validation success forward the work product to the caller.
             return BuildResult.success(TokenContext(coord=coord))
         
         # Build the rank TokenContext if its flag is enabled.
         if rank is not None:
-            validation = rank_service.validator.validate(rank)
+            validation = workers.rank_service.validator.validate(rank)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     TokenContextBuildException(
                         mthd=method,
+                        title=cls.__name__,
+                        op=TokenContextBuildException.OP,
                         msg=TokenContextBuildException.MSG,
                         err_code=TokenContextBuildException.ERR_CODE,
+                        rslt_type=TokenContextBuildException.RSLT_TYPE,
                         ex=validation.exception,
                     )
                 )
-            # On validation success return a rank_TokenContext in the BuildResult.
+            # On validation success forward the work product to the caller.
             return BuildResult.success(TokenContext(rank=rank))
         
         # Build the team TokenContext if its flag is enabled.
         if team is not None:
-            validation = team_service.validator.validate(team)
+            validation = workers.team_service.validator.validate(team)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     TokenContextBuildException(
                         mthd=method,
+                        title=cls.__name__,
+                        op=TokenContextBuildException.OP,
                         msg=TokenContextBuildException.MSG,
                         err_code=TokenContextBuildException.ERR_CODE,
+                        rslt_type=TokenContextBuildException.RSLT_TYPE,
                         ex=validation.exception,
                     )
                 )
-            # On validation success return a team_TokenContext in the BuildResult.
+            # On validation success forward the work product to the caller..
             return BuildResult.success(TokenContext(team=team))
         
         # Build the color TokenContext if its flag is enabled.
         if color is not None:
-            validation = color_validator.validate(color)
+            validation = workers.color_validator.validate(color)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     TokenContextBuildException(
                         mthd=method,
+                        title=cls.__name__,
+                        op=TokenContextBuildException.OP,
                         msg=TokenContextBuildException.MSG,
                         err_code=TokenContextBuildException.ERR_CODE,
+                        rslt_type=TokenContextBuildException.RSLT_TYPE,
                         ex=validation.exception,
                     )
                 )
-            # On validation success return a team_TokenContext in the BuildResult.
+            # On validation success forward the work product to the caller.
             return BuildResult.success(TokenContext(color=color))
         
         # Build the ransom TokenContext if its flag is enabled.
         if ransom is not None:
-            validation = number_validator.validate(
+            validation = workers.number_validator.validate(
                 candidate=ransom,
-                floor=rank_service.persona_service.min_ransom,
-                ceiling=rank_service.persona_service.max_ransom
+                floor=workers.rank_service.persona_service.min_ransom,
+                ceiling=workers.rank_service.persona_service.max_ransom
             )
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     TokenContextBuildException(
                         mthd=method,
+                        title=cls.__name__,
+                        op=TokenContextBuildException.OP,
                         msg=TokenContextBuildException.MSG,
                         err_code=TokenContextBuildException.ERR_CODE,
+                        rslt_type=TokenContextBuildException.RSLT_TYPE,
                         ex=validation.exception,
                     )
                 )
-            # On validation success return a ransom_TokenContext in the BuildResult.
+            # On validation success forward the work product to the caller.
             return BuildResult.success(TokenContext(ransom=ransom))
         
-        # Return the exception chain if there is no build route for the query.
+        # Handle the case that, there was no build route for the attribute
         return BuildResult.failure(
             TokenContextBuildException(
                 mthd=method,
+                title=cls.__name__,
+                op=TokenContextBuildException.OP,
                 msg=TokenContextBuildException.MSG,
                 err_code=TokenContextBuildException.ERR_CODE,
+                rslt_type=TokenContextBuildException.RSLT_TYPE,
                 ex=TokenContextBuildRouteException(
                     msg=TokenContextBuildRouteException.MSG,
+                    err_code=TokenContextBuildRouteException.ERR_CODE,
                 )
             )
         )

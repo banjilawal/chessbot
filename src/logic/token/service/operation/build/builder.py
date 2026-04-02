@@ -28,8 +28,8 @@ class TokenBuilder(Builder[Token]):
    Responsibilities:
         1.  Token creation process owner.
         2.  Ensure Token build resources meet satisfy contracts.
-        3.  Assure tokens  comply with business logic at point of creation.
-        4.  Execute 1:M binding logic a token has with its owning entities..
+        3.  Guarantee new instances comply with business logic at birth.
+        4.  Execute 1:M binding logic a token has with its owning entities.
 
      Attributes:
 
@@ -61,13 +61,16 @@ class TokenBuilder(Builder[Token]):
             team_validator: TeamValidator = TeamValidator(),
     ) -> BuildResult[Token]:
         """
+        Build a Token.
+        
         Action:
-            1.  Send an exception chain in the BuildResult if, either
-                    -   id
-                    -   name
-                    -   team
-                    -   formation
-                fail their validation checks.
+            1.  Send an exception chain in the BuildResult if any of the following
+                occur:
+                    -   Either id, name, team. formation fail a validation check.
+                    -   The token belongs on a different team.
+                    -   The team has already filled the position.
+                    -   The token's rank cannot be built.
+                    -   The token cannot register with its team.
             2.  Otherwise, build the token then, send the success result.
         Args:
             id: int
