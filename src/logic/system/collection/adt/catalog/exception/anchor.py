@@ -1,33 +1,33 @@
-# src/logic/system/collection/adt/stack/exception/anchor.py
+# src/logic/catalogService/exception/anchor.py
 
 """
-Module: logic.system.collection.adt.stack.exception.anchor
+Module: logic.catalogService.exception.anchor
 Author: Banji Lawal
-Created: 2025-11-18
-Version: 1.0.0
+Created: 2025-09-16
+version: 1.0.0
 """
 
 from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# STACK_SERVICE_EXCEPTION #======================#
-    "StackServiceException",
+    # ======================# CATALOG_SERVICE_EXCEPTION #======================#
+    "CatalogServiceException",
 ]
 
 from logic.system import ServiceException
 
 
-# ======================# STACK_SERVICE_EXCEPTION #======================#
-class StackServiceException(ServiceException):
+# ======================# CATALOG_SERVICE_EXCEPTION #======================#
+class CatalogServiceException(ServiceException):
     """
     Role:
         -   Exception Chain Layer 0
         -   Exception coverage target
 
     Responsibilities:
-        1.  Anchors StackService debug (layer-2) information.
-        2.  Indicate which StackService method received a worker's (layer-1) failure result.
+        1.  Anchors CatalogService debug (layer-2) information.
+        2.  Indicate which CatalogService method received a worker's (layer-1) failure result.
 
     Attributes:
         msg: Optional[str]
@@ -41,8 +41,8 @@ class StackServiceException(ServiceException):
     Super Class:
         ServiceException
     """
-    ERR_CODE = "STACK_SERVICE_EXCEPTION"
-    MSG = "StackService raised an exception."
+    ERR_CODE = "CATALOG_SERVICE_EXCEPTION"
+    MSG = "CatalogService raised an exception."
     
     def __init__(
             self,

@@ -1,16 +1,19 @@
-# src/logic/system/collection/schema/exception/__init__.py
+# src/logic/system/collection/adt/stack/exception/__init__.py
 
 """
-Module: logic.system.collection.schema.exception.__init__
+Module: logic.system.collection.adt.stack.exception.__init__
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
 """
 
-# =========== SYSTEM.COLLECTION.STACK.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== SYSTEM.COLLECTION.ADT.STACK.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-from .debug import *
+None
 
 # Modules
 from .anchor import StackServiceException
+from .debug import StackServiceDebugException
+from .empty import PoppingEmptyStackException
+from .duplicate import PushingDuplicateItemException
