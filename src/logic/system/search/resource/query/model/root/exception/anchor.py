@@ -1,7 +1,7 @@
-# src/logic/system/search/resource/context/exception/anchor.py
+# src/logic/system/search/resource/query/model/root/exception/anchor.py
 
 """
-Module: logic.system.search.resource.context.exception.anchor
+Module: logic.system.search.resource.query.model.root.exception.anchor
 Author: Banji Lawal
 Created: 2026-04-01
 Version: 1.0.0
@@ -16,7 +16,6 @@ __all__ = [
 ]
 
 from logic.system import AnchorException
-
 
 # ======================# QUERY_EXCEPTION #======================#
 class QueryException(AnchorException):
@@ -64,4 +63,10 @@ class QueryException(AnchorException):
         msg = msg or self.MSG
         cls_name = cls_name or self.CLS_NAME
         err_code = err_code or self.ERR_CODE
-        super().__init__(msg=msg, err_code=err_code, ex=ex, cls_name=cls_name, cls_mthd=cls_mthd)
+        super().__init__(
+            ex=ex,
+            msg=msg,
+            cls_name=cls_name,
+            cls_mthd=cls_mthd,
+            err_code=err_code,
+        )

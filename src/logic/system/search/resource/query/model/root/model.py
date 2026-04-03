@@ -1,7 +1,7 @@
-# src/logic/system/search/resource/context/abstract/model.py
+# src/logic/system/search/resource/query/model/root/model.py
 
 """
-Module: logic.system.search.resource.context.abstract.model
+Module: logic.system.search.resource.query.model.root.model
 Author: Banji Lawal
 Created: 2026-04-01
 Version: 1.0.0
@@ -16,6 +16,20 @@ from logic.system.search import Context
 T = TypeVar("T")
 
 class Query(ABC, Generic[T]):
+    """
+    Role:
+       -   Abstract Root
+
+    Responsibilities:
+        1.  Platform primitive to build Query APIs
+
+    Attributes:
+        context: Context[T]
+
+    Provides:
+
+    Super Class:
+    """
     _context: Context[T]
     
     def __init__(self, context: Context[T]):

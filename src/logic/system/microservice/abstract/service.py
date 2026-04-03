@@ -16,7 +16,8 @@ T = TypeVar("T")
 
 class Microservice(ABC, Generic[T]):
     """
-        -   API
+    Role:
+       -   Abstract Root
         
     About Microservices:
         -   Stateless

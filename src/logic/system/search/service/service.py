@@ -81,6 +81,7 @@ class SearchMicroservice(ABC, Microservice[T]):
     @property
     @abstractmethod
     def query_service(self) -> IntegrityMicroservice[Query[T]]:
+        pass
     
     @property
     @abstractmethod

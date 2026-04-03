@@ -1,7 +1,7 @@
-# src/logic/system/search/resource/exception/transaction.py
+# src/logic/system/search/resource/route/exception/transaction_.py
 
 """
-Module: logic.system.search.resource.exception.transaction
+Module: logic.system.search.resource.route.exception.transaction
 Author: Banji Lawal
 Created: 2026-03-31
 Version: 1.0.0
