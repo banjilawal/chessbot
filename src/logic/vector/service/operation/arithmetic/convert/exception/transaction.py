@@ -11,14 +11,14 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# COORD_CONVERT_FAILURE #======================#
-    "ConvertVectorException",
+    # ======================# CONVERSION_BETWEEN_VECTOR_AND_COORD_FAILURE #======================#
+    "VectorCoordConversionException",
 ]
 
 from logic.system import ComputationException
 
-# ======================# COORD_CONVERT_FAILURE #======================#
-class ConvertVectorException(ComputationException):
+# ======================# CONVERSION_BETWEEN_VECTOR_AND_COORD_FAILURE #======================#
+class VectorCoordConversionException(ComputationException):
     """
     Role:
         -   Worker Method Identifier
@@ -26,7 +26,8 @@ class ConvertVectorException(ComputationException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that a ConvertVectorProcess was not completed.
+        1.  Indicate that an error stopped conversion between a
+            vector and coord.
         2.  Trace the method calls.
 
     Attributes:
@@ -43,8 +44,8 @@ class ConvertVectorException(ComputationException):
     Super Class:
         ComputationException
     """
-    MSG = "Coord convert failed."
-    ERR_CODE = "COORD_CONVERT_FAILURE"
+    MSG = "Error during conversion between vetor and coord."
+    ERR_CODE = "CONVERSION_BETWEEN_VECTOR_AND_COORD_FAILURE"
     
     def __init__(
             self,

@@ -12,81 +12,51 @@ from typing import List, cast
 
 from logic.coord import Coord, CoordService
 from logic.scalar import Scalar, ScalarService
-from logic.vector import Vector, VectorBuilder, VectorServiceException, VectorValidator
+from logic.system.worker import Worker
+from logic.vector import Vector, VectorBuilder, VectorService, VectorServiceException, VectorValidator
 from logic.system import (
     BuildResult, ComputationResult, IdFactory, LoggingLevelRouter, IntegrityMicroservice, NumberValidator
 )
+from logic.vector.service.operation.arithmetic.convert.direction import ConversionDirection
 
-class VectorCoordAdapter:
+
+class VectorCoordConverter(Worker):
     """
-    # LOCAL ROLE:
-        Computation, Transformer
-    
-    # INHERITED ROLE:
-        *   See IntegrityMicroservice class for inherited role.
-    
-    # LOCAL RESPONSIBILITIES:
-    1.  Creating new Vector objects by scalar multiplication.
-    2.  Converting a Vector into a Coord.
-    
-    # INHERITED RESPONSIBILITIES:
-        *   See IntegrityMicroservice class for inherited responsibilities.
+    Role:
+        -   Worker
+        -   Transformer
 
-    Super Class:
-        *   IntegrityMicroservice
-
-    Provides:
-
-    # LOCAL ATTRIBUTES:
-        *   SERVICE_NAME (str)
-
-    # INHERITED ATTRIBUTES:
-        *   See IntegrityMicroservice for inherited attributes.
+    Responsibilities:
+        1.  Bidirectional Coord<->Vector converter.
 
     Attributes:
-        *   id (int)
-        *   schema (str)
-        *   build (VectorBuilder) = VectorBuilder()
-        *   validation (VectorValidator) = VectorValidator()
 
-    # LOCAL METHODS:
-        *   multiply_vector_by_scalar(
+    Properties:
+        -   def work(
+                    coord
                     vector: Vector,
-                    scalar: Scalar,
-                    scalar_service: ScalarService = ScalarService()
+                    coor
+                    vector_service: VectorService = VectorService(),
+                    number_validator: NumberValidator = NumberValidator(),
             ) -> ComputationResult[Vector]
-            
-        *   convert_coord_to_vector(
-                coord: Coord,
-                coord_service: CoordService = CoordService(),
-            ) -> BuildResult[Vector]:
 
-    # INHERITED METHODS:
-        *   See IntegrityMicroservice class for inherited methods.
+    Super Class:
+        Worker
     """
-    SERVICE_NAME = "VectorService"
     
-    def __init__(
-            self,
-            name: str = SERVICE_NAME,
-            builder: VectorBuilder = VectorBuilder(),
-            validator: VectorValidator = VectorValidator(),
-            id: int = IdFactory.next_id(class_name="VectorService"),
-    ):
-        super().__init__(id=id, name=name, builder=builder, validator=validator)
-    
-    @property
-    def builder(self) -> VectorBuilder:
-        """get VectorBuilder"""
-        return cast(VectorBuilder, self.entity_builder)
-    
-    @property
-    def validator(self) -> VectorValidator:
-        """get VectorValidator"""
-        return cast(VectorValidator, self.entity_validator)
-    
-
-    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def work(
+            cls,
+            coord: Coord,
+            vector: Vector,
+            conversion_direction: ConversionDirection,
+            coord_service: CoordService = CoordService(),
+            vector_service: VectorService = VectorService(),
+    ) -> ComputationResult[Vector]:
+        method = f"{cls.__name__}.work"
+        
+        
     @LoggingLevelRouter.monitor
     def multiply_vector_by_scalar(
             self,

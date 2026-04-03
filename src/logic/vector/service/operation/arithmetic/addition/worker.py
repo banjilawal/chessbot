@@ -35,6 +35,7 @@ class VectorAdder(Worker):
             ) -> ComputationResult[Vector]
 
     Super Class:
+        Worker
     """
     @classmethod
     @LoggingLevelRouter.monitor

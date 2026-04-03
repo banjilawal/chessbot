@@ -55,7 +55,7 @@ class ConvertVectorToCoordTransaction:
         Returns:
             ComputationResult[Coord]
         Raises:
-            ConvertVectorException
+            VectorCoordConversionException
         """
         method = f"{cls.__name__}.execute"
         
