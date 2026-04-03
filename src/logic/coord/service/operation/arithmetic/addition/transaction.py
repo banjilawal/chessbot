@@ -15,7 +15,7 @@ from logic.vector import Vector, VectorService
 from logic.system import ComputationResult, LoggingLevelRouter
 from logic.coord import Coord, CoordAdditionException, CoordAdditionOperandNullException, CoordService
 
-class CoordAdditionTransaction:
+class CoordAdder:
     """
     Role:
         -   Worker

@@ -10,7 +10,7 @@ version: 1.0.0
 # =========== TOKEN.SERVICE.OPERATION.ARITHMETIC.CONVERT PACKAGE CONTENTS ===========#
 
 # Packages
-from .debug import *
+None
 
 # Modules
-from .transaction import VectorCoordConversionException
+from .null import VectorCoordConversionOperandNullException

@@ -11,15 +11,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# COORD_ADDITION_OPERAND_NULL_EXCEPTION #======================#
-    "CoordAdditionOperandNullException",
+    # ======================# VECTOR_COORD_CONVERSION_OPERAND_NULL_EXCEPTION #======================#
+    "VectorCoordConversionOperandNullException",
 ]
 
-from logic.coord import CoordDebugException
+from logic.coord import NullException
 
 
-# ======================# COORD_ADDITION_OPERAND_NULL_EXCEPTION #======================#
-class CoordAdditionOperandNullException(CoordDebugException):
+# ======================# VECTOR_COORD_CONVERSION_OPERAND_NULL_EXCEPTION #======================#
+class VectorCoordConversionOperandNullException(NullException):
     """
     Role:
         - Error Variable Identifier
@@ -27,8 +27,9 @@ class CoordAdditionOperandNullException(CoordDebugException):
         - Exception Messaging
 
     Responsibilities:
-        1.  Indicate a CoordAdder failed because the operand was null
-            instead of Union[Vector, Coord].
+        1.  Indicate that conversion between a coord and vector failed because the
+            operand was null.
+            
     Attributes:
         var: Optional[str]
         val: Optional[Any]
@@ -39,10 +40,10 @@ class CoordAdditionOperandNullException(CoordDebugException):
     Provides:
 
     Super Class:
-        CoordDebugException
+        NullException
     """
-    ERR_CODE = "COORD_ADDITION_OPERAND_NULL_EXCEPTION"
-    MSG = "CoordAdder: Operand is null."
+    MSG = "Conversion failed. The operand was null."
+    ERR_CODE = "VECTOR_COORD_CONVERSION_OPERAND_NULL_EXCEPTION"
     
     def __init__(
             self,
@@ -62,4 +63,10 @@ class CoordAdditionOperandNullException(CoordDebugException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)
+        super().__init__(
+            ex=ex,
+            msg=msg,
+            var=var,
+            val=val,
+            err_code=err_code,
+        )

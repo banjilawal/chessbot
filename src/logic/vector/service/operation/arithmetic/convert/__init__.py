@@ -14,3 +14,4 @@ from .exception import *
 
 # Modules
 from .transaction import ConvertVectorToCoordTransaction
+from .worker import VectorCoordConverter

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from logic.coord import MultiplyCoordTransaction, CoordAdditionTransaction, ConvertVectorToCoordTransaction
+from logic.coord import MultiplyCoordTransaction, CoordAdder, ConvertVectorToCoordTransaction
 from logic.coord.service.operation.arithmetic.distance.compute import EuclideanDistance
 
 
@@ -14,7 +14,7 @@ class CoordArithmeticController:
 
     Attributes:
         distance: EuclideanDistance
-        addition: CoordAdditionTransaction
+        addition: CoordAdder
         multiplication: MultiplyCoordTransaction
         conversion: ConvertVectorToCoordTransaction
 
@@ -22,21 +22,21 @@ class CoordArithmeticController:
     Super Class:
     """
     _distance: EuclideanDistance
-    _addition: CoordAdditionTransaction
+    _addition: CoordAdder
     _multiplication: MultiplyCoordTransaction
     _conversion: ConvertVectorToCoordTransaction
 
     def __init__(
             self,
             distance: EuclideanDistance = EuclideanDistance(),
-            addition: CoordAdditionTransaction = CoordAdditionTransaction(),
+            addition: CoordAdder = CoordAdder(),
             multiplication: MultiplyCoordTransaction = MultiplyCoordTransaction(),
             conversion: ConvertVectorToCoordTransaction = ConvertVectorToCoordTransaction(),
     ):
         """
         Args:
             distance: EuclideanDistance
-            addition: CoordAdditionTransaction
+            addition: CoordAdder
             multiplication: MultiplyCoordTransaction
             conversion: ConvertVectorToCoordTransaction
         """
@@ -51,7 +51,7 @@ class CoordArithmeticController:
         return self._conversion
     
     @property
-    def addition(self) -> CoordAdditionTransaction:
+    def addition(self) -> CoordAdder:
         return self._addition
     
     @property
