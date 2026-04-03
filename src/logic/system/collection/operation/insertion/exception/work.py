@@ -27,7 +27,7 @@ class InsertionException(CollectionOperationException):
 
     Responsibilities:
         1.  Indicate an insertion was unsuccessful.
-        2.  Identify the method where the failure occurred.
+        2.  Trace the method calls.
 
     Attributes:
         op: Optional[str]

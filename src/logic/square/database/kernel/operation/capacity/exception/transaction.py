@@ -28,7 +28,7 @@ class SquareStackCapacityAnalysisException(OperationException):
 
     Responsibilities:
         1.  Indicate that an error prevented a quota analysis from completing.
-        2.  Identify the method where the failure occurred.
+        2.  Trace the method calls.
 
     Attributes:
         op: Optional[str]

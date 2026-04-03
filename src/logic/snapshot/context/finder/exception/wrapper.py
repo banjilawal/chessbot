@@ -26,7 +26,7 @@ class SnapshotSearchException(SearchException):
     Responsibilities:
     1.  Indicate that a snapshot search was not completed, it returned an error instead of a
         work product. 
-    2.  Identify the method where the failure occurred.
+    2.  Trace the method calls.
 
     Super Class:
         *   SearchException

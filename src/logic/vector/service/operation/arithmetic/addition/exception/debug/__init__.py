@@ -13,4 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .operand import CoordAdditionOperandNullException
+from .null import NullVectorListException
+from .empty import EmptyVectorListAdditionException

@@ -11,14 +11,14 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# COORD_ADDITION_FAILURE #======================#
-    "CoordAdditionException",
+    # ======================# VECTOR_ADDITION_FAILURE #======================#
+    "VectorAdditionException",
 ]
 
 from logic.system import ComputationException
 
-# ======================# COORD_ADDITION_FAILURE #======================#
-class CoordAdditionException(ComputationException):
+# ======================# VECTOR_ADDITION_FAILURE #======================#
+class VectorAdditionException(ComputationException):
     """
     Role:
         -   Worker Method Identifier
@@ -26,8 +26,8 @@ class CoordAdditionException(ComputationException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that a CoordAdditionProcess was not completed.
-        2.  Identify the method where the failure occurred.
+        1.  Indicate that an error occurred during vector summation.
+        2.  Trace the method calls.
 
     Attributes:
         op: Optional[str]
@@ -43,8 +43,8 @@ class CoordAdditionException(ComputationException):
     Super Class:
         ComputationException
     """
-    MSG = "Coord addition failed."
-    ERR_CODE = "COORD_ADDITION_FAILURE"
+    MSG = "Vector addition failed."
+    ERR_CODE = "VECTOR_ADDITION_FAILURE"
     
     def __init__(
             self,

@@ -10,13 +10,11 @@ Version: 1.0.0
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Any, Generic, TypeVar
+from typing import Any
 
-from logic.system import LoggingLevelWorkr, Result
+from logic.system import LoggingLevelRouter, Result
 
-T = TypeVar("T")
-
-class Worker(ABC, Generic[T]):
+class Worker(ABC):
     """
     Role
         -   Worker
@@ -34,6 +32,6 @@ class Worker(ABC, Generic[T]):
     """
     
     @abstractmethod
-    @LoggingLevelWorkr.monitor
+    @LoggingLevelRouter.monitor
     def work(self, *args, **kwargs) -> Result[Any]:
         pass

@@ -28,7 +28,7 @@ class UpdateException(CollectionOperationException):
 
     Responsibilities:
         1.  Indicate an updated was unsuccessful at producing a  valid work product.
-        2.  Identify the method where the failure occurred.
+        2.  Trace the method calls.
 
     Attributes:
         op: Optional[str]

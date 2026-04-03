@@ -13,4 +13,4 @@ version: 1.0.0
 None
 
 # Modules
-from .worker import Worker
+from .model import Worker

@@ -1,9 +1,9 @@
-# src/logic/token/service/operation/arithmetic/addition/exception/debug/operand.py
+# src/logic/vector/service/operation/validate/exception/debug/null.py
 
 """
-Module: logic.token.service.operation.arithmetic.addition.exception.debug.operand
+Module: logic.vector.service.operation.validate.exception.debug.null
 Author: Banji Lawal
-Created: 2026-03-25
+Created: 2025-11-19
 version: 1.0.0
 """
 
@@ -11,15 +11,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# COORD_ADDITION_OPERAND_NULL_EXCEPTION #======================#
-    "CoordAdditionOperandNullException",
+    # ======================# EMPTY_VECTOR_LIST_ADDITION_EXCEPTION #======================#
+    "EmptyVectorListAdditionException",
 ]
 
-from logic.coord import CoordDebugException
+from logic.system import NullException
 
 
-# ======================# COORD_ADDITION_OPERAND_NULL_EXCEPTION #======================#
-class CoordAdditionOperandNullException(CoordDebugException):
+# ======================# EMPTY_VECTOR_LIST_ADDITION_EXCEPTION #======================#
+class EmptyVectorListAdditionException(NullException):
     """
     Role:
         - Error Variable Identifier
@@ -27,8 +27,8 @@ class CoordAdditionOperandNullException(CoordDebugException):
         - Exception Messaging
 
     Responsibilities:
-        1.  Indicate a CoordAdditionTransaction failed because the operand was null
-            instead of Union[Vector, Coord].
+        1.  Indicate that Vector addition failed because the list was empty
+
     Attributes:
         var: Optional[str]
         val: Optional[Any]
@@ -39,10 +39,11 @@ class CoordAdditionOperandNullException(CoordDebugException):
     Provides:
 
     Super Class:
-        CoordDebugException
+        NulException
     """
-    ERR_CODE = "COORD_ADDITION_OPERAND_NULL_EXCEPTION"
-    MSG = "CoordAdditionTransaction: Operand is null."
+    MSG = "Cannot sum an empty vector list."
+    ERR_CODE = "EMPTY_VECTOR_LIST_ADDITION_EXCEPTION"
+
     
     def __init__(
             self,
@@ -62,4 +63,18 @@ class CoordAdditionOperandNullException(CoordDebugException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)
+        super().__init__(
+            ex=ex,
+            msg=msg,
+            var=var,
+            val=val,
+            err_code=err_code,
+        )
+
+
+    
+
+
+
+
+

@@ -28,7 +28,7 @@ class TokenStackDeploymentException(UpdateException):
 
     Responsibilities:
         1.  Indicate that an error prevented a token schema from deploying.
-        2.  Identify the method where the failure occurred.
+        2.  Trace the method calls.
         
     Attributes:
         op: Optional[str]

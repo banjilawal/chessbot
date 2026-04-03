@@ -28,7 +28,7 @@ class DeployTeamException(DeletionException):
 
     Responsibilities:
         1.  Indicate that, the team deployment exception was aborted by an error.
-        2.  Identify the method where the failure occurred.
+        2.  Trace the method calls.
 
     Attributes:
         op: Optional[str]

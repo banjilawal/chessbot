@@ -68,7 +68,7 @@ class TokenQueryBuilder(Builder[TokenQuery]):
         """
         method = f"{cls.__name__}._validate"
         
-        # Handle the case that, the context is not certified as safe.
+        # Handle the case that, the context is not safe to use.
         validation_result = context_validator.validate(context)
         if validation_result.is_failure:
             # Return the exception chain on failure.

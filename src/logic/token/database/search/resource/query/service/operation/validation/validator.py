@@ -107,7 +107,7 @@ class TokenQueryValidator(Validator[TokenQuery]):
         # --- Cast the rank to TokenQuery for additional tests. ---#
         query = cast(TokenQuery, candidate)
         
-        # Handle the case that, the context is not certified as safe.
+        # Handle the case that, the context is not safe to use.
         validation_result = context_validator.validate(query.context)
         if validation_result.is_failure:
             # Return the exception chain on failure.

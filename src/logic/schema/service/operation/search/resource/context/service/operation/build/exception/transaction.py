@@ -29,7 +29,7 @@ class SchemaContextBuildException(BuildException):
 
     Responsibilities:
         1.  Indicate that, an error prevented a SchemaContext from being built.
-        2.  Identify the method where the failure occurred.
+        2.  Trace the method calls.
 
     Attributes:
         op: Optional[str]

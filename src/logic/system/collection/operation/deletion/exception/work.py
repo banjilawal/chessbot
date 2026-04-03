@@ -28,7 +28,7 @@ class DeletionException(CollectionOperationException):
 
     Responsibilities:
         1.  Indicate a deletion was unsuccessful.
-        2.  Identify the method where the failure occurred.
+        2.  Trace the method calls.
 
     Attributes:
         op: Optional[str]

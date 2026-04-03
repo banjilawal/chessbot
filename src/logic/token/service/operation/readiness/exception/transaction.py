@@ -20,7 +20,7 @@ class TokenReadinessAnalysisException(RelationAnalysisException):
 
     Responsibilities:
         1.  Indicate that an error prevented a token_readiness_analysis from completing.
-        2.  Identify the method where the failure occurred.
+        2.  Trace the method calls.
 
     Attributes:
         op: Optional[str]

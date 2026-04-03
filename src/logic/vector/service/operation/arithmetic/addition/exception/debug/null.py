@@ -1,9 +1,9 @@
-# src/logic/board/analyzer/exception/failure.py
+# src/logic/vector/service/operation/validate/exception/debug/null.py
 
 """
-Module: logic.board.analyzer.exception.failure
+Module: logic.vector.service.operation.validate.exception.debug.null
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-11-19
 version: 1.0.0
 """
 
@@ -11,24 +11,23 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# BOARD_SQUARE_RELATION_ANALYSIS_FAILURE #======================#
-    "BoardSquareAnalysisException",
+    # ======================# NULL_VECTOR_LIST_EXCEPTION #======================#
+    "NullVectorListException",
 ]
 
-from logic.system import AnalysisException
+from logic.system import NullException
 
 
-# ======================# BOARD_SQUARE_RELATION_ANALYSIS_FAILURE #======================#
-class BoardSquareAnalysisException(AnalysisException):
+# ======================# NULL_VECTOR_LIST_EXCEPTION #======================#
+class NullVectorListException(NullException):
     """
     Role:
-        - Worker Method Identification
-        - Exception Chain Layer 1
+        - Error Variable Identifier
+        - Exception Chain Layer 2
         - Exception Messaging
 
     Responsibilities:
-        1.  Indicate a arithmetic was unsuccessful and did not produce a result.
-        2.  Trace the method calls.
+        1.  Indicate that Vector addition failed because the list was null.
 
     Attributes:
         var: Optional[str]
@@ -39,11 +38,12 @@ class BoardSquareAnalysisException(AnalysisException):
 
     Provides:
 
-    Super:
-        OperationException
+    Super Class:
+        NulException
     """
-    ERR_CODE = "BOARD_SQUARE_RELATION_ANALYSIS_FAILURE"
-    MSG = "A rank failed a validation test. BoardSquareAnalyzer cannot proceed. Analysis aborted."
+    MSG = "List cannot be null."
+    ERR_CODE = "NULL_VECTOR_LIST_EXCEPTION"
+
     
     def __init__(
             self,
@@ -63,4 +63,18 @@ class BoardSquareAnalysisException(AnalysisException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)
+        super().__init__(
+            ex=ex,
+            msg=msg,
+            var=var,
+            val=val,
+            err_code=err_code,
+        )
+
+
+    
+
+
+
+
+
