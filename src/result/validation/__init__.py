@@ -14,3 +14,4 @@ None
 
 # Modules
 from .result import ValidationResult
+from .state import ValidationState

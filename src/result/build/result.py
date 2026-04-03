@@ -10,8 +10,8 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Generic, Optional, TypeVar
 
-from result import Result
-from result.build.state import BuildState
+from result import BuildState, Result
+
 
 T = TypeVar("T")
 
@@ -34,8 +34,9 @@ class BuildResult(Result[T], Generic[T]):
         is_failure: bool
 
     Provides:
-        -   def success(payload: T) -> Result[T]
-        -   def failure(exception: Exception) -> Result[T]
+        -   def success(payload: T) -> BuildResult[T]
+        -   def failure(exception: Exception) -> BuildResult[T]
+        -   def timed_out(cls, exception: Exception) -> BuildResult[T]:
 
     Super Class:
         Result
@@ -67,18 +68,15 @@ class BuildResult(Result[T], Generic[T]):
         
     @property
     def is_success(self) -> bool:
-        return (
-                self.payload is not None and
-                self.exception is None and
-                self._state == BuildState.SUCCESS
-        )
+        return not self.is_failure
     
     @property
     def is_failure(self) -> bool:
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state == BuildState.FAILURE
+                self._state == BuildState.FAILURE or
+                self._state == BuildState.TIMED_OUT
         )
     
     @property

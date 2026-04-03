@@ -1,59 +1,88 @@
-# src/logic/system/collection/operation/deletion/validator.py
+# src/result/delete/result.py
 
 """
-Module: logic.system.collection.operation.deletion.work
+Module: result.delete.result
 Author: Banji Lawal
-Created: 2025-11-18
-Version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
+
 from typing import Generic, Optional, TypeVar
 
-from logic.system import DataResult, DeletionResultEnum
-from logic.system.collection.operation.deletion.state.state import DeletionResultState
+from result import DeletionState, Result
 
 T = TypeVar("T")
 
 
-class DeletionResult(DataResult, Generic[T]):
+class DeletionResult(Result, Generic[T]):
     """
-    Role:Messanger, Data Transport Object, Error Transport Object.
+    Role:
+        -   Data Transport
+        -   Error Transport
 
     Responsibilities:
-    1.  Send the outcome of a deletion to the caller.
-    2.  Enforcing mutual exclusion. A DeletionResult can either carry payload or exception. Not both.
+        1.  Contains the outcome of a deletion.
 
-    Super Class:
-        *   DataResult
+    Attributes:
+        exception: Optional[Exception]
+        state: validationState
+        payload: Optional[T]
+        is_timed_out: bool
+        is_success: bool
+        is_failure: bool
+        is_nothing_to_delete: bool
 
     Provides:
+        -   def success(payload: T) -> DeletionResu[T]
+        -   def failure(exception: Exception) -> DeletionResu[T]
+        -   def timed_out(exception: Exception) -> DeletionResult[T]
+        -   def nothing_to_delete() -> DeletionResult[T]
 
-
-    # INHERITED ATTRIBUTES:
-        *   See DataResult class for inherited attributes.
+    Super Class:
+        Result
     """
+    _state = DeletionState
+    
     def __init__(
             self,
-            state: DeletionResultState,
-            exception: Optional[Exception] = None,
+            state: DeletionState,
             payload: Optional[T] = None,
+            exception: Optional[Exception] = None,
     ):
-        super().__init__(state=state, payload=payload, exception=exception)
+        """
+        Args:
+            payload: Optional[T]
+            state: DeletionResultState
+            exception: Optional[Exception]
+        """
+        super().__init__(
+            payload=payload,
+            exception=exception,
+        )
         """INTERNAL: Use build methods instead of direct constructor."""
-        method = "DeletionResult.work"
+        self._state = state
+        
+    @property
+    def state(self) -> DeletionState:
+        return self._state
     
     @property
     def is_success(self) -> bool:
-        return not self.is_failure
+        return (
+            self.payload is not None and
+            self.exception is None and
+            self._state == DeletionState.SUCCESS
+        )
     
     @property
     def is_failure(self) -> bool:
         return (
                 self.payload is None and
                 self.exception is not None and
-                self.state.classification == DeletionResultEnum.FAILURE or
-                self.state.classification == DeletionResultEnum.TIMED_OUT
+                self._state == DeletionState.FAILURE or
+                self._state == DeletionState.TIMED_OUT
         )
     
     @property
@@ -61,7 +90,7 @@ class DeletionResult(DataResult, Generic[T]):
         return (
                 self.payload is None and
                 self.exception is None and
-                self.state.classification == DeletionResultEnum.NOTHING_TO_DELETE
+                self._state == DeletionState.NOTHING_TO_DELETE
         )
     
     @property
@@ -69,7 +98,7 @@ class DeletionResult(DataResult, Generic[T]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self.state.classification == DeletionResultEnum.TIMED_OUT
+                self._state == DeletionState.TIMED_OUT
         )
     
     @classmethod
@@ -77,7 +106,7 @@ class DeletionResult(DataResult, Generic[T]):
         return cls(
             payload=payload,
             exception=None,
-            state=DeletionResultState(DeletionResultEnum.SUCCESS),
+            state=DeletionState.SUCCESS,
         )
     
     @classmethod
@@ -85,7 +114,7 @@ class DeletionResult(DataResult, Generic[T]):
         return cls(
             payload=None,
             exception=exception,
-            state=DeletionResultState(DeletionResultEnum.FAILURE),
+            state=DeletionState.FAILURE,
         )
     
     @classmethod
@@ -93,7 +122,7 @@ class DeletionResult(DataResult, Generic[T]):
         return cls(
             payload=None,
             exception=exception,
-            state=DeletionResultState(DeletionResultEnum.TIMED_OUT),
+            state=DeletionState.TIMED_OUT,
         )
     
     @classmethod
@@ -101,6 +130,6 @@ class DeletionResult(DataResult, Generic[T]):
         return cls(
             payload=None,
             exception=None,
-            state=DeletionResultState(DeletionResultEnum.NOTHING_TO_DELETE),
+            state=DeletionState.NOTHING_TO_DELETE,
         )
 

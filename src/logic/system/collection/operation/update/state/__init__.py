@@ -13,5 +13,3 @@ Version: 1.0.0
 None
 
 # Modules
-from .state import UpdateResultState
-from .classification import UpdateResultEnum

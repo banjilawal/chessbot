@@ -14,4 +14,3 @@ from .state import *
 from .exception import *
 
 # Modules
-from .result import InsertionResult

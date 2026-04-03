@@ -7,9 +7,10 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Optional, TypeVar, Generic
-from logic.system import MethodImplementationException, Result
-from result.validation.state import ValidationState
+from typing import Generic, Optional, TypeVar
+
+from result import Result
+from result.validation import ValidationState
 
 T = TypeVar("T")
 
@@ -31,8 +32,9 @@ class ValidationResult(Result[T], Generic[T]):
         is_failure: bool
 
     Provides:
-        -   def success(payload: T) -> Result[T]
-        -   def failure(exception: Exception) -> Result[T]
+        -   def success(payload: T) -> DeletionResult[T]
+        -   def failure(exception: Exception) -> DeletionResult[T]
+        -   def timed_out(exception: Exception) -> ValidationResult[T]:
 
     Super Class:
         Result
@@ -64,18 +66,15 @@ class ValidationResult(Result[T], Generic[T]):
     
     @property
     def is_success(self) -> bool:
-        return (
-                self.payload is not None and
-                self.exception is None and
-                self._state == ValidationState.SUCCESS
-        )
+        return not self.is_failure
     
     @property
     def is_failure(self) -> bool:
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state == ValidationState.FAILURE
+                self._state == ValidationState.FAILURE or
+                self._state == ValidationState.TIMED_OUT
         )
     
     @property

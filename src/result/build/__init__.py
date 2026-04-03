@@ -14,3 +14,4 @@ None
 
 # Modules
 from .result import BuildResult
+from .state import BuildState

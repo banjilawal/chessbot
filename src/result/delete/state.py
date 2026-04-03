@@ -1,10 +1,10 @@
-# src/logic/system/collection/operation/deletion/state/classification.py
+# src/result/delete/state.py
 
 """
-Module: logic.system.collection.operation.deletion.state.classification
+Module: result.delete.state
 Author: Banji Lawal
-Created: 2026-01-25
-Version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from enum import auto, Enum
