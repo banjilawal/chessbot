@@ -1,9 +1,9 @@
-# src/logic/system/search/resource/route/exception/transaction.py
+# src/logic/system/search/resource/exception/transaction.py
 
 """
-Module: logic.system.search.route.exception.transaction
+Module: logic.system.search.resource.exception.transaction
 Author: Banji Lawal
-Created: 2025-11-18
+Created: 2026-03-31
 Version: 1.0.0
 """
 
@@ -27,7 +27,7 @@ class SearchException(CollectionOperationException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate a search failed.
+        1.  Indicate an error prevented the search from completing.
         2.  Identify the method where the failure occurred.
 
     Attributes:
@@ -47,7 +47,7 @@ class SearchException(CollectionOperationException):
     OP = "Search"
     RSLT_TYPE = "SearchResult"
     ERR_CODE = "SEARCH_FAILURE"
-    MSG = "Search method failed."
+    MSG = "Search method experienced an error."
     
     def __init__(
             self,

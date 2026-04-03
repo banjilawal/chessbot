@@ -3,16 +3,16 @@
 """
 Module: logic.system.search.resource.__init__
 Author: Banji Lawal
-Created: 2026-04-01
+Created: 2026-03-31
 Version: 1.0.0
 """
 
 # =========== SYSTEM.SEARCH.RESOURCE PACKAGE CONTENTS ===========#
 
 # Packages
+None
+
+# Modules
 from .query import *
 from .route import *
 from .context import *
-
-# Modules
-None

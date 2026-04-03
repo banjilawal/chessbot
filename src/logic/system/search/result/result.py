@@ -1,9 +1,9 @@
-# src/logic/system/search/result.py
+# src/logic/system/search/result/result.py
 
 """
-Module: logic.system.search.result
+Module: logic.system.search.result.result
 Author: Banji Lawal
-Created: 2025-11-18
+Created: 2026-01-25
 Version: 1.0.0
 """
 

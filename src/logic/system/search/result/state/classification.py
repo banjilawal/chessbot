@@ -11,8 +11,6 @@ from enum import Enum, auto
 
 
 class SearchResultEnum(Enum):
-    """
-    """
     SUCCESS = auto(),
     FAILURE = auto(),
     TIMED_OUT = auto(),

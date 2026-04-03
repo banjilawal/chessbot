@@ -1,13 +1,13 @@
-# src/logic/system/search/resource/route/exception/__init__.py
+# src/logic/system/search/resource/exception/__init__.py
 
 """
-Module: logic.system.search.route.exception.__init__
+Module: logic.system.search.resource.exception.__init__
 Author: Banji Lawal
-Created: 2025-11-18
+Created: 2026-03-31
 Version: 1.0.0
 """
 
-# =========== SYSTEM.SEARCH.ROUTE.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== SYSTEM.SEARCH.RESOURCE.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
 None

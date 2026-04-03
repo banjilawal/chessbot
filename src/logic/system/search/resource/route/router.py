@@ -1,7 +1,7 @@
 # src/logic/system/search/resource/route/router.py
 
 """
-Module: logic.system.search.route.router
+Module: logic.system.search.resource.route.router
 Author: Banji Lawal
 Created: 2026-03-31
 Version: 1.0.0
