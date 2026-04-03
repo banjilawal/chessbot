@@ -11,9 +11,7 @@ version: 1.0.0
 
 # Packages
 from .convert import *
-from .distance import *
 from .addition import *
-from .multiplication import *
 
 # Modules
 from .controller import CoordArithmeticController
