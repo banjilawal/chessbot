@@ -27,7 +27,7 @@ class RankQuotaFullException(TokenDebugException):
         - Exception Messaging
 
     Responsibilities:
-        1.  Indicate that pushing a token to the schema failed because there were no
+        1.  Indicate that pushing a token to the stack failed because there were no
             openings for the token's rank.
         
     Attributes:

@@ -26,7 +26,7 @@ class TokenStackPushException(InsertionException):
         - Exception Messaging
 
     Responsibilities:
-        1.  Indicate that pushing a token to the schema failed because the schema was full.
+        1.  Indicate that pushing a token to the stack failed because the stack was full.
 
     Attributes:
         var: Optional[str]
@@ -47,7 +47,7 @@ class TokenStackPushException(InsertionException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that pushing a token on to the schema failed.
+        1.  Indicate that pushing a token on to the stack failed.
         2.  Identify the TokenStackService method where the failure occurred.
         
 

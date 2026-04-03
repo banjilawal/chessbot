@@ -1,9 +1,9 @@
-# src/logic/token/database/search/service/microservice.py
+# src/logic/token/database/search/service/service.py
 
 """
 Module: logic.token.database.search.service.service
 Author: Banji Lawal
-Created: 2025-11-24
+Created: 2025-10-03
 version: 1.0.0
 """
 

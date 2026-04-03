@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import List, TypeVar
 
 from logic.system import (
-    Context, IntegrityMicroservice, LoggingLevelRouter, Query, SearchResult, Microservice, StackSearchRouter
+    Context, IntegrityMicroservice, LoggingLevelRouter, Query, SearchResult, Microservice, SearchRouter
 )
 
 T = TypeVar("T")
@@ -40,14 +40,14 @@ class SearchMicroservice(ABC, Microservice[T]):
     Super Class:
         Microservice
     """
-    _router: StackSearchRouter
+    _router: SearchRouter
     _context_service: IntegrityMicroservice[Context[T]]
     
     def __init__(
             self,
             id: int,
             name: str,
-            router: StackSearchRouter[T],
+            router: SearchRouter[T],
             context_service: IntegrityMicroservice[Context[T]],
     ):
         """
@@ -68,7 +68,7 @@ class SearchMicroservice(ABC, Microservice[T]):
     
     @property
     @abstractmethod
-    def router(self) -> StackSearchRouter[T]:
+    def router(self) -> SearchRouter[T]:
         pass
     
     @abstractmethod

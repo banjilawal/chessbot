@@ -1,24 +1,25 @@
-# src/logic/token/database/kernel/operation/crud/push/exception/full.py
+# src/logic/system/search/service/exception/debug.py
 
 """
-Module: logic.token.database.kernel.operation.crud.push.exception.full
+Module: logic.system.search.service.exception.debug
 Author: Banji Lawal
-Created: 2026-02-22
-version: 1.0.0
+Created: 2025-11-18
+Version: 1.0.0
 """
 
 from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# TOKEN_STACK_FULL_EXCEPTION #======================#
-    "TokenStackFullException",
+    # ======================# SEARCH_SERVICE_DEBUG_EXCEPTION #======================#
+    "SearchServiceDebugException",
 ]
 
-from logic.system import DebugException
+from logic.system import ServiceDebugException
 
-# ======================# TOKEN_STACK_FULL_EXCEPTION #======================#
-class TokenStackFullException(DebugException):
+
+# ======================# SEARCH_SERVICE_DEBUG_EXCEPTION #======================#
+class SearchServiceDebugException(ServiceDebugException):
     """
     Role:
         -   Exception Chain Layer 2
@@ -26,7 +27,7 @@ class TokenStackFullException(DebugException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that pushing a token to the stack failed because the stack was full.
+        1.  Record the condition that fired a SearchService variable's error state.
         
     Attributes:
         var: Optional[str]
@@ -36,12 +37,12 @@ class TokenStackFullException(DebugException):
         err_code: Optional[str]
         
     Provides:
-
+    
     Super Class:
-        TokenDebugException
+        ServiceDebugException
     """
-    ERR_CODE = "TOKEN_STACK_FULL_EXCEPTION"
-    MSG = "Cannot push a token onto a full stack."
+    ERR_CODE = "SEARCH_SERVICE_DEBUG_EXCEPTION"
+    MSG = str = "SearchService fired into error state by attribute or method."
     
     def __init__(
             self,
@@ -61,4 +62,11 @@ class TokenStackFullException(DebugException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)
+        super().__init__(
+            ex=ex,
+            msg=msg,
+            var=var,
+            val=val,
+            err_code=err_code,
+        )
+

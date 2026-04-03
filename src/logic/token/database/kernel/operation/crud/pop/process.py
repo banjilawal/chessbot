@@ -23,7 +23,7 @@ class TokenStackPop:
 
     Responsibilities:
         1.  Token deletion exception owner.
-        2.  Prevent deleting from an empty schema.
+        2.  Prevent deleting from an empty stack.
         
     Attributes:
     
@@ -38,11 +38,11 @@ class TokenStackPop:
     @LoggingLevelRouter.monitor
     def execute(cls, token_stack: TokenStackService) -> DeletionResult[Token]:
         """
-        Remove the token at the top of the schema.
+        Remove the token at the top of the stack.
         
         Action:
-            1.  Send an exception chain in the DeletionResult if the schema is empty.
-            2.  Otherwise, pop the token from the schema.
+            1.  Send an exception chain in the DeletionResult if the stack is empty.
+            2.  Otherwise, pop the token from the stack.
             3.  Send the success result containing the finished work product.
         Args:
             token_stack: TokenStackService
@@ -54,7 +54,7 @@ class TokenStackPop:
         """
         method = f"{cls.__class__.__name__}.pop"
         
-        # Handle the case that the schema is empty.
+        # Handle the case that the stack is empty.
         if token_stack.is_empty:
             # Return the exception chain on failure.
             return DeletionResult.failure(
@@ -109,7 +109,7 @@ class TokenStackPop:
         """
         method = f"{cls.__name__}.delete_by_id"
         
-        # Handle the case that the schema is empty.
+        # Handle the case that the stack is empty.
         if token_stack.is_empty:
             # Return the exception chain on failure.
             return DeletionResult.failure(
@@ -143,7 +143,7 @@ class TokenStackPop:
         target = None
         for token in token_stack.items:
             if token.id == id:
-                # Record a hit before pulling it from the schema.
+                # Record a hit before pulling it from the stack.
                 target = token
                 token_stack.items.remove(token)
         # --- After the purging loop finishes handle the possible return cases. ---#

@@ -1,38 +1,71 @@
-# src/logic/system/search/context/service/exception/super.py
+# src/logic/system/search/service/exception/anchor.py
 
 """
-Module: logic.system.search.context.service.exception.__init__
+Module: logic.system.search.service.exception.anchor
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
 """
 
-from logic.system import  ServiceException
+from __future__ import annotations
+from typing import Optional
 
 __all__ = [
-    # ======================# CONTEXT_SERVICE EXCEPTION #======================#
-    "ContextServiceException",
+    # ======================# SEARCH_SERVICE_EXCEPTION #======================#
+    "SearchServiceException",
 ]
 
+from logic.system import ServiceException
 
-# ======================# CONTEXT_SERVICE EXCEPTION #======================#
-class ContextServiceException(ContextException, ServiceException):
+
+# ======================# SEARCH_SERVICE_EXCEPTION #======================#
+class SearchServiceException(ServiceException):
     """
-    Role:Exception Work
+    Role:
+        -   Exception Chain Layer 0
+        -   Exception coverage target
 
     Responsibilities:
-    1.  Parent of exceptions raised by ServiceContext objects.
-    2.  Wrap an exception that hits the try-finally block of a ServiceContext method.
+        1.  Anchors SearchService debug (layer-2) information.
+        2.  Indicate which SearchService method received a worker's (layer-1) failure result.
 
-    Super Class:
-        *   ContextException
-        *   ServiceException
+    Attributes:
+        msg: Optional[str]
+        ex: Optional[Exception]
+        cls_name: Optional[str]
+        cls_mthd: Optional[str]
+        err_code: Optional[str]
 
     Provides:
 
-
-    # INHERITED ATTRIBUTES:
-    None
+    Super Class:
+        ServiceException
     """
-    ERR_CODE = "CONTEXT_SERVICE_EXCEPTION"
-    MSG = "QueryService raised an exception."
+    ERR_CODE = "SEARCH_SERVICE_EXCEPTION"
+    MSG = "SearchService raised an exception."
+    
+    def __init__(
+            self,
+            msg: Optional[str] = None,
+            ex: Optional[Exception] = None,
+            cls_name: Optional[str] = None,
+            cls_mthd: Optional[str] = None,
+            err_code: Optional[str] = None,
+    ):
+        """
+        Args:
+            msg: Optional[str]
+            ex: Optional[Exception]
+            cls_name: Optional[str]
+            cls_mthd: Optional[str]
+            err_code: Optional[str]
+        """
+        msg = msg or self.MSG
+        err_code = err_code or self.ERR_CODE
+        super().__init__(
+            ex=ex,
+            msg=msg,
+            err_code=err_code,
+            cls_name=cls_name,
+            cls_mthd=cls_mthd,
+        )

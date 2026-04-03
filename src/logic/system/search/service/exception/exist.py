@@ -1,49 +1,47 @@
-# src/logic/token/database/kernel/operation/crud/pop/exception/empty.py
+# src/logic/system/search/service/exception/exist.py
 
 """
-Module: logic.token.database.kernel.operation.crud.pop.exception.empty
+Module: logic.system.search.service.exception.exist
 Author: Banji Lawal
-Created: 2026-02-22
-version: 1.0.0
+Created: 2025-11-18
+Version: 1.0.0
 """
 
 from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# POPPING_EMPTY_TOKEN_STACK_EXCEPTION #======================#
-    "PoppingEmptyTokenStackException",
+    # ======================# ITEM_NOT_FOUND_EXCEPTION #======================#
+    "ItemNotFoundException",
 ]
 
-from logic.system import DebugException
+from logic.system import SearchServiceDebugException
 
 
-# ======================# POPPING_EMPTY_TOKEN_STACK_EXCEPTION #======================#
-class PoppingEmptyTokenStackException(DebugException):
+# ======================# ITEM_NOT_FOUND_EXCEPTION #======================#
+class ItemNotFoundException(SearchServiceDebugException):
     """
     Role:
-        -    Error Variable Identifier
-        -   Exception Chain Layer 2,
-        -   Exception Messaging
-
+        -   Exception Chain Layer 0
+        -   Exception coverage target
+    
     Responsibilities:
-        1.  Indicate that a pop failed because the stack was empty.
-        
+        1.  Indicate that no item matching the search criteria was found.
+
     Attributes:
         var: Optional[str]
         val: Optional[Any]
         msg: Optional[str]
         ex: Optional[Exception]
         err_code: Optional[str]
-        
-    Provides:
-
+    
+    Provides
+    
     Super Class:
-        TokenDebugException
-
+        SearchServiceDebugException
     """
-    ERR_CODE = "POPPING_EMPTY_TOKEN_STACK_EXCEPTION"
-    MSG = "TokenStackService pop failed: Cannot pop from an empty stack."
+    ERR_CODE = "ITEM_NOT_FOUND_EXCEPTION"
+    MSG = "No item matching the search criteria was found."
     
     def __init__(
             self,
@@ -65,9 +63,8 @@ class PoppingEmptyTokenStackException(DebugException):
         err_code = err_code or self.ERR_CODE
         super().__init__(
             ex=ex,
-            var=var,
+            msg=msg, 
+            var=var, 
             val=val,
-            msg=msg,
             err_code=err_code,
         )
-

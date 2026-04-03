@@ -29,7 +29,7 @@ class AddingDuplicateTokenException(DebugException):
         - Exception Messaging
 
     Responsibilities:
-        1.  Indicate an insertion failed because the token was already in the schema.
+        1.  Indicate an insertion failed because the token was already in the stack.
 
     Attributes:
         var: Optional[str]
@@ -44,7 +44,7 @@ class AddingDuplicateTokenException(DebugException):
         TokenDebugException
     """
     ERR_CODE = "ADDING_DUPLICATE_TOKEN_EXCEPTION"
-    MSG = "Token is already in the schema."
+    MSG = "Token is already in the stack."
     
     def __init__(
             self,
