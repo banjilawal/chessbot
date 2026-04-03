@@ -25,8 +25,8 @@ class SchemaSearchServiceException(ServiceException):
         -   Exception coverage target
 
     Responsibilities:
-        1.  Anchors SchemaSearchService debug (layer-2) information.
-        2.  Indicate which SchemaSearchService method received a worker's
+        1.  Anchors SchemaLookupService debug (layer-2) information.
+        2.  Indicate which SchemaLookupService method received a worker's
             (layer-1) failure result.
 
 
@@ -42,9 +42,9 @@ class SchemaSearchServiceException(ServiceException):
     Super Class:
         ServiceException
     """
-    CLS_NAME = "SchemaSearchService"
+    CLS_NAME = "SchemaLookupService"
     ERR_CODE = "SCHEMA_SEARCH_SERVICE_FAILURE"
-    MSG = "SchemaSearchService raised an exception."
+    MSG = "SchemaLookupService raised an exception."
     
     def __init__(
             self,

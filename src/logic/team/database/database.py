@@ -134,7 +134,7 @@ class TeamDatabase(Database[Team]):
         method = "TeamDatabase.insert"
         
         # --- Use _token_database_core.insert_token because order does not matter for the occupant access. ---#
-        insertion_result = self._team_stack.search(item=team)
+        insertion_result = self._team_stack.search_service(item=team)
         
         # Handle the case that, the insertion is not completed.
         if insertion_result.is_failure:
@@ -189,7 +189,7 @@ class TeamDatabase(Database[Team]):
         """Convenience method which turns a common search into a dynamic property"""
         method = "TeamDatabase.white_teams"
         # Use color from the schema incase team color is changed from GameColor.BLACK
-        result = self.data_service.search(context=TeamContext(color=Schema.WHITE.color))
+        result = self.data_service.search_service(context=TeamContext(color=Schema.WHITE.color))
         if result.is_failure:
             # Handle the failure case by wrapping the debugging exception then sending in the SearchResult.
             return SearchResult.failure(
@@ -207,7 +207,7 @@ class TeamDatabase(Database[Team]):
         """Convenience method which turns a common search into a dynamic property"""
         method = "TeamDatabase.black_teams"
         # Use color from the schema incase team color is changed from GameColor.BLACK
-        result = self.data_service.search(context=TeamContext(color=Schema.BLACK.color))
+        result = self.data_service.search_service(context=TeamContext(color=Schema.BLACK.color))
         if result.is_failure:
             # Handle the failure case by wrapping the debugging exception then sending in the SearchResult.
             return SearchResult.failure(
@@ -252,7 +252,7 @@ class TeamDatabase(Database[Team]):
     @LoggingLevelRouter.monitor
     def search_teams(self, context: TeamContext) -> SearchResult[List[Team]]:
         method = "TeamDatabase.search_teams"
-        result = self.data_service.search(context)
+        result = self.data_service.search_service(context)
         if result.is_failure:
             # Handle the failure case by wrapping the debugging exception then sending in the SearchResult.
             return SearchResult.failure(

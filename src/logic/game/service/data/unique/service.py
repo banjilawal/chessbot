@@ -82,7 +82,7 @@ class UniqueGameDataService(Database[Game]):
     
     @LoggingLevelRouter.monitor
     def search_games(self, context: GameContext) -> SearchResult[List[Game]]:
-        return self.data_service.search(context)
+        return self.data_service.search_service(context)
     
     # @LoggingLevelRouter.monitor
     # def push_unique_item(self, item: Game) -> InsertionResult[Game]:

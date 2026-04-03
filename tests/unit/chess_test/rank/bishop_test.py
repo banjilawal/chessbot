@@ -8,8 +8,8 @@ class BishopTest(unittest.TestCase):
     rank = Bishop("bishop", "b", 2, 1, [Quadrant.N])
     side = Side(1, Commander(1, "coosmof"), TeamProfile.BLACK)
     piece = Piece(1, "BB-1", rank, side)
-    piece.positions.search(Coord(0, 0))
-    board = ChessBoardBuilder.search(1)
+    piece.positions.search_service(Coord(0, 0))
+    board = ChessBoardBuilder.search_service(1)
 
     with self.assertRaises(BishopException) as ctx:
       piece.rank_name.walk(piece, Coord(0, 1), board)
@@ -18,11 +18,11 @@ class BishopTest(unittest.TestCase):
 
   def test_valid_destination_passes(self):
     rank = Bishop("bishop", "b", 2, 1, [Quadrant.N])
-    board = ChessBoardBuilder.search(1)
+    board = ChessBoardBuilder.search_service(1)
     side = Side(1, Commander(1, "owner"), TeamProfile.BLACK)
 
     piece = Piece(1, "BB-1", rank, side)
-    piece.positions.search(Coord(0, 0))
+    piece.positions.search_service(Coord(0, 0))
     piece.rank_name.walk(piece, Coord(5, 5), board)
 
 

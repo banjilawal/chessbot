@@ -83,7 +83,7 @@ class UniqueAgentDataService(Database[PlayerAgent]):
         return self.data_service.undo_current_token_positon()
     
     def search_agents(self, context: AgentContext) -> SearchResult[List[PlayerAgent]]:
-        return self.data_service.search(context)
+        return self.data_service.search_service(context)
  
     # @LoggingLevelRouter.monitor
     # def push_unique_item(self, item: Player) -> InsertionResult[Player]:

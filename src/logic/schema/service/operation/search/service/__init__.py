@@ -13,5 +13,5 @@ version: 1.0.0
 from .exception import *
 
 # Modules
-from .service import SchemaSearchService
+from .service import SchemaLookupService
 

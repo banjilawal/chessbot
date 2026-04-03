@@ -10,6 +10,7 @@ version: 1.0.0
 # =========== SCHEMA.SERVICE PACKAGE CONTENTS ===========#
 
 # Packages
+from .operation import *
 from .exception import *
 
 # Modules

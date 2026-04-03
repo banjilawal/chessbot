@@ -6,7 +6,7 @@ from logic.coord import Coord
 
 def main():
 
-   arena = ArenaBuilder.search()
+   arena = ArenaBuilder.search_service()
    print(arena.chess_board)
 
    bp2 = arena.chess_board.find_square_by_name("B2").occupant

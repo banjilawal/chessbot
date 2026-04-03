@@ -27,7 +27,7 @@ class OldPromotionTransaction(TravelTransaction[PromotionEvent]):
         method = "PromotionTransaction.execute"
         
         try:
-            event_validation = PromotionEventValidator.search(self.event)
+            event_validation = PromotionEventValidator.search_service(self.event)
             if event_validation.failure():
                 return TransactionResult.errored(event_update=self.event, exception=event_validation.exception)
             

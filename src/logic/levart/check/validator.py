@@ -64,7 +64,7 @@ class KingCheckEventValidator(Validator[KingCheckEvent]):
       if not id_validation.is_success():
         raise IdValidationException(f"{method}: {IdValidationException.MSG}")
 
-      actor_validation = PieceValidator.search(event.actor)
+      actor_validation = PieceValidator.search_service(event.actor)
       if not actor_validation.is_success():
         raise InvalidAttackException(f"{method}: actor_candidate validation failed.")
 

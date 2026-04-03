@@ -17,13 +17,13 @@ class SideValidatorTest(unittest.TestCase):
 
   def test_null_side_raises_exception(self):
     with self.assertRaises(TeamValidationException) as ctx:
-      TeamValidator.search(None)
+      TeamValidator.search_service(None)
     self.assertIsInstance(ctx.exception.__cause__, NullTeamException)
 
 
   def test_cast_to_side_failure_raises_exception(self):
     with self.assertRaises(TeamValidationException) as ctx:
-      TeamValidator.search(1)
+      TeamValidator.search_service(1)
     self.assertIsInstance(ctx.exception.__cause__, TypeError)
 
 
@@ -34,7 +34,7 @@ class SideValidatorTest(unittest.TestCase):
     mock_side.competitor= CompetitorTest.valid_mock_competitor()
 
     with self.assertRaises(TeamValidationException) as ctx:
-      TeamValidator.search(mock_side)
+      TeamValidator.search_service(mock_side)
     self.assertIsInstance(ctx.exception.__cause__, IdValidationException)
 
 
@@ -45,7 +45,7 @@ class SideValidatorTest(unittest.TestCase):
     mock_side.schema = TeamSchema.BLACK
 
     with self.assertRaises(TeamValidationException) as ctx:
-      TeamValidator.search(mock_side)
+      TeamValidator.search_service(mock_side)
 
     self.assertIsInstance(ctx.exception.__cause__, CommanderValidationException)
 
@@ -59,14 +59,14 @@ class SideValidatorTest(unittest.TestCase):
     mock_side.schema = None
 
     with self.assertRaises(TeamValidationException) as ctx:
-      TeamValidator.search(mock_side)
+      TeamValidator.search_service(mock_side)
     #
     self.assertIsInstance(ctx.exception.__cause__, NullTeamProfileException)
 
 
   def test_side_validator_payload_equals_valid_side(self):
     side = Side(1, Commander(1, "owner"), TeamSchema.BLACK)
-    validation = TeamValidator.search(side)
+    validation = TeamValidator.search_service(side)
     self.assertEqual(validation.payload, side)
 
 

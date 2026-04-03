@@ -49,7 +49,7 @@ class KingLocationPostingService(Service[KingOccupationEvent]):
                 )
             )
         
-        build_result = KingLocationRecordBuilder.search(event=request)
+        build_result = KingLocationRecordBuilder.search_service(event=request)
         
         
         

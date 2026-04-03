@@ -14,14 +14,14 @@ class CompetitorValidatorTest(unittest.TestCase):
 
   def test_null_competitor_raises_exception(self):
     with self.assertRaises(CommanderValidationException) as ctx:
-      CommanderValidator.search(None)
+      CommanderValidator.search_service(None)
 
     self.assertIsInstance(ctx.exception.__cause__, NullCommanderException)
 
 
   def test_cast_to_competitor_failure_raises_exception(self):
     with self.assertRaises(CommanderValidationException) as ctx:
-      CommanderValidator.search(1)
+      CommanderValidator.search_service(1)
 
     self.assertIsInstance(ctx.exception.__cause__, TypeError)
 
@@ -32,7 +32,7 @@ class CompetitorValidatorTest(unittest.TestCase):
     mock_competitor._visitor_name= "owner"
 
     with self.assertRaises(CommanderValidationException) as ctx:
-      CommanderValidator.search(mock_competitor)
+      CommanderValidator.search_service(mock_competitor)
 
     self.assertIsInstance(ctx.exception.__cause__, IdValidationException)
 
@@ -43,14 +43,14 @@ class CompetitorValidatorTest(unittest.TestCase):
     mock_competitor._visitor_name= "A"
 
     with self.assertRaises(CommanderValidationException) as ctx:
-      CommanderValidator.search(mock_competitor)
+      CommanderValidator.search_service(mock_competitor)
 
     self.assertIsInstance(ctx.exception.__cause__, NameValidationException)
 
 
   def test_competitor_validator_payload_equals_valid_competitor(self):
     competitor = CompetitorTest.valid_mock_competitor()
-    validation = CommanderValidator.search(competitor)
+    validation = CommanderValidator.search_service(competitor)
     self.assertEqual(validation.payload, competitor)
 
 

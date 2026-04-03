@@ -9,21 +9,24 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.schema import Schema, SchemaQueryOpsController, SchemaSearchService, SchemaValidator
-from logic.system import CatalogService, IdFactory, SearchMicroservice, Validator
-from logic.system.collection.adt.catalog.service import E
+from logic.system import CatalogService, IdFactory
+from logic.schema import (
+    Schema, SchemaLookupService, SchemaOpsController, SchemaPropertyValuesReporter, SchemaValidator
+)
+
 
 
 class SchemaService(CatalogService[Schema]):
-
+    
     SERVICE_NAME = "SchemaService"
-    _ops_controller: SchemaQueryOpsController
+    _ops_controller: SchemaOpsController
+    _schema: Schema
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             id: int = IdFactory.next_id(class_name="SchemaService"),
-            ops_controller: SchemaQueryOpsController = SchemaQueryOpsController(),
+            ops_controller: SchemaOpsController = SchemaOpsController(),
     ):
         """
         Args:
@@ -34,12 +37,20 @@ class SchemaService(CatalogService[Schema]):
         super().__init__(id=id, name=name,)
         self._ops_controller = ops_controller
 
-
+        
+    @property
+    def schema(self) -> Schema:
+        return self._schema
+        
     @property
     def validator(self) -> SchemaValidator:
         return self._ops_controller.validator
     
+    @property
+    def search_service(self) -> SchemaLookupService:
+        return self._ops_controller.search
     
     @property
-    def search_service(self) -> SchemaSearchService:
-        return self._ops_controller.
+    def values(self) -> SchemaPropertyValuesReporter:
+        return self._ops_controller.property_values
+

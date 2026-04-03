@@ -92,12 +92,12 @@ class TurnSceneValidator(Validator[TurnScene]):
         method = "TurnScene._actor_square_validation_helper"
         
         try:
-            search_context_build = BoardContextBuilder.search(coord=actor.current_position)
+            search_context_build = BoardContextBuilder.search_service(coord=actor.current_position)
             if search_context_build.is_failure():
                 return ValidationResult.failure(search_context_build.exception)
             search_context = cast(BoardContext, search_context_build.payload)
             
-            search_result = BoardSquareFinder.search(board=board, search_context=search_context)
+            search_result = BoardSquareFinder.search_service(board=board, search_context=search_context)
             if search_result.is_failure():
                 return ValidationResult.failure(search_result.exception)
             
@@ -130,7 +130,7 @@ class TurnSceneValidator(Validator[TurnScene]):
         method = "TurnSceneValidator._actor_validation_helper"
         
         try:
-            piece_validation = PieceValidator.search(piece)
+            piece_validation = PieceValidator.search_service(piece)
             if piece_validation.is_failure():
                 return ValidationResult.failure(piece_validation.exception)
             

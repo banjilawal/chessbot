@@ -58,11 +58,11 @@ class TravelEventFactory:
         method = "TravelEventFactory.execute"
         
         try:
-            actor_validation = BoardActorValidator.search((actor, board))
+            actor_validation = BoardActorValidator.search_service((actor, board))
             if actor_validation.is_failure():
                 return BuildResult.failure(actor_validation.exception)
             
-            resource_validator = TravelResourceValidator.search((destination_square, board))
+            resource_validator = TravelResourceValidator.search_service((destination_square, board))
             if resource_validator.is_failure():
                 return BuildResult.failure(resource_validator.exception)
             
@@ -73,7 +73,7 @@ class TravelEventFactory:
                         )
                 )
             
-            actor_square_search = BoardSquareFinder.search(
+            actor_square_search = BoardSquareFinder.search_service(
                 board=board,
                 search_context=BoardContext(coord=actor.current_position)
             )

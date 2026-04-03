@@ -75,7 +75,7 @@ class AgentFinder(DataFinder[PlayerAgent]):
                     AgentNullDatasetException(f"{method}: {AgentNullDatasetException.MSG}")
                 )
             # certify the map is safe.
-            validation_result = context_validator.search(context)
+            validation_result = context_validator.search_service(context)
             if validation_result.is_failure:
                 return SearchResult.failure(validation_result.exception)
             
@@ -220,7 +220,7 @@ class AgentFinder(DataFinder[PlayerAgent]):
             # Loop through the set and return the first owner who ran the team.
             # If more than one Player is returned there might be a problem.
             for agent in dataset:
-                team_search = player.teams.search(context=TeamContext(id=team.id))
+                team_search = player.teams.search_service(context=TeamContext(id=team.id))
                 if team_search.is_failure:
                     return SearchResult.failure(team_search.exception)
                 # Put the first owner that matches inside a List then send the array inside a SearchResult.

@@ -403,7 +403,7 @@ def remove_outgoing_edge(self, node: Node, edge: Edge) -> DeletionResult[Edge]:
     method = "NodeService.remove_outgoing_edge"
     
     # Handle the case that, the node does not pass a validation check.
-    node_validation_result = self.validator.search(candidate=node)
+    node_validation_result = self.validator.search_service(candidate=node)
     if node_validation_result.is_failure:
         # Return the exception chain on failure.
         return DeletionResult.failure(

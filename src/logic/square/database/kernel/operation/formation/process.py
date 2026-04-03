@@ -71,7 +71,7 @@ class TokenDeploymentProcess:
         method =  f"{cls.__name__}.execute"
         
         # Handle the case that, the token does not pass a validation check.
-        token_validation_result = token_service.validator.search(token)
+        token_validation_result = token_service.validator.search_service(token)
         if token_validation_result.is_failure:
             # Return the exception chain on failure
             
@@ -104,7 +104,7 @@ class TokenDeploymentProcess:
                 )
             )
         # ServiceRequest a collision report. The square is verified during the report generation. ---#
-        collision_detection_result = collision_detector.search(
+        collision_detection_result = collision_detector.search_service(
             target=square,
             collider_candidates=square_stack.items,
         )
@@ -121,7 +121,7 @@ class TokenDeploymentProcess:
                 )
             )
         # --- ServiceRequest a rank quota report. ---#
-        rank_quota_report = rank_quota_analyzer.search(
+        rank_quota_report = rank_quota_analyzer.search_service(
             rank=square.rank,
             square_stack=square_stack,
             rank_service=rank_service,
@@ -176,7 +176,7 @@ class TokenDeploymentProcess:
         method = f"{cls.__name__}._run_token_tests"
         
         # Handle the case that, the token does not pass a validation check.
-        token_validation_result = token_service.validator.search(token)
+        token_validation_result = token_service.validator.search_service(token)
         if token_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(

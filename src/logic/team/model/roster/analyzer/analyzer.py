@@ -78,7 +78,7 @@ class RosterRelationAnalysis(RelationAnalysis[Team, Token]):
         team = cast(Team, team_validation.payload)
         
         # Process the possible piece_validation outcomes.
-        piece_validation = piece_service.validator.search(candidate_satellite)
+        piece_validation = piece_service.validator.search_service(candidate_satellite)
         if piece_validation.is_failure:
             return RelationReport(
                 TeamRosterRelationAnalysisException(

@@ -90,12 +90,12 @@ class PlayerValidator(Validator[Player]):
                 return ValidationResult.failure(identity_validation.exception)
             
             # Certify the owner's TeamStack is correct.
-            team_stack_certification = service_validator.search(candidate=player.teams)
+            team_stack_certification = service_validator.search_service(candidate=player.teams)
             if team_stack_certification.is_failure():
                 return ValidationResult.failure(team_stack_certification.exception)
             
             # Certify the owner's GameStackService is correct.
-            game_stack_certification = service_validator.search(candidate=player.games)
+            game_stack_certification = service_validator.search_service(candidate=player.games)
             if game_stack_certification.is_failure():
                 return ValidationResult.failure(game_stack_certification.exception)
             

@@ -44,7 +44,7 @@ class BlockedPathTransaction(TravelTransaction[BlockingEvent]):
         method = "OccupationTransaction.execute"
         
         try:
-            event_validation = BlockingEventValidator.search(event=self.event)
+            event_validation = BlockingEventValidator.search_service(event=self.event)
             if event_validation.is_failure():
                 return TransactionResult.errored(
                     event_update=self.event,
@@ -53,7 +53,7 @@ class BlockedPathTransaction(TravelTransaction[BlockingEvent]):
             
             self.event.actor.discoveries.append(Discovery(self.event.friend))
             
-            context_build = DiscoverySearchContextBuilder.search(piece_id=self.event.friend.visitor_id)
+            context_build = DiscoverySearchContextBuilder.search_service(piece_id=self.event.friend.visitor_id)
             if context_build.is_failure():
                 return TransactionResult.errored(
                     event_update=self.event,

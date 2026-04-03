@@ -74,11 +74,11 @@ class WhiteTeamProjectionFinder(Finder[ProjectionService, Projection]):
         """"""
         method = "WhiteTeamProjectionFinder.searcher"
 
-        service_validation = ProjectionServiceValidator.search(service)
+        service_validation = ProjectionServiceValidator.search_service(service)
         if service_validation.is_failure():
             return SearchResult(exception=service_validation.exception)
 
-        search_context_validation = BoardSearchContextValidator.search(search_context)
+        search_context_validation = BoardSearchContextValidator.search_service(search_context)
         if search_context_validation.is_failure():
             return SearchResult(exception=search_context_validation.exception)
 

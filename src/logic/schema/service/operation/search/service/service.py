@@ -17,7 +17,7 @@ from logic.schema import (
 )
 
 
-class SchemaSearchService(SearchMicroservice[Schema]):
+class SchemaLookupService(SearchMicroservice[Schema]):
     """
     Role:
         -   API
@@ -38,7 +38,7 @@ class SchemaSearchService(SearchMicroservice[Schema]):
     Super Class:
         SearchMicroservice
     """
-    SERVICE_NAME = "SchemaSearchService"
+    SERVICE_NAME = "SchemaLookupService"
     _resource_host: SchemaSearchResourceHost
 
     def __init__(

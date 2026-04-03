@@ -91,7 +91,7 @@ class ArenaValidator(Validator[Arena]):
                 return ValidationResult.failure(board_validation.exception)
             
             # Verify the team service exists and is the right type.
-            team_service_validation = service_validator.search(arena.team_service)
+            team_service_validation = service_validator.search_service(arena.team_service)
             if team_service_validation.failure:
                 return ValidationResult.failure(team_service_validation.exception)
             

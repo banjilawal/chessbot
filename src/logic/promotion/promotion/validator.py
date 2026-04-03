@@ -49,7 +49,7 @@ class OldPromotionEventValidator(Validator[PromotionEvent]):
             if not id_validation.is_success():
                 return ValidationResult(exception=id_validation.exception)
             
-            actor_validator = BoardActorValidator.search(event.actor, event.execution_environment)
+            actor_validator = BoardActorValidator.search_service(event.actor, event.execution_environment)
             if actor_validator.is_failure():
                 return ValidationResult.failure(actor_validator.exception)
             
@@ -89,17 +89,17 @@ class OldPromotionEventValidator(Validator[PromotionEvent]):
                     DoublePromotionException(f"{method}: {DoublePromotionException.MSG}")
                 )
             
-            context_build_result = BoardContextBuilder.search(piece_id=event.actor.visitor_id)
+            context_build_result = BoardContextBuilder.search_service(piece_id=event.actor.visitor_id)
             if context_build_result.is_failure():
                 return ValidationResult.failure(context_build_result.exception)
             context = cast(BoardContext, context_build_result.payload)
             
-            square_search_result = BoardSquareFinder.search(board=event.execution_environment, context=context)
+            square_search_result = BoardSquareFinder.search_service(board=event.execution_environment, context=context)
             if square_search_result.is_failure():
                 return ValidationResult.failure(square_search_result.exception)
             square = cast(Square, square_search_result.payload)
             
-            resource_validation = TravelResourceValidator.search(event.square, event.execution_environment)
+            resource_validation = TravelResourceValidator.search_service(event.square, event.execution_environment)
             if resource_validation.is_failure():
                 return ValidationResult(exception=resource_validation.exception)
             

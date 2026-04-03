@@ -125,7 +125,7 @@ class TeamValidator(Validator[Team]):
                 )
             )
         # Handle the case that, team.schema does not pass a validation check.
-        schema_validation = schema_service.validation.search(team.schema)
+        schema_validation = schema_service.validation.search_service(team.schema)
         if schema_validation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -251,7 +251,7 @@ class TeamValidator(Validator[Team]):
         method = "TeamValidator._verify_team_board"
         
         # Handle the case that, either team.board does not pass a validation check. or the analysis aborts.
-        board_team_relation = board_service.board_team_relation_analyzer.search(
+        board_team_relation = board_service.board_team_relation_analyzer.search_service(
             candidate_primary=team.board,
             candidate_satellite=team,
         )

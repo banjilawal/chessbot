@@ -188,7 +188,7 @@ class SquareEntryProcess:
         method = f"{cls.__module__}._run_token_tests"
         
         # Handle the case that, the tokenis not safe.
-        token_validation_result = token_service.validator.search(candidate=token)
+        token_validation_result = token_service.validator.search_service(candidate=token)
         if token_validation_result.is_failure:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(

@@ -66,7 +66,7 @@ class BoardActorValidator(Validator[Tuple[Piece, Board]]):
       
       actor_candidate, environment_candidate = candidate
       
-      actor_validation = PieceValidator.search(actor_candidate)
+      actor_validation = PieceValidator.search_service(actor_candidate)
       if actor_validation.is_failure():
         return ValidationResult.failure(actor_validation.exception)
 
@@ -104,7 +104,7 @@ class BoardActorValidator(Validator[Tuple[Piece, Board]]):
       
       environment = cast(Board, environment_validation.payload)
       
-      search_result = BoardPieceFinder.search(board=environment, search_context=BoardContext(id=actor.id))
+      search_result = BoardPieceFinder.search_service(board=environment, search_context=BoardContext(id=actor.id))
       if search_result.is_empty():
         return ValidationResult.failure(
           BoardPieceRemovedCannotActException(f"{method}: {BoardPieceRemovedCannotActException.MSG}")

@@ -31,7 +31,7 @@ class OccupationTransaction(TravelTransaction[OccupationEvent]):
         try:
             # Step 1: Ensure the travel will not have failure conditions, i.e, traveler is a prisoner,
             # the enemy_square is empty.
-            validation = OccupationEventValidator.search(self.event)
+            validation = OccupationEventValidator.search_service(self.event)
             if validation.is_failure():
                 return TransactionResult.errored(event_update=self.event, exception=validation.exception)
             
@@ -75,7 +75,7 @@ class OccupationTransaction(TravelTransaction[OccupationEvent]):
                     )
                 )
             
-            self.event.actor.positions.search(self.event.destination_square.point)
+            self.event.actor.positions.search_service(self.event.destination_square.point)
             
             # If the push destination point is not the traveler's updated position rollback the rollback,
             # then return the rollback_exception.
@@ -94,7 +94,7 @@ class OccupationTransaction(TravelTransaction[OccupationEvent]):
             
             self.event.actor.discoveries.clear()
             
-            promotion_event_build = PromotionEventBuilder.search(
+            promotion_event_build = PromotionEventBuilder.search_service(
                 actor=self.event.actor,
                 parentpiece=self.event,
                 destination_square=self.event.destination_square,
@@ -102,7 +102,7 @@ class OccupationTransaction(TravelTransaction[OccupationEvent]):
             )
             if promotion_event_build.is_success():
                 promotion_event = cast(PromotionEvent, promotion_event_build.payload)
-                return PromotionTransaction(promotion_event).search()
+                return PromotionTransaction(promotion_event).search_service()
             
             return TransactionResult.success(event_update=self.event)
         except Exception as e:

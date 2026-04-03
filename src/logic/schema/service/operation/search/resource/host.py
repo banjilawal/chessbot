@@ -18,7 +18,7 @@ class SchemaSearchResourceHost:
         - Controller
         
     Responsibilities:
-        1.  Provide a single entry point for operations SchemaSearchService supports.
+        1.  Provide a single entry point for operations SchemaLookupService supports.
         
     Attributes:
         query_service: SchemaQueryService
