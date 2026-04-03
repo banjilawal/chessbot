@@ -10,8 +10,7 @@ Version: 1.0.0
 # =========== SYSTEM.COLLECTION.HASH PACKAGE CONTENTS ===========#
 
 # Packages
-from .lookup import *
-from .service import *
+from .exception import *
 
 # Modules
-None
+from .service import CatalogService

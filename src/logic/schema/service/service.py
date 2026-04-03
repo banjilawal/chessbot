@@ -17,12 +17,12 @@ from logic.schema import (
     SchemaValidator
 )
 from logic.system import (
-    ComputationResult, GameColor, HashService, IdFactory, LoggingLevelRouter, SearchResult,
-    id_emitter
+    ComputationResult, GameColor, IdFactory, LoggingLevelRouter, SearchResult
 )
+from logic.system.collection.adt.catalog.service import CatalogService
 
 
-class SchemaService(HashService[Schema]):
+class SchemaService(CatalogService[Schema]):
     SERVICE_NAME = "SchemaService"
     _ops_controller: SchemaQueryOpsController
     

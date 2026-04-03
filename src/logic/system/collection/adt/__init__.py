@@ -11,7 +11,7 @@ Version: 1.0.0
 
 # Packages
 from .stack import *
-from .table import *
+from .catalog import *
 from .database import *
 
 # Modules
