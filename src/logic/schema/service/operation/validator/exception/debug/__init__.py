@@ -14,4 +14,3 @@ None
 
 # Modules
 from .null import NullSchemaException
-from .route import SchemaValidationRouteException

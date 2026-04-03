@@ -9,12 +9,8 @@ version: 1.0.0
 
 from __future__ import annotations
 
-
-from logic.schema import (
-    PawnPromoter, SchemaBuilder, SchemaPositionController, SchemaDeployer,
-    SchemaReadinessAnalyzer, SchemaService, SchemaValidator
-)
-from logic.schema.service.operation.properties.reporter import SchemaPropertyValuesReporter
+from logic.schema import SchemaSearchService, SchemaService, SchemaValidator
+from logic.schema.service.operation import SchemaPropertyValuesReporter
 
 
 class SchemaOpsController:
@@ -36,24 +32,21 @@ class SchemaOpsController:
     """
     
     _validator: SchemaValidator
-    _search_service: SchemaService
+    _search: SchemaSearchService
     _property_values_reporter: SchemaPropertyValuesReporter
 
-    
-    
     def __init__(
             self,
             validator: SchemaValidator = SchemaValidator(),
-            search_service: SchemaService = SchemaService(),
-            property_values_reporter: SchemaPropertyValuesReporter 
-                = SchemaPropertyValuesReporter()
+            search: SchemaSearchService = SchemaSearchService(),
+            property_values_reporter: SchemaPropertyValuesReporter = SchemaPropertyValuesReporter()
             ,
     ):
         """
         Args:
             property_values_reporter
             validator: SchemaValidator
-            search_service: SchemaService
+            search: SchemaService
         """
         self._validator = validator
         self._search_service = search_service
@@ -64,9 +57,9 @@ class SchemaOpsController:
         return self._validator
     
     @property
-    def search_service(self) -> SchemaService:
+    def search_service(self) -> SchemaSearchService:
         return self._search_service
         
     @property
-    def property_values_(self) -> SchemaPropertyValuesReporter:
+    def property_values(self) -> SchemaPropertyValuesReporter:
         return self._property_values_reporter

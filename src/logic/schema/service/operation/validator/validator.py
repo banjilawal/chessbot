@@ -6,66 +6,87 @@ Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
 """
+from typing import Any, cast
 
-from typing import cast, Any
-
-from logic.system import Validator, ValidationResult, LoggingLevelRouter
-from logic.schema import Schema, SchemaValidationException, NullSchemaException
+from logic.schema import NullSchemaException, Schema, SchemaValidationException
+from logic.system import LoggingLevelRouter, ValidationResult, Validator
 
 
 class SchemaValidator(Validator[Schema]):
     """
-     Role:Validation, Data Integrity Guarantor, Security.
+    Role
+        -   Transaction Worker
+        -   Integrity Maintenance
+        -   Consistency Assurance
+        -   Process Runner
 
     Responsibilities:
-    1.  Ensure a rank is not null and the correct type before its used as a Schema.
-    2.  If verification fails indicate the reason in an exception returned to the caller.
+        1.  Ensure a Schema instance is certified safe, reliable and consistent before use.
 
-    Super Class:
-        *   Validator
+    Attributes:
 
     Provides:
+        -   def validate(candidate: Any) -> ValidationResult[Schema]
 
-
-    # INHERITED ATTRIBUTES:
-    None
+    Super Class:
+        Validator
     """
+    
     @classmethod
     @LoggingLevelRouter.monitor
     def validate(cls, candidate: Any) -> ValidationResult[Schema]:
         """
-        # ACTION:.
-            1.  If the rank passes existence and type checks cast into a Schema instance and return
-                in the ValidationResult. Else return an exception in the ValidationResult.
-        # PARAMETERS:
-            *   rank (Any)
-        # RETURNS:
-            *   ValidationResult[Schema] containing either:
-                    - On failure: Exception.
-                    - On success: Schema in the payload.
+        Verify the Schema is safe before its used.
+        
+        Action:
+            1.  Send the exception chain in the ValidationResult if either:
+                    -   The candidate is null.
+                    -   It's not a Schema.
+            2.  Otherwise, send the success result.
+        Args:
+            candidate: Any
+        Returns:
+            ValidationResult[Schema]
         Raises:
-            *   TypeError
-            *   NullSchemaException
-            *   SchemaValidationException
+            TypeError
+            NullSchemaException
+            SchemaValidationException
         """
-        method = "SchemaValidator.validate"
+        method = f"{cls.__name__}.validate"
+        
         # Handle the nonexistence case.
         if candidate is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SchemaValidationException(
-                    msg=f"{method}: {SchemaValidationException.ERR_CODE}",
-                    ex=NullSchemaException(f"{method} {NullSchemaException.MSG}")
+                    mthd=method,
+                    title=cls.__name__,
+                    op=SchemaValidationException.OP,
+                    msg=SchemaValidationException.MSG,
+                    err_code=SchemaValidationException.ERR_CODE,
+                    rslt_type=SchemaValidationException.RSLT_TYPE,
+                    ex=NullSchemaException(
+                        msg=SchemaValidationException.MSG,
+                        err_code=SchemaValidationException.ERR_CODE,
+                    )
                 )
             )
         # Handle the wrong class case.
         if not isinstance(candidate, Schema):
             # Return the exception chain on failure
+            # Return the exception chain on failure.
             return ValidationResult.failure(
                 SchemaValidationException(
-                    msg=f"{method}: {SchemaValidationException.ERR_CODE}",
-                    ex=TypeError(f"{method} Expected a Schema, got {type(candidate).__name__} instead.")
+                    mthd=method,
+                    title=cls.__name__,
+                    op=SchemaValidationException.OP,
+                    msg=SchemaValidationException.MSG,
+                    err_code=SchemaValidationException.ERR_CODE,
+                    rslt_type=SchemaValidationException.RSLT_TYPE,
+                    ex=TypeError(
+                        f"Expected a Schema, got {type(candidate).__name__} instead."
+                    )
                 )
             )
-        # On certification success return the schema instance in a ValidationResult.
-        return ValidationResult.success(payload=cast(Schema, candidate))
+        # --- Forward the work product to the caller. ---#
+        return ValidationResult.success(cast(Schema, candidate))

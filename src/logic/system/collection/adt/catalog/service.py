@@ -8,6 +8,8 @@ Version: 1.0.0
 """
 
 from __future__ import annotations
+
+from abc import abstractmethod
 from typing import Generic, TypeVar
 
 from logic.system import Microservice, SearchMicroservice, Validator
@@ -19,15 +21,12 @@ class CatalogService(Microservice[E], Generic[E]):
     """
     Role:
         -   Data layer
-        -   CRUD controller.
-        -   ACID compliance.
         -   Microservice API
         -   Interface
 
     Responsibilities:
-        1.  Preserve consistency during updates and deletes.
-        2.  Stateful, scalable integrity management of objects.
-        3.  Grant read access to the data-modeling objects.
+        1.  Extracts, manipulates consults unique invariant tuples which
+            determine fixed properties and roles of stateless data-holders.
 
     Attributes:
         id: int
@@ -38,27 +37,23 @@ class CatalogService(Microservice[E], Generic[E]):
     Provides:
 
     Super class:
+        Microservice
     """
-    
-    _validator: Validator[E]
-    _search_service: SearchMicroservice[E]
     
     def __init__(
             self,
             id: int,
             name: str,
-            validator: Validator[E],
-            search_service: SearchMicroservice[E],
     ):
         super().__init__(id=id, name=name)
-        self._validator = validator
-        self._search_service = search_service
-        
+   
     @property
+    @abstractmethod
     def validator(self) -> Validator[E]:
-        return self._validator
+        pass
     
     
     @property
+    @abstractmethod
     def search_service(self) -> SearchMicroservice[E]:
-        return self._search_service
+        pass
