@@ -1,9 +1,9 @@
-# src/logic/system/search/resource/context/mode/exception/__init__.py
+# src/logic/system/search/resource/context/exception/__init__.py
 
 """
-Module: logic.system.search.resource.context.model.exception.__init__
+Module: logic.system.search.resource.context.exception.__init__
 Author: Banji Lawal
-Created: 2025-11-18
+Created: 2026-04-01
 Version: 1.0.0
 """
 

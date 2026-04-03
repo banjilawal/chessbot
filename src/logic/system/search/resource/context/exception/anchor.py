@@ -1,9 +1,9 @@
-# src/logic/system/search/resource/context/mode/exception/anchor.py
+# src/logic/system/search/resource/context/exception/anchor.py
 
 """
-Module: logic.system.search.resource.context.model.exception.anchor
+Module: logic.system.search.resource.context.exception.anchor
 Author: Banji Lawal
-Created: 2025-11-18
+Created: 2026-04-01
 Version: 1.0.0
 """
 

@@ -1,11 +1,11 @@
-# # src/logic/system/search/resource/context/mode/root.py
-#
-# """
-# Module: logic.system.search.resource.context.model.root
-# Author: Banji Lawal
-# Created: 2025-11-18
-# Version: 1.0.0
-# """
+# src/logic/system/search/resource/context/model.py
+
+"""
+Module: logic.system.search.resource.context.model
+Author: Banji Lawal
+Created: 2025-11-18
+Version: 1.0.0
+"""
 
 from typing import Generic, Optional, TypeVar
 from abc import ABC, abstractmethod

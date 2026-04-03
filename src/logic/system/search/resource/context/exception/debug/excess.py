@@ -1,9 +1,9 @@
-# src/logic/system/search/resource/context/mode/exception/debug/excess.py
+# src/logic/system/search/resource/context/exception/debug/excess.py
 
 """
-Module: logic.system.search.resource.context.model.exception.debug.excess
+Module: logic.system.search.resource.context.exception.debug.excess
 Author: Banji Lawal
-Created: 2025-11-18
+Created: 2026-04-01
 Version: 1.0.0
 """
 

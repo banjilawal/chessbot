@@ -1,26 +1,25 @@
-# src/logic/system/search/resource/context/mode/exception/debug/route.py
+# src/logic/system/search/resource/context/exception/debug/null.py
 
 """
-Module: logic.system.search.resource.context.model.exception.debug.route
+Module: logic.system.search.resource.context.exception.debug.null
 Author: Banji Lawal
-Created: 2025-11-18
+Created: 2026-04-01
 Version: 1.0.0
 """
 
 from __future__ import annotations
 from typing import Any, Optional
 
-
 _all_ = [
-    # ======================# CONTEXT_ROUTE_EXCEPTION #======================#
-    "ContextRouteException",
+    # ======================# NULL_CONTEXT_EXCEPTION #======================#
+    "NullContextException",
 ]
 
-from logic.system import ExecutionRouteException
+from logic.system import NullException
 
 
-# ======================# CONTEXT_ROUTE_EXCEPTION #======================#
-class ContextRouteException(ExecutionRouteException):
+# ======================# NULL_CONTEXT_EXCEPTION #======================#
+class NullContextException(NullException):
     """
     Role:
         -   Exception Chain Layer 2
@@ -28,8 +27,7 @@ class ContextRouteException(ExecutionRouteException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that a Context worker did not have execution logic for
-            a Context's attribute.
+        1.  Indicate that null was received instead of a Context.
 
     Attributes:
         var: Optional[str]
@@ -43,8 +41,8 @@ class ContextRouteException(ExecutionRouteException):
     Super Class:
         DebugException
     """
-    MSG = str = "No execution logic for the Context attribute."
-    ERR_CODE = "CONTEXT_ROUTE_EXCEPTION"
+    MSG = str = "Context cannot be null."
+    ERR_CODE = "NULL_CONTEXT_EXCEPTION"
     
     def __init__(
             self,

@@ -1,9 +1,9 @@
-# src/logic/system/search/resource/context/mode/exception/debug/zero.py
+# src/logic/system/search/resource/context/exception/debug/zero.py
 
 """
-Module: logic.system.search.resource.context.model.exception.debug.zero
+Module: logic.system.search.resource.context.exception.debug.zero
 Author: Banji Lawal
-Created: 2025-11-18
+Created: 2026-04-01
 Version: 1.0.0
 """
 
