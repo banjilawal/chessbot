@@ -1,15 +1,18 @@
-# src/logic/token/service/operation/__init__.py
+# src/logic/vector/service/operation/__init__.py
 
 """
-Module: logic.token.service.operation.__init__
+Module: logic.vector.service.operation.__init__
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-11-19
 version: 1.0.0
 """
 
-# =========== TOKEN.SERVICE.OPERATION PACKAGE CONTENTS ===========#
+# =========== VECTOR.SERVICE.OPERATION PACKAGE CONTENTS ===========#
 
 # Packages
+
+
+# Modules
 from .build import *
 from .coord import *
 from .check import *

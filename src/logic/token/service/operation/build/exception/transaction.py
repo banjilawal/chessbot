@@ -44,7 +44,7 @@ class TokenBuildException(BuildException):
         BuildException
     """
     ERR_CODE = "TOKEN_BUILD_FAILURE"
-    MSG = "A TokenBuilder method failed."
+    MSG = "TokenBuilder method failed."
 
     def __init__(
             self,

@@ -11,6 +11,7 @@ version: 1.0.0
 
 # Packages
 from .exception import *
+from .operation import *
 
 # Modules
 from .service import VectorService

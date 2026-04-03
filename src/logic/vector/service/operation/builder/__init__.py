@@ -1,13 +1,13 @@
-# src/logic/vector/build/__init__.py
+# src/logic/vector/service/operation/build/__init__.py
 
 """
-Module: logic.vector.build.__init__
+Module: logic.vector.service.operation.build.__init__
 Author: Banji Lawal
-Created: 2025-10-03
+Created: 2025-11-19
 version: 1.0.0
 """
 
-# =========== VECTOR.BUILDER PACKAGE CONTENTS ===========#
+# =========== VECTOR.SERVICE.OPERATION.BUILD PACKAGE CONTENTS ===========#
 
 # Packages
 from .exception import *

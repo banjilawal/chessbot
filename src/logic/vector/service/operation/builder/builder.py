@@ -15,71 +15,77 @@ from logic.vector import Vector, VectorBuildException,VectorValidator
 
 class VectorBuilder(Builder[Vector]):
     """
-     Role:Builder, Data Integrity And Reliability Guarantor
-
-     Responsibilities:
-     1.  Produce Vector instances whose integrity is guaranteed at creation.
-     2.  Manage construction of Vector instances that can be used safely by the client.
-     3.  Ensure params for Vector creation have met the application's safety contract.
-     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
-
+    Role
+        -   Transaction Worker
+        -   Integrity Maintenance
+        -   Consistency Assurance
+        -   Process Runner
+    
+    Responsibilities:
+        1.  Vector creation process owner.
+        2.  Ensure Vector build resources meet satisfy contracts.
+        3.  Guarantee new instances comply with business logic at birth.
+        4.  Execute 1:M binding logic a vector has with its owning entities.
+    
+    Attributes:
+    
+    Provides:
+        -   def execute(
+                x: int,
+                y: int,
+                number_validator: NumberValidator,
+            ) -> BuildResult[Vector]
+    
      Super Class:
-         * Builder
-
-     # PROVIDES:
-         *   VectorBuilder
-
-     # LOCAL ATTRIBUTES:
-     None
-
-     # INHERITED ATTRIBUTES:
-     None
+         Builder
      """
+    
+    @classmethod
     @LoggingLevelRouter.monitor
     def build(
-            self,
+            cls,
             x: int,
             y: int,
-            bound_number_validator: NumberValidator = NumberValidator(),
+            number_validator: NumberValidator = NumberValidator(),
     ) -> BuildResult[Vector]:
         """
-        # ACTION:
-        1.  If x or y fail vaildation return the exception in the BuildResult. Otherwise created a Vector
-            then return in the BuildResult.
+        Build a safe Vector.
 
-        # PARAMETERS:
-            *   x (int)
-            *   y (int)
-            *   bound_number_validator (NumberValidator)
-            
-        # RETURNS:
-        BuildResult[Vector] containing either:
-            - On failure: Exception.
-            - On success: Vector in the payload.
-
-        RAISES:
-            *   VectorBuildException
+        Action:
+            1.  Send an exception chain in the BuildResult if either x or y
+                fail a bounds check.
+            2.  Otherwise, build the Vector
+            3.  Send the success result.
+        Args:
+            x: int
+            y: int
+            number_validator: NumberValidator
+        Returns:
+            BuildResult[Vector]
+        Raises:
+            VectorBuildException
         """
-        method = "VectorBuilder.build"
-        # Handle the x component
-        x_validation = bound_number_validator.validate(floor=0, ceiling=LONGEST_KNIGHT_LEG_SIZE, candidate=abs(x))
-        if x_validation.is_failure:
-            # Return the exception chain on failure.
-            return BuildResult.failure(
-                VectorBuildException(
-                    ex=x_validation.exception,
-                    msg=f"{method}: {VectorBuildException.ERR_CODE}"
-                )
+        method = f"{cls.__name__}.build"
+        
+        # Handle the case that, either component is out of bounds.
+        for num in [x, y]:
+            validation_result = number_validator.validate(
+                floor=0,
+                ceiling=LONGEST_KNIGHT_LEG_SIZE,
+                candidate=abs(num)
             )
-        # Handle the y component
-        y_validation = bound_number_validator.validate(floor=0, ceiling=LONGEST_KNIGHT_LEG_SIZE, candidate=abs(y))
-        if y_validation.is_failure:
-            # Return the exception chain on failure.
-            return BuildResult.failure(
-                VectorBuildException(
-                    ex=y_validation.exception,
-                    msg=f"{method}: {VectorBuildException.ERR_CODE}"
-                )
+            if validation_result.is_failure:
+                # Return the exception chain on failure.
+                return BuildResult.failure(
+                    VectorBuildException(
+                        mthd=method,
+                        title=cls.__name__,
+                        op=VectorBuildException.OP,
+                        msg=VectorBuildException.MSG,
+                        err_code=VectorBuildException.ERR_CODE,
+                        rslt_type=VectorBuildException.RSLT_TYPE,
+                        ex=validation_result.exception
+                    )
             )
-        # After the components are certified return the Vector in the BuildResult.
-        return BuildResult.success(payload=Vector(x=x, y=y))
+        # --- Forward the work product to the caller. ---#
+        return BuildResult.success(Vector(x=x, y=y))

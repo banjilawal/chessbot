@@ -1,16 +1,16 @@
-# src/logic/vector/build/exception/__init__.py
+# src/logic/vector/service/operation/build/exception/transaction.py
 
 """
-Module: logic.vector.build.exception.__init__
+Module: logic.vector.service.operation.build.exception.transaction
 Author: Banji Lawal
-Created: 2025-10-03
+Created: 2025-11-19
 version: 1.0.0
 """
 
-# =========== VECTOR.BUILDER.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== VECTOR.SERVICE.OPERATION.BUILD.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-None
+
 
 # Modules
-from .work import VectorBuildException
+from .transaction import VectorBuildException
