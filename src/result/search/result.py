@@ -9,7 +9,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Generic, List, Optional, TypeVar
 
-from result import Result, SearchResultState
+from result import Result, SearchState
 
 T = TypeVar("T")
 
@@ -41,11 +41,11 @@ class SearchResult(Result[T], Generic[T]):
     Super Class:
         Result
     """
-    _state: SearchResultState
+    _state: SearchState
     
     def __init__(
             self,
-            state: SearchResultState,
+            state: SearchState,
             payload: Optional[T] = None,
             exception: Optional[Exception] = None,
     ):
@@ -60,7 +60,7 @@ class SearchResult(Result[T], Generic[T]):
         self._state = state
         
     @property
-    def state(self) -> SearchResultState:
+    def state(self) -> SearchState:
         return self._state
     
     @property
@@ -68,7 +68,7 @@ class SearchResult(Result[T], Generic[T]):
         return (
                 self.payload is not None and
                 self.exception is None and
-                self._state == SearchResultState.SUCCESS
+                self._state == SearchState.SUCCESS
         )
     
     @property
@@ -76,7 +76,7 @@ class SearchResult(Result[T], Generic[T]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state == SearchResultState.FAILURE
+                self._state == SearchState.FAILURE
         )
     
     @property
@@ -84,7 +84,7 @@ class SearchResult(Result[T], Generic[T]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state == SearchResultState.NOTHING_FOUND
+                self._state == SearchState.NOTHING_FOUND
         )
     
     @property
@@ -92,7 +92,7 @@ class SearchResult(Result[T], Generic[T]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state == SearchResultState.TIMED_OUT
+                self._state == SearchState.TIMED_OUT
         )
     
     @classmethod
@@ -100,7 +100,7 @@ class SearchResult(Result[T], Generic[T]):
         return cls(
             payload=payload,
             exception=None,
-            state=SearchResultState.SUCCESS,
+            state=SearchState.SUCCESS,
         )
     
     @classmethod
@@ -108,7 +108,7 @@ class SearchResult(Result[T], Generic[T]):
         return cls(
             payload=None,
             exception=exception,
-            state=SearchResultState.FAILURE,
+            state=SearchState.FAILURE,
         )
     
     @classmethod
@@ -116,7 +116,7 @@ class SearchResult(Result[T], Generic[T]):
         return cls(
             payload=None,
             exception=exception,
-            state=SearchResultState.TIMED_OUT,
+            state=SearchState.TIMED_OUT,
         )
     
     @classmethod
@@ -124,6 +124,6 @@ class SearchResult(Result[T], Generic[T]):
         return cls(
             payload=None,
             exception=None,
-            state=SearchResultState.NOTHING_FOUND,
+            state=SearchState.NOTHING_FOUND,
         )
 

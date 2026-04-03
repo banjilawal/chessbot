@@ -4,26 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change afterPath="$PROJECT_DIR$/src/result/build/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/result/search/state.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/system/build/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/build/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/system/build/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/result/build/result.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/system/computation/result/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/system/computation/result/result.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/system/computation/result/state.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/system/search/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/search/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/system/search/result/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/result/search/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/system/search/result/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/result/search/result.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/system/search/result/state/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/system/search/result/state/classification.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/system/search/result/state/state.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/result/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/result/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/result/adt/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/result/adt/result.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/result/computation/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/result/computation/result.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/result/computation/state.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/result/computation/state.py" afterDir="false" />
-    </list>
+    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -327,11 +308,11 @@
       <recent name="$PROJECT_DIR$/src/logic/geometry/resource/integrity" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/result/result" />
       <recent name="$PROJECT_DIR$/src/result/search" />
       <recent name="$PROJECT_DIR$/src/result" />
       <recent name="$PROJECT_DIR$/src/result/build" />
       <recent name="$PROJECT_DIR$/src/result/computation" />
-      <recent name="$PROJECT_DIR$/src/result/adt" />
     </key>
   </component>
   <component name="RunManager" selected="Python.builder">
@@ -880,7 +861,7 @@
       <workItem from="1774483839135" duration="10440000" />
       <workItem from="1774551231807" duration="159138000" />
       <workItem from="1774976324979" duration="49944000" />
-      <workItem from="1775073975276" duration="144636000" />
+      <workItem from="1775073975276" duration="145489000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

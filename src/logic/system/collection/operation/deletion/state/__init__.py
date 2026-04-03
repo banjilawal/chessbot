@@ -14,4 +14,3 @@ None
 
 # Modules
 from .state import DeletionResultState
-from .classification import DeletionResultEnum

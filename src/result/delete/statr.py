@@ -10,9 +10,7 @@ Version: 1.0.0
 from enum import auto, Enum
 
 
-class DeletionResultEnum(Enum):
-    """
-    """
+class DeletionState(Enum):
     SUCCESS = auto(),
     FAILURE = auto(),
     TIMED_OUT = auto(),

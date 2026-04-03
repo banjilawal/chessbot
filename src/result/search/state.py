@@ -9,7 +9,7 @@ version: 1.0.1
 
 from enum import Enum, auto
 
-class SearchResultState(Enum):
+class SearchState(Enum):
     SUCCESS = auto(),
     FAILURE = auto(),
     TIMED_OUT = auto(),

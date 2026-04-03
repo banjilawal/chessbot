@@ -14,4 +14,4 @@ None
 
 # Modules
 from .result import SearchResult
-from .state import SearchResultState
+from .state import SearchState
