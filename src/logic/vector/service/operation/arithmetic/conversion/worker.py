@@ -65,9 +65,9 @@ class VectorCoordConverter(Worker):
             number_validator: NumberValidator,
         ) -> ComputationResult[Vector]:
 
-Super Class:
-    Worker
-"""
+    Super Class:
+        Worker
+    """
     
     @classmethod
     @LoggingLevelRouter.monitor
