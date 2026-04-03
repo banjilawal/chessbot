@@ -1,9 +1,9 @@
-# src/logic/token/service/operation/arithmetic/multiplication/exception/validator.py
+# src/logic/geometry/product/exception/transaction.py
 
 """
-Module: logic.token.service.operation.arithmetic.multiplication.exception.work
+Module: logic.geometry.product.exception.transaction
 Author: Banji Lawal
-Created: 2026-03-25
+Created: 2026-04-03
 version: 1.0.0
 """
 

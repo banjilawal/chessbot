@@ -15,7 +15,7 @@ class CoordArithmeticController:
     Attributes:
         distance: EuclideanDistance
         addition: CoordAdder
-        multiplication: MultiplyCoordTransaction
+        multiplication: ScalarProductWorker
         conversion: ConvertVectorToCoordTransaction
 
     Provides:
@@ -37,7 +37,7 @@ class CoordArithmeticController:
         Args:
             distance: EuclideanDistance
             addition: CoordAdder
-            multiplication: MultiplyCoordTransaction
+            multiplication: ScalarProductWorker
             conversion: ConvertVectorToCoordTransaction
         """
         self._addition = addition

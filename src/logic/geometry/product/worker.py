@@ -1,9 +1,9 @@
-# src/logic/token/service/operation/arithmetic/multiplication/arithmetic.py
+# src/logic/geometry/product/worker.py
 
 """
-Module: logic.token.service.operation.arithmetic.multiplication.arithmetic
+Module: logic.geometry.product.worker
 Author: Banji Lawal
-Created: 2026-03-25
+Created: 2025-03-25
 version: 1.0.0
 """
 
@@ -12,31 +12,35 @@ from __future__ import annotations
 from logic.system import ComputationResult
 from logic.scalar import Scalar, ScalarService
 from logic.coord import Coord, CoordMultiplicationException, CoordService
+from logic.system.worker import Worker
 
-class MultiplyCoordTransaction:
+
+class ScalarProductWorker(Worker):
     """
     Role:
         -   Worker
         -   Computation
 
     Responsibilities:
-        1.  Compute the product of a Coord and a Scalar.
+        1.  Compute the scalar product of either a coord or vector.
         
     Attributes:
         
     Properties:
         -   compute(
-                    coord: Coord,
                     scalar: Scalar,
+                    operand: Union[[coord, Vecto],
                     coord_service: CoordService,
                     scalar_service: ScalarService,
+                    vec
             ) -> ComputationResult[[Coord]]
     
     Super Class:
     """
     
     @classmethod
-    def execute(
+    @LoggingLevelRouter.monitor
+    def work(
             cls,
             coord: Coord,
             scalar: Scalar,
