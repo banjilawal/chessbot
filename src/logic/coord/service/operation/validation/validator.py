@@ -22,7 +22,7 @@ class CoordValidator(Validator[Coord]):
         -   Transaction Worker
         -   Integrity Maintenance
         -   Consistency Assurance
-        -   Process Runner
+        -   Validation Process Owner
 
     Responsibilities:
         1.  Ensure a Coord instance is certified safe, reliable and consistent before use.

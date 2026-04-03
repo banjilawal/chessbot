@@ -10,6 +10,6 @@ version: 1.0.0
 # =========== GEOMETRY.RESOURCE PACKAGE CONTENTS ===========#
 
 # Packages
-from logic.geometry.resource.integrity.validator import *
+from .integrity import *
 
 # Modules
