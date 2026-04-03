@@ -19,6 +19,28 @@ from logic.system.search import Context
 T = TypeVar("T")
 
 class StackQuery(Query, Generic[T]):
+    """
+    Role:
+        -   Model
+        -   Stateless Data-Holder
+        -   Messaging
+
+    Responsibilities:
+        1.  Contains
+                -   The entity list[T]
+                -   The criteria for searching the list
+        2.  Delivers it's contents to SearchRouter[T]
+        
+
+    Attributes:
+        stack: List[T]
+        context: Context[T]
+
+    Provides:
+
+    Super Class:
+        Query
+    """
     _stack: List[T]
     
     def __init__(self, stack: List[T], context: Context[T]):

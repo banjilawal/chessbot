@@ -8,7 +8,8 @@ Version: 1.0.0
 """
 
 from __future__ import annotations
-from abc import ABC, abstractmethod
+
+from abc import ABC
 from typing import Generic, TypeVar
 
 from logic.system.search import Context
@@ -18,7 +19,8 @@ T = TypeVar("T")
 class Query(ABC, Generic[T]):
     """
     Role:
-       -   Abstract Root
+        -   Abstract Root
+        -   Stateless Data-Holder
 
     Responsibilities:
         1.  Platform primitive to build Query APIs
