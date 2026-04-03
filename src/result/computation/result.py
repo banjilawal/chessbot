@@ -1,7 +1,7 @@
-# src/result/adt/result.py
+# src/result/computation/result.py
 
 """
-Module: result.adt.result
+Module: result.computation.result
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,28 +10,34 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Generic, Optional, TypeVar
 
-from logic.system import ComputationState, Result
+from result import ComputationState, Result
 
 T = TypeVar("T")
 
 class ComputationResult(Result[T], Generic[T]):
     """
-    Role:Messanger, Data Transport Object, Error Transport Object.
+    Role:
+        -   Data Transport
+        -   Error Transport
 
     Responsibilities:
-    1.  Send the outcome of a calculation to the caller.
-    2.  Enforcing mutual exclusion. A ComputationResult can either carry payload or exception. Not both.
+        1.  Contains outcome of a compute transaction.
 
-    Super Class:
-        *   DataResult
+    Attributes:
+        exception: Optional[Exception]
+        state: ComputationState
+        payload: Optional[T]
+        is_timed_out: bool
+        is_success: bool
+        is_failure: bool
 
     Provides:
-
-    # LOCAL ATTRIBUTES:
-        *   state (ComputationState)
-
-    # INHERITED ATTRIBUTES:
-        *   See DataResult class for inherited attributes.
+        -   def success(payload: T) -> Result[T]
+        -   def failure(exception: Exception) -> Result[T]
+        -   def timed_out(exception: Exception) -> ComputationResult[T]
+        
+    Super Class:
+        Result
     """
     _state: ComputationState
     
@@ -41,6 +47,12 @@ class ComputationResult(Result[T], Generic[T]):
             exception: Optional[Exception] = None,
             payload: Optional[T] = None,
     ):
+        """
+        Args:
+            payload: Optional[T]
+            state: ComputationState
+            exception: Optional[Exception]
+        """
         super().__init__(payload=payload, exception=exception)
         """INTERNAL: Use build methods instead of direct constructor."""
         self._state = state
@@ -92,10 +104,3 @@ class ComputationResult(Result[T], Generic[T]):
             exception=exception,
             state=ComputationState.TIMED_OUT,
         )
-
-    
-
-    
-
-
-

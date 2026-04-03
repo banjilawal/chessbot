@@ -14,5 +14,4 @@ from .exception import *
 
 # Modules
 from .builder import Builder
-from .result import BuildResult
 

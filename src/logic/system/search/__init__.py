@@ -10,7 +10,6 @@ Version: 1.0.0
 # =========== SYSTEM.SEARCH PACKAGE CONTENTS ===========#
 
 # Package
-from .result import *
 from .service import *
 from .resource import *
 

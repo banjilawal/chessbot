@@ -11,8 +11,6 @@ from enum import auto, Enum
 
 
 class ComputationState(Enum):
-    """
-    """
     SUCCESS = auto(),
     FAILURE = auto(),
     TIMED_OUT = auto(),

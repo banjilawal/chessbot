@@ -1,10 +1,9 @@
-# src/logic/system/validate/result/result.py
-
+# src/result/validation/result.py
 """
-Module: logic.system.validate.result.result
+Module: result.validation.result
 Author: Banji Lawal
-Created: 2025-09-28
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
@@ -15,20 +14,27 @@ T = TypeVar("T")
 
 class ValidationResult(Result[T], Generic[T]):
     """
-    Role:Messanger Data Transport Object, Error Transport Object.
-  
-    Responsibilities:
-    1. Send the outcome of a validation request to the client.
-    2. Enforcing mutual exclusion. A ValidationResult can either carry payload or exception. Not both.
-    
-    Super Class:
-        *   Result
-  
-    Provides:
-  
+    Role:
+        -   Data Transport
+        -   Error Transport
 
-    # INHERITED ATTRIBUTES:
-        *   See Result class for inherited attributes.
+    Responsibilities:
+        1.  Contains the outcome of a validation transaction.
+
+    Attributes:
+        exception: Optional[Exception]
+        state: buildState
+        payload: Optional[T]
+        is_timed_out: bool
+        is_success: bool
+        is_failure: bool
+
+    Provides:
+        -   def success(payload: T) -> Result[T]
+        -   def failure(exception: Exception) -> Result[T]
+
+    Super Class:
+        Result
     """
     
     def __init__(self, payload: Optional[T] = None, exception: Optional[Exception] = None):

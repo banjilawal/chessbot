@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from logic.schema import SchemaService
 from logic.system import LoggingLevelRouter, Validator
-from logic.system.validate.result import ValidationResult
+from result.result.result import ValidationResult
 from logic.team import (
     BlackTeamHasWrongSchemaException, TeamHash, TeamHashNullException, TeamHashValidationException,
     TeamValidator, WhiteTeamHasWrongSchemaException

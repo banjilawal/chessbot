@@ -14,4 +14,3 @@ from .exception import *
 
 # Modules
 from .validator import Validator
-from .result import ValidationResult

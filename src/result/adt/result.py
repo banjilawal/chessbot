@@ -1,7 +1,7 @@
-# src/result/adt/result.py
+# src/result/build/result.py
 
 """
-Module: result.adt.result
+Module: result.build.result
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -20,18 +20,19 @@ class Result(Generic[T]):
         -   Error Transport
   
     Responsibilities:
-        1.  Contains the outcome of a transaction. Either a
-            work product or an exception.
-    
+        1.  Contains the outcome of a transaction. Either a work product or
+            an exception.
+
     Attributes:
-        payload: Optional[T]
         exception: Optional[Exception]
+        payload: Optional[T]
+        is_timed_out: bool
         is_success: bool
         is_failure: bool
-    
+
     Provides:
-        -   def failure(exception: Exception) -> Result[T]
         -   def success(payload: T) -> Result[T]
+        -   def failure(exception: Exception) -> Result[T]
         
     Super Class:
     """
