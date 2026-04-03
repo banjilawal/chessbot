@@ -1,66 +1,75 @@
-# src/logic/vector/validation/exception/debug/null.py
+# src/logic/vector/service/operation/validate/exception/debug/null.py
 
 """
-Module: logic.vector.validation.exception.debug.null
+Module: logic.vector.service.operation.validate.exception.debug.null
 Author: Banji Lawal
-Created: 2025-10-03
+Created: 2025-11-19
 version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import Optional
+from typing import Any, Optional
 
 __all__ = [
-#======================# NULL_VECTOR_EXCEPTION #======================#
+    # ======================# NULL_VECTOR_EXCEPTION #======================#
     "NullVectorException",
 ]
 
 from logic.system import NullException
 
-#======================# NULL_VECTOR_EXCEPTION #======================#
+
+# ======================# NULL_VECTOR_EXCEPTION #======================#
 class NullVectorException(NullException):
     """
-    Role:Error Tracing, Debugging
+    Role:
+        - Error Variable Identifier
+        - Exception Chain Layer 2
+        - Exception Messaging
 
     Responsibilities:
-    1.  Indicate that a vector is null where it should not be.
-    
-    Super Class:
-        *   NullException
+        1.  Indicate that a vector is null where it should not be.
+
+    Attributes:
+        var: Optional[str]
+        val: Optional[Any]
+        msg: Optional[str]
+        ex: Optional[Exception]
+        err_code: Optional[str]
 
     Provides:
 
-
-    # INHERITED ATTRIBUTES:
-        *   See NUllException class for inherited attributes.
-
-    Attributes:
-        *   msg (str)
-        *   err_code (str)
-        *   ex (Optional[Exception])
-        *   var (Optional[str])
-        *   val Optional[Any])
-
-    # LOCAL METHODS:
-   None
-
-    # INHERITED METHODS:
-        *   See NullException class for inherited methods.
+    Super Class:
+        NulException
     """
-    ERR_CODE = "NULL_VECTOR_EXCEPTION"
     MSG = "Vector cannot be null."
+    ERR_CODE = "NULL_VECTOR_EXCEPTION"
+
     
     def __init__(
             self,
-            err_code: Optional[str] = None,
-            msg: Optional[str] = None,
-            ex: Optional[Exception] = None,
             var: Optional[str] = None,
             val: Optional[Any] = None,
+            msg: Optional[str] = None,
+            err_code: Optional[str] = None,
+            ex: Optional[Exception] = None,
     ):
-        err_code = err_code or self.ERR_CODE
+        """
+        Args:
+            var: Optional[str]
+            val: Optional[Any]
+            msg: Optional[str]
+            ex: Optional[Exception]
+            err_code: Optional[str]
+        """
         msg = msg or self.MSG
-        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)
+        err_code = err_code or self.ERR_CODE
+        super().__init__(
+            ex=ex,
+            msg=msg,
+            var=var,
+            val=val,
+            err_code=err_code,
+        )
 
 
     

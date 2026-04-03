@@ -1,9 +1,9 @@
-# src/logic/vector/validation/validation.py
+# src/logic/vector/service/operation/validate/validator.py
 
 """
-Module: logic.vector.validation
+Module: logic.vector.service.operation.validate.validator
 Author: Banji Lawal
-Created: 2025-08-26
+Created: 2025-11-19
 version: 1.0.0
 """
 

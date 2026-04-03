@@ -1,16 +1,20 @@
-# src/logic/vector/validation/exception/__init__.py
+# src/logic/vector/service/operation/validate/exception/__init__.py
 
 """
-Module: logic.vector.validation.exception.__init__
+Module: logic.vector.service.operation.validate.exception.__init__
 Author: Banji Lawal
-Created: 2025-10-03
+Created: 2025-11-19
 version: 1.0.0
 """
 
-# =========== VECTOR.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== VECTOR.SERVICE.OPERATION.VALIDATE.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-from .debug import *
+None
 
 # Modules
-from .work import InvalidVectorException
+from .debug import *
+
+
+# Modules
+from .transaction import VectorValidationException
