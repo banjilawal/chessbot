@@ -1,7 +1,7 @@
-# src/logic/system/collection/adt/stack/exception/debug.py
+# src/logic/system/collection/adt/database/exception/debug.py
 
 """
-Module: logic.system.collection.adt.stack.exception.debug
+Module: logic.system.collection.adt.database.exception.debug
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
@@ -11,15 +11,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# STACK_SERVICE_DEBUG_EXCEPTION #======================#
-    "StackServiceDebugException",
+    # ======================# DATABASE_DEBUG_EXCEPTION #======================#
+    "DatabaseDebugException",
 ]
 
 from logic.system import ServiceDebugException
 
 
-# ======================# STACK_SERVICE_DEBUG_EXCEPTION #======================#
-class StackServiceDebugException(ServiceDebugException):
+# ======================# DATABASE_DEBUG_EXCEPTION #======================#
+class DatabaseDebugException(ServiceDebugException):
     """
     Role:
         -   Exception Chain Layer 2
@@ -27,7 +27,7 @@ class StackServiceDebugException(ServiceDebugException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Record the condition that fired a StackService variable's error state.
+        1.  Record the condition that fired a Database variable's error state.
         
     Attributes:
         var: Optional[str]
@@ -41,8 +41,8 @@ class StackServiceDebugException(ServiceDebugException):
     Super Class:
         ServiceDebugException
     """
-    ERR_CODE = "STACK_SERVICE_DEBUG_EXCEPTION"
-    MSG = str = "StackService fired into error state by attribute or method."
+    ERR_CODE = "DATABASE_DEBUG_EXCEPTION"
+    MSG = str = "Database fired into error state by attribute or method."
     
     def __init__(
             self,
