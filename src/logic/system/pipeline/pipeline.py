@@ -20,7 +20,7 @@ T = TypeVar("T")
 class PipeLine(ABC, Generic[T]):
     """
     Role
-        -   Production Line
+        -   Production LineCategory
 
     Responsibilities:
         1.  Provide the worker with all resources it needs to complete a job.

@@ -10,12 +10,10 @@ version: 1.0.0
 # =========== GEOMETRY PACKAGE CONTENTS ===========#
 
 # Packages
-from .domain import *
+from .multiplication import *
 
 # Modules
-from .line import Line
-from .path import Path
-from .quadrant import Quadrant
+None
 
 
 
