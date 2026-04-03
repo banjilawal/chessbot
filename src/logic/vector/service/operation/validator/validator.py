@@ -14,101 +14,114 @@ from logic.system import (
     Validator
 )
 from logic.vector import InvalidVectorException, NullVectorException, Vector
+from logic.vector.service.operation.validator import VectorValidationException
 
 
 class VectorValidator(Validator[Vector]):
     """
-     Role:Validation, Data Integrity Guarantor, Security.
+    Role
+        -   Transaction Worker
+        -   Integrity Maintenance
+        -   Consistency Assurance
+        -   Validation Process Owner
 
     Responsibilities:
-    1.  Run tests verifying a rank can safely be used as a Square.
-    2.  If verification fails indicate the reason in an exception, returned to the caller.
+        1.  Ensure a Vector instance is certified safe, reliable and consistent before use.
 
-    Super Class:
-        *   Validator
+    Attributes:
 
     Provides:
+        -   def validate(
+                    candidate: Any,
+                    number_validator: NumberValidator = NumberValidator()
+            ) -> ValidationResult[Vector]:
 
-
-    # INHERITED ATTRIBUTES:
-    None
+    Super Class:
+        Validator
     """
     @classmethod
     @LoggingLevelRouter.monitor
     def validate(
             cls,
             candidate: Any,
-            number_in_bounds_validator: NumberValidator = NumberValidator()
+            number_validator: NumberValidator = NumberValidator()
     ) -> ValidationResult[Vector]:
         """
-        # ACTION:
-            1.  If the rank fails existence and type checks return the ValidationResult containing an
-                exception. Else cast into Vector instance vector.
-            2.  If vector.x fails either existence, type of bounds checks return the ValidationResult containing
-                an exception.
-            3.  If vector.y fails either existence, type of bounds checks return the ValidationResult containing
-                an exception.
-            4.  All tests are passed return the ValidationResult containing vector in the payload.
-        # PARAMETERS:
-            *   rank (Any)
-            *   number_in_bounds_validator (NumberValidator)
-        # RETURNS:
-            *   ValidationResult[Vector] containing either:
-                    - On failure: Exception.
-                    - On success: Vector in the payload.
+        Check if a Vector is safe to use.
+        
+        Action:
+            1.  Send an exception in the ValidationResult if either x or y
+                    -   Is null
+                    -   Not a number
+                    -   Out of  bounds.
+            2.  Otherwise, send the success result.
+        Args:
+             candidate: Any
+             number_validator: NumberValidator
+        Returns:
+            ValidationResult[Vector]
         Raises:
-            *   TypeError
-            *   NullVectorException
-            *   InvalidVectorException
+            TypeError
+            NullVectorException
+            VectorValidationException
         """
-        method = "VectorValidator.validate"
+        method = f"{cls.__name__}.validate"
+        
         # Handle the nonexistence case.
         if candidate is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                InvalidVectorException(
-                    msg=f"{method}: {InvalidVectorException.ERR_CODE}",
-                    ex=NullVectorException(f"{method}: {NullVectorException.MSG}")
+                VectorValidationException(
+                    mthd=method,
+                    title=cls.__name__,
+                    op=VectorValidationException.OP,
+                    msg=VectorValidationException.MSG,
+                    err_code=VectorValidationException.ERR_CODE,
+                    rslt_type=VectorValidationException.RSLT_TYPE,
+                    ex=NullVectorException(
+                        msg=VectorValidationException.MSG,
+                        err_code=VectorValidationException.ERR_CODE,
+                    )
                 )
             )
         # Handle the wrong class case.
         if not isinstance(candidate, Vector):
+            # Return the exception chain on failure.
             return ValidationResult.failure(
-                InvalidVectorException(
-                    msg=f"{method}: {InvalidVectorException.ERR_CODE}",
-                    ex=TypeError(f"{method}: Expected a Vector, got {type(candidate).__name__} instead.")
+                VectorValidationException(
+                    mthd=method,
+                    title=cls.__name__,
+                    op=VectorValidationException.OP,
+                    msg=VectorValidationException.MSG,
+                    err_code=VectorValidationException.ERR_CODE,
+                    rslt_type=VectorValidationException.RSLT_TYPE,
+                    ex=TypeError(
+                        f"Expected a Vector, got {type(candidate).__name__} instead."
+                    )
                 )
             )
-        # After existence and type checks cast the rank to a Vector for additional tests.
+        # --- Cast the candidate to a Vector for additional tests ---#
         vector = cast(Vector, candidate)
         
-        # Validate the vector.x field. Use the absolute value because vectors can have negative components.
-        x_axis_validation = number_in_bounds_validator.validate(
-            floor=0,
-            ceiling=LONGEST_KNIGHT_LEG_SIZE,
-            candidate=abs(vector.x),
-        )
-        if x_axis_validation.is_failure:
-            # Return the exception chain on failure.
-            return ValidationResult.failure(
-                InvalidVectorException(
-                    msg=f"{method}: {InvalidVectorException.ERR_CODE}",
-                    ex=x_axis_validation.exception
-                )
+        # Handle the case that, either component is out of bounds.
+        for num in [vector.x, vector.y]:
+            validation_result = number_validator.validate(
+                floor=0,
+                ceiling=LONGEST_KNIGHT_LEG_SIZE,
+                candidate=abs(num)
             )
-        # Validate the vector.y field. Use the absolute value because vectors can have negative components.
-        y_axis_validation = number_in_bounds_validator.validate(
-            floor=0,
-            ceiling=LONGEST_KNIGHT_LEG_SIZE,
-            candidate=abs(vector.y),
-        )
-        if y_axis_validation.is_failure:
-            # Return the exception chain on failure.
-            return ValidationResult.failure(
-                InvalidVectorException(
-                    msg=f"{method}: {InvalidVectorException.ERR_CODE}",
-                    ex=y_axis_validation.exception
+            if validation_result.is_failure:
+                # Return the exception chain on failure.
+                return ValidationResult.failure(
+                    VectorValidationException(
+                        mthd=method,
+                        title=cls.__name__,
+                        op=VectorValidationException.OP,
+                        msg=VectorValidationException.MSG,
+                        err_code=VectorValidationException.ERR_CODE,
+                        rslt_type=VectorValidationException.RSLT_TYPE,
+                        ex=validation_result.exception
+                    )
                 )
-            )
-        # On certification success return the vector instance in the ValidationResult.
-        return ValidationResult.success(payload=vector)
+        # --- Forward the work product to the caller. ---#
+        return ValidationResult.success(vector)

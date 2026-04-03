@@ -23,13 +23,10 @@ class TokenBuilder(Builder[Token]):
         -   Transaction Worker
         -   Integrity Maintenance
         -   Consistency Assurance
-        -   Process Runner
+        -   Build Process Owner
         
    Responsibilities:
-        1.  Token creation process owner.
-        2.  Ensure Token build resources meet satisfy contracts.
-        3.  Guarantee new instances comply with business logic at birth.
-        4.  Execute 1:M binding logic a token has with its owning entities.
+        1.  Ensure a new Token instance is born safe and reliable.
 
      Attributes:
 

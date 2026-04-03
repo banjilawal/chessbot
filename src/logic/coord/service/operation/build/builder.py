@@ -19,12 +19,10 @@ class CoordBuilder(Builder[Coord]):
         -   Transaction Worker
         -   Integrity Maintenance
         -   Consistency Assurance
-        -   Process Runner
-
-    Responsibilities:
-        1.  Coord creation process owner.
-        2.  Ensure Coord build resources meet satisfy contracts.
-        3.  Assure Coord instances comply with business logic at point of creation.
+        -   Build Process Owner
+        
+   Responsibilities:
+        1.  Ensure a new Coord instance is born safe and reliable.
 
     Attributes:
      
