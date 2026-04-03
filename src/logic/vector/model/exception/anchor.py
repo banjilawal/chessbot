@@ -21,23 +21,13 @@ from logic.system import AnchorException
 # ======================# VECTOR_EXCEPTION #======================#
 class VectorException(AnchorException):
     """
-    Role:Coverage Target, Exception Chain Layer 0
+    Role:
+        -   Exception Chain Layer 0
+        -   Exception coverage target
 
     Responsibilities:
-    1.  Anchors Vector debug (layer-2) error state firing incident
-        reports on
-            *   the triggering variable
-            *   The trigger's value.
-    2.  Indicate which Vector method received a worker's (layer-1) failure result.
-
-    Super Class:
-        *   AnchorException
-
-    Provides:
-
-
-    # INHERITED ATTRIBUTES:
-        *   See AnchorException class for inherited attributes.
+        1.  Anchors Vector debug (layer-2) information.
+        2.  Indicate which Vector method received a worker's (layer-1) failure result.
 
     Attributes:
         msg: Optional[str]
@@ -46,13 +36,11 @@ class VectorException(AnchorException):
         cls_mthd: Optional[str]
         err_code: Optional[str]
 
-    # LOCAL METHODS:
-    None
+    Provides:
 
-    # INHERITED METHODS:
-        *   See AnchorException class for inherited methods.
+    Super Class:
+        AnchorException
     """
-    CLS_NAME = "Vector"
     ERR_CODE = "VECTOR_EXCEPTION"
     MSG = "Vector raised an exception."
     
@@ -73,6 +61,11 @@ class VectorException(AnchorException):
             err_code: Optional[str]
         """
         msg = msg or self.MSG
-        cls_name = cls_name or self.CLS_NAME
         err_code = err_code or self.ERR_CODE
-        super().__init__(msg=msg, err_code=err_code, ex=ex, cls_name=cls_name, cls_mthd=cls_mthd)
+        super().__init__(
+            ex=ex,
+            msg=msg,
+            err_code=err_code,
+            cls_name=cls_name,
+            cls_mthd=cls_mthd,
+        )

@@ -5,13 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change beforePath="$PROJECT_DIR$/src/logic/schema/service/operation/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/schema/service/operation/controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/schema/service/operation/search/resource/host.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/schema/service/operation/search/resource/host.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/schema/service/operation/search/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/schema/service/operation/search/service/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/schema/service/operation/search/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/schema/service/operation/search/service/exception/anchor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/schema/service/operation/search/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/schema/service/operation/search/service/service.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/vector/model/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/vector/service/operation/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logic/vector/service/operation/controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logic/schema/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/schema/service/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/system/collection/adt/catalog/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/system/collection/adt/catalog/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/vector/builder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/vector/service/operation/builder/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/vector/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/vector/service/operation/builder/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/vector/builder/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/vector/service/operation/builder/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/vector/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/vector/service/operation/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/vector/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/vector/model/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/vector/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/vector/model/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/vector/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/vector/model/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/vector/validator/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/vector/service/operation/validator/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/vector/validator/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/vector/service/operation/validator/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/vector/validator/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/vector/service/operation/validator/exception/debug/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/vector/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/vector/service/operation/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/vector/validator/exception/debug/x/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/vector/service/operation/validator/exception/debug/x/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/vector/validator/exception/debug/x/above.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/vector/service/operation/validator/exception/debug/x/above.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/vector/validator/exception/debug/x/below.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/vector/service/operation/validator/exception/debug/x/below.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/vector/validator/exception/debug/x/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/vector/service/operation/validator/exception/debug/x/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/vector/validator/exception/debug/y/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/vector/service/operation/validator/exception/debug/y/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/vector/validator/exception/debug/y/above.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/vector/service/operation/validator/exception/debug/y/above.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/vector/validator/exception/debug/y/below.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/vector/service/operation/validator/exception/debug/y/below.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/vector/validator/exception/debug/y/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/vector/service/operation/validator/exception/debug/y/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/vector/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/vector/service/operation/validator/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/vector/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/vector/service/operation/validator/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/vector/vector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/vector/model/model.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -282,7 +303,7 @@
     "ToolWindow.Python Packages.ShowToolbar": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/logic/schema/service/operation/validator/exception/debug",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/logic/vector/model",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -309,18 +330,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/logic/vector/model" />
+      <recent name="$PROJECT_DIR$/src/logic/vector/service" />
       <recent name="$PROJECT_DIR$/src/logic/schema/service/operation/validator/exception/debug" />
       <recent name="$PROJECT_DIR$/src/logic/system/search/resource/query/model/catalog" />
       <recent name="$PROJECT_DIR$/src/logic/system/search/resource/query/model/stack" />
-      <recent name="$PROJECT_DIR$/src/logic/system/search/service/exception" />
-      <recent name="$PROJECT_DIR$/src/logic/system/collection/adt/database" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/logic/vector/model" />
+      <recent name="$PROJECT_DIR$/src/logic/vector/service/operation" />
       <recent name="$PROJECT_DIR$/src/logic/system/search/resource/context" />
       <recent name="$PROJECT_DIR$/src/logic/system/search/resource/query/model/root" />
       <recent name="$PROJECT_DIR$/src/logic/system/search/resource/query/model/stack" />
-      <recent name="$PROJECT_DIR$/src/logic/system/search/resource/query/model/catalog" />
-      <recent name="$PROJECT_DIR$/src/logic/system/search/resource/query/worker" />
     </key>
   </component>
   <component name="RunManager" selected="Python.util">
@@ -869,7 +890,7 @@
       <workItem from="1774483839135" duration="10440000" />
       <workItem from="1774551231807" duration="159138000" />
       <workItem from="1774976324979" duration="49944000" />
-      <workItem from="1775073975276" duration="101105000" />
+      <workItem from="1775073975276" duration="104453000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1061,6 +1082,11 @@
           <url>file://$PROJECT_DIR$/src/logic/rank/validation/validator.py</url>
           <line>9</line>
           <option name="timeStamp" value="107" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/logic/schema/service/service.py</url>
+          <line>63</line>
+          <option name="timeStamp" value="109" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

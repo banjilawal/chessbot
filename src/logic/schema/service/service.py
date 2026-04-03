@@ -15,8 +15,27 @@ from logic.schema import (
 )
 
 
-
 class SchemaService(CatalogService[Schema]):
+    """
+    Role:
+        -   Data layer
+        -   Microservice API
+        -   Interface
+
+    Responsibilities:
+        1.  Adds functionality to the Schema table with without tight coupling
+
+    Attributes:
+        id: int
+        name: str
+        validator: Validator[E]
+        search: SearchMicroservice[E]
+
+    Provides:
+
+    Super class:
+        CatalogService
+    """
     
     SERVICE_NAME = "SchemaService"
     _ops_controller: SchemaOpsController
