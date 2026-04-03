@@ -12,11 +12,11 @@ from __future__ import annotations
 from typing import Type
 
 from logic.schema import Schema
-from logic.system import CatalofQuery
+from logic.system import CatalogQuery
 from logic.schema.service.operation.search import SchemaContext
 
 
-class SchemaQuery(CatalofQuery[Schema]):
+class SchemaQuery(CatalogQuery[Schema]):
     
     def __init__(
             self,

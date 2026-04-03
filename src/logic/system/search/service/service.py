@@ -22,11 +22,19 @@ class SearchMicroservice(ABC, Microservice[T]):
     """
     Role:
         -   API
+        -   Lifecycle Manager
         -   Stateless microservice
         -   Operations Provider
+        
+    The Search Lifecycle:
+        1.  Build a Context of the targeted attributes for an entity.
+        2.  Build a Query from a collection and the context for processing
+            the dataset's members.
+        3.  Forward the query to the SearchRouter which produces a SearchResult.
 
     Responsibilities:
-        1.  Baremetal microservice for querying collections.
+        1.  Search lifecycle owner.
+        2.  Baremetal microservice for querying collections.
 
     Args:
         id: int
@@ -41,6 +49,7 @@ class SearchMicroservice(ABC, Microservice[T]):
         Microservice
     """
     _router: SearchRouter
+    _query_service: IntegrityMicroservice[Query[T]]
     _context_service: IntegrityMicroservice[Context[T]]
     
     def __init__(
@@ -48,6 +57,7 @@ class SearchMicroservice(ABC, Microservice[T]):
             id: int,
             name: str,
             router: SearchRouter[T],
+            query_service: IntegrityMicroservice[Query[T]],
             context_service: IntegrityMicroservice[Context[T]],
     ):
         """
@@ -55,10 +65,12 @@ class SearchMicroservice(ABC, Microservice[T]):
             id: int
             name: str
             router: StackSearchRouter[T]
+            query_service: IntegrityMicroservice[Query[T]]
             context_service: IntegrityMicroservice[Context[T]]
         """
         super().__init__(id=id, name=name)
         self._router = router
+        self._query_service = query_service
         self._context_service = context_service
     
     @property
@@ -68,11 +80,10 @@ class SearchMicroservice(ABC, Microservice[T]):
     
     @property
     @abstractmethod
-    def router(self) -> SearchRouter[T]:
-        pass
+    def query_service(self) -> IntegrityMicroservice[Query[T]]:
     
+    @property
     @abstractmethod
-    @LoggingLevelRouter.monitor
-    def search(self, query: Query[T]) -> List[SearchResult[T]]:
+    def router(self) -> SearchRouter[T]:
         pass
     

@@ -12,11 +12,11 @@ from __future__ import annotations
 from enum import Enum
 from typing import Generic, Type, TypeVar
 
-from logic.system import Query
+from logic.system import Context, Query
 
 E = TypeVar("E", bound=Enum)
 
-class CatalofQuery(Query, Generic[E]):
+class CatalogQuery(Query, Generic[E]):
     _catalog: E
     
     def __init__(self, catalog: E, context: Context[E]):
