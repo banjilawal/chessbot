@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import Optional
 
-from logic.schema.key.builder.exception import SchemaKeyBuildException, SchemaKeyBuildRouteException
+from search.schema.key.builder.exception import SchemaKeyBuildException, SchemaKeyBuildRouteException
 from logic.system import (
     BuildResult, Builder, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
 )

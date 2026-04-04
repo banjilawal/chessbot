@@ -12,7 +12,6 @@ version: 1.0.0
 # Packages
 from .factory import *
 from .model import *
-from .search import *
 from .service import *
 from .validation import *
 

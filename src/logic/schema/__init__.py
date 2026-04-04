@@ -10,7 +10,6 @@ version: 1.0.0
 #=========== SCHEMA PACKAGE CONTENTS ===========#
 
 # Packages
-from .key import *
 from logic.schema.service.operation.validator import *
 from logic.schema.service.operation.search import *
 from .service import *
