@@ -1,4 +1,4 @@
-# src/err/route/build/game/exception.py
+# src/err/build/game/exception.py
 
 """
 Module: err.build.game.exception
@@ -11,13 +11,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import BuildException
+from err import BuildException
+
 
 __all__ = [
-    # ======================# GAME_BUILD_EXCEPTION #======================#
+    # ======================# GAME_BUILD_FAILURE #======================#
     "GameBuildException",
 ]
 
-# ======================# GAME_BUILD_EXCEPTION #======================#
+# ======================# GAME_BUILD_FAILURE #======================#
 class GameBuildException(BuildException):
     """
     Role:
@@ -41,7 +43,7 @@ class GameBuildException(BuildException):
         BuildException
     """
     MSG = str = "GameBuild step failed"
-    ERR_CODE = "GAME_BUILD_EXCEPTION"
+    ERR_CODE = "GAME_BUILD_FAILURE"
     
     def __init__(
             self,

@@ -9,17 +9,18 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
+from err import BuildException
 
 
 __all__ = [
-    # ======================# COORD_CONTEXT_BUILD_EXCEPTION #======================#
+    # ======================# COORD_CONTEXT_BUILD_FAILURE #======================#
     "CoordContextBuildException",
 ]
 
 from err import ContextBuildException
 
 
-# ======================# COORD_CONTEXT_BUILD_EXCEPTION #======================#
+# ======================# COORD_CONTEXT_BUILD_FAILURE #======================#
 class CoordContextBuildException(ContextBuildException):
     """
     Role:
@@ -45,7 +46,7 @@ class CoordContextBuildException(ContextBuildException):
         ContextBuildException
     """
     MSG = str = "No build logic for CoordContext attribute"
-    ERR_CODE = "COORD_CONTEXT_BUILD_EXCEPTION"
+    ERR_CODE = "COORD_CONTEXT_BUILD_FAILURE"
     
     def __init__(
             self,

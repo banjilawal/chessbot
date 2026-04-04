@@ -1,4 +1,4 @@
-# src/err/route/build/coord/exception.py
+# src/err/build/coord/exception.py
 
 """
 Module: err.build.coord.exception
@@ -11,13 +11,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import BuildException
+from err import BuildException
+
 
 __all__ = [
-    # ======================# COORD_BUILD_EXCEPTION #======================#
+    # ======================# COORD_BUILD_FAILURE #======================#
     "CoordBuildException",
 ]
 
-# ======================# COORD_BUILD_EXCEPTION #======================#
+# ======================# COORD_BUILD_FAILURE #======================#
 class CoordBuildException(BuildException):
     """
     Role:
@@ -43,7 +45,7 @@ class CoordBuildException(BuildException):
         BuildException
     """
     MSG = str = "CoordBuild step failed"
-    ERR_CODE = "COORD_BUILD_EXCEPTION"
+    ERR_CODE = "COORD_BUILD_FAILURE"
     
     def __init__(
             self,

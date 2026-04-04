@@ -1,4 +1,4 @@
-# src/err/route/build/arena/exception.py
+# src/err/build/arena/exception.py
 
 """
 Module: err.build.arena.exception
@@ -10,13 +10,14 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
+from err import BuildException
 
 __all__ = [
-    # ======================# ARENA_BUILD_EXCEPTION #======================#
+    # ======================# ARENA_BUILD_FAILURE #======================#
     "ArenaBuildException",
 ]
 
-# ======================# ARENA_BUILD_EXCEPTION #======================#
+# ======================# ARENA_BUILD_FAILURE #======================#
 class ArenaBuildException(BuildException):
     """
     Role:
@@ -42,7 +43,7 @@ class ArenaBuildException(BuildException):
         BuildException
     """
     MSG = str = "ArenaBuild step failed"
-    ERR_CODE = "ARENA_BUILD_EXCEPTION"
+    ERR_CODE = "ARENA_BUILD_FAILURE"
     
     def __init__(
             self,

@@ -1,9 +1,9 @@
-# src/context/abstract/exception/null.py
+# src/err/null/context/exception.py
 
 """
-Module: context.abstract.exception.null
+Module: err.null.context.exception
 Author: Banji Lawal
-Created: 2026-04-03
+Created: 2026-04-04
 version: 1.0.1
 """
 
@@ -12,36 +12,38 @@ from typing import Any, Optional
 
 from err import NullException
 
-_all_ = [
-    # ======================# NULL_CONTEXT_EXCEPTION #======================#
-    "NullContextException",
+__all__ = [
+    # ======================# CONTEXT_NULL_EXCEPTION #======================#
+    "ContextNullException",
 ]
 
-# ======================# NULL_CONTEXT_EXCEPTION #======================#
-class NullContextException(NullException):
+# ======================# CONTEXT_NULL_EXCEPTION #======================#
+class ContextNullException(NullException):
     """
     Role:
-        -   Error tracing
+        -   Exception Chain Layer 2
+        -   Error Variable Identifier
+        -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that null was received instead of a Context.
+        1.  Indicate that a required  ContextNull failed.
 
     Attributes:
-        msg: Optional[str]
-        var: Optional[str]
-        val: Optional[Any]
-        ex: Optional[Exception]
-        cls_name: Optional[str]
-        cls_mthd: Optional[str]
-        err_code: Optional[str]
-
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
+            ex: Optional[Exception]
+            cls_name: Optional[str]
+            cls_mthd: Optional[str]
+            err_code: Optional[str]
+            
     Provides:
 
     Super Class:
-       NullException
+        NullException
     """
-    MSG = str = "Context cannot be null."
-    ERR_CODE = "NULL_CONTEXT_EXCEPTION"
+    MSG = str = "No null logic for context's attribute"
+    ERR_CODE = "CONTEXT_NULL_EXCEPTION"
     
     def __init__(
             self,

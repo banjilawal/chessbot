@@ -1,4 +1,4 @@
-# src/err/route/build/token/exception.py
+# src/err/build/token/exception.py
 
 """
 Module: err.build.token.exception
@@ -11,13 +11,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import BuildException
+from err import BuildException
+
 
 __all__ = [
-    # ======================# TOKEN_BUILD_EXCEPTION #======================#
+    # ======================# TOKEN_BUILD_FAILURE #======================#
     "TokenBuildException",
 ]
 
-# ======================# TOKEN_BUILD_EXCEPTION #======================#
+# ======================# TOKEN_BUILD_FAILURE #======================#
 class TokenBuildException(BuildException):
     """
     Role:
@@ -43,7 +45,7 @@ class TokenBuildException(BuildException):
         BuildException
     """
     MSG = str = "TokenBuild step failed."
-    ERR_CODE = "TOKEN_BUILD_EXCEPTION"
+    ERR_CODE = "TOKEN_BUILD_FAILURE"
     
     def __init__(
             self,

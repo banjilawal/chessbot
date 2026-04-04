@@ -1,4 +1,4 @@
-# src/err/route/build/team/exception.py
+# src/err/build/team/exception.py
 
 """
 Module: err.build.team.exception
@@ -11,13 +11,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import BuildException
+from err import BuildException
+
 
 __all__ = [
-    # ======================# TEAM_BUILD_EXCEPTION #======================#
+    # ======================# TEAM_BUILD_FAILURE #======================#
     "TeamBuildException",
 ]
 
-# ======================# TEAM_BUILD_EXCEPTION #======================#
+# ======================# TEAM_BUILD_FAILURE #======================#
 class TeamBuildException(BuildException):
     """
     Role:
@@ -41,7 +43,7 @@ class TeamBuildException(BuildException):
         BuildException
     """
     MSG = str = "TeamBuild step failed"
-    ERR_CODE = "TEAM_BUILD_EXCEPTION"
+    ERR_CODE = "TEAM_BUILD_FAILURE"
     
     def __init__(
             self,

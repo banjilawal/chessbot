@@ -1,4 +1,4 @@
-# src/err/route/build/edge/exception.py
+# src/err/build/edge/exception.py
 
 """
 Module: err.build.edge.exception
@@ -11,13 +11,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import BuildException
+from err import BuildException
+
 
 __all__ = [
-    # ======================# EDGE_BUILD_EXCEPTION #======================#
+    # ======================# EDGE_BUILD_FAILURE #======================#
     "EdgeBuildException",
 ]
 
-# ======================# EDGE_BUILD_EXCEPTION #======================#
+# ======================# EDGE_BUILD_FAILURE #======================#
 class EdgeBuildException(BuildException):
     """
     Role:
@@ -43,7 +45,7 @@ class EdgeBuildException(BuildException):
         BuildException
     """
     MSG = str = "EdgeBuild step failed"
-    ERR_CODE = "EDGE_BUILD_EXCEPTION"
+    ERR_CODE = "EDGE_BUILD_FAILURE"
     
     def __init__(
             self,

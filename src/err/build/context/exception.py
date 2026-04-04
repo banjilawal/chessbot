@@ -11,13 +11,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import BuildException
+from err import BuildException
+
 
 __all__ = [
-    # ======================# CONTEXT_BUILD_EXCEPTION #======================#
+    # ======================# CONTEXT_BUILD_FAILURE #======================#
     "ContextBuildException",
 ]
 
-# ======================# CONTEXT_BUILD_EXCEPTION #======================#
+# ======================# CONTEXT_BUILD_FAILURE #======================#
 class ContextBuildException(BuildException):
     """
     Role:
@@ -43,7 +45,7 @@ class ContextBuildException(BuildException):
         BuildException
     """
     MSG = str = "No build logic for context's attribute"
-    ERR_CODE = "CONTEXT_BUILD_EXCEPTION"
+    ERR_CODE = "CONTEXT_BUILD_FAILURE"
     
     def __init__(
             self,

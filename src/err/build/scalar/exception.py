@@ -1,4 +1,4 @@
-# src/err/route/build/scalar/exception.py
+# src/err/build/scalar/exception.py
 
 """
 Module: err.build.scalar.exception
@@ -11,13 +11,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import BuildException
+from err import BuildException
+
 
 __all__ = [
-    # ======================# SCALAR_BUILD_EXCEPTION #======================#
+    # ======================# SCALAR_BUILD_FAILURE #======================#
     "ScalarBuildException",
 ]
 
-# ======================# SCALAR_BUILD_EXCEPTION #======================#
+# ======================# SCALAR_BUILD_FAILURE #======================#
 class ScalarBuildException(BuildException):
     """
     Role:
@@ -43,7 +45,7 @@ class ScalarBuildException(BuildException):
         BuildException
     """
     MSG = str = "ScalarBuild step failed"
-    ERR_CODE = "SCALAR_BUILD_EXCEPTION"
+    ERR_CODE = "SCALAR_BUILD_FAILURE"
     
     def __init__(
             self,

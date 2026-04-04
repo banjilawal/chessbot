@@ -1,4 +1,4 @@
-# src/err/route/build/formation/exception.py
+# src/err/build/formation/exception.py
 
 """
 Module: err.build.formation.exception
@@ -11,13 +11,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import BuildException
+from err import BuildException
+
 
 __all__ = [
-    # ======================# FORMATION_BUILD_EXCEPTION #======================#
+    # ======================# FORMATION_BUILD_FAILURE #======================#
     "FormationBuildException",
 ]
 
-# ======================# FORMATION_BUILD_EXCEPTION #======================#
+# ======================# FORMATION_BUILD_FAILURE #======================#
 class FormationBuildException(BuildException):
     """
     Role:
@@ -41,7 +43,7 @@ class FormationBuildException(BuildException):
         BuildException
     """
     MSG = str = "FormationBuild step failed"
-    ERR_CODE = "FORMATION_BUILD_EXCEPTION"
+    ERR_CODE = "FORMATION_BUILD_FAILURE"
     
     def __init__(
             self,

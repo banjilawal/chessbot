@@ -1,4 +1,4 @@
-# src/err/route/build/hostage/exception.py
+# src/err/build/hostage/exception.py
 
 """
 Module: err.build.hostage.exception
@@ -11,13 +11,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import BuildException
+from err import BuildException
+
 
 __all__ = [
-    # ======================# HOSTAGE_BUILD_EXCEPTION #======================#
+    # ======================# HOSTAGE_BUILD_FAILURE #======================#
     "HostageBuildException",
 ]
 
-# ======================# HOSTAGE_BUILD_EXCEPTION #======================#
+# ======================# HOSTAGE_BUILD_FAILURE #======================#
 class HostageBuildException(BuildException):
     """
     Role:
@@ -43,7 +45,7 @@ class HostageBuildException(BuildException):
         BuildException
     """
     MSG = str = "HostageBuild step failed"
-    ERR_CODE = "HOSTAGE_BUILD_EXCEPTION"
+    ERR_CODE = "HOSTAGE_BUILD_FAILURE"
     
     def __init__(
             self,

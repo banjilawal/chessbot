@@ -1,4 +1,4 @@
-# src/err/route/build/__init__.py
+# src/err/build/__init__.py
 
 """
 Module: err.build.__init__
@@ -9,15 +9,12 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-
+from err import ChessException
 
 __all__ = [
     # ======================# BUILD_FAILURE #======================#
     "BuildException",
 ]
-
-from err import ChessException
-
 
 # ======================# BUILD_FAILURE #======================#
 class BuildException(ChessException):

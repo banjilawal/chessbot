@@ -1,4 +1,4 @@
-# src/err/route/build/square/exception.py
+# src/err/build/square/exception.py
 
 """
 Module: err.build.square.exception
@@ -11,13 +11,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import BuildException
+from err import BuildException
+
 
 __all__ = [
-    # ======================# SQUARE_BUILD_EXCEPTION #======================#
+    # ======================# SQUARE_BUILD_FAILURE #======================#
     "SquareBuildException",
 ]
 
-# ======================# SQUARE_BUILD_EXCEPTION #======================#
+# ======================# SQUARE_BUILD_FAILURE #======================#
 class SquareBuildException(BuildException):
     """
     Role:
@@ -43,7 +45,7 @@ class SquareBuildException(BuildException):
         BuildException
     """
     MSG = str = "SquareBuild step failed"
-    ERR_CODE = "SQUARE_BUILD_EXCEPTION"
+    ERR_CODE = "SQUARE_BUILD_FAILURE"
     
     def __init__(
             self,

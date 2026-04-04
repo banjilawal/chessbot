@@ -9,17 +9,18 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
+from err import BuildException
 
 
 __all__ = [
-    # ======================# PLAYER_CONTEXT_BUILD_EXCEPTION #======================#
+    # ======================# PLAYER_CONTEXT_BUILD_FAILURE #======================#
     "PlayerContextBuildException",
 ]
 
 from err import ContextBuildException
 
 
-# ======================# PLAYER_CONTEXT_BUILD_EXCEPTION #======================#
+# ======================# PLAYER_CONTEXT_BUILD_FAILURE #======================#
 class PlayerContextBuildException(ContextBuildException):
     """
     Role:
@@ -45,7 +46,7 @@ class PlayerContextBuildException(ContextBuildException):
         ContextBuildException
     """
     MSG = str = "No build logic for PlayerContext attribute"
-    ERR_CODE = "PLAYER_CONTEXT_BUILD_EXCEPTION"
+    ERR_CODE = "PLAYER_CONTEXT_BUILD_FAILURE"
     
     def __init__(
             self,

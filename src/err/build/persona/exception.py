@@ -1,4 +1,4 @@
-# src/err/route/build/persona/exception.py
+# src/err/build/persona/exception.py
 
 """
 Module: err.build.persona.exception
@@ -11,13 +11,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import BuildException
+from err import BuildException
+
 
 __all__ = [
-    # ======================# PERSONA_BUILD_EXCEPTION #======================#
+    # ======================# PERSONA_BUILD_FAILURE #======================#
     "PersonaBuildException",
 ]
 
-# ======================# PERSONA_BUILD_EXCEPTION #======================#
+# ======================# PERSONA_BUILD_FAILURE #======================#
 class PersonaBuildException(BuildException):
     """
     Role:
@@ -41,7 +43,7 @@ class PersonaBuildException(BuildException):
         BuildException
     """
     MSG = str = "PersonaBuild step failed"
-    ERR_CODE = "PERSONA_BUILD_EXCEPTION"
+    ERR_CODE = "PERSONA_BUILD_FAILURE"
     
     def __init__(
             self,

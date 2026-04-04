@@ -1,4 +1,4 @@
-# src/err/route/build/__init__.py
+# src/err/build/__init__.py
 
 """
 Module: err.build.__init__
@@ -30,4 +30,4 @@ from .vector import *
 
 
 # Modules
-from .exception import BuildRouteException
+from .exception import BuildException

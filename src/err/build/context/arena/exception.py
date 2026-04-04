@@ -9,17 +9,18 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
+from err import BuildException
 
 
 __all__ = [
-    # ======================# ARENA_CONTEXT_BUILD_EXCEPTION #======================#
+    # ======================# ARENA_CONTEXT_BUILD_FAILURE #======================#
     "ArenaContextBuildException",
 ]
 
 from err import ContextBuildException
 
 
-# ======================# ARENA_CONTEXT_BUILD_EXCEPTION #======================#
+# ======================# ARENA_CONTEXT_BUILD_FAILURE #======================#
 class ArenaContextBuildException(ContextBuildException):
     """
     Role:
@@ -45,7 +46,7 @@ class ArenaContextBuildException(ContextBuildException):
         ContextBuildException
     """
     MSG = str = "No build logic for ArenaContext attribute"
-    ERR_CODE = "ARENA_CONTEXT_BUILD_EXCEPTION"
+    ERR_CODE = "ARENA_CONTEXT_BUILD_FAILURE"
     
     def __init__(
             self,

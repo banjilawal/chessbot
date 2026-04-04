@@ -9,17 +9,18 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
+from err import BuildException
 
 
 __all__ = [
-    # ======================# FORMATION_CONTEXT_BUILD_EXCEPTION #======================#
+    # ======================# FORMATION_CONTEXT_BUILD_FAILURE #======================#
     "FormationContextBuildException",
 ]
 
 from err import ContextBuildException
 
 
-# ======================# FORMATION_CONTEXT_BUILD_EXCEPTION #======================#
+# ======================# FORMATION_CONTEXT_BUILD_FAILURE #======================#
 class FormationContextBuildException(ContextBuildException):
     """
     Role:
@@ -45,7 +46,7 @@ class FormationContextBuildException(ContextBuildException):
         ContextBuildException
     """
     MSG = str = "No build logic for FormationContext attribute"
-    ERR_CODE = "FORMATION_CONTEXT_BUILD_EXCEPTION"
+    ERR_CODE = "FORMATION_CONTEXT_BUILD_FAILURE"
     
     def __init__(
             self,

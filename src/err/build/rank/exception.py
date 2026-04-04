@@ -1,4 +1,4 @@
-# src/err/route/build/rank/exception.py
+# src/err/build/rank/exception.py
 
 """
 Module: err.build.rank.exception
@@ -11,13 +11,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import BuildException
+from err import BuildException
+
 
 __all__ = [
-    # ======================# RANK_BUILD_EXCEPTION #======================#
+    # ======================# RANK_BUILD_FAILURE #======================#
     "RankBuildException",
 ]
 
-# ======================# RANK_BUILD_EXCEPTION #======================#
+# ======================# RANK_BUILD_FAILURE #======================#
 class RankBuildException(BuildException):
     """
     Role:
@@ -43,7 +45,7 @@ class RankBuildException(BuildException):
         BuildException
     """
     MSG = str = "RankBuild step failed"
-    ERR_CODE = "RANK_BUILD_EXCEPTION"
+    ERR_CODE = "RANK_BUILD_FAILURE"
     
     def __init__(
             self,

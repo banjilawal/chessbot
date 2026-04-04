@@ -9,17 +9,18 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
+from err import BuildException
 
 
 __all__ = [
-    # ======================# ALGEBRA_CONTEXT_BUILD_EXCEPTION #======================#
+    # ======================# ALGEBRA_CONTEXT_BUILD_FAILURE #======================#
     "AlgebraContextBuildException",
 ]
 
 from err import ContextBuildException
 
 
-# ======================# ALGEBRA_CONTEXT_BUILD_EXCEPTION #======================#
+# ======================# ALGEBRA_CONTEXT_BUILD_FAILURE #======================#
 class AlgebraContextBuildException(ContextBuildException):
     """
     Role:
@@ -45,7 +46,7 @@ class AlgebraContextBuildException(ContextBuildException):
         ContextBuildException
     """
     MSG = str = "No build logic for AlgebraContext attribute"
-    ERR_CODE = "ALGEBRA_CONTEXT_BUILD_EXCEPTION"
+    ERR_CODE = "ALGEBRA_CONTEXT_BUILD_FAILURE"
     
     def __init__(
             self,

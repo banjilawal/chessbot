@@ -9,17 +9,18 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
+from err import BuildException
 
 
 __all__ = [
-    # ======================# PERSONA_CONTEXT_BUILD_EXCEPTION #======================#
+    # ======================# PERSONA_CONTEXT_BUILD_FAILURE #======================#
     "PersonaContextBuildException",
 ]
 
 from err import ContextBuildException
 
 
-# ======================# PERSONA_CONTEXT_BUILD_EXCEPTION #======================#
+# ======================# PERSONA_CONTEXT_BUILD_FAILURE #======================#
 class PersonaContextBuildException(ContextBuildException):
     """
     Role:
@@ -45,7 +46,7 @@ class PersonaContextBuildException(ContextBuildException):
         ContextBuildException
     """
     MSG = str = "No build logic for PersonaContext attribute"
-    ERR_CODE = "PERSONA_CONTEXT_BUILD_EXCEPTION"
+    ERR_CODE = "PERSONA_CONTEXT_BUILD_FAILURE"
     
     def __init__(
             self,

@@ -10,17 +10,18 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
+from err import BuildException
 
 
 __all__ = [
-    # ======================# TOKEN_CONTEXT_BUILD_EXCEPTION #======================#
+    # ======================# TOKEN_CONTEXT_BUILD_FAILURE #======================#
     "TokenContextBuildException",
 ]
 
 from err import ContextBuildException
 
 
-# ======================# TOKEN_CONTEXT_BUILD_EXCEPTION #======================#
+# ======================# TOKEN_CONTEXT_BUILD_FAILURE #======================#
 class TokenContextBuildException(ContextBuildException):
     """
     Role:
@@ -46,7 +47,7 @@ class TokenContextBuildException(ContextBuildException):
         ContextBuildException
     """
     MSG = str = "No build logic for TokenContext attribute"
-    ERR_CODE = "TOKEN_CONTEXT_BUILD_EXCEPTION"
+    ERR_CODE = "TOKEN_CONTEXT_BUILD_FAILURE"
     
     def __init__(
             self,

@@ -9,17 +9,18 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
+from err import BuildException
 
 
 __all__ = [
-    # ======================# SCHEMA_CONTEXT_BUILD_EXCEPTION #======================#
+    # ======================# SCHEMA_CONTEXT_BUILD_FAILURE #======================#
     "SchemaContextBuildException",
 ]
 
 from err import ContextBuildException
 
 
-# ======================# SCHEMA_CONTEXT_BUILD_EXCEPTION #======================#
+# ======================# SCHEMA_CONTEXT_BUILD_FAILURE #======================#
 class SchemaContextBuildException(ContextBuildException):
     """
     Role:
@@ -45,7 +46,7 @@ class SchemaContextBuildException(ContextBuildException):
         ContextBuildException
     """
     MSG = str = "No build logic for SchemaContext attribute"
-    ERR_CODE = "SCHEMA_CONTEXT_BUILD_EXCEPTION"
+    ERR_CODE = "SCHEMA_CONTEXT_BUILD_FAILURE"
     
     def __init__(
             self,

@@ -1,4 +1,4 @@
-# src/err/route/build/schema/exception.py
+# src/err/build/schema/exception.py
 
 """
 Module: err.build.schema.exception
@@ -11,13 +11,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import BuildException
+from err import BuildException
+
 
 __all__ = [
-    # ======================# SCHEMA_BUILD_EXCEPTION #======================#
+    # ======================# SCHEMA_BUILD_FAILURE #======================#
     "SchemaBuildException",
 ]
 
-# ======================# SCHEMA_BUILD_EXCEPTION #======================#
+# ======================# SCHEMA_BUILD_FAILURE #======================#
 class SchemaBuildException(BuildException):
     """
     Role:
@@ -43,7 +45,7 @@ class SchemaBuildException(BuildException):
         BuildException
     """
     MSG = str = "SchemaBuild step failed"
-    ERR_CODE = "SCHEMA_BUILD_EXCEPTION"
+    ERR_CODE = "SCHEMA_BUILD_FAILURE"
     
     def __init__(
             self,

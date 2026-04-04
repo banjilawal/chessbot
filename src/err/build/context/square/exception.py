@@ -9,17 +9,18 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
+from err import BuildException
 
 
 __all__ = [
-    # ======================# SQUARE_CONTEXT_BUILD_EXCEPTION #======================#
+    # ======================# SQUARE_CONTEXT_BUILD_FAILURE #======================#
     "SquareContextBuildException",
 ]
 
 from err import ContextBuildException
 
 
-# ======================# SQUARE_CONTEXT_BUILD_EXCEPTION #======================#
+# ======================# SQUARE_CONTEXT_BUILD_FAILURE #======================#
 class SquareContextBuildException(ContextBuildException):
     """
     Role:
@@ -45,7 +46,7 @@ class SquareContextBuildException(ContextBuildException):
         ContextBuildException
     """
     MSG = str = "No build logic for SquareContext attribute"
-    ERR_CODE = "SQUARE_CONTEXT_BUILD_EXCEPTION"
+    ERR_CODE = "SQUARE_CONTEXT_BUILD_FAILURE"
     
     def __init__(
             self,

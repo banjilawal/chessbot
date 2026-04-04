@@ -9,17 +9,18 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
+from err import BuildException
 
 
 __all__ = [
-    # ======================# RANK_CONTEXT_BUILD_EXCEPTION #======================#
+    # ======================# RANK_CONTEXT_BUILD_FAILURE #======================#
     "RankContextBuildException",
 ]
 
 from err import ContextBuildException
 
 
-# ======================# RANK_CONTEXT_BUILD_EXCEPTION #======================#
+# ======================# RANK_CONTEXT_BUILD_FAILURE #======================#
 class RankContextBuildException(ContextBuildException):
     """
     Role:
@@ -45,7 +46,7 @@ class RankContextBuildException(ContextBuildException):
         ContextBuildException
     """
     MSG = str = "No build logic for RankContext attribute"
-    ERR_CODE = "RANK_CONTEXT_BUILD_EXCEPTION"
+    ERR_CODE = "RANK_CONTEXT_BUILD_FAILURE"
     
     def __init__(
             self,

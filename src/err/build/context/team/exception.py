@@ -9,17 +9,18 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
+from err import BuildException
 
 
 __all__ = [
-    # ======================# TEAM_CONTEXT_BUILD_EXCEPTION #======================#
+    # ======================# TEAM_CONTEXT_BUILD_FAILURE #======================#
     "TeamContextBuildException",
 ]
 
 from err import ContextBuildException
 
 
-# ======================# TEAM_CONTEXT_BUILD_EXCEPTION #======================#
+# ======================# TEAM_CONTEXT_BUILD_FAILURE #======================#
 class TeamContextBuildException(ContextBuildException):
     """
     Role:
@@ -45,7 +46,7 @@ class TeamContextBuildException(ContextBuildException):
         ContextBuildException
     """
     MSG = str = "No build logic for TeamContext attribute"
-    ERR_CODE = "TEAM_CONTEXT_BUILD_EXCEPTION"
+    ERR_CODE = "TEAM_CONTEXT_BUILD_FAILURE"
     
     def __init__(
             self,

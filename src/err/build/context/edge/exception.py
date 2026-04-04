@@ -9,17 +9,18 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
+from err import BuildException
 
 
 __all__ = [
-    # ======================# EDGE_CONTEXT_BUILD_EXCEPTION #======================#
+    # ======================# EDGE_CONTEXT_BUILD_FAILURE #======================#
     "EdgeContextBuildException",
 ]
 
 from err import ContextBuildException
 
 
-# ======================# EDGE_CONTEXT_BUILD_EXCEPTION #======================#
+# ======================# EDGE_CONTEXT_BUILD_FAILURE #======================#
 class EdgeContextBuildException(ContextBuildException):
     """
     Role:
@@ -45,7 +46,7 @@ class EdgeContextBuildException(ContextBuildException):
         ContextBuildException
     """
     MSG = str = "No build logic for EdgeContext attribute"
-    ERR_CODE = "EDGE_CONTEXT_BUILD_EXCEPTION"
+    ERR_CODE = "EDGE_CONTEXT_BUILD_FAILURE"
     
     def __init__(
             self,

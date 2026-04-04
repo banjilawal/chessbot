@@ -9,17 +9,18 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
+from err import BuildException
 
 
 __all__ = [
-    # ======================# BOARD_CONTEXT_BUILD_EXCEPTION #======================#
+    # ======================# BOARD_CONTEXT_BUILD_FAILURE #======================#
     "BoardContextBuildException",
 ]
 
 from err import ContextBuildException
 
 
-# ======================# BOARD_CONTEXT_BUILD_EXCEPTION #======================#
+# ======================# BOARD_CONTEXT_BUILD_FAILURE #======================#
 class BoardContextBuildException(ContextBuildException):
     """
     Role:
@@ -45,7 +46,7 @@ class BoardContextBuildException(ContextBuildException):
         ContextBuildException
     """
     MSG = str = "No build logic for BoardContext attribute"
-    ERR_CODE = "BOARD_CONTEXT_BUILD_EXCEPTION"
+    ERR_CODE = "BOARD_CONTEXT_BUILD_FAILURE"
     
     def __init__(
             self,

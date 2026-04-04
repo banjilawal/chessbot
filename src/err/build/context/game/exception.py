@@ -9,17 +9,18 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
+from err import BuildException
 
 
 __all__ = [
-    # ======================# GAME_CONTEXT_BUILD_EXCEPTION #======================#
+    # ======================# GAME_CONTEXT_BUILD_FAILURE #======================#
     "GameContextBuildException",
 ]
 
 from err import ContextBuildException
 
 
-# ======================# GAME_CONTEXT_BUILD_EXCEPTION #======================#
+# ======================# GAME_CONTEXT_BUILD_FAILURE #======================#
 class GameContextBuildException(ContextBuildException):
     """
     Role:
@@ -45,7 +46,7 @@ class GameContextBuildException(ContextBuildException):
         ContextBuildException
     """
     MSG = str = "No build logic for GameContext attribute"
-    ERR_CODE = "GAME_CONTEXT_BUILD_EXCEPTION"
+    ERR_CODE = "GAME_CONTEXT_BUILD_FAILURE"
     
     def __init__(
             self,

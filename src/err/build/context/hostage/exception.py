@@ -9,17 +9,18 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
+from err import BuildException
 
 
 __all__ = [
-    # ======================# HOSTAGE_CONTEXT_BUILD_EXCEPTION #======================#
+    # ======================# HOSTAGE_CONTEXT_BUILD_FAILURE #======================#
     "HostageContextBuildException",
 ]
 
 from err import ContextBuildException
 
 
-# ======================# HOSTAGE_CONTEXT_BUILD_EXCEPTION #======================#
+# ======================# HOSTAGE_CONTEXT_BUILD_FAILURE #======================#
 class HostageContextBuildException(ContextBuildException):
     """
     Role:
@@ -45,7 +46,7 @@ class HostageContextBuildException(ContextBuildException):
         ContextBuildException
     """
     MSG = str = "No build logic for HostageContext attribute"
-    ERR_CODE = "HOSTAGE_CONTEXT_BUILD_EXCEPTION"
+    ERR_CODE = "HOSTAGE_CONTEXT_BUILD_FAILURE"
     
     def __init__(
             self,

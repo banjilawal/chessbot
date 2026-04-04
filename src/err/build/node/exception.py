@@ -1,4 +1,4 @@
-# src/err/route/build/node/exception.py
+# src/err/build/node/exception.py
 
 """
 Module: err.build.node.exception
@@ -9,15 +9,15 @@ version: 1.0.1
 
 from __future__ import annotations
 from typing import Any, Optional
-
 from err import BuildException
 
+
 __all__ = [
-    # ======================# NODE_BUILD_EXCEPTION #======================#
+    # ======================# NODE_BUILD_FAILURE #======================#
     "NodeBuildException",
 ]
 
-# ======================# NODE_BUILD_EXCEPTION #======================#
+# ======================# NODE_BUILD_FAILURE #======================#
 class NodeBuildException(BuildException):
     """
     Role:
@@ -43,7 +43,7 @@ class NodeBuildException(BuildException):
         BuildException
     """
     MSG = str = "NodeBuild step failed"
-    ERR_CODE = "NODE_BUILD_EXCEPTION"
+    ERR_CODE = "NODE_BUILD_FAILURE"
     
     def __init__(
             self,

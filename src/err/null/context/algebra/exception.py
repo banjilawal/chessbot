@@ -1,47 +1,51 @@
-# src/context/abstract/exception/null.py
+# src/err/null/context/algebra/exception.py
 
 """
-Module: context.abstract.exception.null
+Module: err.null.context.algebra.exception
 Author: Banji Lawal
-Created: 2026-04-03
+Created: 2026-04-04
 version: 1.0.1
 """
-
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import NullContextException
 
-_all_ = [
-    # ======================# NULL_ALGEBRA_CONTEXT_EXCEPTION #======================#
-    "NullAlgebraContextException",
+
+__all__ = [
+    # ======================# ALGEBRA_CONTEXT_NULL_EXCEPTION #======================#
+    "AlgebraContextNullException",
 ]
 
-# ======================# NULL_ALGEBRA_CONTEXT_EXCEPTION #======================#
-class NullAlgebraContextException(NullContextException):
+from err import ContextNullException
+
+
+# ======================# ALGEBRA_CONTEXT_NULL_EXCEPTION #======================#
+class AlgebraContextNullException(ContextNullException):
     """
     Role:
-        -   Error tracing
+        -   Exception Chain Layer 2
+        -   Error Variable Identifier
+        -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that null was received instead of an AlgebraContext.
+        1.  Indicate that a required  AlgebraContext is null.
 
     Attributes:
-        msg: Optional[str]
-        var: Optional[str]
-        val: Optional[Any]
-        ex: Optional[Exception]
-        cls_name: Optional[str]
-        cls_mthd: Optional[str]
-        err_code: Optional[str]
-
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
+            ex: Optional[Exception]
+            cls_name: Optional[str]
+            cls_mthd: Optional[str]
+            err_code: Optional[str]
+            
     Provides:
 
     Super Class:
-       NullContextException
+        ContextNullException
     """
-    MSG = str = "AlgebraContext cannot be null."
-    ERR_CODE = "NULL_ALGEBRA_CONTEXT_EXCEPTION"
+    MSG = str = "No null logic for AlgebraContext attribute"
+    ERR_CODE = "ALGEBRA_CONTEXT_NULL_EXCEPTION"
     
     def __init__(
             self,

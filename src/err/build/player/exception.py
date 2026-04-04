@@ -1,4 +1,4 @@
-# src/err/route/build/player/exception.py
+# src/err/build/player/exception.py
 
 """
 Module: err.build.player.exception
@@ -11,13 +11,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import BuildException
+from err import BuildException
+
 
 __all__ = [
-    # ======================# PLAYER_BUILD_EXCEPTION #======================#
+    # ======================# PLAYER_BUILD_FAILURE #======================#
     "PlayerBuildException",
 ]
 
-# ======================# PLAYER_BUILD_EXCEPTION #======================#
+# ======================# PLAYER_BUILD_FAILURE #======================#
 class PlayerBuildException(BuildException):
     """
     Role:
@@ -43,7 +45,7 @@ class PlayerBuildException(BuildException):
         BuildException
     """
     MSG = str = "PlayerBuild step failed"
-    ERR_CODE = "PLAYER_BUILD_EXCEPTION"
+    ERR_CODE = "PLAYER_BUILD_FAILURE"
     
     def __init__(
             self,

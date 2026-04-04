@@ -1,4 +1,4 @@
-# src/err/route/build/vector/exception.py
+# src/err/build/vector/exception.py
 
 """
 Module: err.build.vector.exception
@@ -11,13 +11,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import BuildException
+from err import BuildException
+
 
 __all__ = [
-    # ======================# VECTOR_BUILD_EXCEPTION #======================#
+    # ======================# VECTOR_BUILD_FAILURE #======================#
     "VectorBuildException",
 ]
 
-# ======================# VECTOR_BUILD_EXCEPTION #======================#
+# ======================# VECTOR_BUILD_FAILURE #======================#
 class VectorBuildException(BuildException):
     """
     Role:
@@ -43,7 +45,7 @@ class VectorBuildException(BuildException):
         BuildException
     """
     MSG = str = "VectorBuild step failed"
-    ERR_CODE = "VECTOR_BUILD_EXCEPTION"
+    ERR_CODE = "VECTOR_BUILD_FAILURE"
     
     def __init__(
             self,

@@ -1,4 +1,4 @@
-# src/err/route/build/board/exception.py
+# src/err/build/board/exception.py
 
 """
 Module: err.build.board.exception
@@ -10,14 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
+
 from err import BuildException
 
+
 __all__ = [
-    # ======================# BOARD_BUILD_EXCEPTION #======================#
+    # ======================# BOARD_BUILD_FAILURE #======================#
     "BoardBuildException",
 ]
 
-# ======================# BOARD_BUILD_EXCEPTION #======================#
+# ======================# BOARD_BUILD_FAILURE #======================#
 class BoardBuildException(BuildException):
     """
     Role:
@@ -43,7 +45,7 @@ class BoardBuildException(BuildException):
         BuildException
     """
     MSG = str = "BoardBuild step failed"
-    ERR_CODE = "BOARD_BUILD_EXCEPTION"
+    ERR_CODE = "BOARD_BUILD_FAILURE"
     
     def __init__(
             self,
