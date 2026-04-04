@@ -1,7 +1,7 @@
-# src/err/model/token/exception.py
+# src/err/model/token/combatant/exception.py
 
 """
-Module: err.model.token.exception
+Module: err.model.token.combatant.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ModelException
+from err import TokenException
 
 
 __all__ = [
-    # ======================# TOKEN_ERROR #======================#
-    "TokenException",
+    # ======================# COMBATANT_TOKEN_ERROR #======================#
+    "CombatantTokenException",
 ]
 
-# ======================# TOKEN_ERROR #======================#
-class TokenException(ModelException):
+# ======================# COMBATANT_TOKEN_ERROR #======================#
+class CombatantTokenException(TokenException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a Token experienced an error.
+        1.  Indicate a CombatantToken experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -39,14 +39,13 @@ class TokenException(ModelException):
     Provides:
 
     Super Class:
-        ModelException
+        Token
     """
-    MSG = str = "Token experienced an error."
-    ERR_CODE = "TOKEN_ERROR"
+    MSG = str = "CombatantToken experienced an error."
+    ERR_CODE = "COMBATANT_TOKEN_ERROR"
     
     def __init__(
             self,
-            op: Optional[str] = None,
             msg: Optional[str] = None,
             var: Optional[str] = None,
             val: Optional[Any] = None,
@@ -54,7 +53,6 @@ class TokenException(ModelException):
             cls_name: Optional[str] = None,
             cls_mthd: Optional[str] = None,
             err_code: Optional[str] = None,
-            rslt_type: Optional[str] = None,
     ):
         """
         Args:
@@ -66,10 +64,8 @@ class TokenException(ModelException):
             cls_mthd: Optional[str]
             err_code: Optional[str]
         """
-        op = op or self.OP
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        rslt_type = rslt_type or self.RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,

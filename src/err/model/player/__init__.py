@@ -10,7 +10,8 @@ version: 1.0.1
 # ============ MODEL.PLAYER PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .human import *
+from .machine import *
 
 # Modules
 from .exception import PlayerException

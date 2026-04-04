@@ -1,7 +1,7 @@
-# src/err/model/pawn/exception.py
+# src/err/model/king/exception.py
 
 """
-Module: err.model.pawn.exception
+Module: err.model.king.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import ModelException
 
 
 __all__ = [
-    # ======================# PAWN_ERROR #======================#
-    "PawnException",
+    # ======================# KING_ERROR #======================#
+    "KingException",
 ]
 
-# ======================# PAWN_ERROR #======================#
-class PawnException(ModelException):
+# ======================# KING_ERROR #======================#
+class KingException(ModelException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Pawn experienced an error.
+        1.  Indicate that a King experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -41,8 +41,8 @@ class PawnException(ModelException):
     Super Class:
         ModelException
     """
-    MSG = str = "Pawn error state."
-    ERR_CODE = "PAWN_ERROR"
+    MSG = str = "King error state."
+    ERR_CODE = "KING_ERROR"
     
     def __init__(
             self,

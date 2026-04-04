@@ -1,7 +1,7 @@
-# src/err/model/pawn/exception.py
+# src/err/model/rook/exception.py
 
 """
-Module: err.model.pawn.exception
+Module: err.model.rook.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import ModelException
 
 
 __all__ = [
-    # ======================# PAWN_ERROR #======================#
-    "PawnException",
+    # ======================# ROOK_ERROR #======================#
+    "RookException",
 ]
 
-# ======================# PAWN_ERROR #======================#
-class PawnException(ModelException):
+# ======================# ROOK_ERROR #======================#
+class RookException(ModelException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Pawn experienced an error.
+        1.  Indicate that a Rook experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -41,8 +41,8 @@ class PawnException(ModelException):
     Super Class:
         ModelException
     """
-    MSG = str = "Pawn error state."
-    ERR_CODE = "PAWN_ERROR"
+    MSG = str = "Rook error state."
+    ERR_CODE = "ROOK_ERROR"
     
     def __init__(
             self,

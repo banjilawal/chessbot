@@ -1,16 +1,16 @@
-# src/err/model/token/combatant/__init__.py
+# src/err/model/token/king/__init__.py
 
 """
-Module: err.model.token.combatant.__init__
+Module: err.model.token.king.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ MODEL.TOKEN.COMBATANT PACKAGE CONTENTS ===========#
+# ============ MODEL.TOKEN.KING PACKAGE CONTENTS ===========#
 
 # Packages
-from .pawn import *
+None
 
 # Modules
-from .exception import CombatantTokenException
+from .exception import KingTokenException

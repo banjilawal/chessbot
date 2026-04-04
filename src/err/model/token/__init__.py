@@ -10,7 +10,8 @@ version: 1.0.1
 # ============ MODEL.TOKEN PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .king import *
+from .combatant import *
 
 # Modules
 from .exception import TokenException

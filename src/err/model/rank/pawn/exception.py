@@ -1,7 +1,7 @@
-# src/err/model/rank/exception.py
+# src/err/model/pawn/exception.py
 
 """
-Module: err.model.rank.exception
+Module: err.model.pawn.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import ModelException
 
 
 __all__ = [
-    # ======================# RANK_ERROR #======================#
-    "RankException",
+    # ======================# PAWN_ERROR #======================#
+    "PawnException",
 ]
 
-# ======================# RANK_ERROR #======================#
-class RankException(ModelException):
+# ======================# PAWN_ERROR #======================#
+class PawnException(ModelException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Rank experienced an error.
+        1.  Indicate that a Pawn experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -41,8 +41,8 @@ class RankException(ModelException):
     Super Class:
         ModelException
     """
-    MSG = str = "Rank error state."
-    ERR_CODE = "RANK_ERROR"
+    MSG = str = "Pawn error state."
+    ERR_CODE = "PAWN_ERROR"
     
     def __init__(
             self,
