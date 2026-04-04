@@ -12,7 +12,7 @@ from typing import Any, List, cast
 
 from logic.square import SquareValidator
 from logic.system import LoggingLevelRouter, NumberValidator, ValidationResult, Validator
-from logic.node import (
+from graph.node import (
     DiscoveryStatus, DiscoveryStatusNullException, NullNodeException, Node, NodeValidationException
 )
 

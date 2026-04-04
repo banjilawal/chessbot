@@ -10,7 +10,7 @@ from typing import cast
 
 
 from logic.system import QueryService, id_emitter
-from logic.schema import SchemaLookupProcess, SchemaKey, SchemaKeyBuilder, SchemaKeyValidator
+from catalog.schema import SchemaLookupProcess, SchemaKey, SchemaKeyBuilder, SchemaKeyValidator
 
 
 class SchemaKeyService(QueryService[SchemaKey]):

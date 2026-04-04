@@ -12,7 +12,7 @@ __all__ = [
     "PersonaKeyBuildRouteException",
 ]
 
-from logic.persona import PersonaKeyException
+from catalog.persona import PersonaKeyException
 from logic.system import ExecutionRouteException
 
 

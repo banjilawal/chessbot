@@ -9,10 +9,10 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.persona import Persona
+from catalog.persona import Persona
 from logic.rank import RankService
 from logic.team import Team, TeamValidator
-from logic.formation import Formation, FormationService
+from catalog.formation import Formation, FormationService
 from logic.token import CombatantToken, KingToken, PawnToken, TokenBuildException, Token
 from logic.system import BuildResult, Builder, IdFactory, IdentityService, LoggingLevelRouter
 

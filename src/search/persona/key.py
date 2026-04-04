@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import Optional
 
-from logic.persona import Persona
+from catalog.persona import Persona
 from logic.system import Context
 
 

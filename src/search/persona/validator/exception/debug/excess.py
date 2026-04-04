@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from logic.system import ContextFlagCountException
-from logic.persona import PersonaKeyException
+from catalog.persona import PersonaKeyException
 
 __all__ = [
     # ========================= ARENA_PERSONA_KEY EXCEPTION =========================#

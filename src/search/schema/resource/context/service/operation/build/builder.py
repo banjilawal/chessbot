@@ -10,8 +10,8 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Optional
 
-from logic.schema import SchemaContextBuildException, SchemaContextBuildRouteException, ZeroSchemaContextFlagsException
-from logic.schema.service.operation.search import SchemaContext, SchemaContextIntegrityWorkers
+from catalog.schema import SchemaContextBuildException, SchemaContextBuildRouteException, ZeroSchemaContextFlagsException
+from catalog.schema import SchemaContext, SchemaContextIntegrityWorkers
 from logic.system import BuildResult, Builder, GameColor, LoggingLevelRouter
 from logic.team import ExcessTeamContextFlagsException
 

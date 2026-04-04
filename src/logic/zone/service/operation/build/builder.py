@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 from logic.zone import Zone
-from logic.schema import SchemaService
+from catalog.schema import SchemaService
 from logic.system import Builder, BuildResult, GameColor, LoggingLevelRouter
 
 

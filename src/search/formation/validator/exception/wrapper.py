@@ -7,7 +7,7 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-from logic.formation import FormationKeyException
+from catalog.formation import FormationKeyException
 from logic.system import ValidationException
 
 __all__ = [

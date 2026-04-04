@@ -7,7 +7,7 @@ Created: 2026-02-19
 version: 1.0.0
 """
 
-from logic.node import NodeException
+from graph.node import NodeException
 from logic.system import ContextException
 
 __all__ = [

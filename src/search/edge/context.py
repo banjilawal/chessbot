@@ -12,10 +12,10 @@ from typing import Optional
 
 from logic.board import Board
 from logic.coord import Coord
-from logic.edge import Edge
+from graph.edge import Edge
 
 
-from logic.edge.state import EdgeState
+from graph.edge import EdgeState
 from logic.system import Context
 from logic.token import Token
 

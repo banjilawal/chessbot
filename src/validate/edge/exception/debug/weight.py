@@ -7,7 +7,7 @@ Created: 2026-02-17
 version: 1.0.0
 """
 
-from logic.edge import EdgeDebugException
+from graph.edge import EdgeDebugException
 
 __all__ = [
     # ======================# EDGE_WEIGHT EXCEPTION #======================#

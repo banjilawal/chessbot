@@ -11,7 +11,7 @@ from typing import Any, cast
 
 
 from logic.system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
-from logic.schema import (
+from catalog.schema import (
     ArenaSchemaKeysException, NullSchemaKeyException, SchemaKey,
     SchemaKeyValidationException,
     SchemaKeyValidationRouteException, ZeroSchemaKeysException

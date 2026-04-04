@@ -11,11 +11,11 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from logic.formation import (
+from catalog.formation import (
     ArenaFormationKeysException, FormationKey, FormationKeyValidationException,
     FormationKeyValidationRouteException, NullFormationKeyException, ZeroFormationKeysException
 )
-from logic.persona import PersonaService
+from catalog.persona import PersonaService
 from logic.system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
 
 

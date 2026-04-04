@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.graph import Node, NodeBuildException
+from graph.graph import Node, NodeBuildException
 from logic.square import Square, SquareValidator
 from logic.system import BuildResult, Builder, LoggingLevelRouter
 

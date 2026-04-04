@@ -7,7 +7,7 @@ Created: 2025-09-08
 version: 1.0.0
 """
 
-from logic.formation import FormationException
+from catalog.formation import FormationException
 from logic.system import BoundsException
 
 __all__ = [

@@ -10,11 +10,11 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Dict
 
-from logic.persona import Persona
+from catalog.persona import Persona
 from logic.token import PawnToken
 from logic.coord import CoordService
 from logic.vector import VectorService
-from logic.span import PawnSpanner, CoordSpan
+from math.span import PawnSpanner, CoordSpan
 from logic.rank import PawnException, Rank
 from logic.system import ComputationResult, LoggingLevelRouter
 

@@ -12,7 +12,7 @@ from typing import List
 
 from logic.square import Square
 from logic.system import LoggingLevelRouter, SearchResult, StackSearchRouter
-from logic.node import (
+from graph.node import (
     DiscoveryStatus, Node, NodeContext, NodeContextValidator, NodeSearchException, NodeSearchRouteException,
     NodeSearchNullDatasetException, NodeSearchPayloadTypeException
 )

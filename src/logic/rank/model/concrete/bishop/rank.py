@@ -8,10 +8,10 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import Dict, List
+from typing import Dict
 
-from logic.persona import Persona
-from logic.span import BishopSpanner, CoordSpan
+from catalog.persona import Persona
+from math.span import BishopSpanner, CoordSpan
 from logic.coord import Coord, CoordService
 from logic.rank import BishopException, Rank
 from logic.system import ComputationResult, LoggingLevelRouter

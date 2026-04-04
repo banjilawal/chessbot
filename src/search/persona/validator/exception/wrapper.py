@@ -12,7 +12,7 @@ __all__ = [
     "PersonaKeyValidationException",
 ]
 
-from logic.persona import PersonaKeyException
+from catalog.persona import PersonaKeyException
 from logic.system import ValidationException
 
 

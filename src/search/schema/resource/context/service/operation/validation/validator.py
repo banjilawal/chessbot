@@ -12,7 +12,7 @@ from typing import Any, cast
 
 
 from logic.system import LoggingLevelRouter, Validator, ValidationResult
-from logic.schema import (
+from catalog.schema import (
     ExcessSchemaContextFlagsException, NullSchemaContextException, SchemaContext, SchemaContextIntegrityWorkers,
     SchemaContextValidationException, SchemaContextValidationRouteException, ZeroSchemaContextFlagsException
 )

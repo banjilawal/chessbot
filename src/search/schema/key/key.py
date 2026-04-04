@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import Optional
 
-from logic.schema import Schema
+from catalog.schema import Schema
 from logic.system import Context, GameColor
 
 

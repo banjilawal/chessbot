@@ -15,10 +15,8 @@ from typing import Any, cast
 from command import ArgumentCountException, ArgumentTypeException, NullArgumentsException, NullCommandException
 from command.token import DeployTokenCommand, PromotePawnCommand, TokenCommand, ValidateTokenCommand
 from command.token.service.build import BuildTokenCommand
-from logic.formation import Formation
-from logic.system import ExecutionRouteException, IdentityService, LoggingLevelRouter, Result, Router, ValidationResult
-from logic.team import Team
-from logic.token import PawnToken, Token, TokenCommandTable, TokenService, TokenServiceMenuException
+from logic.system import IdentityService, LoggingLevelRouter, Router, ValidationResult
+from logic.token import TokenCommandTable, TokenService, TokenServiceMenuException
 from logic.token.service.menu.exception.exist import TokenCommandNotFoundException
 
 

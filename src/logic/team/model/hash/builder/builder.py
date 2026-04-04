@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.schema import SchemaService
+from catalog.schema import SchemaService
 from logic.system import BuildResult, Builder, LoggingLevelRouter
 from logic.team import (
     BlackTeamHasWrongSchemaException, Team, TeamHash, TeamHashBuildException,

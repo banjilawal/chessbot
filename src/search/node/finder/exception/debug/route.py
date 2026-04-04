@@ -15,7 +15,7 @@ __all__ = [
     "NodeSearchRouteException",
 ]
 
-from logic.node import NodeDebugException
+from graph.node import NodeDebugException
 
 
 # ======================# NO_NODE_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#

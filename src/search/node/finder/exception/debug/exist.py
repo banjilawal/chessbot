@@ -15,7 +15,7 @@ __all__ = [
     "NodeNotFoundException",
 ]
 
-from logic.node import NodeDebugException
+from graph.node import NodeDebugException
 
 
 # ======================# NODE_NOT_FOUND_EXCEPTION #======================#

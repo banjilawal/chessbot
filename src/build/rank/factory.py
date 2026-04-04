@@ -7,7 +7,7 @@ Created: 2025-08-25
 version: 1.0.0
 """
 
-from logic.persona import Persona, PersonaService
+from catalog.persona import Persona, PersonaService
 from logic.system import Builder, BuildResult, LoggingLevelRouter, id_emitter
 from logic.rank import (
     Bishop, King, Knight, Pawn, Queen, Rank, RankBuildException, RankBuildRouteException,

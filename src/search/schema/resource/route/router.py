@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import List, Type
 
 from logic.system import GameColor, LoggingLevelRouter, SearchResult, SearchRouter
-from logic.schema import (
+from catalog.schema import (
     MissingSchemaSearchRouteException, Schema, SchemaQuery, SchemaQueryValidator,
     SchemaSearchException
 )

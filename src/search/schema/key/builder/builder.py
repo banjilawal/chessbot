@@ -13,7 +13,7 @@ from search.schema.key.builder.exception import SchemaKeyBuildException, SchemaK
 from logic.system import (
     BuildResult, Builder, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
 )
-from logic.schema import (
+from catalog.schema import (
     ZeroSchemaKeysException, SchemaKey, ArenaSchemaKeysException,
 )
 

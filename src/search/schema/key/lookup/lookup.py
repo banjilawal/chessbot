@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import List
 
-from logic.schema import (
+from catalog.schema import (
     SchemaLookupFailedException, SchemaLookupRouteException, SchemaColorBoundsException, SchemaKey, Schema,
     SchemaNameBoundsException, SchemaKeyValidator,
 )

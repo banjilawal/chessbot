@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import cast
 
 from logic.system import QueryService, id_emitter
-from logic.node import NodeContext, NodeContextBuilder, NodeContextValidator, NodeFinder
+from graph.node import NodeContext, NodeContextBuilder, NodeContextValidator, NodeFinder
 
 
 class NodeQueryService(QueryService[NodeContext]):

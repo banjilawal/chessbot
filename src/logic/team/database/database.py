@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import List, Optional, cast
 
-from logic.schema import Schema
+from catalog.schema import Schema
 from logic.team import Team, TeamContext, TeamQueryService, TeamDatabaseException, TeamService, TeamStack
 from logic.system import (
     DeletionResult, InsertionResult, LoggingLevelRouter, SearchResult, Database, id_emitter

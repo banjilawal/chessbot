@@ -10,9 +10,9 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Dict
 
-from logic.persona import Persona
+from catalog.persona import Persona
 from logic.vector import VectorService
-from logic.span import QueenSpanner, CoordSpan
+from math.span import QueenSpanner, CoordSpan
 from logic.rank import QueenException, Rank
 from logic.coord import Coord, CoordService
 from logic.system import ComputationResult, LoggingLevelRouter

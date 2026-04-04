@@ -13,11 +13,11 @@ import sys
 from math import sqrt
 from typing import Any, cast
 
-from logic.node import NodeValidator
+from graph.node import NodeValidator
 from logic.system import (
     BOARD_DIMENSION, IdentityService, LoggingLevelRouter, NumberValidator, ValidationResult, Validator
 )
-from logic.edge import (
+from graph.edge import (
     CircularEdgeException, Edge, EdgeDistanceException, EdgeHeuristicException, NullEdgeException,
     ValidatingEdgeException,
     EdgeWeightException,

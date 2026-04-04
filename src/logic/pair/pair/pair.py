@@ -11,7 +11,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import List
 
-from logic.node import Node
+from graph.node import Node
 
 
 @dataclass

@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import List, cast
 
-from logic.node import Node
+from graph.node import Node
 from logic.pair import PairList, PairListBuilder, PairListValidator, PairService
 from logic.pair.listing.service import PairListServiceException
 from logic.system import IdFactory, IntegrityMicroservice, LoggingLevelRouter, SearchResult

@@ -7,14 +7,14 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-from typing import List, cast
+from typing import List
 
-from logic.formation import (
+from catalog.formation import (
     Formation, FormationColorBoundsException, FormationDesignationBoundsException, FormationLookupFailedException,
     FormationLookupRouteException, FormationPersonaBoundsException, FormationSquareBoundsException, FormationKey,
     FormationKeyValidator
 )
-from logic.persona import Persona
+from catalog.persona import Persona
 from logic.system import GameColor, HashLookupProcess, LoggingLevelRouter, SearchResult
 
 

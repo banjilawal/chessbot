@@ -1,0 +1,149 @@
+# src/logic/span/service/validator.py
+
+"""
+Module: logic.span.service.service
+Author: Banji Lawal
+Created: 2025-11-12
+version: 1.0.0
+"""
+
+from __future__ import annotations
+from abc import abstractmethod
+
+from graph.graph import Graph
+from logic.coord import CoordService
+from math.span import CoordSpan, SpanGraphHandler, SpanServiceException, Spanner
+from logic.vector import VectorService
+from logic.square import SquareDatabase
+from logic.token import Token, TokenService
+from logic.system import ComputationResult, IdFactory, IdentityService, LoggingLevelRouter, Microservice
+
+class SpanMicroservice(Microservice[CoordSpan]):
+    """
+    ROLE: Microservice, Computation
+    TASK: Graphing
+    
+    RESPONSIBILITIES:
+        1.  Generate a Graph from a Token's current position.
+    
+    INHERITED RESPONSIBILITIES:
+        * See Microservice for inherited responsibilities.
+    
+    PARENT:
+        *   Microservice
+    
+    PROVIDES:
+    None
+    
+    LOCAL ATTRIBUTES:
+        *   coord_service: CoordService
+        *   vector_service: VectorService
+    
+    INHERITED ATTRIBUTES:
+        *   See Microservice for inherited attributes.
+    
+    CONSTRUCTOR PARAMETERS:
+        *   id: int
+        *   schema: str
+        *   coord_service: CoordService
+        *   vector_service: VectorService
+    
+    LOCAL METHODS:
+        *   graph(
+                    token: Token, square_database: SquareDatabase,token_service: TokenService
+            ) -> ComputationResult[Graph]
+    
+    INHERITED METHODS:
+    None
+    """
+    SERVICE_NAME = "SpanMicroservice"
+    _graph_handler: SpanGraphHandler
+    _coord_service: CoordService
+    _vector_service: VectorService
+    _identity_service: IdentityService
+    
+    def __init__(
+            self,
+            name: str = SERVICE_NAME,
+            coord_service: CoordService = CoordService(),
+            vector_service: VectorService = VectorService(),
+            id: int = IdFactory.next_id(class_name="SpanMicroservice"),
+            identity_service: IdentityService = IdentityService(),
+            graph_handler: SpanGraphHandler = SpanGraphHandler(),
+    ):
+        """
+        Args:
+            id: int
+            name: str
+            coord_service: CoordService
+            vector_service: VectorService
+        """
+        super().__init__(id=id, name=name,)
+        self._coord_service = coord_service
+        self._vector_service = vector_service
+        self._identity_service = identity_service
+        self._graph_handler = graph_handler
+    
+    @property
+    @abstractmethod
+    def spanner(self) -> Spanner:
+        pass
+    
+    @property
+    def graph_handler(self) -> SpanGraphHandler:
+        return self._graph_handler
+    
+    @property
+    def coord_service(self) -> CoordService:
+        return self._coord_service
+    
+    @property
+    def vector_service(self) -> VectorService:
+        return self._vector_service
+    
+    @property
+    def identity_service(self) -> IdentityService:
+        return self._identity_service
+    
+
+    @LoggingLevelRouter.monitor
+    def produce_graph(
+            self,
+            token: Token,
+            square_database: SquareDatabase,
+            token_service: TokenService = TokenService(),
+    ) -> ComputationResult[Graph]:
+        """
+        Args:
+            token: Token
+            square_database: SquareDatabase
+            token_service: TokenService
+
+        Returns:
+            ComputationResult[Graph]
+
+        Raises:
+            BishopSpanServiceException
+        """
+        method = f"{self.__class__.name}.graph"
+        
+        span_result = self._spanner.search_service(
+            origin=token.current_position,
+            coord_service=self.coord_service,
+        )
+        # Handle the case that the span is not produced.
+        if span_result.is_failure:
+            # Return the exception chain on failure.
+            return ComputationResult.failure(
+                SpanServiceException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=SpanServiceException.MSG,
+                    err_code=SpanServiceException.ERR_CODE,
+                    ex=span_result.exception
+                )
+            )
+        graph = Graph(id=IdFactory.next_id(class_name="Graph"))
+        
+    @LoggingLevelRouter.monitor
+    def derive_squares

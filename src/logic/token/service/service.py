@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from copy import deepcopy
 
-from logic.schema import SchemaService
+from catalog.schema import SchemaService
 from logic.rank import Rank, RankService
 from logic.coord import Coord, CoordService
 from logic.system import DeletionResult, IdFactory, InsertionResult, IntegrityMicroservice, LoggingLevelRouter, UpdateResult

@@ -8,7 +8,7 @@ version: 1.0.0
 """
 from typing import Any, cast
 
-from logic.schema import NullSchemaException, Schema, SchemaValidationException
+from catalog.schema import NullSchemaException, Schema, SchemaValidationException
 from logic.system import LoggingLevelRouter, ValidationResult, Validator
 
 

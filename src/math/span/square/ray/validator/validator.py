@@ -1,0 +1,151 @@
+# src/logic/span/square/ray/validation/validation.py
+
+"""
+Module: logic.span.square.ray.validation
+Author: Banji Lawal
+Created: 2026-03-12
+version: 1.0.0
+"""
+
+from __future__ import annotations
+from typing import Any, List, cast
+
+from logic.square import SquareValidator
+from logic.system import LoggingLevelRouter, ValidationResult, Validator
+from math.span import SquareRay, SquareRayMembersNullException, SquareRayNullException, SquareRayValidationException
+
+
+class SquareRayValidator(Validator[SquareRay]):
+    """
+     Role:Validation, Data Integrity Guarantor, Security.
+
+    Responsibilities:
+    1.  Ensure a rank is not null and the correct type before its used as a Span.Square.Ray.
+    2.  If verification fails indicate the reason in an exception returned to the caller.
+
+    Provides:
+
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def validate(
+            cls,
+            candidate: Any,
+            square_validator: SquareValidator = SquareValidator(),
+    ) -> ValidationResult[SquareRay]:
+        """
+        Action:
+            1.  Send an exception chain in the ValidationResult if, the rank is either
+                    *   nulI
+                    *   is not a SquareRay instance.
+            2.  Otherwise, cast the rank to a SquareRay then, send in the success result.
+            
+        Args:
+            candidate: Any
+            square_validator: SquareRayValidator
+            
+        Returns:
+            ValidationResult[SquareRay]
+            
+        Raises:
+            TypeError
+            SquareRayNullException
+            SquareRayValidationException
+        """
+        method = f"{cls.__class__.__name__}.validate"
+        
+        # Handle the nonexistence case.
+        if candidate is None:
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                SquareRayValidationException(
+                    mthd=method,
+                    op=SquareRayValidationException.OP,
+                    msg=SquareRayValidationException.MSG,
+                    err_code=SquareRayValidationException.ERR_CODE,
+                    rslt_type=SquareRayValidationException.RSLT_TYPE,
+                    ex=SquareRayNullException(
+                        var="rank",
+                        val="None",
+                        msg=SquareRayNullException.MSG,
+                        err_code=SquareRayNullException.ERR_CODE,
+                    )
+                )
+            )
+        # Handle the wrong class case.
+        if not isinstance(candidate, SquareRay):
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                SquareRayValidationException(
+                    mthd=method,
+                    op=SquareRayValidationException.OP,
+                    msg=SquareRayValidationException.MSG,
+                    err_code=SquareRayValidationException.ERR_CODE,
+                    rslt_type=SquareRayValidationException.RSLT_TYPE,
+                    ex=TypeError(f"{method} Expected SquareRay, got {type(candidate).__name__} instead.")
+                )
+            )
+        # --- Cast rank to a SquareRay for additional tests. ---#
+        square_ray = cast(SquareRay, candidate)
+        
+        # Handle the case that, the origin does not pass square safety checks.
+        origin_validation_result = square_validator.validate(candidate=square_ray.origin)
+        if origin_validation_result.is_failure:
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                SquareRayValidationException(
+                    mthd=method,
+                    op=SquareRayValidationException.OP,
+                    msg=SquareRayValidationException.MSG,
+                    err_code=SquareRayValidationException.ERR_CODE,
+                    rslt_type=SquareRayValidationException.RSLT_TYPE,
+                    ex=origin_validation_result.exception
+                )
+            )
+        # Handle the case that, the members are null
+        if square_ray.members is None:
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                SquareRayValidationException(
+                    mthd=method,
+                    op=SquareRayValidationException.OP,
+                    msg=SquareRayValidationException.MSG,
+                    err_code=SquareRayValidationException.ERR_CODE,
+                    rslt_type=SquareRayValidationException.RSLT_TYPE,
+                    ex=SquareRayMembersNullException(
+                        var="ray.members",
+                        val="None",
+                        msg=SquareRayValidationException.MSG,
+                        err_code=SquareRayValidationException.ERR_CODE,
+                
+                    )
+                )
+            )
+        # Handle the case that, ray.members is null.
+        if not isinstance(square_ray.members, List):
+            # Return the exception chain on failure.
+            wrong_type = type(square_ray.members).__name__
+            return ValidationResult.failure(
+                SquareRayValidationException(
+                    mthd=method,
+                    op=SquareRayValidationException.OP,
+                    msg=SquareRayValidationException.MSG,
+                    err_code=SquareRayValidationException.ERR_CODE,
+                    rslt_type=SquareRayValidationException.RSLT_TYPE,
+                    ex=SquareRayMembersNullException(
+                        var="type(ray.members)",
+                        val=wrong_type,
+                        msg=SquareRayValidationException.MSG,
+                        err_code=SquareRayValidationException.ERR_CODE,
+                        ex=TypeError(
+                            f"{method} Expected List[Square] for ray, got {wrong_type} instead."
+                        )
+                    )
+                )
+            )
+        # --- Passed safet checks. Send the success result. ---#
+        return ValidationResult.success(square_ray)

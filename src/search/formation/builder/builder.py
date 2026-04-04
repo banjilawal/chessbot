@@ -9,11 +9,11 @@ version: 1.0.0
 
 from typing import Optional
 
-from logic.formation import (
+from catalog.formation import (
     ArenaFormationKeysException, FormationKey, FormationKeyBuildException,
     FormationKeyBuildRouteException, ZeroFormationKeysException
 )
-from logic.persona import Persona, PersonaService
+from catalog.persona import Persona, PersonaService
 from logic.square import Square, SquareService
 from logic.system import BuildResult, Builder, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
 

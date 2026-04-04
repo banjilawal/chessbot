@@ -15,7 +15,7 @@ __all__ = [
     "EdgeNotFoundException",
 ]
 
-from logic.edge import EdgeDebugException
+from graph.edge import EdgeDebugException
 
 
 # ======================# EDGE_NOT_FOUND_EXCEPTION #======================#

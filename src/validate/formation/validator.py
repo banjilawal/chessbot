@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast, Any
 
 from logic.system import Validator, ValidationResult, LoggingLevelRouter
-from logic.formation import Formation, FormationValidationException, NullFormationException
+from catalog.formation import Formation, FormationValidationException, NullFormationException
 
 
 class FormationValidator(Validator[Formation]):

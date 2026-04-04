@@ -9,8 +9,8 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from logic.edge import Edge, EdgeBuildException
-from logic.system import EDGE_DIMENSION, Builder, BuildResult, LoggingLevelRouter, NumberValidator
+from graph.edge import Edge, EdgeBuildException
+from logic.system import Builder, BuildResult, LoggingLevelRouter, NumberValidator
 
 
 class EdgeBuilder(Builder[Edge]):

@@ -13,7 +13,7 @@ from typing import List
 from logic.board import Board
 from logic.coord import Coord
 from logic.system import LoggingLevelRouter, SearchResult, StackSearchRouter
-from logic.edge import (
+from graph.edge import (
     Edge, EdgeContext, EdgeContextValidator, EdgeSearchException, EdgeSearchRouteException,
     EdgeSearchNullDatasetException, EdgeSearchPayloadTypeException, EdgeState
 )

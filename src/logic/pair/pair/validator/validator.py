@@ -10,8 +10,8 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Any, cast
 
-from logic.node import NodeValidator
-from logic.edge import HeadCannotBeTailException
+from graph.node import NodeValidator
+from graph.edge import HeadCannotBeTailException
 from logic.pair import Pair, NullPairException, PairValidationException
 from logic.system import LoggingLevelRouter, ValidationResult, Validator
 

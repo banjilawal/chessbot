@@ -15,7 +15,7 @@ __all__ = [
     "EdgeSearchRouteException",
 ]
 
-from logic.edge import EdgeDebugException
+from graph.edge import EdgeDebugException
 
 
 # ======================# NO_EDGE_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#

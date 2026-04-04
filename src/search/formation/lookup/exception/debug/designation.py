@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from logic.system import BoundsException
-from logic.formation import FormationException
+from catalog.formation import FormationException
 
 __all__ = [
     # ======================# FORMATION_DESIGNATION_BOUNDS EXCEPTION #======================#

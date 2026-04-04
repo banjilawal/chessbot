@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from logic.system import NullException
-from logic.formation import FormationKeyException
+from catalog.formation import FormationKeyException
 
 __all__ = [
     # ======================# NULL_FORMATION_KEY EXCEPTION #======================#

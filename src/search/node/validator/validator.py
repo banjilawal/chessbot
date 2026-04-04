@@ -12,7 +12,7 @@ from __future__ import annotations
 import sys
 from typing import Any, cast
 
-from logic.node import (
+from graph.node import (
     ArenaNodeContextFlagsException, NodeContext, NodeContextValidationException, NodeValidator,
     NodeContextValidationRouteException, NullNodeContextException, ZeroNodeContextFlagsException
 )

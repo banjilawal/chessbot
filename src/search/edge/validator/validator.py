@@ -12,13 +12,13 @@ from typing import Any, cast
 
 from logic.board import BoardService
 from logic.coord.service import CoordService
-from logic.edge.state import EdgeState
+from graph.edge import EdgeState
 from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
-from logic.edge import (
+from graph.edge import (
     EdgeContextValidationException, ZeroEdgeContextFlagsException, EdgeContext,
     NullEdgeContextException, ArenaEdgeContextFlagsException, EdgeContextValidationRouteException
 )
-from logic.edge import EdgeService
+from graph.edge import EdgeService
 
 
 class EdgeContextValidator(Validator[EdgeContext]):

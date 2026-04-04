@@ -12,7 +12,7 @@ __all__ = [
     "SchemaNameBoundsException",
 ]
 
-from logic.schema import SchemaException
+from catalog.schema import SchemaException
 from logic.system import BoundsException
 
 

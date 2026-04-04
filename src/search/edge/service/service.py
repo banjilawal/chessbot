@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import cast
 
 from logic.system import QueryService, id_emitter
-from logic.edge import EdgeContext, EdgeContextBuilder, EdgeContextValidator, EdgeFinder
+from graph.edge import EdgeContext, EdgeContextBuilder, EdgeContextValidator, EdgeFinder
 
 
 class EdgeQueryService(QueryService[EdgeContext]):

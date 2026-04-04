@@ -14,7 +14,7 @@ __all__ = [
     "MissingSchemaSearchRouteException",
 ]
 
-from logic.schema import SchemaDebugException
+from catalog.schema import SchemaDebugException
 
 # ======================# MISSING_SCHEMA_SEARCH_ROUTE_EXCEPTION #======================#
 class MissingSchemaSearchRouteException(SchemaDebugException):

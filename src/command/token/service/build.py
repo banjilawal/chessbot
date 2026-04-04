@@ -10,7 +10,7 @@ from __future__ import annotations
 from typing import Any, Dict
 
 from command import CommandArgs
-from logic.formation import Formation
+from catalog.formation import Formation
 
 from logic.system import IdFactory
 from command.token.root import TokenCommand

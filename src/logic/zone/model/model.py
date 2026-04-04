@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from enum import Enum
 
-from logic.schema import Schema
+from catalog.schema import Schema
 from logic.system import GameColor
 
 

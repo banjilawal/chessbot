@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.schema import SchemaQueryBuilder, SchemaQueryIntegrityWorkers, SchemaQueryValidator
+from catalog.schema import SchemaQueryBuilder, SchemaQueryIntegrityWorkers, SchemaQueryValidator
 
 
 class SchemaQueryOpsController:

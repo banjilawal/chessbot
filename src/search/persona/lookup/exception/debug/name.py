@@ -7,7 +7,7 @@ Created: 2025-09-08
 version: 1.0.0
 """
 
-from logic.persona import PersonaException
+from catalog.persona import PersonaException
 from logic.system import BoundsException
 
 __all__ = [

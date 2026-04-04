@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from logic.system import NullException
-from logic.schema import SchemaKeyException
+from catalog.schema import SchemaKeyException
 
 __all__ = [
     # ======================# NULL_SCHEMA_KEY_VALIDATION EXCEPTION #======================#

@@ -11,8 +11,8 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Dict
 
-from logic.persona import Persona
-from logic.span import CoordSpan
+from catalog.persona import Persona
+from math.span import CoordSpan
 from logic.vector import VectorService
 from logic.coord import CoordService
 from logic.system import ComputationResult, LoggingLevelRouter

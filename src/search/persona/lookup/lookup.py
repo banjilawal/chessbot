@@ -10,7 +10,7 @@ version: 1.0.0
 
 from typing import List
 
-from logic.persona import (
+from catalog.persona import (
     Persona, PersonaDesignationBoundsException, PersonaLookupFailedException, PersonaLookupRouteException,
     PersonaNameBoundsException, PersonaQuotaBoundsException, PersonaRansomBoundsException, PersonaKey,
     PersonaKeyValidator

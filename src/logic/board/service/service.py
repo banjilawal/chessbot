@@ -16,7 +16,7 @@ from logic.board import (
     BoardState, BoardValidator
 )
 from logic.board.service.exception.anchor import BoardServiceException
-from logic.graph import Graph, GraphComputationException
+from graph.graph import Graph, GraphComputationException
 from logic.system import (
     ComputationResult, IdFactory, InsertionResult, IntegrityMicroservice, LoggingLevelRouter,
     RelationReport

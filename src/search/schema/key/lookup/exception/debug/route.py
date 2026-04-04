@@ -7,7 +7,7 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-from logic.schema import SchemaException
+from catalog.schema import SchemaException
 from logic.system import ExecutionRouteException
 
 

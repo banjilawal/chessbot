@@ -6,8 +6,8 @@ Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
-from logic.schema.service.operation.search import SchemaContextBuilder, SchemaContextOpsController, SchemaContextValidator
-from logic.schema.service.operation.search.resource.context.model import SchemaContext
+from catalog.schema import SchemaContextBuilder, SchemaContextOpsController, SchemaContextValidator
+from catalog.schema import SchemaContext
 from logic.system import IntegrityMicroservice, IdFactory
 
 class SchemaContextService(IntegrityMicroservice[SchemaContext]):

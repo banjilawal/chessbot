@@ -10,7 +10,7 @@ __all__ = [
     "UnformedTokenCannotBeVictorException",
 ]
 
-from logic.formation import FormationException
+from catalog.formation import FormationException
 from logic.hostage import HostageException
 
 

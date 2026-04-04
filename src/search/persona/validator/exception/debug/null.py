@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from logic.system import NullException
-from logic.persona import PersonaKeyException
+from catalog.persona import PersonaKeyException
 
 __all__ = [
     # ======================# NULL_PERSON_KEY EXCEPTION #======================#

@@ -9,9 +9,9 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.node import Node, NodeService
+from graph.node import Node, NodeService
 from logic.pair import PairBuilder, PairList, PairListBuildException, TreeDoesNotOwnRayException
-from logic.span import SquareRay, SquareRayService
+from math.span import SquareRay, SquareRayService
 from logic.system import BuildResult, Builder, LoggingLevelRouter
 
 

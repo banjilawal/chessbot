@@ -11,9 +11,9 @@ from __future__ import annotations
 
 from typing import Type
 
-from logic.schema import Schema
+from catalog.schema import Schema
 from logic.system import CatalogQuery
-from logic.schema.service.operation.search import SchemaContext
+from catalog.schema import SchemaContext
 
 
 class SchemaQuery(CatalogQuery[Schema]):

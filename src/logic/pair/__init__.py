@@ -12,7 +12,6 @@ version: 1.0.0
 # Packages
 from .pair import *
 from .listing import *
-from .tree import *
 
 # Modules
 None

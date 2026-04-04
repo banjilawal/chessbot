@@ -15,7 +15,7 @@ __all__ = [
     "SchemaNotFoundException",
 ]
 
-from logic.schema import SchemaDebugException
+from catalog.schema import SchemaDebugException
 
 # ======================# SCHEMA_NOT_FOUND_EXCEPTION #======================#
 class SchemaNotFoundException(SchemaDebugException):

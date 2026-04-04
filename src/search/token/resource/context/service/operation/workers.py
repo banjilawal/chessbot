@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.persona import PersonaService
+from catalog.persona import PersonaService
 from logic.rank import RankService
 from logic.team import TeamService
 from logic.coord import CoordService

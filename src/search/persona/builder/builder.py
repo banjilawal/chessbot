@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import Optional
 
-from logic.persona import (
+from catalog.persona import (
     ArenaPersonaKeysException, PersonaKey, PersonaKeyBuildException,
     PersonaKeyBuildRouteException, ZeroPersonaKeysException
 )

@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 from logic.board import Board
-from logic.schema import Schema
+from catalog.schema import Schema
 from logic.player import Player
 from logic.team import TeamState
 from logic.token import TokenDatabase

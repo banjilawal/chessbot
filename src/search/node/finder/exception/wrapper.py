@@ -94,7 +94,7 @@ __all__ = [
 ]
 
 from logic.system import SearchException
-from logic.node import NodeException
+from graph.node import NodeException
 
 
 # ======================# NODE_SEARCH_FAILURE #======================#

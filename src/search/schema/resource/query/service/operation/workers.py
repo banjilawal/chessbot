@@ -9,13 +9,8 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.persona import PersonaService
-from logic.rank import RankService
-from logic.schema import SchemaContextValidator, SchemaValidator
-from logic.team import TeamService
-from logic.coord import CoordService
-from logic.square import SquareService
-from logic.system import GameColorValidator, IdentityService, NumberValidator
+from catalog.schema import SchemaContextValidator, SchemaValidator
+
 
 class SchemaQueryIntegrityWorkers:
     """

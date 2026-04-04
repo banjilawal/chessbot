@@ -8,10 +8,10 @@ version: 1.0.0
 """
 
 from logic.board import BoardService
-from logic.schema import Schema, SchemaService
+from catalog.schema import Schema, SchemaService
 from logic.player import Player, PlayerService
 from logic.team import Team, TeamBuildException
-from logic.system import Builder, BuildResult, IdFactory, IdentityService, LoggingLevelRouter
+from logic.system import Builder, IdFactory, IdentityService, LoggingLevelRouter
 from logic.token import TokenDatabase
 
 
@@ -195,9 +195,7 @@ from typing import cast
 from logic.board import Board, BoardService
 from logic.coord import Coord, CoordService
 from logic.square import (
-    AddingDuplicateSquareException, Square, SquareBuildException, SquareCollisionAnalysis, SquareContext,
-    SquareCoordCollisionException,
-    SquareIdCollisionException, SquareNameCollisionException
+    Square, SquareBuildException, SquareCollisionAnalysis
 )
 from logic.system import (
     Builder, BuildResult, IdFactory, IdentityService, InsertionResult, InvariantBreachException, LoggingLevelRouter,

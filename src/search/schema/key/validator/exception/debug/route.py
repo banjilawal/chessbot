@@ -12,7 +12,7 @@ __all__ = [
     "SchemaKeyValidationRouteException",
 ]
 
-from logic.schema import SchemaKeyException
+from catalog.schema import SchemaKeyException
 from logic.system import ExecutionRouteException
 
 

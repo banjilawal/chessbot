@@ -12,7 +12,7 @@ from typing import Optional
 
 from logic.square import Square
 from logic.system import Context
-from logic.node import DiscoveryStatus, Node
+from graph.node import DiscoveryStatus, Node
 
 
 class NodeContext(Context[Node]):

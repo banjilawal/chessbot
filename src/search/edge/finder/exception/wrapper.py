@@ -94,7 +94,7 @@ __all__ = [
 ]
 
 from logic.system import SearchException
-from logic.edge import EdgeException
+from graph.edge import EdgeException
 
 
 # ======================# EDGE_SEARCH_FAILURE #======================#

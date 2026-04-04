@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from logic.system import LoggingLevelRouter, ValidationResult, Validator
-from logic.schema import (
+from catalog.schema import (
     SchemaQuery, SchemaQueryIntegrityWorkers, SchemaQueryNullException, SchemaQueryValidationException
 )
 

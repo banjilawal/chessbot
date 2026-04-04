@@ -12,7 +12,7 @@ __all__ = [
     "FormationKeyValidationRouteException",
 ]
 
-from logic.formation import FormationKeyException
+from catalog.formation import FormationKeyException
 from logic.system import ExecutionRouteException
 
 

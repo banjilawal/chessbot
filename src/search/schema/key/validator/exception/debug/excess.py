@@ -7,7 +7,7 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-from logic.schema import SchemaKeyException
+from catalog.schema import SchemaKeyException
 from logic.system import ContextFlagCountException
 
 __all__ = [

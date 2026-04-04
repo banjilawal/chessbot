@@ -9,7 +9,7 @@ version: 1.0.0
 
 
 from logic.system import BoundsException
-from logic.schema import SchemaException
+from catalog.schema import SchemaException
 
 __all__ = [
     # ======================# SCHEMA_COLOR_BOUNDS EXCEPTION #======================#

@@ -12,7 +12,7 @@ from __future__ import annotations
 from copy import deepcopy
 
 from logic.rank import RankService
-from logic.formation import FormationKey, FormationService
+from catalog.formation import FormationKey, FormationService
 from logic.system import IdFactory, IdentityService, UpdateResult
 from logic.team import FillingTeamRosterException, RosterRelationAnalysis, Team, TeamValidator
 
