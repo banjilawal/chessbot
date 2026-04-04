@@ -13,7 +13,7 @@ from typing import List, Optional
 from logic.system import (
      SearchResult, StackService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, IdFactory
 )
-from logic.pair import (
+from graph.pair import (
     PoppingEmptyPairStackException, Pair, PairContext, PairService, PairStackException, PairContextService,
     PoppingPairException, PushingPairException, PairStackFullException, PairStackState,
 )

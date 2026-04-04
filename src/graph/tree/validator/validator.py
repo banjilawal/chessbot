@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Any, cast
 
-from logic.pair import NodeTree, NodeTreeNullException, NodeTreeValidationException
+from graph.pair import NodeTree, NodeTreeNullException, NodeTreeValidationException
 from logic.system import LoggingLevelRouter, ValidationResult, Validator
 
 

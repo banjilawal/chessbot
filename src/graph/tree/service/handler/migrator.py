@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 from graph.node import NodeStackService
-from logic.pair import NodeTree, NodeTreeValidator
+from graph.pair import NodeTree, NodeTreeValidator
 from logic.system import BuildResult, LoggingLevelRouter
 
 

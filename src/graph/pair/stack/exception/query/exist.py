@@ -14,7 +14,7 @@ __all__ = [
     "PairNotFoundException",
 ]
 
-from logic.pair import PairDebugException
+from graph.pair import PairDebugException
 
 
 # ======================# PAIR_NOT_FOUND EXCEPTION #======================#

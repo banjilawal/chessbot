@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import cast
 
-from logic.pair import Pair, PairBuilder, PairValidator
+from graph.pair import Pair, PairBuilder, PairValidator
 from logic.system import IdFactory, IntegrityMicroservice
 
 

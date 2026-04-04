@@ -12,7 +12,7 @@ from __future__ import annotations
 from graph.node import Node, NodeService
 from logic.square import Square, SquareValidator
 from logic.system import BuildResult, Builder, LoggingLevelRouter
-from logic.pair import HeadTailSquareException, Pair, PairBuildException
+from graph.pair import HeadTailSquareException, Pair, PairBuildException
 
 class PairBuilder(Builder[Pair]):
     """

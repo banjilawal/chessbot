@@ -12,8 +12,8 @@ from dataclasses import dataclass
 from typing import List
 
 from graph.node import Node
-from logic.pair import PairList
-from logic.pair.listing.service import PairListService
+from graph.pair import PairList
+from graph.pair.listing.service import PairListService
 
 
 @dataclass

@@ -11,8 +11,8 @@ from __future__ import annotations
 from typing import List, cast
 
 from graph.node import Node
-from logic.pair import PairList, PairListBuilder, PairListValidator, PairService
-from logic.pair.listing.service import PairListServiceException
+from graph.pair import PairList, PairListBuilder, PairListValidator, PairService
+from graph.pair.listing.service import PairListServiceException
 from logic.system import IdFactory, IntegrityMicroservice, LoggingLevelRouter, SearchResult
 
 

@@ -7,7 +7,7 @@ Created: 2025-11-19
 version: 1.0.0
 """
 
-from logic.pair import PairStackException
+from graph.pair import PairStackException
 
 
 __all__ = [

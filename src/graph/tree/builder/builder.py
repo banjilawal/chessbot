@@ -10,8 +10,8 @@ version: 1.0.0
 from __future__ import annotations
 
 from graph.node import NodeService
-from logic.pair import PairListBuilder, NodeTreeBuildException
-from logic.pair.pair.service.service import PairService
+from graph.pair import PairListBuilder, NodeTreeBuildException
+from graph.pair.pair.service.service import PairService
 from graph.tree.tree import NodeTree
 from math.span import SquareSpan, SquareSpanService
 from logic.system import BuildResult, Builder, LoggingLevelRouter

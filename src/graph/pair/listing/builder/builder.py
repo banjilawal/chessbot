@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 from graph.node import Node, NodeService
-from logic.pair import PairBuilder, PairList, PairListBuildException, TreeDoesNotOwnRayException
+from graph.pair import PairBuilder, PairList, PairListBuildException, TreeDoesNotOwnRayException
 from math.span import SquareRay, SquareRayService
 from logic.system import BuildResult, Builder, LoggingLevelRouter
 

@@ -10,8 +10,8 @@ version: 1.0.0
 from __future__ import annotations
 from typing import cast
 
-from logic.pair import NodeTree, NodeTreeBuilder, NodeTreeValidator
-from logic.pair.listing.service import PairListService
+from graph.pair import NodeTree, NodeTreeBuilder, NodeTreeValidator
+from graph.pair.listing.service import PairListService
 from logic.system import IdFactory, IntegrityMicroservice
 
 

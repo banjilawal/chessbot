@@ -13,7 +13,7 @@ __all__ = [
 ]
 
 from logic.system import DeletionException
-from logic.pair import PairException
+from graph.pair import PairException
 
 
 # ======================# POPPING_PAIR_FAILURE #======================#

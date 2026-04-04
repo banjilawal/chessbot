@@ -12,7 +12,7 @@ __all__ = [
     "PushingPairException",
 ]
 
-from logic.pair import PairStackException
+from graph.pair import PairStackException
 from logic.system import PushException
 
 

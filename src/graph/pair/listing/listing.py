@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import List
 
-from logic.pair import Pair
+from graph.pair import Pair
 
 
 class PairList:

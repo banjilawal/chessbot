@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast
 
 from logic.player import Player, PlayerValidator
-from logic.player.relation import PlayerTeamAnalysisException
+from microservice.relation import PlayerTeamAnalysisException
 from logic.team import Team, TeamContext, TeamService
 from logic.system import LoggingLevelRouter, RelationReport, RelationAnalysis
 
