@@ -1,7 +1,7 @@
 # src/err/model/context/player/exception.py
 
 """
-Module: err.model.context.player.exception
+Module: err.model.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

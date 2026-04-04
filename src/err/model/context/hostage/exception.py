@@ -1,7 +1,7 @@
 # src/err/model/context/hostage/exception.py
 
 """
-Module: err.model.context.hostage.exception
+Module: err.model.hostage.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

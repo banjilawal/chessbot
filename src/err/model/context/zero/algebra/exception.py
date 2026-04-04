@@ -1,7 +1,7 @@
 # src/err/model/context/zero/algebra/__init__.py
 
 """
-Module: err.model.context.zero.algebra.exception
+Module: err.model.zero.algebra.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

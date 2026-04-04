@@ -1,7 +1,7 @@
 # src/err/model/context/persona/exception.py
 
 """
-Module: err.model.context.persona.exception
+Module: err.model.persona.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

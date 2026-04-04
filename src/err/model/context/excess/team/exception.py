@@ -1,7 +1,7 @@
 # src/err/model/context/excess/team/exception.py
 
 """
-Module: err.model.context.excess.team.exception
+Module: err.model.excess.team.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

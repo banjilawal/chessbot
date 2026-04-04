@@ -1,7 +1,7 @@
 # src/err/model/context/excess/edge/exception.py
 
 """
-Module: err.model.context.excess.edge.exception
+Module: err.model.excess.edge.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

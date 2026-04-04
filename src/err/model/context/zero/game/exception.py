@@ -1,7 +1,7 @@
 # src/err/model/context/zero/game/__init__.py
 
 """
-Module: err.model.context.zero.game.exception
+Module: err.model.zero.game.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

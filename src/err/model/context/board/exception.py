@@ -1,7 +1,7 @@
 # src/err/model/context/board/exception.py
 
 """
-Module: err.model.context.board.exception
+Module: err.model.board.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

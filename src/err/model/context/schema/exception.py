@@ -1,7 +1,7 @@
 # src/err/model/context/schema/exception.py
 
 """
-Module: err.model.context.schema.exception
+Module: err.model.schema.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

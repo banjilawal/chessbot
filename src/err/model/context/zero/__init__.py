@@ -1,13 +1,13 @@
 # src/err/model/context/zero/__init__.py
 
 """
-Module: err.model.context.zero.__init__
+Module: err.model.zero.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== MODEL.CONTEXT.ZERO PACKAGE CONTENTS ===========#
+# =========== MODEL.ZERO PACKAGE CONTENTS ===========#
 
 # Packages
 from .algebra import *

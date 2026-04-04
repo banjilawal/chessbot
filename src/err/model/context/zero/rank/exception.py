@@ -1,7 +1,7 @@
 # src/err/model/context/zero/rank/__init__.py
 
 """
-Module: err.model.context.zero.rank.exception
+Module: err.model.zero.rank.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

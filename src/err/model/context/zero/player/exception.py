@@ -1,7 +1,7 @@
 # src/err/model/context/zero/player/__init__.py
 
 """
-Module: err.model.context.zero.player.exception
+Module: err.model.zero.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

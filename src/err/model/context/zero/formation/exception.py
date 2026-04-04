@@ -1,7 +1,7 @@
 # src/err/model/context/zero/formation/__init__.py
 
 """
-Module: err.model.context.zero.formation.exception
+Module: err.model.zero.formation.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

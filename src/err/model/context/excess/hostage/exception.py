@@ -1,7 +1,7 @@
 # src/err/model/context/excess/hostage/exception.py
 
 """
-Module: err.model.context.excess.hostage.exception
+Module: err.model.excess.hostage.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

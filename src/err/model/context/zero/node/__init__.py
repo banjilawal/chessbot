@@ -1,13 +1,13 @@
 # src/err/model/context/zero/mode/__init__.py
 
 """
-Module: err.model.context.zero.mode.__init__
+Module: err.model.zero.mode.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== MODEL.CONTEXT.ZERO.MODE PACKAGE CONTENTS ===========#
+# =========== MODEL.ZERO.MODE PACKAGE CONTENTS ===========#
 
 # Packages
 None

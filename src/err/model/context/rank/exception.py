@@ -1,7 +1,7 @@
 # src/err/model/context/rank/exception.py
 
 """
-Module: err.model.context.rank.exception
+Module: err.model.rank.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

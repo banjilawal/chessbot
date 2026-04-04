@@ -1,7 +1,7 @@
 # src/err/model/context/excess/node/exception.py
 
 """
-Module: err.model.context.excess.node.exception
+Module: err.model.excess.node.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

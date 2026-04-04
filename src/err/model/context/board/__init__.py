@@ -1,13 +1,13 @@
 # src/err/model/context/board/__init__.py
 
 """
-Module: err.model.context.board.__init__
+Module: err.model.board.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== MODEL.CONTEXT.BOARD PACKAGE CONTENTS ===========#
+# =========== MODEL.BOARD PACKAGE CONTENTS ===========#
 
 # Packages
 None

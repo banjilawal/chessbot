@@ -1,7 +1,7 @@
 # src/err/model/context/zero/hostage/__init__.py
 
 """
-Module: err.model.context.zero.hostage.exception
+Module: err.model.zero.hostage.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

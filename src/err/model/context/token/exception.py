@@ -1,7 +1,7 @@
 # src/err/model/context/token/exception.py
 
 """
-Module: err.model.context.token.exception
+Module: err.model.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

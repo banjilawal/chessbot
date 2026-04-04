@@ -1,13 +1,13 @@
 # src/err/model/context/hostage/__init__.py
 
 """
-Module: err.model.context.hostage.__init__
+Module: err.model.hostage.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== MODEL.CONTEXT.HOSTAGE PACKAGE CONTENTS ===========#
+# =========== MODEL.HOSTAGE PACKAGE CONTENTS ===========#
 
 # Packages
 None

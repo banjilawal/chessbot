@@ -1,7 +1,7 @@
 # src/err/model/context/formation/exception.py
 
 """
-Module: err.model.context.formation.exception
+Module: err.model.formation.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

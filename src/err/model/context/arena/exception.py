@@ -1,7 +1,7 @@
 # src/err/model/context/arena/exception.py
 
 """
-Module: err.model.context.arena.exception
+Module: err.model.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

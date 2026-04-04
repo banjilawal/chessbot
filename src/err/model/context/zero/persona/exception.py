@@ -1,7 +1,7 @@
 # src/err/model/context/zero/persona/__init__.py
 
 """
-Module: err.model.context.zero.persona.exception
+Module: err.model.zero.persona.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
