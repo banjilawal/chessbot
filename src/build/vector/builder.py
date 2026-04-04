@@ -10,7 +10,7 @@ version: 1.0.0
 from logic.system import (
     Builder, BuildResult, LONGEST_KNIGHT_LEG_SIZE, LoggingLevelRouter, NumberValidator
 )
-from model.vector import Vector, VectorBuildException
+from geometry.vector import Vector, VectorBuildException
 
 
 class VectorBuilder(Builder[Vector]):

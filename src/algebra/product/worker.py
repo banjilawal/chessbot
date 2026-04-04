@@ -22,7 +22,7 @@ class ScalarProductWorker(Worker):
         -   Computation
 
     Responsibilities:
-        1.  CompuatationWorker the scalar product of either a coord or vector.
+        1.  ComputationWorker the scalar product of either a coord or vector.
         
     Attributes:
         

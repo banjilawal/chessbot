@@ -11,9 +11,7 @@ from __future__ import annotations
 
 from typing import List, Union
 
-from model.vector import Vector, VectorService
-from logic.system import ComputationResult, LoggingLevelRouter
-from logic.coord import Coord, CoordAdditionException, CoordAdditionOperandNullException, CoordService
+
 
 class CoordAdder:
     """
@@ -94,7 +92,7 @@ class CoordAdder:
         )
         if validation_result.is_failure:
             return validation_result
-        # --- CompuatationWorker the sum. ---#
+        # --- ComputationWorker the sum. ---#
         addition_result =  cls._route_addition(
             coord=coord,
             operand=operand,

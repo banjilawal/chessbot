@@ -14,7 +14,7 @@ from typing import Dict, List
 from model.token import PawnToken
 from logic.system import ComputationResult
 from logic.coord import Coord, CoordService
-from model.vector import Vector, VectorService
+from geometry.vector import Vector, VectorService
 from math.span import PawnSpannerException, PawnVectorSets, CoordRay, CoordSpan, Spanner
 
 class PawnSpanner(Spanner):

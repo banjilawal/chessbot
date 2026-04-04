@@ -1,17 +1,16 @@
-# src/logic/scalar/exception/__init__.py
+# src/logic/scalar/build/exception/__init__.py
 
 """
-Module: logic.scalar.exception.__init__
+Module: logic.scalar.build.exception.__init__
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2026-02-17
 version: 1.0.0
 """
 
-# =========== SCALAR.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== SCALAR.BUILDER.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
 None
 
 # Modules
-from .anchor import ScalarException
-from .debug import ScalarDebugException
+from .work import ScalarBuildException

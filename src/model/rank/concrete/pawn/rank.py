@@ -13,7 +13,7 @@ from typing import Dict
 from catalog.persona import Persona
 from model.token import PawnToken
 from logic.coord import CoordService
-from model.vector import VectorService
+from geometry.vector import VectorService
 from math.span import PawnSpanner, CoordSpan
 from logic.rank import PawnException, Rank
 from logic.system import ComputationResult, LoggingLevelRouter

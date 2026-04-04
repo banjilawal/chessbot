@@ -19,7 +19,7 @@ from math.span import BishopSpanServiceException, BishopSpanner, CoordSpan, Span
 from logic.square import Square, SquareContext, SquareDatabase
 from logic.system import BuildResult, ComputationResult, IdFactory, LoggingLevelRouter
 from model.token import Token, TokenService
-from model.vector import VectorService
+from geometry.vector import VectorService
 
 
 class BishopSpanService(SpanMicroservice):

@@ -15,7 +15,7 @@ from math.span import BishopSpanner, CoordSpan
 from logic.coord import Coord, CoordService
 from logic.rank import BishopException, Rank
 from logic.system import ComputationResult, LoggingLevelRouter
-from model.vector import VectorService
+from geometry.vector import VectorService
 
 
 class Bishop(Rank):

@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import List
 
-from model.vector import VectorService
+from geometry.vector import VectorService
 from logic.coord import Coord, CoordService
 from logic.system import ComputationResult, LoggingLevelRouter
 from math.span import (
@@ -34,7 +34,7 @@ class PerpendicularRayComputer:
     4.  we can get the span by iterating over the quadrants with the in the range [0, BOARD_DIMENSION - 1]
 
     Responsibilities:
-    1.  CompuatationWorker the spanning subset in the horizontal and vertical plane with no duplicates.
+    1.  ComputationWorker the spanning subset in the horizontal and vertical plane with no duplicates.
     2.  If the arithmetic fails send an exception chain to the caller for error tracing.
 
     Super Class:

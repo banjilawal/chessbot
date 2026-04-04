@@ -13,8 +13,8 @@ from logic.system import (
     LONGEST_KNIGHT_LEG_SIZE, LoggingLevelRouter, NumberValidator, ValidationResult,
     Validator
 )
-from model.vector import NullVectorException, Vector
-from model.vector import VectorValidationException
+from geometry.vector import NullVectorException, Vector
+from geometry.vector import VectorValidationException
 
 
 class VectorValidator(Validator[Vector]):

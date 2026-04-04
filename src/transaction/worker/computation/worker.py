@@ -18,7 +18,7 @@ from result import ComputationResult
 T = TypeVar("T")
 
 
-class CompuatationWorker(ABC, Generic[T]):
+class ComputationWorker(ABC, Generic[T]):
     
     @classmethod
     @abstractmethod

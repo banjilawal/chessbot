@@ -15,7 +15,8 @@ __all__ = [
     "CoordAdditionException",
 ]
 
-from logic.system import ComputationException
+from transaction.err.computation.transaction import ComputationException
+
 
 # ======================# COORD_ADDITION_FAILURE #======================#
 class CoordAdditionException(ComputationException):

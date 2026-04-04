@@ -13,7 +13,7 @@ from abc import abstractmethod
 from graph.graph import Graph
 from logic.coord import CoordService
 from math.span import CoordSpan, SpanGraphHandler, SpanServiceException, Spanner
-from model.vector import VectorService
+from geometry.vector import VectorService
 from logic.square import SquareDatabase
 from model.token import Token, TokenService
 from logic.system import ComputationResult, IdFactory, IdentityService, LoggingLevelRouter, Microservice

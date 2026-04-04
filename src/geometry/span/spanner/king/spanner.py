@@ -12,7 +12,7 @@ from typing import Dict, List
 
 from logic.system import ComputationResult
 from logic.coord import Coord, CoordService
-from model.vector import Vector, VectorService
+from geometry.vector import Vector, VectorService
 from math.span import KingSpannerException, CoordRay, CoordSpan, Spanner
 
 

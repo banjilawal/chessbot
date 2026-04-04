@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Union, cast
 
 from logic.coord import Coord
-from model.vector import Vector
+from geometry.vector import Vector
 from logic.system import LoggingLevelRouter, ValidationResult
 from math.geometry import (
     GeometryIntegrityWorkers, VectorCoordUnionNullException, VectorCoordUnionValidatorException

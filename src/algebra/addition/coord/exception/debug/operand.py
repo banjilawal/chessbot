@@ -15,7 +15,7 @@ __all__ = [
     "CoordAdditionOperandNullException",
 ]
 
-from model.coord import CoordDebugException
+from geometry.coord import CoordDebugException
 
 
 # ======================# COORD_ADDITION_OPERAND_NULL_EXCEPTION #======================#

@@ -13,7 +13,7 @@ from typing import Dict
 
 from catalog.persona import Persona
 from math.span import CoordSpan
-from model.vector import VectorService
+from geometry.vector import VectorService
 from logic.coord import CoordService
 from logic.system import ComputationResult, LoggingLevelRouter
 

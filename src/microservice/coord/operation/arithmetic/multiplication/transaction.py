@@ -20,7 +20,7 @@ class MultiplyCoordTransaction:
         -   Computation
 
     Responsibilities:
-        1.  CompuatationWorker the product of a Coord and a Scalar.
+        1.  ComputationWorker the product of a Coord and a Scalar.
         
     Attributes:
         

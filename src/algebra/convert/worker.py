@@ -12,11 +12,11 @@ from typing import Union
 
 from logic.coord import Coord, CoordService
 from worker.worker import Worker
-from model.vector import Vector, VectorService
+from geometry.vector import Vector, VectorService
 from logic.system import (
     ComputationResult, LoggingLevelRouter, NumberValidator
 )
-from model.vector import (
+from geometry.vector import (
     VectorCoordConversionException,
     VectorCoordConversionOperandNullException
 )
