@@ -1,13 +1,13 @@
-# src/err/null/__init__.py
+# src/err/model/__init__.py
 
 """
-Module: err.null.__init__
+Module: err.model.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ NULL PACKAGE CONTENTS ===========#
+# ============ MODEL PACKAGE CONTENTS ===========#
 
 # Packages
 from .arena import *
@@ -30,4 +30,4 @@ from .vector import *
 
 
 # Modules
-from .exception import NullException
+from .exception import ModelException

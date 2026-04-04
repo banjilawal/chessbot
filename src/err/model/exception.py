@@ -1,29 +1,31 @@
-# src/err/null/__init__.py
+# src/err/model/__init__.py
 
 """
-Module: err.null.exception
+Module: err.model.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
+from err import ModelException
 from err import ChessException
 
 __all__ = [
-    # ======================# NULL_EXCEPTION #======================#
-    "NullException",
+    # ======================# MODEL_ERROR #======================#
+    "ModelException",
 ]
 
-# ======================# NULL_EXCEPTION #======================#
-class NullException(ChessException):
+# ======================# MODEL_ERROR #======================#
+class ModelException(ChessException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required object is null.
+        1.  Indicate that a data-holding object experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -39,8 +41,8 @@ class NullException(ChessException):
     Super Class:
         ChessException
     """
-    MSG = str = "Data-Holder is null."
-    ERR_CODE = "NULL_EXCEPTION"
+    MSG = str = "Data object error state."
+    ERR_CODE = "MODEL_ERROR"
     
     def __init__(
             self,
