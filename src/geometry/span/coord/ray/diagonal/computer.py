@@ -40,7 +40,7 @@ class DiagonalRayComputer:
     8. So for each quadrant we change the slope.
 
     Responsibilities:
-    1.  Compute the spanning subset in the horizontal and vertical plane with no duplicates.
+    1.  CompuatationWorker the spanning subset in the horizontal and vertical plane with no duplicates.
     2.  If the arithmetic fails send an exception chain to the caller for error tracing.
 
     Super Class:

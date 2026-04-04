@@ -14,7 +14,7 @@ from typing import Union
 
 from logic.system import ComputationResult, LoggingLevelRouter, NumberValidator
 from logic.coord import Coord, EuclideanDistanceException, CoordValidator
-from logic.system.worker import Worker
+from worker.worker import Worker
 from model.vector import Vector, VectorValidator
 
 
@@ -25,7 +25,7 @@ class EuclideanDistanceFinder(Worker):
         -   Computation
 
     Responsibilities:
-        1.  Compute the Euclidean distance between two either two coords or vectors..
+        1.  CompuatationWorker the Euclidean distance between two either two coords or vectors..
         
     Attributes:
         

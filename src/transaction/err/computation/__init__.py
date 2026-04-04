@@ -11,7 +11,5 @@ Version: 1.0.0
 
 # Packages
 from .result import *
-from .exception import *
 
 # Modules
-from .computer import Compute

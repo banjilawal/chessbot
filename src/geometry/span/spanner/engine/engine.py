@@ -179,7 +179,7 @@ class SpannerEngine:
         """
         method = f"{cls.__name__}._compute_queen_span"
         
-        # --- Compute the queen's diagonal span. ---#
+        # --- CompuatationWorker the queen's diagonal span. ---#
         diagonal_span_result = cls._compute_bishop_span(
             origin=origin,
             coord_service=coord_service,
@@ -204,7 +204,7 @@ class SpannerEngine:
                     )
                 )
             )
-        # --- Compute the queen's perpendicular span. ---#
+        # --- CompuatationWorker the queen's perpendicular span. ---#
         perpendicular_span_result = cls._compute_rook_span(
             origin=origin,
             coord_service=coord_service,

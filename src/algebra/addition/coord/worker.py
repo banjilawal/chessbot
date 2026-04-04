@@ -94,7 +94,7 @@ class CoordAdder:
         )
         if validation_result.is_failure:
             return validation_result
-        # --- Compute the sum. ---#
+        # --- CompuatationWorker the sum. ---#
         addition_result =  cls._route_addition(
             coord=coord,
             operand=operand,

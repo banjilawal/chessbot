@@ -10,10 +10,10 @@ Version: 1.0.0
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Any, Generic, Optional, TypeVar
+from typing import Any, Generic, TypeVar
 
 from logic.system import InsertionResult, LoggingLevelRouter, Result, StackService
-from logic.system.worker import Worker
+from worker.worker import Worker
 
 T = TypeVar("T")
 

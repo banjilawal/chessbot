@@ -21,7 +21,7 @@ class EuclideanDistance:
         -   Computation
 
     Responsibilities:
-        1.  Compute the Euclidean distance between two Coords.
+        1.  CompuatationWorker the Euclidean distance between two Coords.
         
     Attributes:
         

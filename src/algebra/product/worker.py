@@ -12,7 +12,7 @@ from __future__ import annotations
 from logic.system import ComputationResult
 from build.scalar import Scalar, ScalarService
 from logic.coord import Coord, CoordMultiplicationException, CoordService
-from logic.system.worker import Worker
+from worker.worker import Worker
 
 
 class ScalarProductWorker(Worker):
@@ -22,7 +22,7 @@ class ScalarProductWorker(Worker):
         -   Computation
 
     Responsibilities:
-        1.  Compute the scalar product of either a coord or vector.
+        1.  CompuatationWorker the scalar product of either a coord or vector.
         
     Attributes:
         
