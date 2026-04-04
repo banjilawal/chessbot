@@ -1,35 +1,45 @@
-# src/transaction/err/computation/transaction.py
+# src/logic/token/service/operation/arithmetic/convert/exception/validator.py
 
 """
-Module: transaction.err.computation.transaction
+Module: logic.token.service.operation.arithmetic.convert.exception.work
 Author: Banji Lawal
-Created: 2026-04-03
-version: 1.0.1
+Created: 2026-03-25
+version: 1.0.0
+"""
+
+from __future__ import annotations
+from typing import Optional
+# src/logic/coord/validation/exception/validator.py
+
+"""
+Module: logic.coord.validation.exception.work
+Author: Banji Lawal
+Created: 2025-09-08
+Version: 1.0.0
 """
 
 from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# COMPUTATION_FAILURE #======================#
-    "ComputationException",
+    # ======================# VECTOR_COORD_UNION_VALIDATION_FAILURE #======================#
+    "VectorCoordUnionValidatorException",
 ]
 
-from logic.system import TransactionException
+from logic.system import ValidationException
 
 
-# ======================# COMPUTATION_FAILURE #======================#
-class ComputationException(TransactionException):
+# ======================# VECTOR_COORD_UNION_VALIDATION_FAILURE #======================#
+class VectorCoordUnionValidatorException(ValidationException):
     """
     Role:
-        - Worker Method Identification
-        - Exception Chain Layer 1
-        - Exception Messaging
+        -   Worker Method Identification
+        -   Exception Chain Layer 1,
+        -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate a arithmetic was unsuccessful and did not produce a result.
-        2.  Trace the method calls.
-        
+        1.  Identify which VectorCoordUnionValidator method, a test failed.
+
     Attributes:
         op: Optional[str]
         msg: Optional[str]
@@ -41,13 +51,11 @@ class ComputationException(TransactionException):
 
     Provides:
 
-    Super:
-        OperationException
+    Super Class:
+        ValidationException
     """
-    OP = "Computation"
-    RSLT_TYPE = "ComputationResult"
-    ERR_CODE = "COMPUTATION_FAILURE"
-    MSG = "Computation method failed."
+    ERR_CODE = "VECTOR_COORD_UNION_VALIDATION_FAILURE"
+    MSG = "VectorCoordUnion validation check failed."
     
     def __init__(
             self,
@@ -55,8 +63,8 @@ class ComputationException(TransactionException):
             msg: Optional[str] = None,
             mthd: Optional[str] = None,
             title: Optional[str] = None,
-            ex: Optional[Exception] = None,
             err_code: Optional[str] = None,
+            ex: Optional[Exception] = None,
             rslt_type: Optional[str] = None,
     ):
         """

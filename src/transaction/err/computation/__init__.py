@@ -1,15 +1,15 @@
-# src/logic/system/arithmetic/__init__.py
+# src/transaction/err/computation/__init__.py
 
 """
-Module: logic.system.arithmetic.__init__
+Module: transaction.err.computation.__init__
 Author: Banji Lawal
-Created: 2025-11-18
-Version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-# =========== COMPUTATION PACKAGE CONTENTS ===========#
+# =========== ERR.COMPUTATION PACKAGE CONTENTS ===========#
 
 # Packages
-from .result import *
+None
 
-# Modules
+from .transaction import ComputationException

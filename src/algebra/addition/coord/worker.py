@@ -11,6 +11,9 @@ from __future__ import annotations
 
 from typing import List, Union
 
+from geometry import Coord, Vector
+from microservice import CoordService, VectorService
+from result import ComputationResult
 
 
 class CoordAdder:
