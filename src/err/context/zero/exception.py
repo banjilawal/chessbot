@@ -1,7 +1,7 @@
-# src/err/context/zero/__init__.py
+# src/err/context/zero/exception.py
 
 """
-Module: err.context.zero.__init__
+Module: err.context.zero.exception
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -21,10 +21,8 @@ _all_ = [
 class ZeroContextFlagsException(ContextException):
     """
     Role:
-        -   Exception Chain Layer 2
-        -   Error Variable Identifier
-        -   Debugging Metadata provider
-
+        -   Error Tracing
+        
     Responsibilities:
         1.  Indicate that no Context attributes were enabled.
 

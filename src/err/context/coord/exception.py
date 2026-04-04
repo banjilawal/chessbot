@@ -1,7 +1,7 @@
-# src/err/context/exception.py
+# src/err/context/coord/exception.py
 
 """
-Module: err.context.exception
+Module: err.context.coord.exception
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,21 +10,21 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ChessException
+from err.context import ContextException
 
 __all__ = [
     # ======================# CONTEXT_EXCEPTION #======================#
-    "ContextException",
+    "CoordContextException",
 ]
 
 # ======================# CONTEXT_EXCEPTION #======================#
-class ContextException(ChessException):
+class CoordContextException(ContextException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Context is in an error state.
+        1.  Indicate that a CoordContext is in an error state.
 
     Attributes:
         msg: Optional[str]
@@ -38,10 +38,10 @@ class ContextException(ChessException):
     Provides:
 
     Super Class:
-        ChessException
+        ContextException
     """
     ERR_CODE = "CONTEXT_EXCEPTION"
-    MSG = "Context in error state."
+    MSG = "CoordContext in error state."
     
     def __init__(
             self,

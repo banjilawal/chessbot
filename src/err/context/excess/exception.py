@@ -21,13 +21,10 @@ _all_ = [
 class ExcessContextFlagsException(ContextException):
     """
     Role:
-        -   Exception Chain Layer 2
-        -   Error Variable Identifier
-        -   Debugging Metadata provider
+        -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that the work was not completed because too many context
-            attributes was enabled.
+        1.  Indicates that more Context attributes are enabled than allowed.
 
     Attributes:
         msg: Optional[str]
@@ -43,7 +40,7 @@ class ExcessContextFlagsException(ContextException):
     Super Class:
         ContextException
     """
-    MSG = str = "Too many context attributes enabled."
+    MSG = str = "More context than allowed are enabled."
     ERR_CODE = "EXCESS_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(
