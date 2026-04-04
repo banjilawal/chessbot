@@ -24,7 +24,7 @@ class SchemaBuildException(BuildException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SchemaBuild check failed.
+        1.  Indicate that a SchemaBuild step failed.
 
     Attributes:
         op: Optional[str]
@@ -42,7 +42,7 @@ class SchemaBuildException(BuildException):
     Super Class:
         BuildException
     """
-    MSG = str = "SchemaBuild check failed"
+    MSG = str = "SchemaBuild step failed"
     ERR_CODE = "SCHEMA_BUILD_EXCEPTION"
     
     def __init__(

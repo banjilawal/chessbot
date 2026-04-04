@@ -28,7 +28,7 @@ class NodeContextBuildException(ContextBuildException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that a NodeContextBuild check failed.
+        1.  Indicate that a NodeContextBuild step failed.
 
     Attributes:
             msg: Optional[str]

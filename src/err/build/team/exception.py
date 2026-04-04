@@ -24,7 +24,7 @@ class TeamBuildException(BuildException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TeamBuild check failed.
+        1.  Indicate that a TeamBuild step failed.
 
     Attributes:
             msg: Optional[str]
@@ -40,7 +40,7 @@ class TeamBuildException(BuildException):
     Super Class:
         BuildException
     """
-    MSG = str = "TeamBuild check failed"
+    MSG = str = "TeamBuild step failed"
     ERR_CODE = "TEAM_BUILD_EXCEPTION"
     
     def __init__(

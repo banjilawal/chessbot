@@ -28,7 +28,7 @@ class FormationContextBuildException(ContextBuildException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that a FormationContextBuild check failed.
+        1.  Indicate that a FormationContextBuild step failed.
 
     Attributes:
             msg: Optional[str]

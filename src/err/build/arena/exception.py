@@ -10,7 +10,6 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
 
 __all__ = [
     # ======================# ARENA_BUILD_EXCEPTION #======================#
@@ -24,7 +23,7 @@ class ArenaBuildException(BuildException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an ArenaBuild check failed.
+        1.  Indicate that an ArenaBuild step failed.
 
     Attributes:
         op: Optional[str]
@@ -42,7 +41,7 @@ class ArenaBuildException(BuildException):
     Super Class:
         BuildException
     """
-    MSG = str = "ArenaBuild check failed"
+    MSG = str = "ArenaBuild step failed"
     ERR_CODE = "ARENA_BUILD_EXCEPTION"
     
     def __init__(

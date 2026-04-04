@@ -28,7 +28,7 @@ class CoordContextBuildException(ContextBuildException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that a CoordContextBuild check failed.
+        1.  Indicate that a CoordContextBuild step failed.
 
     Attributes:
             msg: Optional[str]

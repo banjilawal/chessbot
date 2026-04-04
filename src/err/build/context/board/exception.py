@@ -28,7 +28,7 @@ class BoardContextBuildException(ContextBuildException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that a BoardContextBuild check failed.
+        1.  Indicate that a BoardContextBuild step failed.
 
     Attributes:
             msg: Optional[str]

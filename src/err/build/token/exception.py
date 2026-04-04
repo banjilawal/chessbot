@@ -24,7 +24,7 @@ class TokenBuildException(BuildException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a TokenBuild check failed.
+        1.  Indicate a TokenBuild step failed.
 
     Attributes:
         op: Optional[str]
@@ -42,7 +42,7 @@ class TokenBuildException(BuildException):
     Super Class:
         BuildException
     """
-    MSG = str = "TokenBuild check failed."
+    MSG = str = "TokenBuild step failed."
     ERR_CODE = "TOKEN_BUILD_EXCEPTION"
     
     def __init__(

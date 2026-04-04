@@ -28,7 +28,7 @@ class EdgeContextBuildException(ContextBuildException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that a EdgeContextBuild check failed.
+        1.  Indicate that a EdgeContextBuild step failed.
 
     Attributes:
             msg: Optional[str]

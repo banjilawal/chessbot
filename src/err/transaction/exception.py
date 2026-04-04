@@ -23,9 +23,7 @@ from err import ChessException
 class TransactionException(ChessException):
     """
     Role:
-        -   Process Identifier
-        -   Exception Chain Layer 1
-        -   Exception Messaging
+        -   Error Tracing
 
     Responsibilities:
         1.  Identifies which WorkerClass method the error was caught.
@@ -51,6 +49,7 @@ class TransactionException(ChessException):
         3.  The Syntax is: [Class] transaction failed.
 
     Attributes:
+        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]
@@ -58,13 +57,14 @@ class TransactionException(ChessException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
+        rslt_type: Optional[str
 
     Provides:
     
     Super Class:
-        WorkException
+        ChessException
     """
-    MSG = "Failure in method."
+    MSG = "Transaction failed."
     ERR_CODE = "TRANSACTION_FAILURE"
 
     _op = Optional[str]

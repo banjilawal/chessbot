@@ -28,7 +28,7 @@ class HostageContextBuildException(ContextBuildException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that a HostageContextBuild check failed.
+        1.  Indicate that a HostageContextBuild step failed.
 
     Attributes:
             msg: Optional[str]

@@ -28,7 +28,7 @@ class RankContextBuildException(ContextBuildException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that a RankContextBuild check failed.
+        1.  Indicate that a RankContextBuild step failed.
 
     Attributes:
             msg: Optional[str]

@@ -24,7 +24,7 @@ class HostageBuildException(BuildException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a HostageBuild check failed.
+        1.  Indicate that a HostageBuild step failed.
 
     Attributes:
         op: Optional[str]
@@ -42,7 +42,7 @@ class HostageBuildException(BuildException):
     Super Class:
         BuildException
     """
-    MSG = str = "HostageBuild check failed"
+    MSG = str = "HostageBuild step failed"
     ERR_CODE = "HOSTAGE_BUILD_EXCEPTION"
     
     def __init__(

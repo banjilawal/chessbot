@@ -24,7 +24,7 @@ class CoordBuildException(BuildException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CoordBuild check failed.
+        1.  Indicate that a CoordBuild step failed.
 
     Attributes:
         op: Optional[str]
@@ -42,7 +42,7 @@ class CoordBuildException(BuildException):
     Super Class:
         BuildException
     """
-    MSG = str = "CoordBuild check failed"
+    MSG = str = "CoordBuild step failed"
     ERR_CODE = "COORD_BUILD_EXCEPTION"
     
     def __init__(

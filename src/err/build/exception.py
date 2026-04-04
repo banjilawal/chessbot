@@ -13,20 +13,20 @@ from typing import Any, Optional
 
 __all__ = [
     # ======================# BUILD_FAILURE #======================#
-    "BuildRouteException",
+    "BuildException",
 ]
 
 from err import ChessException
 
 
 # ======================# BUILD_FAILURE #======================#
-class BuildRouteException(ChessException):
+class BuildException(ChessException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a build check failed.
+        1.  Indicate that a build step failed.
 
     Attributes:
         op: Optional[str]
@@ -45,7 +45,7 @@ class BuildRouteException(ChessException):
         ChessException
     """
     OP = "Build"
-    MSG = str = "Build check failed."
+    MSG = str = "Build step failed."
     ERR_CODE = "BUILD_FAILURE"
     RSLT_TYPE = "BuildResult"
     

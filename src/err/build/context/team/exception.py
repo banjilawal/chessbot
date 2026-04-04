@@ -28,7 +28,7 @@ class TeamContextBuildException(ContextBuildException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that a TeamContextBuild check failed.
+        1.  Indicate that a TeamContextBuild step failed.
 
     Attributes:
             msg: Optional[str]

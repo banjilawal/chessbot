@@ -28,7 +28,7 @@ class PersonaContextBuildException(ContextBuildException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that a PersonaContextBuild check failed.
+        1.  Indicate that a PersonaContextBuild step failed.
 
     Attributes:
             msg: Optional[str]

@@ -24,7 +24,7 @@ class FormationBuildException(BuildException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a FormationBuild check failed.
+        1.  Indicate that a FormationBuild step failed.
 
     Attributes:
             msg: Optional[str]
@@ -40,7 +40,7 @@ class FormationBuildException(BuildException):
     Super Class:
         BuildException
     """
-    MSG = str = "FormationBuild check failed"
+    MSG = str = "FormationBuild step failed"
     ERR_CODE = "FORMATION_BUILD_EXCEPTION"
     
     def __init__(

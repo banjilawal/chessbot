@@ -29,7 +29,7 @@ class TokenContextBuildException(ContextBuildException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that a TokenContextBuild check failed.
+        1.  Indicate that a TokenContextBuild step failed.
 
     Attributes:
             msg: Optional[str]

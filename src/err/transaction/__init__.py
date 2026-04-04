@@ -10,7 +10,7 @@ version: 1.0.1
 # =========== TRANSACTION PACKAGE CONTENTS ===========#
 
 # Packages
-from .validation import *
+from .compuation import *
 
 # Modules
 from .exception import TransactionException

@@ -24,7 +24,7 @@ class GameBuildException(BuildException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a GameBuild check failed.
+        1.  Indicate that a GameBuild step failed.
 
     Attributes:
             msg: Optional[str]
@@ -40,7 +40,7 @@ class GameBuildException(BuildException):
     Super Class:
         BuildException
     """
-    MSG = str = "GameBuild check failed"
+    MSG = str = "GameBuild step failed"
     ERR_CODE = "GAME_BUILD_EXCEPTION"
     
     def __init__(

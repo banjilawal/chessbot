@@ -28,7 +28,7 @@ class ArenaContextBuildException(ContextBuildException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that a ArenaContextBuild check failed.
+        1.  Indicate that a ArenaContextBuild step failed.
 
     Attributes:
             msg: Optional[str]

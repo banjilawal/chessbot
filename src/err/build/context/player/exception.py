@@ -28,7 +28,7 @@ class PlayerContextBuildException(ContextBuildException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that a PlayerContextBuild check failed.
+        1.  Indicate that a PlayerContextBuild step failed.
 
     Attributes:
             msg: Optional[str]

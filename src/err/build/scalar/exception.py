@@ -24,7 +24,7 @@ class ScalarBuildException(BuildException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ScalarBuild check failed.
+        1.  Indicate that a ScalarBuild step failed.
 
     Attributes:
         op: Optional[str]
@@ -42,7 +42,7 @@ class ScalarBuildException(BuildException):
     Super Class:
         BuildException
     """
-    MSG = str = "ScalarBuild check failed"
+    MSG = str = "ScalarBuild step failed"
     ERR_CODE = "SCALAR_BUILD_EXCEPTION"
     
     def __init__(

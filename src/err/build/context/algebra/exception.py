@@ -28,7 +28,7 @@ class AlgebraContextBuildException(ContextBuildException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that a AlgebraContextBuild check failed.
+        1.  Indicate that a AlgebraContextBuild step failed.
 
     Attributes:
             msg: Optional[str]
