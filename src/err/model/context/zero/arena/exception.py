@@ -24,7 +24,7 @@ class ZeroArenaContextFlagsException(ZeroContextFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no ArenaContext option was enabled.
+        1.  Indicates that no ArenaContext attribute enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroArenaContextFlagsException(ZeroContextFlagsException):
     Super Class:
         ZeroContextFlagsException
     """
-    MSG = str = "No ArenaCcontext option was enabled."
+    MSG = str = "No ArenaCcontext attribute enabled."
     ERR_CODE = "ZERO_ARENA_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

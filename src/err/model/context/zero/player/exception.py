@@ -24,7 +24,7 @@ class ZeroPlayerContextFlagsException(ZeroContextFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no PlayerContext option was enabled.
+        1.  Indicates that no PlayerContext attribute enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroPlayerContextFlagsException(ZeroContextFlagsException):
     Super Class:
         ZeroContextFlagsException
     """
-    MSG = str = "No PlayerCcontext option was enabled."
+    MSG = str = "No PlayerCcontext attribute enabled."
     ERR_CODE = "ZERO_PLAYER_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

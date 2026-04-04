@@ -24,7 +24,7 @@ class ZeroSquareContextFlagsException(ZeroContextFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no SquareContext option was enabled.
+        1.  Indicates that no SquareContext attribute enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroSquareContextFlagsException(ZeroContextFlagsException):
     Super Class:
         ZeroContextFlagsException
     """
-    MSG = str = "No SquareCcontext option was enabled."
+    MSG = str = "No SquareCcontext attribute enabled."
     ERR_CODE = "ZERO_SQUARE_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

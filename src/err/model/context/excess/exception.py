@@ -1,30 +1,30 @@
-# src/err/context/excess/exception.py
+# src/err/model/context/excess/exception.py
 
 """
-Module: err.context.excess.exception
+Module: err.model.context.excess.exception
 Author: Banji Lawal
-Created: 2026-04-03
+Created: 2026-04-04
 version: 1.0.1
 """
 
 from __future__ import annotations
 from typing import Any, Optional
 
-from err.context import ExcessContextFlagsException
+from err.context import ContextException
 
 _all_ = [
-    # ======================# EXCESS_FORMATION_CONTEXT_FLAGS_EXCEPTION #======================#
-    "ExcessFormationContextFlagsException",
+    # ======================# EXCESS_CONTEXT_FLAGS_EXCEPTION #======================#
+    "ExcessContextFlagsException",
 ]
 
-# ======================# EXCESS_FORMATION_CONTEXT_FLAGS_EXCEPTION #======================#
-class ExcessFormationContextFlagsException(ExcessContextFlagsException):
+# ======================# EXCESS_CONTEXT_FLAGS_EXCEPTION #======================#
+class ExcessContextFlagsException(ContextException):
     """
     Role:
         -   Error Tracing
-
+        
     Responsibilities:
-        1.  Indicates that more than one FormationContext option was enabled.
+        1.  Indicate that no Context attributes were enabled.
 
     Attributes:
         msg: Optional[str]
@@ -38,10 +38,10 @@ class ExcessFormationContextFlagsException(ExcessContextFlagsException):
     Provides:
 
     Super Class:
-        ExcessContextFlagsException
+        ContextException
     """
-    MSG = str = "More than one FormationCcontext option was enabled."
-    ERR_CODE = "EXCESS_FORMATION_CONTEXT_FLAGS_EXCEPTION"
+    MSG = "More than one context attribute enabled."
+    ERR_CODE = "EXCESS_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(
             self,

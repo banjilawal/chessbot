@@ -24,7 +24,7 @@ class ZeroTeamContextFlagsException(ZeroContextFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no TeamContext option was enabled.
+        1.  Indicates that no TeamContext attribute enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroTeamContextFlagsException(ZeroContextFlagsException):
     Super Class:
         ZeroContextFlagsException
     """
-    MSG = str = "No TeamCcontext option was enabled."
+    MSG = str = "No TeamCcontext attribute enabled."
     ERR_CODE = "ZERO_TEAM_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

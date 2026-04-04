@@ -24,7 +24,7 @@ class ZeroFormationContextFlagsException(ZeroContextFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no FormationContext option was enabled.
+        1.  Indicates that no FormationContext attribute enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroFormationContextFlagsException(ZeroContextFlagsException):
     Super Class:
         ZeroContextFlagsException
     """
-    MSG = str = "No FormationCcontext option was enabled."
+    MSG = str = "No FormationCcontext attribute enabled."
     ERR_CODE = "ZERO_FORMATION_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

@@ -24,7 +24,7 @@ class ZeroHostageContextFlagsException(ZeroContextFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no HostageContext option was enabled.
+        1.  Indicates that no HostageContext attribute enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroHostageContextFlagsException(ZeroContextFlagsException):
     Super Class:
         ZeroContextFlagsException
     """
-    MSG = str = "No HostageCcontext option was enabled."
+    MSG = str = "No HostageCcontext attribute enabled."
     ERR_CODE = "ZERO_HOSTAGE_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

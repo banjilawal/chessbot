@@ -24,7 +24,7 @@ class ZeroAlgebraContextFlagsException(ZeroContextFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no AlgebraContext option was enabled.
+        1.  Indicates that no AlgebraContext attribute enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroAlgebraContextFlagsException(ZeroContextFlagsException):
     Super Class:
         ZeroContextFlagsException
     """
-    MSG = str = "No AlgebraCcontext option was enabled."
+    MSG = str = "No AlgebraCcontext attribute enabled."
     ERR_CODE = "ZERO_ALGEBRA_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

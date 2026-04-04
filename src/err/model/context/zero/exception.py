@@ -40,7 +40,7 @@ class ZeroContextFlagsException(ContextException):
     Super Class:
         ContextException
     """
-    MSG = "No Context flags are enabled."
+    MSG = "No Context flag is enabled."
     ERR_CODE = "ZERO_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

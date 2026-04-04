@@ -24,7 +24,7 @@ class ZeroSchemaContextFlagsException(ZeroContextFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no SchemaContext option was enabled.
+        1.  Indicates that no SchemaContext attribute enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroSchemaContextFlagsException(ZeroContextFlagsException):
     Super Class:
         ZeroContextFlagsException
     """
-    MSG = str = "No SchemaCcontext option was enabled."
+    MSG = str = "No SchemaCcontext attribute enabled."
     ERR_CODE = "ZERO_SCHEMA_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

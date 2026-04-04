@@ -1,30 +1,30 @@
-# src/err/context/team/exception.py
+# src/err/model/context/excess/algebra/exception.py
 
 """
-Module: err.context.team.exception
+Module: err.model.context.excess.algebra.exception
 Author: Banji Lawal
-Created: 2026-04-03
+Created: 2026-04-04
 version: 1.0.1
 """
 
 from __future__ import annotations
 from typing import Any, Optional
 
-from err.context import ContextException
 
-__all__ = [
-    # ======================# CONTEXT_EXCEPTION #======================#
-    "TeamContextException",
+
+_all_ = [
+    # ======================# EXCESS_ALGEBRA_CONTEXT_FLAGS_EXCEPTION #======================#
+    "ExcessAlgebraContextFlagsException",
 ]
 
-# ======================# CONTEXT_EXCEPTION #======================#
-class TeamContextException(ContextException):
+# ======================# EXCESS_ALGEBRA_CONTEXT_FLAGS_EXCEPTION #======================#
+class ExcessAlgebraContextFlagsException(ExcessContextFlagsException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TeamContext is in an error state.
+        1.  Indicates that more than one AlgebraContext option was enabled.
 
     Attributes:
         msg: Optional[str]
@@ -38,10 +38,10 @@ class TeamContextException(ContextException):
     Provides:
 
     Super Class:
-        ContextException
+        ExcessContextFlagsException
     """
-    ERR_CODE = "CONTEXT_EXCEPTION"
-    MSG = "TeamContext in error state."
+    MSG = str = "More than one AlgebraCcontext attribute enabled."
+    ERR_CODE = "EXCESS_ALGEBRA_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(
             self,

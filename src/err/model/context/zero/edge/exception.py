@@ -24,7 +24,7 @@ class ZeroEdgeContextFlagsException(ZeroContextFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no EdgeContext option was enabled.
+        1.  Indicates that no EdgeContext attribute enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroEdgeContextFlagsException(ZeroContextFlagsException):
     Super Class:
         ZeroContextFlagsException
     """
-    MSG = str = "No EdgeCcontext option was enabled."
+    MSG = str = "No EdgeCcontext attribute enabled."
     ERR_CODE = "ZERO_EDGE_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

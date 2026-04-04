@@ -24,7 +24,7 @@ class ZeroPersonaContextFlagsException(ZeroContextFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no PersonaContext option was enabled.
+        1.  Indicates that no PersonaContext attribute enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroPersonaContextFlagsException(ZeroContextFlagsException):
     Super Class:
         ZeroContextFlagsException
     """
-    MSG = str = "No PersonaCcontext option was enabled."
+    MSG = str = "No PersonaCcontext attribute enabled."
     ERR_CODE = "ZERO_PERSONA_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

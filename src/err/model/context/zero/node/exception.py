@@ -24,7 +24,7 @@ class ZeroModeContextFlagsException(ZeroContextFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no ModeContext option was enabled.
+        1.  Indicates that no ModeContext attribute enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroModeContextFlagsException(ZeroContextFlagsException):
     Super Class:
         ZeroContextFlagsException
     """
-    MSG = str = "No ModeCcontext option was enabled."
+    MSG = str = "No ModeCcontext attribute enabled."
     ERR_CODE = "ZERO_MODE_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

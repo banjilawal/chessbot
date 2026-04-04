@@ -24,7 +24,7 @@ class ZeroTokenContextFlagsException(ZeroContextFlagsException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no TokenContext option was enabled.
+        1.  Indicates that no TokenContext attribute enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,7 +40,7 @@ class ZeroTokenContextFlagsException(ZeroContextFlagsException):
     Super Class:
         ZeroContextFlagsException
     """
-    MSG = str = "No TokenCcontext option was enabled."
+    MSG = str = "No TokenCcontext attribute enabled."
     ERR_CODE = "ZERO_TOKEN_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(
