@@ -23,14 +23,14 @@ from typing import Optional
 
 __all__ = [
     # ======================# VECTOR_COORD_UNION_VALIDATION_FAILURE #======================#
-    "VectorCoordUnionValidatorException",
+    "AlgebraContextValidationException",
 ]
 
 from logic.system import ValidationException
 
 
 # ======================# VECTOR_COORD_UNION_VALIDATION_FAILURE #======================#
-class VectorCoordUnionValidatorException(ValidationException):
+class AlgebraContextValidationException(ValidationException):
     """
     Role:
         -   Worker Method Identification
@@ -38,7 +38,7 @@ class VectorCoordUnionValidatorException(ValidationException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Identify which VectorCoordUnionValidator method, a test failed.
+        1.  Identify which AlgebraContextValidator method, a test failed.
 
     Attributes:
         op: Optional[str]

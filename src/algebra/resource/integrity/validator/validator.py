@@ -68,8 +68,8 @@ class VectorCoordUnionValidator:
             ValidationResult[Union[Vector, Coord]
         Raises:
             TypeError
-            VectorCoordUnionNullException
-            VectorCoordUnionValidatorException
+            NullAlgebraAContextException
+            AlgebraContextValidationException
         """
         method = f"{cls.__name__}.validate"
         

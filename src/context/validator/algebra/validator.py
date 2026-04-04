@@ -21,7 +21,7 @@ from math.geometry import (
 
 
 
-class VectorCoordUnionValidator:
+class AlgebraContextValidator:
     """
     Role
         -   Transaction Worker
@@ -68,8 +68,8 @@ class VectorCoordUnionValidator:
             ValidationResult[Union[Vector, Coord]
         Raises:
             TypeError
-            VectorCoordUnionNullException
-            VectorCoordUnionValidatorException
+            NullAlgebraAContextException
+            AlgebraContextValidationException
         """
         method = f"{cls.__name__}.validate"
         

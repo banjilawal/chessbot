@@ -1,23 +1,21 @@
-# src/logic/system/search/resource/context/exception/debug/route.py
+# src/context/abstract/exception/route.py
 
 """
-Module: logic.system.search.resource.context.exception.debug.route
+Module: context.abstract.exception.route
 Author: Banji Lawal
-Created: 2026-04-01
-Version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
 from typing import Any, Optional
 
+from err import ExecutionRouteException
 
 _all_ = [
     # ======================# CONTEXT_ROUTE_EXCEPTION #======================#
     "ContextRouteException",
 ]
-
-from logic.system import ExecutionRouteException
-
 
 # ======================# CONTEXT_ROUTE_EXCEPTION #======================#
 class ContextRouteException(ExecutionRouteException):
@@ -41,7 +39,7 @@ class ContextRouteException(ExecutionRouteException):
     Provides:
 
     Super Class:
-        DebugException
+        ContextException
     """
     MSG = str = "No execution logic for the Context attribute."
     ERR_CODE = "CONTEXT_ROUTE_EXCEPTION"

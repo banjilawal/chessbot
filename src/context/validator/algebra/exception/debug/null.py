@@ -1,25 +1,25 @@
-# src/logic/geometry/resource/integrity/validator/exception/debug/null.py
+# src/context/validator/algebra/exception/debug/null.py
 
 """
-Module: logic.geometry.resource.integrity.validator.exception.debug.null
+Module: context.validator.algebra.exception.debug.null
 Author: Banji Lawal
-Created: 2025-10-28
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
 from typing import Any, Optional
 
 __all__ = [
-    # ======================# VECTOR_COORd_UNION_NULL_EXCEPTION #======================#
-    "VectorCoordUnionNullException",
+    # ======================# NULL_Algebra_CONTEXT_EXCEPTION #======================#
+    "NullAlgebraAContextException",
 ]
 
-from logic.system import NullException
+from err import NullException
 
 
-# ======================# VECTOR_COORd_UNION_NULL_EXCEPTION #======================#
-class VectorCoordUnionNullException(NullException):
+# ======================# NULL_Algebra_CONTEXT_EXCEPTION #======================#
+class NullAlgebraAContextException(NullException):
     """
     Role:
         - Error Variable Identifier
@@ -27,7 +27,7 @@ class VectorCoordUnionNullException(NullException):
         - Exception Messaging
 
     Responsibilities:
-        1.  Indicate that a Union[Vector, Coord] is null where it should not be.
+        1.  Indicate that an AlgebraContext is null where it should not be.
 
     Attributes:
         var: Optional[str]
@@ -41,8 +41,8 @@ class VectorCoordUnionNullException(NullException):
     Super Class:
         NulException
     """
-    MSG = "Union[Vector, Coord] cannot be null."
-    ERR_CODE = "VECTOR_COORd_UNION_NULL_EXCEPTION"
+    MSG = "AlgebraContext cannot be null."
+    ERR_CODE = "NULL_Algebra_CONTEXT_EXCEPTION"
 
     
     def __init__(

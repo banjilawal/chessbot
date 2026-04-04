@@ -8,15 +8,14 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import Optional
+from typing import Any, Optional
+
+from err import ChessException
 
 __all__ = [
     # ======================# ANCHOR_EXCEPTION #======================#
     "AnchorException",
 ]
-
-from logic.system import ChessException
-
 
 # ======================# ANCHOR_EXCEPTION #======================#
 class AnchorException(ChessException):
@@ -55,6 +54,8 @@ class AnchorException(ChessException):
 
     Attributes:
         msg: Optional[str]
+        var: Optional[str]
+        val: Optional[Any]
         err_code: Optional[str]
         ex: Optional[Exception]
         cls_name: Optional[str]
@@ -70,12 +71,16 @@ class AnchorException(ChessException):
     ERR_CODE = "ANCHOR_EXCEPTION"
     MSG = "Exception raised in Anchor"
 
+    _var: Optional[str]
+    _val: Optional[Any]
     _cls_name: Optional[str]
     _cls_mthd: Optional[str]
  
     def __init__(
             self,
             msg: Optional[str] = None,
+            var: Optional[str] = None,
+            val: Optional[Any] = None,
             err_code: Optional[str] = None,
             ex: Optional[Exception] = None,
             cls_name: Optional[str] = None,
@@ -94,8 +99,18 @@ class AnchorException(ChessException):
         err_code = err_code or self.ERR_CODE
 
         super().__init__(msg=msg, err_code=err_code, ex=ex)
+        _var = var
+        _val = val
         _cls_name = cls_name
         _cls_mthd = cls_mthd
+        
+    @property
+    def var(self) -> Optional[str]:
+        return self._var
+    
+    @property
+    def val(self) -> Optional[Any]:
+        return self._val
 
     @property
     def cls_name(self) -> Optional[str]:
@@ -106,4 +121,9 @@ class AnchorException(ChessException):
         return self._cls_mthd
     
     def __str__(self):
-        return f"{super().__str__()}, cls_name:{self._cls_name}, cls_mthd:{self._cls_mthd}"
+        return (
+            f"{super().__str__()}, "
+            f"var:{self._var}:, "
+            f"cls_name:{self._cls_name}, "
+            f"cls_mthd:{self._cls_mthd}"
+        )

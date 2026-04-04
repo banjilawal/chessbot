@@ -38,7 +38,7 @@ class VectorCoordUnionValidatorException(ValidationException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Identify which VectorCoordUnionValidator method, a test failed.
+        1.  Identify which AlgebraContextValidator method, a test failed.
 
     Attributes:
         op: Optional[str]

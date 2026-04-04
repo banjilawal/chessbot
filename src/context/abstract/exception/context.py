@@ -15,7 +15,7 @@ __all__ = [
     "ContextException",
 ]
 
-from logic.system import AnchorException
+from err import AnchorException
 
 
 # ======================# CONTEXT_EXCEPTION #======================#

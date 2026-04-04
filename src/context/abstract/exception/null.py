@@ -1,25 +1,24 @@
-# src/logic/system/search/resource/context/exception/debug/zero.py
+# src/context/abstract/exception/null.py
 
 """
-Module: logic.system.search.resource.context.exception.debug.zero
+Module: context.abstract.exception.null
 Author: Banji Lawal
-Created: 2026-04-01
-Version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
 from typing import Any, Optional
 
+from err import NullException
+
 _all_ = [
-    # ======================# ZERO_CONTEXT_FLAGS_EXCEPTION #======================#
-    "ZeroContextFlagsException",
+    # ======================# NULL_CONTEXT_EXCEPTION #======================#
+    "NullContextException",
 ]
 
-from logic.system import DebugException
-
-
-# ======================# ZERO_CONTEXT_FLAGS_EXCEPTION #======================#
-class ZeroContextFlagsException(DebugException):
+# ======================# NULL_CONTEXT_EXCEPTION #======================#
+class NullContextException(NullException):
     """
     Role:
         -   Exception Chain Layer 2
@@ -27,7 +26,7 @@ class ZeroContextFlagsException(DebugException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that no Context attributes were enabled.
+        1.  Indicate that null was received instead of a Context.
 
     Attributes:
         var: Optional[str]
@@ -39,10 +38,10 @@ class ZeroContextFlagsException(DebugException):
     Provides:
 
     Super Class:
-        DebugException
+        ContextException
     """
-    MSG = "No Context flags are enabled."
-    ERR_CODE = "ZERO_CONTEXT_FLAGS_EXCEPTION"
+    MSG = str = "Context cannot be null."
+    ERR_CODE = "NULL_CONTEXT_EXCEPTION"
     
     def __init__(
             self,

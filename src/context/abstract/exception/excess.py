@@ -1,25 +1,24 @@
-# src/logic/system/search/resource/context/exception/debug/excess.py
+# src/context/abstract/exception/excess.py
 
 """
-Module: logic.system.search.resource.context.exception.debug.excess
+Module: context.abstract.exception.excess
 Author: Banji Lawal
-Created: 2026-04-01
-Version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
 from typing import Any, Optional
+
+from context import ContextException
 
 _all_ = [
     # ======================# EXCESS_CONTEXT_FLAGS_EXCEPTION #======================#
     "ExcessContextFlagsException",
 ]
 
-from logic.system import DebugException
-
-
 # ======================# EXCESS_CONTEXT_FLAGS_EXCEPTION #======================#
-class ExcessContextFlagsException(DebugException):
+class ExcessContextFlagsException(ContextException):
     """
     Role:
         -   Exception Chain Layer 2
@@ -40,7 +39,7 @@ class ExcessContextFlagsException(DebugException):
     Provides:
 
     Super Class:
-        DebugException
+        ContextException
     """
     MSG = str = "Too many context attributes enabled."
     ERR_CODE = "EXCESS_CONTEXT_FLAGS_EXCEPTION"

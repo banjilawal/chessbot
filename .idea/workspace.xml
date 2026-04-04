@@ -5,21 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change afterPath="$PROJECT_DIR$/src/validate/algebra/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/validate/algebra/validator/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/validate/algebra/validator/exception/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/validate/algebra/validator/exception/debug/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/validate/algebra/validator/exception/debug/null.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/validate/algebra/validator/exception/transaction.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/validate/algebra/validator/sfssf.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/validate/algebra/validator/validator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/validate/algebra/workers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/context/builder/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/context/service/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/context/validator/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algebra/addition/coord/exception/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/algebra/addition/coord/exception/transaction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algebra/addition/coord/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/algebra/addition/coord/worker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transaction/err/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transaction/err/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transaction/err/computation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transaction/err/computation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transaction/err/computation/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transaction/err/computation/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algebra/resource/integrity/validator/exception/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/algebra/resource/integrity/validator/exception/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algebra/resource/integrity/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/algebra/resource/integrity/validator/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/abstract/resource/context/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/abstract/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/abstract/resource/context/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/abstract/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/abstract/resource/context/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/abstract/exception/root.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/abstract/resource/context/exception/debug/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/abstract/resource/context/exception/debug/excess.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/abstract/exception/excess.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/abstract/resource/context/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/abstract/exception/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/abstract/resource/context/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/abstract/exception/context.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/abstract/resource/context/exception/debug/zero.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/abstract/exception/zero.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/abstract/resource/context/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/abstract/context.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validate/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validate/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validate/algebra/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/validator/algebra/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validate/algebra/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/validator/algebra/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validate/algebra/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/validator/algebra/exception/debug/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validate/algebra/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/validator/algebra/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validate/algebra/exception/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/validator/algebra/exception/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validate/algebra/sfssf.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validate/algebra/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/validator/algebra/validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -324,11 +333,11 @@
       <recent name="$PROJECT_DIR$/src/build/edge/exception" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/geometry" />
-      <recent name="$PROJECT_DIR$/src/build/scalar" />
-      <recent name="$PROJECT_DIR$/src/microservice" />
+      <recent name="$PROJECT_DIR$/src/context/abstract/exception" />
+      <recent name="$PROJECT_DIR$/src/context" />
+      <recent name="$PROJECT_DIR$/src/context/validator" />
       <recent name="$PROJECT_DIR$/src/validate" />
-      <recent name="$PROJECT_DIR$/src/model" />
+      <recent name="$PROJECT_DIR$/src/geometry" />
     </key>
   </component>
   <component name="RunManager" selected="Python.builder">
@@ -877,7 +886,7 @@
       <workItem from="1774483839135" duration="10440000" />
       <workItem from="1774551231807" duration="159138000" />
       <workItem from="1774976324979" duration="49944000" />
-      <workItem from="1775073975276" duration="170925000" />
+      <workItem from="1775073975276" duration="174021000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1051,7 +1060,7 @@
           <option name="timeStamp" value="98" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/search/abstract/resource/context/service/__init__.py</url>
+          <url>file://$PROJECT_DIR$/src/context/abstract/service/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="99" />
         </line-breakpoint>
