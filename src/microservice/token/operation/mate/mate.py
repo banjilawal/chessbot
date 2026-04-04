@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import List
 
-from logic.token import CheckSquare, KingToken
+from model.token import CheckSquare, KingToken
 
 
 class Checkmate:

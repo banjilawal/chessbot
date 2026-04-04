@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast
 
 from logic.system import IntegrityMicroservice, id_emitter
-from logic.hostage import Hostage, HostageBuilder, HostageValidator
+from model.hostage import Hostage, HostageBuilder, HostageValidator
 
 
 class HostageService(IntegrityMicroservice[Hostage]):

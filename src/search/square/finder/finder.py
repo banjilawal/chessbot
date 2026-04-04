@@ -17,7 +17,7 @@ from logic.square import (
     Square, SquareContext, SquareContextValidator, SquareSearchException, SquareSearchRouteException, SquareState,
     SquareValidator
 )
-from logic.token import Token
+from model.token import Token
 
 
 class SquareFinder(StackSearchRouter[Square]):

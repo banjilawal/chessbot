@@ -15,7 +15,7 @@ __all__ = [
     "PromoteInactivePawnException",
 ]
 
-from logic.token import TokenDebugException
+from model.token import TokenDebugException
 
 
 # ======================# CANNOT_PROMOTE_INACTIVE_PAWN_EXCEPTION  #======================#

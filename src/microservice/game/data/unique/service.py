@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import List, cast
 
-from logic.game import Game, GameContext, GameQueryService, GameStackService, GameService
+from model.game import Game, GameContext, GameQueryService, GameStackService, GameService
 from logic.system import (
     DeletionResult, InsertionResult, LoggingLevelRouter, SearchResult, Database, id_emitter
 )

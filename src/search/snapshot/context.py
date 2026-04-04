@@ -10,11 +10,11 @@ version: 1.0.0
 from typing import Optional
 
 from logic.arena import Arena
-from logic.game import Game
+from model.game import Game
 from logic.team import Team
 from logic.snapshot import Snapshot
 from logic.agent import PlayerAgent
-from logic.system import Context, GameColor
+from logic.system import Context
 
 
 class SnapshotContext(Context[Snapshot]):

@@ -12,7 +12,6 @@ __all__ = [
 ]
 
 from logic.system import NullException
-from logic.hostage import HostageException
 
 
 # ======================# NULL_HOSTAGE EXCEPTION #======================#

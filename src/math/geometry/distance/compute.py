@@ -15,7 +15,7 @@ from typing import Union
 from logic.system import ComputationResult, LoggingLevelRouter, NumberValidator
 from logic.coord import Coord, EuclideanDistanceException, CoordValidator
 from logic.system.worker import Worker
-from logic.vector import Vector, VectorValidator
+from model.vector import Vector, VectorValidator
 
 
 class EuclideanDistanceFinder(Worker):

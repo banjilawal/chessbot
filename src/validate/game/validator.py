@@ -11,10 +11,9 @@ from typing import Any, cast
 
 from logic.agent import AgentService
 from logic.board import BoardService
-from logic.engine.service import EngineService
 from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
-from logic.game import (
-    Game, GameVariety, GameVarietyNullException, GameValidationException, MachineGame, NullGameException,
+from model.game import (
+    Game, GameValidationException, NullGameException,
 )
 
 

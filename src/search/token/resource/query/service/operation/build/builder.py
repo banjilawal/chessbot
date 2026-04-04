@@ -12,7 +12,7 @@ from typing import List
 
 
 from logic.system import BuildResult, Builder, LoggingLevelRouter, ValidationResult
-from logic.token import (
+from model.token import (
     Token, TokenContext, TokenContextValidator, TokenQueryBuildException, TokenStackNullException, TokenQuery,
 )
 

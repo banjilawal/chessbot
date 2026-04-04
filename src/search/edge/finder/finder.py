@@ -17,7 +17,7 @@ from graph.edge import (
     Edge, EdgeContext, EdgeContextValidator, EdgeSearchException, EdgeSearchRouteException,
     EdgeSearchNullDatasetException, EdgeSearchPayloadTypeException, EdgeState
 )
-from logic.token import Token
+from model.token import Token
 
 
 class EdgeFinder(StackSearchRouter[Edge]):

@@ -15,7 +15,7 @@ __all__ = [
     "InactiveTokenPushingCoordException",
 ]
 
-from logic.token import TokenDebugException
+from model.token import TokenDebugException
 
 
 # ======================# INACTIVE_TOKEN_PUSHING_COORD_EXCEPTION  #======================#

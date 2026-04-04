@@ -11,8 +11,8 @@ from __future__ import annotations
 from typing import Any, cast
 
 from logic.square import SquareService
-from logic.token import TokenBoardState, TokenService
-from logic.hostage import (
+from model.token import TokenBoardState, TokenService
+from model.hostage import (
     PrisonerCannotBeActiveCombatantException, FriendCannotCaptureFriendException, Hostage,
     HostageValidationException, NullHostageException, PrisonerAlreadyHasHostageException,
     PrisonerCapturedByDifferentEnemyException, TokenCannotCaptureItselfException, UnformedTokenCannotBeVictorException,

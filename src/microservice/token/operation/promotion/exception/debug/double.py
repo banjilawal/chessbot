@@ -15,7 +15,7 @@ __all__ = [
     "PawnAlreadyPromotedException",
 ]
 
-from logic.token import TokenDebugException
+from model.token import TokenDebugException
 
 # ======================# PAWN_ALREADY_PROMOTED_EXCEPTION #======================#
 class PawnAlreadyPromotedException(TokenDebugException):

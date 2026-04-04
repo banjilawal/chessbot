@@ -15,7 +15,7 @@ __all__ = [
     "MoveUndoLimitException",
 ]
 
-from logic.token import TokenDebugException
+from model.token import TokenDebugException
 
 
 # ======================# ABOVE_MOVE_UNDO_LIMIT_EXCEPTION  #======================#

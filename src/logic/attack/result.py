@@ -7,7 +7,7 @@ Created: 2026-01-24
 version: 1.0.0
 """
 
-from logic.hostage import Hostage
+from model.hostage import Hostage
 from logic.occupation.result import OccupationResult
 from logic.system.result import Result
 

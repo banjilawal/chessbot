@@ -15,7 +15,7 @@ __all__ = [
     "UnopenedTokenPoppingCoordException",
 ]
 
-from logic.token import TokenDebugException
+from model.token import TokenDebugException
 
 
 # ======================# UNOPENED__TOKEN_POPPING_COORD_EXCEPTION  #======================#

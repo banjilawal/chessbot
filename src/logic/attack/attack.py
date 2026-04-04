@@ -8,7 +8,6 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import cast
 
 from logic.attack import (
     AttackException, AttackResult, AttackingDisabledEnemyException, AttackingEnemyKingException,
@@ -17,8 +16,8 @@ from logic.attack import (
 from logic.system import LoggingLevelRouter
 from logic.square import Square, SquareDatabase
 from logic.system.relation import RelationReport
-from logic.hostage import HostageService
-from logic.token import CombatantReadinessEnum, CombatantToken, KingToken, Token, TokenBoardState, TokenService
+from model.hostage import HostageService
+from model.token import CombatantReadinessEnum, KingToken, Token, TokenBoardState, TokenService
 
 
 class Attack:

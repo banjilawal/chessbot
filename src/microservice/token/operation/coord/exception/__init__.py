@@ -10,7 +10,7 @@ version: 1.0.0
 # =========== TOKEN.SERVICE.OPERATION.COORD.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-from logic.token.service.operation.coord.exception.pop import *
+from model.token import *
 from .push import *
 
 # Modules

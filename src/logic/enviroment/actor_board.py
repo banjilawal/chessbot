@@ -14,7 +14,7 @@ from logic.board import Board, BoardPieceFinder, BoardContext, BoardValidator
 
 from logic.king import KingPiece
 from logic.piece import Piece, CombatantPiece
-from logic.token.service.operation.validation import PieceValidator
+from model.token import PieceValidator
 from logic.system import LoggingLevelRouter, Validator, ValidationResult
 from logic.enviroment import (
   NoInitialPlacementException, NullTravelerEnvironmentTupleException, CheckMatedKingCannotMoveException,

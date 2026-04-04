@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from enum import Enum, auto
 
-from logic.vector import Vector
+from model.vector import Vector
 
 
 class Quadrant(Enum):

@@ -14,8 +14,6 @@ from .query import *
 from .database import *
 from .service import *
 from logic.square.service.operation.validation import *
-from .exception import *
 
 # Modules
-from logic.square.model.model import Square
 

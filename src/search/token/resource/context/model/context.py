@@ -12,7 +12,7 @@ from typing import Optional
 
 from logic.team import Team
 from logic.rank import Rank
-from logic.token import Token
+from model.token import Token
 from logic.coord import Coord
 from logic.system import Context, GameColor, LoggingLevelRouter
 

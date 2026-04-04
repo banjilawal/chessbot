@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Optional
 
-from logic.vector import VectorService
+from model.vector import VectorService
 from logic.coord import Coord, CoordService
 from math.span import (
     DiagonalRayProvider, NoRayProviderException, PerpendicularRayProvider, CoordSpan, SpanComputationException,

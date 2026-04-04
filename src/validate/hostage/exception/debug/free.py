@@ -1,5 +1,5 @@
 # ======================# FREE_AND_ACTIVE_ENEMY_CANNOT_BE_PRISONER EXCEPTION #======================#
-from logic.hostage import HostageException
+from model.hostage import HostageException
 
 
 class PrisonerCannotBeActiveCombatantException(HostageException):

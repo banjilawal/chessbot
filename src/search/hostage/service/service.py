@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast
 
 from logic.system import QueryService, id_emitter
-from logic.hostage import CaptivityContext, CaptivityContextBuilder, CaptivityContextValidator, HostageFinder
+from model.hostage import CaptivityContext, CaptivityContextBuilder, CaptivityContextValidator, HostageFinder
 
 
 class HostageQueryService(QueryService[CaptivityContext]):

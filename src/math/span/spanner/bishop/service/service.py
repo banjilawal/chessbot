@@ -18,8 +18,8 @@ from graph.node import Node, NodeBuilder
 from math.span import BishopSpanServiceException, BishopSpanner, CoordSpan, SpanMicroservice
 from logic.square import Square, SquareContext, SquareDatabase
 from logic.system import BuildResult, ComputationResult, IdFactory, LoggingLevelRouter
-from logic.token import Token, TokenService
-from logic.vector import VectorService
+from model.token import Token, TokenService
+from model.vector import VectorService
 
 
 class BishopSpanService(SpanMicroservice):

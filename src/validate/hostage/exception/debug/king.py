@@ -3,7 +3,7 @@ __all__ = [
     "KingCannotBeCapturedException",
 ]
 
-from logic.hostage import HostageException
+from model.hostage import HostageException
 
 
 # ======================# KING_CANNOT_BE_CAPTURED EXCEPTION #======================#

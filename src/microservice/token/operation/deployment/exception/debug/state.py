@@ -12,7 +12,7 @@ __all__ = [
     "TokenAlreadyDeployedOnTokenException",
 ]
 
-from logic.token import TokenDebugException
+from model.token import TokenDebugException
 
 
 # ======================# TOKEN_ALREADY_DEPLOYED_ON_TOKEN EXCEPTION #======================#

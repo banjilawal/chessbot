@@ -12,7 +12,7 @@ __all__ = [
     "VictorAndPrisoneOnDifferentBoardsException",
 ]
 
-from logic.hostage import HostageException
+from model.hostage import HostageException
 
 # ======================# VICTOR_AND_PRISONER_ON_DIFFERENT_BOARDS EXCEPTION #======================#
 class VictorAndPrisoneOnDifferentBoardsException(HostageException):

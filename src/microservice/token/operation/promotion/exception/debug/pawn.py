@@ -15,7 +15,7 @@ __all__ = [
     "PromoteToPawnException",
 ]
 
-from logic.token import TokenDebugException
+from model.token import TokenDebugException
 
 
 # ======================# CIRCULAR_PAWN_RANK_PROMOTION_EXCEPTION  #======================#

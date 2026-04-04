@@ -7,10 +7,8 @@ Created: 2025-111-03
 version: 1.0.0
 """
 
-from typing import List
-
 from logic.coord import Coord
-from logic.domain import Domain
+from graph.domain import Domain
 from logic.piece import Piece
 
 

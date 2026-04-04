@@ -12,7 +12,7 @@ from typing import List
 
 from logic.coord import Coord
 from logic.square import Square
-from logic.vector import Vector
+from model.vector import Vector
 
 
 class SquareIterator:

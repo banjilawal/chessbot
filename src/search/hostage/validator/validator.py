@@ -1,12 +1,12 @@
 from typing import Any, cast
 
 from logic.square import SquareService
-from logic.hostage import (
+from model.hostage import (
     CaptivityContextValidationException, CaptivityContextValidationRouteException, CaptivityContext,
     ArenaCaptivityContextFlagsException, NullCaptivityContextException, ZeroCaptivityContextFlagsException,
 )
 from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
-from logic.hostage import CombatantHostage, HostageService
+from model.hostage import HostageService
 
 
 class CaptivityContextValidator(Validator[CaptivityContext]):

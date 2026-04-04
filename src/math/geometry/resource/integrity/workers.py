@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from logic.coord import CoordService
 from logic.system import NumberValidator
-from logic.vector import VectorService
+from model.vector import VectorService
 
 
 class GeometryIntegrityWorkers:

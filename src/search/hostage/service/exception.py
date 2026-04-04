@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from logic.system import ServiceException
-from logic.hostage import CaptivityContextException
+from model.hostage import CaptivityContextException
 
 __all__ = [
     # ======================# CAPTIVITY_CONTEXT_SERVICE EXCEPTION #======================#

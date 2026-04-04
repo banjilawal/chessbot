@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Dict
 
-from logic.vector import Vector
+from model.vector import Vector
 
 
 class PerpendicularRayFactors:

@@ -15,7 +15,7 @@ from logic.square import (
     SquareVisitorDisabledException, WrongOpeningSquareException
 )
 from logic.system import LoggingLevelRouter, UpdateResult
-from logic.token import Token, TokenBoardState, TokenService
+from model.token import Token, TokenBoardState, TokenService
 
 
 class SquareEntryProcess:

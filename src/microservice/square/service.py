@@ -12,7 +12,7 @@ from __future__ import annotations
 from copy import deepcopy
 from typing import cast
 
-from logic.token import Token, TokenService
+from model.token import Token, TokenService
 from logic.square import (
     Square, SquareBuilder, SquareOpsController, SquareServiceException,
     SquareValidator, VisitationProcessor

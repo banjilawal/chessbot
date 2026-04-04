@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== EDGE PACKAGE CONTENTS ===========#
 
 # Packages
-from .stack import *
 from .context import *
 from .service import *
 from .builder import *

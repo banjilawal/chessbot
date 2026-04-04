@@ -12,7 +12,7 @@ ___all__ = [
     "TokenBelongsToDifferentBoardException",
 ]
 
-from logic.token import TokenException
+from model.token import TokenException
 from logic.board import BoardException
 
 

@@ -12,7 +12,7 @@ __all__ = [
     "VictorNotOccupyingCapturedSquareException",
 ]
 
-from logic.hostage import HostageException
+from model.hostage import HostageException
 from logic.system import DebugException
 
 

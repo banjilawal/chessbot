@@ -12,7 +12,7 @@ __all__ = [
 ]
 
 
-from logic.hostage import HostageException
+from model.hostage import HostageException
 
 
 # ======================# TOKEN_CANNOT_CAPTURE_ITSELF EXCEPTION #======================#

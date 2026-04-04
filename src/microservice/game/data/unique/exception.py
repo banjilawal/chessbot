@@ -7,7 +7,7 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-from logic.game import GameException
+from model.game import GameException
 from logic.system import DatabaseException
 
 __all__ = [

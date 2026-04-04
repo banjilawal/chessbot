@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast
 
 from logic.system import IntegrityMicroservice, id_emitter
-from logic.game import Game, GameBuilder, GameValidator
+from model.game import Game, GameBuilder, GameValidator
 
 
 class GameService(IntegrityMicroservice[Game]):

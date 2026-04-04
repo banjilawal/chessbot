@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import List, TypeVar
 
 from logic.system import StackQuery
-from logic.token import Token, TokenContext
+from model.token import Token, TokenContext
 
 T = TypeVar("T")
 

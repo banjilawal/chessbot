@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, List, cast
 
 from logic.system import LoggingLevelRouter, ValidationResult, Validator
-from logic.token import (
+from model.token import (
     Token, TokenContextValidator, TokenQueryNullException, TokenQueryStackEmptyException,
     TokenStackNullException, TokenQuery, TokenQueryValidationException
 )

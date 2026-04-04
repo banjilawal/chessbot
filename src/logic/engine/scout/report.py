@@ -1,7 +1,7 @@
 from typing import List
 
 from logic.square import Square
-from logic.token.piece import Piece
+from model.token import Piece
 
 
 class ScoutReport:

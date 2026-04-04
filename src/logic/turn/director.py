@@ -1,4 +1,4 @@
-from logic.game import Game
+from model.game import Game
 from logic.system import GameColor
 from logic.turn.marker import Marker
 

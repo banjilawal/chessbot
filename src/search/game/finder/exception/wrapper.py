@@ -94,7 +94,7 @@ __all__ = [
 ]
 
 from logic.system import SearchException
-from logic.game import GameException
+from model.game import GameException
 
 
 # ======================# GAME_SEARCH_FAILURE #======================#

@@ -4,10 +4,10 @@ from assurance import ThrowHelper
 from logic.board import BoardSearch
 from logic.system import IdValidator, BuildResult, IdValidationException
 from logic.event import TargetSquareMismatchException, AttackEvent
-from logic.token.event.attack.event.exception import AttackEventBuilderException
-from logic.token.event.travel_exception import TravelEventResourceNotFoundException
+from model.token import AttackEventBuilderException
+from model.token import TravelEventResourceNotFoundException
 from logic.piece import PieceValidator, InvalidAttackException, CombatantPiece
-from logic.token.model.exception import PieceCapturingItSelfException, CaptureFriendException, KingCaptureException
+from model.token import PieceCapturingItSelfException, CaptureFriendException, KingCaptureException
 
 
 class CheckEventBuilder(Enum):

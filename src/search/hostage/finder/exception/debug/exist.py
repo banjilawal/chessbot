@@ -15,7 +15,7 @@ __all__ = [
     "HostageNotFoundException",
 ]
 
-from logic.hostage import HostageDebugException
+from model.hostage import HostageDebugException
 
 
 # ======================# HOSTAGE_NOT_FOUND_EXCEPTION #======================#

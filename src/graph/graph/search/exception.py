@@ -7,7 +7,7 @@ Created: 2025-11-09
 version: 1.0.0
 """
 
-from logic.domain import DomainException
+from graph.domain import DomainException
 from logic.system import FinderException
 
 __all__ = [

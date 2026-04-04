@@ -15,7 +15,7 @@ __all__ = [
     "InactiveTokenPoppingCoordException",
 ]
 
-from logic.token import TokenDebugException
+from model.token import TokenDebugException
 
 
 # ======================# INACTIVE_TOKEN_UNDO_COORD_POP_EXCEPTION  #======================#

@@ -15,7 +15,7 @@ __all__ = [
     "GameNotFoundException",
 ]
 
-from logic.game import GameDebugException
+from model.game import GameDebugException
 
 
 # ======================# GAME_NOT_FOUND_EXCEPTION #======================#

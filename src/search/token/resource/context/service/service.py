@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from logic.system import IntegrityMicroservice, IdFactory
-from logic.token import TokenContext, TokenContextBuilder, TokenContextOpsController, TokenContextValidator
+from model.token import TokenContext, TokenContextBuilder, TokenContextOpsController, TokenContextValidator
 
 
 class TokenContextService(IntegrityMicroservice[TokenContext]):

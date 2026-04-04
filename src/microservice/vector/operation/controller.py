@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 
-from logic.token import (
+from model.token import (
     PawnPromoter, TokenBuilder, TokenPositionController, TokenDeployer,
     TokenReadinessAnalyzer, TokenValidator
 )

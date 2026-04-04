@@ -14,8 +14,8 @@ from logic.coord import CoordDatabase, CoordDatabaseNullException, CoordService
 from logic.rank import RankService
 from logic.system import IdentityService, LoggingLevelRouter, NumberValidator, ValidationResult, Validator
 from logic.team import TeamService
-from logic.token import CombatantToken, KingToken, Token, TokenException, TokenValidationException
-from logic.token.service.operation.validation.exception.debug.null import NullTokenException
+from model.token import CombatantToken, KingToken, Token, TokenException, TokenValidationException
+from model.token import NullTokenException
 
 
 class TokenValidator(Validator[Token]):

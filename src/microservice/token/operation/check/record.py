@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 from logic.square import Square
-from logic.token import KingToken, Token
+from model.token import KingToken, Token
 
 
 class KingCheckRecord:

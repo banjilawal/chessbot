@@ -11,7 +11,7 @@ from typing import cast
 from logic.piece import Piece
 from logic.board import Board
 from logic.coord import Coord
-from logic.domain import Domain
+from graph.domain import Domain
 from logic.system import Event
 from logic.neighbor.table import VisitationTable
 

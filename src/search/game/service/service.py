@@ -9,9 +9,9 @@ version: 1.0.0
 
 from typing import cast
 
-from logic.game.finder.finder import GameFinder
+from model.game import GameFinder
 from logic.system import QueryService, id_emitter
-from logic.game import GameContext, GameContextBuilder, GameContextValidator
+from model.game import GameContext, GameContextBuilder, GameContextValidator
 
 
 class GameQueryService(QueryService[GameContext]):

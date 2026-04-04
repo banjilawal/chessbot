@@ -1,12 +1,12 @@
-from typing import Optional, cast
+from typing import Optional
 
-from logic.hostage import (
+from model.hostage import (
     CaptivityContext, CaptivityContextBuildException,
     CaptivityContextBuildRouteException, ArenaCaptivityContextFlagsException, ZeroCaptivityContextFlagsException
 )
 from logic.square import Square, SquareService
 from logic.system import IdentityService, LoggingLevelRouter, BuildResult, Builder, id_emitter
-from logic.token import CombatantToken, Token, TokenService
+from model.token import CombatantToken, Token, TokenService
 
 
 class CaptivityContextBuilder(Builder[CaptivityContext]):

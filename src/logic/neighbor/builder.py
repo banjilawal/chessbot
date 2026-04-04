@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 
-from logic.domain import DomainValidator
+from graph.domain import DomainValidator
 from logic.neighbor import VisitationEvent
 from logic.piece import Piece, PieceValidator
 

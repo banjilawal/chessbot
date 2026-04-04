@@ -15,7 +15,7 @@ from logic.rank import Rank
 from logic.coord import Coord
 from logic.team import ExcessTeamContextFlagsException, Team
 from logic.system import BuildResult, Builder, GameColor, LoggingLevelRouter
-from logic.token import (
+from model.token import (
     TokenContext, TokenContextBuildException, TokenContextBuildRouteException,
     TokenContextIntegrityWorkers, ZeroTokenContextFlagsException
 )

@@ -12,7 +12,6 @@ version: 1.0.0
 # Packages
 from .context import *
 from .service import *
-from .exception import *
 from .validator import *
 from .relation import *
 

@@ -15,7 +15,7 @@ __all__ = [
     "GameSearchRouteException",
 ]
 
-from logic.game import GameDebugException
+from model.game import GameDebugException
 
 
 # ======================# NO_GAME_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#

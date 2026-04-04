@@ -15,7 +15,7 @@ __all__ = [
     "PawnPromotionRowException",
 ]
 
-from logic.token import TokenDebugException
+from model.token import TokenDebugException
 # ======================# PAWN_PROMOTION_ROW_EXCEPTION #======================#
 class PawnPromotionRowException(TokenDebugException):
     """

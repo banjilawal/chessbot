@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from logic.game import GameService
+from model.game import GameService
 from logic.team import TeamService
 from logic.system import LoggingLevelRouter, Validator, ValidationResult, IdentityService
 from logic.player import (

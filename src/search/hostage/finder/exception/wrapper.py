@@ -94,7 +94,7 @@ __all__ = [
 ]
 
 from logic.system import SearchException
-from logic.hostage import HostageException
+from model.hostage import HostageException
 
 
 # ======================# HOSTAGE_SEARCH_FAILURE #======================#

@@ -14,7 +14,7 @@ from logic.coord import Coord
 from logic.rank import Rank
 from logic.team import Team
 from logic.system import GameColor, LoggingLevelRouter, SearchResult, SearchRouter
-from logic.token import MissingTokenSearchRouteException, Token, TokenQuery, TokenQueryValidator, TokenSearchException
+from model.token import MissingTokenSearchRouteException, Token, TokenQuery, TokenQueryValidator, TokenSearchException
 
 
 class TokenSearchRouter(SearchRouter[Token]):

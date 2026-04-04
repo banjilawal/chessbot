@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from logic.system import ContextFlagCountException
-from logic.game import InvalidSnapshotContextException
+from model.game import InvalidSnapshotContextException
 
 __all__ = [
     # ========================= NO_GAME_CONTEXT_FLAG EXCEPTION =========================#

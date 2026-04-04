@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from logic.coord import Coord
 from logic.system import DeletionResult, LoggingLevelRouter
-from logic.token import (
+from model.token import (
     InactiveTokenPoppingCoordException, MoveUndoLimitException, Token, TokenPopCoordException, TokenValidation,
     UnopenedTokenPoppingCoordException
 )

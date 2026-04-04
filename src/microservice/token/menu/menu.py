@@ -16,8 +16,8 @@ from command import ArgumentCountException, ArgumentTypeException, NullArguments
 from command.token import DeployTokenCommand, PromotePawnCommand, TokenCommand, ValidateTokenCommand
 from command.token.service.build import BuildTokenCommand
 from logic.system import IdentityService, LoggingLevelRouter, Router, ValidationResult
-from logic.token import TokenCommandTable, TokenService, TokenServiceMenuException
-from logic.token.service.menu.exception.exist import TokenCommandNotFoundException
+from model.token import TokenCommandTable, TokenService, TokenServiceMenuException
+from model.token import TokenCommandNotFoundException
 
 
 class TokenServiceMenu(Router[TokenService]):

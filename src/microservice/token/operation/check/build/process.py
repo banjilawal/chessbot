@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 from logic.system import Builder, BuildResult, LoggingLevelRouter
-from logic.token import CheckSquare, KingToken
+from model.token import CheckSquare, KingToken
 
 
 class BuildCheck(Builder[CheckSquare]):

@@ -17,7 +17,7 @@ from graph.edge import Edge
 
 from graph.edge import EdgeState
 from logic.system import Context
-from logic.token import Token
+from model.token import Token
 
 
 class EdgeContext(Context[Edge]):

@@ -13,7 +13,7 @@ from typing import Dict
 from logic.coord import Coord
 from math.span import PerpendicularRayFactors
 from logic.system import NUMBER_OF_COLUMNS, NUMBER_OF_ROWS
-from logic.vector import Vector
+from model.vector import Vector
 
 
 class PerpendicularPlaneFactors:

@@ -12,7 +12,7 @@ __all__ = [
 ]
 
 from logic.system import NullException
-from logic.hostage import HostageException
+from model.hostage import HostageException
 
 
 # ======================# PRISONER_DOES_NOT_HAVE_CAPTOR_SET EXCEPTION #======================#

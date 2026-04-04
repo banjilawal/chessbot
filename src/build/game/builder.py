@@ -9,8 +9,8 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from logic.game import Game, GameBuildException
-from logic.system import GAME_DIMENSION, Builder, BuildResult, LoggingLevelRouter, NumberValidator
+from model.game import Game, GameBuildException
+from logic.system import Builder, BuildResult, LoggingLevelRouter
 
 
 class GameBuilder(Builder[Game]):

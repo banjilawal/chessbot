@@ -11,7 +11,7 @@ __all__ = [
 ]
 
 from catalog.formation import FormationException
-from logic.hostage import HostageException
+from model.hostage import HostageException
 
 
 

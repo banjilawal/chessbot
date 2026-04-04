@@ -15,7 +15,7 @@ from catalog.schema import SchemaService
 from logic.rank import Rank, RankService
 from logic.coord import Coord, CoordService
 from logic.system import DeletionResult, IdFactory, InsertionResult, IntegrityMicroservice, LoggingLevelRouter, UpdateResult
-from logic.token import PawnToken, Token, TokenBuilder, TokenOpsController, TokenServiceException, TokenValidation
+from model.token import PawnToken, Token, TokenBuilder, TokenOpsController, TokenServiceException, TokenValidation
 
 
 class TokenService(IntegrityMicroservice[Token]):

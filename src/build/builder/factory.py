@@ -10,9 +10,9 @@ version: 1.0.0
 from typing import Optional
 
 from logic.engine import EngineService
-from logic.game import UniqueGameDataService
+from model.game import UniqueGameDataService
 from logic.team import UniqueTeamDataService
-from logic.system import Builder, BuildResult, IdentityService, LoggingLevelRouter,ValidationResult, id_emitter
+from logic.system import Builder, BuildResult, IdentityService, LoggingLevelRouter, id_emitter
 
 from logic.player import (
     Player, PlayerBuildException, PlayerVariety, PlayerValidator, HumanPlayer, HumanPlayerBuildException,

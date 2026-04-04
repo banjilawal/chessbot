@@ -11,7 +11,7 @@ from enum import Enum
 from typing import List, Optional
 
 from math.geometry import Quadrant
-from logic.vector import Vector
+from model.vector import Vector
 
 
 class Persona(Enum):

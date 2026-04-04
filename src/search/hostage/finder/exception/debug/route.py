@@ -15,7 +15,7 @@ __all__ = [
     "HostageSearchRouteException",
 ]
 
-from logic.hostage import HostageDebugException
+from model.hostage import HostageDebugException
 
 
 # ======================# NO_HOSTAGE_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#

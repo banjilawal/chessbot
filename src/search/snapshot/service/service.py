@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from logic.system import QueryService
-from logic.game import SnapshotContext
+from model.game import SnapshotContext
 
 
 class SnapshotQueryService(QueryService[SnapshotContext]):

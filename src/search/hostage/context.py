@@ -11,8 +11,8 @@ from typing import Optional
 
 from logic.square import Square
 from logic.system import Context
-from logic.hostage import Hostage
-from logic.token import CombatantToken, Token
+from model.hostage import Hostage
+from model.token import CombatantToken, Token
 
 
 class CaptivityContext(Context[Hostage]):

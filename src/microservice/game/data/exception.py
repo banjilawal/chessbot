@@ -13,7 +13,7 @@ ___all__ = [
     "GameDataServiceException",
 ]
 
-from logic.game import GameException
+from model.game import GameException
 from logic.system import ServiceException
 
 

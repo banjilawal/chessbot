@@ -7,7 +7,7 @@ Created: 2025-10-01
 version: 1.0.0
 """
 
-from logic.hostage import HostageException
+from model.hostage import HostageException
 from logic.system import DebugException
 
 __all__ = [

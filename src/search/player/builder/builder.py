@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Optional
 
 
-from logic.game import Game, GameService
+from model.game import Game, GameService
 from logic.team import Team, TeamService
 from logic.system import Builder, BuildResult, ExecutionRouteException, IdentityService, LoggingLevelRouter
 from logic.agent import (

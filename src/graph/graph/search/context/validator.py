@@ -10,8 +10,8 @@ version: 1.0.0
 from typing import Any, cast
 
 from logic.coord import CoordValidator
-from logic.domain import NullVisitorSearchContextException, VisitorSearchContext
-from logic.rank import RankBoundsChecker, RankBoundsException
+from graph.domain import NullVisitorSearchContextException, VisitorSearchContext
+from logic.rank import RankBoundsChecker
 from logic.system import Validator, IdValidator, NameValidator, ValidationResult, LoggingLevelRouter
 from logic.neighbor import ArenaVisitationSearchParamsException, ZeroVisitationSearchParamsException
 

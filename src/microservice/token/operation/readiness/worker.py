@@ -14,7 +14,7 @@ from typing import cast
 
 from logic.system import LoggingLevelRouter, RelationReport
 from logic.system.relation.analysis import RelationAnalysis
-from logic.token import (
+from model.token import (
     ReadinessStateNullException, TokenException, ReadinessState, TokenReadinessAnalysisException, CombatantToken,
     KingToken, Token, TokenValidation
 )

@@ -3,7 +3,7 @@ __all__ = [
     "FriendCannotCaptureFriendException",
 ]
 
-from logic.hostage import HostageException
+from model.hostage import HostageException
 
 
 # ======================# FRIEND_CANNOT_CAPTURE_FRIEND EXCEPTION #======================#

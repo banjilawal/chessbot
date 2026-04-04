@@ -15,7 +15,7 @@ __all__ = [
     "PromotionToKingException",
 ]
 
-from logic.token import TokenDebugException
+from model.token import TokenDebugException
 # ======================# PROMOTING_TO_KING_NOT_ALLOWED_EXCEPTION #======================#
 class PromotionToKingException(TokenDebugException):
     """

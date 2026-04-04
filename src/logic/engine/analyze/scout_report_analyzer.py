@@ -3,7 +3,7 @@ from typing import List
 from logic.square import Square
 from logic.system.identity.id import id_emitter
 from logic.coord import Coord
-from logic.token.discover import Discovery
+from model.token import Discovery
 
 from logic.engine.scout.report import ScoutReport
 from logic.engine.analyze.scout_report_analysis import ScoutReportAnalysis

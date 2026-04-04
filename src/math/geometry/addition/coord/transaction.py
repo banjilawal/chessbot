@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import List, Union
 
-from logic.vector import Vector, VectorService
+from model.vector import Vector, VectorService
 from logic.system import ComputationResult, LoggingLevelRouter
 from logic.coord import Coord, CoordAdditionException, CoordAdditionOperandNullException, CoordService
 

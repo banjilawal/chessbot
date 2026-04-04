@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from logic.system import IntegrityMicroservice, IdFactory
-from logic.token import TokenQuery, TokenQueryBuilder, TokenQueryOpsController, TokenQueryValidator
+from model.token import TokenQuery, TokenQueryBuilder, TokenQueryOpsController, TokenQueryValidator
 
 
 class TokenQueryService(IntegrityMicroservice[TokenQuery]):

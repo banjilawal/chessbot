@@ -13,7 +13,7 @@ version: 1.0.0
 # Packages
 from .context import *
 from .model import *
-from .exception import *
+from logic.player.model.exception import *
 from .service import *
 from .validator import *
 

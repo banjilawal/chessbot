@@ -14,7 +14,7 @@ __all__ = [
     "MissingTokenSearchRouteException",
 ]
 
-from logic.token import TokenDebugException
+from model.token import TokenDebugException
 
 # ======================# MISSING_TOKEN_SEARCH_ROUTE_EXCEPTION #======================#
 class MissingTokenSearchRouteException(TokenDebugException):

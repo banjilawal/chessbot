@@ -11,7 +11,7 @@ from typing import Optional
 
 from logic.agent import PlayerAgent
 from logic.board import Board
-from logic.game import Game
+from model.game import Game
 from logic.system import Context
 from logic.team import Team
 

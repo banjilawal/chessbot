@@ -12,7 +12,7 @@ from catalog.schema import Schema, SchemaService
 from logic.player import Player, PlayerService
 from logic.team import Team, TeamBuildException
 from logic.system import Builder, IdFactory, IdentityService, LoggingLevelRouter
-from logic.token import TokenDatabase
+from model.token import TokenDatabase
 
 
 class TeamBuild(Builder[Team]):

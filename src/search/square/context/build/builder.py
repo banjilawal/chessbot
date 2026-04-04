@@ -17,7 +17,7 @@ from logic.square import (
     SquareContextBuildRouteException, SquareState, SquareValidator, ZeroSquareContextFlagsException, SquareContext,
     SquareContextBuildException, ExcessSquareContextFlagsException
 )
-from logic.token import Token, TokenService
+from model.token import Token, TokenService
 
 
 class SquareContextBuilder(Builder[SquareContext]):

@@ -15,7 +15,7 @@ __all__ = [
     "PawnPromotionRouteException",
 ]
 
-from logic.token import TokenDebugException
+from model.token import TokenDebugException
 
 
 # ======================# NO_PROMOTION_ROUTE_TO_NEW_RANK_EXCEPTION #======================#

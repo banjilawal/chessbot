@@ -13,7 +13,7 @@ from typing import List
 
 from logic.system import ComputationResult, LoggingLevelRouter, NumberValidator
 from logic.system.worker import Worker
-from logic.vector import Vector, VectorService
+from model.vector import Vector, VectorService
 
 
 class VectorAdder(Worker):

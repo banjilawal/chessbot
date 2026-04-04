@@ -1,11 +1,9 @@
-from logging import Logger
-from typing import Any, Generic, TypeVar, cast
+from typing import Any, TypeVar, cast
 
-from logic.event import EventValidator
 from logic.piece import KingCheckEvent, PieceValidator, InvalidAttackException
 from logic.square import SquareValidator, InvalidSqaureException
 from logic.system import LoggingLevelRouter, Result, IdValidator, IdValidationException, ValidationResult, Validator
-from logic.token.event import (
+from model.token import (
   AttackEvent,
   NullAttackEventException,
   CircularOccupationException,

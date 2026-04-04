@@ -12,7 +12,7 @@ __all__ = [
     "RankQuotaPerTeamLookupFailedException",
 ]
 
-from logic.token import TokenException
+from model.token import TokenException
 from logic.system import CalculationFailedException
 
 

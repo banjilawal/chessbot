@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import Optional
 
-from logic.game import Game
+from model.game import Game
 from logic.team import Team
 from logic.system import Context
 from logic.player import Player, PlayerVariety

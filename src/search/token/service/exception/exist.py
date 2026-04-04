@@ -15,7 +15,7 @@ __all__ = [
     "TokenNotFoundException",
 ]
 
-from logic.token import TokenDebugException
+from model.token import TokenDebugException
 
 # ======================# TOKEN_NOT_FOUND_EXCEPTION #======================#
 class TokenNotFoundException(TokenDebugException):

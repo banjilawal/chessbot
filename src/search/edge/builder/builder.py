@@ -18,7 +18,7 @@ from graph.edge import (
     EdgeContextBuildRouteException, ZeroEdgeContextFlagsException, EdgeContext, EdgeContextBuildException,
     ArenaEdgeContextFlagsException
 )
-from logic.token import Token, TokenService
+from model.token import Token, TokenService
 
 
 class EdgeContextBuilder(Builder[EdgeContext]):

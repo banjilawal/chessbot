@@ -7,7 +7,7 @@ Created: 2026-01-08
 version: 1.0.0
 """
 
-from logic.token import TokenDebugException
+from model.token import TokenDebugException
 from logic.system import NotRegisteredException
 
 __all__ = [

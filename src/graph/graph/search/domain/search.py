@@ -13,7 +13,7 @@ from logic.coord import Coord
 from logic.piece import Piece
 from graph.graph import Graph, GraphDomainFilter, GraphValidator
 from logic.system import LoggingLevelRouter, Finder, SearchResult
-from logic.domain import (
+from graph.domain import (
     Domain, GraphSearchContextValidator, ResidentSearchCoordCollisionException,
     ResidentSearchIdCollisionException, ResidentSearchNameCollisionException
 )
