@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err.context import ZeroContextFlagsException
+from err import ZeroContextFlagsException
 
 _all_ = [
     # ======================# ZERO_HOSTAGE_CONTEXT_FLAGS_EXCEPTION #======================#

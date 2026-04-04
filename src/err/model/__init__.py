@@ -13,6 +13,7 @@ version: 1.0.1
 from .arena import *
 from .board import *
 from .coord import *
+from .context import *
 from .edge import *
 from .formation import *
 from .game import *

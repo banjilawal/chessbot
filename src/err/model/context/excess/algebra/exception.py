@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-
+from err import ExcessContextFlagsException
 
 _all_ = [
     # ======================# EXCESS_ALGEBRA_CONTEXT_FLAGS_EXCEPTION #======================#

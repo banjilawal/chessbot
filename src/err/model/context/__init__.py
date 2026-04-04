@@ -15,6 +15,7 @@ from .arena import *
 from .board import *
 from .coord import *
 from .edge import *
+from .excess import *
 from .formation import *
 from .game import *
 from .hostage import *
@@ -25,6 +26,7 @@ from .rank import *
 from .schema import *
 from .square import *
 from .token import *
+from .zero import *
 
 # Modules
 from .exception import ContextException
