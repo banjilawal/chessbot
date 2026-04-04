@@ -1,7 +1,7 @@
-# src/logic/span/square/ray/validation/exception/validator.py
+# src/geometry/span/square/ray/validation/exception/validator.py
 
 """
-Module: logic.span.square.ray.validation.exception.work
+Module: geometry.span.square.ray.validation.exception.work
 Author: Banji Lawal
 Created: 2026-03-12
 Version: 1.0.0

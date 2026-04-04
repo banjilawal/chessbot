@@ -1,7 +1,7 @@
-# src/logic/player/model/__init__.py
+# src/model/player/__init__.py
 
 """
-Module: logic.player.model.__init__
+Module: model.player.__init__
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

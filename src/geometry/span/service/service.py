@@ -1,7 +1,7 @@
-# src/logic/span/service/validator.py
+# src/geometry/span/service/validator.py
 
 """
-Module: logic.span.service.service
+Module: geometry.span.service.service
 Author: Banji Lawal
 Created: 2025-11-12
 version: 1.0.0
@@ -11,10 +11,10 @@ from __future__ import annotations
 from abc import abstractmethod
 
 from graph.graph import Graph
-from logic.coord import CoordService
+from geometry.coord import CoordService
 from math.span import CoordSpan, SpanGraphHandler, SpanServiceException, Spanner
 from geometry.vector import VectorService
-from logic.square import SquareDatabase
+from geometry.square import SquareDatabase
 from model.token import Token, TokenService
 from system import ComputationResult, IdFactory, IdentityService, LoggingLevelRouter, Microservice
 

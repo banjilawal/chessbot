@@ -1,7 +1,7 @@
-# src/logic/token/model/concrete/combatant/occupant.py
+# src/model/token/model/concrete/combatant/occupant.py
 
 """
-Module: logic.token.model.concrete.combatant.occupant
+Module: model.token.model.concrete.combatant.occupant
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -10,8 +10,8 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Optional
 
-from logic.team import Team
-from logic.rank import Rank
+from model.team import Team
+from model.rank import Rank
 from model.token import Token, TokenBoardState, ReadinessState
 
 

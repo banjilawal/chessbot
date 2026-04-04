@@ -1,7 +1,7 @@
-# src/logic/rank/model/abstract/rank.py
+# src/model/rank/model/abstract/rank.py
 
 """
-Module: logic.rank.model.abstract.rank
+Module: model.rank.model.abstract.rank
 Author: Banji Lawal
 Created: 2026-03-10
 version: 1.0.0
@@ -14,7 +14,7 @@ from typing import Dict
 from catalog.persona import Persona
 from math.span import CoordSpan
 from geometry.vector import VectorService
-from logic.coord import CoordService
+from model.coord import CoordService
 from system import ComputationResult, LoggingLevelRouter
 
 class Rank(ABC):
@@ -24,7 +24,7 @@ class Rank(ABC):
     Responsibilities:
     1.  Single-source-of-truth of Coords reachable from a Token's updated position on the board.
     2.  Metadata for weighing edges in the GameGraph.
-    3.  Hosting logic common to Rank subclasses.
+    3.  Hosting model common to Rank subclasses.
 
     # PROVIDES:
     Rank

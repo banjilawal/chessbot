@@ -1,16 +1,15 @@
-# src/logic/coord/model/__init__.py
-
+# src/geometry/coord/__init__.py
 """
-Module: logic.coord.model.__init__
+Module: geometry.coord.__init__
 Author: Banji Lawal
-Created: 2026-03-29
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-# =========== COORD.MODEL PACKAGE CONTENTS ===========#
+# =========== COORD PACKAGE CONTENTS ===========#
 
 # Packages
-from .exception import *
+None
 
 # Modules
 from .model import Coord

@@ -1,7 +1,7 @@
-# src/logic/span/spanner/pawn_token/anchor.py
+# src/geometry/span/spanner/pawn_token/anchor.py
 
 """
-Module: logic.span.spanner.pawn_token.anchor
+Module: geometry.span.spanner.pawn_token.anchor
 Author: Banji Lawal
 Created: 2026-03-10
 version: 1.0.0

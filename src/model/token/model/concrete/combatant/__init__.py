@@ -1,7 +1,7 @@
-# src/logic/token/model/concrete/combatant/__init__.py
+# src/model/token/model/concrete/combatant/__init__.py
 
 """
-Module: logic.token.model.concrete.combatant.__init__
+Module: model.token.model.concrete.combatant.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

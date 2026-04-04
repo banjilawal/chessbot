@@ -1,7 +1,7 @@
-# src/logic/span/square/graph/exception.py
+# src/geometry/span/square/graph/exception.py
 
 """
-Module: logic.span.square.graph.build
+Module: geometry.span.square.graph.build
 Author: Banji Lawal
 Created: 2026-03-11
 version: 1.0.0
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from graph.graph import Graph
 from math.span import SquareSpan
-from logic.square import SquareStackService
+from geometry.square import SquareStackService
 from system import BuildResult, Builder, LoggingLevelRouter
 
 

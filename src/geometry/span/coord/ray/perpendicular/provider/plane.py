@@ -1,7 +1,7 @@
-# src/logic/span/coord/ray/diagonal/provider/plane.py
+# src/geometry/span/coord/ray/diagonal/provider/plane.py
 
 """
-Module: logic.span.coord.ray.diagonal.provider.plane
+Module: geometry.span.coord.ray.diagonal.provider.plane
 Author: Banji Lawal
 Created: 2026-03-8
 version: 1.0.0
@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Dict
 
-from logic.coord import Coord
+from geometry.coord import Coord
 from math.span import PerpendicularRayFactors
 from system import NUMBER_OF_COLUMNS, NUMBER_OF_ROWS
 from geometry.vector import Vector

@@ -1,14 +1,14 @@
-# src/logic/team/roster/exception/super.py
+# src/model/team/roster/exception/super.py
 
 """
-Module: logic.team.roster.exception.super
+Module: model.team.roster.exception.super
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
 """
 
 
-from logic.team import TeamException
+from model.team import TeamException
 
 __all__ = [
     # ======================# TEAM_ROSTER EXCEPTION #======================#

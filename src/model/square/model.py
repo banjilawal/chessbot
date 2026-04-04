@@ -1,7 +1,7 @@
-# src/logic/square/model/model.py
+# src/model/square/model/model.py
 
 """
-Module: logic.square.model.model
+Module: model.square.model.model
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
@@ -10,8 +10,8 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Optional
 
-from logic.board import Board
-from logic.coord import Coord
+from model.board import Board
+from model.coord import Coord
 from model.token import Token
 from model.model.state import SquareState
 

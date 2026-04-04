@@ -1,7 +1,7 @@
-# src/logic/span/spanner/pawn_token/__init__.py
+# src/geometry/span/spanner/pawn_token/__init__.py
 
 """
-Module: logic.span.spanner.pawn_token.__init__
+Module: geometry.span.spanner.pawn_token.__init__
 Author: Banji Lawal
 Created: 2026-03-10
 version: 1.0.0

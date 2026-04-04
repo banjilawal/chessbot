@@ -1,7 +1,7 @@
-# src/logic/span/square/span/service/exception/__init__.py
+# src/geometry/span/square/span/service/exception/__init__.py
 
 """
-Module: logic.span.square.span.service.exception.__init__
+Module: geometry.span.square.span.service.exception.__init__
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

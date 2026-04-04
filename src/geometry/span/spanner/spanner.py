@@ -1,7 +1,7 @@
-# src/logic/span/spanner/validator.py
+# src/geometry/span/spanner/validator.py
 
 """
-Module: logic.span.spanner.computer
+Module: geometry.span.spanner.computer
 Author: Banji Lawal
 Created: 2026-02-26
 version: 1.0.0

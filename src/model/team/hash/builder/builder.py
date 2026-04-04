@@ -1,7 +1,7 @@
-# src/logic/team/hash/build/exception.py
+# src/model/team/hash/build/exception.py
 
 """
-Module: logic.team.hash.build.build
+Module: model.team.hash.build.build
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from catalog.schema import SchemaService
 from system import BuildResult, Builder, LoggingLevelRouter
-from logic.team import (
+from model.team import (
     BlackTeamHasWrongSchemaException, Team, TeamHash, TeamHashBuildException,
     TeamSchemaCollisionException, TeamValidator, WhiteTeamHasWrongSchemaException
 )

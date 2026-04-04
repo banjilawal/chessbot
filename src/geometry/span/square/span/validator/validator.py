@@ -1,7 +1,7 @@
-# src/logic/span/square/span/validation/validation.py
+# src/geometry/span/square/span/validation/validation.py
 
 """
-Module: logic.span.square.span.validation
+Module: geometry.span.square.span.validation
 Author: Banji Lawal
 Created: 2026-03-12
 version: 1.0.0
@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Any, List, cast
 
-from logic.square import SquareValidator
+from geometry.square import SquareValidator
 from system import LoggingLevelRouter, ValidationResult, Validator
 from math.span import SquareSpanNullException, SquareSpan, SquareSpanRaysNullException, SquareSpanValidationException
 

@@ -4,7 +4,7 @@ __all__ = [
 ]
 
 from system import OperationException
-from logic.team import TeamRosterException
+from model.team import TeamRosterException
 
 
 # ======================# ROSTER_TOKEN_DELETION_FAILURE #======================#

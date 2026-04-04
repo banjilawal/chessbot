@@ -1,7 +1,7 @@
-# src/logic/hostage/manifest.py
+# src/model/hostage/manifest.py
 
 """
-Module: logic.hostage.manifest
+Module: model.hostage.manifest
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.square import Square
+from model.square import Square
 from model.token import CombatantToken, Token
 
 

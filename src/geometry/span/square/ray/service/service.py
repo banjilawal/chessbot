@@ -1,7 +1,7 @@
-# src/logic/span/square/ray/service/validator.py
+# src/geometry/span/square/ray/service/validator.py
 
 """
-Module: logic.span.square.ray.service.service
+Module: geometry.span.square.ray.service.service
 Author: Banji Lawal
 Created: 2025-11-12
 version: 1.0.0

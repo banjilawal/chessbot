@@ -1,7 +1,7 @@
-# src/logic/token/model/concrete/king/king.py
+# src/model/token/model/concrete/king/king.py
 
 """
-Module: logic.token.model.concrete.king.king
+Module: model.token.model.concrete.king.king
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -9,9 +9,9 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.coord import CoordDatabase
-from logic.rank import King
-from logic.team import Team
+from model.coord import CoordDatabase
+from model.rank import King
+from model.team import Team
 from model.token import Token, TokenBoardState, ReadinessState
 
 

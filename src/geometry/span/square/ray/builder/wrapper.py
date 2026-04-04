@@ -1,7 +1,7 @@
-# src/logic/ray/square/ray/build/validator.py
+# src/geometry/ray/square/ray/build/validator.py
 
 """
-Module: logic.ray.square.ray.build.work
+Module: geometry.ray.square.ray.build.work
 Author: Banji Lawal
 Created: 2026-03-11
 version: 1.0.0

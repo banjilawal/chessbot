@@ -1,7 +1,7 @@
-# src/logic/team/hash/exception/anchor.py
+# src/model/team/hash/exception/anchor.py
 
 """
-Module: logic.team.hash.exception.base
+Module: model.team.hash.exception.base
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0
@@ -12,7 +12,7 @@ __all__ = [
     "TeamHashException",
 ]
 
-from logic.team import TeamException
+from model.team import TeamException
 
 
 # ======================# TEAM_HASH EXCEPTION #======================#

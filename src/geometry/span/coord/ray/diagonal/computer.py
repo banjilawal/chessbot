@@ -1,7 +1,7 @@
-# src/logic/span/coord/ray/diagonal/validator.py
+# src/geometry/span/coord/ray/diagonal/validator.py
 
 """
-Module: logic.span.coord.ray.diagonal.computer
+Module: geometry.span.coord.ray.diagonal.computer
 Author: Banji Lawal
 Created: 2026-02-26
 version: 1.0.0
@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import List
 
 from geometry.vector import VectorService
-from logic.coord import Coord, CoordService
+from geometry.coord import Coord, CoordService
 from system import ComputationResult, LoggingLevelRouter
 from math.span import ComputedNullRayDebugException, DiagonalRayComputationException, DiagonalRayFactors, CoordRay
 

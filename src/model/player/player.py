@@ -1,7 +1,7 @@
-# src/logic/player/model/owner.py
+# src/model/player/model/owner.py
 
 """
-Module: logic.player.model.owner
+Module: model.player.model.owner
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,7 +11,7 @@ from abc import ABC
 from typing import Optional
 
 
-from logic.team import Team, UniqueTeamDataService
+from model.team import Team, UniqueTeamDataService
 
 
 class Player(ABC):

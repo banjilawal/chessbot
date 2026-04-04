@@ -1,7 +1,7 @@
-# src/logic/span/coord/ray/diagonal/provider/factor.py
+# src/geometry/span/coord/ray/diagonal/provider/factor.py
 
 """
-Module: logic.span.coord.ray.diagonal.provider.factor
+Module: geometry.span.coord.ray.diagonal.provider.factor
 Author: Banji Lawal
 Created: 2026-03-8
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/logic/token/model/concrete/combatant/pawn_token/exception.py
+# src/model/token/model/concrete/combatant/pawn_token/exception.py
 
 """
-Module: logic.token.model.concrete.combatant.pawn_token.exception
+Module: model.token.model.concrete.combatant.pawn_token.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/logic/team/model.py
+# src/model/team/model.py
 
 """
-Module: logic.team.team
+Module: model.team.team
 Author: Banji Lawal
 Created: 2025-08-04
 version: 1.0.0
@@ -9,10 +9,10 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.board import Board
+from model.board import Board
 from catalog.schema import Schema
-from logic.player import Player
-from logic.team import TeamState
+from model.player import Player
+from model.team import TeamState
 from model.token import TokenDatabase
 
 

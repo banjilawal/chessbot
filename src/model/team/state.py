@@ -1,7 +1,7 @@
-# src/logic/team/state.py
+# src/model/team/state.py
 
 """
-Module: logic.team.state
+Module: model.team.state
 Author: Banji Lawal
 Created: 2026-02-24
 version: 1.0.0

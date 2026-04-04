@@ -1,7 +1,7 @@
-# src/logic/vector/service/exception/anchor.py
+# src/geometry/vector/service/exception/anchor.py
 
 """
-Module: logic.vector.service.exception.anchor
+Module: geometry.vector.service.exception.anchor
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

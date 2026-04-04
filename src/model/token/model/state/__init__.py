@@ -1,7 +1,7 @@
-# src/logic/token/model/state/__init__.py
+# src/model/token/model/state/__init__.py
 
 """
-Module: logic.token.model.state.__init__
+Module: model.token.model.state.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

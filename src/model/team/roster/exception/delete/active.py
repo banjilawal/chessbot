@@ -1,7 +1,7 @@
-# src/logic/team/roster/exception/insertion/captured.py
+# src/model/team/roster/exception/insertion/captured.py
 
 """
-Module: logic.team.roster.exception.insertion.captured
+Module: model.team.roster.exception.insertion.captured
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -13,7 +13,7 @@ __all__ = [
     "DeletingActiveTokenExceptionTeam",
 ]
 
-from logic.team import TeamRosterException
+from model.team import TeamRosterException
 
 
 # ======================# DELETING_ACTIVE_TOKEN_FROM_ROSTER EXCEPTION #======================#

@@ -1,7 +1,7 @@
-# src/logic/span/coord/ray/perpendicular/exception/validator.py
+# src/geometry/span/coord/ray/perpendicular/exception/validator.py
 
 """
-Module: logic.span.coord.ray.perpendicular.exception.work
+Module: geometry.span.coord.ray.perpendicular.exception.work
 Author: Banji Lawal
 Created: 2026-03-8
 version: 1.0.0
@@ -25,7 +25,7 @@ class PerpendicularRayComputationException(RayComputationException):
 
     Responsibilities:
     1.  Identify the PerpendicularRayComputation method where the exception failed.
-    2.  wrap any debug exception created when a condition prevents the computational logic from producing
+    2.  wrap any debug exception created when a condition prevents the computational geometry from producing
         a ray of vectors in the
             horizontal subdomains:
                 *  the regions where [-n < i] or [i <= j < n] the domain is (x_i, y_i) -> R(:X_i,X_j)

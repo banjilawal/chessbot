@@ -1,7 +1,7 @@
-# src/logic/rank/model/concrete/bishop/bishop.py
+# src/model/rank/model/concrete/bishop/bishop.py
 
 """
-Module: logic.rank.model.concrete.bishop.bishop
+Module: model.rank.model.concrete.bishop.bishop
 Author: Banji Lawal
 Created: 2026-01-22
 version: 1.0.0
@@ -12,8 +12,8 @@ from typing import Dict
 
 from catalog.persona import Persona
 from math.span import BishopSpanner, CoordSpan
-from logic.coord import Coord, CoordService
-from logic.rank import BishopException, Rank
+from model.coord import Coord, CoordService
+from model.rank import BishopException, Rank
 from system import ComputationResult, LoggingLevelRouter
 from geometry.vector import VectorService
 

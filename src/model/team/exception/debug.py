@@ -1,7 +1,7 @@
-# src/logic/team/model/exception/debug.py
+# src/model/team/model/exception/debug.py
 
 """
-Module: logic.team.model.exception.debug
+Module: model.team.model.exception.debug
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

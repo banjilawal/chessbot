@@ -1,7 +1,7 @@
-# src/logic/team/roster/exception/insertion/full.py
+# src/model/team/roster/exception/insertion/full.py
 
 """
-Module: logic.team.roster.exception.insertion.full
+Module: model.team.roster.exception.insertion.full
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -12,7 +12,7 @@ __all__ = [
     "TeamRosterIsFullException",
 ]
 
-from logic.team import TeamRosterException
+from model.team import TeamRosterException
 
 
 # ======================# ROSTER_IS_FULL EXCEPTION #======================#

@@ -1,7 +1,7 @@
-# src/logic/token/model/state/board.py
+# src/model/token/model/state/board.py
 
 """
-Module: logic.token.model.state.board
+Module: model.token.model.state.board
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

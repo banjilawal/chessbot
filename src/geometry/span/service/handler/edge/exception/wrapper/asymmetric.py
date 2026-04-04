@@ -1,7 +1,7 @@
-# src/logic/span/service/operation/edge/exception/work/asymmetric.py
+# src/geometry/span/service/operation/edge/exception/work/asymmetric.py
 
 """
-Module: logic.span.service.operation.edge.exception.work.asymmetric
+Module: geometry.span.service.operation.edge.exception.work.asymmetric
 Author: Banji Lawal
 Created: 2026-03-11
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/logic/rank/model/abstract/__init__.py
+# src/model/rank/model/abstract/__init__.py
 
 """
-Module: logic.rank.model.abstract.__init__
+Module: model.rank.model.abstract.__init__
 Author: Banji Lawal
 Created: 2026-03-10
 version: 1.0.0

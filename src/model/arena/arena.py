@@ -1,15 +1,15 @@
-# src/logic/arena/arena.py
+# src/model/arena/arena.py
 
 """
-Module: logic.arena.arena
+Module: model.arena.arena
 Author: Banji Lawal
 Created: 2025-08-05
 version: 1.0.0
 """
 
 
-from logic.board import Board
-from logic.team import Team
+from model.board import Board
+from model.team import Team
 
 
 class Arena:

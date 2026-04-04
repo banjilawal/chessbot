@@ -1,7 +1,7 @@
-# src/logic/token/model/abstract.py
+# src/model/token/model/abstract.py
 
 """
-Module: logic.token.model.abstract
+Module: model.token.model.abstract
 Author: Banji Lawal
 Created: 2025-07-22
 version: 1.0.0
@@ -11,10 +11,10 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Optional
 
-from logic.rank import Rank
-from logic.team import Team
+from model.rank import Rank
+from model.team import Team
 from model.token import TokenBoardState, ReadinessState
-from logic.coord import Coord, CoordDatabase
+from model.coord import Coord, CoordDatabase
 
 class Token(ABC):
     """

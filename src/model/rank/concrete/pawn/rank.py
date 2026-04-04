@@ -1,7 +1,7 @@
-# src/logic/rank/model/concrete/pawn_token/pawn_token.py
+# src/model/rank/model/concrete/pawn_token/pawn_token.py
 
 """
-Module: logic.rank.model.concrete.pawn_token.pawn_token
+Module: model.rank.model.concrete.pawn_token.pawn_token
 Author: Banji Lawal
 Created: 2026-01-22
 version: 1.0.0
@@ -12,10 +12,10 @@ from typing import Dict
 
 from catalog.persona import Persona
 from model.token import PawnToken
-from logic.coord import CoordService
+from model.coord import CoordService
 from geometry.vector import VectorService
 from math.span import PawnSpanner, CoordSpan
-from logic.rank import PawnException, Rank
+from model.rank import PawnException, Rank
 from system import ComputationResult, LoggingLevelRouter
 
 class Pawn(Rank):

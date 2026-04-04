@@ -1,7 +1,7 @@
-# src/logic/token/model/state/readiness.py
+# src/model/token/model/state/readiness.py
 
 """
-Module: logic.token.model.state.readiness
+Module: model.token.model.state.readiness
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

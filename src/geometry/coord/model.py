@@ -1,10 +1,9 @@
-# src/logic/coord/mode/model.py
-
+# src/geometry/coord/model.py
 """
-Module: logic.coord.model.model
+Module: geometry.coord.model
 Author: Banji Lawal
-Created: 2025-07-26
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations

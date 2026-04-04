@@ -1,7 +1,7 @@
-# src/logic/span/square/ray/service/exception.anchor.py
+# src/geometry/span/square/ray/service/exception.anchor.py
 
 """
-Module: logic.span.square.ray.service.exception.anchor
+Module: geometry.span.square.ray.service.exception.anchor
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

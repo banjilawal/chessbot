@@ -1,7 +1,7 @@
-# src/logic/square/state.py
+# src/model/square/state.py
 
 """
-Module: logic.square.state
+Module: model.square.state
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

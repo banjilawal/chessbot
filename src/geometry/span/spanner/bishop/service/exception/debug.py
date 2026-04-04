@@ -1,7 +1,7 @@
-# src/logic/span/spanner/bishop/service/exception/debug.py
+# src/geometry/span/spanner/bishop/service/exception/debug.py
 
 """
-Module: logic.span.spanner.bishop.service.exception.debug
+Module: geometry.span.spanner.bishop.service.exception.debug
 Author: Banji Lawal
 Created: 2026-03-10
 version: 1.0.0

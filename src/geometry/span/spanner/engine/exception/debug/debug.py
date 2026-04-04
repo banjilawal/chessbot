@@ -1,7 +1,7 @@
-# src/logic/span/spanner/engine/exception/debug/debug.py
+# src/geometry/span/spanner/engine/exception/debug/debug.py
 
 """
-Module: logic.span.spanner.engine.exception.debug.debug
+Module: geometry.span.spanner.engine.exception.debug.debug
 Author: Banji Lawal
 Created: 2026-03-10
 version: 1.0.0

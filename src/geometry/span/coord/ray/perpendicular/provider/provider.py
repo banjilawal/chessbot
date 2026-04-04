@@ -1,7 +1,7 @@
-# src/logic/span/coord/ray/perpendicular/provider/provider.py
+# src/geometry/span/coord/ray/perpendicular/provider/provider.py
 
 """
-Module: logic.span.coord.ray.perpendicular.provider.provider
+Module: geometry.span.coord.ray.perpendicular.provider.provider
 Author: Banji Lawal
 Created: 2026-03-8
 version: 1.0.0

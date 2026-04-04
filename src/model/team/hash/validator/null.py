@@ -1,7 +1,7 @@
-# src/logic/team/hash/validation/null.py
+# src/model/team/hash/validation/null.py
 
 """
-Module: logic.team.hash.validation.null
+Module: model.team.hash.validation.null
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0
@@ -13,7 +13,7 @@ __all__ = [
 ]
 
 from system import NullException
-from logic.team import TeamHashException
+from model.team import TeamHashException
 
 
 # ======================# TEAM_HASH_NULL_EXCEPTION EXCEPTION #======================#

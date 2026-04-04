@@ -1,7 +1,7 @@
-# src/logic/span/spanner/king/king.py
+# src/geometry/span/spanner/king/king.py
 
 """
-Module: logic.span.spanner.king.king
+Module: geometry.span.spanner.king.king
 Author: Banji Lawal
 Created: 2026-03-10
 version: 1.0.0
@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Dict, List
 
 from system import ComputationResult
-from logic.coord import Coord, CoordService
+from geometry.coord import Coord, CoordService
 from geometry.vector import Vector, VectorService
 from math.span import KingSpannerException, CoordRay, CoordSpan, Spanner
 

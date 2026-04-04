@@ -1,7 +1,7 @@
-# src/logic/team/hash/build/validator.py
+# src/model/team/hash/build/validator.py
 
 """
-Module: logic.team.hash.build.work
+Module: model.team.hash.build.work
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0
@@ -12,7 +12,7 @@ __all__ = [
     "TeamHashBuildException",
 ]
 
-from logic.team import TeamHashException
+from model.team import TeamHashException
 from system import BuildException
 
 

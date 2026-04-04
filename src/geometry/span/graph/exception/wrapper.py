@@ -1,7 +1,7 @@
-# src/logic/span/square/build/validator.py
+# src/geometry/span/square/build/validator.py
 
 """
-Module: logic.span.square.build.work
+Module: geometry.span.square.build.work
 Author: Banji Lawal
 Created: 2026-03-11
 version: 1.0.0

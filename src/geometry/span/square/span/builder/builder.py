@@ -1,7 +1,7 @@
-# src/logic/span/square/span/build/exception.py
+# src/geometry/span/square/span/build/exception.py
 
 """
-Module: logic.span.square.span.build.build
+Module: geometry.span.square.span.build.build
 Author: Banji Lawal
 Created: 2026-03-11
 version: 1.0.0
@@ -11,9 +11,9 @@ from __future__ import annotations
 
 from typing import List
 
-from logic.coord import Coord
+from geometry.coord import Coord
 from math.span.square import SquareSpanBuildException
-from logic.square import Square, SquareContext, SquareStackService
+from geometry.square import Square, SquareContext, SquareStackService
 from math.span import CoordRay, CoordSpan, SquareRay, SquareSpan
 from system import BuildResult, Builder, ComputationResult, LoggingLevelRouter, SearchResult
 

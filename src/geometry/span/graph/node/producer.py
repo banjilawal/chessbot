@@ -1,7 +1,7 @@
-# src/logic/span/service/operation/node/exception.py
+# src/geometry/span/service/operation/node/exception.py
 
 """
-Module: logic.span.service.operation.node.operation
+Module: geometry.span.service.operation.node.operation
 Author: Banji Lawal
 Created: 2026-03-11
 version: 1.0.0

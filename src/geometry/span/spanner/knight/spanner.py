@@ -1,7 +1,7 @@
-# src/logic/span/spanner/knight/exception/knight.py
+# src/geometry/span/spanner/knight/exception/knight.py
 
 """
-Module: logic.span.spanner.knight.exception.knight
+Module: geometry.span.spanner.knight.exception.knight
 Author: Banji Lawal
 Created: 2026-03-10
 version: 1.0.0
@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Dict, List
 
 from system import ComputationResult
-from logic.coord import Coord, CoordService
+from geometry.coord import Coord, CoordService
 from geometry.vector import Vector, VectorService
 from math.span import KnightSpannerException, CoordRay, CoordSpan, Spanner
 

@@ -1,7 +1,7 @@
-# src/logic/span/spanner/queen/queen.py
+# src/geometry/span/spanner/queen/queen.py
 
 """
-Module: logic.span.spanner.queen.queen
+Module: geometry.span.spanner.queen.queen
 Author: Banji Lawal
 Created: 2026-03-10
 version: 1.0.0
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Dict
 
 from system import ComputationResult
-from logic.coord import Coord, CoordService
+from geometry.coord import Coord, CoordService
 from math.span import (
     PerpendicularRayProvider, QueenSpannerException, DiagonalRayProvider, CoordSpan, Spanner, SpannerEngine
 )

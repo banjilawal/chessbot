@@ -1,7 +1,7 @@
-# src/logic/span/spanner/pawn_token/exception/pawn_token.py
+# src/geometry/span/spanner/pawn_token/exception/pawn_token.py
 
 """
-Module: logic.span.spanner.pawn_token.exception.pawn_token
+Module: geometry.span.spanner.pawn_token.exception.pawn_token
 Author: Banji Lawal
 Created: 2026-03-10
 version: 1.0.0
@@ -13,7 +13,7 @@ from typing import Dict, List
 
 from model.token import PawnToken
 from system import ComputationResult
-from logic.coord import Coord, CoordService
+from geometry.coord import Coord, CoordService
 from geometry.vector import Vector, VectorService
 from math.span import PawnSpannerException, PawnVectorSets, CoordRay, CoordSpan, Spanner
 

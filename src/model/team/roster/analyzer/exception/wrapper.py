@@ -1,7 +1,7 @@
-# src/logic/team/relation/roster/validator.py
+# src/model/team/relation/roster/validator.py
 
 """
-Module: logic.team.relation.roster.work
+Module: model.team.relation.roster.work
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -12,7 +12,7 @@ __all__ = [
     "TeamRosterRelationAnalysisException",
 ]
 
-from logic.team import TeamRosterException
+from model.team import TeamRosterException
 
 
 # ======================# ROSTER_RELATION_ANALYSIS_FAILURE #======================#

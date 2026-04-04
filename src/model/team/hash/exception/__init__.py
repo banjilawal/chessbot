@@ -1,7 +1,7 @@
-# src/logic/team/hash/exception/__init__.py
+# src/model/team/hash/exception/__init__.py
 
 """
-Module: logic.team.hash.exception.__init__
+Module: model.team.hash.exception.__init__
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0

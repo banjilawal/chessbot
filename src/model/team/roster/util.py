@@ -1,7 +1,7 @@
-# src/logic/team/roster/util/util.py
+# src/model/team/roster/util/util.py
 
 """
-Module: logic.team.roster.util.util
+Module: model.team.roster.util.util
 Author: Banji Lawal
 Created: 2026-02-22
 version: 1.0.0
@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from copy import deepcopy
 
-from logic.rank import RankService
+from model.rank import RankService
 from catalog.formation import FormationKey, FormationService
 from system import IdFactory, IdentityService, UpdateResult
-from logic.team import FillingTeamRosterException, RosterRelationAnalysis, Team, TeamValidator
+from model.team import FillingTeamRosterException, RosterRelationAnalysis, Team, TeamValidator
 
 
 class RosterUtil:

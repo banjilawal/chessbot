@@ -1,7 +1,7 @@
-# src/logic/team/hash/validation/validation.py
+# src/model/team/hash/validation/validation.py
 
 """
-Module: logic.team.hash.validation.validation
+Module: model.team.hash.validation.validation
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0
@@ -14,7 +14,7 @@ from typing import Any, cast
 from catalog.schema import SchemaService
 from system import LoggingLevelRouter, Validator
 from result.result.result import ValidationResult
-from logic.team import (
+from model.team import (
     BlackTeamHasWrongSchemaException, TeamHash, TeamHashNullException, TeamHashValidationException,
     TeamValidator, WhiteTeamHasWrongSchemaException
 )

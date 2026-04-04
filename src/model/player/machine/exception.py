@@ -1,13 +1,13 @@
-# src/logic/player/model/machine/exception.py
+# src/model/player/model/machine/exception.py
 
 """
-Module: logic.player.model.machine.exception
+Module: model.player.model.machine.exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
-from logic.player import PlayerException
+from model.player import PlayerException
 
 __all__ = [
     #======================# MACHINE_PLAYER EXCEPTION #======================#

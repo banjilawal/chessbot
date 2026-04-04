@@ -1,7 +1,7 @@
-# src/logic/span/coord/ray/ray.py
+# src/geometry/span/coord/ray/ray.py
 
 """
-Module: logic.span.coord.ray.ray
+Module: geometry.span.coord.ray.ray
 Author: Banji Lawal
 Created: 2026-02-26
 version: 1.0.0
@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import List, cast
 
 from math.span import Ray
-from logic.coord import Coord
+from geometry.coord import Coord
 
 class CoordRay(Ray[Coord]):
     """

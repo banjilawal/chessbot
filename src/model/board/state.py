@@ -1,7 +1,7 @@
-# src/logic/board/state.py
+# src/model/board/state.py
 
 """
-Module: logic.board.state
+Module: model.board.state
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

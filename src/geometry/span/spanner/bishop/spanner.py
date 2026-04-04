@@ -1,7 +1,7 @@
-# src/logic/span/spanner/bishop/bishop.py
+# src/geometry/span/spanner/bishop/bishop.py
 
 """
-Module: logic.span.spanner.bishop.bishop
+Module: geometry.span.spanner.bishop.bishop
 Author: Banji Lawal
 Created: 2026-03-10
 version: 1.0.0
@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Dict
 
 from system import ComputationResult
-from logic.coord import Coord, CoordService
+from geometry.coord import Coord, CoordService
 from math.span import BishopSpannerException, DiagonalRayProvider, CoordSpan, Spanner, SpannerEngine
 
 class BishopSpanner(Spanner):

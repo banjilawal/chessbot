@@ -1,7 +1,7 @@
-# src/logic/span/coord/span.py
+# src/geometry/span/coord/span.py
 
 """
-Module: logic.span.coord.span
+Module: geometry.span.coord.span
 Author: Banji Lawal
 Created: 2026-03-12
 version: 1.0.0
@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import List, cast
 
-from logic.coord import Coord
+from geometry.coord import Coord
 from math.span import Span
 from math.span.coord import CoordRay
 

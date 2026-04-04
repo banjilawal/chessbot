@@ -1,7 +1,7 @@
-# src/logic/span/square/ray.py
+# src/geometry/span/square/ray.py
 
 """
-Module: logic.span.square.ray
+Module: geometry.span.square.ray
 Author: Banji Lawal
 Created: 2026-03-11
 version: 1.0.0
@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import List, cast
 
 from math.span import Ray
-from logic.square import Square
+from geometry.square import Square
 
 
 class SquareRay(Ray[Square]):

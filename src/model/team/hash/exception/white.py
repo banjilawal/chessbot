@@ -1,7 +1,7 @@
-# src/logic/team/hash/exception/white.py
+# src/model/team/hash/exception/white.py
 
 """
-Module: logic.team.hash.exception.white
+Module: model.team.hash.exception.white
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0
@@ -12,7 +12,7 @@ __all__ = [
     "WhiteTeamHasWrongSchemaException",
 ]
 
-from logic.team import TeamHashException
+from model.team import TeamHashException
 
 
 # ======================# WHITE_TEAM_HAS_WRONG_SCHEMA EXCEPTION #======================#

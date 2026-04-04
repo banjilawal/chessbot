@@ -1,7 +1,7 @@
-# src/logic/span/span/validator.py
+# src/geometry/span/span/validator.py
 
 """
-Module: logic.span.span.computer
+Module: geometry.span.span.computer
 Author: Banji Lawal
 Created: 2026-02-26
 version: 1.0.0
@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Optional
 
 from geometry.vector import VectorService
-from logic.coord import Coord, CoordService
+from geometry.coord import Coord, CoordService
 from math.span import (
     DiagonalRayProvider, NoRayProviderException, PerpendicularRayProvider, CoordSpan, SpanComputationException,
     SpanComputationRouteException, SpannerEngineException
@@ -100,7 +100,7 @@ class SpannerEngine:
                     )
                 )
             )
-        # --- Route to the appropriate arithmetic logic. ---#
+        # --- Route to the appropriate arithmetic geometry. ---#
         
         # Get a queen's span if perpendicular and diagonal providers are included.
         if diagonal_ray_provider is not None and perpendicular_ray_provider is not None:
@@ -125,7 +125,7 @@ class SpannerEngine:
                 vector_service=vector_service,
                 provider=perpendicular_ray_provider
             )
-        # Handle the default case that no solution logic exists for a provider combination.
+        # Handle the default case that no solution geometry exists for a provider combination.
         return ComputationResult.failure(
             SpannerEngineException(
                 cls_mthd=method,

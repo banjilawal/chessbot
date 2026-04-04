@@ -1,7 +1,7 @@
-# src/logic/span/ray/ray.py
+# src/geometry/span/ray/ray.py
 
 """
-Module: logic.span.ray.ray
+Module: geometry.span.ray.ray
 Author: Banji Lawal
 Created: 2026-02-26
 version: 1.0.0

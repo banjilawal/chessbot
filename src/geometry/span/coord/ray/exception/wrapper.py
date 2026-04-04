@@ -1,7 +1,7 @@
-# src/logic/diagonalRay/arithmetic/exception/validator.py
+# src/geometry/diagonalRay/arithmetic/exception/validator.py
 
 """
-Module: logic.diagonalRay.arithmetic.exception.work
+Module: geometry.diagonalRay.arithmetic.exception.work
 Author: Banji Lawal
 Created: 2025-09-08
 Version: 1.0.0
@@ -25,7 +25,7 @@ class RayComputationException(ComputationException):
 
     Responsibilities:
     1.  Identify the DiagonalRayComputation method where the exception failed.
-    2.  wrap any debug exception created when a condition prevents the computational logic
+    2.  wrap any debug exception created when a condition prevents the computational geometry
         from producing a ray of vectors in the
              where
                 *   i < j the domain is y_i = x_(i-1) + c x_i or

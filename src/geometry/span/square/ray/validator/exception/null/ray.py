@@ -1,7 +1,7 @@
-# src/logic/ray/square/ray/validation/exception/debug/ray.py
+# src/geometry/ray/square/ray/validation/exception/debug/ray.py
 
 """
-Module: logic.ray.square.ray.validation.exception.debug.ray
+Module: geometry.ray.square.ray.validation.exception.debug.ray
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

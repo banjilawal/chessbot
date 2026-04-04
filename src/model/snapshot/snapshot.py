@@ -1,7 +1,7 @@
-# src/logic/snapshot.py
+# src/model/snapshot.py
 
 """
-Module: logic.snapshot
+Module: model.snapshot
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -9,8 +9,8 @@ version: 1.0.0
 
 from typing import Optional, cast
 
-from logic.agent import PlayerAgent
-from logic.arena import Arena
+from model.agent import PlayerAgent
+from model.arena import Arena
 from model.game import GameState
 from system import MethodImplementationException, RollbackException, Result
 

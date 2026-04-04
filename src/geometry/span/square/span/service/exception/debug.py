@@ -1,7 +1,7 @@
-# src/logic/span/square/span/service/exception.debug.py
+# src/geometry/span/square/span/service/exception.debug.py
 
 """
-Module: logic.span.square.span.service.exception.debug
+Module: geometry.span.square.span.service.exception.debug
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

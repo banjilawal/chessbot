@@ -1,7 +1,7 @@
-# src/logic/rank/model/concrete/knight/knight.py
+# src/model/rank/model/concrete/knight/knight.py
 
 """
-Module: logic.rank.model.concrete.knight.knight
+Module: model.rank.model.concrete.knight.knight
 Author: Banji Lawal
 Created: 2026-01-22
 version: 1.0.0
@@ -13,8 +13,8 @@ from typing import Dict
 from catalog.persona import Persona
 from geometry.vector import VectorService
 from math.span import KnightSpanner, CoordSpan
-from logic.rank import KnightException, Rank
-from logic.coord import Coord, CoordService
+from model.rank import KnightException, Rank
+from model.coord import Coord, CoordService
 from system import ComputationResult, LoggingLevelRouter
 
 class Knight(Rank):

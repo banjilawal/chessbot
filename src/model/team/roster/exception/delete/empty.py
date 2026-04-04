@@ -3,7 +3,7 @@ __all__ = [
     "PoppingEmptyTeamRosterException",
 ]
 
-from logic.team import TeamRosterException
+from model.team import TeamRosterException
 
 
 # ======================# POPPING_EMPTY_ROSTER EXCEPTION #======================#

@@ -1,7 +1,7 @@
-# src/logic/rank/model/concrete/__init__.py
+# src/model/rank/model/concrete/__init__.py
 
 """
-Module: logic.rank.model.concrete.__init__
+Module: model.rank.model.concrete.__init__
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

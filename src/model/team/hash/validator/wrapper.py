@@ -1,7 +1,7 @@
-# src/logic/team/hash/validation/validator.py
+# src/model/team/hash/validation/validator.py
 
 """
-Module: logic.team.hash.validation.work
+Module: model.team.hash.validation.work
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0
@@ -12,7 +12,7 @@ __all__ = [
     "TeamHashValidationException",
 ]
 
-from logic.team import TeamHashException
+from model.team import TeamHashException
 from system import ValidationException
 
 

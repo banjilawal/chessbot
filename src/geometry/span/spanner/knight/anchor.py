@@ -1,7 +1,7 @@
-# src/logic/span/spanner/knight/anchor.py
+# src/geometry/span/spanner/knight/anchor.py
 
 """
-Module: logic.span.spanner.knight.anchor
+Module: geometry.span.spanner.knight.anchor
 Author: Banji Lawal
 Created: 2026-03-10
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/logic/span/root/__init__.py
+# src/geometry/span/root/__init__.py
 
 """
-Module: logic.span.root.__init__
+Module: geometry.span.root.__init__
 Author: Banji Lawal
 Created: 2026-02-26
 version: 1.0.0

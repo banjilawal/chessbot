@@ -1,13 +1,13 @@
-# src/logic/team/roster/exception/insertion/different.py
+# src/model/team/roster/exception/insertion/different.py
 
 """
-Module: logic.team.roster.exception.insertion.different
+Module: model.team.roster.exception.insertion.different
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
 """
 
-from logic.team import TeamRosterException
+from model.team import TeamRosterException
 
 __all__ = [
     # ======================# ENEMY_CANNOT_JOIN_ROSTER EXCEPTION #======================#

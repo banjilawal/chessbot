@@ -1,7 +1,7 @@
-# src/logic/game/game.py
+# src/model/game/game.py
 
 """
-Module: logic.game.game
+Module: model.game.game
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -9,8 +9,8 @@ version: 1.0.0
 
 from typing import List, Optional
 
-from logic.agent import PlayerAgent
-from logic.arena import Arena
+from model.agent import PlayerAgent
+from model.arena import Arena
 from model.game import Snapshot, GameTimeline
 
 

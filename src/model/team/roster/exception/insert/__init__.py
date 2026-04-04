@@ -1,7 +1,7 @@
-# src/logic/team/roster/exception/insertion/__init__.py
+# src/model/team/roster/exception/insertion/__init__.py
 
 """
-Module: logic.team.roster.exception.insertion.__init__
+Module: model.team.roster.exception.insertion.__init__
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/logic/span/spanner/engine/__init__.py
+# src/geometry/span/spanner/engine/__init__.py
 
 """
-Module: logic.span.spanner.engine.__init__
+Module: geometry.span.spanner.engine.__init__
 Author: Banji Lawal
 Created: 2026-03-10
 version: 1.0.0

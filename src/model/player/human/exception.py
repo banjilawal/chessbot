@@ -1,13 +1,13 @@
-# src/logic/player/model/human/exception.py
+# src/model/player/model/human/exception.py
 
 """
-Module: logic.player.model.human.exception
+Module: model.player.model.human.exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
-from logic.player import PlayerException
+from model.player import PlayerException
 
 __all__ = [
     #======================# HUMAN_PLAYER EXCEPTION #======================#

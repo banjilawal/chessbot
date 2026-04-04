@@ -1,7 +1,7 @@
-# src/logic/span/span.py
+# src/geometry/span/span.py
 
 """
-Module: logic.span.span
+Module: geometry.span.span
 Author: Banji Lawal
 Created: 2026-02-26
 version: 1.0.0

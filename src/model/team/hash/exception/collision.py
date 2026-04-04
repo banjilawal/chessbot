@@ -1,7 +1,7 @@
-# src/logic/team/hash/exception/collision.py
+# src/model/team/hash/exception/collision.py
 
 """
-Module: logic.team.hash.exception.collision
+Module: model.team.hash.exception.collision
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0
@@ -12,7 +12,7 @@ __all__ = [
     "TeamSchemaCollisionException",
 ]
 
-from logic.team import TeamHashException
+from model.team import TeamHashException
 
 
 # ======================# TEAM_HASH_SCHEMA_COLLISION EXCEPTION #======================#

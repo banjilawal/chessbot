@@ -1,7 +1,7 @@
-# src/logic/team/relation/roster/validator.py
+# src/model/team/relation/roster/validator.py
 
 """
-Module: logic.team.relation.roster.analyzer
+Module: model.team.relation.roster.analyzer
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -12,7 +12,7 @@ from typing import cast
 
 from model.token import Token, TokenService, TokenContext
 from system import LoggingLevelRouter, RelationReport, RelationAnalysis
-from logic.team import Team, TeamRosterRelationAnalysisException, TeamValidator
+from model.team import Team, TeamRosterRelationAnalysisException, TeamValidator
 
 
 class RosterRelationAnalysis(RelationAnalysis[Team, Token]):

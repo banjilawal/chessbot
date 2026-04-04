@@ -3,7 +3,7 @@ __all__ = [
     "TeamRosterMemberDoesNotExistForRemovalException",
 ]
 
-from logic.team import TeamRosterException
+from model.team import TeamRosterException
 
 
 # ======================# ROSTER_MEMBER_TO_REMOVE_DOES_NOT_EXIST EXCEPTION #======================#

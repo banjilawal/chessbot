@@ -1,7 +1,7 @@
-# src/logic/rank/model/concrete/rook/rook.py
+# src/model/rank/model/concrete/rook/rook.py
 
 """
-Module: logic.rank.model.concrete.rook.rook
+Module: model.rank.model.concrete.rook.rook
 Author: Banji Lawal
 Created: 2026-01-22
 version: 1.0.0
@@ -13,8 +13,8 @@ from typing import Dict
 from catalog.persona import Persona
 from geometry.vector import VectorService
 from math.span import RookSpanner, CoordSpan
-from logic.rank import RookException, Rank
-from logic.coord import Coord, CoordService
+from model.rank import RookException, Rank
+from model.coord import Coord, CoordService
 from system import ComputationResult, LoggingLevelRouter
 
 class Rook(Rank):

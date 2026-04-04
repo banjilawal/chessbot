@@ -1,4 +1,4 @@
-# src/model/__init__.py
+# src/__init__.py
 
 """
 Module: model.__init__

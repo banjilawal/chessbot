@@ -1,7 +1,7 @@
-# src/logic/span/service/operation/node/exception/anchor.py
+# src/geometry/span/service/operation/node/exception/anchor.py
 
 """
-Module: logic.span.service.operation.node.exception.anchor
+Module: geometry.span.service.operation.node.exception.anchor
 Author: Banji Lawal
 Created: 2026-03-11
 version: 1.0.0

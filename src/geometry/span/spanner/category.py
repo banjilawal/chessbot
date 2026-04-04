@@ -1,7 +1,7 @@
-# src/logic/span/spanner/category.py
+# src/geometry/span/spanner/category.py
 
 """
-Module: logic.span.spanner.category
+Module: geometry.span.spanner.category
 Author: Banji Lawal
 Created: 2026-02-26
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/logic/rank/model/concrete/queen/queen.py
+# src/model/rank/model/concrete/queen/queen.py
 
 """
-Module: logic.rank.model.concrete.queen.queen
+Module: model.rank.model.concrete.queen.queen
 Author: Banji Lawal
 Created: 2026-01-22
 version: 1.0.0
@@ -13,8 +13,8 @@ from typing import Dict
 from catalog.persona import Persona
 from geometry.vector import VectorService
 from math.span import QueenSpanner, CoordSpan
-from logic.rank import QueenException, Rank
-from logic.coord import Coord, CoordService
+from model.rank import QueenException, Rank
+from model.coord import Coord, CoordService
 from system import ComputationResult, LoggingLevelRouter
 
 class Queen(Rank):

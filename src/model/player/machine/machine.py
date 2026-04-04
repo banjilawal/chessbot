@@ -1,15 +1,15 @@
-# src/logic/player/model/machine/machine.py
+# src/model/player/model/machine/machine.py
 
 """
-Module: logic.player.model.machine.machine
+Module: model.player.model.machine.machine
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
-from logic.player import Player
-from logic.engine import EngineService
-from logic.team import UniqueTeamDataService
+from model.player import Player
+from model.engine import EngineService
+from model.team import UniqueTeamDataService
 
 
 class MachinePlayer(Player):

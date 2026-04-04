@@ -1,7 +1,7 @@
-# src/logic/span/spanner/bishop/service/exception/anchor.py
+# src/geometry/span/spanner/bishop/service/exception/anchor.py
 
 """
-Module: logic.span.spanner.bishop.service.exception.anchor
+Module: geometry.span.spanner.bishop.service.exception.anchor
 Author: Banji Lawal
 Created: 2026-03-10
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/logic/span/spanner/rook/rook.py
+# src/geometry/span/spanner/rook/rook.py
 
 """
-Module: logic.span.spanner.rook.rook
+Module: geometry.span.spanner.rook.rook
 Author: Banji Lawal
 Created: 2026-03-10
 version: 1.0.0
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Dict
 
 from system import ComputationResult
-from logic.coord import Coord, CoordService
+from geometry.coord import Coord, CoordService
 from math.span import RookSpannerException, PerpendicularRayProvider, CoordSpan, Spanner, SpannerEngine
 
 

@@ -1,4 +1,4 @@
-from logic.team import TeamRosterException
+from model.team import TeamRosterException
 
 __all__ = [
     # ======================# ENEMY_CANNOT_JOIN_ROSTER EXCEPTION #======================#

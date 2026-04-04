@@ -1,7 +1,7 @@
-# src/logic/board/board.py
+# src/model/board/board.py
 
 """
-Module: logic.board.board
+Module: model.board.board
 Author: Banji Lawal
 Created: 2025-07-31
 version: 1.0.0
@@ -9,10 +9,10 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.arena import Arena
-from logic.team import TeamHash
-from logic.board import BoardState
-from logic.square import SquareDatabase
+from model.arena import Arena
+from model.team import TeamHash
+from model.board import BoardState
+from model.square import SquareDatabase
 from model.hostage import HostageDatabase
 
 class Board:

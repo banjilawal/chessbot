@@ -1,7 +1,7 @@
-# src/logic/game/state.py
+# src/model/game/state.py
 
 """
-Module: logic.game.state
+Module: model.game.state
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
