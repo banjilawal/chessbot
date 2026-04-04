@@ -10,7 +10,7 @@ version: 1.0.0
 from enum import Enum
 
 from logic.schema import Schema
-from logic.scalar import Scalar
+from build.scalar import Scalar
 from logic.geometry import Quadrant
 from logic.system import GameColor, NUMBER_OF_ROWS
 

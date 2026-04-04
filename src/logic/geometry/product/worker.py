@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 from logic.system import ComputationResult
-from logic.scalar import Scalar, ScalarService
+from build.scalar import Scalar, ScalarService
 from logic.coord import Coord, CoordMultiplicationException, CoordService
 from logic.system.worker import Worker
 

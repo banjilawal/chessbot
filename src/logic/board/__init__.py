@@ -19,6 +19,5 @@ from .validator import *
 from .service import *
 
 # Modules
-from .board import Board
 from .state import BoardState
 from .iterator import SquareIterator

@@ -8,20 +8,18 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import List, Union, cast
+from typing import Union
 
 from logic.coord import Coord, CoordService
-from logic.scalar import Scalar, ScalarService
 from logic.system.worker import Worker
-from logic.vector import Vector, VectorBuilder, VectorService, VectorServiceException, VectorValidator
+from logic.vector import Vector, VectorService
 from logic.system import (
-    BuildResult, ComputationResult, IdFactory, LoggingLevelRouter, IntegrityMicroservice, NumberValidator
+    ComputationResult, LoggingLevelRouter, NumberValidator
 )
 from logic.vector.service.operation.arithmetic import (
     VectorCoordConversionException,
     VectorCoordConversionOperandNullException
 )
-from logic.vector.service.operation.arithmetic.convert.direction import ConversionDirection
 
 
 class VectorCoordConverter(Worker):

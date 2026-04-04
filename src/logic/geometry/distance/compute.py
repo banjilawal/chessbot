@@ -13,7 +13,6 @@ from math import sqrt
 from typing import Union
 
 from logic.system import ComputationResult, LoggingLevelRouter, NumberValidator
-from logic.scalar import Scalar, ScalarService
 from logic.coord import Coord, EuclideanDistanceException, CoordValidator
 from logic.system.worker import Worker
 from logic.vector import Vector, VectorValidator

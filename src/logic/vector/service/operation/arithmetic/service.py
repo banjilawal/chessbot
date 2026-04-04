@@ -8,10 +8,10 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import List, cast
+from typing import cast
 
 from logic.coord import Coord, CoordService
-from logic.scalar import Scalar, ScalarService
+from build.scalar import Scalar, ScalarService
 from logic.vector import Vector, VectorBuilder, VectorServiceException, VectorValidator
 from logic.system import (
     BuildResult, ComputationResult, IdFactory, LoggingLevelRouter, IntegrityMicroservice, NumberValidator

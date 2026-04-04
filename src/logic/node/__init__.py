@@ -18,5 +18,4 @@ from .validator import *
 from .exception import *
 
 # Modules
-from .node import Node
 from .status import DiscoveryStatus

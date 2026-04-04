@@ -1,6 +1,6 @@
 from typing import List
 
-from logic.board.board import Board
+from build.board import Board
 from logic.system.identity.id import id_emitter
 from logic.engine.analyze.board_analysis import BoardAnalysis
 from logic.competitor.commander import CyberneticCommander

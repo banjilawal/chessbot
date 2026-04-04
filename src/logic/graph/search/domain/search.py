@@ -11,10 +11,10 @@ from typing import List
 
 from logic.coord import Coord
 from logic.piece import Piece
-from logic.graph import Graph, GraphDomainFilter, GraphValidator, graph
+from logic.graph import Graph, GraphDomainFilter, GraphValidator
 from logic.system import LoggingLevelRouter, Finder, SearchResult
 from logic.domain import (
-    Domain, DomainValidator, GraphSearchContext, GraphSearchContextValidator, ResidentSearchCoordCollisionException,
+    Domain, GraphSearchContextValidator, ResidentSearchCoordCollisionException,
     ResidentSearchIdCollisionException, ResidentSearchNameCollisionException
 )
 

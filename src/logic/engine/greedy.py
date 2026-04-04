@@ -1,6 +1,6 @@
 from typing import Optional
 
-from logic.board.board import Board
+from build.board import Board
 from logic.engine.analyze.board_analysis import BoardAnalysis
 from logic.engine.analyze.board_analyzer import BoardAnalyzer
 from logic.engine.engine import Engine

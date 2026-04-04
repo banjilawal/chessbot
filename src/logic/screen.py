@@ -1,6 +1,6 @@
 import pygame
 
-from logic.board.board import Board
+from build.board import Board
 from logic.system.config import CELL_PX, BORDER_PX, SCREEN_WIDTH, SCREEN_HEIGHT, KING_COLOR, PAWN_COLOR, KNIGHT_COLOR, CASTLE_COLOR, \
   BISHOP_COLOR, QUEEN_COLOR, MousePlacementStatus
 from logic.system.color import GameColor
@@ -20,7 +20,7 @@ from logic.rank.model.concrete.queen import Queen
 from logic.token.piece import Piece
 
 if TYPE_CHECKING:
-  from logic.board.board import Board
+  from build.board import Board
 
 @dataclass(frozen=True)
 class DragState:

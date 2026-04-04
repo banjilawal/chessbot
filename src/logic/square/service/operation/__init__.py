@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== SQUARE.SERVICE PACKAGE CONTENTS ===========#
 
 # Packages
-from .build import *
 from .collision import *
 from .visitation import *
 from .validation import *

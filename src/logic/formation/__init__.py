@@ -16,4 +16,3 @@ from .validator import *
 from .exception import *
 
 # Modules
-from .formation import Formation

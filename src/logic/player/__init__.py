@@ -11,7 +11,6 @@ version: 1.0.0
 #=========== PLAYER PACKAGE CONTENTS ===========#
 
 # Packages
-from .builder import *
 from .context import *
 from .model import *
 from .exception import *

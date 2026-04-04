@@ -18,4 +18,3 @@ from .timeline import *
 from .validator import *
 
 # Modules
-from .snapshot import Snapshot

@@ -10,7 +10,6 @@ version: 1.0.0
 #=========== SQUARE PACKAGE CONTENTS ===========#
 
 # Packages
-from logic.square.service.operation.build import *
 from .query import *
 from .database import *
 from .service import *

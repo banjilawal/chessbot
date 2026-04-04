@@ -18,4 +18,3 @@ from .exception import *
 from .validator import *
 
 # Modules
-from .edge import Edge

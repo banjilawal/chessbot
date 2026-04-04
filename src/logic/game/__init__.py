@@ -17,5 +17,4 @@ from .exception import *
 from .validator import *
 
 # Modules
-from .game import Game
 from .state import GameState

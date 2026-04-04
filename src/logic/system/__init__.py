@@ -10,7 +10,7 @@ version: 1.0.0
 #=========== SYSTEM PACKAGE CONTENTS ===========#
 
 # Packages
-from .build import *
+from logic.system.build import *
 from .color import *
 from .config import *
 from .collision import *

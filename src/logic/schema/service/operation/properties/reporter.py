@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import List
 
-from logic.scalar import Scalar
+from build.scalar import Scalar
 from logic.schema import Schema
 from logic.system import GameColor
 
