@@ -15,7 +15,7 @@ __all__ = [
     "NullFormationException",
 ]
 
-from logic.system import NullException
+from system import NullException
 
 #======================# NULL_FORMATION_EXCEPTION #======================#
 class NullFormationException(NullException):

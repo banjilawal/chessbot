@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from logic.system import IntegrityMicroservice, IdFactory
+from system import IntegrityMicroservice, IdFactory
 from catalog.schema import SchemaQuery, SchemaQueryBuilder, SchemaQueryOpsController, SchemaQueryValidator
 
 

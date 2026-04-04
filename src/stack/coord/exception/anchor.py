@@ -15,7 +15,7 @@ __all__ = [
     "CoordStackServiceException",
 ]
 
-from logic.system import StackServiceException
+from system import StackServiceException
 
 
 # ======================# COORD_STACK_SERVICE_EXCEPTION #======================#

@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from catalog.formation import FormationException
-from logic.system import LookupException
+from system import LookupException
 
 __all__ = [
     # ======================# FORMATION_LOOKUP_WORK EXCEPTION #======================#

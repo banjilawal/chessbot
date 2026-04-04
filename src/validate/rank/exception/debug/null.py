@@ -15,7 +15,7 @@ __all__ = [
     "NullRankException",
 ]
 
-from logic.system import NullException
+from system import NullException
 
 
 # ======================# NULL_RANK_EXCEPTION #======================#

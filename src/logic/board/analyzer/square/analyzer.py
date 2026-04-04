@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast
 
 from logic.square import Square, SquareContext, SquareService
-from logic.system import LoggingLevelRouter, RelationAnalysis, RelationReport
+from system import LoggingLevelRouter, RelationAnalysis, RelationReport
 from logic.board import Board, BoardSquareAnalysisException, BoardValidator
 
 

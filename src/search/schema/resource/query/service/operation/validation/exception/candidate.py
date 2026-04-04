@@ -14,7 +14,7 @@ __all__ = [
 
 from typing import Any, Optional
 
-from logic.system import NullException
+from system import NullException
 
 
 # ======================# SCHEMA_QUERY_NULL_EXCEPTION #======================#

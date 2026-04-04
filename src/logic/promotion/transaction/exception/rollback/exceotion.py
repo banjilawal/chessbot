@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 
-from logic.system import RollbackException
+from system import RollbackException
 from logic.promotion.promotion import PromotionTransactionException
 
 class PromotionTransactionRolledBackException(

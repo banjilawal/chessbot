@@ -15,7 +15,7 @@ __all__ = [
     "SchemaKeyBuildException",
 ]
 
-from logic.system import BuildException
+from system import BuildException
 
 
 # ======================# SCHEMA_KEY_BUILD_FAILURE #======================#

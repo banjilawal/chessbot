@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from math import sqrt
 
-from logic.system import ComputationResult
+from system import ComputationResult
 from logic.coord import Coord, EuclideanDistanceException, CoordService
 
 class EuclideanDistance:

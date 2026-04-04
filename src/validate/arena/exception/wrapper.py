@@ -10,7 +10,7 @@ Version: 1.0.0
 from __future__ import annotations
 from typing import Optional
 
-from logic.system import ValidationException
+from system import ValidationException
 
 __all__ = [
     # ======================# ARENA_VALIDATION_FAILURE #======================#

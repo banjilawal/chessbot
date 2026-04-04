@@ -15,7 +15,7 @@ ___all__ = [
     "SquareStackTokenHandlerException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 # ======================# SQUARE_STACK_TOKEN_HANDLER_EXCEPTION #======================#
 class SquareStackTokenHandlerException(AnchorException):

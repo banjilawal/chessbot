@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from logic.board import BoardDebugException
-from logic.system import NotRegisteredException
+from system import NotRegisteredException
 
 __all__ = [
     # ======================# BOARD_NOT_REGISTERED_WITH_ARENA EXCEPTION #======================#

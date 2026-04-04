@@ -14,7 +14,7 @@ __all__ = [
 ]
 
 from logic.attack import AttackException
-from logic.system import DebugException
+from system import DebugException
 
 
 # ======================# ATTACK_DEBUG_EXCEPTION #======================#

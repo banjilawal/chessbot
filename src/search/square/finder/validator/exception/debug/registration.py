@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from logic.square import SquareDebugException
-from logic.system import NotRegisteredException
+from system import NotRegisteredException
 
 __all__ = [
     # ======================# SQUARE_NOT_REGISTERED_WITH_BOARD EXCEPTION #======================#

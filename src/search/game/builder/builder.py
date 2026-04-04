@@ -11,7 +11,7 @@ from typing import Optional
 
 
 from logic.agent import PlayerAgent, AgentService
-from logic.system import Builder, BuildResult, ExecutionRouteException, IdentityService, LoggingLevelRouter
+from system import Builder, BuildResult, ExecutionRouteException, IdentityService, LoggingLevelRouter
 from model.game import (
     GameContext, GameContextBuildException, ZeroGameContextFlagsException, ArenaGameContextFlagsException
 )

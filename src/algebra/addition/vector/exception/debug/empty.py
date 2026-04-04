@@ -15,7 +15,7 @@ __all__ = [
     "EmptyVectorListAdditionException",
 ]
 
-from logic.system import NullException
+from system import NullException
 
 
 # ======================# EMPTY_VECTOR_LIST_ADDITION_EXCEPTION #======================#

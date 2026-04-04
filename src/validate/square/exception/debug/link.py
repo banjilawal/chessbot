@@ -9,7 +9,7 @@ version: 1.0.0
 from typing import Any, Optional
 
 from logic.square import SquareDebugException
-from logic.system import NotRegisteredException
+from system import NotRegisteredException
 
 __all__ = [
     # ======================# BOARD_ORPHAN_LINKED_TO_SQUARE_EXCEPTION #======================#

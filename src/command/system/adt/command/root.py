@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Dict, Generic, TypeVar
 
 from command import CommandArgs
-from logic.system import Microservice
+from system import Microservice
 
 T = TypeVar("T")
 

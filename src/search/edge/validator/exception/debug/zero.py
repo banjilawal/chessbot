@@ -15,7 +15,7 @@ __all__ = [
     "ZeroEdgeContextFlagsException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 
 # ======================# ZERO_EDGE_CONTEXT_FLAGS_EXCEPTION #======================#

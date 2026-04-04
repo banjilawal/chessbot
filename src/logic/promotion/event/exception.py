@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 
-from logic.system import EventException
+from system import EventException
 
 __all__ = [
     "PromotionEventException",

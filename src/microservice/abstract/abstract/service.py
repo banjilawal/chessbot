@@ -9,8 +9,6 @@ Created: 2025-11-18
 from abc import ABC
 from typing import Generic, TypeVar
 
-from logic.system import Validator
-
 T = TypeVar("T")
 
 

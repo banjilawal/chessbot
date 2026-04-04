@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import cast
 
-from logic.system import IntegrityMicroservice, id_emitter
+from system import IntegrityMicroservice, id_emitter
 from model.game import Game, GameBuilder, GameValidator
 
 

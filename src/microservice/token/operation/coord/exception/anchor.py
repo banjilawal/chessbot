@@ -15,7 +15,7 @@ __all__ = [
     "TokenCoordHandlerException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 
 # ======================# TOKEN_COORD_HANDLER_EXCEPTION #======================#

@@ -6,7 +6,7 @@ Created: 2025-10-01
 
 from typing import cast
 
-from logic.system import TransactionResult, LoggingLevelRouter
+from system import TransactionResult, LoggingLevelRouter
 from logic.piece import (
     BlockingEvent, BlockingEventValidator, TravelTransaction, Discovery, DiscoverySearch,
     DiscoverySearchContextBuilder, DiscoverySearchContext, FailedDiscoveryAdditionRolledBackException

@@ -15,7 +15,7 @@ __all__ = [
     "GameContextExecutionRouteException",
 ]
 
-from logic.system import ExecutionRouteException
+from system import ExecutionRouteException
 
 
 # ======================# GAME_CONTEXT_EXECUTION_ROUTE_EXCEPTION #======================#

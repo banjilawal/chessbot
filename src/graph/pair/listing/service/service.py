@@ -13,7 +13,7 @@ from typing import List, cast
 from graph.node import Node
 from graph.pair import PairList, PairListBuilder, PairListValidator, PairService
 from graph.pair.listing.service import PairListServiceException
-from logic.system import IdFactory, IntegrityMicroservice, LoggingLevelRouter, SearchResult
+from system import IdFactory, IntegrityMicroservice, LoggingLevelRouter, SearchResult
 
 
 class PairListService(IntegrityMicroservice[PairList]):

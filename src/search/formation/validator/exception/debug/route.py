@@ -13,7 +13,7 @@ __all__ = [
 ]
 
 from catalog.formation import FormationKeyException
-from logic.system import ExecutionRouteException
+from system import ExecutionRouteException
 
 
 # ======================# NO_FORMATION_KEY_VALIDATION_ROUTE EXCEPTION #======================#

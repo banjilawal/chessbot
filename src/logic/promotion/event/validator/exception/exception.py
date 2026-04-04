@@ -13,7 +13,7 @@ __all__ = [
 ]
 
 
-from logic.system import ValidationException
+from system import ValidationException
 from logic.promotion import PromotionEventException
 
 

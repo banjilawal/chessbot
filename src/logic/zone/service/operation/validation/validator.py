@@ -12,7 +12,7 @@ from typing import cast, Any
 
 from logic.zone import Zone, NullZoneException
 from logic.zone.service.operation.validation.exception.transaction import ZoneValidationException
-from logic.system import (
+from system import (
     NUMBER_OF_ROWS, Validator, ValidationResult, LoggingLevelRouter, NumberValidator
 )
 

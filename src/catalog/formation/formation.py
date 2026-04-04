@@ -10,7 +10,7 @@ version: 1.0.0
 from enum import Enum
 
 from catalog.persona import Persona
-from logic.system import GameColor
+from system import GameColor
 
 class Formation(Enum):
     """

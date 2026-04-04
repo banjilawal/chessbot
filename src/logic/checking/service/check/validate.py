@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2025-10-27
 version: 1.0.0
 """
-from logic.system import Validator
+from system import Validator
 
 
 class CheckRecordValidator(Validator[CheckRecord]):

@@ -15,7 +15,7 @@ __all__ = [
     "EdgePairInsertionException",
 ]
 
-from logic.system import InsertionException
+from system import InsertionException
 
 # ======================# EDGE_PAIR_INSERTION_FAILURE #======================#
 class EdgePairInsertionException(InsertionException):

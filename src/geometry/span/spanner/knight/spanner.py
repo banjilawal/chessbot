@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Dict, List
 
-from logic.system import ComputationResult
+from system import ComputationResult
 from logic.coord import Coord, CoordService
 from geometry.vector import Vector, VectorService
 from math.span import KnightSpannerException, CoordRay, CoordSpan, Spanner

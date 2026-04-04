@@ -15,7 +15,7 @@ __all__ = [
     "SquareContextBuildException",
 ]
 
-from logic.system import BuildException
+from system import BuildException
 
 # ======================# SQUARE_CONTEXT_BUILD_FAILURE #======================#
 class SquareContextBuildException(BuildException):

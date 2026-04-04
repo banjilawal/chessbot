@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from graph.node import NodeException
-from logic.system import InsertionException
+from system import InsertionException
 
 __all__ = [
     # ======================# INCOMING_EDGE_WRONG_TAIL EXCEPTION #======================#

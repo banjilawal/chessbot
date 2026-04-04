@@ -7,7 +7,7 @@ Created: 2025-08-25
 version: 1.0.0
 """
 
-from logic.system import Builder, BuildResult, LoggingLevelRouter
+from system import Builder, BuildResult, LoggingLevelRouter
 from build.scalar import Scalar, ScalarBuildException, ScalarValidator
 
 

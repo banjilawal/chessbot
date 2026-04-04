@@ -15,7 +15,7 @@ __all__ = [
     "HostageDatabaseException",
 ]
 
-from logic.system import DatabaseException
+from system import DatabaseException
 
 
 # ======================# HOSTAGE_DATABASE_EXCEPTION #======================#

@@ -7,7 +7,7 @@ Created: 2025-10-04
 version: 1.0.0
 """
 
-from logic.system.event import Event
+from system import Event
 
 
 class PromotionEvent(Event):

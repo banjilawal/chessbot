@@ -15,7 +15,7 @@ __all__ = [
     "RankContextExecutionRouteException",
 ]
 
-from logic.system import ExecutionRouteException
+from system import ExecutionRouteException
 
 
 # ======================# RANK_CONTEXT_EXECUTION_ROUTE_EXCEPTION #======================#

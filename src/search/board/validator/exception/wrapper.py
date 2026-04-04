@@ -15,7 +15,7 @@ __all__ = [
     "BoardContextValidationException",
 ]
 
-from logic.system import ValidationException
+from system import ValidationException
 
 # ======================# BOARD_CONTEXT_VALIDATION_FAILURE #======================#
 class BoardContextValidationException(ValidationException):

@@ -15,7 +15,7 @@ __all__ = [
     "AttackServiceException",
 ]
 
-from logic.system import ServiceException
+from system import ServiceException
 
 
 # ======================# ATTACK_SERVICE_EXCEPTION #======================#

@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from graph.edge import EdgeServiceException
-from logic.system import UpdateException
+from system import UpdateException
 
 __all__ = [
     # ======================# EDGE_HEURISTIC_UPDATE_FAILURE #======================#

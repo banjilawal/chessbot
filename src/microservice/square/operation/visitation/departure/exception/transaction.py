@@ -15,7 +15,7 @@ __all__ = [
     "SquareDepartureException",
 ]
 
-from logic.system import DeletionException
+from system import DeletionException
 
 # ======================# SQUARE_VISIT_TERMINATION_FAILURE #======================#
 class SquareDepartureException(DeletionException):

@@ -15,7 +15,7 @@ __all__ = [
     "SquareEntryException",
 ]
 
-from logic.system import UpdateException
+from system import UpdateException
 
 # ======================# SQUARE_ENTRY_FAILURE #======================#
 class SquareEntryException(UpdateException):

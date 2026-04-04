@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Type
 
-from logic.system import Builder, LoggingLevelRouter, BuildResult
+from system import Builder, LoggingLevelRouter, BuildResult
 from catalog.schema import (
     Schema, SchemaContext, SchemaQuery, SchemaQueryBuildException, SchemaQueryIntegrityWorkers
 )

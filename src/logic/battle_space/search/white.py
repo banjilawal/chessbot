@@ -59,7 +59,7 @@ from logic.battle_space.service import ProjectionService
 from logic.coord import Coord
 from logic.piece import Piece
 from logic.board import Board, BoardContext, BoardSearchContextValidator, BoardValidator
-from logic.system import (
+from system import (
     Finder, SearchResult, LoggingLevelRouter, PieceSearchNameCollisionException, PieceSearchCoordCollisionException,
     PieceSearchIdCollisionException
 )

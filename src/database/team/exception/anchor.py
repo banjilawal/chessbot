@@ -15,7 +15,7 @@ __all__ = [
     "TeamDatabaseException",
 ]
 
-from logic.system import DatabaseException
+from system import DatabaseException
 
 
 # ======================# TEAM_DATABASE_EXCEPTION #======================#

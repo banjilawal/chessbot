@@ -15,7 +15,7 @@ __all__ = [
     "SchemaQueryStackEmptyException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 
 # ======================# SCHEMA_QUERY_STACK_EMPTY_EXCEPTION #======================#

@@ -13,7 +13,7 @@ from logic.square import (
     Square, SquareContext, SquareQueryService, SquareDatabaseException, SquareService,
     SquareStackService
 )
-from logic.system import Database, IdFactory, LoggingLevelRouter, SearchResult, UpdateResult
+from system import Database, IdFactory, LoggingLevelRouter, SearchResult, UpdateResult
 from model.token import Token, TokenService
 
 

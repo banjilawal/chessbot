@@ -13,7 +13,7 @@ from typing import Union
 from logic.coord import Coord, CoordService
 from worker.worker import Worker
 from geometry.vector import Vector, VectorService
-from logic.system import (
+from system import (
     ComputationResult, LoggingLevelRouter, NumberValidator
 )
 from geometry.vector import (

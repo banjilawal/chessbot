@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import List, TypeVar, Generic
 
-from logic.system import Query, Router, SearchResult, Validator
+from system import Query, Router, SearchResult, Validator
 
 T = TypeVar("T")
 

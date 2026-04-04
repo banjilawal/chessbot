@@ -15,7 +15,7 @@ __all__ = [
     "RankSearchException",
 ]
 
-from logic.system import SearchException
+from system import SearchException
 
 
 # ======================# RANK_SEARCH_FAILURE #======================#
@@ -93,7 +93,7 @@ __all__ = [
     "RankSearchException",
 ]
 
-from logic.system import SearchException
+from system import SearchException
 from logic.rank import RankException
 
 

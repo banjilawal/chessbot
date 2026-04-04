@@ -15,7 +15,7 @@ __all__ = [
     "PairListBuildException",
 ]
 
-from logic.system import BuildException
+from system import BuildException
 
 
 # ======================# PAIR_LIST_BUILD_FAILURE #======================#

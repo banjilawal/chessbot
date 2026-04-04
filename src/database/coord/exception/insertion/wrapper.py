@@ -13,7 +13,7 @@ __all__ = [
 ]
 
 from logic.coord import CoordException
-from logic.system import InsertionException
+from system import InsertionException
 
 
 # ======================# UNIQUE_COORD_INSERTION_FAILURE #======================#

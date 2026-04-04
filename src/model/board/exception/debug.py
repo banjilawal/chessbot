@@ -15,7 +15,7 @@ __all__ = [
     "BoardDebugException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# BOARD_DEBUG_EXCEPTION #======================#
 class BoardDebugException(DebugException):

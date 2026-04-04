@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from logic.coord import Coord, CoordBuildException
-from logic.system import COORD_DIMENSION, Builder, BuildResult, LoggingLevelRouter, NumberValidator
+from system import COORD_DIMENSION, Builder, BuildResult, LoggingLevelRouter, NumberValidator
 
 
 class CoordBuilder(Builder[Coord]):

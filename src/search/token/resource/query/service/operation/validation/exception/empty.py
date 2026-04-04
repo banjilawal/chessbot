@@ -15,7 +15,7 @@ __all__ = [
     "TokenQueryStackEmptyException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 
 # ======================# TOKEN_QUERY_STACK_EMPTY_EXCEPTION #======================#

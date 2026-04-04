@@ -15,7 +15,7 @@ __all__ = [
     "TeamContextException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 
 # ======================# TEAM_CONTEXT_EXCEPTION #======================#

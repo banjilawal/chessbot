@@ -15,7 +15,7 @@ __all__ = [
     "ExcessSchemaContextFlagsException",
 ]
 
-from logic.system import  ExcessContextFlagsException
+from system import  ExcessContextFlagsException
 
 
 # ======================# EXCESS_SCHEMA_CONTEXT_FLAGS_EXCEPTION #======================#

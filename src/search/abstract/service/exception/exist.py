@@ -15,7 +15,7 @@ __all__ = [
     "ItemNotFoundException",
 ]
 
-from logic.system import SearchServiceDebugException
+from system import SearchServiceDebugException
 
 
 # ======================# ITEM_NOT_FOUND_EXCEPTION #======================#

@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 
-from logic.system import Result
+from system import Result
 from transport import ServiceRequest
 
 

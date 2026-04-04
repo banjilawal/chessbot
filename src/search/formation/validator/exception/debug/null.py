@@ -7,7 +7,7 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-from logic.system import NullException
+from system import NullException
 from catalog.formation import FormationKeyException
 
 __all__ = [

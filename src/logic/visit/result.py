@@ -1,5 +1,5 @@
 from logic.square import Square
-from logic.system.result import Result
+from system import Result
 
 
 class VisitationResult(Result[Square]):

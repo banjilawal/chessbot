@@ -15,7 +15,7 @@ from model.hostage import (
     HostageList, HostageService, UniqueHostageInsertionException,
     UniqueHostageSearchException
 )
-from logic.system import InsertionResult, LoggingLevelRouter, SearchResult, Database, id_emitter
+from system import InsertionResult, LoggingLevelRouter, SearchResult, Database, id_emitter
 
 
 class HostageDatabase(Database[Hostage]):

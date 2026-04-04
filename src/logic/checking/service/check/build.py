@@ -10,7 +10,7 @@ version: 1.0.0
 from logic.piece import KingPiece, Piece
 from logic.checkmate import CheckRecord
 
-from logic.system import BuildResult, Builder, LoggingLevelRouter
+from system import BuildResult, Builder, LoggingLevelRouter
 
 
 

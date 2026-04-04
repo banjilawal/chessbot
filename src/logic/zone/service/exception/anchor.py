@@ -15,7 +15,7 @@ __all__ = [
     "ZoneServiceException",
 ]
 
-from logic.system import ServiceException
+from system import ServiceException
 
 
 # ======================# ZONE_SERVICE_EXCEPTION #======================#

@@ -13,7 +13,7 @@ from typing import List
 
 from logic.agent import PlayerAgent
 from model.game import Game, GameContext, GameContextValidator
-from logic.system import (
+from system import (
     DataFinder, ExecutionRouteException, LoggingLevelRouter, SearchException, SearchResult
 )
 

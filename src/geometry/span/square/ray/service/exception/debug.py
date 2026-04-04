@@ -15,7 +15,7 @@ __all__ = [
     "SquareRayServiceDebugException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# SQUARE_RAY_SERVICE_DEBUG_EXCEPTION #======================#
 class SquareRayServiceDebugException(DebugException):

@@ -15,7 +15,7 @@ __all__ = [
     "SquareStackCapacityAnalysisException",
 ]
 
-from logic.system import OperationException
+from system import OperationException
 
 
 # ======================# RANK_QUOTA_ANALYSIS_FAILURE #======================#

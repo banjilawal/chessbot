@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Optional
 
 from logic.rank import Rank
-from logic.system import Context
+from system import Context
 
 
 class RankContext(Context[Rank]):

@@ -15,7 +15,7 @@ __all__ = [
     "ZeroSchemaContextFlagsException",
 ]
 
-from logic.system import ZeroContextFlagsException
+from system import ZeroContextFlagsException
 
 
 # ======================# ZERO_SCHEMA_CONTEXT_FLAGS_EXCEPTION #======================#

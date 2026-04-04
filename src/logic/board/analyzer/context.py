@@ -12,7 +12,7 @@ from typing import Optional
 
 from logic.board import Board
 from logic.square import Square
-from logic.system import Context
+from system import Context
 from logic.team import Team
 
 

@@ -17,7 +17,7 @@ from graph.edge import (
     Edge, EdgeBuilder, EdgeServiceException, EdgeValidator, UpdatingEdgeHeuristicException,
     UpdatingEdgeWeightException
 )
-from logic.system import IntegrityMicroservice, IdFactory, LoggingLevelRouter, NumberValidator, UpdateResult
+from system import IntegrityMicroservice, IdFactory, LoggingLevelRouter, NumberValidator, UpdateResult
 
 
 class EdgeService(IntegrityMicroservice[Edge]):

@@ -13,9 +13,9 @@ from logic.attack import (
     AttackException, AttackResult, AttackingDisabledEnemyException, AttackingEnemyKingException,
     AttackingFriendlySquareException, AttackingTokenOnWrongBoardException, AttackingVacantSquareException
 )
-from logic.system import LoggingLevelRouter
+from system import LoggingLevelRouter
 from logic.square import Square, SquareDatabase
-from logic.system.relation import RelationReport
+from system import RelationReport
 from model.hostage import HostageService
 from model.token import CombatantReadinessEnum, KingToken, Token, TokenBoardState, TokenService
 

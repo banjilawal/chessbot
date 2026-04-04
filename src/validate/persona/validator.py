@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from logic.system import LoggingLevelRouter, ValidationResult, Validator
+from system import LoggingLevelRouter, ValidationResult, Validator
 from catalog.persona import Persona, PersonaValidationException, NullPersonaException
 
 

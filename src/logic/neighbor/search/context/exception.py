@@ -7,7 +7,7 @@ version: 1.0.0
 """
 
 
-from logic.system import ContextException, NullException, BuildException, ValidationException
+from system import ContextException, NullException, BuildException, ValidationException
 
 __all__ = [
     'VisitationSearchContextException',

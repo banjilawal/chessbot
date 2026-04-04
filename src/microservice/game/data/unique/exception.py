@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from model.game import GameException
-from logic.system import DatabaseException
+from system import DatabaseException
 
 __all__ = [
     # ======================# UNIQUE_GAME_STACK_SERVICE EXCEPTION #======================#

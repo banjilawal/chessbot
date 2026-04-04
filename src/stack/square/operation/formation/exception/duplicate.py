@@ -8,7 +8,6 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import Any, Optional
 
 from __future__ import annotations
 from typing import Any, Optional
@@ -18,7 +17,7 @@ __all__ = [
     "AddingDuplicateSquareException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# ADDING_DUPLICATE_SQUARE_EXCEPTION #======================#
 class AddingDuplicateSquareException(DebugException):

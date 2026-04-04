@@ -15,7 +15,7 @@ __all__ = [
     "StackQueryException",
 ]
 
-from logic.system import QueryException
+from system import QueryException
 
 # ======================# STACK_QUERY_EXCEPTION #======================#
 class StackQueryException(QueryException):

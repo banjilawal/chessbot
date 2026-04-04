@@ -11,7 +11,7 @@ from typing import Optional
 
 from logic.coord import Coord
 from logic.rank import Rank
-from logic.system import SearchContext
+from system import SearchContext
 
 
 class VisitationSearchContext(SearchContext):

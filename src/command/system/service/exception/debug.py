@@ -14,7 +14,7 @@ __all__ = [
     "CommandServiceDebugException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 
 # ======================# COMMAND_SERVICE_DEBUG_EXCEPTION #======================#

@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from catalog.schema import SchemaKeyException
-from logic.system import ValidationException
+from system import ValidationException
 
 __all__ = [
     # ======================# SCHEMA_KEY_VALIDATION_FAILURE #======================#

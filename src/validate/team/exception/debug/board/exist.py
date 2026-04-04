@@ -7,7 +7,7 @@ Created: 2025-11-20
 version: 1.0.0
 """
 
-from logic.system import NoRelationException
+from system import NoRelationException
 from logic.team import TeamDebugException
 
 __all__ = [

@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from logic.system import DTO
+from system import DTO
 from logic.square import SquareDTO
 from logic.piece import OccupationEvent, PieceDTO
 

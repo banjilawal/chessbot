@@ -15,7 +15,7 @@ __all__ = [
     "PersonaDebugException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# PERSONA_DEBUG_EXCEPTION #======================#
 class PersonaDebugException(DebugException):

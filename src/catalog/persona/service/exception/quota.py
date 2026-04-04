@@ -13,7 +13,7 @@ __all__ = [
 ]
 
 from model.token import TokenException
-from logic.system import CalculationFailedException
+from system import CalculationFailedException
 
 
 # ======================# RANK_QUOTA_PER_TEAM_LOOKUP_FAILURE #======================#

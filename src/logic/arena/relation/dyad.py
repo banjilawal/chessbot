@@ -1,7 +1,7 @@
 from typing import cast
 
 from logic.arena import Arena
-from logic.system import Dyad
+from system import Dyad
 
 from logic.team import Team
 

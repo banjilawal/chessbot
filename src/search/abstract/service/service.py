@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import List, TypeVar
 
-from logic.system import (
+from system import (
     Context, IntegrityMicroservice, LoggingLevelRouter, Query, SearchResult, Microservice, SearchRouter
 )
 

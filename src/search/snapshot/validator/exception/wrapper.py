@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 from logic.snapshot import SnapshotContextException
-from logic.system import ValidationException
+from system import ValidationException
 
 __all__ = [
     # ======================# SNAPSHOT_CONTEXT_VALIDATION_FAILURE #======================#

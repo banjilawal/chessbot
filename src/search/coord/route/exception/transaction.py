@@ -15,7 +15,7 @@ __all__ = [
     "CoordSearchException",
 ]
 
-from logic.system import SearchException
+from system import SearchException
 
 
 # ======================# COORD_SEARCH_FAILURE #======================#
@@ -93,7 +93,7 @@ __all__ = [
     "CoordSearchException",
 ]
 
-from logic.system import SearchException
+from system import SearchException
 from logic.coord import CoordException
 
 

@@ -16,7 +16,7 @@ from graph.node import (
     NodeServiceException, NodeValidator, OutgoingEdgeWrongHeadException, RemoveIncomingEdgeFailedException,
     RemoveOutgoingEdgeFailedException
 )
-from logic.system import DeletionResult, IntegrityMicroservice, IdFactory, InsertionResult, LoggingLevelRouter
+from system import DeletionResult, IntegrityMicroservice, IdFactory, InsertionResult, LoggingLevelRouter
 
 
 class NodeService(IntegrityMicroservice[Node]):

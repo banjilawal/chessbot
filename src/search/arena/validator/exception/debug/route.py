@@ -15,7 +15,7 @@ __all__ = [
     "ArenaContextValidationRouteException",
 ]
 
-from logic.system import ExecutionRouteException
+from system import ExecutionRouteException
 
 # ======================# ARENA_CONTEXT_VALIDATION_ROUTE_EXCEPTION #======================#
 class ArenaContextValidationRouteException(ExecutionRouteException):

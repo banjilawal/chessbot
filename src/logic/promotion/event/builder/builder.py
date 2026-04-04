@@ -9,7 +9,7 @@ version: 1.0.0
 
 
 from logic.promotion import PromotionEvent
-from logic.system import BuildResult, Builder
+from system import BuildResult, Builder
 
 
 

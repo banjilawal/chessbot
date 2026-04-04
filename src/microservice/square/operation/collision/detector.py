@@ -14,7 +14,7 @@ from logic.square import (
     SquareNameCollisionException
 )
 from logic.square.service import SquareStackService
-from logic.system import CollisionAnalysis, CollisionReport, LoggingLevelRouter
+from system import CollisionAnalysis, CollisionReport, LoggingLevelRouter
 
 
 class SquareCollisionAnalysis(CollisionAnalysis[Square]):

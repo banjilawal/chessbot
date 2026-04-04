@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from logic.system import GameColorException, ValidationException
+from system import GameColorException, ValidationException
 
 __all__ = [
 #======================# GAME_COLOR_VALIDATION EXCEPTION #======================#

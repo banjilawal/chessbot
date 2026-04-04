@@ -16,7 +16,7 @@ Created: 2025-10-04
 version: 1.0.0
 """
 
-from logic.system import NullException, FinderException, ValidationException
+from system import NullException, FinderException, ValidationException
 from logic.rank import RankException
 
 __all__ = [

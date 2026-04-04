@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from catalog.schema import SchemaService
-from logic.system import LoggingLevelRouter, Validator
+from system import LoggingLevelRouter, Validator
 from result.result.result import ValidationResult
 from logic.team import (
     BlackTeamHasWrongSchemaException, TeamHash, TeamHashNullException, TeamHashValidationException,

@@ -15,7 +15,7 @@ __all__ = [
     "BoardDatabaseException",
 ]
 
-from logic.system import DatabaseException
+from system import DatabaseException
 
 
 # ======================# BOARD_DATABASE_EXCEPTION #======================#

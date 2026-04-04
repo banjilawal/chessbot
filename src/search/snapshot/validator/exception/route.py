@@ -13,7 +13,7 @@ __all__ = [
 ]
 
 from logic.snapshot import SnapshotContextException
-from logic.system import ExecutionRouteException
+from system import ExecutionRouteException
 
 
 # ======================# NO_SNAPSHOT_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#

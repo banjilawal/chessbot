@@ -14,7 +14,7 @@ from logic.rank import RankService
 from logic.team import TeamService
 from logic.coord import CoordService
 from logic.square import SquareService
-from logic.system import GameColorValidator, IdentityService, NumberValidator
+from system import GameColorValidator, IdentityService, NumberValidator
 
 class TokenContextIntegrityWorkers:
     """

@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import List, Type
 
-from logic.system import GameColor, LoggingLevelRouter, SearchResult, SearchRouter
+from system import GameColor, LoggingLevelRouter, SearchResult, SearchRouter
 from catalog.schema import (
     MissingSchemaSearchRouteException, Schema, SchemaQuery, SchemaQueryValidator,
     SchemaSearchException

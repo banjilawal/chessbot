@@ -9,7 +9,7 @@ version: 1.0.0
 
 from logic.arena import Arena, ArenaService
 from logic.board import ArenaAlreadyContainsBoardException, Board, BoardBuildException
-from logic.system import Builder, BuildResult, BOARD_DIMENSION, IdentityService, LoggingLevelRouter, id_emitter
+from system import Builder, BuildResult, BOARD_DIMENSION, IdentityService, LoggingLevelRouter, id_emitter
 
 
 class BoardBuilder(Builder[Board]):

@@ -7,7 +7,7 @@ Created: 2025-10-18
 Version: 1.0.1
 """
 
-from logic.system import (
+from system import (
     ChessException, NullException, ValidationException, BuildException, InconsistencyException
 )
 

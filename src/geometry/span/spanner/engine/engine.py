@@ -16,7 +16,7 @@ from math.span import (
     DiagonalRayProvider, NoRayProviderException, PerpendicularRayProvider, CoordSpan, SpanComputationException,
     SpanComputationRouteException, SpannerEngineException
 )
-from logic.system import ComputationResult, LoggingLevelRouter
+from system import ComputationResult, LoggingLevelRouter
 
 
 class SpannerEngine:

@@ -15,7 +15,7 @@ __all__ = [
     "SnapshotContextException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 
 # ======================# SNAPSHOT_CONTEXT_EXCEPTION #======================#

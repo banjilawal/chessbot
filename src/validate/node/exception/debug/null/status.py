@@ -7,7 +7,7 @@ Created: 2026-02-18
 version: 1.0.0
 """
 
-from logic.system import NullException
+from system import NullException
 
 __all__ = [
     # ======================# DISCOVERY_STATUS_NULL EXCEPTION #======================#

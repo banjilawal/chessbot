@@ -15,7 +15,7 @@ __all__ = [
     "PoppingEmptyCoordStackException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 
 # ======================# POPPING_EMPTY_COORD_STACK_EXCEPTION #======================#

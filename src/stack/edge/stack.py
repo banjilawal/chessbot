@@ -15,7 +15,7 @@ from graph.edge import (
     PoppingEmptyEdgeStackException, PushingEdgeException
 )
 from stack.stack.exception import EdgeStackException
-from logic.system import (
+from system import (
     DeletionResult, IdFactory, IdentityService, InsertionResult, LoggingLevelRouter, SearchResult, StackService
 )
 

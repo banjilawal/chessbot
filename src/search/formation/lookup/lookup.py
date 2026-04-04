@@ -15,7 +15,7 @@ from catalog.formation import (
     FormationKeyValidator
 )
 from catalog.persona import Persona
-from logic.system import GameColor, HashLookupProcess, LoggingLevelRouter, SearchResult
+from system import GameColor, HashLookupProcess, LoggingLevelRouter, SearchResult
 
 
 class FormationLookupProcess(HashLookupProcess[Formation]):

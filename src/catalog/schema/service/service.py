@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.system import CatalogService, IdFactory
+from system import CatalogService, IdFactory
 from catalog.schema import (
     Schema, SchemaLookupService, SchemaOpsController, SchemaPropertyValuesReporter, SchemaValidator
 )

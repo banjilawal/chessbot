@@ -13,7 +13,7 @@ __all__ = [
 ]
 
 from catalog.formation import InvalidFormationKeyException
-from logic.system import ContextFlagCountException
+from system import ContextFlagCountException
 
 
 # ========================= ZERO_FORMATION_KEYS_VALIDATION EXCEPTION =========================#

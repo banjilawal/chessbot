@@ -15,7 +15,7 @@ __all__ = [
     "ArenaContextValidationException",
 ]
 
-from logic.system import ValidationException
+from system import ValidationException
 
 # ======================# ARENA_CONTEXT_VALIDATION_FAILURE #======================#
 class ArenaContextValidationException(ValidationException):

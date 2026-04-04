@@ -15,7 +15,7 @@ __all__ = [
     "HostageContextExecutionRouteException",
 ]
 
-from logic.system import ExecutionRouteException
+from system import ExecutionRouteException
 
 
 # ======================# HOSTAGE_CONTEXT_EXECUTION_ROUTE_EXCEPTION #======================#

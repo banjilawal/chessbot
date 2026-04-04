@@ -15,7 +15,7 @@ __all__ = [
     "SearchException",
 ]
 
-from logic.system import SearchException
+from system import SearchException
 
 
 # ======================# OPENING_SQUARE_DISCOVERY_EXCEPTION #======================#

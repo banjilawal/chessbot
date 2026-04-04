@@ -14,7 +14,7 @@ __all__ = [
     "ArgumentCountException",
 ]
 
-from logic.system import ServiceRequestDebugException
+from system import ServiceRequestDebugException
 
 
 # ======================# ARGUMENT_COUNT_EXCEPTION #======================#

@@ -15,7 +15,7 @@ __all__ = [
     "HeadCannotBeTailException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 
 # ======================# HEAD_CANNOT_BE_TAIL_EXCEPTION #======================#

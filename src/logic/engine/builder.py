@@ -9,7 +9,7 @@ version: 1.0.0
 
 
 from logic.engine import Engine
-from logic.system import BuildResult, Builder
+from system import BuildResult, Builder
 
 
 class EngineBuilder(Builder[Engine]):

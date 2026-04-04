@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from logic.system import (
+from system import (
     LONGEST_KNIGHT_LEG_SIZE, LoggingLevelRouter, NumberValidator, ValidationResult,
     Validator
 )

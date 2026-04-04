@@ -12,7 +12,7 @@ __all__ = [
     "PlayerTeamAnalysisException",
 ]
 
-from logic.system import AnalysisException
+from system import AnalysisException
 
 
 # ======================# PLAYER_TEAM_RELATION_ANALYSIS_FAILURE #======================#

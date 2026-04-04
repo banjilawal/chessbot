@@ -12,7 +12,7 @@ from typing import Optional
 
 from catalog.schema import SchemaContextBuildException, SchemaContextBuildRouteException, ZeroSchemaContextFlagsException
 from catalog.schema import SchemaContext, SchemaContextIntegrityWorkers
-from logic.system import BuildResult, Builder, GameColor, LoggingLevelRouter
+from system import BuildResult, Builder, GameColor, LoggingLevelRouter
 from logic.team import ExcessTeamContextFlagsException
 
 

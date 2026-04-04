@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import List
 
 from logic.square import Square
-from logic.system import DataFinder, LoggingLevelRouter, SearchResult
+from system import DataFinder, LoggingLevelRouter, SearchResult
 from model.hostage import (
     CaptivityContext, CaptivityContextValidator, Hostage, HostageSearchException,
     HostageSearchNullDatasetException, HostageSearchPayloadTypeException,

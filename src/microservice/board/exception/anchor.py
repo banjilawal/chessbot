@@ -15,7 +15,7 @@ __all__ = [
     "BoardServiceException",
 ]
 
-from logic.system import ServiceException
+from system import ServiceException
 
 
 # ======================# BOARD_SERVICE_EXCEPTION #======================#

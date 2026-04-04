@@ -16,7 +16,7 @@ from math.span import CoordSpan, SpanGraphHandler, SpanServiceException, Spanner
 from geometry.vector import VectorService
 from logic.square import SquareDatabase
 from model.token import Token, TokenService
-from logic.system import ComputationResult, IdFactory, IdentityService, LoggingLevelRouter, Microservice
+from system import ComputationResult, IdFactory, IdentityService, LoggingLevelRouter, Microservice
 
 class SpanMicroservice(Microservice[CoordSpan]):
     """

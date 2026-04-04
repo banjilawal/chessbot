@@ -13,7 +13,7 @@ __all__ = [
 ]
 
 from logic.coord import CoordException
-from logic.system import DeletionException
+from system import DeletionException
 
 
 # ======================# EXHAUSTIVE_COORD_DELETION_FAILURE #======================#

@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import List, cast
 
-from logic.system import (
+from system import (
     DeletionResult, IdFactory, IdentityService, InsertionResult, LoggingLevelRouter, NUMBER_OF_COLUMNS, NUMBER_OF_ROWS,
     SearchResult, StackService,
     id_emitter

@@ -15,7 +15,7 @@ __all__ = [
     "ExcessSquareContextFlagsException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# EXCESS_SQUARE_CONTEXT_FLAGS_EXCEPTION #======================#
 class ExcessSquareContextFlagsException(DebugException):

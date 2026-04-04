@@ -15,7 +15,7 @@ __all__ = [
     "TokenDeploymentProcessException",
 ]
 
-from logic.system import InsertionException
+from system import InsertionException
 
 # ======================# SQUARE_STACK_DEPLOY_FAILURE #======================#
 class TokenDeploymentProcessException(InsertionException):

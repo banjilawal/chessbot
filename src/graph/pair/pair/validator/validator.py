@@ -13,7 +13,7 @@ from typing import Any, cast
 from graph.node import NodeValidator
 from graph.edge import HeadCannotBeTailException
 from graph.pair import Pair, NullPairException, PairValidationException
-from logic.system import LoggingLevelRouter, ValidationResult, Validator
+from system import LoggingLevelRouter, ValidationResult, Validator
 
 
 class PairValidator(Validator[Pair]):

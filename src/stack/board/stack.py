@@ -9,12 +9,11 @@ version: 1.0.0
 
 from typing import List, cast
 
-from logic.arena import Arena
-from logic.system import StackService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, id_emitter
+from system import StackService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, id_emitter
 from logic.board import (
     AppendingBoardDirectlyIntoItemsFailedException, ArenaAlreadyContainsBoardException, PoppingEmptyBoardStackException,
     Board, BoardContext,
-    BoardDataServiceException, BoardDoesNotExistForRemovalException, BoardService, BoardQueryService,
+    BoardDataServiceException, BoardService, BoardQueryService,
     BoardDeletionException, BoardInsertionException
 )
 

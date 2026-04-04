@@ -10,7 +10,7 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from logic.system import IdValidator, LoggingLevelRouter, Validator, ValidationResult
+from system import IdValidator, LoggingLevelRouter, Validator, ValidationResult
 from graph.domain import (
     Domain, DomainOriginValidator, InvalidDomainException, NullDomainException, DomainNullEnemiesDictException,
     DomainNullFriendsDictException, DomainNullSquaresListException,

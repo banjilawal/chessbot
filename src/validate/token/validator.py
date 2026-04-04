@@ -12,7 +12,7 @@ from typing import Any, cast
 
 from logic.coord import CoordDatabase, CoordDatabaseNullException, CoordService
 from logic.rank import RankService
-from logic.system import IdentityService, LoggingLevelRouter, NumberValidator, ValidationResult, Validator
+from system import IdentityService, LoggingLevelRouter, NumberValidator, ValidationResult, Validator
 from logic.team import TeamService
 from model.token import CombatantToken, KingToken, Token, TokenException, TokenValidationException
 from model.token import NullTokenException

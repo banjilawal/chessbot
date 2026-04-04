@@ -15,7 +15,7 @@ __all__ = [
     "NodeTreeNullException",
 ]
 
-from logic.system import NullException
+from system import NullException
 
 #======================# NODE_TREE_NULL_EXCEPTION #======================#
 class NodeTreeNullException(NullException):

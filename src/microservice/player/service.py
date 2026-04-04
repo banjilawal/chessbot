@@ -10,7 +10,7 @@ version: 1.0.0
 
 from typing import cast
 
-from logic.system import DeletionResult, IntegrityMicroservice, InsertionResult, LoggingLevelRouter, id_emitter
+from system import DeletionResult, IntegrityMicroservice, InsertionResult, LoggingLevelRouter, id_emitter
 from logic.player import Player, PlayerFactory, PlayerServiceException, PlayerTeamRelationAnalysis, PlayerValidator
 from logic.team import (
     AddingDuplicateTeamException, PoppingEmptyTeamStackException, Team, PoppingTeamStackFailedException, TeamService,

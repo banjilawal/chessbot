@@ -11,7 +11,7 @@ from typing import cast, TypeVar
 
 from logic.coord import CoordValidator
 from logic.rank import Bishop, King, Knight, Pawn, Queen, Rank, RankSpec, Rook
-from logic.system import IdValidator, LoggingLevelRouter, NameValidator, Validator, ValidationResult
+from system import IdValidator, LoggingLevelRouter, NameValidator, Validator, ValidationResult
 from logic.piece import (
     DomainSearchContext, InvalidDomainSearchContextException, NullDomainSearchContextException,
     ArenaDomainSearchParamsException, ZeroDomainSearchParamsException, DomainInvalidRankNameParamException

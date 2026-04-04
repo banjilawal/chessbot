@@ -14,7 +14,7 @@ from model.game import Game
 from logic.team import Team
 from logic.snapshot import Snapshot
 from logic.agent import PlayerAgent
-from logic.system import Context
+from system import Context
 
 
 class SnapshotContext(Context[Snapshot]):

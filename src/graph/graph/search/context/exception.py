@@ -7,7 +7,7 @@ Created: 2025-10-31
 version: 1.0.0
 """
 
-from logic.system import SearchContextException, NullException, BuildException, ValidationException
+from system import SearchContextException, NullException, BuildException, ValidationException
 
 __all__ = [
     "VisitorSearchContextException",

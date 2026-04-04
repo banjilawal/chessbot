@@ -15,7 +15,7 @@ __all__ = [
     "SquareSpanValidationException",
 ]
 
-from logic.system import ValidationException
+from system import ValidationException
 
 # ======================# SQUARE_SPAN_VALIDATION_FAILURE #======================#
 class SquareSpanValidationException(ValidationException):

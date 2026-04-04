@@ -15,7 +15,7 @@ __all__ = [
     "VectorCoordUnionNullException",
 ]
 
-from logic.system import NullException
+from system import NullException
 
 
 # ======================# VECTOR_COORd_UNION_NULL_EXCEPTION #======================#

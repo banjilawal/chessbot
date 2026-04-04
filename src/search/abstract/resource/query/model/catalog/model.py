@@ -11,7 +11,7 @@ from __future__ import annotations
 from enum import Enum
 from typing import Generic, TypeVar
 
-from logic.system import Context, Query
+from system import Context, Query
 
 E = TypeVar("E", bound=Enum)
 

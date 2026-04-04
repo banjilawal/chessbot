@@ -15,7 +15,7 @@ __all__ = [
     "ZeroTeamContextFlagsException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 
 # ======================# ZERO_TEAM_CONTEXT_FLAGS_EXCEPTION #======================#

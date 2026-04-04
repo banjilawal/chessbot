@@ -15,7 +15,7 @@ __all__ = [
     "PairDebugException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# PAIR_DEBUG_EXCEPTION #======================#
 class PairDebugException(DebugException):

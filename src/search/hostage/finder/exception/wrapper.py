@@ -15,7 +15,7 @@ __all__ = [
     "HostageSearchException",
 ]
 
-from logic.system import SearchException
+from system import SearchException
 
 
 # ======================# HOSTAGE_SEARCH_FAILURE #======================#
@@ -93,7 +93,7 @@ __all__ = [
     "HostageSearchException",
 ]
 
-from logic.system import SearchException
+from system import SearchException
 from model.hostage import HostageException
 
 

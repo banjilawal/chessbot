@@ -15,7 +15,7 @@ __all__ = [
     "PoppingEmptyTokenStackException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 
 # ======================# POPPING_EMPTY_TOKEN_STACK_EXCEPTION #======================#

@@ -1,0 +1,38 @@
+# src/logic/system/transaction/exception/anchor.py
+
+"""
+Module: logic.system.transaction.exception.base
+Author: Banji Lawal
+Created: 2025-10-09
+version: 1.0.0
+"""
+
+from system import ChessException
+
+__all__ = [
+    #====================== TRANSACTION EXCEPTION #======================#
+    'TransactionException',
+]
+
+
+#====================== TRANSACTION EXCEPTION #======================#
+class TransactionException(ChessException):
+    """
+    Role:Exception Work
+  
+    Responsibilities:
+    1.  Parent of exception raised by Transaction objects
+    2.  Super for Transaction errors not covered by lower level  Transaction exception.
+  
+    Super Class:
+        *   ChessException
+  
+    # PROVIDES:
+    TransactionException
+  
+    
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "TRANSACTION_EXCEPTION"
+    MSG = "Transaction raised an exception."

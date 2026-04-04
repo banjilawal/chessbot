@@ -15,7 +15,7 @@ __all__ = [
     "SnapshotDebugException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# SNAPSHOT_DEBUG_EXCEPTION #======================#
 class SnapshotDebugException(DebugException):

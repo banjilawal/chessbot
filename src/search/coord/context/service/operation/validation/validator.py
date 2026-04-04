@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Any, List, cast
 
-from logic.system import BOARD_DIMENSION, NumberValidator, Validator, ValidationResult, LoggingLevelRouter
+from system import BOARD_DIMENSION, NumberValidator, Validator, ValidationResult, LoggingLevelRouter
 from logic.coord import (
     CoordContextValidationException, CoordContextValidationRouteException, CoordContext,
     NullCoordContextException, ZeroCoordContextFlagsException

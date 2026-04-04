@@ -14,7 +14,7 @@ from copy import deepcopy
 from typing import cast
 
 from logic.square import Square, SquareContext, SquareNotFoundException, SquareOccupiedException
-from logic.system import LoggingLevelRouter, SearchResult, UpdateResult
+from system import LoggingLevelRouter, SearchResult, UpdateResult
 from model.token import (
     InconsistentTokenCoordException, InconsistentTokenSquareException, Token, TokenAlreadyDeployedException,
     TokenBoardState, TokenDeploymentException, TokenValidation

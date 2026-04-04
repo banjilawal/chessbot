@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from catalog.formation import FormationKeyException
-from logic.system import ContextFlagCountException
+from system import ContextFlagCountException
 
 __all__ = [
     # ========================= EXCESS_FORMATION_KEYS_VALIDATION EXCEPTION =========================#

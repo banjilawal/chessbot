@@ -11,7 +11,7 @@ from logic.board import BoardService
 from catalog.schema import Schema, SchemaService
 from logic.player import Player, PlayerService
 from logic.team import Team, TeamBuildException
-from logic.system import Builder, IdFactory, IdentityService, LoggingLevelRouter
+from system import Builder, IdFactory, IdentityService, LoggingLevelRouter
 from model.token import TokenDatabase
 
 
@@ -197,7 +197,7 @@ from logic.coord import Coord, CoordService
 from logic.square import (
     Square, SquareBuildException, SquareCollisionAnalysis
 )
-from logic.system import (
+from system import (
     Builder, BuildResult, IdFactory, IdentityService, InsertionResult, InvariantBreachException, LoggingLevelRouter,
     ValidationResult,
 )

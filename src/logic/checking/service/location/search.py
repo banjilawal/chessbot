@@ -1,5 +1,5 @@
 
-from logic.system import A, R, S, Finder, SearchResult
+from system import A, R, S, Finder, SearchResult
 from logic.checkmate.service import KingLocationRecord
 
 class KingLocationFinder(Finder[KingLocationRecord]):

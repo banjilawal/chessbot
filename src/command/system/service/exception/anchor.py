@@ -15,7 +15,7 @@ __all__ = [
     "CommandServiceException",
 ]
 
-from logic.system import IntegrityServiceException
+from system import IntegrityServiceException
 
 # ======================# COMMAND_SERVICE_EXCEPTION #======================#
 class CommandServiceException(IntegrityServiceException):

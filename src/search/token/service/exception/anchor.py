@@ -15,7 +15,7 @@ __all__ = [
     "TokenSearchServiceException",
 ]
 
-from logic.system import ServiceException
+from system import ServiceException
 
 # ======================# TOKEN_SEARCH_SERVICE_FAILURE #======================#
 class TokenSearchServiceException(ServiceException):

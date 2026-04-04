@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Any
 
 from logic.arena import ArenaContext
-from logic.system import ValidationResult, Validator
+from system import ValidationResult, Validator
 
 
 

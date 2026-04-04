@@ -15,7 +15,7 @@ __all__ = [
     "ExcessEdgeContextFlagsException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# EXCESS_EDGE_CONTEXT_FLAGS_EXCEPTION #======================#
 class ExcessEdgeContextFlagsException(DebugException):

@@ -15,7 +15,7 @@ __all__ = [
     "QueryException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 # ======================# QUERY_EXCEPTION #======================#
 class QueryException(AnchorException):

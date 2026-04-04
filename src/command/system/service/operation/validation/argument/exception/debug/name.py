@@ -14,7 +14,7 @@ __all__ = [
     "ArgumentNameException",
 ]
 
-from logic.system import ServiceRequestDebugException
+from system import ServiceRequestDebugException
 
 # ======================# WRONG_ARGUMENT_NAME_EXCEPTION #======================#
 class ArgumentNameException(ServiceRequestDebugException):

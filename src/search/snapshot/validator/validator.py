@@ -17,7 +17,7 @@ from logic.snapshot.context.validator.exception.base import InvalidSnapshotConte
 from logic.snapshot.context.validator.exception.flag.excess import ArenaSnapshotContextFlagsException
 from logic.snapshot.context.validator.exception.flag.zero import ZeroSnapshotContextFlagsException
 from logic.team import TeamService
-from logic.system import (
+from system import (
     IdentityService, LoggingLevelRouter, NullException, ValidationResult, Validator
 )
 

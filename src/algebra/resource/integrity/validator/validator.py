@@ -13,7 +13,7 @@ from typing import Union, cast
 
 from logic.coord import Coord
 from geometry.vector import Vector
-from logic.system import LoggingLevelRouter, ValidationResult
+from system import LoggingLevelRouter, ValidationResult
 from math.geometry import (
     GeometryIntegrityWorkers, VectorCoordUnionNullException, VectorCoordUnionValidatorException
 )

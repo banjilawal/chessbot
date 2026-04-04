@@ -7,7 +7,7 @@ Created: 2025-10-18
 version: 1.0.0
 """
 
-from logic.system import ChessException, NullException, BuildException
+from system import ChessException, NullException, BuildException
 
 
 __all__ = [

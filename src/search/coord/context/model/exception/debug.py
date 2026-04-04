@@ -15,7 +15,7 @@ __all__ = [
     "CoordContextDebugException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 
 # ======================# COORD_CONTEXT_DEBUG_EXCEPTION #======================#

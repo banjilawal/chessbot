@@ -15,7 +15,7 @@ __all__ = [
     "ZeroHostageContextFlagsException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 
 # ======================# ZERO_HOSTAGE_CONTEXT_FLAGS_EXCEPTION #======================#

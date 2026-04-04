@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import cast
 
 from model.token import Token, TokenService, TokenContext
-from logic.system import LoggingLevelRouter, RelationReport, RelationAnalysis
+from system import LoggingLevelRouter, RelationReport, RelationAnalysis
 from logic.team import Team, TeamRosterRelationAnalysisException, TeamValidator
 
 

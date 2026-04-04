@@ -15,7 +15,7 @@ __all__ = [
     "ZoneValidationException",
 ]
 
-from logic.system import ValidationException
+from system import ValidationException
 
 # ======================# ZONE_VALIDATION_FAILURE #======================#
 class ZoneValidationException(ValidationException):
@@ -41,7 +41,7 @@ class ZoneValidationException(ValidationException):
     Provides:
     
     Super Class:
-        OperationException
+        TransactionException
     """
     ERR_CODE = "ZONE_VALIDATION_FAILURE"
     MSG = "Failure in ZoneValidator method."

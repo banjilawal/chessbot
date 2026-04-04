@@ -13,7 +13,7 @@ __all__ = [
 ]
 
 from graph.edge import EdgeStackException
-from logic.system import DeletionException
+from system import DeletionException
 
 
 # ======================# EDGE_DELETION_FAILURE #======================#

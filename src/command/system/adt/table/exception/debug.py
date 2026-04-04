@@ -15,7 +15,7 @@ __all__ = [
     "CommandArgsDebugException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 
 # ======================# COMMAND_ARGS_DEBUG_EXCEPTION #======================#

@@ -4,7 +4,7 @@ __all__ = [
 ]
 
 from logic.board import BoardException
-from logic.system import InsertionException
+from system import InsertionException
 
 
 # ======================# BOARD_LAYOUT_FAILURE #======================#

@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import cast
 
 from graph.pair import Pair, PairBuilder, PairValidator
-from logic.system import IdFactory, IntegrityMicroservice
+from system import IdFactory, IntegrityMicroservice
 
 
 class PairService(IntegrityMicroservice[Pair]):

@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Optional
 
 from catalog.schema import Schema
-from logic.system import Context, GameColor
+from system import Context, GameColor
 
 
 class SchemaKey(Context[Schema]):

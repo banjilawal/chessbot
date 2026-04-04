@@ -15,7 +15,7 @@ __all__ = [
     "ArenaSearchException",
 ]
 
-from logic.system import SearchException
+from system import SearchException
 
 
 # ======================# ARENA_SEARCH_FAILURE #======================#
@@ -93,7 +93,7 @@ __all__ = [
     "ArenaSearchException",
 ]
 
-from logic.system import SearchException
+from system import SearchException
 from logic.arena import ArenaException
 
 

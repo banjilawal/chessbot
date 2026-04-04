@@ -15,7 +15,7 @@ __all__ = [
     "TokenServiceMenuException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 
 # ======================# TOKEN_SERVICE_MENU_EXCEPTION #======================#

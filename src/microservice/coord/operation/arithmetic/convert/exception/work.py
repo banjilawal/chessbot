@@ -15,7 +15,7 @@ __all__ = [
     "ConvertVectorException",
 ]
 
-from logic.system import ComputationException
+from system import ComputationException
 
 # ======================# COORD_CONVERT_FAILURE #======================#
 class ConvertVectorException(ComputationException):

@@ -15,7 +15,7 @@ __all__ = [
     "SquareServiceException",
 ]
 
-from logic.system import ServiceException
+from system import ServiceException
 
 
 # ======================# SQUARE_SERVICE_EXCEPTION #======================#

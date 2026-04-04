@@ -15,7 +15,7 @@ __all__ = [
     "ArenaContextDebugException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# ARENA_CONTEXT_DEBUG_EXCEPTION #======================#
 class ArenaContextDebugException(DebugException):

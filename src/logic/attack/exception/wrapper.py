@@ -14,7 +14,7 @@ __all__ = [
     "AttackException",
 ]
 
-from logic.system import OperationException
+from system import OperationException
 
 
 # ======================# ATTACK_FAILURE #======================#
@@ -27,7 +27,7 @@ class AttackException(OperationException):
         from being returned.
 
     Super Class:
-        *   OperationException
+        *   TransactionException
 
     Provides:
 

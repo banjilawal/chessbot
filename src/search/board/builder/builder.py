@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Optional
 
 from logic.arena import Arena, ArenaService
-from logic.system import Builder, BuildResult, IdentityService
+from system import Builder, BuildResult, IdentityService
 from logic.board import (
     BoardContextBuildRouteException, ZeroBoardContextFlagsException, BoardContext, BoardContextBuildException,
     ArenaBoardContextFlagsException

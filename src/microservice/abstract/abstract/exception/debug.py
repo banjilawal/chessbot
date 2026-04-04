@@ -14,7 +14,7 @@ __all__ = [
     "ServiceDebugException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 
 # ======================# SERVICE_DEBUG_EXCEPTION #======================#

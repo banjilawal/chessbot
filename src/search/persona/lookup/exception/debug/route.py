@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from catalog.persona import PersonaException
-from logic.system import ExecutionRouteException
+from system import ExecutionRouteException
 
 __all__ = [
     # ======================# NO_PERSONA_LOOKUP_ROUTE EXCEPTION #======================#

@@ -10,7 +10,7 @@ version: 1.0.0
 
 from graph.domain import DomainOrigin, DomainOriginBuildException
 from logic.enviroment import TurnScene, TurnSceneValidator
-from logic.system import Builder, BuildResult, LoggingLevelRouter
+from system import Builder, BuildResult, LoggingLevelRouter
 
 
 class DomainOriginBuilder(Builder[DomainOrigin]):

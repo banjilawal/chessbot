@@ -15,7 +15,7 @@ __all__ = [
     "FormationKeyException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 
 # ======================# FORMATION_KEY_EXCEPTION #======================#

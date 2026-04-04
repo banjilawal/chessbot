@@ -13,7 +13,7 @@ from typing import Any, cast
 from logic.board import BoardService
 from logic.coord.service import CoordService
 from graph.edge import EdgeState
-from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
+from system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from graph.edge import (
     EdgeContextValidationException, ZeroEdgeContextFlagsException, EdgeContext,
     NullEdgeContextException, ArenaEdgeContextFlagsException, EdgeContextValidationRouteException

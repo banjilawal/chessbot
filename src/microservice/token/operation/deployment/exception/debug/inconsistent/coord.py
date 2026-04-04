@@ -15,7 +15,7 @@ __all__ = [
     "InconsistentTokenCoordException",
 ]
 
-from logic.system import InconsistentStateException
+from system import InconsistentStateException
 
 
 # ======================# INCONSISTENT_TOKEN_COORD_EXCEPTION #======================#

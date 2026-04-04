@@ -9,11 +9,10 @@ Created: 2025-09-11
 from __future__ import annotations
 from typing import Any, List, cast
 
-from logic.board import BoardService
 from logic.square import (
     Square, SquareDataSourceEmptyException, SquareDataSourceNullException, SquareValidationException
 )
-from logic.system import LoggingLevelRouter, ValidationResult, Validator
+from system import LoggingLevelRouter, ValidationResult, Validator
 
 
 class SquareListValidator(Validator[List[Square]]):

@@ -11,7 +11,7 @@ version: 1.0.0
 from typing import Any, cast
 
 
-from logic.system import Validator, ValidationResult, LoggingLevelRouter
+from system import Validator, ValidationResult, LoggingLevelRouter
 from logic.rank import (
     Rank, RankContext, InvalidRankContextException, NullRankContextException,
     MoreThanOneRankSearchOptionPickedException, NoRankSearchOptionSelectedException,

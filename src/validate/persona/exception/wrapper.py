@@ -15,7 +15,7 @@ __all__ = [
     "PersonaValidationException",
 ]
 
-from logic.system import ValidationException
+from system import ValidationException
 
 # ======================# PERSONA_VALIDATION_FAILURE #======================#
 class PersonaValidationException(ValidationException):

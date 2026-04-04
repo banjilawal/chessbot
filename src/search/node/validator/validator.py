@@ -17,7 +17,7 @@ from graph.node import (
     NodeContextValidationRouteException, NullNodeContextException, ZeroNodeContextFlagsException
 )
 from logic.square import SquareService
-from logic.system import LoggingLevelRouter, NumberValidator, ValidationResult, Validator
+from system import LoggingLevelRouter, NumberValidator, ValidationResult, Validator
 
 
 class NodeContextValidator(Validator[NodeContext]):

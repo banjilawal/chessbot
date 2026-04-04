@@ -15,7 +15,7 @@ __all__ = [
     "TokenPushCoordException",
 ]
 
-from logic.system import InsertionException, UpdateException
+from system import InsertionException, UpdateException
 
 # ======================# TOKEN_POSITION_PUSH_EXCEPTION #======================#
 class TokenPushCoordException(InsertionException):

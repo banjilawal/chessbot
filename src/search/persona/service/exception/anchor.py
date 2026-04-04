@@ -15,7 +15,7 @@ __all__ = [
     "PersonaKeyServiceException",
 ]
 
-from logic.system import ServiceException
+from system import ServiceException
 
 
 # ======================# PERSONA_KEY_SERVICE_EXCEPTION #======================#

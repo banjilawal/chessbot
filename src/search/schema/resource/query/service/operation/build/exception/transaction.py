@@ -15,7 +15,7 @@ __all__ = [
     "SchemaQueryBuildException",
 ]
 
-from logic.system import BuildException
+from system import BuildException
 
 
 # ======================# SCHEMA_QUERY_BUILD_FAILURE #======================#

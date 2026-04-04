@@ -12,7 +12,7 @@ from typing import Optional
 from logic.team import Team
 from logic.arena import Arena
 from logic.player import Player
-from logic.system import Context, GameColor
+from system import Context, GameColor
 
 
 class TeamContext(Context[Team]):

@@ -15,7 +15,7 @@ __all__ = [
     "PlayerValidationException",
 ]
 
-from logic.system import ValidationException
+from system import ValidationException
 
 # ======================# PLAYER_VALIDATION_FAILURE #======================#
 class PlayerValidationException(ValidationException):

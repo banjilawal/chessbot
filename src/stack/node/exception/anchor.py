@@ -15,7 +15,7 @@ __all__ = [
     "NodeStackServiceException",
 ]
 
-from logic.system import StackServiceException
+from system import StackServiceException
 
 # ======================# NODE_STACK_SERVICE_EXCEPTION #======================#
 class NodeStackServiceException(StackServiceException):

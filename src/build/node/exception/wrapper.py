@@ -15,7 +15,7 @@ __all__ = [
     "NodeBuildException",
 ]
 
-from logic.system import BuildException
+from system import BuildException
 
 # ======================# NODE_BUILD_FAILURE #======================#
 class NodeBuildException(BuildException):

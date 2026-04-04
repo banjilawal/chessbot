@@ -15,7 +15,7 @@ __all__ = [
     "NodeSearchException",
 ]
 
-from logic.system import SearchException
+from system import SearchException
 
 
 # ======================# NODE_SEARCH_FAILURE #======================#
@@ -93,7 +93,7 @@ __all__ = [
     "NodeSearchException",
 ]
 
-from logic.system import SearchException
+from system import SearchException
 from graph.node import NodeException
 
 

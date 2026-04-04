@@ -15,7 +15,7 @@ __all__ = [
     "SchemaQueryException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 
 # ======================# SCHEMA_QUERY_EXCEPTION #======================#

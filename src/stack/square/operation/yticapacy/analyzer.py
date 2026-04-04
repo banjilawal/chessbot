@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 from logic.square import SquareStackService, SquareStackFullException
-from logic.system import ComputationResult, LoggingLevelRouter, NullException
+from system import ComputationResult, LoggingLevelRouter, NullException
 
 
 class SquareStackCountsAnalyzer:

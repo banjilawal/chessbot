@@ -13,7 +13,7 @@ from typing import Dict, List
 from graph.node import Node
 from graph.graph import Graph
 from graph.edge import Edge, EdgeBuilder, PushingEdgeException
-from logic.system import BuildResult, InsertionResult, LoggingLevelRouter
+from system import BuildResult, InsertionResult, LoggingLevelRouter
 from math.span import AsymmetricEdgeBuildException, NodeEdgeHandlerException, SymmetricEdgeBuildException
 
 class NodeEdgeHandler:

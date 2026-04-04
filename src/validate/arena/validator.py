@@ -12,7 +12,7 @@ from typing import Any, cast
 from logic.board import BoardService
 from logic.team import Team, UniqueTeamDataService
 from logic.arena import Arena, ArenaValidationException, NullArenaException, ArenaTeamsInArenaException
-from logic.system import (
+from system import (
     IdentityService, LoggingLevelRouter, SearchResult, ServiceValidator, ValidationResult,
     Validator
 )

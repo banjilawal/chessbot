@@ -15,7 +15,7 @@ __all__ = [
     "TokenStackDeploymentException",
 ]
 
-from logic.system import UpdateException
+from system import UpdateException
 
 
 # ======================# TOKEN_STACK_DEPLOYMENT_FAILURE #======================#

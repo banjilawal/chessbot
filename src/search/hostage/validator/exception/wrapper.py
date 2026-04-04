@@ -15,7 +15,7 @@ __all__ = [
     "HostageContextValidationException",
 ]
 
-from logic.system import ValidationException
+from system import ValidationException
 
 # ======================# HOSTAGE_CONTEXT_VALIDATION_FAILURE #======================#
 class HostageContextValidationException(ValidationException):

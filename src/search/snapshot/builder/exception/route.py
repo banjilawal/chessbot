@@ -15,7 +15,7 @@ __all__ = [
     "SnapshotContextExecutionRouteException",
 ]
 
-from logic.system import ExecutionRouteException
+from system import ExecutionRouteException
 
 
 # ======================# SNAPSHOT_CONTEXT_EXECUTION_ROUTE_EXCEPTION #======================#

@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import List, cast
 
 from model.game import Game, GameContext, GameQueryService, GameStackService, GameService
-from logic.system import (
+from system import (
     DeletionResult, InsertionResult, LoggingLevelRouter, SearchResult, Database, id_emitter
 )
 

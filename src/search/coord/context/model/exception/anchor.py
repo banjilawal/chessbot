@@ -15,7 +15,7 @@ __all__ = [
     "CoordContextException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 
 # ======================# COORD_CONTEXT_EXCEPTION #======================#

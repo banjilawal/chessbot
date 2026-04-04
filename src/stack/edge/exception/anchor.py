@@ -15,7 +15,7 @@ __all__ = [
     "EdgeStackServiceException",
 ]
 
-from logic.system import StackServiceException
+from system import StackServiceException
 
 
 # ======================# EDGE_STACK_SERVICE_EXCEPTION #======================#

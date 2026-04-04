@@ -15,7 +15,7 @@ __all__ = [
     "CatalogQueryException",
 ]
 
-from logic.system import QueryException
+from system import QueryException
 
 # ======================# CATALOG_QUERY_EXCEPTION #======================#
 class CatalogQueryException(QueryException):

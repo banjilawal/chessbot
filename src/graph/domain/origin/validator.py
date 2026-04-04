@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from logic.piece import PieceValidator
 from logic.square import SquareValidator
-from logic.system import LoggingLevelRouter, Validator, ValidationResult
+from system import LoggingLevelRouter, Validator, ValidationResult
 from graph.domain import DomainOrigin, InvalidDomainOriginException, NullDomainOriginException
 
 

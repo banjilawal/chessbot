@@ -15,7 +15,7 @@ __all__ = [
     "TokenSearchException",
 ]
 
-from logic.system import SearchException
+from system import SearchException
 
 
 # ======================# TOKEN_SEARCH_FAILURE #======================#

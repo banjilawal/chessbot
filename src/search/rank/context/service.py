@@ -7,7 +7,7 @@ Created: 2025-11-16
 version: 1.0.0
 """
 
-from logic.system import QueryService
+from system import QueryService
 from logic.rank import RankContext, RankContextValidator, RankContextBuilder, RankFinder
 
 class RankQueryService(QueryService[RankContext]):

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from graph.node import Node, NodeService
 from logic.square import Square, SquareValidator
-from logic.system import BuildResult, Builder, LoggingLevelRouter
+from system import BuildResult, Builder, LoggingLevelRouter
 from graph.pair import HeadTailSquareException, Pair, PairBuildException
 
 class PairBuilder(Builder[Pair]):

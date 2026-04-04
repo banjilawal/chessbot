@@ -15,7 +15,7 @@ __all__ = [
     "SpanServiceDebugException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# SPAN_SERVICE_DEBUG_EXCEPTION #======================#
 class SpanServiceDebugException(DebugException):

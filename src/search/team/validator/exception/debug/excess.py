@@ -15,7 +15,7 @@ __all__ = [
     "ExcessTeamContextFlagsException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# EXCESS_TEAM_CONTEXT_FLAGS_EXCEPTION #======================#
 class ExcessTeamContextFlagsException(DebugException):

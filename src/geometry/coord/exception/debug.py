@@ -15,7 +15,7 @@ __all__ = [
     "CoordDebugException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# COORD_DEBUG_EXCEPTION #======================#
 class CoordDebugException(DebugException):

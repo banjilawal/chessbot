@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from logic.snapshot import Snapshot
-from logic.system import BuildResult, Builder
+from system import BuildResult, Builder
 
 
 

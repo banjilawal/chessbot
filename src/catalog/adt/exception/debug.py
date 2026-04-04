@@ -15,7 +15,7 @@ __all__ = [
     "CatalogServiceDebugException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# CATALOGSERVICE_DEBUG_EXCEPTION #======================#
 class CatalogServiceDebugException(DebugException):

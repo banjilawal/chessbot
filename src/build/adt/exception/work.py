@@ -15,7 +15,7 @@ __all__ = [
     "BuildException",
 ]
 
-from logic.system import OperationException
+from system import OperationException
 
 # ======================# BUILD_FAILURE #======================#
 class BuildException(OperationException):
@@ -41,7 +41,7 @@ class BuildException(OperationException):
     Provides:
 
     Super Class:
-        OperationException
+        TransactionException
     """
     OP = "Build"
     RSLT_TYPE = "BuildResult"

@@ -15,7 +15,7 @@ __all__ = [
     "InconsistentTokenSquareException",
 ]
 
-from logic.system import InconsistentStateException
+from system import InconsistentStateException
 
 
 # ======================# INCONSISTENT_TOKEN_SQUARE_OCCUPANT_EXCEPTION #======================#

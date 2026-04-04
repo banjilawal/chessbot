@@ -11,7 +11,7 @@ from typing import cast, Tuple
 
 
 from logic.square import Square, SquareValidator
-from logic.system import LoggingLevelRouter, ValidationResult, Validator
+from system import LoggingLevelRouter, ValidationResult, Validator
 from logic.board import Board, BoardContext, BoardSquareFinder, BoardValidator, SquareInvariantBreachException
 
 

@@ -15,7 +15,7 @@ __all__ = [
     "InvariantBreachException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# INVARIANT_BREACH EXCEPTION #======================#
 class InvariantBreachException(DebugException):

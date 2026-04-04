@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 from catalog.persona import PersonaService
-from logic.system import IdentityService
+from system import IdentityService
 
 
 class RankIntegrityWorkers:

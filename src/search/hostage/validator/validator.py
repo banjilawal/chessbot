@@ -5,7 +5,7 @@ from model.hostage import (
     CaptivityContextValidationException, CaptivityContextValidationRouteException, CaptivityContext,
     ArenaCaptivityContextFlagsException, NullCaptivityContextException, ZeroCaptivityContextFlagsException,
 )
-from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
+from system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from model.hostage import HostageService
 
 

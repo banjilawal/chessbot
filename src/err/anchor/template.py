@@ -15,7 +15,7 @@ __all__ = [
     "TanchorException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 
 # ======================# TANCHOR_EXCEPTION #======================#

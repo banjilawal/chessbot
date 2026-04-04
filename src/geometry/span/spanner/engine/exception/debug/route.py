@@ -16,7 +16,7 @@ __all__ = [
     "SpanComputationRouteException",
 ]
 
-from logic.system import ExecutionRouteException
+from system import ExecutionRouteException
 
 # ======================# SPAN_COMPUTATION_ROUTE_EXCEPTION #======================#
 class SpanComputationRouteException(ExecutionRouteException):

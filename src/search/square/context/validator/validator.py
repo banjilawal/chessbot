@@ -13,7 +13,7 @@ from typing import Any, cast
 from logic.square import SquareService
 from logic.board import BoardService
 from logic.coord.service import CoordService
-from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
+from system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from logic.square import (
     SquareContextValidationException, SquareValidator, ZeroSquareContextFlagsException, SquareContext,
     NullSquareContextException, ExcessSquareContextFlagsException, SquareContextValidationRouteException

@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Any
 
 from logic.engine import Engine
-from logic.system import Validator, ValidationResult
+from system import Validator, ValidationResult
 
 
 class EngineValidator(Validator[Engine]):

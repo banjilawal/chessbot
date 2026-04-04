@@ -15,7 +15,7 @@ __all__ = [
     "HostageException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 
 # ======================# HOSTAGE_EXCEPTION #======================#

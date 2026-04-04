@@ -14,7 +14,7 @@ from logic.coord import (
     CoordContext, CoordContextBuildException, CoordContextBuildRouteException,
     ZeroCoordContextFlagsException
 )
-from logic.system import (
+from system import (
     BOARD_DIMENSION, BuildResult, Builder, NumberValidator, LoggingLevelRouter
 )
 

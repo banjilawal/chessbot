@@ -15,7 +15,7 @@ from logic.pawn.promotion.event import PromotionEvent
 from logic.pawn.promotion.exception import DoublePromotionException
 from logic.rank import Bishop, Knight, Queen, Rook
 from logic.square import Square
-from logic.system import Validator, ValidationResult
+from system import Validator, ValidationResult
 from logic.piece import (
     NullPromotionEventException, OccupationEvent,
     PawnPiece, PromotablePiece,

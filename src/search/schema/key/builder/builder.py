@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Optional
 
 from search.schema.key.builder.exception import SchemaKeyBuildException, SchemaKeyBuildRouteException
-from logic.system import (
+from system import (
     BuildResult, Builder, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
 )
 from catalog.schema import (

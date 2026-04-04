@@ -15,7 +15,7 @@ __all__ = [
     "HostageServiceException",
 ]
 
-from logic.system import ServiceException
+from system import ServiceException
 
 
 # ======================# HOSTAGE_SERVICE_EXCEPTION #======================#

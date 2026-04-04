@@ -15,7 +15,7 @@ __all__ = [
     "PlayerSearchException",
 ]
 
-from logic.system import SearchException
+from system import SearchException
 
 
 # ======================# PLAYER_SEARCH_FAILURE #======================#
@@ -93,7 +93,7 @@ __all__ = [
     "PlayerSearchException",
 ]
 
-from logic.system import SearchException
+from system import SearchException
 from logic.player import PlayerException
 
 

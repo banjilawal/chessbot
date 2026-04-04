@@ -9,7 +9,7 @@ version: 1.0.0
 
 from logic.piece import Piece
 from logic.battle_space import Projection
-from logic.system import LoggingLevelRouter
+from system import LoggingLevelRouter
 
 
 class ProjectionCalculator:

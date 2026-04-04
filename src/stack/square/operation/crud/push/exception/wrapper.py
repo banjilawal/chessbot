@@ -15,7 +15,7 @@ __all__ = [
     "SquareStackPushException",
 ]
 
-from logic.system import InsertionException
+from system import InsertionException
 
 # ======================# SQUARE_STACK_PUSH_FAILURE #======================#
 class SquareStackPushException(InsertionException):

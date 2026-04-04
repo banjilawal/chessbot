@@ -15,7 +15,7 @@ __all__ = [
     "EdgeContextDebugException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# EDGE_CONTEXT_DEBUG_EXCEPTION #======================#
 class EdgeContextDebugException(DebugException):

@@ -15,7 +15,7 @@ __all__ = [
     "TokenException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 
 # ======================# TOKEN_EXCEPTION #======================#

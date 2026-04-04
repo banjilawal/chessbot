@@ -13,7 +13,7 @@ __all__ = [
 ]
 
 from graph.node import NodeStackException
-from logic.system import InsertionException
+from system import InsertionException
 
 
 # ======================# NODE_INSERTION_FAILURE #======================#

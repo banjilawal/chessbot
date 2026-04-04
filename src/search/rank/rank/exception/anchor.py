@@ -15,7 +15,7 @@ __all__ = [
     "RankContextException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 
 # ======================# RANK_CONTEXT_EXCEPTION #======================#

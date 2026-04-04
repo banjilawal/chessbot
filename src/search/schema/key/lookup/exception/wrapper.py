@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 from catalog.schema import SchemaException
-from logic.system import ForwardLookupFailedException
+from system import ForwardLookupFailedException
 
 
 # ======================# SCHEMA_LOOKUP_FAILURE #======================#

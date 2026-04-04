@@ -7,7 +7,7 @@ Created: 2025-10-18
 version: 1.0.0
 """
 from logic.piece import TravelEventException
-from logic.system import NullException, ValidationException
+from system import NullException, ValidationException
 
 __all__ = [
   'CheckEventException',

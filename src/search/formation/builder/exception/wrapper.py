@@ -15,7 +15,7 @@ __all__ = [
     "FormationKeyBuildException",
 ]
 
-from logic.system import BuildException
+from system import BuildException
 
 
 # ======================# FORMATION_KEY_BUILD_FAILURE #======================#

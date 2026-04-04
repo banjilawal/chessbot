@@ -15,7 +15,7 @@ __all__ = [
     "PlayerContextBuildException",
 ]
 
-from logic.system import BuildException
+from system import BuildException
 
 # ======================# PLAYER_CONTEXT_BUILD_FAILURE #======================#
 class PlayerContextBuildException(BuildException):

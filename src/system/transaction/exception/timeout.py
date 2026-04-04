@@ -1,0 +1,37 @@
+# src/logic/system/transaction/exception/timeout.py
+
+"""
+Module: logic.system.transaction.exception.timeout
+Author: Banji Lawal
+Created: 2025-10-09
+version: 1.0.0
+"""
+
+
+__all__ = [
+    # ====================== TRANSACTION_TIMEOUT EXCEPTION #======================#
+    'TransactionTimeoutException',
+]
+
+from system import ResourceUnavailableException, TransactionException
+
+
+# ====================== TRANSACTION_TIMEOUT EXCEPTION #======================#
+class TransactionTimeoutException(TransactionException, ResourceUnavailableException):
+    """
+    Role:Error Tracing, Debugging, Super Exception
+
+    Responsibilities:
+    1.  Indicate that a transaction was not completed because it timed out waiting for a resource.
+
+    Super Class:
+        *   ChessException
+
+    Provides:
+
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "TRANSACTION_TIMEOUT_EXCEPTION"
+    MSG = "The transaction was cancelled. It timed out waiting for a resource."

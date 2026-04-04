@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from catalog.persona import PersonaException
-from logic.system import LookupException
+from system import LookupException
 
 __all__ = [
     # ======================# PERSONA_LOOKUP_FAILURE #======================#

@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import List, Optional
 
-from logic.system import (
+from system import (
      SearchResult, StackService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, IdFactory
 )
 from graph.pair import (

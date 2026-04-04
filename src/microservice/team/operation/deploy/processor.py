@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import List
 
 from logic.square.database.kernel.operation.formation.discovery.exception.work import OpeningSquareDiscoveryException
-from logic.system import DeletionResult, LoggingLevelRouter, SearchResult, ValidationResult
+from system import DeletionResult, LoggingLevelRouter, SearchResult, ValidationResult
 from logic.team import Team
 from model.token import Token, TokenBoardState, TokenService
 

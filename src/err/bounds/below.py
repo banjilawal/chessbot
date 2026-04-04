@@ -7,7 +7,7 @@ Created: 2025-11-21
 version: 1.0.0
 """
 
-from logic.system import BoundsException
+from system import BoundsException
 
 
 ___all__ = [

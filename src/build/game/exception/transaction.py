@@ -15,7 +15,7 @@ __all__ = [
     "GameBuildException",
 ]
 
-from logic.system import BuildException
+from system import BuildException
 
 # ======================# GAME_BUILD_FAILURE #======================#
 class GameBuildException(BuildException):

@@ -15,7 +15,7 @@ __all__ = [
     "NullZoneException",
 ]
 
-from logic.system import NullException
+from system import NullException
 
 #======================# NULL_ZONE_EXCEPTION #======================#
 class NullZoneException(NullException):

@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from graph.pair import PairList, PairListNullException, PairListValidationException
-from logic.system import LoggingLevelRouter, ValidationResult, Validator
+from system import LoggingLevelRouter, ValidationResult, Validator
 
 
 class PairListValidator(Validator[PairList]):

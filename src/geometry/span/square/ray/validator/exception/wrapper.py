@@ -15,7 +15,7 @@ __all__ = [
     "SquareRayValidationException",
 ]
 
-from logic.system import ValidationException
+from system import ValidationException
 
 # ======================# SQUARE_RAY_VALIDATION_FAILURE #======================#
 class SquareRayValidationException(ValidationException):

@@ -13,7 +13,7 @@ from catalog.schema import (
     SchemaLookupFailedException, SchemaLookupRouteException, SchemaColorBoundsException, SchemaKey, Schema,
     SchemaNameBoundsException, SchemaKeyValidator,
 )
-from logic.system import GameColor, HashLookupProcess, LoggingLevelRouter, SearchResult
+from system import GameColor, HashLookupProcess, LoggingLevelRouter, SearchResult
 
 
 class SchemaLookupProcess(HashLookupProcess[Schema]):

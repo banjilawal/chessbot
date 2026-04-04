@@ -7,7 +7,7 @@ Created: 2026-02-23
 """
 
 from logic.square import SquareDebugException
-from logic.system import SquareException
+from system import SquareException
 
 _all__ = [
     # ======================# NO_SQUARE_DATASOURCE_PROVIDED EXCEPTION #======================#

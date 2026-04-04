@@ -15,7 +15,7 @@ __all__ = [
     "VisitDestinationNotFoundException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# VISIT_DESTINATION_NOT_FOUND_EXCEPTION #======================#
 class VisitDestinationNotFoundException(DebugException):

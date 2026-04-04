@@ -15,7 +15,7 @@ __all__ = [
     "NullArenaException",
 ]
 
-from logic.system import NullException
+from system import NullException
 
 #======================# NULL_ARENA_EXCEPTION #======================#
 class NullArenaException(NullException):

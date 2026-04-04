@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Generic, TypeVar
 
-from logic.system import Microservice, SearchMicroservice, Validator
+from system import Microservice, SearchMicroservice, Validator
 
 E = TypeVar("E", bound="Enum")
 

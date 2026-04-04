@@ -15,7 +15,7 @@ __all__ = [
     "TokenDatabaseException",
 ]
 
-from logic.system import DatabaseException
+from system import DatabaseException
 
 
 # ======================# TOKEN_DATABASE_EXCEPTION #======================#

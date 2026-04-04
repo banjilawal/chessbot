@@ -12,7 +12,7 @@ from typing import Optional
 
 from validate.formation import Formation
 from catalog.persona import Persona
-from logic.system import Context, GameColor
+from system import Context, GameColor
 
 """
 Role:Filter, Search, Selection, Reverse/Forward Lookups

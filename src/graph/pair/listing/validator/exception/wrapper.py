@@ -15,7 +15,7 @@ __all__ = [
     "PairListValidationException",
 ]
 
-from logic.system import ValidationException
+from system import ValidationException
 
 # ======================# PAIR_LIST_VALIDATION_FAILURE #======================#
 class PairListValidationException(ValidationException):

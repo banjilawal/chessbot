@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.system import DeletionResult, IdentityService, LoggingLevelRouter
+from system import DeletionResult, IdentityService, LoggingLevelRouter
 from model.token import (
     PoppingEmptyTokenStackException, Token, TokenStackPopException, TokenStackService, TokenStackState
 )

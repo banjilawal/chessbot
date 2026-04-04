@@ -2,7 +2,7 @@ from enum import Enum
 
 from assurance import ThrowHelper
 from logic.board import BoardSearch
-from logic.system import IdValidator, BuildResult, IdValidationException
+from system import IdValidator, BuildResult, IdValidationException
 from logic.event import TargetSquareMismatchException, AttackEvent
 from model.token import AttackEventBuilderException
 from model.token import TravelEventResourceNotFoundException

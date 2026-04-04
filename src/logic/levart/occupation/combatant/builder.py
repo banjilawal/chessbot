@@ -15,7 +15,7 @@ from logic.player.finder import BoardSearch
 from logic.square import Square
 from assurance import ThrowHelper
 from logic.event import AttackEvent, AttackEventBuilderException, TargetSquareMismatchException
-from logic.system import IdValidator, BuildResult, ExecutionContext
+from system import IdValidator, BuildResult, ExecutionContext
 from logic.piece import Piece, PieceValidator, InvalidAttackException, CombatantPiece, \
   CaptureFriendException, KingCaptureException
 

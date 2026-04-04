@@ -15,7 +15,7 @@ __all__ = [
     "SchemaKeyServiceException",
 ]
 
-from logic.system import ServiceException
+from system import ServiceException
 
 
 # ======================# SCHEMA_KEY_SERVICE_EXCEPTION #======================#

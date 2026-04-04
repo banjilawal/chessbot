@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.system import IntegrityMicroservice, IdFactory
+from system import IntegrityMicroservice, IdFactory
 from logic.coord import (
     CoordContext, CoordContextBuilder, CoordContextContextOpsController, CoordContextValidator
 )

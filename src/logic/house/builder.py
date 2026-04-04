@@ -10,7 +10,7 @@ version: 1.0.0
 
 from logic.house import House
 from logic.enviroment import TurnScene, TurnSceneValidator
-from logic.system import Builder, BuildResult, LoggingLevelRouter
+from system import Builder, BuildResult, LoggingLevelRouter
 
 
 class HouseBuilder(Builder[House]):

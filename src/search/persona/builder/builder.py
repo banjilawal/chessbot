@@ -13,7 +13,7 @@ from catalog.persona import (
     ArenaPersonaKeysException, PersonaKey, PersonaKeyBuildException,
     PersonaKeyBuildRouteException, ZeroPersonaKeysException
 )
-from logic.system import NumberValidator, BuildResult, Builder, IdentityService, LoggingLevelRouter
+from system import NumberValidator, BuildResult, Builder, IdentityService, LoggingLevelRouter
 
 
 class PersonaKeyBuilder(Builder[PersonaKey]):

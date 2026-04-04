@@ -48,7 +48,7 @@ See the list of exception in the `__all__` list following (e.g., `EventException
 """
 
 
-from logic.system import ChessException, NullException, BuildException, ValidationException
+from system import ChessException, NullException, BuildException, ValidationException
 
 __all__ = [
   'BlockingEventException',

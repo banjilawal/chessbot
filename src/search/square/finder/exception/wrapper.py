@@ -15,7 +15,7 @@ __all__ = [
     "SquareSearchException",
 ]
 
-from logic.system import SearchException
+from system import SearchException
 
 
 # ======================# SQUARE_SEARCH_FAILURE #======================#
@@ -93,7 +93,7 @@ __all__ = [
     "SquareSearchException",
 ]
 
-from logic.system import SearchException
+from system import SearchException
 from logic.square import SquareException
 
 

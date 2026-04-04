@@ -12,7 +12,7 @@ from __future__ import annotations
 from graph.node import Node, NodeService
 from graph.pair import PairBuilder, PairList, PairListBuildException, TreeDoesNotOwnRayException
 from math.span import SquareRay, SquareRayService
-from logic.system import BuildResult, Builder, LoggingLevelRouter
+from system import BuildResult, Builder, LoggingLevelRouter
 
 
 class PairListBuilder(Builder[PairList]):

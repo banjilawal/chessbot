@@ -15,7 +15,7 @@ __all__ = [
     "SpanningGraphProductionException",
 ]
 
-from logic.system import BuildException
+from system import BuildException
 
 
 # ======================# SPANNING_GRAPH_PRODUCTION_FAILURE #======================#

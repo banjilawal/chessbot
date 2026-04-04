@@ -15,7 +15,7 @@ __all__ = [
     "TokenStackNullException",
 ]
 
-from logic.system import NullException
+from system import NullException
 
 # ======================# TOKEN_STACK_NULL_EXCEPTION #======================#
 class TokenStackNullException(NullException):

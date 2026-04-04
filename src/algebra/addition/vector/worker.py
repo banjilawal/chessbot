@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import List
 
-from logic.system import ComputationResult, LoggingLevelRouter, NumberValidator
+from system import ComputationResult, LoggingLevelRouter, NumberValidator
 from worker.worker import Worker
 from geometry.vector import Vector, VectorService
 

@@ -8,7 +8,7 @@ __all__ = [
     "TokenReadinessAnalysisException",
 ]
 
-from logic.system import RelationAnalysisException
+from system import RelationAnalysisException
 
 # ======================# TOKEN_READINESS_ANALYSIS_FAILURE #======================#
 class TokenReadinessAnalysisException(RelationAnalysisException):
@@ -77,7 +77,7 @@ __all__ = [
     "TokenReadinessAnalysisException",
 ]
 
-from logic.system import RelationAnalysisException
+from system import RelationAnalysisException
 
 
 

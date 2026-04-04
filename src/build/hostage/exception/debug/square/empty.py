@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from model.hostage import HostageException
-from logic.system import DebugException
+from system import DebugException
 
 __all__ = [
     # ======================# CAPTURED_SQUARE_CANNOT_BE_EMPTY EXCEPTION #======================#

@@ -15,7 +15,7 @@ __all__ = [
     "GameSearchException",
 ]
 
-from logic.system import SearchException
+from system import SearchException
 
 
 # ======================# GAME_SEARCH_FAILURE #======================#
@@ -93,7 +93,7 @@ __all__ = [
     "GameSearchException",
 ]
 
-from logic.system import SearchException
+from system import SearchException
 from model.game import GameException
 
 

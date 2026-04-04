@@ -15,7 +15,7 @@ __all__ = [
     "SearchException",
 ]
 
-from logic.system import CollectionOperationException
+from system import CollectionOperationException
 
 
 # ======================# SEARCH_FAILURE #======================#

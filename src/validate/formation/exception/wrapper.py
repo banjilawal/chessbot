@@ -15,7 +15,7 @@ __all__ = [
     "FormationValidationException",
 ]
 
-from logic.system import ValidationException
+from system import ValidationException
 
 # ======================# FORMATION_VALIDATION_FAILURE #======================#
 class FormationValidationException(ValidationException):

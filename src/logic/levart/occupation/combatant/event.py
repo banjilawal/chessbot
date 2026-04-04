@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Optional
 
 from logic.board import Board
-from logic.system import Event, LoggingLevelRouter
+from system import Event, LoggingLevelRouter
 from logic.square import Square
 from logic.piece import Piece, TravelEvent
 

@@ -8,10 +8,10 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import List, cast
+from typing import cast
 
 
-from logic.system import IntegrityMicroservice, IdFactory
+from system import IntegrityMicroservice, IdFactory
 from logic.team import RosterUtil, Team, TeamBuild, TeamValidator
 
 class TeamService(IntegrityMicroservice[Team]):

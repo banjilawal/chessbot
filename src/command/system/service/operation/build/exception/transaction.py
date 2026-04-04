@@ -14,7 +14,7 @@ __all__ = [
     "CommandBuildException",
 ]
 
-from logic.system import BuildException
+from system import BuildException
 
 
 # ======================# COMMAND_BUILD_FAILURE #======================#

@@ -39,8 +39,7 @@ See the list of exception in the `__all__` list following (e.g., `ProjectionSear
 `NullProjectionSearchContextException`, `RowAboveBoundsException`).
 """
 
-from logic.rank import RankSpec
-from logic.system import ContextException, NullException, BuildException, ValidationException
+from system import ContextException, NullException, BuildException, ValidationException
 
 __all__ = [
     'ProjectionSearchContextException',

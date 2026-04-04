@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 
-from logic.system import ChessException
+from system import ChessException
 
 __all__ = [
     "CheckingException",

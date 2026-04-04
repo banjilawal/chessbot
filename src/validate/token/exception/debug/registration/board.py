@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from model.token import TokenDebugException
-from logic.system import NotRegisteredException
+from system import NotRegisteredException
 
 __all__ = [
     # ======================# TOKEN_NOT_REGISTERED_WITH_BOARD EXCEPTION #======================#

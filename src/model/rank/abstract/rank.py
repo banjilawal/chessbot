@@ -15,7 +15,7 @@ from catalog.persona import Persona
 from math.span import CoordSpan
 from geometry.vector import VectorService
 from logic.coord import CoordService
-from logic.system import ComputationResult, LoggingLevelRouter
+from system import ComputationResult, LoggingLevelRouter
 
 class Rank(ABC):
     """

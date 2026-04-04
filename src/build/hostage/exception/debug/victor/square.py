@@ -13,7 +13,7 @@ __all__ = [
 ]
 
 from model.hostage import HostageException
-from logic.system import DebugException
+from system import DebugException
 
 
 # ======================# VICTOR_NOT_ON_CAPTURED_SQUARE EXCEPTION #======================#

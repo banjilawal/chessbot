@@ -15,7 +15,7 @@ __all__ = [
     "ScalarServiceException",
 ]
 
-from logic.system import ServiceException
+from system import ServiceException
 
 
 # ======================# SCALAR_SERVICE_EXCEPTION #======================#

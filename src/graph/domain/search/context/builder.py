@@ -11,7 +11,7 @@ from typing import Optional
 
 from logic.rank import RankBoundsChecker
 from logic.coord import Coord, CoordValidator
-from logic.system import Builder, BuildResult, IdValidator, LoggingLevelRouter, NameValidator
+from system import Builder, BuildResult, IdValidator, LoggingLevelRouter, NameValidator
 from graph.domain import (
     ResidentFilter, ArenaResidentSearchParamsException, NoResidentSearchParamException
 )

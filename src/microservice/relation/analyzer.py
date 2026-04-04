@@ -12,7 +12,7 @@ from typing import cast
 from logic.player import Player, PlayerValidator
 from microservice.relation import PlayerTeamAnalysisException
 from logic.team import Team, TeamContext, TeamService
-from logic.system import LoggingLevelRouter, RelationReport, RelationAnalysis
+from system import LoggingLevelRouter, RelationReport, RelationAnalysis
 
 
 

@@ -12,7 +12,7 @@ from __future__ import annotations
 from math import sqrt
 from typing import Union
 
-from logic.system import ComputationResult, LoggingLevelRouter, NumberValidator
+from system import ComputationResult, LoggingLevelRouter, NumberValidator
 from logic.coord import Coord, EuclideanDistanceException, CoordValidator
 from worker.worker import Worker
 from geometry.vector import Vector, VectorValidator

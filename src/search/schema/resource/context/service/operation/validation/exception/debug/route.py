@@ -15,7 +15,7 @@ __all__ = [
     "SchemaContextValidationRouteException",
 ]
 
-from logic.system import ContextRouteException
+from system import ContextRouteException
 
 
 # ======================# SCHEMA_CONTEXT_VALIDATION_ROUTE_EXCEPTION #======================#

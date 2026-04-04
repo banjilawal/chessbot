@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 from logic.rank import RankService
-from logic.system import InsertionResult, LoggingLevelRouter
+from system import InsertionResult, LoggingLevelRouter
 from logic.square import (
     SquareStackCapacityAnalyzer, SquareStackCapacityFullException, Square, SquareCollisionAnalysis, SquareStackFullException,
     SquareStackPushException, SquareStackService, SquareStackState

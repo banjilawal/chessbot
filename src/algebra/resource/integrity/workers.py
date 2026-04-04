@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 from logic.coord import CoordService
-from logic.system import NumberValidator
+from system import NumberValidator
 from geometry.vector import VectorService
 
 

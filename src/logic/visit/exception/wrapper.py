@@ -12,7 +12,7 @@ __all__ = [
     "VisitException",
 ]
 
-from logic.system import OperationException
+from system import OperationException
 
 
 # ======================# VISIT_FAILURE #======================#
@@ -24,7 +24,7 @@ class VisitException(OperationException):
     1.  Wrap any exceptions that were created when an visit is not completed successfully.
 
     Super Class:
-        *   OperationException
+        *   TransactionException
 
     Provides:
 

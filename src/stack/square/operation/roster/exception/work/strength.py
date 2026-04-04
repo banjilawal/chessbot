@@ -15,7 +15,7 @@ __all__ = [
     "UnderstrengthRosterDeploymentException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 
 # ======================# UNDER_STRENGTH_ROSTER_DEPLOYMENT_EXCEPTION #======================#

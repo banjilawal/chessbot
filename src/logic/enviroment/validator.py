@@ -25,7 +25,7 @@ from logic.king import KingPiece
 from logic.pawn import ActorNotOnBoardException, ActorPlacementRequiredException, CapturedPieceCannotActException
 from logic.piece import CombatantPiece, Piece, PieceValidator
 from logic.square import Square
-from logic.system import IdValidator, LoggingLevelRouter, Validator, ValidationResult
+from system import IdValidator, LoggingLevelRouter, Validator, ValidationResult
 
 
 class TurnSceneValidator(Validator[TurnScene]):

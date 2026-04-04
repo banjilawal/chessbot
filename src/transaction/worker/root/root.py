@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any
 
-from logic.system import LoggingLevelRouter, Result
+from system import LoggingLevelRouter, Result
 
 class Worker(ABC):
     """

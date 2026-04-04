@@ -11,7 +11,7 @@ from typing import List
 
 from logic.arena import Arena
 from logic.player import Player
-from logic.system import DataFinder, GameColor, LoggingLevelRouter, SearchResult
+from system import DataFinder, GameColor, LoggingLevelRouter, SearchResult
 from logic.team import (
     Team, TeamContext, TeamContextValidator, TeamSearchDatasetNullException, TeamSearchRouteException,
     TeamSearchException

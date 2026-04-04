@@ -17,7 +17,7 @@ from graph.graph import Graph
 from graph.node import Node, NodeBuilder
 from math.span import BishopSpanServiceException, BishopSpanner, CoordSpan, SpanMicroservice
 from logic.square import Square, SquareContext, SquareDatabase
-from logic.system import BuildResult, ComputationResult, IdFactory, LoggingLevelRouter
+from system import BuildResult, ComputationResult, IdFactory, LoggingLevelRouter
 from model.token import Token, TokenService
 from geometry.vector import VectorService
 

@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast
 
 from model.game import GameFinder
-from logic.system import QueryService, id_emitter
+from system import QueryService, id_emitter
 from model.game import GameContext, GameContextBuilder, GameContextValidator
 
 

@@ -15,7 +15,7 @@ __all__ = [
     "EdgeSearchException",
 ]
 
-from logic.system import SearchException
+from system import SearchException
 
 
 # ======================# EDGE_SEARCH_FAILURE #======================#
@@ -93,7 +93,7 @@ __all__ = [
     "EdgeSearchException",
 ]
 
-from logic.system import SearchException
+from system import SearchException
 from graph.edge import EdgeException
 
 

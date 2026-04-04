@@ -15,7 +15,8 @@ __all__ = [
     "DebugException",
 ]
 
-from logic.system import ChessException
+from err import ChessException
+
 
 # ======================# DEBUG_EXCEPTION #======================#
 class DebugException(ChessException):
@@ -65,39 +66,35 @@ class DebugException(ChessException):
     ERR_CODE = "VARIABLE_EXCEPTION"
     MSG = "A variable had an error."
     
-    _var: Optional[str]
-    _val: Optional[Any]
-    
     def __init__(
             self,
             msg: Optional[str] = None,
             var: Optional[str] = None,
             val: Optional[Any] = None,
-            err_code: Optional[str] = None,
             ex: Optional[Exception] = None,
+            cls_name: Optional[str] = None,
+            cls_mthd: Optional[str] = None,
+            err_code: Optional[str] = None,
     ):
         """
         Args:
+            msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
-            msg: Optional[str]
             ex: Optional[Exception]
+            cls_name: Optional[str]
+            cls_mthd: Optional[str]
             err_code: Optional[str]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        super().__init__(msg=msg, err_code=err_code, ex=ex)
-        self._var = var
-        self._val = val
-    
-    @property
-    def var(self) -> Optional[str]:
-        return self._var
-    
-    @property
-    def val(self) -> Optional[Any]:
-        return self._val
-    
-    def __str__(self):
-        return f"{super().__str__()}, var:{self._var}, val:{self._val}"
+        super().__init__(
+            ex=ex,
+            msg=msg,
+            var=var,
+            val=val,
+            err_code=err_code,
+            cls_name=cls_name,
+            cls_mthd=cls_mthd,
+        )
 

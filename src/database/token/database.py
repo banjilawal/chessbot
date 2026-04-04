@@ -15,7 +15,7 @@ from model.token import (
     RankQuotaReport, Token, TokenContext, TokenStackService, TokenService, TokenDatabaseException,
     TokenStackState
 )
-from logic.system import (
+from system import (
     ComputationResult, Database, DeletionResult, IdFactory, IdentityService, InsertionResult,
     LoggingLevelRouter, SearchResult,
 )

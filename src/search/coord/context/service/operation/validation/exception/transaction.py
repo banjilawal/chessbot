@@ -15,7 +15,7 @@ __all__ = [
     "CoordContextValidationException",
 ]
 
-from logic.system import ValidationException
+from system import ValidationException
 
 
 # ======================# COORD_CONTEXT_VALIDATION_FAILURE #======================#

@@ -15,7 +15,7 @@ __all__ = [
     "SquareDatabaseException",
 ]
 
-from logic.system import DatabaseException
+from system import DatabaseException
 
 
 # ======================# SQUARE_DATABASE_EXCEPTION #======================#

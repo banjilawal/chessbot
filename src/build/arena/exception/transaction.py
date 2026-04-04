@@ -14,7 +14,7 @@ __all__ = [
     "ArenaBuildException",
 ]
 
-from logic.system import BuildException
+from system import BuildException
 
 
 # ======================# ARENA_BUILD_FAILURE #======================#

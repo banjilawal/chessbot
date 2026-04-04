@@ -15,7 +15,7 @@ __all__ = [
     "SpannerEngineDebugException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# SPANNER_ENGINE_DEBUG_EXCEPTION #======================#
 class SpannerEngineDebugException(DebugException):

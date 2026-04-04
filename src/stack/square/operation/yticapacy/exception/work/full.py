@@ -15,7 +15,7 @@ __all__ = [
     "SquareStackFullException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# SQUARE_STACK_FULL_EXCEPTION #======================#
 class SquareStackFullException(DebugException):

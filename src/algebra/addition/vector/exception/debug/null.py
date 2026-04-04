@@ -15,7 +15,7 @@ __all__ = [
     "NullVectorListException",
 ]
 
-from logic.system import NullException
+from system import NullException
 
 
 # ======================# NULL_VECTOR_LIST_EXCEPTION #======================#

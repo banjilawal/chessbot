@@ -9,7 +9,7 @@ version: 1.0.0
 
 from abc import ABC
 
-from logic.system import SearchContext
+from system import SearchContext
 
 
 class GraphSearchContext(SearchContext, ABC):

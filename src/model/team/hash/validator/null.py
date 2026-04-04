@@ -12,7 +12,7 @@ __all__ = [
     "TeamHashNullException",
 ]
 
-from logic.system import NullException
+from system import NullException
 from logic.team import TeamHashException
 
 

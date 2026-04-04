@@ -12,7 +12,7 @@ from typing import Optional
 from logic.engine import EngineService
 from model.game import UniqueGameDataService
 from logic.team import UniqueTeamDataService
-from logic.system import Builder, BuildResult, IdentityService, LoggingLevelRouter, id_emitter
+from system import Builder, BuildResult, IdentityService, LoggingLevelRouter, id_emitter
 
 from logic.player import (
     Player, PlayerBuildException, PlayerVariety, PlayerValidator, HumanPlayer, HumanPlayerBuildException,

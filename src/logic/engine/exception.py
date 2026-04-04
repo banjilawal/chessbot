@@ -54,7 +54,7 @@ __all__ = [
     'BuildException'
 ]
 
-from logic.system import ChessException, NullException, BuildException
+from system import ChessException, NullException, BuildException
 
 class EngineException(ChessException):
   """

@@ -15,7 +15,7 @@ __all__ = [
     "EdgeContextServiceException",
 ]
 
-from logic.system import ServiceException
+from system import ServiceException
 
 
 # ======================# EDGE_CONTEXT_SERVICE_EXCEPTION #======================#

@@ -15,7 +15,7 @@ __all__ = [
     "TeamContextServiceException",
 ]
 
-from logic.system import ServiceException
+from system import ServiceException
 
 
 # ======================# TEAM_CONTEXT_SERVICE_EXCEPTION #======================#

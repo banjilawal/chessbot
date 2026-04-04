@@ -15,7 +15,7 @@ __all__ = [
     "NullCoordContextException",
 ]
 
-from logic.system import NullException
+from system import NullException
 
 # ======================# NULL_COORD_CONTEXT_EXCEPTION #======================#
 class NullCoordContextException(NullException):

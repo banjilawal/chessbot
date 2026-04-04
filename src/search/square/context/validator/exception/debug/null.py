@@ -15,7 +15,7 @@ __all__ = [
     "NullSquareContextException",
 ]
 
-from logic.system import NullException
+from system import NullException
 
 # ======================# NULL_SQUARE_CONTEXT_EXCEPTION #======================#
 class NullSquareContextException(NullException):

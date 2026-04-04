@@ -11,7 +11,7 @@ from typing import List, Optional, Type, cast
 
 
 from logic.rank import Bishop, King, Knight, Pawn, Queen, Rank, RankService, Rook
-from logic.system import (
+from system import (
     ComputationResult, HashService, LoggingLevelRouter, SearchResult,
     id_emitter
 )

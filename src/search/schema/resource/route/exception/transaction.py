@@ -15,7 +15,7 @@ __all__ = [
     "SchemaSearchException",
 ]
 
-from logic.system import SearchException
+from system import SearchException
 
 
 # ======================# SCHEMA_SEARCH_FAILURE #======================#

@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Optional
 
 from catalog.persona import Persona
-from logic.system import Context
+from system import Context
 
 
 class PersonaKey(Context[Persona]):

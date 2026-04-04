@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
-from logic.system.search import Context
+from system import Context
 
 T = TypeVar("T")
 

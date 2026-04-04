@@ -15,7 +15,7 @@ __all__ = [
     "TokenStackServiceException",
 ]
 
-from logic.system import StackServiceException
+from system import StackServiceException
 
 
 # ======================# TOKEN_STACK_SERVICE_EXCEPTION #======================#

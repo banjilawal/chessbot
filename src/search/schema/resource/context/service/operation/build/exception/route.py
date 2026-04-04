@@ -15,7 +15,7 @@ __all__ = [
     "SchemaContextBuildRouteException",
 ]
 
-from logic.system import ContextRouteException
+from system import ContextRouteException
 
 # ======================# SCHEMA_CONTEXT_BUILD_ROUTE_EXCEPTION #======================#
 class SchemaContextBuildRouteException(ContextRouteException):

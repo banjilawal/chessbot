@@ -15,7 +15,7 @@ __all__ = [
     "NullPersonaException",
 ]
 
-from logic.system import NullException
+from system import NullException
 
 #======================# NULL_PERSONA_EXCEPTION #======================#
 class NullPersonaException(NullException):

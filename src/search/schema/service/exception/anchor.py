@@ -15,7 +15,7 @@ __all__ = [
     "SchemaSearchServiceException",
 ]
 
-from logic.system import ServiceException
+from system import ServiceException
 
 # ======================# SCHEMA_SEARCH_SERVICE_FAILURE #======================#
 class SchemaSearchServiceException(ServiceException):

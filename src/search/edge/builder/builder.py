@@ -13,7 +13,7 @@ from typing import Optional
 from logic.board import Board, BoardService
 from logic.coord import Coord, CoordService
 from graph.edge import EdgeState
-from logic.system import Builder, BuildResult, IdentityService
+from system import Builder, BuildResult, IdentityService
 from graph.edge import (
     EdgeContextBuildRouteException, ZeroEdgeContextFlagsException, EdgeContext, EdgeContextBuildException,
     ArenaEdgeContextFlagsException

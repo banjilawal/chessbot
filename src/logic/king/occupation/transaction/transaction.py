@@ -11,7 +11,7 @@ from typing import cast
 
 
 from logic.pawn import PromotionTransaction
-from logic.system import LoggingLevelRouter, TransactionResult
+from system import LoggingLevelRouter, TransactionResult
 from logic.piece import (
     PromotionEvent, TravelTransaction, OccupationEvent, OccupationEventValidator,
     FailedActorPositionUpdateRolledBackException,

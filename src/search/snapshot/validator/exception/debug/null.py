@@ -15,7 +15,7 @@ __all__ = [
     "NullSnapshotException",
 ]
 
-from logic.system import NullException
+from system import NullException
 
 # ======================# NULL_SNAPSHOT EXCEPTION #======================#
 class NullSnapshotException(NullException):

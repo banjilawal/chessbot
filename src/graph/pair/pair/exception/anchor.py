@@ -15,7 +15,7 @@ __all__ = [
     "PairException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 
 # ======================# PAIR_EXCEPTION #======================#

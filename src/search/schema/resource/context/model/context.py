@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Optional
 
 from catalog.schema import Schema
-from logic.system import Context, GameColor, LoggingLevelRouter
+from system import Context, GameColor, LoggingLevelRouter
 
 
 class SchemaContext(Context[Schema]):

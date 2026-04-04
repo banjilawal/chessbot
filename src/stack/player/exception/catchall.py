@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from logic.agent import AgentException
-from logic.system import DataServiceException
+from system import DataServiceException
 
 ___all__ = [
     # ======================# PLAYER_STACK_SERVICE EXCEPTION #======================#
@@ -16,7 +16,7 @@ ___all__ = [
 ]
 
 from logic.agent import AgentException
-from logic.system import ServiceException
+from system import ServiceException
 
 
 # ======================# PLAYER_STACK_SERVICE EXCEPTION #======================#

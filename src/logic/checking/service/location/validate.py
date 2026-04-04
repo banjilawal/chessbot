@@ -10,7 +10,7 @@ from typing import Any
 
 
 from logic.checkmate import KingLocationRecord
-from logic.system import ValidationResult, Validator
+from system import ValidationResult, Validator
 
 
 class KingLocationRecordValidator(Validator[KingLocationRecord]):

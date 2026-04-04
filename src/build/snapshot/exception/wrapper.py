@@ -15,7 +15,7 @@ __all__ = [
     "SnapshotBuildException",
 ]
 
-from logic.system import BuildException
+from system import BuildException
 
 # ======================# SNAPSHOT_BUILD_FAILURE #======================#
 class SnapshotBuildException(BuildException):

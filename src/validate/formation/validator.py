@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import cast, Any
 
-from logic.system import Validator, ValidationResult, LoggingLevelRouter
+from system import Validator, ValidationResult, LoggingLevelRouter
 from catalog.formation import Formation, FormationValidationException, NullFormationException
 
 

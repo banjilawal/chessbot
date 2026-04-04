@@ -15,7 +15,7 @@ __all__ = [
     "TeamSearchException",
 ]
 
-from logic.system import SearchException
+from system import SearchException
 
 
 # ======================# TEAM_SEARCH_FAILURE #======================#
@@ -93,7 +93,7 @@ __all__ = [
     "TeamSearchException",
 ]
 
-from logic.system import SearchException
+from system import SearchException
 from logic.team import TeamException
 
 

@@ -13,7 +13,7 @@ __all__ = [
 ]
 
 from logic.team import TeamStackException
-from logic.system import InsertionException
+from system import InsertionException
 
 
 # ======================# TEAM_PUSH_FAILURE #======================#

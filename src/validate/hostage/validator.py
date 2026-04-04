@@ -18,7 +18,7 @@ from model.hostage import (
     PrisonerCapturedByDifferentEnemyException, TokenCannotCaptureItselfException, UnformedTokenCannotBeVictorException,
     VictorAndPrisoneOnDifferentBoardsException, PrisonerCapturedOnDifferentSquareException,
 )
-from logic.system import IdentityService, LoggingLevelRouter, ValidationResult,Validator
+from system import IdentityService, LoggingLevelRouter, ValidationResult,Validator
 
 
 

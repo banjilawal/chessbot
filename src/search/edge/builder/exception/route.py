@@ -15,7 +15,7 @@ __all__ = [
     "EdgeContextExecutionRouteException",
 ]
 
-from logic.system import ExecutionRouteException
+from system import ExecutionRouteException
 
 
 # ======================# EDGE_CONTEXT_EXECUTION_ROUTE_EXCEPTION #======================#

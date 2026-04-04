@@ -10,7 +10,7 @@ version: 1.0.0
 from abc import abstractmethod
 
 from logic.piece import KingPiece, Piece
-from logic.system import LoggingLevelRouter, Result
+from system import LoggingLevelRouter, Result
 from logic.checkmate import CheckPostalService, CheckRecord
 
 

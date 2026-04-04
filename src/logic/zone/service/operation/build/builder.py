@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from logic.zone import Zone
 from catalog.schema import SchemaService
-from logic.system import Builder, BuildResult, GameColor, LoggingLevelRouter
+from system import Builder, BuildResult, GameColor, LoggingLevelRouter
 
 
 class ZoneBuilder(Builder[Zone]):

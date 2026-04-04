@@ -15,7 +15,7 @@ __all__ = [
     "SchemaQueryValidationException",
 ]
 
-from logic.system import ValidationException
+from system import ValidationException
 
 
 # ======================# SCHEMA_QUERY_VALIDATION_FAILURE #======================#

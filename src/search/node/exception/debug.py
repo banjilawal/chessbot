@@ -15,7 +15,7 @@ __all__ = [
     "NodeContextDebugException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# NODE_CONTEXT_DEBUG_EXCEPTION #======================#
 class NodeContextDebugException(DebugException):

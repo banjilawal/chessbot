@@ -12,7 +12,7 @@ from __future__ import annotations
 from graph.graph import Graph
 from math.span import SquareSpan
 from logic.square import SquareStackService
-from logic.system import BuildResult, Builder, LoggingLevelRouter
+from system import BuildResult, Builder, LoggingLevelRouter
 
 
 class SpanningGraphProducer(Builder[Graph]):

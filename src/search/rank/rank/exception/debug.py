@@ -15,7 +15,7 @@ __all__ = [
     "RankContextDebugException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# RANK_CONTEXT_DEBUG_EXCEPTION #======================#
 class RankContextDebugException(DebugException):

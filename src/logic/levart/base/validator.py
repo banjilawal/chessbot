@@ -2,7 +2,7 @@ from abc import abstractmethod
 from typing import Any
 
 from logic.piece import TravelEvent
-from logic.system import ValidationResult, Validator
+from system import ValidationResult, Validator
 
 
 

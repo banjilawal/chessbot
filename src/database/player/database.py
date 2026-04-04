@@ -10,7 +10,7 @@ version: 1.0.0
 
 from typing import List, cast
 
-from logic.system import DeletionResult, InsertionResult, SearchResult, Database
+from system import DeletionResult, InsertionResult, SearchResult, Database
 from logic.agent import PlayerAgent, AgentContext, AgentContextService, AgentDataService, AgentService
 
 from model.player import Player

@@ -12,7 +12,7 @@ from __future__ import annotations
 from logic.square.database.kernel.operation.execute import ExecutementSquareDiscoveryException
 
 from logic.square.database.kernel.operation.formation.discovery.exception.work import OpeningSquareDiscoveryException
-from logic.system import InsertionResult, LoggingLevelRouter, SearchResult, ValidationResult
+from system import InsertionResult, LoggingLevelRouter, SearchResult, ValidationResult
 from logic.square import (
     SquareContext, SquareStackCapacityFullException, Square, SquareStackExecuteException, SquareStackService, SquareStackState
 )

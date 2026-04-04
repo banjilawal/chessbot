@@ -12,7 +12,7 @@ from __future__ import annotations
 from enum import Enum
 
 from catalog.schema import Schema
-from logic.system import GameColor
+from system import GameColor
 
 
 class Zone(Enum):

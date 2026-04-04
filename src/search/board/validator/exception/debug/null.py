@@ -15,7 +15,7 @@ __all__ = [
     "NullBoardContextException",
 ]
 
-from logic.system import NullException
+from system import NullException
 
 # ======================# NULL_BOARD_CONTEXT_EXCEPTION #======================#
 class NullBoardContextException(NullException):

@@ -15,7 +15,7 @@ __all__ = [
     "NodeContextValidationException",
 ]
 
-from logic.system import ValidationException
+from system import ValidationException
 
 # ======================# NODE_CONTEXT_VALIDATION_FAILURE #======================#
 class NodeContextValidationException(ValidationException):

@@ -1,4 +1,4 @@
-from logic.system import ResultException, ExecutionRouteException
+from system import ResultException, ExecutionRouteException
 
 __all__ = [
     # ======================# NO_TOKEN_BUILD_ROUTE EXCEPTION #======================#

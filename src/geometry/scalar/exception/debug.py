@@ -15,7 +15,7 @@ __all__ = [
     "ScalarDebugException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# SCALAR_DEBUG_EXCEPTION #======================#
 class ScalarDebugException(DebugException):

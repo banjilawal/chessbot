@@ -11,7 +11,7 @@ __all__ = [
     "NullHostageException",
 ]
 
-from logic.system import NullException
+from system import NullException
 
 
 # ======================# NULL_HOSTAGE EXCEPTION #======================#

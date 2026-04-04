@@ -15,7 +15,7 @@ __all__ = [
     "TeamContextValidationException",
 ]
 
-from logic.system import ValidationException
+from system import ValidationException
 
 # ======================# TEAM_CONTEXT_VALIDATION_FAILURE #======================#
 class TeamContextValidationException(ValidationException):

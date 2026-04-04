@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.system import IntegrityMicroservice
+from system import IntegrityMicroservice
 from model.token import RankQuotaAnalysis, TokenCollisionAnalysis, TokenStackCrudController, TokenService
 from model.token import TokenStackDeployment
 

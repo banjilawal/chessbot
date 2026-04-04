@@ -12,7 +12,7 @@ from typing import List
 
 from geometry.vector import VectorService
 from logic.coord import Coord, CoordService
-from logic.system import ComputationResult, LoggingLevelRouter
+from system import ComputationResult, LoggingLevelRouter
 from math.span import (
     ComputedNullRayDebugException, PerpendicularRayComputationException, PerpendicularRayFactors, CoordRay
 )

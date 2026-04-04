@@ -15,7 +15,7 @@ __all__ = [
     "PlayerBuildRouteException",
 ]
 
-from logic.system import ExecutionRouteException
+from system import ExecutionRouteException
 
 
 # ======================# PLAYER_BUILD_ROUTE_EXCEPTION #======================#

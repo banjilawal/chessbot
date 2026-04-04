@@ -15,7 +15,7 @@ __all__ = [
     "PairNotFoundException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 
 # ======================# PAIR_DESTINATION_NOT_FOUND_EXCEPTION #======================#

@@ -15,7 +15,7 @@ __all__ = [
     "BoardStackServiceException",
 ]
 
-from logic.system import StackServiceException
+from system import StackServiceException
 
 
 # ======================# BOARD_STACK_SERVICE_EXCEPTION #======================#

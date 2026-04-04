@@ -15,7 +15,7 @@ from catalog.formation import (
 )
 from catalog.persona import Persona, PersonaService
 from logic.square import Square, SquareService
-from logic.system import BuildResult, Builder, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
+from system import BuildResult, Builder, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
 
 
 class FormationKeyBuilder(Builder[FormationKey]):

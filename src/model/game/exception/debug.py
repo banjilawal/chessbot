@@ -15,7 +15,7 @@ __all__ = [
     "GameDebugException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# GAME_DEBUG_EXCEPTION #======================#
 class GameDebugException(DebugException):

@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from catalog.persona import PersonaException
-from logic.system import BoundsException
+from system import BoundsException
 
 __all__ = [
     # ======================# PERSONA_NAME_BOUNDS EXCEPTION #======================#

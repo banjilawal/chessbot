@@ -15,7 +15,7 @@ __all__ = [
     "PromotionException",
 ]
 
-from logic.system import UpdateException
+from system import UpdateException
 
 # ======================# PAWN_PROMOTION_FAILURE #======================#
 class PromotionException(UpdateException):

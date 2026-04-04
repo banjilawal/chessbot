@@ -15,7 +15,7 @@ __all__ = [
     "SchemaContextValidationException",
 ]
 
-from logic.system import ValidationException
+from system import ValidationException
 
 
 # ======================# SCHEMA_CONTEXT_VALIDATION_FAILURE #======================#

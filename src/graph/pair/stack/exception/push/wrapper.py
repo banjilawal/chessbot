@@ -13,7 +13,7 @@ __all__ = [
 ]
 
 from graph.pair import PairStackException
-from logic.system import PushException
+from system import PushException
 
 
 # ======================# PUSHING_PAIR_FAILURE #======================#

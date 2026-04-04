@@ -15,7 +15,7 @@ __all__ = [
     "GraphException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 
 # ======================# GRAPH_EXCEPTION #======================#

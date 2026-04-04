@@ -11,11 +11,11 @@ version: 1.0.0
 from typing import List
 
 from logic.player.database.core.exception.null import AgentNullDatasetException
-from logic.system import LoggingLevelRouter, SearchResult
+from system import LoggingLevelRouter, SearchResult
 from logic.agent import (
     PlayerAgent, AgentContext, AgentContextValidator, AgentVariety
 )
-from logic.system.collection.operation import DataFinder
+from system import DataFinder
 from logic.team import Team, TeamContext
 
 

@@ -13,7 +13,7 @@ __all__ = [
 ]
 
 from graph.node import NodeStackException
-from logic.system import DeletionException
+from system import DeletionException
 
 
 # ======================# NODE_DELETION_FAILURE #======================#

@@ -11,7 +11,7 @@ from typing import List
 
 from logic.team import Team
 from logic.agent import PlayerAgent
-from logic.system import Finder, LoggingLevelRouter, SearchException, SearchResult
+from system import Finder, LoggingLevelRouter, SearchException, SearchResult
 from logic.snapshot import GameTimeline, NullGameTimelineException, Snapshot, SnapshotContext, SnapshotContextValidator
 
 

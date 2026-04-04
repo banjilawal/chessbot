@@ -15,7 +15,7 @@ __all__ = [
     "TeamDebugException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# TEAM_DEBUG_EXCEPTION #======================#
 class TeamDebugException(DebugException):

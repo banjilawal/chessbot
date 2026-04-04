@@ -11,7 +11,7 @@ version: 1.0.0
 from typing import Any, cast
 
 from logic.square import SquareValidator
-from logic.system import LoggingLevelRouter, Validator, ValidationResult
+from system import LoggingLevelRouter, Validator, ValidationResult
 from logic.house import House, NullHouseException, NullHouseResidentException
 
 

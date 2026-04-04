@@ -15,7 +15,7 @@ __all__ = [
     "NullBoardException",
 ]
 
-from logic.system import NullException
+from system import NullException
 
 #======================# NULL_BOARD_EXCEPTION #======================#
 class NullBoardException(NullException):

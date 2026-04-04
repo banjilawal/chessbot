@@ -15,7 +15,7 @@ __all__ = [
     "PlayerContextExecutionRouteException",
 ]
 
-from logic.system import ExecutionRouteException
+from system import ExecutionRouteException
 
 
 # ======================# PLAYER_CONTEXT_EXECUTION_ROUTE_EXCEPTION #======================#

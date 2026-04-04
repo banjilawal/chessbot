@@ -15,7 +15,7 @@ from logic.arena import (
     ArenaTeamRelationAnalysis, ArenaValidator, ChangingArenaTeamBlockedException, TeamPlayingDifferentArenaException
 )
 from catalog.schema import Schema, SchemaService
-from logic.system import IntegrityMicroservice, InsertionResult, LoggingLevelRouter, Result, SearchResult, id_emitter
+from system import IntegrityMicroservice, InsertionResult, LoggingLevelRouter, Result, SearchResult, id_emitter
 from logic.team import Team, TeamService
 
 

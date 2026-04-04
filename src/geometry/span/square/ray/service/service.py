@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import cast
 
 from math.span import SquareRay, SquareRayBuilder, SquareRayValidator
-from logic.system import IdFactory, IntegrityMicroservice
+from system import IdFactory, IntegrityMicroservice
 
 
 class SquareRayService(IntegrityMicroservice[SquareRay]):

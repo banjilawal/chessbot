@@ -15,7 +15,7 @@ __all__ = [
     "NodeTreeValidationException",
 ]
 
-from logic.system import ValidationException
+from system import ValidationException
 
 # ======================# NODE_TREE_VALIDATION_FAILURE #======================#
 class NodeTreeValidationException(ValidationException):

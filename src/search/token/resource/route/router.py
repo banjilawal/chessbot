@@ -13,7 +13,7 @@ from typing import List
 from logic.coord import Coord
 from logic.rank import Rank
 from logic.team import Team
-from logic.system import GameColor, LoggingLevelRouter, SearchResult, SearchRouter
+from system import GameColor, LoggingLevelRouter, SearchResult, SearchRouter
 from model.token import MissingTokenSearchRouteException, Token, TokenQuery, TokenQueryValidator, TokenSearchException
 
 

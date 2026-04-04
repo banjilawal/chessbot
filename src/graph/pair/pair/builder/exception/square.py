@@ -15,7 +15,7 @@ __all__ = [
     "HeadTailSquareException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# HEAD_TAIL_SAME_SQUARE_EXCEPTION #======================#
 class HeadTailSquareException(DebugException):

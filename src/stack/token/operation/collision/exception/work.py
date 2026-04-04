@@ -15,7 +15,7 @@ __all__ = [
     "TokenCollisionDetectionException",
 ]
 
-from logic.system import RelationAnalysisException
+from system import RelationAnalysisException
 
 # ======================# TOKEN_COLLISION_DETECTOR_FAILURE #======================#
 class TokenCollisionDetectionException(RelationAnalysisException):

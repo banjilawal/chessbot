@@ -2,7 +2,7 @@ from typing import List
 
 from graph.graph import Graph
 from logic.square import Square
-from logic.system import BuildResult
+from system import BuildResult
 
 
 class GraphBuilder:

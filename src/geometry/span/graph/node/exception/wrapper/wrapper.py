@@ -15,7 +15,7 @@ __all__ = [
     "NodeStackServiceProductionException",
 ]
 
-from logic.system import BuildException
+from system import BuildException
 
 
 # ======================# NODE_STACK_SERVICE_PRODUCTION_FAILURE #======================#

@@ -15,7 +15,7 @@ __all__ = [
     "BoardTeamAnalysisException",
 ]
 
-from logic.system import AnalysisException
+from system import AnalysisException
 
 
 # ======================# BOARD_TEAM_RELATION_ANALYSIS_FAILURE #======================#
@@ -40,7 +40,7 @@ class BoardTeamAnalysisException(AnalysisException):
     Provides:
 
     Super:
-        OperationException
+        TransactionException
     """
     ERR_CODE = "BOARD_TEAM_RELATION_ANALYSIS_FAILURE"
     MSG = "A rank failed a validation test. BoardTeamAnalyzer cannot proceed. Analysis aborted."

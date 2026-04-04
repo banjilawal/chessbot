@@ -12,7 +12,7 @@ from typing import Any, Dict
 from command import CommandArgs
 from catalog.formation import Formation
 
-from logic.system import IdFactory
+from system import IdFactory
 from command.token.root import TokenCommand
 from logic.team import Team
 from model.token import TokenService

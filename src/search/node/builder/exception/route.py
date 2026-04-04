@@ -15,7 +15,7 @@ __all__ = [
     "NodeContextExecutionRouteException",
 ]
 
-from logic.system import ExecutionRouteException
+from system import ExecutionRouteException
 
 
 # ======================# NODE_CONTEXT_EXECUTION_ROUTE_EXCEPTION #======================#

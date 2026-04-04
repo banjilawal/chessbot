@@ -15,7 +15,7 @@ __all__ = [
     "HostageContextBuildException",
 ]
 
-from logic.system import BuildException
+from system import BuildException
 
 # ======================# HOSTAGE_CONTEXT_BUILD_FAILURE #======================#
 class HostageContextBuildException(BuildException):

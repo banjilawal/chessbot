@@ -10,7 +10,7 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from logic.system import ValidationResult, Validator, BOARD_DIMENSION, LoggingLevelRouter, NullNumberException
+from system import ValidationResult, Validator, BOARD_DIMENSION, LoggingLevelRouter, NullNumberException
 from build.scalar import (
     Scalar, NullScalarException, ScalarBelowBoundsException, ScalarAboveBoundsException, InvalidScalarException
 )

@@ -15,7 +15,7 @@ __all__ = [
     "ScalarBuildException",
 ]
 
-from logic.system import BuildException
+from system import BuildException
 
 # ======================# SCALAR_BUILD_FAILURE #======================#
 class ScalarBuildException(BuildException):

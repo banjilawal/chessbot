@@ -15,7 +15,7 @@ __all__ = [
     "SpannerException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 # ======================# SPANNER_EXCEPTION #======================#
 class SpannerException(AnchorException):

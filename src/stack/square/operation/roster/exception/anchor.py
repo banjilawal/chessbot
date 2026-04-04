@@ -15,7 +15,7 @@ ___all__ = [
     "SquareStackRosterHandlerException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 # ======================# SQUARE_STACK_ROSTER_HANDLER_EXCEPTION #======================#
 class SquareStackRosterHandlerException(AnchorException):

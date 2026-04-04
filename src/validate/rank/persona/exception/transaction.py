@@ -14,7 +14,7 @@ __all__ = [
     # ======================# RANK_PERSONA_VALIDATION_FAILURE #======================#
     "RankPersonaValidationException",
 ]
-from logic.system import ValidationException
+from system import ValidationException
 
 # ======================# RANK_PERSONA_VALIDATION_FAILURE #======================#
 class RankPersonaValidationException(ValidationException):

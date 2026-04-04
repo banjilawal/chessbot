@@ -15,7 +15,7 @@ __all__ = [
     "BoardSquareAnalysisException",
 ]
 
-from logic.system import AnalysisException
+from system import AnalysisException
 
 
 # ======================# BOARD_SQUARE_RELATION_ANALYSIS_FAILURE #======================#
@@ -40,7 +40,7 @@ class BoardSquareAnalysisException(AnalysisException):
     Provides:
 
     Super:
-        OperationException
+        TransactionException
     """
     ERR_CODE = "BOARD_SQUARE_RELATION_ANALYSIS_FAILURE"
     MSG = "A rank failed a validation test. BoardSquareAnalyzer cannot proceed. Analysis aborted."

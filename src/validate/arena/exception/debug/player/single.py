@@ -7,7 +7,7 @@ Created: 2025-10-01
 version: 1.0.0
 """
 
-from logic.system import BoundsException
+from system import BoundsException
 from logic.arena import ArenaDebugException
 
 __all__ = [

@@ -15,7 +15,7 @@ __all__ = [
     "VectorServiceException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 
 # ======================# VECTOR_SERVICE_EXCEPTION #======================#

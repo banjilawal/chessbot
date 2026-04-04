@@ -1,7 +1,7 @@
 from __future__ import annotations
 from typing import Dict
 
-from logic.system import ComputationResult, GameColor, LoggingLevelRouter
+from system import ComputationResult, GameColor, LoggingLevelRouter
 from logic.team import Team
 
 

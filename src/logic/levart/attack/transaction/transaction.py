@@ -16,7 +16,7 @@ from logic.piece import (
     FailedHostageAdditionRolledBackException, FailedRemovalFromBoardRolledBackException,
 )
 
-from logic.system import LoggingLevelRouter, TransactionResult, id_emitter
+from system import LoggingLevelRouter, TransactionResult, id_emitter
 
 
 

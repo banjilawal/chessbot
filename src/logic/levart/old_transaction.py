@@ -17,7 +17,7 @@ Created: 2025-09-28
 from typing import cast
 
 
-from logic.system import Transaction, TransactionResult, TransactionState, LoggingLevelRouter, \
+from system import Transaction, TransactionResult, TransactionState, LoggingLevelRouter, \
   SearchResult
 
 from logic.square import Square

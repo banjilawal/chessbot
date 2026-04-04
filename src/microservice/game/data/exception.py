@@ -14,7 +14,7 @@ ___all__ = [
 ]
 
 from model.game import GameException
-from logic.system import ServiceException
+from system import ServiceException
 
 
 # ======================# GAME_STACK_SERVICE EXCEPTION #======================#

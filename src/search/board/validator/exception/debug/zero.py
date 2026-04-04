@@ -15,7 +15,7 @@ __all__ = [
     "ZeroBoardContextFlagsException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 
 # ======================# ZERO_BOARD_CONTEXT_FLAGS_EXCEPTION #======================#

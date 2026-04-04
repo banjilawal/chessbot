@@ -15,7 +15,7 @@ __all__ = [
     "VectorAdditionException",
 ]
 
-from logic.system import ComputationException
+from system import ComputationException
 
 # ======================# VECTOR_ADDITION_FAILURE #======================#
 class VectorAdditionException(ComputationException):

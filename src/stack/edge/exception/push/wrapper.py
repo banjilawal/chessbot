@@ -13,7 +13,7 @@ __all__ = [
 ]
 
 from graph.edge import EdgeStackException
-from logic.system import InsertionException
+from system import InsertionException
 
 
 # ======================# EDGE_INSERTION_FAILURE #======================#

@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import List
 
-from logic.system import LoggingLevelRouter, SearchMicroservice, SearchResult
+from system import LoggingLevelRouter, SearchMicroservice, SearchResult
 from model.token import (
     Token, TokenContextService, TokenQuery, TokenQueryService, TokenSearchResourceHost,
     TokenSearchRouter, TokenSearchServiceException

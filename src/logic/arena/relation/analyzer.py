@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast
 
 from logic.team import Team, TeamService
-from logic.system import LoggingLevelRouter, RelationReport, RelationAnalysis
+from system import LoggingLevelRouter, RelationReport, RelationAnalysis
 from logic.arena import (
     Arena, ArenaSlotAlreadyOccupiedException, ArenaValidator, ArenaTeamAnalysisException,
     TeamPlayingDifferentArenaException

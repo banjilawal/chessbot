@@ -15,7 +15,7 @@ __all__ = [
     "GraphDebugException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# GRAPH_DEBUG_EXCEPTION #======================#
 class GraphDebugException(DebugException):

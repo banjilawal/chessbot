@@ -12,7 +12,7 @@ from typing import Optional, cast
 from logic.piece import Piece
 from logic.board import Board
 from logic.square import Square
-from logic.system import Event, LoggingLevelRouter
+from system import Event, LoggingLevelRouter
 
 
 class TravelEvent(Event[Piece, Square, Board]):

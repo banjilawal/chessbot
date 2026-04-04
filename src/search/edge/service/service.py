@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import cast
 
-from logic.system import QueryService, id_emitter
+from system import QueryService, id_emitter
 from graph.edge import EdgeContext, EdgeContextBuilder, EdgeContextValidator, EdgeFinder
 
 

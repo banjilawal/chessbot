@@ -13,7 +13,7 @@ __all__ = [
 ]
 
 from catalog.persona import PersonaKeyException
-from logic.system import ExecutionRouteException
+from system import ExecutionRouteException
 
 
 # ======================# NO_PERSONA_KEY_BUILD_ROUTE EXCEPTION #======================#

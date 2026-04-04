@@ -13,7 +13,7 @@ from typing import List
 
 from build.scalar import Scalar
 from catalog.schema import Schema
-from logic.system import GameColor
+from system import GameColor
 
 
 class SchemaPropertyValuesReporter:

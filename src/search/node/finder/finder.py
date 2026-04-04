@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import List
 
 from logic.square import Square
-from logic.system import LoggingLevelRouter, SearchResult, StackSearchRouter
+from system import LoggingLevelRouter, SearchResult, StackSearchRouter
 from graph.node import (
     DiscoveryStatus, Node, NodeContext, NodeContextValidator, NodeSearchException, NodeSearchRouteException,
     NodeSearchNullDatasetException, NodeSearchPayloadTypeException

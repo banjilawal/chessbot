@@ -15,7 +15,7 @@ __all__ = [
     "MethodImplementationException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# METHOD_NOT_IMPLEMENTED EXCEPTION #======================#
 class MethodImplementationException(DebugException):

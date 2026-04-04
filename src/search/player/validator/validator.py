@@ -11,7 +11,7 @@ from typing import Any, cast
 
 from model.game import GameService
 from logic.team import TeamService
-from logic.system import LoggingLevelRouter, Validator, ValidationResult, IdentityService
+from system import LoggingLevelRouter, Validator, ValidationResult, IdentityService
 from logic.player import (
     PlayerContext,  ArenaPlayerContextFlagsException, InvalidPlayerContextException,
     NullPlayerContextException, ZeroPlayerContextFlagsException

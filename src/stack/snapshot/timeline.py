@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Optional, cast
 
 from model.game import Snapshot, GameTimelineException
-from logic.system import DeletionResult, InsertionResult, ResultStack
+from system import DeletionResult, InsertionResult, ResultStack
 
 
 class GameTimeline(ResultStack[Snapshot]):

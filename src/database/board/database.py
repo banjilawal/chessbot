@@ -10,13 +10,13 @@ version: 1.0.0
 from typing import List
 
 from logic.board import (
-    AddingDuplicateBoardException, ExhaustiveBoardDeletionException, Board, BoardContext,
+    AddingDuplicateBoardException, Board, BoardContext,
     BoardQueryService,
     BoardStackService, BoardService, UniqueBoardDataServiceException, UniqueBoardInsertionException,
     UniqueBoardSearchException
 )
-from logic.system import (
-    DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, SearchResult, Database, id_emitter
+from system import (
+    InsertionResult, LoggingLevelRouter, SearchResult, Database, id_emitter
 )
 
 

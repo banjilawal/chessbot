@@ -12,7 +12,7 @@ from typing import List, Optional, cast
 
 from catalog.schema import Schema
 from logic.team import Team, TeamContext, TeamQueryService, TeamDatabaseException, TeamService, TeamStack
-from logic.system import (
+from system import (
     DeletionResult, InsertionResult, LoggingLevelRouter, SearchResult, Database, id_emitter
 )
 

@@ -15,7 +15,7 @@ __all__ = [
     "PlayerServiceException",
 ]
 
-from logic.system import ServiceException
+from system import ServiceException
 
 
 # ======================# PLAYER_SERVICE_EXCEPTION #======================#

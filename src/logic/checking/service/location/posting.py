@@ -3,7 +3,7 @@ from typing import List
 from logic.checkmate.service import KingLocationRecord, KingLocationRecordBuilder
 from logic.checkmate.service.location.search import KingLocationSearch
 from logic.piece import KingPiece
-from logic.system import LoggingLevelRouter, Result, Transaction, TransactionResult
+from system import LoggingLevelRouter, Result, Transaction, TransactionResult
 
 
 class KingLocationPostingService(Service[KingOccupationEvent]):

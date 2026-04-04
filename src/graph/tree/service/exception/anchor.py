@@ -15,7 +15,7 @@ __all__ = [
     "NodeTreeServiceException",
 ]
 
-from logic.system import ServiceException
+from system import ServiceException
 
 # ======================# NODE_TREE_SERVICE_EXCEPTION #======================#
 class NodeTreeServiceException(ServiceException):

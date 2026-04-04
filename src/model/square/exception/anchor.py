@@ -15,7 +15,7 @@ __all__ = [
     "SquareException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 
 # ======================# SQUARE_EXCEPTION #======================#

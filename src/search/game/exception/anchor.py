@@ -15,7 +15,7 @@ __all__ = [
     "GameContextException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 
 # ======================# GAME_CONTEXT_EXCEPTION #======================#

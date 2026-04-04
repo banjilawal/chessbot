@@ -15,7 +15,7 @@ ___all__ = [
     "SquareStackServiceException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 
 # ======================# SQUARE_STACK_COUNTS_ANALYZEREXCEPTION #======================#

@@ -15,7 +15,7 @@ __all__ = [
     "GraphContextServiceException",
 ]
 
-from logic.system import ServiceException
+from system import ServiceException
 
 
 # ======================# GRAPH_CONTEXT_SERVICE_EXCEPTION #======================#

@@ -17,7 +17,7 @@ from graph.node import (
     NodeContextBuildRouteException, NodeValidator, ZeroNodeContextFlagsException
 )
 from logic.square import Square, SquareService
-from logic.system import Builder, BuildResult, NumberValidator
+from system import Builder, BuildResult, NumberValidator
 
 
 

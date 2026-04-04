@@ -1,9 +1,9 @@
 import pygame
 
 from build.board import Board
-from logic.system.config import CELL_PX, BORDER_PX, SCREEN_WIDTH, SCREEN_HEIGHT, KING_COLOR, PAWN_COLOR, KNIGHT_COLOR, CASTLE_COLOR, \
+from system import CELL_PX, BORDER_PX, SCREEN_WIDTH, SCREEN_HEIGHT, KING_COLOR, PAWN_COLOR, KNIGHT_COLOR, CASTLE_COLOR, \
   BISHOP_COLOR, QUEEN_COLOR, MousePlacementStatus
-from logic.system.color import GameColor
+from system import GameColor
 
 
 from dataclasses import dataclass

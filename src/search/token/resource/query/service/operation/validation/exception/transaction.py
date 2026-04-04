@@ -15,7 +15,7 @@ __all__ = [
     "TokenQueryValidationException",
 ]
 
-from logic.system import ValidationException
+from system import ValidationException
 
 
 # ======================# TOKEN_QUERY_VALIDATION_FAILURE #======================#

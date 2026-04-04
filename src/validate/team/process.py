@@ -12,7 +12,7 @@ from typing import cast, Any
 from logic.board import Board, BoardService
 from logic.player import Player, PlayerService
 from catalog.schema import SchemaService
-from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
+from system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from logic.team import (
     BoardHasStaleTeamLinkException, NullTeamException, PlayerHasStaleTeamLinkException, Team,
     TeamBelongsToDifferentBoardException,

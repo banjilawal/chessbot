@@ -8,7 +8,7 @@ version: 1.0.0
 """
 from typing import List
 
-from logic.system import DataFinder, SearchResult
+from system import DataFinder, SearchResult
 from logic.arena import Arena, ArenaContext
 
 

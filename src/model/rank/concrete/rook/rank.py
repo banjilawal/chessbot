@@ -15,7 +15,7 @@ from geometry.vector import VectorService
 from math.span import RookSpanner, CoordSpan
 from logic.rank import RookException, Rank
 from logic.coord import Coord, CoordService
-from logic.system import ComputationResult, LoggingLevelRouter
+from system import ComputationResult, LoggingLevelRouter
 
 class Rook(Rank):
     """

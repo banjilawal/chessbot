@@ -15,7 +15,7 @@ __all__ = [
     "WorkException",
 ]
 
-from logic.system import ChessException
+from system import ChessException
 
 # ======================# WORK_EXCEPTION #======================#
 class WorkException(ChessException):

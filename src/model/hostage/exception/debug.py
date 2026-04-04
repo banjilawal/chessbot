@@ -15,7 +15,7 @@ __all__ = [
     "HostageDebugException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# HOSTAGE_DEBUG_EXCEPTION #======================#
 class HostageDebugException(DebugException):

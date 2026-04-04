@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import cast
 
-from logic.system import Validator, ValidationResult, IdValidator, LoggingLevelRouter
+from system import Validator, ValidationResult, IdValidator, LoggingLevelRouter
 from logic.piece import (
     BlockingEvent, NullBlockingEventException, PieceValidator, BoardActorValidator, TravelResourceValidator,
     DiscoverySearchContextBuilder, DiscoverySearchContext, DiscoverySearch, ActorSameAsBlockerException,

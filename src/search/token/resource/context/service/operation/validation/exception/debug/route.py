@@ -15,7 +15,7 @@ __all__ = [
     "TokenContextValidationRouteException",
 ]
 
-from logic.system import ContextRouteException
+from system import ContextRouteException
 
 
 # ======================# TOKEN_CONTEXT_VALIDATION_ROUTE_EXCEPTION #======================#

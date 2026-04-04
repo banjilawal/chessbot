@@ -15,7 +15,7 @@ __all__ = [
     "EmptyCoordDatasetException",
 ]
 
-from logic.system import NullException
+from system import NullException
 
 #======================# NULL_SQUARE_EXCEPTION #======================#
 class EmptyCoordDatasetException(NullException):

@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 
-from logic.system import (
+from system import (
     BuildOptionSelectionTooLargeException, ContextException, NoBuildOptionSelectedException, NullException,
     BuildException, ValidationException,
 )

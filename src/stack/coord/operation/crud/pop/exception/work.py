@@ -15,7 +15,7 @@ __all__ = [
     "CoordStackPopException",
 ]
 
-from logic.system import DeletionException
+from system import DeletionException
 
 # ======================# COORD_STACK_POP_FAILURE #======================#
 class CoordStackPopException(DeletionException):

@@ -15,7 +15,7 @@ __all__ = [
     "ZoneException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 
 # ======================# ZONE_EXCEPTION #======================#

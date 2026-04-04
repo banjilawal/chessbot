@@ -14,7 +14,7 @@ __all__ = [
     # ======================# VECTOR_VALIDATION_FAILURE #======================#
     "VectorValidationException",
 ]
-from logic.system import ValidationException
+from system import ValidationException
 
 # ======================# VECTOR_VALIDATION_FAILURE #======================#
 class VectorValidationException(ValidationException):

@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 
-from logic.system import ComputationResult, LoggingLevelRouter
+from system import ComputationResult, LoggingLevelRouter
 from logic.square import SquareStackService
 
 

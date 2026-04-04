@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Any, cast
 
 from logic.arena.service import ArenaService
-from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
+from system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from logic.board import (
     BoardContextValidationException, ZeroBoardContextFlagsException, BoardContext,
     NullBoardContextException, ArenaBoardContextFlagsException, BoardContextValidationRouteException

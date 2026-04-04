@@ -15,7 +15,7 @@ __all__ = [
     "PersonaException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 
 # ======================# PERSONA_EXCEPTION #======================#

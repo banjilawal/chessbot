@@ -13,7 +13,7 @@ __all__ = [
 ]
 
 from logic.rank import RankContextException
-from logic.system import ExecutionRouteException
+from system import ExecutionRouteException
 
 
 # ======================# NO_RANK_CONTEXT_BUILD_ROUTE EXCEPTION #======================#

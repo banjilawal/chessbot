@@ -15,7 +15,7 @@ __all__ = [
     "SquareDebugException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# SQUARE_DEBUG_EXCEPTION #======================#
 class SquareDebugException(DebugException):

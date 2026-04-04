@@ -15,7 +15,7 @@ __all__ = [
     "UniqueAttributeException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# COLLISION EXCEPTION #======================#
 class UniqueAttributeException(DebugException):

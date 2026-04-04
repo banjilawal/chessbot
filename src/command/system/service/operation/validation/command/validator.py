@@ -14,7 +14,7 @@ from command import (
     Command, CommandArgsValidator, CommandNameNotFoundException, CommandTable, CommandTypeSupportException,
     CommandValidationException, NullCommandException
 )
-from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
+from system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 
 
 class CommandValidator(Validator[Command]):

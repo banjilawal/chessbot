@@ -15,7 +15,7 @@ __all__ = [
     "TokenStackFullException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# TOKEN_STACK_FULL_EXCEPTION #======================#
 class TokenStackFullException(DebugException):

@@ -15,7 +15,7 @@ __all__ = [
     "TeamContextDebugException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# TEAM_CONTEXT_DEBUG_EXCEPTION #======================#
 class TeamContextDebugException(DebugException):

@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import List
 
-from logic.system import LoggingLevelRouter, SearchMicroservice, SearchResult
+from system import LoggingLevelRouter, SearchMicroservice, SearchResult
 from catalog.schema import (
     Schema, SchemaContextService, SchemaQuery, SchemaQueryService, SchemaSearchResourceHost,
     SchemaSearchRouter, SchemaSearchServiceException

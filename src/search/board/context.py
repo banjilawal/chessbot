@@ -11,7 +11,7 @@ from typing import Optional
 
 from logic.board import Board
 from logic.arena import Arena
-from logic.system import Context
+from system import Context
 
 
 class BoardContext(Context[Board]):

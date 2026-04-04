@@ -1,5 +1,5 @@
 
-from logic.system import IntegrityMicroservice, id_emitter
+from system import IntegrityMicroservice, id_emitter
 from graph.domain import DomainOrigin, DomainOriginBuilder, DomainOriginValidator
 
 class DomainOriginService(IntegrityMicroservice[DomainOrigin]):

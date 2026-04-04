@@ -15,7 +15,7 @@ __all__ = [
     "SchemaQueryDebugException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# SCHEMA_QUERY_DEBUG_EXCEPTION #======================#
 class SchemaQueryDebugException(DebugException):

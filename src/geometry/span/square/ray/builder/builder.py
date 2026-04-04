@@ -13,7 +13,7 @@ from typing import List
 from logic.coord import Coord
 from math.span import CoordRay, SquareRay, SquareRayBuildException
 from logic.square import Square, SquareContext, SquareNotFoundException, SquareStackService
-from logic.system import Builder, BuildResult, LoggingLevelRouter, SearchResult
+from system import Builder, BuildResult, LoggingLevelRouter, SearchResult
 
 
 class SquareRayBuilder(Builder[SquareRay]):

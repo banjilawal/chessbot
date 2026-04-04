@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Type
 
 from catalog.schema import Schema
-from logic.system import CatalogQuery
+from system import CatalogQuery
 from catalog.schema import SchemaContext
 
 

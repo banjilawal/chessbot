@@ -15,7 +15,7 @@ __all__ = [
     "NullTokenContextException",
 ]
 
-from logic.system import NullException
+from system import NullException
 
 
 # ======================# NULL_TOKEN_CONTEXT_EXCEPTION #======================#

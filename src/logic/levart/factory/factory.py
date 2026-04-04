@@ -11,7 +11,7 @@ from typing import cast
 
 from logic.rank import Queen
 from logic.square import Square
-from logic.system import LoggingLevelRouter, BuildResult, id_emitter
+from system import LoggingLevelRouter, BuildResult, id_emitter
 from logic.board import Board, BoardSquareFinder, BoardContext, CoordSearchInvariantBreachException
 from logic.piece import (
     KingCheckEvent, Piece, KingPiece, CombatantPiece, AttackEvent, OccupationEvent, BlockingEvent, PromotablePiece,

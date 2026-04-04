@@ -16,7 +16,7 @@ __all__ = [
 
 from typing import Optional
 
-from logic.system import ServiceRequestDebugException
+from system import ServiceRequestDebugException
 
 # ======================# ARGUMENT_NAME_TYPE_MISMATCH_EXCEPTION #======================#
 class ArgumentNameTypeBindingException(ServiceRequestDebugException):

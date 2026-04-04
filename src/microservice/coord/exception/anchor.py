@@ -15,7 +15,7 @@ __all__ = [
     "CoordServiceException",
 ]
 
-from logic.system import ServiceException
+from system import ServiceException
 
 
 # ======================# COORD_SERVICE_EXCEPTION #======================#

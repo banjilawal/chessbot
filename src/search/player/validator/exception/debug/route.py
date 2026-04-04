@@ -15,7 +15,7 @@ __all__ = [
     "PlayerContextValidationRouteException",
 ]
 
-from logic.system import ExecutionRouteException
+from system import ExecutionRouteException
 
 # ======================# PLAYER_CONTEXT_VALIDATION_ROUTE_EXCEPTION #======================#
 class PlayerContextValidationRouteException(ExecutionRouteException):

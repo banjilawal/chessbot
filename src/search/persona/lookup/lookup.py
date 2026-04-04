@@ -15,7 +15,7 @@ from catalog.persona import (
     PersonaNameBoundsException, PersonaQuotaBoundsException, PersonaRansomBoundsException, PersonaKey,
     PersonaKeyValidator
 )
-from logic.system import HashLookupProcess, LoggingLevelRouter, SearchResult
+from system import HashLookupProcess, LoggingLevelRouter, SearchResult
 
 
 class PersonaLookupProcess(HashLookupProcess[Persona]):

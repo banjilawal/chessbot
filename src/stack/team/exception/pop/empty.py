@@ -14,7 +14,7 @@ __all__ = [
     "PoppingEmptyTeamStackException",
 ]
 
-from logic.system import NullException
+from system import NullException
 from logic.team import TeamStackException
 
 

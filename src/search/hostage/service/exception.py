@@ -7,7 +7,7 @@ Created: 2025-11-22
 version: 1.0.0
 """
 
-from logic.system import ServiceException
+from system import ServiceException
 from model.hostage import CaptivityContextException
 
 __all__ = [

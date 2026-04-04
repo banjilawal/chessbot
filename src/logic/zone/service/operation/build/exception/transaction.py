@@ -15,7 +15,7 @@ __all__ = [
     "ZoneBuildException",
 ]
 
-from logic.system import BuildException
+from system import BuildException
 
 # ======================# ZONE_BUILD_FAILURE #======================#
 class ZoneBuildException(BuildException):

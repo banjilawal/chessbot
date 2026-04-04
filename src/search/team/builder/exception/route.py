@@ -15,7 +15,7 @@ __all__ = [
     "TeamContextExecutionRouteException",
 ]
 
-from logic.system import ExecutionRouteException
+from system import ExecutionRouteException
 
 
 # ======================# TEAM_CONTEXT_EXECUTION_ROUTE_EXCEPTION #======================#

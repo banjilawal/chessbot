@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from catalog.schema import SchemaException
-from logic.system import ExecutionRouteException
+from system import ExecutionRouteException
 
 
 __all__ = [

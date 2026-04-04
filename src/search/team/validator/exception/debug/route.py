@@ -15,7 +15,7 @@ __all__ = [
     "TeamContextValidationRouteException",
 ]
 
-from logic.system import ExecutionRouteException
+from system import ExecutionRouteException
 
 # ======================# TEAM_CONTEXT_VALIDATION_ROUTE_EXCEPTION #======================#
 class TeamContextValidationRouteException(ExecutionRouteException):

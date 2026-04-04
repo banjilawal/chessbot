@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from graph.domain import DomainException
-from logic.system import FinderException
+from system import FinderException
 
 __all__ = [
     "DomainVisitorFinderException",

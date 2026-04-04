@@ -17,7 +17,7 @@ __all__ = [
     "NullCommandException",
 ]
 
-from logic.system import NullException
+from system import NullException
 
 
 # ======================# NULL_COMMAND_EXCEPTION #======================#

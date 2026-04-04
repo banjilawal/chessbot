@@ -15,7 +15,7 @@ __all__ = [
     "CoordDatabaseException",
 ]
 
-from logic.system import DatabaseException
+from system import DatabaseException
 
 
 # ======================# COORD_DATABASE_EXCEPTION #======================#

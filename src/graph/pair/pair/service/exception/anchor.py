@@ -15,7 +15,7 @@ __all__ = [
     "PairServiceException",
 ]
 
-from logic.system import ServiceException
+from system import ServiceException
 
 
 # ======================# PAIR_SERVICE_EXCEPTION #======================#

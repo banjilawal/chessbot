@@ -15,7 +15,7 @@ __all__ = [
     "VectorDebugException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# VECTOR_DEBUG_EXCEPTION #======================#
 class VectorDebugException(DebugException):

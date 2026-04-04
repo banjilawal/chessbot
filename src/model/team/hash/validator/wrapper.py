@@ -13,7 +13,7 @@ __all__ = [
 ]
 
 from logic.team import TeamHashException
-from logic.system import ValidationException
+from system import ValidationException
 
 
 

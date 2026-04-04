@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from graph.graph import GraphException
-from logic.system import ComputationException
+from system import ComputationException
 
 __all__ = [
     # ======================# NODE_INSERTION_FAILURE #======================#

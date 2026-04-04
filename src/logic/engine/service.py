@@ -13,7 +13,7 @@ from typing import Any
 from logic.engine import Engine
 from logic.engine.builder import EngineBuilder
 from logic.engine.validator import EngineValidator
-from logic.system import BuildResult, ValidationResult
+from system import BuildResult, ValidationResult
 
 
 class EngineService:

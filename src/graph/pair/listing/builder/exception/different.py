@@ -6,7 +6,7 @@ ___all__ = [
     "TreeDoesNotOwnRayException",
 ]
 
-from logic.system import NoRelationException
+from system import NoRelationException
 
 
 # ======================# TREE_DOES_NOT_OWN_RAY_EXCEPTION #======================#

@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from logic.team import TeamDebugException
-from logic.system import StaleRelationException
+from system import StaleRelationException
 
 __all__ = [
     # ======================# PLAYER_HAS_STALE_LINK_TO_TEAM EXCEPTION #======================#

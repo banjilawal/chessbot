@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from logic.square import Square
-from logic.system import LoggingLevelRouter
+from system import LoggingLevelRouter
 from model.token import Token
 from logic.visit import VisitationResult
 

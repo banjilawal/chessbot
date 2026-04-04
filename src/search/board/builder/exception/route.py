@@ -15,7 +15,7 @@ __all__ = [
     "BoardContextExecutionRouteException",
 ]
 
-from logic.system import ExecutionRouteException
+from system import ExecutionRouteException
 
 
 # ======================# BOARD_CONTEXT_EXECUTION_ROUTE_EXCEPTION #======================#

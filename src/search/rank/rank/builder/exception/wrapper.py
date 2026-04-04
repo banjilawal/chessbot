@@ -15,7 +15,7 @@ __all__ = [
     "RankContextBuildException",
 ]
 
-from logic.system import BuildException
+from system import BuildException
 
 # ======================# RANK_CONTEXT_BUILD_FAILURE #======================#
 class RankContextBuildException(BuildException):

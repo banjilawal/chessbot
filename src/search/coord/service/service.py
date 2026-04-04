@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import List
 
 from logic.coord import Coord
-from logic.system import QueryService, IdFactory, LoggingLevelRouter, SearchResult
+from system import QueryService, IdFactory, LoggingLevelRouter, SearchResult
 
 class CoordQueryService(QueryService[Coord]):
     """

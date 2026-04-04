@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Any, List, cast
 
 from logic.square import SquareValidator
-from logic.system import LoggingLevelRouter, ValidationResult, Validator
+from system import LoggingLevelRouter, ValidationResult, Validator
 from math.span import SquareRay, SquareRayMembersNullException, SquareRayNullException, SquareRayValidationException
 
 

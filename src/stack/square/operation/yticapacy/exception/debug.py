@@ -15,7 +15,7 @@ __all__ = [
     "SquareStackCountsAnalyzerDebugException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 
 # ======================# SQUARE_STACK_COUNTS_ANALYZER_DEBUG_EXCEPTION #======================#

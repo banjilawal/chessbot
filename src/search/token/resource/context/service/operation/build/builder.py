@@ -14,7 +14,7 @@ from typing import Optional
 from logic.rank import Rank
 from logic.coord import Coord
 from logic.team import ExcessTeamContextFlagsException, Team
-from logic.system import BuildResult, Builder, GameColor, LoggingLevelRouter
+from system import BuildResult, Builder, GameColor, LoggingLevelRouter
 from model.token import (
     TokenContext, TokenContextBuildException, TokenContextBuildRouteException,
     TokenContextIntegrityWorkers, ZeroTokenContextFlagsException

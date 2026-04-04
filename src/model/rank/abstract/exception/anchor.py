@@ -15,7 +15,7 @@ __all__ = [
     "RankException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 # ======================# RANK_EXCEPTION #======================#
 class RankException(AnchorException):

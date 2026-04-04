@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Dict
 
-from logic.system import ComputationResult
+from system import ComputationResult
 from logic.coord import Coord, CoordService
 from math.span import (
     PerpendicularRayProvider, QueenSpannerException, DiagonalRayProvider, CoordSpan, Spanner, SpannerEngine

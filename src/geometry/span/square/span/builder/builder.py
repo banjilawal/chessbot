@@ -15,7 +15,7 @@ from logic.coord import Coord
 from math.span.square import SquareSpanBuildException
 from logic.square import Square, SquareContext, SquareStackService
 from math.span import CoordRay, CoordSpan, SquareRay, SquareSpan
-from logic.system import BuildResult, Builder, ComputationResult, LoggingLevelRouter, SearchResult
+from system import BuildResult, Builder, ComputationResult, LoggingLevelRouter, SearchResult
 
 
 class SquareSpanBuilder(Builder[SquareSpan]):

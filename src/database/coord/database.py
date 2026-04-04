@@ -13,7 +13,7 @@ from collections.abc import Iterator
 from typing import List, Optional
 
 from logic.coord import Coord, CoordContext, CoordDatabaseException, CoordStackService, CoordService
-from logic.system import (
+from system import (
     DeletionResult, IdFactory, IdentityService, InsertionResult, LoggingLevelRouter, MethodImplementationException,
     SearchResult, Database,
 )

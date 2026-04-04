@@ -15,7 +15,7 @@ __all__ = [
     "NullEdgeContextException",
 ]
 
-from logic.system import NullException
+from system import NullException
 
 # ======================# NULL_EDGE_CONTEXT_EXCEPTION #======================#
 class NullEdgeContextException(NullException):

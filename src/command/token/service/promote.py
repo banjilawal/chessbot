@@ -10,7 +10,7 @@ from __future__ import annotations
 from typing import Any, Dict
 
 from logic.rank import Rank
-from logic.system import IdFactory
+from system import IdFactory
 from command.token.root import TokenCommand
 from model.token import PawnToken, TokenService
 

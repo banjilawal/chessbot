@@ -15,7 +15,7 @@ __all__ = [
     "ExcessHostageContextFlagsException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# EXCESS_HOSTAGE_CONTEXT_FLAGS_EXCEPTION #======================#
 class ExcessHostageContextFlagsException(DebugException):

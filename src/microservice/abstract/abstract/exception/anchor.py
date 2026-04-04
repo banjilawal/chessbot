@@ -15,7 +15,7 @@ __all__ = [
     "ServiceException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 # ======================# SERVICE_EXCEPTION #======================#
 class ServiceException(AnchorException):

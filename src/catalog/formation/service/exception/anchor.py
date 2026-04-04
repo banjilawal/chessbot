@@ -15,7 +15,7 @@ __all__ = [
     "FormationServiceException",
 ]
 
-from logic.system import ServiceException
+from system import ServiceException
 
 
 # ======================# FORMATION_SERVICE_EXCEPTION #======================#

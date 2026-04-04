@@ -15,7 +15,7 @@ __all__ = [
     "FormationDebugException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# FORMATION_DEBUG_EXCEPTION #======================#
 class FormationDebugException(DebugException):

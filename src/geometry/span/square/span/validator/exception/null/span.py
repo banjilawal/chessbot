@@ -15,7 +15,7 @@ __all__ = [
     "SquareSpanNullException",
 ]
 
-from logic.system import NullException
+from system import NullException
 
 #======================# SQUARE_SPAN_NULL_EXCEPTION #======================#
 class SquareSpanNullException(NullException):

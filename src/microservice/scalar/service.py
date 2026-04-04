@@ -18,7 +18,7 @@ Created: 2025-11-18
 
 from __future__ import annotations
 
-from logic.system import IdFactory, IntegrityMicroservice, Builder, Validator
+from system import IdFactory, IntegrityMicroservice, Builder, Validator
 
 
 class ScalarService(IntegrityMicroservice[Scalar]):

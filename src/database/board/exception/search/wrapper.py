@@ -13,7 +13,7 @@ __all__ = [
 ]
 
 from logic.board import BoardException
-from logic.system import SearchException
+from system import SearchException
 
 
 # ======================# UNIQUE_BOARD_SEARCH_FAILURE #======================#

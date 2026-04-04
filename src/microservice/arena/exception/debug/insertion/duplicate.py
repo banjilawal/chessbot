@@ -13,7 +13,7 @@ __all__ = [
 ]
 
 from logic.arena import ArenaException
-from logic.system import DebugException
+from system import DebugException
 
 
 # ======================# ARENA_ALREADY_CONTAINS_TEAM EXCEPTION #======================#

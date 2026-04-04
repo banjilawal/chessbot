@@ -13,7 +13,7 @@ __all__ = [
 ]
 
 from logic.board import BoardException
-from logic.system import DeletionException
+from system import DeletionException
 
 
 # ======================# BOARD_DELETION_FAILURE #======================#

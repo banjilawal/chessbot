@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from graph.graph import Node, NodeBuildException
 from logic.square import Square, SquareValidator
-from logic.system import BuildResult, Builder, LoggingLevelRouter
+from system import BuildResult, Builder, LoggingLevelRouter
 
 
 class NodeBuilder(Builder[Node]):

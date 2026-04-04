@@ -10,7 +10,7 @@ from __future__ import annotations
 
 
 from command import Command, CommandBuilder, CommandOpsController
-from logic.system import IntegrityMicroservice
+from system import IntegrityMicroservice
 
 
 class CommandService(IntegrityMicroservice[Command]):

@@ -15,7 +15,7 @@ __all__ = [
     "TokenStackPopException",
 ]
 
-from logic.system import DeletionException
+from system import DeletionException
 
 # ======================# TOKEN_STACK_POP_FAILURE #======================#
 class TokenStackPopException(DeletionException):

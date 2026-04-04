@@ -26,7 +26,7 @@ __all__ = [
     "VectorCoordUnionValidatorException",
 ]
 
-from logic.system import ValidationException
+from system import ValidationException
 
 
 # ======================# VECTOR_COORD_UNION_VALIDATION_FAILURE #======================#

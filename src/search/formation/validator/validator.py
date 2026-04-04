@@ -16,7 +16,7 @@ from catalog.formation import (
     FormationKeyValidationRouteException, NullFormationKeyException, ZeroFormationKeysException
 )
 from catalog.persona import PersonaService
-from logic.system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
+from system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
 
 
 class FormationKeyValidator(Validator[FormationKey]):

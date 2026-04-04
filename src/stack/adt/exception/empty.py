@@ -15,7 +15,7 @@ __all__ = [
     "PoppingEmptyStackException",
 ]
 
-from logic.system import StackServiceDebugException
+from system import StackServiceDebugException
 
 
 # ======================# POPPING_EMPTY_STACK_EXCEPTION #======================#

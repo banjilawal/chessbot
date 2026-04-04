@@ -13,7 +13,7 @@ from typing import Optional
 from logic.piece import Piece
 from logic.board import Board
 from logic.square import Square
-from logic.system import Scene
+from system import Scene
 
 
 class TurnScene(Scene[Piece, Board, Square]):

@@ -9,7 +9,7 @@ version: 1.0.0
 from typing import List
 
 
-from logic.system import LoggingLevelRouter, SearchResult
+from system import LoggingLevelRouter, SearchResult
 from logic.rank import RankSpec, RankFinderException
 
 

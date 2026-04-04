@@ -15,7 +15,7 @@ __all__ = [
     "IntegrityServiceException",
 ]
 
-from logic.system import ServiceException
+from system import ServiceException
 
 # ======================# SERVICE_EXCEPTION #======================#
 class IntegrityServiceException(ServiceException):

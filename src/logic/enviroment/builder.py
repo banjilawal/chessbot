@@ -14,7 +14,7 @@ from logic.square import Square
 from logic.board import Board, BoardValidator
 from logic.piece import Piece, PieceValidator
 from logic.enviroment.validator import TurnScene, TurnSceneValidator
-from logic.system import Builder, BuildResult, IdValidator, LoggingLevelRouter
+from system import Builder, BuildResult, IdValidator, LoggingLevelRouter
 
 
 class TurnSceneBuilder(Builder[TurnScene]):

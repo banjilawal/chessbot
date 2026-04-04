@@ -13,7 +13,7 @@ __all__ = [
     "TeamDoesNotExistForRemovalException",
 ]
 
-from logic.system import NullException
+from system import NullException
 from logic.team import TeamStackException
 
 

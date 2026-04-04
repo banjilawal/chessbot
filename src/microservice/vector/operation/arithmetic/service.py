@@ -13,7 +13,7 @@ from typing import cast
 from logic.coord import Coord, CoordService
 from build.scalar import Scalar, ScalarService
 from geometry.vector import Vector, VectorBuilder, VectorServiceException, VectorValidator
-from logic.system import (
+from system import (
     BuildResult, ComputationResult, IdFactory, LoggingLevelRouter, IntegrityMicroservice, NumberValidator
 )
 

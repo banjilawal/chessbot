@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Optional
 
 from logic.square import Square
-from logic.system import Context
+from system import Context
 from model.hostage import Hostage
 from model.token import CombatantToken, Token
 

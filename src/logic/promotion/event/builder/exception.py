@@ -9,7 +9,7 @@ version: 1.0.0
 
 
 
-from logic.system import BuildException
+from system import BuildException
 from logic.promotion import PromotionEventException
 
 

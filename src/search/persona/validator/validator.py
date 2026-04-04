@@ -13,7 +13,7 @@ from catalog.persona import (
     ArenaPersonaKeysException, NullPersonaKeyException, PersonaKey, ZeroPersonaKeysException,
     PersonaKeyValidationException, PersonaKeyValidationRouteException
 )
-from logic.system import (
+from system import (
     IdentityService, LoggingLevelRouter, NumberValidator, ValidationException, ValidationResult, Validator
 )
 

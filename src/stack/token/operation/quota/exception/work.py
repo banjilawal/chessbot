@@ -15,7 +15,7 @@ __all__ = [
     "RankQuotaAnalysisException",
 ]
 
-from logic.system import OperationException
+from system import OperationException
 
 
 # ======================# RANK_QUOTA_ANALYZER_FAILURE_EXCEPTION #======================#

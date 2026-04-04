@@ -15,7 +15,7 @@ __all__ = [
     "NodeContextBuildException",
 ]
 
-from logic.system import BuildException
+from system import BuildException
 
 # ======================# NODE_CONTEXT_BUILD_FAILURE #======================#
 class NodeContextBuildException(BuildException):

@@ -13,7 +13,7 @@ from model.hostage import (
     AppendingHostageDirectlyIntoItemsFailedException, HostageQueryService, Hostage,
     HostageDataListException, HostageInsertionException, HostageService
 )
-from logic.system import StackService, InsertionResult, LoggingLevelRouter, id_emitter
+from system import StackService, InsertionResult, LoggingLevelRouter, id_emitter
 
 
 class HostageList(StackService[Hostage]):

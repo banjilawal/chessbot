@@ -16,7 +16,7 @@ __all__ = [
     "SchemaContextBuildException",
 ]
 
-from logic.system import BuildException
+from system import BuildException
 
 
 # ======================# SCHEMA_CONTEXT_BUILD_FAILURE #======================#

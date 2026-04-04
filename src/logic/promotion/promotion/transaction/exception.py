@@ -7,7 +7,7 @@ Created: 2025-10-24
 version: 1.0.0
 """
 
-from logic.system import RollbackException
+from system import RollbackException
 from logic.piece import OccupationTransactionException, TravelTransactionException
 
 __all__ = [

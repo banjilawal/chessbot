@@ -15,7 +15,7 @@ __all__ = [
     "RayComputationException",
 ]
 
-from logic.system import ComputationException
+from system import ComputationException
 
 
 # ======================# RAY_COMPUTATION_FAILURE #======================#

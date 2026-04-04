@@ -11,7 +11,7 @@ from typing import Optional
 
 from model.game import Game, GameService
 from logic.team import Team, TeamService
-from logic.system import Builder, BuildResult, ExecutionRouteException, IdentityService, LoggingLevelRouter
+from system import Builder, BuildResult, ExecutionRouteException, IdentityService, LoggingLevelRouter
 from logic.arena import (
     ArenaContext, ArenaContextBuildException, ExcessArenaContextFlagsException, ZeroArenaContextFlagsException,
 )

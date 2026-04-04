@@ -15,7 +15,7 @@ __all__ = [
     "VectorBuildException",
 ]
 
-from logic.system import BuildException
+from system import BuildException
 
 # ======================# VECTOR_BUILD_FAILURE #======================#
 class VectorBuildException(BuildException):

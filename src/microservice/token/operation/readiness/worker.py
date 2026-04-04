@@ -9,13 +9,12 @@ version: 1.0.0
 
 from __future__ import annotations
 
-import token
 from typing import cast
 
-from logic.system import LoggingLevelRouter, RelationReport
-from logic.system.relation.analysis import RelationAnalysis
+from system import LoggingLevelRouter, RelationReport
+from system.relation import RelationAnalysis
 from model.token import (
-    ReadinessStateNullException, TokenException, ReadinessState, TokenReadinessAnalysisException, CombatantToken,
+    ReadinessState, TokenReadinessAnalysisException, CombatantToken,
     KingToken, Token, TokenValidation
 )
 

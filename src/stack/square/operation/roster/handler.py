@@ -17,7 +17,7 @@ from logic.square import (
 )
 from logic.team import Team, TeamService
 from model.token import Token, TokenContext, TokenNotFoundException
-from logic.system import LoggingLevelRouter, SearchResult, UpdateResult
+from system import LoggingLevelRouter, SearchResult, UpdateResult
 
 class SquareStackRosterHandler:
     """

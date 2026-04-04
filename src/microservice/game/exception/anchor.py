@@ -15,7 +15,7 @@ __all__ = [
     "GameServiceException",
 ]
 
-from logic.system import ServiceException
+from system import ServiceException
 
 
 # ======================# GAME_SERVICE_EXCEPTION #======================#

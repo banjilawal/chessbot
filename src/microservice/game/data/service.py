@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import List, cast
 
 
-from logic.system import StackService, id_emitter
+from system import StackService, id_emitter
 from model.game import Game, GameQueryService, GameService
 
 

@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== SYSTEM.ERR.WORK PACKAGE CONTENTS ===========#
 
 # Packages
-from .operation import *
 
 # Modules
 from .root import WorkException

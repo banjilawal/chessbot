@@ -15,7 +15,7 @@ __all__ = [
     "PairInsertionException",
 ]
 
-from logic.system import InsertionException
+from system import InsertionException
 
 # ======================# PAIR_INSERTION_FAILURE #======================#
 class PairInsertionException(InsertionException):

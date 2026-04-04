@@ -9,7 +9,7 @@ Created: 2025-11-18
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
-from logic.system import Microservice, Builder, Validator
+from system import Microservice, Builder, Validator
 
 T = TypeVar("T")
 

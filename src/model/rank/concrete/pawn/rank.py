@@ -16,7 +16,7 @@ from logic.coord import CoordService
 from geometry.vector import VectorService
 from math.span import PawnSpanner, CoordSpan
 from logic.rank import PawnException, Rank
-from logic.system import ComputationResult, LoggingLevelRouter
+from system import ComputationResult, LoggingLevelRouter
 
 class Pawn(Rank):
     """

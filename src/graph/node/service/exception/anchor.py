@@ -15,7 +15,7 @@ __all__ = [
     "NodeServiceException",
 ]
 
-from logic.system import ServiceException
+from system import ServiceException
 
 
 # ======================# NODE_SERVICE_EXCEPTION #======================#

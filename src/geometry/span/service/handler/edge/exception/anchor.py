@@ -15,7 +15,7 @@ __all__ = [
     "NodeEdgeHandlerException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 # ======================# SQUARE_DICT_EDGE_HANDLER_EXCEPTION #======================#
 class NodeEdgeHandlerException(AnchorException):

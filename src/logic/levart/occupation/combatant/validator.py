@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import Any
 
-from logic.system import Validator, ValidationResult
+from system import Validator, ValidationResult
 from logic.piece import (
     ActorAlreadyAtDestinationException, OccupationEvent,
     NullOccupationEventException, OccupationDestinationNotEmptyException, TravelResourceValidator

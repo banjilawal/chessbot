@@ -15,7 +15,7 @@ __all__ = [
     "DeployTeamException",
 ]
 
-from logic.system import DeletionException
+from system import DeletionException
 
 
 # ======================# DEPLOY_TEAM_FAILURE #======================#

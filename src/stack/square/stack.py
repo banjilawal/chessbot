@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import List, Optional
 
-from logic.system import (
+from system import (
     IdFactory, NUMBER_OF_COLUMNS, StackService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter,
     NUMBER_OF_ROWS, SearchResult, UpdateResult
 )

@@ -1,6 +1,6 @@
 from logic.attack import Attack, AttackingFriendlySquareException
 from logic.square import Square, SquareService
-from logic.system import LoggingLevelRouter
+from system import LoggingLevelRouter
 from model.token import ReadinessState, Token, TokenService
 
 

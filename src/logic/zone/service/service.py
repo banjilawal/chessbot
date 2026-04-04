@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.system import IdFactory, IntegrityMicroservice
+from system import IdFactory, IntegrityMicroservice
 from logic.zone import Zone, ZoneBuilder, ZoneOpsController, ZoneTable, ZoneValidator
 
 

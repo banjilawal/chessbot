@@ -15,7 +15,7 @@ __all__ = [
     "InterruptedRosterDeploymentException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# INTERRUPTED_ROSTER_DEPLOYMENT_EXCEPTION #======================#
 class InterruptedRosterDeploymentException(DebugException):

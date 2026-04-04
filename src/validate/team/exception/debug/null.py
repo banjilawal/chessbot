@@ -15,7 +15,7 @@ __all__ = [
     "NullTeamException",
 ]
 
-from logic.system import NullException
+from system import NullException
 
 #======================# NULL_TEAM_EXCEPTION #======================#
 class NullTeamException(NullException):

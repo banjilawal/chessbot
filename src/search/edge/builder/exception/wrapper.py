@@ -15,7 +15,7 @@ __all__ = [
     "EdgeContextBuildException",
 ]
 
-from logic.system import BuildException
+from system import BuildException
 
 # ======================# EDGE_CONTEXT_BUILD_FAILURE #======================#
 class EdgeContextBuildException(BuildException):

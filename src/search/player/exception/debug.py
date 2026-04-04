@@ -15,7 +15,7 @@ __all__ = [
     "PlayerContextDebugException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# PLAYER_CONTEXT_DEBUG_EXCEPTION #======================#
 class PlayerContextDebugException(DebugException):

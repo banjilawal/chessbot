@@ -15,7 +15,7 @@ __all__ = [
     "InconsistentTokenBoardStateException",
 ]
 
-from logic.system import InconsistentStateException
+from system import InconsistentStateException
 
 
 # ======================# INCONSISTENT_TOKEN_BOARD_STATE_EXCEPTION #======================#

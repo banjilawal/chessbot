@@ -14,7 +14,7 @@ from logic.board import (
     Board, BoardNotSubmittedArenaRegistrationException, BoardOwnedByDifferentArenaException, NullBoardException,
     BoardValidationException,
 )
-from logic.system import IdentityService, LoggingLevelRouter, Validator, ValidationResult
+from system import IdentityService, LoggingLevelRouter, Validator, ValidationResult
 
 
 class BoardValidator(Validator[Board]):

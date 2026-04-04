@@ -15,7 +15,7 @@ __all__ = [
     "ExcessGameContextFlagsException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# EXCESS_GAME_CONTEXT_FLAGS_EXCEPTION #======================#
 class ExcessGameContextFlagsException(DebugException):

@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from graph.node import NodeException
-from logic.system import ContextException
+from system import ContextException
 
 __all__ = [
     # ======================# NODE_CONTEXT EXCEPTION #======================#

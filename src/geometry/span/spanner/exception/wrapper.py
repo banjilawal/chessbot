@@ -15,7 +15,7 @@ __all__ = [
     "SpanComputationException",
 ]
 
-from logic.system import ComputationException
+from system import ComputationException
 
 
 # ======================# SPAN_COMPUTATION_FAILURE #======================#

@@ -16,7 +16,7 @@ __all__ = [
     "PushingDuplicateItemException",
 ]
 
-from logic.system import StackServiceDebugException
+from system import StackServiceDebugException
 
 
 # ======================# ADDING_DUPLICATE_ITEM_EXCEPTION #======================#

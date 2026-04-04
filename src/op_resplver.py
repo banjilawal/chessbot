@@ -11,7 +11,7 @@ from enum import Enum
 from typing import Any, Union
 
 
-from logic.system import BuildResult, Result, SearchResult, logging
+from system import BuildResult, Result, SearchResult, logging
 
 
 class OperationResolver(Enum):

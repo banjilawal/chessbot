@@ -12,7 +12,7 @@ from typing import Optional, cast
 from logic.agent import PlayerAgent
 from logic.arena import Arena
 from model.game import GameState
-from logic.system import MethodImplementationException, RollbackException, Result
+from system import MethodImplementationException, RollbackException, Result
 
 
 class Snapshot(Result):

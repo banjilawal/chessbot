@@ -15,7 +15,7 @@ __all__ = [
     "PlayerContextException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 
 # ======================# PLAYER_CONTEXT_EXCEPTION #======================#

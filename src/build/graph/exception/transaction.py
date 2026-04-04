@@ -15,7 +15,7 @@ __all__ = [
     "GraphBuildException",
 ]
 
-from logic.system import BuildException
+from system import BuildException
 
 # ======================# GRAPH_BUILD_FAILURE #======================#
 class GraphBuildException(BuildException):

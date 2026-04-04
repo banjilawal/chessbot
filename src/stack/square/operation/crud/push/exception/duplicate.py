@@ -18,7 +18,7 @@ __all__ = [
     "AddingDuplicateSquareException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# ADDING_DUPLICATE_SQUARE_EXCEPTION #======================#
 class AddingDuplicateSquareException(DebugException):

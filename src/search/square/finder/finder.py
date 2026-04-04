@@ -12,7 +12,7 @@ from typing import List
 
 from logic.board import Board
 from logic.coord import Coord
-from logic.system import LoggingLevelRouter, SearchResult, StackSearchRouter
+from system import LoggingLevelRouter, SearchResult, StackSearchRouter
 from logic.square import (
     Square, SquareContext, SquareContextValidator, SquareSearchException, SquareSearchRouteException, SquareState,
     SquareValidator

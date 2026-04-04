@@ -7,7 +7,7 @@ Created: 2025-10-01
 version: 1.0.0
 """
 
-from logic.system import DebugException
+from system import DebugException
 from logic.arena import ArenaException
 
 __all__ = [

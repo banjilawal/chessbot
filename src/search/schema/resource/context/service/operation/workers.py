@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.system import GameColorValidator, IdentityService
+from system import GameColorValidator, IdentityService
 
 class SchemaContextIntegrityWorkers:
     """

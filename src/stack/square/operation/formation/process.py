@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 from logic.square.database.kernel.operation.deploy import TokenDeploymentProcessException
-from logic.system import InsertionResult, LoggingLevelRouter, UpdateResult, ValidationResult
+from system import InsertionResult, LoggingLevelRouter, UpdateResult, ValidationResult
 from logic.square import (
     SquareContext, SquareStackCapacityFullException, Square, SquareStackFullException,
     SquareStackDeployException, SquareStackService, SquareStackState

@@ -8,7 +8,7 @@ version: 1.0.0
 """
 from catalog.schema import SchemaContextBuilder, SchemaContextOpsController, SchemaContextValidator
 from catalog.schema import SchemaContext
-from logic.system import IntegrityMicroservice, IdFactory
+from system import IntegrityMicroservice, IdFactory
 
 class SchemaContextService(IntegrityMicroservice[SchemaContext]):
     """

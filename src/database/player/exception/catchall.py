@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from logic.agent import AgentException
-from logic.system import DatabaseException
+from system import DatabaseException
 
 __all__ = [
     #======================# UNIQUE_AGENT_STACK_SERVICE EXCEPTION #======================#

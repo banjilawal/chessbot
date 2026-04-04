@@ -15,7 +15,7 @@ __all__ = [
     "RankPersonaValidationRouteException",
 ]
 
-from logic.system import ExecutionRouteException
+from system import ExecutionRouteException
 
 # ======================# RANK_PERSONA_VALIDATION_ROUTE_EXCEPTION #======================#
 class RankPersonaValidationRouteException(ExecutionRouteException):

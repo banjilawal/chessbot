@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 from model.token import Token
-from logic.system import DeletionResult, LoggingLevelRouter
+from system import DeletionResult, LoggingLevelRouter
 from logic.square import (
     DepartingEmptySquareException, Square, SquareDepartureException, SquareValidator
 )

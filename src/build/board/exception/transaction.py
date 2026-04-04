@@ -14,7 +14,7 @@ __all__ = [
     "BoardBuildException",
 ]
 
-from logic.system import BuildException
+from system import BuildException
 
 
 # ======================# BOARD_BUILD_FAILURE #======================#

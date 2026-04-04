@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from catalog.schema import SchemaKeyException
-from logic.system import ContextFlagCountException
+from system import ContextFlagCountException
 
 
 __all__ = [

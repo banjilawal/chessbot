@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import cast, Any
 
-from logic.system import LoggingLevelRouter, ValidationResult, Validator
+from system import LoggingLevelRouter, ValidationResult, Validator
 from logic.rank import (
     NullRankException, Rank, RankIntegrityWorkers, RankPersonaValidator, RankValidationException
 )

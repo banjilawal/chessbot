@@ -15,7 +15,7 @@ __all__ = [
     "NodeTreeProducerException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 
 # ======================# NODE_TREE_PRODUCER_EXCEPTION #======================#

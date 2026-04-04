@@ -13,7 +13,7 @@ __all__ = [
 ]
 
 from catalog.schema import SchemaException
-from logic.system import BoundsException
+from system import BoundsException
 
 
 # ======================# SCHEMA_NAME_BOUNDS EXCEPTION #======================#

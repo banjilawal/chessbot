@@ -15,7 +15,7 @@ __all__ = [
     "SchemaQueryServiceException",
 ]
 
-from logic.system import ServiceException
+from system import ServiceException
 
 
 # ======================# SCHEMA_QUERY_SERVICE_EXCEPTION #======================#

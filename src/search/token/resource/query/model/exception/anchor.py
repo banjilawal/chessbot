@@ -15,7 +15,7 @@ __all__ = [
     "TokenQueryException",
 ]
 
-from logic.system import QueryException
+from system import QueryException
 
 
 # ======================# TOKEN_QUERY_EXCEPTION #======================#

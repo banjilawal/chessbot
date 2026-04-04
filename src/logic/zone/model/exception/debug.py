@@ -15,7 +15,7 @@ __all__ = [
     "ZoneDebugException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# ZONE_DEBUG_EXCEPTION #======================#
 class ZoneDebugException(DebugException):

@@ -15,7 +15,7 @@ __all__ = [
     "GameContextValidationException",
 ]
 
-from logic.system import ValidationException
+from system import ValidationException
 
 # ======================# GAME_CONTEXT_VALIDATION_FAILURE #======================#
 class GameContextValidationException(ValidationException):

@@ -15,7 +15,7 @@ __all__ = [
     "ExcessTokenContextFlagsException",
 ]
 
-from logic.system import  ExcessContextFlagsException
+from system import  ExcessContextFlagsException
 
 
 # ======================# EXCESS_TOKEN_CONTEXT_FLAGS_EXCEPTION #======================#

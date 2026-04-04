@@ -12,7 +12,7 @@ from typing import Optional
 
 from logic.board import Board, BoardService
 from logic.coord import Coord, CoordService
-from logic.system import Builder, BuildResult, IdentityService
+from system import Builder, BuildResult, IdentityService
 from logic.square import (
     SquareContextBuildRouteException, SquareState, SquareValidator, ZeroSquareContextFlagsException, SquareContext,
     SquareContextBuildException, ExcessSquareContextFlagsException

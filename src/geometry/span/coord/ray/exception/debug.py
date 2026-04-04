@@ -15,7 +15,7 @@ __all__ = [
     "ComputedNullRayDebugException",
 ]
 
-from logic.system import NullException
+from system import NullException
 
 # ======================# COMPUTED_NULL_RAY_DEBUG_EXCEPTION #======================#
 class ComputedNullRayDebugException(NullException):

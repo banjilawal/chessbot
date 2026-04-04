@@ -15,7 +15,7 @@ __all__ = [
     "EuclideanDistanceException",
 ]
 
-from logic.system import ComputationException
+from system import ComputationException
 
 # ======================# EUCLIDEAN_DISTANCE_FAILURE #======================#
 class EuclideanDistanceException(ComputationException):

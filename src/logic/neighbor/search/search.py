@@ -12,8 +12,8 @@ from typing import List
 
 from logic.coord import Coord
 
-from logic.system import LoggingLevelRouter, Finder, SearchResult
-from logic.neighbor import NeighborTuple, VisitationSearchContext, VisitationValidator, VisitationSearchContextValidator
+from system import LoggingLevelRouter, Finder, SearchResult
+from logic.neighbor import VisitationSearchContext, VisitationValidator, VisitationSearchContextValidator
 
 
 

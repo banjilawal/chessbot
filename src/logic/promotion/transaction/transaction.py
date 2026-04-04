@@ -7,7 +7,7 @@ Created: 2025-10-04
 version: 1.0.0
 """
 
-from logic.system import Transaction, TransactionResult
+from system import Transaction, TransactionResult
 from logic.promotion import PromotionEvent
 
 

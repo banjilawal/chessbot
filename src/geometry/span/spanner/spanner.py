@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Dict
 
 from math.span import CoordSpan
-from logic.system import ComputationResult, Compute
+from system import ComputationResult, Compute
 
 
 class Spanner(Compute[CoordSpan]):

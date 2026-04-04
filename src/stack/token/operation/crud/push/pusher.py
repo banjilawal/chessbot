@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 from logic.rank import RankService
-from logic.system import InsertionResult, LoggingLevelRouter
+from system import InsertionResult, LoggingLevelRouter
 from model.token import (
     RankQuotaAnalysis, RankQuotaFullException, Token, TokenCollisionAnalysis, TokenStackFullException,
     TokenStackPushException, TokenStackService, TokenStackState

@@ -14,12 +14,12 @@ from graph.node import (
     NodeService,
     NodeStackException, PoppingEmptyNodeStackException
 )
-from logic.system import (
+from system import (
     DeletionResult, IdFactory, IdentityService, InsertionResult, LoggingLevelRouter, MethodImplementationException,
     SearchResult,
     StackService
 )
-from logic.system.collection.adt.stack.stack import T
+from system.collection.adt import T
 
 
 class NodeStackService(StackService[Node]):

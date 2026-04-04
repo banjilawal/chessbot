@@ -15,7 +15,7 @@ __all__ = [
     "NodeTreeStackMigratorException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 # ======================# NODE_TREE_STACK_MIGRATOR_EXCEPTION #======================#
 class NodeTreeStackMigratorException(AnchorException):

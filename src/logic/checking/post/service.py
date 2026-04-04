@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from logic.checkmate import CheckRecord, CheckRecordTable
-from logic.system import LoggingLevelRouter, Result
+from system import LoggingLevelRouter, Result
 
 
 class CheckPostalService:

@@ -10,8 +10,7 @@ version: 1.0.0
 from typing import List
 
 from logic.arena import Arena
-from logic.coord import Coord
-from logic.system import DataFinder, LoggingLevelRouter, SearchResult
+from system import DataFinder, LoggingLevelRouter, SearchResult
 from logic.board import (
     Board, BoardContext, BoardContextValidator, BoardSearchException, BoardSearchRouteException,
     BoardSearchNullDatasetException, BoardSearchPayloadTypeException,

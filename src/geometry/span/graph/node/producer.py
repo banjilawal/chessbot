@@ -18,7 +18,7 @@ from math.span import (
 )
 from graph.node import Node, NodeService,
 from math.span.service.handler import PairBuildException
-from logic.system import BuildResult, InsertionResult, LoggingLevelRouter
+from system import BuildResult, InsertionResult, LoggingLevelRouter
 
 
 

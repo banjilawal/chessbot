@@ -15,7 +15,7 @@ __all__ = [
     "ArenaContextExecutionRouteException",
 ]
 
-from logic.system import ExecutionRouteException
+from system import ExecutionRouteException
 
 
 # ======================# ARENA_CONTEXT_EXECUTION_ROUTE_EXCEPTION #======================#

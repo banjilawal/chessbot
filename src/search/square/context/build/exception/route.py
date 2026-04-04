@@ -15,7 +15,7 @@ __all__ = [
     "SquareContextExecutionRouteException",
 ]
 
-from logic.system import ExecutionRouteException
+from system import ExecutionRouteException
 
 
 # ======================# SQUARE_CONTEXT_EXECUTION_ROUTE_EXCEPTION #======================#

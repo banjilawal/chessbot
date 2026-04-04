@@ -15,7 +15,7 @@ __all__ = [
     "TeamBuildException",
 ]
 
-from logic.system import BuildException
+from system import BuildException
 
 # ======================# TEAM_BUILD_FAILURE #======================#
 class TeamBuildException(BuildException):

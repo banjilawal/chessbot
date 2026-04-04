@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Any, cast
 
 from logic.neighbor import VisitationEvent, NullVisitationEventException
-from logic.system import LoggingLevelRouter, ValidationResult, Validator
+from system import LoggingLevelRouter, ValidationResult, Validator
 
 
 class VisitationEventValidator(Validator[VisitationEvent]):

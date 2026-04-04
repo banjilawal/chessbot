@@ -13,7 +13,7 @@ __all__ = [
 ]
 
 from logic.team import TeamHashException
-from logic.system import BuildException
+from system import BuildException
 
 
 # ======================# TEAM_HASH_BUILD_FAILURE #======================#

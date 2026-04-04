@@ -15,7 +15,7 @@ from typing import List
 from logic.square import (
     SquareStackTokenHandlerException,  Square, VisitDestinationNotFoundException, SquareService, SquareStackService
 )
-from logic.system import DeletionResult, LoggingLevelRouter, UpdateResult, ValidationResult
+from system import DeletionResult, LoggingLevelRouter, UpdateResult, ValidationResult
 from model.token import Token, TokenService
 
 

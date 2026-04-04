@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from catalog.formation import FormationException
-from logic.system import ExecutionRouteException
+from system import ExecutionRouteException
 
 __all__ = [
     # ======================# NO_FORMATION_LOOKUP_ROUTE EXCEPTION #======================#

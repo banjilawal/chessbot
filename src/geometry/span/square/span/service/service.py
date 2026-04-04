@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import cast
 
 from math.span import SquareSpan, SquareSpanBuilder, SquareSpanValidator
-from logic.system import IdFactory, IntegrityMicroservice
+from system import IdFactory, IntegrityMicroservice
 
 
 class SquareSpanService(IntegrityMicroservice[SquareSpan]):

@@ -10,7 +10,7 @@ version: 1.0.0
 from logic.board import Board
 from logic.piece import Piece
 from graph.domain import Domain, DomainOriginBuilder
-from logic.system import Builder, BuildResult, LoggingLevelRouter
+from system import Builder, BuildResult, LoggingLevelRouter
 
 
 class DomainBuilder(Builder[Domain]):

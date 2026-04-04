@@ -15,7 +15,7 @@ __all__ = [
     "TokenPopCoordException",
 ]
 
-from logic.system import DeletionException
+from system import DeletionException
 
 # ======================# TOKEN_COORD_POP_EXCEPTION #======================#
 class TokenPopCoordException(DeletionException):

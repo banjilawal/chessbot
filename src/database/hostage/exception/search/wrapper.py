@@ -13,7 +13,7 @@ __all__ = [
 ]
 
 from model.hostage import HostageException
-from logic.system import SearchException
+from system import SearchException
 
 
 # ======================# UNIQUE_SEARCH_FAILURE #======================#

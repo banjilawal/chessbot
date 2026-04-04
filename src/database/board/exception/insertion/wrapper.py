@@ -13,7 +13,7 @@ __all__ = [
 ]
 
 from logic.board import BoardException
-from logic.system import InsertionException
+from system import InsertionException
 
 
 # ======================# UNIQUE_BOARD_INSERTION_FAILURE #======================#

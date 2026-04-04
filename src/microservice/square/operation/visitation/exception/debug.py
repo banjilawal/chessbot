@@ -15,7 +15,7 @@ __all__ = [
     "TokenVisitHandlerDebugException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# TOKEN_HANDLER_DEBUG_EXCEPTION #======================#
 class TokenVisitHandlerDebugException(DebugException):

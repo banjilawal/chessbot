@@ -3,7 +3,7 @@ __all__ = [
     "TeamRosterTokenDeletionException",
 ]
 
-from logic.system import OperationException
+from system import OperationException
 from logic.team import TeamRosterException
 
 
@@ -18,7 +18,7 @@ class TeamRosterTokenDeletionException(TeamRosterException, OperationException):
 
     Super Class:
         *   TeamRosterException
-        *   OperationException
+        *   TransactionException
 
     Provides:
 

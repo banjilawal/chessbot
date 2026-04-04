@@ -15,7 +15,7 @@ __all__ = [
     "SnapshotServiceException",
 ]
 
-from logic.system import ServiceException
+from system import ServiceException
 
 
 # ======================# SNAPSHOT_SERVICE_EXCEPTION #======================#

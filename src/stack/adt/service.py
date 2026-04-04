@@ -11,7 +11,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, Iterator, List, Optional, TypeVar
 
-from logic.system import (
+from system import (
     Context, IdentityService, InsertionResult, LoggingLevelRouter, IntegrityMicroservice, DeletionResult,
     Microservice, SearchResult
 )

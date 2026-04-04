@@ -15,7 +15,7 @@ __all__ = [
     "SquareRayBuildException",
 ]
 
-from logic.system import BuildException
+from system import BuildException
 
 # ======================# SQUARE_RAY_BUILD_FAILURE #======================#
 class SquareRayBuildException(BuildException):

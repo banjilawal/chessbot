@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Optional
 
 from logic.coord import Coord
-from logic.system import SearchContext
+from system import SearchContext
 
 
 class ResidentFilter(SearchContext):

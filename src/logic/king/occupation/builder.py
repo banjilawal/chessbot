@@ -9,7 +9,7 @@ from logic.player.finder import BoardSearch
 from logic.square import Square
 from assurance import ThrowHelper
 from logic.event import KingOccupationEvent, KingOccupationEventBuilderException, TargetSquareMismatchException
-from logic.system import IdValidator, BuildResult, ExecutionContext
+from system import IdValidator, BuildResult, ExecutionContext
 from logic.piece import Piece, PieceValidator, InvalidKingOccupationException, CombatantPiece, \
   CaptureFriendException, KingCaptureException
 

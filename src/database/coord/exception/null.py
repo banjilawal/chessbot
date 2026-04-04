@@ -15,7 +15,7 @@ __all__ = [
     "CoordDatabaseNullException",
 ]
 
-from logic.system import NullException
+from system import NullException
 
 #======================# COORD_DATABASE_NULL_EXCEPTION #======================#
 class CoordDatabaseNullException(NullException):

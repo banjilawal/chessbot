@@ -15,7 +15,7 @@ from logic.square import (
     BoardOrphanSquareLinkException, NullSquareException, Square, SquareBoardRegisteredException,
     SquareState, SquareValidationException
 )
-from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
+from system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 
 
 class SquareValidator(Validator[Square]):

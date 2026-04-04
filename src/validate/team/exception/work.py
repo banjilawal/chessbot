@@ -15,7 +15,7 @@ __all__ = [
     "TeamValidationException",
 ]
 
-from logic.system import ValidationException
+from system import ValidationException
 
 
 # ======================# TEAM_VALIDATION_FAILURE #======================#

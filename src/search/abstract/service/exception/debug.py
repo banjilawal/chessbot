@@ -15,7 +15,7 @@ __all__ = [
     "SearchServiceDebugException",
 ]
 
-from logic.system import ServiceDebugException
+from system import ServiceDebugException
 
 
 # ======================# SEARCH_SERVICE_DEBUG_EXCEPTION #======================#

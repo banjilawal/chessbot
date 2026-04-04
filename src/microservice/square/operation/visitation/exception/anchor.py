@@ -18,7 +18,7 @@ __all__ = [
     "TokenVisitHandlerException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 # ======================# TOKEN_VISIT_HANDLER_EXCEPTION #======================#
 class TokenVisitHandlerException(AnchorException):
@@ -81,7 +81,7 @@ __all__ = [
     "PoppingEmptySquareStackException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 
 # ======================# TOKEN_VISIT_HANDLER_EXCEPTION #======================#
@@ -151,7 +151,7 @@ __all__ = [
     "TokenVisitHandlerException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 
 # ======================# TOKEN_VISIT_HANDLER_EXCEPTION #======================#

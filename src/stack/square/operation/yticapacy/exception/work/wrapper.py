@@ -14,7 +14,7 @@ __all__ = [
 
 from typing import Optional
 
-from logic.system import ComputationException
+from system import ComputationException
 
 
 # ======================# SQUARE_STACK_COUNTS_ANALYSIS_FAILURE #======================#

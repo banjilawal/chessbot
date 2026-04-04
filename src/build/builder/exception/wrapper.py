@@ -15,7 +15,7 @@ __all__ = [
     "PlayerBuildException",
 ]
 
-from logic.system import BuildException
+from system import BuildException
 
 # ======================# PLAYER_BUILD_FAILURE #======================#
 class PlayerBuildException(BuildException):

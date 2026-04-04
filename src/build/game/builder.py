@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from model.game import Game, GameBuildException
-from logic.system import Builder, BuildResult, LoggingLevelRouter
+from system import Builder, BuildResult, LoggingLevelRouter
 
 
 class GameBuilder(Builder[Game]):

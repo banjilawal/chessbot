@@ -13,7 +13,7 @@ __all__ = [
 ]
 
 from catalog.schema import SchemaKeyException
-from logic.system import ExecutionRouteException
+from system import ExecutionRouteException
 
 
 # ======================# NO_SCHEMA_KEY_VALIDATION_ROUTE EXCEPTION #======================#

@@ -15,7 +15,7 @@ __all__ = [
     "SquareRayServiceException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 # ======================# SQUARE_RAY_SERVICE_EXCEPTION #======================#
 class SquareRayServiceException(AnchorException):

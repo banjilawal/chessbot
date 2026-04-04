@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Any, Dict, Optional
 
 from logic.coord import Coord
-from logic.system import Context
+from system import Context
 
 
 class CoordContext(Context[Coord]):

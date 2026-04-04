@@ -14,7 +14,7 @@ __all__ = [
     "SquareRayMembersNullException",
 ]
 
-from logic.system import NullException
+from system import NullException
 
 # ======================# SQUARE_RAY_MEMBERS_NULL_EXCEPTION #======================#
 class SquareRayMembersNullException(NullException):

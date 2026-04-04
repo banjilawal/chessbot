@@ -15,7 +15,7 @@ __all__ = [
     "SquareRayNullException",
 ]
 
-from logic.system import NullException
+from system import NullException
 
 
 # ======================# SQUARE_RAY_NULL_EXCEPTION #======================#

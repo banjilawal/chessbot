@@ -1,7 +1,7 @@
 from typing import List
 
 from logic.square import Square
-from logic.system.identity.id import id_emitter
+from system import id_emitter
 from logic.coord import Coord
 from model.token import Discovery
 

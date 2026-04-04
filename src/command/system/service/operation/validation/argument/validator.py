@@ -15,7 +15,7 @@ from command import (
     Command, CommandArgs, NullArgumentsException
 )
 from command.system.service import ArgumentNameTypeBindingException
-from logic.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
+from system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 
 class CommandArgsValidator(Validator[Dict]):
     """

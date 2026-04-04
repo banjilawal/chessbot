@@ -12,7 +12,7 @@ from typing import List
 
 from logic.coord import Coord
 from logic.piece import Piece
-from logic.system import LoggingLevelRouter, Finder, SearchResult
+from system import LoggingLevelRouter, Finder, SearchResult
 from graph.domain import (
     Domain, DomainValidator, ResidentFilter, ResidentFilterValidator, ResidentSearchCoordCollisionException,
     ResidentSearchIdCollisionException, ResidentSearchNameCollisionException

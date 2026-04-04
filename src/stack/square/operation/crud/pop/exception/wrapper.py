@@ -15,7 +15,7 @@ __all__ = [
     "SquareStackPopException",
 ]
 
-from logic.system import DeletionException
+from system import DeletionException
 
 # ======================# SQUARE_STACK_POP_FAILURE #======================#
 class SquareStackPopException(DeletionException):

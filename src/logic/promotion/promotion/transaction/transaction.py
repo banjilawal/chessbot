@@ -7,9 +7,7 @@ Created: 2025-10-24
 version: 1.0.0
 """
 
-
-from logic.rank import Queen
-from logic.system import LoggingLevelRouter, TransactionResult
+from system import LoggingLevelRouter, TransactionResult
 from logic.piece import (
     TravelTransaction, PromotionEvent, PromotionEventValidator, FailedPreviousRankUpdateRolledBackException,
     FailedSetRankToQueenRolledBackException

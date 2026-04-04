@@ -15,7 +15,7 @@ __all__ = [
     "SquareStackServiceException",
 ]
 
-from logic.system import StackServiceException
+from system import StackServiceException
 
 
 # ======================# SQUARE_STACK_SERVICE_EXCEPTION #======================#

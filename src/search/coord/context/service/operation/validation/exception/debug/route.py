@@ -16,7 +16,7 @@ __all__ = [
     "CoordContextValidationRouteException",
 ]
 
-from logic.system import ExecutionRouteException
+from system import ExecutionRouteException
 
 # ======================# COORD_CONTEXT_VALIDATION_ROUTE_EXCEPTION #======================#
 class CoordContextValidationRouteException(ExecutionRouteException):

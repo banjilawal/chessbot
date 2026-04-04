@@ -15,7 +15,7 @@ __all__ = [
     "SquareSpanServiceException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 # ======================# SQUARE_SPAN_SERVICE_EXCEPTION #======================#
 class SquareSpanServiceException(AnchorException):

@@ -15,7 +15,7 @@ __all__ = [
     "NullArgumentsException",
 ]
 
-from logic.system import NullException
+from system import NullException
 
 # ======================# NULL_ARGUMENTS_EXCEPTION #======================#
 class NullArgumentsException(NullException):

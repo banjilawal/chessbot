@@ -15,7 +15,7 @@ __all__ = [
     "ArenaContextServiceException",
 ]
 
-from logic.system import ServiceException
+from system import ServiceException
 
 
 # ======================# ARENA_CONTEXT_SERVICE_EXCEPTION #======================#

@@ -1,7 +1,7 @@
 from typing import Optional
 
 from logic.board import Board
-from logic.system import Event
+from system import Event
 from logic.square import Square
 from logic.piece import Piece, KingPiece, TravelEvent
 

@@ -10,7 +10,7 @@ Created: 2026-02-24
 from __future__ import annotations
 from typing import Optional
 
-from logic.system import ValidationException
+from system import ValidationException
 
 __all__ = [
     # ======================# ARGUMENTS_VALIDATION_FAILURE #======================#

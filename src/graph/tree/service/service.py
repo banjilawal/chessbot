@@ -12,7 +12,7 @@ from typing import cast
 
 from graph.pair import NodeTree, NodeTreeBuilder, NodeTreeValidator
 from graph.pair.listing.service import PairListService
-from logic.system import IdFactory, IntegrityMicroservice
+from system import IdFactory, IntegrityMicroservice
 
 
 class NodeTreeService(IntegrityMicroservice[NodeTree]):

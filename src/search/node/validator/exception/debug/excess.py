@@ -15,7 +15,7 @@ __all__ = [
     "ExcessNodeContextFlagsException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# EXCESS_NODE_CONTEXT_FLAGS_EXCEPTION #======================#
 class ExcessNodeContextFlagsException(DebugException):

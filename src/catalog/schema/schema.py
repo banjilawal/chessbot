@@ -12,7 +12,7 @@ from enum import Enum
 from catalog.schema import Schema
 from build.scalar import Scalar
 from math.geometry import Quadrant
-from logic.system import GameColor, NUMBER_OF_ROWS
+from system import GameColor, NUMBER_OF_ROWS
 
 
 class Schema(Enum):

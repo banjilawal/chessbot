@@ -9,7 +9,7 @@ Created: 2025-09-28
 from abc import abstractmethod
 
 from logic.piece import TravelEvent
-from logic.system import LoggingLevelRouter, Transaction, TransactionResult
+from system import LoggingLevelRouter, Transaction, TransactionResult
 
 
 class TravelTransaction(Transaction[TravelEvent]):

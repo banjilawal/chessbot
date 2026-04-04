@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 
-from logic.system import BoundsException
+from system import BoundsException
 from catalog.schema import SchemaException
 
 __all__ = [

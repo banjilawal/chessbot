@@ -15,7 +15,7 @@ __all__ = [
     "NodeValidationException",
 ]
 
-from logic.system import ValidationException
+from system import ValidationException
 
 
 # ======================# NODE_VALIDATION_FAILURE #======================#

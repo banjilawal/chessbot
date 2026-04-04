@@ -12,7 +12,7 @@ from graph.domain import DomainValidator
 from logic.neighbor import VisitationEvent
 from logic.piece import Piece, PieceValidator
 
-from logic.system import BuildResult, Builder, ChessException, IdValidator, IdValidationException, LoggingLevelRouter
+from system import BuildResult, Builder, ChessException, IdValidator, IdValidationException, LoggingLevelRouter
 
 
 

@@ -15,7 +15,7 @@ __all__ = [
     "ComputationException",
 ]
 
-from logic.system import TransactionException
+from system import TransactionException
 
 
 # ======================# COMPUTATION_FAILURE #======================#
@@ -42,7 +42,7 @@ class ComputationException(TransactionException):
     Provides:
 
     Super:
-        OperationException
+        TransactionException
     """
     OP = "Computation"
     RSLT_TYPE = "ComputationResult"

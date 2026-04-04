@@ -16,7 +16,7 @@ from typing import List
 
 from build.board import Board
 from logic.square import Square
-from logic.system.identity.id import id_emitter
+from system import id_emitter
 from model.token import Piece
 from logic.engine.scout.report import ScoutReport
 

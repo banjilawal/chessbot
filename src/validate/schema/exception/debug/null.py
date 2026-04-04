@@ -15,7 +15,7 @@ __all__ = [
     "NullSchemaException",
 ]
 
-from logic.system import NullException
+from system import NullException
 
 
 # ======================# NULL_SCHEMA_EXCEPTION #======================#

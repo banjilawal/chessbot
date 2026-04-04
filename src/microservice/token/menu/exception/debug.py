@@ -15,7 +15,7 @@ __all__ = [
     "TokenServiceMenuDebuException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 
 # ======================# TOKEN_SERVICE_MENU_DEBUG_EXCEPTION #======================#

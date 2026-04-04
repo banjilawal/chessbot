@@ -15,7 +15,7 @@ __all__ = [
     "ArenaException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 
 # ======================# ARENA_EXCEPTION #======================#

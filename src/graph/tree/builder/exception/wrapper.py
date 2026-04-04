@@ -19,7 +19,7 @@ __all__ = [
     "NodeTreeBuildException",
 ]
 
-from logic.system import BuildException
+from system import BuildException
 
 
 # ======================# NODE_TREE_BUILD_FAILURE #======================#

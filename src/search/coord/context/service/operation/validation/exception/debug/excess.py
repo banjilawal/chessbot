@@ -15,7 +15,7 @@ __all__ = [
     "ExcessCoordContextFlagsException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# EXCESS_COORD_CONTEXT_FLAGS_EXCEPTION #======================#
 class ExcessCoordContextFlagsException(DebugException):

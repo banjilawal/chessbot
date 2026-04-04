@@ -15,7 +15,7 @@ __all__ = [
     "AsymmetricEdgeBuildException",
 ]
 
-from logic.system import BuildException
+from system import BuildException
 
 # ======================# ASYMMETRIC_EDGE_BUILD_FAILURE #======================#
 class AsymmetricEdgeBuildException(BuildException):

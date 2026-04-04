@@ -13,7 +13,7 @@ __all__ = [
 ]
 
 from logic.team import TeamStackException
-from logic.system import DeletionException
+from system import DeletionException
 
 
 # ======================# POPPING_TEAM_STACK_FAILURE #======================#

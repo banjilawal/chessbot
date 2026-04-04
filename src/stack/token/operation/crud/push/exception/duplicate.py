@@ -18,7 +18,7 @@ __all__ = [
     "AddingDuplicateTokenException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# ADDING_DUPLICATE_TOKEN_EXCEPTION #======================#
 class AddingDuplicateTokenException(DebugException):

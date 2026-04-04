@@ -7,7 +7,7 @@ Created: 2025-09083
 version: 1.0.0
 """
 
-from logic.system import (
+from system import (
     Builder, BuildResult, LONGEST_KNIGHT_LEG_SIZE, LoggingLevelRouter, NumberValidator
 )
 from geometry.vector import Vector, VectorBuildException

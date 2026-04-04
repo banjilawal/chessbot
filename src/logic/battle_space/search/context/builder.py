@@ -11,14 +11,12 @@ version: 1.0.0
 from typing import Optional
 
 from logic.coord import Coord, CoordValidator
-from logic.rank import Rank, RankValidator, RankSpec
-from logic.team import  RosterNumberOutOfBoundsException, ROSTER_SIZE
-from logic.system import (
+from logic.team import  RosterNumberOutOfBoundsException
+from system import (
     IdValidator, NameValidator, Builder, BuildResult,
     MutuallyExclusiveParamsException, AllParamsSetNullException, LoggingLevelRouter
 )
 from logic.team.search.context.context import ProjectionSearchContext
-from logic.team.search import RansomOutOfBoundsException
 
 
 class ProjectionSearchContextBuilder(Builder[ProjectionSearchContext]):

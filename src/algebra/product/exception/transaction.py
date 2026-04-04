@@ -15,7 +15,7 @@ __all__ = [
     "CoordMultiplicationException",
 ]
 
-from logic.system import ComputationException
+from system import ComputationException
 
 # ======================# COORD_MULTIPLICATION_FAILURE #======================#
 class CoordMultiplicationException(ComputationException):

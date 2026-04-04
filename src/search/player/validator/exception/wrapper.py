@@ -15,7 +15,7 @@ __all__ = [
     "PlayerContextValidationException",
 ]
 
-from logic.system import ValidationException
+from system import ValidationException
 
 # ======================# PLAYER_CONTEXT_VALIDATION_FAILURE #======================#
 class PlayerContextValidationException(ValidationException):

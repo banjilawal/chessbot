@@ -11,7 +11,7 @@ from typing import Optional
 
 from model.game import Game
 from logic.team import Team
-from logic.system import Context
+from system import Context
 from logic.player import Player, PlayerVariety
 
 

@@ -9,7 +9,7 @@ version: 1.0.0
 
 from model.hostage import Hostage
 from logic.occupation.result import OccupationResult
-from logic.system.result import Result
+from system import Result
 
 
 class AttackResult(Result[Hostage, OccupationResult]):

@@ -41,7 +41,7 @@ See the list of exception in the `__all__` list following (e.g., `CoordException
 `NullCoordException`, `RowAboveBoundsException`).
 """
 
-from logic.system import (
+from system import (
     EventException, NullException, BuildException, TransactionException, ValidationException,
     ResourceException, InconsistencyException
 )

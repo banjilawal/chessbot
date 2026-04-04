@@ -17,7 +17,7 @@ from logic.square import (
     Square, SquareBuilder, SquareOpsController, SquareServiceException,
     SquareValidator, VisitationProcessor
 )
-from logic.system import DeletionResult, IntegrityMicroservice, IdFactory, LoggingLevelRouter, UpdateResult
+from system import DeletionResult, IntegrityMicroservice, IdFactory, LoggingLevelRouter, UpdateResult
 
 
 class SquareService(IntegrityMicroservice[Square]):

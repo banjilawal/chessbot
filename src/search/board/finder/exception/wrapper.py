@@ -15,7 +15,7 @@ __all__ = [
     "BoardSearchException",
 ]
 
-from logic.system import SearchException
+from system import SearchException
 
 
 # ======================# BOARD_SEARCH_FAILURE #======================#
@@ -93,7 +93,7 @@ __all__ = [
     "BoardSearchException",
 ]
 
-from logic.system import SearchException
+from system import SearchException
 from logic.board import BoardException
 
 

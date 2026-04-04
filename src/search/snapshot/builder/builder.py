@@ -12,7 +12,7 @@ from typing import Optional
 from logic.arena import Arena
 from logic.team import Team, TeamService
 from logic.agent import PlayerAgent, AgentService
-from logic.system import BuildResult, Builder, ExecutionRouteException, LoggingLevelRouter, NumberValidator
+from system import BuildResult, Builder, ExecutionRouteException, LoggingLevelRouter, NumberValidator
 from model.game import (
     Game, SnapshotContext, SnapshotContextBuildException, ZeroSnapshotContextFlagsException,
     ArenaSnapshotContextFlagsException

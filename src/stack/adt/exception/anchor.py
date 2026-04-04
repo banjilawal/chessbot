@@ -15,7 +15,7 @@ __all__ = [
     "StackServiceException",
 ]
 
-from logic.system import ServiceException
+from system import ServiceException
 
 
 # ======================# STACK_SERVICE_EXCEPTION #======================#

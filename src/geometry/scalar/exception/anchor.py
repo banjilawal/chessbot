@@ -15,7 +15,7 @@ __all__ = [
     "ScalarException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 
 # ======================# SCALAR_EXCEPTION #======================#

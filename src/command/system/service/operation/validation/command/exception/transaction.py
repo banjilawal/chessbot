@@ -14,7 +14,7 @@ __all__ = [
     "CommandValidationException",
 ]
 
-from logic.system import ValidationException
+from system import ValidationException
 
 
 # ======================# COMMAND_VALIDATION_FAILURE #======================#

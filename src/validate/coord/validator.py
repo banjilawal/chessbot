@@ -12,7 +12,7 @@ from typing import cast, Any
 
 from logic.coord import Coord, NullCoordException
 from logic.coord.service.operation.validation.exception.transaction import CoordValidationException
-from logic.system import (
+from system import (
     NUMBER_OF_ROWS, Validator, ValidationResult, LoggingLevelRouter, NumberValidator
 )
 

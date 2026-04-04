@@ -12,7 +12,7 @@ from typing import Dict
 
 from logic.coord import Coord
 from math.span import PerpendicularRayFactors
-from logic.system import NUMBER_OF_COLUMNS, NUMBER_OF_ROWS
+from system import NUMBER_OF_COLUMNS, NUMBER_OF_ROWS
 from geometry.vector import Vector
 
 

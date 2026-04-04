@@ -13,7 +13,7 @@ __all__ = [
 ]
 
 from model.hostage import HostageException
-from logic.system import InsertionException
+from system import InsertionException
 
 
 # ======================# UNIQUE_HOSTAGE_INSERTION_FAILURE #======================#

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from graph.node import NodeStackService
 from graph.pair import NodeTree, NodeTreeValidator
-from logic.system import BuildResult, LoggingLevelRouter
+from system import BuildResult, LoggingLevelRouter
 
 
 class NodeTreeStackMigrator:

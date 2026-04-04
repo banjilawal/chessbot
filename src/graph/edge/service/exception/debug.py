@@ -15,7 +15,7 @@ __all__ = [
     "EdgeServiceDebugException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# EDGE_SERVICE_DEBUG_EXCEPTION #======================#
 class EdgeServiceDebugException(DebugException):

@@ -15,7 +15,7 @@ __all__ = [
     "NodeContextValidationRouteException",
 ]
 
-from logic.system import ExecutionRouteException
+from system import ExecutionRouteException
 
 # ======================# NODE_CONTEXT_VALIDATION_ROUTE_EXCEPTION #======================#
 class NodeContextValidationRouteException(ExecutionRouteException):

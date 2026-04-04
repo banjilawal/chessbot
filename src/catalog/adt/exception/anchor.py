@@ -15,7 +15,7 @@ __all__ = [
     "CatalogServiceException",
 ]
 
-from logic.system import ServiceException
+from system import ServiceException
 
 
 # ======================# CATALOG_SERVICE_EXCEPTION #======================#

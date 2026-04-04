@@ -15,7 +15,7 @@ __all__ = [
     "BoardValidationException",
 ]
 
-from logic.system import ValidationException
+from system import ValidationException
 
 # ======================# BOARD_VALIDATION_FAILURE #======================#
 class BoardValidationException(ValidationException):

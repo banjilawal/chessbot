@@ -15,7 +15,7 @@ __all__ = [
     "PoppingEmptySquareStackException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 
 # ======================# POPPING_EMPTY_SQUARE_STACK_EXCEPTION #======================#

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from logic.board import BoardSquareRelationAnalysis, BoardTeamRelationAnalysis
 from logic.board.analyzer.context import BoardRelationAnalysisContext
-from logic.system import LoggingLevelRouter, RelationReport
+from system import LoggingLevelRouter, RelationReport
 
 
 class BoardRelationAnalyzer:

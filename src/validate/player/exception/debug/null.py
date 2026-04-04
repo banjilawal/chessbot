@@ -15,7 +15,7 @@ __all__ = [
     "NullPlayerException",
 ]
 
-from logic.system import NullException
+from system import NullException
 
 #======================# NULL_PLAYER_EXCEPTION #======================#
 class NullPlayerException(NullException):

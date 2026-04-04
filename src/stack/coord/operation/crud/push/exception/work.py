@@ -15,7 +15,7 @@ __all__ = [
     "CoordStackPushException",
 ]
 
-from logic.system import InsertionException
+from system import InsertionException
 
 # ======================# COORD_STACK_PUSH_FAILURE #======================#
 class CoordStackPushException(InsertionException):

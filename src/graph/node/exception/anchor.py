@@ -15,7 +15,7 @@ __all__ = [
     "NodeException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 
 # ======================# NODE_EXCEPTION #======================#

@@ -12,7 +12,7 @@ __all__ = [
     "TeamInsertionException",
 ]
 
-from logic.system import InsertionException
+from system import InsertionException
 
 
 # ======================# TEAM_INSERTION_FAILURE #======================#

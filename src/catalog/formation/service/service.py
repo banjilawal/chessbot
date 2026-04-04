@@ -5,7 +5,7 @@ from logic.team.service.service import TeamService
 from catalog.formation import Formation, FormationKey, FormationKeyService, FormationValidator, FormationServiceException
 from catalog.persona import PersonaService
 from logic.square import Square, SquareContext
-from logic.system import GameColor, HashService, InvariantBreachException, LoggingLevelRouter, SearchResult, id_emitter
+from system import GameColor, HashService, InvariantBreachException, LoggingLevelRouter, SearchResult, id_emitter
 
 
 class FormationService(HashService[Formation]):

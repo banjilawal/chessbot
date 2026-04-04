@@ -17,7 +17,7 @@ from logic.rank import (
     QueenPersonaMismatchException, Rank, RankPersonaValidationException, 
     RankValidationRouteException, Rook, RookPersonaMismatchException
 )
-from logic.system import LoggingLevelRouter, ValidationResult, Validator
+from system import LoggingLevelRouter, ValidationResult, Validator
 
 
 class RankPersonaValidator(Validator[Rank]):

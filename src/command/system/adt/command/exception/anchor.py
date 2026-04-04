@@ -15,7 +15,7 @@ __all__ = [
     "CommandException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 # ======================# COMMAND_EXCEPTION #======================#
 class CommandException(AnchorException):

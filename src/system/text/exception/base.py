@@ -1,0 +1,38 @@
+# src/logic/system/text/exception/anchor.py
+
+"""
+Module: logic.system.text.exception.base
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
+"""
+
+from system import ChessException
+
+__all__ = [
+    # ======================# STRING EXCEPTION #======================#
+    "StringException",
+
+]
+
+
+#======================# STRING EXCEPTION #======================#
+class StringException(ChessException):
+    """
+    Role:Exception Work
+
+    Responsibilities:
+    1.  Parent of exception raised by String objects
+    2.  Super for String errors not covered by String subclasses.
+
+    Super Class:
+        *   ChessException
+
+    Provides:
+
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "STRING_EXCEPTION"
+    MSG = "String raised an exception."

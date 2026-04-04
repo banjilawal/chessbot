@@ -19,7 +19,7 @@ from logic.travel.attack.exception import (
     AttackingPieceMissingFromBoardException,
     EnemyNotInExpectedSquareException
 )
-from logic.system import ValidationResult, Validator
+from system import ValidationResult, Validator
 from logic.team import InconsistentHostageEntry
 
 

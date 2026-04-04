@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from logic.player import PlayerDebugException
-from logic.system import NotRegisteredException
+from system import NotRegisteredException
 
 __all__ = [
     # ======================# PLAYER_NOT_REGISTERED_WITH_GAME EXCEPTION #======================#

@@ -15,7 +15,7 @@ __all__ = [
     "SquareContextValidationException",
 ]
 
-from logic.system import ValidationException
+from system import ValidationException
 
 # ======================# SQUARE_CONTEXT_VALIDATION_FAILURE #======================#
 class SquareContextValidationException(ValidationException):

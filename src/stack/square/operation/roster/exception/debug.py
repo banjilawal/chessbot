@@ -15,7 +15,7 @@ __all__ = [
     "SquareStackRosterHandlerDebugException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# SQUARE_STACK_ROSTER_HANDLER_DEBUG_EXCEPTION #======================#
 class SquareStackRosterHandlerDebugException(DebugException):

@@ -11,7 +11,7 @@ __all__ = [
     "PrisonerAlreadyHasHostageException",
 ]
 
-from logic.system import NullException
+from system import NullException
 from model.hostage import HostageException
 
 

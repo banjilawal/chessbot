@@ -12,8 +12,8 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Generic, List, TypeVar
 
-from logic.system import Query
-from logic.system.search import Context
+from system import Query
+from system import Context
 
 
 T = TypeVar("T")

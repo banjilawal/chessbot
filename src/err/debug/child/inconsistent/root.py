@@ -15,7 +15,7 @@ __all__ = [
     "InconsistentStateException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 
 # ======================# INCONSISTENT_STATE_EXCEPTION #======================#

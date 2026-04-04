@@ -13,7 +13,7 @@ __all__ = [
 ]
 
 from catalog.persona import PersonaKeyException
-from logic.system import ValidationException
+from system import ValidationException
 
 
 # ======================# PERSONA_KEY_VALIDATION_FAILURE #======================#

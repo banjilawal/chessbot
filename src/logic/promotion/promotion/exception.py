@@ -88,7 +88,7 @@ See the list of exception in the `__all__` list following (e.g., `VectorExceptio
 """
 
 from logic.event import EventException, TransactionException
-from logic.system import ChessException, NullException, BuildException, ValidationException
+from system import ChessException, NullException, BuildException, ValidationException
 
 __all__ = [
   'PromotionEventException',

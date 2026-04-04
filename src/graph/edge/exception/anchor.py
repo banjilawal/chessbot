@@ -15,7 +15,7 @@ __all__ = [
     "EdgeException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 
 # ======================# EDGE_EXCEPTION #======================#

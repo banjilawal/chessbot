@@ -14,7 +14,7 @@ from graph.pair import PairListBuilder, NodeTreeBuildException
 from graph.pair.pair.service.service import PairService
 from graph.tree.tree import NodeTree
 from math.span import SquareSpan, SquareSpanService
-from logic.system import BuildResult, Builder, LoggingLevelRouter
+from system import BuildResult, Builder, LoggingLevelRouter
 
 
 class NodeTreeBuilder(Builder[NodeTree]):

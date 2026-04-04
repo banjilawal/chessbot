@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from model.game import GameTimelineException
-from logic.system import ValidationException
+from system import ValidationException
 
 __all__ = [
     # ======================# GAME_TIMELINE VALIDATION EXCEPTION #======================#

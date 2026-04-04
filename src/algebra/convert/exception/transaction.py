@@ -15,7 +15,7 @@ __all__ = [
     "VectorCoordConversionException",
 ]
 
-from logic.system import ComputationException
+from system import ComputationException
 
 # ======================# CONVERSION_BETWEEN_VECTOR_AND_COORD_FAILURE #======================#
 class VectorCoordConversionException(ComputationException):

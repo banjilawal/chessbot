@@ -7,7 +7,7 @@ Created: 2025-10-04
 version: 1.0.0
 """
 
-from logic.system import TransactionException
+from system import TransactionException
 
 __all__ = [
     "PromotionTransactionException",

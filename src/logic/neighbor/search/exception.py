@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 
-from logic.system import ChessException, OrphanException
+from system import ChessException, OrphanException
 
 __all__ = [
   'VisitationSearchException',

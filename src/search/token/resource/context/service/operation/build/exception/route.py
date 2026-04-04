@@ -15,7 +15,7 @@ __all__ = [
     "TokenContextBuildRouteException",
 ]
 
-from logic.system import ContextRouteException
+from system import ContextRouteException
 
 # ======================# TOKEN_CONTEXT_BUILD_ROUTE_EXCEPTION #======================#
 class TokenContextBuildRouteException(ContextRouteException):

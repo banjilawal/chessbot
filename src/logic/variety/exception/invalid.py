@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from logic.agent import AgentVarietyException
-from logic.system import ValidationException
+from system import ValidationException
 
 
 __all__ = [

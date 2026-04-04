@@ -15,7 +15,7 @@ from logic.coord import Coord
 from logic.square import Square
 
 from model.model.state import SquareState
-from logic.system import Context
+from system import Context
 from model.token import Token
 
 

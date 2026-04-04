@@ -11,7 +11,7 @@ from typing import Optional
 
 from logic.coord import Coord, CoordValidator
 from logic.rank import Queen, RankSpec
-from logic.system import BuildResult, Builder, IdValidator, LoggingLevelRouter, NameValidator
+from system import BuildResult, Builder, IdValidator, LoggingLevelRouter, NameValidator
 from logic.neighbor import (
     VisitationSearchContext, ArenaVisitationSearchParamsException, ZeroVisitationSearchParamsException, VisitationInvalidRankNameParamException,
 )

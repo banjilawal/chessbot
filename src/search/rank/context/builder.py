@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Optional
 
 
-from logic.system import BuildResult, Builder, LoggingLevelRouter
+from system import BuildResult, Builder, LoggingLevelRouter
 from logic.rank import (
     Rank, RankValidator, RankContext, RankContextBuildException,
     NoRankSearchOptionSelectedException, MoreThanOneRankSearchOptionPickedException,

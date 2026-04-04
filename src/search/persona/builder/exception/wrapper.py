@@ -15,7 +15,7 @@ __all__ = [
     "PersonaKeyBuildException",
 ]
 
-from logic.system import BuildException
+from system import BuildException
 
 
 # ======================# PERSONA_KEY_BUILD_FAILURE #======================#

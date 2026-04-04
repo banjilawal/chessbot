@@ -15,7 +15,7 @@ __all__ = [
     "BoardContextException",
 ]
 
-from logic.system import AnchorException
+from system import AnchorException
 
 
 # ======================# BOARD_CONTEXT_EXCEPTION #======================#

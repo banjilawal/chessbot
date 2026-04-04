@@ -11,7 +11,7 @@ from typing import Any, cast
 
 from logic.arena import ArenaService
 from logic.player import PlayerService
-from logic.system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
+from system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from logic.team import (
     ArenaTeamContextFlagsException, NullTeamContextException, TeamContext, TeamContextValidationException,
     TeamContextValidationRouteException, ZeroTeamContextFlagsException

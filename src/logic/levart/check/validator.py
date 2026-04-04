@@ -2,7 +2,7 @@ from typing import Any, TypeVar, cast
 
 from logic.piece import KingCheckEvent, PieceValidator, InvalidAttackException
 from logic.square import SquareValidator, InvalidSqaureException
-from logic.system import LoggingLevelRouter, Result, IdValidator, IdValidationException, ValidationResult, Validator
+from system import LoggingLevelRouter, Result, IdValidator, IdValidationException, ValidationResult, Validator
 from model.token import (
   AttackEvent,
   NullAttackEventException,

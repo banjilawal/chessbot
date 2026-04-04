@@ -15,7 +15,7 @@ __all__ = [
     "NullScalarException",
 ]
 
-from logic.system import NullException
+from system import NullException
 
 #======================# NULL_SCALAR_EXCEPTION #======================#
 class NullScalarException(NullException):

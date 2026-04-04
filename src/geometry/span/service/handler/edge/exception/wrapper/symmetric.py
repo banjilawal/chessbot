@@ -15,7 +15,7 @@ __all__ = [
     "SymmetricEdgeBuildException",
 ]
 
-from logic.system import BuildException
+from system import BuildException
 
 # ======================# SYMMETRIC_EDGE_BUILD_FAILURE #======================#
 class SymmetricEdgeBuildException(BuildException):

@@ -15,7 +15,7 @@ __all__ = [
     "PairListNullException",
 ]
 
-from logic.system import NullException
+from system import NullException
 
 #======================# PAIR_LIST_NULL_EXCEPTION #======================#
 class PairListNullException(NullException):

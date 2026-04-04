@@ -15,7 +15,7 @@ __all__ = [
     "RankServiceException",
 ]
 
-from logic.system import ServiceException
+from system import ServiceException
 
 
 # ======================# RANK_SERVICE_EXCEPTION #======================#

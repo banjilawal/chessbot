@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Optional
 
 from logic.square import Square
-from logic.system import Context
+from system import Context
 from graph.node import DiscoveryStatus, Node
 
 

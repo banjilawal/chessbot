@@ -15,7 +15,7 @@ __all__ = [
     "VectorServiceException",
 ]
 
-from logic.system import ServiceException
+from system import ServiceException
 
 
 # ======================# VECTOR_SERVICE_EXCEPTION #======================#

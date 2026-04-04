@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from logic.system import LoggingLevelRouter, ValidationResult, Validator
+from system import LoggingLevelRouter, ValidationResult, Validator
 from logic.battle_space.search.search import ProjectionSearchContext
 
 

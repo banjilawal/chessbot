@@ -5,7 +5,7 @@ from model.hostage import (
     CaptivityContextBuildRouteException, ArenaCaptivityContextFlagsException, ZeroCaptivityContextFlagsException
 )
 from logic.square import Square, SquareService
-from logic.system import IdentityService, LoggingLevelRouter, BuildResult, Builder, id_emitter
+from system import IdentityService, LoggingLevelRouter, BuildResult, Builder, id_emitter
 from model.token import CombatantToken, Token, TokenService
 
 

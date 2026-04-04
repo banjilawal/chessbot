@@ -13,7 +13,7 @@ from logic.team import Team
 from logic.board import Board
 from logic.agent import PlayerAgent, AgentService
 from logic.arena import Arena, ArenaBuildException, DuplicatePlayerInArenaException
-from logic.system import Builder, BuildResult, IdentityService, LoggingLevelRouter, ValidationResult, id_emitter
+from system import Builder, BuildResult, IdentityService, LoggingLevelRouter, ValidationResult, id_emitter
 
 
 class ArenaBuilder(Builder[Arena]):

@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
-from logic.system import ChessException
+from system import ChessException
 
 __all__ = [
     # ======================# RESOURCE_UNAVAILABLE EXCEPTION #======================#

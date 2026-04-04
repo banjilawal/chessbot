@@ -15,7 +15,7 @@ __all__ = [
     "PairListServiceException",
 ]
 
-from logic.system import ServiceException
+from system import ServiceException
 
 # ======================# PAIR_LIST_SERVICE_EXCEPTION #======================#
 class PairListServiceException(ServiceException):

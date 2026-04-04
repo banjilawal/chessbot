@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from catalog.formation import FormationKeyException
-from logic.system import ValidationException
+from system import ValidationException
 
 __all__ = [
     # ======================# FORMATION_KEY_VALIDATION_FAILURE #======================#

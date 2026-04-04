@@ -15,7 +15,7 @@ __all__ = [
     "TokenStackPushException",
 ]
 
-from logic.system import InsertionException
+from system import InsertionException
 
 # ======================# TOKEN_STACK_PUSH_FAILURE #======================#
 class TokenStackPushException(InsertionException):

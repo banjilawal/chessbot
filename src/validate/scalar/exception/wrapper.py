@@ -15,7 +15,7 @@ __all__ = [
     "ScalarValidationException",
 ]
 
-from logic.system import ValidationException
+from system import ValidationException
 
 # ======================# SCALAR_VALIDATION_FAILURE #======================#
 class ScalarValidationException(ValidationException):

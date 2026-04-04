@@ -15,7 +15,7 @@ __all__ = [
     "ZeroTokenContextFlagsException",
 ]
 
-from logic.system import ZeroContextFlagsException
+from system import ZeroContextFlagsException
 
 
 # ======================# ZERO_TOKEN_CONTEXT_FLAGS_EXCEPTION #======================#

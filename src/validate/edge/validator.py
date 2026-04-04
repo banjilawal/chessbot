@@ -14,7 +14,7 @@ from math import sqrt
 from typing import Any, cast
 
 from graph.node import NodeValidator
-from logic.system import (
+from system import (
     BOARD_DIMENSION, IdentityService, LoggingLevelRouter, NumberValidator, ValidationResult, Validator
 )
 from graph.edge import (

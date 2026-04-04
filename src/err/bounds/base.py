@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from logic.system import DebugException
+from system import DebugException
 
 ___all__ = [
 #======================# OUT_OF_BOUNDS EXCEPTION #======================#

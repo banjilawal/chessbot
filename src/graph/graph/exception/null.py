@@ -15,7 +15,7 @@ __all__ = [
     "NullGraphException",
 ]
 
-from logic.system import NullException
+from system import NullException
 
 #======================# NULL_GRAPH_EXCEPTION #======================#
 class NullGraphException(NullException):

@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import cast
 
-from logic.system import QueryService, id_emitter
+from system import QueryService, id_emitter
 from catalog.formation import FormationLookupProcess, FormationKey, FormationKeyBuilder, FormationKeyValidator
 
 

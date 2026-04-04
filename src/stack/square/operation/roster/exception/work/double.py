@@ -15,7 +15,7 @@ __all__ = [
     "RosterAlreadyDeployedException",
 ]
 
-from logic.system import DebugException
+from system import DebugException
 
 # ======================# ROSTER_ALREADY_DEPLOYED_EXCEPTION #======================#
 class RosterAlreadyDeployedException(DebugException):

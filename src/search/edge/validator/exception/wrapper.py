@@ -15,7 +15,7 @@ __all__ = [
     "EdgeContextValidationException",
 ]
 
-from logic.system import ValidationException
+from system import ValidationException
 
 # ======================# EDGE_CONTEXT_VALIDATION_FAILURE #======================#
 class EdgeContextValidationException(ValidationException):

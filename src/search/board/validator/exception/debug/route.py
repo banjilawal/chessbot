@@ -15,7 +15,7 @@ __all__ = [
     "BoardContextValidationRouteException",
 ]
 
-from logic.system import ExecutionRouteException
+from system import ExecutionRouteException
 
 # ======================# BOARD_CONTEXT_VALIDATION_ROUTE_EXCEPTION #======================#
 class BoardContextValidationRouteException(ExecutionRouteException):

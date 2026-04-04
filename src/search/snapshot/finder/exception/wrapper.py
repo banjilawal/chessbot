@@ -15,7 +15,7 @@ __all__ = [
     "SnapshotSearchException",
 ]
 
-from logic.system import SearchException
+from system import SearchException
 
 
 # ======================# SNAPSHOT_SEARCH_FAILURE #======================#
@@ -93,7 +93,7 @@ __all__ = [
     "SnapshotSearchException",
 ]
 
-from logic.system import SearchException
+from system import SearchException
 from logic.snapshot import SnapshotException
 
 

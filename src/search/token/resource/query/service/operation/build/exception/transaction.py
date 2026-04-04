@@ -15,7 +15,7 @@ __all__ = [
     "TokenQueryBuildException",
 ]
 
-from logic.system import BuildException
+from system import BuildException
 
 
 # ======================# TOKEN_QUERY_BUILD_FAILURE #======================#

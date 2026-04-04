@@ -13,7 +13,7 @@ from copy import deepcopy
 
 from logic.rank import RankService
 from catalog.formation import FormationKey, FormationService
-from logic.system import IdFactory, IdentityService, UpdateResult
+from system import IdFactory, IdentityService, UpdateResult
 from logic.team import FillingTeamRosterException, RosterRelationAnalysis, Team, TeamValidator
 
 

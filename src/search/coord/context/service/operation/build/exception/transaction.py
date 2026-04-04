@@ -15,7 +15,7 @@ __all__ = [
     "CoordContextBuildException",
 ]
 
-from logic.system import BuildException
+from system import BuildException
 
 
 # ======================# COORD_CONTEXT_BUILD_FAILURE #======================#
