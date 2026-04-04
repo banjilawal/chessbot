@@ -1,10 +1,10 @@
-# src/logic/token/service/operation/arithmetic/addition/exception/validator.py
+# src/algebra/algebra/addition/coord/exception/transaction.py
 
 """
-Module: logic.token.service.operation.arithmetic.addition.exception.work
+Module: algebra.addition.coord.exception.transaction
 Author: Banji Lawal
-Created: 2026-03-25
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations

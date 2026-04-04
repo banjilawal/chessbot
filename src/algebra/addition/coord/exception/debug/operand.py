@@ -1,10 +1,10 @@
-# src/logic/token/service/operation/arithmetic/addition/exception/debug/operand.py
+# src/algebra/algebra/addition/coord/exception/debug/operand.py
 
 """
-Module: logic.token.service.operation.arithmetic.addition.exception.debug.operand
+Module: algebra.addition.coord.exception.debug.operand
 Author: Banji Lawal
-Created: 2026-03-25
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
@@ -15,7 +15,7 @@ __all__ = [
     "CoordAdditionOperandNullException",
 ]
 
-from logic.coord import CoordDebugException
+from model.coord import CoordDebugException
 
 
 # ======================# COORD_ADDITION_OPERAND_NULL_EXCEPTION #======================#
@@ -29,6 +29,7 @@ class CoordAdditionOperandNullException(CoordDebugException):
     Responsibilities:
         1.  Indicate a CoordAdder failed because the operand was null
             instead of Union[Vector, Coord].
+            
     Attributes:
         var: Optional[str]
         val: Optional[Any]
@@ -62,4 +63,10 @@ class CoordAdditionOperandNullException(CoordDebugException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)
+        super().__init__(
+            ex=ex,
+            msg=msg,
+            var=var,
+            val=val,
+            err_code=err_code,
+        )

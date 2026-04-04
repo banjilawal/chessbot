@@ -15,7 +15,7 @@ __all__ = [
     "IdentityNullException",
 ]
 
-from logic.system.err import ChessException
+from err import ChessException
 
 
 class IdentityException(ChessException):

@@ -7,7 +7,7 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-from logic.system.err import ChessException
+from err import ChessException
 
 __all__ = [
     #======================# PLAYER_VARIETY EXCEPTION #======================#
