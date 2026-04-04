@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ContextException
+from err import ModelException
 
 
 __all__ = [

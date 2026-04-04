@@ -1,7 +1,7 @@
-# src/err/build/vector/exception.py
+# src/err/model/context/zero/coord/__init__.py
 
 """
-Module: err.build.vector.exception
+Module: err.model.context.zero.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,25 +10,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
+from err.context import ZeroContextFlagsException
 
-
-__all__ = [
-    # ======================# VECTOR_BUILD_FAILURE #======================#
-    "VectorBuildException",
+_all_ = [
+    # ======================# ZERO_COORD_CONTEXT_FLAGS_EXCEPTION #======================#
+    "ZeroCoordContextFlagsException",
 ]
 
-# ======================# VECTOR_BUILD_FAILURE #======================#
-class VectorBuildException(BuildException):
+# ======================# ZERO_COORD_CONTEXT_FLAGS_EXCEPTION #======================#
+class ZeroCoordContextFlagsException(ZeroContextFlagsException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a VectorBuild step failed.
+        1.  Indicates that no CoordContext option was enabled.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]
@@ -36,15 +34,14 @@ class VectorBuildException(BuildException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        rslt_type: Optional[str]
-            
+
     Provides:
 
     Super Class:
-        BuildException
+        ZeroContextFlagsException
     """
-    MSG = str = "VectorBuild step failed"
-    ERR_CODE = "VECTOR_BUILD_FAILURE"
+    MSG = str = "No CoordCcontext option was enabled."
+    ERR_CODE = "ZERO_COORD_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(
             self,
