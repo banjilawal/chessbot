@@ -1,17 +1,17 @@
-# src/logic/vector/service/py
+# src/microservice/vector/__init__.py
 
 """
-Module: logic.vector.service.__init__
+Module: microservice.vector.__init__
 Author: Banji Lawal
-Created: 2025-11-19
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-# =========== VECTOR.SERVICE PACKAGE CONTENTS ===========#
+
+# =========== VECTOR PACKAGE CONTENTS ===========#
 
 # Packages
-from .exception import *
-from .operation import *
+None
 
 # Modules
-from .service import VectorService
+from .microservice import VectorService

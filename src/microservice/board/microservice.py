@@ -1,28 +1,13 @@
-# src/logic/board/validator.py
+# src/microservice/board/microservice.py
 
 """
-Module: logic.board.service
+Module: microservice.board.microservice
 Author: Banji Lawal
-Created: 2025-11-21
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import cast
-
-from logic.board import (
-    Board, BoardAlreadyLaidOutException, BoardBuilder, BoardLayoutFailedException, BoardRelationAnalysisContext,
-    BoardRelationAnalyzer,
-    BoardState, BoardValidator
-)
-from logic.board.service.exception.anchor import BoardServiceException
-from graph.graph import Graph, GraphComputationException
-from system import (
-    ComputationResult, IdFactory, InsertionResult, Microservice, LoggingLevelRouter,
-    RelationReport
-)
-from logic.team import Team, TeamBelongsToDifferentBoardException, TeamService, TeamSlotAlreadyOccupiedException
-
 
 class BoardService(Microservice[Board]):
     """

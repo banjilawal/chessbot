@@ -1,22 +1,13 @@
-# src/logic/square/service/validator.py
+# src/microservice/square/microservice.py
 
 """
-Module: logic.square.service.service
+Module: microservice.square.microservice
 Author: Banji Lawal
-Created: 2025-11-12
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
-
-from copy import deepcopy
-
-from model.token import Token, TokenService
-from logic.square import (
-    Square, SquareBuilder, SquareOpsController, SquareServiceException,
-    SquareValidator, VisitationProcessor
-)
-from system import DeletionResult, Microservice, IdFactory, LoggingLevelRouter, UpdateResult
 
 
 class SquareService(Microservice[Square]):

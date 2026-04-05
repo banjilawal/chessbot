@@ -1,7 +1,7 @@
-# src/database/__init__.py
+# src/database/database.py
 
 """
-Module: database.__init__
+Module: database.database
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

@@ -13,5 +13,4 @@ version: 1.0.0
 from .exception import *
 
 # Modules
-from .report import SquareStackCapacityReport
 from .analyzer import SquareStackCapacityAnalysis

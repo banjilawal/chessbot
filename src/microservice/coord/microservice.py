@@ -1,19 +1,13 @@
-# src/logic/coord/service/microservice.py
+# src/microservice/coord/microservice.py
 
 """
-Module: logic.coord.service.service
+Module: microservice.coord.microservice
 Author: Banji Lawal
-Created: 2025-11-12
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Union
-
-from build.scalar import Scalar, ScalarService
-from geometry.vector import Vector, VectorService
-from system import ComputationResult, IdFactory, Microservice
-from logic.coord import Coord, CoordBuilder, CoordOpsController, CoordServiceException, CoordValidator
 
 
 class CoordService(Microservice[Coord]):

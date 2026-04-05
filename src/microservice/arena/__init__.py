@@ -1,16 +1,16 @@
-# src/logic/arena/validation/__init__.py
+# src/microservice/arena/__init__.py
 
 """
-Module: logic.arena.validation.__init__
+Module: microservice.arena.__init__
 Author: Banji Lawal
-Created: 2025-10-01
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-# =========== ARENA.VALIDATOR PACKAGE CONTENTS ===========#
+# =========== ARENA PACKAGE CONTENTS ===========#
 
 # Packages
-from .exception import *
+None
 
 # Modules
-None
+from .microservice import ArenaService

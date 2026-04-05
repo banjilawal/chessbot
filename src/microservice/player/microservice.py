@@ -1,21 +1,14 @@
-# src/logic/player/service/validator.py
+# src/microservice/player/microservice.py
 
 """
-Module: logic.player.service.service
+Module: microservice.player.microservice
 Author: Banji Lawal
-Created: 2025-09-16
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
+from __future__ import annotations
 
-from typing import cast
-
-from system import DeletionResult, Microservice, InsertionResult, LoggingLevelRouter, id_emitter
-from logic.player import Player, PlayerFactory, PlayerServiceException, PlayerTeamRelationAnalysis, PlayerValidator
-from logic.team import (
-    AddingDuplicateTeamException, PoppingEmptyTeamStackException, Team, PoppingTeamStackFailedException, TeamService,
-    TeamInsertionException,
-)
 
 class PlayerService(Microservice[Player]):
     """

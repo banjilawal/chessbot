@@ -17,7 +17,7 @@ from model.token import RankQuotaAnalysisException, RankQuotaReport, TokenContex
 class RankQuotaAnalysis:
     """
     Role:
-        - Statistical Analyzer
+        - Statistical Analyst
         - Report Generator
 
     Responsibilities:

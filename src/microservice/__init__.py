@@ -14,7 +14,20 @@ log = logging.getLogger("chessbot")
 # =========== PACKAGE CONTENTS ===========#
 
 # Packages
-
+from .arena import *
+from .board import *
+from .coord import *
+from .game import *
+from .hostage import *
+from microservice.catalog.persona import *
+from .player import *
+from .rank import *
+from .scalar import *
+from .snapshot import *
+from .square import *
+from .team import *
+from .token import *
+from .vector import *
 
 # Modules
 from .microservice import Microservice

@@ -1,18 +1,16 @@
-# src/logic/team/service/__init__.py
+# src/microservice/team/__init__.py
 
 """
-Module: logic.team.service.__init__
+Module: microservice.team.__init__
 Author: Banji Lawal
-Created: 2025-11-24
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-#=========== TEAM.SERVICE PACKAGE CONTENTS ===========#
+# =========== TEAM PACKAGE CONTENTS ===========#
 
 # Packages
-from .operation import *
-from .exception import *
-
+None
 
 # Modules
-from .service import TeamService
+from .microservice import TeamService

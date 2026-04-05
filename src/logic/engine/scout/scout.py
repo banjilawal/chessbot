@@ -14,7 +14,7 @@ Contains:
 
 from typing import List
 
-from build.board import Board
+from integrity.build import Board
 from logic.square import Square
 from system import id_emitter
 from model.token import Piece

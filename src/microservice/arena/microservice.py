@@ -1,22 +1,14 @@
-# src/logic/arena/service/validator.py
+# src/microservice/arena/microservice.py
 
 """
-Module: logic.arena.service.service
+Module: microservice.arena.microservice
 Author: Banji Lawal
-Created: 2025-10-01
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
+from __future__ import annotations
 
-from typing import cast
-
-from logic.arena import (
-    Arena, ArenaAlreadyContainsTeamException, ArenaBuilder, ArenaServiceException,
-    ArenaTeamRelationAnalysis, ArenaValidator, ChangingArenaTeamBlockedException, TeamPlayingDifferentArenaException
-)
-from catalog.schema import Schema, SchemaService
-from system import Microservice, InsertionResult, LoggingLevelRouter, Result, SearchResult, id_emitter
-from logic.team import Team, TeamService
 
 
 class ArenaService(Microservice[Arena]):

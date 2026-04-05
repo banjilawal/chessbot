@@ -1,21 +1,14 @@
-# src/logic/token/service/validator.py
+# src/microservice/orange/microservice.py
 
 """
-Module: logic.token.service.service
+Module: microservice.orange.microservice
 Author: Banji Lawal
-Created: 2025-11-19
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
 
-from copy import deepcopy
-
-from catalog.schema import SchemaService
-from logic.rank import Rank, RankService
-from logic.coord import Coord, CoordService
-from system import DeletionResult, IdFactory, InsertionResult, Microservice, LoggingLevelRouter, UpdateResult
-from model.token import PawnToken, Token, TokenBuilder, TokenOpsController, TokenServiceException, TokenValidation
 
 
 class TokenService(Microservice[Token]):

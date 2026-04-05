@@ -1,16 +1,16 @@
-# src/logic/scalar/service/__init__.py
+# src/microservice/scalar/__init__.py
 
 """
-Module: logic.scalar.service.__init__
+Module: microservice.scalar.__init__
 Author: Banji Lawal
-Created: 2025-09-16
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-# =========== SCALAR.SERVICE PACKAGE CONTENTS ===========#
+# =========== SCALAR PACKAGE CONTENTS ===========#
 
 # Packages
-from .exception import *
+None
 
 # Modules
-from .service import ScalarService
+from .microservice import ScalarService

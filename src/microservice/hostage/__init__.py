@@ -1,16 +1,16 @@
-# src/logic/hostage/service/__init__.py
+# src/microservice/hostage/__init__.py
 
 """
-Module: logic.hostage.service.__init__
+Module: microservice.hostage.__init__
 Author: Banji Lawal
-Created: 2025-10-01
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-# =========== HOSTAGE.SERVICE PACKAGE CONTENTS ===========#
+# =========== HOSTAGE PACKAGE CONTENTS ===========#
 
 # Packages
-from .exception import *
+None
 
 # Modules
-from .service import HostageService
+from .microservice import HostageService

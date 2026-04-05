@@ -1,16 +1,16 @@
-# src/logic/board/service/__init__.py
+# src/microservice/board/__init__.py
 
 """
-Module: logic.board.service.__init__
+Module: microservice.board.__init__
 Author: Banji Lawal
-Created: 2025-10-01
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-# =========== BOARD.SERVICE PACKAGE CONTENTS ===========#
+# =========== BOARD PACKAGE CONTENTS ===========#
 
 # Packages
-from .exception import *
+None
 
 # Modules
-from .service import BoardService
+from .microservice import BoardService

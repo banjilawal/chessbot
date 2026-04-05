@@ -1,16 +1,13 @@
-# src/logic/item/service/validator.py
+# src/microservice/hostage/microservice.py
 
 """
-Module: logic.item.service.service
+Module: microservice.hostage.microservice
 Author: Banji Lawal
-Created: 2026-01-18
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-from typing import cast
-
-from system import Microservice, id_emitter
-from model.hostage import Hostage, HostageBuilder, HostageValidator
+from __future__ import annotations
 
 
 class HostageService(Microservice[Hostage]):

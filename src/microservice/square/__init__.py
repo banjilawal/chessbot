@@ -1,18 +1,16 @@
-# src/logic/square/service/__init__.py
+# src/microservice/square/__init__.py
 
 """
-Module: logic.square.service.__init__
+Module: microservice.square.__init__
 Author: Banji Lawal
-Created: 2025-11-19
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-#=========== SQUARE.SERVICE PACKAGE CONTENTS ===========#
+# =========== SQUARE PACKAGE CONTENTS ===========#
 
 # Packages
-from .operation import *
-from .exception import *
 
 
 # Modules
-from .service import SquareService
+from .microservice import SquareService

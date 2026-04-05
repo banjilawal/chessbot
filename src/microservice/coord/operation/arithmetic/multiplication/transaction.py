@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 from system import ComputationResult
-from build.scalar import Scalar, ScalarService
+from integrity.build.scalar import Scalar, ScalarService
 from logic.coord import Coord, CoordMultiplicationException, CoordService
 
 class MultiplyCoordTransaction:

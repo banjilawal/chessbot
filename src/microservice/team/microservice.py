@@ -1,18 +1,15 @@
-# src/logic/team/validator.py
+# src/microservice/team/microservice.py
 
 """
-Module: logic.team.service
+Module: microservice.team.microservice
 Author: Banji Lawal
-Created: 2025-08-05
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import cast
 
 
-from system import Microservice, IdFactory
-from logic.team import RosterUtil, Team, TeamBuild, TeamValidator
 
 class TeamService(Microservice[Team]):
     """

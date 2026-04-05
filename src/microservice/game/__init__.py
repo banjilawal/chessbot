@@ -1,17 +1,16 @@
-# src/logic/game/service/__init__.py
+# src/microservice/game/__init__.py
 
 """
-Module: logic.game.service.__init__
+Module: microservice.game.__init__
 Author: Banji Lawal
-Created: 2025-09-16
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-#=========== GAME.SERVICE PACKAGE CONTENTS ===========#
+# =========== GAME PACKAGE CONTENTS ===========#
 
 # Packages
-from .data import *
-from .exception import *
+None
 
 # Modules
-from .service import GameService
+from .microservice import GameService

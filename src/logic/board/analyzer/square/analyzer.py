@@ -17,7 +17,7 @@ from logic.board import Board, BoardSquareAnalysisException, BoardValidator
 class BoardSquareRelationAnalysis(RelationAnalysis[Board, Square]):
     """
     Role:
-        - Relation Analyzer
+        - Relation Analyst
         - Report Generator
 
     Responsibilities:

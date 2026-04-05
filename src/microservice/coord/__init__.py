@@ -1,17 +1,16 @@
-# src/logic/coord/service/__init__.py
+# src/microservice/coord/__init__.py
 
 """
-Module: logic.coord.service.__init__
+Module: microservice.coord.__init__
 Author: Banji Lawal
-Created: 2025-11-19
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-# =========== COORD.SERVICE PACKAGE CONTENTS ===========#
+# =========== COORD PACKAGE CONTENTS ===========#
 
 # Packages
-from .operation import *
-from .exception import *
+None
 
 # Modules
-from .service import CoordService
+from .microservice import CoordService

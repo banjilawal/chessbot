@@ -1,16 +1,16 @@
-# src/logic/player/service/__init__.py
+# src/microservice/player/__init__.py
 
 """
-Module: logic.player.service.__init__
+Module: microservice.player.__init__
 Author: Banji Lawal
-Created: 2025-09-16
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-#=========== PLAYER.SERVICE PACKAGE CONTENTS ===========#
+# =========== PLAYER PACKAGE CONTENTS ===========#
 
 # Packages
-from .exception import *
+None
 
 # Modules
-from .service import PlayerService
+from .microservice import PlayerService

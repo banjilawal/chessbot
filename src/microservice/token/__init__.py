@@ -1,18 +1,16 @@
-# src/logic/token/service/__init__.py
+# src/microservice/orange/__init__.py
 
 """
-Module: logic.token.service.__init__
+Module: microservice.orange.__init__
 Author: Banji Lawal
-Created: 2025-11-19
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-# =========== TOKEN.SERVICE PACKAGE CONTENTS ===========#
+# =========== ORANGE PACKAGE CONTENTS ===========#
 
 # Packages
-from .menu import *
-from .operation import *
-from .exception import *
+None
 
 # Modules
-from .service import TokenService
+from .microservice import OrangeService

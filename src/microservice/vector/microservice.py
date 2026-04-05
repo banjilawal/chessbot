@@ -1,21 +1,14 @@
-# src/logic/vector/validator.py
+# src/microservice/vector/microservice.py
 
 """
-Module: logic.vector.service
+Module: microservice.vector.microservice
 Author: Banji Lawal
-Created: 2025-11-12
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import List, cast
 
-from logic.coord import Coord, CoordService
-from build.scalar import Scalar, ScalarService
-from geometry.vector import Vector, VectorBuilder, VectorServiceException, VectorValidator
-from system import (
-    BuildResult, ComputationResult, IdFactory, LoggingLevelRouter, Microservice, NumberValidator
-)
 
 class VectorService(Microservice[Vector]):
     """

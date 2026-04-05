@@ -11,7 +11,7 @@ version: 1.0.0
 from typing import Any, cast
 
 from system import ValidationResult, Validator, BOARD_DIMENSION, LoggingLevelRouter, NullNumberException
-from build.scalar import (
+from integrity.build.scalar import (
     Scalar, NullScalarException, ScalarBelowBoundsException, ScalarAboveBoundsException, InvalidScalarException
 )
 

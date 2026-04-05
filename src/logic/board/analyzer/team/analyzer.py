@@ -17,7 +17,7 @@ from logic.board import Board, BoardTeamAnalysisException, BoardValidator
 class BoardTeamRelationAnalysis(RelationAnalysis[Board, Team]):
     """
     Role:
-        - Relation Analyzer
+        - Relation Analyst
         - Report Generator
 
     Responsibilities:
