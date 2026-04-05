@@ -1,10 +1,10 @@
-# src/model/square/model/model.py
+# src/model/square/model.py
 
 """
-Module: model.square.model.model
+Module: model.square.model
 Author: Banji Lawal
-Created: 2025-11-22
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations

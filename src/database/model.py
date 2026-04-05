@@ -12,7 +12,9 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, List, Optional, TypeVar
 
+from result import DeletionResult, InsertionResult
 from stack import StackService
+from system import LoggingLevelRouter
 
 T = TypeVar("T")
 
@@ -43,19 +45,13 @@ class Database(ABC, Generic[T]):
     Super:
     """
     
-    def __init__(
-            self,
-            id: int,
-            name: str,
-            kernel: StackService[T]
-    ):
+    def __init__(self,id: int,name: str,):
         """
         Args:
             id: int
             name: str
         """
-        super().__init__(id=id, name=name)
-    
+        
     @property
     @abstractmethod
     def size(self) -> int:

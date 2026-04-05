@@ -1,4 +1,4 @@
-# src/__init__.py
+# src/model/__init__.py
 
 """
 Module: model.__init__
@@ -20,7 +20,6 @@ from .game import *
 from .hostage import *
 from .player import *
 from .rank import *
-from .snapshot import *
 from .square import *
 from .team import *
 from .token import *

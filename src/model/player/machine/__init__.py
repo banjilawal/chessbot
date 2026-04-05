@@ -1,17 +1,16 @@
-# src/model/player/model/machine/__init__.py
+# src/model/player/machine/__init__.py
 
 """
-Module: model.player.model.machine.__init__
+Module: model.player.machine.__init__
 Author: Banji Lawal
-Created: 2025-09-16
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-#=========== PLAYER.MODEL.MACHINE PACKAGE CONTENTS ===========#
+# =========== PLAYER.MACHINE PACKAGE CONTENTS ===========#
 
 # Packages
 None
 
 # Modules
-from .machine import MachinePlayer
-from .exception import MachinePlayerException
+from .model import MachinePlayer

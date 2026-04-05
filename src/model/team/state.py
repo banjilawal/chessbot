@@ -3,8 +3,8 @@
 """
 Module: model.team.state
 Author: Banji Lawal
-Created: 2026-02-24
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations

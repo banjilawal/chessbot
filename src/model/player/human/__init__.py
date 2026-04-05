@@ -1,17 +1,16 @@
-# src/model/player/model/human/__init__.py
+# src/model/player/human/__init__.py
 
 """
-Module: model.player.model.human.__init__
+Module: model.player.human.__init__
 Author: Banji Lawal
-Created: 2025-09-16
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-#=========== PLAYER.MODEL.HUMAN PACKAGE CONTENTS ===========#
+# =========== PLAYER.HUMAN PACKAGE CONTENTS ===========#
 
 # Packages
 None
 
 # Modules
-from .human import HumanPlayer
-from .exception import HumanPlayerException
+from .model import HumanPlayer

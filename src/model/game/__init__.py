@@ -1,20 +1,17 @@
-# src/model/game/__init__.py
+# src/model/game/__ini__.py
 
 """
 Module: model.game.__init__
 Author: Banji Lawal
-Created: 2025-10-03
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-#=========== GAME PACKAGE CONTENTS ===========#
+# =========== GAME PACKAGE CONTENTS ===========#
 
 # Packages
-from .builder import *
-from .context import *
-from .service import *
-from .exception import *
-from .validator import *
+None
 
 # Modules
+from .model import Game
 from .state import GameState

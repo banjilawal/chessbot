@@ -3,8 +3,8 @@
 """
 Module: model.square.state
 Author: Banji Lawal
-Created: 2025-10-03
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from enum import Enum, auto

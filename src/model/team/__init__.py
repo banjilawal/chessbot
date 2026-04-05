@@ -1,18 +1,16 @@
-# src/model/token/__init__.py
+# src/model/team/__init__.py
 
 """
-Module: model.token.__init__
+Module: model.team.__init__
 Author: Banji Lawal
-Created: 2026-03-29
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-# =========== TOKEN.MODEL PACKAGE CONTENTS ===========#
+# =========== TEAM PACKAGE CONTENTS ===========#
 
 # Packages
-from .hash import *
-from .roster import *
-from .exception import *
+None
 
 # Modules
 from .model import Team

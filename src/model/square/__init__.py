@@ -3,13 +3,14 @@
 """
 Module: model.square.__init__
 Author: Banji Lawal
-Created: 2025-11-22
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-# =========== SQUARE.MODEL PACKAGE CONTENTS ===========#
+# =========== SQUARE PACKAGE CONTENTS ===========#
 
 # Packages
+None
 
 # Modules
 from .model import Square

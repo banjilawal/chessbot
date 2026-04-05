@@ -1,10 +1,10 @@
 # src/model/team/model.py
 
 """
-Module: model.team.team
+Module: model.team.model
 Author: Banji Lawal
-Created: 2025-08-04
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
@@ -52,7 +52,7 @@ class Team:
 
 
     # INHERITED ATTRIBUTES:
-   None
+    None
 
     # LOCAL METHODS:
     None

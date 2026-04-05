@@ -3,15 +3,19 @@
 """
 Module: model.rank.__init__
 Author: Banji Lawal
-Created: 2025-09-08
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-#=========== RANK.MODEL PACKAGE CONTENTS ===========#
+# =========== RANK PACKAGE CONTENTS ===========#
 
 # Packages
-from .abstract import *
-from .concrete import *
+from .bishop import *
+from .king import *
+from .knight import *
+from .pawn import *
+from .queen import *
+from .rook import *
 
 # Modules
-None
+from .model import Rank

@@ -1,10 +1,10 @@
-# src/database/player/database/validator.py
+# src/database/coord/model.py
 
 """
-Module: database.player.database.service
+Module: database.coord.model
 Author: Banji Lawal
-Created: 2025-09-16
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 

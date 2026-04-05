@@ -3,18 +3,14 @@
 """
 Module: model.hostage.__init__
 Author: Banji Lawal
-Created: 2025-10-09
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 # =========== HOSTAGE PACKAGE CONTENTS ===========#
 
 # Packages
-from .buillder import *
-from .context import *
-from .database import *
-from .service import *
-from .validator import *
-from .exception import *
+None
 
 # Modules
+from .model import Hostage

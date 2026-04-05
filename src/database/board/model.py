@@ -1,23 +1,15 @@
-# src/database/board/database/validator.py
+# src/database/board/model.py
 
 """
-Module: database.board.database.service
+Module: database.board.model
 Author: Banji Lawal
-Created: 2025-11-24
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from typing import List
 
-from database.board import (
-    AddingDuplicateBoardException, Board, BoardContext,
-    BoardQueryService,
-    BoardStackService, BoardService, UniqueBoardDataServiceException, UniqueBoardInsertionException,
-    UniqueBoardSearchException
-)
-from system import (
-    InsertionResult, LoggingLevelRouter, SearchResult, Database, id_emitter
-)
+from database import Database
 
 
 class BoardDatabase(Database[Board]):

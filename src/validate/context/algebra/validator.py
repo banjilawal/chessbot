@@ -17,7 +17,7 @@ from geometry import Coord, Vector
 from result.validation import ValidationResult
 from system import LoggingLevelRouter
 from validate import Validator
-from context  import AlgebraAcontext
+from model.context import AlgebraAcontext
 
 
 class AlgebraContextValidator(Validator[AlgebraAcontext]):

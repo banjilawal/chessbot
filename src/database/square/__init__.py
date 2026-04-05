@@ -13,4 +13,4 @@ version: 1.0.1
 # Packages
 None
 # Modules
-from .model import Database
+from .model import SquareDatabase

@@ -3,17 +3,15 @@
 """
 Module: model.player.__init__
 Author: Banji Lawal
-Created: 2025-09-16
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-#=========== PLAYER.MODEL PACKAGE CONTENTS ===========#
+# =========== PLAYER PACKAGE CONTENTS ===========#
 
 # Packages
 from .human import *
 from .machine import *
 
 # Modules
-from .player import Player
-from .order import PlayerOrder
-from .exception import PlayerException
+from .model import Player
