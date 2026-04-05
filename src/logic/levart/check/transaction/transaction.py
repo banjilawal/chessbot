@@ -14,9 +14,9 @@ Notes:
 """
 
 from logic.board import FailedRemovalFromBoardRolledBackException
-from logic.piece import KingCheckEvent, OldTravelTransaction, TravelTransaction
-from system import LoggingLevelRouter, Transaction, TransactionResult, id_emitter
-from logic.event import AttackEvent, OccupationTransaction, TransferEvent, AttackEventValidator
+from logic.piece import KingCheckEvent, TravelTransaction
+from system import LoggingLevelRouter, TransactionResult, id_emitter
+from logic.event import TransferEvent, AttackEventValidator
 from model.token import SetCaptorRolledBackException, \
   EmptyDestinationSquareRolledBackException
 from model.token import OccupationTransaction

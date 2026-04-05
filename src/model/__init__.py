@@ -19,6 +19,7 @@ from .board import *
 from .game import *
 from .hostage import *
 from .player import *
+from .query import *
 from .rank import *
 from .square import *
 from .team import *

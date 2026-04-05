@@ -13,4 +13,3 @@ Version: 1.0.0
 from .exception import *
 
 # Modules
-from .model import Query

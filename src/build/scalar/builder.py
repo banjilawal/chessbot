@@ -1,10 +1,10 @@
-# src/logic/scalar/build/exception.py
+# src/build/scalar/builder.py
 
 """
-Module: logic.scalar.build.build
+Module: build.scalar.builder
 Author: Banji Lawal
-Created: 2025-08-25
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from system import Builder, BuildResult, LoggingLevelRouter

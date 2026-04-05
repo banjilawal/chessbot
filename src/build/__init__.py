@@ -14,7 +14,6 @@ log = logging.getLogger("chessbot")
 # =========== PACKAGE CONTENTS ===========#
 
 # Packages
-from .adt import *
 from .arena import *
 from .board import *
 from .coord import *
@@ -32,4 +31,4 @@ from .token import *
 from .vector import *
 
 # Modules
-None
+from .builder import Builder

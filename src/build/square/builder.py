@@ -1,10 +1,10 @@
-# src/logic/square/service/operation/build/build.py
+# src/build/square/builder.py
 
 """
-Module: logic.square.service.operation.build.build
+Module: build.square.builder
 Author: Banji Lawal
-Created: 2025-09-03
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations

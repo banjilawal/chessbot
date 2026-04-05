@@ -1,16 +1,16 @@
-# src/logic/rank/build/__init__.py
+# src/build/rank/__init__.py
 
 """
-Module: logic.rank.build.__init__
+Module: build.rank.__init__
 Author: Banji Lawal
-Created: 2025-11-20
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-#=========== RANK.FACTORY PACKAGE CONTENTS ===========#
+# =========== RANK PACKAGE CONTENTS ===========#
 
 # Packages
-from .exception import *
+None
 
 # Modules
-from .factory import RankFactory
+from .builder import RankBuilder

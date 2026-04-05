@@ -1,16 +1,16 @@
-# src/logic/token/service/operation/build/__init__.py
+# src/build/token/__init__.py
 
 """
-Module: logic.token.service.operation.build.__init__
+Module: build.token.__init__
 Author: Banji Lawal
-Created: 2025-10-09
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-#=========== TOKEN.SERVICE.OPERATION.BUILD PACKAGE CONTENTS ===========#
+# =========== TOKEN PACKAGE CONTENTS ===========#
 
 # Packages
-from .exception import *
+None
 
 # Modules
 from .builder import TokenBuilder

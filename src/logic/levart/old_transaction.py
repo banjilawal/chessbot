@@ -23,14 +23,13 @@ from system import Transaction, TransactionResult, TransactionState, LoggingLeve
 from logic.square import Square
 from logic.player.finder import BoardSearch
 
-from logic.team import AddEnemyHostageRolledBackException, PieceCollectionCategory
+from logic.team import AddEnemyHostageRolledBackException
 from logic.team.exception import RemoveTeamMemberRolledBackException
 
 
 from logic.transaction import AttackValidator
 from model.token import (
-  OldOccupationEventValidator,
-  OccupationSearchEventException,
+    OccupationSearchEventException,
   TravelEvent,
   OccupationEventException,
 

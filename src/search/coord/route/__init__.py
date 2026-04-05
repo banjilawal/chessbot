@@ -13,4 +13,3 @@ version: 1.0.0
 from .exception import *
 
 # Modules
-from .router import CoordSearchRouter

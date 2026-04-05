@@ -1,10 +1,10 @@
-# src/logic/node/build/exception.py
+# src/build/node/builder.py
 
 """
-Module: logic.node.build.build
+Module: build.node.builder
 Author: Banji Lawal
-Created: 2026-02-17
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations

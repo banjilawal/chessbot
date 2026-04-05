@@ -12,7 +12,6 @@ from typing import Any, Dict
 
 from system import IdFactory
 from command.token.root import TokenCommand
-from model.token import Token, TokenService
 
 
 class ValidateTokenCommand(TokenCommand):

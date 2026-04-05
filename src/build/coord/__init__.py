@@ -10,7 +10,7 @@ version: 1.0.1
 # =========== COORD PACKAGE CONTENTS ===========#
 
 # Packages
-from .exception import *
+None
 
 # Modules
 from .builder import CoordBuilder

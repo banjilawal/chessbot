@@ -12,8 +12,7 @@ from typing import List, Optional
 
 from database.rank import Rank, RankService
 from model.token import (
-    RankQuotaReport, Token, TokenContext, TokenStackService, TokenService, TokenDatabaseException,
-    TokenStackState
+    RankQuotaReport, Token, TokenContext, TokenStackService, TokenService, TokenDatabaseException
 )
 from system import (
     ComputationResult, Database, DeletionResult, IdFactory, IdentityService, InsertionResult,

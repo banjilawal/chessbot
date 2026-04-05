@@ -1,16 +1,16 @@
-# src/build/coord/__init__.py
+# src/build/graph/__init__.py
 
 """
-Module: build.coord.__init__
+Module: build.graph.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== COORD PACKAGE CONTENTS ===========#
+# =========== GRAPH PACKAGE CONTENTS ===========#
 
 # Packages
-from .exception import *
+None
 
 # Modules
-from .builder import CoordBuilder
+from .builder import GraphBuilder

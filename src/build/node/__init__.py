@@ -1,16 +1,16 @@
-# src/logic/node/build/__init__.py
+# src/build/node/__init__.py
 
 """
-Module: logic.node.build.__init__
+Module: build.node.__init__
 Author: Banji Lawal
-Created: 2026-02-17
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-# =========== NODE.BUILDER PACKAGE CONTENTS ===========#
+# =========== NODE PACKAGE CONTENTS ===========#
 
 # Packages
-from .exception import *
+None
 
 # Modules
 from .builder import NodeBuilder

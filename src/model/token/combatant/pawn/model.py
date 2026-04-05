@@ -10,7 +10,6 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Optional
 
-from microservice.square.operation.collision.exception import id
 from model.team import Team
 from model.rank import Pawn, Rank
 from model.token import CombatantToken, PromotionState

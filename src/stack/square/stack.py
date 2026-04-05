@@ -15,7 +15,7 @@ from system import (
     NUMBER_OF_ROWS, SearchResult, UpdateResult
 )
 from logic.square import (
-    SquareContext, SquareStackException, SquareStackOpsController, SquareService,
+    SquareContext, SquareStackException, SquareService,
     SquareQueryService, Square, SquareStackOpsController,
 )
 from model.token import Token, TokenService

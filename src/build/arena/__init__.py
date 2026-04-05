@@ -10,7 +10,7 @@ version: 1.0.1
 # =========== ARENA PACKAGE CONTENTS ===========#
 
 # Packages
-from .exception import *
+None
 
 # Modules
 from .builder import ArenaBuilder

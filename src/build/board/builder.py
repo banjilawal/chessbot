@@ -1,10 +1,10 @@
-# src/logic/board/build/exception.py
+# src/build/board/builder.py
 
 """
-Module: logic.board.build.build
+Module: build.board.builder
 Author: Banji Lawal
-Created: 2025-09-03
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from logic.arena import Arena, ArenaService

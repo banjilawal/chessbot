@@ -1,12 +1,16 @@
-# src/logic/scalar/__init__.py
+# src/build/scalar/__init__.py
 
 """
-Module: logic.scalar.__init__
+Module: build.scalar.__init__
 Author: Banji Lawal
-Created: 2025-09-11
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-from .builder import ScalarBuilder
-from .exception import *
+# =========== SCALAR PACKAGE CONTENTS ===========#
 
+# Packages
+None
+
+# Modules
+from .builder import ScalarBuilder

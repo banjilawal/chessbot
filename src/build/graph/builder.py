@@ -1,12 +1,14 @@
-from typing import List
+# src/build/graph/builder.py
 
-from graph.graph import Graph
-from logic.square import Square
-from system import BuildResult
+"""
+Module: build.graph.builder
+Author: Banji Lawal
+Created: 2026-04-03
+version: 1.0.1
+"""
 
 
 class GraphBuilder:
     def build(origin: Square, incoming: List[Square], outgoing: List[Square]) -> BuildResult[Graph]:
         
-        for square in incoming:
-            if square.coord not in outgoing:
+ 

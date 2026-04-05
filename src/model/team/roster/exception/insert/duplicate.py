@@ -12,7 +12,7 @@ __all__ = [
     "TokenAlreadyOnTeamRosterException",
 ]
 
-from model.team import TeamRosterException, TeamException
+from model.team import TeamRosterException
 
 
 # ======================# TOKEN_ALREADY_ON_ROSTER EXCEPTION #======================#
