@@ -1,10 +1,10 @@
-# src/model/token/model/concrete/king/king.py
+# src/model/token/king/model.py
 
 """
-Module: model.token.model.concrete.king.king
+Module: model.token.king.model
 Author: Banji Lawal
-Created: 2025-10-03
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
@@ -12,17 +12,16 @@ from __future__ import annotations
 from model.coord import CoordDatabase
 from model.rank import King
 from model.team import Team
-from model.token import Token, TokenBoardState, ReadinessState
+from model.token import Token, TokenBoardState, TokenActivityState
 
 
 class KingToken(Token):
     """
     Role:
-        -   Model
-        -   Data-Holder
+        -   Stateful Data-Holder
 
     Responsibilities:
-        1. Represent a piece with a king's rank.
+        1. Token that can be checkmated not captured.
 
     Attributes:
         id: int
@@ -35,13 +34,15 @@ class KingToken(Token):
         current_position: Optional[Coord]
         previous_address: Optional[Coord]
         token_board_state: TokenBoardState
-        readiness_state: ReadinessState
-
-    Provides:
-        - is_checkmated() -> bool
-        - is_active() -> bool
-        - is_disabled() -> bool
-        - is_in_check() -> bool
+        readiness_state: TokenActivityState
+        is_not_deployed: bool
+        is_active(self): bool
+        is_disabled: bool
+        is_enemy: bool
+        is_checkmated: bool
+        is_active: bool
+        is_disabled: bool
+        is_in_checkk: bool
 
     Super Class:
         Token
@@ -79,20 +80,20 @@ class KingToken(Token):
     def is_in_check(self) -> bool:
         return (
                 self.board_state == TokenBoardState.DEPLOYED_ON_BOARD and
-                self.readiness_state == ReadinessState.IN_CHECK
+                self.readiness_state == TokenActivityState.IN_CHECK
         )
     
     @property
     def is_checkmated(self) -> bool:
         return (
                 self.board_state == TokenBoardState.DEPLOYED_ON_BOARD and
-                self.readiness_state == ReadinessState.CHECKMATED
+                self.readiness_state == TokenActivityState.CHECKMATED
         )
     
     @property
     def is_active(self) -> bool:
         return (
-                (ReadinessState.FREE or ReadinessState.IN_CHECK) and
+                (TokenActivityState.FREE or TokenActivityState.IN_CHECK) and
                 self.board_state == TokenBoardState.DEPLOYED_ON_BOARD
         )
     

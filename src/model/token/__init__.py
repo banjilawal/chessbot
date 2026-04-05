@@ -3,17 +3,16 @@
 """
 Module: model.token.__init__
 Author: Banji Lawal
-Created: 2025-10-03
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-#=========== TOKEN PACKAGE CONTENTS ===========#
+# =========== TOKEN PACKAGE CONTENTS ===========#
 
 # Packages
-from .model import  *
-from .query import *
-from .service import *
-from .database import *
+from .combatant import *
+from .king import *
+from .state import *
 
 # Modules
-None
+from .model import Token

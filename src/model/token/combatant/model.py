@@ -1,10 +1,10 @@
-# src/model/token/model/concrete/combatant/occupant.py
+# src/model/token/combatant/model.py
 
 """
-Module: model.token.model.concrete.combatant.occupant
+Module: model.token.combatant.model
 Author: Banji Lawal
-Created: 2025-10-03
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
@@ -12,56 +12,43 @@ from typing import Optional
 
 from model.team import Team
 from model.rank import Rank
-from model.token import Token, TokenBoardState, ReadinessState
+from model.token import Token, TokenBoardState, TokenActivityState
 
 
 class CombatantToken(Token):
     """
-    Role:Data-Holder
+    Role:
+        -   Stateful Data Holder
 
     Responsibilities:
-    1.  Represents piece which can be captured by an enemy.
-    2.  CombatantTokens can have Ranks: Paw, Knight, Bishop, Rook, or Queen.
-
-    Super Class:
-        *   Token
-
-    Provides:
-
-    # LOCAL ATTRIBUTES:
-        *   captor (Optional[Toke])
-        *   id (int)
-        *   team (Team)
-        *   rank (Rank)
-        *   designation (str)
-        *   roster_number (int)
-        *   positions (CoordStackService)
-        *   opening_square_name (str)
-        *   current_position (Optional[Coord])
-        *   previous_address (Optional[Coord])
-        *   token_board_state (TokenBoardState)
-        *   readiness_state (ReadinessState)
-
-    # INHERITED ATTRIBUTES:
-        *   See Token class for inherited attributes.
+        1.  Capturable Token.
 
     Attributes:
-        *   id (int)
-        *   team (Team)
-        *   rank (Rank)
-        *   designation (str)
-        *   roster_number (int)
-        *   opening_square_name (str)
+        id: int
+        team: Team
+        rank: Rank
+        designation: str
+        roster_number: int
+        positions: CoordDatabase
+        opening_square_name: str
+        current_position: Optional[Coord]
+        previous_address: Optional[Coord]
+        token_board_state: TokenBoardState
+        readiness_state: TokenActivityState
+        is_not_deployed: bool
+        is_active(self): bool
+        is_disabled: bool
+        is_enemy: bool
+        has_entered_hostage_process: bool
+        being_processed_as_hostage: bool
+        recorded_as_hostage: bool
+        captor: Optional[Token]
+        
+    Provides:
 
-    # LOCAL METHODS:
-        *   has_entered_hostage_process(self) -> bool
-        *   being_processed_as_hostage(self) -> bool
-        *   recorded_as_hostage(self) -> bool
-
-    # INHERITED METHODS:
-        *   See Token class for inherited methods.
+    Super Class:
+        Token
     """
-
     _captor: Optional[Token]
     
     def __init__(
@@ -96,7 +83,7 @@ class CombatantToken(Token):
     def is_active(self) -> bool:
         return (
                 self._captor is None and
-                self.readiness_state == ReadinessState.FREE and
+                self.readiness_state == TokenActivityState.FREE and
                 self.board_state == TokenBoardState.DEPLOYED_ON_BOARD
         )
     
@@ -109,7 +96,7 @@ class CombatantToken(Token):
         return (
                 self._captor is not None and
                 self.board_state == TokenBoardState.DEPLOYED_ON_BOARD and
-                self.readiness_state == ReadinessState.CAPTURE_ACTIVATED
+                self.readiness_state == TokenActivityState.CAPTURE_ACTIVATED
         )
     
     @property
@@ -117,7 +104,7 @@ class CombatantToken(Token):
         return (
                 self._captor is not None and
                 self.board_state == TokenBoardState.REMOVED_FROM_BOARD and
-                self.readiness_state == ReadinessState.HOSTAGE_CREATED
+                self.readiness_state == TokenActivityState.HOSTAGE_CREATED
         )
     
     @property
@@ -125,7 +112,7 @@ class CombatantToken(Token):
         return (
                 self._captor is not None and
                 self.board_state == TokenBoardState.REMOVED_FROM_BOARD and
-                self.readiness_state == ReadinessState.HOSTAGE_IN_DATABASE
+                self.readiness_state == TokenActivityState.HOSTAGE_IN_DATABASE
         )
     
     @property

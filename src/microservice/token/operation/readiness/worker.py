@@ -14,11 +14,11 @@ from typing import cast
 from system import LoggingLevelRouter, RelationReport
 from system.relation import RelationAnalysis
 from model.token import (
-    ReadinessState, TokenReadinessAnalysisException, CombatantToken,
+    TokenActivityState, TokenReadinessAnalysisException, CombatantToken,
     KingToken, Token, TokenValidation
 )
 
-class TokenReadinessAnalyzer(RelationAnalysis[ReadinessState.FREE, Token]):
+class TokenReadinessAnalyzer(RelationAnalysis[TokenActivityState.FREE, Token]):
     """
     Role:
         -   Analysis Factory
@@ -34,9 +34,9 @@ class TokenReadinessAnalyzer(RelationAnalysis[ReadinessState.FREE, Token]):
     Provides:
         -   execute(
                     candidate_satellite: Token,
-                    candidate_primary: ReadinessState.FREE,
+                    candidate_primary: TokenActivityState.FREE,
                     token_validator: TokenValidator,
-            ) -> RelationReport[ReadinessState, Token]
+            ) -> RelationReport[TokenActivityState, Token]
     Parent:
     """
     
@@ -45,9 +45,9 @@ class TokenReadinessAnalyzer(RelationAnalysis[ReadinessState.FREE, Token]):
     def work(
             cls,
             candidate_satellite: Token,
-            candidate_primary: ReadinessState.FREE = ReadinessState.FREE,
+            candidate_primary: TokenActivityState.FREE = TokenActivityState.FREE,
             token_validator: TokenValidation = TokenValidation(),
-    ) -> RelationReport[ReadinessState, Token]:
+    ) -> RelationReport[TokenActivityState, Token]:
         """
         MAke sure the token can be used.
         
@@ -61,10 +61,10 @@ class TokenReadinessAnalyzer(RelationAnalysis[ReadinessState.FREE, Token]):
         
         Args:
             candidate_satellite: Token
-            candidate_primary: ReadinessState
+            candidate_primary: TokenActivityState
             token_validator: TokenValidator
         Returns:
-              RelationReport[ReadinessState, Token]
+              RelationReport[TokenActivityState, Token]
         Raises:
         
         """
@@ -99,52 +99,52 @@ class TokenReadinessAnalyzer(RelationAnalysis[ReadinessState.FREE, Token]):
     def _analyze_combatant_readiness(
             cls,
             combatant: CombatantToken,
-            aliveness_state = ReadinessState.FREE,
-    ) -> RelationReport[ReadinessState, Token]:
+            aliveness_state = TokenActivityState.FREE,
+    ) -> RelationReport[TokenActivityState, Token]:
         method = f"{cls.__name__}._analyze_combatant_readiness"
         
         # Captured tokens are not free.
         if combatant.has_entered_hostage_process:
             return RelationReport.bidirectional(
-                primary=ReadinessState.HOSTAGE_CREATED,
+                primary=TokenActivityState.HOSTAGE_CREATED,
                 satellite=combatant,
             )
         if combatant.recorded_as_hostage:
             return RelationReport.bidirectional(
-                primary=ReadinessState.HOSTAGE_IN_DATABASE,
+                primary=TokenActivityState.HOSTAGE_IN_DATABASE,
                 satellite=combatant,
             )
         if combatant.is_disabled:
             return RelationReport.bidirectional(
-                primary=ReadinessState.DEACTIVATED,
+                primary=TokenActivityState.DEACTIVATED,
                 satellite=combatant,
             )
         if combatant.is_active:
             return RelationReport.bidirectional(
-                primary=ReadinessState.FREE,
+                primary=TokenActivityState.FREE,
                 satellite=combatant,
             )
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _analyze_king_readiness(cls, king: KingToken) -> RelationReport[ReadinessState, Token]:
+    def _analyze_king_readiness(cls, king: KingToken) -> RelationReport[TokenActivityState, Token]:
 
         if king.is_in_check:
             return RelationReport.bidirectional(
-                primary=ReadinessState.IN_CHECK,
+                primary=TokenActivityState.IN_CHECK,
                 satellite=king,
             )
         if king.is_checkmated:
             return RelationReport.bidirectional(
-                primary=ReadinessState.CHECKMATED,
+                primary=TokenActivityState.CHECKMATED,
                 satellite=king,
             )
         if king.is_disabled:
             return RelationReport.bidirectional(
-                primary=ReadinessState.DEACTIVATED,
+                primary=TokenActivityState.DEACTIVATED,
                 satellite=king,
             )
         return RelationReport.bidirectional(
-            primary=ReadinessState.FREE,
+            primary=TokenActivityState.FREE,
             satellite=king,
         )

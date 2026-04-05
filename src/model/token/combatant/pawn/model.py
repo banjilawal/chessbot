@@ -1,15 +1,16 @@
-# src/model/token/model/concrete/combatant/pawn_token/occupant.py
+# src/model/token/combatant/pawn/model.py
 
 """
-Module: model.token.model.concrete.combatant.pawn_token.occupant
+Module: model.token.combatant.pawn.model
 Author: Banji Lawal
-Created: 2025-10-03
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
 from typing import Optional
 
+from microservice.square.operation.collision.exception import id
 from model.team import Team
 from model.rank import Pawn, Rank
 from model.token import CombatantToken, PromotionState
@@ -17,40 +18,43 @@ from model.token import CombatantToken, PromotionState
 
 class PawnToken(CombatantToken):
     """
-    Role:Data-Holder
+    Role:
+        -   Stateful Data Holder
 
     Responsibilities:
-    1.  Represents a Pawn. Pawns can be promoted.
-    2.  A Pawn can be promoted to either a Knight, Bishop, Rook, or Queen.
-
-    Super Class:
-        *   CombatantToken
-
-    Provides:
-
-    # LOCAL ATTRIBUTES:
-        *   promotion_state (PromotionState)
-
-    # INHERITED ATTRIBUTES:
-        *   See CombatantToken class for inherited attributes.
+        1.  Promotable combatant.
 
     Attributes:
-        *   id (int)
-        *   team (Team)
-        *   rank (Rank)
-        *   designation (str)
-        *   roster_number (int)
-        *   opening_square_name (str)
-        *   promotion_state (PromotionState)
-
-    # LOCAL METHODS:
-        *   previous_rank(self) -> Optional[Rank]
-        *   can_promote(self) -> bool
-        *   is_promoted(self) -> bool
-        *   set_new_rank(self, new_rank: Rank):
-
-    # INHERITED METHODS:
-        *   See CombatantToken class for inherited methods.
+        id: int
+        team: Team
+        rank: Rank
+        designation: str
+        roster_number: int
+        positions: CoordDatabase
+        opening_square_name: str
+        current_position: Optional[Coord]
+        previous_address: Optional[Coord]
+        token_board_state: TokenBoardState
+        readiness_state: TokenActivityState
+        is_not_deployed: bool
+        is_active(self): bool
+        is_disabled: bool
+        is_enemy: bool
+        has_entered_hostage_process: bool
+        being_processed_as_hostage: bool
+        recorded_as_hostage: bool
+        captor: Optional[Token]
+        previous_rank: Optional[Rank]
+        promotion_state:
+        previous_rank: Optional[Rank]
+        can_promote:  bool
+        is_promoted: bool
+        
+    Provides:
+        -   set_new_rank(new_rank: Rank):
+        
+    Super Class:
+        CombatantToken
     """
     _promotion_state: PromotionState
     

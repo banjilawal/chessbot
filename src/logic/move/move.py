@@ -1,7 +1,7 @@
 from logic.attack import Attack, AttackingFriendlySquareException
 from logic.square import Square, SquareService
 from system import LoggingLevelRouter
-from model.token import ReadinessState, Token, TokenService
+from model.token import TokenActivityState, Token, TokenService
 
 
 class Move:
@@ -25,7 +25,7 @@ class Move:
                     ex=readiness_analysis_result.exception,
                 )
             )
-        if not readiness_analysis_result.primary != ReadinessState.FREE:
+        if not readiness_analysis_result.primary != TokenActivityState.FREE:
             return MoveResult.failure(
                 MoveFailedException(
                     f"{method}: {MoveFailedException.MSG}",

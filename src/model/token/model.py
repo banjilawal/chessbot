@@ -13,14 +13,13 @@ from typing import Optional
 
 from model.rank import Rank
 from model.team import Team
-from model.token import TokenBoardState, ReadinessState
+from model.token import TokenBoardState, TokenActivityState
 from model.coord import Coord, CoordDatabase
 
 class Token(ABC):
     """
     Role:
-        -   Model
-        -   Data-Holder
+        -   Stateful Data Holder
         
     Responsibilities:
         1. Abstract representation of a chess piece.
@@ -36,14 +35,14 @@ class Token(ABC):
         current_position: Optional[Coord]
         previous_address: Optional[Coord]
         token_board_state: TokenBoardState
-        readiness_state: ReadinessState
+        readiness_state: TokenActivityState
+        is_not_deployed: bool
+        is_active(self): bool
+        is_disabled: bool
+        is_enemy: bool
         
     Provides:
-        - is_not_deployed(self) -> bool
-        - is_active(self) -> bool
-        - is_disabled(self) -> bool
-        - is_enemy(self, token: Token) -> bool
-        
+
     Super Class:
     """
     _id: int
@@ -56,7 +55,7 @@ class Token(ABC):
     _current_position: Optional[Coord]
     _previous_address: Optional[Coord]
     _token_board_state: TokenBoardState
-    _readiness_state: ReadinessState
+    _readiness_state: TokenActivityState
 
     def __init__(
             self,
@@ -88,7 +87,7 @@ class Token(ABC):
         self._current_position = self._positions.current_item
         self._previous_address = self._positions.previous_coord
         self._token_board_state = TokenBoardState.NEVER_BEEN_PLACED
-        self._readiness_state = ReadinessState.NOT_INITIALIZED
+        self._readiness_state = TokenActivityState.NOT_INITIALIZED
     
     @property
     def id(self) -> int:
@@ -115,11 +114,11 @@ class Token(ABC):
         return self._opening_square_name
     
     @property
-    def readiness_state(self) -> ReadinessState:
+    def readiness_state(self) -> TokenActivityState:
         return self._readiness_state
     
     @readiness_state.setter
-    def readiness_state(self, readiness_state: ReadinessState):
+    def readiness_state(self, readiness_state: TokenActivityState):
         self._readiness_state = readiness_state
     
     @property
