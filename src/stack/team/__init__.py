@@ -10,7 +10,6 @@ version: 1.0.0
 #=========== TEAM.DATABASE.CORE PACKAGE CONTENTS ===========#
 
 # Packages
-from .exception import *
 
 # Modules
 from .stack import  TeamStack

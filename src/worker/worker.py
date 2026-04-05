@@ -16,7 +16,7 @@ from system import LoggingLevelRouter, TransactionResult
 
 T = TypeVar("T")
 
-class Worker(ABC, Generic[T]):
+class Worker(ABC,):
     """
     Role
         -   Worker

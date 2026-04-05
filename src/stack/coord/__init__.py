@@ -11,7 +11,6 @@ version: 1.0.0
 
 # Packages
 from .operation import *
-from .exception import *
 
 # Modules
 from .stack import CoordStackService

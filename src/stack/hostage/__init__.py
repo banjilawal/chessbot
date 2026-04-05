@@ -10,7 +10,5 @@ version: 1.0.0
 # =========== HOSTAGE.DATABASE.CORE PACKAGE CONTENTS ===========#
 
 # Packages
-from .exception import *
 
 # Modules
-from .service import HostageList
