@@ -1,17 +1,20 @@
-# src/logic/team/__init__.py
+# src/database/team/__init__.py
 
 """
-Module: logic.team.__init__
+Module: database.team.__init__
 Author: Banji Lawal
-Created: 2025-11-24
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-#=========== TEAM.DATABASE PACKAGE CONTENTS ===========#
+import logging
+
+log = logging.getLogger("chessbot")
+
+# =========== PACKAGE CONTENTS ===========#
 
 # Packages
-from .core import *
-from .exception import *
+None
 
 # Modules
-from .database import TeamDatabase
+from .model import TeamDatabase

@@ -1,16 +1,16 @@
-# src/logic/hostage/database/exception/__init__.py
+# src/database/hostage/__init__.py
 
 """
-Module: logic.hostage.database.exception.__init__
+Module: database.hostage.__init__
 Author: Banji Lawal
-Created: 2025-11-22
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-# =========== HOSTAGE.DATABASE.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== HOSTAGE PACKAGE CONTENTS ===========#
 
 # Packages
 None
 
 # Modules
-from .anchor import HostageDatabaseException
+from .model import Database

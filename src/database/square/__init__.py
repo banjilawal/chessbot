@@ -1,18 +1,16 @@
-# src/logic/square/__init__.py
+# src/database/square/__init__.py
 
 """
-Module: logic.square.__init__
+Module: database.square.__init__
 Author: Banji Lawal
-Created: 2025-11-22
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-#=========== SQUARE.DATABASE PACKAGE CONTENTS ===========#
+
+# =========== SQUARE PACKAGE CONTENTS ===========#
 
 # Packages
-from .kernel import *
-from .exception import *
-
-
+None
 # Modules
-from .database import SquareDatabase
+from .model import Database

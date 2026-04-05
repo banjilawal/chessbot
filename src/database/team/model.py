@@ -1,7 +1,7 @@
-# src/logic/team/database/database.py
+# src/database/team/database/database.py
 
 """
-Module: logic.team.database.database
+Module: database.team.database.database
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import List, Optional, cast
 
 from catalog.schema import Schema
-from logic.team import Team, TeamContext, TeamQueryService, TeamDatabaseException, TeamService, TeamStack
+from database.team import Team, TeamContext, TeamQueryService, TeamDatabaseException, TeamService, TeamStack
 from system import (
     DeletionResult, InsertionResult, LoggingLevelRouter, SearchResult, Database, id_emitter
 )

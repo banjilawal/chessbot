@@ -1,17 +1,20 @@
-# src/logic/player/__init__.py
+# src/database/player/__init__.py
 
 """
-Module: logic.player.__init__
+Module: database.player.__init__
 Author: Banji Lawal
-Created: 2025-09-16
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-#=========== PLAYER.DATABASE PACKAGE CONTENTS ===========#
+import logging
+
+log = logging.getLogger("chessbot")
+
+# =========== PACKAGE CONTENTS ===========#
 
 # Packages
 None
 
 # Modules
-from .service import PlayerDatabase
-from .exception import UniqueAgentDataServiceException
+from .model import Database

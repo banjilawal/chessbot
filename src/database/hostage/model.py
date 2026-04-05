@@ -1,7 +1,7 @@
-# src/logic/hostage/database/validator.py
+# src/database/hostage/database/validator.py
 
 """
-Module: logic.hostage.database.service
+Module: database.hostage.database.service
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0

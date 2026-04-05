@@ -1,7 +1,7 @@
-# src/logic/player/database/validator.py
+# src/database/player/database/validator.py
 
 """
-Module: logic.player.database.service
+Module: database.player.database.service
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,7 +11,7 @@ version: 1.0.0
 from typing import List, cast
 
 from system import DeletionResult, InsertionResult, SearchResult, Database
-from logic.agent import PlayerAgent, AgentContext, AgentContextService, AgentDataService, AgentService
+from database.agent import PlayerAgent, AgentContext, AgentContextService, AgentDataService, AgentService
 
 from model.player import Player
 

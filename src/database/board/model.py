@@ -1,7 +1,7 @@
-# src/logic/board/database/validator.py
+# src/database/board/database/validator.py
 
 """
-Module: logic.board.database.service
+Module: database.board.database.service
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import List
 
-from logic.board import (
+from database.board import (
     AddingDuplicateBoardException, Board, BoardContext,
     BoardQueryService,
     BoardStackService, BoardService, UniqueBoardDataServiceException, UniqueBoardInsertionException,

@@ -1,7 +1,7 @@
-# src/logic/square/database/validator.py
+# src/database/square/database/validator.py
 
 """
-Module: logic.square.database.service
+Module: database.square.database.service
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import Dict, List, Optional
 
-from logic.square import (
+from database.square import (
     Square, SquareContext, SquareQueryService, SquareDatabaseException, SquareService,
     SquareStackService
 )

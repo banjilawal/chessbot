@@ -1,13 +1,13 @@
-# src/logic/player/database/exception.py
+# src/database/player/database/exception.py
 
 """
-Module: logic.player.database.exception
+Module: database.player.database.exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
-from logic.agent import AgentException
+from database.agent import AgentException
 from system import DatabaseException
 
 __all__ = [

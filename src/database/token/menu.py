@@ -1,7 +1,7 @@
-# src/logic/token/database/database.py
+# src/database/token/database/database.py
 
 """
-Module: logic.token.database.database
+Module: database.token.database.database
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import List, Optional
 
-from logic.rank import Rank, RankService
+from database.rank import Rank, RankService
 from model.token import (
     RankQuotaReport, Token, TokenContext, TokenStackService, TokenService, TokenDatabaseException,
     TokenStackState
