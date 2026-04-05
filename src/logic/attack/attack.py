@@ -45,7 +45,7 @@ class Attack:
                 )
             )
         # Handle the case the item does not pass a validation check.
-        square_validation = square_database.integrity_service.validator.validate(candidate=square)
+        square_validation = square_database.service.validator.validate(candidate=square)
         if square_validation.is_failure:
             # Return the exception chain on failure.
             return AttackResult.failure(
@@ -172,7 +172,7 @@ class Attack:
             prisoner=prisoner,
             captured_square=square,
             token_service=token_service,
-            square_service=square_database.integrity_service,
+            square_service=square_database.service,
         )
         # Handle the case that, the manifest bui;d failed.
         if manifest_build_result.is_failure:

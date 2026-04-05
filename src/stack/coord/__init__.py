@@ -1,16 +1,16 @@
-# src/logic/coord/database/kernel/__init__.py
+# src/microservice/stack/coord/__init__.py
 
 """
-Module: logic.coord.database.kernel.__init__
+Module: microservice.stack.coord.__init__
 Author: Banji Lawal
-Created: 2025-11-19
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-# =========== COORD.DATABASE.CORE PACKAGE CONTENTS ===========#
+# =========== STACK.COORD PACKAGE CONTENTS ===========#
 
 # Packages
-from .operation import *
+None
 
 # Modules
-from .stack import CoordStackService
+from .microservice import CoordStackService

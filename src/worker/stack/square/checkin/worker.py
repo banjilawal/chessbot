@@ -109,7 +109,7 @@ class SquareStackDepartureWorker:
             return DeletionResult.nothing_to_delete()
         
         # Process the case: Some squares are holding the token
-        return cls._eviction_handler(occupations, square_stack.integrity_service.square_service)
+        return cls._eviction_handler(occupations, square_stack.service.square_service)
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -156,7 +156,7 @@ class SquareStackDepartureWorker:
         method = "SquareStackDepartureWorker._safe_square_exists"
         
         # Handle the case that, the squareis not safe.
-        square_validation = square_stack.integrity_service.validator.validate(square)
+        square_validation = square_stack.service.validator.validate(square)
         if square_validation.is_failure:
             return ValidationResult.failure(
                 exception=SquareStackTokenHandlerException(

@@ -1,16 +1,16 @@
-# src/logic/player/database/kernel/__init__.py
+# src/microservice/stack/player/__init__.py
 
 """
-Module: logic.player.database.kernel.__init__
+Module: microservice.stack.player.__init__
 Author: Banji Lawal
-Created: 2025-09-16
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-
-#=========== PLAYER.DATABASE.CORE PACKAGE CONTENTS ===========#
+# =========== STACK.PLAYER PACKAGE CONTENTS ===========#
 
 # Packages
-from .unique import *
+None
 
 # Modules
+from .microservice import PlayerStackService

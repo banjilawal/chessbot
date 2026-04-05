@@ -1,15 +1,16 @@
-# src/logic/edge/schema/__init__.py
+# src/microservice/stack/edge/__init__.py
 
 """
-Module: logic.edge.schema.__init__
+Module: microservice.stack.edge.__init__
 Author: Banji Lawal
-Created: 2026-02-17
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-# =========== EDGE.STACK PACKAGE CONTENTS ===========#
+# =========== STACK.EDGE PACKAGE CONTENTS ===========#
 
 # Packages
+None
 
 # Modules
-from .stack import EdgeStack
+from .microservice import EdgeStackService

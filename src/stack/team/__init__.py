@@ -1,15 +1,16 @@
-# src/logic/team/database/kernel/__init__.py
+# src/microservice/stack/team/__init__.py
 
 """
-Module: logic.team.database.kernel.__init__
+Module: microservice.stack.team.__init__
 Author: Banji Lawal
-Created: 2025-11-24
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-#=========== TEAM.DATABASE.CORE PACKAGE CONTENTS ===========#
+# =========== STACK.TEAM PACKAGE CONTENTS ===========#
 
 # Packages
+None
 
 # Modules
-from .stack import  TeamStack
+from .microservice import TeamStackService

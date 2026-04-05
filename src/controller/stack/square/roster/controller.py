@@ -263,7 +263,7 @@ class SquareStackRosterHandler:
     
         pre_deployment_team = deepcopy(team)
         # --- Handoff the square's occupation to the integrity service. ---#
-        square_update_result = square_stack.integrity_service.occupy_stack_square(
+        square_update_result = square_stack.service.occupy_stack_square(
             token=token,
             square=opening_square,
         )

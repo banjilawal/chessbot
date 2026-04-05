@@ -1,13 +1,16 @@
-# src/logic/system/microservice/abstract/validator.py
+# src/microservice/microservice.py
 
 """
-Module: logic.system.microservice.abstract.service
+Module: microservice.microservice
 Author: Banji Lawal
-Created: 2025-11-18
+Created: 2026-04-03
+version: 1.0.1
 """
 
-from abc import ABC
+from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
+
+
 
 T = TypeVar("T")
 
@@ -15,55 +18,61 @@ T = TypeVar("T")
 class Microservice(ABC, Generic[T]):
     """
     Role:
-       -   Abstract Root
+        -   API
+        -   Lifecycle Manager
+        -   Operations Provider
+        -   Stateless Microservice
         
-    About Microservices:
-        -   Stateless
-        -   Pluggable
-        -   Source of operations producing different Result types.
-        -   Hosts workers that complete tasks for a stateful data-holder.
-        
+    About:
+        Avoids casting an entity's builders and validators by making them abstract
+        properties.
 
     Responsibilities:
-        1.  Platform primitive to build Microservice APIs.
-        
+        1.  Baremetal service request API.
+        2.  Maintain the build-validation security lifecycle.
+
     Attributes:
         id: int
-        schema: str
-        
+        name: str
+
     Provides:
-    
+        -   builder() -> Builder[T]
+        -   validator() -> Validator[T]
+
     Super Class:
+        Microservice
     """
     _id: int
     _name: str
-
+    
     def __init__(self, id: int, name: str,):
         """
         Args:
             id: int
-            name: str
+            name: str[T]
         """
         self._id = id
         self._name = name
+        
     
     @property
-    def id(self) -> int:
-        return self._id
+    @abstractmethod
+    def builder(self) -> Builder[T]:
+        pass
     
     @property
-    def name(self) -> str:
-        return self._name
+    @abstractmethod
+    def validator(self) -> Validator[T]:
+        pass
     
     def __eq__(self, other):
-        if other is self: return True
-        if other is None: return False
-        if isinstance(other, Microservice):
-            return self._id == other.id
+        if super().__eq__(other):
+            if isinstance(other, Microservice):
+                return True
         return False
-    
+
     def __hash__(self):
         return hash(self._id)
     
     def __str__(self):
-        return f"id:{self._id}, schema:{self._name}"
+        return f"id:{self._id}, name:{self._name}"

@@ -110,7 +110,7 @@ class SquareStackOccupationWorker(Worker):
             )
         # --- After the square is validated, get a snapshot of its pre-update state. then call visit operation.---#
         pre_update_square = deepcopy(square)
-        update_result = square_stack.integrity_service.token_visit_handler.start_visit(
+        update_result = square_stack.service.token_visit_handler.start_visit(
             token=token,
             square=square,
             token_service=token_service,
@@ -142,7 +142,7 @@ class SquareStackOccupationWorker(Worker):
         method = "SquareStackOccupationWorker._safe_square_exists"
         
         # Handle the case that, the squareis not safe.
-        square_validation = square_stack.integrity_service.validator.validate(square)
+        square_validation = square_stack.service.validator.validate(square)
         if square_validation.is_failure:
             return ValidationResult.failure(
                 exception=SquareStackTokenHandlerException(

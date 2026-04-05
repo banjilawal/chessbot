@@ -1,15 +1,16 @@
-# src/logic/board/database/kernel/__init__.py
+# src/microservice/stack/board/__init__.py
 
 """
-Module: logic.board.database.kernel.__init__
+Module: microservice.stack.board.__init__
 Author: Banji Lawal
-Created: 2025-11-22
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-# =========== BOARD.DATABASE.CORE PACKAGE CONTENTS ===========#
+# =========== STACK.BOARD PACKAGE CONTENTS ===========#
 
 # Packages
-from .unique import *
+None
 
 # Modules
+from .microservice import BoardStackService

@@ -69,7 +69,7 @@ class SquareStackOccupationWorker(Worker):
         method = "SquareStackOccupationWorker._safe_square_exists"
         
         # Handle the case that, the squareis not safe.
-        square_validation = square_stack.integrity_service.validator.validate(square)
+        square_validation = square_stack.service.validator.validate(square)
         if square_validation.is_failure:
             return ValidationResult.failure(
                 exception=SquareStackTokenHandlerException(

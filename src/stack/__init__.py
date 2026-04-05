@@ -1,7 +1,7 @@
-# src/stack/__init__.py
+# src/microservice/stack/__init__.py
 
 """
-Module: stack.__init__
+Module: microservice.stack.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,10 +11,9 @@ import logging
 
 log = logging.getLogger("chessbot")
 
-# =========== PACKAGE CONTENTS ===========#
+# =========== SERVICE.STACK. PACKAGE CONTENTS ===========#
 
 # Packages
-from .adt import *
 from .board import *
 from .coord import *
 from .edge import *
@@ -26,4 +25,4 @@ from .team import *
 from .token import *
 
 # Modules
-None
+from .microservice import StackService

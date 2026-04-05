@@ -1,19 +1,16 @@
-# src/logic/token/database/kernel/__init__.py
+# src/microservice/stack/token/__init__.py
 
 """
-Module: logic.token.database.kernel.__init__
+Module: microservice.stack.token.__init__
 Author: Banji Lawal
-Created: 2025-11-19
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-
-# =========== TOKEN.DATABASE.KERNEL PACKAGE CONTENTS ===========#
+# =========== STACK.TOKEE PACKAGE CONTENTS ===========#
 
 # Packages
-from stack.token.exception.operation import *
-from .exception import *
+None
 
 # Modules
-from .stack import TokenStackService
-from .state import TokenStackState
+from .microservice import TokenStackService

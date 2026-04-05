@@ -1,15 +1,16 @@
-# src/logic/node/schema/__init__.py
+# src/microservice/stack/node/__init__.py
 
 """
-Module: logic.node.schema.__init__
+Module: microservice.stack.node.__init__
 Author: Banji Lawal
-Created: 2025-02-17
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-# =========== NODE.STACK PACKAGE CONTENTS ===========#
+# =========== STACK.NODE PACKAGE CONTENTS ===========#
 
 # Packages
+None
 
 # Modules
-from .stack import NodeStackService
+from .microservice import NodeStackService

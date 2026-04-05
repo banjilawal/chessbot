@@ -1,17 +1,16 @@
-# src/logic/square/database/kernel/__init__.py
+# src/microservice/stack/square/__init__.py
 
 """
-Module: logic.square.database.kernel.__init__
+Module: microservice.stack.square.__init__
 Author: Banji Lawal
-Created: 2026-02-27
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-#=========== SQUARE.DATABASE.KERNEL PACKAGE CONTENTS ===========#
+# =========== STACK.SQUARE PACKAGE CONTENTS ===========#
 
 # Packages
-from .operation import *
-from stack.square import *
+None
 
 # Modules
-from .stack import SquareStackService
+from .microservice import SquareStackService

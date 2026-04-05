@@ -202,7 +202,7 @@ class TokenDeploymentWorker(Worker):
                     ex=token_validation_result.exception
                 )
             )
-        opening_square_search = square_stack.integrity_service.search(
+        opening_square_search = square_stack.service.search(
             context=SquareContext(name=token.opening_square_name)
         )
         # Handle the case that the search fails
