@@ -11,12 +11,10 @@ version: 1.0.1
 # =========== PACKAGE CONTENTS ===========#
 
 # Packages
-from .integrity import *
-
-from .abstract import *
 from .arena import *
 from .board import *
 from .coord import *
+from .formation import *
 from .game import *
 from .hostage import *
 from .player import *

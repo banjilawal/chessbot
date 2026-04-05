@@ -35,4 +35,4 @@ from .token import *
 from .vector import *
 
 # Modules
-None
+from .validator import Validator

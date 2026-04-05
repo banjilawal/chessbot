@@ -53,7 +53,7 @@ class FormationLookupProcess(HashLookupProcess[Formation]):
                 the formation entries with the targeted key-values.
         # PARAMETERS:
             *   key: FormationKey
-            *   key_validator: FormationKeyValidator
+            *   key_validator: FormationContext
         # RETURNS:
             *   SearchResult[List[Formation]] containing either:
                     - On error: Exception , payload null

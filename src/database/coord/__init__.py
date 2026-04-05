@@ -14,4 +14,4 @@ version: 1.0.1
 None
 
 # Modules
-from .model import CoordDatabase
+from .database import CoordDatabase

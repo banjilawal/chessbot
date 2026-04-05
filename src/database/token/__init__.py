@@ -1,10 +1,10 @@
-# src/database/token/__init__.py
+# src/__init__.py
 
 """
-Module: database.token.__init__
+Module: __init__
 Author: Banji Lawal
-Created: 2025-11-19
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 # =========== TOKEN PACKAGE CONTENTS ===========#
@@ -13,4 +13,4 @@ version: 1.0.0
 None
 
 # Modules
-from .model import TokenDatabase
+from .database import TokenDatabase

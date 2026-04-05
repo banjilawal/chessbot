@@ -21,6 +21,7 @@ from .hostage import *
 from .player import *
 from .query import *
 from .rank import *
+from .snapshot import *
 from .square import *
 from .team import *
 from .token import *

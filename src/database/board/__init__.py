@@ -13,4 +13,4 @@ version: 1.0.1
 None
 
 # Modules
-from .model import BoardDatabase
+from .database import BoardDatabase

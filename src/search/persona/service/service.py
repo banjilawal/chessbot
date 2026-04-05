@@ -48,7 +48,7 @@ class PersonaKeyService(QueryService[PersonaKey]):
             *   id (nt)
             *   schema (str)
             *   build (PersonaContextBuilder)
-            *   validation (PersonaKeyValidator)
+            *   validation (POersonaContext)
         # RETURNS:
             None
         Raises:
@@ -63,7 +63,7 @@ class PersonaKeyService(QueryService[PersonaKey]):
     
     @property
     def validation(self) -> PersonaKeyValidator:
-        """get PersonaKeyValidator"""
+        """get POersonaContext"""
         return cast(PersonaKeyValidator, self.entity_validator)
     
     @property

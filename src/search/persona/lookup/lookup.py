@@ -50,7 +50,7 @@ class PersonaLookupProcess(HashLookupProcess[Persona]):
                 chain in the SearchResult. Else, send Personas whose targeted attribute values match.
         # PARAMETERS:
             *   key: PersonaKey
-            *   key_validator: PersonaKeyValidator
+            *   key_validator: POersonaContext
         # RETURNS:
             *   SearchResult[List[Persona]] containing either:
                     - On error: Exception , payload null

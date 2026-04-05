@@ -23,4 +23,4 @@ from .team import *
 from .token import *
 
 # Modules
-from .model import Database
+from .database import Database

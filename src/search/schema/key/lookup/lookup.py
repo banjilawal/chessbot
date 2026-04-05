@@ -48,7 +48,7 @@ class SchemaLookupProcess(HashLookupProcess[Schema]):
                 chain in the SearchResult. Else, send Personas whose targeted attribute values match.
         # PARAMETERS:
             *   key: SchemaKey
-            *   key_validator: SchemaKeyValidator
+            *   key_validator: SchemaContextValidator
         # RETURNS:
             *   SearchResult[List[Schema]] containing either:
                     - On error: Exception , payload null

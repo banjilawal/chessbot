@@ -48,7 +48,7 @@ class SchemaKeyService(QueryService[SchemaKey]):
             *   id (nt)
             *   schema (str)
             *   build (SchemaContextBuilder)
-            *   validation (SchemaKeyValidator)
+            *   validation (SchemaContextValidator)
         # RETURNS:
             None
         Raises:
@@ -63,7 +63,7 @@ class SchemaKeyService(QueryService[SchemaKey]):
     
     @property
     def validation(self) -> SchemaKeyValidator:
-        """get SchemaKeyValidator"""
+        """get SchemaContextValidator"""
         return cast(SchemaKeyValidator, self.entity_validator)
     
     @property
