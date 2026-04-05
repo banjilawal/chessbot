@@ -1,21 +1,21 @@
-from typing import Optional
+# src/build/context/hostage/builder.py
 
-from model.hostage import (
-    CaptivityContext, CaptivityContextBuildException,
-    CaptivityContextBuildRouteException, ArenaCaptivityContextFlagsException, ZeroCaptivityContextFlagsException
-)
-from logic.square import Square, SquareService
-from system import IdentityService, LoggingLevelRouter, BuildResult, Builder, id_emitter
-from model.token import CombatantToken, Token, TokenService
+"""
+Module: build.context.hostage.builder
+Author: Banji Lawal
+Created: 2026-04-03
+version: 1.0.1
+"""
 
+from __future__ import annotations
 
-class CaptivityContextBuilder(Builder[HostageContext]):
+class HostageContextBuilder(Builder[HostageContext]):
     """
      Role:Validation, Data Integrity Guarantor, Security.
 
     Responsibilities:
-    1. Verify a rank is a CaptivityContext that meets the application's safety contract before the client
-        is allowed to use the CaptivityContext object.
+    1. Verify a rank is a HostageContext that meets the application's safety contract before the client
+        is allowed to use the HostageContext object.
     2. Provide pluggable factories for validating different options separately.
 
     Super Class:
@@ -40,27 +40,27 @@ class CaptivityContextBuilder(Builder[HostageContext]):
             token_service: TokenService = TokenService(),
             square_service: SquareService = SquareService(),
             identity_service: IdentityService = IdentityService(),
-    ) -> BuildResult[CaptivityContext]:
+    ) -> BuildResult[HostageContext]:
         """
         # ACTION:
-        Verifies rank is a CaptivityContext in two steps.
-            1. Test the rank is a valid SearchCaptivityContext with a single searcher option switched on.
-            2. Test the value passed to CaptivityContext passes its validation contract.
+        Verifies rank is a HostageContext in two steps.
+            1. Test the rank is a valid SearchHostageContext with a single searcher option switched on.
+            2. Test the value passed to HostageContext passes its validation contract.
         # PARAMETERS:
             * rank (Any): Object to verify is a Square.
             * validation (type[SquareValidator]): Enforces safety requirements on row, column, square_name squares.
         # RETURNS:
-            * BuildResult[CaptivityContext] containing either:
+            * BuildResult[HostageContext] containing either:
                     - On failure: Exception.
-                    - On success: CaptivityContext in the payload.
+                    - On success: HostageContext in the payload.
         Raises:
             * TypeError
-            * NullCaptivityContextException
-            * ZeroCaptivityContextFlagsException
-            * CaptivityContextBuildException
-            * CaptivityContextBuildRouteException
+            * NullHostageContextException
+            * ZeroHostageContextFlagsException
+            * HostageContextBuildException
+            * HostageContextBuildRouteException
         """
-        method = "CaptivityContextBuilder.validate"
+        method = "HostageContextBuilder.validate"
         
         # --- Count how many optional parameters are not-null. only one should be not null. ---#
         params = [id, prisoner, victor, captured_square]
@@ -70,10 +70,10 @@ class CaptivityContextBuilder(Builder[HostageContext]):
         if param_count == 0:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                CaptivityContextBuildException(
-                    msg=f"{method}: {CaptivityContextBuildException.MSG}",
-                    ex=ZeroCaptivityContextFlagsException(
-                        f"{method}: {ZeroCaptivityContextFlagsException.MSG}"
+                HostageContextBuildException(
+                    msg=f"{method}: {HostageContextBuildException.MSG}",
+                    ex=ZeroHostageContextFlagsException(
+                        f"{method}: {ZeroHostageContextFlagsException.MSG}"
                     )
                 )
             )
@@ -81,43 +81,43 @@ class CaptivityContextBuilder(Builder[HostageContext]):
         if param_count > 1:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                CaptivityContextBuildException(
-                    msg=f"{method}: {CaptivityContextBuildException.MSG}",
-                    ex=ArenaCaptivityContextFlagsException(
-                        f"{method}: {ArenaCaptivityContextFlagsException.MSG}"
+                HostageContextBuildException(
+                    msg=f"{method}: {HostageContextBuildException.MSG}",
+                    ex=ArenaHostageContextFlagsException(
+                        f"{method}: {ArenaHostageContextFlagsException.MSG}"
                     )
                 )
             )
         # --- Route to the appropriate validation/build branch. ---#
         
-        # Build the id CaptivityContext if its flag is enabled.
+        # Build the id HostageContext if its flag is enabled.
         if id is not None:
             validation = identity_service.validate_id(candidate=id)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    CaptivityContextBuildException(
-                        msg=f"{method}: {CaptivityContextBuildException.MSG}",
+                    HostageContextBuildException(
+                        msg=f"{method}: {HostageContextBuildException.MSG}",
                         ex=validation.exception
                     )
                 )
-            # On validation success return an id_CaptivityContext in the BuildResult.
-            return BuildResult.success(CaptivityContext(id=id))
+            # On validation success return an id_HostageContext in the BuildResult.
+            return BuildResult.success(HostageContext(id=id))
         
-        # Build the victor CaptivityContext if its flag is enabled.
+        # Build the victor HostageContext if its flag is enabled.
         if victor is not None:
             validation = token_service.validator.search_service(candidate=victor)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    CaptivityContextBuildException(
-                        msg=f"{method}: {CaptivityContextBuildException.MSG}",
+                    HostageContextBuildException(
+                        msg=f"{method}: {HostageContextBuildException.MSG}",
                         ex=validation.exception
                     )
                 )
-            # On validation success return a victorCaptivityContext in the BuildResult.
+            # On validation success return a victorHostageContext in the BuildResult.
     
-            return BuildResult.success(CaptivityContext(victor=victor))
+            return BuildResult.success(HostageContext(victor=victor))
         
         # Certification for the search-by-prisoner target.
         if prisoner is not None:
@@ -125,13 +125,13 @@ class CaptivityContextBuilder(Builder[HostageContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    CaptivityContextBuildException(
-                        msg=f"{method}: {CaptivityContextBuildException.MSG}",
+                    HostageContextBuildException(
+                        msg=f"{method}: {HostageContextBuildException.MSG}",
                         ex=validation.exception
                     )
                 )
-            # On validation success return a prisonerCaptivityContext in the BuildResult.
-            return BuildResult.success(CaptivityContext(prisoner=prisoner))
+            # On validation success return a prisonerHostageContext in the BuildResult.
+            return BuildResult.success(HostageContext(prisoner=prisoner))
         
         # Certification for the search-by-captured-item target.
         if captured_square is not None:
@@ -139,20 +139,20 @@ class CaptivityContextBuilder(Builder[HostageContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    CaptivityContextBuildException(
-                        msg=f"{method}: {CaptivityContextBuildException.MSG}",
+                    HostageContextBuildException(
+                        msg=f"{method}: {HostageContextBuildException.MSG}",
                         ex=validation.exception
                     )
                 )
-            # On validation success return a captured_squareCaptivityContext in the BuildResult.
-            return BuildResult.success(CaptivityContext(captured_square=captured_square))
+            # On validation success return a captured_squareHostageContext in the BuildResult.
+            return BuildResult.success(HostageContext(captured_square=captured_square))
         
         # Return the exception chain if there is no build route for the context.
         return BuildResult.failure(
-            CaptivityContextBuildException(
-                msg=f"{method}: {CaptivityContextBuildException.MSG}",
-                ex=CaptivityContextBuildRouteException(
-                    f"{method}: {CaptivityContextBuildRouteException.MSG}"
+            HostageContextBuildException(
+                msg=f"{method}: {HostageContextBuildException.MSG}",
+                ex=HostageContextBuildRouteException(
+                    f"{method}: {HostageContextBuildRouteException.MSG}"
                 )
             )
         )

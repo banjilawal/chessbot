@@ -1,15 +1,16 @@
-# src/logic/coord/context/context/service/operation/build/__init__.py
+# src/build/context/coord/__init__.py
 
 """
-Module: logic.coord.context.context.service.operation.build.__init__
+Module: build.context.coord.__init__
 Author: Banji Lawal
-Created: 2025-10-03
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-# =========== COORD.QUERY.CONTEXT.SERVICE.OPERATION.BUILD PACKAGE CONTENTS ===========#
+# =========== COORD PACKAGE CONTENTS ===========#
 
 # Packages
+None
 
 # Modules
 from .builder import CoordContextBuilder

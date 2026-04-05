@@ -1,16 +1,16 @@
-# src/logic/persona/build/__init__.py
+# src/build/context/persona/__init__.py
 
 """
-Module: logic.persona.build.__init__
+Module: build.context.persona.__init__
 Author: Banji Lawal
-Created: 2025-09-08
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-# =========== PERSONA.KEY.BUILDER PACKAGE CONTENTS ===========#
+# =========== PERSONA PACKAGE CONTENTS ===========#
 
 # Packages
-from .exception import *
+None
 
 # Modules
-from .builder import PersonaKeyBuilder
+from .builder import PersonaContextBuilder

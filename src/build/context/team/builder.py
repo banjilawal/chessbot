@@ -1,21 +1,13 @@
-# src/logic/team/context/build/exception.py
+# src/build/context/team/builder.py
 
 """
-Module: logic.team.context.build.build
+Module: build.context.team.builder
 Author: Banji Lawal
-Created: 2025-11-24
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-from typing import Optional
-
-from logic.arena import Arena, ArenaService
-from logic.player import Player, PlayerService
-from system import Builder, BuildResult,  GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
-from logic.team import (
-    TeamContext, TeamContextBuildException, ArenaTeamContextFlagsException, TeamContextBuildRouteException,
-    ZeroTeamContextFlagsException
-)
+from __future__ import annotations
 
 
 class TeamContextBuilder(Builder[TeamContext]):

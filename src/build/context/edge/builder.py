@@ -1,10 +1,10 @@
-# src/logic/edge/context/build/exception.py
+# src/build/context/edge/builder.py
 
 """
-Module: logic.edge.context.build.build
+Module: build.context.edge.builder
 Author: Banji Lawal
-Created: 2026-02-18
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations

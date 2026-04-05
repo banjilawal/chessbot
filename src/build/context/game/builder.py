@@ -1,13 +1,13 @@
-# src/logic/game/build/exception.py
+# src/build/context/game/builder.py
 
 """
-Module: logic.game.build.build
+Module: build.context.game.builder
 Author: Banji Lawal
-Created: 2025-09-16
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-from typing import Optional
+from __future__ import annotations
 
 
 from logic.agent import PlayerAgent, AgentService

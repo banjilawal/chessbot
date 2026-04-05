@@ -1,24 +1,16 @@
-# src/logic/schema/key/build/exception.py
+## src/build/context/schema/builder.py
 
 """
-Module: logic.schema.key.build.build
+Module: build.context.schema.builder
 Author: Banji Lawal
-Created: 2025-10-09
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-from typing import Optional
-
-from search.schema.key.builder.exception import SchemaKeyBuildException, SchemaKeyBuildRouteException
-from system import (
-    BuildResult, Builder, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
-)
-from catalog.schema import (
-    ZeroSchemaKeysException, SchemaKey, ArenaSchemaKeysException,
-)
+from __future__ import annotations
 
 
-class SchemaKeyBuilder(Builder[SchemaKey]):
+class SchemaContextBuilder(Builder[SchemaKey]):
     """
     Role:Builder, Data Integrity And Reliability Guarantor
 
@@ -66,7 +58,7 @@ class SchemaKeyBuilder(Builder[SchemaKey]):
             *   SchemaKeyBuildException
             *   ArenaSchemaKeysException
         """
-        method = "SchemaKeyBuilder.build"
+        method = "SchemaContextBuilder.build"
         
         # Count how many optional parameters are not-null.
         params = [name, color,]

@@ -1,24 +1,13 @@
-# src/logic/token/database/search/context/service/operation/build/builder.py
+# src/build/context/token/builder.py
 
 """
-Module: logic.token.database.search.context.service.operation.build.builder
+Module: build.context.token.builder
 Author: Banji Lawal
-Created: 2025-10-03
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Optional
-
-
-from logic.rank import Rank
-from logic.coord import Coord
-from logic.team import ExcessTeamContextFlagsException, Team
-from system import BuildResult, Builder, GameColor, LoggingLevelRouter
-from model.token import (
-    TokenContext, TokenContextBuildException, TokenContextBuildRouteException,
-    TokenContextIntegrityWorkers, ZeroTokenContextFlagsException
-)
 
 
 class TokenContextBuilder(Builder[TokenContext]):

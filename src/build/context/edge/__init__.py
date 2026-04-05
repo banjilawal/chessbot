@@ -1,16 +1,16 @@
-# src/logic/edge/context/build/__init__.py
+# src/build/context/edge/__init__.py
 
 """
-Module: logic.edge.context.build.__init__
+Module: build.context.edge.__init__
 Author: Banji Lawal
-Created: 2026-02-18
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-#=========== EDGE.CONTEXT.BUILDER PACKAGE CONTENTS ===========#
+# =========== EDGE PACKAGE CONTENTS ===========#
 
 # Packages
-from .exception import *
+None
 
 # Modules
 from .builder import EdgeContextBuilder

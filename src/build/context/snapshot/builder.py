@@ -1,22 +1,13 @@
-# src/logic/snapshot/build/exception.py
+# src/build/context/snapshot/builder.py
 
 """
-Module: logic.snapshot.build.build
+Module: build.context.snapshot.builder
 Author: Banji Lawal
-Created: 2025-10-03
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-from typing import Optional
-
-from logic.arena import Arena
-from logic.team import Team, TeamService
-from logic.agent import PlayerAgent, AgentService
-from system import BuildResult, Builder, ExecutionRouteException, LoggingLevelRouter, NumberValidator
-from model.game import (
-    Game, SnapshotContext, SnapshotContextBuildException, ZeroSnapshotContextFlagsException,
-    ArenaSnapshotContextFlagsException
-)
+from __future__ import annotations
 
 
 

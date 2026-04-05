@@ -1,16 +1,16 @@
-# src/logic/team/context/build/__init__.py
+# src/build/context/team/__init__.py
 
 """
-Module: logic.team.context.build.__init__
+Module: build.context.team.__init__
 Author: Banji Lawal
-Created: 2025-11-24
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-#=========== TEAM.CONTEXT.BUILDER PACKAGE CONTENTS ===========#
+# =========== TEAM PACKAGE CONTENTS ===========#
 
 # Packages
-from .exception import *
+None
 
 # Modules
 from .builder import TeamContextBuilder

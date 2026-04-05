@@ -1,13 +1,13 @@
-# src/logic/formation/key/build/exception.py
+# src/build/context/formation/builder.py
 
 """
-Module: logic.formation.key.build.build
+Module: build.context.formation.builder
 Author: Banji Lawal
-Created: 2025-10-09
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-from typing import Optional
+from __future__ import annotations
 
 from catalog.formation import (
     ArenaFormationKeysException, FormationKey, FormationKeyBuildException,
@@ -18,7 +18,7 @@ from logic.square import Square, SquareService
 from system import BuildResult, Builder, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
 
 
-class FormationKeyBuilder(Builder[FormationKey]):
+class FormationContextBuilder(Builder[FormationKey]):
     """
     Role:Builder, Data Integrity And Reliability Guarantor
 
@@ -75,7 +75,7 @@ class FormationKeyBuilder(Builder[FormationKey]):
             *   ArenaFormationKeysException
             *   FormationKeyBuildException
         """
-        method = "FormationKeyBuilder.build"
+        method = "FormationContextBuilder.build"
         
         # Count how many optional parameters are not-null.
         params = [designation, square, color, persona]

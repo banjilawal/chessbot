@@ -1,13 +1,13 @@
-# src/logic/persona/build/exception.py
+# src/build/context/persona/builder.py
 
 """
-Module: logic.persona.build.build
+Module: build.context.persona.builder
 Author: Banji Lawal
-Created: 2025-09-08
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-from typing import Optional
+from __future__ import annotations
 
 from catalog.persona import (
     ArenaPersonaKeysException, PersonaKey, PersonaKeyBuildException,
@@ -16,7 +16,7 @@ from catalog.persona import (
 from system import NumberValidator, BuildResult, Builder, IdentityService, LoggingLevelRouter
 
 
-class PersonaKeyBuilder(Builder[PersonaKey]):
+class PersonaContextBuilder(Builder[PersonaKey]):
     """
     Role:Builder, Data Integrity And Reliability Guarantor
 
@@ -73,7 +73,7 @@ class PersonaKeyBuilder(Builder[PersonaKey]):
             *   ArenaPersonaKeysException
             *   PersonaKeyBuildRouteException
         """
-        method = "PersonaKeyBuilder.build"
+        method = "PersonaContextBuilder.build"
         
         # Count how many optional parameters are not-null. One param needs to be not-null.
         params = [name, designation, quota, ransom]

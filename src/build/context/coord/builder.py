@@ -1,13 +1,14 @@
-# src/logic/coord/context/context/service/operation/build/builder.py
+# src/build/context/coord/builder.py
 
 """
-Module: logic.coord.context.context.service.operation.build.builder
+Module: build.context.coord.builder
 Author: Banji Lawal
-Created: 2025-10-03
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
+
 from typing import List, Optional
 
 from logic.coord import (

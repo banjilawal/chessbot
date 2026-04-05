@@ -1,13 +1,13 @@
-# src/logic/rank/searcher/exception.py
+# src/build/context/rank/builder.py
 
 """
-Module: logic.rank.searcher.build
+Module: build.context.rank.builder
 Author: Banji Lawal
-Created: 2025-11-16
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-from typing import Optional
+from __future__ import annotations
 
 
 from system import BuildResult, Builder, LoggingLevelRouter

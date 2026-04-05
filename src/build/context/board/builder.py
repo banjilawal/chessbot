@@ -1,11 +1,14 @@
-# src/logic/board/context/build/exception.py
+# src/build/context/board/builder.py
 
 """
-Module: logic.board.context.build.build
+Module: build.context.board.builder
 Author: Banji Lawal
-Created: 2025-11-22
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
+
+from __future__ import annotations
+
 
 from typing import Optional
 

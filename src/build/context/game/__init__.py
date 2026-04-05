@@ -1,17 +1,16 @@
-# src/logic/game/build/__init__.py
+# src/build/context/game/__init__.py
 
 """
-Module: logic.game.build.__init__
+Module: build.context.game.__init__
 Author: Banji Lawal
-Created: 2025-09-16
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-#=========== GAME.CONTEXT.BUILDER PACKAGE CONTENTS ===========#
+# =========== GAME PACKAGE CONTENTS ===========#
 
 # Packages
 None
 
 # Modules
 from .builder import GameContextBuilder
-from .exception import GameContextBuildException

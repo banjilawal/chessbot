@@ -48,7 +48,7 @@ class FormationKeyService(QueryService[FormationKey]):
         # PARAMETERS:
             *   id (nt)
             *   schema (str)
-            *   build (FormationKeyBuilder)
+            *   build (FormationContextBuilder)
             *   validation (FormationKeyValidator)
         # RETURNS:
             None
@@ -59,7 +59,7 @@ class FormationKeyService(QueryService[FormationKey]):
     
     @property
     def build(self) -> FormationKeyBuilder:
-        """get FormationKeyBuilder"""
+        """get FormationContextBuilder"""
         return cast(FormationKeyBuilder, self.entity_builder)
     
     @property

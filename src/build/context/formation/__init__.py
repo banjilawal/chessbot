@@ -1,16 +1,16 @@
-# src/logic/formation/key/build/__init__.py
+# src/build/context/formation/__init__.py
 
 """
-Module: logic.formation.key.build.__init__
+Module: build.context.formation.__init__
 Author: Banji Lawal
-Created: 2025-10-09
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-# =========== FORMATION.KEY.BUILDER PACKAGE CONTENTS ===========#
+# =========== FORMATION PACKAGE CONTENTS ===========#
 
 # Packages
-from .exception import *
+None
 
 # Modules
-from .builder import FormationKeyBuilder
+from .builder import FormationContextBuilder

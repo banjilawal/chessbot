@@ -1,17 +1,16 @@
-# src/logic/snapshot/build/__init__.py
+# src/build/context/snapshot/__init__.py
 
 """
-Module: logic.snapshot.build.__init__
+Module: build.context.snapshot.__init__
 Author: Banji Lawal
-Created: 2025-10-03
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-# =========== SNAPSHOT.CONTEXT.BUILDER PACKAGE CONTENTS ===========#
+# =========== SNAPSHOT PACKAGE CONTENTS ===========#
 
 # Packages
 None
 
 # Modules
 from .builder import SnapshotContextBuilder
-from .exception import SnapshotContextBuildException

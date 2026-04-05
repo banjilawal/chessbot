@@ -1,17 +1,16 @@
-# src/logic/player/build/__init__.py
+# src/build/context/player/__init__.py
 
 """
-Module: logic.player.build.__init__
+Module: build.context.player.__init__
 Author: Banji Lawal
-Created: 2025-09-16
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-#=========== PLAYER.CONTEXT.BUILDER PACKAGE CONTENTS ===========#
+# =========== PLAYER PACKAGE CONTENTS ===========#
 
 # Packages
 None
 
 # Modules
-from .builder import AgentContextBuilder
-from .exception import AgentContextBuildException
+from .builder import PlayerContextBuilder
