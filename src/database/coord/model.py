@@ -1,22 +1,14 @@
-# src/logic/coord/database/validator.py
+# src/database/coord/model.py
 
 """
-Module: logic.coord.database.service
+Module: database.coord.model
 Author: Banji Lawal
-Created: 2025-11-19
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
 
-from collections.abc import Iterator
-from typing import List, Optional
-
-from logic.coord import Coord, CoordContext, CoordDatabaseException, CoordStackService, CoordService
-from system import (
-    DeletionResult, IdFactory, IdentityService, InsertionResult, LoggingLevelRouter, MethodImplementationException,
-    SearchResult, Database,
-)
 
 
 class CoordDatabase(Database[Coord]):

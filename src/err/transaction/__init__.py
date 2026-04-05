@@ -11,6 +11,10 @@ version: 1.0.1
 
 # Packages
 from .compuation import *
+from .deletion import *
+from .insertion import *
+from .search import *
+from .update import *
 
 # Modules
 from .exception import TransactionException

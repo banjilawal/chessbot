@@ -1,30 +1,31 @@
-# src/err/transaction/update/exception.py
+# src/err/transaction/insertion/insertion/graph/exception.py
 
 """
-Module: err.transaction.update.exception
+Module: err.transaction.insertion.duplicate.graph.exception
 Author: Banji Lawal
-Created: 2026-02-25
-version: 1.0.0
+Created: 2026-04-04
+version: 1.0.1
 """
 
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TransactionException
+from err import DuplicateStackPushException
+
 
 __all__ = [
-    # ======================# UPDATE_TRANSACTION_FAILURE #======================#
-    "UpdateTransactionException",
+    # ======================# DUPLICATE_GRAPH_STACK_PUSH_ERROR #======================#
+    "DuplicateGraphStackPushException",
 ]
 
-# ======================# UPDATE_TRANSACTION_FAILURE #======================#
-class UpdateTransactionException(TransactionException):
+# ======================# DUPLICATE_GRAPH_STACK_PUSH_ERROR #======================#
+class DuplicateGraphStackPushException(DuplicateStackPushException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        Indicates that an error prevented a update from completing.
+        1.  Indicate that pushing a duplicate item onto the GraphStack failed.
 
     Attributes:
         op: Optional[str]
@@ -40,16 +41,13 @@ class UpdateTransactionException(TransactionException):
     Provides:
     
     Super Class:
-        TransactionException
+        DuplicateStackPushException
     """
-    OP = "Update"
-    MSG = "Update aborted."
-    ERR_CODE = "UPDATE_TRANSACTION_FAILURE"
-    RSLT_TYPE = "UpdateResult"
+    MSG = "Cannot push a duplicate onto a Graph stack."
+    ERR_CODE = "DUPLICATE_GRAPH_STACK_PUSH_ERROR"
     
     def __init__(
             self,
-            op: Optional[str] = None,
             msg: Optional[str] = None,
             var: Optional[str] = None,
             val: Optional[Any] = None,
@@ -57,11 +55,9 @@ class UpdateTransactionException(TransactionException):
             cls_name: Optional[str] = None,
             ex: Optional[Exception] = None,
             err_code: Optional[str] = None,
-            rslt_type: Optional[str] = None,
     ):
         """
         Args:
-            op: Optional[str]
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -69,12 +65,9 @@ class UpdateTransactionException(TransactionException):
             cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
-            rslt_type: Optional[str
         """
-        op = op or self.OP
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        rslt_type = rslt_type or self.RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,
@@ -84,7 +77,5 @@ class UpdateTransactionException(TransactionException):
             cls_name=cls_name,
             cls_mthd=cls_mthd,
         )
-
-
     
 

@@ -1,7 +1,7 @@
-# src/logic/square/database/__init__.py
+# src/logic/square/__init__.py
 
 """
-Module: logic.square.database.__init__
+Module: logic.square.__init__
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

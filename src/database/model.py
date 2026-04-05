@@ -1,28 +1,26 @@
-# src/logic/system/database/database.py
+# src/database/model/__init__.py
 
 """
-Module: logic.system.database.database
+Module: database.model.__init__
 Author: Banji Lawal
-Created: 2025-11-18
-Version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
 
-from abc import abstractmethod
+from abc import ABC, abstractmethod
 from typing import Generic, List, Optional, TypeVar
 
-from system import (
-    Context, DeletionResult, InsertionResult, IntegrityMicroservice, LoggingLevelRouter, SearchResult, Microservice
-)
+from stack import StackService
 
 T = TypeVar("T")
 
-class Database(Microservice, Generic[T]):
+
+class Database(ABC, Generic[T]):
     """
     Role:
-        -   Repo interface.
-        -   Data Protection layer.
+        -   Data Protection
 
     Responsibilities:
         1.  Protects StackService data from direct access.
@@ -31,22 +29,26 @@ class Database(Microservice, Generic[T]):
 
     Attributes:
         id: int
-        schema: str
+        size: int
+        name: str
+        is_empty: bool
+        integrity_service: IntegrityMicroservice[T]
 
     Provides:
-        -   size() -> int
-        -   is_empty() -> bool
-        -   integrity_service() -> IntegrityMicroservice[T]
-        -   iterator(self) -> iter
-        -   insert(item: T) -> InsertionResult
-        -   delete_by_id(id: int) -> DeletionResult[T]
-        -   search(self, context: Context[T]) -> SearchResult[List[T]]
+        -   iterator() ->: iter
+        -   insert(item: T) -> InsertionResult:
+        -   delete_by_id(id: int) -> DeletionResult[T]:
+        -   search(context: Context[T]) -> SearchResult[List[T]]
 
     Super:
-        Microservice
     """
     
-    def __init__(self, id: int, name: str):
+    def __init__(
+            self,
+            id: int,
+            name: str,
+            kernel: StackService[T]
+    ):
         """
         Args:
             id: int

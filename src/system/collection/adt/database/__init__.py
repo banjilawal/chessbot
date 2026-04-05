@@ -14,4 +14,3 @@ from .exception import *
 
 
 # Modules
-from .database import Database

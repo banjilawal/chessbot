@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import TransactionException
 
 __all__ = [
-    # ======================# SEARCH_TRANSACTION_FAILURE #======================#
+    # ======================# SEARCH_FAILURE #======================#
     "SearchTransactionException",
 ]
 
-# ======================# SEARCH_TRANSACTION_FAILURE #======================#
+# ======================# SEARCH_FAILURE #======================#
 class SearchTransactionException(TransactionException):
     """
     Role:
@@ -44,7 +44,7 @@ class SearchTransactionException(TransactionException):
     """
     OP = "Search"
     MSG = "Search aborted."
-    ERR_CODE = "SEARCH_TRANSACTION_FAILURE"
+    ERR_CODE = "SEARCH_FAILURE"
     RSLT_TYPE = "SearchResult"
     
     def __init__(

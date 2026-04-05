@@ -3,8 +3,8 @@
 """
 Module: err.transaction.deletion.exception
 Author: Banji Lawal
-Created: 2026-02-25
-version: 1.0.0
+Created: 2026-04-04
+version: 1.0.1
 """
 
 from __future__ import annotations
@@ -13,12 +13,12 @@ from typing import Any, Optional
 from err import TransactionException
 
 __all__ = [
-    # ======================# DELETION_TRANSACTION_FAILURE #======================#
-    "DeletionTransactionException",
+    # ======================# DELETION_FAILURE #======================#
+    "DeletionException",
 ]
 
-# ======================# DELETION_TRANSACTION_FAILURE #======================#
-class DeletionTransactionException(TransactionException):
+# ======================# DELETION_FAILURE #======================#
+class DeletionException(TransactionException):
     """
     Role:
         -   Error Tracing
@@ -44,12 +44,12 @@ class DeletionTransactionException(TransactionException):
     """
     OP = "Deletion"
     MSG = "Deletion aborted."
-    ERR_CODE = "DELETION_TRANSACTION_FAILURE"
+    ERR_CODE = "DELETION_FAILURE"
     RSLT_TYPE = "DeletionResult"
     
     def __init__(
             self,
-            op: Optional[str] = None,
+            # op: Optional[str] = None,
             msg: Optional[str] = None,
             var: Optional[str] = None,
             val: Optional[Any] = None,
@@ -57,11 +57,10 @@ class DeletionTransactionException(TransactionException):
             cls_name: Optional[str] = None,
             ex: Optional[Exception] = None,
             err_code: Optional[str] = None,
-            rslt_type: Optional[str] = None,
+            # rslt_type: Optional[str] = None,
     ):
         """
         Args:
-            op: Optional[str]
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -69,13 +68,14 @@ class DeletionTransactionException(TransactionException):
             cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
-            rslt_type: Optional[str
         """
-        op = op or self.OP
+        op = self.OP
         msg = msg or self.MSG
+        rslt_type = self.RSLT_TYPE
         err_code = err_code or self.ERR_CODE
         rslt_type = rslt_type or self.RSLT_TYPE
         super().__init__(
+            op=op,
             ex=ex,
             msg=msg,
             var=var,
@@ -83,8 +83,7 @@ class DeletionTransactionException(TransactionException):
             err_code=err_code,
             cls_name=cls_name,
             cls_mthd=cls_mthd,
+            rslt_type=rslt_type,
         )
-
-
     
 

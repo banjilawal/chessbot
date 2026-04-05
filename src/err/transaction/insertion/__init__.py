@@ -10,6 +10,7 @@ version: 1.0.1
 # =========== TRANSACTION.INSERTION PACKAGE CONTENTS ===========#
 
 # Packages
+from .duplicate import *
 
 # Modules
-from .exception import InsertionTransactionException
+from .exception import InsertionException

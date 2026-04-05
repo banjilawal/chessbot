@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import TransactionException
 
 __all__ = [
-    # ======================# COMPUTATION_TRANSACTION_FAILURE #======================#
+    # ======================# COMPUTATION_FAILURE #======================#
     "ComputationTransactionException",
 ]
 
-# ======================# COMPUTATION_TRANSACTION_FAILURE #======================#
+# ======================# COMPUTATION_FAILURE #======================#
 class ComputationTransactionException(TransactionException):
     """
     Role:
@@ -44,7 +44,7 @@ class ComputationTransactionException(TransactionException):
     """
     OP = "Computation"
     MSG = "Computation aborted."
-    ERR_CODE = "COMPUTATION_TRANSACTION_FAILURE"
+    ERR_CODE = "COMPUTATION_FAILURE"
     RSLT_TYPE = "ComputationResult"
     
     def __init__(

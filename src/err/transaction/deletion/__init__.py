@@ -10,6 +10,7 @@ version: 1.0.1
 # =========== TRANSACTION.DELETION PACKAGE CONTENTS ===========#
 
 # Packages
+from .empty import *
 
 # Modules
-from .exception import DeletionTransactionException
+from .exception import DeletionException

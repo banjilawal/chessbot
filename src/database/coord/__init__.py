@@ -1,18 +1,17 @@
-# src/logic/coord/database/__init__.py
+# src/database/coord/__init__.py
 
 """
-Module: logic.coord.database.__init__
+Module: database.coord.__init__
 Author: Banji Lawal
-Created: 2025-11-19
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 
-# =========== COORD.DATABASE PACKAGE CONTENTS ===========#
+# =========== COORD PACKAGE CONTENTS ===========#
 
 # Packages
-from .kernel import *
-from .exception import *
+None
 
 # Modules
-from .database import CoordDatabase
+from .model import CoordDatabase

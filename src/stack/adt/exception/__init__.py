@@ -15,5 +15,4 @@ None
 # Modules
 from .anchor import StackServiceException
 from .debug import StackServiceDebugException
-from .empty import PoppingEmptyStackException
 from .duplicate import PushingDuplicateItemException
