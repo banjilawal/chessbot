@@ -1,16 +1,19 @@
-# src/logic/formation/order.py
+# src/catalog/formation/catalog.py
 
 """
-Module: logic.formation.order
+Module: catalog.formation.catalog
 Author: Banji Lawal
-Created: 2025-10-09
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
+
+from __future__ import annotations
 
 from enum import Enum
 
-from catalog.persona import Persona
+from catalog import Persona
 from system import GameColor
+
 
 class Formation(Enum):
     """

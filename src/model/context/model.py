@@ -23,7 +23,7 @@ class Context(ABC, Generic[T]):
         -   Data-Holder
 
     Responsibilities:
-        1.  Supply an attribute-value pair for selecting an execution path among different routes.
+        1.  Supply an attribute-value tuple for selecting an execution path.
                 
     Attributes:
         id: Optional[int]
@@ -70,6 +70,7 @@ class Context(ABC, Generic[T]):
     def name(self) -> Optional[str]:
         return self._name
     
+    @property
     @abstractmethod
     def to_dict(self) -> dict:
         """Implementations must override."""

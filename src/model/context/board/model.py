@@ -1,37 +1,40 @@
-# src/logic/board/context/context.py
+# src/model/context/board/model.py
 
 """
-Module: logic.board.context.context
+Module: model.context.board.model
 Author: Banji Lawal
-Created: 2025-10-02
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-from typing import Optional
-
-from logic.board import Board
-from logic.arena import Arena
-from system import Context
+from __future__ import annotations
 
 
 class BoardContext(Context[Board]):
     """
-    Role:Filter, Search, Selection, Reverse/Forward Lookups
+    Role:
+        -   Selection
+        -   Routing mask
+        -   Data-Holder
 
     Responsibilities:
-    Provide an SquareFinder with an attribute value to find Squares with a matching value in their version of
-    the attribute.
-    
-    Super Class:
-        *   Context
-  
+        1.  Supply a Board attribute-value tuple which selects an execution path.
+
+    Attributes:
+        id: Optional[int]
+        team: Optional[Team]
+        rank: Optional[Rank]
+        ransom: Optional[int]
+        current_position:Optional[Coord]
+        designation: Optional[str]
+        color: Optional[GameColor]
+        opening_square_name: Optional[str]
+
     Provides:
-  
-    # LOCAL ATTRIBUTES:
-        *   arena (Arena)
-        
-    # INHERITED ATTRIBUTES:
-        *   See Context class for inherited attributes.
+        -   to_dict() -> Dict[str, Any]
+
+    Super Class:
+        Context
     """
     _arena: Optional[Arena] = None
     

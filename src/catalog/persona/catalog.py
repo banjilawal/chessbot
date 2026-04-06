@@ -1,17 +1,18 @@
-# src/logic/persona/persona.py
+# src/catalog/persona/catalog.py
 
 """
-Module: logic.persona.persona
+Module: catalog.persona.catalog
 Author: Banji Lawal
-Created: 2025-09-08
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
+
+from __future__ import annotations
 
 from enum import Enum
 from typing import List, Optional
 
-from math.geometry import Quadrant
-from model.geometry.vector import Vector
+from model import Quadrant, Vector
 
 
 class Persona(Enum):
@@ -115,7 +116,6 @@ class Persona(Enum):
     def __str__(self) -> str:
         return (
             f"Rank["
-            f"{self._id} "
             f"{self._designation} "
             f"per_rank:{self._quota} "
             f"value:{self._ransom} "
@@ -126,12 +126,3 @@ class Persona(Enum):
     def quadrants_str(self) -> str:
         return " ".join(q.name for q in self._quadrants)
 
-    # @classmethod
-    # def find_speck_by_rank(cls, rank: Rank) -> Optional[Persona]:
-    #     print(f"Looking for config with designation:{rank.visitor_name}")
-    #
-    #     for spec in Persona:
-    #         print(f"Checking config:{spec.ransom}")
-    #         if spec.designation.upper() == rank.visitor_name.upper():
-    #             return spec
-    #     return None

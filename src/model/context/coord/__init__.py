@@ -1,16 +1,16 @@
-# src/logic/coord/context/context/model/__init__.py
+# src/model/context/coord/__init__.py
 
 """
-Module: logic.coord.context.context.model.__init__
+Module: model.context.coord.__init__
 Author: Banji Lawal
-Created: 2026-03-29
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-# =========== COORD.QUERY.CONTEXT.MODEL PACKAGE CONTENTS ===========#
+# =========== MODEL.CONTEXT.COORD PACKAGE CONTENTS ===========#
 
 # Packages
-from .exception import *
+None
 
 # Modules
-from .context import CoordContext
+from .model import CoordContext

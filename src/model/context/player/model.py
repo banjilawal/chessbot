@@ -1,41 +1,40 @@
-# src/logic/player/map.py
+# src/model/context/player/model.py
 
 """
-Module: logic.player.map
+Module: model.context.player.model
 Author: Banji Lawal
-Created: 2025-09-16
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-from typing import Optional
-
-from model.game import Game
-from logic.team import Team
-from system import Context
-from logic.player import Player, PlayerVariety
+from __future__ import annotations
 
 
 class PlayerContext(Context[Player]):
     """
-    Role:Filter, Search, Selection, Reverse/Forward Lookups
+    Role:
+        -   Selection
+        -   Routing mask
+        -   Data-Holder
 
     Responsibilities:
-    Provide an PlayerFinder with an attribute value to find Players with a matching value in
-    their version of the attribute.
+        1.  Supply a Player attribute-value tuple which selects an execution path.
+
+    Attributes:
+        id: Optional[int]
+        team: Optional[Team]
+        rank: Optional[Rank]
+        ransom: Optional[int]
+        current_position:Optional[Coord]
+        designation: Optional[str]
+        color: Optional[GameColor]
+        opening_square_name: Optional[str]
+
+    Provides:
+        -   to_dict() -> Dict[str, Any]
 
     Super Class:
-        *   Context
-
-    # PROVIDES:
-        *   to_dict:    -> dict
-
-    # LOCAL ATTRIBUTES:
-        *   team (Optional[Team])
-        *   game (Optional[Game])
-        *   variety (Optional[PlayerVariety])
-        
-    # INHERITED ATTRIBUTES:
-        *   See Context class for inherited attributes.
+        Context
     """
     _team: Optional[Team]
     _game: Optional[Game]

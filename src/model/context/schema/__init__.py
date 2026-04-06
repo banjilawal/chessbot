@@ -1,16 +1,16 @@
-# src/logic/schema/database/search/context/model/__init__.py
+# src/model/context/schema/__init__.py
 
 """
-Module: logic.schema.database.search.context.model.__init__
+Module: model.context.schema.__init__
 Author: Banji Lawal
-Created: 2025-10-03
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-# =========== SCHEMA.DATABASE.SEARCH.CONTEXT.MODEL PACKAGE CONTENTS ===========#
+# =========== MODEL.CONTEXT.SCHEMA PACKAGE CONTENTS ===========#
 
 # Packages
-from .exception import *
+None
 
 # Modules
-from .context import SchemaContext
+from .model import SchemaContext

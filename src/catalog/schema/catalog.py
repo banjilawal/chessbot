@@ -1,17 +1,17 @@
-# src/logic/schema/schema.py
+# src/catalog/schema/catalog.py
 
 """
-Module: logic.schema.schema
+Module: catalog.schema.catalog
 Author: Banji Lawal
-Created: 2025-10-09
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
+
+from __future__ import annotations
 
 from enum import Enum
 
-from catalog.schema import Schema
-from integrity.build.scalar import Scalar
-from math.geometry import Quadrant
+from model import Quadrant, Scalar
 from system import GameColor, NUMBER_OF_ROWS
 
 

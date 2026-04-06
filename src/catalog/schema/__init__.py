@@ -1,20 +1,16 @@
-# src/logic/schema/__init__.py
+# src/catalog/schema/__init__.py
 
 """
-Module: logic.schema.__init__
+Module: catalog.schema.__init__
 Author: Banji Lawal
-Created: 2025-10-09
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-#=========== SCHEMA PACKAGE CONTENTS ===========#
+# =========== SCHEMA PACKAGE CONTENTS ===========#
 
 # Packages
-from catalog.schema import *
-from catalog.schema import *
-from .service import *
-from .exception import *
+None
 
 # Modules
-from .schema import Schema
-
+from .catalog import Schema

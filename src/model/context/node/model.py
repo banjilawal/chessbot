@@ -1,39 +1,40 @@
-# src/logic/node/context/context.py
+# src/model/context/node/model.py
 
 """
-Module: logic.node.context.context
+Module: model.context.node.model
 Author: Banji Lawal
-Created: 2026-02-18
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Optional
-
-from logic.square import Square
-from system import Context
-from graph.node import DiscoveryStatus, Node
 
 
 class NodeContext(Context[Node]):
     """
-    Role:Filter, Search, Selection, Reverse/Forward Lookups
+    Role:
+        -   Selection
+        -   Routing mask
+        -   Data-Holder
 
     Responsibilities:
-    Provide an NodeFinder with an attribute value to find Nodes with a matching value in teir version of
-    the attribute.
+        1.  Supply a Node attribute-value tuple which selects an execution path.
 
-    Super Class:
-        *   Context
+    Attributes:
+        id: Optional[int]
+        team: Optional[Team]
+        rank: Optional[Rank]
+        ransom: Optional[int]
+        current_position:Optional[Coord]
+        designation: Optional[str]
+        color: Optional[GameColor]
+        opening_square_name: Optional[str]
 
     Provides:
+        -   to_dict() -> Dict[str, Any]
 
-    # LOCAL ATTRIBUTES:
-        *   priority (Optional[Priority])
-        *   square (Optional[Square])
-
-    # INHERITED ATTRIBUTES:
-        *   See Context class for inherited attributes.
+    Super Class:
+        Context
     """
     _priority: Optional[int]
     _square: Optional[Square]

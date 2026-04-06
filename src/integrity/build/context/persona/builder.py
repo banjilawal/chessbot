@@ -21,9 +21,9 @@ class PersonaContextBuilder(Builder[PersonaKey]):
     Role:Builder, Data Integrity And Reliability Guarantor
 
     Responsibilities:
-        1.  Produce PersonaKey instances whose integrity is guaranteed at creation.
-        2.  Manage construction of PersonaKey instances that can be used safely by the client.
-        3.  Ensure params for PersonaKey creation have met the application's safety contract.
+        1.  Produce PersonaContext instances whose integrity is guaranteed at creation.
+        2.  Manage construction of PersonaContext instances that can be used safely by the client.
+        3.  Ensure params for PersonaContext creation have met the application's safety contract.
         4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     Super Class:
@@ -51,7 +51,7 @@ class PersonaContextBuilder(Builder[PersonaKey]):
             1.  If only one optional param is not-null return an exception in the BuildResult. Else
             2.  If the enabled param is not certified by the appropriate validating service return an exception in
                 the BuildResult.
-            3.  After the active param is validated create the PersonaKey object and return in the BuildResult.
+            3.  After the active param is validated create the PersonaContext object and return in the BuildResult.
         # PARAMETERS:
             *   Only one these must be provided:
                     *   schema (Optional[str])
@@ -64,9 +64,9 @@ class PersonaContextBuilder(Builder[PersonaKey]):
                     *   number_validation (NumberValidator)
 
         # RETURNS:
-            *   BuildResult[PersonaKey] containing either:
+            *   BuildResult[PersonaContext] containing either:
                     - On failure: Exception.
-                    - On success: PersonaKey in the payload.
+                    - On success: PersonaContext in the payload.
         Raises:
             *   ZeroPersonaKeysException
             *   PersonaKeyBuildException
@@ -99,7 +99,7 @@ class PersonaContextBuilder(Builder[PersonaKey]):
             )
         # After verifying only one Persona hash key-value is set, validate it.
         
-        # Build the schema PersonaKey if its flag is enabled.
+        # Build the schema PersonaContext if its flag is enabled.
         if name is not None:
             validation = identity_service.validate_name(candidate=name)
             if validation.is_failure:
@@ -113,7 +113,7 @@ class PersonaContextBuilder(Builder[PersonaKey]):
             # On validation success return a ransom_PersonaKey in the BuildResult.
             return BuildResult.success(PersonaKey(name=name))
         
-        # Build the designation PersonaKey if its flag is enabled.
+        # Build the designation PersonaContext if its flag is enabled.
         if designation is not None:
             validation = identity_service.validate_name(candidate=designation)
             if validation.is_failure:
@@ -127,7 +127,7 @@ class PersonaContextBuilder(Builder[PersonaKey]):
             # On validation success return a designation_PersonaKey in the BuildResult.
             return BuildResult.success(PersonaKey(designation=designation))
         
-        # Build the quota PersonaKey if its flag is enabled.
+        # Build the quota PersonaContext if its flag is enabled.
         if quota is not None:
             # Quotas have to be between king_count=1 and pawn_count=8
             validation = number_validator.validate(floor=1, ceiling=9)
@@ -142,7 +142,7 @@ class PersonaContextBuilder(Builder[PersonaKey]):
             # On validation success return a quota_PersonaKey in the BuildResult.
             return BuildResult.success(PersonaKey(quota=quota))
         
-        # Build the ransom PersonaKey if its flag is enabled.
+        # Build the ransom PersonaContext if its flag is enabled.
         if ransom is not None:
             # Ransoms have to be between king_ransom=0 and 20
             validation = number_validator.validate(floor=0, ceiling=20)

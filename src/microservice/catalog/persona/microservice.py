@@ -201,7 +201,7 @@ class PersonaService(HashService[Persona]):
             1.  If the self.key_service.lookup does not produce a payload send a PersonaServiceException chain in the
                 SearchResult. Otherwise, return the payload.
         # PARAMETERS:
-            *   super_key (PersonaKey)
+            *   super_key (PersonaContext)
         # RETURNS:
             *   SearchResult[List[Persona]] containing a list if a match is found else an exception chain.
         # RETURNS:

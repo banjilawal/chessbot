@@ -1,20 +1,18 @@
-# src/logic/token/database/search/context/model/context.py
+# src/model/context/token/model.py
 
 """
-Module: logic.token.database.search.context.model.context
+Module: model.context.token.model
 Author: Banji Lawal
-Created: 2025-10-03
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Optional
 
-from logic.team import Team
-from logic.rank import Rank
-from model.token import Token
-from logic.coord import Coord
-from system import Context, GameColor, LoggingLevelRouter
+from typing import Any, Dict, Optional
+
+from model import Context, Coord, Rank, Team, Token
+from system import GameColor, LoggingLevelRouter
 
 
 class TokenContext(Context[Token]):
@@ -25,7 +23,7 @@ class TokenContext(Context[Token]):
         -   Data-Holder
 
     Responsibilities:
-        1.  Supply a Token attribute-value pair for a worker's execution path routing.
+        1.  Supply a Token attribute-value tuple which selects an execution path.
 
     Attributes:
         id: Optional[int]
@@ -51,7 +49,6 @@ class TokenContext(Context[Token]):
     _current_position:Optional[Coord]
     _opening_square_name: Optional[str]
     
-    @LoggingLevelRouter.monitor
     def __init__(
             self,
             id: Optional[int] = None,
@@ -95,8 +92,6 @@ class TokenContext(Context[Token]):
     def ransom(self) -> Optional[int]:
         return self._ransom
     
-
-    
     @property
     def color(self) -> Optional[GameColor]:
         return self._color
@@ -113,7 +108,8 @@ class TokenContext(Context[Token]):
     def opening_square_name(self) -> Optional[str]:
         return self._opening_square_name
     
-    def to_dict(self) -> {}:
+    @property
+    def to_dict(self) -> Dict[str, Any]:
         return {
             "id": self.id,
             "team": self._team,

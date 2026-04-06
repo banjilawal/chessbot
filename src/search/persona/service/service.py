@@ -17,10 +17,10 @@ class PersonaKeyService(QueryService[PersonaKey]):
     Role:Microservice, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
-    1.  Public facing PersonaKey microservice API.
+    1.  Public facing PersonaContext microservice API.
     2.  Encapsulate integrity assurance logic in one extendable module.
-    3.  Authoritative, single source of truth for PersonaKey state.
-    4.  Single entry and entry points to PersonaKey lifecycle.
+    3.  Authoritative, single source of truth for PersonaContext state.
+    4.  Single entry and entry points to PersonaContext lifecycle.
 
     Super Class:
         *   QueryService

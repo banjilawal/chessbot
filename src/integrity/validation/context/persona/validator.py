@@ -46,7 +46,7 @@ class PersonaContext(Validator[PersonaKey]):
     ) -> ValidationResult[PersonaKey]:
         """
         # ACTION:
-            1.  If the rank passes existence and type checks cast into a PersonaKey instance, super_key.
+            1.  If the rank passes existence and type checks cast into a PersonaContext instance, super_key.
                 Else, return an exception in the ValidationResult.
             2.  If one-and-only-one super_key field is not null return an exception in the ValidationResult.
             3.  Use super_key.attribute to route to the appropriate validation subflow.
@@ -57,9 +57,9 @@ class PersonaContext(Validator[PersonaKey]):
             *   color_validator (ColorValidator)
             *   identity_service (IdentityService)
         # RETURNS:Confirm
-            *   ValidationResult[PersonaKey] containing either:
+            *   ValidationResult[PersonaContext] containing either:
                     - On failure: Exception.
-                    - On success: PersonaKey in the payload.
+                    - On success: PersonaContext in the payload.
         Raises:
             *   TypeError
             *   NNullPersonaKeyException
@@ -84,11 +84,11 @@ class PersonaContext(Validator[PersonaKey]):
             return ValidationResult.failure(
                 PersonaKeyValidationException(
                     msg=f"{method}: {ValidationException.ERR_CODE}",
-                    ex=TypeError(f"{method}: Expected PersonaKey, got {type(candidate).__designation__} instead.")
+                    ex=TypeError(f"{method}: Expected PersonaContext, got {type(candidate).__designation__} instead.")
                 )
             )
         
-        # After existence and type checks cast the rank to a PersonaKey for additional tests.
+        # After existence and type checks cast the rank to a PersonaContext for additional tests.
         super_key = cast(PersonaKey, candidate)
         
         # Handle the case of searching with no attribute-value.

@@ -1,18 +1,16 @@
-# src/logic/formation/__init__.py
+# src/catalog/formation/__init__.py
 
 """
-Module: logic.formation.__init__
+Module: catalog.formation.__init__
 Author: Banji Lawal
-Created: 2025-10-09
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-#=========== FORMATION PACKAGE CONTENTS ===========#
+# =========== FORMATION PACKAGE CONTENTS ===========#
 
 # Packages
-from .key import *
-from .service import *
-from .validator import *
-from .exception import *
+None
 
 # Modules
+from .catalog import Formation

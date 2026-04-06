@@ -1,17 +1,21 @@
-# src/logic/schema/database/search/context/model/context.py
+# src/logic/schema/key/key.py
+
+# src/model/context/schema/__init__.py
 
 """
-Module: logic.schema.database.search.context.model.context
+Module: model.context.schema.__init__
 Author: Banji Lawal
-Created: 2025-10-03
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Optional
 
-from catalog.schema import Schema
-from system import Context, GameColor, LoggingLevelRouter
+from typing import Any, Dict, Optional
+
+from catalog import Schema
+from model import Context
+from system import GameColor
 
 
 class SchemaContext(Context[Schema]):
@@ -22,9 +26,9 @@ class SchemaContext(Context[Schema]):
         -   Data-Holder
 
     Responsibilities:
-        1.  Supply a Schema attribute-value pair for a worker's execution path routing.
+        1.  Supply a Schema attribute-value tuple which selects an execution path.
 
-    Attributes:
+Attributes:
         name: Optional[str]
         color: Optional[GameColor]
 
@@ -37,7 +41,6 @@ class SchemaContext(Context[Schema]):
     _name: Optional[str]
     _color: Optional[GameColor]
     
-    @LoggingLevelRouter.monitor
     def __init__(
             self,
             name: Optional[str] = None,
@@ -50,14 +53,14 @@ class SchemaContext(Context[Schema]):
         """
         super().__init__(id=None, name=name)
         self._color = color
-    
-    
+
     @property
     def color(self) -> Optional[GameColor]:
         return self._color
     
-    def to_dict(self) -> {}:
+    @property
+    def to_dict(self) -> Dict[str, Any]:
         return {
-            "name": self.name,
+            "schema": self.name,
             "color": self._color,
         }

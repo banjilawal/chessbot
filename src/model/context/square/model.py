@@ -1,22 +1,16 @@
-# src/logic/square/context/context/context/model.py
+# src/model/context/square/model.py
 
 """
-Module: logic.square.context.context.context.context
+Module: model.context.square.model
 Author: Banji Lawal
-Created: 2025-11-22
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Optional
+from typing import Any, Dict, Optional
 
-from logic.board import Board
-from logic.coord import Coord
-from logic.square import Square
-
-from model.model.state import SquareState
-from system import Context
-from model.token import Token
+from model import Board, Context, Coord, Square, SquareState, Token
 
 
 class SquareContext(Context[Square]):
@@ -27,18 +21,16 @@ class SquareContext(Context[Square]):
         -   Data-Holder
 
     Responsibilities:
-        1.  Supply Square related workers with execution routing information where:
-                -   Square.attribute: execution path selector (routing key).
-                -   attribute.value: executor input.
+        1.  Supply a Square attribute-value tuple which selects an execution path.
 
     Attributes:
-        id: Optional[int]
-        schema: Optional[str]
-        board: Optional[Board]
-        coord: Optional[Coord]
-        occupant: Optional[Token]
-        state: Optional[SquareState]
-
+            id: Optional[int]
+            name: Optional[str]
+            board: Optional[Board]
+            coord: Optional[Coord]
+            occupant: Optional[Token]
+            state: Optional[SquareState]
+            
     Provides:
         -   to_dict() -> Dict[str, Any]
 
@@ -90,13 +82,11 @@ class SquareContext(Context[Square]):
     def state(self) -> Optional[SquareState]:
         return self._state
     
-    def to_dict(self) -> dict:
-        """
-        Returns a dictionary representation of the SquareContext.
-        """
+    @property
+    def to_dict(self) -> Dict[str, Any]:
         return {
             "id": self.id,
-            "schema": self.designation,
+            "name": self.name,
             "board": self._board,
             "coord": self._coord,
             "occupant": self._occupant,

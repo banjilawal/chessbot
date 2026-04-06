@@ -76,4 +76,4 @@ class Vector:
         return hash((self._x, self._y))
     
     def __str__(self):
-        return f"Vector:{x:{self._x}, y:{self._y}}"
+        return f"Vector:{{x:{self._x}, y:{self._y}}}"

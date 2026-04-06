@@ -9,6 +9,9 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from enum import Enum, auto
+
+from model import Vector
 
 
 class Quadrant(Enum):

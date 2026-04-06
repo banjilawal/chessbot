@@ -1,16 +1,13 @@
-# src/logic/coord/context/context/model/model.py
+# src/model/context/coord/model.py
 
 """
-Module: logic.coord.context.context.model.model
+Module: model.context.coord.model
 Author: Banji Lawal
-Created: 2025-11-16
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-from typing import Any, Dict, Optional
-
-from logic.coord import Coord
-from system import Context
+from __future__ import annotations
 
 
 class CoordContext(Context[Coord]):
@@ -21,11 +18,17 @@ class CoordContext(Context[Coord]):
         -   Data-Holder
 
     Responsibilities:
-        1.  Supply a Square attribute-value pair for a worker's execution path routing.
+        1.  Supply a Coord attribute-value tuple which selects an execution path.
 
     Attributes:
-        row: Optional[int]
-        column: Optional[str]
+        id: Optional[int]
+        team: Optional[Team]
+        rank: Optional[Rank]
+        ransom: Optional[int]
+        current_position:Optional[Coord]
+        designation: Optional[str]
+        color: Optional[GameColor]
+        opening_square_name: Optional[str]
 
     Provides:
         -   to_dict() -> Dict[str, Any]

@@ -1,40 +1,38 @@
-# src/logic/persona/key/key.py
+# src/model/context/persona/model.py
 
 """
-Module: logic.persona.key.key
+Module: model.context.persona.model
 Author: Banji Lawal
-Created: 2025-09-08
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-from typing import Optional
 
-from catalog.persona import Persona
-from system import Context
-
-
-class PersonaKey(Context[Persona]):
+class PersonaContext(Context[Persona]):
     """
-    Role:Filter, Search, Selection, Reverse/Forward Lookups
+    Role:
+        -   Selection
+        -   Routing mask
+        -   Data-Holder
 
     Responsibilities:
-    The for A PersonaKey is used to run Forward Persona lookups use a PersonaKey
-    1.  Provides information to complete run forward-lookups on the Persona
-    2.  Define a Key from an attribute-value pair. The attribute must exist in the persona.
-    3.  A forward lookup for a Persona variant requires a PersonaKey.
+        1.  Supply a Persona attribute-value tuple which selects an execution path.
 
-    Super Class:
-        *   Context
+    Attributes:
+        id: Optional[int]
+        team: Optional[Team]
+        rank: Optional[Rank]
+        ransom: Optional[int]
+        current_position:Optional[Coord]
+        designation: Optional[str]
+        color: Optional[GameColor]
+        opening_square_name: Optional[str]
 
     Provides:
+        -   to_dict() -> Dict[str, Any]
 
-    # LOCAL ATTRIBUTES:
-        *   quota (Optional[int])
-        *   ransom (Optional[int])
-        *   designation (Optional[str])
-
-    # INHERITED ATTRIBUTES:
-        *   See Context class for inherited attributes.
+    Super Class:
+        Context
     """
     _name: Optional[str]
     _quota: Optional[int]
@@ -81,7 +79,7 @@ class PersonaKey(Context[Persona]):
     def to_dict(self) -> dict:
         """
         # ACTION
-            1.  Convert the PersonaKey object to a dictionary.
+            1.  Convert the PersonaContext object to a dictionary.
         # PARAMETERS:
             *   None
         # RETURNS:

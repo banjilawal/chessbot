@@ -49,7 +49,7 @@ class PersonaLookupProcess(HashLookupProcess[Persona]):
             2.  If the value portion of the Key is not in the permitted attribute values send the exception
                 chain in the SearchResult. Else, send Personas whose targeted attribute values match.
         # PARAMETERS:
-            *   key: PersonaKey
+            *   key: PersonaContext
             *   key_validator: POersonaContext
         # RETURNS:
             *   SearchResult[List[Persona]] containing either:
