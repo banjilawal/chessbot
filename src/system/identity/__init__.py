@@ -15,4 +15,3 @@ from .name import *
 
 # Modules
 from .exception import *
-from .service import  IdentityService
