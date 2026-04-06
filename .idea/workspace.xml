@@ -88,24 +88,43 @@
       <change afterPath="$PROJECT_DIR$/src/err/math/exception/token/operation/quota/__init__.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/err/math/exception/token/operation/quota/exception.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/err/math/exception/token/operation/quota/exception/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/model/context/excess/lingeo/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/model/context/lingeo/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/model/context/zero/lingeo/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/context/lingeo/__init__.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/err/validation/context/lingeo/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/integrity/validation/context/lingeo/validator.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/math/lingeo/__init__.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/math/lingeo/conversion/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/model/context/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/model/context/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/model/context/algebra/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/model/context/lingeo/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/context/algebra/__init__.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/model/context/algebra/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/model/context/lingeo/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/context/excess/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/model/context/excess/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/context/excess/algebra/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/context/excess/algebra/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/model/context/excess/lingeo/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/context/zero/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/model/context/zero/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/context/zero/algebra/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/context/zero/algebra/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/model/context/zero/lingeo/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/null/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/null/context/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/context/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/context/algebra/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/context/lingeo/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/context/algebra/__init__.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/null/context/algebra/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/context/lingeo/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/validation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/validation/context/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/context/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/validation/context/algebra/__init__.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/validation/context/algebra/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/validation/context/lingeo/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/integrity/validation/context/algebra/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/integrity/validation/context/algebra/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/integrity/validation/context/algebra/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/integrity/validation/context/algebra/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometry/span/square/ray/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/span/square/ray/validator/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometry/span/square/span/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/span/square/span/validator/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/integrity/build/context/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/integrity/build/context/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/integrity/validation/board/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/integrity/validation/board/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/integrity/validation/context/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/integrity/validation/context/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/integrity/validation/context/algebra/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/integrity/validation/context/lingeo/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/integrity/validation/context/algebra/validator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/integrity/validation/rank/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/integrity/validation/rank/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/integrity/validation/square/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/integrity/validation/square/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/zone/service/operation/validation/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/zone/service/operation/validation/validator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/math/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/math/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/math/addition/coord/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/math/addition/coord/worker.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/math/convert/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/math/convert/__init__.py" afterDir="false" />
@@ -116,6 +135,7 @@
       <change beforePath="$PROJECT_DIR$/src/model/context/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/context/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/context/algebra/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/context/lingeo/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/context/algebra/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/context/lingeo/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/color/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/color/validator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tool/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tool/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tool/algebra/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tool/lingeo/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tool/algebra/tool.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tool/lingeo/tool.py" afterDir="false" />
@@ -391,7 +411,7 @@
     "ToolWindow.Python Packages.ShowToolbar": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/integrity/build/context",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -418,11 +438,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/integrity/build/context" />
       <recent name="$PROJECT_DIR$/src/err" />
       <recent name="$PROJECT_DIR$/src/microservice/catalog" />
       <recent name="$PROJECT_DIR$/src/integrity/validation" />
       <recent name="$PROJECT_DIR$/src/microservice" />
-      <recent name="$PROJECT_DIR$/src/err/validation" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/math/lingeo/conversion" />
@@ -979,7 +999,7 @@
       <workItem from="1774551231807" duration="159138000" />
       <workItem from="1774976324979" duration="49944000" />
       <workItem from="1775073975276" duration="313257000" />
-      <workItem from="1775468437273" duration="22941000" />
+      <workItem from="1775468437273" duration="25220000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1191,6 +1211,11 @@
           <url>file://$PROJECT_DIR$/src/model/name/model.py</url>
           <line>9</line>
           <option name="timeStamp" value="123" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/integrity/build/context/__init__.py</url>
+          <line>12</line>
+          <option name="timeStamp" value="124" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

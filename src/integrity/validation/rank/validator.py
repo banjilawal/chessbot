@@ -9,6 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from typing import Any, cast
+
+from err import RankNullException, RankValidationException
+from integrity import Validator
+from model import Rank
+from result import ValidationResult
+from system import LoggingLevelRouter
+
 
 class RankValidator(Validator[Rank]):
     """
@@ -60,7 +68,7 @@ class RankValidator(Validator[Rank]):
             ValidationResult[Rank]
         Raises:
             TypeError
-            NullRankException
+            RankNullException
             RankValidationException
         """
         method = f"{cls.__name__}.validate"
@@ -72,13 +80,11 @@ class RankValidator(Validator[Rank]):
                 RankValidationException(
                     cls_mthd=method,
                     cls_name=method.__name__,
-                    op=RankValidationException.OP,
                     msg=RankValidationException.MSG,
                     err_code=RankValidationException.ERR_CODE,
-                    rslt_type=RankValidationException.RSLT_TYPE,
-                    ex=NullRankException(
-                        msg=NullRankException.MSG,
-                        err_code=NullRankException.ERR_CODE,
+                    ex=RankNullException(
+                        msg=RankNullException.MSG,
+                        err_code=RankNullException.ERR_CODE,
                     )
                 )
             )
@@ -89,16 +95,14 @@ class RankValidator(Validator[Rank]):
                 RankValidationException(
                     cls_mthd=method,
                     cls_name=method.__name__,
-                    op=RankValidationException.OP,
                     msg=RankValidationException.MSG,
                     err_code=RankValidationException.ERR_CODE,
-                    rslt_type=RankValidationException.RSLT_TYPE,
                     ex=TypeError(
                         f"Expected a Rank, got {type(candidate).__name__} instead."
                     )
                 )
             )
-        # --- Cast rank to a Rank for additional tests ---#
+        # --- Cast candidate to a Rank for additional tests ---#
         rank = cast(Rank, candidate)
         
         # Handle the case that, the rank's id is not safe.
@@ -109,10 +113,8 @@ class RankValidator(Validator[Rank]):
                 RankValidationException(
                     cls_mthd=method,
                     cls_name=method.__name__,
-                    op=RankValidationException.OP,
                     msg=RankValidationException.MSG,
                     err_code=RankValidationException.ERR_CODE,
-                    rslt_type=RankValidationException.RSLT_TYPE,
                     ex=id_validation_result.exception,
                 )
             )
@@ -127,10 +129,8 @@ class RankValidator(Validator[Rank]):
                 RankValidationException(
                     cls_mthd=method,
                     cls_name=method.__name__,
-                    op=RankValidationException.OP,
                     msg=RankValidationException.MSG,
                     err_code=RankValidationException.ERR_CODE,
-                    rslt_type=RankValidationException.RSLT_TYPE,
                     ex=rank_persona_validation.exception,
                 )
             )

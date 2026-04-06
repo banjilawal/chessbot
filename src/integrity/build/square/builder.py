@@ -9,44 +9,35 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from logic.board import Board, BoardService
-from logic.coord import Coord, CoordService
-from logic.square import Square, SquareBuildException, SquareCollisionAnalysis
-from system import (
-    Builder, IdFactory, IdentityService, BuildResult, InvariantBreachException, LoggingLevelRouter
-)
-from tool import SquareTool
 
 
 class SquareBuilder(Builder[Square]):
     """
-     Role:
-        -   Worker,
-        -   Integrity Management
+    Role
+        -   Transaction Worker
+        -   Integrity Maintenance
+        -   Consistency Assurance
+        -   Build Process Owner
 
-     Responsibilities:
-         1.  Produce Square instances whose integrity is guaranteed at creation.
-         2.  Ensure params for Square creation have met the application's safety contract.
-         3.  Return an exception to the client if a build resource does not satisfy integrity requirements.
+   Responsibilities:
+        1.  Ensure a new Token instance is born safe and reliable.
 
-    Attributes:
+     Attributes:
 
     Provides:
         -   def execute(
-                schema: str,
-                board: Board,
-                coord: Coord,
-                id: int = IdFactory,
-                board_service: BoardService,
-                coord_service: CoordService,
-                identity_service: IdentityService,
-                square_collision_analyzer: SquareCollisionAnalyst),
-            ) -> BuildResult[Square]
+                    owner: Team,
+                    id: int = IdFactory,
+                    formation: Formation,
+                    rank_service: RankService,
+                    identity_service: IdentityService,
+                    formation_service: FormationService,
+                    team_validator: TeamValidator,
+            ) -> BuildResult[Token]
 
      Super Class:
          Builder
-    """
-    
+     """
     @classmethod
     @LoggingLevelRouter.monitor()
     def build(

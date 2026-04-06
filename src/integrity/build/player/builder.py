@@ -22,24 +22,31 @@ from logic.player import (
 
 class PlayerFactory(Builder[Player]):
     """
-    Role:Factory, Data Integrity Guarantor
+    Role
+        -   Transaction Worker
+        -   Integrity Maintenance
+        -   Consistency Assurance
+        -   Build Process Owner
 
-    Responsibilities:
-    1.  Produce Player instances whose integrity is guaranteed at creation.
-    2.  Manage construction of Player instances that can be used safely by the client.
-    3.  Ensure params for Player creation have met the application's safety contract.
-    4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
-    
-    Super Class:
-        *   Builder
+   Responsibilities:
+        1.  Ensure a new Token instance is born safe and reliable.
 
-    # PROVIDES:
-        *   build:  -> ValidationResult[HumanPlayer|MachinePlayer]
+     Attributes:
 
-    
-    # INHERITED ATTRIBUTES:
-    None
-    """
+    Provides:
+        -   def execute(
+                    owner: Team,
+                    id: int = IdFactory,
+                    formation: Formation,
+                    rank_service: RankService,
+                    identity_service: IdentityService,
+                    formation_service: FormationService,
+                    team_validator: TeamValidator,
+            ) -> BuildResult[Token]
+
+     Super Class:
+         Builder
+     """
     
     @classmethod
     def build(

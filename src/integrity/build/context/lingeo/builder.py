@@ -1,7 +1,7 @@
-# src/integrity/build/context/edge/builder.py
+# src/integrity/build/context/linegeo/builder.py
 
 """
-Module: integrity.build.context.edge.builder
+Module: integrity.build.context.linegeo.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,36 +10,37 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Optional
 
-from logic.board import Board, BoardService
-from logic.coord import Coord, CoordService
-from microservice.edge import EdgeState
-from system import Builder, BuildResult, IdentityService
-from microservice.edge import (
-    EdgeContextBuildRouteException, ZeroEdgeContextFlagsException, EdgeContext, EdgeContextBuildException,
-    ArenaEdgeContextFlagsException
-)
-from model.token import Token, TokenService
+from integrity import Builder
+from model import LinGeoContext
 
 
-class EdgeContextBuilder(Builder[EdgeContext]):
+class LinGeoContextBuilder(Builder[LinGeoContext]):
     """
-    Role:Builder, Data Integrity And Reliability Guarantor
+    Role
+        -   Transaction Worker
+        -   Integrity Maintenance
+        -   Consistency Assurance
+        -   Build Process Owner
 
-    Responsibilities:
-    1.  Produce EdgeContext instances whose integrity is guaranteed at creation.
-    2.  Manage construction of EdgeContext instances that can be used safely by the client.
-    3.  Ensure params for EdgeContext creation have met the application's safety contract.
-    4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
+   Responsibilities:
+        1.  Ensure a new Token instance is born safe and reliable.
 
-    Super Class:
-        *   Builder
+     Attributes:
 
     Provides:
+        -   def execute(
+                    owner: Team,
+                    id: int = IdFactory,
+                    formation: Formation,
+                    rank_service: RankService,
+                    identity_service: IdentityService,
+                    formation_service: FormationService,
+                    team_validator: TeamValidator,
+            ) -> BuildResult[Token]
 
-
-    # INHERITED ATTRIBUTES:
-    None
-    """
+     Super Class:
+         Builder
+     """
     @classmethod
     def build(
             cls,
@@ -48,12 +49,12 @@ class EdgeContextBuilder(Builder[EdgeContext]):
             coord: Optional[Coord] = None,
             board: Optional[Board] = None,
             token: Optional[Token] = None,
-            state: Optional[EdgeState] = None,
+            state: Optional[LinegeoState] = None,
             token_service: TokenService = TokenService(),
             board_service: BoardService = BoardService(),
             coord_service: CoordService = CoordService(),
             identity_service: IdentityService = IdentityService(),
-    ) -> BuildResult[EdgeContext]:
+    ) -> BuildResult[LinGeoContext]:
         """
         # ACTION:
             1.  If one-and-only-one context attribute is not null send an exception chain in the BuildResult.
@@ -66,23 +67,23 @@ class EdgeContextBuilder(Builder[EdgeContext]):
                 *   schema Optional[(str)]
                 *   cord Optional[(Coord)]
                 *   board Optional[(Board)]
-                *   state Optional[EdgeState]
+                *   state Optional[LinegeoState]
             These Parameters must be provided:
                 *   board_service (BoardService)
                 *   coord_service (CoordService)
                 *   token_service (TokenService)
                 *   identity_service (IdentityService)
             # RETURNS:
-                *   BuildResult[EdgeContext] containing either:
+                *   BuildResult[LinGeoContext] containing either:
                         - On failure: Exception.
-                        - On success: EdgeContext in the payload.
+                        - On success: LinGeoContext in the payload.
             Raises:
-                *   ZeroEdgeContextFlagsException
-                *   EdgeContextBuildException
-                *   ArenaEdgeContextFlagsException
-                *   EdgeContextBuildRouteException
+                *   ZeroLinGeoContextFlagsException
+                *   LinGeoContextBuildException
+                *   ArenaLinGeoContextFlagsException
+                *   LinGeoContextBuildRouteException
             """
-        method = "EdgeContextBuilder.build"
+        method = "LinGeoContextBuilder.build"
 
         # --- Count how many optional parameters are not-null. only one should be not null. ---#
         params = [id, name, coord, token,board, state,]
@@ -92,10 +93,10 @@ class EdgeContextBuilder(Builder[EdgeContext]):
         if param_count == 0:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                EdgeContextBuildException(
-                    msg=f"{method}: {EdgeContextBuildException.MSG}",
-                    ex=ZeroEdgeContextFlagsException(
-                        f"{method}: {ZeroEdgeContextFlagsException.MSG}"
+                LinGeoContextBuildException(
+                    msg=f"{method}: {LinGeoContextBuildException.MSG}",
+                    ex=ZeroLinGeoContextFlagsException(
+                        f"{method}: {ZeroLinGeoContextFlagsException.MSG}"
                     )
                 )
             )
@@ -103,104 +104,104 @@ class EdgeContextBuilder(Builder[EdgeContext]):
         if param_count > 1:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                EdgeContextBuildException(
-                    msg=f"{method}: {EdgeContextBuildException.MSG}",
-                    ex=ArenaEdgeContextFlagsException(
-                        f"{method}: {ArenaEdgeContextFlagsException.MSG}"
+                LinGeoContextBuildException(
+                    msg=f"{method}: {LinGeoContextBuildException.MSG}",
+                    ex=ArenaLinGeoContextFlagsException(
+                        f"{method}: {ArenaLinGeoContextFlagsException.MSG}"
                     )
                 )
             )
         # --- Route to the appropriate validation/build branch. ---#
         
-        # Build the id EdgeContext if its flag is enabled.
+        # Build the id LinGeoContext if its flag is enabled.
         if id is not None:
             validation = identity_service.validate_id(candidate=id)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    EdgeContextBuildException(
-                        msg=f"{method}: {EdgeContextBuildException.MSG}",
+                    LinGeoContextBuildException(
+                        msg=f"{method}: {LinGeoContextBuildException.MSG}",
                         ex=validation.exception
                     )
                 )
-            # On validation success return an id_EdgeContext in the BuildResult.
-            return BuildResult.success(EdgeContext(id=id))
+            # On validation success return an id_LinGeoContext in the BuildResult.
+            return BuildResult.success(LinGeoContext(id=id))
         
-        # Build the schema EdgeContext if its flag is enabled.
+        # Build the schema LinGeoContext if its flag is enabled.
         if name is not None:
             validation = identity_service.validate_name(candidate=name)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    EdgeContextBuildException(
-                        msg=f"{method}: {EdgeContextBuildException.MSG}",
+                    LinGeoContextBuildException(
+                        msg=f"{method}: {LinGeoContextBuildException.MSG}",
                         ex=validation.exception
                     )
                 )
-            # On validation success return a name_EdgeContext in the BuildResult.
-            return BuildResult.success(EdgeContext(name=name))
+            # On validation success return a name_LinGeoContext in the BuildResult.
+            return BuildResult.success(LinGeoContext(name=name))
         
-        # Build the coord EdgeContext if its flag is enabled.
+        # Build the coord LinGeoContext if its flag is enabled.
         if coord is not None:
             validation = coord_service.validator.validate(coord)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    EdgeContextBuildException(
-                        msg=f"{method}: {EdgeContextBuildException.MSG}",
+                    LinGeoContextBuildException(
+                        msg=f"{method}: {LinGeoContextBuildException.MSG}",
                         ex=validation.exception
                     )
                 )
-            # On validation success return a coord_EdgeContext in the BuildResult.
-            return BuildResult.success(EdgeContext(coord=coord))
+            # On validation success return a coord_LinGeoContext in the BuildResult.
+            return BuildResult.success(LinGeoContext(coord=coord))
         
-        # Build the board EdgeContext if its flag is enabled.
+        # Build the board LinGeoContext if its flag is enabled.
         if board is not None:
             validation = board_service.validator.validate(candidate=board)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    EdgeContextBuildException(
-                        msg=f"{method}: {EdgeContextBuildException.MSG}",
+                    LinGeoContextBuildException(
+                        msg=f"{method}: {LinGeoContextBuildException.MSG}",
                         ex=validation.exception
                     )
                 )
-            # On validation success return a board_EdgeContext in the BuildResult.
-            return BuildResult.success(EdgeContext(board=board))
+            # On validation success return a board_LinGeoContext in the BuildResult.
+            return BuildResult.success(LinGeoContext(board=board))
         
-        # Build the occupant EdgeContext if its flag is enabled.
+        # Build the occupant LinGeoContext if its flag is enabled.
         if token is not None:
             validation = token_service.validator.search_service(candidate=token)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    EdgeContextBuildException(
-                        msg=f"{method}: {EdgeContextBuildException.MSG}",
+                    LinGeoContextBuildException(
+                        msg=f"{method}: {LinGeoContextBuildException.MSG}",
                         ex=validation.exception
                     )
                 )
-            # On validation success return a token_EdgeContext in the BuildResult.
-            return BuildResult.success(EdgeContext(occupant=token))
+            # On validation success return a token_LinGeoContext in the BuildResult.
+            return BuildResult.success(LinGeoContext(occupant=token))
         
-        # Build the state EdgeContext if its flag is enabled.
+        # Build the state LinGeoContext if its flag is enabled.
         if state is not None:
-            if not isinstance(state, EdgeState):
+            if not isinstance(state, LinegeoState):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    EdgeContextBuildException(
-                        msg=f"{method}: {EdgeContextBuildException.MSG}",
+                    LinGeoContextBuildException(
+                        msg=f"{method}: {LinGeoContextBuildException.MSG}",
                         ex=TypeError(
-                            f"{method}: Was expecting a EdgeState, got {type(state).__name__} instead."
+                            f"{method}: Was expecting a LinegeoState, got {type(state).__name__} instead."
                         )
                     )
                 )
-            # On validation success return a token_EdgeContext in the BuildResult.
-            return BuildResult.success(EdgeContext(state=state))
+            # On validation success return a token_LinGeoContext in the BuildResult.
+            return BuildResult.success(LinGeoContext(state=state))
         
         # Return the exception chain if there is no build route for the context.
         return BuildResult.failure(
-            EdgeContextBuildException(
-                msg=f"{method}: {EdgeContextBuildException.MSG}",
-                ex=EdgeContextBuildRouteException(f"{method}: {EdgeContextBuildRouteException.MSG}")
+            LinGeoContextBuildException(
+                msg=f"{method}: {LinGeoContextBuildException.MSG}",
+                ex=LinGeoContextBuildRouteException(f"{method}: {LinGeoContextBuildRouteException.MSG}")
             )
         )

@@ -26,26 +26,23 @@ class CoordContextBuilder(Builder[CoordContext]):
         -   Transaction Worker
         -   Integrity Maintenance
         -   Consistency Assurance
-        -   Process Runner
+        -   Build Process Owner
 
-    Responsibilities:
-        1.  CoordContext creation process owner.
-        2.  Ensure Coord build resources meet satisfy contracts.
-        3.  Assure CoordContext instances comply with business logic at point of creation.
+   Responsibilities:
+        1.  Ensure a new Token instance is born safe and reliable.
 
-    Attributes:
+     Attributes:
 
     Provides:
-        -   execute(
-                    row: Optional[int]
-                    column: Optional[int]
-                    number_validation: NumberValidator,
-            ) -> BuildResult[CoordContext]
-        
-        -   _run_attribute_checks(
-                    attributes: List[int],
-                    number_validator: NumberValidator,
-            ) -> BuildResult[CoordContext]
+        -   def execute(
+                    owner: Team,
+                    id: int = IdFactory,
+                    formation: Formation,
+                    rank_service: RankService,
+                    identity_service: IdentityService,
+                    formation_service: FormationService,
+                    team_validator: TeamValidator,
+            ) -> BuildResult[Token]
 
      Super Class:
          Builder

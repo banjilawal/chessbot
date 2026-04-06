@@ -14,11 +14,11 @@ from err import ZeroContextFlagsException
 
 _all_ = [
     # ======================# ZERO_LINGEO_CONTEXT_FLAGS_EXCEPTION #======================#
-    "ZeroLingeoContextFlagsException",
+    "ZeroLinGeoContextFlagsException",
 ]
 
 # ======================# ZERO_LINGEO_CONTEXT_FLAGS_EXCEPTION #======================#
-class ZeroLingeoContextFlagsException(ZeroContextFlagsException):
+class ZeroLinGeoContextFlagsException(ZeroContextFlagsException):
     """
     Role:
         -   Error Tracing

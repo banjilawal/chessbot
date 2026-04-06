@@ -14,11 +14,11 @@ from err import ExcessContextFlagsException
 
 _all_ = [
     # ======================# EXCESS_LINGEO_CONTEXT_FLAGS_EXCEPTION #======================#
-    "ExcessLingeoContextFlagsException",
+    "ExcessLinGeoContextFlagsException",
 ]
 
 # ======================# EXCESS_LINGEO_CONTEXT_FLAGS_EXCEPTION #======================#
-class ExcessLingeoContextFlagsException(ExcessContextFlagsException):
+class ExcessLinGeoContextFlagsException(ExcessContextFlagsException):
     """
     Role:
         -   Error Tracing

@@ -11,23 +11,31 @@ from __future__ import annotations
 
 class HostageContextBuilder(Builder[HostageContext]):
     """
-     Role:Validation, Data Integrity Guarantor, Security.
+    Role
+        -   Transaction Worker
+        -   Integrity Maintenance
+        -   Consistency Assurance
+        -   Build Process Owner
 
-    Responsibilities:
-    1. Verify a rank is a HostageContext that meets the application's safety contract before the client
-        is allowed to use the HostageContext object.
-    2. Provide pluggable factories for validating different options separately.
+   Responsibilities:
+        1.  Ensure a new Token instance is born safe and reliable.
 
-    Super Class:
-        * Validator
+     Attributes:
 
-    3 PROVIDES:
-    None
+    Provides:
+        -   def execute(
+                    owner: Team,
+                    id: int = IdFactory,
+                    formation: Formation,
+                    rank_service: RankService,
+                    identity_service: IdentityService,
+                    formation_service: FormationService,
+                    team_validator: TeamValidator,
+            ) -> BuildResult[Token]
 
-
-    3 INHERITED ATTRIBUTES:
-        *   See Validator class for inherited attributes.
-    """
+     Super Class:
+         Builder
+     """
     
     @classmethod
     @LoggingLevelRouter.monitor

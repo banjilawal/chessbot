@@ -1,7 +1,7 @@
-# src/integrity/validation/context/algebra/validator.py
+# src/integrity/validation/context/linegeo/validator.py
 
 """
-Module: integrity.validation.context.algebra.validator
+Module: integrity.validation.context.linegeo.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

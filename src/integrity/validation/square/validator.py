@@ -108,7 +108,7 @@ class SquareValidator(Validator[Square]):
                     )
                 )
             )
-        # --- Cast rank to a Square for additional tests. ---#
+        # --- Cast candidate to a Square for additional tests. ---#
         square = cast(Square, candidate)
         
         # Handle the case that, square.id or square.schema does not pass a validation check.

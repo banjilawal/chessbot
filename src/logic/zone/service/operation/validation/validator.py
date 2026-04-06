@@ -100,7 +100,7 @@ class ZoneValidator(Validator[Zone]):
                     )
                 )
             )
-        # --- Cast rank to a Zone for additional tests ---#
+        # --- Cast candidate to a Zone for additional tests ---#
         zone = cast(Zone, candidate)
         
         # Handle the case that, either the row or column are not between [0-7] inclusive.

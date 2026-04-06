@@ -19,22 +19,31 @@ from logic.rank import (
 
 class RankContextBuilder(Builder[RankContext]):
     """
-    Role:Builder, Data Integrity And Reliability Guarantor
+    Role
+        -   Transaction Worker
+        -   Integrity Maintenance
+        -   Consistency Assurance
+        -   Build Process Owner
 
-    Responsibilities:
-        1. Manage conintuction of RankFinder instances that can be used safely by the client.
-        2. Ensure params for RankFinder creation have met the application's safety contract.
-        3. Provide pluggable factories for creating different RankContext products.
+   Responsibilities:
+        1.  Ensure a new Token instance is born safe and reliable.
 
+     Attributes:
 
-    # PROVIDES:
-      ValidationResult[RankContext] containing either:
-            - On success: RankContext in the payload.
-            - On failure: Exception.
+    Provides:
+        -   def execute(
+                    owner: Team,
+                    id: int = IdFactory,
+                    formation: Formation,
+                    rank_service: RankService,
+                    identity_service: IdentityService,
+                    formation_service: FormationService,
+                    team_validator: TeamValidator,
+            ) -> BuildResult[Token]
 
-    # ATTRIBUTES:
-    None
-    """
+     Super Class:
+         Builder
+     """
     
     @classmethod
     @LoggingLevelRouter.monitor

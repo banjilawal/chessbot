@@ -43,7 +43,7 @@ class GameColorValidator(Validator[GameColor]):
         # ACTION:
         1.  KingCheckRecord rank is not validation.
         2.  KingCheckRecord if rank is a GameColor.
-        3.  When all checks pass cast rank to a GameColor instance, then return inside a ValidationResult.
+        3.  When all checks pass cast candidate to a GameColor instance, then return inside a ValidationResult.
 
         # PARAMETERS:
             *   rank (Any): Object to validate.

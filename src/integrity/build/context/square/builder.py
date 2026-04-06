@@ -12,43 +12,31 @@ from __future__ import annotations
 
 class SquareContextBuilder(Builder[SquareContext]):
     """
-    Role:Builder, Data Integrity And Reliability Guarantor
+    Role
+        -   Transaction Worker
+        -   Integrity Maintenance
+        -   Consistency Assurance
+        -   Build Process Owner
 
-    Responsibilities:
-     1.  Produce SquareContext instances whose integrity and reliability are guaranteed.
-     2.  Ensure params for SquareContext creation have met the application's safety contract.
-     3.  Return an exception to the client if a build resource does not satisfy integrity requirements.
+   Responsibilities:
+        1.  Ensure a new Token instance is born safe and reliable.
 
-     Super Class:
-         * Builder
+     Attributes:
 
     Provides:
+        -   def execute(
+                    owner: Team,
+                    id: int = IdFactory,
+                    formation: Formation,
+                    rank_service: RankService,
+                    identity_service: IdentityService,
+                    formation_service: FormationService,
+                    team_validator: TeamValidator,
+            ) -> BuildResult[Token]
 
-
-    # INHERITED ATTRIBUTES:
-    None
-
-    Attributes:
-    None
-
-    # LOCAL METHODS:
-        *   build(
-                cls,
-                id: Optional[int] = None,
-                schema: Optional[str] = None,
-                coord: Optional[Coord] = None,
-                board: Optional[Board] = None,
-                token: Optional[Token] = None,
-                state: Optional[SquareState] = None,
-                token_service: TokenService = TokenService(),
-                board_service: BoardService = BoardService(),
-                coord_service: CoordService = CoordService(),
-                identity_service: IdentityService = IdentityService(),
-            ) -> BuildResult[SquareContext]:
-
-    # INHERITED METHODS:
-    None
-    """
+     Super Class:
+         Builder
+     """
     @classmethod
     def build(
             cls,

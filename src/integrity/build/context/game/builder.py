@@ -20,23 +20,31 @@ from model.game import (
 
 class GameContextBuilder(Builder[GameContext]):
     """
-    Role:Builder, Data Integrity And Reliability Guarantor
+    Role
+        -   Transaction Worker
+        -   Integrity Maintenance
+        -   Consistency Assurance
+        -   Build Process Owner
 
-    Responsibilities:
-    1.  Produce GameContext instances whose integrity is guaranteed at creation.
-    2.  Manage construction of GameContext instances that can be used safely by the client.
-    3.  Ensure params for GameContext creation have met the application's safety contract.
-    4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
+   Responsibilities:
+        1.  Ensure a new Token instance is born safe and reliable.
 
-    Super Class:
-        *   Builder
+     Attributes:
 
     Provides:
+        -   def execute(
+                    owner: Team,
+                    id: int = IdFactory,
+                    formation: Formation,
+                    rank_service: RankService,
+                    identity_service: IdentityService,
+                    formation_service: FormationService,
+                    team_validator: TeamValidator,
+            ) -> BuildResult[Token]
 
-
-    # INHERITED ATTRIBUTES:
-    None
-    """
+     Super Class:
+         Builder
+     """
     @classmethod
     @LoggingLevelRouter.monitor
     def build(

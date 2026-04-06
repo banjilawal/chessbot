@@ -39,7 +39,7 @@ class BoardValidator(Validator[Board]):
         """
         # ACTION:
             1.  If the rank fails existence or type checks send an exception chain in the ValidationResult. Else,
-                cast rank to a Board instance board.
+                cast candidate to a Board instance board.
             2.  If the board's schema or id fails integrity checks send an exception chain in the ValidationResult.
                 Else validate is board using arena_service.
             3.  If the board's arena fails integrity checks send an exception chain in the ValidationResult. 
@@ -77,7 +77,7 @@ class BoardValidator(Validator[Board]):
                     ex=TypeError(f"{method}: Expected Board, but, got {type(candidate).__name__} instead.")
                 )
             )
-        # --- Cast rank to a Board for additional tests. ---#
+        # --- Cast candidate to a Board for additional tests. ---#
         board = cast(Board, candidate)
         
         # Handle the case board.id or board.schema does not pass a validation check.

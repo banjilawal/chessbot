@@ -34,7 +34,7 @@ class Persona(Enum):
 
     Responsibilities:
     1.  Metadata for each Rank.
-    1.  Supply build parameters to RankFactory methods.
+    1.  Supply build parameters to RankBuilder methods.
 
     Super Class:
         *   Enum

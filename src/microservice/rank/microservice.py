@@ -52,7 +52,7 @@ class RankService(Microservice[Rank]):
         # PARAMETERS:
             *   id (nt)
             *   schema (str)
-            *   build (RankFactory)
+            *   build (RankBuilder)
             *   validation (RankValidator)
 
         # RETURNS:

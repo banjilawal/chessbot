@@ -16,31 +16,27 @@ class TokenContextBuilder(Builder[TokenContext]):
         -   Transaction Worker
         -   Integrity Maintenance
         -   Consistency Assurance
-        -   Process Runner
-    
-    Responsibilities:
-        1.  TokenContext creation process owner.
-        2.  Ensure TokenContext build resources meet satisfy contracts.
-        3.  Guarantee new instances comply with business logic at birth.
-    
-    Attributes:
-    
+        -   Build Process Owner
+
+   Responsibilities:
+        1.  Ensure a new Token instance is born safe and reliable.
+
+     Attributes:
+
     Provides:
-        -   def build(
-                    workers: TokenContextIntegrityWorkers,
-                    id: Optional[int] = None,
-                    team: Optional[Team] = None,
-                    rank: Optional[Rank] = None,
-                    ransom: Optional[int] = None,
-                    current_position: Optional[Coord] = None,
-                    color: Optional[GameColor] = None,
-                    designation: Optional[str] = None,
-                    opening_square_name: Optional[str] = None,
-            ) -> BuildResult[TokenContext]:
-    
+        -   def execute(
+                    owner: Team,
+                    id: int = IdFactory,
+                    formation: Formation,
+                    rank_service: RankService,
+                    identity_service: IdentityService,
+                    formation_service: FormationService,
+                    team_validator: TeamValidator,
+            ) -> BuildResult[Token]
+
      Super Class:
          Builder
-    """
+     """
     @classmethod
     @LoggingLevelRouter.monitor
     def build(

@@ -89,7 +89,7 @@ class SquareSpanValidator(Validator[SquareSpan]):
                     ex=TypeError(f"{method} Expected SquareSpan, got {type(candidate).__name__} instead.")
                 )
             )
-        # --- Cast rank to a SquareSpan for additional tests. ---#
+        # --- Cast candidate to a SquareSpan for additional tests. ---#
         square_span = cast(SquareSpan, candidate)
         
         # Handle the case that, the origin does not pass square safety checks.

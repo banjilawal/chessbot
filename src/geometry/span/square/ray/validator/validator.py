@@ -89,7 +89,7 @@ class SquareRayValidator(Validator[SquareRay]):
                     ex=TypeError(f"{method} Expected SquareRay, got {type(candidate).__name__} instead.")
                 )
             )
-        # --- Cast rank to a SquareRay for additional tests. ---#
+        # --- Cast candidate to a SquareRay for additional tests. ---#
         square_ray = cast(SquareRay, candidate)
         
         # Handle the case that, the origin does not pass square safety checks.
