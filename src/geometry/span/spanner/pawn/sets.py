@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from typing import Dict, List
-from geometry.vector import Vector
+from model.geometry.vector import Vector
 
 class PawnVectorSets:
     _opening_set: Dict[str, List[Vector]] = {

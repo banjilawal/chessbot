@@ -14,11 +14,7 @@ log = logging.getLogger("chessbot")
 # =========== PACKAGE CONTENTS ===========#
 
 # Packages
-from .coord import *
-from .geometry import *
-from .scalar import *
 from .span import *
-from .vector import *
 
 # Modules
 None

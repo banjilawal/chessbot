@@ -11,8 +11,8 @@ from __future__ import annotations
 from typing import Dict, List
 
 from system import ComputationResult
-from geometry.coord import Coord, CoordService
-from geometry.vector import Vector, VectorService
+from model.geometry.coord import Coord, CoordService
+from model.geometry.vector import Vector, VectorService
 from math.span import KingSpannerException, CoordRay, CoordSpan, Spanner
 
 

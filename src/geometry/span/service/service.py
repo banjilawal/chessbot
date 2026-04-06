@@ -11,9 +11,9 @@ from __future__ import annotations
 from abc import abstractmethod
 
 from graph.graph import Graph
-from geometry.coord import CoordService
+from model.geometry.coord import CoordService
 from math.span import CoordSpan, SpanGraphHandler, SpanServiceException, Spanner
-from geometry.vector import VectorService
+from model.geometry.vector import VectorService
 from geometry.square import SquareDatabase
 from model.token import Token, TokenService
 from system import ComputationResult, IdFactory, IdentityService, LoggingLevelRouter, Microservice

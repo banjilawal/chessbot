@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Dict
 
 from catalog.persona import Persona
-from geometry.vector import VectorService
+from model.geometry.vector import VectorService
 from math.span import RookSpanner, CoordSpan
 from model.rank import RookException, Rank
 from model.coord import Coord, CoordService

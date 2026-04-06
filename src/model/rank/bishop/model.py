@@ -15,7 +15,7 @@ from math.span import BishopSpanner, CoordSpan
 from model.coord import Coord, CoordService
 from model.rank import BishopException, Rank
 from system import ComputationResult, LoggingLevelRouter
-from geometry.vector import VectorService
+from model.geometry.vector import VectorService
 
 
 class Bishop(Rank):

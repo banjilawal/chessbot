@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Dict
 
 from system import ComputationResult
-from geometry.coord import Coord, CoordService
+from model.geometry.coord import Coord, CoordService
 from math.span import (
     PerpendicularRayProvider, QueenSpannerException, DiagonalRayProvider, CoordSpan, Spanner, SpannerEngine
 )

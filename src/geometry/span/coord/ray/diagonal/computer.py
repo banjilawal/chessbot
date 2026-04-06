@@ -10,8 +10,8 @@ version: 1.0.0
 from __future__ import annotations
 from typing import List
 
-from geometry.vector import VectorService
-from geometry.coord import Coord, CoordService
+from model.geometry.vector import VectorService
+from model.geometry.coord import Coord, CoordService
 from system import ComputationResult, LoggingLevelRouter
 from math.span import ComputedNullRayDebugException, DiagonalRayComputationException, DiagonalRayFactors, CoordRay
 
