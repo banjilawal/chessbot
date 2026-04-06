@@ -1,7 +1,7 @@
 # src/err/validation/context/arena/exception.py
 
 """
-Module: err.validation.context.arena.exception
+Module: err.validation.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

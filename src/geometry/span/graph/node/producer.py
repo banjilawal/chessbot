@@ -74,7 +74,7 @@ class NodeTreeProducer:
                     msg=SquareGraphHandlerException.MSG,
                     err_code=SquareGraphHandlerException.ERR_CODE,
                     ex=PairBuildException(
-                        mthd=method,
+                        cls_mthd=method,
                         op=PairBuildException.OP,
                         msg=PairBuildException.MSG,
                         err_code=PairBuildException.ERR_CODE,
@@ -125,7 +125,7 @@ class NodeTreeProducer:
                 # Return the exception chain on failure.
                 BuildResult.failure(
                     NodeStackServiceProductionException(
-                        mthd=method,
+                        cls_mthd=method,
                         op=NodeStackServiceProductionException.OP,
                         msg=NodeStackServiceProductionException.MSG,
                         err_code=NodeStackServiceProductionException.ERR_CODE,
@@ -151,7 +151,7 @@ class NodeTreeProducer:
             # Return the exception chain on failure.
             SearchResult.failure(
                 NodeStackServiceProductionException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=NodeStackServiceProductionException.OP,
                     msg=NodeStackServiceProductionException.MSG,
                     err_code=NodeStackServiceProductionException.ERR_CODE,
@@ -193,7 +193,7 @@ class NodeTreeProducer:
                         msg=SquareGraphHandlerException.MSG,
                         err_code=SquareGraphHandlerException.ERR_CODE,
                         ex=PairInsertionException(
-                            mthd=method,
+                            cls_mthd=method,
                             op=PairInsertionException.OP,
                             msg=PairInsertionException.MSG,
                             err_code=PairInsertionException.ERR_CODE,

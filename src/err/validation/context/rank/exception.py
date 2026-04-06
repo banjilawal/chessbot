@@ -1,7 +1,7 @@
 # src/err/validation/context/rank/exception.py
 
 """
-Module: err.validation.context.rank.exception
+Module: err.validation.rank.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

@@ -63,7 +63,7 @@ class SquareSpanValidator(Validator[SquareSpan]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SquareSpanValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=SquareSpanValidationException.OP,
                     msg=SquareSpanValidationException.MSG,
                     err_code=SquareSpanValidationException.ERR_CODE,
@@ -81,7 +81,7 @@ class SquareSpanValidator(Validator[SquareSpan]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SquareSpanValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=SquareSpanValidationException.OP,
                     msg=SquareSpanValidationException.MSG,
                     err_code=SquareSpanValidationException.ERR_CODE,
@@ -98,7 +98,7 @@ class SquareSpanValidator(Validator[SquareSpan]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SquareSpanValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=SquareSpanValidationException.OP,
                     msg=SquareSpanValidationException.MSG,
                     err_code=SquareSpanValidationException.ERR_CODE,
@@ -111,7 +111,7 @@ class SquareSpanValidator(Validator[SquareSpan]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SquareSpanValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=SquareSpanValidationException.OP,
                     msg=SquareSpanValidationException.MSG,
                     err_code=SquareSpanValidationException.ERR_CODE,
@@ -131,7 +131,7 @@ class SquareSpanValidator(Validator[SquareSpan]):
             wrong_type = type(square_span.rays).__name__
             return ValidationResult.failure(
                 SquareSpanValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=SquareSpanValidationException.OP,
                     msg=SquareSpanValidationException.MSG,
                     err_code=SquareSpanValidationException.ERR_CODE,

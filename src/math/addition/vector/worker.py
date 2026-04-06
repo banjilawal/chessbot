@@ -76,8 +76,8 @@ class VectorAdder(Worker):
             # Return the exception chain on failure.
             return ComputationResult.failure(
                 VectorAdditionException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=VectorAdditionException.OP,
                     msg=VectorAdditionException.MSG,
                     err_code=VectorAdditionException.ERR_CODE,
@@ -93,8 +93,8 @@ class VectorAdder(Worker):
             # Return the exception chain on failure.
             return ComputationResult.failure(
                 VectorAdditionException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=VectorAdditionException.OP,
                     msg=VectorAdditionException.MSG,
                     err_code=VectorAdditionException.ERR_CODE,
@@ -112,8 +112,8 @@ class VectorAdder(Worker):
                 # Return the exception chain on failure.
                 return ComputationResult.failure(
                     VectorAdditionException(
-                        mthd=method,
-                        title=cls.__name__,
+                        cls_mthd=method,
+                        cls_name=method.__name__,
                         op=VectorAdditionException.OP,
                         msg=VectorAdditionException.MSG,
                         err_code=VectorAdditionException.ERR_CODE,
@@ -135,8 +135,8 @@ class VectorAdder(Worker):
                 # Return the exception chain on failure.
                 return ComputationResult.failure(
                     VectorAdditionException(
-                        mthd=method,
-                        title=cls.__name__,
+                        cls_mthd=method,
+                        cls_name=method.__name__,
                         op=VectorAdditionException.OP,
                         msg=VectorAdditionException.MSG,
                         err_code=VectorAdditionException.ERR_CODE,

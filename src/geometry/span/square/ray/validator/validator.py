@@ -63,7 +63,7 @@ class SquareRayValidator(Validator[SquareRay]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SquareRayValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=SquareRayValidationException.OP,
                     msg=SquareRayValidationException.MSG,
                     err_code=SquareRayValidationException.ERR_CODE,
@@ -81,7 +81,7 @@ class SquareRayValidator(Validator[SquareRay]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SquareRayValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=SquareRayValidationException.OP,
                     msg=SquareRayValidationException.MSG,
                     err_code=SquareRayValidationException.ERR_CODE,
@@ -98,7 +98,7 @@ class SquareRayValidator(Validator[SquareRay]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SquareRayValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=SquareRayValidationException.OP,
                     msg=SquareRayValidationException.MSG,
                     err_code=SquareRayValidationException.ERR_CODE,
@@ -111,7 +111,7 @@ class SquareRayValidator(Validator[SquareRay]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SquareRayValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=SquareRayValidationException.OP,
                     msg=SquareRayValidationException.MSG,
                     err_code=SquareRayValidationException.ERR_CODE,
@@ -131,7 +131,7 @@ class SquareRayValidator(Validator[SquareRay]):
             wrong_type = type(square_ray.members).__name__
             return ValidationResult.failure(
                 SquareRayValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=SquareRayValidationException.OP,
                     msg=SquareRayValidationException.MSG,
                     err_code=SquareRayValidationException.ERR_CODE,

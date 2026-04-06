@@ -57,8 +57,8 @@ class SchemaValidator(Validator[Schema]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SchemaValidationException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=SchemaValidationException.OP,
                     msg=SchemaValidationException.MSG,
                     err_code=SchemaValidationException.ERR_CODE,
@@ -75,8 +75,8 @@ class SchemaValidator(Validator[Schema]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SchemaValidationException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=SchemaValidationException.OP,
                     msg=SchemaValidationException.MSG,
                     err_code=SchemaValidationException.ERR_CODE,

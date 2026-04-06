@@ -9,10 +9,9 @@ version: 1.0.1
 
 from __future__ import annotations
 
-
+from integrity import NumberValidator
 from microservice import CoordService, VectorService
 from model import AlgebraAcontext
-from system import NumberValidator
 from tool import ToolSet
 
 

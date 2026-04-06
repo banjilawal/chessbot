@@ -1,7 +1,7 @@
 # src/err/null/context/persona/exception.py
 
 """
-Module: err.null.context.persona.exception
+Module: err.null.persona.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

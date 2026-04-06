@@ -56,8 +56,8 @@ class CommandValidator(Validator[Command]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 CommandValidationException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=CommandValidationException.OP,
                     msg=CommandValidationException.MSG,
                     err_code=CommandValidationException.ERR_CODE,
@@ -73,7 +73,7 @@ class CommandValidator(Validator[Command]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 CommandValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=CommandValidationException.OP,
                     msg=CommandValidationException.MSG,
                     err_code=CommandValidationException.ERR_CODE,
@@ -92,7 +92,7 @@ class CommandValidator(Validator[Command]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 CommandValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=CommandValidationException.OP,
                     msg=CommandValidationException.MSG,
                     err_code=CommandValidationException.ERR_CODE,
@@ -114,7 +114,7 @@ class CommandValidator(Validator[Command]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 CommandValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=CommandValidationException.OP,
                     msg=CommandValidationException.MSG,
                     err_code=CommandValidationException.ERR_CODE,
@@ -127,7 +127,7 @@ class CommandValidator(Validator[Command]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 CommandValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=CommandValidationException.OP,
                     msg=CommandValidationException.MSG,
                     err_code=CommandValidationException.ERR_CODE,
@@ -149,7 +149,7 @@ class CommandValidator(Validator[Command]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 CommandValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=CommandValidationException.OP,
                     msg=CommandValidationException.MSG,
                     err_code=CommandValidationException.ERR_CODE,

@@ -25,6 +25,7 @@ from .rank import *
 from .scalar import *
 from .schema import *
 from .square import *
+from .string import *
 from .team import *
 from .token import *
 from .vector import *

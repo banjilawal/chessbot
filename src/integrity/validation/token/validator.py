@@ -9,10 +9,13 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from integrity import Validator
+from typing import Any
+
+from integrity import NumberValidator, Validator
 from microservice import CoordService, RankService, TeamService
 from model import Token
-from system import LoggingLevelRouter
+from result import ValidationResult
+from system import IdentityService, LoggingLevelRouter
 
 
 class TokenValidator(Validator[Token]):
@@ -50,6 +53,30 @@ class TokenValidator(Validator[Token]):
             number_validation: NumberValidator = NumberValidator(),
     ) -> ValidationResult[Token]:
         """
+        Verify the object is a Token that is safe to use.
+
+        Action:
+            1.  Send an exception chain in the ValidationResult any of the cases occur:
+                    -   Candidate is null
+                    -   It's not a number.
+                    _   A Team check fails
+                    -   A Rank check fails
+                    -   Roster number out of bounds.
+                    -   Identity check fails
+            2.  Otherwise, send the success result.
+        Args:
+            candidate: Any
+            number_validation: NumberValidator
+        Returns:
+            ValidationResult[Coord]
+        Raises:
+            TypeError
+            NullCoordException
+            CoordValidationException
+        """
+        """
+        
+        Args:
         # ACTION:
             1.  If the rank fails existence or type tests send the exception in the ValidationResult.
                 Else, cast to Token instance occupant.
@@ -79,7 +106,7 @@ class TokenValidator(Validator[Token]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=TokenValidationException.OP,
                     msg=TokenValidationException.MSG,
                     err_code=TokenValidationException.ERR_CODE,
@@ -96,7 +123,7 @@ class TokenValidator(Validator[Token]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=TokenValidationException.OP,
                     msg=TokenValidationException.MSG,
                     err_code=TokenValidationException.ERR_CODE,
@@ -116,7 +143,7 @@ class TokenValidator(Validator[Token]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=TokenValidationException.OP,
                     msg=TokenValidationException.MSG,
                     err_code=TokenValidationException.ERR_CODE,
@@ -130,7 +157,7 @@ class TokenValidator(Validator[Token]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=TokenValidationException.OP,
                     msg=TokenValidationException.MSG,
                     err_code=TokenValidationException.ERR_CODE,
@@ -147,7 +174,7 @@ class TokenValidator(Validator[Token]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=TokenValidationException.OP,
                     msg=TokenValidationException.MSG,
                     err_code=TokenValidationException.ERR_CODE,
@@ -161,7 +188,7 @@ class TokenValidator(Validator[Token]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=TokenValidationException.OP,
                     msg=TokenValidationException.MSG,
                     err_code=TokenValidationException.ERR_CODE,
@@ -175,8 +202,8 @@ class TokenValidator(Validator[Token]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=TokenValidationException.OP,
                     msg=TokenValidationException.MSG,
                     err_code=TokenValidationException.ERR_CODE,
@@ -196,8 +223,8 @@ class TokenValidator(Validator[Token]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=TokenValidationException.OP,
                     msg=TokenValidationException.MSG,
                     err_code=TokenValidationException.ERR_CODE,
@@ -213,8 +240,8 @@ class TokenValidator(Validator[Token]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=TokenValidationException.OP,
                     msg=TokenValidationException.MSG,
                     err_code=TokenValidationException.ERR_CODE,
@@ -242,7 +269,7 @@ class TokenValidator(Validator[Token]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=TokenValidationException.OP,
                     msg=TokenValidationException.MSG,
                     err_code=TokenValidationException.ERR_CODE,
@@ -255,7 +282,7 @@ class TokenValidator(Validator[Token]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=TokenValidationException.OP,
                     msg=TokenValidationException.MSG,
                     err_code=TokenValidationException.ERR_CODE,

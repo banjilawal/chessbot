@@ -1,13 +1,13 @@
 # src/err/null/scalar/__init__.py
 
 """
-Module: err.null.context.scalar.__init__
+Module: err.null.scalar.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ NULL.CONTEXT.SCALAR PACKAGE CONTENTS ===========#
+# ============ NULL.SCALAR PACKAGE CONTENTS ===========#
 
 # Packages
 None

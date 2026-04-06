@@ -83,8 +83,8 @@ class SchemaContextBuilder(Builder[SchemaContext]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 SchemaContextBuildException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=SchemaContextBuildException.OP,
                     msg=SchemaContextBuildException.MSG,
                     err_code=SchemaContextBuildException.ERR_CODE,
@@ -100,8 +100,8 @@ class SchemaContextBuilder(Builder[SchemaContext]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 SchemaContextBuildException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=SchemaContextBuildException.OP,
                     msg=SchemaContextBuildException.MSG,
                     err_code=SchemaContextBuildException.ERR_CODE,
@@ -121,8 +121,8 @@ class SchemaContextBuilder(Builder[SchemaContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     SchemaContextBuildException(
-                        mthd=method,
-                        title=cls.__name__,
+                        cls_mthd=method,
+                        cls_name=method.__name__,
                         op=SchemaContextBuildException.OP,
                         msg=SchemaContextBuildException.MSG,
                         err_code=SchemaContextBuildException.ERR_CODE,
@@ -140,8 +140,8 @@ class SchemaContextBuilder(Builder[SchemaContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     SchemaContextBuildException(
-                        mthd=method,
-                        title=cls.__name__,
+                        cls_mthd=method,
+                        cls_name=method.__name__,
                         op=SchemaContextBuildException.OP,
                         msg=SchemaContextBuildException.MSG,
                         err_code=SchemaContextBuildException.ERR_CODE,
@@ -155,8 +155,8 @@ class SchemaContextBuilder(Builder[SchemaContext]):
         # Handle the case that, there was no build route for the attribute
         return BuildResult.failure(
             SchemaContextBuildException(
-                mthd=method,
-                title=cls.__name__,
+                cls_mthd=method,
+                cls_name=method.__name__,
                 op=SchemaContextBuildException.OP,
                 msg=SchemaContextBuildException.MSG,
                 err_code=SchemaContextBuildException.ERR_CODE,

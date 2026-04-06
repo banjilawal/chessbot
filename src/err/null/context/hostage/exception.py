@@ -1,7 +1,7 @@
 # src/err/null/context/hostage/exception.py
 
 """
-Module: err.null.context.hostage.exception
+Module: err.null.hostage.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

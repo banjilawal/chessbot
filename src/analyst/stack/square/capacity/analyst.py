@@ -60,7 +60,7 @@ class SquareStackCapacityAnalysis:
             # Return the exception chain on failure.
             return ComputationResult.failure(
                 SquareStackCapacityAnalysisException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=SquareStackCapacityAnalysisException.OP,
                     msg=SquareStackCapacityAnalysisException.MSG,
                     err_code=SquareStackCapacityAnalysisException.ERR_CODE,
@@ -76,7 +76,7 @@ class SquareStackCapacityAnalysis:
             # Return the exception chain on failure.
             return ComputationResult.failure(
                 SquareStackCapacityAnalysisException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=SquareStackCapacityAnalysisException.OP,
                     msg=SquareStackCapacityAnalysisException.MSG,
                     err_code=SquareStackCapacityAnalysisException.ERR_CODE,

@@ -9,6 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from typing import Any
+
+from err import CoordNullException, CoordValidationException
+from integrity import NumberValidator, Validator
+from model import Coord
+from result import ValidationResult
+from system import LoggingLevelRouter, NUMBER_OF_ROWS
+
 
 class CoordValidator(Validator[Coord]):
     """
@@ -25,7 +33,7 @@ class CoordValidator(Validator[Coord]):
     
     Provides:
        -    execute(
-                    rank: Any,
+                    coord: Any,
                     number_validation: NumberValidator,
             ) -> ValidationResult[Coord]
 
@@ -41,14 +49,14 @@ class CoordValidator(Validator[Coord]):
             number_validation: NumberValidator = NumberValidator(),
     ) -> ValidationResult[Coord]:
         """
-        Verify the rank is a Coord that is safe to use.
+        Verify the coord is a Coord that is safe to use.
         
         Action:
             1.  Send an exception chain in the ValidationResult if
-                    -   the rank does not exist.
-                    -   the rank is not a Coord.
+                    -   the coord does not exist.
+                    -   the coord is not a Coord.
                     -   the row or column is not between [0-7] inclusive.
-            2.  Otherwise, after the rank is cast to a Coord, send the success result.
+            2.  Otherwise, after the coord is cast to a Coord, send the success result.
         Args:
             candidate: Any
             number_validation: NumberValidator
@@ -61,40 +69,36 @@ class CoordValidator(Validator[Coord]):
         """
         method = f"{cls.__name__}.build"
         
-        # Handle the case that, the rank does not exist.
+        # Handle the case that, the coord does not exist.
         if candidate is None:
             # Return the exception on failure.
             return ValidationResult.failure(
                 CoordValidationException(
-                    mthd=method,
-                    title=cls.__name__,
-                    op=CoordValidationException.OP,
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
                     msg=CoordValidationException.MSG,
                     err_code=CoordValidationException.ERR_CODE,
-                    rslt_type=CoordValidationException.RSLT_TYPE,
-                    ex=NullCoordException(
-                        msg=NullCoordException.MSG,
-                        err_code=NullCoordException.ERR_CODE,
+                    ex=CoordNullException(
+                        msg=CoordNullException.MSG,
+                        err_code=CoordNullException.ERR_CODE,
                     )
                 )
             )
-        # Handle the case that, the rank is the wrong type.
+        # Handle the case that, the coord is the wrong type.
         if not isinstance(candidate, Coord):
             # Return the exception on failure.
             return ValidationResult.failure(
                 CoordValidationException(
-                    mthd=method,
-                    title=cls.__name__,
-                    op=CoordValidationException.OP,
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
                     msg=CoordValidationException.MSG,
                     err_code=CoordValidationException.ERR_CODE,
-                    rslt_type=CoordValidationException.RSLT_TYPE,
                     ex=TypeError(
                         f"Expected a Coord, got {type(candidate).__name__} instead."
                     )
                 )
             )
-        # --- Cast rank to a Coord for additional tests ---#
+        # --- Cast coord to a Coord for additional tests ---#
         coord = cast(Coord, candidate)
         
         # Handle the case that, either the row or column are not between [0-7] inclusive.
@@ -108,12 +112,10 @@ class CoordValidator(Validator[Coord]):
                 # Return the exception on failure.
                 return ValidationResult.failure(
                     CoordValidationException(
-                        mthd=method,
-                        title=cls.__name__,
-                        op=CoordValidationException.OP,
+                        cls_mthd=method,
+                        cls_name=method.__name__,
                         msg=CoordValidationException.MSG,
                         err_code=CoordValidationException.ERR_CODE,
-                        rslt_type=CoordValidationException.RSLT_TYPE,
                         ex=validate_result.exception
                     )
                 )

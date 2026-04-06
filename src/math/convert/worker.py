@@ -109,8 +109,8 @@ class VectorCoordConverter(Worker):
             # Return the exception chain on failure.
             return ComputationResult.failure(
                 VectorCoordConversionException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=VectorCoordConversionException.OP,
                     msg=VectorCoordConversionException.MSG,
                     err_code=VectorCoordConversionException.ERR_CODE,
@@ -156,8 +156,8 @@ class VectorCoordConverter(Worker):
             # Return the exception chain on failure.
             return ComputationResult.failure(
                 VectorCoordConversionException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=VectorCoordConversionException.OP,
                     msg=VectorCoordConversionException.MSG,
                     err_code=VectorCoordConversionException.ERR_CODE,
@@ -222,8 +222,8 @@ class VectorCoordConverter(Worker):
             # Return the exception chain on failure.
             return ComputationResult.failure(
                 VectorCoordConversionException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=VectorCoordConversionException.OP,
                     msg=VectorCoordConversionException.MSG,
                     err_code=VectorCoordConversionException.ERR_CODE,
@@ -243,8 +243,8 @@ class VectorCoordConverter(Worker):
             # Return the exception chain on failure.
             return ComputationResult.failure(
                 VectorCoordConversionException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=VectorCoordConversionException.OP,
                     msg=VectorCoordConversionException.MSG,
                     err_code=VectorCoordConversionException.ERR_CODE,
@@ -292,8 +292,8 @@ class VectorCoordConverter(Worker):
             # Return the exception chain on failure.
             return ComputationResult.failure(
                 VectorCoordConversionException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=VectorCoordConversionException.OP,
                     msg=VectorCoordConversionException.MSG,
                     err_code=VectorCoordConversionException.ERR_CODE,
@@ -312,8 +312,8 @@ class VectorCoordConverter(Worker):
             # Return the exception chain on failure.
             return ComputationResult.failure(
                 VectorCoordConversionException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=VectorCoordConversionException.OP,
                     msg=VectorCoordConversionException.MSG,
                     err_code=VectorCoordConversionException.ERR_CODE,

@@ -17,6 +17,7 @@ from .edge import *
 from .formation import *
 from .game import *
 from .hostage import *
+from err.null.string.name import *
 from .node import *
 from .number import *
 from .persona import *

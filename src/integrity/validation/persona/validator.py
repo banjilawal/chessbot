@@ -53,7 +53,7 @@ class PersonaValidator(Validator[Persona]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 PersonaValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=PersonaValidationException.OP,
                     msg=PersonaValidationException.MSG,
                     err_code=PersonaValidationException.ERR_CODE,
@@ -69,7 +69,7 @@ class PersonaValidator(Validator[Persona]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 PersonaValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=PersonaValidationException.OP,
                     msg=PersonaValidationException.MSG,
                     err_code=PersonaValidationException.ERR_CODE,

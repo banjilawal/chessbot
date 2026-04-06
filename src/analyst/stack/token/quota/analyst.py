@@ -70,7 +70,7 @@ class RankQuotaAnalysis:
             # Return the exception chain on failure.
             return ComputationResult.failure(
                 RankQuotaAnalysisException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=RankQuotaAnalysisException.OP,
                     msg=RankQuotaAnalysisException.MSG,
                     err_code=RankQuotaAnalysisException.ERR_CODE,
@@ -86,7 +86,7 @@ class RankQuotaAnalysis:
             # Return the exception chain on failure.
             return ComputationResult.failure(
                 RankQuotaAnalysisException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=RankQuotaAnalysisException.OP,
                     msg=RankQuotaAnalysisException.MSG,
                     err_code=RankQuotaAnalysisException.ERR_CODE,

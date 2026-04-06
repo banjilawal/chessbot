@@ -49,7 +49,7 @@ class SquareRayBuilder(Builder[SquareRay]):
             # Return the exception chain on failure.
             SearchResult.failure(
                 SquareRayBuildException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=SquareRayBuildException.OP,
                     msg=SquareRayBuildException.MSG,
                     err_code=SquareRayBuildException.ERR_CODE,
@@ -69,7 +69,7 @@ class SquareRayBuilder(Builder[SquareRay]):
                 # Return the exception chain on failure.
                 SearchResult.failure(
                     SquareRayBuildException(
-                        mthd=method,
+                        cls_mthd=method,
                         op=SquareRayBuildException.OP,
                         msg=SquareRayBuildException.MSG,
                         err_code=SquareRayBuildException.ERR_CODE,
@@ -113,7 +113,7 @@ class SquareRayBuilder(Builder[SquareRay]):
             # Return the exception chain on failure.
             SearchResult.failure(
                 SquareRayBuildException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=SquareRayBuildException.OP,
                     msg=SquareRayBuildException.MSG,
                     err_code=SquareRayBuildException.ERR_CODE,
@@ -126,7 +126,7 @@ class SquareRayBuilder(Builder[SquareRay]):
             # Return the exception chain on failure.
             SearchResult.failure(
                 SquareRayBuildException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=SquareRayBuildException.OP,
                     msg=SquareRayBuildException.MSG,
                     err_code=SquareRayBuildException.ERR_CODE,

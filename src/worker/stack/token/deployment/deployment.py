@@ -49,8 +49,8 @@ class TokenStackDeployment:
             return UpdateResult.update_failure(
                 original=token_stack,
                 exception=TokenStackDeploymentException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=TokenStackDeploymentException.OP,
                     msg=TokenStackDeploymentException.MSG,
                     err_code=TokenStackDeploymentException.ERR_CODE,
@@ -72,8 +72,8 @@ class TokenStackDeployment:
                 return UpdateResult.update_failure(
                     original=pre_deployment_token_stack,
                     exception=TokenStackDeploymentException(
-                        mthd=method,
-                        title=cls.__name__,
+                        cls_mthd=method,
+                        cls_name=method.__name__,
                         op=TokenStackDeploymentException.OP,
                         msg=TokenStackDeploymentException.MSG,
                         err_code=TokenStackDeploymentException.ERR_CODE,

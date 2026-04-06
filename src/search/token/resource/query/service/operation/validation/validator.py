@@ -76,8 +76,8 @@ class TokenQueryValidator(Validator[TokenQuery]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenQueryValidationException(
-                    mthd=method,
-                    title=cls.__class__.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__class__.__name__,
                     op=TokenQueryValidationException.OP,
                     msg=TokenQueryValidationException.MSG,
                     err_code=TokenQueryValidationException.ERR_CODE,
@@ -93,8 +93,8 @@ class TokenQueryValidator(Validator[TokenQuery]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenQueryValidationException(
-                    mthd=method,
-                    title=cls.__class__.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__class__.__name__,
                     op=TokenQueryValidationException.OP,
                     msg=TokenQueryValidationException.MSG,
                     err_code=TokenQueryValidationException.ERR_CODE,
@@ -113,8 +113,8 @@ class TokenQueryValidator(Validator[TokenQuery]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenQueryValidationException(
-                    mthd=method,
-                    title=cls.__class__.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__class__.__name__,
                     op=TokenQueryValidationException.OP,
                     msg=TokenQueryValidationException.MSG,
                     err_code=TokenQueryValidationException.ERR_CODE,
@@ -127,8 +127,8 @@ class TokenQueryValidator(Validator[TokenQuery]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenQueryValidationException(
-                    mthd=method,
-                    title=cls.__class__.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__class__.__name__,
                     op=TokenQueryValidationException.OP,
                     msg=TokenQueryValidationException.MSG,
                     err_code=TokenQueryValidationException.ERR_CODE,
@@ -144,8 +144,8 @@ class TokenQueryValidator(Validator[TokenQuery]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenQueryValidationException(
-                    mthd=method,
-                    title=cls.__class__.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__class__.__name__,
                     op=TokenQueryValidationException.OP,
                     msg=TokenQueryValidationException.MSG,
                     err_code=TokenQueryValidationException.ERR_CODE,
@@ -160,8 +160,8 @@ class TokenQueryValidator(Validator[TokenQuery]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenQueryValidationException(
-                    mthd=method,
-                    title=cls.__class__.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__class__.__name__,
                     op=TokenQueryValidationException.OP,
                     msg=TokenQueryValidationException.MSG,
                     err_code=TokenQueryValidationException.ERR_CODE,
@@ -177,8 +177,8 @@ class TokenQueryValidator(Validator[TokenQuery]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenQueryValidationException(
-                    mthd=method,
-                    title=cls.__class__.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__class__.__name__,
                     op=TokenQueryValidationException.OP,
                     msg=TokenQueryValidationException.MSG,
                     err_code=TokenQueryValidationException.ERR_CODE,

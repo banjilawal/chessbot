@@ -72,8 +72,8 @@ class ScalarProductWorker(Worker):
             # Return exception chain on failure.
             return ComputationResult.failure(
                 CoordMultiplicationException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=CoordMultiplicationException.OP,
                     msg=CoordMultiplicationException.MSG,
                     err_code=CoordMultiplicationException.ERR_CODE,
@@ -87,8 +87,8 @@ class ScalarProductWorker(Worker):
             # Return exception chain on failure.
             return ComputationResult.failure(
                 CoordMultiplicationException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=CoordMultiplicationException.OP,
                     msg=CoordMultiplicationException.MSG,
                     err_code=CoordMultiplicationException.ERR_CODE,
@@ -106,8 +106,8 @@ class ScalarProductWorker(Worker):
             # Return exception chain on failure.
             return ComputationResult.failure(
                 CoordMultiplicationException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=CoordMultiplicationException.OP,
                     msg=CoordMultiplicationException.MSG,
                     err_code=CoordMultiplicationException.ERR_CODE,

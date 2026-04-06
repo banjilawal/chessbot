@@ -69,8 +69,8 @@ class TokenSearchRouter(SearchRouter[Token]):
             # Send the exception chain on failure.
             return SearchResult.failure(
                 TokenSearchException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=TokenSearchException.OP,
                     msg=TokenSearchException.MSG,
                     err_code=TokenSearchException.ERR_CODE,
@@ -131,8 +131,8 @@ class TokenSearchRouter(SearchRouter[Token]):
         # Handle the case that, there is no search path for the context context..
         return SearchResult.failure(
             TokenSearchException(
-                mthd=method,
-                title=cls.__name__,
+                cls_mthd=method,
+                cls_name=method.__name__,
                 op=TokenSearchException.OP,
                 msg=TokenSearchException.MSG,
                 err_code=TokenSearchException.ERR_CODE,

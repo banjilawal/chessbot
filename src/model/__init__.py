@@ -21,6 +21,7 @@ from .geometry import *
 from .game import *
 from .graph import *
 from .hostage import *
+from .name import *
 from .player import *
 from .query import *
 from .rank import *

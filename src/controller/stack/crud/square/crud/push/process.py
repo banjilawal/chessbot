@@ -79,7 +79,7 @@ class SquareStackPush:
             # Return the exception chain on failure
             return InsertionResult.failure(
                 SquareStackPushException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=SquareStackPushException.OP,
                     msg=SquareStackPushException.MSG,
                     err_code=SquareStackPushException.ERR_CODE,

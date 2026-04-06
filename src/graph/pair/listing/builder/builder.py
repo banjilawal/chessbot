@@ -87,7 +87,7 @@ class PairListBuilder(Builder[PairList]):
             # Return the exception chain on failure.
             BuildResult.failure(
                 PairListBuildException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=PairListBuildException.OP,
                     msg=PairListBuildException.MSG,
                     err_code=PairListBuildException.ERR_CODE,
@@ -101,7 +101,7 @@ class PairListBuilder(Builder[PairList]):
             # Return the exception chain on failure.
             BuildResult.failure(
                 PairListBuildException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=PairListBuildException.OP,
                     msg=PairListBuildException.MSG,
                     err_code=PairListBuildException.ERR_CODE,
@@ -114,7 +114,7 @@ class PairListBuilder(Builder[PairList]):
             # Return the exception chain on failure.
             BuildResult.failure(
                 PairListBuildException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=PairListBuildException.OP,
                     msg=PairListBuildException.MSG,
                     err_code=PairListBuildException.ERR_CODE,
@@ -141,7 +141,7 @@ class PairListBuilder(Builder[PairList]):
                 # Return the exception chain on failure.
                 BuildResult.failure(
                     PairListBuildException(
-                        mthd=method,
+                        cls_mthd=method,
                         op=PairListBuildException.OP,
                         msg=PairListBuildException.MSG,
                         err_code=PairListBuildException.ERR_CODE,

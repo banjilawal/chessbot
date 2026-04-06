@@ -1,4 +1,4 @@
-# src/err/route/validation/__init__.py
+# src/err//validation/__init__.py
 
 """
 Module: err.validation.__init__
@@ -13,14 +13,14 @@ from typing import Any, Optional
 
 __all__ = [
     # ======================# VALIDATION_FAILURE #======================#
-    "ValidationRouteException",
+    "ValidationException",
 ]
 
 from err import ChessException
 
 
 # ======================# VALIDATION_FAILURE #======================#
-class ValidationRouteException(ChessException):
+class ValidationException(ChessException):
     """
     Role:
         -   Error Tracing

@@ -1,7 +1,7 @@
 # src/err/null/context/schema/exception.py
 
 """
-Module: err.null.context.schema.exception
+Module: err.null.schema.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

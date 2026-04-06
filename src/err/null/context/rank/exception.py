@@ -1,7 +1,7 @@
 # src/err/null/context/rank/exception.py
 
 """
-Module: err.null.context.rank.exception
+Module: err.null.rank.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

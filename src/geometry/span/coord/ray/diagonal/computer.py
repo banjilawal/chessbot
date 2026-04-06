@@ -92,7 +92,7 @@ class DiagonalRayComputer:
             # Return the exception chain on failure.
             return ComputationResult.failure(
                 DiagonalRayComputationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=DiagonalRayComputationException.OP,
                     msg=DiagonalRayComputationException.MSG,
                     err_code=DiagonalRayComputationException.ERR_CODE,
@@ -112,7 +112,7 @@ class DiagonalRayComputer:
                 # Return the exception chain on failure.
                 return ComputationResult.failure(
                     DiagonalRayComputationException(
-                        mthd=method,
+                        cls_mthd=method,
                         op=DiagonalRayComputationException.OP,
                         msg=DiagonalRayComputationException.MSG,
                         err_code=DiagonalRayComputationException.ERR_CODE,
@@ -134,7 +134,7 @@ class DiagonalRayComputer:
                 # Return the exception chain on failure.
                 return ComputationResult.failure(
                     DiagonalRayComputationException(
-                        mthd=method,
+                        cls_mthd=method,
                         op=DiagonalRayComputationException.OP,
                         msg=DiagonalRayComputationException.MSG,
                         err_code=DiagonalRayComputationException.ERR_CODE,
@@ -151,7 +151,7 @@ class DiagonalRayComputer:
             # Return the exception chain on failure.
             return ComputationResult.failure(
                 DiagonalRayComputationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=DiagonalRayComputationException.OP,
                     msg=DiagonalRayComputationException.MSG,
                     err_code=DiagonalRayComputationException.ERR_CODE,

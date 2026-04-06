@@ -88,7 +88,7 @@ class ReverseTokenDeployment:
             return UpdateResult.update_failure(
                 original=token,
                 exception=TokenDeploymentException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=TokenDeploymentException.OP,
                     msg=TokenDeploymentException.MSG,
                     err_code=TokenDeploymentException.ERR_CODE,
@@ -102,7 +102,7 @@ class ReverseTokenDeployment:
             return UpdateResult.update_failure(
                 original=token,
                 exception=TokenDeploymentException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=TokenDeploymentException.OP,
                     msg=TokenDeploymentException.MSG,
                     err_code=TokenDeploymentException.ERR_CODE,
@@ -120,7 +120,7 @@ class ReverseTokenDeployment:
             return UpdateResult.update_failure(
                 original=token,
                 exception=TokenDeploymentException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=TokenDeploymentException.OP,
                     msg=TokenDeploymentException.MSG,
                     err_code=TokenDeploymentException.ERR_CODE,
@@ -144,7 +144,7 @@ class ReverseTokenDeployment:
             return UpdateResult.update_failure(
                 original=token,
                 exception=TokenDeploymentException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=TokenDeploymentException.OP,
                     msg=TokenDeploymentException.MSG,
                     err_code=TokenDeploymentException.ERR_CODE,
@@ -188,7 +188,7 @@ class ReverseTokenDeployment:
             # Return the exception chain on failure.
             return SearchResult.failure(
                 exception=TokenDeploymentException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=TokenDeploymentException.OP,
                     msg=TokenDeploymentException.MSG,
                     err_code=TokenDeploymentException.ERR_CODE,
@@ -201,7 +201,7 @@ class ReverseTokenDeployment:
             # Return the exception chain on failure.
             return SearchResult.failure(
                 exception=TokenDeploymentException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=TokenDeploymentException.OP,
                     msg=TokenDeploymentException.MSG,
                     err_code=TokenDeploymentException.ERR_CODE,
@@ -220,7 +220,7 @@ class ReverseTokenDeployment:
             # Return the exception chain on failure.
             return SearchResult.failure(
                 exception=TokenDeploymentException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=TokenDeploymentException.OP,
                     msg=TokenDeploymentException.MSG,
                     err_code=TokenDeploymentException.ERR_CODE,
@@ -279,7 +279,7 @@ class ReverseTokenDeployment:
             return UpdateResult.update_failure(
                 original=token,
                 exception=TokenDeploymentException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=TokenDeploymentException.OP,
                     msg=TokenDeploymentException.MSG,
                     err_code=TokenDeploymentException.ERR_CODE,
@@ -293,7 +293,7 @@ class ReverseTokenDeployment:
             return UpdateResult.update_failure(
                 original=pre_update_token,
                 exception=TokenDeploymentException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=TokenDeploymentException.OP,
                     msg=TokenDeploymentException.MSG,
                     err_code=TokenDeploymentException.ERR_CODE,
@@ -310,7 +310,7 @@ class ReverseTokenDeployment:
             return UpdateResult.update_failure(
                 original=pre_update_token,
                 exception=TokenDeploymentException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=TokenDeploymentException.OP,
                     msg=TokenDeploymentException.MSG,
                     err_code=TokenDeploymentException.ERR_CODE,

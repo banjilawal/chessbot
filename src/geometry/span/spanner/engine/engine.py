@@ -68,7 +68,7 @@ class SpannerEngine:
                     msg=SpannerEngineException.MSG,
                     err_code=SpannerEngineException.ERR_CODE,
                     ex=SpanComputationException(
-                        mthd=method,
+                        cls_mthd=method,
                         op=SpanComputationException.OP,
                         msg=SpanComputationException.MSG,
                         err_code=SpanComputationException.ERR_CODE,
@@ -91,7 +91,7 @@ class SpannerEngine:
                     msg=SpanComputationException.MSG,
                     err_code=SpannerEngineException.ERR_CODE,
                     ex=SpanComputationException(
-                        mthd=method,
+                        cls_mthd=method,
                         op=SpanComputationException.OP,
                         msg=SpanComputationException.MSG,
                         err_code=SpanComputationException.ERR_CODE,
@@ -133,7 +133,7 @@ class SpannerEngine:
                 msg=SpanComputationException.MSG,
                 err_code=SpannerEngineException.ERR_CODE,
                 ex=SpanComputationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=SpanComputationException.OP,
                     msg=SpanComputationException.MSG,
                     err_code=SpanComputationException.ERR_CODE,
@@ -195,7 +195,7 @@ class SpannerEngine:
                     msg=SpanComputationException.MSG,
                     err_code=SpannerEngineException.ERR_CODE,
                     ex=SpanComputationException(
-                        mthd=method,
+                        cls_mthd=method,
                         op=SpanComputationException.OP,
                         msg=SpanComputationException.MSG,
                         err_code=SpanComputationException.ERR_CODE,
@@ -220,7 +220,7 @@ class SpannerEngine:
                     msg=SpanComputationException.MSG,
                     err_code=SpannerEngineException.ERR_CODE,
                     ex=SpanComputationException(
-                        mthd=method,
+                        cls_mthd=method,
                         op=SpanComputationException.OP,
                         msg=SpanComputationException.MSG,
                         err_code=SpanComputationException.ERR_CODE,
@@ -286,7 +286,7 @@ class SpannerEngine:
                         msg=SpanComputationException.MSG,
                         err_code=SpannerEngineException.ERR_CODE,
                         ex=SpanComputationException(
-                            mthd=method,
+                            cls_mthd=method,
                             op=SpanComputationException.OP,
                             msg=SpanComputationException.MSG,
                             err_code=SpanComputationException.ERR_CODE,
@@ -351,7 +351,7 @@ class SpannerEngine:
                         msg=SpanComputationException.MSG,
                         err_code=SpannerEngineException.ERR_CODE,
                         ex=SpanComputationException(
-                            mthd=method,
+                            cls_mthd=method,
                             op=SpanComputationException.OP,
                             msg=SpanComputationException.MSG,
                             err_code=SpanComputationException.ERR_CODE,

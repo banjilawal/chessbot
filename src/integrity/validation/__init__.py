@@ -30,6 +30,7 @@ from .rank import *
 from .schema import *
 from .snapshot import *
 from .square import *
+from .text import *
 from .team import *
 from .token import *
 from .vector import *

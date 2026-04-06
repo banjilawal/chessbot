@@ -89,7 +89,7 @@ class PerpendicularRayComputer:
                 # Return the exception chain on failure.
                 return ComputationResult.failure(
                     PerpendicularRayComputationException(
-                        mthd=method,
+                        cls_mthd=method,
                         op=PerpendicularRayComputationException.OP,
                         msg=PerpendicularRayComputationException.MSG,
                         err_code=PerpendicularRayComputationException.ERR_CODE,
@@ -107,7 +107,7 @@ class PerpendicularRayComputer:
                 # Return the exception chain on failure.
                 return ComputationResult.failure(
                     PerpendicularRayComputationException(
-                        mthd=method,
+                        cls_mthd=method,
                         op=PerpendicularRayComputationException.OP,
                         msg=PerpendicularRayComputationException.MSG,
                         err_code=PerpendicularRayComputationException.ERR_CODE,
@@ -124,7 +124,7 @@ class PerpendicularRayComputer:
             # Return the exception chain on failure.
             return ComputationResult.failure(
                 PerpendicularRayComputationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=PerpendicularRayComputationException.OP,
                     msg=PerpendicularRayComputationException.MSG,
                     err_code=PerpendicularRayComputationException.ERR_CODE,

@@ -76,8 +76,8 @@ class EuclideanDistanceFinder(Worker):
                 # Return exception chain on failure.
                 return ComputationResult.failure(
                     EuclideanDistanceException(
-                        mthd=method,
-                        title=cls.__name__,
+                        cls_mthd=method,
+                        cls_name=method.__name__,
                         op=EuclideanDistanceException.OP,
                         msg=EuclideanDistanceException.MSG,
                         err_code=EuclideanDistanceException.ERR_CODE,
@@ -107,8 +107,8 @@ class EuclideanDistanceFinder(Worker):
                 # Return exception chain on failure.
                 return ComputationResult.failure(
                     EuclideanDistanceException(
-                        mthd=method,
-                        title=cls.__name__,
+                        cls_mthd=method,
+                        cls_name=method.__name__,
                         op=EuclideanDistanceException.OP,
                         msg=EuclideanDistanceException.MSG,
                         err_code=EuclideanDistanceException.ERR_CODE,
@@ -124,8 +124,8 @@ class EuclideanDistanceFinder(Worker):
             # Return exception chain on failure.
             return ComputationResult.failure(
                 EuclideanDistanceException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=EuclideanDistanceException.OP,
                     msg=EuclideanDistanceException.MSG,
                     err_code=EuclideanDistanceException.ERR_CODE,
@@ -158,8 +158,8 @@ class EuclideanDistanceFinder(Worker):
                 # Return exception chain on failure.
                 return ComputationResult.failure(
                     EuclideanDistanceException(
-                        mthd=method,
-                        title=cls.__name__,
+                        cls_mthd=method,
+                        cls_name=method.__name__,
                         op=EuclideanDistanceException.OP,
                         msg=EuclideanDistanceException.MSG,
                         err_code=EuclideanDistanceException.ERR_CODE,
@@ -191,8 +191,8 @@ class EuclideanDistanceFinder(Worker):
                 # Return exception chain on failure.
                 return ComputationResult.failure(
                     EuclideanDistanceException(
-                        mthd=method,
-                        title=cls.__name__,
+                        cls_mthd=method,
+                        cls_name=method.__name__,
                         op=EuclideanDistanceException.OP,
                         msg=EuclideanDistanceException.MSG,
                         err_code=EuclideanDistanceException.ERR_CODE,

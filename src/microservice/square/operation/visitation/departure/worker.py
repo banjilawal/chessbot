@@ -73,7 +73,7 @@ class SquareDepartureProcess:
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 SquareDepartureException(
-                        mthd=method,
+                        cls_mthd=method,
                         op=SquareDepartureException.OP,
                         msg=SquareDepartureException.MSG,
                         err_code=SquareDepartureException.ERR_CODE,
@@ -86,7 +86,7 @@ class SquareDepartureProcess:
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 SquareDepartureException(
-                        mthd=method,
+                        cls_mthd=method,
                         op=SquareDepartureException.OP,
                         msg=SquareDepartureException.MSG,
                         err_code=SquareDepartureException.ERR_CODE,

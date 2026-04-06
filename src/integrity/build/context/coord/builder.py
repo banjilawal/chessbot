@@ -88,8 +88,8 @@ class CoordContextBuilder(Builder[CoordContext]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 CoordContextBuildException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=CoordContextBuildException.OP,
                     msg=CoordContextBuildException.MSG,
                     err_code=CoordContextBuildException.ERR_CODE,
@@ -144,8 +144,8 @@ class CoordContextBuilder(Builder[CoordContext]):
         # Handle there is no build route for the attribute.
         return BuildResult.failure(
             CoordContextBuildException(
-                mthd=method,
-                title=cls.__name__,
+                cls_mthd=method,
+                cls_name=method.__name__,
                 op=CoordContextBuildException.OP,
                 msg=CoordContextBuildException.MSG,
                 err_code=CoordContextBuildException.ERR_CODE,
@@ -190,8 +190,8 @@ class CoordContextBuilder(Builder[CoordContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     CoordContextBuildException(
-                        mthd=method,
-                        title=cls.__name__,
+                        cls_mthd=method,
+                        cls_name=method.__name__,
                         op=CoordContextBuildException.OP,
                         msg=CoordContextBuildException.MSG,
                         err_code=CoordContextBuildException.ERR_CODE,

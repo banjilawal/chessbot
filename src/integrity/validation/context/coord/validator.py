@@ -71,8 +71,8 @@ class CoordContextValidator(Validator[CoordContext]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 CoordContextValidationException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=CoordContextValidationException.OP,
                     msg=CoordContextValidationException.MSG,
                     err_code=CoordContextValidationException.ERR_CODE,
@@ -88,8 +88,8 @@ class CoordContextValidator(Validator[CoordContext]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 CoordContextValidationException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=CoordContextValidationException.OP,
                     msg=CoordContextValidationException.MSG,
                     err_code=CoordContextValidationException.ERR_CODE,
@@ -108,8 +108,8 @@ class CoordContextValidator(Validator[CoordContext]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 CoordContextValidationException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=CoordContextValidationException.OP,
                     msg=CoordContextValidationException.MSG,
                     err_code=CoordContextValidationException.ERR_CODE,
@@ -164,8 +164,8 @@ class CoordContextValidator(Validator[CoordContext]):
         # Handle the case that, there is no validation route for the context.
         return ValidationResult.failure(
             CoordContextValidationException(
-                mthd=method,
-                title=cls.__name__,
+                cls_mthd=method,
+                cls_name=method.__name__,
                 op=CoordContextValidationException.OP,
                 msg=CoordContextValidationException.MSG,
                 err_code=CoordContextValidationException.ERR_CODE,
@@ -210,8 +210,8 @@ class CoordContextValidator(Validator[CoordContext]):
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
                     CoordContextValidationException(
-                        mthd=method,
-                        title=cls.__name__,
+                        cls_mthd=method,
+                        cls_name=method.__name__,
                         op=CoordContextValidationException.OP,
                         msg=CoordContextValidationException.MSG,
                         err_code=CoordContextValidationException.ERR_CODE,

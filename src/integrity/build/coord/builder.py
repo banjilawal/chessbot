@@ -75,8 +75,8 @@ class CoordBuilder(Builder[Coord]):
                 # Return the validation chain on failure.
                 return BuildResult.failure(
                     CoordBuildException(
-                        mthd=method,
-                        title=cls.__name__,
+                        cls_mthd=method,
+                        cls_name=method.__name__,
                         op=CoordBuildException.OP,
                         msg=CoordBuildException.MSG,
                         err_code=CoordBuildException.ERR_CODE,

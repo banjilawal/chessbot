@@ -1,7 +1,7 @@
 # src/err/validation/context/game/exception.py
 
 """
-Module: err.validation.context.game.exception
+Module: err.validation.game.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

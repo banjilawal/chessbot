@@ -24,6 +24,7 @@ from .player import *
 from .rank import *
 from .scalar import *
 from .schema import *
+from .string import *
 from .square import *
 from .team import *
 from .token import *
@@ -31,4 +32,4 @@ from .vector import *
 
 
 # Modules
-from .exception import ValidationRouteException
+from .exception import ValidationException

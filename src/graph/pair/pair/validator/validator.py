@@ -67,7 +67,7 @@ class PairValidator(Validator[Pair]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 PairValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=PairValidationException.OP,
                     msg=PairValidationException.MSG,
                     err_code=PairValidationException.ERR_CODE,
@@ -85,7 +85,7 @@ class PairValidator(Validator[Pair]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 PairValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=PairValidationException.OP,
                     msg=PairValidationException.MSG,
                     err_code=PairValidationException.ERR_CODE,
@@ -103,7 +103,7 @@ class PairValidator(Validator[Pair]):
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
                     PairValidationException(
-                        mthd=method,
+                        cls_mthd=method,
                         op=PairValidationException.OP,
                         msg=PairValidationException.MSG,
                         err_code=PairValidationException.ERR_CODE,
@@ -116,7 +116,7 @@ class PairValidator(Validator[Pair]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 PairValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=PairValidationException.OP,
                     msg=PairValidationException.MSG,
                     err_code=PairValidationException.ERR_CODE,

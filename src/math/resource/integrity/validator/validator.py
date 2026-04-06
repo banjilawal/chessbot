@@ -78,8 +78,8 @@ class VectorCoordUnionValidator:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 VectorCoordUnionValidatorException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=VectorCoordUnionValidatorException.OP,
                     msg=VectorCoordUnionValidatorException.MSG,
                     err_code=VectorCoordUnionValidatorException.ERR_CODE,
@@ -94,8 +94,8 @@ class VectorCoordUnionValidator:
         if not isinstance(candidate, (Vector, Coord)):
             return ValidationResult.failure(
                 VectorCoordUnionValidatorException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=VectorCoordUnionValidatorException.OP,
                     msg=VectorCoordUnionValidatorException.MSG,
                     err_code=VectorCoordUnionValidatorException.ERR_CODE,
@@ -121,8 +121,8 @@ class VectorCoordUnionValidator:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
                     VectorCoordUnionValidatorException(
-                        mthd=method,
-                        title=cls.__name__,
+                        cls_mthd=method,
+                        cls_name=method.__name__,
                         op=VectorCoordUnionValidatorException.OP,
                         msg=VectorCoordUnionValidatorException.MSG,
                         err_code=VectorCoordUnionValidatorException.ERR_CODE,
@@ -145,8 +145,8 @@ class VectorCoordUnionValidator:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 VectorCoordUnionValidatorException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=VectorCoordUnionValidatorException.OP,
                     msg=VectorCoordUnionValidatorException.MSG,
                     err_code=VectorCoordUnionValidatorException.ERR_CODE,

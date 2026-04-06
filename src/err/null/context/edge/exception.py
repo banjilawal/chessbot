@@ -1,7 +1,7 @@
 # src/err/null/context/edge/exception.py
 
 """
-Module: err.null.context.edge.exception
+Module: err.null.edge.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

@@ -144,7 +144,7 @@ class SquareEntryProcess:
             return UpdateResult.update_failure(
                 original=square,
                 exception=SquareEntryException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=SquareEntryException.OP,
                     msg=SquareEntryException.MSG,
                     err_code=SquareEntryException.ERR_CODE,
@@ -194,7 +194,7 @@ class SquareEntryProcess:
             return UpdateResult.update_failure(
                 original=square,
                 exception=SquareEntryException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=SquareEntryException.OP,
                     msg=SquareEntryException.MSG,
                     err_code=SquareEntryException.ERR_CODE,
@@ -208,7 +208,7 @@ class SquareEntryProcess:
             return UpdateResult.update_failure(
                 original=square,
                 exception=SquareEntryException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=SquareEntryException.OP,
                     msg=SquareEntryException.MSG,
                     err_code=SquareEntryException.ERR_CODE,
@@ -225,7 +225,7 @@ class SquareEntryProcess:
             return UpdateResult.update_failure(
                 original=square,
                 exception=SquareEntryException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=SquareEntryException.OP,
                     msg=SquareEntryException.MSG,
                     err_code=SquareEntryException.ERR_CODE,
@@ -272,7 +272,7 @@ class SquareEntryProcess:
             return UpdateResult.update_failure(
                 original=square,
                 exception=SquareEntryException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=SquareEntryException.OP,
                     msg=SquareEntryException.MSG,
                     err_code=SquareEntryException.ERR_CODE,
@@ -286,7 +286,7 @@ class SquareEntryProcess:
             return UpdateResult.update_failure(
                 original=square,
                 exception=SquareEntryException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=SquareEntryException.OP,
                     msg=SquareEntryException.MSG,
                     err_code=SquareEntryException.ERR_CODE,
@@ -336,7 +336,7 @@ class SquareEntryProcess:
             return UpdateResult.update_failure(
                 original=square,
                 exception=SquareEntryException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=SquareEntryException.OP,
                     msg=SquareEntryException.MSG,
                     err_code=SquareEntryException.ERR_CODE,

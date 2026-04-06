@@ -104,8 +104,8 @@ class TokenContextBuilder(Builder[TokenContext]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 TokenContextBuildException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=TokenContextBuildException.OP,
                     msg=TokenContextBuildException.MSG,
                     err_code=TokenContextBuildException.ERR_CODE,
@@ -121,8 +121,8 @@ class TokenContextBuilder(Builder[TokenContext]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 TokenContextBuildException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=TokenContextBuildException.OP,
                     msg=TokenContextBuildException.MSG,
                     err_code=TokenContextBuildException.ERR_CODE,
@@ -142,8 +142,8 @@ class TokenContextBuilder(Builder[TokenContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     TokenContextBuildException(
-                        mthd=method,
-                        title=cls.__name__,
+                        cls_mthd=method,
+                        cls_name=method.__name__,
                         op=TokenContextBuildException.OP,
                         msg=TokenContextBuildException.MSG,
                         err_code=TokenContextBuildException.ERR_CODE,
@@ -161,8 +161,8 @@ class TokenContextBuilder(Builder[TokenContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     TokenContextBuildException(
-                        mthd=method,
-                        title=cls.__name__,
+                        cls_mthd=method,
+                        cls_name=method.__name__,
                         op=TokenContextBuildException.OP,
                         msg=TokenContextBuildException.MSG,
                         err_code=TokenContextBuildException.ERR_CODE,
@@ -180,8 +180,8 @@ class TokenContextBuilder(Builder[TokenContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     TokenContextBuildException(
-                        mthd=method,
-                        title=cls.__name__,
+                        cls_mthd=method,
+                        cls_name=method.__name__,
                         op=TokenContextBuildException.OP,
                         msg=TokenContextBuildException.MSG,
                         err_code=TokenContextBuildException.ERR_CODE,
@@ -199,8 +199,8 @@ class TokenContextBuilder(Builder[TokenContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     TokenContextBuildException(
-                        mthd=method,
-                        title=cls.__name__,
+                        cls_mthd=method,
+                        cls_name=method.__name__,
                         op=TokenContextBuildException.OP,
                         msg=TokenContextBuildException.MSG,
                         err_code=TokenContextBuildException.ERR_CODE,
@@ -218,8 +218,8 @@ class TokenContextBuilder(Builder[TokenContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     TokenContextBuildException(
-                        mthd=method,
-                        title=cls.__name__,
+                        cls_mthd=method,
+                        cls_name=method.__name__,
                         op=TokenContextBuildException.OP,
                         msg=TokenContextBuildException.MSG,
                         err_code=TokenContextBuildException.ERR_CODE,
@@ -237,8 +237,8 @@ class TokenContextBuilder(Builder[TokenContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     TokenContextBuildException(
-                        mthd=method,
-                        title=cls.__name__,
+                        cls_mthd=method,
+                        cls_name=method.__name__,
                         op=TokenContextBuildException.OP,
                         msg=TokenContextBuildException.MSG,
                         err_code=TokenContextBuildException.ERR_CODE,
@@ -256,8 +256,8 @@ class TokenContextBuilder(Builder[TokenContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     TokenContextBuildException(
-                        mthd=method,
-                        title=cls.__name__,
+                        cls_mthd=method,
+                        cls_name=method.__name__,
                         op=TokenContextBuildException.OP,
                         msg=TokenContextBuildException.MSG,
                         err_code=TokenContextBuildException.ERR_CODE,
@@ -279,8 +279,8 @@ class TokenContextBuilder(Builder[TokenContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     TokenContextBuildException(
-                        mthd=method,
-                        title=cls.__name__,
+                        cls_mthd=method,
+                        cls_name=method.__name__,
                         op=TokenContextBuildException.OP,
                         msg=TokenContextBuildException.MSG,
                         err_code=TokenContextBuildException.ERR_CODE,
@@ -294,8 +294,8 @@ class TokenContextBuilder(Builder[TokenContext]):
         # Handle the case that, there was no build route for the attribute
         return BuildResult.failure(
             TokenContextBuildException(
-                mthd=method,
-                title=cls.__name__,
+                cls_mthd=method,
+                cls_name=method.__name__,
                 op=TokenContextBuildException.OP,
                 msg=TokenContextBuildException.MSG,
                 err_code=TokenContextBuildException.ERR_CODE,

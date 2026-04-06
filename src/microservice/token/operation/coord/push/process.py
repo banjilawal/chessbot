@@ -77,8 +77,8 @@ class TokenPushCoordProcess:
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 TokenPushCoordException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=TokenPushCoordException.OP,
                     msg=TokenPushCoordException.MSG,
                     err_code=TokenPushCoordException.ERR_CODE,
@@ -91,8 +91,8 @@ class TokenPushCoordProcess:
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 TokenPushCoordException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=TokenPushCoordException.OP,
                     msg=TokenPushCoordException.MSG,
                     err_code=TokenPushCoordException.ERR_CODE,
@@ -111,8 +111,8 @@ class TokenPushCoordProcess:
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 TokenPushCoordException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=TokenPushCoordException.OP,
                     msg=TokenPushCoordException.MSG,
                     err_code=TokenPushCoordException.ERR_CODE,
@@ -125,8 +125,8 @@ class TokenPushCoordProcess:
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 TokenPushCoordException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=TokenPushCoordException.OP,
                     msg=TokenPushCoordException.MSG,
                     err_code=TokenPushCoordException.ERR_CODE,
@@ -151,8 +151,8 @@ class TokenPushCoordProcess:
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 TokenPushCoordException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=TokenPushCoordException.OP,
                     msg=TokenPushCoordException.MSG,
                     err_code=TokenPushCoordException.ERR_CODE,

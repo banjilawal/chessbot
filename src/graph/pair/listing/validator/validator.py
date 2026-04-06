@@ -57,7 +57,7 @@ class PairListValidator(Validator[PairList]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 PairListValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=PairListValidationException.OP,
                     msg=PairListValidationException.MSG,
                     err_code=PairListValidationException.ERR_CODE,
@@ -75,7 +75,7 @@ class PairListValidator(Validator[PairList]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 PairListValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=PairListValidationException.OP,
                     msg=PairListValidationException.MSG,
                     err_code=PairListValidationException.ERR_CODE,

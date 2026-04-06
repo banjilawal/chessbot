@@ -16,10 +16,10 @@ log = logging.getLogger("chessbot")
 # Packages
 from .arena import *
 from .board import *
+from .catalog import *
 from .coord import *
 from .game import *
 from .hostage import *
-from microservice.catalog.persona import *
 from .player import *
 from .rank import *
 from .scalar import *

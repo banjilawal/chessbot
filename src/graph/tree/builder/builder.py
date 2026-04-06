@@ -82,7 +82,7 @@ class NodeTreeBuilder(Builder[NodeTree]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 NodeTreeBuildException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=NodeTreeBuildException.OP,
                     msg=NodeTreeBuildException.MSG,
                     err_code=NodeTreeBuildException.ERR_CODE,
@@ -99,7 +99,7 @@ class NodeTreeBuilder(Builder[NodeTree]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 NodeTreeBuildException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=NodeTreeBuildException.OP,
                     msg=NodeTreeBuildException.MSG,
                     err_code=NodeTreeBuildException.ERR_CODE,
@@ -120,7 +120,7 @@ class NodeTreeBuilder(Builder[NodeTree]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     NodeTreeBuildException(
-                        mthd=method,
+                        cls_mthd=method,
                         op=NodeTreeBuildException.OP,
                         msg=NodeTreeBuildException.MSG,
                         err_code=NodeTreeBuildException.ERR_CODE,

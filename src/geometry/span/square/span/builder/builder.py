@@ -46,7 +46,7 @@ class SquareSpanBuilder(Builder[SquareSpan]):
             # Return the exception chain on failure.
             SearchResult.failure(
                 SquareSpanBuildException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=SquareSpanBuildException.OP,
                     msg=SquareSpanBuildException.MSG,
                     err_code=SquareSpanBuildException.ERR_CODE,
@@ -97,7 +97,7 @@ class SquareSpanBuilder(Builder[SquareSpan]):
                 # Return the exception chain on failure.
                 BuildResult.failure(
                     SquareSpanBuildException(
-                        mthd=method,
+                        cls_mthd=method,
                         op=SquareSpanBuildException.OP,
                         msg=SquareSpanBuildException.MSG,
                         err_code=SquareSpanBuildException.ERR_CODE,
@@ -143,7 +143,7 @@ class SquareSpanBuilder(Builder[SquareSpan]):
             # Return the exception chain on failure.
             SearchResult.failure(
                 SquareSpanBuildException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=SquareSpanBuildException.OP,
                     msg=SquareSpanBuildException.MSG,
                     err_code=SquareSpanBuildException.ERR_CODE,
@@ -165,7 +165,7 @@ class SquareSpanBuilder(Builder[SquareSpan]):
                 # Return the exception chain on failure.
                 SearchResult.failure(
                     SquareSpanBuildException(
-                        mthd=method,
+                        cls_mthd=method,
                         op=SquareSpanBuildException.OP,
                         msg=SquareSpanBuildException.MSG,
                         err_code=SquareSpanBuildException.ERR_CODE,
@@ -209,7 +209,7 @@ class SquareSpanBuilder(Builder[SquareSpan]):
             # Return the exception chain on failure.
             SearchResult.failure(
                 SquareSpanBuildException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=SquareSpanBuildException.OP,
                     msg=SquareSpanBuildException.MSG,
                     err_code=SquareSpanBuildException.ERR_CODE,

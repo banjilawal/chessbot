@@ -77,8 +77,8 @@ class SchemaQueryBuilder(Builder[SchemaQuery]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 SchemaQueryBuildException(
-                    mthd=method,
-                    title=cls.__class__.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__class__.__name__,
                     op=SchemaQueryBuildException.OP,
                     msg=SchemaQueryBuildException.MSG,
                     err_code=SchemaQueryBuildException.ERR_CODE,
@@ -94,8 +94,8 @@ class SchemaQueryBuilder(Builder[SchemaQuery]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 SchemaQueryBuildException(
-                    mthd=method,
-                    title=cls.__class__.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__class__.__name__,
                     op=SchemaQueryBuildException.OP,
                     msg=SchemaQueryBuildException.MSG,
                     err_code=SchemaQueryBuildException.ERR_CODE,

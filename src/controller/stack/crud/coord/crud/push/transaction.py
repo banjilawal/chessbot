@@ -71,8 +71,8 @@ class CoordStackPush:
             # Return the exception chain on failure
             return InsertionResult.failure(
                 CoordStackPushException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=CoordStackPushException.OP,
                     msg=CoordStackPushException.MSG,
                     err_code=CoordStackPushException.ERR_CODE,
@@ -85,8 +85,8 @@ class CoordStackPush:
             # Return the exception chain on failure
             return InsertionResult.failure(
                 CoordStackPushException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=CoordStackPushException.OP,
                     msg=CoordStackPushException.MSG,
                     err_code=CoordStackPushException.ERR_CODE,

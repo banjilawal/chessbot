@@ -111,8 +111,8 @@ class AlgebraContextValidator(Validator[AlgebraAcontext]):
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
                     AlgebraContextValidationException(
-                        mthd=method,
-                        title=cls.__name__,
+                        cls_mthd=method,
+                        cls_name=method.__name__,
                         op=AlgebraContextValidationException.OP,
                         msg=AlgebraContextValidationException.MSG,
                         err_code=AlgebraContextValidationException.ERR_CODE,
@@ -135,8 +135,8 @@ class AlgebraContextValidator(Validator[AlgebraAcontext]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 AlgebraContextValidationException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=AlgebraContextValidationException.OP,
                     msg=AlgebraContextValidationException.MSG,
                     err_code=AlgebraContextValidationException.ERR_CODE,

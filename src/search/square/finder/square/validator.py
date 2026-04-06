@@ -67,7 +67,7 @@ class SquareListValidator(Validator[List[Square]]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=SquareValidationException.OP,
                     msg=SquareValidationException.MSG,
                     err_code=SquareValidationException.ERR_CODE,
@@ -83,7 +83,7 @@ class SquareListValidator(Validator[List[Square]]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=SquareValidationException.OP,
                     msg=SquareValidationException.MSG,
                     err_code=SquareValidationException.ERR_CODE,
@@ -101,7 +101,7 @@ class SquareListValidator(Validator[List[Square]]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=SquareValidationException.OP,
                     msg=SquareValidationException.MSG,
                     err_code=SquareValidationException.ERR_CODE,
@@ -117,7 +117,7 @@ class SquareListValidator(Validator[List[Square]]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=SquareValidationException.OP,
                     msg=SquareValidationException.MSG,
                     err_code=SquareValidationException.ERR_CODE,

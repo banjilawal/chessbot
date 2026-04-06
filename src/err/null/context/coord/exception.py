@@ -1,7 +1,7 @@
 # src/err/null/context/coord/exception.py
 
 """
-Module: err.null.context.coord.exception
+Module: err.null.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

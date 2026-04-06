@@ -75,8 +75,8 @@ class VectorBuilder(Builder[Vector]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     VectorBuildException(
-                        mthd=method,
-                        title=cls.__name__,
+                        cls_mthd=method,
+                        cls_name=method.__name__,
                         op=VectorBuildException.OP,
                         msg=VectorBuildException.MSG,
                         err_code=VectorBuildException.ERR_CODE,

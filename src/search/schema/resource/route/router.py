@@ -69,8 +69,8 @@ class SchemaSearchRouter(SearchRouter[Schema]):
             # Send the exception chain on failure.
             return SearchResult.failure(
                 SchemaSearchException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=SchemaSearchException.OP,
                     msg=SchemaSearchException.MSG,
                     err_code=SchemaSearchException.ERR_CODE,
@@ -96,8 +96,8 @@ class SchemaSearchRouter(SearchRouter[Schema]):
         # Handle the case that, there is no search path for the context context..
         return SearchResult.failure(
             SchemaSearchException(
-                mthd=method,
-                title=cls.__name__,
+                cls_mthd=method,
+                cls_name=method.__name__,
                 op=SchemaSearchException.OP,
                 msg=SchemaSearchException.MSG,
                 err_code=SchemaSearchException.ERR_CODE,

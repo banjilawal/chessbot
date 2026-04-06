@@ -59,7 +59,7 @@ class SquareStackPopper:
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 SquareStackPopException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=SquareStackPopException.OP,
                     msg=SquareStackPopException.MSG,
                     err_code=SquareStackPopException.ERR_CODE,
@@ -110,7 +110,7 @@ class SquareStackPopper:
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 SquareStackPopException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=SquareStackPopException.OP,
                     msg=SquareStackPopException.MSG,
                     err_code=SquareStackPopException.ERR_CODE,
@@ -127,7 +127,7 @@ class SquareStackPopper:
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 SquareStackPopException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=SquareStackPopException.OP,
                     msg=SquareStackPopException.MSG,
                     err_code=SquareStackPopException.ERR_CODE,

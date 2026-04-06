@@ -1,7 +1,7 @@
 # src/err/validation/context/node/exception.py
 
 """
-Module: err.validation.context.node.exception
+Module: err.validation.node.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

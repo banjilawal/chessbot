@@ -73,8 +73,8 @@ class SchemaQueryValidator(Validator[SchemaQuery]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SchemaQueryValidationException(
-                    mthd=method,
-                    title=cls.__class__.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__class__.__name__,
                     op=SchemaQueryValidationException.OP,
                     msg=SchemaQueryValidationException.MSG,
                     err_code=SchemaQueryValidationException.ERR_CODE,
@@ -90,8 +90,8 @@ class SchemaQueryValidator(Validator[SchemaQuery]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SchemaQueryValidationException(
-                    mthd=method,
-                    title=cls.__class__.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__class__.__name__,
                     op=SchemaQueryValidationException.OP,
                     msg=SchemaQueryValidationException.MSG,
                     err_code=SchemaQueryValidationException.ERR_CODE,
@@ -110,8 +110,8 @@ class SchemaQueryValidator(Validator[SchemaQuery]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SchemaQueryValidationException(
-                    mthd=method,
-                    title=cls.__class__.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__class__.__name__,
                     op=SchemaQueryValidationException.OP,
                     msg=SchemaQueryValidationException.MSG,
                     err_code=SchemaQueryValidationException.ERR_CODE,
@@ -125,8 +125,8 @@ class SchemaQueryValidator(Validator[SchemaQuery]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SchemaQueryValidationException(
-                    mthd=method,
-                    title=cls.__class__.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__class__.__name__,
                     op=SchemaQueryValidationException.OP,
                     msg=SchemaQueryValidationException.MSG,
                     err_code=SchemaQueryValidationException.ERR_CODE,

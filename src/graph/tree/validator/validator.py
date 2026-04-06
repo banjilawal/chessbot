@@ -57,7 +57,7 @@ class NodeTreeValidator(Validator[NodeTree]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 NodeTreeValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=NodeTreeValidationException.OP,
                     msg=NodeTreeValidationException.MSG,
                     err_code=NodeTreeValidationException.ERR_CODE,
@@ -75,7 +75,7 @@ class NodeTreeValidator(Validator[NodeTree]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 NodeTreeValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=NodeTreeValidationException.OP,
                     msg=NodeTreeValidationException.MSG,
                     err_code=NodeTreeValidationException.ERR_CODE,

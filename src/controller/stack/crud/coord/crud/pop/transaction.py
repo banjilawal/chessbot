@@ -58,7 +58,7 @@ class CoordStackPop:
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 CoordStackPopException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=CoordStackPopException.OP,
                     msg=CoordStackPopException.MSG,
                     err_code=CoordStackPopException.ERR_CODE,

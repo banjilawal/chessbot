@@ -107,8 +107,8 @@ class CoordAdder:
             # Return the exception chain on failure.
             return ComputationResult.failure(
                 CoordAdditionException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=CoordAdditionException.OP,
                     msg=CoordAdditionException.MSG,
                     err_code=CoordAdditionException.ERR_CODE,
@@ -155,8 +155,8 @@ class CoordAdder:
             # Return exception chain on failure.
             return ComputationResult.failure(
                 CoordAdditionException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=CoordAdditionException.OP,
                     msg=CoordAdditionException.MSG,
                     err_code=CoordAdditionException.ERR_CODE,
@@ -174,8 +174,8 @@ class CoordAdder:
                 # Return exception chain on failure.
                 return ComputationResult.failure(
                     CoordAdditionException(
-                        mthd=method,
-                        title=cls.__name__,
+                        cls_mthd=method,
+                        cls_name=method.__name__,
                         op=CoordAdditionException.OP,
                         msg=CoordAdditionException.MSG,
                         err_code=CoordAdditionException.ERR_CODE,
@@ -219,8 +219,8 @@ class CoordAdder:
                 # Return exception chain on failure.
                 return ComputationResult.failure(
                     CoordAdditionException(
-                        mthd=method,
-                        title=cls.__name__,
+                        cls_mthd=method,
+                        cls_name=method.__name__,
                         op=CoordAdditionException.OP,
                         msg=CoordAdditionException.MSG,
                         err_code=CoordAdditionException.ERR_CODE,

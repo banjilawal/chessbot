@@ -74,8 +74,8 @@ class TokenQueryBuilder(Builder[TokenQuery]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenQueryBuildException(
-                    mthd=method,
-                    title=cls.__class__.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__class__.__name__,
                     msg=TokenQueryBuildException.MSG,
                     err_code=TokenQueryBuildException.ERR_CODE,
                     ex=validation_result.exception,
@@ -86,8 +86,8 @@ class TokenQueryBuilder(Builder[TokenQuery]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenQueryBuildException(
-                    mthd=method,
-                    title=cls.__class__.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__class__.__name__,
                     msg=TokenQueryBuildException.MSG,
                     err_code=TokenQueryBuildException.ERR_CODE,
                     ex=TokenStackNullException(
@@ -101,8 +101,8 @@ class TokenQueryBuilder(Builder[TokenQuery]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenQueryBuildException(
-                    mthd=method,
-                    title=cls.__class__.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__class__.__name__,
                     msg=TokenQueryBuildException.MSG,
                     err_code=TokenQueryBuildException.ERR_CODE,
                     ex=TypeError(
@@ -115,8 +115,8 @@ class TokenQueryBuilder(Builder[TokenQuery]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenQueryBuildException(
-                    mthd=method,
-                    title=cls.__class__.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__class__.__name__,
                     msg=TokenQueryBuildException.MSG,
                     err_code=TokenQueryBuildException.ERR_CODE,
                     ex=TypeError(

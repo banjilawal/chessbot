@@ -59,7 +59,7 @@ class TokenStackPop:
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 TokenStackPopException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=TokenStackPopException.OP,
                     msg=TokenStackPopException.MSG,
                     err_code=TokenStackPopException.ERR_CODE,
@@ -114,7 +114,7 @@ class TokenStackPop:
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 TokenStackPopException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=TokenStackPopException.OP,
                     msg=TokenStackPopException.MSG,
                     err_code=TokenStackPopException.ERR_CODE,
@@ -131,7 +131,7 @@ class TokenStackPop:
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 TokenStackPopException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=TokenStackPopException.OP,
                     msg=TokenStackPopException.MSG,
                     err_code=TokenStackPopException.ERR_CODE,

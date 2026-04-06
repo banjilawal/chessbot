@@ -90,8 +90,8 @@ class TokenBuilder(Builder[Token]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 TokenBuildException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=TokenBuildException.OP,
                     msg=TokenBuildException.MSG,
                     err_code=TokenBuildException.ERR_CODE,
@@ -104,8 +104,8 @@ class TokenBuilder(Builder[Token]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 TokenBuildException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=TokenBuildException.OP,
                     msg=TokenBuildException.MSG,
                     err_code=TokenBuildException.ERR_CODE,
@@ -118,8 +118,8 @@ class TokenBuilder(Builder[Token]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 TokenBuildException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=TokenBuildException.OP,
                     msg=TokenBuildException.MSG,
                     err_code=TokenBuildException.ERR_CODE,
@@ -246,8 +246,8 @@ class TokenBuilder(Builder[Token]):
             if insertion_result.is_failure:
                 return BuildResult.failure(
                     TokenBuildException(
-                        mthd=method,
-                        title=cls.__name__,
+                        cls_mthd=method,
+                        cls_name=method.__name__,
                         op=TokenBuildException.OP,
                         msg=TokenBuildException.MSG,
                         err_code=TokenBuildException.ERR_CODE,

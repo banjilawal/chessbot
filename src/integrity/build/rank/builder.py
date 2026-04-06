@@ -70,7 +70,7 @@ class RankFactory(Builder[Rank]):
                     msg=RankFactoryException.MSG,
                     err_code=RankFactoryException.ERR_CODE,
                     ex=RankBuildException(
-                        mthd=method,
+                        cls_mthd=method,
                         op=RankBuildException.OP,
                         msg=RankBuildException.MSG,
                         err_code=RankBuildException.ERR_CODE,
@@ -108,7 +108,7 @@ class RankFactory(Builder[Rank]):
                 msg=RankFactoryException.MSG,
                 err_code=RankFactoryException.ERR_CODE,
                 ex=RankBuildException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=RankBuildException.OP,
                     msg=RankBuildException.MSG,
                     err_code=RankBuildException.ERR_CODE,

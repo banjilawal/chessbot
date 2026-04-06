@@ -87,7 +87,7 @@ class CommandArgsValidator(Validator[Dict]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 ArgumentsValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=ArgumentsValidationException.OP,
                     msg=ArgumentsValidationException.MSG,
                     err_code=ArgumentsValidationException.ERR_CODE,
@@ -105,7 +105,7 @@ class CommandArgsValidator(Validator[Dict]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 ArgumentsValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=ArgumentsValidationException.OP,
                     msg=ArgumentsValidationException.MSG,
                     err_code=ArgumentsValidationException.ERR_CODE,
@@ -155,8 +155,8 @@ class CommandArgsValidator(Validator[Dict]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 ArgumentsValidationException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=ArgumentsValidationException.OP,
                     msg=ArgumentsValidationException.MSG,
                     err_code=ArgumentsValidationException.ERR_CODE,
@@ -174,7 +174,7 @@ class CommandArgsValidator(Validator[Dict]):
             actual_type = type(candidate).__name__
             return ValidationResult.failure(
                 ArgumentsValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=ArgumentsValidationException.OP,
                     msg=ArgumentsValidationException.MSG,
                     err_code=ArgumentsValidationException.ERR_CODE,
@@ -192,7 +192,7 @@ class CommandArgsValidator(Validator[Dict]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 ArgumentsValidationException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=ArgumentsValidationException.OP,
                     msg=ArgumentsValidationException.MSG,
                     err_code=ArgumentsValidationException.ERR_CODE,
@@ -209,7 +209,7 @@ class CommandArgsValidator(Validator[Dict]):
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
                     ArgumentsValidationException(
-                        mthd=method,
+                        cls_mthd=method,
                         op=ArgumentsValidationException.OP,
                         msg=ArgumentsValidationException.MSG,
                         err_code=ArgumentsValidationException.ERR_CODE,
@@ -264,7 +264,7 @@ class CommandArgsValidator(Validator[Dict]):
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
                     ArgumentsValidationException(
-                        mthd=method,
+                        cls_mthd=method,
                         op=ArgumentsValidationException.OP,
                         msg=ArgumentsValidationException.MSG,
                         err_code=ArgumentsValidationException.ERR_CODE,
@@ -278,7 +278,7 @@ class CommandArgsValidator(Validator[Dict]):
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
                     ArgumentsValidationException(
-                        mthd=method,
+                        cls_mthd=method,
                         op=ArgumentsValidationException.OP,
                         msg=ArgumentsValidationException.MSG,
                         err_code=ArgumentsValidationException.ERR_CODE,
@@ -296,7 +296,7 @@ class CommandArgsValidator(Validator[Dict]):
                     # Return the exception chain on failure.
                     return ValidationResult.failure(
                         ArgumentsValidationException(
-                            mthd=method,
+                            cls_mthd=method,
                             op=ArgumentsValidationException.OP,
                             msg=ArgumentsValidationException.MSG,
                             err_code=ArgumentsValidationException.ERR_CODE,

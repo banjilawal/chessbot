@@ -79,7 +79,7 @@ class TokenStackPush:
             # Return the exception chain on failure
             return InsertionResult.failure(
                 TokenStackPushException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=TokenStackPushException.OP,
                     msg=TokenStackPushException.MSG,
                     err_code=TokenStackPushException.ERR_CODE,

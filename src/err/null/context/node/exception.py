@@ -1,7 +1,7 @@
 # src/err/null/context/node/exception.py
 
 """
-Module: err.null.context.node.exception
+Module: err.null.node.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

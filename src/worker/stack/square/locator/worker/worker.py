@@ -77,8 +77,8 @@ class OpeningSquareLocator(Worker):
             # Return the exception chain on failure
             return SearchResult.failure(
                 OpeningSquareDiscoveryException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=OpeningSquareDiscoveryException.OP,
                     msg=OpeningSquareDiscoveryException.MSG,
                     err_code=OpeningSquareDiscoveryException.ERR_CODE,
@@ -88,8 +88,8 @@ class OpeningSquareLocator(Worker):
         # Handle the case that, the token has been deployed.
         if token.is_deployed:
             OpeningSquareDiscoveryException(
-                mthd=method,
-                title=cls.__name__,
+                cls_mthd=method,
+                cls_name=method.__name__,
                 op=OpeningSquareDiscoveryException.OP,
                 msg=OpeningSquareDiscoveryException.MSG,
                 err_code=OpeningSquareDiscoveryException.ERR_CODE,
@@ -176,7 +176,7 @@ class OpeningSquareLocator(Worker):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 ExecutementSquareDiscoveryException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=ExecutementSquareDiscoveryException.OP,
                     msg=ExecutementSquareDiscoveryException.MSG,
                     err_code=ExecutementSquareDiscoveryException.ERR_CODE,
@@ -189,7 +189,7 @@ class OpeningSquareLocator(Worker):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 ExecutementSquareDiscoveryException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=ExecutementSquareDiscoveryException.OP,
                     msg=ExecutementSquareDiscoveryException.MSG,
                     err_code=ExecutementSquareDiscoveryException.ERR_CODE,
@@ -205,7 +205,7 @@ class OpeningSquareLocator(Worker):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 ExecutementSquareDiscoveryException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=ExecutementSquareDiscoveryException.OP,
                     msg=ExecutementSquareDiscoveryException.MSG,
                     err_code=ExecutementSquareDiscoveryException.ERR_CODE,

@@ -72,8 +72,8 @@ class ZoneValidator(Validator[Zone]):
             # Return the exception on failure.
             return ValidationResult.failure(
                 ZoneValidationException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=ZoneValidationException.OP,
                     msg=ZoneValidationException.MSG,
                     err_code=ZoneValidationException.ERR_CODE,
@@ -89,8 +89,8 @@ class ZoneValidator(Validator[Zone]):
             # Return the exception on failure.
             return ValidationResult.failure(
                 ZoneValidationException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=ZoneValidationException.OP,
                     msg=ZoneValidationException.MSG,
                     err_code=ZoneValidationException.ERR_CODE,
@@ -114,8 +114,8 @@ class ZoneValidator(Validator[Zone]):
                 # Return the exception on failure.
                 return ValidationResult.failure(
                     ZoneValidationException(
-                        mthd=method,
-                        title=cls.__name__,
+                        cls_mthd=method,
+                        cls_name=method.__name__,
                         op=ZoneValidationException.OP,
                         msg=ZoneValidationException.MSG,
                         err_code=ZoneValidationException.ERR_CODE,

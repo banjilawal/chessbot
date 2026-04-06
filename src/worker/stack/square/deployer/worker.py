@@ -77,7 +77,7 @@ class TokenDeploymentWorker(Worker):
             
             return InsertionResult.failure(
                 SquareStackDeployException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=SquareStackDeployException.OP,
                     msg=SquareStackDeployException.MSG,
                     err_code=SquareStackDeployException.ERR_CODE,
@@ -92,7 +92,7 @@ class TokenDeploymentWorker(Worker):
             # Return the exception chain on failure
             return InsertionResult.failure(
                 SquareStackDeployException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=SquareStackDeployException.OP,
                     msg=SquareStackDeployException.MSG,
                     err_code=SquareStackDeployException.ERR_CODE,
@@ -181,7 +181,7 @@ class TokenDeploymentWorker(Worker):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenDeploymentProcessException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=TokenDeploymentProcessException.OP,
                     msg=TokenDeploymentProcessException.MSG,
                     err_code=TokenDeploymentProcessException.ERR_CODE,
@@ -194,7 +194,7 @@ class TokenDeploymentWorker(Worker):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenDeploymentProcessException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=TokenDeploymentProcessException.OP,
                     msg=TokenDeploymentProcessException.MSG,
                     err_code=TokenDeploymentProcessException.ERR_CODE,
@@ -210,7 +210,7 @@ class TokenDeploymentWorker(Worker):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenDeploymentProcessException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=TokenDeploymentProcessException.OP,
                     msg=TokenDeploymentProcessException.MSG,
                     err_code=TokenDeploymentProcessException.ERR_CODE,

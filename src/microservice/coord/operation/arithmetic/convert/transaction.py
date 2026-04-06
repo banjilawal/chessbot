@@ -65,8 +65,8 @@ class ConvertVectorToCoordTransaction:
             # Return exception chain on failure.
             return ComputationResult.failure(
                 ConvertVectorException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=ConvertVectorException.OP,
                     msg=ConvertVectorException.MSG,
                     err_code=ConvertVectorException.ERR_CODE,
@@ -84,8 +84,8 @@ class ConvertVectorToCoordTransaction:
             # Return exception chain on failure.
             return ComputationResult.failure(
                 ConvertVectorException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=ConvertVectorException.OP,
                     msg=ConvertVectorException.MSG,
                     err_code=ConvertVectorException.ERR_CODE,

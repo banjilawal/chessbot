@@ -66,8 +66,8 @@ class VectorValidator(Validator[Vector]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 VectorValidationException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=VectorValidationException.OP,
                     msg=VectorValidationException.MSG,
                     err_code=VectorValidationException.ERR_CODE,
@@ -83,8 +83,8 @@ class VectorValidator(Validator[Vector]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 VectorValidationException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=VectorValidationException.OP,
                     msg=VectorValidationException.MSG,
                     err_code=VectorValidationException.ERR_CODE,
@@ -108,8 +108,8 @@ class VectorValidator(Validator[Vector]):
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
                     VectorValidationException(
-                        mthd=method,
-                        title=cls.__name__,
+                        cls_mthd=method,
+                        cls_name=method.__name__,
                         op=VectorValidationException.OP,
                         msg=VectorValidationException.MSG,
                         err_code=VectorValidationException.ERR_CODE,

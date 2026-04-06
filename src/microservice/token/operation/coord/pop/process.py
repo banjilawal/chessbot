@@ -75,8 +75,8 @@ class TokenPopCoordProcess:
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 TokenPopCoordException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=TokenPopCoordException.OP,
                     msg=TokenPopCoordException.MSG,
                     err_code=TokenPopCoordException.ERR_CODE,
@@ -89,8 +89,8 @@ class TokenPopCoordProcess:
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 TokenPopCoordException(
-                        mthd=method,
-                        title=cls.__name__,
+                        cls_mthd=method,
+                        cls_name=method.__name__,
                         op=TokenPopCoordException.OP,
                         msg=TokenPopCoordException.MSG,
                         err_code=TokenPopCoordException.ERR_CODE,
@@ -109,8 +109,8 @@ class TokenPopCoordProcess:
                 # Return the exception chain on failure.
                 return DeletionResult.failure(
                     TokenPopCoordException(
-                        mthd=method,
-                        title=cls.__name__,
+                        cls_mthd=method,
+                        cls_name=method.__name__,
                         op=TokenPopCoordException.OP,
                         msg=TokenPopCoordException.MSG,
                         err_code=TokenPopCoordException.ERR_CODE,
@@ -128,7 +128,7 @@ class TokenPopCoordProcess:
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 TokenPopCoordException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=TokenPopCoordException.OP,
                     msg=TokenPopCoordException.MSG,
                     err_code=TokenPopCoordException.ERR_CODE,
@@ -148,7 +148,7 @@ class TokenPopCoordProcess:
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 TokenPopCoordException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=TokenPopCoordException.OP,
                     msg=TokenPopCoordException.MSG,
                     err_code=TokenPopCoordException.ERR_CODE,

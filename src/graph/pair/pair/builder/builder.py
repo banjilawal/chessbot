@@ -77,7 +77,7 @@ class PairBuilder(Builder[Pair]):
             # Return the exception chain on failure
             return BuildResult.failure(
                 PairBuildException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=PairBuildException.OP,
                     msg=PairBuildException.MSG,
                     err_code=PairBuildException.ERR_CODE,
@@ -90,7 +90,7 @@ class PairBuilder(Builder[Pair]):
             # Return the exception chain on failure
             return BuildResult.failure(
                 PairBuildException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=PairBuildException.OP,
                     msg=PairBuildException.MSG,
                     err_code=PairBuildException.ERR_CODE,
@@ -102,7 +102,7 @@ class PairBuilder(Builder[Pair]):
             # Return the exception chain on failure
             return BuildResult.failure(
                 PairBuildException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=PairBuildException.OP,
                     msg=PairBuildException.MSG,
                     err_code=PairBuildException.ERR_CODE,
@@ -124,7 +124,7 @@ class PairBuilder(Builder[Pair]):
             # Return the exception chain on failure
             return BuildResult.failure(
                 PairBuildException(
-                    mthd=method,
+                    cls_mthd=method,
                     op=PairBuildException.OP,
                     msg=PairBuildException.MSG,
                     err_code=PairBuildException.ERR_CODE,

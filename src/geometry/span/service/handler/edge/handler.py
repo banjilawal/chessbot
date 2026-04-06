@@ -66,7 +66,7 @@ class NodeEdgeHandler:
                         msg=NodeEdgeHandlerException.MSG,
                         err_code=NodeEdgeHandlerException.ERR_CODE,
                         ex=SymmetricEdgeBuildException(
-                            mthd=method,
+                            cls_mthd=method,
                             op=SymmetricEdgeBuildException.OP,
                             msg=SymmetricEdgeBuildException.MSG,
                             err_code=SymmetricEdgeBuildException.ERR_CODE,
@@ -114,7 +114,7 @@ class NodeEdgeHandler:
                     msg=NodeEdgeHandlerException.MSG,
                     err_code=NodeEdgeHandlerException.ERR_CODE,
                     ex=AsymmetricEdgeBuildException(
-                        mthd=method,
+                        cls_mthd=method,
                         op=AsymmetricEdgeBuildException.OP,
                         msg=AsymmetricEdgeBuildException.MSG,
                         err_code=AsymmetricEdgeBuildException.ERR_CODE,
@@ -150,7 +150,7 @@ class NodeEdgeHandler:
                         msg=NodeEdgeHandlerException.MSG,
                         err_code=NodeEdgeHandlerException.ERR_CODE,
                         ex=PushingEdgeException(
-                            mthd=method,
+                            cls_mthd=method,
                             op=PushingEdgeException.OP,
                             msg=PushingEdgeException.MSG,
                             err_code=PushingEdgeException.ERR_CODE,

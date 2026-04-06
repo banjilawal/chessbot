@@ -70,8 +70,8 @@ class RankValidator(Validator[Rank]):
             # Return the exception on failure.
             return ValidationResult.failure(
                 RankValidationException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=RankValidationException.OP,
                     msg=RankValidationException.MSG,
                     err_code=RankValidationException.ERR_CODE,
@@ -87,8 +87,8 @@ class RankValidator(Validator[Rank]):
             # Return the exception on failure.
             return ValidationResult.failure(
                 RankValidationException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=RankValidationException.OP,
                     msg=RankValidationException.MSG,
                     err_code=RankValidationException.ERR_CODE,
@@ -107,8 +107,8 @@ class RankValidator(Validator[Rank]):
             # Return the exception on failure.
             return ValidationResult.failure(
                 RankValidationException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=RankValidationException.OP,
                     msg=RankValidationException.MSG,
                     err_code=RankValidationException.ERR_CODE,
@@ -125,8 +125,8 @@ class RankValidator(Validator[Rank]):
             # Return the exception on failure.
             return ValidationResult.failure(
                 RankValidationException(
-                    mthd=method,
-                    title=cls.__name__,
+                    cls_mthd=method,
+                    cls_name=method.__name__,
                     op=RankValidationException.OP,
                     msg=RankValidationException.MSG,
                     err_code=RankValidationException.ERR_CODE,
