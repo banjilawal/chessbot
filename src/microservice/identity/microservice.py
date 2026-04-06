@@ -40,7 +40,7 @@ class IdentityService:
         -   def validate_identity(
                 id_candidate: Any,
                 name_candidate: Any
-            ) -> ValidationResult[Dict[str, Any]]:
+            ) -> ValidationResult[Dict[str, Any]]:6127219800
 
     Super Class:
     """

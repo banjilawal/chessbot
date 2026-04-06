@@ -69,7 +69,7 @@ class VectorCoordUnionValidator:
         Raises:
             TypeError
             NullAlgebraAContextException
-            AlgebraContextValidationException
+            LinGeoContextValidationException
         """
         method = f"{cls.__name__}.validate"
         

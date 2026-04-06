@@ -1,7 +1,7 @@
-# src/algebra/__init__.py
+# src/math/__init__.py
 
 """
-Module: algebra.__init__
+Module: math.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -17,6 +17,7 @@ log = logging.getLogger("chessbot")
 from .addition import *
 from .convert import *
 from .distance import *
+from .lingeo import *
 from .product import *
 from .resource import *
 

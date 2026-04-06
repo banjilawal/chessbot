@@ -14,4 +14,19 @@ from typing import Generic, TypeVar
 T = TypeVar("T")
 
 class ToolSet(ABC, Generic[T]):
+    """
+    Role:
+        -   Container
+        
+    Responsibilities:
+        1.  Collection of workers and services that are required for a task.
+        2.  Simplifies entry points.
+        3.  No logic in the ToolSet.
+
+    Attributes:
+
+    Provides:
+
+    Super Class:
+    """
     pass

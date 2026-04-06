@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== MODEL PACKAGE CONTENTS ===========#
 
 # Packages
-from .algebra import *
 from .arena import *
 from .board import *
 from .coord import *
@@ -19,6 +18,7 @@ from .excess import *
 from .formation import *
 from .game import *
 from .hostage import *
+from .lingeo import *
 from .node import *
 from .persona import *
 from .player import *

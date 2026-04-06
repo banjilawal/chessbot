@@ -10,6 +10,22 @@ version: 1.0.1
 # =========== MODEL.EXCESS PACKAGE CONTENTS ===========#
 
 # Packages
+from .arena import *
+from .board import *
+from .coord import *
+from .edge import *
+from .formation import *
+from .game import *
+from .hostage import *
+from .lingeo import *
+from .node import *
+from .persona import *
+from .player import *
+from .rank import *
+from .schema import *
+from .square import *
+from .team import *
+from .token import *
 
 # Modules
 from .exception import ExcessContextFlagsException

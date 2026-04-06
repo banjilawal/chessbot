@@ -10,10 +10,10 @@ version: 1.0.1
 # =========== MODEL.CONTEXT PACKAGE CONTENTS ===========#
 
 # Packages
-from .algebra import *
 from .board import *
 from .coord import *
 from .edge import *
+from .lingeo import *
 from .node import *
 from .persona import *
 from .player import *

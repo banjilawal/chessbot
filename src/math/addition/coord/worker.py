@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import List, Union
 
-from integrity import AlgebraContextValidator
+from integrity import LinGeoContextValidator
 from microservice import CoordService, VectorService
 from model import Coord
 from result import ComputationResult

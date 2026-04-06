@@ -13,6 +13,7 @@ version: 1.0.0
 from err.work.anchor import *
 from err.work.bounds import *
 from .build import *
+from .math import *
 from .model import *
 from .null import *
 from .number import *
