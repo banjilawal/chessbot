@@ -10,8 +10,6 @@ version: 1.0.0
 #===========  PACKAGE CONTENTS ===========#
 
 # Packages
-from err.work.anchor import *
-from err.work.bounds import *
 from .build import *
 from .math import *
 from .model import *

@@ -1,15 +1,16 @@
-# src/logic/system/err/work/__init__.py
+# src/err/work__init__.py
 
 """
-Module: logic.system.err.work.__init__
+Module: err.work.__init__
 Author: Banji Lawal
-Created: 2026-02-25
+Created: 2026-04-07
 version: 1.0.0
 """
 
-# =========== SYSTEM.ERR.WORK PACKAGE CONTENTS ===========#
+# ===========  PACKAGE CONTENTS ===========#
 
 # Packages
+from .lingeo import *
 
 # Modules
-from .root import WorkException
+from .exception import WorkException
