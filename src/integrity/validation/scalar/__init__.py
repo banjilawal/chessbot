@@ -1,0 +1,16 @@
+# src/integrity/validation/scalar/__init__.py
+
+"""
+Module: integrity.validation.scalar.__init__
+Author: Banji Lawal
+Created: 2026-04-03
+version: 1.0.1
+"""
+
+# =========== VALIDATION.SCALAR PACKAGE CONTENTS ===========#
+
+# Packages
+None
+
+# Modules
+from .validator import ScalarValidator
