@@ -10,8 +10,8 @@ version: 1.0.1
 from __future__ import annotations
 
 from integrity import NumberValidator
-from microservice import CoordService, VectorService
-from model import AlgebraAcontext, LinGeoContext
+from microservice import CoordService, ScalarService, VectorService
+from model import LinGeoContext
 from tool import ToolSet
 
 
@@ -36,12 +36,14 @@ class LinGeoContextToolSet(ToolSet[LinGeoContext]):
     """
     _coord_service: CoordService
     _vector_service: VectorService
+    _scalar_service: ScalarService
     _number_validator: NumberValidator
    
     def __init__(
             self,
             coord_service: CoordService = CoordService(),
             vector_service: VectorService = VectorService(),
+            scalar_service: ScalarService = ScalarService(),
             number_validator: NumberValidator = NumberValidator(),
     ):
         """
@@ -52,6 +54,7 @@ class LinGeoContextToolSet(ToolSet[LinGeoContext]):
         """
         self._coord_service = coord_service
         self._vector_service = vector_service
+        self._scalar_service = scalar_service
         self._number_validator = number_validator
     
     @property
@@ -61,6 +64,10 @@ class LinGeoContextToolSet(ToolSet[LinGeoContext]):
     @property
     def vector_service(self) -> VectorService:
         return self._vector_service
+    
+    @property
+    def scalar_service(self) -> ScalarService:
+        return self._scalar_service
 
     @property
     def number_validator(self) -> NumberValidator:

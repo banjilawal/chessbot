@@ -13,14 +13,14 @@ from typing import Any, Optional
 
 __all__ = [
     # ======================# LINGEO_CONVERSION_WORK_ERROR #======================#
-    "LinGeoConversionWorkException",
+    "LinGeoConversionException",
 ]
 
 from err import LinGeoWorkException
 
 
 # ======================# LINGEO_CONVERSION_WORK_ERROR #======================#
-class LinGeoConversionWorkException(LinGeoWorkException):
+class LinGeoConversionException(LinGeoWorkException):
     """
     Role:
         -   Error Tracing

@@ -5,43 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change afterPath="$PROJECT_DIR$/src/err/krow/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/work/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/work/lingeo/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/work/lingeo/addition/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/work/lingeo/addition/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/work/lingeo/conversion/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/work/lingeo/conversion/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/work/lingeo/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/work/lingeo/product/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/work/lingeo/product/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/work/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/work/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/work/anchor/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/krow/anchor/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/work/anchor/root.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/krow/anchor/root.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/work/bounds/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/krow/bounds/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/work/bounds/above.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/krow/bounds/above.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/work/bounds/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/krow/bounds/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/work/bounds/below.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/krow/bounds/below.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/work/color/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/krow/color/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/work/color/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/krow/color/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/work/color/invalid.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/krow/color/invalid.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/work/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/krow/debug/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/work/debug/child/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/krow/debug/child/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/work/debug/child/inconsistent/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/krow/debug/child/inconsistent/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/work/debug/child/inconsistent/root.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/krow/debug/child/inconsistent/root.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/work/debug/child/invariant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/krow/debug/child/invariant/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/work/debug/child/invariant/root.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/krow/debug/child/invariant/root.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/work/debug/child/method/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/krow/debug/child/method/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/work/debug/child/method/root.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/krow/debug/child/method/root.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/work/debug/child/unique/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/krow/debug/child/unique/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/work/debug/child/unique/root.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/krow/debug/child/unique/root.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/work/debug/root/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/krow/debug/root/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/work/debug/root/root.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/krow/debug/root/root.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/work/resource/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/krow/resource/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/work/resource/unavailable.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/krow/resource/unavailable.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/work/root.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/krow/root.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/work/lingeo/conversion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/work/lingeo/conversion/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/work/lingeo/conversion/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/work/lingeo/conversion/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/math/lingeo/conversion/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/math/lingeo/conversion/worker.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -902,7 +867,7 @@
       <workItem from="1774551231807" duration="159138000" />
       <workItem from="1774976324979" duration="49944000" />
       <workItem from="1775073975276" duration="313257000" />
-      <workItem from="1775468437273" duration="31012000" />
+      <workItem from="1775468437273" duration="31567000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

@@ -15,4 +15,4 @@ from .product import *
 from .addition import *
 
 # Modules
-from .exception import LinGeoConversionWorkException
+from .exception import LinGeoConversionException
