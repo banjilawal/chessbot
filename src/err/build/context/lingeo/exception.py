@@ -1,7 +1,7 @@
-# src/err/build/context/algebra/exception.py
+# src/err/build/context/LinGeo/exception.py
 
 """
-Module: err.build.context.algebra.exception
+Module: err.build.context.LinGeo.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,19 +9,15 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BuildException
-
-
-__all__ = [
-    # ======================# ALGEBRA_CONTEXT_BUILD_FAILURE #======================#
-    "AlgebraContextBuildException",
-]
-
 from err import ContextBuildException
 
+__all__ = [
+    # ======================# LINGEO_CONTEXT_BUILD_FAILURE #======================#
+    "LinGeoContextBuildException",
+]
 
-# ======================# ALGEBRA_CONTEXT_BUILD_FAILURE #======================#
-class AlgebraContextBuildException(ContextBuildException):
+# ======================# LINGEO_CONTEXT_BUILD_FAILURE #======================#
+class LinGeoContextBuildException(ContextBuildException):
     """
     Role:
         -   Exception Chain Layer 2
@@ -29,7 +25,7 @@ class AlgebraContextBuildException(ContextBuildException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that a AlgebraContextBuild step failed.
+        1.  Indicate that a LinGeoContextBuild step failed.
 
     Attributes:
             msg: Optional[str]
@@ -45,8 +41,8 @@ class AlgebraContextBuildException(ContextBuildException):
     Super Class:
         ContextBuildException
     """
-    MSG = str = "No build logic for AlgebraContext attribute"
-    ERR_CODE = "ALGEBRA_CONTEXT_BUILD_FAILURE"
+    MSG = str = "No build logic for LinGeoContext attribute"
+    ERR_CODE = "LINGEO_CONTEXT_BUILD_FAILURE"
     
     def __init__(
             self,

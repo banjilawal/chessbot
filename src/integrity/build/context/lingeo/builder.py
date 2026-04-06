@@ -10,9 +10,11 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Optional
 
+from err import ExcessLinGeoContextFlagsException, LinGeoContextBuildException
 from integrity import Builder
-from model import LinGeoContext
-
+from model import Coord, LinGeoContext, Vector
+from result import BuildResult
+from tool import LinGeoContextToolSet
 
 class LinGeoContextBuilder(Builder[LinGeoContext]):
     """
@@ -23,20 +25,16 @@ class LinGeoContextBuilder(Builder[LinGeoContext]):
         -   Build Process Owner
 
    Responsibilities:
-        1.  Ensure a new Token instance is born safe and reliable.
+        1.  Ensure a new LinGeoContext instance is born safe and reliable.
 
-     Attributes:
+    Attributes:
 
     Provides:
-        -   def execute(
-                    owner: Team,
-                    id: int = IdFactory,
-                    formation: Formation,
-                    rank_service: RankService,
-                    identity_service: IdentityService,
-                    formation_service: FormationService,
-                    team_validator: TeamValidator,
-            ) -> BuildResult[Token]
+        -   def build(
+                    coord: Optional[Coord] = None,
+                    vector: Optional[Vector] = None,
+                    tool_set: LinGeoContextToolSet
+            ) -> BuildResult[LinGeoContext]:
 
      Super Class:
          Builder
@@ -44,49 +42,37 @@ class LinGeoContextBuilder(Builder[LinGeoContext]):
     @classmethod
     def build(
             cls,
-            id: Optional[int] = None,
-            name: Optional[str] = None,
             coord: Optional[Coord] = None,
-            board: Optional[Board] = None,
-            token: Optional[Token] = None,
-            state: Optional[LinegeoState] = None,
-            token_service: TokenService = TokenService(),
-            board_service: BoardService = BoardService(),
-            coord_service: CoordService = CoordService(),
-            identity_service: IdentityService = IdentityService(),
+            vector: Optional[Vector] = None,
+            tool_set: LinGeoContextToolSet = LinGeoContextToolSet()
     ) -> BuildResult[LinGeoContext]:
         """
-        # ACTION:
-            1.  If one-and-only-one context attribute is not null send an exception chain in the BuildResult.
-            2.  If there is no build route for the not-null context attribute send an exception chain in the BuildResult.
-            3.  If the build route exists and the context attribute is not verified send an exception chain in the
-                BuildResult. Else build the context and send it in the BuildResult's payload.
-        # PARAMETERS:
-            Only one these must be provided:
-                *   id Optional[(int)]
-                *   schema Optional[(str)]
-                *   cord Optional[(Coord)]
-                *   board Optional[(Board)]
-                *   state Optional[LinegeoState]
-            These Parameters must be provided:
-                *   board_service (BoardService)
-                *   coord_service (CoordService)
-                *   token_service (TokenService)
-                *   identity_service (IdentityService)
-            # RETURNS:
-                *   BuildResult[LinGeoContext] containing either:
-                        - On failure: Exception.
-                        - On success: LinGeoContext in the payload.
-            Raises:
-                *   ZeroLinGeoContextFlagsException
-                *   LinGeoContextBuildException
-                *   ArenaLinGeoContextFlagsException
-                *   LinGeoContextBuildRouteException
-            """
-        method = "LinGeoContextBuilder.build"
+        Build a safe LinGeoContext.
+
+        Action:
+            1.  Send an exception in the BuildResult any of these conditions occur.
+                    -   Both options are enabled.
+                    -   Neither option is enabled.
+                    -   Whichever attribute is set gets flgged by its validator.
+            2.  Otherwise, build the LingeoContext.
+            3.  Send the success result.
+        Args:
+            coord: Optional[Coord] = None,
+            vector: Optional[Vector] = None,
+            tool_set: LinGeoContextToolSet = LinGeoContextToolSet()
+        Returns:
+            BuildResult[LinGeoContext]
+        Raises:
+            TypeError
+            LinGeoContextNullException
+            ZeroLinGeoContextFlagsException
+            LinGeoContextBuildException
+            ExcessLinGeoContextFlagsException
+        """
+        method = f"{cls.__name__}.build"
 
         # --- Count how many optional parameters are not-null. only one should be not null. ---#
-        params = [id, name, coord, token,board, state,]
+        params = [coord, vector]
         param_count = sum(bool(p) for p in params)
         
         # Handle the case that, all the optional params are null.
@@ -94,9 +80,13 @@ class LinGeoContextBuilder(Builder[LinGeoContext]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 LinGeoContextBuildException(
-                    msg=f"{method}: {LinGeoContextBuildException.MSG}",
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=LinGeoContextBuildException.MSG,
+                    err_code=LinGeoContextBuildException.ERR_CODE,
                     ex=ZeroLinGeoContextFlagsException(
-                        f"{method}: {ZeroLinGeoContextFlagsException.MSG}"
+                        msg=ZeroLinGeoContextFlagsException.MSG,
+                        err_code=ZeroLinGeoContextFlagsException.ERR_CODE,
                     )
                 )
             )
@@ -105,103 +95,52 @@ class LinGeoContextBuilder(Builder[LinGeoContext]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 LinGeoContextBuildException(
-                    msg=f"{method}: {LinGeoContextBuildException.MSG}",
-                    ex=ArenaLinGeoContextFlagsException(
-                        f"{method}: {ArenaLinGeoContextFlagsException.MSG}"
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=LinGeoContextBuildException.MSG,
+                    err_code=LinGeoContextBuildException.ERR_CODE,
+                    ex=ExcessLinGeoContextFlagsException(
+                        msg=ExcessLinGeoContextFlagsException.MSG,
+                        err_code=ExcessLinGeoContextFlagsException.ERR_CODE,
                     )
                 )
             )
-        # --- Route to the appropriate validation/build branch. ---#
-        
-        # Build the id LinGeoContext if its flag is enabled.
-        if id is not None:
-            validation = identity_service.validate_id(candidate=id)
-            if validation.is_failure:
-                # Return the exception chain on failure.
-                return BuildResult.failure(
-                    LinGeoContextBuildException(
-                        msg=f"{method}: {LinGeoContextBuildException.MSG}",
-                        ex=validation.exception
-                    )
-                )
-            # On validation success return an id_LinGeoContext in the BuildResult.
-            return BuildResult.success(LinGeoContext(id=id))
-        
-        # Build the schema LinGeoContext if its flag is enabled.
-        if name is not None:
-            validation = identity_service.validate_name(candidate=name)
-            if validation.is_failure:
-                # Return the exception chain on failure.
-                return BuildResult.failure(
-                    LinGeoContextBuildException(
-                        msg=f"{method}: {LinGeoContextBuildException.MSG}",
-                        ex=validation.exception
-                    )
-                )
-            # On validation success return a name_LinGeoContext in the BuildResult.
-            return BuildResult.success(LinGeoContext(name=name))
+        # --- Route to the appropriate Build/build branch. ---#
+   
         
         # Build the coord LinGeoContext if its flag is enabled.
         if coord is not None:
-            validation = coord_service.validator.validate(coord)
-            if validation.is_failure:
+            build_result = tool_set.coord_service.validator.validate(coord)
+            if build_result.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     LinGeoContextBuildException(
-                        msg=f"{method}: {LinGeoContextBuildException.MSG}",
-                        ex=validation.exception
-                    )
-                )
-            # On validation success return a coord_LinGeoContext in the BuildResult.
-            return BuildResult.success(LinGeoContext(coord=coord))
-        
-        # Build the board LinGeoContext if its flag is enabled.
-        if board is not None:
-            validation = board_service.validator.validate(candidate=board)
-            if validation.is_failure:
-                # Return the exception chain on failure.
-                return BuildResult.failure(
-                    LinGeoContextBuildException(
-                        msg=f"{method}: {LinGeoContextBuildException.MSG}",
-                        ex=validation.exception
-                    )
-                )
-            # On validation success return a board_LinGeoContext in the BuildResult.
-            return BuildResult.success(LinGeoContext(board=board))
-        
-        # Build the occupant LinGeoContext if its flag is enabled.
-        if token is not None:
-            validation = token_service.validator.search_service(candidate=token)
-            if validation.is_failure:
-                # Return the exception chain on failure.
-                return BuildResult.failure(
-                    LinGeoContextBuildException(
-                        msg=f"{method}: {LinGeoContextBuildException.MSG}",
-                        ex=validation.exception
-                    )
-                )
-            # On validation success return a token_LinGeoContext in the BuildResult.
-            return BuildResult.success(LinGeoContext(occupant=token))
-        
-        # Build the state LinGeoContext if its flag is enabled.
-        if state is not None:
-            if not isinstance(state, LinegeoState):
-                # Return the exception chain on failure.
-                return BuildResult.failure(
-                    LinGeoContextBuildException(
-                        msg=f"{method}: {LinGeoContextBuildException.MSG}",
-                        ex=TypeError(
-                            f"{method}: Was expecting a LinegeoState, got {type(state).__name__} instead."
+                        cls_mthd=method,
+                        cls_name=cls.__name__,
+                        msg=LinGeoContextBuildException.MSG,
+                        err_code=LinGeoContextBuildException.ERR_CODE,
+                        ex=ExcessLinGeoContextFlagsException(
+                            msg=ExcessLinGeoContextFlagsException.MSG,
+                            err_code=ExcessLinGeoContextFlagsException.ERR_CODE,
                         )
                     )
                 )
-            # On validation success return a token_LinGeoContext in the BuildResult.
-            return BuildResult.success(LinGeoContext(state=state))
+            # On Build success, forward the work product.
+            return BuildResult.success(LinGeoContext(coord=coord))
         
-        # Return the exception chain if there is no build route for the context.
-        return BuildResult.failure(
-            LinGeoContextBuildException(
-                msg=f"{method}: {LinGeoContextBuildException.MSG}",
-                ex=LinGeoContextBuildRouteException(f"{method}: {LinGeoContextBuildRouteException.MSG}")
+        # Deal with the alternate case.
+        build_result = tool_set.vector_service.validator.validate(vector)
+        if build_result.is_failure:
+            # Return the exception chain on failure.
+            return BuildResult.failure(
+                LinGeoContextBuildException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=LinGeoContextBuildException.MSG,
+                    err_code=LinGeoContextBuildException.ERR_CODE,
+                    ex=build_result.exception
+                )
             )
-        )
+        # --- Forward the work product to the caller ---#
+        return BuildResult.success(LinGeoContext(vector=vector))
+            

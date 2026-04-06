@@ -58,7 +58,7 @@ class TokenBuilder(Builder[Token]):
             team_validator: TeamValidator = TeamValidator(),
     ) -> BuildResult[Token]:
         """
-        Build a Token.
+        Build a safe Token.
         
         Action:
             1.  Send an exception chain in the BuildResult if any of the following

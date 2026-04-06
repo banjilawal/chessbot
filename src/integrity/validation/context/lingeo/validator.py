@@ -54,10 +54,10 @@ class LinGeoContextValidator(Validator[LinGeoContext]):
             tool_set: LinGeoContextToolSet = LinGeoContextToolSet(),
     ) -> ValidationResult[LinGeoContext]:
         """
-        Verify that the LinGeoContext is safe to use.
+        Verify the candidate is a safe LinGeoContext.
         
         Action:
-            1.  Send and exception in the ValidationResult any of these
+            1.  Send an exception in the ValidationResult any of these
                 conditions occur.
                     -   candidate is null.
                     -   It's not a LinGeoContext.
