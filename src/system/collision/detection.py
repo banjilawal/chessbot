@@ -37,5 +37,5 @@ class CollisionAnalysis(Generic[T]):
     @classmethod
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(cls, target: T, collider_candidates: List[T], *args, **kwargs, ) -> CollisionReport[T]:
+    def analyze(cls, target: T, collider_candidates: List[T], *args, **kwargs, ) -> CollisionReport[T]:
         pass

@@ -64,9 +64,7 @@ class ModelException(ChessException):
             cls_mthd: Optional[str]
             err_code: Optional[str]
         """
-        op = self.OP
         msg = msg or self.MSG
-        rslt_type = self.RSLT_TYPE
         err_code = err_code or self.ERR_CODE
         super().__init__(
             ex=ex,
@@ -77,16 +75,3 @@ class ModelException(ChessException):
             cls_name=cls_name,
             cls_mthd=cls_mthd,
         )
-        self._op = op
-        self._rslt_type = rslt_type
-    
-    @property
-    def op(self) -> Optional[str]:
-        return self._op
-    
-    @property
-    def rslt_type(self) -> Optional[str]:
-        return self._rslt_type
-    
-    def __str__(self):
-        return f"{super().__str__()}, op:{self._op}, rslt_type:{self._rslt_type}"

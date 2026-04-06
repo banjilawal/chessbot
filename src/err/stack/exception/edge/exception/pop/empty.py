@@ -14,7 +14,7 @@ __all__ = [
     "PoppingEmptyEdgeStackException",
 ]
 
-from graph.edge import EdgeDebugException
+from microservice.edge import EdgeDebugException
 
 
 # ======================# POPPING_EMPTY_EDGE_STACK EXCEPTION #======================#

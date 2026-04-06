@@ -94,7 +94,7 @@ __all__ = [
 ]
 
 from system import SearchException
-from graph.node import NodeException
+from model.graph.node import NodeException
 
 
 # ======================# NODE_SEARCH_FAILURE #======================#

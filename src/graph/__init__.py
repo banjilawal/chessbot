@@ -15,10 +15,7 @@ log = logging.getLogger("chessbot")
 
 # Packages
 from .domain import *
-from .edge import *
-from .node import *
-from .graph import *
-from .node import *
+from graph.domain.graph import *
 from .pair import *
 from .tree import *
 

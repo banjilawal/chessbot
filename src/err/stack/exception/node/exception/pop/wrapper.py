@@ -12,7 +12,7 @@ __all__ = [
     "NodePopException",
 ]
 
-from graph.node import NodeStackException
+from model.graph.node import NodeStackException
 from system import DeletionException
 
 

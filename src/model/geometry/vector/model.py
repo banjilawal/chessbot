@@ -35,7 +35,7 @@ class Vector:
                 a series of Coords.
     
     Responsibilities:
-        1.  Represents a delta_x, delta_y which are added to a Coord.
+        1.  Represents a delta_x, delta_y which for traveling to coord.
     
     Attributes:
         x: int

@@ -176,7 +176,7 @@ class TeamValidator(Validator[Team]):
         method = "TeamValidator._verify_team_owner"
         
         # Handle the case that, either team.owner does not pass a validation check. or the analysis aborts.
-        owner_team_relation = player_service.player_team_relation_analyzer.execute(
+        owner_team_relation = player_service.player_team_relation_analyzer.analyze(
             candidate_primary=team.owner,
             candidate_satellite=team,
         )

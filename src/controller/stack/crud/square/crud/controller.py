@@ -29,7 +29,7 @@ class SquareStackCrudController:
                     square: Square,
                     square_stack: SquareStackService,
                     rank_quota_analyzer: SquareStackCapacityAnalysis = SquareStackCapacityAnalysis(),
-                    collision_detector: SquareCollisionAnalysis = SquareCollisionAnalysis(),
+                    collision_detector: SquareCollisionAnalyst = SquareCollisionAnalyst(),
             ) -> InsertionResult
 
     Super Class:

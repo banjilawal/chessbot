@@ -7,7 +7,7 @@ Created: 2026-02-18
 version: 1.0.0
 """
 
-from graph.edge import EdgeDebugException
+from microservice.edge import EdgeDebugException
 
 __all__ = [
     # ======================# ADDING_DUPLICATE_EDGE EXCEPTION #======================#

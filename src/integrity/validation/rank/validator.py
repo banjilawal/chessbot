@@ -26,7 +26,7 @@ class RankValidator(Validator[Rank]):
     Provides:
         -   def validate(
                     rank: Any,
-                    workers: RankIntegrityWorkers,
+                    workers: RankTool,
                     persona_validator: RankPersonaValidator
             ) -> ValidationResult[Rank]:
 
@@ -54,7 +54,7 @@ class RankValidator(Validator[Rank]):
             2.  Otherwise, after the rank is cast to a Rank, send the success result.
         Args:
             candidate: Any
-            workers: RankIntegrityWorkers
+            workers: RankTool
             persona_validator: RankPersonaValidator
         Returns:
             ValidationResult[Rank]

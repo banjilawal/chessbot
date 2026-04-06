@@ -39,7 +39,7 @@ class TokenCollisionAnalysis(CollisionAnalysis[Token]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def analyze(
             cls,
             target: Token,
             token_stack: TokenStackService,

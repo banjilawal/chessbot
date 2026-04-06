@@ -10,9 +10,9 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Dict, List
 
-from graph.node import Node
-from graph.graph import Graph
-from graph.edge import Edge, EdgeBuilder, PushingEdgeException
+from model.graph.node import Node
+from graph.domain.graph import Graph
+from microservice.edge import Edge, EdgeBuilder, PushingEdgeException
 from system import BuildResult, InsertionResult, LoggingLevelRouter
 from math.span import AsymmetricEdgeBuildException, NodeEdgeHandlerException, SymmetricEdgeBuildException
 

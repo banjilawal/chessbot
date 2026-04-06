@@ -21,7 +21,6 @@ from .identity import *
 from .logging import *
 from .mouse import *
 from .notification import *
-from .number import *
 from .result import *
 from .relation import *
 from .resolution import *

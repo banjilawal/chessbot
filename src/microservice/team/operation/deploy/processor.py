@@ -35,7 +35,7 @@ class DeployTeam:
                     square_stack: SquareStackService,
                     rank_service: RankService = RankService(),
                     rank_quota_analyzer: SquareStackCapacityAnalysis = SquareStackCapacityAnalysis(),
-                    collision_detector: SquareCollisionAnalysis = SquareCollisionAnalysis(),
+                    collision_detector: SquareCollisionAnalyst = SquareCollisionAnalyst(),
             ) -> InsertionResult
 
     Super:

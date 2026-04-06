@@ -94,7 +94,7 @@ __all__ = [
 ]
 
 from system import SearchException
-from graph.edge import EdgeException
+from microservice.edge import EdgeException
 
 
 # ======================# EDGE_SEARCH_FAILURE #======================#

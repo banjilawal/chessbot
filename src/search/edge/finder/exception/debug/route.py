@@ -15,7 +15,7 @@ __all__ = [
     "EdgeSearchRouteException",
 ]
 
-from graph.edge import EdgeDebugException
+from microservice.edge import EdgeDebugException
 
 
 # ======================# NO_EDGE_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#

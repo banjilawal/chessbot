@@ -15,7 +15,7 @@ __all__ = [
     "EdgeNotFoundException",
 ]
 
-from graph.edge import EdgeDebugException
+from microservice.edge import EdgeDebugException
 
 
 # ======================# EDGE_NOT_FOUND_EXCEPTION #======================#

@@ -15,6 +15,7 @@ from err.work.bounds import *
 from .build import *
 from .model import *
 from .null import *
+from .number import *
 from .service import *
 from .rollback import *
 from .transaction import *

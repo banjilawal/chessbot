@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from graph.graph import Graph
+from graph.domain.graph import Graph
 from math.span import SquareSpan
 from geometry.square import SquareStackService
 from system import BuildResult, Builder, LoggingLevelRouter

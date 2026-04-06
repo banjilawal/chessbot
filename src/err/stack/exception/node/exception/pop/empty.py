@@ -14,7 +14,7 @@ __all__ = [
     "PoppingEmptyNodeStackException",
 ]
 
-from graph.node import NodeDebugException
+from model.graph.node import NodeDebugException
 
 
 # ======================# POPPING_EMPTY_NODE_STACK EXCEPTION #======================#

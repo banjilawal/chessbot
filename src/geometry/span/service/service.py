@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from abc import abstractmethod
 
-from graph.graph import Graph
+from graph.domain.graph import Graph
 from model.geometry.coord import CoordService
 from math.span import CoordSpan, SpanGraphHandler, SpanServiceException, Spanner
 from model.geometry.vector import VectorService

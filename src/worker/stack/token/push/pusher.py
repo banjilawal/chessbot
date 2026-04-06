@@ -91,7 +91,7 @@ class TokenStackPush:
                 )
             )
         # ServiceRequest a collision report. The token is verified during the report generation. ---#
-        collision_detection_result = collision_detector.execute(
+        collision_detection_result = collision_detector.analyze(
             target=token,
             dataset=token_stack.items,
         )
@@ -108,7 +108,7 @@ class TokenStackPush:
                 )
             )
         # --- ServiceRequest a rank quota report. ---#
-        rank_quota_report = rank_quota_analyzer.execute(
+        rank_quota_report = rank_quota_analyzer.analyze(
             rank=token.rank,
             token_stack=token_stack,
             rank_service=rank_service,

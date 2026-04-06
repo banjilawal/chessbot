@@ -9,6 +9,8 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from model import Context
+
 
 class EdgeContext(Context[Edge]):
     """

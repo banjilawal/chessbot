@@ -13,4 +13,3 @@ version: 1.0.0
 from .validator import *
 
 # Modules
-from .workers import GeometryIntegrityWorkers

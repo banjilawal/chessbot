@@ -15,6 +15,22 @@ from model import Vector
 
 
 class Quadrant(Enum):
+    """
+    Role:
+        -   Model
+        -   Stateless Data-Holder
+
+    Responsibilities:
+        1.  Vectors for traveling in a direction.
+
+    Attributes:
+        id: int
+        vector: int
+
+    Provides:
+
+    Super Class:
+    """
     def __new__(cls, quad_id: int, vector: Vector):
         obj = object.__new__(cls)
         obj._id = quad_id

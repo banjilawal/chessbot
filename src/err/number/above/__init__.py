@@ -1,0 +1,16 @@
+# src/err/number/above/__init__.py
+
+"""
+Module: err.number.above.__init__
+Author: Banji Lawal
+Created: 2026-04-04
+version: 1.0.1
+"""
+
+# ============ NUMBER.ABOVE PACKAGE CONTENTS ===========#
+
+# Packages
+None
+
+# Modules
+from .exception import NumberAboveBoundsException

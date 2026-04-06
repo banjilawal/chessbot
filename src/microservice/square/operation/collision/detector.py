@@ -17,7 +17,7 @@ from logic.square.service import SquareStackService
 from system import CollisionAnalysis, CollisionReport, LoggingLevelRouter
 
 
-class SquareCollisionAnalysis(CollisionAnalysis[Square]):
+class SquareCollisionAnalyst(CollisionAnalysis[Square]):
     """
      Role:
          - Collision Detection Worker
@@ -40,7 +40,7 @@ class SquareCollisionAnalysis(CollisionAnalysis[Square]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(
+    def analyze(
             cls,
             target: Square,
             square_stack: SquareStackService,

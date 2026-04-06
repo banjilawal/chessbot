@@ -8,6 +8,9 @@ version: 1.0.1
 """
 
 from __future__ import annotations
+from typing import Any, Dict, Optional
+
+from model import Context, Game, Player, Team
 
 
 class PlayerContext(Context[Player]):
@@ -21,14 +24,11 @@ class PlayerContext(Context[Player]):
         1.  Supply a Player attribute-value tuple which selects an execution path.
 
     Attributes:
-        id: Optional[int]
+        id: Optional[id]
+        name: Optional[str]
         team: Optional[Team]
-        rank: Optional[Rank]
-        ransom: Optional[int]
-        current_position:Optional[Coord]
-        designation: Optional[str]
-        color: Optional[GameColor]
-        opening_square_name: Optional[str]
+        game: Optional[Game]
+        class_name: Optional[str]
 
     Provides:
         -   to_dict() -> Dict[str, Any]
@@ -38,7 +38,7 @@ class PlayerContext(Context[Player]):
     """
     _team: Optional[Team]
     _game: Optional[Game]
-    _variety: Optional[PlayerVariety]
+    _class_name: Optional[str]
     
     def __init__(
             self,
@@ -46,26 +46,20 @@ class PlayerContext(Context[Player]):
             name: Optional[str] = None,
             team: Optional[Team] = None,
             game: Optional[Game] = None,
-            variety: Optional[PlayerVariety] = None,
+            class_name: Optional[str] = None,
     ):
         """
-        # ACTION:
-            Constructor
-        # PARAMETERS:
-            *   id (Optional[int])
-            *   designation (Optional[str])
-            *   team (Optional[Team])
-            *   game (Optional[Game])
-            *   variety (Optional[PlayerVariety])
-        # RETURNS:
-            None
-        Raises:
-            None
+        Args:
+            id: Optional[id]
+            name: Optional[str]
+            team: Optional[Team]
+            game: Optional[Game]
+            class_name: Optional[str]
         """
         super().__init__(id=id, name=name)
         self._team = team
         self._game = game
-        self._variety = variety
+        self._class_name = class_name
         
     @property
     def team(self) -> Optional[Team]:
@@ -76,24 +70,16 @@ class PlayerContext(Context[Player]):
         return self._game
     
     @property
-    def variety(self) -> Optional[PlayerVariety]:
-        return self._variety
+    def class_name(self) -> Optional[str]:
+        return self._class_name
     
-    def to_dict(self) -> dict:
-        """
-        # Convert the PlayerContext object to a dictionary.
-        # PARAMETERS:
-            None
-        # RETURNS:
-            dict
-        Raises:
-            None
-        """
+    @property
+    def to_dict(self) -> Dict[str, Any]:
         return {
             "id": self.id,
-            "designation": self.designation,
+            "name": self.name,
             "team": self._team,
             "game": self._game,
-            "variety": self._variety,
+            "class_name": self._class_name,
         }
     

@@ -15,7 +15,7 @@ __all__ = [
     "NodeSearchRouteException",
 ]
 
-from graph.node import NodeDebugException
+from model.graph.node import NodeDebugException
 
 
 # ======================# NO_NODE_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#

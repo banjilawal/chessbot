@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from graph.edge import Edge, EdgeBuildException
+from microservice.edge import Edge, EdgeBuildException
 from system import Builder, BuildResult, LoggingLevelRouter, NumberValidator
 
 

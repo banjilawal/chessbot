@@ -15,6 +15,8 @@ from logic.square import Square, SquareBuildException, SquareCollisionAnalysis
 from system import (
     Builder, IdFactory, IdentityService, BuildResult, InvariantBreachException, LoggingLevelRouter
 )
+from tool import SquareTool
+
 
 class SquareBuilder(Builder[Square]):
     """
@@ -38,7 +40,7 @@ class SquareBuilder(Builder[Square]):
                 board_service: BoardService,
                 coord_service: CoordService,
                 identity_service: IdentityService,
-                square_collision_analyzer: SquareCollisionAnalysis),
+                square_collision_analyzer: SquareCollisionAnalyst),
             ) -> BuildResult[Square]
 
      Super Class:
@@ -53,10 +55,7 @@ class SquareBuilder(Builder[Square]):
             board: Board,
             coord: Coord,
             id: int = IdFactory.next_id(class_name="Square"),
-            board_service: BoardService = BoardService(),
-            coord_service: CoordService = CoordService(),
-            identity_service: IdentityService = IdentityService(),
-            square_collision_analyzer: SquareCollisionAnalysis = SquareCollisionAnalysis(),
+            tool: SquareTool = SquareTool(),
     ) -> BuildResult[Square]:
         """
         Action:
@@ -72,9 +71,7 @@ class SquareBuilder(Builder[Square]):
             name: str
             coord: Coord
             board: Board
-            coord_service: CoordService
-            board_service: BoardService
-            identity_service: IdentityService
+            tool: SquareTool
         Returns:
             BuildResult[Square]
             
@@ -89,10 +86,7 @@ class SquareBuilder(Builder[Square]):
             name=name,
             coord=coord,
             board=board,
-            board_service=board_service,
-            coord_service=coord_service,
-            identity_service=identity_service,
-            collision_analyzer=square_collision_analyzer,
+            tool=too,
         )
         if build_param_validation_result.is_failure:
             return build_param_validation_result
@@ -110,10 +104,7 @@ class SquareBuilder(Builder[Square]):
             name: str,
             coord: Coord,
             board: Board,
-            board_service: BoardService,
-            coord_service: CoordService,
-            identity_service: IdentityService,
-            collision_analyzer: SquareCollisionAnalysis,
+            tool: SquareTool,
     ) -> BuildResult[Square]:
         """
         Verify that, the square's build params are safe. A BuildResult is returned
@@ -136,7 +127,7 @@ class SquareBuilder(Builder[Square]):
             board_service: BoardService
             coord_service: CoordService
             identity_service: IdentityService
-            collision_analyzer: SquareCollisionAnalysis
+            collision_analyzer: SquareCollisionAnalyst
         Returns:
             BuildResult[Square]
         Raises:
@@ -145,7 +136,7 @@ class SquareBuilder(Builder[Square]):
         method = f"{cls.__name__}_run_build_param_checks"
         
         # Handle the case that, either id or schema are not certified safe.
-        identity_validation = identity_service.validate_identity(
+        identity_validation = tool.identity_service.validate_identity(
             id_candidate=id,
             name_candidate=name
         )
@@ -162,8 +153,8 @@ class SquareBuilder(Builder[Square]):
                     ex=identity_validation.exception,
                 )
             )
-        # Handle the case that, the coordis not safe.
-        coord_validation = coord_service.validator.validate(coord)
+        # Handle the case that, the coord is not safe.
+        coord_validation = tool.coord_service.validator.validate(coord)
         if coord_validation.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
@@ -177,8 +168,8 @@ class SquareBuilder(Builder[Square]):
                     ex=coord_validation.exception,
                 )
             )
-        # Handle the case that, the boardis not safe.
-        board_validation = board_service.validator.validate(board)
+        # Handle the case that, the board is not safe.
+        board_validation = tool.board_service.validator.validate(board)
         if board_validation.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
@@ -193,7 +184,7 @@ class SquareBuilder(Builder[Square]):
                 )
             )
         # Handle the case that, the square's attributes have already been used.
-        collision_detection_result = collision_analyzer.execute(
+        collision_detection_result = tool.collision_analyst.analyze(
             id=id,
             name=name,
             coord=coord,

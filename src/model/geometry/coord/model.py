@@ -10,7 +10,6 @@ version: 1.0.1
 from __future__ import annotations
 
 
-
 class Coord:
     """
     Role:
@@ -18,7 +17,7 @@ class Coord:
         -   Data-Holder
   
     Responsibilities:
-        1.  Provide global, low-level addressing squares and tokens on the board.
+        1.  Shared key between Squares and Tokens. Board array indices.
         
     Attributes:
         row: int

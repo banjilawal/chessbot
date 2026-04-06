@@ -9,6 +9,13 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from typing import Any
+
+from integrity import Validator
+from model import AlgebraAcontext
+from system import LoggingLevelRouter
+
+
 class AlgebraContextValidator(Validator[AlgebraAcontext]):
     """
     Role
@@ -18,13 +25,13 @@ class AlgebraContextValidator(Validator[AlgebraAcontext]):
         -   Validation Process Owner
 
     Responsibilities:
-        1.  Ensure a Coord instance is certified safe, reliable and consistent before use.
+        1.  Ensure a AlgebraContext instance is certified safe, reliable and consistent before use.
 
     Attributes:
 
     Properties:
         -   def validate(
-                    candidate: Union[Vector, Coord],
+                    candidate: Any,
                     workers: GeometryIntegrityWorkers = GeometryIntegrityWorkers(),
             ) -> ValidationResult[Union[Vector, Coord]]:
 
@@ -36,7 +43,7 @@ class AlgebraContextValidator(Validator[AlgebraAcontext]):
     @LoggingLevelRouter.monitor
     def validate(
             cls,
-            candidate: Union[Vector, Coord],
+            candidate: Any,
             workers: GeometryIntegrityWorkers = GeometryIntegrityWorkers(),
     ) -> ValidationResult[Union[Vector, Coord]]:
         """

@@ -13,4 +13,4 @@ version: 1.0.0
 from .exception import *
 
 # Modules
-from .detector import SquareCollisionAnalysis
+from .detector import SquareCollisionAnalyst

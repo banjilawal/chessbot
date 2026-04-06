@@ -12,7 +12,7 @@ __all__ = [
     "PushingEdgeException",
 ]
 
-from graph.edge import EdgeStackException
+from microservice.edge import EdgeStackException
 from system import InsertionException
 
 

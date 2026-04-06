@@ -75,7 +75,7 @@ class ArenaService(Microservice[Arena]):
     @LoggingLevelRouter.monitor
     def add_team(self, arena: Arena, team: Team, team_service: TeamService = ()) -> InsertionResult[Team]:
         method = "ArenaService.add_team"
-        relation = self._arena_team_relation_analyzer.execute(
+        relation = self._arena_team_relation_analyzer.analyze(
             candidate_primary=arena,
             candidate_satellite=team,
             arena_validator=self.validator,

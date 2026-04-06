@@ -7,6 +7,13 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
+from __future__ import annotations
+
+from typing import Any, Dict, Optional
+
+from catalog import Persona
+from model import Context
+
 
 class PersonaContext(Context[Persona]):
     """
@@ -19,14 +26,10 @@ class PersonaContext(Context[Persona]):
         1.  Supply a Persona attribute-value tuple which selects an execution path.
 
     Attributes:
-        id: Optional[int]
-        team: Optional[Team]
-        rank: Optional[Rank]
+        name: Optional[str]
+        quota: Optional[int]
         ransom: Optional[int]
-        current_position:Optional[Coord]
         designation: Optional[str]
-        color: Optional[GameColor]
-        opening_square_name: Optional[str]
 
     Provides:
         -   to_dict() -> Dict[str, Any]
@@ -47,17 +50,11 @@ class PersonaContext(Context[Persona]):
             designation: Optional[str] = None,
     ):
         """
-        # ACTION:
-            Constructor
-        # PARAMETERS:
-            *   schema (Optional[str])
-            *   quota (Optional[int])
-            *   ransom (Optional[int])
-            *   designation (Optional[str])
-        # RETURN:
-            None
-        Raises:
-            None
+        Args:
+            name: Optional[str]
+            quota: Optional[int]
+            ransom: Optional[int]
+            designation: Optional[str]
         """
         super().__init__(id=None, name=name)
         self._quota = quota
@@ -76,17 +73,8 @@ class PersonaContext(Context[Persona]):
     def designation(self) -> Optional[str]:
         return self._designation
     
-    def to_dict(self) -> dict:
-        """
-        # ACTION
-            1.  Convert the PersonaContext object to a dictionary.
-        # PARAMETERS:
-            *   None
-        # RETURNS:
-            *   dict
-        Raises:
-            *   None
-        """
+    @property
+    def to_dict(self) -> Dict[str, Any]:
         return {
             "schema": self.designation,
             "ransom": self._ransom,

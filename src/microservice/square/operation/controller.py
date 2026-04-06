@@ -27,7 +27,7 @@ class SquareOpsController:
         build: SquareBuild
         validate: SquareValidation
         vistation: VisitationController
-        collision_detection: SquareCollisionAnalysis
+        collision_detection: SquareCollisionAnalyst
         position_controller: SquarePositionController
         readiness_analyzer: SquareReadinessAnalysis
 
@@ -52,7 +52,7 @@ class SquareOpsController:
         """
         Args:
             vistation: VisitationController
-            collision_detection: SquareCollisionAnalysis
+            collision_detection: SquareCollisionAnalyst
             position_controller: SquarePositionController
             readiness_analyzer: SquareReadinessAnalysis
         """

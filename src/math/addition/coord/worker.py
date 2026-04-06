@@ -11,8 +11,9 @@ from __future__ import annotations
 
 from typing import List, Union
 
-from geometry import Coord, Vector
+from integrity import AlgebraContextValidator
 from microservice import CoordService, VectorService
+from model import Coord
 from result import ComputationResult
 
 
@@ -63,7 +64,7 @@ class CoordAdder:
     def execute(
             cls,
             coord: Coord,
-            operand: Union[Vector, Coord],
+            context: AlgebraContex,
             coord_service: CoordService = CoordService(),
             vector_service: VectorService = VectorService(),
     ) -> ComputationResult[Coord]:

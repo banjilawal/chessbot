@@ -11,12 +11,12 @@ from __future__ import annotations
 
 from typing import Dict
 
-from graph.graph import Graph
+from graph.domain.graph import Graph
 from math.span import (
     PairInsertionException, NodeStackServiceProductionException, SquareGraphHandlerException,
     SquareRay, SquareSpan
 )
-from graph.node import Node, NodeService,
+from model.graph.node import Node, NodeService,
 from math.span.service.handler import PairBuildException
 from system import BuildResult, InsertionResult, LoggingLevelRouter
 

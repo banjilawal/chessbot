@@ -11,6 +11,8 @@ from __future__ import annotations
 from typing import Union
 
 from logic.coord import Coord, CoordService
+
+from tool import AlgebraTool
 from worker.worker import Worker
 from model.geometry.vector import Vector, VectorService
 from system import (
@@ -36,14 +38,14 @@ class VectorCoordConverter(Worker):
     Properties:
     
     -   def work(
-                operand: Union[Vector,Coord],
+                operand: AlgebraContext,
                 coord_service: CoordService,
                 vector_service: VectorService,
                 number_validator: NumberValidator,
         ) -> ComputationResult[Union[Vector, Coord]]:
     
     -   def _conversion_helper(
-                operand: Union[Vector,Coord],
+                operand: AlgebraContext,
                 coord_service: CoordService,
                 vector_service: VectorService,
                 number_validator: NumberValidator,
@@ -71,10 +73,8 @@ class VectorCoordConverter(Worker):
     @LoggingLevelRouter.monitor
     def work(
             cls,
-            operand: Union[Vector,Coord],
-            coord_service: CoordService = CoordService(),
-            vector_service: VectorService = VectorService(),
-            number_validator: NumberValidator = NumberValidator(),
+            context: AlgebraContext,
+            tool: AlgebraTool = AlgebraTool(),
     ) -> ComputationResult[Union[Vector, Coord]]:
         """
         Convert a vector to a coord and vice versa.
@@ -87,7 +87,7 @@ class VectorCoordConverter(Worker):
                     -   Building the other type fails.
             2.  Otherwise, send the success result.
         Args:
-            operand: Union[Vector,Coord]
+            operand: AlgebraContext
             coord_service: CoordService
             vector_service: VectorService
             number_validator: NumberValidator
@@ -139,7 +139,7 @@ class VectorCoordConverter(Worker):
                     -   Either converter flags an error
             2.  Otherwise, send the success result.
         Args:
-            operand: Union[Vector,Coord]
+            operand: AlgebraContext
             coord_service: CoordService
             vector_service: VectorService
             number_validator: NumberValidator

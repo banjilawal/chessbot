@@ -37,7 +37,7 @@ class SquareStackPush:
                     square_stack: SquareStackService,
                     rank_service: RankService = RankService(),
                     rank_quota_analyzer: SquareStackCapacityAnalysis = SquareStackCapacityAnalysis(),
-                    collision_detector: SquareCollisionAnalysis = SquareCollisionAnalysis(),
+                    collision_detector: SquareCollisionAnalyst = SquareCollisionAnalyst(),
             ) -> InsertionResult
 
     Super:
@@ -65,7 +65,7 @@ class SquareStackPush:
            rank_service: RankService
            square_stack: SquareStackService
            rank_quota_analyzer: SquareStackCapacityAnalysis
-           collision_detector: SquareCollisionAnalysis
+           collision_detector: SquareCollisionAnalyst
         Returns:
             InsertionResult
         Raises:
@@ -91,7 +91,7 @@ class SquareStackPush:
                 )
             )
         # ServiceRequest a collision report. The square is verified during the report generation. ---#
-        collision_detection_result = collision_detector.execute(
+        collision_detection_result = collision_detector.analyze(
             target=square,
             dataset=square_stack.items,
         )

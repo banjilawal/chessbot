@@ -12,9 +12,9 @@ from typing import Optional
 
 from logic.board import Board, BoardService
 from logic.coord import Coord, CoordService
-from graph.edge import EdgeState
+from microservice.edge import EdgeState
 from system import Builder, BuildResult, IdentityService
-from graph.edge import (
+from microservice.edge import (
     EdgeContextBuildRouteException, ZeroEdgeContextFlagsException, EdgeContext, EdgeContextBuildException,
     ArenaEdgeContextFlagsException
 )
