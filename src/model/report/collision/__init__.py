@@ -7,11 +7,11 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-
 # =========== REPORT PACKAGE CONTENTS ===========#
 
 # Packages
-from .collision import *
+from .exception import *
 
 # Modules
-from .report import Report
+from .report import CollisionReport
+from .state import CollisionState

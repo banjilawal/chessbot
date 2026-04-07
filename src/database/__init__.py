@@ -1,7 +1,7 @@
-# src/__init__.py
+# src/board/__init__.py
 
 """
-Module: __init__
+Module: .board.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,7 +11,7 @@ import logging
 
 log = logging.getLogger("chessbot")
 
-# =========== PACKAGE CONTENTS ===========#
+# =========== BOARD PACKAGE CONTENTS ===========#
 
 # Packages
 from .board import *

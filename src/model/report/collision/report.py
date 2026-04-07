@@ -10,8 +10,6 @@ Version: 1.0.0
 from __future__ import annotations
 from typing import Any, Generic, Optional, TypeVar
 
-from system import CollisionStatus
-
 T = TypeVar("T")
 
 
@@ -34,9 +32,8 @@ class CollisionReport(Generic[T]):
     # INHERITED ATTRIBUTES:
         *   See DataResult class for inherited attributes.
     """
-    _var: Optional[str]
-    _value: Optional[Any]
-    _target: Optional[T]
+    _colliding_variable: Optional[str]
+    _collision_value: Optional[Any]
     _collider: Optional[T]
     _state: CollisionStatus
     _exception: Optional[Exception]
@@ -45,17 +42,17 @@ class CollisionReport(Generic[T]):
     def __init__(
             self,
             state: CollisionStatus,
-            var: Optional[str] = None,
+            colliding_variable: Optional[str] = None,
             target: Optional[T] = None,
-            value: Optional[Any] = None,
+            collision_value: Optional[Any] = None,
             collider: Optional[T] = None,
             exception: Optional[Exception] = None,
     ):
         super().__init__(state=state, target=target, exception=exception)
         """INTERNAL: Use build methods instead of direct constructor."""
         method = "CollisionReport.result"
-        self._var = var
-        self._value = value
+        self._colliding_variable = colliding_variable
+        self._collision_value = collision_value
         self._state = state
         self._target = target
         self._collider = collider
@@ -66,12 +63,12 @@ class CollisionReport(Generic[T]):
         return self._state
     
     @property
-    def var(self) -> Optional[str]:
-        return self._var
+    def colliding_variable(self) -> Optional[str]:
+        return self._colliding_variable
     
     @property
-    def value(self) -> Optional[Any]:
-        return self._value
+    def collision_value(self) -> Optional[Any]:
+        return self._collision_value
         
     @property
     def target(self) -> T:
@@ -88,8 +85,8 @@ class CollisionReport(Generic[T]):
     @property
     def collision_exists(self) -> bool:
         return (
-                self.var is not None and
-                self.value is not None and
+                self.colliding_variable is not None and
+                self.collision_value is not None and
                 self.target is not None and
                 self._collider is not None and
                 self.exception is not None and
@@ -99,8 +96,8 @@ class CollisionReport(Generic[T]):
     @property
     def is_no_collision(self) -> bool:
         return (
-                self.var is None and
-                self.value is None and
+                self.colliding_variable is None and
+                self.collision_value is None and
                 self.target is  None and
                 self._collider is None and
                 self.exception is None and
@@ -110,8 +107,8 @@ class CollisionReport(Generic[T]):
     @property
     def is_failure(self) -> bool:
         return (
-                self.var is None and
-                self.value is None and
+                self.colliding_variable is None and
+                self.collision_value is None and
                 self.target is None and
                 self._collider is None and
                 self.exception is not None and
@@ -124,8 +121,8 @@ class CollisionReport(Generic[T]):
     @property
     def is_timed_out(self) -> bool:
         return (
-                self.var is None and
-                self.value is None and
+                self.colliding_variable is None and
+                self.collision_value is None and
                 self._collider is None and
                 self.target is None and
                 self.exception is not None and
@@ -135,15 +132,15 @@ class CollisionReport(Generic[T]):
     @classmethod
     def collision_occurred(
             cls,
-            var: str,
+            colliding_variable: str,
             val: Any,
             target: T,
             collider: T,
             exception: Exception
     ) -> CollisionReport[T]:
         return cls(
-            var=var,
-            value=val,
+            colliding_variable=colliding_variable,
+            collision_value=val,
             target=target,
             collider=collider,
             exception=exception,
@@ -153,8 +150,8 @@ class CollisionReport(Generic[T]):
     @classmethod
     def no_collision(cls) -> CollisionReport[T]:
         return cls(
-            var=None,
-            value=None,
+            colliding_variable=None,
+            collision_value=None,
             target=None,
             collider=None,
             exception=None,
@@ -164,8 +161,8 @@ class CollisionReport(Generic[T]):
     @classmethod
     def failure(cls, exception: Exception):
         return cls(
-            var=None,
-            value=None,
+            colliding_variable=None,
+            collision_value=None,
             target=None,
             collider=None,
             exception=exception,
@@ -175,8 +172,8 @@ class CollisionReport(Generic[T]):
     @classmethod
     def timed_out(cls, exception: Exception):
         return cls(
-            var=None,
-            value=None,
+            colliding_variable=None,
+            collision_value=None,
             target=None,
             collider=None,
             exception=exception,

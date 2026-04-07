@@ -1,14 +1,15 @@
 from abc import ABC
 from typing import Generic, TypeVar
 
-from result import ComputationResult, Result
+from model import Report
+from result import AnalysisResult
 from system import LoggingLevelRouter
 
-T = TypeVar("T")
+R = TypeVar("R", bound=Report)
 
-class Analyst(ABC, Generic[T]):
+class Analyst(ABC, Generic[R]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def analyze(cls, ) -> ComputationResult[Report]:
+    def analyze(cls, ) -> AnalysisResult[R]:
         pass

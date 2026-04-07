@@ -10,7 +10,7 @@ Version: 1.0.0
 from enum import Enum, auto
 
 
-class CollisionStatus(Enum):
+class CollisionState(Enum):
     """
     """
     NO_COLLISIONS = auto(),

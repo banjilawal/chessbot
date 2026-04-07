@@ -1,10 +1,10 @@
-# src/logic/system/collision/detector_.py
+# src/analyst/collision/__init__.py
 
 """
-Module: logic.system.collision.detector_
+Module: analyst.collision.__init__
 Author: Banji Lawal
-Created: 2026-02-21
-Version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
@@ -12,7 +12,9 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Generic, List, TypeVar
 
-from system import CollisionReport, LoggingLevelRouter
+from model import Blueprint
+from result import AnalysisResult
+from system import LoggingLevelRouter
 
 T = TypeVar("T")
 
@@ -37,5 +39,11 @@ class CollisionAnalyst(Generic[T]):
     @classmethod
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def analyze(cls, target: T, collider_candidates: List[T], *args, **kwargs, ) -> CollisionReport[T]:
+    def analyze(
+            cls,
+            target_blueprint: Blueprint[T],
+            collider_candidates: List[T],
+            *args,
+            **kwargs,
+    ) -> AnalysisResult[CollisionReport[T]]:
         pass

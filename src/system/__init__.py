@@ -13,7 +13,6 @@ version: 1.0.0
 from system import *
 from .color import *
 from .config import *
-from .collision import *
 from .collection import *
 from system.collection.adt import *
 from .event import *
