@@ -12,7 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from catalog import Formation
-from model import Blueprint, Team, Token
+from model import Blueprint, Rank, Team, Token
 
 
 @dataclass
@@ -20,3 +20,4 @@ class TokenBlueprint(Blueprint[Token]):
     id: int
     team: Team
     formation: Formation
+    rank: Rank = None
