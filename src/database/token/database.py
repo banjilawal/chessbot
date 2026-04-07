@@ -11,7 +11,12 @@ from __future__ import annotations
 from typing import List, Optional
 
 from database import Database
-from model import Token
+from microservice import RankService
+from microservice.stack import TokenStackService
+from model import Rank, Token, TokenBlueprint
+from result import ComputationResult
+from result.report.stack.token.quota.report import RankQuotaReport
+from system import CollisionReport, LoggingLevelRouter
 
 
 class TokenDatabase(Database[Token]):
@@ -39,7 +44,7 @@ class TokenDatabase(Database[Token]):
         -   insert(item: T) -> InsertionResult:
         -   delete_by_id(id: int) -> DeletionResult[T]:
         -   search(context: Context[T]) -> SearchResult[List[T]]
-    """
+    ""
     Role:
         -   Repo interface.
         -   Data Protection layer.
@@ -140,10 +145,16 @@ class TokenDatabase(Database[Token]):
     #     self._kernel.deployment_state = state
     
     @LoggingLevelRouter.monitor
+    def run_collision_analysis(
+            self,
+            blueprint: TokenBlueprint,
+    ) -> ComputationResult[CollisionReport]:
+    
+    @LoggingLevelRouter.monitor
     def rank_quota_report(
             self,
             rank: Rank,
-            rank_service: RankService = RankService(),
+            rank_service: RankService = None
     ) -> ComputationResult[RankQuotaReport]:
         """
         Produce a quota report for the rank.
@@ -161,6 +172,9 @@ class TokenDatabase(Database[Token]):
         """
         method = f"T{self.__class__.name}.number_of_openings_for_rank"
         
+        if rank_service is None:
+            rank_service = RankService()
+            
         # --- Forward the request to the kernel. ---#
         rank_quota_analysis_result = self._kernel.request.rank_quota_analyzer.execute(
             rank=rank,

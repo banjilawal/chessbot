@@ -1,7 +1,7 @@
-# src/result/delete/__init__.py
+# src/result/deletion/__init__.py
 
 """
-Module: result.delete.__init__
+Module: result.deletion.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

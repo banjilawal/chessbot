@@ -9,14 +9,15 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from system import CollisionAnalysis, CollisionReport, LoggingLevelRouter
+from model import TokenBlueprint
+from system import CollisionAnalyst, CollisionReport, LoggingLevelRouter
 from model.token import (
     Token, TokenCollisionDetectionException, TokenDesignationCollisionException,
     TokenIdCollisionException, TokenOpeningSquareCollisionException, TokenStackService
 )
 
 
-class TokenCollisionAnalysis(CollisionAnalysis[Token]):
+class TokenCollisionAnalyst(CollisionAnalyst[Token]):
     """
      Role:
          - Collision Detection Worker
@@ -34,14 +35,14 @@ class TokenCollisionAnalysis(CollisionAnalysis[Token]):
             ) -> CollisionReport
             
      Super:
-        -   CollisionAnalysis[T]
+        -   CollisionAnalyst[T]
     """
     
     @classmethod
     @LoggingLevelRouter.monitor
     def analyze(
             cls,
-            target: Token,
+            blueprint: TokenBlueprint,
             token_stack: TokenStackService,
     ) -> CollisionReport[Token]:
         """
@@ -86,11 +87,10 @@ class TokenCollisionAnalysis(CollisionAnalysis[Token]):
         
         for token in token_stack.items:
             # Handle the case that, the target shares its id with a collider_candidates member.
-            if token.id == target.id:
+            if token.id == blueprint.id:
                 # Return target, the collider, and the exception explaining the collision.
                 return CollisionReport.collision_occurred(
                     var="id",
-                    target=target,
                     collider=token,
                     val=f"{token.id}",
                     exception=TokenIdCollisionException(
@@ -101,11 +101,10 @@ class TokenCollisionAnalysis(CollisionAnalysis[Token]):
                     )
                 )
             # Handle the case that, the target shares its designation with a collider_candidates member.
-            if token.designation.upper() == target.designation.upper():
+            if token.designation.upper() == blueprint.formation.designation.upper():
                 # Return target, the collider, and the exception explaining the collision.
                 return CollisionReport.collision_occurred(
                     var="designation",
-                    target=target,
                     collider=token,
                     val=f"{token.designation}",
                     exception=TokenDesignationCollisionException(
@@ -116,11 +115,10 @@ class TokenCollisionAnalysis(CollisionAnalysis[Token]):
                     )
                 )
             # Handle the case that, the target shares its opening_square_name with a collider_candidates member.
-            if token.opening_square_name.upper()== target.opening_square_name.upper():
+            if token.opening_square_name.upper()== blueprint.formation.square_name.upper():
                 # Return target, the collider, and the exception explaining the collision.
                 return CollisionReport.collision_occurred(
                     var="opening_square_name",
-                    target=target,
                     collider=token,
                     val=f"{token.opening_square_name}",
                     exception=TokenOpeningSquareCollisionException(

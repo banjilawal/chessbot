@@ -9,8 +9,9 @@ version: 1.0.0
 
 from __future__ import annotations
 
+from analyst.stack.token.collision.analyst import TokenCollisionAnalyst
 from system import IntegrityMicroservice
-from model.token import RankQuotaAnalysis, TokenCollisionAnalysis, TokenStackCrudController, TokenService
+
 from model.token import TokenStackDeployment
 
 
@@ -25,7 +26,7 @@ class TokenStackOpsController:
     Attributes:
         crud: TokenStackCrudController
         rank_quota_analyzer: RankQuotaAnalysis
-        collision_detector: TokenCollisionAnalysis
+        collision_detector: TokenCollisionAnalyst
 
     Provides:
     Parent:
@@ -34,7 +35,7 @@ class TokenStackOpsController:
     _deployment: TokenStackDeployment
     _integrity_service: IntegrityMicroservice
     _rank_quota_analyzer: RankQuotaAnalysis
-    _collision_detector: TokenCollisionAnalysis
+    _collision_detector: TokenCollisionAnalyst
     
     def __init__(
             self,
@@ -42,7 +43,7 @@ class TokenStackOpsController:
             integrity_service: IntegrityMicroservice = IntegrityMicroservice(),
             deployment: TokenStackDeployment = TokenStackDeployment(),
             rank_quota_analyzer: RankQuotaAnalysis = RankQuotaAnalysis(),
-            collision_detector: TokenCollisionAnalysis = TokenCollisionAnalysis(),
+            collision_detector: TokenCollisionAnalyst = TokenCollisionAnalyst(),
     ):
         self._crud = crud
         self._deployment = deployment
@@ -67,5 +68,5 @@ class TokenStackOpsController:
         return self._rank_quota_analyzer
     
     @property
-    def collision_detector(self) -> TokenCollisionAnalysis:
+    def collision_detector(self) -> TokenCollisionAnalyst:
         return self._collision_detector

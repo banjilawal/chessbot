@@ -24,7 +24,7 @@ class SquareStackOpsController:
     Attributes:
         crud: SquareStackCrudController
         rank_quota_analyzer: SquareStackCapacityAnalysis
-        collision_detector: TokenCollisionAnalysis
+        collision_detector: TokenCollisionAnalyst
 
     Provides:
     Parent:

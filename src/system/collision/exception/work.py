@@ -28,7 +28,7 @@ class CollisionAnalysisException(OperationException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate a CollisionAnalysis exception was aborted because of an error.
+        1.  Indicate a CollisionAnalyst exception was aborted because of an error.
         2.  Identify the exception' method where the failure occurred.
 
     Attributes:
@@ -45,10 +45,10 @@ class CollisionAnalysisException(OperationException):
     Super Class:
         TransactionException
     """
-    OP = "CollisionAnalysis"
+    OP = "CollisionAnalyst"
     RSLT_TYPE = "CollisionAnalysisResult"
     ERR_CODE = "COLLISION_ANALYSIS_FAILURE"
-    MSG = "CollisionAnalysis experienced an error. Analysis aborted."
+    MSG = "CollisionAnalyst experienced an error. Analysis aborted."
     
     def __init__(
             self,

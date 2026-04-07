@@ -1,7 +1,7 @@
-# src/operation/bootstrapper/__ini__.py
+# src/operation/creator/__ini__.py
 
 """
-Module: operation.bootstrapper.__init__
+Module: operation.creator.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -17,4 +17,4 @@ log = logging.getLogger("chessbot")
 from .token import *
 
 # Modules
-from .bootstrapper import  Bootstrapper
+from .creator import  Creator

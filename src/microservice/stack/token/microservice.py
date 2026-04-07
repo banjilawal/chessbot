@@ -9,6 +9,8 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from controller.stack.token.controller import TokenStackOpsController
+
 
 class TokenStackService(StackService[Token]):
     """

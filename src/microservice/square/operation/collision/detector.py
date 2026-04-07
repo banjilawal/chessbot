@@ -14,10 +14,10 @@ from logic.square import (
     SquareNameCollisionException
 )
 from logic.square.service import SquareStackService
-from system import CollisionAnalysis, CollisionReport, LoggingLevelRouter
+from system import CollisionAnalyst, CollisionReport, LoggingLevelRouter
 
 
-class SquareCollisionAnalyst(CollisionAnalysis[Square]):
+class SquareCollisionAnalyst(CollisionAnalyst[Square]):
     """
      Role:
          - Collision Detection Worker
@@ -35,7 +35,7 @@ class SquareCollisionAnalyst(CollisionAnalysis[Square]):
             ) -> CollisionReport
             
      Super:
-        -   CollisionAnalysis[T]
+        -   CollisionAnalyst[T]
     """
     
     @classmethod

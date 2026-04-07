@@ -1,14 +1,13 @@
-# src/result/delete/result.py
+# src/result/deletion/result.py
 
 """
-Module: result.delete.result
+Module: result.deletion.result
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
 from __future__ import annotations
-
 from typing import Generic, Optional, TypeVar
 
 from result import DeletionState, Result

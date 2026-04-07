@@ -26,7 +26,7 @@ class TokenCollisionDetectionException(RelationAnalysisException):
         -   Exception Messaging
 
     Responsibilities:
-        1.  Indicate that the TokenCollisionAnalysis experienced an error. It did not run the collision tests.
+        1.  Indicate that the TokenCollisionAnalyst experienced an error. It did not run the collision tests.
 
     Super:
         TokenDebugException
@@ -41,7 +41,7 @@ class TokenCollisionDetectionException(RelationAnalysisException):
         err_code: Optional[str]        
     """
     ERR_CODE = "TOKEN_COLLISION_DETECTOR_FAILURE"
-    MSG = "TokenCollisionAnalysis experienced an error. no collision tests were run."
+    MSG = "TokenCollisionAnalyst experienced an error. no collision tests were run."
     
     def __init__(
             self,

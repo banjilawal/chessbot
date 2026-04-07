@@ -1,7 +1,7 @@
-# src/integrity/build/token/builder.py
+# src/operation/bootstrapper/token/bootstrapper.py
 
 """
-Module: integrity.build.token.builder
+Module: operation.bootstrapper.token.bootstrapper
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,117 +9,112 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Any, Dict
 
-from catalog import Formation, Persona
-from err import TokenBuildInitializationException
-from integrity import Builder
-from microservice import RankService
-from model import CombatantToken, KingToken, PawnToken, Team, Token
-from result import BuildResult, BuildResult
+from model import Token
+
+from operation import Bootstrapper
+from result import BuildResult, ValidationResult
 from system import IdFactory, LoggingLevelRouter
-from toolkit.integrity.token.toolkit import TokenIntegrityToolkit
+from toolkit import IntegrityToolkit, TokenIntegrityToolkit
 
 
-class TokenBuildInitializer:
-
+class TokenBuildBootstrapper(Bootstrapper[Token]):
+    
     @classmethod
     @LoggingLevelRouter.monitor
     def execute(
             cls,
-            owner: Team,
-            formation: Formation,
-            id: int = None,
-            toolkit: TokenIntegrityToolkit = None,
-    ) -> BuildResult[Dict[str, Any]]:
-        """
-        Build a safe Token.
-        
-        Action:
-            1.  Send an exception chain in the BuildResult if any of the following
-                occur:
-                    -   Either id, schema, team. formation fail a validation check.
-                    -   The token belongs on a different team.
-                    -   The team has already filled the position.
-                    -   The token's rank cannot be built.
-                    -   The token cannot register with its team.
-            2.  Otherwise, build the token then, send the success result.
-        Args:
-            id: int
-            owner: Team
-            formation: Formation
-            toolkit: TokenIntegrityToolkit
-        Returns:
-            BuildResult[Token]
-        Raises:
-            TokenBuildInitializationException
-        """
+            blueprint: TokenBlueprint,
+            toolkit: TokenIntegrityToolkit = None
+    ) -> ValidationResult[TokenBlueprint]:
         method = f"{cls.__name__}.execute"
         
-        if id is None:
-            id = IdFactory.next_id(class_name="Token")
         if toolkit is None:
             toolkit = TokenIntegrityToolkit()
         
-        # Handle the case that, the id does not pass a validation check.
-        id_validation = toolkit.identity_service.validate_id(id)
-        if id_validation.is_failure:
-            # Return the exception chain on failure.
-            return BuildResult.failure(
-                TokenBuildInitializationException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    op=TokenBuildInitializationException.OP,
-                    msg=TokenBuildInitializationException.MSG,
-                    err_code=TokenBuildInitializationException.ERR_CODE,
-                    ex=id_validation.exception,
-                )
-            )
         # Handle the case that, the team does not pass a validation check.
-        owner_validation = toolkit.team_service.validator.validate(owner)
-        if owner_validation.is_failure:
+        team_validation = toolkit.team_service.validator.validate(blueprint.team)
+        if team_validation.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                TokenBuildInitializationException(
+                TokenBuildBootStrapException(
                     cls_mthd=method,
                     cls_name=method.__name__,
-                    op=TokenBuildInitializationException.OP,
-                    msg=TokenBuildInitializationException.MSG,
-                    err_code=TokenBuildInitializationException.ERR_CODE,
-                    ex=owner_validation.exception,
+                    op=TokenBuildBootStrapException.OP,
+                    msg=TokenBuildBootStrapException.MSG,
+                    err_code=TokenBuildBootStrapException.ERR_CODE,
+                    ex=team_validation.exception,
                 )
             )
         # Handle the case that, the formation does not pass a validation check.
-        formation_validation = toolkit.formation_service.validator.validate(formation)
+        formation_validation = toolkit.formation_service.validator.validate(blueprint.formation)
         if formation_validation.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                TokenBuildInitializationException(
+                TokenBuildBootStrapException(
                     cls_mthd=method,
                     cls_name=method.__name__,
-                    op=TokenBuildInitializationException.OP,
-                    msg=TokenBuildInitializationException.MSG,
-                    err_code=TokenBuildInitializationException.ERR_CODE,
+                    op=TokenBuildBootStrapException.OP,
+                    msg=TokenBuildBootStrapException.MSG,
+                    err_code=TokenBuildBootStrapException.ERR_CODE,
                     ex=formation_validation.exception,
                 )
             )
         # Handle the case that its Rank instance request is not satisfied.
-        rank_build_result = toolkit.rank_service.builder.build(persona=formation.persona)
+        rank_build_result = toolkit.rank_service.builder.build(persona=blueprint.formation.persona)
         if rank_build_result.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                TokenBuildInitializationException(
+                TokenBuildBootStrapException(
                     cls_mthd=method,
                     cls_name=method.__name__,
-                    op=TokenBuildInitializationException.OP,
-                    msg=TokenBuildInitializationException.MSG,
-                    err_code=TokenBuildInitializationException.ERR_CODE,
+                    op=TokenBuildBootStrapException.OP,
+                    msg=TokenBuildBootStrapException.MSG,
+                    err_code=TokenBuildBootStrapException.ERR_CODE,
                     ex=rank_build_result.exception,
                 )
             )
-        # ---Forward the work product. ---#
-        return BuildResult.success(
-            {"id":id, "owner": owner, "formation": formation, "rank": rank_build_result.payload}
+        id_verification_result = cls._verify_id(blueprint, toolkit)
+        if id_verification_result.is_failure:
+            # Return the exception chain on failure.
+            return BuildResult.failure(
+                TokenBuildBootStrapException(
+                    cls_mthd=method,
+                    cls_name=method.__name__,
+                    op=TokenBuildBootStrapException.OP,
+                    msg=TokenBuildBootStrapException.MSG,
+                    err_code=TokenBuildBootStrapException.ERR_CODE,
+                    ex=rank_build_result.exception,
+                )
+            )
+        collision_analysis_result = blueprint.team.roster.run_collision_analysis(blueprint=blueprint)
+        if not collision_analysis_result.s
+        return ValidationResult.success(
+            TokenBlueprint(
+                team=blueprint.team,
+                formation=blueprint.formation,
+                rank=rank_build_result.payload,
+                id=id_verification_result.payload,
+            )
         )
-
+    
         
+    @classmethod
+    def _verify_id(cls, blueprint: TokenBlueprint, toolkit: IntegrityToolkit) -> ValidationResult[int]:
+        
+        if blueprint.id is None:
+            return ValidationResult.success(IdFactory.next_id(class_name="Token"))
+        
+        id_validation = toolkit.identity_service.validate_id(blueprint.id)
+        if id_validation.is_failure:
+            # Return the exception chain on failure.
+            return BuildResult.failure(
+                TokenBuildBootStrapException(
+                    cls_mthd=method,
+                    cls_name=method.__name__,
+                    op=TokenBuildBootStrapException.OP,
+                    msg=TokenBuildBootStrapException.MSG,
+                    err_code=TokenBuildBootStrapException.ERR_CODE,
+                    ex=rank_build_result.exception,
+                )
+            )

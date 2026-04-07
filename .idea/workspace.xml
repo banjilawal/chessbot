@@ -5,7 +5,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
+      <change afterPath="$PROJECT_DIR$/src/model/report/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/report/report.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/creator/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/creator/creator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/creator/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/creator/token/creator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/finalizer/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/finalizer/finalizer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/finalizer/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/finalizer/token/finalizer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/result/analysis/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/result/analysis/result.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/result/analysis/state.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analyst/stack/token/collision/analyst.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analyst/stack/token/collision/analyst.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/crud/token/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/stack/crud/token/controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/square/square/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/stack/square/square/controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/square/visitation/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/stack/square/visitation/controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/stack/token/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/stack/token/controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/token/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/token/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/math/exception/token/operation/collision/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/math/exception/token/operation/collision/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/stack/exception/token/operation/collision/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/stack/exception/token/operation/collision/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/square/operation/collision/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/square/operation/collision/detector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/stack/token/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/stack/token/microservice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/blueprint/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/blueprint/team/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/team/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/blueprint/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/blueprint/token/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/token/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrapper/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrapper/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrapper/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrapper/bootstrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrapper/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrapper/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrapper/token/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrapper/token/bootstrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/collision/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/collision/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/collision/detection.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/collision/detection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/collision/exception/work.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/collision/exception/work.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/worker/stack/token/push/pusher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/worker/stack/token/push/pusher.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -249,6 +286,7 @@
     "Python.rank_builder.executor": "Run",
     "Python.rank_factory.executor": "Run",
     "Python.rank_spec.executor": "Run",
+    "Python.result.executor": "Debug",
     "Python.router.executor": "Debug",
     "Python.run_game.executor": "Run",
     "Python.scalar.executor": "Run",
@@ -277,7 +315,7 @@
     "ToolWindow.Python Packages.ShowToolbar": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/model/blueprint",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/result",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -304,21 +342,21 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/result" />
+      <recent name="$PROJECT_DIR$/src/operation/finalizer/token" />
+      <recent name="$PROJECT_DIR$/src/operation" />
       <recent name="$PROJECT_DIR$/src/model/blueprint" />
       <recent name="$PROJECT_DIR$/src/operation/token/build/initialize" />
-      <recent name="$PROJECT_DIR$/src/operation/token/build/finalize" />
-      <recent name="$PROJECT_DIR$/src/operation/token/build/create" />
-      <recent name="$PROJECT_DIR$/src/toolkit/integrity" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/operation/bootstrapper/token" />
       <recent name="$PROJECT_DIR$/src/operation/token/build" />
       <recent name="$PROJECT_DIR$/DOCS" />
       <recent name="$PROJECT_DIR$/src/toolkit/integrity/square" />
       <recent name="$PROJECT_DIR$/src/toolkit/integrity" />
-      <recent name="$PROJECT_DIR$/src/toolkit/integrity/token" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.exception">
+  <component name="RunManager" selected="Python.result">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -457,7 +495,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="inactive" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="result" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="chessbot" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -466,12 +504,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/logic/token/service/operation/coord/push/exception" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/result/analysis" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/logic/token/service/operation/coord/push/exception/inactive.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/result/analysis/result.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -528,11 +566,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.result" />
         <item itemvalue="Python.exception" />
         <item itemvalue="Python.builder" />
         <item itemvalue="Python.util" />
         <item itemvalue="Python.router" />
-        <item itemvalue="Python.inactive" />
       </list>
     </recent_temporary>
   </component>
@@ -867,7 +905,7 @@
       <workItem from="1775073975276" duration="313257000" />
       <workItem from="1775468437273" duration="38443000" />
       <workItem from="1775523154635" duration="8604000" />
-      <workItem from="1775535077469" duration="4592000" />
+      <workItem from="1775535077469" duration="13352000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1012,7 +1050,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/controller/stack/token/controller.py</url>
-          <line>44</line>
+          <line>45</line>
           <option name="timeStamp" value="90" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">

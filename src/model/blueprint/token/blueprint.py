@@ -17,7 +17,7 @@ from model import Blueprint, Rank, Team, Token
 
 @dataclass
 class TokenBlueprint(Blueprint[Token]):
-    id: int
     team: Team
     formation: Formation
     rank: Rank = None
+    id: int = None

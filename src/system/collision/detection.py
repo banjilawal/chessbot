@@ -16,7 +16,7 @@ from system import CollisionReport, LoggingLevelRouter
 
 T = TypeVar("T")
 
-class CollisionAnalysis(Generic[T]):
+class CollisionAnalyst(Generic[T]):
     """
     Role:Detector, Consistency and Uniqueness Guarantor,
 

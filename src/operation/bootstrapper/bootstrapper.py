@@ -14,6 +14,7 @@ from typing import Generic, TypeVar
 
 from model import Blueprint
 from result import ValidationResult
+from system import LoggingLevelRouter
 from toolkit import Toolkit
 
 T = TypeVar("T")
@@ -21,6 +22,7 @@ T = TypeVar("T")
 class Bootstrapper(ABC, Generic[T]):
     
     @classmethod
+    @LoggingLevelRouter.monitor
     def execute(
             cls,
             blueprint: Blueprint[T],

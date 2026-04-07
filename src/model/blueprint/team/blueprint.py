@@ -20,3 +20,4 @@ class TeamBlueprint(Blueprint[Team]):
     owner: Player
     board: Board
     schema: Schema
+    id: int = None

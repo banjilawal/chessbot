@@ -11,6 +11,8 @@ version: 1.0.1
 
 # Packages
 from .team import *
+from .token import *
+
 
 # Modules
 from .blueprint import Blueprint

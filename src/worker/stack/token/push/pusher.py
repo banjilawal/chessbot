@@ -37,7 +37,7 @@ class TokenStackPush:
                     token_stack: TokenStackService,
                     rank_service: RankService = RankService(),
                     rank_quota_analyzer: RankQuotaAnalysis = RankQuotaAnalysis(),
-                    collision_detector: TokenCollisionAnalysis = TokenCollisionAnalysis(),
+                    collision_detector: TokenCollisionAnalyst = TokenCollisionAnalyst(),
             ) -> InsertionResult
 
     Super Class:
@@ -65,7 +65,7 @@ class TokenStackPush:
            rank_service: RankService
            token_stack: TokenStackService
            rank_quota_analyzer: RankQuotaAnalysis
-           collision_detector: TokenCollisionAnalysis
+           collision_detector: TokenCollisionAnalyst
         Returns:
             InsertionResult
         Raises:
