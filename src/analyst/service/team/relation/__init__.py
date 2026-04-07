@@ -13,4 +13,3 @@ version: 1.0.0
 None
 
 # Modules
-from analyst.service.team.relation.player.analyzer import PlayerTeamRelationAnalysis

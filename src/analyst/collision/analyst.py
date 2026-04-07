@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Generic, List, TypeVar
 
-from model import Blueprint
+from model import Blueprint, CollisionReport
 from result import AnalysisResult
 from system import LoggingLevelRouter
 

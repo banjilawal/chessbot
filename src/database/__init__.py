@@ -1,7 +1,7 @@
-# src/board/__init__.py
+# src/database/__init__.py
 
 """
-Module: .board.__init__
+Module: .database.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,7 +11,7 @@ import logging
 
 log = logging.getLogger("chessbot")
 
-# =========== BOARD PACKAGE ===========#
+# =========== DATABASE PACKAGE ===========#
 
 # Packages
 from .board import *

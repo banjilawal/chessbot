@@ -1,7 +1,7 @@
 # src/database/team/database.py
 
 """
-Module: database.team.database
+Module: .database.team.database
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -28,7 +28,7 @@ class TeamDatabase(Database[Team]):
         iterator: iter
         is_empty: bool
         current_item: Optional[T]
-        integrity_service: IntegrityMicroservice[T]
+        integrity_service: Microservice[T]
 
     Provides:
         -   iterator() ->: iter

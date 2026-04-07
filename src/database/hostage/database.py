@@ -1,7 +1,7 @@
-# src/database/square/database.py
+# src/database/hostage/database.py
 
 """
-Module: database.square.database
+Module: database.hostage.database
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -28,7 +28,7 @@ class HostageDatabase(Database[Hostage]):
         iterator: iter
         is_empty: bool
         current_item: Optional[T]
-        integrity_service: IntegrityMicroservice[T]
+        integrity_service: Microservice[T]
 
     Provides:
         -   iterator() ->: iter

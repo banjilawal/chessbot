@@ -11,5 +11,5 @@ class Analyst(ABC, Generic[R]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def analyze(cls, ) -> AnalysisResult[R]:
+    def analyze(cls, *args, **kwargs) -> AnalysisResult[R]:
         pass

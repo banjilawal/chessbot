@@ -1,11 +1,13 @@
-# src/model/report/relation/__init__.py
+# src/model/report/relation/report.py
 
 """
-Module: model.report.relation.__init__
+Module: model.report.relation.report
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
+
+from __future__ import annotations
 from typing import Optional
 
 

@@ -1,18 +1,11 @@
-# src/logic/player/relation/tester.py
+# src/analyst/relation/team/player/analyst.py
 
 """
-Module: logic.player.relation.tester
+Module: analyst.relation.team.player.analyst
 Author: Banji Lawal
-Created: 2025-09-16
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
-
-from typing import cast
-
-from logic.player import Player, PlayerValidator
-from analyst.service.team.relation import PlayerTeamAnalysisException
-from logic.team import Team, TeamContext, TeamService
-from system import LoggingLevelRouter, RelationReport, RelationAnalysis
 
 
 

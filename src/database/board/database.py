@@ -30,14 +30,14 @@ class BoardDatabase(Database[Board]):
         iterator: iter
         is_empty: bool
         current_item: Optional[T]
-        integrity_service: IntegrityMicroservice[T]
+        integrity_service: Microservice[T]
 
     Provides:
         -   iterator() ->: iter
         -   insert(item: T) -> InsertionResult:
         -   delete_by_id(id: int) -> DeletionResult[T]:
         -   search(context: Context[T]) -> SearchResult[List[T]]
-    """
+
     Role:Unique Data Stack, Search Microservice, CRUD Controller, Encapsulation, API layer.
 
     Responsibilities:
@@ -78,7 +78,7 @@ class BoardDatabase(Database[Board]):
         self._board_stack_service = data_service
     
     @property
-    def integrity_service(self) -> BoardService:
+    def microservice(self) -> BoardService:
         return self._board_database_core.board_service
     
     @property
@@ -118,7 +118,7 @@ class BoardDatabase(Database[Board]):
         # --- To assure uniqueness the member_service has to conduct a search. The board should be validated first. ---#
         
         # Handle the case that, the boardis not safe.
-        validation = self.integrity_service.validator.validate(candidate=board)
+        validation = self.microservice.validator.validate(candidate=board)
         if validation.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(

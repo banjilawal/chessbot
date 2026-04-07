@@ -12,6 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, List, Optional, TypeVar
 
+from microservice import Microservice
 from result import DeletionResult, InsertionResult
 from system import LoggingLevelRouter
 
@@ -36,14 +37,13 @@ class Database(ABC, Generic[T]):
         iterator: iter
         is_empty: bool
         current_item: Optional[T]
-        integrity_service: IntegrityMicroservice[T]
+        integrity_service: Microservice[T]
 
     Provides:
         -   iterator() ->: iter
         -   insert(item: T) -> InsertionResult:
         -   delete_by_id(id: int) -> DeletionResult[T]:
         -   search(context: Context[T]) -> SearchResult[List[T]]
-
     Super:
     """
     _id: id
@@ -79,7 +79,7 @@ class Database(ABC, Generic[T]):
     
     @property
     @abstractmethod
-    def integrity_service(self) -> IntegrityMicroservice[T]:
+    def microservice(self) -> Microservice[T]:
         """"Implement to access the database's integrity service."""
         pass
     

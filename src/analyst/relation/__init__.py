@@ -11,6 +11,8 @@ version: 1.0.1
 # =========== ANALYST.RELATION PACKAGE ===========#
 
 # Packages
+from .team import *
+
 
 # Modules
 from .analyst import RelationAnalyst

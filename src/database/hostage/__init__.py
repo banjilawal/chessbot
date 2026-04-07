@@ -1,16 +1,15 @@
 # src/database/hostage/__init__.py
 
 """
-Module: database.hostage.__init__
+Module: .database.hostage.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== HOSTAGE PACKAGE ===========#
+# =========== DATABASE.HOSTAGE PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .database import HostageDatabase

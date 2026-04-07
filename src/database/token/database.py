@@ -1,7 +1,7 @@
 # src/database/token/database.py
 
 """
-Module: database.token.database
+Module: .database.token.database
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -37,7 +37,7 @@ class TokenDatabase(Database[Token]):
         iterator: iter
         is_empty: bool
         current_item: Optional[T]
-        integrity_service: IntegrityMicroservice[T]
+        integrity_service: Microservice[T]
 
     Provides:
         -   iterator() ->: iter
@@ -105,7 +105,7 @@ class TokenDatabase(Database[Token]):
         self._kernel = kernel
     
     @property
-    def integrity_service(self) -> TokenService:
+    def microservice(self) -> TokenService:
         return self._kernel.integrity_service
     
     @property

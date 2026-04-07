@@ -12,6 +12,5 @@ version: 1.0.0
 # Packages
 from .analyzer import *
 from system.relation import *
-from .exception import *
 
 # Modules
