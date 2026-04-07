@@ -1,0 +1,36 @@
+# src/logic/attack/exception/debug/item/friend.py
+
+"""
+Module: logic.attack.exception.debug.item.friend
+Author: Banji Lawal
+Created: 2026-01-24
+version: 1.0.0
+"""
+
+__all__ = [
+    # ======================# ATTACKING_FRIENDLY_SQUARE EXCEPTION #======================#
+    "AttackingFriendlySquareException",
+]
+
+from operation.attack import AttackDebugException
+
+
+# ======================# ATTACKING_FRIENDLY_SQUARE EXCEPTION #======================#
+class AttackingFriendlySquareException(AttackDebugException):
+    """
+    Role:Debug, Error Tracing
+
+    Responsibilities:
+    1.  Indicate that an attack failed because the item was occupied by a friend.
+    
+    Super Class:
+        *   AttackDebugException
+
+    Provides:
+
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERR_CODE = "ATTACKING_EMPTY_SQUARE_EXCEPTION"
+    MSG = "Attack failed: The item was occupied by a friend."

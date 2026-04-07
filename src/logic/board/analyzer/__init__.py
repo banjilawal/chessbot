@@ -11,7 +11,6 @@ version: 1.0.0
 
 # Packages
 from .square import *
-from .team import *
 
 # Modules
 from .router import BoardRelationAnalyzer

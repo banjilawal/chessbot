@@ -1,4 +1,4 @@
-from logic.attack import Attack, AttackingFriendlySquareException
+from operation.attack import Attack, AttackingFriendlySquareException
 from logic.square import Square, SquareService
 from system import LoggingLevelRouter
 from model.token import TokenActivityState, Token, TokenService

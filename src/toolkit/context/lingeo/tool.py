@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from integrity import NumberValidator
 from microservice import CoordService, ScalarService, VectorService
-from model import LinGeoContext
+from model import VectorContext
 from tool import toolkit
 
 
-class LinGeoContexttoolkit(toolkit[LinGeoContext]):
+class LinGeoContexttoolkit(toolkit[VectorContext]):
     """
     Role:
         -   Container

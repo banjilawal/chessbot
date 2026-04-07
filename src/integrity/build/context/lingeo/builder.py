@@ -12,11 +12,11 @@ from typing import Optional
 
 from err import ExcessLinGeoContextFlagsException, LinGeoContextBuildException
 from integrity import Builder
-from model import Coord, LinGeoContext, Vector
+from model import Coord, VectorContext, Vector
 from result import BuildResult
 from tool import LinGeoContextToolSet
 
-class LinGeoContextBuilder(Builder[LinGeoContext]):
+class LinGeoContextBuilder(Builder[VectorContext]):
     """
     Role
         -   Transaction Worker
@@ -45,7 +45,7 @@ class LinGeoContextBuilder(Builder[LinGeoContext]):
             coord: Optional[Coord] = None,
             vector: Optional[Vector] = None,
             tool_set: LinGeoContextToolSet = LinGeoContextToolSet()
-    ) -> BuildResult[LinGeoContext]:
+    ) -> BuildResult[VectorContext]:
         """
         Build a safe LinGeoContext.
 
@@ -126,7 +126,7 @@ class LinGeoContextBuilder(Builder[LinGeoContext]):
                     )
                 )
             # On Build success, forward the work product.
-            return BuildResult.success(LinGeoContext(coord=coord))
+            return BuildResult.success(VectorContext(coord=coord))
         
         # Deal with the alternate case.
         build_result = tool_set.vector_service.validator.validate(vector)
@@ -142,5 +142,5 @@ class LinGeoContextBuilder(Builder[LinGeoContext]):
                 )
             )
         # --- Forward the work product to the caller ---#
-        return BuildResult.success(LinGeoContext(vector=vector))
+        return BuildResult.success(VectorContext(vector=vector))
             

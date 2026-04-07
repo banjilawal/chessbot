@@ -13,7 +13,7 @@ version: 1.0.1
 from .board import *
 from .coord import *
 from .edge import *
-from .lingeo import *
+from .vector import *
 from .node import *
 from .persona import *
 from .player import *

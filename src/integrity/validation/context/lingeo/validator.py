@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from integrity import Validator
-from model import LinGeoContext, Vector
+from model import VectorContext, Vector
 from result import ValidationResult
 from system import LoggingLevelRouter
 from tool import LinGeoContextToolSet
@@ -22,7 +22,7 @@ from err import (
 
 
 
-class LinGeoContextValidator(Validator[LinGeoContext]):
+class LinGeoContextValidator(Validator[VectorContext]):
     """
     Role
         -   Transaction Worker
@@ -52,7 +52,7 @@ class LinGeoContextValidator(Validator[LinGeoContext]):
             cls,
             candidate: Any,
             tool_set: LinGeoContextToolSet = LinGeoContextToolSet(),
-    ) -> ValidationResult[LinGeoContext]:
+    ) -> ValidationResult[VectorContext]:
         """
         Verify the candidate is a safe LinGeoContext.
         
@@ -93,7 +93,7 @@ class LinGeoContextValidator(Validator[LinGeoContext]):
                 )
             )
         # Handle the case that, the candidate is wrong type.
-        if not isinstance(candidate, LinGeoContext):
+        if not isinstance(candidate, VectorContext):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 LinGeoContextValidationException(
@@ -107,7 +107,7 @@ class LinGeoContextValidator(Validator[LinGeoContext]):
                 )
             )
         # --- Cast candidate to a LinGeoContext for additional tests. ---#
-        context = cast(LinGeoContext, candidate)
+        context = cast(VectorContext, candidate)
         
         # Handle the case that neither option is enabled.
         if len(context.to_dict) == 0:
