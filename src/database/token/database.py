@@ -15,7 +15,7 @@ from microservice import RankService
 from microservice.stack import TokenStackService
 from model import Rank, Token, TokenBlueprint
 from result import ComputationResult
-from result.report.stack.token.quota.report import RankQuotaReport
+from analysis.report.quota import RankQuotaReport
 from system import CollisionReport, LoggingLevelRouter
 
 
