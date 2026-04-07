@@ -1,18 +1,18 @@
-# src/logic/square/database/kernel/operation/quota/check.py
+# src/model/report/capacity/stack/square/report.py
 
 """
-Module: logic.square.database.kernel.operation.quota.report
+Module: model.report.capacity.stack.square.report
 Author: Banji Lawal
-Created: 2026-02-21
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
 
-from logic.rank import Rank
+from model import Rank
 
 
-class SquareStackCapacityReport:
+class OpeningSquareAvailabilityReport:
     """
      Role:
          - Data Report
@@ -33,7 +33,7 @@ class SquareStackCapacityReport:
     _rank: Rank
     _number_of_openings: int
     
-    def __init__(self, rank: Rank,  number_of_openings: int):
+    def report(self, rank: Rank,  number_of_openings: int):
         self._rank = rank
         self._number_of_openings = number_of_openings
         

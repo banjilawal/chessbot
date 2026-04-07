@@ -20,7 +20,7 @@ from system import LoggingLevelRouter
 P = TypeVar("P")
 S = TypeVar("S")
 
-class RelationAnalyst(Analyst[S], Generic[P, S]):
+class RelationAnalyst(Analyst[RelationReport], Generic[P, S]):
     """
     Role:
         - Analysis interface.

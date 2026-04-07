@@ -9,12 +9,12 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.rank import Rank, RankService
-from system import ComputationResult, LoggingLevelRouter
-from model.token import RankQuotaAnalysisException, RankQuotaReport, TokenContext, TokenStackService
+from analyst import Analyst
+from model import Rank
+from result.report.stack.token.quota.report import RankQuotaReport
 
 
-class RankQuotaAnalysis:
+class RankQuotaAnalyst(Analyst[RankQuotaReport]):
     """
     Role:
         - Statistical Analyst

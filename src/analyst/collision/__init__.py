@@ -11,6 +11,7 @@ version: 1.0.1
 # =========== ANALYST.COLLISION PACKAGE ===========#
 
 # Packages
+from .token import TokenCollisionAnalyst
 
 # Modules
 from .analyst import CollisionAnalyst

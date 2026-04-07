@@ -7,10 +7,10 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== SQUARE PACKAGE ===========#
+# =========== MODEL.SQUARE PACKAGE ===========#
 
 # Packages
-None
+from .opening import *
 
 # Modules
 from .model import Square

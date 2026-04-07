@@ -1,10 +1,10 @@
-# src/logic/token/token/service/collision/detection.py
+# src/analyst/collision/token/analyst.py
 
 """
-Module: logic.token.service.collision.detector
+Module: analyst.collision.token.analyst
 Author: Banji Lawal
-Created: 2026-02-21
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
