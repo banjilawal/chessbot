@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== VALIDATION.SCALAR PACKAGE CONTENTS ===========#
+# =========== VALIDATION.SCALAR PACKAGE ===========#
 
 # Packages
 None

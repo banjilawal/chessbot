@@ -7,7 +7,7 @@ Created: 2026-03-28
 version: 1.0.0
 """
 
-# =========== COORD.DATABASE.KERNEL.OPERATION.CRUD PACKAGE CONTENTS ===========#
+# =========== COORD.DATABASE.KERNEL.OPERATION.CRUD PACKAGE ===========#
 
 # Packages
 from .pop import *

@@ -7,7 +7,7 @@ Created: 2025-11-18
 Version: 1.0.0
 """
 
-# =========== SYSTEM.COLLECTION.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== SYSTEM.COLLECTION.EXCEPTION PACKAGE ===========#
 
 # Packages
 None

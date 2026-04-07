@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== TOKEN.BUILD.CREATION PACKAGE CONTENTS ===========#
+# =========== TOKEN.BUILD.CREATION PACKAGE ===========#
 
 # Packages
 

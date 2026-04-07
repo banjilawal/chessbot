@@ -7,7 +7,7 @@ Created: 2025-11-18
 version: 1.0.0
 """
 
-# =========== SERVICE.ADT.TABLE PACKAGE CONTENTS ===========#
+# =========== SERVICE.ADT.TABLE PACKAGE ===========#
 
 # Packages
 from .exception import *

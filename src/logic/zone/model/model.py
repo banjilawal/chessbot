@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from enum import Enum
 
-from catalog.schema import Schema
+from model.catalog import Schema
 from system import GameColor
 
 

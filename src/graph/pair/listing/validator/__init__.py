@@ -7,7 +7,7 @@ Created: 2026-03-12
 version: 1.0.0
 """
 
-# =========== PAIR.LISTING.VALIDATOR PACKAGE CONTENTS ===========#
+# =========== PAIR.LISTING.VALIDATOR PACKAGE ===========#
 
 # Packages
 from .exception import *

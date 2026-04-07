@@ -7,7 +7,7 @@ Created: 2026-03-28
 version: 1.0.0
 """
 
-# =========== COORD.DATABASE.KERNEL.OPERATION.CRUD.PUSH PACKAGE CONTENTS ===========#
+# =========== COORD.DATABASE.KERNEL.OPERATION.CRUD.PUSH PACKAGE ===========#
 
 # Packages
 from .exception import *

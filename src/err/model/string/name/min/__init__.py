@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ MODEL.STRING.NAME.MIN PACKAGE CONTENTS ===========#
+# ============ MODEL.STRING.NAME.MIN PACKAGE ===========#
 
 # Packages
 None

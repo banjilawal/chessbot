@@ -7,7 +7,7 @@ Created: 2025-11-18
 Version: 1.0.0
 """
 
-# =========== SYSTEM.COLLECTION.OPERATION.UPDATE.STATE PACKAGE CONTENTS ===========#
+# =========== SYSTEM.COLLECTION.OPERATION.UPDATE.STATE PACKAGE ===========#
 
 # Packages
 None

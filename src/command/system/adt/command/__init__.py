@@ -7,7 +7,7 @@ Created: 2025-11-18
 version: 1.0.0
 """
 
-# =========== ADT.COMMAND PACKAGE CONTENTS ===========#
+# =========== ADT.COMMAND PACKAGE ===========#
 
 # Packages
 from .exception import *

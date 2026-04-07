@@ -7,7 +7,7 @@ Created: 2026-03-10
 version: 1.0.0
 """
 
-# =========== SPAN.SPANNER.ENGINE PACKAGE CONTENTS ===========#
+# =========== SPAN.SPANNER.ENGINE PACKAGE ===========#
 
 # Packages
 from .exception import *

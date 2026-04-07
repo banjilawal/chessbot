@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== MODEL.CONTEXT.COORD PACKAGE CONTENTS ===========#
+# =========== MODEL.CONTEXT.COORD PACKAGE ===========#
 
 # Packages
 None

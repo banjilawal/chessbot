@@ -7,7 +7,7 @@ Created: 2026-02-24
 version: 1.0.0
 """
 
-# =========== ADT.ARGS.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== ADT.ARGS.EXCEPTION PACKAGE ===========#
 
 # Packages
 None

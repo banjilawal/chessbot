@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2026-03-31
 """
 
-# =========== COMMAND.SYSTEM PACKAGE CONTENTS ===========#
+# =========== COMMAND.SYSTEM PACKAGE ===========#
 
 # Packages
 from .adt import *

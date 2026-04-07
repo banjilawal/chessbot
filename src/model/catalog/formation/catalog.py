@@ -1,7 +1,7 @@
-# src/catalog/formation/catalog.py
+# src/model/catalog/formation/model/catalog.py
 
 """
-Module: catalog.formation.catalog
+Module: model.catalog.formation.catalog
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from enum import Enum
 
-from catalog import Persona
+from model.catalog import Persona
 from system import GameColor
 
 

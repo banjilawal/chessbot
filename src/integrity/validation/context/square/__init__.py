@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== VALIDATION.CONTEXT.SQUARE PACKAGE CONTENTS ===========#
+# =========== VALIDATION.CONTEXT.SQUARE PACKAGE ===========#
 
 # Packages
 None

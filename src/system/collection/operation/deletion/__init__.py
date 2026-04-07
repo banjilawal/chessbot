@@ -7,7 +7,7 @@ Created: 2025-11-18
 Version: 1.0.0
 """
 
-# =========== SYSTEM.COLLECTION.OPERATION.DELETION PACKAGE CONTENTS ===========#
+# =========== SYSTEM.COLLECTION.OPERATION.DELETION PACKAGE ===========#
 
 # Packages
 from .state import *

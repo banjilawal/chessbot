@@ -1,28 +1,25 @@
-# src/logic/system/relation/report/check.py
+# src/model/report/relation/__init__.py
 
 """
-Module: logic.system.relation.report.report
+Module: model.report.relation.__init__
 Author: Banji Lawal
-Created: 2025-12-28
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
+from typing import Optional
 
-from __future__ import annotations
-from typing import Any, Optional
-
-from system import RelationStatus
 
 class RelationReport:
     _primary: Optional[Any]
     _satellite: Optional[Any]
     _exception: Optional[Exception]
-    _status: Optional[RelationStatus]
+    _status: Optional[RelationState]
     
     def __init__(
             self,
             primary: Optional[Any],
             satellite: Optional[Any],
-            status: RelationStatus,
+            status: RelationState,
             exception: Optional[Exception],
     ):
         """INTERNAL: Use build methods instead of direct constructor."""
@@ -41,7 +38,7 @@ class RelationReport:
         return self._satellite
     
     @property
-    def status(self) -> Optional[RelationStatus]:
+    def status(self) -> Optional[RelationState]:
         return self._status
     
     @property
@@ -54,7 +51,7 @@ class RelationReport:
                 self._exception is None and
                 self._primary is None and
                 self._satellite is None and
-                self._status == RelationStatus.NO_RELATION
+                self._status == RelationState.NO_RELATION
         )
     
     @property
@@ -63,7 +60,7 @@ class RelationReport:
                 self._exception is None and
                 self._primary is None and
                 self._satellite is not None and
-                self._status == RelationStatus.REGISTRATION_NOT_SUBMITTED
+                self._status == RelationState.REGISTRATION_NOT_SUBMITTED
         )
     
     @property
@@ -72,7 +69,7 @@ class RelationReport:
                 self._exception is None and
                 self._primary is not None and
                 self._satellite is None and
-                self._status == RelationStatus.STALE_LINK_NOT_PURGED
+                self._status == RelationState.STALE_LINK_NOT_PURGED
         )
 
     @property
@@ -81,7 +78,7 @@ class RelationReport:
                 self._exception is None and
                 self._primary is not None and
                 self._satellite is not None and
-                self._status == RelationStatus.BIDIRECTIONAL
+                self._status == RelationState.BIDIRECTIONAL
         )
     
     @property
@@ -91,8 +88,8 @@ class RelationReport:
                 self._primary is None and
                 self._satellite is None and
                 self._status == (
-                        RelationStatus.ANALYZER_FAILED or
-                        RelationStatus.ANALYZER_TIMED_OUT
+                        RelationState.ANALYZER_FAILED or
+                        RelationState.ANALYZER_TIMED_OUT
                 )
         )
     
@@ -103,8 +100,8 @@ class RelationReport:
                 self._primary is None and
                 self._satellite is None and
                 self._status == (
-                        RelationStatus.ANALYZER_FAILED or
-                        RelationStatus.ANALYZER_TIMED_OUT
+                        RelationState.ANALYZER_FAILED or
+                        RelationState.ANALYZER_TIMED_OUT
                 )
         )
     
@@ -114,7 +111,7 @@ class RelationReport:
             primary=None,
             satellite=None,
             exception=exception,
-            status=RelationStatus.ANALYZER_FAILED,
+            status=RelationState.ANALYZER_FAILED,
         )
     
     @classmethod
@@ -123,7 +120,7 @@ class RelationReport:
             primary=None,
             satellite=None,
             exception=exception,
-            status=RelationStatus.ANALYZER_TIMED_OUT,
+            status=RelationState.ANALYZER_TIMED_OUT,
         )
     
     @classmethod
@@ -132,7 +129,7 @@ class RelationReport:
             primary=None,
             satellite=None,
             exception=None,
-            status=RelationStatus.NO_RELATION,
+            status=RelationState.NO_RELATION,
         )
     
     @classmethod
@@ -141,7 +138,7 @@ class RelationReport:
             primary=None,
             exception=None,
             satellite=satellite,
-            status=RelationStatus.REGISTRATION_NOT_SUBMITTED,
+            status=RelationState.REGISTRATION_NOT_SUBMITTED,
         )
     
     @classmethod
@@ -150,7 +147,7 @@ class RelationReport:
             satellite=None,
             exception=None,
             primary=primary,
-            status=RelationStatus.STALE_LINK_NOT_PURGED,
+            status=RelationState.STALE_LINK_NOT_PURGED,
         )
     
     @classmethod
@@ -159,6 +156,6 @@ class RelationReport:
             exception=None,
             primary=primary,
             satellite=satellite,
-            status=RelationStatus.BIDIRECTIONAL,
+            status=RelationState.BIDIRECTIONAL,
         )
         

@@ -1,7 +1,7 @@
-# src/catalog/schema/catalog.py
+# src/model/catalog/schema/model/catalog.py
 
 """
-Module: catalog.schema.catalog
+Module: model.catalog.schema.catalog
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

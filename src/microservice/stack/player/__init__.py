@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== STACK.PLAYER PACKAGE CONTENTS ===========#
+# =========== STACK.PLAYER PACKAGE ===========#
 
 # Packages
 None

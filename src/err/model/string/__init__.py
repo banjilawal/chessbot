@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ MODEL.STRING PACKAGE CONTENTS ===========#
+# ============ MODEL.STRING PACKAGE ===========#
 
 # Packages
 from .blank import  *

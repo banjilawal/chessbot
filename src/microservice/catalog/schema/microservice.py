@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from catalog import Schema
+from model.catalog import Schema
 from microservice import CatalogService
 
 

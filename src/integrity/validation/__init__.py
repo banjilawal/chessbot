@@ -11,7 +11,7 @@ import logging
 
 log = logging.getLogger("chessbot")
 
-# =========== VALIDATION PACKAGE CONTENTS ===========#
+# =========== VALIDATION PACKAGE ===========#
 
 # Packages
 from .arena import *

@@ -7,7 +7,7 @@ Created: 2026-03-14
 version: 1.0.0
 """
 
-# =========== TOKEN.SERVICE.OPERATION.MATE PACKAGE CONTENTS ===========#
+# =========== TOKEN.SERVICE.OPERATION.MATE PACKAGE ===========#
 
 # Packages
 from .build import *

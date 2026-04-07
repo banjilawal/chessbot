@@ -13,7 +13,7 @@ from typing import Any, Dict
 
 from logic.team import Team
 from model.token import PawnToken, Token
-from catalog.formation import Formation
+from model.catalog.formation import Formation
 from command.system.adt import CommandArgs, CommandTable
 from command.token import (
     BuildTokenCommand, DeployTokenCommand, PromotePawnCommand, TokenCommand, ValidateTokenCommand

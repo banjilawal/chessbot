@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== MODEL.ZERO PACKAGE CONTENTS ===========#
+# =========== MODEL.ZERO PACKAGE ===========#
 
 # Packages
 from .arena import *

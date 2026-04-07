@@ -7,7 +7,7 @@ Created: 2026-02-25
 version: 1.0.0
 """
 
-# =========== SYSTEM.ERR.DEBUG.ROOT PACKAGE CONTENTS ===========#
+# =========== SYSTEM.ERR.DEBUG.ROOT PACKAGE ===========#
 
 # Packages
 None

@@ -7,7 +7,7 @@ Created: 2026-03-13
 version: 1.0.0
 """
 
-# =========== PAIR.PAIR.VALIDATOR PACKAGE CONTENTS ===========#
+# =========== PAIR.PAIR.VALIDATOR PACKAGE ===========#
 
 # Packages
 from .exception import *

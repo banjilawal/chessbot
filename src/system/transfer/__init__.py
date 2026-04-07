@@ -7,7 +7,7 @@ Created: 2026-02-01
 version: 1.0.0
 """
 
-# =========== SYSTEM.TRANSFER PACKAGE CONTENTS ===========#
+# =========== SYSTEM.TRANSFER PACKAGE ===========#
 
 # Packages
 from .exception import *

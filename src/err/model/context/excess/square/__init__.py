@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== MODEL.EXCESS.SQUARE PACKAGE CONTENTS ===========#
+# =========== MODEL.EXCESS.SQUARE PACKAGE ===========#
 
 # Packages
 

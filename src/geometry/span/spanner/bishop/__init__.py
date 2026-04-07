@@ -7,7 +7,7 @@ Created: 2026-03-10
 version: 1.0.0
 """
 
-# =========== SPAN.SPANNER.BISHOP PACKAGE CONTENTS ===========#
+# =========== SPAN.SPANNER.BISHOP PACKAGE ===========#
 
 # Packages
 from .service import *

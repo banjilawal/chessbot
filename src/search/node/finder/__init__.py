@@ -7,7 +7,7 @@ Created: 2026-02-18
 version: 1.0.0
 """
 
-# =========== NODE.CONTEXT.FINDER PACKAGE CONTENTS ===========#
+# =========== NODE.CONTEXT.FINDER PACKAGE ===========#
 
 # Packages
 from .exception import *

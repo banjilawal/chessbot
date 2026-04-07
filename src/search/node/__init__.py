@@ -7,7 +7,7 @@ Created: 2026-02-18
 version: 1.0.0
 """
 
-#=========== NODE.CONTEXT PACKAGE CONTENTS ===========#
+#=========== NODE.CONTEXT PACKAGE ===========#
 
 # Packages
 from .builder import *

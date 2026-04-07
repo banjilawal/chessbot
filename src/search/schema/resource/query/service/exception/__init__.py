@@ -7,7 +7,7 @@ Created: 2025-10-01
 version: 1.0.0
 """
 
-# =========== SCHEMA.DATABASE.SEARCH.SERVICE.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== SCHEMA.DATABASE.SEARCH.SERVICE.EXCEPTION PACKAGE ===========#
 
 # Packages
 None

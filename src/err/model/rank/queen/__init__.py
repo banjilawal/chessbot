@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ MODEL.RANK.QUEEN PACKAGE CONTENTS ===========#
+# ============ MODEL.RANK.QUEEN PACKAGE ===========#
 
 # Packages
 None

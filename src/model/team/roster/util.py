@@ -12,7 +12,7 @@ from __future__ import annotations
 from copy import deepcopy
 
 from model.rank import RankService
-from catalog.formation import FormationKey, FormationService
+from model.catalog.formation import FormationKey, FormationService
 from system import IdFactory, IdentityService, UpdateResult
 from model.team import FillingTeamRosterException, RosterRelationAnalysis, Team, TeamValidator
 

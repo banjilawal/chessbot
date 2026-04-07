@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== GEOMETRY.SCALAR PACKAGE CONTENTS ===========#
+# =========== GEOMETRY.SCALAR PACKAGE ===========#
 
 # Packages
 None

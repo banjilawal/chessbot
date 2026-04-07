@@ -7,7 +7,7 @@ Created: 2026-01-24
 version: 1.0.0
 """
 
-# ===========  ATTACK.EXCEPTION.DEBUG PACKAGE CONTENTS ===========#
+# ===========  ATTACK.EXCEPTION.DEBUG PACKAGE ===========#
 
 # Packages
 from .board import *

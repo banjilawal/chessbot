@@ -7,7 +7,7 @@ Created: 2025-11-22
 version: 1.0.0
 """
 
-#=========== SQUARE.CONTEXT PACKAGE CONTENTS ===========#
+#=========== SQUARE.CONTEXT PACKAGE ===========#
 
 # Packages
 from logic.square.query.context.build import *

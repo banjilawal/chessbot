@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== QUERY.STACK PACKAGE CONTENTS ===========#
+# =========== QUERY.STACK PACKAGE ===========#
 
 # Packages
 None

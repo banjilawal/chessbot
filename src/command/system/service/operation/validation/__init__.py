@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2026-02-24
 """
 
-# =========== COMMAND.ROOT.VALIDATION PACKAGE CONTENTS ===========#
+# =========== COMMAND.ROOT.VALIDATION PACKAGE ===========#
 
 # Packages
 from .command import *

@@ -7,7 +7,7 @@ Created: 2026-02-21
 version: 1.0.0
 """
 
-# =========== SQUARE.DATABASE.KERNEL.OPERATION PACKAGE CONTENTS ===========#
+# =========== SQUARE.DATABASE.KERNEL.OPERATION PACKAGE ===========#
 
 # Packages
 from .token import *

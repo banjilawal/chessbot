@@ -8,7 +8,7 @@ version: 1.0.1
 """
 
 
-# =========== CREATOR.TOKEN PACKAGE CONTENTS ===========#
+# =========== CREATOR.TOKEN PACKAGE ===========#
 
 # Packages
 

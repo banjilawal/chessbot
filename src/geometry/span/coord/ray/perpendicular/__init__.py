@@ -7,7 +7,7 @@ Created: 2026-02-26
 version: 1.0.0
 """
 
-# =========== SPAN.COORD.RAY.PERPENDICULAR PACKAGE CONTENTS ===========#
+# =========== SPAN.COORD.RAY.PERPENDICULAR PACKAGE ===========#
 
 # Packages
 from .provider import *

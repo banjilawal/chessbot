@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 
-#=========== PLAYER PACKAGE CONTENTS ===========#
+#=========== PLAYER PACKAGE ===========#
 
 # Packages
 from .context import *

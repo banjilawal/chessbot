@@ -7,7 +7,7 @@ Created: 2026-01-24
 version: 1.0.0
 """
 
-# ===========  ATTACK PACKAGE CONTENTS ===========#
+# ===========  ATTACK PACKAGE ===========#
 
 # Packages
 from .builder import *

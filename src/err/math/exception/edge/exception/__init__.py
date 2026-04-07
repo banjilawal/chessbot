@@ -7,7 +7,7 @@ Created: 2025-02-18
 version: 1.0.0
 """
 
-# =========== EDGE.STACK.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== EDGE.STACK.EXCEPTION PACKAGE ===========#
 
 # Packages
 from .pop import *

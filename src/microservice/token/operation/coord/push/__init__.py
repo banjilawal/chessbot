@@ -7,7 +7,7 @@ Created: 2026-03-14
 version: 1.0.0
 """
 
-# =========== TOKEN.SERVICE.OPERATION.COORD.PUSH PACKAGE CONTENTS ===========#
+# =========== TOKEN.SERVICE.OPERATION.COORD.PUSH PACKAGE ===========#
 
 # Packages
 from .exception import *

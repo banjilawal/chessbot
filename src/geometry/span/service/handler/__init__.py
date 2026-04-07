@@ -7,7 +7,7 @@ Created: 2026-03-11
 version: 1.0.0
 """
 
-# =========== SPAN.SERVICE.HANDLER PACKAGE CONTENTS ===========#
+# =========== SPAN.SERVICE.HANDLER PACKAGE ===========#
 
 # Packages
 from .edge import *

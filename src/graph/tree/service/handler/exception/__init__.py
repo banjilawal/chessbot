@@ -7,7 +7,7 @@ Created: 2026-03-12
 version: 1.0.0
 """
 
-# =========== PAIR.TREE.SERVICE.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== PAIR.TREE.SERVICE.EXCEPTION PACKAGE ===========#
 
 # Packages
 None

@@ -7,7 +7,7 @@ Created: 2026-03-8
 version: 1.0.0
 """
 
-# =========== SPAN.COORD.RAY.PERPENDICULAR.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== SPAN.COORD.RAY.PERPENDICULAR.EXCEPTION PACKAGE ===========#
 
 # Modules
 None

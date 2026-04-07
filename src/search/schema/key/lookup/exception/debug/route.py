@@ -7,7 +7,7 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-from catalog.schema import SchemaException
+from model.catalog import SchemaException
 from system import ExecutionRouteException
 
 

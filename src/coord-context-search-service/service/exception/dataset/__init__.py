@@ -7,7 +7,7 @@ Created: 2025-10-01
 version: 1.0.0
 """
 
-# =========== COORD.QUERY.SERVICE.EXCEPTION.DATASET PACKAGE CONTENTS ===========#
+# =========== COORD.QUERY.SERVICE.EXCEPTION.DATASET PACKAGE ===========#
 
 # Packages
 None

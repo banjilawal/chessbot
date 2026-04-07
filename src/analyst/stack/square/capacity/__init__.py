@@ -7,7 +7,7 @@ Created: 2026-02-21
 version: 1.0.0
 """
 
-# =========== SQUARE.DATABASE.KERNEL.OPERATION.QUOTA PACKAGE CONTENTS ===========#
+# =========== SQUARE.DATABASE.KERNEL.OPERATION.QUOTA PACKAGE ===========#
 
 # Packages
 from .exception import *

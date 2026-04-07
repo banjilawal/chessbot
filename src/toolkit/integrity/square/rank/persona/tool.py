@@ -11,7 +11,7 @@ from model import Rank
 from result import ValidationResult
 from system import LoggingLevelRouter
 
-# =========== INTEGRITY.RANK PACKAGE CONTENTS ===========#
+# =========== INTEGRITY.RANK PACKAGE ===========#
 
 # Packages
 None

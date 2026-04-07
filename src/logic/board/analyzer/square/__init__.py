@@ -7,7 +7,7 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-# =========== BOARD.SQUARE.ANALYZER PACKAGE CONTENTS ===========#
+# =========== BOARD.SQUARE.ANALYZER PACKAGE ===========#
 
 # Packages
 from .exception import *

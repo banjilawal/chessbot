@@ -12,7 +12,7 @@ from __future__ import annotations
 from copy import deepcopy
 
 from logic.rank import King, Pawn, Rank, RankService
-from catalog.schema import SchemaService
+from model.catalog import SchemaService
 from system import LoggingLevelRouter, UpdateResult
 from model.token import (
     PawnAlreadyPromotedException, PawnPromotionRowException, PawnToken, PromoteInactivePawnException,

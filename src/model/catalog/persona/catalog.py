@@ -1,7 +1,7 @@
-# src/catalog/persona/catalog.py
+# src/model/catalog/persona/model/catalog.py
 
 """
-Module: catalog.persona.catalog
+Module: model.catalog.persona.catalog
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

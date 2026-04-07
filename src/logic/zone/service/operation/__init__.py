@@ -7,7 +7,7 @@ Created: 2026-03-29
 version: 1.0.0
 """
 
-# =========== TOKEN.SERVICE.OPERATION PACKAGE CONTENTS ===========#
+# =========== TOKEN.SERVICE.OPERATION PACKAGE ===========#
 
 # Packages
 from .build import *

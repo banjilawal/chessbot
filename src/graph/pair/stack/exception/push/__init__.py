@@ -7,7 +7,7 @@ Created: 2025-11-19
 version: 1.0.0
 """
 
-# =========== PAIR.STACK.EXCEPTION.PUSH PACKAGE CONTENTS ===========#
+# =========== PAIR.STACK.EXCEPTION.PUSH PACKAGE ===========#
 
 # Packages
 from .full import *

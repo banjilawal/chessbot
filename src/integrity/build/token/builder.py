@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from catalog import Formation, Persona
+from model.catalog import Formation, Persona
 from err import TokenBuildException
 from integrity import Builder
 from microservice import RankService

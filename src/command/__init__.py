@@ -13,7 +13,7 @@ log = logging.getLogger("chessbot")
 
 
 
-# =========== PACKAGE CONTENTS ===========#
+# =========== PACKAGE ===========#
 
 # Packages
 from .token import *

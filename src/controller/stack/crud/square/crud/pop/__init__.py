@@ -7,7 +7,7 @@ Created: 2026-02-22
 version: 1.0.0
 """
 
-# =========== SQUARE.DATABASE.KERNEL.OPERATION.CRUD.POP PACKAGE CONTENTS ===========#
+# =========== SQUARE.DATABASE.KERNEL.OPERATION.CRUD.POP PACKAGE ===========#
 
 # Packages
 from .exception import *

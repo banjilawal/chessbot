@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from catalog.schema import SchemaContextService, SchemaQueryService, SchemaSearchRouter
+from model.catalog import SchemaContextService, SchemaQueryService, SchemaSearchRouter
 
 
 class SchemaSearchResourceHost:

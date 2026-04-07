@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== BUILD.VECTOR PACKAGE CONTENTS ===========#
+# =========== BUILD.VECTOR PACKAGE ===========#
 
 # Packages
 None

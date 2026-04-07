@@ -7,7 +7,7 @@ Created: 2026-02-25
 version: 1.0.0
 """
 
-# =========== SYSTEM.ERR.DEBUG.CHILD PACKAGE CONTENTS ===========#
+# =========== SYSTEM.ERR.DEBUG.CHILD PACKAGE ===========#
 
 # Packages
 from .method import *

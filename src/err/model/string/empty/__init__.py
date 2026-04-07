@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ MODEL.STRING.EMPTY PACKAGE CONTENTS ===========#
+# ============ MODEL.STRING.EMPTY PACKAGE ===========#
 
 # Packages
 None

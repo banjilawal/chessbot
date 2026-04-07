@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import List
 
 from system import LoggingLevelRouter, SearchMicroservice, SearchResult
-from catalog.schema import (
+from model.catalog import (
     Schema, SchemaContextService, SchemaQuery, SchemaQueryService, SchemaSearchResourceHost,
     SchemaSearchRouter, SchemaSearchServiceException
 )

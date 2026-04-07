@@ -7,7 +7,7 @@ Created: 2026-02-21
 version: 1.0.0
 """
 
-# =========== TOKEN.DATABASE.KERNEL.OPERATION.QUOTA.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== TOKEN.DATABASE.KERNEL.OPERATION.QUOTA.EXCEPTION PACKAGE ===========#
 
 # Packages
 None

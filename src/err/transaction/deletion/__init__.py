@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== TRANSACTION.DELETION PACKAGE CONTENTS ===========#
+# =========== TRANSACTION.DELETION PACKAGE ===========#
 
 # Packages
 from .empty import *

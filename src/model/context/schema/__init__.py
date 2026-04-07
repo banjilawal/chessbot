@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== MODEL.CONTEXT.SCHEMA PACKAGE CONTENTS ===========#
+# =========== MODEL.CONTEXT.SCHEMA PACKAGE ===========#
 
 # Packages
 None

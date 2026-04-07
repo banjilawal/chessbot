@@ -7,7 +7,7 @@ Created: 2026-03-29
 version: 1.0.0
 """
 
-# =========== ZONE PACKAGE CONTENTS ===========#
+# =========== ZONE PACKAGE ===========#
 
 # Packages
 from .model import *

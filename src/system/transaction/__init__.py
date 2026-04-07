@@ -7,7 +7,7 @@ Created: 2025-10-015
 version: 1.0.0
 """
 
-#=========== SYSTEM.RESULT PACKAGE CONTENTS ===========#
+#=========== SYSTEM.RESULT PACKAGE ===========#
 
 # Packages
 from .exception import *

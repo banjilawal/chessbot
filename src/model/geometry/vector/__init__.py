@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== GEOMETRY.VECTOR PACKAGE CONTENTS ===========#
+# =========== GEOMETRY.VECTOR PACKAGE ===========#
 
 # Packages
 None

@@ -7,7 +7,7 @@ Created: 2026-03-11
 version: 1.0.0
 """
 
-# =========== SPAN.SQUARE.GRAPH PACKAGE CONTENTS ===========#
+# =========== SPAN.SQUARE.GRAPH PACKAGE ===========#
 
 # Packages
 from .node import *

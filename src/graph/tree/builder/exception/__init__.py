@@ -7,7 +7,7 @@ Created: 2026-03-12
 version: 1.0.0
 """
 
-# =========== PAIR.BUILDER.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== PAIR.BUILDER.EXCEPTION PACKAGE ===========#
 
 # Packages
 None

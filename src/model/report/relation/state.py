@@ -9,7 +9,7 @@ version: 1.0.0
 
 from enum import Enum, auto
 
-class RelationStatus(Enum):
+class RelationState(Enum):
     NO_RELATION = auto(),
     BIDIRECTIONAL = auto(),
     STALE_LINK_NOT_PURGED = auto(),

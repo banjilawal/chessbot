@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from catalog.schema import SchemaService
+from model.catalog import SchemaService
 from system import LoggingLevelRouter, Validator
 from result.result.result import ValidationResult
 from model.team import (

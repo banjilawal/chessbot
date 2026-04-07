@@ -7,7 +7,7 @@ Created: 2026-03-11
 version: 1.0.0
 """
 
-# =========== SPAN.SQUARE.RAY.BUILDER PACKAGE CONTENTS ===========#
+# =========== SPAN.SQUARE.RAY.BUILDER PACKAGE ===========#
 
 # Packages
 None

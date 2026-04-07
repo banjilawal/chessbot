@@ -7,7 +7,7 @@ Created: 2026-03-12
 version: 1.0.0
 """
 
-# =========== SPAN.COORD PACKAGE CONTENTS ===========#
+# =========== SPAN.COORD PACKAGE ===========#
 
 # Packages
 from .ray import *

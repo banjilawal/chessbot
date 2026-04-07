@@ -7,7 +7,7 @@ Created: 2026-03-12
 version: 1.0.0
 """
 
-# =========== PAIR.TREE.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== PAIR.TREE.VALIDATOR.EXCEPTION PACKAGE ===========#
 
 # Packages
 from .null import *

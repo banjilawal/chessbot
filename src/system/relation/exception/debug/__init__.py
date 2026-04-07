@@ -7,7 +7,7 @@ Created: 2025-12-28
 version: 1.0.0
 """
 
-# =========== SYSTEM.RELATION.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== SYSTEM.RELATION.EXCEPTION PACKAGE ===========#
 
 # Packages
 None

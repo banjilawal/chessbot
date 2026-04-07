@@ -7,7 +7,7 @@ Created: 2026-03-29
 version: 1.0.0
 """
 
-# =========== ZONE.SERVICE.OPERATION.BUILD PACKAGE CONTENTS ===========#
+# =========== ZONE.SERVICE.OPERATION.BUILD PACKAGE ===========#
 
 # Packages
 from .exception import *

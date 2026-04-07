@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== MODEL.EXCESS.HOSTAGE PACKAGE CONTENTS ===========#
+# =========== MODEL.EXCESS.HOSTAGE PACKAGE ===========#
 
 # Packages
 

@@ -7,7 +7,7 @@ Created: 2026-03-29
 version: 1.0.0
 """
 
-# =========== ZONE.SERVICE PACKAGE CONTENTS ===========#
+# =========== ZONE.SERVICE PACKAGE ===========#
 
 # Packages
 from .operation import *

@@ -7,7 +7,7 @@ Created: 2026-02-22
 version: 1.0.0
 """
 
-# =========== SQUARE.SERVICE.VISITATION.ENTRY.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== SQUARE.SERVICE.VISITATION.ENTRY.EXCEPTION PACKAGE ===========#
 
 # Packages
 from .debug import *

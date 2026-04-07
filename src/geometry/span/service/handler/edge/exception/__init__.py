@@ -7,7 +7,7 @@ Created: 2026-03-11
 version: 1.0.0
 """
 
-# =========== SPAN.SERVICE.HANDLER.EDGE.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== SPAN.SERVICE.HANDLER.EDGE.EXCEPTION PACKAGE ===========#
 
 # Packages
 from .work import *

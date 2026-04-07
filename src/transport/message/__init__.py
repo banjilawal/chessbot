@@ -7,7 +7,7 @@ Created: 2026-03-30
 version: 1.0.0
 """
 
-# =========== ADT.MESSAGE PACKAGE CONTENTS ===========#
+# =========== ADT.MESSAGE PACKAGE ===========#
 
 # Packages
 None

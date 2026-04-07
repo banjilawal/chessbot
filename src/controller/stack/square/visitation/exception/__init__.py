@@ -7,7 +7,7 @@ Created: 2026-02-22
 version: 1.0.0
 """
 
-# =========== SQUARE.DATABASE.KERNEL.OPERATION.TOKEN.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== SQUARE.DATABASE.KERNEL.OPERATION.TOKEN.EXCEPTION PACKAGE ===========#
 
 # Packages
 from .work import *

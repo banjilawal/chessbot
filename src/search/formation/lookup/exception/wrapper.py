@@ -7,7 +7,7 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-from catalog.formation import FormationException
+from model.catalog.formation import FormationException
 from system import LookupException
 
 __all__ = [

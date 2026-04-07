@@ -10,7 +10,7 @@ from typing import cast
 
 
 from system import QueryService, id_emitter
-from catalog.schema import SchemaLookupProcess, SchemaKey, SchemaKeyBuilder, SchemaKeyValidator
+from model.catalog import SchemaLookupProcess, SchemaKey, SchemaKeyBuilder, SchemaKeyValidator
 
 
 class SchemaKeyService(QueryService[SchemaKey]):

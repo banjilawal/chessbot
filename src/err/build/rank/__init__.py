@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ BUILD.CONTEXT.RANK PACKAGE CONTENTS ===========#
+# ============ BUILD.CONTEXT.RANK PACKAGE ===========#
 
 # Packages
 None

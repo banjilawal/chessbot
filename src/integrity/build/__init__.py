@@ -11,7 +11,7 @@ import logging
 
 log = logging.getLogger("chessbot")
 
-# =========== BUILD.PACKAGE CONTENTS ===========#
+# =========== BUILD.PACKAGE ===========#
 
 # Packages
 from .arena import *

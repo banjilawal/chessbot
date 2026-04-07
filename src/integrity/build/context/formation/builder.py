@@ -9,11 +9,11 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from catalog.formation import (
+from model.catalog.formation import (
     ArenaFormationKeysException, FormationKey, FormationKeyBuildException,
     FormationKeyBuildRouteException, ZeroFormationKeysException
 )
-from catalog.persona import Persona, PersonaService
+from model.catalog.persona import Persona, PersonaService
 from logic.square import Square, SquareService
 from system import BuildResult, Builder, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
 

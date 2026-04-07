@@ -7,7 +7,7 @@ Created: 2026-02-21
 Version: 1.0.0
 """
 
-# =========== SYSTEM.COLLISION.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== SYSTEM.COLLISION.EXCEPTION PACKAGE ===========#
 
 # Packages
 None

@@ -7,7 +7,7 @@ Created: 2026-03-29
 version: 1.0.0
 """
 
-# =========== SQUARE.QUERY.CONTEXT.CONTEXT PACKAGE CONTENTS ===========#
+# =========== SQUARE.QUERY.CONTEXT.CONTEXT PACKAGE ===========#
 
 # Packages
 from .build import *

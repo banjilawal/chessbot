@@ -13,7 +13,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from catalog import Schema
+from model.catalog import Schema
 from model import Context
 from system import GameColor
 

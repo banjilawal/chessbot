@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
-from catalog.persona import Persona, PersonaService
+from model.catalog.persona import Persona, PersonaService
 from system import Builder, BuildResult, LoggingLevelRouter, id_emitter
 from logic.rank import (
     Bishop, King, Knight, Pawn, Queen, Rank, RankBuildException, RankBuildRouteException,

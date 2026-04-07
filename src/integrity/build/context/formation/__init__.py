@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== BUILD.FORMATION PACKAGE CONTENTS ===========#
+# =========== BUILD.FORMATION PACKAGE ===========#
 
 # Packages
 None

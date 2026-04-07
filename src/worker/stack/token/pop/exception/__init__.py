@@ -7,7 +7,7 @@ Created: 2026-02-22
 version: 1.0.0
 """
 
-# =========== TOKEN.DATABASE.KERNEL.OPERATION.CRUD.POP.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== TOKEN.DATABASE.KERNEL.OPERATION.CRUD.POP.EXCEPTION PACKAGE ===========#
 
 # Packages
 None

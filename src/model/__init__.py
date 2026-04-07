@@ -11,12 +11,13 @@ import logging
 
 log = logging.getLogger("chessbot")
 
-# =========== PACKAGE CONTENTS ===========#
+# =========== PACKAGE ===========#
 
 # Packages
 from .arena import *
 from .blueprint import *
 from .board import *
+from .catalog import *
 from .context import *
 from .geometry import *
 from .game import *

@@ -6,7 +6,7 @@ Created: 2025-10-06
 version: 1.0.0
 """
 
-# =========== SCHEMA.DATABASE.SEARCH.ROUTE.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== SCHEMA.DATABASE.SEARCH.ROUTE.EXCEPTION PACKAGE ===========#
 
 # Packages
 from .debug import *

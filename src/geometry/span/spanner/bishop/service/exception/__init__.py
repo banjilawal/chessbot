@@ -7,7 +7,7 @@ Created: 2026-03-10
 version: 1.0.0
 """
 
-# =========== SPAN.SPANNER.BISHOP.SERVICE.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== SPAN.SPANNER.BISHOP.SERVICE.EXCEPTION PACKAGE ===========#
 
 # Packages
 None

@@ -7,7 +7,7 @@ Created: 2026-03-10
 version: 1.0.0
 """
 
-# =========== SPAN.SPANNER.KING PACKAGE CONTENTS ===========#
+# =========== SPAN.SPANNER.KING PACKAGE ===========#
 
 # Packages
 None

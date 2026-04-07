@@ -16,7 +16,7 @@ __all__ = [
     "SchemaLookupFailedException",
 ]
 
-from catalog.schema import SchemaException
+from model.catalog import SchemaException
 from system import ForwardLookupFailedException
 
 

@@ -7,7 +7,7 @@ Created: 2026-02-18
 version: 1.0.0
 """
 
-# =========== GRAPH.EXCEPTION.EDGE PACKAGE CONTENTS ===========#
+# =========== GRAPH.EXCEPTION.EDGE PACKAGE ===========#
 
 # Packages
 None

@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== STACK.HOSTAGE PACKAGE CONTENTS ===========#
+# =========== STACK.HOSTAGE PACKAGE ===========#
 
 # Packages
 None

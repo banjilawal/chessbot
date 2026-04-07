@@ -7,7 +7,7 @@ Created: 2026-02-25
 version: 1.0.0
 """
 
-# =========== SYSTEM.ERR.DEBUG.CHILD.INVARIANT PACKAGE CONTENTS ===========#
+# =========== SYSTEM.ERR.DEBUG.CHILD.INVARIANT PACKAGE ===========#
 
 # Packages
 None

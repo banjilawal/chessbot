@@ -11,14 +11,12 @@ from __future__ import annotations
 
 from typing import Any, Dict
 
-from catalog import Formation, Persona
+from model.catalog import Formation, Persona
 from err import TokenBuildException
-from integrity import Builder
 from microservice import RankService
 from model import CombatantToken, KingToken, PawnToken, Team, Token
 from result import BuildResult
-from system import IdFactory, LoggingLevelRouter
-from toolkit.integrity.token.toolkit import TokenIntegrityToolkit
+from system import LoggingLevelRouter
 
 
 class TokenCreationOperation:

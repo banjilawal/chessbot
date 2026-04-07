@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Dict
 
-from catalog.persona import Persona
+from model.catalog.persona import Persona
 from math.span import BishopSpanner, CoordSpan
 from model.coord import Coord, CoordService
 from model.rank import BishopException, Rank

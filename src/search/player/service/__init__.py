@@ -7,7 +7,7 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-#=========== PLAYER.CONTEXT.SERVICE PACKAGE CONTENTS ===========#
+#=========== PLAYER.CONTEXT.SERVICE PACKAGE ===========#
 
 # Packages
 from .exception import *

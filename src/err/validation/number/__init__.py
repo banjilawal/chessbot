@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ VALIDATION.NUMBER PACKAGE CONTENTS ===========#
+# ============ VALIDATION.NUMBER PACKAGE ===========#
 
 # Packages
 None

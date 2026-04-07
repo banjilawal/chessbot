@@ -8,7 +8,7 @@ version: 1.0.1
 """
 
 
-# =========== SQUARE PACKAGE CONTENTS ===========#
+# =========== SQUARE PACKAGE ===========#
 
 # Packages
 None

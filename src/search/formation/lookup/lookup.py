@@ -9,12 +9,12 @@ version: 1.0.0
 
 from typing import List
 
-from catalog.formation import (
+from model.catalog.formation import (
     Formation, FormationColorBoundsException, FormationDesignationBoundsException, FormationLookupFailedException,
     FormationLookupRouteException, FormationPersonaBoundsException, FormationSquareBoundsException, FormationKey,
     FormationKeyValidator
 )
-from catalog.persona import Persona
+from model.catalog.persona import Persona
 from system import GameColor, HashLookupProcess, LoggingLevelRouter, SearchResult
 
 

@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== VALIDATION.TOKEN PACKAGE CONTENTS ===========#
+# =========== VALIDATION.TOKEN PACKAGE ===========#
 
 # Packages
 None

@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 
-# =========== PAIR.STACK PACKAGE CONTENTS ===========#
+# =========== PAIR.STACK PACKAGE ===========#
 
 # Packages
 from .exception import *

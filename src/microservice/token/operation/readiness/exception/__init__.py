@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-# =========== TOKEN.SERVICE.OPERATION.ANALYSIS.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== TOKEN.SERVICE.OPERATION.ANALYSIS.EXCEPTION PACKAGE ===========#
 
 # Packages
 None

@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== MODEL.CONTEXT.ALGEBRA PACKAGE CONTENTS ===========#
+# =========== MODEL.CONTEXT.ALGEBRA PACKAGE ===========#
 
 # Packages
 None

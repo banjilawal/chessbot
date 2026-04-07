@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== MODEL.EXCESS.RANK PACKAGE CONTENTS ===========#
+# =========== MODEL.EXCESS.RANK PACKAGE ===========#
 
 # Packages
 

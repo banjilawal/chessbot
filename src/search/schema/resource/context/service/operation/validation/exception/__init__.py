@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 
-# =========== SCHEMA.DATABASE.SEARCH.SERVICE.OPERATION.VALIDATION.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== SCHEMA.DATABASE.SEARCH.SERVICE.OPERATION.VALIDATION.EXCEPTION PACKAGE ===========#
 
 # Packages
 from .debug import *

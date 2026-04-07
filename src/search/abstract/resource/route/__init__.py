@@ -7,7 +7,7 @@ Created: 2026-03-31
 Version: 1.0.0
 """
 
-# =========== SYSTEM.SEARCH.RESOURCE.ROUTE PACKAGE CONTENTS ===========#
+# =========== SYSTEM.SEARCH.RESOURCE.ROUTE PACKAGE ===========#
 
 # Packages
 from .exception import *

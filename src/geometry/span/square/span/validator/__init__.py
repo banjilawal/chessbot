@@ -7,7 +7,7 @@ Created: 2026-03-12
 version: 1.0.0
 """
 
-# =========== SPAN.SQUARE.SPAN.VALIDATOR PACKAGE CONTENTS ===========#
+# =========== SPAN.SQUARE.SPAN.VALIDATOR PACKAGE ===========#
 
 # Packages
 from .exception import *

@@ -7,7 +7,7 @@ Created: 2026-02-26
 version: 1.0.0
 """
 
-# =========== SPAN.COORD.RAY.DIAGONAL PACKAGE CONTENTS ===========#
+# =========== SPAN.COORD.RAY.DIAGONAL PACKAGE ===========#
 
 # Modules
 from .exception import  *

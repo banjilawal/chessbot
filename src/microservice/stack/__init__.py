@@ -11,7 +11,7 @@ import logging
 
 log = logging.getLogger("chessbot")
 
-# =========== SERVICE.STACK. PACKAGE CONTENTS ===========#
+# =========== SERVICE.STACK. PACKAGE ===========#
 
 # Packages
 from .board import *

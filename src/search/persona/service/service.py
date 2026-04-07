@@ -9,7 +9,7 @@ version: 1.0.0
 from typing import cast
 
 from system import QueryService, id_emitter
-from catalog.persona import PersonaLookupProcess, PersonaKey, PersonaKeyBuilder, PersonaKeyValidator
+from model.catalog.persona import PersonaLookupProcess, PersonaKey, PersonaKeyBuilder, PersonaKeyValidator
 
 
 class PersonaKeyService(QueryService[PersonaKey]):

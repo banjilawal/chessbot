@@ -7,7 +7,7 @@ Created: 2025-11-20
 version: 1.0.0
 """
 
-# =========== RANK.SERVICE.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== RANK.SERVICE.EXCEPTION PACKAGE ===========#
 
 # Packages
 None

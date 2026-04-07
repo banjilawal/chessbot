@@ -7,7 +7,7 @@ Created: 2025-11-22
 version: 1.0.0
 """
 
-# =========== TEAM.DATABASE.CORE.EXCEPTION.PUSH PACKAGE CONTENTS ===========#
+# =========== TEAM.DATABASE.CORE.EXCEPTION.PUSH PACKAGE ===========#
 
 # Packages
 None

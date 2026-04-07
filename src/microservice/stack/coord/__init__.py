@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== STACK.COORD PACKAGE CONTENTS ===========#
+# =========== STACK.COORD PACKAGE ===========#
 
 # Packages
 None

@@ -7,7 +7,7 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-# =========== SCHEMA.KEY.SERVICE PACKAGE CONTENTS ===========#
+# =========== SCHEMA.KEY.SERVICE PACKAGE ===========#
 
 # Packages
 from .exception import *

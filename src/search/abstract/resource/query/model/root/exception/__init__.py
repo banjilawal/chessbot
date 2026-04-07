@@ -7,7 +7,7 @@ Created: 2026-04-01
 Version: 1.0.0
 """
 
-# =========== SYSTEM.SEARCH.RESOURCE.QUERY.MODEL.ROOT.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== SYSTEM.SEARCH.RESOURCE.QUERY.MODEL.ROOT.EXCEPTION PACKAGE ===========#
 
 # Packages
 None

@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ NUMBER PACKAGE CONTENTS ===========#
+# ============ NUMBER PACKAGE ===========#
 
 # Packages
 from .above import *

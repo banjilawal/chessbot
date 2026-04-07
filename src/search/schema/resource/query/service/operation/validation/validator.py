@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from system import LoggingLevelRouter, ValidationResult, Validator
-from catalog.schema import (
+from model.catalog import (
     SchemaQuery, SchemaQueryIntegrityWorkers, SchemaQueryNullException, SchemaQueryValidationException
 )
 

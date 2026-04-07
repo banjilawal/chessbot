@@ -7,7 +7,7 @@ Created: 2026-02-24
 version: 1.0.0
 """
 
-# =========== ADT.COMMAND.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== ADT.COMMAND.EXCEPTION PACKAGE ===========#
 
 # Packages
 None

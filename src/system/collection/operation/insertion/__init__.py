@@ -7,7 +7,7 @@ Created: 2026-01-25
 Version: 1.0.0
 """
 
-# =========== SYSTEM.COLLECTION.OPERATION.INSERTION PACKAGE CONTENTS ===========#
+# =========== SYSTEM.COLLECTION.OPERATION.INSERTION PACKAGE ===========#
 
 # Packages
 from .state import *

@@ -7,7 +7,7 @@ Created: 2026-03-11
 version: 1.0.0
 """
 
-# =========== SPAN.SQUARE.SPAN.SERVICE PACKAGE CONTENTS ===========#
+# =========== SPAN.SQUARE.SPAN.SERVICE PACKAGE ===========#
 
 # Packages
 None

@@ -8,7 +8,7 @@ version: 1.0.1
 """
 
 
-# =========== VECTOR PACKAGE CONTENTS ===========#
+# =========== VECTOR PACKAGE ===========#
 
 # Packages
 None

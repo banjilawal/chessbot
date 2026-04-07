@@ -11,7 +11,7 @@ from typing import Optional
 
 
 from validate.formation import Formation
-from catalog.persona import Persona
+from model.catalog.persona import Persona
 from system import Context, GameColor
 
 """

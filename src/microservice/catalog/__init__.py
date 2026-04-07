@@ -11,7 +11,7 @@ import logging
 
 log = logging.getLogger("chessbot")
 
-# =========== CATALOG PACKAGE CONTENTS ===========#
+# =========== CATALOG PACKAGE ===========#
 
 # Packages
 from .formation import *

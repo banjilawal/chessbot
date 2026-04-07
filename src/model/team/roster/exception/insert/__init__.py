@@ -7,7 +7,7 @@ Created: 2025-10-06
 version: 1.0.0
 """
 
-# =========== TEAM.ROSTER.EXCEPTION.INSERTION PACKAGE CONTENTS ===========#
+# =========== TEAM.ROSTER.EXCEPTION.INSERTION PACKAGE ===========#
 
 # Packages
 None

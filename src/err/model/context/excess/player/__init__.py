@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== MODEL.EXCESS.PLAYER PACKAGE CONTENTS ===========#
+# =========== MODEL.EXCESS.PLAYER PACKAGE ===========#
 
 # Packages
 

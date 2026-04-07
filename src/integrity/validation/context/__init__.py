@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== CONTEXT PACKAGE CONTENTS ===========#
+# =========== CONTEXT PACKAGE ===========#
 
 # Packages
 from .board import *

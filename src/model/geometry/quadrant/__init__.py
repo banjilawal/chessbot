@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== GEOMETRY.QUADRANT PACKAGE CONTENTS ===========#
+# =========== GEOMETRY.QUADRANT PACKAGE ===========#
 
 # Packages
 None

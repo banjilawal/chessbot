@@ -7,7 +7,7 @@ Created: 2025-11-18
 Version: 1.0.0
 """
 
-# =========== SYSTEM.SEARCH PACKAGE CONTENTS ===========#
+# =========== SYSTEM.SEARCH PACKAGE ===========#
 
 # Package
 from .service import *

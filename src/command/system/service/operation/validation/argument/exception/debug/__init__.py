@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2026-02-24
 """
 
-# =========== COMMAND.ARGUMENT.EXCEPTION.DEBUG PACKAGE CONTENTS ===========#
+# =========== COMMAND.ARGUMENT.EXCEPTION.DEBUG PACKAGE ===========#
 
 # Packages
 None

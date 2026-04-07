@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-# =========== COORD.QUERY.CONTEXT.SERVICE PACKAGE CONTENTS ===========#
+# =========== COORD.QUERY.CONTEXT.SERVICE PACKAGE ===========#
 
 # Packages
 from .operation import *

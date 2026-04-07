@@ -7,10 +7,9 @@ Created: 2025-12-28
 version: 1.0.0
 """
 
-# =========== SYSTEM.RELATION PACKAGE CONTENTS ===========#
+# =========== SYSTEM.RELATION PACKAGE ===========#
 
 # Packages
-from .report import *
 from .analyzer import *
 from system.relation import *
 from .exception import *

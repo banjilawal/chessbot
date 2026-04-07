@@ -7,7 +7,7 @@ Created: 2025-10-01
 version: 1.0.0
 """
 
-# =========== BOARD.CONTEXT.SERVICE.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== BOARD.CONTEXT.SERVICE.EXCEPTION PACKAGE ===========#
 
 # Packages
 None

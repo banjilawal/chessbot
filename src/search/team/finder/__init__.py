@@ -7,7 +7,7 @@ Created: 2025-10-06
 version: 1.0.0
 """
 
-#=========== TEAM.CONTEXT.FINDER PACKAGE CONTENTS ===========#
+#=========== TEAM.CONTEXT.FINDER PACKAGE ===========#
 
 # Packages
 from .exception import *

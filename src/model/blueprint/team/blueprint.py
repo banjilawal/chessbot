@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from catalog import Schema
+from model.catalog import Schema
 from model import Blueprint, Board, Player, Team
 
 

@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== TOKEN.BUILD.finalizeN PACKAGE CONTENTS ===========#
+# =========== TOKEN.BUILD.finalizeN PACKAGE ===========#
 
 # Packages
 

@@ -7,7 +7,7 @@ Created: 2026-02-18
 version: 1.0.0
 """
 
-#=========== NODE.CONTEXT.SERVICE PACKAGE CONTENTS ===========#
+#=========== NODE.CONTEXT.SERVICE PACKAGE ===========#
 
 # Packages
 None

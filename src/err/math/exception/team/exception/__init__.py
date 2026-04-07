@@ -7,7 +7,7 @@ Created: 2025-11-24
 version: 1.0.0
 """
 
-# =========== TEAM.DATABASE.CORE.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== TEAM.DATABASE.CORE.EXCEPTION PACKAGE ===========#
 
 # Packages
 from .pop import *

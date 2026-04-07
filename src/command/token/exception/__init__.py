@@ -7,7 +7,7 @@ Created: 2026-02-24
 version: 1.0.0
 """
 
-# =========== COMMAND.TOKEN.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== COMMAND.TOKEN.EXCEPTION PACKAGE ===========#
 
 # Packages
 None

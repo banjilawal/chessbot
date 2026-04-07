@@ -7,7 +7,7 @@ Created: 2026-02-08
 version: 1.0.0
 """
 
-# =========== TOKEN.SERVICE.OPERATION.PROMOTION.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== TOKEN.SERVICE.OPERATION.PROMOTION.EXCEPTION PACKAGE ===========#
 
 # Packages
 from .debug import *

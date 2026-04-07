@@ -7,7 +7,7 @@ Created: 2025-11-19
 version: 1.0.0
 """
 
-# =========== SQUARE.SERVICE.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== SQUARE.SERVICE.EXCEPTION PACKAGE ===========#
 
 # Packages
 None

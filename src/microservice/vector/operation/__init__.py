@@ -7,7 +7,7 @@ Created: 2025-11-19
 version: 1.0.0
 """
 
-# =========== VECTOR.SERVICE.OPERATION PACKAGE CONTENTS ===========#
+# =========== VECTOR.SERVICE.OPERATION PACKAGE ===========#
 
 # Packages
 

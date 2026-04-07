@@ -7,7 +7,7 @@ Created: 2026-02-26
 version: 1.0.0
 """
 
-# =========== SPAN PACKAGE CONTENTS ===========#
+# =========== SPAN PACKAGE ===========#
 
 # Packages
 from .root import *

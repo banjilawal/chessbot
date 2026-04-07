@@ -7,7 +7,7 @@ Created: 2026-03-13
 version: 1.0.0
 """
 
-# =========== PAIR.PAIR.SERVICE.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== PAIR.PAIR.SERVICE.EXCEPTION PACKAGE ===========#
 
 # Packages
 from .edge import *

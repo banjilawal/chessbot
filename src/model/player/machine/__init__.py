@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== PLAYER.MACHINE PACKAGE CONTENTS ===========#
+# =========== PLAYER.MACHINE PACKAGE ===========#
 
 # Packages
 None

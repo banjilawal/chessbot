@@ -7,7 +7,7 @@ Created: 2025-10-01
 version: 1.0.0
 """
 
-# =========== HOSTAGE.SERVICE.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== HOSTAGE.SERVICE.EXCEPTION PACKAGE ===========#
 
 # Packages
 from .debug import *

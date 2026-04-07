@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== VALIDATION.CONTEXT.HOSTAGE PACKAGE CONTENTS ===========#
+# =========== VALIDATION.CONTEXT.HOSTAGE PACKAGE ===========#
 
 # Packages
 None

@@ -7,7 +7,7 @@ Created: 2026-03-31
 Version: 1.0.0
 """
 
-# =========== SYSTEM.SEARCH.RESOURCE PACKAGE CONTENTS ===========#
+# =========== SYSTEM.SEARCH.RESOURCE PACKAGE ===========#
 
 # Packages
 None

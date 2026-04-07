@@ -7,7 +7,7 @@ Created: 2025-11-17
 version: 1.0.0
 """
 
-#=========== PLAYER.CONTEXT.FINDER PACKAGE CONTENTS ===========#
+#=========== PLAYER.CONTEXT.FINDER PACKAGE ===========#
 
 # Packages
 from exception import *

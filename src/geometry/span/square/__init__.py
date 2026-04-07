@@ -7,7 +7,7 @@ Created: 2026-03-11
 version: 1.0.0
 """
 
-# =========== SPAN.SQUARE PACKAGE CONTENTS ===========#
+# =========== SPAN.SQUARE PACKAGE ===========#
 
 # Packages
 from .ray import *

@@ -7,7 +7,7 @@ Created: 2025-11-18
 Version: 1.0.0
 """
 
-# =========== SYSTEM.COLLECTION PACKAGE CONTENTS ===========#
+# =========== SYSTEM.COLLECTION PACKAGE ===========#
 
 # Packages
 from .adt import *

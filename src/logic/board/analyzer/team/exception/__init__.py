@@ -7,7 +7,7 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-# =========== BOARD.TEAM.ANALYZER.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== BOARD.TEAM.ANALYZER.EXCEPTION PACKAGE ===========#
 
 # Packages
 None

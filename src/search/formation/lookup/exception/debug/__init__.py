@@ -7,7 +7,7 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-# =========== FORMATION.KEY.LOOKUP.EXCEPTION.DEBUG PACKAGE CONTENTS ===========#
+# =========== FORMATION.KEY.LOOKUP.EXCEPTION.DEBUG PACKAGE ===========#
 
 # Packages
 None

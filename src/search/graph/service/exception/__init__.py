@@ -7,7 +7,7 @@ Created: 2025-10-01
 version: 1.0.0
 """
 
-# =========== GRAPH.CONTEXT.SERVICE.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== GRAPH.CONTEXT.SERVICE.EXCEPTION PACKAGE ===========#
 
 # Packages
 None

@@ -1,14 +1,16 @@
-# src/logic/system/collision/result.py
+# src/model/report/collision/report.py
 
 """
-Module: logic.system.collision.result
+Module: model.report.collision.report
 Author: Banji Lawal
-Created: 2026-02-21
-Version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
 from typing import Any, Generic, Optional, TypeVar
+
+from model import CollisionState
 
 T = TypeVar("T")
 
@@ -35,13 +37,13 @@ class CollisionReport(Generic[T]):
     _colliding_variable: Optional[str]
     _collision_value: Optional[Any]
     _collider: Optional[T]
-    _state: CollisionStatus
+    _state: CollisionState
     _exception: Optional[Exception]
 
 
     def __init__(
             self,
-            state: CollisionStatus,
+            state: CollisionState,
             colliding_variable: Optional[str] = None,
             target: Optional[T] = None,
             collision_value: Optional[Any] = None,
@@ -59,7 +61,7 @@ class CollisionReport(Generic[T]):
         self._exception = exception
         
     @property
-    def state(self) -> CollisionStatus:
+    def state(self) -> CollisionState:
         return self._state
     
     @property
@@ -90,7 +92,7 @@ class CollisionReport(Generic[T]):
                 self.target is not None and
                 self._collider is not None and
                 self.exception is not None and
-                self.state == CollisionStatus.COLLISION_DETECTED
+                self.state == CollisionState.COLLISION_DETECTED
         )
     
     @property
@@ -101,7 +103,7 @@ class CollisionReport(Generic[T]):
                 self.target is  None and
                 self._collider is None and
                 self.exception is None and
-                self.state == CollisionStatus.NO_COLLISIONS
+                self.state == CollisionState.NO_COLLISIONS
         )
     
     @property
@@ -113,8 +115,8 @@ class CollisionReport(Generic[T]):
                 self._collider is None and
                 self.exception is not None and
                 self.state == (
-                        CollisionStatus.DETECTOR_FAILED or
-                        CollisionStatus.DETECTOR_TIMED_OUT
+                        CollisionState.DETECTOR_FAILED or
+                        CollisionState.DETECTOR_TIMED_OUT
                 )
         )
     
@@ -126,7 +128,7 @@ class CollisionReport(Generic[T]):
                 self._collider is None and
                 self.target is None and
                 self.exception is not None and
-                self.state == CollisionStatus.DETECTOR_TIMED_OUT
+                self.state == CollisionState.DETECTOR_TIMED_OUT
         )
     
     @classmethod
@@ -144,7 +146,7 @@ class CollisionReport(Generic[T]):
             target=target,
             collider=collider,
             exception=exception,
-            state=CollisionStatus.COLLISION_DETECTED,
+            state=CollisionState.COLLISION_DETECTED,
         )
     
     @classmethod
@@ -155,7 +157,7 @@ class CollisionReport(Generic[T]):
             target=None,
             collider=None,
             exception=None,
-            state=CollisionStatus.NO_COLLISIONS,
+            state=CollisionState.NO_COLLISIONS,
         )
     
     @classmethod
@@ -166,7 +168,7 @@ class CollisionReport(Generic[T]):
             target=None,
             collider=None,
             exception=exception,
-            state=CollisionStatus.DETECTOR_FAILED,
+            state=CollisionState.DETECTOR_FAILED,
         )
     
     @classmethod
@@ -177,6 +179,6 @@ class CollisionReport(Generic[T]):
             target=None,
             collider=None,
             exception=exception,
-            state=CollisionStatus.DETECTOR_TIMED_OUT,
+            state=CollisionState.DETECTOR_TIMED_OUT,
         )
     

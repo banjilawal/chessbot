@@ -1,19 +1,15 @@
-# src/logic/system/collision/state/classification.py
+# src/model/report/collision/state.py
 
 """
-Module: logic.system.collision.state.classification
+Module: model.report.collision.state
 Author: Banji Lawal
-Created: 2026-02-21
-Version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from enum import Enum, auto
 
 
 class CollisionState(Enum):
-    """
-    """
     NO_COLLISIONS = auto(),
     COLLISION_DETECTED = auto(),
-    DETECTOR_FAILED = auto(),
-    DETECTOR_TIMED_OUT = auto(),

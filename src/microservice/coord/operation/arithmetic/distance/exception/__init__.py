@@ -7,7 +7,7 @@ Created: 2026-03-25
 version: 1.0.0
 """
 
-# =========== TOKEN.SERVICE.OPERATION.ARITHMETIC.DISTANCE PACKAGE CONTENTS ===========#
+# =========== TOKEN.SERVICE.OPERATION.ARITHMETIC.DISTANCE PACKAGE ===========#
 
 # Packages
 None

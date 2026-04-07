@@ -7,7 +7,7 @@ Created: 2026-02-26
 version: 1.0.0
 """
 
-# =========== SPAN.SPANNER.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== SPAN.SPANNER.EXCEPTION PACKAGE ===========#
 
 # Packages
 None

@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== TRANSACTION.INSERTION.DUPLICATE.DUPLICATE.SQUARE PACKAGE CONTENTS ===========#
+# =========== TRANSACTION.INSERTION.DUPLICATE.DUPLICATE.SQUARE PACKAGE ===========#
 
 # Packages
 None

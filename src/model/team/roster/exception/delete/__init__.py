@@ -7,7 +7,7 @@ Created: 2025-10-06
 version: 1.0.0
 """
 
-# =========== TEAM.ROSTER.EXCEPTION.DELETION PACKAGE CONTENTS ===========#
+# =========== TEAM.ROSTER.EXCEPTION.DELETION PACKAGE ===========#
 
 # Packages
 None

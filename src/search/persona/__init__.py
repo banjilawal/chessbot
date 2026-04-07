@@ -7,7 +7,7 @@ Created: 2025-09-08
 version: 1.0.0
 """
 
-# =========== PERSONA.KEY PACKAGE CONTENTS ===========#
+# =========== PERSONA.KEY PACKAGE ===========#
 
 # Packages
 from .builder import *

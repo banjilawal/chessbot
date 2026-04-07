@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from catalog import Persona
+from model.catalog import Persona
 from model import Context
 
 

@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-# =========== SYSTEM.ERR.RESOURCE PACKAGE CONTENTS ===========#
+# =========== SYSTEM.ERR.RESOURCE PACKAGE ===========#
 
 # Packages
 None

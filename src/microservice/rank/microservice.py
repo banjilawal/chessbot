@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import cast
 
-from catalog.persona import PersonaService
+from model.catalog.persona import PersonaService
 from system import Microservice, id_emitter
 from logic.rank import Rank, RankFactory, RankValidatorFactory
 

@@ -7,7 +7,7 @@ Created: 2025-11-18
 version: 1.0.0
 """
 
-# =========== ADT.ARGS PACKAGE CONTENTS ===========#
+# =========== ADT.ARGS PACKAGE ===========#
 
 # Packages
 from .exception import *

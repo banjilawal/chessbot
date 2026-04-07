@@ -7,7 +7,7 @@ Created: 2026-03-12
 version: 1.0.0
 """
 
-# =========== PAIR.TREE.SERVICE PACKAGE CONTENTS ===========#
+# =========== PAIR.TREE.SERVICE PACKAGE ===========#
 
 # Packages
 from .handler import *

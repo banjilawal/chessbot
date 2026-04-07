@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== TRANSACTION.DELETION.EMPTY.COORD PACKAGE CONTENTS ===========#
+# =========== TRANSACTION.DELETION.EMPTY.COORD PACKAGE ===========#
 
 # Packages
 None

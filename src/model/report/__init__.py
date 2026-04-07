@@ -8,10 +8,10 @@ version: 1.0.1
 """
 
 
-# =========== REPORT PACKAGE CONTENTS ===========#
+# =========== REPORT PACKAGE ===========#
 
 # Packages
 from .collision import *
 
 # Modules
-from .report import Report
+from .relation import Report

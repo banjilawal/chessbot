@@ -8,7 +8,7 @@ version: 1.0.1
 """
 
 
-# =========== PLAYER PACKAGE CONTENTS ===========#
+# =========== PLAYER PACKAGE ===========#
 
 # Packages
 None

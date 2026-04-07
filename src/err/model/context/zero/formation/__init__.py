@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== MODEL.ZERO.FORMATION PACKAGE CONTENTS ===========#
+# =========== MODEL.ZERO.FORMATION PACKAGE ===========#
 
 # Packages
 None

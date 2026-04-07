@@ -7,7 +7,7 @@ Created: 2026-03-10
 version: 1.0.0
 """
 
-# =========== SPAN.SPANNER.ROOK PACKAGE CONTENTS ===========#
+# =========== SPAN.SPANNER.ROOK PACKAGE ===========#
 
 # Packages
 None

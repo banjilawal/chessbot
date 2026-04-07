@@ -7,7 +7,7 @@ Created: 2025-11-24
 version: 1.0.0
 """
 
-# =========== TEAM.SERVICE.OPERATION PACKAGE CONTENTS ===========#
+# =========== TEAM.SERVICE.OPERATION PACKAGE ===========#
 
 # Packages
 from .build import *

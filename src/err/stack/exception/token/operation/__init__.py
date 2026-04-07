@@ -7,7 +7,7 @@ Created: 2026-02-21
 version: 1.0.0
 """
 
-# =========== TOKEN.DATABASE.KERNEL.OPERATION PACKAGE CONTENTS ===========#
+# =========== TOKEN.DATABASE.KERNEL.OPERATION PACKAGE ===========#
 
 # Packages
 from .crud import *

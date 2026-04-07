@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ VALIDATION.IDENTITY PACKAGE CONTENTS ===========#
+# ============ VALIDATION.IDENTITY PACKAGE ===========#
 
 # Packages
 None

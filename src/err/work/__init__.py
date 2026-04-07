@@ -7,7 +7,7 @@ Created: 2026-04-07
 version: 1.0.0
 """
 
-# ===========  PACKAGE CONTENTS ===========#
+# ===========  PACKAGE ===========#
 
 # Packages
 from .lingeo import *

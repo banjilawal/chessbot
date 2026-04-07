@@ -7,7 +7,7 @@ Created: 2025-11-18
 Version: 1.0.0
 """
 
-# =========== SYSTEM.COLLECTIONBASE PACKAGE CONTENTS ===========#
+# =========== SYSTEM.COLLECTIONBASE PACKAGE ===========#
 
 # Packages
 from .exception import *

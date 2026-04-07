@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from model.board import Board
-from catalog.schema import Schema
+from model.catalog import Schema
 from model.player import Player
 from model.team import TeamState
 from model.token import TokenDatabase

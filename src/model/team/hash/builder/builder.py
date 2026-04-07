@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from catalog.schema import SchemaService
+from model.catalog import SchemaService
 from system import BuildResult, Builder, LoggingLevelRouter
 from model.team import (
     BlackTeamHasWrongSchemaException, Team, TeamHash, TeamHashBuildException,

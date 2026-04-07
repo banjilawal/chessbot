@@ -7,7 +7,7 @@ Created: 2026-04-01
 Version: 1.0.0
 """
 
-# =========== SYSTEM.SEARCH.RESOURCE.QUERY.MODEL.STACK PACKAGE CONTENTS ===========#
+# =========== SYSTEM.SEARCH.RESOURCE.QUERY.MODEL.STACK PACKAGE ===========#
 
 # Packages
 from .exception import *

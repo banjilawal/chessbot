@@ -7,7 +7,7 @@ Created: 2025-11-19
 version: 1.0.0
 """
 
-# =========== PAIR.STACK.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== PAIR.STACK.EXCEPTION PACKAGE ===========#
 
 # Packages
 from .pop import *

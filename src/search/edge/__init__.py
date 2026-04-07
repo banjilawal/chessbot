@@ -7,7 +7,7 @@ Created: 2026-02-18
 version: 1.0.0
 """
 
-#=========== EDGE.CONTEXT PACKAGE CONTENTS ===========#
+#=========== EDGE.CONTEXT PACKAGE ===========#
 
 # Packages
 from .builder import *

@@ -7,7 +7,7 @@ Created: 2026-02-18
 version: 1.0.0
 """
 
-# =========== NODE.STACK.EXCEPTION.QUERY PACKAGE CONTENTS ===========#
+# =========== NODE.STACK.EXCEPTION.QUERY PACKAGE ===========#
 
 # Packages
 None

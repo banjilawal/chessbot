@@ -7,7 +7,7 @@ Created: 2026-03-29
 version: 1.0.0
 """
 
-# =========== ZONE.MODEL PACKAGE CONTENTS ===========#
+# =========== ZONE.MODEL PACKAGE ===========#
 
 # Packages
 from .exception import *

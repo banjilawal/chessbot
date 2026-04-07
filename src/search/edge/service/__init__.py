@@ -7,7 +7,7 @@ Created: 2026-02-18
 version: 1.0.0
 """
 
-#=========== EDGE.CONTEXT.SERVICE PACKAGE CONTENTS ===========#
+#=========== EDGE.CONTEXT.SERVICE PACKAGE ===========#
 
 # Packages
 from .exception import *

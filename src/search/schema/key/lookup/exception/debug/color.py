@@ -9,7 +9,7 @@ version: 1.0.0
 
 
 from system import BoundsException
-from catalog.schema import SchemaException
+from model.catalog import SchemaException
 
 __all__ = [
     # ======================# SCHEMA_COLOR_BOUNDS EXCEPTION #======================#

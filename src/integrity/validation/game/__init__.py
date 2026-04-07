@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== VALIDATION.GAME PACKAGE CONTENTS ===========#
+# =========== VALIDATION.GAME PACKAGE ===========#
 
 # Packages
 None

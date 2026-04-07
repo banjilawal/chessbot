@@ -7,7 +7,7 @@ Created: 2026-03-12
 version: 1.0.0
 """
 
-# =========== PAIR.TREE PACKAGE CONTENTS ===========#
+# =========== PAIR.TREE PACKAGE ===========#
 
 # Packages
 from .builder import *

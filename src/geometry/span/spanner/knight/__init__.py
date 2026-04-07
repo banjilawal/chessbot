@@ -7,7 +7,7 @@ Created: 2026-03-10
 version: 1.0.0
 """
 
-# =========== SPAN.SPANNER.KNIGHT PACKAGE CONTENTS ===========#
+# =========== SPAN.SPANNER.KNIGHT PACKAGE ===========#
 
 # Packages
 None

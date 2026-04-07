@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== MODEL.EXCESS.TOKEN PACKAGE CONTENTS ===========#
+# =========== MODEL.EXCESS.TOKEN PACKAGE ===========#
 
 # Packages
 

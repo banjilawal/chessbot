@@ -7,7 +7,7 @@ Created: 2026-03-02
 version: 1.0.0
 """
 
-# =========== SCHEMA.SERVICE.OPERATION PACKAGE CONTENTS ===========#
+# =========== SCHEMA.SERVICE.OPERATION PACKAGE ===========#
 
 # Packages
 from .search import *

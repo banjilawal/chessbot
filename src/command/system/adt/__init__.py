@@ -7,7 +7,7 @@ Created: 2026-02-25
 version: 1.0.0
 """
 
-# =========== SYSTEM.ADT PACKAGE CONTENTS ===========#
+# =========== SYSTEM.ADT PACKAGE ===========#
 
 # Packages
 from .args import *

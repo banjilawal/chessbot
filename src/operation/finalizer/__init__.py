@@ -11,7 +11,7 @@ import logging
 
 log = logging.getLogger("chessbot")
 
-# =========== FINALIZER PACKAGE CONTENTS ===========#
+# =========== FINALIZER PACKAGE ===========#
 
 # Packages
 from .token import*

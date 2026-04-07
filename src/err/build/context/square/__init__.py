@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== BUILD.CONTEXT.SQUARE PACKAGE CONTENTS ===========#
+# =========== BUILD.CONTEXT.SQUARE PACKAGE ===========#
 
 # Packages
 None

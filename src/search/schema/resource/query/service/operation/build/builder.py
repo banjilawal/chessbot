@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Type
 
 from system import Builder, LoggingLevelRouter, BuildResult
-from catalog.schema import (
+from model.catalog import (
     Schema, SchemaContext, SchemaQuery, SchemaQueryBuildException, SchemaQueryIntegrityWorkers
 )
 

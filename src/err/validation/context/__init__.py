@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== VALIDATION.CONTEXT PACKAGE CONTENTS ===========#
+# =========== VALIDATION.CONTEXT PACKAGE ===========#
 
 # Packages
 from .arena import *

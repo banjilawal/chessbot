@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== VALIDATION.CONTEXT.SCHEMA PACKAGE CONTENTS ===========#
+# =========== VALIDATION.CONTEXT.SCHEMA PACKAGE ===========#
 
 # Packages
 None

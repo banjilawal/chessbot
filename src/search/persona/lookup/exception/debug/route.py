@@ -7,7 +7,7 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-from catalog.persona import PersonaException
+from model.catalog.persona import PersonaException
 from system import ExecutionRouteException
 
 __all__ = [

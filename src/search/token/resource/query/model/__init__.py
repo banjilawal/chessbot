@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-# =========== TOKEN.DATABASE.SEARCH.TOKEN.MODEL PACKAGE CONTENTS ===========#
+# =========== TOKEN.DATABASE.SEARCH.TOKEN.MODEL PACKAGE ===========#
 
 # Packages
 from .exception import *

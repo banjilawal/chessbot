@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2026-02-24
 """
 
-# =========== COMMAND.ROOT.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== COMMAND.ROOT.VALIDATOR.EXCEPTION PACKAGE ===========#
 
 # Packages
 from debug import *

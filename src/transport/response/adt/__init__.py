@@ -7,7 +7,7 @@ Created: 2026-03-30
 version: 1.0.0
 """
 
-# =========== RESPONSE.MODEL PACKAGE CONTENTS ===========#
+# =========== RESPONSE.MODEL PACKAGE ===========#
 
 # Packages
 None

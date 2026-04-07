@@ -7,7 +7,7 @@ Created: 2025-10-01
 version: 1.0.0
 """
 
-# =========== GAME.CONTEXT.SERVICE.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== GAME.CONTEXT.SERVICE.EXCEPTION PACKAGE ===========#
 
 # Packages
 None

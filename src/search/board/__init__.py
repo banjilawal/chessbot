@@ -7,7 +7,7 @@ Created: 2025-10-02
 version: 1.0.0
 """
 
-# =========== BOARD.CONTEXT PACKAGE CONTENTS ===========#
+# =========== BOARD.CONTEXT PACKAGE ===========#
 
 # Packages
 from .builder import *

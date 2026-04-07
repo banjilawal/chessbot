@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ BUILD PACKAGE CONTENTS ===========#
+# ============ BUILD PACKAGE ===========#
 
 # MISSING_Packages
 from .arena import *

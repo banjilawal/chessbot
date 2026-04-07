@@ -7,7 +7,7 @@ Created: 2026-02-22
 version: 1.0.0
 """
 
-# =========== SQUARE.SERVICE.VISITATION PACKAGE CONTENTS ===========#
+# =========== SQUARE.SERVICE.VISITATION PACKAGE ===========#
 
 # Packages
 from .entry import *

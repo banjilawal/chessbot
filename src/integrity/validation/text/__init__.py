@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== VALIDATION.STRING PACKAGE CONTENTS ===========#
+# =========== VALIDATION.STRING PACKAGE ===========#
 
 # Packages
 from .name import *

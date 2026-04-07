@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from system import BoundsException
-from catalog.formation import FormationException
+from model.catalog.formation import FormationException
 
 __all__ = [
     # ======================# FORMATION_COLOR_BOUNDS EXCEPTION #======================#

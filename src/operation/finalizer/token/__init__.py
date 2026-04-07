@@ -8,7 +8,7 @@ version: 1.0.1
 """
 
 
-# =========== FINALIZER.TOKEN PACKAGE CONTENTS ===========#
+# =========== FINALIZER.TOKEN PACKAGE ===========#
 
 # Packages
 f

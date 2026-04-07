@@ -12,7 +12,7 @@ __all__ = [
     "SchemaNameBoundsException",
 ]
 
-from catalog.schema import SchemaException
+from model.catalog import SchemaException
 from system import BoundsException
 
 

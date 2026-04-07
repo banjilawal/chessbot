@@ -7,7 +7,7 @@ Created: 2026-03-29
 version: 1.0.0
 """
 
-# =========== ZONE.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== ZONE.VALIDATOR.EXCEPTION PACKAGE ===========#
 
 # Packages
 from .debug import *

@@ -7,7 +7,7 @@ Created: 2026-03-11
 version: 1.0.0
 """
 
-# =========== SPAN.SERVICE.HANDLER.NODE.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== SPAN.SERVICE.HANDLER.NODE.EXCEPTION PACKAGE ===========#
 
 # Packages
 from .work import *

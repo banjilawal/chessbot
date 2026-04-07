@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2026-02-24
 """
 
-# =========== SYSTEM.SERVICE.OPERATION.VALIDATION.COMMAND PACKAGE CONTENTS ===========#
+# =========== SYSTEM.SERVICE.OPERATION.VALIDATION.COMMAND PACKAGE ===========#
 
 # Packages
 from .exception import *

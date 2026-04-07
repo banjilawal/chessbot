@@ -7,7 +7,7 @@ Created: 2026-02-18
 version: 1.0.0
 """
 
-# =========== EDGE.CONTEXT.FINDER PACKAGE CONTENTS ===========#
+# =========== EDGE.CONTEXT.FINDER PACKAGE ===========#
 
 # Packages
 from .exception import *

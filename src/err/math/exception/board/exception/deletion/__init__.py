@@ -7,7 +7,7 @@ Created: 2025-11-22
 version: 1.0.0
 """
 
-# =========== BOARD.DATABASE.CORE.EXCEPTION.DELETION PACKAGE CONTENTS ===========#
+# =========== BOARD.DATABASE.CORE.EXCEPTION.DELETION PACKAGE ===========#
 
 # Packages
 None

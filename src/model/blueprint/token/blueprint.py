@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from catalog import Formation
+from model.catalog import Formation
 from model import Blueprint, Rank, Team, Token
 
 

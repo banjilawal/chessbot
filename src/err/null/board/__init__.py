@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ NULL.BOARD PACKAGE CONTENTS ===========#
+# ============ NULL.BOARD PACKAGE ===========#
 
 # Packages
 None

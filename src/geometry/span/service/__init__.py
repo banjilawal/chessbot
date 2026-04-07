@@ -7,7 +7,7 @@ Created: 2026-02-26
 version: 1.0.0
 """
 
-# =========== SPAN.SERVICE PACKAGE CONTENTS ===========#
+# =========== SPAN.SERVICE PACKAGE ===========#
 
 # Packages
 from .handler import *

@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== NULL.CONTEXT PACKAGE CONTENTS ===========#
+# =========== NULL.CONTEXT PACKAGE ===========#
 
 # Packages
 from .arena import *

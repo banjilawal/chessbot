@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2026-03-31
 """
 
-# =========== COMMAND.TOKEN PACKAGE CONTENTS ===========#
+# =========== COMMAND.TOKEN PACKAGE ===========#
 
 # Packages
 from .stack import *

@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== NULL.HOSTAGE PACKAGE CONTENTS ===========#
+# =========== NULL.HOSTAGE PACKAGE ===========#
 
 # Packages
 None

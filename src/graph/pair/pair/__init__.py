@@ -7,7 +7,7 @@ Created: 2026-03-12
 version: 1.0.0
 """
 
-# =========== PAIR.PAIR PACKAGE CONTENTS ===========#
+# =========== PAIR.PAIR PACKAGE ===========#
 
 # Packages
 from .builder import *

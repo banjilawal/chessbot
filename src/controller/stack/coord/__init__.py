@@ -7,7 +7,7 @@ Created: 2026-02-21
 version: 1.0.0
 """
 
-# =========== COORD.DATABASE.KERNEL.OPERATION PACKAGE CONTENTS ===========#
+# =========== COORD.DATABASE.KERNEL.OPERATION PACKAGE ===========#
 
 # Packages
 

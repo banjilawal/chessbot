@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== VALIDATION.EDGE PACKAGE CONTENTS ===========#
+# =========== VALIDATION.EDGE PACKAGE ===========#
 
 # Packages
 None

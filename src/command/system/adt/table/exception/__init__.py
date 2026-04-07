@@ -7,7 +7,7 @@ Created: 2026-02-24
 version: 1.0.0
 """
 
-# =========== SERVICE.ADT.TABLE.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== SERVICE.ADT.TABLE.EXCEPTION PACKAGE ===========#
 
 # Packages
 None

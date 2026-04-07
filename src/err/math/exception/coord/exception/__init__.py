@@ -7,7 +7,7 @@ Created: 2026-03-14
 version: 1.0.0
 """
 
-# =========== COORD.DATABASE.CORE.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== COORD.DATABASE.CORE.EXCEPTION PACKAGE ===========#
 
 # Packages
 None

@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from catalog.schema import SchemaLookupService, SchemaValidator
+from model.catalog import SchemaLookupService, SchemaValidator
 from microservice.catalog.schema.operation import SchemaPropertyValuesReporter
 
 

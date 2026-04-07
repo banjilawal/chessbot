@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import List
 
 from integrity.build.scalar import Scalar
-from catalog.schema import Schema
+from model.catalog import Schema
 from system import GameColor
 
 

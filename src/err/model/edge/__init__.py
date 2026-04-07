@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ MODEL.EDGE PACKAGE CONTENTS ===========#
+# ============ MODEL.EDGE PACKAGE ===========#
 
 # Packages
 None

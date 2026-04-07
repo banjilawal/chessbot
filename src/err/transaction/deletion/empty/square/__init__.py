@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== TRANSACTION.DELETION.EMPTY.SQUARE PACKAGE CONTENTS ===========#
+# =========== TRANSACTION.DELETION.EMPTY.SQUARE PACKAGE ===========#
 
 # Packages
 None

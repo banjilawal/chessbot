@@ -8,7 +8,7 @@ version: 1.0.1
 """
 
 
-# =========== COLLISION PACKAGE CONTENTS ===========#
+# =========== ANALYST.COLLISION PACKAGE ===========#
 
 # Packages
 
