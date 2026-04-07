@@ -14,8 +14,8 @@ log = logging.getLogger("chessbot")
 # =========== PACKAGE ===========#
 
 # Packages
-from .bootstrapper import *
-from .creator import *
+from operation.build.bootstrapper import *
+from operation.build.creator import *
 from .token import *
 
 # Modules
