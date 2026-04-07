@@ -15,6 +15,7 @@ log = logging.getLogger("chessbot")
 
 # Packages
 from .arena import *
+from .blueprint import *
 from .board import *
 from .context import *
 from .geometry import *

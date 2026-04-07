@@ -9,6 +9,8 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from typing import Any, Dict
+
 from catalog import Formation, Persona
 from err import TokenBuildException
 from integrity import Builder
@@ -19,7 +21,7 @@ from system import IdFactory, LoggingLevelRouter
 from toolkit.integrity.token.toolkit import TokenIntegrityToolkit
 
 
-class TokenBuilder(Builder[Token]):
+class TokenCreationOperation:
     """
     Role
         -   Transaction Worker
@@ -51,89 +53,16 @@ class TokenBuilder(Builder[Token]):
     @LoggingLevelRouter.monitor
     def build(
             cls,
-            owner: Team,
-            formation: Formation,
-            id: int = None,
-            toolkit: TokenIntegrityToolkit = None,
+            param_dict: Dict[str, Any],
     ) -> BuildResult[Token]:
-        """
-        Build a safe Token.
-        
-        Action:
-            1.  Send an exception chain in the BuildResult if any of the following
-                occur:
-                    -   Either id, schema, team. formation fail a validation check.
-                    -   The token belongs on a different team.
-                    -   The team has already filled the position.
-                    -   The token's rank cannot be built.
-                    -   The token cannot register with its team.
-            2.  Otherwise, build the token then, send the success result.
-        Args:
-            id: int
-            owner: Team
-            formation: Formation
-            toolkit: TokenIntegrityToolkit
-        Returns:
-            BuildResult[Token]
-        Raises:
-            TokenBuildException
-        """
+
         method = f"{cls.__name__}.execute"
         
-        if id is None:
-            id = IdFactory.next_id(class_name="Token")
-        if toolkit is None:
-            toolkit = TokenIntegrityToolkit()
-        
-        # Handle the case that, the id does not pass a validation check.
-        id_validation = toolkit.identity_service.validate_id(id)
-        if id_validation.is_failure:
-            # Return the exception chain on failure.
-            return BuildResult.failure(
-                TokenBuildException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    op=TokenBuildException.OP,
-                    msg=TokenBuildException.MSG,
-                    err_code=TokenBuildException.ERR_CODE,
-                    ex=id_validation.exception,
-                )
-            )
-        # Handle the case that, the team does not pass a validation check.
-        owner_validation = toolkit.team_service.validator.validate(owner)
-        if owner_validation.is_failure:
-            # Return the exception chain on failure.
-            return BuildResult.failure(
-                TokenBuildException(
-                    cls_mthd=method,
-                    cls_name=method.__name__,
-                    op=TokenBuildException.OP,
-                    msg=TokenBuildException.MSG,
-                    err_code=TokenBuildException.ERR_CODE,
-                    ex=owner_validation.exception,
-                )
-            )
-        # Handle the case that, the formation does not pass a validation check.
-        formation_validation = toolkit.formation_service.validator.validate(formation)
-        if formation_validation.is_failure:
-            # Return the exception chain on failure.
-            return BuildResult.failure(
-                TokenBuildException(
-                    cls_mthd=method,
-                    cls_name=method.__name__,
-                    op=TokenBuildException.OP,
-                    msg=TokenBuildException.MSG,
-                    err_code=TokenBuildException.ERR_CODE,
-                    ex=formation_validation.exception,
-                )
-            )
-        # --- Param checks are passed, Handoff creation to _create_concrete_token. ---#
-        
         creation_result = cls._create_concrete_token(
-            id=id,
-            owner=owner,
-            formation=formation,
-            rank_service=toolkit.rank_service
+            id=param_dict["id"],
+            owner=param_dict["owner"],
+            formation=param_dict["formation"],
+            rank=param_dict["rank"],
         )
         # Handle the case that, the creation was not successful.
         if creation_result.is_failure:

@@ -11,7 +11,7 @@ import logging
 
 log = logging.getLogger("chessbot")
 
-# =========== PACKAGE CONTENTS ===========#
+# =========== CATALOG PACKAGE CONTENTS ===========#
 
 # Packages
 from .formation import *
@@ -19,4 +19,4 @@ from .persona import *
 from .schema import *
 
 # Modules
-None
+from .microservice import CatalogService

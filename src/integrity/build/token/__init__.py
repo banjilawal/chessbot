@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== BUILD.TOKEN PACKAGE CONTENTS ===========#
 
 # Packages
-None
 
 # Modules
 from .builder import TokenBuilder

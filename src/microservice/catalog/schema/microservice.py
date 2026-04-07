@@ -1,18 +1,16 @@
-# src/logic/schema/service/validator.py
+# src/microservice/catalog/schema/microservice.py
 
 """
-Module: logic.schema.service.service
+Module: microservice.catalog.schema.microservice
 Author: Banji Lawal
-Created: 2025-10-09
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
 
-from system import CatalogService, IdFactory
-from catalog.schema import (
-    Schema, SchemaLookupService, SchemaOpsController, SchemaPropertyValuesReporter, SchemaValidator
-)
+from catalog import Schema
+from microservice import CatalogService
 
 
 class SchemaService(CatalogService[Schema]):

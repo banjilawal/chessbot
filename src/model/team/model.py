@@ -75,7 +75,6 @@ class Team:
             board: Board,
             schema: Schema,
             owner: Player,
-            roster: TokenDatabase = TokenDatabase(),
     ):
         """
         Args:
@@ -83,14 +82,13 @@ class Team:
             board: Board
             schema: Schema
             owner: Player
-            roster: TokenDatabase
         """
         self._id = id
         self._board = board
         self._schema = schema
-        self._roster = roster
         self._owner = owner
         self._state = TeamState.NOT_READY_TO_PLAY
+        self._roster = TokenDatabase()
 
     
     @property

@@ -6,7 +6,8 @@ Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
-
+from integrity import Builder
+from model import Team
 
 
 class TeamBuilder(Builder[Team]):
@@ -18,7 +19,7 @@ class TeamBuilder(Builder[Team]):
         -   Build Process Owner
 
    Responsibilities:
-        1.  Ensure a new Token instance is born safe and reliable.
+        1.  Ensure a new Team instance is born safe and reliable.
 
      Attributes:
 

@@ -10,7 +10,7 @@ version: 1.0.1
 # =========== INTEGRITY PACKAGE CONTENTS ===========#
 
 # Packages
-
+from .token import *
 
 # Modules
 from .toolkit import IntegrityToolkit
