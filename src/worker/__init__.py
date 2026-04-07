@@ -14,6 +14,7 @@ log = logging.getLogger("chessbot")
 # =========== PACKAGE CONTENTS ===========#
 
 # Packages
+from .lingeo import *
 
 
 # Modules

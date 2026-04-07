@@ -1,7 +1,7 @@
-# src/err/work/lingeo/orange/work.py
+# src/err/work/lingeo/incompatible/work.py
 
 """
-Module: err.work.lingeo.orange.work
+Module: err.work.lingeo.incompatible.work
 Author: Banji Lawal
 Created: 2026-04-07
 version: 1.0.0
@@ -12,21 +12,22 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# VECTOR_ADDITION_ERROR #======================#
-    "LinGeoAdditionException",
+    # ======================# CONTEXT_MISMATCH_ERROR #======================#
+    "LinGeoContextMismatchException",
 ]
 
 from err import LinGeoWorkException
 
 
-# ======================# VECTOR_ADDITION_ERROR #======================#
-class LinGeoAdditionException(LinGeoWorkException):
+# ======================# CONTEXT_MISMATCH_ERROR #======================#
+class LinGeoContextMismatchException(LinGeoWorkException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred using vector addition
+        1.  Indicate that an binary operation failed because the operands do
+            not have the same context.
 
     Attributes:
         msg: Optional[str]
@@ -42,8 +43,8 @@ class LinGeoAdditionException(LinGeoWorkException):
     Super Class:
         LinGeoWorkException
     """
-    MSG = str = "Error during Vector addition."
-    ERR_CODE = "VECTOR_ADDITION_ERROR"
+    MSG = str = "Operation failed. The contexts are different."
+    ERR_CODE = "CONTEXT_MISMATCH_ERROR"
     
     def __init__(
             self,

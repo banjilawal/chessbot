@@ -1,7 +1,7 @@
-# src/err/work/lingeo/orange/work.py
+# src/err/work/lingeo/euclidean/work.py
 
 """
-Module: err.work.lingeo.orange.work
+Module: err.work.lingeo.euclidean.work
 Author: Banji Lawal
 Created: 2026-04-07
 version: 1.0.0
@@ -12,21 +12,21 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# VECTOR_ADDITION_ERROR #======================#
-    "LinGeoAdditionException",
+    # ======================# EUCLIDEAN_DISTANCE_CALCULATION_ERROR #======================#
+    "LinGeoEuclideanException",
 ]
 
 from err import LinGeoWorkException
 
 
-# ======================# VECTOR_ADDITION_ERROR #======================#
-class LinGeoAdditionException(LinGeoWorkException):
+# ======================# EUCLIDEAN_DISTANCE_CALCULATION_ERROR #======================#
+class LinGeoEuclideanException(LinGeoWorkException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred using vector addition
+        1.  Indicate that an error aborted the Euclidean distance calculation.
 
     Attributes:
         msg: Optional[str]
@@ -42,8 +42,8 @@ class LinGeoAdditionException(LinGeoWorkException):
     Super Class:
         LinGeoWorkException
     """
-    MSG = str = "Error during Vector addition."
-    ERR_CODE = "VECTOR_ADDITION_ERROR"
+    MSG = str = "Error during Euclidean distance calculation."
+    ERR_CODE = "EUCLIDEAN_DISTANCE_CALCULATION_ERROR"
     
     def __init__(
             self,

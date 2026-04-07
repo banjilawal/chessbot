@@ -1,7 +1,7 @@
-# src/math/__init__.py
+# src/toolkit/__ini__.py
 
 """
-Module: math.__init__
+Module: toolkit.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -14,11 +14,8 @@ log = logging.getLogger("chessbot")
 # =========== PACKAGE CONTENTS ===========#
 
 # Packages
-from .addition import *
-from .convert import *
-from .distance import *
-from .product import *
-from .resource import *
+from .integrity import *
+from .task import *
 
 # Modules
-None
+from .toolkit import Toolkit

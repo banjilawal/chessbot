@@ -20,6 +20,7 @@ from .catalog import *
 from .coord import *
 from .game import *
 from .hostage import *
+from .identity import *
 from .player import *
 from .rank import *
 from .scalar import *

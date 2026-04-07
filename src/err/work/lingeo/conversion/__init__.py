@@ -10,9 +10,6 @@ version: 1.0.0
 # =========== LINGEO.CONVERSION PACKAGE CONTENTS ===========#
 
 # Packages
-from .conversion import *
-from .product import *
-from .addition import *
 
 # Modules
 from .exception import LinGeoConversionException
