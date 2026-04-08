@@ -13,4 +13,4 @@ version: 1.0.1
 
 
 # Modules
-from .worker import EuclideanWorker
+from .operation import EuclideanOperation

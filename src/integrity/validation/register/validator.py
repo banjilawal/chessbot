@@ -31,8 +31,8 @@ class VectorRegisterValidator(Validator[VectorRegister]):
         -   Validation Process Owner
 
     Responsibilities:
-        1.  Ensure a VectorContext instance is certified safe, reliable and consistent
-            before use.
+        1.  Ensure a VectorRegister instance is certified safe, reliable and consistent
+            before use in a binary arithmetic operation.
 
     Attributes:
 
@@ -51,11 +51,10 @@ class VectorRegisterValidator(Validator[VectorRegister]):
     def validate(
             cls,
             candidate: Any,
-            toolkit: VectorContextToolkit = None,
             context_validator: VectorContextValidator = None,
     ) -> ValidationResult[VectorRegister]:
         """
-        Verify the candidate is a safe VectorContext.
+        Verify the candidate is a safe VectorRegister.
         
         Action:
             1.  Send an exception in the ValidationResult any of these
@@ -63,10 +62,10 @@ class VectorRegisterValidator(Validator[VectorRegister]):
                     -   candidate is null.
                     -   It's not a VectorContext.
                     -   The vectorContext's payload is flagged unsafe.
+                    -   There is a mismatch between the contexts.
             3.  Otherwise, Send the success result.
         Args:
             candidate: Any
-            toolkit : VectorContextToolkit
             context_validator : VectorContextValidator
         Returns:
             ValidationResult[VectorContextRegister]
@@ -109,7 +108,7 @@ class VectorRegisterValidator(Validator[VectorRegister]):
                     )
                 )
             )
-        # --- Cast candidate to a VectorContext for additional tests. ---#
+        # --- Cast candidate to a VectorRegist for additional tests. ---#
         register = cast(VectorRegister, candidate)
         
         # Handle the case that, the validator flags either register
@@ -142,5 +141,4 @@ class VectorRegisterValidator(Validator[VectorRegister]):
             )
         # --- Forward the work product to the caller ---#
         return ValidationResult.success(register)
-
             

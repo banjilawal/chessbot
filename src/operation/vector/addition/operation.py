@@ -1,7 +1,7 @@
-# src/operation/vector/addition/worker.py
+# src/operation/vector/addition/operation.py
 
 """
-Module: operation.vector.addition.worker
+Module: operation.vector.addition.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,17 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from err import VectorAdditionException
-from model import VectorContext
-from operation import Operation
-from result import ComputationResult
-from system import LoggingLevelRouter
+from model import VectorRegister
+from toolkit import VectorContextToolkit
 
 
-class AddOperation(Operation[VectorContext]):
+class AddOperation(Operation[VectorRegister]):
     """
     Role:
-        -   Worker
+        -   Operation
         -   Transformer
 
     Responsibilities:
@@ -30,23 +27,22 @@ class AddOperation(Operation[VectorContext]):
     Properties:
     
     -   def work(
-            context: VectorContext,
-            toolkit : VectorContextToolkit = VectorContextToolkit(),
-            context_validator: VectorContextValidator = VectorContextValidator(),
+            register: VectorRegister,
+            toolkit : VectorRegisterToolkit = VectorRegisterToolkit(),
+            register_validator: VectorRegisterValidator = VectorRegisterValidator(),
         ) -> ComputationResult[Any]:
 
     Super Class:
-        Worker
+        Operation
     """
     
     @classmethod
     @LoggingLevelRouter.monitor
     def work(
             cls,
-            a: VectorContext,
-            b: VectorContext,
-            toolkit : VectorContextToolkit = VectorContextToolkit(),
-            context_validator: VectorContextValidator = VectorContextValidator(),
+            register: VectorRegister,
+            toolkit : VectorContextToolkit = None,
+            register_validator: VectorRegisterValidator = None,
     ) -> ComputationResult[int]:
         """
         Convert a vector to a coord and vice versa.
@@ -60,9 +56,9 @@ class AddOperation(Operation[VectorContext]):
             2.  Otherwise, send the success result.
         Args:
             scalar: Scalar,
-            context: VectorContext,
-            toolkit : VectorContextToolkit = VectorContextToolkit(),
-            context_validator: VectorContextValidator = VectorContextValidator(),
+            register: VectorRegister,
+            toolkit : VectorRegisterToolkit = VectorRegisterToolkit(),
+            register_validator: VectorRegisterValidator = VectorRegisterValidator(),
         Result:
             ComputationResult[Union[Vector, Coord]]:
         Raises:
@@ -70,10 +66,10 @@ class AddOperation(Operation[VectorContext]):
         """
         method = f"{cls.__name__}.work"
         
-        # Handle the case that, the validator flags either context
-        for context in [a, b]:
-            context_validation = context_validator.validate(context)
-            if context_validation.is_failure:
+        # Handle the case that, the validator flags either register
+        for register in [a, b]:
+            register_validation = register_validator.validate(register)
+            if register_validation.is_failure:
                 # Return the exception chain on failure.
                 return ComputationResult.failure(
                     VectorAdditionException(
@@ -81,10 +77,10 @@ class AddOperation(Operation[VectorContext]):
                         cls_name=cls.__name__,
                         msg=VectorAdditionException.MSG,
                         err_code=VectorAdditionException.ERR_CODE,
-                        ex=context_validation.exception
+                        ex=register_validation.exception
                     )
             )
-        # Handle the case that the contexts are different.
+        # Handle the case that the registers are different.
         if not isinstance(a, type(b)):
             # Return the exception chain on failure.
             return ComputationResult.failure(
@@ -93,16 +89,16 @@ class AddOperation(Operation[VectorContext]):
                     cls_name=cls.__name__,
                     msg=VectorAdditionException.MSG,
                     err_code=VectorAdditionException.ERR_CODE,
-                    ex=context_validation.exception
+                    ex=register_validation.exception
                 )
             )
         summation_result = None
-        if context.vector is not None:
+        if register.vector is not None:
             summation_result = toolkit.vector_service.builder.build(
                 x= a.vector.x + b.vector.x,
                 y= a.vector.y + b.vector.y,
             )
-        if context.coord is not None:
+        if register.coord is not None:
             summation_result = toolkit.coord_service.builder.build(
                 row=a.coord.row + b.coord.row,
                 column=a.coord.column + b.coord.column,

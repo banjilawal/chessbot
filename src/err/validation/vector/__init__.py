@@ -10,7 +10,7 @@ version: 1.0.1
 # ============ ERR.VALIDATION.VECTOR PACKAGE ===========#
 
 # Packages
-None
+from .register import *
 
 # Modules
 from .exception import VectorValidationException

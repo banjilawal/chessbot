@@ -24,7 +24,6 @@ from .number import *
 from .persona import *
 from .player import *
 from .rank import *
-from .register import *
 from .scalar import *
 from .schema import *
 from .string import *

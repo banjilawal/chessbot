@@ -1,7 +1,7 @@
-# src/integrity/validation/validator.py
+# src/operation/validation/validator.py
 
 """
-Module: integrity.validation.validator
+Module: operation.validation.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,7 +9,11 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from abc import ABC, abstractmethod
+from typing import Any, Generic, TypeVar
 
+from result import ValidationResult
+from system import LoggingLevelRouter
 
 T = TypeVar("T")
 

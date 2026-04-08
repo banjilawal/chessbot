@@ -11,11 +11,13 @@ import logging
 
 log = logging.getLogger("chessbot")
 
-# =========== PACKAGE ===========#
+# =========== OPERATION PACKAGE ===========#
 
 # Packages
-from operation.build.bootstrapper import *
-from operation.build.creator import *
+from .build import *
+from .validation import *
+from .microservice import *
+from .stack import *
 from .token import *
 
 # Modules

@@ -1,25 +1,16 @@
-# src/integrity/validation/context/vector/validator.py
+# src/operation/validation/context/vector/__ini__.py
 
 """
-Module: integrity.validation.context.vector.validator
+Module: operation.validation.context.vector.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Any, cast
 
 from integrity import Validator
-from model import Coord, VectorContext, Vector
-from result import ValidationResult
-from system import LoggingLevelRouter
-from toolkit  import VectorContextToolkit
-from err import (
-    ExcessVectorContextFlagsException, VectorContextNullException, VectorContextValidationException,
-    ZeroVectorContextFlagsException
-)
-
+from model import VectorContext
 
 
 class VectorContextValidator(Validator[VectorContext]):

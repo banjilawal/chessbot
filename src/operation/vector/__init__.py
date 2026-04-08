@@ -10,9 +10,9 @@ version: 1.0.1
 # =========== OPERATION.VECTOR CONTENTS ===========#
 
 # Packages
-from operation.vector.binary.addition import *
-from .conversion import *
-from operation.vector.binary.euclidean import *
+from operation.vector.addition import *
+from .transfomr import *
+from operation.vector.euclidean import *
 from .product import *
 
 # Modules

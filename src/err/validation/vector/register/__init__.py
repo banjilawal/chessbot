@@ -1,4 +1,4 @@
-# src/err/validation/context/vector/register/__init__.py
+# src/err/validationvector/register/__init__.py
 
 """
 Module: err.validation.vector.register.__init__

@@ -1,7 +1,7 @@
-# src/operation/vector/product/worker.py
+# src/operation/vector/product/operation.py
 
 """
-Module: operation.vector.product.worker
+Module: operation.vector.product.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -15,13 +15,13 @@ from model import VectorContext, Scalar
 from result import ComputationResult
 from system import LoggingLevelRouter
 from toolkit  import VectorContextToolkit
-from worker import Worker
+from operation import Operation
 
 
-class ScalarProductWorker(Worker):
+class ScalarProductOperation(Operation):
     """
     Role:
-        -   Worker
+        -   Operation
         -   Transformer
 
     Responsibilities:
@@ -38,7 +38,7 @@ class ScalarProductWorker(Worker):
         ) -> ComputationResult[Any]:
 
     Super Class:
-        Worker
+        Operation
     """
     
     @classmethod

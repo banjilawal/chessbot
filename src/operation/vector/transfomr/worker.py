@@ -1,6 +1,6 @@
-# src/operation/vector/conversion/worker.py
+# src/operation/vector/conversion/operation.py
 """
-Module: operation.vector.conversion.worker
+Module: operation.vector.conversion.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -15,13 +15,13 @@ from model import VectorContext
 from result import ComputationResult
 from system import LoggingLevelRouter
 from toolkit  import VectorContextToolkit
-from worker import Worker
+from operation import Operation
 
 
-class ConversionWorker(Worker):
+class ConversionOperation(Operation):
     """
     Role:
-        -   Worker
+        -   Operation
         -   Transformer
 
     Responsibilities:
@@ -38,7 +38,7 @@ class ConversionWorker(Worker):
         ) -> ComputationResult[Any]:
 
     Super Class:
-        Worker
+        Operation
     """
     
     @classmethod

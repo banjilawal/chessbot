@@ -1,4 +1,4 @@
-# src/err/validation/context/vector/register/exception.py
+# src/err/validationvector/register/exception.py
 
 """
 Module: err.validation.vector.register.exception
