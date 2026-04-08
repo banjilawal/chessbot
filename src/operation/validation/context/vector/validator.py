@@ -9,8 +9,8 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from integrity import Validator
 from model import VectorContext
+from operation import Validator
 
 
 class VectorContextValidator(Validator[VectorContext]):
