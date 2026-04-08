@@ -1,7 +1,7 @@
-# src/integrity/validation/context/vector/validator.py
+# src/operation/validation/context/vector/validator.py
 
 """
-Module: integrity.validation.context.vector.validator
+Module: operation.validation.vector.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -14,7 +14,7 @@ from err import (
     VectorEuclideanException, VectorRegisterMismatchException, VectorRegisterNullException,
     VectorRegisterValidationException
 )
-from integrity import Validator, VectorContextValidator
+from operation import Validator, VectorContextValidator
 from model import VectorRegister
 from result import ValidationResult
 from system import LoggingLevelRouter
@@ -26,7 +26,7 @@ class VectorRegisterValidator(Validator[VectorRegister]):
     """
     Role
         -   Transaction Worker
-        -   Integrity Maintenance
+        -   Operation Maintenance
         -   Consistency Assurance
         -   Validation Process Owner
 
