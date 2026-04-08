@@ -31,7 +31,7 @@ class AddOperation(Operation[VectorContext]):
     
     -   def work(
             context: VectorContext,
-            tool_set: VectorContextToolSet = VectorContextToolSet(),
+            toolkit : VectorContextToolkit = VectorContextToolkit(),
             context_validator: VectorContextValidator = VectorContextValidator(),
         ) -> ComputationResult[Any]:
 
@@ -45,7 +45,7 @@ class AddOperation(Operation[VectorContext]):
             cls,
             a: VectorContext,
             b: VectorContext,
-            tool_set: VectorContextToolSet = VectorContextToolSet(),
+            toolkit : VectorContextToolkit = VectorContextToolkit(),
             context_validator: VectorContextValidator = VectorContextValidator(),
     ) -> ComputationResult[int]:
         """
@@ -61,7 +61,7 @@ class AddOperation(Operation[VectorContext]):
         Args:
             scalar: Scalar,
             context: VectorContext,
-            tool_set: VectorContextToolSet = VectorContextToolSet(),
+            toolkit : VectorContextToolkit = VectorContextToolkit(),
             context_validator: VectorContextValidator = VectorContextValidator(),
         Result:
             ComputationResult[Union[Vector, Coord]]:
@@ -98,12 +98,12 @@ class AddOperation(Operation[VectorContext]):
             )
         summation_result = None
         if context.vector is not None:
-            summation_result = tool_set.vector_service.builder.build(
+            summation_result = toolkit.vector_service.builder.build(
                 x= a.vector.x + b.vector.x,
                 y= a.vector.y + b.vector.y,
             )
         if context.coord is not None:
-            summation_result = tool_set.coord_service.builder.build(
+            summation_result = toolkit.coord_service.builder.build(
                 row=a.coord.row + b.coord.row,
                 column=a.coord.column + b.coord.column,
             )

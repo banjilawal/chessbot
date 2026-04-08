@@ -24,7 +24,7 @@ class GameNullException(NullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required  Game is null.
+        1.  Indicate that a required Game is null.
 
     Attributes:
             msg: Optional[str]

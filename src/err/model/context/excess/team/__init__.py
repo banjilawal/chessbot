@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== MODEL.EXCESS.TEAM PACKAGE ===========#
+# =========== ERR.MODEL.EXCESS.TEAM PACKAGE ===========#
 
 # Packages
 

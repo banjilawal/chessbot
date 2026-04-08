@@ -7,7 +7,7 @@ Created: 2026-02-25
 version: 1.0.0
 """
 
-# =========== SYSTEM.ERR.WORK PACKAGE ===========#
+# =========== ERR.SYSTEM.ERR.WORK PACKAGE ===========#
 
 # Packages
 

@@ -10,13 +10,13 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Optional
 
-from err import ExcessLinGeoContextFlagsException, LinGeoContextBuildException
+from err import ExcessVectorContextFlagsException, VectorContextBuildException
 from integrity import Builder
 from model import Coord, VectorContext, Vector
 from result import BuildResult
-from tool import LinGeoContextToolSet
+from toolkit  import VectorContextToolkit
 
-class LinGeoContextBuilder(Builder[VectorContext]):
+class VectorContextBuilder(Builder[VectorContext]):
     """
     Role
         -   Transaction Worker
@@ -25,7 +25,7 @@ class LinGeoContextBuilder(Builder[VectorContext]):
         -   Build Process Owner
 
    Responsibilities:
-        1.  Ensure a new LinGeoContext instance is born safe and reliable.
+        1.  Ensure a new VectorContext instance is born safe and reliable.
 
     Attributes:
 
@@ -33,8 +33,8 @@ class LinGeoContextBuilder(Builder[VectorContext]):
         -   def build(
                     coord: Optional[Coord] = None,
                     vector: Optional[Vector] = None,
-                    tool_set: LinGeoContextToolSet
-            ) -> BuildResult[LinGeoContext]:
+                    toolkit : VectorContextToolkit
+            ) -> BuildResult[VectorContext]:
 
      Super Class:
          Builder
@@ -44,30 +44,30 @@ class LinGeoContextBuilder(Builder[VectorContext]):
             cls,
             coord: Optional[Coord] = None,
             vector: Optional[Vector] = None,
-            tool_set: LinGeoContextToolSet = LinGeoContextToolSet()
+            toolkit : VectorContextToolkit = VectorContextToolkit()
     ) -> BuildResult[VectorContext]:
         """
-        Build a safe LinGeoContext.
+        Build a safe VectorContext.
 
         Action:
             1.  Send an exception in the BuildResult any of these conditions occur.
                     -   Both options are enabled.
                     -   Neither option is enabled.
                     -   Whichever attribute is set gets flgged by its validator.
-            2.  Otherwise, build the LingeoContext.
+            2.  Otherwise, build the VectorContext.
             3.  Send the success result.
         Args:
             coord: Optional[Coord] = None,
             vector: Optional[Vector] = None,
-            tool_set: LinGeoContextToolSet = LinGeoContextToolSet()
+            toolkit : VectorContextToolkit = VectorContextToolkit()
         Returns:
-            BuildResult[LinGeoContext]
+            BuildResult[VectorContext]
         Raises:
             TypeError
-            LinGeoContextNullException
-            ZeroLinGeoContextFlagsException
-            LinGeoContextBuildException
-            ExcessLinGeoContextFlagsException
+            VectorContextNullException
+            ZeroVectorContextFlagsException
+            VectorContextBuildException
+            ExcessVectorContextFlagsException
         """
         method = f"{cls.__name__}.build"
 
@@ -79,14 +79,14 @@ class LinGeoContextBuilder(Builder[VectorContext]):
         if param_count == 0:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                LinGeoContextBuildException(
+                VectorContextBuildException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=LinGeoContextBuildException.MSG,
-                    err_code=LinGeoContextBuildException.ERR_CODE,
-                    ex=ZeroLinGeoContextFlagsException(
-                        msg=ZeroLinGeoContextFlagsException.MSG,
-                        err_code=ZeroLinGeoContextFlagsException.ERR_CODE,
+                    msg=VectorContextBuildException.MSG,
+                    err_code=VectorContextBuildException.ERR_CODE,
+                    ex=ZeroVectorContextFlagsException(
+                        msg=ZeroVectorContextFlagsException.MSG,
+                        err_code=ZeroVectorContextFlagsException.ERR_CODE,
                     )
                 )
             )
@@ -94,34 +94,34 @@ class LinGeoContextBuilder(Builder[VectorContext]):
         if param_count > 1:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                LinGeoContextBuildException(
+                VectorContextBuildException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=LinGeoContextBuildException.MSG,
-                    err_code=LinGeoContextBuildException.ERR_CODE,
-                    ex=ExcessLinGeoContextFlagsException(
-                        msg=ExcessLinGeoContextFlagsException.MSG,
-                        err_code=ExcessLinGeoContextFlagsException.ERR_CODE,
+                    msg=VectorContextBuildException.MSG,
+                    err_code=VectorContextBuildException.ERR_CODE,
+                    ex=ExcessVectorContextFlagsException(
+                        msg=ExcessVectorContextFlagsException.MSG,
+                        err_code=ExcessVectorContextFlagsException.ERR_CODE,
                     )
                 )
             )
         # --- Route to the appropriate Build/build branch. ---#
    
         
-        # Build the coord LinGeoContext if its flag is enabled.
+        # Build the coord VectorContext if its flag is enabled.
         if coord is not None:
-            build_result = tool_set.coord_service.validator.validate(coord)
+            build_result = toolkit.coord_service.validator.validate(coord)
             if build_result.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    LinGeoContextBuildException(
+                    VectorContextBuildException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=LinGeoContextBuildException.MSG,
-                        err_code=LinGeoContextBuildException.ERR_CODE,
-                        ex=ExcessLinGeoContextFlagsException(
-                            msg=ExcessLinGeoContextFlagsException.MSG,
-                            err_code=ExcessLinGeoContextFlagsException.ERR_CODE,
+                        msg=VectorContextBuildException.MSG,
+                        err_code=VectorContextBuildException.ERR_CODE,
+                        ex=ExcessVectorContextFlagsException(
+                            msg=ExcessVectorContextFlagsException.MSG,
+                            err_code=ExcessVectorContextFlagsException.ERR_CODE,
                         )
                     )
                 )
@@ -129,15 +129,15 @@ class LinGeoContextBuilder(Builder[VectorContext]):
             return BuildResult.success(VectorContext(coord=coord))
         
         # Deal with the alternate case.
-        build_result = tool_set.vector_service.validator.validate(vector)
+        build_result = toolkit.vector_service.validator.validate(vector)
         if build_result.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                LinGeoContextBuildException(
+                VectorContextBuildException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=LinGeoContextBuildException.MSG,
-                    err_code=LinGeoContextBuildException.ERR_CODE,
+                    msg=VectorContextBuildException.MSG,
+                    err_code=VectorContextBuildException.ERR_CODE,
                     ex=build_result.exception
                 )
             )

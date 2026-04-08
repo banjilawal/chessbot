@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== MODEL.ZERO.RANK PACKAGE ===========#
+# =========== ERR.MODEL.ZERO.RANK PACKAGE ===========#
 
 # Packages
 None

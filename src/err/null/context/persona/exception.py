@@ -28,7 +28,7 @@ class PersonaContextNullException(ContextNullException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that a required  PersonaContext is null.
+        1.  Indicate that a required PersonaContext is null.
 
     Attributes:
             msg: Optional[str]

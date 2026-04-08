@@ -1,7 +1,7 @@
-# src/err/build/context/LinGeo/exception.py
+# src/err/build/context/Vector/exception.py
 
 """
-Module: err.build.context.LinGeo.exception
+Module: err.build.context.Vector.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -12,12 +12,12 @@ from typing import Any, Optional
 from err import ContextBuildException
 
 __all__ = [
-    # ======================# LINGEO_CONTEXT_BUILD_FAILURE #======================#
-    "LinGeoContextBuildException",
+    # ======================# VECTOR_CONTEXT_BUILD_FAILURE #======================#
+    "VectorContextBuildException",
 ]
 
-# ======================# LINGEO_CONTEXT_BUILD_FAILURE #======================#
-class LinGeoContextBuildException(ContextBuildException):
+# ======================# VECTOR_CONTEXT_BUILD_FAILURE #======================#
+class VectorContextBuildException(ContextBuildException):
     """
     Role:
         -   Exception Chain Layer 2
@@ -25,7 +25,7 @@ class LinGeoContextBuildException(ContextBuildException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that a LinGeoContextBuild step failed.
+        1.  Indicate that a VectorContextBuild step failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,8 +41,8 @@ class LinGeoContextBuildException(ContextBuildException):
     Super Class:
         ContextBuildException
     """
-    MSG = str = "No build logic for LinGeoContext attribute"
-    ERR_CODE = "LINGEO_CONTEXT_BUILD_FAILURE"
+    MSG = str = "No build logic for VectorContext attribute"
+    ERR_CODE = "VECTOR_CONTEXT_BUILD_FAILURE"
     
     def __init__(
             self,

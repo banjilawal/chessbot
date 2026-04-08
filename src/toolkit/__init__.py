@@ -11,9 +11,10 @@ import logging
 
 log = logging.getLogger("chessbot")
 
-# =========== PACKAGE ===========#
+# =========== TOOLKIT PACKAGE ===========#
 
 # Packages
+from .context import *
 from .integrity import *
 from .task import *
 

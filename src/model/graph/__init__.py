@@ -9,7 +9,7 @@ import logging
 
 log = logging.getLogger("chessbot")
 
-# =========== GRAPH PACKAGE ===========#
+# =========== MODEL.GRAPH PACKAGE ===========#
 
 # Packages
 from .edge import *

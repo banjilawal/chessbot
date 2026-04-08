@@ -10,7 +10,7 @@ version: 1.0.1
 from system import (
     Builder, BuildResult, LONGEST_KNIGHT_LEG_SIZE, LoggingLevelRouter, NumberValidator
 )
-from model.geometry.vector import Vector, VectorBuildException
+from model.math.vector import Vector, VectorBuildException
 
 
 class VectorBuilder(Builder[Vector]):

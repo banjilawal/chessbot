@@ -28,7 +28,7 @@ class BoardContextNullException(ContextNullException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that a required  BoardContext is null.
+        1.  Indicate that a required BoardContext is null.
 
     Attributes:
             msg: Optional[str]

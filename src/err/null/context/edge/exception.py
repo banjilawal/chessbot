@@ -28,7 +28,7 @@ class EdgeContextNullException(ContextNullException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that a required  EdgeContext is null.
+        1.  Indicate that a required EdgeContext is null.
 
     Attributes:
             msg: Optional[str]

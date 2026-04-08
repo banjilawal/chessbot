@@ -24,7 +24,7 @@ class TeamNullException(NullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required  Team is null.
+        1.  Indicate that a required Team is null.
 
     Attributes:
             msg: Optional[str]

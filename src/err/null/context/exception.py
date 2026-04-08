@@ -26,7 +26,7 @@ class ContextNullException(NullException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that a required  ContextNull failed.
+        1.  Indicate that a required ContextNull failed.
 
     Attributes:
             msg: Optional[str]

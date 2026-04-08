@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ NUMBER.BELOW PACKAGE ===========#
+# ============ ERR.NUMBER.BELOW PACKAGE ===========#
 
 # Packages
 None

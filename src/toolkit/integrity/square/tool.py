@@ -1,7 +1,7 @@
-# src/tool/square/tool.py
+# src/tool/square/toolkit.py
 
 """
-Module: tool.square.tool
+Module: tool.square.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

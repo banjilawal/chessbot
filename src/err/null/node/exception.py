@@ -24,7 +24,7 @@ class NodeNullException(NullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required  Node is null.
+        1.  Indicate that a required Node is null.
 
     Attributes:
         msg: Optional[str]

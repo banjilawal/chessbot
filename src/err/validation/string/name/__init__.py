@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ VALIDATION.STRING.NAME PACKAGE ===========#
+# ============ ERR.VALIDATION.STRING.NAME PACKAGE ===========#
 
 # Packages
 None

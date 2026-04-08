@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== MODEL PACKAGE ===========#
+# =========== ERR.MODEL PACKAGE ===========#
 
 # Packages
 from .arena import *
@@ -18,7 +18,7 @@ from .excess import *
 from .formation import *
 from .game import *
 from .hostage import *
-from .lingeo import *
+from .vector import *
 from .node import *
 from .persona import *
 from .player import *

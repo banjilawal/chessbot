@@ -24,7 +24,7 @@ class HostageNullException(NullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required  Hostage is null.
+        1.  Indicate that a required Hostage is null.
 
     Attributes:
         msg: Optional[str]

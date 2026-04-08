@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== VALIDATION.PLAYER PACKAGE ===========#
+# =========== ERR.VALIDATION.PLAYER PACKAGE ===========#
 
 # Packages
 None

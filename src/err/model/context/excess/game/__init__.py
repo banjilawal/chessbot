@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== MODEL.EXCESS.GAME PACKAGE ===========#
+# =========== ERR.MODEL.EXCESS.GAME PACKAGE ===========#
 
 # Packages
 

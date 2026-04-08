@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== BUILD.CONTEXT PACKAGE ===========#
+# =========== ERR.BUILD.CONTEXT PACKAGE ===========#
 
 # Packages
 from .arena import *
@@ -17,7 +17,7 @@ from .edge import *
 from .formation import *
 from .game import *
 from .hostage import *
-from .lingeo import *
+from .vector import *
 from .node import *
 from .persona import *
 from .player import *

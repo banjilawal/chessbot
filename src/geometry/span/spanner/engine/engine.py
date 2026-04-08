@@ -10,8 +10,8 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Optional
 
-from model.geometry.vector import VectorService
-from model.geometry.coord import Coord, CoordService
+from model.math.vector import VectorService
+from model.math.coord import Coord, CoordService
 from math.span import (
     DiagonalRayProvider, NoRayProviderException, PerpendicularRayProvider, CoordSpan, SpanComputationException,
     SpanComputationRouteException, SpannerEngineException

@@ -24,7 +24,7 @@ class CoordNullException(NullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required  Coord is null.
+        1.  Indicate that a required Coord is null.
 
     Attributes:
         msg: Optional[str]

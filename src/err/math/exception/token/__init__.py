@@ -7,7 +7,7 @@ Created: 2025-11-19
 version: 1.0.0
 """
 
-# =========== TOKEN.DATABASE.KERNEL.EXCEPTION PACKAGE ===========#
+# =========== ERR.TOKEN.DATABASE.KERNEL.EXCEPTION PACKAGE ===========#
 
 # Packages
 from .pop import *

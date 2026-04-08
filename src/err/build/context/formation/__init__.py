@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== BUILD.CONTEXT.FORMATION PACKAGE ===========#
+# =========== ERR.BUILD.CONTEXT.FORMATION PACKAGE ===========#
 
 # Packages
 None

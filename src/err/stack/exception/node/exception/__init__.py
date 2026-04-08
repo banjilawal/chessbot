@@ -7,7 +7,7 @@ Created: 2025-02-18
 version: 1.0.0
 """
 
-# =========== NODE.EXCEPTION PACKAGE ===========#
+# =========== ERR.NODE.EXCEPTION PACKAGE ===========#
 
 # Packages
 from .pop import *

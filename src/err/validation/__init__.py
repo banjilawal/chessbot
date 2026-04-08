@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ VALIDATION PACKAGE ===========#
+# ============ ERR.VALIDATION PACKAGE ===========#
 
 # Packages
 from .arena import *
@@ -24,6 +24,7 @@ from .number import *
 from .persona import *
 from .player import *
 from .rank import *
+from .register import *
 from .scalar import *
 from .schema import *
 from .string import *

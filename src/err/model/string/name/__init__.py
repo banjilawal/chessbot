@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ MODEL.STRING.NAME PACKAGE ===========#
+# ============ ERR.MODEL.STRING.NAME PACKAGE ===========#
 
 # Packages
 from .max import *

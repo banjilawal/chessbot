@@ -28,7 +28,7 @@ class CoordContextNullException(ContextNullException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that a required  CoordContext is null.
+        1.  Indicate that a required CoordContext is null.
 
     Attributes:
             msg: Optional[str]

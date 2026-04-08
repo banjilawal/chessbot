@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Dict
 
 from system import ComputationResult
-from model.geometry.coord import Coord, CoordService
+from model.math.coord import Coord, CoordService
 from math.span import BishopSpannerException, DiagonalRayProvider, CoordSpan, Spanner, SpannerEngine
 
 class BishopSpanner(Spanner):

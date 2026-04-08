@@ -28,7 +28,7 @@ class FormationContextNullException(ContextNullException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that a required  FormationContext is null.
+        1.  Indicate that a required FormationContext is null.
 
     Attributes:
             msg: Optional[str]

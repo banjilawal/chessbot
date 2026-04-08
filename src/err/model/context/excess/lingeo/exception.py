@@ -1,7 +1,7 @@
-# src/err/model/context/excess/lingeo/exception.py
+# src/err/model/context/excess/vector/exception.py
 
 """
-Module: err.model.excess.lingeo.exception
+Module: err.model.excess.vector.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -13,18 +13,18 @@ from typing import Any, Optional
 from err import ExcessContextFlagsException
 
 _all_ = [
-    # ======================# EXCESS_LINGEO_CONTEXT_FLAGS_EXCEPTION #======================#
-    "ExcessLinGeoContextFlagsException",
+    # ======================# EXCESS_VECTOR_CONTEXT_FLAGS_EXCEPTION #======================#
+    "ExcessVectorContextFlagsException",
 ]
 
-# ======================# EXCESS_LINGEO_CONTEXT_FLAGS_EXCEPTION #======================#
-class ExcessLinGeoContextFlagsException(ExcessContextFlagsException):
+# ======================# EXCESS_VECTOR_CONTEXT_FLAGS_EXCEPTION #======================#
+class ExcessVectorContextFlagsException(ExcessContextFlagsException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that more than one LingeoContext option was enabled.
+        1.  Indicates that more than one VectorContext option was enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,8 +40,8 @@ class ExcessLinGeoContextFlagsException(ExcessContextFlagsException):
     Super Class:
         ExcessContextFlagsException
     """
-    MSG = str = "More than one LingeoCcontext attribute enabled."
-    ERR_CODE = "EXCESS_LINGEO_CONTEXT_FLAGS_EXCEPTION"
+    MSG = str = "More than one VectorCcontext attribute enabled."
+    ERR_CODE = "EXCESS_VECTOR_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(
             self,

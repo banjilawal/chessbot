@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import List, cast
 
 from math.span import Ray
-from model.geometry.coord import Coord
+from model.math.coord import Coord
 
 class CoordRay(Ray[Coord]):
     """

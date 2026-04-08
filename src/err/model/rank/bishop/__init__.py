@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ MODEL.RANK.BISHOP PACKAGE ===========#
+# ============ ERR.MODEL.RANK.BISHOP PACKAGE ===========#
 
 # Packages
 None

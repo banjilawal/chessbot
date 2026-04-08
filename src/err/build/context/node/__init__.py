@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== BUILD.CONTEXT.NODE PACKAGE ===========#
+# =========== ERR.BUILD.CONTEXT.NODE PACKAGE ===========#
 
 # Packages
 None

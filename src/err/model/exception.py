@@ -1,4 +1,4 @@
-# src/err/model/__init__.py
+# src/err/model/exception.py
 
 """
 Module: err.model.exception
@@ -10,7 +10,6 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ModelException
 from err import ChessException
 
 __all__ = [

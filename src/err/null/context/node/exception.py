@@ -28,7 +28,7 @@ class NodeContextNullException(ContextNullException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that a required  NodeContext is null.
+        1.  Indicate that a required NodeContext is null.
 
     Attributes:
             msg: Optional[str]

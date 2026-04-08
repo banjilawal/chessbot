@@ -7,7 +7,7 @@ Created: 2026-02-21
 version: 1.0.0
 """
 
-# =========== TOKEN.DATABASE.KERNEL.OPERATION.DEPLOYMENT PACKAGE ===========#
+# =========== ERR.TOKEN.DATABASE.KERNEL.OPERATION.DEPLOYMENT PACKAGE ===========#
 
 # Packages
 from .exception import *

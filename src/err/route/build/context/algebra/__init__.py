@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== ROUTE.BUILD.CONTEXT.ALGEBRA PACKAGE ===========#
+# =========== ERR.ROUTE.BUILD.CONTEXT.ALGEBRA PACKAGE ===========#
 
 # MISSING_Packages
 None

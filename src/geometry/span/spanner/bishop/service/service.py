@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Dict
 
-from model.geometry.coord import Coord, CoordService
+from model.math.coord import Coord, CoordService
 from microservice.edge import Edge, EdgeBuilder
 from graph.domain.graph import Graph
 from model.graph.node import Node, NodeBuilder
@@ -19,7 +19,7 @@ from math.span import BishopSpanServiceException, BishopSpanner, CoordSpan, Span
 from geometry.square import Square, SquareContext, SquareDatabase
 from system import BuildResult, ComputationResult, IdFactory, LoggingLevelRouter
 from model.token import Token, TokenService
-from model.geometry.vector import VectorService
+from model.math.vector import VectorService
 
 
 class BishopSpanService(SpanMicroservice):

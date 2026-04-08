@@ -12,12 +12,12 @@ from __future__ import annotations
 
 from math import sqrt
 
-from err import VectorContextMismatchException
+from err import VectorRegisterMismatchException
 from integrity import VectorContextValidator
 from model import VectorContext
 from result import ComputationResult
 from system import LoggingLevelRouter
-from tool import VectorContextToolSet
+from toolkit  import VectorContextToolkit
 from worker import Worker
 
 
@@ -36,7 +36,7 @@ class EuclideanWorker(Worker):
     
     -   def work(
             context: VectorContext,
-            tool_set: VectorContextToolSet = VectorContextToolSet(),
+            toolkit : VectorContextToolkit = VectorContextToolkit(),
             context_validator: VectorContextValidator = VectorContextValidator(),
         ) -> ComputationResult[Any]:
 
@@ -50,7 +50,7 @@ class EuclideanWorker(Worker):
             cls,
             u: VectorContext,
             v: VectorContext,
-            tool_set: VectorContextToolSet = VectorContextToolSet(),
+            toolkit : VectorContextToolkit = VectorContextToolkit(),
             context_validator: VectorContextValidator = VectorContextValidator(),
     ) -> ComputationResult[int]:
         """
@@ -66,7 +66,7 @@ class EuclideanWorker(Worker):
         Args:
             scalar: Scalar,
             context: VectorContext,
-            tool_set: VectorContextToolSet = VectorContextToolSet(),
+            toolkit : VectorContextToolkit = VectorContextToolkit(),
             context_validator: VectorContextValidator = VectorContextValidator(),
         Result:
             ComputationResult[Union[Vector, Coord]]:
@@ -98,7 +98,7 @@ class EuclideanWorker(Worker):
                     cls_name=cls.__name__,
                     msg=VectorEuclideanException.MSG,
                     err_code=VectorEuclideanException.ERR_CODE,
-                    ex=VectorContextMismatchException(
+                    ex=VectorRegisterMismatchException(
                         msg=VectorEuclideanException.MSG,
                         err_code=VectorEuclideanException.ERR_CODE,
                     )

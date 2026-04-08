@@ -56,7 +56,7 @@ class EuclideanDistance:
         Returns:
             ComputationResult[int]
         Raises:
-            LinGeoEuclideanException
+            VectorEuclideanException
         """
         method = f"{cls.__name__}.compute"
         

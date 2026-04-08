@@ -8,7 +8,7 @@ Created: 2025-11-24
 version: 1.0.0
 """
 
-# =========== TEAM.DATABASE.CORE.EXCEPTION.POP PACKAGE ===========#
+# =========== ERR.TEAM.DATABASE.CORE.EXCEPTION.POP PACKAGE ===========#
 
 # Packages
 None

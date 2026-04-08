@@ -28,7 +28,7 @@ class HostageContextNullException(ContextNullException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that a required  HostageContext is null.
+        1.  Indicate that a required HostageContext is null.
 
     Attributes:
             msg: Optional[str]

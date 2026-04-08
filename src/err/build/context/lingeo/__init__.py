@@ -7,9 +7,9 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== BUILD.CONTEXT.LINEGEO PACKAGE ===========#
+# =========== ERR.BUILD.CONTEXT.LINEGEO PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .exception import LinGeoContextBuildException
+from .exception import VectorContextBuildException

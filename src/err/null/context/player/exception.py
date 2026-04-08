@@ -28,7 +28,7 @@ class PlayerContextNullException(ContextNullException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that a required  PlayerContext is null.
+        1.  Indicate that a required PlayerContext is null.
 
     Attributes:
             msg: Optional[str]

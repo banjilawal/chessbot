@@ -7,7 +7,7 @@ Created: 2025-10-06
 version: 1.0.0
 """
 
-# =========== TEAM.ROSTER.ANALYZER PACKAGE ===========#
+# =========== MODEL.TEAM.ROSTER.ANALYZER PACKAGE ===========#
 
 # Packages
 from .exception import *

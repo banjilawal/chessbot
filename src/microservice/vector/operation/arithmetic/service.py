@@ -12,7 +12,7 @@ from typing import cast
 
 from logic.coord import Coord, CoordService
 from integrity.build.scalar import Scalar, ScalarService
-from model.geometry.vector import Vector, VectorBuilder, VectorServiceException, VectorValidator
+from model.math.vector import Vector, VectorBuilder, VectorServiceException, VectorValidator
 from system import (
     BuildResult, ComputationResult, IdFactory, LoggingLevelRouter, Microservice, NumberValidator
 )

@@ -28,7 +28,7 @@ class RankContextNullException(ContextNullException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that a required  RankContext is null.
+        1.  Indicate that a required RankContext is null.
 
     Attributes:
             msg: Optional[str]

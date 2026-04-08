@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ROUTE.BUILD.ARENA PACKAGE ===========#
+# ============ ERR.ROUTE.BUILD.ARENA PACKAGE ===========#
 
 # MISSING_Packages
 None

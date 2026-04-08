@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== TRANSACTION.DELETION.EMPTY PACKAGE ===========#
+# =========== ERR.TRANSACTION.DELETION.EMPTY PACKAGE ===========#
 
 # Packages
 from .arena import *

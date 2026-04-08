@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ MODEL.PLAYER.HUMAN PACKAGE ===========#
+# ============ ERR.MODEL.PLAYER.HUMAN PACKAGE ===========#
 
 # Packages
 None

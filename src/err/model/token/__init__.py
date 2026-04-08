@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ MODEL.TOKEN PACKAGE ===========#
+# ============ ERR.MODEL.TOKEN PACKAGE ===========#
 
 # Packages
 from .king import *

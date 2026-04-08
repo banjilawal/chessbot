@@ -1,7 +1,7 @@
-# src/err/model/context/zero/lingeo/__init__.py
+# src/err/model/context/zero/vector/__init__.py
 
 """
-Module: err.model.zero.lingeo.exception
+Module: err.model.zero.vector.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -13,18 +13,18 @@ from typing import Any, Optional
 from err import ZeroContextFlagsException
 
 _all_ = [
-    # ======================# ZERO_LINGEO_CONTEXT_FLAGS_EXCEPTION #======================#
-    "ZeroLinGeoContextFlagsException",
+    # ======================# ZERO_VECTOR_CONTEXT_FLAGS_EXCEPTION #======================#
+    "ZeroVectorContextFlagsException",
 ]
 
-# ======================# ZERO_LINGEO_CONTEXT_FLAGS_EXCEPTION #======================#
-class ZeroLinGeoContextFlagsException(ZeroContextFlagsException):
+# ======================# ZERO_VECTOR_CONTEXT_FLAGS_EXCEPTION #======================#
+class ZeroVectorContextFlagsException(ZeroContextFlagsException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicates that no LingeoContext attribute enabled.
+        1.  Indicates that no VectorContext attribute enabled.
 
     Attributes:
         msg: Optional[str]
@@ -40,8 +40,8 @@ class ZeroLinGeoContextFlagsException(ZeroContextFlagsException):
     Super Class:
         ZeroContextFlagsException
     """
-    MSG = str = "No LingeoCcontext attribute enabled."
-    ERR_CODE = "ZERO_LINGEO_CONTEXT_FLAGS_EXCEPTION"
+    MSG = str = "No VectorCcontext attribute enabled."
+    ERR_CODE = "ZERO_VECTOR_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(
             self,

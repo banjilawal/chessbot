@@ -24,7 +24,7 @@ class RankNullException(NullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required  Rank is null.
+        1.  Indicate that a required Rank is null.
 
     Attributes:
         msg: Optional[str]

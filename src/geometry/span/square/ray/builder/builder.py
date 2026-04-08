@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import List
 
-from model.geometry.coord import Coord
+from model.math.coord import Coord
 from math.span import CoordRay, SquareRay, SquareRayBuildException
 from geometry.square import Square, SquareContext, SquareNotFoundException, SquareStackService
 from system import Builder, BuildResult, LoggingLevelRouter, SearchResult

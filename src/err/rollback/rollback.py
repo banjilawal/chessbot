@@ -10,12 +10,12 @@ version: 1.0.0
 from system import ChessException
 
 __all__ = [
-  # ====================== ROLLBACK_OPERATION EXCEPTION #======================#
+  # ====================== ERR.ROLLBACK_OPERATION EXCEPTION #======================#
   'RollbackException',
 ]
 
 
-#====================== ROLLBACK_OPERATION EXCEPTION #======================#
+#====================== ERR.ROLLBACK_OPERATION EXCEPTION #======================#
 class RollbackException(ChessException):
   """
   Role:Error Rollback, Integrity Debugging, State Restoration,

@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== MODEL.ZERO.HOSTAGE PACKAGE ===========#
+# =========== ERR.MODEL.ZERO.HOSTAGE PACKAGE ===========#
 
 # Packages
 None

@@ -7,7 +7,7 @@ Created: 2026-02-22
 version: 1.0.0
 """
 
-# =========== TOKEN.DATABASE.KERNEL.OPERATION.COLLISION PACKAGE ===========#
+# =========== ERR.TOKEN.DATABASE.KERNEL.OPERATION.COLLISION PACKAGE ===========#
 
 # Packages
 from .exception import *

@@ -14,7 +14,7 @@ from integrity import VectorContextValidator
 from model import VectorContext, Scalar
 from result import ComputationResult
 from system import LoggingLevelRouter
-from tool import VectorContextToolSet
+from toolkit  import VectorContextToolkit
 from worker import Worker
 
 
@@ -33,7 +33,7 @@ class ScalarProductWorker(Worker):
     
     -   def work(
             context: VectorContext,
-            tool_set: VectorContextToolSet = VectorContextToolSet(),
+            toolkit : VectorContextToolkit = VectorContextToolkit(),
             context_validator: VectorContextValidator = VectorContextValidator(),
         ) -> ComputationResult[Any]:
 
@@ -47,7 +47,7 @@ class ScalarProductWorker(Worker):
             cls,
             scalar: Scalar,
             context: VectorContext,
-            tool_set: VectorContextToolSet = VectorContextToolSet(),
+            toolkit : VectorContextToolkit = VectorContextToolkit(),
             context_validator: VectorContextValidator = VectorContextValidator(),
     ) -> ComputationResult[int]:
         """
@@ -63,7 +63,7 @@ class ScalarProductWorker(Worker):
         Args:
             scalar: Scalar,
             context: VectorContext,
-            tool_set: VectorContextToolSet = VectorContextToolSet(),
+            toolkit : VectorContextToolkit = VectorContextToolkit(),
             context_validator: VectorContextValidator = VectorContextValidator(),
         Result:
             ComputationResult[Union[Vector, Coord]]:
@@ -73,7 +73,7 @@ class ScalarProductWorker(Worker):
         method = f"{cls.__name__}.work"
         
         # Handle the case that, the scalar is not safe.
-        scalar_validation = tool_set.scalar_service.validator.validate(scalar)
+        scalar_validation = toolkit.scalar_service.validator.validate(scalar)
         if scalar_validation.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(
@@ -102,12 +102,12 @@ class ScalarProductWorker(Worker):
         
         multiplication_result = None
         if context.vector is not None:
-            multiplication_result = tool_set.vector_service.builder.build(
+            multiplication_result = toolkit.vector_service.builder.build(
                 x=context.vector.x * scalar.value,
                 y=context.vector.y * scalar.value,
             )
         if context.coord is not None:
-            multiplication_result = tool_set.coord_service.builder.build(
+            multiplication_result = toolkit.coord_service.builder.build(
                 row=context.vector.y,
                 column=context.vector.x,
             )

@@ -24,7 +24,7 @@ class PlayerNullException(NullException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required  Player is null.
+        1.  Indicate that a required Player is null.
 
     Attributes:
         msg: Optional[str]

@@ -13,8 +13,8 @@ from typing import Dict, List
 
 from model.token import PawnToken
 from system import ComputationResult
-from model.geometry.coord import Coord, CoordService
-from model.geometry.vector import Vector, VectorService
+from model.math.coord import Coord, CoordService
+from model.math.vector import Vector, VectorService
 from math.span import PawnSpannerException, PawnVectorSets, CoordRay, CoordSpan, Spanner
 
 class PawnSpanner(Spanner):

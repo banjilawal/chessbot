@@ -1,7 +1,7 @@
-# src/tool/rank/tool.py
+# src/tool/rank/toolkit.py
 
 """
-Module: tool.rank.tool
+Module: tool.rank.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,7 +12,7 @@ from __future__ import annotations
 from microservice import PersonaService
 from model import Rank
 from system import IdentityService
-from tool import toolkit
+from toolkit  import toolkit
 
 
 class Ranktoolkit(toolkit[Rank]):

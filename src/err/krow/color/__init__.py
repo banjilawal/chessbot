@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-# =========== SYSTEM.ERR.COLOR PACKAGE ===========#
+# =========== ERR.SYSTEM.ERR.COLOR PACKAGE ===========#
 
 # Packages
 None

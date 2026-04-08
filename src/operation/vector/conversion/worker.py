@@ -14,7 +14,7 @@ from integrity import VectorContextValidator
 from model import VectorContext
 from result import ComputationResult
 from system import LoggingLevelRouter
-from tool import VectorContextToolSet
+from toolkit  import VectorContextToolkit
 from worker import Worker
 
 
@@ -33,7 +33,7 @@ class ConversionWorker(Worker):
     
     -   def work(
             context: VectorContext,
-            tool_set: VectorContextToolSet = VectorContextToolSet(),
+            toolkit : VectorContextToolkit = VectorContextToolkit(),
             context_validator: VectorContextValidator = VectorContextValidator(),
         ) -> ComputationResult[Any]:
 
@@ -46,7 +46,7 @@ class ConversionWorker(Worker):
     def work(
             cls,
             context: VectorContext,
-            tool_set: VectorContextToolSet = VectorContextToolSet(),
+            toolkit : VectorContextToolkit = VectorContextToolkit(),
             context_validator: VectorContextValidator = VectorContextValidator(),
     ) -> ComputationResult[Any]:
         """
@@ -61,7 +61,7 @@ class ConversionWorker(Worker):
             2.  Otherwise, send the success result.
         Args:
             context: AlgebraContext
-            tool_set: VectorContextToolSet
+            toolkit : VectorContextToolkit
             context_validator: VectorContextValidator
         Result:
             ComputationResult[Union[Vector, Coord]]:
@@ -86,12 +86,12 @@ class ConversionWorker(Worker):
         
         conversion_result = None
         if context.vector is not None:
-            conversion_result = tool_set.coord_service.builder.build(
+            conversion_result = toolkit.coord_service.builder.build(
                 row=context.vector.y,
                 column=context.vector.x,
             )
         if context.coord is not None:
-            conversion_result = tool_set.vector_service.builder.build(
+            conversion_result = toolkit.vector_service.builder.build(
                 row=context.vector.y,
                 column=context.vector.x,
             )

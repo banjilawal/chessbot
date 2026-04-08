@@ -28,7 +28,7 @@ class GameContextNullException(ContextNullException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that a required  GameContext is null.
+        1.  Indicate that a required GameContext is null.
 
     Attributes:
             msg: Optional[str]

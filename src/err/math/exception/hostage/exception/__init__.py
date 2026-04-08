@@ -7,7 +7,7 @@ Created: 2025-10-01
 version: 1.0.0
 """
 
-# =========== HOSTAGE.DATABASE.CORE.EXCEPTION PACKAGE ===========#
+# =========== ERR.HOSTAGE.DATABASE.CORE.EXCEPTION PACKAGE ===========#
 
 # Packages
 from .search import *

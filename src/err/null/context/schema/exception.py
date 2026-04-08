@@ -28,7 +28,7 @@ class SchemaContextNullException(ContextNullException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that a required  SchemaContext is null.
+        1.  Indicate that a required SchemaContext is null.
 
     Attributes:
             msg: Optional[str]

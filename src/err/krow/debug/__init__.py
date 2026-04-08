@@ -7,7 +7,7 @@ Created: 2026-02-25
 version: 1.0.0
 """
 
-# =========== SYSTEM.ERR.DEBUG PACKAGE ===========#
+# =========== ERR.SYSTEM.ERR.DEBUG PACKAGE ===========#
 
 # Packages
 from .child import *

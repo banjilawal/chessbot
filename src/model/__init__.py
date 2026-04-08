@@ -11,7 +11,7 @@ import logging
 
 log = logging.getLogger("chessbot")
 
-# =========== PACKAGE ===========#
+# =========== MODEL.PACKAGE ===========#
 
 # Packages
 from .arena import *
@@ -19,7 +19,7 @@ from .blueprint import *
 from .board import *
 from .catalog import *
 from .context import *
-from .geometry import *
+from .math import *
 from .game import *
 from .graph import *
 from .hostage import *

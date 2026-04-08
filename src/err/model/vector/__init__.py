@@ -7,10 +7,10 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ MODEL.VECTOR PACKAGE ===========#
+# ============ ERR.MODEL.VECTOR PACKAGE ===========#
 
 # Packages
-None
+from .register import *
 
 # Modules
 from .exception import VectorException

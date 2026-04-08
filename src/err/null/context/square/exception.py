@@ -28,7 +28,7 @@ class SquareContextNullException(ContextNullException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that a required  SquareContext is null.
+        1.  Indicate that a required SquareContext is null.
 
     Attributes:
             msg: Optional[str]

@@ -10,10 +10,10 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Dict
 
-from model.geometry.coord import Coord
+from model.math.coord import Coord
 from math.span import PerpendicularRayFactors
 from system import NUMBER_OF_COLUMNS, NUMBER_OF_ROWS
-from model.geometry.vector import Vector
+from model.math.vector import Vector
 
 
 class PerpendicularPlaneFactors:

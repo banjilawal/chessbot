@@ -28,7 +28,7 @@ class ArenaContextNullException(ContextNullException):
         -   Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that a required  ArenaContext is null.
+        1.  Indicate that a required ArenaContext is null.
 
     Attributes:
             msg: Optional[str]

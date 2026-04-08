@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== TRANSACTION.SEARCH PACKAGE ===========#
+# =========== ERR.TRANSACTION.SEARCH PACKAGE ===========#
 
 # Packages
 
