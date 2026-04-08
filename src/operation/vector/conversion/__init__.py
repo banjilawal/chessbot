@@ -1,13 +1,13 @@
-# src/worker/lingeo/conversion/__init__.py
+# src/operation/vector/conversion/__init__.py
 
 """
-Module: worker.lingeo.conversion.__init__
+Module: operation.vector.conversion.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== LINGEO.CONVERSION CONTENTS ===========#
+# =========== OPERATION.VECTOR.CONVERSION CONTENTS ===========#
 
 # Packages
 

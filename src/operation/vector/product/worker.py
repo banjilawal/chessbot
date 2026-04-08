@@ -1,7 +1,7 @@
-# src/worker/lingeo/product/worker.py
+# src/operation/vector/product/worker.py
 
 """
-Module: worker.lingeo.product.worker
+Module: operation.vector.product.worker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,11 +10,11 @@ version: 1.0.1
 from __future__ import annotations
 
 from err import ScalarProductException
-from integrity import LinGeoContextValidator
+from integrity import VectorContextValidator
 from model import VectorContext, Scalar
 from result import ComputationResult
 from system import LoggingLevelRouter
-from tool import LinGeoContextToolSet
+from tool import VectorContextToolSet
 from worker import Worker
 
 
@@ -32,9 +32,9 @@ class ScalarProductWorker(Worker):
     Properties:
     
     -   def work(
-            context: LinGeoContext,
-            tool_set: LinGeoContextToolSet = LinGeoContextToolSet(),
-            context_validator: LinGeoContextValidator = LinGeoContextValidator(),
+            context: VectorContext,
+            tool_set: VectorContextToolSet = VectorContextToolSet(),
+            context_validator: VectorContextValidator = VectorContextValidator(),
         ) -> ComputationResult[Any]:
 
     Super Class:
@@ -47,8 +47,8 @@ class ScalarProductWorker(Worker):
             cls,
             scalar: Scalar,
             context: VectorContext,
-            tool_set: LinGeoContextToolSet = LinGeoContextToolSet(),
-            context_validator: LinGeoContextValidator = LinGeoContextValidator(),
+            tool_set: VectorContextToolSet = VectorContextToolSet(),
+            context_validator: VectorContextValidator = VectorContextValidator(),
     ) -> ComputationResult[int]:
         """
         Convert a vector to a coord and vice versa.
@@ -62,9 +62,9 @@ class ScalarProductWorker(Worker):
             2.  Otherwise, send the success result.
         Args:
             scalar: Scalar,
-            context: LinGeoContext,
-            tool_set: LinGeoContextToolSet = LinGeoContextToolSet(),
-            context_validator: LinGeoContextValidator = LinGeoContextValidator(),
+            context: VectorContext,
+            tool_set: VectorContextToolSet = VectorContextToolSet(),
+            context_validator: VectorContextValidator = VectorContextValidator(),
         Result:
             ComputationResult[Union[Vector, Coord]]:
         Raises:

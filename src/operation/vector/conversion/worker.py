@@ -1,6 +1,6 @@
-# src/worker/lingeo/conversion/worker.py
+# src/operation/vector/conversion/worker.py
 """
-Module: worker.lingeo.conversion.worker
+Module: operation.vector.conversion.worker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,12 +9,12 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any
 
-from err import LinGeoConversionException
-from integrity import LinGeoContextValidator
+from err import VectorConversionException
+from integrity import VectorContextValidator
 from model import VectorContext
 from result import ComputationResult
 from system import LoggingLevelRouter
-from tool import LinGeoContextToolSet
+from tool import VectorContextToolSet
 from worker import Worker
 
 
@@ -32,9 +32,9 @@ class ConversionWorker(Worker):
     Properties:
     
     -   def work(
-            context: LinGeoContext,
-            tool_set: LinGeoContextToolSet = LinGeoContextToolSet(),
-            context_validator: LinGeoContextValidator = LinGeoContextValidator(),
+            context: VectorContext,
+            tool_set: VectorContextToolSet = VectorContextToolSet(),
+            context_validator: VectorContextValidator = VectorContextValidator(),
         ) -> ComputationResult[Any]:
 
     Super Class:
@@ -46,8 +46,8 @@ class ConversionWorker(Worker):
     def work(
             cls,
             context: VectorContext,
-            tool_set: LinGeoContextToolSet = LinGeoContextToolSet(),
-            context_validator: LinGeoContextValidator = LinGeoContextValidator(),
+            tool_set: VectorContextToolSet = VectorContextToolSet(),
+            context_validator: VectorContextValidator = VectorContextValidator(),
     ) -> ComputationResult[Any]:
         """
         Convert a vector to a coord and vice versa.
@@ -61,8 +61,8 @@ class ConversionWorker(Worker):
             2.  Otherwise, send the success result.
         Args:
             context: AlgebraContext
-            tool_set: LinGeoContextToolSet
-            context_validator: LinGeoContextValidator
+            tool_set: VectorContextToolSet
+            context_validator: VectorContextValidator
         Result:
             ComputationResult[Union[Vector, Coord]]:
         Raises:
@@ -75,11 +75,11 @@ class ConversionWorker(Worker):
         if context_validation_result.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(
-                LinGeoConversionException(
+                VectorConversionException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=LinGeoConversionException.MSG,
-                    err_code=LinGeoConversionException.ERR_CODE,
+                    msg=VectorConversionException.MSG,
+                    err_code=VectorConversionException.ERR_CODE,
                     ex=context_validation_result.exception
                 )
             )
@@ -99,11 +99,11 @@ class ConversionWorker(Worker):
         if conversion_result.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(
-                LinGeoConversionException(
+                VectorConversionException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=LinGeoConversionException.MSG,
-                    err_code=LinGeoConversionException.ERR_CODE,
+                    msg=VectorConversionException.MSG,
+                    err_code=VectorConversionException.ERR_CODE,
                     ex=conversion_result.exception
                 )
             )

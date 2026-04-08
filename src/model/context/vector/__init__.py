@@ -10,6 +10,7 @@ version: 1.0.1
 # =========== MODEL.CONTEXT.VECTOR PACKAGE ===========#
 
 # Packages
+from .binary import *
 
 # Modules
 from .model import VectorContext

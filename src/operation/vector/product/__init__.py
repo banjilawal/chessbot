@@ -1,13 +1,13 @@
-# src/worker/lingeo/product/__init__.py
+# src/operation/vector/product/__init__.py
 
 """
-Module: worker.lingeo.product.__init__
+Module: operation.vector.product.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== LINGEO.PRODUCT CONTENTS ===========#
+# =========== OPERATION.VECTOR.PRODUCT CONTENTS ===========#
 
 # Packages
 

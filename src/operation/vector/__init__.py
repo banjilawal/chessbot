@@ -1,18 +1,18 @@
-# src/worker/lingeo/__init__.py
+# src/operation/vector/__init__.py
 
 """
-Module: worker.lingeo.__init__
+Module: operation.vector.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== LINGEO CONTENTS ===========#
+# =========== OPERATION.VECTOR CONTENTS ===========#
 
 # Packages
-from .addition import *
+from operation.vector.binary.addition import *
 from .conversion import *
-from .euclidean import *
+from operation.vector.binary.euclidean import *
 from .product import *
 
 # Modules
