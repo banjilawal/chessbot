@@ -1,33 +1,29 @@
-# src/toolkit/__ini__.py
+# src/integrity/toolkit/context/__init__.py
 
 """
-Module: toolkit.__init__
+Module: integrity.toolkit.context.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-import logging
-
-log = logging.getLogger("chessbot")
-
-# =========== TOOLKIT PACKAGE ===========#
+# =========== TOOLKIT.CONTEXT PACKAGE ===========#
 
 # Packages
-from .arena import *
 from .board import *
 from .coord import *
 from .edge import *
+from .formation import *
 from .game import *
-from .graph import *
 from .hostage import *
 from .node import *
+from .persona import *
+from .player import *
 from .rank import *
-from .scalar import *
+from .schema import *
 from .square import *
 from .team import *
 from .token import *
-from .vector import *
 
 # Modules
-from .toolkit import Toolkit
+None

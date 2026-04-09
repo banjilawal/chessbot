@@ -1,0 +1,16 @@
+# src/integrity/toolkit/edge/__init__.py
+
+"""
+Module: integrity.toolkit.edge.__init__
+Author: Banji Lawal
+Created: 2026-04-03
+version: 1.0.1
+"""
+
+# =========== TOOLKIT.EDGE PACKAGE ===========#
+
+# Packages
+
+
+# Modules
+from .toolkit import EdgeToolkit
