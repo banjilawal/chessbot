@@ -25,7 +25,6 @@ from .graph import *
 from .hostage import *
 from .name import *
 from .player import *
-from .query import *
 from .rank import *
 from .snapshot import *
 from .square import *

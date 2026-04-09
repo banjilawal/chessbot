@@ -10,8 +10,6 @@ version: 1.0.1
 # =========== MODEL.CONTEXT.SQUARE PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .model import SquareContext
-from .category import SquareCategory

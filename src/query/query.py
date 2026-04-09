@@ -1,7 +1,7 @@
-# src/model/query/model.py
+# src/query/py
 
 """
-Module: model.query.model
+Module: query.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,11 +10,14 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import ABC
+from dataclasses import dataclass
 from typing import Generic, TypeVar
 
+from model import Context
 
 T = TypeVar("T")
 
+@dataclass
 class Query(ABC, Generic[T]):
     """
     Role:
@@ -30,17 +33,6 @@ class Query(ABC, Generic[T]):
 
     Super Class:
     """
-    _context: Context[T]
-    
-    def __init__(self, context: Context[T]):
-        """
-        Args:
-            context: Context[T]
-        """
-        self._context = context
-        
-    @property
-    def context(self) -> Context[T]:
-        return self._context
+    context: Context[T]
     
     

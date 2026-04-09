@@ -1,7 +1,7 @@
-# src/model/query/catalog/model.py
+# src/query/catalog/py
 
 """
-Module: model.query.catalog.model
+Module: query.catalog.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,7 +12,7 @@ from __future__ import annotations
 from enum import Enum
 from typing import Generic, TypeVar
 
-from model.query import Query
+from query import Query
 
 E = TypeVar("E", bound=Enum)
 

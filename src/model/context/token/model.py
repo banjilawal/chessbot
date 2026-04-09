@@ -9,12 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from dataclasses import dataclass
 from typing import Any, Dict, Optional
 
 from model import Context, Coord, Rank, Team, Token
-from system import GameColor, LoggingLevelRouter
+from system import GameColor
 
 
+@dataclass
 class TokenContext(Context[Token]):
     """
     Role:
@@ -41,82 +43,23 @@ class TokenContext(Context[Token]):
     Super Class:
         Context
     """
-    _rank: Optional[Rank]
-    _team: Optional[Team]
-    _ransom: Optional[int]
-    _color: Optional[GameColor]
-    _designation: Optional[str]
-    _current_position:Optional[Coord]
-    _opening_square_name: Optional[str]
-    
-    def __init__(
-            self,
-            id: Optional[int] = None,
-            team: Optional[Team] = None,
-            rank: Optional[Rank] = None,
-            ransom: Optional[int] = None,
-            designation: Optional[str] = None,
-            color: Optional[GameColor] = None,
-            current_position: Optional[Coord] = None,
-            opening_square_name: Optional[str] = None
-    ):
-        """
-        Args:
-            id: Optional[int]
-            team: Optional[Team]
-            rank: Optional[Rank]
-            ransom: Optional[int]
-            current_position:Optional[Coord]
-            designation: Optional[str]
-            color: Optional[GameColor]
-            opening_square_name: Optional[str]
-        """
-        super().__init__(id=id, name=None)
-        self._rank = rank
-        self._team = team
-        self._color = color
-        self._ransom = ransom
-        self._designation = designation
-        self._current_position = current_position
-        self._opening_square_name = opening_square_name
+    rank: Optional[Rank]
+    team: Optional[Team]
+    ransom: Optional[int]
+    color: Optional[GameColor]
+    designation: Optional[str]
+    current_position:Optional[Coord]
+    opening_square_name: Optional[str]
 
-    @property
-    def team(self) -> Optional[Team]:
-        return self._team
-   
-    @property
-    def rank(self) -> Optional[Rank]:
-        return self._rank
-    
-    @property
-    def ransom(self) -> Optional[int]:
-        return self._ransom
-    
-    @property
-    def color(self) -> Optional[GameColor]:
-        return self._color
-    
-    @property
-    def designation(self) -> Optional[str]:
-        return self._designation
-    
-    @property
-    def current_position(self) -> Optional[Coord]:
-        return self._current_position
-    
-    @property
-    def opening_square_name(self) -> Optional[str]:
-        return self._opening_square_name
-    
     @property
     def to_dict(self) -> Dict[str, Any]:
         return {
             "id": self.id,
-            "team": self._team,
-            "rank": self._rank,
-            "color": self._color,
-            "ransom": self._ransom,
+            "team": self.team,
+            "rank": self.rank,
+            "color": self.color,
+            "ransom": self.ransom,
             "designation": self.designation,
-            "current_position": self._current_position,
-            "opening_square_name_name": self._opening_square_name
+            "current_position": self.current_position,
+            "opening_square_name_name": self.opening_square_name
         }
