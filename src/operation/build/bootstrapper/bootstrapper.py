@@ -19,13 +19,15 @@ from toolkit import Toolkit
 
 T = TypeVar("T")
 
-class Bootstrapper(ABC, Generic[T]):
+class BuildBootstrapper(ABC, Generic[T]):
     
     @classmethod
     @LoggingLevelRouter.monitor
     def execute(
             cls,
             blueprint: Blueprint[T],
-            toolkit: Toolkit[T]
+            toolkit: Toolkit[T],
+            *args,
+            **kwargs,
     ) -> ValidationResult[Blueprint[T]]:
         pass

@@ -10,6 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from analysis import TokenBlueprint
+from result import AnalysisResult
 from system import CollisionAnalyst, CollisionReport, LoggingLevelRouter
 from analysis.token import (
     Token, TokenCollisionDetectionException, TokenDesignationCollisionException,
@@ -44,7 +45,7 @@ class TokenCollisionAnalyst(CollisionAnalyst[Token]):
             cls,
             blueprint: TokenBlueprint,
             token_stack: TokenStackService,
-    ) -> CollisionReport[Token]:
+    ) -> AnalysisResult[CollisionReport[Token]]:
         """
         Report if any schema member has the same id, designation or
         opening_square_name as the target.
@@ -70,19 +71,19 @@ class TokenCollisionAnalyst(CollisionAnalyst[Token]):
         method = f"{cls.__class__.__name__}.detect"
         
         # Handle the case that, the target does not pass a validation check.
-        validation_result = token_stack.service.validator.search_service(
-            candidate=target
-        )
-        if validation_result.is_failure:
-            return CollisionReport.failure(
-                exception=TokenCollisionDetectionException(
-                    val=method,
-                    var="token failed integrity validation",
-                    msg=TokenCollisionDetectionException.MSG,
-                    err_code=TokenCollisionDetectionException.ERR_CODE,
-                    ex=validation_result.exception
-                )
-            )
+        # validation_result = token_stack.service.validator.search_service(
+        #     candidate=target
+        # )
+        # if validation_result.is_failure:
+        #     return CollisionReport.failure(
+        #         exception=TokenCollisionDetectionException(
+        #             val=method,
+        #             var="token failed integrity validation",
+        #             msg=TokenCollisionDetectionException.MSG,
+        #             err_code=TokenCollisionDetectionException.ERR_CODE,
+        #             ex=validation_result.exception
+        #         )
+        #     )
         # --- Loop through the collider_candidates to find matches. ---#
         
         for token in token_stack.items:

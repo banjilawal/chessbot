@@ -108,28 +108,7 @@ class CollisionReport(Generic[T]):
     
     @property
     def is_failure(self) -> bool:
-        return (
-                self.colliding_variable is None and
-                self.collision_value is None and
-                self.target is None and
-                self._collider is None and
-                self.exception is not None and
-                self.state == (
-                        CollisionState.DETECTOR_FAILED or
-                        CollisionState.DETECTOR_TIMED_OUT
-                )
-        )
-    
-    @property
-    def is_timed_out(self) -> bool:
-        return (
-                self.colliding_variable is None and
-                self.collision_value is None and
-                self._collider is None and
-                self.target is None and
-                self.exception is not None and
-                self.state == CollisionState.DETECTOR_TIMED_OUT
-        )
+        return not self.is_no_collision
     
     @classmethod
     def collision_occurred(
@@ -158,27 +137,5 @@ class CollisionReport(Generic[T]):
             collider=None,
             exception=None,
             state=CollisionState.NO_COLLISIONS,
-        )
-    
-    @classmethod
-    def failure(cls, exception: Exception):
-        return cls(
-            colliding_variable=None,
-            collision_value=None,
-            target=None,
-            collider=None,
-            exception=exception,
-            state=CollisionState.DETECTOR_FAILED,
-        )
-    
-    @classmethod
-    def timed_out(cls, exception: Exception):
-        return cls(
-            colliding_variable=None,
-            collision_value=None,
-            target=None,
-            collider=None,
-            exception=exception,
-            state=CollisionState.DETECTOR_TIMED_OUT,
         )
     

@@ -463,7 +463,7 @@ The patterns are the responsibilities classes can have
 6. Service response (Transacti)
 
 ### Build Service Provider
-Builder are responsible for safely creating entities. They perform comprehensive validation checks during construction
+BuildPipeline are responsible for safely creating entities. They perform comprehensive validation checks during construction
 ensuring consistent patterns. Separating object creation provides a consistent workflow, flexibility, separates concerns. 
 
 A builder runs through validation checks sequentially. If a check fails an `Exception` specific to that failure condition
@@ -492,7 +492,7 @@ sequenceDiagram
 ```
 
 ### Builders versus Validators
-A `Builder` ensure objects are created correctly or not at all. An `Validator` ensures existing objects passes around
+A `BuildPipeline` ensure objects are created correctly or not at all. An `Validator` ensures existing objects passes around
 the system passed sanity checks.
 
       The build runs through all the checks on parameters and state to guarantee only a valid `Piece` is
@@ -500,7 +500,7 @@ the system passed sanity checks.
       creating. This separation of concerns makes the validation and building independent of each other and
       simplifies maintenance.
 
-### Recommended Builder Workflow
+### Recommended BuildPipeline Workflow
 
 ```python
 from chess.team import Team
@@ -515,7 +515,7 @@ piece = cast(CombatantPiece, build_result.payload)
 ```
 ### Sequence Diagram for the Usage Example
 ```mermaid
-%% Builder Flow Example
+%% BuildPipeline Flow Example
 sequenceDiagram
   User->>CommanderBuilder: Request new Commander
   CommanderBuilder->>IdValidator: Validate ID
@@ -593,7 +593,7 @@ Do not import the terminal package. This will be messy and difficult to keep tra
 
 ##### SEE ALSO
 `ValidationResult`, `TransactionResult`, `BuildResult`, `SearchResult`, `Transaction`, `Event`,
-`Builder`, `Validator`, `Search`
+`BuildPipeline`, `Validator`, `Search`
 
 ### Search
 #### Search Results

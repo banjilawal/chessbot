@@ -1,21 +1,26 @@
-# src/logic/system/build/build/exception.py
+# src/pipeline/build/__ini__.py
 
 """
-Module: logic.system.integrity.build.integrity.build.build
+Module: pipeline.build.pipeline
 Author: Banji Lawal
-Created: 2025-10-03
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-from abc import ABC, abstractmethod
-from typing import Generic, TypeVar
+from __future__ import annotations
 
-from system import BuildResult, LoggingLevelRouter, Validator
+from typing import Any, TypeVar
+
+from operation.build.bootstrapper import BuildBootstrapper
+from operation.build.builder.builder import Builder
+from operation.build.finalizer import Finalizer
+from pipeline import Pipeline
+from result import Result
 
 T = TypeVar("T")
 
 
-class Builder(ABC, Generic[T]):
+class BuildPipeline(Pipeline[T]):
     """
     Role
         -   Transaction Worker
@@ -63,8 +68,21 @@ class Builder(ABC, Generic[T]):
     Super Class:
     """
     
+    _bootstrapper: BuildBootstrapper[T]
+    _builder: Builder[T]
+    _finalizer: Finalizer[T]
+    _blue
+    
     @classmethod
-    @abstractmethod
-    @LoggingLevelRouter.monitor
-    def build(cls, *args, **kwargs) -> BuildResult[T]:
+    def enter(cls, *args, **kwargs) -> Result[Any]:
         pass
+    
+    @classmethod
+    def exit(cls, *args, **kwargs) -> Result[T]:
+        pass
+    #
+    # @classmethod
+    # @abstractmethod
+    # @LoggingLevelRouter.monitor
+    # def build(cls, *args, **kwargs) -> BuildResult[T]:
+    #     pass

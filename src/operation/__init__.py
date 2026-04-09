@@ -14,6 +14,7 @@ log = logging.getLogger("chessbot")
 # =========== OPERATION PACKAGE ===========#
 
 # Packages
+from err.operation.bootstrap import **
 from .build import *
 from .validation import *
 from .microservice import *

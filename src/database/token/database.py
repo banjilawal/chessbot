@@ -10,13 +10,13 @@ version: 1.0.1
 from __future__ import annotations
 from typing import List, Optional
 
+from analysis import CollisionReport
 from database import Database
-from microservice import RankService
-from microservice.stack import TokenStackService
+from microservice import IdentityService, RankService, TokenService
 from model import Rank, Token, TokenBlueprint
-from result import ComputationResult
-from analysis.report.quota import RankQuotaReport
-from system import CollisionReport, LoggingLevelRouter
+from result import AnalysisResult, ComputationResult, DeletionResult
+from stack import TokenStackService
+from system import IdFactory, LoggingLevelRouter
 
 
 class TokenDatabase(Database[Token]):
@@ -148,14 +148,19 @@ class TokenDatabase(Database[Token]):
     def run_collision_analysis(
             self,
             blueprint: TokenBlueprint,
-    ) -> ComputationResult[CollisionReport]:
+    ) -> AnalysisResult[CollisionReport]:
+        return self._kernel.collision_analyst.analyze(
+            target_blueprint=blueprint,
+            collider_candidates=self._kernel.items
+        )
+    
     
     @LoggingLevelRouter.monitor
     def rank_quota_report(
             self,
             rank: Rank,
             rank_service: RankService = None
-    ) -> ComputationResult[RankQuotaReport]:
+    ) -> AnalysisResult[RankQuotaReport]:
         """
         Produce a quota report for the rank.
         

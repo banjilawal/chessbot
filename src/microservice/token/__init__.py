@@ -1,16 +1,15 @@
-# src/microservice/orange/__init__.py
+# src/microservice/token/__init__.py
 
 """
-Module: microservice.orange.__init__
+Module: microservice.token.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== ORANGE PACKAGE ===========#
+# =========== TOKEN PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
-from .microservice import OrangeService
+from .microservice import TokenService

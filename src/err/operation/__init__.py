@@ -7,9 +7,10 @@ Created: 2026-04-07
 version: 1.0.0
 """
 
-# =========== ERR. PACKAGE ===========#
+# =========== ERR.OPERATION PACKAGE ===========#
 
 # Packages
+from .bootstrap import *
 from .vector import *
 
 # Modules

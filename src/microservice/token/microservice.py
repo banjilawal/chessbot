@@ -1,7 +1,7 @@
-# src/microservice/orange/microservice.py
+# src/microservice/token/microservice.py
 
 """
-Module: microservice.orange.microservice
+Module: microservice.token.microservice
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

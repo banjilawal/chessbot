@@ -9,12 +9,11 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from database import TokenDatabase
 from model.board import Board
 from model.catalog import Schema
 from model.player import Player
 from model.team import TeamState
-from model.token import TokenDatabase
-
 
 class Team:
     """

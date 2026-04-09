@@ -17,4 +17,4 @@ log = logging.getLogger("chessbot")
 from .token import *
 
 # Modules
-from .bootstrapper import  Bootstrapper
+from .bootstrapper import  BuildBootstrapper
