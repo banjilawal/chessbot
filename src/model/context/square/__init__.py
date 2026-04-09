@@ -14,3 +14,4 @@ None
 
 # Modules
 from .model import SquareContext
+from .category import SquareCategory

@@ -111,8 +111,7 @@ class TokenBuildBootstrapper(BuildBootstrapper[Token]):
                     ex=rank_build_result.exception,
                 )
             )
-        report = cast(CollisionReport[Token], collision_analysis_result.payload)
-        if report.collision_exists:
+        if collision_analysis_result.payload.collision_exists:
             # Return the exception chain on failure.
             return BuildResult.failure(
                 TokenBootstrapBuildException(
@@ -120,11 +119,10 @@ class TokenBuildBootstrapper(BuildBootstrapper[Token]):
                     cls_name=cls.__name__,
                     msg=TokenBootstrapBuildException.MSG,
                     err_code=TokenBootstrapBuildException.ERR_CODE,
-                    ex=report.exception,
+                    ex=collision_analysis_result.payload.exception,
                 )
             )
-    
-        
+
     @classmethod
     def _verify_id(
             cls,

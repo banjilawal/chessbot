@@ -44,7 +44,7 @@ class TokenCollisionAnalyst(CollisionAnalyst[Token]):
             cls,
             blueprint: TokenBlueprint,
             token_stack: TokenStackService,
-    ) -> AnalysisResult[CollisionReport[Token]]:
+    ) -> AnalysisResult[CollisionReport]:
         """
         Report if any schema member has the same id, designation or
         opening_square_name as the target.
@@ -88,46 +88,52 @@ class TokenCollisionAnalyst(CollisionAnalyst[Token]):
         for token in token_stack.items:
             # Handle the case that, the target shares its id with a collider_candidates member.
             if token.id == blueprint.id:
-                # Return target, the collider, and the exception explaining the collision.
-                return CollisionReport.collision_occurred(
-                    collider=token,
-                    colliding_variable="id",
-                    collision_value=token.id,
-                    exception=TokenIdCollisionException(
-                        var="id",
-                        val=f"{token.id}",
-                        msg=TokenIdCollisionException.MSG,
-                        err_code=TokenIdCollisionException.ERR_CODE
+                # Return the collider, id, and the exception.
+                return AnalysisResult.success(
+                    CollisionReport.collision_occurred(
+                        collider=token,
+                        colliding_variable="id",
+                        collision_value=token.id,
+                        exception=TokenIdCollisionException(
+                            var="id",
+                            val=f"{token.id}",
+                            msg=TokenIdCollisionException.MSG,
+                            err_code=TokenIdCollisionException.ERR_CODE
+                        )
                     )
                 )
             # Handle the case that, the target shares its designation with a collider_candidates member.
             if token.designation.upper() == blueprint.formation.designation.upper():
-                # Return target, the collider, and the exception explaining the collision.
-                return CollisionReport.collision_occurred(
-                    collider=token,
-                    colliding_variable="designation",
-                    collision_value=f"{token.designation}",
-                    exception=TokenDesignationCollisionException(
-                        var="designation",
-                        val=f"{token.designation}",
-                        msg=TokenDesignationCollisionException.MSG,
-                        err_code=TokenDesignationCollisionException.ERR_CODE,
+                # Return the collider, designation, and the exception.
+                return AnalysisResult.success(
+                    CollisionReport.collision_occurred(
+                        collider=token,
+                        colliding_variable="designation",
+                        collision_value=f"{token.designation}",
+                        exception=TokenDesignationCollisionException(
+                            var="designation",
+                            val=f"{token.designation}",
+                            msg=TokenDesignationCollisionException.MSG,
+                            err_code=TokenDesignationCollisionException.ERR_CODE,
+                        )
                     )
                 )
             # Handle the case that, the target shares its opening_square_name with a collider_candidates member.
             if token.opening_square_name.upper()== blueprint.formation.square_name.upper():
-                # Return target, the collider, and the exception explaining the collision.
-                return CollisionReport.collision_occurred(
-                    collider=token,
-                    colliding_variable="opening_square_name",
-                    collision_value=f"{token.opening_square_name}",
-                    exception=SquareNameCollisionException(
-                        var="opening_square_name",
-                        val=f"{token.opening_square_name}",
-                        msg=SquareNameCollisionException.MSG,
-                        err_code=SquareNameCollisionException.ERR_CODE,
+                # Return the collider, designation, and the exception.
+                return AnalysisResult.success(
+                    CollisionReport.collision_occurred(
+                        collider=token,
+                        colliding_variable="opening_square_name",
+                        collision_value=f"{token.opening_square_name}",
+                        exception=SquareNameCollisionException(
+                            var="opening_square_name",
+                            val=f"{token.opening_square_name}",
+                            msg=SquareNameCollisionException.MSG,
+                            err_code=SquareNameCollisionException.ERR_CODE,
+                        )
                     )
                 )
         # --- Send the no collisions detected report. ---#
-        return CollisionReport.no_collision()
+        return AnalysisResult.success(CollisionReport.no_collision())
     

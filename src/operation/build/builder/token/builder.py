@@ -11,7 +11,6 @@ from __future__ import annotations
 
 
 from model import CombatantToken, King, KingToken, Pawn, PawnToken, Token, TokenBlueprint
-from operation import Builder
 from result import BuildResult
 from system import  LoggingLevelRouter
 

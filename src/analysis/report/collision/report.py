@@ -8,14 +8,13 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Any, Generic, Optional, TypeVar
+from typing import Any, Optional
 
 from analysis import CollisionState
 
-T = TypeVar("T")
 
 
-class CollisionReport(Generic[T]):
+class CollisionReport:
     """
     Role:Messanger, Data Transport Object, Error Transport Object.
 
@@ -36,7 +35,7 @@ class CollisionReport(Generic[T]):
     """
     _colliding_variable: Optional[str]
     _collision_value: Optional[Any]
-    _collider: Optional[T]
+    _collider: Optional[Any]
     _state: CollisionState
     _exception: Optional[Exception]
 
@@ -45,7 +44,6 @@ class CollisionReport(Generic[T]):
             self,
             state: CollisionState,
             colliding_variable: Optional[str] = None,
-            target: Optional[T] = None,
             collision_value: Optional[Any] = None,
             collider: Optional[T] = None,
             exception: Optional[Exception] = None,
@@ -56,7 +54,6 @@ class CollisionReport(Generic[T]):
         self._colliding_variable = colliding_variable
         self._collision_value = collision_value
         self._state = state
-        self._target = target
         self._collider = collider
         self._exception = exception
         
@@ -71,13 +68,9 @@ class CollisionReport(Generic[T]):
     @property
     def collision_value(self) -> Optional[Any]:
         return self._collision_value
-        
-    @property
-    def target(self) -> T:
-        return self._target
     
     @property
-    def collider(self) -> Optional[T]:
+    def collider(self) -> Optional[Any]:
         return self._collider
     
     @property
@@ -89,7 +82,6 @@ class CollisionReport(Generic[T]):
         return (
                 self.colliding_variable is not None and
                 self.collision_value is not None and
-                self.target is not None and
                 self._collider is not None and
                 self.exception is not None and
                 self.state == CollisionState.COLLISION_DETECTED
@@ -100,40 +92,32 @@ class CollisionReport(Generic[T]):
         return (
                 self.colliding_variable is None and
                 self.collision_value is None and
-                self.target is  None and
                 self._collider is None and
                 self.exception is None and
                 self.state == CollisionState.NO_COLLISIONS
         )
-    
-    @property
-    def is_failure(self) -> bool:
-        return not self.is_no_collision
     
     @classmethod
     def collision_occurred(
             cls,
             colliding_variable: str,
             collision_value: Any,
-            target: T,
-            collider: T,
+            collider: Any,
             exception: Exception
-    ) -> CollisionReport[T]:
+    ) -> CollisionReport[Any]:
         return cls(
             colliding_variable=colliding_variable,
-            collision_value=val,
-            target=target,
+            collision_value=collision_value,
             collider=collider,
             exception=exception,
             state=CollisionState.COLLISION_DETECTED,
         )
     
     @classmethod
-    def no_collision(cls) -> CollisionReport[T]:
+    def no_collision(cls) -> CollisionReport:
         return cls(
             colliding_variable=None,
             collision_value=None,
-            target=None,
             collider=None,
             exception=None,
             state=CollisionState.NO_COLLISIONS,
