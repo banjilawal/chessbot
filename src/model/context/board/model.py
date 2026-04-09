@@ -8,6 +8,9 @@ version: 1.0.1
 """
 
 from __future__ import annotations
+from typing import Optional
+
+from model import Arena, Board, Context, Team
 
 
 class BoardContext(Context[Board]):
@@ -18,17 +21,12 @@ class BoardContext(Context[Board]):
         -   Data-Holder
 
     Responsibilities:
-        1.  Supply a Board attribute-value tuple which selects an execution path.
+        1.  Supply a Board attribute-value search filter.
 
     Attributes:
         id: Optional[int]
+        arena: Optional[Arena]
         team: Optional[Team]
-        rank: Optional[Rank]
-        ransom: Optional[int]
-        current_position:Optional[Coord]
-        designation: Optional[str]
-        color: Optional[GameColor]
-        opening_square_name: Optional[str]
 
     Provides:
         -   to_dict() -> Dict[str, Any]
@@ -36,31 +34,12 @@ class BoardContext(Context[Board]):
     Super Class:
         Context
     """
-    _arena: Optional[Arena] = None
-    
-    def __init__( self, id: Optional[int] = None, arena: Optional[Arena] = None,):
-        super().__init__(id=id, name=None)
-        self._arena = arena
-    
-    @property
-    def id(self) -> Optional[int]:
-        return self._id
-    
-    @property
-    def arena(self) -> Optional[Arena]:
-        return self._arena
+    arena: Optional[Arena] = None
+    team: Optional[Team] = None
     
     def to_dict(self) -> dict:
-        """
-        # ACTION:
-            Convert a SquareContext attributes into a dictionary.
-        # PARAMETERS:
-        None
-        # RETURNS:
-            dict
-        Raises:
-        """
         return {
             "id": self.id,
-            "arena": self._arena
+            "arena": self.arena,
+            "team": self.team,
         }

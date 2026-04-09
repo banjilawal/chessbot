@@ -37,46 +37,15 @@ class TeamContext(Context[Team]):
     Super Class:
         Context
     """
-    _board: Optional[Board] = None
-    _player: Optional[Player] = None
-    _color: Optional[GameColor] = None
-    
-    def __init__(
-            self,
-            id: Optional[int] = None,
-            board: Optional[Board] = None,
-            player: Optional[Player] = None,
-            color: Optional[GameColor] = None,
-    ):
-        """
-        Args:
-            id: Optional[int]
-            board: Optional[Board]
-            player: Optional[Player]
-            color: Optional[GameColor]
-        """
-        super().__init__(id=id, name=None)
-        self._board = board
-        self._player = player
-        self._color = color
-    
-    @property
-    def owner(self) -> Optional[Player]:
-        return self._player
-    
-    @property
-    def board(self) -> Optional[Board]:
-        return self._board
-    
-    @property
-    def color(self) -> Optional[GameColor]:
-        return self._color
+    board: Optional[Board] = None
+    player: Optional[Player] = None
+    color: Optional[GameColor] = None
     
     @property
     def to_dict(self) -> Dict[str, Any]:
         return {
             "id": self.id,
-            "board": self._board,
-            "owner": self._player,
-            "color": self._color,
+            "board": self.board,
+            "owner": self.player,
+            "color": self.color,
         }

@@ -1,0 +1,16 @@
+# MISSING_src/err/route/search/game/__init__.py
+
+"""
+Module: err.route.search.context.game.__init__
+Author: Banji Lawal
+Created: 2026-04-04
+version: 1.0.1
+"""
+
+# ============ ERR.ROUTE.SEARCH.CONTEXT.GAME PACKAGE ===========#
+
+# MISSING_Packages
+None
+
+# MISSING_Modules
+from .exception import GameSearchRouteException

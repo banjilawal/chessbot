@@ -18,17 +18,11 @@ class CoordContext(Context[Coord]):
         -   Data-Holder
 
     Responsibilities:
-        1.  Supply a Coord attribute-value tuple which selects an execution path.
+        1.  Supply a Coord attribute-value search filter.
 
     Attributes:
-        id: Optional[int]
-        team: Optional[Team]
-        rank: Optional[Rank]
-        ransom: Optional[int]
-        current_position:Optional[Coord]
-        designation: Optional[str]
-        color: Optional[GameColor]
-        opening_square_name: Optional[str]
+            row: Optional[int]
+            column: Optional[int]
 
     Provides:
         -   to_dict() -> Dict[str, Any]

@@ -1,7 +1,7 @@
-# src/query/stack/token/query.py
+# src/query/stack/coord/query.py
 
 """
-Module: query.stack.token.query
+Module: query.stack.coord.query
 Created: 2026-04-03
 version: 1.0.1
 """
@@ -11,12 +11,12 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import List
 
-from model import Token, TokenContext
+from model import Coord, CoordContext
 from query import StackQuery
 
 
 @dataclass
-class TokenStackQuery(StackQuery[Token]):
+class CoordStackQuery(StackQuery[Coord]):
     """
     Role:
         -   Model
@@ -24,18 +24,18 @@ class TokenStackQuery(StackQuery[Token]):
         -   Messaging
 
     Responsibilities:
-        1.  A list of tokens to search with context.
+        1.  A list of coords to search with context.
 
 
     Attributes:
-        stack: List[Token]
-        context: TokenContext
+        stack: List[Coord]
+        context: CoordContext
 
     Provides:
 
     Super Class:
         StackQuery
     """
-    stack: List[Token]
-    context: TokenContext
+    stack: List[Coord]
+    context: CoordContext
 
