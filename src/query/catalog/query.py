@@ -1,7 +1,7 @@
-# src/query/catalog/py
+# src/query/catalog/query.py
 
 """
-Module: query.catalog.model
+Module: query.catalog.query
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,14 +9,16 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from dataclasses import dataclass
 from enum import Enum
 from typing import Generic, TypeVar
 
+from model import Context
 from query import Query
 
 E = TypeVar("E", bound=Enum)
 
-
+@dataclass
 class CatalogQuery(Query, Generic[E]):
     """
     Role:
@@ -40,21 +42,5 @@ class CatalogQuery(Query, Generic[E]):
     Super Class:
         Query
     """
-    _catalog: E
-    
-    def __init__(self, catalog: E, context: Context[E]):
-        """
-        Args:
-            catalog: E
-            context: Context[E]
-        """
-        super().__init__(context=context)
-        self._catalog = catalog
-    
-    @property
-    def catalog(self) -> E:
-        return self._catalog
-    
-    @property
-    def lookup_key(self) -> Context[E]:
-        return self.context
+    catalog: E
+    context: Context[E]

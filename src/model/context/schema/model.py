@@ -1,15 +1,15 @@
 # src/logic/schema/key/key.py
 
-# src/model/context/schema/__init__.py
+# src/model/context/schema/init.py
 
 """
-Module: model.context.schema.__init__
+Module: model.context.schema.init
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-from __future__ import annotations
+from future import annotations
 
 from typing import Any, Dict, Optional
 
@@ -26,41 +26,24 @@ class SchemaContext(Context[Schema]):
         -   Data-Holder
 
     Responsibilities:
-        1.  Supply a Schema attribute-value tuple which selects an execution path.
+        1.  Supply a Schema attribute-value search filter.
 
 Attributes:
         name: Optional[str]
         color: Optional[GameColor]
 
     Provides:
-        -   to_dict() -> Dict[str, Any]
+        -   todict() -> Dict[str, Any]
 
     Super Class:
         Context
     """
-    _name: Optional[str]
-    _color: Optional[GameColor]
-    
-    def __init__(
-            self,
-            name: Optional[str] = None,
-            color: Optional[GameColor] = None,
-    ):
-        """
-        Args:
-            name: Optional[str]
-            color: Optional[GameColor]
-        """
-        super().__init__(id=None, name=name)
-        self._color = color
+    name: Optional[str] = None
+    color: Optional[GameColor] = None
 
     @property
-    def color(self) -> Optional[GameColor]:
-        return self._color
-    
-    @property
-    def to_dict(self) -> Dict[str, Any]:
+    def todict(self) -> Dict[str, Any]:
         return {
             "schema": self.name,
-            "color": self._color,
+            "color": self.color,
         }

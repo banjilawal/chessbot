@@ -10,6 +10,9 @@ version: 1.0.1
 # =========== QUERY.CATALOG PACKAGE ===========#
 
 # Packages
+from .formation import *
+from .persona import *
+from .schema import *
 
 # Modules
 from .query import CatalogQuery

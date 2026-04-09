@@ -16,7 +16,7 @@ from query import StackQuery
 
 
 @dataclass
-class BoardStackQuery(StackQuery[Board]):
+class BoardQuery(StackQuery[Board]):
     """
     Role:
         -   Model

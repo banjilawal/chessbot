@@ -16,7 +16,7 @@ from query import StackQuery
 
 
 @dataclass
-class CoordStackQuery(StackQuery[Coord]):
+class CoordQuery(StackQuery[Coord]):
     """
     Role:
         -   Model

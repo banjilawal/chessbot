@@ -11,7 +11,7 @@ import logging
 
 log = logging.getLogger("chessbot")
 
-# =========== PACKAGE ===========#
+# =========== BUILD.BOOTSTRAPPER PACKAGE ===========#
 
 # Packages
 from .token import *

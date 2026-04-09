@@ -16,7 +16,7 @@ from query import StackQuery
 
 
 @dataclass
-class TeamStackQuery(StackQuery[Team]):
+class TeamQuery(StackQuery[Team]):
     """
     Role:
         -   Model

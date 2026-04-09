@@ -8,6 +8,9 @@ version: 1.0.1
 """
 
 from __future__ import annotations
+from typing import Any, Dict, Optional
+
+from model import Context, DiscoveryStatus, Node, Square
 
 
 class NodeContext(Context[Node]):
@@ -21,14 +24,10 @@ class NodeContext(Context[Node]):
         1.  Supply a Node attribute-value tuple which selects an execution path.
 
     Attributes:
-        id: Optional[int]
-        team: Optional[Team]
-        rank: Optional[Rank]
-        ransom: Optional[int]
-        current_position:Optional[Coord]
-        designation: Optional[str]
-        color: Optional[GameColor]
-        opening_square_name: Optional[str]
+        priority: Optional[int]
+        square: Optional[Square]
+        predecessor: Optional[Node]
+        discovery_status: Optional[DiscoveryStatus]
 
     Provides:
         -   to_dict() -> Dict[str, Any]
@@ -36,53 +35,16 @@ class NodeContext(Context[Node]):
     Super Class:
         Context
     """
-    _priority: Optional[int]
-    _square: Optional[Square]
-    _predecessor: Optional[Node]
-    _discovery_status: Optional[DiscoveryStatus]
-    
-    def __init__(
-            self,
-            priority: Optional[int] = None,
-            square: Optional[Square] = None,
-            predecessor: Optional[Node] = None,
-            discovery_status: Optional[DiscoveryStatus] = None,
-    ):
-        super().__init__(id=None, name=None)
-        self._priority = priority
-        self._square = square
-        self._predecessor = predecessor
-        self._discovery_status = discovery_status
-        
-    @property
-    def priority(self) -> Optional[int]:
-        return self._priority
-        
-    @property
-    def square(self) -> Optional[Square]:
-        return self._square
+    priority: Optional[int] = None
+    square: Optional[Square] = None
+    predecessor: Optional[Node] = None
+    discovery_status: Optional[DiscoveryStatus] = None
     
     @property
-    def predecessor(self) -> Optional[Node]:
-        return self._predecessor
-    
-    @property
-    def discovery_status(self) -> Optional[DiscoveryStatus]:
-        return self._discovery_status
-    
-    def to_dict(self) -> dict:
-        """
-        # ACTION:
-        Convert a NodeContext attributes into a dictionary.
-        # PARAMETERS:
-        None
-        # RETURNS:
-            dict
-        Raises:
-        """
+    def to_dict(self) -> Dict[str, Any]:
         return {
-            "priority": self._priority,
-            "square": self._square,
-            "predecessor": self._predecessor,
-            "discovery_status": self._discovery_status,
+            "priority": self.priority,
+            "square": self.square,
+            "predecessor": self.predecessor,
+            "discovery_status": self.discovery_status,
         }

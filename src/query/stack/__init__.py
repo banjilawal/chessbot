@@ -10,6 +10,8 @@ version: 1.0.1
 # =========== QUERY.STACK PACKAGE ===========#
 
 # Packages
+from .arena import *
+from .board import *
 from .coord import *
 from .query import *
 from .square import *

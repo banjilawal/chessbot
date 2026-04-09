@@ -10,11 +10,9 @@ version: 1.0.0
 from __future__ import annotations
 from typing import List
 
-from system import LoggingLevelRouter, SearchResult, StackSearchRouter
-from logic.coord import (
-    Coord, CoordContext, CoordDatasetNullException,
-    CoordSearchException, CoordSearchRouteException
-)
+from model import Coord
+from result import SearchResult
+from system import LoggingLevelRouter
 
 
 class CoordSearchRouter(StackSearchRouter[Coord]):

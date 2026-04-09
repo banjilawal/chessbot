@@ -1,16 +1,16 @@
-# src/model/context/arena/model.py
+# src/model/context/game/model.py
 
 """
-Module: model.context.arena.model
+Module: model.context.game.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Optional
+from typing import Any, Dict, Optional
 
-from model import Arena, Arena, Context, Team
+from model import Arena, Context, Game, Player
 
 
 class ArenaContext(Context[Arena]):
@@ -21,12 +21,12 @@ class ArenaContext(Context[Arena]):
         -   Data-Holder
 
     Responsibilities:
-        1.  Supply a Arena attribute-value search filter.
+        1.  Supply a Game attribute-value search filter.
 
     Attributes:
         id: Optional[int]
-        arena: Optional[Arena]
-        team: Optional[Team]
+        game: Optional[Game]
+        player: Optional[Player]
 
     Provides:
         -   to_dict() -> Dict[str, Any]
@@ -34,12 +34,12 @@ class ArenaContext(Context[Arena]):
     Super Class:
         Context
     """
-    arena: Optional[Arena] = None
-    team: Optional[Team] = None
+    player: Optional[Player] = None
+    game: Optional[Game] = None
     
-    def to_dict(self) -> dict:
+    def to_dict(self) -> Dict[str, Any]:
         return {
             "id": self.id,
-            "arena": self.arena,
-            "team": self.team,
+            "game": self.game,
+            "player": self.player,
         }

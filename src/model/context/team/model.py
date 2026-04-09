@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from model import Board, Context, Player, Team
+from model import Board, Context, Player, Schema, Team
 from system import GameColor
 
 
@@ -23,7 +23,7 @@ class TeamContext(Context[Team]):
         -   Data-Holder
 
     Responsibilities:
-        1.  Supply a Team attribute-value tuple which selects an execution path.
+        1.  Supply a Team attribute-value search filter.
 
     Attributes:
             id: Optional[int]
@@ -40,6 +40,7 @@ class TeamContext(Context[Team]):
     board: Optional[Board] = None
     player: Optional[Player] = None
     color: Optional[GameColor] = None
+    schema: Optional[Schema] = None
     
     @property
     def to_dict(self) -> Dict[str, Any]:
@@ -48,4 +49,5 @@ class TeamContext(Context[Team]):
             "board": self.board,
             "owner": self.player,
             "color": self.color,
+            "schema": self.schema,
         }

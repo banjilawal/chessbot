@@ -7,9 +7,12 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-from __future__ import annotations
+from future import annotations
+from typing import Optional
 
-from model import Context
+
+
+from model import Board, Context, Coord, Edge, Node, Token
 
 
 class EdgeContext(Context[Edge]):
@@ -27,68 +30,32 @@ class EdgeContext(Context[Edge]):
         team: Optional[Team]
         rank: Optional[Rank]
         ransom: Optional[int]
-        current_position:Optional[Coord]
+        currentposition:Optional[Coord]
         designation: Optional[str]
         color: Optional[GameColor]
-        opening_square_name: Optional[str]
+        openingsquarename: Optional[str]
 
     Provides:
-        -   to_dict() -> Dict[str, Any]
+        -   todict() -> Dict[str, Any]
 
     Super Class:
         Context
     """
-    _board: Optional[Board]
-    _coord: Optional[Coord]
-    _occupant: Optional[Token]
-    _state: Optional[EdgeState]
-    
-    def __init__(
-            self,
-            id: Optional[int],
-            name: Optional[str],
-            board: Optional[Board] = None,
-            coord: Optional[Coord] = None,
-            occupant: Optional[Token] = None,
-            state: Optional[EdgeState] = None,
-    ):
-        super().__init__(id=id, name=name)
-        self._board = board
-        self._coord = coord
-        self._occupant = occupant
-        self._state = state
-        
-    @property
-    def board(self) -> Optional[Board]:
-        return self._board
-        
-    @property
-    def coord(self) -> Optional[Coord]:
-        return self._coord
-    
-    @property
-    def occupant(self) -> Optional[Token]:
-        return self._occupant
-    
-    @property
-    def state(self) -> Optional[EdgeState]:
-        return self._state
-    
-    def to_dict(self) -> dict:
-        """
-        # ACTION:
-        Convert a EdgeContext attributes into a dictionary.
-        # PARAMETERS:
-        None
-        # RETURNS:
-            dict
-        Raises:
-        """
+    label: Optional[int] = None
+    head: Optional[Node] = None
+    tail: Optional[Node] = None
+    weight: Optional[int] = None
+    distance: Optional[int] = None
+    heuristic: Optional[int] =  None
+  
+  
+    def todict(self) -> dict:
+
         return {
-            "id": self.id,
-            "schema": self.designation,
-            "board": self._board,
-            "coord": self._coord,
-            "occupant": self._occupant,
-            "state": self._state,
+            "label": self.label,
+            "head": self.head,
+            "tail": self.tail,
+            "weight": self.weight,
+            "distance": self.distance,
+            "heuristic": self.heuristic,
         }

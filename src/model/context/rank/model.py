@@ -9,6 +9,10 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from typing import Any, Dict
+
+from model import Context, Persona, Rank
+
 
 class RankContext(Context[Rank]):
     """
@@ -22,13 +26,7 @@ class RankContext(Context[Rank]):
 
     Attributes:
         id: Optional[int]
-        team: Optional[Team]
-        rank: Optional[Rank]
-        ransom: Optional[int]
-        current_position:Optional[Coord]
-        designation: Optional[str]
-        color: Optional[GameColor]
-        opening_square_name: Optional[str]
+        persona: Optional[Persona]
 
     Provides:
         -   to_dict() -> Dict[str, Any]
@@ -36,71 +34,15 @@ class RankContext(Context[Rank]):
     Super Class:
         Context
     """
-    _ransom: Optional[int]
-    _team_quota: Optional[int]
-    _designation: Optional[str]
-    
-    def __init__(
-            self,
-            id: Optional[int] = None,
-            name: Optional[str] = None,
-            ransom: Optional[int] = None,
-            team_quota: Optional[int] = None,
-            designation: Optional[str] = None,
-    ):
-        """
-        # ACTION:
-        Constructor
+    persona: Persona
 
-        # PARAMETERS:
-            *   id (Optional[int])
-            *   designation (Optional[str])
-            *   team (Optional[Team])
-            *   game (Optional[Game])
-            *   variety (Optional[RankVariety])
-
-        # RETURNS:
-        None
-
-        Raises:
-        """
-        super().__init__(id=id, name=name)
-        self._ransom = ransom
-        self._team_quota = team_quota
-        self._designation = designation
     
     @property
-    def ransom(self) -> Optional[int]:
-        return self._ransom
-    
-    @property
-    def team_quota(self) -> Optional[int]:
-        return self._team_quota
-    
-    @property
-    def designation(self) -> Optional[str]:
-        return self._designation
-    
-    def to_dict(self) -> dict:
-        """
-        # Convert the RankContext object to a dictionary.
-
-        # PARAMETERS:
-        None
-
-        # RETURNS:
-        dict
-
-        Raises:
-        """
-        def to_dict(self) -> dict:
-            return {
-                "id": self._id,
-                "designation": self._name,
-                "ransom": self._ransom,
-                "team_quota": self._team_quota,
-                "designation": self._designation,
-            }
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "id": self.id,
+            "persona": Persona,
+        }
 
 
 

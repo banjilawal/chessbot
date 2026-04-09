@@ -16,7 +16,7 @@ from query import StackQuery
 
 
 @dataclass
-class SquareStackQuery(StackQuery[Square]):
+class SquareQuery(StackQuery[Square]):
     """
     Role:
         -   Model

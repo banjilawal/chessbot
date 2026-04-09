@@ -13,6 +13,7 @@ log = logging.getLogger("chessbot")
 
 # Packages
 from .edge import *
+from .graph import *
 from .node import *
 
 # Modules

@@ -24,7 +24,7 @@ class SquareContext(Context[Square]):
         -   Data-Holder
 
     Responsibilities:
-        1.  Supply a Square attribute-value tuple which selects an execution path.
+        1.  Supply a Square attribute-value search filter.
 
     Attributes:
             id: Optional[int]

@@ -18,6 +18,7 @@ T = TypeVar("T")
 
 class TokenQuery(StackQuery[Token]):
     
+    
     def __init__(self, stack: List[Token], context: TokenContext):
         """
         Args:

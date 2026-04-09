@@ -37,47 +37,15 @@ class PersonaContext(Context[Persona]):
     Super Class:
         Context
     """
-    _name: Optional[str]
-    _quota: Optional[int]
-    _ransom: Optional[int]
-    _designation: Optional[str]
-    
-    def __init__(
-            self,
-            name: Optional[str] = None,
-            quota: Optional[int] = None,
-            ransom: Optional[int] = None,
-            designation: Optional[str] = None,
-    ):
-        """
-        Args:
-            name: Optional[str]
-            quota: Optional[int]
-            ransom: Optional[int]
-            designation: Optional[str]
-        """
-        super().__init__(id=None, name=name)
-        self._quota = quota
-        self._ransom = ransom
-        self._designation = designation
-    
-    @property
-    def quota(self) -> Optional[int]:
-        return self._quota
-    
-    @property
-    def ransom(self) -> Optional[int]:
-        return self._ransom
-    
-    @property
-    def designation(self) -> Optional[str]:
-        return self._designation
-    
+    name: Optional[str]
+    quota: Optional[int]
+    ransom: Optional[int]
+    designation: Optional[str]
+
     @property
     def to_dict(self) -> Dict[str, Any]:
         return {
-            "schema": self.designation,
-            "ransom": self._ransom,
-            "quota": self._quota,
+            "ransom": self.ransom,
+            "quota": self.quota,
             "designation": self.designation,
         }

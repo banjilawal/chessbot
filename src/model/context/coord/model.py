@@ -9,6 +9,10 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from typing import Any, Dict, Optional
+
+from model import Context, Coord
+
 
 class CoordContext(Context[Coord]):
     """
@@ -30,29 +34,11 @@ class CoordContext(Context[Coord]):
     Super Class:
         Context
     """
-    _row: Optional[int] = None
-    _column: Optional[int] = None
-    
-    def __init__(self, row: Optional[int] = None, column: Optional[int] = None,):
-        """
-        Args:
-            row: Optional[int]
-            column: Optional[int]
-        """
-        super().__init__(id=None, name=None)
-        self._row = row
-        self._column = column
-    
-    @property
-    def row(self) -> Optional[int]:
-        return self._row
-    
-    @property
-    def column(self) -> Optional[int]:
-        return self._column
-    
+    row: Optional[int] = None
+    column: Optional[int] = None
+
     def to_dict(self) -> Dict[str, Any]:
         return {
-            "row": self._row,
-            "column": self._column,
+            "row": self.row,
+            "column": self.column,
         }

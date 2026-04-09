@@ -17,7 +17,7 @@ from search import ArenaContext
 
 
 @dataclass
-class ArenaStackQuery(StackQuery[Arena]):
+class ArenaQuery(StackQuery[Arena]):
     """
     Role:
         -   Model

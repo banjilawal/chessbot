@@ -8,7 +8,7 @@ version: 1.0.1
 """
 
 
-# =========== BOOTSTRAPPER PACKAGE ===========#
+# =========== BUILD.BOOTSTRAPPER.TOKEN PACKAGE ===========#
 
 # Packages
 

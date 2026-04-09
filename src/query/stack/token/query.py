@@ -16,7 +16,7 @@ from query import StackQuery
 
 
 @dataclass
-class TokenStackQuery(StackQuery[Token]):
+class TokenQuery(StackQuery[Token]):
     """
     Role:
         -   Model

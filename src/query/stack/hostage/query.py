@@ -16,7 +16,7 @@ from query import StackQuery
 
 
 @dataclass
-class HostageStackQuery(StackQuery[Hostage]):
+class HostageQuery(StackQuery[Hostage]):
     """
     Role:
         -   Model

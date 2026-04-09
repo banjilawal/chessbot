@@ -14,4 +14,4 @@ None
 
 # Modules
 from .model import Node
-from .status import DiscoveryStatus
+from .state import DiscoveryStatus

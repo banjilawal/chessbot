@@ -9,6 +9,8 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from model import Node
+
 
 class Edge:
     _label: int

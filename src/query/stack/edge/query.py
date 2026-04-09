@@ -16,7 +16,7 @@ from query import StackQuery
 
 
 @dataclass
-class EdgeStackQuery(StackQuery[Edge]):
+class EdgeQuery(StackQuery[Edge]):
     """
     Role:
         -   Model
