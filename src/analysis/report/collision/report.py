@@ -114,7 +114,7 @@ class CollisionReport(Generic[T]):
     def collision_occurred(
             cls,
             colliding_variable: str,
-            val: Any,
+            collision_value: Any,
             target: T,
             collider: T,
             exception: Exception

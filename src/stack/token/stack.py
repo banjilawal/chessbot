@@ -161,7 +161,7 @@ class TokenStackService(StackService[Token]):
                 self._state == TokenStackState.DEPLOYED_ON_BOARD
         )
     
-    @@property
+    @property
     def collision_analyst(self) -> CollisionAnalyst[Token]:
         return self._ops_controller.collision_analyst
     

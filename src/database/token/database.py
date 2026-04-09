@@ -148,10 +148,10 @@ class TokenDatabase(Database[Token]):
     def run_collision_analysis(
             self,
             blueprint: TokenBlueprint,
-    ) -> AnalysisResult[CollisionReport]:
+    ) -> AnalysisResult[CollisionReport[Token]]:
         return self._kernel.collision_analyst.analyze(
             target_blueprint=blueprint,
-            collider_candidates=self._kernel.items
+            collider_candidates=self._kernel.items,
         )
     
     

@@ -9,13 +9,12 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from analysis import TokenBlueprint
+from analysis import CollisionAnalyst, CollisionReport
+from err import SquareNameCollisionException, TokenDesignationCollisionException, TokenIdCollisionException
+from model import Token, TokenBlueprint
 from result import AnalysisResult
-from system import CollisionAnalyst, CollisionReport, LoggingLevelRouter
-from analysis.token import (
-    Token, TokenCollisionDetectionException, TokenDesignationCollisionException,
-    TokenIdCollisionException, TokenOpeningSquareCollisionException, TokenStackService
-)
+from stack import TokenStackService
+from system import LoggingLevelRouter
 
 
 class TokenCollisionAnalyst(CollisionAnalyst[Token]):
@@ -58,7 +57,7 @@ class TokenCollisionAnalyst(CollisionAnalyst[Token]):
                     *   The collider.
                     *   The exception indicating which unique property is shared.
         Args:
-            target: Token
+            blueprint: TokenBlueprint
             token_stack: TokenStackService
         Returns:
                CollisionReport[Token]
@@ -91,9 +90,9 @@ class TokenCollisionAnalyst(CollisionAnalyst[Token]):
             if token.id == blueprint.id:
                 # Return target, the collider, and the exception explaining the collision.
                 return CollisionReport.collision_occurred(
-                    var="id",
                     collider=token,
-                    val=f"{token.id}",
+                    colliding_variable="id",
+                    collision_value=token.id,
                     exception=TokenIdCollisionException(
                         var="id",
                         val=f"{token.id}",
@@ -105,9 +104,9 @@ class TokenCollisionAnalyst(CollisionAnalyst[Token]):
             if token.designation.upper() == blueprint.formation.designation.upper():
                 # Return target, the collider, and the exception explaining the collision.
                 return CollisionReport.collision_occurred(
-                    var="designation",
                     collider=token,
-                    val=f"{token.designation}",
+                    colliding_variable="designation",
+                    collision_value=f"{token.designation}",
                     exception=TokenDesignationCollisionException(
                         var="designation",
                         val=f"{token.designation}",
@@ -119,14 +118,14 @@ class TokenCollisionAnalyst(CollisionAnalyst[Token]):
             if token.opening_square_name.upper()== blueprint.formation.square_name.upper():
                 # Return target, the collider, and the exception explaining the collision.
                 return CollisionReport.collision_occurred(
-                    var="opening_square_name",
                     collider=token,
-                    val=f"{token.opening_square_name}",
-                    exception=TokenOpeningSquareCollisionException(
+                    colliding_variable="opening_square_name",
+                    collision_value=f"{token.opening_square_name}",
+                    exception=SquareNameCollisionException(
                         var="opening_square_name",
                         val=f"{token.opening_square_name}",
-                        msg=TokenOpeningSquareCollisionException.MSG,
-                        err_code=TokenOpeningSquareCollisionException.ERR_CODE,
+                        msg=SquareNameCollisionException.MSG,
+                        err_code=SquareNameCollisionException.ERR_CODE,
                     )
                 )
         # --- Send the no collisions detected report. ---#
