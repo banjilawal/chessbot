@@ -1,36 +1,38 @@
-# src/integrity/toolkit/team/toolkit.py
+# src/toolkit/team/toolkit.py
 
 """
-Module: integrity.toolkit.team.toolkit
+Module: toolkit.team.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
-from integrity import Toolkit
-from microservice import BoardService, IdentityService, PlayerService, SchemaService
-from model import Team
 
+from __future__ import annotations
+
+from model import Team
+from toolkit import Toolkit
+from microservice import BoardService, IdentityService, PlayerService, SchemaService
 
 class TeamToolkit(Toolkit[Team]):
     """
     Role:
-        -   Container
-        
+    -   Container
+    
     Responsibilities:
         1.  Collection of workers and services that are required for Board tasks.
         2.  Simplifies entry points.
         3.  No logic in the Toolkit.
-
-     Attributes:
+    
+    Attributes:
         board_service: Board service
         player_service: Player service
         schema_service: Schema service
         identity_service: Identity service
-
+    
     Provides:
-     Super Class:
-         Toolkit
-     """
+    Super Class:
+        Toolkit
+    """
     _board_service: BoardService
     _player_service: PlayerService
     _schema_service: SchemaService
@@ -51,10 +53,10 @@ class TeamToolkit(Toolkit[Team]):
             identity_service: Identity service
         """
         super().__init__()
-        self._board_service = board_service
-        self._player_service = player_service
-        self._schema_service = schema_service
-        self._identity_service = identity_service
+        self._board_service = board_service or BoardService()
+        self._player_service = player_service or PlayerService()
+        self._schema_service = schema_service or SchemaService()
+        self._identity_service = identity_service or IdentityService()
         
     @property
     def board_service(self) -> BoardService:

@@ -1,7 +1,7 @@
-# src/integrity/toolkit/square/toolkit.py
+# src/toolkit/square/toolkit.py
 
 """
-Module: integrity.toolkit.square.toolkit
+Module: toolkit.square.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -22,24 +22,25 @@ class SquareToolkit(Toolkit[Square]):
     """
     Role:
         -   Container
-        
+        -   Data Holder
+    
     Responsibilities:
         1.  Collection of workers and services that are required for Board tasks.
         2.  Simplifies entry points.
         3.  No logic in the Toolkit.
-
-     Attributes:
+    
+    Attributes:
         board_service: BoardService
         coord_service: CoordService
         number_validator: NumberValidator
         identity_service: IdentityService
         collision_analyst: SquareCollisionAnalyst
-        
+    
     Provides:
-
-     Super Class:
-         Toolkit
-     """
+    
+    Super Class:
+        Toolkit
+    """
     _coord_service: CoordService
     _board_service: BoardService
     _number_validator: NumberValidator

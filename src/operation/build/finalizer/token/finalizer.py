@@ -16,8 +16,6 @@ from model import Blueprint, Token, TokenBlueprint
 from result import BuildResult
 from system import LoggingLevelRouter
 
-T = TypeVar("T")
-
 
 class TokenBuildFinalizer(ABC, Generic[T]):
     
@@ -25,4 +23,21 @@ class TokenBuildFinalizer(ABC, Generic[T]):
     @LoggingLevelRouter.monitor
     def execute(cls, product: Token, blueprint: TokenBlueprint) -> BuildResult[Token]:
         method = f"{cls.__name__}.execute"
+        team = product.team
+        if product not in team.roster:
+            insertion_result = team.roster.insert(item=product)
+            # Handle the case that, the token is not successfully registered with its team.
+            if insertion_result.is_failure:
+                return BuildResult.failure(
+                    TokenBuildException(
+                        cls_mthd=method,
+                        cls_name=method.__name__,
+                        op=TokenBuildException.OP,
+                        msg=TokenBuildException.MSG,
+                        err_code=TokenBuildException.ERR_CODE,
+                        ex=insertion_result.exception,
+                    )
+                )
+        # --- Forward the work product to the caller. ---#
+        return BuildResult.success(product)
         

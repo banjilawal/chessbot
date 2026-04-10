@@ -1,7 +1,7 @@
-# src/integrity/toolkit/node/toolkit.py
+# src/toolkit/node/toolkit.py
 
 """
-Module: integrity.toolkit.node.toolkit
+Module: toolkit.node.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

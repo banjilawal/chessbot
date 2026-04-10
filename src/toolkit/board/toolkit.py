@@ -1,7 +1,7 @@
-# src/integrity/toolkit/board/toolkit.py
+# src/toolkit/board/toolkit.py
 
 """
-Module: integrity.toolkit.board.toolkit
+Module: toolkit.board.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from microservice import ArenaService, BoardService, IdentityService
+from microservice import ArenaService, ArenaService, IdentityService
 from model import Board
 from toolkit import Toolkit
 
@@ -47,7 +47,7 @@ class BoardToolkit(Toolkit[Board]):
             identity_service: IdentityService
         """
         super().__init__()
-        self._arena_service = arena_service or BoardService()
+        self._arena_service = arena_service or ArenaService()
         self._identity_service = identity_service or IdentityService()
         
     @property

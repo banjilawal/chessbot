@@ -1,7 +1,7 @@
-# src/tool/integrity/rank__init__.py
+# src/tool/rank__init__.py
 
 """
-Module: tool.integrity.rank.__init__
+Module: tool.rank.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,7 +11,7 @@ from model import Rank
 from result import ValidationResult
 from system import LoggingLevelRouter
 
-# =========== INTEGRITY.RANK PACKAGE ===========#
+# =========== RANK PACKAGE ===========#
 
 # Packages
 None

@@ -1,7 +1,7 @@
-# src/integrity/toolkit/context/formation/toolkit.py
+# src/toolkit/context/formation/toolkit.py
 
 """
-Module: integrity.toolkit.context.formation.toolkit
+Module: toolkit.context.formation.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

@@ -1,14 +1,14 @@
-# src/integrity/toolkit/scalar/toolkit.py
+# src/toolkit/scalar/toolkit.py
 
 """
-Module: integrity.toolkit.scalar.toolkit
+Module: toolkit.scalar.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 from integrity import NumberValidator
 from system import Toolkit, ToolkitResult, LoggingLevelRouter
-from integrity.toolkit.scalar import Scalar, ScalarToolkitException, ScalarValidator
+from toolkit.scalar import Scalar, ScalarToolkitException, ScalarValidator
 
 
 class ScalarToolkit(Toolkit[Scalar]):

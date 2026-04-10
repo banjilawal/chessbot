@@ -1,50 +1,31 @@
-# src/logic/board/searcher/route.py
+# src/route/search/board/__init__.py
 
 """
-Module: logic.board.searcher.service
+Module: route.search.board.__init__
 Author: Banji Lawal
-Created: 2025-10-03
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
+
+from __future__ import annotations
 
 from typing import List
 
-from logic.arena import Arena
-from system import DataFinder, LoggingLevelRouter, SearchResult
-from logic.board import (
-    Board, BoardContext, BoardContextValidator, BoardSearchException, BoardSearchRouteException,
-    BoardSearchNullDatasetException, BoardSearchPayloadTypeException,
-)
+from model import Board
+from query import BoardQuery
+from result import SearchResult
+from route import Router
+from system import LoggingLevelRouter
 
 
-class BoardFinder(DataFinder[Board]):
-    """
-    Role:SearchRouter
-
-    Responsibilities:
-    1.  Send bag in a BoardList whose attribute value match the context.key value to the caller.
-    2.  If a search does not complete forward the exception chain to the caller for debugging.
-
-    # LIMITATIONS:
-    1.  BoardFinder sends the raw list of matches. Resolving id collisions is the caller's responsibility.
-
-    # PARENT
-        *   SearchRouter
-
-    Provides:
-
-
-    # INHERITED ATTRIBUTES:
-    None
-    """
+class BoardSearchRouter(Router[Board]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def find(
+    def route(
             cls,
-            dataset: List[Board],
-            context: BoardContext,
-            context_validator: BoardContextValidator = BoardContextValidator()
+            query: BoardQuery,
+            query_validator: BoardQueryValidator | None = None,
     ) -> SearchResult[List[Board]]:
         """
         # ACTION:
@@ -75,7 +56,7 @@ class BoardFinder(DataFinder[Board]):
             return SearchResult.failure(
                 BoardSearchException(
                     msg=f"{method}: {BoardSearchException.ERR_CODE}",
-                    ex=BoardSearchNullDatasetException( f"{method}: {BoardSearchNullDatasetException.MSG}")
+                    ex=BoardSearchNullDatasetException(f"{method}: {BoardSearchNullDatasetException.MSG}")
                 )
             )
         # Handle the case that, collider_candidates is the wrong type

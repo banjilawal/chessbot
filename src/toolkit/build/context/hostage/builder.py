@@ -1,7 +1,7 @@
-# src/integrity/toolkit/context/hostage/toolkit.py
+# src/toolkit/context/hostage/toolkit.py
 
 """
-Module: integrity.toolkit.context.hostage.toolkit
+Module: toolkit.context.hostage.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

@@ -1,7 +1,7 @@
-# src/integrity/toolkit/context/token/toolkit.py
+# src/toolkit/context/token/toolkit.py
 
 """
-Module: integrity.toolkit.context.token.toolkit
+Module: toolkit.context.token.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

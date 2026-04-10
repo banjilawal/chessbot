@@ -1,7 +1,7 @@
-# src/integrity/toolkit/context/player/toolkit.py
+# src/toolkit/context/player/toolkit.py
 
 """
-Module: integrity.toolkit.context.player.toolkit
+Module: toolkit.context.player.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

@@ -1,7 +1,7 @@
-# src/integrity/toolkit/vector/toolkit.py
+# src/toolkit/vector/toolkit.py
 
 """
-Module: integrity.toolkit.vector.toolkit
+Module: toolkit.vector.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

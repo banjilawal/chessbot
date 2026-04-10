@@ -25,7 +25,6 @@ class SchemaQuery(CatalogQuery[Schema]):
     Responsibilities:
         1.  A list of schemas to search with context.
 
-
     Attributes:
         catalog: Schema
         context: SchemaContext

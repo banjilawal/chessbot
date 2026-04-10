@@ -1,7 +1,7 @@
-# src/integrity/toolkit/token/toolkit.py
+# src/toolkit/token/toolkit.py
 
 """
-Module: integrity.toolkit.token.toolkit
+Module: toolkit.token.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from integrity import NumberValidator
+from integrity import NumberValidator, SquareValidator
 from microservice import CoordService, FormationService, IdentityService, RankService, TeamService
 from model import Token
 from toolkit import Toolkit
@@ -19,6 +19,7 @@ class TokenToolkit(Toolkit[Token]):
     """
     Role:
         -   Container
+        -   Data Holder
         
     Responsibilities:
         1.  Collection of workers and services that are required for Board tasks.
@@ -43,6 +44,7 @@ class TokenToolkit(Toolkit[Token]):
     _identity_service: IdentityService
     _number_validation: NumberValidator
     _formation_service: FormationService
+    _square_validator: SquareValidator
     
     def __init__(
         self,
@@ -52,6 +54,7 @@ class TokenToolkit(Toolkit[Token]):
         identity_service: IdentityService | None = None,
         number_validation: NumberValidator | None = None,
         formation_service: FormationService | None = None,
+        square_validator: SquareValidator | None = None,
     ):
         """
         Args:
@@ -63,12 +66,13 @@ class TokenToolkit(Toolkit[Token]):
             formation_service: FormationService
         """
         super().__init__()
-        self._team_service = team_service
-        self._rank_service = rank_service
-        self._coord_service = coord_service
-        self._identity_service = identity_service
-        self._number_validation = number_validation
-        self._formation_service = formation_service
+        self._team_service = team_service or TeamService()
+        self._rank_service = rank_service or RankService()
+        self._coord_service = coord_service or CoordService()
+        self._identity_service = identity_service or IdentityService()
+        self._number_validation = number_validation or NumberValidator()
+        self._formation_service = formation_service or FormationService()
+        self._square_validator = square_validator or SquareValidator()
         
     @property
     def team_service(self) -> TeamService:
@@ -93,4 +97,8 @@ class TokenToolkit(Toolkit[Token]):
     @property
     def formation_service(self) -> FormationService:
         return self._formation_service
+    
+    @property
+    def square_validator(self) -> SquareValidator:
+        return self._square_validator
         

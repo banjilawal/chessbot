@@ -1,7 +1,7 @@
-# src/integrity/toolkit/context/linegeo/__init__.py
+# src/toolkit/context/linegeo/__init__.py
 
 """
-Module: integrity.toolkit.context.linegeo.__init__
+Module: toolkit.context.linegeo.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

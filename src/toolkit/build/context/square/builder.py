@@ -1,7 +1,7 @@
-# src/integrity/toolkit/context/square/toolkit.py
+# src/toolkit/context/square/toolkit.py
 
 """
-Module: integrity.toolkit.context.square.toolkit
+Module: toolkit.context.square.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

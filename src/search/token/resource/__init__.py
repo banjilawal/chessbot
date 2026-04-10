@@ -11,7 +11,6 @@ version: 1.0.0
 
 # Packages
 from .query import  *
-from .route import *
 from .context import *
 
 # Modules

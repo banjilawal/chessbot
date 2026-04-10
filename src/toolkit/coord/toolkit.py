@@ -1,7 +1,7 @@
-# src/integrity/toolkit/coord/toolkit.py
+# src/toolkit/coord/toolkit.py
 
 """
-Module: integrity.toolkit.coord.toolkit
+Module: toolkit.coord.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

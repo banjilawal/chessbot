@@ -1,7 +1,7 @@
-# src/integrity/toolkit/graph/__init__.py
+# src/toolkit/graph/__init__.py
 
 """
-Module: integrity.toolkit.graph.__init__
+Module: toolkit.graph.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

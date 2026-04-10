@@ -11,6 +11,7 @@ from __future__ import annotations
 
 
 from model import CombatantToken, King, KingToken, Pawn, PawnToken, Token, TokenBlueprint
+from operation import Builder
 from result import BuildResult
 from system import  LoggingLevelRouter
 
@@ -30,7 +31,7 @@ class TokenBuilder(Builder[Token]):
                     team=blueprint.team,
                     designation=blueprint.formation.designation,
                     roster_number=blueprint.formation.roster_number,
-                    opening_square_name=blueprint.formation.square_name
+                    opening_square=blueprint.opening_square,
                 )
             )
         if isinstance(blueprint.rank, King):
@@ -40,7 +41,7 @@ class TokenBuilder(Builder[Token]):
                     team=blueprint.team,
                     designation=blueprint.formation.designation,
                     roster_number=blueprint.formation.roster_number,
-                    opening_square_name=blueprint.formation.square_name
+                    opening_square=blueprint.opening_square
                 )
             )
         return BuildResult.success(
@@ -49,7 +50,7 @@ class TokenBuilder(Builder[Token]):
                 team=blueprint.team,
                 designation=blueprint.formation.designation,
                 roster_number=blueprint.formation.roster_number,
-                opening_square_name=blueprint.formation.square_name,
+                opening_square=blueprint.opening_square,
                 rank=blueprint.rank
             )
         )

@@ -1,7 +1,7 @@
-# src/integrity/toolkit/hostage/__init__.py
+# src/toolkit/hostage/__init__.py
 
 """
-Module: integrity.toolkit.hostage.__init__
+Module: toolkit.hostage.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

@@ -12,7 +12,10 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import List, TypeVar, Generic
 
-from system import Query, Router, SearchResult, Validator
+from operation import Validator
+from query import Query
+from result import SearchResult
+from route import Router
 
 T = TypeVar("T")
 

@@ -18,7 +18,7 @@ from operation import BuildBootstrapper
 
 from result import BuildResult, ValidationResult
 from system import IdFactory, LoggingLevelRouter
-from toolkit import ContextIntegrityToolkit
+from toolkit import ContextToolkit
 
 
 class ContextBuildBootstrapper(BuildBootstrapper[Context]):
@@ -28,12 +28,12 @@ class ContextBuildBootstrapper(BuildBootstrapper[Context]):
     def execute(
             cls,
             blueprint: ContextBlueprint,
-            toolkit: ContextIntegrityToolkit = None
+            toolkit: ContextToolkit = None
     ) -> ValidationResult[ContextBlueprint]:
         method = f"{cls.__name__}.execute"
         
         if toolkit is None:
-            toolkit = ContextIntegrityToolkit()
+            toolkit = ContextToolkit()
             
         # Handle the case that, the id is not certified as safe.
         id_validation_result = cls._verify_id(blueprint=blueprint, toolkit=toolkit)
@@ -127,7 +127,7 @@ class ContextBuildBootstrapper(BuildBootstrapper[Context]):
     def _verify_id(
             cls,
             blueprint: ContextBlueprint,
-            toolkit: ContextIntegrityToolkit
+            toolkit: ContextToolkit
     ) -> ValidationResult[int]:
         method = f"{cls.__name__}._verify_id"
         

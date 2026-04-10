@@ -1,7 +1,7 @@
-# src/integrity/toolkit/context/board/toolkit.py
+# src/toolkit/context/board/toolkit.py
 
 """
-Module: integrity.toolkit.context.board.toolkit
+Module: toolkit.context.board.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

@@ -1,7 +1,7 @@
-# src/integrity/toolkit/context/edge/toolkit.py
+# src/toolkit/context/edge/toolkit.py
 
 """
-Module: integrity.toolkit.context.edge.toolkit
+Module: toolkit.context.edge.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

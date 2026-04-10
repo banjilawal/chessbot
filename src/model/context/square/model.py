@@ -46,6 +46,7 @@ class SquareContext(Context[Square]):
     state: Optional[SquareState] = None
     formation: Optional[Formation] = None
     
+    
     @property
     def to_dict(self) -> Dict[str, Any]:
         return {

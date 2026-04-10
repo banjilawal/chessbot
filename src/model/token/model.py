@@ -11,7 +11,8 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Optional
 
-from model import Rank, Team
+from database import CoordDatabase
+from model import Coord, OpeningSquare, Rank, Team, TokenActivityState, TokenBoardState
 
 
 class Token(ABC):
@@ -29,7 +30,7 @@ class Token(ABC):
         designation: str
         roster_number: int
         positions: CoordDatabase
-        opening_square_name: str
+        opening_square: OpeningSquare
         current_position: Optional[Coord]
         previous_address: Optional[Coord]
         token_board_state: TokenBoardState
@@ -49,7 +50,7 @@ class Token(ABC):
     _designation: str
     _roster_number: int
     _positions: CoordDatabase
-    _opening_square_name: str
+    _opening_square: OpeningSquare
     _current_position: Optional[Coord]
     _previous_address: Optional[Coord]
     _token_board_state: TokenBoardState
@@ -62,8 +63,7 @@ class Token(ABC):
             team: Team,
             designation: str,
             roster_number: int,
-            opening_square_name: str,
-            positions: CoordDatabase = CoordDatabase(),
+            opening_square: OpeningSquare,
     ):
         """
         Args:
@@ -72,16 +72,15 @@ class Token(ABC):
             rank: Rank
             designation: str
             roster_number: int
-            opening_square_name: str
-            positions: CoordDatabase
+            opening_square: OpeningSquare
         """
         self._id = id
         self._team = team
         self._rank = rank
-        self._positions = positions
+        self._positions = CoordDatabase()
         self._designation = designation
         self._roster_number = roster_number
-        self._opening_square_name = opening_square_name
+        self._opening_square = opening_square
         self._current_position = self._positions.current_item
         self._previous_address = self._positions.previous_coord
         self._token_board_state = TokenBoardState.NEVER_BEEN_PLACED
@@ -108,8 +107,8 @@ class Token(ABC):
         return self._rank
     
     @property
-    def opening_square_name(self) -> str:
-        return self._opening_square_name
+    def opening_square(self) -> OpeningSquare:
+        return self._opening_square
     
     @property
     def readiness_state(self) -> TokenActivityState:
@@ -194,7 +193,7 @@ class Token(ABC):
         return (
             f"Token[id:{self._id} "
             f"designation:{self._designation} "
-            f"rank:{self._rank.name} "
+            f"rank:{self._rank.persona.name} "
             f"team:{self._team.schema.name} "
             f"position:{self.current_position}"
         )

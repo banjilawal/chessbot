@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== MODEL.CATALOG.PERSONA PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .catalog import Persona

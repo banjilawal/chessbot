@@ -12,12 +12,13 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from model.catalog import Formation
-from model import Blueprint, Rank, Team, Token
+from model import Blueprint, OpeningSquare, Rank, Team, Token
 
 
 @dataclass
 class TokenBlueprint(Blueprint[Token]):
     team: Team
     formation: Formation
-    rank: Rank = None
-    id: int = None
+    rank: Rank | None = None
+    id: int | None = None
+    opening_square: OpeningSquare | None = None

@@ -1,7 +1,7 @@
-# src/integrity/toolkit/game/toolkit.py
+# src/toolkit/game/toolkit.py
 
 """
-Module: integrity.toolkit.game.toolkit
+Module: toolkit.game.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

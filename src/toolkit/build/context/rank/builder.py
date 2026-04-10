@@ -1,7 +1,7 @@
-# src/integrity/toolkit/context/rank/toolkit.py
+# src/toolkit/context/rank/toolkit.py
 
 """
-Module: integrity.toolkit.context.rank.toolkit
+Module: toolkit.context.rank.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

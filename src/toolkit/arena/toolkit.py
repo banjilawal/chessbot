@@ -1,7 +1,7 @@
-# src/integrity/toolkit/arena/toolkit.py
+# src/toolkit/arena/toolkit.py
 
 """
-Module: integrity.toolkit.arena.toolkit
+Module: toolkit.arena.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

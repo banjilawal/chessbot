@@ -1,7 +1,7 @@
-# src/integrity/toolkit/context/persona/toolkit.py
+# src/toolkit/context/persona/toolkit.py
 
 """
-Module: integrity.toolkit.context.persona.toolkit
+Module: toolkit.context.persona.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

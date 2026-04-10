@@ -1,7 +1,7 @@
-# src/integrity/toolkit/context/snapshot/toolkit.py
+# src/toolkit/context/snapshot/toolkit.py
 
 """
-Module: integrity.toolkit.context.snapshot.toolkit
+Module: toolkit.context.snapshot.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

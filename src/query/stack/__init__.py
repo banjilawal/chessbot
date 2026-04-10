@@ -13,7 +13,12 @@ version: 1.0.1
 from .arena import *
 from .board import *
 from .coord import *
-from .query import *
+from .edge import *
+from .game import *
+from .hostage import *
+from .node import *
+from .player import *
+from .rank import *
 from .square import *
 from .team import *
 from .token import *

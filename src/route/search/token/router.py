@@ -1,20 +1,21 @@
-# src/logic/token/database/search/route/router.py
+# src/route/search/token/orange.py
 
 """
-Module: logic.token.database.search.route.router
+Module: route.search.token.orange
 Author: Banji Lawal
-Created: 2025-10-06
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
+
 from typing import List
 
-from logic.coord import Coord
-from logic.rank import Rank
-from logic.team import Team
-from system import GameColor, LoggingLevelRouter, SearchResult, SearchRouter
-from model.token import MissingTokenSearchRouteException, Token, TokenQuery, TokenQueryValidator, TokenSearchException
+from model import Token
+from query import TokenQuery
+from result import SearchResult
+from search import TokenQueryValidator
+from system import LoggingLevelRouter
 
 
 class TokenSearchRouter(SearchRouter[Token]):
@@ -42,7 +43,7 @@ class TokenSearchRouter(SearchRouter[Token]):
     def route(
             cls,
             query: TokenQuery,
-            query_validator:TokenQueryValidator = TokenQueryValidator(),
+            query_validator:TokenQueryValidator | None = None,
     ) -> SearchResult[List[Token]]:
         """
         Find tokens whith an attribute that fits the context.
@@ -61,8 +62,10 @@ class TokenSearchRouter(SearchRouter[Token]):
             TokenSearchException
             MissingTokenSearchRouteException
         """
+        query_validator = query_validator or TokenQueryValidator()
+        
         method = f"{cls.__name__}.route"
-
+        
         # Handle the case that, the context does not pass a test.
         validation_result = query_validator.validate(query)
         if validation_result.is_failure:
