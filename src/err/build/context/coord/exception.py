@@ -45,7 +45,7 @@ class CoordContextBuildException(ContextBuildException):
     Super Class:
         ContextBuildException
     """
-    MSG = str = "No build logic for CoordContext attribute"
+    MSG = "No build logic for CoordContext attribute"
     ERR_CODE = "COORD_CONTEXT_BUILD_FAILURE"
     
     def __init__(

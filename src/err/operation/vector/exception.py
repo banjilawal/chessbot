@@ -40,7 +40,7 @@ class VectorOperationException(OperationException):
     Super Class:
         OperationException
     """
-    MSG = str = "Vector operation aborted."
+    MSG = "Vector operation aborted."
     ERR_CODE = "VECTOR_OPERATION_ERROR"
     
     def __init__(

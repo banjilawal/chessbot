@@ -45,7 +45,7 @@ class PersonaContextCollisionException(ContextCollisionException):
     Super Class:
         ContextCollisionException
     """
-    MSG = str = "No collision logic for PersonaContext attribute"
+    MSG = "No collision logic for PersonaContext attribute"
     ERR_CODE = "PERSONA_CONTEXT_COLLISION_FAILURE"
     
     def __init__(

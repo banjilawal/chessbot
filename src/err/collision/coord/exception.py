@@ -42,7 +42,7 @@ class CoordCollisionException(CollisionException):
     Super Class:
         CollisionException
     """
-    MSG = str = "A coord collision occurred."
+    MSG = "A coord collision occurred."
     ERR_CODE = "COORD_COLLISION_ERROR"
     
     def __init__(

@@ -40,7 +40,7 @@ class ZeroSquareContextFlagsException(ZeroContextFlagsException):
     Super Class:
         ZeroContextFlagsException
     """
-    MSG = str = "No SquareCcontext attribute enabled."
+    MSG = "No SquareCcontext attribute enabled."
     ERR_CODE = "ZERO_SQUARE_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

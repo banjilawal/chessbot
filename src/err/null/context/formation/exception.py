@@ -44,7 +44,7 @@ class FormationContextNullException(ContextNullException):
     Super Class:
         ContextNullException
     """
-    MSG = str = "No null logic for FormationContext attribute"
+    MSG = "No null logic for FormationContext attribute"
     ERR_CODE = "FORMATION_CONTEXT_NULL_EXCEPTION"
     
     def __init__(

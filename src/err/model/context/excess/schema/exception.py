@@ -40,7 +40,7 @@ class ExcessSchemaContextFlagsException(ExcessContextFlagsException):
     Super Class:
         ExcessContextFlagsException
     """
-    MSG = str = "More than one SchemaCcontext attribute enabled."
+    MSG = "More than one SchemaCcontext attribute enabled."
     ERR_CODE = "EXCESS_SCHEMA_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

@@ -42,7 +42,7 @@ class RankValidationException(ValidationException):
     Super Class:
         ValidationException
     """
-    MSG = str = "RankValidation check failed"
+    MSG = "RankValidation check failed"
     ERR_CODE = "RANK_VALIDATION_EXCEPTION"
     
     def __init__(

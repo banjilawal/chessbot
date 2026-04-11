@@ -44,7 +44,7 @@ class NodeContextValidationException(ContextValidationException):
     Super Class:
         ContextValidationException
     """
-    MSG = str = "No validation logic for NodeContext attribute"
+    MSG = "No validation logic for NodeContext attribute"
     ERR_CODE = "NODE_CONTEXT_VALIDATION_EXCEPTION"
     
     def __init__(

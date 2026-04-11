@@ -43,7 +43,7 @@ class ContextCollisionException(CollisionException):
     Super Class:
         CollisionException
     """
-    MSG = str = "No collision logic for context's attribute"
+    MSG = "No collision logic for context's attribute"
     ERR_CODE = "CONTEXT_COLLISION_FAILURE"
     
     def __init__(

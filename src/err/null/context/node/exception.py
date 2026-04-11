@@ -44,7 +44,7 @@ class NodeContextNullException(ContextNullException):
     Super Class:
         ContextNullException
     """
-    MSG = str = "No null logic for NodeContext attribute"
+    MSG = "No null logic for NodeContext attribute"
     ERR_CODE = "NODE_CONTEXT_NULL_EXCEPTION"
     
     def __init__(

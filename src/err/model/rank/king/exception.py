@@ -41,7 +41,7 @@ class KingException(ModelException):
     Super Class:
         ModelException
     """
-    MSG = str = "King error state."
+    MSG = "King error state."
     ERR_CODE = "KING_ERROR"
     
     def __init__(

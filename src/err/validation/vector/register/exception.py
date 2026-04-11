@@ -45,7 +45,7 @@ class VectorRegisterValidationException(ValidationException):
     Super Class:
         ValidationException
     """
-    MSG = str = "VectorRegisterValidation failed."
+    MSG = "VectorRegisterValidation failed."
     ERR_CODE = "VECTOR_REGISTER_VALIDATION_EXCEPTION"
     
     def __init__(

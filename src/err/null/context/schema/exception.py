@@ -44,7 +44,7 @@ class SchemaContextNullException(ContextNullException):
     Super Class:
         ContextNullException
     """
-    MSG = str = "No null logic for SchemaContext attribute"
+    MSG = "No null logic for SchemaContext attribute"
     ERR_CODE = "SCHEMA_CONTEXT_NULL_EXCEPTION"
     
     def __init__(

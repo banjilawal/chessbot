@@ -45,7 +45,7 @@ class SquareContextBuildException(ContextBuildException):
     Super Class:
         ContextBuildException
     """
-    MSG = str = "No build logic for SquareContext attribute"
+    MSG = "No build logic for SquareContext attribute"
     ERR_CODE = "SQUARE_CONTEXT_BUILD_FAILURE"
     
     def __init__(

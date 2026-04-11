@@ -40,7 +40,7 @@ class ZeroRankContextFlagsException(ZeroContextFlagsException):
     Super Class:
         ZeroContextFlagsException
     """
-    MSG = str = "No RankCcontext attribute enabled."
+    MSG = "No RankCcontext attribute enabled."
     ERR_CODE = "ZERO_RANK_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

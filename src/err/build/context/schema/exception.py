@@ -45,7 +45,7 @@ class SchemaContextBuildException(ContextBuildException):
     Super Class:
         ContextBuildException
     """
-    MSG = str = "No build logic for SchemaContext attribute"
+    MSG = "No build logic for SchemaContext attribute"
     ERR_CODE = "SCHEMA_CONTEXT_BUILD_FAILURE"
     
     def __init__(

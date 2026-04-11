@@ -42,7 +42,7 @@ class NodeBuildException(BuildException):
     Super Class:
         BuildException
     """
-    MSG = str = "NodeBuild step failed"
+    MSG = "NodeBuild step failed"
     ERR_CODE = "NODE_BUILD_FAILURE"
     
     def __init__(

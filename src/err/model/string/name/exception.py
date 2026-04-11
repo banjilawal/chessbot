@@ -41,7 +41,7 @@ class NameException(StringException):
     Super Class:
         StringException
     """
-    MSG = str = "Whitespace string not allowed"
+    MSG = "Whitespace string not allowed"
     ERR_CODE = "NAME_STRING_ERROR"
     
     def __init__(

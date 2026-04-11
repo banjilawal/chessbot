@@ -44,7 +44,7 @@ class SquareContextNullException(ContextNullException):
     Super Class:
         ContextNullException
     """
-    MSG = str = "No null logic for SquareContext attribute"
+    MSG = "No null logic for SquareContext attribute"
     ERR_CODE = "SQUARE_CONTEXT_NULL_EXCEPTION"
     
     def __init__(

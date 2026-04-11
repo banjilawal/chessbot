@@ -45,7 +45,7 @@ class HostageContextBuildException(ContextBuildException):
     Super Class:
         ContextBuildException
     """
-    MSG = str = "No build logic for HostageContext attribute"
+    MSG = "No build logic for HostageContext attribute"
     ERR_CODE = "HOSTAGE_CONTEXT_BUILD_FAILURE"
     
     def __init__(

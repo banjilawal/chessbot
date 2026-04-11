@@ -41,7 +41,7 @@ class CombatantTokenException(TokenException):
     Super Class:
         Token
     """
-    MSG = str = "CombatantToken experienced an error."
+    MSG = "CombatantToken experienced an error."
     ERR_CODE = "COMBATANT_TOKEN_ERROR"
     
     def __init__(

@@ -41,7 +41,7 @@ class PawnTokenException(CombatantTokenException):
     Super Class:
         CombatantToken
     """
-    MSG = str = "PawnToken experienced an error."
+    MSG = "PawnToken experienced an error."
     ERR_CODE = "PAWN_TOKEN_ERROR"
     
     def __init__(

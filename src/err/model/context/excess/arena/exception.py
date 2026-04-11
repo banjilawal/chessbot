@@ -40,7 +40,7 @@ class ExcessArenaContextFlagsException(ExcessContextFlagsException):
     Super Class:
         ExcessContextFlagsException
     """
-    MSG = str = "More than one ArenaCcontext attribute enabled."
+    MSG = "More than one ArenaCcontext attribute enabled."
     ERR_CODE = "EXCESS_ARENA_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

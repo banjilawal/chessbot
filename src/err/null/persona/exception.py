@@ -40,7 +40,7 @@ class PersonaNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = str = "Persona cannot be null."
+    MSG = "Persona cannot be null."
     ERR_CODE = "PERSONA_NULL_EXCEPTION"
     
     def __init__(

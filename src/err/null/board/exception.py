@@ -40,7 +40,7 @@ class BoardNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = str = "Board cannot be null."
+    MSG = "Board cannot be null."
     ERR_CODE = "BOARD_NULL_EXCEPTION"
     
     def __init__(

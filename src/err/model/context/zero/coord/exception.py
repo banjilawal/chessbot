@@ -40,7 +40,7 @@ class ZeroCoordContextFlagsException(ZeroContextFlagsException):
     Super Class:
         ZeroContextFlagsException
     """
-    MSG = str = "No CoordCcontext attribute enabled."
+    MSG = "No CoordCcontext attribute enabled."
     ERR_CODE = "ZERO_COORD_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

@@ -41,7 +41,7 @@ class RankException(ModelException):
     Super Class:
         ModelException
     """
-    MSG = str = "Rank error state."
+    MSG = "Rank error state."
     ERR_CODE = "RANK_ERROR"
     
     def __init__(

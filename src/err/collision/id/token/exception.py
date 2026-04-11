@@ -42,7 +42,7 @@ class TokenIdCollisionException(IdCollisionException):
     Super Class:
         IdCollisionException
     """
-    MSG = str = "A token is already using the id."
+    MSG = "A token is already using the id."
     ERR_CODE = "TOKEN_ID_COLLISION_ERROR"
     
     def __init__(

@@ -45,7 +45,7 @@ class FormationContextBuildException(ContextBuildException):
     Super Class:
         ContextBuildException
     """
-    MSG = str = "No build logic for FormationContext attribute"
+    MSG = "No build logic for FormationContext attribute"
     ERR_CODE = "FORMATION_CONTEXT_BUILD_FAILURE"
     
     def __init__(

@@ -40,7 +40,7 @@ class TeamValidationException(ValidationException):
     Super Class:
         ValidationException
     """
-    MSG = str = "TeamValidation check failed"
+    MSG = "TeamValidation check failed"
     ERR_CODE = "TEAM_VALIDATION_EXCEPTION"
     
     def __init__(

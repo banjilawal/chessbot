@@ -42,7 +42,7 @@ class DatabaseDebugException(ServiceDebugException):
         ServiceDebugException
     """
     ERR_CODE = "DATABASE_DEBUG_EXCEPTION"
-    MSG = str = "Database fired into error state by attribute or method."
+    MSG = "Database fired into error state by attribute or method."
     
     def __init__(
             self,

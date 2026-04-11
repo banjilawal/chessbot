@@ -40,7 +40,7 @@ class OperationException(ChessException):
     Super Class:
         ChessException
     """
-    MSG = str = "Operation aborted"
+    MSG = "Operation aborted"
     ERR_CODE = "OPERATION_ERROR"
     
     def __init__(

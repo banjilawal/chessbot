@@ -42,7 +42,7 @@ class ArenaBuildException(BuildException):
     Super Class:
         BuildException
     """
-    MSG = str = "ArenaBuild step failed"
+    MSG = "ArenaBuild step failed"
     ERR_CODE = "ARENA_BUILD_FAILURE"
     
     def __init__(

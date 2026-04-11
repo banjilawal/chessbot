@@ -41,7 +41,7 @@ class MachinePlayerException(PlayerException):
     Super Class:
         PlayerException
     """
-    MSG = str = "MachinePlayer error state."
+    MSG = "MachinePlayer error state."
     ERR_CODE = "MACHINE_PLAYER_ERROR"
     
     def __init__(

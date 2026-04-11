@@ -42,7 +42,7 @@ class ContextValidationException(ValidationException):
     Super Class:
         ValidationException
     """
-    MSG = str = "No validation logic for context's attribute"
+    MSG = "No validation logic for context's attribute"
     ERR_CODE = "CONTEXT_VALIDATION_EXCEPTION"
     
     def __init__(

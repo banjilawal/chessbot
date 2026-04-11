@@ -41,7 +41,7 @@ class SchemaException(ModelException):
     Super Class:
         ModelException
     """
-    MSG = str = "Schema error state."
+    MSG = "Schema error state."
     ERR_CODE = "SCHEMA_ERROR"
     
     def __init__(

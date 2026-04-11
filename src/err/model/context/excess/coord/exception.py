@@ -40,7 +40,7 @@ class ExcessCoordContextFlagsException(ExcessContextFlagsException):
     Super Class:
         ExcessContextFlagsException
     """
-    MSG = str = "More than one CoordCcontext attribute enabled."
+    MSG = "More than one CoordCcontext attribute enabled."
     ERR_CODE = "EXCESS_COORD_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

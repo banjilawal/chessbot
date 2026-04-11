@@ -43,7 +43,7 @@ class ScalarBuildException(BuildException):
     Super Class:
         BuildException
     """
-    MSG = str = "ScalarBuild step failed"
+    MSG = "ScalarBuild step failed"
     ERR_CODE = "SCALAR_BUILD_FAILURE"
     
     def __init__(

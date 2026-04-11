@@ -40,7 +40,7 @@ class FormationNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = str = "Formation cannot be null."
+    MSG = "Formation cannot be null."
     ERR_CODE = "FORMATION_NULL_EXCEPTION"
     
     def __init__(

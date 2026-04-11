@@ -40,7 +40,7 @@ class ZeroGameContextFlagsException(ZeroContextFlagsException):
     Super Class:
         ZeroContextFlagsException
     """
-    MSG = str = "No GameCcontext attribute enabled."
+    MSG = "No GameCcontext attribute enabled."
     ERR_CODE = "ZERO_GAME_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

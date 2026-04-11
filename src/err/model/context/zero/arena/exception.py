@@ -40,7 +40,7 @@ class ZeroArenaContextFlagsException(ZeroContextFlagsException):
     Super Class:
         ZeroContextFlagsException
     """
-    MSG = str = "No ArenaCcontext attribute enabled."
+    MSG = "No ArenaCcontext attribute enabled."
     ERR_CODE = "ZERO_ARENA_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

@@ -44,7 +44,7 @@ class BoardCollisionException(CollisionException):
     Super Class:
         CollisionException
     """
-    MSG = str = "BoardCollision step failed"
+    MSG = "BoardCollision step failed"
     ERR_CODE = "BOARD_COLLISION_FAILURE"
     
     def __init__(

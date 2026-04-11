@@ -43,7 +43,7 @@ class HostageBuildException(BuildException):
     Super Class:
         BuildException
     """
-    MSG = str = "HostageBuild step failed"
+    MSG = "HostageBuild step failed"
     ERR_CODE = "HOSTAGE_BUILD_FAILURE"
     
     def __init__(

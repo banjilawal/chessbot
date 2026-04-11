@@ -41,7 +41,7 @@ class PawnException(ModelException):
     Super Class:
         ModelException
     """
-    MSG = str = "Pawn error state."
+    MSG = "Pawn error state."
     ERR_CODE = "PAWN_ERROR"
     
     def __init__(

@@ -40,7 +40,7 @@ class ExcessTeamContextFlagsException(ExcessContextFlagsException):
     Super Class:
         ExcessContextFlagsException
     """
-    MSG = str = "More than one TeamCcontext attribute enabled."
+    MSG = "More than one TeamCcontext attribute enabled."
     ERR_CODE = "EXCESS_TEAM_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

@@ -45,7 +45,7 @@ class GameContextBuildException(ContextBuildException):
     Super Class:
         ContextBuildException
     """
-    MSG = str = "No build logic for GameContext attribute"
+    MSG = "No build logic for GameContext attribute"
     ERR_CODE = "GAME_CONTEXT_BUILD_FAILURE"
     
     def __init__(

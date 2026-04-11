@@ -40,7 +40,7 @@ class GameValidationException(ValidationException):
     Super Class:
         ValidationException
     """
-    MSG = str = "GameValidation check failed"
+    MSG = "GameValidation check failed"
     ERR_CODE = "GAME_VALIDATION_EXCEPTION"
     
     def __init__(

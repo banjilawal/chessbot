@@ -45,7 +45,7 @@ class TokenVisitHandlerDebugException(DebugException):
         DebugException
     """
     ERR_CODE = "SQUARE_STACK_TOKEN_HANDLER_EXCEPTION"
-    MSG = str = "VisitationController had an error."
+    MSG = "VisitationController had an error."
     
     def __init__(
             self,

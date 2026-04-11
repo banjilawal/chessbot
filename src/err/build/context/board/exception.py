@@ -45,7 +45,7 @@ class BoardContextBuildException(ContextBuildException):
     Super Class:
         ContextBuildException
     """
-    MSG = str = "No build logic for BoardContext attribute"
+    MSG = "No build logic for BoardContext attribute"
     ERR_CODE = "BOARD_CONTEXT_BUILD_FAILURE"
     
     def __init__(

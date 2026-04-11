@@ -41,7 +41,7 @@ class SquareException(ModelException):
     Super Class:
         ModelException
     """
-    MSG = str = "Square error state."
+    MSG = "Square error state."
     ERR_CODE = "SQUARE_ERROR"
     
     def __init__(

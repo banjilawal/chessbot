@@ -42,7 +42,7 @@ class IdentityValidationException(ValidationException):
     Super Class:
         ValidationException
     """
-    MSG = str = "IdentityValidation check failed"
+    MSG = "IdentityValidation check failed"
     ERR_CODE = "IDENTITY_VALIDATION_EXCEPTION"
     
     def __init__(

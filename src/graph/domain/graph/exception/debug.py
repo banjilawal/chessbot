@@ -55,7 +55,7 @@ class GraphDebugException(DebugException):
         *   See DebugException class for inherited methods.
     """
     ERR_CODE = "GRAPH_EXCEPTION"
-    MSG = str = "Graph had an error."
+    MSG = "Graph had an error."
     
     _var = Optional[str]
     _val = Optional[Any]

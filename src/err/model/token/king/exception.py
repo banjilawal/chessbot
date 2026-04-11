@@ -41,7 +41,7 @@ class KingTokenException(TokenException):
     Super Class:
         TokenException
     """
-    MSG = str = "KingToken experienced an error."
+    MSG = "KingToken experienced an error."
     ERR_CODE = "KING_TOKEN_ERROR"
     
     def __init__(

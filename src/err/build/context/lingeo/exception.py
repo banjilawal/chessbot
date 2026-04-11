@@ -41,7 +41,7 @@ class VectorContextBuildException(ContextBuildException):
     Super Class:
         ContextBuildException
     """
-    MSG = str = "No build logic for VectorContext attribute"
+    MSG = "No build logic for VectorContext attribute"
     ERR_CODE = "VECTOR_CONTEXT_BUILD_FAILURE"
     
     def __init__(

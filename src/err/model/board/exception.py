@@ -41,7 +41,7 @@ class BoardException(ModelException):
     Super Class:
         ModelException
     """
-    MSG = str = "Board error state."
+    MSG = "Board error state."
     ERR_CODE = "BOARD_ERROR"
     
     def __init__(

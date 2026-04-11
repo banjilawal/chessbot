@@ -42,7 +42,7 @@ class BuildException(ChessException):
         ChessException
     """
     OP = "Build"
-    MSG = str = "Build step failed."
+    MSG = "Build step failed."
     ERR_CODE = "BUILD_FAILURE"
     RSLT_TYPE = "BuildResult"
     

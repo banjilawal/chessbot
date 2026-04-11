@@ -42,7 +42,7 @@ class SquareNameCollisionException(NameCollisionException):
     Super Class:
         NameCollisionException
     """
-    MSG = str = "A square is already using the name."
+    MSG = "A square is already using the name."
     ERR_CODE = "SQUARE_NAME_COLLISION_ERROR"
     
     def __init__(

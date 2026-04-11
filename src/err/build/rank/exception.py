@@ -43,7 +43,7 @@ class RankBuildException(BuildException):
     Super Class:
         BuildException
     """
-    MSG = str = "RankBuild step failed"
+    MSG = "RankBuild step failed"
     ERR_CODE = "RANK_BUILD_FAILURE"
     
     def __init__(

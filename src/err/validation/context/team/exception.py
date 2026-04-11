@@ -44,7 +44,7 @@ class TeamContextValidationException(ContextValidationException):
     Super Class:
         ContextValidationException
     """
-    MSG = str = "No validation logic for TeamContext attribute"
+    MSG = "No validation logic for TeamContext attribute"
     ERR_CODE = "TEAM_CONTEXT_VALIDATION_EXCEPTION"
     
     def __init__(

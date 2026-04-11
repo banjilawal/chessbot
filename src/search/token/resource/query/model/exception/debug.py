@@ -41,7 +41,7 @@ class TokenQueryDebugException(QueryDebugException):
         QueryDebugException
     """
     ERR_CODE = "TOKEN_QUERY_DEBUG_EXCEPTION"
-    MSG = str = "Token had an error."
+    MSG = "Token had an error."
     
     def __init__(
             self,

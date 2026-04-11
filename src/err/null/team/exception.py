@@ -40,7 +40,7 @@ class TeamNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = str = "Team cannot be null."
+    MSG = "Team cannot be null."
     ERR_CODE = "TEAM_NULL_EXCEPTION"
     
     def __init__(

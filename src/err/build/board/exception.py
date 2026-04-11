@@ -44,7 +44,7 @@ class BoardBuildException(BuildException):
     Super Class:
         BuildException
     """
-    MSG = str = "BoardBuild step failed"
+    MSG = "BoardBuild step failed"
     ERR_CODE = "BOARD_BUILD_FAILURE"
     
     def __init__(

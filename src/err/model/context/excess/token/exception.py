@@ -40,7 +40,7 @@ class ExcessTokenContextFlagsException(ExcessContextFlagsException):
     Super Class:
         ExcessContextFlagsException
     """
-    MSG = str = "More than one TokenCcontext attribute enabled."
+    MSG = "More than one TokenCcontext attribute enabled."
     ERR_CODE = "EXCESS_TOKEN_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

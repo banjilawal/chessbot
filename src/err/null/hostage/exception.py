@@ -40,7 +40,7 @@ class HostageNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = str = "Hostage cannot be null."
+    MSG = "Hostage cannot be null."
     ERR_CODE = "HOSTAGE_NULL_EXCEPTION"
     
     def __init__(

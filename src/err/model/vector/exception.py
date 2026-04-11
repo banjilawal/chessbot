@@ -41,7 +41,7 @@ class VectorException(ModelException):
     Super Class:
         ModelException
     """
-    MSG = str = "Vector error state."
+    MSG = "Vector error state."
     ERR_CODE = "VECTOR_ERROR"
     
     def __init__(

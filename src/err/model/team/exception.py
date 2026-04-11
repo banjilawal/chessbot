@@ -41,7 +41,7 @@ class TeamException(ModelException):
     Super Class:
         ModelException
     """
-    MSG = str = "Team error state."
+    MSG = "Team error state."
     ERR_CODE = "TEAM_ERROR"
     
     def __init__(

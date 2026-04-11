@@ -41,7 +41,7 @@ class TeamCollisionException(CollisionException):
     Super Class:
         CollisionException
     """
-    MSG = str = "TeamCollision step failed"
+    MSG = "TeamCollision step failed"
     ERR_CODE = "TEAM_COLLISION_FAILURE"
     
     def __init__(

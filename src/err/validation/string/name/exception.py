@@ -42,7 +42,7 @@ class NameValidationException(ValidationException):
     Super Class:
         ValidationException
     """
-    MSG = str = "NameValidation check failed"
+    MSG = "NameValidation check failed"
     ERR_CODE = "NAME_VALIDATION_EXCEPTION"
     
     def __init__(

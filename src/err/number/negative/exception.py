@@ -41,7 +41,7 @@ class NegativeNumberException(NumberException):
     Super Class:
         NumberException
     """
-    MSG = str = "Number cannot be negative."
+    MSG = "Number cannot be negative."
     ERR_CODE = "NEGATIVE_NUMBER_ERROR"
     
     def __init__(

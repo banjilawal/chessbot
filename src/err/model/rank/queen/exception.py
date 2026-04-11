@@ -41,7 +41,7 @@ class QueenException(ModelException):
     Super Class:
         ModelException
     """
-    MSG = str = "Queen error state."
+    MSG = "Queen error state."
     ERR_CODE = "QUEEN_ERROR"
     
     def __init__(

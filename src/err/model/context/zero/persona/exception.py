@@ -40,7 +40,7 @@ class ZeroPersonaContextFlagsException(ZeroContextFlagsException):
     Super Class:
         ZeroContextFlagsException
     """
-    MSG = str = "No PersonaCcontext attribute enabled."
+    MSG = "No PersonaCcontext attribute enabled."
     ERR_CODE = "ZERO_PERSONA_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

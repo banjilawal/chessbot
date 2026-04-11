@@ -40,7 +40,7 @@ class ExcessFormationContextFlagsException(ExcessContextFlagsException):
     Super Class:
         ExcessContextFlagsException
     """
-    MSG = str = "More than one FormationCcontext attribute enabled."
+    MSG = "More than one FormationCcontext attribute enabled."
     ERR_CODE = "EXCESS_FORMATION_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

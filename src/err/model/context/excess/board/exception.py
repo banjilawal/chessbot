@@ -40,7 +40,7 @@ class ExcessBoardContextFlagsException(ExcessContextFlagsException):
     Super Class:
         ExcessContextFlagsException
     """
-    MSG = str = "More than one BoardCcontext attribute enabled."
+    MSG = "More than one BoardCcontext attribute enabled."
     ERR_CODE = "EXCESS_BOARD_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

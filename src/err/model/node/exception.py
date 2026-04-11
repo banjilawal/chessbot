@@ -41,7 +41,7 @@ class NodeException(ModelException):
     Super Class:
         ModelException
     """
-    MSG = str = "Node error state."
+    MSG = "Node error state."
     ERR_CODE = "NODE_ERROR"
     
     def __init__(

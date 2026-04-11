@@ -41,7 +41,7 @@ class ScalarException(ModelException):
     Super Class:
         ModelException
     """
-    MSG = str = "Scalar error state."
+    MSG = "Scalar error state."
     ERR_CODE = "SCALAR_ERROR"
     
     def __init__(

@@ -42,7 +42,7 @@ class NodeValidationException(ValidationException):
     Super Class:
         ValidationException
     """
-    MSG = str = "NodeValidation check failed"
+    MSG = "NodeValidation check failed"
     ERR_CODE = "NODE_VALIDATION_EXCEPTION"
     
     def __init__(

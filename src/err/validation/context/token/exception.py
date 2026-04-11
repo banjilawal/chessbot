@@ -45,7 +45,7 @@ class TokenContextValidationException(ContextValidationException):
     Super Class:
         ContextValidationException
     """
-    MSG = str = "No validation logic for TokenContext attribute"
+    MSG = "No validation logic for TokenContext attribute"
     ERR_CODE = "TOKEN_CONTEXT_VALIDATION_EXCEPTION"
     
     def __init__(

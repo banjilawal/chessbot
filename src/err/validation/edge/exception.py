@@ -42,7 +42,7 @@ class EdgeValidationException(ValidationException):
     Super Class:
         ValidationException
     """
-    MSG = str = "EdgeValidation check failed"
+    MSG = "EdgeValidation check failed"
     ERR_CODE = "EDGE_VALIDATION_EXCEPTION"
     
     def __init__(

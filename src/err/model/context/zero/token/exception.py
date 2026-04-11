@@ -40,7 +40,7 @@ class ZeroTokenContextFlagsException(ZeroContextFlagsException):
     Super Class:
         ZeroContextFlagsException
     """
-    MSG = str = "No TokenCcontext attribute enabled."
+    MSG = "No TokenCcontext attribute enabled."
     ERR_CODE = "ZERO_TOKEN_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

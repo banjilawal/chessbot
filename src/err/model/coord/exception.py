@@ -41,7 +41,7 @@ class CoordException(ModelException):
     Super Class:
         ModelException
     """
-    MSG = str = "Coord error state."
+    MSG = "Coord error state."
     ERR_CODE = "COORD_ERROR"
     
     def __init__(

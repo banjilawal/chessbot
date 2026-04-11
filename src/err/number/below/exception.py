@@ -41,7 +41,7 @@ class NumberBelowBoundsException(NumberException):
     Super Class:
         NumberException
     """
-    MSG = str = "Number is below the floor"
+    MSG = "Number is below the floor"
     ERR_CODE = "NUMBER_BELOW_BOUNDS_ERROR"
     
     def __init__(

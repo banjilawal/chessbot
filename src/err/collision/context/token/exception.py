@@ -46,7 +46,7 @@ class TokenContextCollisionException(ContextCollisionException):
     Super Class:
         ContextCollisionException
     """
-    MSG = str = "No collision logic for TokenContext attribute"
+    MSG = "No collision logic for TokenContext attribute"
     ERR_CODE = "TOKEN_CONTEXT_COLLISION_FAILURE"
     
     def __init__(

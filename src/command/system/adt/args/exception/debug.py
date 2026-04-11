@@ -43,7 +43,7 @@ class CommandArgsDebugException(DebugException):
         DebugException
     """
     ERR_CODE = "COMMAND_ARGS_DEBUG_EXECUTION"
-    MSG = str = "CommandArgs fired into error state by attribute or method."
+    MSG = "CommandArgs fired into error state by attribute or method."
     
     def __init__(
             self,

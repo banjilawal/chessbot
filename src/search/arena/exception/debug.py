@@ -55,7 +55,7 @@ class ArenaContextDebugException(DebugException):
         *   See DebugException class for inherited methods.
     """
     ERR_CODE = "ARENA_CONTEXT_EXCEPTION"
-    MSG = str = "ArenaContext had an error."
+    MSG = "ArenaContext had an error."
     VAR = "ArenaContext"
     VAL = Optional[Any]
     

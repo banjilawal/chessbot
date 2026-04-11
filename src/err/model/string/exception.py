@@ -41,7 +41,7 @@ class StringException(ModelException):
     Super Class:
         ModelException
     """
-    MSG = str = "String error state."
+    MSG = "String error state."
     ERR_CODE = "STRING_ERROR"
     
     def __init__(

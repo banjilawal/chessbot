@@ -40,7 +40,7 @@ class ExcessEdgeContextFlagsException(ExcessContextFlagsException):
     Super Class:
         ExcessContextFlagsException
     """
-    MSG = str = "More than one EdgeCcontext attribute enabled."
+    MSG = "More than one EdgeCcontext attribute enabled."
     ERR_CODE = "EXCESS_EDGE_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

@@ -45,7 +45,7 @@ class CoordContextCollisionException(ContextCollisionException):
     Super Class:
         ContextCollisionException
     """
-    MSG = str = "No collision logic for CoordContext attribute"
+    MSG = "No collision logic for CoordContext attribute"
     ERR_CODE = "COORD_CONTEXT_COLLISION_FAILURE"
     
     def __init__(

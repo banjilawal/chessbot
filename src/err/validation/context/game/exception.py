@@ -44,7 +44,7 @@ class GameContextValidationException(ContextValidationException):
     Super Class:
         ContextValidationException
     """
-    MSG = str = "No validation logic for GameContext attribute"
+    MSG = "No validation logic for GameContext attribute"
     ERR_CODE = "GAME_CONTEXT_VALIDATION_EXCEPTION"
     
     def __init__(

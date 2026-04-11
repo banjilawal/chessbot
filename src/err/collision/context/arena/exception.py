@@ -45,7 +45,7 @@ class ArenaContextCollisionException(ContextCollisionException):
     Super Class:
         ContextCollisionException
     """
-    MSG = str = "No collision logic for ArenaContext attribute"
+    MSG = "No collision logic for ArenaContext attribute"
     ERR_CODE = "ARENA_CONTEXT_COLLISION_FAILURE"
     
     def __init__(

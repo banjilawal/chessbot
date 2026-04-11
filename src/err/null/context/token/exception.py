@@ -45,7 +45,7 @@ class TokenContextNullException(ContextNullException):
     Super Class:
         ContextNullException
     """
-    MSG = str = "No null logic for TokenContext attribute"
+    MSG = "No null logic for TokenContext attribute"
     ERR_CODE = "TOKEN_CONTEXT_NULL_EXCEPTION"
     
     def __init__(

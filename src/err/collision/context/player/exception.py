@@ -45,7 +45,7 @@ class PlayerContextCollisionException(ContextCollisionException):
     Super Class:
         ContextCollisionException
     """
-    MSG = str = "No collision logic for PlayerContext attribute"
+    MSG = "No collision logic for PlayerContext attribute"
     ERR_CODE = "PLAYER_CONTEXT_COLLISION_FAILURE"
     
     def __init__(

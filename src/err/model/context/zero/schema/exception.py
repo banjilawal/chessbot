@@ -40,7 +40,7 @@ class ZeroSchemaContextFlagsException(ZeroContextFlagsException):
     Super Class:
         ZeroContextFlagsException
     """
-    MSG = str = "No SchemaCcontext attribute enabled."
+    MSG = "No SchemaCcontext attribute enabled."
     ERR_CODE = "ZERO_SCHEMA_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

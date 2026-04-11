@@ -52,7 +52,7 @@ class PairDebugException(DebugException):
         *   See DebugException class for inherited methods.
     """
     ERR_CODE = "PAIR_EXCEPTION"
-    MSG = str = "Pair had an error."
+    MSG = "Pair had an error."
 
     def __init__(
             self,

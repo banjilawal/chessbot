@@ -46,7 +46,7 @@ class TokenContextBuildException(ContextBuildException):
     Super Class:
         ContextBuildException
     """
-    MSG = str = "No build logic for TokenContext attribute"
+    MSG = "No build logic for TokenContext attribute"
     ERR_CODE = "TOKEN_CONTEXT_BUILD_FAILURE"
     
     def __init__(

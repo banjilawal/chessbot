@@ -42,7 +42,7 @@ class IdCollisionException(CollisionException):
     Super Class:
         CollisionException
     """
-    MSG = str = "An id collision occurred."
+    MSG = "An id collision occurred."
     ERR_CODE = "ID_COLLISION_ERROR"
     
     def __init__(

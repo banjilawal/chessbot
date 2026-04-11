@@ -52,7 +52,7 @@ class SpannerEngineDebugException(DebugException):
         *   See DebugException class for inherited methods.
     """
     ERR_CODE = "SPANNER_ENGINE_DEBUG_EXCEPTION"
-    MSG = str = "Condition brought SpannerEngine into error state."
+    MSG = "Condition brought SpannerEngine into error state."
     
     def __init__(
             self,

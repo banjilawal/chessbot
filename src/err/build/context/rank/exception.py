@@ -45,7 +45,7 @@ class RankContextBuildException(ContextBuildException):
     Super Class:
         ContextBuildException
     """
-    MSG = str = "No build logic for RankContext attribute"
+    MSG = "No build logic for RankContext attribute"
     ERR_CODE = "RANK_CONTEXT_BUILD_FAILURE"
     
     def __init__(

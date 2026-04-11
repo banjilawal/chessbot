@@ -42,7 +42,7 @@ class VectorAdditionException(VectorOperationException):
     Super Class:
         VectorOperationException
     """
-    MSG = str = "Error during Vector addition."
+    MSG = "Error during Vector addition."
     ERR_CODE = "VECTOR_ADDITION_ERROR"
     
     def __init__(

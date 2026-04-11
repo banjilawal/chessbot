@@ -19,6 +19,6 @@ from model import Blueprint, OpeningSquare, Rank, Team, Token
 class TokenBlueprint(Blueprint[Token]):
     team: Team
     formation: Formation
-    rank: Rank | None = None
     id: int | None = None
+    rank: Rank | None = None
     opening_square: OpeningSquare | None = None

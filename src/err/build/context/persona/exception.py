@@ -45,7 +45,7 @@ class PersonaContextBuildException(ContextBuildException):
     Super Class:
         ContextBuildException
     """
-    MSG = str = "No build logic for PersonaContext attribute"
+    MSG = "No build logic for PersonaContext attribute"
     ERR_CODE = "PERSONA_CONTEXT_BUILD_FAILURE"
     
     def __init__(

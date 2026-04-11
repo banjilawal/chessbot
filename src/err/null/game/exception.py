@@ -40,7 +40,7 @@ class GameNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = str = "Game cannot be null."
+    MSG = "Game cannot be null."
     ERR_CODE = "GAME_NULL_EXCEPTION"
     
     def __init__(

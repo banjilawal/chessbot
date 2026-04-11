@@ -40,7 +40,7 @@ class NodeNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = str = "Node cannot be null."
+    MSG = "Node cannot be null."
     ERR_CODE = "NODE_NULL_EXCEPTION"
     
     def __init__(

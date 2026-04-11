@@ -55,7 +55,7 @@ class BoardContextDebugException(DebugException):
         *   See DebugException class for inherited methods.
     """
     ERR_CODE = "BOARD_CONTEXT_EXCEPTION"
-    MSG = str = "BoardContext had an error."
+    MSG = "BoardContext had an error."
     VAR = "BoardContext"
     VAL = Optional[Any]
     

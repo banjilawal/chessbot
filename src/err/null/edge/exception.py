@@ -40,7 +40,7 @@ class EdgeNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = str = "Edge cannot be null."
+    MSG = "Edge cannot be null."
     ERR_CODE = "EDGE_NULL_EXCEPTION"
     
     def __init__(

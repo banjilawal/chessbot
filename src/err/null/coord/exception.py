@@ -40,7 +40,7 @@ class CoordNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = str = "Coord cannot be null."
+    MSG = "Coord cannot be null."
     ERR_CODE = "COORD_NULL_EXCEPTION"
     
     def __init__(

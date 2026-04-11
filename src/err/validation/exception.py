@@ -45,7 +45,7 @@ class ValidationException(ChessException):
         ChessException
     """
     OP = "Validation"
-    MSG = str = "Validation check failed."
+    MSG = "Validation check failed."
     ERR_CODE = "VALIDATION_FAILURE"
     RSLT_TYPE = "ValidationResult"
     

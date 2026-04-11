@@ -42,7 +42,7 @@ class VectorValidationException(ValidationException):
     Super Class:
         ValidationException
     """
-    MSG = str = "VectorValidation check failed"
+    MSG = "VectorValidation check failed"
     ERR_CODE = "VECTOR_VALIDATION_EXCEPTION"
     
     def __init__(

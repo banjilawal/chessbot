@@ -44,7 +44,7 @@ class EdgeContextValidationException(ContextValidationException):
     Super Class:
         ContextValidationException
     """
-    MSG = str = "No validation logic for EdgeContext attribute"
+    MSG = "No validation logic for EdgeContext attribute"
     ERR_CODE = "EDGE_CONTEXT_VALIDATION_EXCEPTION"
     
     def __init__(

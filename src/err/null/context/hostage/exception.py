@@ -44,7 +44,7 @@ class HostageContextNullException(ContextNullException):
     Super Class:
         ContextNullException
     """
-    MSG = str = "No null logic for HostageContext attribute"
+    MSG = "No null logic for HostageContext attribute"
     ERR_CODE = "HOSTAGE_CONTEXT_NULL_EXCEPTION"
     
     def __init__(

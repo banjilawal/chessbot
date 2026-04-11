@@ -44,7 +44,7 @@ class ArenaContextValidationException(ContextValidationException):
     Super Class:
         ContextValidationException
     """
-    MSG = str = "No validation logic for ArenaContext attribute"
+    MSG = "No validation logic for ArenaContext attribute"
     ERR_CODE = "ARENA_CONTEXT_VALIDATION_EXCEPTION"
     
     def __init__(

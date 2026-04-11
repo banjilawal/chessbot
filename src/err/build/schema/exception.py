@@ -43,7 +43,7 @@ class SchemaBuildException(BuildException):
     Super Class:
         BuildException
     """
-    MSG = str = "SchemaBuild step failed"
+    MSG = "SchemaBuild step failed"
     ERR_CODE = "SCHEMA_BUILD_FAILURE"
     
     def __init__(

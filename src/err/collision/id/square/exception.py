@@ -42,7 +42,7 @@ class SquareIdCollisionException(IdCollisionException):
     Super Class:
         IdCollisionException
     """
-    MSG = str = "A square is already using the id."
+    MSG = "A square is already using the id."
     ERR_CODE = "SQUARE_ID_COLLISION_ERROR"
     
     def __init__(

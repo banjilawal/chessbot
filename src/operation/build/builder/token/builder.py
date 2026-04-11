@@ -10,19 +10,27 @@ version: 1.0.1
 from __future__ import annotations
 
 
-from model import CombatantToken, King, KingToken, Pawn, PawnToken, Token, TokenBlueprint
+
 from operation import Builder
 from result import BuildResult
 from system import  LoggingLevelRouter
-
+from model import CombatantToken, King, KingToken, Pawn, PawnToken, Token, TokenBlueprint
 
 class TokenBuilder(Builder[Token]):
     
     @classmethod
     @LoggingLevelRouter.monitor
     def execute(cls, blueprint: TokenBlueprint,) -> BuildResult[Token]:
+        """
+        Build the appropriate Token.
+
+        Args:
+            blueprint: TokenBlueprint
+        Returns:
+            BuildResult[Token]
+        Raises:
+        """
         method = f"{cls.__name__}.execute"
-        
         
         if isinstance(blueprint.rank, Pawn):
             return BuildResult.success(

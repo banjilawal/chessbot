@@ -41,7 +41,7 @@ class RookException(ModelException):
     Super Class:
         ModelException
     """
-    MSG = str = "Rook error state."
+    MSG = "Rook error state."
     ERR_CODE = "ROOK_ERROR"
     
     def __init__(

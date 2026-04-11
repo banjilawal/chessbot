@@ -40,7 +40,7 @@ class RankNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = str = "Rank cannot be null."
+    MSG = "Rank cannot be null."
     ERR_CODE = "RANK_NULL_EXCEPTION"
     
     def __init__(

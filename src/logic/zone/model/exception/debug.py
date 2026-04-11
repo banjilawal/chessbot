@@ -42,7 +42,7 @@ class ZoneDebugException(DebugException):
         DebugException
     """
     ERR_CODE = "ZONE_EXCEPTION"
-    MSG = str = "Zone in error state."
+    MSG = "Zone in error state."
     
     def __init__(
             self,

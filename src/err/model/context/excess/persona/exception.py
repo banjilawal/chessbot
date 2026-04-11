@@ -40,7 +40,7 @@ class ExcessPersonaContextFlagsException(ExcessContextFlagsException):
     Super Class:
         ExcessContextFlagsException
     """
-    MSG = str = "More than one PersonaCcontext attribute enabled."
+    MSG = "More than one PersonaCcontext attribute enabled."
     ERR_CODE = "EXCESS_PERSONA_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

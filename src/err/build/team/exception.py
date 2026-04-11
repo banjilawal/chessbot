@@ -41,7 +41,7 @@ class TeamBuildException(BuildException):
     Super Class:
         BuildException
     """
-    MSG = str = "TeamBuild step failed"
+    MSG = "TeamBuild step failed"
     ERR_CODE = "TEAM_BUILD_FAILURE"
     
     def __init__(

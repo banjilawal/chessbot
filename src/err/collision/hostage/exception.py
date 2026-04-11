@@ -43,7 +43,7 @@ class HostageCollisionException(CollisionException):
     Super Class:
         CollisionException
     """
-    MSG = str = "HostageCollision step failed"
+    MSG = "HostageCollision step failed"
     ERR_CODE = "HOSTAGE_COLLISION_FAILURE"
     
     def __init__(

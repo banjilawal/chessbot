@@ -42,7 +42,7 @@ class ExcessSchemaContextFlagsException(ExcessContextFlagsException):
     Super Class:
         ExcessContextFlagsException)
     """
-    MSG = str = "Only one SchemaContex should be enabled."
+    MSG = "Only one SchemaContex should be enabled."
     ERR_CODE = "EXCESS_SCHEMA_CONTEXT_FLAGS_EXCEPTION"
    
     def __init__(

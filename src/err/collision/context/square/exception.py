@@ -45,7 +45,7 @@ class SquareContextCollisionException(ContextCollisionException):
     Super Class:
         ContextCollisionException
     """
-    MSG = str = "No collision logic for SquareContext attribute"
+    MSG = "No collision logic for SquareContext attribute"
     ERR_CODE = "SQUARE_CONTEXT_COLLISION_FAILURE"
     
     def __init__(

@@ -43,7 +43,7 @@ class ScalarCollisionException(CollisionException):
     Super Class:
         CollisionException
     """
-    MSG = str = "ScalarCollision step failed"
+    MSG = "ScalarCollision step failed"
     ERR_CODE = "SCALAR_COLLISION_FAILURE"
     
     def __init__(

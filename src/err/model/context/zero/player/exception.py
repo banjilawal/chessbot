@@ -40,7 +40,7 @@ class ZeroPlayerContextFlagsException(ZeroContextFlagsException):
     Super Class:
         ZeroContextFlagsException
     """
-    MSG = str = "No PlayerCcontext attribute enabled."
+    MSG = "No PlayerCcontext attribute enabled."
     ERR_CODE = "ZERO_PLAYER_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

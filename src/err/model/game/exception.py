@@ -41,7 +41,7 @@ class GameException(ModelException):
     Super Class:
         ModelException
     """
-    MSG = str = "Game error state."
+    MSG = "Game error state."
     ERR_CODE = "GAME_ERROR"
     
     def __init__(

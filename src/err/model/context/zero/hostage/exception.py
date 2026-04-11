@@ -40,7 +40,7 @@ class ZeroHostageContextFlagsException(ZeroContextFlagsException):
     Super Class:
         ZeroContextFlagsException
     """
-    MSG = str = "No HostageCcontext attribute enabled."
+    MSG = "No HostageCcontext attribute enabled."
     ERR_CODE = "ZERO_HOSTAGE_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

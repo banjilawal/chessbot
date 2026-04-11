@@ -40,7 +40,7 @@ class SchemaNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = str = "Schema cannot be null."
+    MSG = "Schema cannot be null."
     ERR_CODE = "SCHEMA_NULL_EXCEPTION"
     
     def __init__(

@@ -43,7 +43,7 @@ class VectorBuildException(BuildException):
     Super Class:
         BuildException
     """
-    MSG = str = "VectorBuild step failed"
+    MSG = "VectorBuild step failed"
     ERR_CODE = "VECTOR_BUILD_FAILURE"
     
     def __init__(

@@ -40,7 +40,7 @@ class ArenaException(ModelException):
     Super Class:
         ModelException
     """
-    MSG = str = "Arena error state."
+    MSG = "Arena error state."
     ERR_CODE = "ARENA_ERROR"
     
     def __init__(

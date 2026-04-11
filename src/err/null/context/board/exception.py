@@ -44,7 +44,7 @@ class BoardContextNullException(ContextNullException):
     Super Class:
         ContextNullException
     """
-    MSG = str = "No null logic for BoardContext attribute"
+    MSG = "No null logic for BoardContext attribute"
     ERR_CODE = "BOARD_CONTEXT_NULL_EXCEPTION"
     
     def __init__(

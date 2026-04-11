@@ -42,7 +42,7 @@ class SchemaContextValidationRouteException(ContextRouteException):
     Super Class:
         ContextRouteException
     """
-    MSG = str = "No validation path for the SchemaContext attribute."
+    MSG = "No validation path for the SchemaContext attribute."
     ERR_CODE = "SCHEMA_CONTEXT_VALIDATION_ROUTE_EXCEPTION"
     
     def __init__(

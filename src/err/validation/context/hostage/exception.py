@@ -44,7 +44,7 @@ class HostageContextValidationException(ContextValidationException):
     Super Class:
         ContextValidationException
     """
-    MSG = str = "No validation logic for HostageContext attribute"
+    MSG = "No validation logic for HostageContext attribute"
     ERR_CODE = "HOSTAGE_CONTEXT_VALIDATION_EXCEPTION"
     
     def __init__(

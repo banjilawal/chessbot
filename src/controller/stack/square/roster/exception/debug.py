@@ -52,7 +52,7 @@ class SquareStackRosterHandlerDebugException(DebugException):
         *   See DebugException class for inherited methods.
     """
     ERR_CODE = "SQUARE_STACK_ROSTER_HANDLER_EXCEPTION"
-    MSG = str = "SquareStackRosterHandler had an error."
+    MSG = "SquareStackRosterHandler had an error."
     
     def __init__(
             self,

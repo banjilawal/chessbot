@@ -41,7 +41,7 @@ class CollisionException(ChessException):
         ChessException
     """
     OP = "Collision"
-    MSG = str = "Collision step failed."
+    MSG = "Collision step failed."
     ERR_CODE = "COLLISION_FAILURE"
     RSLT_TYPE = "CollisionResult"
     

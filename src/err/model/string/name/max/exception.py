@@ -41,7 +41,7 @@ class MaxNameLengthException(NameException):
     Super Class:
         NameException
     """
-    MSG = str = "Name is too long."
+    MSG = "Name is too long."
     ERR_CODE = "MAX_NAME_LENGTH_ERROR"
     
     def __init__(

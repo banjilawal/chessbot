@@ -40,7 +40,7 @@ class ScalarNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = str = "Scalar cannot be null."
+    MSG = "Scalar cannot be null."
     ERR_CODE = "SCALAR_NULL_EXCEPTION"
     
     def __init__(

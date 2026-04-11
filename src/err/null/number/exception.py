@@ -40,7 +40,7 @@ class NumberNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = str = "Number cannot be null."
+    MSG = "Number cannot be null."
     ERR_CODE = "NUMBER_NULL_EXCEPTION"
     
     def __init__(

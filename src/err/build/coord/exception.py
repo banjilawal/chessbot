@@ -43,7 +43,7 @@ class CoordBuildException(BuildException):
     Super Class:
         BuildException
     """
-    MSG = str = "CoordBuild step failed"
+    MSG = "CoordBuild step failed"
     ERR_CODE = "COORD_BUILD_FAILURE"
     
     def __init__(

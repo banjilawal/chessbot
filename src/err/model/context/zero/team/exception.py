@@ -40,7 +40,7 @@ class ZeroTeamContextFlagsException(ZeroContextFlagsException):
     Super Class:
         ZeroContextFlagsException
     """
-    MSG = str = "No TeamCcontext attribute enabled."
+    MSG = "No TeamCcontext attribute enabled."
     ERR_CODE = "ZERO_TEAM_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

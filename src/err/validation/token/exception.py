@@ -42,7 +42,7 @@ class TokenValidationException(ValidationException):
     Super Class:
         ValidationException
     """
-    MSG = str = "TokenValidation check failed."
+    MSG = "TokenValidation check failed."
     ERR_CODE = "TOKEN_VALIDATION_EXCEPTION"
     
     def __init__(

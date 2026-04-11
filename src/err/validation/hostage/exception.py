@@ -42,7 +42,7 @@ class HostageValidationException(ValidationException):
     Super Class:
         ValidationException
     """
-    MSG = str = "HostageValidation check failed"
+    MSG = "HostageValidation check failed"
     ERR_CODE = "HOSTAGE_VALIDATION_EXCEPTION"
     
     def __init__(

@@ -40,7 +40,7 @@ class NumberException(ChessException):
     Super Class:
         ChessException
     """
-    MSG = str = "Number is out of range."
+    MSG = "Number is out of range."
     ERR_CODE = "NUMBER_ERROR"
     
     def __init__(

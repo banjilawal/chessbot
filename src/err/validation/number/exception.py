@@ -42,7 +42,7 @@ class NumberValidationException(ValidationException):
     Super Class:
         ValidationException
     """
-    MSG = str = "NumberValidation check failed"
+    MSG = "NumberValidation check failed"
     ERR_CODE = "NUMBER_VALIDATION_EXCEPTION"
     
     def __init__(

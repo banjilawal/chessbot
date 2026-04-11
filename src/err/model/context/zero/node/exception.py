@@ -40,7 +40,7 @@ class ZeroModeContextFlagsException(ZeroContextFlagsException):
     Super Class:
         ZeroContextFlagsException
     """
-    MSG = str = "No ModeCcontext attribute enabled."
+    MSG = "No ModeCcontext attribute enabled."
     ERR_CODE = "ZERO_MODE_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

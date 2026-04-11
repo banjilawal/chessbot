@@ -42,7 +42,7 @@ class NodeCollisionException(CollisionException):
     Super Class:
         CollisionException
     """
-    MSG = str = "NodeCollision step failed"
+    MSG = "NodeCollision step failed"
     ERR_CODE = "NODE_COLLISION_FAILURE"
     
     def __init__(

@@ -40,7 +40,7 @@ class ZeroEdgeContextFlagsException(ZeroContextFlagsException):
     Super Class:
         ZeroContextFlagsException
     """
-    MSG = str = "No EdgeCcontext attribute enabled."
+    MSG = "No EdgeCcontext attribute enabled."
     ERR_CODE = "ZERO_EDGE_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

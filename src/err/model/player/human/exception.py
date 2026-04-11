@@ -41,7 +41,7 @@ class HumanPlayerException(PlayerException):
     Super Class:
         PlayerException
     """
-    MSG = str = "HumanPlayer error state."
+    MSG = "HumanPlayer error state."
     ERR_CODE = "HUMAN_PLAYER_ERROR"
     
     def __init__(

@@ -40,7 +40,7 @@ class FormationValidationException(ValidationException):
     Super Class:
         ValidationException
     """
-    MSG = str = "FormationValidation check failed"
+    MSG = "FormationValidation check failed"
     ERR_CODE = "FORMATION_VALIDATION_EXCEPTION"
     
     def __init__(

@@ -44,7 +44,7 @@ class FormationContextValidationException(ContextValidationException):
     Super Class:
         ContextValidationException
     """
-    MSG = str = "No validation logic for FormationContext attribute"
+    MSG = "No validation logic for FormationContext attribute"
     ERR_CODE = "FORMATION_CONTEXT_VALIDATION_EXCEPTION"
     
     def __init__(

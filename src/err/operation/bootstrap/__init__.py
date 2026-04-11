@@ -1,13 +1,13 @@
-# src/err/operation/bootstrap/__init__.py
+# src/err/operation/build/bootstrap/__init__.py
 
 """
-Module: err.operation.bootstrap.__init__
+Module: err.operation.build.bootstrap.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.OPERATION.BOOTSTRAP PACKAGE ===========#
+# ============ ERR.OPERATION.BUILD.BOOTSTRAP PACKAGE ===========#
 
 # Packages
 from .build import *

@@ -44,7 +44,7 @@ class RankContextNullException(ContextNullException):
     Super Class:
         ContextNullException
     """
-    MSG = str = "No null logic for RankContext attribute"
+    MSG = "No null logic for RankContext attribute"
     ERR_CODE = "RANK_CONTEXT_NULL_EXCEPTION"
     
     def __init__(

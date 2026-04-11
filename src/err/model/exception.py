@@ -40,7 +40,7 @@ class ModelException(ChessException):
     Super Class:
         ChessException
     """
-    MSG = str = "Data object error state."
+    MSG = "Data object error state."
     ERR_CODE = "MODEL_ERROR"
     
     def __init__(

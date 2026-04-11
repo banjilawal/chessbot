@@ -43,7 +43,7 @@ class TokenCollisionException(CollisionException):
     Super Class:
         CollisionException
     """
-    MSG = str = "TokenCollision step failed."
+    MSG = "TokenCollision step failed."
     ERR_CODE = "TOKEN_COLLISION_FAILURE"
     
     def __init__(

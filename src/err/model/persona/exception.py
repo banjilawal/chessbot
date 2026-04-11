@@ -41,7 +41,7 @@ class PersonaException(ModelException):
     Super Class:
         ModelException
     """
-    MSG = str = "Persona error state."
+    MSG = "Persona error state."
     ERR_CODE = "PERSONA_ERROR"
     
     def __init__(

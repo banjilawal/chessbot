@@ -43,7 +43,7 @@ class EdgeCollisionException(CollisionException):
     Super Class:
         CollisionException
     """
-    MSG = str = "EdgeCollision step failed"
+    MSG = "EdgeCollision step failed"
     ERR_CODE = "EDGE_COLLISION_FAILURE"
     
     def __init__(

@@ -45,7 +45,7 @@ class SchemaContextCollisionException(ContextCollisionException):
     Super Class:
         ContextCollisionException
     """
-    MSG = str = "No collision logic for SchemaContext attribute"
+    MSG = "No collision logic for SchemaContext attribute"
     ERR_CODE = "SCHEMA_CONTEXT_COLLISION_FAILURE"
     
     def __init__(

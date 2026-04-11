@@ -43,7 +43,7 @@ class CommandDebugException(DebugException):
         DebugException
     """
     ERR_CODE = "COMMAND_DEBUG_EXECUTION"
-    MSG = str = "Command fired into error state by attribute or method."
+    MSG = "Command fired into error state by attribute or method."
     
     def __init__(
             self,

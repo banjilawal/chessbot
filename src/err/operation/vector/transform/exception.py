@@ -42,7 +42,7 @@ class VectorTransformException(VectorOperationException):
     Super Class:
         VectorOperationException
     """
-    MSG = str = "Error during VectorTransform."
+    MSG = "Error during VectorTransform."
     ERR_CODE = "VECTOR_TRANSFORM_OPERATION_ERROR"
     
     def __init__(

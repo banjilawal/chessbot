@@ -41,7 +41,7 @@ class NullSchemaContextException(NullException):
     Super Class:
         NullException
     """
-    MSG = str = "SchemaContext cannot be null."
+    MSG = "SchemaContext cannot be null."
     ERR_CODE = "NULL_SCHEMA_CONTEXT_EXCEPTION"
     
     def __init__(

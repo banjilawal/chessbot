@@ -40,7 +40,7 @@ class SquareNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = str = "Square cannot be null."
+    MSG = "Square cannot be null."
     ERR_CODE = "SQUARE_NULL_EXCEPTION"
     
     def __init__(

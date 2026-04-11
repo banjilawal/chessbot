@@ -43,7 +43,7 @@ class TokenServiceMenuDebuException(DebugException):
         DebugException
     """
     ERR_CODE = "TOKEN_DEBUG_EXCEPTION"
-    MSG = str = "TokenServiceMenu fired into error state by attribute or method."
+    MSG = "TokenServiceMenu fired into error state by attribute or method."
     
     def __init__(
             self,

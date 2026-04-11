@@ -45,7 +45,7 @@ class EdgeContextCollisionException(ContextCollisionException):
     Super Class:
         ContextCollisionException
     """
-    MSG = str = "No collision logic for EdgeContext attribute"
+    MSG = "No collision logic for EdgeContext attribute"
     ERR_CODE = "EDGE_CONTEXT_COLLISION_FAILURE"
     
     def __init__(

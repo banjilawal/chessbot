@@ -1,7 +1,7 @@
-# src/err/operation/bootstrap/bootstrap.py
+# src/err/operation/build/bootstrap/bootstrap.py
 
 """
-Module: err.operation.bootstrap.bootstrap
+Module: err.operation.build.bootstrap.bootstrap
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -41,7 +41,7 @@ class BootstrapException(OperationException):
     Super Class:
         OperationException
     """
-    MSG = str = "Bootstrap step failed"
+    MSG = "Bootstrap step failed"
     ERR_CODE = "BOOTSTRAP_FAILURE"
     
     def __init__(

@@ -44,7 +44,7 @@ class TeamContextNullException(ContextNullException):
     Super Class:
         ContextNullException
     """
-    MSG = str = "No null logic for TeamContext attribute"
+    MSG = "No null logic for TeamContext attribute"
     ERR_CODE = "TEAM_CONTEXT_NULL_EXCEPTION"
     
     def __init__(

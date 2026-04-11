@@ -44,7 +44,7 @@ class CoordContextNullException(ContextNullException):
     Super Class:
         ContextNullException
     """
-    MSG = str = "No null logic for CoordContext attribute"
+    MSG = "No null logic for CoordContext attribute"
     ERR_CODE = "COORD_CONTEXT_NULL_EXCEPTION"
     
     def __init__(

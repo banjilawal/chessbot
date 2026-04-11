@@ -45,7 +45,7 @@ class EdgeContextBuildException(ContextBuildException):
     Super Class:
         ContextBuildException
     """
-    MSG = str = "No build logic for EdgeContext attribute"
+    MSG = "No build logic for EdgeContext attribute"
     ERR_CODE = "EDGE_CONTEXT_BUILD_FAILURE"
     
     def __init__(

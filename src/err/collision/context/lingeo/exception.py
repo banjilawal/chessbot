@@ -41,7 +41,7 @@ class VectorContextCollisionException(ContextCollisionException):
     Super Class:
         ContextCollisionException
     """
-    MSG = str = "No collision logic for VectorContext attribute"
+    MSG = "No collision logic for VectorContext attribute"
     ERR_CODE = "VECTOR_CONTEXT_COLLISION_FAILURE"
     
     def __init__(

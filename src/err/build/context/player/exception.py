@@ -45,7 +45,7 @@ class PlayerContextBuildException(ContextBuildException):
     Super Class:
         ContextBuildException
     """
-    MSG = str = "No build logic for PlayerContext attribute"
+    MSG = "No build logic for PlayerContext attribute"
     ERR_CODE = "PLAYER_CONTEXT_BUILD_FAILURE"
     
     def __init__(

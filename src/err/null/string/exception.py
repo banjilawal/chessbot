@@ -40,7 +40,7 @@ class StringNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = str = "String cannot be null."
+    MSG = "String cannot be null."
     ERR_CODE = "STRING_NULL_EXCEPTION"
     
     def __init__(

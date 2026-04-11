@@ -42,7 +42,7 @@ class ScalarProductException(VectorOperationException):
     Super Class:
         VectorOperationException
     """
-    MSG = str = "Error during scalar multiplication."
+    MSG = "Error during scalar multiplication."
     ERR_CODE = "SCALAR_PRODUCT_ERROR"
     
     def __init__(

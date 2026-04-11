@@ -39,7 +39,7 @@ class ArenaNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = str = "Arena cannot be null."
+    MSG = "Arena cannot be null."
     ERR_CODE = "ARENA_NULL_EXCEPTION"
     
     def __init__(

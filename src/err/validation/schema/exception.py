@@ -42,7 +42,7 @@ class SchemaValidationException(ValidationException):
     Super Class:
         ValidationException
     """
-    MSG = str = "SchemaValidation check failed"
+    MSG = "SchemaValidation check failed"
     ERR_CODE = "SCHEMA_VALIDATION_EXCEPTION"
     
     def __init__(

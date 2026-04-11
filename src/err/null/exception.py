@@ -39,7 +39,7 @@ class NullException(ChessException):
     Super Class:
         ChessException
     """
-    MSG = str = "Data-Holder is null."
+    MSG = "Data-Holder is null."
     ERR_CODE = "NULL_EXCEPTION"
     
     def __init__(

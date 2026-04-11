@@ -43,7 +43,7 @@ class SchemaCollisionException(CollisionException):
     Super Class:
         CollisionException
     """
-    MSG = str = "SchemaCollision step failed"
+    MSG = "SchemaCollision step failed"
     ERR_CODE = "SCHEMA_COLLISION_FAILURE"
     
     def __init__(

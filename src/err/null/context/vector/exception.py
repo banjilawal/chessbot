@@ -44,7 +44,7 @@ class VectorContextNullException(ContextNullException):
     Super Class:
         ContextNullException
     """
-    MSG = str = "VectorContext cannot be null."
+    MSG = "VectorContext cannot be null."
     ERR_CODE = "VECTOR_CONTEXT_NULL_EXCEPTION"
     
     def __init__(

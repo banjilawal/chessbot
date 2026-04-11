@@ -41,7 +41,7 @@ class FormationCollisionException(CollisionException):
     Super Class:
         CollisionException
     """
-    MSG = str = "FormationCollision step failed"
+    MSG = "FormationCollision step failed"
     ERR_CODE = "FORMATION_COLLISION_FAILURE"
     
     def __init__(

@@ -45,7 +45,7 @@ class TeamContextBuildException(ContextBuildException):
     Super Class:
         ContextBuildException
     """
-    MSG = str = "No build logic for TeamContext attribute"
+    MSG = "No build logic for TeamContext attribute"
     ERR_CODE = "TEAM_CONTEXT_BUILD_FAILURE"
     
     def __init__(

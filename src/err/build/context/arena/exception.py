@@ -45,7 +45,7 @@ class ArenaContextBuildException(ContextBuildException):
     Super Class:
         ContextBuildException
     """
-    MSG = str = "No build logic for ArenaContext attribute"
+    MSG = "No build logic for ArenaContext attribute"
     ERR_CODE = "ARENA_CONTEXT_BUILD_FAILURE"
     
     def __init__(

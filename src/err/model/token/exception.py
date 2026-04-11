@@ -41,7 +41,7 @@ class TokenException(ModelException):
     Super Class:
         ModelException
     """
-    MSG = str = "Token experienced an error."
+    MSG = "Token experienced an error."
     ERR_CODE = "TOKEN_ERROR"
     
     def __init__(

@@ -41,7 +41,7 @@ class NumberAboveBoundsException(NumberException):
     Super Class:
         NumberException
     """
-    MSG = str = "Number is above the ceiling."
+    MSG = "Number is above the ceiling."
     ERR_CODE = "NUMBER_ABOVE_BOUNDS_ERROR"
     
     def __init__(

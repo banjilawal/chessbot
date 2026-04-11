@@ -45,7 +45,7 @@ class VectorRegisterNullException(NullException):
     Super Class:
         VectorNullException
     """
-    MSG = str = "VectorRegister cannot be null."
+    MSG = "VectorRegister cannot be null."
     ERR_CODE = "VECTOR_REGISTER_NULL_EXCEPTION"
     
     def __init__(

@@ -42,7 +42,7 @@ class ContextNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = str = "No null logic for context's attribute"
+    MSG = "No null logic for context's attribute"
     ERR_CODE = "CONTEXT_NULL_EXCEPTION"
     
     def __init__(

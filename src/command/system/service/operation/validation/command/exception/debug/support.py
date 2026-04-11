@@ -41,7 +41,7 @@ class CommandTypeSupportException(CommandDebugException):
         CommandDebugException
     """
     ERR_CODE = "COMMAND_TYPE_NOT_SUPPORTED"
-    MSG = str = "Table does not support command's type."
+    MSG = "Table does not support command's type."
     
     def __init__(
             self,

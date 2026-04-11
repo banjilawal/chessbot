@@ -42,7 +42,7 @@ class BoardValidationException(ValidationException):
     Super Class:
         ValidationException
     """
-    MSG = str = "BoardValidation check failed"
+    MSG = "BoardValidation check failed"
     ERR_CODE = "BOARD_VALIDATION_EXCEPTION"
     
     def __init__(

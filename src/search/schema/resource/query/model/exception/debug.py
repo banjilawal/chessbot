@@ -41,7 +41,7 @@ class SchemaQueryDebugException(DebugException):
         DebugException
     """
     ERR_CODE = "SCHEMA_QUERY_EXCEPTION"
-    MSG = str = "SchemaQuery had an error."
+    MSG = "SchemaQuery had an error."
     
     def __init__(
             self,

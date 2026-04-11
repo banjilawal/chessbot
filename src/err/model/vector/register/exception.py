@@ -41,7 +41,7 @@ class VectorRegisterException(ModelException):
     Super Class:
         VectorException
     """
-    MSG = str = "VectorRegister error state."
+    MSG = "VectorRegister error state."
     ERR_CODE = "VECTOR_REGISTER_EXCEPTION"
     
     def _init_(

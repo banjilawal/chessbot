@@ -45,7 +45,7 @@ class TeamContextCollisionException(ContextCollisionException):
     Super Class:
         ContextCollisionException
     """
-    MSG = str = "No collision logic for TeamContext attribute"
+    MSG = "No collision logic for TeamContext attribute"
     ERR_CODE = "TEAM_CONTEXT_COLLISION_FAILURE"
     
     def __init__(

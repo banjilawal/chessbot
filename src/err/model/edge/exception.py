@@ -41,7 +41,7 @@ class EdgeException(ModelException):
     Super Class:
         ModelException
     """
-    MSG = str = "Edge error state."
+    MSG = "Edge error state."
     ERR_CODE = "EDGE_ERROR"
     
     def __init__(

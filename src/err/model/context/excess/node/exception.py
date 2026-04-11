@@ -40,7 +40,7 @@ class ExcessNodeContextFlagsException(ExcessContextFlagsException):
     Super Class:
         ExcessContextFlagsException
     """
-    MSG = str = "More than one NodeCcontext attribute enabled."
+    MSG = "More than one NodeCcontext attribute enabled."
     ERR_CODE = "EXCESS_NODE_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

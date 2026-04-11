@@ -45,7 +45,7 @@ class HostageContextCollisionException(ContextCollisionException):
     Super Class:
         ContextCollisionException
     """
-    MSG = str = "No collision logic for HostageContext attribute"
+    MSG = "No collision logic for HostageContext attribute"
     ERR_CODE = "HOSTAGE_CONTEXT_COLLISION_FAILURE"
     
     def __init__(

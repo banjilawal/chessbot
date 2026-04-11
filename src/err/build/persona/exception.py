@@ -41,7 +41,7 @@ class PersonaBuildException(BuildException):
     Super Class:
         BuildException
     """
-    MSG = str = "PersonaBuild step failed"
+    MSG = "PersonaBuild step failed"
     ERR_CODE = "PERSONA_BUILD_FAILURE"
     
     def __init__(

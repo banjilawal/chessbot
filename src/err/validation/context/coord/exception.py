@@ -44,7 +44,7 @@ class CoordContextValidationException(ContextValidationException):
     Super Class:
         ContextValidationException
     """
-    MSG = str = "No validation logic for CoordContext attribute"
+    MSG = "No validation logic for CoordContext attribute"
     ERR_CODE = "COORD_CONTEXT_VALIDATION_EXCEPTION"
     
     def __init__(

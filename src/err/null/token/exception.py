@@ -40,7 +40,7 @@ class TokenNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = str = "Token is null."
+    MSG = "Token is null."
     ERR_CODE = "TOKEN_NULL_EXCEPTION"
     
     def __init__(

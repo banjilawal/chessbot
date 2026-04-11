@@ -42,7 +42,7 @@ class VectorEuclideanException(VectorOperationException):
     Super Class:
         VectorOperationException
     """
-    MSG = str = "Error during Euclidean distance calculation."
+    MSG = "Error during Euclidean distance calculation."
     ERR_CODE = "EUCLIDEAN_DISTANCE_CALCULATION_ERROR"
     
     def __init__(

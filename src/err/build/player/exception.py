@@ -43,7 +43,7 @@ class PlayerBuildException(BuildException):
     Super Class:
         BuildException
     """
-    MSG = str = "PlayerBuild step failed"
+    MSG = "PlayerBuild step failed"
     ERR_CODE = "PLAYER_BUILD_FAILURE"
     
     def __init__(

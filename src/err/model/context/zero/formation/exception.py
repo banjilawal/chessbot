@@ -40,7 +40,7 @@ class ZeroFormationContextFlagsException(ZeroContextFlagsException):
     Super Class:
         ZeroContextFlagsException
     """
-    MSG = str = "No FormationCcontext attribute enabled."
+    MSG = "No FormationCcontext attribute enabled."
     ERR_CODE = "ZERO_FORMATION_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

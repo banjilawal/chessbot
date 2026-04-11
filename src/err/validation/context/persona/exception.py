@@ -44,7 +44,7 @@ class PersonaContextValidationException(ContextValidationException):
     Super Class:
         ContextValidationException
     """
-    MSG = str = "No validation logic for PersonaContext attribute"
+    MSG = "No validation logic for PersonaContext attribute"
     ERR_CODE = "PERSONA_CONTEXT_VALIDATION_EXCEPTION"
     
     def __init__(

@@ -44,7 +44,7 @@ class BoardContextValidationException(ContextValidationException):
     Super Class:
         ContextValidationException
     """
-    MSG = str = "No validation logic for BoardContext attribute"
+    MSG = "No validation logic for BoardContext attribute"
     ERR_CODE = "BOARD_CONTEXT_VALIDATION_EXCEPTION"
     
     def __init__(

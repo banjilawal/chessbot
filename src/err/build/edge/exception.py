@@ -43,7 +43,7 @@ class EdgeBuildException(BuildException):
     Super Class:
         BuildException
     """
-    MSG = str = "EdgeBuild step failed"
+    MSG = "EdgeBuild step failed"
     ERR_CODE = "EDGE_BUILD_FAILURE"
     
     def __init__(

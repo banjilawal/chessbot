@@ -45,7 +45,7 @@ class VectorContextValidationException(ContextValidationException):
     Super Class:
         ContextValidationException
     """
-    MSG = str = "VectorContext validation failed."
+    MSG = "VectorContext validation failed."
     ERR_CODE = "VECTOR_CONTEXT_VALIDATION_EXCEPTION"
     
     def __init__(

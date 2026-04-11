@@ -43,7 +43,7 @@ class SquareCollisionException(CollisionException):
     Super Class:
         CollisionException
     """
-    MSG = str = "SquareCollision step failed"
+    MSG = "SquareCollision step failed"
     ERR_CODE = "SQUARE_COLLISION_FAILURE"
     
     def __init__(

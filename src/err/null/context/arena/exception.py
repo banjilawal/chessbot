@@ -44,7 +44,7 @@ class ArenaContextNullException(ContextNullException):
     Super Class:
         ContextNullException
     """
-    MSG = str = "No null logic for ArenaContext attribute"
+    MSG = "No null logic for ArenaContext attribute"
     ERR_CODE = "ARENA_CONTEXT_NULL_EXCEPTION"
     
     def __init__(

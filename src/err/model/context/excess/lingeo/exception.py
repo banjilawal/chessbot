@@ -40,7 +40,7 @@ class ExcessVectorContextFlagsException(ExcessContextFlagsException):
     Super Class:
         ExcessContextFlagsException
     """
-    MSG = str = "More than one VectorCcontext attribute enabled."
+    MSG = "More than one VectorCcontext attribute enabled."
     ERR_CODE = "EXCESS_VECTOR_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

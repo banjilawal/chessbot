@@ -41,7 +41,7 @@ class PlayerException(ModelException):
     Super Class:
         ModelException
     """
-    MSG = str = "Player error state."
+    MSG = "Player error state."
     ERR_CODE = "PLAYER_ERROR"
     
     def __init__(

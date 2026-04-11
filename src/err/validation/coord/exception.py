@@ -42,7 +42,7 @@ class CoordValidationException(ValidationException):
     Super Class:
         ValidationException
     """
-    MSG = str = "CoordValidation check failed"
+    MSG = "CoordValidation check failed"
     ERR_CODE = "COORD_VALIDATION_EXCEPTION"
     
     def __init__(

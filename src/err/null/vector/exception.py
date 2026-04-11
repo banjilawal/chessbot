@@ -40,7 +40,7 @@ class VectorNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = str = "Vector cannot be null."
+    MSG = "Vector cannot be null."
     ERR_CODE = "VECTOR_NULL_EXCEPTION"
     
     def __init__(

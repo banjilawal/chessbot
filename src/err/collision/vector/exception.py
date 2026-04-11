@@ -43,7 +43,7 @@ class VectorCollisionException(CollisionException):
     Super Class:
         CollisionException
     """
-    MSG = str = "VectorCollision step failed"
+    MSG = "VectorCollision step failed"
     ERR_CODE = "VECTOR_COLLISION_FAILURE"
     
     def __init__(

@@ -41,7 +41,7 @@ class GameBuildException(BuildException):
     Super Class:
         BuildException
     """
-    MSG = str = "GameBuild step failed"
+    MSG = "GameBuild step failed"
     ERR_CODE = "GAME_BUILD_FAILURE"
     
     def __init__(

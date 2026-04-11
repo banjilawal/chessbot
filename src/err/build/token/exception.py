@@ -43,7 +43,7 @@ class TokenBuildException(BuildException):
     Super Class:
         BuildException
     """
-    MSG = str = "TokenBuild step failed."
+    MSG = "TokenBuild step failed."
     ERR_CODE = "TOKEN_BUILD_FAILURE"
     
     def __init__(

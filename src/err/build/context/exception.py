@@ -43,7 +43,7 @@ class ContextBuildException(BuildException):
     Super Class:
         BuildException
     """
-    MSG = str = "No build logic for context's attribute"
+    MSG = "No build logic for context's attribute"
     ERR_CODE = "CONTEXT_BUILD_FAILURE"
     
     def __init__(

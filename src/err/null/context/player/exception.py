@@ -44,7 +44,7 @@ class PlayerContextNullException(ContextNullException):
     Super Class:
         ContextNullException
     """
-    MSG = str = "No null logic for PlayerContext attribute"
+    MSG = "No null logic for PlayerContext attribute"
     ERR_CODE = "PLAYER_CONTEXT_NULL_EXCEPTION"
     
     def __init__(

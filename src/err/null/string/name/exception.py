@@ -40,7 +40,7 @@ class NameNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = str = "Name cannot be null."
+    MSG = "Name cannot be null."
     ERR_CODE = "NAME_NULL_EXCEPTION"
     
     def __init__(

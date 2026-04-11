@@ -44,7 +44,7 @@ class EdgeContextNullException(ContextNullException):
     Super Class:
         ContextNullException
     """
-    MSG = str = "No null logic for EdgeContext attribute"
+    MSG = "No null logic for EdgeContext attribute"
     ERR_CODE = "EDGE_CONTEXT_NULL_EXCEPTION"
     
     def __init__(

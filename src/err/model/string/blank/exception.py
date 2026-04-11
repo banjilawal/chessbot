@@ -41,7 +41,7 @@ class StringBlankException(StringException):
     Super Class:
         ModelException
     """
-    MSG = str = "Whitespace string not allowed"
+    MSG = "Whitespace string not allowed"
     ERR_CODE = "STRING_BLANK_ERROR"
     
     def __init__(

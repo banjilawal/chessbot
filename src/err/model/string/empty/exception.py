@@ -41,7 +41,7 @@ class StringEmptyException(StringException):
     Super Class:
         StringException
     """
-    MSG = str = "String cannot be empty."
+    MSG = "String cannot be empty."
     ERR_CODE = "STRING_EMPTY_ERROR"
     
     def __init__(

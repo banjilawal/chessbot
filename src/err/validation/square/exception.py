@@ -42,7 +42,7 @@ class SquareValidationException(ValidationException):
     Super Class:
         ValidationException
     """
-    MSG = str = "SquareValidation check failed"
+    MSG = "SquareValidation check failed"
     ERR_CODE = "SQUARE_VALIDATION_EXCEPTION"
     
     def __init__(

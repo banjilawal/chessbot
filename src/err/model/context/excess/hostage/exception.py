@@ -40,7 +40,7 @@ class ExcessHostageContextFlagsException(ExcessContextFlagsException):
     Super Class:
         ExcessContextFlagsException
     """
-    MSG = str = "More than one HostageCcontext attribute enabled."
+    MSG = "More than one HostageCcontext attribute enabled."
     ERR_CODE = "EXCESS_HOSTAGE_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

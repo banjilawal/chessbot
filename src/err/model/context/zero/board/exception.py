@@ -40,7 +40,7 @@ class ZeroBoardContextFlagsException(ZeroContextFlagsException):
     Super Class:
         ZeroContextFlagsException
     """
-    MSG = str = "No BoardCcontext attribute enabled."
+    MSG = "No BoardCcontext attribute enabled."
     ERR_CODE = "ZERO_BOARD_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

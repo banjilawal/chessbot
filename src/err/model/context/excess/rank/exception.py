@@ -40,7 +40,7 @@ class ExcessRankContextFlagsException(ExcessContextFlagsException):
     Super Class:
         ExcessContextFlagsException
     """
-    MSG = str = "More than one RankCcontext attribute enabled."
+    MSG = "More than one RankCcontext attribute enabled."
     ERR_CODE = "EXCESS_RANK_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

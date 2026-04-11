@@ -44,7 +44,7 @@ class PersonaContextNullException(ContextNullException):
     Super Class:
         ContextNullException
     """
-    MSG = str = "No null logic for PersonaContext attribute"
+    MSG = "No null logic for PersonaContext attribute"
     ERR_CODE = "PERSONA_CONTEXT_NULL_EXCEPTION"
     
     def __init__(

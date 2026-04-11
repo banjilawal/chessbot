@@ -43,7 +43,7 @@ class SquareBuildException(BuildException):
     Super Class:
         BuildException
     """
-    MSG = str = "SquareBuild step failed"
+    MSG = "SquareBuild step failed"
     ERR_CODE = "SQUARE_BUILD_FAILURE"
     
     def __init__(

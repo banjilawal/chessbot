@@ -44,7 +44,7 @@ class PlayerContextValidationException(ContextValidationException):
     Super Class:
         ContextValidationException
     """
-    MSG = str = "No validation logic for PlayerContext attribute"
+    MSG = "No validation logic for PlayerContext attribute"
     ERR_CODE = "PLAYER_CONTEXT_VALIDATION_EXCEPTION"
     
     def __init__(

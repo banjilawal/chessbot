@@ -44,7 +44,7 @@ class SquareContextValidationException(ContextValidationException):
     Super Class:
         ContextValidationException
     """
-    MSG = str = "No validation logic for SquareContext attribute"
+    MSG = "No validation logic for SquareContext attribute"
     ERR_CODE = "SQUARE_CONTEXT_VALIDATION_EXCEPTION"
     
     def __init__(

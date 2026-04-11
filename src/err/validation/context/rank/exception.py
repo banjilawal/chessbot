@@ -44,7 +44,7 @@ class RankContextValidationException(ContextValidationException):
     Super Class:
         ContextValidationException
     """
-    MSG = str = "No validation logic for RankContext attribute"
+    MSG = "No validation logic for RankContext attribute"
     ERR_CODE = "RANK_CONTEXT_VALIDATION_EXCEPTION"
     
     def __init__(

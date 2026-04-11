@@ -41,7 +41,7 @@ class BishopException(ModelException):
     Super Class:
         ModelException
     """
-    MSG = str = "Bishop error state."
+    MSG = "Bishop error state."
     ERR_CODE = "BISHOP_ERROR"
     
     def __init__(

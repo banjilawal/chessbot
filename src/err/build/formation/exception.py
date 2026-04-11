@@ -41,7 +41,7 @@ class FormationBuildException(BuildException):
     Super Class:
         BuildException
     """
-    MSG = str = "FormationBuild step failed"
+    MSG = "FormationBuild step failed"
     ERR_CODE = "FORMATION_BUILD_FAILURE"
     
     def __init__(

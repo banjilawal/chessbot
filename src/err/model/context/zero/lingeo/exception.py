@@ -40,7 +40,7 @@ class ZeroVectorContextFlagsException(ZeroContextFlagsException):
     Super Class:
         ZeroContextFlagsException
     """
-    MSG = str = "No VectorCcontext attribute enabled."
+    MSG = "No VectorCcontext attribute enabled."
     ERR_CODE = "ZERO_VECTOR_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

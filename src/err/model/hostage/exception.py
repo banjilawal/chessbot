@@ -41,7 +41,7 @@ class HostageException(ModelException):
     Super Class:
         ModelException
     """
-    MSG = str = "Hostage error state."
+    MSG = "Hostage error state."
     ERR_CODE = "HOSTAGE_ERROR"
     
     def __init__(

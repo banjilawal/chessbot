@@ -45,7 +45,7 @@ class FormationContextCollisionException(ContextCollisionException):
     Super Class:
         ContextCollisionException
     """
-    MSG = str = "No collision logic for FormationContext attribute"
+    MSG = "No collision logic for FormationContext attribute"
     ERR_CODE = "FORMATION_CONTEXT_COLLISION_FAILURE"
     
     def __init__(

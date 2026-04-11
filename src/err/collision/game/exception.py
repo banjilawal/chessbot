@@ -41,7 +41,7 @@ class GameCollisionException(CollisionException):
     Super Class:
         CollisionException
     """
-    MSG = str = "GameCollision step failed"
+    MSG = "GameCollision step failed"
     ERR_CODE = "GAME_COLLISION_FAILURE"
     
     def __init__(

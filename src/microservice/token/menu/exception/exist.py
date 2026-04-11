@@ -42,7 +42,7 @@ class TokenCommandNotFoundException(TokenCommandDebugException):
         TokenCommandDebugException
     """
     ERR_CODE = "TOKEN_COMMAND_NOT_FOUND_EXCEPTION"
-    MSG = str = "Command not found in the TokenCommand set."
+    MSG = "Command not found in the TokenCommand set."
     
     def __init__(
             self,

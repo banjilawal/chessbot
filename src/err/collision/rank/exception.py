@@ -43,7 +43,7 @@ class RankCollisionException(CollisionException):
     Super Class:
         CollisionException
     """
-    MSG = str = "RankCollision step failed"
+    MSG = "RankCollision step failed"
     ERR_CODE = "RANK_COLLISION_FAILURE"
     
     def __init__(

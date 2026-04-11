@@ -41,7 +41,7 @@ class CommandNameNotFoundException(CommandDebugException):
         CommandDebugException
     """
     ERR_CODE = "COMMAND_NAME_NOT_FOUND_EXCEPTION"
-    MSG = str = "Command not found."
+    MSG = "Command not found."
     
     def __init__(
             self,

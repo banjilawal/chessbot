@@ -44,7 +44,7 @@ class NullCommandException(NullException):
         CommandDebugException
     """
     ERR_CODE = "NULL_COMMAND_EXCEPTION"
-    MSG = str = "Command cannot be null"
+    MSG = "Command cannot be null"
     
     def __init__(
             self,

@@ -45,7 +45,7 @@ class NodeContextBuildException(ContextBuildException):
     Super Class:
         ContextBuildException
     """
-    MSG = str = "No build logic for NodeContext attribute"
+    MSG = "No build logic for NodeContext attribute"
     ERR_CODE = "NODE_CONTEXT_BUILD_FAILURE"
     
     def __init__(

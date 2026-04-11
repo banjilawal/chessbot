@@ -1,7 +1,7 @@
-# src/err/operation/bootstrap/bootstrap.py
+# src/err/operation/build/bootstrap/bootstrap.py
 
 """
-Module: err.operation.bootstrap.bootstrap
+Module: err.operation.build.bootstrap.bootstrap
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,20 +10,20 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BootstrapException
+from err import OperationException
 
 __all__ = [
-    # ======================# BOOTSTRAP_BOOTSTRAP_FAILURE #======================#
-    "BootstrapBuildException",
+    # ======================# BOOTSTRAP_FAILURE #======================#
+    "BootstrapException",
 ]
-# ======================# BOOTSTRAP_BOOTSTRAP_FAILURE #======================#
-class BootstrapBuildException(BootstrapException):
+# ======================# BOOTSTRAP_FAILURE #======================#
+class BootstrapException(OperationException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BuildBootstrap step failed.
+        1.  Indicate that a Bootstrap operation failed.
 
     Attributes:
         op: Optional[str]
@@ -39,10 +39,10 @@ class BootstrapBuildException(BootstrapException):
     Provides:
 
     Super Class:
-        BootstrapException
+        OperationException
     """
-    MSG = str = "Bootstrap step failed"
-    ERR_CODE = "BOOTSTRAP_BOOTSTRAP_FAILURE"
+    MSG = "Bootstrap step failed"
+    ERR_CODE = "BOOTSTRAP_FAILURE"
     
     def __init__(
             self,

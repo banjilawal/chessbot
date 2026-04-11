@@ -42,7 +42,7 @@ class NameCollisionException(CollisionException):
     Super Class:
         CollisionException
     """
-    MSG = str = "A name collision occurred."
+    MSG = "A name collision occurred."
     ERR_CODE = "NAME_COLLISION_ERROR"
     
     def __init__(

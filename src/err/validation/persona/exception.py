@@ -40,7 +40,7 @@ class PersonaValidationException(ValidationException):
     Super Class:
         ValidationException
     """
-    MSG = str = "PersonaValidation check failed"
+    MSG = "PersonaValidation check failed"
     ERR_CODE = "PERSONA_VALIDATION_EXCEPTION"
     
     def __init__(

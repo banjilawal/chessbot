@@ -41,7 +41,7 @@ class PersonaCollisionException(CollisionException):
     Super Class:
         CollisionException
     """
-    MSG = str = "PersonaCollision step failed"
+    MSG = "PersonaCollision step failed"
     ERR_CODE = "PERSONA_COLLISION_FAILURE"
     
     def __init__(

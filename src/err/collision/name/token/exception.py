@@ -42,7 +42,7 @@ class TokenDesignationCollisionException(NameCollisionException):
     Super Class:
         NameCollisionException
     """
-    MSG = str = "A token is already using the name."
+    MSG = "A token is already using the name."
     ERR_CODE = "TOKEN_DESIGNATION_COLLISION_ERROR"
     
     def __init__(

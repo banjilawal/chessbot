@@ -41,7 +41,7 @@ class FormationException(ModelException):
     Super Class:
         ModelException
     """
-    MSG = str = "Formation error state."
+    MSG = "Formation error state."
     ERR_CODE = "FORMATION_ERROR"
     
     def __init__(

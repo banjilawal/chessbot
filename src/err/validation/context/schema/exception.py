@@ -44,7 +44,7 @@ class SchemaContextValidationException(ContextValidationException):
     Super Class:
         ContextValidationException
     """
-    MSG = str = "No validation logic for SchemaContext attribute"
+    MSG = "No validation logic for SchemaContext attribute"
     ERR_CODE = "SCHEMA_CONTEXT_VALIDATION_EXCEPTION"
     
     def __init__(

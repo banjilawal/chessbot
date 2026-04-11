@@ -43,7 +43,7 @@ class VectorRegisterMismatchException(VectorOperationException):
     Super Class:
         VectorOperationException
     """
-    MSG = str = "The registers do not have the same context."
+    MSG = "The registers do not have the same context."
     ERR_CODE = "VECTOR_REGISTER_MISMATCH_ERROR"
     
     def __init__(

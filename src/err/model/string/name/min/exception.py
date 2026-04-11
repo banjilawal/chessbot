@@ -40,7 +40,7 @@ class MinNameLengthException(NameException):
     Super Class:
         NameException
     """
-    MSG = str = "Name is too short."
+    MSG = "Name is too short."
     ERR_CODE = "MIN_NAME_LENGTH_ERROR"
     
     def __init__(

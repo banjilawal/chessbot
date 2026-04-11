@@ -40,7 +40,7 @@ class ExcessPlayerContextFlagsException(ExcessContextFlagsException):
     Super Class:
         ExcessContextFlagsException
     """
-    MSG = str = "More than one PlayerCcontext attribute enabled."
+    MSG = "More than one PlayerCcontext attribute enabled."
     ERR_CODE = "EXCESS_PLAYER_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

@@ -40,7 +40,7 @@ class ExcessSquareContextFlagsException(ExcessContextFlagsException):
     Super Class:
         ExcessContextFlagsException
     """
-    MSG = str = "More than one SquareCcontext attribute enabled."
+    MSG = "More than one SquareCcontext attribute enabled."
     ERR_CODE = "EXCESS_SQUARE_CONTEXT_FLAGS_EXCEPTION"
     
     def __init__(

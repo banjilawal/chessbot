@@ -42,7 +42,7 @@ class ScalarValidationException(ValidationException):
     Super Class:
         ValidationException
     """
-    MSG = str = "ScalarValidation check failed"
+    MSG = "ScalarValidation check failed"
     ERR_CODE = "SCALAR_VALIDATION_EXCEPTION"
     
     def __init__(

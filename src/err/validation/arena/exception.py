@@ -42,7 +42,7 @@ class ArenaValidationException(ValidationException):
     Super Class:
         ValidationException
     """
-    MSG = str = "ArenaValidation check failed"
+    MSG = "ArenaValidation check failed"
     ERR_CODE = "ARENA_VALIDATION_EXCEPTION"
     
     def __init__(
