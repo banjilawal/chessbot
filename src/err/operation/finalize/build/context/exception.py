@@ -1,7 +1,7 @@
-# src/err/operation/build/finalize/build/token/exception.py
+# src/err/operation/finalize/build/context/exception.py
 
 """
-Module: err.operation.build.finalize.build.token.exception
+Module: err.operation.finalize.build.context.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,39 +10,39 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import FinalizeException
+from err import FinalizeBuildException
+
 
 __all__ = [
-    # ======================# TOKEN_FINALIZE_BUILD_FAILURE #======================#
-    "TokenFinalizeBuildException",
+    # ======================# FINALIZING_CONTEXT_BUILD_FAILURE #======================#
+    "FinalizeContextBuildException",
 ]
-# ======================# TOKEN_FINALIZE_BUILD_FAILURE #======================#
-class TokenFinalizeBuildException(FinalizeException):
+
+# ======================# FINALIZING_CONTEXT_BUILD_FAILURE #======================#
+class FinalizeContextBuildException(FinalizeBuildException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenBuildFinalize step failed.
+        1.  Indicate that finalizing a ContextBuild failed.
 
     Attributes:
-        op: Optional[str]
-        msg: Optional[str]
-        var: Optional[str]
-        val: Optional[Any]
-        ex: Optional[Exception]
-        cls_name: Optional[str]
-        cls_mthd: Optional[str]
-        err_code: Optional[str]
-        rslt_type: Optional[str]
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
+            ex: Optional[Exception]
+            cls_name: Optional[str]
+            cls_mthd: Optional[str]
+            err_code: Optional[str]
             
     Provides:
 
     Super Class:
-        FinalizeException
+        FinalizeBuildException
     """
-    MSG = "Finalize step failed"
-    ERR_CODE = "TOKEN_FINALIZE_BUILD_FAILURE"
+    MSG = "Finalizing a context's attribute"
+    ERR_CODE = "FINALIZING_CONTEXT_BUILD_FAILURE"
     
     def __init__(
             self,

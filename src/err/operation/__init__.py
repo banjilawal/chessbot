@@ -12,6 +12,7 @@ version: 1.0.0
 # Packages
 from .bootstrap import *
 from .build import *
+from .finalize import *
 from .math import *
 
 # Modules

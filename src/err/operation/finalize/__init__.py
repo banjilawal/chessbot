@@ -1,16 +1,16 @@
-# src/err/operation/build/finalize/build/__init__.py
+# src/err/operation/finalize/__init__.py
 
 """
-Module: err.operation.build.finalize.build.__init__
+Module: err.operation.finalize.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.OPERATION.BUILD.FINALIZE.BUILD PACKAGE ===========#
+# ============ ERR.OPERATION.FINALIZE PACKAGE ===========#
 
 # Packages
-from .token import *
+from .build import *
 
 # Modules
-from .exception import FinalizeException
+from .exception import FinalizationException

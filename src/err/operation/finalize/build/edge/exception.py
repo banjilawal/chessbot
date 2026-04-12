@@ -1,7 +1,7 @@
-# src/err/finalization/__init__.py
+# src/err/operation/finalize/build/edge/exception.py
 
 """
-Module: err.finalization.__init__
+Module: err.finalize.build.edge.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,21 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperationException
+from err import FinalizeBuildException
+
 
 __all__ = [
-    # ======================# FINALIZATION_FAILURE #======================#
-    "FinalizationException",
+    # ======================# FINALIZING_EDGE_BUILD_FAILURE #======================#
+    "FinalizeEdgeBuildException",
 ]
 
-# ======================# FINALIZATION_FAILURE #======================#
-class FinalizationException(OperationException):
+# ======================# FINALIZING_EDGE_BUILD_FAILURE #======================#
+class FinalizeEdgeBuildException(FinalizeBuildException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that finalizing a finalization step failed.
+        1.  Indicate that an EdgeBuild failed.
 
     Attributes:
         op: Optional[str]
@@ -40,19 +41,19 @@ class FinalizationException(OperationException):
     Provides:
 
     Super Class:
-        OperationException
+        FinalizeBuildException
     """
-    MSG = "Finalizing a Finalization step failed."
-    ERR_CODE = "FINALIZATION_FAILURE"
+    MSG = "Finalizing a EdgeBuild failed."
+    ERR_CODE = "FINALIZING_EDGE_BUILD_FAILURE"
     
     def __init__(
             self,
             msg: Optional[str] = None,
             var: Optional[str] = None,
             val: Optional[Any] = None,
-            cls_mthd: Optional[str] = None,
-            cls_name: Optional[str] = None,
             ex: Optional[Exception] = None,
+            cls_name: Optional[str] = None,
+            cls_mthd: Optional[str] = None,
             err_code: Optional[str] = None,
     ):
         """

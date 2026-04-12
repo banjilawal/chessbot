@@ -1,58 +1,55 @@
-# src/err/finalization/__init__.py
+# src/err/operation/finalize/build/context/game/exception.py
 
 """
-Module: err.finalization.__init__
+Module: err.operation.finalize.build.context.game.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
-
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import OperationException
+from err import FinalizeContextBuildException
 
 __all__ = [
-    # ======================# FINALIZATION_FAILURE #======================#
-    "FinalizationException",
+    # ======================# FINALIZING_GAME_CONTEXT_BUILD_FAILURE #======================#
+    "FinalizeGameContextBuildException",
 ]
 
-# ======================# FINALIZATION_FAILURE #======================#
-class FinalizationException(OperationException):
+# ======================# FINALIZING_GAME_CONTEXT_BUILD_FAILURE #======================#
+class FinalizeGameContextBuildException(FinalizeContextBuildException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that finalizing a finalization step failed.
+        1.  Indicate that finalizing a GameContextBuild failed.
 
     Attributes:
-        op: Optional[str]
-        msg: Optional[str]
-        var: Optional[str]
-        val: Optional[Any]
-        ex: Optional[Exception]
-        cls_name: Optional[str]
-        cls_mthd: Optional[str]
-        err_code: Optional[str]
-        rslt_type: Optional[str]
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
+            ex: Optional[Exception]
+            cls_name: Optional[str]
+            cls_mthd: Optional[str]
+            err_code: Optional[str]
             
     Provides:
 
     Super Class:
-        OperationException
+        ContextFinalizeBuildException
     """
-    MSG = "Finalizing a Finalization step failed."
-    ERR_CODE = "FINALIZATION_FAILURE"
+    MSG = "Finalizing a GameContextBuild failed."
+    ERR_CODE = "FINALIZING_GAME_CONTEXT_BUILD_FAILURE"
     
     def __init__(
             self,
             msg: Optional[str] = None,
             var: Optional[str] = None,
             val: Optional[Any] = None,
-            cls_mthd: Optional[str] = None,
-            cls_name: Optional[str] = None,
             ex: Optional[Exception] = None,
+            cls_name: Optional[str] = None,
+            cls_mthd: Optional[str] = None,
             err_code: Optional[str] = None,
     ):
         """
