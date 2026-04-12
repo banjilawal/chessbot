@@ -23,9 +23,7 @@ from err import ChessException
 class ExecutionRouteException(ChessException):
     """
     Role:
-        -   Exception Chain Layer 2
-        -   Error Variable Identifier
-        -   Debugging Metadata provider
+        -   Error Tracing
     
     Responsibilities:
         1.  Indicate that an execution route was missing from the logic.

@@ -11,7 +11,8 @@ version: 1.0.0
 
 # Packages
 from .bootstrap import *
-from .vector import *
+from .build import *
+from .math import *
 
 # Modules
 from .exception import OperationException

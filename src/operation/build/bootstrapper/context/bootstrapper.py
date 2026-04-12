@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from analysis import CollisionReport
-from err import ContextBootstrapBuildException
+from err import BootstrapContextBuildException
 from model import Context, ContextBlueprint
 from operation import BuildBootstrapper
 
@@ -40,11 +40,11 @@ class ContextBuildBootstrapper(BuildBootstrapper[Context]):
         if id_validation_result.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                ContextBootstrapBuildException(
+                BootstrapContextBuildException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=ContextBootstrapBuildException.MSG,
-                    err_code=ContextBootstrapBuildException.ERR_CODE,
+                    msg=BootstrapContextBuildException.MSG,
+                    err_code=BootstrapContextBuildException.ERR_CODE,
                     ex=id_validation_result.exception,
                 )
             )
@@ -53,11 +53,11 @@ class ContextBuildBootstrapper(BuildBootstrapper[Context]):
         if team_validation.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                ContextBootstrapBuildException(
+                BootstrapContextBuildException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=ContextBootstrapBuildException.MSG,
-                    err_code=ContextBootstrapBuildException.ERR_CODE,
+                    msg=BootstrapContextBuildException.MSG,
+                    err_code=BootstrapContextBuildException.ERR_CODE,
                     ex=team_validation.exception,
                 )
             )
@@ -66,11 +66,11 @@ class ContextBuildBootstrapper(BuildBootstrapper[Context]):
         if formation_validation.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                ContextBootstrapBuildException(
+                BootstrapContextBuildException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=ContextBootstrapBuildException.MSG,
-                    err_code=ContextBootstrapBuildException.ERR_CODE,
+                    msg=BootstrapContextBuildException.MSG,
+                    err_code=BootstrapContextBuildException.ERR_CODE,
                     ex=formation_validation.exception,
                 )
             )
@@ -79,11 +79,11 @@ class ContextBuildBootstrapper(BuildBootstrapper[Context]):
         if rank_build_result.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                ContextBootstrapBuildException(
+                BootstrapContextBuildException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=ContextBootstrapBuildException.MSG,
-                    err_code=ContextBootstrapBuildException.ERR_CODE,
+                    msg=BootstrapContextBuildException.MSG,
+                    err_code=BootstrapContextBuildException.ERR_CODE,
                     ex=rank_build_result.exception,
                 )
             )
@@ -91,11 +91,11 @@ class ContextBuildBootstrapper(BuildBootstrapper[Context]):
         if id_verification_result.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                ContextBootstrapBuildException(
+                BootstrapContextBuildException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=ContextBootstrapBuildException.MSG,
-                    err_code=ContextBootstrapBuildException.ERR_CODE,
+                    msg=BootstrapContextBuildException.MSG,
+                    err_code=BootstrapContextBuildException.ERR_CODE,
                     ex=rank_build_result.exception,
                 )
             )
@@ -103,22 +103,22 @@ class ContextBuildBootstrapper(BuildBootstrapper[Context]):
         if not collision_analysis_result.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                ContextBootstrapBuildException(
+                BootstrapContextBuildException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=ContextBootstrapBuildException.MSG,
-                    err_code=ContextBootstrapBuildException.ERR_CODE,
+                    msg=BootstrapContextBuildException.MSG,
+                    err_code=BootstrapContextBuildException.ERR_CODE,
                     ex=rank_build_result.exception,
                 )
             )
         if collision_analysis_result.payload.collision_exists:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                ContextBootstrapBuildException(
+                BootstrapContextBuildException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=ContextBootstrapBuildException.MSG,
-                    err_code=ContextBootstrapBuildException.ERR_CODE,
+                    msg=BootstrapContextBuildException.MSG,
+                    err_code=BootstrapContextBuildException.ERR_CODE,
                     ex=collision_analysis_result.payload.exception,
                 )
             )
@@ -138,11 +138,11 @@ class ContextBuildBootstrapper(BuildBootstrapper[Context]):
         if id_validation.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                ContextBootstrapBuildException(
+                BootstrapContextBuildException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=ContextBootstrapBuildException.MSG,
-                    err_code=ContextBootstrapBuildException.ERR_CODE,
+                    msg=BootstrapContextBuildException.MSG,
+                    err_code=BootstrapContextBuildException.ERR_CODE,
                     ex=id_validation.exception,
                 )
             )

@@ -25,9 +25,7 @@ from err import ContextCollisionException
 class TokenContextCollisionException(ContextCollisionException):
     """
     Role:
-        -   Exception Chain Layer 2
-        -   Error Variable Identifier
-        -   Debugging Metadata provider
+        -   Error Tracing
 
     Responsibilities:
         1.  Indicate that a TokenContextCollision step failed.

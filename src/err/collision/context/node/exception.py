@@ -24,9 +24,7 @@ from err import ContextCollisionException
 class NodeContextCollisionException(ContextCollisionException):
     """
     Role:
-        -   Exception Chain Layer 2
-        -   Error Variable Identifier
-        -   Debugging Metadata provider
+        -   Error Tracing
 
     Responsibilities:
         1.  Indicate that a NodeContextCollision step failed.

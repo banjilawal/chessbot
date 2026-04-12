@@ -23,9 +23,7 @@ __all__ = [
 class VectorContextNullException(ContextNullException):
     """
     Role:
-        -   Exception Chain Layer 2
-        -   Error Variable Identifier
-        -   Debugging Metadata provider
+        -   Error Tracing
 
     Responsibilities:
         1.  Indicate that null was received instead od a VectorContext.

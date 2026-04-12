@@ -1,7 +1,7 @@
-# src/err/operation/build/bootstrap/build/token/exception.py
+# src/err/operation/bootstrap/build/token/exception.py
 
 """
-Module: err.operation.build.bootstrap.build.token.exception
+Module: err.operation.bootstrap.build.build.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,14 +10,14 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BootstrapException
+from err import BootstrapBuildException
 
 __all__ = [
-    # ======================# TOKEN_BOOTSTRAP_BUILD_FAILURE #======================#
-    "TokenBootstrapBuildException",
+    # ======================# BOOTSTRAPPING_TOKEN_BUILD_FAILURE #======================#
+    "BootstrapTokenBuildException",
 ]
-# ======================# TOKEN_BOOTSTRAP_BUILD_FAILURE #======================#
-class TokenBootstrapBuildException(BootstrapException):
+# ======================# BOOTSTRAPPING_TOKEN_BUILD_FAILURE #======================#
+class BootstrapTokenBuildException(BootstrapBuildException):
     """
     Role:
         -   Error Tracing
@@ -39,10 +39,10 @@ class TokenBootstrapBuildException(BootstrapException):
     Provides:
 
     Super Class:
-        BootstrapException
+        BootstrapBuildException
     """
     MSG = "Bootstrap step failed"
-    ERR_CODE = "TOKEN_BOOTSTRAP_BUILD_FAILURE"
+    ERR_CODE = "BOOTSTRAPPING_TOKEN_BUILD_FAILURE"
     
     def __init__(
             self,

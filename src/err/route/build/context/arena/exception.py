@@ -24,9 +24,7 @@ from err import ContextBuildRouteException
 class ArenaContextBuildRouteException(ContextBuildRouteException):
     """
     Role:
-        -   Exception Chain Layer 2
-        -   Error Variable Identifier
-        -   Debugging Metadata provider
+        -   Error Tracing
 
     Responsibilities:
         1.  Indicate that one of ArenaContext build routes is missing.

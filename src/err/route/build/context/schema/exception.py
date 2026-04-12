@@ -24,9 +24,7 @@ from err import ContextBuildRouteException
 class SchemaContextBuildRouteException(ContextBuildRouteException):
     """
     Role:
-        -   Exception Chain Layer 2
-        -   Error Variable Identifier
-        -   Debugging Metadata provider
+        -   Error Tracing
 
     Responsibilities:
         1.  Indicate that one of SchemaContext build routes is missing.

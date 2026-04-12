@@ -24,9 +24,7 @@ from err import ContextSearchRouteException
 class SquareContextSearchRouteException(ContextSearchRouteException):
     """
     Role:
-        -   Exception Chain Layer 2
-        -   Error Variable Identifier
-        -   Debugging Metadata provider
+        -   Error Tracing
 
     Responsibilities:
         1.  Indicate that one of SquareContext search routes is missing.

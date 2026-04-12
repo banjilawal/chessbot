@@ -23,9 +23,7 @@ from err import ContextValidationException
 class TeamContextValidationException(ContextValidationException):
     """
     Role:
-        -   Exception Chain Layer 2
-        -   Error Variable Identifier
-        -   Debugging Metadata provider
+        -   Error Tracing
 
     Responsibilities:
         1.  Indicate that a TeamContextValidation check failed.

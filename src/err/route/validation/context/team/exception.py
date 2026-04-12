@@ -24,9 +24,7 @@ from err import ContextValidationRouteException
 class TeamContextValidationRouteException(ContextValidationRouteException):
     """
     Role:
-        -   Exception Chain Layer 2
-        -   Error Variable Identifier
-        -   Debugging Metadata provider
+        -   Error Tracing
 
     Responsibilities:
         1.  Indicate that one of TeamContext validation routes is missing.

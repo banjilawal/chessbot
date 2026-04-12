@@ -23,9 +23,7 @@ from err import ContextValidationException
 class SquareContextValidationException(ContextValidationException):
     """
     Role:
-        -   Exception Chain Layer 2
-        -   Error Variable Identifier
-        -   Debugging Metadata provider
+        -   Error Tracing
 
     Responsibilities:
         1.  Indicate that a SquareContextValidation check failed.

@@ -1,4 +1,4 @@
-# src/err/operation/__init__.py
+# src/err/operation/exception.py
 
 """
 Module: err.operation.exception

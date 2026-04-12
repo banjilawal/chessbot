@@ -24,9 +24,7 @@ from err import ContextBuildRouteException
 class EdgeContextBuildRouteException(ContextBuildRouteException):
     """
     Role:
-        -   Exception Chain Layer 2
-        -   Error Variable Identifier
-        -   Debugging Metadata provider
+        -   Error Tracing
 
     Responsibilities:
         1.  Indicate that one of EdgeContext build routes is missing.

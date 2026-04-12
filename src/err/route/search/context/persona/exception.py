@@ -24,9 +24,7 @@ from err import ContextSearchRouteException
 class PersonaContextSearchRouteException(ContextSearchRouteException):
     """
     Role:
-        -   Exception Chain Layer 2
-        -   Error Variable Identifier
-        -   Debugging Metadata provider
+        -   Error Tracing
 
     Responsibilities:
         1.  Indicate that one of PersonaContext search routes is missing.

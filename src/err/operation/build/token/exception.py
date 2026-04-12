@@ -1,7 +1,7 @@
-# src/err/operation/build/bootstrap/build/token/exception.py
+# src/err/build/token/exception.py
 
 """
-Module: err.operation.build.bootstrap.build.token.exception
+Module: err.build.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,20 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BootstrapException
+from err import BuildException
+
 
 __all__ = [
-    # ======================# TOKEN_BOOTSTRAP_BUILD_FAILURE #======================#
-    "TokenBootstrapBuildException",
+    # ======================# TOKEN_BUILD_FAILURE #======================#
+    "TokenBuildException",
 ]
-# ======================# TOKEN_BOOTSTRAP_BUILD_FAILURE #======================#
-class TokenBootstrapBuildException(BootstrapException):
+
+# ======================# TOKEN_BUILD_FAILURE #======================#
+class TokenBuildException(BuildException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TokenBuildBootstrap step failed.
+        1.  Indicate a TokenBuild step failed.
 
     Attributes:
         op: Optional[str]
@@ -39,13 +41,14 @@ class TokenBootstrapBuildException(BootstrapException):
     Provides:
 
     Super Class:
-        BootstrapException
+        BuildException
     """
-    MSG = "Bootstrap step failed"
-    ERR_CODE = "TOKEN_BOOTSTRAP_BUILD_FAILURE"
+    MSG = "TokenBuild step failed."
+    ERR_CODE = "TOKEN_BUILD_FAILURE"
     
     def __init__(
             self,
+            op: Optional[str] = None,
             msg: Optional[str] = None,
             var: Optional[str] = None,
             val: Optional[Any] = None,
@@ -53,6 +56,7 @@ class TokenBootstrapBuildException(BootstrapException):
             cls_name: Optional[str] = None,
             cls_mthd: Optional[str] = None,
             err_code: Optional[str] = None,
+            rslt_type: Optional[str] = None,
     ):
         """
         Args:
@@ -64,8 +68,10 @@ class TokenBootstrapBuildException(BootstrapException):
             cls_mthd: Optional[str]
             err_code: Optional[str]
         """
+        op = op or self.OP
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        rslt_type = rslt_type or self.RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,

@@ -23,9 +23,7 @@ from err import ContextNullException
 class PlayerContextNullException(ContextNullException):
     """
     Role:
-        -   Exception Chain Layer 2
-        -   Error Variable Identifier
-        -   Debugging Metadata provider
+        -   Error Tracing
 
     Responsibilities:
         1.  Indicate that a required PlayerContext is null.
