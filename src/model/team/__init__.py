@@ -10,7 +10,7 @@ version: 1.0.1
 # =========== MODEL.TEAM PACKAGE ===========#
 
 # Packages
-None
+from .table import *
 
 # Modules
 from .model import Team

@@ -9,8 +9,9 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from model import TeamTable
 from model.arena import Arena
-from model.team import TeamHash
+from model.team import TeamTable
 from model.board import BoardState
 from model.square import SquareDatabase
 from model.hostage import HostageDatabase
@@ -36,6 +37,7 @@ class Board:
     _id: int
     _arena: Arena
     _state: BoardState
+    _team_table: TeamTable
     _squares: SquareDatabase
     _hostage_database: HostageDatabase
     
@@ -43,8 +45,6 @@ class Board:
             self,
             id: int,
             arena: Arena,
-            squares: SquareDatabase = SquareDatabase(),
-            hostage_database: HostageDatabase = HostageDatabase(),
     ):
         """
         # ACTION:
@@ -63,8 +63,9 @@ class Board:
         
         self._id = id
         self._arena = arena
-        self._squares = squares
-        self._hostage_database = hostage_database
+        team_table = TeamTable()
+        self._squares = SquareDatabase()
+        self._hostage_database = HostageDatabase()
         self._state = BoardState.IS_EMPTY
     
     @property
@@ -88,16 +89,13 @@ class Board:
         return self._squares
     
     @property
-    def team_hash(self) -> TeamHash:
-        return self._team_hash
+    def team_table(self) -> TeamTable:
+        return self._team_table
     
     @property
     def hostage_database(self) -> HostageDatabase:
         return self._hostage_database
     
-    def layout(self):
-        for key in self._team_hash.catalog.keys():
-            self._team_hash.catalog[key].roster.deploy_tokens_on_board()
     
     
     def __eq__(self, other):

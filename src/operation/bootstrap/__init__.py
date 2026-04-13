@@ -15,10 +15,6 @@ log = logging.getLogger("chessbot")
 
 # Packages
 from .bootstrap import *
-from .math import *
-from .microservice import *
-from .stack import *
-from .token import *
+from .builder import *
 
 # Modules
-from .operation import Operation

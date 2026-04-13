@@ -11,9 +11,9 @@ from __future__ import annotations
 
 from typing import Any, TypeVar
 
-from operation.build.bootstrapper import BuildBootstrapper
-from operation.build.builder.builder import Builder
-from operation.build.finalizer import Finalizer
+from operation.bootstrap.bootstrap import BuildBootstrapper
+from operation.bootstrap.builder.builder import Builder
+from operation.finalizer import Finalizer
 from pipeline import Pipeline
 from result import Result
 
