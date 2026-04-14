@@ -1,7 +1,7 @@
-# src/deployment/level.py
+# src/setup/level.py
 
 """
-Module: deployment.level
+Module: setup.level
 Author: Banji Lawal
 Created: 2025-08-24
 version: 1.0.0
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 import logging
 
-from deployment import LogLevelMode
+from setup import LogLevelMode
 
 
 class LogLevelSetter:

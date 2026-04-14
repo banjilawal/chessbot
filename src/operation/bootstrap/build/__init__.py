@@ -1,17 +1,13 @@
-# src/operation/__ini__.py
+# src/operation/bootstrap/build/__ini__.py
 
 """
-Module: operation.__init__
+Module: operation.bootstrap.build.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-import logging
-
-log = logging.getLogger("chessbot")
-
-# =========== OPERATION.BOOTSTRAP PACKAGE ===========#
+# =========== OPERATION.BOOTSTRAP.BUILD PACKAGE ===========#
 
 # Packages
 from .context import *
@@ -19,4 +15,4 @@ from .team import *
 from .token import *
 
 # Modules
-from .operation import BoostrapBuild
+from .operation import BuildBootstrapper

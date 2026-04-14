@@ -9,9 +9,8 @@ version: 1.0.1
 
 from __future__ import annotations
 
-
+from microservice import TeamBinder
 from model.arena import Arena
-from model.team import TeamTable
 from model.board import BoardState
 from model.square import SquareDatabase
 from model.hostage import HostageDatabase
@@ -37,7 +36,7 @@ class Board:
     _id: int
     _arena: Arena
     _state: BoardState
-    _team_table_service: TeamTableService
+    _team_binder: TeamBinder
     _squares: SquareDatabase
     _hostage_database: HostageDatabase
     
@@ -63,7 +62,7 @@ class Board:
         
         self._id = id
         self._arena = arena
-        team_table_service = TeamTableService()
+        team_binder = TeamBinder()
         self._squares = SquareDatabase()
         self._hostage_database = HostageDatabase()
         self._state = BoardState.IS_EMPTY
@@ -89,8 +88,8 @@ class Board:
         return self._squares
     
     @property
-    def team_table_service(self) -> TeamTableService:
-        return self._team_table_service
+    def team_binder(self) -> TeamBinder:
+        return self._team_binder
     
     @property
     def hostage_database(self) -> HostageDatabase:

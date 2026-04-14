@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, TypeVar
 
 from operation.bootstrap.bootstrap import BuildBootstrapper
-from operation.bootstrap.builder.builder import Builder
+from operation.assemble.operation import Assemble
 from operation.finalizer import Finalizer
 from pipeline import Pipeline
 from result import Result
@@ -69,7 +69,7 @@ class BuildPipeline(Pipeline[T]):
     """
     
     _bootstrapper: BuildBootstrapper[T]
-    _builder: Builder[T]
+    _builder: Assemble[T]
     _finalizer: Finalizer[T]
     _blue
     

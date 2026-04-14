@@ -8,10 +8,10 @@ version: 1.0.1
 """
 
 
-# =========== FINALIZE PACKAGE ===========#
+# =========== OPERATION.FINALIZE PACKAGE ===========#
 
 # Packages
-from operation.finalize.build.token import *
+from build import *
 
 # Modules
-from .operation import Finalize
+from .operation import Finalizer

@@ -9,16 +9,15 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import ABC
-from typing import Generic, TypeVar
 
 from err import FinalizeTokenBuildException
-from model import Blueprint, Token, TokenBlueprint
+from model import Token
+from operation import AssemblyFinalizer
 from result import BuildResult
 from system import LoggingLevelRouter
 
 
-class TokenBuildFinalizer(ABC, Generic[T]):
+class TokenAssemblyFinalizer(AssemblyFinalizer[Token]):
     
     @classmethod
     @LoggingLevelRouter.monitor

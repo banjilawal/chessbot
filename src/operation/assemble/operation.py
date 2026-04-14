@@ -9,18 +9,19 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import ABC
-from typing import Generic, TypeVar
+
+from typing import TypeVar
 
 from model import Blueprint
+from operation import Operation
 from result import BuildResult
 from system import LoggingLevelRouter
 
 T = TypeVar("T")
 
-class Builder(ABC, Generic[T]):
+class Assembler(Operation[T]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(cls,blueprint: Blueprint[T], *args, **kwargs ) -> BuildResult[T]:
+    def execute(cls, blueprint: Blueprint[T], *args, **kwargs ) -> BuildResult[T]:
         pass

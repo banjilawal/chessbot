@@ -20,7 +20,7 @@ from result import SearchResult, UpdateResult
 from system import IdFactory, LoggingLevelRouter
 
 
-class TeamBinderMicroservice(Microservice[TeamBinder]):
+class TeamBinderService(Microservice[TeamBinder]):
     """
     Role:Microservice API, Integrity Lifecycle Manager, APLifecycle Management.
 
@@ -85,7 +85,7 @@ class TeamBinderMicroservice(Microservice[TeamBinder]):
     
     def __eq__(self, other):
         if super().__eq__(other):
-            if isinstance(other, TeamBinderMicroservice):
+            if isinstance(other, TeamBinderService):
                 return True
         return False
     

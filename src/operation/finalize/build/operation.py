@@ -1,7 +1,7 @@
-# src/operation/bootstrap/bootstrap.py
+# src/operation/finalize/finalizer.py
 
 """
-Module: operation.bootstrap.bootstrap
+Module: operation.finalize.finalizer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,27 +9,26 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
+from abc import abstractmethod
 from typing import TypeVar
 
 from model import Blueprint
-from operation import Operation
-from result import ValidationResult
+from operation import Finalizer
+from result import BuildResult
 from system import LoggingLevelRouter
-from toolkit import Toolkit
 
 T = TypeVar("T")
 
-class BuildBootstrapper(Operation[T]):
+class AssemblyFinalizer(Finalizer[T]):
     
     @classmethod
     @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(
             cls,
+            product: T,
             blueprint: Blueprint[T],
-            toolkit: Toolkit[T],
             *args,
-            **kwargs,
-    ) -> ValidationResult[Blueprint[T]]:
+            **kwargs
+    ) -> BuildResult[T]:
         pass

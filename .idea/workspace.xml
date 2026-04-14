@@ -5,12 +5,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change afterPath="$PROJECT_DIR$/src/operation/bootstrap/build/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/bootstrap/build/team/builder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/finalize/build/operation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/setup/logging_setup/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/deployment/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/setup/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/deployment/log/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/deployment/log/level.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/setup/logging_setup/level.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/deployment/log/mode.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/setup/logging_setup/mode.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/integrity/build/binder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/integrity/build/binder/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/binder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/binder/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/binder/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/binder/microservice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/blueprint/context/team/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/context/team/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/blueprint/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/team/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/blueprint/team/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/team/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/board/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/board/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/build/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/build/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/build/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/build/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/build/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/build/team/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/build/team/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/build/team/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/build/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/build/token/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/build/token/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/build/token/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/builder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assemble/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assemble/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/builder/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assemble/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/builder/token/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assemble/token/assemble.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/finalize/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/finalize/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/finalize/build/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/finalize/build/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/finalize/build/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/finalize/build/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/finalize/build/token/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/finalize/build/token/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/finalize/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/finalize/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pipeline/build/pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pipeline/build/pipeline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/result/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/result/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/result/category.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/result/category.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/team/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/team/toolkit.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -284,7 +316,7 @@
     "ToolWindow.Python Packages.ShowToolbar": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/operation/bootstrap/build",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/operation/finalize/build",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -311,18 +343,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/operation/finalize/build" />
       <recent name="$PROJECT_DIR$/src/operation/bootstrap/build" />
       <recent name="$PROJECT_DIR$/src/integrity/build" />
       <recent name="$PROJECT_DIR$/src/microservice" />
       <recent name="$PROJECT_DIR$/src/microservice/arena" />
-      <recent name="$PROJECT_DIR$/src/model/team/table" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/operation" />
       <recent name="$PROJECT_DIR$/src/integrity/build/binder" />
       <recent name="$PROJECT_DIR$/src/integrity/build" />
       <recent name="$PROJECT_DIR$/src/model" />
       <recent name="$PROJECT_DIR$/src/model/math" />
-      <recent name="$PROJECT_DIR$/src/operation/finalize/build" />
     </key>
   </component>
   <component name="RunManager" selected="Python.operation">
@@ -875,7 +907,7 @@
       <workItem from="1775468437273" duration="38443000" />
       <workItem from="1775523154635" duration="8604000" />
       <workItem from="1775535077469" duration="17356000" />
-      <workItem from="1775569861163" duration="169217000" />
+      <workItem from="1775569861163" duration="182822000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1132,11 +1164,6 @@
           <url>file://$PROJECT_DIR$/src/route/search/square/router.py</url>
           <line>219</line>
           <option name="timeStamp" value="138" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/operation/finalize/build/token/operation.py</url>
-          <line>9</line>
-          <option name="timeStamp" value="139" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/err/operation/bootstrap/build/context/board/exception.py</url>

@@ -13,4 +13,4 @@ version: 1.0.0
 
 
 # Modules
-from .microservice import TeamBinderMicroservice
+from .microservice import TeamBinderService

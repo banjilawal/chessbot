@@ -9,14 +9,12 @@ version: 1.0.1
 
 from __future__ import annotations
 
-
-
-from operation import Builder
+from operation import Assembler
 from result import BuildResult
 from system import  LoggingLevelRouter
 from model import CombatantToken, King, KingToken, Pawn, PawnToken, Token, TokenBlueprint
 
-class TokenBuilder(Builder[Token]):
+class TokenAssembler(Assembler[Token]):
     
     @classmethod
     @LoggingLevelRouter.monitor

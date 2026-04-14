@@ -13,15 +13,17 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 from model import Blueprint
-from result import BuildResult
+from operation import Operation
+from result import BuildResult, Result
 from system import LoggingLevelRouter
 
 T = TypeVar("T")
 
 
-class Finalize(ABC, Generic[T]):
+class Finalizer(Operation[T]):
     
     @classmethod
+    
     @LoggingLevelRouter.monitor
-    def execute(cls, product: T, blueprint: Blueprint[T]) -> BuildResult[T]:
+    def execute(cls, product: T, blueprint: Blueprint[T]) -> Result[T]:
         pass

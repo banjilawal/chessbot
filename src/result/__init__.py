@@ -11,7 +11,7 @@ import logging
 
 log = logging.getLogger("chessbot")
 
-# =========== PACKAGE ===========#
+# =========== RESULT PACKAGE ===========#
 
 # Packages
 from .analysis import *

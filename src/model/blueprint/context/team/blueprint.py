@@ -12,13 +12,13 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from model import Board, TeamContext, Blueprint, Game, Player
+from model import Board, Blueprint, Player, Schema, TeamContext, TeamState
 
 
 @dataclass
 class TeamContextBlueprint(Blueprint[TeamContext]):
-    board: Optional[Board] = None
-    coord: Optional[Coord] = None
-    occupant: Optional[Token] = None
-    state: Optional[SquareState] = None
-    formation: Optional[Formation] = None
+    id: Optional[int] = None | None
+    board: Optional[Board] = None | None
+    player: Optional[Player] = None | None
+    state: Optional[TeamState] = None | None
+    schema: Optional[Schema] = None | None

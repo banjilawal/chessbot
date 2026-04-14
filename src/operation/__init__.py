@@ -7,14 +7,12 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-import logging
-
-log = logging.getLogger("chessbot")
-
 # =========== OPERATION PACKAGE ===========#
 
 # Packages
 from .bootstrap import *
+from .assemble import *
+from .finalize import *
 from .math import *
 from .microservice import *
 from .stack import *

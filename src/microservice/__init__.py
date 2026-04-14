@@ -7,10 +7,6 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-import logging
-
-log = logging.getLogger("chessbot")
-
 # ============= MICROSERVICE. PACKAGE ===========#
 
 # Packages

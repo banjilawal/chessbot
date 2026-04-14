@@ -11,10 +11,10 @@ import logging
 
 log = logging.getLogger("chessbot")
 
-# =========== PACKAGE ===========#
+# =========== OPERATION.BUILD PACKAGE ===========#
 
 # Packages
 from .token import *
 
 # Modules
-from .builder import  Builder
+from .operation import  Assembler

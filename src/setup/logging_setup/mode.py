@@ -1,7 +1,7 @@
-# src/deployment/mode.py
+# src/setup/mode.py
 
 """
-Module: deployment.mode
+Module: setup.mode
 Author: Banji Lawal
 Created: 2025-08-24
 version: 1.0.0
