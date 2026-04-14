@@ -27,7 +27,6 @@ class SquareNameCollisionException(NameCollisionException):
         1.  Indicate that a square is already using the name.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

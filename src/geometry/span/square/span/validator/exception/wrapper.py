@@ -35,7 +35,6 @@ class SquareSpanValidationException(ValidationException):
         *   See ValidationException class for inherited attributes.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         ex: Optional[str]
         mthd: Optional[str]
@@ -54,8 +53,7 @@ class SquareSpanValidationException(ValidationException):
     MSG = "Failure in SquareSpanValidator method."
 
     def __init__(
-            self,
-            op: Optional[str] = None,
+            self, = None,
             msg: Optional[str] = None,
             mthd: Optional[str] = None,
             err_code: Optional[str] = None,
@@ -64,7 +62,6 @@ class SquareSpanValidationException(ValidationException):
     ):
         """
         Args:
-            op: Optional[str]
             msg: Optional[str]
             ex: Optional[str]
             mthd: Optional[str]

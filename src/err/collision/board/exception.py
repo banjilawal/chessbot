@@ -29,7 +29,6 @@ class BoardCollisionException(CollisionException):
         1.  Indicate that a BoardCollision step failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

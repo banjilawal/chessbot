@@ -55,8 +55,7 @@ class SymmetricEdgeBuildException(BuildException):
     MSG = "Failure in NodeEdgeHandler method."
     
     def __init__(
-            self,
-            op: Optional[str] = None,
+            self, = None,
             msg: Optional[str] = None,
             mthd: Optional[str] = None,
             err_code: Optional[str] = None,
@@ -65,7 +64,6 @@ class SymmetricEdgeBuildException(BuildException):
     ):
         """
         Args:
-            op: Optional[str]
             msg: Optional[str]
             mthd: Optional[str]
             err_code: Optional[str]

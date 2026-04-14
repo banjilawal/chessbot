@@ -27,7 +27,6 @@ class HostageUpdatePipelineException(UpdatePipelineException):
         1.  Indicate that an error occurred in a HostageUpdatePipeline.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

@@ -28,7 +28,6 @@ class FinalizeVectorBuildException(FinalizeBuildException):
         1.  Indicate a VectorBuild failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

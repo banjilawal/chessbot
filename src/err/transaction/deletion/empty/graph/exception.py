@@ -28,7 +28,6 @@ class PoppingEmptyGraphStackException(PoppingEmptyStackException):
         1.  Indicates that popping An GraphStack failed because it was empty.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

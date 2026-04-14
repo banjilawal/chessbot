@@ -28,7 +28,6 @@ class DuplicateTeamStackPushException(DuplicateStackPushException):
         1.  Indicate that pushing a duplicate item onto the TeamStack failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

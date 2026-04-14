@@ -27,7 +27,6 @@ class RankValidationException(ValidationException):
         1.  Indicate that a RankValidation check failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

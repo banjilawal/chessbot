@@ -28,7 +28,6 @@ class FinalizeSquareBuildException(FinalizeBuildException):
         1.  Indicate that finalizing a SquareBuild failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

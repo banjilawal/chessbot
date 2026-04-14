@@ -41,7 +41,6 @@ class NodeTreeBuildException(BuildException):
         *   See BuildException class for inherited attributes.
 
     Attributes:
-        op: Optional[str]
         ex: Optional[str]
         msg: Optional[str]
         mthd: Optional[str]
@@ -60,8 +59,7 @@ class NodeTreeBuildException(BuildException):
     MSG = "Failure in NodeTreeBuilder method."
     
     def __init__(
-            self,
-            op: Optional[str] = None,
+            self, = None,
             msg: Optional[str] = None,
             mthd: Optional[str] = None,
             ex: Optional[Exception] = None,
@@ -70,7 +68,6 @@ class NodeTreeBuildException(BuildException):
     ):
         """
         Args:
-            op: Optional[str]
             ex: Optional[str]
             msg: Optional[str]
             mthd: Optional[str]

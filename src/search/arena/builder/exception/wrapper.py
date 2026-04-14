@@ -36,7 +36,6 @@ class ArenaContextBuildException(BuildException):
         *   See BuildException class for inherited attributes.
 
     Attributes:
-        op: Optional[str]
         ex: Optional[str]
         msg: Optional[str]
         mthd: Optional[str]
@@ -55,8 +54,7 @@ class ArenaContextBuildException(BuildException):
     MSG = "Failure in ArenaContextBuilder method."
 
     def __init__(
-            self,
-            op: Optional[str] = None,
+            self, = None,
             msg: Optional[str] = None,
             mthd: Optional[str] = None,
             ex: Optional[Exception] = None,
@@ -65,7 +63,6 @@ class ArenaContextBuildException(BuildException):
     ):
         """
         Args:
-            op: Optional[str]
             ex: Optional[str]
             msg: Optional[str]
             mthd: Optional[str]

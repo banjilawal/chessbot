@@ -32,7 +32,6 @@ class SchemaContextBuildException(BuildException):
         2.  Trace the method calls.
 
     Attributes:
-        op: Optional[str]
         ex: Optional[str]
         msg: Optional[str]
         mthd: Optional[str]
@@ -49,8 +48,7 @@ class SchemaContextBuildException(BuildException):
     MSG = "A SchemaContextBuilder method failed."
     
     def __init__(
-            self,
-            op: Optional[str] = None,
+            self, = None,
             msg: Optional[str] = None,
             mthd: Optional[str] = None,
             title: Optional[str] = None,
@@ -60,7 +58,6 @@ class SchemaContextBuildException(BuildException):
     ):
         """
         Args:
-            op: Optional[str]
             ex: Optional[str]
             msg: Optional[str]
             mthd: Optional[str]

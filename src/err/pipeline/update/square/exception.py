@@ -27,7 +27,6 @@ class SquareUpdatePipelineException(UpdatePipelineException):
         1.  Indicate that an error occurred in a SquareUpdatePipeline.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

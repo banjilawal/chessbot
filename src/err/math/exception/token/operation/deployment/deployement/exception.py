@@ -31,7 +31,6 @@ class TokenStackDeploymentException(UpdateException):
         2.  Trace the method calls.
         
     Attributes:
-        op: Optional[str]
         ex: Optional[str]
         msg: Optional[str]
         mthd: Optional[str]
@@ -50,8 +49,7 @@ class TokenStackDeploymentException(UpdateException):
     MSG = "TokenStack deployment onto board failed."
     
     def __init__(
-            self,
-            op: Optional[str] = None,
+            self, = None,
             msg: Optional[str] = None,
             mthd: Optional[str] = None,
             title: Optional[str] = None,
@@ -61,7 +59,6 @@ class TokenStackDeploymentException(UpdateException):
     ):
         """
         Args:
-            op: Optional[str]
             ex: Optional[str]
             msg: Optional[str]
             mthd: Optional[str]

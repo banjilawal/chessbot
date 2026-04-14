@@ -27,7 +27,6 @@ class FinalizeArenaBuildException(FinalizeBuildException):
         1.  Indicate that an ArenaBuild failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

@@ -26,7 +26,6 @@ class FinalizeTokenBuildException(FinalizeBuildException):
         1.  Indicate that finalizing a TokenBuildFinalize step failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

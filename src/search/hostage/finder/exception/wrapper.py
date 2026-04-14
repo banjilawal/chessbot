@@ -38,7 +38,6 @@ class HostageSearchException(SearchException):
         *   See SearchException class for inherited attributes.
 
     Attributes:
-        op: Optional[str]
         ex: Optional[str]
         msg: Optional[str]
         mthd: Optional[str]
@@ -57,8 +56,7 @@ class HostageSearchException(SearchException):
     MSG = "Hostage search method failed."
  
     def __init__(
-            self,
-            op: Optional[str] = None,
+            self, = None,
             msg: Optional[str] = None,
             mthd: Optional[str] = None,
             ex: Optional[Exception] = None,
@@ -67,7 +65,6 @@ class HostageSearchException(SearchException):
     ):
         """
         Args:
-            op: Optional[str]
             ex: Optional[str]
             msg: Optional[str]
             mthd: Optional[str]

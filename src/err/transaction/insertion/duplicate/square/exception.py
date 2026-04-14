@@ -28,7 +28,6 @@ class DuplicateSquareStackPushException(DuplicateStackPushException):
         1.  Indicate that pushing a duplicate item onto the SquareStack failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

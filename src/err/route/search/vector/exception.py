@@ -28,7 +28,6 @@ class VectorSearchRouteException(SearchRouteException):
         1.  Indicate a Vector search routes is missing.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

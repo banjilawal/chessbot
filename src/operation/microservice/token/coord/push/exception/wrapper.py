@@ -30,7 +30,6 @@ class TokenPushCoordException(InsertionException):
         2.  Identify the method where the error occurred.
         
     Attributes:
-        op: Optional[str]
         ex: Optional[str]
         msg: Optional[str]
         mthd: Optional[str]
@@ -49,8 +48,7 @@ class TokenPushCoordException(InsertionException):
     MSG = "TokenCoordPushProcess method failed."
     
     def __init__(
-            self,
-            op: Optional[str] = None,
+            self, = None,
             msg: Optional[str] = None,
             mthd: Optional[str] = None,
             title: Optional[str] = None,
@@ -60,7 +58,6 @@ class TokenPushCoordException(InsertionException):
     ):
         """
         Args:
-            op: Optional[str]
             ex: Optional[str]
             msg: Optional[str]
             mthd: Optional[str]

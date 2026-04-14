@@ -27,7 +27,6 @@ class ArenaValidationException(ValidationException):
         1.  Indicate that an ArenaValidation check failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

@@ -28,7 +28,6 @@ class SquareSearchRouteException(SearchRouteException):
         1.  Indicate that one of Square search routes is missing.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

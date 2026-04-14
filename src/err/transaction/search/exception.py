@@ -27,7 +27,6 @@ class SearchTransactionException(TransactionException):
         Indicates that an error prevented a search from completing.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]
@@ -48,8 +47,7 @@ class SearchTransactionException(TransactionException):
     RSLT_TYPE = "SearchResult"
     
     def __init__(
-            self,
-            op: Optional[str] = None,
+            self, = None,
             msg: Optional[str] = None,
             var: Optional[str] = None,
             val: Optional[Any] = None,
@@ -61,7 +59,6 @@ class SearchTransactionException(TransactionException):
     ):
         """
         Args:
-            op: Optional[str]
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]

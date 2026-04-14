@@ -28,7 +28,6 @@ class PlayerSearchRouteException(SearchRouteException):
         1.  Indicate that one of Player search routes is missing.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

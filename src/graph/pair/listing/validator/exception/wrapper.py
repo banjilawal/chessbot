@@ -36,7 +36,6 @@ class PairListValidationException(ValidationException):
 
     Attributes:
         ex: Optional[str]
-        op: Optional[str]
         msg: Optional[str]
         mthd: Optional[str]
         err_code: Optional[str]
@@ -54,8 +53,7 @@ class PairListValidationException(ValidationException):
     MSG = "Failure in PairListValidator method."
     
     def __init__(
-            self,
-            op: Optional[str] = None,
+            self, = None,
             msg: Optional[str] = None,
             mthd: Optional[str] = None,
             err_code: Optional[str] = None,
@@ -65,7 +63,6 @@ class PairListValidationException(ValidationException):
         """
         Args:
             ex: Optional[str]
-            op: Optional[str]
             msg: Optional[str]
             mthd: Optional[str]
             err_code: Optional[str]

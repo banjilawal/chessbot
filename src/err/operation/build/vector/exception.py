@@ -28,7 +28,6 @@ class VectorBuildException(BuildException):
         1.  Indicate a VectorBuild step failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

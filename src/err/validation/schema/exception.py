@@ -27,7 +27,6 @@ class SchemaValidationException(ValidationException):
         1.  Indicate that a SchemaValidation check failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

@@ -37,7 +37,6 @@ class PairBuildException(BuildException):
         *   See BuildException class for inherited attributes.
 
     Attributes:
-        op: Optional[str]
         ex: Optional[str]
         msg: Optional[str]
         mthd: Optional[str]
@@ -56,8 +55,7 @@ class PairBuildException(BuildException):
     MSG = "Failure in PairBuilder method."
     
     def __init__(
-            self,
-            op: Optional[str] = None,
+            self, = None,
             msg: Optional[str] = None,
             mthd: Optional[str] = None,
             ex: Optional[Exception] = None,
@@ -66,7 +64,6 @@ class PairBuildException(BuildException):
     ):
         """
         Args:
-            op: Optional[str]
             ex: Optional[str]
             msg: Optional[str]
             mthd: Optional[str]

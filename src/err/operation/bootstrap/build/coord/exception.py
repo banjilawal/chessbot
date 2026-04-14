@@ -28,7 +28,6 @@ class BootstrapCoordBuildException(BootstrapBuildException):
         1.  Indicate that a CoordBuild bootstrap step failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

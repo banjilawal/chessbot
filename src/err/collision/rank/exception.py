@@ -28,7 +28,6 @@ class RankCollisionException(CollisionException):
         1.  Indicate that a RankCollision step failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

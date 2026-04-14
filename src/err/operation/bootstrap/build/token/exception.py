@@ -26,7 +26,6 @@ class BootstrapTokenBuildException(BootstrapBuildException):
         1.  Indicate that a TokenBuildBootstrap step failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

@@ -28,7 +28,6 @@ class BootstrapEdgeBuildException(BootstrapBuildException):
         1.  Indicate that an EdgeBuild bootstrap step failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

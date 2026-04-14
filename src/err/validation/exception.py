@@ -29,7 +29,6 @@ class ValidationException(ChessException):
         1.  Indicate that a validation check failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]
@@ -85,7 +84,6 @@ class ValidationException(ChessException):
             cls_name=cls_name,
             cls_mthd=cls_mthd,
         )
-        self._op = op
         self._rslt_type = rslt_type
     
     @property

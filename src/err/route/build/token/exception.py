@@ -28,7 +28,6 @@ class TokenBuildRouteException(BuildRouteException):
         1.  Indicate a Token build routes is missing.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]
@@ -47,8 +46,7 @@ class TokenBuildRouteException(BuildRouteException):
     ERR_CODE = "TOKEN_BUILD_ROUTE"
     
     def __init__(
-            self,
-            op: Optional[str] = None,
+            self, = None,
             msg: Optional[str] = None,
             var: Optional[str] = None,
             val: Optional[Any] = None,

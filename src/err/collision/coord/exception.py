@@ -27,7 +27,6 @@ class CoordCollisionException(CollisionException):
         1.  Indicate that a coord collision occurred
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

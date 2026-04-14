@@ -27,7 +27,6 @@ class FinalizationException(OperationException):
         1.  Indicate that finalizing a finalization step failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

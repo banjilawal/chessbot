@@ -27,7 +27,6 @@ class InsertionException(TransactionException):
         Indicates that an error prevented a insertion from completing.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

@@ -27,7 +27,6 @@ class RankBuildPipelineException(BuildPipelineException):
         1.  Indicate that an error occurred in a RankBuildPipeline.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

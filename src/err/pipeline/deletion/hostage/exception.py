@@ -27,7 +27,6 @@ class HostageDeletionPipelineException(DeletionPipelineException):
         1.  Indicate that an error occurred in a HostageDeletionPipeline.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

@@ -31,7 +31,6 @@ class DeployTeamException(DeletionException):
         2.  Trace the method calls.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         mthd: Optional[str]
         title: Optional[str]
@@ -50,8 +49,7 @@ class DeployTeamException(DeletionException):
     MSG = "Deploying the team failed"
     
     def __init__(
-            self,
-            op: Optional[str] = None,
+            self, = None,
             msg: Optional[str] = None,
             mthd: Optional[str] = None,
             title: Optional[str] = None,
@@ -61,7 +59,6 @@ class DeployTeamException(DeletionException):
     ):
         """
         Args:
-            op: Optional[str]
             msg: Optional[str]
             mthd: Optional[str]
             title: Optional[str]

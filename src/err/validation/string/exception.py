@@ -29,7 +29,6 @@ class StringValidationException(ValidationException):
         1.  Indicate that a StringValidation check failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

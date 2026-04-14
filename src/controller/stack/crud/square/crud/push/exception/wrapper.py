@@ -52,7 +52,6 @@ class SquareStackPushException(InsertionException):
         
 
     Attributes:
-        op: Optional[str]
         ex: Optional[str]
         msg: Optional[str]
         mthd: Optional[str]
@@ -71,8 +70,7 @@ class SquareStackPushException(InsertionException):
     MSG = "Insertion method failed."
     
     def __init__(
-            self,
-            op: Optional[str] = None,
+            self, = None,
             msg: Optional[str] = None,
             mthd: Optional[str] = None,
             ex: Optional[Exception] = None,
@@ -81,7 +79,6 @@ class SquareStackPushException(InsertionException):
     ):
         """
         Args:
-            op: Optional[str]
             ex: Optional[str]
             msg: Optional[str]
             mthd: Optional[str]

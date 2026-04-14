@@ -27,7 +27,6 @@ class TeamContextBuildPipelineException(ContextBuildPipelineException):
         1.  Indicate that an error occurred in an TeamContextBuildPipeline.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

@@ -27,7 +27,6 @@ class EdgeContextValidationPipelineException(ContextValidationPipelineException)
         1.  Indicate that an error occurred in an EdgeContextValidationPipeline.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

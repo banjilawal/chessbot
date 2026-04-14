@@ -27,7 +27,6 @@ class ChessException(Exception):
     Attributes:
         msg: str
         err_code: str
-        op: Optional[str]
         var: Optional[str]
         val: Optional[Any]
         cls_name: Optional[str]
@@ -47,7 +46,6 @@ class ChessException(Exception):
     _err_code: str
     _var: Optional[str] | None = None
     _val: Optional[Any] | None = None
-    _op: Optional[Any] | None = None
     _rslt_type: Optional[str] | None = None
     _cls_name: Optional[str] | None = None
     _cls_mthd: Optional[str] | None = None
@@ -58,7 +56,6 @@ class ChessException(Exception):
             self,
             msg: str = MSG,
             err_code: str = ERR_CODE,
-            op: Optional[str] | None = None,
             var: Optional[str] | None = None,
             val: Optional[Any] | None = None,
             cls_name: Optional[str] | None = None,
@@ -70,7 +67,6 @@ class ChessException(Exception):
         Args:
             msg: str
             err_code: str
-            op: Optional[str]
             var: Optional[str]
             val: Optional[Any]
             cls_name: Optional[str]
@@ -82,7 +78,6 @@ class ChessException(Exception):
         err_code = err_code or self.ERR_CODE
         cls_name = cls_name or self.__class__.__name__
         super().__init__(msg)
-        self._op = op
         self._ex = ex
         self._msg = msg
         self._var = var
@@ -91,10 +86,6 @@ class ChessException(Exception):
         self._cls_name = cls_name
         self._err_code = err_code
         self._rslt_type = rslt_type
-        
-    @property
-    def op(self) -> Optional[str]:
-        return self._op
     
     @property
     def ex(self) -> Optional[Exception]:

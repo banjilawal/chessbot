@@ -27,7 +27,6 @@ class DeletionException(TransactionException):
         Indicates that an error prevented a deletion from completing.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

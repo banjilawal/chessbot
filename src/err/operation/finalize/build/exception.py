@@ -26,7 +26,6 @@ class FinalizeBuildException(FinalizationException):
         1.  Indicate that finalizing a Finalize step failed.
 
     Attributes:
-        op: Optional[str]
         var: Optional[str]
         val: Optional[Any]
         ex: Optional[Exception]

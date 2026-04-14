@@ -36,7 +36,6 @@ class SquareRayBuildException(BuildException):
         *   See BuildException class for inherited attributes.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         mthd: Optional[str]
         err_code: Optional[str]
@@ -55,8 +54,7 @@ class SquareRayBuildException(BuildException):
     MSG = "Failure in SquareRayBuilder method."
     
     def __init__(
-            self,
-            op: Optional[str] = None,
+            self, = None,
             msg: Optional[str] = None,
             mthd: Optional[str] = None,
             err_code: Optional[str] = None,
@@ -65,7 +63,6 @@ class SquareRayBuildException(BuildException):
     ):
         """
         Args:
-            op: Optional[str]
             msg: Optional[str]
             mthd: Optional[str]
             err_code: Optional[str]

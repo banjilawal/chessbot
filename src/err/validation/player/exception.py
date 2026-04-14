@@ -27,7 +27,6 @@ class PlayerValidationException(ValidationException):
         1.  Indicate that a PlayerValidation check failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

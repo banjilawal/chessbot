@@ -30,7 +30,6 @@ class SchemaQueryValidationException(ValidationException):
         1.  Indicate that one of the SchemaQuery's params failed a safety test.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         mthd: Optional[str]
         title: Optional[str]
@@ -47,8 +46,7 @@ class SchemaQueryValidationException(ValidationException):
     ERR_CODE = "SCHEMA_QUERY_VALIDATION_FAILURE"
     
     def __init__(
-            self,
-            op: Optional[str] = None,
+            self, = None,
             msg: Optional[str] = None,
             mthd: Optional[str] = None,
             title: Optional[str] = None,
@@ -58,7 +56,6 @@ class SchemaQueryValidationException(ValidationException):
     ):
         """
         Args:
-            op: Optional[str]
             msg: Optional[str]
             mthd: Optional[str]
             title: Optional[str]

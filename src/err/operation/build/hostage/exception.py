@@ -28,7 +28,6 @@ class HostageBuildException(BuildException):
         1.  Indicate that a HostageBuild step failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

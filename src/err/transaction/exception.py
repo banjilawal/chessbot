@@ -49,7 +49,6 @@ class TransactionException(ChessException):
         3.  The Syntax is: [Class] transaction failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]
@@ -71,8 +70,7 @@ class TransactionException(ChessException):
     _rslt_type = Optional[str]
     
     def __init__(
-            self,
-            op: Optional[str] = None,
+            self, = None,
             msg: Optional[str] = None,
             var: Optional[str] = None,
             val: Optional[Any] = None,
@@ -84,7 +82,6 @@ class TransactionException(ChessException):
     ):
         """
         Args:
-            op: Optional[str]
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -105,7 +102,6 @@ class TransactionException(ChessException):
             cls_name=cls_name,
             cls_mthd=cls_mthd,
         )
-        self._op = op
         self._rslt_type = rslt_type
     
     @property

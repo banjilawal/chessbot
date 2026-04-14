@@ -28,7 +28,6 @@ class PoppingEmptyStackException(DeletionException):
         Indicates that a deletion failed because the stack is empty.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

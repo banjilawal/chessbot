@@ -28,7 +28,6 @@ class DuplicateCoordStackPushException(DuplicateStackPushException):
         1.  Indicate that pushing a duplicate item onto the CoordStack failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

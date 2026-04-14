@@ -28,7 +28,6 @@ class EdgeCollisionException(CollisionException):
         1.  Indicate that an EdgeCollision step failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

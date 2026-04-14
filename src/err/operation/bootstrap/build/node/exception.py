@@ -27,7 +27,6 @@ class BootstrapNodeBuildException(BootstrapBuildException):
         1.  Indicate that a NodeBuild bootstrap step failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

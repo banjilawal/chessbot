@@ -27,7 +27,6 @@ class ValidationPipelineException(PipelineException):
         1.  Indicate that an error occurred in a ValidationPipeline.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]
@@ -49,7 +48,6 @@ class ValidationPipelineException(PipelineException):
     
     def __init__(
             self,
-            op: Optional[str] | None = None,
             msg: Optional[str] | None = None,
             var: Optional[str] | None = None,
             val: Optional[Any] | None = None,
@@ -61,7 +59,6 @@ class ValidationPipelineException(PipelineException):
     ):
         """
         Args:
-            op: Optional[str]
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]

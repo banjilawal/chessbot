@@ -28,7 +28,6 @@ class DuplicateStackPushException(InsertionException):
         Indicate that pushing a duplicate item onto the stack failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

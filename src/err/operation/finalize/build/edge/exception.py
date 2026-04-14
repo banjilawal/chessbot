@@ -28,7 +28,6 @@ class FinalizeEdgeBuildException(FinalizeBuildException):
         1.  Indicate that an EdgeBuild failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

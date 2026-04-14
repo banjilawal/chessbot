@@ -27,7 +27,6 @@ class NodeDeletionPipelineException(DeletionPipelineException):
         1.  Indicate that an error occurred in a NodeDeletionPipeline.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

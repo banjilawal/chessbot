@@ -30,7 +30,6 @@ class ZoneBuildException(BuildException):
         2.  Identify the ZoneBuildProcess method where the failure occurred.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         mthd: Optional[str]
         title: Optional[str]
@@ -49,8 +48,7 @@ class ZoneBuildException(BuildException):
     MSG = "Failure in ZoneBuildProcess method."
     
     def __init__(
-            self,
-            op: Optional[str] = None,
+            self, = None,
             msg: Optional[str] = None,
             mthd: Optional[str] = None,
             title: Optional[str] = None,
@@ -60,7 +58,6 @@ class ZoneBuildException(BuildException):
     ):
         """
         Args:
-            op: Optional[str]
             msg: Optional[str]
             mthd: Optional[str]
             title: Optional[str]

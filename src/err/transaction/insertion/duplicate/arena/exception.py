@@ -28,7 +28,6 @@ class DuplicateArenaStackPushException(DuplicateStackPushException):
         1.  Indicate that pushing a duplicate item onto the ArenaStack failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

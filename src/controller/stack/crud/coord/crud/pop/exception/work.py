@@ -30,7 +30,6 @@ class CoordStackPopException(DeletionException):
         2.  Identify the CoordStackService method where the pop operation failed.
         
     Attributes:
-        op: Optional[str]
         ex: Optional[str]
         msg: Optional[str]
         mthd: Optional[str]
@@ -48,8 +47,7 @@ class CoordStackPopException(DeletionException):
     MSG = "CoordStackService pop failed."
     
     def __init__(
-            self,
-            op: Optional[str] = None,
+            self, = None,
             msg: Optional[str] = None,
             mthd: Optional[str] = None,
             ex: Optional[Exception] = None,
@@ -58,7 +56,6 @@ class CoordStackPopException(DeletionException):
     ):
         """
         Args:
-            op: Optional[str]
             ex: Optional[str]
             msg: Optional[str]
             mthd: Optional[str]

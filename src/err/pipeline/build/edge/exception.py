@@ -27,7 +27,6 @@ class EdgeBuildPipelineException(BuildPipelineException):
         1.  Indicate that an error occurred in a EdgeBuildPipeline.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

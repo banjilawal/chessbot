@@ -27,7 +27,6 @@ class BootstrapArenaBuildException(BootstrapBuildException):
         1.  Indicate that an ArenaBuild bootstrap step failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

@@ -27,7 +27,6 @@ class TokenValidationException(ValidationException):
         1.  Indicate a TokenValidation check failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]
@@ -46,8 +45,7 @@ class TokenValidationException(ValidationException):
     ERR_CODE = "TOKEN_VALIDATION_EXCEPTION"
     
     def __init__(
-            self,
-            op: Optional[str] = None,
+            self, = None,
             msg: Optional[str] = None,
             var: Optional[str] = None,
             val: Optional[Any] = None,

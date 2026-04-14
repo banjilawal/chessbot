@@ -27,7 +27,6 @@ class SquareValidationException(ValidationException):
         1.  Indicate that a SquareValidation check failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

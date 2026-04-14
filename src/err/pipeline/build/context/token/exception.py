@@ -27,7 +27,6 @@ class TokenContextBuildPipelineException(ContextBuildPipelineException):
         1.  Indicate that an error occurred in an TokenContextBuildPipeline.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

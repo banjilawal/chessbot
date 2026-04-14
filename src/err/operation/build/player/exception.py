@@ -28,7 +28,6 @@ class PlayerBuildException(BuildException):
         1.  Indicate that a PlayerBuild step failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

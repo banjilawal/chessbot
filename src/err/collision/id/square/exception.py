@@ -27,7 +27,6 @@ class SquareIdCollisionException(IdCollisionException):
         1.  Indicate that a square is already using the id.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

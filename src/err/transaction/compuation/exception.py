@@ -27,7 +27,6 @@ class ComputationTransactionException(TransactionException):
         Indicates that an error prevented a computation from completing.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]
@@ -48,8 +47,7 @@ class ComputationTransactionException(TransactionException):
     RSLT_TYPE = "ComputationResult"
     
     def __init__(
-            self,
-            op: Optional[str] = None,
+            self, = None,
             msg: Optional[str] = None,
             var: Optional[str] = None,
             val: Optional[Any] = None,
@@ -61,7 +59,6 @@ class ComputationTransactionException(TransactionException):
     ):
         """
         Args:
-            op: Optional[str]
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]

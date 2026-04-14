@@ -27,7 +27,6 @@ class IdCollisionException(CollisionException):
         1.  Indicate that an id collision occured
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

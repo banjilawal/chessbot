@@ -28,7 +28,6 @@ class SchemaFinalizeBuildException(FinalizeBuildException):
         1.  Indicate that finalizing a SchemaBuild failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

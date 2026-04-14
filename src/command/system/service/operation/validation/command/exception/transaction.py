@@ -29,7 +29,6 @@ class CommandValidationException(ValidationException):
         1.  Identify which CommandValidator method, a test failed.
 
     Attributes:
-        op: Optional[str]
         ex: Optional[str]
         msg: Optional[str]
         mthd: Optional[str]
@@ -46,8 +45,7 @@ class CommandValidationException(ValidationException):
     MSG = "Command validation check failed."
     
     def __init__(
-            self,
-            op: Optional[str] = None,
+            self, = None,
             msg: Optional[str] = None,
             mthd: Optional[str] = None,
             title: Optional[str] = None,
@@ -57,7 +55,6 @@ class CommandValidationException(ValidationException):
     ):
         """
         Args:
-            op: Optional[str]
             msg: Optional[str]
             mthd: Optional[str]
             title: Optional[str]

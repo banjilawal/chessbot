@@ -28,7 +28,6 @@ class PlayerCollisionException(CollisionException):
         1.  Indicate that a PlayerCollision step failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

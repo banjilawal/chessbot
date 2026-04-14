@@ -28,7 +28,6 @@ class VectorBuildRouteException(BuildRouteException):
         1.  Indicate a Vector build routes is missing.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

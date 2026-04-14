@@ -28,7 +28,6 @@ class TokenBuildException(BuildException):
         1.  Indicate a TokenBuild step failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]
@@ -47,8 +46,7 @@ class TokenBuildException(BuildException):
     ERR_CODE = "TOKEN_BUILD_FAILURE"
     
     def __init__(
-            self,
-            op: Optional[str] = None,
+            self, = None,
             msg: Optional[str] = None,
             var: Optional[str] = None,
             val: Optional[Any] = None,

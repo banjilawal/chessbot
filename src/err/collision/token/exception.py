@@ -28,7 +28,6 @@ class TokenCollisionException(CollisionException):
         1.  Indicate a TokenCollision step failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]
@@ -47,8 +46,7 @@ class TokenCollisionException(CollisionException):
     ERR_CODE = "TOKEN_COLLISION_FAILURE"
     
     def __init__(
-            self,
-            op: Optional[str] = None,
+            self, = None,
             msg: Optional[str] = None,
             var: Optional[str] = None,
             val: Optional[Any] = None,

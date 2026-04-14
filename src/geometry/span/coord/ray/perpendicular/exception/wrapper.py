@@ -68,13 +68,11 @@ class PerpendicularRayComputationException(RayComputationException):
             err_code: Optional[str] = None,
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
-            mthd: Optional[str] = None,
-            op: Optional[str] = None,
+            mthd: Optional[str] = None, = None,
             rslt_type: Optional[str] = None,
     ):
         """
         Args:
-            op: Optional[str]
             msg: Optional[str]
             mthd: Optional[str]
             ex: Optional[Exception]

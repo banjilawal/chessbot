@@ -12,16 +12,14 @@ from __future__ import annotations
 from typing import List
 
 from analysis import CollisionReport
-from err import TokenBootstrapBuildException
 from model import OpeningSquare, SquareContext, Token, TokenBlueprint
-from operation import BuildBootstrap
 from result import AnalysisResult, BuildResult, SearchResult, ValidationResult
 from search import SquareNotFoundException
 from system import IdFactory, LoggingLevelRouter
 from toolkit import TokenToolkit
 
 
-class BootstrapTokenBuild(BuildBootstrap[Token]):
+class BootstrapTokenBuild(BootstrapBuild[Token]):
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -47,7 +45,7 @@ class BootstrapTokenBuild(BuildBootstrap[Token]):
         Returns:
             BuildResult[Blueprint]
         Raises:
-            TokenBootstrapBuildException
+            BootstrapToknBuildException
         """
         method = f"{cls.__name__}.execute"
         
@@ -62,11 +60,11 @@ class BootstrapTokenBuild(BuildBootstrap[Token]):
         if blueprint_validation_result.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                TokenBootstrapBuildException(
+                BootstrapToknBuildException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenBootstrapBuildException.MSG,
-                    err_code=TokenBootstrapBuildException.ERR_CODE,
+                    msg=BootstrapToknBuildException.MSG,
+                    err_code=BootstrapToknBuildException.ERR_CODE,
                     ex=blueprint_validation_result.exception,
                 )
             )
@@ -77,11 +75,11 @@ class BootstrapTokenBuild(BuildBootstrap[Token]):
         if collision_analysis_result.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                TokenBootstrapBuildException(
+                BootstrapToknBuildException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenBootstrapBuildException.MSG,
-                    err_code=TokenBootstrapBuildException.ERR_CODE,
+                    msg=BootstrapToknBuildException.MSG,
+                    err_code=BootstrapToknBuildException.ERR_CODE,
                     ex=blueprint_validation_result.exception,
                 )
             )
@@ -92,11 +90,11 @@ class BootstrapTokenBuild(BuildBootstrap[Token]):
         if opening_square_discovery_result.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                TokenBootstrapBuildException(
+                BootstrapToknBuildException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenBootstrapBuildException.MSG,
-                    err_code=TokenBootstrapBuildException.ERR_CODE,
+                    msg=BootstrapToknBuildException.MSG,
+                    err_code=BootstrapToknBuildException.ERR_CODE,
                     ex=blueprint_validation_result.exception,
                 )
             )
@@ -107,11 +105,11 @@ class BootstrapTokenBuild(BuildBootstrap[Token]):
         if rank_build_result.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                TokenBootstrapBuildException(
+                BootstrapToknBuildException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenBootstrapBuildException.MSG,
-                    err_code=TokenBootstrapBuildException.ERR_CODE,
+                    msg=BootstrapToknBuildException.MSG,
+                    err_code=BootstrapToknBuildException.ERR_CODE,
                     ex=rank_build_result.exception,
                 )
             )
@@ -149,7 +147,7 @@ class BootstrapTokenBuild(BuildBootstrap[Token]):
         Returns:
             ValidationResult[Blueprint]
         Raises:
-            TokenBootstrapBuildException
+            BootstrapToknBuildException
         """
         method = f"{cls.__name__}._run_validations"
         
@@ -161,11 +159,11 @@ class BootstrapTokenBuild(BuildBootstrap[Token]):
         if id_validation_result.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                TokenBootstrapBuildException(
+                BootstrapToknBuildException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenBootstrapBuildException.MSG,
-                    err_code=TokenBootstrapBuildException.ERR_CODE,
+                    msg=BootstrapToknBuildException.MSG,
+                    err_code=BootstrapToknBuildException.ERR_CODE,
                     ex=id_validation_result.exception,
                 )
             )
@@ -176,11 +174,11 @@ class BootstrapTokenBuild(BuildBootstrap[Token]):
         if team_validation.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                TokenBootstrapBuildException(
+                BootstrapToknBuildException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenBootstrapBuildException.MSG,
-                    err_code=TokenBootstrapBuildException.ERR_CODE,
+                    msg=BootstrapToknBuildException.MSG,
+                    err_code=BootstrapToknBuildException.ERR_CODE,
                     ex=team_validation.exception,
                 )
             )
@@ -191,11 +189,11 @@ class BootstrapTokenBuild(BuildBootstrap[Token]):
         if formation_validation.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                TokenBootstrapBuildException(
+                BootstrapToknBuildException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenBootstrapBuildException.MSG,
-                    err_code=TokenBootstrapBuildException.ERR_CODE,
+                    msg=BootstrapToknBuildException.MSG,
+                    err_code=BootstrapToknBuildException.ERR_CODE,
                     ex=formation_validation.exception,
                 )
             )
@@ -227,7 +225,7 @@ class BootstrapTokenBuild(BuildBootstrap[Token]):
         Returns:
             BuildResult[int]
         Raises:
-            TokenBootstrapBuildException
+            BootstrapToknBuildException
         """
         method = f"{cls.__name__}._verify_id"
         
@@ -239,11 +237,11 @@ class BootstrapTokenBuild(BuildBootstrap[Token]):
             if id_validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    TokenBootstrapBuildException(
+                    BootstrapToknBuildException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=TokenBootstrapBuildException.MSG,
-                        err_code=TokenBootstrapBuildException.ERR_CODE,
+                        msg=BootstrapToknBuildException.MSG,
+                        err_code=BootstrapToknBuildException.ERR_CODE,
                         ex=id_validation.exception,
                     )
                 )
@@ -266,7 +264,7 @@ class BootstrapTokenBuild(BuildBootstrap[Token]):
         Returns:
             BuildResult[Blueprint]
         Raises:
-            TokenBootstrapBuildException
+            BootstrapToknBuildException
         """
         method = f"{cls.__name__}._run_collision_analysis"
         
@@ -277,22 +275,22 @@ class BootstrapTokenBuild(BuildBootstrap[Token]):
         if collision_analysis_result.is_failure:
             # Return the exception chain on failure.
             return AnalysisResult.failure(
-                TokenBootstrapBuildException(
+                BootstrapToknBuildException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenBootstrapBuildException.MSG,
-                    err_code=TokenBootstrapBuildException.ERR_CODE,
+                    msg=BootstrapToknBuildException.MSG,
+                    err_code=BootstrapToknBuildException.ERR_CODE,
                     ex=collision_analysis_result.exception,
                 )
             )
         if collision_analysis_result.payload.collision_exists:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                TokenBootstrapBuildException(
+                BootstrapToknBuildException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenBootstrapBuildException.MSG,
-                    err_code=TokenBootstrapBuildException.ERR_CODE,
+                    msg=BootstrapToknBuildException.MSG,
+                    err_code=BootstrapToknBuildException.ERR_CODE,
                     ex=collision_analysis_result.payload.exception,
                 )
             )
@@ -319,7 +317,7 @@ class BootstrapTokenBuild(BuildBootstrap[Token]):
         Returns:
             SearchResult[List[OpeningSquare]]
         Raises:
-            TokenBootstrapBuildException
+            BootstrapToknBuildException
         """
         method = f"{cls.__name__}._opening_square_discovery"
         
@@ -330,11 +328,11 @@ class BootstrapTokenBuild(BuildBootstrap[Token]):
         if square_search_result.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                TokenBootstrapBuildException(
+                BootstrapToknBuildException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenBootstrapBuildException.MSG,
-                    err_code=TokenBootstrapBuildException.ERR_CODE,
+                    msg=BootstrapToknBuildException.MSG,
+                    err_code=BootstrapToknBuildException.ERR_CODE,
                     ex=square_search_result.exception,
                 )
             )
@@ -342,11 +340,11 @@ class BootstrapTokenBuild(BuildBootstrap[Token]):
         if square_search_result.is_empty:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                TokenBootstrapBuildException(
+                BootstrapToknBuildException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenBootstrapBuildException.MSG,
-                    err_code=TokenBootstrapBuildException.ERR_CODE,
+                    msg=BootstrapToknBuildException.MSG,
+                    err_code=BootstrapToknBuildException.ERR_CODE,
                     ex=SquareNotFoundException(
                         msg=SquareNotFoundException.MSG,
                         err_code=SquareNotFoundException.ERR_CODE,

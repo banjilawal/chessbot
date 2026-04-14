@@ -27,7 +27,6 @@ class BuildException(Operationexception):
         1.  Indicate that a build step failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]
@@ -51,8 +50,7 @@ class BuildException(Operationexception):
     _rslt_type = Optional[str]
     
     def __init__(
-            self,
-            op: Optional[str] = None,
+            self, = None,
             msg: Optional[str] = None,
             var: Optional[str] = None,
             val: Optional[Any] = None,
@@ -85,7 +83,6 @@ class BuildException(Operationexception):
             cls_name=cls_name,
             cls_mthd=cls_mthd,
         )
-        self._op = op
         self._rslt_type = rslt_type
     
     @property

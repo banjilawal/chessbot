@@ -28,7 +28,6 @@ class SchemaBuildRouteException(BuildRouteException):
         1.  Indicate that one of Schema build routes is missing.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

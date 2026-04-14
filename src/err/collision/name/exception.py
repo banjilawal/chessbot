@@ -27,7 +27,6 @@ class NameCollisionException(CollisionException):
         1.  Indicate that a name collision occurred
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

@@ -31,7 +31,6 @@ class DeletionException(CollectionOperationException):
         2.  Trace the method calls.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         mthd: Optional[str]
         title: Optional[str]
@@ -50,8 +49,7 @@ class DeletionException(CollectionOperationException):
     MSG = "Deletion method failed."
     
     def __init__(
-            self,
-            op: Optional[str] = None,
+            self, = None,
             msg: Optional[str] = None,
             mthd: Optional[str] = None,
             title: Optional[str] = None,
@@ -61,7 +59,6 @@ class DeletionException(CollectionOperationException):
     ):
         """
         Args:
-            op: Optional[str]
             msg: Optional[str]
             mthd: Optional[str]
             title: Optional[str]

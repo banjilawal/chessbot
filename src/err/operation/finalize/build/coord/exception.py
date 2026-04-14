@@ -28,7 +28,6 @@ class FinalizeCoordBuildException(FinalizeBuildException):
         1.  Indicate that finalizing a CoordBuild failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

@@ -28,7 +28,6 @@ class PoppingEmptyGameStackException(PoppingEmptyStackException):
         1.  Indicates that popping An GameStack failed because it was empty.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

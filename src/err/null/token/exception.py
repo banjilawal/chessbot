@@ -44,8 +44,7 @@ class TokenNullException(NullException):
     ERR_CODE = "TOKEN_NULL_EXCEPTION"
     
     def __init__(
-            self,
-            op: Optional[str] = None,
+            self, = None,
             msg: Optional[str] = None,
             var: Optional[str] = None,
             val: Optional[Any] = None,

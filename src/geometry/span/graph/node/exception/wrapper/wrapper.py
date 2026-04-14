@@ -56,8 +56,7 @@ class NodeStackServiceProductionException(BuildException):
     MSG = "Failure in NodeStackServiceProduce rmethod."
     
     def __init__(
-            self,
-            op: Optional[str] = None,
+            self, = None,
             msg: Optional[str] = None,
             mthd: Optional[str] = None,
             err_code: Optional[str] = None,
@@ -66,7 +65,6 @@ class NodeStackServiceProductionException(BuildException):
     ):
         """
         Args:
-            op: Optional[str]
             msg: Optional[str]
             mthd: Optional[str]
             err_code: Optional[str]

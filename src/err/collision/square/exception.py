@@ -28,7 +28,6 @@ class SquareCollisionException(CollisionException):
         1.  Indicate that a SquareCollision step failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

@@ -30,7 +30,6 @@ class ZoneValidationException(ValidationException):
         2.  Identify the Validator method where the failure occurred.
     
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         mthd: Optional[str]
         title: Optional[str]
@@ -47,8 +46,7 @@ class ZoneValidationException(ValidationException):
     MSG = "Failure in ZoneValidator method."
     
     def __init__(
-            self,
-            op: Optional[str] = None,
+            self, = None,
             msg: Optional[str] = None,
             mthd: Optional[str] = None,
             title: Optional[str] = None,
@@ -58,7 +56,6 @@ class ZoneValidationException(ValidationException):
     ):
         """
         Args:
-            op: Optional[str]
             msg: Optional[str]
             mthd: Optional[str]
             title: Optional[str]

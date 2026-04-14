@@ -30,7 +30,6 @@ class SquareStackPopException(DeletionException):
         2.  Identify the SquareStackService method where the pop operation failed.
         
     Attributes:
-        op: Optional[str]
         ex: Optional[str]
         msg: Optional[str]
         mthd: Optional[str]
@@ -48,8 +47,7 @@ class SquareStackPopException(DeletionException):
     MSG = "SquareStackService pop failed."
     
     def __init__(
-            self,
-            op: Optional[str] = None,
+            self, = None,
             msg: Optional[str] = None,
             mthd: Optional[str] = None,
             ex: Optional[Exception] = None,
@@ -58,7 +56,6 @@ class SquareStackPopException(DeletionException):
     ):
         """
         Args:
-            op: Optional[str]
             ex: Optional[str]
             msg: Optional[str]
             mthd: Optional[str]

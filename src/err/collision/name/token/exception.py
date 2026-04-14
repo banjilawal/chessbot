@@ -27,7 +27,6 @@ class TokenDesignationCollisionException(NameCollisionException):
         1.  Indicate that a token is already using the designation.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

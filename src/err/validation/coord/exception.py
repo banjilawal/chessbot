@@ -27,7 +27,6 @@ class CoordValidationException(ValidationException):
         1.  Indicate that a CoordValidation check failed.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]

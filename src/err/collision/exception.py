@@ -25,7 +25,6 @@ class CollisionException(ChessException):
     Responsibilities:
         1.  Indicate that two entities share attribute value that should be unique.
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]
@@ -81,7 +80,6 @@ class CollisionException(ChessException):
             cls_name=cls_name,
             cls_mthd=cls_mthd,
         )
-        self._op = op
         self._rslt_type = rslt_type
     
     @property

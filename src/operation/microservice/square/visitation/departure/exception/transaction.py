@@ -30,7 +30,6 @@ class SquareDepartureException(DeletionException):
         2.  Trace the method calls.
 
     Attributes:
-        op: Optional[str]
         msg: Optional[str]
         mthd: Optional[str]
         ex: Optional[Exception]
@@ -48,8 +47,7 @@ class SquareDepartureException(DeletionException):
     ERR_CODE = "SQUARE_VISIT_TERMINATION_FAILURE"
     
     def __init__(
-            self,
-            op: Optional[str] = None,
+            self, = None,
             msg: Optional[str] = None,
             mthd: Optional[str] = None,
             err_code: Optional[str] = None,
@@ -58,7 +56,6 @@ class SquareDepartureException(DeletionException):
     ):
         """
         Args:
-            op: Optional[str]
             msg: Optional[str]
             mthd: Optional[str]
             ex: Optional[Exception]

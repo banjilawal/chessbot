@@ -52,7 +52,6 @@ class CoordStackPushException(InsertionException):
         
 
     Attributes:
-        op: Optional[str]
         ex: Optional[str]
         msg: Optional[str]
         mthd: Optional[str]
@@ -71,8 +70,7 @@ class CoordStackPushException(InsertionException):
     MSG = "Insertion method failed."
     
     def __init__(
-            self,
-            op: Optional[str] = None,
+            self, = None,
             msg: Optional[str] = None,
             mthd: Optional[str] = None,
             title: Optional[str] = None,
@@ -82,7 +80,6 @@ class CoordStackPushException(InsertionException):
     ):
         """
         Args:
-            op: Optional[str]
             ex: Optional[str]
             msg: Optional[str]
             mthd: Optional[str]

@@ -23,7 +23,6 @@ class TokenReadinessAnalysisException(RelationAnalysisException):
         2.  Trace the method calls.
 
     Attributes:
-        op: Optional[str]
         ex: Optional[str]
         msg: Optional[str]
         mthd: Optional[str]
@@ -40,8 +39,7 @@ class TokenReadinessAnalysisException(RelationAnalysisException):
 
     
     def __init__(
-            self,
-            op: Optional[str] = None,
+            self, = None,
             msg: Optional[str] = None,
             mthd: Optional[str] = None,
             ex: Optional[Exception] = None,
@@ -50,7 +48,6 @@ class TokenReadinessAnalysisException(RelationAnalysisException):
     ):
         """
         Args:
-            op: Optional[str]
             ex: Optional[str]
             msg: Optional[str]
             mthd: Optional[str]
