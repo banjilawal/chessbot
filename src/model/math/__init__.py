@@ -11,6 +11,7 @@ version: 1.0.1
 
 # Packages
 from .coord import *
+from .operand import *
 from .quadrant import *
 from .register import *
 from .scalar import *

@@ -9,11 +9,11 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from model import VectorContext
+from model import VectorOperand
 from operation import Validator
 
 
-class VectorContextValidator(Validator[VectorContext]):
+class VectorContextValidator(Validator[VectorOperand]):
     """
     Role
         -   Transaction Worker
@@ -43,7 +43,7 @@ class VectorContextValidator(Validator[VectorContext]):
             cls,
             candidate: Any,
             toolkit: VectorContextToolkit = None,
-    ) -> ValidationResult[VectorContext]:
+    ) -> ValidationResult[VectorOperand]:
         """
         Verify the candidate is a safe VectorContext.
         
@@ -87,7 +87,7 @@ class VectorContextValidator(Validator[VectorContext]):
                 )
             )
         # Handle the case that, the candidate is wrong type.
-        if not isinstance(candidate, VectorContext):
+        if not isinstance(candidate, VectorOperand):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 VectorContextValidationException(
@@ -101,7 +101,7 @@ class VectorContextValidator(Validator[VectorContext]):
                 )
             )
         # --- Cast candidate to a VectorContext for additional tests. ---#
-        context = cast(VectorContext, candidate)
+        context = cast(VectorOperand, candidate)
         
         # Handle the case that neither option is enabled.
         if len(context.to_dict) == 0:

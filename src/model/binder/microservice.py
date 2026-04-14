@@ -165,7 +165,7 @@ class TeamTableService(Microservice[TeamTable]):
                 )
             )
         # Handle the case that, the team is flagged.
-        team_validation_result = self._team_validator.validate(team)
+        team_validation_result = team_validator.validate(team)
         if team_validation_result.is_failure:
             # Return the exception chain on failure
             return UpdateResult.update_failure(

@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from integrity import NumberValidator
 from microservice import CoordService, ScalarService, VectorService
-from model import VectorContext
+from model import VectorOperand
 from toolkit import Toolkit
 
 
-class VectorContextToolkit(Toolkit[VectorContext]):
+class VectorContextToolkit(Toolkit[VectorOperand]):
     """
     Role:
         -   Container

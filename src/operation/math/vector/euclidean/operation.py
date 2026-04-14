@@ -14,7 +14,7 @@ from math import sqrt
 
 from err import VectorRegisterMismatchException
 from integrity import VectorContextValidator
-from model import VectorContext
+from model import VectorOperand
 from result import ComputationResult
 from system import LoggingLevelRouter
 from toolkit  import VectorContextToolkit
@@ -48,8 +48,8 @@ class EuclideanOperation(Operation):
     @LoggingLevelRouter.monitor
     def work(
             cls,
-            u: VectorContext,
-            v: VectorContext,
+            u: VectorOperand,
+            v: VectorOperand,
             toolkit : VectorContextToolkit = VectorContextToolkit(),
             context_validator: VectorContextValidator = VectorContextValidator(),
     ) -> ComputationResult[int]:

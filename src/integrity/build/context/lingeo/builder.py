@@ -12,11 +12,11 @@ from typing import Optional
 
 from err import ExcessVectorContextFlagsException, VectorContextBuildException
 from integrity import Builder
-from model import Coord, VectorContext, Vector
+from model import Coord, VectorOperand, Vector
 from result import BuildResult
 from toolkit  import VectorContextToolkit
 
-class VectorContextBuilder(Builder[VectorContext]):
+class VectorContextBuilder(Builder[VectorOperand]):
     """
     Role
         -   Transaction Worker
@@ -45,7 +45,7 @@ class VectorContextBuilder(Builder[VectorContext]):
             coord: Optional[Coord] = None,
             vector: Optional[Vector] = None,
             toolkit : VectorContextToolkit = VectorContextToolkit()
-    ) -> BuildResult[VectorContext]:
+    ) -> BuildResult[VectorOperand]:
         """
         Build a safe VectorContext.
 
@@ -126,7 +126,7 @@ class VectorContextBuilder(Builder[VectorContext]):
                     )
                 )
             # On Build success, forward the work product.
-            return BuildResult.success(VectorContext(coord=coord))
+            return BuildResult.success(VectorOperand(coord=coord))
         
         # Deal with the alternate case.
         build_result = toolkit.vector_service.validator.validate(vector)
@@ -142,5 +142,5 @@ class VectorContextBuilder(Builder[VectorContext]):
                 )
             )
         # --- Forward the work product to the caller ---#
-        return BuildResult.success(VectorContext(vector=vector))
+        return BuildResult.success(VectorOperand(vector=vector))
             

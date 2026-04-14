@@ -11,18 +11,18 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any, Dict, List
 
-from model import VectorContext
+from model import VectorOperand
 
 
 @dataclass
 class VectorRegister:
-    u: VectorContext
-    v: VectorContext
+    u: VectorOperand
+    v: VectorOperand
     
     @property
-    def to_list(self) -> List[VectorContext]:
+    def to_list(self) -> List[VectorOperand]:
         return [self.u, self.v]
     
     @property
     def to_dict(self) -> Dict[str, Any]:
-        return {"u": VectorContext, "v": VectorContext}
+        return {"u": VectorOperand, "v": VectorOperand}

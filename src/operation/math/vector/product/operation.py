@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from err import ScalarProductException
 from integrity import VectorContextValidator
-from model import VectorContext, Scalar
+from model import VectorOperand, Scalar
 from result import ComputationResult
 from system import LoggingLevelRouter
 from toolkit  import VectorContextToolkit
@@ -46,7 +46,7 @@ class ScalarProductOperation(Operation):
     def work(
             cls,
             scalar: Scalar,
-            context: VectorContext,
+            context: VectorOperand,
             toolkit : VectorContextToolkit = VectorContextToolkit(),
             context_validator: VectorContextValidator = VectorContextValidator(),
     ) -> ComputationResult[int]:

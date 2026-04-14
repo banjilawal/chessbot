@@ -6,12 +6,12 @@ from system import ComputationResult, GameColor, LoggingLevelRouter
 from model.team import Team
 
 
-class TeamTable:
+class TeamBinder:
     """
     Role:Data-Holder Structure, Indexer
 
     # RESPONSIBILITY:
-    1.  Hash table for simplifying and centralizing operations on opposing teams in a game.
+    1.  Binder table for simplifying and centralizing operations on opposing teams in a game.
     2.  Single unified entry point for team operations on the board.
 
     Super Class:
@@ -79,10 +79,6 @@ class TeamTable:
         for key in self.__table.keys():
             teams.append(self.__table[key])
         return teams
-    
-    @LoggingLevelRouter.monitor
-    def slot_is_occupied(self, team: Team) -> ComputationResult[bool]:
-        return ComputationResult.success(self.table[team.schema.color] is None)
 
         
     

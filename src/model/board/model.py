@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from model import TeamTable
+
 from model.arena import Arena
 from model.team import TeamTable
 from model.board import BoardState
@@ -37,7 +37,7 @@ class Board:
     _id: int
     _arena: Arena
     _state: BoardState
-    _team_table: TeamTable
+    _team_table_service: TeamTableService
     _squares: SquareDatabase
     _hostage_database: HostageDatabase
     
@@ -63,7 +63,7 @@ class Board:
         
         self._id = id
         self._arena = arena
-        team_table = TeamTable()
+        team_table_service = TeamTableService()
         self._squares = SquareDatabase()
         self._hostage_database = HostageDatabase()
         self._state = BoardState.IS_EMPTY
@@ -89,8 +89,8 @@ class Board:
         return self._squares
     
     @property
-    def team_table(self) -> TeamTable:
-        return self._team_table
+    def team_table_service(self) -> TeamTableService:
+        return self._team_table_service
     
     @property
     def hostage_database(self) -> HostageDatabase:

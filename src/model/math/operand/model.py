@@ -13,7 +13,7 @@ from typing import Any, Dict, Optional
 from model import Coord, Vector
 
 
-class VectorContext:
+class VectorOperand:
     """
     Role:
         -   Selection

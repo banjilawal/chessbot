@@ -1,7 +1,7 @@
-# src/model/team/hash/validation/validation.py
+# src/model/binder/validation/validation.py
 
 """
-Module: model.team.hash.validation.validation
+Module: model.binder.validation.validation
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0
@@ -15,12 +15,12 @@ from model.catalog import SchemaService
 from system import LoggingLevelRouter, Validator
 from result.result.result import ValidationResult
 from model.team import (
-    BlackTeamHasWrongSchemaException, TeamHash, TeamHashNullException, TeamHashValidationException,
+    BlackTeamHasWrongSchemaException, TeamBinder, TeamBinderNullException, TeamBinderValidationException,
     TeamValidator, WhiteTeamHasWrongSchemaException
 )
 
 
-class TeamHashValidator(Validator[TeamHash]):
+class TeamBinderValidator(Validator[TeamBinder]):
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -29,92 +29,92 @@ class TeamHashValidator(Validator[TeamHash]):
             candidate: Any,
             schema_service: SchemaService = SchemaService(),
             team_validator: TeamValidator = TeamValidator(),
-    ) -> ValidationResult[TeamHash]:
+    ) -> ValidationResult[TeamBinder]:
         """
         # ACTION:
             1.  If the rank fails existence or type checks return the exception in the ValidationResult.
-                Else, cast rank into TeamTable instance hash.
+                Else, cast rank into TeamBinder instance binder.
             2.  If either team's has the wrong schema send an exception to the ValidationResult.
-            3.  The tests passed. Send the hash in the ValidationResult.
+            3.  The tests passed. Send the binder in the ValidationResult.
         # PARAMETERS:
             *   rank (Any)
             *   schema_service (SchemaService)
             *   team_service (TeamService)
         # RETURNS:
-            *   ValidationResult[TeamTable] containing either:
-                    - On success:   TeamTable in the payload.
+            *   ValidationResult[TeamBinder] containing either:
+                    - On success:   TeamBinder in the payload.
                     - On failure:   Exception.
         Raises:
             *   TypeError
-            *   TeamHashNullException
+            *   TeamBinderNullException
             *   WhiteTeamHasWrongSchemaException
             *   BlackTeamHasWrongSchemaException
-            *   TeamHashValidationException
+            *   TeamBinderValidationException
         """
-        method = "TeamHashValidator.validate"
+        method = "TeamBinderValidator.validate"
         
         # Handle the nonexistence case.
         if candidate is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                TeamHashValidationException(
-                    msg=f"{method}: {TeamHashValidationException.MSG}",
-                    ex=TeamHashNullException(f"{method}: {TeamHashNullException.MSG}")
+                TeamBinderValidationException(
+                    msg=f"{method}: {TeamBinderValidationException.MSG}",
+                    ex=TeamBinderNullException(f"{method}: {TeamBinderNullException.MSG}")
                 )
             )
         # Handle the wrong class case.
-        if not isinstance(candidate, TeamHash):
+        if not isinstance(candidate, TeamBinder):
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                TeamHashValidationException(
-                    msg=f"{method}: {TeamHashValidationException.MSG}",
-                    ex=TypeError(f"{method}: Expected TeamTable, got {type(candidate).__name__} instead.")
+                TeamBinderValidationException(
+                    msg=f"{method}: {TeamBinderValidationException.MSG}",
+                    ex=TypeError(f"{method}: Expected TeamBinder, got {type(candidate).__name__} instead.")
                 )
             )
-        # --- Cast the rank to a TeamTable for additional tests ---#
-        hash = cast(TeamHash, candidate)
+        # --- Cast the rank to a TeamBinder for additional tests ---#
+        binder = cast(TeamBinder, candidate)
         
         # Handle the case that, the white team does not pass a validation check.
-        white_team_validation_result = team_validator.validate(hash.white_team)
+        white_team_validation_result = team_validator.validate(binder.white_team)
         if white_team_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                TeamHashValidationException(
-                    msg=f"{method}: {TeamHashValidationException.MSG}",
+                TeamBinderValidationException(
+                    msg=f"{method}: {TeamBinderValidationException.MSG}",
                     ex=white_team_validation_result.exception
                 )
             )
         # Handle the case that, the black team does not pass a validation check.
-        black_team_validation_result = team_validator.validate(hash.black_team)
+        black_team_validation_result = team_validator.validate(binder.black_team)
         if black_team_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                TeamHashValidationException(
-                    msg=f"{method}: {TeamHashValidationException.MSG}",
+                TeamBinderValidationException(
+                    msg=f"{method}: {TeamBinderValidationException.MSG}",
                     ex=black_team_validation_result.exception
                 )
             )
         # Handle the case that, the white team does not have a white schema.
-        if hash.white_team.schema != schema_service.schema.WHITE:
+        if binder.white_team.schema != schema_service.schema.WHITE:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                TeamHashValidationException(
-                    msg=f"{method}: {TeamHashValidationException.MSG}",
+                TeamBinderValidationException(
+                    msg=f"{method}: {TeamBinderValidationException.MSG}",
                     ex=WhiteTeamHasWrongSchemaException(
                         f"{method}: {WhiteTeamHasWrongSchemaException.MSG}"
                     )
                 )
             )
         # Handle the case that, the black team does not have a black schema.
-        if hash.black_team.schema != schema_service.schema.BLACK:
+        if binder.black_team.schema != schema_service.schema.BLACK:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                TeamHashValidationException(
-                    msg=f"{method}: {TeamHashValidationException.MSG}",
+                TeamBinderValidationException(
+                    msg=f"{method}: {TeamBinderValidationException.MSG}",
                     ex=BlackTeamHasWrongSchemaException(
                         f"{method}: {BlackTeamHasWrongSchemaException.MSG}"
                     )
                 )
             )
         # On certification successes send the team instance in the ValidationResult.
-        ValidationResult.success(payload=hash)
+        ValidationResult.success(payload=binder)

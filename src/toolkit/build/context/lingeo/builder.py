@@ -12,11 +12,11 @@ from typing import Optional
 
 from err import ExcessVectorContextFlagsException, VectorContextToolkitException
 from integrity import Toolkit
-from model import Coord, VectorContext, Vector
+from model import Coord, VectorOperand, Vector
 from result import ToolkitResult
 from toolkit  import VectorContextToolkit
 
-class VectorContextToolkit(Toolkit[VectorContext]):
+class VectorContextToolkit(Toolkit[VectorOperand]):
     """
     Role
         -   Transaction Worker
@@ -45,7 +45,7 @@ class VectorContextToolkit(Toolkit[VectorContext]):
             coord: Optional[Coord] = None,
             vector: Optional[Vector] = None,
             toolkit : VectorContextToolkit = VectorContextToolkit()
-    ) -> ToolkitResult[VectorContext]:
+    ) -> ToolkitResult[VectorOperand]:
         """
         Toolkit a safe VectorContext.
 
@@ -126,7 +126,7 @@ class VectorContextToolkit(Toolkit[VectorContext]):
                     )
                 )
             # On Toolkit success, forward the work product.
-            return ToolkitResult.success(VectorContext(coord=coord))
+            return ToolkitResult.success(VectorOperand(coord=coord))
         
         # Deal with the alternate case.
         toolkit_result = toolkit.vector_service.validator.validate(vector)
@@ -142,5 +142,5 @@ class VectorContextToolkit(Toolkit[VectorContext]):
                 )
             )
         # --- Forward the work product to the caller ---#
-        return ToolkitResult.success(VectorContext(vector=vector))
+        return ToolkitResult.success(VectorOperand(vector=vector))
             

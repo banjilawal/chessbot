@@ -1,7 +1,7 @@
-# src/model/team/hash/build/exception.py
+# src/model/binder/build/exception.py
 
 """
-Module: model.team.hash.build.build
+Module: model.binder.build.build
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0
@@ -12,12 +12,12 @@ from __future__ import annotations
 from model.catalog import SchemaService
 from system import BuildResult, Builder, LoggingLevelRouter
 from model.team import (
-    BlackTeamHasWrongSchemaException, Team, TeamHash, TeamHashBuildException,
+    BlackTeamHasWrongSchemaException, Team, TeamBinder, TeamBinderBuildException,
     TeamSchemaCollisionException, TeamValidator, WhiteTeamHasWrongSchemaException
 )
 
 
-class TeamTableBuilder(Builder[TeamHash]):
+class TeamTableBuilder(Builder[TeamBinder]):
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -27,16 +27,16 @@ class TeamTableBuilder(Builder[TeamHash]):
             black_team: Team,
             team_validator: TeamValidator = TeamValidator(),
             schema_service: SchemaService = SchemaService(),
-    ) -> BuildResult[TeamHash]:
-        method = "TeamHashBuilder.build"
+    ) -> BuildResult[TeamBinder]:
+        method = "TeamBinderBuilder.build"
         
         # Handle the case that, the white_team does not pass a validation check.
         white_team_validation_result = team_validator.validate(white_team)
         if white_team_validation_result.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                TeamHashBuildException(
-                    msg=f"{method}: {TeamHashBuildException.MSG}",
+                TeamBinderBuildException(
+                    msg=f"{method}: {TeamBinderBuildException.MSG}",
                     ex=white_team_validation_result.exception
                 )
             )
@@ -44,8 +44,8 @@ class TeamTableBuilder(Builder[TeamHash]):
         if white_team.schema != schema_service.schema.WHITE:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                TeamHashBuildException(
-                    msg=f"{method}: {TeamHashBuildException.MSG}",
+                TeamBinderBuildException(
+                    msg=f"{method}: {TeamBinderBuildException.MSG}",
                     ex=WhiteTeamHasWrongSchemaException(
                         f"{method}: {WhiteTeamHasWrongSchemaException.MSG}",
                     )
@@ -55,8 +55,8 @@ class TeamTableBuilder(Builder[TeamHash]):
         if black_team.schema != schema_service.schema.WHITE:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                TeamHashBuildException(
-                    msg=f"{method}: {TeamHashBuildException.MSG}",
+                TeamBinderBuildException(
+                    msg=f"{method}: {TeamBinderBuildException.MSG}",
                     ex=BlackTeamHasWrongSchemaException(
                         f"{method}: {BlackTeamHasWrongSchemaException.MSG}",
                     )
@@ -66,11 +66,11 @@ class TeamTableBuilder(Builder[TeamHash]):
         if black_team.schema == white_team.schema:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                TeamHashBuildException(
-                    msg=f"{method}: {TeamHashBuildException.MSG}",
+                TeamBinderBuildException(
+                    msg=f"{method}: {TeamBinderBuildException.MSG}",
                     ex=TeamSchemaCollisionException(
                         f"{method}:{TeamSchemaCollisionException.MSG}",
                     )
                 )
             )
-        return BuildResult.success( payload=TeamHash(white_team=white_team, black_team=black_team))
+        return BuildResult.success( payload=TeamBinder(white_team=white_team, black_team=black_team))

@@ -1,7 +1,7 @@
-# src/model/team/hash/exception/black.py
+# src/model/binder/exception/black.py
 
 """
-Module: model.team.hash.exception.black
+Module: model.binder.exception.black
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0
@@ -12,19 +12,19 @@ __all__ = [
     "BlackTeamHasWrongSchemaException",
 ]
 
-from model.team import TeamHashException
+from model.team import TeamBinderException
 
 
 # ======================# BLACK_TEAM_HAS_WRONG_SCHEMA EXCEPTION #======================#
-class BlackTeamHasWrongSchemaException(TeamHashException):
+class BlackTeamHasWrongSchemaException(TeamBinderException):
     """
     Role:Super Exception
 
     Responsibilities:
-    1.  Indicates that the black team in the hash does not have a black schema.
+    1.  Indicates that the black team in the binder does not have a black schema.
 
     Super Class:
-        *   TeamHashException
+        *   TeamBinderException
 
     Provides:
 

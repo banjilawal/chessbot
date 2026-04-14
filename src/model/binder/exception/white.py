@@ -1,7 +1,7 @@
-# src/model/team/hash/exception/white.py
+# src/model/binder/exception/white.py
 
 """
-Module: model.team.hash.exception.white
+Module: model.binder.exception.white
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0
@@ -12,19 +12,19 @@ __all__ = [
     "WhiteTeamHasWrongSchemaException",
 ]
 
-from model.team import TeamHashException
+from model.team import TeamBinderException
 
 
 # ======================# WHITE_TEAM_HAS_WRONG_SCHEMA EXCEPTION #======================#
-class WhiteTeamHasWrongSchemaException(TeamHashException):
+class WhiteTeamHasWrongSchemaException(TeamBinderException):
     """
     Role:Super Exception
 
     Responsibilities:
-    1.  Indicates that the white team in the hash does not have a white schema.
+    1.  Indicates that the white team in the binder does not have a white schema.
 
     Super Class:
-        *   TeamHashException
+        *   TeamBinderException
 
     Provides:
 
