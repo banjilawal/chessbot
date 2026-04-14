@@ -7,7 +7,7 @@ Created: 2026-03-24
 version: 1.0.0
 """
 
-# =========== SQUARE.SERVICE PACKAGE ===========#
+# =========== MICROSERVICE.SQUARE.SERVICE PACKAGE ===========#
 
 # Packages
 from .validation import *

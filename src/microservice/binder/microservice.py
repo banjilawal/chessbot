@@ -10,11 +10,14 @@ version: 1.0.0
 from __future__ import annotations
 
 from copy import deepcopy
-from typing import Optional
+from typing import List, Optional
 
 from integrity import SchemaValidator, TeamValidator
+from integrity.build.binder import TeamBinderBuilder
 from microservice import Microservice
-from model import TeamBinder
+from model import Schema, Team, TeamBinder, TeamBinderValidator
+from result import SearchResult, UpdateResult
+from system import IdFactory, LoggingLevelRouter
 
 
 class TeamBinderMicroservice(Microservice[TeamBinder]):
@@ -52,28 +55,33 @@ class TeamBinderMicroservice(Microservice[TeamBinder]):
     # INHERITED METHODS:
     *   See Microservice class for inherited methods.
     """
-    SERVICE_NAME = "TeamBinderservice"
-    _builder: Builder[TeamBinder]
-    _validator: Validator[TeamBinder]
+    SERVICE_NAME = "TeamBinderMicroservice"
+    _builder: TeamBinderBuilder
+    _validator: TeamBinderValidator
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
+            builder: TeamBinderBuilder | None = None,
+            validator: TeamBinderValidator | None = None,
             id: int = IdFactory.next_id(class_name="TeamBinderService"),
-            builder: Builder[TeamBinder] = TeamBinderBuilder(),
-            validator: Validator[TeamBinder] = Validator(),
     ):
         super().__init__(id=id, name=name)
+        if builder is None:
+            builder = TeamBinderBuilder()
+        
+        if validator is None:
+            validator = TeamBinderValidator()
         self._builder = builder
         self._validator = validator
     
     @property
-    def builder(self) -> Builder[TeamBinder]:
+    def builder(self) -> TeamBinderBuilder:
         return self._builder
     
     @property
-    def validator(self) -> Validator[TeamBinder]:
-        return self.certifier
+    def validator(self) -> TeamBinderValidator:
+        return self._validator
     
     def __eq__(self, other):
         if super().__eq__(other):
@@ -85,35 +93,33 @@ class TeamBinderMicroservice(Microservice[TeamBinder]):
     def slot_occupant(
             self,
             schema: Schema,
-            team_table: TeamBinder,
+            binder: TeamBinder,
             schema_validator: SchemaValidator | None = None,
-    ) -> Optional[Team]:
+    ) -> SearchResult[Optional[Team]]:
         method = f"{self.__class__.__name__}"
         
         if schema_validator is None:
             schema_validator = SchemaValidator()
     
-        # Handle the case that, the table is not certified as safe.
-        table_validation_result = self._validator.validate(team_table)
-        if table_validation_result.is_failure:
+        # Handle the case that, the binder is not certified as safe.
+        binder_validation_result = self._validator.validate(binder)
+        if binder_validation_result.is_failure:
             # Return the exception chain on failure
-            return UpdateResult.update_failure(
-                original=team_table,
-                exception=TeamBinderServiceException(
+            return SearchResult.failure(
+                TeamBinderServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=TeamBinderServiceException.MSG,
                     err_code=TeamBinderServiceException.ERR_CODE,
-                    ex=table_validation_result.exception,
+                    ex=binder_validation_result.exception,
                 )
             )
-        # Handle the case that, the table is not certified as safe.
+        # Handle the case that, the binder is not certified as safe.
         schema_validation_result = schema_validator.validate(schema)
-        if table_validation_result.is_failure:
+        if schema_validation_result.is_failure:
             # Return the exception chain on failure
-            return UpdateResult.update_failure(
-                original=team_table,
-                exception=TeamBinderServiceException(
+            return SearchResult.failure(
+                TeamBinderServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=TeamBinderServiceException.MSG,
@@ -121,34 +127,34 @@ class TeamBinderMicroservice(Microservice[TeamBinder]):
                     ex=schema_validation_result.exception,
                 )
             )
-        if schema not in team_table.schemas:
-            return None
-        return team_table.table[schema]
+        if schema not in binder.schemas:
+            return SearchResult.empty()
+        return SearchResult.success([binder.table[schema]])
         
     @LoggingLevelRouter.monitor
     def add_team(
             self,
             team: Team,
-            team_table: TeamBinder,
+            binder: TeamBinder,
             team_validator: TeamValidator | None = None,
     ) -> UpdateResult[TeamBinder]:
         method = f"{self.__class__.__name__}.add_team"
         
         if team_validator is None:
-            team_validator = Validator()
+            team_validator = TeamValidator()
         
-        # Handle the case that, the table is not certified as safe.
-        table_validation_result = self._validator.validate(team_table)
-        if table_validation_result.is_failure:
+        # Handle the case that, the binder is not certified as safe.
+        binder_validation_result = self._validator.validate(binder)
+        if binder_validation_result.is_failure:
             # Return the exception chain on failure
             return UpdateResult.update_failure(
-                original=team_table,
+                original=binder,
                 exception=TeamBinderServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=TeamBinderServiceException.MSG,
                     err_code=TeamBinderServiceException.ERR_CODE,
-                    ex=table_validation_result.exception,
+                    ex=binder_validation_result.exception,
                 )
             )
         # Handle the case that, the team is flagged.
@@ -156,7 +162,7 @@ class TeamBinderMicroservice(Microservice[TeamBinder]):
         if team_validation_result.is_failure:
             # Return the exception chain on failure
             return UpdateResult.update_failure(
-                original=team_table,
+                original=binder,
                 exception=TeamBinderServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -165,11 +171,11 @@ class TeamBinderMicroservice(Microservice[TeamBinder]):
                     ex=team_validation_result.exception,
                 )
             )
-        # Handle the case that, the table is already full.
-        if team_table.is_full:
+        # Handle the case that, the binder is already full.
+        if binder.is_full:
             # Return the exception chain on failure
             return UpdateResult.update_failure(
-                original=team_table,
+                original=binder,
                 exception=TeamBinderServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -182,10 +188,10 @@ class TeamBinderMicroservice(Microservice[TeamBinder]):
                 )
             )
         # Handle the case that, the team belongs to a different board.
-        if team_table.board != team.board:
+        if binder.board != team.board:
             # Return the exception chain on failure
             return UpdateResult.update_failure(
-                original=team_table,
+                original=binder,
                 exception=TeamBinderServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -198,11 +204,11 @@ class TeamBinderMicroservice(Microservice[TeamBinder]):
                 )
             )
         # Handle the case, that the team's slot is occupied by a different
-        occupant_check_result = self._team_validator.validate(team_table, team.schema)
+        occupant_check_result = self.slot_occupant(binder=binder, schema=team.schema)
         if occupant_check_result.is_failure:
             # Return the exception chain on failure
             return UpdateResult.update_failure(
-                original=team_table,
+                original=binder,
                 exception=TeamBinderServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -217,7 +223,7 @@ class TeamBinderMicroservice(Microservice[TeamBinder]):
         if occupant_check_result.payload is not None and occupant_check_result.payload != team:
             # Return the exception chain on failure
             return UpdateResult.update_failure(
-                original=team_table,
+                original=binder,
                 exception=TeamBinderServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -231,7 +237,7 @@ class TeamBinderMicroservice(Microservice[TeamBinder]):
             )
         if occupant_check_result.payload is not None and occupant_check_result.payload == team:
             return UpdateResult.nothing_to_update()
-        pre_update_table = deepcopy(team_table)
-        team_table.table[team.schema] = team
+        pre_update_binder = deepcopy(binder)
+        binder.table[team.schema] = team
         
-        return UpdateResult.update_success(original=team_table, updated=team_table,)
+        return UpdateResult.update_success(original=pre_update_binder, updated=binder,)

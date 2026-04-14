@@ -11,10 +11,11 @@ import logging
 
 log = logging.getLogger("chessbot")
 
-# =========== PACKAGE ===========#
+# ============= MICROSERVICE. PACKAGE ===========#
 
 # Packages
 from .arena import *
+from .binder import *
 from .board import *
 from .catalog import *
 from .coord import *

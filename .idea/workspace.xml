@@ -5,14 +5,56 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change afterPath="$PROJECT_DIR$/src/microservice/binder/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/microservice/binder/microservice.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/microservice/context/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/context/microservice.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/binder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/binder/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/binder/builder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/integrity/build/builder/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/binder/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/integrity/build/builder/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/binder/builder/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/integrity/build/builder/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/integrity/build/binder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/integrity/build/binder/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/arena/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/binder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/binder/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/board/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/catalog/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/catalog/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/catalog/formation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/catalog/formation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/catalog/persona/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/catalog/persona/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/catalog/schema/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/catalog/schema/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/catalog/schema/operation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/catalog/schema/operation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/catalog/schema/operation/properties/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/catalog/schema/operation/properties/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/context/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/context/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/coord/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/coord/operation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/coord/operation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/coord/operation/arithmetic/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/coord/operation/arithmetic/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/coord/operation/arithmetic/convert/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/coord/operation/arithmetic/convert/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/coord/operation/arithmetic/convert/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/coord/operation/arithmetic/convert/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/coord/operation/arithmetic/distance/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/coord/operation/arithmetic/distance/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/coord/operation/arithmetic/distance/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/coord/operation/arithmetic/distance/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/coord/operation/arithmetic/multiplication/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/coord/operation/arithmetic/multiplication/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/coord/operation/arithmetic/multiplication/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/coord/operation/arithmetic/multiplication/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/edge/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/edge/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/game/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/game/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/game/data/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/game/data/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/game/data/unique/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/game/data/unique/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/hostage/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/hostage/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/hostage/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/hostage/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/hostage/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/hostage/exception/debug/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/identity/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/identity/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/node/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/node/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/player/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/player/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/player/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/player/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/rank/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/rank/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/rank/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/scalar/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/scalar/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/scalar/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/scalar/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/search/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/search/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/snapshot/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/snapshot/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/square/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/square/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/square/operation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/square/operation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/team/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/team/operation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/team/operation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/token/menu/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/token/menu/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/token/menu/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/token/menu/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/vector/operation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/vector/operation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/vector/operation/arithmetic/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/vector/operation/arithmetic/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -286,7 +328,7 @@
     "ToolWindow.Python Packages.ShowToolbar": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/microservice",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/integrity/build",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -313,18 +355,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/integrity/build" />
       <recent name="$PROJECT_DIR$/src/microservice" />
       <recent name="$PROJECT_DIR$/src/microservice/arena" />
       <recent name="$PROJECT_DIR$/src/model/team/table" />
       <recent name="$PROJECT_DIR$/src/err/operation" />
-      <recent name="$PROJECT_DIR$/src/err/operation/bootstrap" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/integrity/build/binder" />
       <recent name="$PROJECT_DIR$/src/integrity/build" />
       <recent name="$PROJECT_DIR$/src/model" />
       <recent name="$PROJECT_DIR$/src/model/math" />
       <recent name="$PROJECT_DIR$/src/operation/finalize/build" />
-      <recent name="$PROJECT_DIR$/src/operation" />
     </key>
   </component>
   <component name="RunManager" selected="Python.operation">
@@ -877,7 +919,7 @@
       <workItem from="1775468437273" duration="38443000" />
       <workItem from="1775523154635" duration="8604000" />
       <workItem from="1775535077469" duration="17356000" />
-      <workItem from="1775569861163" duration="164713000" />
+      <workItem from="1775569861163" duration="166014000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

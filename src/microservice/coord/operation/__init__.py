@@ -7,7 +7,7 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-# =========== TOKEN.SERVICE.OPERATION PACKAGE ===========#
+# =========== MICROSERVICE.TOKEN.SERVICE.OPERATION PACKAGE ===========#
 
 # Packages
 from .build import *

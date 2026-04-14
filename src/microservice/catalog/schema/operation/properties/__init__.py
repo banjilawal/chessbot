@@ -7,7 +7,7 @@ Created: 2026-03-02
 version: 1.0.0
 """
 
-# =========== SCHEMA.SERVICE.OPERATION.PROPERTIES PACKAGE ===========#
+# =========== MICROSERVICE.SCHEMA.SERVICE.OPERATION.PROPERTIES PACKAGE ===========#
 
 # Packages
 None

@@ -7,7 +7,7 @@ Created: 2025-02-08
 version: 1.0.0
 """
 
-# =========== MICROSERVICE.BINDER PACKAGE ===========#
+# ============= MICROSERVICE..BINDER PACKAGE ===========#
 
 # Packages
 

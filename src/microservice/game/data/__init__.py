@@ -7,7 +7,7 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-#=========== GAME.DATABASE.CORE PACKAGE ===========#
+#=========== MICROSERVICE.GAME.DATABASE.CORE PACKAGE ===========#
 
 # Packages
 from .unique import *

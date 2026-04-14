@@ -7,7 +7,7 @@ Created: 2026-03-25
 version: 1.0.0
 """
 
-# =========== TOKEN.SERVICE.OPERATION.ARITHMETIC PACKAGE ===========#
+# =========== MICROSERVICE.TOKEN.SERVICE.OPERATION.ARITHMETIC PACKAGE ===========#
 
 # Packages
 from .convert import *

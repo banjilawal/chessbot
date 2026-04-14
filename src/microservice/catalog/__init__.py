@@ -11,7 +11,7 @@ import logging
 
 log = logging.getLogger("chessbot")
 
-# =========== CATALOG PACKAGE ===========#
+# =========== MICROSERVICE.CATALOG PACKAGE ===========#
 
 # Packages
 from .formation import *

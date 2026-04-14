@@ -7,7 +7,7 @@ Created: 2026-03-31
 version: 1.0.0
 """
 
-# =========== TOKEN.SERVICE.MENU PACKAGE ===========#
+# =========== MICROSERVICE.TOKEN.SERVICE.MENU PACKAGE ===========#
 
 # Packages
 from .exception import *

@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== CATALOG.SCHEMA PACKAGE ===========#
+# =========== MICROSERVICE.CATALOG.SCHEMA PACKAGE ===========#
 
 # Packages
 from .operation import *

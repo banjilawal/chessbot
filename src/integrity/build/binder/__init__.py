@@ -13,4 +13,4 @@ version: 1.0.0
 
 
 # Modules
-from .builder import T
+from .builder import TeamBinderBuilder
