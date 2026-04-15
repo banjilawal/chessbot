@@ -11,7 +11,7 @@ version: 1.0.0
 
 # Packages
 from .build import *
-from .collision import *
+from err.analysis.collision import *
 from .math import *
 from .model import *
 from .null import *

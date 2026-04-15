@@ -34,7 +34,7 @@ class TokenValidationException(ValidationException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        rslt_type: Optional[str]
+        rslt_type: Optional[resultCategory]
             
     Provides:
 
@@ -53,7 +53,7 @@ class TokenValidationException(ValidationException):
             cls_name: Optional[str] = None,
             cls_mthd: Optional[str] = None,
             err_code: Optional[str] = None,
-            rslt_type: Optional[str] = None,
+            rslt_type: Optional[resultCategory] = None,
     ):
         """
         Args:

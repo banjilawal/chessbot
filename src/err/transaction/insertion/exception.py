@@ -56,7 +56,7 @@ class InsertionException(TransactionException):
             cls_name: Optional[str] = None,
             ex: Optional[Exception] = None,
             err_code: Optional[str] = None,
-            # rslt_type: Optional[str] = None,
+            # rslt_type: Optional[resultCategory] = None,
     ):
         """
         Args:
@@ -68,7 +68,6 @@ class InsertionException(TransactionException):
             cls_mthd: Optional[str]
             err_code: Optional[str]
         """
-        op = self.OP
         msg = msg or self.MSG
         rslt_type = self.RSLT_TYPE
         err_code = err_code or self.ERR_CODE

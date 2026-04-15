@@ -34,7 +34,7 @@ class PipelineException(ChessException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        rslt_type: Optional[str]
+        rslt_type: Optional[resultCategory]
         
     Provides:
     
@@ -53,7 +53,7 @@ class PipelineException(ChessException):
             cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
             err_code: Optional[str] | None = None,
-            rslt_type: Optional[str] | None = None,
+            rslt_type: Optional[resultCategory] | None = None,
     ):
         """
         Args:
@@ -64,7 +64,7 @@ class PipelineException(ChessException):
             cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
-            rslt_type: Optional[str]
+            rslt_type: Optional[resultCategory]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE

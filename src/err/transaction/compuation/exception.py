@@ -55,7 +55,7 @@ class ComputationTransactionException(TransactionException):
             cls_name: Optional[str] = None,
             ex: Optional[Exception] = None,
             err_code: Optional[str] = None,
-            rslt_type: Optional[str] = None,
+            rslt_type: Optional[resultCategory] = None,
     ):
         """
         Args:

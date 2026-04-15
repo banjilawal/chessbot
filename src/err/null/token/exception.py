@@ -52,7 +52,7 @@ class TokenNullException(NullException):
             cls_name: Optional[str] = None,
             cls_mthd: Optional[str] = None,
             err_code: Optional[str] = None,
-            rslt_type: Optional[str] = None,
+            rslt_type: Optional[resultCategory] = None,
     ):
         """
         Args:

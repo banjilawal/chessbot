@@ -36,7 +36,7 @@ class OpeningSquareDiscoveryException(SearchException):
         title: Optional[str]
         ex: Optional[Exception]
         err_code: Optional[str]
-        rslt_type: Optional[str]
+        rslt_type: Optional[resultCategory]
 
     Provides:
 
@@ -55,7 +55,7 @@ class OpeningSquareDiscoveryException(SearchException):
             title: Optional[str] = None,
             ex: Optional[Exception] = None,
             err_code: Optional[str] = None,
-            rslt_type: Optional[str] = None,
+            rslt_type: Optional[resultCategory] = None,
     ):
         """
         Args:
@@ -64,7 +64,7 @@ class OpeningSquareDiscoveryException(SearchException):
             title: Optional[str]
             ex: Optional[Exception]
             err_code: Optional[str]
-            rslt_type: Optional[str]
+            rslt_type: Optional[resultCategory]
         """
         op = op or self.OP
         msg = msg or self.MSG

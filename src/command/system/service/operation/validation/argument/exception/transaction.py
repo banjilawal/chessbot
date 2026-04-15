@@ -61,7 +61,7 @@ class ArgumentsValidationException(ValidationException):
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
             mthd: Optional[str] = None, = None,
-            rslt_type: Optional[str] = None,
+            rslt_type: Optional[resultCategory] = None,
     ):
         err_code = err_code or self.ERR_CODE
         msg = msg or self.MSG

@@ -78,7 +78,7 @@ class TransactionException(ChessException):
             cls_name: Optional[str] = None,
             ex: Optional[Exception] = None,
             err_code: Optional[str] = None,
-            rslt_type: Optional[str] = None,
+            rslt_type: Optional[resultCategory] = None,
     ):
         """
         Args:
@@ -105,15 +105,11 @@ class TransactionException(ChessException):
         self._rslt_type = rslt_type
     
     @property
-    def op(self) -> Optional[str]:
-        return self._op
-    
-    @property
     def rslt_type(self) -> Optional[str]:
         return self._rslt_type
     
     def __str__(self):
-        return f"{super().__str__()}, op:{self._op}, rslt_type:{self._rslt_type}"
+        return f"{super().__str__()},  rslt_type:{self._rslt_type}"
 
 
     

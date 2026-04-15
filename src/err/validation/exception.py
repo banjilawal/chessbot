@@ -36,7 +36,7 @@ class ValidationException(ChessException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        rslt_type: Optional[str]
+        rslt_type: Optional[resultCategory]
             
     Provides:
 
@@ -47,8 +47,6 @@ class ValidationException(ChessException):
     MSG = "Validation check failed."
     ERR_CODE = "VALIDATION_FAILURE"
     RSLT_TYPE = "ValidationResult"
-    
-    _op = Optional[str]
     _rslt_type = Optional[str]
     
     def __init__(
@@ -71,7 +69,6 @@ class ValidationException(ChessException):
             cls_mthd: Optional[str]
             err_code: Optional[str]
         """
-        op = self.OP
         msg = msg or self.MSG
         rslt_type = self.RSLT_TYPE
         err_code = err_code or self.ERR_CODE
@@ -87,12 +84,8 @@ class ValidationException(ChessException):
         self._rslt_type = rslt_type
     
     @property
-    def op(self) -> Optional[str]:
-        return self._op
-    
-    @property
     def rslt_type(self) -> Optional[str]:
         return self._rslt_type
     
     def __str__(self):
-        return f"{super().__str__()}, op:{self._op}, rslt_type:{self._rslt_type}"
+        return f"{super().__str__()},  rslt_type:{self._rslt_type}"

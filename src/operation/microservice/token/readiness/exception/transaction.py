@@ -27,7 +27,7 @@ class TokenReadinessAnalysisException(RelationAnalysisException):
         msg: Optional[str]
         mthd: Optional[str]
         err_code: Optional[str]
-        rslt_type: Optional[str]
+        rslt_type: Optional[resultCategory]
 
     Provides:
 
@@ -44,7 +44,7 @@ class TokenReadinessAnalysisException(RelationAnalysisException):
             mthd: Optional[str] = None,
             ex: Optional[Exception] = None,
             err_code: Optional[str] = None,
-            rslt_type: Optional[str] = None,
+            rslt_type: Optional[resultCategory] = None,
     ):
         """
         Args:
@@ -52,7 +52,7 @@ class TokenReadinessAnalysisException(RelationAnalysisException):
             msg: Optional[str]
             mthd: Optional[str]
             err_code: Optional[str]
-            rslt_type: Optional[str]
+            rslt_type: Optional[resultCategory]
         """
         op = op or self.OP
         msg = msg or self.MSG

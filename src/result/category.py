@@ -9,7 +9,7 @@ version: 1.0.1
 
 from enum import Enum, auto
 
-class ResultType(Enum):
+class ResultCategory(Enum):
     ANALYSIS_RESULT = auto(),
     BUILD_RESULt = auto(),
     COMPUTATION_RESULT = auto(),

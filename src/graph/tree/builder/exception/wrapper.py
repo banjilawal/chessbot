@@ -45,7 +45,7 @@ class NodeTreeBuildException(BuildException):
         msg: Optional[str]
         mthd: Optional[str]
         err_code: Optional[str]
-        rslt_type: Optional[str]
+        rslt_type: Optional[resultCategory]
 
     # LOCAL METHODS:
     None
@@ -64,7 +64,7 @@ class NodeTreeBuildException(BuildException):
             mthd: Optional[str] = None,
             ex: Optional[Exception] = None,
             err_code: Optional[str] = None,
-            rslt_type: Optional[str] = None,
+            rslt_type: Optional[resultCategory] = None,
     ):
         """
         Args:
@@ -72,7 +72,7 @@ class NodeTreeBuildException(BuildException):
             msg: Optional[str]
             mthd: Optional[str]
             err_code: Optional[str]
-            rslt_type: Optional[str]
+            rslt_type: Optional[resultCategory]
         """
         op = op or self.OP
         msg = msg or self.MSG

@@ -60,7 +60,7 @@ class AsymmetricEdgeBuildException(BuildException):
             mthd: Optional[str] = None,
             err_code: Optional[str] = None,
             ex: Optional[Exception] = None,
-            rslt_type: Optional[str] = None,
+            rslt_type: Optional[resultCategory] = None,
     ):
         """
         Args:
@@ -68,7 +68,7 @@ class AsymmetricEdgeBuildException(BuildException):
             mthd: Optional[str]
             err_code: Optional[str]
             ex: Optional[Exception]
-            rslt_type: Optional[str]
+            rslt_type: Optional[resultCategory]
         """
         op = op or self.OP
         msg = msg or self.MSG
