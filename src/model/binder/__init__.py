@@ -10,8 +10,8 @@ version: 1.0.0
 # =========== MODEL.BINDER PACKAGE ===========#
 
 # Packages
-from .validator import *
-from .exception import *
+from .arena import *
+from .board import *
 
 # Modules
-from model.binder.board.model import BoardTeamBinder
+from model import Binder
