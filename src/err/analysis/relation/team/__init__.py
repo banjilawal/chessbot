@@ -1,16 +1,16 @@
 # src/err/analysis/relation/team/__init__.py
 
 """
-Module: err.analysis.relation.context.team.__init__
+Module: err.analysis.relation.team.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.ANALYSIS.RELATION.CONTEXT.TEAM PACKAGE ===========#
+# ============ ERR.ANALYSIS.RELATION.TEAM PACKAGE ===========#
 
 # Packages
-None
+from .board import *
+from .player import *
 
 # Modules
-from .exception import TeamRelationException

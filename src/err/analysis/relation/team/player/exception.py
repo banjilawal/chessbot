@@ -1,7 +1,7 @@
-# src/err/analysis/relation/team/exception.py
+# src/err/analysis/relation/team/player/exception.py
 
 """
-Module: err.analysis.relation.team.exception
+Module: err.analysis.relation.team.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,39 +10,41 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import RelationException
-
 
 __all__ = [
-    # ======================# TEAM_RELATION_FAILURE #======================#
-    "TeamRelationException",
+    # ======================# PLAYER_TEAM_RELATION_ANALYSIS_FAILURE #======================#
+    "PlayerTeamAnalysisException",
 ]
 
-# ======================# TEAM_RELATION_FAILURE #======================#
-class TeamRelationException(RelationException):
+from err.analysis.relation import RelationException
+
+
+# ======================# PLAYER_TEAM_RELATION_ANALYSIS_FAILURE #======================#
+class PlayerTeamAnalysisException(RelationException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TeamRelation step failed.
+        1.  Indicate that an error prevented a PlayerTeamRelations analysis from completing.
 
     Attributes:
-            msg: Optional[str]
-            var: Optional[str]
-            val: Optional[Any]
-            ex: Optional[Exception]
-            cls_name: Optional[str]
-            cls_mthd: Optional[str]
-            err_code: Optional[str]
+        msg: Optional[str]
+        var: Optional[str]
+        val: Optional[Any]
+        ex: Optional[Exception]
+        cls_name: Optional[str]
+        cls_mthd: Optional[str]
+        err_code: Optional[str]
+        rslt_type: Optional[ResultCategory]
             
     Provides:
 
     Super Class:
-        RelationException
+        IdRelationException
     """
-    MSG = "TeamRelation step failed"
-    ERR_CODE = "TEAM_RELATION_FAILURE"
+    MSG = "A PlayerTeamRelations analysis step failed."
+    ERR_CODE = "PLAYER_TEAM_RELATION_ANALYSIS_FAILURE"
     
     def __init__(
             self,
