@@ -1,7 +1,7 @@
-# src/model/binder/build/exception.py
+# src/model/binder/assembly/exception.py
 
 """
-Module: model.binder.build.build
+Module: model.binder.assembly.assembly
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0
@@ -12,17 +12,17 @@ from __future__ import annotations
 from microservice import IdentityService, TeamService
 from model import Board, TeamBinderBlueprint
 from model.catalog import SchemaService
-from operation import BuildBootstrapper
+from operation import AssemblyBootstrapper
 from result import ValidationResult
-from system import BuildResult, Builder, LoggingLevelRouter
+from system import AssemblyResult, Assemblyer, LoggingLevelRouter
 from model.team import (
-    BlackTeamHasWrongSchemaException, Team, TeamBinder, TeamBinderBuildException,
+    BlackTeamHasWrongSchemaException, Team, TeamBinder, TeamBinderAssemblyException,
     TeamSchemaCollisionException, TeamValidator, WhiteTeamHasWrongSchemaException
 )
 from toolkit import TeamBinderToolkit
 
 
-class TeamBinderBuildBootstrapper(BuildBootstrapper[TeamBinder]):
+class TeamBinderAssemblyBootstrapper(AssemblyBootstrapper[TeamBinder]):
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -37,18 +37,18 @@ class TeamBinderBuildBootstrapper(BuildBootstrapper[TeamBinder]):
         white_team_validation_result = team_validator.validate(white_team)
         if white_team_validation_result.is_failure:
             # Return the exception chain on failure.
-            return BuildResult.failure(
-                TeamBinderBuildException(
-                    msg=f"{method}: {TeamBinderBuildException.MSG}",
+            return AssemblyResult.failure(
+                TeamBinderAssemblyException(
+                    msg=f"{method}: {TeamBinderAssemblyException.MSG}",
                     ex=white_team_validation_result.exception
                 )
             )
         # Handle the case that, the white_team's schema is wrong.
         if white_team.schema != schema_service.schema.WHITE:
             # Return the exception chain on failure.
-            return BuildResult.failure(
-                TeamBinderBuildException(
-                    msg=f"{method}: {TeamBinderBuildException.MSG}",
+            return AssemblyResult.failure(
+                TeamBinderAssemblyException(
+                    msg=f"{method}: {TeamBinderAssemblyException.MSG}",
                     ex=WhiteTeamHasWrongSchemaException(
                         f"{method}: {WhiteTeamHasWrongSchemaException.MSG}",
                     )
@@ -57,9 +57,9 @@ class TeamBinderBuildBootstrapper(BuildBootstrapper[TeamBinder]):
         # Handle the case that, the black_team's schema is wrong.
         if black_team.schema != schema_service.schema.WHITE:
             # Return the exception chain on failure.
-            return BuildResult.failure(
-                TeamBinderBuildException(
-                    msg=f"{method}: {TeamBinderBuildException.MSG}",
+            return AssemblyResult.failure(
+                TeamBinderAssemblyException(
+                    msg=f"{method}: {TeamBinderAssemblyException.MSG}",
                     ex=BlackTeamHasWrongSchemaException(
                         f"{method}: {BlackTeamHasWrongSchemaException.MSG}",
                     )
@@ -68,12 +68,12 @@ class TeamBinderBuildBootstrapper(BuildBootstrapper[TeamBinder]):
         # If there are more than two schemas handle the case that the both teams have the same schema.
         if black_team.schema == white_team.schema:
             # Return the exception chain on failure.
-            return BuildResult.failure(
-                TeamBinderBuildException(
-                    msg=f"{method}: {TeamBinderBuildException.MSG}",
+            return AssemblyResult.failure(
+                TeamBinderAssemblyException(
+                    msg=f"{method}: {TeamBinderAssemblyException.MSG}",
                     ex=TeamSchemaCollisionException(
                         f"{method}:{TeamSchemaCollisionException.MSG}",
                     )
                 )
             )
-        return BuildResult.success( payload=TeamBinder(white_team=white_team, black_team=black_team))
+        return AssemblyResult.success( payload=TeamBinder(white_team=white_team, black_team=black_team))

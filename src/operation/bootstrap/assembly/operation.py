@@ -20,7 +20,7 @@ from toolkit import Toolkit
 
 T = TypeVar("T")
 
-class BuildBootstrapper(Operation[T]):
+class AssemblyBootstrapper(Operation[T]):
     
     @classmethod
     @abstractmethod

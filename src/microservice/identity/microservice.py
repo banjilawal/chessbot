@@ -73,7 +73,7 @@ class IdentityService:
         return self._name_validator.validate(candidate)
     
     @LoggingLevelRouter.monitor
-    def _verify_bootstrap_id( self, id: Any, class_name: str,) -> ValidationResult[int]:
+    def verify_bootstrap_id( self, id: Any, class_name: str,) -> ValidationResult[int]:
         """
         """
         method = f"{self.__name__}._verify_bootstrap_id"

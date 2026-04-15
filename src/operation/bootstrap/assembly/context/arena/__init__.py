@@ -10,7 +10,7 @@ version: 1.0.0
 # =========== ARENA.CONTEXT PACKAGE ===========#
 
 # Packages
-from .builder import *
+from .assemblyer import *
 from .finder import *
 from .service import *
 from .validator import *

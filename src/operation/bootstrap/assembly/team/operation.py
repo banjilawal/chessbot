@@ -1,7 +1,7 @@
-# src/integrity/build/team/builder.py
+# src/integrity/assembly/team/assemblyer.py
 
 """
-Module: integrity.build.team.builder
+Module: integrity.assembly.team.assemblyer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,21 +10,21 @@ version: 1.0.1
 from __future__ import annotations
 
 
-from err import BootstrapTeamBuildException
+from err import BootstrapTeamAssemblyException
 from model import Board, Team, TeamBlueprint
-from operation import BuildBootstrapper
-from result import BuildResult, ValidationResult
+from operation import AssemblyBootstrapper
+from result import AssemblyResult, ValidationResult
 from system import IdFactory, LoggingLevelRouter
 from toolkit import TeamToolkit
 
 
-class TeamBuildBootstrapper(BuildBootstrapper[Team]):
+class TeamAssemblyBootstrapper(AssemblyBootstrapper[Team]):
     """
     Role
         -   Transaction Worker
         -   Integrity Maintenance
         -   Consistency Assurance
-        -   Build Process Owner
+        -   Assembly Process Owner
     
     Responsibilities:
         1.  Ensure a new Team instance is born safe and reliable.
@@ -38,7 +38,7 @@ class TeamBuildBootstrapper(BuildBootstrapper[Team]):
         ) -> ValidationResult[TeamBlueprint]:
     
     Super Class:
-        BuildBootstrapper
+        AssemblyBootstrapper
     """
     @classmethod
     @LoggingLevelRouter.monitor()
@@ -59,14 +59,14 @@ class TeamBuildBootstrapper(BuildBootstrapper[Team]):
         Returns:
             ValidationResult[Team]
         Raises:
-            BootstrapTeamBuildException
+            BootstrapTeamAssemblyException
         """
         method = f"{cls.__name__}.execute"
         
         if toolkit is None:
             toolkit = TeamToolkit()
         
-        # Handle the case that, a build param does not pass a validation check.
+        # Handle the case that, a assembly param does not pass a validation check.
         blueprint_validation_result = cls._run_validations(
             blueprint=blueprint,
             toolkit=toolkit,
@@ -74,11 +74,11 @@ class TeamBuildBootstrapper(BuildBootstrapper[Team]):
         if blueprint_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                BootstrapTeamBuildException(
+                BootstrapTeamAssemblyException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=BootstrapTeamBuildException.MSG,
-                    err_code=BootstrapTeamBuildException.ERR_CODE,
+                    msg=BootstrapTeamAssemblyException.MSG,
+                    err_code=BootstrapTeamAssemblyException.ERR_CODE,
                     ex=blueprint_validation_result.exception,
                 )
             )
@@ -102,11 +102,11 @@ class TeamBuildBootstrapper(BuildBootstrapper[Team]):
         if id_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                BootstrapTeamBuildException(
+                BootstrapTeamAssemblyException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=BootstrapTeamBuildException.MSG,
-                    err_code=BootstrapTeamBuildException.ERR_CODE,
+                    msg=BootstrapTeamAssemblyException.MSG,
+                    err_code=BootstrapTeamAssemblyException.ERR_CODE,
                     ex=id_validation_result.exception,
                 )
             )
@@ -117,11 +117,11 @@ class TeamBuildBootstrapper(BuildBootstrapper[Team]):
         if schema_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                BootstrapTeamBuildException(
+                BootstrapTeamAssemblyException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=BootstrapTeamBuildException.MSG,
-                    err_code=BootstrapTeamBuildException.ERR_CODE,
+                    msg=BootstrapTeamAssemblyException.MSG,
+                    err_code=BootstrapTeamAssemblyException.ERR_CODE,
                     ex=schema_validation_result.exception,
                 )
             )
@@ -132,11 +132,11 @@ class TeamBuildBootstrapper(BuildBootstrapper[Team]):
         if owner_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                BootstrapTeamBuildException(
+                BootstrapTeamAssemblyException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=BootstrapTeamBuildException.MSG,
-                    err_code=BootstrapTeamBuildException.ERR_CODE,
+                    msg=BootstrapTeamAssemblyException.MSG,
+                    err_code=BootstrapTeamAssemblyException.ERR_CODE,
                     ex=owner_validation_result.exception,
                 )
             )
@@ -148,11 +148,11 @@ class TeamBuildBootstrapper(BuildBootstrapper[Team]):
         if board_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                BootstrapTeamBuildException(
+                BootstrapTeamAssemblyException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=BootstrapTeamBuildException.MSG,
-                    err_code=BootstrapTeamBuildException.ERR_CODE,
+                    msg=BootstrapTeamAssemblyException.MSG,
+                    err_code=BootstrapTeamAssemblyException.ERR_CODE,
                     ex=board_validation_result.exception,
                 )
             )
@@ -177,18 +177,18 @@ class TeamBuildBootstrapper(BuildBootstrapper[Team]):
         method = f"{cls.__name__}._verify_id"
         
         if blueprint.id is None:
-            return BuildResult.success(IdFactory.next_id(class_name="Team"))
+            return AssemblyResult.success(IdFactory.next_id(class_name="Team"))
         
         if blueprint.id is not None:
             id_validation = toolkit.identity_service.validate_id(blueprint.id)
             if id_validation.is_failure:
                 # Return the exception chain on failure.
-                return BuildResult.failure(
-                    BootstrapTeamBuildException(
+                return AssemblyResult.failure(
+                    BootstrapTeamAssemblyException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=BootstrapTeamBuildException.MSG,
-                        err_code=BootstrapTeamBuildException.ERR_CODE,
+                        msg=BootstrapTeamAssemblyException.MSG,
+                        err_code=BootstrapTeamAssemblyException.ERR_CODE,
                         ex=id_validation.exception,
                     )
                 )
@@ -206,16 +206,16 @@ class TeamBuildBootstrapper(BuildBootstrapper[Team]):
         Verify the id if it already exists or create a new one.
 
         Action:
-            1.  Send an exception chain in the BuildResult if an existing id
+            1.  Send an exception chain in the AssemblyResult if an existing id
                 is not certified as safe.
             2.  Otherwise, send the success result.
         Args:
             blueprint: TeamBlueprint
             toolkit: TeamToolkit
         Returns:
-            BuildResult[int]
+            AssemblyResult[int]
         Raises:
-            BootstrapTeamBuildException
+            BootstrapTeamAssemblyException
         """
         method = f"{cls.__name__}._verify_board"
         
@@ -226,11 +226,11 @@ class TeamBuildBootstrapper(BuildBootstrapper[Team]):
         if board_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                BootstrapTeamBuildException(
+                BootstrapTeamAssemblyException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=BootstrapTeamBuildException.MSG,
-                    err_code=BootstrapTeamBuildException.ERR_CODE,
+                    msg=BootstrapTeamAssemblyException.MSG,
+                    err_code=BootstrapTeamAssemblyException.ERR_CODE,
                     ex=board_validation_result.exception,
                 )
             )
@@ -241,23 +241,23 @@ class TeamBuildBootstrapper(BuildBootstrapper[Team]):
         )
         if slot_search_result.is_failure:
             # Return the exception chain on failure.
-            return BuildResult.failure(
-                BootstrapTeamBuildException(
+            return AssemblyResult.failure(
+                BootstrapTeamAssemblyException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=BootstrapTeamBuildException.MSG,
-                    err_code=BootstrapTeamBuildException.ERR_CODE,
+                    msg=BootstrapTeamAssemblyException.MSG,
+                    err_code=BootstrapTeamAssemblyException.ERR_CODE,
                     ex=slot_search_result.exception,
                 )
             )
         if not slot_search_result.is_empty:
             # Return the exception chain on failure.
-            return BuildResult.failure(
-                BootstrapTeamBuildException(
+            return AssemblyResult.failure(
+                BootstrapTeamAssemblyException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=BootstrapTeamBuildException.MSG,
-                    err_code=BootstrapTeamBuildException.ERR_CODE,
+                    msg=BootstrapTeamAssemblyException.MSG,
+                    err_code=BootstrapTeamAssemblyException.ERR_CODE,
                     ex=slot_search_result.exception,
                 )
             )
