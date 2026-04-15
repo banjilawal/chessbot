@@ -11,10 +11,10 @@ from __future__ import annotations
 from typing import Optional
 
 from microservice import TeamService
-from model import Blueprint, Board, Schema, TeamBinder
+from model import Blueprint, Board, Schema, BoardTeamBinder
 
 
-class TeamBinderBlueprint(Blueprint[TeamBinder]):
+class TeamBinderBlueprint(Blueprint[BoardTeamBinder]):
     _id: int
     _board: Board
     _schema: Schema

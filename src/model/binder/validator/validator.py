@@ -33,7 +33,7 @@ class TeamBinderValidator(Validator[TeamBinder]):
         """
         # ACTION:
             1.  If the rank fails existence or type checks return the exception in the ValidationResult.
-                Else, cast rank into TeamBinder instance binder.
+                Else, cast rank into BoardTeamBinder instance binder.
             2.  If either team's has the wrong schema send an exception to the ValidationResult.
             3.  The tests passed. Send the binder in the ValidationResult.
         # PARAMETERS:
@@ -41,8 +41,8 @@ class TeamBinderValidator(Validator[TeamBinder]):
             *   schema_service (SchemaService)
             *   team_service (TeamService)
         # RETURNS:
-            *   ValidationResult[TeamBinder] containing either:
-                    - On success:   TeamBinder in the payload.
+            *   ValidationResult[BoardTeamBinder] containing either:
+                    - On success:   BoardTeamBinder in the payload.
                     - On failure:   Exception.
         Raises:
             *   TypeError
@@ -68,10 +68,10 @@ class TeamBinderValidator(Validator[TeamBinder]):
             return ValidationResult.failure(
                 TeamBinderValidationException(
                     msg=f"{method}: {TeamBinderValidationException.MSG}",
-                    ex=TypeError(f"{method}: Expected TeamBinder, got {type(candidate).__name__} instead.")
+                    ex=TypeError(f"{method}: Expected BoardTeamBinder, got {type(candidate).__name__} instead.")
                 )
             )
-        # --- Cast the rank to a TeamBinder for additional tests ---#
+        # --- Cast the rank to a BoardTeamBinder for additional tests ---#
         binder = cast(TeamBinder, candidate)
         
         # Handle the case that, the white team does not pass a validation check.

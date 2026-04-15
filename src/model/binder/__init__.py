@@ -14,4 +14,4 @@ from .validator import *
 from .exception import *
 
 # Modules
-from .model import TeamBinder
+from model.binder.board.model import BoardTeamBinder
