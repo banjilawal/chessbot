@@ -71,7 +71,7 @@ class VectorValidator(Validator[Vector]):
                     op=VectorValidationException.OP,
                     msg=VectorValidationException.MSG,
                     err_code=VectorValidationException.ERR_CODE,
-                    rslt_type=VectorValidationException.RSLT_TYPE,
+                    mthd_rslt=VectorValidationException.MTHD_RSLT,
                     ex=NullVectorException(
                         msg=VectorValidationException.MSG,
                         err_code=VectorValidationException.ERR_CODE,
@@ -88,7 +88,7 @@ class VectorValidator(Validator[Vector]):
                     op=VectorValidationException.OP,
                     msg=VectorValidationException.MSG,
                     err_code=VectorValidationException.ERR_CODE,
-                    rslt_type=VectorValidationException.RSLT_TYPE,
+                    mthd_rslt=VectorValidationException.MTHD_RSLT,
                     ex=TypeError(
                         f"Expected a Vector, got {type(candidate).__name__} instead."
                     )
@@ -113,7 +113,7 @@ class VectorValidator(Validator[Vector]):
                         op=VectorValidationException.OP,
                         msg=VectorValidationException.MSG,
                         err_code=VectorValidationException.ERR_CODE,
-                        rslt_type=VectorValidationException.RSLT_TYPE,
+                        mthd_rslt=VectorValidationException.MTHD_RSLT,
                         ex=validation_result.exception
                     )
                 )

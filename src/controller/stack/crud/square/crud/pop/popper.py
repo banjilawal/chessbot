@@ -63,7 +63,7 @@ class SquareStackPopper:
                     op=SquareStackPopException.OP,
                     msg=SquareStackPopException.MSG,
                     err_code=SquareStackPopException.ERR_CODE,
-                    rslt_type=SquareStackPopException.RSLT_TYPE,
+                    mthd_rslt=SquareStackPopException.MTHD_RSLT,
                     ex=PoppingEmptySquareStackException(
                         msg=PoppingEmptySquareStackException.MSG,
                         err_code=PoppingEmptySquareStackException.ERR_CODE,
@@ -114,7 +114,7 @@ class SquareStackPopper:
                     op=SquareStackPopException.OP,
                     msg=SquareStackPopException.MSG,
                     err_code=SquareStackPopException.ERR_CODE,
-                    rslt_type=SquareStackPopException.RSLT_TYPE,
+                    mthd_rslt=SquareStackPopException.MTHD_RSLT,
                     ex=PoppingEmptySquareStackException(
                         msg=PoppingEmptySquareStackException.MSG,
                         err_code=PoppingEmptySquareStackException.ERR_CODE,
@@ -131,7 +131,7 @@ class SquareStackPopper:
                     op=SquareStackPopException.OP,
                     msg=SquareStackPopException.MSG,
                     err_code=SquareStackPopException.ERR_CODE,
-                    rslt_type=SquareStackPopException.RSLT_TYPE,
+                    mthd_rslt=SquareStackPopException.MTHD_RSLT,
                     ex=id_validation_result.exception
                 )
             )

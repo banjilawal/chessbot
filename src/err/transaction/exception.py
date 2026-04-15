@@ -56,7 +56,7 @@ class TransactionException(ChessException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        rslt_type: Optional[str
+        mthd_rslt: Optional[str
 
     Provides:
     
@@ -67,7 +67,7 @@ class TransactionException(ChessException):
     ERR_CODE = "TRANSACTION_FAILURE"
 
     _op = Optional[str]
-    _rslt_type = Optional[str]
+    _mthd_rslt = Optional[str]
     
     def __init__(
             self,
@@ -78,7 +78,7 @@ class TransactionException(ChessException):
             cls_name: Optional[str] = None,
             ex: Optional[Exception] = None,
             err_code: Optional[str] = None,
-            rslt_type: Optional[ResultCategory] = None,
+            mthd_rslt: Optional[ResultCategory] = None,
     ):
         """
         Args:
@@ -89,7 +89,7 @@ class TransactionException(ChessException):
             cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
-            rslt_type: Optional[str
+            mthd_rslt: Optional[str
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
@@ -102,14 +102,14 @@ class TransactionException(ChessException):
             cls_name=cls_name,
             cls_mthd=cls_mthd,
         )
-        self._rslt_type = rslt_type
+        self._mthd_rslt = mthd_rslt
     
     @property
-    def rslt_type(self) -> Optional[str]:
-        return self._rslt_type
+    def mthd_rslt(self) -> Optional[str]:
+        return self._mthd_rslt
     
     def __str__(self):
-        return f"{super().__str__()},  rslt_type:{self._rslt_type}"
+        return f"{super().__str__()},  mthd_rslt:{self._mthd_rslt}"
 
 
     

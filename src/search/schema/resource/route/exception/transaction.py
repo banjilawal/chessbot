@@ -36,7 +36,7 @@ class SchemaSearchException(SearchException):
         title: Optional[str]
         ex: Optional[Exception]
         err_code: Optional[str]
-        rslt_type: Optional[ResultCategory]
+        mthd_rslt: Optional[ResultCategory]
 
     Provides:
 
@@ -44,7 +44,7 @@ class SchemaSearchException(SearchException):
         SearchException
     """
     OP = "Search"
-    RSLT_TYPE = "SearchResult"
+    MTHD_RSLT = "SearchResult"
     ERR_CODE = "SCHEMA_SEARCH_FAILURE"
     MSG = "Search method failed."
     
@@ -55,7 +55,7 @@ class SchemaSearchException(SearchException):
             title: Optional[str] = None,
             ex: Optional[Exception] = None,
             err_code: Optional[str] = None,
-            rslt_type: Optional[ResultCategory] = None,
+            mthd_rslt: Optional[ResultCategory] = None,
     ):
         """
         Args:
@@ -64,12 +64,12 @@ class SchemaSearchException(SearchException):
             title: Optional[str]
             ex: Optional[Exception]
             err_code: Optional[str]
-            rslt_type: Optional[ResultCategory]
+            mthd_rslt: Optional[ResultCategory]
         """
         op = op or self.OP
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        rslt_type = rslt_type or self.RSLT_TYPE
+        mthd_rslt = mthd_rslt or self.MTHD_RSLT
         super().__init__(
             ex=ex,
             op=op,
@@ -77,5 +77,5 @@ class SchemaSearchException(SearchException):
             mthd=mthd,
             title=title,
             err_code=err_code,
-            rslt_type=rslt_type,
+            mthd_rslt=mthd_rslt,
         )

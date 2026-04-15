@@ -17,7 +17,7 @@ __all__ = [
     "AnalysisException",
 ]
 
-from result.category import ResultCategory
+from result.category import MethodResultType
 
 
 # ======================# ANALYSIS_FAILURE #======================#
@@ -37,7 +37,7 @@ class AnalysisException(ChessException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        rslt_type: Optional[ResultCategory]
+        mthd_rslt: Optional[ResultCategory]
             
     Provides:
 
@@ -46,8 +46,8 @@ class AnalysisException(ChessException):
     """
     MSG = "Analysis step failed."
     ERR_CODE = "ANALYSIS_FAILURE"
-    RSLT_TYPE = "AnalysisResult"
-    _rslt_type = Optional[ResultCategory]
+    MTHD_RSLT = "AnalysisResult"
+    _mthd_rslt = Optional[MethodResultType]
     
     def __init__(
             self,
@@ -70,7 +70,7 @@ class AnalysisException(ChessException):
             err_code: Optional[str]
         """
         msg = msg or self.MSG
-        rslt_type = self.RSLT_TYPE
+        mthd_rslt = self.MTHD_RSLT
         err_code = err_code or self.ERR_CODE
         super().__init__(
             ex=ex,
@@ -81,11 +81,11 @@ class AnalysisException(ChessException):
             cls_name=cls_name,
             cls_mthd=cls_mthd,
         )
-        self._rslt_type = rslt_type
+        self._mthd_rslt = mthd_rslt
     
     @property
-    def rslt_type(self) -> Optional[str]:
-        return self._rslt_type
+    def mthd_rslt(self) -> Optional[str]:
+        return self._mthd_rslt
     
     def __str__(self):
-        return f"{super().__str__()},  rslt_type:{self._rslt_type}"
+        return f"{super().__str__()},  mthd_rslt:{self._mthd_rslt}"

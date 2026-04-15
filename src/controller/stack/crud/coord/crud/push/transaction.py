@@ -76,7 +76,7 @@ class CoordStackPush:
                     op=CoordStackPushException.OP,
                     msg=CoordStackPushException.MSG,
                     err_code=CoordStackPushException.ERR_CODE,
-                    rslt_type=CoordStackPushException.RSLT_TYPE,
+                    mthd_rslt=CoordStackPushException.MTHD_RSLT,
                     ex=validation_result.exception
                 )
             )
@@ -90,7 +90,7 @@ class CoordStackPush:
                     op=CoordStackPushException.OP,
                     msg=CoordStackPushException.MSG,
                     err_code=CoordStackPushException.ERR_CODE,
-                    rslt_type=CoordStackPushException.RSLT_TYPE,
+                    mthd_rslt=CoordStackPushException.MTHD_RSLT,
                     ex=PushingDuplicateCoordException(
                         msg=PushingDuplicateCoordException.MSG,
                         err_code=PushingDuplicateCoordException.ERR_CODE,

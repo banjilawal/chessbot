@@ -88,7 +88,7 @@ class SchemaContextBuilder(Builder[SchemaContext]):
                     op=SchemaContextBuildException.OP,
                     msg=SchemaContextBuildException.MSG,
                     err_code=SchemaContextBuildException.ERR_CODE,
-                    rslt_type=SchemaContextBuildException.RSLT_TYPE,
+                    mthd_rslt=SchemaContextBuildException.MTHD_RSLT,
                     ex=ZeroSchemaContextFlagsException(
                         msg=ZeroSchemaContextFlagsException.MSG,
                         err_code=ZeroSchemaContextFlagsException.ERR_CODE,
@@ -105,7 +105,7 @@ class SchemaContextBuilder(Builder[SchemaContext]):
                     op=SchemaContextBuildException.OP,
                     msg=SchemaContextBuildException.MSG,
                     err_code=SchemaContextBuildException.ERR_CODE,
-                    rslt_type=SchemaContextBuildException.RSLT_TYPE,
+                    mthd_rslt=SchemaContextBuildException.MTHD_RSLT,
                     ex=ExcessTeamContextFlagsException(
                         msg=ExcessTeamContextFlagsException.MSG,
                         err_code=ExcessTeamContextFlagsException.ERR_CODE,
@@ -126,7 +126,7 @@ class SchemaContextBuilder(Builder[SchemaContext]):
                         op=SchemaContextBuildException.OP,
                         msg=SchemaContextBuildException.MSG,
                         err_code=SchemaContextBuildException.ERR_CODE,
-                        rslt_type=SchemaContextBuildException.RSLT_TYPE,
+                        mthd_rslt=SchemaContextBuildException.MTHD_RSLT,
                         ex=validation.exception,
                     )
                 )
@@ -145,7 +145,7 @@ class SchemaContextBuilder(Builder[SchemaContext]):
                         op=SchemaContextBuildException.OP,
                         msg=SchemaContextBuildException.MSG,
                         err_code=SchemaContextBuildException.ERR_CODE,
-                        rslt_type=SchemaContextBuildException.RSLT_TYPE,
+                        mthd_rslt=SchemaContextBuildException.MTHD_RSLT,
                         ex=validation.exception,
                     )
                 )
@@ -160,7 +160,7 @@ class SchemaContextBuilder(Builder[SchemaContext]):
                 op=SchemaContextBuildException.OP,
                 msg=SchemaContextBuildException.MSG,
                 err_code=SchemaContextBuildException.ERR_CODE,
-                rslt_type=SchemaContextBuildException.RSLT_TYPE,
+                mthd_rslt=SchemaContextBuildException.MTHD_RSLT,
                 ex=SchemaContextBuildRouteException(
                     msg=SchemaContextBuildRouteException.MSG,
                     err_code=SchemaContextBuildRouteException.ERR_CODE,

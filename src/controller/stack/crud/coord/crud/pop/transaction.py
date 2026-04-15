@@ -62,7 +62,7 @@ class CoordStackPop:
                     op=CoordStackPopException.OP,
                     msg=CoordStackPopException.MSG,
                     err_code=CoordStackPopException.ERR_CODE,
-                    rslt_type=CoordStackPopException.RSLT_TYPE,
+                    mthd_rslt=CoordStackPopException.MTHD_RSLT,
                     ex=PoppingEmptyCoordStackException(
                         msg=PoppingEmptyCoordStackException.MSG,
                         err_code=PoppingEmptyCoordStackException.ERR_CODE,

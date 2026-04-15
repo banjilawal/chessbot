@@ -76,7 +76,7 @@ class CoordContextValidator(Validator[CoordContext]):
                     op=CoordContextValidationException.OP,
                     msg=CoordContextValidationException.MSG,
                     err_code=CoordContextValidationException.ERR_CODE,
-                    rslt_type=CoordContextValidationException.RSLT_TYPE,
+                    mthd_rslt=CoordContextValidationException.MTHD_RSLT,
                     ex=NullCoordContextException(
                         msg=CoordContextValidationException.MSG,
                         err_code=CoordContextValidationException.ERR_CODE,
@@ -93,7 +93,7 @@ class CoordContextValidator(Validator[CoordContext]):
                     op=CoordContextValidationException.OP,
                     msg=CoordContextValidationException.MSG,
                     err_code=CoordContextValidationException.ERR_CODE,
-                    rslt_type=CoordContextValidationException.RSLT_TYPE,
+                    mthd_rslt=CoordContextValidationException.MTHD_RSLT,
                     ex=TypeError(f"Expected a CoordContext, got {type(candidate).__name__} instead.")
                 )
             )
@@ -113,7 +113,7 @@ class CoordContextValidator(Validator[CoordContext]):
                     op=CoordContextValidationException.OP,
                     msg=CoordContextValidationException.MSG,
                     err_code=CoordContextValidationException.ERR_CODE,
-                    rslt_type=CoordContextValidationException.RSLT_TYPE,
+                    mthd_rslt=CoordContextValidationException.MTHD_RSLT,
                     ex=ZeroCoordContextFlagsException(
                         msg=CoordContextValidationException.MSG,
                         err_code=CoordContextValidationException.ERR_CODE,
@@ -169,7 +169,7 @@ class CoordContextValidator(Validator[CoordContext]):
                 op=CoordContextValidationException.OP,
                 msg=CoordContextValidationException.MSG,
                 err_code=CoordContextValidationException.ERR_CODE,
-                rslt_type=CoordContextValidationException.RSLT_TYPE,
+                mthd_rslt=CoordContextValidationException.MTHD_RSLT,
                 ex=CoordContextValidationRouteException(
                     msg=CoordContextValidationException.MSG,
                     err_code=CoordContextValidationException.ERR_CODE,
@@ -215,7 +215,7 @@ class CoordContextValidator(Validator[CoordContext]):
                         op=CoordContextValidationException.OP,
                         msg=CoordContextValidationException.MSG,
                         err_code=CoordContextValidationException.ERR_CODE,
-                        rslt_type=CoordContextValidationException.RSLT_TYPE,
+                        mthd_rslt=CoordContextValidationException.MTHD_RSLT,
                         ex=validation_result.exception
                     )
                 )

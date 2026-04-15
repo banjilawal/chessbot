@@ -82,7 +82,7 @@ class OpeningSquareLocator(Worker):
                     op=OpeningSquareDiscoveryException.OP,
                     msg=OpeningSquareDiscoveryException.MSG,
                     err_code=OpeningSquareDiscoveryException.ERR_CODE,
-                    rslt_type=OpeningSquareDiscoveryException.RSLT_TYPE,
+                    mthd_rslt=OpeningSquareDiscoveryException.MTHD_RSLT,
                     ex=token_validation_result.exception)
             )
         # Handle the case that, the token has been deployed.
@@ -93,7 +93,7 @@ class OpeningSquareLocator(Worker):
                 op=OpeningSquareDiscoveryException.OP,
                 msg=OpeningSquareDiscoveryException.MSG,
                 err_code=OpeningSquareDiscoveryException.ERR_CODE,
-                rslt_type=OpeningSquareDiscoveryException.RSLT_TYPE,
+                mthd_rslt=OpeningSquareDiscoveryException.MTHD_RSLT,
                 ex=token_validation_result.exception
             )
         )
@@ -111,7 +111,7 @@ class OpeningSquareLocator(Worker):
                         op=SquareStackExecuteException.OP,
                         msg=SquareStackExecuteException.MSG,
                         mthd=SquareStackExecuteException.MTHD,
-                        rslt_type=SquareStackExecuteException.RSLT_TYPE,
+                        mthd_rslt=SquareStackExecuteException.MTHD_RSLT,
                         ex=collision_detection_result.exception
                 )
             )
@@ -129,7 +129,7 @@ class OpeningSquareLocator(Worker):
                     op=SquareStackExecuteException.OP,
                     msg=SquareStackExecuteException.MSG,
                     mthd=SquareStackExecuteException.MTHD,
-                    rslt_type=SquareStackExecuteException.RSLT_TYPE,
+                    mthd_rslt=SquareStackExecuteException.MTHD_RSLT,
                     ex=rank_quota_report.exception
                 )
             )
@@ -141,7 +141,7 @@ class OpeningSquareLocator(Worker):
                     op=SquareStackExecuteException.OP,
                     msg=SquareStackExecuteException.MSG,
                     mthd=SquareStackExecuteException.MTHD,
-                    rslt_type=SquareStackExecuteException.RSLT_TYPE,
+                    mthd_rslt=SquareStackExecuteException.MTHD_RSLT,
                     ex=SquareStackCapacityFullException(
                         msg=SquareStackCapacityFullException.MSG,
                         err_code=SquareStackCapacityFullException.ERR_CODE,
@@ -180,7 +180,7 @@ class OpeningSquareLocator(Worker):
                     op=ExecutementSquareDiscoveryException.OP,
                     msg=ExecutementSquareDiscoveryException.MSG,
                     err_code=ExecutementSquareDiscoveryException.ERR_CODE,
-                    rslt_type=ExecutementSquareDiscoveryException.RSLT_TYPE,
+                    mthd_rslt=ExecutementSquareDiscoveryException.MTHD_RSLT,
                     ex=token_validation_result.exception
                 )
             )
@@ -193,7 +193,7 @@ class OpeningSquareLocator(Worker):
                     op=ExecutementSquareDiscoveryException.OP,
                     msg=ExecutementSquareDiscoveryException.MSG,
                     err_code=ExecutementSquareDiscoveryException.ERR_CODE,
-                    rslt_type=ExecutementSquareDiscoveryException.RSLT_TYPE,
+                    mthd_rslt=ExecutementSquareDiscoveryException.MTHD_RSLT,
                     ex=token_validation_result.exception
                 )
             )
@@ -209,7 +209,7 @@ class OpeningSquareLocator(Worker):
                     op=ExecutementSquareDiscoveryException.OP,
                     msg=ExecutementSquareDiscoveryException.MSG,
                     err_code=ExecutementSquareDiscoveryException.ERR_CODE,
-                    rslt_type=ExecutementSquareDiscoveryException.RSLT_TYPE,
+                    mthd_rslt=ExecutementSquareDiscoveryException.MTHD_RSLT,
                     ex=opening_square_search.exception
                 )
             )

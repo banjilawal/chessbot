@@ -34,7 +34,7 @@ class ComputationTransactionException(TransactionException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        rslt_type: Optional[str
+        mthd_rslt: Optional[str
 
     Provides:
     
@@ -44,7 +44,7 @@ class ComputationTransactionException(TransactionException):
     OP = "Computation"
     MSG = "Computation aborted."
     ERR_CODE = "COMPUTATION_FAILURE"
-    RSLT_TYPE = "ComputationResult"
+    MTHD_RSLT = "ComputationResult"
     
     def __init__(
             self,
@@ -55,7 +55,7 @@ class ComputationTransactionException(TransactionException):
             cls_name: Optional[str] = None,
             ex: Optional[Exception] = None,
             err_code: Optional[str] = None,
-            rslt_type: Optional[ResultCategory] = None,
+            mthd_rslt: Optional[ResultCategory] = None,
     ):
         """
         Args:
@@ -66,12 +66,12 @@ class ComputationTransactionException(TransactionException):
             cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
-            rslt_type: Optional[str
+            mthd_rslt: Optional[str
         """
         op = op or self.OP
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        rslt_type = rslt_type or self.RSLT_TYPE
+        mthd_rslt = mthd_rslt or self.MTHD_RSLT
         super().__init__(
             ex=ex,
             msg=msg,

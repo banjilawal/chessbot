@@ -42,7 +42,7 @@ class SpanningGraphProductionException(BuildException):
         *   mthd: Optional[str]
         *   err_code: Optional[str]
         *   ex: Optional[Exception]
-        *   rslt_type: Optional[ResultCategory]
+        *   mthd_rslt: Optional[ResultCategory]
 
     # LOCAL METHODS:
     None
@@ -51,7 +51,7 @@ class SpanningGraphProductionException(BuildException):
         *   See BuildException class for inherited methods.
     """
     OP = "Build"
-    RSLT_TYPE = "BuildResult"
+    MTHD_RSLT = "BuildResult"
     ERR_CODE = "SPANNING_GRAPH_PRODUCTION_FAILURE"
     MSG = "Failure in SpanningGraphProducer method."
     
@@ -61,7 +61,7 @@ class SpanningGraphProductionException(BuildException):
             mthd: Optional[str] = None,
             err_code: Optional[str] = None,
             ex: Optional[Exception] = None,
-            rslt_type: Optional[ResultCategory] = None,
+            mthd_rslt: Optional[ResultCategory] = None,
     ):
         """
         Args:
@@ -69,12 +69,12 @@ class SpanningGraphProductionException(BuildException):
             mthd: Optional[str]
             err_code: Optional[str]
             ex: Optional[Exception]
-            rslt_type: Optional[ResultCategory]
+            mthd_rslt: Optional[ResultCategory]
         """
         op = op or self.OP
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        rslt_type = rslt_type or self.RSLT_TYPE
+        mthd_rslt = mthd_rslt or self.MTHD_RSLT
         
         super().__init__(
             ex=ex,
@@ -82,5 +82,5 @@ class SpanningGraphProductionException(BuildException):
             msg=msg,
             mthd=mthd,
             err_code=err_code,
-            rslt_type=rslt_type,
+            mthd_rslt=mthd_rslt,
         )

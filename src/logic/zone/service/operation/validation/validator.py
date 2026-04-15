@@ -77,7 +77,7 @@ class ZoneValidator(Validator[Zone]):
                     op=ZoneValidationException.OP,
                     msg=ZoneValidationException.MSG,
                     err_code=ZoneValidationException.ERR_CODE,
-                    rslt_type=ZoneValidationException.RSLT_TYPE,
+                    mthd_rslt=ZoneValidationException.MTHD_RSLT,
                     ex=NullZoneException(
                         msg=NullZoneException.MSG,
                         err_code=NullZoneException.ERR_CODE,
@@ -94,7 +94,7 @@ class ZoneValidator(Validator[Zone]):
                     op=ZoneValidationException.OP,
                     msg=ZoneValidationException.MSG,
                     err_code=ZoneValidationException.ERR_CODE,
-                    rslt_type=ZoneValidationException.RSLT_TYPE,
+                    mthd_rslt=ZoneValidationException.MTHD_RSLT,
                     ex=TypeError(
                         f"Expected a Zone, got {type(candidate).__name__} instead."
                     )
@@ -119,7 +119,7 @@ class ZoneValidator(Validator[Zone]):
                         op=ZoneValidationException.OP,
                         msg=ZoneValidationException.MSG,
                         err_code=ZoneValidationException.ERR_CODE,
-                        rslt_type=ZoneValidationException.RSLT_TYPE,
+                        mthd_rslt=ZoneValidationException.MTHD_RSLT,
                         ex=validate_result.exception
                     )
                 )

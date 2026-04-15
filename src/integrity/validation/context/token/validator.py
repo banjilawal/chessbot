@@ -78,7 +78,7 @@ class TokenContextValidator(Validator[TokenContext]):
                     op=TokenContextValidationException.OP,
                     msg=TokenContextValidationException.MSG,
                     err_code=TokenContextValidationException.ERR_CODE,
-                    rslt_type=TokenContextValidationException.RSLT_TYPE,
+                    mthd_rslt=TokenContextValidationException.MTHD_RSLT,
                     ex=NullTokenContextException(
                         msg=TokenContextValidationException.MSG,
                         err_code=TokenContextValidationException.ERR_CODE,
@@ -95,7 +95,7 @@ class TokenContextValidator(Validator[TokenContext]):
                     op=TokenContextValidationException.OP,
                     msg=TokenContextValidationException.MSG,
                     err_code=TokenContextValidationException.ERR_CODE,
-                    rslt_type=TokenContextValidationException.RSLT_TYPE,
+                    mthd_rslt=TokenContextValidationException.MTHD_RSLT,
                     ex=TypeError(
                         f"Expected TokenContext, got {type(candidate).__name__} instead."
                     )
@@ -115,7 +115,7 @@ class TokenContextValidator(Validator[TokenContext]):
                     op=TokenContextValidationException.OP,
                     msg=TokenContextValidationException.MSG,
                     err_code=TokenContextValidationException.ERR_CODE,
-                    rslt_type=TokenContextValidationException.RSLT_TYPE,
+                    mthd_rslt=TokenContextValidationException.MTHD_RSLT,
                     ex=ZeroTokenContextFlagsException(
                         msg=ZeroTokenContextFlagsException.MSG,
                         err_code=ZeroTokenContextFlagsException.ERR_CODE,
@@ -132,7 +132,7 @@ class TokenContextValidator(Validator[TokenContext]):
                     op=TokenContextValidationException.OP,
                     msg=TokenContextValidationException.MSG,
                     err_code=TokenContextValidationException.ERR_CODE,
-                    rslt_type=TokenContextValidationException.RSLT_TYPE,
+                    mthd_rslt=TokenContextValidationException.MTHD_RSLT,
                     ex=ExcessTokenContextFlagsException(
                         msg=ExcessTokenContextFlagsException.MSG,
                         err_code=ExcessTokenContextFlagsException.ERR_CODE,
@@ -155,7 +155,7 @@ class TokenContextValidator(Validator[TokenContext]):
                         op=TokenContextValidationException.OP,
                         msg=TokenContextValidationException.MSG,
                         err_code=TokenContextValidationException.ERR_CODE,
-                        rslt_type=TokenContextValidationException.RSLT_TYPE,
+                        mthd_rslt=TokenContextValidationException.MTHD_RSLT,
                         ex=validation_result.exception
                     )
                 )
@@ -176,7 +176,7 @@ class TokenContextValidator(Validator[TokenContext]):
                         op=TokenContextValidationException.OP,
                         msg=TokenContextValidationException.MSG,
                         err_code=TokenContextValidationException.ERR_CODE,
-                        rslt_type=TokenContextValidationException.RSLT_TYPE,
+                        mthd_rslt=TokenContextValidationException.MTHD_RSLT,
                         ex=validation_result.exception
                     )
                 )
@@ -197,7 +197,7 @@ class TokenContextValidator(Validator[TokenContext]):
                         op=TokenContextValidationException.OP,
                         msg=TokenContextValidationException.MSG,
                         err_code=TokenContextValidationException.ERR_CODE,
-                        rslt_type=TokenContextValidationException.RSLT_TYPE,
+                        mthd_rslt=TokenContextValidationException.MTHD_RSLT,
                         ex=validation_result.exception
                     )
                 )
@@ -218,7 +218,7 @@ class TokenContextValidator(Validator[TokenContext]):
                         op=TokenContextValidationException.OP,
                         msg=TokenContextValidationException.MSG,
                         err_code=TokenContextValidationException.ERR_CODE,
-                        rslt_type=TokenContextValidationException.RSLT_TYPE,
+                        mthd_rslt=TokenContextValidationException.MTHD_RSLT,
                         ex=validation_result.exception
                     )
                 )
@@ -239,7 +239,7 @@ class TokenContextValidator(Validator[TokenContext]):
                         op=TokenContextValidationException.OP,
                         msg=TokenContextValidationException.MSG,
                         err_code=TokenContextValidationException.ERR_CODE,
-                        rslt_type=TokenContextValidationException.RSLT_TYPE,
+                        mthd_rslt=TokenContextValidationException.MTHD_RSLT,
                         ex=validation_result.exception
                     )
                 )
@@ -260,7 +260,7 @@ class TokenContextValidator(Validator[TokenContext]):
                         op=TokenContextValidationException.OP,
                         msg=TokenContextValidationException.MSG,
                         err_code=TokenContextValidationException.ERR_CODE,
-                        rslt_type=TokenContextValidationException.RSLT_TYPE,
+                        mthd_rslt=TokenContextValidationException.MTHD_RSLT,
                         ex=validation_result.exception
                     )
                 )
@@ -281,7 +281,7 @@ class TokenContextValidator(Validator[TokenContext]):
                         op=TokenContextValidationException.OP,
                         msg=TokenContextValidationException.MSG,
                         err_code=TokenContextValidationException.ERR_CODE,
-                        rslt_type=TokenContextValidationException.RSLT_TYPE,
+                        mthd_rslt=TokenContextValidationException.MTHD_RSLT,
                         ex=validation_result.exception
                     )
                 )
@@ -305,7 +305,7 @@ class TokenContextValidator(Validator[TokenContext]):
                         op=TokenContextValidationException.OP,
                         msg=TokenContextValidationException.MSG,
                         err_code=TokenContextValidationException.ERR_CODE,
-                        rslt_type=TokenContextValidationException.RSLT_TYPE,
+                        mthd_rslt=TokenContextValidationException.MTHD_RSLT,
                         ex=validation_result.exception
                     )
                 )
@@ -320,7 +320,7 @@ class TokenContextValidator(Validator[TokenContext]):
                 op=TokenContextValidationException.OP,
                 msg=TokenContextValidationException.MSG,
                 err_code=TokenContextValidationException.ERR_CODE,
-                rslt_type=TokenContextValidationException.RSLT_TYPE,
+                mthd_rslt=TokenContextValidationException.MTHD_RSLT,
                 ex=TokenContextValidationRouteException(
                     msg=TokenContextValidationRouteException.MSG,
                     err_code=TokenContextValidationRouteException.ERR_CODE,

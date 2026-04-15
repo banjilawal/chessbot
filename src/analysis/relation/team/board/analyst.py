@@ -18,7 +18,7 @@ from microservice import TeamService
 from model import Board, Team
 from report import RelationReport
 from result import AnalysisResult
-from result.category import ResultCategory
+from result.category import MethodResultType
 from system import LoggingLevelRouter
 
 
@@ -91,7 +91,7 @@ class BoardTeamRelationAnalyst(RelationAnalyst[Board, Team]):
                     cls_name=cls.__name__,
                     msg=BoardTeamAnalysisException.MSG,
                     err_code=BoardTeamAnalysisException.ERR_CODE,
-                    rslt_type=ResultCategory.ANALYSIS_RESULT,
+                    mthd_rslt=MethodResultType.ANALYSIS_RESULT,
                     ex=board_validation_result.exception,
                 )
             )
@@ -108,7 +108,7 @@ class BoardTeamRelationAnalyst(RelationAnalyst[Board, Team]):
                         cls_name=cls.__name__,
                         msg=BoardTeamAnalysisException.MSG,
                         err_code=BoardTeamAnalysisException.ERR_CODE,
-                        rslt_type=ResultCategory.ANALYSIS_RESULT,
+                        mthd_rslt=MethodResultType.ANALYSIS_RESULT,
                         ex=board_validation_result.exception,
                     )
                 )
@@ -122,7 +122,7 @@ class BoardTeamRelationAnalyst(RelationAnalyst[Board, Team]):
                     cls_name=cls.__name__,
                     msg=BoardTeamAnalysisException.MSG,
                     err_code=BoardTeamAnalysisException.ERR_CODE,
-                    rslt_type=ResultCategory.ANALYSIS_RESULT,
+                    mthd_rslt=MethodResultType.ANALYSIS_RESULT,
                     ex=team_validation_result.exception,
                 )
             )

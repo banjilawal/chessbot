@@ -35,7 +35,7 @@ class TokenPushCoordException(InsertionException):
         mthd: Optional[str]
         title: Optional[str]
         err_code: Optional[str]
-        rslt_type: Optional[ResultCategory]
+        mthd_rslt: Optional[ResultCategory]
         
     Provides:
 
@@ -43,7 +43,7 @@ class TokenPushCoordException(InsertionException):
         UpdateException
     """
     OP = "Insertion"
-    RSLT_TYPE = "InsertionResult"
+    MTHD_RSLT = "InsertionResult"
     ERR_CODE = "TOKEN_POSITION_PUSH_EXCEPTION"
     MSG = "TokenCoordPushProcess method failed."
     
@@ -54,7 +54,7 @@ class TokenPushCoordException(InsertionException):
             title: Optional[str] = None,
             ex: Optional[Exception] = None,
             err_code: Optional[str] = None,
-            rslt_type: Optional[ResultCategory] = None,
+            mthd_rslt: Optional[ResultCategory] = None,
     ):
         """
         Args:
@@ -63,17 +63,17 @@ class TokenPushCoordException(InsertionException):
             mthd: Optional[str]
             title: Optional[str]
             err_code: Optional[str]
-            rslt_type: Optional[ResultCategory]
+            mthd_rslt: Optional[ResultCategory]
         """
         op = op or self.OP
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        rslt_type = rslt_type or self.RSLT_TYPE
+        mthd_rslt = mthd_rslt or self.MTHD_RSLT
         super().__init__(
             ex=ex,
             op=op,
             msg=msg,
             mthd=mthd,
             err_code=err_code,
-            rslt_type=rslt_type,
+            mthd_rslt=mthd_rslt,
         )

@@ -15,7 +15,7 @@ __all__ = [
     "ChessException",
 ]
 
-from result.category import ResultCategory
+from result.category import MethodResultType
 
 
 # ======================# ROOT APPLICATION EXCEPTION CLASS #======================#
@@ -35,7 +35,7 @@ class ChessException(Exception):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         ex: Optional[Exception]
-        rslt_type: Optional[ResultCategory]
+        mthd_rslt: Optional[ResultCategory]
         
     Provides:
     
@@ -52,7 +52,7 @@ class ChessException(Exception):
     _cls_name: Optional[str] | None = None
     _cls_mthd: Optional[str] | None = None
     _ex: Optional[Exception] | None = None
-    _rslt_type: Optional[ResultCategory] | None = None
+    _mthd_rslt: Optional[MethodResultType] | None = None
     
     
     def __init__(
@@ -64,7 +64,7 @@ class ChessException(Exception):
             cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
             ex: Optional[Exception] | None = None,
-            rslt_type: Optional[ResultCategory] | None = None,
+            mthd_rslt: Optional[MethodResultType] | None = None,
     ):
         """
         Args:
@@ -75,7 +75,7 @@ class ChessException(Exception):
             cls_name: Optional[str]
             cls_mthd: Optional[str]
             ex: Optional[Exception]
-            rslt_type: Optional[ResultCategory]
+            mthd_rslt: Optional[ResultCategory]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
@@ -88,7 +88,7 @@ class ChessException(Exception):
         self._cls_mthd = cls_mthd
         self._cls_name = cls_name
         self._err_code = err_code
-        self._rslt_type = rslt_type
+        self._mthd_rslt = mthd_rslt
     
     @property
     def ex(self) -> Optional[Exception]:
@@ -119,8 +119,8 @@ class ChessException(Exception):
         return self._cls_name
     
     @property
-    def rslt_type(self) -> Optional[ResultCategory]:
-        return self._rslt_type
+    def mthd_rslt(self) -> Optional[MethodResultType]:
+        return self._mthd_rslt
     
     def __str__(self):
         return (

@@ -61,7 +61,7 @@ class NodeTreeValidator(Validator[NodeTree]):
                     op=NodeTreeValidationException.OP,
                     msg=NodeTreeValidationException.MSG,
                     err_code=NodeTreeValidationException.ERR_CODE,
-                    rslt_type=NodeTreeValidationException.RSLT_TYPE,
+                    mthd_rslt=NodeTreeValidationException.MTHD_RSLT,
                     ex=NodeTreeNullException(
                         var="rank",
                         val="None",
@@ -79,7 +79,7 @@ class NodeTreeValidator(Validator[NodeTree]):
                     op=NodeTreeValidationException.OP,
                     msg=NodeTreeValidationException.MSG,
                     err_code=NodeTreeValidationException.ERR_CODE,
-                    rslt_type=NodeTreeValidationException.RSLT_TYPE,
+                    mthd_rslt=NodeTreeValidationException.MTHD_RSLT,
                     ex=TypeError(
                         f"{method} Expected NodeTree, got {type(candidate).__name__} instead."
                     )

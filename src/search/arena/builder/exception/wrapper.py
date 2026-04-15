@@ -40,7 +40,7 @@ class ArenaContextBuildException(BuildException):
         msg: Optional[str]
         mthd: Optional[str]
         err_code: Optional[str]
-        rslt_type: Optional[ResultCategory]
+        mthd_rslt: Optional[ResultCategory]
 
     # LOCAL METHODS:
     None
@@ -49,7 +49,7 @@ class ArenaContextBuildException(BuildException):
         *   See BuildException class for inherited methods.
     """
     OP = "Build"
-    RSLT_TYPE = "BuildResult"
+    MTHD_RSLT = "BuildResult"
     ERR_CODE = "ARENA_CONTEXT_BUILD_FAILURE"
     MSG = "Failure in ArenaContextBuilder method."
 
@@ -59,7 +59,7 @@ class ArenaContextBuildException(BuildException):
             mthd: Optional[str] = None,
             ex: Optional[Exception] = None,
             err_code: Optional[str] = None,
-            rslt_type: Optional[ResultCategory] = None,
+            mthd_rslt: Optional[ResultCategory] = None,
     ):
         """
         Args:
@@ -67,12 +67,12 @@ class ArenaContextBuildException(BuildException):
             msg: Optional[str]
             mthd: Optional[str]
             err_code: Optional[str]
-            rslt_type: Optional[ResultCategory]
+            mthd_rslt: Optional[ResultCategory]
         """
         op = op or self.OP
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        rslt_type = rslt_type or self.RSLT_TYPE
+        mthd_rslt = mthd_rslt or self.MTHD_RSLT
         
         super().__init__(
             ex=ex,
@@ -80,5 +80,5 @@ class ArenaContextBuildException(BuildException):
             msg=msg,
             mthd=mthd,
             err_code=err_code,
-            rslt_type=rslt_type,
+            mthd_rslt=mthd_rslt,
         )

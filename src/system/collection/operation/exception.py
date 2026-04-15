@@ -36,7 +36,7 @@ class CollectionOperationException(OperationException):
         title: Optional[str]
         ex: Optional[Exception]
         err_code: Optional[str]
-        rslt_type: Optional[ResultCategory]
+        mthd_rslt: Optional[ResultCategory]
 
     Provides:
 
@@ -53,7 +53,7 @@ class CollectionOperationException(OperationException):
             title: Optional[str] = None,
             ex: Optional[Exception] = None,
             err_code: Optional[str] = None,
-            rslt_type: Optional[ResultCategory] = None,
+            mthd_rslt: Optional[ResultCategory] = None,
     ):
         """
         Args:
@@ -62,7 +62,7 @@ class CollectionOperationException(OperationException):
             title: Optional[str]
             ex: Optional[Exception]
             err_code: Optional[str]
-            rslt_type: Optional[ResultCategory]
+            mthd_rslt: Optional[ResultCategory]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
@@ -73,7 +73,7 @@ class CollectionOperationException(OperationException):
             mthd=mthd,
             title=title,
             err_code=err_code,
-            rslt_type=rslt_type,
+            mthd_rslt=mthd_rslt,
         )
 
 

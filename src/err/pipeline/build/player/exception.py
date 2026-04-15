@@ -34,7 +34,7 @@ class PlayerBuildPipelineException(BuildPipelineException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        rslt_type: Optional[ResultCategory]
+        mthd_rslt: Optional[ResultCategory]
             
     Provides:
 

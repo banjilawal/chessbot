@@ -86,7 +86,7 @@ class SquareValidator(Validator[Square]):
                     op=SquareValidationException.OP,
                     msg=SquareValidationException.MSG,
                     err_code=SquareValidationException.ERR_CODE,
-                    rslt_type=SquareValidationException.RSLT_TYPE,
+                    mthd_rslt=SquareValidationException.MTHD_RSLT,
                     ex=NullSquareException(
                         msg=NullSquareException.MSG,
                         err_code=NullSquareException.ERR_CODE,
@@ -102,7 +102,7 @@ class SquareValidator(Validator[Square]):
                     op=SquareValidationException.OP,
                     msg=SquareValidationException.MSG,
                     err_code=SquareValidationException.ERR_CODE,
-                    rslt_type=SquareValidationException.RSLT_TYPE,
+                    mthd_rslt=SquareValidationException.MTHD_RSLT,
                     ex=TypeError(
                         f"Expected Square, but, got {type(candidate).__name__} instead."
                     )
@@ -124,7 +124,7 @@ class SquareValidator(Validator[Square]):
                     op=SquareValidationException.OP,
                     msg=SquareValidationException.MSG,
                     err_code=SquareValidationException.ERR_CODE,
-                    rslt_type=SquareValidationException.RSLT_TYPE,
+                    mthd_rslt=SquareValidationException.MTHD_RSLT,
                     ex=identity_validation_result.exception
                 )
             )
@@ -138,7 +138,7 @@ class SquareValidator(Validator[Square]):
                     op=SquareValidationException.OP,
                     msg=SquareValidationException.MSG,
                     err_code=SquareValidationException.ERR_CODE,
-                    rslt_type=SquareValidationException.RSLT_TYPE,
+                    mthd_rslt=SquareValidationException.MTHD_RSLT,
                     ex=coord_validation_result.exception
                 )
             )
@@ -189,7 +189,7 @@ class SquareValidator(Validator[Square]):
                     op=SquareValidationException.OP,
                     msg=SquareValidationException.MSG,
                     err_code=SquareValidationException.ERR_CODE,
-                    rslt_type=SquareValidationException.RSLT_TYPE,
+                    mthd_rslt=SquareValidationException.MTHD_RSLT,
                     ex=board_validation_result.exception
                 )
             )
@@ -209,7 +209,7 @@ class SquareValidator(Validator[Square]):
                     op=SquareValidationException.OP,
                     msg=SquareValidationException.MSG,
                     err_code=SquareValidationException.ERR_CODE,
-                    rslt_type=SquareValidationException.RSLT_TYPE,
+                    mthd_rslt=SquareValidationException.MTHD_RSLT,
                     ex=board_square_relation.exception
                 )
             )
@@ -222,7 +222,7 @@ class SquareValidator(Validator[Square]):
                     op=SquareValidationException.OP,
                     msg=SquareValidationException.MSG,
                     err_code=SquareValidationException.ERR_CODE,
-                    rslt_type=SquareValidationException.RSLT_TYPE,
+                    mthd_rslt=SquareValidationException.MTHD_RSLT,
                     ex=SquareOnDifferentBoardException(
                         msg=SquareOnDifferentBoardException.MSG,
                         err_code=SquareOnDifferentBoardException.ERR_CODE,
@@ -238,7 +238,7 @@ class SquareValidator(Validator[Square]):
                     op=SquareValidationException.OP,
                     msg=SquareValidationException.MSG,
                     err_code=SquareValidationException.ERR_CODE,
-                    rslt_type=SquareValidationException.RSLT_TYPE,
+                    mthd_rslt=SquareValidationException.MTHD_RSLT,
                     ex=BoardOrphanSquareLinkException(
                         msg=BoardOrphanSquareLinkException.MSG,
                         err_code=BoardOrphanSquareLinkException.ERR_CODE,
@@ -254,7 +254,7 @@ class SquareValidator(Validator[Square]):
                     op=SquareValidationException.OP,
                     msg=SquareValidationException.MSG,
                     err_code=SquareValidationException.ERR_CODE,
-                    rslt_type=SquareValidationException.RSLT_TYPE,
+                    mthd_rslt=SquareValidationException.MTHD_RSLT,
                     ex=SquareBoardRegisteredException(
                         msg=SquareBoardRegisteredException.MSG,
                         err_code=SquareBoardRegisteredException.ERR_CODE,
@@ -294,7 +294,7 @@ class SquareValidator(Validator[Square]):
                     op=SquareValidationException.OP,
                     msg=SquareValidationException.MSG,
                     err_code=SquareValidationException.ERR_CODE,
-                    rslt_type=SquareValidationException.RSLT_TYPE,
+                    mthd_rslt=SquareValidationException.MTHD_RSLT,
                     ex=NullSquareException(
                         msg=NullSquareException.MSG,
                         err_code=NullSquareException.ERR_CODE,
@@ -310,7 +310,7 @@ class SquareValidator(Validator[Square]):
                     op=SquareValidationException.OP,
                     msg=SquareValidationException.MSG,
                     err_code=SquareValidationException.ERR_CODE,
-                    rslt_type=SquareValidationException.RSLT_TYPE,
+                    mthd_rslt=SquareValidationException.MTHD_RSLT,
                     ex=TypeError(
                         f"Expected type{SquareState.__name__}, got {type(candidate).__name__} instead."
                     )

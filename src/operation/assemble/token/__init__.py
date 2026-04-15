@@ -1,14 +1,14 @@
-# src/operation/builder/token/__ini__.py
+# src/operation/assemble/token/__ini__.py
 
 """
-Module: operation.builder.token.__init__
+Module: operation.assemble.token.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
 
-# =========== BUILDER.TOKEN PACKAGE ===========#
+# =========== ASSEMBLER.TOKEN PACKAGE ===========#
 
 # Packages
 

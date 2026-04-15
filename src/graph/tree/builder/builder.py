@@ -86,7 +86,7 @@ class NodeTreeBuilder(Builder[NodeTree]):
                     op=NodeTreeBuildException.OP,
                     msg=NodeTreeBuildException.MSG,
                     err_code=NodeTreeBuildException.ERR_CODE,
-                    rslt_type=NodeTreeBuildException.RSLT_TYPE,
+                    mthd_rslt=NodeTreeBuildException.MTHD_RSLT,
                     ex=square_span_result.exception,
                 )
             )
@@ -103,7 +103,7 @@ class NodeTreeBuilder(Builder[NodeTree]):
                     op=NodeTreeBuildException.OP,
                     msg=NodeTreeBuildException.MSG,
                     err_code=NodeTreeBuildException.ERR_CODE,
-                    rslt_type=NodeTreeBuildException.RSLT_TYPE,
+                    mthd_rslt=NodeTreeBuildException.MTHD_RSLT,
                     ex=root_node_build_result.exception,
                 )
             )
@@ -124,7 +124,7 @@ class NodeTreeBuilder(Builder[NodeTree]):
                         op=NodeTreeBuildException.OP,
                         msg=NodeTreeBuildException.MSG,
                         err_code=NodeTreeBuildException.ERR_CODE,
-                        rslt_type=NodeTreeBuildException.RSLT_TYPE,
+                        mthd_rslt=NodeTreeBuildException.MTHD_RSLT,
                         ex=branch_build_result.exception,
                     )
                 )

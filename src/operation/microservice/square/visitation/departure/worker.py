@@ -77,7 +77,7 @@ class SquareDepartureProcess:
                         op=SquareDepartureException.OP,
                         msg=SquareDepartureException.MSG,
                         err_code=SquareDepartureException.ERR_CODE,
-                        rslt_type=SquareDepartureException.RSLT_TYPE,
+                        mthd_rslt=SquareDepartureException.MTHD_RSLT,
                         ex=validation_result.exception,
                 )
             )
@@ -90,7 +90,7 @@ class SquareDepartureProcess:
                         op=SquareDepartureException.OP,
                         msg=SquareDepartureException.MSG,
                         err_code=SquareDepartureException.ERR_CODE,
-                        rslt_type=SquareDepartureException.RSLT_TYPE,
+                        mthd_rslt=SquareDepartureException.MTHD_RSLT,
                         ex=DepartingEmptySquareException(
                             val=square,
                             var=f"{square.name}",

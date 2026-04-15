@@ -5,23 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change afterPath="$PROJECT_DIR$/src/analysis/relation/binder/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/analysis/relation/binder/analyst.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/analysis/relation/team/binder/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/analysis/relation/team/binder/analyst.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/analysis/relation/binder/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/analysis/relation/binder/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/analysis/relation/team/binder/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/analysis/relation/team/binder/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/assemble/team/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/assemble/team/operation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/analysis/relation/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analysis/relation/team/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/analysis/relation/team/board/analyst.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analysis/relation/team/board/analyst.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/analysis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/analysis/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/analysis/relation/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/analysis/relation/team/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/build/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/assemble/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assemble/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/assemble/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assemble/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/assemble/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assemble/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/assemble/token/assemble.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assemble/token/operation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/build/team/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/build/team/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/result/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/result/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -295,7 +286,7 @@
     "ToolWindow.Python Packages.ShowToolbar": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/analysis/relation",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/operation/assemble",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -322,11 +313,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/operation/assemble" />
       <recent name="$PROJECT_DIR$/src/err/analysis/relation" />
       <recent name="$PROJECT_DIR$/src/analysis/relation" />
       <recent name="$PROJECT_DIR$/src/analysis/relation/team" />
       <recent name="$PROJECT_DIR$/src/err/analysis/relation/team" />
-      <recent name="$PROJECT_DIR$/src/err/analysis" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/err/analysis/relation/binder" />
@@ -886,7 +877,7 @@
       <workItem from="1775468437273" duration="38443000" />
       <workItem from="1775523154635" duration="8604000" />
       <workItem from="1775535077469" duration="17356000" />
-      <workItem from="1775569861163" duration="195231000" />
+      <workItem from="1775569861163" duration="201991000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

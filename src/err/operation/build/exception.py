@@ -34,7 +34,7 @@ class BuildException(Operationexception):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        rslt_type: Optional[ResultCategory]
+        mthd_rslt: Optional[ResultCategory]
             
     Provides:
 
@@ -44,8 +44,8 @@ class BuildException(Operationexception):
     OP = "Build"
     MSG = "Build step failed."
     ERR_CODE = "BUILD_FAILURE"
-    RSLT_TYPE = "BuildResult"
-    _rslt_type = Optional[str]
+    MTHD_RSLT = "BuildResult"
+    _mthd_rslt = Optional[str]
     
     def __init__(
             self,
@@ -56,7 +56,7 @@ class BuildException(Operationexception):
             cls_name: Optional[str] = None,
             ex: Optional[Exception] = None,
             err_code: Optional[str] = None,
-            rslt_type: Optional[ResultCategory] = None,
+            mthd_rslt: Optional[ResultCategory] = None,
     ):
         """
         Args:
@@ -69,7 +69,7 @@ class BuildException(Operationexception):
             err_code: Optional[str]
         """
         msg = msg or self.MSG
-        rslt_type = self.RSLT_TYPE
+        mthd_rslt = self.MTHD_RSLT
         err_code = err_code or self.ERR_CODE
         super().__init__(
             ex=ex,
@@ -80,11 +80,11 @@ class BuildException(Operationexception):
             cls_name=cls_name,
             cls_mthd=cls_mthd,
         )
-        self._rslt_type = rslt_type
+        self._mthd_rslt = mthd_rslt
     
     @property
-    def rslt_type(self) -> Optional[str]:
-        return self._rslt_type
+    def mthd_rslt(self) -> Optional[str]:
+        return self._mthd_rslt
     
     def __str__(self):
-        return f"{super().__str__()},  rslt_type:{self._rslt_type}"
+        return f"{super().__str__()},  mthd_rslt:{self._mthd_rslt}"

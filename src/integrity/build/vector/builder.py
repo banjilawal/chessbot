@@ -80,7 +80,7 @@ class VectorBuilder(Builder[Vector]):
                         op=VectorBuildException.OP,
                         msg=VectorBuildException.MSG,
                         err_code=VectorBuildException.ERR_CODE,
-                        rslt_type=VectorBuildException.RSLT_TYPE,
+                        mthd_rslt=VectorBuildException.MTHD_RSLT,
                         ex=validation_result.exception
                     )
             )

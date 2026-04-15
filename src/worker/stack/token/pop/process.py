@@ -63,7 +63,7 @@ class TokenStackPop:
                     op=TokenStackPopException.OP,
                     msg=TokenStackPopException.MSG,
                     err_code=TokenStackPopException.ERR_CODE,
-                    rslt_type=TokenStackPopException.RSLT_TYPE,
+                    mthd_rslt=TokenStackPopException.MTHD_RSLT,
                     ex=PoppingEmptyTokenStackException(
                         msg=PoppingEmptyTokenStackException.MSG,
                         err_code=PoppingEmptyTokenStackException.ERR_CODE,
@@ -118,7 +118,7 @@ class TokenStackPop:
                     op=TokenStackPopException.OP,
                     msg=TokenStackPopException.MSG,
                     err_code=TokenStackPopException.ERR_CODE,
-                    rslt_type=TokenStackPopException.RSLT_TYPE,
+                    mthd_rslt=TokenStackPopException.MTHD_RSLT,
                     ex=PoppingEmptyTokenStackException(
                         msg=PoppingEmptyTokenStackException.MSG,
                         err_code=PoppingEmptyTokenStackException.ERR_CODE,
@@ -135,7 +135,7 @@ class TokenStackPop:
                     op=TokenStackPopException.OP,
                     msg=TokenStackPopException.MSG,
                     err_code=TokenStackPopException.ERR_CODE,
-                    rslt_type=TokenStackPopException.RSLT_TYPE,
+                    mthd_rslt=TokenStackPopException.MTHD_RSLT,
                     ex=id_validation_result.exception
                 )
             )

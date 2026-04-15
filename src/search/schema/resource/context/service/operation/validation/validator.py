@@ -84,7 +84,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
                     op=SchemaContextValidationException.OP,
                     msg=SchemaContextValidationException.MSG,
                     err_code=SchemaContextValidationException.ERR_CODE,
-                    rslt_type=SchemaContextValidationException.RSLT_TYPE,
+                    mthd_rslt=SchemaContextValidationException.MTHD_RSLT,
                     ex=NullSchemaContextException(
                         msg=SchemaContextValidationException.MSG,
                         err_code=SchemaContextValidationException.ERR_CODE,
@@ -101,7 +101,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
                     op=SchemaContextValidationException.OP,
                     msg=SchemaContextValidationException.MSG,
                     err_code=SchemaContextValidationException.ERR_CODE,
-                    rslt_type=SchemaContextValidationException.RSLT_TYPE,
+                    mthd_rslt=SchemaContextValidationException.MTHD_RSLT,
                     ex=TypeError(
                         f"Expected SchemaContext, got {type(candidate).__name__} instead."
                     )
@@ -121,7 +121,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
                     op=SchemaContextValidationException.OP,
                     msg=SchemaContextValidationException.MSG,
                     err_code=SchemaContextValidationException.ERR_CODE,
-                    rslt_type=SchemaContextValidationException.RSLT_TYPE,
+                    mthd_rslt=SchemaContextValidationException.MTHD_RSLT,
                     ex=ZeroSchemaContextFlagsException(
                         msg=ZeroSchemaContextFlagsException.MSG,
                         err_code=ZeroSchemaContextFlagsException.ERR_CODE,
@@ -138,7 +138,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
                     op=SchemaContextValidationException.OP,
                     msg=SchemaContextValidationException.MSG,
                     err_code=SchemaContextValidationException.ERR_CODE,
-                    rslt_type=SchemaContextValidationException.RSLT_TYPE,
+                    mthd_rslt=SchemaContextValidationException.MTHD_RSLT,
                     ex=ExcessSchemaContextFlagsException(
                         msg=ExcessSchemaContextFlagsException.MSG,
                         err_code=ExcessSchemaContextFlagsException.ERR_CODE,
@@ -161,7 +161,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
                         op=SchemaContextValidationException.OP,
                         msg=SchemaContextValidationException.MSG,
                         err_code=SchemaContextValidationException.ERR_CODE,
-                        rslt_type=SchemaContextValidationException.RSLT_TYPE,
+                        mthd_rslt=SchemaContextValidationException.MTHD_RSLT,
                         ex=validation_result.exception
                     )
                 )
@@ -182,7 +182,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
                         op=SchemaContextValidationException.OP,
                         msg=SchemaContextValidationException.MSG,
                         err_code=SchemaContextValidationException.ERR_CODE,
-                        rslt_type=SchemaContextValidationException.RSLT_TYPE,
+                        mthd_rslt=SchemaContextValidationException.MTHD_RSLT,
                         ex=validation_result.exception
                     )
                 )
@@ -203,7 +203,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
                         op=SchemaContextValidationException.OP,
                         msg=SchemaContextValidationException.MSG,
                         err_code=SchemaContextValidationException.ERR_CODE,
-                        rslt_type=SchemaContextValidationException.RSLT_TYPE,
+                        mthd_rslt=SchemaContextValidationException.MTHD_RSLT,
                         ex=validation_result.exception
                     )
                 )
@@ -224,7 +224,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
                         op=SchemaContextValidationException.OP,
                         msg=SchemaContextValidationException.MSG,
                         err_code=SchemaContextValidationException.ERR_CODE,
-                        rslt_type=SchemaContextValidationException.RSLT_TYPE,
+                        mthd_rslt=SchemaContextValidationException.MTHD_RSLT,
                         ex=validation_result.exception
                     )
                 )
@@ -245,7 +245,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
                         op=SchemaContextValidationException.OP,
                         msg=SchemaContextValidationException.MSG,
                         err_code=SchemaContextValidationException.ERR_CODE,
-                        rslt_type=SchemaContextValidationException.RSLT_TYPE,
+                        mthd_rslt=SchemaContextValidationException.MTHD_RSLT,
                         ex=validation_result.exception
                     )
                 )
@@ -266,7 +266,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
                         op=SchemaContextValidationException.OP,
                         msg=SchemaContextValidationException.MSG,
                         err_code=SchemaContextValidationException.ERR_CODE,
-                        rslt_type=SchemaContextValidationException.RSLT_TYPE,
+                        mthd_rslt=SchemaContextValidationException.MTHD_RSLT,
                         ex=validation_result.exception
                     )
                 )
@@ -287,7 +287,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
                         op=SchemaContextValidationException.OP,
                         msg=SchemaContextValidationException.MSG,
                         err_code=SchemaContextValidationException.ERR_CODE,
-                        rslt_type=SchemaContextValidationException.RSLT_TYPE,
+                        mthd_rslt=SchemaContextValidationException.MTHD_RSLT,
                         ex=validation_result.exception
                     )
                 )
@@ -311,7 +311,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
                         op=SchemaContextValidationException.OP,
                         msg=SchemaContextValidationException.MSG,
                         err_code=SchemaContextValidationException.ERR_CODE,
-                        rslt_type=SchemaContextValidationException.RSLT_TYPE,
+                        mthd_rslt=SchemaContextValidationException.MTHD_RSLT,
                         ex=validation_result.exception
                     )
                 )
@@ -326,7 +326,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
                 op=SchemaContextValidationException.OP,
                 msg=SchemaContextValidationException.MSG,
                 err_code=SchemaContextValidationException.ERR_CODE,
-                rslt_type=SchemaContextValidationException.RSLT_TYPE,
+                mthd_rslt=SchemaContextValidationException.MTHD_RSLT,
                 ex=SchemaContextValidationRouteException(
                     msg=SchemaContextValidationRouteException.MSG,
                     err_code=SchemaContextValidationRouteException.ERR_CODE,

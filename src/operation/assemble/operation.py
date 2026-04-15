@@ -1,7 +1,7 @@
-# src/operation/builder/builder.py
+# src/operation/assemble/assembler.py
 
 """
-Module: operation.builder.builder
+Module: operation.assemble.assembler
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

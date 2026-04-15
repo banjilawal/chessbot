@@ -91,7 +91,7 @@ class CommandArgsValidator(Validator[Dict]):
                     op=ArgumentsValidationException.OP,
                     msg=ArgumentsValidationException.MSG,
                     err_code=ArgumentsValidationException.ERR_CODE,
-                    rslt_type=ArgumentsValidationException.RSLT_TYPE,
+                    mthd_rslt=ArgumentsValidationException.MTHD_RSLT,
                     ex=type_validation_results.exception
                 )
             )
@@ -109,7 +109,7 @@ class CommandArgsValidator(Validator[Dict]):
                     op=ArgumentsValidationException.OP,
                     msg=ArgumentsValidationException.MSG,
                     err_code=ArgumentsValidationException.ERR_CODE,
-                    rslt_type=ArgumentsValidationException.RSLT_TYPE,
+                    mthd_rslt=ArgumentsValidationException.MTHD_RSLT,
                     ex=identifier_validation_results.exception
                 )
             )
@@ -160,7 +160,7 @@ class CommandArgsValidator(Validator[Dict]):
                     op=ArgumentsValidationException.OP,
                     msg=ArgumentsValidationException.MSG,
                     err_code=ArgumentsValidationException.ERR_CODE,
-                    rslt_type=ArgumentsValidationException.RSLT_TYPE,
+                    mthd_rslt=ArgumentsValidationException.MTHD_RSLT,
                     ex=NullArgumentsException(
                         msg=ArgumentsValidationException.MSG,
                         err_code=NullArgumentsException.ERR_CODE,
@@ -178,7 +178,7 @@ class CommandArgsValidator(Validator[Dict]):
                     op=ArgumentsValidationException.OP,
                     msg=ArgumentsValidationException.MSG,
                     err_code=ArgumentsValidationException.ERR_CODE,
-                    rslt_type=ArgumentsValidationException.RSLT_TYPE,
+                    mthd_rslt=ArgumentsValidationException.MTHD_RSLT,
                     ex=TypeError(
                         f"Expected {signature_type}, got {actual_type}."
                     )
@@ -196,7 +196,7 @@ class CommandArgsValidator(Validator[Dict]):
                     op=ArgumentsValidationException.OP,
                     msg=ArgumentsValidationException.MSG,
                     err_code=ArgumentsValidationException.ERR_CODE,
-                    rslt_type=ArgumentsValidationException.RSLT_TYPE,
+                    mthd_rslt=ArgumentsValidationException.MTHD_RSLT,
                     ex=ArgumentCountException(
                         msg=ArgumentCountException.MSG,
                         err_code=ArgumentCountException.ERR_CODE,
@@ -213,7 +213,7 @@ class CommandArgsValidator(Validator[Dict]):
                         op=ArgumentsValidationException.OP,
                         msg=ArgumentsValidationException.MSG,
                         err_code=ArgumentsValidationException.ERR_CODE,
-                        rslt_type=ArgumentsValidationException.RSLT_TYPE,
+                        mthd_rslt=ArgumentsValidationException.MTHD_RSLT,
                         ex=ArgumentTypeException(
                             var=genus.__name__,
                             msg=ArgumentTypeException.MSG,
@@ -268,7 +268,7 @@ class CommandArgsValidator(Validator[Dict]):
                         op=ArgumentsValidationException.OP,
                         msg=ArgumentsValidationException.MSG,
                         err_code=ArgumentsValidationException.ERR_CODE,
-                        rslt_type=ArgumentsValidationException.RSLT_TYPE,
+                        mthd_rslt=ArgumentsValidationException.MTHD_RSLT,
                         ex=str_validation_result.exception,
                     )
                 )
@@ -282,7 +282,7 @@ class CommandArgsValidator(Validator[Dict]):
                         op=ArgumentsValidationException.OP,
                         msg=ArgumentsValidationException.MSG,
                         err_code=ArgumentsValidationException.ERR_CODE,
-                        rslt_type=ArgumentsValidationException.RSLT_TYPE,
+                        mthd_rslt=ArgumentsValidationException.MTHD_RSLT,
                         ex=ArgumentNameException(
                             var=identifier,
                             msg=ArgumentNameException.MSG,
@@ -300,7 +300,7 @@ class CommandArgsValidator(Validator[Dict]):
                             op=ArgumentsValidationException.OP,
                             msg=ArgumentsValidationException.MSG,
                             err_code=ArgumentsValidationException.ERR_CODE,
-                            rslt_type=ArgumentsValidationException.RSLT_TYPE,
+                            mthd_rslt=ArgumentsValidationException.MTHD_RSLT,
                             ex=ArgumentNameTypeBindingException(
                                 var=key,
                                 val=f"expected type: {type(signature.entries[key]).__name__}",

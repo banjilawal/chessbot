@@ -67,7 +67,7 @@ class SquareSpanValidator(Validator[SquareSpan]):
                     op=SquareSpanValidationException.OP,
                     msg=SquareSpanValidationException.MSG,
                     err_code=SquareSpanValidationException.ERR_CODE,
-                    rslt_type=SquareSpanValidationException.RSLT_TYPE,
+                    mthd_rslt=SquareSpanValidationException.MTHD_RSLT,
                     ex=SquareSpanNullException(
                         var="rank",
                         val="None",
@@ -85,7 +85,7 @@ class SquareSpanValidator(Validator[SquareSpan]):
                     op=SquareSpanValidationException.OP,
                     msg=SquareSpanValidationException.MSG,
                     err_code=SquareSpanValidationException.ERR_CODE,
-                    rslt_type=SquareSpanValidationException.RSLT_TYPE,
+                    mthd_rslt=SquareSpanValidationException.MTHD_RSLT,
                     ex=TypeError(f"{method} Expected SquareSpan, got {type(candidate).__name__} instead.")
                 )
             )
@@ -102,7 +102,7 @@ class SquareSpanValidator(Validator[SquareSpan]):
                     op=SquareSpanValidationException.OP,
                     msg=SquareSpanValidationException.MSG,
                     err_code=SquareSpanValidationException.ERR_CODE,
-                    rslt_type=SquareSpanValidationException.RSLT_TYPE,
+                    mthd_rslt=SquareSpanValidationException.MTHD_RSLT,
                     ex=origin_validation_result.exception
                 )
             )
@@ -115,7 +115,7 @@ class SquareSpanValidator(Validator[SquareSpan]):
                     op=SquareSpanValidationException.OP,
                     msg=SquareSpanValidationException.MSG,
                     err_code=SquareSpanValidationException.ERR_CODE,
-                    rslt_type=SquareSpanValidationException.RSLT_TYPE,
+                    mthd_rslt=SquareSpanValidationException.MTHD_RSLT,
                     ex=SquareSpanRaysNullException(
                         var="square_span.rays",
                         val="None",
@@ -135,7 +135,7 @@ class SquareSpanValidator(Validator[SquareSpan]):
                     op=SquareSpanValidationException.OP,
                     msg=SquareSpanValidationException.MSG,
                     err_code=SquareSpanValidationException.ERR_CODE,
-                    rslt_type=SquareSpanValidationException.RSLT_TYPE,
+                    mthd_rslt=SquareSpanValidationException.MTHD_RSLT,
                     ex=SquareSpanRaysNullException(
                         var="type(square_span.rays)",
                         val=wrong_type,

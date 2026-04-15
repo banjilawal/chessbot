@@ -83,7 +83,7 @@ class SquareStackPush:
                     op=SquareStackPushException.OP,
                     msg=SquareStackPushException.MSG,
                     err_code=SquareStackPushException.ERR_CODE,
-                    rslt_type=SquareStackPushException.RSLT_TYPE,
+                    mthd_rslt=SquareStackPushException.MTHD_RSLT,
                     ex=SquareStackFullException(
                         msg=SquareStackFullException.MSG,
                         err_code=SquareStackFullException.ERR_CODE,
@@ -103,7 +103,7 @@ class SquareStackPush:
                         op=SquareStackPushException.OP,
                         msg=SquareStackPushException.MSG,
                         mthd=SquareStackPushException.MTHD,
-                        rslt_type=SquareStackPushException.RSLT_TYPE,
+                        mthd_rslt=SquareStackPushException.MTHD_RSLT,
                         ex=collision_detection_result.exception
                 )
             )
@@ -121,7 +121,7 @@ class SquareStackPush:
                     op=SquareStackPushException.OP,
                     msg=SquareStackPushException.MSG,
                     mthd=SquareStackPushException.MTHD,
-                    rslt_type=SquareStackPushException.RSLT_TYPE,
+                    mthd_rslt=SquareStackPushException.MTHD_RSLT,
                     ex=rank_quota_report.exception
                 )
             )
@@ -133,7 +133,7 @@ class SquareStackPush:
                     op=SquareStackPushException.OP,
                     msg=SquareStackPushException.MSG,
                     mthd=SquareStackPushException.MTHD,
-                    rslt_type=SquareStackPushException.RSLT_TYPE,
+                    mthd_rslt=SquareStackPushException.MTHD_RSLT,
                     ex=SquareStackCapacityFullException(
                         msg=SquareStackCapacityFullException.MSG,
                         err_code=SquareStackCapacityFullException.ERR_CODE,

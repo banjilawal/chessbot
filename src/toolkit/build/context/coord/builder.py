@@ -90,7 +90,7 @@ class CoordContextToolkit(Toolkit[CoordContext]):
                     op=CoordContextToolkitException.OP,
                     msg=CoordContextToolkitException.MSG,
                     err_code=CoordContextToolkitException.ERR_CODE,
-                    rslt_type=CoordContextToolkitException.RSLT_TYPE,
+                    mthd_rslt=CoordContextToolkitException.MTHD_RSLT,
                     ex=ZeroCoordContextFlagsException(
                         msg=CoordContextToolkitException.MSG,
                         err_code=CoordContextToolkitException.ERR_CODE,
@@ -146,7 +146,7 @@ class CoordContextToolkit(Toolkit[CoordContext]):
                 op=CoordContextToolkitException.OP,
                 msg=CoordContextToolkitException.MSG,
                 err_code=CoordContextToolkitException.ERR_CODE,
-                rslt_type=CoordContextToolkitException.RSLT_TYPE,
+                mthd_rslt=CoordContextToolkitException.MTHD_RSLT,
                 ex=CoordContextToolkitRouteException(
                     msg=CoordContextToolkitRouteException.MSG,
                     err_code=CoordContextToolkitRouteException.ERR_CODE,
@@ -192,7 +192,7 @@ class CoordContextToolkit(Toolkit[CoordContext]):
                         op=CoordContextToolkitException.OP,
                         msg=CoordContextToolkitException.MSG,
                         err_code=CoordContextToolkitException.ERR_CODE,
-                        rslt_type=CoordContextToolkitException.RSLT_TYPE,
+                        mthd_rslt=CoordContextToolkitException.MTHD_RSLT,
                         ex=validation_result.exception
                     )
                 )

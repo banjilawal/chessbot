@@ -34,7 +34,7 @@ class ValidationPipelineException(PipelineException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        rslt_type: Optional[ResultCategory]
+        mthd_rslt: Optional[ResultCategory]
             
     Provides:
 
@@ -44,7 +44,7 @@ class ValidationPipelineException(PipelineException):
     OP = "Validation"
     MSG = "Error in ValidationPipeline."
     ERR_CODE = "VALIDATION_PIPELINE_FAILURE"
-    RSLT_TYPE = "ValidationResult"
+    MTHD_RSLT = "ValidationResult"
     
     def __init__(
             self,
@@ -55,7 +55,7 @@ class ValidationPipelineException(PipelineException):
             cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
             err_code: Optional[str] | None = None,
-            rslt_type: Optional[ResultCategory] | None = None,
+            mthd_rslt: Optional[ResultCategory] | None = None,
     ):
         """
         Args:
@@ -66,11 +66,11 @@ class ValidationPipelineException(PipelineException):
             cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
-            rslt_type: Optional[ResultCategory]
+            mthd_rslt: Optional[ResultCategory]
         """
         op = op or self.OP
         msg = msg or self.MSG
-        rslt_type = self.RSLT_TYPE
+        mthd_rslt = self.MTHD_RSLT
         err_code = err_code or self.ERR_CODE
         super().__init__(
             op=op,
@@ -81,5 +81,5 @@ class ValidationPipelineException(PipelineException):
             err_code=err_code,
             cls_name=cls_name,
             cls_mthd=cls_mthd,
-            rslt_type=rslt_type,
+            mthd_rslt=mthd_rslt,
         )

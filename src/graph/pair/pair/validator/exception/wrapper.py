@@ -40,7 +40,7 @@ class PairValidationException(ValidationException):
         *   ex (Optional[Exception])
         *   mthd (Optional[str])
         *   op (Optional[str])
-        *   rslt_type (Optional[str])
+        *   mthd_rslt (Optional[str])
 
     # LOCAL METHODS:
    None
@@ -49,7 +49,7 @@ class PairValidationException(ValidationException):
         *   See ValidationException class for inherited methods.
     """
     OP = "Validation"
-    RSLT_TYPE = "ValidationResult"
+    MTHD_RSLT = "ValidationResult"
     ERR_CODE = "PAIR_VALIDATION_FAILURE"
     MSG = "Failure in PairValidator method."
     
@@ -59,7 +59,7 @@ class PairValidationException(ValidationException):
             mthd: Optional[str] = None,
             err_code: Optional[str] = None,
             ex: Optional[Exception] = None,
-            rslt_type: Optional[ResultCategory] = None,
+            mthd_rslt: Optional[ResultCategory] = None,
     ):
         """
         Args:
@@ -67,12 +67,12 @@ class PairValidationException(ValidationException):
             msg: Optional[str]
             mthd: Optional[str]
             err_code: Optional[str]
-            rslt_type: Optional[ResultCategory]
+            mthd_rslt: Optional[ResultCategory]
         """
         op = op or self.OP
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        rslt_type = rslt_type or self.RSLT_TYPE
+        mthd_rslt = mthd_rslt or self.MTHD_RSLT
         
         super().__init__(
             ex=ex,
@@ -80,5 +80,5 @@ class PairValidationException(ValidationException):
             msg=msg,
             mthd=mthd,
             err_code=err_code,
-            rslt_type=rslt_type,
+            mthd_rslt=mthd_rslt,
         )

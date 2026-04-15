@@ -43,7 +43,7 @@ class CommandBuildException(BuildException):
             *   ex (Optional[Exception])
             *   mthd (Optional[str])
             *   op (Optional[str])
-            *   rslt_type (Optional[str])
+            *   mthd_rslt (Optional[str])
 
         # LOCAL METHODS:
        None
@@ -55,7 +55,7 @@ class CommandBuildException(BuildException):
     MSG = "CommandBuilder returned an error."
     MTHD = "build"
     OP = "Build"
-    RSLT_TYPE = "BuildResult"
+    MTHD_RSLT = "BuildResult"
     
     def __init__(
             self,
@@ -63,10 +63,10 @@ class CommandBuildException(BuildException):
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
             mthd: Optional[str] = None, = None,
-            rslt_type: Optional[ResultCategory] = None,
+            mthd_rslt: Optional[ResultCategory] = None,
     ):
         err_code = err_code or self.ERR_CODE
         msg = msg or self.MSG
         op = op or self.OP
-        rslt_type = rslt_type or self.RSLT_TYPE
-        super().__init__(err_code=err_code, msg=msg, ex=ex, mthd=mthd, op=op, rslt_type=rslt_type)
+        mthd_rslt = mthd_rslt or self.MTHD_RSLT
+        super().__init__(err_code=err_code, msg=msg, ex=ex, mthd=mthd, op=op, mthd_rslt=mthd_rslt)

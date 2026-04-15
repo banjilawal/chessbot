@@ -46,7 +46,7 @@ class RayComputationException(ComputationException):
         *   ex (Optional[Exception])
         *   mthd (Optional[str])
         *   op (Optional[str])
-        *   rslt_type (Optional[str])
+        *   mthd_rslt (Optional[str])
 
     # LOCAL METHODS:
    None
@@ -55,7 +55,7 @@ class RayComputationException(ComputationException):
         *   See ComputationException class for inherited methods.
     """
     OP = "Computation"
-    RSLT_TYPE = "ComputationResult"
+    MTHD_RSLT = "ComputationResult"
     ERR_CODE = "RAY_COMPUTATION_FAILURE"
     MSG = "CoordRay arithmetic failed."
     
@@ -65,19 +65,19 @@ class RayComputationException(ComputationException):
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
             mthd: Optional[str] = None, = None,
-            rslt_type: Optional[ResultCategory] = None,
+            mthd_rslt: Optional[ResultCategory] = None,
     ):
         op = op or self.OP
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        rslt_type = rslt_type or self.RSLT_TYPE
+        mthd_rslt = mthd_rslt or self.MTHD_RSLT
         """
         Args:
             msg: Optional[str]
             mthd: Optional[str]
             ex: Optional[Exception]
             err_code: Optional[str]
-            rslt_type: Optional[ResultCategory]
+            mthd_rslt: Optional[ResultCategory]
         """
         super().__init__(
             ex=ex,
@@ -85,5 +85,5 @@ class RayComputationException(ComputationException):
             msg=msg,
             mthd=mthd,
             err_code=err_code,
-            rslt_type=rslt_type,
+            mthd_rslt=mthd_rslt,
         )

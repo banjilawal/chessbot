@@ -154,7 +154,7 @@ class NodeEdgeHandler:
                             op=PushingEdgeException.OP,
                             msg=PushingEdgeException.MSG,
                             err_code=PushingEdgeException.ERR_CODE,
-                            rslt_type=PushingEdgeException.RSLT_TYPE,
+                            mthd_rslt=PushingEdgeException.MTHD_RSLT,
                             ex=push_result.exception
                         )
                     )

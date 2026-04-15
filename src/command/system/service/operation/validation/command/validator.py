@@ -61,7 +61,7 @@ class CommandValidator(Validator[Command]):
                     op=CommandValidationException.OP,
                     msg=CommandValidationException.MSG,
                     err_code=CommandValidationException.ERR_CODE,
-                    rslt_type=CommandValidationException.RSLT_TYPE,
+                    mthd_rslt=CommandValidationException.MTHD_RSLT,
                     ex=NullCommandException(
                         err_code=NullCommandException.ERR_CODE,
                         msg=NullCommandException.MSG,
@@ -77,7 +77,7 @@ class CommandValidator(Validator[Command]):
                     op=CommandValidationException.OP,
                     msg=CommandValidationException.MSG,
                     err_code=CommandValidationException.ERR_CODE,
-                    rslt_type=CommandValidationException.RSLT_TYPE,
+                    mthd_rslt=CommandValidationException.MTHD_RSLT,
                     ex=TypeError(
                         f"Expected Command type, got "
                         f"{type(candidate).__name__} instead."
@@ -96,7 +96,7 @@ class CommandValidator(Validator[Command]):
                     op=CommandValidationException.OP,
                     msg=CommandValidationException.MSG,
                     err_code=CommandValidationException.ERR_CODE,
-                    rslt_type=CommandValidationException.RSLT_TYPE,
+                    mthd_rslt=CommandValidationException.MTHD_RSLT,
                     ex=CommandTypeSupportException(
                         var=command.name,
                         val=command,
@@ -118,7 +118,7 @@ class CommandValidator(Validator[Command]):
                     op=CommandValidationException.OP,
                     msg=CommandValidationException.MSG,
                     err_code=CommandValidationException.ERR_CODE,
-                    rslt_type=CommandValidationException.RSLT_TYPE,
+                    mthd_rslt=CommandValidationException.MTHD_RSLT,
                     ex=identity_validation_result.exception
                 )
             )
@@ -131,7 +131,7 @@ class CommandValidator(Validator[Command]):
                     op=CommandValidationException.OP,
                     msg=CommandValidationException.MSG,
                     err_code=CommandValidationException.ERR_CODE,
-                    rslt_type=CommandValidationException.RSLT_TYPE,
+                    mthd_rslt=CommandValidationException.MTHD_RSLT,
                     ex=CommandNameNotFoundException(
                         var=command.name,
                         val=command,
@@ -153,7 +153,7 @@ class CommandValidator(Validator[Command]):
                     op=CommandValidationException.OP,
                     msg=CommandValidationException.MSG,
                     err_code=CommandValidationException.ERR_CODE,
-                    rslt_type=CommandValidationException.RSLT_TYPE,
+                    mthd_rslt=CommandValidationException.MTHD_RSLT,
                     ex=arguments_validation_results.exception
                 )
             )

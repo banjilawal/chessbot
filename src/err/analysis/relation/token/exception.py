@@ -18,7 +18,7 @@ __all__ = [
     "TokenRelationException",
 ]
 
-from result.category import ResultCategory
+from result.category import MethodResultType
 
 
 # ======================# TOKEN_RELATION_FAILURE #======================#
@@ -38,7 +38,7 @@ class TokenRelationException(RelationException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        rslt_type: Optional[ResultCategory]
+        mthd_rslt: Optional[ResultCategory]
             
     Provides:
 
@@ -57,7 +57,7 @@ class TokenRelationException(RelationException):
             cls_name: Optional[str] = None,
             cls_mthd: Optional[str] = None,
             err_code: Optional[str] = None,
-            rslt_type: Optional[ResultCategory] = None,
+            mthd_rslt: Optional[MethodResultType] = None,
     ):
         """
         Args:
@@ -72,7 +72,7 @@ class TokenRelationException(RelationException):
         op = op or self.OP
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        rslt_type = rslt_type or self.RSLT_TYPE
+        mthd_rslt = mthd_rslt or self.MTHD_RSLT
         super().__init__(
             ex=ex,
             msg=msg,

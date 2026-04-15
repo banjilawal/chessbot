@@ -41,7 +41,7 @@ class EdgePairInsertionException(InsertionException):
         *   ex (Optional[Exception])
         *   mthd (Optional[str])
         *   op (Optional[str])
-        *   rslt_type (Optional[str])
+        *   mthd_rslt (Optional[str])
 
     # LOCAL METHODS:
     None
@@ -50,7 +50,7 @@ class EdgePairInsertionException(InsertionException):
         *   See InsertionException class for inherited methods.
     """
     OP = "Insert"
-    RSLT_TYPE = "InsertionResult"
+    MTHD_RSLT = "InsertionResult"
     MSG = "EdgePair push failed."
     ERR_CODE = "EDGE_PAIR_INSERTION_FAILURE"
     
@@ -60,7 +60,7 @@ class EdgePairInsertionException(InsertionException):
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
             mthd: Optional[str] = None, = None,
-            rslt_type: Optional[ResultCategory] = None,
+            mthd_rslt: Optional[ResultCategory] = None,
     ):
         """
         Args:
@@ -68,12 +68,12 @@ class EdgePairInsertionException(InsertionException):
             mthd: Optional[str]
             ex: Optional[Exception]
             err_code: Optional[str]
-            rslt_type: Optional[ResultCategory]
+            mthd_rslt: Optional[ResultCategory]
         """
         op = op or self.OP
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        rslt_type = rslt_type or self.RSLT_TYPE
+        mthd_rslt = mthd_rslt or self.MTHD_RSLT
         
         super().__init__(
             ex=ex,
@@ -81,5 +81,5 @@ class EdgePairInsertionException(InsertionException):
             msg=msg,
             mthd=mthd,
             err_code=err_code,
-            rslt_type=rslt_type,
+            mthd_rslt=mthd_rslt,
         )

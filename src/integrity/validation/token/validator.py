@@ -110,7 +110,7 @@ class TokenValidator(Validator[Token]):
                     op=TokenValidationException.OP,
                     msg=TokenValidationException.MSG,
                     err_code=TokenValidationException.ERR_CODE,
-                    rslt_type=TokenValidationException.RSLT_TYPE,
+                    mthd_rslt=TokenValidationException.MTHD_RSLT,
                     ex=NullTokenException(
                         var="rank",
                         msg=NullTokenException.MSG,
@@ -127,7 +127,7 @@ class TokenValidator(Validator[Token]):
                     op=TokenValidationException.OP,
                     msg=TokenValidationException.MSG,
                     err_code=TokenValidationException.ERR_CODE,
-                    rslt_type=TokenValidationException.RSLT_TYPE,
+                    mthd_rslt=TokenValidationException.MTHD_RSLT,
                     ex=TypeError(f"Expected Token, got {type(candidate).__name__} instead.")
                 )
             )
@@ -147,7 +147,7 @@ class TokenValidator(Validator[Token]):
                     op=TokenValidationException.OP,
                     msg=TokenValidationException.MSG,
                     err_code=TokenValidationException.ERR_CODE,
-                    rslt_type=TokenValidationException.RSLT_TYPE,
+                    mthd_rslt=TokenValidationException.MTHD_RSLT,
                     ex=identity_validation_result.exception
                 )
             )
@@ -161,7 +161,7 @@ class TokenValidator(Validator[Token]):
                     op=TokenValidationException.OP,
                     msg=TokenValidationException.MSG,
                     err_code=TokenValidationException.ERR_CODE,
-                    rslt_type=TokenValidationException.RSLT_TYPE,
+                    mthd_rslt=TokenValidationException.MTHD_RSLT,
                     ex=team_validation_result.exception
                 )
             )
@@ -178,7 +178,7 @@ class TokenValidator(Validator[Token]):
                     op=TokenValidationException.OP,
                     msg=TokenValidationException.MSG,
                     err_code=TokenValidationException.ERR_CODE,
-                    rslt_type=TokenValidationException.RSLT_TYPE,
+                    mthd_rslt=TokenValidationException.MTHD_RSLT,
                     ex=roster_and_square_validation_result.exception
                 )
             )
@@ -192,7 +192,7 @@ class TokenValidator(Validator[Token]):
                     op=TokenValidationException.OP,
                     msg=TokenValidationException.MSG,
                     err_code=TokenValidationException.ERR_CODE,
-                    rslt_type=TokenValidationException.RSLT_TYPE,
+                    mthd_rslt=TokenValidationException.MTHD_RSLT,
                     ex=rank_validation_result.exception
                 )
             )
@@ -207,7 +207,7 @@ class TokenValidator(Validator[Token]):
                     op=TokenValidationException.OP,
                     msg=TokenValidationException.MSG,
                     err_code=TokenValidationException.ERR_CODE,
-                    rslt_type=TokenValidationException.RSLT_TYPE,
+                    mthd_rslt=TokenValidationException.MTHD_RSLT,
                     ex=token_coord_database_verification_result.exception
                 )
             )
@@ -228,7 +228,7 @@ class TokenValidator(Validator[Token]):
                     op=TokenValidationException.OP,
                     msg=TokenValidationException.MSG,
                     err_code=TokenValidationException.ERR_CODE,
-                    rslt_type=TokenValidationException.RSLT_TYPE,
+                    mthd_rslt=TokenValidationException.MTHD_RSLT,
                     ex=CoordDatabaseNullException(
                         msg=CoordDatabaseNullException.MSG,
                         err_code=TokenValidationException.ERR_CODE,
@@ -245,7 +245,7 @@ class TokenValidator(Validator[Token]):
                     op=TokenValidationException.OP,
                     msg=TokenValidationException.MSG,
                     err_code=TokenValidationException.ERR_CODE,
-                    rslt_type=TokenValidationException.RSLT_TYPE,
+                    mthd_rslt=TokenValidationException.MTHD_RSLT,
                     ex=TypeError(f"Expected CoordDatabase, got {type(token.positions).__name__} instead.")
                 )
             )
@@ -273,7 +273,7 @@ class TokenValidator(Validator[Token]):
                     op=TokenValidationException.OP,
                     msg=TokenValidationException.MSG,
                     err_code=TokenValidationException.ERR_CODE,
-                    rslt_type=TokenValidationException.RSLT_TYPE,
+                    mthd_rslt=TokenValidationException.MTHD_RSLT,
                     ex=validation_result.exception
                 )
             )
@@ -286,7 +286,7 @@ class TokenValidator(Validator[Token]):
                     op=TokenValidationException.OP,
                     msg=TokenValidationException.MSG,
                     err_code=TokenValidationException.ERR_CODE,
-                    rslt_type=TokenValidationException.RSLT_TYPE,
+                    mthd_rslt=TokenValidationException.MTHD_RSLT,
                     ex=TypeError(f"Expected CombatantToken, got {type(candidate).__name__} instead.")
                 )
             )

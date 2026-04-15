@@ -72,7 +72,7 @@ class EuclideanDistance:
                         op=EuclideanDistanceException.OP,
                         msg=EuclideanDistanceException.MSG,
                         err_code=EuclideanDistanceException.ERR_CODE,
-                        rslt_type=EuclideanDistanceException.RSLT_TYPE,
+                        mthd_rslt=EuclideanDistanceException.MTHD_RSLT,
                         ex=coord_validation_result.exception,
                     )
                 )

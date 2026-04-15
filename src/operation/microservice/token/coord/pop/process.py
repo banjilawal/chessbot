@@ -80,7 +80,7 @@ class TokenPopCoordProcess:
                     op=TokenPopCoordException.OP,
                     msg=TokenPopCoordException.MSG,
                     err_code=TokenPopCoordException.ERR_CODE,
-                    rslt_type=TokenPopCoordException.RSLT_TYPE,
+                    mthd_rslt=TokenPopCoordException.MTHD_RSLT,
                     ex=validation_result.exception
                 )
             )
@@ -94,7 +94,7 @@ class TokenPopCoordProcess:
                         op=TokenPopCoordException.OP,
                         msg=TokenPopCoordException.MSG,
                         err_code=TokenPopCoordException.ERR_CODE,
-                        rslt_type=TokenPopCoordException.RSLT_TYPE,
+                        mthd_rslt=TokenPopCoordException.MTHD_RSLT,
                         ex=InactiveTokenPoppingCoordException(
                             var="token",
                             val=token.designation,
@@ -114,7 +114,7 @@ class TokenPopCoordProcess:
                         op=TokenPopCoordException.OP,
                         msg=TokenPopCoordException.MSG,
                         err_code=TokenPopCoordException.ERR_CODE,
-                        rslt_type=TokenPopCoordException.RSLT_TYPE,
+                        mthd_rslt=TokenPopCoordException.MTHD_RSLT,
                         ex=UnopenedTokenPoppingCoordException(
                             var="token",
                             val=token.designation,
@@ -132,7 +132,7 @@ class TokenPopCoordProcess:
                     op=TokenPopCoordException.OP,
                     msg=TokenPopCoordException.MSG,
                     err_code=TokenPopCoordException.ERR_CODE,
-                    rslt_type=TokenPopCoordException.RSLT_TYPE,
+                    mthd_rslt=TokenPopCoordException.MTHD_RSLT,
                     ex=MoveUndoLimitException(
                         var=token.designation,
                         msg=MoveUndoLimitException.MSG,
@@ -152,7 +152,7 @@ class TokenPopCoordProcess:
                     op=TokenPopCoordException.OP,
                     msg=TokenPopCoordException.MSG,
                     err_code=TokenPopCoordException.ERR_CODE,
-                    rslt_type=TokenPopCoordException.RSLT_TYPE,
+                    mthd_rslt=TokenPopCoordException.MTHD_RSLT,
                     ex=popping_cord_stack_result.exception
                 )
             )

@@ -1,7 +1,7 @@
-# src/integrity/build/token/builder.py
+# src/integrity/assemble/token/assembler.py
 
 """
-Module: integrity.build.token.builder
+Module: integrity.assemble.token.assembler
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -20,7 +20,7 @@ class TokenAssembler(Assembler[Token]):
     @LoggingLevelRouter.monitor
     def execute(cls, blueprint: TokenBlueprint,) -> BuildResult[Token]:
         """
-        Build the appropriate Token.
+        Assemble the appropriate Token.
 
         Args:
             blueprint: TokenBlueprint

@@ -34,7 +34,7 @@ class InsertionException(TransactionException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        rslt_type: Optional[str
+        mthd_rslt: Optional[str
 
     Provides:
     
@@ -44,7 +44,7 @@ class InsertionException(TransactionException):
     OP = "Insertion"
     MSG = "Insertion aborted."
     ERR_CODE = "INSERTION_FAILURE"
-    RSLT_TYPE = "InsertionResult"
+    MTHD_RSLT = "InsertionResult"
     
     def __init__(
             self,
@@ -56,7 +56,7 @@ class InsertionException(TransactionException):
             cls_name: Optional[str] = None,
             ex: Optional[Exception] = None,
             err_code: Optional[str] = None,
-            # rslt_type: Optional[ResultCategory] = None,
+            # mthd_rslt: Optional[ResultCategory] = None,
     ):
         """
         Args:
@@ -69,9 +69,9 @@ class InsertionException(TransactionException):
             err_code: Optional[str]
         """
         msg = msg or self.MSG
-        rslt_type = self.RSLT_TYPE
+        mthd_rslt = self.MTHD_RSLT
         err_code = err_code or self.ERR_CODE
-        rslt_type = rslt_type or self.RSLT_TYPE
+        mthd_rslt = mthd_rslt or self.MTHD_RSLT
         super().__init__(
             op=op,
             ex=ex,
@@ -81,7 +81,7 @@ class InsertionException(TransactionException):
             err_code=err_code,
             cls_name=cls_name,
             cls_mthd=cls_mthd,
-            rslt_type=rslt_type,
+            mthd_rslt=mthd_rslt,
         )
     
 

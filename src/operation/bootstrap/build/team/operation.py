@@ -11,7 +11,7 @@ from __future__ import annotations
 
 
 from err import BootstrapTeamBuildException
-from model import Team, TeamBlueprint
+from model import Board, Team, TeamBlueprint
 from operation import BuildBootstrapper
 from result import BuildResult, ValidationResult
 from system import IdFactory, LoggingLevelRouter
@@ -142,7 +142,8 @@ class TeamBuildBootstrapper(BuildBootstrapper[Team]):
             )
         # Handle the case that, the board does not pass a validation check.
         board_validation_result = cls._verify_board(
-            blueprint=blueprint, toolkit=toolkit
+            blueprint=blueprint,
+            toolkit=toolkit,
         )
         if board_validation_result.is_failure:
             # Return the exception chain on failure.
@@ -200,7 +201,7 @@ class TeamBuildBootstrapper(BuildBootstrapper[Team]):
             cls,
             blueprint: TeamBlueprint,
             toolkit: TeamToolkit,
-    ) -> ValidationResult[int]:
+    ) -> ValidationResult[Board]:
         """
         Verify the id if it already exists or create a new one.
 
@@ -261,6 +262,6 @@ class TeamBuildBootstrapper(BuildBootstrapper[Team]):
                 )
             )
         # --- Return the work product. ---#
-        return ValidationResult.success(1)
+        return ValidationResult.success(blueprint.board)
 
         

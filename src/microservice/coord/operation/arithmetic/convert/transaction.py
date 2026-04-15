@@ -70,7 +70,7 @@ class ConvertVectorToCoordTransaction:
                     op=ConvertVectorException.OP,
                     msg=ConvertVectorException.MSG,
                     err_code=ConvertVectorException.ERR_CODE,
-                    rslt_type=ConvertVectorException.RSLT_TYPE,
+                    mthd_rslt=ConvertVectorException.MTHD_RSLT,
                     ex=vector_validation_result.exception,
                 )
             )
@@ -89,7 +89,7 @@ class ConvertVectorToCoordTransaction:
                     op=ConvertVectorException.OP,
                     msg=ConvertVectorException.MSG,
                     err_code=ConvertVectorException.ERR_CODE,
-                    rslt_type=ConvertVectorException.RSLT_TYPE,
+                    mthd_rslt=ConvertVectorException.MTHD_RSLT,
                     ex=conversion_result.exception,
                 )
             )

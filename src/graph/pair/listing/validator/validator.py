@@ -61,7 +61,7 @@ class PairListValidator(Validator[PairList]):
                     op=PairListValidationException.OP,
                     msg=PairListValidationException.MSG,
                     err_code=PairListValidationException.ERR_CODE,
-                    rslt_type=PairListValidationException.RSLT_TYPE,
+                    mthd_rslt=PairListValidationException.MTHD_RSLT,
                     ex=PairListNullException(
                         var="rank",
                         val="None",
@@ -79,7 +79,7 @@ class PairListValidator(Validator[PairList]):
                     op=PairListValidationException.OP,
                     msg=PairListValidationException.MSG,
                     err_code=PairListValidationException.ERR_CODE,
-                    rslt_type=PairListValidationException.RSLT_TYPE,
+                    mthd_rslt=PairListValidationException.MTHD_RSLT,
                     ex=TypeError(
                         f"{method} Expected PairList, got {type(candidate).__name__} instead."
                     )

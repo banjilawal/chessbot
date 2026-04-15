@@ -90,7 +90,7 @@ class CoordContextBuilder(Builder[CoordContext]):
                     op=CoordContextBuildException.OP,
                     msg=CoordContextBuildException.MSG,
                     err_code=CoordContextBuildException.ERR_CODE,
-                    rslt_type=CoordContextBuildException.RSLT_TYPE,
+                    mthd_rslt=CoordContextBuildException.MTHD_RSLT,
                     ex=ZeroCoordContextFlagsException(
                         msg=CoordContextBuildException.MSG,
                         err_code=CoordContextBuildException.ERR_CODE,
@@ -146,7 +146,7 @@ class CoordContextBuilder(Builder[CoordContext]):
                 op=CoordContextBuildException.OP,
                 msg=CoordContextBuildException.MSG,
                 err_code=CoordContextBuildException.ERR_CODE,
-                rslt_type=CoordContextBuildException.RSLT_TYPE,
+                mthd_rslt=CoordContextBuildException.MTHD_RSLT,
                 ex=CoordContextBuildRouteException(
                     msg=CoordContextBuildRouteException.MSG,
                     err_code=CoordContextBuildRouteException.ERR_CODE,
@@ -192,7 +192,7 @@ class CoordContextBuilder(Builder[CoordContext]):
                         op=CoordContextBuildException.OP,
                         msg=CoordContextBuildException.MSG,
                         err_code=CoordContextBuildException.ERR_CODE,
-                        rslt_type=CoordContextBuildException.RSLT_TYPE,
+                        mthd_rslt=CoordContextBuildException.MTHD_RSLT,
                         ex=validation_result.exception
                     )
                 )

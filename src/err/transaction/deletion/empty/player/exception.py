@@ -35,7 +35,7 @@ class PoppingEmptyPlayerStackException(PoppingEmptyStackException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        rslt_type: Optional[str
+        mthd_rslt: Optional[str
 
     Provides:
     

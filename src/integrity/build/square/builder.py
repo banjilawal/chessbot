@@ -140,7 +140,7 @@ class SquareBuilder(Builder[Square]):
                     op=SquareBuildException.OP,
                     msg=SquareBuildException.MSG,
                     err_code=SquareBuildException.ERR_CODE,
-                    rslt_type=SquareBuildException.RSLT_TYPE,
+                    mthd_rslt=SquareBuildException.MTHD_RSLT,
                     ex=identity_validation.exception,
                 )
             )
@@ -155,7 +155,7 @@ class SquareBuilder(Builder[Square]):
                     op=SquareBuildException.OP,
                     msg=SquareBuildException.MSG,
                     err_code=SquareBuildException.ERR_CODE,
-                    rslt_type=SquareBuildException.RSLT_TYPE,
+                    mthd_rslt=SquareBuildException.MTHD_RSLT,
                     ex=coord_validation.exception,
                 )
             )
@@ -170,7 +170,7 @@ class SquareBuilder(Builder[Square]):
                     op=SquareBuildException.OP,
                     msg=SquareBuildException.MSG,
                     err_code=SquareBuildException.ERR_CODE,
-                    rslt_type=SquareBuildException.RSLT_TYPE,
+                    mthd_rslt=SquareBuildException.MTHD_RSLT,
                     ex=board_validation.exception,
                 )
             )
@@ -190,7 +190,7 @@ class SquareBuilder(Builder[Square]):
                     op=SquareBuildException.OP,
                     msg=SquareBuildException.MSG,
                     err_code=SquareBuildException.ERR_CODE,
-                    rslt_type=SquareBuildException.RSLT_TYPE,
+                    mthd_rslt=SquareBuildException.MTHD_RSLT,
                     ex=collision_detection_result.exception,
                 )
             )
@@ -241,7 +241,7 @@ class SquareBuilder(Builder[Square]):
                     op=SquareBuildException.OP,
                     msg=SquareBuildException.MSG,
                     err_code=SquareBuildException.ERR_CODE,
-                    rslt_type=SquareBuildException.RSLT_TYPE,
+                    mthd_rslt=SquareBuildException.MTHD_RSLT,
                     ex=relation_analysis.exception,
                 )
             )
@@ -255,7 +255,7 @@ class SquareBuilder(Builder[Square]):
                     op=SquareBuildException.OP,
                     msg=SquareBuildException.MSG,
                     err_code=SquareBuildException.ERR_CODE,
-                    rslt_type=SquareBuildException.RSLT_TYPE,
+                    mthd_rslt=SquareBuildException.MTHD_RSLT,
                     ex=InvariantBreachException(
                         msg=InvariantBreachException.MSG,
                         err_code=InvariantBreachException.ERR_CODE,
@@ -274,7 +274,7 @@ class SquareBuilder(Builder[Square]):
                         op=SquareBuildException.OP,
                         msg=SquareBuildException.MSG,
                         err_code=SquareBuildException.ERR_CODE,
-                        rslt_type=SquareBuildException.RSLT_TYPE,
+                        mthd_rslt=SquareBuildException.MTHD_RSLT,
                         ex=insertion_result.exception,
                     )
                 )

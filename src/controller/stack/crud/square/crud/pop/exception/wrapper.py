@@ -34,7 +34,7 @@ class SquareStackPopException(DeletionException):
         msg: Optional[str]
         mthd: Optional[str]
         err_code: Optional[str]
-        rslt_type: Optional[ResultCategory]
+        mthd_rslt: Optional[ResultCategory]
 
     Provides:
     
@@ -42,7 +42,7 @@ class SquareStackPopException(DeletionException):
         DeletionOperation
     """
     OP = "Deletion"
-    RSLT_TYPE = "DeletionResult"
+    MTHD_RSLT = "DeletionResult"
     ERR_CODE = "SQUARE_STACK_POP_FAILURE"
     MSG = "SquareStackService pop failed."
     
@@ -52,7 +52,7 @@ class SquareStackPopException(DeletionException):
             mthd: Optional[str] = None,
             ex: Optional[Exception] = None,
             err_code: Optional[str] = None,
-            rslt_type: Optional[ResultCategory] = None,
+            mthd_rslt: Optional[ResultCategory] = None,
     ):
         """
         Args:
@@ -60,12 +60,12 @@ class SquareStackPopException(DeletionException):
             msg: Optional[str]
             mthd: Optional[str]
             err_code: Optional[str]
-            rslt_type: Optional[ResultCategory]
+            mthd_rslt: Optional[ResultCategory]
         """
         op = op or self.OP
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        rslt_type = rslt_type or self.RSLT_TYPE
+        mthd_rslt = mthd_rslt or self.MTHD_RSLT
         
         super().__init__(
             ex=ex,
@@ -73,5 +73,5 @@ class SquareStackPopException(DeletionException):
             msg=msg,
             mthd=mthd,
             err_code=err_code,
-            rslt_type=rslt_type,
+            mthd_rslt=mthd_rslt,
         )

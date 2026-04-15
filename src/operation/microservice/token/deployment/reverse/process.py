@@ -92,7 +92,7 @@ class ReverseTokenDeployment:
                     op=TokenDeploymentException.OP,
                     msg=TokenDeploymentException.MSG,
                     err_code=TokenDeploymentException.ERR_CODE,
-                    rslt_type=TokenDeploymentException.RSLT_TYPE,
+                    mthd_rslt=TokenDeploymentException.MTHD_RSLT,
                     ex=token_validation.exception,
                 )
             )
@@ -106,7 +106,7 @@ class ReverseTokenDeployment:
                     op=TokenDeploymentException.OP,
                     msg=TokenDeploymentException.MSG,
                     err_code=TokenDeploymentException.ERR_CODE,
-                    rslt_type=TokenDeploymentException.RSLT_TYPE,
+                    mthd_rslt=TokenDeploymentException.MTHD_RSLT,
                     ex=TokenAlreadyDeployedException(
                         msg=TokenDeploymentException.MSG,
                         err_code=TokenDeploymentException.ERR_CODE,
@@ -124,7 +124,7 @@ class ReverseTokenDeployment:
                     op=TokenDeploymentException.OP,
                     msg=TokenDeploymentException.MSG,
                     err_code=TokenDeploymentException.ERR_CODE,
-                    rslt_type=TokenDeploymentException.RSLT_TYPE,
+                    mthd_rslt=TokenDeploymentException.MTHD_RSLT,
                     ex=opening_square_search_result.exception,
                 )
             )
@@ -148,7 +148,7 @@ class ReverseTokenDeployment:
                     op=TokenDeploymentException.OP,
                     msg=TokenDeploymentException.MSG,
                     err_code=TokenDeploymentException.ERR_CODE,
-                    rslt_type=TokenDeploymentException.RSLT_TYPE,
+                    mthd_rslt=TokenDeploymentException.MTHD_RSLT,
                     ex=update_result.exception,
                 )
             )
@@ -192,7 +192,7 @@ class ReverseTokenDeployment:
                     op=TokenDeploymentException.OP,
                     msg=TokenDeploymentException.MSG,
                     err_code=TokenDeploymentException.ERR_CODE,
-                    rslt_type=TokenDeploymentException.RSLT_TYPE,
+                    mthd_rslt=TokenDeploymentException.MTHD_RSLT,
                     ex=opening_square_search_result.exception,
                 )
             )
@@ -205,7 +205,7 @@ class ReverseTokenDeployment:
                     op=TokenDeploymentException.OP,
                     msg=TokenDeploymentException.MSG,
                     err_code=TokenDeploymentException.ERR_CODE,
-                    rslt_type=TokenDeploymentException.RSLT_TYPE,
+                    mthd_rslt=TokenDeploymentException.MTHD_RSLT,
                     ex=SquareNotFoundException(
                         var="opening_square_name",
                         val=token.opening_square_name,
@@ -224,7 +224,7 @@ class ReverseTokenDeployment:
                     op=TokenDeploymentException.OP,
                     msg=TokenDeploymentException.MSG,
                     err_code=TokenDeploymentException.ERR_CODE,
-                    rslt_type=TokenDeploymentException.RSLT_TYPE,
+                    mthd_rslt=TokenDeploymentException.MTHD_RSLT,
                     ex=SquareOccupiedException(
                         var="square_occupant",
                         msg=f"square:{square.name} already occupied by {square.occupant.designation}",
@@ -283,7 +283,7 @@ class ReverseTokenDeployment:
                     op=TokenDeploymentException.OP,
                     msg=TokenDeploymentException.MSG,
                     err_code=TokenDeploymentException.ERR_CODE,
-                    rslt_type=TokenDeploymentException.RSLT_TYPE,
+                    mthd_rslt=TokenDeploymentException.MTHD_RSLT,
                     ex=visitation_result.exception,
                 )
             )
@@ -297,7 +297,7 @@ class ReverseTokenDeployment:
                     op=TokenDeploymentException.OP,
                     msg=TokenDeploymentException.MSG,
                     err_code=TokenDeploymentException.ERR_CODE,
-                    rslt_type=TokenDeploymentException.RSLT_TYPE,
+                    mthd_rslt=TokenDeploymentException.MTHD_RSLT,
                     ex=InconsistentTokenSquareException(
                         msg=InconsistentTokenSquareException.MSG,
                         err_code=InconsistentTokenSquareException.ERR_CODE,
@@ -314,7 +314,7 @@ class ReverseTokenDeployment:
                     op=TokenDeploymentException.OP,
                     msg=TokenDeploymentException.MSG,
                     err_code=TokenDeploymentException.ERR_CODE,
-                    rslt_type=TokenDeploymentException.RSLT_TYPE,
+                    mthd_rslt=TokenDeploymentException.MTHD_RSLT,
                     ex=InconsistentTokenCoordException(
                         msg=InconsistentTokenCoordException.MSG,
                         err_code=InconsistentTokenCoordException.ERR_CODE,
