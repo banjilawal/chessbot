@@ -12,11 +12,13 @@ from __future__ import annotations
 from copy import deepcopy
 from typing import List, Optional
 
+from analysis import BoardBinderRelationAnalyst, BoardTeamRelationAnalyst
 from integrity import SchemaValidator, TeamValidator
 from integrity.build.binder import TeamBinderBuilder
-from microservice import Microservice
-from model import Schema, Team, TeamBinder, TeamBinderValidator
-from result import SearchResult, UpdateResult
+from microservice import BoardService, Microservice, TeamService
+from model import Board, Schema, Team, TeamBinder, TeamBinderValidator
+from report import RelationReport
+from result import AnalysisResult, SearchResult, UpdateResult
 from system import IdFactory, LoggingLevelRouter
 
 
@@ -58,6 +60,7 @@ class TeamBinderService(Microservice[TeamBinder]):
     SERVICE_NAME = "TeamBinderMicroservice"
     _builder: TeamBinderBuilder
     _validator: TeamBinderValidator
+    _board_relation_analyst: BoardBinderRelationAnalyst
     
     def __init__(
             self,
@@ -65,15 +68,12 @@ class TeamBinderService(Microservice[TeamBinder]):
             builder: TeamBinderBuilder | None = None,
             validator: TeamBinderValidator | None = None,
             id: int = IdFactory.next_id(class_name="TeamBinderService"),
+            board_relation_analyst: BoardTeamRelationAnalyst | None = None,
     ):
         super().__init__(id=id, name=name)
-        if builder is None:
-            builder = TeamBinderBuilder()
-        
-        if validator is None:
-            validator = TeamBinderValidator()
-        self._builder = builder
-        self._validator = validator
+        self._builder = builder or TeamBinderBuilder()
+        self._validator = validator or TeamBinderValidator()
+        self._board_relation_analyst = board_relation_analyst or BoardBinderRelationAnalyst()
     
     @property
     def builder(self) -> TeamBinderBuilder:
@@ -88,6 +88,25 @@ class TeamBinderService(Microservice[TeamBinder]):
             if isinstance(other, TeamBinderService):
                 return True
         return False
+    
+    @LoggingLevelRouter.monitor
+    def analyze_board_relation(
+            self,
+            board: Board,
+            binder: TeamBinder,
+            board_service: BoardService | None = None,
+    ) -> AnalysisResult[RelationReport[Board, TeamBinder]]:
+        method = f"{self.__class__.__name__}.analyze_board_relation"
+        
+        if board_service is None:
+            board_service = BoardService()
+        
+        return self._board_relation_analyst.analyze(
+            candidate_primary=board,
+            candidate_binder=binder,
+            team_binder_validator=self._validator,
+            board_validator=board_service.validator,
+        )
     
     @LoggingLevelRouter.monitor
     def slot_occupant(

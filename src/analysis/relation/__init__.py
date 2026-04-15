@@ -11,7 +11,9 @@ version: 1.0.1
 # =========== ANALYSIS.RELATION PACKAGE ===========#
 
 # Packages
+from .binder import *
 from .team import *
+
 
 
 # Modules

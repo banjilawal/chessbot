@@ -95,9 +95,9 @@ class TeamAssemblyBootstrapper(AssemblyBootstrapper[Team]):
         method = f"{cls.__name__}._run_validations"
         
         # Handle the case that, the id is not certified as safe.
-        id_validation_result = cls._verify_id(
-            blueprint=blueprint,
-            toolkit=toolkit
+        id_validation_result = toolkit.identity_service.verify_bootstrap_id(
+            id=blueprint.id,
+            class_name="Team",
         )
         if id_validation_result.is_failure:
             # Return the exception chain on failure.
@@ -164,36 +164,6 @@ class TeamAssemblyBootstrapper(AssemblyBootstrapper[Team]):
                 board=blueprint.board,
             )
         )
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def _verify_id(
-            cls,
-            blueprint: TeamBlueprint,
-            toolkit: TeamToolkit
-    ) -> ValidationResult[int]:
-        """
-        """
-        method = f"{cls.__name__}._verify_id"
-        
-        if blueprint.id is None:
-            return AssemblyResult.success(IdFactory.next_id(class_name="Team"))
-        
-        if blueprint.id is not None:
-            id_validation = toolkit.identity_service.validate_id(blueprint.id)
-            if id_validation.is_failure:
-                # Return the exception chain on failure.
-                return AssemblyResult.failure(
-                    BootstrapTeamAssemblyException(
-                        cls_mthd=method,
-                        cls_name=cls.__name__,
-                        msg=BootstrapTeamAssemblyException.MSG,
-                        err_code=BootstrapTeamAssemblyException.ERR_CODE,
-                        ex=id_validation.exception,
-                    )
-                )
-            # --- Return the work product. ---#
-            return ValidationResult.success(blueprint.id)
     
     @classmethod
     @LoggingLevelRouter.monitor

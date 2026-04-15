@@ -13,7 +13,6 @@ from typing import cast
 
 from analysis import RelationAnalyst
 from err import BoardBinderAnalysisException
-from integrity import BoardService
 from model import Board, TeamBinder, TeamBinderValidator
 from report import RelationReport
 from result import AnalysisResult
