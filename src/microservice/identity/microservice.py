@@ -14,7 +14,7 @@ from typing import Any, Dict
 from err import IdentityValidationException
 from integrity import NameValidator, NumberValidator
 from result import ValidationResult
-from system import IdFactory
+from system import IdFactory, LoggingLevelRouter
 
 
 class IdentityService:
@@ -59,17 +59,62 @@ class IdentityService:
         """
         self._number_validator=number_validator
         self._name_validator=name_validator
-       
-    @classmethod
-    def next_id(cls, class_name: str) -> int:
+    
+    @LoggingLevelRouter.monitor
+    def next_id(self, class_name: str) -> int:
         return IdFactory.next_id(class_name=class_name)
-        
+      
+    @LoggingLevelRouter.monitor
     def validate_id(self, candidate: Any) -> ValidationResult[int]:
         return self._number_validator.validate(candidate)
     
+    @LoggingLevelRouter.monitor
     def validate_name(self, candidate: Any) -> ValidationResult[str]:
         return self._name_validator.validate(candidate)
     
+    @LoggingLevelRouter.monitor
+    def _verify_bootstrap_id( self, id: Any, class_name: str,) -> ValidationResult[int]:
+        """
+        """
+        method = f"{self.__name__}._verify_bootstrap_id"
+        
+        # Handle the case that, the class_name is flagged unsafe.
+        class_name_validation_result = self._name_validator.validate(
+            candidate=class_name
+        )
+        if not class_name_validation_result.is_failure:
+            # Return the exception chain on failure.
+            ValidationResult.failure(
+                IdentityValidationException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=IdentityValidationException.MSG,
+                    err_code=IdentityValidationException.ERR_CODE,
+                    ex=class_name_validation_result.exception
+                )
+            )
+        if id is not None:
+            # Handle the case that, the id is flagged unsafe.
+            id_validation_result = self._number_validator.validate(id)
+            if not id_validation_result.is_failure:
+                # Return the exception chain on failure.
+                ValidationResult.failure(
+                    IdentityValidationException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=IdentityValidationException.MSG,
+                        err_code=IdentityValidationException.ERR_CODE,
+                        ex=id_validation_result.exception
+                    )
+                )
+            # --- Otherwise, directly forward the work product. ---#
+            return id_validation_result
+        
+        # --- If the id was null create a new id then, forward as the work product. ---#
+        return ValidationResult.success(IdFactory.next_id(class_name=class_name))
+
+        
+    @LoggingLevelRouter.monitor
     def validate_identity(
             self,
             id_candidate: Any,

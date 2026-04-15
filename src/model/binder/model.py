@@ -55,7 +55,7 @@ class TeamBinder:
     def table(self) -> Dict[Schema, Team]:
         return self._table
     
-    @@property
+    @property
     def team_service(self) -> TeamService:
         return self._team_service
         

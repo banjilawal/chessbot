@@ -10,6 +10,7 @@ version: 1.0.1
 # =========== MODEL.BLUEPRINT PACKAGE ===========#
 
 # Packages
+from .binder import *
 from .context import *
 from .team import *
 from .token import *

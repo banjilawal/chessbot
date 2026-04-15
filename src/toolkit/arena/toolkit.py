@@ -31,6 +31,7 @@ class ArenaToolkit(Toolkit[Arena]):
     Provides:
 
     Super Class:
+        Toolkit
     """
     _board_service: BoardService
     _identity_service: IdentityService

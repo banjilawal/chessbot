@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== MODEL.BINDER PACKAGE ===========#
 
 # Packages
-from .builder import *
 from .validator import *
 from .exception import *
 

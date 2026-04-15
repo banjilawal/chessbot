@@ -9,26 +9,29 @@ version: 1.0.0
 
 from __future__ import annotations
 
+from microservice import IdentityService, TeamService
+from model import Board, TeamBinderBlueprint
 from model.catalog import SchemaService
+from operation import BuildBootstrapper
+from result import ValidationResult
 from system import BuildResult, Builder, LoggingLevelRouter
 from model.team import (
     BlackTeamHasWrongSchemaException, Team, TeamBinder, TeamBinderBuildException,
     TeamSchemaCollisionException, TeamValidator, WhiteTeamHasWrongSchemaException
 )
+from toolkit import TeamBinderToolkit
 
 
-class TeamTableBuilder(Builder[TeamBinder]):
+class TeamBinderBuildBootstrapper(BuildBootstrapper[TeamBinder]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def build(
+    def execute(
             cls,
-            white_team: Team,
-            black_team: Team,
-            team_validator: TeamValidator = TeamValidator(),
-            schema_service: SchemaService = SchemaService(),
-    ) -> BuildResult[TeamBinder]:
-        method = "TeamBinderBuilder.build"
+            blueprint: TeamBinderBlueprint,
+            toolkit: TeamBinderToolkit | None = None,
+    ) -> ValidationResult[TeamBinder]:
+        method = f"{cls.__name__}.execute"
         
         # Handle the case that, the white_team does not pass a validation check.
         white_team_validation_result = team_validator.validate(white_team)
