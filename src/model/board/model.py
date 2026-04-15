@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from microservice import TeamBinder
+from model import TeamBinder
 from model.arena import Arena
 from model.board import BoardState
 from model.square import SquareDatabase
@@ -62,7 +62,7 @@ class Board:
         
         self._id = id
         self._arena = arena
-        team_binder = TeamBinder()
+        self._team_binder = TeamBinder()
         self._squares = SquareDatabase()
         self._hostage_database = HostageDatabase()
         self._state = BoardState.IS_EMPTY

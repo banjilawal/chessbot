@@ -17,6 +17,7 @@ from .math import *
 from .microservice import *
 from .stack import *
 from .token import *
+from .validation import *
 
 # Modules
 from .operation import Operation

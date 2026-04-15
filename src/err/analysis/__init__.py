@@ -10,5 +10,7 @@ version: 1.0.1
 # ============ ERR.ANALYSIS PACKAGE ===========#
 
 # Packages
+from .collision import *
+from .relation import *
 
 # Modules

@@ -9,6 +9,12 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from integrity import BoardBuilder, BoardValidator
+from logic.board import BoardRelationAnalyzer
+from microservice import Microservice, TeamBinderService
+from model import Board
+
+
 class BoardService(Microservice[Board]):
     """
     Role:Microservice, Lifecycle Management, Encapsulation, API layer.
@@ -29,14 +35,16 @@ class BoardService(Microservice[Board]):
         *   See Microservice for inherited attributes.
     """
     SERVICE_NAME = "BoardService"
+    _team_binder_service: TeamBinderService
     _relation_analyzer: BoardRelationAnalyzer
     
     def __init__(
             self,
-            name: str = SERVICE_NAME,
-            builder: BoardBuilder = BoardBuilder(),
-            validator: BoardValidator = BoardValidator(),
-            id: int = IdFactory.next_id(class_name="BoardService"),
+            id: int | None = None,
+            name: str | None = None,
+            builder: BoardBuilder | None = None,
+            validator: BoardValidator | None = None,
+            team_binder_service: TeamBinderService | None = None,
             relation_analyzer: BoardRelationAnalyzer = BoardRelationAnalyzer()
     ):
         """
@@ -47,24 +55,27 @@ class BoardService(Microservice[Board]):
                 validator: BoardValidator
                 square_relation_analyzer: SquareRelationAnalyzer
         """
-        super().__init__(id=id, name=name, builder=builder, validator=validator)
+        super().__init__(id=id, name=name)
+        self._builder = builder or BoardBuilder()
+        self._validator = validator or BoardValidator()
+        self._team_binder_service = team_binder_service or TeamBinderService()
         self._relation_analyzer = relation_analyzer
     
     @property
     def builder(self) -> BoardBuilder:
-        return cast(BoardBuilder, self.builder)
+        return self._builder
     
     @property
     def validator(self) -> BoardValidator:
-        return cast(BoardValidator, self.validator)
+        return self._validator
     
     @property
     def relation_analyzer(self) -> BoardRelationAnalyzer:
         return  self._relation_analyzer
     
-    @LoggingLevelRouter.monitor
-    def analyze_relationship(self, context: BoardRelationAnalysisContext) -> RelationReport:
-        return self._analyzer.analyze_relationship(context=context)
+    @property
+    def team_binder_service(self) -> TeamBinderService:
+        return self._team_binder_service
     
     @LoggingLevelRouter.monitor
     def form_team_on_board(

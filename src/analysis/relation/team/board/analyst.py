@@ -9,13 +9,16 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from typing import cast
+
 from analysis import RelationAnalyst
-from analysis.relation.team.board.exception import BoardTeamAnalystException
-from integrity import BoardValidator
+from analysis.relation.team.board.exception import BoardTeamAnalysisException
+from integrity import BoardService
 from microservice import TeamService
 from model import Board, Team
 from report import RelationReport
 from result import AnalysisResult
+from result.category import ResultCategory
 from system import LoggingLevelRouter
 
 
@@ -47,7 +50,7 @@ class BoardTeamRelationAnalyst(RelationAnalyst[Board, Team]):
             cls,
             candidate_primary: Board,
             candidate_satellite: Team,
-            board_validator: BoardValidator | None = None,
+            board_validator: BoardService | None = None,
             team_service: TeamService | None = None,
     ) -> AnalysisResult[RelationReport[Board, Team]]:
         """
@@ -68,53 +71,74 @@ class BoardTeamRelationAnalyst(RelationAnalyst[Board, Team]):
         Returns:
             RelationReport[Board, Team]
         Raises:
-            BoardTeamAnalystException
+            BoardTeamAnalysisException
         """
         method = f"{cls.__name__}.analyze"
         
         if board_validator is None:
-            board_validator = BoardValidator()
+            board_validator = BoardService()
         
         if team_service is None:
             team_service = TeamService()
         
-        # Handle the case that, the board is not secure.
-        board_validation = board_validator.validate(candidate_primary)
-        if board_validation.is_failure:
+        # Handle the case that, the board is not certified as safe.
+        board_validation_result = board_validator.validate(candidate_primary)
+        if board_validation_result.is_failure:
             # Return the exception chain on failure.
             return AnalysisResult.failure(
-                BoardTeamAnalystException(
-                    msg=BoardTeamAnalystException.MSG,
-                    err_code=BoardTeamAnalystException.ERR_CODE,
-                    ex=board_validation.exception,
+                BoardTeamAnalysisException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=BoardTeamAnalysisException.MSG,
+                    err_code=BoardTeamAnalysisException.ERR_CODE,
+                    rslt_type=ResultCategory.ANALYSIS_RESULT,
+                    ex=board_validation_result.exception,
                 )
             )
         # Just incase things aren't Liskovian on the candidate_primary, cast the validation payload instead,
-        board = cast(Board, board_validation.payload)
+        board = cast(Board, board_validation_result.payload)
         
-        # Handle the case that, the team is unsecure.
-        team_validation = team_service.validator.validate(candidate_satellite)
-        if team_validation.is_failure:
+        # Handle the case that, the team_binder has a board inconsistency.
+        if board.team_binder.board != board:
+            if board_validation_result.is_failure:
+                # Return the exception chain on failure.
+                return AnalysisResult.failure(
+                    BoardTeamAnalysisException(
+                        cls_mthd=method,
+                        cls_name=cls.__name__,
+                        msg=BoardTeamAnalysisException.MSG,
+                        err_code=BoardTeamAnalysisException.ERR_CODE,
+                        rslt_type=ResultCategory.ANALYSIS_RESULT,
+                        ex=board_validation_result.exception,
+                    )
+                )
+        # Handle the case that, the team is not certified as safe.
+        team_validation_result = team_service.validator.validate(candidate_satellite)
+        if team_validation_result.is_failure:
             # Return the exception chain on failure.
             return AnalysisResult.failure(
-                BoardTeamAnalystException(
-                    msg=BoardTeamAnalystException.MSG,
-                    err_code=BoardTeamAnalystException.ERR_CODE,
-                    ex=team_validation.exception,
+                BoardTeamAnalysisException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=BoardTeamAnalysisException.MSG,
+                    err_code=BoardTeamAnalysisException.ERR_CODE,
+                    rslt_type=ResultCategory.ANALYSIS_RESULT,
+                    ex=team_validation_result.exception,
                 )
             )
-        team = cast(Team, team_validation.payload)
+        team = cast(Team, team_validation_result.payload)
         
         # Handle the case that, the team belongs to a different board.
-        if board != team.board and not team in board.team_hash.table:
-            return RelationReport.no_relation()
+        if board != team.board:
+            return AnalysisResult.success(RelationReport.no_relation())
         
-        if
+        # Handle the case that, the team has not registered with the board.
+        if team.schema not in board.team_binder.schemas:
+            return AnalysisResult.success(RelationReport.registration_missing(team))
         
-        if team in board.team_hash.table and team.board != board:
-            return RelationReport.stale_link(primary=board)
+        # Handle the case that, the board has a stale link to the team.
+        if team in board.team_binder.teams and team.board != board:
+            return AnalysisResult.success(RelationReport.stale_link(board))
         
-        if not team in board.team_hash.table and team.board == board:
-            return RelationReport.registration_missing(satellite=team)
-        
-        return RelationReport.bidirectional(primary=board, satellite=team)
+        # Last case is the
+        return AnalysisResult.success(RelationReport.bidirectional(primary=board, satellite=team))

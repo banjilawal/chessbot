@@ -10,7 +10,8 @@ version: 1.0.1
 # =========== ANALYSIS.RELATION.TEAM PACKAGE ===========#
 
 # Packages
-from .player import *
+from .binder import *
 from .board import *
+from .player import *
 
 # Modules

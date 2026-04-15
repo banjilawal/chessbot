@@ -25,3 +25,4 @@ from .validation import*
 
 # Modules
 from .result import Result
+from .category import ResultCategory

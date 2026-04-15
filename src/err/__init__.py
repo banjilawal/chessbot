@@ -10,8 +10,7 @@ version: 1.0.0
 #=========== ERR. PACKAGE ===========#
 
 # Packages
-from .build import *
-from err.analysis.collision import *
+from .analysis import *
 from .math import *
 from .model import *
 from .null import *
