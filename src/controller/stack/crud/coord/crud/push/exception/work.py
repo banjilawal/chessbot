@@ -57,7 +57,7 @@ class CoordStackPushException(InsertionException):
         mthd: Optional[str]
         title: Optional[str]
         err_code: Optional[str]
-        rslt_type: Optional[resultCategory]
+        rslt_type: Optional[ResultCategory]
         
     Provides:
 
@@ -70,13 +70,13 @@ class CoordStackPushException(InsertionException):
     MSG = "Insertion method failed."
     
     def __init__(
-            self, = None,
+            self,
             msg: Optional[str] = None,
             mthd: Optional[str] = None,
             title: Optional[str] = None,
             ex: Optional[Exception] = None,
             err_code: Optional[str] = None,
-            rslt_type: Optional[resultCategory] = None,
+            rslt_type: Optional[ResultCategory] = None,
     ):
         """
         Args:
@@ -85,7 +85,7 @@ class CoordStackPushException(InsertionException):
             mthd: Optional[str]
             title: Optional[str]
             err_code: Optional[str]
-            rslt_type: Optional[resultCategory]
+            rslt_type: Optional[ResultCategory]
         """
         op = op or self.OP
         msg = msg or self.MSG

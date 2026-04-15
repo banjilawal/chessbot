@@ -36,7 +36,7 @@ class CollectionOperationException(OperationException):
         title: Optional[str]
         ex: Optional[Exception]
         err_code: Optional[str]
-        rslt_type: Optional[resultCategory]
+        rslt_type: Optional[ResultCategory]
 
     Provides:
 
@@ -47,13 +47,13 @@ class CollectionOperationException(OperationException):
     ERR_CODE = "COLLECT_OPERATION_FAILURE"
     
     def __init__(
-            self, = None,
+            self,
             msg: Optional[str] = None,
             mthd: Optional[str] = None,
             title: Optional[str] = None,
             ex: Optional[Exception] = None,
             err_code: Optional[str] = None,
-            rslt_type: Optional[resultCategory] = None,
+            rslt_type: Optional[ResultCategory] = None,
     ):
         """
         Args:
@@ -62,7 +62,7 @@ class CollectionOperationException(OperationException):
             title: Optional[str]
             ex: Optional[Exception]
             err_code: Optional[str]
-            rslt_type: Optional[resultCategory]
+            rslt_type: Optional[ResultCategory]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE

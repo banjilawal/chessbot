@@ -61,7 +61,7 @@ class SpanComputationException(ComputationException):
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
             mthd: Optional[str] = None, = None,
-            rslt_type: Optional[resultCategory] = None,
+            rslt_type: Optional[ResultCategory] = None,
     ):
         """
         Args:
@@ -69,7 +69,7 @@ class SpanComputationException(ComputationException):
             mthd: Optional[str]
             ex: Optional[Exception]
             err_code: Optional[str]
-            rslt_type: Optional[resultCategory]
+            rslt_type: Optional[ResultCategory]
         """
         op = op or self.OP
         msg = msg or self.MSG

@@ -47,7 +47,7 @@ class ComputationTransactionException(TransactionException):
     RSLT_TYPE = "ComputationResult"
     
     def __init__(
-            self, = None,
+            self,
             msg: Optional[str] = None,
             var: Optional[str] = None,
             val: Optional[Any] = None,
@@ -55,7 +55,7 @@ class ComputationTransactionException(TransactionException):
             cls_name: Optional[str] = None,
             ex: Optional[Exception] = None,
             err_code: Optional[str] = None,
-            rslt_type: Optional[resultCategory] = None,
+            rslt_type: Optional[ResultCategory] = None,
     ):
         """
         Args:

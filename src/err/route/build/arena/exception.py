@@ -34,7 +34,7 @@ class ArenaBuildRouteException(BuildRouteException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        rslt_type: Optional[resultCategory]
+        rslt_type: Optional[ResultCategory]
             
     Provides:
 

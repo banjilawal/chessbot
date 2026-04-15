@@ -1,7 +1,7 @@
-# src/err/collision/token/exception.py
+# src/err/analysis/collision/token/exception.py
 
 """
-Module: err.collision.token.exception
+Module: err.analysis.collision.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -17,6 +17,9 @@ __all__ = [
     # ======================# TOKEN_COLLISION_FAILURE #======================#
     "TokenCollisionException",
 ]
+
+from result.category import ResultCategory
+
 
 # ======================# TOKEN_COLLISION_FAILURE #======================#
 class TokenCollisionException(CollisionException):
@@ -35,7 +38,7 @@ class TokenCollisionException(CollisionException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        rslt_type: Optional[resultCategory]
+        rslt_type: Optional[ResultCategory]
             
     Provides:
 
@@ -46,7 +49,7 @@ class TokenCollisionException(CollisionException):
     ERR_CODE = "TOKEN_COLLISION_FAILURE"
     
     def __init__(
-            self, = None,
+            self,
             msg: Optional[str] = None,
             var: Optional[str] = None,
             val: Optional[Any] = None,
@@ -54,7 +57,7 @@ class TokenCollisionException(CollisionException):
             cls_name: Optional[str] = None,
             cls_mthd: Optional[str] = None,
             err_code: Optional[str] = None,
-            rslt_type: Optional[resultCategory] = None,
+            rslt_type: Optional[ResultCategory] = None,
     ):
         """
         Args:

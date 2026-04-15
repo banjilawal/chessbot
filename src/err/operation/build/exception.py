@@ -34,7 +34,7 @@ class BuildException(Operationexception):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        rslt_type: Optional[resultCategory]
+        rslt_type: Optional[ResultCategory]
             
     Provides:
 
@@ -48,7 +48,7 @@ class BuildException(Operationexception):
     _rslt_type = Optional[str]
     
     def __init__(
-            self, = None,
+            self,
             msg: Optional[str] = None,
             var: Optional[str] = None,
             val: Optional[Any] = None,
@@ -56,7 +56,7 @@ class BuildException(Operationexception):
             cls_name: Optional[str] = None,
             ex: Optional[Exception] = None,
             err_code: Optional[str] = None,
-            rslt_type: Optional[resultCategory] = None,
+            rslt_type: Optional[ResultCategory] = None,
     ):
         """
         Args:

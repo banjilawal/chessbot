@@ -1,7 +1,7 @@
-# src/err/collision/edge/exception.py
+# src/err/analysis/collision/edge/exception.py
 
 """
-Module: err.collision.edge.exception
+Module: err.analysis.collision.edge.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -35,7 +35,7 @@ class EdgeCollisionException(CollisionException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        rslt_type: Optional[resultCategory]
+        rslt_type: Optional[ResultCategory]
             
     Provides:
 

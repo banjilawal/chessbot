@@ -1,7 +1,7 @@
-# src/err/collision/team/exception.py
+# src/err/analysis/collision/team/exception.py
 
 """
-Module: err.collision.team.exception
+Module: err.analysis.collision.team.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

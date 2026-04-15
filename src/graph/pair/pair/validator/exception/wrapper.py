@@ -54,12 +54,12 @@ class PairValidationException(ValidationException):
     MSG = "Failure in PairValidator method."
     
     def __init__(
-            self, = None,
+            self,
             msg: Optional[str] = None,
             mthd: Optional[str] = None,
             err_code: Optional[str] = None,
             ex: Optional[Exception] = None,
-            rslt_type: Optional[resultCategory] = None,
+            rslt_type: Optional[ResultCategory] = None,
     ):
         """
         Args:
@@ -67,7 +67,7 @@ class PairValidationException(ValidationException):
             msg: Optional[str]
             mthd: Optional[str]
             err_code: Optional[str]
-            rslt_type: Optional[resultCategory]
+            rslt_type: Optional[ResultCategory]
         """
         op = op or self.OP
         msg = msg or self.MSG

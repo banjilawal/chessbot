@@ -1,7 +1,7 @@
-# src/err/collision/name/exception.py
+# src/err/analysis/collision/name/exception.py
 
 """
-Module: err.collision.name.exception
+Module: err.analysis.collision.name.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -34,7 +34,7 @@ class NameCollisionException(CollisionException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        rslt_type: Optional[resultCategory]
+        rslt_type: Optional[ResultCategory]
             
     Provides:
 

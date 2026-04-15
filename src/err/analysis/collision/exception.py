@@ -1,11 +1,12 @@
-# src/err/collision/__init__.py
+# src/err/analysis/collision/exception.py
 
 """
-Module: err.collision.__init__
+Module: err.analysis.collision.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
@@ -32,7 +33,7 @@ class CollisionException(ChessException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        rslt_type: Optional[resultCategory]
+        rslt_type: Optional[ResultCategory]
             
     Provides:
 

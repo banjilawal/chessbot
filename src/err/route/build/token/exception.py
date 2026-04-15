@@ -35,7 +35,7 @@ class TokenBuildRouteException(BuildRouteException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        rslt_type: Optional[resultCategory]
+        rslt_type: Optional[ResultCategory]
             
     Provides:
 
@@ -46,7 +46,7 @@ class TokenBuildRouteException(BuildRouteException):
     ERR_CODE = "TOKEN_BUILD_ROUTE"
     
     def __init__(
-            self, = None,
+            self,
             msg: Optional[str] = None,
             var: Optional[str] = None,
             val: Optional[Any] = None,
@@ -54,7 +54,7 @@ class TokenBuildRouteException(BuildRouteException):
             cls_name: Optional[str] = None,
             cls_mthd: Optional[str] = None,
             err_code: Optional[str] = None,
-            rslt_type: Optional[resultCategory] = None,
+            rslt_type: Optional[ResultCategory] = None,
     ):
         """
         Args:

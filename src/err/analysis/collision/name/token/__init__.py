@@ -1,13 +1,13 @@
-## src/err/collision/name/token/__init__.py
+## src/err/analysis/collision/name/token/__init__.py
 
 """
-Module: err.collision.name.token.__init__
+Module: err.analysis.collision.name.token.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.COLLISION.NAME.TOKEN PACKAGE ===========#
+# ============ ERR.ANALYSIS.COLLISION.NAME.TOKEN PACKAGE ===========#
 
 # Packages
 

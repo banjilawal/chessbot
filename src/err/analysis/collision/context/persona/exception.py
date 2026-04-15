@@ -1,7 +1,7 @@
-# src/err/collision/context/persona/exception.py
+# src/err/analysis/collision/context/persona/exception.py
 
 """
-Module: err.collision.context.persona.exception
+Module: err.analysis.collision.context.persona.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

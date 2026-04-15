@@ -34,7 +34,7 @@ class ValidationPipelineException(PipelineException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        rslt_type: Optional[resultCategory]
+        rslt_type: Optional[ResultCategory]
             
     Provides:
 
@@ -55,7 +55,7 @@ class ValidationPipelineException(PipelineException):
             cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
             err_code: Optional[str] | None = None,
-            rslt_type: Optional[resultCategory] | None = None,
+            rslt_type: Optional[ResultCategory] | None = None,
     ):
         """
         Args:
@@ -66,7 +66,7 @@ class ValidationPipelineException(PipelineException):
             cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
-            rslt_type: Optional[resultCategory]
+            rslt_type: Optional[ResultCategory]
         """
         op = op or self.OP
         msg = msg or self.MSG

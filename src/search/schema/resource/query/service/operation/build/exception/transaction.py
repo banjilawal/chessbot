@@ -36,7 +36,7 @@ class SchemaQueryBuildException(BuildException):
         title: Optional[str]
         ex: Optional[Exception]
         err_code: Optional[str]
-        rslt_type: Optional[resultCategory]
+        rslt_type: Optional[ResultCategory]
 
     Provides:
 
@@ -47,13 +47,13 @@ class SchemaQueryBuildException(BuildException):
     ERR_CODE = "SCHEMA_QUERY_BUILD_FAILURE"
     
     def __init__(
-            self, = None,
+            self,
             msg: Optional[str] = None,
             mthd: Optional[str] = None,
             title: Optional[str] = None,
             err_code: Optional[str] = None,
             ex: Optional[Exception] = None,
-            rslt_type: Optional[resultCategory] = None,
+            rslt_type: Optional[ResultCategory] = None,
     ):
         """
         Args:
@@ -62,7 +62,7 @@ class SchemaQueryBuildException(BuildException):
             title: Optional[str]
             ex: Optional[Exception]
             err_code: Optional[str]
-            rslt_type: Optional[resultCategory]
+            rslt_type: Optional[ResultCategory]
         """
         op = op or self.OP
         msg = msg or self.MSG

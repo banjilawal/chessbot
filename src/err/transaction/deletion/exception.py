@@ -56,7 +56,7 @@ class DeletionException(TransactionException):
             cls_name: Optional[str] = None,
             ex: Optional[Exception] = None,
             err_code: Optional[str] = None,
-            # rslt_type: Optional[resultCategory] = None,
+            # rslt_type: Optional[ResultCategory] = None,
     ):
         """
         Args:

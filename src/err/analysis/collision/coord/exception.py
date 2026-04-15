@@ -1,7 +1,7 @@
-# src/err/collision/coord/exception.py
+# src/err/analysis/collision/coord/exception.py
 
 """
-Module: err.collision.coord.exception
+Module: err.analysis.collision.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -34,7 +34,7 @@ class CoordCollisionException(CollisionException):
         cls_coord: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        rslt_type: Optional[resultCategory]
+        rslt_type: Optional[ResultCategory]
             
     Provides:
 

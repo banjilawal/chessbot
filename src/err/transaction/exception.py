@@ -70,7 +70,7 @@ class TransactionException(ChessException):
     _rslt_type = Optional[str]
     
     def __init__(
-            self, = None,
+            self,
             msg: Optional[str] = None,
             var: Optional[str] = None,
             val: Optional[Any] = None,
@@ -78,7 +78,7 @@ class TransactionException(ChessException):
             cls_name: Optional[str] = None,
             ex: Optional[Exception] = None,
             err_code: Optional[str] = None,
-            rslt_type: Optional[resultCategory] = None,
+            rslt_type: Optional[ResultCategory] = None,
     ):
         """
         Args:

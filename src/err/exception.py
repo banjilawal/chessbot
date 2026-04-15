@@ -35,7 +35,7 @@ class ChessException(Exception):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         ex: Optional[Exception]
-        rslt_type: Optional[resultCategory]
+        rslt_type: Optional[ResultCategory]
         
     Provides:
     
@@ -75,7 +75,7 @@ class ChessException(Exception):
             cls_name: Optional[str]
             cls_mthd: Optional[str]
             ex: Optional[Exception]
-            rslt_type: Optional[resultCategory]
+            rslt_type: Optional[ResultCategory]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE

@@ -1,7 +1,7 @@
-# src/err/collision/context/square/exception.py
+# src/err/analysis/collision/context/square/exception.py
 
 """
-Module: err.collision.context.square.exception
+Module: err.analysis.collision.context.square.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

@@ -6,6 +6,7 @@ Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
+
 from __future__ import annotations
 from typing import Any, Optional
 
@@ -16,14 +17,18 @@ __all__ = [
     "AnalysisException",
 ]
 
+from result.category import ResultCategory
+
+
 # ======================# ANALYSIS_FAILURE #======================#
 class AnalysisException(ChessException):
     """
     Role:
         -   Error Tracing
 
-    Responsibilities:
+    Responsibilities
         1.  Indicate that an error prevented an analysis from completing its work.
+        
     Attributes:
         msg: Optional[str]
         var: Optional[str]
@@ -32,7 +37,7 @@ class AnalysisException(ChessException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        rslt_type: Optional[resultCategory]
+        rslt_type: Optional[ResultCategory]
             
     Provides:
 
@@ -42,7 +47,7 @@ class AnalysisException(ChessException):
     MSG = "Analysis step failed."
     ERR_CODE = "ANALYSIS_FAILURE"
     RSLT_TYPE = "AnalysisResult"
-    _rslt_type = Optional[]
+    _rslt_type = Optional[ResultCategory]
     
     def __init__(
             self,

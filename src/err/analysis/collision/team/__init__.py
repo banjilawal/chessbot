@@ -1,13 +1,13 @@
-# src/err/collision/team/__init__.py
+# src/err/analysis/collision/team/__init__.py
 
 """
-Module: err.collision.context.team.__init__
+Module: err.analysis.collision.context.team.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.COLLISION.CONTEXT.TEAM PACKAGE ===========#
+# ============ ERR.ANALYSIS.COLLISION.CONTEXT.TEAM PACKAGE ===========#
 
 # Packages
 None

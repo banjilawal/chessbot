@@ -45,7 +45,7 @@ class NodeTreeBuildException(BuildException):
         msg: Optional[str]
         mthd: Optional[str]
         err_code: Optional[str]
-        rslt_type: Optional[resultCategory]
+        rslt_type: Optional[ResultCategory]
 
     # LOCAL METHODS:
     None
@@ -59,12 +59,12 @@ class NodeTreeBuildException(BuildException):
     MSG = "Failure in NodeTreeBuilder method."
     
     def __init__(
-            self, = None,
+            self,
             msg: Optional[str] = None,
             mthd: Optional[str] = None,
             ex: Optional[Exception] = None,
             err_code: Optional[str] = None,
-            rslt_type: Optional[resultCategory] = None,
+            rslt_type: Optional[ResultCategory] = None,
     ):
         """
         Args:
@@ -72,7 +72,7 @@ class NodeTreeBuildException(BuildException):
             msg: Optional[str]
             mthd: Optional[str]
             err_code: Optional[str]
-            rslt_type: Optional[resultCategory]
+            rslt_type: Optional[ResultCategory]
         """
         op = op or self.OP
         msg = msg or self.MSG

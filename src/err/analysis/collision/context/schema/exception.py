@@ -1,7 +1,7 @@
-# src/err/collision/context/schema/exception.py
+# src/err/analysis/collision/context/schema/exception.py
 
 """
-Module: err.collision.context.schema.exception
+Module: err.analysis.collision.context.schema.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
