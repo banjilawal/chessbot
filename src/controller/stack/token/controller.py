@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from analysis.analyst.collision.token.analyst import TokenCollisionAnalyst
+from analysis.collision.token.analyst import TokenCollisionAnalyst
 from system import IntegrityMicroservice
 
 from model.token import TokenStackDeployment
