@@ -84,19 +84,16 @@ class Binder(ABC, Generic[P, S]):
         return self._id
     
     @property
-    @abstractmethod
     def primary(self) -> P:
-        pass
+        return self._primary
     
     @property
-    @abstractmethod
     def satellite_table(self) -> Dict[Schema, S]:
-        pass
+        return self._satellite_table
     
     @property
-    @abstractmethod
     def satellite_service(self) -> Microservice[S]:
-        pass
+        return self._satellite_service
         
     @property
     def is_empty(self) -> bool:

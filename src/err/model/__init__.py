@@ -11,6 +11,7 @@ version: 1.0.1
 
 # Packages
 from .arena import *
+from .binder import *
 from .board import *
 from .coord import *
 from .context import *

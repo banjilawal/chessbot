@@ -14,4 +14,4 @@ from .arena import *
 from .board import *
 
 # Modules
-from model import Binder
+from .model import Binder

@@ -5,8 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change afterPath="$PROJECT_DIR$/src/model/model.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/model/binder/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/model/binder/arena/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/model/binder/arena/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/model/binder/board/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/model/binder/board/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/model/binder/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/arena/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/arena/arena/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/arena/arena/model.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/arena/board/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/arena/board/model.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/arena/exception/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/arena/exception/base.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/arena/exception/black.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/arena/exception/collision.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/arena/exception/white.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/arena/model.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/arena/validator/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/arena/validator/null.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/arena/validator/validator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/arena/validator/wrapper.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/binder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/binder/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/binder/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/binder/arena/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/binder/arena/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/binder/arena/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/binder/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/binder/board/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/binder/board/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/binder/board/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/binder/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/binder/model.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -309,9 +336,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/model" />
       <recent name="$PROJECT_DIR$/src/model/binder" />
+      <recent name="$PROJECT_DIR$/src/err/model" />
+      <recent name="$PROJECT_DIR$/src/err" />
       <recent name="$PROJECT_DIR$/src/operation/bootstrap/build" />
-      <recent name="$PROJECT_DIR$/src/model/blueprint" />
-      <recent name="$PROJECT_DIR$/src/toolkit" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/model/binder/board" />
@@ -872,7 +899,7 @@
       <workItem from="1775523154635" duration="8604000" />
       <workItem from="1775535077469" duration="17356000" />
       <workItem from="1775569861163" duration="208129000" />
-      <workItem from="1776277739751" duration="2220000" />
+      <workItem from="1776277739751" duration="15063000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1141,9 +1168,9 @@
           <option name="timeStamp" value="145" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/model/binder/__init__.py</url>
-          <line>12</line>
-          <option name="timeStamp" value="146" />
+          <url>file://$PROJECT_DIR$/src/model/binder/model.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="147" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
