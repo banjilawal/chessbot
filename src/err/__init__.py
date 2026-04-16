@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-#=========== ERR. PACKAGE ===========#
+#=========== ERR PACKAGE ===========#
 
 # Packages
 from .analysis import *
@@ -19,7 +19,6 @@ from .pipeline import *
 from .service import *
 from .rollback import *
 from .transaction import *
-from err.operation.validation import *
 from .operation import *
 from .route import *
 

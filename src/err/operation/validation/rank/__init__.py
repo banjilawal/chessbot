@@ -10,7 +10,12 @@ version: 1.0.1
 # ============ ERR.OPERATION.VALIDATION.RANK PACKAGE ===========#
 
 # Packages
-None
+from .bishop import *
+from .king import *
+from .knight import *
+from .pawn import *
+from .queen import *
+from .rook import *
 
 # Modules
 from .exception import RankValidationException
