@@ -14,6 +14,7 @@ from .bootstrap import *
 from .build import *
 from .finalize import *
 from .math import *
+from .validation import *
 
 # Modules
 from .exception import OperationException

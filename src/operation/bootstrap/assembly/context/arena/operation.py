@@ -1,10 +1,10 @@
-# src/logic/arena/assembly/exception.py
+# src/operation/bootstrap/assembly/context/arena/operation.py
 
 """
-Module: logic.arena.assembly.assembly
+Module: operation.bootstrap.assembly.context.arena.operation
 Author: Banji Lawal
-Created: 2025-09-16
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from typing import Optional
@@ -14,15 +14,15 @@ from model.game import Game, GameService
 from logic.team import Team, TeamService
 
 from operation import AssemblyBootstrap
-from system import Assemblyer, AssemblyResult, ExecutionRouteException, IdentityService, LoggingLevelRouter
+from system import Assembly, AssemblyResult, ExecutionRouteException, IdentityService, LoggingLevelRouter
 from logic.arena import (
     ArenaContext, ArenaContextAssemblyException, ExcessArenaContextFlagsException, ZeroArenaContextFlagsException,
 )
 
 
-class ArenaContextAssemblyBootstrap(AssemblyBootstrap[ArenaContext]):
+class ArenaContextAssemblyBootstrapper(AssemblyBootstrap[ArenaContext]):
     """
-    Role:Assemblyer, Data Integrity And Reliability Guarantor
+    Role:Assembly, Data Integrity And Reliability Guarantor
 
     Responsibilities:
     1.  Produce ArenaContext instances whose integrity is guaranteed at creation.
@@ -31,7 +31,7 @@ class ArenaContextAssemblyBootstrap(AssemblyBootstrap[ArenaContext]):
     4.  Return an exception to the client if a assembly resource does not satisfy integrity requirements.
 
     Super Class:
-        *   Assemblyer
+        *   Assembly
 
     Provides:
 
@@ -77,7 +77,7 @@ class ArenaContextAssemblyBootstrap(AssemblyBootstrap[ArenaContext]):
             *   ArenaContextAssemblyException
             *   ExcessArenaContextFlagsException
         """
-        method = "ArenaSearchContextAssemblyer.assembly"
+        method = "ArenaSearchContextAssembly.assembly"
         try:
             # Count how many optional parameters are not-null. One param needs to be not-null.
             params = [id, name, team, game, variety, ]

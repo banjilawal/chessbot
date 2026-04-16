@@ -1,16 +1,16 @@
-# src/model/binder/assembly/__init__.py
+# src/operation/bootstrap/assembly/binder/__ini__.py
 
 """
-Module: model.binder.assembly.__init__
+Module: operation.bootstrap.assembly.binder.__init__
 Author: Banji Lawal
-Created: 2025-02-08
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
-# =========== MODEL.BINDER.ASSEMBLYER PACKAGE ===========#
+# =========== OPERATION.BOOTSTRAP.ASSEMBLY.BINDER PACKAGE ===========#
 
 # Packages
-None
+from .board import *
 
 # Modules
-from .operation import TeamTableAssemblyer
+

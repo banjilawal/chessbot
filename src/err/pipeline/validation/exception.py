@@ -41,7 +41,6 @@ class ValidationPipelineException(PipelineException):
     Super Class:
         ValidationPipeline
     """
-    OP = "Validation"
     MSG = "Error in ValidationPipeline."
     ERR_CODE = "VALIDATION_PIPELINE_FAILURE"
     MTHD_RSLT = "ValidationResult"
@@ -68,7 +67,6 @@ class ValidationPipelineException(PipelineException):
             err_code: Optional[str]
             mthd_rslt: Optional[ResultCategory]
         """
-        op = op or self.OP
         msg = msg or self.MSG
         mthd_rslt = self.MTHD_RSLT
         err_code = err_code or self.ERR_CODE

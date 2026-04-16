@@ -1,16 +1,16 @@
-# src/integrity/assembly/team/__init__.py
+# src/operation/bootstrap/assembly/team/__ini__.py
 
 """
-Module: integrity.assembly.team.__init__
+Module: operation.bootstrap.assembly.team.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== ASSEMBLY.TEAM PACKAGE ===========#
+# =========== OPERATION.BOOTSTRAP.ASSEMBLY.TEAM PACKAGE ===========#
 
 # Packages
-None
+
 
 # Modules
 from .operation import TeamAssemblyBootstrapper

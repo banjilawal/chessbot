@@ -1,7 +1,7 @@
-# src/integrity/assembly/team/assemblyer.py
+# src/operation/bootstrap/assembly/team/operation.py
 
 """
-Module: integrity.assembly.team.assemblyer
+Module: operation.bootstrap.assembly.team.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

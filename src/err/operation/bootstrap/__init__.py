@@ -10,7 +10,7 @@ version: 1.0.1
 # ============ ERR.OPERATION.BOOTSTRAP PACKAGE ===========#
 
 # Packages
-from .build import *
+from .assembly import *
 
 # Modules
 from .exception import BootstrapException

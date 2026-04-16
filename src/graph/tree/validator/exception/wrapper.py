@@ -47,7 +47,6 @@ class NodeTreeValidationException(ValidationException):
     # INHERITED METHODS:
         *   See ValidationException class for inherited methods.
     """
-    OP = "Validation"
     MTHD_RSLT = "ValidationResult"
     ERR_CODE = "NODE_TREE_VALIDATION_FAILURE"
     MSG = "Failure in NodeTreeValidator method."
@@ -68,7 +67,6 @@ class NodeTreeValidationException(ValidationException):
             err_code: Optional[str]
             mthd_rslt: Optional[ResultCategory]
         """
-        op = op or self.OP
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
         mthd_rslt = mthd_rslt or self.MTHD_RSLT

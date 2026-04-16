@@ -5,16 +5,185 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
+      <change afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/binder/board/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/model/binder/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/model/binder/arena/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/model/binder/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/model/binder/arena/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/model/binder/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/model/binder/board/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/model/binder/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/model/binder/board/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/binder/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/binder/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/blueprint/binder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/binder/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/blueprint/binder/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/binder/blueprint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/assemble/binder/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assemble/binder/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/binder/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/binder/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/command/system/service/operation/validation/argument/exception/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/command/system/service/operation/validation/argument/exception/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/analysis/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/analysis/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/arena/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/arena/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/board/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/board/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/context/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/context/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/context/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/context/arena/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/context/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/context/arena/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/context/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/context/board/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/context/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/context/board/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/context/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/context/coord/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/context/coord/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/context/coord/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/context/edge/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/context/edge/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/context/edge/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/context/edge/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/context/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/context/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/context/formation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/context/formation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/context/formation/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/context/formation/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/context/game/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/context/game/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/context/game/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/context/game/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/context/hostage/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/context/hostage/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/context/hostage/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/context/hostage/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/context/node/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/context/node/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/context/node/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/context/node/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/context/persona/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/context/persona/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/context/persona/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/context/persona/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/context/player/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/context/player/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/context/player/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/context/player/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/context/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/context/rank/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/context/rank/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/context/rank/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/context/schema/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/context/schema/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/context/schema/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/context/schema/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/context/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/context/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/context/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/context/square/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/context/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/context/team/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/context/team/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/context/team/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/context/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/context/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/context/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/context/token/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/context/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/context/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/context/vector/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/context/vector/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/coord/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/coord/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/coord/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/edge/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/edge/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/edge/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/edge/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/formation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/formation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/formation/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/formation/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/game/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/game/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/game/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/game/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/hostage/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/hostage/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/hostage/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/hostage/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/node/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/node/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/node/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/node/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/persona/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/persona/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/persona/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/persona/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/player/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/player/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/player/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/player/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/rank/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/rank/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/rank/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/scalar/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/scalar/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/scalar/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/scalar/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/schema/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/schema/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/schema/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/schema/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/square/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/team/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/team/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/team/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/token/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/bootstrap/build/vector/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/bootstrap/assembly/vector/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/build/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/build/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/operation/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/pipeline/validation/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/pipeline/validation/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/route/validation/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/route/validation/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/arena/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/arena/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/board/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/board/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/context/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/context/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/context/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/context/arena/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/context/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/context/arena/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/context/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/context/board/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/context/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/context/board/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/context/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/context/coord/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/context/coord/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/context/coord/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/context/edge/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/context/edge/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/context/edge/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/context/edge/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/context/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/context/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/context/formation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/context/formation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/context/formation/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/context/formation/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/context/game/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/context/game/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/context/game/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/context/game/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/context/hostage/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/context/hostage/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/context/hostage/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/context/hostage/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/context/node/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/context/node/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/context/node/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/context/node/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/context/persona/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/context/persona/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/context/persona/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/context/persona/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/context/player/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/context/player/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/context/player/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/context/player/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/context/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/context/rank/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/context/rank/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/context/rank/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/context/schema/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/context/schema/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/context/schema/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/context/schema/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/context/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/context/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/context/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/context/square/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/context/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/context/team/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/context/team/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/context/team/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/context/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/context/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/context/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/context/token/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/context/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/context/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/context/vector/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/context/vector/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/coord/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/coord/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/coord/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/edge/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/edge/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/edge/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/edge/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/formation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/formation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/formation/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/formation/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/game/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/game/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/game/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/game/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/hostage/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/hostage/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/hostage/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/hostage/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/identity/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/identity/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/identity/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/identity/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/node/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/node/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/node/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/node/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/number/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/number/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/number/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/number/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/persona/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/persona/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/persona/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/persona/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/player/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/player/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/player/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/player/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/rank/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/rank/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/rank/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/scalar/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/scalar/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/scalar/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/scalar/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/schema/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/schema/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/schema/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/schema/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/square/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/string/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/string/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/string/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/string/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/string/name/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/string/name/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/string/name/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/string/name/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/team/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/team/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/team/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/token/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/vector/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/vector/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/vector/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/vector/register/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/validation/vector/register/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/vector/register/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometry/span/square/ray/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/span/square/ray/validator/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/geometry/span/square/span/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/geometry/span/square/span/validator/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graph/pair/listing/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/graph/pair/listing/validator/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graph/pair/pair/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/graph/pair/pair/validator/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/graph/tree/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/graph/tree/validator/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/binder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/binder/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/binder/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/binder/board/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/context/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/context/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/context/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/context/arena/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/context/arena/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/context/arena/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/context/operation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/team/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/team/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/team/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/token/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/token/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/result/category.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/result/category.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -288,7 +457,7 @@
     "ToolWindow.Python Packages.ShowToolbar": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/model/blueprint/binder",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/operation/build",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -315,18 +484,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/operation/build" />
+      <recent name="$PROJECT_DIR$/src/err/validation" />
+      <recent name="$PROJECT_DIR$/src/err/analysis" />
       <recent name="$PROJECT_DIR$/src/model/blueprint/binder" />
       <recent name="$PROJECT_DIR$/src/err/model/binder" />
-      <recent name="$PROJECT_DIR$/src/model" />
-      <recent name="$PROJECT_DIR$/src/model/binder" />
-      <recent name="$PROJECT_DIR$/src/err/model" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/operation" />
+      <recent name="$PROJECT_DIR$/src/operation/bootstrap/assembly/binder/board" />
+      <recent name="$PROJECT_DIR$/src/model/blueprint/binder/board" />
       <recent name="$PROJECT_DIR$/src/model/binder/board" />
       <recent name="$PROJECT_DIR$/src/operation/bootstrap/build" />
-      <recent name="$PROJECT_DIR$/src/err/analysis/relation/binder" />
-      <recent name="$PROJECT_DIR$/src/analysis/relation/binder" />
-      <recent name="$PROJECT_DIR$/src/err/analysis" />
     </key>
   </component>
   <component name="RunManager" selected="Python.operation">
@@ -880,7 +1049,7 @@
       <workItem from="1775523154635" duration="8604000" />
       <workItem from="1775535077469" duration="17356000" />
       <workItem from="1775569861163" duration="208129000" />
-      <workItem from="1776277739751" duration="17939000" />
+      <workItem from="1776277739751" duration="23538000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1134,12 +1303,12 @@
           <option name="timeStamp" value="138" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/err/operation/bootstrap/build/context/board/exception.py</url>
+          <url>file://$PROJECT_DIR$/src/err/operation/bootstrap/assembly/context/board/exception.py</url>
           <line>9</line>
           <option name="timeStamp" value="141" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/operation/bootstrap/assembly/binder/operation.py</url>
+          <url>file://$PROJECT_DIR$/src/operation/bootstrap/assembly/binder/board/operation.py</url>
           <line>9</line>
           <option name="timeStamp" value="145" />
         </line-breakpoint>
@@ -1147,6 +1316,11 @@
           <url>file://$PROJECT_DIR$/src/model/binder/model.py</url>
           <line>11</line>
           <option name="timeStamp" value="147" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/operation/bootstrap/assembly/context/arena/operation.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="151" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

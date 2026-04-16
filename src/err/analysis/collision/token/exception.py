@@ -69,7 +69,6 @@ class TokenCollisionException(CollisionException):
             cls_mthd: Optional[str]
             err_code: Optional[str]
         """
-        op = op or self.OP
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
         mthd_rslt = mthd_rslt or self.MTHD_RSLT

@@ -17,26 +17,26 @@ __all__ = [
     "AnalysisException",
 ]
 
-from result.category import MethodResultType
+from result import MethodResultType
 
 
 # ======================# ANALYSIS_FAILURE #======================#
 class AnalysisException(ChessException):
     """
     Role:
-        -   Error Tracing
+        -   Failure Tracing
 
-    Responsibilities
-        1.  Indicate that an error prevented an analysis from completing its work.
-        
+    Responsibilities:
+        1.  Indicate that an error prevented the analysis from completing the task.
+
     Attributes:
-        msg: Optional[str]
+        msg: str
+        err_code: str
         var: Optional[str]
         val: Optional[Any]
-        ex: Optional[Exception]
         cls_name: Optional[str]
         cls_mthd: Optional[str]
-        err_code: Optional[str]
+        ex: Optional[Exception]
         mthd_rslt: Optional[ResultCategory]
             
     Provides:
@@ -44,33 +44,34 @@ class AnalysisException(ChessException):
     Super Class:
         ChessException
     """
-    MSG = "Analysis step failed."
+    MSG = "Analysis failed"
     ERR_CODE = "ANALYSIS_FAILURE"
-    MTHD_RSLT = "AnalysisResult"
-    _mthd_rslt = Optional[MethodResultType]
+    MTHD_RSLT = MethodResultType.ANALYSIS_RESULT
     
     def __init__(
             self,
-            msg: Optional[str] = None,
-            var: Optional[str] = None,
-            val: Optional[Any] = None,
-            cls_mthd: Optional[str] = None,
-            cls_name: Optional[str] = None,
-            ex: Optional[Exception] = None,
-            err_code: Optional[str] = None,
+            msg: str = MSG,
+            err_code: str = ERR_CODE,
+            var: Optional[str] | None = None,
+            val: Optional[Any] | None = None,
+            cls_name: Optional[str] | None = None,
+            cls_mthd: Optional[str] | None = None,
+            ex: Optional[Exception] | None = None,
+            mthd_rslt: Optional[MethodResultType] | None = None,
     ):
         """
-        Args:
-            msg: Optional[str]
+            Args:
+            msg: str
+            err_code: str
             var: Optional[str]
             val: Optional[Any]
-            ex: Optional[Exception]
             cls_name: Optional[str]
             cls_mthd: Optional[str]
-            err_code: Optional[str]
+            ex: Optional[Exception]
+            mthd_rslt: Optional[ResultCategory]
         """
         msg = msg or self.MSG
-        mthd_rslt = self.MTHD_RSLT
+        mthd_rslt = mthd_rslt or self.MTHD_RSLT
         err_code = err_code or self.ERR_CODE
         super().__init__(
             ex=ex,
@@ -80,12 +81,5 @@ class AnalysisException(ChessException):
             err_code=err_code,
             cls_name=cls_name,
             cls_mthd=cls_mthd,
+            mthd_rslt=mthd_rslt,
         )
-        self._mthd_rslt = mthd_rslt
-    
-    @property
-    def mthd_rslt(self) -> Optional[str]:
-        return self._mthd_rslt
-    
-    def __str__(self):
-        return f"{super().__str__()},  mthd_rslt:{self._mthd_rslt}"

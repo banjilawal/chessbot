@@ -40,7 +40,6 @@ class ValidationRouteException(ExecutionRouteException):
     Super Class:
         ExecutionRouteException
     """
-    OP = "Validation"
     MSG = "One of  validation routes is missing."
     ERR_CODE = "VALIDATION_ROUTE"
     MTHD_RSLT = "ValidationResult"

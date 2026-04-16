@@ -79,7 +79,6 @@ class ChessException(Exception):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        cls_name = cls_name or self.__class__.__name__
         super().__init__(msg)
         self._ex = ex
         self._msg = msg

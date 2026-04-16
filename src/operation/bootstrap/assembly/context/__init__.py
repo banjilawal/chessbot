@@ -1,17 +1,15 @@
-# src/operation/bootstrap/context/__ini__.py
+# src/operation/bootstrap/assembly/context/__ini__.py
 
 """
-Module: operation.bootstrap.context.__init__
+Module: operation.bootstrap.assembly.context.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-
-# =========== BOOTSTRAP PACKAGE ===========#
+# =========== OPERATION.BOOTSTRAP.ASSEMBLY.CONTEXT PACKAGE ===========#
 
 # Packages
-
+from .arena import *
 
 # Modules
-from .operation import BootstrapContextAssembly

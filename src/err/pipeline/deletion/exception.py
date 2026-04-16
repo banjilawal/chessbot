@@ -68,7 +68,6 @@ class DeletionPipelineException(PipelineException):
             err_code: Optional[str]
             mthd_rslt: Optional[ResultCategory]
         """
-        op = op or self.OP
         msg = msg or self.MSG
         mthd_rslt = self.MTHD_RSLT
         err_code = err_code or self.ERR_CODE

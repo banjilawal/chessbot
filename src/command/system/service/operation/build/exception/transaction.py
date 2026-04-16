@@ -67,6 +67,5 @@ class CommandBuildException(BuildException):
     ):
         err_code = err_code or self.ERR_CODE
         msg = msg or self.MSG
-        op = op or self.OP
         mthd_rslt = mthd_rslt or self.MTHD_RSLT
         super().__init__(err_code=err_code, msg=msg, ex=ex, mthd=mthd, op=op, mthd_rslt=mthd_rslt)
