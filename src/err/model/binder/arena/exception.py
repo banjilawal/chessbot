@@ -1,7 +1,7 @@
-# src/err/model/arena/exception.py
+# src/err/model/ArenaPlayerBinder/exception.py
 
 """
-Module: err.model.arena.exception
+Module: err.model.ArenaPlayerBinder.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import BinderException
 
 
 __all__ = [
-    # ======================# ARENA_ERROR #======================#
-    "ArenaException",
+    # ======================# ARENA_PLAYER_BINDER_ERROR #======================#
+    "ArenaPlayerBinderException",
 ]
 
-# ======================# ARENA_ERROR #======================#
-class ArenaException(BinderException):
+# ======================# ARENA_PLAYER_BINDER_ERROR #======================#
+class ArenaPlayerBinderException(BinderException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Arena experienced an error.
+        1.  Indicate that a ArenaPlayerBinder experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -41,8 +41,8 @@ class ArenaException(BinderException):
     Super Class:
         BinderException
     """
-    MSG = "Arena error state."
-    ERR_CODE = "ARENA_ERROR"
+    MSG = "ArenaPlayerBinder error state."
+    ERR_CODE = "ARENA_PLAYER_BINDER_ERROR"
     
     def __init__(
             self,

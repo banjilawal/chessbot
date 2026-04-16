@@ -9,14 +9,11 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from microservice import IdentityService, TeamService
-from model import Board
-from model.blueprint.binder.blueprint import TeamBinderBlueprint
-from model.catalog import SchemaService
+from model.blueprint.binder.board.model import BoardTeamBinderBlueprint
 from system import BuildResult, Builder, LoggingLevelRouter
 from model.team import (
-    BlackTeamHasWrongSchemaException, Team, TeamBinder, TeamBinderBuildException,
-    TeamSchemaCollisionException, TeamValidator, WhiteTeamHasWrongSchemaException
+    BlackTeamHasWrongSchemaException, TeamBinder, TeamBinderBuildException,
+    TeamSchemaCollisionException, WhiteTeamHasWrongSchemaException
 )
 
 
@@ -26,7 +23,7 @@ class TeamTableBuilder(Builder[TeamBinder]):
     @LoggingLevelRouter.monitor
     def build(
             cls,
-            blueprint: TeamBinderBlueprint,
+            blueprint: BoardTeamBinderBlueprint,
             toolkit: TeamBinderToolkit | None = None,
     ) -> BuildResult[TeamBinder]:
         method = f"TeamBinderBuilder.build"

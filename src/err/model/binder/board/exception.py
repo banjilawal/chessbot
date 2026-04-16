@@ -1,7 +1,7 @@
-# src/err/model/board/exception.py
+# src/err/model/BoardTeamBinder/exception.py
 
 """
-Module: err.model.board.exception
+Module: err.model.BoardTeamBinder.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import BinderException
 
 
 __all__ = [
-    # ======================# BOARD_ERROR #======================#
-    "BoardException",
+    # ======================# BOARD_TEAM_BINDER_ERROR #======================#
+    "BoardTeamBinderException",
 ]
 
-# ======================# BOARD_ERROR #======================#
-class BoardException(BinderException):
+# ======================# BOARD_TEAM_BINDER_ERROR #======================#
+class BoardTeamBinderException(BinderException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Board experienced an error.
+        1.  Indicate that a BoardTeamBinder experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -41,8 +41,8 @@ class BoardException(BinderException):
     Super Class:
         BinderException
     """
-    MSG = "Board error state."
-    ERR_CODE = "BOARD_ERROR"
+    MSG = "BoardTeamBinder error state."
+    ERR_CODE = "BOARD_TEAM_BINDER_ERROR"
     
     def __init__(
             self,

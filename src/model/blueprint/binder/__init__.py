@@ -10,7 +10,7 @@ version: 1.0.1
 # =========== MODEL.BLUEPRINT.BINDER PACKAGE ===========#
 
 # Packages
-
+from .arena import *
+from .board import *
 
 # Modules
-from .blueprint import  TeamBinderBlueprint

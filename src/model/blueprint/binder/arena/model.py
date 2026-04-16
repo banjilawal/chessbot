@@ -1,7 +1,7 @@
-# src/model/blueprint/binder/blueprint.py
+# src/model/blueprint/binder/model.py
 
 """
-Module: model.blueprint.binder.blueprint
+Module: model.blueprint.binder.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,50 +10,50 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Optional
 
-from microservice import TeamService
-from model import Blueprint, Board, Schema, BoardTeamBinder
+from microservice import PlayerService
+from model import Blueprint, Arena, Schema, ArenaPlayerBinder
 
 
-class TeamBinderBlueprint(Blueprint[BoardTeamBinder]):
+class ArenaPlayerBinderBlueprint(Blueprint[ArenaPlayerBinder]):
     _id: int
-    _board: Board
+    _arena: Arena
     _schema: Schema
-    _team_service: TeamService
+    _player_service: PlayerService
     
     def __init__(
             self,
-            board: Board,
+            arena: Arena,
             id: Optional[int] | None = None,
             schema: Optional[Schema] | None = None,
-            team_service: TeamService | None = None
+            player_service: PlayerService | None = None
     ):
         """
         Args:
             id: int
-            board: Board
+            arena: Arena
             schema: Schema
-            team_service: TeamService
+            player_service: PlayerService
         """
         super().__init__()
         self._id = id
-        self._board = board
+        self._arena = arena
         self._schema = schema or Schema()
-        self._team_service = team_service or TeamService()
+        self._player_service = player_service or PlayerService()
         
     @property
     def id(self) -> Optional[int]:
         return self._id
     
     @property
-    def board(self) -> Board:
-        return self._board
+    def arena(self) -> Arena:
+        return self._arena
     
     @property
     def schema(self) -> Schema:
         return self._schema
     
     @property
-    def team_service(self) -> TeamService:
-        return self._team_service
+    def player_service(self) -> PlayerService:
+        return self._player_service
     
 
