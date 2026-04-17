@@ -13,10 +13,12 @@ from typing import Any
 
 from model import BoardTeamBinder
 from operation import Validator
+from result import ValidationResult
 from system import LoggingLevelRouter
+from toolkit import BoardTeamBinderToolkit
 
 
-class BoardContextValidator(Validator[BoardTeamBinder]):
+class BoardTeamBinderValidator(Validator[BoardTeamBinder]):
     """
     Role
         -   Transaction Worker
@@ -25,7 +27,7 @@ class BoardContextValidator(Validator[BoardTeamBinder]):
         -   Validation Process Owner
 
     Responsibilities:
-        1.  Ensure a BoardContext instance is certified safe, reliable and consistent
+        1.  Ensure a BoardTeamBinder instance is certified safe, reliable and consistent
             before use.
 
     Attributes:
@@ -33,8 +35,8 @@ class BoardContextValidator(Validator[BoardTeamBinder]):
     Properties:
         -   def validate(
                     candidate: Any,
-                    toolkit : BoardContextToolSe,
-            ) -> ValidationResult[BoardContext]:
+                    toolkit : BoardTeamBinderToolSe,
+            ) -> ValidationResult[BoardTeamBinder]:
 
     Super Class:
         Validator
@@ -48,44 +50,49 @@ class BoardContextValidator(Validator[BoardTeamBinder]):
             toolkit: BoardTeamBinderToolkit,
     ) -> ValidationResult[BoardTeamBinder]:
         """
-        Verify the candidate is a safe BoardContext.
+        Verify the candidate is a safe BoardTeamBinder.
         
         Action:
             1.  Send an exception in the ValidationResult any of these
                 conditions occur.
                     -   candidate is null.
-                    -   It's not a BoardContext.
-                    -   The boardContext's payload is flagged unsafe.
+                    -   It's not a BoardTeamBinder.
+                    -   The boardTeamBinder's payload is flagged unsafe.
             3.  Otherwise, Send the success result.
         Args:
             candidate: Any
-            toolkit : BoardContextToolkit
+            toolkit : BoardTeamBinderToolkit
         Returns:
-            ValidationResult[BoardContext]
+            ValidationResult[BoardTeamBinder]
         Raises:
             TypeError
-            BoardContextNullException
-            ZeroBoardContextFlagsException
-            BoardContextValidationException
-            ExcessBoardContextFlagsException
+            BoardTeamBinderNullException
+            ZeroBoardTeamBinderFlagsException
+            BoardTeamBinderValidationException
+            ExcessBoardTeamBinderFlagsException
         """
         method = f"{cls.__name__}.validate"
         
         if toolkit is None:
-            toolkit = BoardContextToolkit()
+            toolkit = BoardTeamBinderToolkit()
             
         # Handle the case that, the candidate does not exist.
+        validation_bootstrap_result = toolkit.validation_bootstrapper.validate(
+            candidate=candidate,
+            target_model=BoardTeamBinder,
+            null_exception=,
+        )
         if candidate is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                BoardContextValidationException(
+                BoardTeamBinderValidationException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=BoardContextValidationException.MSG,
-                    err_code=BoardContextValidationException.ERR_CODE,
-                    ex=BoardContextNullException(
-                        msg=BoardContextNullException.MSG,
-                        err_code=BoardContextNullException.ERR_CODE,
+                    msg=BoardTeamBinderValidationException.MSG,
+                    err_code=BoardTeamBinderValidationException.ERR_CODE,
+                    ex=BoardTeamBinderNullException(
+                        msg=BoardTeamBinderNullException.MSG,
+                        err_code=BoardTeamBinderNullException.ERR_CODE,
                     )
                 )
             )
@@ -93,31 +100,31 @@ class BoardContextValidator(Validator[BoardTeamBinder]):
         if not isinstance(candidate, BoardTeamBinder):
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                BoardContextValidationException(
+                BoardTeamBinderValidationException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=BoardContextValidationException.MSG,
-                    err_code=BoardContextValidationException.ERR_CODE,
+                    msg=BoardTeamBinderValidationException.MSG,
+                    err_code=BoardTeamBinderValidationException.ERR_CODE,
                     ex=TypeError(
                         f"Expected Board type, got ({candidate}.__name__) instead."
                     )
                 )
             )
-        # --- Cast candidate to a BoardContext for additional tests. ---#
+        # --- Cast candidate to a BoardTeamBinder for additional tests. ---#
         context = cast(BoardTeamBinder, candidate)
         
         # Handle the case that neither option is enabled.
         if len(context.to_dict) == 0:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                BoardContextValidationException(
+                BoardTeamBinderValidationException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=BoardContextValidationException.MSG,
-                    err_code=BoardContextValidationException.ERR_CODE,
-                    ex=ZeroBoardContextFlagsException(
-                        msg=ZeroBoardContextFlagsException.MSG,
-                        err_code=ZeroBoardContextFlagsException.ERR_CODE,
+                    msg=BoardTeamBinderValidationException.MSG,
+                    err_code=BoardTeamBinderValidationException.ERR_CODE,
+                    ex=ZeroBoardTeamBinderFlagsException(
+                        msg=ZeroBoardTeamBinderFlagsException.MSG,
+                        err_code=ZeroBoardTeamBinderFlagsException.ERR_CODE,
                     )
                 )
             )
@@ -125,14 +132,14 @@ class BoardContextValidator(Validator[BoardTeamBinder]):
         if len(context.to_dict) > 1:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                BoardContextValidationException(
+                BoardTeamBinderValidationException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=BoardContextValidationException.MSG,
-                    err_code=BoardContextValidationException.ERR_CODE,
-                    ex=ExcessBoardContextFlagsException(
-                        msg=ExcessBoardContextFlagsException.MSG,
-                        err_code=ExcessBoardContextFlagsException.ERR_CODE,
+                    msg=BoardTeamBinderValidationException.MSG,
+                    err_code=BoardTeamBinderValidationException.ERR_CODE,
+                    ex=ExcessBoardTeamBinderFlagsException(
+                        msg=ExcessBoardTeamBinderFlagsException.MSG,
+                        err_code=ExcessBoardTeamBinderFlagsException.ERR_CODE,
                     )
                 )
             )
@@ -147,11 +154,11 @@ class BoardContextValidator(Validator[BoardTeamBinder]):
         if validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                BoardContextValidationException(
+                BoardTeamBinderValidationException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=BoardContextValidationException.MSG,
-                    err_code=BoardContextValidationException.ERR_CODE,
+                    msg=BoardTeamBinderValidationException.MSG,
+                    err_code=BoardTeamBinderValidationException.ERR_CODE,
                     ex=validation_result.exception
                 )
             )

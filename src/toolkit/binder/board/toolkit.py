@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from microservice import BoardService, IdentityService, SchemaService, TeamService
 from model import BoardTeamBinder
+from operation.bootstrap.validation.operation import ValidationBootstrapper
 from toolkit import Toolkit
 
 
@@ -29,6 +30,7 @@ class BoardTeamBinderToolkit(Toolkit[BoardTeamBinder]):
         board_service: BoardService
         schema_service: SchemaService
         identity_service: IdentityService
+        validation_bootstrapper: ValidationBootrapper
 
     Provides:
 
@@ -39,6 +41,7 @@ class BoardTeamBinderToolkit(Toolkit[BoardTeamBinder]):
     _board_service: BoardService
     _schema_service: SchemaService
     _identity_service: IdentityService
+    _validation_bootstrapper: ValidationBootstrapper
     
     def __init__(
             self,
@@ -46,6 +49,7 @@ class BoardTeamBinderToolkit(Toolkit[BoardTeamBinder]):
             board_service: BoardService | None = None,
             schema_service: SchemaService | None = None,
             identity_service: IdentityService | None = None,
+            validation_bootstrapper: ValidationBootstrapper | None = None,
     ):
         """
         Args:
@@ -53,11 +57,13 @@ class BoardTeamBinderToolkit(Toolkit[BoardTeamBinder]):
             board_service: BoardService
             schema_service: SchemaService
             identity_service: IdentityService
+            validation_bootstrapper: ValidationBootstrapper
         """
         self._team_service = team_service or TeamService()
         self._board_service = board_service or BoardService()
         self._schema_service = schema_service or SchemaService()
         self._identity_service = identity_service or IdentityService()
+        self._validation_bootstrapper = validation_bootstrapper or ValidationBootstrapper()
         
     @property
     def team_service(self) -> TeamService:
@@ -74,3 +80,7 @@ class BoardTeamBinderToolkit(Toolkit[BoardTeamBinder]):
     @property
     def identity_service(self) -> IdentityService:
         return self._identity_service
+    
+    @property
+    def validation_bootstrapper(self) -> ValidationBootstrapper:
+        return self._validation_bootstrapper

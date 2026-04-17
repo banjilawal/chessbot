@@ -10,6 +10,6 @@ version: 1.0.1
 # =========== OPERATION.VALIDATION.CONTEXT PACKAGE ===========#
 
 # Packages
-from .vector import *
+from .board import *
 
 # Module
