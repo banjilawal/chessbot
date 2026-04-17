@@ -10,6 +10,7 @@ version: 1.0.1
 # =========== TOOLKIT.BINDER PACKAGE ===========#
 
 # Packages
+from .arena import *
+from .board import *
 
 # Modules
-from .toolkit import TeamBinderToolkit
