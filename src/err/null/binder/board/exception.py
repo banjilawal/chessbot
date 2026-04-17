@@ -9,14 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from err import BinderNullException
+from err import NullBinderException
 
 __all__ = [
     # ======================# BOARD_TEAM_BINDER_NULL_EXCEPTION #======================#
     "BoardTeamBinderNullException",
 ]
 # ======================# BOARD_TEAM_BINDER_NULL_EXCEPTION #======================#
-class BoardTeamBinderNullException(BinderNullException):
+class BoardTeamBinderNullException(NullBinderException):
     """
     Role:
         -   Error Tracing

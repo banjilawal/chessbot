@@ -9,14 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from err import BinderNullException
+from err import NullBinderException
 
 __all__ = [
     # ======================# ARENA_PLAYER_BINDER_NULL_EXCEPTION #======================#
     "ArenaPlayerBinderNullException",
 ]
 # ======================# ARENA_PLAYER_BINDER_NULL_EXCEPTION #======================#
-class ArenaPlayerBinderNullException(BinderNullException):
+class ArenaPlayerBinderNullException(NullBinderException):
     """
     Role:
         -   Error Tracing

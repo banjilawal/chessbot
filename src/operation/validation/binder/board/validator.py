@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from typing import Any
 
+from err import BoardTeamBinderNullException, BoardTeamBinderValidationException
 from model import BoardTeamBinder
 from operation import Validator
 from result import ValidationResult
@@ -80,9 +81,9 @@ class BoardTeamBinderValidator(Validator[BoardTeamBinder]):
         validation_bootstrap_result = toolkit.validation_bootstrapper.validate(
             candidate=candidate,
             target_model=BoardTeamBinder,
-            null_exception=,
+            null_exception=BoardTeamBinderNullException(),
         )
-        if candidate is None:
+        if validation_bootstrap_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 BoardTeamBinderValidationException(
@@ -90,14 +91,12 @@ class BoardTeamBinderValidator(Validator[BoardTeamBinder]):
                     cls_name=cls.__name__,
                     msg=BoardTeamBinderValidationException.MSG,
                     err_code=BoardTeamBinderValidationException.ERR_CODE,
-                    ex=BoardTeamBinderNullException(
-                        msg=BoardTeamBinderNullException.MSG,
-                        err_code=BoardTeamBinderNullException.ERR_CODE,
-                    )
+                    ex=validation_bootstrap_result.exception,
                 )
             )
-        # Handle the case that, the candidate is wrong type.
-        if not isinstance(candidate, BoardTeamBinder):
+        binder = validation_bootstrap_result.payload
+        board_validation_result =toolkit.board_service.validator.validate(binder.primary)
+        if board_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 BoardTeamBinderValidationException(
@@ -105,13 +104,10 @@ class BoardTeamBinderValidator(Validator[BoardTeamBinder]):
                     cls_name=cls.__name__,
                     msg=BoardTeamBinderValidationException.MSG,
                     err_code=BoardTeamBinderValidationException.ERR_CODE,
-                    ex=TypeError(
-                        f"Expected Board type, got ({candidate}.__name__) instead."
-                    )
+                    ex=board_validation_result.exception,
                 )
             )
-        # --- Cast candidate to a BoardTeamBinder for additional tests. ---#
-        context = cast(BoardTeamBinder, candidate)
+            
         
         # Handle the case that neither option is enabled.
         if len(context.to_dict) == 0:
