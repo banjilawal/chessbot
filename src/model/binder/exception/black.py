@@ -12,7 +12,6 @@ __all__ = [
     "BlackTeamHasWrongSchemaException",
 ]
 
-from model.team import TeamBinderException
 
 
 # ======================# BLACK_TEAM_HAS_WRONG_SCHEMA EXCEPTION #======================#
