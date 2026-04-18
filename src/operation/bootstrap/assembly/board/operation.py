@@ -11,10 +11,10 @@ from __future__ import annotations
 
 
 from err import BootstrapBoardAssemblyException
-from model import Board, Board, BoardBlueprint
+from model import Board, BoardBlueprint
 from operation import AssemblyBootstrapper
-from result import AssemblyResult, ValidationResult
-from system import IdFactory, LoggingLevelRouter
+from result import ValidationResult
+from system import LoggingLevelRouter
 from toolkit import BoardToolkit
 
 
