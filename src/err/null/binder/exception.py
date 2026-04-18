@@ -14,11 +14,11 @@ from err import NullException
 
 __all__ = [
     # ======================# BINDER_NULL_EXCEPTION #======================#
-    "NullBinderException",
+    "BinderNullException",
 ]
 
 # ======================# BINDER_NULL_EXCEPTION #======================#
-class NullBinderException(NullException):
+class BinderNullException(NullException):
     """
     Role:
         -   Error Tracing

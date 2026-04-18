@@ -14,6 +14,7 @@ log = logging.getLogger("chessbot")
 # =========== OPERATION.VALIDATION PACKAGE ===========#
 
 # Packages
+from .binder import *
 from .context import *
 from .register import *
 

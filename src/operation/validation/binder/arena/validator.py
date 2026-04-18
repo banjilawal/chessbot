@@ -8,11 +8,13 @@ version: 1.0.1
 """
 
 from __future__ import annotations
+
 from typing import Any, Dict, cast
 
-from err import BoardTeamBinderNullException, BoardTeamBinderValidationException
-from model import BoardTeamBinder
+from err import BoardTeamBinderNullException, BoardTeamBinderValidationException, NullException
+from model import Board, BoardTeamBinder, Schema, Team
 from operation import Validator
+from operation.bootstrap.validation.binder.operation import SchemaHashtableValidator
 from result import ValidationResult
 from system import LoggingLevelRouter
 from toolkit import BoardTeamBinderToolkit
@@ -35,7 +37,7 @@ class BoardTeamBinderValidator(Validator[BoardTeamBinder]):
     Properties:
         -   def validate(
                     candidate: Any,
-                    toolkit : BoardTeamBinderToolkit,
+                    toolkit : BoardTeamBinderToolSe,
             ) -> ValidationResult[BoardTeamBinder]:
 
     Super Class:
@@ -57,8 +59,7 @@ class BoardTeamBinderValidator(Validator[BoardTeamBinder]):
                 conditions occur.
                     -   candidate is null.
                     -   It's not a BoardTeamBinder.
-                    -   BoardValidator flags the primary unsafe.
-                    -   The satellite_table fails a check.
+                    -   The boardTeamBinder's payload is flagged unsafe.
             3.  Otherwise, Send the success result.
         Args:
             candidate: Any
@@ -66,7 +67,11 @@ class BoardTeamBinderValidator(Validator[BoardTeamBinder]):
         Returns:
             ValidationResult[BoardTeamBinder]
         Raises:
+            TypeError
+            BoardTeamBinderNullException
+            ZeroBoardTeamBinderFlagsException
             BoardTeamBinderValidationException
+            ExcessBoardTeamBinderFlagsException
         """
         method = f"{cls.__name__}.validate"
         
@@ -117,7 +122,7 @@ class BoardTeamBinderValidator(Validator[BoardTeamBinder]):
         method = f"{cls.__name__}.run_satellite_table_checks"
         
         # Handle the case that, the satellite is not a dictionary or null.
-        table_validation_result = BinderTableValidationBootstrapper.validate(binder)
+        table_validation_result = SchemaHashtableValidator.validate(binder)
         if table_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(

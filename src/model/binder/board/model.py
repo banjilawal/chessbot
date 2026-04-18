@@ -8,10 +8,13 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import Dict
+from typing import Dict, List, overload
 
-from microservice import TeamService
+from setuptools.sandbox import override_temp
+
+from microservice import Microservice, TeamService
 from model import Binder, Board, Schema, Team
+from model.binder.model import S
 
 
 class BoardTeamBinder(Binder[Board, Team]):
@@ -63,6 +66,23 @@ class BoardTeamBinder(Binder[Board, Team]):
             satellite_table=satellite_table,
             satellite_service=satellite_service
         )
+        
+
+    @property
+    def primary(self) -> Board:
+        return super().primary
+    
+    @property
+    def satellite_table(self) -> Dict[Schema, Team]:
+        return super().satellite_table
+    
+    @property
+    def satellite_service(self) -> Microservice[Team]:
+        return super().satellite_service
+    
+    @property
+    def satellite_list(self) -> List[Team]:
+        return super().satellite_list
 
     def __eq__(self, other):
         if other is self: return True

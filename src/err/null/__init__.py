@@ -18,6 +18,7 @@ from .coord import *
 from .edge import *
 from .formation import *
 from .game import *
+from .hashtable import *
 from .hostage import *
 from .node import *
 from .number import *
@@ -31,7 +32,6 @@ from .string import *
 from .team import *
 from .token import *
 from .vector import *
-
 
 # Modules
 from .exception import NullException

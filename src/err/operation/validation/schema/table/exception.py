@@ -1,45 +1,48 @@
-# src/err/null/binder/board/exception.py
+# src/err/operation/validation/schema/table/exception.py
 
 """
-Module: err.null.binder.board.exception
+Module: err.operation.validation.schema.table.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
 from __future__ import annotations
+from typing import Any, Optional
 
-from err import BinderNullException
+from err import ValidationException
 
 __all__ = [
-    # ======================# BOARD_TEAM_BINDER_NULL_EXCEPTION #======================#
-    "BoardTeamBinderNullException",
+    # ======================# SCHEMA_VALIDATION_VALIDATION_EXCEPTION #======================#
+    "SchemaHashtableValidationException",
 ]
-# ======================# BOARD_TEAM_BINDER_NULL_EXCEPTION #======================#
-class BoardTeamBinderNullException(BinderNullException):
+
+# ======================# SCHEMA_VALIDATION_VALIDATION_EXCEPTION #======================#
+class SchemaHashtableValidationException(ValidationException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required BoardTeamBinder is null.
+        1.  Indicate that a SchemaDictValidation check failed.
 
     Attributes:
-            msg: Optional[str]
-            var: Optional[str]
-            val: Optional[Any]
-            ex: Optional[Exception]
-            cls_name: Optional[str]
-            cls_mthd: Optional[str]
-            err_code: Optional[str]
+        msg: Optional[str]
+        var: Optional[str]
+        val: Optional[Any]
+        ex: Optional[Exception]
+        cls_name: Optional[str]
+        cls_mthd: Optional[str]
+        err_code: Optional[str]
+        mthd_rslt: Optional[ResultCategory]
             
     Provides:
 
     Super Class:
-        BinderNullException
+        ValidationException
     """
-    MSG = "BoardTeamBinder cannot be null."
-    ERR_CODE = "BOARD_TEAM_BINDER_NULL_EXCEPTION"
+    MSG = "SchemaDictValidation check failed"
+    ERR_CODE = "SCHEMA_VALIDATION_VALIDATION_EXCEPTION"
     
     def __init__(
             self,

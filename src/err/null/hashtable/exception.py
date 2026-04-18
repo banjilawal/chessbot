@@ -1,28 +1,30 @@
-# src/err/null/binder/board/exception.py
+# src/err/null/hash/exception.py
 
 """
-Module: err.null.binder.board.exception
+Module: err.null.hash.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
 from __future__ import annotations
+from typing import Any, Optional
 
-from err import BinderNullException
+from err import NullException
 
 __all__ = [
-    # ======================# BOARD_TEAM_BINDER_NULL_EXCEPTION #======================#
-    "BoardTeamBinderNullException",
+    # ======================# HASH_TABLE_NULL_EXCEPTION #======================#
+    "HashtableNullException",
 ]
-# ======================# BOARD_TEAM_BINDER_NULL_EXCEPTION #======================#
-class BoardTeamBinderNullException(BinderNullException):
+
+# ======================# HASH_TABLE_NULL_EXCEPTION #======================#
+class HashtableNullException(NullException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required BoardTeamBinder is null.
+        1.  Indicate that a required Hashtable is null.
 
     Attributes:
             msg: Optional[str]
@@ -36,10 +38,10 @@ class BoardTeamBinderNullException(BinderNullException):
     Provides:
 
     Super Class:
-        BinderNullException
+        NullException
     """
-    MSG = "BoardTeamBinder cannot be null."
-    ERR_CODE = "BOARD_TEAM_BINDER_NULL_EXCEPTION"
+    MSG = "Hashtable cannot be null."
+    ERR_CODE = "HASH_TABLE_NULL_EXCEPTION"
     
     def __init__(
             self,

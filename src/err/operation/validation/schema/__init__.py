@@ -10,7 +10,7 @@ version: 1.0.1
 # ============ ERR.OPERATION.VALIDATION.SCHEMA PACKAGE ===========#
 
 # Packages
-None
+from .table import *
 
 # Modules
 from .exception import SchemaValidationException

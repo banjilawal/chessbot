@@ -13,9 +13,12 @@ from typing import cast
 
 from analysis import RelationAnalyst
 from err import BoardBinderAnalysisException
-from model import Board, BoardTeamBinder, TeamBinderValidator
+from integrity import BoardValidator
+from microservice import BoardService
+from model import Board, BoardTeamBinder
+from operation import BoardTeamBinderValidator
 from report import RelationReport
-from result import AnalysisResult
+from result import AnalysisResult, MethodResultType
 from system import LoggingLevelRouter
 
 
@@ -47,8 +50,8 @@ class BoardBinderRelationAnalyst(RelationAnalyst[Board, BoardTeamBinder]):
             cls,
             candidate_primary: Board,
             candidate_satellite: BoardTeamBinder,
-            board_validator: BoardService | None = None,
-            team_binder_validator: TeamBinderValidator | None = None,
+            board_validator: BoardValidator | None = None,
+            team_binder_validator: BoardTeamBinderValidator | None = None,
     ) -> AnalysisResult[RelationReport[Board, BoardTeamBinder]]:
         """
         Generate a report on the relationship between a board and binder.
@@ -76,7 +79,7 @@ class BoardBinderRelationAnalyst(RelationAnalyst[Board, BoardTeamBinder]):
             board_validator = BoardService()
         
         if team_binder_validator is None:
-            team_binder_validator = TeamBinderValidator()
+            team_binder_validator = BoardTeamBinderValidator()
         
         # Handle the case that, the board is not certified as safe.
         board_validation_result = board_validator.validate(candidate_primary)
@@ -95,7 +98,7 @@ class BoardBinderRelationAnalyst(RelationAnalyst[Board, BoardTeamBinder]):
         board = cast(Board, board_validation_result.payload)
         
         # Handle the case that, the binder is not certified as safe.
-        team_binder_validation_result = team_binder_validator.validator.validate(candidate_satellite)
+        team_binder_validation_result = team_binder_validator.validate(candidate_satellite)
         if team_binder_validation_result.is_failure:
             # Return the exception chain on failure.
             return AnalysisResult.failure(
@@ -110,18 +113,18 @@ class BoardBinderRelationAnalyst(RelationAnalyst[Board, BoardTeamBinder]):
         team_binder = cast(BoardTeamBinder, team_binder_validation_result.payload)
         
         # Handle the case that, the binder belongs to a different board.
-        if board != team_binder.board:
+        if board.team_binder != team_binder and team_binder.primary != board :
             return AnalysisResult.success(RelationReport.no_relation())
         
         # Handle the case that, the board has a stale link to team_binder.
-        if board.team_binder == team_binder and team_binder.board != board:
+        if board.team_binder == team_binder and team_binder.primary != board:
             return AnalysisResult.success(
                 RelationReport.stale_link(
                     primary=board
                 )
             )
         # Handle the case that, the binder has not registered with its board.
-        if board.team_binder is None and team_binder.board == board:
+        if board.team_binder != team_binder and team_binder.primary == board:
             return AnalysisResult.success(
                 RelationReport.registration_missing(
                     satellite=team_binder
