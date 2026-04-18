@@ -15,12 +15,10 @@ from model import ArenaPlayerBinder, Board
 
 class Arena:
     _id: int
-    _board: Board
     _arena_player_binder: ArenaPlayerBinder
     
-    def __init__(self, id: int, board: Board, arena_player_binder: ArenaPlayerBinder):
+    def __init__(self, id: int, arena_player_binder: ArenaPlayerBinder):
         self._id = id
-        self._board = board
         self._arena_player_binder = arena_player_binder
     
     @property
@@ -28,12 +26,12 @@ class Arena:
         return self._id
     
     @property
-    def board(self) -> Board:
-        return self._board
-    
-    @property
     def binder(self) ->ArenaPlayerBinder:
         return self._arena_player_binder
+
+    @property
+    def arena_has_board(self) -> bool:
+        return self._arena_player_binder.board_exists
     
     @property
     def arena_is_full(self) -> bool:
