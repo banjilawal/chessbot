@@ -10,8 +10,8 @@ version: 1.0.1
 # ============ ERR.MODEL.TOKEN PACKAGE ===========#
 
 # Packages
-from .king import *
 from .combatant import *
+from .king import *
 
 # Modules
 from .exception import TokenException

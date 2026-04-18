@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ModelException
+from err import RankException
 
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# BISHOP_ERROR #======================#
-class BishopException(ModelException):
+class BishopException(RankException):
     """
     Role:
         -   Error Tracing
@@ -39,7 +39,7 @@ class BishopException(ModelException):
     Provides:
 
     Super Class:
-        ModelException
+        RankException
     """
     MSG = "Bishop error state."
     ERR_CODE = "BISHOP_ERROR"

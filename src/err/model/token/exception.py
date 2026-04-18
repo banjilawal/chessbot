@@ -25,7 +25,7 @@ class TokenException(ModelException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a Token experienced an error.
+        1.  Indicate that a Token experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -41,7 +41,7 @@ class TokenException(ModelException):
     Super Class:
         ModelException
     """
-    MSG = "Token experienced an error."
+    MSG = "Token error state."
     ERR_CODE = "TOKEN_ERROR"
     
     def __init__(

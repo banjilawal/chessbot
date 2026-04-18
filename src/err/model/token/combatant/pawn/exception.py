@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import CombatantTokenException
+from err import TokenException
 
 
 __all__ = [
@@ -19,13 +19,13 @@ __all__ = [
 ]
 
 # ======================# PAWN_TOKEN_ERROR #======================#
-class PawnTokenException(CombatantTokenException):
+class PawnTokenException(TokenException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a PawnToken experienced an error.
+        1.  Indicate that a PawnToken experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -39,9 +39,9 @@ class PawnTokenException(CombatantTokenException):
     Provides:
 
     Super Class:
-        CombatantToken
+        TokenException
     """
-    MSG = "PawnToken experienced an error."
+    MSG = "PawnToken error state."
     ERR_CODE = "PAWN_TOKEN_ERROR"
     
     def __init__(

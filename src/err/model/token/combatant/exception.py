@@ -25,7 +25,7 @@ class CombatantTokenException(TokenException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a CombatantToken experienced an error.
+        1.  Indicate that a CombatantToken experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -39,9 +39,9 @@ class CombatantTokenException(TokenException):
     Provides:
 
     Super Class:
-        Token
+        TokenException
     """
-    MSG = "CombatantToken experienced an error."
+    MSG = "CombatantToken error state."
     ERR_CODE = "COMBATANT_TOKEN_ERROR"
     
     def __init__(

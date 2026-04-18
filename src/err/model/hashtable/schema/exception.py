@@ -1,7 +1,7 @@
-# src/err/model/rook/exception.py
+# src/err/model/schema/exception.py
 
 """
-Module: err.model.rook.exception
+Module: err.model.schema.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import RankException
+from err import HashtableException
 
 
 __all__ = [
-    # ======================# ROOK_ERROR #======================#
-    "RookException",
+    # ======================# SCHEMA_HASHTABLE_ERROR #======================#
+    "SchemaHashtableException",
 ]
 
-# ======================# ROOK_ERROR #======================#
-class RookException(RankException):
+# ======================# SCHEMA_HASHTABLE_ERROR #======================#
+class SchemaHashtableException(HashtableException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Rook experienced an error.
+        1.  Indicate that a SchemaHashtable experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -39,10 +39,10 @@ class RookException(RankException):
     Provides:
 
     Super Class:
-        RankException
+        HashtableException
     """
-    MSG = "Rook error state."
-    ERR_CODE = "ROOK_ERROR"
+    MSG = "SchemaHashtable error state."
+    ERR_CODE = "SCHEMA_HASHTABLE_ERROR"
     
     def __init__(
             self,

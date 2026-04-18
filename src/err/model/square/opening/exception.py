@@ -1,7 +1,7 @@
-# src/err/model/rook/exception.py
+# src/err/model/opening/exception.py
 
 """
-Module: err.model.rook.exception
+Module: err.model.opening.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import RankException
+from err import SquareException
 
 
 __all__ = [
-    # ======================# ROOK_ERROR #======================#
-    "RookException",
+    # ======================# OPENING_ERROR #======================#
+    "OpeningSquareException",
 ]
 
-# ======================# ROOK_ERROR #======================#
-class RookException(RankException):
+# ======================# OPENING_ERROR #======================#
+class OpeningSquareException(SquareException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Rook experienced an error.
+        1.  Indicate that an OpeningSquare experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -39,10 +39,10 @@ class RookException(RankException):
     Provides:
 
     Super Class:
-        RankException
+        SquareException
     """
-    MSG = "Rook error state."
-    ERR_CODE = "ROOK_ERROR"
+    MSG = "Opening error state."
+    ERR_CODE = "OPENING_ERROR"
     
     def __init__(
             self,

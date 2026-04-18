@@ -18,6 +18,7 @@ from .context import *
 from .edge import *
 from .formation import *
 from .game import *
+from .hashtable import *
 from .hostage import *
 from .node import *
 from .persona import *

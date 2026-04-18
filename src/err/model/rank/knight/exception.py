@@ -1,7 +1,7 @@
-# src/err/model/pawn/exception.py
+# src/err/model/knight/exception.py
 
 """
-Module: err.model.pawn.exception
+Module: err.model.knight.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ModelException
+from err import RankException
 
 
 __all__ = [
-    # ======================# PAWN_ERROR #======================#
-    "PawnException",
+    # ======================# KNIGHT_ERROR #======================#
+    "KnightException",
 ]
 
-# ======================# PAWN_ERROR #======================#
-class PawnException(ModelException):
+# ======================# KNIGHT_ERROR #======================#
+class KnightException(RankException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Pawn experienced an error.
+        1.  Indicate that a Knight experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -39,10 +39,10 @@ class PawnException(ModelException):
     Provides:
 
     Super Class:
-        ModelException
+        RankException
     """
-    MSG = "Pawn error state."
-    ERR_CODE = "PAWN_ERROR"
+    MSG = "Knight error state."
+    ERR_CODE = "KNIGHT_ERROR"
     
     def __init__(
             self,

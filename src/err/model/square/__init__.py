@@ -10,7 +10,7 @@ version: 1.0.1
 # ============ ERR.MODEL.SQUARE PACKAGE ===========#
 
 # Packages
-None
+from .opening import *
 
 # Modules
 from .exception import SquareException

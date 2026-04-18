@@ -10,7 +10,7 @@ version: 1.0.1
 # ============ ERR.MODEL.PLAYER.HUMAN PACKAGE ===========#
 
 # Packages
-None
+
 
 # Modules
 from .exception import HumanPlayerException

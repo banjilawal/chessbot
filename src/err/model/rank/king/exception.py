@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ModelException
+from err import RankException
 
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# KING_ERROR #======================#
-class KingException(ModelException):
+class KingException(RankException):
     """
     Role:
         -   Error Tracing
@@ -39,7 +39,7 @@ class KingException(ModelException):
     Provides:
 
     Super Class:
-        ModelException
+        RankException
     """
     MSG = "King error state."
     ERR_CODE = "KING_ERROR"

@@ -5,27 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change afterPath="$PROJECT_DIR$/src/err/null/hashtable/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/hashtable/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/validation/schema/table/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/bootstrap/validation/binder/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/bootstrap/validation/binder/operation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/validation/binder/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/validation/binder/arena/validator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/model/hashtable/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/model/hashtable/schema/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/model/square/opening/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/analysis/relation/binder/analyst.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analysis/relation/binder/analyst.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/binder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/binder/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/binder/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/binder/arena/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/binder/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/binder/board/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/binder/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/binder/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/binder/board/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/binder/board/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/validation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/validation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/validation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/validation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/validation/binder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/validation/binder/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/validation/binder/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/validation/binder/board/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/validation/binder/board/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/validation/binder/board/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/validation/binder/query/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/schema/table/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/player/human/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/model/player/human/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/rank/bishop/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/model/rank/bishop/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/rank/king/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/model/rank/king/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/rank/knight/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/model/rank/knight/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/rank/knight/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/model/rank/knight/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/rank/pawn/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/model/rank/pawn/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/rank/queen/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/model/rank/queen/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/rank/rook/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/model/rank/rook/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/model/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/token/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/token/combatant/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/token/combatant/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/token/combatant/pawn/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/token/combatant/pawn/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/model/square/opening/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/model/hashtable/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/token/king/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/token/king/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/model/hashtable/schema/exception.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -299,7 +300,7 @@
     "ToolWindow.Python Packages.ShowToolbar": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/operation/validation/schema/table",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/model",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -326,11 +327,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/model" />
+      <recent name="$PROJECT_DIR$/src/err/model/rank" />
       <recent name="$PROJECT_DIR$/src/err/operation/validation/schema/table" />
       <recent name="$PROJECT_DIR$/src/err/null" />
       <recent name="$PROJECT_DIR$/src/operation/validation/binder" />
-      <recent name="$PROJECT_DIR$/src/operation/bootstrap/validation/binder" />
-      <recent name="$PROJECT_DIR$/src/err/null/binder" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/toolkit/binder/board" />
@@ -891,7 +892,7 @@
       <workItem from="1775523154635" duration="8604000" />
       <workItem from="1775535077469" duration="17356000" />
       <workItem from="1775569861163" duration="208129000" />
-      <workItem from="1776277739751" duration="54358000" />
+      <workItem from="1776277739751" duration="56270000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

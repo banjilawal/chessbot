@@ -1,16 +1,16 @@
-# src/err/model/rank/pawn/__init__.py
+# src/err/model/rank/knight/__init__.py
 
 """
-Module: err.model.rank.pawn.__init__
+Module: err.model.rank.knight.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.MODEL.RANK.PAWN PACKAGE ===========#
+# ============ ERR.MODEL.RANK.KNIGHT PACKAGE ===========#
 
 # Packages
 None
 
 # Modules
-from .exception import PawnException
+from .exception import KnightException

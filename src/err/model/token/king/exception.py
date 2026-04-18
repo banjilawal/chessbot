@@ -25,7 +25,7 @@ class KingTokenException(TokenException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a KingToken experienced an error.
+        1.  Indicate that a KingToken experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -41,7 +41,7 @@ class KingTokenException(TokenException):
     Super Class:
         TokenException
     """
-    MSG = "KingToken experienced an error."
+    MSG = "KingToken error state."
     ERR_CODE = "KING_TOKEN_ERROR"
     
     def __init__(
