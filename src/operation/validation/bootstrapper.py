@@ -1,20 +1,20 @@
-# src/operation/bootstrap/validation/operation.py
+# src/operation/validation/bootstrapper.py
 
 """
-Module: operation.boostrap.validation.operation
+Module: operation.validation.bootstrapper
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
 from __future__ import annotations
-
 from typing import Any, TypeVar, cast
 
-from err import NullException, ValidationBootstrapException
+
 from operation import Validator
 from result import ValidationResult
 from system import LoggingLevelRouter
+from err import NullException, ValidationBootstrapException
 
 T = TypeVar("T")
 
@@ -25,10 +25,11 @@ class ValidationBootstrapper(Validator[T]):
         -   Transaction Worker
         -   Integrity Maintenance
         -   Consistency Assurance
-        -   Process Runner
+        -   Bootstrap
 
     Responsibilities:
-        1.  Run null and type checks which start all validation operations.
+        1.  Run existence and type checks on all validation candidates.
+        2.  Encapsulate common, validation starting logic.
 
     Attributes:
 
@@ -100,7 +101,7 @@ class ValidationBootstrapper(Validator[T]):
                     )
                 )
             )
-        # --- Cast the rank to a Token for additional tests ---#
+        # --- Cast the candidate to the target_model then forward the work product. ---#
         return ValidationResult.success(cast(target_model, candidate))
     
 

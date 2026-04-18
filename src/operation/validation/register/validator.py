@@ -1,7 +1,7 @@
-# src/operation/validation/context/vector/validator.py
+# src/operation/validation/register/validator.py
 
 """
-Module: operation.validation.vector.validator
+Module: operation.validation.register.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -51,7 +51,7 @@ class VectorRegisterValidator(Validator[VectorRegister]):
     def validate(
             cls,
             candidate: Any,
-            context_validator: VectorContextValidator = None,
+            toolkit: VectorContextToolkit,
     ) -> ValidationResult[VectorRegister]:
         """
         Verify the candidate is a safe VectorRegister.

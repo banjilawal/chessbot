@@ -1,13 +1,13 @@
-# src/operation/validation/context/vector/register.__init__.py
+# src/operation/validation/register/__ini__.py
 
 """
-Module: operation.validation.vector.register.__init__
+Module: operation.validation.register.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== OPERATION.VALIDATION.VECTOR.REGISTER PACKAGE ===========#
+# =========== OPERATION.VALIDATION.REGISTER PACKAGE ===========#
 
 # Packages
 

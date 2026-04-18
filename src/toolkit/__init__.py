@@ -7,10 +7,6 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-import logging
-
-log = logging.getLogger("chessbot")
-
 # =========== TOOLKIT PACKAGE ===========#
 
 # Packages
@@ -22,6 +18,7 @@ from .edge import *
 from .game import *
 from .graph import *
 from .hostage import *
+from .math import *
 from .node import *
 from .rank import *
 from .scalar import *
