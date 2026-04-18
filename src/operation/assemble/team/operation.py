@@ -29,5 +29,13 @@ class TeamAssembler(Assembler[Team]):
         Raises:
         """
         method = f"{cls.__name__}.execute"
+        return BuildResult.success(
+            Team(
+                id=blueprint.id,
+                board=blueprint.board,
+                owner=blueprint.owner,
+                schema=blueprint.schema,
+            )
+        )
         
         
