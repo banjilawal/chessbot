@@ -27,7 +27,7 @@ class BoardTeamBinderToolkit(Toolkit):
 
     Attributes:
         team_service: TeamService
-        board_service: BoardService
+        board_validator: BoardService
         schema_service: SchemaService
         identity_service: IdentityService
         validation_bootstrapper: ValidationBootrapper
@@ -38,14 +38,14 @@ class BoardTeamBinderToolkit(Toolkit):
         Toolkit
     """
     _team_service: TeamService
-    _board_service: BoardService
+    _board_validator: BoardService
     _schema_service: SchemaService
 
     
     def __init__(
             self,
             team_service: TeamService | None = None,
-            board_service: BoardService | None = None,
+            board_validator: BoardService | None = None,
             schema_service: SchemaService | None = None,
 
             validation_bootstrapper: ValidationBootstrapper | None = None,
@@ -53,14 +53,14 @@ class BoardTeamBinderToolkit(Toolkit):
         """
         Args:
             team_service: TeamService
-            board_service: BoardService
+            board_validator: BoardService
             schema_service: SchemaService
 
             validation_bootstrapper: ValidationBootstrapper
         """
         super().__init__()
         self._team_service = team_service or TeamService()
-        self._board_service = board_service or BoardService()
+        self._board_validator = board_validator or BoardService()
         self._schema_service = schema_service or SchemaService()
 
         
@@ -69,8 +69,8 @@ class BoardTeamBinderToolkit(Toolkit):
         return self._team_service
         
     @property
-    def board_service(self) -> BoardService:
-        return self._board_service
+    def board_validator(self) -> BoardService:
+        return self._board_validator
     
     @property
     def schema_service(self) -> SchemaService:

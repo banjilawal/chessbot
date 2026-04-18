@@ -11,6 +11,7 @@ version: 1.0.1
 
 # Packages
 from .binder import *
+from .board import *
 from .context import *
 from .team import *
 from .token import *

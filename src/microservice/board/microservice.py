@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from integrity import BoardBuilder, BoardValidator
 from logic.board import BoardRelationAnalyzer
-from microservice import Microservice, TeamBinderService
+from microservice import Microservice, BoardTeamBinderService
 from model import Board
 
 
@@ -35,7 +35,7 @@ class BoardService(Microservice[Board]):
         *   See Microservice for inherited attributes.
     """
     SERVICE_NAME = "BoardService"
-    _team_binder_service: TeamBinderService
+    _team_binder_service: BoardTeamBinderService
     _relation_analyzer: BoardRelationAnalyzer
     
     def __init__(
@@ -44,7 +44,7 @@ class BoardService(Microservice[Board]):
             name: str | None = None,
             builder: BoardBuilder | None = None,
             validator: BoardValidator | None = None,
-            team_binder_service: TeamBinderService | None = None,
+            team_binder_service: BoardTeamBinderService | None = None,
             relation_analyzer: BoardRelationAnalyzer = BoardRelationAnalyzer()
     ):
         """
@@ -58,7 +58,7 @@ class BoardService(Microservice[Board]):
         super().__init__(id=id, name=name)
         self._builder = builder or BoardBuilder()
         self._validator = validator or BoardValidator()
-        self._team_binder_service = team_binder_service or TeamBinderService()
+        self._team_binder_service = team_binder_service or BoardTeamBinderService()
         self._relation_analyzer = relation_analyzer
     
     @property
@@ -74,7 +74,7 @@ class BoardService(Microservice[Board]):
         return  self._relation_analyzer
     
     @property
-    def team_binder_service(self) -> TeamBinderService:
+    def team_binder_service(self) -> BoardTeamBinderService:
         return self._team_binder_service
     
     @LoggingLevelRouter.monitor

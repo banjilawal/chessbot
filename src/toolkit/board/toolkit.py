@@ -9,10 +9,10 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from microservice import ArenaService, ArenaService, IdentityService
 from model import Board
 from toolkit import Toolkit
-
+from integrity import ArenaValidator
+from microservice import BoardTeamBinderService
 
 class BoardToolkit(Toolkit[Board]):
     """
@@ -25,35 +25,34 @@ class BoardToolkit(Toolkit[Board]):
         3.  No logic in the Toolkit.
 
     Attributes:
-        arena_service: ArenaService
-        identity_service: IdentityService
+        arena_validator: ArenaValidator
+        team_binder_service: BoardTeamBinderService
         
     Provides:
 
      Super Class:
          Toolkit
      """
-    _arena_service: ArenaService
-    _identity_service: IdentityService
+    _arena_validator: ArenaValidator
+    _team_binder_service: BoardBoardTeamBinderService
 
     def __init__(
             self,
-            arena_service: ArenaService | None = None,
-            identity_service: IdentityService | None = None,
+            arena_validator: ArenaValidator | None = None,
+            team_binder_service: BoardBoardTeamBinderService | None = None,
     ):
         """
         Args:
-            arena_service: ArenaService
-            identity_service: IdentityService
+            arena_validator: ArenaValidator
         """
         super().__init__()
-        self._arena_service = arena_service or ArenaService()
-        self._identity_service = identity_service or IdentityService()
+        self._arena_validator = arena_validator or ArenaValidator()
+        self._team_binder_service = team_binder_service or BoardTeamBinderService()
         
     @property
-    def arena_service(self) -> ArenaService:
-        return self._arena_service
+    def arena_validator(self) -> ArenaValidator:
+        return self._arena_validator
     
     @property
-    def identity_service(self) -> IdentityService:
-        return self._identity_service
+    def team_binder_service(self) -> BoardBoardTeamBinderService:
+        return self._team_binder_service

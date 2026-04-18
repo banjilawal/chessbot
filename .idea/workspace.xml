@@ -5,25 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change afterPath="$PROJECT_DIR$/src/operation/validation/hashtable/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/validation/hashtable/schema/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/validation/hashtable/schema/validator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/math/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/math/operand/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/math/operand/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/math/toolkit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/blueprint/board/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/blueprint/board/blueprint.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/board/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/board/operation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/square/opening/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/square/opening/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/validation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/validation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/validation/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/validation/bootstrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/validation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/validation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/validation/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/validation/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/validation/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/validation/register/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/validation/register/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/validation/register/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/integrity/validation/board/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/integrity/validation/board/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/blueprint/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/toolkit/binder/board/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/binder/board/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/vector/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/vector/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/board/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/board/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/team/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/team/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/token/toollkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/token/toollkit.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -297,7 +289,7 @@
     "ToolWindow.Python Packages.ShowToolbar": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/toolkit/math",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/operation/bootstrap/assembly",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -324,11 +316,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/operation/bootstrap/assembly" />
+      <recent name="$PROJECT_DIR$/src/model/blueprint" />
       <recent name="$PROJECT_DIR$/src/toolkit/math" />
       <recent name="$PROJECT_DIR$/src/toolkit" />
       <recent name="$PROJECT_DIR$/src/operation/validation" />
-      <recent name="$PROJECT_DIR$/src/err/model/token/combatant" />
-      <recent name="$PROJECT_DIR$/src/err/model" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/operation/validation" />
@@ -889,7 +881,7 @@
       <workItem from="1775523154635" duration="8604000" />
       <workItem from="1775535077469" duration="17356000" />
       <workItem from="1775569861163" duration="208129000" />
-      <workItem from="1776277739751" duration="62138000" />
+      <workItem from="1776277739751" duration="65644000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

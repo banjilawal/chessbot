@@ -1,7 +1,7 @@
-# src/microservice/binder/microservice.py
+# src/microservice/binder/team/microservice.py
 
 """
-Module: microservice.binder.microservice
+Module: microservice.binder.team.microsafe
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0
@@ -10,19 +10,18 @@ version: 1.0.0
 from __future__ import annotations
 
 from copy import deepcopy
-from typing import List, Optional
+from typing import Optional
 
 from analysis import BoardBinderRelationAnalyst, BoardTeamRelationAnalyst
 from integrity import SchemaValidator, TeamValidator
-from integrity.build.binder import TeamBinderBuilder
-from microservice import BoardService, Microservice, TeamService
-from model import Board, Schema, Team, BoardTeamBinder, TeamBinderValidator
-from report import RelationReport
+from microservice import BoardService, Microservice
+from model import Board, BoardTeamBinder, Schema, Team
+from operation import BoardTeamBinderValidator
 from result import AnalysisResult, SearchResult, UpdateResult
 from system import IdFactory, LoggingLevelRouter
 
 
-class TeamBinderService(Microservice[BoardTeamBinder]):
+class BoardTeamBinderService(Microservice[BoardTeamBinder]):
     """
     Role:Microservice API, Integrity Lifecycle Manager, APLifecycle Management.
 
@@ -39,8 +38,8 @@ class TeamBinderService(Microservice[BoardTeamBinder]):
     Provides:
 
     # LOCAL ATTRIBUTES:
-        *   build (Builder[TeamBinder])
-        *   validation (Validator[TeamBinder])
+        *   build (Builder[BoarBoardTeamBinder])
+        *   validation (Validator[BoardTeamBinder])
 
     # INHERITED ATTRIBUTES:
         *   See Microservice class for inherited attributes.
@@ -48,8 +47,8 @@ class TeamBinderService(Microservice[BoardTeamBinder]):
     Attributes:
         *   id (int)
         *   schema (schema)
-        *   build (Builder[TeamBinder])
-        *   validation (Validator[TeamBinder])
+        *   build (Builder[BoardTeamBinder])
+        *   validation (Validator[BoardTeamBinder])
 
     # LOCAL METHODS:
     None
@@ -57,35 +56,35 @@ class TeamBinderService(Microservice[BoardTeamBinder]):
     # INHERITED METHODS:
     *   See Microservice class for inherited methods.
     """
-    SERVICE_NAME = "TeamBinderMicroservice"
-    _builder: TeamBinderBuilder
-    _validator: TeamBinderValidator
+    SERVICE_NAME = "BoardTeamBinderMicroservice"
+    _builder: BoardTeamBinderBuilder
+    _validator: BoardTeamBinderValidator
     _board_relation_analyst: BoardBinderRelationAnalyst
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            builder: TeamBinderBuilder | None = None,
-            validator: TeamBinderValidator | None = None,
-            id: int = IdFactory.next_id(class_name="TeamBinderService"),
+            builder: BoardTeamBinderBuilder | None = None,
+            validator: BoardTeamBinderValidator | None = None,
+            id: int = IdFactory.next_id(class_name="BoardTeamBinderService"),
             board_relation_analyst: BoardTeamRelationAnalyst | None = None,
     ):
         super().__init__(id=id, name=name)
-        self._builder = builder or TeamBinderBuilder()
-        self._validator = validator or TeamBinderValidator()
+        self._builder = builder or BoardTeamBinderBuilder()
+        self._validator = validator or BoardTeamBinderValidator()
         self._board_relation_analyst = board_relation_analyst or BoardBinderRelationAnalyst()
     
     @property
-    def builder(self) -> TeamBinderBuilder:
+    def builder(self) -> BoardTeamBinderBuilder:
         return self._builder
     
     @property
-    def validator(self) -> TeamBinderValidator:
+    def validator(self) -> BoardTeamBinderValidator:
         return self._validator
     
     def __eq__(self, other):
         if super().__eq__(other):
-            if isinstance(other, TeamBinderService):
+            if isinstance(other, BoardTeamBinderService):
                 return True
         return False
     
@@ -125,11 +124,11 @@ class TeamBinderService(Microservice[BoardTeamBinder]):
         if binder_validation_result.is_failure:
             # Return the exception chain on failure
             return SearchResult.failure(
-                TeamBinderServiceException(
+                BoardTeamBinderServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamBinderServiceException.MSG,
-                    err_code=TeamBinderServiceException.ERR_CODE,
+                    msg=BoardTeamBinderServiceException.MSG,
+                    err_code=BoardTeamBinderServiceException.ERR_CODE,
                     ex=binder_validation_result.exception,
                 )
             )
@@ -138,11 +137,11 @@ class TeamBinderService(Microservice[BoardTeamBinder]):
         if schema_validation_result.is_failure:
             # Return the exception chain on failure
             return SearchResult.failure(
-                TeamBinderServiceException(
+                BoardTeamBinderServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamBinderServiceException.MSG,
-                    err_code=TeamBinderServiceException.ERR_CODE,
+                    msg=BoardTeamBinderServiceException.MSG,
+                    err_code=BoardTeamBinderServiceException.ERR_CODE,
                     ex=schema_validation_result.exception,
                 )
             )
@@ -168,11 +167,11 @@ class TeamBinderService(Microservice[BoardTeamBinder]):
             # Return the exception chain on failure
             return UpdateResult.update_failure(
                 original=binder,
-                exception=TeamBinderServiceException(
+                exception=BoardTeamBinderServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamBinderServiceException.MSG,
-                    err_code=TeamBinderServiceException.ERR_CODE,
+                    msg=BoardTeamBinderServiceException.MSG,
+                    err_code=BoardTeamBinderServiceException.ERR_CODE,
                     ex=binder_validation_result.exception,
                 )
             )
@@ -182,11 +181,11 @@ class TeamBinderService(Microservice[BoardTeamBinder]):
             # Return the exception chain on failure
             return UpdateResult.update_failure(
                 original=binder,
-                exception=TeamBinderServiceException(
+                exception=BoardTeamBinderServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamBinderServiceException.MSG,
-                    err_code=TeamBinderServiceException.ERR_CODE,
+                    msg=BoardTeamBinderServiceException.MSG,
+                    err_code=BoardTeamBinderServiceException.ERR_CODE,
                     ex=team_validation_result.exception,
                 )
             )
@@ -195,14 +194,14 @@ class TeamBinderService(Microservice[BoardTeamBinder]):
             # Return the exception chain on failure
             return UpdateResult.update_failure(
                 original=binder,
-                exception=TeamBinderServiceException(
+                exception=BoardTeamBinderServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamBinderServiceException.MSG,
-                    err_code=TeamBinderServiceException.ERR_CODE,
-                    ex=FullTeamBinderException(
-                        msg=FullTeamBinderException.MSG,
-                        err_code=FullTeamBinderException.ERR_CODE,
+                    msg=BoardTeamBinderServiceException.MSG,
+                    err_code=BoardTeamBinderServiceException.ERR_CODE,
+                    ex=FullBoardTeamBinderException(
+                        msg=FullBoardTeamBinderException.MSG,
+                        err_code=FullBoardTeamBinderException.ERR_CODE,
                     ),
                 )
             )
@@ -211,11 +210,11 @@ class TeamBinderService(Microservice[BoardTeamBinder]):
             # Return the exception chain on failure
             return UpdateResult.update_failure(
                 original=binder,
-                exception=TeamBinderServiceException(
+                exception=BoardTeamBinderServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamBinderServiceException.MSG,
-                    err_code=TeamBinderServiceException.ERR_CODE,
+                    msg=BoardTeamBinderServiceException.MSG,
+                    err_code=BoardTeamBinderServiceException.ERR_CODE,
                     ex=TeamBelongsToDifferntBoardException(
                         msg=TeamBelongsToDifferntBoardException.MSG,
                         err_code=TeamBelongsToDifferntBoardException.ERR_CODE,
@@ -228,11 +227,11 @@ class TeamBinderService(Microservice[BoardTeamBinder]):
             # Return the exception chain on failure
             return UpdateResult.update_failure(
                 original=binder,
-                exception=TeamBinderServiceException(
+                exception=BoardTeamBinderServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamBinderServiceException.MSG,
-                    err_code=TeamBinderServiceException.ERR_CODE,
+                    msg=BoardTeamBinderServiceException.MSG,
+                    err_code=BoardTeamBinderServiceException.ERR_CODE,
                     ex=TeamBelongsToDifferntBoardException(
                         msg=TeamBelongsToDifferntBoardException.MSG,
                         err_code=occupant_check_result.exception,
@@ -243,14 +242,14 @@ class TeamBinderService(Microservice[BoardTeamBinder]):
             # Return the exception chain on failure
             return UpdateResult.update_failure(
                 original=binder,
-                exception=TeamBinderServiceException(
+                exception=BoardTeamBinderServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamBinderServiceException.MSG,
-                    err_code=TeamBinderServiceException.ERR_CODE,
-                    ex=TeamBinderSlotAlreayOccupiedException(
-                        msg=TeamBinderSlotAlreayOccupiedException.MSG,
-                        err_code=TeamBinderSlotAlreayOccupiedException.ERR_CODE,
+                    msg=BoardTeamBinderServiceException.MSG,
+                    err_code=BoardTeamBinderServiceException.ERR_CODE,
+                    ex=BoardTeamBinderSlotAlreayOccupiedException(
+                        msg=BoardTeamBinderSlotAlreayOccupiedException.MSG,
+                        err_code=BoardTeamBinderSlotAlreayOccupiedException.ERR_CODE,
                     ),
                 )
             )

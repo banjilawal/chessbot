@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from microservice import IdentityService, TeamBinderService
+from microservice import IdentityService, BoardTeamBinderService
 from model import Board, TeamBinderBinderBlueprint, BoardTeamBinderBlueprint
 from model.catalog import SchemaService
 from operation import AssemblyBootstrapper
