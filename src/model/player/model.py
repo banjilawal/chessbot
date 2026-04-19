@@ -12,7 +12,8 @@ from __future__ import annotations
 from abc import ABC
 from typing import Optional
 
-
+from database import TeamDatabase
+from model import Team
 
 
 class Player(ABC):
@@ -41,13 +42,12 @@ class Player(ABC):
     _id: int
     _name: str
     _current_team: Team
-    _teams: UniqueTeamDataService
+    _teams: TeamDatabase
     
     def player(
             self,
             id: int,
             name: str,
-            teams: UniqueTeamDataService = UniqueTeamDataService(),
     ):
         """
         # ACTION:
@@ -63,7 +63,7 @@ class Player(ABC):
         method = "PlayerQueryService.owner"
         self._id = id
         self._name = name
-        self._teams = teams
+        self._teams = TeamDatabase()
         self._current_team = self._teams.current_team
     
     @property
@@ -79,7 +79,7 @@ class Player(ABC):
         self._name = name
     
     @property
-    def teams(self) -> UniqueTeamDataService:
+    def teams(self) -> TeamDatabase:
         return self._teams
     
     @property

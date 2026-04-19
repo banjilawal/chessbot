@@ -12,7 +12,7 @@ from __future__ import annotations
 from copy import deepcopy
 from typing import Optional
 
-from analysis import BoardBinderRelationAnalyst, BoardTeamRelationAnalyst
+from analysis import BoardTeamBinderRelationAnalyst, BoardTeamRelationAnalyst
 from integrity import SchemaValidator, TeamValidator
 from microservice import BoardService, Microservice
 from model import Board, BoardTeamBinder, Schema, Team
@@ -59,7 +59,7 @@ class BoardTeamBinderService(Microservice[BoardTeamBinder]):
     SERVICE_NAME = "BoardTeamBinderMicroservice"
     _builder: BoardTeamBinderBuilder
     _validator: BoardTeamBinderValidator
-    _board_relation_analyst: BoardBinderRelationAnalyst
+    _board_relation_analyst: BoardTeamBinderRelationAnalyst
     
     def __init__(
             self,
@@ -72,7 +72,7 @@ class BoardTeamBinderService(Microservice[BoardTeamBinder]):
         super().__init__(id=id, name=name)
         self._builder = builder or BoardTeamBinderBuilder()
         self._validator = validator or BoardTeamBinderValidator()
-        self._board_relation_analyst = board_relation_analyst or BoardBinderRelationAnalyst()
+        self._board_relation_analyst = board_relation_analyst or BoardTeamBinderRelationAnalyst()
     
     @property
     def builder(self) -> BoardTeamBinderBuilder:

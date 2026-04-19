@@ -8,13 +8,10 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import Dict, List, overload
-
-from setuptools.sandbox import override_temp
+from typing import Dict, List
 
 from microservice import Microservice, TeamService
 from model import Binder, Board, Schema, Team
-from model.binder.model import S
 
 
 class BoardTeamBinder(Binder[Board, Team]):

@@ -22,7 +22,7 @@ from result import AnalysisResult, MethodResultType
 from system import LoggingLevelRouter
 
 
-class BoardBinderRelationAnalyst(RelationAnalyst[Board, BoardTeamBinder]):
+class BoardTeamBinderRelationAnalyst(RelationAnalyst[Board, BoardTeamBinder]):
     """
     Role:
         - Relation Analyst

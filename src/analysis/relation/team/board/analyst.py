@@ -133,11 +133,11 @@ class BoardTeamRelationAnalyst(RelationAnalyst[Board, Team]):
             return AnalysisResult.success(RelationReport.no_relation())
         
         # Handle the case that, the team has not registered with the board.
-        if team.schema not in board.team_binder.schemas:
+        if team.schema not in board.team_binder.schema_list:
             return AnalysisResult.success(RelationReport.registration_missing(team))
         
         # Handle the case that, the board has a stale link to the team.
-        if team in board.team_binder.teams and team.board != board:
+        if team in board.team_binder.satellite_list and team.board != board:
             return AnalysisResult.success(RelationReport.stale_link(board))
         
         # Last case is the

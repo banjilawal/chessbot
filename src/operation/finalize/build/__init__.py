@@ -10,6 +10,8 @@ version: 1.0.1
 # =========== OPERATION.FINALIZE.BUILD PACKAGE ===========#
 
 # Packages
+from board import *
+from .team import *
 from .token import *
 
 # Modules

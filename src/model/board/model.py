@@ -9,11 +9,10 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from model import BoardTeamBinder
+from controller import BoardTeamBinderController
+from database import HostageDatabase, SquareDatabase
 from model.arena import Arena
 from model.board import BoardState
-from model.square import SquareDatabase
-from model.hostage import HostageDatabase
 
 class Board:
     """
@@ -36,7 +35,7 @@ class Board:
     _id: int
     _arena: Arena
     _state: BoardState
-    _team_binder: BoardTeamBinder
+    _binder_controller: BoardTeamBinderController
     _squares: SquareDatabase
     _hostage_database: HostageDatabase
     
@@ -62,7 +61,7 @@ class Board:
         
         self._id = id
         self._arena = arena
-        self._team_binder = BoardTeamBinder()
+        self._binder_controller = BoardTeamBinderController()
         self._squares = SquareDatabase()
         self._hostage_database = HostageDatabase()
         self._state = BoardState.IS_EMPTY
@@ -88,8 +87,8 @@ class Board:
         return self._squares
     
     @property
-    def team_binder(self) -> BoardTeamBinder:
-        return self._team_binder
+    def binder_controller(self) -> BoardTeamBinderController:
+        return self._binder_controller
     
     @property
     def hostage_database(self) -> HostageDatabase:
