@@ -1,7 +1,7 @@
-# src/err/operation/build/exception.py
+# src/err/operation/build/context/exception.py
 
 """
-Module: err.build.operation.exception
+Module: err.operation.build.context.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -27,7 +27,7 @@ class ContextBuildException(BuildException):
     Responsibilities:
         1.  Indicate that a ContextBuild failed.
 
-    Attributes:
+    Build Failed.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -41,7 +41,7 @@ class ContextBuildException(BuildException):
     Super Class:
         BuildException
     """
-    MSG = "No build logic for context's attribute"
+    MSG = "context's build failed."
     ERR_CODE = "CONTEXT_BUILD_FAILURE"
     
     def __init__(

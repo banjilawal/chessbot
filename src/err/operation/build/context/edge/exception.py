@@ -1,7 +1,7 @@
-# src/err/operation/build/edge/exception.py
+# src/err/operation/build/context/edge/exception.py
 
 """
-Module: err.build.operation.edge.exception
+Module: err.operation.build.context.edge.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -27,9 +27,9 @@ class EdgeContextBuildException(ContextBuildException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a EdgeContextBuild step failed.
+        1.  Indicate that a EdgeContext build failed.
 
-    Attributes:
+    Build Failed.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -43,7 +43,7 @@ class EdgeContextBuildException(ContextBuildException):
     Super Class:
         ContextBuildException
     """
-    MSG = "No build logic for EdgeContext attribute"
+    MSG = "EdgeContext build failed."
     ERR_CODE = "EDGE_CONTEXT_BUILD_FAILURE"
     
     def __init__(

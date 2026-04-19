@@ -25,7 +25,7 @@ class PlayerBuildException(BuildException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PlayerBuild step failed.
+        1.  Indicate that a Player build failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class PlayerBuildException(BuildException):
     Super Class:
         BuildException
     """
-    MSG = "PlayerBuild step failed"
+    MSG = "Player build failed."
     ERR_CODE = "PLAYER_BUILD_FAILURE"
     
     def __init__(

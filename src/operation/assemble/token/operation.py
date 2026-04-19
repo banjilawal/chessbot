@@ -1,7 +1,7 @@
-# src/integrity/assemble/token/assembler.py
+# src/operation/assemble/token/operation.py
 
 """
-Module: integrity.assemble.token.assembler
+Module: operation.assemble.token.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

@@ -10,14 +10,14 @@ version: 1.0.0
 from __future__ import annotations
 
 
-from model import ArenaPlayerBinder, Board
+from model import ArenaBinder, Board
 
 
 class Arena:
     _id: int
-    _arena_player_binder: ArenaPlayerBinder
+    _arena_player_binder: ArenaBinder
     
-    def __init__(self, id: int, arena_player_binder: ArenaPlayerBinder):
+    def __init__(self, id: int, arena_player_binder: ArenaBinder):
         self._id = id
         self._arena_player_binder = arena_player_binder
     
@@ -26,7 +26,7 @@ class Arena:
         return self._id
     
     @property
-    def binder(self) ->ArenaPlayerBinder:
+    def binder(self) ->ArenaBinder:
         return self._arena_player_binder
 
     @property

@@ -10,11 +10,11 @@ version: 1.0.1
 from __future__ import annotations
 
 from microservice import ArenaService, IdentityService, SchemaService, PlayerService
-from model import ArenaPlayerBinder
+from model import ArenaBinder
 from toolkit import Toolkit
 
 
-class ArenaPlayerBinderToolkit(Toolkit[ArenaPlayerBinder]):
+class ArenaPlayerBinderToolkit(Toolkit[ArenaBinder]):
     """
     Role:
         -   Container

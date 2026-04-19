@@ -10,14 +10,14 @@ version: 1.0.0
 from __future__ import annotations
 
 from microservice import BoardService
-from model import Board, BoardTeamBinder
+from model import Board, BoardBinder
 from operation.bootstrap.build.binder.wrapper import TeamBinderBuildException
 from operation import Assemble
 from result import BuildResult
 from system import LoggingLevelRouter
 
 
-class TeamBinderBuilder(Assemble[BoardTeamBinder]):
+class TeamBinderBuilder(Assemble[BoardBinder]):
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -25,7 +25,7 @@ class TeamBinderBuilder(Assemble[BoardTeamBinder]):
             cls,
             board: Board,
             board_service: BoardService,
-    ) -> BuildResult[BoardTeamBinder]:
+    ) -> BuildResult[BoardBinder]:
         method = f"{cls.__name__}.builder"
         
         # Handle the case that, board fails a validation check.
@@ -41,4 +41,4 @@ class TeamBinderBuilder(Assemble[BoardTeamBinder]):
                     ex=board_validation_result.exception,
                 )
             )
-        return BuildResult.success(BoardTeamBinder(board=board))
+        return BuildResult.success(BoardBinder(board=board))

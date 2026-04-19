@@ -24,7 +24,7 @@ class ArenaBuildException(BuildException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an ArenaBuild step failed.
+        1.  Indicate that an Arena build failed.
 
     Attributes:
         msg: Optional[str]
@@ -41,7 +41,7 @@ class ArenaBuildException(BuildException):
     Super Class:
         BuildException
     """
-    MSG = "ArenaBuild step failed"
+    MSG = "Arena build failed."
     ERR_CODE = "ARENA_BUILD_FAILURE"
     
     def __init__(

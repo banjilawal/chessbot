@@ -1,7 +1,7 @@
-# src/err/operation/build/node/exception.py
+# src/err/operation/build/context/node/exception.py
 
 """
-Module: err.build.operation.node.exception
+Module: err.operation.build.context.node.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -27,9 +27,9 @@ class NodeContextBuildException(ContextBuildException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NodeContextBuild step failed.
+        1.  Indicate that a NodeContext build failed.
 
-    Attributes:
+    Build Failed.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -43,7 +43,7 @@ class NodeContextBuildException(ContextBuildException):
     Super Class:
         ContextBuildException
     """
-    MSG = "No build logic for NodeContext attribute"
+    MSG = "NodeContext build failed."
     ERR_CODE = "NODE_CONTEXT_BUILD_FAILURE"
     
     def __init__(

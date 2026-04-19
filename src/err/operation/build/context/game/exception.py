@@ -1,7 +1,7 @@
-# src/err/operation/build/game/exception.py
+# src/err/operation/build/context/game/exception.py
 
 """
-Module: err.build.operation.game.exception
+Module: err.operation.build.context.game.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -27,9 +27,9 @@ class GameContextBuildException(ContextBuildException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a GameContextBuild step failed.
+        1.  Indicate that a GameContext build failed.
 
-    Attributes:
+    Build Failed.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -43,7 +43,7 @@ class GameContextBuildException(ContextBuildException):
     Super Class:
         ContextBuildException
     """
-    MSG = "No build logic for GameContext attribute"
+    MSG = "GameContext build failed."
     ERR_CODE = "GAME_CONTEXT_BUILD_FAILURE"
     
     def __init__(

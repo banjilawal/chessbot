@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Dict, cast
 
 from err import BoardTeamBinderNullException, BoardTeamBinderValidationException, NullException
-from model import Board, BoardTeamBinder, Schema, Team
+from model import Board, BoardBinder, Schema, Team
 from operation import Validator
 from operation.bootstrap.validation.binder.operation import SchemaHashtableValidator
 from result import ValidationResult
@@ -20,7 +20,7 @@ from system import LoggingLevelRouter
 from toolkit import BoardTeamBinderToolkit
 
 
-class BoardTeamBinderValidator(Validator[BoardTeamBinder]):
+class BoardTeamBinderValidator(Validator[BoardBinder]):
     """
     Role
         -   Transaction Worker
@@ -50,7 +50,7 @@ class BoardTeamBinderValidator(Validator[BoardTeamBinder]):
             cls,
             candidate: Any,
             toolkit: BoardTeamBinderToolkit,
-    ) -> ValidationResult[BoardTeamBinder]:
+    ) -> ValidationResult[BoardBinder]:
         """
         Verify the candidate is a safe BoardTeamBinder.
         
@@ -81,7 +81,7 @@ class BoardTeamBinderValidator(Validator[BoardTeamBinder]):
         # Handle the case that, the candidate does not exist.
         validation_bootstrap_result = toolkit.validation_bootstrapper.validate(
             candidate=candidate,
-            target_model=BoardTeamBinder,
+            target_model=BoardBinder,
             null_exception=BoardTeamBinderNullException(),
         )
         if validation_bootstrap_result.is_failure:
@@ -116,7 +116,7 @@ class BoardTeamBinderValidator(Validator[BoardTeamBinder]):
     @LoggingLevelRouter.monitor
     def _run_satellite_table_checks(
             cls,
-            binder: BoardTeamBinder,
+            binder: BoardBinder,
             toolkit: BoardTeamBinderToolkit
     ) -> ValidationResult[Dict[Schema, Team]]:
         method = f"{cls.__name__}.run_satellite_table_checks"

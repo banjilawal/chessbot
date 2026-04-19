@@ -15,14 +15,14 @@ from analysis import RelationAnalyst
 from err import BoardBinderAnalysisException
 from integrity import BoardValidator
 from microservice import BoardService
-from model import Board, BoardTeamBinder
+from model import Board, BoardBinder
 from operation import BoardTeamBinderValidator
 from report import RelationReport
 from result import AnalysisResult, MethodResultType
 from system import LoggingLevelRouter
 
 
-class BoardTeamBinderRelationAnalyst(RelationAnalyst[Board, BoardTeamBinder]):
+class BoardTeamBinderRelationAnalyst(RelationAnalyst[Board, BoardBinder]):
     """
     Role:
         - Relation Analyst
@@ -49,10 +49,10 @@ class BoardTeamBinderRelationAnalyst(RelationAnalyst[Board, BoardTeamBinder]):
     def analyze(
             cls,
             candidate_primary: Board,
-            candidate_satellite: BoardTeamBinder,
+            candidate_satellite: BoardBinder,
             board_validator: BoardValidator | None = None,
             team_binder_validator: BoardTeamBinderValidator | None = None,
-    ) -> AnalysisResult[RelationReport[Board, BoardTeamBinder]]:
+    ) -> AnalysisResult[RelationReport[Board, BoardBinder]]:
         """
         Generate a report on the relationship between a board and binder.
         
@@ -110,7 +110,7 @@ class BoardTeamBinderRelationAnalyst(RelationAnalyst[Board, BoardTeamBinder]):
                     ex=team_binder_validation_result.exception,
                 )
             )
-        team_binder = cast(BoardTeamBinder, team_binder_validation_result.payload)
+        team_binder = cast(BoardBinder, team_binder_validation_result.payload)
         
         # Handle the case that, the binder belongs to a different board.
         if board.team_binder != team_binder and team_binder.primary != board :

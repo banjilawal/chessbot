@@ -1,7 +1,7 @@
-# src/err/operation/build/rank/exception.py
+# src/err/operation/build/context/rank/exception.py
 
 """
-Module: err.build.operation.rank.exception
+Module: err.operation.build.context.rank.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -27,9 +27,9 @@ class RankContextBuildException(ContextBuildException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RankContextBuild step failed.
+        1.  Indicate that a RankContext build failed.
 
-    Attributes:
+    Build Failed.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -43,7 +43,7 @@ class RankContextBuildException(ContextBuildException):
     Super Class:
         ContextBuildException
     """
-    MSG = "No build logic for RankContext attribute"
+    MSG = "RankContext build failed."
     ERR_CODE = "RANK_CONTEXT_BUILD_FAILURE"
     
     def __init__(

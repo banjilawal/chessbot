@@ -25,7 +25,7 @@ class RankBuildException(BuildException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RankBuild step failed.
+        1.  Indicate that a Rank build failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class RankBuildException(BuildException):
     Super Class:
         BuildException
     """
-    MSG = "RankBuild step failed"
+    MSG = "Rank build failed."
     ERR_CODE = "RANK_BUILD_FAILURE"
     
     def __init__(

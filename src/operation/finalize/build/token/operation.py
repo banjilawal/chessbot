@@ -38,8 +38,6 @@ class TokenAssemblyFinalizer(AssemblyFinalizer[Token]):
                         ex=insertion_result.exception,
                     )
                 )
-            
-        
         # --- Forward the work product to the caller. ---#
         return BuildResult.success(product)
         

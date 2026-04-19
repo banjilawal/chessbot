@@ -1,17 +1,17 @@
 from microservice import BoardTeamBinderService
-from model import BoardTeamBinder
+from model import BoardBinder
 
 
 class BoardTeamBinderController:
-     _binder: BoardTeamBinder
+     _binder: BoardBinder
      _service: BoardTeamBinderService
      
-     def __init__(self, binder: BoardTeamBinder, service: BoardTeamBinderService):
+     def __init__(self, binder: BoardBinder, service: BoardTeamBinderService):
          self._binder = binder
          self._service = service
          
      @property
-     def binder(self) -> BoardTeamBinder:
+     def binder(self) -> BoardBinder:
          return self._binder
      
      @property

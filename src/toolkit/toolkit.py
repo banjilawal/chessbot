@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import ABC
+from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from integrity import NumberValidator
@@ -70,5 +70,6 @@ class Toolkit(ABC, Generic[T]):
         return self._identity_service
 
     @property
+    @abstractmethod
     def validation_bootstrap(self) -> ValidationBootstrapper:
-        return self._validation_bootstrapper
+        pass

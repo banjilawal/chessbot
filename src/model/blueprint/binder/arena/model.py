@@ -11,10 +11,10 @@ from __future__ import annotations
 from typing import Optional
 
 from microservice import PlayerService
-from model import Blueprint, Arena, Schema, ArenaPlayerBinder
+from model import Blueprint, Arena, Schema, ArenaBinder
 
 
-class ArenaPlayerBinderBlueprint(Blueprint[ArenaPlayerBinder]):
+class ArenaPlayerBinderBlueprint(Blueprint[ArenaBinder]):
     _id: int
     _arena: Arena
     _schema: Schema

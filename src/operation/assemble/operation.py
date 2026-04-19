@@ -1,15 +1,13 @@
-# src/operation/assemble/assembler.py
+# src/operation/assemble/operation.py
 
 """
-Module: operation.assemble.assembler
+Module: operation.assemble.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
 from __future__ import annotations
-
-
 from typing import TypeVar
 
 from model import Blueprint

@@ -24,7 +24,7 @@ class NodeBuildException(BuildException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NodeBuild step failed.
+        1.  Indicate that a Node build failed.
 
     Attributes:
         msg: Optional[str]
@@ -41,7 +41,7 @@ class NodeBuildException(BuildException):
     Super Class:
         BuildException
     """
-    MSG = "NodeBuild step failed"
+    MSG = "Node build failed."
     ERR_CODE = "NODE_BUILD_FAILURE"
     
     def __init__(

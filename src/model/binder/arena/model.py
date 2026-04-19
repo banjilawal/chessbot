@@ -11,10 +11,10 @@ from __future__ import annotations
 from typing import Dict
 
 from microservice import PlayerService
-from model import Binder, Arena, Board, BoardBlueprint, Schema, Player
+from model import Binder, Arena, Board, Schema, Player
 
 
-class ArenaPlayerBinder(Binder[Arena, Player]):
+class ArenaBinder(Binder[Arena, Player]):
     """
     Role:
         -   Model
@@ -81,7 +81,7 @@ class ArenaPlayerBinder(Binder[Arena, Player]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, ArenaPlayerBinder):
+        if isinstance(other, ArenaBinder):
             return super().__eq__(other)
         
     def __hash__(self):

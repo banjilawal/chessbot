@@ -1,7 +1,7 @@
-# src/err/operation/build/Vector/exception.py
+# src/err/operation/build/context/Vector/exception.py
 
 """
-Module: err.build.operation.Vector.exception
+Module: err.operation.build.context.Vector.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -23,9 +23,9 @@ class VectorContextBuildException(ContextBuildException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorContextBuild step failed.
+        1.  Indicate that a VectorContext build failed.
 
-    Attributes:
+    Build Failed.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -39,7 +39,7 @@ class VectorContextBuildException(ContextBuildException):
     Super Class:
         ContextBuildException
     """
-    MSG = "No build logic for VectorContext attribute"
+    MSG = "VectorContext build failed."
     ERR_CODE = "VECTOR_CONTEXT_BUILD_FAILURE"
     
     def __init__(

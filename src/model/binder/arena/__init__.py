@@ -13,4 +13,4 @@ version: 1.0.0
 
 
 # Modules
-from .model import ArenaPlayerBinder
+from .model import ArenaBinder

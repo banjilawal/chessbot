@@ -25,7 +25,7 @@ class PersonaBuildException(BuildException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that n PersonaBuild step failed.
+        1.  Indicate that n Persona build failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,7 +41,7 @@ class PersonaBuildException(BuildException):
     Super Class:
         BuildException
     """
-    MSG = "PersonaBuild step failed"
+    MSG = "Persona build failed."
     ERR_CODE = "PERSONA_BUILD_FAILURE"
     
     def __init__(

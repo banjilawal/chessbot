@@ -1,7 +1,7 @@
-# src/err/operation/build/team/exception.py
+# src/err/operation/build/context/team/exception.py
 
 """
-Module: err.build.operation.team.exception
+Module: err.operation.build.context.team.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -27,9 +27,9 @@ class TeamContextBuildException(ContextBuildException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TeamContextBuild step failed.
+        1.  Indicate that a TeamContext build failed.
 
-    Attributes:
+    Build Failed.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -43,7 +43,7 @@ class TeamContextBuildException(ContextBuildException):
     Super Class:
         ContextBuildException
     """
-    MSG = "No build logic for TeamContext attribute"
+    MSG = "TeamContext build failed."
     ERR_CODE = "TEAM_CONTEXT_BUILD_FAILURE"
     
     def __init__(

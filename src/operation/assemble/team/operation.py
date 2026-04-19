@@ -1,7 +1,7 @@
-# src/integrity/assemble/team/assembler.py
+# src/operation/assemble/team/operation.py
 
 """
-Module: integrity.assemble.team.assembler
+Module: operation.assemble.team.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

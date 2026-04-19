@@ -1,7 +1,7 @@
-# src/err/operation/build/persona/exception.py
+# src/err/operation/build/context/persona/exception.py
 
 """
-Module: err.build.operation.persona.exception
+Module: err.operation.build.context.persona.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -27,9 +27,9 @@ class PersonaContextBuildException(ContextBuildException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PersonaContextBuild step failed.
+        1.  Indicate that a PersonaContext build failed.
 
-    Attributes:
+    Build Failed.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -43,7 +43,7 @@ class PersonaContextBuildException(ContextBuildException):
     Super Class:
         ContextBuildException
     """
-    MSG = "No build logic for PersonaContext attribute"
+    MSG = "PersonaContext build failed."
     ERR_CODE = "PERSONA_CONTEXT_BUILD_FAILURE"
     
     def __init__(

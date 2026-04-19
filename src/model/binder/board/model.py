@@ -14,7 +14,7 @@ from microservice import Microservice, TeamService
 from model import Binder, Board, Schema, Team
 
 
-class BoardTeamBinder(Binder[Board, Team]):
+class BoardBinder(Binder[Board, Team]):
     """
     Role:
         -   Model
@@ -32,13 +32,13 @@ class BoardTeamBinder(Binder[Board, Team]):
         black_satellite: Optional[Team]
         satellite_table: Dict[Schema, S]
         satellite_service: Microservice[Team]
+
+    Provides:
         is_empty: bool
         is_full: bool
         is_white_slot_occupied: bool
         is_black_slot_occupied: bool
-
-    Provides:
-
+        
     Super Class:
         Binder
     """
@@ -64,7 +64,6 @@ class BoardTeamBinder(Binder[Board, Team]):
             satellite_service=satellite_service
         )
         
-
     @property
     def primary(self) -> Board:
         return super().primary
@@ -84,7 +83,7 @@ class BoardTeamBinder(Binder[Board, Team]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, BoardTeamBinder):
+        if isinstance(other, BoardBinder):
             return super().__eq__(other)
         
     def __hash__(self):

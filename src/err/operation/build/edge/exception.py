@@ -25,7 +25,7 @@ class EdgeBuildException(BuildException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an EdgeBuild step failed.
+        1.  Indicate that an Edge build failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class EdgeBuildException(BuildException):
     Super Class:
         BuildException
     """
-    MSG = "EdgeBuild step failed"
+    MSG = "Edge build failed."
     ERR_CODE = "EDGE_BUILD_FAILURE"
     
     def __init__(

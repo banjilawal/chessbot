@@ -26,7 +26,7 @@ class BoardBuildException(BuildException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BoardBuild step failed.
+        1.  Indicate that a Board build failed.
 
     Attributes:
         msg: Optional[str]
@@ -43,7 +43,7 @@ class BoardBuildException(BuildException):
     Super Class:
         BuildException
     """
-    MSG = "BoardBuild step failed"
+    MSG = "Board build failed."
     ERR_CODE = "BOARD_BUILD_FAILURE"
     
     def __init__(

@@ -1,7 +1,7 @@
-# src/err/operation/build/hostage/exception.py
+# src/err/operation/build/context/hostage/exception.py
 
 """
-Module: err.build.operation.hostage.exception
+Module: err.operation.build.context.hostage.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -27,9 +27,9 @@ class HostageContextBuildException(ContextBuildException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a HostageContextBuild step failed.
+        1.  Indicate that a HostageContext build failed.
 
-    Attributes:
+    Build Failed.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -43,7 +43,7 @@ class HostageContextBuildException(ContextBuildException):
     Super Class:
         ContextBuildException
     """
-    MSG = "No build logic for HostageContext attribute"
+    MSG = "HostageContext build failed."
     ERR_CODE = "HOSTAGE_CONTEXT_BUILD_FAILURE"
     
     def __init__(

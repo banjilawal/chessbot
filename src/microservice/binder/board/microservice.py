@@ -15,13 +15,13 @@ from typing import Optional
 from analysis import BoardTeamBinderRelationAnalyst, BoardTeamRelationAnalyst
 from integrity import SchemaValidator, TeamValidator
 from microservice import BoardService, Microservice
-from model import Board, BoardTeamBinder, Schema, Team
+from model import Board, BoardBinder, Schema, Team
 from operation import BoardTeamBinderValidator
 from result import AnalysisResult, SearchResult, UpdateResult
 from system import IdFactory, LoggingLevelRouter
 
 
-class BoardTeamBinderService(Microservice[BoardTeamBinder]):
+class BoardTeamBinderService(Microservice[BoardBinder]):
     """
     Role:Microservice API, Integrity Lifecycle Manager, APLifecycle Management.
 
@@ -92,9 +92,9 @@ class BoardTeamBinderService(Microservice[BoardTeamBinder]):
     def analyze_board_relation(
             self,
             board: Board,
-            binder: BoardTeamBinder,
+            binder: BoardBinder,
             board_service: BoardService | None = None,
-    ) -> AnalysisResult[RelationReport[Board, BoardTeamBinder]]:
+    ) -> AnalysisResult[RelationReport[Board, BoardBinder]]:
         method = f"{self.__class__.__name__}.analyze_board_relation"
         
         if board_service is None:
@@ -111,7 +111,7 @@ class BoardTeamBinderService(Microservice[BoardTeamBinder]):
     def slot_occupant(
             self,
             schema: Schema,
-            binder: BoardTeamBinder,
+            binder: BoardBinder,
             schema_validator: SchemaValidator | None = None,
     ) -> SearchResult[Optional[Team]]:
         method = f"{self.__class__.__name__}"
@@ -153,9 +153,9 @@ class BoardTeamBinderService(Microservice[BoardTeamBinder]):
     def add_team(
             self,
             team: Team,
-            binder: BoardTeamBinder,
+            binder: BoardBinder,
             team_validator: TeamValidator | None = None,
-    ) -> UpdateResult[BoardTeamBinder]:
+    ) -> UpdateResult[BoardBinder]:
         method = f"{self.__class__.__name__}.add_team"
         
         if team_validator is None:

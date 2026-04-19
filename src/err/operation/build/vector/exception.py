@@ -25,7 +25,7 @@ class VectorBuildException(BuildException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a VectorBuild step failed.
+        1.  Indicate a Vector build failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class VectorBuildException(BuildException):
     Super Class:
         BuildException
     """
-    MSG = "VectorBuild step failed"
+    MSG = "Vector build failed."
     ERR_CODE = "VECTOR_BUILD_FAILURE"
     
     def __init__(
