@@ -1,15 +1,16 @@
-# src/integrity/build/square/__init__.py
+# src/operation/finalize/square/__ini__.py
 
 """
-Module: integrity.build.square.__init__
+Module: operation.finalize.square.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== BUILD.SQUARE PACKAGE ===========#
+# =========== FINALIZE.SQUARE PACKAGE ===========#
 
 # Packages
 
+
 # Modules
-from .builder import SquareBuilder
+from .operation import SquareAssemblyFinalizer

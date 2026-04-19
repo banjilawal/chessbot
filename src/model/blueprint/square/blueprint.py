@@ -55,5 +55,3 @@ class SquareBlueprint(Blueprint[Square]):
     @property
     def coord(self) -> Coord:
         return self._coord
-    
-
