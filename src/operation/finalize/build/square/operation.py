@@ -54,6 +54,6 @@ class SquareAssemblyFinalizer(AssemblyFinalizer[Square]):
                     err_code=FinalizeSquareBuildException.ERR_CODE,
                     ex=insertion_result.exception,
                 )
-                )
+            )
         # --- Forward the work product to the caller. ---#
         return BuildResult.success(product)

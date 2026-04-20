@@ -13,4 +13,4 @@ version: 1.0.1
 
 
 # Modules
-from .blueprint import  TeamBlueprint
+from .model import  TeamBlueprint

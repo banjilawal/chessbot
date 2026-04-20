@@ -15,7 +15,7 @@ from analysis import CollisionReport
 from err import BootstrapTokenAssemblyException
 from model import OpeningSquare, SquareContext, Token, TokenBlueprint
 from operation import AssemblyBootstrapper
-from result import AnalysisResult, AssemblyResult, SearchResult, ValidationResult
+from result import AnalysisResult, SearchResult, ValidationResult
 from search import SquareNotFoundException
 from system import IdFactory, LoggingLevelRouter
 from toolkit import TokenToolkit
@@ -29,12 +29,12 @@ class TokenAssemblyBootstrapper(AssemblyBootstrapper[Token]):
             cls,
             blueprint: TokenBlueprint,
             toolkit: TokenToolkit | None = None
-    ) -> AssemblyResult[TokenBlueprint]:
+    ) -> ValidationResult[TokenBlueprint]:
         """
         Verify a TokenBlueprint and fill before its used.
 
         Action:
-            1.  Send an exception chain in the AssemblyResult if any following occurs:
+            1.  Send an exception chain in the ValidationResult if any following occurs:
                     -   A blueprint attribute gets flagged by a validator.
                     -   The opening square is not found.
                     -   The Rank is not built successfully.
@@ -45,7 +45,7 @@ class TokenAssemblyBootstrapper(AssemblyBootstrapper[Token]):
             blueprint: TokenBlueprint
             toolkit: TokenToolkit
         Returns:
-            AssemblyResult[Blueprint]
+            ValidationResult[Blueprint]
         Raises:
             BootstrapTokenAssemblyException
         """
@@ -61,7 +61,7 @@ class TokenAssemblyBootstrapper(AssemblyBootstrapper[Token]):
         )
         if blueprint_validation_result.is_failure:
             # Return the exception chain on failure.
-            return AssemblyResult.failure(
+            return ValidationResult.failure(
                 BootstrapTokenAssemblyException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
@@ -76,7 +76,7 @@ class TokenAssemblyBootstrapper(AssemblyBootstrapper[Token]):
         )
         if collision_analysis_result.is_failure:
             # Return the exception chain on failure.
-            return AssemblyResult.failure(
+            return ValidationResult.failure(
                 BootstrapTokenAssemblyException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
@@ -91,7 +91,7 @@ class TokenAssemblyBootstrapper(AssemblyBootstrapper[Token]):
         )
         if opening_square_discovery_result.is_failure:
             # Return the exception chain on failure.
-            return AssemblyResult.failure(
+            return ValidationResult.failure(
                 BootstrapTokenAssemblyException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
@@ -106,7 +106,7 @@ class TokenAssemblyBootstrapper(AssemblyBootstrapper[Token]):
         )
         if rank_assembly_result.is_failure:
             # Return the exception chain on failure.
-            return AssemblyResult.failure(
+            return ValidationResult.failure(
                 BootstrapTokenAssemblyException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
@@ -116,7 +116,7 @@ class TokenAssemblyBootstrapper(AssemblyBootstrapper[Token]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return AssemblyResult.success(
+        return ValidationResult.success(
             TokenBlueprint(
                 team=blueprint.team,
                 formation=blueprint.formation,
@@ -137,7 +137,7 @@ class TokenAssemblyBootstrapper(AssemblyBootstrapper[Token]):
         Verify a TokenBlueprint and fill before its used.
 
         Action:
-            1.  Send an exception chain in the AssemblyResult if any following occurs:
+            1.  Send an exception chain in the ValidationResult if any following occurs:
                     -   A blueprint attribute gets flagged by a validator.
                     -   The included id is not certified as safe.
                     -   Any blueprint values have already been used in the team.
@@ -160,7 +160,7 @@ class TokenAssemblyBootstrapper(AssemblyBootstrapper[Token]):
         )
         if id_validation_result.is_failure:
             # Return the exception chain on failure.
-            return AssemblyResult.failure(
+            return ValidationResult.failure(
                 BootstrapTokenAssemblyException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
@@ -175,7 +175,7 @@ class TokenAssemblyBootstrapper(AssemblyBootstrapper[Token]):
         )
         if team_validation.is_failure:
             # Return the exception chain on failure.
-            return AssemblyResult.failure(
+            return ValidationResult.failure(
                 BootstrapTokenAssemblyException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
@@ -190,7 +190,7 @@ class TokenAssemblyBootstrapper(AssemblyBootstrapper[Token]):
         )
         if formation_validation.is_failure:
             # Return the exception chain on failure.
-            return AssemblyResult.failure(
+            return ValidationResult.failure(
                 BootstrapTokenAssemblyException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
@@ -213,32 +213,32 @@ class TokenAssemblyBootstrapper(AssemblyBootstrapper[Token]):
             cls,
             blueprint: TokenBlueprint,
             toolkit: TokenToolkit
-    ) -> AssemblyResult[int]:
+    ) -> ValidationResult[int]:
         """
         Verify the id if it already exists or create a new one.
 
         Action:
-            1.  Send an exception chain in the AssemblyResult if an existing id
+            1.  Send an exception chain in the ValidationResult if an existing id
                 is not certified as safe.
             2.  Otherwise, send the success result.
         Args:
             blueprint: TokenBlueprint
             toolkit: TokenToolkit
         Returns:
-            AssemblyResult[int]
+            ValidationResult[int]
         Raises:
             BootstrapTokenAssemblyException
         """
         method = f"{cls.__name__}._verify_id"
         
         if blueprint.id is None:
-            return AssemblyResult.success(IdFactory.next_id(class_name="Token"))
+            return ValidationResult.success(IdFactory.next_id(class_name="Token"))
         
         if blueprint.id is not None:
             id_validation = toolkit.identity_service.validate_id(blueprint.id)
             if id_validation.is_failure:
                 # Return the exception chain on failure.
-                return AssemblyResult.failure(
+                return ValidationResult.failure(
                     BootstrapTokenAssemblyException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
@@ -248,7 +248,7 @@ class TokenAssemblyBootstrapper(AssemblyBootstrapper[Token]):
                     )
                 )
             # --- Return the work product. ---#
-            return AssemblyResult.success(blueprint.id)
+            return ValidationResult.success(blueprint.id)
         
     @classmethod
     @LoggingLevelRouter.monitor
@@ -264,7 +264,7 @@ class TokenAssemblyBootstrapper(AssemblyBootstrapper[Token]):
         Args:
             blueprint: TokenBlueprint
         Returns:
-            AssemblyResult[Blueprint]
+            ValidationResult[Blueprint]
         Raises:
             BootstrapTokenAssemblyException
         """
@@ -287,7 +287,7 @@ class TokenAssemblyBootstrapper(AssemblyBootstrapper[Token]):
             )
         if collision_analysis_result.payload.collision_exists:
             # Return the exception chain on failure.
-            return AssemblyResult.failure(
+            return ValidationResult.failure(
                 BootstrapTokenAssemblyException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
@@ -329,7 +329,7 @@ class TokenAssemblyBootstrapper(AssemblyBootstrapper[Token]):
         # Handle the case that, the search is not completed.
         if square_search_result.is_failure:
             # Return the exception chain on failure.
-            return AssemblyResult.failure(
+            return ValidationResult.failure(
                 BootstrapTokenAssemblyException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
@@ -341,7 +341,7 @@ class TokenAssemblyBootstrapper(AssemblyBootstrapper[Token]):
         # Handle the case that, the opening square is not found.
         if square_search_result.is_empty:
             # Return the exception chain on failure.
-            return AssemblyResult.failure(
+            return ValidationResult.failure(
                 BootstrapTokenAssemblyException(
                     cls_mthd=method,
                     cls_name=cls.__name__,

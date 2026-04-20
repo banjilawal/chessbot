@@ -12,11 +12,13 @@ version: 1.0.1
 # Packages
 from .binder import *
 from .board import *
+from .coord import *
 from .context import *
 from .square import *
 from .team import *
 from .token import *
+from .vector import *
 
 
 # Modules
-from .blueprint import Blueprint
+from .model import Blueprint

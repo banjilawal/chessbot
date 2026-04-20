@@ -1,7 +1,7 @@
-# src/model/blueprint/square/blueprint.py
+# src/model/blueprint/square/model.py
 
 """
-Module: model.blueprint.square.blueprint
+Module: model.blueprint.square.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

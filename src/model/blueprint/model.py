@@ -1,7 +1,7 @@
-# src/model/blueprint/blueprint.py
+# src/model/blueprint/model.py
 
 """
-Module: model.blueprint.blueprint
+Module: model.blueprint.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

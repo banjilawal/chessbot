@@ -13,7 +13,7 @@ from __future__ import annotations
 from err import BootstrapTeamAssemblyException
 from model import Board, Team, TeamBlueprint
 from operation import AssemblyBootstrapper
-from result import AssemblyResult, ValidationResult
+from result import ValidationResult
 from system import IdFactory, LoggingLevelRouter
 from toolkit import TeamToolkit
 

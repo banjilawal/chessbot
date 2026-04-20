@@ -1,7 +1,7 @@
-# src/model/blueprint/token/blueprint.py
+# src/model/blueprint/token/model.py
 
 """
-Module: model.blueprint.token.blueprint
+Module: model.blueprint.token.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
