@@ -1,7 +1,7 @@
-# src/model/blueprint/board/model.py
+# src/model/blueprint/arena/model.py
 
 """
-Module: model.blueprint.board.model
+Module: model.blueprint.arena.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,20 +10,20 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Optional
 
-from model import Arena, Blueprint, Board
+from model import Game, Blueprint, Arena
 
 
-class BoardBlueprint(Blueprint[Board]):
+class ArenaBlueprint(Blueprint[Arena]):
     """
     Role:
         -   Container
     
     Responsibilities:
-        1.  Provides values for instantiating a Board object.
+        1.  Provides values for instantiating a Arena object.
     
     Attributes:
         id: int
-        arena: Arena
+        game: Game
     
     Provides:
     
@@ -31,29 +31,29 @@ class BoardBlueprint(Blueprint[Board]):
         Blueprint
     """
     _id: int
-    _arena: Arena
+    _game: Game
 
     
     def __init__(
             self,
-            arena: Arena,
+            game: Game,
             id: Optional[int] | None = None,
     ):
         """
         Args:
             id: int
-            arena: Arena
+            game: Game
         """
         super().__init__()
         self._id = id
-        self._arena = arena
+        self._game = game
         
     @property
     def id(self) -> Optional[int]:
         return self._id
 
     @property
-    def arena(self) -> Arena:
-        return self._arena
+    def game(self) -> Game:
+        return self._game
     
 

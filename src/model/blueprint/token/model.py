@@ -17,6 +17,25 @@ from model import Blueprint, OpeningSquare, Rank, Team, Token
 
 @dataclass
 class TokenBlueprint(Blueprint[Token]):
+    """
+    Role:
+        -   Container
+
+    Responsibilities:
+        1.  Provides values for instantiating a Token object.
+
+    Attributes:
+        id: int
+        team: Team
+        rank: Rank
+        formation: Formation
+        opening_square: OpeningSquare
+
+    Provides:
+
+     Super Class:
+        Blueprint
+     """
     team: Team
     formation: Formation
     id: int | None = None

@@ -18,6 +18,24 @@ from model import Blueprint, Board, Player, Team
 
 
 class TeamBlueprint(Blueprint[Team]):
+    """
+    Role:
+        -   Container
+
+    Responsibilities:
+        1.  Provides values for instantiating a Team object.
+
+    Attributes:
+        id: int
+        owner: Player
+        board: Board
+        schema: Schema
+
+    Provides:
+
+     Super Class:
+        Blueprint
+     """
     _id: int
     _owner: Player
     _board: Board
@@ -31,6 +49,13 @@ class TeamBlueprint(Blueprint[Team]):
             schema: Schema,
             id: Optional[int] | None = None,
     ):
+        """
+        Args:
+            id: int
+            owner: Player
+            board: Board
+            schema: Schema
+        """
         super().__init__()
         self._id = id
         self._owner = owner

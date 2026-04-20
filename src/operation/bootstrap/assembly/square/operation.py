@@ -1,7 +1,7 @@
-# src/integrity/build/square/builder.py
+# src/operation/bootstrap/assembly/square/operation.py
 
 """
-Module: integrity.build.square.builder
+Module: operation.bootstrap.assembly.square.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from err import BootstrapSquareAssemblyException
-from model import Board, Square, SquareBlueprint
+from model import Square, SquareBlueprint
 from operation import AssemblyBootstrapper
 from report import CollisionReport
 from result import AnalysisResult, ValidationResult

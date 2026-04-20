@@ -1,7 +1,7 @@
-# src/operation/bootstrap/assembly/vector/operation.py
+# src/operation/bootstrap/assembly/coord/operation.py
 
 """
-Module: operation.bootstrap.assembly.vector.operation
+Module: operation.bootstrap.assembly.coord.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -9,15 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from err import VectorAssemblyBootstrapperException
-from model import Vector, VectorBlueprint
+from model import Coord, CoordBlueprint
 from operation import AssemblyBootstrapper
 from result import ValidationResult
 from system import BOARD_DIMENSION, LoggingLevelRouter
 from toolkit import MathToolkit
 
 
-class VectorAssemblyBootstrapper(AssemblyBootstrapper[Vector]):
+class CoordAssemblyBootstrapper(AssemblyBootstrapper[Coord]):
     """
     Role
         -   Transaction Worker
@@ -26,15 +25,15 @@ class VectorAssemblyBootstrapper(AssemblyBootstrapper[Vector]):
         -   Build Process Owner
     
     Responsibilities:
-        1.  Ensure a new Vector instance is born safe and reliable.
+        1.  Ensure a new Coord instance is born safe and reliable.
     
     Attributes:
     
     Provides:
         -   def execute(
-                blueprint: VectorBlueprint,
+                blueprint: CoordBlueprint,
                 toolkit: MathToolkit,
-        ) -> ValidationResult[VectorBlueprint]:
+        ) -> ValidationResult[CoordBlueprint]:
     
     Super Class:
         AssemblyBootstrapper
@@ -43,25 +42,25 @@ class VectorAssemblyBootstrapper(AssemblyBootstrapper[Vector]):
     @LoggingLevelRouter.monitor()
     def execute(
             cls,
-            blueprint: VectorBlueprint,
+            blueprint: CoordBlueprint,
             toolkit: MathToolkit | None = None,
-    ) -> ValidationResult[VectorBlueprint]:
+    ) -> ValidationResult[CoordBlueprint]:
         """
         Action:
             1.  Send an exception chain in the ValidationResult if
                     -   Any build param fails does not pass a validation check.
-                    -   The vector's attributes have already been used on the board.
-            2.  Build the Vector instance with the params.
+                    -   The coord's attributes have already been used on the board.
+            2.  Build the Coord instance with the params.
             3.  Send an exception chain in the ValidationResult if
-                    * The vector requires insertion into the board but the insertion fails.
-            4.  Return the Vector instance in the ValidationResult.
+                    * The coord requires insertion into the board but the insertion fails.
+            4.  Return the Coord instance in the ValidationResult.
         Args:
-            blueprint: VectorBlueprint
-            toolkit: VectorToolkit
+            blueprint: CoordBlueprint
+            toolkit: CoordToolkit
         Returns:
-            ValidationResult[VectorBlueprint]
+            ValidationResult[CoordBlueprint]
         Raises:
-            VectorBuildException
+            CoordBuildException
         """
         method = f"{cls.__class__.__name__}.execute"
         
@@ -78,11 +77,11 @@ class VectorAssemblyBootstrapper(AssemblyBootstrapper[Vector]):
             if validation_result.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    VectorAssemblyBootstrapperException(
+                    CoordAssemblyBootstrapperException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=VectorAssemblyBootstrapperException.MSG,
-                        err_code=VectorAssemblyBootstrapperException.ERR_CODE,
+                        msg=CoordAssemblyBootstrapperException.MSG,
+                        err_code=CoordAssemblyBootstrapperException.ERR_CODE,
                         ex=validation_result.exception,
                     )
                 )

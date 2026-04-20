@@ -20,6 +20,7 @@ class Square:
     """
     Role:
         -   Model
+        -   Addressing
         -   Stateful Data Holder
 
     Responsibilities:
@@ -28,37 +29,18 @@ class Square:
         3.  Metadata about a reference on the Board.
     
     Attributes:
-    
+        id: int
+        name: str
+        board: Board
+        coord: Coord
+        state: SquareState
+        occupant: Optional[Token]
+        
     Provides:
+        -   def is_empty() -> bool
+        -   def is_occupied() -> bool
 
     Super Class:
-
-    Provides:
-
-    # LOCAL ATTRIBUTES:
-        *   id (int)
-        *   schema (str)
-        *   board (Board)
-        *   coord (Coord)
-        *    state (SquareState)
-        *    occupant (Optional[Token])
-
-    # INHERITED ATTRIBUTES:
-    None
-
-    Attributes:
-        *   id (int)
-        *   schema (str)
-        *   board (Board)
-        *   coord (Coord)
-        *   state (SquareState)
-
-    # LOCAL METHODS:
-        *   is_empty(self) -> bool
-        *   is_occupied(self) -> bool
-
-    # INHERITED METHODS:
-    None
     """
     _id: int
     _name: str
@@ -74,7 +56,6 @@ class Square:
             name: str
             board: Board
             coord: Coord
-            state: SquareState
         """
         self._id = id
         self._name = name

@@ -1,7 +1,7 @@
-# src/operation/bootstrap/assembly/token/__ini__.py
+# src/operation/bootstrap/assembly/token/operation.py
 
 """
-Module: operation.bootstrap.assembly.token.__init__
+Module: operation.bootstrap.assembly.token.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

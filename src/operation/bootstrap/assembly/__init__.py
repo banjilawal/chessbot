@@ -12,8 +12,11 @@ version: 1.0.1
 # Packages
 from .binder import *
 from .context import *
+from .coord import *
+from .square import *
 from .team import *
 from .token import *
+from .vector import *
 
 # Modules
 from .operation import AssemblyBootstrapper

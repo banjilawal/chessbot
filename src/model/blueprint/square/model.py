@@ -15,6 +15,25 @@ from model import Blueprint, Board, Coord, Formation, Square
 
 
 class SquareBlueprint(Blueprint[Square]):
+    """
+    Role:
+        -   Container
+
+    Responsibilities:
+        1.  Provides values for instantiating a Square object.
+
+    Attributes:
+        name: str
+        board: Board
+        coord: Coord
+        id: Optional[int]
+        formation: Optional[Formation]
+        
+    Provides:
+
+     Super Class:
+        Blueprint
+     """
     _name: str
     _board: Board
     _coord: Coord
@@ -29,6 +48,14 @@ class SquareBlueprint(Blueprint[Square]):
             id: Optional[int] | None = None,
             formation: Optional[Formation] | None = None,
     ):
+        """
+        Args:
+            name: str
+            board: Board
+            coord: Coord
+            id: Optional[int]
+            formation: Optional[Formation]
+        """
         super().__init__()
         self._id = id
         self._name = name

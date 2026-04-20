@@ -5,27 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change afterPath="$PROJECT_DIR$/src/model/blueprint/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/blueprint/vector/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/vector/operation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/assemble/coord/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/assemble/coord/operation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/assemble/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/assemble/vector/operation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/coord/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/coord/operation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/blueprint/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/blueprint/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/blueprint/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/board/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/blueprint/board/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/board/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/blueprint/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/blueprint/square/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/square/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/blueprint/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/team/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/blueprint/team/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/team/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/blueprint/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/blueprint/token/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/token/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/blueprint/board/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/board/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/blueprint/coord/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/coord/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/blueprint/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/blueprint/square/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/square/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/blueprint/team/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/team/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/blueprint/token/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/token/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/blueprint/vector/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/vector/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/square/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/square/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/square/opening/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/square/opening/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/square/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/square/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/team/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/team/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/square/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/square/operation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/token/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/token/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/finalize/build/square/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/finalize/build/square/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/square/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/square/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/vector/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/vector/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -328,8 +330,8 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/model/blueprint" />
       <recent name="$PROJECT_DIR$/src/operation/bootstrap/assembly" />
-      <recent name="$PROJECT_DIR$/src/operation/finalize/build" />
       <recent name="$PROJECT_DIR$/src/operation/assemble" />
+      <recent name="$PROJECT_DIR$/src/operation/finalize/build" />
       <recent name="$PROJECT_DIR$/src/err/operation/build" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -891,7 +893,7 @@
       <workItem from="1775523154635" duration="8604000" />
       <workItem from="1775535077469" duration="17356000" />
       <workItem from="1775569861163" duration="208129000" />
-      <workItem from="1776277739751" duration="99419000" />
+      <workItem from="1776277739751" duration="105543000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

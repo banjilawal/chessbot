@@ -1,15 +1,16 @@
-# src/integrity/build/square/__init__.py
+# src/operation/bootstrap/assembly/square/__ini__.py
 
 """
-Module: integrity.build.square.__init__
+Module: operation.bootstrap.assembly.square.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== BUILD.SQUARE PACKAGE ===========#
+# =========== OPERATION.BOOTSTRAP.ASSEMBLY.SQUARE PACKAGE ===========#
 
 # Packages
 
+
 # Modules
-from .operation import SquareBuilder
+from .operation import SquareAssemblyBootstrapper

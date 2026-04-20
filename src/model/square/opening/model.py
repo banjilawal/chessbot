@@ -15,6 +15,31 @@ from model.board import Board
 
 
 class OpeningSquare(Square):
+    """
+    Role:
+        -   Model
+        -   Addressing
+        -   Stateful Data Holder
+
+    Responsibilities:
+        1.  Square Which a token gets formed before is opening move.
+
+    Attributes:
+        id: int
+        name: str
+        board: Board
+        coord: Coord
+        state: SquareState
+        formation: Formation
+        occupant: Optional[Token]
+        
+    Provides:
+        -   def is_empty() -> bool
+        -   def is_occupied() -> bool
+
+    Super Class:
+        Square
+    """
     _formation: Formation
     
     def __init__(
