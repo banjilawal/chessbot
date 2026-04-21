@@ -71,5 +71,5 @@ class Toolkit(ABC, Generic[T]):
 
     @property
     @abstractmethod
-    def validation_bootstrap(self) -> ValidationBootstrapper:
+    def validation_bootstrapper(self) -> ValidationBootstrapper:
         pass

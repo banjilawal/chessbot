@@ -9,12 +9,12 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from err import VectorAssemblyBootstrapperException
+from toolkit import MathToolkit
+from result import ValidationResult
 from model import Vector, VectorBlueprint
 from operation import AssemblyBootstrapper
-from result import ValidationResult
+from err import VectorAssemblyBootstrapperException
 from system import BOARD_DIMENSION, LoggingLevelRouter
-from toolkit import MathToolkit
 
 
 class VectorAssemblyBootstrapper(AssemblyBootstrapper[Vector]):
@@ -32,9 +32,9 @@ class VectorAssemblyBootstrapper(AssemblyBootstrapper[Vector]):
     
     Provides:
         -   def execute(
-                blueprint: VectorBlueprint,
-                toolkit: MathToolkit,
-        ) -> ValidationResult[VectorBlueprint]:
+                    blueprint: VectorBlueprint,
+                    toolkit: MathToolkit,
+            ) -> ValidationResult[VectorBlueprint]:
     
     Super Class:
         AssemblyBootstrapper

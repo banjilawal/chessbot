@@ -95,5 +95,5 @@ class SquareToolkit(Toolkit[Square]):
         return self._collision_analyst
     
     @property
-    def validation_bootstrap(self) -> ValidationBootstrapper:
+    def validation_bootstrapper(self) -> ValidationBootstrapper:
         return self._bootstrapper

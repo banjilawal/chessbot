@@ -8,7 +8,6 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-
 from enum import Enum
 
 from model import Quadrant, Scalar
@@ -17,11 +16,27 @@ from system import GameColor, NUMBER_OF_ROWS
 
 class Schema(Enum):
     """
-    Role:Build Configuration Table, Schema, Metadata Set
+    Role:
+        -   Configuration Table
+        -   Metadata Set
+        
+    Responsibilities:
+        1.  Provides table of metadata used for building Team objects.
+        
+    Attributes:
+        rank_row: int
+        color: GameColor
+        advancing_step: Scalar
+        home_quadrant: Quadrant
+        
+    Provides:
     
-    # ABOUT THE SCHEMA:
-    The Schema implements a hashtable which a Team gets metadata about its initial deployment on the Board
-    and how it advances. The color assigned to the Team is the Schema table's key.
+    Super Class:
+        Enum
+    
+    About:
+        The Schema implements a hashtable which a Team gets metadata about its initial deployment on
+        the Board and how it advances. The color assigned to the Team is the Schema table's key.
 
     ## STRUCTURE OF THE SCHEMA HASHTABLE:
         *   Key (str)
@@ -35,21 +50,6 @@ class Schema(Enum):
         *   TeamFinder can use the hashtable key to find Teams which match either the GameColor
         *   Other EntityFinder classes can use the Team.schema attribute to filter by their entity.team.schema attribute.
 
-    Responsibilities:
-    1.  Provides table of metadata used for building Team objects.
-
-    Super Class:
-        *   Enum
-  
-    Provides:
-  
-    # LOCAL ATTRIBUTES:
-        *   color (GameColor)
-        *   rank_row (int)
-        *   pawn_row (int)
-        *   advancing_step (Scalar)
-        *   home_quadrant (Quadrant)
-
     # INHERITED ATTRIBUTES:
         * schema (str) -->  Name give to each Enum entry.
     """
@@ -60,6 +60,13 @@ class Schema(Enum):
             advancing_step: Scalar,
             home_quadrant: Quadrant,
     ):
+        """
+        Args:
+            rank_row: int
+            color: GameColor
+            advancing_step: Scalar
+            home_quadrant: Quadrant
+        """
         obj = object.__new__(cls)
         obj._color = color
         obj._rank_row = rank_row

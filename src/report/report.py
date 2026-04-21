@@ -8,4 +8,19 @@ version: 1.0.1
 """
 
 class Report:
+    """
+     Role:
+         - Data Report
+
+     Responsibilities:
+         1.  Record of a rank's
+                - Quota
+                - The number of open slots
+            that a TokenStackService can support
+
+     Attributes:
+
+     Provides:
+     Super Class:
+     """
     pass

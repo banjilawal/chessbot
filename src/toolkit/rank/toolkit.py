@@ -12,6 +12,7 @@ from __future__ import annotations
 
 from microservice import IdentityService, PersonaService
 from model import Rank
+from operation import ValidationBootstrapper
 from toolkit import Toolkit
 
 
@@ -28,27 +29,32 @@ class RankToolkit(Toolkit[Rank]):
     Attributes:
         identity_service: IdentityService
         persona_service: PersonaService
+        validation_bootstrapper: ValidationBootstrapper
         
     Provides:
     
     Super Class:
         Toolkit
     """
+    _validation_bootstrapper: ValidationBootstrapper
     _identity_service: IdentityService
     _persona_service: PersonaService
 
     def __init__(
             self,
-            identity_service: IdentityService | None = None,
             persona_service: PersonaService | None = None,
+            identity_service: IdentityService | None = None,
+            validation_bootstrapper: ValidationBootstrapper | None = None,
     ):
         """
         Args:
             identity_service: IdentityService
             persona_service: PersonaService
+            validation_bootstrapper: ValidationBootstrapper
         """
-        self._identity_service = identity_service or IdentityService()
         self._persona_service = persona_service or PersonaService()
+        self._identity_service = identity_service or IdentityService()
+        self._validation_bootstrapper = validation_bootstrapper or ValidationBootstrapper()
         
     @property
     def identity_service(self) -> IdentityService:
@@ -57,4 +63,8 @@ class RankToolkit(Toolkit[Rank]):
     @property
     def persona_service(self) -> PersonaService:
         return self._persona_service
+    
+    @property
+    def validation_bootstrapper(self) -> ValidationBootstrapper:
+        return self._validation_bootstrapper
         

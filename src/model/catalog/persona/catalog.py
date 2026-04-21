@@ -17,11 +17,27 @@ from model import Quadrant, Vector
 
 class Persona(Enum):
     """
-    Role:Build Configuration Table, Persona, Metadata Set
+    Role:
+        -   Configuration Table
+        -   Metadata Set
+        
 
-    # ABOUT THE PERSONA:
-    The Persona implements a hashtable of attributes assigned to concrete Rank classes. The Rank's title is the hash
-    key.
+    Responsibilities:
+        1.  Supply parameters to Token builders and factories.
+    
+    Attributes:
+        quota: int
+        ransom: int
+        designation: str
+        quadrants: List[Quadrant]
+        vectors: Optional[List[Vector]]
+
+    Super Class:
+        Enum
+
+    About:
+        The Persona implements a hashtable of attributes assigned to concrete Rank classes.
+        The Rank's title is the hash key.
 
     ## STRUCTURE OF THE PERSONA HASHTABLE:
         *   Key (str)
@@ -31,24 +47,6 @@ class Persona(Enum):
 
     ## WHO USES THE PERSONA TABLE:
         *   RankBuilder uses a Persona.ELEMENT/ENTRY to create a Rank object.
-
-    Responsibilities:
-    1.  Metadata for each Rank.
-    1.  Supply build parameters to RankBuilder methods.
-
-    Super Class:
-        *   Enum
-
-    Provides:
-
-    # LOCAL ATTRIBUTES:
-        *   designation (str)
-        *   quota (int)
-        *   ransom (int)
-        *   quadrants (List[Quadrant])
-
-    # INHERITED ATTRIBUTES:
-        * schema (str) -->  Name give to each Enum entry.
     """
     
     def __new__(
@@ -59,6 +57,14 @@ class Persona(Enum):
             quadrants: List[Quadrant],
             vectors: Optional[List[Vector]]
     ):
+        """
+        Args:
+            designation: str
+            quota: int
+            ransom: int
+            quadrants: List[Quadrant]
+            vectors: Optional[List[Vector]]
+        """
         obj = object.__new__(cls)
         obj._designation = designation
         obj._quota = quota

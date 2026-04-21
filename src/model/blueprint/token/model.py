@@ -36,6 +36,7 @@ class TokenBlueprint(Blueprint[Token]):
      Super Class:
         Blueprint
      """
+    
     team: Team
     formation: Formation
     id: int | None = None

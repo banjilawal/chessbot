@@ -11,14 +11,14 @@ from __future__ import annotations
 
 from typing import List
 
-from analysis import CollisionReport
-from err import BootstrapTokenAssemblyException
-from model import OpeningSquare, SquareContext, Token, TokenBlueprint
-from operation import AssemblyBootstrapper
-from result import AnalysisResult, SearchResult, ValidationResult
-from search import SquareNotFoundException
-from system import IdFactory, LoggingLevelRouter
+from report import CollisionReport
 from toolkit import TokenToolkit
+from search import SquareNotFoundException
+from operation import AssemblyBootstrapper
+from err import BootstrapTokenAssemblyException
+from system import IdFactory, LoggingLevelRouter
+from result import AnalysisResult, SearchResult, ValidationResult
+from model import OpeningSquare, SquareContext, Token, TokenBlueprint
 
 
 class TokenAssemblyBootstrapper(AssemblyBootstrapper[Token]):

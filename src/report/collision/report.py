@@ -10,28 +10,37 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from analysis import CollisionState
-
+from report import CollisionState
 
 
 class CollisionReport:
     """
-    Role:Messanger, Data Transport Object, Error Transport Object.
+    Role:
+        -   Test results
 
     Responsibilities:
-    1.  Send the outcome of a collision to the caller.
-    2.  Enforcing mutual exclusion. A CollisionReport can either carry payload or exception. Not both.
+        1.  Presents the results of a attribute collision tests.
+    
+    Attributes:
+        collider: T
+        collision_value: Any
+        exception: Exception
+        state: CollisionState
+        colliding_variable: Optional[str]
+        
+    Provides:
+        -   def collision_exists() -> bool
+        -   def is_no_collision() -> bool
+        
+        -   def collision_occurred(
+                    colliding_variable: str,
+                    collision_value: Any,
+                    collider: Any,
+                    exception: Exception
+            ) -> CollisionReport[Any]
 
     Super Class:
-        *   DataResult
-
-    Provides:
-
-    # LOCAL ATTRIBUTES:
-        *   state (DataResultEnum)
-
-    # INHERITED ATTRIBUTES:
-        *   See DataResult class for inherited attributes.
+        Report
     """
     _colliding_variable: Optional[str]
     _collision_value: Optional[Any]
@@ -45,10 +54,18 @@ class CollisionReport:
             state: CollisionState,
             colliding_variable: Optional[str] = None,
             collision_value: Optional[Any] = None,
-            collider: Optional[T] = None,
+            collider: Optional[Any] = None,
             exception: Optional[Exception] = None,
     ):
-        super().__init__(state=state, target=target, exception=exception)
+        """
+        Args:
+            state: CollisionState
+            colliding_variable: Optional[str]
+            collision_value: Any
+            collider: T
+            exception: Exception
+        """
+        super().__init__(state=state, exception=exception)
         """INTERNAL: Use build methods instead of direct constructor."""
         method = "CollisionReport.result"
         self._colliding_variable = colliding_variable

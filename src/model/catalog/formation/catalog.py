@@ -8,7 +8,6 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-
 from enum import Enum
 
 from model.catalog import Persona
@@ -17,25 +16,22 @@ from system import GameColor
 
 class Formation(Enum):
     """
-    Role:Build Configuration Table, Schema, Metadata Set
+    Role:
+        -   Configuration Table
+        -   Metadata Set
 
     Responsibilities:
-    1.  Supply parameters to Token builders and factories.
+        1.  Supply parameters to Token builders and factories.
+    
+    Attributes:
+        square_name: str
+        color: GameColor
+        designation: str
+        roster_number: int
+        persona: Persona
 
     Super Class:
-        *   Enum
-
-    Provides:
-
-    # LOCAL ATTRIBUTES:
-        *   square_name (str)
-        *   color (GameColor)
-        *   schema (str)
-        *   roster_number (int)
-        *   persona (Persona)
-
-    # INHERITED ATTRIBUTES:
-        * schema (str) -->  Name give to each Enum entry.
+        Enum
     """
     def __new__(
             cls,
@@ -45,6 +41,14 @@ class Formation(Enum):
             roster_number: int,
             persona: Persona,
     ):
+        """
+        Args:
+            square_name: str
+            color: GameColor
+            designation: str
+            roster_number: int
+            persona: Persona
+        """
         obj = object.__new__(cls)
         obj._square_name = square_name
         obj._color = color

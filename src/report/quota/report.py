@@ -9,10 +9,11 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from logic.rank import Rank
+from model import Rank
+from report import Report
 
 
-class RankQuotaReport:
+class RankQuotaReport(Report):
     """
      Role:
          - Data Report

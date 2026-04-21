@@ -5,9 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
+      <change afterPath="$PROJECT_DIR$/src/model/blueprint/rank/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/blueprint/rank/model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/blueprint/team/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/team/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/coord/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/coord/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/blueprint/token/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/token/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/catalog/formation/catalog.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/catalog/formation/catalog.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/catalog/persona/catalog.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/catalog/persona/catalog.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/catalog/schema/catalog.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/catalog/schema/catalog.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/player/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/player/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/token/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/token/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/vector/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/vector/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/report/collision/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/collision/report.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/report/quota/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/quota/report.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/report/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/report/report.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/rank/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/rank/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/rank/toolkit.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -873,7 +886,7 @@
       <workItem from="1775523154635" duration="8604000" />
       <workItem from="1775535077469" duration="17356000" />
       <workItem from="1775569861163" duration="208129000" />
-      <workItem from="1776277739751" duration="107417000" />
+      <workItem from="1776277739751" duration="116709000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

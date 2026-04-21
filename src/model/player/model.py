@@ -10,10 +10,11 @@ version: 1.0.0
 from __future__ import annotations
 
 from abc import ABC
-from typing import Optional
+from typing import Optional, cast
 
 from database import TeamDatabase
-from model import Team
+from integrity import NameValidator
+from model import Coord, Team, Token
 
 
 class Player(ABC):
@@ -21,7 +22,7 @@ class Player(ABC):
     Role:Controller
 
     Responsibilities:
-    1.  Directs movement of pieces in a Team's roster on a Board.
+    1.  Directs movement of tokens in a Team's roster on a Board.
     2.  Forwards requests from the user to a Game.
     
     Super Class:
@@ -126,39 +127,39 @@ class Player(ABC):
     # # 4. Executes via TravelTransaction
     # # 5. Returns TransactionResult with rollback safety
     
-    def move_piece(self, piece_name: str, destination: Coord):
-        method = "Player.move_piece"
+    def move_token(self, token_name: str, destination: Coord):
+        method = "Player.move_token"
         
         try:
-            validation = NameValidator.search_service(piece_name)
+            validation = NameValidator.search_service(token_name)
             if not validation.is_success():
                 raise validation.exception
             
-            result = self._current_team.find_piece_by_name(piece_name)
+            result = self._current_team.find_token_by_name(token_name)
             if not result.is_success():
                 raise result.exception
             
-            piece = cast(Piece, result.payload)
+            token = cast(Token, result.payload)
             
             # if discover is None:
-            #   raise PieceNotFoundException(
-            #     f"{method}: {PieceNotFoundException.MSG} at index {array_index}"
+            #   raise TokenNotFoundException(
+            #     f"{method}: {TokenNotFoundException.MSG} at index {array_index}"
             #   )
             
-            if piece.current_position is None:
-                raise PieceCoordNullException(f"{method}: {PieceCoordNullException.MSG}")
+            if token.current_position is None:
+                raise TokenCoordNullException(f"{method}: {TokenCoordNullException.MSG}")
             
-            if isinstance(piece, CombatantPiece) and piece.victor is not None:
-                raise PrisonerEscapeException(f"{method}: Cannot move {piece.designation} it has been captured.")
+            if isinstance(token, CombatantToken) and token.victor is not None:
+                raise PrisonerEscapeException(f"{method}: Cannot move {token.designation} it has been captured.")
             
             validation = CoordValidator.search_service(destination)
             if not validation.is_success():
                 raise validation.exception
             
-            if piece.current_position == destination:
+            if token.current_position == destination:
                 raise AlreadyAtDestinationException(f"{method}: {AlreadyAtDestinationException.MSG}")
             
-            piece.rank.walk(piece=piece, destination=destination)
+            token.rank.walk(token=token, destination=destination)
         
-        except (NullPieceException, ConflictingTeamException) as e:
-            raise AddPieceException(f"{method}: {AddPieceException.MSG}")
+        except (NullTokenException, ConflictingTeamException) as e:
+            raise AddTokenException(f"{method}: {AddTokenException.MSG}")

@@ -55,5 +55,5 @@ class MathToolkit(Toolkit):
         return self._number_validator
     
     @property
-    def validation_bootstrap(self) -> ValidationBootstrapper:
+    def validation_bootstrapper(self) -> ValidationBootstrapper:
         return self._validation_bootstrapper
