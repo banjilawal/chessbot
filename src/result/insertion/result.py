@@ -107,4 +107,12 @@ class InsertionResult(Result[bool]):
             exception=exception,
             state=InsertionState.TIMED_OUT,
         )
+    
+    @classmethod
+    def already_inserted(cls) -> InsertionResult[bool]:
+        return cls(
+            payload=True,
+            exception=None,
+            state=InsertionState.ALREADY_INSERTED,
+        )
 

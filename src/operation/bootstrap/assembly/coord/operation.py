@@ -9,11 +9,12 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from err import BootstrapCoordAssemblyException
+from toolkit import MathToolkit
+from result import ValidationResult
 from model import Coord, CoordBlueprint
 from operation import AssemblyBootstrapper
-from result import ValidationResult
 from system import BOARD_DIMENSION, LoggingLevelRouter
-from toolkit import MathToolkit
 
 
 class CoordAssemblyBootstrapper(AssemblyBootstrapper[Coord]):
@@ -47,13 +48,8 @@ class CoordAssemblyBootstrapper(AssemblyBootstrapper[Coord]):
     ) -> ValidationResult[CoordBlueprint]:
         """
         Action:
-            1.  Send an exception chain in the ValidationResult if
-                    -   Any build param fails does not pass a validation check.
-                    -   The coord's attributes have already been used on the board.
-            2.  Build the Coord instance with the params.
-            3.  Send an exception chain in the ValidationResult if
-                    * The coord requires insertion into the board but the insertion fails.
-            4.  Return the Coord instance in the ValidationResult.
+            1.  Send an exception chain in the ValidationResult if either component fails a
+                validation check.
         Args:
             blueprint: CoordBlueprint
             toolkit: CoordToolkit
@@ -68,20 +64,20 @@ class CoordAssemblyBootstrapper(AssemblyBootstrapper[Coord]):
             toolkit = MathToolkit()
         
         # Handle the case that, either component is out of bounds.
-        for num in [blueprint.x, blueprint.y]:
+        for component in [blueprint.x, blueprint.y]:
             validation_result = toolkit.number_validator.validate(
                 floor=0,
                 ceiling=BOARD_DIMENSION / 2,
-                candidate=abs(num)
+                candidate=abs(component)
             )
             if validation_result.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    CoordAssemblyBootstrapperException(
+                    BootstrapCoordAssemblyException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=CoordAssemblyBootstrapperException.MSG,
-                        err_code=CoordAssemblyBootstrapperException.ERR_CODE,
+                        msg=BootstrapCoordAssemblyException.MSG,
+                        err_code=BootstrapCoordAssemblyException.ERR_CODE,
                         ex=validation_result.exception,
                     )
                 )

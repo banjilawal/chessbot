@@ -13,3 +13,4 @@ class InsertionState(Enum):
     SUCCESS = auto(),
     FAILURE = auto(),
     TIMED_OUT = auto(),
+    ALREADY_INSERTED = auto(),

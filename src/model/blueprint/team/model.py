@@ -8,11 +8,8 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-
-from dataclasses import dataclass
 from typing import Optional
 
-from microservice import BoardTeamBinderService
 from model.catalog import Schema
 from model import Blueprint, Board, Player, Team
 
