@@ -13,8 +13,9 @@ version: 1.0.1
 from .arena import *
 from .binder import *
 from .board import *
-from .coord import *
 from .context import *
+from .coord import *
+from .node import *
 from .player import *
 from .rank import *
 from .square import *

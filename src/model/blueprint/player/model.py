@@ -33,24 +33,25 @@ class PlayerBlueprint(Blueprint[Player]):
      Super Class:
         Blueprint
      """
-    _id: int
-    _name: str
+    _id: Optional[int]
+    _name: Optional[str]
     _engine: Optional[Engine]
     
     def __init__(
             self,
-            name: str,
             id: Optional[int] | None = None,
+            name: Optional[str] | None = None,
             engine: Optional[Engine] | None = None,
     ):
         """
         Args:
             id: int
             name: str
+            engine: Engine
         """
         super().__init__()
-        self._id = int
-        self._name = str
+        self._id = id
+        self._name = name
         self._engine = engine
 
     @property
@@ -58,7 +59,7 @@ class PlayerBlueprint(Blueprint[Player]):
         return self._id
     
     @property
-    def name(self) -> str:
+    def name(self) -> Optional[str]:
         return self._name
     
     @property

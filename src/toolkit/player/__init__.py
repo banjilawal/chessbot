@@ -10,7 +10,7 @@ version: 1.0.1
 # =========== TOOLKIT.PLAYER PACKAGE ===========#
 
 # Packages
-None
+
 
 # Modules
-from .toolkit import Player
+from .toolkit import PlayerToolkit
