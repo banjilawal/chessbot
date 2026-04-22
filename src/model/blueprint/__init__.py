@@ -15,6 +15,8 @@ from .binder import *
 from .board import *
 from .coord import *
 from .context import *
+from .player import *
+from .rank import *
 from .square import *
 from .team import *
 from .token import *

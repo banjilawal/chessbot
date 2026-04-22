@@ -10,10 +10,11 @@ version: 1.0.1
 from __future__ import annotations
 
 
-from microservice import IdentityService, PersonaService
 from model import Rank
-from operation import ValidationBootstrapper
 from toolkit import Toolkit
+from integrity import PersonaValidator
+from microservice import IdentityService
+from operation import ValidationBootstrapper
 
 
 class RankToolkit(Toolkit[Rank]):
@@ -28,7 +29,7 @@ class RankToolkit(Toolkit[Rank]):
     
     Attributes:
         identity_service: IdentityService
-        persona_service: PersonaService
+        persona_validator: PersonaValidator
         validation_bootstrapper: ValidationBootstrapper
         
     Provides:
@@ -36,23 +37,24 @@ class RankToolkit(Toolkit[Rank]):
     Super Class:
         Toolkit
     """
-    _validation_bootstrapper: ValidationBootstrapper
     _identity_service: IdentityService
-    _persona_service: PersonaService
+    _persona_validator: PersonaValidator
+    _validation_bootstrapper: ValidationBootstrapper
 
     def __init__(
             self,
-            persona_service: PersonaService | None = None,
+            persona_validator: PersonaValidator | None = None,
             identity_service: IdentityService | None = None,
             validation_bootstrapper: ValidationBootstrapper | None = None,
     ):
         """
         Args:
             identity_service: IdentityService
-            persona_service: PersonaService
+            persona_validator: PersonaValidator
             validation_bootstrapper: ValidationBootstrapper
         """
-        self._persona_service = persona_service or PersonaService()
+        super().__init__()
+        self._persona_validator = persona_validator or PersonaValidator()
         self._identity_service = identity_service or IdentityService()
         self._validation_bootstrapper = validation_bootstrapper or ValidationBootstrapper()
         
@@ -61,8 +63,8 @@ class RankToolkit(Toolkit[Rank]):
         return self._identity_service
     
     @property
-    def persona_service(self) -> PersonaService:
-        return self._persona_service
+    def persona_validator(self) -> PersonaValidator:
+        return self._persona_validator
     
     @property
     def validation_bootstrapper(self) -> ValidationBootstrapper:

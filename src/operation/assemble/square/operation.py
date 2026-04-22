@@ -23,7 +23,7 @@ class SquareAssembler(Assembler[Square]):
         -   Build Process Owner
 
     Responsibilities:
-        1.  Ensure a new Token instance is born safe and reliable.
+        1.  Ensure a new Square instance is born safe and reliable.
 
     Attributes:
 
@@ -36,7 +36,7 @@ class SquareAssembler(Assembler[Square]):
                     identity_service: IdentityService,
                     formation_service: FormationService,
                     square_validator: SquareValidator,
-            ) -> BuildResult[Token]
+            ) -> BuildResult[Square]
 
      Super Class:
          Assembler
