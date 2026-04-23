@@ -49,7 +49,7 @@ class DeployTeam:
         placements: List[Token] = []
 
         for member in team.roster.iterator:
-            update_result = team.roster.service.deploy(member)
+            update_result = team.roster.microservice.deploy(member)
             placements.append(update_result.update)
         return DeletionResult.success(placements)
 

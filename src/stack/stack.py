@@ -92,7 +92,7 @@ class StackService(ABC, Generic[T]):
 
     @property
     @abstractmethod
-    def service(self) -> Microservice[T]:
+    def microservice(self) -> Microservice[T]:
         """"Implement to access the model's integrity service."""
         pass
     

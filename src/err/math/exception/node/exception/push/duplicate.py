@@ -7,7 +7,7 @@ Created: 2026-02-18
 version: 1.0.0
 """
 
-from model.graph.node import NodeDebugException
+from model.node import NodeDebugException
 
 __all__ = [
     # ======================# ADDING_DUPLICATE_NODE EXCEPTION #======================#

@@ -12,7 +12,7 @@ from __future__ import annotations
 import sys
 from typing import Optional
 
-from model.graph.node import (
+from model.node import (
     DiscoveryStatus, ArenaNodeContextFlagsException, Node, NodeContext, NodeContextBuildException,
     NodeContextBuildRouteException, NodeValidator, ZeroNodeContextFlagsException
 )

@@ -9,6 +9,12 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from typing import List
+
+from microservice import TeamService
+from model import Team
+from stack import StackService
+
 
 class TeamStackService(StackService[Team]):
     """
@@ -32,28 +38,21 @@ class TeamStackService(StackService[Team]):
     SERVICE_NAME = "TeamStack"
     
     _stack: List[Team]
-    _service: TeamService
+    _microservice: TeamService
     _context_service: TeamQueryService
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            service: TeamService = TeamService(),
+            microservice: TeamService = TeamService(),
             id: int = IdFactory.next_id(class_name="TeamStack"),
-            context_service: TeamQueryService = TeamQueryService(),
+            context_microservice: TeamQueryService = TeamQueryService(),
     ):
         """
-        # ACTION:
-            Constructor
-        # PARAMETERS:
-            *   id (int)
-            *   schema (str)
-            *   service (TeamService)
-            *   context_service (TeamQueryService)
-        # RETURNS:
-            None
-        Raises:
-            None
+        Args:
+            id: int
+            name: str
+            microservice: TeamService
         """
         method = "TokenStackService.__init__"
         super().__init__(id=id, name=name,)
@@ -70,11 +69,11 @@ class TeamStackService(StackService[Team]):
         return self.size == 0
     
     @property
-    def integrity_service(self) -> TeamService:
+    def integrity_service(self) -> Teammicroservice:
         return self._service
     
     @property
-    def context_service(self) -> TeamQueryService:
+    def context_service(self) -> TeamQuerymicroservice:
         return self.context_service
     
     @property
@@ -172,7 +171,7 @@ class TeamStackService(StackService[Team]):
     def delete_by_id(
             self,
             id: int,
-            identity_service: IdentityService = IdentityService()
+            identity_microservice: IdentityService = IdentityService()
     ) -> DeletionResult[Team]:
         """
         # ACTION:

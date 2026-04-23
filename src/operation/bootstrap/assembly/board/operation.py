@@ -9,13 +9,12 @@ version: 1.0.1
 
 from __future__ import annotations
 
-
-from err import BootstrapBoardAssemblyException
-from model import Board, BoardBlueprint
-from operation import AssemblyBootstrapper
+from toolkit import BoardToolkit
 from result import ValidationResult
 from system import LoggingLevelRouter
-from toolkit import BoardToolkit
+from model import Board, BoardBlueprint
+from operation import AssemblyBootstrapper
+from err import BootstrapBoardAssemblyException
 
 
 class BoardAssemblyBootstrapper(AssemblyBootstrapper[Board]):

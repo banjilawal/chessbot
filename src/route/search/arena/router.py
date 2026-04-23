@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import List
 
 from model import Arena
-from query import ArenaQuery
+from model.query import ArenaQuery
 from result import SearchResult
 from route import Router
 from system import LoggingLevelRouter

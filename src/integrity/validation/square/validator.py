@@ -178,7 +178,7 @@ class SquareValidator(Validator[Square]):
         method = f"{cls.__name__}._run_board_tests"
         
         # Handle the case that, the square's board is nnt certified as safe.
-        board_validation_result = board_service.service.validator.validat(
+        board_validation_result = board_service.microservice.validator.validat(
             candidate=square.board
         )
         if board_validation_result.is_faiure:

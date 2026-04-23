@@ -18,14 +18,14 @@ class Blueprint(ABC, Generic[T]):
     """
     Role:
         -   Container
-
+    
     Responsibilities:
         1.  Provides values for instantiating a T object.
-
+    
     Attributes:
-
+    
     Provides:
-
-     Super Class:
-     """
+    
+    Super Class:
+    """
     pass

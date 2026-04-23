@@ -89,7 +89,7 @@ class CoordStackService(StackService[Coord]):
     
     @property
     def integrity_service(self) -> CoordService:
-        return self._ops_controller.service
+        return self._ops_controller.microservice
     
     @property
     def items(self) -> List[Coord]:

@@ -53,7 +53,7 @@ class NodeBlueprint(Blueprint[Node]):
         self._predecessor = predecessor
 
     @property
-    def square(self) -> int:
+    def square(self) -> Square:
         return self._square
     
     @property

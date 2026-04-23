@@ -11,12 +11,11 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from err import RankNullException, RankValidationException
-from integrity import Validator
 from model import Rank
+from operation import Validator
 from result import ValidationResult
 from system import LoggingLevelRouter
-
+from err import RankNullException, RankValidationException
 
 class RankValidator(Validator[Rank]):
     """

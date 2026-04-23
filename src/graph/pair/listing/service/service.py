@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import List, cast
 
-from model.graph.node import Node
+from model.node import Node
 from graph.pair import PairList, PairListBuilder, PairListValidator, PairService
 from graph.pair.listing.service import PairListServiceException
 from system import IdFactory, IntegrityMicroservice, LoggingLevelRouter, SearchResult

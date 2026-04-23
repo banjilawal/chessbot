@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import List
 
 from model import Token
-from query import TeamQuery
+from model.query import TeamQuery
 from result import SearchResult
 from route import SearchRouter
 from system import LoggingLevelRouter

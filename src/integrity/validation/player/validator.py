@@ -9,6 +9,9 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from model import Player
+from operation import Validator
+
 
 class PlayerValidator(Validator[Player]):
     """

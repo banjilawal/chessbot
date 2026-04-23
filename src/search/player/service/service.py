@@ -62,7 +62,7 @@ class PlayerQueryService(QueryService[AgentContext]):
         Raises:
         """
         method = "PlayerQueryService.service"
-        super().service(id=id, name=name, builder=builder, validator=validator, finder=finder)
+        super().microservice(id=id, name=name, builder=builder, validator=validator, finder=finder)
         
     @property
     def finder(self) -> AgentFinder:

@@ -29,7 +29,7 @@ class RankAssembler(Assembler[Rank]):
     Attributes:
 
     Provides:
-        -   def execute(blueprint: RankBlueprint,) -> BuildResult[Rank]:
+        -   def execute(blueprint: RankBlueprint) -> BuildResult[Rank]:
 
      Super Class:
          Assembler
@@ -75,3 +75,5 @@ class RankAssembler(Assembler[Rank]):
         # Entry point into building a Queen instance.
         if blueprint.persona == Persona.QUEEN:
             return BuildResult.success(Queen(id=blueprint.id, persona=blueprint.persona))
+        
+        

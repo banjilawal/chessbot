@@ -14,7 +14,7 @@ __all__ = [
     "NodeNotFoundException",
 ]
 
-from model.graph.node import NodeDebugException
+from model.node import NodeDebugException
 
 
 # ======================# NODE_NOT_FOUND EXCEPTION #======================#

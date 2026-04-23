@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Dict, List
 
-from model.graph.node import Node
+from model.node import Node
 from graph.domain.graph import Graph
 from microservice.edge import Edge, EdgeBuilder, PushingEdgeException
 from system import BuildResult, InsertionResult, LoggingLevelRouter

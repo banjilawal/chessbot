@@ -19,51 +19,33 @@ class Board:
     Role:Data-Holder/Data Owner
   
     Responsibilities:
-    The Surface of Squares where Tokens are played.
-  
-    # PROVIDES:
-      Board
-  
-    # ATTRIBUTES:
-        * id (int)
-        * arena (Arena)
-        * NUMBER_OF_ROWS (int)
-        * column_size (int)
-        * tokens ([BoardTokenService])
-        * squares ([[BoardSquareService]])
+        1.  Surface where tokens move.
+    
+    Attributes:
+        id: int
+        biard: Board
+        binder_controller: ArenaBinderController
+        
+    Super Class:
     """
     _id: int
     _arena: Arena
     _state: BoardState
-    _binder_controller: BoardTeamBinderController
     _squares: SquareDatabase
     _hostage_database: HostageDatabase
-    
-    def __init__(
-            self,
-            id: int,
-            arena: Arena,
-    ):
+    _binder_controller: BoardTeamBinderController
+
+    def __init__(self, id: int, arena: Arena,):
         """
-        # ACTION:
-            Constructs Board object
-        # PARAMETERS:
-            *   id (int)
-            *   arena (Arena)
-            *   NUMBER_OF_ROWS (int)
-            *   column_size (int)
-        # RETURNS:
-            None
-        Raises:
-            None
+        Args:
+            id: int
+            arena: Arena
         """
-        method = "Board.__init__"
-        
         self._id = id
         self._arena = arena
-        self._binder_controller = BoardTeamBinderController()
         self._squares = SquareDatabase()
         self._hostage_database = HostageDatabase()
+        self._binder_controller = BoardTeamBinderController()
         self._state = BoardState.IS_EMPTY
     
     @property
@@ -93,8 +75,6 @@ class Board:
     @property
     def hostage_database(self) -> HostageDatabase:
         return self._hostage_database
-    
-    
     
     def __eq__(self, other):
         if other is self: return True

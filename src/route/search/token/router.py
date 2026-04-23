@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import List
 
 from model import Token
-from query import TokenQuery
+from model.query import TokenQuery
 from result import SearchResult
 from search import TokenQueryValidator
 from system import LoggingLevelRouter

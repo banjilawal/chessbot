@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import List
 
 from model import Board
-from query import BoardQuery
+from model.query import BoardQuery
 from result import SearchResult
 from route import Router
 from system import LoggingLevelRouter

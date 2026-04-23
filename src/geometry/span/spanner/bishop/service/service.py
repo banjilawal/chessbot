@@ -14,7 +14,7 @@ from typing import Dict
 from model.math.coord import Coord, CoordService
 from microservice.edge import Edge, EdgeBuilder
 from graph.domain.graph import Graph
-from model.graph.node import Node, NodeBuilder
+from model.node import Node, NodeBuilder
 from math.span import BishopSpanServiceException, BishopSpanner, CoordSpan, SpanMicroservice
 from geometry.square import Square, SquareContext, SquareDatabase
 from system import BuildResult, ComputationResult, IdFactory, LoggingLevelRouter
@@ -149,25 +149,25 @@ class BishopSpanService(SpanMicroservice):
                     pair_build_result = self._build_pair(
                         head_square=square_u,
                         tail_square=square_v,
-                        node_builder=graph.vertices.service.builder
+                        node_builder=graph.vertices.microservice.builder
                     )
-                    v_build_result = graph.vertices.service.builder.build(
+                    v_build_result = graph.vertices.microservice.builder.build(
                         square=square_v,
-                        square_validator=square_database.service.validator,
+                        square_validator=square_database.microservice.validator,
                     )
-                    u_build_result = graph.vertices.service.builder.build(
+                    u_build_result = graph.vertices.microservice.builder.build(
                         square=square_u,
-                        square_validator=square_database.service.validator,
+                        square_validator=square_database.microservice.validator,
                     )
                     graph.vertices.push(u_build_result.payload)
                     graph.vertices.push(v_build_result.payload)
                     
-                    e = graph.edges.service.builder.build(
+                    e = graph.edges.microservice.builder.build(
                         head=u_build_result.payload,
                         tail=v_build_result.payload,
                         coord_service=self.coord_service,
                     )
-                    f = graph.edges.service.builder.build(
+                    f = graph.edges.microservice.builder.build(
                         head=v_build_result.payload,
                         tail=u_build_result.payload,
                         coord_service=self.coord_service,
@@ -175,15 +175,15 @@ class BishopSpanService(SpanMicroservice):
                     graph.edges.push(e)
                     graph.edges.push(f)
 
-                    u = graph.vertices.service.add_vertex(previous_square)
+                    u = graph.vertices.microservice.add_vertex(previous_square)
                     
-                    e = graph.edges.service.add_edge(
+                    e = graph.edges.microservice.add_edge(
                         source=u,
                         target=v,
-                        weight=graph.edges.service
+                        weight=graph.edges.microservice
                     )
                     f = graph.edges.push(
-                        graph.edges.service.builder.build(
+                        graph.edges.microservice.builder.build(
                         
                         )
                     )
@@ -248,11 +248,11 @@ class BishopSpanService(SpanMicroservice):
                     )
                     v_build_result = graph.vertices.pair_service.builder.search_service(
                         square=square_v,
-                        square_validator=square_database.service.validator,
+                        square_validator=square_database.microservice.validator,
                     )
                     u_build_result = graph.vertices.pair_service.builder.search_service(
                         square=square_u,
-                        square_validator=square_database.service.validator,
+                        square_validator=square_database.microservice.validator,
                     )
                     graph.vertices.search_service(u_build_result.payload)
                     graph.vertices.search_service(v_build_result.payload)

@@ -14,8 +14,8 @@ from typing import Iterator, List, Optional
 from analysis import CollisionAnalyst
 from controller.stack.token.controller import TokenStackOpsController
 from microservice import IdentityService, TokenService
-from model import Token
-from result import DeletionResult, InsertionResult
+from model import Token, TokenContext
+from result import DeletionResult, InsertionResult, SearchResult
 from stack import StackService, TokenStackState
 from system import IdFactory, LoggingLevelRouter
 
@@ -91,6 +91,14 @@ class TokenStackService(StackService[Token]):
         self._capacity = capacity
         self._ops_controller = ops_controller
         self._state = TokenStackState.NOT_READY_FORD_DEPLOYMENT
+    
+    @property
+    def items(self) -> List[Token]:
+        return self._stack
+    
+    @property
+    def iterator(self) -> Iterator[Token]:
+        return iter(self._stack)
 
     @property
     def size(self) -> int:
@@ -121,19 +129,11 @@ class TokenStackService(StackService[Token]):
         return self._stack[-1] if self._stack else None
     
     @property
-    def items(self) -> List[Token]:
-        return self._stack
-    
-    @property
-    def iterator(self) -> Iterator[Token]:
-        return iter(self._stack)
-    
-    @property
     def request(self) -> TokenStackOpsController:
         return self._ops_controller
     
     @property
-    def integrity_service(self) -> TokenService:
+    def microservice(self) -> TokenService:
         return self._ops_controller.integrity_service
     
     @property
@@ -176,7 +176,7 @@ class TokenStackService(StackService[Token]):
     @LoggingLevelRouter.monitor
     def pop(self) -> DeletionResult[Token]:
         """
-        Remove the last token put on the schema.
+        Remove the last token put on the stack.
 
         Action:
             If the pop fails, send an exception chain. Otherwise, send the success result.

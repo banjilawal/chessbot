@@ -135,7 +135,7 @@ class ReverseTokenDeployment:
         update_result = cls._square_visitation_process_work(
             token=token,
             pre_update_token=pre_update_token,
-            square_service=token.team.board.squares.service,
+            square_service=token.team.board.squares.microservice,
             opening_square=cast(Square, opening_square_search_result.payload[0]),
         )
         # Handle the case that, the visitation transaction fails.

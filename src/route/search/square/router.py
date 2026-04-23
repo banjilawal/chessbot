@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import List
 
 from model import Formation, OpeningSquare, Square, Token
-from query import Query, SquareQuery
+from model.query import SquareQuery
 from result import SearchResult
 from route import SearchRouter
 from system import LoggingLevelRouter

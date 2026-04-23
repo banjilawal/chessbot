@@ -91,7 +91,7 @@ class HostageStackServiceStackService[Hostage]):
         method = "HostageList.add_hostage"
         
         # Handle the case that, the hostage is unsafe.
-        validation = self.service.validator.validate(candidate=manifest)
+        validation = self.microservice.validator.validate(candidate=manifest)
         if validation.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(

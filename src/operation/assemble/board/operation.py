@@ -31,5 +31,6 @@ class BoardAssembler(Assembler[Board]):
         method = f"{cls.__name__}.execute"
         
         return BuildResult.success(Board(id=blueprint.id, arena=blueprint.arena,))
+    
         
         

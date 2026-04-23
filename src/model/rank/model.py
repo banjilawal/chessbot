@@ -9,29 +9,34 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import ABC
+from abc import ABC, abstractmethod
+from typing import Dict
+
+from geometry import CoordSpan
+from microservice import CoordService, VectorService
+from model import Persona
+from result import ComputationResult
+from system import LoggingLevelRouter
 
 
 class Rank(ABC):
     """
     Role:Computation
-
+    
     Responsibilities:
-    1.  Single-source-of-truth of Coords reachable from a Token's updated position on the board.
-    2.  Metadata for weighing edges in the GameGraph.
-    3.  Hosting model common to Rank subclasses.
+        1.  Determines how a Token can move.
+        2.  How many points its worth.
+        
+    Attributes:
+        id: int
+        persona: Persona
+        coord_service: CoordService
+        vector_service: VectorService
 
-    # PROVIDES:
-    Rank
-
-    # ATTRIBUTES:
-        *   id (int)
-        *   schema (str)
-        *   ransom (int)
-        *   team_quota (int)
-        *   designation(str)
-        *   quadrants (List[Quadrant]):
-        *   vectors (List[Vector])
+    Provides:
+        -   dict span_dict(self) -> ComputationResult[Dict[str, CoordSpan]]:
+        
+    Super Class:
     """
     _id: int
     _persona: Persona

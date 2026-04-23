@@ -61,7 +61,7 @@ class PlayerStackService(StackService[Player]):
 
         Raises:
         """
-        super().service(
+        super().microservice(
             id=id,
             name=name,
             items=items,

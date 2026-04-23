@@ -1,11 +1,10 @@
 from __future__ import annotations
 from typing import Dict, List, Optional
 
-from microservice import TeamService
-from model import Board, Schema
-from system import ComputationResult, GameColor, LoggingLevelRouter
-from model.team import Team
 
+from model.team import Team
+from model import Board, Schema
+from microservice import TeamService
 
 class BoardTeamBinder:
     """
@@ -45,7 +44,6 @@ class BoardTeamBinder:
             board: Board
             table: Dict[str, Any]
             team_service: TeamService
-    
         """
         self._id = id
         self.__table = {}

@@ -10,12 +10,13 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Dict
 
-from model.catalog.persona import Persona
-from model.math.vector import VectorService
-from math.span import RookSpanner, CoordSpan
-from model.rank import RookException, Rank
-from model.coord import Coord, CoordService
-from system import ComputationResult, LoggingLevelRouter
+from err import RookException
+from geometry import CoordSpan, RookSpanner
+from microservice import CoordService, VectorService
+from model import Coord, Persona, Rank
+from result import ComputationResult
+from system import LoggingLevelRouter
+
 
 class Rook(Rank):
     """

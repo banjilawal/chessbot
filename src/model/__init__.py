@@ -16,11 +16,13 @@ from .blueprint import *
 from .board import *
 from .catalog import *
 from .context import *
+from .edge import *
 from .math import *
 from .game import *
 from .graph import *
 from .hostage import *
 from .name import *
+from .node import *
 from .player import *
 from .rank import *
 from .snapshot import *

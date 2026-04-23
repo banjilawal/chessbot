@@ -70,7 +70,7 @@ class SquareCollisionAnalyst(CollisionAnalyst[Square]):
         method = f"{cls.__class__.__name__}.detect"
         
         # Handle the case that, the target does not pass a validation check.
-        validation_result = square_stack.service.validator.search_service(
+        validation_result = square_stack.microservice.validator.search_service(
             candidate=target
         )
         if validation_result.is_failure:

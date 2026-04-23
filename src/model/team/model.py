@@ -9,55 +9,35 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from database import TokenDatabase
 from model.board import Board
-from model.catalog import Schema
 from model.player import Player
 from model.team import TeamState
+from model.catalog import Schema
+from database import TokenDatabase
 
 class Team:
     """
-    Role:Data-Holder
-
-    # RESPONSIBILITY:
-    1.  Disposition of Tokens the Player can move on a Board instance.
-    2.  Holds the captured enemy Tokens.
-    
-    Super Class:
-    None
-    
-    Provides:
-
-    # LOCAL ATTRIBUTES:
-        *   id (int)
-        *   board (Board)
-        *   owner (Player)
-        *   schema (Schema)
-        *   roster (TokenDatabase)
-
-    # INHERITED ATTRIBUTES:
-    None
-
+    Role:
+        -   Model
+        -   Stateless Data-Holder
+        
+    Responsibilities:
+        1.   Manages tokens assigned to a Team.
+        
     Attributes:
-        Local:
-        *   id (int)
-        *   board (Board)
-        *   owner (Player)
-        *   schema (Schema)
-        *   roster (TokenDatabase)
-
-        Inherited:
-        None
-
-
-    # INHERITED ATTRIBUTES:
-    None
-
-    # LOCAL METHODS:
-    None
-
-    # INHERITED METHODS:
-    None
+        MAX_ROSTER_SIZE = 16
+        id: int
+        board: Board
+        owner: Player
+        schema: Schema
+        roster: TokenDatabase
+        
+    Provides:
+        -   def is_ready_to_play() -> bool
+        -   def is_waiting_to_play() -> bool
+        -   def is_not_ready_to_play() -> bool
+        
+    Super Class
     """
     MAX_ROSTER_SIZE = 16
     
@@ -88,7 +68,6 @@ class Team:
         self._owner = owner
         self._state = TeamState.NOT_READY_TO_PLAY
         self._roster = TokenDatabase()
-
     
     @property
     def id(self) -> int:

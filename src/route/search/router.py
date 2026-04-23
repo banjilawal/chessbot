@@ -13,7 +13,7 @@ from abc import abstractmethod
 from typing import List, TypeVar, Generic
 
 from operation import Validator
-from query import Query
+from model.query import Query
 from result import SearchResult
 from route import Router
 
