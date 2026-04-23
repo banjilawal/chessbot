@@ -1,7 +1,7 @@
-# src/query/stack/rank/query.py
+# src/model/query/stack/square/model.py
 
 """
-Module: query.stack.rank.query
+Module: model.query.stack.square.model
 Created: 2026-04-03
 version: 1.0.1
 """
@@ -11,13 +11,12 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import List
 
-from model import Rank, RankContext
+from model import Square, SquareContext
 from model.query import StackQuery
 
 
-
 @dataclass
-class RankQuery(StackQuery[Rank]):
+class SquareQuery(StackQuery[Square]):
     """
     Role:
         -   Model
@@ -25,18 +24,18 @@ class RankQuery(StackQuery[Rank]):
         -   Stateless Data-Holder
 
     Responsibilities:
-        1.  A list of ranks to search with context.
+        1.  A list of squares to search with context.
 
 
     Attributes:
-        stack: List[Rank]
-        context: RankContext
+        stack: List[Square]
+        context: SquareContext
 
     Provides:
 
     Super Class:
         StackQuery
     """
-    stack: List[Rank]
-    context: RankContext
+    stack: List[Square]
+    context: SquareContext
 

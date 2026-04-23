@@ -1,7 +1,7 @@
-# src/query/py
+# src/model/query/py
 
 """
-Module: query.model
+Module: model.query.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

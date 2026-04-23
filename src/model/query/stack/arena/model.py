@@ -1,7 +1,7 @@
-# src/query/stack/game/query.py
+# src/model/query/stack/arena/model.py
 
 """
-Module: query.stack.game.query
+Module: model.query.stack.arena.model
 Created: 2026-04-03
 version: 1.0.1
 """
@@ -11,12 +11,11 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import List
 
-from model import Game
+from model import Arena, ArenaContext
 from model.query import StackQuery
 
-
 @dataclass
-class GameQuery(StackQuery[Game]):
+class ArenaQuery(StackQuery[Arena]):
     """
     Role:
         -   Model
@@ -24,18 +23,17 @@ class GameQuery(StackQuery[Game]):
         -   Stateless Data-Holder
 
     Responsibilities:
-        1.  A list of games to search with context.
-
+        1.  A list of arenas to search with context.
 
     Attributes:
-        stack: List[Game]
-        context: GameContext
+        stack: List[Arena]
+        context: ArenaContext
 
     Provides:
 
     Super Class:
         StackQuery
     """
-    stack: List[Game]
-    context: GameContext
+    stack: List[Arena]
+    context: ArenaContext
 

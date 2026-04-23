@@ -1,7 +1,7 @@
-# src/query/catalog/formation/query.py
+# src/model/query/catalog/formation/model.py
 
 """
-Module: query.catalog.formation.query
+Module: model.query.catalog.formation.model
 Created: 2026-04-03
 version: 1.0.1
 """
@@ -11,7 +11,6 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from model import Formation, FormationContext
-from model.query import CatalogQuery
 
 
 @dataclass

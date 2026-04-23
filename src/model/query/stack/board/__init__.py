@@ -1,15 +1,15 @@
-# src/query/stack/board/__init__.py
+# src/model/query/stack/board/__init__.py
 
 """
-Module: query.stack.board.__init__
+Module: model.query.stack.board.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== QUERY.STACK.BOARD PACKAGE ===========#
+# =========== MODEL.QUERY.STACK.BOARD PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .query import BoardQuery
+from .model import BoardQuery

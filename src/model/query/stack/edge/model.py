@@ -1,7 +1,7 @@
-# src/query/stack/hostage/query.py
+# src/model/query/stack/edge/model.py
 
 """
-Module: query.stack.hostage.query
+Module: model.query.stack.edge.model
 Created: 2026-04-03
 version: 1.0.1
 """
@@ -11,12 +11,12 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import List
 
-from model import Hostage, HostageContext
+from model import Edge, EdgeContext
 from model.query import StackQuery
 
 
 @dataclass
-class HostageQuery(StackQuery[Hostage]):
+class EdgeQuery(StackQuery[Edge]):
     """
     Role:
         -   Model
@@ -24,18 +24,18 @@ class HostageQuery(StackQuery[Hostage]):
         -   Stateless Data-Holder
 
     Responsibilities:
-        1.  A list of hostages to search with context.
+        1.  A list of edges to search with context.
 
 
     Attributes:
-        stack: List[Hostage]
-        context: HostageContext
+        stack: List[Edge]
+        context: EdgeContext
 
     Provides:
 
     Super Class:
         StackQuery
     """
-    stack: List[Hostage]
-    context: HostageContext
+    stack: List[Edge]
+    context: EdgeContext
 

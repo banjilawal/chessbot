@@ -1,13 +1,13 @@
-# src/query/stack/__init__.py
+# src/model/query/stack/__init__.py
 
 """
-Module: query.stack.__init__
+Module: model.query.stack.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== QUERY.STACK PACKAGE ===========#
+# =========== MODEL.QUERY.STACK PACKAGE ===========#
 
 # Packages
 from .arena import *
@@ -24,4 +24,4 @@ from .team import *
 from .token import *
 
 # Modules
-from .query import StackQuery
+from .model import StackQuery

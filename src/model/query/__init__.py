@@ -1,13 +1,13 @@
-# src/query/__init__.py
+# src/model/query/__init__.py
 
 """
-Module: query.__init__
+Module: model.query.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== QUERY PACKAGE ===========#
+# =========== MODEL.QUERY PACKAGE ===========#
 
 # Packages
 from .catalog import *

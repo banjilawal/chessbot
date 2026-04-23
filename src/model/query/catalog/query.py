@@ -1,7 +1,7 @@
-# src/query/catalog/query.py
+# src/model/query/catalog/model.py
 
 """
-Module: query.catalog.query
+Module: model.query.catalog.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

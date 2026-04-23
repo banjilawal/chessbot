@@ -1,7 +1,7 @@
-# src/query/stack/square/query.py
+# src/model/query/stack/player/model.py
 
 """
-Module: query.stack.square.query
+Module: model.query.stack.player.model
 Created: 2026-04-03
 version: 1.0.1
 """
@@ -11,12 +11,12 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import List
 
-from model import Square, SquareContext
+from model import Player, PlayerContext
 from model.query import StackQuery
 
 
 @dataclass
-class SquareQuery(StackQuery[Square]):
+class PlayerQuery(StackQuery[Player]):
     """
     Role:
         -   Model
@@ -24,18 +24,18 @@ class SquareQuery(StackQuery[Square]):
         -   Stateless Data-Holder
 
     Responsibilities:
-        1.  A list of squares to search with context.
+        1.  A list of players to search with context.
 
 
     Attributes:
-        stack: List[Square]
-        context: SquareContext
+        stack: List[Player]
+        context: PlayerContext
 
     Provides:
 
     Super Class:
         StackQuery
     """
-    stack: List[Square]
-    context: SquareContext
+    stack: List[Player]
+    context: PlayerContext
 

@@ -1,7 +1,7 @@
-# src/query/stack/arena/query.py
+# src/model/query/stack/node/model.py
 
 """
-Module: query.stack.arena.query
+Module: model.query.stack.node.model
 Created: 2026-04-03
 version: 1.0.1
 """
@@ -11,11 +11,12 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import List
 
-from model import Arena, ArenaContext
+from model import Node, NodeContext
 from model.query import StackQuery
 
+
 @dataclass
-class ArenaQuery(StackQuery[Arena]):
+class NodeQuery(StackQuery[Node]):
     """
     Role:
         -   Model
@@ -23,17 +24,18 @@ class ArenaQuery(StackQuery[Arena]):
         -   Stateless Data-Holder
 
     Responsibilities:
-        1.  A list of arenas to search with context.
+        1.  A list of nodes to search with context.
+
 
     Attributes:
-        stack: List[Arena]
-        context: ArenaContext
+        stack: List[Node]
+        context: NodeContext
 
     Provides:
 
     Super Class:
         StackQuery
     """
-    stack: List[Arena]
-    context: ArenaContext
+    stack: List[Node]
+    context: NodeContext
 

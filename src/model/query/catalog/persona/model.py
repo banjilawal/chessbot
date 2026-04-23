@@ -1,7 +1,7 @@
-# src/query/catalog/schema/query.py
+# src/model/query/catalog/persona/model.py
 
 """
-Module: query.catalog.schema.query
+Module: model.query.catalog.persona.model
 Created: 2026-04-03
 version: 1.0.1
 """
@@ -10,12 +10,12 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from model import Schema, SchemaContext
+from model import Persona, PersonaContext
 from model.query import CatalogQuery
 
 
 @dataclass
-class SchemaQuery(CatalogQuery[Schema]):
+class PersonaQuery(CatalogQuery[Persona]):
     """
     Role:
         -   Model
@@ -23,17 +23,17 @@ class SchemaQuery(CatalogQuery[Schema]):
         -   Stateless Data-Holder
 
     Responsibilities:
-        1.  A list of schemas to search with context.
+        1.  A list of personas to search with context.
 
     Attributes:
-        catalog: Schema
-        context: SchemaContext
+        catalog: Persona
+        context: PersonaContext
 
     Provides:
 
     Super Class:
         CatalogQuery
     """
-    catalog: Schema
-    context: SchemaContext
+    catalog: Persona
+    context: PersonaContext
 
