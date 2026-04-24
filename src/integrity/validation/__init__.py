@@ -14,25 +14,6 @@ log = logging.getLogger("chessbot")
 # =========== VALIDATION PACKAGE ===========#
 
 # Packages
-from .arena import *
-from .board import *
 from .context import *
-from .coord import *
-from .edge import *
-from .formation import *
-from .game import *
-from .hostage import *
-from .node import *
-from .number import *
-from .persona import *
-from .player import *
-from .rank import *
-from .schema import *
-from .snapshot import *
-from .square import *
-from .text import *
-from .team import *
-from .token import *
-from .vector import *
 
 # Modules
