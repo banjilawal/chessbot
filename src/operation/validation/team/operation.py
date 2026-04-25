@@ -1,7 +1,7 @@
-# src/integrity/validation/team/validator.py
+# src/operation/validation/team/operation.py
 
 """
-Module: integrity.validation.team.validator
+Module: operation.validation.team.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

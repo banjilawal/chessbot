@@ -1,7 +1,7 @@
-# src/integrity/validation/board/validator.py
+# src/operation/validation/board/operation.py
 
 """
-Module: integrity.validation.board.validator
+Module: operation.validation.board.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

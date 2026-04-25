@@ -1,7 +1,7 @@
-# src/integrity/validation/persona/validator.py
+# src/operation/validation/persona/operation.py
 
 """
-Module: integrity.validation.persona.validator
+Module: operation.validation.persona.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

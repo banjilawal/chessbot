@@ -1,13 +1,22 @@
-# src/integrity/validation/vector/validator.py
+# src/operation/validation/vector/operation.py
 
 """
-Module: integrity.validation.vector.validator
+Module: operation.validation.vector.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
 from __future__ import annotations
+from typing import Any, cast
+
+from model import Vector
+from toolkit import MathToolkit
+from operation import Validator
+from result import ValidationResult
+from system import BOARD_DIMENSION, LoggingLevelRouter
+from err import VectorNullException, VectorValidationException
+
 
 
 
@@ -27,7 +36,7 @@ class VectorValidator(Validator[Vector]):
     Provides:
         -   def validate(
                     candidate: Any,
-                    number_validator: NumberValidator = NumberValidator()
+                    number_validator: NumberValidator
             ) -> ValidationResult[Vector]:
 
     Super Class:
@@ -38,7 +47,7 @@ class VectorValidator(Validator[Vector]):
     def validate(
             cls,
             candidate: Any,
-            number_validator: NumberValidator = NumberValidator()
+            toolkit: MathToolkit | None = None
     ) -> ValidationResult[Vector]:
         """
         Check if a Vector is safe to use.
@@ -51,7 +60,7 @@ class VectorValidator(Validator[Vector]):
             2.  Otherwise, send the success result.
         Args:
              candidate: Any
-             number_validator: NumberValidator
+             toolkit: MathToolkit
         Returns:
             ValidationResult[Vector]
         Raises:
@@ -61,37 +70,24 @@ class VectorValidator(Validator[Vector]):
         """
         method = f"{cls.__name__}.validate"
         
-        # Handle the nonexistence case.
-        if candidate is None:
+        if toolkit is None:
+            toolkit = MathToolkit()
+        
+        # Handle the case that, the candidate does not exist.
+        validation_bootstrap_result = toolkit.validation_bootstrapper.validate(
+            candidate=candidate,
+            target_model=Vector,
+            null_exception=VectorNullException(),
+        )
+        if validation_bootstrap_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 VectorValidationException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
-                    op=VectorValidationException.OP,
+                    cls_name=cls.__name__,
                     msg=VectorValidationException.MSG,
                     err_code=VectorValidationException.ERR_CODE,
-                    mthd_rslt=VectorValidationException.MTHD_RSLT,
-                    ex=NullVectorException(
-                        msg=VectorValidationException.MSG,
-                        err_code=VectorValidationException.ERR_CODE,
-                    )
-                )
-            )
-        # Handle the wrong class case.
-        if not isinstance(candidate, Vector):
-            # Return the exception chain on failure.
-            return ValidationResult.failure(
-                VectorValidationException(
-                    cls_mthd=method,
-                    cls_name=method.__name__,
-                    op=VectorValidationException.OP,
-                    msg=VectorValidationException.MSG,
-                    err_code=VectorValidationException.ERR_CODE,
-                    mthd_rslt=VectorValidationException.MTHD_RSLT,
-                    ex=TypeError(
-                        f"Expected a Vector, got {type(candidate).__name__} instead."
-                    )
+                    ex=validation_bootstrap_result.exception,
                 )
             )
         # --- Cast the candidate to a Vector for additional tests ---#
@@ -99,9 +95,9 @@ class VectorValidator(Validator[Vector]):
         
         # Handle the case that, either component is out of bounds.
         for num in [vector.x, vector.y]:
-            validation_result = number_validator.validate(
+            validation_result = toolkit.number_validator.validate(
                 floor=0,
-                ceiling=LONGEST_KNIGHT_LEG_SIZE,
+                ceiling=BOARD_DIMENSION - 1,
                 candidate=abs(num)
             )
             if validation_result.is_failure:
@@ -109,12 +105,10 @@ class VectorValidator(Validator[Vector]):
                 return ValidationResult.failure(
                     VectorValidationException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
-                        op=VectorValidationException.OP,
+                        cls_name=cls.__name__,
                         msg=VectorValidationException.MSG,
                         err_code=VectorValidationException.ERR_CODE,
-                        mthd_rslt=VectorValidationException.MTHD_RSLT,
-                        ex=validation_result.exception
+                        ex=validation_bootstrap_result.exception,
                     )
                 )
         # --- Forward the work product to the caller. ---#

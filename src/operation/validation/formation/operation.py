@@ -1,7 +1,7 @@
-# src/integrity/validation/formation/validator.py
+# src/operation/validation/formation/operation.py
 
 """
-Module: integrity.validation.formation.validator
+Module: operation.validation.formation.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

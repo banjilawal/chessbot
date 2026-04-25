@@ -1,16 +1,16 @@
-# src/integrity/validation/persona/__init__.py
+# src/operation/validation/persona/__init__.py
 
 """
-Module: integrity.validation.persona.__init__
+Module: operation.validation.persona.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== VALIDATION.PERSONA PACKAGE ===========#
+# =========== OPERATION.VALIDATION.PERSONA PACKAGE ===========#
 
 # Packages
 None
 
 # Modules
-from .validator import PersonaValidator
+from .operation import PersonaValidator

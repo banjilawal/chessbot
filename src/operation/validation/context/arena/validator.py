@@ -1,7 +1,7 @@
-# src/integrity/validation/context/arena/validator.py
+# src/operation/validation/context/arena/operation.py
 
 """
-Module: integrity.validation.context.arena.validator
+Module: operation.validation.context.arena.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

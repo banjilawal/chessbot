@@ -1,7 +1,7 @@
-# src/integrity/validation/context/token/validator.py
+# src/operation/validation/context/token/operation.py
 
 """
-Module: integrity.validation.context.token.validator
+Module: operation.validation.context.token.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

@@ -1,7 +1,7 @@
-# src/integrity/validation/game/validator.py
+# src/operation/validation/game/operation.py
 
 """
-Module: integrity.validation.game.validator
+Module: operation.validation.game.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

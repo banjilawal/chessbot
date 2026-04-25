@@ -1,7 +1,7 @@
-# src/integrity/validation/rank/validator.py
+# src/operation/validation/rank/operation.py
 
 """
-Module: integrity.validation.rank.validator
+Module: operation.validation.rank.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

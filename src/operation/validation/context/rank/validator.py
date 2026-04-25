@@ -1,7 +1,7 @@
-# src/integrity/validation/context/rank/validator.py
+# src/operation/validation/context/rank/operation.py
 
 """
-Module: integrity.validation.context.rank.validator
+Module: operation.validation.context.rank.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

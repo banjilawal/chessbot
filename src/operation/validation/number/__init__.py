@@ -1,16 +1,16 @@
-# src/integrity/validation/number/__init__.py
+# src/operation/validation/number/__init__.py
 
 """
-Module: integrity.validation.number.__init__
+Module: operation.validation.number.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== VALIDATION.NUMBER PACKAGE ===========#
+# =========== OPERATION.VALIDATION.NUMBER PACKAGE ===========#
 
 # Packages
 None
 
 # Modules
-from .validator import NumberValidator
+from .operation import NumberValidator

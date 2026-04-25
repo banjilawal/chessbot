@@ -1,16 +1,16 @@
-# src/integrity/validation/edge/__init__.py
+# src/operation/validation/edge/__init__.py
 
 """
-Module: integrity.validation.edge.__init__
+Module: operation.validation.edge.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== VALIDATION.EDGE PACKAGE ===========#
+# =========== OPERATION.VALIDATION.EDGE PACKAGE ===========#
 
 # Packages
 None
 
 # Modules
-from .validator import EdgeValidator
+from .operation import EdgeValidator

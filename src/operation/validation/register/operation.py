@@ -1,4 +1,4 @@
-# src/operation/validation/register/validator.py
+# src/operation/validation/register/operation.py
 
 """
 Module: operation.validation.register.validator

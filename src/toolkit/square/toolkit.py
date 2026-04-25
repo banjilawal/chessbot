@@ -14,7 +14,7 @@ from integrity import BoardValidator, CoordValidator
 from microservice import FormationService, IdentityService
 from model import Square
 from operation import ValidationBootstrapper
-from operation.validation import bootstrapper
+from operation.validation import bootstrap
 from toolkit import Toolkit
 
 

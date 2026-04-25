@@ -1,7 +1,7 @@
-# src/integrity/validation/context/square/validator.py
+# src/operation/validation/context/square/operation.py
 
 """
-Module: integrity.validation.context.square.validator
+Module: operation.validation.context.square.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

@@ -1,7 +1,7 @@
-# src/integrity/validation/context/node/validator.py
+# src/operation/validation/context/node/operation.py
 
 """
-Module: integrity.validation.context.node.validator
+Module: operation.validation.context.node.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

@@ -1,7 +1,7 @@
-# src/integrity/validation/schema/validator.py
+# src/operation/validation/schema/operation.py
 
 """
-Module: integrity.validation.schema.validator
+Module: operation.validation.schema.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

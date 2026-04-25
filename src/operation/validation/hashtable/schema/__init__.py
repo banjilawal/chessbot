@@ -13,4 +13,4 @@ version: 1.0.1
 
 
 # Modules
-from .validator import SchemaHashtableValidator
+from .operation import SchemaHashtableValidator

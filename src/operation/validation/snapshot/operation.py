@@ -1,7 +1,7 @@
-# src/integrity/validation/snapshot/validator.py
+# src/operation/validation/snapshot/operation.py
 
 """
-Module: integrity.validation.snapshot.validator
+Module: operation.validation.snapshot.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

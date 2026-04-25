@@ -1,7 +1,7 @@
-# src/integrity/validation/hostage/validator.py
+# src/operation/validation/hostage/operation.py
 
 """
-Module: integrity.validation.hostage.validator
+Module: operation.validation.hostage.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

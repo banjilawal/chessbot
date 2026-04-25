@@ -1,7 +1,7 @@
-# src/integrity/validation/coord/validator.py
+# src/operation/validation/coord/operation.py
 
 """
-Module: integrity.validation.coord.validator
+Module: operation.validation.coord.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

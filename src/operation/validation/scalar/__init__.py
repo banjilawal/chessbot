@@ -1,16 +1,16 @@
-# src/integrity/validation/scalar/__init__.py
+# src/operation/validation/scalar/__init__.py
 
 """
-Module: integrity.validation.scalar.__init__
+Module: operation.validation.scalar.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== VALIDATION.SCALAR PACKAGE ===========#
+# =========== OPERATION.VALIDATION.SCALAR PACKAGE ===========#
 
 # Packages
 None
 
 # Modules
-from .validator import ScalarValidator
+from .operation import ScalarValidator

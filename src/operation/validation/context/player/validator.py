@@ -1,7 +1,7 @@
-# src/integrity/validation/context/player/validator.py
+# src/operation/validation/context/player/operation.py
 
 """
-Module: integrity.validation.context.player.validator
+Module: operation.validation.context.player.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

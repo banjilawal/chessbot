@@ -1,16 +1,16 @@
-# src/integrity/validation/game/__init__.py
+# src/operation/validation/game/__init__.py
 
 """
-Module: integrity.validation.game.__init__
+Module: operation.validation.game.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== VALIDATION.GAME PACKAGE ===========#
+# =========== OPERATION.VALIDATION.GAME PACKAGE ===========#
 
 # Packages
 None
 
 # Modules
-from .validator import GameValidator
+from .operation import GameValidator

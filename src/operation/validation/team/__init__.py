@@ -1,16 +1,16 @@
-# src/integrity/validation/team/__init__.py
+# src/operation/validation/team/__init__.py
 
 """
-Module: integrity.validation.team.__init__
+Module: operation.validation.team.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== VALIDATION.TEAM PACKAGE ===========#
+# =========== OPERATION.VALIDATION.TEAM PACKAGE ===========#
 
 # Packages
 None
 
 # Modules
-from .validator import TeamValidator
+from .operation import TeamValidator

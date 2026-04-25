@@ -1,7 +1,7 @@
-# src/integrity/validation/edge/validator.py
+# src/operation/validation/edge/operation.py
 
 """
-Module: integrity.validation.edge.validator
+Module: operation.validation.edge.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

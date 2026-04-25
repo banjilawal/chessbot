@@ -1,16 +1,16 @@
-# src/integrity/validation/snapshot/__init__.py
+# src/operation/validation/snapshot/__init__.py
 
 """
-Module: integrity.validation.snapshot.__init__
+Module: operation.validation.snapshot.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== VALIDATION.SNAPSHOT PACKAGE ===========#
+# =========== OPERATION.VALIDATION.SNAPSHOT PACKAGE ===========#
 
 # Packages
 None
 
 # Modules
-from .validator import SnapshotValidator
+from .operation import SnapshotValidator

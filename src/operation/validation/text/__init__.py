@@ -1,16 +1,16 @@
-# src/integrity/validation/string/__init__.py
+# src/operation/validation/string/__init__.py
 
 """
-Module: integrity.validation.string.__init__
+Module: operation.validation.string.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== VALIDATION.STRING PACKAGE ===========#
+# =========== OPERATION.VALIDATION.STRING PACKAGE ===========#
 
 # Packages
 from .name import *
 
 # Modules
-from .validator import StringValidator
+from .operation import StringValidator
