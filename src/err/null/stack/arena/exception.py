@@ -14,11 +14,11 @@ from err import StackNullException
 
 __all__ = [
     # ======================# ARENA_STACK_NULL_EXCEPTION #======================#
-    "ArenaStacNullException",
+    "ArenaStackNullException",
 ]
 
 # ======================# ARENA_STACK_NULL_EXCEPTION #======================#
-class ArenaStacNullException(StackNullException):
+class ArenaStackNullException(StackNullException):
     """
     Role:
         -   Error Tracing

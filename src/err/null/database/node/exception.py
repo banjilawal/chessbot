@@ -14,11 +14,11 @@ from err import DatabaseNullException
 
 __all__ = [
     # ======================# NODE_DATABASE_NULL_EXCEPTION #======================#
-    "NodeStacNullException",
+    "NodeDatabaseNullException",
 ]
 
 # ======================# NODE_DATABASE_NULL_EXCEPTION #======================#
-class NodeStacNullException(DatabaseNullException):
+class NodeDatabaseNullException(DatabaseNullException):
     """
     Role:
         -   Error Tracing

@@ -14,11 +14,11 @@ from err import DatabaseNullException
 
 __all__ = [
     # ======================# PLAYER_DATABASE_NULL_EXCEPTION #======================#
-    "PlayerStacNullException",
+    "PlayerDatabaseNullException",
 ]
 
 # ======================# PLAYER_DATABASE_NULL_EXCEPTION #======================#
-class PlayerStacNullException(DatabaseNullException):
+class PlayerDatabaseNullException(DatabaseNullException):
     """
     Role:
         -   Error Tracing

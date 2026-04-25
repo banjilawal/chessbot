@@ -14,11 +14,11 @@ from err import DatabaseNullException
 
 __all__ = [
     # ======================# SQUARE_DATABASE_NULL_EXCEPTION #======================#
-    "SquareStacNullException",
+    "SquareDatabaseNullException",
 ]
 
 # ======================# SQUARE_DATABASE_NULL_EXCEPTION #======================#
-class SquareStacNullException(DatabaseNullException):
+class SquareDatabaseNullException(DatabaseNullException):
     """
     Role:
         -   Error Tracing

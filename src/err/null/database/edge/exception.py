@@ -14,11 +14,11 @@ from err import DatabaseNullException
 
 __all__ = [
     # ======================# EDGE_DATABASE_NULL_EXCEPTION #======================#
-    "EdgeStacNullException",
+    "EdgeDatabaseNullException",
 ]
 
 # ======================# EDGE_DATABASE_NULL_EXCEPTION #======================#
-class EdgeStacNullException(DatabaseNullException):
+class EdgeDatabaseNullException(DatabaseNullException):
     """
     Role:
         -   Error Tracing

@@ -14,11 +14,11 @@ from err import DatabaseNullException
 
 __all__ = [
     # ======================# HOSTAGE_DATABASE_NULL_EXCEPTION #======================#
-    "HostageStacNullException",
+    "HostageDatabaseNullException",
 ]
 
 # ======================# HOSTAGE_DATABASE_NULL_EXCEPTION #======================#
-class HostageStacNullException(DatabaseNullException):
+class HostageDatabaseNullException(DatabaseNullException):
     """
     Role:
         -   Error Tracing

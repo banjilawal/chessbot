@@ -14,11 +14,11 @@ from err import DatabaseNullException
 
 __all__ = [
     # ======================# COORD_DATABASE_NULL_EXCEPTION #======================#
-    "CoordStacNullException",
+    "CoordDatabaseNullException",
 ]
 
 # ======================# COORD_DATABASE_NULL_EXCEPTION #======================#
-class CoordStacNullException(DatabaseNullException):
+class CoordDatabaseNullException(DatabaseNullException):
     """
     Role:
         -   Error Tracing

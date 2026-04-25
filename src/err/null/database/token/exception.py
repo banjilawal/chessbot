@@ -14,11 +14,11 @@ from err import DatabaseNullException
 
 __all__ = [
     # ======================# TOKEN_DATABASE_NULL_EXCEPTION #======================#
-    "TokenStacNullException",
+    "TokenDatabaseNullException",
 ]
 
 # ======================# TOKEN_DATABASE_NULL_EXCEPTION #======================#
-class TokenStacNullException(DatabaseNullException):
+class TokenDatabaseNullException(DatabaseNullException):
     """
     Role:
         -   Error Tracing

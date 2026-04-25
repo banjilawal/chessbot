@@ -14,11 +14,11 @@ from err import DatabaseNullException
 
 __all__ = [
     # ======================# SNAPSHOT_DATABASE_NULL_EXCEPTION #======================#
-    "SnapshotStacNullException",
+    "SnapshotDatabaseNullException",
 ]
 
 # ======================# SNAPSHOT_DATABASE_NULL_EXCEPTION #======================#
-class SnapshotStacNullException(DatabaseNullException):
+class SnapshotDatabaseNullException(DatabaseNullException):
     """
     Role:
         -   Error Tracing

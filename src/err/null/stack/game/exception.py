@@ -14,11 +14,11 @@ from err import StackNullException
 
 __all__ = [
     # ======================# GAME_STACK_NULL_EXCEPTION #======================#
-    "GameStacNullException",
+    "GameStackNullException",
 ]
 
 # ======================# GAME_STACK_NULL_EXCEPTION #======================#
-class GameStacNullException(StackNullException):
+class GameStackNullException(StackNullException):
     """
     Role:
         -   Error Tracing

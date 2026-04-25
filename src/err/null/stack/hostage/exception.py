@@ -14,11 +14,11 @@ from err import StackNullException
 
 __all__ = [
     # ======================# HOSTAGE_STACK_NULL_EXCEPTION #======================#
-    "HostageStacNullException",
+    "HostageStackNullException",
 ]
 
 # ======================# HOSTAGE_STACK_NULL_EXCEPTION #======================#
-class HostageStacNullException(StackNullException):
+class HostageStackNullException(StackNullException):
     """
     Role:
         -   Error Tracing

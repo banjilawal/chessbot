@@ -13,4 +13,4 @@ version: 1.0.1
 
 
 # Modules
-from .exception import GameStacNullException
+from .exception import GameDatabaseNullException

@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Any, cast
 
 from database import CoordDatabase
-from err import NullException, TokenNullException, TokenValidationException
+from err import CoordDatabaseNullException, NullException, TokenNullException, TokenValidationException
 from integrity import NumberValidator, Validator
 from microservice import CoordService, RankService, TeamService
-from model import Coord, Token
+from model import CombatantToken, Coord, KingToken, Token
 from result import ValidationResult
 from system import IdentityService, LoggingLevelRouter
 from toolkit import TokenToolkit
@@ -170,7 +170,7 @@ class TokenValidator(Validator[Token]):
                     ex=opening_square_validation_result.exception,
                 )
             )
-        # Handle the case that, the rankis not safe.
+        # Handle the case that, the rank is not safe.
         rank_validation_result = toolkit.rank_service.validator.validate(rank=token.rank)
         if rank_validation_result.is_failure:
             # Return the exception chain on failure.
@@ -187,7 +187,7 @@ class TokenValidator(Validator[Token]):
         coord_database_validation_result = toolkit.validation_bootstrapper.validate(
             candidate=token.positions,
             target_model=CoordDatabase,
-            null_exception=NullException()
+            null_exception=CoordDatabaseNullException()
         )
         if coord_database_validation_result.is_failure:
             # Return the exception chain on failure.
@@ -197,48 +197,12 @@ class TokenValidator(Validator[Token]):
                     cls_name=cls.__name__,
                     msg=TokenValidationException.MSG,
                     err_code=TokenValidationException.ERR_CODE,
-                    ex=rank_validation_result.exception,
+                    ex=coord_database_validation_result,
                 )
             )
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(token)
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def _verify_token_coord_stack(cls, token: Token) -> ValidationResult[int]:
-        method = f"{cls.__class__.__name__}._verify_coord_stack"
-        # Handle the case that, token.positions fails is null.
-        if token.positions is not None:
-            # Return the exception chain on failure.
-            return ValidationResult.failure(
-                TokenValidationException(
-                    cls_mthd=method,
-                    cls_name=method.__name__,
-                    op=TokenValidationException.OP,
-                    msg=TokenValidationException.MSG,
-                    err_code=TokenValidationException.ERR_CODE,
-                    mthd_rslt=TokenValidationException.MTHD_RSLT,
-                    ex=CoordDatabaseNullException(
-                        msg=CoordDatabaseNullException.MSG,
-                        err_code=TokenValidationException.ERR_CODE,
-                    )
-                )
-            )
-        # Handle the case that, token.positions is the wrong type.
-        if not isinstance(token.positions, CoordDatabase):
-            # Return the exception chain on failure.
-            return ValidationResult.failure(
-                TokenValidationException(
-                    cls_mthd=method,
-                    cls_name=method.__name__,
-                    op=TokenValidationException.OP,
-                    msg=TokenValidationException.MSG,
-                    err_code=TokenValidationException.ERR_CODE,
-                    mthd_rslt=TokenValidationException.MTHD_RSLT,
-                    ex=TypeError(f"Expected CoordDatabase, got {type(token.positions).__name__} instead.")
-                )
-            )
-        return ValidationResult.success(payload=1)
+
     
     @classmethod
     def verify_token_is_combatant(cls, candidate: Any) -> ValidationResult[CombatantToken]:
@@ -259,10 +223,8 @@ class TokenValidator(Validator[Token]):
             return ValidationResult.failure(
                 TokenValidationException(
                     cls_mthd=method,
-                    op=TokenValidationException.OP,
                     msg=TokenValidationException.MSG,
                     err_code=TokenValidationException.ERR_CODE,
-                    mthd_rslt=TokenValidationException.MTHD_RSLT,
                     ex=validation_result.exception
                 )
             )
@@ -272,10 +234,8 @@ class TokenValidator(Validator[Token]):
             return ValidationResult.failure(
                 TokenValidationException(
                     cls_mthd=method,
-                    op=TokenValidationException.OP,
                     msg=TokenValidationException.MSG,
                     err_code=TokenValidationException.ERR_CODE,
-                    mthd_rslt=TokenValidationException.MTHD_RSLT,
                     ex=TypeError(f"Expected CombatantToken, got {type(candidate).__name__} instead.")
                 )
             )

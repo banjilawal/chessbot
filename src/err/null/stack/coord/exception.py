@@ -14,11 +14,11 @@ from err import StackNullException
 
 __all__ = [
     # ======================# COORD_STACK_NULL_EXCEPTION #======================#
-    "CoordStacNullException",
+    "CoordStackNullException",
 ]
 
 # ======================# COORD_STACK_NULL_EXCEPTION #======================#
-class CoordStacNullException(StackNullException):
+class CoordStackNullException(StackNullException):
     """
     Role:
         -   Error Tracing

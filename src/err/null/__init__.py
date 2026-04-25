@@ -15,6 +15,7 @@ from .binder import *
 from .board import *
 from .context import *
 from .coord import *
+from .database import *
 from .edge import *
 from .formation import *
 from .game import *
