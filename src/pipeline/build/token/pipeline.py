@@ -8,15 +8,14 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Any, Optional
 
-from err import TokenBuildPipelineException
-from model import Token, TokenBlueprint
-from operation import TokenAssembler, TokenAssemblyBootstrapper, TokenAssemblyFinalizer
-from pipeline import BuildPipeline
 from result import BuildResult
-from system import LoggingLevelRouter
 from toolkit import TokenToolkit
+from pipeline import BuildPipeline
+from system import LoggingLevelRouter
+from model import Token, TokenBlueprint
+from err import TokenBuildPipelineException
+from operation import TokenAssembler, TokenAssemblyBootstrapper, TokenAssemblyFinalizer
 
 
 class TokenBuildPipeline(BuildPipeline[Token]):
@@ -27,44 +26,19 @@ class TokenBuildPipeline(BuildPipeline[Token]):
         -   Consistency Assurance
         -   Process Runner
        
-    Workers:
-        -   Workers are the logic that implements a process.
-        -   Processes produce a result.
-        
-        Naming Problems:
-            -   Don't have a good naming convention for workers yet. Maybe <ProcessName>Worker? as default,
-                if it's not clunky.
-            -   Worker entry points are named execute. Might change them to work() and the work executes the process.
-            
-            Exceptions:
-                -   Exceptions are only about the process.
-                -   Exception naming convention is <ProcessName>Exception.
-
-        Transaction Worker:
-            -   Work on stateful data objects.
-            -   Include a data object's previous state in their work product.
-            -   For simplicity, speed, and side-effect avoidance use deep copy before state changing logic.
-            -   Client uses original data for rollbacks if transaction fails.
-   
-        Build Worker Naming:
-            -   Builders are a core workers in the system.
-            -   The least clunky and intuitive schema is <EntityName>Builder.
-            -   Developers might assume other process exceptions are about the worker and use confusing naming
-                conventions for other processes and their exceptions.
-            -   Despite the possible confusion <EntityName>Builder naming is worth the trade off.
-        
     Responsibilities:
-        1.  Creation process owners.
-        2.  Execute binding logic for related entities.
-        3.  Assure objects comply with business logic at point of creation.
-        4.  Ensure stateful data-holding build resources meet satisfy contracts.
+        1.  Runs the Token build lifecycle.
     
     Attributes:
-
+        assembler: TokenAssembler
+        finalizer: TokenAssemblyFinalizer
+        bootstrapper: TokenAssemblyBootstrapper
+        
     Provides:
-        -   build(*args, **kwargs) -> BuildResult[Token]
+        -   def build(blueprint: TokenBlueprint, toolkit: TokenToolkit) -> BuildResult[Token]:
         
     Super Class:
+        BuildPipeline
     """
     _assembler: TokenAssembler
     _finalizer: TokenAssemblyFinalizer
@@ -76,18 +50,43 @@ class TokenBuildPipeline(BuildPipeline[Token]):
             finalizer: TokenAssemblyFinalizer | None = None,
             bootstrapper: TokenAssemblyFinalizer | None = None,
     ):
+        """
+        Args:
+            assembler: TokenAssembler
+            finalizer: TokenAssemblyFinalizer
+            bootstrapper: TokenAssemblyBootstrapper
+        """
         self._assembler = assembler or TokenAssembler()
         self._finalizer = finalizer or TokenAssemblyFinalizer()
         self._bootstrapper = bootstrapper or TokenAssemblyBootstrapper()
 
     @LoggingLevelRouter.monitor
     def build(self, blueprint: TokenBlueprint, toolkit: TokenToolkit) -> BuildResult[Token]:
+        """
+        Builds a safe, consistent Token.
+        
+        Action:
+            1.  Send an exception chain in the BuildResult any operation in the Token build process
+                fails.
+            2.  Otherwise, send the success result.
+        Args:
+            blueprint: TokenBlueprint
+            toolkit: TokenToolkit
+        Returns:
+            BuildResult[Token]
+        Raises:
+            TokenBuildPipelineException
+        """
         method = f"{self.__class__.__name__}.build"
+        
+        # --- Verify the Token's build params. ---#
         bootstrap_result = self._bootstrapper.execute(
             blueprint=blueprint,
             toolkit=toolkit
         )
+        # Handle the case that the bootstrapper flags an build param.
         if bootstrap_result.is_failure:
+            # Return the exception on failure.
             return BuildResult.failure(
                 TokenBuildPipelineException(
                     cls_mthd=method,
@@ -97,8 +96,11 @@ class TokenBuildPipeline(BuildPipeline[Token]):
                     ex=bootstrap_result.exception,
                 )
             )
+        # --- Assemble the Token from the verified build params. ---#
         assembly_result = self._assembler.execute(blueprint=bootstrap_result.payload)
+        # Handle the case that the token assembly is not successful.
         if assembly_result.is_failure:
+            # Return the exception on failure.
             return BuildResult.failure(
                 TokenBuildPipelineException(
                     cls_mthd=method,
@@ -108,8 +110,11 @@ class TokenBuildPipeline(BuildPipeline[Token]):
                     ex=assembly_result.exception,
                 )
             )
+        # --- Run the consistency assurance operations on the token. ---#
         final_result = self._finalizer.execute(product=assembly_result.payload)
+        # Handle the case that the token's relationships are not established.
         if final_result.is_failure:
+            # Return the exception on failure.
             return BuildResult.failure(
                 TokenBuildPipelineException(
                     cls_mthd=method,
@@ -119,4 +124,5 @@ class TokenBuildPipeline(BuildPipeline[Token]):
                     ex=final_result.exception,
                 )
             )
+        # --- Forward the work product to the caller. ---#
         return BuildResult.success(final_result.payload)
