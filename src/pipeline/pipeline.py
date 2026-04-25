@@ -10,24 +10,22 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
-from typing import Any, Generic, TypeVar
+from abc import ABC
+from typing import Generic, TypeVar
 
-from result import Result
-from system import LoggingLevelRouter
 
 T = TypeVar("T")
 
 class Pipeline(ABC, Generic[T]):
     
-    @classmethod
-    @abstractmethod
-    @LoggingLevelRouter.monitor
-    def enter(cls, *args, **kwargs) -> Result[Any]:
-        pass
-    
-    @classmethod
-    @abstractmethod
-    @LoggingLevelRouter.monitor
-    def exit(cls, *args, **kwargs) -> Result[T]:
-        pass
+    # @classmethod
+    # @abstractmethod
+    # @LoggingLevelRouter.monitor
+    # def enter(cls, *args, **kwargs) -> Result[Any]:
+    #     pass
+    #
+    # @classmethod
+    # @abstractmethod
+    # @LoggingLevelRouter.monitor
+    # def exit(cls, *args, **kwargs) -> Result[T]:
+    #     pass

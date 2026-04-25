@@ -9,11 +9,15 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Any, TypeVar
+from abc import abstractmethod
+from typing import Any, Optional, TypeVar
 
-
+from model import Blueprint
+from operation import Assembler, AssemblyBootstrapper, AssemblyFinalizer
 from pipeline import Pipeline
-from result import Result
+from result import BuildResult, Result
+from system import LoggingLevelRouter
+from toolkit import Toolkit
 
 T = TypeVar("T")
 
@@ -65,22 +69,33 @@ class BuildPipeline(Pipeline[T]):
         
     Super Class:
     """
-    
-    _bootstrapper: BuildBootstrapper[T]
-    _builder: Assemble[T]
-    _finalizer: Finalizer[T]
-    _blue
-    
-    @classmethod
-    def enter(cls, *args, **kwargs) -> Result[Any]:
-        pass
-    
-    @classmethod
-    def exit(cls, *args, **kwargs) -> Result[T]:
-        pass
+    # _assembler: Assembler[T]
+    # _bootstrapper: AssemblyBootstrapper[T]
+    # _finalizer: Optional[AssemblyFinalizer[T]]
     #
-    # @classmethod
-    # @abstractmethod
-    # @LoggingLevelRouter.monitor
-    # def build(cls, *args, **kwargs) -> BuildResult[T]:
-    #     pass
+    # def __init__(
+    #         self,
+    #         assembler: Assembler[T],
+    #         bootstrapper: AssemblyBootstrapper[T],
+    #         finalizer: Optional[AssemblyFinalizer[T]] | None = None,
+    # ):
+    #     self._assembler = assembler
+    #     self._bootstrapper = bootstrapper
+    #     self._finalizer = finalizer
+    #
+    # @property
+    # def assembler(self) -> Assembler[T]:
+    #     return self._assembler
+    #
+    # @property
+    # def bootstrapper(self) -> AssemblyBootstrapper[T]:
+    #     return self._bootstrapper
+    #
+    # @property
+    # def finalizer(self) -> Optional[AssemblyFinalizer[T]]:
+    #     return self._finalizer
+    
+    @abstractmethod
+    @LoggingLevelRouter.monitor
+    def build(self, blueprint: Blueprint[T], toolkit: Toolkit[T]) -> BuildResult[T]:
+        pass
