@@ -50,11 +50,6 @@ class TokenValidator(Validator[Token]):
             cls,
             candidate: Any,
             toolkit: TokenToolkit | None = None,
-            team_service: TeamService = TeamService(),
-            rank_service: RankService = RankService(),
-            coord_service: CoordService = CoordService(),
-            identity_service: IdentityService = IdentityService(),
-            number_validation: NumberValidator = NumberValidator(),
     ) -> ValidationResult[Token]:
         """
         Verify the object is a Token that is safe to use.
@@ -65,43 +60,15 @@ class TokenValidator(Validator[Token]):
                     -   It's not a number.
                     _   A Team check fails
                     -   A Rank check fails
-                    -   Roster number out of bounds.
                     -   Identity check fails
             2.  Otherwise, send the success result.
         Args:
             candidate: Any
             toolkit: TokenToolkit
         Returns:
-            ValidationResult[Coord]
+            ValidationResult[Token]
         Raises:
-            TypeError
-            NullCoordException
-            CoordValidationException
-        """
-        """
-        
-        Args:
-        # ACTION:
-            1.  If the rank fails existence or type tests send the exception in the ValidationResult.
-                Else, cast to Token instance occupant.
-            2.  If any of the attributes; id, designation, roster_number, rank or positions fail their validation
-                tests send the exception in the ValidationResult.
-            3.  The occupant has passed all verification tests. Send the occupant in the ValidationResult.
-        # PARAMETERS:
-            *   rank (Any)
-            *   rank_service (RankService)
-            *   team_service (TeamService)
-            *   coord_service (CoordService)
-            *   identity_service (IdentityService)
-            *   number_validation (NumberValidator)
-        # RETURNS:
-            *   ValidationResult[Team] containing either:
-                    - On failure: Exception.
-                    - On success: Team in the payload.
-        Raises:
-            *   TypeError
-            *   NullTeamException
-            *   TeamValidationException
+             TokenValidationException
         """
         method = f"{cls.__class__.__name__}.validate"
         
