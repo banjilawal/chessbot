@@ -11,6 +11,8 @@ version: 1.0.1
 # =========== PIPELINE.BUILD PACKAGE ===========#
 
 # Packages
+from .square import *
+from .team import *
 from .token import *
 
 # Modules

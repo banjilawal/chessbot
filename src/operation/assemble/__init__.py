@@ -14,7 +14,14 @@ log = logging.getLogger("chessbot")
 # =========== OPERATION.ASSEMBLE PACKAGE ===========#
 
 # Packages
+from .binder import *
+from .board import *
+from .coord import *
+from .rank import *
+from .square import *
+from .team import *
 from .token import *
+from .vector import *
 
 # Modules
 from .operation import  Assembler

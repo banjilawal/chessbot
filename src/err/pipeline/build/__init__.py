@@ -12,6 +12,7 @@ version: 1.0.1
 # Packages
 from .arena import *
 from .board import *
+from .coord import *
 from .context import *
 from .edge import *
 from .game import *

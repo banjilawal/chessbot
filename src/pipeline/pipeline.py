@@ -17,6 +17,7 @@ from typing import Generic, TypeVar
 T = TypeVar("T")
 
 class Pipeline(ABC, Generic[T]):
+    pass
     
     # @classmethod
     # @abstractmethod
