@@ -9,9 +9,10 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from integrity import SquareValidator
-from microservice import CoordService, FormationService, RankService, TeamService
+
+from microservice import CoordService, FormationService, RankService, TeamValidator
 from model import Token
+from operation import SquareValidator, ValidationBootstrapper
 from toolkit import Toolkit
 
 
@@ -27,56 +28,56 @@ class TokenToolkit(Toolkit[Token]):
         3.  No logic in the Toolkit.
 
     Attributes:
-        team_service: TeamService
+        team_validator: TeamValidator
         rank_service: RankService
-        coord_service: CoordService
-        identity_service: IdentityService
-        number_validation: NumberValidator
+        coord_validator: CoordService
         formation_service: FormationService
+        validation_bootstrapper: ValidationBootstrapper
         
     Provides:
     
     Super Class:
     """
-    _team_service: TeamService
     _rank_service: RankService
-    _coord_service: CoordService
-    _formation_service: FormationService
+    _coord_validator: CoordService
+    _team_validator: TeamValidator
     _square_validator: SquareValidator
+    _formation_service: FormationService
+    _validation_bootstrapper: ValidationBootstrapper
     
     def __init__(
         self,
-        team_service: TeamService | None = None,
+        team_validator: TeamValidator | None = None,
         rank_service: RankService | None = None,
-        coord_service: CoordService | None = None,
+        coord_validator: CoordService | None = None,
         formation_service: FormationService | None = None,
         square_validator: SquareValidator | None = None,
     ):
         """
         Args:
-            team_service: TeamService
+            team_validator: TeamValidator
             rank_service: RankService
-            coord_service: CoordService
+            coord_validator: CoordService
             formation_service: FormationService
         """
         super().__init__()
-        self._team_service = team_service or TeamService()
         self._rank_service = rank_service or RankService()
-        self._coord_service = coord_service or CoordService()
-        self._formation_service = formation_service or FormationService()
+        self._team_validator = team_validator or TeamValidator()
+        self._coord_validator = coord_validator or CoordService()
         self._square_validator = square_validator or SquareValidator()
+        self._formation_service = formation_service or FormationService()
         
     @property
-    def team_service(self) -> TeamService:
-        return self._team_service
+    def team_validator(self) -> TeamValidator:
+        return self._team_validator
     
     @property
     def rank_service(self) -> RankService:
         return self._rank_service
     
     @property
-    def coord_service(self) -> CoordService:
-        return self._coord_service
+    def coord_validator(self) -> CoordService:
+        return self._coord_validator
     
     @property
     def formation_service(self) -> FormationService:

@@ -12,12 +12,11 @@ from __future__ import annotations
 from typing import Any, cast
 
 from database import CoordDatabase
-from err import CoordDatabaseNullException, NullException, TokenNullException, TokenValidationException
-from integrity import NumberValidator, Validator
-from microservice import CoordService, RankService, TeamService
-from model import CombatantToken, Coord, KingToken, Token
+from err import CoordDatabaseNullException, TokenNullException, TokenValidationException
+from model import Token
+from operation import Validator
 from result import ValidationResult
-from system import IdentityService, LoggingLevelRouter
+from system import LoggingLevelRouter
 from toolkit import TokenToolkit
 
 
@@ -35,15 +34,11 @@ class TokenValidator(Validator[Token]):
     Attributes:
 
     Provides:
-        -   def validate(
-                    rank: Any,
-                    workers: TokenIntegrityWorkers
-            ) -> ValidationResult[Token]:
+        -   def validate(candidate: Any, toolkit: TokenToolkit) -> ValidationResult[Token]:
 
     Super Class:
         Validator
     """
-    
     @classmethod
     @LoggingLevelRouter.monitor
     def validate(
@@ -70,7 +65,7 @@ class TokenValidator(Validator[Token]):
         Raises:
              TokenValidationException
         """
-        method = f"{cls.__class__.__name__}.validate"
+        method = f"{cls.__name__}.validate"
         
         if toolkit is None:
             toolkit = TokenToolkit()
@@ -112,7 +107,7 @@ class TokenValidator(Validator[Token]):
                 )
             )
         # Handle the case that, the occupant's team fails validation.
-        team_validation_result = toolkit.team_service.validator.validate(token.team)
+        team_validation_result = toolkit.team_validator.validate(token.team)
         if team_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -125,7 +120,7 @@ class TokenValidator(Validator[Token]):
                 )
             )
         # Handle the case that, the roster or opening_square_name are not acceptable.
-        opening_square_validation_result = toolkit.square_validator(token.opening_square)
+        opening_square_validation_result = toolkit.square_validator.validate(token.opening_square)
         if opening_square_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(

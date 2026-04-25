@@ -9,110 +9,87 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from typing import Any, cast
+
+from err import SquareNullException, SquareValidationException
+from model import Square
+from operation import Validator
+from result import ValidationResult
+from system import LoggingLevelRouter
+from toolkit import SquareToolkit
+
 
 class SquareValidator(Validator[Square]):
     """
-     Role:Validation, Data Integrity Guarantor, Security.
+    Role
+        -   Transaction Worker
+        -   Integrity Maintenance
+        -   Consistency Assurance
+        -   Process Runner
 
     Responsibilities:
-    1.  Ensure a Square instance is certified safe, reliable and consistent before use.
-    2.  If verification fails indicate the reason in an exception, returned to the caller.
-
-    Super Class:
-        *   Validator
-
-    Provides:
-
-
-    # INHERITED ATTRIBUTES:
-    None
+        1.  Ensure a Square instance is certified safe, reliable and consistent before use.
 
     Attributes:
-    None
 
-    # LOCAL METHODS:
-        *   validate(
-                rank: Any,
-                board_service: BoardService = BoardService(),
-                coord_service: CoordService = CoordService(),
-                identity_service: IdentityService = IdentityService()
-            ) -> ValidationResult[Square]
-            
-        *   validate_square_state(rank: Any) -> ValidationResult[SquareState]
-        *   verify_is_square_dataset(rank: Any) -> ValidationResult[List[Square]]
+    Provides:
+        -   def validate(candidate: Any, toolkit: SquareToolkit) -> ValidationResult[Square]:
 
-    # INHERITED METHODS:
-    None
+    Super Class:
+        Validator
     """
     @classmethod
     @LoggingLevelRouter.monitor
     def validate(
             cls,
             candidate: Any,
-            board_service: BoardService = BoardService(),
-            coord_service: CoordService = CoordService(),
-            identity_service: IdentityService = IdentityService(),
+            toolkit: SquareToolkit,
     ) -> ValidationResult[Square]:
         """
-        # ACTION:
-            1.  Send an exception chain in the ValidationResult if:
-                    -   The rank is null
-                    -   The rank is not a Square
-                    -   The id and schema are not certified as safe.
-                    -   The coord does not pass a validation check.
-                    -   The board does not pass a validation check.
-                    -   There is no bidirectional relationship between the board and square.
-            2.  Otherwise, send the succes result.
+        Verify the object is a Square that is safe to use.
+
+        Action:
+            1.  Send an exception chain in the ValidationResult any of the cases occur:
+                    -   Candidate either null or not a Square
+                    _   Coord check fails
+                    -   A Board check fails
+                    -   Identity check fails
+            2.  Otherwise, send the success result.
         Args:
             candidate: Any
-            board_service: BoardService
-            coord_service: CoordService
-            identity_service: IdentityService
+            toolkit: SquareToolkit
         Returns:
             ValidationResult[Square]
         Raises:
-            TypeError
-            NullSquareException
-            SquareValidationException
+             SquareValidationException
         """
-        method = "SquareValidator.validate"
+        method = f"{cls.__name__}.validate"
         
-        # Handle the nonexistence case.
-        if candidate is None:
+        if toolkit is None:
+            toolkit = SquareToolkit()
+        
+        # Handle the case that, the candidate does not exist.
+        validation_bootstrap_result = toolkit.validation_bootstrapper.validate(
+            candidate=candidate,
+            target_model=Square,
+            null_exception=SquareNullException(),
+        )
+        if validation_bootstrap_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidationException(
                     cls_mthd=method,
-                    op=SquareValidationException.OP,
+                    cls_name=cls.__name__,
                     msg=SquareValidationException.MSG,
                     err_code=SquareValidationException.ERR_CODE,
-                    mthd_rslt=SquareValidationException.MTHD_RSLT,
-                    ex=NullSquareException(
-                        msg=NullSquareException.MSG,
-                        err_code=NullSquareException.ERR_CODE,
-                    )
-                )
-            )
-        # Handle the wrong class case.
-        if not isinstance(candidate, Square):
-            # Return the exception chain on failure.
-            return ValidationResult.failure(
-                SquareValidationException(
-                    cls_mthd=method,
-                    op=SquareValidationException.OP,
-                    msg=SquareValidationException.MSG,
-                    err_code=SquareValidationException.ERR_CODE,
-                    mthd_rslt=SquareValidationException.MTHD_RSLT,
-                    ex=TypeError(
-                        f"Expected Square, but, got {type(candidate).__name__} instead."
-                    )
+                    ex=validation_bootstrap_result.exception,
                 )
             )
         # --- Cast candidate to a Square for additional tests. ---#
         square = cast(Square, candidate)
         
         # Handle the case that, square.id or square.schema does not pass a validation check.
-        identity_validation_result = identity_service.validate_identity(
+        identity_validation_result = toolkit.identity_service.validate_identity(
             id_candidate=square.id,
             name_candidate=square.name
         )
@@ -121,32 +98,38 @@ class SquareValidator(Validator[Square]):
             return ValidationResult.failure(
                 SquareValidationException(
                     cls_mthd=method,
-                    op=SquareValidationException.OP,
+                    cls_name=cls.__name__,
                     msg=SquareValidationException.MSG,
                     err_code=SquareValidationException.ERR_CODE,
-                    mthd_rslt=SquareValidationException.MTHD_RSLT,
-                    ex=identity_validation_result.exception
+                    ex=identity_validation_result.exception,
                 )
             )
         # Handle the case that, square.coordis not safe.
-        coord_validation_result = coord_service.validator.validate(square.coord)
+        coord_validation_result = toolkit.coord_validator.validate(square.coord)
         if coord_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidationException(
                     cls_mthd=method,
-                    op=SquareValidationException.OP,
+                    cls_name=cls.__name__,
                     msg=SquareValidationException.MSG,
                     err_code=SquareValidationException.ERR_CODE,
-                    mthd_rslt=SquareValidationException.MTHD_RSLT,
-                    ex=coord_validation_result.exception
+                    ex=identity_validation_result.exception,
                 )
             )
-        # Handle the case that, square.board safety and relation validation fails.
-        board_test_results = cls._run_board_tests(square=square, board_service=board_service)
-        if board_test_results.is_failure:
-            return board_test_results
-        
+        # Handle the case that, square.board does not pass a validation check.
+        board_validation_result = toolkit.board_validator.validate(square.board)
+        if board_validation_result.is_failure:
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                SquareValidationException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=SquareValidationException.MSG,
+                    err_code=SquareValidationException.ERR_CODE,
+                    ex=board_validation_result.exception,
+                )
+            )
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(square)
     

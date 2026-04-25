@@ -70,6 +70,5 @@ class Toolkit(ABC, Generic[T]):
         return self._identity_service
 
     @property
-    @abstractmethod
     def validation_bootstrapper(self) -> ValidationBootstrapper:
-        pass
+        return self._validation_bootstrapper

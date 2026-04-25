@@ -103,8 +103,8 @@ class ScalarProductOperation(Operation):
         multiplication_result = None
         if context.vector is not None:
             multiplication_result = toolkit.vector_service.builder.build(
-                x=context.vector.x * scalar.value,
-                y=context.vector.y * scalar.value,
+                x=context.vector.x * scalar.magnitude,
+                y=context.vector.y * scalar.magnitude,
             )
         if context.coord is not None:
             multiplication_result = toolkit.coord_service.builder.build(

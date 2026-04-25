@@ -27,7 +27,7 @@ class ScalarTest(unittest.TestCase):
     for valid_value in range(1, BOARD_DIMENSION):
       scalar = Scalar(value=valid_value)
       # print(f"\nTesting scalar value: {scalar.value} expected={valid_value}")
-      self.assertEqual(scalar.value, valid_value)
+      self.assertEqual(scalar.magnitude, valid_value)
 
 
 if __name__ == '__main__':

@@ -11,9 +11,6 @@ version: 1.0.0
 # =========== ERR.TEAM.DATABASE.CORE.EXCEPTION.POP PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
-from .work import PoppingTeamStackFailedException
-from .empty import PoppingEmptyTeamStackException
 from .unfound import TeamDoesNotExistForRemovalException

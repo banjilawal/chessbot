@@ -27,13 +27,13 @@ class Scalar:
     Provides:
 
     # LOCAL ATTRIBUTES:
-        *   value (int)
+        *   magnitude (int)
 
     # INHERITED ATTRIBUTES:
     None
 
     Attributes:
-        *   value (int)
+        *   magnitude (int)
 
     # LOCAL METHODS:
     None
@@ -41,24 +41,24 @@ class Scalar:
     # INHERITED METHODS:
     None
     """
-    _value: int
+    _magnitude: int
     
-    def __init__(self, value: int):
-        self._value = value
+    def __init__(self, magnitude: int):
+        self._magnitude = magnitude
     
     @property
-    def value(self) -> int:
-        return self._value
+    def magnitude(self) -> int:
+        return self._magnitude
     
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
         if isinstance(other, Scalar):
-            return self._value == other.value
+            return self._magnitude == other.magnitude
         return False
     
     def __hash__(self):
-        return hash(self._value)
+        return hash(self._magnitude)
     
     def __str__(self):
-        return f"Scalar(value={self._value})"
+        return f"Scalar(magnitude={self._magnitude})"

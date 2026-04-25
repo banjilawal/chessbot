@@ -95,7 +95,7 @@ class Schema(Enum):
     
     @property
     def pawn_row(self) -> int:
-        return self._rank_row + self._advancing_step.value
+        return self._rank_row + self._advancing_step.magnitude
     
     @property
     def enemy_schema(self) -> Schema:

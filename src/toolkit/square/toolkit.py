@@ -34,7 +34,6 @@ class SquareToolkit(Toolkit[Square]):
         coord_validator: CoordValidator
         identity_service: IdentityService
         formation_service: FormationService
-        bootstrapper: ValidationBootstrapper
         collision_analyst: SquareCollisionAnalyst
     
     Provides:
@@ -44,33 +43,26 @@ class SquareToolkit(Toolkit[Square]):
     """
     _coord_validator: CoordValidator
     _board_validator: BoardValidator
-    _identity_service: IdentityService
     _formation_service: FormationService
-    _bootstrapper: ValidationBootstrapper
     _collision_analyst: SquareCollisionAnalyst
     
     def __init__(
             self,
             board_validator: BoardValidator | None = None,
             coord_validator: CoordValidator | None = None,
-            identity_service: IdentityService  | None = None,
             formation_service: FormationService | None = None,
-            bootstrapper: ValidationBootstrapper | None = None,
             collision_analyst: SquareCollisionAnalyst | None = None,
     ):
         """
         Args:
             board_validator: BoardValidator
             coord_validator: CoordValidator
-            identity_service: IdentityService
             formation_service: FormationService
             collision_analyst: SquareCollisionAnalyst
         """
         super().__init__()
         self._board_validator = board_validator or BoardValidator()
         self._coord_validator = coord_validator or CoordValidator()
-        self._bootstrapper = bootstrapper or ValidationBootstrapper()
-        self._identity_service = identity_service or IdentityService()
         self._formation_service = formation_service or FormationService()
         self._collision_analyst = collision_analyst or SquareCollisionAnalyst()
     
@@ -83,17 +75,9 @@ class SquareToolkit(Toolkit[Square]):
         return self._coord_validator
     
     @property
-    def identity_service(self) -> IdentityService:
-        return self._identity_service
-    
-    @property
     def formation_service(self) -> FormationService:
         return self._formation_service
     
     @property
     def collision_analyst(self) -> SquareCollisionAnalyst:
         return self._collision_analyst
-    
-    @property
-    def validation_bootstrapper(self) -> ValidationBootstrapper:
-        return self._bootstrapper

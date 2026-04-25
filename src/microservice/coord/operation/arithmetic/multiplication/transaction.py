@@ -94,8 +94,8 @@ class MultiplyCoordTransaction:
             )
         # --- Create the product. ---#
         product_build_result = coord_service.builder.build(
-            row=coord.row * scalar.value,
-            column=coord.column * scalar.value
+            row=coord.row * scalar.magnitude,
+            column=coord.column * scalar.magnitude
         )
         # Handle the case that, the product does not satisfy integrity requirements
         if product_build_result.is_failure:
