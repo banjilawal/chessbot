@@ -79,7 +79,7 @@ class SchemaContextValidator(Validator[SchemaKey]):
                 )
             )
         
-        # After existence and type checks cast the rank to a SchemaKey for additional tests.
+        # After existence and type checks cast the candidate into a SchemaKey for additional tests.
         super_key = cast(SchemaKey, candidate)
         
         # Handle the case of searching with no key-value is set.

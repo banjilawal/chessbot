@@ -42,7 +42,7 @@ class TokenReadinessAnalyzer(RelationAnalysis[TokenActivityState.FREE, Token]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def work(
+    def execute(
             cls,
             candidate_satellite: Token,
             candidate_primary: TokenActivityState.FREE = TokenActivityState.FREE,

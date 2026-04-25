@@ -84,7 +84,7 @@ class NodeContextValidator(Validator[NodeContext]):
                     )
                 )
             )
-        # --- Cast the rank to NodeContext for additional tests. ---#
+        # --- Cast the candidate into NodeContext for additional tests. ---#
         context = cast(NodeContext, candidate)
         
         # Handle the case of searching with no attribute-value provided.

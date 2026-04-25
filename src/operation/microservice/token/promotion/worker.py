@@ -59,7 +59,7 @@ class PawnPromoter:
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def work(
+    def execute(
             cls,
             rank: Rank,
             pawn_token: PawnToken,

@@ -85,7 +85,7 @@ class TeamValidator(Validator[Team]):
                     ex=validation_bootstrap_result.exception,
                 )
             )
-        # --- Cast the rank to a Team for additional tests ---#
+        # --- Cast the candidate into a Team for additional tests ---#
         team = cast(Team, candidate)
         
         # Handle the case that, team.id does not pass a validation check.

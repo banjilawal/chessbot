@@ -35,7 +35,7 @@ class ArenaBuildPipeline(BuildPipeline[Arena]):
         bootstrapper: ArenaAssemblyBootstrapper
         
     Provides:
-        -   def build(blueprint: ArenaBlueprint, toolkit: ArenaToolkit) -> BuildResult[Arena]:
+        -   def run(blueprint: ArenaBlueprint, toolkit: ArenaToolkit) -> BuildResult[Arena]:
         
     Super Class:
         BuildPipeline
@@ -61,7 +61,7 @@ class ArenaBuildPipeline(BuildPipeline[Arena]):
         self._bootstrapper = bootstrapper or ArenaAssemblyBootstrapper()
 
     @LoggingLevelRouter.monitor
-    def build(self, blueprint: ArenaBlueprint, toolkit: ArenaToolkit) -> BuildResult[Arena]:
+    def run(self, blueprint: ArenaBlueprint, toolkit: ArenaToolkit) -> BuildResult[Arena]:
         """
         Builds a safe, consistent Arena.
         

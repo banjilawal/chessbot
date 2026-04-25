@@ -13,7 +13,6 @@ from abc import abstractmethod
 from typing import Any, Optional, TypeVar
 
 from model import Blueprint
-from operation import Assembler, AssemblyBootstrapper, AssemblyFinalizer
 from pipeline import Pipeline
 from result import BuildResult, Result
 from system import LoggingLevelRouter
@@ -97,5 +96,5 @@ class BuildPipeline(Pipeline[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def build(self, blueprint: Blueprint[T], toolkit: Toolkit[T]) -> BuildResult[T]:
+    def run(self, blueprint: Blueprint[T], toolkit: Toolkit[T]) -> BuildResult[T]:
         pass

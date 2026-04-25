@@ -85,7 +85,7 @@ class EdgeContextValidator(Validator[EdgeContext]):
                     )
                 )
             )
-        # --- Cast the rank to EdgeContext for additional tests. ---#
+        # --- Cast the candidate into EdgeContext for additional tests. ---#
         context = cast(EdgeContext, candidate)
         
         # Handle the case of searching with no attribute-value provided.

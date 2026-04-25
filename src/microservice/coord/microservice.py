@@ -9,6 +9,9 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from microservice import Microservice
+from model import Coord
+
 
 class CoordService(Microservice[Coord]):
     """

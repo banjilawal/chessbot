@@ -42,7 +42,7 @@ class SquareRayValidator(Validator[SquareRay]):
             1.  Send an exception chain in the ValidationResult if, the rank is either
                     *   nulI
                     *   is not a SquareRay instance.
-            2.  Otherwise, cast the rank to a SquareRay then, send in the success result.
+            2.  Otherwise, cast the candidate into a SquareRay then, send in the success result.
             
         Args:
             candidate: Any

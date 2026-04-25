@@ -34,7 +34,7 @@ class CoordBuildPipeline(BuildPipeline[Coord]):
         bootstrapper: CoordAssemblyBootstrapper
         
     Provides:
-        -   def build(blueprint: CoordBlueprint, toolkit: MathToolkit) -> BuildResult[Coord]:
+        -   def run(blueprint: CoordBlueprint, toolkit: MathToolkit) -> BuildResult[Coord]:
         
     Super Class:
         BuildPipeline
@@ -56,7 +56,7 @@ class CoordBuildPipeline(BuildPipeline[Coord]):
         self._bootstrapper = bootstrapper or CoordAssemblyBootstrapper()
 
     @LoggingLevelRouter.monitor
-    def build(self, blueprint: CoordBlueprint, toolkit: MathToolkit) -> BuildResult[Coord]:
+    def run(self, blueprint: CoordBlueprint, toolkit: MathToolkit) -> BuildResult[Coord]:
         """
         Builds a safe, consistent Coord.
         

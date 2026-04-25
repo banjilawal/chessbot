@@ -77,7 +77,7 @@ class EdgeValidator(Validator[Edge]):
                     ex=TypeError(f"{method}: Expected an Edge, got {type(candidate).__name__}. instead")
                 )
             )
-        # --- Cast the rank to an Edge for additional tests. ---#
+        # --- Cast the candidate into an Edge for additional tests. ---#
         edge = cast(candidate, Edge)
         
         # Handle the case that, the label does not pass a validation check.

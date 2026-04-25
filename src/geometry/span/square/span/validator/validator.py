@@ -42,7 +42,7 @@ class SquareSpanValidator(Validator[SquareSpan]):
             1.  Send an exception chain in the ValidationResult if, the rank is either
                     *   nulI
                     *   is not a SquareSpan instance.
-            2.  Otherwise, cast the rank to a SquareSpan then, send in the success result.
+            2.  Otherwise, cast the candidate into a SquareSpan then, send in the success result.
             
         Args:
             candidate: Any

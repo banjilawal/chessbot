@@ -80,7 +80,7 @@ class BoardContextValidator(Validator[BoardContext]):
                     ex=TypeError(f"{method}: Was expecting a BoardContext, got {type(candidate).__name__} instead.")
                 )
             )
-        # --- Cast the rank to BoardContext for additional tests. ---#
+        # --- Cast the candidate into BoardContext for additional tests. ---#
         context = cast(BoardContext, candidate)
         
         # Handle the case of searching with no attribute-value provided.

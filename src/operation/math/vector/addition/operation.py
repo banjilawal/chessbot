@@ -9,9 +9,11 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from err import VectorAdditionException
 from model import VectorRegister
-from operation import Operation
-from toolkit import VectorContextToolkit
+from operation import Operation, VectorRegisterValidator
+from result import ComputationResult
+from system import LoggingLevelRouter
 
 
 class AddOperation(Operation[VectorRegister]):
@@ -27,7 +29,7 @@ class AddOperation(Operation[VectorRegister]):
 
     Properties:
     
-    -   def work(
+    -   def execute(
             register: VectorRegister,
             toolkit : VectorRegisterToolkit = VectorRegisterToolkit(),
             register_validator: VectorRegisterValidator = VectorRegisterValidator(),
@@ -39,11 +41,12 @@ class AddOperation(Operation[VectorRegister]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def work(
+    def execute(
             cls,
             register: VectorRegister,
             toolkit : VectorContextToolkit = None,
-            register_validator: VectorRegisterValidator = None,
+            operand_validator: OperandValidator | None = None,
+            register_validator: VectorRegisterValidator | None = None,
     ) -> ComputationResult[int]:
         """
         Convert a vector to a coord and vice versa.
@@ -68,7 +71,7 @@ class AddOperation(Operation[VectorRegister]):
         method = f"{cls.__name__}.work"
         
         # Handle the case that, the validator flags either register
-        for register in [a, b]:
+        for operand in [register.u, register.v]:
             register_validation = register_validator.validate(register)
             if register_validation.is_failure:
                 # Return the exception chain on failure.

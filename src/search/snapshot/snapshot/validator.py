@@ -94,7 +94,7 @@ class SnapshotContextValidator(Validator[SnapshotContext]):
                     TypeError(f"{method}: Expected SnapshotContext, got {type(candidate).__name__} instead.")
                 )
             
-            # After existence and type checks are successful cast the rank to a SnapshotContext
+            # After existence and type checks are successful cast the candidate into a SnapshotContext
             # for additional tests.
             context = cast(SnapshotContext, candidate)
             

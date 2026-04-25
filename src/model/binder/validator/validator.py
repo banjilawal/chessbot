@@ -71,7 +71,7 @@ class TeamBinderValidator(Validator[TeamBinder]):
                     ex=TypeError(f"{method}: Expected BoardBinder, got {type(candidate).__name__} instead.")
                 )
             )
-        # --- Cast the rank to a BoardBinder for additional tests ---#
+        # --- Cast the candidate into a BoardBinder for additional tests ---#
         binder = cast(TeamBinder, candidate)
         
         # Handle the case that, the white team does not pass a validation check.

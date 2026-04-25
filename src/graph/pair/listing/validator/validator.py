@@ -37,7 +37,7 @@ class PairListValidator(Validator[PairList]):
             1.  Send an exception chain in the ValidationResult if, the rank is either
                     *   nulI
                     *   is not a PairList instance.
-            2.  Otherwise, cast the rank to a PairList then, send in the success result.
+            2.  Otherwise, cast the candidate into a PairList then, send in the success result.
             
         Args:
             candidate: Any

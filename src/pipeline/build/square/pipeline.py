@@ -35,7 +35,7 @@ class SquareBuildPipeline(BuildPipeline[Square]):
         bootstrapper: SquareAssemblyBootstrapper
         
     Provides:
-        -   def build(blueprint: SquareBlueprint, toolkit: SquareToolkit) -> BuildResult[Square]:
+        -   def run(blueprint: SquareBlueprint, toolkit: SquareToolkit) -> BuildResult[Square]:
         
     Super Class:
         BuildPipeline
@@ -61,7 +61,7 @@ class SquareBuildPipeline(BuildPipeline[Square]):
         self._bootstrapper = bootstrapper or SquareAssemblyBootstrapper()
 
     @LoggingLevelRouter.monitor
-    def build(self, blueprint: SquareBlueprint, toolkit: SquareToolkit) -> BuildResult[Square]:
+    def run(self, blueprint: SquareBlueprint, toolkit: SquareToolkit) -> BuildResult[Square]:
         """
         Builds a safe, consistent Square.
         

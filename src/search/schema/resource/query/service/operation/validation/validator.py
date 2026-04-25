@@ -101,7 +101,7 @@ class SchemaQueryValidator(Validator[SchemaQuery]):
                     ),
                 )
             )
-        # --- Cast the rank to SchemaQuery for additional tests. ---#
+        # --- Cast the candidate into SchemaQuery for additional tests. ---#
         query = cast(SchemaQuery, candidate)
         
         # Handle the case that, the context is not safe to use.

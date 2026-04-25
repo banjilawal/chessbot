@@ -77,7 +77,7 @@ class PlayerContextValidator(Validator[PlayerContext]):
                     TypeError(f"{method}: Expected PlayerContext, got {type(candidate).__name__} instead.")
                 )
             
-            # After existence and type checks are successful cast the rank to an PlayerContext
+            # After existence and type checks are successful cast the candidate into an PlayerContext
             # for additional tests.
             context = cast(PlayerContext, candidate)
             

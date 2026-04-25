@@ -54,7 +54,7 @@ class TokenDeployer:
 
     @classmethod
     @LoggingLevelRouter.monitor
-    def work(
+    def execute(
             cls,
             token: Token,
             token_validator: TokenValidator = TokenValidator(),

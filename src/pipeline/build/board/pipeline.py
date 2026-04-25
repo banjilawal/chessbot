@@ -35,7 +35,7 @@ class BoardBuildPipeline(BuildPipeline[Board]):
         bootstrapper: BoardAssemblyBootstrapper
         
     Provides:
-        -   def build(blueprint: BoardBlueprint, toolkit: BoardToolkit) -> BuildResult[Board]:
+        -   def run(blueprint: BoardBlueprint, toolkit: BoardToolkit) -> BuildResult[Board]:
         
     Super Class:
         BuildPipeline
@@ -61,7 +61,7 @@ class BoardBuildPipeline(BuildPipeline[Board]):
         self._bootstrapper = bootstrapper or BoardAssemblyBootstrapper()
 
     @LoggingLevelRouter.monitor
-    def build(self, blueprint: BoardBlueprint, toolkit: BoardToolkit) -> BuildResult[Board]:
+    def run(self, blueprint: BoardBlueprint, toolkit: BoardToolkit) -> BuildResult[Board]:
         """
         Builds a safe, consistent Board.
         

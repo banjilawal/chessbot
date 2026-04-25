@@ -93,7 +93,7 @@ class PairValidator(Validator[Pair]):
                     ex=TypeError(f"Expected Pair, got {type(candidate).__name__}. instead")
                 )
             )
-        # --- Cast the rank to an Node for additional tests ---#
+        # --- Cast the candidate into an Node for additional tests ---#
         pair = cast(Pair, candidate)
         
         # Handle the case that either the head or tail does not pass a validation check.

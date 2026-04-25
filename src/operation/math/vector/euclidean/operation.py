@@ -34,7 +34,7 @@ class EuclideanOperation(Operation):
 
     Properties:
     
-    -   def work(
+    -   def execute(
             context: VectorContext,
             toolkit : VectorContextToolkit = VectorContextToolkit(),
             context_validator: VectorContextValidator = VectorContextValidator(),
@@ -46,7 +46,7 @@ class EuclideanOperation(Operation):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def work(
+    def execute(
             cls,
             u: VectorOperand,
             v: VectorOperand,

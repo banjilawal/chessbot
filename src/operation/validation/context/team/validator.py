@@ -83,7 +83,7 @@ class TeamContextValidator(Validator[TeamContext]):
                     ex=TypeError(f"{method}: Expected TeamContext, got {type(candidate).__name__} instead.")
                 )
             )
-        # --- Cast the rank to TeamContext for additional tests. ---#
+        # --- Cast the candidate into TeamContext for additional tests. ---#
         context = cast(TeamContext, candidate)
         
         # Handle the case of searching with no attribute-value provided.

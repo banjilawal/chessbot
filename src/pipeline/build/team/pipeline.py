@@ -35,7 +35,7 @@ class TeamBuildPipeline(BuildPipeline[Team]):
         bootstrapper: TeamAssemblyBootstrapper
         
     Provides:
-        -   def build(blueprint: TeamBlueprint, toolkit: TeamToolkit) -> BuildResult[Team]:
+        -   def run(blueprint: TeamBlueprint, toolkit: TeamToolkit) -> BuildResult[Team]:
         
     Super Class:
         BuildPipeline
@@ -61,7 +61,7 @@ class TeamBuildPipeline(BuildPipeline[Team]):
         self._bootstrapper = bootstrapper or TeamAssemblyBootstrapper()
 
     @LoggingLevelRouter.monitor
-    def build(self, blueprint: TeamBlueprint, toolkit: TeamToolkit) -> BuildResult[Team]:
+    def run(self, blueprint: TeamBlueprint, toolkit: TeamToolkit) -> BuildResult[Team]:
         """
         Builds a safe, consistent Team.
         

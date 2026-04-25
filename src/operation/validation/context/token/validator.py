@@ -101,7 +101,7 @@ class TokenContextValidator(Validator[TokenContext]):
                     )
                 )
             )
-        # --- Cast the rank to TokenContext for additional tests. ---#
+        # --- Cast the candidate into TokenContext for additional tests. ---#
         context = cast(TokenContext, candidate)
         
         # Handle the case of searching with no attribute-value provided.

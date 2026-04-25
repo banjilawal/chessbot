@@ -31,7 +31,7 @@ class ScalarProductOperation(Operation):
 
     Properties:
     
-    -   def work(
+    -   def execute(
             context: VectorContext,
             toolkit : VectorContextToolkit = VectorContextToolkit(),
             context_validator: VectorContextValidator = VectorContextValidator(),
@@ -43,7 +43,7 @@ class ScalarProductOperation(Operation):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def work(
+    def execute(
             cls,
             scalar: Scalar,
             context: VectorOperand,

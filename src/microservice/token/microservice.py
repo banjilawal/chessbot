@@ -9,6 +9,12 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from microservice import Microservice
+from model import Token
+from operation import TokenValidator
+from pipeline import TokenBuildPipeline
+from result import DeletionResult
+from system import IdFactory, LoggingLevelRouter
 
 
 class TokenService(Microservice[Token]):
@@ -77,12 +83,12 @@ class TokenService(Microservice[Token]):
         self._controller = controller
     
     @property
-    def builder(self) -> TokenBuilder:
-        return self._controller.build
+    def builder(self) -> TokenBuildPipeline:
+        return TokenBuildPipeline()
     
     @property
-    def validator(self) -> TokenValidation:
-        return self._controller.validation
+    def validator(self) -> TokenValidator:
+        return TokenValidator()
     
     @property
     def controller(self) -> TokenOpsController:

@@ -25,7 +25,7 @@ class VectorTransform(Operation):
 
     Properties:
     
-    -   def work(
+    -   def execute(
             context: VectorContext,
             toolkit : VectorContextToolkit = VectorContextToolkit(),
             context_validator: VectorContextValidator = VectorContextValidator(),
@@ -37,7 +37,7 @@ class VectorTransform(Operation):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def work(
+    def execute(
             cls,
             context: VectorContext,
             toolkit : VectorContextToolkit = VectorContextToolkit(),

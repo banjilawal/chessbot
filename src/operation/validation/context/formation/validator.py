@@ -83,7 +83,7 @@ class FormationContext(Validator[FormationKey]):
                 )
             )
         
-        # After existence and type checks cast the rank to a FormationKey for additional tests.
+        # After existence and type checks cast the candidate into a FormationKey for additional tests.
         super_key = cast(FormationKey, candidate)
         
         # Handle the case of searching with no key-value is set.

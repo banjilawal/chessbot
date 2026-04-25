@@ -88,7 +88,7 @@ class PersonaContext(Validator[PersonaKey]):
                 )
             )
         
-        # After existence and type checks cast the rank to a PersonaContext for additional tests.
+        # After existence and type checks cast the candidate into a PersonaContext for additional tests.
         super_key = cast(PersonaKey, candidate)
         
         # Handle the case of searching with no attribute-value.

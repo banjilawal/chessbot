@@ -8,16 +8,15 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-
 from typing import Any, cast
 
+from result import ValidationResult
+from system import BOARD_DIMENSION, LoggingLevelRouter
+from operation import ValidationBootstrapper, Validator
 from err import (
     NegativeNumberException, NumberAboveBoundsException, NumberBelowBoundsException, NumberNullException,
     NumberValidationException
 )
-from integrity import Validator
-from result import ValidationResult
-from system import BOARD_DIMENSION, LoggingLevelRouter
 
 
 class NumberValidator(Validator[int]):
@@ -38,6 +37,7 @@ class NumberValidator(Validator[int]):
                     candidate: Any,
                     floor: int = 0,
                     ceiling: int = BOARD_DIMENSION,
+                    validation_bootstrapper: ValidationBootstrapper,
             ) -> ValidationResult[int]:
     
     Super Class:
@@ -51,6 +51,7 @@ class NumberValidator(Validator[int]):
             candidate: Any,
             floor: int = 0,
             ceiling: int = BOARD_DIMENSION-1,
+            validation_bootstrapper: ValidationBootstrapper | None = None,
     ) -> ValidationResult[int]:
         """
         Make sure an object is a number within bounds before use.
@@ -63,58 +64,40 @@ class NumberValidator(Validator[int]):
             candidate: Any
             floor: int
             ceiling: int
+            validation_bootstrapper: ValidationBootstrapper
         Returns:
             ValidationResult[int]
         Raises:
-            TypeError
-            NumberException
-        # ACTION:
-            1.  If rank fails not-negative validation return the validation result containing the exception.
-                Else get the number from the validation payload.
-            2.  If number > BOARD.DIMENSION -1 return the ValidationResult containing the exception.
-            3.  The tests have been passed. Return the ValidationResult with the number in the payload.
-        # PARAMETERS:
-            *   rank (Any)
-            *   not_negative_validator (NotNegativeNumberValidator)
-        # RETURNS:
-            *   ValidationResult[int] containing either:
-                    - On failure: Exception.
-                    - On success: int in the payload.
-        Raises:
-              *     NumberValidationException
-              *     NumberBelowFloorException
-              *     NumberAboveCeilingException
+            NegativeNumberException
+            NumberAboveBoundsException
+            NumberBelowBoundsException
+            NumberValidationException
         """
         method = f"{cls.__name__}.validate"
         
-        # Handle the nonexistence case.
-        if candidate is None:
+        if validation_bootstrapper is None:
+            validation_bootstrapper = ValidationBootstrapper()
+        
+        # Handle the case that, the candidate does not exist.
+        validation_bootstrap_result = validation_bootstrapper.validate(
+            candidate=candidate,
+            target_model=int,
+            null_exception=NumberNullException(),
+        )
+        if validation_bootstrap_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                NumberValidationException(
+               NumberValidationException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
                     msg=NumberValidationException.MSG,
-                    err_code=NumberValidationException.ERR_NONE,
-                    ex=NumberNullException(
-                        msg=NumberNullException.MSG,
-                        err_code=NumberNullException.ERR_CODE,
-                    )
+                    err_code=NumberValidationException.ERR_CODE,
+                    ex=validation_bootstrap_result.exception,
                 )
             )
-        # Handle the wrong class case.
-        if not isinstance(candidate, int):
-            # Return the exception chain on failure.
-            return ValidationResult.failure(
-                NumberValidationException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=NumberValidationException.MSG,
-                    err_code=NumberValidationException.ERR_NONE,
-                    ex=TypeError(f"Expected an integer, got {type(candidate).__name__} instead.")
-                )
-            )
+        # --- Cast the candidate into a Token for additional tests ---#
         number = cast(int, candidate)
+        
         # Handle the case that, the number
         if floor < 0:
             # Return the exception chain on failure.
@@ -123,7 +106,7 @@ class NumberValidator(Validator[int]):
                     cls_mthd=method,
                     cls_name=cls.__name__,
                     msg=NumberValidationException.MSG,
-                    err_code=NumberValidationException.ERR_NONE,
+                    err_code=NumberValidationException.ERR_CODE,
                     ex=NegativeNumberException(
                         var="floor",
                         val=number,
@@ -140,7 +123,7 @@ class NumberValidator(Validator[int]):
                     cls_mthd=method,
                     cls_name=cls.__name__,
                     msg=NumberValidationException.MSG,
-                    err_code=NumberValidationException.ERR_NONE,
+                    err_code=NumberValidationException.ERR_CODE,
                     ex=NumberBelowBoundsException(
                         msg=NumberBelowBoundsException.MSG,
                         err_code=NumberBelowBoundsException.ERR_CODE,
@@ -155,12 +138,12 @@ class NumberValidator(Validator[int]):
                     cls_mthd=method,
                     cls_name=cls.__name__,
                     msg=NumberValidationException.MSG,
-                    err_code=NumberValidationException.ERR_NONE,
+                    err_code=NumberValidationException.ERR_CODE,
                     ex=NumberAboveBoundsException(
                         msg=NumberAboveBoundsException.MSG,
                         err_code=NumberAboveBoundsException.ERR_CODE,
                     )
                 )
             )
-        # On certification success return the number in the ValidationResult
+        # --- Forward the work product to the caller. ---#
         return ValidationResult.success(number)

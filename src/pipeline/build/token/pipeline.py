@@ -35,7 +35,7 @@ class TokenBuildPipeline(BuildPipeline[Token]):
         bootstrapper: TokenAssemblyBootstrapper
         
     Provides:
-        -   def build(blueprint: TokenBlueprint, toolkit: TokenToolkit) -> BuildResult[Token]:
+        -   def run(blueprint: TokenBlueprint, toolkit: TokenToolkit) -> BuildResult[Token]:
         
     Super Class:
         BuildPipeline
@@ -61,7 +61,7 @@ class TokenBuildPipeline(BuildPipeline[Token]):
         self._bootstrapper = bootstrapper or TokenAssemblyBootstrapper()
 
     @LoggingLevelRouter.monitor
-    def build(self, blueprint: TokenBlueprint, toolkit: TokenToolkit) -> BuildResult[Token]:
+    def run(self, blueprint: TokenBlueprint, toolkit: TokenToolkit) -> BuildResult[Token]:
         """
         Builds a safe, consistent Token.
         

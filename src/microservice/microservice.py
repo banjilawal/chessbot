@@ -11,6 +11,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from operation import Validator
+from pipeline import BuildPipeline
 
 T = TypeVar("T")
 
@@ -57,7 +58,7 @@ class Microservice(ABC, Generic[T]):
     
     @property
     @abstractmethod
-    def builder(self) -> Builder[T]:
+    def builder(self) -> BuildPipeline[T]:
         pass
     
     @property

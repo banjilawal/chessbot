@@ -90,7 +90,7 @@ class TokenServiceMenu(Router[TokenService]):
                     )
                 )
             )
-        # --- Cast the rank to a TokenCommand for additional tests ---#
+        # --- Cast the candidate into a TokenCommand for additional tests ---#
         token_command = cast(TokenCommand, command)
         
         # Handle the case that, the command's schema or id fail a safety ccheck.

@@ -11,13 +11,13 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from database import CoordDatabase
-from err import CoordDatabaseNullException, TokenNullException, TokenValidationException
 from model import Token
 from operation import Validator
+from toolkit import TokenToolkit
+from database import CoordDatabase
 from result import ValidationResult
 from system import LoggingLevelRouter
-from toolkit import TokenToolkit
+from err import CoordDatabaseNullException, TokenNullException, TokenValidationException
 
 
 class TokenValidator(Validator[Token]):
@@ -87,7 +87,7 @@ class TokenValidator(Validator[Token]):
                     ex=validation_bootstrap_result.exception,
                 )
             )
-        # --- Cast the rank to a Token for additional tests ---#
+        # --- Cast the candidate into a Token for additional tests ---#
         token = cast(Token, candidate)
         
         # Handle the case that, id or designation are not certified safe.
@@ -201,7 +201,7 @@ class TokenValidator(Validator[Token]):
                     ex=TypeError(f"Expected CombatantToken, got {type(candidate).__name__} instead.")
                 )
             )
-        # Tests have been passed return cast the rank to CombatantToken and return to the caller.
+        # Tests have been passed return cast the candidate into CombatantToken and return to the caller.
         return ValidationResult.success(payload=cast(CombatantToken, candidate))
         
     @classmethod
@@ -226,7 +226,7 @@ class TokenValidator(Validator[Token]):
                     ex=TypeError(f"{method}:Expected KingToken, got {type(candidate).__name__} instead.")
                 )
             )
-        # Tests have been passed return cast the rank to CombatantToken and return to the caller.
+        # Tests have been passed return cast the candidate into CombatantToken and return to the caller.
         return ValidationResult.success(payload=cast(CombatantToken, candidate))
     
     @classmethod

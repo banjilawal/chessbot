@@ -76,7 +76,7 @@ class NodeValidator(Validator[Node]):
                     ex=TypeError(f"{method}: Expected an Node, got {type(candidate).__name__}. instead")
                 )
             )
-        # --- Cast the rank to an Node for additional tests ---#
+        # --- Cast the candidate into an Node for additional tests ---#
         node = cast(Node, candidate)
         
         # Handle the case that, the square is not valid.

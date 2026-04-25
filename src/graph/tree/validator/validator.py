@@ -37,7 +37,7 @@ class NodeTreeValidator(Validator[NodeTree]):
             1.  Send an exception chain in the ValidationResult if, the rank is either
                     *   nulI
                     *   is not a NodeTree instance.
-            2.  Otherwise, cast the rank to a NodeTree then, send in the success result.
+            2.  Otherwise, cast the candidate into a NodeTree then, send in the success result.
             
         Args:
             candidate: Any

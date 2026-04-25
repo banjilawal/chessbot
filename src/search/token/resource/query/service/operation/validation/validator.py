@@ -104,7 +104,7 @@ class TokenQueryValidator(Validator[TokenQuery]):
                     )
                 )
             )
-        # --- Cast the rank to TokenQuery for additional tests. ---#
+        # --- Cast the candidate into TokenQuery for additional tests. ---#
         query = cast(TokenQuery, candidate)
         
         # Handle the case that, the context is not safe to use.

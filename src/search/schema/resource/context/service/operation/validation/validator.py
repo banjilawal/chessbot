@@ -107,7 +107,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
                     )
                 )
             )
-        # --- Cast the rank to SchemaContext for additional tests. ---#
+        # --- Cast the candidate into SchemaContext for additional tests. ---#
         context = cast(SchemaContext, candidate)
         
         # Handle the case of searching with no attribute-value provided.

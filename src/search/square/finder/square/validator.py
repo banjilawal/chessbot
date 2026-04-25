@@ -93,7 +93,7 @@ class SquareListValidator(Validator[List[Square]]):
                     )
                 )
             )
-        # --- Cast the rank to a List for additional tests. ---#
+        # --- Cast the candidate into a List for additional tests. ---#
         square_list = cast(List, candidate)
         
         # Handle the case that, the list is empty

@@ -103,7 +103,7 @@ class SquareContextValidator(Validator[SquareContext]):
                     )
                 )
             )
-        # --- Cast the rank to SquareContext for additional tests. ---#
+        # --- Cast the candidate into SquareContext for additional tests. ---#
         context = cast(SquareContext, candidate)
         
         # Handle the case of searching with no attribute-value provided.
