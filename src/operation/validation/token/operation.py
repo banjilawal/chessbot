@@ -9,13 +9,16 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from typing import Any
+from typing import Any, cast
 
+from database import CoordDatabase
+from err import NullException, TokenNullException, TokenValidationException
 from integrity import NumberValidator, Validator
 from microservice import CoordService, RankService, TeamService
-from model import Token
+from model import Coord, Token
 from result import ValidationResult
 from system import IdentityService, LoggingLevelRouter
+from toolkit import TokenToolkit
 
 
 class TokenValidator(Validator[Token]):
@@ -46,6 +49,7 @@ class TokenValidator(Validator[Token]):
     def validate(
             cls,
             candidate: Any,
+            toolkit: TokenToolkit | None = None,
             team_service: TeamService = TeamService(),
             rank_service: RankService = RankService(),
             coord_service: CoordService = CoordService(),
@@ -66,7 +70,7 @@ class TokenValidator(Validator[Token]):
             2.  Otherwise, send the success result.
         Args:
             candidate: Any
-            number_validation: NumberValidator
+            toolkit: TokenToolkit
         Returns:
             ValidationResult[Coord]
         Raises:
@@ -101,41 +105,31 @@ class TokenValidator(Validator[Token]):
         """
         method = f"{cls.__class__.__name__}.validate"
         
-        # Handle the nonexistence case.
-        if candidate is None:
+        if toolkit is None:
+            toolkit = TokenToolkit()
+        
+        # Handle the case that, the candidate does not exist.
+        validation_bootstrap_result = toolkit.validation_bootstrapper.validate(
+            candidate=candidate,
+            target_model=Token,
+            null_exception=TokenNullException(),
+        )
+        if validation_bootstrap_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
                     cls_mthd=method,
-                    op=TokenValidationException.OP,
+                    cls_name=cls.__name__,
                     msg=TokenValidationException.MSG,
                     err_code=TokenValidationException.ERR_CODE,
-                    mthd_rslt=TokenValidationException.MTHD_RSLT,
-                    ex=NullTokenException(
-                        var="rank",
-                        msg=NullTokenException.MSG,
-                        err_code=NullTokenException.ERR_CODE,
-                    )
-                )
-            )
-        # Handle the wrong class case.
-        if not isinstance(candidate, Token):
-            # Return the exception chain on failure.
-            return ValidationResult.failure(
-                TokenValidationException(
-                    cls_mthd=method,
-                    op=TokenValidationException.OP,
-                    msg=TokenValidationException.MSG,
-                    err_code=TokenValidationException.ERR_CODE,
-                    mthd_rslt=TokenValidationException.MTHD_RSLT,
-                    ex=TypeError(f"Expected Token, got {type(candidate).__name__} instead.")
+                    ex=validation_bootstrap_result.exception,
                 )
             )
         # --- Cast the rank to a Token for additional tests ---#
         token = cast(Token, candidate)
         
         # Handle the case that, id or designation are not certified safe.
-        identity_validation_result = identity_service.validate_identity(
+        identity_validation_result = toolkit.identity_service.validate_identity(
             id_candidate=token.id,
             name_candidate=token.designation
         )
@@ -144,74 +138,69 @@ class TokenValidator(Validator[Token]):
             return ValidationResult.failure(
                 TokenValidationException(
                     cls_mthd=method,
-                    op=TokenValidationException.OP,
+                    cls_name=cls.__name__,
                     msg=TokenValidationException.MSG,
                     err_code=TokenValidationException.ERR_CODE,
-                    mthd_rslt=TokenValidationException.MTHD_RSLT,
-                    ex=identity_validation_result.exception
+                    ex=identity_validation_result.exception,
                 )
             )
         # Handle the case that, the occupant's team fails validation.
-        team_validation_result = team_service.validator.validate(token.team)
+        team_validation_result = toolkit.team_service.validator.validate(token.team)
         if team_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
                     cls_mthd=method,
-                    op=TokenValidationException.OP,
+                    cls_name=cls.__name__,
                     msg=TokenValidationException.MSG,
                     err_code=TokenValidationException.ERR_CODE,
-                    mthd_rslt=TokenValidationException.MTHD_RSLT,
-                    ex=team_validation_result.exception
+                    ex=team_validation_result.exception,
                 )
             )
         # Handle the case that, the roster or opening_square_name are not acceptable.
-        roster_and_square_validation_result = identity_service.validate_identity(
-            id_candidate=token.roster_number,
-            name_candidate=token.opening_square_name
-        )
-        if roster_and_square_validation_result.is_failure:
+        opening_square_validation_result = toolkit.square_validator(token.opening_square)
+        if opening_square_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
                     cls_mthd=method,
-                    op=TokenValidationException.OP,
+                    cls_name=cls.__name__,
                     msg=TokenValidationException.MSG,
                     err_code=TokenValidationException.ERR_CODE,
-                    mthd_rslt=TokenValidationException.MTHD_RSLT,
-                    ex=roster_and_square_validation_result.exception
+                    ex=opening_square_validation_result.exception,
                 )
             )
         # Handle the case that, the rankis not safe.
-        rank_validation_result = rank_service.validator.validate(rank=token.rank)
+        rank_validation_result = toolkit.rank_service.validator.validate(rank=token.rank)
         if rank_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
                     cls_mthd=method,
-                    op=TokenValidationException.OP,
+                    cls_name=cls.__name__,
                     msg=TokenValidationException.MSG,
                     err_code=TokenValidationException.ERR_CODE,
-                    mthd_rslt=TokenValidationException.MTHD_RSLT,
-                    ex=rank_validation_result.exception
+                    ex=rank_validation_result.exception,
                 )
             )
         # Handle the case that the token's CoordDatabase fails it safety checks.
-        token_coord_database_verification_result = cls._verify_token_coord_stack(token)
-        if token_coord_database_verification_result.is_failure:
+        coord_database_validation_result = toolkit.validation_bootstrapper.validate(
+            candidate=token.positions,
+            target_model=CoordDatabase,
+            null_exception=NullException()
+        )
+        if coord_database_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
-                    op=TokenValidationException.OP,
+                    cls_name=cls.__name__,
                     msg=TokenValidationException.MSG,
                     err_code=TokenValidationException.ERR_CODE,
-                    mthd_rslt=TokenValidationException.MTHD_RSLT,
-                    ex=token_coord_database_verification_result.exception
+                    ex=rank_validation_result.exception,
                 )
             )
-        # Tests have been passed return the occupant in the ValidationResult.
+        # --- Forward the work product to the caller. ---#
         return ValidationResult.success(token)
     
     @classmethod
