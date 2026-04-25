@@ -175,7 +175,7 @@ class TokenCreationOperation:
                 return BuildResult.failure(
                     TokenBuildException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         op=TokenBuildException.OP,
                         msg=TokenBuildException.MSG,
                         err_code=TokenBuildException.ERR_CODE,

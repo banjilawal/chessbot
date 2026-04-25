@@ -73,7 +73,7 @@ class ZoneValidator(Validator[Zone]):
             return ValidationResult.failure(
                 ZoneValidationException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=ZoneValidationException.OP,
                     msg=ZoneValidationException.MSG,
                     err_code=ZoneValidationException.ERR_CODE,
@@ -90,7 +90,7 @@ class ZoneValidator(Validator[Zone]):
             return ValidationResult.failure(
                 ZoneValidationException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=ZoneValidationException.OP,
                     msg=ZoneValidationException.MSG,
                     err_code=ZoneValidationException.ERR_CODE,
@@ -115,7 +115,7 @@ class ZoneValidator(Validator[Zone]):
                 return ValidationResult.failure(
                     ZoneValidationException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         op=ZoneValidationException.OP,
                         msg=ZoneValidationException.MSG,
                         err_code=ZoneValidationException.ERR_CODE,

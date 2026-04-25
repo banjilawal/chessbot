@@ -36,7 +36,7 @@ class VectorValidator(Validator[Vector]):
     Provides:
         -   def validate(
                     candidate: Any,
-                    number_validator: NumberValidator
+                     toolkit: MathToolkit
             ) -> ValidationResult[Vector]:
 
     Super Class:

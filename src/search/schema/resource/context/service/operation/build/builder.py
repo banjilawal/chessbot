@@ -84,7 +84,7 @@ class SchemaContextBuilder(Builder[SchemaContext]):
             return BuildResult.failure(
                 SchemaContextBuildException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=SchemaContextBuildException.OP,
                     msg=SchemaContextBuildException.MSG,
                     err_code=SchemaContextBuildException.ERR_CODE,
@@ -101,7 +101,7 @@ class SchemaContextBuilder(Builder[SchemaContext]):
             return BuildResult.failure(
                 SchemaContextBuildException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=SchemaContextBuildException.OP,
                     msg=SchemaContextBuildException.MSG,
                     err_code=SchemaContextBuildException.ERR_CODE,
@@ -122,7 +122,7 @@ class SchemaContextBuilder(Builder[SchemaContext]):
                 return BuildResult.failure(
                     SchemaContextBuildException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         op=SchemaContextBuildException.OP,
                         msg=SchemaContextBuildException.MSG,
                         err_code=SchemaContextBuildException.ERR_CODE,
@@ -141,7 +141,7 @@ class SchemaContextBuilder(Builder[SchemaContext]):
                 return BuildResult.failure(
                     SchemaContextBuildException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         op=SchemaContextBuildException.OP,
                         msg=SchemaContextBuildException.MSG,
                         err_code=SchemaContextBuildException.ERR_CODE,
@@ -156,7 +156,7 @@ class SchemaContextBuilder(Builder[SchemaContext]):
         return BuildResult.failure(
             SchemaContextBuildException(
                 cls_mthd=method,
-                cls_name=method.__name__,
+                cls_name=cls.__name__,
                 op=SchemaContextBuildException.OP,
                 msg=SchemaContextBuildException.MSG,
                 err_code=SchemaContextBuildException.ERR_CODE,

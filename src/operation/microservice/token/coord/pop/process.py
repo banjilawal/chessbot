@@ -76,7 +76,7 @@ class TokenPopCoordProcess:
             return DeletionResult.failure(
                 TokenPopCoordException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=TokenPopCoordException.OP,
                     msg=TokenPopCoordException.MSG,
                     err_code=TokenPopCoordException.ERR_CODE,
@@ -90,7 +90,7 @@ class TokenPopCoordProcess:
             return DeletionResult.failure(
                 TokenPopCoordException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         op=TokenPopCoordException.OP,
                         msg=TokenPopCoordException.MSG,
                         err_code=TokenPopCoordException.ERR_CODE,
@@ -110,7 +110,7 @@ class TokenPopCoordProcess:
                 return DeletionResult.failure(
                     TokenPopCoordException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         op=TokenPopCoordException.OP,
                         msg=TokenPopCoordException.MSG,
                         err_code=TokenPopCoordException.ERR_CODE,

@@ -32,7 +32,7 @@ class BoardAssemblyFinalizer(AssemblyFinalizer[Board]):
                 return BuildResult.failure(
                     FinalizeBoardBuildException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         msg=FinalizeBoardBuildException.MSG,
                         err_code=FinalizeBoardBuildException.ERR_CODE,
                         ex=insertion_result.exception,

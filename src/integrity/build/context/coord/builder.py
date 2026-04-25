@@ -86,7 +86,7 @@ class CoordContextBuilder(Builder[CoordContext]):
             return BuildResult.failure(
                 CoordContextBuildException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=CoordContextBuildException.OP,
                     msg=CoordContextBuildException.MSG,
                     err_code=CoordContextBuildException.ERR_CODE,
@@ -142,7 +142,7 @@ class CoordContextBuilder(Builder[CoordContext]):
         return BuildResult.failure(
             CoordContextBuildException(
                 cls_mthd=method,
-                cls_name=method.__name__,
+                cls_name=cls.__name__,
                 op=CoordContextBuildException.OP,
                 msg=CoordContextBuildException.MSG,
                 err_code=CoordContextBuildException.ERR_CODE,
@@ -188,7 +188,7 @@ class CoordContextBuilder(Builder[CoordContext]):
                 return BuildResult.failure(
                     CoordContextBuildException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         op=CoordContextBuildException.OP,
                         msg=CoordContextBuildException.MSG,
                         err_code=CoordContextBuildException.ERR_CODE,

@@ -76,7 +76,7 @@ class CoordBuilder(Builder[Coord]):
                 return BuildResult.failure(
                     CoordBuildException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         op=CoordBuildException.OP,
                         msg=CoordBuildException.MSG,
                         err_code=CoordBuildException.ERR_CODE,

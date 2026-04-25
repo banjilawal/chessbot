@@ -18,8 +18,7 @@ from operation import Validator, VectorContextValidator
 from model import VectorRegister
 from result import ValidationResult
 from system import LoggingLevelRouter
-from toolkit  import VectorContextToolkit
-
+from toolkit import VectorContextToolkit, VectorOperandToolkit
 
 
 class VectorRegisterValidator(Validator[VectorRegister]):
@@ -51,7 +50,7 @@ class VectorRegisterValidator(Validator[VectorRegister]):
     def validate(
             cls,
             candidate: Any,
-            toolkit: VectorContextToolkit,
+            toolkit: VectorOperandToolkit | None = None,
     ) -> ValidationResult[VectorRegister]:
         """
         Verify the candidate is a safe VectorRegister.

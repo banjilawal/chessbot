@@ -68,7 +68,7 @@ class EuclideanDistance:
                 return ComputationResult.failure(
                     EuclideanDistanceException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         op=EuclideanDistanceException.OP,
                         msg=EuclideanDistanceException.MSG,
                         err_code=EuclideanDistanceException.ERR_CODE,

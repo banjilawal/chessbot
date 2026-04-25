@@ -70,7 +70,7 @@ class SchemaSearchRouter(SearchRouter[Schema]):
             return SearchResult.failure(
                 SchemaSearchException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=SchemaSearchException.OP,
                     msg=SchemaSearchException.MSG,
                     err_code=SchemaSearchException.ERR_CODE,
@@ -97,7 +97,7 @@ class SchemaSearchRouter(SearchRouter[Schema]):
         return SearchResult.failure(
             SchemaSearchException(
                 cls_mthd=method,
-                cls_name=method.__name__,
+                cls_name=cls.__name__,
                 op=SchemaSearchException.OP,
                 msg=SchemaSearchException.MSG,
                 err_code=SchemaSearchException.ERR_CODE,

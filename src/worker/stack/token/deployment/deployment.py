@@ -50,7 +50,7 @@ class TokenStackDeployment:
                 original=token_stack,
                 exception=TokenStackDeploymentException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=TokenStackDeploymentException.OP,
                     msg=TokenStackDeploymentException.MSG,
                     err_code=TokenStackDeploymentException.ERR_CODE,
@@ -73,7 +73,7 @@ class TokenStackDeployment:
                     original=pre_deployment_token_stack,
                     exception=TokenStackDeploymentException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         op=TokenStackDeploymentException.OP,
                         msg=TokenStackDeploymentException.MSG,
                         err_code=TokenStackDeploymentException.ERR_CODE,

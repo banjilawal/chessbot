@@ -80,7 +80,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
             return ValidationResult.failure(
                 SchemaContextValidationException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=SchemaContextValidationException.OP,
                     msg=SchemaContextValidationException.MSG,
                     err_code=SchemaContextValidationException.ERR_CODE,
@@ -97,7 +97,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
             return ValidationResult.failure(
                 SchemaContextValidationException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=SchemaContextValidationException.OP,
                     msg=SchemaContextValidationException.MSG,
                     err_code=SchemaContextValidationException.ERR_CODE,
@@ -117,7 +117,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
             return ValidationResult.failure(
                 SchemaContextValidationException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=SchemaContextValidationException.OP,
                     msg=SchemaContextValidationException.MSG,
                     err_code=SchemaContextValidationException.ERR_CODE,
@@ -134,7 +134,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
             return ValidationResult.failure(
                 SchemaContextValidationException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=SchemaContextValidationException.OP,
                     msg=SchemaContextValidationException.MSG,
                     err_code=SchemaContextValidationException.ERR_CODE,
@@ -157,7 +157,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
                 return ValidationResult.failure(
                     SchemaContextValidationException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         op=SchemaContextValidationException.OP,
                         msg=SchemaContextValidationException.MSG,
                         err_code=SchemaContextValidationException.ERR_CODE,
@@ -178,7 +178,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
                 return ValidationResult.failure(
                     SchemaContextValidationException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         op=SchemaContextValidationException.OP,
                         msg=SchemaContextValidationException.MSG,
                         err_code=SchemaContextValidationException.ERR_CODE,
@@ -199,7 +199,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
                 return ValidationResult.failure(
                     SchemaContextValidationException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         op=SchemaContextValidationException.OP,
                         msg=SchemaContextValidationException.MSG,
                         err_code=SchemaContextValidationException.ERR_CODE,
@@ -220,7 +220,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
                 return ValidationResult.failure(
                     SchemaContextValidationException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         op=SchemaContextValidationException.OP,
                         msg=SchemaContextValidationException.MSG,
                         err_code=SchemaContextValidationException.ERR_CODE,
@@ -241,7 +241,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
                 return ValidationResult.failure(
                     SchemaContextValidationException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         op=SchemaContextValidationException.OP,
                         msg=SchemaContextValidationException.MSG,
                         err_code=SchemaContextValidationException.ERR_CODE,
@@ -262,7 +262,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
                 return ValidationResult.failure(
                     SchemaContextValidationException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         op=SchemaContextValidationException.OP,
                         msg=SchemaContextValidationException.MSG,
                         err_code=SchemaContextValidationException.ERR_CODE,
@@ -283,7 +283,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
                 return ValidationResult.failure(
                     SchemaContextValidationException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         op=SchemaContextValidationException.OP,
                         msg=SchemaContextValidationException.MSG,
                         err_code=SchemaContextValidationException.ERR_CODE,
@@ -307,7 +307,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
                 return ValidationResult.failure(
                     SchemaContextValidationException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         op=SchemaContextValidationException.OP,
                         msg=SchemaContextValidationException.MSG,
                         err_code=SchemaContextValidationException.ERR_CODE,
@@ -322,7 +322,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
         return ValidationResult.failure(
             SchemaContextValidationException(
                 cls_mthd=method,
-                cls_name=method.__name__,
+                cls_name=cls.__name__,
                 op=SchemaContextValidationException.OP,
                 msg=SchemaContextValidationException.MSG,
                 err_code=SchemaContextValidationException.ERR_CODE,

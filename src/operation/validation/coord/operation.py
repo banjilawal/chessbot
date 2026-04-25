@@ -1,21 +1,21 @@
 # src/operation/validation/coord/operation.py
 
 """
-Module: operation.validation.coord.validator
+Module: operation.validation.coord.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
 from __future__ import annotations
+from typing import Any, cast
 
-from typing import Any
-
-from err import CoordNullException, CoordValidationException
-from integrity import NumberValidator, Validator
 from model import Coord
+from toolkit import MathToolkit
+from operation import Validator
 from result import ValidationResult
 from system import LoggingLevelRouter, NUMBER_OF_ROWS
+from err import CoordNullException, CoordValidationException
 
 
 class CoordValidator(Validator[Coord]):
@@ -28,14 +28,14 @@ class CoordValidator(Validator[Coord]):
 
     Responsibilities:
         1.  Ensure a Coord instance is certified safe, reliable and consistent before use.
-        
+
     Attributes:
-    
+
     Provides:
-       -    execute(
-                    coord: Any,
-                    number_validation: NumberValidator,
-            ) -> ValidationResult[Coord]
+        -   def validate(
+                    candidate: Any,
+                     toolkit: MathToolkit
+            ) -> ValidationResult[Coord]:
 
     Super Class:
         Validator
@@ -46,20 +46,20 @@ class CoordValidator(Validator[Coord]):
     def validate(
             cls,
             candidate: Any,
-            number_validation: NumberValidator = NumberValidator(),
+            toolkit: MathToolkit | None = None
     ) -> ValidationResult[Coord]:
         """
-        Verify the coord is a Coord that is safe to use.
-        
+        Check if a Coord is safe to use.
+
         Action:
-            1.  Send an exception chain in the ValidationResult if
-                    -   the coord does not exist.
-                    -   the coord is not a Coord.
-                    -   the row or column is not between [0-7] inclusive.
-            2.  Otherwise, after the coord is cast to a Coord, send the success result.
+            1.  Send an exception in the ValidationResult if either x or y
+                    -   Is null
+                    -   Not a number
+                    -   Out of  bounds.
+            2.  Otherwise, send the success result.
         Args:
-            candidate: Any
-            number_validation: NumberValidator
+             candidate: Any
+             toolkit: MathToolkit
         Returns:
             ValidationResult[Coord]
         Raises:
@@ -67,56 +67,47 @@ class CoordValidator(Validator[Coord]):
             NullCoordException
             CoordValidationException
         """
-        method = f"{cls.__name__}.build"
+        method = f"{cls.__name__}.validate"
         
-        # Handle the case that, the coord does not exist.
-        if candidate is None:
-            # Return the exception on failure.
+        if toolkit is None:
+            toolkit = MathToolkit()
+        
+        # Handle the case that, the candidate does not exist.
+        validation_bootstrap_result = toolkit.validation_bootstrapper.validate(
+            candidate=candidate,
+            target_model=Coord,
+            null_exception=CoordNullException(),
+        )
+        if validation_bootstrap_result.is_failure:
+            # Return the exception chain on failure.
             return ValidationResult.failure(
                 CoordValidationException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
                     msg=CoordValidationException.MSG,
                     err_code=CoordValidationException.ERR_CODE,
-                    ex=CoordNullException(
-                        msg=CoordNullException.MSG,
-                        err_code=CoordNullException.ERR_CODE,
-                    )
+                    ex=validation_bootstrap_result.exception,
                 )
             )
-        # Handle the case that, the coord is the wrong type.
-        if not isinstance(candidate, Coord):
-            # Return the exception on failure.
-            return ValidationResult.failure(
-                CoordValidationException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=CoordValidationException.MSG,
-                    err_code=CoordValidationException.ERR_CODE,
-                    ex=TypeError(
-                        f"Expected a Coord, got {type(candidate).__name__} instead."
-                    )
-                )
-            )
-        # --- Cast coord to a Coord for additional tests ---#
+        # --- Cast the candidate to a Coord for additional tests ---#
         coord = cast(Coord, candidate)
         
         # Handle the case that, either the row or column are not between [0-7] inclusive.
         for attribute in [coord.row, coord.column]:
-            validate_result = number_validation.validate(
+            number_validation_result = toolkit.number_validator.validate(
                 ceiling=NUMBER_OF_ROWS,
                 candidate=attribute,
                 floor=0,
             )
-            if validate_result.is_failure:
+            if number_validation_result.is_failure:
                 # Return the exception on failure.
                 return ValidationResult.failure(
                     CoordValidationException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         msg=CoordValidationException.MSG,
                         err_code=CoordValidationException.ERR_CODE,
-                        ex=validate_result.exception
+                        ex=number_validation_result.exception
                     )
                 )
         # --- Forward the work product to the caller. ---#

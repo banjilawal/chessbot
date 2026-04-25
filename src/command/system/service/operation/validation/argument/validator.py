@@ -156,7 +156,7 @@ class CommandArgsValidator(Validator[Dict]):
             return ValidationResult.failure(
                 ArgumentsValidationException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=ArgumentsValidationException.OP,
                     msg=ArgumentsValidationException.MSG,
                     err_code=ArgumentsValidationException.ERR_CODE,

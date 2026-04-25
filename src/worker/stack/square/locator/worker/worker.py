@@ -78,7 +78,7 @@ class OpeningSquareLocator(Worker):
             return SearchResult.failure(
                 OpeningSquareDiscoveryException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=OpeningSquareDiscoveryException.OP,
                     msg=OpeningSquareDiscoveryException.MSG,
                     err_code=OpeningSquareDiscoveryException.ERR_CODE,
@@ -89,7 +89,7 @@ class OpeningSquareLocator(Worker):
         if token.is_deployed:
             OpeningSquareDiscoveryException(
                 cls_mthd=method,
-                cls_name=method.__name__,
+                cls_name=cls.__name__,
                 op=OpeningSquareDiscoveryException.OP,
                 msg=OpeningSquareDiscoveryException.MSG,
                 err_code=OpeningSquareDiscoveryException.ERR_CODE,

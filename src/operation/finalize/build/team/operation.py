@@ -31,7 +31,7 @@ class TeamAssemblyFinalizer(AssemblyFinalizer[Team]):
             return BuildResult.failure(
                 FinalizeTeamBuildException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     msg=FinalizeTeamBuildException.MSG,
                     err_code=FinalizeTeamBuildException.ERR_CODE,
                     ex=insertion_result.exception,

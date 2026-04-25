@@ -32,7 +32,7 @@ class TokenAssemblyFinalizer(AssemblyFinalizer[Token]):
                 return BuildResult.failure(
                     FinalizeTokenBuildException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         msg=FinalizeTokenBuildException.MSG,
                         err_code=FinalizeTokenBuildException.ERR_CODE,
                         ex=insertion_result.exception,

@@ -78,7 +78,7 @@ class TokenPushCoordProcess:
             return InsertionResult.failure(
                 TokenPushCoordException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=TokenPushCoordException.OP,
                     msg=TokenPushCoordException.MSG,
                     err_code=TokenPushCoordException.ERR_CODE,
@@ -92,7 +92,7 @@ class TokenPushCoordProcess:
             return InsertionResult.failure(
                 TokenPushCoordException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=TokenPushCoordException.OP,
                     msg=TokenPushCoordException.MSG,
                     err_code=TokenPushCoordException.ERR_CODE,
@@ -112,7 +112,7 @@ class TokenPushCoordProcess:
             return InsertionResult.failure(
                 TokenPushCoordException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=TokenPushCoordException.OP,
                     msg=TokenPushCoordException.MSG,
                     err_code=TokenPushCoordException.ERR_CODE,
@@ -126,7 +126,7 @@ class TokenPushCoordProcess:
             return InsertionResult.failure(
                 TokenPushCoordException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=TokenPushCoordException.OP,
                     msg=TokenPushCoordException.MSG,
                     err_code=TokenPushCoordException.ERR_CODE,
@@ -152,7 +152,7 @@ class TokenPushCoordProcess:
             return InsertionResult.failure(
                 TokenPushCoordException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=TokenPushCoordException.OP,
                     msg=TokenPushCoordException.MSG,
                     err_code=TokenPushCoordException.ERR_CODE,

@@ -72,7 +72,7 @@ class CoordStackPush:
             return InsertionResult.failure(
                 CoordStackPushException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=CoordStackPushException.OP,
                     msg=CoordStackPushException.MSG,
                     err_code=CoordStackPushException.ERR_CODE,
@@ -86,7 +86,7 @@ class CoordStackPush:
             return InsertionResult.failure(
                 CoordStackPushException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=CoordStackPushException.OP,
                     msg=CoordStackPushException.MSG,
                     err_code=CoordStackPushException.ERR_CODE,

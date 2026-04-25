@@ -86,7 +86,7 @@ class CoordContextToolkit(Toolkit[CoordContext]):
             return ToolkitResult.failure(
                 CoordContextToolkitException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=CoordContextToolkitException.OP,
                     msg=CoordContextToolkitException.MSG,
                     err_code=CoordContextToolkitException.ERR_CODE,
@@ -142,7 +142,7 @@ class CoordContextToolkit(Toolkit[CoordContext]):
         return ToolkitResult.failure(
             CoordContextToolkitException(
                 cls_mthd=method,
-                cls_name=method.__name__,
+                cls_name=cls.__name__,
                 op=CoordContextToolkitException.OP,
                 msg=CoordContextToolkitException.MSG,
                 err_code=CoordContextToolkitException.ERR_CODE,
@@ -188,7 +188,7 @@ class CoordContextToolkit(Toolkit[CoordContext]):
                 return ToolkitResult.failure(
                     CoordContextToolkitException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         op=CoordContextToolkitException.OP,
                         msg=CoordContextToolkitException.MSG,
                         err_code=CoordContextToolkitException.ERR_CODE,

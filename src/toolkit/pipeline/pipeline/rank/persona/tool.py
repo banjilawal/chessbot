@@ -103,7 +103,7 @@ class RankPersonaValidator(Validator[Rank]):
                 return ValidationResult.failure(
                     RankPersonaValidationException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         op=RankPersonaValidationException.OP,
                         msg=RankPersonaValidationException.MSG,
                         err_code=RankPersonaValidationException.ERR_CODE,
@@ -126,7 +126,7 @@ class RankPersonaValidator(Validator[Rank]):
                 return ValidationResult.failure(
                     RankPersonaValidationException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         op=RankPersonaValidationException.OP,
                         msg=RankPersonaValidationException.MSG,
                         err_code=RankPersonaValidationException.ERR_CODE,
@@ -149,7 +149,7 @@ class RankPersonaValidator(Validator[Rank]):
                 return ValidationResult.failure(
                     RankPersonaValidationException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         op=RankPersonaValidationException.OP,
                         msg=RankPersonaValidationException.MSG,
                         err_code=RankPersonaValidationException.ERR_CODE,
@@ -172,7 +172,7 @@ class RankPersonaValidator(Validator[Rank]):
                 return ValidationResult.failure(
                     RankPersonaValidationException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         op=RankPersonaValidationException.OP,
                         msg=RankPersonaValidationException.MSG,
                         err_code=RankPersonaValidationException.ERR_CODE,
@@ -195,7 +195,7 @@ class RankPersonaValidator(Validator[Rank]):
                 return ValidationResult.failure(
                     RankPersonaValidationException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         op=RankPersonaValidationException.OP,
                         msg=RankPersonaValidationException.MSG,
                         err_code=RankPersonaValidationException.ERR_CODE,
@@ -218,7 +218,7 @@ class RankPersonaValidator(Validator[Rank]):
                 return ValidationResult.failure(
                     RankPersonaValidationException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         op=RankPersonaValidationException.OP,
                         msg=RankPersonaValidationException.MSG,
                         err_code=RankPersonaValidationException.ERR_CODE,
@@ -238,7 +238,7 @@ class RankPersonaValidator(Validator[Rank]):
         return ValidationResult.failure(
             RankPersonaValidationException(
                 cls_mthd=method,
-                cls_name=method.__name__,
+                cls_name=cls.__name__,
                 op=RankPersonaValidationException.OP,
                 msg=RankPersonaValidationException.MSG,
                 err_code=RankPersonaValidationException.ERR_CODE,

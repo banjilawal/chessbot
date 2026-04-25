@@ -104,7 +104,7 @@ class PawnPromoter:
                 original=pawn_token,
                 exception=PromotionException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=PromotionException.OP,
                     msg=PromotionException.MSG,
                     err_code=PromotionException.ERR_CODE,
@@ -119,7 +119,7 @@ class PawnPromoter:
                 original=pawn_token,
                 exception=PromotionException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=PromotionException.OP,
                     msg=PromotionException.MSG,
                     err_code=PromotionException.ERR_CODE,

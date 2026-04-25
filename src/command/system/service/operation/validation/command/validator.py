@@ -57,7 +57,7 @@ class CommandValidator(Validator[Command]):
             return ValidationResult.failure(
                 CommandValidationException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=CommandValidationException.OP,
                     msg=CommandValidationException.MSG,
                     err_code=CommandValidationException.ERR_CODE,

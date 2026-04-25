@@ -72,7 +72,7 @@ class CoordContextValidator(Validator[CoordContext]):
             return ValidationResult.failure(
                 CoordContextValidationException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=CoordContextValidationException.OP,
                     msg=CoordContextValidationException.MSG,
                     err_code=CoordContextValidationException.ERR_CODE,
@@ -89,7 +89,7 @@ class CoordContextValidator(Validator[CoordContext]):
             return ValidationResult.failure(
                 CoordContextValidationException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=CoordContextValidationException.OP,
                     msg=CoordContextValidationException.MSG,
                     err_code=CoordContextValidationException.ERR_CODE,
@@ -109,7 +109,7 @@ class CoordContextValidator(Validator[CoordContext]):
             return ValidationResult.failure(
                 CoordContextValidationException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=CoordContextValidationException.OP,
                     msg=CoordContextValidationException.MSG,
                     err_code=CoordContextValidationException.ERR_CODE,
@@ -165,7 +165,7 @@ class CoordContextValidator(Validator[CoordContext]):
         return ValidationResult.failure(
             CoordContextValidationException(
                 cls_mthd=method,
-                cls_name=method.__name__,
+                cls_name=cls.__name__,
                 op=CoordContextValidationException.OP,
                 msg=CoordContextValidationException.MSG,
                 err_code=CoordContextValidationException.ERR_CODE,
@@ -211,7 +211,7 @@ class CoordContextValidator(Validator[CoordContext]):
                 return ValidationResult.failure(
                     CoordContextValidationException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         op=CoordContextValidationException.OP,
                         msg=CoordContextValidationException.MSG,
                         err_code=CoordContextValidationException.ERR_CODE,

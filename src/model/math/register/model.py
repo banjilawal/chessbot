@@ -13,7 +13,6 @@ from typing import Any, Dict, List
 
 from model import VectorOperand
 
-
 @dataclass
 class VectorRegister:
     u: VectorOperand

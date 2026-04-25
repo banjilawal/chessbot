@@ -1,7 +1,7 @@
 # src/operation/validation/token/operation.py
 
 """
-Module: operation.validation.token.validator
+Module: operation.validation.token.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

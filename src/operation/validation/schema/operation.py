@@ -65,7 +65,7 @@ class SchemaValidator(Validator[Schema]):
             return ValidationResult.failure(
                 SchemaValidationException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=SchemaValidationException.OP,
                     msg=SchemaValidationException.MSG,
                     err_code=SchemaValidationException.ERR_CODE,
@@ -83,7 +83,7 @@ class SchemaValidator(Validator[Schema]):
             return ValidationResult.failure(
                 SchemaValidationException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=SchemaValidationException.OP,
                     msg=SchemaValidationException.MSG,
                     err_code=SchemaValidationException.ERR_CODE,

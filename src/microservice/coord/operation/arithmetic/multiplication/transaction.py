@@ -69,7 +69,7 @@ class MultiplyCoordTransaction:
             return ComputationResult.failure(
                 CoordMultiplicationException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=CoordMultiplicationException.OP,
                     msg=CoordMultiplicationException.MSG,
                     err_code=CoordMultiplicationException.ERR_CODE,
@@ -84,7 +84,7 @@ class MultiplyCoordTransaction:
             return ComputationResult.failure(
                 CoordMultiplicationException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=CoordMultiplicationException.OP,
                     msg=CoordMultiplicationException.MSG,
                     err_code=CoordMultiplicationException.ERR_CODE,
@@ -103,7 +103,7 @@ class MultiplyCoordTransaction:
             return ComputationResult.failure(
                 CoordMultiplicationException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=CoordMultiplicationException.OP,
                     msg=CoordMultiplicationException.MSG,
                     err_code=CoordMultiplicationException.ERR_CODE,

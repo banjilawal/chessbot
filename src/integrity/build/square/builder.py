@@ -136,7 +136,7 @@ class SquareBuilder(Builder[Square]):
             return BuildResult.failure(
                 SquareBuildException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=SquareBuildException.OP,
                     msg=SquareBuildException.MSG,
                     err_code=SquareBuildException.ERR_CODE,
@@ -151,7 +151,7 @@ class SquareBuilder(Builder[Square]):
             return BuildResult.failure(
                 SquareBuildException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=SquareBuildException.OP,
                     msg=SquareBuildException.MSG,
                     err_code=SquareBuildException.ERR_CODE,
@@ -166,7 +166,7 @@ class SquareBuilder(Builder[Square]):
             return BuildResult.failure(
                 SquareBuildException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=SquareBuildException.OP,
                     msg=SquareBuildException.MSG,
                     err_code=SquareBuildException.ERR_CODE,
@@ -186,7 +186,7 @@ class SquareBuilder(Builder[Square]):
             return BuildResult.failure(
                 SquareBuildException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=SquareBuildException.OP,
                     msg=SquareBuildException.MSG,
                     err_code=SquareBuildException.ERR_CODE,
@@ -237,7 +237,7 @@ class SquareBuilder(Builder[Square]):
             return BuildResult.failure(
                 SquareBuildException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=SquareBuildException.OP,
                     msg=SquareBuildException.MSG,
                     err_code=SquareBuildException.ERR_CODE,
@@ -251,7 +251,7 @@ class SquareBuilder(Builder[Square]):
             return BuildResult.failure(
                 SquareBuildException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=SquareBuildException.OP,
                     msg=SquareBuildException.MSG,
                     err_code=SquareBuildException.ERR_CODE,
@@ -270,7 +270,7 @@ class SquareBuilder(Builder[Square]):
                 return BuildResult.failure(
                     SquareBuildException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         op=SquareBuildException.OP,
                         msg=SquareBuildException.MSG,
                         err_code=SquareBuildException.ERR_CODE,

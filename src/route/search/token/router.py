@@ -73,7 +73,7 @@ class TokenSearchRouter(SearchRouter[Token]):
             return SearchResult.failure(
                 TokenSearchException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=TokenSearchException.OP,
                     msg=TokenSearchException.MSG,
                     err_code=TokenSearchException.ERR_CODE,
@@ -135,7 +135,7 @@ class TokenSearchRouter(SearchRouter[Token]):
         return SearchResult.failure(
             TokenSearchException(
                 cls_mthd=method,
-                cls_name=method.__name__,
+                cls_name=cls.__name__,
                 op=TokenSearchException.OP,
                 msg=TokenSearchException.MSG,
                 err_code=TokenSearchException.ERR_CODE,

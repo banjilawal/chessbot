@@ -76,7 +76,7 @@ class VectorBuilder(Builder[Vector]):
                 return BuildResult.failure(
                     VectorBuildException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         op=VectorBuildException.OP,
                         msg=VectorBuildException.MSG,
                         err_code=VectorBuildException.ERR_CODE,

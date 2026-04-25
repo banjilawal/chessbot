@@ -66,7 +66,7 @@ class ConvertVectorToCoordTransaction:
             return ComputationResult.failure(
                 ConvertVectorException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=ConvertVectorException.OP,
                     msg=ConvertVectorException.MSG,
                     err_code=ConvertVectorException.ERR_CODE,
@@ -85,7 +85,7 @@ class ConvertVectorToCoordTransaction:
             return ComputationResult.failure(
                 ConvertVectorException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=ConvertVectorException.OP,
                     msg=ConvertVectorException.MSG,
                     err_code=ConvertVectorException.ERR_CODE,

@@ -49,7 +49,7 @@ class SquareAssemblyFinalizer(AssemblyFinalizer[Square]):
             return BuildResult.failure(
                 FinalizeSquareBuildException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     msg=FinalizeSquareBuildException.MSG,
                     err_code=FinalizeSquareBuildException.ERR_CODE,
                     ex=insertion_result.exception,

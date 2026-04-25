@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== MODEL.MATH PACKAGE ===========#
 
 # Packages
-from .operand import *
 
 # Modules
 from .toolkit import MathToolkit

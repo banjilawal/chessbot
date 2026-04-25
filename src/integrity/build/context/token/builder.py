@@ -101,7 +101,7 @@ class TokenContextBuilder(Builder[TokenContext]):
             return BuildResult.failure(
                 TokenContextBuildException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=TokenContextBuildException.OP,
                     msg=TokenContextBuildException.MSG,
                     err_code=TokenContextBuildException.ERR_CODE,
@@ -118,7 +118,7 @@ class TokenContextBuilder(Builder[TokenContext]):
             return BuildResult.failure(
                 TokenContextBuildException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     op=TokenContextBuildException.OP,
                     msg=TokenContextBuildException.MSG,
                     err_code=TokenContextBuildException.ERR_CODE,
@@ -139,7 +139,7 @@ class TokenContextBuilder(Builder[TokenContext]):
                 return BuildResult.failure(
                     TokenContextBuildException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         op=TokenContextBuildException.OP,
                         msg=TokenContextBuildException.MSG,
                         err_code=TokenContextBuildException.ERR_CODE,
@@ -158,7 +158,7 @@ class TokenContextBuilder(Builder[TokenContext]):
                 return BuildResult.failure(
                     TokenContextBuildException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         op=TokenContextBuildException.OP,
                         msg=TokenContextBuildException.MSG,
                         err_code=TokenContextBuildException.ERR_CODE,
@@ -177,7 +177,7 @@ class TokenContextBuilder(Builder[TokenContext]):
                 return BuildResult.failure(
                     TokenContextBuildException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         op=TokenContextBuildException.OP,
                         msg=TokenContextBuildException.MSG,
                         err_code=TokenContextBuildException.ERR_CODE,
@@ -196,7 +196,7 @@ class TokenContextBuilder(Builder[TokenContext]):
                 return BuildResult.failure(
                     TokenContextBuildException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         op=TokenContextBuildException.OP,
                         msg=TokenContextBuildException.MSG,
                         err_code=TokenContextBuildException.ERR_CODE,
@@ -215,7 +215,7 @@ class TokenContextBuilder(Builder[TokenContext]):
                 return BuildResult.failure(
                     TokenContextBuildException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         op=TokenContextBuildException.OP,
                         msg=TokenContextBuildException.MSG,
                         err_code=TokenContextBuildException.ERR_CODE,
@@ -234,7 +234,7 @@ class TokenContextBuilder(Builder[TokenContext]):
                 return BuildResult.failure(
                     TokenContextBuildException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         op=TokenContextBuildException.OP,
                         msg=TokenContextBuildException.MSG,
                         err_code=TokenContextBuildException.ERR_CODE,
@@ -253,7 +253,7 @@ class TokenContextBuilder(Builder[TokenContext]):
                 return BuildResult.failure(
                     TokenContextBuildException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         op=TokenContextBuildException.OP,
                         msg=TokenContextBuildException.MSG,
                         err_code=TokenContextBuildException.ERR_CODE,
@@ -276,7 +276,7 @@ class TokenContextBuilder(Builder[TokenContext]):
                 return BuildResult.failure(
                     TokenContextBuildException(
                         cls_mthd=method,
-                        cls_name=method.__name__,
+                        cls_name=cls.__name__,
                         op=TokenContextBuildException.OP,
                         msg=TokenContextBuildException.MSG,
                         err_code=TokenContextBuildException.ERR_CODE,
@@ -291,7 +291,7 @@ class TokenContextBuilder(Builder[TokenContext]):
         return BuildResult.failure(
             TokenContextBuildException(
                 cls_mthd=method,
-                cls_name=method.__name__,
+                cls_name=cls.__name__,
                 op=TokenContextBuildException.OP,
                 msg=TokenContextBuildException.MSG,
                 err_code=TokenContextBuildException.ERR_CODE,

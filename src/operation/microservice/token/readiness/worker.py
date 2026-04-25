@@ -77,7 +77,7 @@ class TokenReadinessAnalyzer(RelationAnalysis[TokenActivityState.FREE, Token]):
             return RelationReport.failure(
                 TokenReadinessAnalysisException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     msg=TokenReadinessAnalysisException.MSG,
                     err_code=TokenReadinessAnalysisException.ERR_CODE,
                     mthd_rslt=TokenReadinessAnalysisException.MTHD_RSLT,

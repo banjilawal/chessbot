@@ -1,21 +1,22 @@
 # src/operation/validation/rank/operation.py
 
 """
-Module: operation.validation.rank.validator
+Module: operation.validation.rank.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
 from __future__ import annotations
-
 from typing import Any, cast
 
-from model import Rank
+from model import Persona, Rank
+from toolkit import RankToolkit
 from operation import Validator
 from result import ValidationResult
 from system import LoggingLevelRouter
-from err import RankNullException, RankValidationException
+from err import PersonaNullException, RankNullException, RankValidationException
+
 
 class RankValidator(Validator[Rank]):
     """
@@ -31,11 +32,7 @@ class RankValidator(Validator[Rank]):
     Attributes:
 
     Provides:
-        -   def validate(
-                    rank: Any,
-                    workers: RankTool,
-                    persona_validator: RankPersonaValidator
-            ) -> ValidationResult[Rank]:
+        -   def validate(candidate: Any, toolkit: RankToolkit) -> ValidationResult[Rank]:
 
     Super Class:
         Validator
@@ -46,91 +43,77 @@ class RankValidator(Validator[Rank]):
     def validate(
             cls,
             candidate: Any,
-            workers: RankIntegrityWorkers = RankIntegrityWorkers(),
-            persona_validator: RankPersonaValidator = RankPersonaValidator(),
+            toolkit: RankToolkit | None = None,
     ) -> ValidationResult[Rank]:
         """
-        Verify the rank is a Rank that is safe to use.
+        Verify the object is a Rank that is safe to use.
 
         Action:
-            1.  Send an exception chain in the ValidationResult
-                    -   the rank does not exist.
-                    -   the rank is not a Rank.
-                    -   Any integrity worker raises a failed test.
-                    -   persona_validator returns an exception.
-            2.  Otherwise, after the rank is cast to a Rank, send the success result.
+            1.  Send an exception chain in the ValidationResult any of the cases occur:
+                    -   Candidate either null or not a Rank.
+                    _   Its absolute value is > BOARD_DIMENSION.
+            2.  Otherwise, send the success result.
         Args:
             candidate: Any
-            workers: RankTool
-            persona_validator: RankPersonaValidator
+            toolkit: RankToolkit
         Returns:
             ValidationResult[Rank]
         Raises:
-            TypeError
-            RankNullException
-            RankValidationException
+             RankValidationException
         """
         method = f"{cls.__name__}.validate"
         
-        # Handle the case that, the rank does not exist.
-        if candidate is None:
-            # Return the exception on failure.
+        if toolkit is None:
+            toolkit = RankToolkit()
+        
+        # Handle the case that, the candidate does not exist.
+        validation_bootstrap_result = toolkit.validation_bootstrapper.validate(
+            candidate=candidate,
+            target_model=Rank,
+            null_exception=RankNullException(),
+        )
+        if validation_bootstrap_result.is_failure:
+            # Return the exception chain on failure.
             return ValidationResult.failure(
                 RankValidationException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     msg=RankValidationException.MSG,
                     err_code=RankValidationException.ERR_CODE,
-                    ex=RankNullException(
-                        msg=RankNullException.MSG,
-                        err_code=RankNullException.ERR_CODE,
-                    )
+                    ex=validation_bootstrap_result.exception,
                 )
             )
-        # Handle the case that, the rank is the wrong type.
-        if not isinstance(candidate, Rank):
-            # Return the exception on failure.
-            return ValidationResult.failure(
-                RankValidationException(
-                    cls_mthd=method,
-                    cls_name=method.__name__,
-                    msg=RankValidationException.MSG,
-                    err_code=RankValidationException.ERR_CODE,
-                    ex=TypeError(
-                        f"Expected a Rank, got {type(candidate).__name__} instead."
-                    )
-                )
-            )
-        # --- Cast candidate to a Rank for additional tests ---#
+        # --- Cast candidate to a Rank for additional tests. ---#
         rank = cast(Rank, candidate)
         
         # Handle the case that, the rank's id is not safe.
-        id_validation_result = workers.identity_service.validate_id(rank.id)
+        id_validation_result = toolkit.identity_service.validate_id(rank.id)
         if id_validation_result.is_failure:
             # Return the exception on failure.
             return ValidationResult.failure(
                 RankValidationException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     msg=RankValidationException.MSG,
                     err_code=RankValidationException.ERR_CODE,
                     ex=id_validation_result.exception,
                 )
             )
         # Handle the case that, the rank has the wrong persona.
-        rank_persona_validation = persona_validator.validate(
-            rank=rank,
-            persona_service=workers.persona_service
+        rank_persona_validation_result = toolkit.validation_bootstrapper.validate(
+            candidate=rank.persona,
+            target_model=Persona,
+            null_exception=PersonaNullException(),
         )
-        if rank_persona_validation.is_failure:
+        if rank_persona_validation_result.is_failure:
             # Return the exception on failure.
             return ValidationResult.failure(
                 RankValidationException(
                     cls_mthd=method,
-                    cls_name=method.__name__,
+                    cls_name=cls.__name__,
                     msg=RankValidationException.MSG,
                     err_code=RankValidationException.ERR_CODE,
-                    ex=rank_persona_validation.exception,
+                    ex=rank_persona_validation_result.exception,
                 )
             )
         # --- Forward the work product to the caller. ---#
