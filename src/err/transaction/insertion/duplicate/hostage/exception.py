@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import DuplicateStackPushException
+from err import DuplicatePushException
 
 
 __all__ = [
     # ======================# DUPLICATE_HOSTAGE_STACK_PUSH_ERROR #======================#
-    "DuplicateHostageStackPushException",
+    "DuplicateHostagePushException",
 ]
 
 # ======================# DUPLICATE_HOSTAGE_STACK_PUSH_ERROR #======================#
-class DuplicateHostageStackPushException(DuplicateStackPushException):
+class DuplicateHostagePushException(DuplicatePushException):
     """
     Role:
         -   Error Tracing

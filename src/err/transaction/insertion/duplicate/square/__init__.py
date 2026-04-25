@@ -13,4 +13,4 @@ version: 1.0.1
 None
 
 # Modules
-from .exception import DuplicateSquareStackPushException
+from .exception import DuplicateSquarePushException

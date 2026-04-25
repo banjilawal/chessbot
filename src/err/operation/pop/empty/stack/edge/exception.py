@@ -1,7 +1,7 @@
-# src/err/operation/pop/empty/stack/edge/exception.py
+# src/err/operation/push /empty/stack/edge/exception.py
 
 """
-Module: err.operation.pop.empty.stack.edge.exception
+Module: err.operation.push .empty.stack.edge.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,21 +10,21 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PoppingEmptyStackException
+from err import Push pingEmptyStackException
 
 __all__ = [
-    # ======================# POPPINGEMPTY_EDGE_STACK_FAILURE #======================#
-    "PoppingEmptyEdgeStackException",
+    # ======================# PUSH PINGEMPTY_EDGE_STACK_FAILURE #======================#
+    "Push pingEmptyEdgeStackException",
 ]
 
-# ======================# POPPINGEMPTY_EDGE_STACK_FAILURE #======================#
-class PoppingEmptyEdgeStackException(PoppingEmptyStackException):
+# ======================# PUSH PINGEMPTY_EDGE_STACK_FAILURE #======================#
+class Push pingEmptyEdgeStackException(Push pingEmptyStackException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that poppingEmpty a EdgeStack failed.
+        1.  Indicate that push pingEmpty a EdgeStack failed.
 
     Attributes:
         msg: Optional[str]
@@ -38,10 +38,10 @@ class PoppingEmptyEdgeStackException(PoppingEmptyStackException):
     Provides:
 
     Super Class:
-        PoppingEmptyStackException
+        Push pingEmptyStackException
     """
-    MSG = "PoppingEmpty a EdgeStack failed."
-    ERR_CODE = "POPPINGEMPTY_EDGE_STACK_FAILURE"
+    MSG = "Push pingEmpty a EdgeStack failed."
+    ERR_CODE = "PUSH PINGEMPTY_EDGE_STACK_FAILURE"
     
     def __init__(
             self,

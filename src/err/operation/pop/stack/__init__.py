@@ -1,13 +1,13 @@
-# src/err/operation/pop/stack/__init__.py
+# src/err/operation/push /stack/__init__.py
 
 """
-Module: err.operation.pop.stack.__init__
+Module: err.operation.push .stack.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# ============ ERR.OPERATION.POP.STACK PACKAGE ===========#
+# ============ ERR.OPERATION.PUSH .STACK PACKAGE ===========#
 
 # Packages
 from .arena import *
@@ -23,4 +23,4 @@ from .team import *
 from .token import *
 
 # Modules
-from .exception import PoppingStackException
+from .exception import Push pingStackException

@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import DuplicateStackPushException
+from err import DuplicatePushException
 
 
 __all__ = [
     # ======================# DUPLICATE_COORD_STACK_PUSH_ERROR #======================#
-    "DuplicateCoordStackPushException",
+    "DuplicateCoordPushException",
 ]
 
 # ======================# DUPLICATE_COORD_STACK_PUSH_ERROR #======================#
-class DuplicateCoordStackPushException(DuplicateStackPushException):
+class DuplicateCoordPushException(DuplicatePushException):
     """
     Role:
         -   Error Tracing

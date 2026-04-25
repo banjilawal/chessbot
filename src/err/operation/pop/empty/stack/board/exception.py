@@ -1,7 +1,7 @@
-# src/err/operation/pop/empty/stack/board/exception.py
+# src/err/operation/push /empty/stack/board/exception.py
 
 """
-Module: err.operation.pop.empty.stack.board.exception
+Module: err.operation.push .empty.stack.board.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,21 +10,21 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PoppingEmptyStackException
+from err import Push pingEmptyStackException
 
 __all__ = [
-    # ======================# POPPINGEMPTY_BOARD_STACK_FAILURE #======================#
-    "PoppingEmptyBoardStackException",
+    # ======================# PUSH PINGEMPTY_BOARD_STACK_FAILURE #======================#
+    "Push pingEmptyBoardStackException",
 ]
 
-# ======================# POPPINGEMPTY_BOARD_STACK_FAILURE #======================#
-class PoppingEmptyBoardStackException(PoppingEmptyStackException):
+# ======================# PUSH PINGEMPTY_BOARD_STACK_FAILURE #======================#
+class Push pingEmptyBoardStackException(Push pingEmptyStackException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that poppingEmpty a BoardStack failed.
+        1.  Indicate that push pingEmpty a BoardStack failed.
 
     Attributes:
         msg: Optional[str]
@@ -38,10 +38,10 @@ class PoppingEmptyBoardStackException(PoppingEmptyStackException):
     Provides:
 
     Super Class:
-        PoppingEmptyStackException
+        Push pingEmptyStackException
     """
-    MSG = "PoppingEmpty a BoardStack failed."
-    ERR_CODE = "POPPINGEMPTY_BOARD_STACK_FAILURE"
+    MSG = "Push pingEmpty a BoardStack failed."
+    ERR_CODE = "PUSH PINGEMPTY_BOARD_STACK_FAILURE"
     
     def __init__(
             self,

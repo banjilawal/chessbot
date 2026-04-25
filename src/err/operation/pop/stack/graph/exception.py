@@ -1,7 +1,7 @@
-# src/err/operation/pop/stack/graph/exception.py
+# src/err/operation/push /stack/graph/exception.py
 
 """
-Module: err.operation.pop.stack.graph.exception
+Module: err.operation.push .stack.graph.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,21 +10,21 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PoppingStackException
+from err import Push pingStackException
 
 __all__ = [
-    # ======================# POPPING_GRAPH_STACK_FAILURE #======================#
-    "PoppingGraphStackException",
+    # ======================# PUSH PING_GRAPH_STACK_FAILURE #======================#
+    "Push pingGraphStackException",
 ]
 
-# ======================# POPPING_GRAPH_STACK_FAILURE #======================#
-class PoppingGraphStackException(PoppingStackException):
+# ======================# PUSH PING_GRAPH_STACK_FAILURE #======================#
+class Push pingGraphStackException(Push pingStackException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that popping a GraphStack failed.
+        1.  Indicate that push ping a GraphStack failed.
 
     Attributes:
         msg: Optional[str]
@@ -38,10 +38,10 @@ class PoppingGraphStackException(PoppingStackException):
     Provides:
 
     Super Class:
-        PoppingStackException
+        Push pingStackException
     """
-    MSG = "Popping a GraphStack failed."
-    ERR_CODE = "POPPING_GRAPH_STACK_FAILURE"
+    MSG = "Push ping a GraphStack failed."
+    ERR_CODE = "PUSH PING_GRAPH_STACK_FAILURE"
     
     def __init__(
             self,

@@ -1,7 +1,7 @@
-# src/err/operation/pop/empty/stack/coord/exception.py
+# src/err/operation/push /empty/stack/coord/exception.py
 
 """
-Module: err.operation.pop.empty.stack.coord.exception
+Module: err.operation.push .empty.stack.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,21 +10,21 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PoppingEmptyStackException
+from err import Push pingEmptyStackException
 
 __all__ = [
-    # ======================# POPPINGEMPTY_COORD_STACK_FAILURE #======================#
-    "PoppingEmptyCoordStackException",
+    # ======================# PUSH PINGEMPTY_COORD_STACK_FAILURE #======================#
+    "Push pingEmptyCoordStackException",
 ]
 
-# ======================# POPPINGEMPTY_COORD_STACK_FAILURE #======================#
-class PoppingEmptyCoordStackException(PoppingEmptyStackException):
+# ======================# PUSH PINGEMPTY_COORD_STACK_FAILURE #======================#
+class Push pingEmptyCoordStackException(Push pingEmptyStackException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that poppingEmpty a CoordStack failed.
+        1.  Indicate that push pingEmpty a CoordStack failed.
 
     Attributes:
         msg: Optional[str]
@@ -38,10 +38,10 @@ class PoppingEmptyCoordStackException(PoppingEmptyStackException):
     Provides:
 
     Super Class:
-        PoppingEmptyStackException
+        Push pingEmptyStackException
     """
-    MSG = "PoppingEmpty a CoordStack failed."
-    ERR_CODE = "POPPINGEMPTY_COORD_STACK_FAILURE"
+    MSG = "Push pingEmpty a CoordStack failed."
+    ERR_CODE = "PUSH PINGEMPTY_COORD_STACK_FAILURE"
     
     def __init__(
             self,

@@ -1,7 +1,7 @@
-# src/err/operation/pop/stack/game/exception.py
+# src/err/operation/push /stack/game/exception.py
 
 """
-Module: err.operation.pop.stack.game.exception
+Module: err.operation.push .stack.game.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,21 +10,21 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PoppingStackException
+from err import Push pingStackException
 
 __all__ = [
-    # ======================# POPPING_GAME_STACK_FAILURE #======================#
-    "PoppingGameStackException",
+    # ======================# PUSH PING_GAME_STACK_FAILURE #======================#
+    "Push pingGameStackException",
 ]
 
-# ======================# POPPING_GAME_STACK_FAILURE #======================#
-class PoppingGameStackException(PoppingStackException):
+# ======================# PUSH PING_GAME_STACK_FAILURE #======================#
+class Push pingGameStackException(Push pingStackException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that popping a GameStack failed.
+        1.  Indicate that push ping a GameStack failed.
 
     Attributes:
         msg: Optional[str]
@@ -38,10 +38,10 @@ class PoppingGameStackException(PoppingStackException):
     Provides:
 
     Super Class:
-        PoppingStackException
+        Push pingStackException
     """
-    MSG = "Popping a GameStack failed."
-    ERR_CODE = "POPPING_GAME_STACK_FAILURE"
+    MSG = "Push ping a GameStack failed."
+    ERR_CODE = "PUSH PING_GAME_STACK_FAILURE"
     
     def __init__(
             self,

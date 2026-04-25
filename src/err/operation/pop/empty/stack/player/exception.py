@@ -1,7 +1,7 @@
-# src/err/operation/pop/empty/stack/player/exception.py
+# src/err/operation/push /empty/stack/player/exception.py
 
 """
-Module: err.operation.pop.empty.stack.player.exception
+Module: err.operation.push .empty.stack.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,15 +10,15 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PoppingEmptyStackException
+from err import Push pingEmptyStackException
 
 __all__ = [
-    # ======================# POPPINGEMPTY_PLAYER_STACK_FAILURE #======================#
-    "PoppingEmptyPlayerStackException",
+    # ======================# PUSH PINGEMPTY_PLAYER_STACK_FAILURE #======================#
+    "Push pingEmptyPlayerStackException",
 ]
 
-# ======================# POPPINGEMPTY_PLAYER_STACK_FAILURE #======================#
-class PoppingEmptyPlayerStackException(PoppingEmptyStackException):
+# ======================# PUSH PINGEMPTY_PLAYER_STACK_FAILURE #======================#
+class Push pingEmptyPlayerStackException(Push pingEmptyStackException):
     """
     Role:
         -   Error Tracing

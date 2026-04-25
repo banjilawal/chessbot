@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import DuplicateStackPushException
+from err import DuplicatePushException
 
 
 __all__ = [
     # ======================# DUPLICATE_PLAYER_STACK_PUSH_ERROR #======================#
-    "DuplicatePlayerStackPushException",
+    "DuplicatePlayerPushException",
 ]
 
 # ======================# DUPLICATE_PLAYER_STACK_PUSH_ERROR #======================#
-class DuplicatePlayerStackPushException(DuplicateStackPushException):
+class DuplicatePlayerPushException(DuplicatePushException):
     """
     Role:
         -   Error Tracing

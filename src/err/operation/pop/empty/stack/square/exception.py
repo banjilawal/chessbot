@@ -1,7 +1,7 @@
-# src/err/operation/pop/empty/stack/arena/exception.py
+# src/err/operation/push /empty/stack/arena/exception.py
 
 """
-Module: err.operation.pop.empty.stack.arena.exception
+Module: err.operation.push .empty.stack.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,10 +10,10 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PoppingEmptyStackException
+from err import Push pingEmptyStackException
 
 __all__ = [
-    # ======================# POPPINGEMPTY_ARENA_STACK_FAILURE #======================#
+    # ======================# PUSH PINGEMPTY_ARENA_STACK_FAILURE #======================#
     "PoppingEmptyArenaStackException",
 ]
 

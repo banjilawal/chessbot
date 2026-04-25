@@ -1,7 +1,7 @@
-# src/err/operation/pop/empty/stack/hostage/exception.py
+# src/err/operation/push /empty/stack/hostage/exception.py
 
 """
-Module: err.operation.pop.empty.stack.hostage.exception
+Module: err.operation.push .empty.stack.hostage.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PoppingEmptyStackException
+from err import Push pingEmptyStackException
 
 __all__ = [
     # ======================# POPPINGEMPTY_HOSTAGE_STACK_FAILURE #======================#

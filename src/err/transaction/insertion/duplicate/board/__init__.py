@@ -13,4 +13,4 @@ version: 1.0.1
 None
 
 # Modules
-from .exception import DuplicateBoardStackPushException
+from .exception import DuplicateBoardPushException

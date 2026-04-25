@@ -1,7 +1,7 @@
-# src/err/operation/pop/stack/board/exception.py
+# src/err/operation/push /stack/board/exception.py
 
 """
-Module: err.operation.pop.stack.board.exception
+Module: err.operation.push .stack.board.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,21 +10,21 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PoppingStackException
+from err import Push pingStackException
 
 __all__ = [
-    # ======================# POPPING_BOARD_STACK_FAILURE #======================#
-    "PoppingBoardStackException",
+    # ======================# PUSH PING_BOARD_STACK_FAILURE #======================#
+    "Push pingBoardStackException",
 ]
 
-# ======================# POPPING_BOARD_STACK_FAILURE #======================#
-class PoppingBoardStackException(PoppingStackException):
+# ======================# PUSH PING_BOARD_STACK_FAILURE #======================#
+class Push pingBoardStackException(Push pingStackException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that popping a BoardStack failed.
+        1.  Indicate that push ping a BoardStack failed.
 
     Attributes:
         msg: Optional[str]
@@ -38,10 +38,10 @@ class PoppingBoardStackException(PoppingStackException):
     Provides:
 
     Super Class:
-        PoppingStackException
+        Push pingStackException
     """
-    MSG = "Popping a BoardStack failed."
-    ERR_CODE = "POPPING_BOARD_STACK_FAILURE"
+    MSG = "Push ping a BoardStack failed."
+    ERR_CODE = "PUSH PING_BOARD_STACK_FAILURE"
     
     def __init__(
             self,

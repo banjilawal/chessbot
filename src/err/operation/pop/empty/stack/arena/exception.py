@@ -1,7 +1,7 @@
-# src/err/operation/pop/empty/stack/arena/exception.py
+# src/err/operation/push /empty/stack/arena/exception.py
 
 """
-Module: err.operation.pop.empty.stack.arena.exception
+Module: err.operation.push .empty.stack.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,21 +10,21 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PoppingEmptyStackException
+from err import Push pingEmptyStackException
 
 __all__ = [
-    # ======================# POPPING_EMPTY_ARENA_STACK_FAILURE #======================#
-    "PoppingEmptyArenaStackException",
+    # ======================# PUSH PING_EMPTY_ARENA_STACK_FAILURE #======================#
+    "Push pingEmptyArenaStackException",
 ]
 
-# ======================# POPPING_EMPTY_ARENA_STACK_FAILURE #======================#
-class PoppingEmptyArenaStackException(PoppingEmptyStackException):
+# ======================# PUSH PING_EMPTY_ARENA_STACK_FAILURE #======================#
+class Push pingEmptyArenaStackException(Push pingEmptyStackException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that poppingEmpty an ArenaStack failed.
+        1.  Indicate that push pingEmpty an ArenaStack failed.
 
     Attributes:
         msg: Optional[str]
@@ -38,10 +38,10 @@ class PoppingEmptyArenaStackException(PoppingEmptyStackException):
     Provides:
 
     Super Class:
-        PoppingEmptyStackException
+        Push pingEmptyStackException
     """
-    MSG = "Cannot pop an empty ArenaStack failed."
-    ERR_CODE = "POPPING_EMPTY_ARENA_STACK_FAILURE"
+    MSG = "Cannot push  an empty ArenaStack failed."
+    ERR_CODE = "PUSH PING_EMPTY_ARENA_STACK_FAILURE"
     
     def __init__(
             self,

@@ -10,16 +10,16 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import DuplicateStackPushException
+from err import DuplicatePushException
 
 
 __all__ = [
     # ======================# DUPLICATE_EDGE_STACK_PUSH_ERROR #======================#
-    "DuplicateEdgeStackPushException",
+    "DuplicateEdgePushException",
 ]
 
 # ======================# DUPLICATE_EDGE_STACK_PUSH_ERROR #======================#
-class DuplicateEdgeStackPushException(DuplicateStackPushException):
+class DuplicateEdgePushException(DuplicatePushException):
     """
     Role:
         -   Error Tracing
