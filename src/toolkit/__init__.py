@@ -19,6 +19,7 @@ from .graph import *
 from .hostage import *
 from .math import *
 from .node import *
+from .number import *
 from .operand import *
 from .rank import *
 from .register import *

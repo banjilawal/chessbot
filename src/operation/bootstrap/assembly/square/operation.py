@@ -33,17 +33,12 @@ class SquareAssemblyBootstrapper(AssemblyBootstrapper[Square]):
 
     Provides:
         -   def execute(
-                    owner: Square,
-                    id: int = IdFactory,
-                    formation: Formation,
-                    rank_service: RankService,
-                    identity_service: IdentityService,
-                    formation_service: FormationService,
-                    square_validator: SquareValidator,
-            ) -> BuildResult[Square]
+                    blueprint: SquareBlueprint,
+                    toolkit: SquareToolkit,
+            ) -> ValidationResult[SquareBlueprint]
 
      Super Class:
-         Builder
+         AssemblyBootstrapper
      """
     @classmethod
     @LoggingLevelRouter.monitor()
@@ -57,21 +52,14 @@ class SquareAssemblyBootstrapper(AssemblyBootstrapper[Square]):
             1.  Send an exception chain in the BuildResult if
                     -   Any build param fails does not pass a validation check.
                     -   The square's attributes have already been used on the board.
-            2.  Build the Square instance with the params.
-            3.  Send an exception chain in the BuildResult if
-                    * The square requires insertion into the board but the insertion fails.
-            4.  Return the Square instance in the BuildResult.
+            4.  Otherwise, send the success result.
         Args:
-            id: int
-            name: str
-            coord: Coord
-            board: Board
-            tool: SquareTool
+            blueprint: SquareBlueprint
+            toolkit: SquareToolkit
         Returns:
-            BuildResult[Square]
-            
+            ValidationResult[SquareBlueprint]
         Raises:
-            SquareBuildException
+            BootstrapSquareAssemblyException
         """
         method = f"{cls.__class__.__name__}.build"
         

@@ -12,13 +12,12 @@ from __future__ import annotations
 
 from math import sqrt
 
-from err import VectorRegisterMismatchException
-from integrity import VectorContextValidator
-from model import VectorOperand
 from result import ComputationResult
 from system import LoggingLevelRouter
-from toolkit  import VectorContextToolkit
-from operation import Operation
+from err import VectorEuclideanException
+from toolkit import VectorOperandToolkit
+from operation import Operation, VectorRegisterValidator
+from model import Coord, CoordBlueprint, RegisterCategory, Scalar, Vector, VectorBlueprint, VectorRegister
 
 
 class EuclideanOperation(Operation):
@@ -48,11 +47,10 @@ class EuclideanOperation(Operation):
     @LoggingLevelRouter.monitor
     def execute(
             cls,
-            u: VectorOperand,
-            v: VectorOperand,
-            toolkit : VectorContextToolkit = VectorContextToolkit(),
-            context_validator: VectorContextValidator = VectorContextValidator(),
-    ) -> ComputationResult[int]:
+            register: VectorRegister,
+            register_validator: VectorRegisterValidator | None = None,
+            operand_toolkit: VectorOperandToolkit | None = None,
+    ) -> ComputationResult[Scalar]:
         """
         Convert a vector to a coord and vice versa.
         
@@ -73,24 +71,17 @@ class EuclideanOperation(Operation):
         Raises:
            VectorCoordConversionException
         """
-        method = f"{cls.__name__}.work"
+        method = f"{cls.__name__}.execute"
         
-        # Handle the case that, the validator flags either context
-        for context in [u, v]:
-            context_validation = context_validator.validate(context)
-            if context_validation.is_failure:
-                # Return the exception chain on failure.
-                return ComputationResult.failure(
-                    VectorEuclideanException(
-                        cls_mthd=method,
-                        cls_name=cls.__name__,
-                        msg=VectorEuclideanException.MSG,
-                        err_code=VectorEuclideanException.ERR_CODE,
-                        ex=context_validation.exception
-                    )
-            )
-        # Handle the case that the contexts are different.
-        if not isinstance(u, type(v)):
+        if register_validator is None:
+            register_validator = VectorRegisterValidator()
+        
+        if operand_toolkit is None:
+            operand_toolkit = VectorOperandToolkit()
+        
+        # Handle the case that, the register is not valid for euclidean.
+        register_validation_result = register_validator.validate(register)
+        if register_validation_result.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(
                 VectorEuclideanException(
@@ -98,18 +89,15 @@ class EuclideanOperation(Operation):
                     cls_name=cls.__name__,
                     msg=VectorEuclideanException.MSG,
                     err_code=VectorEuclideanException.ERR_CODE,
-                    ex=VectorRegisterMismatchException(
-                        msg=VectorEuclideanException.MSG,
-                        err_code=VectorEuclideanException.ERR_CODE,
-                    )
+                    ex=register_validation_result.exception
                 )
             )
         # --- The euclidean distance is an int.  ---#
         distance = None
         
         # For vector contexts
-        if context.vector is not None:
-            distance = sqrt(
+        if register.category == RegisterCategory.VECTOR_REGISTER:
+            blueprint = sqrt(
                 (u.vector.y - v.vector.y)**2 + (u.vector.x - v.vector.x)**2
             )
         # For Coord contexts

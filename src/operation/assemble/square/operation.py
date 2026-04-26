@@ -9,10 +9,11 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from model import OpeningSquare, Square, SquareBlueprint
 from operation import Assembler
 from result import BuildResult
 from system import LoggingLevelRouter
+from model import OpeningSquare, Square, SquareBlueprint
+
 
 class SquareAssembler(Assembler[Square]):
     """

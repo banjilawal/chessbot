@@ -1,0 +1,15 @@
+# src/pipeline/build/scalar/__ini__.py
+
+"""
+Module: pipeline.build.scalar.__init__
+Author: Banji Lawal
+Created: 2026-04-03
+version: 1.0.1
+"""
+
+# =========== PIPELINE.BUILD.SCALAR PACKAGE ===========#
+
+# Packages
+
+# Modules
+from .pipeline import ScalarBuildPipeline

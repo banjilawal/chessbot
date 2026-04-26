@@ -1,0 +1,83 @@
+# src/operation/assemble/scalar/operation.py
+
+"""
+Module: operation.assemble.scalar.operation
+Author: Banji Lawal
+Created: 2026-04-03
+version: 1.0.1
+"""
+
+from __future__ import annotations
+
+from err import ScalarAssemblyException
+from operation import Assembler
+from result import BuildResult
+from system import LoggingLevelRouter
+from model import Scalar, ScalarBlueprint
+from toolkit import NumberToolkit
+
+
+class ScalarAssembler(Assembler[Scalar]):
+    """
+    Role
+        -   Transaction Worker
+        -   Integrity Maintenance
+        -   Consistency Assurance
+        -   Build Process Owner
+
+   Responsibilities:
+        1.  Ensure a new Scalar instance is born safe and reliable.
+
+     Attributes:
+
+    Provides:
+        -   def execute(
+                    blueprint: ScalarBlueprint,
+                    toolkit: ScalarToolkit,
+            ) -> ValidationResult[ScalarBlueprint]
+
+     Super Class:
+         Assembler
+     """
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def execute(
+            cls,
+            blueprint: ScalarBlueprint,
+            toolkit: NumberToolkit | None = None,
+    ) -> BuildResult[Scalar]:
+        """
+        Action:
+            1.  Send an exception chain in the BuildResult if
+                    -   Any build param fails does not pass a validation check.
+            4.  Otherwise, send the success result.
+        Args:
+            blueprint: ScalarBlueprint
+            toolkit: ScalarToolkit
+        Returns:
+            BuildResult[Scalar] 
+        Raises:
+            ScalarAssemblyException
+        """
+        method = f"{cls.__name__}.validate"
+        
+        if toolkit is None:
+            toolkit = NumberToolkit()
+        
+        # Handle the case that, the candidate does not exist.
+        validation_result = toolkit.number_validator.validate(
+            candidate=blueprint.magnitude,
+        )
+        if validation_result.is_failure:
+            # Return the exception chain on failure.
+            return BuildResult.failure(
+                ScalarAssemblyException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=ScalarAssemblyException.MSG,
+                    err_code=ScalarAssemblyException.ERR_CODE,
+                    ex=validation_result.exception
+                )
+            )
+        # --- Forward the work product to the caller. ---#
+        return BuildResult.success(Scalar(magnitude=blueprint.magnitude))

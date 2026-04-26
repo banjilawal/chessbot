@@ -10,6 +10,7 @@ version: 1.0.0
 # =========== ERR.OPERATION PACKAGE ===========#
 
 # Packages
+from .assembly import *
 from .bootstrap import *
 from .build import *
 from .finalize import *

@@ -32,8 +32,6 @@ class MathToolkit(Toolkit):
      Super Class:
          Toolkit
      """
-    _number_validator: NumberValidator
-    _validation_bootstrapper: ValidationBootstrapper
     
     def __init__(
             self,

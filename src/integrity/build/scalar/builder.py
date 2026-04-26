@@ -7,8 +7,7 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-from system import Builder, BuildResult, LoggingLevelRouter
-from integrity.build.scalar import Scalar, ScalarBuildException, ScalarValidator
+
 
 
 class ScalarBuilder(Builder[Scalar]):
@@ -42,7 +41,7 @@ class ScalarBuilder(Builder[Scalar]):
     def build(
             self,
             value: int,
-            scalar_validator: ScalarValidator = ScalarValidator()
+            toolkit: NumberToolkit | None = None,
     ) -> BuildResult[Scalar]:
         """
         # ACTION:

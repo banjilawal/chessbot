@@ -14,3 +14,4 @@ version: 1.0.1
 
 # Modules
 from .model import VectorRegister
+from .category import RegisterCategory
