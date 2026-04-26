@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 
 from result import BuildResult
-from toolkit import MathToolkit
+from toolkit import CoordToolkit, CoordToolkit
 from pipeline import BuildPipeline
 from system import LoggingLevelRouter
 from model import Coord, CoordBlueprint
@@ -34,18 +34,20 @@ class CoordBuildPipeline(BuildPipeline[Coord]):
         bootstrapper: CoordAssemblyBootstrapper
         
     Provides:
-        -   def run(blueprint: CoordBlueprint, toolkit: MathToolkit) -> BuildResult[Coord]:
+        -   def run(blueprint: CoordBlueprint, toolkit: CoordToolkit) -> BuildResult[Coord]:
         
     Super Class:
         BuildPipeline
     """
     _assembler: CoordAssembler
     _bootstrapper: CoordAssemblyBootstrapper
+    _toolkit: CoordToolkit
 
     def __init__(
             self,
             assembler: CoordAssembler | None = None,
             bootstrapper: CoordAssemblyBootstrapper | None = None,
+            toolkit: CoordToolkit | None = None,
     ):
         """
         Args:
@@ -54,9 +56,10 @@ class CoordBuildPipeline(BuildPipeline[Coord]):
         """
         self._assembler = assembler or CoordAssembler()
         self._bootstrapper = bootstrapper or CoordAssemblyBootstrapper()
+        self._toolkit = toolkit or CoordToolkit()
 
     @LoggingLevelRouter.monitor
-    def run(self, blueprint: CoordBlueprint, toolkit: MathToolkit) -> BuildResult[Coord]:
+    def run(self, blueprint: CoordBlueprint,) -> BuildResult[Coord]:
         """
         Builds a safe, consistent Coord.
         
@@ -66,7 +69,7 @@ class CoordBuildPipeline(BuildPipeline[Coord]):
             2.  Otherwise, send the success result.
         Args:
             blueprint: CoordBlueprint
-            toolkit: MathToolkit
+            toolkit: CoordToolkit
         Returns:
             BuildResult[Coord]
         Raises:
@@ -77,7 +80,7 @@ class CoordBuildPipeline(BuildPipeline[Coord]):
         # --- Verify the Coord's build params. ---#
         bootstrap_result = self._bootstrapper.execute(
             blueprint=blueprint,
-            toolkit=toolkit
+            toolkit=self._toolkit
         )
         # Handle the case that the bootstrapper flags an build param.
         if bootstrap_result.is_failure:

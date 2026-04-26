@@ -10,8 +10,8 @@ version: 1.0.1
 from __future__ import annotations
 
 from model import Board
+from operation import ArenaValidator
 from toolkit import Toolkit
-from integrity import ArenaValidator
 from microservice import BoardTeamBinderService
 
 class BoardToolkit(Toolkit[Board]):

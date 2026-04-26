@@ -43,12 +43,14 @@ class BoardBuildPipeline(BuildPipeline[Board]):
     _assembler: BoardAssembler
     _finalizer: BoardAssemblyFinalizer
     _bootstrapper: BoardAssemblyBootstrapper
+    _toolkit: BoardToolkit
 
     def __init__(
             self,
             assembler: BoardAssembler | None = None,
             finalizer: BoardAssemblyFinalizer | None = None,
             bootstrapper: BoardAssemblyFinalizer | None = None,
+            toolkit: BoardToolkit | None = None,
     ):
         """
         Args:
@@ -59,6 +61,7 @@ class BoardBuildPipeline(BuildPipeline[Board]):
         self._assembler = assembler or BoardAssembler()
         self._finalizer = finalizer or BoardAssemblyFinalizer()
         self._bootstrapper = bootstrapper or BoardAssemblyBootstrapper()
+        self._toolkit = toolkit or BoardToolkit()
 
     @LoggingLevelRouter.monitor
     def run(self, blueprint: BoardBlueprint, toolkit: BoardToolkit) -> BuildResult[Board]:
@@ -82,7 +85,7 @@ class BoardBuildPipeline(BuildPipeline[Board]):
         # --- Verify the Board's build params. ---#
         bootstrap_result = self._bootstrapper.execute(
             blueprint=blueprint,
-            toolkit=toolkit
+            toolkit=self._toolkit
         )
         # Handle the case that the bootstrapper flags an build param.
         if bootstrap_result.is_failure:

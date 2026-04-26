@@ -11,6 +11,7 @@ version: 1.0.1
 
 # Packages
 from board import *
+from .square import *
 from .team import *
 from .token import *
 

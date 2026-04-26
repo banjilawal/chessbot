@@ -5,28 +5,54 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change afterPath="$PROJECT_DIR$/src/model/math/register/category.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/assemble/scalar/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/assemble/scalar/operation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pipeline/build/scalar/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pipeline/build/scalar/pipeline.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pipeline/build/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pipeline/build/vector/pipeline.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/number/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/number/toolkit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/pipeline/build/scalar/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/pipeline/build/scalar/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/pipeline/build/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/pipeline/build/vector/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/coord/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/coord/toolkit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/scalar/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/toolkit/scalar/toolkit.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/integrity/build/scalar/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/integrity/build/scalar/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/math/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/math/register/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/math/register/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/math/register/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/assemble/square/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assemble/square/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/pipeline/build/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/pipeline/build/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/blueprint/square/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/blueprint/square/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/assemble/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assembly/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/assemble/binder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assembly/binder/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/assemble/binder/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assembly/binder/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/assemble/binder/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assembly/binder/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/assemble/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assembly/board/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/assemble/board/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assembly/board/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/assemble/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assembly/coord/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/assemble/coord/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assembly/coord/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/assemble/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assembly/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/assemble/query/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assembly/query/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/assemble/query/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assembly/query/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/assemble/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assembly/rank/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/assemble/rank/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assembly/rank/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/assemble/scalar/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assembly/scalar/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/assemble/scalar/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assembly/scalar/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/assemble/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assembly/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/assemble/square/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assembly/square/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/assemble/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assembly/team/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/assemble/team/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assembly/team/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/assemble/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assembly/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/assemble/token/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assembly/token/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/assemble/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assembly/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/assemble/vector/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assembly/vector/operation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/math/vector/addition/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/math/vector/addition/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/coord/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/coord/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/finalize/build/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/finalize/build/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/operation/math/vector/euclidean/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/math/vector/euclidean/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/validation/register/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/validation/register/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pipeline/build/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pipeline/build/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pipeline/build/coord/pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pipeline/build/coord/pipeline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pipeline/build/pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pipeline/build/pipeline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pipeline/build/scalar/pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pipeline/build/scalar/pipeline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pipeline/build/square/pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pipeline/build/square/pipeline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pipeline/build/team/pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pipeline/build/team/pipeline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pipeline/build/token/pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pipeline/build/token/pipeline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pipeline/build/vector/pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/pipeline/build/vector/pipeline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/logging/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/logging/router.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/toolkit/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/math/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/math/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/operand/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/operand/toolkit.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -300,7 +326,7 @@
     "ToolWindow.Python Packages.ShowToolbar": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/model/blueprint",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/toolkit",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -327,11 +353,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/toolkit" />
+      <recent name="$PROJECT_DIR$/src/err/pipeline/build" />
+      <recent name="$PROJECT_DIR$/src/err/operation" />
       <recent name="$PROJECT_DIR$/src/model/blueprint" />
       <recent name="$PROJECT_DIR$/src/operation/bootstrap/assembly" />
-      <recent name="$PROJECT_DIR$/src/operation/assemble" />
-      <recent name="$PROJECT_DIR$/src/toolkit" />
-      <recent name="$PROJECT_DIR$/src/pipeline/build" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/operation/validation" />
@@ -1036,7 +1062,7 @@
       <workItem from="1776971158691" duration="7320000" />
       <workItem from="1777073546694" duration="5406000" />
       <workItem from="1777083126538" duration="1089000" />
-      <workItem from="1777089383877" duration="55080000" />
+      <workItem from="1777089383877" duration="64960000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1304,11 +1330,10 @@
           <line>9</line>
           <option name="timeStamp" value="155" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="NONE" type="python-line">
-          <url>file://$PROJECT_DIR$/src/pipeline/build/pipeline.py</url>
-          <line>70</line>
-          <log-expression expression="@property&#10;    def assembler(self) -&gt; Assembler[T]:&#10;        return self._assembler&#10;    &#10;    @property&#10;    def bootstrapper(self) -&gt; AssemblyBootstrapper[T]:&#10;        return self._bootstrapper&#10;    &#10;    @property&#10;    def finalizer(self) -&gt; Optional[AssemblyFinalizer[T]]:&#10;        return self._finalizer" language="Python" />
-          <option name="timeStamp" value="157" />
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/operation/assembly/binder/operation.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="158" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

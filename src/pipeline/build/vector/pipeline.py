@@ -52,11 +52,12 @@ class VectorBuildPipeline(BuildPipeline[Vector]):
             assembler: VectorAssembler
             bootstrapper: VectorAssemblyBootstrapper
         """
+        self._toolkit = MathToolkit()
         self._assembler = assembler or VectorAssembler()
         self._bootstrapper = bootstrapper or VectorAssemblyBootstrapper()
 
     @LoggingLevelRouter.monitor
-    def run(self, blueprint: VectorBlueprint, toolkit: MathToolkit) -> BuildResult[Vector]:
+    def run(self, blueprint: VectorBlueprint) -> BuildResult[Vector]:
         """
         Builds a safe, consistent Vector.
         
@@ -77,7 +78,7 @@ class VectorBuildPipeline(BuildPipeline[Vector]):
         # --- Verify the Vector's build params. ---#
         bootstrap_result = self._bootstrapper.execute(
             blueprint=blueprint,
-            toolkit=toolkit
+            toolkit=self._toolkit,
         )
         # Handle the case that the bootstrapper flags an build param.
         if bootstrap_result.is_failure:

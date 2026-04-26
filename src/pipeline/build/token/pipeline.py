@@ -40,28 +40,32 @@ class TokenBuildPipeline(BuildPipeline[Token]):
     Super Class:
         BuildPipeline
     """
+    _toolkit: TokenToolkit
     _assembler: TokenAssembler
     _finalizer: TokenAssemblyFinalizer
     _bootstrapper: TokenAssemblyBootstrapper
 
     def __init__(
             self,
+            toolkit: TokenToolkit | None = None,
             assembler: TokenAssembler | None = None,
             finalizer: TokenAssemblyFinalizer | None = None,
             bootstrapper: TokenAssemblyFinalizer | None = None,
     ):
         """
         Args:
+            toolkit: TokenToolkit
             assembler: TokenAssembler
             finalizer: TokenAssemblyFinalizer
             bootstrapper: TokenAssemblyBootstrapper
         """
+        self._toolkit = toolkit or TokenToolkit()
         self._assembler = assembler or TokenAssembler()
         self._finalizer = finalizer or TokenAssemblyFinalizer()
         self._bootstrapper = bootstrapper or TokenAssemblyBootstrapper()
 
     @LoggingLevelRouter.monitor
-    def run(self, blueprint: TokenBlueprint, toolkit: TokenToolkit) -> BuildResult[Token]:
+    def run(self, blueprint: TokenBlueprint,) -> BuildResult[Token]:
         """
         Builds a safe, consistent Token.
         
@@ -82,7 +86,7 @@ class TokenBuildPipeline(BuildPipeline[Token]):
         # --- Verify the Token's build params. ---#
         bootstrap_result = self._bootstrapper.execute(
             blueprint=blueprint,
-            toolkit=toolkit
+            toolkit=self._toolkit
         )
         # Handle the case that the bootstrapper flags an build param.
         if bootstrap_result.is_failure:

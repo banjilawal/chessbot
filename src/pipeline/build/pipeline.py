@@ -68,33 +68,7 @@ class BuildPipeline(Pipeline[T]):
         
     Super Class:
     """
-    # _assembler: Assembler[T]
-    # _bootstrapper: AssemblyBootstrapper[T]
-    # _finalizer: Optional[AssemblyFinalizer[T]]
-    #
-    # def __init__(
-    #         self,
-    #         assembler: Assembler[T],
-    #         bootstrapper: AssemblyBootstrapper[T],
-    #         finalizer: Optional[AssemblyFinalizer[T]] | None = None,
-    # ):
-    #     self._assembler = assembler
-    #     self._bootstrapper = bootstrapper
-    #     self._finalizer = finalizer
-    #
-    # @property
-    # def assembler(self) -> Assembler[T]:
-    #     return self._assembler
-    #
-    # @property
-    # def bootstrapper(self) -> AssemblyBootstrapper[T]:
-    #     return self._bootstrapper
-    #
-    # @property
-    # def finalizer(self) -> Optional[AssemblyFinalizer[T]]:
-    #     return self._finalizer
-    
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def run(self, blueprint: Blueprint[T], toolkit: Toolkit[T]) -> BuildResult[T]:
+    def run(self, blueprint: Blueprint[T]) -> BuildResult[T]:
         pass

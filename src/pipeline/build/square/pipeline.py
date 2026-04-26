@@ -9,6 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
+
 from result import BuildResult
 from toolkit import SquareToolkit
 from pipeline import BuildPipeline
@@ -43,12 +44,14 @@ class SquareBuildPipeline(BuildPipeline[Square]):
     _assembler: SquareAssembler
     _finalizer: SquareAssemblyFinalizer
     _bootstrapper: SquareAssemblyBootstrapper
+    _toolkit: SquareToolkit
 
     def __init__(
             self,
             assembler: SquareAssembler | None = None,
             finalizer: SquareAssemblyFinalizer | None = None,
-            bootstrapper: SquareAssemblyFinalizer | None = None,
+            bootstrapper: SquareAssemblyBootstrapper | None = None,
+            toolkit: SquareToolkit | None = None,
     ):
         """
         Args:
@@ -59,9 +62,10 @@ class SquareBuildPipeline(BuildPipeline[Square]):
         self._assembler = assembler or SquareAssembler()
         self._finalizer = finalizer or SquareAssemblyFinalizer()
         self._bootstrapper = bootstrapper or SquareAssemblyBootstrapper()
+        self._toolkit = toolkit or SquareToolkit()
 
     @LoggingLevelRouter.monitor
-    def run(self, blueprint: SquareBlueprint, toolkit: SquareToolkit) -> BuildResult[Square]:
+    def run(self, blueprint: SquareBlueprint,) -> BuildResult[Square]:
         """
         Builds a safe, consistent Square.
         
@@ -82,7 +86,7 @@ class SquareBuildPipeline(BuildPipeline[Square]):
         # --- Verify the Square's build params. ---#
         bootstrap_result = self._bootstrapper.execute(
             blueprint=blueprint,
-            toolkit=toolkit
+            toolkit=self._toolkit
         )
         # Handle the case that the bootstrapper flags an build param.
         if bootstrap_result.is_failure:

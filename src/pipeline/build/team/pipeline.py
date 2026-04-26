@@ -43,12 +43,14 @@ class TeamBuildPipeline(BuildPipeline[Team]):
     _assembler: TeamAssembler
     _finalizer: TeamAssemblyFinalizer
     _bootstrapper: TeamAssemblyBootstrapper
+    _toolkit: TeamToolkit
 
     def __init__(
             self,
             assembler: TeamAssembler | None = None,
             finalizer: TeamAssemblyFinalizer | None = None,
             bootstrapper: TeamAssemblyFinalizer | None = None,
+            toolkit: TeamToolkit | None = None,
     ):
         """
         Args:
@@ -59,9 +61,10 @@ class TeamBuildPipeline(BuildPipeline[Team]):
         self._assembler = assembler or TeamAssembler()
         self._finalizer = finalizer or TeamAssemblyFinalizer()
         self._bootstrapper = bootstrapper or TeamAssemblyBootstrapper()
+        self._toolkit = toolkit or TeamToolkit()
 
     @LoggingLevelRouter.monitor
-    def run(self, blueprint: TeamBlueprint, toolkit: TeamToolkit) -> BuildResult[Team]:
+    def run(self, blueprint: TeamBlueprint) -> BuildResult[Team]:
         """
         Builds a safe, consistent Team.
         
@@ -82,7 +85,7 @@ class TeamBuildPipeline(BuildPipeline[Team]):
         # --- Verify the Team's build params. ---#
         bootstrap_result = self._bootstrapper.execute(
             blueprint=blueprint,
-            toolkit=toolkit
+            toolkit=self._toolkit
         )
         # Handle the case that the bootstrapper flags an build param.
         if bootstrap_result.is_failure:

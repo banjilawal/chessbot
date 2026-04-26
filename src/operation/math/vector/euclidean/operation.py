@@ -13,16 +13,11 @@ from __future__ import annotations
 from math import sqrt
 from typing import cast
 
-from operation.assemble.scalar import ScalarAssembler
 from result import ComputationResult
 from system import LoggingLevelRouter
 from err import VectorEuclideanException
-from toolkit import VectorOperandToolkit
 from operation import Operation, VectorRegisterValidator
-from model import (
-    Coord, CoordBlueprint, RegisterCategory, Scalar, ScalarBlueprint, Vector, VectorBlueprint,
-    VectorRegister
-)
+from model import RegisterCategory, Scalar, ScalarBlueprint, VectorRegister
 
 
 class EuclideanOperation(Operation):
@@ -37,12 +32,11 @@ class EuclideanOperation(Operation):
     Attributes:
 
     Properties:
-    
-    -   def execute(
-            register: VectorRegister,
-            register_validator: VectorRegisterValidator | None = None,
-            scalar_assembler: ScalarAssembler | None = None,
-        ) -> ComputationResult[Scalar]:
+        -   def execute(
+                register: VectorRegister,
+                register_validator: VectorRegisterValidator | None = None,
+                scalar_assembler: ScalarAssembler | None = None,
+            ) -> ComputationResult[Scalar]:
 
     Super Class:
         Operation

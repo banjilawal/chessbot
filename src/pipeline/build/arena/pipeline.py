@@ -43,12 +43,14 @@ class ArenaBuildPipeline(BuildPipeline[Arena]):
     _assembler: ArenaAssembler
     _finalizer: ArenaAssemblyFinalizer
     _bootstrapper: ArenaAssemblyBootstrapper
+    _toolkit: ArenaToolkit
 
     def __init__(
             self,
             assembler: ArenaAssembler | None = None,
             finalizer: ArenaAssemblyFinalizer | None = None,
             bootstrapper: ArenaAssemblyFinalizer | None = None,
+            toolkit: ArenaToolkit | None = None,
     ):
         """
         Args:
@@ -59,9 +61,10 @@ class ArenaBuildPipeline(BuildPipeline[Arena]):
         self._assembler = assembler or ArenaAssembler()
         self._finalizer = finalizer or ArenaAssemblyFinalizer()
         self._bootstrapper = bootstrapper or ArenaAssemblyBootstrapper()
+        self._toolkit = toolkit or ArenaToolkit()
 
     @LoggingLevelRouter.monitor
-    def run(self, blueprint: ArenaBlueprint, toolkit: ArenaToolkit) -> BuildResult[Arena]:
+    def run(self, blueprint: ArenaBlueprint) -> BuildResult[Arena]:
         """
         Builds a safe, consistent Arena.
         
@@ -82,7 +85,7 @@ class ArenaBuildPipeline(BuildPipeline[Arena]):
         # --- Verify the Arena's build params. ---#
         bootstrap_result = self._bootstrapper.execute(
             blueprint=blueprint,
-            toolkit=toolkit
+            toolkit=self._toolkit
         )
         # Handle the case that the bootstrapper flags an build param.
         if bootstrap_result.is_failure:

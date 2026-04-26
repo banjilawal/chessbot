@@ -13,6 +13,7 @@ version: 1.0.1
 from .arena import *
 from .binder import *
 from .board import *
+from .coord import *
 from .edge import *
 from .game import *
 from .graph import *
@@ -23,6 +24,7 @@ from .number import *
 from .operand import *
 from .rank import *
 from .register import *
+from .scalar import *
 from .square import *
 from .team import *
 from .token import *

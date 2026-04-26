@@ -20,9 +20,11 @@ from .hostage import *
 from .node import *
 from .player import *
 from .rank import *
+from .scalar import *
 from .square import *
 from .team import *
 from .token import *
+from .vector import *
 
 # Modules
 from .exception import BuildPipelineException

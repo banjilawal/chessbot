@@ -10,8 +10,8 @@ version: 1.0.1
 # =========== OPERATION PACKAGE ===========#
 
 # Packages
+from .assembly import *
 from .bootstrap import *
-from .assemble import *
 from .finalize import *
 from .math import *
 from .microservice import *
