@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Dict, Optional
 
-from model import Coord, Vector
+from model import Coord, OperandCategory, Vector
 
 
 class VectorOperand:
@@ -38,11 +38,13 @@ class VectorOperand:
     """
     _vector: Optional[Vector]
     _coord: Optional[Coord]
+    _category: OperandCategory = OperandCategory.NOT_INITIALIZED
     
     def __init__(
             self,
-            vector: Optional[Vector] = None,
-            coord: Optional[Coord] = None,
+            vector: Optional[Vector] | None = None,
+            coord: Optional[Coord] | None = None,
+            category: OperandCategory | None = None,
     ):
         """
         Args:
@@ -51,6 +53,7 @@ class VectorOperand:
         """
         self._vector = vector
         self._coord = coord
+        self._category = category
         
     @property
     def vector(self) -> Optional[Vector]:
@@ -59,6 +62,10 @@ class VectorOperand:
     @property
     def coord(self) -> Optional[Coord]:
         return self._coord
+    
+    @property
+    def category(self) -> OperandCategory:
+        return self._category
     
     @property
     def to_dict(self) -> Dict[str, Any]:

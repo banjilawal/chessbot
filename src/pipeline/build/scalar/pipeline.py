@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from result import BuildResult
 from pipeline import BuildPipeline
-from operation import ScalaAssembler
+from operation import ScalarAssembler
 from system import LoggingLevelRouter
 from model import Scalar, ScalarBlueprint
 from err import ScalarBuildPipelineException
@@ -39,19 +39,19 @@ class ScalarBuildPipeline(BuildPipeline[Scalar]):
     Super Class:
         BuildPipeline
     """
-    _assembler: ScalaAssembler
+    _assembler: ScalarAssembler
     _toolkit: ScalarToolkit
 
     def __init__(
             self,
-            assembler: ScalaAssembler | None = None,
+            assembler: ScalarAssembler | None = None,
             toolkit: ScalarToolkit | None = None,
     ):
         """
         Args:
             assembler: ScalarAssembler
         """
-        self._assembler = assembler or ScalaAssembler()
+        self._assembler = assembler or ScalarAssembler()
         self._toolkit = toolkit or ScalarToolkit()
 
     @LoggingLevelRouter.monitor

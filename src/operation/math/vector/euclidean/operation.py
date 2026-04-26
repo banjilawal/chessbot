@@ -8,11 +8,10 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-
-
 from math import sqrt
 from typing import cast
 
+from pipeline import ScalarBuildPipeline
 from result import ComputationResult
 from system import LoggingLevelRouter
 from err import VectorEuclideanException
@@ -20,14 +19,14 @@ from operation import Operation, VectorRegisterValidator
 from model import RegisterCategory, Scalar, ScalarBlueprint, VectorRegister
 
 
-class EuclideanOperation(Operation):
+class EuclideanOperation(Operation[VectorRegister]):
     """
     Role:
         -   Operation
-        -   Transformer
+        -   Computation
 
     Responsibilities:
-        1.  Bidirectional Coord<->Vector converter.
+        1.  Compute the Euclidean distance between the register's contents.
 
     Attributes:
 
@@ -35,7 +34,7 @@ class EuclideanOperation(Operation):
         -   def execute(
                 register: VectorRegister,
                 register_validator: VectorRegisterValidator | None = None,
-                scalar_assembler: ScalarAssembler | None = None,
+                scalar_assembler: ScalarBuildPipeline | None = None,
             ) -> ComputationResult[Scalar]:
 
     Super Class:
@@ -48,10 +47,10 @@ class EuclideanOperation(Operation):
             cls,
             register: VectorRegister,
             register_validator: VectorRegisterValidator | None = None,
-            scalar_assembler: ScalarAssembler | None = None,
+            scalar_build_pipeline: ScalarBuildPipeline | None = None,
     ) -> ComputationResult[Scalar]:
         """
-        Convert a vector to a coord and vice versa.
+        Compute the Euclidean distance between the register's contents.
         
         Action:
             1.  Send an exception chain in the ComputationResult if any of
@@ -64,7 +63,7 @@ class EuclideanOperation(Operation):
             register: VectorRegister
             register_validator: VectorRegisterValidator
             operand_toolkit: VectorOperandToolkit
-            scalar_assembler: ScalarAssembler
+            scalar_build_pipeline: ScalarBuildPipeline
         Result:
             ComputationResult[Scalar]:
         Raises:
@@ -75,8 +74,8 @@ class EuclideanOperation(Operation):
         if register_validator is None:
             register_validator = VectorRegisterValidator()
             
-        if scalar_assembler is None:
-            scalar_assembler = ScalarAssembler()
+        if scalar_build_pipeline is None:
+            scalar_build_pipeline = ScalarBuildPipeline()
         
         # Handle the case that, the register is flagged.
         register_validation_result = register_validator.validate(register)
@@ -91,7 +90,7 @@ class EuclideanOperation(Operation):
                     ex=register_validation_result.exception
                 )
             )
-        # --- The euclidean distance is an int.  ---#
+        # --- The Euclidean distance is an int.  ---#
         magnitude = None
         
         # For vector contexts
@@ -107,7 +106,7 @@ class EuclideanOperation(Operation):
                 (register.a.coord.column - register.b.coord.column) ** 2
             )
         # Handle the case that, the scalar is not built.
-        scalar_assembly_result = scalar_assembler.execute(
+        scalar_assembly_result = scalar_build_pipeline.run(
             blueprint=ScalarBlueprint(
                 magnitude=cast(int, magnitude)
             )

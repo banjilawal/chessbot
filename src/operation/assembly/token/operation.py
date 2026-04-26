@@ -20,7 +20,7 @@ class TokenAssembler(Assembler[Token]):
     @LoggingLevelRouter.monitor
     def execute(cls, blueprint: TokenBlueprint,) -> BuildResult[Token]:
         """
-       .Assembly.he appropriate Token.
+        Assemble the appropriate Token.
 
         Args:
             blueprint: TokenBlueprint

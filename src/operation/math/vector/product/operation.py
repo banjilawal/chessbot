@@ -9,32 +9,32 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from err import ScalarProductException
-from integrity import VectorContextValidator
-from model import VectorOperand, Scalar
 from result import ComputationResult
 from system import LoggingLevelRouter
-from toolkit  import VectorContextToolkit
-from operation import Operation
+from err import ScalarProductException
+from model import Coord, CoordBlueprint, OperandCategory, Vector, VectorBlueprint, VectorOperand, Scalar
+from pipeline import CoordBuildPipeline, VectorBuildPipeline
+
+from operation import Operation, ScalarValidator, VectorOperandValidator
 
 
-class ScalarProductOperation(Operation):
+class ScalarProductOperation(Operation[VectorOperand]):
     """
     Role:
         -   Operation
-        -   Transformer
+        -   Computation
 
     Responsibilities:
-        1.  Bidirectional Coord<->Vector converter.
+        1.  Multiply a Vector or Coord by a Scalar.
 
     Attributes:
 
     Properties:
     
     -   def execute(
-            context: VectorContext,
-            toolkit : VectorContextToolkit = VectorContextToolkit(),
-            context_validator: VectorContextValidator = VectorContextValidator(),
+            operand: VectorOperand,
+            toolkit : VectorOperandToolkit = VectorOperandToolkit(),
+            operand_validator: VectorOperandValidator = VectorOperandValidator(),
         ) -> ComputationResult[Any]:
 
     Super Class:
@@ -46,10 +46,12 @@ class ScalarProductOperation(Operation):
     def execute(
             cls,
             scalar: Scalar,
-            context: VectorOperand,
-            toolkit : VectorContextToolkit = VectorContextToolkit(),
-            context_validator: VectorContextValidator = VectorContextValidator(),
-    ) -> ComputationResult[int]:
+            operand: VectorOperand,
+            scalar_validator: ScalarValidator | None = None,
+            operand_validator: VectorOperandValidator | None = None,
+            vector_build_pipeline: VectorBuildPipeline | None = None,
+            coord_build_pipeline: CoordBuildPipeline | None = None,
+    ) -> ComputationResult[Vector|Coord]:
         """
         Convert a vector to a coord and vice versa.
         
@@ -62,18 +64,27 @@ class ScalarProductOperation(Operation):
             2.  Otherwise, send the success result.
         Args:
             scalar: Scalar,
-            context: VectorContext,
-            toolkit : VectorContextToolkit = VectorContextToolkit(),
-            context_validator: VectorContextValidator = VectorContextValidator(),
+            operand: VectorOperand
+            scalar_validator: ScalarValidator
+            operand_validator: VectorOperandValidator
         Result:
             ComputationResult[Union[Vector, Coord]]:
         Raises:
            VectorCoordConversionException
         """
-        method = f"{cls.__name__}.work"
+        method = f"{cls.__name__}.execute"
+        
+        if scalar_validator is None:
+            scalar_validator = ScalarValidator()
+        if operand_validator is None:
+            operand_validator = VectorOperandValidator()
+        if vector_build_pipeline is None:
+            vector_build_pipeline = VectorBuildPipeline()
+        if coord_build_pipeline is None:
+            coord_build_pipeline = CoordBuildPipeline()
         
         # Handle the case that, the scalar is not safe.
-        scalar_validation = toolkit.scalar_service.validator.validate(scalar)
+        scalar_validation = scalar_validator.validate(scalar)
         if scalar_validation.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(
@@ -85,10 +96,9 @@ class ScalarProductOperation(Operation):
                     ex=scalar_validation.exception
                 )
             )
-        
-        # Handle the case that, the validator flags the context.
-        context_validation = context_validator.validate(context)
-        if context_validation.is_failure:
+        # Handle the case that, the validator flags the operand.
+        operand_validation = operand_validator.validate(operand)
+        if operand_validation.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(
                 ScalarProductException(
@@ -96,23 +106,24 @@ class ScalarProductOperation(Operation):
                     cls_name=cls.__name__,
                     msg=ScalarProductException.MSG,
                     err_code=ScalarProductException.ERR_CODE,
-                    ex=context_validation.exception
+                    ex=operand_validation.exception
                 )
             )
-        
-        multiplication_result = None
-        if context.vector is not None:
-            multiplication_result = toolkit.vector_service.builder.build(
-                x=context.vector.x * scalar.magnitude,
-                y=context.vector.y * scalar.magnitude,
+        build_result = None
+        if operand.category == OperandCategory.VECTOR_OPERAND:
+            blueprint = VectorBlueprint(
+                x=operand.vector.x * scalar.magnitude,
+                y=operand.vector.y * scalar.magnitude,
             )
-        if context.coord is not None:
-            multiplication_result = toolkit.coord_service.builder.build(
-                row=context.vector.y,
-                column=context.vector.x,
+            build_result = vector_build_pipeline.run(blueprint=blueprint,)
+        if operand.category == OperandCategory.COORD_OPERAND:
+            blueprint = CoordBlueprint(
+                row=operand.coord.row * scalar.magnitude,
+                column=operand.coord.column * scalar.magnitude,
             )
-        # Handle the case that, the multiplication did not produce a result.
-        if multiplication_result.is_failure:
+            build_result = coord_build_pipeline.run(blueprint=blueprint, )
+        # Handle the case that, the build did not produce a result.
+        if build_result.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(
                 ScalarProductException(
@@ -120,9 +131,9 @@ class ScalarProductOperation(Operation):
                     cls_name=cls.__name__,
                     msg=ScalarProductException.MSG,
                     err_code=ScalarProductException.ERR_CODE,
-                    ex=multiplication_result.exception
+                    ex=build_result.exception
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return multiplication_result
+        return ComputationResult.success(build_result.payload)
         

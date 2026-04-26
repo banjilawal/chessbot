@@ -21,10 +21,10 @@ class AddOperation(Operation[VectorRegister]):
     """
     Role:
         -   Operation
-        -   Transformer
+        -   Computation
 
     Responsibilities:
-        1.  Bidirectional Coord<->Vector converter.
+        1.  Compute the contents of a VectorRegister to each other producing either a new Vector or a Coord.
 
     Attributes:
 
@@ -49,7 +49,7 @@ class AddOperation(Operation[VectorRegister]):
             operand_toolkit: VectorOperandToolkit | None = None,
     ) -> ComputationResult[Coord|Vector]:
         """
-        Convert a vector to a coord and vice versa.
+        Add the contents of a VectorRegister to each other.
         
         Action:
             1.  Send an exception chain in the ComputationResult if any of

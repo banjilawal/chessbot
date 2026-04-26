@@ -21,7 +21,7 @@ class BoardAssembler(Assembler[Board]):
     @LoggingLevelRouter.monitor
     def execute(cls, blueprint: BoardBlueprint,) -> BuildResult[Board]:
         """
-       .Assembly.he appropriate Board.
+        Assemble the appropriate Board.
 
         Args:
             blueprint: BoardBlueprint

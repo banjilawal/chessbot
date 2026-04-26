@@ -18,7 +18,7 @@ from err import ScalarAssemblyException
 from model import Scalar, ScalarBlueprint
 
 
-class ScalaAssembler(Assembler[Scalar]):
+class ScalarAssembler(Assembler[Scalar]):
     """
     Role
         -   Transaction Worker

@@ -20,7 +20,7 @@ class QueryAssembler(Assembler[Query]):
     @LoggingLevelRouter.monitor
     def execute(cls, blueprint: QueryBlueprint,) -> BuildResult[Query]:
         """
-       .Assembly.he appropriate Query.
+        Assemble the appropriate Query.
 
         Args:
             blueprint: QueryBlueprint

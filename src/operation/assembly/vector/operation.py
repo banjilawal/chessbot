@@ -20,7 +20,7 @@ class VectorAssembler(Assembler[Vector]):
     @LoggingLevelRouter.monitor
     def execute(cls, blueprint: VectorBlueprint,) -> BuildResult[Vector]:
         """
-       .Assembly.he appropriate Vector.
+        Assemble the appropriate Vector.
 
         Args:
             blueprint: VectorBlueprint

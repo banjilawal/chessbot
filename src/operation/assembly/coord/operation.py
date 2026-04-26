@@ -20,7 +20,7 @@ class CoordAssembler(Assembler[Coord]):
     @LoggingLevelRouter.monitor
     def execute(cls, blueprint: CoordBlueprint,) -> BuildResult[Coord]:
         """
-       .Assembly.he appropriate Coord.
+        Assemble the appropriate Coord.
 
         Args:
             blueprint: CoordBlueprint

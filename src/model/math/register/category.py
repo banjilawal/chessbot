@@ -25,6 +25,6 @@ class RegisterCategory(Enum):
     Super Class:
         Enum
     """
-    COORD_REGISTER= auto(),
-    VECTOR_REGISTER= auto(),
+    COORD_REGISTER = auto(),
+    VECTOR_REGISTER = auto(),
     NOT_INITIALIZED= auto(),

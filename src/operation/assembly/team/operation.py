@@ -20,7 +20,7 @@ class TeamAssembler(Assembler[Team]):
     @LoggingLevelRouter.monitor
     def execute(cls, blueprint: TeamBlueprint,) -> BuildResult[Team]:
         """
-       .Assembly.he appropriate Team.
+        Assemble the appropriate Team.
 
         Args:
             blueprint: TeamBlueprint
