@@ -11,13 +11,18 @@ from __future__ import annotations
 
 
 from math import sqrt
+from typing import cast
 
+from operation.assemble.scalar import ScalarAssembler
 from result import ComputationResult
 from system import LoggingLevelRouter
 from err import VectorEuclideanException
 from toolkit import VectorOperandToolkit
 from operation import Operation, VectorRegisterValidator
-from model import Coord, CoordBlueprint, RegisterCategory, Scalar, Vector, VectorBlueprint, VectorRegister
+from model import (
+    Coord, CoordBlueprint, RegisterCategory, Scalar, ScalarBlueprint, Vector, VectorBlueprint,
+    VectorRegister
+)
 
 
 class EuclideanOperation(Operation):
@@ -34,10 +39,10 @@ class EuclideanOperation(Operation):
     Properties:
     
     -   def execute(
-            context: VectorContext,
-            toolkit : VectorContextToolkit = VectorContextToolkit(),
-            context_validator: VectorContextValidator = VectorContextValidator(),
-        ) -> ComputationResult[Any]:
+            register: VectorRegister,
+            register_validator: VectorRegisterValidator | None = None,
+            scalar_assembler: ScalarAssembler | None = None,
+        ) -> ComputationResult[Scalar]:
 
     Super Class:
         Operation
@@ -49,7 +54,7 @@ class EuclideanOperation(Operation):
             cls,
             register: VectorRegister,
             register_validator: VectorRegisterValidator | None = None,
-            operand_toolkit: VectorOperandToolkit | None = None,
+            scalar_assembler: ScalarAssembler | None = None,
     ) -> ComputationResult[Scalar]:
         """
         Convert a vector to a coord and vice versa.
@@ -62,12 +67,12 @@ class EuclideanOperation(Operation):
                     -   Building the other type fails.
             2.  Otherwise, send the success result.
         Args:
-            scalar: Scalar,
-            context: VectorContext,
-            toolkit : VectorContextToolkit = VectorContextToolkit(),
-            context_validator: VectorContextValidator = VectorContextValidator(),
+            register: VectorRegister
+            register_validator: VectorRegisterValidator
+            operand_toolkit: VectorOperandToolkit
+            scalar_assembler: ScalarAssembler
         Result:
-            ComputationResult[Union[Vector, Coord]]:
+            ComputationResult[Scalar]:
         Raises:
            VectorCoordConversionException
         """
@@ -75,11 +80,11 @@ class EuclideanOperation(Operation):
         
         if register_validator is None:
             register_validator = VectorRegisterValidator()
+            
+        if scalar_assembler is None:
+            scalar_assembler = ScalarAssembler()
         
-        if operand_toolkit is None:
-            operand_toolkit = VectorOperandToolkit()
-        
-        # Handle the case that, the register is not valid for euclidean.
+        # Handle the case that, the register is flagged.
         register_validation_result = register_validator.validate(register)
         if register_validation_result.is_failure:
             # Return the exception chain on failure.
@@ -93,18 +98,37 @@ class EuclideanOperation(Operation):
                 )
             )
         # --- The euclidean distance is an int.  ---#
-        distance = None
+        magnitude = None
         
         # For vector contexts
         if register.category == RegisterCategory.VECTOR_REGISTER:
-            blueprint = sqrt(
-                (u.vector.y - v.vector.y)**2 + (u.vector.x - v.vector.x)**2
-            )
+            magnitude=sqrt(
+                    (register.a.vector.y - register.b.vector.y)**2 +
+                    (register.a.vector.x - register.b.vector.x)**2
+                )
         # For Coord contexts
-        if context.coord is not None:
-            distance = sqrt(
-                (u.coord.row - v.coord.row)**2 + (u.coord.column - v.coord.column)**2
+        if register.category == RegisterCategory.VECTOR_REGISTER:
+            magnitude = sqrt(
+                (register.a.coord.row - register.b.coord.row) ** 2 +
+                (register.a.coord.column - register.b.coord.column) ** 2
+            )
+        # Handle the case that, the scalar is not built.
+        scalar_assembly_result = scalar_assembler.execute(
+            blueprint=ScalarBlueprint(
+                magnitude=cast(int, magnitude)
+            )
+        )
+        if scalar_assembly_result.is_failure:
+            # Return the exception chain on failure.
+            return ComputationResult.failure(
+                VectorEuclideanException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=VectorEuclideanException.MSG,
+                    err_code=VectorEuclideanException.ERR_CODE,
+                    ex=scalar_assembly_result.exception
+                )
             )
         # --- Forward the work product to the caller. ---#
-        return ComputationResult.success(distance)
+        return ComputationResult.success(scalar_assembly_result.payload)
         
