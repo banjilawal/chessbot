@@ -10,7 +10,6 @@ Version: 1.0.0
 # =========== SYSTEM.COLLISION.EXCEPTION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .work import CollisionAnalystException

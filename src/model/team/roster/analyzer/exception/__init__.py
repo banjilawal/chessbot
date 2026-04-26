@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== MODEL.TEAM.ROSTER.ANALYZER.EXCEPTION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .work import TeamRosterRelationAnalysisException

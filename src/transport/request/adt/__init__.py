@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== REQUEST.MODEL PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .request import ServiceRequest

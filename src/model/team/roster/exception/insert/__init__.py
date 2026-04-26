@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== MODEL.TEAM.ROSTER.EXCEPTION.INSERTION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .full import TeamRosterIsFullException

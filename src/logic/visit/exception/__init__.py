@@ -10,7 +10,6 @@ version: 1.0.0
 # ===========  VISIT.EXCEPTION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .work import VisitException

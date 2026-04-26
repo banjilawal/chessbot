@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== MODEL.TOKEN.STATE PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .board import TokenBoardState

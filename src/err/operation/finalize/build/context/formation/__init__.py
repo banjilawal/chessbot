@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== ERR.OPERATION.FINALIZE.BUILD.CONTEXT.FORMATION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .exception import FinalizeFormationContextBuildException

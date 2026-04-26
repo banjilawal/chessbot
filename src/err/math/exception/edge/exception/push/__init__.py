@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== ERR.EDGE.STACK.EXCEPTION.PUSH PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .work import PushingEdgeException

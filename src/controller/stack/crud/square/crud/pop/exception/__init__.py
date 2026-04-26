@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== SQUARE.DATABASE.KERNEL.OPERATION.CRUD.POP.EXCEPTION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .empty import PoppingEmptySquareStackException

@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== SCHEMA.DATABASE.SEARCH.QUERY.SERVICE.OPERATION.BUILD PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .transaction import SchemaQueryBuildException

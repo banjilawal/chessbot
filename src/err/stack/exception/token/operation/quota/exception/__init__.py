@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== ERR.TOKEN.DATABASE.KERNEL.OPERATION.QUOTA.EXCEPTION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .full import RankQuotaFullException

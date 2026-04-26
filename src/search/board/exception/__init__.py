@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== BOARD.CONTEXT.EXCEPTION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .anchor import BoardContextException

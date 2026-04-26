@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== SQUARE.DATABASE.KERNEL.OPERATION.ROSTER.EXCEPTION.WORK PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .double import RosterAlreadyDeployedException

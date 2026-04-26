@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== SQUARE.SERVICE.VISITATION.DEPARTURE.EXCEPTION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .empty import DepartingEmptySquareException

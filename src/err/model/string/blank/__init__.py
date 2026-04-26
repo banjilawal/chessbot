@@ -10,7 +10,6 @@ version: 1.0.1
 # ============ ERR.MODEL.STRING.BLANK PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .exception import StringBlankException

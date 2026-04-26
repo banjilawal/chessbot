@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== SYSTEM.RELATION.EXCEPTION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .debug import RelationDebugException

@@ -1,7 +1,7 @@
-# src/err/validation/context/team/exception.py
+# src/err/operation/validation/context/team/exception.py
 
 """
-Module: err.operation.validation.team.exception
+Module: err.operation.validation.context.team.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

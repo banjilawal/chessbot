@@ -10,7 +10,6 @@ version: 1.0.1
 # ============ ERR.NULL.NUMBER PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .exception import NumberNullException

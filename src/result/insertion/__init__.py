@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== INSERTION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .result import InsertionResult

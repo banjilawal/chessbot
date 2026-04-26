@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== TOKEN.SERVICE.OPERATION.COORD.PUSH.EXCEPTION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .work import TokenPushCoordException

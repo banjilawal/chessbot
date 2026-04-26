@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== OPERATION.VALIDATION.STRING.NAME PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .validator import NameValidator

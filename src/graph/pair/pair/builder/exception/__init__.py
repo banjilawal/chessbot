@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== PAIR.PAIR.BUILDER.EXCEPTION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .square import HeadTailSquareException

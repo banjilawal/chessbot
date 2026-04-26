@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== RESPONSE.MODEL PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .label import Label

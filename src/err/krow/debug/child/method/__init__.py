@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== ERR.SYSTEM.ERR.DEBUG.CHILD.METHOD PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .root import MethodImplementationException

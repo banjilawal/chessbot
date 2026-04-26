@@ -23,6 +23,7 @@ from .hostage import *
 from .identity import *
 from .node import *
 from .number import *
+from .operand import *
 from .persona import *
 from .player import *
 from .rank import *

@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== MICROSERVICE.SCHEMA.SERVICE.OPERATION.PROPERTIES PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .reporter import SchemaPropertyValuesReporter

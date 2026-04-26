@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== TOKEN.SERVICE.OPERATION.DEPLOYMENT.EXCEPTION.DEBUG.INCONSISTENT PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .coord import InconsistentTokenCoordException

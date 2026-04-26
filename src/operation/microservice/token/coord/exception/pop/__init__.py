@@ -10,6 +10,5 @@ version: 1.0.0
 # =========== TOKEN.SERVICE.OPERATION.COORD.EXCEPTION.POP PACKAGE ===========#
 
 # Packages
-None
 
 # Modules

@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== MODEL.TEAM.ROSTER.EXCEPTION.DELETION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .empty import PoppingEmptyTeamRosterException

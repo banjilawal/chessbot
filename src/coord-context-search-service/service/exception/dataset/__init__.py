@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== COORD.QUERY.SERVICE.EXCEPTION.DATASET PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .null import CoordDatasetNullException

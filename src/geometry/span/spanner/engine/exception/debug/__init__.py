@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== SPAN.SPANNER.ENGINE.EXCEPTION.DEBUG PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .debug import SpannerEngineDebugException

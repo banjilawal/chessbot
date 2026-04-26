@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== ERR.SYSTEM.ERR.RESOURCE PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .unavailable import ResourceUnavailableException

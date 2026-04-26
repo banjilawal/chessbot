@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== ERR.NODE.STACK.EXCEPTION.QUERY PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .exist import NodeNotFoundException

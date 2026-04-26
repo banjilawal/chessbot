@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== STACK.COORD PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .stack import CoordStackService

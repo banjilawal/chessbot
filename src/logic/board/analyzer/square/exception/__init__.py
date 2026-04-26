@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== BOARD.SQUARE.ANALYZER.EXCEPTION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .failure import BoardSquareAnalysisException

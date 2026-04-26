@@ -1,7 +1,7 @@
-# src/err/validation/context/player/exception.py
+# src/err/operation/validation/context/player/exception.py
 
 """
-Module: err.operation.validation.player.exception
+Module: err.operation.validation.context.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

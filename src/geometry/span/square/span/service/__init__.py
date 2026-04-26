@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== SPAN.SQUARE.SPAN.SERVICE PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .exception import *

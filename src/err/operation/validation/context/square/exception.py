@@ -1,7 +1,7 @@
-# src/err/validation/context/square/exception.py
+# src/err/operation/validation/context/square/exception.py
 
 """
-Module: err.operation.validation.square.exception
+Module: err.operation.validation.context.square.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

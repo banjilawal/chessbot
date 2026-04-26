@@ -10,7 +10,6 @@ version: 1.0.0
 # ===========  ATTACK.EXCEPTION.DEBUG.SQUARE PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .empty import AttackingVacantSquareException

@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== TOKEN.SERVICE.OPERATION.ANALYSIS.EXCEPTION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .transaction import  TokenReadinessAnalysisException

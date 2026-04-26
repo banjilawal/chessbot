@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== SPAN.SQUARE.RAY.VALIDATOR.EXCEPTION.NULL PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .ray import SquareRayNullException

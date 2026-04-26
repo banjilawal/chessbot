@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== TOKEN.DATABASE.SEARCH.SERVICE.EXCEPTION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .anchor import TokenContextServiceException

@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== PAIR.TREE.SERVICE.EXCEPTION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .anchor import NodeTreeServiceException

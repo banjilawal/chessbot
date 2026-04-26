@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== SPAN.SQUARE.GRAPH.EXCEPTION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .work import SpanningGraphProductionException

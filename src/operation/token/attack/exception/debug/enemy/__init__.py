@@ -10,7 +10,6 @@ version: 1.0.0
 # ===========  ATTACK.EXCEPTION.DEBUG.ENEMY PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .king import AttackingEnemyKingException

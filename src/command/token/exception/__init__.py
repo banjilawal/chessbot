@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== COMMAND.TOKEN.EXCEPTION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .anchor import TokenCommandException

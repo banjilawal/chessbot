@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== ERR.ANALYSIS.COLLISION.CONTEXT.RANK PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .exception import RankContextCollisionException

@@ -10,7 +10,6 @@ version: 1.0.1
 # ============ ERR.MODEL.TOKEN.KING PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .exception import KingTokenException

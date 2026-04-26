@@ -10,7 +10,6 @@ version: 1.0.1
 # ============ ERR.OPERATION.BOOTSTRAP.ASSEMBLY.HOSTAGE PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .exception import BootstrapHostageAssemblyException

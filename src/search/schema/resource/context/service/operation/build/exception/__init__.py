@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== SCHEMA.DATABASE.SEARCH.CONTEXT.SERVICE.OPERATION.BUILD PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .route import SchemaContextBuildRouteException

@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== SERVICE.ADT.TABLE.EXCEPTION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .anchor import CommandException

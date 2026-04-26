@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== SPAN.SERVICE.HANDLER.NODE.EXCEPTION.WORK PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .push import PairInsertionException

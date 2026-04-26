@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== ERR.TRANSACTION.DELETION.EMPTY.SQUARE PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .exception import PoppingEmptySquareStackException

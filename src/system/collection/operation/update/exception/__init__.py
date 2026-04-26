@@ -10,7 +10,6 @@ Version: 1.0.0
 # =========== SYSTEM.COLLECTION.OPERATION.UPDATE.EXCEPTION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .work import UpdateException

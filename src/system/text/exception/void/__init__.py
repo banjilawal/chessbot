@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== SYSTEM.TEXT.EXCEPTION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .base import VoidStringException

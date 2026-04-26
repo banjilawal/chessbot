@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== MICROSERVICE.TOKEN.SERVICE.MENU.EXCEPTION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .anchor import TokenServiceMenuException

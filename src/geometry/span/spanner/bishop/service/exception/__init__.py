@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== SPAN.SPANNER.BISHOP.SERVICE.EXCEPTION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .anchor import BishopSpanServiceException

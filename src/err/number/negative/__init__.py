@@ -10,7 +10,6 @@ version: 1.0.1
 # ============ ERR.NUMBER.NEGATIVE_NUMBER PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .exception import NegativeNumberException

@@ -10,7 +10,6 @@ version: 1.0.0
 #=========== PLAYER.MODEL.VARIETY.EXCEPTION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .base import AgentVarietyException

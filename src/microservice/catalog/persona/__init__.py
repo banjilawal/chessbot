@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== MICROSERVICE.PERSONA PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .microservice import PersonaService

@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== ERR.TRANSACTION.INSERTION.DUPLICATE.DUPLICATE.PLAYER PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .exception import DuplicatePlayerPushException

@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== PAIR.STACK.EXCEPTION.DELETION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .work import PoppingPairException

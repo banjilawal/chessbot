@@ -10,7 +10,6 @@ version: 1.0.0
 # ===========  ATTACK.EXCEPTION.DEBUG.BOARD PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .wrong import AttackingTokenOnWrongBoardException

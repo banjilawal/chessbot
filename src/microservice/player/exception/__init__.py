@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== MICROSERVICE.PLAYER.SERVICE.EXCEPTION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .anchor import PlayerServiceException

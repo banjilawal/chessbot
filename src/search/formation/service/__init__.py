@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== FORMATION.KEY.SERVICE PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .service import FormationKeyService

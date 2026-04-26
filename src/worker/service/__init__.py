@@ -11,7 +11,6 @@ version: 1.0.1
 # =========== SERVICE PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 None

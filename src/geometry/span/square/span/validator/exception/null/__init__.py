@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== SPAN.SQUARE.SPAN.VALIDATOR.EXCEPTION.NULL PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .span import SquareSpanNullException

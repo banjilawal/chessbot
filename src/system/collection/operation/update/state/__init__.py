@@ -10,6 +10,5 @@ Version: 1.0.0
 # =========== SYSTEM.COLLECTION.OPERATION.UPDATE.STATE PACKAGE ===========#
 
 # Packages
-None
 
 # Modules

@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== TOOLKIT.SNAPSHOT PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .toolkit import SnapshotContextToolkit

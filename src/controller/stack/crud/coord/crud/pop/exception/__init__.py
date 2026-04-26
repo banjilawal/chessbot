@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== COORD.DATABASE.KERNEL.OPERATION.CRUD.POP.EXCEPTION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .empty import PoppingEmptyCoordStackException

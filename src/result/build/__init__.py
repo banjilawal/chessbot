@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== BUILD PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .result import BuildResult

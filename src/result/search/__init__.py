@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== SEARCH PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .result import SearchResult

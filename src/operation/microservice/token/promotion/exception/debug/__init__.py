@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== TOKEN.SERVICE.OPERATION.PROMOTION.EXCEPTION.DEBUG PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .pawn import PromoteToPawnException

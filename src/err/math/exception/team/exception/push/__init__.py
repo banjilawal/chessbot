@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== ERR.TEAM.DATABASE.CORE.EXCEPTION.PUSH PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .work import PushingTeamFailedException

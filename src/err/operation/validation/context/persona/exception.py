@@ -1,7 +1,7 @@
-# src/err/validation/context/persona/exception.py
+# src/err/operation/validation/context/persona/exception.py
 
 """
-Module: err.operation.validation.persona.exception
+Module: err.operation.validation.context.persona.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

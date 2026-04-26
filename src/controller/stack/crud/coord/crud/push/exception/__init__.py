@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== COORD.DATABASE.KERNEL.OPERATION.CRUD.PUSH.EXCEPTION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .work import CoordStackPushException

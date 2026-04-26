@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== OPERATION.VALIDATION.EDGE PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .operation import EdgeValidator

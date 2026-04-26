@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Optional
 
-from err import ExcessVectorContextFlagsException, VectorContextToolkitException
+from err import ExcessVectorOperandFlagsException, VectorContextToolkitException
 from integrity import Toolkit
 from model import Coord, VectorOperand, Vector
 from result import ToolkitResult
@@ -99,9 +99,9 @@ class VectorContextToolkit(Toolkit[VectorOperand]):
                     cls_name=cls.__name__,
                     msg=VectorContextToolkitException.MSG,
                     err_code=VectorContextToolkitException.ERR_CODE,
-                    ex=ExcessVectorContextFlagsException(
-                        msg=ExcessVectorContextFlagsException.MSG,
-                        err_code=ExcessVectorContextFlagsException.ERR_CODE,
+                    ex=ExcessVectorOperandFlagsException(
+                        msg=ExcessVectorOperandFlagsException.MSG,
+                        err_code=ExcessVectorOperandFlagsException.ERR_CODE,
                     )
                 )
             )
@@ -119,9 +119,9 @@ class VectorContextToolkit(Toolkit[VectorOperand]):
                         cls_name=cls.__name__,
                         msg=VectorContextToolkitException.MSG,
                         err_code=VectorContextToolkitException.ERR_CODE,
-                        ex=ExcessVectorContextFlagsException(
-                            msg=ExcessVectorContextFlagsException.MSG,
-                            err_code=ExcessVectorContextFlagsException.ERR_CODE,
+                        ex=ExcessVectorOperandFlagsException(
+                            msg=ExcessVectorOperandFlagsException.MSG,
+                            err_code=ExcessVectorOperandFlagsException.ERR_CODE,
                         )
                     )
                 )

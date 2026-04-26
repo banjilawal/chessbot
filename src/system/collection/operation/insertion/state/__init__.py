@@ -10,6 +10,5 @@ Version: 1.0.0
 # =========== SYSTEM.COLLECTION.OPERATION.INSERTION.STATE PACKAGE ===========#
 
 # Packages
-None
 
 # Modules

@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== ZONE.SERVICE.OPERATION.BUILDER.EXCEPTION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .transaction import ZoneBuildException

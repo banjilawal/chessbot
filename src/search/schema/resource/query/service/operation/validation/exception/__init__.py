@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== SCHEMA.DATABASE.SEARCH.QUERY.SERVICE.OPERATION.VALIDATION.EXCEPTION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .stack import SchemaStackNullException

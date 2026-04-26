@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== MODEL.SNAPSHOT PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .model import Snapshot

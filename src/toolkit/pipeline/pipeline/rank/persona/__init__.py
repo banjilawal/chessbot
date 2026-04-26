@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== RANK.PERSONA PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .toolkit import RankPersonaValidator

@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== SPAN.SPANNER.ROOK PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .spanner import RookSpanner

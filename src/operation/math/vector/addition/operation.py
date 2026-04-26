@@ -9,11 +9,12 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from err import VectorAdditionException
+
 from model import VectorRegister
-from operation import Operation, VectorRegisterValidator
 from result import ComputationResult
 from system import LoggingLevelRouter
+from err import VectorAdditionException
+from operation import Operation, VectorRegisterValidator
 
 
 class AddOperation(Operation[VectorRegister]):

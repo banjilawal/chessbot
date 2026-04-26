@@ -10,7 +10,6 @@ version: 1.0.1
 # ============ ERR.OPERATION.VALIDATION.GAME PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .exception import GameValidationException

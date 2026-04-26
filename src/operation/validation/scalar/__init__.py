@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== OPERATION.VALIDATION.SCALAR PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .operation import ScalarValidator

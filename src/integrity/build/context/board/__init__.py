@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== BUILD.BOARD PACKAGE ===========#
 
 # Packages
-None
 
 
 # Modules

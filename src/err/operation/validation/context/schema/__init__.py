@@ -1,16 +1,15 @@
-# src/err/validation/context/schema/__init__.py
+# src/err/operation/validation/context/schema/__init__.py
 
 """
-Module: err.operation.validation.schema.__init__
+Module: err.operation.validation.context.schema.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
 """
 
-# =========== ERR.OPERATION.VALIDATION.SCHEMA PACKAGE ===========#
+# =========== ERR.OPERATION.VALIDATION.CONTEXT.SCHEMA PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .exception import SchemaContextValidationException

@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== MODEL.RANK.ROOK PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .model import Rook

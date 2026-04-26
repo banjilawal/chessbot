@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== GRAPH.EXCEPTION.EDGE PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .insert import NodeInsertionException

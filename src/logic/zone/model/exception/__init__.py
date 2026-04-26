@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== ZONE.MODEL.EXCEPTION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .anchor import ZoneException

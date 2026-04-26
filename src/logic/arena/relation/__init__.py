@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== ARENA.RELATION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .analyzer import ArenaTeamRelationAnalysis

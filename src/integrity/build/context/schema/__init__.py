@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== BUILD.SCHEMA PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .builder import SchemaContextBuilder

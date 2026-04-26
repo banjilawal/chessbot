@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== ERR.HOSTAGE.DATABASE.CORE.EXCEPTION.SEARCH PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 None

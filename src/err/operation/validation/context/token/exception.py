@@ -1,7 +1,7 @@
-# src/err/validation/context/token/exception.py
+# src/err/operation/validation/context/token/exception.py
 
 """
-Module: err.operation.validation.token.exception
+Module: err.operation.validation.context.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

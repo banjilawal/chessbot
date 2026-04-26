@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== SPAN.SQUARE.RAY.BUILDER PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .builder import SquareRayBuilder

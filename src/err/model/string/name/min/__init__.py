@@ -10,7 +10,6 @@ version: 1.0.1
 # ============ ERR.MODEL.STRING.NAME.MIN PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .exception import NameException

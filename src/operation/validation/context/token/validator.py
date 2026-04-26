@@ -9,6 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from err import ZeroTokenContextFlagsException
 
 
 class TokenContextValidator(Validator[TokenContext]):

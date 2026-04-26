@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Optional
 
-from err import ExcessVectorContextFlagsException, VectorContextBuildException
+from err import ExcessVectorOperandFlagsException, VectorContextBuildException
 from integrity import Builder
 from model import Coord, VectorOperand, Vector
 from result import BuildResult
@@ -99,9 +99,9 @@ class VectorContextBuilder(Builder[VectorOperand]):
                     cls_name=cls.__name__,
                     msg=VectorContextBuildException.MSG,
                     err_code=VectorContextBuildException.ERR_CODE,
-                    ex=ExcessVectorContextFlagsException(
-                        msg=ExcessVectorContextFlagsException.MSG,
-                        err_code=ExcessVectorContextFlagsException.ERR_CODE,
+                    ex=ExcessVectorOperandFlagsException(
+                        msg=ExcessVectorOperandFlagsException.MSG,
+                        err_code=ExcessVectorOperandFlagsException.ERR_CODE,
                     )
                 )
             )
@@ -119,9 +119,9 @@ class VectorContextBuilder(Builder[VectorOperand]):
                         cls_name=cls.__name__,
                         msg=VectorContextBuildException.MSG,
                         err_code=VectorContextBuildException.ERR_CODE,
-                        ex=ExcessVectorContextFlagsException(
-                            msg=ExcessVectorContextFlagsException.MSG,
-                            err_code=ExcessVectorContextFlagsException.ERR_CODE,
+                        ex=ExcessVectorOperandFlagsException(
+                            msg=ExcessVectorOperandFlagsException.MSG,
+                            err_code=ExcessVectorOperandFlagsException.ERR_CODE,
                         )
                     )
                 )

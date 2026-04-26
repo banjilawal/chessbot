@@ -9,7 +9,6 @@ Created: 2026-02-24
 # =========== SQUARE.COMMAND.ROOT.VALIDATION.EXCEPTION.DEBUG PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .null import NullCommandException

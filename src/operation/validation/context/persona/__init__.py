@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== OPERATION.VALIDATION.CONTEXT.PERSONA PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .validator import PersonaContextValidator

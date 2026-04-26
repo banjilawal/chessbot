@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== SYSTEM.ROUTE PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .router import Router

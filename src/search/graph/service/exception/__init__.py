@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== GRAPH.CONTEXT.SERVICE.EXCEPTION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .anchor import GraphContextServiceException

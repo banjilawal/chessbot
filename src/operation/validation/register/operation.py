@@ -14,7 +14,7 @@ from err import (
     VectorEuclideanException, VectorRegisterMismatchException, VectorRegisterNullException,
     VectorRegisterValidationException
 )
-from operation import Validator, VectorContextValidator
+from operation import Validator, VectorOperandValidator
 from model import VectorRegister
 from result import ValidationResult
 from system import LoggingLevelRouter
@@ -76,7 +76,7 @@ class VectorRegisterValidator(Validator[VectorRegister]):
         method = f"{cls.__name__}.validate"
             
         if context_validator is None:
-            context_validator = VectorContextValidator()
+            context_validator = VectorOperandValidator()
         
         # Handle the case that, the candidate does not exist.
         if candidate is None:

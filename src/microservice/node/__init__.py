@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== MICROSERVICE.NODE PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .microservice import NodeService

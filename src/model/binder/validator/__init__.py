@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== MODEL.BINDER.VALIDATOR PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .validator import TeamBinderValidator

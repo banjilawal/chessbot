@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== SNAPSHOT.FINDER PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .finder import SnapshotFinder

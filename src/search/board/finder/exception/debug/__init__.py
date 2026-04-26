@@ -9,7 +9,6 @@ version: 1.0.0
 # =========== BOARD.CONTEXT.FINDER.EXCEPTION.DEBUG PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .route import BoardSearchRouteException

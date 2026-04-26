@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== ERR.NODE.STACK.EXCEPTION.INSERTION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .work import NodePushException

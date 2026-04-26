@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== ERR.BOARD.DATABASE.CORE.EXCEPTION.DELETION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .work import BoardDeletionException

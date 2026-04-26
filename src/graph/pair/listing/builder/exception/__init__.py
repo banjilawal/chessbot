@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== PAIR.LISTING.BUILDER.EXCEPTION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .different import TreeDoesNotOwnRayException

@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== SPAN.SPANNER.PAWN PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .spanner import PawnSpanner

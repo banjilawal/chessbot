@@ -10,7 +10,6 @@ Version: 1.0.0
 # =========== SYSTEM.COLLECTION.OPERATION.INSERTION.EXCEPTION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .work import InsertionException

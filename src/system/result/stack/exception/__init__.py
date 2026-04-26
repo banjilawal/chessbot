@@ -10,6 +10,5 @@ version: 1.0.0
 # =========== SYSTEM.RESULT.STACK PACKAGE ===========#
 
 # Packages
-None
 
 # Modules

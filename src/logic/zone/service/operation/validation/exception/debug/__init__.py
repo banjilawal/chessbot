@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== ZONE.VALIDATOR.EXCEPTION.DEBUG PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .null import NullZoneException

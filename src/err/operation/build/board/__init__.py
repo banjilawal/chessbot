@@ -10,7 +10,6 @@ version: 1.0.1
 # ============ ERR.BUILD.OPERATION.BOARD PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .exception import BoardBuildException

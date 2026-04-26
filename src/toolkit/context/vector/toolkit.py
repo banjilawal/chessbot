@@ -15,7 +15,7 @@ from model import VectorOperand
 from toolkit import Toolkit
 
 
-class VectorContextToolkit(Toolkit[VectorOperand]):
+class VectorOperandToolkit(Toolkit[VectorOperand]):
     """
     Role:
         -   Container

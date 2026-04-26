@@ -9,7 +9,6 @@ Created: 2026-02-24
 # =========== COMMAND.SYSTEM.SERVICE.OPERATION.BUILD.EXCEPTION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .transaction import CommandBuildException

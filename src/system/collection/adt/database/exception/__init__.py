@@ -10,7 +10,6 @@ Version: 1.0.0
 # =========== SYSTEM.COLLECTION.ADT.DATABASE.EXCEPTION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .anchor import DatabaseException

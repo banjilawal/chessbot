@@ -10,7 +10,6 @@ Version: 1.0.0
 # =========== SYSTEM.COLLECTION.EXCEPTION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .base import CollectionException

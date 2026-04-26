@@ -10,7 +10,6 @@ version: 1.0.1
 # ============ ERR.MODEL.SQUARE.OPENING PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .exception import OpeningSquareException

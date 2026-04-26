@@ -10,7 +10,6 @@ version: 1.0.1
 # ============ ERR.NUMBER.ABOVE PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .exception import NumberAboveBoundsException

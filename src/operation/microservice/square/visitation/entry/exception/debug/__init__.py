@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== SQUARE.SERVICE.VISITATION.ENTRY.EXCEPTION.DEBUG.DEBUG PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .board import SquareVisitorBoardException

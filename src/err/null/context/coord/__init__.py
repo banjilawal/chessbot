@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== ERR.NULL.COORD PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .exception import CoordContextNullException

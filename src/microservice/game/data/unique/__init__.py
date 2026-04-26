@@ -10,7 +10,6 @@ version: 1.0.0
 #=========== MICROSERVICE.GAME.DATABASE PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .exception import *

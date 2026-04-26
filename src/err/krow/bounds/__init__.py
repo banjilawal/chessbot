@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== ERR.SYSTEM.ERR.BOUNDS PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .base import BoundsException

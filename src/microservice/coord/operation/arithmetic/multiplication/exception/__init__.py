@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== MICROSERVICE.TOKEN.SERVICE.OPERATION.ARITHMETIC.MULTIPLICATION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .work import CoordMultiplicationException

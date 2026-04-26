@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== SCHEMA.KEY.LOOKUP.EXCEPTION.DEBUG PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .name import SchemaNameBoundsException

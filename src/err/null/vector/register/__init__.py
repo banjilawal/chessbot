@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== ERR.NULL.VECTOR.REGISTER PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .exception import VectorRegisterNullException

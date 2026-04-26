@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== ADT.MESSAGE PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .address import AddressTag

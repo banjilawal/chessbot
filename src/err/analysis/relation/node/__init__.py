@@ -10,7 +10,6 @@ version: 1.0.1
 # ============ ERR.ANALYSIS.RELATION.CONTEXT.NODE PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .exception import NodeRelationException

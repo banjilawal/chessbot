@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== SYSTEM.TRANSFER.EXCEPTION PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .route import TransferRouteException

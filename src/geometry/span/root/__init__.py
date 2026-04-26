@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== SPAN.ROOT PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .ray import Ray

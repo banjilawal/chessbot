@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== ERR.SYSTEM.ERR.DEBUG.CHILD.INVARIANT PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .root import InvariantBreachException

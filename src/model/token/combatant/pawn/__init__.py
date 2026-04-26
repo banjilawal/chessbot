@@ -10,7 +10,6 @@ version: 1.0.1
 # =========== MODEL.TOKEN.COMBATANT.PAWN PACKAGE ===========#
 
 # Packages
-None
 
 # Modules
 from .model import PawnToken
