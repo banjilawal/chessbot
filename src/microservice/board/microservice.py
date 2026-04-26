@@ -89,7 +89,7 @@ class BoardService(Microservice[Board]):
         # Handle the case that, the team does not pass a validation check.
         team_validation = team_service.validate(candidate=team)
         if team_validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 BoardServiceException(
                     msg=f"ServiceId:{self.id}, {method}: {BoardServiceException.ERR_CODE}",
@@ -98,7 +98,7 @@ class BoardService(Microservice[Board]):
             )
         # Handle the case that, the team belongs on a different board.
         if not board == team.board:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 BoardServiceException(
                     msg=f"ServiceId:{self.id}, {method}: {BoardServiceException.ERR_CODE}",
@@ -109,7 +109,7 @@ class BoardService(Microservice[Board]):
             )
         # Handle the case that, the team's slot is already occupied.
         if board.team_hash.slot_is_occupied(team):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 BoardServiceException(
                     msg=f"ServiceId:{self.id}, {method}: {BoardServiceException.ERR_CODE}",
@@ -125,7 +125,7 @@ class BoardService(Microservice[Board]):
         
         # Handle the case that, the team is not ready
         if team.is_not_ready_to_play():
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 BoardServiceException(
                     msg=f"ServiceId:{self.id}, {method}: {BoardServiceException}",
@@ -169,7 +169,7 @@ class BoardService(Microservice[Board]):
             
             # Handle the case that, the team's deployment is not completed.
             if deployment_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return InsertionResult.failure(
                     BoardServiceException(
                         f"{method}: {BoardServiceException.MSG}",

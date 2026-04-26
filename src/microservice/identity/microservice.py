@@ -83,7 +83,7 @@ class IdentityService:
             candidate=class_name
         )
         if not class_name_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             ValidationResult.failure(
                 IdentityValidationException(
                     cls_mthd=method,
@@ -97,7 +97,7 @@ class IdentityService:
             # Handle the case that, the id is flagged unsafe.
             id_validation_result = self._number_validator.validate(id)
             if not id_validation_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 ValidationResult.failure(
                     IdentityValidationException(
                         cls_mthd=method,
@@ -144,7 +144,7 @@ class IdentityService:
             ceiling=sys.maxsize,
         )
         if id_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             ValidationResult.failure(
                 IdentityValidationException(
                     cls_mthd=method,
@@ -157,7 +157,7 @@ class IdentityService:
         # Handle the case that, the name is flagged.
         name_validation_result = self._name_validator.validate(candidate=name_candidate)
         if name_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             ValidationResult.failure(
                 IdentityValidationException(
                     cls_mthd=method,

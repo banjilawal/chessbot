@@ -83,7 +83,7 @@ class ArenaService(Microservice[Arena]):
         )
         # Handle the case that, one of the parties fails validation.
         if relation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 ArenaServiceException(
                     msg=f"ServiceId:{self.id} {method}: {ArenaServiceException.ERR_CODE}",
@@ -92,7 +92,7 @@ class ArenaService(Microservice[Arena]):
             )
         # Handle the case that, the team should be playing a different arena.
         if relation.does_not_exist:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 ArenaServiceException(
                     msg=f"ServiceId:{self.id} {method}: {ArenaServiceException.ERR_CODE}",
@@ -102,7 +102,7 @@ class ArenaService(Microservice[Arena]):
                 )
             )
         if relation.fully_exists:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 ArenaServiceException(
                     msg=f"ServiceId:{self.id} {method}: {ArenaServiceException.ERR_CODE}",

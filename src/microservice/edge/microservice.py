@@ -98,7 +98,7 @@ class EdgeService(Microservice[Edge]):
         # Handle the case that, the edge is unsafe.
         edge_validation = self.integrity_service.validator.search_service(candidate=edge)
         if edge_validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=edge,
                 exception=EdgeServiceException(
@@ -116,7 +116,7 @@ class EdgeService(Microservice[Edge]):
             floor=0,
         )
         if heuristic_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=edge,
                 exception=EdgeServiceException(
@@ -163,7 +163,7 @@ class EdgeService(Microservice[Edge]):
         # Handle the case that, the edge is unsafe.
         edge_validation = self.integrity_service.validator.search_service(candidate=edge)
         if edge_validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=edge,
                 exception=EdgeServiceException(
@@ -181,7 +181,7 @@ class EdgeService(Microservice[Edge]):
             floor=(-sys.maxsize + 1),
         )
         if weight_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=edge,
                 exception=EdgeServiceException(

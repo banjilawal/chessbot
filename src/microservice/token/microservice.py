@@ -117,7 +117,7 @@ class TokenService(Microservice[Token]):
         )
         # Handle the case that, the request was not completed.
         if popping_coord_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return DeletionResult.failure(
                 TokenServiceException(
                     cls_mthd=method,
@@ -162,7 +162,7 @@ class TokenService(Microservice[Token]):
         )
         # Handle the case that, the request was not completed.
         if insertion_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 TokenServiceException(
                     cls_mthd=method,
@@ -212,7 +212,7 @@ class TokenService(Microservice[Token]):
         )
         # Handle the case that, the request was not completed.
         if promotion_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pre_update_pawn_token,
                 exception=(
@@ -253,7 +253,7 @@ class TokenService(Microservice[Token]):
         )
         # Handle the case that, the request was not completed.
         if deployment_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pre_update_token,
                 exception=(

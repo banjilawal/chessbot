@@ -87,7 +87,7 @@ class NodeService(Microservice[Node]):
         # Handle the case that, the node does not pass a validation check.
         node_validation_result = self.validator.validate(candidate=node)
         if node_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 NodeServiceException(
                     msg=f"ServiceId:{self.id}, {method}: {NodeServiceException.MSG}",
@@ -100,7 +100,7 @@ class NodeService(Microservice[Node]):
         # Using the node.incoming_edges handle the case that the edge does not pass a validation check.
         edge_validation_result = node.incoming_edges.service.validator.validate(candidate=edge)
         if edge_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 NodeServiceException(
                     msg=f"ServiceId:{self.id}, {method}: {NodeServiceException.MSG}",
@@ -112,7 +112,7 @@ class NodeService(Microservice[Node]):
             )
         # Handle the case that, the node is not the edge's tail
         if edge.tail != node:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 NodeServiceException(
                     msg=f"ServiceId:{self.id}, {method}: {NodeServiceException.MSG}",
@@ -129,7 +129,7 @@ class NodeService(Microservice[Node]):
         
         # Most likely cause of insertion failure is the edge already exists in the schema.
         if edge_insertion_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 NodeServiceException(
                     msg=f"ServiceId:{self.id}, {method}: {NodeServiceException.MSG}",
@@ -168,7 +168,7 @@ class NodeService(Microservice[Node]):
         # Handle the case that, the node does not pass a validation check.
         node_validation_result = self.validator.validate(candidate=node)
         if node_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 NodeServiceException(
                     msg=f"ServiceId:{self.id}, {method}: {NodeServiceException.MSG}",
@@ -181,7 +181,7 @@ class NodeService(Microservice[Node]):
         # Using the node.incoming_edges handle the case that the edge does not pass a validation check.
         edge_validation_result = node.incoming_edges.service.validator.validate(candidate=edge)
         if edge_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 NodeServiceException(
                     msg=f"ServiceId:{self.id}, {method}: {NodeServiceException.MSG}",
@@ -193,7 +193,7 @@ class NodeService(Microservice[Node]):
             )
         # Handle the case that, the node is not the edge's tail
         if edge.tail != node:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 NodeServiceException(
                     msg=f"ServiceId:{self.id}, {method}: {NodeServiceException.MSG}",
@@ -210,7 +210,7 @@ class NodeService(Microservice[Node]):
         
         # Most likely cause of insertion failure is the edge already exists in the schema.
         if edge_insertion_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 NodeServiceException(
                     msg=f"ServiceId:{self.id}, {method}: {NodeServiceException.MSG}",
@@ -249,7 +249,7 @@ class NodeService(Microservice[Node]):
         # Handle the case that, the node does not pass a validation check.
         node_validation_result = self.validator.validate(candidate=node)
         if node_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return DeletionResult.failure(
                 NodeServiceException(
                     msg=f"ServiceId:{self.id}, {method}: {NodeServiceException.MSG}",
@@ -262,7 +262,7 @@ class NodeService(Microservice[Node]):
         # Using the node.incoming_edges handle the case that the edge does not pass a validation check.
         edge_validation_result = node.incoming_edges.service.validator.validate(candidate=edge)
         if edge_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return DeletionResult.failure(
                 NodeServiceException(
                     msg=f"ServiceId:{self.id}, {method}: {NodeServiceException.MSG}",
@@ -275,7 +275,7 @@ class NodeService(Microservice[Node]):
         deletion_result = node.incoming_edges.delete_by_label(edge.label)
         
         if deletion_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return DeletionResult.failure(
                 NodeServiceException(
                     msg=f"ServiceId:{self.id}, {method}: {NodeServiceException.MSG}",
@@ -314,7 +314,7 @@ class NodeService(Microservice[Node]):
         # Handle the case that, the node does not pass a validation check.
         node_validation_result = self.validator.validate(candidate=node)
         if node_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 NodeServiceException(
                     msg=f"ServiceId:{self.id}, {method}: {NodeServiceException.MSG}",
@@ -327,7 +327,7 @@ class NodeService(Microservice[Node]):
         # Using the node.outgoing_edges handle the case that the edge does not pass a validation check.
         edge_validation_result = node.outgoing_edges.service.validator.validate(candidate=edge)
         if edge_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 NodeServiceException(
                     msg=f"ServiceId:{self.id}, {method}: {NodeServiceException.MSG}",
@@ -339,7 +339,7 @@ class NodeService(Microservice[Node]):
             )
         # Handle the case that, the node is not the edge's tail
         if edge.tail != node:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 NodeServiceException(
                     msg=f"ServiceId:{self.id}, {method}: {NodeServiceException.MSG}",
@@ -356,7 +356,7 @@ class NodeService(Microservice[Node]):
         
         # Most likely cause of insertion failure is the edge already exists in the schema.
         if edge_insertion_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 NodeServiceException(
                     msg=f"ServiceId:{self.id}, {method}: {NodeServiceException.MSG}",
@@ -396,7 +396,7 @@ def remove_outgoing_edge(self, node: Node, edge: Edge) -> DeletionResult[Edge]:
     # Handle the case that, the node does not pass a validation check.
     node_validation_result = self.validator.search_service(candidate=node)
     if node_validation_result.is_failure:
-        # Return the exception chain on failure.
+        # Send the exception chain on failure.
         return DeletionResult.failure(
             NodeServiceException(
                 msg=f"ServiceId:{self.id}, {method}: {NodeServiceException.MSG}",
@@ -409,7 +409,7 @@ def remove_outgoing_edge(self, node: Node, edge: Edge) -> DeletionResult[Edge]:
     # Using the node.outgoing_edges handle the case that the edge does not pass a validation check.
     edge_validation_result = node.outgoing_edges.service.validator.validate(candidate=edge)
     if edge_validation_result.is_failure:
-        # Return the exception chain on failure.
+        # Send the exception chain on failure.
         return DeletionResult.failure(
             NodeServiceException(
                 msg=f"ServiceId:{self.id}, {method}: {NodeServiceException.MSG}",
@@ -422,7 +422,7 @@ def remove_outgoing_edge(self, node: Node, edge: Edge) -> DeletionResult[Edge]:
     deletion_result = node.outgoing_edges.delete_by_label(edge.label)
     
     if deletion_result.is_failure:
-        # Return the exception chain on failure.
+        # Send the exception chain on failure.
         return DeletionResult.failure(
             NodeServiceException(
                 msg=f"ServiceId:{self.id}, {method}: {NodeServiceException.MSG}",

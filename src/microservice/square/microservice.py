@@ -113,7 +113,7 @@ class SquareService(Microservice[Square]):
         )
         # Handle the case that, the request was not completed.
         if visitation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pre_update_square,
                 exception=SquareServiceException(
