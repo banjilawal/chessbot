@@ -8,16 +8,16 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-
-from logging import Logger
 from typing import List
 
-from operation import Operation, WorkerRegistry, WorkerRegistryOperation
 from result import SearchResult
+from model import WorkerRegistry
 from system import LoggingLevelRouter
+from operation import Operation, WorkerRegistryOperation
 
 
-class RegistrySearch(WorkerRegistryOperation):
+
+class RegistryWorkerSearch(WorkerRegistryOperation):
     OPERATION_NAME = "registry_search"
     
     @classmethod
@@ -29,4 +29,10 @@ class RegistrySearch(WorkerRegistryOperation):
             registry: WorkerRegistry,
     ) -> SearchResult[List[Operation]]:
         method = f"{cls.__name__}.execute"
-        pass
+        
+        if domain.upper() not in registry.domains:
+            return SearchResult.empty()
+        if operation_name.upper() not in registry.entries[domain].keys():
+            return SearchResult.empty()
+        operation = registry.entries[domain][operation_name]
+        return SearchResult.success(list[Operation]([]))
