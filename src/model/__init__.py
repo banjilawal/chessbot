@@ -26,6 +26,7 @@ from .node import *
 from .player import *
 from .query import *
 from .rank import *
+from .registry import *
 from .snapshot import *
 from .square import *
 from .team import *

@@ -1,16 +1,19 @@
-# src/operation/controller/__ini__.py
+# src/operation/registry/__ini__.py
 
 """
-Module: operation.controller.__init__
+Module: operation.registry.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== OPERATION.CONTROLLER PACKAGE ===========#
+# =========== OPERATION.REGISTRY PACKAGE ===========#
 
 # Packages
-from .registry import *
+from .add import *
+from .search import *
+from .validation import *
 
 # Modules
-from .operation import Controllerr
+from .operation import WorkerRegistryOperation
+from .toolkit import WorkerRegistryToolkit

@@ -1,50 +1,36 @@
-# src/operation/registry/validation/registration/__ini__.py
+# src/operation/registry/validation/search/worker/operation.py
 
 """
-Module: operation.registry.validation.registration.__init__
+Module: operation.registry.validation.search.worker.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
 from __future__ import annotations
+from typing import List
 
-from err import NullException
-from operation import NameValidator, Operation, ValidationBootstrapper, WorkerRegistryOperation
+from operation import NameValidator,  WorkerRegistryOperation
 from result import ValidationResult
 from system import LoggingLevelRouter
 
 
-class AddWorkerBootstrapper(WorkerRegistryOperation):
+class WorkerSearchBootstrapper(WorkerRegistryOperation):
     
     @classmethod
     @LoggingLevelRouter.monitor
     def execute(
             cls,
-            worker: Operation,
-            null_exception: NullException,
+            names: List[str],
             name_validator: NameValidator |  None = None,
-            validation_bootstrapper: ValidationBootstrapper | None = None,
     ) -> ValidationResult[int]:
         method = f"{cls.__name__}.execute"
         if name_validator is None:
             name_validator = NameValidator()
-        if validation_bootstrapper is None:
-            validation_bootstrapper = ValidationBootstrapper()
         
-        worker_validation = validation_bootstrapper.validate(
-            candidate=worker,
-            target_type=worker.__class__,
-            null_exception=null_exception,
-        )
-        if not worker_validation.is_false:
-            return ValidationResult.failure(worker_validation.exception)
-        
-        domain_validation_result = name_validator.validate(worker.DOMAIN)
-        if not domain_validation_result.is_false:
-            return ValidationResult.failure(domain_validation_result.exception)
-        operation_name_validation_result = name_validator.validate(worker.OPERATION_NAME)
-        if not operation_name_validation_result.is_false:
-            return ValidationResult.failure(operation_name_validation_result.exception)
-        
+        for name in names:
+            validation_result = name_validator.validate(name)
+            if validation_result.is_failure:
+                return ValidationResult.failure(validation_result.error)
+            
         return ValidationResult.success(0)

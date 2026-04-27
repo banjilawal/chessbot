@@ -8,7 +8,7 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import List
+from typing import Dict, List
 
 from result import SearchResult
 from model import WorkerRegistry
@@ -17,22 +17,19 @@ from operation import Operation, WorkerRegistryOperation
 
 
 
-class RegistryWorkerSearch(WorkerRegistryOperation):
-    OPERATION_NAME = "registry_search"
+class RegistryDomainSearch(WorkerRegistryOperation):
+    OPERATION_NAME = "registry_domain_search"
     
     @classmethod
     @LoggingLevelRouter.monitor
     def execute(
             cls,
             domain: str,
-            operation_name: str,
             registry: WorkerRegistry,
-    ) -> SearchResult[List[Operation]]:
+    ) -> SearchResult[List[Dict[str, Operation]]]:
         method = f"{cls.__name__}.execute"
         
         if domain.upper() not in registry.domains:
             return SearchResult.empty()
-        if operation_name.upper() not in registry.entries[domain].keys():
-            return SearchResult.empty()
-        operation = registry.entries[domain][operation_name]
-        return SearchResult.success(list[Operation]([]))
+        workers = registry.entries[domain.upper()]
+        return SearchResult.success(list[workers]([]))

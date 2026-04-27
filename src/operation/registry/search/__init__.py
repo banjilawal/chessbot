@@ -1,15 +1,16 @@
-# src/operation/registry/invoke.__ini__.py
+# src/operation/registry/search/__ini__.py
 
 """
-Module: operation.registry.invoke.__init__
+Module: operation.registry.search.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== OPERATION.REGISTRY.INVOKE PACKAGE ===========#
+# =========== OPERATION.REGISTRY.SEARCH PACKAGE ===========#
 
 # Packages
+from .domain import *
+from .worker import *
 
 # Modules
-from .operation import I

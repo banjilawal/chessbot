@@ -1,7 +1,7 @@
-# src/operation/registry/invoke.operation.py
+# src/operation/registry/search/worker/operation.py
 
 """
-Module: operation.registry.invoke.operation
+Module: operation.registry.search.worker.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -18,7 +18,7 @@ from operation import Operation, WorkerRegistryOperation
 
 
 class RegistryWorkerSearch(WorkerRegistryOperation):
-    OPERATION_NAME = "registry_search"
+    OPERATION_NAME = "registry_worker_search"
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -35,4 +35,4 @@ class RegistryWorkerSearch(WorkerRegistryOperation):
         if operation_name.upper() not in registry.entries[domain].keys():
             return SearchResult.empty()
         operation = registry.entries[domain][operation_name]
-        return SearchResult.success(list[Operation]([]))
+        return SearchResult.success(list[operation]([]))

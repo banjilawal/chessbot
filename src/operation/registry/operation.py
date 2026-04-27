@@ -1,29 +1,26 @@
-# src/operation/finalize/operation.py
+# src/operation/registry/operation.py
 
 """
-Module: operation.finalize.operation
+Module: operation.registry.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
 from __future__ import annotations
+from abc import abstractmethod
 
-from abc import ABC, abstractmethod
-from typing import Generic, TypeVar
-
-from model import Blueprint
-from operation import Operation
-from result import BuildResult, Result
+from model import WorkerRegistry
+from result import Result
 from system import LoggingLevelRouter
+from operation import Operation
 
-T = TypeVar("T")
 
-
-class ControllerOperation(Operation[Operation]):
+class WorkerRegistryOperation(Operation[WorkerRegistry]):
+    DOMAIN = "worker_registry"
     
     @classmethod
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(cls, product: T, blueprint: Blueprint[T]) -> Result[T]:
+    def execute(cls, *args, **kwargs) -> Result:
         pass

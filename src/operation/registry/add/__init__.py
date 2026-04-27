@@ -1,15 +1,15 @@
-# src/operation/registry/search.__ini__.py
+# src/operation/registry/add/__ini__.py
 
 """
-Module: operation.registry.search.__init__
+Module: operation.registry.add.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== OPERATION.REGISTRY.SEARCH PACKAGE ===========#
+# =========== OPERATION.REGISTRY.ADD PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .operation import RegistryWorkerSearch
+from .operation import RegisterWorker
