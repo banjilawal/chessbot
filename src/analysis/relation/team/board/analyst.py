@@ -84,7 +84,7 @@ class BoardTeamRelationAnalyst(RelationAnalyst[Board, Team]):
         # Handle the case that, the board is not certified as safe.
         board_validation_result = board_validator.validate(candidate_primary)
         if board_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return AnalysisResult.failure(
                 BoardTeamAnalysisException(
                     cls_mthd=method,
@@ -101,7 +101,7 @@ class BoardTeamRelationAnalyst(RelationAnalyst[Board, Team]):
         # Handle the case that, the team_binder has a board inconsistency.
         if board.team_binder.board != board:
             if board_validation_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return AnalysisResult.failure(
                     BoardTeamAnalysisException(
                         cls_mthd=method,
@@ -115,7 +115,7 @@ class BoardTeamRelationAnalyst(RelationAnalyst[Board, Team]):
         # Handle the case that, the team is not certified as safe.
         team_validation_result = team_service.validator.validate(candidate_satellite)
         if team_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return AnalysisResult.failure(
                 BoardTeamAnalysisException(
                     cls_mthd=method,

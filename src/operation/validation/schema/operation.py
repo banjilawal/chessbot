@@ -61,7 +61,7 @@ class SchemaValidator(Validator[Schema]):
         
         # Handle the nonexistence case.
         if candidate is None:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 SchemaValidationException(
                     cls_mthd=method,
@@ -79,7 +79,7 @@ class SchemaValidator(Validator[Schema]):
         # Handle the wrong class case.
         if not isinstance(candidate, Schema):
             # Return the exception chain on failure
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 SchemaValidationException(
                     cls_mthd=method,

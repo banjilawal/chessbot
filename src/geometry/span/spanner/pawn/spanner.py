@@ -132,7 +132,7 @@ class PawnSpanner(Spanner):
             )
             # Handle the case that the span is not produced.
             if span_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ComputationResult.failure(
                     PawnSpannerException(
                         cls_mthd=method,
@@ -187,7 +187,7 @@ class PawnSpanner(Spanner):
             )
             # Handle the case that the ray arithmetic is not completed.
             if ray_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ComputationResult.failure(
                     PawnSpannerException(
                         cls_mthd=method,
@@ -230,7 +230,7 @@ class PawnSpanner(Spanner):
         )
         # Handle the case that the vector addition is not computed.
         if addition_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ComputationResult.failure(
                 PawnSpannerException(
                     cls_mthd=method,

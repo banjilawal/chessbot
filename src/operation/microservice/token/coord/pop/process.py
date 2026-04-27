@@ -72,7 +72,7 @@ class TokenPopCoordProcess:
         # Handle the case that, the token does not pass a validation check.
         validation_result = token_validator.validate(token)
         if validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return DeletionResult.failure(
                 TokenPopCoordException(
                     cls_mthd=method,
@@ -86,7 +86,7 @@ class TokenPopCoordProcess:
             )
         # Handle the case that, token is not active
         if not token.is_active:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return DeletionResult.failure(
                 TokenPopCoordException(
                         cls_mthd=method,
@@ -106,7 +106,7 @@ class TokenPopCoordProcess:
         # Handle the case that, the active token has not opened.
         if token.positions.size == 1:
             if validation_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return DeletionResult.failure(
                     TokenPopCoordException(
                         cls_mthd=method,
@@ -125,7 +125,7 @@ class TokenPopCoordProcess:
                 )
         # Handle the case that, an attempt is made to undo more than one turn.
         if token.previous_coord == token.current_position:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return DeletionResult.failure(
                 TokenPopCoordException(
                     cls_mthd=method,
@@ -145,7 +145,7 @@ class TokenPopCoordProcess:
         
         # Handle the case that, the pop was not completed.
         if popping_cord_stack_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return DeletionResult.failure(
                 TokenPopCoordException(
                     cls_mthd=method,

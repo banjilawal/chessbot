@@ -72,7 +72,7 @@ class VectorBuilder(Builder[Vector]):
                 candidate=abs(num)
             )
             if validation_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return BuildResult.failure(
                     VectorBuildException(
                         cls_mthd=method,

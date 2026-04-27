@@ -1,7 +1,7 @@
-# src/err/model/square/exception.py
+# src/err/controller/square/exception.py
 
 """
-Module: err.model.square.exception
+Module: err.controller.square.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ModelException
+from err import ControllerException
 
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# SQUARE_ERROR #======================#
-class SquareException(ModelException):
+class SquareException(ControllerException):
     """
     Role:
         -   Error Tracing
@@ -39,7 +39,7 @@ class SquareException(ModelException):
     Provides:
 
     Super Class:
-        ModelException
+        ControllerException
     """
     MSG = "Square error state."
     ERR_CODE = "SQUARE_ERROR"

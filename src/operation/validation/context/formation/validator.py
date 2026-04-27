@@ -64,7 +64,7 @@ class FormationContext(Validator[FormationKey]):
         
         # Handle the nonexistence case.
         if candidate is None:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 FormationKeyValidationException(
                     msg=f"{method}: {FormationKeyValidationException.ERR_CODE}",
@@ -73,7 +73,7 @@ class FormationContext(Validator[FormationKey]):
             )
         # Handle the wrong class case.
         if not isinstance(candidate, FormationKey):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 FormationKeyValidationException(
                     msg=f"{method}: {FormationKeyValidationException.ERR_CODE}",
@@ -88,7 +88,7 @@ class FormationContext(Validator[FormationKey]):
         
         # Handle the case of searching with no key-value is set.
         if len(super_key.to_dict()) == 0:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 FormationKeyValidationException(
                     msg=f"{method}: {FormationKeyValidationException.ERR_CODE}",
@@ -97,7 +97,7 @@ class FormationContext(Validator[FormationKey]):
             )
         # Handle the case of more than one key-value is set.
         if len(super_key.to_dict()) > 1:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 FormationKeyValidationException(
                     msg=f"{method}: {FormationKeyValidationException.ERR_CODE}",
@@ -113,7 +113,7 @@ class FormationContext(Validator[FormationKey]):
         if super_key.designation is not None:
             validation = identity_service.validate_name(candidate=super_key.designation)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     FormationKeyValidationException(
                         msg=f"{method}: {FormationKeyValidationException.ERR_CODE}",
@@ -127,7 +127,7 @@ class FormationContext(Validator[FormationKey]):
         if super_key.designation is not None:
             validation = identity_service.validate_name(candidate=super_key.designation)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     FormationKeyValidationException(
                         msg=f"{method}: {FormationKeyValidationException.ERR_CODE}",
@@ -141,7 +141,7 @@ class FormationContext(Validator[FormationKey]):
         if super_key.square_name is not None:
             validation = identity_service.validate_name(candidate=super_key.square_name)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     FormationKeyValidationException(
                         msg=f"{method}: {FormationKeyValidationException.ERR_CODE}",

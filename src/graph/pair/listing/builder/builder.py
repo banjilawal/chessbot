@@ -84,7 +84,7 @@ class PairListBuilder(Builder[PairList]):
         # Handle the case that, the parent_node does not pass a validation check.
         parent_validation_result = node_service.validator.validate(parent_node)
         if not parent_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             BuildResult.failure(
                 PairListBuildException(
                     cls_mthd=method,
@@ -98,7 +98,7 @@ class PairListBuilder(Builder[PairList]):
         # Handle the case that, the ray does not pass a validation check.
         square_ray_validation_result = square_ray_service.validator.validate(square_ray)
         if square_ray_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             BuildResult.failure(
                 PairListBuildException(
                     cls_mthd=method,
@@ -111,7 +111,7 @@ class PairListBuilder(Builder[PairList]):
             )
         # Handle the case that the ray belongs to a different parent.
         if square_ray.origin != parent_node.square:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             BuildResult.failure(
                 PairListBuildException(
                     cls_mthd=method,
@@ -138,7 +138,7 @@ class PairListBuilder(Builder[PairList]):
             )
             # Handle the case that, there is no work product.
             if build_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 BuildResult.failure(
                     PairListBuildException(
                         cls_mthd=method,

@@ -1,7 +1,7 @@
-# src/err/model/team/exception.py
+# src/err/controller/team/exception.py
 
 """
-Module: err.model.team.exception
+Module: err.controller.team.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ModelException
+from err import ControllerException
 
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# TEAM_ERROR #======================#
-class TeamException(ModelException):
+class TeamException(ControllerException):
     """
     Role:
         -   Error Tracing
@@ -39,7 +39,7 @@ class TeamException(ModelException):
     Provides:
 
     Super Class:
-        ModelException
+        ControllerException
     """
     MSG = "Team error state."
     ERR_CODE = "TEAM_ERROR"

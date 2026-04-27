@@ -50,7 +50,7 @@ class PersonaValidator(Validator[Persona]):
         
         # Handle the nonexistence case.
         if candidate is None:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 PersonaValidationException(
                     cls_mthd=method,
@@ -66,7 +66,7 @@ class PersonaValidator(Validator[Persona]):
             )
         # Handle the wrong class case.
         if not isinstance(candidate, Persona):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 PersonaValidationException(
                     cls_mthd=method,

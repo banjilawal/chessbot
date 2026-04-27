@@ -75,7 +75,7 @@ class HostageContextToolkit(Toolkit[HostageContext]):
         
         # Handle the case that, all the optional params are null.
         if param_count == 0:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ToolkitResult.failure(
                 HostageContextToolkitException(
                     msg=f"{method}: {HostageContextToolkitException.MSG}",
@@ -86,7 +86,7 @@ class HostageContextToolkit(Toolkit[HostageContext]):
             )
         # Handle the case that, more than one optional param is not-null.
         if param_count > 1:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ToolkitResult.failure(
                 HostageContextToolkitException(
                     msg=f"{method}: {HostageContextToolkitException.MSG}",
@@ -101,7 +101,7 @@ class HostageContextToolkit(Toolkit[HostageContext]):
         if id is not None:
             validation = identity_service.validate_id(candidate=id)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ToolkitResult.failure(
                     HostageContextToolkitException(
                         msg=f"{method}: {HostageContextToolkitException.MSG}",
@@ -115,7 +115,7 @@ class HostageContextToolkit(Toolkit[HostageContext]):
         if victor is not None:
             validation = token_service.validator.search_service(candidate=victor)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ToolkitResult.failure(
                     HostageContextToolkitException(
                         msg=f"{method}: {HostageContextToolkitException.MSG}",
@@ -130,7 +130,7 @@ class HostageContextToolkit(Toolkit[HostageContext]):
         if prisoner is not None:
             validation = token_service.validator.verify_token_is_combatant(candidate=prisoner)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ToolkitResult.failure(
                     HostageContextToolkitException(
                         msg=f"{method}: {HostageContextToolkitException.MSG}",
@@ -144,7 +144,7 @@ class HostageContextToolkit(Toolkit[HostageContext]):
         if captured_square is not None:
             validation = square_service.validator.validate(candidate=captured_square)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ToolkitResult.failure(
                     HostageContextToolkitException(
                         msg=f"{method}: {HostageContextToolkitException.MSG}",

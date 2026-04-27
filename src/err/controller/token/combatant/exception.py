@@ -1,7 +1,7 @@
-# src/err/model/token/combatant/exception.py
+# src/err/controller/token/combatant/exception.py
 
 """
-Module: err.model.token.combatant.exception
+Module: err.controller.token.combatant.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

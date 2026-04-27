@@ -95,7 +95,7 @@ class SquareContextBuilder(Builder[SquareContext]):
         
         # Handle the case that, all the optional params are null.
         if param_count == 0:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 SquareContextBuildException(
                     msg=f"{method}: {SquareContextBuildException.MSG}",
@@ -106,7 +106,7 @@ class SquareContextBuilder(Builder[SquareContext]):
             )
         # Handle the case that, more than one optional param is not-null.
         if param_count > 1:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 SquareContextBuildException(
                     msg=f"{method}: {SquareContextBuildException.MSG}",
@@ -121,7 +121,7 @@ class SquareContextBuilder(Builder[SquareContext]):
         if id is not None:
             validation = identity_service.validate_id(candidate=id)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return BuildResult.failure(
                     SquareContextBuildException(
                         msg=f"{method}: {SquareContextBuildException.MSG}",
@@ -135,7 +135,7 @@ class SquareContextBuilder(Builder[SquareContext]):
         if name is not None:
             validation = identity_service.validate_name(candidate=name)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return BuildResult.failure(
                     SquareContextBuildException(
                         msg=f"{method}: {SquareContextBuildException.MSG}",
@@ -149,7 +149,7 @@ class SquareContextBuilder(Builder[SquareContext]):
         if coord is not None:
             validation = coord_service.validator.validate(coord)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return BuildResult.failure(
                     SquareContextBuildException(
                         msg=f"{method}: {SquareContextBuildException.MSG}",
@@ -163,7 +163,7 @@ class SquareContextBuilder(Builder[SquareContext]):
         if board is not None:
             validation = board_service.validator.validate(candidate=board)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return BuildResult.failure(
                     SquareContextBuildException(
                         msg=f"{method}: {SquareContextBuildException.MSG}",
@@ -177,7 +177,7 @@ class SquareContextBuilder(Builder[SquareContext]):
         if token is not None:
             validation = square_validator.validate_square_state(candidate=state)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return BuildResult.failure(
                     SquareContextBuildException(
                         msg=f"{method}: {SquareContextBuildException.MSG}",

@@ -1,7 +1,7 @@
-# src/err/model/string/exception.py
+# src/err/controller/string/exception.py
 
 """
-Module: err.model.string.exception
+Module: err.controller.string.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ModelException
+from err import ControllerException
 
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# STRING_ERROR #======================#
-class StringException(ModelException):
+class StringException(ControllerException):
     """
     Role:
         -   Error Tracing
@@ -39,7 +39,7 @@ class StringException(ModelException):
     Provides:
 
     Super Class:
-        ModelException
+        ControllerException
     """
     MSG = "String error state."
     ERR_CODE = "STRING_ERROR"

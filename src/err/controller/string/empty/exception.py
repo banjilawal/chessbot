@@ -1,7 +1,7 @@
-# src/err/model/string/empty/exception.py
+# src/err/controller/string/empty/exception.py
 
 """
-Module: err.model.string.empty.exception
+Module: err.controller.string.empty.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

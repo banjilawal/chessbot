@@ -93,7 +93,7 @@ class HostageStackServiceStackService[Hostage]):
         # Handle the case that, the hostage is unsafe.
         validation = self.microservice.validator.validate(candidate=manifest)
         if validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 HostageDataListException(
                     msg=f"ServiceId:{self.id}, {method}: {HostageDataListException.ERR_CODE}",
@@ -109,7 +109,7 @@ class HostageStackServiceStackService[Hostage]):
         
         # Handle the case that, the hostage was not appended to the collider_candidates.
         if manifest not in self.items:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 HostageDataListException(
                     msg=f"ServiceId:{self.id}, {method}: {HostageDataListException.ERR_CODE}",

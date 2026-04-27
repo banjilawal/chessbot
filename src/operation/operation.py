@@ -17,6 +17,8 @@ from result import Result
 T = TypeVar("T")
 
 class Operation(ABC, Generic[T]):
+    DOMAIN = "operation"
+    OPERATION_NAME = "operation"
     
     @classmethod
     def execute(cls, *args, **kwargs) -> Result[Any]:

@@ -55,7 +55,7 @@ class TeamBinderValidator(Validator[TeamBinder]):
         
         # Handle the nonexistence case.
         if candidate is None:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TeamBinderValidationException(
                     msg=f"{method}: {TeamBinderValidationException.MSG}",
@@ -64,7 +64,7 @@ class TeamBinderValidator(Validator[TeamBinder]):
             )
         # Handle the wrong class case.
         if not isinstance(candidate, TeamBinder):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TeamBinderValidationException(
                     msg=f"{method}: {TeamBinderValidationException.MSG}",
@@ -77,7 +77,7 @@ class TeamBinderValidator(Validator[TeamBinder]):
         # Handle the case that, the white team does not pass a validation check.
         white_team_validation_result = team_validator.validate(binder.white_team)
         if white_team_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TeamBinderValidationException(
                     msg=f"{method}: {TeamBinderValidationException.MSG}",
@@ -87,7 +87,7 @@ class TeamBinderValidator(Validator[TeamBinder]):
         # Handle the case that, the black team does not pass a validation check.
         black_team_validation_result = team_validator.validate(binder.black_team)
         if black_team_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TeamBinderValidationException(
                     msg=f"{method}: {TeamBinderValidationException.MSG}",
@@ -96,7 +96,7 @@ class TeamBinderValidator(Validator[TeamBinder]):
             )
         # Handle the case that, the white team does not have a white schema.
         if binder.white_team.schema != schema_service.schema.WHITE:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TeamBinderValidationException(
                     msg=f"{method}: {TeamBinderValidationException.MSG}",
@@ -107,7 +107,7 @@ class TeamBinderValidator(Validator[TeamBinder]):
             )
         # Handle the case that, the black team does not have a black schema.
         if binder.black_team.schema != schema_service.schema.BLACK:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TeamBinderValidationException(
                     msg=f"{method}: {TeamBinderValidationException.MSG}",

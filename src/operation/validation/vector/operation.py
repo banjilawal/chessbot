@@ -42,6 +42,8 @@ class VectorValidator(Validator[Vector]):
     Super Class:
         Validator
     """
+    OPERATION_NAME = "vector_validator"
+    
     @classmethod
     @LoggingLevelRouter.monitor
     def validate(
@@ -80,7 +82,7 @@ class VectorValidator(Validator[Vector]):
             null_exception=VectorNullException(),
         )
         if validation_bootstrap_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorValidationException(
                     cls_mthd=method,
@@ -101,7 +103,7 @@ class VectorValidator(Validator[Vector]):
                 candidate=abs(num)
             )
             if validation_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     VectorValidationException(
                         cls_mthd=method,

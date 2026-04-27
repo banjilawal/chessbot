@@ -1,7 +1,7 @@
-# src/err/model/token/king/exception.py
+# src/err/controller/token/king/exception.py
 
 """
-Module: err.model.token.king.exception
+Module: err.controller.token.king.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

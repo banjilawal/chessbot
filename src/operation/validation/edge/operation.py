@@ -27,6 +27,7 @@ class EdgeValidator(Validator[Edge]):
     # INHERITED ATTRIBUTES:
     None
     """
+    OPERATION_NAME = "edge_validator"
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -61,7 +62,7 @@ class EdgeValidator(Validator[Edge]):
         
         # Handle the nonexistence case.
         if candidate is None:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 ValidatingEdgeException(
                     msg=f"{method}: {ValidatingEdgeException.MSG}",
@@ -70,7 +71,7 @@ class EdgeValidator(Validator[Edge]):
             )
         # Handle the wrong class case.
         if not isinstance(Edge, candidate):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 ValidatingEdgeException(
                     msg=f"{method}: {ValidatingEdgeException.MSG}",
@@ -82,7 +83,7 @@ class EdgeValidator(Validator[Edge]):
         
         # Handle the case that, the label does not pass a validation check.
         label_validation_result = identity_service.validate_id(edge.id)
-        # Return the exception chain on failure.
+        # Send the exception chain on failure.
         if label_validation_result.is_failure:
             return ValidationResult.failure(
                 ValidatingEdgeException(
@@ -98,7 +99,7 @@ class EdgeValidator(Validator[Edge]):
             ceiling=cast(int, sqrt(2) *BOARD_DIMENSION) + 1,
         )
         if distance_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 ValidatingEdgeException(
                     msg=f"{method}: {ValidatingEdgeException.MSG}",
@@ -116,7 +117,7 @@ class EdgeValidator(Validator[Edge]):
             floor=0,
         )
         if heuristic_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 ValidatingEdgeException(
                     msg=f"{method}: {ValidatingEdgeException.MSG}",
@@ -133,7 +134,7 @@ class EdgeValidator(Validator[Edge]):
             floor=(-sys.maxsize + 1),
         )
         if weight_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 ValidatingEdgeException(
                     msg=f"{method}: {ValidatingEdgeException.MSG}",
@@ -146,7 +147,7 @@ class EdgeValidator(Validator[Edge]):
         # Handle the case that, the head is not certified as a safe node.
         head_validation_result = node_validator.validate(edge.head)
         if head_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 ValidatingEdgeException(
                     msg=f"{method}: {ValidatingEdgeException.MSG}",
@@ -156,7 +157,7 @@ class EdgeValidator(Validator[Edge]):
         # Handle the case that, the tail is not certified as a safe node.
         tail_validation_result = node_validator.validate(edge.head)
         if tail_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 ValidatingEdgeException(
                     msg=f"{method}: {ValidatingEdgeException.MSG}",

@@ -62,7 +62,7 @@ class SchemaContextValidator(Validator[SchemaKey]):
         
         # Handle the nonexistence case.
         if candidate is None:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 SchemaKeyValidationException(
                     msg=f"{method}: {SchemaKeyValidationException.ERR_CODE}",
@@ -71,7 +71,7 @@ class SchemaContextValidator(Validator[SchemaKey]):
             )
         # Handle the wrong class case.
         if not isinstance(candidate, SchemaKey):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 SchemaKeyValidationException(
                     msg=f"{method}: {SchemaKeyValidationException.ERR_CODE}",
@@ -85,7 +85,7 @@ class SchemaContextValidator(Validator[SchemaKey]):
         # Handle the case of searching with no key-value is set.
         size = len(super_key.to_dict())
         if size  == 0:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 SchemaKeyValidationException(
                     msg=f"{method}: {SchemaKeyValidationException.ERR_CODE}",
@@ -94,7 +94,7 @@ class SchemaContextValidator(Validator[SchemaKey]):
             )
         # Handle the case of more than one key-value is set.
         if size > 1:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 SchemaKeyValidationException(
                     msg=f"{method}: {SchemaKeyValidationException.ERR_CODE}",
@@ -109,7 +109,7 @@ class SchemaContextValidator(Validator[SchemaKey]):
         # Certification for lookup-by-schema value.
         if super_key.designation is not None:
             validation = identity_service.validate_name(candidate=super_key.designation)
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             if validation.is_failure:
                 return ValidationResult.failure(
                     SchemaKeyValidationException(
@@ -124,7 +124,7 @@ class SchemaContextValidator(Validator[SchemaKey]):
         if super_key.color is not None:
             validation = color_validator.validate(candidate=super_key.color)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     SchemaKeyValidationException(
                         msg=f"{method}: {SchemaKeyValidationException.ERR_CODE}",

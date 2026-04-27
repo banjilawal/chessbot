@@ -118,7 +118,7 @@ class HostageDatabase(Database[Hostage]):
         # Handle the case that, the hostageis not safe.
         validation = self.integrity_service.validator.validate(candidate=manifest)
         if validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 HostageDatabaseException(
                     msg=f"ServiceId:{self.id}, {method}: {HostageDatabaseException.ERR_CODE}",
@@ -133,7 +133,7 @@ class HostageDatabase(Database[Hostage]):
         
         # Handle the case that, the search is not completed.
         if search_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 HostageDatabaseException(
                     msg=f"ServiceId:{self.id}, {method}: {HostageDatabaseException.ERR_CODE}",
@@ -145,7 +145,7 @@ class HostageDatabase(Database[Hostage]):
             )
         # Handle the case that, the hostage is already in the collider_candidates.
         if search_result.is_success:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 HostageDatabaseDatabaseException(
                     msg=f"ServiceId:{self.id}, {method}: {HostageDatabase.ERR_CODE}",
@@ -162,7 +162,7 @@ class HostageDatabase(Database[Hostage]):
         
         # Handle the case that, the insertion is not completed.
         if insertion_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 HostageDatabase(
                     msg=(
@@ -204,7 +204,7 @@ class HostageDatabase(Database[Hostage]):
         
         # Handle the case that, the search is not completed.
         if search_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return SearchResult.failure(
                 HostageDatabase(
                     msg=f"ServiceID:{self.id} {method}: {HostageDatabase.ERR_CODE}",

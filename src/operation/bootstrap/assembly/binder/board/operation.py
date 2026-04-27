@@ -39,7 +39,7 @@ class TeamBinderBinderAssemblyBootstrapper(AssemblyBootstrapper[TeamBinderBinder
             toolkit=toolkit,
         )
         if blueprint_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return AssemblyResult.failure(
                 TeamBinderBinderAssemblyException(
                     msg=f"{method}: {TeamBinderBinderAssemblyException.MSG}",
@@ -72,7 +72,7 @@ class TeamBinderBinderAssemblyBootstrapper(AssemblyBootstrapper[TeamBinderBinder
             class_name="TeamBinder",
         )
         if id_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BootstrapTeamBinderAssemblyException(
                     cls_mthd=method,
@@ -87,7 +87,7 @@ class TeamBinderBinderAssemblyBootstrapper(AssemblyBootstrapper[TeamBinderBinder
             candidate=blueprint.schema
         )
         if schema_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BootstrapTeamBinderAssemblyException(
                     cls_mthd=method,
@@ -100,7 +100,7 @@ class TeamBinderBinderAssemblyBootstrapper(AssemblyBootstrapper[TeamBinderBinder
         # Handle the case that, the board does not pass a validation check.
         board_validation_result = toolkit.board_service.validator.validate(blueprint.board)
         if board_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BootstrapTeamBinderAssemblyException(
                     cls_mthd=method,

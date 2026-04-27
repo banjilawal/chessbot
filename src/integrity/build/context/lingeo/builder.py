@@ -77,7 +77,7 @@ class VectorContextBuilder(Builder[VectorOperand]):
         
         # Handle the case that, all the optional params are null.
         if param_count == 0:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 VectorContextBuildException(
                     cls_mthd=method,
@@ -92,7 +92,7 @@ class VectorContextBuilder(Builder[VectorOperand]):
             )
         # Handle the case that, more than one optional param is not-null.
         if param_count > 1:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 VectorContextBuildException(
                     cls_mthd=method,
@@ -112,7 +112,7 @@ class VectorContextBuilder(Builder[VectorOperand]):
         if coord is not None:
             build_result = toolkit.coord_service.validator.validate(coord)
             if build_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return BuildResult.failure(
                     VectorContextBuildException(
                         cls_mthd=method,
@@ -131,7 +131,7 @@ class VectorContextBuilder(Builder[VectorOperand]):
         # Deal with the alternate case.
         build_result = toolkit.vector_service.validator.validate(vector)
         if build_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 VectorContextBuildException(
                     cls_mthd=method,

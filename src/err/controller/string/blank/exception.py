@@ -1,7 +1,7 @@
-# src/err/model/string/blank/exception.py
+# src/err/controller/string/blank/exception.py
 
 """
-Module: err.model.string.blank.exception
+Module: err.controller.string.blank.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -39,7 +39,7 @@ class StringBlankException(StringException):
     Provides:
 
     Super Class:
-        ModelException
+        ControllerException
     """
     MSG = "Whitespace string not allowed"
     ERR_CODE = "STRING_BLANK_ERROR"

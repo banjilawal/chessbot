@@ -91,7 +91,7 @@ class FormationContextBuilder(Builder[FormationKey]):
         
         # Handle the case that, all the optional params are null.
         if param_count == 0:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 FormationKeyBuildException(
                     msg=f"{method}: {FormationKeyBuildException.ERR_CODE}",
@@ -102,7 +102,7 @@ class FormationContextBuilder(Builder[FormationKey]):
             )
         # Handle the case that, more than one optional param is not-null.
         if param_count > 1:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 FormationKeyBuildException(
                     msg=f"{method}: {FormationKeyBuildException.ERR_CODE}",
@@ -116,7 +116,7 @@ class FormationContextBuilder(Builder[FormationKey]):
         if square is not None:
             validation = square_service.validator.validate(square)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return BuildResult.failure(
                     FormationKeyBuildException(
                         msg=f"{method}: {FormationKeyBuildException.ERR_CODE}",
@@ -130,7 +130,7 @@ class FormationContextBuilder(Builder[FormationKey]):
         if designation is not None:
             validation = identity_service.validate_name(candidate=designation)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return BuildResult.failure(
                     FormationKeyBuildException(
                         msg=f"{method}: {FormationKeyBuildException.ERR_CODE}",
@@ -144,7 +144,7 @@ class FormationContextBuilder(Builder[FormationKey]):
         if color is not None:
             validation = color_validator.validate(candidate=color)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return BuildResult.failure(
                     FormationKeyBuildException(
                         msg=f"{method}: {FormationKeyBuildException.ERR_CODE}",
@@ -158,7 +158,7 @@ class FormationContextBuilder(Builder[FormationKey]):
         if persona is not None:
             validation = persona_service.validator.validate(candidate=persona)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return BuildResult.failure(
                     FormationKeyBuildException(
                         msg=f"{method}: {FormationKeyBuildException.ERR_CODE}",

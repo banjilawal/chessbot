@@ -64,7 +64,7 @@ class SquareListValidator(Validator[List[Square]]):
         method = f"{cls.__name__}.validate_dataset"
         # Handle the nonexistence case.
         if candidate is None:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidationException(
                     cls_mthd=method,
@@ -80,7 +80,7 @@ class SquareListValidator(Validator[List[Square]]):
             )
         # Handle the wrong class case.
         if not isinstance(candidate, List):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidationException(
                     cls_mthd=method,
@@ -98,7 +98,7 @@ class SquareListValidator(Validator[List[Square]]):
         
         # Handle the case that, the list is empty
         if len(square_list) == 0:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidationException(
                     cls_mthd=method,
@@ -114,7 +114,7 @@ class SquareListValidator(Validator[List[Square]]):
             )
         # Handle the case that, the list does not contain squares.
         if not isinstance(square_list[0], Square):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidationException(
                     cls_mthd=method,

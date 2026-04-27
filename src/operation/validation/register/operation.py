@@ -43,6 +43,7 @@ class VectorRegisterValidator(Validator[VectorRegister]):
     Super Class:
         Validator
     """
+    OPERATION_NAME = "vector_register_validator"
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -82,7 +83,7 @@ class VectorRegisterValidator(Validator[VectorRegister]):
             null_exception=VectorRegisterNullException(),
         )
         if validation_bootstrap_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorRegisterValidationException(
                     cls_mthd=method,
@@ -99,7 +100,7 @@ class VectorRegisterValidator(Validator[VectorRegister]):
         for item in register.to_list:
             validation = toolkit.vector_operand_validator.validate(item)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     VectorRegisterValidationException(
                         cls_mthd=method,

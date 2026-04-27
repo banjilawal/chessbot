@@ -45,7 +45,7 @@ class TokenStackDeployment:
         
         # Handle the case that, the token_stack has already been deployed on the board.
         if token_stack.is_deployed_on_board:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=token_stack,
                 exception=TokenStackDeploymentException(
@@ -68,7 +68,7 @@ class TokenStackDeployment:
             
             # Handle the case that, the token's deployment failed.
             if deployment_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return UpdateResult.update_failure(
                     original=pre_deployment_token_stack,
                     exception=TokenStackDeploymentException(

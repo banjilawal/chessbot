@@ -22,6 +22,7 @@ from system import LoggingLevelRouter
 T = TypeVar("T")
 
 class AssemblyBootstrapper(Operation[T]):
+    DOMAIN = "assembly_bootstrapper"
     
     @classmethod
     @abstractmethod

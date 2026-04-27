@@ -57,7 +57,7 @@ class SquareStackCapacityAnalyst:
         # Handle the case that, the rank does not pass a validation check.
         rank_validation_result = rank_service.validator.search_service(rank)
         if rank_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ComputationResult.failure(
                 SquareStackCapacityAnalystException(
                     cls_mthd=method,
@@ -73,7 +73,7 @@ class SquareStackCapacityAnalyst:
         
         # Handle the case that, a search error occurred.
         if rank_search_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ComputationResult.failure(
                 SquareStackCapacityAnalystException(
                     cls_mthd=method,

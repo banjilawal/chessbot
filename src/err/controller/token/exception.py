@@ -1,7 +1,7 @@
-# src/err/model/token/exception.py
+# src/err/controller/token/exception.py
 
 """
-Module: err.model.token.exception
+Module: err.controller.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ModelException
+from err import ControllerException
 
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# TOKEN_ERROR #======================#
-class TokenException(ModelException):
+class TokenException(ControllerException):
     """
     Role:
         -   Error Tracing
@@ -39,7 +39,7 @@ class TokenException(ModelException):
     Provides:
 
     Super Class:
-        ModelException
+        ControllerException
     """
     MSG = "Token error state."
     ERR_CODE = "TOKEN_ERROR"

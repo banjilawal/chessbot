@@ -97,7 +97,7 @@ class SquareStackRosterHandler:
         # Handle the case that, the team does not pass a validation check.
         team_validation = team_service.validator.validate(candidate=team)
         if team_validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=team,
                 exception=SquareStackRosterHandlerException(
@@ -110,7 +110,7 @@ class SquareStackRosterHandler:
             )
         # Handle the case that, the team has already been deployed
         if team.roster.is_deployed_on_board:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=team,
                 exception=SquareStackRosterHandlerException(
@@ -127,7 +127,7 @@ class SquareStackRosterHandler:
             )
         # Handle the case that, the team is not at full strength.
         if  0 < team.roster.size < Team.MAX_ROSTER_SIZE:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=team,
                 exception=SquareStackRosterHandlerException(

@@ -1,7 +1,7 @@
-# src/err/model/exception.py
+# src/err/controller/exception.py
 
 """
-Module: err.model.exception
+Module: err.controller.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -13,12 +13,12 @@ from typing import Any, Optional
 from err import ChessException
 
 __all__ = [
-    # ======================# MODEL_ERROR #======================#
-    "ModelException",
+    # ======================# CONTROLLER_ERROR #======================#
+    "ControllerException",
 ]
 
-# ======================# MODEL_ERROR #======================#
-class ModelException(ChessException):
+# ======================# CONTROLLER_ERROR #======================#
+class ControllerException(ChessException):
     """
     Role:
         -   Error Tracing
@@ -41,7 +41,7 @@ class ModelException(ChessException):
         ChessException
     """
     MSG = "Data object error state."
-    ERR_CODE = "MODEL_ERROR"
+    ERR_CODE = "CONTROLLER_ERROR"
     
     def __init__(
             self,

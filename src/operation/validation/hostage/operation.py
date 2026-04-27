@@ -29,6 +29,7 @@ class HostageValidator(Validator[Hostage]):
     # INHERITED ATTRIBUTES:
     None
     """
+    OPERATION_NAME = "hostage_validator"
     
     @classmethod
     @LoggingLevelRouter.monitor

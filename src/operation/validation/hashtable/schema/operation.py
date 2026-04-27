@@ -85,7 +85,7 @@ class SchemaHashtableValidator(Validator[Dict[Schema, Any]]):
             null_exception=HashtableNullException(),
         )
         if validation_bootstrap_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 SchemaHashtableValidationException(
                     cls_mthd=method,
@@ -99,7 +99,7 @@ class SchemaHashtableValidator(Validator[Dict[Schema, Any]]):
         
         for key in table.keys():
             schema_validation_result = schema_validator.validator.validate(table[key])
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 SchemaHashtableValidationException(
                     cls_mthd=method,

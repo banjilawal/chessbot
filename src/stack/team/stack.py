@@ -103,7 +103,7 @@ class TeamStackService(StackService[Team]):
         # Handle the case that, the team is unsafe.
         validation = self.integrity_service.validator.validate(candidate=item)
         if validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 TeamStackException(
                     msg=f"StackId:{self.id}, {method}: {TeamStackException.ERR_CODE}",
@@ -115,7 +115,7 @@ class TeamStackService(StackService[Team]):
             )
         # Handle the case that, the team is already present in the schema.
         if item in self._stack:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 TeamStackException(
                     msg=f"StackId:{self.id}, {method}: {TeamStackException.ERR_CODE}",
@@ -152,7 +152,7 @@ class TeamStackService(StackService[Team]):
         
         # Handle the case that, there are no items in the list.
         if self.is_empty:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return DeletionResult.failure(
                 TeamStackException(
                     msg=f"StackId:{self.id}, {method}: {TeamStackException.ERR_CODE}",
@@ -192,7 +192,7 @@ class TeamStackService(StackService[Team]):
         
         # Handle the case that, there are no items in the list.
         if self.is_empty:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return DeletionResult.failure(
                 TeamStackException(
                     msg=f"StackId:{self.id}, {method}: {TeamStackException.ERR_CODE}",
@@ -207,7 +207,7 @@ class TeamStackService(StackService[Team]):
         # Handle the case that, the idis not safe.
         validation = identity_service.validate_id(candidate=id)
         if validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return DeletionResult.failure(
                 TeamStackException(
                     msg=f"StackId:{self.id}, {method}: {TeamStackException.ERR_CODE}",
@@ -222,7 +222,7 @@ class TeamStackService(StackService[Team]):
             if item.id == id:
                 # Handle the case that, the match is the wrong type.
                 if not isinstance(item, Team):
-                    # Return the exception chain on failure.
+                    # Send the exception chain on failure.
                     return DeletionResult.failure(
                         TeamStackException(
                             msg=f"StackId:{self.id}, {method}: {TeamStackException.ERR_CODE}",
@@ -270,7 +270,7 @@ class TeamStackService(StackService[Team]):
         
         # Handle the case that, the search is not completed.
         if query_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return SearchResult.failure(
                 TeamStackException(
                     msg=f"ServiceID:{self.id} {method}: {TeamStackException.ERR_CODE}",
@@ -307,7 +307,7 @@ class TeamStackService(StackService[Team]):
         
         # Handle the case that, the search is not completed.
         if query_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return SearchResult.failure(
                 TeamStackException(
                     msg=f"ServiceID:{self.id} {method}: {TeamStackException.ERR_CODE}",

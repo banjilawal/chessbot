@@ -74,7 +74,7 @@ class SchemaQueryBuilder(Builder[SchemaQuery]):
         # Handle the case that, the schema is not safe to use.
         schema_validation_result = workers.schema_validator.validate(schema)
         if schema_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 SchemaQueryBuildException(
                     cls_mthd=method,
@@ -90,8 +90,8 @@ class SchemaQueryBuilder(Builder[SchemaQuery]):
         # Handle the case that, the context is not safe to use.
         context_validation_result = workers.context_validator.validate(context)
         if context_validation_result.is_failure:
-            # Return the exception chain on failure.
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 SchemaQueryBuildException(
                     cls_mthd=method,

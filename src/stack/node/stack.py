@@ -124,7 +124,7 @@ class NodeStackService(StackService[Node]):
         # Handle the case that, the item is unsafe.
         validation = self.integrity_service.validator.validate(candidate=item)
         if validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 NodeStackException(
                     msg=f"ServiceId:{self.id}, {method}: {NodeStackException.ERR_CODE}",
@@ -136,7 +136,7 @@ class NodeStackService(StackService[Node]):
             )
         # Handle the case that, the node is already in the list.
         if item in self._stack:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 NodeStackException(
                     msg=f"ServiceId:{self.id}, {method}: {NodeStackException.ERR_CODE}",
@@ -171,7 +171,7 @@ class NodeStackService(StackService[Node]):
         
         # Handle the case that, there are no nodes in the schema.
         if self.is_empty:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return DeletionResult.failure(
                 NodeStackException(
                     msg=f"ServiceId:{self.id}, {method}: {NodeStackException.ERR_CODE}",
@@ -214,7 +214,7 @@ class NodeStackService(StackService[Node]):
         
         # Handle the case that, the search is not completed.
         if query_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return SearchResult.failure(
                 NodeStackException(
                     msg=f"ServiceID:{self.id} {method}: {NodeStackException.ERR_CODE}",

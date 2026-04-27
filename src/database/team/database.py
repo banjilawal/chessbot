@@ -120,7 +120,7 @@ class TeamDatabase(Database[Team]):
         
         # Handle the case that, the deletion was not completed.
         if deletion_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return DeletionResult.failure(
                 TeamDatabaseException(
                     msg=f"ServiceId:{self.id}, {method}: {TeamDatabaseException.ERR_CODE}",
@@ -155,7 +155,7 @@ class TeamDatabase(Database[Team]):
         
         # Handle the case that, the insertion is not completed.
         if insertion_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 TeamDatabaseException(
                     msg=f"ServiceId:{self.id}, {method}: {TeamDatabaseException.ERR_CODE}",
@@ -190,7 +190,7 @@ class TeamDatabase(Database[Team]):
         
         # Handle the case that, the search is not completed.
         if search_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return SearchResult.failure(
                 TeamDatabaseException(
                     msg=f"ServiceID:{self.id} {method}: {TeamDatabaseException.ERR_CODE}",

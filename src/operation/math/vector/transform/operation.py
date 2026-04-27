@@ -9,7 +9,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any
 
-
+from operation import Operation
 
 
 class VectorTransform(Operation):
@@ -34,6 +34,7 @@ class VectorTransform(Operation):
     Super Class:
         Operation
     """
+    OPERATION_NAME = "vector_transform"
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -67,7 +68,7 @@ class VectorTransform(Operation):
         # Handle the case that, the validator flags the context.
         context_validation_result = context_validator.validate(context)
         if context_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ComputationResult.failure(
                 VectorConversionException(
                     cls_mthd=method,
@@ -91,7 +92,7 @@ class VectorTransform(Operation):
             )
         # Handle the case that, the conversion did not work.
         if conversion_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ComputationResult.failure(
                 VectorConversionException(
                     cls_mthd=method,

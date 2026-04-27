@@ -97,7 +97,7 @@ class TokenContextToolkit(Toolkit[TokenContext]):
         
         # Handle the case that, all the optional params are null.
         if param_count == 0:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ToolkitResult.failure(
                 TokenContextToolkitException(
                     cls_mthd=method,
@@ -114,7 +114,7 @@ class TokenContextToolkit(Toolkit[TokenContext]):
             )
         # Handle the case that, more than one optional param is not-null.
         if param_count > 1:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ToolkitResult.failure(
                 TokenContextToolkitException(
                     cls_mthd=method,
@@ -135,7 +135,7 @@ class TokenContextToolkit(Toolkit[TokenContext]):
         if id is not None:
             validation = workers.identity_service.validate_id(id)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ToolkitResult.failure(
                     TokenContextToolkitException(
                         cls_mthd=method,
@@ -154,7 +154,7 @@ class TokenContextToolkit(Toolkit[TokenContext]):
         if designation is not None:
             validation = workers.identity_service.validate_name(designation)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ToolkitResult.failure(
                     TokenContextToolkitException(
                         cls_mthd=method,
@@ -173,7 +173,7 @@ class TokenContextToolkit(Toolkit[TokenContext]):
         if opening_square_name is not None:
             validation = workers.identity_service.validate_name(opening_square_name)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ToolkitResult.failure(
                     TokenContextToolkitException(
                         cls_mthd=method,
@@ -192,7 +192,7 @@ class TokenContextToolkit(Toolkit[TokenContext]):
         if current_position is not None:
             validation = workers.coord_service.validator.validate(current_position)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ToolkitResult.failure(
                     TokenContextToolkitException(
                         cls_mthd=method,
@@ -211,7 +211,7 @@ class TokenContextToolkit(Toolkit[TokenContext]):
         if rank is not None:
             validation = workers.rank_service.validator.validate(rank)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ToolkitResult.failure(
                     TokenContextToolkitException(
                         cls_mthd=method,
@@ -230,7 +230,7 @@ class TokenContextToolkit(Toolkit[TokenContext]):
         if team is not None:
             validation = workers.team_service.validator.validate(team)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ToolkitResult.failure(
                     TokenContextToolkitException(
                         cls_mthd=method,
@@ -249,7 +249,7 @@ class TokenContextToolkit(Toolkit[TokenContext]):
         if color is not None:
             validation = workers.color_validator.validate(color)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ToolkitResult.failure(
                     TokenContextToolkitException(
                         cls_mthd=method,
@@ -272,7 +272,7 @@ class TokenContextToolkit(Toolkit[TokenContext]):
                 ceiling=workers.rank_service.persona_service.max_ransom
             )
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ToolkitResult.failure(
                     TokenContextToolkitException(
                         cls_mthd=method,

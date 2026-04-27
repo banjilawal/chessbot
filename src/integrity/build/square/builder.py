@@ -132,7 +132,7 @@ class SquareBuilder(Builder[Square]):
             name_candidate=name
         )
         if identity_validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 SquareBuildException(
                     cls_mthd=method,
@@ -147,7 +147,7 @@ class SquareBuilder(Builder[Square]):
         # Handle the case that, the coord is not safe.
         coord_validation = tool.coord_service.validator.validate(coord)
         if coord_validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 SquareBuildException(
                     cls_mthd=method,
@@ -162,7 +162,7 @@ class SquareBuilder(Builder[Square]):
         # Handle the case that, the board is not safe.
         board_validation = tool.board_service.validator.validate(board)
         if board_validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 SquareBuildException(
                     cls_mthd=method,
@@ -182,7 +182,7 @@ class SquareBuilder(Builder[Square]):
             board=board
         )
         if collision_detection_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 SquareBuildException(
                     cls_mthd=method,
@@ -233,7 +233,7 @@ class SquareBuilder(Builder[Square]):
         )
         # Handle the case that, the relation analysis was not completed.
         if relation_analysis.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 SquareBuildException(
                     cls_mthd=method,
@@ -247,7 +247,7 @@ class SquareBuilder(Builder[Square]):
             )
         # Handle the case that, the board and item are not related.
         if relation_analysis.not_related or relation_analysis.stale_link_exists:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 SquareBuildException(
                     cls_mthd=method,
@@ -266,7 +266,7 @@ class SquareBuilder(Builder[Square]):
         if relation_analysis.not_registered:
             insertion_result = board.squares.insert_square(square=square)
             if insertion_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return BuildResult.failure(
                     SquareBuildException(
                         cls_mthd=method,

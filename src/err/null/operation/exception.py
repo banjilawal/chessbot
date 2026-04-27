@@ -1,7 +1,7 @@
-# src/err/null/number/exception.py
+# src/err/null/operation/exception.py
 
 """
-Module: err.null.number.exception
+Module: err.null.operation.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -13,18 +13,18 @@ from typing import Any, Optional
 from err import NullException
 
 __all__ = [
-    # ======================# NUMBER_NULL_EXCEPTION #======================#
-    "NumberNullException",
+    # ======================# OPERATION_NULL_EXCEPTION #======================#
+    "OperationNullException",
 ]
 
-# ======================# NUMBER_NULL_EXCEPTION #======================#
-class NumberNullException(NullException):
+# ======================# OPERATION_NULL_EXCEPTION #======================#
+class OperationNullException(NullException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required number is null.
+        1.  Indicate that a required operation is null.
 
     Attributes:
         msg: Optional[str]
@@ -40,8 +40,8 @@ class NumberNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = "Number cannot be null."
-    ERR_CODE = "NUMBER_NULL_EXCEPTION"
+    MSG = "Operation cannot be null."
+    ERR_CODE = "OPERATION_NULL_EXCEPTION"
     
     def __init__(
             self,

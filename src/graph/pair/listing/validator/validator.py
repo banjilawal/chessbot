@@ -54,7 +54,7 @@ class PairListValidator(Validator[PairList]):
         
         # Handle the nonexistence case.
         if candidate is None:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 PairListValidationException(
                     cls_mthd=method,
@@ -72,7 +72,7 @@ class PairListValidator(Validator[PairList]):
             )
         # Handle the wrong class case.
         if not isinstance(candidate, PairList):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 PairListValidationException(
                     cls_mthd=method,

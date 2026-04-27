@@ -62,7 +62,7 @@ class HostageContextValidator(Validator[HostageContext]):
         
         # Handle the nonexistence case.
         if candidate is None:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 HostageContextValidationException(
                     msg=f"{method}: {HostageContextValidationException.MSG}",
@@ -71,7 +71,7 @@ class HostageContextValidator(Validator[HostageContext]):
             )
         # Handle the wrong class case.
         if not isinstance(candidate, HostageContext):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 HostageContextValidationException(
                     msg=f"{method}: {HostageContextValidationException.MSG}",
@@ -84,7 +84,7 @@ class HostageContextValidator(Validator[HostageContext]):
         # Handle the case of searching with no attribute-value provided.
         flag_count = len(context.to_dict())
         if flag_count == 0:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 HostageContextValidationException(
                     msg=f"{method}: {HostageContextValidationException.MSG}",
@@ -95,7 +95,7 @@ class HostageContextValidator(Validator[HostageContext]):
             )
         # Handle the case of too many attributes being used in a search.
         if flag_count > 1:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 HostageContextValidationException(
                     msg=f"{method}: {HostageContextValidationException.MSG}",
@@ -110,7 +110,7 @@ class HostageContextValidator(Validator[HostageContext]):
         if context.id is not None:
             validation = identity_service.validate_id(context.id)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     HostageContextValidationException(
                         msg=f"{method}: {HostageContextValidationException.MSG}",
@@ -124,7 +124,7 @@ class HostageContextValidator(Validator[HostageContext]):
         if context.victor is not None:
             validation = hostage_service.validator.validate(context.victor)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     HostageContextValidationException(
                         msg=f"{method}: {HostageContextValidationException.MSG}",
@@ -138,7 +138,7 @@ class HostageContextValidator(Validator[HostageContext]):
         if context.prisoner is not None:
             validation = hostage_service.validator.verify_hostage_is_combatant(candidate=context.prisoner)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     HostageContextValidationException(
                         msg=f"{method}: {HostageContextValidationException.MSG}",
@@ -152,7 +152,7 @@ class HostageContextValidator(Validator[HostageContext]):
         if context.captured_square is not None:
             validation = square_service.validator.validate(context.captured_square)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     HostageContextValidationException(
                         msg=f"{method}: {HostageContextValidationException.MSG}",

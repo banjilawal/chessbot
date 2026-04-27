@@ -94,7 +94,7 @@ class NodeContextBuilder(Builder[NodeContext]):
         
         # Handle the case that, all the optional params are null.
         if param_count == 0:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 NodeContextBuildException(
                     msg=f"{method}: {NodeContextBuildException.MSG}",
@@ -105,7 +105,7 @@ class NodeContextBuilder(Builder[NodeContext]):
             )
         # Handle the case that, more than one optional param is not-null.
         if param_count > 1:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 NodeContextBuildException(
                     msg=f"{method}: {NodeContextBuildException.MSG}",
@@ -124,7 +124,7 @@ class NodeContextBuilder(Builder[NodeContext]):
                 floor=-(sys.maxsize - 1),
             )
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return BuildResult.failure(
                     NodeContextBuildException(
                         msg=f"{method}: {NodeContextBuildException.MSG}",
@@ -138,7 +138,7 @@ class NodeContextBuilder(Builder[NodeContext]):
         if square is not None:
             validation = square_service.validator.validate(candidate=square)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return BuildResult.failure(
                     NodeContextBuildException(
                         msg=f"{method}: {NodeContextBuildException.MSG}",
@@ -152,7 +152,7 @@ class NodeContextBuilder(Builder[NodeContext]):
         if predecessor is not None:
             validation = node_validator.validate(candidate=predecessor)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return BuildResult.failure(
                     NodeContextBuildException(
                         msg=f"{method}: {NodeContextBuildException.MSG}",
@@ -166,7 +166,7 @@ class NodeContextBuilder(Builder[NodeContext]):
         if discovery_status is not None:
             validation = node_validator.validate_discovery_status(candidate=discovery_status)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return BuildResult.failure(
                     NodeContextBuildException(
                         msg=f"{method}: {NodeContextBuildException.MSG}",

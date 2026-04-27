@@ -70,7 +70,7 @@ class SquareDepartureProcess:
         # Handle the case that, the square does not pass a validation check.
         validation_result = square_validator.validate(candidate=square)
         if validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return DeletionResult.failure(
                 SquareDepartureException(
                         cls_mthd=method,
@@ -83,7 +83,7 @@ class SquareDepartureProcess:
             )
         # Handle the case that, the square is empty.
         if square.is_empty:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return DeletionResult.failure(
                 SquareDepartureException(
                         cls_mthd=method,

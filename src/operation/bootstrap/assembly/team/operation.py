@@ -40,6 +40,8 @@ class TeamAssemblyBootstrapper(AssemblyBootstrapper[Team]):
     Super Class:
         AssemblyBootstrapper
     """
+    OPERATOR_NAME = "team_assembly_bootstrapper"
+    
     @classmethod
     @LoggingLevelRouter.monitor()
     def execute(
@@ -72,7 +74,7 @@ class TeamAssemblyBootstrapper(AssemblyBootstrapper[Team]):
             toolkit=toolkit,
         )
         if blueprint_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BootstrapTeamAssemblyException(
                     cls_mthd=method,
@@ -100,7 +102,7 @@ class TeamAssemblyBootstrapper(AssemblyBootstrapper[Team]):
             class_name="Team",
         )
         if id_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BootstrapTeamAssemblyException(
                     cls_mthd=method,
@@ -115,7 +117,7 @@ class TeamAssemblyBootstrapper(AssemblyBootstrapper[Team]):
             candidate=blueprint.schema
         )
         if schema_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BootstrapTeamAssemblyException(
                     cls_mthd=method,
@@ -130,7 +132,7 @@ class TeamAssemblyBootstrapper(AssemblyBootstrapper[Team]):
             candidate=blueprint.owner
         )
         if owner_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BootstrapTeamAssemblyException(
                     cls_mthd=method,
@@ -146,7 +148,7 @@ class TeamAssemblyBootstrapper(AssemblyBootstrapper[Team]):
             toolkit=toolkit,
         )
         if board_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BootstrapTeamAssemblyException(
                     cls_mthd=method,
@@ -194,7 +196,7 @@ class TeamAssemblyBootstrapper(AssemblyBootstrapper[Team]):
             candidate=blueprint.board
         )
         if board_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BootstrapTeamAssemblyException(
                     cls_mthd=method,
@@ -210,7 +212,7 @@ class TeamAssemblyBootstrapper(AssemblyBootstrapper[Team]):
             id=blueprint.board.team_binder
         )
         if slot_search_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return AssemblyResult.failure(
                 BootstrapTeamAssemblyException(
                     cls_mthd=method,
@@ -221,7 +223,7 @@ class TeamAssemblyBootstrapper(AssemblyBootstrapper[Team]):
                 )
             )
         if not slot_search_result.is_empty:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return AssemblyResult.failure(
                 BootstrapTeamAssemblyException(
                     cls_mthd=method,

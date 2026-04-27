@@ -18,6 +18,7 @@ from model.team import (
 
 
 class TeamTableBuilder(Builder[TeamBinder]):
+    OPERATION_NAME = "binder_assembler"
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -31,7 +32,7 @@ class TeamTableBuilder(Builder[TeamBinder]):
         # Handle the case that, the white_team does not pass a validation check.
         white_team_validation_result = team_validator.validate(white_team)
         if white_team_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 TeamBinderBuildException(
                     msg=f"{method}: {TeamBinderBuildException.MSG}",
@@ -40,7 +41,7 @@ class TeamTableBuilder(Builder[TeamBinder]):
             )
         # Handle the case that, the white_team's schema is wrong.
         if white_team.schema != schema_service.schema.WHITE:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 TeamBinderBuildException(
                     msg=f"{method}: {TeamBinderBuildException.MSG}",
@@ -51,7 +52,7 @@ class TeamTableBuilder(Builder[TeamBinder]):
             )
         # Handle the case that, the black_team's schema is wrong.
         if black_team.schema != schema_service.schema.WHITE:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 TeamBinderBuildException(
                     msg=f"{method}: {TeamBinderBuildException.MSG}",
@@ -62,7 +63,7 @@ class TeamTableBuilder(Builder[TeamBinder]):
             )
         # If there are more than two schemas handle the case that the both teams have the same schema.
         if black_team.schema == white_team.schema:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 TeamBinderBuildException(
                     msg=f"{method}: {TeamBinderBuildException.MSG}",

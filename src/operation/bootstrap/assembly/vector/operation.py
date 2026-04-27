@@ -39,6 +39,8 @@ class VectorAssemblyBootstrapper(AssemblyBootstrapper[Vector]):
     Super Class:
         AssemblyBootstrapper
      """
+    OPERATION_NAME = "vector_assembly_bootstrapper"
+    
     @classmethod
     @LoggingLevelRouter.monitor()
     def execute(
@@ -76,7 +78,7 @@ class VectorAssemblyBootstrapper(AssemblyBootstrapper[Vector]):
                 candidate=abs(num)
             )
             if validation_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     VectorAssemblyBootstrapperException(
                         cls_mthd=method,

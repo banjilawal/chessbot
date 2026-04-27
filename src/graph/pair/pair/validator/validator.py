@@ -64,7 +64,7 @@ class PairValidator(Validator[Pair]):
         
         # Handle the nonexistence case.
         if candidate is None:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 PairValidationException(
                     cls_mthd=method,
@@ -82,7 +82,7 @@ class PairValidator(Validator[Pair]):
             )
         # Handle the wrong class case.
         if not isinstance(candidate, Pair):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 PairValidationException(
                     cls_mthd=method,
@@ -100,7 +100,7 @@ class PairValidator(Validator[Pair]):
         for member in pair.members:
             validation_result = node_validator.validate(candidate=member)
             if validation_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     PairValidationException(
                         cls_mthd=method,
@@ -113,7 +113,7 @@ class PairValidator(Validator[Pair]):
                 )
         # Handle the case that, the head and tail are the same.
         if pair.head == pair.tail:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 PairValidationException(
                     cls_mthd=method,

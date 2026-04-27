@@ -79,7 +79,7 @@ class NodeTreeBuilder(Builder[NodeTree]):
         # Handle the case that the square_span does not pass a validation check.
         square_span_result = square_span_service.validator.validate(candidate=square_span)
         if square_span_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 NodeTreeBuildException(
                     cls_mthd=method,
@@ -96,7 +96,7 @@ class NodeTreeBuilder(Builder[NodeTree]):
         
         # Handle the case that, the root_node is not built successfully.
         if root_node_build_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 NodeTreeBuildException(
                     cls_mthd=method,
@@ -117,7 +117,7 @@ class NodeTreeBuilder(Builder[NodeTree]):
             )
             # Handle the case that, the pair_list  is not built.
             if branch_build_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return BuildResult.failure(
                     NodeTreeBuildException(
                         cls_mthd=method,

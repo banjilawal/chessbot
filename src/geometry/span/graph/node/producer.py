@@ -66,7 +66,7 @@ class NodeTreeProducer:
         root_node_build_result = node_service.builder.build(square=square_span.origin)
         # Handle the case that, the root_node is not built successfully.
         if root_node_build_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 SquareGraphHandlerException(
                     cls_mthd=method,
@@ -122,7 +122,7 @@ class NodeTreeProducer:
             )
             # Handle the case that the node_link_pair is not built.
             if pair_list_build_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 BuildResult.failure(
                     NodeStackServiceProductionException(
                         cls_mthd=method,
@@ -148,7 +148,7 @@ class NodeTreeProducer:
         
         # Handle the case that, a square is not found.
         if search_result.is_empty:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             SearchResult.failure(
                 NodeStackServiceProductionException(
                     cls_mthd=method,
@@ -185,7 +185,7 @@ class NodeTreeProducer:
             push_result = graph.vertices.push(item=node_dict[key])
             # Handle the case that the node is not in the graph.
             if push_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return InsertionResult.failure(
                     SquareGraphHandlerException(
                         cls_mthd=method,

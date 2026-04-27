@@ -97,7 +97,7 @@ class SquareStackOccupationWorker(Worker):
         # Handle the case that either the square does not or is not safe.
         square_verification_result = cls._square_exists_and_is_safe(square=square, square_stack=square_stack)
         if square_verification_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=square,
                 exception=SquareStackTokenHandlerException(
@@ -117,7 +117,7 @@ class SquareStackOccupationWorker(Worker):
         )
         # Handle the case that the square is not updated.
         if update_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pre_update_square,
                 exception=SquareStackTokenHandlerException(

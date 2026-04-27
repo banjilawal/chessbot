@@ -73,7 +73,7 @@ class NameValidator(Validator[str]):
         
         # Handle the case that, the candidate is flagged unsafe.
         if string_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 NameValidationException(
                     cls_mthd=method,
@@ -85,7 +85,7 @@ class NameValidator(Validator[str]):
             )
         # Handle the case tha the name is too short.
         if len(string_validation_result.payload) < name_restrictions.min_length:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 NameValidationException(
                     cls_mthd=method,
@@ -100,7 +100,7 @@ class NameValidator(Validator[str]):
             )
         # Handle the case tha the name is too long.
         if len(string_validation_result.payload) > name_restrictions.max_length:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 NameValidationException(
                     cls_mthd=method,

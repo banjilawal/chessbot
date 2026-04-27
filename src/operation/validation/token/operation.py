@@ -39,6 +39,8 @@ class TokenValidator(Validator[Token]):
     Super Class:
         Validator
     """
+    OPERATION_NAME = "token_validator"
+    
     @classmethod
     @LoggingLevelRouter.monitor
     def validate(
@@ -77,7 +79,7 @@ class TokenValidator(Validator[Token]):
             null_exception=TokenNullException(),
         )
         if validation_bootstrap_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
                     cls_mthd=method,
@@ -96,7 +98,7 @@ class TokenValidator(Validator[Token]):
             name_candidate=token.designation
         )
         if identity_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
                     cls_mthd=method,
@@ -109,7 +111,7 @@ class TokenValidator(Validator[Token]):
         # Handle the case that, the occupant's team fails validation.
         team_validation_result = toolkit.team_validator.validate(token.team)
         if team_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
                     cls_mthd=method,
@@ -122,7 +124,7 @@ class TokenValidator(Validator[Token]):
         # Handle the case that, the roster or opening_square_name are not acceptable.
         opening_square_validation_result = toolkit.square_validator.validate(token.opening_square)
         if opening_square_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
                     cls_mthd=method,
@@ -135,7 +137,7 @@ class TokenValidator(Validator[Token]):
         # Handle the case that, the rank is not safe.
         rank_validation_result = toolkit.rank_service.validator.validate(rank=token.rank)
         if rank_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
                     cls_mthd=method,
@@ -152,7 +154,7 @@ class TokenValidator(Validator[Token]):
             null_exception=CoordDatabaseNullException()
         )
         if coord_database_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
                     cls_mthd=method,
@@ -181,7 +183,7 @@ class TokenValidator(Validator[Token]):
         # Handle the case that, the rank is not certified as a safe occupant.
         validation_result = cls.validate(candidate)
         if validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
                     cls_mthd=method,
@@ -192,7 +194,7 @@ class TokenValidator(Validator[Token]):
             )
         # Handle the case that, the rank is not a CombatantToken.
         if not isinstance(candidate, CombatantToken):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
                     cls_mthd=method,
@@ -210,7 +212,7 @@ class TokenValidator(Validator[Token]):
         # Handle the case that, the rank is not certified as a safe occupant.
         validation = cls.validate(candidate)
         if validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
                     msg=f"{method}: {TokenValidationException.MSG}",
@@ -219,7 +221,7 @@ class TokenValidator(Validator[Token]):
             )
         # Handle the case that, the rank is not a KingToken.
         if not isinstance(candidate, KingToken):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
                     msg=f"{method}: {TokenValidationException.MSG}",
@@ -235,7 +237,7 @@ class TokenValidator(Validator[Token]):
         # Handle the case that, the occupantis not safe.
         token_validation = cls.validate(candidate=token)
         if token_validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
                     msg=f"{method}: {TokenValidationException.MSG}",
@@ -244,7 +246,7 @@ class TokenValidator(Validator[Token]):
             )
         # Handle the case that, the occupant has not been placed.
         if token.is_disabled:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
                     msg=f"{method}: {TokenValidationException.MSG}",
@@ -262,7 +264,7 @@ class TokenValidator(Validator[Token]):
         # Handle the case that, the occupantis not safe.
         token_validation = cls.validate(candidate=token)
         if token_validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
                     msg=f"{method}: {TokenValidationException.MSG}",
@@ -271,7 +273,7 @@ class TokenValidator(Validator[Token]):
             )
         # Handle the case that, the occupant has not been placed.
         if token.is_active:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
                     msg=f"{method}: {TokenValidationException.MSG}",
@@ -289,7 +291,7 @@ class TokenValidator(Validator[Token]):
         # Handle the case that, the occupant is enable.
         token_validation = cls.verify_disabled_token(token)
         if token.is_active:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
                     msg=f"{method}: {TokenValidationException.MSG}",
@@ -298,7 +300,7 @@ class TokenValidator(Validator[Token]):
             )
         # Handle the case that, the token is a King.
         if isinstance(token, KingToken):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
                     msg=f"{method}: {TokenValidationException.MSG}",

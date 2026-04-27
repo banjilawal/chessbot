@@ -11,6 +11,7 @@ version: 1.0.0
 
 # Packages
 from .analysis import *
+from .controller import *
 from .math import *
 from .model import *
 from .null import *

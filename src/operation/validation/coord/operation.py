@@ -40,6 +40,7 @@ class CoordValidator(Validator[Coord]):
     Super Class:
         Validator
     """
+    OPERATION_NAME = "coord_validator"
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -79,7 +80,7 @@ class CoordValidator(Validator[Coord]):
             null_exception=CoordNullException(),
         )
         if validation_bootstrap_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 CoordValidationException(
                     cls_mthd=method,

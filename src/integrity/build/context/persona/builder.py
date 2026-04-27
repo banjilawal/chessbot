@@ -89,7 +89,7 @@ class PersonaContextBuilder(Builder[PersonaKey]):
         
         # Test if no params are set. Need an attribute-value pair to look up a rank's persona_entry.
         if param_count == 0:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 PersonaKeyBuildException(
                     msg=f"{method}: {PersonaKeyBuildException.ERR_CODE}",
@@ -98,7 +98,7 @@ class PersonaContextBuilder(Builder[PersonaKey]):
             )
         # Test if more than one param is set. Only one attribute-value tuple is allowed in a search.
         if param_count > 1:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 PersonaKeyBuildException(
                     msg=f"{method}: {PersonaKeyBuildException.ERR_CODE}",
@@ -111,7 +111,7 @@ class PersonaContextBuilder(Builder[PersonaKey]):
         if name is not None:
             validation = identity_service.validate_name(candidate=name)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return BuildResult.failure(
                     PersonaKeyBuildException(
                         msg=f"{method}: {PersonaKeyBuildException.ERR_CODE}",
@@ -125,7 +125,7 @@ class PersonaContextBuilder(Builder[PersonaKey]):
         if designation is not None:
             validation = identity_service.validate_name(candidate=designation)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return BuildResult.failure(
                     PersonaKeyBuildException(
                         msg=f"{method}: {PersonaKeyBuildException.ERR_CODE}",
@@ -140,7 +140,7 @@ class PersonaContextBuilder(Builder[PersonaKey]):
             # Quotas have to be between king_count=1 and pawn_count=8
             validation = number_validator.validate(floor=1, ceiling=9)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return BuildResult.failure(
                     PersonaKeyBuildException(
                         msg=f"{method}: {PersonaKeyBuildException.ERR_CODE}",
@@ -155,7 +155,7 @@ class PersonaContextBuilder(Builder[PersonaKey]):
             # Ransoms have to be between king_ransom=0 and 20
             validation = number_validator.validate(floor=0, ceiling=20)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return BuildResult.failure(
                     PersonaKeyBuildException(
                         msg=f"{method}: {PersonaKeyBuildException.ERR_CODE}",

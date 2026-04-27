@@ -71,7 +71,7 @@ class TokenContextValidator(Validator[TokenContext]):
         
         # Handle the nonexistence case.
         if candidate is None:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenContextValidationException(
                     cls_mthd=method,
@@ -88,7 +88,7 @@ class TokenContextValidator(Validator[TokenContext]):
             )
         # Handle the wrong class case.
         if not isinstance(candidate, TokenContext):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenContextValidationException(
                     cls_mthd=method,
@@ -108,7 +108,7 @@ class TokenContextValidator(Validator[TokenContext]):
         # Handle the case of searching with no attribute-value provided.
         flag_count = len(context.to_dict())
         if flag_count == 0:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenContextValidationException(
                     cls_mthd=method,
@@ -125,7 +125,7 @@ class TokenContextValidator(Validator[TokenContext]):
             )
         # Handle the case of too many attributes being used in a search.
         if flag_count > 1:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenContextValidationException(
                     cls_mthd=method,
@@ -148,7 +148,7 @@ class TokenContextValidator(Validator[TokenContext]):
                 candidate=context.id
             )
             if validation_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     TokenContextValidationException(
                         cls_mthd=method,
@@ -169,7 +169,7 @@ class TokenContextValidator(Validator[TokenContext]):
                 candidate=context.designation
             )
             if validation_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     TokenContextValidationException(
                         cls_mthd=method,
@@ -190,7 +190,7 @@ class TokenContextValidator(Validator[TokenContext]):
                 candidate=context.opening_square_name
             )
             if validation_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     TokenContextValidationException(
                         cls_mthd=method,
@@ -211,7 +211,7 @@ class TokenContextValidator(Validator[TokenContext]):
                 candidate=context.current_position
             )
             if validation_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     TokenContextValidationException(
                         cls_mthd=method,
@@ -232,7 +232,7 @@ class TokenContextValidator(Validator[TokenContext]):
                 candidate=context.team
             )
             if validation_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     TokenContextValidationException(
                         cls_mthd=method,
@@ -253,7 +253,7 @@ class TokenContextValidator(Validator[TokenContext]):
                 rank=context.rank
             )
             if validation_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     TokenContextValidationException(
                         cls_mthd=method,
@@ -274,7 +274,7 @@ class TokenContextValidator(Validator[TokenContext]):
                 candidate=context.color
             )
             if validation_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     TokenContextValidationException(
                         cls_mthd=method,
@@ -296,9 +296,9 @@ class TokenContextValidator(Validator[TokenContext]):
                 floor=workers.persona_service.min_ransom,
                 ceiling=workers.persona_service.max_ransom,
             )
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             if validation_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     TokenContextValidationException(
                         cls_mthd=method,

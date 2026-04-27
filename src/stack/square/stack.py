@@ -142,7 +142,7 @@ class SquareStackService(StackService[Square]):
     
         # Handle the case that, the search is not completed.
         if insertion_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 SquareStackException(
                     cls_mthd=method,
@@ -164,7 +164,7 @@ class SquareStackService(StackService[Square]):
         
         # Handle the case that, the search is not completed.
         if deletion_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return DeletionResult.failure(
                 SquareStackException(
                     cls_mthd=method,
@@ -193,7 +193,7 @@ class SquareStackService(StackService[Square]):
         )
         # Handle the case that, the deletion is not completed.
         if deletion_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return DeletionResult.failure(
                 SquareStackException(
                     cls_mthd=method,
@@ -295,7 +295,7 @@ class SquareStackService(StackService[Square]):
         )
         # Handle the case that, the search is not completed.
         if query_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return SearchResult.failure(
                 SquareStackException(
                     cls_mthd=method,

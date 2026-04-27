@@ -82,7 +82,7 @@ class CoordContextBuilder(Builder[CoordContext]):
         
         # Handle the case that, all the optional params are null.
         if param_count == 0:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 CoordContextBuildException(
                     cls_mthd=method,
@@ -184,7 +184,7 @@ class CoordContextBuilder(Builder[CoordContext]):
                 floor=0,
             )
             if validation_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return BuildResult.failure(
                     CoordContextBuildException(
                         cls_mthd=method,

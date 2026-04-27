@@ -58,7 +58,7 @@ class NodeEdgeHandler:
             )   
             # Handle the case that, the edge is not built
             if build_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return BuildResult.failure(
                     NodeEdgeHandlerException(
                         cls_mthd=method,
@@ -106,7 +106,7 @@ class NodeEdgeHandler:
         )
         # Handle the case that, the edge is not built
         if build_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 NodeEdgeHandlerException(
                     cls_mthd=method,
@@ -142,7 +142,7 @@ class NodeEdgeHandler:
             push_result = graph.edges.push(item=edge)
             # Handle the case that the edge is not in the graph.
             if push_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return InsertionResult.failure(
                     NodeEdgeHandlerException(
                         cls_mthd=method,

@@ -60,7 +60,7 @@ class SquareSpanValidator(Validator[SquareSpan]):
         
         # Handle the nonexistence case.
         if candidate is None:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareSpanValidationException(
                     cls_mthd=method,
@@ -78,7 +78,7 @@ class SquareSpanValidator(Validator[SquareSpan]):
             )
         # Handle the wrong class case.
         if not isinstance(candidate, SquareSpan):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareSpanValidationException(
                     cls_mthd=method,
@@ -95,7 +95,7 @@ class SquareSpanValidator(Validator[SquareSpan]):
         # Handle the case that, the origin does not pass square safety checks.
         origin_validation_result = square_validator.validate(candidate=square_span.origin)
         if origin_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareSpanValidationException(
                     cls_mthd=method,
@@ -108,7 +108,7 @@ class SquareSpanValidator(Validator[SquareSpan]):
             )
         # Handle the case that, the rays are null
         if square_span.rays is None:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareSpanValidationException(
                     cls_mthd=method,
@@ -127,7 +127,7 @@ class SquareSpanValidator(Validator[SquareSpan]):
             )
         # Handle the case that, square_span.rays is null.
         if not isinstance(square_span.rays, List):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             wrong_type = type(square_span.rays).__name__
             return ValidationResult.failure(
                 SquareSpanValidationException(

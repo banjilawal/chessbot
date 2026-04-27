@@ -112,7 +112,7 @@ class EdgeStackService(StackService[Edge]):
         # Handle the case that, the item is unsafe.
         validation = self.integrity_service.validator.validate(candidate=item)
         if validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 EdgeStackException(
                     msg=f"ServiceId:{self.id}, {method}: {EdgeStackException.ERR_CODE}",
@@ -124,7 +124,7 @@ class EdgeStackService(StackService[Edge]):
             )
         # Handle the case that, the edge is already in the list.
         if item in self._stack:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 EdgeStackException(
                     msg=f"ServiceId:{self.id}, {method}: {EdgeStackException.ERR_CODE}",
@@ -159,7 +159,7 @@ class EdgeStackService(StackService[Edge]):
         
         # Handle the case that, there are no edges in the schema.
         if self.is_empty:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return DeletionResult.failure(
                 EdgeStackException(
                     msg=f"ServiceId:{self.id}, {method}: {EdgeStackException.ERR_CODE}",
@@ -204,7 +204,7 @@ class EdgeStackService(StackService[Edge]):
         
         # Handle the case that, there are no items in the list.
         if self.is_empty:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return DeletionResult.failure(
                 EdgeStackException(
                     msg=f"StackId:{self.id}, {method}: {EdgeStackException.ERR_CODE}",
@@ -219,7 +219,7 @@ class EdgeStackService(StackService[Edge]):
         # Handle the case that, the labelis not safe.
         validation = identity_service.validate_id(candidate=label)
         if validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return DeletionResult.failure(
                 EdgeStackException(
                     msg=f"StackId:{self.id}, {method}: {EdgeStackException.ERR_CODE}",
@@ -269,7 +269,7 @@ class EdgeStackService(StackService[Edge]):
         
         # Handle the case that, the search is not completed.
         if query_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return SearchResult.failure(
                 EdgeStackException(
                     msg=f"ServiceID:{self.id} {method}: {EdgeStackException.ERR_CODE}",

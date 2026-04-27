@@ -40,6 +40,8 @@ class ScalarAssembler(Assembler[Scalar]):
      Super Class:
         .Assembly.
      """
+    OPERATION_NAME = "scalar_assembler"
+    
     @classmethod
     @LoggingLevelRouter.monitor
     def execute(
@@ -70,7 +72,7 @@ class ScalarAssembler(Assembler[Scalar]):
             candidate=blueprint.magnitude,
         )
         if validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 ScalarAssemblyException(
                     cls_mthd=method,

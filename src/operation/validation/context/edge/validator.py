@@ -67,7 +67,7 @@ class EdgeContextValidator(Validator[EdgeContext]):
         
         # Handle the nonexistence case.
         if candidate is None:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 EdgeContextValidationException(
                     msg=f"{method}: {EdgeContextValidationException.MSG}",
@@ -76,7 +76,7 @@ class EdgeContextValidator(Validator[EdgeContext]):
             )
         # Handle the wrong class case.
         if not isinstance(candidate, EdgeContext):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 EdgeContextValidationException(
                     msg=f"{method}: {EdgeContextValidationException.MSG}",
@@ -91,7 +91,7 @@ class EdgeContextValidator(Validator[EdgeContext]):
         # Handle the case of searching with no attribute-value provided.
         flag_count = len(context.to_dict())
         if flag_count == 0:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 EdgeContextValidationException(
                     msg=f"{method}: {EdgeContextValidationException.MSG}",
@@ -100,7 +100,7 @@ class EdgeContextValidator(Validator[EdgeContext]):
             )
         # Handle the case of too many attributes being used in a search.
         if flag_count > 1:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 EdgeContextValidationException(
                     msg=f"{method}: {EdgeContextValidationException.MSG}",
@@ -115,7 +115,7 @@ class EdgeContextValidator(Validator[EdgeContext]):
         if context.id is not None:
             validation = identity_service.validate_id(candidate=context.id)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     EdgeContextValidationException(
                         msg=f"{method}: {EdgeContextValidationException.MSG}",
@@ -129,7 +129,7 @@ class EdgeContextValidator(Validator[EdgeContext]):
         if context.designation is not None:
             validation = identity_service.validate_name(context.designation)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     EdgeContextValidationException(
                         msg=f"{method}: {EdgeContextValidationException.MSG}",
@@ -143,7 +143,7 @@ class EdgeContextValidator(Validator[EdgeContext]):
         if context.coord is not None:
             validation = coord_service.validator.validate(context.coord)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     EdgeContextValidationException(
                         msg=f"{method}: {EdgeContextValidationException.MSG}",
@@ -157,7 +157,7 @@ class EdgeContextValidator(Validator[EdgeContext]):
         if context.board is not None:
             validation = board_service.validator.validate(context.board)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     EdgeContextValidationException(
                         msg=f"{method}: {EdgeContextValidationException.MSG}",
@@ -171,7 +171,7 @@ class EdgeContextValidator(Validator[EdgeContext]):
         if context.occupant is not None:
             validation = edge_service.validator.validate(context.occupant)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     EdgeContextValidationException(
                         msg=f"{method}: {EdgeContextValidationException.MSG}",
@@ -184,7 +184,7 @@ class EdgeContextValidator(Validator[EdgeContext]):
         # Certification for the search-by-state.
         if context.state is not None:
             if not isinstance(context.state, EdgeState):
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     EdgeContextValidationException(
                         msg=f"{method}: {EdgeContextValidationException.MSG}",

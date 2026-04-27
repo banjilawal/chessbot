@@ -88,7 +88,7 @@ class TokenBuilder(Builder[Token]):
         # Handle the case that, the id does not pass a validation check.
         id_validation = toolkit.identity_service.validate_id(id)
         if id_validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 TokenBuildException(
                     cls_mthd=method,
@@ -102,7 +102,7 @@ class TokenBuilder(Builder[Token]):
         # Handle the case that, the team does not pass a validation check.
         owner_validation = toolkit.team_service.validator.validate(owner)
         if owner_validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 TokenBuildException(
                     cls_mthd=method,
@@ -116,7 +116,7 @@ class TokenBuilder(Builder[Token]):
         # Handle the case that, the formation does not pass a validation check.
         formation_validation = toolkit.formation_service.validator.validate(formation)
         if formation_validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 TokenBuildException(
                     cls_mthd=method,
@@ -202,7 +202,7 @@ class TokenBuilder(Builder[Token]):
         # Handle the case that its Rank instance request is not satisfied.
         rank_build_result = rank_service.builder.build(persona=formation.persona)
         if rank_build_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 TokenBuildException(
                     msg=f"{method}: {TokenBuildException.ERR_CODE}",

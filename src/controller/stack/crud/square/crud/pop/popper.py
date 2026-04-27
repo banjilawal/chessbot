@@ -56,7 +56,7 @@ class SquareStackPopper:
         
         # Handle the case that the schema is empty.
         if square_stack.is_empty:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return DeletionResult.failure(
                 SquareStackPopException(
                     cls_mthd=method,
@@ -107,7 +107,7 @@ class SquareStackPopper:
         
         # Handle the case that the schema is empty.
         if square_stack.is_empty:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return DeletionResult.failure(
                 SquareStackPopException(
                     cls_mthd=method,
@@ -124,7 +124,7 @@ class SquareStackPopper:
         # Handle the case that, the idis not safe.
         id_validation_result = identity_service.validate_id(candidate=id)
         if id_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return DeletionResult.failure(
                 SquareStackPopException(
                     cls_mthd=method,

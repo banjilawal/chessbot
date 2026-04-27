@@ -27,6 +27,7 @@ class NodeValidator(Validator[Node]):
     # INHERITED ATTRIBUTES:
     None
     """
+    OPERATION_NAME = "node_validator"
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -60,7 +61,7 @@ class NodeValidator(Validator[Node]):
         
         # Handle the nonexistence case.
         if candidate is None:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 NodeValidationException(
                     msg=f"{method}: {NodeValidationException.MSG}",
@@ -69,7 +70,7 @@ class NodeValidator(Validator[Node]):
             )
         # Handle the wrong class case.
         if not isinstance(candidate, Node):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 NodeValidationException(
                     msg=f"{method}: {NodeValidationException.MSG}",
@@ -82,7 +83,7 @@ class NodeValidator(Validator[Node]):
         # Handle the case that, the square is not valid.
         square_validation_result = square_validator.validate(node.square)
         if square_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             ValidationResult.failure(
                 NodeValidationException(
                     msg=f"{method}: {NodeValidationException.MSG}",
@@ -91,7 +92,7 @@ class NodeValidator(Validator[Node]):
             )
         # Handle the case that, the incoming_nodes is not a list of nodes.
         if not isinstance(node.incoming_nodes, List):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             ValidationResult.failure(
                 NodeValidationException(
                     msg=f"{method}: {NodeValidationException.MSG}",
@@ -103,7 +104,7 @@ class NodeValidator(Validator[Node]):
             )
         # Handle the case that, the outgoing_nodes is not a list of nodes.
         if not isinstance(node.outgoing_nodes, List):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             ValidationResult.failure(
                 NodeValidationException(
                     msg=f"{method}: {NodeValidationException.MSG}",
@@ -115,7 +116,7 @@ class NodeValidator(Validator[Node]):
             )
         # If the predecessor is not null handle the case that its not a Node.
         if node.predecessor is not None and not isinstance(node.predecessor, Node):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             ValidationResult.failure(
                 NodeValidationException(
                     msg=f"{method}: {NodeValidationException.MSG}",
@@ -128,7 +129,7 @@ class NodeValidator(Validator[Node]):
         # Handle the case that, the priority is not a number
         priority_validation_result = number_validator.validate(node.priority)
         if priority_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 NodeValidationException(
                     msg=f"{method}: {NodeValidationException.MSG}",
@@ -137,7 +138,7 @@ class NodeValidator(Validator[Node]):
             )
         # Handle the case that, the DiscoveryStatus does not exist
         if node.discovery_status is None:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 NodeValidationException(
                     msg=f"{method}: {NodeValidationException.MSG}",
@@ -148,7 +149,7 @@ class NodeValidator(Validator[Node]):
             )
         # Handle the case that, the DiscoveryStatus is the wrong type
         if not isinstance(node.discovery_status, DiscoveryStatus):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 NodeValidationException(
                     msg=f"{method}: {NodeValidationException.MSG}",
@@ -180,13 +181,13 @@ class NodeValidator(Validator[Node]):
         
         # Handle the nonexistence case.
         if candidate is None:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 DiscoveryStatusNullException(f"{method}: {DiscoveryStatusNullException.MSG}")
             )
         # Handle the wrong class case.
         if not isinstance(candidate, DiscoveryStatus):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TypeError(
                     f"{method}: Was expecting a DiscoveryStatus, got {type(candidate).__predecessor__} instead."

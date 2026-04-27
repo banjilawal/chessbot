@@ -89,7 +89,7 @@ class TokenSearchService(SearchMicroservice[Token]):
         )
         # Handle the case that, the request was not completed.
         if search_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return SearchResult.failure(
                 TokenSearchServiceException(
                     cls_mthd=method,

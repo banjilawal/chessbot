@@ -77,7 +77,7 @@ class VectorContextToolkit(Toolkit[VectorOperand]):
         
         # Handle the case that, all the optional params are null.
         if param_count == 0:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ToolkitResult.failure(
                 VectorContextToolkitException(
                     cls_mthd=method,
@@ -92,7 +92,7 @@ class VectorContextToolkit(Toolkit[VectorOperand]):
             )
         # Handle the case that, more than one optional param is not-null.
         if param_count > 1:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ToolkitResult.failure(
                 VectorContextToolkitException(
                     cls_mthd=method,
@@ -112,7 +112,7 @@ class VectorContextToolkit(Toolkit[VectorOperand]):
         if coord is not None:
             toolkit_result = toolkit.coord_service.validator.validate(coord)
             if toolkit_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ToolkitResult.failure(
                     VectorContextToolkitException(
                         cls_mthd=method,
@@ -131,7 +131,7 @@ class VectorContextToolkit(Toolkit[VectorOperand]):
         # Deal with the alternate case.
         toolkit_result = toolkit.vector_service.validator.validate(vector)
         if toolkit_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ToolkitResult.failure(
                 VectorContextToolkitException(
                     cls_mthd=method,

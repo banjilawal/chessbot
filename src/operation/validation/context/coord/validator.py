@@ -68,7 +68,7 @@ class CoordContextValidator(Validator[CoordContext]):
         
         # Handle the nonexistence case.
         if candidate is None:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 CoordContextValidationException(
                     cls_mthd=method,
@@ -85,7 +85,7 @@ class CoordContextValidator(Validator[CoordContext]):
             )
         # Handle the case that, they type is wrong.
         if not isinstance(candidate, CoordContext):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 CoordContextValidationException(
                     cls_mthd=method,
@@ -105,7 +105,7 @@ class CoordContextValidator(Validator[CoordContext]):
         
         # Handle the case that, no context flags are set.
         if switch_count == 0:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 CoordContextValidationException(
                     cls_mthd=method,
@@ -207,7 +207,7 @@ class CoordContextValidator(Validator[CoordContext]):
                 floor=0,
             )
             if validation_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     CoordContextValidationException(
                         cls_mthd=method,

@@ -70,7 +70,7 @@ class BoardSquareRelationAnalysis(RelationAnalysis[Board, Square]):
         # Handle the case that, the board is not secure.
         board_validation = board_validator.validate(candidate_primary)
         if board_validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return RelationReport.failure(
                 BoardSquareAnalysisException(
                     msg=BoardSquareAnalysisException.MSG,
@@ -84,7 +84,7 @@ class BoardSquareRelationAnalysis(RelationAnalysis[Board, Square]):
         # Handle the case that, the square is unsecure.
         square_validation = square_service.validator.validate(candidate_satellite)
         if square_validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return RelationReport.failure(
                 BoardSquareAnalysisException(
                     msg=BoardSquareAnalysisException.MSG,
@@ -100,7 +100,7 @@ class BoardSquareRelationAnalysis(RelationAnalysis[Board, Square]):
         
         # Handle the case that, the search was aborted.
         if square_search.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return RelationReport.failure(
                 BoardSquareAnalysisException(
                     msg=BoardSquareAnalysisException.MSG,

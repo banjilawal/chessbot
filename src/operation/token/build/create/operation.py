@@ -129,7 +129,7 @@ class TokenCreationOperation:
         # Handle the case that its Rank instance request is not satisfied.
         rank_build_result = rank_service.builder.build(persona=formation.persona)
         if rank_build_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 TokenBuildException(
                     msg=f"{method}: {TokenBuildException.ERR_CODE}",

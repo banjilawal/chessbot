@@ -68,7 +68,7 @@ class RookSpanner(Spanner):
         )
         # Handle the case that the span arithmetic does not produce a result.
         if span_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ComputationResult.failure(
                 RookSpannerException(
                     cls_mthd=method,

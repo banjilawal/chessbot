@@ -192,7 +192,7 @@ class SquareDatabase(Database[Square]):
         )
         # Handle the case that, the eviction was aborted.
         if occupant_removal_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return DeletionResult.failure(
                 SquareDatabaseException(
                     msg=f"ServiceID:{self.id} {method}: {SquareDatabaseException.ERR_CODE}",
@@ -227,7 +227,7 @@ class SquareDatabase(Database[Square]):
         
         # Handle the case that, the square insertion was aborted.
         if square_insertion_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 SquareDatabaseException(
                     msg=f"ServiceID:{self.id} {method}: {SquareDatabaseException.ERR_CODE}",
@@ -258,7 +258,7 @@ class SquareDatabase(Database[Square]):
         
         # Handle the case that, the context was aborted.
         if query_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return SearchResult.failure(
                 SquareDatabaseException(
                     msg=f"ServiceID:{self.id} {method}: {SquareDatabaseException.ERR_CODE}",

@@ -49,7 +49,7 @@ class FormationValidator(Validator[Formation]):
         method = "FormationValidator.validate"
         # Handle the nonexistence case.
         if candidate is None:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 FormationValidationException(
                     msg=f"{method}: {FormationValidationException.ERR_CODE}",

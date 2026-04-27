@@ -37,6 +37,7 @@ class RankValidator(Validator[Rank]):
     Super Class:
         Validator
     """
+    OPERATION_NAME = "rank_validator"
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -73,7 +74,7 @@ class RankValidator(Validator[Rank]):
             null_exception=RankNullException(),
         )
         if validation_bootstrap_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 RankValidationException(
                     cls_mthd=method,

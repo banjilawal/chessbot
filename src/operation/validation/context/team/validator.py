@@ -67,7 +67,7 @@ class TeamContextValidator(Validator[TeamContext]):
         
         # Handle the nonexistence case.
         if candidate is None:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TeamContextValidationException(
                     msg=f"{method}: {TeamContextValidationException.ERR_CODE}",
@@ -76,7 +76,7 @@ class TeamContextValidator(Validator[TeamContext]):
             )
         # Handle the wrong class case.
         if not isinstance(candidate, TeamContext):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TeamContextValidationException(
                     msg=f"{method}: {TeamContextValidationException.ERR_CODE}",
@@ -89,7 +89,7 @@ class TeamContextValidator(Validator[TeamContext]):
         # Handle the case of searching with no attribute-value provided.
         flag_count = len(context.to_dict())
         if flag_count == 0:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TeamContextValidationException(
                     msg=f"{method}: {TeamContextValidationException.ERR_CODE}",
@@ -98,7 +98,7 @@ class TeamContextValidator(Validator[TeamContext]):
             )
         # Handle the case of too many attributes being used in a search.
         if flag_count > 1:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TeamContextValidationException(
                     msg=f"{method}: {TeamContextValidationException.ERR_CODE}",
@@ -113,7 +113,7 @@ class TeamContextValidator(Validator[TeamContext]):
         if context.id is not None:
             validation = identity_service.validate_id(candidate=context.id)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     TeamContextValidationException(
                         msg=f"{method}: {TeamContextValidationException.ERR_CODE}", ex=validation.exception
@@ -126,7 +126,7 @@ class TeamContextValidator(Validator[TeamContext]):
         if context.owner is not None:
             validation = player_service.validator.validate(candidate=context.owner)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     TeamContextValidationException(
                         msg=f"{method}: {TeamContextValidationException.ERR_CODE}", ex=validation.exception
@@ -139,7 +139,7 @@ class TeamContextValidator(Validator[TeamContext]):
         if context.arena is not None:
             validation = arena_service.validator.search_service(candidate=context.arena)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     TeamContextValidationException(
                         msg=f"{method}: {TeamContextValidationException.ERR_CODE}",
@@ -153,7 +153,7 @@ class TeamContextValidator(Validator[TeamContext]):
         if context.color is not None:
             validation = color_validator.validate(candidate=context.color)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     TeamContextValidationException(
                         msg=f"{method}: {TeamContextValidationException.ERR_CODE}",

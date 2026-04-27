@@ -64,7 +64,7 @@ class BoardContextValidator(Validator[BoardContext]):
         
         # Handle the nonexistence case.
         if candidate is None:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BoardContextValidationException(
                     msg=f"{method}: {BoardContextValidationException.MSG}",
@@ -73,7 +73,7 @@ class BoardContextValidator(Validator[BoardContext]):
             )
         # Handle the wrong class case.
         if not isinstance(candidate, BoardContext):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BoardContextValidationException(
                     msg=f"{method}: {BoardContextValidationException.MSG}",
@@ -86,7 +86,7 @@ class BoardContextValidator(Validator[BoardContext]):
         # Handle the case of searching with no attribute-value provided.
         flag_count = len(context.to_dict())
         if flag_count == 0:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BoardContextValidationException(
                     msg=f"{method}: {BoardContextValidationException.MSG}",
@@ -95,7 +95,7 @@ class BoardContextValidator(Validator[BoardContext]):
             )
         # Handle the case of too many attributes being used in a search.
         if flag_count > 1:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BoardContextValidationException(
                     msg=f"{method}: {BoardContextValidationException.MSG}",
@@ -110,7 +110,7 @@ class BoardContextValidator(Validator[BoardContext]):
         if context.id is not None:
             validation = identity_service.validate_id(candidate=context.id)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     BoardContextValidationException(
                         msg=f"{method}: {BoardContextValidationException.MSG}",
@@ -124,7 +124,7 @@ class BoardContextValidator(Validator[BoardContext]):
         if context.arena is not None:
             validation = arena_service.validator.search_service(context.arena)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     BoardContextValidationException(
                         msg=f"{method}: {BoardContextValidationException.MSG}",

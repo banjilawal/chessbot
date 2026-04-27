@@ -88,7 +88,7 @@ class KingSpanner(Spanner):
             )
             # Handle the case that the ray arithmetic is not completed.
             if ray_computation_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ComputationResult.failure(
                     KingSpannerException(
                         cls_mthd=method,
@@ -131,7 +131,7 @@ class KingSpanner(Spanner):
         )
         # Handle the case that the vector addition is not computed.
         if addition_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ComputationResult.failure(
                 KingSpannerException(
                     cls_mthd=method,

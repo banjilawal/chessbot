@@ -45,7 +45,7 @@ class SquareAssemblyFinalizer(AssemblyFinalizer[Square]):
         insertion_result = board.squares.insert(item=product)
        # Handle the case that, the square is not successfully registered with its board.
         if insertion_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 FinalizeSquareBuildException(
                     cls_mthd=method,

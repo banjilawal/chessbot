@@ -120,7 +120,7 @@ class BoardDatabase(Database[Board]):
         # Handle the case that, the boardis not safe.
         validation = self.microservice.validator.validate(candidate=board)
         if validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 UniqueBoardDataServiceException(
                     msg=f"ServiceId:{self.id}, {method}: {UniqueBoardDataServiceException.ERR_CODE}",
@@ -135,7 +135,7 @@ class BoardDatabase(Database[Board]):
         
         # Handle the case that, the search is not completed.
         if search_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 UniqueBoardDataServiceException(
                     msg=f"ServiceId:{self.id}, {method}: {UniqueBoardDataServiceException.ERR_CODE}",
@@ -147,7 +147,7 @@ class BoardDatabase(Database[Board]):
             )
         # Handle the case that, the board is already in the collider_candidates.
         if search_result.is_success:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 UniqueBoardDataServiceException(
                     msg=f"ServiceId:{self.id}, {method}: {UniqueBoardDataServiceException.ERR_CODE}",
@@ -162,7 +162,7 @@ class BoardDatabase(Database[Board]):
         
         # Handle the case that, the insertion is not completed.
         if insertion_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 UniqueBoardDataServiceException(
                     msg=f"ServiceId:{self.id}, {method}: {UniqueBoardDataServiceException.ERR_CODE}",
@@ -201,7 +201,7 @@ class BoardDatabase(Database[Board]):
         
         # Handle the case that, the search is not completed.
         if search_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return SearchResult.failure(
                 UniqueBoardDataServiceException(
                     msg=f"ServiceID:{self.id} {method}: {UniqueBoardDataServiceException.ERR_CODE}",

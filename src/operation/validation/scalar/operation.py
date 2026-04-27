@@ -37,6 +37,8 @@ class ScalarValidator(Validator[Scalar]):
     Super Class:
         Validator
     """
+    OPERATION_NAME = "scalar_validator"
+    
     @classmethod
     @LoggingLevelRouter.monitor
     def validate(
@@ -72,7 +74,7 @@ class ScalarValidator(Validator[Scalar]):
             null_exception=ScalarNullException(),
         )
         if validation_bootstrap_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 ScalarValidationException(
                     cls_mthd=method,
@@ -91,7 +93,7 @@ class ScalarValidator(Validator[Scalar]):
             ceiling=BOARD_DIMENSION-1,
         )
         if scalar_magnitude_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 ScalarValidationException(
                     cls_mthd=method,

@@ -36,6 +36,7 @@ class BoardValidator(Validator[Board]):
     # INHERITED ATTRIBUTES:
     None
     """
+    OPERATION_NAME = "board_validator"
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -70,7 +71,7 @@ class BoardValidator(Validator[Board]):
         
         # Handle the nonexistence case.
         if candidate is None:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BoardValidationException(
                     msg=f"{method}: {BoardValidationException.ERR_CODE}",
@@ -79,7 +80,7 @@ class BoardValidator(Validator[Board]):
             )
         # Handle the wrong class case.
         if not isinstance(candidate, Board):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BoardValidationException(
                     msg=f"{method}: {BoardValidationException.ERR_CODE}",
@@ -92,7 +93,7 @@ class BoardValidator(Validator[Board]):
         # Handle the case board.id or board.schema does not pass a validation check.
         id_validation = identity_service.validate_id(candidate=board.id)
         if id_validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BoardValidationException(
                     msg=f"{method}: {BoardValidationException.ERR_CODE}",
@@ -102,7 +103,7 @@ class BoardValidator(Validator[Board]):
         # Handle the case that, board.arena integrity verification and the arena-board relation fails.
         arena_verification = cls._validate_arena(board=board, arena_service=arena_service)
         if arena_verification.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult(
                 BoardValidationException(
                     msg=f"{method}: {BoardValidationException.ERR_CODE}",
@@ -139,7 +140,7 @@ class BoardValidator(Validator[Board]):
         )
         # Handle the case that, there is a direct failure of analyzer.
         if relation_analysis.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult(
                 BoardValidationException(
                     msg=f"{method}: {BoardValidationException.ERR_CODE}",
@@ -148,7 +149,7 @@ class BoardValidator(Validator[Board]):
             )
         # Handle the case that, the board belongs to a different board.
         if relation_analysis.does_not_exist:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult(
                 BoardValidationException(
                     msg=f"{method}: {BoardValidationException.ERR_CODE}",
@@ -159,7 +160,7 @@ class BoardValidator(Validator[Board]):
             )
         # Handle the case that, the board has not been added to the board's boards.
         if relation_analysis.partially_exists:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult(
                 BoardValidationException(
                     msg=f"{method}: {BoardValidationException.ERR_CODE}",

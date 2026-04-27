@@ -82,7 +82,7 @@ class CoordContextToolkit(Toolkit[CoordContext]):
         
         # Handle the case that, all the optional params are null.
         if param_count == 0:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ToolkitResult.failure(
                 CoordContextToolkitException(
                     cls_mthd=method,
@@ -184,7 +184,7 @@ class CoordContextToolkit(Toolkit[CoordContext]):
                 floor=0,
             )
             if validation_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ToolkitResult.failure(
                     CoordContextToolkitException(
                         cls_mthd=method,

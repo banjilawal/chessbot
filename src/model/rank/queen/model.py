@@ -78,7 +78,7 @@ class Queen(Rank):
         )
         # Handle the case that, the span is not produced.
         if span_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ComputationResult.failure(
                 QueenException(
                     cls_mthd=method,

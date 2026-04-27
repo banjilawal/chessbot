@@ -1,7 +1,7 @@
-# src/err/model/schema/exception.py
+# src/err/controller/schema/exception.py
 
 """
-Module: err.model.schema.exception
+Module: err.controller.schema.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ModelException
+from err import ControllerException
 
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# SCHEMA_ERROR #======================#
-class SchemaException(ModelException):
+class SchemaException(ControllerException):
     """
     Role:
         -   Error Tracing
@@ -39,7 +39,7 @@ class SchemaException(ModelException):
     Provides:
 
     Super Class:
-        ModelException
+        ControllerException
     """
     MSG = "Schema error state."
     ERR_CODE = "SCHEMA_ERROR"

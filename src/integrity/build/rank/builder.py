@@ -69,7 +69,7 @@ class RankBuilder(Builder[Rank]):
         # Handle the case that, the persona does not pass a validation check.
         validation_result = persona_service.validator.validate(candidate=persona)
         if validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 RankFactoryException(
                     cls_mthd=method,

@@ -46,7 +46,7 @@ class SquareRayBuilder(Builder[SquareRay]):
         )
         # Handle the case that the search does not succeed.
         if origin_member_square_search_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             SearchResult.failure(
                 SquareRayBuildException(
                     cls_mthd=method,
@@ -66,7 +66,7 @@ class SquareRayBuilder(Builder[SquareRay]):
             
             # Handle the case that the search does not succeed.
             if member_square_search_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 SearchResult.failure(
                     SquareRayBuildException(
                         cls_mthd=method,
@@ -110,7 +110,7 @@ class SquareRayBuilder(Builder[SquareRay]):
         search_result = square_stack.search(context=SquareContext(coord=coord))
         # Handle the case that the context is not completed.
         if search_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             SearchResult.failure(
                 SquareRayBuildException(
                     cls_mthd=method,
@@ -123,7 +123,7 @@ class SquareRayBuilder(Builder[SquareRay]):
             )
         # Handle the case that, a square is not found.
         if search_result.is_empty:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             SearchResult.failure(
                 SquareRayBuildException(
                     cls_mthd=method,

@@ -63,7 +63,7 @@ class PlayerTeamRelationAnalyst(RelationAnalyst[Player, Team]):
         # Handle the case that, owner validation fails.
         player_validation = player_validator.validate(candidate_primary)
         if player_validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return RelationReport.failure(
                 PlayerTeamAnalystException(
                     msg=f"{method}: {PlayerTeamAnalystException.ERR_CODE}",
@@ -76,7 +76,7 @@ class PlayerTeamRelationAnalyst(RelationAnalyst[Player, Team]):
         # Handle the case that, team validation fails.
         team_validation = player.teams.pair_service.validator.search_service(candidate_satellite)
         if team_validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return RelationReport.failure(
                 PlayerTeamAnalystException(
                     msg=f"{method}: {PlayerTeamAnalystException.ERR_CODE}",
@@ -93,7 +93,7 @@ class PlayerTeamRelationAnalyst(RelationAnalyst[Player, Team]):
         # For complete coverage and certainty search the assignments not just the current_team.
         search_result = player.teams.search_teams(context=TeamContext(id=team.id))
         if search_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return RelationReport.failure(
                 PlayerTeamAnalystException(
                     msg=f"{method}: {PlayerTeamAnalystException.ERR_CODE}",

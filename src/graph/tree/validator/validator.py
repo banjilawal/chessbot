@@ -54,7 +54,7 @@ class NodeTreeValidator(Validator[NodeTree]):
         
         # Handle the nonexistence case.
         if candidate is None:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 NodeTreeValidationException(
                     cls_mthd=method,
@@ -72,7 +72,7 @@ class NodeTreeValidator(Validator[NodeTree]):
             )
         # Handle the wrong class case.
         if not isinstance(candidate, NodeTree):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 NodeTreeValidationException(
                     cls_mthd=method,

@@ -68,7 +68,7 @@ class RosterRelationAnalysis(RelationAnalysis[Team, Token]):
         # Process the possible team_validation outcomes.
         team_validation = team_validator.validate(candidate_primary)
         if team_validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return RelationReport(
                 TeamRosterRelationAnalysisException(
                     msg=f"{method}: {TeamRosterRelationAnalysisException.ERR_CODE}",
@@ -95,7 +95,7 @@ class RosterRelationAnalysis(RelationAnalysis[Team, Token]):
         # Search the roster to decide find out if the piece has a full or partial bidirectional relation to the roster.
         member_search = team.roster.search(context=TokenContext(id=piece.id))
         if member_search.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return RelationReport(
                 TeamRosterRelationAnalysisException(
                     msg=f"{method}: {TeamRosterRelationAnalysisException.ERR_CODE}",

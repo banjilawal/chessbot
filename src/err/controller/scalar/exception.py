@@ -1,7 +1,7 @@
-# src/err/model/scalar/exception.py
+# src/err/controller/scalar/exception.py
 
 """
-Module: err.model.scalar.exception
+Module: err.controller.scalar.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ModelException
+from err import ControllerException
 
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# SCALAR_ERROR #======================#
-class ScalarException(ModelException):
+class ScalarException(ControllerException):
     """
     Role:
         -   Error Tracing
@@ -39,7 +39,7 @@ class ScalarException(ModelException):
     Provides:
 
     Super Class:
-        ModelException
+        ControllerException
     """
     MSG = "Scalar error state."
     ERR_CODE = "SCALAR_ERROR"

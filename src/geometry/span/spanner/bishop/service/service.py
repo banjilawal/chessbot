@@ -117,7 +117,7 @@ class BishopSpanService(SpanMicroservice):
                     tail_square_search_result = square_database.search(context=SquareContext(coord=previous_point))
                     # Handle the case that the search is not completed
                     if tail_square_search_result.is_failure:
-                        # Return the exception chain on failure.
+                        # Send the exception chain on failure.
                         return ComputationResult.failure(
                             BishopSpanServiceException(
                                 cls_mthd=method,
@@ -131,7 +131,7 @@ class BishopSpanService(SpanMicroservice):
                     head_square_search_result = square_database.search(context=SquareContext(coord=point))
                     # Handle the case that the search is not completed
                     if head_square_search_result.is_failure:
-                        # Return the exception chain on failure.
+                        # Send the exception chain on failure.
                         return ComputationResult.failure(
                             BishopSpanServiceException(
                                 cls_mthd=method,
@@ -212,7 +212,7 @@ class BishopSpanService(SpanMicroservice):
                     )
                     # Handle the case that the search is not completed
                     if tail_square_search_result.is_failure:
-                        # Return the exception chain on failure.
+                        # Send the exception chain on failure.
                         return ComputationResult.failure(
                             BishopSpanServiceException(
                                 cls_mthd=method,
@@ -226,7 +226,7 @@ class BishopSpanService(SpanMicroservice):
                     head_square_search_result = square_database.search(context=SquareContext(coord=point))
                     # Handle the case that the search is not completed
                     if head_square_search_result.is_failure:
-                        # Return the exception chain on failure.
+                        # Send the exception chain on failure.
                         return ComputationResult.failure(
                             BishopSpanServiceException(
                                 cls_mthd=method,
@@ -309,7 +309,7 @@ class BishopSpanService(SpanMicroservice):
             head_build_result = node_builder.build(square=head_square)
             # Handle the case that, the head node is not built successfully.
             if head_build_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return BuildResult.failure(
                     BishopSpanServiceException(
                         cls_mthd=method,
@@ -323,7 +323,7 @@ class BishopSpanService(SpanMicroservice):
             tail_build_result = node_builder.build(square=tail_square)
             # Handle the case that, the tail node is not built successfully.
             if tail_build_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return BuildResult.failure(
                     BishopSpanServiceException(
                         cls_mthd=method,
@@ -354,7 +354,7 @@ class BishopSpanService(SpanMicroservice):
             forward_edge_result = edge_builder.build(head=head, tail=tail, )
             # Handle the case that, the e is not built successfully.
             if forward_edge_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return BuildResult.failure(
                     BishopSpanServiceException(
                         cls_mthd=method,
@@ -368,7 +368,7 @@ class BishopSpanService(SpanMicroservice):
             reverse_edge_result = edge_builder.build(head=tail, tail=head)
             # Handle the case that, the tail node is not built successfully.
             if reverse_edge_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return BuildResult.failure(
                     BishopSpanServiceException(
                         cls_mthd=method,

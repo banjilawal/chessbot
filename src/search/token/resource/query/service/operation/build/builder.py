@@ -71,7 +71,7 @@ class TokenQueryBuilder(Builder[TokenQuery]):
         # Handle the case that, the context is not safe to use.
         validation_result = context_validator.validate(context)
         if validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenQueryBuildException(
                     cls_mthd=method,
@@ -83,7 +83,7 @@ class TokenQueryBuilder(Builder[TokenQuery]):
             )
         # Handle the case that, the schema does not exist
         if stack is None:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenQueryBuildException(
                     cls_mthd=method,
@@ -98,7 +98,7 @@ class TokenQueryBuilder(Builder[TokenQuery]):
             )
         # Handle the case that, the schema is the wrong type.
         if not isinstance(stack, List):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenQueryBuildException(
                     cls_mthd=method,
@@ -112,7 +112,7 @@ class TokenQueryBuilder(Builder[TokenQuery]):
             )
         # Handle the case that, the does not contain tokens.
         if not isinstance(stack[0], Token):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenQueryBuildException(
                     cls_mthd=method,

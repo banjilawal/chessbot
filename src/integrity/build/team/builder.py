@@ -87,7 +87,7 @@ class TeamBuilder(Builder[Team]):
             identity_service=identity_service,
         )
         if build_params_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 SquareBuildException(
                     msg=f"{method}: {TeamBuildException.MSG}",
@@ -154,26 +154,26 @@ class TeamBuilder(Builder[Team]):
         
         # Handle the case that, the id does not pass a validation check.
         id_validation = identity_service.validate_id(candidate=id)
-        # Return the exception chain on failure.
+        # Send the exception chain on failure.
         if id_validation.is_failure:
             return ValidationResult.failure(id_validation.exception)
         
         # Handle the case that, the schema does not pass a validation check.
         schema_validation = schema_service.validator.validate(candidate=schema)
         if schema_validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(schema_validation.exception)
         
         # Handle the case that, the owner does not pass a validation check.
         owner_validation = player_service.validator.validate(candidate=owner)
         if owner_validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(owner_validation.exception)
         
         # Handle the case that, the board does not pass a validation check.
         board_validation = board_service.validator.validate(candidate=board)
         if owner_validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(board_validation.exception)
         
         # --- Send the success result indicating no attribute conditions. ---#
@@ -290,7 +290,7 @@ class SquareBuilder(Builder[Square]):
             identity_service=identity_service,
         )
         if build_params_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 SquareBuildException(
                     msg=f"{method}: {SquareBuildException.MSG}",
@@ -305,7 +305,7 @@ class SquareBuilder(Builder[Square]):
             board=board
         )
         if collision_detection_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 SquareBuildException(
                     msg=f"{method}: {SquareBuildException.MSG}",
@@ -323,7 +323,7 @@ class SquareBuilder(Builder[Square]):
         )
         # Handle the case that, the insertion was not successful.
         if insertion_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 SquareBuildException(
                     msg=f"{method}: {SquareBuildException.MSG}",
@@ -369,19 +369,19 @@ class SquareBuilder(Builder[Square]):
         )
         # Handle the case that, the relation analysis was not completed.
         if relation_analysis.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(relation_analysis.exception)
         
         # Handle the case that, the board and item are not related.
         if relation_analysis.not_related:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 InvariantBreachException(msg=f"{method}:{InvariantBreachException.MSG}",)
             )
         
         # Handle the case that, the board and item are have a fully bidirectional relationship.
         if relation_analysis.is_bidirectional:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.success()
         
         # --- Last relationship state is a partial binding. This is the only case for registering the Square ---#

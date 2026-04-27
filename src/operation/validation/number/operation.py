@@ -43,6 +43,7 @@ class NumberValidator(Validator[int]):
     Super Class:
         Validator
     """
+    OPERATION_NAME = "number_validator"
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -85,7 +86,7 @@ class NumberValidator(Validator[int]):
             null_exception=NumberNullException(),
         )
         if validation_bootstrap_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                NumberValidationException(
                     cls_mthd=method,
@@ -100,7 +101,7 @@ class NumberValidator(Validator[int]):
         
         # Handle the case that, the number
         if floor < 0:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 NumberValidationException(
                     cls_mthd=method,
@@ -117,7 +118,7 @@ class NumberValidator(Validator[int]):
             )
         # Handle case that the number is below the floor
         if number < floor:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 NumberValidationException(
                     cls_mthd=method,
@@ -132,7 +133,7 @@ class NumberValidator(Validator[int]):
             )
         # Handle case that the number is above the floor
         if number > ceiling:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 NumberValidationException(
                     cls_mthd=method,

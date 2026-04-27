@@ -55,7 +55,7 @@ class CoordStackPop:
         
         # Handle the case that the schema is empty.
         if coord_stack.is_empty:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return DeletionResult.failure(
                 CoordStackPopException(
                     cls_mthd=method,

@@ -1,7 +1,7 @@
-# src/err/model/string/name/max/exception.py
+# src/err/controller/string/name/max/exception.py
 
 """
-Module: err.model.string.name.max.exception
+Module: err.controller.string.name.max.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

@@ -73,7 +73,7 @@ class TokenSearchRouter(SearchRouter[Token]):
             
             # Handle the case that, the collider_candidates is null.
             if dataset is None:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return SearchResult.failure(
                     SquareSearchException(
                         msg=f"{method}: {SquareSearchException.ERR_CODE}",
@@ -82,7 +82,7 @@ class TokenSearchRouter(SearchRouter[Token]):
                 )
             # Handle the case that, collider_candidates is the wrong type
             if not isinstance(dataset, List):
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return SearchResult.failure(
                     SquareSearchException(
                         msg=f"{method}: {SquareSearchException.ERR_CODE}",

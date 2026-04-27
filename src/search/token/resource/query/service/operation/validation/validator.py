@@ -73,7 +73,7 @@ class TokenQueryValidator(Validator[TokenQuery]):
         
         # Handle the nonexistence case.
         if candidate is None:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenQueryValidationException(
                     cls_mthd=method,
@@ -90,7 +90,7 @@ class TokenQueryValidator(Validator[TokenQuery]):
             )
         # Handle the wrong class case.
         if not isinstance(candidate, TokenQuery):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenQueryValidationException(
                     cls_mthd=method,
@@ -110,7 +110,7 @@ class TokenQueryValidator(Validator[TokenQuery]):
         # Handle the case that, the context is not safe to use.
         validation_result = context_validator.validate(query.context)
         if validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenQueryValidationException(
                     cls_mthd=method,
@@ -124,7 +124,7 @@ class TokenQueryValidator(Validator[TokenQuery]):
             )
         # Handle the case that, the schema does not exist
         if query.stack is None:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenQueryValidationException(
                     cls_mthd=method,
@@ -141,7 +141,7 @@ class TokenQueryValidator(Validator[TokenQuery]):
             )
         # Handle the case that, the schema is the wrong type.
         if not isinstance(query.stack, List):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenQueryValidationException(
                     cls_mthd=method,
@@ -157,7 +157,7 @@ class TokenQueryValidator(Validator[TokenQuery]):
             )
         # Handle the case that, list is empty.
         if len(query.stack) == 0:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenQueryValidationException(
                     cls_mthd=method,
@@ -174,7 +174,7 @@ class TokenQueryValidator(Validator[TokenQuery]):
             )
         # Handle the case that, list contains something different from tokens.
         if not isinstance(query.stack[0], Token):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenQueryValidationException(
                     cls_mthd=method,

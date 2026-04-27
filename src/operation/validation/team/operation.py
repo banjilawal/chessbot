@@ -37,6 +37,8 @@ class TeamValidator(Validator[Team]):
     Super Class:
         Validator
     """
+    OPERATION_NAME = "text_validator"
+    
     @classmethod
     @LoggingLevelRouter.monitor
     def validate(
@@ -75,7 +77,7 @@ class TeamValidator(Validator[Team]):
             null_exception=TeamNullException(),
         )
         if validation_bootstrap_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TeamValidationException(
                     cls_mthd=method,
@@ -91,7 +93,7 @@ class TeamValidator(Validator[Team]):
         # Handle the case that, team.id does not pass a validation check.
         id_validation_result = toolkit.identity_service.validate_id(candidate=team.id)
         if id_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TeamValidationException(
                     cls_mthd=method,
@@ -108,7 +110,7 @@ class TeamValidator(Validator[Team]):
             null_exception=SchemaNullException(),
         )
         if schema_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TeamValidationException(
                     cls_mthd=method,
@@ -121,7 +123,7 @@ class TeamValidator(Validator[Team]):
         # Handle the case that, team.owner does not pass a validation check.
         owner_validation_result = toolkit.owner_validator.validate(team.owner)
         if owner_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TeamValidationException(
                     cls_mthd=method,
@@ -134,7 +136,7 @@ class TeamValidator(Validator[Team]):
         # Handle the case that, team.board does not pass a validation check.
         board_validation_result = toolkit.board_validator.validate(team.board)
         if board_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 TeamValidationException(
                     cls_mthd=method,

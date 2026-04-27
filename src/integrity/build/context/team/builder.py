@@ -85,7 +85,7 @@ class TeamContextBuilder(Builder[TeamContext]):
         
         # Handle the case that, all the optional params are null.
         if param_count == 0:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 TeamContextBuildException(
                     msg=f"{method}: {TeamContextBuildException.ERR_CODE}",
@@ -94,7 +94,7 @@ class TeamContextBuilder(Builder[TeamContext]):
             )
         # Handle the case that, more than one optional param is not-null.
         if param_count > 1:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 TeamContextBuildException(
                     msg=f"{method}: {TeamContextBuildException.ERR_CODE}",
@@ -107,7 +107,7 @@ class TeamContextBuilder(Builder[TeamContext]):
         if id is not None:
             validation = identity_service.validate_id(candidate=id)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return BuildResult.failure(
                     TeamContextBuildException(
                         msg=f"{method}: {TeamContextBuildException.ERR_CODE}",
@@ -121,7 +121,7 @@ class TeamContextBuilder(Builder[TeamContext]):
         if player is not None:
             validation = player_service.validator.validate(candidate=player)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return BuildResult.failure(
                     TeamContextBuildException(
                         msg=f"{method}: {TeamContextBuildException.ERR_CODE}",
@@ -135,7 +135,7 @@ class TeamContextBuilder(Builder[TeamContext]):
         if arena is not None:
             validation = arena_service.item_validator.search_service(candidate=arena)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return BuildResult.failure(
                     TeamContextBuildException(
                         msg=f"{method}: {TeamContextBuildException.ERR_CODE}",
@@ -149,7 +149,7 @@ class TeamContextBuilder(Builder[TeamContext]):
         if color is not None:
             validation = color_validator.validate(candidate=color)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return BuildResult.failure(
                     TeamContextBuildException(
                         msg=f"{method}: {TeamContextBuildException.ERR_CODE}",

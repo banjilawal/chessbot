@@ -111,7 +111,7 @@ class CoordQueryService(QueryService[Coord]):
         
         # Handle the case that, the request was not completed.
         if query_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return SearchResult.failure(
                 CoordQueryServiceException(
                     cls_mthd=method,
@@ -135,7 +135,7 @@ class CoordQueryService(QueryService[Coord]):
         # Handle the case that, the context is incorrect
         context_validation_result = self._context_service.validator.search_service(context)
         if context_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return SearchResult.failure(
                 CoordQueryServiceException(
                     cls_mthd=method,
@@ -147,7 +147,7 @@ class CoordQueryService(QueryService[Coord]):
             )
         # Handle the case that, the schema does not exist
         if dataset is None:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return SearchResult.failure(
                 CoordQueryServiceException(
                     cls_mthd=method,
@@ -162,7 +162,7 @@ class CoordQueryService(QueryService[Coord]):
             )
         # Handle the case that, the schema is the wrong type.
         if not isinstance(dataset, List):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return SearchResult.failure(
                 CoordQueryServiceException(
                     cls_mthd=method,
@@ -174,7 +174,7 @@ class CoordQueryService(QueryService[Coord]):
             )
         # Handle the case that, the does not contain coords.
         if not isinstance(dataset[0], Coord):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return SearchResult.failure(
                 CoordQueryServiceException(
                     cls_mthd=method,

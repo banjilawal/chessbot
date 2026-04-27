@@ -15,6 +15,7 @@ from system import  LoggingLevelRouter
 from model import CombatantToken, King, KingToken, Pawn, PawnToken, Token, TokenBlueprint
 
 class TokenAssembler(Assembler[Token]):
+    OPERATION_NAME = "token_assembler"
     
     @classmethod
     @LoggingLevelRouter.monitor

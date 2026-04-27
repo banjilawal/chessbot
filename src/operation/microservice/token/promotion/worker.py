@@ -99,7 +99,7 @@ class PawnPromoter:
         # Handle the case that, the tokenis not safe.
         token_validation_result = token_validator.verify_actionable_token(pawn_token)
         if token_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pawn_token,
                 exception=PromotionException(
@@ -114,7 +114,7 @@ class PawnPromoter:
             )
         # Handle the case that. the token is wrong type.
         if not isinstance(pawn_token, PawnToken):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pawn_token,
                 exception=PromotionException(
@@ -132,7 +132,7 @@ class PawnPromoter:
             )
         # Handle the case that, the pawn_token is not actionable.
         if not pawn_token.is_active:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pawn_token,
                 exception=PromotionException(
@@ -150,7 +150,7 @@ class PawnPromoter:
             )
         # Handle the case that, the pawn_token has already been promoted.
         if pawn_token.is_promoted:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pawn_token,
                 exception=PromotionException(
@@ -224,7 +224,7 @@ class PawnPromoter:
         # Handle the case that, the rank does not pass a validation check.
         validation_result = rank_service.validator.validate(rank)
         if validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pawn_token,
                 exception=PromotionException(
@@ -238,7 +238,7 @@ class PawnPromoter:
             )
         # Handle the case that, the higher rank is a King's.
         if isinstance(rank, King):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pawn_token,
                 exception=PromotionException(
@@ -255,7 +255,7 @@ class PawnPromoter:
             )
         # Handle the case that, the new is still a Pawn's.
         if isinstance(rank, Pawn):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pawn_token,
                 exception=PromotionException(
@@ -304,7 +304,7 @@ class PawnPromoter:
         
         # Handle the case that, the no work is produced.
         if enemy_schema_search_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pawn_token,
                 exception=PromotionException(
@@ -318,7 +318,7 @@ class PawnPromoter:
             )
         # Handle the case that the pawn_token is not on the enemy's rank row.
         if pawn_token.current_position.row != enemy_schema_search_result.payload[0].rank_row:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pawn_token,
                 exception=PromotionException(

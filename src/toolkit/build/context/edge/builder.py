@@ -98,7 +98,7 @@ class EdgeContextToolkit(Toolkit[EdgeContext]):
         
         # Handle the case that, all the optional params are null.
         if param_count == 0:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ToolkitResult.failure(
                 EdgeContextToolkitException(
                     msg=f"{method}: {EdgeContextToolkitException.MSG}",
@@ -109,7 +109,7 @@ class EdgeContextToolkit(Toolkit[EdgeContext]):
             )
         # Handle the case that, more than one optional param is not-null.
         if param_count > 1:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ToolkitResult.failure(
                 EdgeContextToolkitException(
                     msg=f"{method}: {EdgeContextToolkitException.MSG}",
@@ -124,7 +124,7 @@ class EdgeContextToolkit(Toolkit[EdgeContext]):
         if id is not None:
             validation = identity_service.validate_id(candidate=id)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ToolkitResult.failure(
                     EdgeContextToolkitException(
                         msg=f"{method}: {EdgeContextToolkitException.MSG}",
@@ -138,7 +138,7 @@ class EdgeContextToolkit(Toolkit[EdgeContext]):
         if name is not None:
             validation = identity_service.validate_name(candidate=name)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ToolkitResult.failure(
                     EdgeContextToolkitException(
                         msg=f"{method}: {EdgeContextToolkitException.MSG}",
@@ -152,7 +152,7 @@ class EdgeContextToolkit(Toolkit[EdgeContext]):
         if coord is not None:
             validation = coord_service.validator.validate(coord)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ToolkitResult.failure(
                     EdgeContextToolkitException(
                         msg=f"{method}: {EdgeContextToolkitException.MSG}",
@@ -166,7 +166,7 @@ class EdgeContextToolkit(Toolkit[EdgeContext]):
         if board is not None:
             validation = board_service.validator.validate(candidate=board)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ToolkitResult.failure(
                     EdgeContextToolkitException(
                         msg=f"{method}: {EdgeContextToolkitException.MSG}",
@@ -180,7 +180,7 @@ class EdgeContextToolkit(Toolkit[EdgeContext]):
         if token is not None:
             validation = token_service.validator.search_service(candidate=token)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ToolkitResult.failure(
                     EdgeContextToolkitException(
                         msg=f"{method}: {EdgeContextToolkitException.MSG}",
@@ -193,7 +193,7 @@ class EdgeContextToolkit(Toolkit[EdgeContext]):
         # Toolkit the state EdgeContext if its flag is enabled.
         if state is not None:
             if not isinstance(state, EdgeState):
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ToolkitResult.failure(
                     EdgeContextToolkitException(
                         msg=f"{method}: {EdgeContextToolkitException.MSG}",

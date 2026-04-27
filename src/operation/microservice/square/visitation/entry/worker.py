@@ -140,7 +140,7 @@ class SquareEntryProcess:
             square.occupant = None
             square.state = SquareState.EMPTY
             
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=square,
                 exception=SquareEntryException(
@@ -190,7 +190,7 @@ class SquareEntryProcess:
         # Handle the case that, the tokenis not safe.
         token_validation_result = token_service.validator.search_service(candidate=token)
         if token_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=square,
                 exception=SquareEntryException(
@@ -204,7 +204,7 @@ class SquareEntryProcess:
             )
         # Handle the case that, the token belongs to a different board
         if token.team.board != square.board:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=square,
                 exception=SquareEntryException(
@@ -221,7 +221,7 @@ class SquareEntryProcess:
             )
         # Handle the case that, the occupant is disabled
         if token.is_disabled:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=square,
                 exception=SquareEntryException(
@@ -268,7 +268,7 @@ class SquareEntryProcess:
         # Handle the case that, the squareis not safe.
         square_validation_result = square_validator.validate(square)
         if square_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=square,
                 exception=SquareEntryException(
@@ -282,7 +282,7 @@ class SquareEntryProcess:
             )
         # Handle the case that, the square is already occupied.
         if square.is_occupied:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=square,
                 exception=SquareEntryException(
@@ -332,7 +332,7 @@ class SquareEntryProcess:
         
         # Handle the case that, the token should open on a different square.
         if square.name.upper() != token.opening_square_name.upper():
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=square,
                 exception=SquareEntryException(

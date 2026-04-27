@@ -80,7 +80,7 @@ class SchemaContextBuilder(Builder[SchemaContext]):
         
         # Handle the case that, all the optional params are null.
         if param_count == 0:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 SchemaContextBuildException(
                     cls_mthd=method,
@@ -97,7 +97,7 @@ class SchemaContextBuilder(Builder[SchemaContext]):
             )
         # Handle the case that, more than one optional param is not-null.
         if param_count > 1:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 SchemaContextBuildException(
                     cls_mthd=method,
@@ -118,7 +118,7 @@ class SchemaContextBuilder(Builder[SchemaContext]):
         if name is not None:
             validation = workers.identity_service.validate_name(name)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return BuildResult.failure(
                     SchemaContextBuildException(
                         cls_mthd=method,
@@ -137,7 +137,7 @@ class SchemaContextBuilder(Builder[SchemaContext]):
         if color is not None:
             validation = workers.color_validator.validate(color)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return BuildResult.failure(
                     SchemaContextBuildException(
                         cls_mthd=method,

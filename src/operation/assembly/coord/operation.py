@@ -15,6 +15,7 @@ from system import LoggingLevelRouter
 from model import Coord, CoordBlueprint
 
 class CoordAssembler(Assembler[Coord]):
+    OPERATION_NAME = "coord_assembler"
     
     @classmethod
     @LoggingLevelRouter.monitor

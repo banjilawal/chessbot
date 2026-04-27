@@ -64,7 +64,7 @@ class NodeBuilder(Builder[Node]):
         # Handle the case that, the square does not pass a validation check.
         validation_result = square_validator.validate(square)
         if validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 NodeBuildException(
                     msg=f"{method}: {NodeBuildException.MSG}",

@@ -1,7 +1,7 @@
-# src/err/controller/vector/exception.py
+# src/err/controller/registry/exception.py
 
 """
-Module: err.controller.vector.exception
+Module: err.controller.registry.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import ControllerException
 
 
 __all__ = [
-    # ======================# VECTOR_ERROR #======================#
-    "VectorException",
+    # ======================# REGISTRY_ERROR #======================#
+    "WorkerRegistryControllerException",
 ]
 
-# ======================# VECTOR_ERROR #======================#
-class VectorException(ControllerException):
+# ======================# REGISTRY_ERROR #======================#
+class WorkerRegistryControllerException(ControllerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a Vector experienced an error.
+        1.  Indicate a Registry experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -41,8 +41,8 @@ class VectorException(ControllerException):
     Super Class:
         ControllerException
     """
-    MSG = "Vector error state."
-    ERR_CODE = "VECTOR_ERROR"
+    MSG = "Registry error state."
+    ERR_CODE = "REGISTRY_ERROR"
     
     def __init__(
             self,

@@ -22,6 +22,7 @@ from model import OpeningSquare, SquareContext, Token, TokenBlueprint
 
 
 class TokenAssemblyBootstrapper(AssemblyBootstrapper[Token]):
+    OPERATOR_NAME = "token_assembly_bootstrapper"
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -60,7 +61,7 @@ class TokenAssemblyBootstrapper(AssemblyBootstrapper[Token]):
             toolkit=toolkit,
         )
         if blueprint_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BootstrapTokenAssemblyException(
                     cls_mthd=method,
@@ -75,7 +76,7 @@ class TokenAssemblyBootstrapper(AssemblyBootstrapper[Token]):
             blueprint=blueprint
         )
         if collision_analysis_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BootstrapTokenAssemblyException(
                     cls_mthd=method,
@@ -90,7 +91,7 @@ class TokenAssemblyBootstrapper(AssemblyBootstrapper[Token]):
             blueprint=blueprint
         )
         if opening_square_discovery_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BootstrapTokenAssemblyException(
                     cls_mthd=method,
@@ -105,7 +106,7 @@ class TokenAssemblyBootstrapper(AssemblyBootstrapper[Token]):
             persona=blueprint.formation.persona
         )
         if rank_assembly_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BootstrapTokenAssemblyException(
                     cls_mthd=method,
@@ -159,7 +160,7 @@ class TokenAssemblyBootstrapper(AssemblyBootstrapper[Token]):
             toolkit=toolkit
         )
         if id_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BootstrapTokenAssemblyException(
                     cls_mthd=method,
@@ -174,7 +175,7 @@ class TokenAssemblyBootstrapper(AssemblyBootstrapper[Token]):
             candidate=blueprint.team
         )
         if team_validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BootstrapTokenAssemblyException(
                     cls_mthd=method,
@@ -189,7 +190,7 @@ class TokenAssemblyBootstrapper(AssemblyBootstrapper[Token]):
             candidate=blueprint.formation
         )
         if formation_validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BootstrapTokenAssemblyException(
                     cls_mthd=method,
@@ -237,7 +238,7 @@ class TokenAssemblyBootstrapper(AssemblyBootstrapper[Token]):
         if blueprint.id is not None:
             id_validation = toolkit.identity_service.validate_id(blueprint.id)
             if id_validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     BootstrapTokenAssemblyException(
                         cls_mthd=method,
@@ -275,7 +276,7 @@ class TokenAssemblyBootstrapper(AssemblyBootstrapper[Token]):
             blueprint=blueprint
         )
         if collision_analysis_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return AnalysisResult.failure(
                 BootstrapTokenAssemblyException(
                     cls_mthd=method,
@@ -286,7 +287,7 @@ class TokenAssemblyBootstrapper(AssemblyBootstrapper[Token]):
                 )
             )
         if collision_analysis_result.payload.collision_exists:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BootstrapTokenAssemblyException(
                     cls_mthd=method,
@@ -328,7 +329,7 @@ class TokenAssemblyBootstrapper(AssemblyBootstrapper[Token]):
         )
         # Handle the case that, the search is not completed.
         if square_search_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BootstrapTokenAssemblyException(
                     cls_mthd=method,
@@ -340,7 +341,7 @@ class TokenAssemblyBootstrapper(AssemblyBootstrapper[Token]):
             )
         # Handle the case that, the opening square is not found.
         if square_search_result.is_empty:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BootstrapTokenAssemblyException(
                     cls_mthd=method,

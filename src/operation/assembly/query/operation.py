@@ -15,6 +15,7 @@ from system import LoggingLevelRouter
 from model import Query, QueryBlueprint
 
 class QueryAssembler(Assembler[Query]):
+    OPERATION_NAME = "query_assembler"
     
     @classmethod
     @LoggingLevelRouter.monitor

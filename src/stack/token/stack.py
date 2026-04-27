@@ -193,7 +193,7 @@ class TokenStackService(StackService[Token]):
         
         # Handle the case that, the request was not fulfilled.
         if request_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return DeletionResult.failure(
                 TokenStackServiceException(
                     cls_mthd=method,
@@ -232,7 +232,7 @@ class TokenStackService(StackService[Token]):
         )
         # Handle the case that, the request was not fulfilled.
         if request_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 TokenStackServiceException(
                     cls_mthd=method,
@@ -277,7 +277,7 @@ class TokenStackService(StackService[Token]):
         )
         # Handle the case that, the request was not completed
         if request_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return DeletionResult.failure(
                 TokenStackServiceException(
                     cls_mthd=method,
@@ -312,7 +312,7 @@ class TokenStackService(StackService[Token]):
         
         # Handle the case that, the request was not fulfilled.
         if request_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return SearchResult.failure(
                 TokenStackServiceException(
                     cls_mthd=method,

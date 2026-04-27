@@ -173,7 +173,7 @@ class OpeningSquareLocator(Worker):
         # Handle the case that, the token does not pass a validation check.
         token_validation_result = token_service.validator.search_service(token)
         if token_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 ExecutementSquareDiscoveryException(
                     cls_mthd=method,
@@ -186,7 +186,7 @@ class OpeningSquareLocator(Worker):
             )
         # Handle the case that, the token has already been executeed.
         if token.is_executeed:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 ExecutementSquareDiscoveryException(
                     cls_mthd=method,
@@ -202,7 +202,7 @@ class OpeningSquareLocator(Worker):
         )
         # Handle the case that the search fails
         if opening_square_search.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 ExecutementSquareDiscoveryException(
                     cls_mthd=method,

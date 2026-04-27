@@ -32,13 +32,15 @@ class CoordAssemblyBootstrapper(AssemblyBootstrapper[Coord]):
     
     Provides:
         -   def execute(
-                blueprint: CoordBlueprint,
-                toolkit: CoordToolkit,
-        ) -> ValidationResult[CoordBlueprint]:
+                    blueprint: CoordBlueprint,
+                    toolkit: CoordToolkit,
+            ) -> ValidationResult[CoordBlueprint]:
     
     Super Class:
         AssemblyBootstrapper
-     """
+    """
+    OPERATOR_NAME = "coord_assembly_bootstrapper"
+    
     @classmethod
     @LoggingLevelRouter.monitor()
     def execute(
@@ -71,7 +73,7 @@ class CoordAssemblyBootstrapper(AssemblyBootstrapper[Coord]):
                 candidate=abs(component)
             )
             if validation_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     BootstrapCoordAssemblyException(
                         cls_mthd=method,

@@ -1,7 +1,7 @@
-# src/err/model/opening/exception.py
+# src/err/controller/opening/exception.py
 
 """
-Module: err.model.opening.exception
+Module: err.controller.opening.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1

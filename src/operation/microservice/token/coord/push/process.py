@@ -74,7 +74,7 @@ class TokenPushCoordProcess:
         # Handle the case that, the token does not pass a validation check.
         token_validation_result = token_validator.validate(token)
         if token_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 TokenPushCoordException(
                     cls_mthd=method,
@@ -88,7 +88,7 @@ class TokenPushCoordProcess:
             )
         # Handle the case that, token is not active
         if not token.is_active:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 TokenPushCoordException(
                     cls_mthd=method,
@@ -108,7 +108,7 @@ class TokenPushCoordProcess:
         # Handle the case that, the coord does not pass a validation check.
         coord_validation_result = coord_service.validator.validate(coord)
         if coord_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 TokenPushCoordException(
                     cls_mthd=method,
@@ -122,7 +122,7 @@ class TokenPushCoordProcess:
             )
         # Handle the case that, the token is already at the destination coord.
         if token.current_position == coord:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 TokenPushCoordException(
                     cls_mthd=method,
@@ -148,7 +148,7 @@ class TokenPushCoordProcess:
         
         # Handle the case that, the request was not completed.
         if coord_insertion_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 TokenPushCoordException(
                     cls_mthd=method,

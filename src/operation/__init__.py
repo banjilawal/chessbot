@@ -21,3 +21,4 @@ from .validation import *
 
 # Modules
 from .operation import Operation
+from .registry import WorkerRegistry

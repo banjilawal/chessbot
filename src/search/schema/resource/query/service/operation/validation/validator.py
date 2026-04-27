@@ -70,7 +70,7 @@ class SchemaQueryValidator(Validator[SchemaQuery]):
         
         # Handle the nonexistence case.
         if candidate is None:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 SchemaQueryValidationException(
                     cls_mthd=method,
@@ -87,7 +87,7 @@ class SchemaQueryValidator(Validator[SchemaQuery]):
             )
         # Handle the wrong class case.
         if not isinstance(candidate, SchemaQuery):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 SchemaQueryValidationException(
                     cls_mthd=method,
@@ -107,7 +107,7 @@ class SchemaQueryValidator(Validator[SchemaQuery]):
         # Handle the case that, the context is not safe to use.
         context_validation_result = workers.context_validator.validate(query.context)
         if context_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 SchemaQueryValidationException(
                     cls_mthd=method,
@@ -122,7 +122,7 @@ class SchemaQueryValidator(Validator[SchemaQuery]):
         # Handle the case that, the schema is not safe to use.
         schema_validation_result = workers.schema_validator.validate(query.catalog)
         if schema_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 SchemaQueryValidationException(
                     cls_mthd=method,

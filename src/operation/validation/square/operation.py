@@ -38,6 +38,8 @@ class SquareValidator(Validator[Square]):
     Super Class:
         Validator
     """
+    OPERATION_NAME = "square_validator"
+    
     @classmethod
     @LoggingLevelRouter.monitor
     def validate(
@@ -75,7 +77,7 @@ class SquareValidator(Validator[Square]):
             null_exception=SquareNullException(),
         )
         if validation_bootstrap_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidationException(
                     cls_mthd=method,
@@ -94,7 +96,7 @@ class SquareValidator(Validator[Square]):
             name_candidate=square.name
         )
         if identity_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidationException(
                     cls_mthd=method,
@@ -107,7 +109,7 @@ class SquareValidator(Validator[Square]):
         # Handle the case that, square.coordis not safe.
         coord_validation_result = toolkit.coord_validator.validate(square.coord)
         if coord_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidationException(
                     cls_mthd=method,
@@ -120,7 +122,7 @@ class SquareValidator(Validator[Square]):
         # Handle the case that, square.board does not pass a validation check.
         board_validation_result = toolkit.board_validator.validate(square.board)
         if board_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidationException(
                     cls_mthd=method,
@@ -165,7 +167,7 @@ class SquareValidator(Validator[Square]):
             candidate=square.board
         )
         if board_validation_result.is_faiure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidationException(
                     cls_mthd=method,
@@ -185,7 +187,7 @@ class SquareValidator(Validator[Square]):
 
         # Handle the case that, the analyzer did not complete the request.
         if board_square_relation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidationException(
                     cls_mthd=method,
@@ -198,7 +200,7 @@ class SquareValidator(Validator[Square]):
             )
         # Handle the case that, the square belongs to a different board.
         if board_square_relation.does_not_exist:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidationException(
                     cls_mthd=method,
@@ -214,7 +216,7 @@ class SquareValidator(Validator[Square]):
             )
         # Handle the case that, the board has an expire link to the square.
         if board_square_relation.stale_link_exists:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidationException(
                     cls_mthd=method,
@@ -230,7 +232,7 @@ class SquareValidator(Validator[Square]):
             )
         # Handle the case that, the square has not been added to the board's squares.
         if board_square_relation.registration_does_not_exist:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidationException(
                     cls_mthd=method,
@@ -270,7 +272,7 @@ class SquareValidator(Validator[Square]):
         
         # Handle the nonexistence case.
         if candidate is None:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidationException(
                     cls_mthd=method,
@@ -286,7 +288,7 @@ class SquareValidator(Validator[Square]):
             )
         # Handle the wrong class case.
         if not isinstance(candidate, SquareState):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidationException(
                     cls_mthd=method,

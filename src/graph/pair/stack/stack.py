@@ -118,7 +118,7 @@ class PairStack(StackService[Pair]):
         
         # Handle the case that, the list is full.
         if self.is_full:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 PairStackException(
                     msg=f"ServiceId:{self.id}, {method}: {PairStackException.ERR_CODE}",
@@ -135,7 +135,7 @@ class PairStack(StackService[Pair]):
         )
         # Handle the case that, the collision analysis is not completed.
         if collision_report.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 PairStackException(
                     msg=f"ServiceId:{self.id}, {method}: {PairStackException.ERR_CODE}",
@@ -152,7 +152,7 @@ class PairStack(StackService[Pair]):
         )
         # Handle the case that, the analyzer doesn't give a count of open slots.
         if openings_count_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return InsertionResult.failure(
                 PairStackException(
                     msg=f"ServiceId:{self.id}, {method}: {PairStackException.ERR_CODE}",
@@ -192,7 +192,7 @@ class PairStack(StackService[Pair]):
         
         # Handle the case that, there are no pairs in the schema.
         if self.is_empty:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return DeletionResult.failure(
                 PairStackException(
                     msg=f"ServiceId:{self.id}, {method}: {PairStackException.ERR_CODE}",
@@ -242,7 +242,7 @@ class PairStack(StackService[Pair]):
         
         # Handle the case that, there are no items in the list.
         if self.is_empty:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return DeletionResult.failure(
                 PairStackException(
                     msg=f"StackId:{self.id}, {method}: {PairStackException.ERR_CODE}",
@@ -257,7 +257,7 @@ class PairStack(StackService[Pair]):
         # Handle the case that, the idis not safe.
         validation = identity_service.validate_id(candidate=id)
         if validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return DeletionResult.failure(
                 PairStackException(
                     msg=f"StackId:{self.id}, {method}: {PairStackException.ERR_CODE}",
@@ -311,7 +311,7 @@ class PairStack(StackService[Pair]):
         
         # Handle the case that, the search is not completed.
         if query_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return SearchResult.failure(
                 PairStackException(
                     msg=f"ServiceID:{self.id} {method}: {PairStackException.ERR_CODE}",

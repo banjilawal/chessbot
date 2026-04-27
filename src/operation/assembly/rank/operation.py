@@ -34,6 +34,8 @@ class RanAssembler(Assembler[Rank]):
      Super Class:
         .Assembly.
      """
+    OPERATION_NAME = "rank_assembler"
+    
     @classmethod
     @LoggingLevelRouter.monitor()
     def execute(cls, blueprint: RankBlueprint,) -> BuildResult[Rank]:

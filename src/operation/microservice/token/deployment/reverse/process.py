@@ -84,7 +84,7 @@ class ReverseTokenDeployment:
         # Handle the case that, the tokenis not safe.
         token_validation = token_validator.validate(token)
         if token_validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=token,
                 exception=TokenDeploymentException(
@@ -98,7 +98,7 @@ class ReverseTokenDeployment:
             )
         # Handle the case that, the token has already been deployed.
         if token.is_deployed:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=token,
                 exception=TokenDeploymentException(
@@ -116,7 +116,7 @@ class ReverseTokenDeployment:
         # Handle the case that, an opening_square test fails.
         opening_square_search_result = cls._run_opening_square_tests(token)
         if opening_square_search_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=token,
                 exception=TokenDeploymentException(
@@ -140,7 +140,7 @@ class ReverseTokenDeployment:
         )
         # Handle the case that, the visitation transaction fails.
         if update_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=token,
                 exception=TokenDeploymentException(
@@ -185,7 +185,7 @@ class ReverseTokenDeployment:
         )
         # Handle the case that, the search fails.
         if opening_square_search_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return SearchResult.failure(
                 exception=TokenDeploymentException(
                     cls_mthd=method,
@@ -198,7 +198,7 @@ class ReverseTokenDeployment:
             )
         # Handle the case that, the token's square is not found.
         if opening_square_search_result.is_empty:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return SearchResult.failure(
                 exception=TokenDeploymentException(
                     cls_mthd=method,
@@ -217,7 +217,7 @@ class ReverseTokenDeployment:
         # Handle the case that the token's opening square is occupied
         if opening_square_search_result.payload[0].is_occupied:
             square = opening_square_search_result.payload[0]
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return SearchResult.failure(
                 exception=TokenDeploymentException(
                     cls_mthd=method,
@@ -275,7 +275,7 @@ class ReverseTokenDeployment:
         )
         # Handle the case that the visit is not successful.
         if visitation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=token,
                 exception=TokenDeploymentException(
@@ -289,7 +289,7 @@ class ReverseTokenDeployment:
             )
         # Handle the case that, the token is not the square's visitor.
         if opening_square.occupant != token:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pre_update_token,
                 exception=TokenDeploymentException(
@@ -306,7 +306,7 @@ class ReverseTokenDeployment:
             )
         # Handle the case that, the token's current position is not the square's
         if opening_square.coord != token.current_position:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pre_update_token,
                 exception=TokenDeploymentException(

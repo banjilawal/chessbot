@@ -15,6 +15,7 @@ from system import LoggingLevelRouter
 from model import Team, TeamBlueprint
 
 class TeamAssembler(Assembler[Team]):
+    OPERATION_NAME = "team_assembler"
     
     @classmethod
     @LoggingLevelRouter.monitor

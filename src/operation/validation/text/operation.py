@@ -36,6 +36,7 @@ class StringValidator(Validator[str]):
     Super Class:
         Validator
     """
+    OPERATION_NAME = "text_validator"
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -63,7 +64,7 @@ class StringValidator(Validator[str]):
         
         # Handle the nonexistence case.
         if candidate is None:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 StringValidationException(
                     cls_mthd=method,
@@ -78,7 +79,7 @@ class StringValidator(Validator[str]):
             )
         # Handle the wrong class case
         if not isinstance(candidate, str):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 StringValidationException(
                     cls_mthd=method,
@@ -92,7 +93,7 @@ class StringValidator(Validator[str]):
         text = cast(str, candidate).strip()
         
         if len(text) == 0:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 StringValidationException(
                     cls_mthd=method,

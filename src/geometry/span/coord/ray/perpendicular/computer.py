@@ -86,7 +86,7 @@ class PerpendicularRayComputer:
             
             # Handle the case that the conversion is unsuccessful.
             if conversion_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ComputationResult.failure(
                     PerpendicularRayComputationException(
                         cls_mthd=method,
@@ -104,7 +104,7 @@ class PerpendicularRayComputer:
             
             # Handle the case that, the cursor is not updated.
             if cursor_update_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ComputationResult.failure(
                     PerpendicularRayComputationException(
                         cls_mthd=method,
@@ -121,7 +121,7 @@ class PerpendicularRayComputer:
             
         # Handle the case that there were no members in the ray.
         if len(members) == 0:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ComputationResult.failure(
                 PerpendicularRayComputationException(
                     cls_mthd=method,

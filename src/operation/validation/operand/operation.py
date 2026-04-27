@@ -74,6 +74,8 @@ class VectorOperandValidator(Validator[VectorOperand]):
             VectorOperandValidationException
             ExcessVectorOperandFlagsException
         """
+        OPERATION_NAME = "operand_validator"
+        
         method = f"{cls.__name__}.validate"
         
         if toolkit is None:
@@ -86,7 +88,7 @@ class VectorOperandValidator(Validator[VectorOperand]):
             null_exception=VectorOperandNullException(),
         )
         if validation_bootstrap_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorOperandValidationException(
                     cls_mthd=method,
@@ -101,7 +103,7 @@ class VectorOperandValidator(Validator[VectorOperand]):
         
         # Handle the case that neither option is enabled.
         if len(operand.to_dict) == 0:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorOperandValidationException(
                     cls_mthd=method,
@@ -116,7 +118,7 @@ class VectorOperandValidator(Validator[VectorOperand]):
             )
         # Handle the case that, both options are enabled.
         if len(operand.to_dict) > 1:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorOperandValidationException(
                     cls_mthd=method,
@@ -138,7 +140,7 @@ class VectorOperandValidator(Validator[VectorOperand]):
             
         # Handle the case that context was flagged.
         if validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorOperandValidationException(
                     cls_mthd=method,

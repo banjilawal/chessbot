@@ -25,21 +25,23 @@ class SquareAssemblyBootstrapper(AssemblyBootstrapper[Square]):
         -   Integrity Maintenance
         -   Consistency Assurance
         -   Build Process Owner
-
-   Responsibilities:
+    
+    Responsibilities:
         1.  Ensure a new Square instance is born safe and reliable.
-
-     Attributes:
-
+    
+    Attributes:
+    
     Provides:
         -   def execute(
                     blueprint: SquareBlueprint,
                     toolkit: SquareToolkit,
             ) -> ValidationResult[SquareBlueprint]
-
-     Super Class:
-         AssemblyBootstrapper
-     """
+    
+    Super Class:
+        AssemblyBootstrapper
+    """
+    OPERATOR_NAME = "square_assembly_bootstrapper"
+    
     @classmethod
     @LoggingLevelRouter.monitor()
     def execute(
@@ -72,7 +74,7 @@ class SquareAssemblyBootstrapper(AssemblyBootstrapper[Square]):
             toolkit=toolkit,
         )
         if blueprint_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BootstrapSquareAssemblyException(
                     cls_mthd=method,
@@ -87,7 +89,7 @@ class SquareAssemblyBootstrapper(AssemblyBootstrapper[Square]):
             blueprint=blueprint
         )
         if collision_analysis_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BootstrapSquareAssemblyException(
                     cls_mthd=method,
@@ -123,7 +125,7 @@ class SquareAssemblyBootstrapper(AssemblyBootstrapper[Square]):
             class_name="Square",
         )
         if id_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BootstrapSquareAssemblyException(
                     cls_mthd=method,
@@ -138,7 +140,7 @@ class SquareAssemblyBootstrapper(AssemblyBootstrapper[Square]):
             candidate=blueprint.name
         )
         if name_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BootstrapSquareAssemblyException(
                     cls_mthd=method,
@@ -153,7 +155,7 @@ class SquareAssemblyBootstrapper(AssemblyBootstrapper[Square]):
             candidate=blueprint.coord
         )
         if coord_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BootstrapSquareAssemblyException(
                     cls_mthd=method,
@@ -169,7 +171,7 @@ class SquareAssemblyBootstrapper(AssemblyBootstrapper[Square]):
                 candidate=blueprint.formation
             )
             if formation_validation_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     BootstrapSquareAssemblyException(
                         cls_mthd=method,
@@ -184,7 +186,7 @@ class SquareAssemblyBootstrapper(AssemblyBootstrapper[Square]):
             candidate=blueprint.board
         )
         if board_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BootstrapSquareAssemblyException(
                     cls_mthd=method,
@@ -230,7 +232,7 @@ class SquareAssemblyBootstrapper(AssemblyBootstrapper[Square]):
             blueprint=blueprint
         )
         if collision_analysis_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return AnalysisResult.failure(
                 BootstrapSquareAssemblyException(
                     cls_mthd=method,
@@ -241,7 +243,7 @@ class SquareAssemblyBootstrapper(AssemblyBootstrapper[Square]):
                 )
             )
         if collision_analysis_result.payload.collision_exists:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BootstrapSquareAssemblyException(
                     cls_mthd=method,

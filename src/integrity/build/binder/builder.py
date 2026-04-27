@@ -31,7 +31,7 @@ class TeamBinderBuilder(Assemble[BoardBinder]):
         # Handle the case that, board fails a validation check.
         board_validation_result = board_service.validator.validate(board)
         if board_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 TeamBinderBuildException(
                     cls_mthd=method,

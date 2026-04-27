@@ -38,6 +38,8 @@ class ArenaValidator(Validator[Arena]):
     # INHERITED ATTRIBUTES:
     None
     """
+    OPERATION_NAME = "arena_validator"
+    
     @classmethod
     def validate(
             cls,

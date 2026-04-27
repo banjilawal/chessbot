@@ -56,7 +56,7 @@ class TokenStackPop:
         
         # Handle the case that the stack is empty.
         if token_stack.is_empty:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return DeletionResult.failure(
                 TokenStackPopException(
                     cls_mthd=method,
@@ -111,7 +111,7 @@ class TokenStackPop:
         
         # Handle the case that the stack is empty.
         if token_stack.is_empty:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return DeletionResult.failure(
                 TokenStackPopException(
                     cls_mthd=method,
@@ -128,7 +128,7 @@ class TokenStackPop:
         # Handle the case that, the idis not safe.
         id_validation_result = identity_service.validate_id(candidate=id)
         if id_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return DeletionResult.failure(
                 TokenStackPopException(
                     cls_mthd=method,

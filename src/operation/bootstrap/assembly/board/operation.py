@@ -39,6 +39,8 @@ class BoardAssemblyBootstrapper(AssemblyBootstrapper[Board]):
     Super Class:
         AssemblyBootstrapper
     """
+    OPERATOR_NAME = "board_assembly_bootstrapper"
+    
     @classmethod
     @LoggingLevelRouter.monitor()
     def execute(
@@ -71,7 +73,7 @@ class BoardAssemblyBootstrapper(AssemblyBootstrapper[Board]):
             toolkit=toolkit,
         )
         if blueprint_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BootstrapBoardAssemblyException(
                     cls_mthd=method,
@@ -99,7 +101,7 @@ class BoardAssemblyBootstrapper(AssemblyBootstrapper[Board]):
             class_name="Board",
         )
         if id_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BootstrapBoardAssemblyException(
                     cls_mthd=method,
@@ -114,7 +116,7 @@ class BoardAssemblyBootstrapper(AssemblyBootstrapper[Board]):
             candidate=blueprint.arena
         )
         if arena_validator_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BootstrapBoardAssemblyException(
                     cls_mthd=method,

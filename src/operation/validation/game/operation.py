@@ -28,6 +28,8 @@ class GameValidator(Validator[Game]):
     # INHERITED ATTRIBUTES:
     None
     """
+    OPERATION_NAME = "game_validator"
+    
     @classmethod
     @LoggingLevelRouter.monitor
     def validate(

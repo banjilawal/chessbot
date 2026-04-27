@@ -40,6 +40,7 @@ class EuclideanOperation(Operation[VectorRegister]):
     Super Class:
         Operation
     """
+    OPERATION_NAME = "euclidean_distance"
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -80,7 +81,7 @@ class EuclideanOperation(Operation[VectorRegister]):
         # Handle the case that, the register is flagged.
         register_validation_result = register_validator.validate(register)
         if register_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ComputationResult.failure(
                 VectorEuclideanException(
                     cls_mthd=method,
@@ -112,7 +113,7 @@ class EuclideanOperation(Operation[VectorRegister]):
             )
         )
         if scalar_assembly_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ComputationResult.failure(
                 VectorEuclideanException(
                     cls_mthd=method,

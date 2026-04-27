@@ -11,7 +11,9 @@ version: 1.0.1
 
 # Packages
 from .binder import *
+from .registry import *
 from .service import *
 from .stack import *
 
 # Modules
+from .controller import  Controller

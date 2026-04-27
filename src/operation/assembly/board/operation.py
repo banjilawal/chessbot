@@ -16,6 +16,7 @@ from model import Board, BoardBlueprint
 
 
 class BoardAssembler(Assembler[Board]):
+    OPERATION_NAME = "board_assembler"
     
     @classmethod
     @LoggingLevelRouter.monitor

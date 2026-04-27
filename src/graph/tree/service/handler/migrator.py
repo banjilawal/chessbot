@@ -54,7 +54,7 @@ class NodeTreeStackMigrator:
         # Handle the case that, the node_tree does not pass a validation check.
         validation_result = node_tree_validator.validate(candidate=node_tree)
         if validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 NodeTreeStackMigratorException(
                     cls_mthd=method,
@@ -70,7 +70,7 @@ class NodeTreeStackMigrator:
         
         # Handle the case that, the insertion produces no work.
         if validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 NodeTreeStackMigratorException(
                     cls_mthd=method,
@@ -90,7 +90,7 @@ class NodeTreeStackMigrator:
             unique_node_search_result = node_tree.branch_service.unique_nodes(pair_list=branch)
             # Handle the case that, the search is not completed.
             if unique_node_search_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return BuildResult.failure(
                     NodeTreeStackMigratorException(
                         cls_mthd=method,
@@ -106,7 +106,7 @@ class NodeTreeStackMigrator:
         
                 # Handle the case that, the insertion produces no work.
                 if validation_result.is_failure:
-                    # Return the exception chain on failure.
+                    # Send the exception chain on failure.
                     return BuildResult.failure(
                         NodeTreeStackMigratorException(
                             cls_mthd=method,

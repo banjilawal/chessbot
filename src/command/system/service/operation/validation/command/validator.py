@@ -53,7 +53,7 @@ class CommandValidator(Validator[Command]):
         
         # Handle the nonexistence case.
         if candidate is None:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 CommandValidationException(
                     cls_mthd=method,
@@ -70,7 +70,7 @@ class CommandValidator(Validator[Command]):
             )
         # Handle the wrong class case.
         if not isinstance(candidate, Command):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 CommandValidationException(
                     cls_mthd=method,
@@ -89,7 +89,7 @@ class CommandValidator(Validator[Command]):
         
         # Handle the case that, the command's type is not in the cipher_table.
         if not isinstance(command, ciphers.command_types):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 CommandValidationException(
                     cls_mthd=method,
@@ -111,7 +111,7 @@ class CommandValidator(Validator[Command]):
             name_candidate=command.name,
         )
         if identity_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 CommandValidationException(
                     cls_mthd=method,
@@ -124,7 +124,7 @@ class CommandValidator(Validator[Command]):
             )
         # Handle the case that, command has an incorrect schema.
         if command.name not in ciphers.command_names:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 CommandValidationException(
                     cls_mthd=method,
@@ -146,7 +146,7 @@ class CommandValidator(Validator[Command]):
             signature=ciphers.entries[command],
         )
         if arguments_validation_results.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 CommandValidationException(
                     cls_mthd=method,

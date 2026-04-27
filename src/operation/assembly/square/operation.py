@@ -42,6 +42,8 @@ class SquareAssembler(Assembler[Square]):
      Super Class:
         .Assembly.
      """
+    OPERATION_NAME = "square_assembler"
+    
     @classmethod
     @LoggingLevelRouter.monitor()
     def execute(cls, blueprint: SquareBlueprint,) -> BuildResult[Square]:

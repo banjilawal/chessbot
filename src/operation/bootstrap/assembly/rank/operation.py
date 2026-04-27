@@ -41,6 +41,8 @@ class RankAssemblyBootstrapper(AssemblyBootstrapper[Rank]):
     Super Class:
         AssemblyBootstrapper
     """
+    OPERATOR_NAME = "rank_assembly_bootstrapper"
+    
     @classmethod
     @LoggingLevelRouter.monitor()
     def execute(
@@ -73,7 +75,7 @@ class RankAssemblyBootstrapper(AssemblyBootstrapper[Rank]):
             toolkit=toolkit,
         )
         if blueprint_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BootstrapRankAssemblyException(
                     cls_mthd=method,
@@ -101,7 +103,7 @@ class RankAssemblyBootstrapper(AssemblyBootstrapper[Rank]):
             class_name="Rank",
         )
         if id_validation_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BootstrapRankAssemblyException(
                     cls_mthd=method,
@@ -116,7 +118,7 @@ class RankAssemblyBootstrapper(AssemblyBootstrapper[Rank]):
             candidate=blueprint.persona
         )
         if persona_validator_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 BootstrapRankAssemblyException(
                     cls_mthd=method,

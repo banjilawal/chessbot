@@ -83,7 +83,7 @@ class SpannerEngine:
         # Handle the case that, the origin is not certified as a safe coord.
         origin_validation = coord_service.validator.validate(candidate=origin)
         if origin_validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ComputationResult.failure(
                 SpannerEngineException(
                     cls_mthd=method,
@@ -187,7 +187,7 @@ class SpannerEngine:
         )
         # Handle the case that, the queen's diagonal span is not computed.
         if diagonal_span_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ComputationResult.failure(
                 SpannerEngineException(
                     cls_mthd=method,
@@ -212,7 +212,7 @@ class SpannerEngine:
         )
         # Handle the case that, the rook span is not computed.
         if perpendicular_span_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ComputationResult.failure(
                 SpannerEngineException(
                     cls_mthd=method,
@@ -278,7 +278,7 @@ class SpannerEngine:
             )
            # Handle the case that, the rook span is not computed.
             if ray_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ComputationResult.failure(
                     SpannerEngineException(
                         cls_mthd=method,
@@ -343,7 +343,7 @@ class SpannerEngine:
             )
             # Handle the case that, the rook span is not computed.
             if ray_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ComputationResult.failure(
                     SpannerEngineException(
                         cls_mthd=method,

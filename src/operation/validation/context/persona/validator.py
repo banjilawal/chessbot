@@ -71,7 +71,7 @@ class PersonaContext(Validator[PersonaKey]):
         
         # Handle the nonexistence case.
         if candidate is None:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 PersonaKeyValidationException(
                     msg=f"{method}: {ValidationException.ERR_CODE}",
@@ -80,7 +80,7 @@ class PersonaContext(Validator[PersonaKey]):
             )
         # Handle the wrong class case.
         if not isinstance(candidate, PersonaKey):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 PersonaKeyValidationException(
                     msg=f"{method}: {ValidationException.ERR_CODE}",
@@ -93,7 +93,7 @@ class PersonaContext(Validator[PersonaKey]):
         
         # Handle the case of searching with no attribute-value.
         if len(super_key.to_dict()) == 0:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 PersonaKeyValidationException(
                     msg=f"{method}: {ValidationException.ERR_CODE}",
@@ -102,7 +102,7 @@ class PersonaContext(Validator[PersonaKey]):
             )
         # Handle the case of more than one key-value is set.
         if len(super_key.to_dict()) > 1:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 PersonaKeyValidationException(
                     msg=f"{method}: {ValidationException.ERR_CODE}",
@@ -118,7 +118,7 @@ class PersonaContext(Validator[PersonaKey]):
         if super_key.designation is not None:
             validation = identity_service.validate_name(candidate=super_key.designation)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     PersonaKeyValidationException(
                         msg=f"{method}: {ValidationException.ERR_CODE}",
@@ -132,7 +132,7 @@ class PersonaContext(Validator[PersonaKey]):
         if super_key.designation is not None:
             validation = identity_service.validate_name(candidate=super_key.designation)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     PersonaKeyValidationException(
                         msg=f"{method}: {ValidationException.ERR_CODE}",
@@ -146,7 +146,7 @@ class PersonaContext(Validator[PersonaKey]):
         if super_key.quota is not None:
             validation = number_validator.validate(candidate=super_key.quota)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     PersonaKeyValidationException(
                         msg=f"{method}: {ValidationException.ERR_CODE}",
@@ -160,7 +160,7 @@ class PersonaContext(Validator[PersonaKey]):
         if super_key.ransom is not None:
             validation = number_validator.validate(candidate=super_key.ransom)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     PersonaKeyValidationException(
                         msg=f"{method}: {ValidationException.ERR_CODE}",

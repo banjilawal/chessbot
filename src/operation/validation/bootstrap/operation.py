@@ -74,7 +74,7 @@ class ValidationBootstrapper(Validator[T]):
         
         # Handle the nonexistence case.
         if candidate is None:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 ValidationBootstrapException(
                     cls_mthd=method,
@@ -88,7 +88,7 @@ class ValidationBootstrapper(Validator[T]):
             )
         # Handle the wrong class case.
         if not isinstance(candidate, type(target_model)):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 ValidationBootstrapException(
                     cls_mthd=method,

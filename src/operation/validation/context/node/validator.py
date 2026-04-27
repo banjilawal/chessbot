@@ -66,7 +66,7 @@ class NodeContextValidator(Validator[NodeContext]):
         
         # Handle the nonexistence case.
         if candidate is None:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 NodeContextValidationException(
                     msg=f"{method}: {NodeContextValidationException.MSG}",
@@ -75,7 +75,7 @@ class NodeContextValidator(Validator[NodeContext]):
             )
         # Handle the wrong class case.
         if not isinstance(candidate, NodeContext):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 NodeContextValidationException(
                     msg=f"{method}: {NodeContextValidationException.MSG}",
@@ -90,7 +90,7 @@ class NodeContextValidator(Validator[NodeContext]):
         # Handle the case of searching with no attribute-value provided.
         flag_count = len(context.to_dict())
         if flag_count == 0:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 NodeContextValidationException(
                     msg=f"{method}: {NodeContextValidationException.MSG}",
@@ -99,7 +99,7 @@ class NodeContextValidator(Validator[NodeContext]):
             )
         # Handle the case of too many attributes being used in a search.
         if flag_count > 1:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 NodeContextValidationException(
                     msg=f"{method}: {NodeContextValidationException.MSG}",
@@ -118,7 +118,7 @@ class NodeContextValidator(Validator[NodeContext]):
                 ceiling=sys.maxsize
             )
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     NodeContextValidationException(
                         msg=f"{method}: {NodeContextValidationException.MSG}",
@@ -132,7 +132,7 @@ class NodeContextValidator(Validator[NodeContext]):
         if context.predecessor is not None:
             validation = node_validator.validate(candidate=context.predecessor)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     NodeContextValidationException(
                         msg=f"{method}: {NodeContextValidationException.MSG}",
@@ -146,7 +146,7 @@ class NodeContextValidator(Validator[NodeContext]):
         if context.square is not None:
             validation = square_service.validator.validate(context.square)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     NodeContextValidationException(
                         msg=f"{method}: {NodeContextValidationException.MSG}",
@@ -160,7 +160,7 @@ class NodeContextValidator(Validator[NodeContext]):
         if context.discovery_status is not None:
             validation = node_validator.validate_discovery_status(context.discovery_status)
             if validation.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     NodeContextValidationException(
                         msg=f"{method}: {NodeContextValidationException.MSG}",

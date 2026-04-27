@@ -64,7 +64,7 @@ class PersonaLookupProcess(HashLookupProcess[Persona]):
         # Handle the case that, the Key fails validation.
         validation = super_key_validator.validate(candidate=super_key)
         if validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return SearchResult.failure(
                 PersonaLookupFailedException(
                     msg=f"{method}: {PersonaLookupFailedException.ERR_CODE}",

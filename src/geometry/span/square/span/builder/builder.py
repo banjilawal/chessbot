@@ -43,7 +43,7 @@ class SquareSpanBuilder(Builder[SquareSpan]):
         )
         # Handle the case that the search does not succeed.
         if square_span_origin_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             SearchResult.failure(
                 SquareSpanBuildException(
                     cls_mthd=method,
@@ -94,7 +94,7 @@ class SquareSpanBuilder(Builder[SquareSpan]):
             )
             # Handle the case that the derivation does not produce a result.
             if derivation_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 BuildResult.failure(
                     SquareSpanBuildException(
                         cls_mthd=method,
@@ -140,7 +140,7 @@ class SquareSpanBuilder(Builder[SquareSpan]):
         )
         # Handle the case that the search does not succeed.
         if square_ray_origin_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             SearchResult.failure(
                 SquareSpanBuildException(
                     cls_mthd=method,
@@ -162,7 +162,7 @@ class SquareSpanBuilder(Builder[SquareSpan]):
             )
             # Handle the case that the search does not succeed.
             if square_search_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 SearchResult.failure(
                     SquareSpanBuildException(
                         cls_mthd=method,
@@ -206,7 +206,7 @@ class SquareSpanBuilder(Builder[SquareSpan]):
         search_result = square_stack.search(context=SquareContext(coord=coord))
         # Handle the case that the context is not completed.
         if search_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             SearchResult.failure(
                 SquareSpanBuildException(
                     cls_mthd=method,

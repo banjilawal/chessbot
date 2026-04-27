@@ -84,7 +84,7 @@ class CommandArgsValidator(Validator[Dict]):
             candidate=command.parameters,
         )
         if type_validation_results.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 ArgumentsValidationException(
                     cls_mthd=method,
@@ -102,7 +102,7 @@ class CommandArgsValidator(Validator[Dict]):
             identity_service=identity_service,
         )
         if not identifier_validation_results.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 ArgumentsValidationException(
                     cls_mthd=method,
@@ -152,7 +152,7 @@ class CommandArgsValidator(Validator[Dict]):
         
         # Handle the nonexistence case.
         if candidate is None:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 ArgumentsValidationException(
                     cls_mthd=method,
@@ -169,7 +169,7 @@ class CommandArgsValidator(Validator[Dict]):
             )
         # Handle the wrong class case.
         if not isinstance(candidate, type(signature)):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             signature_type = type(signature).__name__
             actual_type = type(candidate).__name__
             return ValidationResult.failure(
@@ -189,7 +189,7 @@ class CommandArgsValidator(Validator[Dict]):
         
         # Handle the case that, the number of arguments is wrong.
         if args.count != signature.count:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ValidationResult.failure(
                 ArgumentsValidationException(
                     cls_mthd=method,
@@ -206,7 +206,7 @@ class CommandArgsValidator(Validator[Dict]):
         # Handle the case that, an argument is the wrong type.
         for genus in args.types:
             if not isinstance(genus, signature.types):
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     ArgumentsValidationException(
                         cls_mthd=method,
@@ -261,7 +261,7 @@ class CommandArgsValidator(Validator[Dict]):
                 candidate=key,
             )
             if str_validation_result.is_failure:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     ArgumentsValidationException(
                         cls_mthd=method,
@@ -275,7 +275,7 @@ class CommandArgsValidator(Validator[Dict]):
         # Handle the case that, an identifier is not in the signature.
         for identifier in candidate.identifiers:
             if identifier.upper() not in signature.identifiers:
-                # Return the exception chain on failure.
+                # Send the exception chain on failure.
                 return ValidationResult.failure(
                     ArgumentsValidationException(
                         cls_mthd=method,
@@ -293,7 +293,7 @@ class CommandArgsValidator(Validator[Dict]):
             # Handle the case that, of an incorrect identifier-type binding.
             for key in candidate.entries.keys():
                 if not isinstance(candidate.entries[key], signature.entries[key]):
-                    # Return the exception chain on failure.
+                    # Send the exception chain on failure.
                     return ValidationResult.failure(
                         ArgumentsValidationException(
                             cls_mthd=method,

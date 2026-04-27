@@ -21,6 +21,7 @@ from model import Blueprint
 T = TypeVar("T")
 
 class Assembler(Operation[T]):
+    DOMAIN = "assembly"
     
     @classmethod
     @LoggingLevelRouter.monitor

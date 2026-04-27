@@ -40,6 +40,7 @@ class ScalarProductOperation(Operation[VectorOperand]):
     Super Class:
         Operation
     """
+    OPERATION_NAME = "scalar_product"
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -86,7 +87,7 @@ class ScalarProductOperation(Operation[VectorOperand]):
         # Handle the case that, the scalar is not safe.
         scalar_validation = scalar_validator.validate(scalar)
         if scalar_validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ComputationResult.failure(
                 ScalarProductException(
                     cls_mthd=method,
@@ -99,7 +100,7 @@ class ScalarProductOperation(Operation[VectorOperand]):
         # Handle the case that, the validator flags the operand.
         operand_validation = operand_validator.validate(operand)
         if operand_validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ComputationResult.failure(
                 ScalarProductException(
                     cls_mthd=method,
@@ -124,7 +125,7 @@ class ScalarProductOperation(Operation[VectorOperand]):
             build_result = coord_build_pipeline.run(blueprint=blueprint, )
         # Handle the case that, the build did not produce a result.
         if build_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return ComputationResult.failure(
                 ScalarProductException(
                     cls_mthd=method,

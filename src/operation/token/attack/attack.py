@@ -21,6 +21,7 @@ from model.token import CombatantReadinessEnum, KingToken, Token, TokenBoardStat
 
 
 class Attack:
+    OPERATION_NAME = "arena_validator"
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -47,7 +48,7 @@ class Attack:
         # Handle the case the item does not pass a validation check.
         square_validation = square_database.microservice.validator.validate(candidate=square)
         if square_validation.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return AttackResult.failure(
                 AttackException(
                     msg=f"{method}: {AttackException.MSG}",
@@ -56,7 +57,7 @@ class Attack:
             )
         # Handle the case that, the item is empty
         if square.is_empty:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return AttackResult.failure(
                 AttackException(
                     msg=f"{method}: {AttackException.MSG}",
@@ -65,7 +66,7 @@ class Attack:
             )
         # Handle the case that, the tokens are on different boards.
         if attacker.team.board != square.occupant.team.board:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return AttackResult.failure(
                 AttackException(
                     msg=f"{method}: {AttackException.MSG}",
@@ -76,7 +77,7 @@ class Attack:
             )
         # Handle the case that, the item is occupied by a friend.
         if not attacker.is_enemy(square.occupant):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return AttackResult.failure(
                 AttackException(
                     msg=f"{method}: {AttackException.MSG}",
@@ -87,7 +88,7 @@ class Attack:
             )
         # Handle the case that, the enemy king is occupying the item.
         if isinstance(square.occupant, KingToken):
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return AttackResult.failure(
                 AttackException(
                     msg=f"{method}: {AttackException.MSG}",
@@ -96,7 +97,7 @@ class Attack:
             )
         # Handle the case that, the enemy combatant, occupying the item, is already disabled.
         if square.occupant.is_disabled:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return AttackResult.failure(
                 AttackException(
                     msg=f"{method}: {AttackException.MSG}",
@@ -176,7 +177,7 @@ class Attack:
         )
         # Handle the case that, the manifest bui;d failed.
         if manifest_build_result.is_failure:
-            # Return the exception chain on failure.
+            # Send the exception chain on failure.
             return AttackResult.failure(
                 AttackException(
                     f"{method}: {AttackException}",
