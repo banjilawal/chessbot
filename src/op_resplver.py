@@ -11,7 +11,8 @@ from enum import Enum
 from typing import Any, Union
 
 
-from system import BuildResult, Result, SearchResult, logging
+from system import BuildResult, Result, SearchResult
+from util import logging
 
 
 class OperationResolver(Enum):

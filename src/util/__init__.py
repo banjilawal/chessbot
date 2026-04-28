@@ -11,5 +11,6 @@ version: 1.0.1
 
 # Packages
 from .decorator import *
+from .logging import *
 
 # Modules
