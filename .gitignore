@@ -1,0 +1,45 @@
+# Ignore Python virtual environments
+.venv/
+env/
+# Or any custom-named virtual environments
+*/.venv
+*/env
+
+# Ignore Python compiled/cache files
+__pycache__/
+*.py[cod]
+
+# Ignore system-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE/Editor settings
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# Ignore test coverage outputs
+htmlcov/
+.coverage
+*.cover
+.cache
+
+# Don't track sensitive files like environment variables, secrets
+*.env
+*.env.local
+*.secret
+
+# Don't track local Git files
+.git/
+.gitignore

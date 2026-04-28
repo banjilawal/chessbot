@@ -1,0 +1,24 @@
+# Default - normalize text files line endings
+* text=auto
+
+# Enforce LF for shell and Python scripts
+*.sh text eol=lf
+*.py text eol=lf
+
+# Enforce CRLF for Windows batch files
+*.bat text eol=crlf
+
+# Normalize YAML/JSON and config files to LF
+*.yaml text eol=lf
+*.yml text eol=lf
+*.json text eol=lf
+
+# Treat binary files as-is
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.gif binary
+*.pdf binary
+
+# Preserve file names on case-sensitive systems
+* -text
