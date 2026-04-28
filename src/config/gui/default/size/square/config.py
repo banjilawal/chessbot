@@ -1,7 +1,7 @@
-# src/config/gui/default/font/config.py
+# src/config/gui/default/size/config/square/config.py
 
 """
-Module: config.gui.default.font.config
+Module: config.gui.default.size.config.square.config
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -16,13 +16,13 @@ from dataclasses import dataclass, field
 
 
 @dataclass
-class DefaultFontSetting:
+class DefaultSquareSizeSetting:
     """
     Role
         -   Configuration Settings
 
     Responsibilities:
-        1.  Default frame size.
+        1.  Default square pixel size settings.
 
     Attributes:
 
@@ -31,10 +31,11 @@ class DefaultFontSetting:
     Super Class:
         Enum
     """
-    table: Mapping[str, str] = field(
+    table: Mapping[str, int] = field(
         default_factory=lambda: MappingProxyType(
             {
-                "standard": "monospace",
+                "dimension": 80,
+                "border_width": 2,
             }
         )
     )

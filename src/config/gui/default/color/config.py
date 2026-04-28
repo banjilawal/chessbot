@@ -38,8 +38,8 @@ class DefaultGameColorSetting:
                 "background": GameColor.DARK_GRAY_1.value,
                 "opening_player": GameColor.IVORY.value,
                 "following_player": GameColor.BLACK.value,
-                "cell": GameColor.LIGHT_SAND.value,
-                "opposite_cell": GameColor.DARK_GRAY_1.value,
+                "square": GameColor.LIGHT_SAND.value,
+                "adjacent_square": GameColor.DARK_GRAY_1.value,
             }
         )
     )

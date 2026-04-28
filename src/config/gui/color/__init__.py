@@ -10,6 +10,6 @@ version: 1.0.1
 # =========== CONFIG.GUI.COLOR PACKAGE ===========#
 
 # Packages
-from .config import *
 
 # Modules
+from .config import GameColor

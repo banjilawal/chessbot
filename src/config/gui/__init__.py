@@ -10,6 +10,7 @@ version: 1.0.1
 # =========== CONFIG.GUI PACKAGE ===========#
 
 # Packages
+from .caption import *
 from .color import *
 from .default import *
 from .mouse import *

@@ -10,6 +10,7 @@ version: 1.0.1
 # =========== CONFIG PACKAGE ===========#
 
 # Packages
+from .board import *
 from .gui import *
 
 # Modules

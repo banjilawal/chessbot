@@ -13,4 +13,3 @@ version: 1.0.1
 
 
 # Modules
-from .default import *

@@ -1,7 +1,7 @@
-# src/config/gui/default/size/config/frame/config.py
+# src/config/gui/caption/config.py
 
 """
-Module: config.gui.default.size.config.frame.config
+Module: config.gui.caption.config
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -14,15 +14,14 @@ from types import MappingProxyType
 from dataclasses import dataclass, field
 
 
-
 @dataclass
-class DefaultFrameSizeSetting:
+class CaptionTextConfig:
     """
     Role
         -   Configuration Settings
 
     Responsibilities:
-        1.  Default frame size.
+        1.  Default square pixel size settings.
 
     Attributes:
 
@@ -31,12 +30,11 @@ class DefaultFrameSizeSetting:
     Super Class:
         Enum
     """
-    table: Mapping[str, int] = field(
+    table: Mapping[str, str] = field(
         default_factory=lambda: MappingProxyType(
             {
-                "size": 800,
-                "width": 800,
-                "height": 800,
+                "title": "ChessBot",
+                "border_width": 2,
             }
         )
     )
