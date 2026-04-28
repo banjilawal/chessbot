@@ -5,16 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/util/decorator/autoid/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/util/decorator/autoid/id/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/util/decorator/autoid/id/decorator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/util/decorator/singleton/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/util/decorator/singleton/auto_id.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/util/decorator/singleton/id/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/util/decorator/singleton/id/decorator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/decorator/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/decorator/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/decorator/auto_id.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/decorator/autoid/auto_id.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/gui/color/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/gui/color/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/gui/color/dimension/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/gui/color/config/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/gui/color/dimension/default.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/gui/color/config/default.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,11 +72,11 @@
       <recent name="$PROJECT_DIR$/src/util" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/util/decorator/singleton" />
       <recent name="$PROJECT_DIR$/src/util/decorator/autoid" />
       <recent name="$PROJECT_DIR$/src/util/gui/screen/placement" />
       <recent name="$PROJECT_DIR$/src/util/gui/mouse/placement" />
       <recent name="$PROJECT_DIR$/src/util/gui/mouse" />
-      <recent name="$PROJECT_DIR$/src/util/decorator" />
     </key>
   </component>
   <component name="RunManager" selected="Python.operation">

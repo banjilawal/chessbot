@@ -8,5 +8,4 @@ Created: 2025-11-17
 
 from .exception import *
 
-from .color import GameColor
 from .validator import GameColorValidator

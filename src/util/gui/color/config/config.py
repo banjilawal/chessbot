@@ -1,9 +1,10 @@
-# src/logic/system/color/color.py
+# src/util/gui/color/config/config.py
 
 """
-Module: logic.system.color.color
+Module: util.gui.color.config.config
 Author: Banji Lawal
-Created: 2025-07-24
+Created: 2026-04-03
+version: 1.0.1
 """
 
 

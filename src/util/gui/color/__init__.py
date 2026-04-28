@@ -10,6 +10,6 @@ version: 1.0.1
 # =========== UTIL.GUI.COLOR PACKAGE ===========#
 
 # Packages
-from .dimension import *
+from .config import *
 
 # Modules
