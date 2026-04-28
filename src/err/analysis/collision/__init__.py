@@ -23,6 +23,7 @@ from .node import *
 from .persona import *
 from .player import *
 from .rank import *
+from .registration import *
 from .scalar import *
 from .schema import *
 from .square import *
