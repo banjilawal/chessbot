@@ -39,6 +39,15 @@ class WorkerRegistryToolkit:
     Provides:
 
     Super Class:
+    
+    Notes:
+        -   WorkerRegistry is a repo of operations that can be used in building toolkits.
+        -   To avoid side effects WorkerRegistryController does not use the Toolkit subclass for consolidating
+            its operations.
+        -   To prevent side effects WorkerRegistryController Toolkit subclasses are avoided in
+            WorkerRegistryController.
+        -   The name is consistent with the toolkit role and responsibilities. despite not being
+            a subclass of Toolkit.
     """
     name_validator: NameValidator = NameValidator()
     register_worker: RegisterWorker = RegisterWorker()
