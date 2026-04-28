@@ -22,15 +22,16 @@ class WorkerRegistryController(Controller[WorkerRegistry]):
     """
     Role
         -   Controller
-        -   Publisher
-
+        -   Integrity Maintenance
+        -   Consistency Assurance
+    
     Responsibilities:
-        1.  Dynamic registry of operations available for toolkits.
-
+        1.  Ensure WorkerRegistry stays consistent during and after operations.
+    
     Attributes:
         registry: WorkerRegistry
         toolkit: WorkerRegistryToolkit
-
+    
     Provides:
         -   def find_worker(domain: str, operation_name: str) -> SearchResult[List[Operation]]:
         -   def domain_workers(domain: str) -> SearchResult[List[dict[str, Operation]]]:
@@ -39,10 +40,10 @@ class WorkerRegistryController(Controller[WorkerRegistry]):
                     worker: Operation,
                     null_exception: OperationNullException,
             ) -> InsertionResult:
-
+    
     Super Class:
         Controller
-     """
+    """
     _registry: WorkerRegistry
     _toolkit: WorkerRegistryToolkit
     

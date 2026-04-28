@@ -23,7 +23,7 @@ T = TypeVar("T")
 class Toolkit(ABC, Generic[T]):
     """
     Role:
-        -   Container
+        -   Utility Container
         
     Responsibilities:
         1.  Collection of workers and services that are required for a task.
