@@ -22,6 +22,7 @@ from .formation import *
 from .game import *
 from .hashtable import *
 from .hostage import *
+from .identifier import *
 from .node import *
 from .number import *
 from .operand import *

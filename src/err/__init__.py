@@ -25,6 +25,7 @@ from .route import *
 from .service import *
 from .stack import *
 from .transaction import *
+from .util import *
 
 # Modules
 from .exception import ChessException

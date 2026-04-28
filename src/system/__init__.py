@@ -10,27 +10,17 @@ version: 1.0.0
 #=========== SYSTEM PACKAGE ===========#
 
 # Packages
-from system import *
-from .color import *
-from .config import *
 from .collection import *
 from system.collection.adt import *
 from .event import *
-from .identity import *
 from .notification import *
 from .result import *
-from .relation import *
 from .resolution import *
-from .microservice import *
 from .text import *
 from .transaction import *
-from .validate import *
-from .route import *
 from .pipeline import *
-from .search import *
 
 # Modules
-None
 
 
 

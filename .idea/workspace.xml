@@ -5,12 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/util/logging/router/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/util/logging/writer/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/identifier/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/identifier/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/util/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/util/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/util/identifier/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/util/identifier/color/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/util/identifier/color/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/util/identifier/factory/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/util/identifier/factory/util.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/logging/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/logging/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/logging/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/logging/router/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/logging/writer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/logging/writer/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/config.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/identity/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/identifier/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/identity/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/identifier/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/identity/id/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/identifier/auto/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/identity/id/auto.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/identifier/auto/auto.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/identity/id/emitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/identifier/auto/emitter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/identity/id/factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/identifier/auto/factory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +73,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/util/decorator",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -68,16 +83,16 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err" />
+      <recent name="$PROJECT_DIR$/src/err/null" />
+      <recent name="$PROJECT_DIR$/src/util/identity" />
       <recent name="$PROJECT_DIR$/src/util/decorator" />
       <recent name="$PROJECT_DIR$/src/util/logging" />
-      <recent name="$PROJECT_DIR$/src/config" />
-      <recent name="$PROJECT_DIR$/src/err/null" />
-      <recent name="$PROJECT_DIR$/src/err" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/util" />
       <recent name="$PROJECT_DIR$/src/util/logging/router" />
       <recent name="$PROJECT_DIR$/src/util/logging/writer" />
-      <recent name="$PROJECT_DIR$/src/util" />
       <recent name="$PROJECT_DIR$/src/config/name" />
       <recent name="$PROJECT_DIR$/src/err/config" />
     </key>
@@ -1145,7 +1160,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/util/__init__.py</url>
-          <line>16</line>
+          <line>17</line>
           <option name="timeStamp" value="159" />
         </line-breakpoint>
       </breakpoints>
