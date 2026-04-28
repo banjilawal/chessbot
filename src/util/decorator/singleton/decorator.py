@@ -10,10 +10,12 @@ version: 1.0.1
 from __future__ import annotations
 import threading
 
-__all__ = [
-    "singleton"
-]
 
+__all__ = [
+    # ======================# SINGLETON #======================#
+    "singleton",
+]
+# ======================# SINGLETON #======================#
 
 def singleton(cls):
     """A thread-safe decorator for a Singleton."""

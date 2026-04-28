@@ -10,8 +10,7 @@ version: 1.0.1
 # =========== UTIL.DECORATOR PACKAGE ===========#
 
 # Packages
-
+from .auto import *
+from .singleton import *
 
 # Modules
-from .auto_id import *
-from .singleton import *
