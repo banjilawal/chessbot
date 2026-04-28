@@ -10,13 +10,9 @@ version: 1.0.0
 #=========== SYSTEM PACKAGE ===========#
 
 # Packages
-from .collection import *
-from system.collection.adt import *
 from .event import *
 from .notification import *
-from .result import *
 from .resolution import *
-from .text import *
 from .transaction import *
 from .pipeline import *
 

@@ -24,6 +24,7 @@ from .rollback import *
 from .route import *
 from .service import *
 from .stack import *
+from .string import *
 from .transaction import *
 from .util import *
 

@@ -5,27 +5,59 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/null/identifier/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/identifier/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/util/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/util/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/util/identifier/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/util/identifier/color/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/util/identifier/color/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/util/identifier/factory/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/util/identifier/factory/util.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/string/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/string/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/string/blank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/string/blank/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/string/blank/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/string/blank/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/string/empty/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/string/empty/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/string/empty/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/string/empty/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/string/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/string/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/string/name/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/string/name/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/string/name/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/string/name/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/string/name/max/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/string/name/max/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/string/name/max/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/string/name/max/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/string/name/min/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/string/name/min/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/string/name/min/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/string/name/min/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/validation/text/name/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/validation/text/name/validator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/system/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/config.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/identity/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/identifier/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/identity/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/identifier/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/identity/id/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/identifier/auto/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/identity/id/auto.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/identifier/auto/auto.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/identity/id/emitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/identifier/auto/emitter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/identity/id/factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/identifier/auto/factory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/collection/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/collection/adt/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/collection/adt/database/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/collection/adt/database/exception/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/collection/adt/database/exception/anchor.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/collection/adt/database/exception/debug.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/collection/exception/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/collection/exception/base.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/collection/operation/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/collection/operation/deletion/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/collection/operation/deletion/exception/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/collection/operation/deletion/exception/work.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/collection/operation/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/collection/operation/insertion/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/collection/operation/insertion/exception/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/collection/operation/insertion/exception/unsupported.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/collection/operation/insertion/exception/work.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/collection/operation/insertion/state/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/collection/operation/result.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/collection/operation/update/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/collection/operation/update/exception/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/collection/operation/update/exception/unsupported.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/collection/operation/update/exception/work.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/collection/operation/update/state/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/result/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/system/result/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/result/stack/exception/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/scene/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/scene/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/scene/scene.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/text/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/text/exception/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/text/exception/base.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/text/exception/void/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/text/exception/void/base.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/text/exception/void/blank.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/system/text/exception/void/whitespace.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +105,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/stack",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -83,18 +115,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/stack" />
       <recent name="$PROJECT_DIR$/src/err" />
       <recent name="$PROJECT_DIR$/src/err/null" />
       <recent name="$PROJECT_DIR$/src/util/identity" />
       <recent name="$PROJECT_DIR$/src/util/decorator" />
-      <recent name="$PROJECT_DIR$/src/util/logging" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err" />
+      <recent name="$PROJECT_DIR$/src/err/util/identifier" />
       <recent name="$PROJECT_DIR$/src/util" />
       <recent name="$PROJECT_DIR$/src/util/logging/router" />
       <recent name="$PROJECT_DIR$/src/util/logging/writer" />
-      <recent name="$PROJECT_DIR$/src/config/name" />
-      <recent name="$PROJECT_DIR$/src/err/config" />
     </key>
   </component>
   <component name="RunManager" selected="Python.operation">

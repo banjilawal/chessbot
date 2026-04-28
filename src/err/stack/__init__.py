@@ -17,7 +17,9 @@ from .edge import *
 from .game import *
 from .hostage import *
 from .node import *
+from .ops import *
 from .player import *
+from .result import *
 from .square import *
 from .team import *
 from .token import *
