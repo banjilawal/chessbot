@@ -17,6 +17,23 @@ from result import Result
 T = TypeVar("T")
 
 class Operation(ABC, Generic[T]):
+    """
+    Role
+        -   Worker
+
+    Responsibilities:
+        1.  Executes a task on a data-holding object or collection of data-holders.
+        2.  The task produces a work product encapsulated in a Result object.
+
+    Attributes:
+        DOMAIN = "operation"
+        OPERATION_NAME = "operation"
+
+    Provides:
+        -   def domains(self) -> List[str]:
+
+    Super Class:
+    """
     DOMAIN = "operation"
     OPERATION_NAME = "operation"
     
