@@ -11,8 +11,8 @@ version: 1.0.1
 
 # Packages
 from .color import *
-from .size import *
 from .font import *
+from .size import *
 from .pixel import *
 
 # Modules

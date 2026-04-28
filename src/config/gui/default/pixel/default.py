@@ -7,24 +7,12 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-from system import GameDefault
 
 __all__ = [
-  "NUMBER_OF_ROWS",
-  "NUMBER_OF_COLUMNS",
   "BOARD_PIXEL",
   "MIN_NAME_LENGTH",
   "MAX_NAME_LENGTH",
   "LONGEST_KNIGHT_LEG_SIZE",
-  "CELL_PX",
-  "BORDER_PX",
-  "DEFAULT_DEFAULT",
-  "DEFAULT_WIDTH",
-  "DEFAULT_HEIGHT",
-  "PYGAME_CAPTION",
-  "PYGAME_FONT",
-  "PYGAME_FONT_SIZE",
-  "OPPOSITE_CELL_DEFAULT"
 ]
 
 

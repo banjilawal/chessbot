@@ -12,5 +12,6 @@ version: 1.0.1
 # Packages
 from .board import *
 from .gui import *
+from .name import *
 
 # Modules
