@@ -1,10 +1,16 @@
-# src/logic/system/logging/__init__.py
+# src/util/logging/__init__.py
 
 """
-Module: logic.system.logging
+Module: util.logging.__init__
 Author: Banji Lawal
-Created: 2025-09-28
+Created: 2026-04-03
+version: 1.0.1
 """
 
-from .writer import LogWriter
-from .router import LoggingLevelRouter
+# =========== UTIL.LOGGING PACKAGE ===========#
+
+# Packages
+from .router import *
+from .writer import *
+
+# Modules

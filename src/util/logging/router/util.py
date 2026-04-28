@@ -10,26 +10,30 @@ version: 1.0.0
 from functools import wraps
 from typing import Any, Callable, Optional, TypeVar
 
-from system import LogWriter
+from util import LogWriter
 
 T = TypeVar("T")
 
 
 class LoggingLevelRouter:
     """
-  ROLE:
-  ----
-  RESPONSIBILITIES:
-  ----------------
-  1. Cut down logging boilerplate by centralizing and unifying
-      the routing of successes or failures to either th error or
-      info logs.
-  2. Can be used directly in the code body, or as a decorator.
-
-  ATTRIBUTES:
-  ----------
-  None
-  """
+    ROLE:
+    ----
+    RESPONSIBILITIES:
+    ----------------
+    1. Cut down logging boilerplate by centralizing and unifying
+    the routing of successes or failures to either th error or
+    info logs.
+    2. Can be used directly in the code body, or as a decorator.
+    
+    ATTRIBUTES:
+    ----------
+    None
+    """
+    
+    @staticmethod
+    def log_success(context: Any, message: str) -> None:
+        LogWriter.log_info(context, message)
     
     @staticmethod
     def log_and_raise_error(
@@ -39,21 +43,20 @@ class LoggingLevelRouter:
             exception_factory: Optional[Callable[[], Exception]] = None
     ):
         """
-    Writes errors from any source to the logger then re-raise it.
-    e source
-    for handling, wrapping.
-    Ensures uniform logging without repetitive try/except.
-    Arguments:
-      * `context`:
-      * `notification`: Anything `context` is returning on success.
-      * `rollback_exception`:
-      * `exception_factory`:
-    Returns:
-      `void`
-    Raises:
-      None
-    """
-        
+        Writes errors from any source to the logger then re-raise it.
+        e source
+        for handling, wrapping.
+        Ensures uniform logging without repetitive try/except.
+        Arguments:
+          * `context`:
+          * `notification`: Anything `context` is returning on success.
+          * `rollback_exception`:
+          * `exception_factory`:
+        Returns:
+          `void`
+        Raises:
+          None
+        """
         if exception is not None:
             ex = exception
         elif result is not None and hasattr(result, 'rollback_exception'):
@@ -65,10 +68,6 @@ class LoggingLevelRouter:
         
         LogWriter.log_exception(context, ex)
         raise ex
-    
-    @staticmethod
-    def log_success(context: Any, message: str) -> None:
-        LogWriter.log_info(context, message)
     
     @staticmethod
     def monitor(context: Any = None):
@@ -95,3 +94,7 @@ class LoggingLevelRouter:
                 return wrapper
         
         return decorator
+
+    
+
+    

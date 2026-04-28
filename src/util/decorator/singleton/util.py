@@ -1,7 +1,7 @@
-# src/util/decorator/singleton.py
+# src/util/decorator/util.py
 
 """
-Module: util.decorator.singleton
+Module: util.decorator.util
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

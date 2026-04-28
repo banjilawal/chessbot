@@ -1,7 +1,7 @@
-# src/util/decorator/auto/id/decorator.py
+# src/util/decorator/logging/monitor/util.py
 
 """
-Module: util.decorator.auto.id.decorator
+Module: util.decorator.logging.monitor.util
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -15,16 +15,14 @@ from typing import Type, TypeVar
 T = TypeVar("T")
 
 __all__ = [
-    # ======================# AUTO_ID #======================#
-    "auto_id",
+    # ======================# LOGGING_MONITOR #======================#
+    "logging_monitor",
 ]
+# ======================# LOGGING_MONITOR #======================#
 
-
-# ======================# AUTO_ID #======================#
-
-def auto_id(cls: Type[T]) -> Type[T]:
+def logging_monitor(cls: Type[T]) -> Type[T]:
     """
-    Decorator that adds automatic ID generation to team_name class.
+    Decorator that adds loggingmatic ID generation to team_name class.
     Each decorated class gets its own independent ID counter starting at 1.
     Thread-safe.
     """
