@@ -1,4 +1,4 @@
-# src/operation/__ini__.py
+# src/operation/__init__.py
 
 """
 Module: operation.__init__

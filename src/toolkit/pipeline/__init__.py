@@ -1,4 +1,4 @@
-# src/toolkit/context/__ini__.py
+# src/toolkit/context/__init__.py
 
 """
 Module: toolkit.context.__init__

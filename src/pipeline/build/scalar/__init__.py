@@ -1,4 +1,4 @@
-# src/pipeline/build/scalar/__ini__.py
+# src/pipeline/build/scalar/__init__.py
 
 """
 Module: pipeline.build.scalar.__init__

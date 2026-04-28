@@ -1,4 +1,4 @@
-# src/operation/registration/register/__ini__.py
+# src/operation/registration/register/__init__.py
 
 """
 Module: operation.registration.register.__init__

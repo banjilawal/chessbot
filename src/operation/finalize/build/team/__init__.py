@@ -1,4 +1,4 @@
-# src/operation/finalize/team/__ini__.py
+# src/operation/finalize/team/__init__.py
 
 """
 Module: operation.finalize.team.__init__

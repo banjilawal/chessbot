@@ -1,4 +1,4 @@
-# src/operation/bootstrap/assembly/binder/__ini__.py
+# src/operation/bootstrap/assembly/binder/__init__.py
 
 """
 Module: operation.bootstrap.assembly.binder.__init__

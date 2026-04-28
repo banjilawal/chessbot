@@ -1,4 +1,4 @@
-# src/operation/validation/register/__ini__.py
+# src/operation/validation/register/__init__.py
 
 """
 Module: operation.validation.register.__init__

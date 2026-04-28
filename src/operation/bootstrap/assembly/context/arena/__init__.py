@@ -1,4 +1,4 @@
-# src/operation/bootstrap/assembly/context/arena/__ini__.py
+# src/operation/bootstrap/assembly/context/arena/__init__.py
 
 """
 Module: operation.bootstrap.assembly.context.arena.__init__

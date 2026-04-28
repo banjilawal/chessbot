@@ -1,4 +1,4 @@
-# src/operation/bootstrap/__ini__.py
+# src/operation/bootstrap/__init__.py
 
 """
 Module: operation.boostrap.__init__

@@ -1,4 +1,4 @@
-# src/operation/registration/search/worker/__ini__.py
+# src/operation/registration/search/worker/__init__.py
 
 """
 Module: operation.registration.search.worker.__init__

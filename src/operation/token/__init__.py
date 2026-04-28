@@ -1,4 +1,4 @@
-# src/operation/token/__ini__.py
+# src/operation/token/__init__.py
 
 """
 Module: operation.token.__init__

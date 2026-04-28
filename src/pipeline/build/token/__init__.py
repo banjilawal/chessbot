@@ -1,4 +1,4 @@
-# src/pipeline/build/token/__ini__.py
+# src/pipeline/build/token/__init__.py
 
 """
 Module: pipeline.build.token.__init__

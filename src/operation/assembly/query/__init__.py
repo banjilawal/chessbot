@@ -1,4 +1,4 @@
-# src/operation/assembly/query/__ini__.py
+# src/operation/assembly/query/__init__.py
 
 """
 Module: operation.assembly.query.__init__

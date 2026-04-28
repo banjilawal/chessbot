@@ -1,4 +1,4 @@
-# src/operation/bootstrap/assembly/token/__ini__.py
+# src/operation/bootstrap/assembly/token/__init__.py
 
 """
 Module: operation.bootstrap.assembly.token.__init__

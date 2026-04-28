@@ -1,4 +1,4 @@
-# src/operation/bootstrap/assembly/board/__ini__.py
+# src/operation/bootstrap/assembly/board/__init__.py
 
 """
 Module: operation.bootstrap.assembly.board.__init__

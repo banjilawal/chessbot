@@ -1,4 +1,4 @@
-# src/operation/finalize/square/__ini__.py
+# src/operation/finalize/square/__init__.py
 
 """
 Module: operation.finalize.square.__init__

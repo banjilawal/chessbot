@@ -1,4 +1,4 @@
-# src/pipeline/build/coord/__ini__.py
+# src/pipeline/build/coord/__init__.py
 
 """
 Module: pipeline.build.coord.__init__

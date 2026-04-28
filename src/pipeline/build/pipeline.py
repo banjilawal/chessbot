@@ -1,4 +1,4 @@
-# src/pipeline/build/__ini__.py
+# src/pipeline/build/__init__.py
 
 """
 Module: pipeline.build.pipeline

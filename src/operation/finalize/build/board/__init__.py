@@ -1,4 +1,4 @@
-# src/operation/finalize/board/__ini__.py
+# src/operation/finalize/board/__init__.py
 
 """
 Module: operation.finalize.board.__init__

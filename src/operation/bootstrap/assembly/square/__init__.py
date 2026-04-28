@@ -1,4 +1,4 @@
-# src/operation/bootstrap/assembly/square/__ini__.py
+# src/operation/bootstrap/assembly/square/__init__.py
 
 """
 Module: operation.bootstrap.assembly.square.__init__

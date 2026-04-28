@@ -1,4 +1,4 @@
-# src/operation/assembly/scalar/__ini__.py
+# src/operation/assembly/scalar/__init__.py
 
 """
 Module: operation.assembly.scalar.__init__

@@ -11,15 +11,12 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import ChessException
+from result import MethodResultType
 
 __all__ = [
     # ======================# ANALYSIS_FAILURE #======================#
     "AnalysisException",
 ]
-
-from result import MethodResultType
-
-
 # ======================# ANALYSIS_FAILURE #======================#
 class AnalysisException(ChessException):
     """

@@ -1,4 +1,4 @@
-# src/model/game/__ini__.py
+# src/model/game/__init__.py
 
 """
 Module: model.game.__init__

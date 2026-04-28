@@ -1,4 +1,4 @@
-# src/operation/bootstrap/assembly/vector/__ini__.py
+# src/operation/bootstrap/assembly/vector/__init__.py
 
 """
 Module: operation.bootstrap.assembly.vector.__init__

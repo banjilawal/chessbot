@@ -1,4 +1,4 @@
-# src/operation/bootstrap/assembly/rank/__ini__.py
+# src/operation/bootstrap/assembly/rank/__init__.py
 
 """
 Module: operation.bootstrap.assembly.rank.__init__

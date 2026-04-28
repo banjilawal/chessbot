@@ -1,4 +1,4 @@
-# src/operation/bootstrap/assembly/context/__ini__.py
+# src/operation/bootstrap/assembly/context/__init__.py
 
 """
 Module: operation.bootstrap.assembly.context.__init__

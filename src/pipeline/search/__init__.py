@@ -1,4 +1,4 @@
-# src/pipeline/search/__ini__.py
+# src/pipeline/search/__init__.py
 
 """
 Module: pipeline.search.__init__

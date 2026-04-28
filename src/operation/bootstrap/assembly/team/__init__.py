@@ -1,4 +1,4 @@
-# src/operation/bootstrap/assembly/team/__ini__.py
+# src/operation/bootstrap/assembly/team/__init__.py
 
 """
 Module: operation.bootstrap.assembly.team.__init__

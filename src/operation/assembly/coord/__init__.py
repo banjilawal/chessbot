@@ -1,4 +1,4 @@
-# src/operation/assembly/coord/__ini__.py
+# src/operation/assembly/coord/__init__.py
 
 """
 Module: operation.assembly.coord.__init__

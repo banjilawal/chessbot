@@ -1,4 +1,4 @@
-# src/operation/registration/search/__ini__.py
+# src/operation/registration/search/__init__.py
 
 """
 Module: operation.registration.search.__init__

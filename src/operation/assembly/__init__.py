@@ -1,4 +1,4 @@
-# src/operation/assembly/__ini__.py
+# src/operation/assembly/__init__.py
 
 """
 Module: operation.assembly.__init__

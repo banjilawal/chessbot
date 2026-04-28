@@ -1,4 +1,4 @@
-# src/pipeline/build/square/__ini__.py
+# src/pipeline/build/square/__init__.py
 
 """
 Module: pipeline.build.square.__init__

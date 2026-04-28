@@ -1,4 +1,4 @@
-# src/operation/validation/binder/__ini__.py
+# src/operation/validation/binder/__init__.py
 
 """
 Module: operation.validation.binder.__init__

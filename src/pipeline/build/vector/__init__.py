@@ -1,4 +1,4 @@
-# src/pipeline/build/vector/__ini__.py
+# src/pipeline/build/vector/__init__.py
 
 """
 Module: pipeline.build.vector.__init__

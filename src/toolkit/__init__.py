@@ -1,4 +1,4 @@
-# src/toolkit/__ini__.py
+# src/toolkit/__init__.py
 
 """
 Module: toolkit.__init__

@@ -1,4 +1,4 @@
-# src/operation/bootstrap/assembly/coord/__ini__.py
+# src/operation/bootstrap/assembly/coord/__init__.py
 
 """
 Module: operation.bootstrap.assembly.coord.__init__

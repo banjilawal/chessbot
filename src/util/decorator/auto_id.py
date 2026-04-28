@@ -1,4 +1,13 @@
-# File: chess/system/id_utils.py
+# src/util/decorator/auto_id.py
+
+"""
+Module: util.decorator.auto_id
+Author: Banji Lawal
+Created: 2026-04-03
+version: 1.0.1
+"""
+
+from __future__ import annotations
 from itertools import count
 from threading import Lock
 from typing import Type, TypeVar
@@ -6,7 +15,7 @@ from typing import Type, TypeVar
 T = TypeVar('V')
 
 __all__ = [
-  'auto_id'
+  "auto_id"
 ]
 
 def auto_id(cls: Type[T]) -> Type[T]:

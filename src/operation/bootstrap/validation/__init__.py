@@ -1,4 +1,4 @@
-# src/operation/bootstrap/validation/__ini__.py
+# src/operation/bootstrap/validation/__init__.py
 
 """
 Module: operation.boostrap.validation.__init__

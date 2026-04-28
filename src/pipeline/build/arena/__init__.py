@@ -1,4 +1,4 @@
-# src/pipeline/build/arena/__ini__.py
+# src/pipeline/build/arena/__init__.py
 
 """
 Module: pipeline.build.arena.__init__

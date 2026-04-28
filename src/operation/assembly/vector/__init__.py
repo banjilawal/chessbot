@@ -1,4 +1,4 @@
-# src/operation/assembly/vector/__ini__.py
+# src/operation/assembly/vector/__init__.py
 
 """
 Module: operation.assembly.vector.__init__
