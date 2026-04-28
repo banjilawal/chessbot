@@ -1,18 +1,27 @@
-# src/config/gui/default/pixel/default.py
+
+
+# src/config/gui/default/size/default.py
 
 """
-Module: config.gui.default.pixel.default
+Module: config.gui.default.size.default
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
+
+from __future__ import annotations
+from dataclasses import dataclass
+
+
+@dataclass
+class ScreenSize:
 
 from system import GameDefault
 
 __all__ = [
   "NUMBER_OF_ROWS",
   "NUMBER_OF_COLUMNS",
-  "BOARD_PIXEL",
+  "BOARD_SIZE",
   "MIN_NAME_LENGTH",
   "MAX_NAME_LENGTH",
   "LONGEST_KNIGHT_LEG_SIZE",
@@ -30,7 +39,7 @@ __all__ = [
 NUMBER_OF_ROWS = 8
 NUMBER_OF_COLUMNS = 8
 
-BOARD_PIXEL = 8
+BOARD_SIZE = 8
 MIN_NAME_LENGTH = 2
 MAX_NAME_LENGTH = 40
 

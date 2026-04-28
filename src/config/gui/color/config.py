@@ -1,16 +1,29 @@
-# src/util/gui/color/config/config.py
+# src/config/gui/color/config.py
 
 """
-Module: util.gui.color.config.config
+Module: config.gui.color.config
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-
 from enum import Enum
 
 class GameColor(Enum):
+  """
+  Role
+      -   Configuration Settings
+
+  Responsibilities:
+      1.  Defines all colors available in application.
+
+  Attributes:
+
+  Provides:
+  
+  Super Class:
+      Enum
+  """
   # Yellows (Darkest to Lightest)
   GOLDENROD = (218, 165, 32)
   GOLD = (255, 215, 0)

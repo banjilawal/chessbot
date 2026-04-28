@@ -1,13 +1,13 @@
-# src/util/gui/default/color/default.py
+# src/config/gui/default/color/config.py
 
 """
-Module: util.gui.default.color.default
+Module: config.gui.default.color.config
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-from system import GameDefault
+
 
 __all__ = [
   "NUMBER_OF_ROWS",
@@ -26,6 +26,10 @@ __all__ = [
   "PYGAME_FONT_SIZE",
   "OPPOSITE_CELL_DEFAULT"
 ]
+
+from dataclasses import dataclass
+from typing import Any, Dict, Tuple
+
 
 NUMBER_OF_ROWS = 8
 NUMBER_OF_COLUMNS = 8
@@ -55,10 +59,15 @@ PYGAME_CAPTION = "ChessBot"
 PYGAME_FONT = "monospace"
 PYGAME_FONT_SIZE = 150
 
-DEFAULT_DEFAULT = GameDefault.DARK_GRAY_1.value
-CELL_DEFAULT = GameDefault.LIGHT_SAND.value
-OPPOSITE_CELL_DEFAULT = DEFAULT_DEFAULT
-
+@dataclass
+class DefaultGameColorSetting:
+  settings: Dict[str, Any] = {
+    "background": GameColor.DARK_GRAY_1.value,
+    "opening_player": GameColor.IVORY.value,
+    "following_player": GameColor.BLACK.value,
+    "cell": GameColor.LIGHT_SAND.value,
+    "default": GameColor.DARK_GRAY_1.value,
+  }
 
 
 

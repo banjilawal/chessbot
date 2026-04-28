@@ -1,7 +1,7 @@
-# src/util/gui/default/dimension/default.py
+# src/config/gui/default/dimension/default.py
 
 """
-Module: util.gui.default.dimension.default
+Module: config.gui.default.dimension.default
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
