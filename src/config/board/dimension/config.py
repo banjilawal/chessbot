@@ -1,7 +1,7 @@
-# src/config/board/dimension/__init__.py
+# src/config/board/dimension/config.py
 
 """
-Module: config.board.dimension.__init__
+Module: config.board.dimension.config
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
