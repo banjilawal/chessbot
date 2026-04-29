@@ -14,3 +14,4 @@ version: 1.0.1
 
 # Modules
 from .config import DefaultSquareSizeSetting
+from .property import SquareProperty

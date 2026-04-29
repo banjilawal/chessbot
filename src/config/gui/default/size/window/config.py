@@ -13,6 +13,7 @@ from typing import Mapping
 from types import MappingProxyType
 from dataclasses import dataclass, field
 
+from config.gui.default.size.window.property import WindowProperty
 
 
 @dataclass
@@ -31,12 +32,12 @@ class DefaultWindowSizeSetting:
     Super Class:
         Enum
     """
-    table: Mapping[str, int] = field(
+    table: Mapping[WindowProperty, int] = field(
         default_factory=lambda: MappingProxyType(
             {
-                "frame_dimension": 800,
-                "frame_width": 800,
-                "frame_height": 800,
+                WindowProperty.FRAME_DIMENSION: 800,
+                WindowProperty.FRAME_HEIGHT: 800,
+                WindowProperty.FRAME_WIDTH: 800,
             }
         )
     )
