@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from config import BoardDimensionSetting, BoardProperty
+from setting import BoardDimensionSetting, BoardProperty
 from controller import WorkerRegistryController
 from err import BootstrapCoordAssemblyException
 from toolkit import CoordToolkit

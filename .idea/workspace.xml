@@ -5,10 +5,57 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/config/gui/default/size/square/property.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/setting/board/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/setting/board/dimension/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/setting/gui/caption/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/setting/gui/color/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/setting/gui/default/color/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/setting/gui/default/font/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/setting/gui/default/pixel/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/setting/gui/default/pixel/default.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/setting/gui/default/size/font/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/setting/gui/default/size/square/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/setting/gui/default/size/window/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/setting/gui/mouse/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/setting/gui/mouse/placement/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/setting/name/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/setting/name/property.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/gui/default/size/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/gui/default/size/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/gui/default/size/square/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/gui/default/size/square/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DOCS/run_game.py" beforeDir="false" afterPath="$PROJECT_DIR$/DOCS/run_game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/setting/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/board/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/board/dimension/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/board/dimension/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/setting/board/dimension/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/board/dimension/property.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/setting/board/dimension/property.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/gui/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/setting/gui/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/gui/caption/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/gui/caption/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/setting/gui/caption/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/gui/color/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/gui/color/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/setting/gui/color/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/gui/default/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/setting/gui/default/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/gui/default/color/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/gui/default/color/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/setting/gui/default/color/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/gui/default/font/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/gui/default/font/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/setting/gui/default/font/setting.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/gui/default/pixel/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/gui/default/pixel/default.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/gui/default/size/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/setting/gui/default/size/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/gui/default/size/font/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/gui/default/size/font/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/setting/gui/default/size/font/setting.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/gui/default/size/font/property.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/setting/gui/default/size/font/property.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/gui/default/size/square/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/gui/default/size/square/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/setting/gui/default/size/square/setting.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/gui/default/size/square/property.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/setting/gui/default/size/square/property.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/gui/default/size/window/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/gui/default/size/window/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/setting/gui/default/size/window/setting.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/gui/default/size/window/property.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/setting/gui/default/size/window/property.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/gui/mouse/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/gui/mouse/placement/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/gui/mouse/placement/status.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/setting/gui/mouse/placement/status.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/name/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/name/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/setting/name/setting.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/coord/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/coord/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/vector/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/vector/operation.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +103,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/config/gui/default/size/window",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/config/name",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -66,11 +113,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/config/name" />
       <recent name="$PROJECT_DIR$/src/config/gui/default/size/window" />
       <recent name="$PROJECT_DIR$/src/util/logging" />
       <recent name="$PROJECT_DIR$/src/config" />
       <recent name="$PROJECT_DIR$/src/util/logging/setup" />
-      <recent name="$PROJECT_DIR$/src/stack" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/util/logging/default" />
