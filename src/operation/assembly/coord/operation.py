@@ -11,8 +11,9 @@ from __future__ import annotations
 
 from result import BuildResult
 from operation import Assembler
-from system import LoggingLevelRouter
+from util import LoggingLevelRouter
 from model import Coord, CoordBlueprint
+from controller import WorkerRegistryController
 
 class CoordAssembler(Assembler[Coord]):
     OPERATION_NAME = "coord_assembler"
@@ -36,5 +37,8 @@ class CoordAssembler(Assembler[Coord]):
                 column=blueprint.column,
             )
         )
+
+# Register the operation.
+WorkerRegistryController.register(worker=CoordAssembler)
         
         

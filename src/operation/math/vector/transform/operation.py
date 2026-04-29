@@ -9,6 +9,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any
 
+from controller import WorkerRegistryController
 from operation import Operation
 
 
@@ -104,4 +105,8 @@ class VectorTransform(Operation):
             )
         # --- Forward the work product to the caller. ---#
         return conversion_result
+
+
+# Register the operation.
+WorkerRegistryController.register(worker=VectorTransform)
         

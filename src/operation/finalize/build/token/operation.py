@@ -9,12 +9,12 @@ version: 1.0.1
 
 from __future__ import annotations
 
-
+from controller import WorkerRegistryController
 from err import FinalizeTokenBuildException
 from model import Token
-from operation import AssemblyFinalizer
+from operation import AssemblyFinalizer, TokenAssembler
 from result import BuildResult
-from system import LoggingLevelRouter
+from util import LoggingLevelRouter
 
 
 class TokenAssemblyFinalizer(AssemblyFinalizer[Token]):
@@ -40,4 +40,6 @@ class TokenAssemblyFinalizer(AssemblyFinalizer[Token]):
                 )
         # --- Forward the work product to the caller. ---#
         return BuildResult.success(product)
-        
+
+# Register the operation.
+WorkerRegistryController.register(worker=TokenAssembler)

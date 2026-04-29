@@ -13,7 +13,7 @@ from typing import List
 from err import ChessException, WorkerOpNameCollisionException, WorkerRegistrationException
 from result import InsertionResult, ValidationResult
 from model import WorkerRegistry
-from system import LoggingLevelRouter
+from util import LoggingLevelRouter
 from operation import Operation, RegistryWorkerSearch, WorkerRegistryOperation
 
 

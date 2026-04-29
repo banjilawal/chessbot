@@ -14,7 +14,7 @@ from model import Persona, Rank
 from toolkit import RankToolkit
 from operation import Validator
 from result import ValidationResult
-from system import LoggingLevelRouter
+from util import LoggingLevelRouter
 from err import PersonaNullException, RankNullException, RankValidationException
 
 

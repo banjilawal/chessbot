@@ -11,9 +11,10 @@ from __future__ import annotations
 from math import sqrt
 from typing import cast
 
+from controller import WorkerRegistryController
 from pipeline import ScalarBuildPipeline
 from result import ComputationResult
-from system import LoggingLevelRouter
+from util import LoggingLevelRouter
 from err import VectorEuclideanException
 from operation import Operation, VectorRegisterValidator
 from model import RegisterCategory, Scalar, ScalarBlueprint, VectorRegister
@@ -125,4 +126,6 @@ class EuclideanOperation(Operation[VectorRegister]):
             )
         # --- Forward the work product to the caller. ---#
         return ComputationResult.success(scalar_assembly_result.payload)
-        
+    
+# Register the operation.
+WorkerRegistryController.register(worker=EuclideanOperation)

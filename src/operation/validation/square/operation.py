@@ -15,7 +15,7 @@ from err import SquareNullException, SquareValidationException
 from model import Square
 from operation import Validator
 from result import ValidationResult
-from system import LoggingLevelRouter
+from util import LoggingLevelRouter
 from toolkit import SquareToolkit
 
 

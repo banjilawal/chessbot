@@ -9,13 +9,13 @@ version: 1.0.1
 
 from __future__ import annotations
 
-
+from controller import WorkerRegistryController
 from err import BootstrapTeamAssemblyException
 from model import Board, Team, TeamBlueprint
 from operation import AssemblyBootstrapper
 from result import ValidationResult
-from system import IdFactory, LoggingLevelRouter
 from toolkit import TeamToolkit
+from util import LoggingLevelRouter
 
 
 class TeamAssemblyBootstrapper(AssemblyBootstrapper[Team]):
@@ -178,14 +178,14 @@ class TeamAssemblyBootstrapper(AssemblyBootstrapper[Team]):
         Verify the id if it already exists or create a new one.
 
         Action:
-            1.  Send an exception chain in the AssemblyResult if an existing id
+            1.  Send an exception chain in the ValidationResult if an existing id
                 is not certified as safe.
             2.  Otherwise, send the success result.
         Args:
             blueprint: TeamBlueprint
             toolkit: TeamToolkit
         Returns:
-            AssemblyResult[int]
+            ValidationResult[int]
         Raises:
             BootstrapTeamAssemblyException
         """
@@ -213,7 +213,7 @@ class TeamAssemblyBootstrapper(AssemblyBootstrapper[Team]):
         )
         if slot_search_result.is_failure:
             # Send the exception chain on failure.
-            return AssemblyResult.failure(
+            return ValidationResult.failure(
                 BootstrapTeamAssemblyException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
@@ -224,7 +224,7 @@ class TeamAssemblyBootstrapper(AssemblyBootstrapper[Team]):
             )
         if not slot_search_result.is_empty:
             # Send the exception chain on failure.
-            return AssemblyResult.failure(
+            return ValidationResult.failure(
                 BootstrapTeamAssemblyException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
@@ -235,5 +235,9 @@ class TeamAssemblyBootstrapper(AssemblyBootstrapper[Team]):
             )
         # --- Return the work product. ---#
         return ValidationResult.success(blueprint.board)
+
+
+# Register the operation.
+WorkerRegistryController.register(worker=TeamAssemblyBootstrapper)
 
         

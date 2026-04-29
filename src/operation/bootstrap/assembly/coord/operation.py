@@ -9,12 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from config import BoardDimensionSetting, BoardProperty
+from controller import WorkerRegistryController
 from err import BootstrapCoordAssemblyException
 from toolkit import CoordToolkit
 from result import ValidationResult
 from model import Coord, CoordBlueprint
 from operation import AssemblyBootstrapper
-from system import BOARD_DIMENSION, LoggingLevelRouter
+from util import LoggingLevelRouter
 
 
 class CoordAssemblyBootstrapper(AssemblyBootstrapper[Coord]):
@@ -69,7 +71,7 @@ class CoordAssemblyBootstrapper(AssemblyBootstrapper[Coord]):
         for component in [blueprint.x, blueprint.y]:
             validation_result = toolkit.number_validator.validate(
                 floor=0,
-                ceiling=BOARD_DIMENSION / 2,
+                ceiling=BoardDimensionSetting.table[BoardProperty.MAX_COLUMN_INDEX],
                 candidate=abs(component)
             )
             if validation_result.is_failure:
@@ -85,3 +87,6 @@ class CoordAssemblyBootstrapper(AssemblyBootstrapper[Coord]):
                 )
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(blueprint)
+
+# Register the operation.
+WorkerRegistryController.register(worker=CoordAssemblyBootstrapper)

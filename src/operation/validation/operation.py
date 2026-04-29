@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
 
 from result import ValidationResult
-from system import LoggingLevelRouter
+from util import LoggingLevelRouter
 
 T = TypeVar("T")
 

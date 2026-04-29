@@ -9,13 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from controller import WorkerRegistryController
 from err import BootstrapSquareAssemblyException
 from model import Square, SquareBlueprint
 from operation import AssemblyBootstrapper
 from report import CollisionReport
 from result import AnalysisResult, ValidationResult
-from system import LoggingLevelRouter
 from toolkit import SquareToolkit
+from util import LoggingLevelRouter
 
 
 class SquareAssemblyBootstrapper(AssemblyBootstrapper[Square]):
@@ -255,3 +256,7 @@ class SquareAssemblyBootstrapper(AssemblyBootstrapper[Square]):
             )
         # --- Forward the work product to the caller. ---#
         return collision_analysis_result
+
+
+# Register the operation.
+WorkerRegistryController.register(worker=SquareAssemblyBootstrapper)

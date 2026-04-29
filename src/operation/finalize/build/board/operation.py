@@ -9,12 +9,12 @@ version: 1.0.1
 
 from __future__ import annotations
 
-
+from controller import WorkerRegistryController
 from err import FinalizeBoardBuildException
 from model import Board
 from operation import AssemblyFinalizer
 from result import BuildResult
-from system import LoggingLevelRouter
+from util import LoggingLevelRouter
 
 
 class BoardAssemblyFinalizer(AssemblyFinalizer[Board]):
@@ -42,4 +42,7 @@ class BoardAssemblyFinalizer(AssemblyFinalizer[Board]):
         
         # --- Forward the work product to the caller. ---#
         return BuildResult.success(product)
+    
+# Register the operation.
+WorkerRegistryController.register(worker=BoardAssemblyFinalizer)
         

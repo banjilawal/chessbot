@@ -9,12 +9,13 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from controller import WorkerRegistryController
 from toolkit import BoardToolkit
 from result import ValidationResult
-from system import LoggingLevelRouter
 from model import Board, BoardBlueprint
 from operation import AssemblyBootstrapper
 from err import BootstrapBoardAssemblyException
+from util import LoggingLevelRouter
 
 
 class BoardAssemblyBootstrapper(AssemblyBootstrapper[Board]):
@@ -132,5 +133,9 @@ class BoardAssemblyBootstrapper(AssemblyBootstrapper[Board]):
                 arena=blueprint.arena,
             )
         )
+
+
+# Register the operation.
+WorkerRegistryController.register(worker=BoardAssemblyBootstrapper)
 
         

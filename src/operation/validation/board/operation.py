@@ -15,7 +15,7 @@ from microservice import ArenaService, IdentityService
 from model import Board
 from operation import Validator
 from result import ValidationResult
-from system import LoggingLevelRouter
+from util import LoggingLevelRouter
 
 
 class BoardValidator(Validator[Board]):

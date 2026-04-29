@@ -16,7 +16,7 @@ from err import (
 from operation import Validator
 from model import VectorRegister
 from result import ValidationResult
-from system import LoggingLevelRouter
+from util import LoggingLevelRouter
 from toolkit import VectorRegisterToolkit
 
 

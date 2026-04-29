@@ -9,14 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
-
+from controller import WorkerRegistryController
 from err import BootstrapRankAssemblyException
 from model import Rank, RankBlueprint
 
 from operation import AssemblyBootstrapper
 from result import ValidationResult
-from system import LoggingLevelRouter
 from toolkit import RankToolkit
+from util import LoggingLevelRouter
 
 
 class RankAssemblyBootstrapper(AssemblyBootstrapper[Rank]):
@@ -135,4 +135,6 @@ class RankAssemblyBootstrapper(AssemblyBootstrapper[Rank]):
             )
         )
 
+# Register the operation.
+WorkerRegistryController.register(worker=RankAssemblyBootstrapper)
         

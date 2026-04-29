@@ -9,11 +9,12 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from controller import WorkerRegistryController
 from err import FinalizeSquareBuildException
 from model import Square
 from operation import AssemblyFinalizer
 from result import BuildResult
-from system import LoggingLevelRouter
+from util import LoggingLevelRouter
 
 
 class SquareAssemblyFinalizer(AssemblyFinalizer[Square]):
@@ -57,3 +58,6 @@ class SquareAssemblyFinalizer(AssemblyFinalizer[Square]):
             )
         # --- Forward the work product to the caller. ---#
         return BuildResult.success(product)
+
+# Register the operation.
+WorkerRegistryController.register(worker=SquareAssemblyFinalizer)

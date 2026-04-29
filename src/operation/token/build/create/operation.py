@@ -16,7 +16,7 @@ from err import TokenBuildException
 from microservice import RankService
 from model import CombatantToken, KingToken, PawnToken, Team, Token
 from result import BuildResult
-from system import LoggingLevelRouter
+from util import LoggingLevelRouter
 
 
 class TokenCreationOperation:

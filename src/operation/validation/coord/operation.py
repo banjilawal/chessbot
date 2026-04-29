@@ -14,7 +14,7 @@ from model import Coord
 from toolkit import MathToolkit
 from operation import Validator
 from result import ValidationResult
-from system import LoggingLevelRouter, NUMBER_OF_ROWS
+from util import LoggingLevelRouter, NUMBER_OF_ROWS
 from err import CoordNullException, CoordValidationException
 
 

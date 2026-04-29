@@ -15,7 +15,7 @@ from typing import Generic, TypeVar
 from model import Blueprint
 from operation import Operation
 from result import BuildResult, Result
-from system import LoggingLevelRouter
+from util import LoggingLevelRouter
 
 T = TypeVar("T")
 

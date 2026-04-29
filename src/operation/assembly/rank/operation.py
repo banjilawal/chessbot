@@ -9,13 +9,16 @@ version: 1.0.1
 
 from __future__ import annotations
 
+
 from result import BuildResult
 from operation import Assembler
-from system import LoggingLevelRouter
+from util import LoggingLevelRouter
+from controller import WorkerRegistryController
 from model import Bishop, King, Knight, Pawn, Persona, Queen, Rank, RankBlueprint, Rook
 
 
-class RanAssembler(Assembler[Rank]):
+
+class RankAssembler(Assembler[Rank]):
     """
     Role
         -   Transaction Worker
@@ -77,5 +80,7 @@ class RanAssembler(Assembler[Rank]):
         # Entry point into building a Queen instance.
         if blueprint.persona == Persona.QUEEN:
             return BuildResult.success(Queen(id=blueprint.id, persona=blueprint.persona))
-        
+
+# Register the operation.
+WorkerRegistryController.register(worker=RankAssembler)
         

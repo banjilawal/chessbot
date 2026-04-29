@@ -11,7 +11,7 @@ from typing import Any, cast
 
 from err import StringEmptyException, StringValidationException
 from err.null.string import StringNullException
-from system import LoggingLevelRouter, Validator, ValidationResult
+from util import LoggingLevelRouter, Validator, ValidationResult
 
 
 class StringValidator(Validator[str]):

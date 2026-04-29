@@ -12,7 +12,7 @@ from typing import List
 
 from result import SearchResult
 from model import WorkerRegistry
-from system import LoggingLevelRouter
+from util import LoggingLevelRouter
 from operation import Operation, WorkerRegistryOperation
 
 

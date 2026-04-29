@@ -11,8 +11,9 @@ from __future__ import annotations
 
 from result import BuildResult
 from operation import Assembler
-from system import LoggingLevelRouter
+from util import LoggingLevelRouter
 from model import Board, BoardBlueprint
+from controller import WorkerRegistryController
 
 
 class BoardAssembler(Assembler[Board]):
@@ -33,6 +34,9 @@ class BoardAssembler(Assembler[Board]):
         method = f"{cls.__name__}.execute"
         
         return BuildResult.success(Board(id=blueprint.id, arena=blueprint.arena,))
+
+# Register the operation.
+WorkerRegistryController.register(worker=BoardAssembler)
     
         
         

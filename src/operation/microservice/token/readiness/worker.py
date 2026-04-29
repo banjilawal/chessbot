@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from system import LoggingLevelRouter, RelationReport
+from util import LoggingLevelRouter, RelationReport
 from system.relation import RelationAnalysis
 from model.token import (
     TokenActivityState, TokenReadinessAnalysisException, CombatantToken,

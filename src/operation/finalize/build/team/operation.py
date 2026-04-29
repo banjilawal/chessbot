@@ -9,12 +9,12 @@ version: 1.0.1
 
 from __future__ import annotations
 
-
+from controller import WorkerRegistryController
 from err import FinalizeTeamBuildException
 from model import Team
 from operation import AssemblyFinalizer
 from result import BuildResult
-from system import LoggingLevelRouter
+from util import LoggingLevelRouter
 
 
 class TeamAssemblyFinalizer(AssemblyFinalizer[Team]):
@@ -39,8 +39,10 @@ class TeamAssemblyFinalizer(AssemblyFinalizer[Team]):
         )
         board = product.board
         board.binder_controller.binder.satellite_table[product.schema] = product
-            
         
         # --- Forward the work product to the caller. ---#
         return BuildResult.success(product)
+
+# Register the operation.
+WorkerRegistryController.register(worker=TeamAssemblyFinalizer)
         

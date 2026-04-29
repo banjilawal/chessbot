@@ -13,7 +13,7 @@ from err import MaxNameLengthException, NameValidationException
 from err.string.name.min.exception import MinNameLengthException
 from integrity import StringValidator
 from model.name.model import NamingRuleSet
-from system import LoggingLevelRouter, Validator, ValidationResult
+from util import LoggingLevelRouter, Validator, ValidationResult
 
 
 class NameValidator(Validator[str]):

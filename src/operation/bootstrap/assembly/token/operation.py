@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from typing import List
 
+from controller import WorkerRegistryController
 from report import CollisionReport
 from toolkit import TokenToolkit
 from search import SquareNotFoundException
@@ -356,3 +357,7 @@ class TokenAssemblyBootstrapper(AssemblyBootstrapper[Token]):
             )
         # --- Forward the work product to the caller. ---#
         return square_search_result
+
+
+# Register the operation.
+WorkerRegistryController.register(worker=TokenAssemblyBootstrapper)

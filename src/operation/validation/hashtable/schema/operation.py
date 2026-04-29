@@ -21,7 +21,7 @@ from err.null.hashtable.exception import HashtableNullException
 from model import Binder, BoardBinder, Schema, Team
 from operation import ValidationBootstrapper, Validator
 from result import ValidationResult
-from system import LoggingLevelRouter
+from util import LoggingLevelRouter
 from toolkit import BoardTeamBinderToolkit
 
 

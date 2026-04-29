@@ -93,4 +93,5 @@ class VectorAssemblyBootstrapper(AssemblyBootstrapper[Vector]):
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(blueprint)
     
+# Register the operation.
 WorkerRegistryController.register(worker=VectorAssemblyBootstrapper)

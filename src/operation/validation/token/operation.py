@@ -16,7 +16,7 @@ from operation import Validator
 from toolkit import TokenToolkit
 from database import CoordDatabase
 from result import ValidationResult
-from system import LoggingLevelRouter
+from util import LoggingLevelRouter
 from err import CoordDatabaseNullException, TokenNullException, TokenValidationException
 
 

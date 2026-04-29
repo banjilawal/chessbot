@@ -13,7 +13,7 @@ from operation.token.attack import (
     AttackException, AttackResult, AttackingDisabledEnemyException, AttackingEnemyKingException,
     AttackingFriendlySquareException, AttackingTokenOnWrongBoardException, AttackingVacantSquareException
 )
-from system import LoggingLevelRouter
+from util import LoggingLevelRouter
 from logic.square import Square, SquareDatabase
 from system import RelationReport
 from model.hostage import HostageService

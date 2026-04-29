@@ -13,7 +13,7 @@ from __future__ import annotations
 from result import BuildResult
 from operation import Assembler
 from toolkit import ScalarToolkit
-from system import LoggingLevelRouter
+from util import LoggingLevelRouter
 from err import ScalarAssemblyException
 from model import Scalar, ScalarBlueprint
 

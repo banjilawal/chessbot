@@ -9,8 +9,9 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from controller import WorkerRegistryController
 from result import ComputationResult
-from system import LoggingLevelRouter
+from util import LoggingLevelRouter
 from err import ScalarProductException
 from model import Coord, CoordBlueprint, OperandCategory, Vector, VectorBlueprint, VectorOperand, Scalar
 from pipeline import CoordBuildPipeline, VectorBuildPipeline
@@ -137,4 +138,6 @@ class ScalarProductOperation(Operation[VectorOperand]):
             )
         # --- Forward the work product to the caller. ---#
         return ComputationResult.success(build_result.payload)
-        
+
+# Register the operation.
+WorkerRegistryController.register(worker=ScalarProductOperation)
