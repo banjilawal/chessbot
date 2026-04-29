@@ -10,7 +10,9 @@ version: 1.0.1
 # =========== UTIL.LOGGING PACKAGE ===========#
 
 # Packages
+from .default import *
 from .router import *
+from .setup import *
 from .writer import *
 
 # Modules

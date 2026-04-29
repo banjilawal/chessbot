@@ -1,7 +1,7 @@
-# src/util/decorator/auto/id/util.py
+# src/util/decorator/auto/identifier/util.py
 
 """
-Module: util.decorator.auto.id.util
+Module: util.decorator.auto.identifier.util
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -18,8 +18,6 @@ __all__ = [
     # ======================# AUTO_ID #======================#
     "auto_id",
 ]
-
-
 # ======================# AUTO_ID #======================#
 
 def auto_id(cls: Type[T]) -> Type[T]:

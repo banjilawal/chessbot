@@ -10,7 +10,7 @@ version: 1.0.1
 # =========== UTIL.DECORATOR.AUTO PACKAGE ===========#
 
 # Packages
-from .id import *
+from .identifier import *
 
 
 # Modules

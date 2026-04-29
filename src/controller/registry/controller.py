@@ -10,14 +10,15 @@ version: 1.0.1
 from __future__ import annotations
 from typing import List
 
-
 from controller import Controller
 from model import WorkerRegistry
-from system import LoggingLevelRouter
+from util import LoggingLevelRouter, singleton
 from result import InsertionResult, SearchResult
 from operation import Operation, WorkerRegistryToolkit
 from err import OperationNullException, WorkerRegistryControllerException
 
+
+@singleton
 class WorkerRegistryController(Controller[WorkerRegistry]):
     """
     Role

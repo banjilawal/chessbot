@@ -1,23 +1,22 @@
-# src/setup/log/__init__.py
+# src/util/logging/setup/level/__init__.py
 
 """
-Module: setup.log.__init__
+Module: util.logging.setup.level.__init__
 Author: Banji Lawal
-Created: 2025-08-24
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 import logging
 
 
-
-# =========== SETUP.LOG PACKAGE ===========#
+# =========== UTIL.LOGGING.SETUP.LEVEL PACKAGE ===========#
 
 # Packages
 
 # Modules
 from .mode import LogLevelMode
-from .level import LogLevelSetter
+from .util import LogLevelSetter
 
 
 # Set default log level and logger name

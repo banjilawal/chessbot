@@ -1,14 +1,13 @@
-# src/setup/mode.py
+# src/util/logging/setup/level/mode.py
 
 """
-Module: setup.mode
+Module: util.logging.setup.level.mode
 Author: Banji Lawal
-Created: 2025-08-24
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
-
 from enum import Enum, auto
 
 

@@ -12,4 +12,4 @@ version: 1.0.0
 # Packages
 
 # Modules
-from .router import Router
+from .pipeline import PipeLine

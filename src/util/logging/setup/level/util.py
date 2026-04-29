@@ -1,17 +1,16 @@
-# src/setup/level.py
+# src/util/logging/setup/level/util.py
 
 """
-Module: setup.level
+Module: util.logging.setup.level.util
 Author: Banji Lawal
-Created: 2025-08-24
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations
-
 import logging
 
-from setup import LogLevelMode
+from util.logging.setup import LogLevelMode
 
 
 class LogLevelSetter:
