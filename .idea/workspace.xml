@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setup/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/logging/setup/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setup/logging_setup/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/logging/setup/level/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setup/logging_setup/level.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/logging/setup/level/util.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setup/logging_setup/mode.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/logging/setup/level/mode.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/logging/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/logging/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/config/gui/default/size/font/property.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +53,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/config",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/util/logging",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -68,18 +63,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/util/logging" />
       <recent name="$PROJECT_DIR$/src/config" />
       <recent name="$PROJECT_DIR$/src/util/logging/setup" />
       <recent name="$PROJECT_DIR$/src/stack" />
       <recent name="$PROJECT_DIR$/src/err/stack" />
-      <recent name="$PROJECT_DIR$/src/err" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/util/logging/default" />
       <recent name="$PROJECT_DIR$/src/util/logging/setup/level" />
       <recent name="$PROJECT_DIR$/src/util/logging" />
       <recent name="$PROJECT_DIR$/src/err" />
       <recent name="$PROJECT_DIR$/src/err/util/identifier" />
-      <recent name="$PROJECT_DIR$/src/util" />
     </key>
   </component>
   <component name="RunManager" selected="Python.operation">

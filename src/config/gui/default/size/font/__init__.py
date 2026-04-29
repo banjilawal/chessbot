@@ -14,3 +14,4 @@ version: 1.0.1
 
 # Modules
 from .config import DefaultFontSizeSetting
+from .property import TextFunctionProperty

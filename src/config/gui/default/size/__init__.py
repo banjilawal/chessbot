@@ -10,6 +10,9 @@ version: 1.0.1
 # =========== CONFIG.GUI.DEFAULT.SIZE PACKAGE ===========#
 
 # Packages
+from .font import *
+from .square import *
+from .window import *
 
 
 # Modules
