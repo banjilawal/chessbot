@@ -72,7 +72,7 @@ class WorkerRegistryController(Controller[WorkerRegistry]):
         return self._registry.domains
     
     @LoggingLevelRouter.monitor
-    def register_worker(
+    def register(
             self,
             worker: Operation,
             null_exception: OperationNullException | None = None,

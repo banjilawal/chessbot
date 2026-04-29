@@ -9,12 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from config import BoardDimensionSetting, BoardProperty
+from controller import WorkerRegistryController
 from toolkit import MathToolkit
 from result import ValidationResult
 from model import Vector, VectorBlueprint
 from operation import AssemblyBootstrapper
 from err import VectorAssemblyBootstrapperException
-from system import BOARD_DIMENSION, LoggingLevelRouter
+from util import LoggingLevelRouter
 
 
 class VectorAssemblyBootstrapper(AssemblyBootstrapper[Vector]):
@@ -42,7 +44,7 @@ class VectorAssemblyBootstrapper(AssemblyBootstrapper[Vector]):
     OPERATION_NAME = "vector_assembly_bootstrapper"
     
     @classmethod
-    @LoggingLevelRouter.monitor()
+    @LoggingLevelRouter.monitor
     def execute(
             cls,
             blueprint: VectorBlueprint,
@@ -74,7 +76,7 @@ class VectorAssemblyBootstrapper(AssemblyBootstrapper[Vector]):
         for num in [blueprint.x, blueprint.y]:
             validation_result = toolkit.number_validator.validate(
                 floor=0,
-                ceiling=BOARD_DIMENSION / 2,
+                ceiling=BoardDimensionSetting.table[BoardProperty.KNIGHT_RADIUS],
                 candidate=abs(num)
             )
             if validation_result.is_failure:
@@ -90,3 +92,5 @@ class VectorAssemblyBootstrapper(AssemblyBootstrapper[Vector]):
                 )
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(blueprint)
+    
+WorkerRegistryController.register(worker=VectorAssemblyBootstrapper)

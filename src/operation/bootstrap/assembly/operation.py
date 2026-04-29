@@ -9,15 +9,14 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
+from abc import abstractmethod
 from typing import TypeVar
 
 from toolkit import Toolkit
 from model import Blueprint
 from operation import Operation
 from result import ValidationResult
-from system import LoggingLevelRouter
-
+from util import LoggingLevelRouter
 
 T = TypeVar("T")
 

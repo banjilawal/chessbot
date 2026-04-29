@@ -9,9 +9,11 @@ version: 1.0.1
 
 from __future__ import annotations
 
+
 from result import BuildResult
 from operation import Assembler
-from system import  LoggingLevelRouter
+from util import LoggingLevelRouter
+from controller import WorkerRegistryController
 from model import CombatantToken, King, KingToken, Pawn, PawnToken, Token, TokenBlueprint
 
 class TokenAssembler(Assembler[Token]):
@@ -61,3 +63,5 @@ class TokenAssembler(Assembler[Token]):
                 rank=blueprint.rank
             )
         )
+
+WorkerRegistryController.register(TokenAssembler)

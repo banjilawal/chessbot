@@ -23,6 +23,8 @@ __all__ = [
     "BoardDimensionSetting",
 ]
 
+from config import BoardProperty
+
 NUMBER_OF_ROWS = 8
 NUMBER_OF_COLUMNS = 8
 
@@ -49,14 +51,15 @@ class BoardDimensionSetting:
     Super Class:
         Enum
     """
-    table: Mapping[str, int] = field(
+    table: Mapping[BoardProperty, int] = field(
         default_factory=lambda: MappingProxyType(
             {
-                "dimension": 8,
-                "number_of_rows": 8,
-                "number_of_columns": 8,
-                "max_row_index": 7,
-                "max_column_index": 7,
+                BoardProperty.DIMENSION: 8,
+                BoardProperty.NUMBER_OF_ROWS: 8,
+                BoardProperty.NUMBER_OF_COLUMNS: 8,
+                BoardProperty.MAX_ROW_INDEX: 7,
+                BoardProperty.MAX_COLUMN_INDEX: 7,
+                BoardProperty.KNIGHT_RADIUS: 4,
             }
         )
     )
