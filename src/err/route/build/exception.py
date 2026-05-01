@@ -44,7 +44,7 @@ class BuildRouteException(ExecutionRouteException):
     MSG = "One of  build routes is missing."
     ERR_CODE = "BUILD_ROUTE"
     MTHD_RSLT = "BuildResult"
-    _mthd_rslt = Optional[str]
+    _mthd_rslt_type = Optional[str]
     
     def __init__(
             self,

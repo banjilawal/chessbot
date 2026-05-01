@@ -43,7 +43,7 @@ class ValidationRouteException(ExecutionRouteException):
     MSG = "One of  validation routes is missing."
     ERR_CODE = "VALIDATION_ROUTE"
     MTHD_RSLT = "ValidationResult"
-    _mthd_rslt = Optional[str]
+    _mthd_rslt_type = Optional[str]
     
     def __init__(
             self,

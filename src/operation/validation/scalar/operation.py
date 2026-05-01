@@ -11,10 +11,12 @@ from __future__ import annotations
 from typing import Any, cast
 
 from model import Scalar
+from setting import BoardProperty
+from setting.board.dimension.config import BoardDimensionPropertyTable
 from toolkit import MathToolkit
 from operation import Validator
 from result import ValidationResult
-from system import BOARD_DIMENSION, LoggingLevelRouter
+from util import LoggingLevelRouter
 from err import ScalarNullException, ScalarValidationException
 
 
@@ -90,7 +92,7 @@ class ScalarValidator(Validator[Scalar]):
         scalar_magnitude_validation_result = toolkit.number_validator.validate(
             candidate=scalar.magnitude,
             floor=0,
-            ceiling=BOARD_DIMENSION-1,
+            ceiling=BoardDimensionPropertyTable.entry[BoardProperty.MAX_ROW_INDEX],
         )
         if scalar_magnitude_validation_result.is_failure:
             # Send the exception chain on failure.

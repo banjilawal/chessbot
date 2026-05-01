@@ -71,7 +71,7 @@ class CoordAssemblyBootstrapper(AssemblyBootstrapper[Coord]):
         for component in [blueprint.x, blueprint.y]:
             validation_result = toolkit.number_validator.validate(
                 floor=0,
-                ceiling=BoardDimensionSetting.table[BoardProperty.MAX_COLUMN_INDEX],
+                ceiling=BoardDimensionSetting.entry[BoardProperty.MAX_COLUMN_INDEX],
                 candidate=abs(component)
             )
             if validation_result.is_failure:

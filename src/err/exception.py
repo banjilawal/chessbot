@@ -15,7 +15,7 @@ __all__ = [
     "ChessException",
 ]
 
-from result.category import MethodResultType
+from result import MethodResultType
 
 
 # ======================# ROOT APPLICATION EXCEPTION CLASS #======================#
@@ -52,7 +52,7 @@ class ChessException(Exception):
     _cls_name: Optional[str] | None = None
     _cls_mthd: Optional[str] | None = None
     _ex: Optional[Exception] | None = None
-    _mthd_rslt: Optional[MethodResultType] | None = None
+    _mthd_rslt_type: Optional[MethodResultType] | None = None
     
     
     def __init__(
@@ -64,7 +64,7 @@ class ChessException(Exception):
             cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
             ex: Optional[Exception] | None = None,
-            mthd_rslt: Optional[MethodResultType] | None = None,
+            mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
         Args:
@@ -75,7 +75,7 @@ class ChessException(Exception):
             cls_name: Optional[str]
             cls_mthd: Optional[str]
             ex: Optional[Exception]
-            mthd_rslt: Optional[ResultCategory]
+            mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
@@ -87,7 +87,7 @@ class ChessException(Exception):
         self._cls_mthd = cls_mthd
         self._cls_name = cls_name
         self._err_code = err_code
-        self._mthd_rslt = mthd_rslt
+        self._mthd_rslt_type = mthd_rslt_type
     
     @property
     def ex(self) -> Optional[Exception]:
@@ -118,8 +118,8 @@ class ChessException(Exception):
         return self._cls_name
     
     @property
-    def mthd_rslt(self) -> Optional[MethodResultType]:
-        return self._mthd_rslt
+    def mthd_rslt_type(self) -> Optional[MethodResultType]:
+        return self._mthd_rslt_type
     
     def __str__(self):
         return (
@@ -127,7 +127,7 @@ class ChessException(Exception):
             f"errr_code:{self._err_code}, "
             f"msg:{self._msg}, "
             f"ex:{self._ex}"
-            f"cls_name:{self._cls_name}, "
+            f"cls_name:{self._cls_name},"
         )
 
 

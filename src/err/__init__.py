@@ -22,9 +22,11 @@ from .pipeline import *
 from .query import *
 from .rollback import *
 from .route import *
+from .search import *
 from .service import *
 from .stack import *
 from .string import *
+from .toolkit import *
 from .transaction import *
 from .util import *
 

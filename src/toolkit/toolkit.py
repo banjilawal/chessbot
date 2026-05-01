@@ -10,11 +10,13 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar
+from typing import Generic, List, TypeVar
 
-from integrity import NumberValidator
-from microservice import IdentityService
-from operation import ValidationBootstrapper
+from controller import WorkerRegistryController
+from err import ToolkitException
+from microservice import Microservice
+from operation import Operation
+from result import SearchResult
 
 T = TypeVar("T")
 
@@ -31,44 +33,54 @@ class Toolkit(ABC, Generic[T]):
         3.  No logic in the Toolkit.
 
     Attributes:
-        number_validator: NumberValidator
-        identity_service: IdentityService
-        validation_bootstrap: ValidationBootstrapper
 
     Provides:
 
     Super Class:
     """
-    _number_validator: NumberValidator
-    _identity_service: IdentityService
-    _validation_bootstrapper: ValidationBootstrapper
+    REQUIRED_OPERATIONS: List[Operation] = []
+    REQUIRED_SERVICES: List[Microservice] = []
     
-    def __init__(
-            self,
-            number_validator: NumberValidator | None = None,
-            identity_service: IdentityService | None = None,
-            validation_bootstrap: ValidationBootstrapper | None = None,
+    def __init__(self, worker_controller: WorkerRegistryController):
+        self._worker_controller = worker_controller
+    
+    def _resolve_operations(self) -> SearchResult[List[Operation]]:
+        """
+        Dynamically resolve required operations based on REQUIRED_OPERATIONS.
+        """
+        method = f"{self.__class__.__name__}._resolve_operations"
+        resolved = {}
+        for operation in self.REQUIRED_OPERATIONS:
+            domain = operation.DOMAIN
+            operation_name = operation.OPERATION_NAME
             
-    ):
-        """
-        Args:
-            number_validator: NumberValidator
-            identity_service: IdentityService
-            validation_bootstrap: ValidationBootstrapper
-        """
-        self._number_validator = number_validator or NumberValidator()
-        self._identity_service = identity_service or IdentityService()
-        self._validation_bootstrapper = validation_bootstrap or ValidationBootstrapper()
+            search_result = self._worker_controller.find_worker(
+                domain=domain,
+                operation_name=operation_name,
+            )
+            # Handle the case that, the search failed.
+            if search_result.is_failure:
+                # Send the exception chain on failure.
+                ToolkitException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=ToolkitException.MSG,
+                    err_code=ToolkitException.ERR_CODE,
+                    ex=search_result.exception,
+                )
+            # Handle the case that, a dependency was not found.
+            if search_result.is_empty:
+                # Send the exception chain on failure.
+                ToolkitException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=ToolkitException.MSG,
+                    err_code=ToolkitException.ERR_CODE,
+                    
+                )
+            
+            # Store resolved operation instance
+            if search_result.is_success:
+                resolved[operation.__name__] = search_result.payload[0]
         
-        
-    @property
-    def number_validator(self) -> NumberValidator:
-        return self._number_validator
-    
-    @property
-    def identity_service(self) -> IdentityService:
-        return self._identity_service
-
-    @property
-    def validation_bootstrapper(self) -> ValidationBootstrapper:
-        return self._validation_bootstrapper
+        return SearchResult.success(resolved)

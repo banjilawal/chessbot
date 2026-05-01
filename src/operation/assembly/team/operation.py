@@ -9,10 +9,12 @@ version: 1.0.1
 
 from __future__ import annotations
 
+
 from result import BuildResult
 from operation import Assembler
 from util import LoggingLevelRouter
 from model import Team, TeamBlueprint
+from controller import WorkerRegistryController
 
 class TeamAssembler(Assembler[Team]):
     OPERATION_NAME = "team_assembler"
@@ -38,5 +40,7 @@ class TeamAssembler(Assembler[Team]):
                 schema=blueprint.schema,
             )
         )
-        
+
+# Register the operation.
+WorkerRegistryController.register(worker=TeamAssembler)
         

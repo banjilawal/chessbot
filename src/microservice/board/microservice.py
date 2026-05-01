@@ -164,8 +164,8 @@ class BoardService(Microservice[Board]):
                 )
             )
         # --- Deploy each team's tokens on the board by looping through their hash-table. ---#
-        for key in board.team_hash.table.keys():
-            deployment_result = board.team_hash.table[key].roster.deploy_tokens_on_board
+        for key in board.team_hash.entry.keys():
+            deployment_result = board.team_hash.entry[key].roster.deploy_tokens_on_board
             
             # Handle the case that, the team's deployment is not completed.
             if deployment_result.is_failure:

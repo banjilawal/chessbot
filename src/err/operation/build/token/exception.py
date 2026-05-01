@@ -54,7 +54,7 @@ class TokenBuildException(BuildException):
             cls_name: Optional[str] = None,
             cls_mthd: Optional[str] = None,
             err_code: Optional[str] = None,
-            mthd_rslt: Optional[ResultCategory] = None,
+            mthd_rslt_type: Optional[ResultCategory] = None,
     ):
         """
         Args:
@@ -68,7 +68,7 @@ class TokenBuildException(BuildException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        mthd_rslt = mthd_rslt or self.MTHD_RSLT
+        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT
         super().__init__(
             ex=ex,
             msg=msg,

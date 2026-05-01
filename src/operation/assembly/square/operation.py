@@ -9,9 +9,11 @@ version: 1.0.1
 
 from __future__ import annotations
 
+
 from result import BuildResult
 from operation import Assembler
 from util import LoggingLevelRouter
+from controller import WorkerRegistryController
 from model import OpeningSquare, Square, SquareBlueprint
 
 
@@ -40,7 +42,7 @@ class SquareAssembler(Assembler[Square]):
             ) -> BuildResult[Square]
 
      Super Class:
-        .Assembly.
+        Assembler
      """
     OPERATION_NAME = "square_assembler"
     
@@ -83,3 +85,6 @@ class SquareAssembler(Assembler[Square]):
                 board=blueprint.board,
             )
         )
+
+# Register the operation.
+WorkerRegistryController.register(worker=SquareAssembler)

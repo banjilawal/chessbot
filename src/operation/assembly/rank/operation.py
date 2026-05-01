@@ -35,7 +35,7 @@ class RankAssembler(Assembler[Rank]):
         -   def execute(blueprint: RankBlueprint) -> BuildResult[Rank]:
 
      Super Class:
-        .Assembly.
+        Assembler
      """
     OPERATION_NAME = "rank_assembler"
     

@@ -20,7 +20,7 @@ __all__ = [
     "MIN_NAME_LENGTH",
     "MAX_NAME_LENGTH",
     "LONGEST_KNIGHT_LEG_SIZE",
-    "BoardDimensionSetting",
+    "BoardDimensionPropertyTable",
 ]
 
 from setting import BoardProperty
@@ -36,7 +36,7 @@ LONGEST_KNIGHT_LEG_SIZE = 2
 
 
 @dataclass
-class BoardDimensionSetting:
+class BoardDimensionPropertyTable:
     """
     Role
         -   Property Settings
@@ -51,7 +51,7 @@ class BoardDimensionSetting:
     Super Class:
         Enum
     """
-    table: Mapping[BoardProperty, int] = field(
+    entry: Mapping[BoardProperty, int] = field(
         default_factory=lambda: MappingProxyType(
             {
                 BoardProperty.DIMENSION: 8,

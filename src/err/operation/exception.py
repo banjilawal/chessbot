@@ -56,7 +56,7 @@ class OperationException(ChessException):
             cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
             ex: Optional[Exception] | None = None,
-            mthd_rslt: Optional[MethodResultType] | None = None,
+            mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
             Args:
@@ -79,5 +79,5 @@ class OperationException(ChessException):
             err_code=err_code,
             cls_name=cls_name,
             cls_mthd=cls_mthd,
-            mthd_rslt=mthd_rslt,
+            mthd_rslt_type=mthd_rslt_type,
         )

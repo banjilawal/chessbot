@@ -54,7 +54,7 @@ class AnalysisException(ChessException):
             cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
             ex: Optional[Exception] | None = None,
-            mthd_rslt: Optional[MethodResultType] | None = None,
+            mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
             Args:
@@ -68,7 +68,7 @@ class AnalysisException(ChessException):
             mthd_rslt: Optional[ResultCategory]
         """
         msg = msg or self.MSG
-        mthd_rslt = mthd_rslt or self.MTHD_RSLT
+        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT
         err_code = err_code or self.ERR_CODE
         super().__init__(
             ex=ex,
@@ -78,5 +78,5 @@ class AnalysisException(ChessException):
             err_code=err_code,
             cls_name=cls_name,
             cls_mthd=cls_mthd,
-            mthd_rslt=mthd_rslt,
+            mthd_rslt_type=mthd_rslt_type,
         )

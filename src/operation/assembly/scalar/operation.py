@@ -16,6 +16,7 @@ from toolkit import ScalarToolkit
 from util import LoggingLevelRouter
 from err import ScalarAssemblyException
 from model import Scalar, ScalarBlueprint
+from controller import WorkerRegistryController
 
 
 class ScalarAssembler(Assembler[Scalar]):
@@ -38,7 +39,7 @@ class ScalarAssembler(Assembler[Scalar]):
             ) -> ValidationResult[ScalarBlueprint]
 
      Super Class:
-        .Assembly.
+        Assembler
      """
     OPERATION_NAME = "scalar_assembler"
     
@@ -84,3 +85,6 @@ class ScalarAssembler(Assembler[Scalar]):
             )
         # --- Forward the work product to the caller. ---#
         return BuildResult.success(Scalar(magnitude=blueprint.magnitude))
+
+# Register the operation.
+WorkerRegistryController.register(worker=ScalarAssembler)

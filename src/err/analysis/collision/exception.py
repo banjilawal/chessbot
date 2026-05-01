@@ -43,7 +43,7 @@ class CollisionException(ChessException):
     MSG = "Collision step failed."
     ERR_CODE = "COLLISION_FAILURE"
     MTHD_RSLT = "CollisionResult"
-    _mthd_rslt = Optional[str]
+    _mthd_rslt_type = Optional[str]
     
     def __init__(
             self,

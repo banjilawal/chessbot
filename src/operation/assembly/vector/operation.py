@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from result import BuildResult
 from operation import Assembler
-from system import  LoggingLevelRouter
+from util import  LoggingLevelRouter
 from model import Vector, VectorBlueprint
 
 class VectorAssembler(Assembler[Vector]):

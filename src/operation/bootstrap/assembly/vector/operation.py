@@ -76,7 +76,7 @@ class VectorAssemblyBootstrapper(AssemblyBootstrapper[Vector]):
         for num in [blueprint.x, blueprint.y]:
             validation_result = toolkit.number_validator.validate(
                 floor=0,
-                ceiling=BoardDimensionSetting.table[BoardProperty.KNIGHT_RADIUS],
+                ceiling=BoardDimensionSetting.entry[BoardProperty.KNIGHT_RADIUS],
                 candidate=abs(num)
             )
             if validation_result.is_failure:

@@ -64,4 +64,5 @@ class TokenAssembler(Assembler[Token]):
             )
         )
 
+# Register the operation.
 WorkerRegistryController.register(TokenAssembler)

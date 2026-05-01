@@ -43,7 +43,7 @@ class RelationException(ChessException):
     MSG = "Relation step failed."
     ERR_CODE = "RELATION_FAILURE"
     MTHD_RSLT = "RelationResult"
-    _mthd_rslt = Optional[str]
+    _mthd_rslt_type = Optional[str]
     
     def __init__(
             self,

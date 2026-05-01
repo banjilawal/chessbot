@@ -51,7 +51,7 @@ class TokenServiceMenu(Router[TokenService]):
         
     @property
     def commands(self) -> list[TokenCommand]:
-        return self._commands.table.keys
+        return self._commands.entry.keys
     
     @LoggingLevelRouter.monitor
     def route(
@@ -110,7 +110,7 @@ class TokenServiceMenu(Router[TokenService]):
                 )
             )
         # Handle the case that the command is not supported.
-        if command not in self._commands.table.keys:
+        if command not in self._commands.entry.keys:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenServiceMenuException(
@@ -144,9 +144,9 @@ class TokenServiceMenu(Router[TokenService]):
                 )
             )
         # Handle the case that, the parameters are the wrong type.
-        if not isinstance(token_command.parameters, self._commands.table[token_command.name]):
+        if not isinstance(token_command.parameters, self._commands.entry[token_command.name]):
             # Send the exception chain on failure.
-            expected_type = type(self._commands.table[token_command.name]).__name__
+            expected_type = type(self._commands.entry[token_command.name]).__name__
             actual_type = type(token_command.parameters).__name__
             return ValidationResult.failure(
                 TokenServiceMenuException(
@@ -159,7 +159,7 @@ class TokenServiceMenu(Router[TokenService]):
                     )
                 )
             )
-        cipher = self._commands.table[token_command.name]
+        cipher = self._commands.entry[token_command.name]
         
         # Handle the case that, the number of params is wrong.
         if token_command.parameters.count != cipher.parameters.count:

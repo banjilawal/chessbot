@@ -56,7 +56,7 @@ class StackServiceException(ChessException):
             cls_name: Optional[str] | None = None,
             ex: Optional[Exception] | None = None,
             err_code: Optional[str] | None =None,
-            mthd_rslt: Optional[MethodResultType] | None = None,
+            mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
         Args:
@@ -67,7 +67,7 @@ class StackServiceException(ChessException):
             cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
-            mthd_rslt: Optional[MethodResultType]
+            mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
@@ -79,5 +79,5 @@ class StackServiceException(ChessException):
             err_code=err_code,
             cls_name=cls_name,
             cls_mthd=cls_mthd,
-            mthd_rslt=mthd_rslt,
+            mthd_rslt_type=mthd_rslt_type,
         )

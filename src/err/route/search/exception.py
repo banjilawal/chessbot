@@ -44,7 +44,7 @@ class SearchRouteException(ExecutionRouteException):
     MSG = "One of  search routes is missing."
     ERR_CODE = "SEARCH_ROUTE"
     MTHD_RSLT = "SearchResult"
-    _mthd_rslt = Optional[str]
+    _mthd_rslt_type = Optional[str]
     
     def __init__(
             self,
