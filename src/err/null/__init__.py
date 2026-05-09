@@ -17,6 +17,7 @@ from .color import *
 from .context import *
 from .coord import *
 from .database import *
+from .dependecy import *
 from .edge import *
 from .formation import *
 from .game import *
