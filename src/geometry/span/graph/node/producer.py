@@ -129,7 +129,7 @@ class NodeTreeProducer:
                         op=NodeStackServiceProductionException.OP,
                         msg=NodeStackServiceProductionException.MSG,
                         err_code=NodeStackServiceProductionException.ERR_CODE,
-                        mthd_rslt=NodeStackServiceProductionException.MTHD_RSLT,
+                        mthd_rslt_type=NodeStackServiceProductionException.MTHD_RSLT,
                         ex=pair_list_build_result.exception,
                     )
                 )
@@ -155,7 +155,7 @@ class NodeTreeProducer:
                     op=NodeStackServiceProductionException.OP,
                     msg=NodeStackServiceProductionException.MSG,
                     err_code=NodeStackServiceProductionException.ERR_CODE,
-                    mthd_rslt=NodeStackServiceProductionException.MTHD_RSLT,
+                    mthd_rslt_type=NodeStackServiceProductionException.MTHD_RSLT,
                     ex=SquareNotFoundException(
                         var="coord",
                         val=f"{coord}",
@@ -197,7 +197,7 @@ class NodeTreeProducer:
                             op=PairInsertionException.OP,
                             msg=PairInsertionException.MSG,
                             err_code=PairInsertionException.ERR_CODE,
-                            mthd_rslt=PairInsertionException.MTHD_RSLT,
+                            mthd_rslt_type=PairInsertionException.MTHD_RSLT,
                             ex=push_result.exception
                         )
                     )

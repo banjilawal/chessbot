@@ -82,7 +82,7 @@ class SchemaQueryBuilder(Builder[SchemaQuery]):
                     op=SchemaQueryBuildException.OP,
                     msg=SchemaQueryBuildException.MSG,
                     err_code=SchemaQueryBuildException.ERR_CODE,
-                    mthd_rslt=SchemaQueryBuildException.MTHD_RSLT,
+                    mthd_rslt_type=SchemaQueryBuildException.MTHD_RSLT,
                     ex=schema_validation_result.exception,
                 )
             )
@@ -99,7 +99,7 @@ class SchemaQueryBuilder(Builder[SchemaQuery]):
                     op=SchemaQueryBuildException.OP,
                     msg=SchemaQueryBuildException.MSG,
                     err_code=SchemaQueryBuildException.ERR_CODE,
-                    mthd_rslt=SchemaQueryBuildException.MTHD_RSLT,
+                    mthd_rslt_type=SchemaQueryBuildException.MTHD_RSLT,
                     ex=context_validation_result.exception,
                 )
             )

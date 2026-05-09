@@ -54,7 +54,7 @@ class TokenStackDeployment:
                     op=TokenStackDeploymentException.OP,
                     msg=TokenStackDeploymentException.MSG,
                     err_code=TokenStackDeploymentException.ERR_CODE,
-                    mthd_rslt=TokenStackDeploymentException.MTHD_RSLT,
+                    mthd_rslt_type=TokenStackDeploymentException.MTHD_RSLT,
                     ex=TokenStackAlreadyDeployedException(
                         msg=TokenStackAlreadyDeployedException.MSG,
                         err_code=TokenStackAlreadyDeployedException.ERR_CODE
@@ -77,7 +77,7 @@ class TokenStackDeployment:
                         op=TokenStackDeploymentException.OP,
                         msg=TokenStackDeploymentException.MSG,
                         err_code=TokenStackDeploymentException.ERR_CODE,
-                        mthd_rslt=TokenStackDeploymentException.MTHD_RSLT,
+                        mthd_rslt_type=TokenStackDeploymentException.MTHD_RSLT,
                         ex=deployment_result.exception,
                     )
                 )

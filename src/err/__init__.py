@@ -13,6 +13,7 @@ version: 1.0.0
 from .analysis import *
 from .config import *
 from .controller import *
+from .factory import *
 from .math import *
 from .model import *
 from .null import *

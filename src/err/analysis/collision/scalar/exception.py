@@ -35,7 +35,7 @@ class ScalarCollisionException(CollisionException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        mthd_rslt: Optional[ResultCategory]
+        mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 

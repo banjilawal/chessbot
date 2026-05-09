@@ -82,7 +82,7 @@ class TokenPushCoordProcess:
                     op=TokenPushCoordException.OP,
                     msg=TokenPushCoordException.MSG,
                     err_code=TokenPushCoordException.ERR_CODE,
-                    mthd_rslt=TokenPushCoordException.MTHD_RSLT,
+                    mthd_rslt_type=TokenPushCoordException.MTHD_RSLT,
                     ex=token_validation_result.exception
                 )
             )
@@ -96,7 +96,7 @@ class TokenPushCoordProcess:
                     op=TokenPushCoordException.OP,
                     msg=TokenPushCoordException.MSG,
                     err_code=TokenPushCoordException.ERR_CODE,
-                    mthd_rslt=TokenPushCoordException.MTHD_RSLT,
+                    mthd_rslt_type=TokenPushCoordException.MTHD_RSLT,
                     ex=InactiveTokenPushingCoordException(
                         var="token",
                         val=token.designation,
@@ -116,7 +116,7 @@ class TokenPushCoordProcess:
                     op=TokenPushCoordException.OP,
                     msg=TokenPushCoordException.MSG,
                     err_code=TokenPushCoordException.ERR_CODE,
-                    mthd_rslt=TokenPushCoordException.MTHD_RSLT,
+                    mthd_rslt_type=TokenPushCoordException.MTHD_RSLT,
                     ex=coord_validation_result.exception
                 )
             )
@@ -130,7 +130,7 @@ class TokenPushCoordProcess:
                     op=TokenPushCoordException.OP,
                     msg=TokenPushCoordException.MSG,
                     err_code=TokenPushCoordException.ERR_CODE,
-                    mthd_rslt=TokenPushCoordException.MTHD_RSLT,
+                    mthd_rslt_type=TokenPushCoordException.MTHD_RSLT,
                     ex=DuplicateCoordPushException(
                         var=token.designation,
                         val=token.current_position,
@@ -156,7 +156,7 @@ class TokenPushCoordProcess:
                     op=TokenPushCoordException.OP,
                     msg=TokenPushCoordException.MSG,
                     err_code=TokenPushCoordException.ERR_CODE,
-                    mthd_rslt=TokenPushCoordException.MTHD_RSLT,
+                    mthd_rslt_type=TokenPushCoordException.MTHD_RSLT,
                     ex=coord_insertion_result.exception,
                 )
             )

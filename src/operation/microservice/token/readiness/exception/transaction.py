@@ -27,7 +27,7 @@ class TokenReadinessAnalysisException(RelationAnalysisException):
         msg: Optional[str]
         mthd: Optional[str]
         err_code: Optional[str]
-        mthd_rslt: Optional[ResultCategory]
+        mthd_rslt_type: Optional[MethodResultType]
 
     Provides:
 
@@ -44,7 +44,7 @@ class TokenReadinessAnalysisException(RelationAnalysisException):
             mthd: Optional[str] = None,
             ex: Optional[Exception] = None,
             err_code: Optional[str] = None,
-            mthd_rslt: Optional[ResultCategory] = None,
+            mthd_rslt_type: Optional[MethodResultType] = None,
     ):
         """
         Args:
@@ -52,7 +52,7 @@ class TokenReadinessAnalysisException(RelationAnalysisException):
             msg: Optional[str]
             mthd: Optional[str]
             err_code: Optional[str]
-            mthd_rslt: Optional[ResultCategory]
+            mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
@@ -64,7 +64,7 @@ class TokenReadinessAnalysisException(RelationAnalysisException):
             msg=msg,
             mthd=mthd,
             err_code=err_code,
-            mthd_rslt=mthd_rslt,
+            mthd_rslt_type=mthd_rslt_type,
         )
 
 

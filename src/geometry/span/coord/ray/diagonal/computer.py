@@ -96,7 +96,7 @@ class DiagonalRayComputer:
                     op=DiagonalRayComputationException.OP,
                     msg=DiagonalRayComputationException.MSG,
                     err_code=DiagonalRayComputationException.ERR_CODE,
-                    mthd_rslt=DiagonalRayComputationException.MTHD_RSLT,
+                    mthd_rslt_type=DiagonalRayComputationException.MTHD_RSLT,
                     ex=cursor_initialization_result.exception,
                 )
             )
@@ -116,7 +116,7 @@ class DiagonalRayComputer:
                         op=DiagonalRayComputationException.OP,
                         msg=DiagonalRayComputationException.MSG,
                         err_code=DiagonalRayComputationException.ERR_CODE,
-                        mthd_rslt=DiagonalRayComputationException.MTHD_RSLT,
+                        mthd_rslt_type=DiagonalRayComputationException.MTHD_RSLT,
                         ex=conversion_result.exception,
                     )
                 )
@@ -138,7 +138,7 @@ class DiagonalRayComputer:
                         op=DiagonalRayComputationException.OP,
                         msg=DiagonalRayComputationException.MSG,
                         err_code=DiagonalRayComputationException.ERR_CODE,
-                        mthd_rslt=DiagonalRayComputationException.MTHD_RSLT,
+                        mthd_rslt_type=DiagonalRayComputationException.MTHD_RSLT,
                         ex=cursor_update_result.exception,
                     )
                 )
@@ -155,7 +155,7 @@ class DiagonalRayComputer:
                     op=DiagonalRayComputationException.OP,
                     msg=DiagonalRayComputationException.MSG,
                     err_code=DiagonalRayComputationException.ERR_CODE,
-                    mthd_rslt=DiagonalRayComputationException.MTHD_RSLT,
+                    mthd_rslt_type=DiagonalRayComputationException.MTHD_RSLT,
                     ex=ComputedNullRayDebugException(
                         msg=ComputedNullRayDebugException.MSG,
                         err_code=ComputedNullRayDebugException.ERR_CODE,

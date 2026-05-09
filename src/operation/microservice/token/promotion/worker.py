@@ -108,7 +108,7 @@ class PawnPromoter:
                     op=PromotionException.OP,
                     msg=PromotionException.MSG,
                     err_code=PromotionException.ERR_CODE,
-                    mthd_rslt=PromotionException.MTHD_RSLT,
+                    mthd_rslt_type=PromotionException.MTHD_RSLT,
                     ex=token_validation_result.exception
                 )
             )
@@ -123,7 +123,7 @@ class PawnPromoter:
                     op=PromotionException.OP,
                     msg=PromotionException.MSG,
                     err_code=PromotionException.ERR_CODE,
-                    mthd_rslt=PromotionException.MTHD_RSLT,
+                    mthd_rslt_type=PromotionException.MTHD_RSLT,
                     ex=TypeError(
                         f"Expected type PawnToken for promotion. "
                         f"Got {type(pawn_token).__name__} instead."
@@ -140,7 +140,7 @@ class PawnPromoter:
                     op=PromotionException.OP,
                     msg=PromotionException.MSG,
                     err_code=PromotionException.ERR_CODE,
-                    mthd_rslt=PromotionException.MTHD_RSLT,
+                    mthd_rslt_type=PromotionException.MTHD_RSLT,
                     ex=PromoteInactivePawnException(
                         var=pawn_token.designation,
                         msg=PromoteInactivePawnException.MSG,
@@ -158,7 +158,7 @@ class PawnPromoter:
                     op=PromotionException.OP,
                     msg=PromotionException.MSG,
                     err_code=PromotionException.ERR_CODE,
-                    mthd_rslt=PromotionException.MTHD_RSLT,
+                    mthd_rslt_type=PromotionException.MTHD_RSLT,
                     ex=PawnAlreadyPromotedException(
                         var=pawn_token.designation,
                         msg=PawnAlreadyPromotedException.MSG,
@@ -232,7 +232,7 @@ class PawnPromoter:
                     op=PromotionException.OP,
                     msg=PromotionException.MSG,
                     err_code=PromotionException.ERR_CODE,
-                    mthd_rslt=PromotionException.MTHD_RSLT,
+                    mthd_rslt_type=PromotionException.MTHD_RSLT,
                     ex=validation_result.exception
                 )
             )
@@ -246,7 +246,7 @@ class PawnPromoter:
                     op=PromotionException.OP,
                     msg=PromotionException.MSG,
                     err_code=PromotionException.ERR_CODE,
-                    mthd_rslt=PromotionException.MTHD_RSLT,
+                    mthd_rslt_type=PromotionException.MTHD_RSLT,
                     ex=PromotionToKingException(
                         msg=PromotionToKingException.MSG,
                         err_code=PromotionToKingException.ERR_CODE,
@@ -263,7 +263,7 @@ class PawnPromoter:
                     op=PromotionException.OP,
                     msg=PromotionException.MSG,
                     err_code=PromotionException.ERR_CODE,
-                    mthd_rslt=PromotionException.MTHD_RSLT,
+                    mthd_rslt_type=PromotionException.MTHD_RSLT,
                     ex=PromoteToPawnException(
                         msg=PromoteToPawnException.MSG,
                         err_code=PromoteToPawnException.ERR_CODE,
@@ -312,7 +312,7 @@ class PawnPromoter:
                     op=PromotionException.OP,
                     msg=PromotionException.MSG,
                     err_code=PromotionException.ERR_CODE,
-                    mthd_rslt=PromotionException.MTHD_RSLT,
+                    mthd_rslt_type=PromotionException.MTHD_RSLT,
                     ex=enemy_schema_search_result.exception
                 )
             )
@@ -326,7 +326,7 @@ class PawnPromoter:
                     op=PromotionException.OP,
                     msg=PromotionException.MSG,
                     err_code=PromotionException.ERR_CODE,
-                    mthd_rslt=PromotionException.MTHD_RSLT,
+                    mthd_rslt_type=PromotionException.MTHD_RSLT,
                     ex=PawnPromotionRowException(
                         var=pawn_token.designation,
                         msg=PromotionException.MSG,

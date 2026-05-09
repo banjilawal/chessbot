@@ -35,7 +35,7 @@ class SquareEntryException(UpdateException):
         title: Optional[str]
         ex: Optional[Exception]
         err_code: Optional[str]
-        mthd_rslt: Optional[ResultCategory]
+        mthd_rslt_type: Optional[MethodResultType]
     
     Provides
     
@@ -54,7 +54,7 @@ class SquareEntryException(UpdateException):
             title: Optional[str] = None,
             err_code: Optional[str] = None,
             ex: Optional[Exception] = None,
-            mthd_rslt: Optional[ResultCategory] = None,
+            mthd_rslt_type: Optional[MethodResultType] = None,
     ):
         """
         Args:
@@ -63,7 +63,7 @@ class SquareEntryException(UpdateException):
             title: Optional[str]
             ex: Optional[Exception]
             err_code: Optional[str]
-            mthd_rslt: Optional[ResultCategory]
+            mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
@@ -75,5 +75,5 @@ class SquareEntryException(UpdateException):
             mthd=mthd,
             title=title,
             err_code=err_code,
-            mthd_rslt=mthd_rslt,
+            mthd_rslt_type=mthd_rslt_type,
         )

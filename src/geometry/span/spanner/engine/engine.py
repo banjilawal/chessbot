@@ -72,7 +72,7 @@ class SpannerEngine:
                         op=SpanComputationException.OP,
                         msg=SpanComputationException.MSG,
                         err_code=SpanComputationException.ERR_CODE,
-                        mthd_rslt=SpanComputationException.MTHD_RSLT,
+                        mthd_rslt_type=SpanComputationException.MTHD_RSLT,
                         ex=NoRayProviderException(
                         msg=NoRayProviderException.MSG,
                         err_code=NoRayProviderException.ERR_CODE
@@ -95,7 +95,7 @@ class SpannerEngine:
                         op=SpanComputationException.OP,
                         msg=SpanComputationException.MSG,
                         err_code=SpanComputationException.ERR_CODE,
-                        mthd_rslt=SpanComputationException.MTHD_RSLT,
+                        mthd_rslt_type=SpanComputationException.MTHD_RSLT,
                         ex=origin_validation.exception
                     )
                 )
@@ -137,7 +137,7 @@ class SpannerEngine:
                     op=SpanComputationException.OP,
                     msg=SpanComputationException.MSG,
                     err_code=SpanComputationException.ERR_CODE,
-                    mthd_rslt=SpanComputationException.MTHD_RSLT,
+                    mthd_rslt_type=SpanComputationException.MTHD_RSLT,
                     ex=SpanComputationRouteException(
                         msg=SpanComputationRouteException.MSG,
                         err_code=SpanComputationRouteException.ERR_CODE,
@@ -199,7 +199,7 @@ class SpannerEngine:
                         op=SpanComputationException.OP,
                         msg=SpanComputationException.MSG,
                         err_code=SpanComputationException.ERR_CODE,
-                        mthd_rslt=SpanComputationException.MTHD_RSLT,
+                        mthd_rslt_type=SpanComputationException.MTHD_RSLT,
                         ex=diagonal_span_result.exception
                     )
                 )
@@ -224,7 +224,7 @@ class SpannerEngine:
                         op=SpanComputationException.OP,
                         msg=SpanComputationException.MSG,
                         err_code=SpanComputationException.ERR_CODE,
-                        mthd_rslt=SpanComputationException.MTHD_RSLT,
+                        mthd_rslt_type=SpanComputationException.MTHD_RSLT,
                         ex=perpendicular_span_result.exception
                     )
                 )
@@ -290,7 +290,7 @@ class SpannerEngine:
                             op=SpanComputationException.OP,
                             msg=SpanComputationException.MSG,
                             err_code=SpanComputationException.ERR_CODE,
-                            mthd_rslt=SpanComputationException.MTHD_RSLT,
+                            mthd_rslt_type=SpanComputationException.MTHD_RSLT,
                             ex=ray_result.exception
                         )
                     )
@@ -355,7 +355,7 @@ class SpannerEngine:
                             op=SpanComputationException.OP,
                             msg=SpanComputationException.MSG,
                             err_code=SpanComputationException.ERR_CODE,
-                            mthd_rslt=SpanComputationException.MTHD_RSLT,
+                            mthd_rslt_type=SpanComputationException.MTHD_RSLT,
                             ex=ray_result.exception
                         )
                     )

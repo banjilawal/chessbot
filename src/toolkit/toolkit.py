@@ -10,10 +10,11 @@ version: 1.0.1
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, List, TypeVar
+from typing import Dict, Generic, List, TypeVar
 
 from controller import WorkerRegistryController
 from err import ToolkitException
+from err.search.empty.operation import OperationNotFoundException
 from microservice import Microservice
 from operation import Operation
 from result import SearchResult
@@ -44,7 +45,7 @@ class Toolkit(ABC, Generic[T]):
     def __init__(self, worker_controller: WorkerRegistryController):
         self._worker_controller = worker_controller
     
-    def _resolve_operations(self) -> SearchResult[List[Operation]]:
+    def _resolve_operations(self) -> SearchResult[List[Dict[str, Operation]]]:
         """
         Dynamically resolve required operations based on REQUIRED_OPERATIONS.
         """
@@ -76,11 +77,17 @@ class Toolkit(ABC, Generic[T]):
                     cls_name=self.__class__.__name__,
                     msg=ToolkitException.MSG,
                     err_code=ToolkitException.ERR_CODE,
-                    
+                    ex=OperationNotFoundException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=OperationNotFoundException.MSG,
+                        err_code=OperationNotFoundException.ERR_CODE,
+                        var=operation_name,
+                        val=operation
+                    )
                 )
-            
             # Store resolved operation instance
             if search_result.is_success:
                 resolved[operation.__name__] = search_result.payload[0]
         
-        return SearchResult.success(resolved)
+        return SearchResult.success([resolved])

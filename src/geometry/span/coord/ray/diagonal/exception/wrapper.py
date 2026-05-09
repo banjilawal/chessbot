@@ -65,7 +65,7 @@ class DiagonalRayComputationException(RayComputationException):
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
             mthd: Optional[str] = None, = None,
-            mthd_rslt: Optional[ResultCategory] = None,
+            mthd_rslt_type: Optional[MethodResultType] = None,
     ):
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
@@ -76,7 +76,7 @@ class DiagonalRayComputationException(RayComputationException):
             mthd: Optional[str]
             ex: Optional[Exception]
             err_code: Optional[str]
-            mthd_rslt: Optional[ResultCategory]
+            mthd_rslt_type: Optional[MethodResultType]
         """
         super().__init__(
             ex=ex,
@@ -84,5 +84,5 @@ class DiagonalRayComputationException(RayComputationException):
             msg=msg,
             mthd=mthd,
             err_code=err_code,
-            mthd_rslt=mthd_rslt,
+            mthd_rslt_type=mthd_rslt_type,
         )

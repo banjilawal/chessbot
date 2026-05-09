@@ -80,7 +80,7 @@ class CoordBuilder(Builder[Coord]):
                         op=CoordBuildException.OP,
                         msg=CoordBuildException.MSG,
                         err_code=CoordBuildException.ERR_CODE,
-                        mthd_rslt=CoordBuildException.MTHD_RSLT,
+                        mthd_rslt_type=CoordBuildException.MTHD_RSLT,
                         ex=validation_result.exception,
                     )
                 )

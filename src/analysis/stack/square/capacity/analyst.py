@@ -64,7 +64,7 @@ class SquareStackCapacityAnalyst:
                     op=SquareStackCapacityAnalystException.OP,
                     msg=SquareStackCapacityAnalystException.MSG,
                     err_code=SquareStackCapacityAnalystException.ERR_CODE,
-                    mthd_rslt=SquareStackCapacityAnalystException.MTHD_RSLT,
+                    mthd_rslt_type=SquareStackCapacityAnalystException.MTHD_RSLT,
                     ex=rank_validation_result.exception
                 )
             )
@@ -80,7 +80,7 @@ class SquareStackCapacityAnalyst:
                     op=SquareStackCapacityAnalystException.OP,
                     msg=SquareStackCapacityAnalystException.MSG,
                     err_code=SquareStackCapacityAnalystException.ERR_CODE,
-                    mthd_rslt=SquareStackCapacityAnalystException.MTHD_RSLT,
+                    mthd_rslt_type=SquareStackCapacityAnalystException.MTHD_RSLT,
                     ex=rank_search_result.exception
                 )
             )

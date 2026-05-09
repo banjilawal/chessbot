@@ -148,7 +148,7 @@ class SquareEntryProcess:
                     op=SquareEntryException.OP,
                     msg=SquareEntryException.MSG,
                     err_code=SquareEntryException.ERR_CODE,
-                    mthd_rslt=SquareEntryException.MTHD_RSLT,
+                    mthd_rslt_type=SquareEntryException.MTHD_RSLT,
                     ex=coord_insertion_result.exception,
                 )
             )
@@ -198,7 +198,7 @@ class SquareEntryProcess:
                     op=SquareEntryException.OP,
                     msg=SquareEntryException.MSG,
                     err_code=SquareEntryException.ERR_CODE,
-                    mthd_rslt=SquareEntryException.MTHD_RSLT,
+                    mthd_rslt_type=SquareEntryException.MTHD_RSLT,
                     ex=token_validation_result.exception,
                 )
             )
@@ -212,7 +212,7 @@ class SquareEntryProcess:
                     op=SquareEntryException.OP,
                     msg=SquareEntryException.MSG,
                     err_code=SquareEntryException.ERR_CODE,
-                    mthd_rslt=SquareEntryException.MTHD_RSLT,
+                    mthd_rslt_type=SquareEntryException.MTHD_RSLT,
                     ex=SquareVisitorBoardException(
                         msg=SquareVisitorBoardException.MSG,
                         err_code=SquareVisitorBoardException.ERR_CODE,
@@ -229,7 +229,7 @@ class SquareEntryProcess:
                     op=SquareEntryException.OP,
                     msg=SquareEntryException.MSG,
                     err_code=SquareEntryException.ERR_CODE,
-                    mthd_rslt=SquareEntryException.MTHD_RSLT,
+                    mthd_rslt_type=SquareEntryException.MTHD_RSLT,
                     ex=SquareVisitorDisabledException(
                         msg=SquareVisitorDisabledException.MSG,
                         err_code=SquareVisitorDisabledException.ERR_CODE,
@@ -276,7 +276,7 @@ class SquareEntryProcess:
                     op=SquareEntryException.OP,
                     msg=SquareEntryException.MSG,
                     err_code=SquareEntryException.ERR_CODE,
-                    mthd_rslt=SquareEntryException.MTHD_RSLT,
+                    mthd_rslt_type=SquareEntryException.MTHD_RSLT,
                     ex=square_validation_result.exception,
                 )
             )
@@ -290,7 +290,7 @@ class SquareEntryProcess:
                     op=SquareEntryException.OP,
                     msg=SquareEntryException.MSG,
                     err_code=SquareEntryException.ERR_CODE,
-                    mthd_rslt=SquareEntryException.MTHD_RSLT,
+                    mthd_rslt_type=SquareEntryException.MTHD_RSLT,
                     ex=SquareOccupiedException(
                         msg=SquareOccupiedException.MSG,
                         err_code=SquareOccupiedException.ERR_CODE,
@@ -340,7 +340,7 @@ class SquareEntryProcess:
                     op=SquareEntryException.OP,
                     msg=SquareEntryException.MSG,
                     err_code=SquareEntryException.ERR_CODE,
-                    mthd_rslt=SquareEntryException.MTHD_RSLT,
+                    mthd_rslt_type=SquareEntryException.MTHD_RSLT,
                     ex=WrongOpeningSquareException(
                         msg=WrongOpeningSquareException.MSG,
                         err_code=WrongOpeningSquareException.ERR_CODE

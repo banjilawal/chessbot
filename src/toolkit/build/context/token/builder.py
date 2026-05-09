@@ -105,7 +105,7 @@ class TokenContextToolkit(Toolkit[TokenContext]):
                     op=TokenContextToolkitException.OP,
                     msg=TokenContextToolkitException.MSG,
                     err_code=TokenContextToolkitException.ERR_CODE,
-                    mthd_rslt=TokenContextToolkitException.MTHD_RSLT,
+                    mthd_rslt_type=TokenContextToolkitException.MTHD_RSLT,
                     ex=ZeroTokenContextFlagsException(
                         msg=ZeroTokenContextFlagsException.MSG,
                         err_code=ZeroTokenContextFlagsException.ERR_CODE,
@@ -122,7 +122,7 @@ class TokenContextToolkit(Toolkit[TokenContext]):
                     op=TokenContextToolkitException.OP,
                     msg=TokenContextToolkitException.MSG,
                     err_code=TokenContextToolkitException.ERR_CODE,
-                    mthd_rslt=TokenContextToolkitException.MTHD_RSLT,
+                    mthd_rslt_type=TokenContextToolkitException.MTHD_RSLT,
                     ex=ExcessTeamContextFlagsException(
                         msg=ExcessTeamContextFlagsException.MSG,
                         err_code=ExcessTeamContextFlagsException.ERR_CODE,
@@ -143,7 +143,7 @@ class TokenContextToolkit(Toolkit[TokenContext]):
                         op=TokenContextToolkitException.OP,
                         msg=TokenContextToolkitException.MSG,
                         err_code=TokenContextToolkitException.ERR_CODE,
-                        mthd_rslt=TokenContextToolkitException.MTHD_RSLT,
+                        mthd_rslt_type=TokenContextToolkitException.MTHD_RSLT,
                         ex=validation.exception,
                     )
                 )
@@ -162,7 +162,7 @@ class TokenContextToolkit(Toolkit[TokenContext]):
                         op=TokenContextToolkitException.OP,
                         msg=TokenContextToolkitException.MSG,
                         err_code=TokenContextToolkitException.ERR_CODE,
-                        mthd_rslt=TokenContextToolkitException.MTHD_RSLT,
+                        mthd_rslt_type=TokenContextToolkitException.MTHD_RSLT,
                         ex=validation.exception,
                     )
                 )
@@ -181,7 +181,7 @@ class TokenContextToolkit(Toolkit[TokenContext]):
                         op=TokenContextToolkitException.OP,
                         msg=TokenContextToolkitException.MSG,
                         err_code=TokenContextToolkitException.ERR_CODE,
-                        mthd_rslt=TokenContextToolkitException.MTHD_RSLT,
+                        mthd_rslt_type=TokenContextToolkitException.MTHD_RSLT,
                         ex=validation.exception,
                     )
                 )
@@ -200,7 +200,7 @@ class TokenContextToolkit(Toolkit[TokenContext]):
                         op=TokenContextToolkitException.OP,
                         msg=TokenContextToolkitException.MSG,
                         err_code=TokenContextToolkitException.ERR_CODE,
-                        mthd_rslt=TokenContextToolkitException.MTHD_RSLT,
+                        mthd_rslt_type=TokenContextToolkitException.MTHD_RSLT,
                         ex=validation.exception,
                     )
                 )
@@ -219,7 +219,7 @@ class TokenContextToolkit(Toolkit[TokenContext]):
                         op=TokenContextToolkitException.OP,
                         msg=TokenContextToolkitException.MSG,
                         err_code=TokenContextToolkitException.ERR_CODE,
-                        mthd_rslt=TokenContextToolkitException.MTHD_RSLT,
+                        mthd_rslt_type=TokenContextToolkitException.MTHD_RSLT,
                         ex=validation.exception,
                     )
                 )
@@ -238,7 +238,7 @@ class TokenContextToolkit(Toolkit[TokenContext]):
                         op=TokenContextToolkitException.OP,
                         msg=TokenContextToolkitException.MSG,
                         err_code=TokenContextToolkitException.ERR_CODE,
-                        mthd_rslt=TokenContextToolkitException.MTHD_RSLT,
+                        mthd_rslt_type=TokenContextToolkitException.MTHD_RSLT,
                         ex=validation.exception,
                     )
                 )
@@ -257,7 +257,7 @@ class TokenContextToolkit(Toolkit[TokenContext]):
                         op=TokenContextToolkitException.OP,
                         msg=TokenContextToolkitException.MSG,
                         err_code=TokenContextToolkitException.ERR_CODE,
-                        mthd_rslt=TokenContextToolkitException.MTHD_RSLT,
+                        mthd_rslt_type=TokenContextToolkitException.MTHD_RSLT,
                         ex=validation.exception,
                     )
                 )
@@ -280,7 +280,7 @@ class TokenContextToolkit(Toolkit[TokenContext]):
                         op=TokenContextToolkitException.OP,
                         msg=TokenContextToolkitException.MSG,
                         err_code=TokenContextToolkitException.ERR_CODE,
-                        mthd_rslt=TokenContextToolkitException.MTHD_RSLT,
+                        mthd_rslt_type=TokenContextToolkitException.MTHD_RSLT,
                         ex=validation.exception,
                     )
                 )
@@ -295,7 +295,7 @@ class TokenContextToolkit(Toolkit[TokenContext]):
                 op=TokenContextToolkitException.OP,
                 msg=TokenContextToolkitException.MSG,
                 err_code=TokenContextToolkitException.ERR_CODE,
-                mthd_rslt=TokenContextToolkitException.MTHD_RSLT,
+                mthd_rslt_type=TokenContextToolkitException.MTHD_RSLT,
                 ex=TokenContextToolkitRouteException(
                     msg=TokenContextToolkitRouteException.MSG,
                     err_code=TokenContextToolkitRouteException.ERR_CODE,

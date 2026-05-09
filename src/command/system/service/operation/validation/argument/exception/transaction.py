@@ -60,11 +60,11 @@ class ArgumentsValidationException(ValidationException):
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
             mthd: Optional[str] = None, = None,
-            mthd_rslt: Optional[ResultCategory] = None,
+            mthd_rslt_type: Optional[MethodResultType] = None,
     ):
         err_code = err_code or self.ERR_CODE
         msg = msg or self.MSG
         mthd_rslt = mthd_rslt or self.MTHD_RSLT
-        super().__init__(err_code=err_code, msg=msg, ex=ex, mthd=mthd, op=op, mthd_rslt=mthd_rslt)
+        super().__init__(err_code=err_code, msg=msg, ex=ex, mthd=mthd, op=op, mthd_rslt_type=mthd_rslt_type)
     
     

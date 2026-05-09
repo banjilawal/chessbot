@@ -74,7 +74,7 @@ class SchemaSearchRouter(SearchRouter[Schema]):
                     op=SchemaSearchException.OP,
                     msg=SchemaSearchException.MSG,
                     err_code=SchemaSearchException.ERR_CODE,
-                    mthd_rslt=SchemaSearchException.MTHD_RSLT,
+                    mthd_rslt_type=SchemaSearchException.MTHD_RSLT,
                     ex=query_validation_result.exception
                 )
             )
@@ -101,7 +101,7 @@ class SchemaSearchRouter(SearchRouter[Schema]):
                 op=SchemaSearchException.OP,
                 msg=SchemaSearchException.MSG,
                 err_code=SchemaSearchException.ERR_CODE,
-                mthd_rslt=SchemaSearchException.MTHD_RSLT,
+                mthd_rslt_type=SchemaSearchException.MTHD_RSLT,
                 ex=MissingSchemaSearchRouteException(
                     msg=MissingSchemaSearchRouteException.MSG,
                     err_code=MissingSchemaSearchRouteException.ERR_CODE,

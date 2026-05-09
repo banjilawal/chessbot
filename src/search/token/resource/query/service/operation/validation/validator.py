@@ -81,7 +81,7 @@ class TokenQueryValidator(Validator[TokenQuery]):
                     op=TokenQueryValidationException.OP,
                     msg=TokenQueryValidationException.MSG,
                     err_code=TokenQueryValidationException.ERR_CODE,
-                    mthd_rslt=TokenQueryValidationException.MTHD_RSLT,
+                    mthd_rslt_type=TokenQueryValidationException.MTHD_RSLT,
                     ex=TokenQueryNullException(
                         TokenQueryNullException.MSG,
                         TokenQueryNullException.ERR_CODE,
@@ -98,7 +98,7 @@ class TokenQueryValidator(Validator[TokenQuery]):
                     op=TokenQueryValidationException.OP,
                     msg=TokenQueryValidationException.MSG,
                     err_code=TokenQueryValidationException.ERR_CODE,
-                    mthd_rslt=TokenQueryValidationException.MTHD_RSLT,
+                    mthd_rslt_type=TokenQueryValidationException.MTHD_RSLT,
                     ex=TypeError(
                         f"Expected TokenQuery, got {type(candidate).__name__} instead."
                     )
@@ -118,7 +118,7 @@ class TokenQueryValidator(Validator[TokenQuery]):
                     op=TokenQueryValidationException.OP,
                     msg=TokenQueryValidationException.MSG,
                     err_code=TokenQueryValidationException.ERR_CODE,
-                    mthd_rslt=TokenQueryValidationException.MTHD_RSLT,
+                    mthd_rslt_type=TokenQueryValidationException.MTHD_RSLT,
                     ex=validation_result.exception
                 )
             )
@@ -132,7 +132,7 @@ class TokenQueryValidator(Validator[TokenQuery]):
                     op=TokenQueryValidationException.OP,
                     msg=TokenQueryValidationException.MSG,
                     err_code=TokenQueryValidationException.ERR_CODE,
-                    mthd_rslt=TokenQueryValidationException.MTHD_RSLT,
+                    mthd_rslt_type=TokenQueryValidationException.MTHD_RSLT,
                     ex=TokenStackNullException(
                         msg=TokenStackNullException.MSG,
                         err_code=TokenStackNullException.ERR_CODE,
@@ -149,7 +149,7 @@ class TokenQueryValidator(Validator[TokenQuery]):
                     op=TokenQueryValidationException.OP,
                     msg=TokenQueryValidationException.MSG,
                     err_code=TokenQueryValidationException.ERR_CODE,
-                    mthd_rslt=TokenQueryValidationException.MTHD_RSLT,
+                    mthd_rslt_type=TokenQueryValidationException.MTHD_RSLT,
                     ex=TypeError(
                         f"Expected List, got {type(query.stack).__name__} instead."
                     )
@@ -165,7 +165,7 @@ class TokenQueryValidator(Validator[TokenQuery]):
                     op=TokenQueryValidationException.OP,
                     msg=TokenQueryValidationException.MSG,
                     err_code=TokenQueryValidationException.ERR_CODE,
-                    mthd_rslt=TokenQueryValidationException.MTHD_RSLT,
+                    mthd_rslt_type=TokenQueryValidationException.MTHD_RSLT,
                     ex=TokenQueryStackEmptyException(
                         msg=TokenQueryStackEmptyException.MSG,
                         err_code=TokenQueryStackEmptyException.ERR_CODE,
@@ -182,7 +182,7 @@ class TokenQueryValidator(Validator[TokenQuery]):
                     op=TokenQueryValidationException.OP,
                     msg=TokenQueryValidationException.MSG,
                     err_code=TokenQueryValidationException.ERR_CODE,
-                    mthd_rslt=TokenQueryValidationException.MTHD_RSLT,
+                    mthd_rslt_type=TokenQueryValidationException.MTHD_RSLT,
                     ex=TypeError(
                         f"List contains {type(query.stack).__name__}  instead of tokens."
                     )

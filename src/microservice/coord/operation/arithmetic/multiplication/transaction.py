@@ -73,7 +73,7 @@ class MultiplyCoordTransaction:
                     op=CoordMultiplicationException.OP,
                     msg=CoordMultiplicationException.MSG,
                     err_code=CoordMultiplicationException.ERR_CODE,
-                    mthd_rslt=CoordMultiplicationException.MTHD_RSLT,
+                    mthd_rslt_type=CoordMultiplicationException.MTHD_RSLT,
                     ex=coord_validation_result.exception,
                 )
             )
@@ -88,7 +88,7 @@ class MultiplyCoordTransaction:
                     op=CoordMultiplicationException.OP,
                     msg=CoordMultiplicationException.MSG,
                     err_code=CoordMultiplicationException.ERR_CODE,
-                    mthd_rslt=CoordMultiplicationException.MTHD_RSLT,
+                    mthd_rslt_type=CoordMultiplicationException.MTHD_RSLT,
                     ex=scalar_validation_result.exception,
                 )
             )
@@ -107,7 +107,7 @@ class MultiplyCoordTransaction:
                     op=CoordMultiplicationException.OP,
                     msg=CoordMultiplicationException.MSG,
                     err_code=CoordMultiplicationException.ERR_CODE,
-                    mthd_rslt=CoordMultiplicationException.MTHD_RSLT,
+                    mthd_rslt_type=CoordMultiplicationException.MTHD_RSLT,
                     ex=product_build_result.exception,
                 )
             )

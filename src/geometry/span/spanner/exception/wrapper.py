@@ -61,7 +61,7 @@ class SpanComputationException(ComputationException):
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
             mthd: Optional[str] = None, = None,
-            mthd_rslt: Optional[ResultCategory] = None,
+            mthd_rslt_type: Optional[MethodResultType] = None,
     ):
         """
         Args:
@@ -69,7 +69,7 @@ class SpanComputationException(ComputationException):
             mthd: Optional[str]
             ex: Optional[Exception]
             err_code: Optional[str]
-            mthd_rslt: Optional[ResultCategory]
+            mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
@@ -81,5 +81,5 @@ class SpanComputationException(ComputationException):
             msg=msg,
             mthd=mthd,
             err_code=err_code,
-            mthd_rslt=mthd_rslt,
+            mthd_rslt_type=mthd_rslt_type,
         )

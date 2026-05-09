@@ -57,7 +57,7 @@ class PersonaValidator(Validator[Persona]):
                     op=PersonaValidationException.OP,
                     msg=PersonaValidationException.MSG,
                     err_code=PersonaValidationException.ERR_CODE,
-                    mthd_rslt=PersonaValidationException.MTHD_RSLT,
+                    mthd_rslt_type=PersonaValidationException.MTHD_RSLT,
                     ex=NullPersonaException(
                         msg=NullPersonaException.MSG,
                         err_code=NullPersonaException.ERR_CODE,
@@ -73,7 +73,7 @@ class PersonaValidator(Validator[Persona]):
                     op=PersonaValidationException.OP,
                     msg=PersonaValidationException.MSG,
                     err_code=PersonaValidationException.ERR_CODE,
-                    mthd_rslt=PersonaValidationException.MTHD_RSLT,
+                    mthd_rslt_type=PersonaValidationException.MTHD_RSLT,
                     ex=TypeError(f"{method} Expected Persona, got {type(candidate).__name__} instead.")
                 )
             )

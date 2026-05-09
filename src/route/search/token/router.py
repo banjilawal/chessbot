@@ -77,7 +77,7 @@ class TokenSearchRouter(SearchRouter[Token]):
                     op=TokenSearchException.OP,
                     msg=TokenSearchException.MSG,
                     err_code=TokenSearchException.ERR_CODE,
-                    mthd_rslt=TokenSearchException.MTHD_RSLT,
+                    mthd_rslt_type=TokenSearchException.MTHD_RSLT,
                     ex=validation_result.exception
                 )
             )
@@ -139,7 +139,7 @@ class TokenSearchRouter(SearchRouter[Token]):
                 op=TokenSearchException.OP,
                 msg=TokenSearchException.MSG,
                 err_code=TokenSearchException.ERR_CODE,
-                mthd_rslt=TokenSearchException.MTHD_RSLT,
+                mthd_rslt_type=TokenSearchException.MTHD_RSLT,
                 ex=MissingTokenSearchRouteException(
                     msg=MissingTokenSearchRouteException.MSG,
                     err_code=MissingTokenSearchRouteException.ERR_CODE,

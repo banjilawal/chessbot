@@ -34,7 +34,7 @@ class ComputationTransactionException(TransactionException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        mthd_rslt: Optional[str
+        mthd_rslt_type: Optional[str
 
     Provides:
     
@@ -55,7 +55,7 @@ class ComputationTransactionException(TransactionException):
             cls_name: Optional[str] = None,
             ex: Optional[Exception] = None,
             err_code: Optional[str] = None,
-            mthd_rslt_type: Optional[ResultCategory] = None,
+            mthd_rslt_type: Optional[MethodResultType] = None,
     ):
         """
         Args:

@@ -71,7 +71,7 @@ class PairValidator(Validator[Pair]):
                     op=PairValidationException.OP,
                     msg=PairValidationException.MSG,
                     err_code=PairValidationException.ERR_CODE,
-                    mthd_rslt=PairValidationException.MTHD_RSLT,
+                    mthd_rslt_type=PairValidationException.MTHD_RSLT,
                     ex=NullPairException(
                         var="Candidate",
                         val={type(candidate).__name__},
@@ -89,7 +89,7 @@ class PairValidator(Validator[Pair]):
                     op=PairValidationException.OP,
                     msg=PairValidationException.MSG,
                     err_code=PairValidationException.ERR_CODE,
-                    mthd_rslt=PairValidationException.MTHD_RSLT,
+                    mthd_rslt_type=PairValidationException.MTHD_RSLT,
                     ex=TypeError(f"Expected Pair, got {type(candidate).__name__}. instead")
                 )
             )
@@ -107,7 +107,7 @@ class PairValidator(Validator[Pair]):
                         op=PairValidationException.OP,
                         msg=PairValidationException.MSG,
                         err_code=PairValidationException.ERR_CODE,
-                        mthd_rslt=PairValidationException.MTHD_RSLT,
+                        mthd_rslt_type=PairValidationException.MTHD_RSLT,
                         ex=validation_result.exception
                     )
                 )
@@ -120,7 +120,7 @@ class PairValidator(Validator[Pair]):
                     op=PairValidationException.OP,
                     msg=PairValidationException.MSG,
                     err_code=PairValidationException.ERR_CODE,
-                    mthd_rslt=PairValidationException.MTHD_RSLT,
+                    mthd_rslt_type=PairValidationException.MTHD_RSLT,
                     ex=HeadCannotBeTailException(
                         msg=PairValidationException.MSG,
                         err_code=PairValidationException.ERR_CODE,

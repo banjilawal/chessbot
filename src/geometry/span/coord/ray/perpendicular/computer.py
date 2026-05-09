@@ -93,7 +93,7 @@ class PerpendicularRayComputer:
                         op=PerpendicularRayComputationException.OP,
                         msg=PerpendicularRayComputationException.MSG,
                         err_code=PerpendicularRayComputationException.ERR_CODE,
-                        mthd_rslt=PerpendicularRayComputationException.MTHD_RSLT,
+                        mthd_rslt_type=PerpendicularRayComputationException.MTHD_RSLT,
                         ex=conversion_result.exception,
                     )
                 )
@@ -111,7 +111,7 @@ class PerpendicularRayComputer:
                         op=PerpendicularRayComputationException.OP,
                         msg=PerpendicularRayComputationException.MSG,
                         err_code=PerpendicularRayComputationException.ERR_CODE,
-                        mthd_rslt=PerpendicularRayComputationException.MTHD_RSLT,
+                        mthd_rslt_type=PerpendicularRayComputationException.MTHD_RSLT,
                         ex=cursor_update_result.exception,
                     )
                 )
@@ -128,7 +128,7 @@ class PerpendicularRayComputer:
                     op=PerpendicularRayComputationException.OP,
                     msg=PerpendicularRayComputationException.MSG,
                     err_code=PerpendicularRayComputationException.ERR_CODE,
-                    mthd_rslt=PerpendicularRayComputationException.MTHD_RSLT,
+                    mthd_rslt_type=PerpendicularRayComputationException.MTHD_RSLT,
                     ex=ComputedNullRayDebugException(
                         msg=ComputedNullRayDebugException.MSG,
                         err_code=ComputedNullRayDebugException.ERR_CODE,

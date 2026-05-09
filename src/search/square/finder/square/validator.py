@@ -71,7 +71,7 @@ class SquareListValidator(Validator[List[Square]]):
                     op=SquareValidationException.OP,
                     msg=SquareValidationException.MSG,
                     err_code=SquareValidationException.ERR_CODE,
-                    mthd_rslt=SquareValidationException.MTHD_RSLT,
+                    mthd_rslt_type=SquareValidationException.MTHD_RSLT,
                     ex=SquareDataSourceNullException(
                         msg=SquareDataSourceNullException.MSG,
                         err_code=SquareDataSourceNullException.ERR_CODE,
@@ -87,7 +87,7 @@ class SquareListValidator(Validator[List[Square]]):
                     op=SquareValidationException.OP,
                     msg=SquareValidationException.MSG,
                     err_code=SquareValidationException.ERR_CODE,
-                    mthd_rslt=SquareValidationException.MTHD_RSLT,
+                    mthd_rslt_type=SquareValidationException.MTHD_RSLT,
                     ex=TypeError(
                         f"Expected type{List.__name__}, got {type(candidate).__name__} instead."
                     )
@@ -105,7 +105,7 @@ class SquareListValidator(Validator[List[Square]]):
                     op=SquareValidationException.OP,
                     msg=SquareValidationException.MSG,
                     err_code=SquareValidationException.ERR_CODE,
-                    mthd_rslt=SquareValidationException.MTHD_RSLT,
+                    mthd_rslt_type=SquareValidationException.MTHD_RSLT,
                     ex=SquareDataSourceEmptyException(
                         msg=SquareDataSourceEmptyException.MSG,
                         err_code=SquareDataSourceEmptyException.ERR_CODE
@@ -121,7 +121,7 @@ class SquareListValidator(Validator[List[Square]]):
                     op=SquareValidationException.OP,
                     msg=SquareValidationException.MSG,
                     err_code=SquareValidationException.ERR_CODE,
-                    mthd_rslt=SquareValidationException.MTHD_RSLT,
+                    mthd_rslt_type=SquareValidationException.MTHD_RSLT,
                     ex=TypeError(
                         f"Searching for squares in a dataset of {type(square_list[0]).__name__}."
                     )

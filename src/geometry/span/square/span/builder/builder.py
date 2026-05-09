@@ -50,7 +50,7 @@ class SquareSpanBuilder(Builder[SquareSpan]):
                     op=SquareSpanBuildException.OP,
                     msg=SquareSpanBuildException.MSG,
                     err_code=SquareSpanBuildException.ERR_CODE,
-                    mthd_rslt=SquareSpanBuildException.MTHD_RSLT,
+                    mthd_rslt_type=SquareSpanBuildException.MTHD_RSLT,
                     ex=square_span_origin_result.exception,
                 )
             )
@@ -101,7 +101,7 @@ class SquareSpanBuilder(Builder[SquareSpan]):
                         op=SquareSpanBuildException.OP,
                         msg=SquareSpanBuildException.MSG,
                         err_code=SquareSpanBuildException.ERR_CODE,
-                        mthd_rslt=SquareSpanBuildException.MTHD_RSLT,
+                        mthd_rslt_type=SquareSpanBuildException.MTHD_RSLT,
                         ex=derivation_result.exception,
                     )
                 )
@@ -147,7 +147,7 @@ class SquareSpanBuilder(Builder[SquareSpan]):
                     op=SquareSpanBuildException.OP,
                     msg=SquareSpanBuildException.MSG,
                     err_code=SquareSpanBuildException.ERR_CODE,
-                    mthd_rslt=SquareSpanBuildException.MTHD_RSLT,
+                    mthd_rslt_type=SquareSpanBuildException.MTHD_RSLT,
                     ex=square_ray_origin_result.exception,
                 )
             )
@@ -169,7 +169,7 @@ class SquareSpanBuilder(Builder[SquareSpan]):
                         op=SquareSpanBuildException.OP,
                         msg=SquareSpanBuildException.MSG,
                         err_code=SquareSpanBuildException.ERR_CODE,
-                        mthd_rslt=SquareSpanBuildException.MTHD_RSLT,
+                        mthd_rslt_type=SquareSpanBuildException.MTHD_RSLT,
                         ex=square_search_result.exception,
                     )
                 )
@@ -213,7 +213,7 @@ class SquareSpanBuilder(Builder[SquareSpan]):
                     op=SquareSpanBuildException.OP,
                     msg=SquareSpanBuildException.MSG,
                     err_code=SquareSpanBuildException.ERR_CODE,
-                    mthd_rslt=SquareSpanBuildException.MTHD_RSLT,
+                    mthd_rslt_type=SquareSpanBuildException.MTHD_RSLT,
                     ex=search_result.exception,
                 )
             )

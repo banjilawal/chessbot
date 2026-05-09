@@ -81,7 +81,7 @@ class RankBuilder(Builder[Rank]):
                         op=RankBuildException.OP,
                         msg=RankBuildException.MSG,
                         err_code=RankBuildException.ERR_CODE,
-                        mthd_rslt=RankBuildException.MTHD_RSLT,
+                        mthd_rslt_type=RankBuildException.MTHD_RSLT,
                         ex=validation_result.exception
                     )
                 )
@@ -119,7 +119,7 @@ class RankBuilder(Builder[Rank]):
                     op=RankBuildException.OP,
                     msg=RankBuildException.MSG,
                     err_code=RankBuildException.ERR_CODE,
-                    mthd_rslt=RankBuildException.MTHD_RSLT,
+                    mthd_rslt_type=RankBuildException.MTHD_RSLT,
                     ex=RankBuildRouteException(
                         var="persona",
                         val=f"{persona}",

@@ -74,7 +74,7 @@ class RankQuotaAnalyst(Analyst[RankQuotaReport]):
                     op=RankQuotaAnalystException.OP,
                     msg=RankQuotaAnalystException.MSG,
                     err_code=RankQuotaAnalystException.ERR_CODE,
-                    mthd_rslt=RankQuotaAnalystException.MTHD_RSLT,
+                    mthd_rslt_type=RankQuotaAnalystException.MTHD_RSLT,
                     ex=rank_validation_result.exception
                 )
             )
@@ -90,7 +90,7 @@ class RankQuotaAnalyst(Analyst[RankQuotaReport]):
                     op=RankQuotaAnalystException.OP,
                     msg=RankQuotaAnalystException.MSG,
                     err_code=RankQuotaAnalystException.ERR_CODE,
-                    mthd_rslt=RankQuotaAnalystException.MTHD_RSLT,
+                    mthd_rslt_type=RankQuotaAnalystException.MTHD_RSLT,
                     ex=rank_search_result.exception
                 )
             )

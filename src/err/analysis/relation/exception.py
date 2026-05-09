@@ -33,7 +33,7 @@ class RelationException(ChessException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-        mthd_rslt: Optional[ResultCategory]
+        mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
@@ -84,4 +84,4 @@ class RelationException(ChessException):
         return self._mthd_rslt
     
     def __str__(self):
-        return f"{super().__str__()},  mthd_rslt:{self._mthd_rslt}"
+        return f"{super().__str__()},  mthd_rslt_type:{self._mthd_rslt}"

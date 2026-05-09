@@ -81,7 +81,7 @@ class TokenDeploymentWorker(Worker):
                     op=SquareStackDeployException.OP,
                     msg=SquareStackDeployException.MSG,
                     err_code=SquareStackDeployException.ERR_CODE,
-                    mthd_rslt=SquareStackDeployException.MTHD_RSLT,
+                    mthd_rslt_type=SquareStackDeployException.MTHD_RSLT,
                     ex=SquareStackFullException(
                         msg=SquareStackFullException.MSG,
                         err_code=SquareStackFullException.ERR_CODE,
@@ -96,7 +96,7 @@ class TokenDeploymentWorker(Worker):
                     op=SquareStackDeployException.OP,
                     msg=SquareStackDeployException.MSG,
                     err_code=SquareStackDeployException.ERR_CODE,
-                    mthd_rslt=SquareStackDeployException.MTHD_RSLT,
+                    mthd_rslt_type=SquareStackDeployException.MTHD_RSLT,
                     ex=SquareStackFullException(
                         msg=SquareStackFullException.MSG,
                         err_code=SquareStackFullException.ERR_CODE,
@@ -116,7 +116,7 @@ class TokenDeploymentWorker(Worker):
                         op=SquareStackDeployException.OP,
                         msg=SquareStackDeployException.MSG,
                         mthd=SquareStackDeployException.MTHD,
-                        mthd_rslt=SquareStackDeployException.MTHD_RSLT,
+                        mthd_rslt_type=SquareStackDeployException.MTHD_RSLT,
                         ex=collision_detection_result.exception
                 )
             )
@@ -134,7 +134,7 @@ class TokenDeploymentWorker(Worker):
                     op=SquareStackDeployException.OP,
                     msg=SquareStackDeployException.MSG,
                     mthd=SquareStackDeployException.MTHD,
-                    mthd_rslt=SquareStackDeployException.MTHD_RSLT,
+                    mthd_rslt_type=SquareStackDeployException.MTHD_RSLT,
                     ex=rank_quota_report.exception
                 )
             )
@@ -146,7 +146,7 @@ class TokenDeploymentWorker(Worker):
                     op=SquareStackDeployException.OP,
                     msg=SquareStackDeployException.MSG,
                     mthd=SquareStackDeployException.MTHD,
-                    mthd_rslt=SquareStackDeployException.MTHD_RSLT,
+                    mthd_rslt_type=SquareStackDeployException.MTHD_RSLT,
                     ex=SquareStackCapacityFullException(
                         msg=SquareStackCapacityFullException.MSG,
                         err_code=SquareStackCapacityFullException.ERR_CODE,
@@ -185,7 +185,7 @@ class TokenDeploymentWorker(Worker):
                     op=TokenDeploymentProcessException.OP,
                     msg=TokenDeploymentProcessException.MSG,
                     err_code=TokenDeploymentProcessException.ERR_CODE,
-                    mthd_rslt=TokenDeploymentProcessException.MTHD_RSLT,
+                    mthd_rslt_type=TokenDeploymentProcessException.MTHD_RSLT,
                     ex=token_validation_result.exception
                 )
             )
@@ -198,7 +198,7 @@ class TokenDeploymentWorker(Worker):
                     op=TokenDeploymentProcessException.OP,
                     msg=TokenDeploymentProcessException.MSG,
                     err_code=TokenDeploymentProcessException.ERR_CODE,
-                    mthd_rslt=TokenDeploymentProcessException.MTHD_RSLT,
+                    mthd_rslt_type=TokenDeploymentProcessException.MTHD_RSLT,
                     ex=token_validation_result.exception
                 )
             )
@@ -214,7 +214,7 @@ class TokenDeploymentWorker(Worker):
                     op=TokenDeploymentProcessException.OP,
                     msg=TokenDeploymentProcessException.MSG,
                     err_code=TokenDeploymentProcessException.ERR_CODE,
-                    mthd_rslt=TokenDeploymentProcessException.MTHD_RSLT,
+                    mthd_rslt_type=TokenDeploymentProcessException.MTHD_RSLT,
                     ex=opening_square_search.exception
                 )
             )

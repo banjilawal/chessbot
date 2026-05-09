@@ -83,7 +83,7 @@ class TokenStackPush:
                     op=TokenStackPushException.OP,
                     msg=TokenStackPushException.MSG,
                     err_code=TokenStackPushException.ERR_CODE,
-                    mthd_rslt=TokenStackPushException.MTHD_RSLT,
+                    mthd_rslt_type=TokenStackPushException.MTHD_RSLT,
                     ex=TokenStackFullException(
                         msg=TokenStackFullException.MSG,
                         err_code=TokenStackFullException.ERR_CODE,
@@ -103,7 +103,7 @@ class TokenStackPush:
                         op=TokenStackPushException.OP,
                         msg=TokenStackPushException.MSG,
                         mthd=TokenStackPushException.MTHD,
-                        mthd_rslt=TokenStackPushException.MTHD_RSLT,
+                        mthd_rslt_type=TokenStackPushException.MTHD_RSLT,
                         ex=collision_detection_result.exception
                 )
             )
@@ -121,7 +121,7 @@ class TokenStackPush:
                     op=TokenStackPushException.OP,
                     msg=TokenStackPushException.MSG,
                     mthd=TokenStackPushException.MTHD,
-                    mthd_rslt=TokenStackPushException.MTHD_RSLT,
+                    mthd_rslt_type=TokenStackPushException.MTHD_RSLT,
                     ex=rank_quota_report.exception
                 )
             )
@@ -133,7 +133,7 @@ class TokenStackPush:
                     op=TokenStackPushException.OP,
                     msg=TokenStackPushException.MSG,
                     mthd=TokenStackPushException.MTHD,
-                    mthd_rslt=TokenStackPushException.MTHD_RSLT,
+                    mthd_rslt_type=TokenStackPushException.MTHD_RSLT,
                     ex=RankQuotaFullException(
                         msg=RankQuotaFullException.MSG,
                         err_code=RankQuotaFullException.ERR_CODE,

@@ -69,7 +69,7 @@ class SchemaValidator(Validator[Schema]):
                     op=SchemaValidationException.OP,
                     msg=SchemaValidationException.MSG,
                     err_code=SchemaValidationException.ERR_CODE,
-                    mthd_rslt=SchemaValidationException.MTHD_RSLT,
+                    mthd_rslt_type=SchemaValidationException.MTHD_RSLT,
                     ex=NullSchemaException(
                         msg=SchemaValidationException.MSG,
                         err_code=SchemaValidationException.ERR_CODE,
@@ -87,7 +87,7 @@ class SchemaValidator(Validator[Schema]):
                     op=SchemaValidationException.OP,
                     msg=SchemaValidationException.MSG,
                     err_code=SchemaValidationException.ERR_CODE,
-                    mthd_rslt=SchemaValidationException.MTHD_RSLT,
+                    mthd_rslt_type=SchemaValidationException.MTHD_RSLT,
                     ex=TypeError(
                         f"Expected a Schema, got {type(candidate).__name__} instead."
                     )

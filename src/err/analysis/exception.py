@@ -34,7 +34,7 @@ class AnalysisException(ChessException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         ex: Optional[Exception]
-        mthd_rslt: Optional[ResultCategory]
+        mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
@@ -65,7 +65,7 @@ class AnalysisException(ChessException):
             cls_name: Optional[str]
             cls_mthd: Optional[str]
             ex: Optional[Exception]
-            mthd_rslt: Optional[ResultCategory]
+            mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT

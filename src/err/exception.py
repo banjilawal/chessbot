@@ -35,7 +35,7 @@ class ChessException(Exception):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         ex: Optional[Exception]
-        mthd_rslt: Optional[ResultCategory]
+        mthd_rslt_type: Optional[MethodResultType]
         
     Provides:
     

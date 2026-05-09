@@ -78,7 +78,7 @@ class SchemaQueryValidator(Validator[SchemaQuery]):
                     op=SchemaQueryValidationException.OP,
                     msg=SchemaQueryValidationException.MSG,
                     err_code=SchemaQueryValidationException.ERR_CODE,
-                    mthd_rslt=SchemaQueryValidationException.MTHD_RSLT,
+                    mthd_rslt_type=SchemaQueryValidationException.MTHD_RSLT,
                     ex=SchemaQueryNullException(
                         SchemaQueryNullException.MSG,
                         SchemaQueryNullException.ERR_CODE,
@@ -95,7 +95,7 @@ class SchemaQueryValidator(Validator[SchemaQuery]):
                     op=SchemaQueryValidationException.OP,
                     msg=SchemaQueryValidationException.MSG,
                     err_code=SchemaQueryValidationException.ERR_CODE,
-                    mthd_rslt=SchemaQueryValidationException.MTHD_RSLT,
+                    mthd_rslt_type=SchemaQueryValidationException.MTHD_RSLT,
                     ex=TypeError(
                         f"Expected SchemaQuery, got {type(candidate).__name__} instead."
                     ),
@@ -115,7 +115,7 @@ class SchemaQueryValidator(Validator[SchemaQuery]):
                     op=SchemaQueryValidationException.OP,
                     msg=SchemaQueryValidationException.MSG,
                     err_code=SchemaQueryValidationException.ERR_CODE,
-                    mthd_rslt=SchemaQueryValidationException.MTHD_RSLT,
+                    mthd_rslt_type=SchemaQueryValidationException.MTHD_RSLT,
                     ex=context_validation_result.exception,
                 )
             )
@@ -130,7 +130,7 @@ class SchemaQueryValidator(Validator[SchemaQuery]):
                     op=SchemaQueryValidationException.OP,
                     msg=SchemaQueryValidationException.MSG,
                     err_code=SchemaQueryValidationException.ERR_CODE,
-                    mthd_rslt=SchemaQueryValidationException.MTHD_RSLT,
+                    mthd_rslt_type=SchemaQueryValidationException.MTHD_RSLT,
                     ex=schema_validation_result.exception,
                 )
             )

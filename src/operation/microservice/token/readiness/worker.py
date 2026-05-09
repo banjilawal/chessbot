@@ -80,7 +80,7 @@ class TokenReadinessAnalyzer(RelationAnalysis[TokenActivityState.FREE, Token]):
                     cls_name=cls.__name__,
                     msg=TokenReadinessAnalysisException.MSG,
                     err_code=TokenReadinessAnalysisException.ERR_CODE,
-                    mthd_rslt=TokenReadinessAnalysisException.MTHD_RSLT,
+                    mthd_rslt_type=TokenReadinessAnalysisException.MTHD_RSLT,
                     ex=validation_result.exception
                 )
             )

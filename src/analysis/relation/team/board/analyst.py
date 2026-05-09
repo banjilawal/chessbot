@@ -91,7 +91,7 @@ class BoardTeamRelationAnalyst(RelationAnalyst[Board, Team]):
                     cls_name=cls.__name__,
                     msg=BoardTeamAnalysisException.MSG,
                     err_code=BoardTeamAnalysisException.ERR_CODE,
-                    mthd_rslt=MethodResultType.ANALYSIS_RESULT,
+                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
                     ex=board_validation_result.exception,
                 )
             )
@@ -108,7 +108,7 @@ class BoardTeamRelationAnalyst(RelationAnalyst[Board, Team]):
                         cls_name=cls.__name__,
                         msg=BoardTeamAnalysisException.MSG,
                         err_code=BoardTeamAnalysisException.ERR_CODE,
-                        mthd_rslt=MethodResultType.ANALYSIS_RESULT,
+                        mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
                         ex=board_validation_result.exception,
                     )
                 )
@@ -122,7 +122,7 @@ class BoardTeamRelationAnalyst(RelationAnalyst[Board, Team]):
                     cls_name=cls.__name__,
                     msg=BoardTeamAnalysisException.MSG,
                     err_code=BoardTeamAnalysisException.ERR_CODE,
-                    mthd_rslt=MethodResultType.ANALYSIS_RESULT,
+                    mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
                     ex=team_validation_result.exception,
                 )
             )

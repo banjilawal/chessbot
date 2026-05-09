@@ -106,7 +106,7 @@ class RankPersonaValidator(Validator[Rank]):
                         op=RankPersonaValidationException.OP,
                         msg=RankPersonaValidationException.MSG,
                         err_code=RankPersonaValidationException.ERR_CODE,
-                        mthd_rslt=RankPersonaValidationException.MTHD_RSLT,
+                        mthd_rslt_type=RankPersonaValidationException.MTHD_RSLT,
                         ex=KingPersonaMismatchException(
                             val=rank.persona,
                             var="rank.persona",
@@ -129,7 +129,7 @@ class RankPersonaValidator(Validator[Rank]):
                         op=RankPersonaValidationException.OP,
                         msg=RankPersonaValidationException.MSG,
                         err_code=RankPersonaValidationException.ERR_CODE,
-                        mthd_rslt=RankPersonaValidationException.MTHD_RSLT,
+                        mthd_rslt_type=RankPersonaValidationException.MTHD_RSLT,
                         ex=PawnPersonaMismatchException(
                             val=rank.persona,
                             var="rank.persona",
@@ -152,7 +152,7 @@ class RankPersonaValidator(Validator[Rank]):
                         op=RankPersonaValidationException.OP,
                         msg=RankPersonaValidationException.MSG,
                         err_code=RankPersonaValidationException.ERR_CODE,
-                        mthd_rslt=RankPersonaValidationException.MTHD_RSLT,
+                        mthd_rslt_type=RankPersonaValidationException.MTHD_RSLT,
                         ex=KnightPersonaMismatchException(
                             val=rank.persona,
                             var="rank.persona",
@@ -175,7 +175,7 @@ class RankPersonaValidator(Validator[Rank]):
                         op=RankPersonaValidationException.OP,
                         msg=RankPersonaValidationException.MSG,
                         err_code=RankPersonaValidationException.ERR_CODE,
-                        mthd_rslt=RankPersonaValidationException.MTHD_RSLT,
+                        mthd_rslt_type=RankPersonaValidationException.MTHD_RSLT,
                         ex=BishopPersonaMismatchException(
                             val=rank.persona,
                             var="rank.persona",
@@ -198,7 +198,7 @@ class RankPersonaValidator(Validator[Rank]):
                         op=RankPersonaValidationException.OP,
                         msg=RankPersonaValidationException.MSG,
                         err_code=RankPersonaValidationException.ERR_CODE,
-                        mthd_rslt=RankPersonaValidationException.MTHD_RSLT,
+                        mthd_rslt_type=RankPersonaValidationException.MTHD_RSLT,
                         ex=RookPersonaMismatchException(
                             val=rank.persona,
                             var="rank.persona",
@@ -221,7 +221,7 @@ class RankPersonaValidator(Validator[Rank]):
                         op=RankPersonaValidationException.OP,
                         msg=RankPersonaValidationException.MSG,
                         err_code=RankPersonaValidationException.ERR_CODE,
-                        mthd_rslt=RankPersonaValidationException.MTHD_RSLT,
+                        mthd_rslt_type=RankPersonaValidationException.MTHD_RSLT,
                         ex=QueenPersonaMismatchException(
                             val=rank.persona,
                             var="rank.persona",
@@ -241,7 +241,7 @@ class RankPersonaValidator(Validator[Rank]):
                 op=RankPersonaValidationException.OP,
                 msg=RankPersonaValidationException.MSG,
                 err_code=RankPersonaValidationException.ERR_CODE,
-                mthd_rslt=RankPersonaValidationException.MTHD_RSLT,
+                mthd_rslt_type=RankPersonaValidationException.MTHD_RSLT,
                 ex=RankValidationRouteException(
                     val=rank,
                     var=rank.persona.name,

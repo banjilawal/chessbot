@@ -53,7 +53,7 @@ class SquareRayBuilder(Builder[SquareRay]):
                     op=SquareRayBuildException.OP,
                     msg=SquareRayBuildException.MSG,
                     err_code=SquareRayBuildException.ERR_CODE,
-                    mthd_rslt=SquareRayBuildException.MTHD_RSLT,
+                    mthd_rslt_type=SquareRayBuildException.MTHD_RSLT,
                     ex=origin_member_square_search_result.exception,
                 )
             )
@@ -73,7 +73,7 @@ class SquareRayBuilder(Builder[SquareRay]):
                         op=SquareRayBuildException.OP,
                         msg=SquareRayBuildException.MSG,
                         err_code=SquareRayBuildException.ERR_CODE,
-                        mthd_rslt=SquareRayBuildException.MTHD_RSLT,
+                        mthd_rslt_type=SquareRayBuildException.MTHD_RSLT,
                         ex=member_square_search_result.exception,
                     )
                 )
@@ -117,7 +117,7 @@ class SquareRayBuilder(Builder[SquareRay]):
                     op=SquareRayBuildException.OP,
                     msg=SquareRayBuildException.MSG,
                     err_code=SquareRayBuildException.ERR_CODE,
-                    mthd_rslt=SquareRayBuildException.MTHD_RSLT,
+                    mthd_rslt_type=SquareRayBuildException.MTHD_RSLT,
                     ex=search_result.exception,
                 )
             )
@@ -130,7 +130,7 @@ class SquareRayBuilder(Builder[SquareRay]):
                     op=SquareRayBuildException.OP,
                     msg=SquareRayBuildException.MSG,
                     err_code=SquareRayBuildException.ERR_CODE,
-                    mthd_rslt=SquareRayBuildException.MTHD_RSLT,
+                    mthd_rslt_type=SquareRayBuildException.MTHD_RSLT,
                     ex=SquareNotFoundException(
                         var="coord",
                         val=f"{coord}",

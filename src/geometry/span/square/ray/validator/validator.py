@@ -67,7 +67,7 @@ class SquareRayValidator(Validator[SquareRay]):
                     op=SquareRayValidationException.OP,
                     msg=SquareRayValidationException.MSG,
                     err_code=SquareRayValidationException.ERR_CODE,
-                    mthd_rslt=SquareRayValidationException.MTHD_RSLT,
+                    mthd_rslt_type=SquareRayValidationException.MTHD_RSLT,
                     ex=SquareRayNullException(
                         var="rank",
                         val="None",
@@ -85,7 +85,7 @@ class SquareRayValidator(Validator[SquareRay]):
                     op=SquareRayValidationException.OP,
                     msg=SquareRayValidationException.MSG,
                     err_code=SquareRayValidationException.ERR_CODE,
-                    mthd_rslt=SquareRayValidationException.MTHD_RSLT,
+                    mthd_rslt_type=SquareRayValidationException.MTHD_RSLT,
                     ex=TypeError(f"{method} Expected SquareRay, got {type(candidate).__name__} instead.")
                 )
             )
@@ -102,7 +102,7 @@ class SquareRayValidator(Validator[SquareRay]):
                     op=SquareRayValidationException.OP,
                     msg=SquareRayValidationException.MSG,
                     err_code=SquareRayValidationException.ERR_CODE,
-                    mthd_rslt=SquareRayValidationException.MTHD_RSLT,
+                    mthd_rslt_type=SquareRayValidationException.MTHD_RSLT,
                     ex=origin_validation_result.exception
                 )
             )
@@ -115,7 +115,7 @@ class SquareRayValidator(Validator[SquareRay]):
                     op=SquareRayValidationException.OP,
                     msg=SquareRayValidationException.MSG,
                     err_code=SquareRayValidationException.ERR_CODE,
-                    mthd_rslt=SquareRayValidationException.MTHD_RSLT,
+                    mthd_rslt_type=SquareRayValidationException.MTHD_RSLT,
                     ex=SquareRayMembersNullException(
                         var="ray.members",
                         val="None",
@@ -135,7 +135,7 @@ class SquareRayValidator(Validator[SquareRay]):
                     op=SquareRayValidationException.OP,
                     msg=SquareRayValidationException.MSG,
                     err_code=SquareRayValidationException.ERR_CODE,
-                    mthd_rslt=SquareRayValidationException.MTHD_RSLT,
+                    mthd_rslt_type=SquareRayValidationException.MTHD_RSLT,
                     ex=SquareRayMembersNullException(
                         var="type(ray.members)",
                         val=wrong_type,

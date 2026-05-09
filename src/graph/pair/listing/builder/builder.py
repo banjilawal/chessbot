@@ -91,7 +91,7 @@ class PairListBuilder(Builder[PairList]):
                     op=PairListBuildException.OP,
                     msg=PairListBuildException.MSG,
                     err_code=PairListBuildException.ERR_CODE,
-                    mthd_rslt=PairListBuildException.MTHD_RSLT,
+                    mthd_rslt_type=PairListBuildException.MTHD_RSLT,
                     ex=parent_validation_result.exception,
                 )
             )
@@ -105,7 +105,7 @@ class PairListBuilder(Builder[PairList]):
                     op=PairListBuildException.OP,
                     msg=PairListBuildException.MSG,
                     err_code=PairListBuildException.ERR_CODE,
-                    mthd_rslt=PairListBuildException.MTHD_RSLT,
+                    mthd_rslt_type=PairListBuildException.MTHD_RSLT,
                     ex=square_ray_validation_result.exception,
                 )
             )
@@ -118,7 +118,7 @@ class PairListBuilder(Builder[PairList]):
                     op=PairListBuildException.OP,
                     msg=PairListBuildException.MSG,
                     err_code=PairListBuildException.ERR_CODE,
-                    mthd_rslt=PairListBuildException.MTHD_RSLT,
+                    mthd_rslt_type=PairListBuildException.MTHD_RSLT,
                     ex=TreeDoesNotOwnRayException(
                         msg=PairListBuildException.MSG,
                         err_code=PairListBuildException.ERR_CODE,
@@ -145,7 +145,7 @@ class PairListBuilder(Builder[PairList]):
                         op=PairListBuildException.OP,
                         msg=PairListBuildException.MSG,
                         err_code=PairListBuildException.ERR_CODE,
-                        mthd_rslt=PairListBuildException.MTHD_RSLT,
+                        mthd_rslt_type=PairListBuildException.MTHD_RSLT,
                         ex=build_result.exception,
                     )
                 )
