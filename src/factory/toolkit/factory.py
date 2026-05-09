@@ -11,10 +11,7 @@ from __future__ import annotations
 from typing import List, Type
 
 from controller import WorkerRegistryController
-from err import OperationListNullException
-from err.factory.toolkit.exception import ToolkitFactoryException
-from err.krow.debug.child import method
-from operation import Operation
+from err import EmptyDependencyListException, OperationListNullException, ToolkitFactoryException
 from result import BuildResult
 from toolkit import Toolkit
 
@@ -65,11 +62,11 @@ class ToolkitFactory:
                     cls_name=toolkit_class.__name__,
                     msg=ToolkitFactoryException.MSG,
                     err_code=ToolkitFactoryException.ERR_CODE,
-                    ex=OperationListEmptyException(
+                    ex=EmptyDependencyListException(
                         cls_mthd=method,
                         cls_name=toolkit_class.__name__,
-                        msg=OperationListEmptyException.MSG,
-                        err_code=OperationListEmptyException.ERR_CODE
+                        msg=EmptyDependencyListException.MSG,
+                        err_code=EmptyDependencyListException.ERR_CODE
                     )
                 )
             )
