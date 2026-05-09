@@ -11,6 +11,9 @@ from __future__ import annotations
 from typing import List, Type
 
 from controller import WorkerRegistryController
+from err import OperationListNullException
+from err.factory.toolkit.exception import ToolkitFactoryException
+from err.krow.debug.child import method
 from operation import Operation
 from result import BuildResult
 from toolkit import Toolkit
@@ -34,25 +37,62 @@ class ToolkitFactory:
         Returns:
             BuildResult containing the instantiated toolkit or a failure reason.
         """
-        if not hasattr(toolkit_class, "REQUIRED_OPERATIONS"):
-            return BuildResult.failure(f"Toolkit {toolkit_class} has no defined SCHEMA.")
+        method = f"{self.__class__.__name__}.build_toolkit"
         
-        required_operations: List[Operation]= toolkit_class.REQUIRED_OPERATIONS
-        required_services: List[Type[Operation]] = toolkit_class.REQUIRED_SERVICES
+        # Handle the case that, the operation dependency list is null.
+        if not hasattr(toolkit_class, "REQUIRED_OPERATIONS"):
+            # Send the exception chain on failure.
+            return BuildResult.failure(
+                ToolkitFactoryException(
+                    cls_mthd=method,
+                    cls_name=toolkit_class.__name__,
+                    msg=ToolkitFactoryException.MSG,
+                    err_code=ToolkitFactoryException.ERR_CODE,
+                    ex=OperationListNullException(
+                        cls_mthd=method,
+                        cls_name=toolkit_class.__name__,
+                        msg=OperationListNullException.MSG,
+                        err_code=OperationListNullException.ERR_CODE
+                    )
+                )
+            )
+        # Handle the case that, the toolkit does not have any operations.
+        if len(toolkit_class.REQUIRED_OPERATIONS) == 0:
+            # Send the exception chain on failure.
+            return BuildResult.failure(
+                ToolkitFactoryException(
+                    cls_mthd=method,
+                    cls_name=toolkit_class.__name__,
+                    msg=ToolkitFactoryException.MSG,
+                    err_code=ToolkitFactoryException.ERR_CODE,
+                    ex=OperationListEmptyException(
+                        cls_mthd=method,
+                        cls_name=toolkit_class.__name__,
+                        msg=OperationListEmptyException.MSG,
+                        err_code=OperationListEmptyException.ERR_CODE
+                    )
+                )
+            )
         
         resolved_dependencies = []
-        for attr, operation in required_operations:
+        for attr, requirement in toolkit_class.REQUIRED_OPERATIONS:
             # Perform resolution via registry controller
             search_result = self._registry_controller.find_worker(
-                domain=operation.DOMAIN,
-                operation_name=operation.OPERATION_NAME
+                domain=requirement.DOMAIN,
+                operation_name=requirement.OPERATION_NAME
             )
+            # Handle the case that, the registry search does not produce a hit or encounters an error.
             if search_result.is_failure:
+                # Send the exception chain on failure.
                 return BuildResult.failure(
-                    f"Failed to resolve operation '{operation_name}' for toolkit '{toolkit_class.__name__}'.",
-                    exception=search_result.exception
+                    ToolkitFactoryException(
+                        cls_mthd=method,
+                        cls_name=toolkit_class.__name__,
+                        msg=ToolkitFactoryException.MSG,
+                        err_code=ToolkitFactoryException.ERR_CODE,
+                        ex=search_result.exception
+                    )
                 )
-            
             # Store resolved operations
             resolved_dependencies.append(search_result.payload[0])
         
