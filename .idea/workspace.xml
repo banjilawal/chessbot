@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/controller/registry/worker/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/registry/worker/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/registry/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/registry/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/registry/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/registry/worker/controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/registry/service/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/registry/service/model.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +42,9 @@
     &quot;accountId&quot;: &quot;6e47f767-25d6-4d8f-810a-8394097bb1c3&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/.venv/.gitignore" root0="SKIP_INSPECTION" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -54,7 +60,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/banji/PycharmProjects/chessbot/src/model/registry",
+    "last_opened_file_path": "C:/Users/banji/PycharmProjects/chessbot/src/err/controller/registry",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -65,18 +71,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\err\controller\registry" />
+      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\err\controller\registry\worker" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\model\registry" />
       <recent name="$PROJECT_DIR$/src/err/toolkit" />
       <recent name="$PROJECT_DIR$/src/err/null/dependecy" />
-      <recent name="$PROJECT_DIR$/src/err/null" />
-      <recent name="$PROJECT_DIR$/src/err" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\controller\registry\worker" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\model\registry\worker" />
       <recent name="$PROJECT_DIR$/src/factory/toolkit" />
       <recent name="$PROJECT_DIR$/src/toolkit" />
       <recent name="$PROJECT_DIR$/src/util/logging/default" />
-      <recent name="$PROJECT_DIR$/src/util/logging/setup/level" />
     </key>
   </component>
   <component name="RunManager" selected="Python.operation">

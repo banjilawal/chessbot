@@ -10,6 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Dict, List
 
+from microservice import Microservice
 from operation import Operation
 
 
@@ -35,16 +36,12 @@ class ServiceRegistry:
     """
     _invocation_counters: dict[str, int]
     _registration_counters: dict[str, int]
-    _entries: Dict[str, Dict[str, Operation]]
+    _entries: Dict[str, Microservice]
     
     def __init__(self):
-        self._entries = {str: {}}
+        self._entries = {str: Microservice}
         self._invocation_counters = {}
         self._registration_counters = {}
-    
-    @property
-    def domains(self) -> List[str]:
-        return list(self._entries.keys())
         
     @property
     def entries(self) -> Dict[str, Dict[str, Operation]]:

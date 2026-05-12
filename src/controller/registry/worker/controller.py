@@ -1,7 +1,7 @@
-# src/controller/registry/controller.py
+# src/controller/registry/worker/controller.py
 
 """
-Module: controller.registry.controller
+Module: controller.registry.worker/controller
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

@@ -10,7 +10,7 @@ version: 1.0.1
 # =========== CONTROLLER.REGISTRY PACKAGE ===========#
 
 # Packages
-
+from .service import *
+from .worker import *
 
 # Modules
-from .controller import WorkerRegistryController
