@@ -1,7 +1,7 @@
-# src/model/registry/model.py
+# src/model/registry/service.model.py
 
 """
-Module: model.registry.model
+Module: model.registry.service.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -13,7 +13,7 @@ from typing import Dict, List
 from operation import Operation
 
 
-class WorkerRegistry:
+class ServiceRegistry:
     """
     Role
         -   Controller

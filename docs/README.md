@@ -1,44 +1,91 @@
-# Podscape
+# ChessBot
 
-## Table of Contents
-1. [About the Project](#about-the-project)
-2. [Screenshots](#screenshots)
-3. [Features](#features)
-4. [Dependencies](#dependencies)
-5. [Installation](#installation)
-6. [Usage](#usage)
-7. [Controls](#controls)
-8. [Contributing](#contributing)
-9. [License](#license)
+ChessBot is a Python-based chess engine and interactive game environment designed with a strong emphasis on **clean architecture**, **modularity**, and **extensibility**. 
+It separates **movement logic**, **piece/rank definitions**, and **board management**, enabling both human-vs-human and AI-vs-human gameplay.
 
 ---
-## About the Project
-Podscape is a game similar to Rushour.
+
+## 🎯 Goals
+- Maintain a clear separation between **game rules** and **board state**.
+- Support **AI-driven moves** through destination evaluation logic.
+- Enforce **move legality** and **capture rules** through centralized validation.
+- Enable **transaction-safe game updates** for undo/redo and rollback.
+- Provide a **Pygame-powered interface** for drag-and-drop piece movement.
 
 ---
-## Screenshots
+
+## 🏛 Architecture Overview
+
+The design is built around **layered responsibilities**:
+
+### **Core Entities**
+- **`ChessPiece`**
+ - Holds unique piece ID, immutable `rank`, and `position_history`.
+ - Maintains `captured` state.
+ - Enforces that the `rank` matches its piece type at construction.
+ - Implements capture handling through a `captor` reference.
+
+- **`Rank`**
+ - Encapsulates movement rules via `MovementStrategy`.
+ - Includes methods like `path_to_coordinate_exists()` and `line_fits_definition()`.
+ - Special ranks (e.g., `Pawn`, `King`) implement `RankPromotable` for promotions.
+
+- **`Board`**
+ - Stores and manages `Square` objects, each holding coordinates and optional `ChessPiece`.
+ - Performs **bounds checking** and manages piece movement/capture.
+ - Does not contain game logic — purely spatial awareness.
+
+- **`Player`**
+ - Identified by ID, name, and `Team`.
+ - Team handles prisoners (captured enemy pieces).
+
+- **`CaptureRecord`**
+ - Records the prisoner, captor, and capture square for game history.
 
 ---
-## Features
 
---
-## Dependencies
-- pygame~=2.6.1
-- pytest~=8.4.0
+### **Movement & Strategy**
+Movement logic is encapsulated in **movement strategy classes**:
+- `BishopMovement` – diagonal lines.
+- `RookMovement` – vertical/horizontal lines.
+- `KnightMovement` – L-shaped jumps.
+- `PawnMovement` – forward movement with capture diagonals and promotion rules.
+- `QueenMovement` – union of bishop and rook logic.
+- `KingMovement` – one-square radius, castling rules.
 
-See `requirements.txt` for details.
-
----
-## Installation
-
----
-## Usage
+All movements use **motion definitions** (`DiagonalDefinition`, `VerticalDefinition`, etc.) to check if a line is valid.
 
 ---
-## Controls
+
+### **Destination Selection**
+The `DestinationSelector` rates legal moves:
+- Prioritizes highest-value enemy captures.
+- Falls back to random selection when no valuable targets exist.
+- Risk assessment may be added in the future.
 
 ---
-## Contributing
+
+## ✅ Validation & Transactions
+- **Move Validation**
+ - Prevents friendly fire (cannot capture your own pieces).
+ - Ensures destination is within rank’s movement definition.
+ - Verifies path clearance for sliding pieces (rook, bishop, queen).
+ - Confirms legality before updating `position_history`.
+
+- **Transaction Management**
+ - Every move is wrapped in a transaction-like structure for safe rollback.
+ - `TransactionResult` stores method name, outcome, and error details.
+ - Supports a one-move-per-player undo system.
 
 ---
-## License
+
+## 🖥 Pygame UI
+- Drag-and-drop piece interaction.
+- Visual cues for piece type (color-coded shapes).
+- Highlighted legal moves (planned feature).
+- Adjustable board dimensions via config constants (`CELL_PX`, `BORDER_PX`, `SCREEN_WIDTH`, `SCREEN_HEIGHT`).
+
+---
+
+## 📂 Project Structure
+jfjsjf
