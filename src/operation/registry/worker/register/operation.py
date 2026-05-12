@@ -1,21 +1,19 @@
-# src/operation/registration/invoke.operation.py
+# src/operation/registry/worker/register/operation.py
 
 """
-Module: operation.registration.invoke.operation
+Module: operation.registry.worker.register.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import List
 
-from err import ChessException, WorkerOpNameCollisionException, WorkerRegistrationException
-from result import InsertionResult, ValidationResult
 from model import WorkerRegistry
+from result import InsertionResult
 from util import LoggingLevelRouter
-from operation import Operation, RegistryWorkerSearch, WorkerRegistryOperation
-
+from err import WorkerOpNameCollisionException, WorkerRegistrationException
+from operation import Operation, WorkerRegistryNameSearch, WorkerRegistryOperation
 
 
 class RegisterWorker(WorkerRegistryOperation):
@@ -48,7 +46,7 @@ class RegisterWorker(WorkerRegistryOperation):
             cls,
             worker: Operation,
             registry: WorkerRegistry,
-            worker_search: RegistryWorkerSearch | None = None,
+            worker_search: WorkerRegistryNameSearch | None = None,
     ) -> InsertionResult:
         """
         Register a new worker to the registry.
@@ -70,7 +68,7 @@ class RegisterWorker(WorkerRegistryOperation):
         method = f"{cls.__name__}.execute"
         
         if worker_search is None:
-            worker_search = RegistryWorkerSearch()
+            worker_search = WorkerRegistryNameSearch()
         
         worker_search_result = worker_search.execute(
             domain=worker.DOMAIN,

@@ -1,7 +1,7 @@
-# src/operation/registration/toolkit.py
+# src/operation/registry/worker/toolit.py
 
 """
-Module: operation.registration.toolkit
+Module: operation.registry.worker.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -11,8 +11,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from operation import (
-    AddWorkerBootstrapper, DomainSearchBootstrapper, NameValidator, RegisterWorker, RegistryDomainSearch,
-    RegistryWorkerSearch, ValidationBootstrapper, WorkerSearchBootstrapper
+    AddWorkerBootstrapper, DomainSearchBootstrapper, NameValidator, RegisterWorker, WorkerRegistryDomainSearch,
+    WorkerRegistryNameSearch, ValidationBootstrapper, WorkerSearchBootstrapper
 )
 
 
@@ -51,8 +51,8 @@ class WorkerRegistryToolkit:
     """
     name_validator: NameValidator = NameValidator()
     register_worker: RegisterWorker = RegisterWorker()
-    domain_search: RegistryDomainSearch = RegistryDomainSearch()
-    worker_search: RegistryWorkerSearch = RegistryWorkerSearch()
+    domain_search: WorkerRegistryDomainSearch = WorkerRegistryDomainSearch()
+    worker_search: WorkerRegistryNameSearch = WorkerRegistryNameSearch()
     add_worker_bootstrapper: AddWorkerBootstrapper = AddWorkerBootstrapper()
     validation_bootstrapper: ValidationBootstrapper = ValidationBootstrapper()
     domain_search_bootstrapper: DomainSearchBootstrapper = DomainSearchBootstrapper()

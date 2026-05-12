@@ -1,7 +1,7 @@
-# src/operation/registration/validation/registration/__init__.py
+# src/operation/registry/worker/validation/registration/operation.py
 
 """
-Module: operation.registration.validation.registration.__init__
+Module: operation.registry.worker.validation.registration.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

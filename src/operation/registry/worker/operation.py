@@ -1,7 +1,7 @@
-# src/operation/registration/operation.py
+# src/operation/registry/worker/operation.py
 
 """
-Module: operation.registration.operation
+Module: operation.registry.worker.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,10 +10,10 @@ version: 1.0.1
 from __future__ import annotations
 from abc import abstractmethod
 
-from model import WorkerRegistry
 from result import Result
-from util import LoggingLevelRouter
 from operation import Operation
+from model import WorkerRegistry
+from util import LoggingLevelRouter
 
 
 class WorkerRegistryOperation(Operation[WorkerRegistry]):

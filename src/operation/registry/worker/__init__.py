@@ -1,13 +1,13 @@
-# src/operation/registration/__init__.py
+# src/operation/registry/worker/__init__.py
 
 """
-Module: operation.registration.__init__
+Module: operation.registry.worker.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== OPERATION.REGISTRATION PACKAGE ===========#
+# =========== OPERATION.REGISTRY.WORKER PACKAGE ===========#
 
 # Packages
 from .register import *

@@ -1,14 +1,14 @@
-# src/operation/registration/search/worker/operation.py
+# src/operation/registry/worker/search/name.operation.py
 
 """
-Module: operation.registration.search.worker.operation
+Module: operation.registry.worker.search.name.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Dict, List
+from typing import List
 
 from result import SearchResult
 from model import WorkerRegistry
@@ -17,19 +17,22 @@ from operation import Operation, WorkerRegistryOperation
 
 
 
-class RegistryDomainSearch(WorkerRegistryOperation):
-    OPERATION_NAME = "registry_domain_search"
+class WorkerRegistryNameSearch(WorkerRegistryOperation):
+    OPERATION_NAME = "registry_worker_search"
     
     @classmethod
     @LoggingLevelRouter.monitor
     def execute(
             cls,
             domain: str,
+            operation_name: str,
             registry: WorkerRegistry,
-    ) -> SearchResult[List[Dict[str, Operation]]]:
+    ) -> SearchResult[List[Operation]]:
         method = f"{cls.__name__}.execute"
         
         if domain.upper() not in registry.domains:
             return SearchResult.empty()
-        workers = registry.entries[domain.upper()]
-        return SearchResult.success(list[workers]([]))
+        if operation_name.upper() not in registry.entries[domain].keys():
+            return SearchResult.empty()
+        operation = registry.entries[domain][operation_name]
+        return SearchResult.success(List[operation])

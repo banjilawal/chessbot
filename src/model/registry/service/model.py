@@ -8,7 +8,7 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Dict, List
+from typing import Dict
 
 from microservice import Microservice
 from operation import Operation
