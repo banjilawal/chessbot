@@ -15,7 +15,7 @@ from result import ValidationResult
 from util import LoggingLevelRouter
 
 
-class WorkerSearchBootstrapper(WorkerRegistryOperation):
+class WorkerRegistryNameSearchBootstrapper(WorkerRegistryOperation):
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -31,6 +31,6 @@ class WorkerSearchBootstrapper(WorkerRegistryOperation):
         for name in names:
             validation_result = name_validator.validate(name)
             if validation_result.is_failure:
-                return ValidationResult.failure(validation_result.error)
+                return ValidationResult.failure(validation_result.exception)
             
         return ValidationResult.success(0)

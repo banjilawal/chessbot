@@ -12,7 +12,7 @@ from dataclasses import dataclass
 
 from operation import (
     AddWorkerBootstrapper, DomainSearchBootstrapper, NameValidator, RegisterWorker, WorkerRegistryDomainSearch,
-    WorkerRegistryNameSearch, ValidationBootstrapper, WorkerSearchBootstrapper
+    WorkerRegistryNameSearch, ValidationBootstrapper, WorkerRegistryNameSearchBootstrapper
 )
 
 
@@ -56,4 +56,4 @@ class WorkerRegistryToolkit:
     add_worker_bootstrapper: AddWorkerBootstrapper = AddWorkerBootstrapper()
     validation_bootstrapper: ValidationBootstrapper = ValidationBootstrapper()
     domain_search_bootstrapper: DomainSearchBootstrapper = DomainSearchBootstrapper()
-    worker_search_bootstrapper: WorkerSearchBootstrapper = WorkerSearchBootstrapper()
+    worker_search_bootstrapper: WorkerRegistryNameSearchBootstrapper = WorkerRegistryNameSearchBootstrapper()

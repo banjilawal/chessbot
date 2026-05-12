@@ -1,7 +1,7 @@
-# src/operation/registry/worker/validation/search/domain/operation.py
+# src/operation/registry/service/validation/search/domain/operation.py
 
 """
-Module: operation.registry.worker.validation.search.domain.operation
+Module: operation.registry.service.validation.search.domain.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,12 +12,12 @@ from __future__ import annotations
 from typing import List
 
 from err import NullException
-from operation import NameValidator, Operation, ValidationBootstrapper, WorkerRegistryOperation
+from operation import NameValidator, Operation, ValidationBootstrapper, ServiceRegistryOperation
 from result import ValidationResult
 from util import LoggingLevelRouter
 
 
-class DomainSearchBootstrapper(WorkerRegistryOperation):
+class DomainSearchBootstrapper(ServiceRegistryOperation):
     
     @classmethod
     @LoggingLevelRouter.monitor
