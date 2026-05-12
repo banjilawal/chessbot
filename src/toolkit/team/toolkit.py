@@ -9,11 +9,10 @@ version: 1.0.1
 
 from __future__ import annotations
 
+from microservice import IdentityService
 from model import Team
-from operation import ValidationBootstrapper
+from operation import BoardValidator, PlayerValidator, SchemaValidator, ValidationBootstrapper
 from toolkit import Toolkit
-from microvalidator import BoardValidator, IdentityValidator, PlayerValidator, SchemaValidator, BoardTeamBinderValidator
-
 
 class TeamToolkit(Toolkit[Team]):
     """
@@ -35,42 +34,10 @@ class TeamToolkit(Toolkit[Team]):
     Super Class:
         Toolkit
     """
-    _board_validator: BoardValidator
-    _player_validator: PlayerValidator
-    _schema_validator: SchemaValidator
-    _team_binder_validator: BoardTeamBinderValidator
-
-    def __init__(
-            self,
-            board_validator: BoardValidator | None = None,
-            player_validator: PlayerValidator | None = None,
-            schema_validator: SchemaValidator | None = None,
-            team_binder_validator: BoardTeamBinderValidator | None = None,
-    ):
-        """
-        Args:
-            board_validator: BoardValidator
-            player_validator: PlayerValidator
-            schema_validator: SchemaValidator
-        """
-        super().__init__()
-        self._board_validator = board_validator or BoardValidator()
-        self._player_validator = player_validator or PlayerValidator()
-        self._schema_validator = schema_validator or SchemaValidator()
-        self._team_binder_validator = team_binder_validator or BoardTeamBinderValidator()
-        
-    @property
-    def board_validator(self) -> BoardValidator:
-        return self._board_validator
-    
-    @property
-    def owner_validator(self) -> PlayerValidator:
-        return self._player_validator
-    
-    @property
-    def schema_validator(self) -> SchemaValidator:
-        return self._schema_validator
-    
-    @property
-    def team_binder_validator(self) -> BoardTeamBinderValidator:
-        return self._team_binder_validator
+    REQUIRED_OPERATIONS = [
+        BoardValidator,
+        IdentityService,
+        SchemaValidator,
+        PlayerValidator,
+        ValidationBootstrapper
+    ]

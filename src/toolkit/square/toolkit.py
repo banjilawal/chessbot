@@ -14,7 +14,6 @@ from integrity import BoardValidator, CoordValidator
 from microservice import FormationService, IdentityService
 from model import Square
 from operation import ValidationBootstrapper
-from operation.validation import bootstrap
 from toolkit import Toolkit
 
 
@@ -41,6 +40,14 @@ class SquareToolkit(Toolkit[Square]):
     Super Class:
         Toolkit
     """
+    [
+        IdentityService,
+        FormationService,
+        BoardValidator,
+        CoordValidator,
+        SquareCollisionAnalyst,
+        ValidationBootstrapper
+    ]
     _coord_validator: CoordValidator
     _board_validator: BoardValidator
     _formation_service: FormationService

@@ -41,7 +41,7 @@ class SquareAssemblyBootstrapper(AssemblyBootstrapper[Square]):
     Super Class:
         AssemblyBootstrapper
     """
-    OPERATOR_NAME = "square_assembly_bootstrapper"
+    OPERATION_NAME = "square_assembly_bootstrapper"
     
     @classmethod
     @LoggingLevelRouter.monitor()

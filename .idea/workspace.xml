@@ -5,13 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/toolkit/dependency/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/toolkit/dependency/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/factory/toolkit/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/factory/toolkit/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/dependecy/operation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/dependecy/operation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/dependecy/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/dependecy/service/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/factory/toolkit/factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/factory/toolkit/factory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/board/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/board/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/coord/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/coord/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/rank/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/rank/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/square/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/square/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/team/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/team/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/token/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/token/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/square/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/square/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/team/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/team/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/token/toollkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/token/toollkit.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,19 +58,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/toolkit",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "ml.llm.LLMConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/griot/PycharmProjects/chessbot/src/err/toolkit&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;ml.llm.LLMConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/err/toolkit" />
@@ -786,7 +789,8 @@
       <workItem from="1777472075221" duration="4378000" />
       <workItem from="1777527723786" duration="3045000" />
       <workItem from="1777594334967" duration="13903000" />
-      <workItem from="1778331271699" duration="10624000" />
+      <workItem from="1778331271699" duration="24815000" />
+      <workItem from="1778551204712" duration="6996000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

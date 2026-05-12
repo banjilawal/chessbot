@@ -41,7 +41,7 @@ class CoordAssemblyBootstrapper(AssemblyBootstrapper[Coord]):
     Super Class:
         AssemblyBootstrapper
     """
-    OPERATOR_NAME = "coord_assembly_bootstrapper"
+    OPERATION_NAME = "coord_assembly_bootstrapper"
     
     @classmethod
     @LoggingLevelRouter.monitor()

@@ -41,7 +41,7 @@ class RankAssemblyBootstrapper(AssemblyBootstrapper[Rank]):
     Super Class:
         AssemblyBootstrapper
     """
-    OPERATOR_NAME = "rank_assembly_bootstrapper"
+    OPERATION_NAME = "rank_assembly_bootstrapper"
     
     @classmethod
     @LoggingLevelRouter.monitor()

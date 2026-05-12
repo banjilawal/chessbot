@@ -40,7 +40,7 @@ class BoardAssemblyBootstrapper(AssemblyBootstrapper[Board]):
     Super Class:
         AssemblyBootstrapper
     """
-    OPERATOR_NAME = "board_assembly_bootstrapper"
+    OPERATION_NAME = "board_assembly_bootstrapper"
     
     @classmethod
     @LoggingLevelRouter.monitor()
