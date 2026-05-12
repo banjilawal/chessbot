@@ -1,7 +1,7 @@
-# src/err/controller/registry/exception.py
+# src/err/controller/registry/service/exception.py
 
 """
-Module: err.controller.registry.exception
+Module: err.controller.registry.service.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,21 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ControllerException
-
+from err import RegistryControllerException
 
 __all__ = [
-    # ======================# REGISTRY_CONTROLLER_ERROR #======================#
-    "RegistryControllerException",
+    # ======================# SERVICE_REGISTRY_CONTROLLER_ERROR #======================#
+    "ServiceRegistryControllerException",
 ]
 
-# ======================# REGISTRY_CONTROLLER_ERROR #======================#
-class RegistryControllerException(ControllerException):
+# ======================# SERVICE_REGISTRY_CONTROLLER_ERROR #======================#
+class ServiceRegistryControllerException(RegistryControllerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a Registry experienced an error.
+        1.  Indicate a ServiceRegistry experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -39,10 +38,10 @@ class RegistryControllerException(ControllerException):
     Provides:
 
     Super Class:
-        ControllerException
+        RegistryControllerException
     """
-    MSG = "Registry error state."
-    ERR_CODE = "REGISTRY_CONTROLLER_ERROR"
+    MSG = "ServiceRegistry error state."
+    ERR_CODE = "SERVICE_REGISTRY_CONTROLLER_ERROR"
     
     def __init__(
             self,

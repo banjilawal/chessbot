@@ -10,6 +10,8 @@ version: 1.0.1
 # ============ ERR.CONTROLLER.REGISTRY PACKAGE ===========#
 
 # Packages
+from .service import *
+from .worker import *
 
 # Modules
-from .exception import WorkerRegistryControllerException
+from .exception import RegistryControllerException
