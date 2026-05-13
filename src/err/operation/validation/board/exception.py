@@ -46,13 +46,13 @@ class BoardValidationException(ValidationException):
     
     def __init__(
             self,
-            msg: Optional[str] = None,
-            var: Optional[str] = None,
-            val: Optional[Any] = None,
-            ex: Optional[Exception] = None,
-            cls_name: Optional[str] = None,
-            cls_mthd: Optional[str] = None,
-            err_code: Optional[str] = None,
+            msg: Optional[str] | None = None,
+            var: Optional[str] | None = None,
+            val: Optional[Any] | None = None,
+            ex: Optional[Exception] | None = None,
+            cls_name: Optional[str] | None = None,
+            cls_mthd: Optional[str] | None = None,
+            err_code: Optional[str] | None = None,
     ):
         """
         Args:

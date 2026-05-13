@@ -60,11 +60,11 @@ class RelationDebugException(DebugException):
     
     def method(
             self,
-            msg: Optional[str] = None,
-            var: Optional[str] = None,
-            val: Optional[Any] = None,
-            err_code: Optional[str] = None,
-            ex: Optional[Exception] = None,
+            msg: Optional[str] | None = None,
+            var: Optional[str] | None = None,
+            val: Optional[Any] | None = None,
+            err_code: Optional[str] | None = None,
+            ex: Optional[Exception] | None = None,
     ):
         """
         Args:

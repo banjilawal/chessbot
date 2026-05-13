@@ -59,11 +59,11 @@ class RosterAlreadyDeployedException(DebugException):
     
     def __init__(
             self,
-            msg: Optional[str] = None,
-            var: Optional[str] = None,
-            val: Optional[Any] = None,
-            ex: Optional[Exception] = None,
-            err_code: Optional[str] = None,
+            msg: Optional[str] | None = None,
+            var: Optional[str] | None = None,
+            val: Optional[Any] | None = None,
+            ex: Optional[Exception] | None = None,
+            err_code: Optional[str] | None = None,
     ):
         """
         Args:

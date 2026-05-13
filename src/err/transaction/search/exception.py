@@ -48,14 +48,14 @@ class SearchTransactionException(TransactionException):
     
     def __init__(
             self,
-            msg: Optional[str] = None,
-            var: Optional[str] = None,
-            val: Optional[Any] = None,
-            cls_mthd: Optional[str] = None,
-            cls_name: Optional[str] = None,
-            ex: Optional[Exception] = None,
-            err_code: Optional[str] = None,
-            mthd_rslt_type: Optional[MethodResultType] = None,
+            msg: Optional[str] | None = None,
+            var: Optional[str] | None = None,
+            val: Optional[Any] | None = None,
+            cls_mthd: Optional[str] | None = None,
+            cls_name: Optional[str] | None = None,
+            ex: Optional[Exception] | None = None,
+            err_code: Optional[str] | None = None,
+            mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
         Args:

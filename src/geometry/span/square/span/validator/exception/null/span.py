@@ -52,11 +52,11 @@ class SquareSpanNullException(NullException):
     
     def __init__(
             self,
-            val: Optional[Any] = None,
-            var: Optional[str] = None,
-            msg: Optional[str] = None,
-            err_code: Optional[str] = None,
-            ex: Optional[Exception] = None,
+            val: Optional[Any] | None = None,
+            var: Optional[str] | None = None,
+            msg: Optional[str] | None = None,
+            err_code: Optional[str] | None = None,
+            ex: Optional[Exception] | None = None,
 
     ):
         """

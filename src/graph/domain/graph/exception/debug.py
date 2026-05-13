@@ -62,11 +62,11 @@ class GraphDebugException(DebugException):
     
     def __init__(
             self,
-            err_code: Optional[str] = None,
-            msg: Optional[str] = None,
-            ex: Optional[Exception] = None,
-            var: Optional[str] = None,
-            val: Optional[Any] = None,
+            err_code: Optional[str] | None = None,
+            msg: Optional[str] | None = None,
+            ex: Optional[Exception] | None = None,
+            var: Optional[str] | None = None,
+            val: Optional[Any] | None = None,
     ):
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE

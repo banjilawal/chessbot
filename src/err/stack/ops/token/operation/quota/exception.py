@@ -48,10 +48,10 @@ class RankQuotaAnalysisException(OperationException):
     def __init__(
             self,
             val: Optional[str] = None,
-            msg: Optional[str] = None,
-            var: Optional[str] = None,
-            ex: Optional[Exception] = None,
-            err_code: Optional[str] = None,
+            msg: Optional[str] | None = None,
+            var: Optional[str] | None = None,
+            ex: Optional[Exception] | None = None,
+            err_code: Optional[str] | None = None,
 
     ):
         """

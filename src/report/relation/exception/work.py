@@ -50,12 +50,12 @@ class RelationAnalystException(OperationException):
     
     def __init__(
             self,
-            msg: Optional[str] = None,
+            msg: Optional[str] | None = None,
             mthd: Optional[str] = None,
             title: Optional[str] = None,
-            ex: Optional[Exception] = None,
-            err_code: Optional[str] = None,
-            mthd_rslt_type: Optional[MethodResultType] = None,
+            ex: Optional[Exception] | None = None,
+            err_code: Optional[str] | None = None,
+            mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
         Args:

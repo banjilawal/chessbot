@@ -54,11 +54,11 @@ class SpanComputationRouteException(ExecutionRouteException):
     
     def __init__(
             self,
-            err_code: Optional[str] = None,
-            msg: Optional[str] = None,
-            ex: Optional[Exception] = None,
-            var: Optional[str] = None,
-            val: Optional[Any] = None,
+            err_code: Optional[str] | None = None,
+            msg: Optional[str] | None = None,
+            ex: Optional[Exception] | None = None,
+            var: Optional[str] | None = None,
+            val: Optional[Any] | None = None,
     ):
         """
         Args:

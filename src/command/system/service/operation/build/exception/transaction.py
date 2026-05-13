@@ -59,11 +59,11 @@ class CommandBuildException(BuildException):
     
     def __init__(
             self,
-            err_code: Optional[str] = None,
-            msg: Optional[str] = None,
-            ex: Optional[Exception] = None,
+            err_code: Optional[str] | None = None,
+            msg: Optional[str] | None = None,
+            ex: Optional[Exception] | None = None,
             mthd: Optional[str] = None, = None,
-            mthd_rslt_type: Optional[MethodResultType] = None,
+            mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         err_code = err_code or self.ERR_CODE
         msg = msg or self.MSG

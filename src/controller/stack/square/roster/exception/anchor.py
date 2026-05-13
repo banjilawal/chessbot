@@ -59,11 +59,11 @@ class SquareStackRosterHandlerException(AnchorException):
     
     def __init__(
             self,
-            err_code: Optional[str] = None,
-            msg: Optional[str] = None,
-            ex: Optional[Exception] = None,
-            cls_name: Optional[str] = None,
-            cls_mthd: Optional[str] = None
+            err_code: Optional[str] | None = None,
+            msg: Optional[str] | None = None,
+            ex: Optional[Exception] | None = None,
+            cls_name: Optional[str] | None = None,
+            cls_mthd: Optional[str] | None = None
     ):
         """
         Args:

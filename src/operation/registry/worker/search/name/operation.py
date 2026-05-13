@@ -18,7 +18,7 @@ from operation import Operation, WorkerRegistryOperation
 
 
 class WorkerRegistryNameSearch(WorkerRegistryOperation):
-    NAME = "registry_worker_search"
+    NAME = "worker_registry_name_search"
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -31,7 +31,11 @@ class WorkerRegistryNameSearch(WorkerRegistryOperation):
         method = f"{cls.__name__}.execute"
         
         if domain.upper() not in registry.domains:
-            return SearchResult.empty()
+            return SearchResult.failure(
+                WorkerRegistryNameSearchException(
+                
+                )
+            )
         if operation_name.upper() not in registry.entries[domain].keys():
             return SearchResult.empty()
         operation = registry.entries[domain][operation_name]
