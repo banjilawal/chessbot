@@ -13,8 +13,7 @@ from abc import ABC
 from typing import Dict, Generic, List, TypeVar
 
 from controller import WorkerRegistryController
-from err import ToolkitException
-from err.search.empty.operation import OperationNotFoundException
+from err import OperationNotFoundException, ToolkitException
 from microservice import Microservice
 from operation import Operation
 from result import SearchResult

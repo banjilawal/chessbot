@@ -5,52 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/toolkit/registry/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/registry/service/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/registry/service/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/registry/worker/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/toolkit/registry/worker/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/factory/toolkit/factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/factory/toolkit/factory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/assembly/board/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assembly/board/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/assembly/coord/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assembly/coord/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/assembly/query/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assembly/query/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/assembly/rank/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assembly/rank/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/assembly/scalar/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assembly/scalar/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/assembly/square/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assembly/square/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/assembly/team/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assembly/team/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/assembly/token/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assembly/token/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/assembly/vector/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/assembly/vector/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/board/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/board/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/coord/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/coord/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/rank/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/rank/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/square/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/square/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/team/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/team/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/token/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/token/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/assembly/vector/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/assembly/vector/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/math/vector/addition/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/math/vector/addition/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/math/vector/euclidean/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/math/vector/euclidean/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/math/vector/product/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/math/vector/product/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/math/vector/transform/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/math/vector/transform/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/registry/service/search/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/registry/service/search/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/registry/service/search/domain/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/registry/service/search/domain/operation.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/registry/service/search/name/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/registry/service/search/name/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/registry/service/search/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/registry/service/validation/registration/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/registry/service/validation/registration/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/registry/worker/register/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/registry/worker/register/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/registry/worker/search/domain/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/registry/worker/search/domain/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/registry/worker/search/name/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/registry/worker/search/name/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/registry/worker/validation/registration/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/registry/worker/validation/registration/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/math/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/math/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/math/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/math/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/math/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/register/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/math/vector/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/team/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/team/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/token/toollkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/token/toollkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/toolkit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/search/empty/microservice/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/search/empty/microservice/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/search/empty/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/search/empty/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +58,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/toolkit/registry",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/search/empty",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -112,11 +69,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/search/empty" />
       <recent name="$PROJECT_DIR$/src/toolkit/registry" />
       <recent name="$PROJECT_DIR$/src/toolkit" />
       <recent name="$PROJECT_DIR$/src/operation/registry" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\controller\registry" />
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\err\controller\registry" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/toolkit/math" />

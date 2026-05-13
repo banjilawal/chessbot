@@ -17,7 +17,9 @@ from .edge import *
 from .formation import *
 from .game import *
 from .hostage import *
+from .microservice import *
 from .node import *
+from .operation import *
 from .persona import *
 from .player import *
 from .rank import *
