@@ -1,7 +1,7 @@
-# src/operation/registry/service/register/operation.py
+# src/microservice/registry/service/register/microservice.py
 
 """
-Module: operation.registry.service.register.operation
+Module: microservice.registry.service.register.microservice
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -13,10 +13,10 @@ from model import ServiceRegistry
 from result import InsertionResult
 from util import LoggingLevelRouter
 from err import ServiceOpNameCollisionException, ServiceRegistrationException
-from operation import Operation, ServiceRegistryNameSearch, ServiceRegistryOperation
+from microservice import Microservice, ServiceRegistryNameSearch, ServiceRegistryMicroservice
 
 
-class RegisterService(ServiceRegistryOperation):
+class RegisterService(ServiceRegistryMicroservice):
     """
     Role
         -   Service
@@ -25,18 +25,17 @@ class RegisterService(ServiceRegistryOperation):
         1.  Registers a service to the registry while maintaining consistency and integrity.
 
     Attributes:
-        DOMAIN = "registration"
-        OPERATION_NAME = "register_service"
+        MICROSERVICE_NAME = "register_service"
 
     Provides:
         -   def execute(
-                    service: Operation,
+                    service: Microservice,
                     registry: ServiceRegistry,
                     service_search: RegistryServiceSearch | None = None,
             ) -> InsertionResult:
 
     Super Class:
-        ServiceRegistryOperation
+        ServiceRegistryMicroservice
     """
     OPERATION_NAME = "register_service"
     
@@ -44,7 +43,7 @@ class RegisterService(ServiceRegistryOperation):
     @LoggingLevelRouter.monitor
     def execute(
             cls,
-            service: Operation,
+            service: Microservice,
             registry: ServiceRegistry,
             service_search: ServiceRegistryNameSearch | None = None,
     ) -> InsertionResult:
@@ -53,11 +52,11 @@ class RegisterService(ServiceRegistryOperation):
         
         Action:
             1.  Send an exception chain in the InsertionResult if either condition occurs.
-                    -   A different service exists in the same domain with the same operation name.
+                    -   A different service exists in the same domain with the same microservice name.
                     -   Registering the service's entry in the registry dictionary fails.
             2.  Otherwise, send the success result.
         Args:
-            service: Operation
+            service: Microservice
             registry: ServiceRegistry
             service_search: RegistryServiceSearch
         Returns:
@@ -71,8 +70,7 @@ class RegisterService(ServiceRegistryOperation):
             service_search = ServiceRegistryNameSearch()
         
         service_search_result = service_search.execute(
-            domain=service.DOMAIN,
-            operation_name=service.OPERATION_NAME,
+            microservice_name=service.name,
             registry=registry
         )
         # Handle the case that, the search is not completed.
@@ -105,8 +103,8 @@ class RegisterService(ServiceRegistryOperation):
             # Send the success result if there is no hash collision.
             return InsertionResult.success()
         # --- Add a new entry to the registry if the key is new. ---#
-        registry.entries[service.DOMAIN][service.OPERATION_NAME] = service
-        registry.registration_counters[service.DOMAIN][service.OPERATION_NAME] += 1
+        registry.entries[service.SERVICE_NAME] = service
+        registry.registration_counters[service.MICROSERVICE_NAME] += 1
         
         # --- Send the success result . ---#
         return InsertionResult.success()
@@ -117,11 +115,11 @@ class RegisterService(ServiceRegistryOperation):
     def _collision_helper(
             cls,
             colliding_key: str,
-            new_service: Operation,
+            new_service: Microservice,
             registry: ServiceRegistry,
     ) -> InsertionResult:
         """
-        Process the cases where the service's operation_name has already been a key.
+        Process the cases where the service's microservice_name has already been a key.
 
         Action:
             1.  Send an exception chain in the InsertionResult if the current entry's value
@@ -129,7 +127,7 @@ class RegisterService(ServiceRegistryOperation):
             2.  Otherwise, increment the registration counter, then send the success result.
         Args:
             colliding_key: str
-            new_service: Operation
+            new_service: Microservice
             registry: ServiceRegistry
         Returns:
             InsertionResult
@@ -139,11 +137,11 @@ class RegisterService(ServiceRegistryOperation):
         """
         method = f"{cls.__name__}._collision_helper"
         
-        # --- Get the operation which is already using the key. ---#
-        old_service = registry.entries[new_service.DOMAIN][colliding_key]
+        # --- Get the microservice which is already using the key. ---#
+        old_service = registry.entries[colliding_key]
         
         # Handle the case that the, old and new services are different.
-        if old_service.OPERATION_NAME.upper() != new_service.OPERATION_NAME.upper():
+        if old_service.MICROSERVICE_NAME.upper() != new_service.MICROSERVICE_NAME.upper():
             # Send the exception chain on failure.
             return InsertionResult.failure(
                 ServiceRegistrationException(
@@ -161,8 +159,8 @@ class RegisterService(ServiceRegistryOperation):
                     ),
                 )
             )
-        # --- If the operations are the same, increment the registration counter ---#
-        registry.registration_counters[new_service.DOMAIN][new_service.OPERATION_NAME] += 1
+        # --- If the microservices are the same, increment the registration counter ---#
+        registry.registration_counters[new_service.MICROSERVICE_NAME] += 1
         
         return InsertionResult.success()
         
