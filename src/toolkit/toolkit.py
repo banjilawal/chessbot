@@ -9,7 +9,7 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
+from abc import ABC
 from typing import Dict, Generic, List, TypeVar
 
 from controller import WorkerRegistryController
@@ -18,6 +18,7 @@ from err.search.empty.operation import OperationNotFoundException
 from microservice import Microservice
 from operation import Operation
 from result import SearchResult
+
 
 T = TypeVar("T")
 
@@ -39,8 +40,8 @@ class Toolkit(ABC, Generic[T]):
 
     Super Class:
     """
-    REQUIRED_OPERATIONS: List[Operation] = []
-    REQUIRED_SERVICES: List[Microservice] = []
+    DEPENDENCIES: List[Operation] = []
+    SERVICE_DEPENDENCIES: List[Microservice] = []
     
     def __init__(self, worker_controller: WorkerRegistryController):
         self._worker_controller = worker_controller
@@ -51,13 +52,10 @@ class Toolkit(ABC, Generic[T]):
         """
         method = f"{self.__class__.__name__}._resolve_operations"
         resolved = {}
-        for operation in self.REQUIRED_OPERATIONS:
-            domain = operation.DOMAIN
-            operation_name = operation.OPERATION_NAME
-            
+        for dependency in self.DEPENDENCIES:
             search_result = self._worker_controller.find_worker(
-                domain=domain,
-                operation_name=operation_name,
+                domain=dependency.DOMAIN,
+                operation_name=dependency.NAME,
             )
             # Handle the case that, the search failed.
             if search_result.is_failure:
@@ -82,12 +80,12 @@ class Toolkit(ABC, Generic[T]):
                         cls_name=self.__class__.__name__,
                         msg=OperationNotFoundException.MSG,
                         err_code=OperationNotFoundException.ERR_CODE,
-                        var=operation_name,
-                        val=operation
+                        var=dependency.NAME,
+                        val=dependency
                     )
                 )
             # Store resolved operation instance
             if search_result.is_success:
-                resolved[operation.__name__] = search_result.payload[0]
+                resolved[dependency.__name__] = search_result.payload[0]
         
         return SearchResult.success([resolved])

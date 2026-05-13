@@ -17,7 +17,7 @@ from model import Team, TeamBlueprint
 from controller import WorkerRegistryController
 
 class TeamAssembler(Assembler[Team]):
-    OPERATION_NAME = "team_assembler"
+    NAME = "team_assembler"
     
     @classmethod
     @LoggingLevelRouter.monitor

@@ -41,7 +41,7 @@ class EuclideanOperation(Operation[VectorRegister]):
     Super Class:
         Operation
     """
-    OPERATION_NAME = "euclidean_distance"
+    NAME = "euclidean_distance"
     
     @classmethod
     @LoggingLevelRouter.monitor

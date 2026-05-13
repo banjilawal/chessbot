@@ -1,15 +1,16 @@
-# src/model/math/__init__.py
+# src/toolkit/math/__init__.py
 
 """
-Module: model.math.__init__
+Module: toolkit.math.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== MODEL.MATH PACKAGE ===========#
+# =========== TOOLKIT.MATH PACKAGE ===========#
 
 # Packages
+from .vector import *
 
 # Modules
 from .toolkit import MathToolkit

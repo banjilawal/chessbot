@@ -10,29 +10,28 @@ version: 1.0.1
 from __future__ import annotations
 from typing import List
 
+from microservice import Microservice
 from result import SearchResult
 from model import ServiceRegistry
 from util import LoggingLevelRouter
-from operation import Operation, ServiceRegistryOperation
+from operation import ServiceRegistryOperation
 
 
 
-class ServiceRegistryNameSearch(ServiceRegistryOperation):
-    OPERATION_NAME = "registry_service_search"
+class ServiceRegistrySearch(ServiceRegistryOperation):
+    SERVICE_NAME = "registry_service_search"
     
     @classmethod
     @LoggingLevelRouter.monitor
     def execute(
             cls,
-            domain: str,
-            operation_name: str,
+            service_name: str,
             registry: ServiceRegistry,
-    ) -> SearchResult[List[Operation]]:
+    ) -> SearchResult[List[Microservice]]:
         method = f"{cls.__name__}.execute"
         
-        if domain.upper() not in registry.domains:
+        
+        if service_name.upper() not in registry.entries.keys():
             return SearchResult.empty()
-        if operation_name.upper() not in registry.entries[domain].keys():
-            return SearchResult.empty()
-        operation = registry.entries[domain][operation_name]
-        return SearchResult.success(List[operation])
+        service = registry.entries[service_name]
+        return SearchResult.success(List[service])

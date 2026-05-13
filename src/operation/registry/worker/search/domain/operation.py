@@ -17,7 +17,7 @@ from operation import Operation, WorkerRegistryOperation
 
 
 class WorkerRegistryDomainSearch(WorkerRegistryOperation):
-    OPERATION_NAME = "worker_registry_domain_search"
+    NAME = "worker_registry_domain_search"
     
     @classmethod
     @LoggingLevelRouter.monitor

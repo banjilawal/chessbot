@@ -34,7 +34,7 @@ class TeamToolkit(Toolkit[Team]):
     Super Class:
         Toolkit
     """
-    REQUIRED_OPERATIONS = [
+    DEPENDENCIES = [
         BoardValidator,
         IdentityService,
         SchemaValidator,

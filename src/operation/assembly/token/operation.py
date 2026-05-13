@@ -17,7 +17,7 @@ from controller import WorkerRegistryController
 from model import CombatantToken, King, KingToken, Pawn, PawnToken, Token, TokenBlueprint
 
 class TokenAssembler(Assembler[Token]):
-    OPERATION_NAME = "token_assembler"
+    NAME = "token_assembler"
     
     @classmethod
     @LoggingLevelRouter.monitor

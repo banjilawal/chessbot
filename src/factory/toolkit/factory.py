@@ -54,7 +54,7 @@ class ToolkitFactory:
                 )
             )
         # Handle the case that, the toolkit does not have any operations.
-        if len(toolkit_class.REQUIRED_OPERATIONS) == 0:
+        if len(toolkit_class.DEPENDENCIES) == 0:
             # Send the exception chain on failure.
             return BuildResult.failure(
                 ToolkitFactoryException(
@@ -72,11 +72,11 @@ class ToolkitFactory:
             )
         
         resolved_dependencies = []
-        for attr, requirement in toolkit_class.REQUIRED_OPERATIONS:
+        for attr, requirement in toolkit_class.DEPENDENCIES:
             # Perform resolution via registry controller
             search_result = self._registry_controller.find_worker(
                 domain=requirement.DOMAIN,
-                operation_name=requirement.OPERATION_NAME
+                operation_name=requirement.NAME
             )
             # Handle the case that, the registry search does not produce a hit or encounters an error.
             if search_result.is_failure:

@@ -15,7 +15,7 @@ from util import  LoggingLevelRouter
 from model import Vector, VectorBlueprint
 
 class VectorAssembler(Assembler[Vector]):
-    OPERATION_NAME = "vector_assembler"
+    NAME = "vector_assembler"
     
     @classmethod
     @LoggingLevelRouter.monitor

@@ -1,7 +1,7 @@
-# src/toolkit/register/toolkit.py
+# src/toolkit/math/vector/toolkit.py
 
 """
-Module: toolkit.register.toolkit
+Module: toolkit.math.vector.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

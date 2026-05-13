@@ -43,7 +43,7 @@ class AddServiceBootstrapper(ServiceRegistryOperation):
         domain_validation_result = name_validator.validate(service.DOMAIN)
         if not domain_validation_result.is_false:
             return ValidationResult.failure(domain_validation_result.exception)
-        operation_name_validation_result = name_validator.validate(service.OPERATION_NAME)
+        operation_name_validation_result = name_validator.validate(service.NAME)
         if not operation_name_validation_result.is_false:
             return ValidationResult.failure(operation_name_validation_result.exception)
         

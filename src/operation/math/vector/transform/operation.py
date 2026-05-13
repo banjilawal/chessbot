@@ -35,7 +35,7 @@ class VectorTransform(Operation):
     Super Class:
         Operation
     """
-    OPERATION_NAME = "vector_transform"
+    NAME = "vector_transform"
     
     @classmethod
     @LoggingLevelRouter.monitor

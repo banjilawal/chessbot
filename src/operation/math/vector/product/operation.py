@@ -41,7 +41,7 @@ class ScalarProductOperation(Operation[VectorOperand]):
     Super Class:
         Operation
     """
-    OPERATION_NAME = "scalar_product"
+    NAME = "scalar_product"
     
     @classmethod
     @LoggingLevelRouter.monitor

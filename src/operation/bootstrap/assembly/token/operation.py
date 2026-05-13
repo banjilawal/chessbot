@@ -23,7 +23,7 @@ from model import OpeningSquare, SquareContext, Token, TokenBlueprint
 
 
 class TokenAssemblyBootstrapper(AssemblyBootstrapper[Token]):
-    OPERATION_NAME = "token_assembly_bootstrapper"
+    NAME = "token_assembly_bootstrapper"
     
     @classmethod
     @LoggingLevelRouter.monitor

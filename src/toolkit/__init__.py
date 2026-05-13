@@ -23,7 +23,7 @@ from .node import *
 from .number import *
 from .operand import *
 from .rank import *
-from .register import *
+from .registry import *
 from .scalar import *
 from .square import *
 from .team import *

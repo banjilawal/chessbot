@@ -38,7 +38,7 @@ class RegisterWorker(WorkerRegistryOperation):
     Super Class:
         WorkerRegistryOperation
     """
-    OPERATION_NAME = "register_worker"
+    NAME = "register_worker"
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -72,7 +72,7 @@ class RegisterWorker(WorkerRegistryOperation):
         
         worker_search_result = worker_search.execute(
             domain=worker.DOMAIN,
-            operation_name=worker.OPERATION_NAME,
+            operation_name=worker.NAME,
             registry=registry
         )
         # Handle the case that, the search is not completed.
@@ -105,8 +105,8 @@ class RegisterWorker(WorkerRegistryOperation):
             # Send the success result if there is no hash collision.
             return InsertionResult.success()
         # --- Add a new entry to the registry if the key is new. ---#
-        registry.entries[worker.DOMAIN][worker.OPERATION_NAME] = worker
-        registry.registration_counters[worker.DOMAIN][worker.OPERATION_NAME] += 1
+        registry.entries[worker.DOMAIN][worker.NAME] = worker
+        registry.registration_counters[worker.DOMAIN][worker.NAME] += 1
         
         # --- Send the success result . ---#
         return InsertionResult.success()
@@ -143,7 +143,7 @@ class RegisterWorker(WorkerRegistryOperation):
         old_worker = registry.entries[new_worker.DOMAIN][colliding_key]
         
         # Handle the case that the, old and new workers are different.
-        if old_worker.OPERATION_NAME.upper() != new_worker.OPERATION_NAME.upper():
+        if old_worker.NAME.upper() != new_worker.NAME.upper():
             # Send the exception chain on failure.
             return InsertionResult.failure(
                 WorkerRegistrationException(
@@ -162,7 +162,7 @@ class RegisterWorker(WorkerRegistryOperation):
                 )
             )
         # --- If the operations are the same, increment the registration counter ---#
-        registry.registration_counters[new_worker.DOMAIN][new_worker.OPERATION_NAME] += 1
+        registry.registration_counters[new_worker.DOMAIN][new_worker.NAME] += 1
         
         return InsertionResult.success()
         

@@ -44,7 +44,7 @@ class SquareAssembler(Assembler[Square]):
      Super Class:
         Assembler
      """
-    OPERATION_NAME = "square_assembler"
+    NAME = "square_assembler"
     
     @classmethod
     @LoggingLevelRouter.monitor()

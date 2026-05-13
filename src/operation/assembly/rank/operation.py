@@ -37,7 +37,7 @@ class RankAssembler(Assembler[Rank]):
      Super Class:
         Assembler
      """
-    OPERATION_NAME = "rank_assembler"
+    NAME = "rank_assembler"
     
     @classmethod
     @LoggingLevelRouter.monitor()

@@ -41,7 +41,7 @@ class VectorAssemblyBootstrapper(AssemblyBootstrapper[Vector]):
     Super Class:
         AssemblyBootstrapper
      """
-    OPERATION_NAME = "vector_assembly_bootstrapper"
+    NAME = "vector_assembly_bootstrapper"
     
     @classmethod
     @LoggingLevelRouter.monitor

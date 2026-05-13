@@ -17,7 +17,7 @@ from controller import WorkerRegistryController
 
 
 class BoardAssembler(Assembler[Board]):
-    OPERATION_NAME = "board_assembler"
+    NAME = "board_assembler"
     
     @classmethod
     @LoggingLevelRouter.monitor

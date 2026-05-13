@@ -16,7 +16,7 @@ from model import Coord, CoordBlueprint
 from controller import WorkerRegistryController
 
 class CoordAssembler(Assembler[Coord]):
-    OPERATION_NAME = "coord_assembler"
+    NAME = "coord_assembler"
     
     @classmethod
     @LoggingLevelRouter.monitor

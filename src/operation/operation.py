@@ -35,7 +35,7 @@ class Operation(ABC, Generic[T]):
     Super Class:
     """
     DOMAIN = "operation"
-    OPERATION_NAME = "operation"
+    NAME = "operation"
     
     @classmethod
     def execute(cls, *args, **kwargs) -> Result[Any]:

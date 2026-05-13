@@ -38,7 +38,7 @@ class TokenToolkit(Toolkit[Token]):
     
     Super Class:
     """
-    REQUIRED_OPERATIONS = [
+    DEPENDENCIES = [
         RankService,
         SquareValidator,
         CoordValidator,

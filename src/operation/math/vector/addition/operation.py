@@ -40,7 +40,7 @@ class AddOperation(Operation[VectorRegister]):
     Super Class:
         Operation
     """
-    OPERATION_NAME = "vector_addition"
+    NAME = "vector_addition"
     
     @classmethod
     @LoggingLevelRouter.monitor

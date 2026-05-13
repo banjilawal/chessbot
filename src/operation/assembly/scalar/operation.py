@@ -41,7 +41,7 @@ class ScalarAssembler(Assembler[Scalar]):
      Super Class:
         Assembler
      """
-    OPERATION_NAME = "scalar_assembler"
+    NAME = "scalar_assembler"
     
     @classmethod
     @LoggingLevelRouter.monitor
