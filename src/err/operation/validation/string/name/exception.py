@@ -1,4 +1,4 @@
-# src/err/operation/validation/stringname/exception.py
+# src/err/operation/validation/string/name/exception.py
 
 """
 Module: err.operation.validation.string.name.exception

@@ -14,4 +14,4 @@ version: 1.0.1
 
 
 # Modules
-from .operation import VectorValidator
+from .validator import VectorValidator

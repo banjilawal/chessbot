@@ -1,7 +1,7 @@
-# src/err/null/arena/exception.py
+# src/err/validation/string/registry/exception.py
 
 """
-Module: err.null.arena.exception
+Module: err.operation.validation.string.registry.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,21 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import NullException
-
+from err import ValidationException
 
 __all__ = [
-    # ======================# ARENA_NULL_EXCEPTION #======================#
-    "ArenaNullException",
+    # ======================# REGISTRY_ENTRY_KEY_STRING_VALIDATION_EXCEPTION #======================#
+    "RegistryEntryKeyStringValidationException",
 ]
 
-# ======================# ARENA_NULL_EXCEPTION #======================#
-class ArenaNullException(NullException):
+# ======================# REGISTRY_ENTRY_KEY_STRING_VALIDATION_EXCEPTION #======================#
+class RegistryEntryKeyStringValidationException(ValidationException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Arena is null.
+        1.  Indicate that a RegistryEntry key failed a String validation check.
 
     Attributes:
         msg: Optional[str]
@@ -35,14 +34,15 @@ class ArenaNullException(NullException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
+        mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
-        NullException
+        ValidationException
     """
-    MSG = "Arena cannot be null."
-    ERR_CODE = "ARENA_NULL_EXCEPTION"
+    MSG = "RegistryEntryKey is not a valid string."
+    ERR_CODE = "REGISTRY_ENTRY_KEY_STRING_VALIDATION_EXCEPTION"
     
     def __init__(
             self,

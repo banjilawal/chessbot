@@ -11,7 +11,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from operation import (
-    AddWorkerBootstrapper, DomainSearchBootstrapper, NameValidator, RegisterWorker, WorkerRegistryDomainSearch,
+    AddWorkerBootstrapper, DomainSearchBootstrapper, NameValidator, RegisterNewWorker, WorkerRegistryDomainSearch,
     WorkerRegistryNameSearch, ValidationBootstrapper, WorkerRegistryNameSearchBootstrapper
 )
 
@@ -50,7 +50,7 @@ class WorkerRegistryToolkit:
             a subclass of Toolkit.
     """
     name_validator: NameValidator = NameValidator()
-    register_worker: RegisterWorker = RegisterWorker()
+    register_worker: RegisterNewWorker = RegisterNewWorker()
     domain_search: WorkerRegistryDomainSearch = WorkerRegistryDomainSearch()
     worker_search: WorkerRegistryNameSearch = WorkerRegistryNameSearch()
     add_worker_bootstrapper: AddWorkerBootstrapper = AddWorkerBootstrapper()

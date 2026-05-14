@@ -1,4 +1,4 @@
-# src/err/validation/stringname/__init__.py
+# src/err/validation/string/name/__init__.py
 
 """
 Module: err.operation.validation.string.name.__init__

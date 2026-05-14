@@ -11,6 +11,7 @@ version: 1.0.1
 
 # Packages
 from .arena import *
+from .array import *
 from .binder import *
 from .board import *
 from .color import *

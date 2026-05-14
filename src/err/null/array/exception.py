@@ -1,7 +1,7 @@
-# src/err/null/arena/exception.py
+# src/err/null/array/exception.py
 
 """
-Module: err.null.arena.exception
+Module: err.null.array.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -12,20 +12,19 @@ from typing import Any, Optional
 
 from err import NullException
 
-
 __all__ = [
-    # ======================# ARENA_NULL_EXCEPTION #======================#
-    "ArenaNullException",
+    # ======================# LIST_NULL_EXCEPTION #======================#
+    "ListNullException",
 ]
 
-# ======================# ARENA_NULL_EXCEPTION #======================#
-class ArenaNullException(NullException):
+# ======================# LIST_NULL_EXCEPTION #======================#
+class ListNullException(NullException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a required Arena is null.
+        1.  Indicate that a required List is null.
 
     Attributes:
         msg: Optional[str]
@@ -41,8 +40,8 @@ class ArenaNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = "Arena cannot be null."
-    ERR_CODE = "ARENA_NULL_EXCEPTION"
+    MSG = "List cannot be null."
+    ERR_CODE = "LIST_NULL_EXCEPTION"
     
     def __init__(
             self,

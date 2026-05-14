@@ -11,6 +11,7 @@ version: 1.0.1
 
 # Packages
 from .name import *
+from .registry import *
 
 # Modules
 from .exception import StringValidationException

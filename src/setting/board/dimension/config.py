@@ -42,7 +42,7 @@ class BoardDimensionPropertyTable:
         -   Property Settings
   
     Responsibilities:
-        1.  Default colors of board elements.
+        1.  Default Board properties.
   
     Attributes:
   
