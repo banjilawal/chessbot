@@ -10,6 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import List
 
+from controller import WorkerRegistryController
 from err import OperationNotFoundSearchException, WorkerRegistryDomainSearchException, WorkerRegistryNameSearchException
 from result import SearchResult
 from model import WorkerRegistry
@@ -19,6 +20,25 @@ from operation import Operation, WorkerRegistryOperation
 
 
 class WorkerRegistryNameSearch(WorkerRegistryOperation):
+    """
+    Role
+        -   Search Worker
+
+    Responsibilities:
+        1.  Search the WorkerRegistry for an operation.
+
+    Attributes:
+
+    Provides:
+        -   def execute(
+                    domain: str,
+                    operation_name: str,
+                    registry: WorkerRegistry,
+            ) -> SearchResult[List[Operation]]:
+
+    Super Class:
+        WorkerRegistryOperation
+    """
     NAME = "worker_registry_name_search"
     
     @classmethod
@@ -81,3 +101,7 @@ class WorkerRegistryNameSearch(WorkerRegistryOperation):
         # --- Return the work product. ---#
         operation = registry.entries[domain][operation_name]
         return SearchResult.success(List[operation])
+
+
+# --- FINALLY: REGISTER THE OPERATION ---#
+WorkerRegistryController.register(worker=WorkerRegistryNameSearch)

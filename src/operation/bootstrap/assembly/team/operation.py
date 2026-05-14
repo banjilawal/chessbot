@@ -237,7 +237,7 @@ class TeamAssemblyBootstrapper(AssemblyBootstrapper[Team]):
         return ValidationResult.success(blueprint.board)
 
 
-# Register the operation.
+# --- FINALLY: REGISTER THE OPERATION ---#
 WorkerRegistryController.register(worker=TeamAssemblyBootstrapper)
 
         
