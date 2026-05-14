@@ -1,7 +1,7 @@
 # src/err/search/context/persona/exception.py
 
 """
-Module: err.search.persona.exception
+Module: err.search.persona.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,23 +9,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ContextException
+from err import ContextSearchException
 
 
 __all__ = [
-    # ======================# PERSONA_CONTEXT_ERROR #======================#
-    "PersonaContextException",
+    # ======================# PERSONA_CONTEXT_SEARCH_FAILURE #======================#
+    "PersonaContextSearchException",
 ]
 
 
-# ======================# PERSONA_CONTEXT_ERROR #======================#
-class PersonaContextException(ContextException):
+# ======================# PERSONA_CONTEXT_SEARCH_FAILURE #======================#
+class PersonaContextSearchException(ContextSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PersonaContext experienced an error.
+        1.  Indicate that a PersonaContextSearch experienced an error.
 
     Attributes:
             msg: Optional[str]
@@ -39,10 +39,10 @@ class PersonaContextException(ContextException):
     Provides:
 
     Super Class:
-        ContextException
+        ContextSearchException
     """
     MSG = "PersonaContext error state."
-    ERR_CODE = "PERSONA_CONTEXT_ERROR"
+    ERR_CODE = "PERSONA_CONTEXT_SEARCH_FAILURE"
     
     def __init__(
             self,

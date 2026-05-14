@@ -31,9 +31,7 @@ class ArenaBlueprint(Blueprint[Arena]):
         Blueprint
     """
     _id: int
-    _game: Game
-
-    
+    _game: Game    
     def __init__(
             self,
             game: Game,

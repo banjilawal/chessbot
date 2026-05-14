@@ -1,7 +1,7 @@
 # src/err/search/empty/exception.py
 
 """
-Module: err.search.empty.exception
+Module: err.search.empty.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -39,7 +39,7 @@ class EmptySearchException(SearchException):
     Provides:
 
     Super Class:
-        ChessException
+        ChessSearchException
     """
     MSG = "Search did not produce a hit."
     ERR_CODE = "NO_MATCH_FOUND"

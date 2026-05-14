@@ -1,7 +1,7 @@
 # src/err/search/empty/rank/exception.py
 
 """
-Module: err.search.empty.rank.exception
+Module: err.search.empty.rank.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -13,13 +13,13 @@ from err import EmptySearchException
 
 
 __all__ = [
-    # ======================# RANK_NOT_FOUND_ERROR #======================#
-    "RankNotFoundException",
+    # ======================# RANK_NOT_FOUND_SEARCH_FAILURE #======================#
+    "RankNotFoundSearchException",
 ]
 
 
-# ======================# RANK_NOT_FOUND_ERROR #======================#
-class RankNotFoundException(EmptySearchException):
+# ======================# RANK_NOT_FOUND_SEARCH_FAILURE #======================#
+class RankNotFoundSearchException(EmptySearchException):
     """
     Role:
         -   Error Tracing
@@ -39,10 +39,10 @@ class RankNotFoundException(EmptySearchException):
     Provides:
 
     Super Class:
-        NotFoundException
+        NotFoundSearchException
     """
     MSG = "Rank was not found."
-    ERR_CODE = "RANK_NOT_FOUND_ERROR"
+    ERR_CODE = "RANK_NOT_FOUND_SEARCH_FAILURE"
     
     def __init__(
             self,

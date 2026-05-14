@@ -1,7 +1,7 @@
 # src/err/search/token/combatant/exception.py
 
 """
-Module: err.search.token.combatant.exception
+Module: err.search.token.combatant.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenException
+from err import TokenSearchException
 
 
 __all__ = [
-    # ======================# COMBATANT_TOKEN_ERROR #======================#
-    "CombatantTokenException",
+    # ======================# COMBATANT_TOKEN_SEARCH_FAILURE #======================#
+    "CombatantTokenSearchException",
 ]
 
-# ======================# COMBATANT_TOKEN_ERROR #======================#
-class CombatantTokenException(TokenException):
+# ======================# COMBATANT_TOKEN_SEARCH_FAILURE #======================#
+class CombatantTokenSearchException(TokenSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CombatantToken experienced an error.
+        1.  Indicate that a CombatantTokenSearch experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -39,10 +39,10 @@ class CombatantTokenException(TokenException):
     Provides:
 
     Super Class:
-        TokenException
+        TokenSearchException
     """
     MSG = "CombatantToken error state."
-    ERR_CODE = "COMBATANT_TOKEN_ERROR"
+    ERR_CODE = "COMBATANT_TOKEN_SEARCH_FAILURE"
     
     def __init__(
             self,

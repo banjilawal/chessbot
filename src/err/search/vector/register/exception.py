@@ -1,7 +1,7 @@
 # src/err/search/vector/register/exception.py
 
 """
-Module: err.search.vector.register.exception
+Module: err.search.vector.register.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -13,11 +13,11 @@ from typing import Any, Optional
 from err import SearchException
 
 _all_ = [
-    # ======================# VECTOR_REGISTER_EXCEPTION #======================#
-    "VectorRegisterException",
+    # ======================# VECTOR_REGISTER_SEARCHEXCEPTION #======================#
+    "VectorRegisterSearchException",
 ]
-# ======================# VECTOR_REGISTER_EXCEPTION #======================#
-class VectorRegisterException(SearchException):
+# ======================# VECTOR_REGISTER_SEARCHEXCEPTION #======================#
+class VectorRegisterSearchException(SearchException):
     """
     Role:
         -   Error Tracing
@@ -37,10 +37,10 @@ class VectorRegisterException(SearchException):
     Provides:
 
     Super Class:
-        VectorException
+        VectorSearchException
     """
     MSG = "VectorRegister error state."
-    ERR_CODE = "VECTOR_REGISTER_EXCEPTION"
+    ERR_CODE = "VECTOR_REGISTER_SEARCHEXCEPTION"
     
     def _init_(
             self,

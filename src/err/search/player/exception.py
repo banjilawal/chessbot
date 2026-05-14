@@ -1,7 +1,7 @@
 # src/err/search/player/exception.py
 
 """
-Module: err.search.player.exception
+Module: err.search.player.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import SearchException
 
 
 __all__ = [
-    # ======================# PLAYER_ERROR #======================#
-    "PlayerException",
+    # ======================# PLAYER_SEARCH_FAILURE #======================#
+    "PlayerSearchException",
 ]
 
-# ======================# PLAYER_ERROR #======================#
-class PlayerException(SearchException):
+# ======================# PLAYER_SEARCH_FAILURE #======================#
+class PlayerSearchException(SearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Player experienced an error.
+        1.  Indicate that a PlayerSearch experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class PlayerException(SearchException):
         SearchException
     """
     MSG = "Player error state."
-    ERR_CODE = "PLAYER_ERROR"
+    ERR_CODE = "PLAYER_SEARCH_FAILURE"
     
     def __init__(
             self,

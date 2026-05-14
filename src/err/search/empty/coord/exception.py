@@ -1,7 +1,7 @@
 # src/err/search/empty/coord/exception.py
 
 """
-Module: err.search.empty.coord.exception
+Module: err.search.empty.coord.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -13,13 +13,13 @@ from err import EmptySearchException
 
 
 __all__ = [
-    # ======================# COORD_NOT_FOUND_ERROR #======================#
-    "CoordNotFoundException",
+    # ======================# COORD_NOT_FOUND_SEARCH_FAILURE #======================#
+    "CoordNotFoundSearchException",
 ]
 
 
-# ======================# COORD_NOT_FOUND_ERROR #======================#
-class CoordNotFoundException(EmptySearchException):
+# ======================# COORD_NOT_FOUND_SEARCH_FAILURE #======================#
+class CoordNotFoundSearchException(EmptySearchException):
     """
     Role:
         -   Error Tracing
@@ -39,10 +39,10 @@ class CoordNotFoundException(EmptySearchException):
     Provides:
 
     Super Class:
-        NotFoundException
+        NotFoundSearchException
     """
     MSG = "Coord was not found."
-    ERR_CODE = "COORD_NOT_FOUND_ERROR"
+    ERR_CODE = "COORD_NOT_FOUND_SEARCH_FAILURE"
     
     def __init__(
             self,

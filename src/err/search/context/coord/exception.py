@@ -1,7 +1,7 @@
 # src/err/search/context/coord/exception.py
 
 """
-Module: err.search.coord.exception
+Module: err.search.coord.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,23 +9,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ContextException
+from err import ContextSearchException
 
 
 __all__ = [
-    # ======================# COORD_CONTEXT_ERROR #======================#
-    "CoordContextException",
+    # ======================# COORD_CONTEXT_SEARCH_FAILURE #======================#
+    "CoordContextSearchException",
 ]
 
 
-# ======================# COORD_CONTEXT_ERROR #======================#
-class CoordContextException(ContextException):
+# ======================# COORD_CONTEXT_SEARCH_FAILURE #======================#
+class CoordContextSearchException(ContextSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a CoordContext experienced an error.
+        1.  Indicate that a CoordContextSearch experienced an error.
 
     Attributes:
             msg: Optional[str]
@@ -39,10 +39,10 @@ class CoordContextException(ContextException):
     Provides:
 
     Super Class:
-        ContextException
+        ContextSearchException
     """
     MSG = "CoordContext error state."
-    ERR_CODE = "COORD_CONTEXT_ERROR"
+    ERR_CODE = "COORD_CONTEXT_SEARCH_FAILURE"
     
     def __init__(
             self,

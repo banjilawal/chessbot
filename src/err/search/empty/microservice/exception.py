@@ -1,7 +1,7 @@
 # src/err/search/empty/microservice/exception.py
 
 """
-Module: err.search.empty.microservice.exception
+Module: err.search.empty.microservice.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,13 +14,13 @@ from err import EmptySearchException
 
 
 __all__ = [
-    # ======================# MICROSERVICE_NOT_FOUND_ERROR #======================#
-    "MicroserviceNotFoundException",
+    # ======================# MICROSERVICE_NOT_FOUND_SEARCH_FAILURE #======================#
+    "MicroserviceNotFoundSearchException",
 ]
 
 
-# ======================# MICROSERVICE_NOT_FOUND_ERROR #======================#
-class MicroserviceNotFoundException(EmptySearchException):
+# ======================# MICROSERVICE_NOT_FOUND_SEARCH_FAILURE #======================#
+class MicroserviceNotFoundSearchException(EmptySearchException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +40,10 @@ class MicroserviceNotFoundException(EmptySearchException):
     Provides:
 
     Super Class:
-        NotFoundException
+        NotFoundSearchException
     """
     MSG = "Microservice was not found."
-    ERR_CODE = "MICROSERVICE_NOT_FOUND_ERROR"
+    ERR_CODE = "MICROSERVICE_NOT_FOUND_SEARCH_FAILURE"
     
     def __init__(
             self,

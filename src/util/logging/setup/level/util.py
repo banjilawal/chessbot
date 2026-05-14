@@ -18,9 +18,7 @@ class LogLevelSetter:
     DEFAULT_LEVEL = LogLevelMode.DEBUG
     
     _logger: logging.Logger
-    _log_level: LogLevelMode
-
-    
+    _log_level: LogLevelMode    
     def __init__(
             self,
             logger: logging.Logger = DEFAULT_LOGGER,

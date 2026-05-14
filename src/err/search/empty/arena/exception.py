@@ -1,7 +1,7 @@
 # src/err/search/empty/arena/exception.py
 
 """
-Module: err.search.empty.arena.exception
+Module: err.search.empty.arena.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -13,13 +13,13 @@ from err import EmptySearchException
 
 
 __all__ = [
-    # ======================# ARENA_NOT_FOUND_ERROR #======================#
-    "ArenaNotFoundException",
+    # ======================# ARENA_NOT_FOUND_SEARCH_FAILURE #======================#
+    "ArenaNotFoundSearchException",
 ]
 
 
-# ======================# ARENA_NOT_FOUND_ERROR #======================#
-class ArenaNotFoundException(EmptySearchException):
+# ======================# ARENA_NOT_FOUND_SEARCH_FAILURE #======================#
+class ArenaNotFoundSearchException(EmptySearchException):
     """
     Role:
         -   Error Tracing
@@ -39,10 +39,10 @@ class ArenaNotFoundException(EmptySearchException):
     Provides:
 
     Super Class:
-        NotFoundException
+        NotFoundSearchException
     """
     MSG = "Arena was not found."
-    ERR_CODE = "ARENA_NOT_FOUND_ERROR"
+    ERR_CODE = "ARENA_NOT_FOUND_SEARCH_FAILURE"
     
     def __init__(
             self,

@@ -1,7 +1,7 @@
 # src/err/search/ArenaPlayerBinder/exception.py
 
 """
-Module: err.search.ArenaPlayerBinder.exception
+Module: err.search.ArenaPlayerBinder.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BinderException
+from err import BinderSearchException
 
 
 __all__ = [
-    # ======================# ARENA_PLAYER_BINDER_ERROR #======================#
-    "ArenaPlayerBinderException",
+    # ======================# ARENA_PLAYER_BINDER_SEARCH_FAILURE #======================#
+    "ArenaPlayerBinderSearchException",
 ]
 
-# ======================# ARENA_PLAYER_BINDER_ERROR #======================#
-class ArenaPlayerBinderException(BinderException):
+# ======================# ARENA_PLAYER_BINDER_SEARCH_FAILURE #======================#
+class ArenaPlayerBinderSearchException(BinderSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ArenaPlayerBinder experienced an error.
+        1.  Indicate that a ArenaPlayerBinderSearch experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -39,10 +39,10 @@ class ArenaPlayerBinderException(BinderException):
     Provides:
 
     Super Class:
-        BinderException
+        BinderSearchException
     """
     MSG = "ArenaPlayerBinder error state."
-    ERR_CODE = "ARENA_PLAYER_BINDER_ERROR"
+    ERR_CODE = "ARENA_PLAYER_BINDER_SEARCH_FAILURE"
     
     def __init__(
             self,

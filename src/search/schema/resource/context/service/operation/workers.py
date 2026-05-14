@@ -29,8 +29,6 @@ class SchemaContextIntegrityWorkers:
     """
     _identity_service: IdentityService
     _color_validator: GameColorValidator
-
-
     
     def __init__(
             self,

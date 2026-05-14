@@ -1,7 +1,7 @@
 # src/err/search/empty/board/exception.py
 
 """
-Module: err.search.empty.board.exception
+Module: err.search.empty.board.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -13,13 +13,13 @@ from err import EmptySearchException
 
 
 __all__ = [
-    # ======================# BOARD_NOT_FOUND_ERROR #======================#
-    "BoardNotFoundException",
+    # ======================# BOARD_NOT_FOUND_SEARCH_FAILURE #======================#
+    "BoardNotFoundSearchException",
 ]
 
 
-# ======================# BOARD_NOT_FOUND_ERROR #======================#
-class BoardNotFoundException(EmptySearchException):
+# ======================# BOARD_NOT_FOUND_SEARCH_FAILURE #======================#
+class BoardNotFoundSearchException(EmptySearchException):
     """
     Role:
         -   Error Tracing
@@ -39,10 +39,10 @@ class BoardNotFoundException(EmptySearchException):
     Provides:
 
     Super Class:
-        NotFoundException
+        NotFoundSearchException
     """
     MSG = "Board was not found."
-    ERR_CODE = "BOARD_NOT_FOUND_ERROR"
+    ERR_CODE = "BOARD_NOT_FOUND_SEARCH_FAILURE"
     
     def __init__(
             self,

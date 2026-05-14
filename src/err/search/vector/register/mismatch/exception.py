@@ -12,15 +12,15 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# VECTOR_REGISTER_MISMATCH_ERROR #======================#
-    "VectorRegisterMismatchException",
+    # ======================# VECTOR_REGISTER_MISMATCH_SEARCH_FAILURE #======================#
+    "VectorRegisterMismatchSearchException",
 ]
 
-from err import VectorOperationException
+from err import VectorOperationSearchException
 
 
-# ======================# VECTOR_REGISTER_MISMATCH_ERROR #======================#
-class VectorRegisterMismatchException(VectorOperationException):
+# ======================# VECTOR_REGISTER_MISMATCH_SEARCH_FAILURE #======================#
+class VectorRegisterMismatchSearchException(VectorOperationSearchException):
     """
     Role:
         -   Error Tracing
@@ -41,10 +41,10 @@ class VectorRegisterMismatchException(VectorOperationException):
     Provides:
 
     Super Class:
-        VectorOperationException
+        VectorOperationSearchException
     """
     MSG = "The registers do not have the same context."
-    ERR_CODE = "VECTOR_REGISTER_MISMATCH_ERROR"
+    ERR_CODE = "VECTOR_REGISTER_MISMATCH_SEARCH_FAILURE"
     
     def __init__(
             self,

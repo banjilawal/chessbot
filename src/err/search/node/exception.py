@@ -1,7 +1,7 @@
 # src/err/search/node/exception.py
 
 """
-Module: err.search.node.exception
+Module: err.search.node.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import SearchException
 
 
 __all__ = [
-    # ======================# NODE_ERROR #======================#
-    "NodeException",
+    # ======================# NODE_SEARCH_FAILURE #======================#
+    "NodeSearchException",
 ]
 
-# ======================# NODE_ERROR #======================#
-class NodeException(SearchException):
+# ======================# NODE_SEARCH_FAILURE #======================#
+class NodeSearchException(SearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Node experienced an error.
+        1.  Indicate that a NodeSearch experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class NodeException(SearchException):
         SearchException
     """
     MSG = "Node error state."
-    ERR_CODE = "NODE_ERROR"
+    ERR_CODE = "NODE_SEARCH_FAILURE"
     
     def __init__(
             self,

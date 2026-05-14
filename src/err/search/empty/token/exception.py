@@ -1,7 +1,7 @@
 # src/err/search/empty/token/exception.py
 
 """
-Module: err.search.empty.token.exception
+Module: err.search.empty.token.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,13 +14,13 @@ from err import EmptySearchException
 
 
 __all__ = [
-    # ======================# TOKEN_NOT_FOUND_ERROR #======================#
-    "TokenNotFoundException",
+    # ======================# TOKEN_NOT_FOUND_SEARCH_FAILURE #======================#
+    "TokenNotFoundSearchException",
 ]
 
 
-# ======================# TOKEN_NOT_FOUND_ERROR #======================#
-class TokenNotFoundException(EmptySearchException):
+# ======================# TOKEN_NOT_FOUND_SEARCH_FAILURE #======================#
+class TokenNotFoundSearchException(EmptySearchException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +40,10 @@ class TokenNotFoundException(EmptySearchException):
     Provides:
 
     Super Class:
-        NotFoundException
+        NotFoundSearchException
     """
     MSG = "Token was not found."
-    ERR_CODE = "TOKEN_NOT_FOUND_ERROR"
+    ERR_CODE = "TOKEN_NOT_FOUND_SEARCH_FAILURE"
     
     def __init__(
             self,

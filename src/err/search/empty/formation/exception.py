@@ -1,7 +1,7 @@
 # src/err/search/empty/formation/exception.py
 
 """
-Module: err.search.empty.formation.exception
+Module: err.search.empty.formation.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -13,13 +13,13 @@ from err import EmptySearchException
 
 
 __all__ = [
-    # ======================# FORMATION_NOT_FOUND_ERROR #======================#
-    "FormationNotFoundException",
+    # ======================# FORMATION_NOT_FOUND_SEARCH_FAILURE #======================#
+    "FormationNotFoundSearchException",
 ]
 
 
-# ======================# FORMATION_NOT_FOUND_ERROR #======================#
-class FormationNotFoundException(EmptySearchException):
+# ======================# FORMATION_NOT_FOUND_SEARCH_FAILURE #======================#
+class FormationNotFoundSearchException(EmptySearchException):
     """
     Role:
         -   Error Tracing
@@ -39,10 +39,10 @@ class FormationNotFoundException(EmptySearchException):
     Provides:
 
     Super Class:
-        NotFoundException
+        NotFoundSearchException
     """
     MSG = "Formation was not found."
-    ERR_CODE = "FORMATION_NOT_FOUND_ERROR"
+    ERR_CODE = "FORMATION_NOT_FOUND_SEARCH_FAILURE"
     
     def __init__(
             self,

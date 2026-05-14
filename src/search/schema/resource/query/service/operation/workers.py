@@ -30,8 +30,6 @@ class SchemaQueryIntegrityWorkers:
     """
     _schema_validator: SchemaValidator
     _context_validator: SchemaContextValidator
-
-
     
     def __init__(
             self,

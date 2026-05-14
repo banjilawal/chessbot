@@ -1,7 +1,7 @@
 # src/err/search/token/king/exception.py
 
 """
-Module: err.search.token.king.exception
+Module: err.search.token.king.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenException
+from err import TokenSearchException
 
 
 __all__ = [
-    # ======================# KING_TOKEN_ERROR #======================#
-    "KingTokenException",
+    # ======================# KING_TOKEN_SEARCH_FAILURE #======================#
+    "KingTokenSearchException",
 ]
 
-# ======================# KING_TOKEN_ERROR #======================#
-class KingTokenException(TokenException):
+# ======================# KING_TOKEN_SEARCH_FAILURE #======================#
+class KingTokenSearchException(TokenSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a KingToken experienced an error.
+        1.  Indicate that a KingTokenSearch experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -39,10 +39,10 @@ class KingTokenException(TokenException):
     Provides:
 
     Super Class:
-        TokenException
+        TokenSearchException
     """
     MSG = "KingToken error state."
-    ERR_CODE = "KING_TOKEN_ERROR"
+    ERR_CODE = "KING_TOKEN_SEARCH_FAILURE"
     
     def __init__(
             self,

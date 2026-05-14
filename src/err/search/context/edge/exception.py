@@ -1,7 +1,7 @@
 # src/err/search/context/edge/exception.py
 
 """
-Module: err.search.edge.exception
+Module: err.search.edge.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,23 +9,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ContextException
+from err import ContextSearchException
 
 
 __all__ = [
-    # ======================# EDGE_CONTEXT_ERROR #======================#
-    "EdgeContextException",
+    # ======================# EDGE_CONTEXT_SEARCH_FAILURE #======================#
+    "EdgeContextSearchException",
 ]
 
 
-# ======================# EDGE_CONTEXT_ERROR #======================#
-class EdgeContextException(ContextException):
+# ======================# EDGE_CONTEXT_SEARCH_FAILURE #======================#
+class EdgeContextSearchException(ContextSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a EdgeContext experienced an error.
+        1.  Indicate that a EdgeContextSearch experienced an error.
 
     Attributes:
             msg: Optional[str]
@@ -39,10 +39,10 @@ class EdgeContextException(ContextException):
     Provides:
 
     Super Class:
-        ContextException
+        ContextSearchException
     """
     MSG = "EdgeContext error state."
-    ERR_CODE = "EDGE_CONTEXT_ERROR"
+    ERR_CODE = "EDGE_CONTEXT_SEARCH_FAILURE"
     
     def __init__(
             self,

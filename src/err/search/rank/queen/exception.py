@@ -1,7 +1,7 @@
 # src/err/search/queen/exception.py
 
 """
-Module: err.search.queen.exception
+Module: err.search.queen.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import RankException
+from err import RankSearchException
 
 
 __all__ = [
-    # ======================# QUEEN_ERROR #======================#
-    "QueenException",
+    # ======================# QUEEN_SEARCH_FAILURE #======================#
+    "QueenSearchException",
 ]
 
-# ======================# QUEEN_ERROR #======================#
-class QueenException(RankException):
+# ======================# QUEEN_SEARCH_FAILURE #======================#
+class QueenSearchException(RankSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Queen experienced an error.
+        1.  Indicate that a QueenSearch experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -39,10 +39,10 @@ class QueenException(RankException):
     Provides:
 
     Super Class:
-        RankException
+        RankSearchException
     """
     MSG = "Queen error state."
-    ERR_CODE = "QUEEN_ERROR"
+    ERR_CODE = "QUEEN_SEARCH_FAILURE"
     
     def __init__(
             self,

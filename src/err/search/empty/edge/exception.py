@@ -1,7 +1,7 @@
 # src/err/search/empty/edge/exception.py
 
 """
-Module: err.search.empty.edge.exception
+Module: err.search.empty.edge.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -13,13 +13,13 @@ from err import EmptySearchException
 
 
 __all__ = [
-    # ======================# EDGE_NOT_FOUND_ERROR #======================#
-    "EdgeNotFoundException",
+    # ======================# EDGE_NOT_FOUND_SEARCH_FAILURE #======================#
+    "EdgeNotFoundSearchException",
 ]
 
 
-# ======================# EDGE_NOT_FOUND_ERROR #======================#
-class EdgeNotFoundException(EmptySearchException):
+# ======================# EDGE_NOT_FOUND_SEARCH_FAILURE #======================#
+class EdgeNotFoundSearchException(EmptySearchException):
     """
     Role:
         -   Error Tracing
@@ -39,10 +39,10 @@ class EdgeNotFoundException(EmptySearchException):
     Provides:
 
     Super Class:
-        NotFoundException
+        NotFoundSearchException
     """
     MSG = "Edge was not found."
-    ERR_CODE = "EDGE_NOT_FOUND_ERROR"
+    ERR_CODE = "EDGE_NOT_FOUND_SEARCH_FAILURE"
     
     def __init__(
             self,

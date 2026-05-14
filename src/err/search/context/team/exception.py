@@ -1,7 +1,7 @@
 # src/err/search/context/team/exception.py
 
 """
-Module: err.search.team.exception
+Module: err.search.team.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,23 +9,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ContextException
+from err import ContextSearchException
 
 
 __all__ = [
-    # ======================# TEAM_CONTEXT_ERROR #======================#
-    "TeamContextException",
+    # ======================# TEAM_CONTEXT_SEARCH_FAILURE #======================#
+    "TeamContextSearchException",
 ]
 
 
-# ======================# TEAM_CONTEXT_ERROR #======================#
-class TeamContextException(ContextException):
+# ======================# TEAM_CONTEXT_SEARCH_FAILURE #======================#
+class TeamContextSearchException(ContextSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a TeamContext experienced an error.
+        1.  Indicate that a TeamContextSearch experienced an error.
 
     Attributes:
             msg: Optional[str]
@@ -39,10 +39,10 @@ class TeamContextException(ContextException):
     Provides:
 
     Super Class:
-        ContextException
+        ContextSearchException
     """
     MSG = "TeamContext error state."
-    ERR_CODE = "TEAM_CONTEXT_ERROR"
+    ERR_CODE = "TEAM_CONTEXT_SEARCH_FAILURE"
     
     def __init__(
             self,

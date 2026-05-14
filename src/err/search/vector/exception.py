@@ -1,7 +1,7 @@
 # src/err/search/vector/exception.py
 
 """
-Module: err.search.vector.exception
+Module: err.search.vector.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import SearchException
 
 
 __all__ = [
-    # ======================# VECTOR_ERROR #======================#
-    "VectorException",
+    # ======================# VECTOR_SEARCH_FAILURE #======================#
+    "VectorSearchException",
 ]
 
-# ======================# VECTOR_ERROR #======================#
-class VectorException(SearchException):
+# ======================# VECTOR_SEARCH_FAILURE #======================#
+class VectorSearchException(SearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate a Vector experienced an error.
+        1.  Indicate a VectorSearch experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class VectorException(SearchException):
         SearchException
     """
     MSG = "Vector error state."
-    ERR_CODE = "VECTOR_ERROR"
+    ERR_CODE = "VECTOR_SEARCH_FAILURE"
     
     def __init__(
             self,

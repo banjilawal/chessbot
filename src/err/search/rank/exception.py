@@ -1,7 +1,7 @@
 # src/err/search/rank/exception.py
 
 """
-Module: err.search.rank.exception
+Module: err.search.rank.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import SearchException
 
 
 __all__ = [
-    # ======================# RANK_ERROR #======================#
-    "RankException",
+    # ======================# RANK_SEARCH_FAILURE #======================#
+    "RankSearchException",
 ]
 
-# ======================# RANK_ERROR #======================#
-class RankException(SearchException):
+# ======================# RANK_SEARCH_FAILURE #======================#
+class RankSearchException(SearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Rank experienced an error.
+        1.  Indicate that a RankSearch experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class RankException(SearchException):
         SearchException
     """
     MSG = "Rank error state."
-    ERR_CODE = "RANK_ERROR"
+    ERR_CODE = "RANK_SEARCH_FAILURE"
     
     def __init__(
             self,

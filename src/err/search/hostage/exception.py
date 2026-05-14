@@ -1,7 +1,7 @@
 # src/err/search/hostage/exception.py
 
 """
-Module: err.search.hostage.exception
+Module: err.search.hostage.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import SearchException
 
 
 __all__ = [
-    # ======================# HOSTAGE_ERROR #======================#
-    "HostageException",
+    # ======================# HOSTAGE_SEARCH_FAILURE #======================#
+    "HostageSearchException",
 ]
 
-# ======================# HOSTAGE_ERROR #======================#
-class HostageException(SearchException):
+# ======================# HOSTAGE_SEARCH_FAILURE #======================#
+class HostageSearchException(SearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Hostage experienced an error.
+        1.  Indicate that a HostageSearch experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class HostageException(SearchException):
         SearchException
     """
     MSG = "Hostage error state."
-    ERR_CODE = "HOSTAGE_ERROR"
+    ERR_CODE = "HOSTAGE_SEARCH_FAILURE"
     
     def __init__(
             self,

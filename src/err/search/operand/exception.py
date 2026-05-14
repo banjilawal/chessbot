@@ -1,7 +1,7 @@
 # src/err/search/operand/exception.py
 
 """
-Module: err.search.operand.exception
+Module: err.search.operand.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -13,19 +13,19 @@ from err import SearchException
 
 
 __all__ = [
-    # ======================# VECTOR_OPERAND_ERROR #======================#
-    "VectorOperandException",
+    # ======================# VECTOR_OPERAND_SEARCH_FAILURE #======================#
+    "VectorOperandSearchException",
 ]
 
 
-# ======================# VECTOR_OPERAND_ERROR #======================#
-class VectorOperandException(SearchException):
+# ======================# VECTOR_OPERAND_SEARCH_FAILURE #======================#
+class VectorOperandSearchException(SearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a VectorOperand experienced an error.
+        1.  Indicate that a VectorOperandSearch experienced an error.
 
     Attributes:
             msg: Optional[str]
@@ -42,7 +42,7 @@ class VectorOperandException(SearchException):
         SearchException
     """
     MSG = "VectorOperand error state."
-    ERR_CODE = "VECTOR_OPERAND_ERROR"
+    ERR_CODE = "VECTOR_OPERAND_SEARCH_FAILURE"
     
     def __init__(
             self,

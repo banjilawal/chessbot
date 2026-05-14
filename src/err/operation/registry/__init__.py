@@ -10,7 +10,7 @@ version: 1.0.1
 # ============ ERR.OPERATION.REGISTRY PACKAGE ===========#
 
 # Packages
-from .worker import *
+from .insert import *
 
 # Modules
 from .exception import RegistryOperationException

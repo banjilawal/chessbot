@@ -36,9 +36,7 @@ class TeamBlueprint(Blueprint[Team]):
     _id: int
     _owner: Player
     _board: Board
-    _schema: Schema
-
-    
+    _schema: Schema    
     def __init__(
             self,
             owner: Player,

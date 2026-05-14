@@ -1,7 +1,7 @@
 # src/err/search/player/machine/exception.py
 
 """
-Module: err.search.player.machine.exception
+Module: err.search.player.machine.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PlayerException
+from err import PlayerSearchException
 
 
 __all__ = [
-    # ======================# MACHINE_PLAYER_ERROR #======================#
-    "MachinePlayerException",
+    # ======================# MACHINE_PLAYER_SEARCH_FAILURE #======================#
+    "MachinePlayerSearchException",
 ]
 
-# ======================# MACHINE_PLAYER_ERROR #======================#
-class MachinePlayerException(PlayerException):
+# ======================# MACHINE_PLAYER_SEARCH_FAILURE #======================#
+class MachinePlayerSearchException(PlayerSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a MachinePlayer experienced an error.
+        1.  Indicate that a MachinePlayerSearch experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -39,10 +39,10 @@ class MachinePlayerException(PlayerException):
     Provides:
 
     Super Class:
-        PlayerException
+        PlayerSearchException
     """
     MSG = "MachinePlayer error state."
-    ERR_CODE = "MACHINE_PLAYER_ERROR"
+    ERR_CODE = "MACHINE_PLAYER_SEARCH_FAILURE"
     
     def __init__(
             self,

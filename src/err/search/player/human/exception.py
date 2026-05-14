@@ -1,7 +1,7 @@
 # src/err/search/player/human/exception.py
 
 """
-Module: err.search.player.human.exception
+Module: err.search.player.human.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import PlayerException
+from err import PlayerSearchException
 
 
 __all__ = [
-    # ======================# HUMAN_PLAYER_ERROR #======================#
-    "HumanPlayerException",
+    # ======================# HUMAN_PLAYER_SEARCH_FAILURE #======================#
+    "HumanPlayerSearchException",
 ]
 
-# ======================# HUMAN_PLAYER_ERROR #======================#
-class HumanPlayerException(PlayerException):
+# ======================# HUMAN_PLAYER_SEARCH_FAILURE #======================#
+class HumanPlayerSearchException(PlayerSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a HumanPlayer experienced an error.
+        1.  Indicate that a HumanPlayerSearch experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -39,10 +39,10 @@ class HumanPlayerException(PlayerException):
     Provides:
 
     Super Class:
-        PlayerException
+        PlayerSearchException
     """
     MSG = "HumanPlayer error state."
-    ERR_CODE = "HUMAN_PLAYER_ERROR"
+    ERR_CODE = "HUMAN_PLAYER_SEARCH_FAILURE"
     
     def __init__(
             self,

@@ -26,4 +26,4 @@ from .square import *
 from .token import *
 
 # Modules
-from .exception import ContextException
+from .exception import ContextSearchException

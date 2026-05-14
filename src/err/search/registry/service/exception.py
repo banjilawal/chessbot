@@ -1,7 +1,7 @@
-# src/err/operation/registry/worker/search/name/exception.py
+# src/err/operation/registry/service/exception.py
 
 """
-Module: err.operation.registry.worker.search.name.exception
+Module: err.operation.registry.service.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,25 +10,26 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import RegistryWorkerException
-
+from err import RegistrySearchException
 
 __all__ = [
-    # ======================# WORKER_REGISTRY_NAME_SEARCH_FAILURE #======================#
-    "WorkerRegistryNameSearchException",
+    # ======================# SERVICE_REGISTRY_SEARCH_FAILURE #======================#
+    "ServiceRegistrySearchException",
 ]
 
-# ======================# WORKER_REGISTRY_NAME_SEARCH_FAILURE #======================#
-class WorkerRegistryNameSearchException(RegistryWorkerException):
+from result import MethodResultType
+
+
+# ======================# SERVICE_REGISTRY_SEARCH_FAILURE #======================#
+class ServiceRegistrySearchException(RegistrySearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred during a WorkerRegistryNameSearch.
+        1.  Indicate that an error occurred during a ServiceRegistrySearch.
 
     Attributes:
-        msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]
         ex: Optional[Exception]
@@ -40,10 +41,10 @@ class WorkerRegistryNameSearchException(RegistryWorkerException):
     Provides:
 
     Super Class:
-        RegistryWorkerException
+        RegistrySearchException
     """
-    MSG = "Error during a WorkerRegistryNameSearch."
-    ERR_CODE = "WORKER_REGISTRY_NAME_SEARCH_FAILURE"
+    MSG = "Error occurred during ServiceRegistrySearch."
+    ERR_CODE = "SERVICE_REGISTRY_SEARCH_FAILURE"
     
     def __init__(
             self,
@@ -54,6 +55,7 @@ class WorkerRegistryNameSearchException(RegistryWorkerException):
             cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
             err_code: Optional[str] | None = None,
+            mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
         Args:
@@ -64,6 +66,7 @@ class WorkerRegistryNameSearchException(RegistryWorkerException):
             cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
+            mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
@@ -75,4 +78,5 @@ class WorkerRegistryNameSearchException(RegistryWorkerException):
             err_code=err_code,
             cls_name=cls_name,
             cls_mthd=cls_mthd,
+            mthd_rslt_type=mthd_rslt_type,
         )

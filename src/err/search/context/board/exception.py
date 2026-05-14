@@ -1,7 +1,7 @@
 # src/err/search/context/board/exception.py
 
 """
-Module: err.search.board.exception
+Module: err.search.board.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,23 +9,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ContextException
+from err import ContextSearchException
 
 
 __all__ = [
-    # ======================# BOARD_CONTEXT_ERROR #======================#
-    "BoardContextException",
+    # ======================# BOARD_CONTEXT_SEARCH_FAILURE #======================#
+    "BoardContextSearchException",
 ]
 
 
-# ======================# BOARD_CONTEXT_ERROR #======================#
-class BoardContextException(ContextException):
+# ======================# BOARD_CONTEXT_SEARCH_FAILURE #======================#
+class BoardContextSearchException(ContextSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BoardContext experienced an error.
+        1.  Indicate that a BoardContextSearch experienced an error.
 
     Attributes:
             msg: Optional[str]
@@ -39,10 +39,10 @@ class BoardContextException(ContextException):
     Provides:
 
     Super Class:
-        ContextException
+        ContextSearchException
     """
     MSG = "BoardContext error state."
-    ERR_CODE = "BOARD_CONTEXT_ERROR"
+    ERR_CODE = "BOARD_CONTEXT_SEARCH_FAILURE"
     
     def __init__(
             self,

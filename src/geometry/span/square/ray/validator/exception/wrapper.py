@@ -49,9 +49,7 @@ class SquareRayValidationException(ValidationException):
     """
     MTHD_RSLT = "ValidationResult"
     ERR_CODE = "SQUARE_RAY_VALIDATION_FAILURE"
-    MSG = "Failure in SquareRayValidator method."
-
-    
+    MSG = "Failure in SquareRayValidator method."    
     def __init__(
             self,
             msg: Optional[str] | None = None,

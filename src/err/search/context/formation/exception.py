@@ -1,7 +1,7 @@
 # src/err/search/context/formation/exception.py
 
 """
-Module: err.search.formation.exception
+Module: err.search.formation.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,23 +9,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ContextException
+from err import ContextSearchException
 
 
 __all__ = [
-    # ======================# FORMATION_CONTEXT_ERROR #======================#
-    "FormationContextException",
+    # ======================# FORMATION_CONTEXT_SEARCH_FAILURE #======================#
+    "FormationContextSearchException",
 ]
 
 
-# ======================# FORMATION_CONTEXT_ERROR #======================#
-class FormationContextException(ContextException):
+# ======================# FORMATION_CONTEXT_SEARCH_FAILURE #======================#
+class FormationContextSearchException(ContextSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a FormationContext experienced an error.
+        1.  Indicate that a FormationContextSearch experienced an error.
 
     Attributes:
             msg: Optional[str]
@@ -39,10 +39,10 @@ class FormationContextException(ContextException):
     Provides:
 
     Super Class:
-        ContextException
+        ContextSearchException
     """
     MSG = "FormationContext error state."
-    ERR_CODE = "FORMATION_CONTEXT_ERROR"
+    ERR_CODE = "FORMATION_CONTEXT_SEARCH_FAILURE"
     
     def __init__(
             self,

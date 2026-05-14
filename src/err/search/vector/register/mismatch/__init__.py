@@ -13,4 +13,4 @@ version: 1.0.0
 
 
 # Modules
-from .exception import VectorRegisterMismatchException
+from .exception import VectorRegisterMismatchSearchException

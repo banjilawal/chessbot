@@ -13,4 +13,4 @@ version: 1.0.1
 from .pawn import *
 
 # Modules
-from .exception import CombatantTokenException
+from .exception import CombatantTokenSearchException

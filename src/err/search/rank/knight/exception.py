@@ -1,7 +1,7 @@
 # src/err/search/knight/exception.py
 
 """
-Module: err.search.knight.exception
+Module: err.search.knight.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import RankException
+from err import RankSearchException
 
 
 __all__ = [
-    # ======================# KNIGHT_ERROR #======================#
-    "KnightException",
+    # ======================# KNIGHT_SEARCH_FAILURE #======================#
+    "KnightSearchException",
 ]
 
-# ======================# KNIGHT_ERROR #======================#
-class KnightException(RankException):
+# ======================# KNIGHT_SEARCH_FAILURE #======================#
+class KnightSearchException(RankSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Knight experienced an error.
+        1.  Indicate that a KnightSearch experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -39,10 +39,10 @@ class KnightException(RankException):
     Provides:
 
     Super Class:
-        RankException
+        RankSearchException
     """
     MSG = "Knight error state."
-    ERR_CODE = "KNIGHT_ERROR"
+    ERR_CODE = "KNIGHT_SEARCH_FAILURE"
     
     def __init__(
             self,

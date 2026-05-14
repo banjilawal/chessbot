@@ -1,7 +1,7 @@
 # src/err/search/context/game/exception.py
 
 """
-Module: err.search.game.exception
+Module: err.search.game.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,23 +9,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ContextException
+from err import ContextSearchException
 
 
 __all__ = [
-    # ======================# GAME_CONTEXT_ERROR #======================#
-    "GameContextException",
+    # ======================# GAME_CONTEXT_SEARCH_FAILURE #======================#
+    "GameContextSearchException",
 ]
 
 
-# ======================# GAME_CONTEXT_ERROR #======================#
-class GameContextException(ContextException):
+# ======================# GAME_CONTEXT_SEARCH_FAILURE #======================#
+class GameContextSearchException(ContextSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a GameContext experienced an error.
+        1.  Indicate that a GameContextSearch experienced an error.
 
     Attributes:
             msg: Optional[str]
@@ -39,10 +39,10 @@ class GameContextException(ContextException):
     Provides:
 
     Super Class:
-        ContextException
+        ContextSearchException
     """
     MSG = "GameContext error state."
-    ERR_CODE = "GAME_CONTEXT_ERROR"
+    ERR_CODE = "GAME_CONTEXT_SEARCH_FAILURE"
     
     def __init__(
             self,

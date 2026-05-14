@@ -39,9 +39,7 @@ class BoardTeamBinderToolkit(Toolkit):
     """
     _team_service: TeamService
     _board_validator: BoardService
-    _schema_service: SchemaService
-
-    
+    _schema_service: SchemaService    
     def __init__(
             self,
             team_service: TeamService | None = None,

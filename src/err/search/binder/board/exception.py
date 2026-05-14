@@ -1,7 +1,7 @@
 # src/err/search/BoardTeamBinder/exception.py
 
 """
-Module: err.search.BoardTeamBinder.exception
+Module: err.search.BoardTeamBinder.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import BinderException
+from err import BinderSearchException
 
 
 __all__ = [
-    # ======================# BOARD_TEAM_BINDER_ERROR #======================#
-    "BoardTeamBinderException",
+    # ======================# BOARD_TEAM_BINDER_SEARCH_FAILURE #======================#
+    "BoardTeamBinderSearchException",
 ]
 
-# ======================# BOARD_TEAM_BINDER_ERROR #======================#
-class BoardTeamBinderException(BinderException):
+# ======================# BOARD_TEAM_BINDER_SEARCH_FAILURE #======================#
+class BoardTeamBinderSearchException(BinderSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a BoardTeamBinder experienced an error.
+        1.  Indicate that a BoardTeamBinderSearch experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -39,10 +39,10 @@ class BoardTeamBinderException(BinderException):
     Provides:
 
     Super Class:
-        BinderException
+        BinderSearchException
     """
     MSG = "BoardTeamBinder error state."
-    ERR_CODE = "BOARD_TEAM_BINDER_ERROR"
+    ERR_CODE = "BOARD_TEAM_BINDER_SEARCH_FAILURE"
     
     def __init__(
             self,

@@ -35,9 +35,7 @@ class TokenReadinessAnalysisException(RelationAnalysisException):
         AnalysisException
     """
     ERR_CODE = "TOKEN_READINESS_ANALYSIS_FAILURE"
-    MSG = "An error prevented the readiness analysis from completing."
-
-    
+    MSG = "An error prevented the readiness analysis from completing."    
     def __init__(
             self,
             msg: Optional[str] | None = None,

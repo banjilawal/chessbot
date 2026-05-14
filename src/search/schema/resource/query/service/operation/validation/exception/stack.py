@@ -41,9 +41,7 @@ class SchemaStackNullException(NullException):
         NullException
     """
     MSG = "SchemaStack cannot be null."
-    ERR_CODE = "SCHEMA_STACK_NULL_EXCEPTION"
-
-    
+    ERR_CODE = "SCHEMA_STACK_NULL_EXCEPTION"    
     def __init__(
             self,
             var: Optional[str] | None = None,

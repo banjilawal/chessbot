@@ -1,7 +1,7 @@
 # src/err/search/pawn/exception.py
 
 """
-Module: err.search.pawn.exception
+Module: err.search.pawn.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import RankException
+from err import RankSearchException
 
 
 __all__ = [
-    # ======================# PAWN_ERROR #======================#
-    "PawnException",
+    # ======================# PAWN_SEARCH_FAILURE #======================#
+    "PawnSearchException",
 ]
 
-# ======================# PAWN_ERROR #======================#
-class PawnException(RankException):
+# ======================# PAWN_SEARCH_FAILURE #======================#
+class PawnSearchException(RankSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Pawn experienced an error.
+        1.  Indicate that a PawnSearch experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -39,10 +39,10 @@ class PawnException(RankException):
     Provides:
 
     Super Class:
-        RankException
+        RankSearchException
     """
     MSG = "Pawn error state."
-    ERR_CODE = "PAWN_ERROR"
+    ERR_CODE = "PAWN_SEARCH_FAILURE"
     
     def __init__(
             self,

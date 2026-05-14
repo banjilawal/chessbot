@@ -1,7 +1,7 @@
 # src/err/search/king/exception.py
 
 """
-Module: err.search.king.exception
+Module: err.search.king.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import RankException
+from err import RankSearchException
 
 
 __all__ = [
-    # ======================# KING_ERROR #======================#
-    "KingException",
+    # ======================# KING_SEARCH_FAILURE #======================#
+    "KingSearchException",
 ]
 
-# ======================# KING_ERROR #======================#
-class KingException(RankException):
+# ======================# KING_SEARCH_FAILURE #======================#
+class KingSearchException(RankSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a King experienced an error.
+        1.  Indicate that a KingSearch experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -39,10 +39,10 @@ class KingException(RankException):
     Provides:
 
     Super Class:
-        RankException
+        RankSearchException
     """
     MSG = "King error state."
-    ERR_CODE = "KING_ERROR"
+    ERR_CODE = "KING_SEARCH_FAILURE"
     
     def __init__(
             self,

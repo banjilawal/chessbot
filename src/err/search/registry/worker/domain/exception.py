@@ -1,7 +1,7 @@
-# src/err/operation/registry/worker/search/domain/exception.py
+# src/err/search/registry/worker/domain/exception.py
 
 """
-Module: err.operation.registry.worker.search.domain.exception
+Module: err.search.registry.worker.domain.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,7 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import RegistryWorkerException
+from err import WorkerRegistrySearchException
 
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# WORKER_REGISTRY_DOMAIN_SEARCH_FAILURE #======================#
-class WorkerRegistryDomainSearchException(RegistryWorkerException):
+class WorkerRegistryDomainSearchException(WorkerRegistrySearchException):
     """
     Role:
         -   Error Tracing
@@ -32,7 +32,7 @@ class WorkerRegistryDomainSearchException(RegistryWorkerException):
         var: Optional[str]
         val: Optional[Any]
         ex: Optional[Exception]
-        cls_domain: Optional[str]
+        cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
         mthd_rslt_type: Optional[MethodResultType]
@@ -40,7 +40,7 @@ class WorkerRegistryDomainSearchException(RegistryWorkerException):
     Provides:
 
     Super Class:
-        RegistryWorkerException
+        RegistryWorkerSearchException
     """
     MSG = "Error during a WorkerRegistryDomainSearch."
     ERR_CODE = "WORKER_REGISTRY_DOMAIN_SEARCH_FAILURE"
@@ -51,7 +51,7 @@ class WorkerRegistryDomainSearchException(RegistryWorkerException):
             var: Optional[str] | None = None,
             val: Optional[Any] | None = None,
             ex: Optional[Exception] | None = None,
-            cls_domain: Optional[str] | None = None,
+            cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
             err_code: Optional[str] | None = None,
     ):
@@ -61,7 +61,7 @@ class WorkerRegistryDomainSearchException(RegistryWorkerException):
             var: Optional[str]
             val: Optional[Any]
             ex: Optional[Exception]
-            cls_domain: Optional[str]
+            cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
         """
@@ -73,6 +73,6 @@ class WorkerRegistryDomainSearchException(RegistryWorkerException):
             var=var,
             val=val,
             err_code=err_code,
-            cls_domain=cls_domain,
+            cls_name=cls_name,
             cls_mthd=cls_mthd,
         )

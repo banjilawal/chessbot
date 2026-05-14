@@ -1,7 +1,7 @@
 # src/err/search/empty/team/exception.py
 
 """
-Module: err.search.empty.team.exception
+Module: err.search.empty.team.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -13,13 +13,13 @@ from err import EmptySearchException
 
 
 __all__ = [
-    # ======================# TEAM_NOT_FOUND_ERROR #======================#
-    "TeamNotFoundException",
+    # ======================# TEAM_NOT_FOUND_SEARCH_FAILURE #======================#
+    "TeamNotFoundSearchException",
 ]
 
 
-# ======================# TEAM_NOT_FOUND_ERROR #======================#
-class TeamNotFoundException(EmptySearchException):
+# ======================# TEAM_NOT_FOUND_SEARCH_FAILURE #======================#
+class TeamNotFoundSearchException(EmptySearchException):
     """
     Role:
         -   Error Tracing
@@ -39,10 +39,10 @@ class TeamNotFoundException(EmptySearchException):
     Provides:
 
     Super Class:
-        NotFoundException
+        NotFoundSearchException
     """
     MSG = "Team was not found."
-    ERR_CODE = "TEAM_NOT_FOUND_ERROR"
+    ERR_CODE = "TEAM_NOT_FOUND_SEARCH_FAILURE"
     
     def __init__(
             self,

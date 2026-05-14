@@ -1,7 +1,7 @@
 # src/err/search/coord/exception.py
 
 """
-Module: err.search.coord.exception
+Module: err.search.coord.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import SearchException
 
 
 __all__ = [
-    # ======================# COORD_ERROR #======================#
-    "CoordException",
+    # ======================# COORD_SEARCH_FAILURE #======================#
+    "CoordSearchException",
 ]
 
-# ======================# COORD_ERROR #======================#
-class CoordException(SearchException):
+# ======================# COORD_SEARCH_FAILURE #======================#
+class CoordSearchException(SearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Coord experienced an error.
+        1.  Indicate that a CoordSearch experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class CoordException(SearchException):
         SearchException
     """
     MSG = "Coord error state."
-    ERR_CODE = "COORD_ERROR"
+    ERR_CODE = "COORD_SEARCH_FAILURE"
     
     def __init__(
             self,

@@ -1,7 +1,7 @@
 # src/err/search/context/hostage/exception.py
 
 """
-Module: err.search.hostage.exception
+Module: err.search.hostage.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,23 +9,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ContextException
+from err import ContextSearchException
 
 
 __all__ = [
-    # ======================# HOSTAGE_CONTEXT_ERROR #======================#
-    "HostageContextException",
+    # ======================# HOSTAGE_CONTEXT_SEARCH_FAILURE #======================#
+    "HostageContextSearchException",
 ]
 
 
-# ======================# HOSTAGE_CONTEXT_ERROR #======================#
-class HostageContextException(ContextException):
+# ======================# HOSTAGE_CONTEXT_SEARCH_FAILURE #======================#
+class HostageContextSearchException(ContextSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a HostageContext experienced an error.
+        1.  Indicate that a HostageContextSearch experienced an error.
 
     Attributes:
             msg: Optional[str]
@@ -39,10 +39,10 @@ class HostageContextException(ContextException):
     Provides:
 
     Super Class:
-        ContextException
+        ContextSearchException
     """
     MSG = "HostageContext error state."
-    ERR_CODE = "HOSTAGE_CONTEXT_ERROR"
+    ERR_CODE = "HOSTAGE_CONTEXT_SEARCH_FAILURE"
     
     def __init__(
             self,

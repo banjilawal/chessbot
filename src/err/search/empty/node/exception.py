@@ -1,7 +1,7 @@
 # src/err/search/empty/node/exception.py
 
 """
-Module: err.search.empty.node.exception
+Module: err.search.empty.node.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -13,13 +13,13 @@ from err import EmptySearchException
 
 
 __all__ = [
-    # ======================# NODE_NOT_FOUND_ERROR #======================#
-    "NodeNotFoundException",
+    # ======================# NODE_NOT_FOUND_SEARCH_FAILURE #======================#
+    "NodeNotFoundSearchException",
 ]
 
 
-# ======================# NODE_NOT_FOUND_ERROR #======================#
-class NodeNotFoundException(EmptySearchException):
+# ======================# NODE_NOT_FOUND_SEARCH_FAILURE #======================#
+class NodeNotFoundSearchException(EmptySearchException):
     """
     Role:
         -   Error Tracing
@@ -39,10 +39,10 @@ class NodeNotFoundException(EmptySearchException):
     Provides:
 
     Super Class:
-        NotFoundException
+        NotFoundSearchException
     """
     MSG = "Node was not found."
-    ERR_CODE = "NODE_NOT_FOUND_ERROR"
+    ERR_CODE = "NODE_NOT_FOUND_SEARCH_FAILURE"
     
     def __init__(
             self,

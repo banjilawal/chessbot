@@ -1,7 +1,7 @@
 # src/err/search/opening/exception.py
 
 """
-Module: err.search.opening.exception
+Module: err.search.opening.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import SquareException
+from err import SquareSearchException
 
 
 __all__ = [
-    # ======================# OPENING_ERROR #======================#
-    "OpeningSquareException",
+    # ======================# OPENING_SEARCH_FAILURE #======================#
+    "OpeningSquareSearchException",
 ]
 
-# ======================# OPENING_ERROR #======================#
-class OpeningSquareException(SquareException):
+# ======================# OPENING_SEARCH_FAILURE #======================#
+class OpeningSquareSearchException(SquareSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an OpeningSquare experienced an error.
+        1.  Indicate that an OpeningSquareSearch experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -39,10 +39,10 @@ class OpeningSquareException(SquareException):
     Provides:
 
     Super Class:
-        SquareException
+        SquareSearchException
     """
     MSG = "Opening error state."
-    ERR_CODE = "OPENING_ERROR"
+    ERR_CODE = "OPENING_SEARCH_FAILURE"
     
     def __init__(
             self,

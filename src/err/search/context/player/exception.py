@@ -1,7 +1,7 @@
 # src/err/search/context/player/exception.py
 
 """
-Module: err.search.player.exception
+Module: err.search.player.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,23 +9,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ContextException
+from err import ContextSearchException
 
 
 __all__ = [
-    # ======================# PLAYER_CONTEXT_ERROR #======================#
-    "PlayerContextException",
+    # ======================# PLAYER_CONTEXT_SEARCH_FAILURE #======================#
+    "PlayerContextSearchException",
 ]
 
 
-# ======================# PLAYER_CONTEXT_ERROR #======================#
-class PlayerContextException(ContextException):
+# ======================# PLAYER_CONTEXT_SEARCH_FAILURE #======================#
+class PlayerContextSearchException(ContextSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PlayerContext experienced an error.
+        1.  Indicate that a PlayerContextSearch experienced an error.
 
     Attributes:
             msg: Optional[str]
@@ -39,10 +39,10 @@ class PlayerContextException(ContextException):
     Provides:
 
     Super Class:
-        ContextException
+        ContextSearchException
     """
     MSG = "PlayerContext error state."
-    ERR_CODE = "PLAYER_CONTEXT_ERROR"
+    ERR_CODE = "PLAYER_CONTEXT_SEARCH_FAILURE"
     
     def __init__(
             self,

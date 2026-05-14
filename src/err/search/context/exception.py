@@ -14,12 +14,12 @@ from err import SearchException
 
 
 __all__ = [
-    # ======================# CONTEXT_ERROR #======================#
-    "ContextException",
+    # ======================# CONTEXT_SEARCH_FAILURE #======================#
+    "ContextSearchException",
 ]
 
-# ======================# CONTEXT_ERROR #======================#
-class ContextException(SearchException):
+# ======================# CONTEXT_SEARCH_FAILURE #======================#
+class ContextSearchException(SearchException):
     """
     Role:
         -   Error Tracing
@@ -42,7 +42,7 @@ class ContextException(SearchException):
         SearchException
     """
     MSG = "context's error state."
-    ERR_CODE = "CONTEXT_ERROR"
+    ERR_CODE = "CONTEXT_SEARCH_FAILURE"
     
     def __init__(
             self,

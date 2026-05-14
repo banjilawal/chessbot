@@ -1,7 +1,7 @@
 # src/err/search/context/node/exception.py
 
 """
-Module: err.search.node.exception
+Module: err.search.node.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,23 +9,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ContextException
+from err import ContextSearchException
 
 
 __all__ = [
-    # ======================# NODE_CONTEXT_ERROR #======================#
-    "NodeContextException",
+    # ======================# NODE_CONTEXT_SEARCH_FAILURE #======================#
+    "NodeContextSearchException",
 ]
 
 
-# ======================# NODE_CONTEXT_ERROR #======================#
-class NodeContextException(ContextException):
+# ======================# NODE_CONTEXT_SEARCH_FAILURE #======================#
+class NodeContextSearchException(ContextSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a NodeContext experienced an error.
+        1.  Indicate that a NodeContextSearch experienced an error.
 
     Attributes:
             msg: Optional[str]
@@ -39,10 +39,10 @@ class NodeContextException(ContextException):
     Provides:
 
     Super Class:
-        ContextException
+        ContextSearchException
     """
     MSG = "NodeContext error state."
-    ERR_CODE = "NODE_CONTEXT_ERROR"
+    ERR_CODE = "NODE_CONTEXT_SEARCH_FAILURE"
     
     def __init__(
             self,

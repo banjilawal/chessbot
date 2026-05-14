@@ -45,8 +45,6 @@ class TokenContextIntegrityWorkers:
     _identity_service: IdentityService
     _number_validator: NumberValidator
     _color_validator: GameColorValidator
-
-
     
     def __init__(
             self,

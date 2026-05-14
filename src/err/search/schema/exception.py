@@ -1,7 +1,7 @@
 # src/err/search/schema/exception.py
 
 """
-Module: err.search.schema.exception
+Module: err.search.schema.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import SearchException
 
 
 __all__ = [
-    # ======================# SCHEMA_ERROR #======================#
-    "SchemaException",
+    # ======================# SCHEMA_SEARCH_FAILURE #======================#
+    "SchemaSearchException",
 ]
 
-# ======================# SCHEMA_ERROR #======================#
-class SchemaException(SearchException):
+# ======================# SCHEMA_SEARCH_FAILURE #======================#
+class SchemaSearchException(SearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Schema experienced an error.
+        1.  Indicate that a SchemaSearch experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class SchemaException(SearchException):
         SearchException
     """
     MSG = "Schema error state."
-    ERR_CODE = "SCHEMA_ERROR"
+    ERR_CODE = "SCHEMA_SEARCH_FAILURE"
     
     def __init__(
             self,

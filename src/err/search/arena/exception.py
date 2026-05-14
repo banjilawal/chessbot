@@ -1,7 +1,7 @@
 # src/err/search/arena/exception.py
 
 """
-Module: err.search.arena.exception
+Module: err.search.arena.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -13,18 +13,18 @@ from typing import Any, Optional
 from err import SearchException
 
 __all__ = [
-    # ======================# ARENA_ERROR #======================#
-    "ArenaException",
+    # ======================# ARENA_SEARCH_FAILURE #======================#
+    "ArenaSearchException",
 ]
 
-# ======================# ARENA_ERROR #======================#
-class ArenaException(SearchException):
+# ======================# ARENA_SEARCH_FAILURE #======================#
+class ArenaSearchException(SearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an Arena experienced an error.
+        1.  Indicate that an ArenaSearch experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -41,7 +41,7 @@ class ArenaException(SearchException):
         SearchException
     """
     MSG = "Arena error state."
-    ERR_CODE = "ARENA_ERROR"
+    ERR_CODE = "ARENA_SEARCH_FAILURE"
     
     def __init__(
             self,

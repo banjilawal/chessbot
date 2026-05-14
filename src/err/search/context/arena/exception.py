@@ -1,7 +1,7 @@
 # src/err/search/context/arena/exception.py
 
 """
-Module: err.search.arena.exception
+Module: err.search.arena.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,23 +9,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ContextException
+from err import ContextSearchException
 
 
 __all__ = [
-    # ======================# ARENA_CONTEXT_ERROR #======================#
-    "ArenaContextException",
+    # ======================# ARENA_CONTEXT_SEARCH_FAILURE #======================#
+    "ArenaContextSearchException",
 ]
 
 
-# ======================# ARENA_CONTEXT_ERROR #======================#
-class ArenaContextException(ContextException):
+# ======================# ARENA_CONTEXT_SEARCH_FAILURE #======================#
+class ArenaContextSearchException(ContextSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a ArenaContext experienced an error.
+        1.  Indicate that a ArenaContextSearch experienced an error.
 
     Attributes:
             msg: Optional[str]
@@ -39,10 +39,10 @@ class ArenaContextException(ContextException):
     Provides:
 
     Super Class:
-        ContextException
+        ContextSearchException
     """
     MSG = "ArenaContext error state."
-    ERR_CODE = "ARENA_CONTEXT_ERROR"
+    ERR_CODE = "ARENA_CONTEXT_SEARCH_FAILURE"
     
     def __init__(
             self,

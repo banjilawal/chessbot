@@ -1,7 +1,7 @@
 # src/err/search/game/exception.py
 
 """
-Module: err.search.game.exception
+Module: err.search.game.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import SearchException
 
 
 __all__ = [
-    # ======================# GAME_ERROR #======================#
-    "GameException",
+    # ======================# GAME_SEARCH_FAILURE #======================#
+    "GameSearchException",
 ]
 
-# ======================# GAME_ERROR #======================#
-class GameException(SearchException):
+# ======================# GAME_SEARCH_FAILURE #======================#
+class GameSearchException(SearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Game experienced an error.
+        1.  Indicate that a GameSearch experienced an error.
 
     Attributes:
             msg: Optional[str]
@@ -42,7 +42,7 @@ class GameException(SearchException):
         SearchException
     """
     MSG = "Game error state."
-    ERR_CODE = "GAME_ERROR"
+    ERR_CODE = "GAME_SEARCH_FAILURE"
     
     def __init__(
             self,

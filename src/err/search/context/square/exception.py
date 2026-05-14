@@ -1,7 +1,7 @@
 # src/err/search/context/square/exception.py
 
 """
-Module: err.search.square.exception
+Module: err.search.square.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,23 +9,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ContextException
+from err import ContextSearchException
 
 
 __all__ = [
-    # ======================# SQUARE_CONTEXT_ERROR #======================#
-    "SquareContextException",
+    # ======================# SQUARE_CONTEXT_SEARCH_FAILURE #======================#
+    "SquareContextSearchException",
 ]
 
 
-# ======================# SQUARE_CONTEXT_ERROR #======================#
-class SquareContextException(ContextException):
+# ======================# SQUARE_CONTEXT_SEARCH_FAILURE #======================#
+class SquareContextSearchException(ContextSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SquareContext experienced an error.
+        1.  Indicate that a SquareContextSearch experienced an error.
 
     Attributes:
             msg: Optional[str]
@@ -39,10 +39,10 @@ class SquareContextException(ContextException):
     Provides:
 
     Super Class:
-        ContextException
+        ContextSearchException
     """
     MSG = "SquareContext error state."
-    ERR_CODE = "SQUARE_CONTEXT_ERROR"
+    ERR_CODE = "SQUARE_CONTEXT_SEARCH_FAILURE"
     
     def __init__(
             self,

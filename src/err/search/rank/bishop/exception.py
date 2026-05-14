@@ -1,7 +1,7 @@
 # src/err/search/bishop/exception.py
 
 """
-Module: err.search.bishop.exception
+Module: err.search.bishop.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import RankException
+from err import RankSearchException
 
 
 __all__ = [
-    # ======================# BISHOP_ERROR #======================#
-    "BishopException",
+    # ======================# BISHOP_SEARCH_FAILURE #======================#
+    "BishopSearchException",
 ]
 
-# ======================# BISHOP_ERROR #======================#
-class BishopException(RankException):
+# ======================# BISHOP_SEARCH_FAILURE #======================#
+class BishopSearchException(RankSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Bishop experienced an error.
+        1.  Indicate that a BishopSearch experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -39,10 +39,10 @@ class BishopException(RankException):
     Provides:
 
     Super Class:
-        RankException
+        RankSearchException
     """
     MSG = "Bishop error state."
-    ERR_CODE = "BISHOP_ERROR"
+    ERR_CODE = "BISHOP_SEARCH_FAILURE"
     
     def __init__(
             self,

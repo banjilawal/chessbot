@@ -1,7 +1,7 @@
 # src/err/search/empty/player/exception.py
 
 """
-Module: err.search.empty.player.exception
+Module: err.search.empty.player.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -13,13 +13,13 @@ from err import EmptySearchException
 
 
 __all__ = [
-    # ======================# PLAYER_NOT_FOUND_ERROR #======================#
-    "PlayerNotFoundException",
+    # ======================# PLAYER_NOT_FOUND_SEARCH_FAILURE #======================#
+    "PlayerNotFoundSearchException",
 ]
 
 
-# ======================# PLAYER_NOT_FOUND_ERROR #======================#
-class PlayerNotFoundException(EmptySearchException):
+# ======================# PLAYER_NOT_FOUND_SEARCH_FAILURE #======================#
+class PlayerNotFoundSearchException(EmptySearchException):
     """
     Role:
         -   Error Tracing
@@ -39,10 +39,10 @@ class PlayerNotFoundException(EmptySearchException):
     Provides:
 
     Super Class:
-        NotFoundException
+        NotFoundSearchException
     """
     MSG = "Player was not found."
-    ERR_CODE = "PLAYER_NOT_FOUND_ERROR"
+    ERR_CODE = "PLAYER_NOT_FOUND_SEARCH_FAILURE"
     
     def __init__(
             self,

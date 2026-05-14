@@ -26,6 +26,7 @@ from .operand import *
 from .persona import *
 from .player import *
 from .rank import *
+from .registry import *
 from .scalar import *
 from .schema import *
 from .square import *

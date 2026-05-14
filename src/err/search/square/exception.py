@@ -1,7 +1,7 @@
 # src/err/search/square/exception.py
 
 """
-Module: err.search.square.exception
+Module: err.search.square.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import SearchException
 
 
 __all__ = [
-    # ======================# SQUARE_ERROR #======================#
-    "SquareException",
+    # ======================# SQUARE_SEARCH_FAILURE #======================#
+    "SquareSearchException",
 ]
 
-# ======================# SQUARE_ERROR #======================#
-class SquareException(SearchException):
+# ======================# SQUARE_SEARCH_FAILURE #======================#
+class SquareSearchException(SearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Square experienced an error.
+        1.  Indicate that a SquareSearch experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class SquareException(SearchException):
         SearchException
     """
     MSG = "Square error state."
-    ERR_CODE = "SQUARE_ERROR"
+    ERR_CODE = "SQUARE_SEARCH_FAILURE"
     
     def __init__(
             self,

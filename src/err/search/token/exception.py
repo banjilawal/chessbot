@@ -1,7 +1,7 @@
 # src/err/search/token/exception.py
 
 """
-Module: err.search.token.exception
+Module: err.search.token.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import SearchException
 
 
 __all__ = [
-    # ======================# TOKEN_ERROR #======================#
-    "TokenException",
+    # ======================# TOKEN_SEARCH_FAILURE #======================#
+    "TokenSearchException",
 ]
 
-# ======================# TOKEN_ERROR #======================#
-class TokenException(SearchException):
+# ======================# TOKEN_SEARCH_FAILURE #======================#
+class TokenSearchException(SearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Token experienced an error.
+        1.  Indicate that a TokenSearch experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class TokenException(SearchException):
         SearchException
     """
     MSG = "Token error state."
-    ERR_CODE = "TOKEN_ERROR"
+    ERR_CODE = "TOKEN_SEARCH_FAILURE"
     
     def __init__(
             self,

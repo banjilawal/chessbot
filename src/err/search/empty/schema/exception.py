@@ -1,7 +1,7 @@
 # src/err/search/empty/schema/exception.py
 
 """
-Module: err.search.empty.schema.exception
+Module: err.search.empty.schema.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -13,13 +13,13 @@ from err import EmptySearchException
 
 
 __all__ = [
-    # ======================# SCHEMA_NOT_FOUND_ERROR #======================#
-    "SchemaNotFoundException",
+    # ======================# SCHEMA_NOT_FOUND_SEARCH_FAILURE #======================#
+    "SchemaNotFoundSearchException",
 ]
 
 
-# ======================# SCHEMA_NOT_FOUND_ERROR #======================#
-class SchemaNotFoundException(EmptySearchException):
+# ======================# SCHEMA_NOT_FOUND_SEARCH_FAILURE #======================#
+class SchemaNotFoundSearchException(EmptySearchException):
     """
     Role:
         -   Error Tracing
@@ -39,10 +39,10 @@ class SchemaNotFoundException(EmptySearchException):
     Provides:
 
     Super Class:
-        NotFoundException
+        NotFoundSearchException
     """
     MSG = "Schema was not found."
-    ERR_CODE = "SCHEMA_NOT_FOUND_ERROR"
+    ERR_CODE = "SCHEMA_NOT_FOUND_SEARCH_FAILURE"
     
     def __init__(
             self,

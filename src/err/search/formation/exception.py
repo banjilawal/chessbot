@@ -1,7 +1,7 @@
 # src/err/search/formation/exception.py
 
 """
-Module: err.search.formation.exception
+Module: err.search.formation.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import SearchException
 
 
 __all__ = [
-    # ======================# FORMATION_ERROR #======================#
-    "FormationException",
+    # ======================# FORMATION_SEARCH_FAILURE #======================#
+    "FormationSearchException",
 ]
 
-# ======================# FORMATION_ERROR #======================#
-class FormationException(SearchException):
+# ======================# FORMATION_SEARCH_FAILURE #======================#
+class FormationSearchException(SearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Formation experienced an error.
+        1.  Indicate that a FormationSearch experienced an error.
 
     Attributes:
             msg: Optional[str]
@@ -42,7 +42,7 @@ class FormationException(SearchException):
         SearchException
     """
     MSG = "Formation error state."
-    ERR_CODE = "FORMATION_ERROR"
+    ERR_CODE = "FORMATION_SEARCH_FAILURE"
     
     def __init__(
             self,

@@ -1,7 +1,7 @@
 # src/err/search/empty/square/exception.py
 
 """
-Module: err.search.empty.square.exception
+Module: err.search.empty.square.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -13,13 +13,13 @@ from err import EmptySearchException
 
 
 __all__ = [
-    # ======================# SQUARE_NOT_FOUND_ERROR #======================#
-    "SquareNotFoundException",
+    # ======================# SQUARE_NOT_FOUND_SEARCH_FAILURE #======================#
+    "SquareNotFoundSearchException",
 ]
 
 
-# ======================# SQUARE_NOT_FOUND_ERROR #======================#
-class SquareNotFoundException(EmptySearchException):
+# ======================# SQUARE_NOT_FOUND_SEARCH_FAILURE #======================#
+class SquareNotFoundSearchException(EmptySearchException):
     """
     Role:
         -   Error Tracing
@@ -39,10 +39,10 @@ class SquareNotFoundException(EmptySearchException):
     Provides:
 
     Super Class:
-        NotFoundException
+        NotFoundSearchException
     """
     MSG = "Square was not found."
-    ERR_CODE = "SQUARE_NOT_FOUND_ERROR"
+    ERR_CODE = "SQUARE_NOT_FOUND_SEARCH_FAILURE"
     
     def __init__(
             self,

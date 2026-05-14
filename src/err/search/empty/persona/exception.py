@@ -1,7 +1,7 @@
 # src/err/search/empty/persona/exception.py
 
 """
-Module: err.search.empty.persona.exception
+Module: err.search.empty.persona.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -13,13 +13,13 @@ from err import EmptySearchException
 
 
 __all__ = [
-    # ======================# PERSONA_NOT_FOUND_ERROR #======================#
-    "PersonaNotFoundException",
+    # ======================# PERSONA_NOT_FOUND_SEARCH_FAILURE #======================#
+    "PersonaNotFoundSearchException",
 ]
 
 
-# ======================# PERSONA_NOT_FOUND_ERROR #======================#
-class PersonaNotFoundException(EmptySearchException):
+# ======================# PERSONA_NOT_FOUND_SEARCH_FAILURE #======================#
+class PersonaNotFoundSearchException(EmptySearchException):
     """
     Role:
         -   Error Tracing
@@ -39,10 +39,10 @@ class PersonaNotFoundException(EmptySearchException):
     Provides:
 
     Super Class:
-        NotFoundException
+        NotFoundSearchException
     """
     MSG = "Persona was not found."
-    ERR_CODE = "PERSONA_NOT_FOUND_ERROR"
+    ERR_CODE = "PERSONA_NOT_FOUND_SEARCH_FAILURE"
     
     def __init__(
             self,

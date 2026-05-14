@@ -1,7 +1,7 @@
 # src/err/search/token/combatant/pawn/exception.py
 
 """
-Module: err.search.token.combatant.pawn.exception
+Module: err.search.token.combatant.pawn.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import TokenException
+from err import TokenSearchException
 
 
 __all__ = [
-    # ======================# PAWN_TOKEN_ERROR #======================#
-    "PawnTokenException",
+    # ======================# PAWN_TOKEN_SEARCH_FAILURE #======================#
+    "PawnTokenSearchException",
 ]
 
-# ======================# PAWN_TOKEN_ERROR #======================#
-class PawnTokenException(TokenException):
+# ======================# PAWN_TOKEN_SEARCH_FAILURE #======================#
+class PawnTokenSearchException(TokenSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a PawnToken experienced an error.
+        1.  Indicate that a PawnTokenSearch experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -39,10 +39,10 @@ class PawnTokenException(TokenException):
     Provides:
 
     Super Class:
-        TokenException
+        TokenSearchException
     """
     MSG = "PawnToken error state."
-    ERR_CODE = "PAWN_TOKEN_ERROR"
+    ERR_CODE = "PAWN_TOKEN_SEARCH_FAILURE"
     
     def __init__(
             self,

@@ -1,7 +1,7 @@
 # src/err/search/persona/exception.py
 
 """
-Module: err.search.persona.exception
+Module: err.search.persona.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import SearchException
 
 
 __all__ = [
-    # ======================# PERSONA_ERROR #======================#
-    "PersonaException",
+    # ======================# PERSONA_SEARCH_FAILURE #======================#
+    "PersonaSearchException",
 ]
 
-# ======================# PERSONA_ERROR #======================#
-class PersonaException(SearchException):
+# ======================# PERSONA_SEARCH_FAILURE #======================#
+class PersonaSearchException(SearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that n Persona experienced an error.
+        1.  Indicate that n PersonaSearch experienced an error.
 
     Attributes:
             msg: Optional[str]
@@ -42,7 +42,7 @@ class PersonaException(SearchException):
         SearchException
     """
     MSG = "Persona error state."
-    ERR_CODE = "PERSONA_ERROR"
+    ERR_CODE = "PERSONA_SEARCH_FAILURE"
     
     def __init__(
             self,

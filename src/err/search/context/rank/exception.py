@@ -1,7 +1,7 @@
 # src/err/search/context/rank/exception.py
 
 """
-Module: err.search.rank.exception
+Module: err.search.rank.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,23 +9,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ContextException
+from err import ContextSearchException
 
 
 __all__ = [
-    # ======================# RANK_CONTEXT_ERROR #======================#
-    "RankContextException",
+    # ======================# RANK_CONTEXT_SEARCH_FAILURE #======================#
+    "RankContextSearchException",
 ]
 
 
-# ======================# RANK_CONTEXT_ERROR #======================#
-class RankContextException(ContextException):
+# ======================# RANK_CONTEXT_SEARCH_FAILURE #======================#
+class RankContextSearchException(ContextSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a RankContext experienced an error.
+        1.  Indicate that a RankContextSearch experienced an error.
 
     Attributes:
             msg: Optional[str]
@@ -39,10 +39,10 @@ class RankContextException(ContextException):
     Provides:
 
     Super Class:
-        ContextException
+        ContextSearchException
     """
     MSG = "RankContext error state."
-    ERR_CODE = "RANK_CONTEXT_ERROR"
+    ERR_CODE = "RANK_CONTEXT_SEARCH_FAILURE"
     
     def __init__(
             self,

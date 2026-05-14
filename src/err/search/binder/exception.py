@@ -1,7 +1,7 @@
 # src/err/search/binder/exception.py
 
 """
-Module: err.search.binder.exception
+Module: err.search.binder.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import SearchException
 
 
 __all__ = [
-    # ======================# BINDER_ERROR #======================#
-    "BinderException",
+    # ======================# BINDER_SEARCH_FAILURE #======================#
+    "BinderSearchException",
 ]
 
-# ======================# BINDER_ERROR #======================#
-class BinderException(SearchException):
+# ======================# BINDER_SEARCH_FAILURE #======================#
+class BinderSearchException(SearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Binder experienced an error.
+        1.  Indicate that a BinderSearch experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class BinderException(SearchException):
         SearchException
     """
     MSG = "Binder error state."
-    ERR_CODE = "BINDER_ERROR"
+    ERR_CODE = "BINDER_SEARCH_FAILURE"
     
     def __init__(
             self,

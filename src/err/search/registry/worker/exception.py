@@ -1,7 +1,7 @@
-# src/err/operation/registry/worker/arena/exception.py
+# src/err/operation/registry/worker/exception.py
 
 """
-Module: err.registry.worker.arena.exception
+Module: err.operation.registry.worker.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,24 +10,26 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import RegistryWorkerException
+from err import RegistrySearchException
 
 __all__ = [
-    # ======================# WORKER_REGISTRATION_OPERATION_FAILURE #======================#
-    "RegisterWorkerOperationException",
+    # ======================# WORKER_REGISTRY_SEARCH_FAILURE #======================#
+    "WorkerRegistrySearchException",
 ]
 
-# ======================# WORKER_REGISTRATION_OPERATION_FAILURE #======================#
-class RegisterWorkerOperationException(RegistryWorkerException):
+from result import MethodResultType
+
+
+# ======================# WORKER_REGISTRY_SEARCH_FAILURE #======================#
+class WorkerRegistrySearchException(RegistrySearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that adding an operation to the WorkerRegistry failed.
+        1.  Indicate that an error occurred during a WorkerRegistrySearch.
 
     Attributes:
-        msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]
         ex: Optional[Exception]
@@ -39,10 +41,10 @@ class RegisterWorkerOperationException(RegistryWorkerException):
     Provides:
 
     Super Class:
-        RegistryWorkerException
+        RegistrySearchException
     """
-    MSG = "Adding an operation to the WorkerRegistry failed."
-    ERR_CODE = "WORKER_REGISTRATION_OPERATION_FAILURE"
+    MSG = "Error occurred during WorkerRegistrySearch."
+    ERR_CODE = "WORKER_REGISTRY_SEARCH_FAILURE"
     
     def __init__(
             self,
@@ -53,6 +55,7 @@ class RegisterWorkerOperationException(RegistryWorkerException):
             cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
             err_code: Optional[str] | None = None,
+            mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
         Args:
@@ -63,6 +66,7 @@ class RegisterWorkerOperationException(RegistryWorkerException):
             cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
+            mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
@@ -74,4 +78,5 @@ class RegisterWorkerOperationException(RegistryWorkerException):
             err_code=err_code,
             cls_name=cls_name,
             cls_mthd=cls_mthd,
+            mthd_rslt_type=mthd_rslt_type,
         )

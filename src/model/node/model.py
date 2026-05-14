@@ -21,9 +21,7 @@ class Node:
     _predecessor:Optional[Node]
     _incoming_edges: EdgeStackService
     _outgoing_edges: EdgeStackService
-    _discovery_status: DiscoveryStatus
-
-    
+    _discovery_status: DiscoveryStatus    
     def __init__(self, square: Square):
         self._square = square
         

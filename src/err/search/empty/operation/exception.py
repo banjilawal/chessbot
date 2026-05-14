@@ -1,7 +1,7 @@
 # src/err/search/empty/operation/exception.py
 
 """
-Module: err.search.empty.operation.exception
+Module: err.search.empty.operation.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,13 +14,13 @@ from err import EmptySearchException
 
 
 __all__ = [
-    # ======================# OPERATION_NOT_FOUND_ERROR #======================#
-    "OperationNotFoundException",
+    # ======================# OPERATION_NOT_FOUND_SEARCH_FAILURE #======================#
+    "OperationNotFoundSearchException",
 ]
 
 
-# ======================# OPERATION_NOT_FOUND_ERROR #======================#
-class OperationNotFoundException(EmptySearchException):
+# ======================# OPERATION_NOT_FOUND_SEARCH_FAILURE #======================#
+class OperationNotFoundSearchException(EmptySearchException):
     """
     Role:
         -   Error Tracing
@@ -40,10 +40,10 @@ class OperationNotFoundException(EmptySearchException):
     Provides:
 
     Super Class:
-        NotFoundException
+        NotFoundSearchException
     """
     MSG = "Operation was not found."
-    ERR_CODE = "OPERATION_NOT_FOUND_ERROR"
+    ERR_CODE = "OPERATION_NOT_FOUND_SEARCH_FAILURE"
     
     def __init__(
             self,

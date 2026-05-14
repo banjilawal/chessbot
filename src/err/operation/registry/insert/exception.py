@@ -1,7 +1,7 @@
-# src/err/operation/registry/worker/search/exception.py
+# src/err/operation/registry/insert/exception.py
 
 """
-Module: err.registry.worker.search.exception
+Module: err.operation.registry.insert.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,28 +10,26 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import RegistryWorkerException
-
+from err import RegistryOperationException
 
 __all__ = [
-    # ======================# WORKER_REGISTRY_SEARCH_FAILURE #======================#
-    "WorkerRegistrySearchException",
+    # ======================# NEW_REGISTRATION_ENTRY_FAILURE #======================#
+    "NewRegistrationException",
 ]
 
 from result import MethodResultType
 
 
-# ======================# WORKER_REGISTRY_SEARCH_FAILURE #======================#
-class WorkerRegistrySearchException(RegistryWorkerException):
+# ======================# NEW_REGISTRATION_ENTRY_FAILURE #======================#
+class NewRegistrationException(RegistryOperationException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error occurred during a WorkerRegistrySearch.
+        1.  Indicate that adding a new entry into a registry failed.
 
     Attributes:
-        msg: Optional[str]
         var: Optional[str]
         val: Optional[Any]
         ex: Optional[Exception]
@@ -43,11 +41,12 @@ class WorkerRegistrySearchException(RegistryWorkerException):
     Provides:
 
     Super Class:
-        RegistryWorkerException
+        RegistryException
     """
-    MSG = "An error occurred during a WorkerRegistrySearch."
-    ERR_CODE = "WORKER_REGISTRY_SEARCH_FAILURE"
-    MTHD_RSLT_TYPE = MethodResultType.SEARCH_RESULT
+    ERR_CODE = "NEW_REGISTRATION_ENTRY_FAILURE"
+    MSG = "Adding a new entry into a registry failed."
+    MTHD_RSLT_TYPE = MethodResultType.INSERTION_RESULT
+
     
     def __init__(
             self,
@@ -69,6 +68,7 @@ class WorkerRegistrySearchException(RegistryWorkerException):
             cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
+            mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
@@ -81,5 +81,5 @@ class WorkerRegistrySearchException(RegistryWorkerException):
             err_code=err_code,
             cls_name=cls_name,
             cls_mthd=cls_mthd,
-            mthd_rslt_type=mthd_rslt_type
+            mthd_rslt_type=mthd_rslt_type,
         )

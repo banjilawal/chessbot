@@ -41,9 +41,7 @@ class TokenStackNullException(NullException):
         NullException
     """
     MSG = "TokenStack cannot be null."
-    ERR_CODE = "TOKEN_STACK_NULL_EXCEPTION"
-
-    
+    ERR_CODE = "TOKEN_STACK_NULL_EXCEPTION"    
     def __init__(
             self,
             var: Optional[str] | None = None,

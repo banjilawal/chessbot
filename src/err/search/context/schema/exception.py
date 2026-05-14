@@ -1,7 +1,7 @@
 # src/err/search/context/schema/exception.py
 
 """
-Module: err.search.schema.exception
+Module: err.search.schema.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -9,23 +9,23 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import ContextException
+from err import ContextSearchException
 
 
 __all__ = [
-    # ======================# SCHEMA_CONTEXT_ERROR #======================#
-    "SchemaContextException",
+    # ======================# SCHEMA_CONTEXT_SEARCH_FAILURE #======================#
+    "SchemaContextSearchException",
 ]
 
 
-# ======================# SCHEMA_CONTEXT_ERROR #======================#
-class SchemaContextException(ContextException):
+# ======================# SCHEMA_CONTEXT_SEARCH_FAILURE #======================#
+class SchemaContextSearchException(ContextSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a SchemaContext experienced an error.
+        1.  Indicate that a SchemaContextSearch experienced an error.
 
     Attributes:
             msg: Optional[str]
@@ -39,10 +39,10 @@ class SchemaContextException(ContextException):
     Provides:
 
     Super Class:
-        ContextException
+        ContextSearchException
     """
     MSG = "SchemaContext error state."
-    ERR_CODE = "SCHEMA_CONTEXT_ERROR"
+    ERR_CODE = "SCHEMA_CONTEXT_SEARCH_FAILURE"
     
     def __init__(
             self,

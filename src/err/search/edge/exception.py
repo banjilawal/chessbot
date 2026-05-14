@@ -1,7 +1,7 @@
 # src/err/search/edge/exception.py
 
 """
-Module: err.search.edge.exception
+Module: err.search.edge.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import SearchException
 
 
 __all__ = [
-    # ======================# EDGE_ERROR #======================#
-    "EdgeException",
+    # ======================# EDGE_SEARCH_FAILURE #======================#
+    "EdgeSearchException",
 ]
 
-# ======================# EDGE_ERROR #======================#
-class EdgeException(SearchException):
+# ======================# EDGE_SEARCH_FAILURE #======================#
+class EdgeSearchException(SearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Edge experienced an error.
+        1.  Indicate that a EdgeSearch experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class EdgeException(SearchException):
         SearchException
     """
     MSG = "Edge error state."
-    ERR_CODE = "EDGE_ERROR"
+    ERR_CODE = "EDGE_SEARCH_FAILURE"
     
     def __init__(
             self,

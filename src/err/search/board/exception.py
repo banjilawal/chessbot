@@ -1,7 +1,7 @@
 # src/err/search/board/exception.py
 
 """
-Module: err.search.board.exception
+Module: err.search.board.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import SearchException
 
 
 __all__ = [
-    # ======================# BOARD_ERROR #======================#
-    "BoardException",
+    # ======================# BOARD_SEARCH_FAILURE #======================#
+    "BoardSearchException",
 ]
 
-# ======================# BOARD_ERROR #======================#
-class BoardException(SearchException):
+# ======================# BOARD_SEARCH_FAILURE #======================#
+class BoardSearchException(SearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Board experienced an error.
+        1.  Indicate that a BoardSearch experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class BoardException(SearchException):
         SearchException
     """
     MSG = "Board error state."
-    ERR_CODE = "BOARD_ERROR"
+    ERR_CODE = "BOARD_SEARCH_FAILURE"
     
     def __init__(
             self,

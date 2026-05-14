@@ -1,7 +1,7 @@
 # src/err/search/rook/exception.py
 
 """
-Module: err.search.rook.exception
+Module: err.search.rook.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -10,22 +10,22 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Any, Optional
 
-from err import RankException
+from err import RankSearchException
 
 
 __all__ = [
-    # ======================# ROOK_ERROR #======================#
-    "RookException",
+    # ======================# ROOK_SEARCH_FAILURE #======================#
+    "RookSearchException",
 ]
 
-# ======================# ROOK_ERROR #======================#
-class RookException(RankException):
+# ======================# ROOK_SEARCH_FAILURE #======================#
+class RookSearchException(RankSearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Rook experienced an error.
+        1.  Indicate that a RookSearch experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -39,10 +39,10 @@ class RookException(RankException):
     Provides:
 
     Super Class:
-        RankException
+        RankSearchException
     """
     MSG = "Rook error state."
-    ERR_CODE = "ROOK_ERROR"
+    ERR_CODE = "ROOK_SEARCH_FAILURE"
     
     def __init__(
             self,

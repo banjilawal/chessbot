@@ -1,7 +1,7 @@
 # src/err/search/scalar/exception.py
 
 """
-Module: err.search.scalar.exception
+Module: err.search.scalar.searchException
 Author: Banji Lawal
 Created: 2026-04-04
 version: 1.0.1
@@ -14,18 +14,18 @@ from err import SearchException
 
 
 __all__ = [
-    # ======================# SCALAR_ERROR #======================#
-    "ScalarException",
+    # ======================# SCALAR_SEARCH_FAILURE #======================#
+    "ScalarSearchException",
 ]
 
-# ======================# SCALAR_ERROR #======================#
-class ScalarException(SearchException):
+# ======================# SCALAR_SEARCH_FAILURE #======================#
+class ScalarSearchException(SearchException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that a Scalar experienced an error.
+        1.  Indicate that a ScalarSearch experienced an error.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class ScalarException(SearchException):
         SearchException
     """
     MSG = "Scalar error state."
-    ERR_CODE = "SCALAR_ERROR"
+    ERR_CODE = "SCALAR_SEARCH_FAILURE"
     
     def __init__(
             self,

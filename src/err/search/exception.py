@@ -13,21 +13,21 @@ from typing import Any, Optional
 from err import ChessException
 
 __all__ = [
-    # ======================# SEARCH_ERROR #======================#
+    # ======================# SEARCH_FAILURE #======================#
     "SearchException",
 ]
 
 from result import MethodResultType
 
 
-# ======================# SEARCH_ERROR #======================#
+# ======================# SEARCH_FAILURE #======================#
 class SearchException(ChessException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicate that an error prevented the search from completing.
+        1.  Indicate that an error occurred during a search.
 
     Attributes:
         msg: Optional[str]
@@ -43,10 +43,9 @@ class SearchException(ChessException):
     Super Class:
         ChessException
     """
-    ERR_CODE = "SEARCH_ERROR"
+    ERR_CODE = "SEARCH_FAILURE"
+    MSG = "An error occurred during a search."
     MTHD_RSLT_TYPE = MethodResultType.SEARCH_RESULT
-    MSG = "An error prevented the search from completing."
-
     
     def __init__(
             self,
@@ -57,7 +56,7 @@ class SearchException(ChessException):
             cls_name: Optional[str] | None = None,
             ex: Optional[Exception] | None = None,
             err_code: Optional[str] | None = None,
-            mthd_rslt_type: Optional[MTHD_RSLT_TYPE] = None,
+            mthd_rslt_type: Optional[MTHD_RSLT_TYPE] | None = None,
     ):
         """
         Args:
