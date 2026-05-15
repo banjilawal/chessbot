@@ -12,9 +12,10 @@ from typing import List
 
 from controller import Controller
 from model import WorkerRegistry
+from toolkit import WorkerRegistryToolkit
 from util import LoggingLevelRouter, singleton
 from result import InsertionResult, SearchResult
-from operation import Operation, WorkerRegistryToolkit
+from operation import Operation
 from err import OperationNullException, WorkerRegistryControllerException
 
 
@@ -99,6 +100,21 @@ class WorkerRegistryController(Controller[WorkerRegistry]):
             null_exception = OperationNullException()
             
         # Handle the case that, the worker fails a safety check.
+        insertion_result = self._toolkit.register_new_worker.execute(
+            worker=worker,
+            registry=self._registry,
+        )
+        if insertion_result.is_failure:
+            # Send the exception chain on failure.
+            return InsertionResult.failure(
+                WorkerRegistryControllerException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=WorkerRegistryControllerException.MSG,
+                    err_code=WorkerRegistryControllerException.ERR_CODE,
+                    ex=insertion_result.exception
+                )
+            )
         worker_validation_result = self._toolkit.add_worker_bootstrapper.execute(
             worker=worker,
             null_exception=null_exception,

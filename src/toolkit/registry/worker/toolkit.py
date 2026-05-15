@@ -1,7 +1,7 @@
 # src/toolkit/registry/worker/toolkit.py
 
 """
-Module: toolkit.registry.worker.toolkit_
+Module: toolkit.registry.worker.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,10 +10,8 @@ version: 1.0.1
 from __future__ import annotations
 from dataclasses import dataclass
 
-from operation import (
-    AddWorkerBootstrapper, DomainSearchBootstrapper, NameValidator, RegisterNewWorker, WorkerRegistryDomainSearch,
-    WorkerRegistryNameSearch, ValidationBootstrapper, WorkerRegistryNameSearchBootstrapper
-)
+from operation import RegisterNewWorker
+from search import WorkerRegistryDomainSearch, WorkerRegistryNameSearch
 
 
 @dataclass
@@ -27,14 +25,9 @@ class WorkerRegistryToolkit:
             a single entry point.
 
     Attributes:
-        name_validator: NameValidator
-        register_worker: RegisterWorker
-        domain_search: RegistryDomainSearch
-        worker_search: RegistryWorkerSearch
-        add_worker_bootstrapper: AddWorkerBootstrapper
-        validation_bootstrapper: ValidationBootstrapper
-        domain_search_bootstrapper: DomainSearchBootstrapper
-        worker_search_bootstrapper: WorkerSearchBootstrapper
+        register_new_worker: RegisterNewWorker
+        worker_registry_domain_search: WorkerRegistryDomainSearch
+        worker_registry_name_search: WorkerRegistryNameSearch
 
     Provides:
 
@@ -49,11 +42,6 @@ class WorkerRegistryToolkit:
         -   The name is consistent with the toolkit role and responsibilities. despite not being
             a subclass of Toolkit.
     """
-    name_validator: NameValidator = NameValidator()
-    register_worker: RegisterNewWorker = RegisterNewWorker()
-    domain_search: WorkerRegistryDomainSearch = WorkerRegistryDomainSearch()
-    worker_search: WorkerRegistryNameSearch = WorkerRegistryNameSearch()
-    add_worker_bootstrapper: AddWorkerBootstrapper = AddWorkerBootstrapper()
-    validation_bootstrapper: ValidationBootstrapper = ValidationBootstrapper()
-    domain_search_bootstrapper: DomainSearchBootstrapper = DomainSearchBootstrapper()
-    worker_search_bootstrapper: WorkerRegistryNameSearchBootstrapper = WorkerRegistryNameSearchBootstrapper()
+    register_new_worker: RegisterNewWorker
+    worker_registry_domain_search: WorkerRegistryDomainSearch
+    worker_registry_name_search: WorkerRegistryNameSearch
