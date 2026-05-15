@@ -43,6 +43,7 @@ class Microservice(ABC, Generic[T]):
     Super Class:
         Microservice
     """
+    NAME = "microservice"
     _id: int
     _name: str
     
@@ -53,7 +54,7 @@ class Microservice(ABC, Generic[T]):
             name: str[T]
         """
         self._id = id
-        self._name = name
+        self._name = self.NAME
         
     
     @property

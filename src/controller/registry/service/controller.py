@@ -1,21 +1,21 @@
 # src/controller/registry/service/controller.py
 
 """
-Module: controller.registry.service/controller
+Module: controller.registry.service.controller
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import List
+from typing import Dict, List
 
 from controller import Controller
-from microservice import Microservice
 from model import ServiceRegistry
+from toolkit import ServiceRegistryToolkit
 from util import LoggingLevelRouter, singleton
 from result import InsertionResult, SearchResult
-from microservice import Microservice, ServiceRegistryToolkit
+from microservice import Microservice
 from err import MicroserviceNullException, ServiceRegistryControllerException
 
 
@@ -35,7 +35,7 @@ class ServiceRegistryController(Controller[ServiceRegistry]):
         toolkit: ServiceRegistryToolkit
     
     Provides:
-        -   def find_service(domain: str, service_name: str) -> SearchResult[List[Microservice]]:
+        -   def find_service(domain: str, microservice_name: str) -> SearchResult[List[Microservice]]:
         -   def domain_services(domain: str) -> SearchResult[List[dict[str, Microservice]]]:
         
         -   def register_service(
@@ -66,7 +66,7 @@ class ServiceRegistryController(Controller[ServiceRegistry]):
         return len(self._registry.entries.keys())
     
     @LoggingLevelRouter.monitor
-    def register(
+    def register_service(
             self,
             service: Microservice,
             null_exception: MicroserviceNullException | None = None,
@@ -89,33 +89,17 @@ class ServiceRegistryController(Controller[ServiceRegistry]):
         """
         method = f"{self.__class__.__name__}.register_service"
         
+        # --- Supply any missing dependencies. ---#
         if null_exception is None:
             null_exception = MicroserviceNullException()
             
-        # Handle the case that, the service fails a safety check.
-        service_validation_result = self._toolkit.add_service_bootstrapper.execute(
-            service=service,
-            null_exception=null_exception,
-            name_validator=self._toolkit.name_validator,
-            validation_bootstrapper=self._toolkit.validation_bootstrapper,
-        )
-        if service_validation_result.is_failure:
-            # Send the exception chain on failure.
-            return InsertionResult.failure(
-                ServiceRegistryControllerException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=ServiceRegistryControllerException.MSG,
-                    err_code=ServiceRegistryControllerException.ERR_CODE,
-                    ex=service_validation_result.exception
-                )
-            )
-        # --- After The service is validated, run the registration steps. ---#
-        insertion_result = self._toolkit.register_service.execute(
+        # Handoff the insertion request to the service.
+        insertion_result = self._toolkit.register_new_service.execute(
             service=service,
             registry=self._registry,
+            null_exception=null_exception,
         )
-        # Handle the case that, the service does not get registered.
+        # Handle the case that, the request is not satisfied.
         if insertion_result.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -124,54 +108,35 @@ class ServiceRegistryController(Controller[ServiceRegistry]):
                     cls_name=self.__class__.__name__,
                     msg=ServiceRegistryControllerException.MSG,
                     err_code=ServiceRegistryControllerException.ERR_CODE,
-                    ex=service_validation_result.exception
+                    ex=insertion_result.exception
                 )
             )
         # --- Forward the work product to the caller. ---#
         return InsertionResult.success()
     
     @LoggingLevelRouter.monitor
-    def find_service(self, service_name: str,) -> SearchResult[List[Microservice]]:
+    def find_service(self, microservice_name: str,) -> SearchResult[List[Microservice]]:
         """
         Find a service in the registry.
 
         Action:
-            1.  Send an exception chain in the SearchResult if either of the following occur:
-                    -   A param is flagged unsafe.
-                    -   The search is not completed.
+            1.  Send an exception chain in the SearchResult if the search is not completed.
             2.  Otherwise, send the success result.
         Args:
-            service_name: str
+            microservice_name: str
         Returns:
             SearchResult[List[Microservice]]
         Raises:
             ServiceRegistryControllerException
         """
-        method = f"{self.__class__.__name__}.call_service"
+        method = f"{self.__class__.__name__}.find_service"
         
-        # Handle the case that, the domain or microservice+name are flagged unsafe.
-        param_validation_result = self._toolkit.service_search_bootstrapper.execute(
-            name=service_name,
-            name_validator=self._toolkit.name_validator,
-            validation_bootstrapper=self._toolkit.validation_bootstrapper,
-        )
-        if param_validation_result.is_failure:
-            # Send the exception chain on failure.
-            return SearchResult.failure(
-                ServiceRegistryControllerException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=ServiceRegistryControllerException.MSG,
-                    err_code=ServiceRegistryControllerException.ERR_CODE,
-                    ex=param_validation_result.exception
-                )
-            )
-        # --- When the params are validated, search with them. ---#
-        search_result = self._toolkit.service_search.execute(
-            service_name=service_name,
+        # Handoff the search request to the service.
+        search_result = self._toolkit.service_registry_name_search.execute(
+            microservice_name=microservice_name,
             registry=self._registry,
         )
-        # handle the case that, the search was not completed.
+        # Handle the case that, the request is not satisfied.
         if search_result.is_failure:
             # Send the exception chain on failure.
             return SearchResult.failure(

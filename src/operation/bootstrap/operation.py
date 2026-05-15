@@ -1,0 +1,27 @@
+# src/operation/bootstrap/operation.py
+
+"""
+Module: operation.bootstrap.operation
+Author: Banji Lawal
+Created: 2026-04-03
+version: 1.0.1
+"""
+
+from __future__ import annotations
+from abc import abstractmethod
+from typing import TypeVar
+
+from operation import Operation
+from result import ValidationResult
+from util import LoggingLevelRouter
+
+T = TypeVar("T")
+
+class Bootstrap(Operation[T]):
+    DOMAIN = "Bootstrap"
+    
+    @classmethod
+    @abstractmethod
+    @LoggingLevelRouter.monitor
+    def execute(cls, *args, **kwargs,) -> ValidationResult[T]:
+        pass

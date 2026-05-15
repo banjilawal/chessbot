@@ -15,10 +15,10 @@ from result import ValidationResult
 from util import LoggingLevelRouter
 from controller import WorkerRegistryController
 from err import NewWorkerRegistrationException, OperationNullException, RegistryKeyCollisionException
-from operation import Operation, RegistryEntryNameValidator, ValidationBootstrapper, WorkerRegistryOperation
+from operation import Bootstrap, Operation, RegistryEntryNameValidator, ValidationBootstrapper
 
 
-class BootstrapWorkerRegistration(WorkerRegistryOperation):
+class BootstrapWorkerRegistration(Bootstrap[Operation]):
     """
     Role
         -   Worker

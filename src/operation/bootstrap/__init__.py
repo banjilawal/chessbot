@@ -8,7 +8,7 @@ version: 1.0.1
 """
 
 
-# =========== OPERATION.BOOTSTRAPPER PACKAGE ===========#
+# =========== OPERATION.BOOTSTRAP PACKAGE ===========#
 
 # Packages
 from .assembly import *
@@ -16,3 +16,4 @@ from .insertion import *
 from .validation import *
 
 # Modules
+from .operation import Bootstrap
