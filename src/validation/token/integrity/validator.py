@@ -12,11 +12,12 @@ from __future__ import annotations
 from typing import Any, cast
 
 from controller import WorkerRegistryController
+from factory import ToolkitFactory
 from model import CombatantToken, KingToken, Token
 from operation import Validator
 from toolkit import TokenToolkit
 from database import CoordDatabase
-from result import ValidationResult
+from result import BuildResult, ValidationResult
 from util import LoggingLevelRouter
 from err import CoordDatabaseNullException, TokenNullException, TokenValidationException
 
@@ -178,6 +179,24 @@ class TokenIntegrityValidator(Validator[Token]):
             )
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(token)
+    
+    @classmethod
+    def _get_toolkit(cls, toolkit: TokenToolkit) -> BuildResult[TokenToolkit]:
+        method = f"{cls.__name__}._get_toolkit"
+        
+        build_result = ToolkitFactory.build_toolkit(toolkit_class=TokenToolkit,)
+        if build_result.is_failure:
+            # Send the exception chain on failure.
+            return BuildResult.failure(
+                TokenValidationException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=TokenValidationException.MSG,
+                    err_code=TokenValidationException.ERR_CODE,
+                    ex=build_result.exception,
+                )
+            )
+        return BuildResult.success(build_result.payload)
 
     
 

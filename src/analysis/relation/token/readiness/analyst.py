@@ -1,10 +1,10 @@
-# src/logic/token/service/operation/analysis.py
+# src/analysis/relation/token/analyst.py
 
 """
-Module: logic.token.service.operation.analysis
+Module: analysis.relation.token.analyst
 Author: Banji Lawal
-Created: 2025-10-03
-version: 1.0.0
+Created: 2026-04-03
+version: 1.0.1
 """
 
 from __future__ import annotations

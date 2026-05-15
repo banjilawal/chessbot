@@ -12,6 +12,7 @@ from __future__ import annotations
 from microservice import Microservice
 from model import Token
 from operation import TokenValidator
+from operation.microservice.token import TokenOpsController
 from pipeline import TokenBuildPipeline
 from result import DeletionResult
 from system import IdFactory, LoggingLevelRouter

@@ -11,10 +11,11 @@ from __future__ import annotations
 
 from typing import Any, cast
 
+from factory import ToolkitFactory
 from model import Token
 from toolkit import TokenToolkit
 from database import CoordDatabase
-from result import ValidationResult
+from result import BuildResult, ValidationResult
 from util import LoggingLevelRouter
 from validation import Validator
 from controller import WorkerRegistryController
@@ -324,6 +325,24 @@ class TokenConsistencyValidator(Validator[Token]):
             )
         # The occupant is disabled
         return ValidationResult.success(token)
+    
+    @classmethod
+    def _get_toolkit(cls, toolkit: TokenToolkit) -> BuildResult[TokenToolkit]:
+        method = f"{cls.__name__}._get_toolkit"
+        
+        build_result = ToolkitFactory.build_toolkit(toolkit_class=TokenToolkit, )
+        if build_result.is_failure:
+            # Send the exception chain on failure.
+            return BuildResult.failure(
+                TokenValidationException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=TokenValidationException.MSG,
+                    err_code=TokenValidationException.ERR_CODE,
+                    ex=build_result.exception,
+                )
+            )
+        return BuildResult.success(build_result.payload)
 
 # --- FINALLY: REGISTER THE OPERATION ---#
 WorkerRegistryController.register_worker(worker=TokenConsistencyValidator)
