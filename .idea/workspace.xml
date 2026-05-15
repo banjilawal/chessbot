@@ -5,31 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/model/registry/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/model/registry/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/model/registry/key/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/model/registry/key/collision/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/model/registry/key/collision/domain/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/model/registry/key/collision/domain/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/model/registry/key/collision/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/model/registry/key/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/bootstrap/insertion/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/bootstrap/insertion/registry/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/bootstrap/insertion/registry/service/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/bootstrap/insertion/registry/service/operation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/bootstrap/insertion/registry/worker/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/bootstrap/insertion/registry/worker/operation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/model/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/registry/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/registry/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/registry/worker/insert/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/registry/worker/insert/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/registry/worker/insert/bootstrap/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/registry/worker/insert/bootstrap/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/registry/worker/insert/bootstrap/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/registry/worker/insert/bootstrap/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/registry/worker/insert/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/registry/worker/insert/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/registry/worker/validation/registration/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/registry/worker/validation/registration/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/validation/string/registry/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/validation/string/registry/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/validation/string/registry/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/validation/string/registry/validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

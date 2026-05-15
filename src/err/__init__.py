@@ -11,6 +11,7 @@ version: 1.0.0
 
 # Packages
 from .analysis import *
+from .array import *
 from .config import *
 from .controller import *
 from .factory import *

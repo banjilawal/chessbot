@@ -11,7 +11,10 @@ from __future__ import annotations
 from typing import List, cast
 
 from controller import WorkerRegistryController
-from err import ListNullException, RegistryEntryKeyStringValidationException, StringValidationException
+from err import (
+    EmptyListException, ListNullException, RegistryEntryKeyStringValidationException,
+    StringValidationException
+)
 from operation import ValidationBootstrapper, Validator
 from operation.validation.string import NameValidator
 from result import ValidationResult
@@ -55,6 +58,7 @@ class RegistryEntryNameValidator(Validator):
 
         Action:
             1.  Send an exception chain in the ValidationResult if ay of the following occur
+                    -   The candidates is not a List or its empty.
                     -   The names are not in a List.
                     -   Any name in the list fails string validation.
             2.  Otherwise, send the success result.
@@ -97,6 +101,23 @@ class RegistryEntryNameValidator(Validator):
         # --- Cast the candidate into a Team for additional tests ---#
         names = cast(List[str], candidates)
         
+        # Handle the case that, there are no names in the list.
+        if len(names) == 0:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                RegistryEntryKeyStringValidationException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=RegistryEntryKeyStringValidationException.MSG,
+                    err_code=RegistryEntryKeyStringValidationException.ERR_CODE,
+                    ex=EmptyListException(
+                        cls_mthd=method,
+                        cls_name=cls.__name__,
+                        msg=EmptyListException.MSG,
+                        err_code=EmptyListException.ERR_CODE,
+                    )
+                )
+            )
         # Handle the case that, any name in the list cannot be used as Registry key.
         for name in names:
             name_validation_result = name_validator.validate(name)
