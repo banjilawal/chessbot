@@ -9,9 +9,8 @@ version: 1.0.1
 
 from __future__ import annotations
 
-from microservice import BoardService, IdentityService, SchemaService, TeamService
-from model import BoardBinder
-from operation.validation.bootstrap import ValidationBootstrapper
+from microservice import BoardService, SchemaService, TeamService
+from validation.bootstrap import ValidationBootstrapper
 from toolkit import Toolkit
 
 

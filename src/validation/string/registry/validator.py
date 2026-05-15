@@ -15,7 +15,7 @@ from err import (
     EmptyListException, ListNullException, RegistryEntryKeyStringValidationException, StringValidationException
 )
 from operation import ValidationBootstrapper, Validator
-from operation.validation.string import NameValidator
+from validation.string import NameValidator
 from result import ValidationResult
 from util import LoggingLevelRouter
 
