@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from controller import WorkerRegistryController
-from model import Token
+from model import CombatantToken, KingToken, Token
 from operation import Validator
 from toolkit import TokenToolkit
 from database import CoordDatabase
