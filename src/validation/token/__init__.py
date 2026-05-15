@@ -10,5 +10,8 @@ version: 1.0.1
 # =========== VALIDATION.TOKEN PACKAGE ===========#
 
 # Packages
+from .consistency import *
+from .integrity import *
 
 # Modules
+from .validator import TokenValidator

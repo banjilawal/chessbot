@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/validation/token/validator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validation/token/consistency/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/validation/token/consistency/validator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/token/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/validation/token/integrity/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/token/integrity/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/validation/token/integrity/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/token/integrity/validator.py" afterDir="false" />
     </list>
