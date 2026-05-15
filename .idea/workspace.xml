@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/operation/insertion/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/insertion/operation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/validation/string/registry/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/validation/string/registry/validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +60,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/null",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/operation",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -67,18 +71,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/operation" />
+      <recent name="$PROJECT_DIR$/src/err" />
       <recent name="$PROJECT_DIR$/src/err/null" />
       <recent name="$PROJECT_DIR$/src/operation/bootstrap/insertion/registry" />
       <recent name="$PROJECT_DIR$/src/operation/bootstrap/insertion" />
-      <recent name="$PROJECT_DIR$/src/err/operation/bootstrap" />
-      <recent name="$PROJECT_DIR$/src/err/model/registry/key/collision/domain" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err" />
       <recent name="$PROJECT_DIR$/src/operation/bootstrap/insertion/registry/worker" />
       <recent name="$PROJECT_DIR$/src/err/operation/bootstrap/registry/worker" />
       <recent name="$PROJECT_DIR$/src/operation/registry/worker/insert" />
       <recent name="$PROJECT_DIR$/src/operation/validation/string" />
-      <recent name="$PROJECT_DIR$/src/operation/validation/string/name" />
     </key>
   </component>
   <component name="RunManager" selected="Python.operation">

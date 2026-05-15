@@ -12,8 +12,7 @@ from typing import List, cast
 
 from controller import WorkerRegistryController
 from err import (
-    EmptyListException, ListNullException, RegistryEntryKeyStringValidationException,
-    StringValidationException
+    EmptyListException, ListNullException, RegistryEntryKeyStringValidationException, StringValidationException
 )
 from operation import ValidationBootstrapper, Validator
 from operation.validation.string import NameValidator
@@ -70,6 +69,7 @@ class RegistryEntryNameValidator(Validator):
             ValidationResult[List[str]]
         Raises:
             ListNullException
+            EmptyListException
             StringValidationException
             RegistryEntryKeyStringValidationException
         """

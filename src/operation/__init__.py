@@ -14,6 +14,7 @@ from .assembly import *
 from .bootstrap import *
 from .registry import *
 from .finalize import *
+from .insertion import *
 from .math import *
 from .microservice import *
 from .registry import *
