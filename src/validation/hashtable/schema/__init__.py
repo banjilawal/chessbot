@@ -1,13 +1,13 @@
-# src/operation/bootstrap/validation/binder/__init__.py
+# src/bootstrap/validation/binder/__init__.py
 
 """
-Module: operation.boostrap.validation.binder.__init__
+Module: boostrap.validation.binder.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== OPERATION.BOOTSTRAP.VALIDATION.BOOTSTRAPPER PACKAGE ===========#
+# =========== BOOTSTRAP.VALIDATION.BOOTSTRAPPER PACKAGE ===========#
 
 # Packages
 

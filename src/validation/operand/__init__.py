@@ -1,13 +1,13 @@
-# src/operation/validation/operand/__init__.py
+# src/validation/operand/__init__.py
 
 """
-Module: operation.validation.operand.__init__
+Module: validation.operand.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== OPERATION.VALIDATION.OPERAND PACKAGE ===========#
+# =========== VALIDATION.OPERAND PACKAGE ===========#
 
 # Packages
 

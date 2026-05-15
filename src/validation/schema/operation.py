@@ -1,7 +1,7 @@
-# src/operation/validation/schema/operation.py
+# src/validation/schema/operation.py
 
 """
-Module: operation.validation.schema.validator
+Module: validation.schema.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

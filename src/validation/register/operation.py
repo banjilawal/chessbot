@@ -1,7 +1,7 @@
-# src/operation/validation/register/operation.py
+# src/validation/register/operation.py
 
 """
-Module: operation.validation.register.validator
+Module: validation.register.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

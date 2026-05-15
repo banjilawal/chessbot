@@ -1,7 +1,7 @@
-# src/operation/validation/scalar/operation.py
+# src/validation/scalar/operation.py
 
 """
-Module: operation.validation.scalar.operation
+Module: validation.scalar.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

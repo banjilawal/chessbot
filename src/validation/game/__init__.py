@@ -1,13 +1,13 @@
-# src/operation/validation/game/__init__.py
+# src/validation/game/__init__.py
 
 """
-Module: operation.validation.game.__init__
+Module: validation.game.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== OPERATION.VALIDATION.GAME PACKAGE ===========#
+# =========== VALIDATION.GAME PACKAGE ===========#
 
 # Packages
 

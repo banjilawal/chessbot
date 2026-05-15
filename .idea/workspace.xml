@@ -72,11 +72,11 @@
       <recent name="$PROJECT_DIR$/src/operation/bootstrap/insertion/registry" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$/src/operation/validation/token/integrity" />
       <recent name="$PROJECT_DIR$/src/search/registry/service" />
       <recent name="$PROJECT_DIR$/src/operation/insertion/registry/worker" />
       <recent name="$PROJECT_DIR$/src/search/registry/worker" />
-      <recent name="$PROJECT_DIR$/src/err" />
-      <recent name="$PROJECT_DIR$/src/operation/bootstrap/insertion/registry/worker" />
     </key>
   </component>
   <component name="RunManager" selected="Python.operation">
@@ -910,7 +910,7 @@
           <option name="timeStamp" value="86" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/operation/validation/team/exception/debug/__init__.py</url>
+          <url>file://$PROJECT_DIR$/src/validation/team/exception/debug/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="87" />
         </line-breakpoint>
@@ -945,7 +945,7 @@
           <option name="timeStamp" value="99" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/operation/validation/context/token/exception/debug/zero.py</url>
+          <url>file://$PROJECT_DIR$/src/validation/context/token/exception/debug/zero.py</url>
           <line>9</line>
           <option name="timeStamp" value="101" />
         </line-breakpoint>
@@ -955,7 +955,7 @@
           <option name="timeStamp" value="102" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/operation/validation/rank/operation.py</url>
+          <url>file://$PROJECT_DIR$/src/validation/rank/operation.py</url>
           <line>9</line>
           <option name="timeStamp" value="107" />
         </line-breakpoint>
@@ -970,7 +970,7 @@
           <option name="timeStamp" value="110" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/operation/validation/vector/exception/debug/__init__.py</url>
+          <url>file://$PROJECT_DIR$/src/validation/vector/exception/debug/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="111" />
         </line-breakpoint>

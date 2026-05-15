@@ -1,7 +1,7 @@
-# src/operation/validation/context/edge/operation.py
+# src/validation/context/edge/operation.py
 
 """
-Module: operation.validation.context.edge.validator
+Module: validation.context.edge.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

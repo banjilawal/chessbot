@@ -1,7 +1,7 @@
-# src/operation/validation/context/schema/operation.py
+# src/validation/context/schema/operation.py
 
 """
-Module: operation.validation.context.schema.validator
+Module: validation.context.schema.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

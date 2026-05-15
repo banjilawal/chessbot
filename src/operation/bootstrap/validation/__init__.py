@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== OPERATION.BOOTSTRAP.VALIDATION PACKAGE ===========#
+# =========== BOOTSTRAP.VALIDATION PACKAGE ===========#
 
 # Packages
 from .binder import *

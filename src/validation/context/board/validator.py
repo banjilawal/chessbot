@@ -1,7 +1,7 @@
-# src/operation/validation/context/board/operation.py
+# src/validation/context/board/operation.py
 
 """
-Module: operation.validation.context.board.validator
+Module: validation.context.board.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

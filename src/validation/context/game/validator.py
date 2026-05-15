@@ -1,7 +1,7 @@
-# src/operation/validation/context/game/operation.py
+# src/validation/context/game/operation.py
 
 """
-Module: operation.validation.context.game.validator
+Module: validation.context.game.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

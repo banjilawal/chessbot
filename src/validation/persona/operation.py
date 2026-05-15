@@ -1,7 +1,7 @@
-# src/operation/validation/persona/operation.py
+# src/validation/persona/operation.py
 
 """
-Module: operation.validation.persona.validator
+Module: validation.persona.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

@@ -1,7 +1,7 @@
-# src/operation/validation/context/node/operation.py
+# src/validation/context/node/operation.py
 
 """
-Module: operation.validation.context.node.validator
+Module: validation.context.node.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

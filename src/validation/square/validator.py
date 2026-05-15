@@ -1,7 +1,7 @@
-# src/operation/validation/square/operation.py
+# src/validation/square/operation.py
 
 """
-Module: operation.validation.square.operation
+Module: validation.square.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

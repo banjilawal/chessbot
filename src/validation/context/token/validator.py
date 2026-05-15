@@ -1,7 +1,7 @@
-# src/operation/validation/context/token/operation.py
+# src/validation/context/token/operation.py
 
 """
-Module: operation.validation.context.token.validator
+Module: validation.context.token.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

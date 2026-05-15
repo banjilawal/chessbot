@@ -1,7 +1,7 @@
-# src/operation/validation/player/operation.py
+# src/validation/player/operation.py
 
 """
-Module: operation.validation.player.validator
+Module: validation.player.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

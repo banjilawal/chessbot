@@ -1,7 +1,7 @@
-# src/operation/validation/context/square/operation.py
+# src/validation/context/square/operation.py
 
 """
-Module: operation.validation.context.square.validator
+Module: validation.context.square.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

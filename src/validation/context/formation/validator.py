@@ -1,7 +1,7 @@
-# src/operation/validation/context/formation/operation.py
+# src/validation/context/formation/operation.py
 
 """
-Module: operation.validation.context.formation.validator
+Module: validation.context.formation.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

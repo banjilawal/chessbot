@@ -1,7 +1,7 @@
-# src/operation/validation/number/operation.py
+# src/validation/number/operation.py
 
 """
-Module: operation.validation.number.validator
+Module: validation.number.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

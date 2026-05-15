@@ -1,7 +1,7 @@
-# src/operation/validation/operand/operation.py
+# src/validation/operand/operation.py
 
 """
-Module: operation.validation.operand.operation
+Module: validation.operand.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

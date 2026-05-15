@@ -1,7 +1,7 @@
-# src/operation/validation/context/hostage/operation.py
+# src/validation/context/hostage/operation.py
 
 """
-Module: operation.validation.context.hostage.validator
+Module: validation.context.hostage.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

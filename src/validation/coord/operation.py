@@ -1,7 +1,7 @@
-# src/operation/validation/coord/operation.py
+# src/validation/coord/operation.py
 
 """
-Module: operation.validation.coord.operation
+Module: validation.coord.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

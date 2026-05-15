@@ -1,7 +1,7 @@
-# src/operation/bootstrap/validation/binder/operation.py
+# src/bootstrap/validation/binder/operation.py
 
 """
-Module: operation.boostrap.validation.binder.operation
+Module: boostrap.validation.binder.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

@@ -1,7 +1,7 @@
-# src/operation/validation/team/operation.py
+# src/validation/team/operation.py
 
 """
-Module: operation.validation.team.operation
+Module: validation.team.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

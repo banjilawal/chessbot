@@ -1,13 +1,13 @@
-# src/operation/validation/string/__init__.py
+# src/validation/string/__init__.py
 
 """
-Module: operation.validation.string.__init__
+Module: validation.string.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== OPERATION.VALIDATION.STRING PACKAGE ===========#
+# =========== VALIDATION.STRING PACKAGE ===========#
 
 # Packages
 from .name import *

@@ -1,7 +1,7 @@
-# src/operation/validation/context/team/operation.py
+# src/validation/context/team/operation.py
 
 """
-Module: operation.validation.context.team.validator
+Module: validation.context.team.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

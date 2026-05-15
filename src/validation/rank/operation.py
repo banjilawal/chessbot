@@ -1,7 +1,7 @@
-# src/operation/validation/rank/operation.py
+# src/validation/rank/operation.py
 
 """
-Module: operation.validation.rank.operation
+Module: validation.rank.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

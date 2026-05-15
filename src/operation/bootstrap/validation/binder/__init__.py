@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== OPERATION.BOOTSTRAP.VALIDATION.BOOTSTRAPPER PACKAGE ===========#
+# =========== BOOTSTRAP.VALIDATION.BOOTSTRAPPER PACKAGE ===========#
 
 # Packages
 

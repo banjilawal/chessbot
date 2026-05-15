@@ -1,13 +1,13 @@
-# src/operation/validation/context/schema/__init__.py
+# src/validation/context/schema/__init__.py
 
 """
-Module: operation.validation.context.schema.__init__
+Module: validation.context.schema.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== OPERATION.VALIDATION.CONTEXT.SCHEMA PACKAGE ===========#
+# =========== VALIDATION.CONTEXT.SCHEMA PACKAGE ===========#
 
 # Packages
 

@@ -1,7 +1,7 @@
-# src/operation/validation/string/registry/validator.py
+# src/validation/string/registry/validator.py
 
 """
-Module: operation.validation.string.registry.validator
+Module: validation.string.registry.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

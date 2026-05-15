@@ -1,7 +1,7 @@
-# src/operation/validation/vector/operation.py
+# src/validation/vector/operation.py
 
 """
-Module: operation.validation.vector.operation
+Module: validation.vector.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
