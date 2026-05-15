@@ -46,7 +46,7 @@ class RegisterNewWorker(WorkerRegistryOperation):
             cls,
             worker: Operation,
             registry: WorkerRegistry,
-            worker_search: WorkerRegistryNameSearch | None = None,
+            bootstrap_worker_registration: BootstrapWorkerRegistration | None = None,
     ) -> InsertionResult:
         """
         Insert a new worker to the registry.
@@ -66,6 +66,27 @@ class RegisterNewWorker(WorkerRegistryOperation):
             CoordBuildException
         """
         method = f"{cls.__name__}.execute"
+        
+        # --- Supply any missing dependencies ---#
+        if bootstrap_worker_registration is None:
+            bootstrap_worker_registration = BootstrapWorkerRegistration()
+        
+        worker_bootstrap_result = bootstrap_worker_registration.execute(
+            worker=worker,
+            registry=registry,
+        )
+        # Handle the case that, the worker is flagged during bootstrapping.
+        if worker_bootstrap_result.is_failure:
+            return InsertionResult.failure(
+                NewWorkerRegistrationException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=NewWorkerRegistrationException.MSG,
+                    err_code=NewWorkerRegistrationException.ERR_CODE,
+                    ex=worker_bootstrap_result.exception
+                )
+            )
+
         
         if worker_search is None:
             worker_search = WorkerRegistryNameSearch()

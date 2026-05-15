@@ -5,69 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/null/array/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/array/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/validation/string/registry/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/operation/validation/string/registry/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/registry/worker/insert/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/registry/worker/insert/bootstrap/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/registry/worker/insert/operation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/validation/string/registry/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/validation/string/registry/validator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/validation/string/registry/worker/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/validation/string/registry/worker/insert/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/validation/string/registry/worker/insert/operation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/validation/string/registry/worker/operation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/validation/string/registry/worker/search/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/validation/string/registry/worker/search/domain/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/validation/string/registry/worker/search/domain/operation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/validation/string/registry/worker/search/name/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/validation/string/registry/worker/search/name/operation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/validation/string/registry/worker/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/validation/string/registry/worker/validation/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/validation/string/registry/worker/validation/registration/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/validation/string/registry/worker/validation/registration/operation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/validation/string/registry/worker/validation/search/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/validation/string/registry/worker/validation/search/domain/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/validation/string/registry/worker/validation/search/domain/operation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/operation/validation/string/registry/worker/validation/search/name/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/setting/string/config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/model/registry/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/model/registry/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/model/registry/key/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/model/registry/key/collision/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/model/registry/key/collision/domain/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/model/registry/key/collision/domain/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/model/registry/key/collision/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/model/registry/key/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/bootstrap/insertion/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/bootstrap/insertion/registry/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/bootstrap/insertion/registry/service/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/bootstrap/insertion/registry/service/operation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/bootstrap/insertion/registry/worker/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/operation/bootstrap/insertion/registry/worker/operation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/arena/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/operation/validation/string/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/string/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/operation/validation/string/name/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/string/name/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/operation/validation/string/name/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/operation/validation/string/name/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/string/name/min/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/string/name/min/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/name/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/name/model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/registry/worker/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/registry/worker/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/registry/worker/register/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/registry/worker/register/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/registry/worker/insert/bootstrap/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/registry/worker/search/name/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/registry/worker/search/name/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/registry/worker/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/registry/worker/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/registry/worker/validation/search/domain/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/registry/worker/validation/search/domain/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/validation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/validation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/validation/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/validation/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/validation/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/validation/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/validation/square/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/validation/square/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/validation/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/validation/team/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/validation/team/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/validation/team/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/validation/text/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/validation/string/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/validation/text/name/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/validation/string/name/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/validation/text/name/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/validation/string/name/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/validation/text/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/validation/string/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/validation/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/validation/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/validation/token/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/validation/token/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/validation/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/validation/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/validation/vector/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/validation/vector/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setting/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/setting/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setting/board/dimension/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/setting/board/dimension/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setting/name/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/setting/string/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setting/name/property.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/setting/string/property.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setting/name/setting.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/registry/worker/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/registry/worker/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/registry/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/registry/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/registry/worker/insert/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/registry/worker/insert/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/registry/worker/insert/bootstrap/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/registry/worker/insert/bootstrap/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/registry/worker/insert/bootstrap/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/registry/worker/insert/bootstrap/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/registry/worker/insert/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/registry/worker/insert/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/registry/worker/validation/registration/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/registry/worker/validation/registration/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/validation/string/registry/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/validation/string/registry/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/validation/string/registry/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/validation/string/registry/validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +80,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/setting/name",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/null",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -129,18 +91,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/setting/name" />
-      <recent name="$PROJECT_DIR$/src/operation/registry/worker" />
-      <recent name="$PROJECT_DIR$/src/err/operation/validation/string/name/registry" />
       <recent name="$PROJECT_DIR$/src/err/null" />
-      <recent name="$PROJECT_DIR$/src/operation/validation/text/name" />
+      <recent name="$PROJECT_DIR$/src/operation/bootstrap/insertion/registry" />
+      <recent name="$PROJECT_DIR$/src/operation/bootstrap/insertion" />
+      <recent name="$PROJECT_DIR$/src/err/operation/bootstrap" />
+      <recent name="$PROJECT_DIR$/src/err/model/registry/key/collision/domain" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/operation/bootstrap/insertion/registry/worker" />
+      <recent name="$PROJECT_DIR$/src/err/operation/bootstrap/registry/worker" />
       <recent name="$PROJECT_DIR$/src/operation/registry/worker/insert" />
       <recent name="$PROJECT_DIR$/src/operation/validation/string" />
       <recent name="$PROJECT_DIR$/src/operation/validation/string/name" />
-      <recent name="$PROJECT_DIR$/src/err/operation/validation/string" />
-      <recent name="$PROJECT_DIR$/src/operation/validation/text/name/registry" />
     </key>
   </component>
   <component name="RunManager" selected="Python.operation">
@@ -1137,6 +1099,16 @@
           <url>file://$PROJECT_DIR$/src/operation/registry/worker/validation/search/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="163" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/operation/registry/worker/insert/bootstrap/operation.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="166" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/operation/bootstrap/__init__.py</url>
+          <line>13</line>
+          <option name="timeStamp" value="167" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

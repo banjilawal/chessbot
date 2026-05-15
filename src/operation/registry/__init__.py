@@ -10,6 +10,7 @@ version: 1.0.1
 # =========== OPERATION.REGISTRY PACKAGE ===========#
 
 # Packages
+from .service import *
 from .worker import *
 
 # Modules

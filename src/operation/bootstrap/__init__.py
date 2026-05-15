@@ -12,6 +12,7 @@ version: 1.0.1
 
 # Packages
 from .assembly import *
+from .insertion import *
 from .validation import *
 
 # Modules

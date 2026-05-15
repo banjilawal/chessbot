@@ -25,6 +25,7 @@ from .game import *
 from .hashtable import *
 from .hostage import *
 from .identifier import *
+from .microservice import *
 from .node import *
 from .number import *
 from .operand import *

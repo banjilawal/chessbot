@@ -1,7 +1,7 @@
-# src/operation/registry/worker/insert/operation.py
+# src/operation/bootstrap/insertion/registry/worker/operation.py
 
 """
-Module: operation.registry.worker.insert.operation
+Module: operation.boostrap.insertion.registry.worker.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1

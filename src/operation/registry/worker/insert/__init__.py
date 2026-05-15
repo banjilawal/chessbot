@@ -10,6 +10,7 @@ version: 1.0.1
 # =========== OPERATION.REGISTRY.WORKER.INSERT PACKAGE ===========#
 
 # Packages
+from .bootstrap import *
 
 # Modules
 from .operation import RegisterNewWorker

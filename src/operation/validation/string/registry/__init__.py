@@ -1,17 +1,17 @@
-# src/operation/validation/string/name/registry/__init__.py
+# src/operation/validation/string/registry/__init__.py
 
 """
-Module: operation.validation.string.name.registry.__init__
+Module: operation.validation.string.registry.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== OPERATION.VALIDATION.STRING.NAME.REGISTRY PACKAGE ===========#
+# =========== OPERATION.VALIDATION.STRING.REGISTRY PACKAGE ===========#
 
 # Packages
 
 # Packages
-from .worker import *
 
 # Modules
+from .validator import RegistryEntryNameValidator
