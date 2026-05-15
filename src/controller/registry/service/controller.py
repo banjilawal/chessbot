@@ -8,7 +8,7 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Dict, List
+from typing import List
 
 from controller import Controller
 from model import ServiceRegistry
@@ -35,8 +35,7 @@ class ServiceRegistryController(Controller[ServiceRegistry]):
         toolkit: ServiceRegistryToolkit
     
     Provides:
-        -   def find_service(domain: str, microservice_name: str) -> SearchResult[List[Microservice]]:
-        -   def domain_services(domain: str) -> SearchResult[List[dict[str, Microservice]]]:
+        -   def find_service(service_name: str) -> SearchResult[List[Microservice]]:
         
         -   def register_service(
                     service: Microservice,
@@ -115,7 +114,7 @@ class ServiceRegistryController(Controller[ServiceRegistry]):
         return InsertionResult.success()
     
     @LoggingLevelRouter.monitor
-    def find_service(self, microservice_name: str,) -> SearchResult[List[Microservice]]:
+    def find_service(self, name: str, ) -> SearchResult[List[Microservice]]:
         """
         Find a service in the registry.
 
@@ -123,7 +122,7 @@ class ServiceRegistryController(Controller[ServiceRegistry]):
             1.  Send an exception chain in the SearchResult if the search is not completed.
             2.  Otherwise, send the success result.
         Args:
-            microservice_name: str
+            name: str
         Returns:
             SearchResult[List[Microservice]]
         Raises:
@@ -132,8 +131,8 @@ class ServiceRegistryController(Controller[ServiceRegistry]):
         method = f"{self.__class__.__name__}.find_service"
         
         # Handoff the search request to the service.
-        search_result = self._toolkit.service_registry_name_search.execute(
-            microservice_name=microservice_name,
+        search_result = self._toolkit.service_registry_search.execute(
+            microservice_name=name,
             registry=self._registry,
         )
         # Handle the case that, the request is not satisfied.

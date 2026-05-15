@@ -11,7 +11,6 @@ from __future__ import annotations
 from typing import Dict
 
 from microservice import Microservice
-from operation import Operation
 
 
 class ServiceRegistry:
@@ -21,13 +20,13 @@ class ServiceRegistry:
         -   Publisher
     
     Responsibilities:
-        1.  Dynamic, entry and removal of public operations available for building toolkits.
+        1.  Dynamic, entry and removal of public microservices available for building toolkits.
         2.  Uses namespaces to improve search and minimize hash collisions.
     
     Attributes:
         invocation_counters: dict[str, int]
         registration_counters: dict[str, int]
-        entries: Dict[str, Dict[str, Operation]]
+        entries: Dict[str, Dict[str, Microservice]]
     
     Provides:
         -   def domains(self) -> List[str]:
@@ -44,7 +43,7 @@ class ServiceRegistry:
         self._registration_counters = {}
         
     @property
-    def entries(self) -> Dict[str, Dict[str, Operation]]:
+    def entries(self) -> Dict[str, Microservice]:
         return self._entries
     
     @property

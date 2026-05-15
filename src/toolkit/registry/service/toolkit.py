@@ -1,7 +1,7 @@
 # src/toolkit/registry/service/toolkit.py
 
 """
-Module: toolkit.registry.service.toolkit_
+Module: toolkit.registry.service.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -10,10 +10,8 @@ version: 1.0.1
 from __future__ import annotations
 from dataclasses import dataclass
 
-from operation import (
-    AddServiceBootstrapper, DomainSearchBootstrapper, NameValidator, RegisterService, ServiceRegistryDomainSearch,
-    ServiceRegistryNameSearch, ValidationBootstrapper, ServiceRegistryNameSearchBootstrapper
-)
+from operation import RegisterNewService
+from search import ServiceRegistrySearch
 
 
 @dataclass
@@ -27,14 +25,8 @@ class ServiceRegistryToolkit:
             a single entry point.
 
     Attributes:
-        name_validator: NameValidator
-        register_service: RegisterService
-        domain_search: RegistryDomainSearch
-        service_search: RegistryServiceSearch
-        add_service_bootstrapper: AddServiceBootstrapper
-        validation_bootstrapper: ValidationBootstrapper
-        domain_search_bootstrapper: DomainSearchBootstrapper
-        service_search_bootstrapper: ServiceSearchBootstrapper
+        register_new_service: RegisterNewService
+        service_registry_search: ServiceRegistryNameSearch
 
     Provides:
 
@@ -49,11 +41,5 @@ class ServiceRegistryToolkit:
         -   The name is consistent with the toolkit role and responsibilities. despite not being
             a subclass of Toolkit.
     """
-    name_validator: NameValidator = NameValidator()
-    register_service: RegisterService = RegisterService()
-    domain_search: ServiceRegistryDomainSearch = ServiceRegistryDomainSearch()
-    service_search: ServiceRegistryNameSearch = ServiceRegistryNameSearch()
-    add_service_bootstrapper: AddServiceBootstrapper = AddServiceBootstrapper()
-    validation_bootstrapper: ValidationBootstrapper = ValidationBootstrapper()
-    domain_search_bootstrapper: DomainSearchBootstrapper = DomainSearchBootstrapper()
-    service_search_bootstrapper: ServiceRegistryNameSearchBootstrapper = ServiceRegistryNameSearchBootstrapper()
+    register_new_service: RegisterNewService
+    service_registry_search: ServiceRegistrySearch
