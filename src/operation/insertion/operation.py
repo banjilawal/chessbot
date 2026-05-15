@@ -17,6 +17,7 @@ from util import LoggingLevelRouter
 
 
 class Insertion(Operation[Any]):
+    DOMAIN = "Insertion"
     
     @classmethod
     @LoggingLevelRouter.monitor
