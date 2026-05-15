@@ -10,6 +10,7 @@ version: 1.0.1
 from __future__ import annotations
 from typing import Dict, List
 
+from controller import WorkerRegistryController
 from err import WorkerRegistryDomainSearchException
 from result import SearchResult
 from model import WorkerRegistry
@@ -90,3 +91,6 @@ class WorkerRegistryDomainSearch(WorkerRegistryOperation):
         # --- Otherwise, return the domain's entries in the work product. ---#
         workers = registry.entries[name.upper()]
         return SearchResult.success([workers])
+
+# --- FINALLY: REGISTER THE OPERATION ---#
+WorkerRegistryController.register_worker(worker=WorkerRegistryDomainSearch)

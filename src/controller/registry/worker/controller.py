@@ -8,7 +8,7 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import List
+from typing import Dict, List
 
 from controller import Controller
 from model import WorkerRegistry
@@ -96,15 +96,17 @@ class WorkerRegistryController(Controller[WorkerRegistry]):
         """
         method = f"{self.__class__.__name__}.register_worker"
         
+        # --- Supply any missing dependencies. ---#
         if null_exception is None:
             null_exception = OperationNullException()
             
-        # Handle the case that, the worker fails a safety check.
+        # Handoff the insertion request to the worker.
         insertion_result = self._toolkit.register_new_worker.execute(
             worker=worker,
             registry=self._registry,
             null_exception=null_exception,
         )
+        # Handle the case that, the request is not satisfied.
         if insertion_result.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -125,9 +127,7 @@ class WorkerRegistryController(Controller[WorkerRegistry]):
         Find a worker in the registry.
 
         Action:
-            1.  Send an exception chain in the SearchResult if either of the following occur:
-                    -   A param is flagged unsafe.
-                    -   The search is not completed.
+            1.  Send an exception chain in the SearchResult if the search is not completed.
             2.  Otherwise, send the success result.
         Args:
             domain: str
@@ -139,31 +139,13 @@ class WorkerRegistryController(Controller[WorkerRegistry]):
         """
         method = f"{self.__class__.__name__}.find_worker"
         
-        # Handle the case that, the domain or operation+name are flagged unsafe.
-        param_validation_result = self._toolkit.worker_search_bootstrapper.execute(
-            name=domain,
-            name=operation_name,
-            name_validator=self._toolkit.name_validator,
-            validation_bootstrapper=self._toolkit.validation_bootstrapper,
-        )
-        if param_validation_result.is_failure:
-            # Send the exception chain on failure.
-            return SearchResult.failure(
-                WorkerRegistryControllerException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=WorkerRegistryControllerException.MSG,
-                    err_code=WorkerRegistryControllerException.ERR_CODE,
-                    ex=param_validation_result.exception
-                )
-            )
-        # --- When the params are validated, search with them. ---#
+        # Handoff the search request to the worker.
         search_result = self._toolkit.worker_registry_name_search.execute(
             domain=domain,
             operation_name=operation_name,
             registry=self._registry,
         )
-        # handle the case that, the search was not completed.
+        # Handle the case that, the request is not satisfied.
         if search_result.is_failure:
             # Send the exception chain on failure.
             return SearchResult.failure(
@@ -179,13 +161,12 @@ class WorkerRegistryController(Controller[WorkerRegistry]):
         return search_result
     
     @LoggingLevelRouter.monitor
-    def domain_workers(self, domain: str,) -> SearchResult[List[dict[str, Operation]]]:
+    def domain_workers(self, domain: str,) -> SearchResult[List[Dict[str, Operation]]]:
         """
         Find the workers in a domain.
 
         Action:
-            1.  Send an exception chain in the SearchResult if any of the following occur.
-                    -   domain is flagged unsafe.
+            1.  Send an exception chain in the SearchResult if the search is not completed.
             2.  Otherwise, send the success result
         Args:
             domain: str
@@ -196,29 +177,12 @@ class WorkerRegistryController(Controller[WorkerRegistry]):
         """
         method = f"{self.__class__.__name__}.find_domain_workers"
         
-        # Handle the case that, the domain is flagged unsafe.
-        param_validation_result = self._toolkit.domain_search_bootstrapper.execute(
-            name=domain,
-            name_validator=self._toolkit.name_validator,
-            validation_bootstrapper=self._toolkit.validation_bootstrapper,
-        )
-        if param_validation_result.is_failure:
-            # Send the exception chain on failure.
-            return SearchResult.failure(
-                WorkerRegistryControllerException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=WorkerRegistryControllerException.MSG,
-                    err_code=WorkerRegistryControllerException.ERR_CODE,
-                    ex=param_validation_result.exception
-                )
-            )
-        # --- When the param is validated, search with it. ---#
-        search_result = self._toolkit.domain_search.execute(
-            name=domain,
+        # Handoff the search request to the worker.
+        search_result = self._toolkit.worker_registry_domain_search.execute(
+            domain=domain,
             registry=self._registry,
         )
-        # handle the case that, the search was not completed.
+        # Handle the case that, the request is not satisfied.
         if search_result.is_failure:
             # Send the exception chain on failure.
             return SearchResult.failure(
