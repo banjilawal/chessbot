@@ -7,7 +7,7 @@ Created: 2025-09-08
 version: 1.0.0
 """
 
-# =========== PERSONA.KEY.LOOKUP.EXCEPTION.DEBUG PACKAGE ===========#
+# =========== SEARCH.PERSONA.KEY.LOOKUP.EXCEPTION.DEBUG PACKAGE ===========#
 
 # Packages
 

@@ -1,13 +1,13 @@
-# src/operation/registry/__init__.py
+# src/operation/insertion/registry/__init__.py
 
 """
-Module: operation.registry.__init__
+Module: operation.insertion.registry.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== OPERATION.REGISTRY PACKAGE ===========#
+# =========== OPERATION.INSERTION.REGISTRY PACKAGE ===========#
 
 # Packages
 from .service import *

@@ -7,7 +7,7 @@ Created: 2025-10-01
 version: 1.0.0
 """
 
-# =========== PERSONA.KEY.SERVICE.EXCEPTION PACKAGE ===========#
+# =========== SEARCH.PERSONA.KEY.SERVICE.EXCEPTION PACKAGE ===========#
 
 # Packages
 

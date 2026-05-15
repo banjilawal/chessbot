@@ -7,7 +7,7 @@ Created: 2025-10-01
 version: 1.0.0
 """
 
-# =========== SNAPSHOT.CONTEXT.SERVICE.EXCEPTION PACKAGE ===========#
+# =========== SEARCH.SNAPSHOT.CONTEXT.SERVICE.EXCEPTION PACKAGE ===========#
 
 # Packages
 

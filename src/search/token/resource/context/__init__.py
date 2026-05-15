@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-# =========== TOKEN.DATABASE.SEARCH PACKAGE ===========#
+# =========== SEARCH.TOKEN.DATABASE.SEARCH PACKAGE ===========#
 
 # Packages
 from .service import *

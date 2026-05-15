@@ -7,7 +7,7 @@ Created: 2025-11-22
 version: 1.0.0
 """
 
-# =========== BOARD.CONTEXT.SERVICE PACKAGE ===========#
+# =========== SEARCH.BOARD.CONTEXT.SERVICE PACKAGE ===========#
 
 # Packages
 

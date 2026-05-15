@@ -7,7 +7,7 @@ Created: 2025-10-01
 version: 1.0.0
 """
 
-# =========== EDGE.CONTEXT.SERVICE.EXCEPTION PACKAGE ===========#
+# =========== SEARCH.EDGE.CONTEXT.SERVICE.EXCEPTION PACKAGE ===========#
 
 # Packages
 

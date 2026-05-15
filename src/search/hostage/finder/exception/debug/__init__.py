@@ -6,7 +6,7 @@ Created: 2025-10-06
 version: 1.0.0
 """
 
-# =========== HOSTAGE.CONTEXT.FINDER.EXCEPTION.DEBUG PACKAGE ===========#
+# =========== SEARCH.HOSTAGE.CONTEXT.FINDER.EXCEPTION.DEBUG PACKAGE ===========#
 
 # Packages
 

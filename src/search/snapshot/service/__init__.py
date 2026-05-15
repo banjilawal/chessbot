@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-# =========== SNAPSHOT.CONTEXT.BUILDER PACKAGE ===========#
+# =========== SEARCH.SNAPSHOT.CONTEXT.BUILDER PACKAGE ===========#
 
 # Packages
 from .exception import *

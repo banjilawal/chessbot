@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2025-11-19
 """
 
-# =========== SQUARE.VALIDATOR PACKAGE ===========#
+# =========== SEARCH.SQUARE.VALIDATOR PACKAGE ===========#
 
 # Packages
 from.exception import *

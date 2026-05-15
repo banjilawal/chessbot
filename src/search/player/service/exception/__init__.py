@@ -7,7 +7,7 @@ Created: 2025-10-01
 version: 1.0.0
 """
 
-# =========== PLAYER.CONTEXT.SERVICE.EXCEPTION PACKAGE ===========#
+# =========== SEARCH.PLAYER.CONTEXT.SERVICE.EXCEPTION PACKAGE ===========#
 
 # Packages
 

@@ -7,14 +7,9 @@ Created: 2026-04-03
 version: 1.0.1
 """
 
-import logging
-
-log = logging.getLogger("chessbot")
-
-# =========== PACKAGE ===========#
+# =========== SEARCH PACKAGE ===========#
 
 # Packages
-from .abstract import *
 from .arena import *
 from .board import *
 from .edge import *
@@ -25,10 +20,10 @@ from .node import *
 from .persona import *
 from .player import *
 from .rank import *
+from .registry import *
 from .schema import *
 from .snapshot import *
 from .square import *
 from .token import *
 
 # Modules
-None

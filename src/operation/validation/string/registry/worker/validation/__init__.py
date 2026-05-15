@@ -8,7 +8,6 @@ version: 1.0.1
 """
 
 # =========== OPERATION.REGISTRY.WORKER.VALIDATION PACKAGE ===========#
-from .registration import *
 from .search import *
 
 # Modules

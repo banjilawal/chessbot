@@ -10,7 +10,7 @@ version: 1.0.1
 # =========== OPERATION.REGISTRY.WORKER PACKAGE ===========#
 
 # Packages
-from .insert import *
+
 from .search import *
 from .validation import *
 

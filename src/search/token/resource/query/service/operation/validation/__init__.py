@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-# =========== TOKEN.DATABASE.SEARCH.SERVICE.OPERATION.VALIDATION PACKAGE ===========#
+# =========== SEARCH.TOKEN.DATABASE.SEARCH.SERVICE.OPERATION.VALIDATION PACKAGE ===========#
 
 # Packages
 from .exception import *

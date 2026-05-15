@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-# =========== TOKEN.DATABASE.SEARCH.QUERY.SERVICE.OPERATION PACKAGE ===========#
+# =========== SEARCH.TOKEN.DATABASE.SEARCH.QUERY.SERVICE.OPERATION PACKAGE ===========#
 
 # Packages
 from .build import *

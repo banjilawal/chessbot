@@ -7,7 +7,7 @@ Created: 2025-10-01
 version: 1.0.0
 """
 
-# =========== HOSTAGE.CONTEXT.SERVICE PACKAGE ===========#
+# =========== SEARCH.HOSTAGE.CONTEXT.SERVICE PACKAGE ===========#
 
 # Packages
 from .exception import *

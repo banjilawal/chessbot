@@ -7,7 +7,7 @@ Created: 2025-10-06
 version: 1.0.0
 """
 
-# =========== SCHEMA.DATABASE.SEARCH.QUERY PACKAGE ===========#
+# =========== SEARCH.SCHEMA.DATABASE.SEARCH.QUERY PACKAGE ===========#
 
 # Packages
 from .model import *

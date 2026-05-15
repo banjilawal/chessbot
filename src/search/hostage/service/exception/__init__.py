@@ -7,7 +7,7 @@ Created: 2025-10-01
 version: 1.0.0
 """
 
-# =========== HOSTAGE.CONTEXT.SERVICE.EXCEPTION PACKAGE ===========#
+# =========== SEARCH.HOSTAGE.CONTEXT.SERVICE.EXCEPTION PACKAGE ===========#
 
 # Packages
 

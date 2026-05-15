@@ -7,7 +7,7 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-# =========== FORMATION.KEY.LOOKUP PACKAGE ===========#
+# =========== SEARCH.FORMATION.KEY.LOOKUP PACKAGE ===========#
 
 # Packages
 from .exception import *

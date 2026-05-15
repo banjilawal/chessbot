@@ -1,19 +1,15 @@
-# src/operation/registry/worker/__init__.py
+# src/operation/insertion/registry/worker/__init__.py
 
 """
-Module: operation.registry.worker.__init__
+Module: operation.insertion.registry.worker.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
 """
 
-# =========== OPERATION.REGISTRY.WORKER PACKAGE ===========#
+# =========== OPERATION.INSERTION.REGISTRY.WORKER PACKAGE ===========#
 
 # Packages
-from .insert import *
-from .search import *
-from .validation import *
 
 # Modules
-from .operation import WorkerRegistryOperation
-from .toolkit import WorkerRegistryToolkit
+from .operation import RegisterNewWorker

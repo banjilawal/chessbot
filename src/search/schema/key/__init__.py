@@ -7,7 +7,7 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-# =========== SCHEMA.KEY PACKAGE ===========#
+# =========== SEARCH.SCHEMA.KEY PACKAGE ===========#
 
 # Packages
 from .builder import *

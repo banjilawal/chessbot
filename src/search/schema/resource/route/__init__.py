@@ -7,7 +7,7 @@ Created: 2025-10-06
 version: 1.0.0
 """
 
-# =========== SCHEMA.QUERY.ROUTE PACKAGE ===========#
+# =========== SEARCH.SCHEMA.QUERY.ROUTE PACKAGE ===========#
 
 # Packages
 from .exception import *
