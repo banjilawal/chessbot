@@ -1,7 +1,7 @@
-# src/validation/token/integrity/validator.py
+# src/validation/token/operation.py
 
 """
-Module: validation.token.integrity.validator
+Module: validation.token.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
@@ -12,16 +12,17 @@ from __future__ import annotations
 from typing import Any, cast
 
 from controller import WorkerRegistryController
+from factory import ToolkitFactory
 from model import CombatantToken, KingToken, Token
 from operation import Validator
 from toolkit import TokenToolkit
 from database import CoordDatabase
-from result import ValidationResult
+from result import BuildResult, ValidationResult
 from util import LoggingLevelRouter
 from err import CoordDatabaseNullException, TokenNullException, TokenValidationException
 
 
-class TokenIntegrityValidator(Validator[Token]):
+class TokenValidator(Validator[Token]):
     """
     Role
         -   Transaction Worker
@@ -70,22 +71,10 @@ class TokenIntegrityValidator(Validator[Token]):
         """
         method = f"{cls.__name__}.validate"
         
-        toolkit_build_result = cls._get_toolkit(toolkit=toolkit)
-        if toolkit_build_result.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                TokenValidationException(
-                    cls_mthd=method,
-                    cls_name=cls.__name__,
-                    msg=TokenValidationException.MSG,
-                    err_code=TokenValidationException.ERR_CODE,
-                    ex=toolkit_build_result.exception,
-                )
-            )
+
         tools = toolkit_build_result.payload
-        
         # Handle the case that, the candidate does not exist.
-        validation_bootstrap_result = tools["validation_bootstrapper"].validate(
+        validation_bootstrap_result = toolkit.validation_bootstrapper.validate(
             candidate=candidate,
             target_model=Token,
             null_exception=TokenNullException(),
@@ -105,7 +94,7 @@ class TokenIntegrityValidator(Validator[Token]):
         token = cast(Token, candidate)
         
         # Handle the case that, id or designation are not certified safe.
-        identity_validation_result = tools["identity_service"].validate_identity(
+        identity_validation_result = toolkit.identity_service.validate_identity(
             id_candidate=token.id,
             name_candidate=token.designation
         )
@@ -121,7 +110,7 @@ class TokenIntegrityValidator(Validator[Token]):
                 )
             )
         # Handle the case that, the occupant's team fails validation.
-        team_validation_result = tools["team_validator"].validate(token.team)
+        team_validation_result = toolkit.team_validator.validate(token.team)
         if team_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -134,7 +123,7 @@ class TokenIntegrityValidator(Validator[Token]):
                 )
             )
         # Handle the case that, the roster or opening_square_name are not acceptable.
-        opening_square_validation_result = toolkit["square_validator"].validate(token.opening_square)
+        opening_square_validation_result = toolkit.square_validator.validate(token.opening_square)
         if opening_square_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -147,7 +136,7 @@ class TokenIntegrityValidator(Validator[Token]):
                 )
             )
         # Handle the case that, the rank is not safe.
-        rank_validation_result = tools["rank_service.validator"].validate(rank=token.rank)
+        rank_validation_result = toolkit.rank_service.validator.validate(rank=token.rank)
         if rank_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -160,7 +149,7 @@ class TokenIntegrityValidator(Validator[Token]):
                 )
             )
         # Handle the case that the token's CoordDatabase fails it safety checks.
-        coord_database_validation_result = tools["validation_bootstrapper"].validate(
+        coord_database_validation_result = toolkit.validation_bootstrapper.validate(
             candidate=token.positions,
             target_model=CoordDatabase,
             null_exception=CoordDatabaseNullException()
@@ -220,7 +209,7 @@ class TokenIntegrityValidator(Validator[Token]):
         
     @classmethod
     def verify_token_is_king(cls, candidate: Any) -> ValidationResult[KingToken]:
-        method = "TokenIntegrityValidator.validate_token_is_king"
+        method = "TokenValidator.validate_token_is_king"
         # Handle the case that, the rank is not certified as a safe occupant.
         validation = cls.validate(candidate)
         if validation.is_failure:
@@ -321,6 +310,28 @@ class TokenIntegrityValidator(Validator[Token]):
             )
         # The occupant is disabled
         return ValidationResult.success(token)
+        
+    @classmethod
+    def _get_toolkit(cls, toolkit: TokenToolkit) -> BuildResult[TokenToolkit]:
+        method = f"{cls.__name__}._get_toolkit"
+    
+        build_result = None
+        if toolkit is None:
+            build_result = ToolkitFactory.build_toolkit(
+                toolkit_class=TokenToolkit,
+            )
+            if build_result.is_failure:
+                # Send the exception chain on failure.
+                return BuildResult.failure(
+                    TokenValidationException(
+                        cls_mthd=method,
+                        cls_name=cls.__name__,
+                        msg=TokenValidationException.MSG,
+                        err_code=TokenValidationException.ERR_CODE,
+                        ex=build_result.exception,
+                    )
+                )
+            return BuildResult.success(build_result.payload)
 
 # --- FINALLY: REGISTER THE OPERATION ---#
-WorkerRegistryController.register_worker(worker=TokenIntegrityValidator)
+WorkerRegistryController.register_worker(worker=TokenValidator)

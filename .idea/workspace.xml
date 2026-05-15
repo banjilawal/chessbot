@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="" />
+    <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/validation/token/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/toolkit/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/token/integrity/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/token/integrity/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/validation/token/integrity/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/token/integrity/validator.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,7 +60,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/operation/insertion/registry",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/validation/token",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -65,11 +71,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/validation/token" />
       <recent name="$PROJECT_DIR$/src/operation/insertion/registry" />
       <recent name="$PROJECT_DIR$/src/toolkit/registry" />
       <recent name="$PROJECT_DIR$/src/search/registry" />
       <recent name="$PROJECT_DIR$/src/controller/registry" />
-      <recent name="$PROJECT_DIR$/src/operation/bootstrap/insertion/registry" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
