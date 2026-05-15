@@ -5,14 +5,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/operation/bootstrap/operation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/search/registry/service/search.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/registry/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/registry/service/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/registry/service/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/registry/service/controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/microservice/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/microservice.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/insertion/registry/service/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/insertion/registry/service/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/bootstrap/insertion/registry/worker/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/bootstrap/insertion/registry/worker/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/registry/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/registry/service/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/registry/service/operation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/registry/service/register/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/registry/service/register/operation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/registry/service/search/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/registry/service/search/operation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/registry/service/toolkit.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/registry/service/validation/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/registry/service/validation/registration/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/registry/service/validation/registration/operation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/registry/service/validation/search/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/registry/service/validation/search/domain/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/registry/service/validation/search/domain/operation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/registry/service/validation/search/name/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/registry/service/validation/search/name/operation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/registry/worker/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/registry/worker/operation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/registry/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/registry/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/registry/service/operation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/registry/service/register/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/registry/service/register/operation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/registry/service/search/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/registry/service/search/operation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/registry/service/toolkit.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/registry/service/validation/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/registry/service/validation/registration/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/registry/service/validation/registration/operation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/registry/service/validation/search/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/registry/service/validation/search/domain/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/registry/service/validation/search/domain/operation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/registry/service/validation/search/name/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/registry/service/validation/search/name/operation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/registry/worker/domain/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/registry/worker/domain/search.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/search/registry/worker/name/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/search/registry/worker/name/search.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +93,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/controller/registry",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/search/registry",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -74,18 +104,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/search/registry" />
       <recent name="$PROJECT_DIR$/src/controller/registry" />
       <recent name="$PROJECT_DIR$/src/operation/bootstrap/insertion/registry" />
       <recent name="$PROJECT_DIR$/src/operation/bootstrap" />
       <recent name="$PROJECT_DIR$/src/search" />
-      <recent name="$PROJECT_DIR$/src/operation/insertion" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/search/registry/service" />
       <recent name="$PROJECT_DIR$/src/operation/insertion/registry/worker" />
       <recent name="$PROJECT_DIR$/src/search/registry/worker" />
       <recent name="$PROJECT_DIR$/src/err" />
       <recent name="$PROJECT_DIR$/src/operation/bootstrap/insertion/registry/worker" />
-      <recent name="$PROJECT_DIR$/src/err/operation/bootstrap/registry/worker" />
     </key>
   </component>
   <component name="RunManager" selected="Python.operation">

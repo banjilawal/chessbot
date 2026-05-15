@@ -10,18 +10,17 @@ version: 1.0.1
 from __future__ import annotations
 from typing import List
 
-from database.player.database import member_service
 from err import WorkerRegistryNameSearchException
 from result import SearchResult
 from model import WorkerRegistry
 from util import LoggingLevelRouter
 from controller import WorkerRegistryController
-from operation import Operation, RegistryEntryNameValidator, WorkerRegistryOperation
+from operation import Operation, RegistryEntryNameValidator
 
 
 
 
-class WorkerRegistryNameSearch(WorkerRegistryOperation):
+class WorkerRegistryNameSearch(Operation):
     """
     Role
         -   Search Worker

@@ -15,10 +15,10 @@ from err import WorkerRegistryDomainSearchException
 from result import SearchResult
 from model import WorkerRegistry
 from util import LoggingLevelRouter
-from operation import Operation, RegistryEntryNameValidator, WorkerRegistryOperation
+from operation import Operation, RegistryEntryNameValidator
 
 
-class WorkerRegistryDomainSearch(WorkerRegistryOperation):
+class WorkerRegistryDomainSearch(Dict[str, Operation]):
     """
     Role
         -   Search Worker
