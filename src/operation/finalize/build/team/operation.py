@@ -44,5 +44,5 @@ class TeamAssemblyFinalizer(AssemblyFinalizer[Team]):
         return BuildResult.success(product)
 
 # Register the operation.
-WorkerRegistryController.register(worker=TeamAssemblyFinalizer)
+WorkerRegistryController.register_worker(worker=TeamAssemblyFinalizer)
         

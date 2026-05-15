@@ -12,7 +12,7 @@ from __future__ import annotations
 from model import WorkerRegistry
 from result import InsertionResult
 from util import LoggingLevelRouter
-from err import NewWorkerRegistrationException
+from err import NewWorkerRegistrationException, OperationNullException
 from controller import WorkerRegistryController
 from operation import BootstrapWorkerRegistration, Insertion, Operation
 
@@ -45,6 +45,7 @@ class RegisterNewWorker(Insertion[Operation]):
             cls,
             worker: Operation,
             registry: WorkerRegistry,
+            null_exception: OperationNullException,
             bootstrap_worker_registration: BootstrapWorkerRegistration | None = None,
     ) -> InsertionResult:
         """
@@ -56,6 +57,7 @@ class RegisterNewWorker(Insertion[Operation]):
         Args:
             worker: Operation
             registry: WorkerRegistry
+            null_exception: OperationNullException
             bootstrap_worker_registration: BootstrapWorkerRegistration
         Returns:
             InsertionResult
@@ -64,7 +66,7 @@ class RegisterNewWorker(Insertion[Operation]):
         """
         method = f"{cls.__name__}.execute"
         
-        # --- Supply any missing dependencies ---#
+        # --- Supply any missing dependencies. ---#
         if bootstrap_worker_registration is None:
             bootstrap_worker_registration = BootstrapWorkerRegistration()
             
@@ -72,6 +74,7 @@ class RegisterNewWorker(Insertion[Operation]):
         worker_bootstrap_result = bootstrap_worker_registration.execute(
             worker=worker,
             registry=registry,
+            null_exception=null_exception,
         )
         if worker_bootstrap_result.is_failure:
             # Send the exception chain on failure.
@@ -92,5 +95,5 @@ class RegisterNewWorker(Insertion[Operation]):
         return InsertionResult.success()
 
 # --- FINALLY: REGISTER THE OPERATION ---#
-WorkerRegistryController.register(worker=RegisterNewWorker)
+WorkerRegistryController.register_worker(worker=RegisterNewWorker)
         

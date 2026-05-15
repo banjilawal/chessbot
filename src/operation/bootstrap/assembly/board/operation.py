@@ -136,6 +136,6 @@ class BoardAssemblyBootstrapper(AssemblyBootstrapper[Board]):
 
 
 # Register the operation.
-WorkerRegistryController.register(worker=BoardAssemblyBootstrapper)
+WorkerRegistryController.register_worker(worker=BoardAssemblyBootstrapper)
 
         

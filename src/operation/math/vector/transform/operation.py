@@ -108,5 +108,5 @@ class VectorTransform(Operation):
 
 
 # Register the operation.
-WorkerRegistryController.register(worker=VectorTransform)
+WorkerRegistryController.register_worker(worker=VectorTransform)
         

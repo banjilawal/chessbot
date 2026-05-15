@@ -42,4 +42,4 @@ class TokenAssemblyFinalizer(AssemblyFinalizer[Token]):
         return BuildResult.success(product)
 
 # Register the operation.
-WorkerRegistryController.register(worker=TokenAssembler)
+WorkerRegistryController.register_worker(worker=TokenAssembler)

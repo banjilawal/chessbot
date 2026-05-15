@@ -259,4 +259,4 @@ class SquareAssemblyBootstrapper(AssemblyBootstrapper[Square]):
 
 
 # Register the operation.
-WorkerRegistryController.register(worker=SquareAssemblyBootstrapper)
+WorkerRegistryController.register_worker(worker=SquareAssemblyBootstrapper)

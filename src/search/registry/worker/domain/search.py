@@ -8,27 +8,85 @@ version: 1.0.1
 """
 
 from __future__ import annotations
-from typing import Dict
+from typing import Dict, List
 
+from err import WorkerRegistryDomainSearchException
 from result import SearchResult
 from model import WorkerRegistry
 from util import LoggingLevelRouter
-from operation import Operation, WorkerRegistryOperation
+from operation import Operation, RegistryEntryNameValidator, WorkerRegistryOperation
 
 
 class WorkerRegistryDomainSearch(WorkerRegistryOperation):
+    """
+    Role
+        -   Search Worker
+
+    Responsibilities:
+        1.  Search the WorkerRegistry for entries in a domain.
+
+    Attributes:
+
+    Provides:
+        -   def execute(
+                    domain: str,
+                    registry: WorkerRegistry,
+                    key_name_validator: RegistryEntryNameValidator,
+            ) -> SearchResult[List[Dict[str, Operation]]]:
+
+    Super Class:
+        WorkerRegistryOperation
+    """
     NAME = "worker_registry_domain_search"
     
     @classmethod
     @LoggingLevelRouter.monitor
     def execute(
             cls,
-            domain: str,
+            name: str,
             registry: WorkerRegistry,
-    ) -> SearchResult[Dict[str, Operation]]:
+            key_name_validator: RegistryEntryNameValidator | None = None,
+    ) -> SearchResult[List[Dict[str, Operation]]]:
+        """
+        Search the WorkerRegistry for an operation.
+
+        Action:
+            1.  Send an exception chain in the SearchResult if the name is not a valid String.
+            2.  Otherwise, search the WorkerRegistry for the domain.
+                    -   If the domain does not exist, send an empty SearchResult.
+                    -   Else, send the domain's entries in a SearchResult.
+        Args:
+            name: str
+            registry: WorkerRegistry   
+            key_name_validator: RegistryEntryNameValidator         
+        Returns:
+            SearchResult[List[Operation]]
+        Raises:
+            WorkerRegistryDomainSearchException
+        """
         method = f"{cls.__name__}.execute"
         
-        if domain.upper() not in registry.domains:
+        # --- Supply any missing dependencies. ---#
+        if key_name_validator is None:
+            key_name_validator = RegistryEntryNameValidator()
+        
+        # Handle the case that, domain is not a valid String.
+        search_key_validation_result = key_name_validator.validate(candidates=[name], )
+        if search_key_validation_result.is_failure:
+            # Send the exception chain on failure.
+            SearchResult.failure(
+                WorkerRegistryDomainSearchException(
+                    cls_mthd=method,
+                    cls_name=cls.__name__,
+                    msg=WorkerRegistryDomainSearchException.MSG,
+                    err_code=WorkerRegistryDomainSearchException.ERR_CODE,
+                    ex=search_key_validation_result.exception,
+                )
+            )
+        # Send and empty result if the domain does not exist.
+        if name.upper() not in registry.domains:
             return SearchResult.empty()
-        workers = registry.entries[domain.upper()]
-        return SearchResult.success(workers)
+        
+        # --- Otherwise, return the domain's entries in the work product. ---#
+        workers = registry.entries[name.upper()]
+        return SearchResult.success([workers])

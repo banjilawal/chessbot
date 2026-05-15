@@ -136,5 +136,5 @@ class RankAssemblyBootstrapper(AssemblyBootstrapper[Rank]):
         )
 
 # Register the operation.
-WorkerRegistryController.register(worker=RankAssemblyBootstrapper)
+WorkerRegistryController.register_worker(worker=RankAssemblyBootstrapper)
         

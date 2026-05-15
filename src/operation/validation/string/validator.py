@@ -114,4 +114,4 @@ class StringValidator(Validator[str]):
 
 
 # --- FINALLY: REGISTER THE OPERATION ---#
-WorkerRegistryController.register(worker=StringValidator)
+WorkerRegistryController.register_worker(worker=StringValidator)

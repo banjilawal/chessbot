@@ -118,4 +118,4 @@ class VectorValidator(Validator[Vector]):
         return ValidationResult.success(vector)
 
 # --- FINALLY: REGISTER THE OPERATION ---#
-WorkerRegistryController.register(worker=VectorValidator)
+WorkerRegistryController.register_worker(worker=VectorValidator)

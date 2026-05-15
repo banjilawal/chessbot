@@ -39,6 +39,6 @@ class CoordAssembler(Assembler[Coord]):
         )
 
 # Register the operation.
-WorkerRegistryController.register(worker=CoordAssembler)
+WorkerRegistryController.register_worker(worker=CoordAssembler)
         
         

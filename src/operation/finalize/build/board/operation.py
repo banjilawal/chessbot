@@ -44,5 +44,5 @@ class BoardAssemblyFinalizer(AssemblyFinalizer[Board]):
         return BuildResult.success(product)
     
 # Register the operation.
-WorkerRegistryController.register(worker=BoardAssemblyFinalizer)
+WorkerRegistryController.register_worker(worker=BoardAssemblyFinalizer)
         

@@ -87,4 +87,4 @@ class ScalarAssembler(Assembler[Scalar]):
         return BuildResult.success(Scalar(magnitude=blueprint.magnitude))
 
 # Register the operation.
-WorkerRegistryController.register(worker=ScalarAssembler)
+WorkerRegistryController.register_worker(worker=ScalarAssembler)

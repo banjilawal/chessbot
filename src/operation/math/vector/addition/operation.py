@@ -124,5 +124,5 @@ class AddOperation(Operation[VectorRegister]):
         return ComputationResult.success(build_result.payload)
 
 # Register the operation.
-WorkerRegistryController.register(worker=AddOperation)
+WorkerRegistryController.register_worker(worker=AddOperation)
         

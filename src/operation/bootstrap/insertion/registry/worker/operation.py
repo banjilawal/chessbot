@@ -75,7 +75,7 @@ class BootstrapWorkerRegistration(WorkerRegistryOperation):
         """
         method = f"{cls.__name__}.execute"
         
-        # --- Supply any missing dependencies ---#
+        # --- Supply any missing dependencies. ---#
         if null_exception is None:
             null_exception = OperationNullException()
         if validation_bootstrapper is None:
@@ -186,5 +186,5 @@ class BootstrapWorkerRegistration(WorkerRegistryOperation):
         return ValidationResult.success(target)
 
 # --- FINALLY: REGISTER THE OPERATION ---#
-WorkerRegistryController.register(worker=BootstrapWorkerRegistration)
+WorkerRegistryController.register_worker(worker=BootstrapWorkerRegistration)
         

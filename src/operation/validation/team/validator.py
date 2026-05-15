@@ -68,7 +68,7 @@ class TeamValidator(Validator[Team]):
         """
         method = f"{cls.__name__}.validate"
         
-        # --- Supply any missing dependencies ---#
+        # --- Supply any missing dependencies. ---#
         if toolkit is None:
             toolkit = TeamToolkit()
         
@@ -152,5 +152,5 @@ class TeamValidator(Validator[Team]):
         return ValidationResult.success(team)
     
 # --- FINALLY: REGISTER THE OPERATION ---#
-WorkerRegistryController.register(worker=TeamValidator)
+WorkerRegistryController.register_worker(worker=TeamValidator)
  

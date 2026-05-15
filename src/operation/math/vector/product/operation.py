@@ -140,4 +140,4 @@ class ScalarProductOperation(Operation[VectorOperand]):
         return ComputationResult.success(build_result.payload)
 
 # Register the operation.
-WorkerRegistryController.register(worker=ScalarProductOperation)
+WorkerRegistryController.register_worker(worker=ScalarProductOperation)

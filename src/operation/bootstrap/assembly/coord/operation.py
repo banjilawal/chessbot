@@ -89,4 +89,4 @@ class CoordAssemblyBootstrapper(AssemblyBootstrapper[Coord]):
         return ValidationResult.success(blueprint)
 
 # Register the operation.
-WorkerRegistryController.register(worker=CoordAssemblyBootstrapper)
+WorkerRegistryController.register_worker(worker=CoordAssemblyBootstrapper)

@@ -60,4 +60,4 @@ class SquareAssemblyFinalizer(AssemblyFinalizer[Square]):
         return BuildResult.success(product)
 
 # Register the operation.
-WorkerRegistryController.register(worker=SquareAssemblyFinalizer)
+WorkerRegistryController.register_worker(worker=SquareAssemblyFinalizer)

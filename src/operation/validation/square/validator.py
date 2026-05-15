@@ -306,4 +306,4 @@ class SquareValidator(Validator[Square]):
         return ValidationResult.success(cast(SquareState, candidate))
 
 # --- FINALLY: REGISTER THE OPERATION ---#
-WorkerRegistryController.register(worker=SquareValidator)
+WorkerRegistryController.register_worker(worker=SquareValidator)

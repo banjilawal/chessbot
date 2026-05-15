@@ -238,6 +238,6 @@ class TeamAssemblyBootstrapper(AssemblyBootstrapper[Team]):
 
 
 # --- FINALLY: REGISTER THE OPERATION ---#
-WorkerRegistryController.register(worker=TeamAssemblyBootstrapper)
+WorkerRegistryController.register_worker(worker=TeamAssemblyBootstrapper)
 
         

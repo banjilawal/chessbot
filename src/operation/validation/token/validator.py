@@ -312,4 +312,4 @@ class TokenValidator(Validator[Token]):
         return ValidationResult.success(token)
 
 # --- FINALLY: REGISTER THE OPERATION ---#
-WorkerRegistryController.register(worker=TokenValidator)
+WorkerRegistryController.register_worker(worker=TokenValidator)

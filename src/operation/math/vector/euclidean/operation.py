@@ -128,4 +128,4 @@ class EuclideanOperation(Operation[VectorRegister]):
         return ComputationResult.success(scalar_assembly_result.payload)
     
 # Register the operation.
-WorkerRegistryController.register(worker=EuclideanOperation)
+WorkerRegistryController.register_worker(worker=EuclideanOperation)

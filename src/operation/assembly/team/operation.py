@@ -42,5 +42,5 @@ class TeamAssembler(Assembler[Team]):
         )
 
 # Register the operation.
-WorkerRegistryController.register(worker=TeamAssembler)
+WorkerRegistryController.register_worker(worker=TeamAssembler)
         

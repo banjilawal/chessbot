@@ -82,5 +82,5 @@ class RankAssembler(Assembler[Rank]):
             return BuildResult.success(Queen(id=blueprint.id, persona=blueprint.persona))
 
 # Register the operation.
-WorkerRegistryController.register(worker=RankAssembler)
+WorkerRegistryController.register_worker(worker=RankAssembler)
         

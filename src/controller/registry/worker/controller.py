@@ -69,11 +69,11 @@ class WorkerRegistryController(Controller[WorkerRegistry]):
         return count
     
     @property
-    def  domains(self) -> List[str]:
+    def domains(self) -> List[str]:
         return self._registry.domains
     
     @LoggingLevelRouter.monitor
-    def register(
+    def register_worker(
             self,
             worker: Operation,
             null_exception: OperationNullException | None = None,
@@ -103,6 +103,7 @@ class WorkerRegistryController(Controller[WorkerRegistry]):
         insertion_result = self._toolkit.register_new_worker.execute(
             worker=worker,
             registry=self._registry,
+            null_exception=null_exception,
         )
         if insertion_result.is_failure:
             # Send the exception chain on failure.
@@ -113,40 +114,6 @@ class WorkerRegistryController(Controller[WorkerRegistry]):
                     msg=WorkerRegistryControllerException.MSG,
                     err_code=WorkerRegistryControllerException.ERR_CODE,
                     ex=insertion_result.exception
-                )
-            )
-        worker_validation_result = self._toolkit.add_worker_bootstrapper.execute(
-            worker=worker,
-            null_exception=null_exception,
-            name_validator=self._toolkit.name_validator,
-            validation_bootstrapper=self._toolkit.validation_bootstrapper,
-        )
-        if worker_validation_result.is_failure:
-            # Send the exception chain on failure.
-            return InsertionResult.failure(
-                WorkerRegistryControllerException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=WorkerRegistryControllerException.MSG,
-                    err_code=WorkerRegistryControllerException.ERR_CODE,
-                    ex=worker_validation_result.exception
-                )
-            )
-        # --- After The worker is validated, run the registration steps. ---#
-        insertion_result = self._toolkit.register_worker.execute(
-            worker=worker,
-            registry=self._registry,
-        )
-        # Handle the case that, the worker does not get registered.
-        if insertion_result.is_failure:
-            # Send the exception chain on failure.
-            return InsertionResult.failure(
-                WorkerRegistryControllerException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=WorkerRegistryControllerException.MSG,
-                    err_code=WorkerRegistryControllerException.ERR_CODE,
-                    ex=worker_validation_result.exception
                 )
             )
         # --- Forward the work product to the caller. ---#
@@ -170,11 +137,11 @@ class WorkerRegistryController(Controller[WorkerRegistry]):
         Raises:
             WorkerRegistryControllerException
         """
-        method = f"{self.__class__.__name__}.call_worker"
+        method = f"{self.__class__.__name__}.find_worker"
         
         # Handle the case that, the domain or operation+name are flagged unsafe.
         param_validation_result = self._toolkit.worker_search_bootstrapper.execute(
-            domain=domain,
+            name=domain,
             name=operation_name,
             name_validator=self._toolkit.name_validator,
             validation_bootstrapper=self._toolkit.validation_bootstrapper,
@@ -191,7 +158,7 @@ class WorkerRegistryController(Controller[WorkerRegistry]):
                 )
             )
         # --- When the params are validated, search with them. ---#
-        search_result = self._toolkit.worker_search.execute(
+        search_result = self._toolkit.worker_registry_name_search.execute(
             domain=domain,
             operation_name=operation_name,
             registry=self._registry,
@@ -231,7 +198,7 @@ class WorkerRegistryController(Controller[WorkerRegistry]):
         
         # Handle the case that, the domain is flagged unsafe.
         param_validation_result = self._toolkit.domain_search_bootstrapper.execute(
-            domain=domain,
+            name=domain,
             name_validator=self._toolkit.name_validator,
             validation_bootstrapper=self._toolkit.validation_bootstrapper,
         )
@@ -248,7 +215,7 @@ class WorkerRegistryController(Controller[WorkerRegistry]):
             )
         # --- When the param is validated, search with it. ---#
         search_result = self._toolkit.domain_search.execute(
-            domain=domain,
+            name=domain,
             registry=self._registry,
         )
         # handle the case that, the search was not completed.

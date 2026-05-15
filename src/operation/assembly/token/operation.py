@@ -65,4 +65,4 @@ class TokenAssembler(Assembler[Token]):
         )
 
 # Register the operation.
-WorkerRegistryController.register(TokenAssembler)
+WorkerRegistryController.register_worker(TokenAssembler)

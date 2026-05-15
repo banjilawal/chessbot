@@ -75,7 +75,7 @@ class RegistryEntryNameValidator(Validator):
         """
         method = f"{cls.__name__}.execute"
         
-        # --- Supply any missing dependencies ---#
+        # --- Supply any missing dependencies. ---#
         if name_validator is None:
             name_validator = NameValidator()
         if validation_bootstrapper is None:
@@ -138,4 +138,4 @@ class RegistryEntryNameValidator(Validator):
         return ValidationResult.success(names)
 
 # --- FINALLY: REGISTER THE OPERATION ---#
-WorkerRegistryController.register(worker=RegistryEntryNameValidator)
+WorkerRegistryController.register_worker(worker=RegistryEntryNameValidator)

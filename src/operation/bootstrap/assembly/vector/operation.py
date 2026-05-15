@@ -94,4 +94,4 @@ class VectorAssemblyBootstrapper(AssemblyBootstrapper[Vector]):
         return ValidationResult.success(blueprint)
     
 # Register the operation.
-WorkerRegistryController.register(worker=VectorAssemblyBootstrapper)
+WorkerRegistryController.register_worker(worker=VectorAssemblyBootstrapper)

@@ -73,7 +73,7 @@ class NameValidator(Validator[str]):
         """
         method = f"{cls.__name__}.validate"
         
-        # --- Supply any missing dependencies ---#
+        # --- Supply any missing dependencies. ---#
         if string_property_table is None:
             string_property_table = StringPropertyTable()
         if string_validator is None:
@@ -127,4 +127,4 @@ class NameValidator(Validator[str]):
         return string_validation_result
 
 # --- FINALLY: REGISTER THE OPERATION ---#
-WorkerRegistryController.register(worker=NameValidator)
+WorkerRegistryController.register_worker(worker=NameValidator)

@@ -36,7 +36,7 @@ class BoardAssembler(Assembler[Board]):
         return BuildResult.success(Board(id=blueprint.id, arena=blueprint.arena,))
 
 # Register the operation.
-WorkerRegistryController.register(worker=BoardAssembler)
+WorkerRegistryController.register_worker(worker=BoardAssembler)
     
         
         

@@ -360,4 +360,4 @@ class TokenAssemblyBootstrapper(AssemblyBootstrapper[Token]):
 
 
 # Register the operation.
-WorkerRegistryController.register(worker=TokenAssemblyBootstrapper)
+WorkerRegistryController.register_worker(worker=TokenAssemblyBootstrapper)

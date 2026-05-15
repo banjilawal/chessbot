@@ -87,4 +87,4 @@ class SquareAssembler(Assembler[Square]):
         )
 
 # Register the operation.
-WorkerRegistryController.register(worker=SquareAssembler)
+WorkerRegistryController.register_worker(worker=SquareAssembler)
