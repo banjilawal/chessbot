@@ -11,11 +11,6 @@ version: 1.0.0
 
 # Packages
 from .build import *
-from .coord import *
-from .check import *
-from .mate import *
-from .promotion import *
-from .deployment import *
 from .validation import *
 
 # Modules

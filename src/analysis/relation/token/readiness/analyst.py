@@ -45,8 +45,8 @@ class TokenReadinessAnalyzer(RelationAnalysis[TokenActivityState.FREE, Token]):
     def execute(
             cls,
             candidate_satellite: Token,
-            candidate_primary: TokenActivityState.FREE = TokenActivityState.FREE,
-            token_validator: TokenValidation = TokenValidation(),
+            candidate_primary: TokenActivityState | None = TokenActivityState.FREE,
+            token_validator: TokenValidation | None = None,
     ) -> RelationReport[TokenActivityState, Token]:
         """
         MAke sure the token can be used.
@@ -55,7 +55,7 @@ class TokenReadinessAnalyzer(RelationAnalysis[TokenActivityState.FREE, Token]):
             1.  If the token fails its certification send an exception chain in the
                 RelationReport.
             2.  Otherwise, decide if the token is actionable base on.
-                    -   It hs it been deployed.
+                    -   It has it been deployed.
                     -   It has not been captured or, it has not been checkmated.
             3.  Send the success result.
         
@@ -70,8 +70,14 @@ class TokenReadinessAnalyzer(RelationAnalysis[TokenActivityState.FREE, Token]):
         """
         method = f"{cls.__name__}.analyze"
         
+        
+        if candidate_primary is not None:
+            candidate_primary = TokenActivityState.FREE
+        if token_validator is None:
+            token_validator = TokenValidation()
+        
         # Handle the case that, the token does not pass a validation check.
-        validation_result = token_validator.validate(rank=candidate_satellite)
+        validation_result = token_validator.validate(candidate=candidate_satellite)
         # Send the exception chain on failure.
         if validation_result.is_failure:
             return RelationReport.failure(

@@ -10,6 +10,11 @@ version: 1.0.1
 # =========== PACKAGE ===========#
 
 # Packages
-from .build import *
+from .attack import *
+from .check import *
+from .coord import *
+from .deployment import *
+from .mate import *
+from .promotion import *
 
 # Modules

@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/analysis/relation/token/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/microservice/token/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/token/microservice.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation/token/consistency/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/token/consistency/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation/token/integrity/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/token/integrity/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/validation/token/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/validation/token/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/analysis/relation/token/readiness/analyst.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/analysis/relation/token/readiness/analyst.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,11 +75,11 @@
       <recent name="$PROJECT_DIR$/src/controller/registry" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/analysis/relation/token" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/operation/validation/token/integrity" />
       <recent name="$PROJECT_DIR$/src/search/registry/service" />
       <recent name="$PROJECT_DIR$/src/operation/insertion/registry/worker" />
-      <recent name="$PROJECT_DIR$/src/search/registry/worker" />
     </key>
   </component>
   <component name="RunManager" selected="Python.operation">
