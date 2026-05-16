@@ -26,6 +26,7 @@ from .number import *
 from .operand import *
 from .persona import *
 from .player import *
+from .query import *
 from .rank import *
 from .register import *
 from .scalar import *

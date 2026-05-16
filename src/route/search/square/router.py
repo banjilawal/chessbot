@@ -1,7 +1,7 @@
-# src/route/search/token/orange.py
+# src/route/search/square/router.py
 
 """
-Module: route.search.token.orange
+Module: route.search.square.router
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.1
